@@ -60,9 +60,9 @@ def relay_runtime(owner):
     return "0x" + code.hex()
 
 
-def pool_state(pid):
-    """the pool's key and current (sqrtP, active liquidity) from its Initialize, ModifyLiquidity and last Swap logs"""
-    head = int(rpc("eth_blockNumber", []), 16)
+def pool_state(pid, upto=None):
+    """the pool's key and (sqrtP, active liquidity) at the head, or at block `upto`, from its Initialize, ModifyLiquidity and last Swap logs"""
+    head = upto or int(rpc("eth_blockNumber", []), 16)
     init = None
     for a in range(head, head - 2_000_000, -200_000):
         ls = rpc("eth_getLogs", [{"fromBlock": hex(max(1, a - 199_999)), "toBlock": hex(a), "address": PM, "topics": [T_INIT, pid]}])
@@ -71,7 +71,7 @@ def pool_state(pid):
     d = init["data"]; b0 = int(init["blockNumber"], 16)
     key = {"currency0": "0x" + init["topics"][2][-40:], "currency1": "0x" + init["topics"][3][-40:], "fee": W(d, 0), "tickSpacing": sgn(W(d, 1)), "hooks": A(d, 2)}
     sqrt_p, tick0 = W(d, 3), sgn(W(d, 4))
-    ls = rpc("eth_getLogs", [{"fromBlock": hex(b0), "toBlock": "latest", "address": PM, "topics": [[T_SWAP, T_ML], pid]}])
+    ls = rpc("eth_getLogs", [{"fromBlock": hex(b0), "toBlock": hex(upto) if upto else "latest", "address": PM, "topics": [[T_SWAP, T_ML], pid]}])
     adds = []; last_swap = None
     for l in ls:
         if l["topics"][0] == T_ML: adds.append((sgn(W(l["data"], 0)), sgn(W(l["data"], 1)), sgn(W(l["data"], 2))))
@@ -81,19 +81,30 @@ def pool_state(pid):
     return key, sqrt_p, liq, b0, len(ls)
 
 
-def latest_operator_pool():
+def latest_operator_pool(any_launcher=False):
+    """the newest ETH-paired, hookless, tick-200 pool whose liquidity has not been removed; the operator's unless any_launcher"""
     head = int(rpc("eth_blockNumber", []), 16)
     ls = rpc("eth_getLogs", [{"fromBlock": hex(head - 400_000), "toBlock": "latest", "address": PM, "topics": [T_INIT, None, "0x" + "0" * 64]}])
     for l in reversed(ls):
         d = l["data"]
         if A(d, 2) != "0x" + "0" * 40 or sgn(W(d, 1)) != 200: continue
-        t = rpc("eth_getTransactionByHash", [l["transactionHash"]])
-        if (t.get("to") or "").lower() != LAUNCHER: continue
+        if not any_launcher:
+            t = rpc("eth_getTransactionByHash", [l["transactionHash"]])
+            if (t.get("to") or "").lower() != LAUNCHER: continue
         pid = l["topics"][1]
         rem = rpc("eth_getLogs", [{"fromBlock": l["blockNumber"], "toBlock": "latest", "address": PM, "topics": [T_ML, pid]}])
-        if any(sgn(W(r["data"], 2)) < 0 for r in rem): continue
+        if any(sgn(W(r["data"], 2)) < 0 for r in rem) or not any(sgn(W(r["data"], 2)) > 0 for r in rem): continue
         return pid
-    raise SystemExit("no unpulled operator pool in the last 400k blocks")
+    raise SystemExit("no unpulled pool in the last 400k blocks")
+
+
+def pool_by_token(token):
+    """the ETH-paired v4 pool of a token, from its Initialize log (the latest 2M blocks)"""
+    head = int(rpc("eth_blockNumber", []), 16)
+    for a in range(head, head - 2_000_000, -200_000):
+        ls = rpc("eth_getLogs", [{"fromBlock": hex(max(1, a - 199_999)), "toBlock": hex(a), "address": PM, "topics": [T_INIT, None, "0x" + "0" * 64, "0x" + word(token)]}])
+        if ls: return ls[-1]["topics"][1]
+    raise SystemExit("no ETH-paired pool for this token in the last 2M blocks")
 
 
 def main():

@@ -87,14 +87,60 @@ questions are asked again over the next ten trades. The $50 step is the one that
 the size of the buy (in the data, bigger outside buys were pulled more often); the $3 step proves the mechanics for a few dollars
 and a couple of hours first.
 
+## 4b. The router test: three $3 trades as the crowd (release 0.2)
+
+What the first six live trades showed (Oct 8, 12:00-13:30 UTC): six fills through the relay, every one pulled on, -$5.19. The relay
+calls the PoolManager itself, so in the pool's `Swap` event our buy was the only one those pools had ever seen with a sender other
+than the Universal Router (60,375 of 60,496 swaps on the operator's sub-1% launches carry the router). Release 0.2 sends the crowd's
+own transaction from the wallet instead (`ROUTE=router`): to the router, the stake as the value, their calldata byte for byte
+(`tests/test_ur.py` proves it against a real crowd buy and a real fleet sell), their gas limit and tip, and sells the way the fleet
+sells (two approvals behind the buy, then the sell at the fourth nonce with the amount the buy's receipt shows). The relay is not used.
+
+What the chain says before we spend anything: on the sub-1% tier, outside wallets whose first buy came through the router after the
+crowd's first buy, $2.6-13, were pulled within 20 blocks on 6 of 8 launches (within 30: 7 of 8); the same buys through other senders,
+10 of 11. The reflex looks keyed on the wallet, not the sender. Three trades cost about $10 at worst and settle it for our own case.
+
+The stake now lives in the wallet (the relay's ETH was withdrawn on Oct 8: the wallet holds about 0.0057 ETH, nonce 16; the engine
+refuses to start live under `STAKE_ETH + WALLET_RESERVE_ETH` = 0.0017).
+
+    cd ~/v2pons && git fetch origin claude/stoic-faraday-bbjupv && git checkout -B claude/stoic-faraday-bbjupv origin/claude/stoic-faraday-bbjupv
+    sudo bash deploy/flip_setup.sh                                   # re-reads the unit, adds py-solc-x; restarts the service with the env file as it is (DRY_RUN=1 now)
+    /opt/flip-venv/bin/python3 tests/test_ur.py && /opt/flip-venv/bin/python3 tests/test_engine.py
+    /opt/flip-venv/bin/python3 deploy/router_sim.py any              # a round trip through the router on a live pool, no transaction (Oct 8 from here: buy = v4math to 1e-18, sell back, minOut enforced)
+    set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
+    set_kv ROUTE router && set_kv MAX_TRADES_PER_DAY 3 && set_kv DRY_RUN 0
+    sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1
+
+The start line must show `"release":"0.2"`, `"dry_run":false`, `"route":"router"`, `router_code_bytes` 24546, `permit2_code_bytes` 9152 and
+`wallet_eth` at or above 0.0017. The engine then trades three times and stops for the day. `HOLD_BLOCKS 4` and `SELL_FALLBACK_S 0.6`
+as set on Oct 8 stay: the sell goes two blocks after the buy is seen, 0.2 s after it landed, and the buy's receipt is normally in by
+then; if `trade_done` shows `sell_amount_src` as `min_out ...` rather than `receipt`, the receipt was late and up to `BUY_SLIP` of the
+tokens stayed in the wallet (the log says so under `tokens_left`; `relay_ops.py dump 0xTOKEN` sells them, engine stopped).
+
+After the three trades (`sudo bash ~/v2pons/deploy/health.sh`, and `score.py` as in section 5), one number per trade decides:
+
+| `pull_after_buy_blocks` in `trade_done` | reading | next |
+|---|---|---|
+| within 20 blocks on two or three of the three | the bot keys on the wallet (or on something no router changes); the sender was not the tell | `set_kv DRY_RUN 1`, restart; no more live trades on this family |
+| none within 20 blocks, pulls back at the usual thousands of blocks | the sender was the tell; our buy is now one of the crowd's | `set_kv MAX_TRADES_PER_DAY 10`, restart; the ten-trade test of section 4 with its pass and stop rules |
+| one of three | not decided | three more (`MAX_TRADES_PER_DAY 6`), then the two rows above on the six |
+
+Every other stop rule of section 4 holds. The relay route is still there (`set_kv ROUTE relay`, the stake back in the relay with
+`relay_ops.py deposit`) for a side-by-side if ever needed.
+
 ## 5. Daily
 
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py status
     sudo /opt/flip-venv/bin/python3 ~/v2pons/src/score.py /var/log/flip/engine.jsonl 24
 
-Stop and withdraw everything:
+Stop and withdraw everything (on the router route the stake is already in the wallet; the second command only matters if the relay
+still holds ETH):
 
     sudo systemctl stop flip-engine && sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py withdraw
+
+A token left in the wallet after a failed or partial sell (the log says `tokens_left` or an alarm naming the token), engine stopped:
+
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py dump 0xTOKEN
 
 ## 6. What this is not
 

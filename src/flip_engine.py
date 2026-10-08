@@ -10,9 +10,15 @@ reaction. DRY_RUN=1 (default) does everything but sign and send; src/score.py pr
 
 Reads the public sequencer feed (one message per ~100 ms block; sequenceNumber = block number), decodes every signed transaction,
 and acts on two kinds: a call to a launcher (the pool's key and liquidity come from the launch receipt, fetched at once), and the
-first transaction carrying the new token's address with value >= MIN_TRIGGER_ETH (the operator's first buy). Then: the buy to the
-FlipRelay at the reserved nonce, the sell at the next nonce when the feed shows our buy's block + HOLD_BLOCKS - SELL_LEAD_BLOCKS
-(or by the wall-clock fallback), the receipts, the P&L. One position at a time; a daily cap and a daily stop.
+first transaction carrying the new token's address with value >= MIN_TRIGGER_ETH (the operator's first buy). Then the buy at the
+reserved nonce, the sell when the feed shows our buy's block + HOLD_BLOCKS - SELL_LEAD_BLOCKS (or by the wall-clock fallback), the
+receipts, the P&L. One position at a time; a daily cap and a daily stop.
+
+Two routes to the pool (ROUTE). "router" (default): the crowd's own path, from the wallet through the Uniswap Universal Router with
+the crowd's exact calldata (src/ur.py), so in the pool's Swap event our buy carries the router as its sender like every buy the pool
+has seen; the sell is the fleet's: two approvals (token -> Permit2, Permit2 -> router) sent right behind the buy, then the sell at
+the fourth nonce with the amount the buy's receipt shows. "relay": straight through the PoolManager via FlipRelay (the first six
+live trades, Oct 8: the relay was the only non-router sender those pools had ever seen, and every one of them was pulled on us).
 
 Settings come from the environment (/etc/flip/engine.env on the box). Log: JSONL, one event per line, LOG_PATH.
 """
@@ -20,9 +26,9 @@ import os, sys, json, time, base64, threading, asyncio, socket, ssl, http.client
 import rlp
 from eth_utils import keccak, to_checksum_address
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import v4math
+import v4math, ur
 
-RELEASE = "0.1"
+RELEASE = "0.2"
 
 
 def env(k, d=""):
@@ -46,6 +52,13 @@ BUY_GAS = int(env("BUY_GAS", "350000")); SELL_GAS = int(env("SELL_GAS", "350000"
 MAX_TRADES_PER_DAY = int(env("MAX_TRADES_PER_DAY", "10")); DAILY_STOP_USD = float(env("DAILY_STOP_USD", "15"))
 STALE_S = float(env("STALE_S", "2.5")); RECEIPT_TIMEOUT_S = float(env("RECEIPT_TIMEOUT_S", "25"))
 POSITION_MANAGER = env("POSITION_MANAGER", "0x58daec3116aae6d93017baaea7749052e8a04fa7").lower().replace("0x", "")
+ROUTE = env("ROUTE", "router").lower()                                                  # "router": the crowd's path, from the wallet through the Universal Router; "relay": the PoolManager via FlipRelay
+UNIVERSAL_ROUTER = env("UNIVERSAL_ROUTER", ur.UR).lower(); PERMIT2 = env("PERMIT2", ur.PERMIT2).lower()
+ROUTER_GAS = int(env("ROUTER_GAS", "220000")); APPROVE_GAS = int(env("APPROVE_GAS", "120000")); PERMIT2_GAS = int(env("PERMIT2_GAS", "140000"))   # the crowd's and the fleet's own gas limits
+PRIORITY_FEE_WEI = int(env("PRIORITY_FEE_WEI", "20000000"))                             # the crowd's tip, 0.02 gwei (the chain charges none)
+WALLET_RESERVE_ETH = float(env("WALLET_RESERVE_ETH", "0.0005"))                         # gas for about a hundred round trips, kept in the wallet beside the stake
+if ROUTE not in ("router", "relay"):
+    raise SystemExit(f"ROUTE is {ROUTE!r}: router or relay")
 
 T_INIT = keccak(text="Initialize(bytes32,address,address,uint24,int24,address,uint160,int24)").hex()
 T_SWAP = keccak(text="Swap(bytes32,address,int128,int128,uint160,uint128,int24,uint24)").hex()
@@ -246,6 +259,37 @@ def prune(seq):
 
 # ---------------------------------------------------------------- transactions
 RELAY_TO = to_checksum_address(RELAY) if RELAY else "0x" + "00" * 20                     # a dry run with no relay yet still builds the transactions
+UR_TO = to_checksum_address(UNIVERSAL_ROUTER); PERMIT2_TO = to_checksum_address(PERMIT2)
+
+
+def key_of(p):
+    return {"c0": p["c0"], "token": p["token"], "fee": p["fee"], "tick_spacing": p["tick_spacing"], "hooks": p["hooks"]}
+
+
+def fee_fields(headroom):
+    """EIP-1559 fields as the crowd sends them: a cap at the base fee times the headroom, the crowd's tip (uncharged on this chain)"""
+    cap = int(state["base_fee"] * headroom)
+    return {"type": 2, "maxFeePerGas": cap, "maxPriorityFeePerGas": min(PRIORITY_FEE_WEI, cap)}
+
+
+def tx_buy_router(p, nonce, min_out, deadline):
+    """the crowd's buy: the stake as the value, to the router, the crowd's calldata and gas limit, type 2"""
+    return {"to": UR_TO, "value": STAKE_WEI, "data": ur.buy_calldata(key_of(p), STAKE_WEI, min_out, deadline), "gas": ROUTER_GAS, **fee_fields(GAS_HEADROOM), "nonce": nonce, "chainId": CHAIN_ID}
+
+
+def tx_approve_token(p, nonce):
+    """the fleet's first approval before a sell: the token to Permit2, unlimited"""
+    return {"to": to_checksum_address(h0x(p["token"])), "value": 0, "data": ur.approve_permit2_calldata(permit2=PERMIT2), "gas": APPROVE_GAS, **fee_fields(GAS_HEADROOM), "nonce": nonce, "chainId": CHAIN_ID}
+
+
+def tx_permit2_approve(p, nonce):
+    """the fleet's second approval: Permit2 to the router for this token, unlimited, never expiring"""
+    return {"to": PERMIT2_TO, "value": 0, "data": ur.permit2_approve_calldata(p["token"], spender=UNIVERSAL_ROUTER), "gas": PERMIT2_GAS, **fee_fields(GAS_HEADROOM), "nonce": nonce, "chainId": CHAIN_ID}
+
+
+def tx_sell_router(p, nonce, amount_in, min_out=0, deadline=0):
+    """the fleet's sell: amount_in tokens out of the wallet through Permit2 into the pool, the ETH back to the wallet"""
+    return {"to": UR_TO, "value": 0, "data": ur.sell_calldata(key_of(p), amount_in, min_out, deadline), "gas": ROUTER_GAS, **fee_fields(SELL_GAS_HEADROOM), "nonce": nonce, "chainId": CHAIN_ID}
 
 
 def tx_buy(p, nonce, min_out, deadline):
@@ -296,16 +340,27 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at):
     sp2 = int(v4math.sqrt_after_buy(sp1, p["liq"], STAKE_WEI - (STAKE_WEI * fee + 999_999) // 1_000_000))
     eth_back_flat = v4math.sell_out_int(sp2, p["liq"], expected, fee)             # what the sell gets if nobody buys behind us
     nonce = state["nonce"] if state["nonce"] is not None else 0
-    deadline = ts + BUY_DEADLINE_S
-    buy = tx_buy(p, nonce, min_out, deadline); sell = tx_sell(p, nonce + 1)
-    pos = {"pid": p["pid"], "token": p["token"], "fee": fee, "trig_seq": seq, "trig_ts": ts, "trig_value": trig_value, "trig_hash": trig_hash, "fired_at": mono(), "nonce": nonce,
-           "expected_tokens": expected, "min_out": min_out, "flat_eth_back": eth_back_flat, "buy_seq": None, "sell_sent": False, "sell_seq_sent": None, "buy_hash": None, "sell_hash": None, "dry": DRY_RUN,
+    deadline = ts + BUY_DEADLINE_S if BUY_DEADLINE_S > 0 else 0                        # 0: no deadline (2^256-1, the crowd's own value)
+    router = ROUTE == "router"
+    if router:
+        buy = tx_buy_router(p, nonce, min_out, deadline); approve = tx_approve_token(p, nonce + 1); permit = tx_permit2_approve(p, nonce + 2); sell = None
+    else:
+        buy = tx_buy(p, nonce, min_out, deadline); sell = tx_sell(p, nonce + 1); approve = permit = None
+    pos = {"pid": p["pid"], "token": p["token"], "fee": fee, "key": key_of(p), "route": ROUTE, "trig_seq": seq, "trig_ts": ts, "trig_value": trig_value, "trig_hash": trig_hash, "fired_at": mono(), "nonce": nonce,
+           "sell_nonce": nonce + (3 if router else 1), "expected_tokens": expected, "min_out": min_out, "flat_eth_back": eth_back_flat, "buy_seq": None, "sell_sent": False, "sell_seq_sent": None,
+           "buy_hash": None, "sell_hash": None, "sell_raw": None, "sell_amount": None, "sell_amount_src": None, "approve_hashes": None, "buy_reverted": False, "buy_tokens": None, "dry": DRY_RUN,
            "plan_buy_seq": seq + 2, "plan_sell_seq": seq + 2 + HOLD_BLOCKS}
     state["position"] = pos; state["fires"] += 1; state["trades_today"] += 1; p["status"] = "fired"
     if DRY_RUN:
-        log({"ev": "would_fire", **{k: v for k, v in pos.items() if k not in ("dry",)}, "buy_tx": buy, "sell_tx": sell, "react_ms": round(1000 * (mono() - seen_at), 1)})
+        log({"ev": "would_fire", **{k: v for k, v in pos.items() if k not in ("dry", "sell_raw")}, "buy_tx": buy, "approve_tx": approve, "permit2_tx": permit,
+             "sell_tx": sell or {"to": UR_TO, "nonce": nonce + 3, "amount_in": "the tokens the buy's receipt shows (min_out if the sell's block comes first)"}, "react_ms": round(1000 * (mono() - seen_at), 1)})
         return
-    t0 = mono(); raw_b, hb = sign(buy); raw_s, hs = sign(sell); pos["buy_hash"] = hb; pos["sell_hash"] = hs; pos["sell_raw"] = raw_s; t1 = mono()
+    t0 = mono(); raw_b, hb = sign(buy); pos["buy_hash"] = hb
+    if router:
+        raw_a, ha = sign(approve); raw_p, hp = sign(permit); pos["approve_hashes"] = [ha, hp]
+    else:
+        raw_s, hs = sign(sell); pos["sell_hash"] = hs; pos["sell_raw"] = raw_s
+    t1 = mono()
     reply = SENDER.post(0, body(raw_b)); t2 = mono()
     pos["buy_reply"] = reply
     log({"ev": "fire", **{k: v for k, v in pos.items() if k not in ("sell_raw", "dry")}, "sign_ms": round(1000 * (t1 - t0), 1), "send_ms": round(1000 * (t2 - t1), 1), "react_ms": round(1000 * (t2 - seen_at), 1)})
@@ -313,20 +368,63 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at):
         log({"ev": "buy_rejected", "pid": p["pid"], "reply": reply}); state["position"] = None; state["trades_today"] -= 1
         threading.Thread(target=refresh_nonce, daemon=True).start()
         return
-    state["nonce"] = nonce + 2
+    state["nonce"] = nonce + (4 if router else 2)
+    if router:
+        threading.Thread(target=send_approvals, args=(pos, raw_a, raw_p), daemon=True).start()
+        threading.Thread(target=prepare_sell, args=(pos,), daemon=True).start()
+
+
+def send_approvals(pos, raw_a, raw_p):
+    """thread (router route): the fleet's two approvals right behind the buy, in nonce order on one connection; the sell at the
+    nonce after them needs both accepted"""
+    t0 = mono(); ra = SENDER.post(1, body(raw_a))
+    rp = SENDER.post(1, body(raw_p)) if "error" not in ra else {"error": {"message": "not sent: the token approval was rejected"}}
+    pos["approve_replies"] = [ra, rp]
+    log({"ev": "approvals_sent", "pid": pos["pid"], "hashes": pos["approve_hashes"], "replies": [ra, rp], "ms": round(1000 * (mono() - t0), 1), "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
+    if "error" in ra or "error" in rp:
+        log({"ev": "alarm", "what": "an approval was rejected: the sell cannot clear Permit2; sell the token by hand (relay_ops.py dump)", "pid": pos["pid"], "token": pos["token"]})
+
+
+def prepare_sell(pos):
+    """thread (router route): the buy's receipt gives the exact tokens in the wallet, and the sell is signed with that amount at
+    the reserved nonce. If the sell's block comes first, send_sell signs it with min_out instead (the buy guaranteed that much)."""
+    rec = wait_receipt(pos["buy_hash"], RECEIPT_TIMEOUT_S)
+    with lock:
+        if rec is None:
+            log({"ev": "alarm", "what": "no buy receipt for the sell amount", "pid": pos["pid"], "sell_sent": pos["sell_sent"]}); return
+        if rec.get("status") != "0x1":
+            pos["buy_reverted"] = True
+            log({"ev": "buy_reverted", "pid": pos["pid"], "block": int(rec["blockNumber"], 16), "sell_sent": pos["sell_sent"], "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)}); return
+        tokens = ur.tokens_received(rec, pos["token"], WALLET); pos["buy_tokens"] = tokens
+        if pos["sell_sent"]:
+            return                                                                 # it went with min_out; settle reports what is left
+        if tokens == 0:
+            pos["buy_reverted"] = True; log({"ev": "alarm", "what": "the buy's receipt shows no tokens", "pid": pos["pid"]}); return
+        raw, h = sign(tx_sell_router(pos["key"], pos["sell_nonce"], tokens)); pos["sell_raw"] = raw; pos["sell_hash"] = h; pos["sell_amount"] = tokens; pos["sell_amount_src"] = "receipt"
+    log({"ev": "sell_ready", "pid": pos["pid"], "tokens": tokens, "expected_tokens": pos["expected_tokens"], "block": int(rec["blockNumber"], 16), "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
 
 
 def send_sell(why):
     pos = state["position"]
     if pos is None or pos["sell_sent"]:
         return
+    if pos["route"] == "router" and not DRY_RUN:
+        if pos["buy_reverted"]:
+            pos["sell_sent"] = True; pos["sell_seq_sent"] = state["seq"]; pos["sell_why"] = why; pos["sell_skipped"] = "the buy reverted"
+            log({"ev": "sell_skipped", "pid": pos["pid"], "seq": state["seq"], "why": "the buy reverted"})
+            threading.Thread(target=settle, args=(pos,), daemon=True).start()
+            return
+        if pos["sell_raw"] is None:
+            amt = pos["min_out"]; raw, h = sign(tx_sell_router(pos["key"], pos["sell_nonce"], amt))
+            pos["sell_raw"] = raw; pos["sell_hash"] = h; pos["sell_amount"] = amt; pos["sell_amount_src"] = "min_out (the buy's receipt was not in yet)"
     pos["sell_sent"] = True; pos["sell_seq_sent"] = state["seq"]; pos["sell_sent_at"] = mono(); pos["sell_why"] = why
     if DRY_RUN:
         log({"ev": "would_sell", "pid": pos["pid"], "seq": state["seq"], "why": why, "buy_seq": pos["buy_seq"], "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
         threading.Thread(target=settle_dry, args=(pos,), daemon=True).start()
         return
-    reply = SENDER.post(1, body(pos["sell_raw"])); pos["sell_reply"] = reply
-    log({"ev": "sell_sent", "pid": pos["pid"], "seq": state["seq"], "why": why, "buy_seq": pos["buy_seq"], "hash": pos["sell_hash"], "reply": reply, "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
+    reply = SENDER.post(0 if pos["route"] == "router" else 1, body(pos["sell_raw"])); pos["sell_reply"] = reply
+    log({"ev": "sell_sent", "pid": pos["pid"], "seq": state["seq"], "why": why, "buy_seq": pos["buy_seq"], "hash": pos["sell_hash"], "nonce": pos["sell_nonce"], "amount": pos["sell_amount"], "amount_src": pos["sell_amount_src"],
+         "reply": reply, "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
     threading.Thread(target=settle, args=(pos,), daemon=True).start()
 
 
@@ -361,13 +459,21 @@ def settle(pos):
 
 
 def _settle(pos):
-    rb = wait_receipt(pos["buy_hash"], RECEIPT_TIMEOUT_S); rs = wait_receipt(pos["sell_hash"], RECEIPT_TIMEOUT_S)
-    out = {"ev": "trade_done", "dry": False, "pid": pos["pid"], "token": pos["token"], "fee": pos["fee"], "trig_seq": pos["trig_seq"], "trig_value": pos["trig_value"], "nonce": pos["nonce"],
-           "expected_tokens": pos["expected_tokens"], "min_out": pos["min_out"], "buy_seq_feed": pos["buy_seq"], "sell_why": pos.get("sell_why"), "sell_seq_sent": pos["sell_seq_sent"]}
+    rb = wait_receipt(pos["buy_hash"], RECEIPT_TIMEOUT_S); rs = wait_receipt(pos["sell_hash"], RECEIPT_TIMEOUT_S) if pos["sell_hash"] else None
+    out = {"ev": "trade_done", "dry": False, "route": pos["route"], "pid": pos["pid"], "token": pos["token"], "fee": pos["fee"], "trig_seq": pos["trig_seq"], "trig_value": pos["trig_value"], "nonce": pos["nonce"],
+           "expected_tokens": pos["expected_tokens"], "min_out": pos["min_out"], "buy_seq_feed": pos["buy_seq"], "sell_why": pos.get("sell_why"), "sell_seq_sent": pos["sell_seq_sent"],
+           "sell_amount": pos["sell_amount"], "sell_amount_src": pos["sell_amount_src"]}
     gas_wei = 0; eth_in = 0; eth_out = 0; tokens = 0
+    if pos["route"] == "router" and pos["approve_hashes"]:                             # the two approvals: their gas is the trade's, their status explains a failed sell
+        apr = []
+        for h in pos["approve_hashes"]:
+            r = wait_receipt(h, 5.0)
+            apr.append("ok" if r and r.get("status") == "0x1" else ("reverted" if r else "no receipt"))
+            if r: gas_wei += int(r["gasUsed"], 16) * int(r["effectiveGasPrice"], 16)
+        out["approvals"] = apr
     for name, rec in (("buy", rb), ("sell", rs)):
         if rec is None:
-            out[name] = "no receipt"; continue
+            out[name] = "skipped: " + pos["sell_skipped"] if name == "sell" and pos.get("sell_skipped") else "no receipt"; continue
         bn = int(rec["blockNumber"], 16); ok = rec.get("status") == "0x1"; g = int(rec["gasUsed"], 16) * int(rec["effectiveGasPrice"], 16); gas_wei += g
         sw = swap_of(rec, pos["pid"]) if ok else None
         out[name] = {"block": bn, "status": "ok" if ok else "reverted", "gas_usd": round(g / 1e18 * ETH_USD, 4), "index": int(rec["transactionIndex"], 16)}
@@ -388,6 +494,11 @@ def _settle(pos):
     pnl = eth_out - eth_in - gas_wei
     out.update({"eth_in": eth_in, "eth_out": eth_out, "gas_wei": gas_wei, "pnl_eth": pnl / 1e18, "pnl_usd": round(pnl / 1e18 * ETH_USD, 3), "ret": round((eth_out - eth_in) / eth_in, 4) if eth_in else None,
                 "flat_eth_back": pos["flat_eth_back"]})
+    if pos["route"] == "router" and rb and rb.get("status") == "0x1":                  # what the wallet still holds of the token: a sell with min_out leaves a little, a failed sell leaves it all
+        bought = ur.tokens_received(rb, pos["token"], WALLET); sold = out["sell"]["tokens_in"] if isinstance(out.get("sell"), dict) and "tokens_in" in out["sell"] else 0
+        out["tokens_left"] = max(bought - sold, 0)
+        if out["tokens_left"] > 0:
+            log({"ev": "alarm" if sold == 0 else "tokens_left", "what": f"{out['tokens_left']} of token {pos['token']} left in the wallet: sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py dump 0x{pos['token']}", "pid": pos["pid"]})
     with lock:
         roll_day(); state["pnl_today_usd"] += out["pnl_usd"]
         if state["position"] is pos:
@@ -500,7 +611,12 @@ def checks():
     if chain != CHAIN_ID:
         raise SystemExit(f"RPC_URL is chain {chain}, not {CHAIN_ID}")
     b = rpc("eth_getBlockByNumber", ["latest", False]); state["base_fee"] = int(b["baseFeePerGas"], 16); state["fee_at"] = mono()
-    info = {"chain": chain, "head": int(b["number"], 16), "base_fee_gwei": state["base_fee"] / 1e9}
+    info = {"chain": chain, "head": int(b["number"], 16), "base_fee_gwei": state["base_fee"] / 1e9, "route": ROUTE}
+    if ROUTE == "router":
+        for name, a in (("router", UNIVERSAL_ROUTER), ("permit2", PERMIT2)):
+            code = rpc("eth_getCode", [h0x(a), "latest"]); info[f"{name}_code_bytes"] = len(code) // 2 - 1
+            if len(code) <= 2:
+                raise SystemExit(f"the {name} {a} has no code")
     if RELAY:
         code = rpc("eth_getCode", [h0x(RELAY), "latest"]); owner = rpc("eth_call", [{"to": h0x(RELAY), "data": "0x" + SEL_OWNER}, "latest"]); pm = rpc("eth_call", [{"to": h0x(RELAY), "data": "0x" + SEL_PM}, "latest"])
         bal = int(rpc("eth_getBalance", [h0x(RELAY), "latest"]), 16)
@@ -511,26 +627,28 @@ def checks():
             raise SystemExit(f"the relay's PoolManager is {pm[-40:]}, not {POOL_MANAGER}")
         if WALLET and ("0x" + owner[-40:]).lower() != h0x(WALLET):
             raise SystemExit(f"the relay's owner is 0x{owner[-40:]}, WALLET is {WALLET}")
-        if not DRY_RUN and bal < STAKE_WEI:
+        if not DRY_RUN and ROUTE == "relay" and bal < STAKE_WEI:
             raise SystemExit(f"the relay holds {bal / 1e18:.6f} ETH, under the stake {STAKE_ETH}")
     if WALLET:
         state["nonce"] = int(rpc("eth_getTransactionCount", [h0x(WALLET), "pending"]), 16); info["wallet_nonce"] = state["nonce"]
         info["wallet_eth"] = int(rpc("eth_getBalance", [h0x(WALLET), "latest"]), 16) / 1e18
+        if not DRY_RUN and ROUTE == "router" and info["wallet_eth"] < STAKE_ETH + WALLET_RESERVE_ETH:
+            raise SystemExit(f"the wallet holds {info['wallet_eth']:.6f} ETH, under the stake {STAKE_ETH} plus the gas reserve {WALLET_RESERVE_ETH} (relay_ops.py withdraw moves the relay's ETH back)")
     if not DRY_RUN:
         global SIGNER, SENDER
         from eth_account import Account
         SIGNER = Account.from_key(os.environ["PRIVATE_KEY"])
         if SIGNER.address.lower() != h0x(WALLET):
             raise SystemExit(f"PRIVATE_KEY is for {SIGNER.address}, WALLET is {WALLET}")
-        if not RELAY:
-            raise SystemExit("RELAY is required when DRY_RUN=0")
+        if ROUTE == "relay" and not RELAY:
+            raise SystemExit("RELAY is required when DRY_RUN=0 on the relay route")
         SENDER = Sender(SEQ_URL)
     return info
 
 
 def main():
     roll_day(); info = checks()
-    log({"ev": "start", "release": RELEASE, "dry_run": DRY_RUN, "launchers": sorted(LAUNCHERS), "relay": RELAY, "wallet": WALLET, "stake_eth": STAKE_ETH, "min_trigger_eth": MIN_TRIGGER_ETH,
+    log({"ev": "start", "release": RELEASE, "dry_run": DRY_RUN, "launchers": sorted(LAUNCHERS), "universal_router": UNIVERSAL_ROUTER, "permit2": PERMIT2, "relay": RELAY, "wallet": WALLET, "stake_eth": STAKE_ETH, "min_trigger_eth": MIN_TRIGGER_ETH,
          "fee_ppm": [FEE_MIN_PPM, FEE_MAX_PPM], "min_liquidity": MIN_LIQUIDITY, "trigger_max_blocks": TRIGGER_MAX_BLOCKS, "buy_slip": BUY_SLIP, "hold_blocks": HOLD_BLOCKS, "sell_lead_blocks": SELL_LEAD_BLOCKS,
          "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     threading.Thread(target=watchdog, daemon=True).start()

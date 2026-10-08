@@ -9,7 +9,7 @@ REPO="$(cd "$(dirname "$0")/.." && pwd)"
 apt-get install -y -q python3-venv >/dev/null 2>&1 || true
 [ -x /opt/flip-venv/bin/python3 ] || python3 -m venv /opt/flip-venv
 /opt/flip-venv/bin/pip install -q --upgrade pip >/dev/null
-/opt/flip-venv/bin/pip install -q websockets rlp eth-account eth-utils coincurve
+/opt/flip-venv/bin/pip install -q websockets rlp eth-account eth-utils coincurve py-solc-x      # py-solc-x only for the simulations (router_sim.py, relay_sim.py)
 mkdir -p /etc/flip /var/log/flip; chmod 700 /etc/flip
 if [ ! -f /etc/flip/engine.env ]; then
 cat > /etc/flip/engine.env <<'EOF'
@@ -22,7 +22,11 @@ RPC_URL=https://rpc.mainnet.chain.robinhood.com
 # the operator's launcher contract(s), comma-separated
 LAUNCHERS=0x3194e32622c5d860a0572c74edda99dcfd8fc827
 POOL_MANAGER=0x8366a39cc670b4001a1121b8f6a443a643e40951
-# the new wallet (gas only) and the relay it owns (the stake); set by relay_deploy.py --write-env
+# the path to the pool: router = the crowd's own (buys and sells from the wallet through the Universal Router, the wallet holds
+# the stake and the gas); relay = straight through the PoolManager via FlipRelay (the relay holds the stake)
+ROUTE=router
+UNIVERSAL_ROUTER=0x8876789976decbfcbbbe364623c63652db8c0904
+# the new wallet, and the relay it owns (only the relay route needs it; set by relay_deploy.py --write-env)
 WALLET=
 RELAY=
 PRIVATE_KEY=
