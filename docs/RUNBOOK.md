@@ -142,6 +142,12 @@ wallet 10% of trade 8's (token `0x5f9215b0...`). Nothing to sell.
 
    The start line must show `"release":"0.4"`, `"dry_run":false`, `relay_eth` at 0.0012 or more and `"halted":null`.
 
+To see every trade as it happens (one line per step, a beep on each finished trade or alarm; Ctrl-C stops the watching, not the
+engine; inside tmux it survives the SSH session):
+
+    sudo bash ~/v2pons/deploy/watch.sh
+    tmux new -s watch 'sudo bash ~/v2pons/deploy/watch.sh'          # detach with Ctrl-b d, come back with: tmux attach -t watch
+
 After each `trade_done`, the line that matters:
 
 | field | expected | if not |
