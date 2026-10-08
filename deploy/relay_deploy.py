@@ -66,7 +66,9 @@ def main():
         data_buy = "0x5ed06f60" + word(key["currency0"]) + word(key["currency1"]) + word(key["fee"]) + word(key["tickSpacing"]) + word(key["hooks"]) + word(amt) + word(0) + word(0)
         r = rpc("eth_call", [{"from": wallet, "to": relay, "data": data_buy}, "latest", {relay: {"balance": hex(10 ** 16)}}], tries=2)
         got = int(r, 16); exp = v4math.buy_out_int(sqrt_p, liq, amt, key["fee"])
-        print(f"simulated buy through the relay on pool {pid[:14]} (fee {key['fee'] / 1e4:g}%): {got:.6g} tokens, v4math predicted {exp:.6g} ({'exact' if got == exp else 'differs'})")
+        rel = (got - exp) / exp if exp else float("inf")
+        verdict = "ok" if abs(rel) < 1e-9 else "MISMATCH: do not use the relay"
+        print(f"simulated buy through the relay on pool {pid[:14]} (fee {key['fee'] / 1e4:g}%): {got:.6g} tokens, v4math predicted {exp:.6g} ({rel:+.1e} relative: {verdict})")
     except Exception as ex:
         print(f"the simulated buy did not go through ({str(ex)[:160]}); the pool may have been pulled; try deploy/relay_sim.py <poolId>")
     if a.write_env:
