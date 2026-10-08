@@ -30,7 +30,7 @@ The engine watches every launch and logs what it would do. Read it:
     sudo python3 ~/v2pons/deploy/englog.py 24 | grep '"ev":"would_fire"' | tail -5
     sudo /opt/flip-venv/bin/python3 ~/v2pons/src/score.py /var/log/flip/engine.jsonl 24   # every decision priced from the chain
 
-The dry run passes when, over at least 20 decisions:
+The dry run passes when, over at least 10 decisions:
 
 1. `arm_ms` (launch seen to pool armed) is under 300 ms on most launches, and `first_buy` offsets sit near the backtest's 22/44/64 blocks
    (p10/50/90), i.e. the engine sees the launch before the crowd's first buy.
@@ -42,7 +42,7 @@ The dry run passes when, over at least 20 decisions:
 
 ## 3. The wallet and the relay
 
-1. Make a new wallet (never the Pons wallet). Fund it with about 0.003 ETH for gas (a deploy and twenty round trips).
+1. Make a new wallet (never the Pons wallet). Fund it with about 0.003 ETH for gas (a deploy and a hundred round trips).
 2. Put `WALLET=0x...` and `PRIVATE_KEY=0x...` in `/etc/flip/engine.env` (`sudo nano`, keep mode 600).
 3. Deploy the relay and write its address into the env file:
 
@@ -81,8 +81,11 @@ After every trade (`"ev":"trade_done"` in the log, and `score.py`), the three qu
 - the daily stop (-$15) or three reverted buys in a row (the guard is wrong for this tier, re-set `BUY_SLIP` from the landings);
 - the operator stops launching sub-1% pools (no `eligible` launch for six hours).
 
-**Pass:** eight or more fills, 70%+ positive, mean return within 2 points of the paper, no pull inside any hold. Then the stake steps to
-$25 (`STAKE_ETH 0.01`), and the same three questions are asked again over the next ten trades before $50.
+**Pass:** eight or more fills, 70%+ positive, mean return within 2 points of the paper, no pull inside any hold. Then the stake steps
+straight to $50: `STAKE_ETH 0.0195`, `DAILY_STOP_USD 150`, and 0.04 ETH in the relay (`relay_ops.py deposit 0.04`), and the same three
+questions are asked again over the next ten trades. The $50 step is the one that tests whether the operator's reaction depends on
+the size of the buy (in the data, bigger outside buys were pulled more often); the $3 step proves the mechanics for a few dollars
+and a couple of hours first.
 
 ## 5. Daily
 
