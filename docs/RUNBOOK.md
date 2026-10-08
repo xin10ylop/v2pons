@@ -108,8 +108,16 @@ refuses to start live under `STAKE_ETH + WALLET_RESERVE_ETH` = 0.0017).
     /opt/flip-venv/bin/python3 tests/test_ur.py && /opt/flip-venv/bin/python3 tests/test_engine.py
     /opt/flip-venv/bin/python3 deploy/router_sim.py any              # a round trip through the router on a live pool, no transaction (Oct 8 from here: buy = v4math to 1e-18, sell back, minOut enforced)
     set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
-    set_kv ROUTE router && set_kv MAX_TRADES_PER_DAY 3 && set_kv DRY_RUN 0
+    set_kv ROUTE router && set_kv BUY_DEADLINE_S 0 && set_kv GAS_HEADROOM 1.5 && set_kv MAX_TRADES_PER_DAY 3 && set_kv DRY_RUN 0
     sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1
+
+`BUY_DEADLINE_S 0` puts the crowd's own deadline word (2^256-1) in the calldata; `minOut` still refuses a late fill. `GAS_HEADROOM 1.5` caps
+the fee at 1.5 times the base fee, which is what every crowd and fleet transaction read from the chain carries (the chain charges the
+base fee only). With those, our buy differs from a crowd buy in the wallet, the two amounts and nothing else: not at the pool, not in
+the transaction. The sell keeps `SELL_GAS_HEADROOM 6`; it comes after the bot's decision. What no setting can change: the wallet
+(its nonce, its six pulled trades on these pools, the address that funded it), the stake, and that we always land one or two
+blocks after the crowd's first buy. If the three trades are pulled, the wallet is what is left, and the next experiment is a fresh
+wallet per trade, which tells a bot that remembers wallets from one that whitelists its own; the second kind cannot be passed.
 
 The start line must show `"release":"0.2"`, `"dry_run":false`, `"route":"router"`, `router_code_bytes` 24546, `permit2_code_bytes` 9152 and
 `wallet_eth` at or above 0.0017. The engine then trades three times and stops for the day. `HOLD_BLOCKS 4` and `SELL_FALLBACK_S 0.6`
