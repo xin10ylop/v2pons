@@ -40,6 +40,8 @@ def rpc(m, p, tries=6):
 
 def compile_harness():
     import solcx
+    if "0.8.26" not in [str(v) for v in solcx.get_installed_solc_versions()]:
+        print("installing solc 0.8.26 (once, about 10 MB)"); solcx.install_solc("0.8.26")
     src = open(os.path.join(ROOT, "contracts", "RoundTripHarness.sol")).read()
     r = solcx.compile_standard({"language": "Solidity", "sources": {"H.sol": {"content": src}}, "settings": {"optimizer": {"enabled": True, "runs": 200}, "evmVersion": "cancun",
                                 "outputSelection": {"*": {"RoundTripHarness": ["evm.deployedBytecode.object"]}}}}, solc_version="0.8.26")
