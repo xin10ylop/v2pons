@@ -15,13 +15,14 @@ our buy changes the operator's reaction. Five to ten $3 trades answer it. That i
 
 **The first six live trades (Oct 8) were all pulled on**, -$5.19 in all, through the relay. The relay calls the PoolManager itself, so in
 the pool's own `Swap` event our buy was the only one with a sender other than the Universal Router, which is where every buy on these
-pools comes from (99.8% of 60,496 swaps on 371 launches). Release 0.2 removed that tell: the engine sends the crowd's own transaction
-from the wallet (`ROUTE=router`), byte for byte the shape of theirs, and sells the way the operator's fleet sells.
+pools comes from (99.8% of 60,496 swaps on 371 launches). Release 0.2 tried to remove that tell by sending the crowd's own transaction
+from the wallet through the Universal Router. Release 0.3 found what actually decided the trades (below), and 0.4 removed the router
+route again: the engine trades through the relay only.
 
-## The eight live trades, from the losers' side (release 0.3)
+## The eight live trades, from the losers' side (releases 0.3 and 0.4)
 
 Read back from the chain (`research/live_trades.py`, output in `research/data/live_trades_oct8.txt`): seven through the relay
-(13:15-13:20 UTC) and the first through the router (14:32).
+(13:15-13:20 UTC) and one through release 0.2's router route (14:32).
 
 | # | route | fee | return | pull, blocks after our buy | our sell landed, blocks after our buy | crowd buys behind ours before the pull |
 |---|---|---|---|---|---|---|
@@ -51,18 +52,22 @@ block early), +7.6%, +5.5%, +5.5%, +7.5%, -0.8%, -0.5%, +0.4%: mean +4.0%, no -1
 the slow landing on every trade). On the Oct 5-8 backtest the same exit prices at +3.4% a trade, 85% positive, worst -1.9%. A trade
 with no crowd buy behind ours cannot be told apart before the buy; the exit makes it cost the two fees (about 0.5-0.8%), not the stake.
 
-Release 0.3 changes the exit, not the route:
+Releases 0.3 and 0.4 change the exit and drop the disguise:
 
 - **Take profit:** the sell goes in the feed block of the first buy behind ours that prices the sell at `TAKE_PROFIT` (1%) after gas.
 - **Deadline:** in any case it lands by our buy + `HOLD_BLOCKS` (4): sent when the feed shows our buy + 2, before the fastest pull seen
   (+5). `SELL_FALLBACK_S` 0.5.
-- **The exact sell amount:** the engine follows the pool's price through every buy on the feed (1e-15 from all eight real fills; the
-  old prediction from the trigger alone was 4e-6 high on every one), so a router sell due before the receipt sells that count less
-  0.1% (`SELL_AMOUNT_MARGIN`), not `minOut`. Buys that landed before a launch was armed are replayed onto it.
+- **The pool's price, from the feed:** the engine follows it through every buy (1e-15 from all eight real fills; the old prediction
+  from the trigger alone was 4e-6 high on every one). `minOut` and the take-profit are priced on it. Buys that landed before a launch
+  was armed are replayed onto it.
 - **Entry:** `BUY_SLIP` 3%: a crowd buy that lands ahead of ours makes our buy revert instead of filling behind it, where nothing is
   left on its way. A stale or pre-arm first buy is recorded, so the crowd's next buy is never mistaken for the trigger.
 - **Halt:** if a pull ever lands at or before our sell, or a filled buy's sell sells nothing, the engine writes
   `/var/log/flip/HALTED` and fires nothing more until the file is removed.
+- **The relay only (0.4):** the exit has to work whether or not the operator sees us, and on the relay it does (all seven relay
+  trades repriced above). The relay's sell is signed with the buy and sells everything the relay holds, so it can go the moment it is
+  due. The router's sell needed two approvals first (on trade 8 they landed one and two blocks after the buy) and an exact amount
+  (trade 8's -9.3%). Its one advantage, the missing pull on trade 8, is one trade, and the exit does not need it.
 - `BUY_DELAY_BLOCKS` (default 0) is there for one open reading: the four trades whose buy landed two blocks after the trigger all had
   the crowd's next buy right behind them; of the three that landed one block after it, two had none. Seven trades do not settle it.
 
@@ -70,17 +75,16 @@ Release 0.3 changes the exit, not the route:
 
 | path | what |
 |---|---|
-| `src/ur.py` | the crowd's calldata: the Universal Router `execute` for a buy and a sell (V4_SWAP: SWAP_EXACT_IN_SINGLE, SETTLE_ALL, TAKE_ALL), the fleet's two approvals; reproduces two real transactions byte for byte (`tests/test_ur.py`) |
-| `src/flip_engine.py` | the engine: reads the sequencer feed, arms each launch from its receipt, follows each pool's price through every buy, fires on the operator's first real-size buy, sells on the first buy behind ours worth `TAKE_PROFIT` or by our buy + `HOLD_BLOCKS`; halts itself if the pull ever beats the sell; one position at a time, daily cap and stop; `DRY_RUN=1` by default; `ROUTE=router` (the crowd's path) or `relay` |
-| `contracts/FlipRelay.sol`, `FlipRelay.json`, `compile.py` | the relay (`ROUTE=relay`): buys with its own ETH and sells everything it holds, straight through the PoolManager (no router, no approval). `RoundTripHarness.sol` and `RouterRoundTrip.sol` are test-only. |
+| `src/flip_engine.py` | the engine: reads the sequencer feed, arms each launch from its receipt, follows each pool's price through every buy, fires on the operator's first real-size buy, sells on the first buy behind ours worth `TAKE_PROFIT` or by our buy + `HOLD_BLOCKS`; halts itself if the pull ever beats the sell; one position at a time, daily cap and stop; `DRY_RUN=1` by default |
+| `contracts/FlipRelay.sol`, `FlipRelay.json`, `compile.py` | the relay: buys with its own ETH and sells everything it holds, straight through the PoolManager (no router, no approval); the sell can be signed before the buy's receipt exists. `RoundTripHarness.sol` is test-only. |
 | `src/v4math.py` | exact single-range v4 pricing (validated to 1e-13 on 60,000 real swaps) |
 | `src/score.py` | prices every engine decision from the chain afterwards with the engine's exit: paper vs live, the crowd behind us, the pull against our sell |
 | `deploy/flip_setup.sh` | the box: venv, `/etc/flip/engine.env`, the `flip-engine` service, the log |
-| `deploy/router_sim.py`, `relay_sim.py` | a buy and a sell through the router (or the relay) on a live pool with no transaction (eth_call with state overrides) |
-| `deploy/relay_deploy.py`, `relay_ops.py`, `englog.py`, `health.sh` | deploy the relay, move the stake, sell a token left in the wallet (`dump`), read the log |
-| `tests/` | `test_v4math.py` (the pricing), `test_ur.py` (the router bytes against the chain), `test_engine.py` (the engine on a scripted feed, both routes: real signed transactions in real batch frames, the chain stubbed) |
+| `deploy/relay_sim.py` | a buy and a sell through the relay on a live pool with no transaction (eth_call with state overrides) |
+| `deploy/relay_deploy.py`, `relay_ops.py`, `englog.py`, `health.sh` | deploy the relay, move the stake, read the log |
+| `tests/` | `test_v4math.py` (the pricing), `test_engine.py` (the engine on a scripted feed: real signed transactions in real batch frames, the chain stubbed) |
 | `research/` | the analysis scripts, their data and outputs, the survey of other chains and launchpads, report section 24.54; `live_trades.py` reads the live trades back from the chain (`data/live_trades_oct8.txt`) |
-| `docs/RUNBOOK.md` | from a fresh wallet to the first $3 trade, the dry run's pass criteria, the router test, the stop rules |
+| `docs/RUNBOOK.md` | from a fresh wallet to the first $3 trade, the dry run's pass criteria, the exit (4b), the stop rules |
 
 ## The trade, exactly
 
@@ -90,20 +94,15 @@ Release 0.3 changes the exit, not the route:
 2. Every transaction carrying the token's address with ETH as its value is a buy and moves the engine's copy of the pool's price. The
    first with `value >= MIN_TRIGGER_ETH` (0.0002) is the operator's first buy (306 of 312 times in the data). It must come within
    `TRIGGER_MAX_BLOCKS` (150) of the launch; later buys are outsiders.
-3. The engine prices our buy on the pool as the feed shows it and signs it: `STAKE_ETH` at `minOut` = prediction × (1 − `BUY_SLIP`, 3%), a 3 s deadline
-   (`BUY_DEADLINE_S=0` for the crowd's own 2^256-1). On the router route the buy is the crowd's transaction from the wallet: type 2, to the
-   Universal Router, the stake as the value, their calldata, their gas limit and tip. Right behind it go the fleet's two approvals at the
-   next two nonces (the token to Permit2, Permit2 to the router). On the relay route the buy goes to the relay and the sell is signed at
-   once at the next nonce. Our buy lands one or two blocks after the trigger block.
+3. The engine prices our buy on the pool as the feed shows it and signs it to the relay: `STAKE_ETH` at `minOut` = prediction × (1 −
+   `BUY_SLIP`, 3%), a 3 s deadline; the sell is signed at once at the next nonce. Our buy lands one or two blocks after the trigger block.
 4. When our buy shows in the feed, the engine knows the tokens it got (the pool as the feed showed it at that point). Each buy behind
    ours is priced at once: the first that makes the sell worth `TAKE_PROFIT` (1%) after gas sends the sell. Otherwise the sell goes when
    the feed reaches buy block + `HOLD_BLOCKS` − `SELL_LEAD_BLOCKS` (4 − 2), so it lands by our buy + 4; the operator pulled 5-13 blocks
-   after each of our relay buys. On the router route the sell (the fleet's transaction, at the fourth nonce) carries the receipt's exact
-   amount, or, if it is due before the receipt, the feed's count less `SELL_AMOUNT_MARGIN` (0.1%); the leftover is reported for
-   `relay_ops.py dump`. A wall-clock fallback (`SELL_FALLBACK_S`, 0.5 s after the buy was sent) sends it anyway if the feed stalls; a
-   reverted buy sends no sell.
-5. All receipts are read; three seconds later the pool's liquidity events. The P&L (the approvals' gas included), the landing
-   offsets, the sell's reason and amount source, the pull's block after our buy and whether it landed before our sell go to the log as
+   after each of our relay buys. A wall-clock fallback (`SELL_FALLBACK_S`, 0.5 s after the buy was sent) sends it anyway if the feed
+   stalls. After a reverted buy the sell finds nothing to sell and reverts too (gas only).
+5. Both receipts are read; three seconds later the pool's liquidity events. The P&L, the landing offsets, the sell's reason, the
+   pull's block after our buy and whether it landed before our sell go to the log as
    `trade_done`. A pull before our sell, or a filled buy whose sell sold nothing, halts live trading (`/var/log/flip/HALTED`).
 
 ## Reproducing the research

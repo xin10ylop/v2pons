@@ -9,7 +9,7 @@ REPO="$(cd "$(dirname "$0")/.." && pwd)"
 apt-get install -y -q python3-venv >/dev/null 2>&1 || true
 [ -x /opt/flip-venv/bin/python3 ] || python3 -m venv /opt/flip-venv
 /opt/flip-venv/bin/pip install -q --upgrade pip >/dev/null
-/opt/flip-venv/bin/pip install -q websockets rlp eth-account eth-utils coincurve py-solc-x      # py-solc-x only for the simulations (router_sim.py, relay_sim.py)
+/opt/flip-venv/bin/pip install -q websockets rlp eth-account eth-utils coincurve py-solc-x      # py-solc-x only for the simulation (relay_sim.py, relay_deploy.py)
 mkdir -p /etc/flip /var/log/flip; chmod 700 /etc/flip
 if [ ! -f /etc/flip/engine.env ]; then
 cat > /etc/flip/engine.env <<'EOF'
@@ -22,11 +22,7 @@ RPC_URL=https://rpc.mainnet.chain.robinhood.com
 # the operator's launcher contract(s), comma-separated
 LAUNCHERS=0x3194e32622c5d860a0572c74edda99dcfd8fc827
 POOL_MANAGER=0x8366a39cc670b4001a1121b8f6a443a643e40951
-# the path to the pool: router = the crowd's own (buys and sells from the wallet through the Universal Router, the wallet holds
-# the stake and the gas); relay = straight through the PoolManager via FlipRelay (the relay holds the stake)
-ROUTE=router
-UNIVERSAL_ROUTER=0x8876789976decbfcbbbe364623c63652db8c0904
-# the new wallet, and the relay it owns (only the relay route needs it; set by relay_deploy.py --write-env)
+# the new wallet (gas only) and the relay it owns (the stake); set by relay_deploy.py --write-env
 WALLET=
 RELAY=
 PRIVATE_KEY=
@@ -40,13 +36,12 @@ MIN_LIQUIDITY=1e21
 TRIGGER_MAX_BLOCKS=150
 BUY_SLIP=0.03
 BUY_DEADLINE_S=3
-# the exit (release 0.3): sell on the first buy behind ours worth TAKE_PROFIT after gas, in any case landing by our buy + HOLD_BLOCKS
+# the exit: sell on the first buy behind ours worth TAKE_PROFIT after gas, in any case landing by our buy + HOLD_BLOCKS
 # (the operator pulled 5-13 blocks after each of our relay buys); a pull at or before our sell halts live trading (/var/log/flip/HALTED)
 HOLD_BLOCKS=4
 SELL_LEAD_BLOCKS=2
 SELL_FALLBACK_S=0.5
 TAKE_PROFIT=0.01
-SELL_AMOUNT_MARGIN=0.001
 MAX_TRADES_PER_DAY=10
 DAILY_STOP_USD=15
 EOF

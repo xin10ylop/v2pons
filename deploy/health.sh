@@ -14,9 +14,12 @@ for l in sys.stdin:
     except Exception: continue
     c[e["ev"]] += 1; last[e["ev"]] = e
 print("events:", dict(c.most_common()))
-for ev in ("alarm", "feed_error", "feed_stall", "buy_rejected", "buy_reverted", "sell_skipped", "tokens_left"):
+for ev in ("alarm", "feed_error", "feed_stall", "buy_rejected"):
     if ev in last: print(ev + ":", json.dumps(last[ev])[:300])
 for ev in ("armed", "first_buy", "would_fire", "fire", "trade_done"):
     if ev in last: print("last " + ev + ":", json.dumps(last[ev])[:300])
+d = last.get("trade_done")
+if d and not d.get("dry"):                                   # the fields that decided every live trade, whatever the line length
+    print("last trade:", {k: d.get(k) for k in ("ret", "pnl_usd", "sell_why", "tp_ret", "buy_offset", "sell_after_buy_blocks", "pull_after_buy_blocks", "pulled_before_sell")})
 '
 /opt/flip-venv/bin/python3 "$REPO/deploy/relay_ops.py" status 2>/dev/null || true
