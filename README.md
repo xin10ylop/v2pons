@@ -71,6 +71,29 @@ Releases 0.3 and 0.4 change the exit and drop the disguise:
 - `BUY_DELAY_BLOCKS` (default 0) is there for one open reading: the four trades whose buy landed two blocks after the trigger all had
   the crowd's next buy right behind them; of the three that landed one block after it, two had none. Seven trades do not settle it.
 
+## The operator's new scheme, and the seat (release 0.5)
+
+From Oct 8 14:59, about half an hour after our last trade, the operator changed two things (`research/new_scheme.py`, output in
+`research/data/new_scheme_oct8.txt`):
+
+- **A fresh launcher per launch.** Each launch is a newly deployed copy of the launcher (the same 6,984 bytes), called with the same
+  function (`0x2fcb9108`). An engine watching the old address sees nothing: 40 launches by 16:45, about one every 1-3 minutes.
+- **The crowd in one burst.** Its first three buys (0.01-0.11 ETH each, about 0.18 ETH together, three fresh wallets) land in one block
+  8-9 blocks after the launch (30 of 42 at +9, 7 at +8), then almost nothing until a scheduled pull 40 s or 2.5 minutes later. There is
+  no buy left to follow: the follow trade prices at -0.5% on all 40 launches, and no other launch family shows the old pattern.
+
+What is left is the seat ahead of the burst: our buy landing one or two blocks before it, sold on it. On paper, if the operator still
+sends its burst after seeing our buy, that is +9.0% a trade at $3, 40 of 40 positive, worst +6.6% (+5.8% at $0.39, +9.3% at $12.85).
+That "if" is the whole question. A live trade answers it: the old scheme's first-seat outsiders got nothing (report 24.54), but the
+chain-wide dust tester that buys every launch at +3-5 gets the burst every time, and the old crowd buy one block behind ours always
+came (trades 2-5), while the one two blocks behind was cancelled (trades 6 and 7).
+
+`ENTRY=seat` with `LAUNCH_SELECTORS=2fcb9108`: the engine arms a launch by its call, fires when the feed shows launch + `SEAT_FIRE_AT`
+(6), so our buy lands at +7 or +8; the burst behind it is the take-profit, and the deadline and the halt are unchanged. A burst that
+lands first makes the pool late (no trade); one in our own block makes our buy revert (3% slip). Replayed on the real blocks of the
+last ten launches, the engine took the burst on nine and sold the tenth (burst at +13) at the deadline. Both settings are off by
+default; `ENTRY=follow` is the old entry.
+
 ## Layout
 
 | path | what |
@@ -83,7 +106,7 @@ Releases 0.3 and 0.4 change the exit and drop the disguise:
 | `deploy/relay_sim.py` | a buy and a sell through the relay on a live pool with no transaction (eth_call with state overrides) |
 | `deploy/relay_deploy.py`, `relay_ops.py`, `englog.py`, `health.sh`, `watch.sh` | deploy the relay, move the stake, read the log, watch the trades as they happen |
 | `tests/` | `test_v4math.py` (the pricing), `test_engine.py` (the engine on a scripted feed: real signed transactions in real batch frames, the chain stubbed) |
-| `research/` | the analysis scripts, their data and outputs, the survey of other chains and launchpads, report section 24.54; `live_trades.py` reads the live trades back from the chain (`data/live_trades_oct8.txt`) |
+| `research/` | the analysis scripts, their data and outputs, the survey of other chains and launchpads, report section 24.54; `live_trades.py` reads the live trades back from the chain (`data/live_trades_oct8.txt`), `new_scheme.py` the operator's scheme from 14:59 (`data/new_scheme_oct8.txt`) |
 | `docs/RUNBOOK.md` | from a fresh wallet to the first $3 trade, the dry run's pass criteria, the exit (4b), the stop rules |
 
 ## The trade, exactly

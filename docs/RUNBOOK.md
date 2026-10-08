@@ -167,6 +167,34 @@ reacts at 5-13 blocks, and a longer hold sits inside that reaction. `BUY_DELAY_B
 four trades that landed two blocks after the trigger all had a crowd buy right behind them, two of the three that landed one block
 after it had none.
 
+## 4c. Release 0.5: the seat, ahead of the operator's burst
+
+Why (README, "The operator's new scheme"): from 14:59 the operator launches through a fresh launcher each time, which the engine did
+not see, and bunches its crowd's first three buys into one block 8-9 blocks after the launch; nothing follows them. The seat buys
+one or two blocks before that burst and sells on it. The question one live trade answers: does the burst still come after our buy?
+
+    cd ~/v2pons && git pull
+    /opt/flip-venv/bin/python3 tests/test_engine.py
+    set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
+    set_kv ENTRY seat && set_kv LAUNCH_SELECTORS 2fcb9108 && set_kv SEAT_FIRE_AT 6 && set_kv DRY_RUN 1 && sudo systemctl restart flip-engine
+    sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1
+
+The start line shows `"release":"0.5"`, `"dry_run":true`, `"entry":"seat"`, `"launch_selectors":["2fcb9108"]`, `"seat_fire_at":6`. Ten minutes
+of dry run (three or four launches), then:
+
+    sudo python3 ~/v2pons/deploy/englog.py 1 | grep -E '"ev":"(would_fire|would_sell|skip)"' | cut -c1-220 | tail -8
+
+Each launch shows a `would_fire` and a `would_sell` with `after_buy` 0-2 and `why` `take profit: ...` (a `deadline` on a late burst).
+Then live, one trade first:
+
+    set_kv DRY_RUN 0 && set_kv MAX_TRADES_PER_DAY 1 && sudo systemctl restart flip-engine
+
+| the first trade's `trade_done` | reading | next |
+|---|---|---|
+| `sell_why` take profit, `ret` +5% to +10%, `pulled_before_sell` false | the burst came after our buy | `MAX_TRADES_PER_DAY 3`, then 10 |
+| `sell_why` deadline, `ret` about -0.5% | the operator held its burst back when it saw us | two more to be sure; if the same, stop |
+| `pulled_before_sell` true (the engine halted) | it pulled on us before our sell | stop: the seat is a trap here too |
+
 ## 5. Daily
 
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py status

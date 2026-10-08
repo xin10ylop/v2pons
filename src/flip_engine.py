@@ -29,6 +29,13 @@ through the PoolManager, so the sell is signed with the buy and needs no amount.
 own calldata from the wallet, meant to hide our buy) was removed in 0.4: the exit, not the disguise, is what keeps the trade ahead
 of the pull, and the router's two approvals and per-trade sell amount made the exit slower and cost trade 8 a tenth of its tokens.
 
+ENTRY=seat (release 0.5) is the operator's scheme from Oct 8 14:59: a fresh launcher contract per launch (found by its call,
+LAUNCH_SELECTORS=2fcb9108), and the crowd's first three buys bunched into one block 8-9 blocks after the launch, with almost
+nothing after them, so there is no buy left to follow (the follow entry priced -0.5% on all 42 such launches). The seat buys at
+launch + SEAT_FIRE_AT, landing one or two blocks ahead of that burst, and sells on it with the same take-profit, deadline and
+halt: +8.9% a trade on paper (42 of 42), if the operator still sends its burst after seeing our buy. That is what a live test
+answers; the dust tester that buys every launch at + 3-5 gets the burst every time, but it buys a speck.
+
 Settings come from the environment (/etc/flip/engine.env on the box). Log: JSONL, one event per line, LOG_PATH.
 """
 import os, sys, json, time, base64, threading, asyncio, socket, ssl, http.client, urllib.request, urllib.parse, datetime, traceback, collections
@@ -37,7 +44,7 @@ from eth_utils import keccak, to_checksum_address
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import v4math
 
-RELEASE = "0.4"
+RELEASE = "0.5"
 
 
 def env(k, d=""):
@@ -59,6 +66,11 @@ BUY_SLIP = float(env("BUY_SLIP", "0.03")); BUY_DEADLINE_S = int(env("BUY_DEADLIN
 HOLD_BLOCKS = int(env("HOLD_BLOCKS", "4")); SELL_LEAD_BLOCKS = int(env("SELL_LEAD_BLOCKS", "2")); SELL_FALLBACK_S = float(env("SELL_FALLBACK_S", "0.5"))   # the sell lands by our buy + 4; the fastest pull on us came at + 5
 TAKE_PROFIT = float(env("TAKE_PROFIT", "0.01"))                                           # sell as soon as a buy behind ours prices the sell (after gas) at this return; 9 turns it off
 BUY_DELAY_BLOCKS = int(env("BUY_DELAY_BLOCKS", "0"))                                      # fire this many blocks after the trigger (1: aim to land 2 after it, right ahead of the crowd's next buy)
+LAUNCH_SELECTORS = {x.strip().lower().replace("0x", "") for x in env("LAUNCH_SELECTORS", "").split(",") if x.strip()}   # a launch known by its call (2fcb9108): from Oct 8 14:59 each launch has a fresh launcher
+ENTRY = env("ENTRY", "follow").lower()                                                     # "follow": behind the operator's first real-size buy; "seat": SEAT_FIRE_AT blocks after the launch, ahead of its burst
+SEAT_FIRE_AT = int(env("SEAT_FIRE_AT", "6"))                                               # seat: fire when the feed shows launch + 6, to land at + 7/8, one or two blocks ahead of the burst (+9 on 30 of 42 launches)
+if ENTRY not in ("follow", "seat"):
+    raise SystemExit(f"ENTRY is {ENTRY!r}: follow or seat")
 HALT_FILE = env("HALT_FILE", os.path.join(os.path.dirname(os.path.abspath(LOG_PATH)), "HALTED")); PULL_WATCH_S = float(env("PULL_WATCH_S", "3"))   # a pull at or before our sell writes HALT_FILE and stops live trading until it is removed
 BUY_GAS = int(env("BUY_GAS", "350000")); SELL_GAS = int(env("SELL_GAS", "350000")); GAS_HEADROOM = float(env("GAS_HEADROOM", "3")); SELL_GAS_HEADROOM = float(env("SELL_GAS_HEADROOM", "6"))
 MAX_TRADES_PER_DAY = int(env("MAX_TRADES_PER_DAY", "10")); DAILY_STOP_USD = float(env("DAILY_STOP_USD", "15"))
@@ -519,13 +531,14 @@ def on_buy(p, seq, to, value, h, stale, seen_at):
         p["first_buy"] = seq
         log({"ev": "first_buy", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"], "value": value, "to": to, "fee": p["fee"], "eligible": p["eligible"], "stale": stale,
              "ms_since_arm": round(1000 * (mono() - p["armed_at"]), 1)})
-        if p["status"] == "armed" and not stale:                                       # a stale first buy is late: no trade on this pool, not on its next buy either
+        if p["status"] == "armed" and ENTRY == "seat":                                 # the burst came before our seat: no trade on this pool
+            p["status"] = "late"
+        elif p["status"] == "armed" and not stale:                                     # a stale first buy is late: no trade on this pool, not on its next buy either
             if BUY_DELAY_BLOCKS > 0:
                 p["status"] = "delayed"; p["trig"] = (seq, value, h)
             else:
                 fire(p, seq, state["ts"], value, h, seen_at)
-        return
-    if p["status"] == "delayed":                                                       # the crowd's next buy came before our delayed one: we would sit behind it
+    elif p["status"] == "delayed":                                                     # the crowd's next buy came before our delayed one: we would sit behind it
         p["status"] = "skipped"; log({"ev": "skip", "why": "a real buy landed between the trigger and our delayed buy", "pid": p["pid"], "seq": seq, "trig_seq": p["trig"][0]})
         return
     pos = state["position"]
@@ -564,7 +577,7 @@ def ingest(raw):
                 pos = state["position"]
                 if pos is not None and pos["buy_hash"] == h and pos["buy_seq"] is None:
                     our_buy_landed(pos, seq); continue
-                if to in LAUNCHERS:
+                if to in LAUNCHERS or (LAUNCH_SELECTORS and data[:4].hex() in LAUNCH_SELECTORS):
                     if not stale:
                         log({"ev": "launch", "tx": h, "seq": seq, "to": to}); threading.Thread(target=arm_launch, args=(h, seq, state["ts"], seen_at), daemon=True).start()
                     continue
@@ -579,6 +592,11 @@ def ingest(raw):
                     p["status"] = "armed" if not stale else "skipped"
                     if not stale:
                         fire(p, p["trig"][0], state["ts"], p["trig"][1], p["trig"][2], seen_at, fire_seq=seq)
+                elif ENTRY == "seat" and p["status"] == "armed" and p["first_buy"] is None and seq >= p["launch_seq"] + SEAT_FIRE_AT:
+                    if stale or seq > p["launch_seq"] + SEAT_FIRE_AT + 1:                     # armed too late to land ahead of the burst
+                        p["status"] = "late"; log({"ev": "skip", "why": "seat: armed too late to land ahead of the burst", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]})
+                    else:
+                        fire(p, seq, state["ts"], 0, p["tx"], seen_at)                          # the seat's trigger is the launch, its block the fire block
             pos = state["position"]
             if pos is not None and not pos["sell_sent"]:
                 if pos["buy_seq"] is not None and seq >= pos["buy_seq"] + HOLD_BLOCKS - SELL_LEAD_BLOCKS:
@@ -650,6 +668,7 @@ def main():
     log({"ev": "start", "release": RELEASE, "dry_run": DRY_RUN, "launchers": sorted(LAUNCHERS), "relay": RELAY, "wallet": WALLET, "stake_eth": STAKE_ETH, "min_trigger_eth": MIN_TRIGGER_ETH,
          "fee_ppm": [FEE_MIN_PPM, FEE_MAX_PPM], "min_liquidity": MIN_LIQUIDITY, "trigger_max_blocks": TRIGGER_MAX_BLOCKS, "buy_slip": BUY_SLIP, "buy_deadline_s": BUY_DEADLINE_S, "gas_headroom": GAS_HEADROOM,
          "hold_blocks": HOLD_BLOCKS, "sell_lead_blocks": SELL_LEAD_BLOCKS, "take_profit": TAKE_PROFIT, "buy_delay_blocks": BUY_DELAY_BLOCKS,
+         "entry": ENTRY, "seat_fire_at": SEAT_FIRE_AT, "launch_selectors": sorted(LAUNCH_SELECTORS),
          "halted": state["halted"], "halt_file": HALT_FILE, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     threading.Thread(target=watchdog, daemon=True).start()
     try:
