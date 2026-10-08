@@ -245,14 +245,17 @@ def prune(seq):
 
 
 # ---------------------------------------------------------------- transactions
+RELAY_TO = to_checksum_address(RELAY) if RELAY else "0x" + "00" * 20                     # a dry run with no relay yet still builds the transactions
+
+
 def tx_buy(p, nonce, min_out, deadline):
     data = "0x" + SEL_BUY + word(p["c0"]) + word(p["token"]) + word(p["fee"]) + word(p["tick_spacing"]) + word(p["hooks"]) + word(STAKE_WEI) + word(min_out) + word(deadline)
-    return {"to": to_checksum_address(RELAY), "value": 0, "data": data, "gas": BUY_GAS, "gasPrice": int(state["base_fee"] * GAS_HEADROOM), "nonce": nonce, "chainId": CHAIN_ID}
+    return {"to": RELAY_TO, "value": 0, "data": data, "gas": BUY_GAS, "gasPrice": int(state["base_fee"] * GAS_HEADROOM), "nonce": nonce, "chainId": CHAIN_ID}
 
 
 def tx_sell(p, nonce, min_out=0, deadline=0):
     data = "0x" + SEL_SELL + word(p["c0"]) + word(p["token"]) + word(p["fee"]) + word(p["tick_spacing"]) + word(p["hooks"]) + word(min_out) + word(deadline)
-    return {"to": to_checksum_address(RELAY), "value": 0, "data": data, "gas": SELL_GAS, "gasPrice": int(state["base_fee"] * SELL_GAS_HEADROOM), "nonce": nonce, "chainId": CHAIN_ID}
+    return {"to": RELAY_TO, "value": 0, "data": data, "gas": SELL_GAS, "gasPrice": int(state["base_fee"] * SELL_GAS_HEADROOM), "nonce": nonce, "chainId": CHAIN_ID}
 
 
 def sign(tx):
@@ -266,6 +269,16 @@ def body(raw):
 
 def fire(p, seq, ts, trig_value, trig_hash, seen_at):
     """the operator's first real-size buy on an armed pool is in block `seq`: buy now, sell HOLD_BLOCKS after our buy's block"""
+    try:
+        _fire(p, seq, ts, trig_value, trig_hash, seen_at)
+    except Exception:
+        log({"ev": "alarm", "what": "fire failed", "pid": p["pid"], "trace": traceback.format_exc()[-600:]})
+        pos = state["position"]
+        if pos is not None and pos["pid"] == p["pid"] and pos.get("buy_hash") is None:
+            state["position"] = None; state["trades_today"] = max(0, state["trades_today"] - 1)
+
+
+def _fire(p, seq, ts, trig_value, trig_hash, seen_at):
     roll_day()
     if state["position"] is not None:
         log({"ev": "skip", "why": "position open", "pid": p["pid"], "seq": seq}); return
