@@ -4,7 +4,11 @@ predicted minOut, our own buy seen in the feed fixes the sell's block, the sell 
 receipts make the trade_done line. Then the gates (dust, fee tier, late first buy, position open, daily cap), the dry run, stale
 frames. Router route: the buy is the crowd's transaction from the wallet (type 2, to the router, the stake as the value, the
 crowd's bytes), the fleet's two approvals follow it at the next nonces, the sell is signed with the amount the buy's receipt shows
-and sent at the fourth nonce; the sell's block before the receipt (min_out goes, the leftover is reported); a reverted buy (no sell).
+and sent at the fourth nonce; the sell's block before the receipt (the feed's token count goes, less the margin); a reverted buy (no
+sell). Release 0.3, the exit: a buy behind ours that pays TAKE_PROFIT sells at once; one that does not leaves the deadline; the
+pool's price follows every buy on the feed (a dust buy before the trigger moves minOut), buys that landed before the launch was
+armed are replayed onto it; a pull at or before our sell halts live trading (the halt file) until it is removed; BUY_DELAY_BLOCKS;
+the dry run's take-profit.
 Plain script: python3 tests/test_engine.py"""
 import os, sys, json, time, base64, tempfile, threading
 import rlp
@@ -13,7 +17,8 @@ from eth_utils import keccak
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); LOG = tempfile.mktemp(suffix=".jsonl")
 KEY = "0x" + "11" * 32; ACCT = Account.from_key(KEY); RELAY = "0x" + "f1" * 20; LAUNCHER = "0x3194e32622c5d860a0572c74edda99dcfd8fc827"
 os.environ.update({"DRY_RUN": "0", "LOG_PATH": LOG, "RELAY": RELAY, "WALLET": ACCT.address.lower(), "PRIVATE_KEY": KEY, "LAUNCHERS": LAUNCHER, "STAKE_ETH": "0.0012", "ROUTE": "relay",
-                   "HOLD_BLOCKS": "7", "SELL_LEAD_BLOCKS": "2", "SELL_FALLBACK_S": "100", "FEE_MAX_PPM": "9999", "TRIGGER_MAX_BLOCKS": "150", "MAX_TRADES_PER_DAY": "2", "DAILY_STOP_USD": "15"})
+                   "HOLD_BLOCKS": "4", "SELL_LEAD_BLOCKS": "2", "SELL_FALLBACK_S": "100", "FEE_MAX_PPM": "9999", "TRIGGER_MAX_BLOCKS": "150", "MAX_TRADES_PER_DAY": "2", "DAILY_STOP_USD": "15",
+                   "TAKE_PROFIT": "0.01", "PULL_WATCH_S": "0", "HALT_FILE": LOG + ".halt"})
 sys.path.insert(0, os.path.join(ROOT, "src"))
 import flip_engine as E
 import v4math, ur
@@ -103,22 +108,22 @@ assert len(SENT) == 1 and SENT[0][0] == 0
 buy_raw = SENT[0][1]; f = rlp.decode(buy_raw); assert int.from_bytes(f[0], "big") == 5 and f[3].hex() == RELAY[2:]
 data = f[5].hex(); assert data[:8] == E.SEL_BUY
 x_trig = trig_value - (trig_value * 1134 + 999_999) // 1_000_000; sp1 = int(v4math.sqrt_after_buy(SQRT_P0, LIQ, x_trig)); expected = v4math.buy_out_int(sp1, LIQ, E.STAKE_WEI, 1134)
-assert int(data[8 + 64*5: 8 + 64*6], 16) == E.STAKE_WEI and int(data[8 + 64*6: 8 + 64*7], 16) == int(expected * 0.9), "stake or minOut wrong"
+assert int(data[8 + 64*5: 8 + 64*6], 16) == E.STAKE_WEI and int(data[8 + 64*6: 8 + 64*7], 16) == int(expected * (1 - E.BUY_SLIP)), "stake or minOut wrong"
 assert int(data[8 + 64*1: 8 + 64*2], 16) == int(TOKEN, 16) and int(data[8 + 64*2: 8 + 64*3], 16) == 1134 and int(data[8 + 64*3: 8 + 64*4], 16) == 200
 assert E.state["nonce"] == 7
 E.ingest(frame(132, [])); E.ingest(frame(133, [buy_raw]))              # our buy lands in block 133
-assert pos["buy_seq"] == 133 and events("buy_seen")[-1]["offset"] == 2
-for s in range(134, 138):
-    E.ingest(frame(s, [])); assert not pos["sell_sent"], s
-RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(133, -E.STAKE_WEI, expected); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(140, int(E.STAKE_WEI * 1.05), -expected)
-E.ingest(frame(138, []))                                                 # 133 + 7 - 2: the sell goes out
-assert pos["sell_sent"] and len(SENT) == 2 and SENT[1][0] == 1
+assert pos["buy_seq"] == 133 and events("buy_seen")[-1]["offset"] == 2 and pos["feed_tokens"] == expected
+E.ingest(frame(134, [])); assert not pos["sell_sent"]
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(133, -E.STAKE_WEI, expected); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(137, int(E.STAKE_WEI * 1.05), -expected)
+E.ingest(frame(135, []))                                                 # 133 + 4 - 2: nobody bought behind us, the deadline sends the sell
+assert pos["sell_sent"] and len(SENT) == 2 and SENT[1][0] == 1 and pos["sell_why"].startswith("deadline")
 sf = rlp.decode(SENT[1][1]); assert int.from_bytes(sf[0], "big") == 6 and sf[5].hex()[:8] == E.SEL_SELL and int(sf[5].hex()[8 + 64*5: 8 + 64*6], 16) == 0
 assert wait_for(lambda: events("trade_done")), "no trade_done"
 d = events("trade_done")[-1]
-assert d["buy"]["block"] == 133 and d["sell"]["block"] == 140 and d["hold_blocks"] == 7 and d["buy_offset"] == 2 and abs(d["ret"] - 0.05) < 1e-9 and d["pnl_usd"] > 0, d
+assert d["buy"]["block"] == 133 and d["sell"]["block"] == 137 and d["hold_blocks"] == 4 and d["buy_offset"] == 2 and abs(d["ret"] - 0.05) < 1e-9 and d["pnl_usd"] > 0, d
+assert d["pull_after_buy_blocks"] is None and d["pulled_before_sell"] is False and E.state["halted"] is None, d
 assert E.state["position"] is None and E.state["trades_today"] == 1
-print("ok live path: armed, fired at nonce 5 with the predicted minOut, sell at the buy block + 5 at nonce 6, trade_done priced")
+print("ok live path: armed, fired at nonce 5 with the predicted minOut, the deadline sell at the buy block + 2 at nonce 6, trade_done priced")
 
 # --- 2. gates
 reset(); p = do_launch(200)
@@ -144,18 +149,28 @@ print("ok gates: dust, token call, late first buy, fee tier, position open, dail
 
 # --- 3. the dry run
 reset(); E.DRY_RUN = True; p = do_launch(600); E.ingest(frame(640, [signed(CROWD, UR, int(0.04e18), BUY_DATA, 14)]))
-pos = E.state["position"]; assert pos and pos["dry"] and events("would_fire")[-1]["plan_sell_seq"] == 649 and len(SENT) == 0
-for s in range(641, 647):
+pos = E.state["position"]; assert pos and pos["dry"] and events("would_fire")[-1]["plan_sell_seq"] == 646 and len(SENT) == 0
+for s in range(641, 644):
     E.ingest(frame(s, []))
-assert not pos["sell_sent"]; E.ingest(frame(647, []))                       # planned buy 642 + 7 - 2
-assert pos["sell_sent"] and events("would_sell")[-1]["seq"] == 647 and len(SENT) == 0
+assert pos["buy_seq"] == 642 and pos["feed_tokens"] == pos["expected_tokens"] and not pos["sell_sent"]   # the planned landing: at the head of 642
+E.ingest(frame(644, []))                                                       # 642 + 4 - 2
+assert pos["sell_sent"] and events("would_sell")[-1]["seq"] == 644 and events("would_sell")[-1]["why"].startswith("deadline") and len(SENT) == 0
 assert wait_for(lambda: E.state["position"] is None, 3.0)
-print("ok dry run: would_fire, would_sell at the planned block, nothing sent")
+E.state["trades_today"] = 0; pid3 = "0x" + "99" * 32; p3 = dict(p, pid=pid3, token="ef" * 20, token_bytes=bytes.fromhex("ef" * 20), first_buy=None, status="armed", launch_seq=650, sp=float(SQRT_P0), buys=0)
+E.state["armed"][pid3] = p3; data3 = "0x24856bc3" + w("0x" + "ef" * 20)
+E.ingest(frame(660, [signed(CROWD, UR, int(0.04e18), data3, 20)])); pos = E.state["position"]; assert pos and pos["pid"] == pid3
+E.ingest(frame(661, [])); E.ingest(frame(662, [])); assert pos["buy_seq"] == 662 and not pos["sell_sent"]
+E.ingest(frame(663, [signed(OUTSIDER, UR, int(0.04e18), data3, 2)]))            # the crowd's next buy behind our planned one: the dry run takes the profit
+ws = events("would_sell")[-1]; assert pos["sell_sent"] and ws["seq"] == 663 and ws["why"].startswith("take profit") and ws["tp_ret"] > 0.01 and len(SENT) == 0, ws
+assert wait_for(lambda: E.state["position"] is None, 3.0)
+print("ok dry run: would_fire, the planned landing, would_sell at the deadline, and on a buy behind ours the take-profit; nothing sent")
 
 # --- 4. a stale frame (the replay after a reconnect) trades nothing
 reset(); E.DRY_RUN = True; p = do_launch(700); E.ingest(frame(730, [signed(CROWD, UR, int(0.04e18), BUY_DATA, 15)], ts=int(time.time()) - 10))
-assert E.state["position"] is None and p["first_buy"] is None and E.state["stale_blocks"] >= 1
-print("ok stale frames are not acted on")
+assert E.state["position"] is None and p["first_buy"] == 730 and E.state["stale_blocks"] >= 1 and p["buys"] == 1
+E.ingest(frame(735, [signed(CROWD, UR, int(0.04e18), BUY_DATA, 16)]))            # fresh again: the crowd's next buy is not a trigger
+assert E.state["position"] is None and p["buys"] == 2
+print("ok stale frames: the first buy is recorded (and moves the price), nothing is fired on it or on the buys after it")
 
 
 # --- the router route
@@ -195,7 +210,7 @@ pos, buy_raw, expected, ts = fire_router(800, 830, 20, 16)
 t, f = typed(buy_raw); assert t == 2 and SENT[0][0] == 0
 assert int.from_bytes(f[1], "big") == 20 and f[5].hex() == ur.UR[2:] and int.from_bytes(f[6], "big") == E.STAKE_WEI and int.from_bytes(f[4], "big") == 220000, "the buy is not the crowd's transaction"
 assert int.from_bytes(f[2], "big") == 20_000_000 and int.from_bytes(f[3], "big") == 60_000_000, "the crowd's tip and the fee cap"
-assert f[7].hex() == ur.buy_calldata(KEYD, E.STAKE_WEI, int(expected * 0.9), ts + 3)[2:], "the buy's calldata is not the crowd's"
+assert f[7].hex() == ur.buy_calldata(KEYD, E.STAKE_WEI, int(expected * (1 - E.BUY_SLIP)), ts + 3)[2:], "the buy's calldata is not the crowd's"
 ta, fa = typed(SENT[1][1]); tp, fp = typed(SENT[2][1]); assert SENT[1][0] == 1 and SENT[2][0] == 1
 assert ta == 2 and int.from_bytes(fa[1], "big") == 21 and fa[5].hex() == TOKEN[2:] and fa[7].hex() == ur.approve_permit2_calldata()[2:] and int.from_bytes(fa[4], "big") == 120000, "the token approval"
 assert tp == 2 and int.from_bytes(fp[1], "big") == 22 and fp[5].hex() == PERMIT2[2:] and fp[7].hex() == ur.permit2_approve_calldata(TOKEN[2:])[2:] and int.from_bytes(fp[4], "big") == 140000, "the Permit2 approval"
@@ -205,34 +220,32 @@ RECEIPTS["0x" + pos["buy_hash"]] = router_buy_receipt(833, tokens); approval_rec
 assert wait_for(lambda: pos["sell_raw"] is not None), "the sell was not signed from the receipt"
 assert pos["sell_amount"] == tokens and pos["sell_amount_src"] == "receipt" and events("sell_ready")[-1]["tokens"] == tokens
 E.ingest(frame(832, [])); E.ingest(frame(833, [buy_raw])); assert pos["buy_seq"] == 833
-for s in range(834, 838):
-    E.ingest(frame(s, [])); assert not pos["sell_sent"], s
-RECEIPTS["0x" + pos["sell_hash"]] = router_sell_receipt(840, int(E.STAKE_WEI * 1.05), tokens)
-E.ingest(frame(838, []))                                                             # 833 + 7 - 2
+E.ingest(frame(834, [])); assert not pos["sell_sent"]
+RECEIPTS["0x" + pos["sell_hash"]] = router_sell_receipt(837, int(E.STAKE_WEI * 1.05), tokens)
+E.ingest(frame(835, []))                                                             # 833 + 4 - 2
 assert pos["sell_sent"] and len(SENT) == 4 and SENT[3][0] == 0
 tsl, fs = typed(SENT[3][1]); assert tsl == 2 and int.from_bytes(fs[1], "big") == 23 and fs[5].hex() == ur.UR[2:] and int.from_bytes(fs[6], "big") == 0
 assert fs[7].hex() == ur.sell_calldata(KEYD, tokens, 0, 0)[2:], "the sell's calldata is not the fleet's"
 done_at = lambda n: [e for e in events("trade_done") if e.get("nonce") == n]          # the dry run's trade_done lands a second late; pick by nonce
 assert wait_for(lambda: done_at(20)), "no trade_done"
 d = done_at(20)[-1]
-assert d["route"] == "router" and d["buy"]["block"] == 833 and d["sell"]["block"] == 840 and d["hold_blocks"] == 7 and d["buy_offset"] == 3 and abs(d["ret"] - 0.05) < 1e-9, d
+assert d["route"] == "router" and d["buy"]["block"] == 833 and d["sell"]["block"] == 837 and d["hold_blocks"] == 4 and d["buy_offset"] == 3 and abs(d["ret"] - 0.05) < 1e-9, d
 assert d["approvals"] == ["ok", "ok"] and d["sell_amount"] == tokens and d["tokens_left"] == 0 and d["gas_wei"] == (118000 + 128000 + 2 * 46000) * 20_000_000, d
 assert E.state["position"] is None and E.state["trades_today"] == 1
 print("ok router route: the crowd's buy from the wallet (type 2, to the router, the stake as the value, their bytes), the fleet's two approvals at the next nonces, the sell at the fourth nonce with the receipt's amount, trade_done priced")
 
-# --- 6. the sell's block before the buy's receipt: min_out goes, the leftover is reported
+# --- 6. the sell due before the buy's receipt: the feed's token count goes, less the margin; the leftover is reported
 reset(); pos, buy_raw, expected, ts = fire_router(900, 930, 30, 17)
-E.ingest(frame(932, [])); E.ingest(frame(933, [buy_raw]))
-for s in range(934, 938):
-    E.ingest(frame(s, []))
-E.ingest(frame(938, []))
-assert pos["sell_sent"] and len(SENT) == 4 and pos["sell_amount"] == pos["min_out"] and pos["sell_amount_src"].startswith("min_out"), pos["sell_amount_src"]
-tsl, fs = typed(SENT[3][1]); assert int.from_bytes(fs[1], "big") == 33 and fs[7].hex() == ur.sell_calldata(KEYD, pos["min_out"], 0, 0)[2:]
-tokens = expected - 777
-RECEIPTS["0x" + pos["buy_hash"]] = router_buy_receipt(933, tokens); RECEIPTS["0x" + pos["sell_hash"]] = router_sell_receipt(940, int(E.STAKE_WEI * 0.95), pos["min_out"]); approval_receipts(pos)
+E.ingest(frame(932, [])); E.ingest(frame(933, [buy_raw])); E.ingest(frame(934, []))
+E.ingest(frame(935, []))
+amt = int(expected * (1 - E.SELL_AMOUNT_MARGIN))
+assert pos["feed_tokens"] == expected and pos["sell_sent"] and len(SENT) == 4 and pos["sell_amount"] == amt and pos["sell_amount_src"].startswith("feed"), pos["sell_amount_src"]
+tsl, fs = typed(SENT[3][1]); assert int.from_bytes(fs[1], "big") == 33 and fs[7].hex() == ur.sell_calldata(KEYD, amt, 0, 0)[2:]
+tokens = expected                                                                    # the fill the feed predicted
+RECEIPTS["0x" + pos["buy_hash"]] = router_buy_receipt(933, tokens); RECEIPTS["0x" + pos["sell_hash"]] = router_sell_receipt(937, int(E.STAKE_WEI * 0.95), amt); approval_receipts(pos)
 assert wait_for(lambda: done_at(30))
-d = done_at(30)[-1]; assert d["tokens_left"] == tokens - pos["min_out"] and d["sell_amount"] == pos["min_out"] and events("tokens_left"), d
-print("ok router route, the sell's block before the receipt: min_out sold, the leftover in the log")
+d = done_at(30)[-1]; assert d["tokens_left"] == tokens - amt and d["sell_amount"] == amt and events("tokens_left") and E.state["halted"] is None, d
+print("ok router route, the sell due before the receipt: the feed's count less the margin sold, the leftover (the margin) in the log")
 
 # --- 7. a reverted buy on the router route: no sell, the position closes
 reset(); pos, buy_raw, expected, ts = fire_router(1000, 1030, 40, 18)
@@ -249,8 +262,87 @@ print("ok router route, a reverted buy: no sell sent, the trade closed")
 # --- 8. the router dry run builds the crowd's transaction and the approvals, sends nothing
 reset(); E.DRY_RUN = True; E.state["nonce"] = 50; p = do_launch(1100); E.ingest(frame(1140, [signed(CROWD, UR, int(0.04e18), BUY_DATA, 19)]))
 wf = events("would_fire")[-1]; assert wf["route"] == "router" and wf["buy_tx"]["to"] == E.UR_TO and wf["buy_tx"]["value"] == E.STAKE_WEI and wf["approve_tx"]["nonce"] == 51 and wf["permit2_tx"]["nonce"] == 52 and wf["sell_tx"]["nonce"] == 53 and len(SENT) == 0
-for s in range(1141, 1148):
+for s in range(1141, 1145):
     E.ingest(frame(s, []))
-assert events("would_sell")[-1]["seq"] == 1147 and len(SENT) == 0 and wait_for(lambda: E.state["position"] is None, 3.0)
+assert events("would_sell")[-1]["seq"] == 1144 and len(SENT) == 0 and wait_for(lambda: E.state["position"] is None, 3.0)
 print("ok router dry run: would_fire with the crowd's buy, the two approvals and the sell plan; nothing sent")
+
+
+# --- release 0.3: the exit, the feed's pool price, the halt
+net = lambda x: x - (x * 1134 + 999_999) // 1_000_000
+TRIG = int(0.04e18)
+
+
+def relay_trade(seq_launch, nonce0, crowd_nonce):
+    """relay route: a launch, the crowd's first buy 31 blocks in, our buy landing two blocks later; returns (pos, buy_raw, buy block)"""
+    E.state["nonce"] = nonce0; p = do_launch(seq_launch); t = seq_launch + 31
+    E.ingest(frame(t, [signed(CROWD, UR, TRIG, BUY_DATA, crowd_nonce)])); pos = E.state["position"]; assert pos is not None and pos["route"] == "relay"
+    buy_raw = SENT[0][1]; E.ingest(frame(t + 1, [])); E.ingest(frame(t + 2, [buy_raw])); assert pos["buy_seq"] == t + 2
+    return pos, buy_raw, t + 2
+
+
+# --- 9. take profit: a buy behind ours that does not pay TAKE_PROFIT leaves the position; the one that does sells at once
+reset(); E.DRY_RUN = False; E.ROUTE = "relay"
+pos, buy_raw, B = relay_trade(1200, 60, 30)
+small, big = int(0.0001e18) * 3, int(0.04e18)
+sp = v4math.sqrt_after_buy(v4math.sqrt_after_buy(float(SQRT_P0), LIQ, net(TRIG)), LIQ, net(E.STAKE_WEI)); gas = E.state["base_fee"] * 250_000
+ret_after = lambda sp_: (v4math.sell_out_int(int(sp_), LIQ, pos["feed_tokens"], 1134) - E.STAKE_WEI - gas) / E.STAKE_WEI
+sp_small = v4math.sqrt_after_buy(sp, LIQ, net(small)); sp_big = v4math.sqrt_after_buy(sp_small, LIQ, net(big))
+assert ret_after(sp_small) < E.TAKE_PROFIT < ret_after(sp_big), (ret_after(sp_small), ret_after(sp_big))
+E.HOLD_BLOCKS = 6                                                                    # the deadline at B + 4 here, so the two buys below come before it
+E.ingest(frame(B + 1, [signed(OUTSIDER, UR, small, BUY_DATA, 6)])); assert not pos["sell_sent"], "sold on a buy that does not pay"
+E.ingest(frame(B + 2, [signed(OUTSIDER, UR, big, BUY_DATA, 7)])); E.HOLD_BLOCKS = 4
+assert pos["sell_sent"] and pos["sell_why"].startswith("take profit") and pos["sell_seq_sent"] == B + 2 and abs(pos["tp_ret"] - round(ret_after(sp_big), 4)) < 1e-12, (pos["sell_why"], pos["tp_ret"])
+assert len(SENT) == 2 and rlp.decode(SENT[1][1])[5].hex()[:8] == E.SEL_SELL
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(B, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(B + 3, int(E.STAKE_WEI * 1.07), -pos["feed_tokens"])
+assert wait_for(lambda: done_at(60)); d = done_at(60)[-1]
+assert d["sell_why"].startswith("take profit") and d["tp_ret"] == pos["tp_ret"] and d["sell_after_buy_blocks"] == 3 and d["pulled_before_sell"] is False, d
+print("ok take profit: a buy behind ours worth less than TAKE_PROFIT leaves the position, the next one sells it in the same block, priced exactly")
+
+# --- 10. the pool's price follows every buy on the feed: a dust buy before the trigger moves minOut
+reset(); E.state["nonce"] = 70; p = do_launch(1300); dust = int(0.00005e18)
+E.ingest(frame(1303, [signed(OUTSIDER, UR, dust, BUY_DATA, 8)]))
+assert p["buys"] == 1 and p["first_buy"] is None and E.state["position"] is None
+E.ingest(frame(1331, [signed(CROWD, UR, TRIG, BUY_DATA, 31)])); pos = E.state["position"]
+sp_both = v4math.sqrt_after_buy(v4math.sqrt_after_buy(float(SQRT_P0), LIQ, net(dust)), LIQ, net(TRIG)); exp_both = v4math.buy_out_int(int(sp_both), LIQ, E.STAKE_WEI, 1134)
+exp_trig_only = v4math.buy_out_int(int(v4math.sqrt_after_buy(SQRT_P0, LIQ, net(TRIG))), LIQ, E.STAKE_WEI, 1134)
+assert pos["expected_tokens"] == exp_both < exp_trig_only and pos["min_out"] == int(exp_both * (1 - E.BUY_SLIP)), (pos["expected_tokens"], exp_both, exp_trig_only)
+E.state["position"] = None
+print("ok the feed's pool price: a dust buy before the trigger is in the prediction (the trigger-only one is too high, as it was by 4e-6 on every live trade)")
+
+# --- 11. buys that landed before the launch was armed are replayed onto it; a first buy among them means no trade on that pool
+reset(); E.state["nonce"] = 80
+raw = signed(DEPLOYER, LAUNCHER, 0, "0x2fcb9108" + w(1), 1); hl = "0x" + keccak(raw).hex()
+E.ingest(frame(1400, [raw]))
+E.ingest(frame(1403, [signed(OUTSIDER, UR, dust, BUY_DATA, 9)])); E.ingest(frame(1420, [signed(CROWD, UR, TRIG, BUY_DATA, 32)]))
+assert PID not in E.state["armed"]
+RECEIPTS[hl] = launch_receipt(hl); assert wait_for(lambda: PID in E.state["armed"])
+p = E.state["armed"][PID]; assert p["buys"] == 2 and p["first_buy"] == 1420 and p["status"] == "late" and abs(p["sp"] - sp_both) / sp_both < 1e-15, p
+E.ingest(frame(1423, [signed(CROWD, UR, TRIG, BUY_DATA, 33)])); assert E.state["position"] is None and p["buys"] == 3
+print("ok arming after the first buy: the buys before it replayed onto the pool, the pool marked late, the next buy not traded")
+
+# --- 12. a pull at or before our sell halts live trading (the halt file), until it is removed
+reset(); E.ROUTE = "relay"
+pos, buy_raw, B = relay_trade(1500, 90, 34)
+E.ingest(frame(B + 1, [])); E.ingest(frame(B + 2, [])); assert pos["sell_sent"] and pos["sell_why"].startswith("deadline")
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(B, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(B + 5, 0, -pos["feed_tokens"], index=40)
+LOGS[:] = [{"blockNumber": hex(B + 5), "transactionIndex": hex(12), "data": "0x" + w(-887200) + w(TICK0) + w(-LIQ) + w(0)}]
+assert wait_for(lambda: done_at(90)); d = done_at(90)[-1]
+assert d["pulled_before_sell"] is True and d["pull_after_buy_blocks"] == 5 and d["sell_after_buy_blocks"] == 5 and E.state["halted"] and os.path.exists(E.HALT_FILE), d
+assert any(e["what"].startswith("live trading halted") for e in events("alarm"))
+reset(); E.state["nonce"] = 95; p = do_launch(1600); E.ingest(frame(1631, [signed(CROWD, UR, TRIG, BUY_DATA, 35)]))
+assert E.state["position"] is None and events("skip")[-1]["why"].startswith("halted"), events("skip")[-1]
+E.state["halted"] = None; os.remove(E.HALT_FILE); LOGS.clear()
+print("ok halt: the pull landed before our sell, the engine wrote the halt file and fires nothing more")
+
+# --- 13. BUY_DELAY_BLOCKS: fire one block after the trigger if nothing else bought; skip if the crowd's next buy came first
+reset(); E.BUY_DELAY_BLOCKS = 1; E.state["nonce"] = 100; p = do_launch(1700)
+E.ingest(frame(1731, [signed(CROWD, UR, TRIG, BUY_DATA, 36)])); assert E.state["position"] is None and p["status"] == "delayed"
+E.ingest(frame(1732, [])); pos = E.state["position"]
+assert pos and pos["trig_seq"] == 1731 and pos["fire_seq"] == 1732 and pos["plan_buy_seq"] == 1734 and pos["expected_tokens"] == exp_trig_only, pos
+E.state["position"] = None
+reset(); p = do_launch(1800); E.ingest(frame(1831, [signed(CROWD, UR, TRIG, BUY_DATA, 37)])); E.ingest(frame(1832, [signed(CROWD, UR, TRIG, BUY_DATA, 38)]))
+assert E.state["position"] is None and p["status"] == "skipped" and events("skip")[-1]["why"].startswith("a real buy landed between"), events("skip")[-1]
+E.BUY_DELAY_BLOCKS = 0
+print("ok BUY_DELAY_BLOCKS: fired one block after the trigger; skipped when the crowd's next buy came first")
 os.remove(LOG)

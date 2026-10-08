@@ -75,7 +75,8 @@ After every trade (`"ev":"trade_done"` in the log, and `score.py`), the three qu
 
 **Stop rules (any one ends the test; back to DRY_RUN=1):**
 
-- two trades with a liquidity pull inside the hold, or three with a pull within 20 blocks of our buy (the operator reacts to us);
+- one trade with a liquidity pull at or before our sell (release 0.3 halts itself on it: `/var/log/flip/HALTED`), or three with a pull
+  within 20 blocks of our buy (the operator reacts to us);
 - five trades done with a mean return under +1% while `score.py`'s paper return on the same launches is above +3% (we land or sell
   too late: fix the timing before spending more);
 - the daily stop (-$15) or three reverted buys in a row (the guard is wrong for this tier, re-set `BUY_SLIP` from the landings);
@@ -87,7 +88,7 @@ questions are asked again over the next ten trades. The $50 step is the one that
 the size of the buy (in the data, bigger outside buys were pulled more often); the $3 step proves the mechanics for a few dollars
 and a couple of hours first.
 
-## 4b. The router test: three $3 trades as the crowd (release 0.2)
+## 4b. The router test: three $3 trades as the crowd (release 0.2; its exit is replaced by 4c)
 
 What the first six live trades showed (Oct 8, 12:00-13:30 UTC): six fills through the relay, every one pulled on, -$5.19. The relay
 calls the PoolManager itself, so in the pool's `Swap` event our buy was the only one those pools had ever seen with a sender other
@@ -135,6 +136,55 @@ After the three trades (`sudo bash ~/v2pons/deploy/health.sh`, and `score.py` as
 
 Every other stop rule of section 4 holds. The relay route is still there (`set_kv ROUTE relay`, the stake back in the relay with
 `relay_ops.py deposit`) for a side-by-side if ever needed.
+
+## 4c. Release 0.3: the exit (read this before any more live trades)
+
+What the eight live trades say (`research/live_trades.py`, `research/data/live_trades_oct8.txt`; the README has the table): every
+-100% is a sell that landed after the operator's pull, every other trade a sell that landed before it. On the relay the pull came
+5-13 blocks after each of our buys; the money in every win was one crowd buy already on its way, landing 1-3 blocks behind ours. The
+router trade (14:32) was not pulled on (one trade), and lost 9.3% only because its sell went out before the buy's receipt and sold
+`minOut`, 90% of the tokens. Release 0.3 sells on the first buy behind ours worth 1%, lands by our buy + 4 in any case, sells the
+feed's exact token count when the receipt is late, and halts itself if a pull ever beats the sell.
+
+The leftovers of the first eight trades are worthless (their pools were pulled): the relay holds the tokens of trades 2, 3 and 7, the
+wallet 10% of trade 8's (token `0x5f9215b0...`). Nothing to sell.
+
+    cd ~/v2pons && git fetch origin claude/pensive-rubin-rkj996 && git checkout -B claude/pensive-rubin-rkj996 origin/claude/pensive-rubin-rkj996
+    /opt/flip-venv/bin/python3 tests/test_v4math.py && /opt/flip-venv/bin/python3 tests/test_ur.py && /opt/flip-venv/bin/python3 tests/test_engine.py
+    set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
+    set_kv HOLD_BLOCKS 4 && set_kv SELL_LEAD_BLOCKS 2 && set_kv SELL_FALLBACK_S 0.5 && set_kv BUY_SLIP 0.03 && set_kv TAKE_PROFIT 0.01 && set_kv SELL_AMOUNT_MARGIN 0.001
+    set_kv ROUTE router && set_kv DRY_RUN 1 && sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1
+
+The env file on the box was written with `BUY_SLIP=0.10` and `SELL_FALLBACK_S` 1.2 (0.6 since Oct 8), so the new values must be set
+there; the code's defaults only apply to a fresh file. The start line must show `"release":"0.3"`, `"hold_blocks":4`, `"take_profit":0.01`,
+`"buy_slip":0.03`, `"halted":null`.
+
+An hour of dry run first (two or three launches): each `would_fire` is followed by a `buy_seen` with `"dry":true` at the planned block
+and a `would_sell` with `after_buy` 2 or less, its `why` either `take profit: ...` (a crowd buy behind the planned one) or `deadline`.
+`score.py` prices them with the same exit. Then live, three trades:
+
+    set_kv DRY_RUN 0 && set_kv MAX_TRADES_PER_DAY 3 && sudo systemctl restart flip-engine
+
+After each `trade_done`, the line that matters:
+
+| field | expected | if not |
+|---|---|---|
+| `sell_after_buy_blocks` | 2-4 | over 4: the feed or the send is slow; read `sell_sent.ms_since_fire` |
+| `pulled_before_sell` | `false` | `true`: the engine halted itself; the operator's reaction is now faster than our exit. Stop here. |
+| `pull_after_buy_blocks` | in the thousands on the router route (no reaction), or above `sell_after_buy_blocks` | 5-13 again: the operator sees the router buy too; the exit still beats it, so far |
+| `sell_why` | `take profit` when a crowd buy came behind ours, else `deadline` | |
+| `sell_amount_src` / `tokens_left` | `receipt`, or `feed` with `tokens_left` about 0.1% of the fill | `min_out`: the buy was not seen in the feed |
+| `ret` | +5% to +8% with a crowd buy behind ours; -0.5% to -0.8% without | |
+
+The halt: `/var/log/flip/HALTED` holds the reason; the engine logs an alarm and skips every trigger (`skip`, `why` `halted: ...`) until
+the file is removed and the service restarted (`sudo rm /var/log/flip/HALTED && sudo systemctl restart flip-engine`). Remove it only
+once the reason is understood. A pull that beats a sell landing at +2 to +4 means the window this trade lives in is gone.
+
+After three clean trades, `MAX_TRADES_PER_DAY 10` and section 4's ten-trade test. Every exit setting is a trade-off with the pull:
+`HOLD_BLOCKS` above 4 earns more on paper only while nobody reacts to us (the backtest's +6.5% at 9 blocks has no reaction in it);
+raise it only after the router route has shown `pull_after_buy_blocks` in the thousands on ten trades, one step at a time, with the
+halt in place. `BUY_DELAY_BLOCKS 1` is the one entry change worth a test: the four trades that landed two blocks after the trigger all
+had a crowd buy right behind them, two of the three that landed one block after it had none.
 
 ## 5. Daily
 

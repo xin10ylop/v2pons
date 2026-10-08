@@ -1,0 +1,58 @@
+wallet 0xab5a34c3f41e57fdee1a1d6f19d3e21f46df3ea8; window 2026-10-08 11:30 - 2026-10-08 15:00 UTC (blocks 83279856-83402865); 15 launches by the operator 0x3194e32622
+
+1. THE TRADES (blocks are ~0.1 s; 'after buy' counts blocks from our buy's block)
+   #  time      route   fee      trigger  our buy   return   pull after buy  sell landed  pulled first  buys behind ours, 20 blocks (block: ETH)
+   1  13:15:23  relay   0.2383%  +142      trig+1      +7.5%       6             6         no            +3: 0.0378
+   2  13:16:13  relay   0.2383%  +54       trig+2    -100.0%       6             7         YES           +1: 0.0396, +4: 0.0376
+   3  13:16:50  relay   0.2383%  +53       trig+2    -100.0%       6             7         YES           +1: 0.0298
+   4  13:17:10  relay   0.2383%  +46       trig+2     +19.1%       8             7         no            +1: 0.0301, +6: 0.0599
+   5  13:18:12  relay   0.2383%  +51       trig+2      +7.9%      13             7         no            +1: 0.0395
+   6  13:18:45  relay   0.2383%  +58       trig+1      -0.5%       7             6         no            none
+   7  13:19:44  relay   0.0824%  +108      trig+1    -100.0%       5             6         YES           none
+   8  14:32:16  router  0.0250%  +44       trig+1      -9.3%    9856             3         no            +3: 0.0142, +12: 0.0149, +17: 0.0078
+   8 trades: 3 positive, 3 at -100%; mean -34.4%. Every -100% is a sell that landed after the pull.
+   trade 8 sold 90.0% of what it bought (3.1320e+23 of 3.4800e+23; the buy's minOut, its receipt not in yet): the rest stayed in the wallet
+
+2. THE SAME TRADES, SOLD IN EACH BLOCK AFTER THE BUY (all the tokens bought, priced after every other swap in the blocks
+   before the landing, net of the two swaps' gas; X: the pull landed in an earlier block, =: the pull's own block, a race
+   decided by arrival order)
+   #     +1      +2      +3      +4      +5      +6      +7  
+   1   -0.8%   -0.8%   -0.8%   +7.2%   +7.2%  =+7.2%     X   
+   2   -0.8%   +7.6%   +7.6%   +7.6%  +15.8%  =+15.8%     X   
+   3   -0.8%   +5.5%   +5.5%   +5.5%   +5.5%  =+5.5%     X   
+   4   -0.8%   +5.5%   +5.5%   +5.5%   +5.5%   +5.5%  +18.7% 
+   5   -0.8%   +7.5%   +7.5%   +7.5%   +7.5%   +7.5%   +7.5% 
+   6   -0.8%   -0.8%   -0.8%   -0.8%   -0.8%   -0.8%  =-0.8% 
+   7   -0.5%   -0.5%   -0.5%   -0.5%  =-0.5%     X       X   
+   8   -0.4%   -0.4%   -0.4%   +0.4%   +0.4%   +0.4%   +0.4% 
+
+3. THE RELEASE 0.3 EXIT ON THE SAME TRADES: sell in the feed block of the first buy behind ours that prices the sell at +1%
+   or better, at the latest when the feed shows our buy + 2; it lands one or two blocks after it was sent
+   1: sent at +2 (deadline), landing +3: -0.8%, landing +4: +7.2%
+   2: sent at +1 (take profit), landing +2: +7.6%, landing +3: +7.6%
+   3: sent at +1 (take profit), landing +2: +5.5%, landing +3: +5.5%
+   4: sent at +1 (take profit), landing +2: +5.5%, landing +3: +5.5%
+   5: sent at +1 (take profit), landing +2: +7.5%, landing +3: +7.5%
+   6: sent at +2 (deadline), landing +3: -0.8%, landing +4: -0.8%
+   7: sent at +2 (deadline), landing +3: -0.5%, landing +4: -0.5%
+   8: sent at +2 (deadline), landing +3: -0.4%, landing +4: +0.4%
+   landing late (the slow case) on all 8: mean +4.0%, 6 positive, worst -0.8%; as traded: mean -34.4%, worst -100.0%
+
+4. IS THE PULL A REACTION TO US? The operator's launches in the same window, by who bought them (pull = the first liquidity
+   removal; 'first buy' = the first real-size buy, 0.0002 ETH or more)
+   11:46:15       fee  1.0000%  first buy +90    pull 47 blocks (5 s) after it      buys before the pull 5
+   11:51:26       fee  1.0000%  first buy +100   pull 6207 blocks (639 s) after it  buys before the pull 70
+   12:07:29 other fee  0.0300%  first buy +67    pull 9786 blocks (1008 s) after it  buys before the pull 55
+   12:26:58       fee  0.0300%  first buy +106   pull 277 blocks (29 s) after it    buys before the pull 16
+   12:28:39       fee  0.0380%  first buy +-     pull at +4910                      buys before the pull 0
+   12:43:32       fee  0.0380%  first buy +-     pull at +15994                     buys before the pull 0
+   13:15:23 OURS  fee  0.2383%  first buy +142   pull 7 blocks (1 s) after it       buys before the pull 3
+   13:16:13 OURS  fee  0.2383%  first buy +54    pull 8 blocks (1 s) after it       buys before the pull 4
+   13:16:50 OURS  fee  0.2383%  first buy +53    pull 8 blocks (1 s) after it       buys before the pull 3
+   13:17:10 OURS  fee  0.2383%  first buy +46    pull 10 blocks (1 s) after it      buys before the pull 4
+   13:18:12 OURS  fee  0.2383%  first buy +51    pull 15 blocks (2 s) after it      buys before the pull 3
+   13:18:45 OURS  fee  0.2383%  first buy +58    pull 8 blocks (1 s) after it       buys before the pull 2
+   13:19:44 OURS  fee  0.0824%  first buy +108   pull 6 blocks (1 s) after it       buys before the pull 2
+   13:21:35       fee  0.0824%  first buy +208   pull 7370 blocks (759 s) after it  buys before the pull 59
+   14:32:16 OURS  fee  0.0250%  first buy +44    pull 9857 blocks (1015 s) after it  buys before the pull 172
+   (blocks to seconds at 0.103 s a block, measured over the window)

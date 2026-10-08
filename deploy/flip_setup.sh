@@ -38,11 +38,15 @@ FEE_MIN_PPM=0
 FEE_MAX_PPM=9999
 MIN_LIQUIDITY=1e21
 TRIGGER_MAX_BLOCKS=150
-BUY_SLIP=0.10
+BUY_SLIP=0.03
 BUY_DEADLINE_S=3
-HOLD_BLOCKS=7
+# the exit (release 0.3): sell on the first buy behind ours worth TAKE_PROFIT after gas, in any case landing by our buy + HOLD_BLOCKS
+# (the operator pulled 5-13 blocks after each of our relay buys); a pull at or before our sell halts live trading (/var/log/flip/HALTED)
+HOLD_BLOCKS=4
 SELL_LEAD_BLOCKS=2
-SELL_FALLBACK_S=1.2
+SELL_FALLBACK_S=0.5
+TAKE_PROFIT=0.01
+SELL_AMOUNT_MARGIN=0.001
 MAX_TRADES_PER_DAY=10
 DAILY_STOP_USD=15
 EOF

@@ -3,6 +3,7 @@
 # position, today's trades, the relay's money.    sudo bash ~/v2pons/deploy/health.sh
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 echo "flip-engine: $(systemctl is-active flip-engine 2>/dev/null)   feed/seq per start line:"
+[ -f /var/log/flip/HALTED ] && echo "HALTED (live trading stopped until the file is removed): $(cat /var/log/flip/HALTED)"
 python3 "$REPO/deploy/englog.py" 24 | grep '"ev":"start"' | tail -1 | cut -c1-300
 echo "--- last 3 h"
 python3 "$REPO/deploy/englog.py" 3 | python3 -c '
