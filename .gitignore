@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+# engine logs from a local start (never repo content)
+*.jsonl
+!research/**/*.jsonl
+# secrets never live here; the box keeps them in /etc/flip/engine.env
+*.env

@@ -1,0 +1,3 @@
+https://arb1.arbitrum.io/rpc 2026-09-10 12:00 (from block 503701939): 226 blocks with 4+ user transactions, 1845 transactions; 61% offer a tip; adjacent pairs in descending tip order 48%; receipts charged above the base fee 0 of 43
+https://arb1.arbitrum.io/rpc 2026-10-07 12:00 (from block 512557140): 202 blocks with 4+ user transactions, 1339 transactions; 53% offer a tip; adjacent pairs in descending tip order 79%; receipts charged above the base fee 32 of 50
+https://rpc.mainnet.chain.robinhood.com now (from block 83271939): 221 blocks with 4+ user transactions, 1951 transactions; 50% offer a tip; adjacent pairs in descending tip order 48%; receipts charged above the base fee 0 of 41
