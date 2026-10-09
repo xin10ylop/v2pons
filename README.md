@@ -94,6 +94,12 @@ lands first makes the pool late (no trade); one in our own block makes our buy r
 last ten launches, the engine took the burst on nine and sold the tenth (burst at +13) at the deadline. Both settings are off by
 default; `ENTRY=follow` is the old entry.
 
+Overnight Oct 8-9 the operator went back to its original launcher and its old crowd (first buy 40-60 blocks in, then a buy every few
+blocks), where the seat sold flat (two live trades, -0.18% and -0.32%, both out before the pull). `ENTRY=auto` (release 0.7) takes the
+seat on a per-launch launcher copy and the follow on the original launcher. Release 0.8 carries the review's fixes: the buy is sent from
+its own thread, the nonce is the chain's after every trade, a launcher's code is read again at the launch's block, and a buy that
+never went in does not count against the daily cap.
+
 ## Layout
 
 | path | what |

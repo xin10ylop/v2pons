@@ -195,6 +195,23 @@ Then live, one trade first:
 | `sell_why` deadline, `ret` about -0.5% | the operator held its burst back when it saw us | two more to be sure; if the same, stop |
 | `pulled_before_sell` true (the engine halted) | it pulled on us before our sell | stop: the seat is a trap here too |
 
+## 4d. Release 0.8: auto entry, and the review's fixes
+
+Overnight Oct 8-9 the operator went back to its original launcher, whose crowd buys 40-60 blocks in and then every few blocks: the
+follow entry's trade (13 of 14 priced positive, +2.4%), not the seat's. `ENTRY=auto` picks per launch: the original launcher, follow;
+a per-launch copy of the launcher (known by its code), the seat. 0.8 also sends our buy from its own thread (a reply that never comes
+can no longer hold up the feed or the sell), puts the chain's nonce back after every trade (retrying until the chain answers, with no
+new trade meanwhile), reads a launcher's code again at the launch's block when the first read finds none, and gives back the day's
+trade when a buy never went in.
+
+    cd ~/v2pons && git pull
+    /opt/flip-venv/bin/python3 tests/test_engine.py 2>&1 | tail -3
+    set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
+    set_kv ENTRY auto && set_kv LAUNCH_SELECTORS 2fcb9108 && set_kv MAX_TRADES_PER_DAY 3 && sudo systemctl restart flip-engine
+    sleep 10 && sudo python3 ~/v2pons/deploy/results.py | head -4
+
+The tests end with `ok auto: ...`; the results header shows `release 0.8   LIVE   entry auto   max 3 trades a day` and `halted: no`.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the

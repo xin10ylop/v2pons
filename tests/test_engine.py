@@ -46,6 +46,13 @@ class FakeSender:
         raw = bytes.fromhex(json.loads(body)["params"][0][2:]); SENT.append((i, raw))
         return REPLIES.pop(0) if REPLIES else {"result": "0x" + keccak(raw).hex()}
 E.SENDER = FakeSender(); E.SIGNER = ACCT; E.state["nonce"] = 5; E.state["base_fee"] = 20_000_000
+SYNC_BUY = [True]                                                              # the buy goes out on its own thread: the tests wait for its reply (15j: they do not)
+_fire0 = E._fire
+def _fire_sync(p, *a):
+    _fire0(p, *a); pos = E.state["position"]
+    if SYNC_BUY[0] and pos is not None and pos["pid"] == p["pid"] and not pos["dry"] and pos.get("buy_hash"):
+        assert wait_for(lambda: "buy_reply" in pos), "no reply to the buy"
+E._fire = _fire_sync
 
 
 # --- the scripted chain
@@ -303,6 +310,13 @@ assert not p["eligible"] and p["launcher_code"].startswith("unknown"), p["launch
 for s_ in range(2101, 2108):
     E.ingest(frame(s_, []))
 assert E.state["position"] is None and len(SENT) == 0
+reset(); E.state["nonce"] = 135; LAGGING = "0x" + "7a" * 20; CODES[LAGGING] = OP_CODE    # a node a few blocks behind: no code at 'latest' yet, the code at the launch's block
+rpc0 = E.rpc
+def lagging_rpc(method, params, tries=4, timeout=10):
+    if method == "eth_getCode" and params[1] == "latest": return "0x"
+    return rpc0(method, params, tries, timeout)
+E.rpc = lagging_rpc; p = seat_launch(2150, 5, launcher=LAGGING); E.rpc = rpc0
+assert p["eligible"] and p["launcher_code"] == "operator", p["launcher_code"]
 E.ENTRY = "follow"; E.LAUNCH_SELECTORS = set()
 print("ok seat: a launch through a fresh launcher armed by its call, the buy at launch + 6, the burst one block behind it takes the profit; a burst before the seat, no trade; a look-alike launcher (other code) never traded")
 
@@ -343,12 +357,23 @@ RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(2333, -E.STAKE_WEI, pos["feed_to
 assert wait_for(lambda: done_at(150)); d = done_at(150)[-1]; assert d["sell"]["status"] == "ok" and E.state["halted"] is None, d
 print("ok a lost reply to our buy: the position kept, the buy seen in the feed, the sell on schedule, settled")
 
-# 15c. the node refuses our buy: no position, the nonce untouched
-reset(); E.state["nonce"] = 160; p = do_launch(2400)
+# 15c. the node refuses our buy: no sell, the position closed once the nonce is the chain's, the daily cap given back
+reset(); E.state["nonce"] = 160; NONCE_ON_CHAIN[0] = hex(160); p = do_launch(2400)
 REPLIES[:] = [{"error": {"code": -32000, "message": "insufficient funds for gas * price + value"}}]
-E.ingest(frame(2431, [signed(CROWD, UR, TRIG, BUY_DATA, 52)]))
-assert E.state["position"] is None and events("buy_rejected") and E.state["trades_today"] == 0
-print("ok a refused buy: no position")
+fails = [2]; rpc0 = E.rpc
+def flaky_rpc(method, params, tries=4, timeout=10):
+    if method == "eth_getTransactionCount" and fails[0] > 0:
+        fails[0] -= 1; raise RuntimeError("timed out")
+    return rpc0(method, params, tries, timeout)
+E.rpc = flaky_rpc                                                                  # the nonce read fails twice: the position must stay open meanwhile
+E.ingest(frame(2431, [signed(CROWD, UR, TRIG, BUY_DATA, 52)])); pos = E.state["position"]
+assert pos is not None and wait_for(lambda: pos["sell_sent"]) and pos["sell_why"] == "buy refused" and E.state["position"] is pos
+for s_ in range(2432, 2440):
+    E.ingest(frame(s_, []))
+assert wait_for(lambda: E.state["position"] is None) and fails[0] == 0 and events("buy_rejected") and E.state["trades_today"] == 0 and E.state["nonce"] == 160, E.state["nonce"]
+assert len(SENT) == 1, "a sell went out behind a refused buy"
+E.rpc = rpc0; NONCE_ON_CHAIN[0] = "0x5"
+print("ok a refused buy: no sell, the nonce the chain's, the daily cap given back")
 
 # 15d. no reply to our buy and it never went in: the sell is refused (nonce too high) and retried, the trade closes, the nonce comes back to the chain's
 reset(); E.state["nonce"] = 170; NONCE_ON_CHAIN[0] = hex(170); p = do_launch(2500)
@@ -361,9 +386,9 @@ for s_ in range(2532, 2538):
 assert pos["sell_sent"] and wait_for(lambda: done_at(170), 4.0), "no trade_done"
 d = done_at(170)[-1]; assert d["buy"] == "no receipt" and E.state["halted"] is None, d
 assert sum(1 for i, r in SENT if r == pos["sell_raw"]) == E.SELL_TRIES and any("not accepted" in e["what"] for e in events("alarm"))
-assert wait_for(lambda: E.state["nonce"] == 170), E.state["nonce"]
+assert E.state["nonce"] == 170 and E.state["trades_today"] == 0, (E.state["nonce"], E.state["trades_today"])     # set before trade_done is logged
 E.RECEIPT_TIMEOUT_S = 25; NONCE_ON_CHAIN[0] = "0x5"
-print("ok a lost buy that never went in: the sell retried and refused, the trade closed, the nonce back to the chain's")
+print("ok a lost buy that never went in: the sell retried and refused, the trade closed, the nonce back to the chain's, the daily cap given back")
 
 # 15e. the first sell send fails (transport), the second goes in
 reset(); E.state["nonce"] = 180; p = do_launch(2600)
@@ -415,19 +440,54 @@ assert E.reply_kind({"result": "0x1"}) == "ok" and E.reply_kind({"error": {"mess
 assert E.reply_kind({"error": {"code": -32000, "message": "already known"}}) == "in" and E.reply_kind({"error": {"code": -32000, "message": "nonce too high"}}) == "rejected"
 print("ok the sender: a busy slot falls back to a fresh connection at once; replies classified")
 
+# 15j. a buy send that hangs (Nitro answers once the buy is in a block; a lost reply waits out its timeouts) holds up nothing
+reset(); E.state["nonce"] = 240; NONCE_ON_CHAIN[0] = hex(242); p = do_launch(3200)
+gate = threading.Event()
+class HangingSender(FakeSender):
+    def post(self, i, body, retry=True):
+        r = super().post(i, body, retry)
+        if len(SENT) == 1:
+            gate.wait(10)                                                      # the buy's reply: held until the sell is out
+        return r
+E.SENDER = HangingSender(); SYNC_BUY[0] = False
+t0 = time.time(); E.ingest(frame(3231, [signed(CROWD, UR, TRIG, BUY_DATA, 61)])); pos = E.state["position"]
+assert pos is not None and time.time() - t0 < 0.5 and E.state["nonce"] == 242, "the feed waited on the buy's reply"
+assert wait_for(lambda: len(SENT) == 1); buy_raw = SENT[0][1]
+E.ingest(frame(3232, [])); E.ingest(frame(3233, [buy_raw])); E.ingest(frame(3234, [])); E.ingest(frame(3235, []))
+assert pos["buy_seq"] == 3233 and pos["sell_sent"] and "buy_reply" not in pos and wait_for(lambda: len(SENT) == 2), "the sell waited on the buy's reply"
+gate.set(); assert wait_for(lambda: "buy_reply" in pos)
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(3233, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(3237, int(E.STAKE_WEI * 1.02), -pos["feed_tokens"])
+assert wait_for(lambda: done_at(240)) and E.state["nonce"] == 242
+E.SENDER = FakeSender(); SYNC_BUY[0] = True; NONCE_ON_CHAIN[0] = "0x5"
+print("ok a buy send that hangs: the feed, our buy's landing and the sell on schedule go on without its reply")
+
+# 15k. the nonce read fails for a while after a trade: the position stays open (no trade on a wrong nonce) until the chain answers
+reset(); E.state["nonce"] = 250; NONCE_ON_CHAIN[0] = hex(252); pos, buy_raw, B = relay_trade(3300, 250, 62)
+E.ingest(frame(B + 1, [])); E.ingest(frame(B + 2, [])); assert pos["sell_sent"]
+fails = [3]; rpc0 = E.rpc
+def flaky_rpc(method, params, tries=4, timeout=10):
+    if method == "eth_getTransactionCount" and fails[0] > 0:
+        fails[0] -= 1; raise RuntimeError("timed out")
+    return rpc0(method, params, tries, timeout)
+E.rpc = flaky_rpc; E.state["nonce"] = 999                                         # a nonce gone wrong: settle must put the chain's in
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(B, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(B + 4, int(E.STAKE_WEI * 1.02), -pos["feed_tokens"])
+assert wait_for(lambda: done_at(250), 6.0) and fails[0] == 0 and E.state["nonce"] == 252 and E.state["position"] is None, (fails, E.state["nonce"])
+E.rpc = rpc0; NONCE_ON_CHAIN[0] = "0x5"
+print("ok a nonce read that fails for a while: retried, the position kept until the chain's nonce is in")
+
 # --- 16. ENTRY=auto: the original launcher gets the follow entry (its crowd 40-60 blocks in), a per-launch copy the seat
 E.ENTRY = "auto"; E.LAUNCH_SELECTORS = {"2fcb9108"}; E.SEAT_CODE_HASHES = set(E.LAUNCHER_CODE_HASHES)
-reset(); E.state["nonce"] = 220; p = do_launch(3000)                                    # through the original launcher (LAUNCHERS)
+reset(); E.state["nonce"] = 220; p = do_launch(4000)                                    # through the original launcher (LAUNCHERS)
 assert p["entry"] == "follow" and p["eligible"]
-for s_ in range(3001, 3010):
+for s_ in range(4001, 4010):
     E.ingest(frame(s_, [])); assert E.state["position"] is None, "the follow entry fired before the crowd"
-E.ingest(frame(3046, [signed(CROWD, UR, TRIG, BUY_DATA, 60)])); pos = E.state["position"]; assert pos and pos["trig_seq"] == 3046, "no follow fire on the crowd's first buy"
+E.ingest(frame(4046, [signed(CROWD, UR, TRIG, BUY_DATA, 60)])); pos = E.state["position"]; assert pos and pos["trig_seq"] == 4046, "no follow fire on the crowd first buy"
 E.state["position"] = None
-reset(); E.state["nonce"] = 230; p = seat_launch(3100, 6)                             # through a per-launch copy
+reset(); E.state["nonce"] = 230; p = seat_launch(4100, 6)                             # through a per-launch copy
 assert p["entry"] == "seat" and p["eligible"]
-for s_ in range(3101, 3106):
+for s_ in range(4101, 4106):
     E.ingest(frame(s_, []))
-E.ingest(frame(3106, [])); pos = E.state["position"]; assert pos and pos["trig_seq"] == 3106 and pos["trig_value"] == 0, "no seat fire at launch + 6"
+E.ingest(frame(4106, [])); pos = E.state["position"]; assert pos and pos["trig_seq"] == 4106 and pos["trig_value"] == 0, "no seat fire at launch + 6"
 E.state["position"] = None; E.ENTRY = "follow"; E.LAUNCH_SELECTORS = set()
 print("ok auto: the original launcher follows the crowd's first buy, a per-launch copy takes the seat at launch + 6")
 os.remove(LOG)

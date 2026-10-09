@@ -54,7 +54,7 @@ from eth_utils import keccak, to_checksum_address
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import v4math
 
-RELEASE = "0.7"
+RELEASE = "0.8"
 
 
 def env(k, d=""):
@@ -336,12 +336,17 @@ def arm_launch(tx_hash, seq, ts, seen_at, to=None):
     """thread: the launch receipt, the pool, the arming. A launch found by its call alone (not sent to a LAUNCHERS address) is traded
     only if the contract it called carries the operator's launcher code: anyone can deploy a contract with that function."""
     code = {}
+
+    def fetch(tag="latest"):
+        try:
+            c = rpc("eth_getCode", [h0x(to), tag], tries=2, timeout=3)
+            if len(c) > 2:
+                code["hash"] = keccak(bytes.fromhex(c[2:])).hex(); code.pop("err", None)
+            else:
+                code["err"] = "no code yet at " + str(tag)                    # a backend a few blocks behind: the launcher was deployed 7-8 blocks before its call
+        except Exception as e:
+            code["err"] = str(e)[:100]
     if to and to not in LAUNCHERS:
-        def fetch():
-            try:
-                c = rpc("eth_getCode", [h0x(to), "latest"], tries=2, timeout=3); code["hash"] = keccak(bytes.fromhex(c[2:])).hex()
-            except Exception as e:
-                code["err"] = str(e)[:100]
         ct = threading.Thread(target=fetch, daemon=True); ct.start()
     rec = wait_receipt(tx_hash, 4.0)
     if rec is None:
@@ -355,6 +360,8 @@ def arm_launch(tx_hash, seq, ts, seen_at, to=None):
     p["launcher_code"] = "listed"
     if to and to not in LAUNCHERS:
         ct.join(3.0)
+        if "hash" not in code:                                                # no code read (an error, or a node behind): again, at the launch's own block
+            fetch(rec.get("blockNumber", "latest"))
         p["launcher_code"] = "operator" if code.get("hash") in LAUNCHER_CODE_HASHES else ("unknown " + str(code.get("hash", code.get("err", "no answer")))[:16])
         eligible = eligible and p["launcher_code"] == "operator"
     if ENTRY == "auto":                                     # the original launcher: its crowd comes 40-60 blocks in, buying every few blocks (follow); a per-launch copy: one burst at + 8/9 (seat)
@@ -446,18 +453,36 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
         log({"ev": "would_fire", **{k: v for k, v in pos.items() if k not in ("dry", "sell_raw")}, "buy_tx": buy, "sell_tx": sell, "react_ms": round(1000 * (mono() - seen_at), 1)})
         return
     t0 = mono(); raw_b, hb = sign(buy); raw_s, hs = sign(sell); pos["buy_hash"] = hb; pos["sell_hash"] = hs; pos["sell_raw"] = raw_s; t1 = mono()
-    reply = SENDER.post(0, body(raw_b)); t2 = mono()
-    pos["buy_reply"] = reply
-    log({"ev": "fire", **{k: v for k, v in pos.items() if k not in ("sell_raw", "dry")}, "sign_ms": round(1000 * (t1 - t0), 1), "send_ms": round(1000 * (t2 - t1), 1), "react_ms": round(1000 * (t2 - seen_at), 1)})
-    kind = reply_kind(reply)
-    if kind == "rejected":                                                         # the node refused it: it is not in
-        log({"ev": "buy_rejected", "pid": p["pid"], "reply": reply}); state["position"] = None; state["trades_today"] -= 1
-        threading.Thread(target=refresh_nonce, daemon=True).start()
-        return
-    if kind == "unknown":                                                          # no answer: it may be in. Treat it as sent; the feed shows it if it is
+    state["nonce"] = nonce + 2                                                     # reserved: the buy and the sell behind it
+    log({"ev": "fire", **{k: v for k, v in pos.items() if k not in ("sell_raw", "dry")}, "sign_ms": round(1000 * (t1 - t0), 1), "react_ms": round(1000 * (t1 - seen_at), 1)})
+    threading.Thread(target=deliver_buy, args=(pos, raw_b, t1), daemon=True).start()
+
+
+def deliver_buy(pos, raw_b, t1):
+    """thread: the buy to the sequencer, off the feed thread and the lock. Nitro answers once the transaction is in a block, and a
+    reply that never comes (4 s timeout, then a second try) must not hold up the feed: if the buy went in, the feed shows it and the
+    sell goes on schedule. A refusal closes the position; a lost reply leaves it open for the schedule and settle to finish."""
+    reply = SENDER.post(0, body(raw_b)); kind = reply_kind(reply)
+    log({"ev": "buy_reply", "pid": pos["pid"], "kind": kind, "reply": reply, "send_ms": round(1000 * (mono() - t1), 1)})
+    if kind == "unknown":
         pos["buy_reply_lost"] = True
-        log({"ev": "alarm", "what": "no reply to our buy: it may have gone in; the position stays open, the sell goes on schedule, settle reads the receipts", "pid": p["pid"], "reply": reply})
-    state["nonce"] = nonce + 2
+        log({"ev": "alarm", "what": "no reply to our buy: it may have gone in; the position stays open, the sell goes on schedule, settle reads the receipts", "pid": pos["pid"], "reply": reply})
+    elif kind == "rejected":                                                       # the node refused it: it is not in
+        pos["buy_rejected"] = True; log({"ev": "buy_rejected", "pid": pos["pid"], "nonce": pos["nonce"], "reply": reply})
+    pos["buy_reply"] = reply
+    if kind != "rejected":
+        return
+    with lock:
+        closed = state["position"] is pos and not pos["sell_sent"]
+        if closed:                                                                 # nothing to sell: the schedule stops; the position stays open (no new trade) until the nonce is right
+            pos["sell_sent"] = True; pos["sell_why"] = "buy refused"
+    if closed:
+        n = chain_nonce()                                                          # nothing of ours is in flight: the chain's count is right
+        with lock:
+            state["nonce"] = n if n is not None else pos["nonce"]                  # no answer: the refused buy's nonce was not used
+            state["position"] = None; state["trades_today"] = max(0, state["trades_today"] - 1)
+        log({"ev": "nonce", "chain": n, "engine": state["nonce"]})
+    # refused after its sell went out (a slow refusal): the sell is refused too, and settle closes the trade
 
 
 def send_sell(why):
@@ -560,24 +585,43 @@ def _settle(pos):
     pnl = eth_out - eth_in - gas_wei
     out.update({"eth_in": eth_in, "eth_out": eth_out, "gas_wei": gas_wei, "pnl_eth": pnl / 1e18, "pnl_usd": round(pnl / 1e18 * ETH_USD, 3), "ret": round((eth_out - eth_in) / eth_in, 4) if eth_in else None,
                 "flat_eth_back": pos["flat_eth_back"]})
+    n = chain_nonce()                                                                  # both transactions are final now: the chain's count is the truth
     with lock:
         roll_day(); state["pnl_today_usd"] += out["pnl_usd"]
+        if rb is None:                                                                 # no buy receipt: the buy never went in; it does not count against the cap
+            state["trades_today"] = max(0, state["trades_today"] - 1)
+        if n is not None:
+            state["nonce"] = n
         if state["position"] is pos:
             state["position"] = None
     log(out)
-    refresh_nonce(exact=rb is None)                                                    # no buy receipt: the buy never went in, nor the sell behind it
+    log({"ev": "nonce", "chain": n, "engine": state["nonce"]})
 
 
-def refresh_nonce(exact=False):
-    """the wallet's next nonce from the chain; exact: take the chain's even when it is lower (a buy that never went in)"""
-    try:
-        n = int(rpc("eth_getTransactionCount", [h0x(WALLET), "pending"]), 16)
-        with lock:
-            if state["position"] is None:
-                state["nonce"] = n if exact else max(n, state["nonce"] or 0)
-        log({"ev": "nonce", "chain": n, "engine": state["nonce"]})
-    except Exception as e:
-        log({"ev": "alarm", "what": "nonce refresh failed", "err": str(e)[:200]})
+NONCE_TRIES = 60
+
+
+def chain_nonce(tries=None):
+    """the wallet's next nonce from the chain, retried with backoff (4 minutes in all if the RPC fails fast, 9 if it hangs): a nonce
+    left above the chain's would make every later buy refused; the caller keeps its position open meanwhile, so no trade starts on a
+    wrong nonce"""
+    err = None
+    for i in range(tries or NONCE_TRIES):
+        try:
+            return int(rpc("eth_getTransactionCount", [h0x(WALLET), "pending"], tries=1, timeout=5), 16)
+        except Exception as e:
+            err = e; time.sleep(min(5.0, 0.25 * (i + 1)))
+    log({"ev": "alarm", "what": "nonce refresh failed", "err": str(err)[:200]})
+    return None
+
+
+def refresh_nonce():
+    """after a settle that failed: the chain's count, never below the engine's"""
+    n = chain_nonce()
+    with lock:
+        if n is not None and state["position"] is None:
+            state["nonce"] = max(n, state["nonce"] or 0)
+    log({"ev": "nonce", "chain": n, "engine": state["nonce"]})
 
 
 def watchdog_tick():
