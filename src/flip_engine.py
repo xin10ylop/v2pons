@@ -36,6 +36,11 @@ launch + SEAT_FIRE_AT, landing one or two blocks ahead of that burst, and sells 
 halt: +8.9% a trade on paper (42 of 42), if the operator still sends its burst after seeing our buy. That is what a live test
 answers; the dust tester that buys every launch at + 3-5 gets the burst every time, but it buys a speck.
 
+Release 0.6 closes what an independent review of the engine found: a block holding a single transaction (a bare kind-4 message)
+was invisible; a buy whose reply was lost was dropped though it may have gone in; a refused sell was never sent again; the
+keepalive could hold the sell's connection; a launch found by its call alone was trusted without looking at the launcher's code
+(now LAUNCHER_CODE_HASHES); the time fallback shared its thread with an RPC call.
+
 Settings come from the environment (/etc/flip/engine.env on the box). Log: JSONL, one event per line, LOG_PATH.
 """
 import os, sys, json, time, base64, threading, asyncio, socket, ssl, http.client, urllib.request, urllib.parse, datetime, traceback, collections
@@ -44,7 +49,7 @@ from eth_utils import keccak, to_checksum_address
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import v4math
 
-RELEASE = "0.5"
+RELEASE = "0.6"
 
 
 def env(k, d=""):
@@ -66,6 +71,8 @@ BUY_SLIP = float(env("BUY_SLIP", "0.03")); BUY_DEADLINE_S = int(env("BUY_DEADLIN
 HOLD_BLOCKS = int(env("HOLD_BLOCKS", "4")); SELL_LEAD_BLOCKS = int(env("SELL_LEAD_BLOCKS", "2")); SELL_FALLBACK_S = float(env("SELL_FALLBACK_S", "0.5"))   # the sell lands by our buy + 4; the fastest pull on us came at + 5
 TAKE_PROFIT = float(env("TAKE_PROFIT", "0.01"))                                           # sell as soon as a buy behind ours prices the sell (after gas) at this return; 9 turns it off
 BUY_DELAY_BLOCKS = int(env("BUY_DELAY_BLOCKS", "0"))                                      # fire this many blocks after the trigger (1: aim to land 2 after it, right ahead of the crowd's next buy)
+LAUNCHER_CODE_HASHES = {x.strip().lower().replace("0x", "") for x in env("LAUNCHER_CODE_HASHES",
+    "2793923de1845d8707004ebbf2ab49fe7286113b7b69991aea7d6656f26f6d1c,42544ef5d4754816b3cfe77f3a6fb1c8eb842d6eee101f7d15c638593a3351d2").split(",") if x.strip()}   # the operator's launcher code (6,984 bytes; from 14:59 every launcher is a copy)
 LAUNCH_SELECTORS = {x.strip().lower().replace("0x", "") for x in env("LAUNCH_SELECTORS", "").split(",") if x.strip()}   # a launch known by its call (2fcb9108): from Oct 8 14:59 each launch has a fresh launcher
 ENTRY = env("ENTRY", "follow").lower()                                                     # "follow": behind the operator's first real-size buy; "seat": SEAT_FIRE_AT blocks after the launch, ahead of its burst
 SEAT_FIRE_AT = int(env("SEAT_FIRE_AT", "6"))                                               # seat: fire when the feed shows launch + 6, to land at + 7/8, one or two blocks ahead of the burst (+9 on 30 of 42 launches)
@@ -128,21 +135,37 @@ class Sender:
         c.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1); self.conns[i] = c; return c
 
     def post(self, i, body, retry=True):
-        with self.locks[i]:
+        if not self.locks[i].acquire(timeout=0.05):                             # the keepalive holds this slot (a hung ping can take 4 s): a fresh connection now
+            return self._oneoff(body)
+        try:
+            return self._post_locked(i, body, retry)
+        finally:
+            self.locks[i].release()
+
+    def _oneoff(self, body):
+        try:
+            c = http.client.HTTPSConnection(self.host, self.port, timeout=4, context=ssl.create_default_context()); c.connect()
+            c.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+            c.request("POST", self.path, body, {"Content-Type": "application/json"}); r = c.getresponse(); data = r.read(); c.close()
+            return json.loads(data)
+        except Exception as e:
+            return {"error": {"message": f"send failed (one-off connection): {e}"}}
+
+    def _post_locked(self, i, body, retry):
+        try:
+            c = self.conns[i] or self._open(i)
+            c.request("POST", self.path, body, {"Content-Type": "application/json", "Connection": "keep-alive"})
+            r = c.getresponse(); data = r.read(); self.last[i] = mono()
+            return json.loads(data)
+        except Exception as e:
             try:
-                c = self.conns[i] or self._open(i)
-                c.request("POST", self.path, body, {"Content-Type": "application/json", "Connection": "keep-alive"})
-                r = c.getresponse(); data = r.read(); self.last[i] = mono()
-                return json.loads(data)
-            except Exception as e:
-                try:
-                    if self.conns[i]: self.conns[i].close()
-                except Exception:
-                    pass
-                self.conns[i] = None
-                if retry:
-                    return self._retry(i, body)
-                return {"error": {"message": f"send failed: {e}"}}
+                if self.conns[i]: self.conns[i].close()
+            except Exception:
+                pass
+            self.conns[i] = None
+            if retry:
+                return self._retry(i, body)
+            return {"error": {"message": f"send failed: {e}"}}
 
     def _retry(self, i, body):
         try:
@@ -166,21 +189,43 @@ class Sender:
                         self.locks[i].release()
 
 
+def reply_kind(reply):
+    """what a reply to eth_sendRawTransaction says about the transaction: "ok" (accepted), "in" (the node already has it or its
+    nonce: it went in), "rejected" (the node refused it: it did not go in), "unknown" (no reply from the node: a transport failure,
+    after which the transaction may or may not have been sequenced; Nitro answers only once it is in a block)"""
+    if "result" in reply:
+        return "ok"
+    err = reply.get("error") or {}
+    msg = str(err.get("message", "")).lower()
+    if "code" not in err:
+        return "unknown"
+    if "already known" in msg or "nonce too low" in msg:
+        return "in"
+    return "rejected"
+
+
 SENDER = None; SIGNER = None
 
 
 # ---------------------------------------------------------------- feed decoding
 def decode_batch(l2msg_b64):
-    """the signed transactions (raw bytes) in one L2 batch message: kind byte 3, then segments of 8-byte big-endian length + body,
-    of which kind 4 bodies are signed transactions"""
-    raw = base64.b64decode(l2msg_b64)
-    if not raw or raw[0] != 3:
+    """the signed transactions (raw bytes) in one L2 message. Kind 4 is one signed transaction: the sequencer sends a block that
+    holds a single user transaction this way (about 1 block in 190 in a quiet hour), and our own buy can be that transaction.
+    Kind 3 is a batch: segments of 8-byte big-endian length + body, each body itself an L2 message (nested batches included)."""
+    return _l2_txs(base64.b64decode(l2msg_b64), 0)
+
+
+def _l2_txs(raw, depth):
+    if not raw or depth > 16:
+        return []
+    if raw[0] == 4:
+        return [raw[1:]]
+    if raw[0] != 3:
         return []
     out = []; i = 1; n = len(raw)
     while i + 8 <= n:
         ln = int.from_bytes(raw[i:i+8], "big"); i += 8; seg = raw[i:i+ln]; i += ln
-        if seg and seg[0] == 4:
-            out.append(seg[1:])
+        out += _l2_txs(seg, depth + 1)
     return out
 
 
@@ -219,6 +264,12 @@ def apply_buy(p, value):
 def round_trip_gas_wei():
     """what the trade's own two swaps cost at the base fee"""
     return state["base_fee"] * 250_000
+
+
+def load_halt():
+    """a halt written before a restart still holds"""
+    if os.path.exists(HALT_FILE):
+        state["halted"] = open(HALT_FILE).read().strip() or "halted"
 
 
 def halt(reason):
@@ -275,8 +326,17 @@ def wait_receipt(h, timeout, every=0.04):
     return None
 
 
-def arm_launch(tx_hash, seq, ts, seen_at):
-    """thread: the launch receipt, the pool, the arming"""
+def arm_launch(tx_hash, seq, ts, seen_at, to=None):
+    """thread: the launch receipt, the pool, the arming. A launch found by its call alone (not sent to a LAUNCHERS address) is traded
+    only if the contract it called carries the operator's launcher code: anyone can deploy a contract with that function."""
+    code = {}
+    if to and to not in LAUNCHERS:
+        def fetch():
+            try:
+                c = rpc("eth_getCode", [h0x(to), "latest"], tries=2, timeout=3); code["hash"] = keccak(bytes.fromhex(c[2:])).hex()
+            except Exception as e:
+                code["err"] = str(e)[:100]
+        ct = threading.Thread(target=fetch, daemon=True); ct.start()
     rec = wait_receipt(tx_hash, 4.0)
     if rec is None:
         log({"ev": "launch_no_receipt", "tx": tx_hash, "seq": seq}); return
@@ -286,6 +346,11 @@ def arm_launch(tx_hash, seq, ts, seen_at):
     p.update({"launch_seq": seq, "launch_ts": ts, "armed_at": mono(), "arm_ms": round(1000 * (mono() - seen_at), 1), "first_buy": None, "status": "armed", "tx": tx_hash,
               "sp": float(p["sqrt_p"]), "buys": 0})
     eligible = p["c0"] == "0" * 40 and p["hooks"] == "0" * 40 and FEE_MIN_PPM <= p["fee"] <= FEE_MAX_PPM and p["liq"] >= MIN_LIQUIDITY
+    p["launcher_code"] = "listed"
+    if to and to not in LAUNCHERS:
+        ct.join(3.0)
+        p["launcher_code"] = "operator" if code.get("hash") in LAUNCHER_CODE_HASHES else ("unknown " + str(code.get("hash", code.get("err", "no answer")))[:16])
+        eligible = eligible and p["launcher_code"] == "operator"
     p["eligible"] = eligible
     with lock:
         p["arm_seq"] = state["seq"]
@@ -297,7 +362,7 @@ def arm_launch(tx_hash, seq, ts, seen_at):
                     log({"ev": "first_buy", "pid": p["pid"], "seq": s, "offset": s - seq, "value": value, "fee": p["fee"], "eligible": eligible, "before_arm": True})
         state["armed"][p["pid"]] = p; state["launches"] += 1
     log({"ev": "armed", "pid": p["pid"], "token": p["token"], "fee": p["fee"], "tick_spacing": p["tick_spacing"], "hooks": p["hooks"][-8:], "liq": p["liq"], "sqrt_p": p["sqrt_p"], "seq": seq,
-         "arm_ms": p["arm_ms"], "arm_seq": p["arm_seq"], "eligible": eligible, "eth_pair": p["c0"] == "0" * 40, "buys_before_arm": p["buys"]})
+         "arm_ms": p["arm_ms"], "arm_seq": p["arm_seq"], "eligible": eligible, "eth_pair": p["c0"] == "0" * 40, "buys_before_arm": p["buys"], "launcher_code": p["launcher_code"]})
 
 
 def prune(seq):
@@ -374,10 +439,14 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
     reply = SENDER.post(0, body(raw_b)); t2 = mono()
     pos["buy_reply"] = reply
     log({"ev": "fire", **{k: v for k, v in pos.items() if k not in ("sell_raw", "dry")}, "sign_ms": round(1000 * (t1 - t0), 1), "send_ms": round(1000 * (t2 - t1), 1), "react_ms": round(1000 * (t2 - seen_at), 1)})
-    if "error" in reply:
+    kind = reply_kind(reply)
+    if kind == "rejected":                                                         # the node refused it: it is not in
         log({"ev": "buy_rejected", "pid": p["pid"], "reply": reply}); state["position"] = None; state["trades_today"] -= 1
         threading.Thread(target=refresh_nonce, daemon=True).start()
         return
+    if kind == "unknown":                                                          # no answer: it may be in. Treat it as sent; the feed shows it if it is
+        pos["buy_reply_lost"] = True
+        log({"ev": "alarm", "what": "no reply to our buy: it may have gone in; the position stays open, the sell goes on schedule, settle reads the receipts", "pid": p["pid"], "reply": reply})
     state["nonce"] = nonce + 2
 
 
@@ -391,10 +460,27 @@ def send_sell(why):
              "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
         threading.Thread(target=settle_dry, args=(pos,), daemon=True).start()
         return
-    reply = SENDER.post(1, body(pos["sell_raw"])); pos["sell_reply"] = reply
-    log({"ev": "sell_sent", "pid": pos["pid"], "seq": state["seq"], "why": why, "buy_seq": pos["buy_seq"], "after_buy": state["seq"] - pos["buy_seq"] if pos["buy_seq"] else None, "tp_ret": pos["tp_ret"],
-         "hash": pos["sell_hash"], "nonce": pos["nonce"] + 1, "reply": reply, "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
-    threading.Thread(target=settle, args=(pos,), daemon=True).start()
+    threading.Thread(target=deliver_sell, args=(pos, why, state["seq"]), daemon=True).start()
+
+
+SELL_TRIES = 4
+
+
+def deliver_sell(pos, why, seq):
+    """thread: the presigned sell to the sequencer until it is in: alternating connections, a short pause between tries (a sell
+    refused for its nonce while our buy is still being sequenced goes in on the next try); then the settlement"""
+    replies = []
+    for k in range(SELL_TRIES):
+        reply = SENDER.post(1 if k % 2 == 0 else 0, body(pos["sell_raw"])); replies.append(reply)
+        if reply_kind(reply) in ("ok", "in"):
+            break
+        time.sleep(0.05)
+    pos["sell_reply"] = replies[-1]
+    log({"ev": "sell_sent", "pid": pos["pid"], "seq": seq, "why": why, "buy_seq": pos["buy_seq"], "after_buy": seq - pos["buy_seq"] if pos["buy_seq"] else None, "tp_ret": pos["tp_ret"],
+         "hash": pos["sell_hash"], "nonce": pos["nonce"] + 1, "tries": len(replies), "reply": replies[-1], "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
+    if reply_kind(replies[-1]) not in ("ok", "in"):
+        log({"ev": "alarm", "what": f"the sell was not accepted after {len(replies)} tries", "pid": pos["pid"], "replies": replies})
+    settle(pos)
 
 
 def settle_dry(pos):
@@ -469,32 +555,43 @@ def _settle(pos):
         if state["position"] is pos:
             state["position"] = None
     log(out)
-    refresh_nonce()
+    refresh_nonce(exact=rb is None)                                                    # no buy receipt: the buy never went in, nor the sell behind it
 
 
-def refresh_nonce():
+def refresh_nonce(exact=False):
+    """the wallet's next nonce from the chain; exact: take the chain's even when it is lower (a buy that never went in)"""
     try:
         n = int(rpc("eth_getTransactionCount", [h0x(WALLET), "pending"]), 16)
         with lock:
-            state["nonce"] = max(n, state["nonce"] or 0) if state["position"] is None else state["nonce"]
+            if state["position"] is None:
+                state["nonce"] = n if exact else max(n, state["nonce"] or 0)
         log({"ev": "nonce", "chain": n, "engine": state["nonce"]})
     except Exception as e:
         log({"ev": "alarm", "what": "nonce refresh failed", "err": str(e)[:200]})
 
 
+def watchdog_tick():
+    """the sell's wall-clock fallback, if the feed stalls"""
+    pos = state["position"]
+    if pos and not pos["sell_sent"] and mono() - pos["fired_at"] > SELL_FALLBACK_S:
+        with lock:
+            send_sell("time fallback")
+
+
 def watchdog():
-    """the sell's wall-clock fallback, and the base fee"""
     while True:
         time.sleep(0.02)
-        pos = state["position"]
-        if pos and not pos["sell_sent"] and mono() - pos["fired_at"] > SELL_FALLBACK_S:
-            with lock:
-                send_sell("time fallback")
-        if mono() - state.get("fee_at", 0) > 10:
-            try:
-                b = rpc("eth_getBlockByNumber", ["latest", False], tries=1, timeout=3); state["base_fee"] = int(b["baseFeePerGas"], 16); state["fee_at"] = mono()
-            except Exception:
-                pass
+        watchdog_tick()
+
+
+def fee_loop():
+    """the base fee every 10 s, on its own thread (a slow RPC never holds up the time fallback)"""
+    while True:
+        try:
+            b = rpc("eth_getBlockByNumber", ["latest", False], tries=1, timeout=3); state["base_fee"] = int(b["baseFeePerGas"], 16); state["fee_at"] = mono()
+        except Exception:
+            pass
+        time.sleep(10)
 
 
 # ---------------------------------------------------------------- the feed
@@ -579,7 +676,7 @@ def ingest(raw):
                     our_buy_landed(pos, seq); continue
                 if to in LAUNCHERS or (LAUNCH_SELECTORS and data[:4].hex() in LAUNCH_SELECTORS):
                     if not stale:
-                        log({"ev": "launch", "tx": h, "seq": seq, "to": to}); threading.Thread(target=arm_launch, args=(h, seq, state["ts"], seen_at), daemon=True).start()
+                        log({"ev": "launch", "tx": h, "seq": seq, "to": to}); threading.Thread(target=arm_launch, args=(h, seq, state["ts"], seen_at, to), daemon=True).start()
                     continue
                 if value == 0 or len(data) < 20:
                     continue
@@ -629,8 +726,7 @@ async def feed_loop():
 
 # ---------------------------------------------------------------- start
 def checks():
-    if os.path.exists(HALT_FILE):
-        state["halted"] = open(HALT_FILE).read().strip() or "halted"
+    load_halt()
     chain = int(rpc("eth_chainId", []), 16)
     if chain != CHAIN_ID:
         raise SystemExit(f"RPC_URL is chain {chain}, not {CHAIN_ID}")
@@ -668,9 +764,9 @@ def main():
     log({"ev": "start", "release": RELEASE, "dry_run": DRY_RUN, "launchers": sorted(LAUNCHERS), "relay": RELAY, "wallet": WALLET, "stake_eth": STAKE_ETH, "min_trigger_eth": MIN_TRIGGER_ETH,
          "fee_ppm": [FEE_MIN_PPM, FEE_MAX_PPM], "min_liquidity": MIN_LIQUIDITY, "trigger_max_blocks": TRIGGER_MAX_BLOCKS, "buy_slip": BUY_SLIP, "buy_deadline_s": BUY_DEADLINE_S, "gas_headroom": GAS_HEADROOM,
          "hold_blocks": HOLD_BLOCKS, "sell_lead_blocks": SELL_LEAD_BLOCKS, "take_profit": TAKE_PROFIT, "buy_delay_blocks": BUY_DELAY_BLOCKS,
-         "entry": ENTRY, "seat_fire_at": SEAT_FIRE_AT, "launch_selectors": sorted(LAUNCH_SELECTORS),
+         "entry": ENTRY, "seat_fire_at": SEAT_FIRE_AT, "launch_selectors": sorted(LAUNCH_SELECTORS), "launcher_code_hashes": len(LAUNCHER_CODE_HASHES),
          "halted": state["halted"], "halt_file": HALT_FILE, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
-    threading.Thread(target=watchdog, daemon=True).start()
+    threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()
     try:
         asyncio.run(feed_loop())
     except KeyboardInterrupt:

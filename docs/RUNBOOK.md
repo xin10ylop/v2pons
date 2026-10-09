@@ -197,6 +197,11 @@ Then live, one trade first:
 
 ## 5. Daily
 
+Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the
+totals, the money):
+
+    sudo python3 ~/v2pons/deploy/results.py            # the last 24 hours; add a number for more hours: results.py 72
+
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py status
     sudo /opt/flip-venv/bin/python3 ~/v2pons/src/score.py /var/log/flip/engine.jsonl 24
 

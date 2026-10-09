@@ -104,6 +104,7 @@ default; `ENTRY=follow` is the old entry.
 | `src/score.py` | prices every engine decision from the chain afterwards with the engine's exit: paper vs live, the crowd behind us, the pull against our sell |
 | `deploy/flip_setup.sh` | the box: venv, `/etc/flip/engine.env`, the `flip-engine` service, the log |
 | `deploy/relay_sim.py` | a buy and a sell through the relay on a live pool with no transaction (eth_call with state overrides) |
+| `deploy/results.py` | **the results in one screen**: `sudo python3 ~/v2pons/deploy/results.py` (state, launches, every trade, totals, money) |
 | `deploy/relay_deploy.py`, `relay_ops.py`, `englog.py`, `health.sh`, `watch.sh` | deploy the relay, move the stake, read the log, watch the trades as they happen |
 | `tests/` | `test_v4math.py` (the pricing), `test_engine.py` (the engine on a scripted feed: real signed transactions in real batch frames, the chain stubbed) |
 | `research/` | the analysis scripts, their data and outputs, the survey of other chains and launchpads, report section 24.54; `live_trades.py` reads the live trades back from the chain (`data/live_trades_oct8.txt`), `new_scheme.py` the operator's scheme from 14:59 (`data/new_scheme_oct8.txt`) |

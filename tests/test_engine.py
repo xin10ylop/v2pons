@@ -5,7 +5,9 @@ receipts make the trade_done line. Then the gates (dust, fee tier, late first bu
 frames, a reverted buy. The exit (release 0.3): a buy behind ours that pays TAKE_PROFIT sells at once; one that does not leaves the deadline; the
 pool's price follows every buy on the feed (a dust buy before the trigger moves minOut), buys that landed before the launch was
 armed are replayed onto it; a pull at or before our sell halts live trading (the halt file) until it is removed; BUY_DELAY_BLOCKS;
-the dry run's take-profit.
+the dry run's take-profit. Release 0.6: blocks with one transaction (kind 4) and nested batches; a lost reply to our buy;
+a refused buy; a sell retried; our buy not seen in the feed; the time fallback; the 'sold none' halt and its restart read; the
+sender's busy slot; a look-alike launcher in seat mode.
 Plain script: python3 tests/test_engine.py"""
 import os, sys, json, time, base64, tempfile, threading
 import rlp
@@ -27,18 +29,22 @@ RECEIPTS = {}; LOGS = []; SENT = []
 
 
 # --- stubs
+CODES = {}; NONCE_ON_CHAIN = ["0x5"]
 def fake_rpc(method, params, tries=4, timeout=10):
     if method == "eth_getTransactionReceipt": return RECEIPTS.get(params[0].lower())
     if method == "eth_getLogs": return LOGS
-    if method == "eth_getTransactionCount": return "0x5"
+    if method == "eth_getTransactionCount": return NONCE_ON_CHAIN[0]
+    if method == "eth_getCode": return CODES.get(params[0].lower(), "0x")
     if method == "eth_getBlockByNumber": return {"baseFeePerGas": hex(20_000_000), "number": "0x1"}
     raise RuntimeError(method)
 E.rpc = fake_rpc
 
 
+REPLIES = []                                                                   # scripted replies, oldest first; empty: every send accepted
 class FakeSender:
     def post(self, i, body, retry=True):
-        raw = bytes.fromhex(json.loads(body)["params"][0][2:]); SENT.append((i, raw)); return {"result": "0x" + keccak(raw).hex()}
+        raw = bytes.fromhex(json.loads(body)["params"][0][2:]); SENT.append((i, raw))
+        return REPLIES.pop(0) if REPLIES else {"result": "0x" + keccak(raw).hex()}
 E.SENDER = FakeSender(); E.SIGNER = ACCT; E.state["nonce"] = 5; E.state["base_fee"] = 20_000_000
 
 
@@ -265,10 +271,11 @@ print("ok BUY_DELAY_BLOCKS: fired one block after the trigger; skipped when the 
 
 # --- 14. ENTRY=seat: a launch through a launcher never seen before (known by its call), our buy at launch + 6, the burst behind it
 E.ENTRY = "seat"; E.LAUNCH_SELECTORS = {"2fcb9108"}; FRESH = "0x" + "5e" * 20
+OP_CODE = "0x" + "60806040" * 50; CODES[FRESH] = OP_CODE; E.LAUNCHER_CODE_HASHES = {keccak(bytes.fromhex(OP_CODE[2:])).hex()}   # the operator's launcher code, as the stub serves it
 
 
-def seat_launch(seq, nonce):
-    raw = signed(DEPLOYER, FRESH, 0, "0x2fcb9108" + w(1), nonce); h = "0x" + keccak(raw).hex(); RECEIPTS[h] = launch_receipt(h)
+def seat_launch(seq, nonce, launcher=FRESH):
+    raw = signed(DEPLOYER, launcher, 0, "0x2fcb9108" + w(1), nonce); h = "0x" + keccak(raw).hex(); RECEIPTS[h] = launch_receipt(h)
     E.ingest(frame(seq, [raw])); assert wait_for(lambda: PID in E.state["armed"]), "a launch through a fresh launcher was not armed"
     return E.state["armed"][PID]
 
@@ -290,6 +297,121 @@ reset(); E.state["nonce"] = 120; p = seat_launch(2000, 3)
 E.ingest(frame(2005, burst[:1]))                                                       # the burst before the seat: no trade
 E.ingest(frame(2006, [])); E.ingest(frame(2007, []))
 assert E.state["position"] is None and p["status"] == "late" and len(SENT) == 0
+reset(); E.state["nonce"] = 130; FAKE = "0x" + "6f" * 20; CODES[FAKE] = "0x" + "fe" * 40   # a look-alike launcher: the same call, other code
+p = seat_launch(2100, 4, launcher=FAKE)
+assert not p["eligible"] and p["launcher_code"].startswith("unknown"), p["launcher_code"]
+for s_ in range(2101, 2108):
+    E.ingest(frame(s_, []))
+assert E.state["position"] is None and len(SENT) == 0
 E.ENTRY = "follow"; E.LAUNCH_SELECTORS = set()
-print("ok seat: a launch through a fresh launcher armed by its call, the buy at launch + 6, the burst one block behind it takes the profit; a burst before the seat, no trade")
+print("ok seat: a launch through a fresh launcher armed by its call, the buy at launch + 6, the burst one block behind it takes the profit; a burst before the seat, no trade; a look-alike launcher (other code) never traded")
+
+
+# --- 15. release 0.6: the fixes from the review
+def frame4(seq, raw, ts=None):
+    """a block with one user transaction, as the sequencer sends it: a bare kind-4 message, no batch"""
+    return json.dumps({"messages": [{"sequenceNumber": seq, "message": {"message": {"header": {"kind": 3, "timestamp": ts or int(time.time())}, "l2Msg": base64.b64encode(b"\x04" + raw).decode()}}}]})
+
+
+def nested(seq, raws):
+    """a batch inside a batch"""
+    inner = b"\x03" + b"".join((len(r) + 1).to_bytes(8, "big") + b"\x04" + r for r in raws)
+    outer = b"\x03" + (len(inner)).to_bytes(8, "big") + inner
+    return json.dumps({"messages": [{"sequenceNumber": seq, "message": {"message": {"header": {"kind": 3, "timestamp": int(time.time())}, "l2Msg": base64.b64encode(outer).decode()}}}]})
+
+
+# 15a. a launch and our buy, each alone in its block (kind 4), and a trigger inside a nested batch: all seen
+reset(); E.DRY_RUN = False; E.state["nonce"] = 140
+raw = signed(DEPLOYER, LAUNCHER, 0, "0x2fcb9108" + w(1), 5); hl = "0x" + keccak(raw).hex(); RECEIPTS[hl] = launch_receipt(hl)
+E.ingest(frame4(2200, raw)); assert wait_for(lambda: PID in E.state["armed"]), "a launch alone in its block was missed"
+E.ingest(nested(2231, [signed(CROWD, UR, TRIG, BUY_DATA, 50)])); pos = E.state["position"]; assert pos and pos["trig_seq"] == 2231, "a trigger in a nested batch was missed"
+buy_raw = SENT[0][1]; E.ingest(frame(2232, [])); E.ingest(frame4(2233, buy_raw))
+assert pos["buy_seq"] == 2233 and pos["feed_tokens"] == pos["expected_tokens"], "our buy alone in its block was missed"
+E.ingest(frame(2234, [])); E.ingest(frame(2235, [])); assert pos["sell_sent"] and pos["sell_why"].startswith("deadline")
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(2233, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(2237, int(E.STAKE_WEI * 1.02), -pos["feed_tokens"])
+assert wait_for(lambda: done_at(140)); assert E.state["halted"] is None
+print("ok feed: a launch and our buy each alone in a block (kind 4), a trigger in a nested batch")
+
+# 15b. no reply to our buy (transport failure): the position stays open; the buy lands; the sell goes on schedule
+reset(); E.state["nonce"] = 150; p = do_launch(2300)
+REPLIES[:] = [{"error": {"message": "send failed twice: timed out"}}]
+E.ingest(frame(2331, [signed(CROWD, UR, TRIG, BUY_DATA, 51)])); pos = E.state["position"]
+assert pos is not None and pos.get("buy_reply_lost") and E.state["nonce"] == 152 and any("no reply to our buy" in e["what"] for e in events("alarm"))
+buy_raw = SENT[0][1]; E.ingest(frame(2332, [])); E.ingest(frame(2333, [buy_raw])); E.ingest(frame(2334, [])); E.ingest(frame(2335, []))
+assert pos["sell_sent"] and len(SENT) == 2
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(2333, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(2337, int(E.STAKE_WEI * 1.02), -pos["feed_tokens"])
+assert wait_for(lambda: done_at(150)); d = done_at(150)[-1]; assert d["sell"]["status"] == "ok" and E.state["halted"] is None, d
+print("ok a lost reply to our buy: the position kept, the buy seen in the feed, the sell on schedule, settled")
+
+# 15c. the node refuses our buy: no position, the nonce untouched
+reset(); E.state["nonce"] = 160; p = do_launch(2400)
+REPLIES[:] = [{"error": {"code": -32000, "message": "insufficient funds for gas * price + value"}}]
+E.ingest(frame(2431, [signed(CROWD, UR, TRIG, BUY_DATA, 52)]))
+assert E.state["position"] is None and events("buy_rejected") and E.state["trades_today"] == 0
+print("ok a refused buy: no position")
+
+# 15d. no reply to our buy and it never went in: the sell is refused (nonce too high) and retried, the trade closes, the nonce comes back to the chain's
+reset(); E.state["nonce"] = 170; NONCE_ON_CHAIN[0] = hex(170); p = do_launch(2500)
+REPLIES[:] = [{"error": {"message": "send failed twice: timed out"}}]
+E.ingest(frame(2531, [signed(CROWD, UR, TRIG, BUY_DATA, 53)])); pos = E.state["position"]; assert pos and E.state["nonce"] == 172
+nonce_high = {"error": {"code": -32000, "message": "nonce too high"}}; REPLIES[:] = [nonce_high] * E.SELL_TRIES
+E.RECEIPT_TIMEOUT_S = 0.3
+for s_ in range(2532, 2538):
+    E.ingest(frame(s_, []))
+assert pos["sell_sent"] and wait_for(lambda: done_at(170), 4.0), "no trade_done"
+d = done_at(170)[-1]; assert d["buy"] == "no receipt" and E.state["halted"] is None, d
+assert sum(1 for i, r in SENT if r == pos["sell_raw"]) == E.SELL_TRIES and any("not accepted" in e["what"] for e in events("alarm"))
+assert wait_for(lambda: E.state["nonce"] == 170), E.state["nonce"]
+E.RECEIPT_TIMEOUT_S = 25; NONCE_ON_CHAIN[0] = "0x5"
+print("ok a lost buy that never went in: the sell retried and refused, the trade closed, the nonce back to the chain's")
+
+# 15e. the first sell send fails (transport), the second goes in
+reset(); E.state["nonce"] = 180; p = do_launch(2600)
+E.ingest(frame(2631, [signed(CROWD, UR, TRIG, BUY_DATA, 54)])); pos = E.state["position"]; buy_raw = SENT[0][1]
+E.ingest(frame(2632, [])); E.ingest(frame(2633, [buy_raw])); E.ingest(frame(2634, []))
+REPLIES[:] = [{"error": {"message": "send failed twice: connection reset"}}]
+E.ingest(frame(2635, []))
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(2633, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(2637, int(E.STAKE_WEI * 1.02), -pos["feed_tokens"])
+assert wait_for(lambda: done_at(180)); ss = [e for e in events("sell_sent") if e["nonce"] == 181][-1]
+assert ss["tries"] == 2 and [i for i, r in SENT if r == pos["sell_raw"]] == [1, 0], (ss, [i for i, r in SENT])
+print("ok a failed sell send retried on the other connection")
+
+# 15f. the feed never shows our buy: the sell goes on the planned block's deadline
+reset(); E.state["nonce"] = 190; p = do_launch(2700)
+E.ingest(frame(2731, [signed(CROWD, UR, TRIG, BUY_DATA, 55)])); pos = E.state["position"]
+for s_ in (2732, 2733, 2734):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(2735, [])); assert pos["sell_sent"] and pos["sell_why"].startswith("deadline from the planned buy block")   # planned buy 2733 + 4 - 2
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(2734, -E.STAKE_WEI, pos["expected_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(2737, int(E.STAKE_WEI * 1.0), -pos["expected_tokens"])
+assert wait_for(lambda: done_at(190))
+print("ok our buy not seen in the feed: the sell on the planned block's deadline")
+
+# 15g. the feed stalls: the wall-clock fallback sends the sell
+reset(); E.state["nonce"] = 200; p = do_launch(2800)
+E.ingest(frame(2831, [signed(CROWD, UR, TRIG, BUY_DATA, 56)])); pos = E.state["position"]
+pos["fired_at"] -= 101; E.watchdog_tick()                                         # SELL_FALLBACK_S is 100 in these tests
+assert pos["sell_sent"] and pos["sell_why"] == "time fallback"
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(2833, -E.STAKE_WEI, pos["expected_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(2836, int(E.STAKE_WEI * 1.0), -pos["expected_tokens"])
+assert wait_for(lambda: done_at(200))
+print("ok the feed stalls: the time fallback sends the sell")
+
+# 15h. a filled buy whose sell sold nothing halts; the halt is read back after a restart
+reset(); E.state["nonce"] = 210; pos, buy_raw, B = relay_trade(2900, 210, 57)
+E.ingest(frame(B + 1, [])); E.ingest(frame(B + 2, []))
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(B, -E.STAKE_WEI, pos["feed_tokens"])
+RECEIPTS["0x" + pos["sell_hash"]] = {"status": "0x0", "blockNumber": hex(B + 4), "gasUsed": hex(30000), "effectiveGasPrice": hex(20_000_000), "transactionIndex": "0x2", "logs": []}
+assert wait_for(lambda: done_at(210)) and E.state["halted"] and "sold none" in E.state["halted"] and os.path.exists(E.HALT_FILE)
+E.state["halted"] = None; E.load_halt(); assert E.state["halted"] and "sold none" in E.state["halted"], "the halt was not read back"
+E.state["halted"] = None; os.remove(E.HALT_FILE)
+print("ok a filled buy whose sell sold nothing: halted, and the halt read back after a restart")
+
+# 15i. the sender: a slot held by the keepalive does not hold up a send
+S = E.Sender.__new__(E.Sender); S.locks = [threading.Lock(), threading.Lock()]; S.conns = [None, None]; S.last = [0.0, 0.0]
+S._oneoff = lambda body: {"result": "one-off"}; S._post_locked = lambda i, body, retry: {"result": "warm"}
+assert S.post(1, "{}") == {"result": "warm"}
+S.locks[1].acquire(); t0 = time.time(); r = S.post(1, "{}"); S.locks[1].release()
+assert r == {"result": "one-off"} and time.time() - t0 < 0.5, r
+assert E.reply_kind({"result": "0x1"}) == "ok" and E.reply_kind({"error": {"message": "send failed"}}) == "unknown"
+assert E.reply_kind({"error": {"code": -32000, "message": "already known"}}) == "in" and E.reply_kind({"error": {"code": -32000, "message": "nonce too high"}}) == "rejected"
+print("ok the sender: a busy slot falls back to a fresh connection at once; replies classified")
 os.remove(LOG)
