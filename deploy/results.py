@@ -75,22 +75,26 @@ def main():
     tot = 0.0; won = lost = pulled = 0
     for d in done:
         ret = d.get("ret"); usd = d.get("pnl_usd") or 0.0; tot += usd
-        won += 1 if usd > 0 else 0; lost += 1 if usd <= 0 else 0; pulled += 1 if d.get("pulled_before_sell") else 0
         sold = d.get("sell_after_buy_blocks", d.get("hold_blocks")); pull = d.get("pull_after_buy_blocks")
+        first = d.get("pulled_before_sell")
+        if first is None and pull is not None and sold is not None:                  # older releases did not log it: from the blocks
+            first = True if pull < sold else (None if pull == sold else False)
+        won += 1 if usd > 0 else 0; lost += 1 if usd <= 0 else 0; pulled += 1 if first else 0
         why = ((d.get("entry") + ", ") if d.get("entry") else "") + (d.get("sell_why") or "").split(":")[0]
         res = "no fill" if ret is None else f"{100 * ret:+.1f}%"
-        flag = "   <== THE PULL CAME FIRST" if d.get("pulled_before_sell") else ""
-        print(f"  {hms(d['t']):15s} {d.get('fee', 0) / 1e4:6.3f}% {res:>8s} {usd:+7.3f}  {'+' + str(sold) if sold is not None else '-':>8s} {'+' + str(pull) if pull is not None else 'none':>8s}  {why}{flag}")
+        flag = "   <== THE PULL CAME FIRST" if first else ("   (same block as the pull: our sell got in first)" if pull is not None and pull == sold and usd > -1 else "")
+        print(f"  {hms(d['t']):15s} {d.get('fee', 0) / 1e4:6.3f}% {res:>8s} {usd:+7.3f}  {'+' + str(sold) if sold is not None else '-':>8s} {'+' + str(pull) if pull is not None else 'later':>8s}  {why}{flag}")
     if done:
         print(f"  TOTAL {'+' if tot >= 0 else '-'}${abs(tot):.3f} ({len(done)} trades: {won} up, {lost} flat or down; pulls before our sell: {pulled})")
-        print("  'sold at' and 'pull at' count blocks after our buy (0.1 s each): every sell should land before the pull")
+        print("  'sold at' and 'pull at' count blocks after our buy (0.1 s each): every sell should land before the pull;")
+        print("  'later' = no pull within 30 blocks of our sell (it came after, on the operator's own schedule)")
     # the dry run's decisions
     wf = {x["pid"]: x for x in ev if x["ev"] == "would_fire"}; ws = [x for x in ev if x["ev"] == "would_sell"]
     if wf:
         print(f"\nDRY-RUN DECISIONS (nothing sent): {len(wf)}")
         for x in ws:
             tp = x.get("tp_ret")
-            print(f"  {hms(x['t']):15s} would sell {x.get('after_buy')} block(s) after the planned buy: {(x.get('why') or '').split(':')[0]}" + (f", priced {100 * tp:+.1f}%" if tp is not None else ""))
+            print(f"  {hms(x['t']):15s} would sell {x.get('after_buy') if x.get('after_buy') is not None else '?'} block(s) after the planned buy: {(x.get('why') or '').split(':')[0]}" + (f", priced {100 * tp:+.1f}%" if tp is not None else ""))
     al = [x for x in ev if x["ev"] == "alarm"]
     if al:
         print(f"\nALARMS: {len(al)}, the last: {hms(al[-1]['t'])} {str(al[-1].get('what'))[:150]}")
