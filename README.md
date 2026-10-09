@@ -100,6 +100,10 @@ seat on a per-launch launcher copy and the follow on the original launcher. Rele
 its own thread, the nonce is the chain's after every trade, a launcher's code is read again at the launch's block, and a buy that
 never went in does not count against the daily cap.
 
+Release 0.9 adds a second strategy, `FRONT`: ahead of a volume bot's scheduled first buy on its 2.4333285 ETH PositionManager launches (about 330 a
+day, +13% a trade in an exact replay), armed from the launch transaction in the feed, with its own dry-run switch, daily cap and halt. A census of
+every v4 ETH pool since Oct 8 found no other operator running the follow pattern, and the volume bot's other families pull on outsiders.
+
 ## Layout
 
 | path | what |

@@ -48,13 +48,13 @@ keepalive could hold the sell's connection; a launch found by its call alone was
 
 Settings come from the environment (/etc/flip/engine.env on the box). Log: JSONL, one event per line, LOG_PATH.
 """
-import os, sys, json, time, base64, threading, asyncio, socket, ssl, http.client, urllib.request, urllib.parse, datetime, traceback, collections
+import os, sys, json, math, time, base64, threading, asyncio, socket, ssl, http.client, urllib.request, urllib.parse, datetime, traceback, collections
 import rlp
 from eth_utils import keccak, to_checksum_address
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import v4math
 
-RELEASE = "0.8"
+RELEASE = "0.9"
 
 
 def env(k, d=""):
@@ -89,6 +89,16 @@ BUY_GAS = int(env("BUY_GAS", "350000")); SELL_GAS = int(env("SELL_GAS", "350000"
 MAX_TRADES_PER_DAY = int(env("MAX_TRADES_PER_DAY", "10")); DAILY_STOP_USD = float(env("DAILY_STOP_USD", "15"))
 STALE_S = float(env("STALE_S", "2.5")); RECEIPT_TIMEOUT_S = float(env("RECEIPT_TIMEOUT_S", "25"))
 POSITION_MANAGER = env("POSITION_MANAGER", "0x58daec3116aae6d93017baaea7749052e8a04fa7").lower().replace("0x", "")
+# the 'front' strategy: a volume bot's launches (PositionManager multicall, 1,444 bytes, exactly 2.4333285 ETH, fee 0.25%, about 330 a day) get a
+# scheduled first buy of 0.05-0.25 ETH at launch + 7..13, quoted at the launch state; we buy in the launch's next block and sell into it.
+# Armed from the launch transaction itself (the PoolKey, price and liquidity are in its calldata), so we fire in the launch block.
+FRONT = env("FRONT", "0") != "0"; FRONT_DRY_RUN = env("FRONT_DRY_RUN", "1") != "0"
+FRONT_VALUE_WEI = int(env("FRONT_VALUE_WEI", "2433328500000000000")); FRONT_CALLDATA_LEN = int(env("FRONT_CALLDATA_LEN", "1444"))
+FRONT_STAKE_ETH = min(float(env("FRONT_STAKE_ETH", "0.0012")), 0.006); FRONT_STAKE_WEI = int(FRONT_STAKE_ETH * 1e18)   # the bot's first buy reverts once ~0.012 ETH sits ahead of it
+FRONT_TAKE_PROFIT = float(env("FRONT_TAKE_PROFIT", "0.01")); FRONT_HOLD_BLOCKS = int(env("FRONT_HOLD_BLOCKS", "12"))       # the sell goes on the bot's buy, at the latest when the feed shows our buy + 12
+FRONT_FIRE_MAX = int(env("FRONT_FIRE_MAX", "2")); FRONT_MAX_PER_DAY = int(env("FRONT_MAX_PER_DAY", "400"))                 # fire only while the feed is at the launch + 2 at most (land by + 4)
+FRONT_HALT_FILE = env("FRONT_HALT_FILE", HALT_FILE + ".front")                                                         # a pull before our sell stops the front strategy only
+SEL_MULTICALL = "ac9650d8"; SEL_INIT_POOL = "f7020405"; SEL_MODLIQ = "dd46508f"
 
 T_INIT = keccak(text="Initialize(bytes32,address,address,uint24,int24,address,uint160,int24)").hex()
 T_SWAP = keccak(text="Swap(bytes32,address,int128,int128,uint160,uint128,int24,uint24)").hex()
@@ -253,7 +263,7 @@ def parse_tx(t):
 
 # ---------------------------------------------------------------- state
 state = {"seq": 0, "ts": 0, "nonce": None, "base_fee": 20_000_000, "armed": {}, "position": None, "day": None, "trades_today": 0, "pnl_today_usd": 0.0,
-         "launches": 0, "fires": 0, "blocks": 0, "stale_blocks": 0, "connected": False, "halted": None,
+         "launches": 0, "fires": 0, "blocks": 0, "stale_blocks": 0, "connected": False, "halted": None, "front_today": 0, "front_halted": None,
          "recent": collections.deque(maxlen=8000)}                                   # (seq, to, value, data) of recent ETH-carrying calls: replayed onto a pool armed after its first buys
 lock = threading.RLock()
 
@@ -276,16 +286,20 @@ def load_halt():
     """a halt written before a restart still holds"""
     if os.path.exists(HALT_FILE):
         state["halted"] = open(HALT_FILE).read().strip() or "halted"
+    if os.path.exists(FRONT_HALT_FILE):
+        state["front_halted"] = open(FRONT_HALT_FILE).read().strip() or "halted"
 
 
-def halt(reason):
-    state["halted"] = reason
+def halt(reason, front=False):
+    """front: the front strategy only (its own file); otherwise all live trading"""
+    key, path = ("front_halted", FRONT_HALT_FILE) if front else ("halted", HALT_FILE)
+    state[key] = reason
     try:
-        with open(HALT_FILE, "w") as f:
+        with open(path, "w") as f:
             f.write(reason + "\n")
     except Exception:
         pass
-    log({"ev": "alarm", "what": f"live trading halted: {reason}; remove {HALT_FILE} and restart to resume", "halt_file": HALT_FILE})
+    log({"ev": "alarm", "what": f"{'the front strategy' if front else 'live trading'} halted: {reason}; remove {path} and restart to resume", "halt_file": path})
 
 
 def today():
@@ -295,7 +309,7 @@ def today():
 def roll_day():
     d = today()
     if state["day"] != d:
-        state["day"] = d; state["trades_today"] = 0; state["pnl_today_usd"] = 0.0
+        state["day"] = d; state["trades_today"] = 0; state["front_today"] = 0; state["pnl_today_usd"] = 0.0
 
 
 def pool_from_receipt(rec):
@@ -317,6 +331,72 @@ def pool_from_receipt(rec):
     p["liq"] = v4math.active_liquidity(p["tick0"], [(lo, hi, dl) for lo, hi, dl, ppid in adds if ppid == pid])
     p["token_bytes"] = bytes.fromhex(p["token"])
     return p
+
+
+def _u(b, o):
+    return int.from_bytes(b[o:o + 32], "big")
+
+
+def _s(b, o):
+    x = _u(b, o); return x - (1 << 256) if x >> 255 else x
+
+
+def _dyn(b, base, at):
+    """an abi dynamic `bytes` whose offset (from `base`) is the word at `at`: (start, length)"""
+    st = base + _u(b, at); ln = _u(b, st)
+    if st + 32 + ln > len(b):
+        raise ValueError("bytes out of range")
+    return st + 32, ln
+
+
+def decode_launch(data):
+    """a PositionManager multicall [initializePool(PoolKey, sqrtPriceX96), modifyLiquidities(abi.encode(actions, params), deadline)]
+    as the feed shows it: the pool, its price and its first liquidity, with no receipt. None if it is not that shape."""
+    b = bytes(data)
+    try:
+        if len(b) < 68 or b[:4].hex() != SEL_MULTICALL:
+            return None
+        arr = 4 + _u(b, 4); n = _u(b, arr)
+        if not 0 < n <= 8:
+            return None
+        key = sqrt_p = None; mint = None
+        for i in range(n):
+            st, ln = _dyn(b, arr + 32, arr + 32 + 32 * i); sel = b[st:st + 4].hex()
+            if sel == SEL_INIT_POOL and ln >= 196 and key is None:
+                k = st + 4; key = (k, b[k:k + 160]); sqrt_p = _u(b, k + 160)
+            elif sel == SEL_MODLIQ and mint is None:
+                a = st + 4; ust, _ = _dyn(b, a, a); ast, aln = _dyn(b, ust, ust); actions = b[ast:ast + aln]
+                parr = ust + _u(b, ust + 32); pn = _u(b, parr)
+                for j in range(min(pn, len(actions))):
+                    pst, pln = _dyn(b, parr + 32, parr + 32 + 32 * j)
+                    if actions[j] == 0x02 and pln >= 384:                                # MINT_POSITION(PoolKey, tickLower, tickUpper, liquidity, ...)
+                        mint = (b[pst:pst + 160], _s(b, pst + 160), _s(b, pst + 192), _u(b, pst + 224)); break
+        if key is None or mint is None or mint[0] != key[1]:
+            return None
+        kb = key[1]
+        return {"pid": "0x" + keccak(kb).hex(), "c0": kb[12:32].hex(), "token": kb[44:64].hex(), "fee": _u(kb, 64), "tick_spacing": _s(kb, 96), "hooks": kb[140:160].hex(),
+                "sqrt_p": sqrt_p, "lo": mint[1], "hi": mint[2], "mint_liq": mint[3]}
+    except Exception:
+        return None
+
+
+def tick_at(sqrt_p):
+    return math.floor(2 * math.log(sqrt_p / 2 ** 96) / math.log(1.0001))
+
+
+def arm_front(data, h, seq, seen_at):
+    """a front launch in the feed: armed at once from its calldata; it fires at the end of this block (ingest)"""
+    d = decode_launch(data)
+    if d is None:
+        log({"ev": "launch_undecoded", "tx": h, "seq": seq, "family": "front"}); return
+    t0 = tick_at(d["sqrt_p"]); liq = d["mint_liq"] if d["lo"] <= t0 < d["hi"] else 0
+    p = {**{k: d[k] for k in ("pid", "c0", "token", "fee", "tick_spacing", "hooks", "sqrt_p")}, "tick0": t0, "liq": liq, "token_bytes": bytes.fromhex(d["token"]),
+         "launch_seq": seq, "launch_ts": state["ts"], "armed_at": mono(), "arm_ms": round(1000 * (mono() - seen_at), 1), "first_buy": None, "status": "armed", "tx": h,
+         "sp": float(d["sqrt_p"]), "buys": 0, "entry": "front", "launcher_code": "front", "arm_seq": seq}
+    p["eligible"] = p["c0"] == "0" * 40 and p["hooks"] == "0" * 40 and FEE_MIN_PPM <= p["fee"] <= FEE_MAX_PPM and liq >= MIN_LIQUIDITY
+    state["armed"][p["pid"]] = p; state["launches"] += 1
+    log({"ev": "armed", "pid": p["pid"], "token": p["token"], "fee": p["fee"], "tick_spacing": p["tick_spacing"], "hooks": p["hooks"][-8:], "liq": liq, "sqrt_p": p["sqrt_p"], "seq": seq,
+         "arm_ms": p["arm_ms"], "arm_seq": seq, "eligible": p["eligible"], "eth_pair": p["c0"] == "0" * 40, "buys_before_arm": 0, "launcher_code": "front", "entry": "front"})
 
 
 def wait_receipt(h, timeout, every=0.04):
@@ -393,8 +473,8 @@ def prune(seq):
 RELAY_TO = to_checksum_address(RELAY) if RELAY else "0x" + "00" * 20                     # a dry run with no relay yet still builds the transactions
 
 
-def tx_buy(p, nonce, min_out, deadline):
-    data = "0x" + SEL_BUY + word(p["c0"]) + word(p["token"]) + word(p["fee"]) + word(p["tick_spacing"]) + word(p["hooks"]) + word(STAKE_WEI) + word(min_out) + word(deadline)
+def tx_buy(p, nonce, min_out, deadline, stake=None):
+    data = "0x" + SEL_BUY + word(p["c0"]) + word(p["token"]) + word(p["fee"]) + word(p["tick_spacing"]) + word(p["hooks"]) + word(stake or STAKE_WEI) + word(min_out) + word(deadline)
     return {"to": RELAY_TO, "value": 0, "data": data, "gas": BUY_GAS, "gasPrice": int(state["base_fee"] * GAS_HEADROOM), "nonce": nonce, "chainId": CHAIN_ID}
 
 
@@ -421,35 +501,50 @@ def fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq=None):
         log({"ev": "alarm", "what": "fire failed", "pid": p["pid"], "trace": traceback.format_exc()[-600:]})
         pos = state["position"]
         if pos is not None and pos["pid"] == p["pid"] and pos.get("buy_hash") is None:
-            state["position"] = None; state["trades_today"] = max(0, state["trades_today"] - 1)
+            state["position"] = None; uncount(pos)
+
+
+def uncount(pos):
+    """the trade did not happen (refused, never in): it gives its place in the day's count back"""
+    k = pos.get("count_key", "trades_today"); state[k] = max(0, state[k] - 1)
 
 
 def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
     roll_day()
-    if state["halted"] and not DRY_RUN:
-        log({"ev": "skip", "why": "halted: " + state["halted"], "pid": p["pid"], "seq": seq}); return
+    front = p.get("entry") == "front"; dry = DRY_RUN or (front and FRONT_DRY_RUN)
+    halted = state["halted"] or (state["front_halted"] if front else None)
+    if halted and not dry:
+        log({"ev": "skip", "why": "halted: " + halted, "pid": p["pid"], "seq": seq}); return
     if state["position"] is not None:
-        log({"ev": "skip", "why": "position open", "pid": p["pid"], "seq": seq}); return
-    if state["trades_today"] >= MAX_TRADES_PER_DAY:
-        log({"ev": "skip", "why": "daily cap", "pid": p["pid"], "seq": seq, "trades_today": state["trades_today"]}); return
+        if state["position"]["dry"] and not dry and state["position"].get("entry") == "front":     # a dry front trade never holds up a live one
+            log({"ev": "skip", "why": "dry front position dropped for a live trade", "pid": state["position"]["pid"], "seq": seq}); state["position"] = None
+        else:
+            log({"ev": "skip", "why": "position open", "pid": p["pid"], "seq": seq}); return
+    count_key, cap = ("front_today", FRONT_MAX_PER_DAY) if front else ("trades_today", MAX_TRADES_PER_DAY)
+    if state[count_key] >= cap:
+        log({"ev": "skip", "why": "daily cap", "pid": p["pid"], "seq": seq, count_key: state[count_key]}); return
     if state["pnl_today_usd"] <= -DAILY_STOP_USD:
         log({"ev": "skip", "why": "daily stop", "pid": p["pid"], "seq": seq, "pnl_today_usd": round(state["pnl_today_usd"], 2)}); return
     if seq - p["launch_seq"] > TRIGGER_MAX_BLOCKS:
         log({"ev": "skip", "why": "late first buy (not the crowd)", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]}); return
     if not p["eligible"]:
         log({"ev": "skip", "why": "pool not eligible", "pid": p["pid"], "fee": p["fee"], "liq": p["liq"]}); return
+    stake = FRONT_STAKE_WEI if front else STAKE_WEI
+    hold, send_after = (FRONT_HOLD_BLOCKS, FRONT_HOLD_BLOCKS) if front else (HOLD_BLOCKS, HOLD_BLOCKS - SELL_LEAD_BLOCKS)
     fee = p["fee"]; sp1 = int(p["sp"])                                             # the pool as the feed shows it: the trigger and every buy before it
-    expected = v4math.buy_out_int(sp1, p["liq"], STAKE_WEI, fee); min_out = int(expected * (1 - BUY_SLIP))
-    sp2 = int(v4math.sqrt_after_buy(sp1, p["liq"], net_of_fee(STAKE_WEI, fee)))
+    expected = v4math.buy_out_int(sp1, p["liq"], stake, fee); min_out = int(expected * (1 - BUY_SLIP))
+    sp2 = int(v4math.sqrt_after_buy(sp1, p["liq"], net_of_fee(stake, fee)))
     eth_back_flat = v4math.sell_out_int(sp2, p["liq"], expected, fee)             # what the sell gets if nobody buys behind us
     nonce = state["nonce"] if state["nonce"] is not None else 0
     deadline = ts + BUY_DEADLINE_S if BUY_DEADLINE_S > 0 else 0                        # 0: no deadline (the relay skips its check)
-    buy = tx_buy(p, nonce, min_out, deadline); sell = tx_sell(p, nonce + 1)
+    buy = tx_buy(p, nonce, min_out, deadline, stake); sell = tx_sell(p, nonce + 1)
     pos = {"pid": p["pid"], "token": p["token"], "fee": fee, "entry": p.get("entry", ENTRY), "trig_seq": seq, "trig_ts": ts, "trig_value": trig_value, "trig_hash": trig_hash, "fired_at": mono(), "nonce": nonce,
-           "expected_tokens": expected, "min_out": min_out, "flat_eth_back": eth_back_flat, "buy_seq": None, "sell_sent": False, "sell_seq_sent": None, "buy_hash": None, "sell_hash": None, "sell_raw": None, "dry": DRY_RUN,
-           "fire_seq": fire_seq, "plan_buy_seq": fire_seq + 2, "plan_sell_seq": fire_seq + 2 + HOLD_BLOCKS, "feed_tokens": None, "tp_ret": None}
-    state["position"] = pos; state["fires"] += 1; state["trades_today"] += 1; p["status"] = "fired"
-    if DRY_RUN:
+           "expected_tokens": expected, "min_out": min_out, "flat_eth_back": eth_back_flat, "buy_seq": None, "sell_sent": False, "sell_seq_sent": None, "buy_hash": None, "sell_hash": None, "sell_raw": None, "dry": dry,
+           "fire_seq": fire_seq, "plan_buy_seq": fire_seq + 2, "plan_sell_seq": fire_seq + 2 + hold, "feed_tokens": None, "tp_ret": None,
+           "stake": stake, "send_after": send_after, "tp": FRONT_TAKE_PROFIT if front else TAKE_PROFIT, "count_key": count_key,
+           "fallback_s": SELL_FALLBACK_S + (0.11 * (FRONT_HOLD_BLOCKS - (HOLD_BLOCKS - SELL_LEAD_BLOCKS)) if front else 0.0)}
+    state["position"] = pos; state["fires"] += 1; state[count_key] += 1; p["status"] = "fired"
+    if dry:
         log({"ev": "would_fire", **{k: v for k, v in pos.items() if k not in ("dry", "sell_raw")}, "buy_tx": buy, "sell_tx": sell, "react_ms": round(1000 * (mono() - seen_at), 1)})
         return
     t0 = mono(); raw_b, hb = sign(buy); raw_s, hs = sign(sell); pos["buy_hash"] = hb; pos["sell_hash"] = hs; pos["sell_raw"] = raw_s; t1 = mono()
@@ -480,7 +575,7 @@ def deliver_buy(pos, raw_b, t1):
         n = chain_nonce()                                                          # nothing of ours is in flight: the chain's count is right
         with lock:
             state["nonce"] = n if n is not None else pos["nonce"]                  # no answer: the refused buy's nonce was not used
-            state["position"] = None; state["trades_today"] = max(0, state["trades_today"] - 1)
+            state["position"] = None; uncount(pos)
         log({"ev": "nonce", "chain": n, "engine": state["nonce"]})
     # refused after its sell went out (a slow refusal): the sell is refused too, and settle closes the trade
 
@@ -490,7 +585,7 @@ def send_sell(why):
     if pos is None or pos["sell_sent"]:
         return
     pos["sell_sent"] = True; pos["sell_seq_sent"] = state["seq"]; pos["sell_sent_at"] = mono(); pos["sell_why"] = why
-    if DRY_RUN:
+    if pos["dry"]:
         log({"ev": "would_sell", "pid": pos["pid"], "seq": state["seq"], "why": why, "buy_seq": pos["buy_seq"], "after_buy": state["seq"] - pos["buy_seq"] if pos["buy_seq"] else None, "tp_ret": pos["tp_ret"],
              "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
         threading.Thread(target=settle_dry, args=(pos,), daemon=True).start()
@@ -551,7 +646,7 @@ def settle(pos):
 
 def _settle(pos):
     rb = wait_receipt(pos["buy_hash"], RECEIPT_TIMEOUT_S); rs = wait_receipt(pos["sell_hash"], RECEIPT_TIMEOUT_S)
-    out = {"ev": "trade_done", "dry": False, "entry": pos.get("entry"), "pid": pos["pid"], "token": pos["token"], "fee": pos["fee"], "trig_seq": pos["trig_seq"], "trig_value": pos["trig_value"], "nonce": pos["nonce"],
+    out = {"ev": "trade_done", "dry": False, "entry": pos.get("entry"), "stake": pos.get("stake", STAKE_WEI), "pid": pos["pid"], "token": pos["token"], "fee": pos["fee"], "trig_seq": pos["trig_seq"], "trig_value": pos["trig_value"], "nonce": pos["nonce"],
            "expected_tokens": pos["expected_tokens"], "min_out": pos["min_out"], "buy_seq_feed": pos["buy_seq"], "sell_why": pos.get("sell_why"), "sell_seq_sent": pos["sell_seq_sent"]}
     gas_wei = 0; eth_in = 0; eth_out = 0; tokens = 0
     for name, rec in (("buy", rb), ("sell", rs)):
@@ -579,7 +674,8 @@ def _settle(pos):
         except Exception as e:
             out["pull_check"] = str(e)[:100]
         if out.get("pulled_before_sell"):
-            halt(f"the operator's pull landed {out['pull_after_buy_blocks']} blocks after our buy, at or before our sell ({b1 - b0}): its reaction is now faster than our exit")
+            halt(f"the operator's pull landed {out['pull_after_buy_blocks']} blocks after our buy, at or before our sell ({b1 - b0}): its reaction is now faster than our exit",
+                 front=pos.get("entry") == "front")
     if rb and rb.get("status") == "0x1" and not out.get("pulled_before_sell") and not (isinstance(out.get("sell"), dict) and out["sell"].get("tokens_in")):
         halt("the buy filled and the sell sold none of it (sell: " + (out["sell"]["status"] if isinstance(out.get("sell"), dict) else str(out.get("sell"))) + ")")
     pnl = eth_out - eth_in - gas_wei
@@ -589,7 +685,7 @@ def _settle(pos):
     with lock:
         roll_day(); state["pnl_today_usd"] += out["pnl_usd"]
         if rb is None:                                                                 # no buy receipt: the buy never went in; it does not count against the cap
-            state["trades_today"] = max(0, state["trades_today"] - 1)
+            uncount(pos)
         if n is not None:
             state["nonce"] = n
         if state["position"] is pos:
@@ -627,7 +723,7 @@ def refresh_nonce():
 def watchdog_tick():
     """the sell's wall-clock fallback, if the feed stalls"""
     pos = state["position"]
-    if pos and not pos["sell_sent"] and mono() - pos["fired_at"] > SELL_FALLBACK_S:
+    if pos and not pos["sell_sent"] and mono() - pos["fired_at"] > pos.get("fallback_s", SELL_FALLBACK_S):
         with lock:
             send_sell("time fallback")
 
@@ -654,9 +750,9 @@ def our_buy_landed(pos, seq, virtual=False):
     point (exact to 1e-15 against the seven live fills), and, live, the pool moved by it"""
     pos["buy_seq"] = seq; p = state["armed"].get(pos["pid"])
     if p is not None:
-        pos["feed_tokens"] = v4math.buy_out_int(int(p["sp"]), p["liq"], STAKE_WEI, p["fee"])
+        pos["feed_tokens"] = v4math.buy_out_int(int(p["sp"]), p["liq"], pos["stake"], p["fee"])
         if not virtual:
-            apply_buy(p, STAKE_WEI)
+            apply_buy(p, pos["stake"])
     log({"ev": "buy_seen", "pid": pos["pid"], "seq": seq, "offset": seq - pos["trig_seq"], "feed_tokens": pos["feed_tokens"], "expected_tokens": pos["expected_tokens"], "dry": virtual,
          "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
 
@@ -665,10 +761,11 @@ def take_profit(pos, p):
     """a buy landed behind ours: what the sell gets now, after the fee and the trade's gas. The crowd buys that were already on
     their way when we bought are the whole profit (the operator stops its crowd and pulls once it sees us), so the first one that
     pays TAKE_PROFIT is the exit: every block after it is only the pull's risk."""
-    sp = p["sp"] if not pos["dry"] else v4math.sqrt_after_buy(p["sp"], p["liq"], net_of_fee(STAKE_WEI, p["fee"]))   # the dry run is not in the pool: put our buy in (1/sqrtP adds)
+    stake = pos["stake"]
+    sp = p["sp"] if not pos["dry"] else v4math.sqrt_after_buy(p["sp"], p["liq"], net_of_fee(stake, p["fee"]))   # the dry run is not in the pool: put our buy in (1/sqrtP adds)
     eth = v4math.sell_out_int(int(sp), p["liq"], pos["feed_tokens"], p["fee"])
-    ret = (eth - STAKE_WEI - round_trip_gas_wei()) / STAKE_WEI
-    if ret >= TAKE_PROFIT:
+    ret = (eth - stake - round_trip_gas_wei()) / stake
+    if ret >= pos["tp"]:
         pos["tp_ret"] = round(ret, 4); send_sell(f"take profit: a buy behind ours, the sell prices at {ret:+.1%}")
 
 
@@ -682,7 +779,7 @@ def on_buy(p, seq, to, value, h, stale, seen_at):
         p["first_buy"] = seq
         log({"ev": "first_buy", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"], "value": value, "to": to, "fee": p["fee"], "eligible": p["eligible"], "stale": stale,
              "ms_since_arm": round(1000 * (mono() - p["armed_at"]), 1)})
-        if p["status"] == "armed" and p.get("entry") == "seat":                        # the burst came before our seat: no trade on this pool
+        if p["status"] == "armed" and p.get("entry") in ("seat", "front"):             # the burst (or the volume bot's buy) came before our seat: no trade on this pool
             p["status"] = "late"
         elif p["status"] == "armed" and not stale:                                     # a stale first buy is late: no trade on this pool, not on its next buy either
             if BUY_DELAY_BLOCKS > 0:
@@ -728,6 +825,10 @@ def ingest(raw):
                 pos = state["position"]
                 if pos is not None and pos["buy_hash"] == h and pos["buy_seq"] is None:
                     our_buy_landed(pos, seq); continue
+                if FRONT and to == POSITION_MANAGER and value == FRONT_VALUE_WEI and len(data) == FRONT_CALLDATA_LEN and data[:4].hex() == SEL_MULTICALL:
+                    if not stale:
+                        log({"ev": "launch", "tx": h, "seq": seq, "to": to, "family": "front"}); arm_front(data, h, seq, seen_at)
+                    continue
                 if to in LAUNCHERS or (LAUNCH_SELECTORS and data[:4].hex() in LAUNCH_SELECTORS):
                     if not stale:
                         log({"ev": "launch", "tx": h, "seq": seq, "to": to}); threading.Thread(target=arm_launch, args=(h, seq, state["ts"], seen_at, to), daemon=True).start()
@@ -743,6 +844,11 @@ def ingest(raw):
                     p["status"] = "armed" if not stale else "skipped"
                     if not stale:
                         fire(p, p["trig"][0], state["ts"], p["trig"][1], p["trig"][2], seen_at, fire_seq=seq)
+                elif p.get("entry") == "front" and p["status"] == "armed" and p["first_buy"] is None and seq >= p["launch_seq"]:
+                    if stale or seq > p["launch_seq"] + FRONT_FIRE_MAX:                         # too late to land ahead of the volume bot's first buy (+7..13)
+                        p["status"] = "late"; log({"ev": "skip", "why": "front: too late to land ahead of the bot's first buy", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]})
+                    else:
+                        fire(p, seq, state["ts"], 0, p["tx"], seen_at)
                 elif p.get("entry") == "seat" and p["status"] == "armed" and p["first_buy"] is None and seq >= p["launch_seq"] + SEAT_FIRE_AT:
                     if stale or seq > p["launch_seq"] + SEAT_FIRE_AT + 1:                     # armed too late to land ahead of the burst
                         p["status"] = "late"; log({"ev": "skip", "why": "seat: armed too late to land ahead of the burst", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]})
@@ -750,13 +856,14 @@ def ingest(raw):
                         fire(p, seq, state["ts"], 0, p["tx"], seen_at)                          # the seat's trigger is the launch, its block the fire block
             pos = state["position"]
             if pos is not None and not pos["sell_sent"]:
-                if pos["buy_seq"] is not None and seq >= pos["buy_seq"] + HOLD_BLOCKS - SELL_LEAD_BLOCKS:
+                if pos["buy_seq"] is not None and seq >= pos["buy_seq"] + pos["send_after"]:
                     send_sell("deadline: no buy behind ours paid TAKE_PROFIT; out before the operator's reaction")
-                elif pos["buy_seq"] is None and seq >= pos["plan_buy_seq"] + HOLD_BLOCKS - SELL_LEAD_BLOCKS:
+                elif pos["buy_seq"] is None and seq >= pos["plan_buy_seq"] + pos["send_after"]:
                     send_sell("deadline from the planned buy block (buy not seen in the feed)")
             if state["blocks"] % 600 == 0:                                   # about once a minute: alive, decoding, and what it has seen
                 prune(seq); log({"ev": "flow", "seq": seq, "ts": state["ts"], "lag_s": round(wall - state["ts"], 1), "blocks": state["blocks"], "txs": state["txs"], "launches": state["launches"], "fires": state["fires"], "armed": len(state["armed"]),
-                                 "stale_blocks": state["stale_blocks"], "trades_today": state["trades_today"], "pnl_today_usd": round(state["pnl_today_usd"], 2), "halted": state["halted"]})
+                                 "stale_blocks": state["stale_blocks"], "trades_today": state["trades_today"], "front_today": state["front_today"], "pnl_today_usd": round(state["pnl_today_usd"], 2),
+                                 "halted": state["halted"], "front_halted": state["front_halted"]})
 
 
 async def feed_loop():
@@ -798,6 +905,8 @@ def checks():
             raise SystemExit(f"the relay's owner is 0x{owner[-40:]}, WALLET is {WALLET}")
         if not DRY_RUN and bal < STAKE_WEI:
             raise SystemExit(f"the relay holds {bal / 1e18:.6f} ETH, under the stake {STAKE_ETH}")
+        if FRONT and not DRY_RUN and not FRONT_DRY_RUN and bal < FRONT_STAKE_WEI:
+            raise SystemExit(f"the relay holds {bal / 1e18:.6f} ETH, under the front stake {FRONT_STAKE_ETH}")
     if WALLET:
         state["nonce"] = int(rpc("eth_getTransactionCount", [h0x(WALLET), "pending"]), 16); info["wallet_nonce"] = state["nonce"]
         info["wallet_eth"] = int(rpc("eth_getBalance", [h0x(WALLET), "latest"]), 16) / 1e18
@@ -819,6 +928,8 @@ def main():
          "fee_ppm": [FEE_MIN_PPM, FEE_MAX_PPM], "min_liquidity": MIN_LIQUIDITY, "trigger_max_blocks": TRIGGER_MAX_BLOCKS, "buy_slip": BUY_SLIP, "buy_deadline_s": BUY_DEADLINE_S, "gas_headroom": GAS_HEADROOM,
          "hold_blocks": HOLD_BLOCKS, "sell_lead_blocks": SELL_LEAD_BLOCKS, "take_profit": TAKE_PROFIT, "buy_delay_blocks": BUY_DELAY_BLOCKS,
          "entry": ENTRY, "seat_fire_at": SEAT_FIRE_AT, "launch_selectors": sorted(LAUNCH_SELECTORS), "launcher_code_hashes": len(LAUNCHER_CODE_HASHES),
+         "front": FRONT, "front_dry_run": FRONT_DRY_RUN, "front_stake_eth": FRONT_STAKE_ETH, "front_take_profit": FRONT_TAKE_PROFIT, "front_hold_blocks": FRONT_HOLD_BLOCKS,
+         "front_fire_max": FRONT_FIRE_MAX, "front_max_per_day": FRONT_MAX_PER_DAY, "front_value_wei": FRONT_VALUE_WEI, "front_halted": state["front_halted"],
          "halted": state["halted"], "halt_file": HALT_FILE, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()
     try:

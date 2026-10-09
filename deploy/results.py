@@ -92,6 +92,11 @@ def main():
         print(f"HALTED in memory (its last status line, {hms(flow['t'])} UTC: {str(flow['halted'])[:120]});\n  the halt file is gone but the engine keeps the halt until: sudo systemctl restart flip-engine")
     else:
         print("halted: no")
+    if st.get("front") or e.get("FRONT", "0") != "0":                                  # release 0.9: the front strategy has its own switch, stake and halt
+        fdry = dry or st.get("front_dry_run", e.get("FRONT_DRY_RUN", "1") != "0")
+        print(f"front strategy: ON, {'DRY RUN (nothing sent)' if fdry else 'LIVE'}, stake {st.get('front_stake_eth', e.get('FRONT_STAKE_ETH', '?'))} ETH, "
+              f"max {st.get('front_max_per_day', e.get('FRONT_MAX_PER_DAY', '?'))} a day"
+              + (f";  HALTED: {open(HALT + '.front').read().strip()[:120] or '(empty file)'}  (sudo rm {HALT}.front && sudo systemctl restart flip-engine)" if os.path.exists(HALT + ".front") else ";  halted: no"))
     if st:
         print(f"last start {hms(st['t'])} UTC; this report covers the last {HOURS:g} hours (to {hms(time.time())} UTC)")
     else:
@@ -150,8 +155,24 @@ def main():
               + (f"; {nores} buy(s) with no result" if nores else "") + ")")
         print("  'sold at' and 'pull at' count blocks after our buy (0.1 s each): every sell should land before the pull;")
         print("  'later' = no pull within 30 blocks of our sell (it came after, on the operator's own schedule); UNKNOWN = no buy receipt")
+    if rows:
+        by = {}
+        for f_, d in rows:
+            if isinstance(d, dict):
+                k = d.get("entry") or "follow"; n_, u_ = by.get(k, (0, 0.0)); by[k] = (n_ + 1, u_ + (d.get("pnl_usd") or 0.0))
+        if len(by) > 1:
+            print("  by strategy: " + "; ".join(f"{k} {n_} trades {'+' if u_ >= 0 else '-'}${abs(u_):.3f}" for k, (n_, u_) in sorted(by.items())))
     # the dry run's decisions
     wf = {x["pid"]: x for x in ev if x["ev"] == "would_fire"}; ws = [x for x in ev if x["ev"] == "would_sell"]
+    fws = [x for x in ws if wf.get(x.get("pid"), {}).get("entry") == "front"]
+    if fws:                                                                    # the front strategy's dry run: up to ~330 decisions a day, so a summary
+        tps = [x["tp_ret"] for x in fws if x.get("tp_ret") is not None]
+        print(f"\nFRONT DRY RUN: {sum(1 for x in wf.values() if x.get('entry') == 'front')} would-buys, {len(fws)} would-sells: {len(tps)} on the volume bot's buy"
+              + (f" (priced {100 * sum(tps) / len(tps):+.1f}% on average, worst {100 * min(tps):+.1f}%)" if tps else "") + f", {len(fws) - len(tps)} at the deadline")
+        for x in fws[-5:]:
+            print(f"  {hms(x['t']):15s} would sell {x.get('after_buy') if x.get('after_buy') is not None else '?'} block(s) after the buy: {(x.get('why') or '').split(':')[0]}"
+                  + (f", priced {100 * x['tp_ret']:+.1f}%" if x.get("tp_ret") is not None else ""))
+    ws = [x for x in ws if x not in fws]; wf = {k: v for k, v in wf.items() if v.get("entry") != "front"}
     if wf:
         print(f"\nDRY-RUN DECISIONS (nothing sent): {len(wf)}")
         for x in ws:

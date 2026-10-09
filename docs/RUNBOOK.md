@@ -212,6 +212,28 @@ trade when a buy never went in.
 
 The tests end with `ok auto: ...`; the results header shows `release 0.8   LIVE   entry auto   max 3 trades a day` and `halted: no`.
 
+## 4e. Release 0.9: the front strategy (a second strategy, its own switch)
+
+A volume bot launches about 330 pools a day through the PositionManager (multicall, 1,444-byte calldata, exactly 2.4333285 ETH, fee 0.25%) and
+buys each one 0.05-0.25 ETH at launch + 7..13, at a price it quoted at launch. Bought in the launch's next block, our position sells into that buy:
++13-14% a trade in an exact replay of 49 pools (24/24 and 25/25 positive). The one open question is whether its operator pulls on a real-size buy
+that lands before its bot's first buy; it pulls 5-12 blocks after outsiders who buy later, and nobody has bought this early with real size. The engine
+arms these launches from the launch transaction itself (the pool is in its calldata), fires in the launch block, sells on the bot's buy or at our buy
++ 12. It has its own dry-run switch, daily cap and halt file (HALTED.front): a pull before a front sell stops the front strategy only.
+
+    cd ~/v2pons && git pull
+    /opt/flip-venv/bin/python3 tests/test_engine.py 2>&1 | tail -6
+    set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
+    set_kv FRONT 1 && set_kv FRONT_DRY_RUN 1 && sudo systemctl restart flip-engine
+    sleep 10 && sudo python3 ~/v2pons/deploy/results.py | head -5
+
+The header shows `release 0.9   LIVE` (follow unchanged) and `front strategy: ON, DRY RUN`. After an hour, `results.py` shows `FRONT DRY RUN: N
+would-buys ...`; check those against the chain before the live probe:
+
+    set_kv FRONT_DRY_RUN 0 && set_kv FRONT_STAKE_ETH 0.0012 && sudo systemctl restart flip-engine
+
+If the operator pulls on our early buy, the first front trade it catches halts the front strategy (about $3); follow keeps trading.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the

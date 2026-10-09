@@ -72,9 +72,9 @@ def launch_receipt(h, fee=1134, hooks="0" * 40):
         {"address": PM, "topics": ["0x" + E.T_ML, PID, "0x" + w(ACCT.address)], "data": "0x" + w(-887200) + w(TICK0) + w(LIQ) + w(0)}]}
 
 
-def swap_receipt(block, a0, a1, index=3):
+def swap_receipt(block, a0, a1, index=3, pid=None):
     return {"status": "0x1", "blockNumber": hex(block), "gasUsed": hex(120000), "effectiveGasPrice": hex(20_000_000), "transactionIndex": hex(index),
-            "logs": [{"address": PM, "topics": ["0x" + E.T_SWAP, PID, "0x" + w(RELAY)], "data": "0x" + w(a0) + w(a1) + w(SQRT_P0) + w(LIQ) + w(0) + w(0)}]}
+            "logs": [{"address": PM, "topics": ["0x" + E.T_SWAP, pid or PID, "0x" + w(RELAY)], "data": "0x" + w(a0) + w(a1) + w(SQRT_P0) + w(LIQ) + w(0) + w(0)}]}
 
 
 def events(ev=None):
@@ -490,4 +490,84 @@ for s_ in range(4101, 4106):
 E.ingest(frame(4106, [])); pos = E.state["position"]; assert pos and pos["trig_seq"] == 4106 and pos["trig_value"] == 0, "no seat fire at launch + 6"
 E.state["position"] = None; E.ENTRY = "follow"; E.LAUNCH_SELECTORS = set()
 print("ok auto: the original launcher follows the crowd's first buy, a per-launch copy takes the seat at launch + 6")
+
+# --- 17. release 0.9: the front strategy (a volume bot's 2.4333285 ETH launches), armed from the launch's own calldata
+FX = json.load(open(os.path.join(ROOT, "tests", "data", "front_launch.json")))           # a real launch from the chain, with its Initialize and ModifyLiquidity values
+d = E.decode_launch(bytes.fromhex(FX["input"][2:]))
+assert d and d["pid"] == FX["pid"] and "0x" + d["token"] == FX["token"] and d["fee"] == FX["fee"] and d["tick_spacing"] == FX["tick_spacing"] and d["sqrt_p"] == FX["sqrt_p"], d
+assert d["mint_liq"] == FX["liq"] and d["lo"] == FX["lo"] and d["hi"] == FX["hi"] and E.tick_at(d["sqrt_p"]) == FX["tick0"] and d["c0"] == "0" * 40 and d["hooks"] == "0" * 40
+assert E.decode_launch(b"\xac\x96\x50\xd8" + b"\x00" * 64) is None and E.decode_launch(bytes.fromhex(FX["input"][2:])[:600]) is None
+print("ok front: the launch decoded from its calldata alone matches the chain (pool id, key, price, tick, liquidity, range)")
+
+POSM = "0x58daec3116aae6d93017baaea7749052e8a04fa7"; FPID = FX["pid"]; FTOKEN = FX["token"]; BOT = "0x1cbaf24d53fe930fce8eff149fa797d2611da149"
+FBUY = "0xc1120e3d" + w(FTOKEN) + w(0) * 8                                               # the volume bot's buy: ETH as value, the token in its calldata
+E.FRONT = True; E.FRONT_DRY_RUN = False; E.MAX_TRADES_PER_DAY = 50; E.FRONT_MAX_PER_DAY = 50; E.LAUNCH_SELECTORS = set(); E.ENTRY = "auto"; LOGS[:] = []
+def front_launch(seq, nonce):
+    raw = signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, FX["input"], nonce)
+    E.ingest(frame(seq, [raw])); return E.state["armed"].get(FPID)
+reset(); E.state["nonce"] = 300; p = front_launch(5000, 3)
+assert p and p["entry"] == "front" and p["eligible"] and p["liq"] == FX["liq"] and p["launch_seq"] == 5000, p
+pos = E.state["position"]
+assert pos and pos["entry"] == "front" and pos["stake"] == E.FRONT_STAKE_WEI and pos["trig_seq"] == 5000 and len(SENT) == 1 and pos["send_after"] == E.FRONT_HOLD_BLOCKS, pos
+bf = rlp.decode(SENT[0][1]); assert int.from_bytes(bf[0], "big") == 300 and bf[5].hex()[8 + 64*5: 8 + 64*6] == w(E.FRONT_STAKE_WEI)   # amountIn = the front stake
+assert pos["expected_tokens"] == v4math.buy_out_int(int(float(FX["sqrt_p"])), FX["liq"], E.FRONT_STAKE_WEI, 2500)   # the engine keeps the price as a float, as for follow
+buy_raw = SENT[0][1]; dust = signed(OUTSIDER, "0x" + "65" * 20, int(0.00011e18), FBUY, 30)   # a launch dust sniper (below a real buy)
+E.ingest(frame(5001, [dust, buy_raw])); assert pos["buy_seq"] == 5001 and not pos["sell_sent"] and p["first_buy"] is None
+for s_ in range(5002, 5009):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_                            # the hold is 12 blocks, not the follow's 2
+E.ingest(frame(5009, [signed(CROWD, BOT, int(0.12e18), FBUY, 70)]))                      # the volume bot's first buy, + 9
+assert pos["sell_sent"] and pos["sell_why"].startswith("take profit") and pos["sell_seq_sent"] == 5009 and pos["tp_ret"] > 0.05 and len(SENT) == 2, (pos["sell_why"], pos["tp_ret"])
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(5001, -E.FRONT_STAKE_WEI, pos["feed_tokens"], pid=FPID)
+RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(5010, int(E.FRONT_STAKE_WEI * 1.09), -pos["feed_tokens"], pid=FPID)
+assert wait_for(lambda: done_at(300)); d = done_at(300)[-1]; assert d["entry"] == "front" and d["ret"] > 0.08 and E.state["front_halted"] is None and E.state["front_today"] == 1, d
+print("ok front: armed in the launch block from the feed, fired at once at the front stake, held past the follow's 2 blocks, sold on the volume bot's first buy")
+
+# 17c. no bot buy: the sell goes at our buy + FRONT_HOLD_BLOCKS
+reset(); E.state["nonce"] = 310; p = front_launch(5100, 3); pos = E.state["position"]; buy_raw = SENT[0][1]
+E.ingest(frame(5101, [buy_raw]))
+for s_ in range(5102, 5101 + E.FRONT_HOLD_BLOCKS):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(5101 + E.FRONT_HOLD_BLOCKS, [])); assert pos["sell_sent"] and pos["sell_why"].startswith("deadline"), pos.get("sell_why")
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(5101, -E.FRONT_STAKE_WEI, pos["feed_tokens"], pid=FPID)
+RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(5101 + E.FRONT_HOLD_BLOCKS + 1, int(E.FRONT_STAKE_WEI * 0.995), -pos["feed_tokens"], pid=FPID)
+assert wait_for(lambda: done_at(310))
+print("ok front: no volume-bot buy, the sell at our buy + FRONT_HOLD_BLOCKS")
+
+# 17d. a pull before our front sell halts the front strategy only; follow keeps trading; a new front launch is skipped
+reset(); E.state["nonce"] = 320; p = front_launch(5200, 3); pos = E.state["position"]; buy_raw = SENT[0][1]
+E.ingest(frame(5201, [buy_raw]))
+for s_ in range(5202, 5209):
+    E.ingest(frame(s_, []))
+E.ingest(frame(5209, [signed(CROWD, BOT, int(0.12e18), FBUY, 71)])); assert pos["sell_sent"]
+LOGS[:] = [{"blockNumber": hex(5206), "transactionIndex": hex(1), "data": "0x" + w(-887250) + w(887250) + w(-FX["liq"]) + w(0)}]   # the operator pulled at + 5
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(5201, -E.FRONT_STAKE_WEI, pos["feed_tokens"], pid=FPID)
+RECEIPTS["0x" + pos["sell_hash"]] = {"status": "0x1", "blockNumber": hex(5210), "gasUsed": hex(135200), "effectiveGasPrice": hex(20_000_000), "transactionIndex": "0x2",
+                                     "logs": [{"address": PM, "topics": ["0x" + E.T_SWAP, FPID, "0x" + w(RELAY)], "data": "0x" + w(1) + w(-pos["feed_tokens"]) + w(1) + w(1) + w(0) + w(0)}]}
+assert wait_for(lambda: done_at(320)) and E.state["front_halted"] and E.state["halted"] is None and os.path.exists(E.FRONT_HALT_FILE), (E.state["front_halted"], E.state["halted"])
+LOGS[:] = []
+reset(); E.state["nonce"] = 330; p = front_launch(5300, 4); assert E.state["position"] is None and any("halted" in e.get("why", "") for e in events("skip")[-3:])
+reset(); E.state["nonce"] = 330; p = do_launch(5400); E.ingest(frame(5431, [signed(CROWD, UR, TRIG, BUY_DATA, 72)])); pos = E.state["position"]
+assert pos and pos["entry"] == "follow" and len(SENT) == 1, "follow stopped by a front halt"
+E.state["position"] = None
+E.state["front_halted"] = None; os.remove(E.FRONT_HALT_FILE); E.load_halt(); assert E.state["front_halted"] is None
+print("ok front: a pull before our front sell halts the front strategy only (its own file); follow keeps trading")
+
+# 17e. too late: the position was open through launch + FRONT_FIRE_MAX: no trade on that pool
+reset(); E.state["nonce"] = 340; E.state["position"] = {"pid": "x", "dry": False, "entry": "follow", "sell_sent": True, "buy_seq": 1, "buy_hash": None, "fired_at": time.monotonic(), "plan_buy_seq": 1, "send_after": 2}
+p = front_launch(5500, 3)
+for s_ in range(5501, 5501 + E.FRONT_FIRE_MAX):
+    E.ingest(frame(s_, []))
+E.state["position"] = None; E.ingest(frame(5501 + E.FRONT_FIRE_MAX, [])); assert p["status"] == "late" and len(SENT) == 0, p["status"]
+print("ok front: a front launch not fired by launch + FRONT_FIRE_MAX is left alone")
+
+# 17f. front dry run while follow is live: the dry front trade logs, and a live follow trade drops it
+E.FRONT_DRY_RUN = True
+reset(); E.state["nonce"] = 350; p = front_launch(5600, 3); fpos = E.state["position"]
+assert fpos and fpos["dry"] and len(SENT) == 0 and events("would_fire")[-1]["entry"] == "front"
+reset_keep = E.state["position"]; E.state["armed"].pop(FPID, None)
+p = do_launch(5700); E.state["position"] = reset_keep
+E.ingest(frame(5731, [signed(CROWD, UR, TRIG, BUY_DATA, 73)])); pos = E.state["position"]
+assert pos is not fpos and pos["entry"] == "follow" and not pos["dry"] and len(SENT) == 1 and any("dropped" in e.get("why", "") for e in events("skip")[-3:])
+E.state["position"] = None; E.FRONT = False; E.FRONT_DRY_RUN = True; E.ENTRY = "follow"
+print("ok front: in its own dry run the front strategy logs its decisions and never holds up a live follow trade")
 os.remove(LOG)
