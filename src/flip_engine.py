@@ -29,6 +29,11 @@ through the PoolManager, so the sell is signed with the buy and needs no amount.
 own calldata from the wallet, meant to hide our buy) was removed in 0.4: the exit, not the disguise, is what keeps the trade ahead
 of the pull, and the router's two approvals and per-trade sell amount made the exit slower and cost trade 8 a tenth of its tokens.
 
+ENTRY=auto (release 0.7) picks per launch: the operator's original launcher gets the follow entry, a per-launch copy of it the
+seat. Overnight Oct 8-9 the operator went back to its original launcher and its original crowd (first buy 43-58 blocks in, then a
+buy every few blocks); the seat bought those at + 7/8, forty blocks before the crowd, and sold at its deadline for -0.2% and -0.3%;
+the follow entry priced at +2.4% a trade on the same 14 launches (13 of 14 positive).
+
 ENTRY=seat (release 0.5) is the operator's scheme from Oct 8 14:59: a fresh launcher contract per launch (found by its call,
 LAUNCH_SELECTORS=2fcb9108), and the crowd's first three buys bunched into one block 8-9 blocks after the launch, with almost
 nothing after them, so there is no buy left to follow (the follow entry priced -0.5% on all 42 such launches). The seat buys at
@@ -49,7 +54,7 @@ from eth_utils import keccak, to_checksum_address
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import v4math
 
-RELEASE = "0.6"
+RELEASE = "0.7"
 
 
 def env(k, d=""):
@@ -74,10 +79,11 @@ BUY_DELAY_BLOCKS = int(env("BUY_DELAY_BLOCKS", "0"))                            
 LAUNCHER_CODE_HASHES = {x.strip().lower().replace("0x", "") for x in env("LAUNCHER_CODE_HASHES",
     "2793923de1845d8707004ebbf2ab49fe7286113b7b69991aea7d6656f26f6d1c,42544ef5d4754816b3cfe77f3a6fb1c8eb842d6eee101f7d15c638593a3351d2").split(",") if x.strip()}   # the operator's launcher code (6,984 bytes; from 14:59 every launcher is a copy)
 LAUNCH_SELECTORS = {x.strip().lower().replace("0x", "") for x in env("LAUNCH_SELECTORS", "").split(",") if x.strip()}   # a launch known by its call (2fcb9108): from Oct 8 14:59 each launch has a fresh launcher
-ENTRY = env("ENTRY", "follow").lower()                                                     # "follow": behind the operator's first real-size buy; "seat": SEAT_FIRE_AT blocks after the launch, ahead of its burst
+ENTRY = env("ENTRY", "follow").lower()                                                     # "follow": behind the operator's first real-size buy; "seat": SEAT_FIRE_AT blocks after the launch, ahead of its burst; "auto": per launch, by the launcher
+SEAT_CODE_HASHES = {x.strip().lower().replace("0x", "") for x in env("SEAT_CODE_HASHES", "2793923de1845d8707004ebbf2ab49fe7286113b7b69991aea7d6656f26f6d1c").split(",") if x.strip()}   # auto: the per-launch launcher copies (the burst scheme) get the seat
 SEAT_FIRE_AT = int(env("SEAT_FIRE_AT", "6"))                                               # seat: fire when the feed shows launch + 6, to land at + 7/8, one or two blocks ahead of the burst (+9 on 30 of 42 launches)
-if ENTRY not in ("follow", "seat"):
-    raise SystemExit(f"ENTRY is {ENTRY!r}: follow or seat")
+if ENTRY not in ("follow", "seat", "auto"):
+    raise SystemExit(f"ENTRY is {ENTRY!r}: follow, seat or auto")
 HALT_FILE = env("HALT_FILE", os.path.join(os.path.dirname(os.path.abspath(LOG_PATH)), "HALTED")); PULL_WATCH_S = float(env("PULL_WATCH_S", "3"))   # a pull at or before our sell writes HALT_FILE and stops live trading until it is removed
 BUY_GAS = int(env("BUY_GAS", "350000")); SELL_GAS = int(env("SELL_GAS", "350000")); GAS_HEADROOM = float(env("GAS_HEADROOM", "3")); SELL_GAS_HEADROOM = float(env("SELL_GAS_HEADROOM", "6"))
 MAX_TRADES_PER_DAY = int(env("MAX_TRADES_PER_DAY", "10")); DAILY_STOP_USD = float(env("DAILY_STOP_USD", "15"))
@@ -351,6 +357,10 @@ def arm_launch(tx_hash, seq, ts, seen_at, to=None):
         ct.join(3.0)
         p["launcher_code"] = "operator" if code.get("hash") in LAUNCHER_CODE_HASHES else ("unknown " + str(code.get("hash", code.get("err", "no answer")))[:16])
         eligible = eligible and p["launcher_code"] == "operator"
+    if ENTRY == "auto":                                     # the original launcher: its crowd comes 40-60 blocks in, buying every few blocks (follow); a per-launch copy: one burst at + 8/9 (seat)
+        p["entry"] = "seat" if (to and to not in LAUNCHERS and code.get("hash") in SEAT_CODE_HASHES) else "follow"
+    else:
+        p["entry"] = ENTRY
     p["eligible"] = eligible
     with lock:
         p["arm_seq"] = state["seq"]
@@ -362,7 +372,7 @@ def arm_launch(tx_hash, seq, ts, seen_at, to=None):
                     log({"ev": "first_buy", "pid": p["pid"], "seq": s, "offset": s - seq, "value": value, "fee": p["fee"], "eligible": eligible, "before_arm": True})
         state["armed"][p["pid"]] = p; state["launches"] += 1
     log({"ev": "armed", "pid": p["pid"], "token": p["token"], "fee": p["fee"], "tick_spacing": p["tick_spacing"], "hooks": p["hooks"][-8:], "liq": p["liq"], "sqrt_p": p["sqrt_p"], "seq": seq,
-         "arm_ms": p["arm_ms"], "arm_seq": p["arm_seq"], "eligible": eligible, "eth_pair": p["c0"] == "0" * 40, "buys_before_arm": p["buys"], "launcher_code": p["launcher_code"]})
+         "arm_ms": p["arm_ms"], "arm_seq": p["arm_seq"], "eligible": eligible, "eth_pair": p["c0"] == "0" * 40, "buys_before_arm": p["buys"], "launcher_code": p["launcher_code"], "entry": p["entry"]})
 
 
 def prune(seq):
@@ -428,7 +438,7 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
     nonce = state["nonce"] if state["nonce"] is not None else 0
     deadline = ts + BUY_DEADLINE_S if BUY_DEADLINE_S > 0 else 0                        # 0: no deadline (the relay skips its check)
     buy = tx_buy(p, nonce, min_out, deadline); sell = tx_sell(p, nonce + 1)
-    pos = {"pid": p["pid"], "token": p["token"], "fee": fee, "trig_seq": seq, "trig_ts": ts, "trig_value": trig_value, "trig_hash": trig_hash, "fired_at": mono(), "nonce": nonce,
+    pos = {"pid": p["pid"], "token": p["token"], "fee": fee, "entry": p.get("entry", ENTRY), "trig_seq": seq, "trig_ts": ts, "trig_value": trig_value, "trig_hash": trig_hash, "fired_at": mono(), "nonce": nonce,
            "expected_tokens": expected, "min_out": min_out, "flat_eth_back": eth_back_flat, "buy_seq": None, "sell_sent": False, "sell_seq_sent": None, "buy_hash": None, "sell_hash": None, "sell_raw": None, "dry": DRY_RUN,
            "fire_seq": fire_seq, "plan_buy_seq": fire_seq + 2, "plan_sell_seq": fire_seq + 2 + HOLD_BLOCKS, "feed_tokens": None, "tp_ret": None}
     state["position"] = pos; state["fires"] += 1; state["trades_today"] += 1; p["status"] = "fired"
@@ -516,7 +526,7 @@ def settle(pos):
 
 def _settle(pos):
     rb = wait_receipt(pos["buy_hash"], RECEIPT_TIMEOUT_S); rs = wait_receipt(pos["sell_hash"], RECEIPT_TIMEOUT_S)
-    out = {"ev": "trade_done", "dry": False, "pid": pos["pid"], "token": pos["token"], "fee": pos["fee"], "trig_seq": pos["trig_seq"], "trig_value": pos["trig_value"], "nonce": pos["nonce"],
+    out = {"ev": "trade_done", "dry": False, "entry": pos.get("entry"), "pid": pos["pid"], "token": pos["token"], "fee": pos["fee"], "trig_seq": pos["trig_seq"], "trig_value": pos["trig_value"], "nonce": pos["nonce"],
            "expected_tokens": pos["expected_tokens"], "min_out": pos["min_out"], "buy_seq_feed": pos["buy_seq"], "sell_why": pos.get("sell_why"), "sell_seq_sent": pos["sell_seq_sent"]}
     gas_wei = 0; eth_in = 0; eth_out = 0; tokens = 0
     for name, rec in (("buy", rb), ("sell", rs)):
@@ -628,7 +638,7 @@ def on_buy(p, seq, to, value, h, stale, seen_at):
         p["first_buy"] = seq
         log({"ev": "first_buy", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"], "value": value, "to": to, "fee": p["fee"], "eligible": p["eligible"], "stale": stale,
              "ms_since_arm": round(1000 * (mono() - p["armed_at"]), 1)})
-        if p["status"] == "armed" and ENTRY == "seat":                                 # the burst came before our seat: no trade on this pool
+        if p["status"] == "armed" and p.get("entry") == "seat":                        # the burst came before our seat: no trade on this pool
             p["status"] = "late"
         elif p["status"] == "armed" and not stale:                                     # a stale first buy is late: no trade on this pool, not on its next buy either
             if BUY_DELAY_BLOCKS > 0:
@@ -689,7 +699,7 @@ def ingest(raw):
                     p["status"] = "armed" if not stale else "skipped"
                     if not stale:
                         fire(p, p["trig"][0], state["ts"], p["trig"][1], p["trig"][2], seen_at, fire_seq=seq)
-                elif ENTRY == "seat" and p["status"] == "armed" and p["first_buy"] is None and seq >= p["launch_seq"] + SEAT_FIRE_AT:
+                elif p.get("entry") == "seat" and p["status"] == "armed" and p["first_buy"] is None and seq >= p["launch_seq"] + SEAT_FIRE_AT:
                     if stale or seq > p["launch_seq"] + SEAT_FIRE_AT + 1:                     # armed too late to land ahead of the burst
                         p["status"] = "late"; log({"ev": "skip", "why": "seat: armed too late to land ahead of the burst", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]})
                     else:

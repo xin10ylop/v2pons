@@ -414,4 +414,20 @@ assert r == {"result": "one-off"} and time.time() - t0 < 0.5, r
 assert E.reply_kind({"result": "0x1"}) == "ok" and E.reply_kind({"error": {"message": "send failed"}}) == "unknown"
 assert E.reply_kind({"error": {"code": -32000, "message": "already known"}}) == "in" and E.reply_kind({"error": {"code": -32000, "message": "nonce too high"}}) == "rejected"
 print("ok the sender: a busy slot falls back to a fresh connection at once; replies classified")
+
+# --- 16. ENTRY=auto: the original launcher gets the follow entry (its crowd 40-60 blocks in), a per-launch copy the seat
+E.ENTRY = "auto"; E.LAUNCH_SELECTORS = {"2fcb9108"}; E.SEAT_CODE_HASHES = set(E.LAUNCHER_CODE_HASHES)
+reset(); E.state["nonce"] = 220; p = do_launch(3000)                                    # through the original launcher (LAUNCHERS)
+assert p["entry"] == "follow" and p["eligible"]
+for s_ in range(3001, 3010):
+    E.ingest(frame(s_, [])); assert E.state["position"] is None, "the follow entry fired before the crowd"
+E.ingest(frame(3046, [signed(CROWD, UR, TRIG, BUY_DATA, 60)])); pos = E.state["position"]; assert pos and pos["trig_seq"] == 3046, "no follow fire on the crowd's first buy"
+E.state["position"] = None
+reset(); E.state["nonce"] = 230; p = seat_launch(3100, 6)                             # through a per-launch copy
+assert p["entry"] == "seat" and p["eligible"]
+for s_ in range(3101, 3106):
+    E.ingest(frame(s_, []))
+E.ingest(frame(3106, [])); pos = E.state["position"]; assert pos and pos["trig_seq"] == 3106 and pos["trig_value"] == 0, "no seat fire at launch + 6"
+E.state["position"] = None; E.ENTRY = "follow"; E.LAUNCH_SELECTORS = set()
+print("ok auto: the original launcher follows the crowd's first buy, a per-launch copy takes the seat at launch + 6")
 os.remove(LOG)

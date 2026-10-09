@@ -77,7 +77,7 @@ def main():
         ret = d.get("ret"); usd = d.get("pnl_usd") or 0.0; tot += usd
         won += 1 if usd > 0 else 0; lost += 1 if usd <= 0 else 0; pulled += 1 if d.get("pulled_before_sell") else 0
         sold = d.get("sell_after_buy_blocks", d.get("hold_blocks")); pull = d.get("pull_after_buy_blocks")
-        why = (d.get("sell_why") or "").split(":")[0]
+        why = ((d.get("entry") + ", ") if d.get("entry") else "") + (d.get("sell_why") or "").split(":")[0]
         res = "no fill" if ret is None else f"{100 * ret:+.1f}%"
         flag = "   <== THE PULL CAME FIRST" if d.get("pulled_before_sell") else ""
         print(f"  {hms(d['t']):15s} {d.get('fee', 0) / 1e4:6.3f}% {res:>8s} {usd:+7.3f}  {'+' + str(sold) if sold is not None else '-':>8s} {'+' + str(pull) if pull is not None else 'none':>8s}  {why}{flag}")
