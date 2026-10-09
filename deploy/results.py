@@ -94,9 +94,12 @@ def main():
         print("halted: no")
     if st.get("front") or e.get("FRONT", "0") != "0":                                  # release 0.9: the front strategy has its own switch, stake and halt
         fdry = dry or st.get("front_dry_run", e.get("FRONT_DRY_RUN", "1") != "0")
+        fnow = flow if flow.get("t", 0) >= st.get("t", 0) else {}                      # the engine's last status line, if it is from this run
         print(f"front strategy: ON, {'DRY RUN (nothing sent)' if fdry else 'LIVE'}, stake {st.get('front_stake_eth', e.get('FRONT_STAKE_ETH', '?'))} ETH, "
-              f"max {st.get('front_max_per_day', e.get('FRONT_MAX_PER_DAY', '?'))} a day"
-              + (f";  HALTED: {open(HALT + '.front').read().strip()[:120] or '(empty file)'}  (sudo rm {HALT}.front && sudo systemctl restart flip-engine)" if os.path.exists(HALT + ".front") else ";  halted: no"))
+              f"max {st.get('front_max_per_day', e.get('FRONT_MAX_PER_DAY', '?'))} a day, its own daily stop ${st.get('front_daily_stop_usd', e.get('FRONT_DAILY_STOP_USD', '?'))}"
+              + (f", today {fnow['front_today']} trades {'+' if fnow.get('front_pnl_today_usd', 0) >= 0 else '-'}${abs(fnow.get('front_pnl_today_usd', 0)):.2f}" if "front_today" in fnow and not fdry else "")
+              + (f";  HALTED: {open(HALT + '.front').read().strip()[:120] or '(empty file)'}  (sudo rm {HALT}.front && sudo systemctl restart flip-engine)" if os.path.exists(HALT + ".front")
+                 else (f";  OFF for this run: {str(fnow['front_halted'])[:120]}" if fnow.get("front_halted") else ";  halted: no")))
     if st:
         print(f"last start {hms(st['t'])} UTC; this report covers the last {HOURS:g} hours (to {hms(time.time())} UTC)")
     else:
@@ -167,8 +170,10 @@ def main():
     fws = [x for x in ws if wf.get(x.get("pid"), {}).get("entry") == "front"]
     if fws:                                                                    # the front strategy's dry run: up to ~330 decisions a day, so a summary
         tps = [x["tp_ret"] for x in fws if x.get("tp_ret") is not None]
+        rv = sum(1 for x in fws if (x.get("why") or "").startswith("the bot's buy reverts"))
         print(f"\nFRONT DRY RUN: {sum(1 for x in wf.values() if x.get('entry') == 'front')} would-buys, {len(fws)} would-sells: {len(tps)} on the volume bot's buy"
-              + (f" (priced {100 * sum(tps) / len(tps):+.1f}% on average, worst {100 * min(tps):+.1f}%)" if tps else "") + f", {len(fws) - len(tps)} at the deadline")
+              + (f" (priced {100 * sum(tps) / len(tps):+.1f}% on average, worst {100 * min(tps):+.1f}%)" if tps else "")
+              + (f", {rv} out at once because the bot's buy would revert" if rv else "") + f", {len(fws) - len(tps) - rv} at the deadline")
         for x in fws[-5:]:
             print(f"  {hms(x['t']):15s} would sell {x.get('after_buy') if x.get('after_buy') is not None else '?'} block(s) after the buy: {(x.get('why') or '').split(':')[0]}"
                   + (f", priced {100 * x['tp_ret']:+.1f}%" if x.get("tp_ret") is not None else ""))

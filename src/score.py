@@ -73,13 +73,14 @@ def main():
     start = [e for e in ev if e["ev"] == "start"]; st0 = start[-1] if start else {}
     hold = st0.get("hold_blocks", 4); lead = st0.get("sell_lead_blocks", 2); tp = st0.get("take_profit", 0.01); stake = int(st0.get("stake_eth", 0.0012) * 1e18)
     ours = {"0x" + e["buy_hash"] for e in ev if e["ev"] == "fire" and e.get("buy_hash")} | {"0x" + e["hash"] for e in ev if e["ev"] == "sell_sent" and e.get("hash")}
-    armed = {e["pid"]: e for e in ev if e["ev"] == "armed"}; first = {e["pid"]: e for e in ev if e["ev"] == "first_buy"}
+    armed = {e["pid"]: e for e in ev if e["ev"] == "armed" and e.get("entry") != "front"}                # the front strategy (release 0.9) is priced by results.py, not here
+    first = {e["pid"]: e for e in ev if e["ev"] == "first_buy" and e["pid"] in armed}
     print(f"{path}: last {hours:g} h; {len(armed)} launches armed, {sum(1 for a in armed.values() if a['eligible'])} eligible; first real buy seen on {len(first)}")
     tiers = collections.Counter(("sub-1%" if a["fee"] < 10000 else ("1%" if a["fee"] == 10000 else "over 1%")) for a in armed.values())
     print("  by fee tier:", dict(tiers))
     offs = [f["offset"] for f in first.values()]
     if offs: print(f"  the crowd's first buy: offset blocks p10/50/90 {[sorted(offs)[int(q * (len(offs) - 1))] for q in (.1, .5, .9)]} (backtest 22/44/64); value median {st.median(f['value'] for f in first.values()) / 1e18:.4f} ETH")
-    fires = [e for e in ev if e["ev"] in ("would_fire", "fire")]; done = {e["pid"]: e for e in ev if e["ev"] == "trade_done" and not e.get("dry")}
+    fires = [e for e in ev if e["ev"] in ("would_fire", "fire") and e.get("entry") != "front"]; done = {e["pid"]: e for e in ev if e["ev"] == "trade_done" and not e.get("dry")}
     rows = []
     for e in fires:
         a = armed.get(e["pid"])

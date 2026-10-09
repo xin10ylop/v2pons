@@ -103,6 +103,7 @@ def do_launch(seq, fee=1134):
 
 def reset():
     E.state["armed"].clear(); E.state["position"] = None; E.state["trades_today"] = 0; E.state["pnl_today_usd"] = 0.0; E.state["seq"] = 0; SENT.clear(); RECEIPTS.clear()
+    E.state["front_pnl_today_usd"] = 0.0; E.state["arming"].clear()
 
 
 # --- 1. the live path
@@ -570,4 +571,131 @@ E.ingest(frame(5731, [signed(CROWD, UR, TRIG, BUY_DATA, 73)])); pos = E.state["p
 assert pos is not fpos and pos["entry"] == "follow" and not pos["dry"] and len(SENT) == 1 and any("dropped" in e.get("why", "") for e in events("skip")[-3:])
 E.state["position"] = None; E.FRONT = False; E.FRONT_DRY_RUN = True; E.ENTRY = "follow"
 print("ok front: in its own dry run the front strategy logs its decisions and never holds up a live follow trade")
+
+# --- 18. release 0.9's review: each strategy its own daily stop and halts; the launch's full fingerprint; nothing in the front path
+# can cost follow a block or the slot
+E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"; LOGS[:] = []; SNIPER = "0x" + "65" * 20
+def front_close(pos, buy_seq, sell_seq, back):
+    RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(buy_seq, -E.FRONT_STAKE_WEI, pos["feed_tokens"], pid=FPID)
+    RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(sell_seq, back, -pos["feed_tokens"], pid=FPID)
+    assert wait_for(lambda: done_at(pos["nonce"])); return done_at(pos["nonce"])[-1]
+
+# 18a. front against its own daily stop, follow against its own; a front loss goes to front's day only
+reset(); E.state["nonce"] = 400; E.state["front_pnl_today_usd"] = -E.FRONT_DAILY_STOP_USD - 0.01
+front_launch(6000, 3); assert E.state["position"] is None and events("skip")[-1]["why"] == "daily stop"
+reset(); E.state["nonce"] = 400; E.state["pnl_today_usd"] = -E.DAILY_STOP_USD - 0.01
+front_launch(6010, 3); pos = E.state["position"]; assert pos and pos["entry"] == "front" and pos["pnl_key"] == "front_pnl_today_usd", "front stopped by follow's day"
+E.ingest(frame(6011, [SENT[0][1]]))
+for s_ in range(6012, 6012 + E.FRONT_HOLD_BLOCKS):
+    E.ingest(frame(s_, []))
+d = front_close(pos, 6011, 6024, int(E.FRONT_STAKE_WEI * 0.99))
+assert E.state["pnl_today_usd"] == -E.DAILY_STOP_USD - 0.01 and E.state["front_pnl_today_usd"] == d["pnl_usd"] < 0, (E.state["pnl_today_usd"], E.state["front_pnl_today_usd"])
+reset(); E.state["nonce"] = 405; E.state["front_pnl_today_usd"] = -E.FRONT_DAILY_STOP_USD - 0.01
+do_launch(6050); E.ingest(frame(6081, [signed(CROWD, UR, TRIG, BUY_DATA, 79)])); pos = E.state["position"]
+assert pos and pos["entry"] == "follow", "follow stopped by front's day"
+E.state["position"] = None
+print("ok front: each strategy has its own daily stop; a front loss counts in front's day only")
+
+# 18b. a front sell that sold nothing halts the front strategy only
+reset(); E.state["nonce"] = 410
+front_launch(6100, 3); pos = E.state["position"]; E.ingest(frame(6101, [SENT[0][1]]))
+for s_ in range(6102, 6102 + E.FRONT_HOLD_BLOCKS):
+    E.ingest(frame(s_, []))
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(6101, -E.FRONT_STAKE_WEI, pos["feed_tokens"], pid=FPID)
+RECEIPTS["0x" + pos["sell_hash"]] = {"status": "0x0", "blockNumber": hex(6114), "gasUsed": hex(50000), "effectiveGasPrice": hex(20_000_000), "transactionIndex": "0x1", "logs": []}
+assert wait_for(lambda: done_at(410)) and wait_for(lambda: E.state["front_halted"] is not None)
+assert "sold none" in E.state["front_halted"] and E.state["halted"] is None and not os.path.exists(E.HALT_FILE) and os.path.exists(E.FRONT_HALT_FILE), (E.state["front_halted"], E.state["halted"])
+E.state["front_halted"] = None; os.remove(E.FRONT_HALT_FILE)
+print("ok front: a front sell that sold nothing halts the front strategy only")
+
+# 18c. a front-shaped launch with a bad price (sqrtPriceX96 0) or another price: not armed, and the rest of the block goes on
+FIN = bytes.fromhex(FX["input"][2:]); assert FIN[328:360] == int(FX["sqrt_p"]).to_bytes(32, "big")
+bad0 = FIN[:328] + b"\x00" * 32 + FIN[360:]; other = FIN[:328] + (int(FX["sqrt_p"]) + 1).to_bytes(32, "big") + FIN[360:]
+assert E.decode_launch(bad0) is None and E.decode_launch(other)["sqrt_p"] == int(FX["sqrt_p"]) + 1
+reset(); E.state["nonce"] = 420; do_launch(6200)
+E.ingest(frame(6231, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, "0x" + bad0.hex(), 5), signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, "0x" + other.hex(), 6),
+                      signed(CROWD, UR, TRIG, BUY_DATA, 80)]))
+pos = E.state["position"]; assert pos and pos["entry"] == "follow" and pos["trig_seq"] == 6231, "the block was lost after a bad front launch"
+assert events("launch_undecoded")[-1]["seq"] == 6231
+a = [e for e in events("armed") if e["seq"] == 6231]; assert len(a) == 1 and not a[0]["eligible"] and a[0]["why"] == "front: launch price" and FPID not in E.state["armed"], a
+E.state["position"] = None
+d = dict(E.decode_launch(FIN)); assert E.front_mismatch(d, d["mint_liq"]) is None
+for k, v, why in (("fee", 3000, "fee"), ("tick_spacing", 60, "fee"), ("mint_liq", d["mint_liq"] + 1, "liquidity"), ("hooks", "11" * 20, "hook")):
+    assert why in E.front_mismatch({**d, k: v}, d["mint_liq"]), (k, E.front_mismatch({**d, k: v}, d["mint_liq"]))
+print("ok front: a bad or look-alike launch is not armed (price bounds, fee, tick spacing, launch price, liquidity) and follow's block goes on")
+
+# 18d. an error anywhere in one transaction skips that transaction only
+reset(); E.state["nonce"] = 430; do_launch(6300)
+real_arm_front = E.arm_front; E.arm_front = lambda *a: 1 / 0
+E.ingest(frame(6331, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, FX["input"], 7), signed(CROWD, UR, TRIG, BUY_DATA, 81)]))
+E.arm_front = real_arm_front
+pos = E.state["position"]; assert pos and pos["entry"] == "follow" and pos["trig_seq"] == 6331 and any("failed to process" in str(e.get("what")) for e in events("alarm")[-3:])
+E.state["position"] = None
+print("ok an error in one transaction skips it alone: the rest of the block (here follow's trigger) goes on")
+
+# 18e. the same pool again is not armed twice; a dry front position is dropped only for a live trade that really fires
+E.FRONT_DRY_RUN = True; reset(); E.state["nonce"] = 440
+p = front_launch(6400, 8); fpos = E.state["position"]; assert fpos and fpos["dry"]
+assert front_launch(6401, 9) is p and any("already armed" in e.get("why", "") for e in events("skip")[-3:])
+E.state["armed"].pop(FPID); E.state["trades_today"] = E.MAX_TRADES_PER_DAY
+do_launch(6402); E.ingest(frame(6403, [signed(CROWD, UR, TRIG, BUY_DATA, 82)]))
+assert E.state["position"] is fpos and events("skip")[-1]["why"] == "daily cap" and not any("dropped" in e.get("why", "") for e in events("skip")[-3:])
+E.FRONT_DRY_RUN = False; E.state["position"] = None
+print("ok front: a pool is armed once; a dry front position stays when the live trade does not pass its gates")
+
+# 18f. buys ahead of ours: a sniper's small buy leaves room (we fire); 0.01 ETH ahead does not (late)
+reset(); E.state["nonce"] = 460; E.state["trades_today"] = 0
+E.ingest(frame(6700, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, FX["input"], 11), signed(OUTSIDER, SNIPER, int(0.0005e18), FBUY, 31)]))
+pos = E.state["position"]; assert pos and pos["entry"] == "front" and E.state["armed"][FPID]["first_buy"] == 6700, "a small buy in the launch block made the pool late"
+E.state["position"] = None
+reset(); E.state["nonce"] = 470
+E.ingest(frame(6800, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, FX["input"], 12), signed(OUTSIDER, SNIPER, int(0.01e18), FBUY, 32)]))
+assert E.state["position"] is None and E.state["armed"][FPID]["status"] == "late" and "too much ETH" in events("skip")[-1]["why"]
+print("ok front: a small buy ahead of ours leaves room for the bot's buy; 0.01 ETH ahead makes the pool late")
+
+# 18g. the bot's buy that reverts (too much ahead of it): no phantom take-profit, the pool's price unmoved, the sell at once
+reset(); E.state["nonce"] = 480
+front_launch(6900, 13); pos = E.state["position"]; p = E.state["armed"][FPID]
+E.ingest(frame(6901, [signed(OUTSIDER, SNIPER, int(0.015e18), FBUY, 33), SENT[0][1]]))    # 0.015 ETH lands ahead of our buy, after we fired
+assert pos["buy_seq"] == 6901 and not pos["sell_sent"]
+sp_before = p["sp"]; E.ingest(frame(6909, [signed(CROWD, BOT, int(0.05e18), FBUY, 74)]))
+assert pos["sell_sent"] and pos["sell_why"].startswith("the bot's buy reverts") and pos["tp_ret"] is None and p["sp"] == sp_before, (pos.get("sell_why"), pos["tp_ret"])
+r = events("front_bot_reverts")[-1]; assert r["quote_ratio"] < E.FRONT_BOT_MINOUT and r["ours"], r
+front_close(pos, 6901, 6911, int(E.FRONT_STAKE_WEI * 0.99))
+print("ok front: the bot's buy that cannot meet its minOut is no take-profit: the pool unmoved, the sell at once")
+
+# 18h. follow has the slot first: a live front trade waits while a follow launch waits for its crowd (or its receipt is on its way)
+reset(); E.state["nonce"] = 490
+do_launch(7000); front_launch(7010, 14); assert E.state["position"] is None and "slot first" in events("skip")[-1]["why"]
+E.ingest(frame(7031, [signed(CROWD, UR, TRIG, BUY_DATA, 83)])); pos = E.state["position"]; assert pos and pos["entry"] == "follow"
+reset(); E.state["nonce"] = 495; E.state["arming"].add("0xpending"); front_launch(7100, 15); assert E.state["position"] is None and "slot first" in events("skip")[-1]["why"]
+reset(); E.state["nonce"] = 495; do_launch(7200); front_launch(7200 + E.TRIGGER_MAX_BLOCKS + 1, 16); pos = E.state["position"]
+assert pos and pos["entry"] == "front", "a follow launch past its trigger window still held the slot"
+E.state["position"] = None
+print("ok front: follow has the slot first (a follow launch waiting for its crowd or its receipt); past its window, front trades")
+
+# 18i. the relay's balance: a front-only shortfall at start turns front off, follow starts; at run time a stake above it is skipped
+def rpc_checks(method, params, tries=4, timeout=10):
+    if method == "eth_chainId": return hex(4663)
+    if method == "eth_getCode": return "0x6080"
+    if method == "eth_call": return "0x" + w(ACCT.address) if params[0]["data"] == "0x" + E.SEL_OWNER else "0x" + w(E.POOL_MANAGER)
+    if method == "eth_getBalance": return hex(int(0.0015e18))
+    return fake_rpc(method, params)
+E.rpc = rpc_checks; real_sender = E.Sender; E.Sender = lambda url: FakeSender(); E.FRONT_STAKE_ETH = 0.002; E.FRONT_STAKE_WEI = int(0.002e18); E.state["front_halted"] = None
+E.checks(); assert E.state["front_halted"] and "front stake" in E.state["front_halted"] and E.state["halted"] is None and E.state["relay_wei"] == int(0.0015e18) and not os.path.exists(E.FRONT_HALT_FILE)
+E.state["front_halted"] = None; E.FRONT_STAKE_ETH = 0.0; E.FRONT_STAKE_WEI = 0
+E.checks(); assert E.state["front_halted"] and "above 0" in E.state["front_halted"]
+E.rpc = fake_rpc; E.Sender = real_sender; E.SENDER = FakeSender(); E.FRONT_STAKE_ETH = 0.0012; E.FRONT_STAKE_WEI = int(0.0012e18); E.state["front_halted"] = None
+reset(); E.state["nonce"] = 500; E.state["relay_wei"] = int(0.001e18); do_launch(7300); E.ingest(frame(7331, [signed(CROWD, UR, TRIG, BUY_DATA, 84)]))
+assert E.state["position"] is None and "relay holds less" in events("skip")[-1]["why"]
+E.state["relay_wei"] = None
+print("ok the relay: a front-only shortfall at start turns front off and follow starts; at run time a stake above the relay's balance is skipped")
+
+# 18j. the time fallback acts on the position it looked at only; a zero stake is a zero stake
+a_ = {"pid": "a", "sell_sent": False, "dry": True}; b_ = {"pid": "b", "sell_sent": False, "dry": True}
+E.state["position"] = b_; E.send_sell("time fallback", a_); assert not a_["sell_sent"] and not b_["sell_sent"]
+E.state["position"] = None
+tx = E.tx_buy({"c0": "0" * 40, "token": "ab" * 20, "fee": 2500, "tick_spacing": 50, "hooks": "0" * 40}, 1, 0, 0, 0); assert tx["data"][2 + 8 + 64*5: 2 + 8 + 64*6] == w(0)
+E.FRONT = False; E.ENTRY = "follow"
+print("ok a sell sent for a position no longer in the slot does nothing; tx_buy's stake 0 is 0")
 os.remove(LOG)

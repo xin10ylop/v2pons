@@ -103,6 +103,11 @@ never went in does not count against the daily cap.
 Release 0.9 adds a second strategy, `FRONT`: ahead of a volume bot's scheduled first buy on its 2.4333285 ETH PositionManager launches (about 330 a
 day, +13% a trade in an exact replay), armed from the launch transaction in the feed, with its own dry-run switch, daily cap and halt. A census of
 every v4 ETH pool since Oct 8 found no other operator running the follow pattern, and the volume bot's other families pull on outsiders.
+An independent review of 0.9 before its first run made the two strategies independent in everything but the one position slot: each
+has its own daily stop and its own halts, a front-only problem (the relay short of the front stake, a bad setting) turns front off and
+leaves follow running, follow has the slot first, and no front launch, however malformed, can cost follow a block. A front launch must
+match the bot's whole fingerprint (fee, tick spacing, launch price, liquidity: identical on all 532 seen), at most 0.008 ETH may sit ahead
+of the bot's buy with ours, and a bot buy that would fail its 99% minOut is not counted as a take-profit.
 
 ## Layout
 
