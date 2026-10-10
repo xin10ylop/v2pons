@@ -10,6 +10,9 @@ repository, the engine or the box is broken: the engine was running live on both
 and 12.5's payout command are built and tested (46 tests), 12.2's independent review was running when this was written. Nothing new is on
 the box yet; section 16.6 has the numbered commands.
 
+**Oct 10 18:35 UTC: the sequencer feed's operator has blocked the box's address range and says that routing around the block is
+unauthorized (section 16.11). The engine is stopped; it cannot trade without the feed. Read 16.11 before anything else.**
+
 To continue, give a new agent this repository and say: **"Read docs/HANDOFF.md first, then docs/RUNBOOK.md and README.md. Everything
 about the project is in them."** The agent then has the whole picture.
 
@@ -959,12 +962,38 @@ launch block; 105 landed at + 1 behind our buy in the same block, none ahead of 
 outcome in most pools, and the stake, not the exit, decides what is left: at $6 the bot's buy fills beside both decoys and the trade keeps
 its +14%; at $15 it is about +4% blended. **The operator can close that too by making its decoys fill the whole room.**
 
-**No front buy since 17:37:07 UTC** (the agent's side observation, the chain confirms: 72 launches to 18:14 untraded, the wallet's nonce
-unchanged through the 18:11-18:14 launches after the owner's 18:0x restart). The launches' shape is unchanged (145 since 17:20, all the
-exact fingerprint). The owner's 17:53 screen already showed "the last launch at 17:37:07" with the engine alive since 15:22:57, so the
-engine stopped seeing launches at 17:37 while the feed is healthy from the research container (connected in 0.45 s, frames 0.06-1.4 s behind
-the chain): the box's feed connection, its clock (a drift above STALE_S 2.5 s makes every block stale and arms nothing), or a stuck main
-thread. The owner was asked for the engine's feed/flow/alarm lines and the box's clock at 18:22.
+**No front buy since 17:37:07 UTC**: the feed refused the box from 17:37 (16.11). The launches' shape is unchanged (145 since 17:20, all the
+exact fingerprint).
+
+### 16.11 17:37 UTC: the sequencer feed's operator blocked the box
+
+The engine's log from 17:37:07 UTC is one line every 5 seconds: `feed_error: server rejected WebSocket connection: HTTP 403`; the last `flow`
+line is 17:36:26 (seq 85177990, lag 0.8 s, 0 stale blocks, 408 fires). The box's clock is synchronized (NTP active). The feed now answers
+through Cloudflare (`server: cloudflare`, `CF-RAY`), and from the box every handshake, with or without a browser User-Agent, with curl or the
+engine's own library (websockets 17.2), gets 403 with this body:
+
+> `{"jsonrpc":"2.0","error":{"code":403,"message":"Access denied. This source address range has been blocked. Connecting in a manner intended
+> to exceed or evade this feed service's limits is not authorized use of this service. Acquiring or routing additional IP address space to
+> continue this pattern is likewise not permitted, and continued access from this or any further network range is unauthorized."}}`
+
+That is a decision by the feed's operator, not a bot rule: the box's address range is blocked for exceeding or evading the service's limits,
+and the operator states that moving to another address or network to continue is unauthorized. From the research container the same
+handshake still succeeds (another network). What the engine did on the feed: one long-lived websocket since 15:22:57 (one message per block,
+deflate), reconnecting only on a stall or an error, and after 17:37 a retry every 5 s (720 an hour) until the owner stopped the service at
+about 18:30; the RPC calls (receipts, balances, the pull check, the nonce) go to the separate RPC host, which still answers. Whether the
+"limits" were connection count, bandwidth, duration or the trading pattern itself the message does not say.
+
+What this means: the engine cannot trade without the feed (the front entry needs the launch block within two blocks; polling the RPC is
+ten times too slow and against the same limits), so **the engine is stopped and must stay stopped**; the box must not retry (the 5 s loop is
+what "connecting in a manner intended to exceed limits" describes); and no new address, proxy or tunnel may be used to reach the feed from
+the box or anywhere else: the operator has said so explicitly, and this document does not describe any such step. The legitimate paths are
+(1) asking the feed's operator (the Robinhood Chain team) what access is permitted and whether an authorized way exists (a documented rate
+limit, a registered or paid feed, a node licence), (2) an authorized data source if one appears, (3) stopping on this chain. Section 12.6's
+scanner for other operators (running at 18:15 from the research container over the RPC) remains useful research for the day feed access is
+authorized; it changes nothing today.
+
+The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
+stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
 
 ### 16.9 The study of the whole repository (13 agents, 13:00-14:45 UTC): what it corrected
 
