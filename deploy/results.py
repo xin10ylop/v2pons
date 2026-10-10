@@ -65,6 +65,19 @@ def profit_table(done, st, e):
         usd = [d.get("pnl_usd") or 0 for d in ds]
         print(f"  {k}: {len(ds)} trades, {sum(1 for u in usd if u > 0) / len(ds):.0%} up, {'+' if sum(usd) >= 0 else '-'}${abs(sum(usd)) / len(ds):.3f} a trade"
               + (f", {100 * sum(rets) / len(rets):+.1f}% average return, worst {100 * min(rets):+.1f}%" if rets else ""))
+        gap = {}; first = later = 0                                            # the operator's reaction: its pull, in blocks after our sell landed
+        for d in ds:
+            sold, pull = d.get("sell_after_buy_blocks"), d.get("pull_after_buy_blocks")
+            if d.get("pulled_before_sell") or (pull is not None and sold is not None and pull < sold):
+                first += 1
+            elif pull is not None and sold is not None:
+                gap[pull - sold] = gap.get(pull - sold, 0) + 1
+            elif "pull_after_buy_blocks" in d:
+                later += 1
+        if gap or first:
+            print(f"    {k} pull after our sell: " + ", ".join(f"{g} block{'s' if g != 1 else ''} x{n}" for g, n in sorted(gap.items()))
+                  + (f"; none within 30 blocks x{later}" if later else "") + f"; BEFORE our sell x{first}" + ("   <== halts" if first else "")
+                  + (f"   (closest {min(gap)} block{'s' if min(gap) != 1 else ''})" if gap else ""))
         by = {}                                                                # the stake changes over time: $ a trade at each
         for d in ds:
             if d.get("stake"):
