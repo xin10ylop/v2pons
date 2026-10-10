@@ -62,6 +62,7 @@ WorkingDirectory=$REPO
 ExecStart=/opt/flip-venv/bin/python3 $REPO/src/flip_engine.py
 Restart=always
 RestartSec=3
+TimeoutStopSec=90
 Nice=-5
 
 [Install]

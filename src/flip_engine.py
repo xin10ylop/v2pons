@@ -657,7 +657,7 @@ def uncount(pos):
 def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
     roll_day()
     if state["stopping"] is not None:
-        log({"ev": "skip", "why": "stopping: no new trade", "pid": p["pid"], "seq": seq}); return
+        p["status"] = "skipped"; log({"ev": "skip", "why": "stopping: no new trade", "pid": p["pid"], "seq": seq}); return
     front = p.get("entry") == "front"; dry = DRY_RUN or (front and FRONT_DRY_RUN)
     halted = state["halted"] or (state["front_halted"] if front else state["follow_halted"])
     if halted and not dry:
@@ -833,6 +833,7 @@ def _settle(pos):
         b0 = int(rb["blockNumber"], 16); b1 = int(rs["blockNumber"], 16); i1 = int(rs["transactionIndex"], 16)
         out["hold_blocks"] = out["sell_after_buy_blocks"] = b1 - b0; out["buy_offset"] = b0 - pos["trig_seq"]
         time.sleep(PULL_WATCH_S)                                                           # the operator's reaction to us comes 5-13 blocks after our buy: let it land, to measure it
+        pulls = []
         try:
             ls = rpc("eth_getLogs", [{"fromBlock": hex(b0), "toBlock": hex(b1 + 30), "address": h0x(POOL_MANAGER), "topics": [h0x(T_ML), pos["pid"]]}])
             pulls = sorted((int(l["blockNumber"], 16), int(l["transactionIndex"], 16)) for l in ls if sgn(W(l["data"], 2)) < 0)
@@ -880,6 +881,8 @@ def chain_nonce(tries=None):
     wrong nonce"""
     err = None
     for i in range(tries or NONCE_TRIES):
+        if i and state["stopping"] is not None:                                        # stopping: no trade will use it, the next start reads the chain's count
+            return None
         try:
             return int(rpc("eth_getTransactionCount", [h0x(WALLET), "pending"], tries=1, timeout=5), 16)
         except Exception as e:

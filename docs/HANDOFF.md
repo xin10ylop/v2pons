@@ -6,9 +6,9 @@ the handoff, and what is open. It was written on Oct 10, 2026 at about 12:00 UTC
 on the trading strategies (its work on them was interrupted by an automated safety system twice; see section 14). Nothing about the
 repository, the engine or the box is broken: the engine was running live on both strategies when this was written.
 
-**Updated Oct 10 13:40 UTC by the second session** (section 16): open items 12.1 and 12.4 are answered from the chain, 12.3's near-miss halt
-and 12.5's payout command are built and tested (46 tests), 12.2's independent review was running when this was written. Nothing new is on
-the box yet; section 16.6 has the numbered commands.
+**Updated Oct 10 19:10 UTC by the second session** (section 16): open items 12.1 and 12.4 are answered from the chain, 12.3's near-miss halt
+and 12.5's payout command are built and tested, 12.2's independent review completed (16.7: safe, one high side finding fixed; 51 tests).
+The box runs 4dce46e since 13:33; the engine is **stopped** since 18:30 because the feed's operator blocked the box (16.11).
 
 **Oct 10 18:35 UTC: the sequencer feed's operator has blocked the box's address range and says that routing around the block is
 unauthorized (section 16.11). The engine is stopped; it cannot trade without the feed. Read 16.11 before anything else.**
@@ -22,7 +22,7 @@ about the project is in them."** The agent then has the whole picture.
 
 1. **Read sections 0-3** of this file: the picture, the chain and every address, the repository map, both strategies.
 2. **Read the code's own account**: the docstring at the top of `src/flip_engine.py` (the history of the exit and why), then its settings
-   block (lines 60-120), then skim `_fire`, `on_buy`, `on_front_buy`, `_settle`. Read `tests/test_engine.py`'s docstring: the 46 tests
+   block (lines 60-120), then skim `_fire`, `on_buy`, `on_front_buy`, `_settle`. Read `tests/test_engine.py`'s docstring: the 51 tests
    describe every behaviour the engine is held to.
 3. **Run the tests** where you are: `python3 tests/test_engine.py 2>&1 | grep -c "^ok"` must print 46 (needs `pip install rlp eth-account
    eth-utils websockets`); `python3 tests/test_v4math.py` 4.
@@ -37,7 +37,7 @@ about the project is in them."** The agent then has the whole picture.
    `cd ~/v2pons && git log --oneline -1 && sudo python3 ~/v2pons/deploy/results.py | head -24` and
    `sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py status`, and paste both. That gives the commit on the box, both
    strategies' state and halts, today's profit per strategy, the operator's pull margins, and the wallet and relay balances.
-8. Then work section 12 in order. Rules that held throughout: every change is tested (46 ok), committed and pushed (the box pulls `claude/pensive-rubin-rkj996`; the Oct 10 afternoon's work is on
+8. Then work section 12 in order. Rules that held throughout: every change is tested (51 ok), committed and pushed (the box pulls `claude/pensive-rubin-rkj996`; the Oct 10 afternoon's work is on
    `claude/laughing-fermat-48ylv7`, a fast-forward of it, section 16.6); every box step is one numbered command with its expected output and "if any of them fails, stop and paste
    it to me"; a code change on the box is `git pull`, the test count, then a restart that waits for the trade in progress (section 9.2);
    the private key is never printed, pasted or committed; nothing is deployed live without a dry run first.
@@ -108,7 +108,7 @@ the first trade the operator's pull beats.
 | `deploy/relay_ops.py` | `status`, `deposit <eth>`, `withdraw [eth]` (relay -> wallet; no amount = all), `sweep <token>`, `payout <address> <eth>` (wallet -> outside, c9d0201); refuses to run while the service is active |
 | `deploy/relay_deploy.py`, `relay_sim.py` | deploy the relay; simulate a buy and a sell through it on a live pool with eth_call state overrides |
 | `deploy/new_wallet.py`, `englog.py`, `health.sh`, `watch.sh` | create the wallet into the env file; the log for the last N hours; a health screen; trades as they happen |
-| `tests/test_engine.py` (46 tests), `tests/test_v4math.py` (4), `tests/data/front_launch.json` | the engine against a scripted feed with real signed transactions in real L2 batch frames, the chain stubbed; the fixture is a real volume-bot launch (tx `0xe1d91366…`, block 84234302) |
+| `tests/test_engine.py` (51 tests), `tests/test_v4math.py` (4), `tests/data/front_launch.json` | the engine against a scripted feed with real signed transactions in real L2 batch frames, the chain stubbed; the fixture is a real volume-bot launch (tx `0xe1d91366…`, block 84234302) |
 | `docs/RUNBOOK.md` | every deploy step from the first wallet to release 0.9, with the exact box commands |
 | `docs/HANDOFF.md` | this file |
 | `README.md` | the project narrative, releases 0.1-0.9 |
@@ -380,7 +380,7 @@ launcher's 14:30 launch, then the first 40 copy-scheme launches), `scen.py` (the
    (`eth_getLogs` for a negative `ModifyLiquidity` between our buy and our sell + 30 blocks, after `PULL_WATCH_S` 3 s), P&L, the chain's
    nonce, `trade_done`. A pull at or before our sell, or a filled buy whose sell sold nothing -> `halt` (the strategy's file).
 6. `restore_today` at start (today's live trades from the log), `checks` (chain id, relay code/owner/pm, balances), `on_stop` (SIGTERM:
-   finish the open trade, then exit; ea66cc2, not yet on the box).
+   finish the open trade, then exit; on the box since 13:33 UTC Oct 10, reviewed in 16.7).
 
 ### 7.2 Log events (`/var/log/flip/engine.jsonl`, one JSON per line, `ev` field)
 
@@ -395,7 +395,7 @@ trade: receipts, `ret`, `pnl_usd`, `sell_after_buy_blocks`, `pull_after_buy_bloc
 General: `DRY_RUN` (1) **0**; `LOG_PATH` **/var/log/flip/engine.jsonl**; `FEED_URL`, `SEQ_URL`, `RPC_URL` (the three URLs above);
 `FEED_COMPRESSION` (deflate); `WALLET`, `RELAY`, `PRIVATE_KEY` (the box's); `ETH_USD` (2570) **2570**; `HALT_FILE`
 (/var/log/flip/HALTED); `PULL_WATCH_S` (3); `STALE_S` (2.5); `RECEIPT_TIMEOUT_S` (25); `BUY_GAS`/`SELL_GAS` (350000); `GAS_HEADROOM` (3)
-**3**; `SELL_GAS_HEADROOM` (6); `STOP_WAIT_S` (40, ea66cc2 only).
+**3**; `SELL_GAS_HEADROOM` (6); `STOP_WAIT_S` (40; systemd's `TimeoutStopSec` 90).
 
 Follow: `LAUNCHERS` (0x3194e326…) **same**; `LAUNCH_SELECTORS` () **2fcb9108**; `LAUNCHER_CODE_HASHES` (2793923d…, 42544ef5…);
 `ENTRY` (follow) **auto**; `SEAT_CODE_HASHES` (2793923d…); `SEAT_FIRE_AT` (6); `STAKE_ETH` (0.0012) **0.0012**; `MIN_TRIGGER_ETH`
@@ -482,8 +482,7 @@ sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py status
 # change a setting (the env file) and restart
 set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
 set_kv FRONT_STAKE_ETH 0.0058 && sudo systemctl restart flip-engine
-# a restart that waits for the trade in progress to finish first (needed until ea66cc2 is on the box)
-grep -m1 '"ev":"trade_done"' <(sudo tail -n0 -f /var/log/flip/engine.jsonl) >/dev/null && sudo systemctl restart flip-engine && echo restarted
+# a plain restart waits for the trade in progress itself (ea66cc2, on the box since Oct 10 13:33): about 6 s mid-trade, at most STOP_WAIT_S 40 s
 # update the code
 cd ~/v2pons && git pull && /opt/flip-venv/bin/python3 tests/test_engine.py 2>&1 | grep -c "^ok"
 # money (the engine must be stopped for deposit/withdraw)
@@ -627,13 +626,12 @@ push access from the box (section 11.4: a deploy key with write access, or a tok
 - Relay about 0.257 ETH; wallet about 0.0026 ETH (about a day of gas at the Oct 10 pace).
 
 ### 11.2 Pushed but not on the box
-- ea66cc2 safe stop (restarts without a stop-wait), a8ccc3e and 4e8d350 (results.py only; the owner runs a fetched copy as `~/results.py`).
-  To install: `cd ~/v2pons && git pull && /opt/flip-venv/bin/python3 tests/test_engine.py 2>&1 | grep -c "^ok"` (expect 46 at the current head; 44 at 3c3f696), then the
-  wait-for-trade restart from 9.2. **ea66cc2's review did not complete**: read `on_stop`/`stop_tick`/`watchdog` with fresh eyes first
-  (the signal handler only sets a flag; `stop_tick` runs on the watchdog thread every 20 ms and calls `os._exit(0)` once no position and
-  no `front_settling` remain, or after 40 s with an alarm; systemd's `TimeoutStopSec` is 90 s).
-- 3a47c34, c9d0201, 792a8c5 (section 16, on `claude/laughing-fermat-48ylv7`): the bot's buy by its router, the payout command, follow's
-  near-miss halt; 46 tests. The commands to install everything are in 16.6.
+- (Superseded 13:33 UTC Oct 10: the box pulled 4dce46e, which carries ea66cc2, a8ccc3e, 4e8d350, 3a47c34, c9d0201 and 792a8c5.)
+  ea66cc2's review completed at 19:00 (16.7): safe. What is pushed and **not** on the box as of 19:10: 0c76f23 and later on
+  `claude/laughing-fermat-48ylv7` (size rule default off, relay_sim fix, the feed's User-Agent and `FEED_HEADERS`, and the safe-stop fixes of
+  16.7, among them the `pulls` crash fix that must be installed before the engine trades again). Install: `cd ~/v2pons && git pull &&
+  /opt/flip-venv/bin/python3 tests/test_engine.py 2>&1 | grep -c "^ok"` (expect 51), `sudo bash deploy/flip_setup.sh` once for the unit's
+  `TimeoutStopSec` (it restarts the service: run it only when the engine may run again).
 
 ### 11.3 Money
 - Front's profit sits in the relay, which is controlled by the hot key on the box. `relay_ops.py withdraw` moves ETH to the box's wallet;
@@ -674,10 +672,9 @@ stall delayed our sell, **was not looked at**. The log lines (`fire`, `buy_seen`
 `dry1/replay.py` and `dry1/skeptic/fetch_s.py` are the tools to do it. Until it is understood, each resume risks one stake per occurrence.
 The owner resumed both times; front was running at $15 when this was written.
 
-### 12.2 The safe-stop review (ea66cc2) never completed
-See 11.2. The code is tested (46 tests, a SIGTERM test on the real engine in dry run) but not independently reviewed.
-**Status 13:40 UTC: an independent adversarial review (five lenses, three refuters per finding, a ranked synthesis) was running; its
-verdict goes into section 16.7.**
+### 12.2 The safe-stop review (ea66cc2): completed Oct 10 19:00 UTC
+Verdict in 16.7: safe to run, strictly safer than cd3d1c9; four low findings fixed or recorded; one high side finding outside ea66cc2
+(792a8c5's `pulls`) fixed the same hour.
 
 ### 12.3 The follow protection release (proposed Oct 9, the owner never said yes or no)
 A halt when a pull lands within 4 blocks of our buy even if our sell was first (the margin is 2-3 blocks since Oct 9 16:27); a crowd
@@ -705,7 +702,7 @@ the take-profit floor are assessed in 16.3 and not built.**
 - A scanner for other bots like this one: group every new pool into launch families by fingerprint, score each on (a fixed fingerprint
   many times a day; a scheduled first buy a few blocks after launch with slack in its minOut; nobody else buying before it; no pull before
   its own buy), replay the strategy on the family's last day, surface candidates in results.py; the engine then takes front settings per
-  family. Not built.
+    family. A first version ran from the research container on Oct 10 evening (16.12).
 - Uniswap V2/V3 on this chain (not surveyed), the bonding-curve launch system (`ops/bcurve*.py`), other chains (Solana: bundles and
   leaders; Base/Arbitrum-type chains: a sequencer feed exists, priority fees do not fit).
 - Per-pool bet sizing for a "max bankroll" step.
@@ -874,14 +871,50 @@ with the size in the full `sell_why`; a front pool where the bot buys 0.00495 ET
 says it will fail, so the rows read `front, the bot's buy reverts` instead: the engine still sells at once, at the same moment, and the chain
 shows the buy filled; only the label and the missing `tp_ret` differ.
 
-### 16.7 The safe-stop review (12.2)
+### 16.7 The safe-stop review (12.2): completed 19:00 UTC
 
-Running at the time of writing: five finders (signals and threads, races, systemd, timing, the test), three refuters per finding, a ranked
-synthesis. Its verdict and any fix are recorded here when it completes; until then ea66cc2 stands as tested, not reviewed.
+Five finders (signals and threads, races, systemd, timing, the test file), three refuters each on the first five findings, and one agent that
+judged the remaining findings with experiments on the test file's stubs (its files: the session's scratch `safestop_finish/`, not in the
+repository; the findings are summarised here). 22 findings, 21 distinct. **Verdict: ea66cc2 is safe to run and strictly safer than cd3d1c9.**
+SIGTERM no longer kills a trade between its buy and its sell; with a healthy RPC a stop waits 3-6 s for the open trade (front's pull check
+included), writes `trade_done` and exits idle. No path was found where the stop itself loses money or leaves a wrong nonce: the sell goes out
+within 2.26 s of the fire, the halt files are written before the slot clears, `checks()` re-reads the nonce at start. The signal handler runs
+on the main thread within 0.2-82 ms even with the main thread blocked in epoll (26 of 26 runs); `_fire` is the only place a position is
+created and its stopping gate is the first check; `front_settling` is set before `position` clears, so a pull check is never seen as idle.
+
+Refuted (one line each): a few-microsecond window between clearing the slot and writing `trade_done` (GIL-protected, 20k trials lost
+nothing, the halts are already on disk); the 40 s alarm is not misleading (the record really is incomplete); a broken log file crashes the
+main thread at its own next log within about 62 s, so the watchdog's death does not matter; exit 0 after giving up is right (the JSONL is the
+alert channel, a non-zero exit would mark a plain `systemctl stop` failed); Ctrl-C is not a deployed path; the `relay_ops` guard's clash
+window is the 2.26 s before the presigned sell goes out, not 40 s; a sequencer stall of 36 s or more can cut at most the 4th of 4 sell posts.
+
+Confirmed, all low, fixed in the commit after e5b2603 (51 tests):
+- **C1. The stop waited on `chain_nonce`'s retries.** `_settle` writes `trade_done` only after `chain_nonce()`, and `deliver_buy`'s refused-buy
+  path holds the position through it; `chain_nonce` retries 60 times (4-9 minutes when the RPC fails). An RPC outage of 37 s or more starting
+  inside a settle, plus a stop at that moment, exited at the 40 s cap without the trade's record (`restore_today` then undercounts the day by
+  one trade, results.py shows `NO RESULT LOGGED`), and a refused buy made the stop wait the full 40 s with a "trade still open" alarm for a
+  trade that never happened. Never seen live in 2.5 days; no money at risk (halts written before the nonce read; the nonce re-read at start).
+  Fix: `chain_nonce` returns None on its second and later tries while `stopping` is set (every caller handles None; no trade starts once
+  stopping is set). Test 18q. Residual: if `eth_getLogs` hangs 4 x 10 s during a stop the cap still lands before the pull and sold-none
+  decision; `STOP_WAIT_S` 60 with `TimeoutStopSec` 90 would cover it (not changed).
+- **C2. Test 18o did not pin the stop's load-bearing waits**: three engine mutations (exit during front's pull check; the watchdog loop without
+  its try/except; the stopping gate exempting front) passed all 48 tests. Test 18p (a real SIGTERM via `os.kill` while `eth_getLogs` is held, a
+  front launch refused by the gate alone, the real watchdog thread with a raising `watchdog_tick`) kills all three.
+- **C3. The unit did not pin `TimeoutStopSec`**: Ubuntu's default 90 s held. `deploy/flip_setup.sh` now writes `TimeoutStopSec=90`; it takes
+  effect at the next `sudo bash deploy/flip_setup.sh` (which restarts the service). Check: `systemctl show flip-engine -p TimeoutStopUSec`.
+- **C4. Duplicate skip lines**: one front launch during a stop logged three `stopping: no new trade` lines and a wrong `too late`; the gate now
+  marks the launch `skipped` (one line). results.py counted each line.
+
+**Side finding, high, outside ea66cc2 but on the box since 13:33 (4dce46e):** 792a8c5's `elif pulls and ...` in `_settle` raised
+`UnboundLocalError` whenever `eth_getLogs` raised (any non-429 RPC error at once, or four failed tries), because `pulls` was assigned only
+inside the `try`. The settle then aborted with a `settle failed` alarm: no `trade_done` line, and both the "sold none" halt and follow's
+near-miss halt skipped (the position was cleared and the nonce refreshed by the `settle()` wrapper, so the engine kept trading). Fix: `pulls
+= []` before the `try` (test 18r). Whether it fired today: `sudo grep -c '"settle failed"' /var/log/flip/engine.jsonl` on the box (not yet
+checked when this was written). The runbook's wait-for-trade restart is no longer needed (9.2 updated).
 
 ### 16.8 Open after this session
 
-12.2 (above); 12.3's allowlist tag if wanted; the parked research of 12.6; the log export's push (a write deploy key). The money loop and the
+12.3's allowlist tag if wanted; the parked research of 12.6; the log export's push (a write deploy key). The money loop and the
 census (sections 6.4-6.5) were not re-run. Two things the study (16.9) raised that the owner should decide:
 
 - **`FRONT_DAILY_STOP_USD` is $5 against a $15 stake.** The stop is the day's cumulative front P&L at or under -$5, reset at 00:00 UTC. One lost
@@ -992,8 +1025,23 @@ limit, a registered or paid feed, a node licence), (2) an authorized data source
 scanner for other operators (running at 18:15 from the research container over the RPC) remains useful research for the day feed access is
 authorized; it changes nothing today.
 
+The authorized route, found afterwards from public sources (web search 18:50 UTC, not verified with the providers): Robinhood's own
+documentation describes the public feed and RPC as rate-limited and not for production use, and infrastructure providers sell dedicated
+Robinhood Chain sequencer-feed and RPC access under their own terms: Chainstack (its public reference decoder,
+`github.com/chainstacklabs/robinhood-chain-sequencer-feed`, notes per-client limits on the public feed and that permessage-deflate is required
+since 2026-09-17, which the engine sends), QuickNode (`quicknode.com/chains/robinhood`), Dwellir (`dwellir.com/blog/robinhood-chain-defi-data`,
+authenticated feed access). Using such a service is not evading the public feed's block. The engine is ready for one: `FEED_URL` (a token in
+the URL), `FEED_HEADERS` (a header token: JSON or `Name: value; Name: value`, e5b2603), `RPC_URL` (the provider's RPC, prudent for the same
+reason), all in `/etc/flip/engine.env`; then `git pull`, the tests, a front dry run (`FRONT_DRY_RUN=1`) over a few launches, then live. The
+owner's choice between the provider route, asking the Robinhood Chain team, and stopping on this chain was open when this was written.
+
 The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
 stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
+
+### 16.12 The scanner for other operators (12.6), Oct 10 evening
+
+Running from the research container over the public RPC when this was written (a census of every pool initialised on the chain in the last
+days, grouped into launch families by fingerprint, each family scored on the front rule's conditions). Its result goes here when it completes.
 
 ### 16.9 The study of the whole repository (13 agents, 13:00-14:45 UTC): what it corrected
 
