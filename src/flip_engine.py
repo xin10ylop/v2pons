@@ -46,6 +46,11 @@ was invisible; a buy whose reply was lost was dropped though it may have gone in
 keepalive could hold the sell's connection; a launch found by its call alone was trusted without looking at the launcher's code
 (now LAUNCHER_CODE_HASHES); the time fallback shared its thread with an RPC call.
 
+Oct 10, after the handoff (research/session_oct9_10/front_audit): the two -100% front trades of 10:49 and 11:12 UTC were pools where the
+volume bot's first buy was 0.00495 ETH, its smallest size and just under the 0.005 ETH sell-on threshold; the pull came 3 blocks after
+that buy as in every other pool, and our sell waited for the 18-block deadline (sold on the bot's buy, each would have been -0.17%).
+Since then the bot's buy is known by its router (FRONT_BOT_ROUTERS) at any size, and the size threshold is 0.001 ETH.
+
 Settings come from the environment (/etc/flip/engine.env on the box). Log: JSONL, one event per line, LOG_PATH.
 """
 import os, sys, json, math, time, base64, threading, asyncio, socket, ssl, signal, http.client, urllib.request, urllib.parse, datetime, traceback, collections
@@ -112,9 +117,13 @@ FRONT_SQRT_P = int(env("FRONT_SQRT_P", "1604517591721945638372359205383840")); F
 # the bot's first buy (0.05-0.25 ETH) is quoted at the launch state with minOut 99% of that quote: about 0.012 ETH bought ahead of it makes it revert
 FRONT_BOT_MIN_ETH = float(env("FRONT_BOT_MIN_ETH", "0.04")); FRONT_BOT_MIN_WEI = int(FRONT_BOT_MIN_ETH * 1e18); FRONT_BOT_MINOUT = float(env("FRONT_BOT_MINOUT", "0.99"))
 FRONT_AHEAD_MAX_ETH = float(env("FRONT_AHEAD_MAX_ETH", "0.008")); FRONT_AHEAD_MAX_WEI = int(FRONT_AHEAD_MAX_ETH * 1e18)   # others' buys before ours plus our stake: at most this, a third of the room left for buys behind ours
-# the bot's buy is the whole profit and nothing comes after it but the pull (2-4 blocks after it in the operator's quick-pull hours): a buy this
-# size behind ours sells at once even below FRONT_TAKE_PROFIT. The operator's own decoys behind ours are 0.00012 ETH at most; its bot's buys 0.0138-0.275.
-FRONT_SELL_ON_ETH = float(env("FRONT_SELL_ON_ETH", "0.005")); FRONT_SELL_ON_WEI = int(FRONT_SELL_ON_ETH * 1e18)
+# the bot's buy is the whole profit and nothing comes after it but the pull (2-4 blocks after it, 400 of 400 live trades on Oct 10): it sells our
+# position at once even below FRONT_TAKE_PROFIT, whatever its size. It is known by its router (FRONT_BOT_ROUTERS: its buys are calls to it carrying
+# the token) and, should the router change, by its size (FRONT_SELL_ON_ETH; the operator's own decoys behind ours are 0.00012 ETH at most; the
+# bot's buys 0.00495-0.335 ETH live). The two -100% trades of Oct 10 (10:49 and 11:12 UTC) were bot buys of 0.00495 ETH, under the old 0.005
+# threshold: the engine waited for the deadline and the pull came 3 blocks after the bot's buy, as always (research/session_oct9_10/front_audit).
+FRONT_SELL_ON_ETH = float(env("FRONT_SELL_ON_ETH", "0.001")); FRONT_SELL_ON_WEI = int(FRONT_SELL_ON_ETH * 1e18)
+FRONT_BOT_ROUTERS = {a.strip().lower().replace("0x", "") for a in env("FRONT_BOT_ROUTERS", "0x1cbaf24d53fe930fce8eff149fa797d2611da149").split(",") if a.strip()}
 SEL_MULTICALL = "ac9650d8"; SEL_INIT_POOL = "f7020405"; SEL_MODLIQ = "dd46508f"
 MIN_SQRT_P = 4295128739; MAX_SQRT_P = 1461446703485210103287273052203988822378723970342                                # v4's price bounds
 
@@ -957,7 +966,8 @@ def on_front_buy(p, seq, to, value, h, stale):
     included) fails that, it reverts on the chain though the feed shows it, so it does not move the pool and is no take-profit;
     our position, if its buy is in, sells at once (nothing is coming behind it). Otherwise it is the take-profit's moment."""
     pos = state["position"]; ours = pos if pos is not None and pos["pid"] == p["pid"] else None
-    if value >= FRONT_BOT_MIN_WEI and p["bot_seq"] is None:
+    bot = to in FRONT_BOT_ROUTERS or value >= FRONT_BOT_MIN_WEI                            # the bot's buy: through its router at any size, or any buy of its usual size
+    if bot and p["bot_seq"] is None:
         p["bot_seq"] = seq
         sp = p["sp"]
         if ours is not None and ours["dry"] and ours["buy_seq"] is not None:                # the dry run's buy is not in the pool: put it in
@@ -976,14 +986,16 @@ def on_front_buy(p, seq, to, value, h, stale):
     if p["first_buy"] is None and value >= MIN_TRIGGER_WEI:
         p["first_buy"] = seq
         log({"ev": "first_buy", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"], "value": value, "to": to, "fee": p["fee"], "eligible": p["eligible"], "stale": stale, "entry": "front"})
-    if p["status"] == "armed" and (value >= FRONT_BOT_MIN_WEI or p["eth_in"] + FRONT_STAKE_WEI > FRONT_AHEAD_MAX_WEI):
+    if p["status"] == "armed" and (bot or p["eth_in"] + FRONT_STAKE_WEI > FRONT_AHEAD_MAX_WEI):
         p["status"] = "late"
-        log({"ev": "skip", "why": "front: the bot's buy came first" if value >= FRONT_BOT_MIN_WEI else "front: too much ETH bought ahead of the bot's buy", "pid": p["pid"], "seq": seq,
+        log({"ev": "skip", "why": "front: the bot's buy came first" if bot else "front: too much ETH bought ahead of the bot's buy", "pid": p["pid"], "seq": seq,
              "eth_in": p["eth_in"]})
     if ours is not None and ours["buy_seq"] is not None and not ours["sell_sent"] and ours["feed_tokens"] and not stale:
         ret = take_profit(ours, p)
-        if not ours["sell_sent"] and value >= FRONT_SELL_ON_WEI:                     # the bot's buy, too small for the take-profit: out now, not at the deadline
-            ours["tp_ret"] = round(ret, 4); send_sell(f"the bot's buy behind ours ({value / 1e18:.4f} ETH): out before the pull, the sell prices at {ret:+.1%}", ours)
+        if not ours["sell_sent"] and (to in FRONT_BOT_ROUTERS or value >= FRONT_SELL_ON_WEI):   # the bot's buy (its router, any size), or any real-size buy: out now, not at the deadline
+            ours["tp_ret"] = round(ret, 4)
+            who = f"the bot's buy behind ours ({value / 1e18:.5f} ETH)" if to in FRONT_BOT_ROUTERS else f"a real-size buy behind ours ({value / 1e18:.5f} ETH, not through the bot's router)"
+            send_sell(who + f": out before the pull, the sell prices at {ret:+.1%}", ours)
 
 
 def on_buy(p, seq, to, value, h, stale, seen_at):
@@ -1166,7 +1178,7 @@ def main():
          "front": FRONT, "front_dry_run": FRONT_DRY_RUN, "front_stake_eth": FRONT_STAKE_ETH, "front_take_profit": FRONT_TAKE_PROFIT, "front_hold_blocks": FRONT_HOLD_BLOCKS,
          "front_fire_max": FRONT_FIRE_MAX, "front_max_per_day": FRONT_MAX_PER_DAY, "front_value_wei": FRONT_VALUE_WEI, "front_halted": state["front_halted"],
          "front_daily_stop_usd": FRONT_DAILY_STOP_USD, "front_pin": FRONT_PIN, "front_fee": FRONT_FEE, "front_tick_spacing": FRONT_TICK_SPACING, "front_sqrt_p": FRONT_SQRT_P, "front_liq": FRONT_LIQ,
-         "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_sell_on_eth": FRONT_SELL_ON_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT,
+         "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_sell_on_eth": FRONT_SELL_ON_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT, "front_bot_routers": sorted(FRONT_BOT_ROUTERS),
          "halted": state["halted"], "halt_file": HALT_FILE, "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     signal.signal(signal.SIGTERM, on_stop)
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()

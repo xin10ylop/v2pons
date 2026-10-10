@@ -748,6 +748,27 @@ E.ingest(frame(7910, [signed(CROWD, BOT, int(0.008e18), FBUY, 75)]))
 assert pos["sell_sent"] and pos["sell_why"].startswith("the bot's buy behind ours") and pos["tp_ret"] is not None and pos["tp_ret"] < E.FRONT_TAKE_PROFIT, (pos.get("sell_why"), pos["tp_ret"])
 front_close(pos, 7902, 7911, int(E.FRONT_STAKE_WEI * 0.999))
 print("ok front: a decoy behind ours is no exit; the bot's buy sells at once even below the take-profit")
+
+# 18m2. Oct 10's two -100% trades: the bot bought 0.00495 ETH (its smallest size, under the old 0.005 sell-on threshold), the pull came 3 blocks
+# later, our sell waited for the deadline. Now a buy through the bot's router behind ours sells at once whatever its size; a real-size buy from
+# anyone else (0.001 ETH or more) too; the operator's decoys (2e-6 and 0.00012 ETH) still do not
+reset(); E.state["nonce"] = 545
+front_launch(7950, 22); pos = E.state["position"]; E.ingest(frame(7951, [SENT[0][1]]))
+E.ingest(frame(7953, [signed(OUTSIDER, UR, int(0.000002e18), FBUY, 35), signed(OUTSIDER, SNIPER, int(0.00012e18), FBUY, 36)])); assert not pos["sell_sent"], pos.get("sell_why")
+E.ingest(frame(7959, [signed(CROWD, BOT, int(0.00495e18), FBUY, 76)]))
+assert pos["sell_sent"] and pos["sell_why"].startswith("the bot's buy behind ours (0.00495 ETH)") and pos["sell_seq_sent"] == 7959 and pos["tp_ret"] is not None and pos["tp_ret"] < 0, (pos.get("sell_why"), pos["tp_ret"])
+assert E.state["armed"][FPID]["bot_seq"] == 7959, "a small buy through the bot's router was not taken for the bot's buy"
+front_close(pos, 7951, 7960, int(E.FRONT_STAKE_WEI * 0.998))
+reset(); E.state["nonce"] = 550
+front_launch(7970, 23); pos = E.state["position"]; E.ingest(frame(7971, [SENT[0][1]]))
+E.ingest(frame(7975, [signed(OUTSIDER, SNIPER, int(0.0009e18), FBUY, 37)])); assert not pos["sell_sent"], pos.get("sell_why")
+E.ingest(frame(7976, [signed(OUTSIDER, SNIPER, int(0.0011e18), FBUY, 38)]))
+assert pos["sell_sent"] and pos["sell_why"].startswith("a real-size buy behind ours (0.00110 ETH, not through the bot's router)") and E.state["armed"][FPID]["bot_seq"] is None, pos.get("sell_why")
+front_close(pos, 7971, 7977, int(E.FRONT_STAKE_WEI * 0.998))
+reset(); E.state["nonce"] = 555                                                          # before our fire, a small buy through the router is the bot's: the pool is late
+E.ingest(frame(7980, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, FX["input"], 24), signed(CROWD, BOT, int(0.00495e18), FBUY, 77)]))
+assert E.state["position"] is None and E.state["armed"][FPID]["status"] == "late" and "the bot's buy came first" in events("skip")[-1]["why"], events("skip")[-1]
+print("ok front: the bot's buy is known by its router at any size (0.00495 ETH, the Oct 10 losses) and sells at once; a real-size buy by anyone else too; decoys never")
 E.FRONT = False; E.ENTRY = "follow"
 
 # 18n. a restart keeps the day: today's live trades read back from the log (counts and P&L per strategy); yesterday's and dry ones are not
