@@ -71,6 +71,7 @@ def env(k, d=""):
 
 
 FEED_URL = env("FEED_URL", "wss://feed.mainnet.chain.robinhood.com"); FEED_COMPRESSION = env("FEED_COMPRESSION", "deflate") or None
+FEED_USER_AGENT = env("FEED_USER_AGENT", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36")   # the feed went behind Cloudflare on Oct 10 17:37 UTC and refused the library's default "Python/websockets" client with HTTP 403; the RPC calls have sent a browser agent since 0.1
 SEQ_URL = env("SEQ_URL", "https://sequencer.mainnet.chain.robinhood.com"); RPC_URL = env("RPC_URL", "https://rpc.mainnet.chain.robinhood.com")
 LOG_PATH = env("LOG_PATH", "flip_engine.jsonl"); DRY_RUN = env("DRY_RUN", "1") != "0"; CHAIN_ID = 4663
 LAUNCHERS = {a.strip().lower().replace("0x", "") for a in env("LAUNCHERS", "0x3194e32622c5d860a0572c74edda99dcfd8fc827").split(",") if a.strip()}
@@ -1135,7 +1136,8 @@ async def feed_loop():
     backoff = 0.2
     while True:
         try:
-            async with websockets.connect(FEED_URL, open_timeout=10, max_size=None, ping_interval=10, ping_timeout=5, max_queue=4, compression=FEED_COMPRESSION) as ws:
+            async with websockets.connect(FEED_URL, open_timeout=10, max_size=None, ping_interval=10, ping_timeout=5, max_queue=4, compression=FEED_COMPRESSION,
+                                          **({"user_agent_header": FEED_USER_AGENT} if FEED_USER_AGENT else {})) as ws:
                 state["connected"] = True; log({"ev": "feed_connected", "url": FEED_URL}); backoff = 0.2
                 while True:
                     try:
@@ -1145,8 +1147,10 @@ async def feed_loop():
                     ingest(raw)
         except Exception as e:
             log({"ev": "feed_error", "err": str(e)[:200]})
+            if "403" in str(e):                                                        # refused by the server (Cloudflare): retrying every 5 s only keeps the address flagged
+                backoff = max(backoff, 15.0)
         state["connected"] = False
-        await asyncio.sleep(backoff); backoff = min(5.0, backoff * 2)
+        await asyncio.sleep(backoff); backoff = min(60.0 if backoff >= 15.0 else 5.0, backoff * 2)
 
 
 # ---------------------------------------------------------------- start
