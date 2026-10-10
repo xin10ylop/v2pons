@@ -71,7 +71,28 @@ def env(k, d=""):
 
 
 FEED_URL = env("FEED_URL", "wss://feed.mainnet.chain.robinhood.com"); FEED_COMPRESSION = env("FEED_COMPRESSION", "deflate") or None
-FEED_USER_AGENT = env("FEED_USER_AGENT", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36")   # the feed went behind Cloudflare on Oct 10 17:37 UTC and refused the library's default "Python/websockets" client with HTTP 403; the RPC calls have sent a browser agent since 0.1
+FEED_USER_AGENT = env("FEED_USER_AGENT", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36")   # the RPC calls have sent a browser agent since 0.1; the feed gets one too (empty = the library's)
+
+
+def parse_headers(text):
+    """FEED_HEADERS: extra handshake headers for an authenticated feed (a provider's endpoint): a JSON object, or "Name: value; Name2: value2".
+    The public feed blocked the box's address range on Oct 10, 2026 17:37 UTC for exceeding its limits and said that reaching it from any
+    other address is unauthorized (docs/HANDOFF.md 16.11): a feed the engine may use is one whose operator has agreed to it, and such feeds
+    carry a token in the URL (FEED_URL) or in a header (here). Never put a public feed back behind another address."""
+    text = (text or "").strip()
+    if not text:
+        return {}
+    if text.startswith("{"):
+        d = json.loads(text)
+        return {str(k): str(v) for k, v in d.items()}
+    out = {}
+    for part in text.split(";"):
+        if ":" in part:
+            k, v = part.split(":", 1); out[k.strip()] = v.strip()
+    return out
+
+
+FEED_HEADERS = parse_headers(env("FEED_HEADERS", ""))
 SEQ_URL = env("SEQ_URL", "https://sequencer.mainnet.chain.robinhood.com"); RPC_URL = env("RPC_URL", "https://rpc.mainnet.chain.robinhood.com")
 LOG_PATH = env("LOG_PATH", "flip_engine.jsonl"); DRY_RUN = env("DRY_RUN", "1") != "0"; CHAIN_ID = 4663
 LAUNCHERS = {a.strip().lower().replace("0x", "") for a in env("LAUNCHERS", "0x3194e32622c5d860a0572c74edda99dcfd8fc827").split(",") if a.strip()}
@@ -1137,7 +1158,7 @@ async def feed_loop():
     while True:
         try:
             async with websockets.connect(FEED_URL, open_timeout=10, max_size=None, ping_interval=10, ping_timeout=5, max_queue=4, compression=FEED_COMPRESSION,
-                                          **({"user_agent_header": FEED_USER_AGENT} if FEED_USER_AGENT else {})) as ws:
+                                          **({"user_agent_header": FEED_USER_AGENT} if FEED_USER_AGENT else {}), **({"additional_headers": FEED_HEADERS} if FEED_HEADERS else {})) as ws:
                 state["connected"] = True; log({"ev": "feed_connected", "url": FEED_URL}); backoff = 0.2
                 while True:
                     try:
@@ -1147,7 +1168,8 @@ async def feed_loop():
                     ingest(raw)
         except Exception as e:
             log({"ev": "feed_error", "err": str(e)[:200]})
-            if "403" in str(e):                                                        # refused by the server (Cloudflare): retrying every 5 s only keeps the address flagged
+            code = getattr(getattr(e, "response", None), "status_code", None) or getattr(e, "status_code", None)   # websockets 14+ / the older client
+            if code in (403, 429, 503):                                                # refused by the server: retrying every 5 s only keeps the address flagged
                 backoff = max(backoff, 15.0)
         state["connected"] = False
         await asyncio.sleep(backoff); backoff = min(60.0 if backoff >= 15.0 else 5.0, backoff * 2)
@@ -1203,7 +1225,7 @@ def main():
          "front_fire_max": FRONT_FIRE_MAX, "front_max_per_day": FRONT_MAX_PER_DAY, "front_value_wei": FRONT_VALUE_WEI, "front_halted": state["front_halted"],
          "front_daily_stop_usd": FRONT_DAILY_STOP_USD, "front_pin": FRONT_PIN, "front_fee": FRONT_FEE, "front_tick_spacing": FRONT_TICK_SPACING, "front_sqrt_p": FRONT_SQRT_P, "front_liq": FRONT_LIQ,
          "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_sell_on_eth": FRONT_SELL_ON_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT, "front_bot_routers": sorted(FRONT_BOT_ROUTERS),
-         "halted": state["halted"], "halt_file": HALT_FILE, "follow_halted": state["follow_halted"], "follow_halt_file": FOLLOW_HALT_FILE, "follow_near_miss_blocks": FOLLOW_NEAR_MISS_BLOCKS, "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
+         "halted": state["halted"], "halt_file": HALT_FILE, "follow_halted": state["follow_halted"], "follow_halt_file": FOLLOW_HALT_FILE, "follow_near_miss_blocks": FOLLOW_NEAR_MISS_BLOCKS, "feed_headers": sorted(FEED_HEADERS), "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     signal.signal(signal.SIGTERM, on_stop)
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()
     try:

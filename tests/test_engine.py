@@ -844,4 +844,11 @@ E.on_stop(15, None); stop_wait0 = E.STOP_WAIT_S; E.STOP_WAIT_S = 0.0; time.sleep
 assert exits == [0] and events("stopped")[-1]["idle"] is False and "still open" in events("alarm")[-1]["what"]
 E.STOP_WAIT_S = stop_wait0; E.EXIT = os._exit; E.state.update({"stopping": None, "stop_logged": False, "position": None}); E.FRONT = False; E.ENTRY = "follow"
 print("ok a stop mid-trade: no new trade, the open one sells on schedule and settles, then the engine exits (with an alarm after STOP_WAIT_S)")
+
+# --- 19. FEED_HEADERS: the handshake headers of an authenticated feed, as JSON or "Name: value; Name: value"; empty = none
+assert E.parse_headers("") == {} and E.parse_headers("   ") == {}
+assert E.parse_headers('{"Authorization": "Bearer abc", "X-Key": "k1"}') == {"Authorization": "Bearer abc", "X-Key": "k1"}
+assert E.parse_headers("Authorization: Bearer abc; X-Key: k1") == {"Authorization": "Bearer abc", "X-Key": "k1"}
+assert E.parse_headers("Authorization: Bearer a:b:c") == {"Authorization": "Bearer a:b:c"} and E.FEED_HEADERS == {}
+print("ok FEED_HEADERS: an authenticated feed's handshake headers parse from JSON or 'Name: value' pairs; none by default")
 os.remove(LOG)
