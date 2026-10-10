@@ -18,6 +18,7 @@ KEY = "0x" + "11" * 32; ACCT = Account.from_key(KEY); RELAY = "0x" + "f1" * 20; 
 os.environ.update({"DRY_RUN": "0", "LOG_PATH": LOG, "RELAY": RELAY, "WALLET": ACCT.address.lower(), "PRIVATE_KEY": KEY, "LAUNCHERS": LAUNCHER, "STAKE_ETH": "0.0012",
                    "HOLD_BLOCKS": "4", "SELL_LEAD_BLOCKS": "2", "SELL_FALLBACK_S": "100", "FEE_MAX_PPM": "9999", "TRIGGER_MAX_BLOCKS": "150", "MAX_TRADES_PER_DAY": "2", "DAILY_STOP_USD": "15",
                    "TAKE_PROFIT": "0.01", "PULL_WATCH_S": "0", "HALT_FILE": LOG + ".halt"})
+os.environ.pop("FRONT_SELL_ON_ETH", None)                                                 # the code default (0 = off) is what 18m2 tests
 sys.path.insert(0, os.path.join(ROOT, "src"))
 import flip_engine as E
 import v4math
@@ -750,8 +751,9 @@ front_close(pos, 7902, 7911, int(E.FRONT_STAKE_WEI * 0.999))
 print("ok front: a decoy behind ours is no exit; the bot's buy sells at once even below the take-profit")
 
 # 18m2. Oct 10's two -100% trades: the bot bought 0.00495 ETH (its smallest size, under the old 0.005 sell-on threshold), the pull came 3 blocks
-# later, our sell waited for the deadline. Now a buy through the bot's router behind ours sells at once whatever its size; a real-size buy from
-# anyone else (0.004 ETH or more) too; the operator's decoys (2e-6, 0.00012 and, from Oct 10 15:04, 0.001485 ETH) do not
+# later, our sell waited for the deadline. Now a buy through the bot's router behind ours sells at once whatever its size; the operator's decoys
+# (2e-6, 0.00012, then 0.001485 and 0.00495 ETH on Oct 10 afternoon) do not, whatever their size, because the size rule is off by default
+# (FRONT_SELL_ON_ETH 0); set, it sells on any buy of that size
 reset(); E.state["nonce"] = 545
 front_launch(7950, 22); pos = E.state["position"]; E.ingest(frame(7951, [SENT[0][1]]))
 E.ingest(frame(7953, [signed(OUTSIDER, UR, int(0.000002e18), FBUY, 35), signed(OUTSIDER, SNIPER, int(0.00012e18), FBUY, 36)])); assert not pos["sell_sent"], pos.get("sell_why")
@@ -759,16 +761,26 @@ E.ingest(frame(7959, [signed(CROWD, BOT, int(0.00495e18), FBUY, 76)]))
 assert pos["sell_sent"] and pos["sell_why"].startswith("the bot's buy behind ours (0.00495 ETH)") and pos["sell_seq_sent"] == 7959 and pos["tp_ret"] is not None and pos["tp_ret"] < 0, (pos.get("sell_why"), pos["tp_ret"])
 assert E.state["armed"][FPID]["bot_seq"] == 7959, "a small buy through the bot's router was not taken for the bot's buy"
 front_close(pos, 7951, 7960, int(E.FRONT_STAKE_WEI * 0.998))
-reset(); E.state["nonce"] = 550
+reset(); E.state["nonce"] = 550; assert E.FRONT_SELL_ON_WEI == 0, "the size rule must be off by default"
 front_launch(7970, 23); pos = E.state["position"]; E.ingest(frame(7971, [SENT[0][1]]))
-E.ingest(frame(7975, [signed(OUTSIDER, SNIPER, int(0.001485e18), FBUY, 37)])); assert not pos["sell_sent"], pos.get("sell_why")   # the decoy of Oct 10 15:04
-E.ingest(frame(7976, [signed(OUTSIDER, SNIPER, int(0.0045e18), FBUY, 38)]))
+E.ingest(frame(7975, [signed(OUTSIDER, SNIPER, int(0.001485e18), FBUY, 37), signed(OUTSIDER, SNIPER, int(0.00495e18), FBUY, 38)])); assert not pos["sell_sent"], pos.get("sell_why")   # the decoys of Oct 10 15:04 and 15:45
+sell_on0 = E.FRONT_SELL_ON_WEI; E.FRONT_SELL_ON_WEI = int(0.004e18)                                                                # the size rule, when set
+E.ingest(frame(7977, [signed(OUTSIDER, SNIPER, int(0.0045e18), FBUY, 40)])); E.FRONT_SELL_ON_WEI = sell_on0
 assert pos["sell_sent"] and pos["sell_why"].startswith("a real-size buy behind ours (0.00450 ETH, not through the bot's router)") and E.state["armed"][FPID]["bot_seq"] is None, pos.get("sell_why")
 front_close(pos, 7971, 7977, int(E.FRONT_STAKE_WEI * 0.998))
 reset(); E.state["nonce"] = 555                                                          # before our fire, a small buy through the router is the bot's: the pool is late
 E.ingest(frame(7980, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, FX["input"], 24), signed(CROWD, BOT, int(0.00495e18), FBUY, 77)]))
 assert E.state["position"] is None and E.state["armed"][FPID]["status"] == "late" and "the bot's buy came first" in events("skip")[-1]["why"], events("skip")[-1]
-print("ok front: the bot's buy is known by its router at any size (0.00495 ETH, the Oct 10 losses) and sells at once; a real-size buy by anyone else too; decoys never")
+print("ok front: the bot's buy is known by its router at any size (0.00495 ETH, the Oct 10 losses) and sells at once; the size rule is off by default (the decoys matched every threshold) and works when set")
+
+# 18m4. the bot's buy lands in our own block ahead of our buy (small enough to pass our minOut): the pull is 2-4 blocks away, so the position sells
+# the moment our buy is seen, not at the deadline
+reset(); E.state["nonce"] = 557
+front_launch(7990, 26); pos = E.state["position"]; p = E.state["armed"][FPID]
+E.ingest(frame(7991, [signed(CROWD, BOT, int(0.02e18), FBUY, 78), SENT[0][1]]))
+assert p["bot_seq"] == 7991 and pos["buy_seq"] == 7991 and pos["sell_sent"] and pos["sell_why"].startswith("the bot's buy landed ahead of ours in the same block"), (pos.get("sell_why"), p["bot_seq"])
+front_close(pos, 7991, 7992, int(E.FRONT_STAKE_WEI * 1.01))
+print("ok front: the bot's buy ahead of ours in our own block sells at once, not at the deadline")
 
 # 18m3. follow's near-miss halt: the operator's pull within FOLLOW_NEAR_MISS_BLOCKS (4) of our buy, behind our sell, halts follow only (its own
 # file); front keeps trading; a pull one block later is not a near miss. The exit survives a pull at our buy + 4 or later only (protect/exits_bt.out).

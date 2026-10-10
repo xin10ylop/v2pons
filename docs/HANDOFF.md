@@ -148,9 +148,10 @@ hours), or 2-4 blocks after its bot's buy in its "quick-pull" hours (section 6.1
 
 The trade: the engine decodes the launch transaction's calldata in the feed (the pool key, price and liquidity are in it: `decode_launch`),
 arms the pool in the launch block, fires at the end of that block, so our buy lands at launch +1 (130 of 132 live trades) or +2. Then it
-sells on the bot's buy: any buy through the bot's router behind ours (`FRONT_BOT_ROUTERS`, at any size, since 3a47c34: section 16.1) or any
-buy of 0.001 ETH or more (`FRONT_SELL_ON_ETH`; 0.005 until then, which the bot's 0.00495 ETH buys slipped under) at once, whatever it prices
-(release 32416c1), or at +1% after gas on a smaller one, or at the deadline when the feed shows our buy + 18 (`FRONT_HOLD_BLOCKS`; 12 until Oct 10 09:20).
+sells on the bot's buy: any buy through the bot's router behind ours (`FRONT_BOT_ROUTERS`, at any size, since 3a47c34: section 16.1) at once,
+whatever it prices (release 32416c1), or at +1% after gas on any other buy behind ours (the take-profit); the size rule `FRONT_SELL_ON_ETH` (0.005
+until Oct 10 13:00, then 0.001, then 0.004) is off since Oct 10 18:00 because the operator's decoys matched every threshold within the hour
+(16.10), or at the deadline when the feed shows our buy + 18 (`FRONT_HOLD_BLOCKS`; 12 until Oct 10 09:20).
 The room ahead of the bot's buy is limited: with about 0.0124 ETH bought ahead of it, its 0.05 ETH buy fails its own minOut and reverts
 (section 6.8), so the engine skips a pool with more than 0.008 ETH ahead counting our stake (`FRONT_AHEAD_MAX_ETH`), and when the bot's
 buy would revert anyway it sells at once instead of counting a phantom profit. Our return per trade is about +13.8% on a typical 0.17 ETH
@@ -404,8 +405,9 @@ Front: `FRONT` (0) **1**; `FRONT_DRY_RUN` (1) **0**; `FRONT_VALUE_WEI` (24333285
 `FRONT_HOLD_BLOCKS` (18 since dca5c72; 12 before) **18**; `FRONT_FIRE_MAX` (2); `FRONT_MAX_PER_DAY` (400); `FRONT_HALT_FILE`
 (HALT_FILE + .front); `FRONT_DAILY_STOP_USD` (5); `FRONT_PIN` (0); `FRONT_FEE` (2500); `FRONT_TICK_SPACING` (50); `FRONT_SQRT_P`
 (1604517591721945638372359205383840); `FRONT_LIQ` (49279426163460954002188); `FRONT_BOT_MIN_ETH` (0.04); `FRONT_BOT_MINOUT` (0.99);
-`FRONT_AHEAD_MAX_ETH` (0.008); `FRONT_SELL_ON_ETH` (0.004 since 15:25 UTC; 0.001 from 3a47c34 for two hours, 0.005 before: section 16.10)
-**0.004 in the env file once the 15:20 command is run**; `FRONT_BOT_ROUTERS` (0x1cbaf24d…, since 3a47c34).
+`FRONT_AHEAD_MAX_ETH` (0.008); `FRONT_SELL_ON_ETH` (0 = off, the default since the 18:05 commit; 0.004 from 15:25, 0.001 from 13:00, 0.005
+before: section 16.10) **1 in the env file since the 18:00 command (on the box's code a 1 ETH threshold is never met: the rule is off)**;
+`FRONT_BOT_ROUTERS` (0x1cbaf24d…, since 3a47c34).
 
 Follow's own halt (792a8c5, not on the box): `FOLLOW_NEAR_MISS_BLOCKS` (4; 0 = off); `FOLLOW_HALT_FILE` (HALT_FILE + .follow).
 
@@ -862,9 +864,12 @@ mkdir -p ~/v2pons/research/box_logs && sudo python3 ~/v2pons/deploy/englog.py 72
 sudo systemctl stop flip-engine && sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py withdraw 0.2 && sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py payout 0xYOUR_ADDRESS 0.19 && sudo systemctl start flip-engine
 ```
 
-Step 6's start line must show `"release":"0.9"`, `"front_sell_on_eth":0.004` (0.001 before 16.10), `"front_bot_routers":["1cbaf24d53fe930fce8eff149fa797d2611da149"]`,
+Step 6's start line must show `"release":"0.9"`, `"front_sell_on_eth":1.0` (the env value; 0 = off in the code since 18:05, 16.10), `"front_bot_routers":["1cbaf24d53fe930fce8eff149fa797d2611da149"]`,
 `"follow_near_miss_blocks":4`, and the three `halted` fields null. After it, `results.py`'s front rows read `front, the bot's buy behind ours`
-as before, with the size in the full `sell_why`; a front pool where the bot buys 0.00495 ETH now sells at once for about -0.2%.
+with the size in the full `sell_why`; a front pool where the bot buys 0.00495 ETH now sells at once for about -0.2%. Since the operator's two
+0.00495 ETH decoys (16.10), the bot's buy arrives with about 0.0157 ETH ahead of it and the engine's revert model (0.99 x the launch quote)
+says it will fail, so the rows read `front, the bot's buy reverts` instead: the engine still sells at once, at the same moment, and the chain
+shows the buy filled; only the label and the missing `tp_ret` differ.
 
 ### 16.7 The safe-stop review (12.2)
 
@@ -912,6 +917,34 @@ Also since 15:02: eight launches skipped as "too much ETH bought ahead of the bo
 before our fire plus our 0.0058 stake exceed `FRONT_AHEAD_MAX_ETH` 0.008. The measured room ahead of the bot's buy is about 0.012 ETH
 (`explore/adv/popreplay.json`: 0.012 never reverts it, 0.0125 reverts it in 40% of pools), so 0.0095 would keep the margin and take those
 launches; the owner's call (`set_kv FRONT_AHEAD_MAX_ETH 0.0095`).
+
+**The second escalation, about 15:45 UTC.** The owner set the threshold to 0.004 at 15:22:57; it held for about 20 minutes. From about 15:45
+both decoy wallets buy **0.00495 ETH** each at launch + 2/+ 3, the bot's smallest real size and just above 0.004, and 289 of the 411 trades
+from 15:23 to 17:55 sold on them at about 0% (`front_audit/step6_since_1523.py`, `since_1523.json`): with the first step, 323 positions sold
+ahead of the bot's buy on Oct 10, about $650 of profit missed, no stake lost. The decoys cost the operator nothing (it owns the pools: their ETH
+comes back in the pull, minus a 0.25% fee), so a size threshold is a game it wins every time; the size rule should have gone off at 15:20 rather
+than been moved. At 18:00 the owner was given `set_kv FRONT_SELL_ON_ETH 1` (on the box's code a 1 ETH threshold is never met) and the code
+default became 0 = off (the 18:05 commit; test 18m2). What is left to exit on: the bot's buy through its router at any size, the take-profit
+(+1% after gas on any buy behind ours), the 18-block deadline.
+
+What the operator could do next, and what each would cost us per pool (the Opus review of the 18:05 change worked these out on the test
+harness): a tiny or fake buy through its own router `0x1cbaf24d` behind ours (our router rule sells at once for about -0.6%, +0.2% if its two
+decoys are already behind us: about -$0.09 instead of +$2.1; the edge is gone, and front should then stop, since every exit left is fakeable);
+a decoy of 0.0194 ETH or more behind ours, 0.0095 on top of its two decoys (the take-profit sells at +1.0 to +1.4% if the decoy is a real buy
+that stays; about -0.6% if it is fake or sold back in the same block); decoys moved into the launch block ahead of our fire (0.0022 ETH or more
+together with our stake over 0.008, or a 1-wei call to its router with the token in the calldata: the engine skips the pool, no trade, no loss).
+"Fake" is possible because the engine reads the feed before execution: any transaction with ETH value whose calldata carries the token's
+address counts as a buy, a self-transfer or a reverting transaction included, and sells are never seen; the feed carries no receipts and an RPC
+check per buy is too slow, so there is no small fix. The exits left after a fake buy are a market sell at minOut 0, which lands at about -0.6%.
+Conversely, if the bot ever buys through a new router, its small buys (under the take-profit's 0.0194 ETH: 11 of 400 this morning) wait for the
+deadline and lose the stake once, after which front halts: **a front halt where the bot bought through an address not in `FRONT_BOT_ROUTERS`
+means adding that address before resuming.** The same review found the case where the bot's small buy lands in our own block ahead of our buy
+(it passes our 3% minOut): the engine waited for the deadline; since the 18:15 commit it sells the moment our buy is seen (test 18m4).
+
+Note also that with two 0.00495 decoys and our 0.0058 ETH ahead of it, about 0.0157 ETH, the bot's buy still filled in every pool this
+afternoon, which the Oct 9 model (minOut = 0.99 x the launch quote, room about 0.0124 ETH) said it would not: either the bot's minOut loosened
+or the model was wrong; a chain check was started at 18:05 UTC (its result goes here). Until then the engine's revert model labels every such
+bot buy `the bot's buy reverts` and sells at once, which is the right action at the right moment with the wrong label (16.6).
 
 ### 16.9 The study of the whole repository (13 agents, 13:00-14:45 UTC): what it corrected
 
