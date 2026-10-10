@@ -219,7 +219,7 @@ buys each one 0.05-0.25 ETH at launch + 7..13, at a price it quoted at launch. B
 +13-14% a trade in an exact replay of 49 pools (24/24 and 25/25 positive). The one open question is whether its operator pulls on a real-size buy
 that lands before its bot's first buy; it pulls 5-12 blocks after outsiders who buy later, and nobody has bought this early with real size. The engine
 arms these launches from the launch transaction itself (the pool is in its calldata), fires in the launch block, sells on the bot's buy or at our buy
-+ 12. It has its own dry-run switch, daily cap and halt file (HALTED.front): a pull before a front sell stops the front strategy only.
++ 18 (`FRONT_HOLD_BLOCKS`; 12 until Oct 10: the bot's buy came after it in 15 of 435 pools, never with a pull before it). It has its own dry-run switch, daily cap and halt file (HALTED.front): a pull before a front sell stops the front strategy only.
 
     cd ~/v2pons && git pull
     /opt/flip-venv/bin/python3 tests/test_engine.py 2>&1 | tail -6

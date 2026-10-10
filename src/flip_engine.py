@@ -95,7 +95,8 @@ POSITION_MANAGER = env("POSITION_MANAGER", "0x58daec3116aae6d93017baaea7749052e8
 FRONT = env("FRONT", "0") != "0"; FRONT_DRY_RUN = env("FRONT_DRY_RUN", "1") != "0"
 FRONT_VALUE_WEI = int(env("FRONT_VALUE_WEI", "2433328500000000000")); FRONT_CALLDATA_LEN = int(env("FRONT_CALLDATA_LEN", "1444"))
 FRONT_STAKE_ETH = min(float(env("FRONT_STAKE_ETH", "0.0012")), 0.006); FRONT_STAKE_WEI = int(FRONT_STAKE_ETH * 1e18)   # the bot's first buy reverts once ~0.012 ETH sits ahead of it
-FRONT_TAKE_PROFIT = float(env("FRONT_TAKE_PROFIT", "0.01")); FRONT_HOLD_BLOCKS = int(env("FRONT_HOLD_BLOCKS", "12"))       # the sell goes on the bot's buy, at the latest when the feed shows our buy + 12
+FRONT_TAKE_PROFIT = float(env("FRONT_TAKE_PROFIT", "0.01")); FRONT_HOLD_BLOCKS = int(env("FRONT_HOLD_BLOCKS", "18"))       # the sell goes on the bot's buy, at the latest when the feed shows our buy + 18
+# (the bot's first buy came by launch + 20 in 432 of 435 pools on Oct 9-10, by + 14 in only 420; no pool was pulled before the bot's buy)
 FRONT_FIRE_MAX = int(env("FRONT_FIRE_MAX", "2")); FRONT_MAX_PER_DAY = int(env("FRONT_MAX_PER_DAY", "400"))                 # fire only while the feed is at the launch + 2 at most (land by + 4)
 FRONT_HALT_FILE = env("FRONT_HALT_FILE", HALT_FILE + ".front")                                                         # a pull before our sell stops the front strategy only
 FRONT_DAILY_STOP_USD = float(env("FRONT_DAILY_STOP_USD", "5"))                                                          # its own stop: front's results never stop follow, nor follow's front
