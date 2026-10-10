@@ -763,4 +763,25 @@ if E.today() == time.strftime("%Y-%m-%d", time.gmtime(now_t)):                  
     assert E.state["front_pnl_today_usd"] <= -E.FRONT_DAILY_STOP_USD, "front's day not kept"
 E.state.update({"trades_today": 0, "front_today": 0, "pnl_today_usd": 0.0, "front_pnl_today_usd": 0.0})
 print("ok a restart keeps the day: today's live trades read back per strategy (counts and P&L), so the daily caps and stops hold")
+
+# 18o. a stop (SIGTERM) mid-trade: no new trade, the open one still sells on schedule and settles, then the engine exits; a trade
+# still open after STOP_WAIT_S exits with an alarm
+exits = []; E.EXIT = lambda c: exits.append(c); E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"
+reset(); E.state["nonce"] = 560; E.state["stopping"] = None; E.state["stop_logged"] = False
+front_launch(8000, 21); pos = E.state["position"]; assert pos and pos["entry"] == "front"
+E.on_stop(15, None); E.stop_tick(); assert not exits and events("stopping")[-1]["position"] == pos["pid"]
+E.state["armed"].pop(PID, None); do_launch(8001); E.ingest(frame(8031, [SENT[0][1], signed(CROWD, UR, TRIG, BUY_DATA, 86)]))
+assert E.state["position"] is pos and events("skip")[-1]["why"].startswith("stopping"), events("skip")[-1]
+for s_ in range(8032, 8032 + E.FRONT_HOLD_BLOCKS):
+    E.ingest(frame(s_, []))
+assert pos["sell_sent"] and pos["sell_why"].startswith("deadline"), pos.get("sell_why")
+E.stop_tick(); assert not exits, "exited before the open trade settled"
+front_close(pos, 8031, 8031 + E.FRONT_HOLD_BLOCKS + 1, int(E.FRONT_STAKE_WEI * 0.995))
+assert wait_for(lambda: E.state["position"] is None and E.state["front_settling"] is None)
+E.stop_tick(); assert exits == [0] and events("stopped")[-1]["idle"] is True, exits
+exits.clear(); E.state.update({"stopping": None, "stop_logged": False, "position": {"pid": "0xstuck", "sell_sent": True}})
+E.on_stop(15, None); stop_wait0 = E.STOP_WAIT_S; E.STOP_WAIT_S = 0.0; time.sleep(0.01); E.stop_tick()
+assert exits == [0] and events("stopped")[-1]["idle"] is False and "still open" in events("alarm")[-1]["what"]
+E.STOP_WAIT_S = stop_wait0; E.EXIT = os._exit; E.state.update({"stopping": None, "stop_logged": False, "position": None}); E.FRONT = False; E.ENTRY = "follow"
+print("ok a stop mid-trade: no new trade, the open one sells on schedule and settles, then the engine exits (with an alarm after STOP_WAIT_S)")
 os.remove(LOG)

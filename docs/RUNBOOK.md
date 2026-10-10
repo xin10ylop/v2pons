@@ -257,6 +257,9 @@ totals, the money):
 Its `PROFIT BY STRATEGY` table, under the header, puts follow and front side by side: trades and $ after gas over the last hour,
 today (UTC), the report's window and every log kept, then each strategy's share of winners, $ a trade, and average and worst return.
 The engine reads today's trades back from its log when it starts, so a restart keeps each strategy's daily cap and stop.
+A stop or restart (`systemctl stop/restart`) is safe mid-trade: on SIGTERM the engine starts no new trade, lets the open one sell
+on schedule and settle (front's pull check included), then exits (`stopping`, then `stopped` in the log; at most `STOP_WAIT_S`, 40 s,
+after which an open trade is logged as an alarm).
 
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py status
     sudo /opt/flip-venv/bin/python3 ~/v2pons/src/score.py /var/log/flip/engine.jsonl 24

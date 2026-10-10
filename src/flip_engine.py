@@ -48,7 +48,7 @@ keepalive could hold the sell's connection; a launch found by its call alone was
 
 Settings come from the environment (/etc/flip/engine.env on the box). Log: JSONL, one event per line, LOG_PATH.
 """
-import os, sys, json, math, time, base64, threading, asyncio, socket, ssl, http.client, urllib.request, urllib.parse, datetime, traceback, collections
+import os, sys, json, math, time, base64, threading, asyncio, socket, ssl, signal, http.client, urllib.request, urllib.parse, datetime, traceback, collections
 import rlp
 from eth_utils import keccak, to_checksum_address
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -87,6 +87,7 @@ if ENTRY not in ("follow", "seat", "auto"):
 HALT_FILE = env("HALT_FILE", os.path.join(os.path.dirname(os.path.abspath(LOG_PATH)), "HALTED")); PULL_WATCH_S = float(env("PULL_WATCH_S", "3"))   # a pull at or before our sell writes HALT_FILE and stops live trading until it is removed
 BUY_GAS = int(env("BUY_GAS", "350000")); SELL_GAS = int(env("SELL_GAS", "350000")); GAS_HEADROOM = float(env("GAS_HEADROOM", "3")); SELL_GAS_HEADROOM = float(env("SELL_GAS_HEADROOM", "6"))
 MAX_TRADES_PER_DAY = int(env("MAX_TRADES_PER_DAY", "10")); DAILY_STOP_USD = float(env("DAILY_STOP_USD", "15"))
+STOP_WAIT_S = float(env("STOP_WAIT_S", "40"))                                              # a stop (SIGTERM) waits this long at most for the open trade, under systemd's 90 s
 STALE_S = float(env("STALE_S", "2.5")); RECEIPT_TIMEOUT_S = float(env("RECEIPT_TIMEOUT_S", "25"))
 POSITION_MANAGER = env("POSITION_MANAGER", "0x58daec3116aae6d93017baaea7749052e8a04fa7").lower().replace("0x", "")
 # the 'front' strategy: a volume bot's launches (PositionManager multicall, 1,444 bytes, exactly 2.4333285 ETH, fee 0.25%, about 330 a day) get a
@@ -281,7 +282,7 @@ def parse_tx(t):
 # ---------------------------------------------------------------- state
 state = {"seq": 0, "ts": 0, "nonce": None, "base_fee": 20_000_000, "armed": {}, "position": None, "day": None, "trades_today": 0, "pnl_today_usd": 0.0,
          "launches": 0, "fires": 0, "blocks": 0, "stale_blocks": 0, "connected": False, "halted": None, "front_today": 0, "front_halted": None, "front_pnl_today_usd": 0.0,
-         "relay_wei": None, "arming": set(), "front_settling": None,                 # the relay's balance (read at start and every minute when idle, moved by each trade); launches whose receipt is on its way;
+         "relay_wei": None, "arming": set(), "front_settling": None, "stopping": None, "stop_logged": False,                 # the relay's balance (read at start and every minute when idle, moved by each trade); launches whose receipt is on its way;
                                                                                      # a live front trade out of the slot whose pull check is still running
          "recent": collections.deque(maxlen=8000)}                                   # (seq, to, value, data) of recent ETH-carrying calls: replayed onto a pool armed after its first buys
 lock = threading.RLock()
@@ -610,6 +611,8 @@ def uncount(pos):
 
 def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
     roll_day()
+    if state["stopping"] is not None:
+        log({"ev": "skip", "why": "stopping: no new trade", "pid": p["pid"], "seq": seq}); return
     front = p.get("entry") == "front"; dry = DRY_RUN or (front and FRONT_DRY_RUN)
     halted = state["halted"] or (state["front_halted"] if front else None)
     if halted and not dry:
@@ -853,10 +856,44 @@ def watchdog_tick():
             send_sell("time fallback", pos)
 
 
+def on_stop(signum, frame):
+    """SIGTERM (systemctl stop or restart): only a flag (a signal handler may run while the main thread holds the log's lock). The feed
+    runs on, so an open trade sells on schedule; no new trade starts; stop_tick ends the engine once nothing is open."""
+    if state["stopping"] is None:
+        state["stopping"] = mono()
+
+
+EXIT = os._exit
+
+
+def stop_tick():
+    """on the watchdog's thread: once stopping, exit when no trade is open and no front trade's pull check is running, or after
+    STOP_WAIT_S (an open trade then is logged as an alarm: its result must be checked)"""
+    t0 = state["stopping"]
+    if t0 is None:
+        return
+    pos = state["position"]
+    if not state["stop_logged"]:
+        state["stop_logged"] = True
+        log({"ev": "stopping", "position": pos["pid"] if pos else None, "sell_sent": pos["sell_sent"] if pos else None, "front_settling": state["front_settling"] is not None})
+    idle = pos is None and state["front_settling"] is None
+    if idle or mono() - t0 > STOP_WAIT_S:
+        if not idle:
+            log({"ev": "alarm", "what": f"stopped with a trade still open after {STOP_WAIT_S:g} s: check it", "pid": (pos or state["front_settling"] or {}).get("pid")})
+        log({"ev": "stopped", "idle": idle, "waited_s": round(mono() - t0, 2)})
+        EXIT(0)
+
+
 def watchdog():
+    last_err = 0.0
     while True:
         time.sleep(0.02)
-        watchdog_tick()
+        for tick in (watchdog_tick, stop_tick):
+            try:
+                tick()
+            except Exception:                                                          # the fallback and the stop must outlive any one error
+                if mono() - last_err > 60:
+                    last_err = mono(); log({"ev": "alarm", "what": f"{tick.__name__} failed", "trace": traceback.format_exc()[-400:]})
 
 
 def relay_balance():
@@ -1131,6 +1168,7 @@ def main():
          "front_daily_stop_usd": FRONT_DAILY_STOP_USD, "front_pin": FRONT_PIN, "front_fee": FRONT_FEE, "front_tick_spacing": FRONT_TICK_SPACING, "front_sqrt_p": FRONT_SQRT_P, "front_liq": FRONT_LIQ,
          "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_sell_on_eth": FRONT_SELL_ON_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT,
          "halted": state["halted"], "halt_file": HALT_FILE, "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
+    signal.signal(signal.SIGTERM, on_stop)
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()
     try:
         asyncio.run(feed_loop())
