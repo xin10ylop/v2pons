@@ -5,7 +5,9 @@
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py deposit 0.01        # ETH from the wallet into the relay (the stake)
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py withdraw [0.005]    # relay ETH back to the wallet (no amount = all)
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py sweep 0xTOKEN       # a token left in the relay back to the wallet
-Stop the engine before deposit/withdraw/sweep (same wallet, same nonce)."""
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py payout 0xADDR 0.1   # ETH from the wallet to an outside address (asks for a yes; --yes skips)
+Stop the engine before deposit/withdraw/sweep/payout (same wallet, same nonce). Profit leaves in two steps: withdraw (relay -> wallet), then
+payout (wallet -> your own address); keep about 0.003 ETH in the wallet for gas."""
 import json, os, subprocess, sys, time
 from eth_account import Account
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -31,6 +33,39 @@ def send(acct, to, value, data, rpc):
     while rec is None and time.time() - t0 < 60:
         time.sleep(1); rec = rpc("eth_getTransactionReceipt", [h])
     print(h, "ok" if rec and rec.get("status") == "0x1" else f"status {rec and rec.get('status')}")
+
+
+GAS_RESERVE_WEI = int(0.003e18)                      # what stays in the wallet for the engine's gas (about a day at 300 trades)
+
+
+def payout(acct, wallet, relay, args, yes, rpc):
+    """plain ETH from the wallet to an outside address, after the checks: a valid address (a mixed-case one must pass its checksum), not our
+    own wallet or relay, an amount above 0 that leaves the gas reserve, and a typed yes (or --yes)"""
+    from eth_utils import is_address, is_checksum_address, to_checksum_address
+    if len(args) != 2:
+        sys.exit("usage: relay_ops.py payout 0xADDRESS ETH_AMOUNT [--yes]")
+    to, amt_s = args
+    if not is_address(to) or (to != to.lower() and to[2:] != to[2:].upper() and not is_checksum_address(to)):
+        sys.exit(f"{to} is not a valid address (a mixed-case address must pass its checksum): check it character by character")
+    to = to_checksum_address(to)
+    if to.lower() in (wallet, relay):
+        sys.exit("that is our own wallet or relay: use deposit/withdraw for those")
+    try:
+        amt = int(float(amt_s) * 1e18)
+    except ValueError:
+        sys.exit(f"{amt_s} is not an amount in ETH")
+    if amt <= 0:
+        sys.exit("the amount must be above 0")
+    bal = int(rpc("eth_getBalance", [wallet, "latest"]), 16); gp = int(rpc("eth_gasPrice", []), 16); fee = 21000 * gp * 2
+    if amt + fee + GAS_RESERVE_WEI > bal:
+        sys.exit(f"the wallet holds {bal / 1e18:.6f} ETH; after {GAS_RESERVE_WEI / 1e18:g} ETH kept for gas at most {max(0, bal - fee - GAS_RESERVE_WEI) / 1e18:.6f} ETH can go out "
+                 f"(withdraw from the relay first: relay_ops.py withdraw <eth>)")
+    code = rpc("eth_getCode", [to, "latest"])
+    kind = "a contract" if len(code) > 2 else "a plain address"
+    print(f"send {amt / 1e18:.6f} ETH from the wallet {wallet} to {to} ({kind}) on Robinhood Chain (chain id 4663); {(bal - amt - fee) / 1e18:.6f} ETH stays")
+    if not yes and input("type yes to send: ").strip().lower() != "yes":
+        sys.exit("not sent")
+    send(acct, to, amt, "0x", rpc)
 
 
 def main():
@@ -65,6 +100,8 @@ def main():
         send(acct, relay, 0, "0x2e1a7d4d" + word(amt), rpc)
     elif cmd == "sweep":
         send(acct, relay, 0, "0x01681a62" + word(sys.argv[2]), rpc)
+    elif cmd == "payout":
+        payout(acct, wallet, relay, [x for x in sys.argv[2:] if not x.startswith("--")], "--yes" in sys.argv, rpc)
     else:
         sys.exit(__doc__)
 
