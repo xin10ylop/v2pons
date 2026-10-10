@@ -88,7 +88,7 @@ the first trade the operator's pull beats.
 | **Volume bot** router | `0x1cbaf24d53fe930fce8eff149fa797d2611da149`: its buys `0xc1120e3d` (calldata word 4 = its minOut), its pulls `0xa0f7978d` |
 | Volume bot launch (the "front" family, "PM1444 v2.433") | to POSM, value exactly `2433328500000000000` wei (2.4333285 ETH), calldata 1,444 bytes, `multicall[initializePool, modifyLiquidities(MINT_POSITION, SETTLE_PAIR, SWEEP)]`, fee 2500 (0.25%), tick spacing 50, hooks 0, sqrtPriceX96 `1604517591721945638372359205383840` (tick 198329), full-range liquidity `49279426163460954002188`; a fresh sender wallet per launch, minting to itself |
 | Volume bot's other families (not traded) | 3.0 ETH fee 1% ts 200 ("v3.0", ~720 per 39 h, sqrtP `679394651928963067279918579724198`); 5.0 ETH fee 1% ("v5.0", sqrtP `526364174002223567019744861584709`, a trap: pulls on outsiders); 9.333 ETH with fees 10045, 10046, … (ts 200/201); 40 ETH fees 10152…10217; 2 ETH fees 10027…10034 |
-| The volume bot's decoys (its own wallets, in every pool) | `0x65050a9b…` router: 0.00012 ETH at launch +2..+4 from a brand-new wallet funded with exactly 0.0002 ETH by `0x488faf52…` (38k nonces); `0xe71a69f4…`: 2e-6 ETH at +3 via the Universal Router; `0x259a1b7b…`: 6e-5 ETH at +23..+33; `0x93b07902…`: 9.5e-5 ETH at about +110 (in 792 pools) |
+| The volume bot's decoys (its own wallets, in every pool) | `0x65050a9b…` router: 0.00012 ETH at launch +2..+4 from a brand-new wallet funded with exactly 0.0002 ETH by `0x488faf52…` (38k nonces); `0xe71a69f4…`: 2e-6 ETH at +3 via the Universal Router (a chain-wide dust bot: it buys operator A's pools too, 16.9); `0x259a1b7b…`: 6e-5 ETH at +23..+33; `0x93b07902…`: about 2.4e-5 ETH (1e-5..1e-4) at median +132 (in 792 pools; 16.9) |
 
 ---
 
@@ -102,7 +102,7 @@ the first trade the operator's pull beats.
 | `contracts/FlipRelay.sol`, `FlipRelay.json`, `compile.py`, `RoundTripHarness.sol` | the relay and its artifact; the harness is for `relay_sim.py` only |
 | `deploy/flip_setup.sh` | the box: venv `/opt/flip-venv`, `/etc/flip/engine.env`, `/var/log/flip/engine.jsonl` (logrotate daily, copytruncate, 30 kept), the `flip-engine` systemd service |
 | `deploy/results.py` | **the results screen** (section 9.3) |
-| `deploy/relay_ops.py` | `status`, `deposit <eth>`, `withdraw [eth]` (relay -> wallet; no amount = all), `sweep <token>`; refuses to run while the service is active |
+| `deploy/relay_ops.py` | `status`, `deposit <eth>`, `withdraw [eth]` (relay -> wallet; no amount = all), `sweep <token>`, `payout <address> <eth>` (wallet -> outside, c9d0201); refuses to run while the service is active |
 | `deploy/relay_deploy.py`, `relay_sim.py` | deploy the relay; simulate a buy and a sell through it on a live pool with eth_call state overrides |
 | `deploy/new_wallet.py`, `englog.py`, `health.sh`, `watch.sh` | create the wallet into the env file; the log for the last N hours; a health screen; trades as they happen |
 | `tests/test_engine.py` (46 tests), `tests/test_v4math.py` (4), `tests/data/front_launch.json` | the engine against a scripted feed with real signed transactions in real L2 batch frames, the chain stubbed; the fixture is a real volume-bot launch (tx `0xe1d91366…`, block 84234302) |
@@ -110,7 +110,7 @@ the first trade the operator's pull beats.
 | `docs/HANDOFF.md` | this file |
 | `README.md` | the project narrative, releases 0.1-0.9 |
 | `research/REPORT_24.54.md`, `research/*.py`, `research/data/` | the original research (Oct 8 and before): the operator A study, the Oct 8 live trades read back from the chain (`live_trades.py`, `data/live_trades_oct8.txt`), operator A's new scheme (`new_scheme.py`), the survey of other chains and launchpads (`data/SURVEY.md`) |
-| `research/session_oct9_10/` | **every research script and result of Oct 9-10** (and `front_audit/`, `follow_audit/`: the Oct 10 afternoon's chain reads, section 16) copied from the session's scratch directory (section 6 says what each directory holds; its own README is the index). Scripts there import a helper `chain.py` (copied) and the engine's `v4math`; they were written with two absolute paths, `/tmp/claude-0/…/scratchpad` (now `research/session_oct9_10`) and `/home/user/v2pons` (the repository), which have to be edited to run them again. Large caches (.pkl, .npy, raw block dumps) were not copied; every script that needs them re-fetches from the public RPC. |
+| `research/session_oct9_10/` | **every research script and result of Oct 9-10** (and `front_audit/`, `follow_audit/`: the Oct 10 afternoon's chain reads, section 16) copied from the session's scratch directory (section 6 says what each directory holds; its own README is the index). Scripts there import a helper `chain.py` (copied) and the engine's `v4math`; they were written with two absolute paths, `/tmp/claude-0/…/scratchpad` (now `research/session_oct9_10`) and `/home/user/v2pons` (the repository), which have to be edited to run them again. Large caches (.pkl, .npy, raw block dumps) were not copied; most scripts re-fetch from the public RPC, but several inputs are neither copied nor re-fetched by any script here (`others/census.jsonl`, `money/win.jsonl`, `ops/launcher_txs.json`, `ops/launcher_logs.json`, `origins/eras/p1.json`, `origins/vt.pkl`, `explore/grid.npy`, `explore/pools.pkl`, `vbot/reaction.json`): section 16.9 and `research/session_oct9_10/STUDY_OCT10.md`. |
 
 Git: branch `claude/pensive-rubin-rkj996` holds everything (the default branch `main` is older). Repository `github.com/xin10ylop/v2pons`,
 **private since Oct 10, 2026** (the owner made it private after this handoff was first written; section 11.4 says how, and what the box
@@ -123,7 +123,7 @@ needs to keep pulling). It contains the wallet and relay addresses (public on th
 ### 3.1 follow (operator A, live since Oct 8)
 
 Operator A launches a pool (through its launcher, or from Oct 8 14:59 through a fresh copy of it per launch), then its crowd of about 32
-recurring wallets buys it through the Universal Router: the first real buy 40-60 blocks in (original launcher) or three buys bunched into
+recurring wallets buys it through the Universal Router: the first real buy typically 40-60 blocks in (original launcher; 21-208 observed, two beyond the 150-block window: 16.9) or three buys bunched into
 one block at launch +8/9 (the copy scheme), then more every few blocks, then the deployer removes all the liquidity (median 4 minutes;
 within 20 minutes on 94% of launches). It also removes the liquidity right after an outside buy of a few dollars: 5 blocks after on the
 2%+ fee tiers, 10-19 blocks on the sub-1% tier it has used since Oct 5, and **5-13 blocks after each of our buys** on Oct 8.
@@ -142,7 +142,7 @@ about +2-4%, about +$0.12 a trade.
 
 The volume bot launches about 280-350 pools a day (section 6.9) in bursts (one every 15-30 s for 5-20 minutes, then quiet for minutes
 or hours; one 14-hour pause Oct 6-7). About a second after each launch (blocks +7..+10 in 93% of pools, +6..+21 otherwise) its router
-buys 0.05-0.275 ETH (0.0138 once) at a price **quoted at the launch state with minOut = 0.99 x that quote**. Its own decoy wallets buy
+buys 0.005-0.335 ETH (median 0.198; the Oct 8-9 census already had 0.005 as its minimum) at a price **quoted at the launch state with minOut = 0.99 x that quote**. Its own decoy wallets buy
 specks before and after. The deployer pulls the liquidity minutes later (101-139 blocks after launch during bursts; 3,000+ blocks in slow
 hours), or 2-4 blocks after its bot's buy in its "quick-pull" hours (section 6.10).
 
@@ -174,7 +174,7 @@ for all live trading, `/var/log/flip/HALTED.front` for front only), take-profit 
 | Sep 26 20:31 | the volume bot's v2.433 family starts (block 73,371,234) |
 | Sep 27 - Oct 7 | operator A: 107-126 launches a day on one launcher (Sep 27-29), then 22-56 a day; moves from 2-2.45% fees to 1.2-5% (Sep 30) to 0.01-0.5% (Oct 5) |
 | Oct 8 12:08 | repository created (0.1): relay, engine, scorer, tests, deploy, runbook, report 24.54 |
-| Oct 8 13:15-13:20 | the first seven live follow trades through the relay: 4 wins, 3 -100% (pulled 5-13 blocks after our buy, sell landed after) |
+| Oct 8 13:15-13:20 | the first seven live follow trades through the relay: 3 positive, one -0.5%, 3 -100% (pulled 5-13 blocks after our buy, sell landed after) |
 | Oct 8 14:10-14:32 | 0.2: the Universal Router route; one live trade, -9.3% (sold 90% of its tokens), not pulled on |
 | Oct 8 14:59 | operator A changes scheme: a fresh launcher copy per launch, the crowd in one burst at +8/9 |
 | Oct 8 15:28-15:41 | 0.3 (the exit: take-profit + deadline at buy+4, halt on a pull before the sell) and 0.4 (relay only) |
@@ -230,8 +230,8 @@ scratch reproductions. The review of the safe-stop change (ea66cc2) **never comp
 
 `follow.py` (the exact feed replay of the follow entry with the engine's own matching rules, cached chain data) and `seat.py`:
 on Oct 8's 46 original-launcher launches, follow at 0.0012 ETH prices +2.19% mean (fast sell landing, 37 wins of 46) / +3.28% (slow, 40
-wins); the seat on the 42 copy-scheme launches +8.9% (42 of 42) if the burst still comes. `follow_verified.json`, `seat.json`,
-`follow_stakes.json` (stakes 0.0012/0.004/0.012: the same returns), `reaction.py` (the operator's pull after our buys), the RPC receipt lag
+wins); the seat on the copy-scheme launches +7.9% (44 of 49 positive, the 44 take-profits averaging +8.9%; `seat_out.txt`) if the burst still comes. `follow_verified.json`, `seat.json`,
+`follow_stakes.json` / `stakes_out.txt` (ten stakes 0.0012-1.0 ETH: +2.5% at 0.012, +2.3% at 0.1, +2.0% at 0.3, +1.4% at 1.0 ETH; unchanged at the $3-$10 stakes), `reaction.py` (the operator's pull after our buys), the RPC receipt lag
 probe (231 samples). `validate_follow.py` checks the pricer against the live fills: max |ret diff| 5e-7.
 
 ### 6.3 The protection backtest for follow (`protect/`)
@@ -274,17 +274,16 @@ results `loop.json`, `pots.json`, `launches_now.json`):
 launch transactions, swaps, liquidity events and crowd transactions. `families.py` groups them into 625 launch families (launch contract or
 code-size class + selector + calldata length + fee tier + tick spacing + launch value; `families.json`) and prices the follow trade on
 each (`analyze.py`). `crowd.py`/`crowdtrace.py` compare each family's buyers with operator A's crowd. **Finding: no other operator on v4
-runs the follow pattern** (a crowd that keeps buying behind the first buy with a slow pull); operator A's own two families (OURS-orig,
-OURS-copy) are the only ones where it prices positive at a 2-block hold (`variants.json`: OURS-orig +2.9% at hold 2, +3.6% at hold 10 with
-2 of 88 pulled). The PM1444 families (the volume bot) are the one other structured operator, which led to 6.6.
+runs the follow pattern** (a crowd that keeps buying behind the first buy with a slow pull); operator A's original-launcher family (OURS-orig) is the only one robustly positive at a 2-block hold (`variants.json`: OURS-orig +2.9% at hold 2, +3.6% at hold 10 with
+2 of 88 pulled; OURS-copy is -0.3% at hold 2 and positive only from hold 10; 16.9). The PM1444 families (the volume bot) are the one other structured operator, which led to 6.6.
 
 ### 6.6 The volume bot's families and reaction (`vbot/`)
 
 `launch_decode.py` decodes the 1,444-byte POSM multicall (the pool key, sqrtPrice, the MINT_POSITION range and liquidity) from calldata
-alone: 1,249 of 1,249 PM1444 launches decode and match their receipts. `fingerprint.py` (`fingerprint.json`): the family fingerprint level
+alone: 1,967 of 1,967 PM1444 launches decode and match their receipts (1,249 non-v3.0 and 718 v3.0; `launch_decode.json` counts the former). `fingerprint.py` (`fingerprint.json`): the family fingerprint level
 by level over the census. `reaction.py` (`reaction_all.txt`, 882 pools of the v3.0 family): the deployer pulls through the router
-(`0x1cbaf24d` / `0xa0f7978d`); 830 pools had an "outside" buy, median delay to the pull 10-13 blocks for the real ones, with the dust
-wallet `0x93b07902` in 792 pools. `replay.py` / `report_all.txt` (385 v3.0 pools, exact replay): the best "hold-30" follow rule on v3.0
+(`0x1cbaf24d` / `0xa0f7978d`); 830 pools had an "outside" buy counting the dust wallet `0x93b07902` (792 pools) and the `0x65050a9b` decoys; only 155 had a non-decoy outsider
+(64 of them above 0.0001 ETH), median delay to the pull 10-12 blocks (`reaction_cdf.json`; 16.9). v3.0's bot buys use minOut = 0.95 x a stale quote, v2.433's 0.99 x the launch quote (`quotelag*.py`, `stale*.py`). `replay.py` / `report_all.txt` (385 v3.0 pools, exact replay): the best "hold-30" follow rule on v3.0
 prices +3.0% mean with 15 of 380 pulled (-100% each) and turns **negative (-2.9%) at a 0.1 ETH stake because the bot's own buys then revert**
 (294 of 380), so v3.0 was rejected; its Oct 9 evening slice is -11% (9 pulled of 47). v5.0 pulls on outsiders (a trap). `trade_replay.py`
 cross-checks with feed-side recognition only.
@@ -295,17 +294,18 @@ cross-checks with feed-side recognition only.
 + 0..10 blocks; stake 0.0012 / 0.012; take-profit 1/2/3/5%; hold 2..60) on 24 families with a train/test split by time and per-6-hour
 slices (`grid.npy` 397 MB and `pools.pkl`, not copied; `rules.py`, `rules.json`, `report.json`, `summary.json`, `fams.py`). Findings: for the
 union of all sub-1% hookless pools the best rules are "launch+3, TP 5%, hold 60" (+5.2% train / +6.1% test, 7 of 7 slices positive) and
-"launch+5, TP 5%, hold 10" (+3.8% / +4.0%); **for the v2.433 family "launch+2, TP 5%" prices +7-9% at every hold** and 100% of slices
-positive, which became the front strategy; `adv/advreplay.py` is its exact feed replay (fire at launch + K, the bot's minOut check, pulls);
+"launch+5, TP 5%, hold 10" (+3.8% / +4.0%) for the union with fees up to and including 1% (2,919 pools; the strict sub-1% union of 1,262 pools: "launch+3, TP 1%, hold 52" +6.4% / +8.2%); **for the v2.433 family "launch+2, TP 5%, hold 19" prices +11.8% train / +13.0% test** (holds 10-60: +12.5% to +14.1%; hold 2 negative; `rules.json`, `summary.json`; the "+7-9%" in earlier notes is v3.0's or the PM1444 union's) and 100% of slices
+positive, which became the front strategy (the engine fires at launch+0 and lands at +1: every fire block from +0 to +4 prices the same, `adv/replay.json`); `adv/advreplay.py` is its exact feed replay (fire at launch + K, the bot's minOut check, pulls);
 `chk/` holds the checks of the bot's quote model (`quotemodel.py`, `quotestate.py`: minOut = 0.99 x the launch-state quote), early pulls
 (`early_pulls.py`), pre-bot buys (`prebuy.py`) and the reaction to outsiders (`react_all.json`); `v5/` the v5.0 family's traps.
 
 ### 6.8 The front replay and its limits (`explore/chk/replay.py`, `explore/adv/`, `dry1/sens.py`)
 
-The exact replay of the v2.433 rule on the first 49 pools with full block data: +13-14% a trade, 24/24 and 25/25 positive. The bot's first
+The exact replay of the v2.433 rule on 42 distinct pools with full block data (`adv/replay.json` 24 and `chk/replay.json` 25, seven in both): +13.8% and +13.3% a trade, 24/24 and 25/25 positive. The bot's first
 buy has minOut = 0.99 x its launch-state quote, so the total ETH that can sit ahead of it is about 0.0122-0.0124 ETH (its 0.05 ETH buy's
 fill with ours ahead: 1.0084x minOut at $5, 1.0068x at $10, 1.0052x at $15, 1.0020x at $25, 1.0004x at $30: the strategy's size ceiling is
-about $27 a trade; the engine caps `FRONT_STAKE_ETH` at 0.006). Our return is about +13.8% on a 0.17 ETH bot buy, +3.6% on 0.05, +23% on
+about $27 a trade; the engine caps `FRONT_STAKE_ETH` at 0.006). The per-stake fill ratios were computed in the session and not saved; the saved files bracket the
+ceiling: `adv/popreplay.json` 0.012 ETH ahead never reverts the bot's buy, 0.0125 reverts it in 254 of 633 pools, 0.013 in 620 of 633. Our return is about +13.8% on a 0.17 ETH bot buy, +3.6% on 0.05, +23% on
 0.275, at any stake in that range. Nobody but the operator's decoys buys before the bot's buy, so the chain could not say whether the
 operator pulls on a real-size buy ahead of its bot: that was the one open question before going live.
 
@@ -330,8 +330,7 @@ pool, so an operator "quick-pull mode", not a reaction; 11 of 435 pulled within 
 percentile 19 blocks, median 1,498; two regimes (slow hours: a launch every ~6 minutes, the pull ~170 blocks before the next; bursts:
 launches every 200-500 blocks, pulls 38-330 after). In one pool the bot bought only 0.0138 ETH: no take-profit, the sell waits for the
 deadline, the pull at +11 comes first: a full loss on paper. The no-reaction replay of all 435: mean +12.8%, median +13.8%, that one full
-loss. This produced two engine changes: sell on any bot-sized buy (32416c1) and the 18-block hold (dca5c72: the bot's buy came by launch
-+14 in 420 of 435 pools, by +20 in 432; no pool pulled before the bot's buy). `engine_log.txt`: the dry run's 17 decisions as the box
+loss. This produced two engine changes: sell on any bot-sized buy (32416c1) and the 18-block hold (dca5c72: the bot's buy came by launch +14 in 422 of 435 pools, by +20 in 432; no pool pulled before the bot's buy; the 435 are 417 pools of the 24 hours before plus the 18 dry-run pools). `engine_log.txt`: the dry run's 17 decisions as the box
 logged them. `live_front_check.json`: the live audit below.
 
 ### 6.11 The live front audit at 09:58 UTC (`dry1/live_front_check.json`, and the `results.py` lines)
@@ -344,10 +343,14 @@ operator reacts to our sell, after we are out. (The two later -100% trades are *
 
 ### 6.12 Earlier Oct 9 pieces at the scratch root (`research/session_oct9_10/*.py`)
 
-`overnight_paper.py`, `newpaper.py` (the Oct 8-9 night: operator A back on its launcher, follow +2.4% on 14 launches, the seat flat),
-`seat.py`, `replay_seat.py`, `evening.py`, `exits.py` (the Oct 9 evening pulls at +5/+6), `crowd.py`, `crowdmin.py`, `burst.py`, `fund*.py`
-(who funds the crowd), `liq.py`, `tick.py`, `tp_bug*.py` (a take-profit rounding check), `fp_*.py` (fingerprint scans), `oct8.json`,
-`oct8_pools.json` (every Oct 8 pool), `newlaunch.json` (the first 40 copy-scheme launches).
+`overnight_paper.py` (the Oct 8-9 night from block 83,500,000, about 17:44 UTC: operator A back on its launcher, follow +2.4% on 14 launches, the seat
+flat; its output was not saved), `newpaper.py` (the Oct 8 afternoon's 40 copy-scheme launches priced for follow), `seat.py`, `replay_seat.py`
+(`replay_seat.jsonl`: 10 seat decisions, 9 take-profits +4.0%), `evening.py` (our Oct 9 evening trades), `exits.py` (the Oct 8 relay trades' exit
+timing), `crowd.py`, `crowdmin.py`, `burst.py`, `fund*.py` (who funds the launch wallets; `fund.py`/`fund2.py` need archive state the RPC does
+not serve), `liq.py`, `tick.py` (the tick rounding check), `tp_bug*.py` (a probe of one live pool's buys around our trade), `tp_calc.py` (the front
+take-profit room), `fp_*.py` (the fingerprint scans whose results are in `fp/`), `oct8.json` (15 operator A pools of Oct 8 11:28-14:58 with their
+logs), `oct8_pools.json` (the 3,192 ETH-paired pools of Oct 8: 51 original-launcher and 49 copy launches), `newlaunch.json` (41 rows: the original
+launcher's 14:30 launch, then the first 40 copy-scheme launches), `scen.py` (the 0.9 review scenarios behind 506a254), `res_c2.py` (an early results.py).
 
 ---
 
@@ -401,8 +404,8 @@ Front: `FRONT` (0) **1**; `FRONT_DRY_RUN` (1) **0**; `FRONT_VALUE_WEI` (24333285
 `FRONT_HOLD_BLOCKS` (18 since dca5c72; 12 before) **18**; `FRONT_FIRE_MAX` (2); `FRONT_MAX_PER_DAY` (400); `FRONT_HALT_FILE`
 (HALT_FILE + .front); `FRONT_DAILY_STOP_USD` (5); `FRONT_PIN` (0); `FRONT_FEE` (2500); `FRONT_TICK_SPACING` (50); `FRONT_SQRT_P`
 (1604517591721945638372359205383840); `FRONT_LIQ` (49279426163460954002188); `FRONT_BOT_MIN_ETH` (0.04); `FRONT_BOT_MINOUT` (0.99);
-`FRONT_AHEAD_MAX_ETH` (0.008); `FRONT_SELL_ON_ETH` (0.001 since 3a47c34; 0.005 before, and on the box until it pulls: it is not in the env file,
-so the new default applies on the pull); `FRONT_BOT_ROUTERS` (0x1cbaf24d…, since 3a47c34).
+`FRONT_AHEAD_MAX_ETH` (0.008); `FRONT_SELL_ON_ETH` (0.004 since 15:25 UTC; 0.001 from 3a47c34 for two hours, 0.005 before: section 16.10)
+**0.004 in the env file once the 15:20 command is run**; `FRONT_BOT_ROUTERS` (0x1cbaf24d…, since 3a47c34).
 
 Follow's own halt (792a8c5, not on the box): `FOLLOW_NEAR_MISS_BLOCKS` (4; 0 = off); `FOLLOW_HALT_FILE` (HALT_FILE + .follow).
 
@@ -522,7 +525,7 @@ last 5 rows), totals, `by strategy`, `FRONT LIVE` summary, `FRONT DRY RUN` summa
 | 7 | 13:19:44 | relay | 0.08% | -100% | +5 | +6 | yes |
 | 8 | 14:32:16 | router | 0.025% | -9.3% | +9856 | +3 | no |
 
-Net about -$5.19 (the three -100% at $3 each, the wins +$0.2 to +$0.6). The seat's two overnight trades (Oct 8-9): -0.18% and -0.32%.
+Net about -$8.5 before gas (the three -100% at $3.08 each, the wins +$0.2 to +$0.6, trade 8 -$0.29; the -$5.19 quoted elsewhere is the first six trades only; 16.9). The seat's two overnight trades (Oct 8-9): -0.18% and -0.32%.
 
 ### 10.2 Oct 9: 28 follow trades, +$3.38 (results.py at Oct 10 09:01; blocks after our buy)
 
@@ -620,7 +623,7 @@ push access from the box (section 11.4: a deploy key with write access, or a tok
 
 ### 11.2 Pushed but not on the box
 - ea66cc2 safe stop (restarts without a stop-wait), a8ccc3e and 4e8d350 (results.py only; the owner runs a fetched copy as `~/results.py`).
-  To install: `cd ~/v2pons && git pull && /opt/flip-venv/bin/python3 tests/test_engine.py 2>&1 | grep -c "^ok"` (expect 44), then the
+  To install: `cd ~/v2pons && git pull && /opt/flip-venv/bin/python3 tests/test_engine.py 2>&1 | grep -c "^ok"` (expect 46 at the current head; 44 at 3c3f696), then the
   wait-for-trade restart from 9.2. **ea66cc2's review did not complete**: read `on_stop`/`stop_tick`/`watchdog` with fresh eyes first
   (the signal handler only sets a flag; `stop_tick` runs on the watchdog thread every 20 ms and calls `os._exit(0)` once no position and
   no `front_settling` remain, or after 40 s with an alarm; systemd's `TimeoutStopSec` is 90 s).
@@ -709,7 +712,7 @@ the take-profit floor are assessed in 16.3 and not built.**
 - Block 0.103 s. Our buy lands 1 block after it is sent (130 of 132 live front trades), the sell 1 block after it is sent.
 - Operator A: crowd first buy +40..60 blocks (original launcher), burst at +8/9 (copy scheme); pulls 5-13 blocks after our buy on Oct 8,
   5-6 on Oct 9 evening; our sell lands at +2/+3.
-- Volume bot: first buy at launch +7..10 (93%), 0.05-0.275 ETH, minOut 0.99 x launch quote; room ahead of it about 0.0124 ETH; pulls
+- Volume bot: first buy at launch +7..10 (93%), 0.005-0.335 ETH, minOut 0.99 x launch quote; room ahead of it about 0.0124 ETH; pulls
   101-139 blocks after launch in bursts (no one else in), 2-3 blocks after our sell when we are in (live), 2-4 blocks after its own buy
   in quick-pull hours; about 280-350 launches a day since Sep 26, bursts of one every 15-30 s.
 - Front return about +14% a trade at any stake up to about $27; $2 a trade at $15; about 300 trades a day.
@@ -734,7 +737,7 @@ running, and this document records the state faithfully.
 > This repository is a live automated trading engine on Robinhood Chain (Uniswap v4), built Oct 8-10, 2026. Read `docs/HANDOFF.md` fully
 > (the goal, the chain and addresses, the two strategies, all research with its results, every release, every live trade, the box and its
 > commands, the exact state and the open items), then `docs/RUNBOOK.md` and `README.md`. The code is `src/flip_engine.py` with
-> `tests/test_engine.py` (44 tests must pass). The research scripts and results of Oct 9-10 are under `research/session_oct9_10/`. The owner
+> `tests/test_engine.py` (46 tests must pass; 44 at 3c3f696). The research scripts and results of Oct 9-10 are under `research/session_oct9_10/`. The owner
 > operates an Ubuntu box by pasting numbered shell commands you give them and pasting the output back; the private key lives only in
 > `/etc/flip/engine.env` on that box and must never be printed or pasted. Start with section 12 (open items), in order.
 
@@ -770,8 +773,8 @@ cost of two fees, not the stake. The bot's sizes cluster at 0.99 x a round numbe
 smallest size minus 1%.
 
 Fix (3a47c34): `FRONT_BOT_ROUTERS` (default the bot's router): a buy through it behind ours is the bot's buy whatever its size and sells our
-position at once; the same before our fire makes the pool late (the bot has bought). `FRONT_SELL_ON_ETH`'s default is 0.001 (the operator's
-decoys are 0.00012 ETH at most; any real-size buy by anyone behind ours is also an exit). Test 18m2. Nothing else changed in the front path.
+position at once; the same before our fire makes the pool late (the bot has bought). `FRONT_SELL_ON_ETH`'s default went to 0.001 (the operator's
+decoys were 0.00012 ETH at most) and, two hours later, to 0.004 when the operator's decoy grew to 0.001485 ETH (16.10). Test 18m2.
 
 ### 16.2 The whole day's front trades, from the chain (`front_audit/full_audit.json`)
 
@@ -781,7 +784,7 @@ buying at + 59 or never), 2 lost (16.1). By stake: $5 (0.00195 ETH) 61 trades, m
 +14.1% on the 315 priced, the 2 losses at $15. Our buy landed at launch + 1 in 399 of 401 front trades, + 2 in 2. The bot's first buy came at
 + 7..10 in 369 pools, + 11..19 in 29, + 59 and + 130 once each (the latter the 09:15 sequencer stall), never in 3 front pools (pulled at
 + 46..57 with nobody in; our sell at the deadline, -0.3..-0.5%). Its size: min 0.00495, 5th percentile 0.0248, median 0.198, 95th 0.287,
-max 0.335 ETH; 36 of 400 under 0.04 ETH, all sold on the buy for +0.4% to +1.9% except the two at 0.00495. The pull came 2-4 blocks after the
+max 0.335 ETH; 36 of 400 under 0.04 ETH, all sold on the buy (+0.4% to +1.9%; one 0.005 ETH buy at -0.1%) except the two at 0.00495. The pull came 2-4 blocks after the
 bot's buy in 400 of 400 (3 in 367) and 1-3 blocks after our sell in 398 (2 in 363). Nobody but the operator's two decoys (2e-6 ETH via the
 Universal Router at + 3, 0.000119 ETH from `0x65050a9b` at + 3..5) bought behind us before our sell in any pool, and the bot never bought
 twice before our sell. The last relay trade was at 11:39:54 UTC (16.5).
@@ -859,7 +862,7 @@ mkdir -p ~/v2pons/research/box_logs && sudo python3 ~/v2pons/deploy/englog.py 72
 sudo systemctl stop flip-engine && sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py withdraw 0.2 && sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py payout 0xYOUR_ADDRESS 0.19 && sudo systemctl start flip-engine
 ```
 
-Step 6's start line must show `"release":"0.9"`, `"front_sell_on_eth":0.001`, `"front_bot_routers":["1cbaf24d53fe930fce8eff149fa797d2611da149"]`,
+Step 6's start line must show `"release":"0.9"`, `"front_sell_on_eth":0.004` (0.001 before 16.10), `"front_bot_routers":["1cbaf24d53fe930fce8eff149fa797d2611da149"]`,
 `"follow_near_miss_blocks":4`, and the three `halted` fields null. After it, `results.py`'s front rows read `front, the bot's buy behind ours`
 as before, with the size in the full `sell_why`; a front pool where the bot buys 0.00495 ETH now sells at once for about -0.2%.
 
@@ -871,4 +874,83 @@ synthesis. Its verdict and any fix are recorded here when it completes; until th
 ### 16.8 Open after this session
 
 12.2 (above); 12.3's allowlist tag if wanted; the parked research of 12.6; the log export's push (a write deploy key). The money loop and the
-census (sections 6.4-6.5) were not re-run.
+census (sections 6.4-6.5) were not re-run. Two things the study (16.9) raised that the owner should decide:
+
+- **`FRONT_DAILY_STOP_USD` is $5 against a $15 stake.** The stop is the day's cumulative front P&L at or under -$5, reset at 00:00 UTC. One lost
+  stake among the first few trades of a UTC day (before about +$8 has accrued) stops front for the rest of that day with `daily stop` skips, while
+  the same loss after a profitable morning stops nothing. At today's loss rate (3 in 575) that is a 1-2% chance per day of losing the day's front
+  trading. `set_kv FRONT_DAILY_STOP_USD 50` (about three stakes) and a restart would make the stop mean what it says.
+- **Operator A's launcher is permissionless** (`ops/lch/sim_out.txt`: any sender can launch through `0x3194e326` or a copy), and the engine arms a
+  launch sent to a `LAUNCHERS` address by the address alone (the code-hash check applies to copies found by their call). A third party who read
+  this repository while it was public could stage a launch with a 0.0002 ETH "crowd" buy and pull on our $3 follow buy; the gain is one stake and
+  the engine halts after it. Low value for an attacker, but it is the reason not to raise follow's stake far without a gate (a minimum launch
+  value, or a deployer funded from the known pots).
+- **Oct 8's pulls at + 5/+ 6** (four of the seven relay trades) would not have triggered the near-miss halt as built (4 blocks); the protect/
+  design (`ladder_sim.py`) treated + 5/+ 6 as a warning rung (back to the minimum stake) and + 4 as the halt. Raise `FOLLOW_NEAR_MISS_BLOCKS` to 6
+  if one block of margin is too little warning.
+
+### 16.10 15:04 UTC: the operator's decoy grew to 0.001485 ETH and the 0.001 threshold sold on it
+
+The owner lifted the cap and installed the afternoon's code at 13:33 (16.6 steps 1-3 as given; `FRONT_MAX_PER_DAY` 100000, gas 0.01 ETH from
+the relay). From 13:38 to 14:28 front made 174 trades, 173 of them sold one block after the bot's buy (+14.2% mean, about +$348; the router
+rule caught one 0.00495 ETH bot buy). At 14:28:51 a trade lost its stake: the bot bought 0.099 ETH at + 8, the pull came at + 11 as always, and
+our sell landed at + 12 because the feed delivered block + 8 a quarter of a second late (the engine sent the sell in that feed block, first
+try, accepted in 130 ms; `front_audit/step3_since_restart.py`, `step4_since_restart_timing.py`). Front halted (its pull-first rule) and the
+owner resumed it at 15:02.
+
+From about 15:04 the operator's decoy changed: its funder `0x488faf52` now buys 0.001485 ETH itself through `0x65050a9b` at launch + 2/+ 3
+(this morning: fresh wallets, 0.000119 ETH), and a second decoy router `0xfd1b271f` (from `0xb4c345dc`, 0.000149-0.000742 ETH) appeared; the
+decoys and the bot share the 0.99 x round-number sizes. With `FRONT_SELL_ON_ETH` at 0.001 the engine took the 0.001485 buy for a real-size buy
+and sold at + 3, ahead of the bot's buy at + 7..+ 13: 34 of the 43 trades 15:04-15:17 exited at -0.32% to -0.38% instead of about +14%
+(`front_audit/step5_since_1502.py`, `since_1502.json`); no stake was lost, about $70 of profit was missed by 15:17 and about $2 a launch after
+that. The owner was given `set_kv FRONT_SELL_ON_ETH 0.004` and a restart at 15:20; the code default is 0.004 from the 15:25 commit (test 18m2
+covers the 0.001485 decoy). The lesson: the size threshold has to sit between the decoys and the bot's smallest buy (0.001485 and 0.00495
+today: 0.004 has about 3x each way), and the router rule is the one that does not move. Watch `results.py`'s "pull after our sell" line: a
+cluster at 6-13 blocks means sells ahead of the bot's buy again.
+
+Also since 15:02: eight launches skipped as "too much ETH bought ahead of the bot's buy", because the two decoys (0.0022 ETH together) landing
+before our fire plus our 0.0058 stake exceed `FRONT_AHEAD_MAX_ETH` 0.008. The measured room ahead of the bot's buy is about 0.012 ETH
+(`explore/adv/popreplay.json`: 0.012 never reverts it, 0.0125 reverts it in 40% of pools), so 0.0095 would keep the margin and take those
+launches; the owner's call (`set_kv FRONT_AHEAD_MAX_ETH 0.0095`).
+
+### 16.9 The study of the whole repository (13 agents, 13:00-14:45 UTC): what it corrected
+
+Thirteen agents each read one area file by file and checked it against this document; a fourteenth re-verified the first four areas' findings
+(its input was cut at 180,000 characters, so the other nine areas' findings are the readers' own). The full record is
+`research/session_oct9_10/STUDY_OCT10.md` (summaries, numbers with their source files, every discrepancy, the scripts that do not run as copied)
+and `STUDY_OCT10_files.md` (every file's purpose). Corrected in place above: the Oct 8 net (-$8.5 for the eight trades, not -$5.19; 3 positive,
+not 4 wins), the dust wallets of section 1 (`0xe71a69f4` is a chain-wide dust bot in both operators' pools; `0x93b07902` buys 2.4e-5 ETH at
+median +132), the crowd's first-buy range (3.1), the bot's buy sizes (3.2: 0.005-0.335, the census already had 0.005), the seat's numbers (6.2:
++7.9% on 44 of 49), the stake curve (6.2: returns fall from +2.5% at 0.012 ETH to +1.4% at 1.0 ETH), the census verdict (6.5: only OURS-orig is
+positive at hold 2), the decoder count and the reaction census (6.6), the front rule's real numbers (6.7: +11.8%/+13.0% at hold 19, the "+7-9%"
+belonged to v3.0), the replay's pool count (6.8: 42 distinct) and the size ceiling's provenance, the dry-run census counts (6.10), the
+misdescribed scratch-root files (6.12), the repository table (2). Not changed in the text above but worth knowing:
+
+- The root `research/` files are a fragment of an older project (reports 21.3/24.20/24.45/24.50, the "Pons seat", paths `src/analysis/` and
+  `data/derived/edge_check/Q/` that do not exist here); only `v4_slowrug_test.py` runs offline and reproduces `slowrug_test.txt` byte for byte.
+- Operator A's money (6.4): the pot is pinned at about 7.0 ETH by design; it grew to 8.66 ETH in 37 minutes of bonding-curve launches on
+  `0xe33e9e47` on Oct 8 11:19-11:48 and 1.6 ETH left it at 12:10 to hub `0x3ee51814`, which bridged 0.8/1.0/0.25 ETH through Relay.link to Base
+  addresses that all forward to `0x487cab40` -> hot wallet `0x3304e22d` (29,656 ETH), the same terminal pot B uses. Pot B itself launched on that
+  bonding-curve factory (so the "third system" of 6.4 is not independent of A and B), a fourth crowd D (32 wallets, about 5.3 ETH) exchanged money
+  with A's hub by plain transfers, the sweeps had 49-50 inputs in the Oct 6-7 sessions (32 only from Oct 8 21:57), the launcher copies go back to
+  August (1,782 at nonce 0, 2 at nonce 1), and the eras are 1.0-2.0 ETH launches in July, 0.34-0.5 and 1.0-1.35 in Aug 19 - Sep 9, 1.97 in Sep
+  13-30, 0.45-4.95 in October. The "third" factory `0x7ed598bc` has 684,002 creates back to block 27M; only 29% of its Oct 9 creators are
+  EIP-7702 delegates.
+- The protection backtest (6.3) is more nuanced than its summary: at a pull + 3 only V1 ("deadline at buy + 1") and V4c avoid the catch (V4a
+  -4.5%, V4b -82%, V4d equals V0); with the buy landing at T+2, V1 and V4d hold +1.6%/+1.8%; with the buy at T+3, V0 is negative at every pull
+  offset while V1/V4c/V4d are +0.4/+0.6%. `protect/` also holds a stake-ladder design (RAMP/WARN/WATCH/HALT rungs), a canary census
+  (`prot_eval.py`) and a residual-risk model never mentioned before; the near-miss halt of 16.3 is its HALT rung only.
+- The 0.6 review (6.1) was of the pre-0.6 engine (its biggest finding, kind-4 single-transaction blocks, is missing from 6.1's list); release
+  0.8 was not reviewed as such; 0.9 was reviewed twice (506a254, 50bd0aa). The look-alike finding (any sender's front-shaped launch at a fake
+  price) was fixed in 506a254 and re-opened by design in 7d1f645 (`FRONT_PIN=0` on the box): an accepted residual risk. No review verdict file
+  exists anywhere; the attributions rest on the fix commits. `SELL_TRIES` 4 with 50 ms pauses gives up within about 0.2 s (review06_fixes
+  scenario B), never changed.
+- 6.11's reading ("the operator reacts to our sell") and 16.1's ("the pull 3 blocks after its bot's buy, by schedule") fit the same live data,
+  because our sell lands one block after the bot's buy; the census's quick-pull pools with nobody else in favour the schedule reading, and the
+  dry-run window (pulls at + 101..139 with no buy from us) leaves open why the regime changed at about 09:07.
+- Numbers in this document with no saved result file behind them: 6.12's "+2.4% on 14 launches"; 6.8's per-stake fill ratios and "$27"; 6.9's
+  per-day counts before Oct 9 14:49 (the jsonl scans were over 1.5 MB and not copied); 6.10's "0.0138 ETH" pool; 7.4's "22 runs".
+- `deploy/relay_sim.py` printed "TooLittleOut ok" on any revert (its selector constant was wrong); fixed in the afternoon (16.9's commit).
+- The post-pull sell reverts because `SELL_GAS` (350,000) runs out walking the empty pool's tick bitmap (335,520 used), not because the relay
+  refuses it; a larger gas limit would make it succeed with 0 ETH out and the tokens left in the relay. Nothing to change: the pull decides.
+- `results.py`'s `daily cap` skip text is the same for both strategies; the owner's "daily cap x60" was front's (follow had 5 of 100).

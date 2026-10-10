@@ -243,8 +243,9 @@ known by its value (2.4333285 ETH) and its calldata; if the bot changes its fee 
 launch is still traded and results.py shows `front launches with a fingerprint not seen before` (set `FRONT_PIN=1` to skip such launches
 instead). Front skips a pool with more than `FRONT_AHEAD_MAX_ETH` (0.008) bought ahead of the bot's buy counting ours, and sells at once
 when the bot's buy would fail its own minOut (`front_bot_reverts` in the log; the dry-run summary counts them). The bot's buy behind ours
-(any buy through the bot's router, `FRONT_BOT_ROUTERS`, at any size, or any buy of `FRONT_SELL_ON_ETH`, 0.001 ETH, or more; the operator's
-decoys are 0.00012 ETH at most; the two Oct 10 -100% trades were 0.00495 ETH bot buys under the old 0.005 threshold, section 4f) sells at once even below the take-profit: in the
+(any buy through the bot's router, `FRONT_BOT_ROUTERS`, at any size, or any buy of `FRONT_SELL_ON_ETH`, 0.004 ETH, or more; the operator's
+decoys were 0.00012 ETH at most, then 0.001485 from Oct 10 15:04; the two Oct 10 -100% trades were 0.00495 ETH bot buys under the old 0.005
+threshold, section 4f; the threshold must stay between the decoys and the bot's smallest buy) sells at once even below the take-profit: in the
 operator's quick-pull hours the pull comes 2-4 blocks after that buy, and a small one would otherwise leave our sell to the deadline.
 Live, `results.py` lists front's last 5 trades and a `FRONT LIVE:` summary line (count, $, average and worst return, exits, pulls first).
 
@@ -253,7 +254,8 @@ Live, `results.py` lists front's last 5 trades and a `FRONT LIVE:` summary line 
 Why: the two front trades the operator's pull beat on Oct 10 (10:49 and 11:12 UTC) were pools where the volume bot's first buy was 0.00495 ETH,
 its smallest size and just under the 0.005 ETH sell-on threshold; the engine waited for its deadline and the pull came 3 blocks after the bot's
 buy, as it does in every pool. Now a buy through the bot's router behind ours is the bot's buy at any size (`FRONT_BOT_ROUTERS`), and the size
-threshold is 0.001 ETH. Follow got its own halt for a pull that lands within 4 blocks of our buy even behind our sell (`HALTED.follow`; front
+threshold is 0.004 ETH (0.001 for two hours: the operator's decoy then grew to 0.001485 ETH and the engine sold on it ahead of the bot's buy,
+34 trades at -0.3%; HANDOFF 16.10). Follow got its own halt for a pull that lands within 4 blocks of our buy even behind our sell (`HALTED.follow`; front
 goes on). `relay_ops.py payout 0xADDRESS ETH` sends from the wallet to your own address. The commands, numbered, are in HANDOFF 16.6: the
 state, the fetch check, the fast-forward and the tests (46), the optional cap and stake changes, the restart and its start line, the gas
 top-up, the log export, the payout.
