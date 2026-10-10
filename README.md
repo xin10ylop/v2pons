@@ -111,7 +111,10 @@ leaves follow running, follow has the slot first (front waits while a follow lau
 front trade leaves the slot as soon as both its receipts are in, before its 3-second pull check), and no front launch, however malformed, can cost follow a block. A front launch is
 known by its value and calldata; a change in its fee tier (within sub-1%), tick spacing, launch price or liquidity (identical on every
 launch seen) is traded and flagged in results.py (`FRONT_PIN=1` skips such launches instead). At most 0.008 ETH may sit ahead of the bot's
-buy with ours, and a bot buy that would fail its 99% minOut is not counted as a take-profit.
+buy with ours, and a bot buy that would fail its 99% minOut is not counted as a take-profit. On Oct 10 afternoon (HANDOFF section 16) the bot's
+buy became known by its router at any size (its two 0.00495 ETH buys were the day's two -100% trades: the engine had waited for its deadline),
+follow got its own near-miss halt (a pull within 4 blocks of our buy, even behind our sell, stops follow, not front), and `relay_ops.py` a
+`payout` command.
 
 ## Layout
 
@@ -129,7 +132,7 @@ buy with ours, and a bot buy that would fail its 99% minOut is not counted as a 
 | `research/` | the analysis scripts, their data and outputs, the survey of other chains and launchpads, report section 24.54; `live_trades.py` reads the live trades back from the chain (`data/live_trades_oct8.txt`), `new_scheme.py` the operator's scheme from 14:59 (`data/new_scheme_oct8.txt`) |
 | `docs/RUNBOOK.md` | from a fresh wallet to the first $3 trade, the dry run's pass criteria, the exit (4b), the stop rules |
 | `docs/HANDOFF.md` | **start here to continue the project**: the goal, the chain and every address, both strategies, all the research of Oct 8-10 and its results, every release, every live trade, the box and its commands, the state at the Oct 10 handoff and the open items |
-| `research/session_oct9_10/` | every research script and result of Oct 9-10 (operator A's money loop and origins, the census of every v4 operator, the volume bot's families and reaction, the rule search, the front replay, the fingerprint history, the dry-run check, the protection backtest), indexed by its README |
+| `research/session_oct9_10/` | every research script and result of Oct 9-10 (operator A's money loop and origins, the census of every v4 operator, the volume bot's families and reaction, the rule search, the front replay, the fingerprint history, the dry-run check, the protection backtest), indexed by its README; `front_audit/` and `follow_audit/` are the Oct 10 afternoon's reads of the chain (every live front trade; operator A's day) |
 
 ## The trade, exactly
 
