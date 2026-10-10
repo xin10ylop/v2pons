@@ -75,9 +75,9 @@ the first trade the operator's pull beats.
 | `research/REPORT_24.54.md`, `research/*.py`, `research/data/` | the original research (Oct 8 and before): the operator A study, the Oct 8 live trades read back from the chain (`live_trades.py`, `data/live_trades_oct8.txt`), operator A's new scheme (`new_scheme.py`), the survey of other chains and launchpads (`data/SURVEY.md`) |
 | `research/session_oct9_10/` | **every research script and result of Oct 9-10** copied from the session's scratch directory (section 6 says what each directory holds; its own README is the index). Scripts there import a helper `chain.py` (copied) and the engine's `v4math`; they were written with two absolute paths, `/tmp/claude-0/…/scratchpad` (now `research/session_oct9_10`) and `/home/user/v2pons` (the repository), which have to be edited to run them again. Large caches (.pkl, .npy, raw block dumps) were not copied; every script that needs them re-fetches from the public RPC. |
 
-Git: branch `claude/pensive-rubin-rkj996` holds everything (the default branch `main` is older). Repository `github.com/xin10ylop/v2pons`.
-**It is public as of this writing.** It contains the wallet and relay addresses (public on the chain anyway) and the whole strategy.
-Section 11.4 has the steps to make it private with a read-only deploy key for the box.
+Git: branch `claude/pensive-rubin-rkj996` holds everything (the default branch `main` is older). Repository `github.com/xin10ylop/v2pons`,
+**private since Oct 10, 2026** (the owner made it private after this handoff was first written; section 11.4 says how, and what the box
+needs to keep pulling). It contains the wallet and relay addresses (public on the chain anyway) and the whole strategy.
 
 ---
 
@@ -549,6 +549,20 @@ one buy refused with `429 Too Many Requests` by the sequencer at 11:27:51 (no mo
 
 Balances: 09:36 wallet 0.004017 ETH, relay 0.018484 ETH; 11:30 wallet 0.002568 ETH (nonce 849), relay **0.257461 ETH (about $660)**.
 
+### 10.5 The full per-trade record is on the box
+
+Every trade's own lines (`fire`, `buy_seen`, `sell_sent`, `trade_done` with the receipts, the pull check and the P&L) are in
+`/var/log/flip/engine.jsonl` on the box and its daily rotations (`engine.jsonl.1`, `.2.gz`, …), not in this repository: the repository
+holds the results screens above, the 17 dry-run decisions (`research/session_oct9_10/dry1/engine_log.txt`) and the chain audit of the
+first 132 live front trades (`dry1/live_front_check.json`). To preserve the whole record of Oct 8-10 in the repository, run this on the
+box (it extracts the trade lines from the last 72 hours, rotations included, into a file under `research/`, which `.gitignore` allows):
+```
+mkdir -p ~/v2pons/research/box_logs && sudo python3 ~/v2pons/deploy/englog.py 72 | grep -E '"ev":"(start|armed|first_buy|would_fire|would_sell|fire|buy_seen|buy_reply|buy_rejected|sell_sent|trade_done|skip|alarm|nonce|front_bot_reverts)"' > ~/v2pons/research/box_logs/engine_oct8_10.jsonl && wc -l ~/v2pons/research/box_logs/engine_oct8_10.jsonl
+```
+Then commit and push it from the box (`cd ~/v2pons && git add research/box_logs && git commit -m "box log Oct 8-10" && git push`), which needs
+push access from the box (section 11.4: a deploy key with write access, or a token), or copy the file to a machine that has it. The
+`englog.py` number is hours: `englog.py 24` for today only; a bigger number as the days go by.
+
 ---
 
 ## 11. State at the handoff (Oct 10 ~12:00 UTC)
@@ -571,14 +585,24 @@ Balances: 09:36 wallet 0.004017 ETH, relay 0.018484 ETH; 11:30 wallet 0.002568 E
   there is **no command yet to send from the box's wallet to an external address** (a `payout <address> <eth>` command for `relay_ops.py`
   was proposed, not written). The owner's external wallet is a Phantom wallet (address not recorded here).
 
-### 11.4 The repository is public
-Recommended (not done): a read-only deploy key for the box, then make the repo private:
+### 11.4 The repository is private (done Oct 10)
+Until Oct 10 the repository was public, with the wallet and relay addresses in `research/live_trades.py` and
+`research/data/live_trades_oct8.txt` and the whole strategy readable by anyone, including the operators. On Oct 10 the owner made it
+private: GitHub -> the repository -> Settings -> General -> Danger Zone -> "Change visibility" -> "Make private" (confirmed by the GitHub
+API: `"private": true`). The reasoning: a public repository tied the on-chain wallet to the GitHub account and let a copycat take the room
+ahead of the volume bot's buy; the chain itself shows only addresses, and a name can only come from a service that verified the owner's
+identity (an exchange or card provider that funded the wallet), never from the address.
+
+The box pulled over HTTPS without credentials, which a private repository refuses. The read-only deploy key that keeps `git pull` working
+on the box (given to the owner with the privacy steps; if `git pull` on the box fails with "could not read Username" or "Repository not
+found", this part has not been done yet):
 ```
-ssh-keygen -t ed25519 -N "" -f ~/.ssh/v2pons_deploy -C v2pons-box && cat ~/.ssh/v2pons_deploy.pub     # on the box
-# GitHub: repo Settings -> Deploy keys -> Add deploy key (title box, paste, no write access)
+ssh-keygen -t ed25519 -N "" -f ~/.ssh/v2pons_deploy -C v2pons-box && cat ~/.ssh/v2pons_deploy.pub     # on the box; copy the ssh-ed25519 line
+# GitHub: repo Settings -> Deploy keys -> Add deploy key (title "box", paste the line, leave "Allow write access" unchecked)
 cd ~/v2pons && git config core.sshCommand "ssh -i ~/.ssh/v2pons_deploy -o IdentitiesOnly=yes" && git remote set-url origin git@github.com:xin10ylop/v2pons.git && git fetch origin && echo ok
-# GitHub: Settings -> General -> Danger Zone -> Change visibility -> Make private
+# the first run asks whether to trust GitHub's host key: yes
 ```
+To push from the box as well (section 10.5 needs it), add the key with "Allow write access" instead, or use a personal access token.
 
 ---
 
@@ -608,7 +632,7 @@ allowlist (trigger only on known crowd wallets: `money/loop.json`); a stake per 
 - "we need a good way to know the difference of profits between both": done (the PROFIT BY STRATEGY table).
 
 ### 12.5 Operational
-- Gas top-ups from the relay about daily; a `payout` command (11.3); the repo privacy (11.4); `FRONT_STAKE_ETH` is capped at 0.006 in code
+- Gas top-ups from the relay about daily; a `payout` command (11.3); the box's deploy key if `git pull` fails (11.4); the log export (10.5); `FRONT_STAKE_ETH` is capped at 0.006 in code
   (a $25 stake was computed safe for the bot's minOut: 1.0020x; the owner then chose $15).
 - The dry-run and skip sections of results.py count the whole 24 h window; old skip reasons linger.
 
