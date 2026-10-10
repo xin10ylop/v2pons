@@ -143,9 +143,16 @@ def main():
     if rows:
         print(f"  {'time (UTC)':15s} {'fee':>7s} {'result':>12s} {'$':>7s}  {'sold at':>8s} {'pull at':>12s}  exit")
     tot = 0.0; won = lost = pulled = 0; nores = 0
-    for f, d in rows:
+    entry_of = lambda f, d: (d.get("entry") if isinstance(d, dict) else None) or (f or {}).get("entry")
+    fr = [i for i, (f, d) in enumerate(rows) if entry_of(f, d) == "front"]; shown = set(fr[-5:])   # front: ~300 a day, so its last 5 rows and a summary
+    if len(fr) > 5:
+        print(f"  ({len(fr) - 5} earlier front trades: in the FRONT LIVE summary below)")
+    for i, (f, d) in enumerate(rows):
+        quiet = i in fr and i not in shown
         if isinstance(d, str):
             nores += 1
+            if quiet:
+                continue
             print(f"  {hms(f['t']):15s} {f.get('fee', 0) / 1e4:6.3f}% {'-':>12s} {'-':>7s}  {'-':>8s} {'-':>12s}  {f.get('entry') or ''}  {d}")
             continue
         usd = d.get("pnl_usd") or 0.0; tot += usd
@@ -154,8 +161,10 @@ def main():
         if first is None and pull is not None and sold is not None:                  # older releases did not log it: from the blocks
             first = True if pull < sold else (None if pull == sold else False)
         won += 1 if usd > 0 else 0; lost += 1 if usd <= 0 else 0; pulled += 1 if first else 0
-        why = ((d.get("entry") + ", ") if d.get("entry") else "") + (d.get("sell_why") or "").split(":")[0]
+        why = ((d.get("entry") + ", ") if d.get("entry") else "") + (d.get("sell_why") or "").split(":")[0].split(" (")[0]
         flag = "   <== THE PULL CAME FIRST" if first else ("   (same block as the pull: our sell got in first)" if pull is not None and pull == sold else "")
+        if quiet:
+            continue
         print(f"  {hms(d['t']):15s} {d.get('fee', 0) / 1e4:6.3f}% {result_col(d):>12s} {usd:+7.3f}  {'+' + str(sold) if sold is not None else '-':>8s} {pull_col(d):>12s}  {why}{flag}")
     if rows:
         print(f"  TOTAL {'+' if tot >= 0 else '-'}${abs(tot):.3f} ({won + lost} trades: {won} up, {lost} flat or down; pulls before our sell: {pulled}"
@@ -169,6 +178,17 @@ def main():
                 k = d.get("entry") or "follow"; n_, u_ = by.get(k, (0, 0.0)); by[k] = (n_ + 1, u_ + (d.get("pnl_usd") or 0.0))
         if len(by) > 1:
             print("  by strategy: " + "; ".join(f"{k} {n_} trades {'+' if u_ >= 0 else '-'}${abs(u_):.3f}" for k, (n_, u_) in sorted(by.items())))
+    fd = [rows[i][1] for i in fr if isinstance(rows[i][1], dict)]
+    if fd:                                                                     # release 0.9: the front strategy live
+        rets = [d["ret"] for d in fd if d.get("ret") is not None]; usd = sum(d.get("pnl_usd") or 0.0 for d in fd)
+        kinds = {}
+        for d in fd:
+            k = (d.get("sell_why") or "?").split(":")[0].split(" (")[0]; kinds[k] = kinds.get(k, 0) + 1
+        first = sum(1 for d in fd if d.get("pulled_before_sell"))
+        print(f"\nFRONT LIVE: {len(fd)} trades {'+' if usd >= 0 else '-'}${abs(usd):.3f}, {sum(1 for d in fd if (d.get('pnl_usd') or 0) > 0)} up"
+              + (f"; return {100 * sum(rets) / len(rets):+.1f}% on average, worst {100 * min(rets):+.1f}%" if rets else "")
+              + f"; pulls before our sell: {first}" + ("   <== the front strategy halts on the first one" if first else ""))
+        print("  exits: " + "; ".join(f"{k} x{v}" for k, v in sorted(kinds.items(), key=lambda x: -x[1])))
     # the dry run's decisions
     wf = {x["pid"]: x for x in ev if x["ev"] == "would_fire"}; ws = [x for x in ev if x["ev"] == "would_sell"]
     fws = [x for x in ws if wf.get(x.get("pid"), {}).get("entry") == "front"]

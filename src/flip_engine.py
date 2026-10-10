@@ -110,6 +110,9 @@ FRONT_SQRT_P = int(env("FRONT_SQRT_P", "1604517591721945638372359205383840")); F
 # the bot's first buy (0.05-0.25 ETH) is quoted at the launch state with minOut 99% of that quote: about 0.012 ETH bought ahead of it makes it revert
 FRONT_BOT_MIN_ETH = float(env("FRONT_BOT_MIN_ETH", "0.04")); FRONT_BOT_MIN_WEI = int(FRONT_BOT_MIN_ETH * 1e18); FRONT_BOT_MINOUT = float(env("FRONT_BOT_MINOUT", "0.99"))
 FRONT_AHEAD_MAX_ETH = float(env("FRONT_AHEAD_MAX_ETH", "0.008")); FRONT_AHEAD_MAX_WEI = int(FRONT_AHEAD_MAX_ETH * 1e18)   # others' buys before ours plus our stake: at most this, a third of the room left for buys behind ours
+# the bot's buy is the whole profit and nothing comes after it but the pull (2-4 blocks after it in the operator's quick-pull hours): a buy this
+# size behind ours sells at once even below FRONT_TAKE_PROFIT. The operator's own decoys behind ours are 0.00012 ETH at most; its bot's buys 0.0138-0.275.
+FRONT_SELL_ON_ETH = float(env("FRONT_SELL_ON_ETH", "0.005")); FRONT_SELL_ON_WEI = int(FRONT_SELL_ON_ETH * 1e18)
 SEL_MULTICALL = "ac9650d8"; SEL_INIT_POOL = "f7020405"; SEL_MODLIQ = "dd46508f"
 MIN_SQRT_P = 4295128739; MAX_SQRT_P = 1461446703485210103287273052203988822378723970342                                # v4's price bounds
 
@@ -878,6 +881,7 @@ def take_profit(pos, p):
     ret = (eth - stake - round_trip_gas_wei()) / stake
     if ret >= pos["tp"]:
         pos["tp_ret"] = round(ret, 4); send_sell(f"take profit: a buy behind ours, the sell prices at {ret:+.1%}")
+    return ret
 
 
 def on_front_buy(p, seq, to, value, h, stale):
@@ -911,7 +915,9 @@ def on_front_buy(p, seq, to, value, h, stale):
         log({"ev": "skip", "why": "front: the bot's buy came first" if value >= FRONT_BOT_MIN_WEI else "front: too much ETH bought ahead of the bot's buy", "pid": p["pid"], "seq": seq,
              "eth_in": p["eth_in"]})
     if ours is not None and ours["buy_seq"] is not None and not ours["sell_sent"] and ours["feed_tokens"] and not stale:
-        take_profit(ours, p)
+        ret = take_profit(ours, p)
+        if not ours["sell_sent"] and value >= FRONT_SELL_ON_WEI:                     # the bot's buy, too small for the take-profit: out now, not at the deadline
+            ours["tp_ret"] = round(ret, 4); send_sell(f"the bot's buy behind ours ({value / 1e18:.4f} ETH): out before the pull, the sell prices at {ret:+.1%}", ours)
 
 
 def on_buy(p, seq, to, value, h, stale, seen_at):
@@ -1094,7 +1100,7 @@ def main():
          "front": FRONT, "front_dry_run": FRONT_DRY_RUN, "front_stake_eth": FRONT_STAKE_ETH, "front_take_profit": FRONT_TAKE_PROFIT, "front_hold_blocks": FRONT_HOLD_BLOCKS,
          "front_fire_max": FRONT_FIRE_MAX, "front_max_per_day": FRONT_MAX_PER_DAY, "front_value_wei": FRONT_VALUE_WEI, "front_halted": state["front_halted"],
          "front_daily_stop_usd": FRONT_DAILY_STOP_USD, "front_pin": FRONT_PIN, "front_fee": FRONT_FEE, "front_tick_spacing": FRONT_TICK_SPACING, "front_sqrt_p": FRONT_SQRT_P, "front_liq": FRONT_LIQ,
-         "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT,
+         "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_sell_on_eth": FRONT_SELL_ON_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT,
          "halted": state["halted"], "halt_file": HALT_FILE, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()
     try:

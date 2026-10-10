@@ -242,7 +242,10 @@ trade waits for it). A front launch is
 known by its value (2.4333285 ETH) and its calldata; if the bot changes its fee (within sub-1%), tick spacing, launch price or liquidity, the
 launch is still traded and results.py shows `front launches with a fingerprint not seen before` (set `FRONT_PIN=1` to skip such launches
 instead). Front skips a pool with more than `FRONT_AHEAD_MAX_ETH` (0.008) bought ahead of the bot's buy counting ours, and sells at once
-when the bot's buy would fail its own minOut (`front_bot_reverts` in the log; the dry-run summary counts them).
+when the bot's buy would fail its own minOut (`front_bot_reverts` in the log; the dry-run summary counts them). The bot's buy behind ours
+(any buy of `FRONT_SELL_ON_ETH`, 0.005 ETH, or more; the operator's decoys are 0.00012 ETH) sells at once even below the take-profit: in the
+operator's quick-pull hours the pull comes 2-4 blocks after that buy, and a small one would otherwise leave our sell to the deadline.
+Live, `results.py` lists front's last 5 trades and a `FRONT LIVE:` summary line (count, $, average and worst return, exits, pulls first).
 
 ## 5. Daily
 

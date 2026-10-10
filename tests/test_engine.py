@@ -444,18 +444,20 @@ print("ok the sender: a busy slot falls back to a fresh connection at once; repl
 # 15j. a buy send that hangs (Nitro answers once the buy is in a block; a lost reply waits out its timeouts) holds up nothing
 reset(); E.state["nonce"] = 240; NONCE_ON_CHAIN[0] = hex(242); p = do_launch(3200)
 gate = threading.Event()
+tx_nonce = lambda raw: int.from_bytes(rlp.decode(raw)[0], "big")
+ours_at = lambda n: [r for _, r in list(SENT) if tx_nonce(r) == n]                # our transactions by nonce (a late send of the test before cannot pass for ours)
 class HangingSender(FakeSender):
     def post(self, i, body, retry=True):
         r = super().post(i, body, retry)
-        if len(SENT) == 1:
+        if tx_nonce(bytes.fromhex(json.loads(body)["params"][0][2:])) == 240:
             gate.wait(10)                                                      # the buy's reply: held until the sell is out
         return r
 E.SENDER = HangingSender(); SYNC_BUY[0] = False
 t0 = time.time(); E.ingest(frame(3231, [signed(CROWD, UR, TRIG, BUY_DATA, 61)])); pos = E.state["position"]
 assert pos is not None and time.time() - t0 < 0.5 and E.state["nonce"] == 242, "the feed waited on the buy's reply"
-assert wait_for(lambda: len(SENT) == 1); buy_raw = SENT[0][1]
+assert wait_for(lambda: ours_at(240)); buy_raw = ours_at(240)[0]
 E.ingest(frame(3232, [])); E.ingest(frame(3233, [buy_raw])); E.ingest(frame(3234, [])); E.ingest(frame(3235, []))
-assert pos["buy_seq"] == 3233 and pos["sell_sent"] and "buy_reply" not in pos and wait_for(lambda: len(SENT) == 2), "the sell waited on the buy's reply"
+assert pos["buy_seq"] == 3233 and pos["sell_sent"] and "buy_reply" not in pos and wait_for(lambda: ours_at(241)), "the sell waited on the buy's reply"
 gate.set(); assert wait_for(lambda: "buy_reply" in pos)
 RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(3233, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(3237, int(E.STAKE_WEI * 1.02), -pos["feed_tokens"])
 assert wait_for(lambda: done_at(240)) and E.state["nonce"] == 242
@@ -737,5 +739,14 @@ finally:
     threading.Thread.start = real_start
 assert not E.state["arming"], E.state["arming"]
 print("ok front: it yields only to a follow launch follow can trade; a launch whose arming never started does not block front")
+
+# 18m. a decoy-size buy behind ours is no exit; the bot's buy is, even too small for the take-profit (in its quick-pull hours the pull comes 2-4 blocks after it)
+reset(); E.state["nonce"] = 540
+front_launch(7900, 20); pos = E.state["position"]; E.ingest(frame(7902, [SENT[0][1]]))
+E.ingest(frame(7903, [signed(OUTSIDER, SNIPER, int(0.00012e18), FBUY, 34)])); assert not pos["sell_sent"], pos.get("sell_why")
+E.ingest(frame(7910, [signed(CROWD, BOT, int(0.008e18), FBUY, 75)]))
+assert pos["sell_sent"] and pos["sell_why"].startswith("the bot's buy behind ours") and pos["tp_ret"] is not None and pos["tp_ret"] < E.FRONT_TAKE_PROFIT, (pos.get("sell_why"), pos["tp_ret"])
+front_close(pos, 7902, 7911, int(E.FRONT_STAKE_WEI * 0.999))
+print("ok front: a decoy behind ours is no exit; the bot's buy sells at once even below the take-profit")
 E.FRONT = False; E.ENTRY = "follow"
 os.remove(LOG)
