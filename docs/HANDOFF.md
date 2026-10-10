@@ -941,10 +941,30 @@ deadline and lose the stake once, after which front halts: **a front halt where 
 means adding that address before resuming.** The same review found the case where the bot's small buy lands in our own block ahead of our buy
 (it passes our 3% minOut): the engine waited for the deadline; since the 18:15 commit it sells the moment our buy is seen (test 18m4).
 
-Note also that with two 0.00495 decoys and our 0.0058 ETH ahead of it, about 0.0157 ETH, the bot's buy still filled in every pool this
-afternoon, which the Oct 9 model (minOut = 0.99 x the launch quote, room about 0.0124 ETH) said it would not: either the bot's minOut loosened
-or the model was wrong; a chain check was started at 18:05 UTC (its result goes here). Until then the engine's revert model labels every such
-bot buy `the bot's buy reverts` and sells at once, which is the right action at the right moment with the wrong label (16.6).
+**The room, settled (an Opus chain check, 18:05-18:20 UTC; scripts and outputs in the session's scratch `minout_check/`, the numbers
+below).** The bot's minOut is unchanged: 0.99 x its launch-state quote to nine decimals on all 1,146 first bot buys of Oct 10 (its calldata
+word 4; word 3 is L0/4, word 0 the Universal Router it calls, which is why its Swap events show the Universal Router as sender). Its buy
+filled this afternoon only because our sells on the decoys had already taken us out of the pool before it: in the 152 pools since 16:45 with
+two 0.00495 ETH decoys behind our buy, at most 0.0099 ETH sat ahead of the bot's buy. The exact room ahead of the bot's buy is 0.0123 ETH
+(0.00495 buy) to 0.0131 (0.335), so **with the size rule off, our 0.0058 ETH plus the two decoys (0.0157 ETH) makes the bot's buy revert in
+about 72% of pools** (the other 28%: a decoy sells back before a bot buy at + 10 or later). The engine's revert model then sells at once into
+a pool with only the decoys behind ours (about +0.3%); the +14% comes only when the bot's buy fills. The stake that still fits beside both
+decoys is 0.0024-0.0032 ETH ($6-8); beside one decoy 0.0074-0.0081 ETH. The decoys are the operator front-running its own bot: they sell back
+at + 8..+ 11, right after the bot's buy, for +10% to +24%, and when the bot buys at + 9 or later the first decoy sells first at about -0.6%.
+Their sizes through the day: 0.000119 from fresh wallets until 13:43; 0.000049 (13:45-14:20); 0.00099 and the first 0.00495 during our halt
+(14:47-14:51); 0.001485 from 15:04; 0.00495 from 15:34 (the first router) and, after a ramp 0.000049 -> 0.00396 from 15:49, 0.00495 from
+16:45 (the second router); from 18:11 the second decoy is absent and the first is back to a fresh wallet per launch. None ever landed in the
+launch block; 105 landed at + 1 behind our buy in the same block, none ahead of it. No decoy went through the bot's router. So the engine's
+`the bot's buy reverts` label this afternoon was a mislabel only while the size rule took us out first; with the rule off it is the real
+outcome in most pools, and the stake, not the exit, decides what is left: at $6 the bot's buy fills beside both decoys and the trade keeps
+its +14%; at $15 it is about +4% blended. **The operator can close that too by making its decoys fill the whole room.**
+
+**No front buy since 17:37:07 UTC** (the agent's side observation, the chain confirms: 72 launches to 18:14 untraded, the wallet's nonce
+unchanged through the 18:11-18:14 launches after the owner's 18:0x restart). The launches' shape is unchanged (145 since 17:20, all the
+exact fingerprint). The owner's 17:53 screen already showed "the last launch at 17:37:07" with the engine alive since 15:22:57, so the
+engine stopped seeing launches at 17:37 while the feed is healthy from the research container (connected in 0.45 s, frames 0.06-1.4 s behind
+the chain): the box's feed connection, its clock (a drift above STALE_S 2.5 s makes every block stale and arms nothing), or a stuck main
+thread. The owner was asked for the engine's feed/flow/alarm lines and the box's clock at 18:22.
 
 ### 16.9 The study of the whole repository (13 agents, 13:00-14:45 UTC): what it corrected
 
