@@ -1,0 +1,54 @@
+{
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|2500|50|true": {
+  "n_buys": 35942,
+  "median_abs_err": 3.772326433582535e-22,
+  "p99_abs_err": 2.114217677713146e-17,
+  "share_over_1e-6": 0.0,
+  "first_swap_median_err": 2.1480857644768405e-21,
+  "first_swap_over_1e-6": 0,
+  "n_first": 1843,
+  "ranges_in_live_tx": {
+   "1": 1843
+  },
+  "start_below_sp0": 0
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|10000|200|true": {
+  "n_buys": 98929,
+  "median_abs_err": 7.775801508947265e-22,
+  "p99_abs_err": 5.020056566366157e-18,
+  "share_over_1e-6": 2.0216518917607578e-05,
+  "first_swap_median_err": 1.5574902397174392e-17,
+  "first_swap_over_1e-6": 0,
+  "n_first": 1339,
+  "ranges_in_live_tx": {
+   "1": 1339
+  },
+  "start_below_sp0": 15
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2276|100|1|true": {
+  "n_buys": 15227,
+  "median_abs_err": 3.630561412293418e-18,
+  "p99_abs_err": 5.943160422804746e-17,
+  "share_over_1e-6": 0.0,
+  "first_swap_median_err": 2.1778265812755814e-17,
+  "first_swap_over_1e-6": 0,
+  "n_first": 245,
+  "ranges_in_live_tx": {
+   "1": 245
+  },
+  "start_below_sp0": 0
+ },
+ "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|1|true": {
+  "n_buys": 16294,
+  "median_abs_err": 1.2427734339924591e-17,
+  "p99_abs_err": 1.5169440395393327e-16,
+  "share_over_1e-6": 0.0,
+  "first_swap_median_err": 6.3834212983039996e-18,
+  "first_swap_over_1e-6": 0,
+  "n_first": 192,
+  "ranges_in_live_tx": {
+   "1": 192
+  },
+  "start_below_sp0": 77
+ }
+}

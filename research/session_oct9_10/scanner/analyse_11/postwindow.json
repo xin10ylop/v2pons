@@ -1,0 +1,50 @@
+{
+ "head": 85259924,
+ "calls": 36,
+ "per_family": {
+  "0xa1c9c202b905d171b4517c877adce519bff04c03|7fde822e|772|10000|200|true": {
+   "blocks_after_last_launch_to_head": 927407,
+   "modify_liquidity": 9,
+   "pulls_ever": 0,
+   "pulled_pools_ever": 0,
+   "pull_rel": [],
+   "swaps_logged": 9,
+   "swaps_after_window": 0,
+   "late_buys_eth_top": [],
+   "late_real_buys": 0
+  },
+  "0xdf4ca4e1698260ea18aec40347be88310e4e93f4|7fde822e|804|10000|200|true": {
+   "blocks_after_last_launch_to_head": 83864,
+   "modify_liquidity": 9,
+   "pulls_ever": 0,
+   "pulled_pools_ever": 0,
+   "pull_rel": [],
+   "swaps_logged": 9,
+   "swaps_after_window": 0,
+   "late_buys_eth_top": [],
+   "late_real_buys": 0
+  },
+  "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0|ac9650d8|1476|2500|25|true": {
+   "blocks_after_last_launch_to_head": 701590,
+   "modify_liquidity": 8,
+   "pulls_ever": 0,
+   "pulled_pools_ever": 0,
+   "pull_rel": [],
+   "swaps_logged": 26,
+   "swaps_after_window": 8,
+   "late_buys_eth_top": [],
+   "late_real_buys": 0
+  },
+  "0x387a453d75a1b8fa825a9b9d4ad87323c0f48755|54e231e6|1412|0|200|false": {
+   "blocks_after_last_launch_to_head": 417411,
+   "modify_liquidity": 8,
+   "pulls_ever": 0,
+   "pulled_pools_ever": 0,
+   "pull_rel": [],
+   "swaps_logged": "not fetched (active market)",
+   "swaps_after_window": null,
+   "late_buys_eth_top": null,
+   "late_real_buys": null
+  }
+ }
+}

@@ -1,0 +1,65 @@
+{
+ "bot_buy_ge_0.04_by_+19": {
+  "n": 1664,
+  "mean": 0.13034,
+  "median": 0.14031,
+  "win": 0.9573,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 1664
+  },
+  "usd_trade": 1.9551,
+  "trades_day": 832.26,
+  "usd_day": 1627.11,
+  "p10_50_90": [
+   0.00236,
+   0.14031,
+   0.21003
+  ],
+  "min": -0.00771,
+  "max": 0.28551
+ },
+ "bot_buy_lt_0.04_by_+19": {
+  "n": 168,
+  "mean": 0.01024,
+  "median": 0.01319,
+  "win": 0.8929,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 168
+  },
+  "usd_trade": 0.1536,
+  "trades_day": 84.03,
+  "usd_day": 12.91,
+  "p10_50_90": [
+   -0.00127,
+   0.01329,
+   0.01595
+  ],
+  "min": -0.00771,
+  "max": 0.02698
+ },
+ "launched_Oct10_09:07-11:40": {
+  "n": 409,
+  "mean": 0.13979,
+  "median": 0.16173,
+  "win": 0.9853,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 409
+  },
+  "usd_trade": 2.0968,
+  "trades_day": 204.56,
+  "usd_day": 428.93,
+  "p10_50_90": [
+   0.03494,
+   0.16173,
+   0.22834
+  ],
+  "min": -0.00571,
+  "max": 0.28551
+ }
+}

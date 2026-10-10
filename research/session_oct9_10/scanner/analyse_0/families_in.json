@@ -1,0 +1,4 @@
+[{"key":"0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|2500|50|true","known":"vbot-v2.433","name":"vbot-v2.433","wait":20},
+ {"key":"0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|10000|200|true","known":"vbot-other","name":"vbot-other","wait":120},
+ {"key":"0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2276|100|1|true","known":"none","name":"fee100-2276","wait":260},
+ {"key":"0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|1|true","known":"none","name":"pm-init-500","wait":220}]

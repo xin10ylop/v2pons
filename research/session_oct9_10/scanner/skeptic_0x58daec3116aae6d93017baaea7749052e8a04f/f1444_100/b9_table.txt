@@ -1,0 +1,316 @@
+09-11 06:58 0x602329 v2.00 f100 n3 t200311 crowd  8 ( 8 pre-pull) first   433 last  2715 pull 3543 tot 0.7754 mo 0.98-0.98 | 
+09-11 07:08 0x14ae4d v2.40 f100 n3 t175460 crowd 10 (10 pre-pull) first   365 last  1861 pull 6121 tot 0.4741 mo 0.98-0.98 | B77:0.00099:0x7221 S112:0.00099:0x7221
+09-11 07:26 0xe159b1 v2.50 f100 n3 t198079 crowd  2 ( 2 pre-pull) first   308 last   526 pull 1026 tot 0.1295 mo 0.98-0.98 | B566:0.01237:0xf70d S932:0.01237:0xd460
+09-11 07:53 0x2006de v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   279 last  2946 pull 4216 tot 0.7753 mo 0.93-0.98 | 
+09-11 08:07 0xe420af v2.30 f100 n3 t198913 crowd 10 (10 pre-pull) first   334 last  2176 pull None tot 0.5710 mo 0.98-0.98 | 
+09-11 08:37 0x3deb50 v2.40 f100 n3 t198487 crowd 10 (10 pre-pull) first   248 last  2063 pull 3246 tot 0.4737 mo 0.98-0.98 | 
+09-11 08:49 0x81e894 v2.30 f100 n4 t198913 crowd  8 ( 8 pre-pull) first   297 last  1689 pull 2762 tot 0.5704 mo 0.98-0.98 | 
+09-11 08:59 0xa24cad v2.30 f100 n4 t221940 crowd  5 ( 5 pre-pull) first   577 last  2856 pull None tot 0.2880 mo 0.93-0.93 | 
+09-12 09:06 0xb6a6ad v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   304 last  2388 pull 3489 tot 0.7753 mo 0.98-0.98 | 
+09-12 09:16 0x12a592 v2.30 f100 n3 t198913 crowd  8 ( 8 pre-pull) first   883 last  2634 pull 2835 tot 0.5711 mo 0.98-0.98 | B2478:0.00079:0xa498
+09-12 09:25 0xbb35a7 v2.50 f100 n3 t221106 crowd  8 ( 8 pre-pull) first   446 last  2258 pull 2768 tot 0.3776 mo 0.98-0.98 | 
+09-12 09:36 0x08b26e v2.40 f100 n3 t221514 crowd  8 ( 8 pre-pull) first   291 last  1691 pull 2977 tot 0.4743 mo 0.98-0.98 | 
+09-12 09:49 0x6bca59 v2.30 f100 n4 t221940 crowd  8 ( 8 pre-pull) first   359 last  1821 pull 1922 tot 0.5710 mo 0.98-0.98 | B1663:0.00396:0xffff
+09-12 09:57 0xcb5423 v2.40 f100 n3 t221514 crowd  8 ( 8 pre-pull) first   392 last  2432 pull None tot 0.4776 mo 0.98-0.98 | 
+09-13 10:53 0x8cddcf v1.00 f100 n3 t230270 crowd  8 ( 8 pre-pull) first   335 last  2833 pull 4376 tot 0.5814 mo 0.98-0.98 | 
+09-13 11:17 0xf69407 v1.30 f100 n3 t204619 crowd  8 ( 8 pre-pull) first   235 last  2574 pull None tot 0.3772 mo 0.93-0.98 | 
+09-13 11:29 0xc6ea8d v1.40 f100 n3 t226905 crowd  9 ( 9 pre-pull) first   235 last  2506 pull None tot 0.2799 mo 0.98-0.98 | 
+09-13 21:34 0x725837 v2.30 f100 n3 t221940 crowd  8 ( 8 pre-pull) first   249 last  2924 pull 3614 tot 0.6299 mo 0.98-0.98 | B2590:0.00040:0xb71c
+09-13 21:45 0xd98a13 v2.40 f100 n3 t221514 crowd  5 ( 5 pre-pull) first   238 last   879 pull 1058 tot 0.2795 mo 0.98-0.98 | B885:0.00050:0xf510 S885:0.00000:0xf510 B898:0.00049:0x85ad B921:0.00100:0xfc8f B989:0.00500:0xf510 S989:0.00004:0xf510
+09-13 21:52 0x0d2de4 v2.50 f100 n4 t221106 crowd 10 (10 pre-pull) first   468 last  2734 pull 2884 tot 0.4520 mo 0.93-0.98 | B2437:0.00040:0xb71c
+09-13 22:01 0xea63de v2.40 f100 n3 t221514 crowd  5 ( 5 pre-pull) first   248 last   671 pull 974 tot 0.2904 mo 0.98-0.98 | B808:0.00050:0xf510 S808:0.00000:0xf510 B919:0.00500:0xf510 S919:0.00004:0xf510
+09-13 22:06 0x2efedb v2.50 f100 n3 t221106 crowd 10 (10 pre-pull) first   283 last  1325 pull None tot 0.4573 mo 0.98-0.98 | B1267:0.00010:0xa7bc B2814:0.00040:0xb71c
+09-13 22:25 0x791b5a v2.40 f100 n3 t221514 crowd  7 ( 7 pre-pull) first   252 last   881 pull 1031 tot 0.3786 mo 0.98-0.98 | B891:0.00050:0xf510 S891:0.00000:0xf510 B995:0.00500:0xf510 S995:0.00004:0xf510
+09-13 22:32 0x98b26e v2.40 f100 n3 t221514 crowd 10 (10 pre-pull) first   372 last  1953 pull 2883 tot 0.5596 mo 0.98-0.98 | 
+09-13 22:42 0xf076d5 v2.30 f100 n3 t221940 crowd 10 (10 pre-pull) first   346 last  2248 pull 3870 tot 0.6564 mo 0.98-0.98 | 
+09-13 22:53 0xf414fb v2.40 f100 n3 t221514 crowd 10 (10 pre-pull) first   242 last  1325 pull None tot 0.5592 mo 0.98-0.98 | B2137:0.00040:0xb71c
+09-14 00:06 0x696d49 v2.30 f100 n3 t221940 crowd 12 (12 pre-pull) first   346 last  1990 pull 3310 tot 0.6297 mo 0.98-0.98 | B697:0.00200:0xd6e3 B1569:0.00006:0x658a B2327:0.00099:0xed24 S2720:0.00099:0xed24 B3247:0.00040:0xb71c B3253:0.01986:0xed24
+09-14 00:17 0xc88bc6 v2.50 f100 n3 t221106 crowd 10 (10 pre-pull) first   245 last  1760 pull None tot 0.4958 mo 0.98-0.98 | 
+09-14 00:43 0xc6e086 v2.40 f100 n4 t221514 crowd 10 (10 pre-pull) first   337 last  2350 pull None tot 0.5926 mo 0.98-0.98 | B2570:0.00040:0xb71c
+09-14 03:25 0x3f7b63 v2.30 f100 n3 t221940 crowd 10 (10 pre-pull) first   508 last  2984 pull 4832 tot 0.6783 mo 0.93-0.98 | B4018:0.00040:0xb71c
+09-14 03:38 0x8b0b44 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   401 last  1674 pull 2238 tot 1.4640 mo 0.98-0.981 | B79:0.00100:0xa349 B1130:0.00072:0x344d S1328:0.00223:0xa349
+09-14 03:51 0x564b10 v2.50 f100 n3 t221106 crowd  6 ( 6 pre-pull) first   291 last  2660 pull None tot 0.3483 mo 0.93-0.98 | 
+09-14 05:52 0xaa7bdb v2.50 f100 n3 t198079 crowd 10 (10 pre-pull) first   437 last  1663 pull 10270 tot 0.4935 mo 0.98-0.98 | B7897:0.00040:0xb71c
+09-14 06:19 0xdf0b72 v2.40 f100 n3 t221514 crowd 10 (10 pre-pull) first   289 last  1736 pull None tot 0.5906 mo 0.98-0.98 | B2047:0.00040:0xb71c S2557:0.00040:0xb71c
+09-14 07:42 0x75d399 v2.00 f100 n3 t223338 crowd  6 ( 6 pre-pull) first   328 last  2715 pull None tot 0.5984 mo 0.98-0.98 | 
+09-14 08:47 0xce8176 v2.40 f100 n3 t221514 crowd 10 (10 pre-pull) first  1015 last  2430 pull None tot 0.5711 mo 0.98-0.98 | 
+09-14 09:40 0x0eb2bd v2.50 f100 n3 t221106 crowd 10 (10 pre-pull) first   431 last  1374 pull 2833 tot 0.4739 mo 0.98-0.98 | 
+09-15 10:09 0xfb6e6e v2.30 f100 n3 t221940 crowd 10 (10 pre-pull) first   238 last  2735 pull 3797 tot 0.6783 mo 0.98-0.98 | B2688:0.00020:0x1114
+09-15 10:23 0xe7acb0 v2.50 f100 n4 t221106 crowd  8 ( 8 pre-pull) first   505 last  1607 pull None tot 0.4939 mo 0.98-0.98 | 
+09-16 00:19 0x7eddef v2.20 f100 n3 t222385 crowd  8 ( 8 pre-pull) first   311 last  1432 pull 1588 tot 0.6784 mo 0.98-0.98 | B105:0.00063:0xb7f3 B144:0.00099:0x6efb S378:0.00108:0x6efb B680:0.00099:0x1364
+09-16 00:27 0x326043 v2.40 f100 n3 t221514 crowd 10 (10 pre-pull) first   235 last  2785 pull None tot 0.5727 mo 0.98-0.98 | 
+09-16 01:00 0xbaf39f v2.50 f100 n3 t221106 crowd 10 (10 pre-pull) first  1141 last  2767 pull 12737 tot 0.4755 mo 0.93-0.98 | B38:0.00009:0xf2f3 B59:0.00009:0xf2f3 S1287:0.00019:0xf2f3
+09-16 01:29 0x372c8b v2.40 f100 n3 t221514 crowd 10 (10 pre-pull) first   280 last  1600 pull None tot 0.5723 mo 0.98-0.98 | 
+09-16 02:09 0xc99753 v2.40 f100 n3 t221514 crowd 10 (10 pre-pull) first   216 last  1170 pull None tot 0.5722 mo 0.98-0.98 | 
+09-17 09:26 0xb4d502 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   419 last  2792 pull None tot 0.4358 mo 0.98-0.98 | 
+09-17 10:13 0x9afe72 v1.60 f100 n3 t202542 crowd 10 (10 pre-pull) first   271 last  2107 pull 11302 tot 0.4257 mo 0.98-0.98 | 
+09-17 10:40 0x66cde6 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   253 last  1421 pull None tot 0.5225 mo 0.98-0.98 | B314:0.00045:0xbce2
+09-17 11:28 0x09d8f2 v1.50 f100 n3 t226215 crowd  6 ( 6 pre-pull) first   365 last  1892 pull None tot 0.2107 mo 0.98-0.98 | 
+09-21 14:33 0xa6e017 v1.40 f100 n3 t226905 crowd 10 (10 pre-pull) first   516 last  2219 pull 2396 tot 0.5813 mo 0.98-0.98 | B607:0.00038:0xc180
+09-21 14:41 0x7559d2 v1.50 f100 n3 t226215 crowd  7 ( 7 pre-pull) first   244 last  2974 pull None tot 0.4822 mo 0.93-0.98 | 
+09-22 13:56 0xb8a406 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   289 last  2035 pull 5811 tot 0.4843 mo 0.98-0.98 | B295:0.00010:0x754c S609:0.00010:0x754c
+09-22 14:08 0x972bc0 v1.50 f100 n3 t226215 crowd  8 ( 8 pre-pull) first   172 last  3090 pull 7420 tot 0.5228 mo 0.93-0.98 | 
+09-22 14:25 0xc8b70f v1.40 f100 n3 t226905 crowd  8 ( 8 pre-pull) first   358 last  1705 pull None tot 0.6197 mo 0.98-0.98 | 
+09-24 13:43 0xca2f4f v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   276 last  2291 pull None tot 0.5226 mo 0.98-0.98 | B282:0.00004:0x754c S496:0.00004:0x754c
+09-27 10:36 0x822fdc v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   264 last  2312 pull 7371 tot 0.4843 mo 0.98-0.98 | B65:0.00007:0x754c S675:0.00009:0x754c B1720:0.00071:0xf7f0 S1806:0.00071:0xf7f0 B1905:0.00020:0x6a87 S2024:0.00020:0x6a87
+09-27 10:51 0x48f015 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   179 last  2712 pull None tot 0.5228 mo 0.98-0.98 | B42:0.00008:0x754c S642:0.00010:0x754c
+09-27 11:32 0x1b134b v1.50 f100 n17 t226215 crowd 10 (10 pre-pull) first   577 last  1948 pull 9067 tot 0.5227 mo 0.98-0.98 | B5:0.02970:0xfebb S101:0.02969:0xfebb
+09-27 12:02 0x5feebc v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   211 last  1624 pull 2950 tot 0.5226 mo 0.98-0.98 | B27:0.00007:0x754c S650:0.00008:0x754c
+09-27 14:25 0x0cd6a9 v0.50 f100 n3 t237201 crowd 10 (10 pre-pull) first   232 last  1859 pull 1951 tot 0.4746 mo 0.98-0.98 | B470:0.00030:0xc795 B928:0.00070:0x5118
+09-27 14:31 0x06674f v0.60 f100 n3 t235378 crowd 10 (10 pre-pull) first   573 last  2188 pull 3597 tot 0.3785 mo 0.98-0.98 | B15:0.00001:0x754c B272:0.00020:0xc795 S646:0.00001:0x754c S2191:0.00053:0xc795
+09-27 14:40 0x284088 v0.50 f100 n3 t237201 crowd  8 ( 8 pre-pull) first   356 last  1803 pull 2618 tot 0.4752 mo 0.98-0.98 | B15:0.00004:0x754c S655:0.00005:0x754c
+09-27 14:46 0x425034 v0.60 f100 n3 t235378 crowd  2 ( 2 pre-pull) first   284 last   405 pull 1149 tot 0.0806 mo 0.98-0.98 | B13:0.00005:0x754c B564:0.00365:0x331d S638:0.00007:0x754c
+09-27 14:52 0xac869a v0.70 f100 n3 t233836 crowd  8 ( 8 pre-pull) first   260 last  2892 pull None tot 0.2846 mo 0.93-0.98 | 
+09-27 15:20 0x0784fa v0.60 f100 n3 t235378 crowd 10 (10 pre-pull) first   234 last  1813 pull 3007 tot 0.3814 mo 0.98-0.98 | 
+09-27 15:27 0xb93092 v0.50 f100 n3 t237201 crowd  2 ( 2 pre-pull) first   293 last   502 pull 587 tot 0.1343 mo 0.98-0.98 | B21:0.00008:0x754c B106:0.00073:0xa3a4
+09-27 15:34 0xc37664 v0.50 f100 n3 t214174 crowd 10 (10 pre-pull) first   553 last  1847 pull 2204 tot 0.4808 mo 0.98-0.98 | B14:0.00001:0x754c S634:0.00001:0x754c B2157:0.00510:0xe27d
+09-27 15:40 0xac487a v0.60 f100 n3 t212351 crowd 10 (10 pre-pull) first   223 last  1753 pull 2582 tot 0.3887 mo 0.98-0.98 | B15:0.00004:0x754c S646:0.00005:0x754c
+09-27 15:46 0x16732f v0.70 f100 n3 t210809 crowd 10 (10 pre-pull) first   632 last  1859 pull None tot 0.2916 mo 0.98-0.98 | B16:0.00001:0x754c S645:0.00001:0x754c B2641:0.00128:0x4995* B2651:0.00021:0x92b1* B2660:0.00053:0xc0c6* B2669:0.00139:0x9369*
+09-27 15:57 0xadfd5a v0.60 f100 n3 t212351 crowd 10 (10 pre-pull) first   297 last  2392 pull 4556 tot 0.3885 mo 0.98-0.98 | B15:0.00004:0x754c S654:0.00005:0x754c
+09-27 16:07 0xdf1700 v0.50 f100 n3 t214174 crowd  9 ( 9 pre-pull) first   380 last  1854 pull 2749 tot 0.4855 mo 0.98-0.98 | B15:0.00004:0x754c S645:0.00005:0x754c
+09-27 16:18 0xe750a2 v0.50 f100 n3 t237201 crowd  8 ( 8 pre-pull) first   250 last  1348 pull 1395 tot 0.4200 mo 0.98-0.98 | B1310:0.01485:0x63f2 B1374:0.02970:0xe463
+09-27 16:23 0xfac744 v0.60 f100 n3 t235378 crowd 10 (10 pre-pull) first   188 last  1429 pull 2068 tot 0.4322 mo 0.98-0.98 | 
+09-27 16:28 0x15fc64 v0.70 f100 n3 t233836 crowd 10 (10 pre-pull) first   804 last  2270 pull 2695 tot 0.3351 mo 0.98-0.98 | B15:0.00008:0x754c B132:0.00073:0xa3a4 S648:0.00008:0x754c S742:0.00073:0xa3a4
+09-27 16:35 0x3f1fba v0.50 f100 n3 t237201 crowd  8 ( 8 pre-pull) first   870 last  1943 pull 3008 tot 0.5291 mo 0.98-0.98 | B15:0.00001:0x754c B148:0.00073:0xa3a4 S646:0.00001:0x754c S803:0.00073:0xa3a4
+09-27 16:42 0x7d6a93 v0.60 f100 n3 t235378 crowd 10 (10 pre-pull) first   211 last  1624 pull 2215 tot 0.4320 mo 0.98-0.98 | 
+09-27 16:48 0xb773ee v0.60 f100 n3 t235378 crowd  3 ( 3 pre-pull) first   237 last   455 pull 508 tot 0.1174 mo 0.98-0.98 | B432:0.00107:0x56c2
+09-27 16:52 0x2fcada v0.50 f100 n3 t237201 crowd  9 ( 9 pre-pull) first   760 last  1816 pull 6832 tot 0.5299 mo 0.98-0.98 | B15:0.00001:0x754c B115:0.00074:0xa3a4 S644:0.00001:0x754c S696:0.00074:0xa3a4
+09-27 17:06 0xa7541d v0.60 f100 n3 t235378 crowd 10 (10 pre-pull) first   286 last  1655 pull None tot 0.4328 mo 0.98-0.98 | B18:0.00007:0x754c S649:0.00009:0x754c
+09-27 17:14 0x670390 v0.70 f100 n3 t233836 crowd  8 ( 8 pre-pull) first   217 last  1059 pull 1986 tot 0.3358 mo 0.98-0.98 | 
+09-28 12:57 0x0d0abc v1.50 f100 n3 t203188 crowd 10 (10 pre-pull) first   327 last  2644 pull 2887 tot 0.5716 mo 0.98-0.98 | B19:0.00007:0x754c S355:0.00008:0x754c
+09-28 13:04 0x5d7696 v1.60 f100 n3 t225569 crowd  1 ( 1 pre-pull) first  1183 last  1183 pull 1903 tot 0.0001 mo 0.98-0.98 | B21:0.00004:0x754c S358:0.00004:0x754c B1597:0.01144:0xbf1d*
+09-28 13:10 0xcced23 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   223 last  1860 pull 3770 tot 0.5715 mo 0.98-0.98 | B22:0.00004:0x754c S359:0.00004:0x754c
+09-28 13:19 0xab7b97 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   293 last  2179 pull 3909 tot 0.4744 mo 0.98-0.98 | B19:0.00005:0x754c S355:0.00005:0x754c
+09-28 13:28 0x780d14 v1.00 f100 n4 t230270 crowd 19 (19 pre-pull) first   363 last  2994 pull None tot 1.0126 mo 0.98-0.98 | B17:0.00004:0x754c S351:0.00004:0x754c
+09-28 13:40 0x512fe4 v1.40 f100 n3 t203878 crowd 10 (10 pre-pull) first   464 last  1601 pull 1854 tot 0.6682 mo 0.98-0.98 | B29:0.00006:0x754c S370:0.00006:0x754c B1081:0.00020:0x6a87
+09-28 13:48 0x196d04 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   313 last  1752 pull 2205 tot 0.5713 mo 0.98-0.98 | B21:0.00005:0x754c S358:0.00005:0x754c B1013:0.00130:0x33c7*
+09-28 15:07 0xecbad9 v1.50 f100 n4 t226215 crowd 10 (10 pre-pull) first   434 last  1364 pull 2167 tot 0.5711 mo 0.75-0.8 | 
+09-28 16:04 0x8c04c6 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   203 last  1561 pull 1981 tot 0.5100 mo 0.8-0.8 | B2:0.00005:0x754c S315:0.00005:0x754c
+09-28 16:10 0x021278 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   277 last  1362 pull 4542 tot 0.6069 mo 0.8-0.8 | B4:0.00001:0x754c S321:0.00001:0x754c
+09-28 16:20 0xdd4951 v1.50 f100 n4 t226215 crowd 10 (10 pre-pull) first   257 last  1461 pull 1725 tot 0.6068 mo 0.8-0.8 | 
+09-28 16:46 0x5d0066 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   311 last  1796 pull 2620 tot 0.6201 mo 0.8-0.8 | 
+09-28 16:52 0xac3ce7 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   199 last   813 pull 1305 tot 0.6200 mo 0.8-0.8 | 
+09-28 16:58 0xa09e7b v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   322 last  1209 pull 1735 tot 0.5229 mo 0.8-0.8 | B3:0.00001:0x754c S318:0.00001:0x754c
+09-28 17:03 0xdd5663 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   160 last  1184 pull 1801 tot 0.6199 mo 0.8-0.8 | B1311:0.00075:0x607f
+09-28 17:13 0xfe285c v1.50 f100 n4 t226215 crowd  6 ( 6 pre-pull) first   168 last  1537 pull 1919 tot 0.2825 mo 0.75-0.8 | B1301:0.01485:0x63f2
+09-28 17:19 0x81334b v1.50 f100 n4 t226215 crowd 10 (10 pre-pull) first   274 last  1626 pull None tot 0.6348 mo 0.8-0.8 | 
+09-28 17:26 0x9eacbd v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   805 last  2239 pull 2856 tot 0.6347 mo 0.75-0.8 | B8:0.00001:0x754c S474:0.00001:0x754c B1221:0.00117:0x02f7*
+09-28 17:32 0x2613e5 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   241 last  1548 pull 1910 tot 0.6347 mo 0.8-0.8 | B3:0.00001:0x754c S471:0.00001:0x754c
+09-28 17:38 0x086bc1 v1.50 f100 n4 t226215 crowd 10 (10 pre-pull) first   220 last  1381 pull 3774 tot 0.6346 mo 0.8-0.8 | 
+09-28 17:47 0xec4557 v1.70 f100 n4 t224963 crowd  9 ( 9 pre-pull) first   275 last  1197 pull 2042 tot 0.4405 mo 0.8-0.8 | 
+09-28 17:53 0x9adaf3 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   356 last  1608 pull 1888 tot 0.6344 mo 0.8-0.8 | 
+09-28 17:58 0x0e7d86 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   337 last  1426 pull 1874 tot 0.6343 mo 0.8-0.8 | 
+09-29 07:56 0x8a1207 v1.50 f100 n3 t203188 crowd 10 (10 pre-pull) first   197 last  1502 pull 1853 tot 0.6201 mo 0.8-0.8 | 
+09-29 08:02 0x7d9b29 v1.60 f100 n3 t202542 crowd 10 (10 pre-pull) first   241 last  1656 pull 2369 tot 0.5230 mo 0.8-0.8 | 
+09-29 08:07 0x987fe7 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   193 last  1577 pull 2808 tot 0.6200 mo 0.8-0.8 | 
+09-29 08:15 0x7d944a v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   231 last  1416 pull 2185 tot 0.6199 mo 0.8-0.8 | 
+09-29 08:21 0x632de6 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   282 last  1617 pull None tot 0.6198 mo 0.8-0.8 | 
+09-29 08:33 0x70ed9b v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   203 last  1560 pull 2060 tot 0.6197 mo 0.8-0.8 | 
+09-29 08:38 0xde24c4 v1.00 f100 n10 t207243 crowd 10 (10 pre-pull) first   224 last  1754 pull 2930 tot 1.0174 mo 0.8-0.8 | 
+09-29 08:45 0x49887f v1.50 f100 n3 t203188 crowd 10 (10 pre-pull) first   242 last  1404 pull 2551 tot 0.6196 mo 0.8-0.8 | 
+09-29 08:52 0x95bbb4 v1.50 f100 n3 t203188 crowd 10 (10 pre-pull) first   217 last  1398 pull 1909 tot 0.6195 mo 0.8-0.8 | 
+09-29 13:27 0x5c4cd3 v1.50 f100 n3 t203188 crowd 10 (10 pre-pull) first   243 last  1843 pull 2597 tot 0.6201 mo 0.8-0.8 | 
+09-29 13:34 0xe8b376 v1.40 f100 n3 t226905 crowd 10 (10 pre-pull) first   472 last  2879 pull 2990 tot 0.7170 mo 0.75-0.8 | B108:0.00020:0xf7f0
+09-29 13:42 0x1394be v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   246 last  2164 pull 2678 tot 0.6202 mo 0.8-0.8 | B342:0.00020:0xf7f0
+09-29 14:08 0x670fb1 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   235 last  3349 pull 6095 tot 0.6202 mo 0.75-0.8 | 
+09-29 14:22 0x77fcbd v1.50 f100 n3 t203188 crowd  2 ( 2 pre-pull) first   200 last   316 pull 507 tot 0.1665 mo 0.8-0.8 | B97:0.00001:0x754c S433:0.00001:0x754c B447:0.00990:0x07f1 B474:0.01218:0x7a95
+09-29 14:29 0x9a415b v1.60 f100 n3 t202542 crowd 10 (10 pre-pull) first   346 last  1988 pull 2705 tot 0.5445 mo 0.8-0.8 | B54:0.00017:0x85d1
+09-29 14:36 0xc12ad9 v1.50 f100 n3 t203188 crowd 10 (10 pre-pull) first   239 last  1540 pull 2739 tot 0.6415 mo 0.8-0.8 | B43:0.00017:0x85d1
+09-29 14:44 0x548dbb v1.50 f100 n3 t203188 crowd  4 ( 4 pre-pull) first   337 last   744 pull 838 tot 0.2281 mo 0.8-0.8 | B96:0.00001:0x754c S413:0.00001:0x754c B786:0.02475:0x1567 B786:0.02475:0x1689 B786:0.02475:0x9458 B786:0.02475:0xcaa2
+09-29 14:48 0x96f630 v1.80 f100 n3 t201364 crowd 10 (10 pre-pull) first   215 last  1894 pull 3017 tot 0.4465 mo 0.8-0.8 | 
+09-29 14:55 0xc6f53c v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   246 last  1516 pull 1961 tot 0.7374 mo 0.8-0.8 | B48:0.00017:0x85d1
+09-29 15:24 0x654fe1 v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   717 last  2217 pull 3446 tot 0.4746 mo 0.8-0.8 | B227:0.00000:0x754c S555:0.00000:0x754c
+09-29 15:32 0x737785 v1.60 f500 n3 t202542 crowd 10 (10 pre-pull) first   240 last  1808 pull None tot 0.6683 mo 0.8-0.8 | 
+09-29 16:40 0x8dcd1c v2.00 f500 n3 t223338 crowd 10 (10 pre-pull) first   261 last  1707 pull 2233 tot 0.2802 mo 0.8-0.8 | 
+09-29 16:46 0xc758c1 v1.50 f500 n3 t202000 crowd 10 (10 pre-pull) first   661 last  2460 pull None tot 0.7651 mo 0.8-0.8 | 
+09-29 17:43 0x7bbb04 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   241 last  1474 pull 2435 tot 0.7636 mo 0.8-0.8 | 
+09-29 17:49 0xa5b2ae v1.80 f100 n3 t224391 crowd  4 ( 4 pre-pull) first   348 last   377 pull 2554 tot 0.1893 mo 1.0-1.0 | B690:0.07146:0x807a B888:0.03671:0x348c B1035:0.06314:0xc6db B1186:0.03120:0xb427 B1329:0.06445:0xc3c6 B1434:0.01623:0x8894
+09-29 17:56 0xe8f9fd v1.60 f100 n3 t202542 crowd  4 ( 4 pre-pull) first   538 last  2354 pull None tot 0.2349 mo 0.75-0.8 | 
+09-29 18:23 0x0e04ca v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   233 last  4598 pull 7064 tot 0.7632 mo 0.75-0.8 | B4978:0.00040:0x15d7
+09-29 18:38 0x69ba10 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   251 last  1056 pull None tot 0.7635 mo 0.8-0.8 | 
+09-29 19:04 0xa309d4 v1.50 f100 n4 t226215 crowd 10 (10 pre-pull) first   279 last  3199 pull 6043 tot 0.7633 mo 0.75-0.8 | 
+09-29 19:18 0x9743ee v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   299 last  1515 pull None tot 0.2782 mo 0.8-0.8 | 
+10-01 12:57 0x022532 v1.80 f100 n4 t224391 crowd 10 (10 pre-pull) first   424 last  2603 pull 3212 tot 0.4358 mo 0.8-0.8 | B93:0.00014:0x5e6e B141:0.00020:0xfcc0 S1527:0.00016:0x5e6e B1955:0.00203:0xb79c*
+10-01 13:04 0xc62806 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   214 last  2669 pull 3261 tot 0.7364 mo 0.8-0.8 | B92:0.00015:0x5e6e S1530:0.00021:0x5e6e
+10-01 13:13 0xfcbcf7 v1.60 f100 n3 t202542 crowd 11 (11 pre-pull) first   249 last  2565 pull 3568 tot 0.6392 mo 0.8-0.8 | B86:0.00015:0x5e6e S1743:0.00020:0x5e6e
+10-01 13:20 0x4241b2 v1.50 f100 n3 t203188 crowd 10 (10 pre-pull) first   957 last  2198 pull 3593 tot 0.7360 mo 0.8-0.8 | B78:0.00015:0x5e6e S1467:0.00017:0x5e6e
+10-01 13:29 0x20f397 v1.50 f100 n4 t203188 crowd 10 (10 pre-pull) first   238 last  1483 pull 1633 tot 0.7359 mo 0.8-0.8 | B79:0.00015:0x5e6e B283:0.00022:0xad45 S377:0.00026:0xad45 B509:0.00011:0x0bf1 S1327:0.00016:0x0bf1
+10-01 13:33 0x2d6176 v1.50 f100 n3 t203188 crowd 10 (10 pre-pull) first   255 last  4633 pull 6187 tot 0.6509 mo 0.75-0.8 | B91:0.00015:0x5e6e B293:0.00022:0xad45 S379:0.00022:0xad45 B959:0.00159:0xca7d S1355:0.00162:0x4337 S1539:0.00017:0x5e6e
+10-01 13:46 0x55d781 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   235 last  2275 pull 3554 tot 0.7357 mo 0.8-0.8 | B85:0.00015:0x5e6e S1568:0.00025:0x5e6e
+10-01 13:56 0x22fe9d v1.50 f100 n3 t226215 crowd  6 ( 6 pre-pull) first   204 last  2848 pull None tot 0.5576 mo 0.75-0.8 | 
+10-01 14:09 0x0406a0 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   205 last  1709 pull 2548 tot 0.7354 mo 0.8-0.8 | 
+10-01 14:19 0x71caf0 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   293 last  1958 pull 2125 tot 0.7353 mo 0.8-0.8 | B92:0.00014:0x5e6e B330:0.00075:0x9a23 S1631:0.00025:0x5e6e
+10-01 14:25 0x1367ef v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   725 last  2150 pull 4543 tot 0.6388 mo 0.8-0.8 | B83:0.00013:0x5e6e S1660:0.00022:0x5e6e
+10-01 14:35 0x7c2eb9 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   274 last  1555 pull 2200 tot 0.7356 mo 0.8-0.8 | 
+10-01 14:46 0xfc4022 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   235 last  1487 pull 2903 tot 0.7355 mo 0.8-0.8 | B92:0.00013:0x5e6e S1541:0.00029:0x5e6e
+10-02 09:26 0xfbf6e1 v1.60 f100 n3 t202542 crowd 10 (10 pre-pull) first   433 last  2399 pull 5822 tot 0.6298 mo 0.8-0.8 | B32:0.00002:0x754c S637:0.00002:0x754c
+10-02 09:40 0x4207f5 v1.50 f100 n3 t203188 crowd 10 (10 pre-pull) first   309 last  2296 pull 2964 tot 0.7362 mo 0.8-0.8 | B23:0.00002:0x754c S616:0.00002:0x754c
+10-02 09:47 0xab6853 v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   364 last  1937 pull 3172 tot 0.2510 mo 0.8-0.8 | B29:0.00004:0x754c S618:0.00004:0x754c
+10-02 09:58 0x5a628f v1.50 f100 n4 t203188 crowd  8 ( 8 pre-pull) first   968 last  2970 pull None tot 0.6522 mo 0.8-0.8 | 
+10-02 10:13 0x5a5b6b v1.50 f100 n3 t203188 crowd  9 ( 9 pre-pull) first   441 last  2807 pull None tot 0.6418 mo 0.8-0.8 | B33:0.00004:0x754c S630:0.00004:0x754c
+10-02 13:55 0x999c0a v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   438 last  2237 pull 2573 tot 0.7356 mo 0.8-0.8 | B33:0.00005:0x754c B91:0.00028:0x5e6e S842:0.00006:0x754c S1561:0.00050:0x5e6e
+10-02 14:13 0xa53955 v1.50 f100 n3 t226215 crowd  9 ( 9 pre-pull) first   189 last  2566 pull None tot 0.6727 mo 0.8-0.8 | B30:0.00004:0x754c B99:0.00029:0x5e6e S786:0.00005:0x754c S1587:0.00038:0x5e6e
+10-02 14:32 0xfdc81b v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   296 last  1860 pull 3069 tot 0.7350 mo 0.8-0.8 | B30:0.00005:0x754c B101:0.00028:0x5e6e S838:0.00007:0x754c S1523:0.00058:0x5e6e
+10-02 14:39 0xe02eda v1.60 f100 n3 t225569 crowd  6 ( 6 pre-pull) first   188 last  1241 pull 1403 tot 0.3431 mo 0.8-0.8 | B32:0.00004:0x754c B99:0.00030:0x5e6e S847:0.00005:0x754c
+10-02 14:43 0x2dfdf4 v1.50 f100 n4 t226215 crowd  4 ( 4 pre-pull) first  1362 last  1955 pull None tot 0.2529 mo 0.8-0.8 | B29:0.00002:0x754c B90:0.00030:0x5e6e S340:0.00002:0x754c S1606:0.00034:0x5e6e
+10-02 16:10 0xa6d546 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   300 last  2460 pull 3813 tot 0.7345 mo 0.8-0.8 | B29:0.00002:0x754c S336:0.00002:0x754c
+10-02 16:26 0xae51fa v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   828 last  2845 pull 3411 tot 0.6373 mo 0.8-0.8 | B26:0.00004:0x754c S714:0.00004:0x754c
+10-02 16:34 0x52fa38 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   678 last  2684 pull None tot 0.6372 mo 0.8-0.8 | B37:0.00005:0x754c S1340:0.00007:0x754c
+10-02 16:46 0xdc3961 v1.60 f100 n3 t225569 crowd  9 ( 9 pre-pull) first   304 last  1996 pull None tot 0.6252 mo 0.8-0.8 | B31:0.00004:0x754c S922:0.00005:0x754c B1248:0.00122:0x1e41 S1952:0.00124:0x1e41 S1998:0.00047:0x1e41
+10-02 19:42 0x1f8649 v1.50 f100 n3 t226215 crowd  6 ( 6 pre-pull) first   298 last  1390 pull 1497 tot 0.5080 mo 0.8-0.8 | B87:0.00028:0x5e6e
+10-02 19:56 0x62c133 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   281 last  1773 pull 2042 tot 0.6365 mo 0.8-0.8 | B16:0.00002:0x754c B46:0.00004:0x8dc6 B83:0.00032:0x5e6e S327:0.00002:0x754c S1724:0.00057:0x5e6e S1898:0.00007:0x8dc6
+10-02 20:02 0x9280fa v1.70 f100 n3 t224963 crowd 10 (10 pre-pull) first   294 last  1680 pull 2019 tot 0.5341 mo 0.8-0.8 | B88:0.00029:0x5e6e S1742:0.00050:0x5e6e
+10-02 20:12 0x1047ff v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   555 last  1903 pull 2645 tot 0.4756 mo 0.8-0.8 | B86:0.00031:0x5e6e S1697:0.00044:0x5e6e
+10-02 20:19 0xfaf36f v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   550 last  1875 pull 3085 tot 0.6693 mo 0.8-0.8 | B36:0.00002:0x754c B83:0.00031:0x5e6e S347:0.00002:0x754c S1620:0.00054:0x5e6e
+10-02 20:26 0x78888d v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   799 last  2326 pull 2999 tot 0.6690 mo 0.8-0.8 | B34:0.00002:0x754c B86:0.00028:0x5e6e S340:0.00002:0x754c S1568:0.00038:0x5e6e
+10-02 20:54 0x2db10e v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   451 last  2255 pull 3244 tot 0.4843 mo 0.8-0.8 | B89:0.00032:0x5e6e S1506:0.00041:0x5e6e
+10-02 21:01 0xca0f24 v1.60 f100 n3 t225569 crowd  9 ( 9 pre-pull) first  1113 last  2678 pull 2762 tot 0.5797 mo 0.8-0.8 | B40:0.00004:0x8dc6 B89:0.00031:0x5e6e S1493:0.00036:0x5e6e S1842:0.00005:0x8dc6
+10-02 21:08 0x2b1093 v1.70 f100 n4 t224963 crowd 10 (10 pre-pull) first   340 last  1779 pull 2273 tot 0.5807 mo 0.8-0.8 | B99:0.00028:0x5e6e S1625:0.00043:0x5e6e
+10-02 21:14 0x923654 v1.60 f100 n4 t225569 crowd  7 ( 7 pre-pull) first   364 last  1071 pull 1119 tot 0.4494 mo 0.8-0.8 | B84:0.00030:0x5e6e
+10-02 21:19 0xd6da85 v1.60 f100 n3 t225569 crowd  5 ( 5 pre-pull) first   449 last   956 pull 1071 tot 0.2875 mo 0.8-0.8 | B87:0.00032:0x5e6e
+10-02 21:23 0x2351ab v1.70 f100 n3 t224963 crowd 10 (10 pre-pull) first   316 last  1524 pull 1757 tot 0.5807 mo 0.8-0.8 | B1056:0.00077:0xabe3*
+10-02 21:27 0xcbeb51 v1.60 f100 n3 t225569 crowd  4 ( 4 pre-pull) first   666 last   689 pull 2158 tot 0.2389 mo 1.0-1.0 | B928:0.00238:0x49ec* B932:0.10359:0xf346 B937:0.00238:0xae2a* B942:0.01899:0x9c06 B951:0.00097:0x4a20* B1344:0.08919:0x41c7 B1540:0.08660:0x4ebb B1716:0.10077:0x4fce B1834:0.03952:0x8141
+10-02 21:36 0x288c54 v1.60 f100 n4 t225569 crowd 10 (10 pre-pull) first   345 last  1265 pull 1312 tot 0.6774 mo 0.8-0.8 | B91:0.00028:0x5e6e
+10-02 21:43 0x8c4920 v2.00 f100 n4 t223338 crowd  6 ( 6 pre-pull) first   355 last   389 pull 1118 tot 0.1621 mo 1.0-1.0 | B94:0.00031:0x5e6e B651:0.03828:0xc3c2 B762:0.02520:0xfcdf B857:0.04763:0x022d B1001:0.01628:0x4341
+10-03 09:50 0xadce93 v1.70 f100 n3 t201936 crowd 10 (10 pre-pull) first   382 last  1851 pull 2494 tot 0.5813 mo 0.8-0.8 | 
+10-03 09:56 0xd6e973 v1.60 f100 n3 t202542 crowd 10 (10 pre-pull) first   300 last  1735 pull 2737 tot 0.6780 mo 0.8-0.8 | 
+10-03 10:03 0x5d4208 v1.60 f100 n3 t202542 crowd 10 (10 pre-pull) first   288 last  1657 pull 2453 tot 0.6779 mo 0.8-0.8 | 
+10-03 10:09 0xa686b1 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   353 last  1681 pull 1788 tot 0.2897 mo 0.8-0.8 | B86:0.00037:0x95c7
+10-03 10:15 0x3ac5b6 v1.60 f100 n4 t225569 crowd 10 (10 pre-pull) first   290 last  1513 pull 1600 tot 0.6780 mo 0.8-0.8 | B54:0.00000:0x8dc6
+10-03 10:20 0x4e30b1 v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   311 last  1823 pull 2170 tot 0.4839 mo 0.8-0.8 | 
+10-03 10:26 0x5764ea v1.70 f100 n3 t224963 crowd 10 (10 pre-pull) first   314 last  1705 pull 1787 tot 0.5807 mo 0.8-0.8 | B30:0.00003:0xc3c8 B55:0.00000:0x8dc6 S998:0.00004:0xc3c8 B1708:0.00994:0xce8b
+10-03 10:32 0x7661c3 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   386 last  1558 pull 1715 tot 0.6873 mo 0.8-0.8 | B45:0.00005:0xc3c8 B48:0.00000:0x8dc6 S971:0.00008:0xc3c8
+10-03 10:36 0xbef8b1 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   229 last  1486 pull 1740 tot 0.7841 mo 0.8-0.8 | B31:0.00002:0xc3c8 B57:0.00000:0x8dc6 S341:0.00003:0xc3c8
+10-03 10:43 0x226211 v1.70 f100 n3 t224963 crowd 10 (10 pre-pull) first   342 last  1483 pull 1549 tot 0.5900 mo 0.8-0.8 | B35:0.00002:0xc3c8 B70:0.00000:0x8dc6 S341:0.00002:0xc3c8 B1392:0.00099:0x3024
+10-03 10:47 0xee8cb9 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   684 last  4512 pull 4912 tot 0.6878 mo 0.75-0.75 | 
+10-03 10:58 0x1bf035 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   208 last  1545 pull 2826 tot 0.6877 mo 0.8-0.8 | B163:0.00037:0x95c7 B1297:0.00002:0x858b
+10-03 11:05 0xdb6b97 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   292 last  1725 pull 2382 tot 0.6880 mo 0.8-0.8 | B69:0.00000:0x8dc6 B1417:0.00002:0x858b S1984:0.00001:0x8dc6 S2141:0.00003:0x858b
+10-03 11:11 0x0e6aea v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   239 last  1364 pull 1486 tot 0.6879 mo 0.8-0.8 | B77:0.00000:0x8dc6 B1176:0.00002:0x858b
+10-03 11:15 0x0dad5a v1.70 f100 n3 t224963 crowd 10 (10 pre-pull) first   271 last  1433 pull 1522 tot 0.5907 mo 0.8-0.8 | B51:0.00000:0x8dc6 B1147:0.00002:0x858b
+10-03 11:42 0xf919fd v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   319 last  1695 pull 1754 tot 0.2903 mo 0.8-0.8 | B1556:0.00002:0x858b B1601:0.00112:0x1e41
+10-03 11:47 0x32a152 v1.60 f100 n4 t225569 crowd 10 (10 pre-pull) first   280 last  1536 pull 1766 tot 0.6888 mo 0.8-0.8 | B1420:0.00002:0x858b
+10-03 11:52 0xf08dfc v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   356 last  2013 pull 2163 tot 0.4947 mo 0.8-0.8 | B120:0.00037:0x95c7 B273:0.00040:0xb54f B1551:0.00002:0x858b S1861:0.00061:0xb54f
+10-03 11:58 0xbf302c v1.60 f100 n3 t225569 crowd  7 ( 7 pre-pull) first   280 last  1108 pull 1242 tot 0.5122 mo 0.8-0.8 | B296:0.00040:0xb54f
+10-03 12:02 0x786af8 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   246 last  1451 pull 2425 tot 0.6891 mo 0.8-0.8 | B1370:0.00002:0x858b S1858:0.00003:0x858b
+10-03 12:08 0x3d101d v1.70 f100 n3 t224963 crowd 10 (10 pre-pull) first   352 last  1754 pull 2079 tot 0.5585 mo 0.8-0.8 | B53:0.00000:0x8dc6 B1558:0.00002:0x858b S1889:0.00001:0x8dc6
+10-03 12:13 0x9b1d59 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   330 last  1521 pull 1626 tot 0.6888 mo 0.8-0.8 | B1433:0.00002:0x858b
+10-03 12:18 0xf3a161 v1.70 f100 n4 t224963 crowd  5 ( 5 pre-pull) first   285 last   803 pull 880 tot 0.3562 mo 0.8-0.8 | B281:0.00040:0xb54f
+10-03 12:22 0x29377c v1.60 f100 n3 t225569 crowd  5 ( 5 pre-pull) first   295 last   676 pull 753 tot 0.3032 mo 0.8-0.8 | B264:0.00040:0xb54f
+10-03 12:25 0x3a6974 v1.60 f100 n3 t225569 crowd  1 ( 1 pre-pull) first   335 last   335 pull 429 tot 0.0236 mo 0.8-0.8 | B292:0.00040:0xb54f
+10-03 12:28 0xe1c3fa v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   304 last  1496 pull 1599 tot 0.6896 mo 0.8-0.8 | B1400:0.00002:0x858b
+10-03 12:32 0x34ad4c v1.30 f100 n3 t227646 crowd 10 (10 pre-pull) first   372 last  1735 pull 1917 tot 0.9805 mo 0.8-0.8 | B71:0.00037:0x95c7 B1497:0.00002:0x858b
+10-03 17:53 0xd16ce7 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   503 last  1599 pull 1685 tot 0.6898 mo 0.8-0.8 | B74:0.00004:0x8dc6 B1359:0.00002:0x858b
+10-03 17:58 0xbf2e8e v1.70 f100 n4 t224963 crowd 10 (10 pre-pull) first   230 last  1390 pull 1557 tot 0.5928 mo 0.8-0.8 | B1313:0.00002:0x858b
+10-03 18:02 0x11f279 v1.80 f100 n4 t224391 crowd 10 (10 pre-pull) first   268 last  2225 pull 2957 tot 0.4957 mo 0.75-0.8 | B70:0.00004:0x8dc6 S1921:0.00005:0x8dc6 B1934:0.00002:0x858b S2633:0.00003:0x858b
+10-03 18:11 0x7c9a10 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   295 last  1441 pull 1570 tot 0.3015 mo 0.8-0.8 | B71:0.00004:0x8dc6 B1062:0.00108:0x23b7* B1084:0.00002:0x858b
+10-03 18:16 0xfb1cc0 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   276 last  1365 pull None tot 0.6895 mo 0.8-0.8 | B53:0.00004:0x8dc6 B1125:0.00002:0x858b S1781:0.00003:0x858b S1924:0.00008:0x8dc6
+10-03 18:27 0xfc4154 v1.50 f100 n3 t226215 crowd 10 (10 pre-pull) first   325 last  1689 pull 2248 tot 0.7863 mo 0.8-0.8 | B1641:0.00002:0x858b S2100:0.00003:0x858b
+10-03 18:33 0x25cc00 v1.70 f100 n3 t224963 crowd 10 (10 pre-pull) first   319 last  1672 pull 2079 tot 0.5922 mo 0.8-0.8 | B1546:0.00002:0x858b S2070:0.00002:0x858b
+10-03 18:39 0x9d8e94 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   221 last  1524 pull 2727 tot 0.6891 mo 0.8-0.8 | B1210:0.00002:0x858b S1948:0.00003:0x858b
+10-03 18:47 0x5f1747 v1.70 f100 n3 t224963 crowd 10 (10 pre-pull) first   286 last  2006 pull 2376 tot 0.5920 mo 0.8-0.8 | B70:0.00004:0x8dc6 B1420:0.00002:0x858b S1836:0.00002:0x858b S1903:0.00007:0x8dc6
+10-03 18:53 0x37f8bf v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   430 last  2265 pull 3198 tot 0.6888 mo 0.8-0.8 | B67:0.00004:0x8dc6 S1917:0.00006:0x8dc6 B1939:0.00002:0x858b S2669:0.00003:0x858b
+10-03 19:01 0x645002 v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   362 last  1733 pull None tot 0.6887 mo 0.8-0.8 | B1628:0.00002:0x858b S2170:0.00003:0x858b
+10-03 19:09 0x67435a v1.60 f100 n3 t225569 crowd  8 ( 8 pre-pull) first   334 last  2993 pull None tot 0.4679 mo 0.75-0.8 | B997:0.00100:0xbbc9*
+10-05 15:39 0x8f7614 v1.80 f100 n3 t224391 crowd  8 ( 8 pre-pull) first  1123 last  4799 pull 5123 tot 0.3784 mo 0.75-0.75 | B35:0.00004:0xc3c8 B98:0.00031:0x5e6e S751:0.00004:0xc3c8 S1221:0.00033:0x5e6e B1557:0.00990:0xe7f3 S1782:0.00990:0xe7f3 B1970:0.00198:0xe7f3 B1995:0.00002:0x858b S2459:0.00003:0x858b
+10-05 15:53 0x3eb83b v1.60 f100 n3 t225569 crowd 10 (10 pre-pull) first   386 last  2034 pull 2835 tot 0.6605 mo 0.8-0.8 | B39:0.00002:0xc3c8 B93:0.00030:0x5e6e S1081:0.00003:0xc3c8 S1325:0.00046:0x5e6e B1347:0.00002:0x858b S2451:0.00003:0x858b
+10-05 16:01 0xd500da v1.70 f100 n3 t224963 crowd 10 (10 pre-pull) first   375 last  1506 pull 1785 tot 0.5632 mo 0.8-0.8 | B65:0.00002:0xc3c8 B117:0.00029:0x5e6e S1135:0.00003:0xc3c8 B1158:0.00002:0x858b S1235:0.00045:0x5e6e
+10-05 16:06 0x3d9f38 v1.60 f100 n3 t225569 crowd  6 ( 6 pre-pull) first   328 last  1071 pull 1146 tot 0.3742 mo 0.8-0.8 | B55:0.00004:0xc3c8 B89:0.00031:0x5e6e
+10-05 16:10 0x94f375 v1.80 f100 n4 t224391 crowd 10 (10 pre-pull) first   287 last  1530 pull 1918 tot 0.4662 mo 0.8-0.8 | B94:0.00030:0x5e6e S1287:0.00044:0x5e6e B1307:0.00002:0x858b
+10-05 16:24 0x788b72 v2.00 f100 n27 t200311 crowd 10 (10 pre-pull) first   291 last  1575 pull 2030 tot 0.2720 mo 0.8-0.8 | B95:0.00028:0x5e6e B1294:0.00002:0x858b S1421:0.00036:0x5e6e S2005:0.00002:0x858b
+10-05 16:29 0x54b52f v1.60 f100 n3 t202542 crowd 10 (10 pre-pull) first   244 last  2190 pull 2579 tot 0.6598 mo 0.75-0.8 | B48:0.00004:0xc3c8 B90:0.00028:0x5e6e S976:0.00004:0xc3c8 S1225:0.00033:0x5e6e B1472:0.00002:0x858b
+10-05 18:11 0xb7e303 v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   691 last  2259 pull 2816 tot 0.2806 mo 0.8-0.8 | B90:0.00031:0x5e6e S1272:0.00035:0x5e6e B1642:0.00002:0x858b S2662:0.00003:0x858b
+10-05 18:21 0x8d7168 v1.60 f100 n5 t225569 crowd 10 (10 pre-pull) first   681 last  2390 pull 2888 tot 0.6683 mo 0.75-0.8 | B92:0.00029:0x5e6e S1335:0.00038:0x5e6e B1830:0.00002:0x858b S2818:0.00003:0x858b
+10-05 18:30 0x776432 v1.70 f100 n3 t241058 crowd 10 (10 pre-pull) first   392 last  2231 pull 2536 tot 0.5711 mo 0.8-0.8 | B42:0.00005:0xc3c8 S1045:0.00006:0xc3c8 B1902:0.00002:0x858b
+10-05 18:37 0x3580ec v1.80 f100 n4 t201364 crowd 10 (10 pre-pull) first   266 last  2306 pull None tot 0.4740 mo 0.718-0.8 | B294:0.10000:0x61e5 S423:0.09998:0x61e5 B1943:0.00002:0x858b S2720:0.00003:0x858b
+10-05 18:46 0xc88ec1 v1.70 f100 n3 t234126 crowd 10 (10 pre-pull) first   365 last  2094 pull 2560 tot 0.5709 mo 0.8-0.8 | B38:0.00006:0xc3c8 B89:0.00028:0x5e6e S751:0.00008:0xc3c8 B1262:0.00002:0x858b S1384:0.00040:0x5e6e S2495:0.00003:0x858b
+10-05 20:07 0xb99f6e v1.80 f100 n3 t201364 crowd 10 (10 pre-pull) first   355 last  1689 pull 6282 tot 0.4358 mo 0.8-0.8 | B74:0.00006:0xc3c8 B113:0.00029:0x5e6e S1222:0.00008:0xc3c8 B1240:0.00002:0x858b S1252:0.00038:0x5e6e S2112:0.00003:0x858b B4520:0.00006:0xbd1e
+10-05 20:40 0x5f38b9 v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   427 last  1883 pull None tot 0.3376 mo 0.8-0.8 | B87:0.00028:0x5e6e S1317:0.00033:0x5e6e B1549:0.00002:0x858b S2293:0.00003:0x858b
+10-05 20:59 0x6bfdd8 v1.70 f100 n3 t201936 crowd 15 (15 pre-pull) first   324 last  2346 pull 3534 tot 0.6282 mo 0.8-0.8 | B53:0.00004:0xc3c8 B90:0.00030:0x5e6e S902:0.00005:0xc3c8 B994:0.00002:0x93b0 S1229:0.00038:0x5e6e B1655:0.00134:0x3f7c* S2764:0.00004:0x93b0
+10-05 21:25 0x86f231 v1.80 f100 n3 t201364 crowd 10 (10 pre-pull) first   372 last  1973 pull None tot 0.5328 mo 0.8-0.8 | B39:0.00006:0xc3c8 B97:0.00030:0x5e6e S959:0.00007:0xc3c8 S1306:0.00040:0x5e6e B1331:0.00002:0x93b0 S2403:0.00003:0x93b0
+10-05 21:45 0x9ba7a6 v1.70 f100 n3 t201936 crowd 10 (10 pre-pull) first   450 last  2573 pull 4010 tot 0.6294 mo 0.8-0.8 | B41:0.00002:0xc3c8 B96:0.00029:0x5e6e S957:0.00003:0xc3c8 S1264:0.00039:0x5e6e
+10-05 22:00 0xfe1e1b v1.80 f100 n3 t201364 crowd 10 (10 pre-pull) first   383 last  2463 pull 2585 tot 0.5322 mo 0.8-0.8 | B107:0.00028:0x5e6e B120:0.00500:0x578e S1349:0.00037:0x5e6e
+10-05 22:14 0xf18db5 v1.60 f100 n3 t202542 crowd 10 (10 pre-pull) first   336 last  2156 pull 2716 tot 0.7308 mo 0.8-0.8 | B42:0.00005:0xc3c8 B91:0.00030:0x5e6e S997:0.00006:0xc3c8 S1241:0.00045:0x5e6e
+10-05 22:23 0xaafa96 v1.70 f100 n3 t178909 crowd 10 (10 pre-pull) first   543 last  2837 pull 2899 tot 0.6336 mo 0.751-0.8 | B113:0.00040:0xfcc0 B512:0.00073:0xf22e B1551:0.00110:0xc3d2
+10-05 22:36 0xbe34df v1.80 f100 n3 t155310 crowd  2 ( 2 pre-pull) first   373 last   515 pull 1130 tot 0.0791 mo 0.8-0.8 | B91:0.00031:0x5e6e
+10-05 22:47 0x7c1eb3 v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   256 last  1799 pull None tot 0.5388 mo 0.8-0.8 | 
+10-05 23:06 0xb1f7a2 v1.70 f100 n8 t201936 crowd 10 (10 pre-pull) first   283 last  1179 pull 2101 tot 0.6357 mo 0.8-0.8 | 
+10-05 23:20 0xb4e0ba v1.50 f100 n3 t203188 crowd 15 (15 pre-pull) first   323 last  2277 pull 2348 tot 0.8294 mo 0.8-0.8 | B53:0.00006:0xc3c8 B128:0.00500:0x578e S1110:0.00009:0xc3c8
+10-05 23:32 0x60eee0 v2.00 f100 n4 t200311 crowd 10 (10 pre-pull) first   367 last  1568 pull 1758 tot 0.3493 mo 0.8-0.8 | B61:0.00004:0xc3c8 B113:0.00500:0x578e B907:0.00157:0xc368* S944:0.00005:0xc3c8
+10-05 23:50 0x8f2cc0 v1.70 f100 n3 t201936 crowd  1 ( 1 pre-pull) first   312 last   312 pull 1045 tot 0.0264 mo 0.8-0.8 | B41:0.00005:0xc3c8 B43:0.00002:0xf3ce B111:0.00500:0x578e S648:0.00002:0xf3ce S897:0.00005:0xc3c8
+10-05 23:55 0xd00162 v1.80 f100 n4 t178337 crowd 10 (10 pre-pull) first   272 last  1160 pull 1244 tot 0.5576 mo 0.8-0.8 | B36:0.00006:0xc3c8 B113:0.00500:0x578e S804:0.00008:0xc3c8
+10-06 00:01 0x8ea650 v1.80 f100 n3 t178337 crowd 10 (10 pre-pull) first   290 last   996 pull 1057 tot 0.5623 mo 0.8-0.8 | B42:0.00002:0xc3c8 B105:0.00500:0x578e S718:0.00003:0xc3c8
+10-06 00:05 0x8b514b v1.90 f100 n3 t200824 crowd 10 (10 pre-pull) first   291 last  1232 pull 1304 tot 0.4620 mo 0.8-0.8 | B40:0.00004:0xc3c8 B95:0.00500:0x578e S1063:0.00006:0xc3c8
+10-06 00:10 0xbeb967 v2.00 f100 n3 t174407 crowd 10 (10 pre-pull) first   309 last  1006 pull 1058 tot 0.3778 mo 0.8-0.8 | B28:0.00037:0xccdf B32:0.00002:0xc3c8 B118:0.00500:0x578e S815:0.00003:0xc3c8
+10-06 00:17 0x0320d5 v2.00 f100 n4 t223338 crowd 10 (10 pre-pull) first   347 last  1541 pull 1601 tot 0.3829 mo 0.8-0.8 | B47:0.00003:0xc3c8 B98:0.00500:0x578e S1201:0.00004:0xc3c8
+10-06 00:35 0xc9f433 v1.00 f100 n4 t193616 crowd  4 ( 4 pre-pull) first   324 last   753 pull 865 tot 0.2097 mo 0.8-0.8 | B136:0.00500:0x578e
+10-06 00:52 0xd10cf1 v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   893 last  1801 pull 1858 tot 0.6008 mo 0.8-0.8 | B32:0.00004:0xc3c8 B63:0.00500:0x578e B65:0.00002:0xf3ce S669:0.00002:0xf3ce S708:0.00004:0xc3c8 S1576:0.00145:0x578e
+10-06 00:58 0xeee110 v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   374 last  1456 pull 1530 tot 0.6042 mo 0.8-0.8 | B43:0.00004:0xc3c8 B45:0.00002:0xf3ce B73:0.00500:0x578e B159:0.00100:0x9ff8 S650:0.00002:0xf3ce S800:0.00129:0x9ff8 S816:0.00005:0xc3c8 S1222:0.00144:0x578e
+10-06 01:08 0x64c23c v2.00 f100 n3 t200311 crowd  3 ( 3 pre-pull) first   370 last   583 pull 852 tot 0.1233 mo 0.8-0.8 | B61:0.00500:0x578e
+10-06 01:27 0x83ed93 v2.00 f100 n4 t200311 crowd 10 (10 pre-pull) first   577 last  1521 pull 1589 tot 0.4238 mo 0.8-0.8 | B42:0.00002:0x0b41 B48:0.00002:0xf3ce S652:0.00002:0xf3ce S847:0.00002:0x0b41
+10-06 01:33 0x4deb7c v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   357 last  1201 pull 1930 tot 0.4534 mo 0.8-0.8 | B39:0.00004:0x0b41 S950:0.00005:0x0b41 B1222:0.00223:0xda9a*
+10-06 01:41 0x7e605a v2.00 f100 n4 t200311 crowd 10 (10 pre-pull) first   389 last  1133 pull 1579 tot 0.4533 mo 0.8-0.8 | B41:0.00006:0x0b41 B44:0.00002:0xf3ce S650:0.00002:0xf3ce S658:0.00007:0x0b41
+10-06 13:54 0xc57be0 v2.00 f100 n3 t200311 crowd  8 ( 8 pre-pull) first   399 last  2887 pull 7118 tot 0.2666 mo 0.8-0.8 | B94:0.00028:0x5e6e S1266:0.00030:0x5e6e B1750:0.06637:0x3c57 B2565:0.00002:0x93b0 B3177:0.08449:0x61d9 S3592:0.00003:0x93b0
+10-06 14:13 0x2cdfa5 v1.80 f100 n3 t201364 crowd 10 (10 pre-pull) first   396 last  2106 pull 2661 tot 0.6392 mo 0.8-0.8 | B93:0.00028:0x5e6e B98:0.00002:0xf3ce S703:0.00002:0xf3ce S1290:0.00040:0x5e6e B1300:0.00002:0x93b0 S2525:0.00003:0x93b0
+10-06 14:30 0xbfe63a v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   281 last  1658 pull 1821 tot 0.4449 mo 0.8-0.8 | B80:0.00027:0x5e6e S1285:0.00035:0x5e6e B1294:0.00002:0x93b0
+10-06 14:49 0x11ba83 v1.80 f100 n40 t224391 crowd 10 (10 pre-pull) first   295 last  1537 pull 1668 tot 0.6388 mo 0.8-0.8 | B93:0.00030:0x5e6e S1216:0.00046:0x5e6e B1231:0.00002:0x93b0
+10-06 15:03 0x310382 v1.70 f100 n3 t224963 crowd  6 ( 6 pre-pull) first   279 last   878 pull 945 tot 0.4587 mo 0.8-0.8 | B93:0.00029:0x5e6e
+10-06 15:28 0xe2277d v1.80 f100 n3 t201364 crowd 12 (12 pre-pull) first   306 last  1932 pull 4008 tot 0.6385 mo 0.8-0.8 | B91:0.00028:0x5e6e S1387:0.00043:0x5e6e B1400:0.00002:0x93b0 S2335:0.00003:0x93b0
+10-06 15:41 0xb6ee26 v1.80 f100 n3 t201364 crowd 10 (10 pre-pull) first   535 last  2047 pull 2117 tot 0.6383 mo 0.8-0.8 | B85:0.00030:0x5e6e S1207:0.00043:0x5e6e B1479:0.00002:0x93b0 B2072:0.00199:0x82a7
+10-06 16:33 0x8800b5 v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   314 last  1572 pull 3360 tot 0.4460 mo 0.8-0.8 | B92:0.00027:0x5e6e S1197:0.00036:0x5e6e B1209:0.00002:0x93b0 S1975:0.00003:0x93b0
+10-06 16:55 0xdfb031 v1.80 f100 n3 t201364 crowd 10 (10 pre-pull) first   262 last  1516 pull 2903 tot 0.6398 mo 0.8-0.8 | B1395:0.00002:0x93b0 S1929:0.00003:0x93b0
+10-06 17:22 0x174820 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   263 last  1414 pull 1541 tot 0.4457 mo 0.8-0.8 | B1305:0.00002:0x93b0
+10-06 17:41 0xe23261 v1.80 f100 n4 t224391 crowd 10 (10 pre-pull) first   227 last  1204 pull 1272 tot 0.6396 mo 0.8-0.8 | B1075:0.00002:0x93b0
+10-06 17:50 0x3fcc8a v1.90 f100 n3 t223851 crowd 10 (10 pre-pull) first   230 last  1547 pull 1610 tot 0.5426 mo 0.8-0.8 | B250:0.00070:0xe346 B1293:0.00002:0x93b0
+10-06 18:11 0x89595e v2.00 f100 n3 t200311 crowd  2 ( 2 pre-pull) first   475 last   638 pull 718 tot 0.0899 mo 0.8-0.8 | B685:0.01218:0x7a95
+10-06 18:47 0x15df68 v2.00 f100 n4 t200311 crowd 10 (10 pre-pull) first   348 last  1675 pull 2563 tot 0.4579 mo 0.8-0.8 | B1561:0.00002:0x93b0 S2094:0.00002:0x93b0
+10-06 19:39 0x64987c v2.00 f100 n4 t200311 crowd 10 (10 pre-pull) first   528 last  1869 pull 5422 tot 0.4358 mo 0.8-0.8 | B66:0.00059:0xa310 B80:0.00029:0x5e6e S153:0.00030:0xa310 B326:0.00026:0x2511 B327:0.00020:0xe9d8 S668:0.00021:0xe9d8 B822:0.00002:0x93b0 S1413:0.00036:0x5e6e S2273:0.00003:0x93b0 S2706:0.00044:0xa310 S2786:0.00038:0x2511 B4280:0.00019:0xd43c* B4285:0.00184:0x0bbb* B4292:0.00214:0x945a* B4303:0.0022
+10-06 19:56 0x15f2a5 v1.80 f100 n4 t201364 crowd 10 (10 pre-pull) first   262 last  1653 pull 1927 tot 0.6388 mo 0.8-0.8 | B1554:0.00002:0x93b0
+10-06 20:50 0xbb0da3 v2.00 f100 n5 t200311 crowd  1 ( 1 pre-pull) first   210 last   210 pull 274 tot 0.0854 mo 0.8-0.8 | B213:0.10000:0x62f7 B213:0.10000:0x86ae B214:0.05000:0x8fbd B243:0.00037:0xed16 S254:0.11385:0x62f7 S254:0.04530:0x8fbd
+10-06 20:58 0xd12f36 v2.00 f100 n4 t200311 crowd 10 (10 pre-pull) first   286 last  1443 pull 1753 tot 0.5240 mo 0.8-0.8 | B1334:0.00002:0x93b0
+10-06 21:07 0x485d88 v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   214 last  2025 pull 2643 tot 0.5239 mo 0.8-0.8 | B1949:0.00002:0x93b0 S2444:0.00002:0x93b0
+10-06 21:16 0xef7671 v2.00 f100 n4 t200311 crowd 10 (10 pre-pull) first   222 last  1645 pull 2255 tot 0.5238 mo 0.8-0.8 | B1544:0.00002:0x93b0 S2066:0.00002:0x93b0
+10-06 21:40 0xd586af v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   443 last  1990 pull 4067 tot 0.4843 mo 0.8-0.8 | B1879:0.00002:0x93b0 S2465:0.00003:0x93b0
+10-06 21:52 0x180f22 v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   289 last  1536 pull 1610 tot 0.5034 mo 0.8-0.8 | B1424:0.00002:0x93b0
+10-06 21:57 0x016fd0 v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first  1772 last  3410 pull 3774 tot 0.5033 mo 0.8-0.8 | B91:0.00029:0x5e6e S1393:0.00029:0x5e6e B2443:0.00002:0x93b0 S2916:0.00002:0x93b0
+10-06 22:07 0xf37bf4 v1.90 f100 n4 t200824 crowd 10 (10 pre-pull) first   260 last  1616 pull None tot 0.5478 mo 0.8-0.8 | B85:0.00029:0x5e6e S1243:0.00044:0x5e6e B1255:0.00002:0x93b0 S2039:0.00003:0x93b0
+10-06 22:22 0xb0cc63 v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   260 last  1885 pull 2453 tot 0.5030 mo 0.75-0.8 | B1741:0.00002:0x93b0 S2298:0.00002:0x93b0
+10-07 15:03 0xa62d2c v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   249 last  1698 pull 5028 tot 0.4843 mo 0.8-0.8 | B263:0.00006:0x0b41 B1369:0.00002:0x93b0 S1461:0.00008:0x0b41 S2104:0.00003:0x93b0
+10-07 15:14 0x2ac7bd v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   218 last  1538 pull 1956 tot 0.4840 mo 0.8-0.8 | B228:0.00004:0x0b41 S1116:0.00005:0x0b41 B1128:0.00002:0x93b0 S1943:0.00003:0x93b0
+10-07 15:23 0x0b220f v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   769 last  2152 pull 2413 tot 0.4839 mo 0.8-0.8 | B1968:0.00002:0x93b0
+10-07 15:31 0xfceb2f v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   227 last  1397 pull 2622 tot 0.6778 mo 0.8-0.8 | B236:0.00006:0x0b41 S997:0.00009:0x0b41 B1089:0.00002:0x93b0 B1684:0.00020:0x42fd S2089:0.00003:0x93b0
+10-07 15:51 0xfdeb7d v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   618 last  1729 pull 3163 tot 0.4838 mo 0.75-0.8 | B629:0.00008:0x0b41 S1791:0.00012:0x0b41
+10-07 15:58 0xae3e81 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   217 last  1296 pull 1510 tot 0.4837 mo 0.8-0.8 | B225:0.00004:0x0b41 S1224:0.00006:0x0b41
+10-07 16:03 0x0a5953 v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   224 last  1179 pull 2777 tot 0.6776 mo 0.8-0.8 | B242:0.00007:0x0b41 B909:0.00142:0x0c01* S1035:0.00011:0x0b41
+10-07 16:51 0x4fa716 v1.80 f100 n37 t224391 crowd 10 (10 pre-pull) first   311 last  2049 pull 2819 tot 0.6775 mo 0.8-0.8 | 
+10-07 17:38 0xae8132 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   344 last  2151 pull 2875 tot 0.4843 mo 0.8-0.8 | B1284:0.00155:0x65cb* B1876:0.00002:0x93b0 B1890:0.00013:0x591a S2560:0.00003:0x93b0
+10-07 17:52 0x9a3492 v1.80 f100 n15 t224391 crowd 10 (10 pre-pull) first   348 last  1997 pull None tot 0.6781 mo 0.8-0.8 | B1816:0.00002:0x93b0 B1820:0.00163:0x50a7* S2390:0.00002:0x93b0
+10-07 18:53 0x0a9300 v2.00 f500 n3 t223338 crowd 10 (10 pre-pull) first   230 last  1383 pull 2735 tot 0.4839 mo 0.8-0.8 | 
+10-07 19:26 0x16ae21 v2.00 f500 n3 t223338 crowd 10 (10 pre-pull) first   264 last  1746 pull 2242 tot 0.4838 mo 0.8-0.8 | B1613:0.00002:0x93b0 S2140:0.00003:0x93b0
+10-09 16:17 0xb42f22 v2.00 f500 n3 t223338 crowd 10 (10 pre-pull) first   277 last  1600 pull 2025 tot 0.4843 mo 0.8-0.8 | B289:0.00007:0x0b41 S369:0.00007:0x0b41 B1186:0.00002:0x93b0 S2007:0.00003:0x93b0
+10-09 16:28 0xf26eb0 v1.80 f500 n3 t224391 crowd 10 (10 pre-pull) first   188 last  1380 pull 2427 tot 0.6780 mo 0.8-0.8 | B211:0.00007:0x0b41 S291:0.00007:0x0b41 B972:0.00002:0x93b0 S1782:0.00003:0x93b0
+10-09 16:38 0xd8edf4 v2.00 f500 n3 t223338 crowd 10 (10 pre-pull) first   371 last  2074 pull None tot 0.4839 mo 0.8-0.8 | B90:0.00000:0xb002 B93:0.00006:0xfeda B116:0.00000:0xb002 B130:0.00000:0xb002 B384:0.00007:0x0b41 S461:0.00007:0x0b41 S1185:0.00007:0xfeda B1199:0.00002:0x93b0 S2480:0.00003:0x93b0
+10-09 16:51 0x1c7b2f v2.00 f500 n3 t223338 crowd 10 (10 pre-pull) first   294 last  1690 pull 2798 tot 0.4838 mo 0.8-0.8 | B7:0.00002:0xfeda B306:0.00008:0x0b41 S384:0.00008:0x0b41 B1146:0.00002:0x93b0 S1231:0.00003:0xfeda S2095:0.00003:0x93b0
+10-09 17:23 0xdf6f0d v2.00 f500 n3 t223338 crowd 10 (10 pre-pull) first   235 last  1722 pull 2631 tot 0.4837 mo 0.8-0.8 | B1573:0.00002:0x93b0 S2118:0.00002:0x93b0
+10-09 17:31 0x2ba5fe v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   273 last  1304 pull 2019 tot 0.6776 mo 0.8-0.8 | B1179:0.00002:0x93b0 S1777:0.00003:0x93b0
+10-09 17:48 0x96177e v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   280 last  1590 pull 4735 tot 0.4835 mo 0.8-0.8 | B290:0.00007:0x0b41 S362:0.00007:0x0b41 B1204:0.00002:0x93b0 S2018:0.00003:0x93b0
+10-09 17:59 0xc7c4ff v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   299 last  1724 pull None tot 0.4834 mo 0.8-0.8 | B313:0.00008:0x0b41 B322:0.00045:0x1330 S385:0.00008:0x0b41 S616:0.00046:0x1330 B1011:0.00002:0x93b0 B1851:0.00037:0xc479 B2069:0.00030:0xc479 S2483:0.00003:0x93b0
+10-09 18:22 0x49611a v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   277 last  1867 pull 2431 tot 0.4839 mo 0.8-0.8 | B290:0.00007:0x0b41 B298:0.00044:0x1330 S363:0.00007:0x0b41 S595:0.00046:0x1330 B1090:0.00002:0x93b0 S2273:0.00003:0x93b0
+10-10 15:59 0x48f965 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   461 last  1946 pull 3140 tot 0.4843 mo 0.8-0.8 | B90:0.00032:0x5e6e B105:0.00051:0x1330 S402:0.00051:0x1330 B608:0.00008:0x0b41 S692:0.00008:0x0b41 B914:0.00002:0x93b0 S1937:0.00048:0x5e6e S2361:0.00003:0x93b0 B3104:0.00023:0xf7f0 B3104:0.00023:0xdc22 B3104:0.00023:0xb110
+10-10 16:08 0x0ffcb2 v1.80 f100 n3 t201364 crowd 10 (10 pre-pull) first   405 last  2186 pull 2477 tot 0.6785 mo 0.8-0.8 | B98:0.00030:0x5e6e B138:0.00038:0x1330 B417:0.00007:0x0b41 S428:0.00042:0x1330 S491:0.00007:0x0b41 B1180:0.00002:0x93b0 S1931:0.00054:0x5e6e S2170:0.00004:0x93b0
+10-10 16:16 0xdcaeef v2.00 f100 n3 t200311 crowd 10 (10 pre-pull) first   921 last  2367 pull 2627 tot 0.4842 mo 0.8-0.8 | B90:0.00031:0x5e6e B97:0.00044:0x1330 S398:0.00044:0x1330 B469:0.00004:0x3155 B480:0.00004:0x3155 B1551:0.00002:0x93b0 S1829:0.00041:0x5e6e
+10-10 16:23 0x734490 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   371 last  2220 pull None tot 0.4841 mo 0.8-0.8 | B82:0.00032:0x5e6e B91:0.00030:0x1330 S385:0.00031:0x1330 B386:0.00008:0x0b41 B461:0.00004:0x3155 S468:0.00008:0x0b41 B472:0.00004:0x3155 B1013:0.00002:0x93b0 S1857:0.00044:0x5e6e S2637:0.00003:0x93b0
+10-10 16:46 0x8b0595 v2.00 f100 n4 t223338 crowd 10 (10 pre-pull) first   577 last  1851 pull 3757 tot 0.4893 mo 0.8-0.8 | B84:0.00029:0x5e6e B96:0.00033:0x1330 S387:0.00033:0x1330 B590:0.00007:0x0b41 S672:0.00007:0x0b41 B963:0.00002:0x93b0 S1766:0.00045:0x5e6e S2252:0.00003:0x93b0
+10-10 17:02 0xc7f3c9 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   340 last  1719 pull 2985 tot 0.4890 mo 0.8-0.8 | B92:0.00031:0x5e6e B354:0.00009:0x0b41 S442:0.00009:0x0b41 B1104:0.00002:0x93b0 S1919:0.00048:0x5e6e S2133:0.00003:0x93b0
+10-10 17:09 0xde0101 v1.80 f100 n3 t224391 crowd 10 (10 pre-pull) first   316 last  1673 pull 1766 tot 0.6827 mo 0.8-0.8 | B91:0.00033:0x5e6e B329:0.00008:0x0b41 S403:0.00008:0x0b41 B633:0.00005:0x4e3c B962:0.00002:0x93b0
+10-10 17:16 0xad44a8 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   552 last  1609 pull 3240 tot 0.4890 mo 0.8-0.8 | B90:0.00033:0x5e6e B566:0.00007:0x0b41 S641:0.00007:0x0b41 B1203:0.00002:0x93b0 S1999:0.00050:0x5e6e S2027:0.00003:0x93b0
+10-10 17:23 0xcee087 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   258 last  1470 pull 1567 tot 0.4887 mo 0.8-0.8 | B88:0.00031:0x5e6e B273:0.00009:0x0b41 S347:0.00009:0x0b41 B1065:0.00002:0x93b0
+10-10 17:40 0xc99153 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   290 last  1603 pull 3897 tot 0.4889 mo 0.8-0.8 | B93:0.00031:0x5e6e B303:0.00008:0x0b41 S376:0.00008:0x0b41 B1043:0.00002:0x93b0 S1996:0.00048:0x5e6e S2004:0.00003:0x93b0
+10-10 17:50 0x98c294 v1.50 f100 n4 t226215 crowd 10 (10 pre-pull) first   299 last  1729 pull 1787 tot 0.9737 mo 0.8-0.8 | B90:0.00031:0x5e6e B309:0.00009:0x0b41 S390:0.00009:0x0b41 B1103:0.00002:0x93b0
+10-10 17:57 0x0788f7 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   319 last  2360 pull 2791 tot 0.4889 mo 0.8-0.8 | B85:0.00033:0x5e6e B336:0.00008:0x0b41 S409:0.00008:0x0b41 B1207:0.00158:0x8683* B1219:0.00002:0x93b0 S1642:0.00002:0x93b0 S1806:0.00039:0x5e6e
+10-10 18:20 0xbe1037 v1.00 f100 n3 t230270 crowd 10 (10 pre-pull) first   526 last  2121 pull 2651 tot 1.3573 mo 0.8-0.8 | B99:0.00033:0x5e6e B214:0.00010:0xc47d B539:0.00009:0x0b41 S612:0.00009:0x0b41 B1126:0.00023:0xf7f0 B1126:0.00023:0xdc22 B1126:0.00023:0xb110 B1137:0.00002:0x93b0 S2096:0.00172:0x5e6e S2508:0.00006:0x93b0
+10-10 18:34 0x85a7cd v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   333 last  1536 pull 1617 tot 0.4737 mo 0.8-0.8 | B91:0.00034:0x5e6e B353:0.00008:0x0b41 S427:0.00008:0x0b41 B1057:0.00002:0x93b0
+10-10 18:42 0xd4300d v1.90 f100 n3 t223851 crowd 10 (10 pre-pull) first   378 last  1943 pull 2114 tot 0.5710 mo 0.8-0.8 | B101:0.00033:0x5e6e B133:0.00010:0xc47d B393:0.00007:0x0b41 S465:0.00007:0x0b41 B1084:0.00002:0x93b0 B1336:0.00249:0x39e7* S1843:0.00053:0x5e6e
+10-10 18:49 0x473990 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   371 last  1705 pull 1820 tot 0.4738 mo 0.8-0.8 | B85:0.00030:0x5e6e B383:0.00009:0x0b41 S458:0.00009:0x0b41 B757:0.00005:0x4e3c B1045:0.00002:0x93b0
+10-10 18:58 0xb37e3e v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   460 last  1673 pull 2898 tot 0.4740 mo 0.8-0.8 | B474:0.00007:0x0b41 S559:0.00007:0x0b41 B1347:0.00002:0x93b0 S2071:0.00003:0x93b0
+10-10 19:07 0xa5a2f5 v2.00 f100 n3 t223338 crowd 10 (10 pre-pull) first   294 last  1384 pull 1490 tot 0.4739 mo 0.8-0.8 | B99:0.00030:0x5e6e B308:0.00009:0x0b41 S382:0.00009:0x0b41
+10-10 19:13 0xc2b3aa v2.30 f100 n3 t221940 crowd 10 (10 pre-pull) first   320 last  1529 pull None tot 0.1831 mo 0.8-0.8 | B100:0.00034:0x5e6e B341:0.00007:0x0b41 S557:0.00007:0x0b41 B1076:0.00002:0x93b0 S1802:0.00039:0x5e6e S1925:0.00003:0x93b0

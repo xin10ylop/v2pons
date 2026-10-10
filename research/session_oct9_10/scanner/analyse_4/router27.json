@@ -1,0 +1,152 @@
+{
+ "n_txs": 21,
+ "pools": [
+  {
+   "pid": "0x38d5b40da0d4f509dc3959f28a11de7d0b2e0b400766e1b85a34038e1c89b074",
+   "family": "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|3000|60|true",
+   "deployer": "0xc1bf2515654984815b6ab7ed5a1ee7592956d910",
+   "nonce": 3,
+   "value": 0.0005,
+   "L0": 707106780479440743213,
+   "eth_depth_L_over_sqrtP": 0.0005,
+   "n27": 14,
+   "offs": [
+    100,
+    102
+   ],
+   "eth27": 0.0013965,
+   "pull": null,
+   "n_swaps": 17,
+   "front": {
+    "1e-05": {
+     "sell_after_burst": 11.7421,
+     "gross": 12.1594,
+     "usd": 0.30368,
+     "sell_after_first": 4.0166
+    },
+    "5e-05": {
+     "sell_after_burst": 9.0285,
+     "gross": 9.1119,
+     "usd": 1.16748,
+     "sell_after_first": 3.5112
+    },
+    "0.0001": {
+     "sell_after_burst": 6.8936,
+     "gross": 6.9353,
+     "usd": 1.78283,
+     "sell_after_first": 2.8624
+    },
+    "0.0005": {
+     "sell_after_burst": 2.3623,
+     "gross": 2.3706,
+     "usd": 3.05464,
+     "sell_after_first": 1.123
+    },
+    "0.0058": {
+     "sell_after_burst": 0.2352,
+     "gross": 0.2359,
+     "usd": 3.52752,
+     "sell_after_first": 0.1157
+    }
+   }
+  },
+  {
+   "pid": "0x7b132190bdfe520e67a1e9550f3f0c48991195b1d9973bca329517afbca8b87b",
+   "family": "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|3000|60|true",
+   "deployer": "0x2319a5f76791ba6544db5dee4b0693165f0e5227",
+   "nonce": 3,
+   "value": 0.0005,
+   "L0": 707106780479440743213,
+   "eth_depth_L_over_sqrtP": 0.0005,
+   "n27": 14,
+   "offs": [
+    65,
+    68
+   ],
+   "eth27": 0.0013965,
+   "pull": null,
+   "n_swaps": 17,
+   "front": {
+    "1e-05": {
+     "sell_after_burst": 11.7342,
+     "gross": 12.1594,
+     "usd": 0.30347,
+     "sell_after_first": 1.0561
+    },
+    "5e-05": {
+     "sell_after_burst": 9.0269,
+     "gross": 9.1119,
+     "usd": 1.16727,
+     "sell_after_first": 1.1802
+    },
+    "0.0001": {
+     "sell_after_burst": 6.8928,
+     "gross": 6.9353,
+     "usd": 1.78262,
+     "sell_after_first": 1.0258
+    },
+    "0.0005": {
+     "sell_after_burst": 2.3621,
+     "gross": 2.3706,
+     "usd": 3.05444,
+     "sell_after_first": 0.4563
+    },
+    "0.0058": {
+     "sell_after_burst": 0.2352,
+     "gross": 0.2359,
+     "usd": 3.52731,
+     "sell_after_first": 0.0475
+    }
+   }
+  },
+  {
+   "pid": "0x7c15bf5b370fb0b3e0dd6ea061c6a3cee650892ccb83b075da2c560f70f211ad",
+   "family": "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|3000|60|true",
+   "deployer": "0x537f353f19487c564aebde88fae13e1eb7c3dd11",
+   "nonce": 3,
+   "value": 1e-05,
+   "L0": 99999999999000000000,
+   "eth_depth_L_over_sqrtP": 1e-05,
+   "n27": 13,
+   "offs": [
+    135,
+    138
+   ],
+   "eth27": 5.187e-05,
+   "pull": null,
+   "n_swaps": 17,
+   "front": {
+    "1e-05": {
+     "sell_after_burst": 4.3712,
+     "gross": 4.7892,
+     "usd": 0.11305,
+     "sell_after_first": 0.7104
+    },
+    "5e-05": {
+     "sell_after_burst": 0.9698,
+     "gross": 1.0534,
+     "usd": 0.12541,
+     "sell_after_first": 0.1849
+    },
+    "0.0001": {
+     "sell_after_burst": 0.4889,
+     "gross": 0.5307,
+     "usd": 0.12644,
+     "sell_after_first": 0.0932
+    },
+    "0.0005": {
+     "sell_after_burst": 0.096,
+     "gross": 0.1043,
+     "usd": 0.12409,
+     "sell_after_first": 0.0164
+    },
+    "0.0058": {
+     "sell_after_burst": 0.0055,
+     "gross": 0.0063,
+     "usd": 0.08301,
+     "sell_after_first": -0.0013
+    }
+   }
+  }
+ ]
+}

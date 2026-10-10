@@ -1,0 +1,164 @@
+{
+ "all|ride +1->+180": {
+  "n": 192,
+  "mean": 0.0719,
+  "median": 0.0677,
+  "win": 0.979,
+  "pulled": 2,
+  "usd_trade": 1.078,
+  "usd_day": 103.5
+ },
+ "all|ride +1->+150": {
+  "n": 192,
+  "mean": 0.0471,
+  "median": 0.0452,
+  "win": 0.974,
+  "pulled": 2,
+  "usd_trade": 0.707,
+  "usd_day": 67.9
+ },
+ "all|ride +1->+220": {
+  "n": 192,
+  "mean": 0.0945,
+  "median": 0.1027,
+  "win": 0.979,
+  "pulled": 3,
+  "usd_trade": 1.418,
+  "usd_day": 136.1
+ },
+ "all|front +1 -> crowd1+1": {
+  "n": 192,
+  "mean": 0.011,
+  "median": 0.0103,
+  "win": 0.979,
+  "pulled": 0,
+  "usd_trade": 0.165,
+  "usd_day": 15.9
+ },
+ "all|follow crowd1+1, hold 100": {
+  "n": 192,
+  "mean": 0.0599,
+  "median": 0.0735,
+  "win": 0.974,
+  "pulled": 4,
+  "usd_trade": 0.899,
+  "usd_day": 86.3
+ },
+ "all|literal front: +1 -> +20": {
+  "n": 192,
+  "mean": -0.0018,
+  "median": -0.0018,
+  "win": 0.0,
+  "pulled": 0,
+  "usd_trade": -0.027,
+  "usd_day": -2.6
+ },
+ "random96|ride +1->+180": {
+  "n": 96,
+  "mean": 0.0604,
+  "median": 0.0682,
+  "win": 0.958,
+  "pulled": 2,
+  "usd_trade": 0.907,
+  "usd_day": 43.5
+ },
+ "random96|ride +1->+150": {
+  "n": 96,
+  "mean": 0.0367,
+  "median": 0.0441,
+  "win": 0.958,
+  "pulled": 2,
+  "usd_trade": 0.551,
+  "usd_day": 26.5
+ },
+ "random96|ride +1->+220": {
+  "n": 96,
+  "mean": 0.0876,
+  "median": 0.1027,
+  "win": 0.969,
+  "pulled": 2,
+  "usd_trade": 1.314,
+  "usd_day": 63.1
+ },
+ "random96|front +1 -> crowd1+1": {
+  "n": 96,
+  "mean": 0.0109,
+  "median": 0.0107,
+  "win": 0.969,
+  "pulled": 0,
+  "usd_trade": 0.163,
+  "usd_day": 7.8
+ },
+ "random96|follow crowd1+1, hold 100": {
+  "n": 96,
+  "mean": 0.0505,
+  "median": 0.0745,
+  "win": 0.958,
+  "pulled": 3,
+  "usd_trade": 0.757,
+  "usd_day": 36.3
+ },
+ "random96|literal front: +1 -> +20": {
+  "n": 96,
+  "mean": -0.0018,
+  "median": -0.0018,
+  "win": 0.0,
+  "pulled": 0,
+  "usd_trade": -0.027,
+  "usd_day": -1.3
+ },
+ "second_half|ride +1->+180": {
+  "n": 96,
+  "mean": 0.0702,
+  "median": 0.0634,
+  "win": 0.969,
+  "pulled": 1,
+  "usd_trade": 1.053,
+  "usd_day": 50.6
+ },
+ "second_half|ride +1->+150": {
+  "n": 96,
+  "mean": 0.0463,
+  "median": 0.0473,
+  "win": 0.969,
+  "pulled": 1,
+  "usd_trade": 0.695,
+  "usd_day": 33.4
+ },
+ "second_half|ride +1->+220": {
+  "n": 96,
+  "mean": 0.0891,
+  "median": 0.103,
+  "win": 0.969,
+  "pulled": 2,
+  "usd_trade": 1.337,
+  "usd_day": 64.2
+ },
+ "second_half|front +1 -> crowd1+1": {
+  "n": 96,
+  "mean": 0.0106,
+  "median": 0.0103,
+  "win": 0.969,
+  "pulled": 0,
+  "usd_trade": 0.16,
+  "usd_day": 7.7
+ },
+ "second_half|follow crowd1+1, hold 100": {
+  "n": 96,
+  "mean": 0.06,
+  "median": 0.0746,
+  "win": 0.969,
+  "pulled": 2,
+  "usd_trade": 0.899,
+  "usd_day": 43.2
+ },
+ "second_half|literal front: +1 -> +20": {
+  "n": 96,
+  "mean": -0.0018,
+  "median": -0.0018,
+  "win": 0.0,
+  "pulled": 0,
+  "usd_trade": -0.027,
+  "usd_day": -1.3
+ }
+}

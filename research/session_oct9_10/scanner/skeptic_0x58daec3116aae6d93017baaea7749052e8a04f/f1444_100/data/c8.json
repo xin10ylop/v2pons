@@ -1,0 +1,210 @@
+{
+ "all 339 launches": {
+  "claim_rule": {
+   "n": 339,
+   "mean": 49.9,
+   "median": 58.04,
+   "win": 0.779,
+   "pulled_first": 49,
+   "usd_trade": 7.485
+  },
+  "k1": {
+   "n": 339,
+   "mean": 1.31,
+   "median": 5.19,
+   "win": 0.873,
+   "pulled_first": 17,
+   "usd_trade": 0.197
+  },
+  "k10_gap300": {
+   "n": 339,
+   "mean": 38.46,
+   "median": 41.66,
+   "win": 0.811,
+   "pulled_first": 38,
+   "usd_trade": 5.77
+  }
+ },
+ "Sep 28 on (blocks >= 75.9M)": {
+  "claim_rule": {
+   "n": 212,
+   "mean": 43.99,
+   "median": 54.52,
+   "win": 0.764,
+   "pulled_first": 31,
+   "usd_trade": 6.599
+  },
+  "k1": {
+   "n": 212,
+   "mean": -0.86,
+   "median": 4.84,
+   "win": 0.844,
+   "pulled_first": 14,
+   "usd_trade": -0.129
+  },
+  "k10_gap300": {
+   "n": 212,
+   "mean": 35.49,
+   "median": 49.64,
+   "win": 0.788,
+   "pulled_first": 26,
+   "usd_trade": 5.324
+  }
+ },
+ "Oct 5 on": {
+  "claim_rule": {
+   "n": 121,
+   "mean": 32.57,
+   "median": 53.8,
+   "win": 0.76,
+   "pulled_first": 21,
+   "usd_trade": 4.885
+  },
+  "k1": {
+   "n": 121,
+   "mean": -6.16,
+   "median": 3.89,
+   "win": 0.826,
+   "pulled_first": 13,
+   "usd_trade": -0.924
+  },
+  "k10_gap300": {
+   "n": 121,
+   "mean": 27.74,
+   "median": 50.1,
+   "win": 0.777,
+   "pulled_first": 19,
+   "usd_trade": 4.161
+  }
+ },
+ "early outsider holder 0.0001-0.0005 ETH": {
+  "claim_rule": {
+   "n": 93,
+   "mean": 48.45,
+   "median": 54.52,
+   "win": 0.742,
+   "pulled_first": 13,
+   "usd_trade": 7.268
+  },
+  "k1": {
+   "n": 93,
+   "mean": 4.05,
+   "median": 5.29,
+   "win": 0.86,
+   "pulled_first": 2,
+   "usd_trade": 0.608
+  },
+  "k10_gap300": {
+   "n": 93,
+   "mean": 39.24,
+   "median": 46.49,
+   "win": 0.785,
+   "pulled_first": 9,
+   "usd_trade": 5.886
+  }
+ },
+ "early outsider holder 0.0005-0.002 ETH": {
+  "claim_rule": {
+   "n": 14,
+   "mean": -3.18,
+   "median": 0.16,
+   "win": 0.571,
+   "pulled_first": 6,
+   "usd_trade": -0.477
+  },
+  "k1": {
+   "n": 14,
+   "mean": -23.57,
+   "median": 0.42,
+   "win": 0.714,
+   "pulled_first": 4,
+   "usd_trade": -3.536
+  },
+  "k10_gap300": {
+   "n": 14,
+   "mean": -8.82,
+   "median": 0.16,
+   "win": 0.571,
+   "pulled_first": 6,
+   "usd_trade": -1.323
+  }
+ },
+ "early outsider holder 0.002-0.01 ETH": {
+  "claim_rule": {
+   "n": 25,
+   "mean": -26.19,
+   "median": 0.46,
+   "win": 0.52,
+   "pulled_first": 12,
+   "usd_trade": -3.929
+  },
+  "k1": {
+   "n": 25,
+   "mean": -33.06,
+   "median": 1.47,
+   "win": 0.64,
+   "pulled_first": 9,
+   "usd_trade": -4.96
+  },
+  "k10_gap300": {
+   "n": 25,
+   "mean": -23.44,
+   "median": 0.46,
+   "win": 0.56,
+   "pulled_first": 11,
+   "usd_trade": -3.516
+  }
+ },
+ "early outsider holder 0.01-10 ETH": {
+  "claim_rule": {
+   "n": 4,
+   "mean": -54.79,
+   "median": -100.08,
+   "win": 0.25,
+   "pulled_first": 3,
+   "usd_trade": -8.219
+  },
+  "k1": {
+   "n": 4,
+   "mean": -72.97,
+   "median": -100.08,
+   "win": 0.25,
+   "pulled_first": 3,
+   "usd_trade": -10.946
+  },
+  "k10_gap300": {
+   "n": 4,
+   "mean": -54.79,
+   "median": -100.08,
+   "win": 0.25,
+   "pulled_first": 3,
+   "usd_trade": -8.219
+  }
+ },
+ "early outsider holder >= 0.002 (our size class)": {
+  "claim_rule": {
+   "n": 29,
+   "mean": -30.14,
+   "median": -100.08,
+   "win": 0.483,
+   "pulled_first": 15,
+   "usd_trade": -4.521
+  },
+  "k1": {
+   "n": 29,
+   "mean": -38.57,
+   "median": 0.46,
+   "win": 0.586,
+   "pulled_first": 12,
+   "usd_trade": -5.785
+  },
+  "k10_gap300": {
+   "n": 29,
+   "mean": -27.77,
+   "median": 0.46,
+   "win": 0.517,
+   "pulled_first": 14,
+   "usd_trade": -4.165
+  }
+ }
+}

@@ -1,0 +1,1408 @@
+{
+ "0x31cc7ddef7ff0e92001b7507cc42097c0ff379e0|7fde822e|804|10000|200|true": {
+  "n": 12,
+  "launches_per_day": 6.0,
+  "span_blocks": [
+   84232255,
+   84287722
+  ],
+  "active_hours": 1.58,
+  "gap_blocks_p10_50_90": [
+   2867,
+   2956,
+   8903
+  ],
+  "launch_from_top": [
+   [
+    "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+    12
+   ]
+  ],
+  "n_launch_wallets": 1,
+  "launch_nonce_p10_50_90": [
+   2069,
+   2078,
+   2086
+  ],
+  "start": {
+   "active": 12
+  },
+  "validate_first_swap_rel_err_max": 1.8555553514834012e-17,
+  "validate_n": 12,
+  "fb": {
+   "pools": 12,
+   "frac": 1.0,
+   "off_p10_50_90": [
+    3,
+    3,
+    3
+   ],
+   "eth_p10_50_90": [
+    2e-06,
+    2e-06,
+    2e-06
+   ],
+   "to_top": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     12
+    ]
+   ],
+   "from_top": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     12
+    ]
+   ],
+   "n_from": 1,
+   "fresh_nonce_le2": 0,
+   "sel_top": [
+    [
+     null,
+     12
+    ]
+   ]
+  },
+  "fr": {
+   "pools": 0
+  },
+  "sb": {
+   "pools": 0
+  },
+  "pull": {
+   "pulled": 0,
+   "frac": 0.0,
+   "off_launch_p10_50_90": null,
+   "off_sched_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "pull_from_top": [],
+   "pull_to_top": [],
+   "pulled_before_sched": 0,
+   "pulled_no_sched": 0
+  },
+  "outsiders": {
+   "pools": 0,
+   "frac": 0.0,
+   "eth_p10_50_90": null,
+   "off_p10_50_90": null,
+   "real_ge_0.0002_pools": 0,
+   "to_top": [],
+   "from_top": [],
+   "dust_bot_pools": 12
+  },
+  "trap_test": {
+   "with_outsider_ge_0.0001": {
+    "pools": 0,
+    "with_sched": 0,
+    "pulled": 0,
+    "pull_minus_sched_p10_50_90": null,
+    "pull_le_sched_plus4": 0
+   },
+   "without": {
+    "pools": 12,
+    "with_sched": 0,
+    "pulled": 0,
+    "pull_minus_sched_p10_50_90": null,
+    "pull_le_sched_plus4": 0
+   }
+  },
+  "front": {
+   "n": 12,
+   "mean": -0.02058,
+   "median": -0.02058,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 12
+   },
+   "usd_trade": -0.3087,
+   "trades_day": 6.0,
+   "usd_day": -1.85,
+   "p10_50_90": [
+    -0.02059,
+    -0.02058,
+    -0.02058
+   ],
+   "min": -0.02059,
+   "max": -0.02058,
+   "late": 0,
+   "sell_off_p10_50_90": [
+    20,
+    20,
+    20
+   ],
+   "bot_dropped_pools": 0
+  },
+  "follow": {
+   "n": 0,
+   "exits": {},
+   "no_trigger": 12
+  }
+ },
+ "0x57689a475c5941b855f989edf81d6ddbf10229e6|7fde822e|804|10000|200|true": {
+  "n": 12,
+  "launches_per_day": 6.0,
+  "span_blocks": [
+   84467312,
+   84522128
+  ],
+  "active_hours": 1.56,
+  "gap_blocks_p10_50_90": [
+   2876,
+   2948,
+   8733
+  ],
+  "launch_from_top": [
+   [
+    "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+    12
+   ]
+  ],
+  "n_launch_wallets": 1,
+  "launch_nonce_p10_50_90": [
+   2153,
+   2163,
+   2168
+  ],
+  "start": {
+   "active": 12
+  },
+  "validate_first_swap_rel_err_max": 2.0934310105475793e-17,
+  "validate_n": 12,
+  "fb": {
+   "pools": 12,
+   "frac": 1.0,
+   "off_p10_50_90": [
+    2,
+    3,
+    3
+   ],
+   "eth_p10_50_90": [
+    2e-06,
+    2e-06,
+    2e-06
+   ],
+   "to_top": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     12
+    ]
+   ],
+   "from_top": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     12
+    ]
+   ],
+   "n_from": 1,
+   "fresh_nonce_le2": 0,
+   "sel_top": [
+    [
+     null,
+     12
+    ]
+   ]
+  },
+  "fr": {
+   "pools": 0
+  },
+  "sb": {
+   "pools": 0
+  },
+  "pull": {
+   "pulled": 0,
+   "frac": 0.0,
+   "off_launch_p10_50_90": null,
+   "off_sched_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "pull_from_top": [],
+   "pull_to_top": [],
+   "pulled_before_sched": 0,
+   "pulled_no_sched": 0
+  },
+  "outsiders": {
+   "pools": 0,
+   "frac": 0.0,
+   "eth_p10_50_90": null,
+   "off_p10_50_90": null,
+   "real_ge_0.0002_pools": 0,
+   "to_top": [],
+   "from_top": [],
+   "dust_bot_pools": 12
+  },
+  "trap_test": {
+   "with_outsider_ge_0.0001": {
+    "pools": 0,
+    "with_sched": 0,
+    "pulled": 0,
+    "pull_minus_sched_p10_50_90": null,
+    "pull_le_sched_plus4": 0
+   },
+   "without": {
+    "pools": 12,
+    "with_sched": 0,
+    "pulled": 0,
+    "pull_minus_sched_p10_50_90": null,
+    "pull_le_sched_plus4": 0
+   }
+  },
+  "front": {
+   "n": 12,
+   "mean": -0.02057,
+   "median": -0.02057,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 12
+   },
+   "usd_trade": -0.3086,
+   "trades_day": 6.0,
+   "usd_day": -1.85,
+   "p10_50_90": [
+    -0.02058,
+    -0.02057,
+    -0.02057
+   ],
+   "min": -0.02058,
+   "max": -0.02057,
+   "late": 0,
+   "sell_off_p10_50_90": [
+    20,
+    20,
+    20
+   ],
+   "bot_dropped_pools": 0
+  },
+  "follow": {
+   "n": 0,
+   "exits": {},
+   "no_trigger": 12
+  }
+ },
+ "0x9bd98b64980f273d5452e204a3e59a9ab5b4fad6|7fde822e|804|10000|200|true": {
+  "n": 12,
+  "launches_per_day": 6.0,
+  "span_blocks": [
+   83521755,
+   83577332
+  ],
+  "active_hours": 1.58,
+  "gap_blocks_p10_50_90": [
+   2898,
+   5839,
+   5911
+  ],
+  "launch_from_top": [
+   [
+    "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+    12
+   ]
+  ],
+  "n_launch_wallets": 1,
+  "launch_nonce_p10_50_90": [
+   1838,
+   1845,
+   1852
+  ],
+  "start": {
+   "active": 12
+  },
+  "validate_first_swap_rel_err_max": 1.7366378789400694e-17,
+  "validate_n": 12,
+  "fb": {
+   "pools": 12,
+   "frac": 1.0,
+   "off_p10_50_90": [
+    3,
+    3,
+    3
+   ],
+   "eth_p10_50_90": [
+    2e-06,
+    2e-06,
+    2e-06
+   ],
+   "to_top": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     12
+    ]
+   ],
+   "from_top": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     12
+    ]
+   ],
+   "n_from": 1,
+   "fresh_nonce_le2": 0,
+   "sel_top": [
+    [
+     null,
+     12
+    ]
+   ]
+  },
+  "fr": {
+   "pools": 0
+  },
+  "sb": {
+   "pools": 0
+  },
+  "pull": {
+   "pulled": 0,
+   "frac": 0.0,
+   "off_launch_p10_50_90": null,
+   "off_sched_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "pull_from_top": [],
+   "pull_to_top": [],
+   "pulled_before_sched": 0,
+   "pulled_no_sched": 0
+  },
+  "outsiders": {
+   "pools": 0,
+   "frac": 0.0,
+   "eth_p10_50_90": null,
+   "off_p10_50_90": null,
+   "real_ge_0.0002_pools": 0,
+   "to_top": [],
+   "from_top": [],
+   "dust_bot_pools": 12
+  },
+  "trap_test": {
+   "with_outsider_ge_0.0001": {
+    "pools": 0,
+    "with_sched": 0,
+    "pulled": 0,
+    "pull_minus_sched_p10_50_90": null,
+    "pull_le_sched_plus4": 0
+   },
+   "without": {
+    "pools": 12,
+    "with_sched": 0,
+    "pulled": 0,
+    "pull_minus_sched_p10_50_90": null,
+    "pull_le_sched_plus4": 0
+   }
+  },
+  "front": {
+   "n": 12,
+   "mean": -0.02068,
+   "median": -0.02068,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 12
+   },
+   "usd_trade": -0.3102,
+   "trades_day": 6.0,
+   "usd_day": -1.86,
+   "p10_50_90": [
+    -0.02068,
+    -0.02067,
+    -0.02067
+   ],
+   "min": -0.02073,
+   "max": -0.02067,
+   "late": 0,
+   "sell_off_p10_50_90": [
+    20,
+    20,
+    20
+   ],
+   "bot_dropped_pools": 0
+  },
+  "follow": {
+   "n": 0,
+   "exits": {},
+   "no_trigger": 12
+  }
+ },
+ "0xb6ed4932f217c5eb6d21a9be81fc7e6def69a0a9|7fde822e|804|10000|200|true": {
+  "n": 12,
+  "launches_per_day": 6.0,
+  "span_blocks": [
+   83756576,
+   83812076
+  ],
+  "active_hours": 1.58,
+  "gap_blocks_p10_50_90": [
+   2806,
+   2953,
+   8797
+  ],
+  "launch_from_top": [
+   [
+    "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+    12
+   ]
+  ],
+  "n_launch_wallets": 1,
+  "launch_nonce_p10_50_90": [
+   1922,
+   1933,
+   1939
+  ],
+  "start": {
+   "active": 12
+  },
+  "validate_first_swap_rel_err_max": 1.9345354782242195e-17,
+  "validate_n": 12,
+  "fb": {
+   "pools": 12,
+   "frac": 1.0,
+   "off_p10_50_90": [
+    3,
+    3,
+    3
+   ],
+   "eth_p10_50_90": [
+    2e-06,
+    2e-06,
+    2e-06
+   ],
+   "to_top": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     12
+    ]
+   ],
+   "from_top": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     12
+    ]
+   ],
+   "n_from": 1,
+   "fresh_nonce_le2": 0,
+   "sel_top": [
+    [
+     null,
+     12
+    ]
+   ]
+  },
+  "fr": {
+   "pools": 1,
+   "frac": 0.0833,
+   "off_p10_50_90": [
+    959,
+    959,
+    959
+   ],
+   "eth_p10_50_90": [
+    0.0042978,
+    0.0042978,
+    0.0042978
+   ],
+   "to_top": [
+    [
+     "0x5399d94d2cab7c252a6034042e1917a0e5e17a18",
+     1
+    ]
+   ],
+   "from_top": [
+    [
+     "0x329ca263df30c3e506c39081403ec95d5942ece8",
+     1
+    ]
+   ],
+   "n_from": 1,
+   "fresh_nonce_le2": 0,
+   "sel_top": [
+    [
+     "814920c0",
+     1
+    ]
+   ]
+  },
+  "sb": {
+   "pools": 1,
+   "frac": 0.0833,
+   "off_p10_50_90": [
+    959,
+    959,
+    959
+   ],
+   "eth_p10_50_90": [
+    0.0042978,
+    0.0042978,
+    0.0042978
+   ],
+   "to_top": [
+    [
+     "0x5399d94d2cab7c252a6034042e1917a0e5e17a18",
+     1
+    ]
+   ],
+   "from_top": [
+    [
+     "0x329ca263df30c3e506c39081403ec95d5942ece8",
+     1
+    ]
+   ],
+   "n_from": 1,
+   "fresh_nonce_le2": 0,
+   "sel_top": [
+    [
+     "814920c0",
+     1
+    ]
+   ]
+  },
+  "pull": {
+   "pulled": 0,
+   "frac": 0.0,
+   "off_launch_p10_50_90": null,
+   "off_sched_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "pull_from_top": [],
+   "pull_to_top": [],
+   "pulled_before_sched": 0,
+   "pulled_no_sched": 0
+  },
+  "outsiders": {
+   "pools": 0,
+   "frac": 0.0,
+   "eth_p10_50_90": null,
+   "off_p10_50_90": null,
+   "real_ge_0.0002_pools": 0,
+   "to_top": [],
+   "from_top": [],
+   "dust_bot_pools": 12
+  },
+  "trap_test": {
+   "with_outsider_ge_0.0001": {
+    "pools": 0,
+    "with_sched": 0,
+    "pulled": 0,
+    "pull_minus_sched_p10_50_90": null,
+    "pull_le_sched_plus4": 0
+   },
+   "without": {
+    "pools": 12,
+    "with_sched": 1,
+    "pulled": 0,
+    "pull_minus_sched_p10_50_90": null,
+    "pull_le_sched_plus4": 0
+   }
+  },
+  "capacity": {
+   "pools": 1,
+   "real_minout": 0,
+   "minout_vs_quote_p10_50_90": [
+    0.99,
+    0.99,
+    0.99
+   ],
+   "room_from_launch_p10_50_90": [
+    0.0068,
+    0.0068,
+    0.0068
+   ],
+   "room_after_prebuys_p10_50_90": [
+    0.0068,
+    0.0068,
+    0.0068
+   ],
+   "eth_ahead_actual_p10_50_90": [
+    2e-06,
+    2e-06,
+    2e-06
+   ],
+   "room_lt_stake": 0,
+   "sched_eth_p10_50_90": [
+    0.0043,
+    0.0043,
+    0.0043
+   ]
+  },
+  "front": {
+   "n": 12,
+   "mean": -0.0206,
+   "median": -0.0206,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 12
+   },
+   "usd_trade": -0.3091,
+   "trades_day": 6.0,
+   "usd_day": -1.85,
+   "p10_50_90": [
+    -0.02061,
+    -0.0206,
+    -0.02059
+   ],
+   "min": -0.02062,
+   "max": -0.02059,
+   "late": 0,
+   "sell_off_p10_50_90": [
+    20,
+    20,
+    20
+   ],
+   "bot_dropped_pools": 0
+  },
+  "follow": {
+   "n": 1,
+   "mean": -0.02677,
+   "median": -0.02677,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 1
+   },
+   "usd_trade": -0.4015,
+   "trades_day": 0.5,
+   "usd_day": -0.2,
+   "p10_50_90": [
+    -0.02677,
+    -0.02677,
+    -0.02677
+   ],
+   "min": -0.02677,
+   "max": -0.02677,
+   "no_trigger": 11
+  }
+ },
+ "control:vbot-v2.433": {
+  "n": 1843,
+  "launches_per_day": 921.79,
+  "span_blocks": [
+   83523388,
+   85203750
+  ],
+  "active_hours": 47.89,
+  "gap_blocks_p10_50_90": [
+   162,
+   173,
+   3597
+  ],
+  "launch_from_top": [
+   [
+    "0xbe0d58d685ca54cedff66c2c3401192c566a3e63",
+    1
+   ],
+   [
+    "0x5851bd4251493c15e0ce53be5dd13fb6e81ed851",
+    1
+   ],
+   [
+    "0x066a7c9ffeef5230099f63788cd07ff404babb4f",
+    1
+   ]
+  ],
+  "n_launch_wallets": 1843,
+  "launch_nonce_p10_50_90": [
+   3,
+   10,
+   11
+  ],
+  "start": {
+   "active": 1843
+  },
+  "validate_first_swap_rel_err_max": 2.4696944916429075e-17,
+  "validate_n": 1843,
+  "fb": {
+   "pools": 1843,
+   "frac": 1.0,
+   "off_p10_50_90": [
+    2,
+    3,
+    3
+   ],
+   "eth_p10_50_90": [
+    2e-06,
+    2e-06,
+    0.00495
+   ],
+   "to_top": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     940
+    ],
+    [
+     "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+     854
+    ],
+    [
+     "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+     49
+    ]
+   ],
+   "from_top": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     940
+    ],
+    [
+     "0x488faf521a2d5f16ee55d1335841bb3ba9a0946e",
+     395
+    ],
+    [
+     "0xf6e55480c5939da146092301e388654879c6e6fb",
+     192
+    ],
+    [
+     "0x544ef4354283261fb9e258247a80d49c86b9f107",
+     142
+    ]
+   ],
+   "n_from": 129,
+   "fresh_nonce_le2": 97,
+   "sel_top": [
+    [
+     null,
+     1843
+    ]
+   ]
+  },
+  "fr": {
+   "pools": 1842,
+   "frac": 0.9995,
+   "off_p10_50_90": [
+    2,
+    8,
+    10
+   ],
+   "eth_p10_50_90": [
+    0.00495,
+    0.125,
+    0.2475
+   ],
+   "to_top": [
+    [
+     "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+     1317
+    ],
+    [
+     "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+     525
+    ]
+   ],
+   "from_top": [
+    [
+     "0x488faf521a2d5f16ee55d1335841bb3ba9a0946e",
+     320
+    ],
+    [
+     "0x544ef4354283261fb9e258247a80d49c86b9f107",
+     142
+    ],
+    [
+     "0xdf2c6f64308dc7537bca2c4336f464b1c8b92b2f",
+     53
+    ],
+    [
+     "0xecd658c15322ae175ced5d3d6a4a9328943cdae3",
+     51
+    ]
+   ],
+   "n_from": 67,
+   "fresh_nonce_le2": 31,
+   "sel_top": [
+    [
+     "c1120e3d",
+     1317
+    ],
+    [
+     "4d819a2a",
+     525
+    ]
+   ]
+  },
+  "sb": {
+   "pools": 1842,
+   "frac": 0.9995,
+   "off_p10_50_90": [
+    8,
+    9,
+    10
+   ],
+   "eth_p10_50_90": [
+    0.0495,
+    0.175,
+    0.25
+   ],
+   "to_top": [
+    [
+     "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+     1842
+    ]
+   ],
+   "from_top": [
+    [
+     "0x8cd2a79c8c83d18e5b1a0a66a955188f538b0460",
+     71
+    ],
+    [
+     "0x8eb4bbe5bc255a8afe39670208a5ef37bc6a054c",
+     68
+    ],
+    [
+     "0x039475670b67126f91a7de3729d56c5b40c75eb0",
+     67
+    ],
+    [
+     "0xdf2c6f64308dc7537bca2c4336f464b1c8b92b2f",
+     67
+    ]
+   ],
+   "n_from": 31,
+   "fresh_nonce_le2": 0,
+   "sel_top": [
+    [
+     "c1120e3d",
+     1842
+    ]
+   ]
+  },
+  "pull": {
+   "pulled": 1482,
+   "frac": 0.8041,
+   "off_launch_p10_50_90": [
+    11,
+    13,
+    127
+   ],
+   "off_sched_p10_50_90": [
+    3,
+    3,
+    117
+   ],
+   "by_launch_wallet": 1482,
+   "pull_from_top": [
+    [
+     "0x609761031f49d7b29f9079f5aa60f26e51b0dedf",
+     1
+    ],
+    [
+     "0xcc099ce6b0ab5a80e1807adacb6b3498d07ce892",
+     1
+    ],
+    [
+     "0xc952b5e46d6c46b03ebbde79f867d99725cad727",
+     1
+    ]
+   ],
+   "pull_to_top": [
+    [
+     "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+     1482
+    ]
+   ],
+   "pulled_before_sched": 0,
+   "pulled_no_sched": 1
+  },
+  "outsiders": {
+   "pools": 5,
+   "frac": 0.0027,
+   "eth_p10_50_90": [
+    1.98e-05,
+    4.95e-05,
+    4.95e-05
+   ],
+   "off_p10_50_90": [
+    6,
+    6,
+    7
+   ],
+   "real_ge_0.0002_pools": 0,
+   "to_top": [
+    [
+     "0xf0b7eaaf868191adc00065ca13391ef436ce8faf",
+     4
+    ],
+    [
+     "0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd",
+     1
+    ]
+   ],
+   "from_top": [
+    [
+     "0xfeda1c58462150b4cb94c63efce3647e78f883eb",
+     4
+    ],
+    [
+     "0x1b4461facb956c39cd3a89bff311190af4b577b1",
+     1
+    ]
+   ],
+   "dust_bot_pools": 1721
+  },
+  "trap_test": {
+   "with_outsider_ge_0.0001": {
+    "pools": 0,
+    "with_sched": 0,
+    "pulled": 0,
+    "pull_minus_sched_p10_50_90": null,
+    "pull_le_sched_plus4": 0
+   },
+   "without": {
+    "pools": 1843,
+    "with_sched": 1842,
+    "pulled": 1482,
+    "pull_minus_sched_p10_50_90": [
+     3,
+     3,
+     117
+    ],
+    "pull_le_sched_plus4": 1159
+   }
+  },
+  "capacity": {
+   "pools": 1842,
+   "real_minout": 1842,
+   "minout_vs_quote_p10_50_90": [
+    0.99,
+    0.99,
+    0.99
+   ],
+   "room_from_launch_p10_50_90": [
+    0.01241,
+    0.01271,
+    0.01289
+   ],
+   "room_after_prebuys_p10_50_90": [
+    0.00528,
+    0.01253,
+    0.01283
+   ],
+   "eth_ahead_actual_p10_50_90": [
+    2e-06,
+    0.000121,
+    0.009902
+   ],
+   "room_lt_stake": 229,
+   "sched_eth_p10_50_90": [
+    0.0495,
+    0.175,
+    0.25
+   ]
+  },
+  "front": {
+   "n": 1843,
+   "mean": 0.11858,
+   "median": 0.14008,
+   "win": 0.9457,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 1843
+   },
+   "usd_trade": 1.7787,
+   "trades_day": 921.79,
+   "usd_day": 1639.55,
+   "p10_50_90": [
+    0.00236,
+    0.14008,
+    0.20786
+   ],
+   "min": -0.00972,
+   "max": 0.28551,
+   "late": 0,
+   "sell_off_p10_50_90": [
+    9,
+    10,
+    11
+   ],
+   "bot_dropped_pools": 229
+  },
+  "follow": {
+   "n": 1842,
+   "mean": -0.35433,
+   "median": -0.00571,
+   "win": 0.0016,
+   "pulled_first": 646,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 1196,
+    "pulled_first": 646
+   },
+   "usd_trade": -5.315,
+   "trades_day": 921.29,
+   "usd_day": -4896.63,
+   "p10_50_90": [
+    -1.00072,
+    -0.00571,
+    -0.00571
+   ],
+   "min": -1.00079,
+   "max": 0.2503,
+   "no_trigger": 1
+  }
+ },
+ "control:operator-A": {
+  "n": 77,
+  "launches_per_day": 38.51,
+  "span_blocks": [
+   83647992,
+   85125353
+  ],
+  "active_hours": 42.1,
+  "gap_blocks_p10_50_90": [
+   497,
+   2343,
+   44776
+  ],
+  "launch_from_top": [
+   [
+    "0x4348ffca6467fdb687fb771c2370f691a7a940e9",
+    1
+   ],
+   [
+    "0x1dd279c972e7e7e2c5523a36abe317606ec76816",
+    1
+   ],
+   [
+    "0x40af0dac85abdac6f026f3adb1bdc2afd8e88efb",
+    1
+   ]
+  ],
+  "n_launch_wallets": 77,
+  "launch_nonce_p10_50_90": [
+   0,
+   0,
+   0
+  ],
+  "start": {
+   "active": 77
+  },
+  "validate_first_swap_rel_err_max": 3.0099171767282146e-17,
+  "validate_n": 77,
+  "fb": {
+   "pools": 77,
+   "frac": 1.0,
+   "off_p10_50_90": [
+    3,
+    3,
+    4
+   ],
+   "eth_p10_50_90": [
+    2e-06,
+    2e-06,
+    2e-06
+   ],
+   "to_top": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     74
+    ],
+    [
+     "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+     3
+    ]
+   ],
+   "from_top": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     74
+    ],
+    [
+     "0xf6e55480c5939da146092301e388654879c6e6fb",
+     2
+    ],
+    [
+     "0xd818eba04326d1f4336eb969e46bdac5b34ae701",
+     1
+    ]
+   ],
+   "n_from": 3,
+   "fresh_nonce_le2": 1,
+   "sel_top": [
+    [
+     null,
+     77
+    ]
+   ]
+  },
+  "fr": {
+   "pools": 75,
+   "frac": 0.974,
+   "off_p10_50_90": [
+    24,
+    54,
+    66
+   ],
+   "eth_p10_50_90": [
+    0.0143,
+    0.0547,
+    0.1203
+   ],
+   "to_top": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     75
+    ]
+   ],
+   "from_top": [
+    [
+     "0x8700722d7ac8d14666c07574317b4e7fb3dc8ae1",
+     25
+    ],
+    [
+     "0x295877ce91a25528ae17263cb3d30eb11bbfae3e",
+     23
+    ],
+    [
+     "0xdc2e86611b27dc4209dc4055ae4f7cf5b9ee5e80",
+     15
+    ],
+    [
+     "0x754425071f61539f3ca0106634d9f88850c8a151",
+     3
+    ]
+   ],
+   "n_from": 10,
+   "fresh_nonce_le2": 0,
+   "sel_top": [
+    [
+     "3593564c",
+     75
+    ]
+   ]
+  },
+  "sb": {
+   "pools": 75,
+   "frac": 0.974,
+   "off_p10_50_90": [
+    24,
+    54,
+    66
+   ],
+   "eth_p10_50_90": [
+    0.0143,
+    0.0547,
+    0.1203
+   ],
+   "to_top": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     75
+    ]
+   ],
+   "from_top": [
+    [
+     "0x8700722d7ac8d14666c07574317b4e7fb3dc8ae1",
+     25
+    ],
+    [
+     "0x295877ce91a25528ae17263cb3d30eb11bbfae3e",
+     23
+    ],
+    [
+     "0xdc2e86611b27dc4209dc4055ae4f7cf5b9ee5e80",
+     15
+    ],
+    [
+     "0x754425071f61539f3ca0106634d9f88850c8a151",
+     3
+    ]
+   ],
+   "n_from": 10,
+   "fresh_nonce_le2": 0,
+   "sel_top": [
+    [
+     "3593564c",
+     75
+    ]
+   ]
+  },
+  "pull": {
+   "pulled": 66,
+   "frac": 0.8571,
+   "off_launch_p10_50_90": [
+    51,
+    224,
+    2180
+   ],
+   "off_sched_p10_50_90": [
+    6,
+    165,
+    2157
+   ],
+   "by_launch_wallet": 66,
+   "pull_from_top": [
+    [
+     "0x4348ffca6467fdb687fb771c2370f691a7a940e9",
+     1
+    ],
+    [
+     "0x1dd279c972e7e7e2c5523a36abe317606ec76816",
+     1
+    ],
+    [
+     "0x40af0dac85abdac6f026f3adb1bdc2afd8e88efb",
+     1
+    ]
+   ],
+   "pull_to_top": [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+     66
+    ]
+   ],
+   "pulled_before_sched": 0,
+   "pulled_no_sched": 0
+  },
+  "outsiders": {
+   "pools": 29,
+   "frac": 0.3766,
+   "eth_p10_50_90": [
+    1.49e-05,
+    6e-05,
+    6e-05
+   ],
+   "off_p10_50_90": [
+    4,
+    20,
+    39
+   ],
+   "real_ge_0.0002_pools": 0,
+   "to_top": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     28
+    ],
+    [
+     "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+     3
+    ],
+    [
+     "0xfd1b271f235e5230eaee9d914ccb1af495bfb758",
+     2
+    ]
+   ],
+   "from_top": [
+    [
+     "0xf7b47b17bebba4b3e9e55ac09e3179f6f4cda8d6",
+     27
+    ],
+    [
+     "0xf6e55480c5939da146092301e388654879c6e6fb",
+     2
+    ],
+    [
+     "0xb002e8a04b2822d8f2890b022ddea3d25f9c3df8",
+     2
+    ],
+    [
+     "0xd818eba04326d1f4336eb969e46bdac5b34ae701",
+     1
+    ]
+   ],
+   "dust_bot_pools": 77
+  },
+  "trap_test": {
+   "with_outsider_ge_0.0001": {
+    "pools": 2,
+    "with_sched": 2,
+    "pulled": 2,
+    "pull_minus_sched_p10_50_90": [
+     6,
+     6,
+     28
+    ],
+    "pull_le_sched_plus4": 0
+   },
+   "without": {
+    "pools": 75,
+    "with_sched": 73,
+    "pulled": 64,
+    "pull_minus_sched_p10_50_90": [
+     6,
+     201,
+     2349
+    ],
+    "pull_le_sched_plus4": 0
+   }
+  },
+  "capacity": {
+   "pools": 75,
+   "real_minout": 0,
+   "minout_vs_quote_p10_50_90": [
+    0.99,
+    0.99,
+    0.99
+   ],
+   "room_from_launch_p10_50_90": [
+    0.00823,
+    0.01148,
+    0.01729
+   ],
+   "room_after_prebuys_p10_50_90": [
+    0.00822,
+    0.01143,
+    0.01729
+   ],
+   "eth_ahead_actual_p10_50_90": [
+    2e-06,
+    2e-06,
+    6.2e-05
+   ],
+   "room_lt_stake": 3,
+   "sched_eth_p10_50_90": [
+    0.0143,
+    0.0547,
+    0.1203
+   ]
+  },
+  "front": {
+   "n": 77,
+   "mean": -0.00506,
+   "median": -0.00544,
+   "win": 0.013,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 77
+   },
+   "usd_trade": -0.0759,
+   "trades_day": 38.51,
+   "usd_day": -2.92,
+   "p10_50_90": [
+    -0.00957,
+    -0.00544,
+    -0.00198
+   ],
+   "min": -0.01068,
+   "max": 0.04151,
+   "late": 0,
+   "sell_off_p10_50_90": [
+    20,
+    20,
+    20
+   ],
+   "bot_dropped_pools": 0
+  },
+  "follow": {
+   "n": 75,
+   "mean": 0.04338,
+   "median": 0.03268,
+   "win": 0.84,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 75
+   },
+   "usd_trade": 0.6507,
+   "trades_day": 37.51,
+   "usd_day": 24.41,
+   "p10_50_90": [
+    -0.00254,
+    0.03268,
+    0.08327
+   ],
+   "min": -0.01047,
+   "max": 0.41395,
+   "no_trigger": 2
+  }
+ }
+}

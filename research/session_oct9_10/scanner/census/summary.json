@@ -1,0 +1,85 @@
+{
+ "window": {
+  "from_block": 83520210,
+  "from_ts": 1791483648,
+  "head": 85203897,
+  "head_ts": 1791656447,
+  "now_at_start": 1791656448,
+  "target_from_ts": 1791483648
+ },
+ "pools_total_v4_inits": 11889,
+ "eth_pools": 6865,
+ "pools_fetched_for_events": 6865,
+ "pools_with_events": 6776,
+ "pools_with_swaps": 5919,
+ "pools_with_pulls": 2625,
+ "launch_txs": 6216,
+ "multi_pool_launch_txs": 59,
+ "pools_complete_window": 6865,
+ "families": 1644,
+ "families_ge5": 104,
+ "families_ge3": 175,
+ "txs": 38559,
+ "tx_kinds": {
+  "launch": 6216,
+  "swap": 29912,
+  "pull": 2616
+ },
+ "missing_txs": 0,
+ "launch_txs_missing": 0,
+ "known_pools": {
+  "none": 3509,
+  "vbot-other": 1436,
+  "vbot-v2.433": 1843,
+  "operator-A": 77
+ },
+ "known_by_rule_pools": {
+  "none": 3144,
+  "vbot-other": 1801,
+  "vbot-v2.433": 1843,
+  "operator-A": 77
+ },
+ "timing": {
+  "window": {
+   "secs": 4.9
+  },
+  "inits": {
+   "secs": 4.2,
+   "init_logs": 11889
+  },
+  "ltx": {
+   "secs": 190.5,
+   "launch_txs": 6216,
+   "creates": 38
+  },
+  "blocks": {
+   "secs": 104.3,
+   "blocks": 6207
+  },
+  "codes": {
+   "secs": 8.8,
+   "addresses": 422
+  },
+  "dex": {
+   "secs": 38.4
+  },
+  "events_big": {
+   "secs": 183.1,
+   "pools": 5069,
+   "groups": 312
+  },
+  "events_rest": {
+   "secs": 65.1,
+   "pools": 1796,
+   "groups": 245
+  },
+  "stx": {
+   "secs": 542.2,
+   "pools_with_swaps": 5919,
+   "swap_hashes": 29912,
+   "pools_with_pulls": 2625,
+   "pull_hashes": 2616
+  }
+ },
+ "build_secs": 17.3
+}

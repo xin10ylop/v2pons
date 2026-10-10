@@ -1,0 +1,300 @@
+====================================================================================================
+0x0000ffffbe8efe702c8703ae3477ff5de3d319c0|b6982b48|260|2500|25|true
+{'count': 10, 'launch_to': '0x0000ffffbe8efe702c8703ae3477ff5de3d319c0', 'selector': 'b6982b48', 'calldata_len': 260, 'values_eth': [0.0], 'value_counts': [[0.0, 10]], 'fee': 2500, 'tick_spacing': 25, 'hooks_zero': True, 'hooks': ['0x0000000000000000000000000000000000000000'], 'known': 'none', 'known_by_rule': 'none', 'vbot_router_buy_pools': 0, 'vbot_router_pull_pools': 0, 'n_deployers': 1, 'top_deployers': [['0x26e8134ecc3af5cce32f34b03e7bd2f318b25158', 10]], 'nonce_med': 63567.0, 'nonce0': 0, 'first_block': 84669404, 'last_block': 84669863, 'to_code_size': 4127, 'to_code_hash': '4a586d925c9d59ece13ce2239ebd7dea9ee725f9d33c6667e0fd16ae8d977d80', 'n_with_events': 10, 'swap_tx_to_top': [['0x8876789976decbfcbbbe364623c63652db8c0904', 10]], 'first_pull_to_sel_top': [], 'first_buy_rel_p10_50_90': [2, 3, 3], 'first_pull_rel_p10_50_90': None, 'first_buy_eth_p10_50_90': [1.998e-06, 1.999e-06, 2e-06], 'n_no_pull_in_window': 10}
+-- pool 0x4284614838 bn 84669404 ts 1791601454 from 0x26e8134ecc3af5cce32f34b03e7bd2f318b25158 nonce 63549 val 0.0 tick0 198050 liq 50074188046840591947412 token 0x4545527e31ff8b7b27e6b1132ee808c2e3e18560 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 1 -160100 198050 50074188046840591947412 0x58daec31 0x9fde4717
+   swap +3 ti 5 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x94c59dc2da bn 84669612 ts 1791601476 from 0x26e8134ecc3af5cce32f34b03e7bd2f318b25158 nonce 63553 val 0.0 tick0 198050 liq 50074188046840591947412 token 0x2c9fb708e9840bc4d5227af5f4694a061490ad00 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 2 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 4 -160100 198050 50074188046840591947412 0x58daec31 0x5ab5e83e
+   swap +2 ti 1 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x1407bf2dd2 bn 84669643 ts 1791601479 from 0x26e8134ecc3af5cce32f34b03e7bd2f318b25158 nonce 63557 val 0.0 tick0 198050 liq 50074188046840591947412 token 0xbeb5fc5e41eb528de767c1c07849e23c9c74de14 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 2 -160100 198050 50074188046840591947412 0x58daec31 0xcb8237b3
+   swap +3 ti 2 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xb6e7b477de bn 84669674 ts 1791601482 from 0x26e8134ecc3af5cce32f34b03e7bd2f318b25158 nonce 63561 val 0.0 tick0 198050 liq 50074188046840591947412 token 0x5bab2149eab914d0600fdc99184ee486e5344d84 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 2 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 1 -160100 198050 50074188046840591947412 0x58daec31 0xd6852a0c
+   swap +2 ti 1 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x12a4539ca6 bn 84669705 ts 1791601486 from 0x26e8134ecc3af5cce32f34b03e7bd2f318b25158 nonce 63565 val 0.0 tick0 198050 liq 50074188046840591947412 token 0x4dce865018e5508f98da8a161d929bfe8c5824b3 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 3 -160100 198050 50074188046840591947412 0x58daec31 0x7b25508f
+   swap +3 ti 3 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x7568c0c707 bn 84669734 ts 1791601489 from 0x26e8134ecc3af5cce32f34b03e7bd2f318b25158 nonce 63569 val 0.0 tick0 198050 liq 50074188046840591947412 token 0xd68383a5034375cf2fec6f452d135b3a78d604a6 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.998e-06 pull_rel None pull_to None None None
+   add 0 2 -160100 198050 50074188046840591947412 0x58daec31 0x4f15757d
+   swap +3 ti 1 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x1a62499a64 bn 84669767 ts 1791601492 from 0x26e8134ecc3af5cce32f34b03e7bd2f318b25158 nonce 63573 val 0.0 tick0 198050 liq 50074188046840591947412 token 0xd2e742a9e9363e61aff60d89ae931bdcd5eb4de2 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 4 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 8 -160100 198050 50074188046840591947412 0x58daec31 0x36ed9fd1
+   swap +4 ti 6 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x597bb5b1f3 bn 84669799 ts 1791601495 from 0x26e8134ecc3af5cce32f34b03e7bd2f318b25158 nonce 63577 val 0.0 tick0 198050 liq 50074188046840591947412 token 0xb20e32973be139fb6d5e61e76825fde117b3efac created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 38 -160100 198050 50074188046840591947412 0x58daec31 0x261091b7
+   swap +3 ti 5 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xb5f5af200a bn 84669830 ts 1791601498 from 0x26e8134ecc3af5cce32f34b03e7bd2f318b25158 nonce 63581 val 0.0 tick0 198050 liq 50074188046840591947412 token 0x8b18476706d4ef458e93b5e75b04df64a93a732e created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 1 -160100 198050 50074188046840591947412 0x58daec31 0x2517e3d8
+   swap +3 ti 1 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xd495c23221 bn 84669863 ts 1791601502 from 0x26e8134ecc3af5cce32f34b03e7bd2f318b25158 nonce 63585 val 0.0 tick0 198050 liq 50074188046840591947412 token 0xe11d860ab7461743ff946422b771ea68763df496 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.998e-06 pull_rel None pull_to None None None
+   add 0 1 -160100 198050 50074188046840591947412 0x58daec31 0x04a173b6
+   swap +3 ti 3 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+====================================================================================================
+0x3493ab3ec9358cb77b335507248c68fcaa84bf5e|7fde822e|804|10000|200|true
+{'count': 10, 'launch_to': '0x3493ab3ec9358cb77b335507248c68fcaa84bf5e', 'selector': '7fde822e', 'calldata_len': 804, 'values_eth': [0.0], 'value_counts': [[0.0, 10]], 'fee': 10000, 'tick_spacing': 200, 'hooks_zero': True, 'hooks': ['0x0000000000000000000000000000000000000000'], 'known': 'none', 'known_by_rule': 'none', 'vbot_router_buy_pools': 0, 'vbot_router_pull_pools': 0, 'n_deployers': 1, 'top_deployers': [['0x06cb3a6841c92525e7a1998328e7c9d37e98d937', 10]], 'nonce_med': 1907.5, 'nonce0': 0, 'first_block': 83697932, 'last_block': 83747409, 'to_code_size': 19028, 'to_code_hash': '0d7bb269a0a3591979f638381c164d83e1852c0d8b03233de479a6ab713c5099', 'n_with_events': 10, 'swap_tx_to_top': [['0x8876789976decbfcbbbe364623c63652db8c0904', 10]], 'first_pull_to_sel_top': [], 'first_buy_rel_p10_50_90': [2, 3, 3], 'first_pull_rel_p10_50_90': None, 'first_buy_eth_p10_50_90': [1.998e-06, 1.999e-06, 2e-06], 'n_no_pull_in_window': 10}
+-- pool 0x1a231c31cc bn 83697932 ts 1791501810 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 1900 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xdbc71cc2f5bcfd5094be204258778ac1b408f04b created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.998e-06 pull_rel None pull_to None None None
+   add 0 9 132800 201800 32156000099526845215062 0x3493ab3e 0x975dad8b
+   swap +3 ti 6 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xdb8e4eb07e bn 83706368 ts 1791502674 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 1903 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xdeab5e368f8b4e4bcf0defcf37b790c4d454d2b7 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 7 132800 201800 32156000099526845215062 0x3493ab3e 0x44767fa4
+   swap +3 ti 8 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x6a8102a1c2 bn 83709312 ts 1791502975 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 1904 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x05638e35981dbe8f675be9e99e251a386019432b created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 2 132800 201800 32156000099526845215062 0x3493ab3e 0x53422d03
+   swap +3 ti 2 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x63def7aaad bn 83712353 ts 1791503285 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 1905 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x3047aac809293c3a271606efed1787b7dff40cde created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.998e-06 pull_rel None pull_to None None None
+   add 0 3 132800 201800 32156000099526845215062 0x3493ab3e 0x4a65ec1f
+   swap +3 ti 4 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xafedec0e61 bn 83715190 ts 1791503574 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 1906 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x1d358914c1478a86a47e5a11a7ae381a101d6f42 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 6 132800 201800 32156000099526845215062 0x3493ab3e 0x4ccec2c1
+   swap +3 ti 2 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xb44f4843e8 bn 83724021 ts 1791504477 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 1909 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x62a036f2ffe277e113f0bf13564daf1d9100266b created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 13 132800 201800 32156000099526845215062 0x3493ab3e 0xe31992f3
+   swap +3 ti 2 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xc8ac9535f5 bn 83726903 ts 1791504772 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 1910 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x65201cffb31ac62541e784c5390b34c235ff75d7 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 5 132800 201800 32156000099526845215062 0x3493ab3e 0xb0672e64
+   swap +3 ti 3 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xe261740e50 bn 83729831 ts 1791505074 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 1911 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x74c12c8bf8dc1d8bf2676e7920dfa88a3ca2831b created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 2 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 3 132800 201800 32156000099526845215062 0x3493ab3e 0xc01ad933
+   swap +2 ti 1 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x8d0fb0d391 bn 83735690 ts 1791505675 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 1913 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x7d6f14ee7335e692fc49ad677a5f226139837ef4 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 1 132800 201800 32156000099526845215062 0x3493ab3e 0x46845a09
+   swap +3 ti 3 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x87fcfc8b9f bn 83747409 ts 1791506873 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 1917 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x583b1cba82ff9b156875091c4a543209854e280c created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 1 132800 201800 32156000099526845215062 0x3493ab3e 0xe1de7c2b
+   swap +3 ti 2 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+====================================================================================================
+0xd912ed6ccd65370d2ef23c783bd2096e6ddbd68f|7fde822e|804|10000|200|true
+{'count': 10, 'launch_to': '0xd912ed6ccd65370d2ef23c783bd2096e6ddbd68f', 'selector': '7fde822e', 'calldata_len': 804, 'values_eth': [0.0], 'value_counts': [[0.0, 10]], 'fee': 10000, 'tick_spacing': 200, 'hooks_zero': True, 'hooks': ['0x0000000000000000000000000000000000000000'], 'known': 'none', 'known_by_rule': 'none', 'vbot_router_buy_pools': 0, 'vbot_router_pull_pools': 0, 'n_deployers': 1, 'top_deployers': [['0x06cb3a6841c92525e7a1998328e7c9d37e98d937', 10]], 'nonce_med': 2036.0, 'nonce0': 0, 'first_block': 84122909, 'last_block': 84169985, 'to_code_size': 19028, 'to_code_hash': '27f33e288d6c536e1e1db4ef8a7f2d59b722c90800f97e6399dcf705165bdd29', 'n_with_events': 10, 'swap_tx_to_top': [['0x8876789976decbfcbbbe364623c63652db8c0904', 10]], 'first_pull_to_sel_top': [], 'first_buy_rel_p10_50_90': [2, 3, 3], 'first_pull_rel_p10_50_90': None, 'first_buy_eth_p10_50_90': [1.998e-06, 1.999e-06, 2e-06], 'n_no_pull_in_window': 10}
+-- pool 0xafda2847b3 bn 84122909 ts 1791545482 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 2029 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xb39080d75fd6f45662ed700ce294fb925bbc3673 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 3 132800 201800 32156000099526845215062 0xd912ed6c 0xd83486e6
+   swap +3 ti 8 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xd875f64b5b bn 84125845 ts 1791545782 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 2030 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x6fce35cc5f6877dc38779734cbd961d167bf926e created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 3 132800 201800 32156000099526845215062 0xd912ed6c 0xd6c34281
+   swap +3 ti 4 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x56b9a759be bn 84128783 ts 1791546083 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 2031 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x91aedd3d3347af32e742a59ec6f13cf9e7de4547 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 6 132800 201800 32156000099526845215062 0xd912ed6c 0x889a06c2
+   swap +3 ti 1 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x9f6bc01061 bn 84131699 ts 1791546383 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 2032 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xa16f6686bb3a212c520307f0b51cacb012f41249 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 2 132800 201800 32156000099526845215062 0xd912ed6c 0x034dd567
+   swap +3 ti 8 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x0fec4c0f3d bn 84140477 ts 1791547281 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 2035 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x13d07c0320e88280d82e692079a45bbc6c03b47a created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 5 132800 201800 32156000099526845215062 0xd912ed6c 0xa893e853
+   swap +3 ti 2 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xd21d083735 bn 84146443 ts 1791547887 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 2037 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xab43e2028c31c4b4be308371843bb59480da6b8a created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.998e-06 pull_rel None pull_to None None None
+   add 0 1 132800 201800 32156000099526845215062 0xd912ed6c 0x69c11732
+   swap +3 ti 3 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x2cbb99dc6a bn 84155301 ts 1791548787 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 2040 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x578b0e5791061bc034775537af966b4ac174d7f2 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 2e-06 pull_rel None pull_to None None None
+   add 0 1 132800 201800 32156000099526845215062 0xd912ed6c 0x68e4c087
+   swap +3 ti 6 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x5d3dc8029f bn 84161155 ts 1791549385 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 2042 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xe9fb221fef80b0973f341ca577d714a672344de1 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.998e-06 pull_rel None pull_to None None None
+   add 0 2 132800 201800 32156000099526845215062 0xd912ed6c 0x686cf935
+   swap +3 ti 6 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0xa922a8d6fe bn 84164076 ts 1791549681 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 2043 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x259072f99b1d2b3180d634e771516e680e6c3ce2 created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 2 fb_eth 1.999e-06 pull_rel None pull_to None None None
+   add 0 2 132800 201800 32156000099526845215062 0xd912ed6c 0x6d6a3c5a
+   swap +2 ti 10 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+-- pool 0x4f9be5e04f bn 84169985 ts 1791550283 from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 nonce 2045 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x8d8a285309d3c522de83c0b0811c812abf6acd6c created None
+   n_swaps 1 buys 1 sells 0 pulls 0 adds 1 fb_rel 3 fb_eth 1.998e-06 pull_rel None pull_to None None None
+   add 0 4 132800 201800 32156000099526845215062 0xd912ed6c 0x2bcdb93f
+   swap +3 ti 3 BUY  a0 0.000002 fee 10000 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+====================================================================================================
+create|60808060|3740|2500|25|true
+{'count': 10, 'launch_to': 'create', 'selector': '60808060', 'calldata_len': 3740, 'values_eth': [2.0, 3.3, 3.4, 3.5], 'value_counts': [[3.4, 4], [2.0, 3], [3.5, 2], [3.3, 1]], 'fee': 2500, 'tick_spacing': 25, 'hooks_zero': True, 'hooks': ['0x0000000000000000000000000000000000000000'], 'known': 'none', 'known_by_rule': 'none', 'vbot_router_buy_pools': 0, 'vbot_router_pull_pools': 0, 'n_deployers': 2, 'top_deployers': [['0xbbd6d3e018386b28de3730902217bb85b25372ce', 7], ['0x735b5c42ab813460c5616d42bf42464a5f116f55', 3]], 'nonce_med': 626.5, 'nonce0': 0, 'first_block': 83727233, 'last_block': 84175294, 'to_code_size': 0, 'to_code_hash': None, 'n_with_events': 10, 'swap_tx_to_top': [['0x8876789976decbfcbbbe364623c63652db8c0904', 10], ['0x9689992f5b5c09447f15906d8d11214944488341', 2], ['0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc', 2], ['0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd', 2], ['0xff3589e8aceed833d3cdd392c0900873fadefc4c', 1]], 'first_pull_to_sel_top': [], 'first_buy_rel_p10_50_90': [0, 0, 0], 'first_pull_rel_p10_50_90': None, 'first_buy_eth_p10_50_90': [2.0, 3.4, 3.5], 'n_no_pull_in_window': 10}
+-- pool 0xd86e2ddd52 bn 83727233 ts 1791504807 from 0xbbd6d3e018386b28de3730902217bb85b25372ce nonce 543 val 2.0 tick0 198050 liq 50074188046840591947412 token 0x6b7a6bb23f96d175442e0a26518fbc8caad9561d created 0x4e325406e0718f1f792eba70eaf8483df24222cb
+   n_swaps 504 buys 496 sells 8 pulls 0 adds 1 fb_rel 0 fb_eth 2.0 pull_rel None pull_to None None None
+   add 0 1 -160100 198050 50074188046840591947412 0x58daec31 0x355c6461
+   swap +0 ti 1 BUY  a0 2.000000 fee 2500 sender 0x88767899 to None from 0xbbd6d3e018386b28de3730902217bb85b25372ce sel 60808060
+   swap +3 ti 4 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+   swap +28 ti 1 BUY  a0 0.008400 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9909d019032fbaa169ecad03b38c17d8a2a9d1f8 sel 3593564c
+   swap +231 ti 2 BUY  a0 0.021000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9f6550ebe9ffd8971718eb2156ee181c28999eab sel 3593564c
+   swap +232 ti 4 BUY  a0 0.002400 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xf7edc24925a50cb190966000ad9a642eae9aec21 sel 3593564c
+   swap +236 ti 2 BUY  a0 0.000090 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x0b410a5f0594fd4500acccd4b97b91da8987c40c sel 3593564c
+   swap +240 ti 1 BUY  a0 0.000040 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x66a51cca839825efff7af7cb7b41146d711e9c25 sel 3593564c
+   swap +241 ti 6 BUY  a0 0.002500 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xc735c70d9d484f2e2bb6c01b626f9b6d92e1122a sel 3593564c
+   swap +249 ti 3 BUY  a0 0.002700 fee 2500 sender 0x88767899 to None from None sel None
+   swap +260 ti 3 BUY  a0 0.002900 fee 2500 sender 0x88767899 to None from None sel None
+   swap +262 ti 2 BUY  a0 0.000030 fee 2500 sender 0x88767899 to None from None sel None
+   swap +268 ti 2 BUY  a0 0.002700 fee 2500 sender 0x88767899 to None from None sel None
+   swap +272 ti 2 BUY  a0 0.031000 fee 2500 sender 0x88767899 to None from None sel None
+   swap +275 ti 1 BUY  a0 0.000040 fee 2500 sender 0x88767899 to None from None sel None
+-- pool 0xf200fc8ad9 bn 83743963 ts 1791506522 from 0xbbd6d3e018386b28de3730902217bb85b25372ce nonce 624 val 3.4 tick0 198050 liq 50074188046840591947412 token 0x786e77824fe5d956fb638afad77a69c103053e8e created 0x218aa2dcf49bc9d4532037c3af33e221503af672
+   n_swaps 642 buys 455 sells 187 pulls 0 adds 2 fb_rel 0 fb_eth 3.4 pull_rel None pull_to None None None
+   add 0 3 -160100 198050 50074188046840591947412 0x58daec31 0xa3629c5f
+   add 2786 2 -160100 198050 100000000000000000000 0x58daec31 0x0cce1724
+   swap +0 ti 3 BUY  a0 3.400000 fee 2500 sender 0x88767899 to None from 0xbbd6d3e018386b28de3730902217bb85b25372ce sel 60808060
+   swap +3 ti 2 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+   swap +48 ti 2 BUY  a0 0.008400 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9909d019032fbaa169ecad03b38c17d8a2a9d1f8 sel 3593564c
+   swap +107 ti 4 BUY  a0 0.001000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xb8c4eeab9ff0dada19d108385ab84da4d8beb435 sel 3593564c
+   swap +340 ti 1 BUY  a0 0.003100 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xf7edc24925a50cb190966000ad9a642eae9aec21 sel 3593564c
+   swap +341 ti 6 BUY  a0 0.024000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9f6550ebe9ffd8971718eb2156ee181c28999eab sel 3593564c
+   swap +343 ti 2 BUY  a0 0.003100 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xc735c70d9d484f2e2bb6c01b626f9b6d92e1122a sel 3593564c
+   swap +347 ti 1 BUY  a0 0.000020 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x66a51cca839825efff7af7cb7b41146d711e9c25 sel 3593564c
+   swap +349 ti 6 BUY  a0 0.000090 fee 2500 sender 0x88767899 to None from None sel None
+   swap +357 ti 1 BUY  a0 0.003000 fee 2500 sender 0x88767899 to None from None sel None
+   swap +361 ti 3 BUY  a0 0.000040 fee 2500 sender 0x88767899 to None from None sel None
+   swap +364 ti 1 BUY  a0 0.002300 fee 2500 sender 0x88767899 to None from None sel None
+   swap +371 ti 3 BUY  a0 0.003000 fee 2500 sender 0x88767899 to None from None sel None
+   swap +377 ti 3 BUY  a0 0.000040 fee 2500 sender 0x88767899 to None from None sel None
+-- pool 0xda550e8c66 bn 83748724 ts 1791507009 from 0xbbd6d3e018386b28de3730902217bb85b25372ce nonce 629 val 3.5 tick0 198050 liq 50074188046840591947412 token 0x02e3468f8f97aa05705896018f9cd0746bbc95bd created 0x0df7868f277f172df6303ad483d17ff793b043d7
+   n_swaps 533 buys 522 sells 11 pulls 0 adds 1 fb_rel 0 fb_eth 3.5 pull_rel None pull_to None None None
+   add 0 1 -160100 198050 50074188046840591947412 0x58daec31 0xc0a482fc
+   swap +0 ti 1 BUY  a0 3.500000 fee 2500 sender 0x88767899 to None from 0xbbd6d3e018386b28de3730902217bb85b25372ce sel 60808060
+   swap +2 ti 2 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+   swap +88 ti 2 BUY  a0 0.002000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xc56a36ee45fc84aa9ad6968c6e1b8a37e5b378c2 sel 3593564c
+   swap +99 ti 1 BUY  a0 0.024000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9f6550ebe9ffd8971718eb2156ee181c28999eab sel 3593564c
+   swap +107 ti 2 BUY  a0 0.001000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xb8c4eeab9ff0dada19d108385ab84da4d8beb435 sel 3593564c
+   swap +108 ti 3 BUY  a0 0.003100 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xf7edc24925a50cb190966000ad9a642eae9aec21 sel 3593564c
+   swap +113 ti 3 BUY  a0 0.000020 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x66a51cca839825efff7af7cb7b41146d711e9c25 sel 3593564c
+   swap +114 ti 1 BUY  a0 0.000070 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x0b410a5f0594fd4500acccd4b97b91da8987c40c sel 3593564c
+   swap +120 ti 1 BUY  a0 0.002800 fee 2500 sender 0x88767899 to None from None sel None
+   swap +131 ti 7 BUY  a0 0.002100 fee 2500 sender 0x88767899 to None from None sel None
+   swap +134 ti 3 BUY  a0 0.002500 fee 2500 sender 0x88767899 to None from None sel None
+   swap +139 ti 4 BUY  a0 0.000030 fee 2500 sender 0x88767899 to None from None sel None
+   swap +145 ti 2 BUY  a0 0.034000 fee 2500 sender 0x88767899 to None from None sel None
+   swap +146 ti 2 BUY  a0 0.002200 fee 2500 sender 0x88767899 to None from None sel None
+-- pool 0x3ac16c279c bn 83781538 ts 1791510356 from 0xbbd6d3e018386b28de3730902217bb85b25372ce nonce 714 val 3.4 tick0 198050 liq 50074188046840591947412 token 0xc4d82967db799ad75a6a29ba0b666cdac53f0e3d created 0x0982bef0fa6a46ac7d2abb76cef08c8db1a64365
+   n_swaps 520 buys 510 sells 10 pulls 0 adds 1 fb_rel 0 fb_eth 3.4 pull_rel None pull_to None None None
+   add 0 1 -160100 198050 50074188046840591947412 0x58daec31 0xd4664e32
+   swap +0 ti 1 BUY  a0 3.400000 fee 2500 sender 0x88767899 to None from 0xbbd6d3e018386b28de3730902217bb85b25372ce sel 60808060
+   swap +3 ti 3 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+   swap +78 ti 2 BUY  a0 0.002628 fee 2500 sender 0x9689992f to 0x9689992f5b5c09447f15906d8d11214944488341 from 0x6b954abc45ab0e1b8fa72a08641bbad25cd7c2d7 sel 3e0f9c3c
+   swap +78 ti 3 BUY  a0 0.002322 fee 2500 sender 0x9689992f to 0x9689992f5b5c09447f15906d8d11214944488341 from 0xcc820e90cd6f8f92da84ba3099ebcec51109ce04 sel 3e0f9c3c
+   swap +85 ti 1 BUY  a0 0.034000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9f6550ebe9ffd8971718eb2156ee181c28999eab sel 3593564c
+   swap +89 ti 3 BUY  a0 0.000090 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x0b410a5f0594fd4500acccd4b97b91da8987c40c sel 3593564c
+   swap +101 ti 5 BUY  a0 0.002900 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xf7edc24925a50cb190966000ad9a642eae9aec21 sel 3593564c
+   swap +104 ti 1 BUY  a0 0.001000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xb8c4eeab9ff0dada19d108385ab84da4d8beb435 sel 3593564c
+   swap +107 ti 1 BUY  a0 0.000030 fee 2500 sender 0x88767899 to None from None sel None
+   swap +116 ti 1 BUY  a0 0.002200 fee 2500 sender 0x88767899 to None from None sel None
+   swap +116 ti 5 BUY  a0 0.002200 fee 2500 sender 0x88767899 to None from None sel None
+   swap +122 ti 3 SELL a0 -0.002655 fee 2500 sender 0x9689992f to None from None sel None
+   swap +122 ti 4 SELL a0 -0.002341 fee 2500 sender 0x9689992f to None from None sel None
+   swap +124 ti 3 BUY  a0 0.000030 fee 2500 sender 0x88767899 to None from None sel None
+-- pool 0x00c015183f bn 83852139 ts 1791517586 from 0xbbd6d3e018386b28de3730902217bb85b25372ce nonce 869 val 3.4 tick0 198050 liq 50074188046840591947412 token 0x2282c5d5022ab080429f2d94faf7228226d03782 created 0xb0b51bae064ba9ffaee0aff0a580503b9087cd96
+   n_swaps 443 buys 437 sells 6 pulls 0 adds 1 fb_rel 0 fb_eth 3.4 pull_rel None pull_to None None None
+   add 0 1 -160100 198050 50074188046840591947412 0x58daec31 0x01fdb299
+   swap +0 ti 1 BUY  a0 3.400000 fee 2500 sender 0x88767899 to None from 0xbbd6d3e018386b28de3730902217bb85b25372ce sel 60808060
+   swap +3 ti 1 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+   swap +23 ti 1 BUY  a0 0.008400 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9909d019032fbaa169ecad03b38c17d8a2a9d1f8 sel 3593564c
+   swap +91 ti 2 BUY  a0 0.002000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xc56a36ee45fc84aa9ad6968c6e1b8a37e5b378c2 sel 3593564c
+   swap +113 ti 5 BUY  a0 0.000792 fee 2500 sender 0x65050a9b to 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc from 0xdb8d910421363ea39c5a0988b9898f79e315032e sel 4d819a2a
+   swap +114 ti 3 BUY  a0 0.027000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9f6550ebe9ffd8971718eb2156ee181c28999eab sel 3593564c
+   swap +118 ti 1 BUY  a0 0.000070 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x0b410a5f0594fd4500acccd4b97b91da8987c40c sel 3593564c
+   swap +120 ti 4 BUY  a0 0.002900 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xf7edc24925a50cb190966000ad9a642eae9aec21 sel 3593564c
+   swap +131 ti 1 BUY  a0 0.000030 fee 2500 sender 0x88767899 to None from None sel None
+   swap +138 ti 2 BUY  a0 0.003100 fee 2500 sender 0x88767899 to None from None sel None
+   swap +147 ti 2 BUY  a0 0.003100 fee 2500 sender 0x88767899 to None from None sel None
+   swap +160 ti 11 BUY  a0 0.002700 fee 2500 sender 0x88767899 to None from None sel None
+   swap +161 ti 2 BUY  a0 0.000020 fee 2500 sender 0x88767899 to None from None sel None
+   swap +162 ti 4 BUY  a0 0.002900 fee 2500 sender 0x88767899 to None from None sel None
+-- pool 0xe495a6647e bn 83866635 ts 1791519082 from 0xbbd6d3e018386b28de3730902217bb85b25372ce nonce 953 val 2.0 tick0 198050 liq 50074188046840591947412 token 0x6625391aa9f599f6c3b40463259d06a1bf434d93 created 0x8104db7d14e77875d3e545ea0f66040d5076ecf7
+   n_swaps 9 buys 6 sells 3 pulls 0 adds 2 fb_rel 0 fb_eth 2.0 pull_rel None pull_to None None None
+   add 0 1 -160100 198050 50074188046840591947412 0x58daec31 0xa96254a0
+   add 138 1 -160100 198050 100000000000000000000 0x58daec31 0x90e6712a
+   swap +0 ti 1 BUY  a0 2.000000 fee 2500 sender 0x88767899 to None from 0xbbd6d3e018386b28de3730902217bb85b25372ce sel 60808060
+   swap +3 ti 2 BUY  a0 0.011880 fee 2500 sender 0x65050a9b to 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc from 0xa2dbae1584afb18979e7c6357ac417a1eb2c7b85 sel 4d819a2a
+   swap +3 ti 3 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+   swap +47 ti 6 BUY  a0 0.008400 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9909d019032fbaa169ecad03b38c17d8a2a9d1f8 sel 3593564c
+   swap +77 ti 2 BUY  a0 0.002000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xc56a36ee45fc84aa9ad6968c6e1b8a37e5b378c2 sel 3593564c
+   swap +137 ti 3 SELL a0 -2.007552 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xbbd6d3e018386b28de3730902217bb85b25372ce sel 3593564c
+   swap +138 ti 1 BUY  a0 0.002235 fee 2500 sender 0xff3589e8 to 0xff3589e8aceed833d3cdd392c0900873fadefc4c from 0x5d8d2230f8e29b37410373f6f4f7d40062c7e78a sel 84aba1ff
+   swap +140 ti 2 SELL a0 -0.002596 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9909d019032fbaa169ecad03b38c17d8a2a9d1f8 sel 3593564c
+   swap +158 ti 1 SELL a0 -0.000616 fee 2500 sender 0x88767899 to None from None sel None
+-- pool 0xe92abb9b34 bn 83867140 ts 1791519134 from 0xbbd6d3e018386b28de3730902217bb85b25372ce nonce 957 val 2.0 tick0 198050 liq 50074188046840591947412 token 0x8b40faabf6695e642f46cad30ce596e59fd7c25d created 0xc1ec41ed2854a4df2dce7d715dd9f32267ff197f
+   n_swaps 520 buys 509 sells 11 pulls 0 adds 1 fb_rel 0 fb_eth 2.0 pull_rel None pull_to None None None
+   add 0 2 -160100 198050 50074188046840591947412 0x58daec31 0xa40997b0
+   swap +0 ti 2 BUY  a0 2.000000 fee 2500 sender 0x88767899 to None from 0xbbd6d3e018386b28de3730902217bb85b25372ce sel 60808060
+   swap +3 ti 2 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+   swap +24 ti 32 BUY  a0 0.008400 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9909d019032fbaa169ecad03b38c17d8a2a9d1f8 sel 3593564c
+   swap +27 ti 2 BUY  a0 0.001980 fee 2500 sender 0xb1000000 to 0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd from 0x83ff8e81fd29de9bfc8cb312f6734f33e385eed4 sel 549299b8
+   swap +164 ti 1 BUY  a0 0.033000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9f6550ebe9ffd8971718eb2156ee181c28999eab sel 3593564c
+   swap +167 ti 3 BUY  a0 0.002300 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xf7edc24925a50cb190966000ad9a642eae9aec21 sel 3593564c
+   swap +177 ti 4 BUY  a0 0.000030 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x66a51cca839825efff7af7cb7b41146d711e9c25 sel 3593564c
+   swap +180 ti 1 BUY  a0 0.003100 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xc735c70d9d484f2e2bb6c01b626f9b6d92e1122a sel 3593564c
+   swap +185 ti 5 BUY  a0 0.002500 fee 2500 sender 0x88767899 to None from None sel None
+   swap +194 ti 6 BUY  a0 0.000040 fee 2500 sender 0x88767899 to None from None sel None
+   swap +196 ti 1 BUY  a0 0.002500 fee 2500 sender 0x88767899 to None from None sel None
+   swap +207 ti 1 BUY  a0 0.031000 fee 2500 sender 0x88767899 to None from None sel None
+   swap +208 ti 1 BUY  a0 0.002300 fee 2500 sender 0x88767899 to None from None sel None
+   swap +217 ti 1 BUY  a0 0.002300 fee 2500 sender 0x88767899 to None from None sel None
+-- pool 0xfb0185a7c8 bn 84160156 ts 1791549283 from 0x735b5c42ab813460c5616d42bf42464a5f116f55 nonce 470 val 3.3 tick0 198050 liq 50074188046840591947412 token 0xe60e80ad5ce132d447e8499e19e6f6f187571619 created 0x68112f6ab10658588d0a2f54ea1e9b86dab1693d
+   n_swaps 176 buys 92 sells 84 pulls 0 adds 2 fb_rel 0 fb_eth 3.3 pull_rel None pull_to None None None
+   add 0 1 -160100 198050 50074188046840591947412 0x58daec31 0x00a70ff9
+   add 599 4 -160100 198050 100000000000000000000 0x58daec31 0x9d328323
+   swap +0 ti 1 BUY  a0 3.300000 fee 2500 sender 0x88767899 to None from 0x735b5c42ab813460c5616d42bf42464a5f116f55 sel 60808060
+   swap +3 ti 4 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+   swap +42 ti 2 BUY  a0 0.008400 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9909d019032fbaa169ecad03b38c17d8a2a9d1f8 sel 3593564c
+   swap +45 ti 1 BUY  a0 0.001980 fee 2500 sender 0xb1000000 to 0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd from 0x83ff8e81fd29de9bfc8cb312f6734f33e385eed4 sel 549299b8
+   swap +115 ti 1 BUY  a0 0.002600 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xa753b8eca9543e6354e84eab4116127d847fb5de sel 3593564c
+   swap +126 ti 3 BUY  a0 0.003100 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x8c80ee5efb297c1e797c87427fac0c44074e96ea sel 3593564c
+   swap +135 ti 2 BUY  a0 0.000030 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x66a51cca839825efff7af7cb7b41146d711e9c25 sel 3593564c
+   swap +135 ti 8 BUY  a0 0.002800 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x69f42771fa050528478705c206309461fc7c3543 sel 3593564c
+   swap +143 ti 1 BUY  a0 0.000040 fee 2500 sender 0x88767899 to None from None sel None
+   swap +144 ti 8 BUY  a0 0.000494 fee 2500 sender 0x88767899 to None from None sel None
+   swap +150 ti 1 BUY  a0 0.003100 fee 2500 sender 0x88767899 to None from None sel None
+   swap +157 ti 2 BUY  a0 0.002700 fee 2500 sender 0x88767899 to None from None sel None
+   swap +165 ti 2 BUY  a0 0.002600 fee 2500 sender 0x88767899 to None from None sel None
+   swap +165 ti 3 BUY  a0 0.000040 fee 2500 sender 0x88767899 to None from None sel None
+-- pool 0x623493ff1d bn 84161480 ts 1791549418 from 0x735b5c42ab813460c5616d42bf42464a5f116f55 nonce 474 val 3.5 tick0 198050 liq 50074188046840591947412 token 0xf704ae9697351b41ea66af205ec0879580bbe140 created 0x30aaf3de7fc30594f9126d76165962b5e5680731
+   n_swaps 501 buys 497 sells 4 pulls 0 adds 1 fb_rel 0 fb_eth 3.5 pull_rel None pull_to None None None
+   add 0 2 -160100 198050 50074188046840591947412 0x58daec31 0x9c5706e4
+   swap +0 ti 2 BUY  a0 3.500000 fee 2500 sender 0x88767899 to None from 0x735b5c42ab813460c5616d42bf42464a5f116f55 sel 60808060
+   swap +2 ti 4 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+   swap +109 ti 2 BUY  a0 0.001650 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xc56a36ee45fc84aa9ad6968c6e1b8a37e5b378c2 sel 3593564c
+   swap +123 ti 3 BUY  a0 0.003000 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xa753b8eca9543e6354e84eab4116127d847fb5de sel 3593564c
+   swap +128 ti 6 BUY  a0 0.000030 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x66a51cca839825efff7af7cb7b41146d711e9c25 sel 3593564c
+   swap +131 ti 1 BUY  a0 0.002500 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x8c80ee5efb297c1e797c87427fac0c44074e96ea sel 3593564c
+   swap +147 ti 1 BUY  a0 0.002100 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x69f42771fa050528478705c206309461fc7c3543 sel 3593564c
+   swap +147 ti 4 BUY  a0 0.000030 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x211f25b9f4938828b628f9373016a0ead6b7cbf2 sel 3593564c
+   swap +151 ti 4 BUY  a0 0.002100 fee 2500 sender 0x88767899 to None from None sel None
+   swap +157 ti 1 BUY  a0 0.002700 fee 2500 sender 0x88767899 to None from None sel None
+   swap +165 ti 3 BUY  a0 0.000020 fee 2500 sender 0x88767899 to None from None sel None
+   swap +175 ti 4 BUY  a0 0.002800 fee 2500 sender 0x88767899 to None from None sel None
+   swap +178 ti 3 BUY  a0 0.003100 fee 2500 sender 0x88767899 to None from None sel None
+   swap +186 ti 3 BUY  a0 0.002900 fee 2500 sender 0x88767899 to None from None sel None
+-- pool 0x5e97889490 bn 84175294 ts 1791550821 from 0x735b5c42ab813460c5616d42bf42464a5f116f55 nonce 555 val 3.4 tick0 198050 liq 50074188046840591947412 token 0x468c730ab39164a1c969043c56779133222cf019 created 0xdafb04a2ab2d73bc7b89090d476a4cd72f25abaa
+   n_swaps 305 buys 300 sells 5 pulls 0 adds 1 fb_rel 0 fb_eth 3.4 pull_rel None pull_to None None None
+   add 0 36 -160100 198050 50074188046840591947412 0x58daec31 0x2a12efa0
+   swap +0 ti 36 BUY  a0 3.400000 fee 2500 sender 0x88767899 to None from 0x735b5c42ab813460c5616d42bf42464a5f116f55 sel 60808060
+   swap +58 ti 37 BUY  a0 0.000002 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xe71a69f434a719cd5afa411568b69716aab3b84a sel 3593564c
+   swap +61 ti 55 BUY  a0 0.008400 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x9909d019032fbaa169ecad03b38c17d8a2a9d1f8 sel 3593564c
+   swap +73 ti 44 BUY  a0 0.004950 fee 2500 sender 0x9689992f to 0x9689992f5b5c09447f15906d8d11214944488341 from 0x6b954abc45ab0e1b8fa72a08641bbad25cd7c2d7 sel 3e0f9c3c
+   swap +122 ti 2 BUY  a0 0.001828 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xc56a36ee45fc84aa9ad6968c6e1b8a37e5b378c2 sel 3593564c
+   swap +670 ti 2 SELL a0 -0.004928 fee 2500 sender 0x9689992f to 0x9689992f5b5c09447f15906d8d11214944488341 from 0x6b954abc45ab0e1b8fa72a08641bbad25cd7c2d7 sel 3e0f9c3c
+   swap +1280 ti 7 BUY  a0 0.002300 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0xa753b8eca9543e6354e84eab4116127d847fb5de sel 3593564c
+   swap +1285 ti 2 BUY  a0 0.003100 fee 2500 sender 0x88767899 to 0x8876789976decbfcbbbe364623c63652db8c0904 from 0x8c80ee5efb297c1e797c87427fac0c44074e96ea sel 3593564c
+   swap +1288 ti 2 BUY  a0 0.000020 fee 2500 sender 0x88767899 to None from None sel None
+   swap +1293 ti 5 BUY  a0 0.002900 fee 2500 sender 0x88767899 to None from None sel None
+   swap +1303 ti 4 BUY  a0 0.002970 fee 2500 sender 0x9689992f to None from None sel None
+   swap +1310 ti 11 BUY  a0 0.000040 fee 2500 sender 0x88767899 to None from None sel None
+   swap +1312 ti 4 BUY  a0 0.002500 fee 2500 sender 0x88767899 to None from None sel None
+   swap +1312 ti 6 BUY  a0 0.002200 fee 2500 sender 0x88767899 to None from None sel None

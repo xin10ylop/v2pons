@@ -1,0 +1,180 @@
+{
+ "vbot-v2.433": {
+  "n": 1045,
+  "n_priced": 1045,
+  "real_mean": 0.08898402318934126,
+  "sim_matched_mean": 0.08866814214465298,
+  "diff_p10_50_90": [
+   -4.1e-05,
+   -0.0,
+   0.0
+  ],
+  "abs_diff_median": 3.3306690738754696e-16,
+  "within_0.5pt": 1045,
+  "B_rel": [
+   [
+    1,
+    1035
+   ],
+   [
+    2,
+    10
+   ]
+  ],
+  "worst": [
+   {
+    "pid": "0xb0f383c04228e4df11a6db21380e1cc6ecc09db724e7bb29e0ea049ba46ea1d8",
+    "B": 2,
+    "S": 3,
+    "stake": 0.0058,
+    "real": 0.003077502661209138,
+    "sim_S": -0.004987861578221207,
+    "sim_S1": -0.00096656995061,
+    "exit": "sold",
+    "swaps_before_sell_in_S": true,
+    "buy_ti_last": 2
+   },
+   {
+    "pid": "0x44607838018f12026f6413cb10f11681b788f27351c22bd90e634a022127e899",
+    "B": 1,
+    "S": 2,
+    "stake": 0.0058,
+    "real": 0.003075870524727069,
+    "sim_S": -0.004987861578221207,
+    "sim_S1": -0.0009681955146577586,
+    "exit": "sold",
+    "swaps_before_sell_in_S": true,
+    "buy_ti_last": 2
+   },
+   {
+    "pid": "0x93f0ae49ac3657a9271160faa9e1d3ca966452f950532868f2c67b8b20f42fdb",
+    "B": 1,
+    "S": 2,
+    "stake": 0.0058,
+    "real": 0.003075870524727069,
+    "sim_S": -0.004987861578221207,
+    "sim_S1": -0.0009681955146577586,
+    "exit": "sold",
+    "swaps_before_sell_in_S": true,
+    "buy_ti_last": 4
+   },
+   {
+    "pid": "0xe11ee6037630194435c08ed6587efdb3c7c54226675174bd949e0db1bc6ef09d",
+    "B": 1,
+    "S": 2,
+    "stake": 0.0058,
+    "real": 0.003075870524727069,
+    "sim_S": -0.004987861578221207,
+    "sim_S1": -0.0009681955146577586,
+    "exit": "sold",
+    "swaps_before_sell_in_S": true,
+    "buy_ti_last": 6
+   },
+   {
+    "pid": "0x56a4708fbaaf6654340bb265720ec6fe2da47cb818a6b39b5c990fdbc94a492f",
+    "B": 1,
+    "S": 2,
+    "stake": 0.0058,
+    "real": 0.003075870524727069,
+    "sim_S": -0.004987861578221207,
+    "sim_S1": -0.0009681955146577586,
+    "exit": "sold",
+    "swaps_before_sell_in_S": true,
+    "buy_ti_last": 3
+   }
+  ]
+ },
+ "operator-A": {
+  "n": 35,
+  "n_priced": 35,
+  "real_mean": 0.03883995433226848,
+  "sim_matched_mean": 0.03883995433226848,
+  "diff_p10_50_90": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "abs_diff_median": 0.0,
+  "within_0.5pt": 35,
+  "B_rel": [
+   [
+    51,
+    3
+   ],
+   [
+    45,
+    3
+   ],
+   [
+    24,
+    2
+   ],
+   [
+    56,
+    2
+   ]
+  ],
+  "worst": [
+   {
+    "pid": "0x43c1ce10255308476526cbb2da6e6a2a4ca723277fce5faa379035fa9b6c6dc9",
+    "B": 56,
+    "S": 59,
+    "stake": 0.0012,
+    "real": 0.03901331539391667,
+    "sim_S": 0.03901331539391583,
+    "sim_S1": 0.039064174323275,
+    "exit": "sold",
+    "swaps_before_sell_in_S": false,
+    "buy_ti_last": 3
+   },
+   {
+    "pid": "0x43711a79a072836df37a3a9c95074032c5122f4e2e9d88b876ffd04033eac8dc",
+    "B": 45,
+    "S": 48,
+    "stake": 0.0012,
+    "real": 0.013159499490699167,
+    "sim_S": -0.0009995524666883333,
+    "sim_S1": 0.013159499490698333,
+    "exit": "sold",
+    "swaps_before_sell_in_S": true,
+    "buy_ti_last": 1
+   },
+   {
+    "pid": "0xbe2a35f9f0bd033f6e901cc4df7e72bec9ba284171b6d9d8b181f9bedcb76fc6",
+    "B": 8,
+    "S": 11,
+    "stake": 0.0012,
+    "real": -0.0031904347372,
+    "sim_S": -0.003190434737200833,
+    "sim_S1": -0.003190434737200833,
+    "exit": "sold",
+    "swaps_before_sell_in_S": false,
+    "buy_ti_last": 2
+   },
+   {
+    "pid": "0x877cd2179c0d6552e793785ec7f32e351e45b8de07b0904095569a9ed634f6b7",
+    "B": 22,
+    "S": 25,
+    "stake": 0.0012,
+    "real": -0.005988684622966666,
+    "sim_S": -0.005988684622965834,
+    "sim_S1": -0.005988684622965834,
+    "exit": "sold",
+    "swaps_before_sell_in_S": false,
+    "buy_ti_last": 7
+   },
+   {
+    "pid": "0x3e14daaaa6acb61dcf1e95da5423cbdc98d6a0917dea19d92d1a14a01e008c9b",
+    "B": 49,
+    "S": 52,
+    "stake": 0.0012,
+    "real": 0.07196826765241,
+    "sim_S": 0.07196826765241084,
+    "sim_S1": 0.07196826765241084,
+    "exit": "sold",
+    "swaps_before_sell_in_S": false,
+    "buy_ti_last": 43
+   }
+  ]
+ }
+}

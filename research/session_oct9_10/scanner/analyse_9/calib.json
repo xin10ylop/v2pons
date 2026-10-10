@@ -1,0 +1,151 @@
+{
+ "v2433_front_botbuy": {
+  "n": 1843,
+  "mean": 0.11937,
+  "median": 0.14009,
+  "win": 0.9512,
+  "pulled_first": 0,
+  "exits": {
+   "sold": 1843
+  },
+  "usd_trade": 1.7906,
+  "trades_day": 921.8,
+  "usd_day": 1650.52,
+  "p10_50_90": [
+   0.0024,
+   0.1401,
+   0.2079
+  ],
+  "min": -0.0077,
+  "max": 0.2855
+ },
+ "v2433_front_first_real_buy": {
+  "n": 1843,
+  "mean": 0.10029,
+  "median": 0.11648,
+  "win": 0.732,
+  "pulled_first": 0,
+  "exits": {
+   "sold": 1843
+  },
+  "usd_trade": 1.5044,
+  "trades_day": 921.8,
+  "usd_day": 1386.69,
+  "p10_50_90": [
+   -0.0017,
+   0.1165,
+   0.2057
+  ],
+  "min": -0.0057,
+  "max": 0.2855
+ },
+ "v2433_follow": {
+  "n": 1842,
+  "mean": -0.35433,
+  "median": -0.00571,
+  "win": 0.0016,
+  "pulled_first": 646,
+  "exits": {
+   "sold": 1196,
+   "pulled_first": 646
+  },
+  "usd_trade": -5.315,
+  "trades_day": 921.3,
+  "usd_day": -4896.63,
+  "p10_50_90": [
+   -1.0007,
+   -0.0057,
+   -0.0057
+  ],
+  "min": -1.0008,
+  "max": 0.2503
+ },
+ "v2433_bot_buy_found": {
+  "true": 1842,
+  "false": 1
+ },
+ "v2433_sched_rel_p10_50_90": [
+  8,
+  9,
+  10
+ ],
+ "v2433_front_live_window": {
+  "n": 409,
+  "mean": 0.14027,
+  "median": 0.16173,
+  "win": 0.9902,
+  "pulled_first": 0,
+  "exits": {
+   "sold": 409
+  },
+  "usd_trade": 2.1041,
+  "trades_day": 204.6,
+  "usd_day": 430.42,
+  "p10_50_90": [
+   0.0349,
+   0.1617,
+   0.2283
+  ],
+  "min": -0.0057,
+  "max": 0.2855
+ },
+ "v2433_pools_with_our_relay": 1048,
+ "v2433_capacity": {
+  "n": 1842,
+  "total_eth_p10_50_90": [
+   0.012413,
+   0.012715,
+   0.012888
+  ],
+  "extra_eth_p10_50_90": [
+   0.005282,
+   0.012527,
+   0.012829
+  ],
+  "minout_over_launch_quote_p10_50_90": [
+   0.99,
+   0.99,
+   0.99
+  ]
+ },
+ "opA_follow": {
+  "n": 75,
+  "mean": 0.04333,
+  "median": 0.03268,
+  "win": 0.84,
+  "pulled_first": 0,
+  "exits": {
+   "sold": 75
+  },
+  "usd_trade": 0.65,
+  "trades_day": 37.5,
+  "usd_day": 24.38,
+  "p10_50_90": [
+   -0.0025,
+   0.0327,
+   0.0831
+  ],
+  "min": -0.0105,
+  "max": 0.414
+ },
+ "opA_front_first_real_buy": {
+  "n": 77,
+  "mean": 0.05807,
+  "median": 0.04281,
+  "win": 0.9221,
+  "pulled_first": 0,
+  "exits": {
+   "sold": 77
+  },
+  "usd_trade": 0.871,
+  "trades_day": 38.5,
+  "usd_day": 33.54,
+  "p10_50_90": [
+   0.0056,
+   0.0428,
+   0.1049
+  ],
+  "min": -0.005,
+  "max": 0.6156
+ }
+}

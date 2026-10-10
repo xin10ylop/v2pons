@@ -1,0 +1,4488 @@
+{
+ "controls": {
+  "v2433_front_bot_sched_all": {
+   "n": 1843,
+   "mean": 0.11858,
+   "median": 0.14008,
+   "win": 0.9457,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 1843
+   },
+   "usd_trade": 1.7787,
+   "trades_day": 921.79,
+   "usd_day": 1639.55,
+   "p10_50_90": [
+    0.00236,
+    0.14008,
+    0.20786
+   ],
+   "min": -0.00972,
+   "max": 0.28551
+  },
+  "v2433_sched_off_p10_50_90": [
+   8,
+   9,
+   10
+  ],
+  "v2433_front_livewindow_oct10_0907_1139": {
+   "n": 410,
+   "mean": 0.13949,
+   "median": 0.16173,
+   "win": 0.9854,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 410
+   },
+   "usd_trade": 2.0923,
+   "trades_day": 205.06,
+   "usd_day": 429.05,
+   "p10_50_90": [
+    0.03312,
+    0.16173,
+    0.22834
+   ],
+   "min": -0.00571,
+   "max": 0.28551
+  },
+  "v2433_front_generic_sched": {
+   "n": 1843,
+   "mean": 0.09967,
+   "median": 0.11,
+   "win": 0.7276,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 1843
+   },
+   "usd_trade": 1.4951,
+   "trades_day": 921.79,
+   "usd_day": 1378.13,
+   "p10_50_90": [
+    -0.00169,
+    0.11,
+    0.20573
+   ],
+   "min": -0.00972,
+   "max": 0.28551
+  },
+  "v2433_capacity_p10_50_90": [
+   0.012413,
+   0.012715,
+   0.012888
+  ],
+  "live_relay_calibration (our real relay round trips re-priced by the model)": {
+   "n": 1080,
+   "real_mean": 0.08736,
+   "model_mean": 0.08705,
+   "abs_diff_median": 3.3306690738754696e-16,
+   "within_0.5pt": 1080
+  },
+  "opA_follow": {
+   "n": 75,
+   "mean": 0.04337,
+   "median": 0.03268,
+   "win": 0.84,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 75
+   },
+   "usd_trade": 0.6505,
+   "trades_day": 37.51,
+   "usd_day": 24.4,
+   "p10_50_90": [
+    -0.00254,
+    0.03268,
+    0.08327
+   ],
+   "min": -0.01047,
+   "max": 0.41395
+  },
+  "opA_follow_trig_p10_50_90": [
+   24,
+   54,
+   66
+  ],
+  "gas_usd_per_trade_v2433_median": 0.01079
+ },
+ "F1_operator_rule": {
+  "launch_times_utc": [
+   "10-09 16:19",
+   "10-09 16:30",
+   "10-09 16:40",
+   "10-09 16:53",
+   "10-09 17:24",
+   "10-09 17:33",
+   "10-09 17:49",
+   "10-09 18:00",
+   "10-09 18:23",
+   "10-10 16:01",
+   "10-10 16:10",
+   "10-10 16:17",
+   "10-10 16:24",
+   "10-10 16:37",
+   "10-10 16:47",
+   "10-10 17:03",
+   "10-10 17:10",
+   "10-10 17:17",
+   "10-10 17:25",
+   "10-10 17:42",
+   "10-10 17:51",
+   "10-10 17:58"
+  ],
+  "F1 (fee 500, 5 pools)": {
+   "front_k8": {
+    "n": 5,
+    "mean": 0.48265,
+    "median": 0.44785,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": 7.2397,
+    "trades_day": 2.5,
+    "usd_day": 18.1,
+    "p10_50_90": [
+     0.37528,
+     0.44785,
+     0.74136
+    ],
+    "min": 0.37528,
+    "max": 0.74136
+   },
+   "front_k9": {
+    "n": 5,
+    "mean": 0.5479,
+    "median": 0.48341,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": 8.2186,
+    "trades_day": 2.5,
+    "usd_day": 20.55,
+    "p10_50_90": [
+     0.44747,
+     0.48341,
+     0.80941
+    ],
+    "min": 0.44747,
+    "max": 0.80941
+   },
+   "front_k10": {
+    "n": 5,
+    "mean": 0.60701,
+    "median": 0.5371,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": 9.1051,
+    "trades_day": 2.5,
+    "usd_day": 22.77,
+    "p10_50_90": [
+     0.53683,
+     0.5371,
+     0.88654
+    ],
+    "min": 0.53683,
+    "max": 0.88654
+   },
+   "front_k10 at 0.02 ETH": {
+    "n": 5,
+    "mean": 0.59944,
+    "median": 0.53086,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": 8.9916,
+    "trades_day": 2.5,
+    "usd_day": 22.49,
+    "p10_50_90": [
+     0.53061,
+     0.53086,
+     0.87364
+    ],
+    "min": 0.53061,
+    "max": 0.87364
+   },
+   "front_k10 at 0.05 ETH": {
+    "n": 5,
+    "mean": 0.58314,
+    "median": 0.51724,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": 8.7472,
+    "trades_day": 2.5,
+    "usd_day": 21.87,
+    "p10_50_90": [
+     0.51699,
+     0.51724,
+     0.84666
+    ],
+    "min": 0.51699,
+    "max": 0.84666
+   },
+   "front_k10 entry +5": {
+    "n": 5,
+    "mean": 0.60701,
+    "median": 0.5371,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": 9.1051,
+    "trades_day": 2.5,
+    "usd_day": 22.77,
+    "p10_50_90": [
+     0.53683,
+     0.5371,
+     0.88653
+    ],
+    "min": 0.53683,
+    "max": 0.88653
+   },
+   "front_k10 entry +60": {
+    "n": 5,
+    "mean": 0.607,
+    "median": 0.5371,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": 9.105,
+    "trades_day": 2.5,
+    "usd_day": 22.77,
+    "p10_50_90": [
+     0.53683,
+     0.5371,
+     0.88653
+    ],
+    "min": 0.53683,
+    "max": 0.88653
+   },
+   "follow_crowd k2 (buy after crowd #1, sell after crowd #2)": {
+    "n": 5,
+    "mean": 0.04362,
+    "median": 0.03028,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": 0.6543,
+    "trades_day": 2.5,
+    "usd_day": 1.64,
+    "p10_50_90": [
+     0.01599,
+     0.03028,
+     0.09558
+    ],
+    "min": 0.01599,
+    "max": 0.09558
+   },
+   "follow_crowd k10 (buy after crowd #1, sell after crowd #10)": {
+    "n": 5,
+    "mean": 0.55296,
+    "median": 0.49244,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": 8.2944,
+    "trades_day": 2.5,
+    "usd_day": 20.74,
+    "p10_50_90": [
+     0.4505,
+     0.49244,
+     0.82784
+    ],
+    "min": 0.4505,
+    "max": 0.82784
+   }
+  },
+  "F1-WIDE (fee 500 + fee 100, 22 pools)": {
+   "front_k8": {
+    "n": 22,
+    "mean": 0.44323,
+    "median": 0.42682,
+    "win": 0.9545,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 21,
+     "pulled_first": 1
+    },
+    "usd_trade": 6.6485,
+    "trades_day": 11.0,
+    "usd_day": 73.16,
+    "p10_50_90": [
+     0.37695,
+     0.42537,
+     0.6706
+    ],
+    "min": -1.00082,
+    "max": 1.34763
+   },
+   "front_k9": {
+    "n": 22,
+    "mean": 0.51694,
+    "median": 0.48543,
+    "win": 0.9545,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 21,
+     "pulled_first": 1
+    },
+    "usd_trade": 7.7541,
+    "trades_day": 11.0,
+    "usd_day": 85.32,
+    "p10_50_90": [
+     0.44206,
+     0.48341,
+     0.80941
+    ],
+    "min": -1.00082,
+    "max": 1.47599
+   },
+   "front_k10": {
+    "n": 22,
+    "mean": 0.587,
+    "median": 0.54189,
+    "win": 0.9545,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 21,
+     "pulled_first": 1
+    },
+    "usd_trade": 8.8049,
+    "trades_day": 11.0,
+    "usd_day": 96.88,
+    "p10_50_90": [
+     0.53697,
+     0.53888,
+     0.88878
+    ],
+    "min": -1.00082,
+    "max": 1.70386
+   },
+   "front_k10 at 0.02 ETH": {
+    "n": 22,
+    "mean": 0.57849,
+    "median": 0.53558,
+    "win": 0.9545,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 21,
+     "pulled_first": 1
+    },
+    "usd_trade": 8.6774,
+    "trades_day": 11.0,
+    "usd_day": 95.48,
+    "p10_50_90": [
+     0.53073,
+     0.5326,
+     0.87582
+    ],
+    "min": -1.00024,
+    "max": 1.66875
+   },
+   "front_k10 at 0.05 ETH": {
+    "n": 22,
+    "mean": 0.56038,
+    "median": 0.52181,
+    "win": 0.9545,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 21,
+     "pulled_first": 1
+    },
+    "usd_trade": 8.4057,
+    "trades_day": 11.0,
+    "usd_day": 92.49,
+    "p10_50_90": [
+     0.51711,
+     0.51891,
+     0.84872
+    ],
+    "min": -1.00009,
+    "max": 1.59819
+   },
+   "front_k10 entry +5": {
+    "n": 22,
+    "mean": 0.58699,
+    "median": 0.54189,
+    "win": 0.9545,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 21,
+     "pulled_first": 1
+    },
+    "usd_trade": 8.8049,
+    "trades_day": 11.0,
+    "usd_day": 96.88,
+    "p10_50_90": [
+     0.53696,
+     0.53888,
+     0.88877
+    ],
+    "min": -1.00082,
+    "max": 1.70385
+   },
+   "front_k10 entry +60": {
+    "n": 22,
+    "mean": 0.58699,
+    "median": 0.54189,
+    "win": 0.9545,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 21,
+     "pulled_first": 1
+    },
+    "usd_trade": 8.8049,
+    "trades_day": 11.0,
+    "usd_day": 96.88,
+    "p10_50_90": [
+     0.53693,
+     0.53888,
+     0.88877
+    ],
+    "min": -1.00082,
+    "max": 1.70385
+   },
+   "follow_crowd k2 (buy after crowd #1, sell after crowd #2)": {
+    "n": 21,
+    "mean": 0.05447,
+    "median": 0.0456,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 21
+    },
+    "usd_trade": 0.817,
+    "trades_day": 10.5,
+    "usd_day": 8.58,
+    "p10_50_90": [
+     0.0119,
+     0.0456,
+     0.09558
+    ],
+    "min": 0.01096,
+    "max": 0.20778
+   },
+   "follow_crowd k10 (buy after crowd #1, sell after crowd #10)": {
+    "n": 21,
+    "mean": 0.58741,
+    "median": 0.49244,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 21
+    },
+    "usd_trade": 8.8111,
+    "trades_day": 10.5,
+    "usd_day": 92.55,
+    "p10_50_90": [
+     0.4505,
+     0.49244,
+     0.82368
+    ],
+    "min": 0.39844,
+    "max": 1.63784
+   }
+  },
+  "F1-WIDE Oct 9 launches": {
+   "front_k8": {
+    "n": 9,
+    "mean": 0.47174,
+    "median": 0.42035,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 9
+    },
+    "usd_trade": 7.0761,
+    "trades_day": 4.5,
+    "usd_day": 31.85,
+    "p10_50_90": [
+     0.39785,
+     0.42035,
+     0.60904
+    ],
+    "min": 0.37528,
+    "max": 0.74136
+   },
+   "front_k9": {
+    "n": 9,
+    "mean": 0.54799,
+    "median": 0.48341,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 9
+    },
+    "usd_trade": 8.2199,
+    "trades_day": 4.5,
+    "usd_day": 37.0,
+    "p10_50_90": [
+     0.44747,
+     0.48341,
+     0.76524
+    ],
+    "min": 0.43082,
+    "max": 0.80941
+   },
+   "front_k10": {
+    "n": 9,
+    "mean": 0.61527,
+    "median": 0.53793,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 9
+    },
+    "usd_trade": 9.229,
+    "trades_day": 4.5,
+    "usd_day": 41.54,
+    "p10_50_90": [
+     0.53697,
+     0.53793,
+     0.88654
+    ],
+    "min": 0.53683,
+    "max": 0.88781
+   },
+   "front_k10 at 0.02 ETH": {
+    "n": 9,
+    "mean": 0.60754,
+    "median": 0.53167,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 9
+    },
+    "usd_trade": 9.1132,
+    "trades_day": 4.5,
+    "usd_day": 41.02,
+    "p10_50_90": [
+     0.53073,
+     0.53167,
+     0.87364
+    ],
+    "min": 0.53061,
+    "max": 0.87489
+   },
+   "front_k10 at 0.05 ETH": {
+    "n": 9,
+    "mean": 0.59094,
+    "median": 0.51802,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 9
+    },
+    "usd_trade": 8.8641,
+    "trades_day": 4.5,
+    "usd_day": 39.9,
+    "p10_50_90": [
+     0.51711,
+     0.51802,
+     0.84666
+    ],
+    "min": 0.51699,
+    "max": 0.84788
+   },
+   "front_k10 entry +5": {
+    "n": 9,
+    "mean": 0.61527,
+    "median": 0.53792,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 9
+    },
+    "usd_trade": 9.229,
+    "trades_day": 4.5,
+    "usd_day": 41.54,
+    "p10_50_90": [
+     0.53696,
+     0.53792,
+     0.88653
+    ],
+    "min": 0.53683,
+    "max": 0.88781
+   },
+   "front_k10 entry +60": {
+    "n": 9,
+    "mean": 0.61526,
+    "median": 0.53792,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 9
+    },
+    "usd_trade": 9.2289,
+    "trades_day": 4.5,
+    "usd_day": 41.54,
+    "p10_50_90": [
+     0.53693,
+     0.53792,
+     0.88653
+    ],
+    "min": 0.53683,
+    "max": 0.88781
+   },
+   "follow_crowd k2 (buy after crowd #1, sell after crowd #2)": {
+    "n": 9,
+    "mean": 0.0497,
+    "median": 0.04354,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 9
+    },
+    "usd_trade": 0.7455,
+    "trades_day": 4.5,
+    "usd_day": 3.36,
+    "p10_50_90": [
+     0.01599,
+     0.04354,
+     0.09558
+    ],
+    "min": 0.0119,
+    "max": 0.12523
+   },
+   "follow_crowd k10 (buy after crowd #1, sell after crowd #10)": {
+    "n": 9,
+    "mean": 0.54953,
+    "median": 0.49244,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 9
+    },
+    "usd_trade": 8.243,
+    "trades_day": 4.5,
+    "usd_day": 37.1,
+    "p10_50_90": [
+     0.4505,
+     0.49244,
+     0.82368
+    ],
+    "min": 0.39844,
+    "max": 0.82784
+   }
+  },
+  "F1-WIDE Oct 10 launches": {
+   "front_k8": {
+    "n": 13,
+    "mean": 0.4235,
+    "median": 0.42827,
+    "win": 0.9231,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12,
+     "pulled_first": 1
+    },
+    "usd_trade": 6.3525,
+    "trades_day": 6.5,
+    "usd_day": 41.3,
+    "p10_50_90": [
+     0.37695,
+     0.42827,
+     0.6706
+    ],
+    "min": -1.00082,
+    "max": 1.34763
+   },
+   "front_k9": {
+    "n": 13,
+    "mean": 0.49544,
+    "median": 0.48745,
+    "win": 0.9231,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12,
+     "pulled_first": 1
+    },
+    "usd_trade": 7.4316,
+    "trades_day": 6.5,
+    "usd_day": 48.32,
+    "p10_50_90": [
+     0.44206,
+     0.48745,
+     0.85354
+    ],
+    "min": -1.00082,
+    "max": 1.47599
+   },
+   "front_k10": {
+    "n": 13,
+    "mean": 0.56742,
+    "median": 0.54518,
+    "win": 0.9231,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12,
+     "pulled_first": 1
+    },
+    "usd_trade": 8.5113,
+    "trades_day": 6.5,
+    "usd_day": 55.34,
+    "p10_50_90": [
+     0.53869,
+     0.54518,
+     0.89618
+    ],
+    "min": -1.00082,
+    "max": 1.70386
+   },
+   "front_k10 at 0.02 ETH": {
+    "n": 13,
+    "mean": 0.55838,
+    "median": 0.53883,
+    "win": 0.9231,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12,
+     "pulled_first": 1
+    },
+    "usd_trade": 8.3757,
+    "trades_day": 6.5,
+    "usd_day": 54.46,
+    "p10_50_90": [
+     0.53242,
+     0.53883,
+     0.8831
+    ],
+    "min": -1.00024,
+    "max": 1.66875
+   },
+   "front_k10 at 0.05 ETH": {
+    "n": 13,
+    "mean": 0.53922,
+    "median": 0.52498,
+    "win": 0.9231,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12,
+     "pulled_first": 1
+    },
+    "usd_trade": 8.0883,
+    "trades_day": 6.5,
+    "usd_day": 52.59,
+    "p10_50_90": [
+     0.51873,
+     0.52498,
+     0.85578
+    ],
+    "min": -1.00009,
+    "max": 1.59819
+   },
+   "front_k10 entry +5": {
+    "n": 13,
+    "mean": 0.56742,
+    "median": 0.54518,
+    "win": 0.9231,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12,
+     "pulled_first": 1
+    },
+    "usd_trade": 8.5113,
+    "trades_day": 6.5,
+    "usd_day": 55.34,
+    "p10_50_90": [
+     0.53869,
+     0.54518,
+     0.89618
+    ],
+    "min": -1.00082,
+    "max": 1.70385
+   },
+   "front_k10 entry +60": {
+    "n": 13,
+    "mean": 0.56742,
+    "median": 0.54518,
+    "win": 0.9231,
+    "pulled_first": 1,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12,
+     "pulled_first": 1
+    },
+    "usd_trade": 8.5113,
+    "trades_day": 6.5,
+    "usd_day": 55.34,
+    "p10_50_90": [
+     0.53869,
+     0.54518,
+     0.89618
+    ],
+    "min": -1.00082,
+    "max": 1.70385
+   },
+   "follow_crowd k2 (buy after crowd #1, sell after crowd #2)": {
+    "n": 12,
+    "mean": 0.05804,
+    "median": 0.05071,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12
+    },
+    "usd_trade": 0.8707,
+    "trades_day": 6.0,
+    "usd_day": 5.23,
+    "p10_50_90": [
+     0.01108,
+     0.05582,
+     0.09271
+    ],
+    "min": 0.01096,
+    "max": 0.20778
+   },
+   "follow_crowd k10 (buy after crowd #1, sell after crowd #10)": {
+    "n": 12,
+    "mean": 0.61582,
+    "median": 0.49804,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12
+    },
+    "usd_trade": 9.2372,
+    "trades_day": 6.0,
+    "usd_day": 55.44,
+    "p10_50_90": [
+     0.45239,
+     0.504,
+     0.72958
+    ],
+    "min": 0.44075,
+    "max": 1.63784
+   }
+  },
+  "trap": {
+   "pools_with_real_outsider_before_first_crowd": 13,
+   "pools_without": 9,
+   "with: pulled_3000": 8,
+   "with: pull_off_launch_p10_50_90": [
+    1567,
+    2477,
+    2791
+   ],
+   "with: pull_after_10th_crowd_p10_50_90": [
+    93,
+    260,
+    431
+   ],
+   "without: pulled_3000": 6,
+   "without: pull_off_launch_p10_50_90": [
+    2019,
+    2427,
+    2631
+   ],
+   "without: pull_after_10th_crowd_p10_50_90": [
+    425,
+    715,
+    1047
+   ],
+   "outsider_sizes_p10_50_90": [
+    0.000303,
+    0.000324,
+    0.000439
+   ],
+   "outsider_wallets": [
+    [
+     "0x5e6ec144",
+     13
+    ],
+    [
+     "0x13301ff0",
+     6
+    ],
+    [
+     "0xc74d9ced",
+     1
+    ]
+   ],
+   "real_size_outsiders_ge_0.001_any_time": [
+    [
+     "0x7215ffa6f9",
+     [
+      [
+       586,
+       0.005148,
+       "0xc74d9ced",
+       "0xf0b7eaaf"
+      ]
+     ],
+     "pull",
+     663,
+     "n_crowd",
+     0
+    ],
+    [
+     "0x0788f75cf5",
+     [
+      [
+       1207,
+       0.001576,
+       "0x86832b05",
+       "0x88767899"
+      ]
+     ],
+     "pull",
+     2791,
+     "n_crowd",
+     10
+    ]
+   ],
+   "with_rows": [
+    {
+     "pid": "0x48f9655aa6",
+     "outs": [
+      [
+       90,
+       0.000324,
+       "0x5e6ec144"
+      ],
+      [
+       105,
+       0.000511,
+       "0x13301ff0"
+      ]
+     ],
+     "pull": null,
+     "pull_after_c10": null,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0x0ffcb2b292",
+     "outs": [
+      [
+       98,
+       0.000303,
+       "0x5e6ec144"
+      ],
+      [
+       138,
+       0.000381,
+       "0x13301ff0"
+      ]
+     ],
+     "pull": 2477,
+     "pull_after_c10": 291,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0xdcaeef1bdb",
+     "outs": [
+      [
+       90,
+       0.000313,
+       "0x5e6ec144"
+      ],
+      [
+       97,
+       0.000439,
+       "0x13301ff0"
+      ]
+     ],
+     "pull": 2627,
+     "pull_after_c10": 260,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0x734490ef2e",
+     "outs": [
+      [
+       82,
+       0.00032,
+       "0x5e6ec144"
+      ],
+      [
+       91,
+       0.000303,
+       "0x13301ff0"
+      ]
+     ],
+     "pull": null,
+     "pull_after_c10": null,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0x7215ffa6f9",
+     "outs": [
+      [
+       89,
+       0.000341,
+       "0x5e6ec144"
+      ],
+      [
+       97,
+       0.000317,
+       "0x13301ff0"
+      ],
+      [
+       586,
+       0.005148,
+       "0xc74d9ced"
+      ]
+     ],
+     "pull": 663,
+     "pull_after_c10": null,
+     "n_crowd": 0
+    },
+    {
+     "pid": "0x8b0595fd07",
+     "outs": [
+      [
+       84,
+       0.000295,
+       "0x5e6ec144"
+      ],
+      [
+       96,
+       0.000326,
+       "0x13301ff0"
+      ]
+     ],
+     "pull": null,
+     "pull_after_c10": null,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0xc7f3c9705d",
+     "outs": [
+      [
+       92,
+       0.000311,
+       "0x5e6ec144"
+      ]
+     ],
+     "pull": 2985,
+     "pull_after_c10": 1266,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0xde0101f9e0",
+     "outs": [
+      [
+       91,
+       0.000328,
+       "0x5e6ec144"
+      ]
+     ],
+     "pull": 1766,
+     "pull_after_c10": 93,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0xad44a81c41",
+     "outs": [
+      [
+       90,
+       0.000326,
+       "0x5e6ec144"
+      ]
+     ],
+     "pull": null,
+     "pull_after_c10": null,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0xcee0878d6b",
+     "outs": [
+      [
+       88,
+       0.000309,
+       "0x5e6ec144"
+      ]
+     ],
+     "pull": 1567,
+     "pull_after_c10": 97,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0xc99153ca90",
+     "outs": [
+      [
+       93,
+       0.00031,
+       "0x5e6ec144"
+      ]
+     ],
+     "pull": null,
+     "pull_after_c10": null,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0x98c29405e7",
+     "outs": [
+      [
+       90,
+       0.000314,
+       "0x5e6ec144"
+      ]
+     ],
+     "pull": 1787,
+     "pull_after_c10": 58,
+     "n_crowd": 10
+    },
+    {
+     "pid": "0x0788f75cf5",
+     "outs": [
+      [
+       85,
+       0.000326,
+       "0x5e6ec144"
+      ]
+     ],
+     "pull": 2791,
+     "pull_after_c10": 431,
+     "n_crowd": 10
+    }
+   ]
+  }
+ },
+ "F1_pools": [
+  {
+   "pid": "0xb42f22e86b",
+   "utc": "10-09 16:19",
+   "fee": 500,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4843,
+   "reserve_after_crowd": 2.484,
+   "c1": 277,
+   "c10": 1600,
+   "pull": 2025,
+   "pull_after_c10": 425,
+   "k10_exit": "sold",
+   "k10_ret": 0.5376
+  },
+  {
+   "pid": "0xf26eb00a23",
+   "utc": "10-09 16:30",
+   "fee": 500,
+   "val": 1.8,
+   "n_crowd": 10,
+   "crowd_eth": 0.678,
+   "reserve_after_crowd": 2.478,
+   "c1": 188,
+   "c10": 1380,
+   "pull": 2427,
+   "pull_after_c10": 1047,
+   "k10_exit": "sold",
+   "k10_ret": 0.8865
+  },
+  {
+   "pid": "0xd8edf400ce",
+   "utc": "10-09 16:40",
+   "fee": 500,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4839,
+   "reserve_after_crowd": 2.484,
+   "c1": 371,
+   "c10": 2074,
+   "pull": null,
+   "pull_after_c10": null,
+   "k10_exit": "sold",
+   "k10_ret": 0.5371
+  },
+  {
+   "pid": "0x1c7b2fdcb0",
+   "utc": "10-09 16:53",
+   "fee": 500,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4838,
+   "reserve_after_crowd": 2.484,
+   "c1": 294,
+   "c10": 1690,
+   "pull": 2798,
+   "pull_after_c10": 1108,
+   "k10_exit": "sold",
+   "k10_ret": 0.537
+  },
+  {
+   "pid": "0xdf6f0d4410",
+   "utc": "10-09 17:24",
+   "fee": 500,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4837,
+   "reserve_after_crowd": 2.484,
+   "c1": 235,
+   "c10": 1722,
+   "pull": 2631,
+   "pull_after_c10": 909,
+   "k10_exit": "sold",
+   "k10_ret": 0.5368
+  },
+  {
+   "pid": "0x2ba5fed9f0",
+   "utc": "10-09 17:33",
+   "fee": 100,
+   "val": 1.8,
+   "n_crowd": 10,
+   "crowd_eth": 0.6776,
+   "reserve_after_crowd": 2.478,
+   "c1": 273,
+   "c10": 1304,
+   "pull": 2019,
+   "pull_after_c10": 715,
+   "k10_exit": "sold",
+   "k10_ret": 0.8878
+  },
+  {
+   "pid": "0x96177e60c6",
+   "utc": "10-09 17:49",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4835,
+   "reserve_after_crowd": 2.483,
+   "c1": 280,
+   "c10": 1590,
+   "pull": null,
+   "pull_after_c10": null,
+   "k10_exit": "sold",
+   "k10_ret": 0.5381
+  },
+  {
+   "pid": "0xc7c4ffa93f",
+   "utc": "10-09 18:00",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4834,
+   "reserve_after_crowd": 2.483,
+   "c1": 299,
+   "c10": 1724,
+   "pull": null,
+   "pull_after_c10": null,
+   "k10_exit": "sold",
+   "k10_ret": 0.5379
+  },
+  {
+   "pid": "0x49611ae86a",
+   "utc": "10-09 18:23",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4839,
+   "reserve_after_crowd": 2.484,
+   "c1": 277,
+   "c10": 1867,
+   "pull": 2431,
+   "pull_after_c10": 564,
+   "k10_exit": "sold",
+   "k10_ret": 0.5386
+  },
+  {
+   "pid": "0x48f9655aa6",
+   "utc": "10-10 16:01",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4843,
+   "reserve_after_crowd": 2.484,
+   "c1": 461,
+   "c10": 1946,
+   "pull": null,
+   "pull_after_c10": null,
+   "k10_exit": "sold",
+   "k10_ret": 0.5389
+  },
+  {
+   "pid": "0x0ffcb2b292",
+   "utc": "10-10 16:10",
+   "fee": 100,
+   "val": 1.8,
+   "n_crowd": 10,
+   "crowd_eth": 0.6785,
+   "reserve_after_crowd": 2.479,
+   "c1": 405,
+   "c10": 2186,
+   "pull": 2477,
+   "pull_after_c10": 291,
+   "k10_exit": "sold",
+   "k10_ret": 0.8888
+  },
+  {
+   "pid": "0xdcaeef1bdb",
+   "utc": "10-10 16:17",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4842,
+   "reserve_after_crowd": 2.484,
+   "c1": 921,
+   "c10": 2367,
+   "pull": 2627,
+   "pull_after_c10": 260,
+   "k10_exit": "sold",
+   "k10_ret": 0.5389
+  },
+  {
+   "pid": "0x734490ef2e",
+   "utc": "10-10 16:24",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4841,
+   "reserve_after_crowd": 2.484,
+   "c1": 371,
+   "c10": 2220,
+   "pull": null,
+   "pull_after_c10": null,
+   "k10_exit": "sold",
+   "k10_ret": 0.5387
+  },
+  {
+   "pid": "0x7215ffa6f9",
+   "utc": "10-10 16:37",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 0,
+   "crowd_eth": 0.0,
+   "reserve_after_crowd": 2.0,
+   "c1": null,
+   "c10": null,
+   "pull": 663,
+   "pull_after_c10": null,
+   "k10_exit": "pulled_first",
+   "k10_ret": -1.0008
+  },
+  {
+   "pid": "0x8b0595fd07",
+   "utc": "10-10 16:47",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4893,
+   "reserve_after_crowd": 2.489,
+   "c1": 577,
+   "c10": 1851,
+   "pull": null,
+   "pull_after_c10": null,
+   "k10_exit": "sold",
+   "k10_ret": 0.5449
+  },
+  {
+   "pid": "0xc7f3c9705d",
+   "utc": "10-10 17:03",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.489,
+   "reserve_after_crowd": 2.489,
+   "c1": 340,
+   "c10": 1719,
+   "pull": 2985,
+   "pull_after_c10": 1266,
+   "k10_exit": "sold",
+   "k10_ret": 0.5452
+  },
+  {
+   "pid": "0xde0101f9e0",
+   "utc": "10-10 17:10",
+   "fee": 100,
+   "val": 1.8,
+   "n_crowd": 10,
+   "crowd_eth": 0.6827,
+   "reserve_after_crowd": 2.483,
+   "c1": 316,
+   "c10": 1673,
+   "pull": 1766,
+   "pull_after_c10": 93,
+   "k10_exit": "sold",
+   "k10_ret": 0.8962
+  },
+  {
+   "pid": "0xad44a81c41",
+   "utc": "10-10 17:17",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.489,
+   "reserve_after_crowd": 2.489,
+   "c1": 552,
+   "c10": 1609,
+   "pull": null,
+   "pull_after_c10": null,
+   "k10_exit": "sold",
+   "k10_ret": 0.5452
+  },
+  {
+   "pid": "0xcee0878d6b",
+   "utc": "10-10 17:25",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4887,
+   "reserve_after_crowd": 2.489,
+   "c1": 258,
+   "c10": 1470,
+   "pull": 1567,
+   "pull_after_c10": 97,
+   "k10_exit": "sold",
+   "k10_ret": 0.5449
+  },
+  {
+   "pid": "0xc99153ca90",
+   "utc": "10-10 17:42",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4889,
+   "reserve_after_crowd": 2.489,
+   "c1": 290,
+   "c10": 1603,
+   "pull": null,
+   "pull_after_c10": null,
+   "k10_exit": "sold",
+   "k10_ret": 0.5452
+  },
+  {
+   "pid": "0x98c29405e7",
+   "utc": "10-10 17:51",
+   "fee": 100,
+   "val": 1.5,
+   "n_crowd": 10,
+   "crowd_eth": 0.9737,
+   "reserve_after_crowd": 2.474,
+   "c1": 299,
+   "c10": 1729,
+   "pull": 1787,
+   "pull_after_c10": 58,
+   "k10_exit": "sold",
+   "k10_ret": 1.7039
+  },
+  {
+   "pid": "0x0788f75cf5",
+   "utc": "10-10 17:58",
+   "fee": 100,
+   "val": 2.0,
+   "n_crowd": 10,
+   "crowd_eth": 0.4889,
+   "reserve_after_crowd": 2.489,
+   "c1": 319,
+   "c10": 2360,
+   "pull": 2791,
+   "pull_after_c10": 431,
+   "k10_exit": "sold",
+   "k10_ret": 0.5466
+  }
+ ],
+ "pricer_validation_on_F1_operator": {
+  "buy_out_rel_err_median": 6.738547102880805e-18,
+  "buy_out_rel_err_max": 1.0323162036722989e-15,
+  "replay_state_err_max": 6.498919781765602e-16
+ },
+ "outsider_round_trips": [
+  [
+   "0xc7c4ffa9",
+   "0x13301ff0",
+   322,
+   616,
+   0.01216,
+   0.01216,
+   false,
+   false
+  ],
+  [
+   "0x49611ae8",
+   "0x13301ff0",
+   298,
+   595,
+   0.04392,
+   0.04392,
+   false,
+   false
+  ],
+  [
+   "0x48f9655a",
+   "0x5e6ec144",
+   90,
+   1937,
+   0.49015,
+   0.49015,
+   false,
+   false
+  ],
+  [
+   "0x48f9655a",
+   "0x13301ff0",
+   105,
+   402,
+   -0.0002,
+   -0.0002,
+   false,
+   false
+  ],
+  [
+   "0x0ffcb2b2",
+   "0x5e6ec144",
+   98,
+   1931,
+   0.79096,
+   0.79096,
+   false,
+   false
+  ],
+  [
+   "0x0ffcb2b2",
+   "0x13301ff0",
+   138,
+   428,
+   0.09158,
+   0.09158,
+   false,
+   false
+  ],
+  [
+   "0xdcaeef1b",
+   "0x5e6ec144",
+   90,
+   1829,
+   0.30244,
+   0.30244,
+   false,
+   false
+  ],
+  [
+   "0xdcaeef1b",
+   "0x13301ff0",
+   97,
+   398,
+   -0.0002,
+   -0.0002,
+   false,
+   false
+  ],
+  [
+   "0x734490ef",
+   "0x5e6ec144",
+   82,
+   1857,
+   0.36146,
+   0.36146,
+   false,
+   false
+  ],
+  [
+   "0x734490ef",
+   "0x13301ff0",
+   91,
+   385,
+   0.02233,
+   0.02233,
+   false,
+   false
+  ],
+  [
+   "0x7215ffa6",
+   "0x13301ff0",
+   97,
+   391,
+   -0.00022,
+   -0.00022,
+   false,
+   false
+  ],
+  [
+   "0x8b0595fd",
+   "0x5e6ec144",
+   84,
+   1766,
+   0.53081,
+   0.53081,
+   false,
+   false
+  ],
+  [
+   "0x8b0595fd",
+   "0x13301ff0",
+   96,
+   387,
+   -0.00022,
+   -0.00022,
+   false,
+   false
+  ],
+  [
+   "0xc7f3c970",
+   "0x5e6ec144",
+   92,
+   1919,
+   0.54826,
+   0.54826,
+   false,
+   false
+  ],
+  [
+   "0xad44a81c",
+   "0x5e6ec144",
+   90,
+   1999,
+   0.54823,
+   0.54823,
+   false,
+   false
+  ],
+  [
+   "0xc99153ca",
+   "0x5e6ec144",
+   93,
+   1996,
+   0.54821,
+   0.54821,
+   false,
+   false
+  ],
+  [
+   "0x0788f75c",
+   "0x5e6ec144",
+   85,
+   1806,
+   0.20143,
+   0.20143,
+   false,
+   false
+  ]
+ ],
+ "crowd_minout": {
+  "minout_over_actual_output": {
+   "n": 210,
+   "min": 0.8,
+   "median": 0.8,
+   "max": 0.8
+  }
+ },
+ "families": {
+  "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|500|10|true": {
+   "count": 5,
+   "launches_per_day": 2.5,
+   "first_last_ts": [
+    1791562744,
+    1791566680
+   ],
+   "deployers": [
+    [
+     "0xe9e30297d45adbb7b33d957690325d66ecbf71d3",
+     1
+    ],
+    [
+     "0x72e9a45246b6cb32685129a21139732317b6fe13",
+     1
+    ],
+    [
+     "0x76130d900cea7e6307c3014669b449f75f8f0406",
+     1
+    ],
+    [
+     "0xba8107ebcdc9dc452e8994d2026d5d0bc9ffe0c5",
+     1
+    ]
+   ],
+   "n_deployers": 5,
+   "deployer_nonces": [
+    [
+     3,
+     5
+    ]
+   ],
+   "values": [
+    [
+     2.0,
+     4
+    ],
+    [
+     1.8,
+     1
+    ]
+   ],
+   "fees": [
+    [
+     500,
+     5
+    ]
+   ],
+   "launch_ranges": [
+    [
+     "[(-887270, 887270)]",
+     5
+    ]
+   ],
+   "start": [
+    [
+     "active",
+     5
+    ]
+   ],
+   "later_adds_pools": 0,
+   "first_buy_any": {
+    "pools_with": 5,
+    "off_p10_50_90": [
+     3,
+     4,
+     4
+    ],
+    "eth_p10_50_90": [
+     2e-06,
+     2e-06,
+     2e-06
+    ],
+    "to": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      5
+     ]
+    ],
+    "from": [
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      5
+     ]
+    ]
+   },
+   "first_buy_real": {
+    "pools_with": 5,
+    "frac": 1.0,
+    "off_p10_50_90": [
+     188,
+     277,
+     371
+    ],
+    "eth_p10_50_90": [
+     0.016118,
+     0.029672,
+     0.059018
+    ],
+    "to_sel_len": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1284",
+      5
+     ]
+    ],
+    "n_from": 5,
+    "nonce0": 5,
+    "by_launch_wallet": 0,
+    "from_top": [
+     [
+      "0xe57b352639037f2b756799c7a40e5e4847edd934",
+      1
+     ],
+     [
+      "0xa07e16a4729a30053ee956c99fe649fb6bdfcf0f",
+      1
+     ],
+     [
+      "0xcf76adbc4524b3390baef9c01e9b14ade44b66c1",
+      1
+     ],
+     [
+      "0x7a06a3b251d1c64c46c0371d287e0e2ceb488015",
+      1
+     ]
+    ]
+   },
+   "swaps_non_launch": {
+    "total": 80,
+    "buys": 69,
+    "sells": 11,
+    "eth_in": 2.614209,
+    "pools_with_any": 5,
+    "from_top": [
+     [
+      "0x93b0790287720a922bb7e3cf0712062c1669847d",
+      10
+     ],
+     [
+      "0x0b410a5f0594fd4500acccd4b97b91da8987c40c",
+      8
+     ],
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      5
+     ],
+     [
+      "0xfeda1c58462150b4cb94c63efce3647e78f883eb",
+      4
+     ],
+     [
+      "0xb002e8a04b2822d8f2890b022ddea3d25f9c3df8",
+      3
+     ],
+     [
+      "0xe57b352639037f2b756799c7a40e5e4847edd934",
+      1
+     ]
+    ]
+   },
+   "pull": {
+    "pulled_3000": 4,
+    "frac": 0.8,
+    "off_launch_p10_50_90": [
+     2025,
+     2631,
+     2798
+    ],
+    "off_from_first_real_buy_p10_50_90": [
+     1748,
+     2396,
+     2504
+    ],
+    "by_launch_wallet": 4,
+    "via": [
+     [
+      "0x58daec3116aae6d93017baaea7749052e8a04fa7:dd46508f",
+      4
+     ]
+    ]
+   },
+   "trap": {
+    "pools_with_outsider_before_sched": 2,
+    "outsider_eth_p10_50_90": [
+     1e-08,
+     1e-08,
+     5.94e-05
+    ],
+    "outsider_wallets": [
+     [
+      "0xb002e8a04b2822d8f2890b022ddea3d25f9c3df8",
+      3
+     ],
+     [
+      "0xfeda1c58462150b4cb94c63efce3647e78f883eb",
+      2
+     ]
+    ],
+    "pulled_after_outsider": 1,
+    "delay_after_outsider_p10_50_90": [
+     2791,
+     2791,
+     2791
+    ],
+    "pools_without": 3,
+    "pulled_without": 3,
+    "pull_off_without_p10_50_90": [
+     2025,
+     2427,
+     2631
+    ]
+   },
+   "front": {
+    "n": 5,
+    "mean": -0.00172,
+    "median": -0.00172,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": -0.0257,
+    "trades_day": 2.5,
+    "usd_day": -0.06,
+    "p10_50_90": [
+     -0.00173,
+     -0.00172,
+     -0.0017
+    ],
+    "min": -0.00173,
+    "max": -0.0017
+   },
+   "front_rows": [
+    {
+     "pid": "0xb42f22e86b3f5f5a5b30b64474a8ac10756037b2dbc34b2d47c9ac6c43a9312c",
+     "sched": 277,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0017208755601827587,
+     "fee_b": 500,
+     "fee_s": 500
+    },
+    {
+     "pid": "0xf26eb00a233b48d433766b5dbfe650719169ea3e140f455d2b4a8fc816a346ca",
+     "sched": 188,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0017192775028539655,
+     "fee_b": 500,
+     "fee_s": 500
+    },
+    {
+     "pid": "0xd8edf400cef6e691445705e887d0f9d1cafbff996bd293878fb2dc92c7c22972",
+     "sched": 371,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0017175060348643104,
+     "fee_b": 500,
+     "fee_s": 500
+    },
+    {
+     "pid": "0x1c7b2fdcb08976fee5b575a3d001f8dfee27a6861d8a81c86b1fd27a858e3fc1",
+     "sched": 294,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0016965296047532759,
+     "fee_b": 500,
+     "fee_s": 500
+    },
+    {
+     "pid": "0xdf6f0d4410b7a96aa1b500cfad68a64e44b792e56cd8bf91642a8a777c12a41b",
+     "sched": 235,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.001728406550921724,
+     "fee_b": 500,
+     "fee_s": 500
+    }
+   ],
+   "follow": {
+    "n": 5,
+    "mean": -0.00172,
+    "median": -0.00172,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": -0.0258,
+    "trades_day": 2.5,
+    "usd_day": -0.06,
+    "p10_50_90": [
+     -0.00173,
+     -0.00172,
+     -0.00172
+    ],
+    "min": -0.00173,
+    "max": -0.00172
+   },
+   "follow_rows": [
+    {
+     "pid": "0xb42f22e86b3f5f5a5b30b64474a8ac10756037b2dbc34b2d47c9ac6c43a9312c",
+     "trig": 277,
+     "trig_eth": 0.016117687476843275,
+     "next": 431,
+     "B": 278,
+     "S": 282,
+     "exit": "sold",
+     "ret": -0.001722875101398793
+    },
+    {
+     "pid": "0xf26eb00a233b48d433766b5dbfe650719169ea3e140f455d2b4a8fc816a346ca",
+     "trig": 188,
+     "trig_eth": 0.02884662178111774,
+     "next": 309,
+     "B": 189,
+     "S": 193,
+     "exit": "sold",
+     "ret": -0.0017215095993253448
+    },
+    {
+     "pid": "0xd8edf400cef6e691445705e887d0f9d1cafbff996bd293878fb2dc92c7c22972",
+     "trig": 371,
+     "trig_eth": 0.03781663017882184,
+     "next": 525,
+     "B": 372,
+     "S": 376,
+     "exit": "sold",
+     "ret": -0.0017195193070018966
+    },
+    {
+     "pid": "0x1c7b2fdcb08976fee5b575a3d001f8dfee27a6861d8a81c86b1fd27a858e3fc1",
+     "trig": 294,
+     "trig_eth": 0.05901821664525363,
+     "next": 481,
+     "B": 295,
+     "S": 299,
+     "exit": "sold",
+     "ret": -0.00171824278691
+    },
+    {
+     "pid": "0xdf6f0d4410b7a96aa1b500cfad68a64e44b792e56cd8bf91642a8a777c12a41b",
+     "trig": 235,
+     "trig_eth": 0.029671823135840877,
+     "next": 376,
+     "B": 236,
+     "S": 240,
+     "exit": "sold",
+     "ret": -0.0017304156677706896
+    }
+   ],
+   "front_no20cap (sell 1 block after the first real buy, deadline +3000)": {
+    "n": 5,
+    "mean": 0.03337,
+    "median": 0.03038,
+    "win": 1.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": 0.5006,
+    "trades_day": 2.5,
+    "usd_day": 1.25,
+    "p10_50_90": [
+     0.01437,
+     0.03038,
+     0.05784
+    ],
+    "min": 0.01437,
+    "max": 0.05784
+   },
+   "capacity": {
+    "n": 5,
+    "cap_eth_p10_50_90": [
+     0.009145,
+     0.010155,
+     0.010227
+    ],
+    "src": [
+     [
+      "Universal-Router-style execute (nested, not decoded): ASSUMED minOut = 0.99 x launch-state quote",
+      5
+     ]
+    ],
+    "Y_p10_50_90": [
+     0.016118,
+     0.029672,
+     0.059018
+    ]
+   },
+   "gas_usd_median": 0.01085
+  },
+  "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|590000|60|true": {
+   "count": 5,
+   "launches_per_day": 2.5,
+   "first_last_ts": [
+    1791555940,
+    1791614270
+   ],
+   "deployers": [
+    [
+     "0x909a0af40a3577f60bb3b0d6bd38fe2d8adfed54",
+     5
+    ]
+   ],
+   "n_deployers": 1,
+   "deployer_nonces": [
+    [
+     2877,
+     1
+    ],
+    [
+     2891,
+     1
+    ],
+    [
+     2940,
+     1
+    ],
+    [
+     3033,
+     1
+    ]
+   ],
+   "values": [
+    [
+     0.00152227,
+     1
+    ],
+    [
+     0.001688353,
+     1
+    ],
+    [
+     0.001575,
+     1
+    ],
+    [
+     0.001673835,
+     1
+    ],
+    [
+     0.001973264,
+     1
+    ]
+   ],
+   "fees": [
+    [
+     590000,
+     5
+    ]
+   ],
+   "launch_ranges": [
+    [
+     "[(-887220, 887220)]",
+     5
+    ]
+   ],
+   "start": [
+    [
+     "active",
+     5
+    ]
+   ],
+   "later_adds_pools": 0,
+   "first_buy_any": {
+    "pools_with": 3,
+    "off_p10_50_90": [
+     0,
+     1,
+     749
+    ],
+    "eth_p10_50_90": [
+     0.00023122,
+     0.00037858,
+     0.00316118
+    ],
+    "to": [
+     [
+      "0xc0a0943567d8ed4f413cec6bdddc6868d9410785",
+      1
+     ],
+     [
+      "0x4a78edf7b2baba91c0925c0fe69fcd8ad3139a31",
+      1
+     ],
+     [
+      "0x399acc46b32145ddda5b1ae6117d7b85f30f710e",
+      1
+     ]
+    ],
+    "from": [
+     [
+      "0xc0a0943567d8ed4f413cec6bdddc6868d9410785",
+      1
+     ],
+     [
+      "0x4a78edf7b2baba91c0925c0fe69fcd8ad3139a31",
+      1
+     ],
+     [
+      "0x8d03aa87d36591205ea55fd0856082b1e2dc6977",
+      1
+     ]
+    ]
+   },
+   "first_buy_real": {
+    "pools_with": 3,
+    "frac": 0.6,
+    "off_p10_50_90": [
+     0,
+     1,
+     749
+    ],
+    "eth_p10_50_90": [
+     0.000231,
+     0.000379,
+     0.003161
+    ],
+    "to_sel_len": [
+     [
+      "0xc0a0943567d8ed4f413cec6bdddc6868d9410785:0c89e77a:368",
+      1
+     ],
+     [
+      "0x4a78edf7b2baba91c0925c0fe69fcd8ad3139a31:0c89e77a:369",
+      1
+     ],
+     [
+      "0x399acc46b32145ddda5b1ae6117d7b85f30f710e:3d78507c:932",
+      1
+     ]
+    ],
+    "n_from": 3,
+    "nonce0": 0,
+    "by_launch_wallet": 0,
+    "from_top": [
+     [
+      "0xc0a0943567d8ed4f413cec6bdddc6868d9410785",
+      1
+     ],
+     [
+      "0x4a78edf7b2baba91c0925c0fe69fcd8ad3139a31",
+      1
+     ],
+     [
+      "0x8d03aa87d36591205ea55fd0856082b1e2dc6977",
+      1
+     ]
+    ]
+   },
+   "swaps_non_launch": {
+    "total": 4,
+    "buys": 4,
+    "sells": 0,
+    "eth_in": 0.004023,
+    "pools_with_any": 3,
+    "from_top": [
+     [
+      "0xc0a0943567d8ed4f413cec6bdddc6868d9410785",
+      1
+     ],
+     [
+      "0x4a78edf7b2baba91c0925c0fe69fcd8ad3139a31",
+      1
+     ],
+     [
+      "0xe0a042789bf4c016b40f697fc3af6b6001f00c02",
+      1
+     ],
+     [
+      "0x8d03aa87d36591205ea55fd0856082b1e2dc6977",
+      1
+     ]
+    ]
+   },
+   "pull": {
+    "pulled_3000": 0,
+    "frac": 0.0,
+    "off_launch_p10_50_90": null,
+    "off_from_first_real_buy_p10_50_90": null,
+    "by_launch_wallet": 0,
+    "via": []
+   },
+   "trap": {
+    "pools_with_outsider_before_sched": 1,
+    "outsider_eth_p10_50_90": [
+     0.00316118,
+     0.00316118,
+     0.00316118
+    ],
+    "outsider_wallets": [
+     [
+      "0x8d03aa87d36591205ea55fd0856082b1e2dc6977",
+      1
+     ]
+    ],
+    "pulled_after_outsider": 0,
+    "delay_after_outsider_p10_50_90": null,
+    "pools_without": 4,
+    "pulled_without": 0,
+    "pull_off_without_p10_50_90": null
+   },
+   "front": {
+    "n": 5,
+    "mean": -0.74925,
+    "median": -0.74352,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": -11.2387,
+    "trades_day": 2.5,
+    "usd_day": -28.11,
+    "p10_50_90": [
+     -0.77703,
+     -0.74352,
+     -0.74008
+    ],
+    "min": -0.77703,
+    "max": -0.74008
+   },
+   "front_rows": [
+    {
+     "pid": "0x8592250a93c44f12e1474ca24eab7132e31d70459b905a996b5fa7690d527d18",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.741588619654975,
+     "fee_b": 590000,
+     "fee_s": 590000
+    },
+    {
+     "pid": "0xa060323937e872dcd417721ffed2e0eb74469e9ed6298f7ba2a10ef208e71cf5",
+     "sched": 749,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.7440153507361607,
+     "fee_b": 590000,
+     "fee_s": 590000
+    },
+    {
+     "pid": "0x86e3b3cc99691c46851e9c7cd67a92ea1c21c0f9b8f425163f30350e8da575f1",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.7400752252211712,
+     "fee_b": 590000,
+     "fee_s": 590000
+    },
+    {
+     "pid": "0xb604590be92ce05d66d4fd0299e81437a135c6cc5b1dcd62ca5a9bf59806f538",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.74352269377309,
+     "fee_b": 590000,
+     "fee_s": 590000
+    },
+    {
+     "pid": "0x01fe55a67f0f3d46527e6434257a696e02c986b7957d5956bff62595d49ec535",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.777025381666864,
+     "fee_b": 590000,
+     "fee_s": 590000
+    }
+   ],
+   "follow": {
+    "n": 3,
+    "mean": -0.75584,
+    "median": -0.7489,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 3
+    },
+    "usd_trade": -11.3376,
+    "trades_day": 1.5,
+    "usd_day": -17.01,
+    "p10_50_90": [
+     -0.77703,
+     -0.7489,
+     -0.74159
+    ],
+    "min": -0.77703,
+    "max": -0.74159
+   },
+   "follow_rows": [
+    {
+     "pid": "0x8592250a93c44f12e1474ca24eab7132e31d70459b905a996b5fa7690d527d18",
+     "trig": 1,
+     "trig_eth": 0.000231215993663008,
+     "next": null,
+     "B": 2,
+     "S": 6,
+     "exit": "sold",
+     "ret": -0.741588619654975
+    },
+    {
+     "pid": "0xa060323937e872dcd417721ffed2e0eb74469e9ed6298f7ba2a10ef208e71cf5",
+     "trig": 749,
+     "trig_eth": 0.000378581970242193,
+     "next": 2568,
+     "B": 750,
+     "S": 754,
+     "exit": "sold",
+     "ret": -0.7488980406450445
+    },
+    {
+     "pid": "0x01fe55a67f0f3d46527e6434257a696e02c986b7957d5956bff62595d49ec535",
+     "trig": 0,
+     "trig_eth": 0.00316117538928145,
+     "next": null,
+     "B": 1,
+     "S": 5,
+     "exit": "sold",
+     "ret": -0.777025381666864
+    }
+   ],
+   "front_no20cap (sell 1 block after the first real buy, deadline +3000)": {
+    "n": 5,
+    "mean": -0.74601,
+    "median": -0.74159,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": -11.1902,
+    "trades_day": 2.5,
+    "usd_day": -27.98,
+    "p10_50_90": [
+     -0.77703,
+     -0.74159,
+     -0.72785
+    ],
+    "min": -0.77703,
+    "max": -0.72785
+   },
+   "capacity": {
+    "n": 1,
+    "cap_eth_p10_50_90": [
+     2.2e-05,
+     2.2e-05,
+     2.2e-05
+    ],
+    "src": [
+     [
+      "router 0x4a78edf7 sel 0c89e77a not decoded: ASSUMED minOut = 0.99 x launch-state quote",
+      1
+     ]
+    ],
+    "Y_p10_50_90": [
+     0.000379,
+     0.000379,
+     0.000379
+    ]
+   },
+   "gas_usd_median": 0.01084
+  },
+  "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|3000|60|true": {
+   "count": 5,
+   "launches_per_day": 2.5,
+   "first_last_ts": [
+    1791528352,
+    1791552060
+   ],
+   "deployers": [
+    [
+     "0x0587d47d149b2a0fbcd570b2cf8f551d26a7a703",
+     5
+    ]
+   ],
+   "n_deployers": 1,
+   "deployer_nonces": [
+    [
+     10,
+     1
+    ],
+    [
+     14,
+     1
+    ],
+    [
+     18,
+     1
+    ],
+    [
+     22,
+     1
+    ]
+   ],
+   "values": [
+    [
+     0.0,
+     5
+    ]
+   ],
+   "fees": [
+    [
+     3000,
+     5
+    ]
+   ],
+   "launch_ranges": [
+    [
+     "[(58080, 177300)]",
+     4
+    ],
+    [
+     "[(-495120, -375900)]",
+     1
+    ]
+   ],
+   "start": [
+    [
+     "active",
+     5
+    ]
+   ],
+   "later_adds_pools": 0,
+   "first_buy_any": {
+    "pools_with": 5,
+    "off_p10_50_90": [
+     2,
+     3,
+     90
+    ],
+    "eth_p10_50_90": [
+     2e-06,
+     2e-06,
+     0.0006
+    ],
+    "to": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      4
+     ],
+     [
+      "0x75379d5d2ea4c98aeaa57f32e233707550ab03f0",
+      1
+     ]
+    ],
+    "from": [
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      4
+     ],
+     [
+      "0x635eb2e67039b5a0756c89561ac71ea412dafefb",
+      1
+     ]
+    ]
+   },
+   "first_buy_real": {
+    "pools_with": 5,
+    "frac": 1.0,
+    "off_p10_50_90": [
+     37,
+     46,
+     128
+    ],
+    "eth_p10_50_90": [
+     0.0006,
+     0.004,
+     0.2193
+    ],
+    "to_sel_len": [
+     [
+      "0x75379d5d2ea4c98aeaa57f32e233707550ab03f0:3593564c:1540",
+      5
+     ]
+    ],
+    "n_from": 5,
+    "nonce0": 0,
+    "by_launch_wallet": 0,
+    "from_top": [
+     [
+      "0x635eb2e67039b5a0756c89561ac71ea412dafefb",
+      1
+     ],
+     [
+      "0x17fc67331718a280f22dd433fb6b47536f830916",
+      1
+     ],
+     [
+      "0x26bf81b291ba5d5fbcc0ae695937072e001d7e9c",
+      1
+     ],
+     [
+      "0xb74403a2c56a362eb884eecd9bc1a35fad15cb34",
+      1
+     ]
+    ]
+   },
+   "swaps_non_launch": {
+    "total": 281,
+    "buys": 216,
+    "sells": 65,
+    "eth_in": 21.53719,
+    "pools_with_any": 5,
+    "from_top": [
+     [
+      null,
+      63
+     ],
+     [
+      "0x7a76e7696254bdf7c93ccd838ffad96256a52dfe",
+      7
+     ],
+     [
+      "0x7fba499ecd3abe87dd3ed73db4cf4c3667716db7",
+      7
+     ],
+     [
+      "0x142b888693da11758ee05307199cbf8cfb1baa91",
+      6
+     ],
+     [
+      "0x93b0790287720a922bb7e3cf0712062c1669847d",
+      5
+     ],
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      4
+     ]
+    ]
+   },
+   "pull": {
+    "pulled_3000": 3,
+    "frac": 0.6,
+    "off_launch_p10_50_90": [
+     485,
+     1252,
+     1521
+    ],
+    "off_from_first_real_buy_p10_50_90": [
+     444,
+     1124,
+     1475
+    ],
+    "by_launch_wallet": 3,
+    "via": [
+     [
+      "0x58daec3116aae6d93017baaea7749052e8a04fa7:dd46508f",
+      3
+     ]
+    ]
+   },
+   "trap": {
+    "pools_with_outsider_before_sched": 0,
+    "outsider_eth_p10_50_90": null,
+    "outsider_wallets": [],
+    "pulled_after_outsider": 0,
+    "delay_after_outsider_p10_50_90": null,
+    "pools_without": 5,
+    "pulled_without": 3,
+    "pull_off_without_p10_50_90": [
+     485,
+     1252,
+     1521
+    ]
+   },
+   "front": {
+    "n": 5,
+    "mean": -0.20551,
+    "median": -0.00671,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": -3.0827,
+    "trades_day": 2.5,
+    "usd_day": -7.71,
+    "p10_50_90": [
+     -1.00072,
+     -0.00671,
+     -0.00671
+    ],
+    "min": -1.00072,
+    "max": -0.00671
+   },
+   "front_rows": [
+    {
+     "pid": "0x738b9a6ea1c4065301408cb181bf7aaf8258305e8dabff36ec47c8f2c8636899",
+     "sched": 90,
+     "S": 20,
+     "exit": "sold",
+     "ret": -1.000717671724138,
+     "fee_b": 3000,
+     "fee_s": 3000
+    },
+    {
+     "pid": "0xb51801ff14276e8438260f93ffa48ac6c4b1f175ffc75af2f0e24c0b0058e36e",
+     "sched": 128,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0067102665823017245,
+     "fee_b": 3000,
+     "fee_s": 3000
+    },
+    {
+     "pid": "0x725d3965a9cc7386a54e2fc877c6095acf76e2946ba3c5f057e2e8cf331b5a88",
+     "sched": 46,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0067145700470048275,
+     "fee_b": 3000,
+     "fee_s": 3000
+    },
+    {
+     "pid": "0x21624b9a3f04126c5aa973d74fe2cd01896fb537ebce3e3fa0213d070bbcc17c",
+     "sched": 41,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.006708903949954655,
+     "fee_b": 3000,
+     "fee_s": 3000
+    },
+    {
+     "pid": "0x32d165f7f2961485198981c0c6e675f3f07ca63bdcc7c7eda112452ca698879a",
+     "sched": 37,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.006714426565280345,
+     "fee_b": 3000,
+     "fee_s": 3000
+    }
+   ],
+   "follow": {
+    "n": 5,
+    "mean": -0.20551,
+    "median": -0.00671,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": -3.0827,
+    "trades_day": 2.5,
+    "usd_day": -7.71,
+    "p10_50_90": [
+     -1.00072,
+     -0.00671,
+     -0.00671
+    ],
+    "min": -1.00072,
+    "max": -0.00671
+   },
+   "follow_rows": [
+    {
+     "pid": "0x738b9a6ea1c4065301408cb181bf7aaf8258305e8dabff36ec47c8f2c8636899",
+     "trig": 90,
+     "trig_eth": 0.0006,
+     "next": 118,
+     "B": 91,
+     "S": 95,
+     "exit": "sold",
+     "ret": -1.000717671724138
+    },
+    {
+     "pid": "0xb51801ff14276e8438260f93ffa48ac6c4b1f175ffc75af2f0e24c0b0058e36e",
+     "trig": 128,
+     "trig_eth": 0.2193,
+     "next": 212,
+     "B": 129,
+     "S": 133,
+     "exit": "sold",
+     "ret": -0.006710473734606207
+    },
+    {
+     "pid": "0x725d3965a9cc7386a54e2fc877c6095acf76e2946ba3c5f057e2e8cf331b5a88",
+     "trig": 46,
+     "trig_eth": 0.001,
+     "next": 118,
+     "B": 47,
+     "S": 51,
+     "exit": "sold",
+     "ret": -0.006714767925971552
+    },
+    {
+     "pid": "0x21624b9a3f04126c5aa973d74fe2cd01896fb537ebce3e3fa0213d070bbcc17c",
+     "trig": 41,
+     "trig_eth": 0.0693,
+     "next": 80,
+     "B": 42,
+     "S": 46,
+     "exit": "sold",
+     "ret": -0.0067091046368593105
+    },
+    {
+     "pid": "0x32d165f7f2961485198981c0c6e675f3f07ca63bdcc7c7eda112452ca698879a",
+     "trig": 37,
+     "trig_eth": 0.004,
+     "next": 97,
+     "B": 38,
+     "S": 42,
+     "exit": "sold",
+     "ret": -0.006714624606272931
+    }
+   ],
+   "front_no20cap (sell 1 block after the first real buy, deadline +3000)": {
+    "n": 5,
+    "mean": -0.19968,
+    "median": -0.00632,
+    "win": 0.4,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": -2.9951,
+    "trades_day": 2.5,
+    "usd_day": -7.49,
+    "p10_50_90": [
+     -1.00072,
+     -0.00632,
+     0.01511
+    ],
+    "min": -1.00072,
+    "max": 0.01511
+   },
+   "capacity": {
+    "n": 5,
+    "cap_eth_p10_50_90": [
+     0.101163,
+     0.101335,
+     Infinity
+    ],
+    "src": [
+     [
+      "Universal-Router-style execute (nested, not decoded): ASSUMED minOut = 0.99 x launch-state quote",
+      5
+     ]
+    ],
+    "Y_p10_50_90": [
+     0.0006,
+     0.004,
+     0.2193
+    ]
+   },
+   "gas_usd_median": 0.0108
+  },
+  "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|790000|7900|true": {
+   "count": 5,
+   "launches_per_day": 2.5,
+   "first_last_ts": [
+    1791517559,
+    1791603908
+   ],
+   "deployers": [
+    [
+     "0x5dc9708f972a56d43620cc61f8236c5177270ce5",
+     2
+    ],
+    [
+     "0xa1e4bca023d741bd8d8609875ceef2abd8d755a3",
+     2
+    ],
+    [
+     "0x743508ffae72e5711c1f9d9765ca32794b6e43b9",
+     1
+    ]
+   ],
+   "n_deployers": 3,
+   "deployer_nonces": [
+    [
+     3754,
+     1
+    ],
+    [
+     3783,
+     1
+    ],
+    [
+     7320,
+     1
+    ],
+    [
+     7328,
+     1
+    ]
+   ],
+   "values": [
+    [
+     0.000228395,
+     1
+    ],
+    [
+     0.000228649,
+     1
+    ],
+    [
+     0.000365934,
+     1
+    ],
+    [
+     0.000199982,
+     1
+    ],
+    [
+     0.000393559,
+     1
+    ]
+   ],
+   "fees": [
+    [
+     790000,
+     5
+    ]
+   ],
+   "launch_ranges": [
+    [
+     "[(-884800, 884800)]",
+     5
+    ]
+   ],
+   "start": [
+    [
+     "active",
+     5
+    ]
+   ],
+   "later_adds_pools": 2,
+   "first_buy_any": {
+    "pools_with": 1,
+    "off_p10_50_90": [
+     1,
+     1,
+     1
+    ],
+    "eth_p10_50_90": [
+     0.00012749,
+     0.00012749,
+     0.00012749
+    ],
+    "to": [
+     [
+      "0xb5e643d7e30846c45ac605aa92eecbce88f19cf5",
+      1
+     ]
+    ],
+    "from": [
+     [
+      "0x9d0810b632d16131de3d79fcb520d757a893448e",
+      1
+     ]
+    ]
+   },
+   "first_buy_real": {
+    "pools_with": 0,
+    "frac": 0.0,
+    "off_p10_50_90": null,
+    "eth_p10_50_90": null,
+    "to_sel_len": [],
+    "n_from": 0,
+    "nonce0": 0,
+    "by_launch_wallet": 0,
+    "from_top": []
+   },
+   "swaps_non_launch": {
+    "total": 1,
+    "buys": 1,
+    "sells": 0,
+    "eth_in": 0.000127,
+    "pools_with_any": 1,
+    "from_top": [
+     [
+      "0x9d0810b632d16131de3d79fcb520d757a893448e",
+      1
+     ]
+    ]
+   },
+   "pull": {
+    "pulled_3000": 0,
+    "frac": 0.0,
+    "off_launch_p10_50_90": null,
+    "off_from_first_real_buy_p10_50_90": null,
+    "by_launch_wallet": 0,
+    "via": []
+   },
+   "trap": {
+    "pools_with_outsider_before_sched": 1,
+    "outsider_eth_p10_50_90": [
+     0.00012749,
+     0.00012749,
+     0.00012749
+    ],
+    "outsider_wallets": [
+     [
+      "0x9d0810b632d16131de3d79fcb520d757a893448e",
+      1
+     ]
+    ],
+    "pulled_after_outsider": 0,
+    "delay_after_outsider_p10_50_90": null,
+    "pools_without": 4,
+    "pulled_without": 0,
+    "pull_off_without_p10_50_90": null
+   },
+   "front": {
+    "n": 5,
+    "mean": -0.87714,
+    "median": -0.87356,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": -13.1571,
+    "trades_day": 2.5,
+    "usd_day": -32.9,
+    "p10_50_90": [
+     -0.89126,
+     -0.87356,
+     -0.86351
+    ],
+    "min": -0.89126,
+    "max": -0.86351
+   },
+   "front_rows": [
+    {
+     "pid": "0x73a97bf2d599d463e72529c57f0b3e1a354d819a4128822d1239cbf8832472a1",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.8735640677071881,
+     "fee_b": 790000,
+     "fee_s": 790000
+    },
+    {
+     "pid": "0x435db6881b9ba69946b935f820dd297c3aed573311f7752278cfd8910c789cec",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.8690114664296164,
+     "fee_b": 790000,
+     "fee_s": 790000
+    },
+    {
+     "pid": "0x5dc8fabeb39a2cdc119e59c19b4916ad865f6eca2ee6c483215ee6f40d51116e",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.8883608290778643,
+     "fee_b": 790000,
+     "fee_s": 790000
+    },
+    {
+     "pid": "0xd09ae159779f19c00b9d982a969f2fd460dc2565430158709ef28ba092e3ff36",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.8635060983539178,
+     "fee_b": 790000,
+     "fee_s": 790000
+    },
+    {
+     "pid": "0xb71773f9a9de82c71cf70b064cfc434f27ab514ae3ed00368f5d374b7eda3f8c",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.8912601858926352,
+     "fee_b": 790000,
+     "fee_s": 790000
+    }
+   ],
+   "follow": {
+    "n": 0,
+    "exits": {},
+    "usd_trade": 0.0,
+    "usd_day": 0.0
+   },
+   "follow_rows": [],
+   "front_no20cap (sell 1 block after the first real buy, deadline +3000)": {
+    "n": 5,
+    "mean": -0.87714,
+    "median": -0.87356,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 5
+    },
+    "usd_trade": -13.1571,
+    "trades_day": 2.5,
+    "usd_day": -32.9,
+    "p10_50_90": [
+     -0.89126,
+     -0.87356,
+     -0.86351
+    ],
+    "min": -0.89126,
+    "max": -0.86351
+   },
+   "capacity": {
+    "n": 0,
+    "cap_eth_p10_50_90": null,
+    "src": [],
+    "Y_p10_50_90": null
+   },
+   "gas_usd_median": 0.01082
+  }
+ },
+ "wider": {
+  "F1-WIDE": {
+   "count": 22,
+   "launches_per_day": 11.0,
+   "first_last_ts": [
+    1791562744,
+    1791655130
+   ],
+   "deployers": [
+    [
+     "0xe9e30297d45adbb7b33d957690325d66ecbf71d3",
+     1
+    ],
+    [
+     "0x72e9a45246b6cb32685129a21139732317b6fe13",
+     1
+    ],
+    [
+     "0x76130d900cea7e6307c3014669b449f75f8f0406",
+     1
+    ],
+    [
+     "0xba8107ebcdc9dc452e8994d2026d5d0bc9ffe0c5",
+     1
+    ]
+   ],
+   "n_deployers": 22,
+   "deployer_nonces": [
+    [
+     3,
+     20
+    ],
+    [
+     4,
+     2
+    ]
+   ],
+   "values": [
+    [
+     2.0,
+     17
+    ],
+    [
+     1.8,
+     4
+    ],
+    [
+     1.5,
+     1
+    ]
+   ],
+   "fees": [
+    [
+     100,
+     17
+    ],
+    [
+     500,
+     5
+    ]
+   ],
+   "launch_ranges": [
+    [
+     "[(-887272, 887272)]",
+     17
+    ],
+    [
+     "[(-887270, 887270)]",
+     5
+    ]
+   ],
+   "start": [
+    [
+     "active",
+     22
+    ]
+   ],
+   "later_adds_pools": 0,
+   "first_buy_any": {
+    "pools_with": 22,
+    "off_p10_50_90": [
+     3,
+     3,
+     4
+    ],
+    "eth_p10_50_90": [
+     2e-06,
+     2e-06,
+     2e-06
+    ],
+    "to": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      22
+     ]
+    ],
+    "from": [
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      22
+     ]
+    ]
+   },
+   "first_buy_real": {
+    "pools_with": 22,
+    "frac": 1.0,
+    "off_p10_50_90": [
+     85,
+     92,
+     294
+    ],
+    "eth_p10_50_90": [
+     0.000309,
+     0.000326,
+     0.053429
+    ],
+    "to_sel_len": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1124",
+      13
+     ],
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1284",
+      9
+     ]
+    ],
+    "n_from": 10,
+    "nonce0": 9,
+    "by_launch_wallet": 0,
+    "from_top": [
+     [
+      "0x5e6ec144b5f0391bdc1338d7788d766c5d76435b",
+      13
+     ],
+     [
+      "0xe57b352639037f2b756799c7a40e5e4847edd934",
+      1
+     ],
+     [
+      "0xa07e16a4729a30053ee956c99fe649fb6bdfcf0f",
+      1
+     ],
+     [
+      "0xcf76adbc4524b3390baef9c01e9b14ade44b66c1",
+      1
+     ]
+    ]
+   },
+   "swaps_non_launch": {
+    "total": 362,
+    "buys": 308,
+    "sells": 54,
+    "eth_in": 11.48033,
+    "pools_with_any": 22,
+    "from_top": [
+     [
+      "0x93b0790287720a922bb7e3cf0712062c1669847d",
+      38
+     ],
+     [
+      "0x0b410a5f0594fd4500acccd4b97b91da8987c40c",
+      36
+     ],
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      22
+     ],
+     [
+      "0x5e6ec144b5f0391bdc1338d7788d766c5d76435b",
+      22
+     ],
+     [
+      "0x13301ff046dcd5dc7e01e2e26047fcd83521d6d0",
+      16
+     ],
+     [
+      "0x3155c72daee67d4aaaf4489fc1d6dc23f68fb119",
+      6
+     ]
+    ]
+   },
+   "pull": {
+    "pulled_3000": 14,
+    "frac": 0.636,
+    "off_launch_p10_50_90": [
+     1567,
+     2427,
+     2798
+    ],
+    "off_from_first_real_buy_p10_50_90": [
+     1479,
+     2154,
+     2706
+    ],
+    "by_launch_wallet": 14,
+    "via": [
+     [
+      "0x58daec3116aae6d93017baaea7749052e8a04fa7:dd46508f",
+      14
+     ]
+    ]
+   },
+   "trap": {
+    "pools_with_outsider_before_sched": 2,
+    "outsider_eth_p10_50_90": [
+     1e-08,
+     1e-08,
+     5.94e-05
+    ],
+    "outsider_wallets": [
+     [
+      "0xb002e8a04b2822d8f2890b022ddea3d25f9c3df8",
+      3
+     ],
+     [
+      "0xfeda1c58462150b4cb94c63efce3647e78f883eb",
+      2
+     ]
+    ],
+    "pulled_after_outsider": 1,
+    "delay_after_outsider_p10_50_90": [
+     2791,
+     2791,
+     2791
+    ],
+    "pools_without": 20,
+    "pulled_without": 13,
+    "pull_off_without_p10_50_90": [
+     1567,
+     2427,
+     2791
+    ]
+   },
+   "front": {
+    "n": 22,
+    "mean": -0.0011,
+    "median": -0.00092,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 22
+    },
+    "usd_trade": -0.0166,
+    "trades_day": 11.0,
+    "usd_day": -0.18,
+    "p10_50_90": [
+     -0.00172,
+     -0.00092,
+     -0.00092
+    ],
+    "min": -0.00173,
+    "max": -0.00091
+   },
+   "front_rows": [
+    {
+     "pid": "0xb42f22e86b3f5f5a5b30b64474a8ac10756037b2dbc34b2d47c9ac6c43a9312c",
+     "sched": 277,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0017208755601827587,
+     "fee_b": 500,
+     "fee_s": 500
+    },
+    {
+     "pid": "0xf26eb00a233b48d433766b5dbfe650719169ea3e140f455d2b4a8fc816a346ca",
+     "sched": 188,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0017192775028539655,
+     "fee_b": 500,
+     "fee_s": 500
+    },
+    {
+     "pid": "0xd8edf400cef6e691445705e887d0f9d1cafbff996bd293878fb2dc92c7c22972",
+     "sched": 371,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0017175060348643104,
+     "fee_b": 500,
+     "fee_s": 500
+    },
+    {
+     "pid": "0x1c7b2fdcb08976fee5b575a3d001f8dfee27a6861d8a81c86b1fd27a858e3fc1",
+     "sched": 294,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0016965296047532759,
+     "fee_b": 500,
+     "fee_s": 500
+    },
+    {
+     "pid": "0xdf6f0d4410b7a96aa1b500cfad68a64e44b792e56cd8bf91642a8a777c12a41b",
+     "sched": 235,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.001728406550921724,
+     "fee_b": 500,
+     "fee_s": 500
+    },
+    {
+     "pid": "0x2ba5fed9f02c95916152435109a90e73c7ce11e76a588bd5ff92696976be1339",
+     "sched": 273,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0009251015144605173,
+     "fee_b": 100,
+     "fee_s": 100
+    },
+    {
+     "pid": "0x96177e60c6ae6e2bd6e703ca1c8f69f3360cccc951d46f3ec7791500dc9c57f7",
+     "sched": 280,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0009250650193770689,
+     "fee_b": 100,
+     "fee_s": 100
+    },
+    {
+     "pid": "0xc7c4ffa93fc3a2f3dcec2aa7d88ad57492958a65e26bb7fa041d3b9a1a07b8de",
+     "sched": 299,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.0009204759904287932,
+     "fee_b": 100,
+     "fee_s": 100
+    }
+   ],
+   "follow": {
+    "n": 22,
+    "mean": -0.00111,
+    "median": -0.00092,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 22
+    },
+    "usd_trade": -0.0166,
+    "trades_day": 11.0,
+    "usd_day": -0.18,
+    "p10_50_90": [
+     -0.00172,
+     -0.00092,
+     -0.00092
+    ],
+    "min": -0.00173,
+    "max": -0.00092
+   },
+   "follow_rows": [
+    {
+     "pid": "0xb42f22e86b3f5f5a5b30b64474a8ac10756037b2dbc34b2d47c9ac6c43a9312c",
+     "trig": 277,
+     "trig_eth": 0.016117687476843275,
+     "next": 431,
+     "B": 278,
+     "S": 282,
+     "exit": "sold",
+     "ret": -0.001722875101398793
+    },
+    {
+     "pid": "0xf26eb00a233b48d433766b5dbfe650719169ea3e140f455d2b4a8fc816a346ca",
+     "trig": 188,
+     "trig_eth": 0.02884662178111774,
+     "next": 309,
+     "B": 189,
+     "S": 193,
+     "exit": "sold",
+     "ret": -0.0017215095993253448
+    },
+    {
+     "pid": "0xd8edf400cef6e691445705e887d0f9d1cafbff996bd293878fb2dc92c7c22972",
+     "trig": 371,
+     "trig_eth": 0.03781663017882184,
+     "next": 525,
+     "B": 372,
+     "S": 376,
+     "exit": "sold",
+     "ret": -0.0017195193070018966
+    },
+    {
+     "pid": "0x1c7b2fdcb08976fee5b575a3d001f8dfee27a6861d8a81c86b1fd27a858e3fc1",
+     "trig": 294,
+     "trig_eth": 0.05901821664525363,
+     "next": 481,
+     "B": 295,
+     "S": 299,
+     "exit": "sold",
+     "ret": -0.00171824278691
+    },
+    {
+     "pid": "0xdf6f0d4410b7a96aa1b500cfad68a64e44b792e56cd8bf91642a8a777c12a41b",
+     "trig": 235,
+     "trig_eth": 0.029671823135840877,
+     "next": 376,
+     "B": 236,
+     "S": 240,
+     "exit": "sold",
+     "ret": -0.0017304156677706896
+    },
+    {
+     "pid": "0x2ba5fed9f02c95916152435109a90e73c7ce11e76a588bd5ff92696976be1339",
+     "trig": 273,
+     "trig_eth": 0.03155186634328329,
+     "next": 410,
+     "B": 274,
+     "S": 278,
+     "exit": "sold",
+     "ret": -0.0009273158018974138
+    },
+    {
+     "pid": "0x96177e60c6ae6e2bd6e703ca1c8f69f3360cccc951d46f3ec7791500dc9c57f7",
+     "trig": 280,
+     "trig_eth": 0.053428673035536334,
+     "next": 454,
+     "B": 281,
+     "S": 285,
+     "exit": "sold",
+     "ret": -0.0009270629077727586
+    },
+    {
+     "pid": "0xc7c4ffa93fc3a2f3dcec2aa7d88ad57492958a65e26bb7fa041d3b9a1a07b8de",
+     "trig": 299,
+     "trig_eth": 0.09781328626307143,
+     "next": 322,
+     "B": 300,
+     "S": 304,
+     "exit": "sold",
+     "ret": -0.0009224785033903448
+    }
+   ],
+   "front_no20cap (sell 1 block after the first real buy, deadline +3000)": {
+    "n": 22,
+    "mean": 0.01683,
+    "median": -0.00057,
+    "win": 0.4091,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 22
+    },
+    "usd_trade": 0.2525,
+    "trades_day": 11.0,
+    "usd_day": 2.78,
+    "p10_50_90": [
+     -0.00062,
+     -0.00058,
+     0.05296
+    ],
+    "min": -0.00067,
+    "max": 0.0988
+   },
+   "capacity": {
+    "n": 22,
+    "cap_eth_p10_50_90": [
+     0.00907,
+     0.010077,
+     0.010209
+    ],
+    "src": [
+     [
+      "Universal-Router-style execute (nested, not decoded): ASSUMED minOut = 0.99 x launch-state quote",
+      22
+     ]
+    ],
+    "Y_p10_50_90": [
+     0.000309,
+     0.000326,
+     0.053429
+    ]
+   },
+   "gas_usd_median": 0.01081
+  },
+  "F2-WIDE": {
+   "count": 25,
+   "launches_per_day": 12.5,
+   "first_last_ts": [
+    1791484288,
+    1791652998
+   ],
+   "deployers": [
+    [
+     "0x909a0af40a3577f60bb3b0d6bd38fe2d8adfed54",
+     25
+    ]
+   ],
+   "n_deployers": 1,
+   "deployer_nonces": [
+    [
+     2316,
+     1
+    ],
+    [
+     2320,
+     1
+    ],
+    [
+     2324,
+     1
+    ],
+    [
+     2342,
+     1
+    ]
+   ],
+   "values": [
+    [
+     0.001673835,
+     2
+    ],
+    [
+     0.000408981,
+     1
+    ],
+    [
+     0.000406747,
+     1
+    ],
+    [
+     0.000400127,
+     1
+    ],
+    [
+     0.000405277,
+     1
+    ]
+   ],
+   "fees": [
+    [
+     590000,
+     5
+    ],
+    [
+     900000,
+     3
+    ],
+    [
+     860000,
+     3
+    ],
+    [
+     870000,
+     2
+    ],
+    [
+     890000,
+     2
+    ],
+    [
+     880000,
+     2
+    ]
+   ],
+   "launch_ranges": [
+    [
+     "[(-887220, 887220)]",
+     8
+    ],
+    [
+     "[(-887220, 186900)]",
+     1
+    ],
+    [
+     "[(-887220, 188460)]",
+     1
+    ]
+   ],
+   "start": [
+    [
+     "active",
+     25
+    ]
+   ],
+   "later_adds_pools": 0,
+   "first_buy_any": {
+    "pools_with": 4,
+    "off_p10_50_90": [
+     0,
+     749,
+     2588
+    ],
+    "eth_p10_50_90": [
+     0.00023122,
+     0.00316118,
+     0.00377718
+    ],
+    "to": [
+     [
+      "0x1521027b665fa38fa4a642991607ad708376dd7b",
+      1
+     ],
+     [
+      "0xc0a0943567d8ed4f413cec6bdddc6868d9410785",
+      1
+     ],
+     [
+      "0x4a78edf7b2baba91c0925c0fe69fcd8ad3139a31",
+      1
+     ]
+    ],
+    "from": [
+     [
+      "0xd71213a41aecb2ebd5b6b8120981d95a575c8200",
+      1
+     ],
+     [
+      "0xc0a0943567d8ed4f413cec6bdddc6868d9410785",
+      1
+     ],
+     [
+      "0x4a78edf7b2baba91c0925c0fe69fcd8ad3139a31",
+      1
+     ]
+    ]
+   },
+   "first_buy_real": {
+    "pools_with": 4,
+    "frac": 0.16,
+    "off_p10_50_90": [
+     0,
+     749,
+     2588
+    ],
+    "eth_p10_50_90": [
+     0.000231,
+     0.003161,
+     0.003777
+    ],
+    "to_sel_len": [
+     [
+      "0x1521027b665fa38fa4a642991607ad708376dd7b:00000000:187",
+      1
+     ],
+     [
+      "0xc0a0943567d8ed4f413cec6bdddc6868d9410785:0c89e77a:368",
+      1
+     ],
+     [
+      "0x4a78edf7b2baba91c0925c0fe69fcd8ad3139a31:0c89e77a:369",
+      1
+     ],
+     [
+      "0x399acc46b32145ddda5b1ae6117d7b85f30f710e:3d78507c:932",
+      1
+     ]
+    ],
+    "n_from": 4,
+    "nonce0": 0,
+    "by_launch_wallet": 0,
+    "from_top": [
+     [
+      "0xd71213a41aecb2ebd5b6b8120981d95a575c8200",
+      1
+     ],
+     [
+      "0xc0a0943567d8ed4f413cec6bdddc6868d9410785",
+      1
+     ],
+     [
+      "0x4a78edf7b2baba91c0925c0fe69fcd8ad3139a31",
+      1
+     ],
+     [
+      "0x8d03aa87d36591205ea55fd0856082b1e2dc6977",
+      1
+     ]
+    ]
+   },
+   "swaps_non_launch": {
+    "total": 12,
+    "buys": 5,
+    "sells": 7,
+    "eth_in": 0.0078,
+    "pools_with_any": 8,
+    "from_top": [
+     [
+      "0xd71213a41aecb2ebd5b6b8120981d95a575c8200",
+      1
+     ],
+     [
+      "0xd9c8b54a0906aeda21e74177ce20be0b63b307cd",
+      1
+     ],
+     [
+      "0x7fe4c73a5e25ef9d3b75e427163ba90d627fb8f6",
+      1
+     ],
+     [
+      "0xc0a0943567d8ed4f413cec6bdddc6868d9410785",
+      1
+     ],
+     [
+      "0x4a78edf7b2baba91c0925c0fe69fcd8ad3139a31",
+      1
+     ],
+     [
+      "0xe0a042789bf4c016b40f697fc3af6b6001f00c02",
+      1
+     ]
+    ]
+   },
+   "pull": {
+    "pulled_3000": 0,
+    "frac": 0.0,
+    "off_launch_p10_50_90": null,
+    "off_from_first_real_buy_p10_50_90": null,
+    "by_launch_wallet": 0,
+    "via": []
+   },
+   "trap": {
+    "pools_with_outsider_before_sched": 1,
+    "outsider_eth_p10_50_90": [
+     0.00316118,
+     0.00316118,
+     0.00316118
+    ],
+    "outsider_wallets": [
+     [
+      "0x8d03aa87d36591205ea55fd0856082b1e2dc6977",
+      1
+     ]
+    ],
+    "pulled_after_outsider": 0,
+    "delay_after_outsider_p10_50_90": null,
+    "pools_without": 24,
+    "pulled_without": 0,
+    "pull_off_without_p10_50_90": null
+   },
+   "front": {
+    "n": 25,
+    "mean": -0.89139,
+    "median": -0.97194,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 25
+    },
+    "usd_trade": -13.3709,
+    "trades_day": 12.5,
+    "usd_day": -167.19,
+    "p10_50_90": [
+     -0.98773,
+     -0.97194,
+     -0.74008
+    ],
+    "min": -0.98815,
+    "max": -0.5436
+   },
+   "front_rows": [
+    {
+     "pid": "0x8c7d7942fa2a4cf9135e61bb3b6788a7f0a88145ed5c1a3f1863dd9ebe1f3d69",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.9878563403423305,
+     "fee_b": 900000,
+     "fee_s": 900000
+    },
+    {
+     "pid": "0x60aaef817e6e6205f623a2d402061a6f9ed1d03448dd51400fba07f7eb32b9b0",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.9719383431108226,
+     "fee_b": 860000,
+     "fee_s": 860000
+    },
+    {
+     "pid": "0x933b6a5c27882ea117b1dff965940fc52f6c3a2ccbbf00d1228bf2de34754d34",
+     "sched": 2588,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.9767630212059705,
+     "fee_b": 860000,
+     "fee_s": 860000
+    },
+    {
+     "pid": "0x48b4ad65d75df4b208858db6961718094a53cf0e33d05669f1d22b45a687c4f6",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.9803592021913807,
+     "fee_b": 870000,
+     "fee_s": 870000
+    },
+    {
+     "pid": "0xb0b297456992185b3110595bfa1ac08c5b23b3eb44471162e491910a2ca82f17",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.9841530054340003,
+     "fee_b": 890000,
+     "fee_s": 890000
+    },
+    {
+     "pid": "0x1696e98d6437ab3229df1fcdb471d667f8b7199f990f59c97d04216d4bc8e9c2",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.6021405005607581,
+     "fee_b": 490000,
+     "fee_s": 490000
+    },
+    {
+     "pid": "0xcd6d4f0591290330d28602c04b911766e67be5ca4472eecbf72d215ec2808ad9",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.9535079732838369,
+     "fee_b": 820000,
+     "fee_s": 820000
+    },
+    {
+     "pid": "0x5c6ca0dde6abeef48f720bd9416d1523b0f9f8dc62a88e343d5cc5a3b40c762b",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.9881474980934196,
+     "fee_b": 900000,
+     "fee_s": 900000
+    }
+   ],
+   "follow": {
+    "n": 4,
+    "mean": -0.81123,
+    "median": -0.76296,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 4
+    },
+    "usd_trade": -12.1685,
+    "trades_day": 2.0,
+    "usd_day": -24.34,
+    "p10_50_90": [
+     -0.97742,
+     -0.7489,
+     -0.74159
+    ],
+    "min": -0.97742,
+    "max": -0.74159
+   },
+   "follow_rows": [
+    {
+     "pid": "0x933b6a5c27882ea117b1dff965940fc52f6c3a2ccbbf00d1228bf2de34754d34",
+     "trig": 2588,
+     "trig_eth": 0.003777176393312951,
+     "next": null,
+     "B": 2589,
+     "S": 2593,
+     "exit": "sold",
+     "ret": -0.9774160641159577
+    },
+    {
+     "pid": "0x8592250a93c44f12e1474ca24eab7132e31d70459b905a996b5fa7690d527d18",
+     "trig": 1,
+     "trig_eth": 0.000231215993663008,
+     "next": null,
+     "B": 2,
+     "S": 6,
+     "exit": "sold",
+     "ret": -0.741588619654975
+    },
+    {
+     "pid": "0xa060323937e872dcd417721ffed2e0eb74469e9ed6298f7ba2a10ef208e71cf5",
+     "trig": 749,
+     "trig_eth": 0.000378581970242193,
+     "next": 2568,
+     "B": 750,
+     "S": 754,
+     "exit": "sold",
+     "ret": -0.7488980406450445
+    },
+    {
+     "pid": "0x01fe55a67f0f3d46527e6434257a696e02c986b7957d5956bff62595d49ec535",
+     "trig": 0,
+     "trig_eth": 0.00316117538928145,
+     "next": null,
+     "B": 1,
+     "S": 5,
+     "exit": "sold",
+     "ret": -0.777025381666864
+    }
+   ],
+   "front_no20cap (sell 1 block after the first real buy, deadline +3000)": {
+    "n": 25,
+    "mean": -0.89796,
+    "median": -0.97217,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 25
+    },
+    "usd_trade": -13.4694,
+    "trades_day": 12.5,
+    "usd_day": -168.42,
+    "p10_50_90": [
+     -0.98773,
+     -0.97217,
+     -0.72785
+    ],
+    "min": -0.98815,
+    "max": -0.60214
+   },
+   "capacity": {
+    "n": 2,
+    "cap_eth_p10_50_90": [
+     2.2e-05,
+     2.2e-05,
+     0.000115
+    ],
+    "src": [
+     [
+      "router 0x1521027b sel 00000000 not decoded: ASSUMED minOut = 0.99 x launch-state quote",
+      1
+     ],
+     [
+      "router 0x4a78edf7 sel 0c89e77a not decoded: ASSUMED minOut = 0.99 x launch-state quote",
+      1
+     ]
+    ],
+    "Y_p10_50_90": [
+     0.000379,
+     0.000379,
+     0.003777
+    ]
+   },
+   "gas_usd_median": 0.01084
+  },
+  "F4-WIDE": {
+   "count": 15,
+   "launches_per_day": 7.5,
+   "first_last_ts": [
+    1791517559,
+    1791637379
+   ],
+   "deployers": [
+    [
+     "0x5dc9708f972a56d43620cc61f8236c5177270ce5",
+     9
+    ],
+    [
+     "0xa1e4bca023d741bd8d8609875ceef2abd8d755a3",
+     4
+    ],
+    [
+     "0x743508ffae72e5711c1f9d9765ca32794b6e43b9",
+     2
+    ]
+   ],
+   "n_deployers": 3,
+   "deployer_nonces": [
+    [
+     3754,
+     1
+    ],
+    [
+     3783,
+     1
+    ],
+    [
+     5128,
+     1
+    ],
+    [
+     7320,
+     1
+    ]
+   ],
+   "values": [
+    [
+     0.0,
+     7
+    ],
+    [
+     0.000228395,
+     1
+    ],
+    [
+     0.000228649,
+     1
+    ],
+    [
+     0.000365934,
+     1
+    ],
+    [
+     0.000199982,
+     1
+    ]
+   ],
+   "fees": [
+    [
+     790000,
+     5
+    ],
+    [
+     50000,
+     1
+    ],
+    [
+     200000,
+     1
+    ],
+    [
+     2500,
+     1
+    ],
+    [
+     451180,
+     1
+    ],
+    [
+     331000,
+     1
+    ]
+   ],
+   "launch_ranges": [
+    [
+     "[(-884800, 884800)]",
+     5
+    ],
+    [
+     "[(158000, 164500)]",
+     1
+    ],
+    [
+     "[(94000, 106000)]",
+     1
+    ]
+   ],
+   "start": [
+    [
+     "active",
+     8
+    ],
+    [
+     "below",
+     7
+    ]
+   ],
+   "later_adds_pools": 4,
+   "first_buy_any": {
+    "pools_with": 3,
+    "off_p10_50_90": [
+     1,
+     1,
+     3
+    ],
+    "eth_p10_50_90": [
+     2e-06,
+     0.00010779,
+     0.00012749
+    ],
+    "to": [
+     [
+      "0xb5e643d7e30846c45ac605aa92eecbce88f19cf5",
+      1
+     ],
+     [
+      "0x9ff90abf39f03b69a95aa2b0ac49b3d592dd8cb8",
+      1
+     ],
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      1
+     ]
+    ],
+    "from": [
+     [
+      "0x9d0810b632d16131de3d79fcb520d757a893448e",
+      1
+     ],
+     [
+      "0x9ff90abf39f03b69a95aa2b0ac49b3d592dd8cb8",
+      1
+     ],
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      1
+     ]
+    ]
+   },
+   "first_buy_real": {
+    "pools_with": 1,
+    "frac": 0.067,
+    "off_p10_50_90": [
+     1809,
+     1809,
+     1809
+    ],
+    "eth_p10_50_90": [
+     0.000562,
+     0.000562,
+     0.000562
+    ],
+    "to_sel_len": [
+     [
+      "0x28df563f52cd1e94c25cecb8947aed5ac091d181:a1040209:305",
+      1
+     ]
+    ],
+    "n_from": 1,
+    "nonce0": 0,
+    "by_launch_wallet": 0,
+    "from_top": [
+     [
+      "0x37888c55c073e298ee81c11cb0db628fe1e869f8",
+      1
+     ]
+    ]
+   },
+   "swaps_non_launch": {
+    "total": 5,
+    "buys": 4,
+    "sells": 1,
+    "eth_in": 0.0008,
+    "pools_with_any": 4,
+    "from_top": [
+     [
+      "0x9d0810b632d16131de3d79fcb520d757a893448e",
+      1
+     ],
+     [
+      "0x9ff90abf39f03b69a95aa2b0ac49b3d592dd8cb8",
+      1
+     ],
+     [
+      "0x37888c55c073e298ee81c11cb0db628fe1e869f8",
+      1
+     ],
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      1
+     ],
+     [
+      "0x14a9b9a5fe93a5e8a0d7c7f8d68a2208456fea4e",
+      1
+     ]
+    ]
+   },
+   "pull": {
+    "pulled_3000": 4,
+    "frac": 0.267,
+    "off_launch_p10_50_90": [
+     342,
+     1081,
+     2400
+    ],
+    "off_from_first_real_buy_p10_50_90": [
+     -728,
+     -728,
+     -728
+    ],
+    "by_launch_wallet": 4,
+    "via": [
+     [
+      "0x58daec3116aae6d93017baaea7749052e8a04fa7:dd46508f",
+      4
+     ]
+    ]
+   },
+   "trap": {
+    "pools_with_outsider_before_sched": 2,
+    "outsider_eth_p10_50_90": [
+     0.00010779,
+     0.00010779,
+     0.00012749
+    ],
+    "outsider_wallets": [
+     [
+      "0x9d0810b632d16131de3d79fcb520d757a893448e",
+      1
+     ],
+     [
+      "0x9ff90abf39f03b69a95aa2b0ac49b3d592dd8cb8",
+      1
+     ]
+    ],
+    "pulled_after_outsider": 1,
+    "delay_after_outsider_p10_50_90": [
+     1080,
+     1080,
+     1080
+    ],
+    "pools_without": 13,
+    "pulled_without": 3,
+    "pull_off_without_p10_50_90": [
+     342,
+     582,
+     2400
+    ]
+   },
+   "front": {
+    "n": 15,
+    "mean": -0.60248,
+    "median": -0.67179,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 15
+    },
+    "usd_trade": -9.0372,
+    "trades_day": 7.5,
+    "usd_day": -67.8,
+    "p10_50_90": [
+     -0.88836,
+     -0.67179,
+     -0.0652
+    ],
+    "min": -0.89126,
+    "max": -0.0051
+   },
+   "front_rows": [
+    {
+     "pid": "0x73a97bf2d599d463e72529c57f0b3e1a354d819a4128822d1239cbf8832472a1",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.8735640677071881,
+     "fee_b": 790000,
+     "fee_s": 790000
+    },
+    {
+     "pid": "0x435db6881b9ba69946b935f820dd297c3aed573311f7752278cfd8910c789cec",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.8690114664296164,
+     "fee_b": 790000,
+     "fee_s": 790000
+    },
+    {
+     "pid": "0x42b25f4562923c302690305233ab4c7d7f7805e0a531ba65fe566cf91b973268",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.06520011622697518,
+     "fee_b": 50000,
+     "fee_s": 50000
+    },
+    {
+     "pid": "0x5dc8fabeb39a2cdc119e59c19b4916ad865f6eca2ee6c483215ee6f40d51116e",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.8883608290778643,
+     "fee_b": 790000,
+     "fee_s": 790000
+    },
+    {
+     "pid": "0xd09ae159779f19c00b9d982a969f2fd460dc2565430158709ef28ba092e3ff36",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.8635060983539178,
+     "fee_b": 790000,
+     "fee_s": 790000
+    },
+    {
+     "pid": "0xd481e03b6eb97e897807194fe3e6bf9980efb471565991e7913a9dee720e825f",
+     "sched": 1809,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.21215071449838258,
+     "fee_b": 200000,
+     "fee_s": 200000
+    },
+    {
+     "pid": "0x52a994e8f85c7aeae8df33bef794307da0671097991c7607fb15c07ea68c365e",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.005104307877918966,
+     "fee_b": 2500,
+     "fee_s": 2500
+    },
+    {
+     "pid": "0xa5dd5b5434a429bc1c8dba5e059b51bf54befe9981a299bb9ad95a2e216c069e",
+     "sched": null,
+     "S": 20,
+     "exit": "sold",
+     "ret": -0.4562765412152145,
+     "fee_b": 451180,
+     "fee_s": 451180
+    }
+   ],
+   "follow": {
+    "n": 0,
+    "exits": {
+     "pulled_before_buy": 1
+    },
+    "usd_trade": 0.0,
+    "usd_day": 0.0
+   },
+   "follow_rows": [
+    {
+     "pid": "0xd481e03b6eb97e897807194fe3e6bf9980efb471565991e7913a9dee720e825f",
+     "trig": 1809,
+     "trig_eth": 0.0005625,
+     "next": null,
+     "B": 1810,
+     "S": 1814,
+     "exit": "pulled_before_buy",
+     "ret": null
+    }
+   ],
+   "front_no20cap (sell 1 block after the first real buy, deadline +3000)": {
+    "n": 15,
+    "mean": -0.72157,
+    "median": -0.86901,
+    "win": 0.0,
+    "pulled_first": 4,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 11,
+     "pulled_first": 4
+    },
+    "usd_trade": -10.8236,
+    "trades_day": 7.5,
+    "usd_day": -81.2,
+    "p10_50_90": [
+     -1.00072,
+     -0.86901,
+     -0.0652
+    ],
+    "min": -1.00072,
+    "max": -0.0051
+   },
+   "capacity": {
+    "n": 1,
+    "cap_eth_p10_50_90": [
+     2e-06,
+     2e-06,
+     2e-06
+    ],
+    "src": [
+     [
+      "router 0x28df563f sel a1040209 not decoded: ASSUMED minOut = 0.99 x launch-state quote",
+      1
+     ]
+    ],
+    "Y_p10_50_90": [
+     0.000562,
+     0.000562,
+     0.000562
+    ]
+   },
+   "gas_usd_median": 0.0108
+  }
+ }
+}

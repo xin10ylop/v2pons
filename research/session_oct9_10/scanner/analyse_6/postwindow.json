@@ -1,0 +1,1143 @@
+{
+ "head": 85243943,
+ "from": 83870076,
+ "n_logs": 121,
+ "per_family": {
+  "0x404700be6b535e6aa7fd744f242d8cf78135817c|7fde822e|804|10000|200|true": {
+   "pools": 15,
+   "pools_with_pull_ever": 0,
+   "pools_with_buy_ge_0.0002_ever": 0,
+   "pools_with_swaps_after_3000": 0,
+   "total_eth_in": 3e-05,
+   "age_blocks_min": 666300,
+   "rows": [
+    {
+     "pid": "0x52c9695baabb6850a49cb14003d8c81fc39d07fc2d86c33383d060f4d9b810c8",
+     "age_blocks": 715941,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99858e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       4,
+       -1998580000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xa7513a2b641f86bf010283b3822dd80032d8d3cc5a9979c383499b1634435d83",
+     "age_blocks": 712972,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998354e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998354000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x2cf011db2e1f94905a4cc770bf7d4f133ef71340ef9928b9bb26cc02e00ef887",
+     "age_blocks": 710073,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998972e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998972000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x858b4a1be177f25f9958a62da6b8621bb2db626cbe0b46de15b324d6fb9bbcdd",
+     "age_blocks": 704228,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998784e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       5,
+       -1998784000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xac9d53387838883be67c988031854615e352b1c7912eb8432ecb690924ec7188",
+     "age_blocks": 701312,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998046e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998046000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x371e373514343419fe04de5d6239c5574fe1bbbafe0b03ba912ec53d33cb5414",
+     "age_blocks": 698430,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99982e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999820000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x9a6e416457e3c471a329fed8f04d33ae6030b7fcb9667f290879b6a232426747",
+     "age_blocks": 695538,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999624e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999624000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xc73fcac8439416e65ff674f966ac06ac6593afb0a5455d3ace2f15b195169e80",
+     "age_blocks": 692591,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998624e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998624000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x55a6658e999c3970748e4490f686e830bf37d67f3d7ec67feac69d010ce4f261",
+     "age_blocks": 686822,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999436e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999436000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x52f783d5e7f96df01ac988b1016101d9b6fa25da44c371fd9285f939f365210f",
+     "age_blocks": 683869,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99844e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998440000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x3b120eb305d6fb88a9d33ad6b04d049f06f6a858249b0a6fd440c87bcb4ef5a4",
+     "age_blocks": 680974,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999978e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999978000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xfafca2af0f1475a0afaa1d487cebe4f1274c80cfdff4ff41b8684f92683b47f9",
+     "age_blocks": 678047,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998726e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998726000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x4d47ce95c3acafea2b17d687a6b70aabbfc43f9c10fddf2a68cacd1a69758c39",
+     "age_blocks": 672170,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.9991e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       4,
+       -1999100000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x387a4f9f3868ec4a73cee4f6959ca30b2c580d10803deab57db8df37dce19d9f",
+     "age_blocks": 669246,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999698e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999698000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x839be9792c60bf833a8449c4259c3568aff79b3a1e56e84a120c0407d9d87b5c",
+     "age_blocks": 666300,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999562e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999562000000
+      ]
+     ]
+    }
+   ]
+  },
+  "0xe696daf67fe25c5936187fc1edf38404353d5f72|7fde822e|804|10000|200|true": {
+   "pools": 15,
+   "pools_with_pull_ever": 0,
+   "pools_with_buy_ge_0.0002_ever": 0,
+   "pools_with_swaps_after_3000": 0,
+   "total_eth_in": 3e-05,
+   "age_blocks_min": 142880,
+   "rows": [
+    {
+     "pid": "0x7f63a66f7b859ba25cf5a5a9b06e4b6d3b6d803febd3b6fbdc52d91257701d2a",
+     "age_blocks": 483242,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998934e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998934000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xa676976017795a1d3559acb7800135526c89551b692820030cee09bcebef6df6",
+     "age_blocks": 480330,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999746e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       2,
+       -1999746000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xff51cf9a8b2d7139e85f148992cf89293ca788cfa157618b7735db34e80cb6c1",
+     "age_blocks": 477429,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999488e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999488000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x61ca7365a095ec10268f328e1c31af42562ec99941d83ac04b29de9d7c4d5a1f",
+     "age_blocks": 474550,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999102e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999102000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xad27bdded19cdef43abfe00f5f016c7d43fc236cfaa31833d9a1a7ec4e2e147f",
+     "age_blocks": 468696,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999226e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999226000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xefa38713619ee9f188403bd1398238e2ec7eb7597825668e099446323dac24c8",
+     "age_blocks": 462857,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99948e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999480000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x9f09e0bdeee03511d4af012a5c792580ec4d6698fda56ff310eb458615f932f2",
+     "age_blocks": 172257,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998182e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998182000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x012f9440c993a2d6412d7acf76b38e0957f325929ff5e57b1cf01fefc46a947d",
+     "age_blocks": 169177,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998234e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998234000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x6ea3d17ab780f6d272cd0ba0e2201e3a0ec414f0f80e69142ece8474e68df216",
+     "age_blocks": 166188,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998846e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       47,
+       -1998846000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x5477332f8ab1bdef36b6816f7816c6229b52e1c3ab6506642191a36f47105419",
+     "age_blocks": 163371,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998594e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998594000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x64d88477a48b30aef336417726c3953b47b5c66e8c8675f8eb472b900d1f5974",
+     "age_blocks": 160431,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998922e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998922000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x7cb2a2c2feb6ab56345ee22e5cf46582f1f7a42ddeb29f4eb167b6806a56449f",
+     "age_blocks": 157334,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999298e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       7,
+       -1999298000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x152f6e57ae027e3298a1f461bb8785a537d3133efaf9f90ff820b82bef2ef9c9",
+     "age_blocks": 151675,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999302e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       2,
+       -1999302000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xf37cf056928b6a48cbb3558c2a329d075304f3409094e78cf8ea838e94181168",
+     "age_blocks": 148739,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99878e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998780000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xa844ff6d6ab59a1968817d9c134ff7af3d0a696990fbf2337a4d26dd3384c5a5",
+     "age_blocks": 142880,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998146e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998146000000
+      ]
+     ]
+    }
+   ]
+  },
+  "0xb40382548413c559ad7f0bb6e24410401238eded|7fde822e|804|10000|200|true": {
+   "pools": 14,
+   "pools_with_pull_ever": 0,
+   "pools_with_buy_ge_0.0002_ever": 0,
+   "pools_with_swaps_after_3000": 0,
+   "total_eth_in": 2.8e-05,
+   "age_blocks_min": 780041,
+   "rows": [
+    {
+     "pid": "0x19819f41fe0845ce919ece70f2a8c7ccae16e6ac33f1d2a3ce83229855aec8df",
+     "age_blocks": 835151,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998538e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998538000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x932acccc64f3be1636eaa358b3df9b9f8a145b1585eae4dab9eff9ea9e20dd52",
+     "age_blocks": 832818,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999018e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999018000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x18b25a075d7407ea8d861b28e762f9fefe590af55e2f45c685e61da9d8be698c",
+     "age_blocks": 829818,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998368e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998368000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x1cc45e58fe8777f9a681567fd0fdd8b1360c41e132789b7592e9467193991cbc",
+     "age_blocks": 823697,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999898e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999898000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x20769859b6ebd481cd6c03c24f06c5c3ab46e41af03763f9ad1f5651730018e8",
+     "age_blocks": 817938,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99958e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999580000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x54f92889f19160f5f3778e53a1736ee09801380257f1acf4cfde684089767791",
+     "age_blocks": 815176,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99977e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999770000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x12dfbc8272262c3db5a777ecdf78b46d8401797aa59588c65036e63516843e09",
+     "age_blocks": 812167,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999808e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999808000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xc9dc4a55f02407a2e95fc6ee95a02f2f7232721d703b074747deadfdc700e83e",
+     "age_blocks": 809311,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99825e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998250000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xfa2d825538bca5c019d743b06dbd24c023faf21962e1afcc2b4c8b7efcbed2ca",
+     "age_blocks": 806171,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998076e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998076000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x0c1867ff9b328298e0229a74eb4e36fa8d5d178a03288ef9a608173bef6a2935",
+     "age_blocks": 797575,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99995e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999950000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xf5291bbf020cfdea82fff6a2033cd8f8136aa984d9f684964aba23cf4164b743",
+     "age_blocks": 794515,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999536e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999536000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x9a78a882207c9209c1c6f8f84a68610f393194905779d0cff41b64f297bafc61",
+     "age_blocks": 788781,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999352e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       2,
+       -1999352000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x90a3d2741507ba5ea4d9481cf260b4bad73c76143b506522f4aa60591a584d65",
+     "age_blocks": 785899,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998166e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998166000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xcdd3e00946e61907e58d45fcf16c9e9bdb2ebea3bc3707775e04f17e8bc63b7c",
+     "age_blocks": 780041,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999328e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999328000000
+      ]
+     ]
+    }
+   ]
+  },
+  "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0|ac9650d8|1316|2500|25|true": {
+   "pools": 12,
+   "pools_with_pull_ever": 0,
+   "pools_with_buy_ge_0.0002_ever": 2,
+   "pools_with_swaps_after_3000": 4,
+   "total_eth_in": 0.012409,
+   "age_blocks_min": 364458,
+   "rows": [
+    {
+     "pid": "0x9bfc36584a1f35d9a877673c7752530ac5dd9bb6ef904e35c8bdc31324ddf5d0",
+     "age_blocks": 1373867,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.9988e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998800000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x755240c522edfbe79cd5074890c8fe7a017f9d72a5c2da46b17d243985cd170b",
+     "age_blocks": 1302570,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99937e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999370000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x883faa42cba54dfc687eb6c807ffd8767134f09e70f2d9aef7e16348f476ca09",
+     "age_blocks": 1058723,
+     "swaps": 5,
+     "buys": 3,
+     "buys_ge_0.0002": 1,
+     "eth_in": 0.006249110999,
+     "after_3000_swaps": 3,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       4,
+       -1999924000000
+      ],
+      [
+       1092,
+       -84361075000000
+      ],
+      [
+       10465,
+       -6162750000000000
+      ],
+      [
+       13640,
+       6127113590720751
+      ]
+     ]
+    },
+    {
+     "pid": "0xde317ceda3b3d11a791bc499229cf65bd7b3e6184785bdc3a52a554f9cb88cfe",
+     "age_blocks": 1046799,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998234e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998234000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x17ca2068b15e11cae66e4b7a3ce113037620efd06a6d267f548f3799a656d1ac",
+     "age_blocks": 1015013,
+     "swaps": 2,
+     "buys": 2,
+     "buys_ge_0.0002": 0,
+     "eth_in": 2.40053665e-05,
+     "after_3000_swaps": 1,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998454000000
+      ],
+      [
+       4053,
+       -22006912500000
+      ]
+     ]
+    },
+    {
+     "pid": "0xe33b9cb2940a1776f5a363962068e0ea96f9759d696349f609b10a0dba5533dc",
+     "age_blocks": 1013585,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99924e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999240000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xd4dfbefdb5a50a9bb2f8ce4c02790583b7a02607ea1258752a2796975ec6f3a3",
+     "age_blocks": 1007775,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.998934e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998934000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x40c975a9eac33bff57f9aa26a0c94d14057af0e2caa48c7b14834bd83eec30d9",
+     "age_blocks": 952615,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.99838e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998380000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x2434cbd41395b6d8d99402be7e32a8758186ea23c41d7b8a343d7e97649a2192",
+     "age_blocks": 682213,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999914e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999914000000
+      ]
+     ]
+    },
+    {
+     "pid": "0x4661e7ab4e1fb69eb2e6f73189a79b50dc8d4ce97ac7cb24ff7f20911e1f6092",
+     "age_blocks": 678302,
+     "swaps": 1,
+     "buys": 1,
+     "buys_ge_0.0002": 0,
+     "eth_in": 1.999414e-06,
+     "after_3000_swaps": 0,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999414000000
+      ]
+     ]
+    },
+    {
+     "pid": "0xfe63a4eda4c64b140bd0516f48a8b5f9f6107f63668e96e348ab2767258af928",
+     "age_blocks": 651507,
+     "swaps": 3,
+     "buys": 2,
+     "buys_ge_0.0002": 0,
+     "eth_in": 4.1999748e-05,
+     "after_3000_swaps": 1,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1999748000000
+      ],
+      [
+       1124,
+       -40000000000000
+      ],
+      [
+       6961,
+       39768418001834
+      ]
+     ]
+    },
+    {
+     "pid": "0xa85fe1ef9ab8cbb8f0217eea78543248b9531aba30aa82a8af1f2c8fee4bfe50",
+     "age_blocks": 364458,
+     "swaps": 3,
+     "buys": 3,
+     "buys_ge_0.0002": 1,
+     "eth_in": 0.006078075736472231,
+     "after_3000_swaps": 1,
+     "pulls": [],
+     "adds": [
+      0
+     ],
+     "first_swaps": [
+      [
+       3,
+       -1998990000000
+      ],
+      [
+       681,
+       -40000000000000
+      ],
+      [
+       153706,
+       -6036076746472231
+      ]
+     ]
+    }
+   ]
+  }
+ }
+}

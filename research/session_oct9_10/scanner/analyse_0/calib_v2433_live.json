@@ -1,0 +1,44 @@
+{
+ "window": {
+  "n": 409,
+  "mean": 0.13979,
+  "median": 0.16173,
+  "win": 0.9853,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 409
+  },
+  "usd_trade": 2.0968,
+  "trades_day": 204.6,
+  "usd_day": 428.93,
+  "p10_50_90": [
+   0.0349,
+   0.1617,
+   0.2283
+  ],
+  "min": -0.0057,
+  "max": 0.2855
+ },
+ "with_relay": {
+  "n": 401,
+  "mean": 0.13964,
+  "median": 0.16173,
+  "win": 0.985,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 401
+  },
+  "usd_trade": 2.0945,
+  "trades_day": 200.6,
+  "usd_day": 420.09,
+  "p10_50_90": [
+   0.0331,
+   0.1617,
+   0.228
+  ],
+  "min": -0.0057,
+  "max": 0.2855
+ }
+}
