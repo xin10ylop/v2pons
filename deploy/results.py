@@ -65,6 +65,13 @@ def profit_table(done, st, e):
         usd = [d.get("pnl_usd") or 0 for d in ds]
         print(f"  {k}: {len(ds)} trades, {sum(1 for u in usd if u > 0) / len(ds):.0%} up, {'+' if sum(usd) >= 0 else '-'}${abs(sum(usd)) / len(ds):.3f} a trade"
               + (f", {100 * sum(rets) / len(rets):+.1f}% average return, worst {100 * min(rets):+.1f}%" if rets else ""))
+        by = {}                                                                # the stake changes over time: $ a trade at each
+        for d in ds:
+            if d.get("stake"):
+                by.setdefault(d["stake"], []).append(d)
+        if len(by) > 1:
+            print(f"    {k} by stake: " + "; ".join(f"${st_ / 1e18 * eth_usd:.0f}: {len(g)} trades {'+' if sum(x.get('pnl_usd') or 0 for x in g) >= 0 else '-'}${abs(sum(x.get('pnl_usd') or 0 for x in g)):.2f}"
+                                               f" (${sum(x.get('pnl_usd') or 0 for x in g) / len(g):.2f} a trade)" for st_, g in sorted(by.items())))
 
 
 def env():
