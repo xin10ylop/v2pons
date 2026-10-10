@@ -103,7 +103,7 @@ def do_launch(seq, fee=1134):
 
 def reset():
     E.state["armed"].clear(); E.state["position"] = None; E.state["trades_today"] = 0; E.state["pnl_today_usd"] = 0.0; E.state["seq"] = 0; SENT.clear(); RECEIPTS.clear()
-    E.state["front_pnl_today_usd"] = 0.0; E.state["arming"].clear()
+    E.state["front_pnl_today_usd"] = 0.0; E.state["arming"].clear(); E.state["recent"].clear()     # a test's buys are never replayed onto a later test's launch
 
 
 # --- 1. the live path
@@ -769,6 +769,33 @@ reset(); E.state["nonce"] = 555                                                 
 E.ingest(frame(7980, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, FX["input"], 24), signed(CROWD, BOT, int(0.00495e18), FBUY, 77)]))
 assert E.state["position"] is None and E.state["armed"][FPID]["status"] == "late" and "the bot's buy came first" in events("skip")[-1]["why"], events("skip")[-1]
 print("ok front: the bot's buy is known by its router at any size (0.00495 ETH, the Oct 10 losses) and sells at once; a real-size buy by anyone else too; decoys never")
+
+# 18m3. follow's near-miss halt: the operator's pull within FOLLOW_NEAR_MISS_BLOCKS (4) of our buy, behind our sell, halts follow only (its own
+# file); front keeps trading; a pull one block later is not a near miss. The exit survives a pull at our buy + 4 or later only (protect/exits_bt.out).
+reset(); E.state["armed"].pop(FPID, None); LOGS[:] = []
+pos, buy_raw, B = relay_trade(8100, 600, 90)
+E.ingest(frame(B + 1, [])); E.ingest(frame(B + 2, [])); assert pos["sell_sent"] and pos["sell_why"].startswith("deadline")
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(B, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(B + 3, int(E.STAKE_WEI * 0.995), -pos["feed_tokens"], index=2)
+LOGS[:] = [{"blockNumber": hex(B + 4), "transactionIndex": hex(1), "data": "0x" + w(-887200) + w(TICK0) + w(-LIQ) + w(0)}]
+assert wait_for(lambda: done_at(600)); d = done_at(600)[-1]
+assert d["pulled_before_sell"] is False and d["pull_after_buy_blocks"] == 4 and d["sell_after_buy_blocks"] == 3 and d.get("near_miss") is True, d
+assert E.state["follow_halted"] and E.state["follow_halted"].startswith("near miss") and E.state["halted"] is None and E.state["front_halted"] is None, (E.state["follow_halted"], E.state["halted"])
+assert os.path.exists(E.FOLLOW_HALT_FILE) and not os.path.exists(E.HALT_FILE) and any(e["what"].startswith("the follow strategy halted") for e in events("alarm")[-3:])
+LOGS[:] = []
+reset(); E.state["nonce"] = 610; do_launch(8200); E.ingest(frame(8231, [signed(CROWD, UR, TRIG, BUY_DATA, 91)]))
+assert E.state["position"] is None and events("skip")[-1]["why"].startswith("halted: near miss"), events("skip")[-1]
+E.state["armed"].pop(PID, None); front_launch(8240, 25); fpos = E.state["position"]; assert fpos and fpos["entry"] == "front", "front stopped by follow's near-miss halt"
+E.state["position"] = None
+E.state["follow_halted"] = None; os.remove(E.FOLLOW_HALT_FILE); E.load_halt(); assert E.state["follow_halted"] is None
+reset(); E.state["armed"].pop(FPID, None)
+pos, buy_raw, B = relay_trade(8300, 620, 92)
+E.ingest(frame(B + 1, [])); E.ingest(frame(B + 2, [])); assert pos["sell_sent"]
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(B, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(B + 3, int(E.STAKE_WEI * 0.995), -pos["feed_tokens"], index=2)
+LOGS[:] = [{"blockNumber": hex(B + 5), "transactionIndex": hex(1), "data": "0x" + w(-887200) + w(TICK0) + w(-LIQ) + w(0)}]
+assert wait_for(lambda: done_at(620)); d = done_at(620)[-1]
+assert d["pull_after_buy_blocks"] == 5 and not d.get("near_miss") and E.state["follow_halted"] is None and E.state["halted"] is None, d
+LOGS[:] = []
+print("ok follow: a pull within 4 blocks of our buy, behind our sell, halts follow only (its own file); front keeps trading; a pull at + 5 does not")
 E.FRONT = False; E.ENTRY = "follow"
 
 # 18n. a restart keeps the day: today's live trades read back from the log (counts and P&L per strategy); yesterday's and dry ones are not

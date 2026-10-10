@@ -49,7 +49,8 @@ keepalive could hold the sell's connection; a launch found by its call alone was
 Oct 10, after the handoff (research/session_oct9_10/front_audit): the two -100% front trades of 10:49 and 11:12 UTC were pools where the
 volume bot's first buy was 0.00495 ETH, its smallest size and just under the 0.005 ETH sell-on threshold; the pull came 3 blocks after
 that buy as in every other pool, and our sell waited for the 18-block deadline (sold on the bot's buy, each would have been -0.17%).
-Since then the bot's buy is known by its router (FRONT_BOT_ROUTERS) at any size, and the size threshold is 0.001 ETH.
+Since then the bot's buy is known by its router (FRONT_BOT_ROUTERS) at any size, and the size threshold is 0.001 ETH. Follow got its own
+halt (FOLLOW_HALT_FILE) for a near miss: a pull within FOLLOW_NEAR_MISS_BLOCKS (4) of our buy even behind our sell stops follow, not front.
 
 Settings come from the environment (/etc/flip/engine.env on the box). Log: JSONL, one event per line, LOG_PATH.
 """
@@ -105,6 +106,10 @@ FRONT_TAKE_PROFIT = float(env("FRONT_TAKE_PROFIT", "0.01")); FRONT_HOLD_BLOCKS =
 # (the bot's first buy came by launch + 20 in 432 of 435 pools on Oct 9-10, by + 14 in only 420; no pool was pulled before the bot's buy)
 FRONT_FIRE_MAX = int(env("FRONT_FIRE_MAX", "2")); FRONT_MAX_PER_DAY = int(env("FRONT_MAX_PER_DAY", "400"))                 # fire only while the feed is at the launch + 2 at most (land by + 4)
 FRONT_HALT_FILE = env("FRONT_HALT_FILE", HALT_FILE + ".front")                                                         # a pull before our sell stops the front strategy only
+# follow's own halt: the operator's pull landing within this many blocks of our buy, even behind our sell, means the margin before its reaction is
+# gone (the exit survives a pull at our buy + 4 or later only: research/session_oct9_10/protect/exits_bt.out; Oct 9-10 live pulls came at + 5/+ 6,
+# our sell at + 2/+ 3). Follow (and the seat) stop, front goes on. 0 turns it off.
+FOLLOW_NEAR_MISS_BLOCKS = int(env("FOLLOW_NEAR_MISS_BLOCKS", "4")); FOLLOW_HALT_FILE = env("FOLLOW_HALT_FILE", HALT_FILE + ".follow")
 FRONT_DAILY_STOP_USD = float(env("FRONT_DAILY_STOP_USD", "5"))                                                          # its own stop: front's results never stop follow, nor follow's front
 # what identifies the bot's launches is the value and the calldata above (its other families send 3, 5, 9.33 or 40 ETH at a 1% fee; 5 ETH is
 # a trap). Beyond that, every launch seen so far carried this fee, tick spacing, launch price and liquidity: the engine logs a launch that
@@ -290,7 +295,7 @@ def parse_tx(t):
 
 # ---------------------------------------------------------------- state
 state = {"seq": 0, "ts": 0, "nonce": None, "base_fee": 20_000_000, "armed": {}, "position": None, "day": None, "trades_today": 0, "pnl_today_usd": 0.0,
-         "launches": 0, "fires": 0, "blocks": 0, "stale_blocks": 0, "connected": False, "halted": None, "front_today": 0, "front_halted": None, "front_pnl_today_usd": 0.0,
+         "launches": 0, "fires": 0, "blocks": 0, "stale_blocks": 0, "connected": False, "halted": None, "front_today": 0, "front_halted": None, "front_pnl_today_usd": 0.0, "follow_halted": None,
          "relay_wei": None, "arming": set(), "front_settling": None, "stopping": None, "stop_logged": False,                 # the relay's balance (read at start and every minute when idle, moved by each trade); launches whose receipt is on its way;
                                                                                      # a live front trade out of the slot whose pull check is still running
          "recent": collections.deque(maxlen=8000)}                                   # (seq, to, value, data) of recent ETH-carrying calls: replayed onto a pool armed after its first buys
@@ -319,18 +324,23 @@ def load_halt():
         state["halted"] = open(HALT_FILE).read().strip() or "halted"
     if os.path.exists(FRONT_HALT_FILE):
         state["front_halted"] = open(FRONT_HALT_FILE).read().strip() or "halted"
+    if os.path.exists(FOLLOW_HALT_FILE):
+        state["follow_halted"] = open(FOLLOW_HALT_FILE).read().strip() or "halted"
 
 
-def halt(reason, front=False):
-    """front: the front strategy only (its own file); otherwise all live trading"""
-    key, path = ("front_halted", FRONT_HALT_FILE) if front else ("halted", HALT_FILE)
+def halt(reason, front=False, scope=None):
+    """scope "front": the front strategy only (its own file); "follow": follow and the seat only (its own file); "all" (the default; front=True
+    is "front"): all live trading"""
+    scope = scope or ("front" if front else "all")
+    key, path, name = {"front": ("front_halted", FRONT_HALT_FILE, "the front strategy"), "follow": ("follow_halted", FOLLOW_HALT_FILE, "the follow strategy"),
+                       "all": ("halted", HALT_FILE, "live trading")}[scope]
     state[key] = reason
     try:
         with open(path, "w") as f:
             f.write(reason + "\n")
     except Exception:
         pass
-    log({"ev": "alarm", "what": f"{'the front strategy' if front else 'live trading'} halted: {reason}; remove {path} and restart to resume", "halt_file": path})
+    log({"ev": "alarm", "what": f"{name} halted: {reason}; remove {path} and restart to resume", "halt_file": path})
 
 
 def front_off(reason):
@@ -623,7 +633,7 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
     if state["stopping"] is not None:
         log({"ev": "skip", "why": "stopping: no new trade", "pid": p["pid"], "seq": seq}); return
     front = p.get("entry") == "front"; dry = DRY_RUN or (front and FRONT_DRY_RUN)
-    halted = state["halted"] or (state["front_halted"] if front else None)
+    halted = state["halted"] or (state["front_halted"] if front else state["follow_halted"])
     if halted and not dry:
         log({"ev": "skip", "why": "halted: " + halted, "pid": p["pid"], "seq": seq}); return
     held = state["position"]
@@ -807,6 +817,10 @@ def _settle(pos):
         if out.get("pulled_before_sell"):
             halt(f"the operator's pull landed {out['pull_after_buy_blocks']} blocks after our buy, at or before our sell ({b1 - b0}): its reaction is now faster than our exit",
                  front=pos.get("entry") == "front")
+        elif pulls and pos.get("entry") != "front" and FOLLOW_NEAR_MISS_BLOCKS and out["pull_after_buy_blocks"] <= FOLLOW_NEAR_MISS_BLOCKS:   # behind our sell, but too close
+            out["near_miss"] = True
+            halt(f"near miss: the operator's pull landed {out['pull_after_buy_blocks']} blocks after our buy, {out['pull_after_buy_blocks'] - (b1 - b0)} after our sell ({b1 - b0}): "
+                 f"the margin before its reaction is gone (FOLLOW_NEAR_MISS_BLOCKS {FOLLOW_NEAR_MISS_BLOCKS})", scope="follow")
     if rb and rb.get("status") == "0x1" and not out.get("pulled_before_sell") and not (isinstance(out.get("sell"), dict) and out["sell"].get("tokens_in")):
         halt("the buy filled and the sell sold none of it (sell: " + (out["sell"]["status"] if isinstance(out.get("sell"), dict) else str(out.get("sell"))) + ")",
              front=pos.get("entry") == "front")
@@ -1080,7 +1094,7 @@ def ingest(raw):
                 prune(seq); log({"ev": "flow", "seq": seq, "ts": state["ts"], "lag_s": round(wall - state["ts"], 1), "blocks": state["blocks"], "txs": state["txs"], "launches": state["launches"], "fires": state["fires"], "armed": len(state["armed"]),
                                  "stale_blocks": state["stale_blocks"], "trades_today": state["trades_today"], "front_today": state["front_today"], "pnl_today_usd": round(state["pnl_today_usd"], 2),
                                  "front_pnl_today_usd": round(state["front_pnl_today_usd"], 2), "relay_eth": state["relay_wei"] / 1e18 if state["relay_wei"] is not None else None,
-                                 "halted": state["halted"], "front_halted": state["front_halted"]})
+                                 "halted": state["halted"], "front_halted": state["front_halted"], "follow_halted": state["follow_halted"]})
 
 
 def ingest_tx(t, seq, stale, seen_at):
@@ -1179,7 +1193,7 @@ def main():
          "front_fire_max": FRONT_FIRE_MAX, "front_max_per_day": FRONT_MAX_PER_DAY, "front_value_wei": FRONT_VALUE_WEI, "front_halted": state["front_halted"],
          "front_daily_stop_usd": FRONT_DAILY_STOP_USD, "front_pin": FRONT_PIN, "front_fee": FRONT_FEE, "front_tick_spacing": FRONT_TICK_SPACING, "front_sqrt_p": FRONT_SQRT_P, "front_liq": FRONT_LIQ,
          "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_sell_on_eth": FRONT_SELL_ON_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT, "front_bot_routers": sorted(FRONT_BOT_ROUTERS),
-         "halted": state["halted"], "halt_file": HALT_FILE, "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
+         "halted": state["halted"], "halt_file": HALT_FILE, "follow_halted": state["follow_halted"], "follow_halt_file": FOLLOW_HALT_FILE, "follow_near_miss_blocks": FOLLOW_NEAR_MISS_BLOCKS, "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     signal.signal(signal.SIGTERM, on_stop)
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()
     try:

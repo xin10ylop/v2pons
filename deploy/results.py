@@ -146,6 +146,10 @@ def main():
         print(f"HALTED in memory (its last status line, {hms(flow['t'])} UTC: {str(flow['halted'])[:120]});\n  the halt file is gone but the engine keeps the halt until: sudo systemctl restart flip-engine")
     else:
         print("halted: no")
+    if os.path.exists(HALT + ".follow"):                                                 # follow's own halt (a near miss: the pull too close behind our sell)
+        print(f"follow strategy: HALTED: {open(HALT + '.follow').read().strip()[:160] or '(empty file)'}\n  front is not affected; to resume follow, once understood: sudo rm {HALT}.follow && sudo systemctl restart flip-engine")
+    elif flow.get("follow_halted") and flow.get("t", 0) >= st.get("t", 0):
+        print(f"follow strategy: HALTED in memory ({str(flow['follow_halted'])[:120]}); the file is gone but the engine keeps the halt until: sudo systemctl restart flip-engine")
     if st.get("front") or e.get("FRONT", "0") != "0":                                  # release 0.9: the front strategy has its own switch, stake and halt
         fdry = dry or st.get("front_dry_run", e.get("FRONT_DRY_RUN", "1") != "0")
         fnow = flow if flow.get("t", 0) >= st.get("t", 0) else {}                      # the engine's last status line, if it is from this run
