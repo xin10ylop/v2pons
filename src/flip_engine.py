@@ -840,7 +840,8 @@ def _settle(pos):
             out["pull_after_buy_blocks"] = pulls[0][0] - b0 if pulls else None
             out["pulled_before_sell"] = bool(pulls) and pulls[0] < (b1, i1)               # the one number that decided every live trade
         except Exception as e:
-            out["pull_check"] = str(e)[:100]
+            out["pull_check"] = str(e)[:100]                                           # neither halt can be decided without the logs: say so
+            log({"ev": "alarm", "what": "pull check unreadable: check the pool's pull by hand", "pid": pos["pid"], "err": str(e)[:100]})
         if out.get("pulled_before_sell"):
             halt(f"the operator's pull landed {out['pull_after_buy_blocks']} blocks after our buy, at or before our sell ({b1 - b0}): its reaction is now faster than our exit",
                  front=pos.get("entry") == "front")

@@ -907,10 +907,17 @@ Confirmed, all low, fixed in the commit after e5b2603 (51 tests):
 
 **Side finding, high, outside ea66cc2 but on the box since 13:33 (4dce46e):** 792a8c5's `elif pulls and ...` in `_settle` raised
 `UnboundLocalError` whenever `eth_getLogs` raised (any non-429 RPC error at once, or four failed tries), because `pulls` was assigned only
-inside the `try`. The settle then aborted with a `settle failed` alarm: no `trade_done` line, and both the "sold none" halt and follow's
-near-miss halt skipped (the position was cleared and the nonce refreshed by the `settle()` wrapper, so the engine kept trading). Fix: `pulls
-= []` before the `try` (test 18r). Whether it fired today: `sudo grep -c '"settle failed"' /var/log/flip/engine.jsonl` on the box (not yet
-checked when this was written). The runbook's wait-for-trade restart is no longer needed (9.2 updated).
+inside the `try`. The settle then aborted with a `settle failed` alarm: no `trade_done` line, no P&L added to the day (the daily stop and
+`restore_today` miss the trade), and the "sold none" halt skipped: a front buy whose sell sold nothing would have lost its stake without
+halting front (the position was cleared and the nonce refreshed by the `settle()` wrapper, so the engine kept trading). It needs an
+`eth_getLogs` error on the same trade. Fix: `pulls = []` before the `try` (test 18r). The pull-before-sell and near-miss halts cannot be
+decided without the logs, before or after the fix; the engine now logs an alarm (`pull check unreadable: check the pool's pull by hand`)
+instead of only a `pull_check` field in `trade_done`. Whether the crash fired today: `sudo grep -c '"settle failed"' /var/log/flip/engine.jsonl`
+on the box (not yet checked when this was written). The runbook's wait-for-trade restart is no longer needed (9.2 updated).
+
+A second Opus review of the fix commit (f0681da; its diff, mutation tests and six suite runs under CPU load) found it safe to deploy and
+nothing that changes the normal live path. Its two low notes: the alarm above (added); a stop can still end before `trade_done` when the
+receipts take 2 x 25 s or `eth_getLogs` 4 x 10 s (`STOP_WAIT_S` 60 would cover it; left at 40, the owner's call).
 
 ### 16.8 Open after this session
 

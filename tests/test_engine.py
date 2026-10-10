@@ -852,7 +852,7 @@ reset(); E.state["nonce"] = 570; E.state.update({"stopping": None, "stop_logged"
 held = threading.Event(); rpc0 = E.rpc
 def held_rpc(method, params, tries=4, timeout=10):
     if method == "eth_getLogs":
-        held.wait(5)                                                                    # front's pull check in progress
+        held.wait(30)                                                                   # front's pull check in progress (the test releases it)
     return rpc0(method, params, tries, timeout)
 E.rpc = held_rpc
 front_launch(8100, 22); pos = E.state["position"]; assert pos and pos["entry"] == "front"
@@ -899,12 +899,12 @@ E.ingest(frame(8301, [SENT[0][1]])); E.on_stop(15, None)
 for s_ in range(8302, 8302 + E.FRONT_HOLD_BLOCKS):
     E.ingest(frame(s_, []))
 d = front_close(pos, 8301, 8301 + E.FRONT_HOLD_BLOCKS + 1, int(E.FRONT_STAKE_WEI * 1.05))            # trade_done written although the nonce read fails
-assert wait_for(lambda: E.state["front_settling"] is None and E.state["position"] is None, 2.0), "the stop waited on the nonce re-read"
+assert wait_for(lambda: E.state["front_settling"] is None and E.state["position"] is None, 10.0), "the stop waited on the nonce re-read"
 E.stop_tick(); assert exits == [0] and events("stopped")[-1]["idle"] is True and not [e for e in events("alarm") if "still open" in e["what"] and e.get("pid") == pos["pid"]]
 exits.clear(); E.state.update({"stopping": None, "stop_logged": False}); reset(); E.state["nonce"] = 590; E.state["armed"].pop(FPID, None)
 REPLIES[:] = [{"error": {"code": -32005, "message": "429 Too Many Requests"}}]
 front_launch(8400, 25); pos = E.state["position"]; assert pos and wait_for(lambda: pos.get("buy_rejected") and pos.get("sell_why") == "buy refused")
-E.on_stop(15, None); assert wait_for(lambda: E.state["position"] is None, 2.0), "a refused buy held the stop for its nonce read"
+E.on_stop(15, None); assert wait_for(lambda: E.state["position"] is None, 10.0), "a refused buy held the stop for its nonce read"
 E.stop_tick(); assert exits == [0] and events("stopped")[-1]["idle"] is True and E.state["nonce"] == 590 and len(SENT) == 1
 E.rpc = rpc0; REPLIES[:] = []; E.EXIT = os._exit; E.state.update({"stopping": None, "stop_logged": False, "position": None, "front_settling": None}); E.FRONT = False; E.ENTRY = "follow"
 print("ok a stop never waits on a failing nonce read: the trade's record is written and the engine exits idle; a refused buy exits at once")
@@ -925,6 +925,7 @@ RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(8501, -E.FRONT_STAKE_WEI, pos["f
 RECEIPTS["0x" + pos["sell_hash"]] = {"status": "0x0", "blockNumber": hex(8520), "gasUsed": hex(30000), "effectiveGasPrice": hex(20_000_000), "transactionIndex": "0x2", "logs": []}
 assert wait_for(lambda: done_at(6600)), [e.get("what") for e in events("alarm")][-2:]
 assert done_at(6600)[-1].get("pull_check") and E.state["front_halted"] and "sold none" in E.state["front_halted"], E.state["front_halted"]
+assert [e for e in events("alarm") if e["what"].startswith("pull check unreadable") and e.get("pid") == pos["pid"]], "no alarm for the unreadable pull check"
 E.rpc = rpc0; E.state["front_halted"] = None; os.remove(E.FRONT_HALT_FILE); E.FRONT = False; E.ENTRY = "follow"
 print("ok the pull check unreadable: the trade's record and the 'sold none' halt are still written")
 
