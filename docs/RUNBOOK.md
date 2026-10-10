@@ -236,10 +236,11 @@ If the operator pulls on our early buy, the first front trade it catches halts t
 
 What keeps front from touching follow (release 0.9 after its review): front has its own daily stop (`FRONT_DAILY_STOP_USD`, $5) and its own
 halt file for a pull or a sell that sold nothing; a relay too short for the front stake turns front off for that run (the header says `OFF
-for this run`), not the engine; while a follow launch is waiting for its crowd, front does not take the position slot. Front trades only a
-launch with the bot's whole fingerprint (`FRONT_FEE` 2500, `FRONT_TICK_SPACING` 50, `FRONT_SQRT_P`, `FRONT_LIQ`: 0 turns one off), skips a
-pool with more than `FRONT_AHEAD_MAX_ETH` (0.008) bought ahead of the bot's buy counting ours, and sells at once when the bot's buy would
-fail its own minOut (`front_bot_reverts` in the log; the dry-run summary counts them).
+for this run`), not the engine; while a follow launch is waiting for its crowd, front does not take the position slot. A front launch is
+known by its value (2.4333285 ETH) and its calldata; if the bot changes its fee (within sub-1%), tick spacing, launch price or liquidity, the
+launch is still traded and results.py shows `front launches with a fingerprint not seen before` (set `FRONT_PIN=1` to skip such launches
+instead). Front skips a pool with more than `FRONT_AHEAD_MAX_ETH` (0.008) bought ahead of the bot's buy counting ours, and sells at once
+when the bot's buy would fail its own minOut (`front_bot_reverts` in the log; the dry-run summary counts them).
 
 ## 5. Daily
 

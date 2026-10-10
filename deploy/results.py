@@ -112,6 +112,10 @@ def main():
         entries[x.get("entry", "follow")] = entries.get(x.get("entry", "follow"), 0) + 1
     print(f"\nlaunches seen {len(arm)} (tradable {len(elig)}" + ("".join(f", {k} {v}" for k, v in sorted(entries.items())) if entry == "auto" else "") + ")"
           + (f", the last at {hms(arm[-1]['t'])} UTC" if arm else " -- none: the operator has not launched (or its launches look different)"))
+    nf = [x for x in arm if str(x.get("fingerprint", "")).startswith("new")]
+    if nf:                                                                     # release 0.9: the bot changed its launch (traded unless FRONT_PIN=1)
+        print(f"front launches with a fingerprint not seen before: {len(nf)} (the last at {hms(nf[-1]['t'])} UTC: {nf[-1]['fingerprint'][5:80]}); "
+              f"{'traded' if nf[-1].get('eligible') else 'not traded'}; tell Claude")
     skips = [x for x in ev if x["ev"] == "skip"]
     if skips:
         reasons = {}

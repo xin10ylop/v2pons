@@ -105,9 +105,10 @@ day, +13% a trade in an exact replay), armed from the launch transaction in the 
 every v4 ETH pool since Oct 8 found no other operator running the follow pattern, and the volume bot's other families pull on outsiders.
 An independent review of 0.9 before its first run made the two strategies independent in everything but the one position slot: each
 has its own daily stop and its own halts, a front-only problem (the relay short of the front stake, a bad setting) turns front off and
-leaves follow running, follow has the slot first, and no front launch, however malformed, can cost follow a block. A front launch must
-match the bot's whole fingerprint (fee, tick spacing, launch price, liquidity: identical on all 532 seen), at most 0.008 ETH may sit ahead
-of the bot's buy with ours, and a bot buy that would fail its 99% minOut is not counted as a take-profit.
+leaves follow running, follow has the slot first, and no front launch, however malformed, can cost follow a block. A front launch is
+known by its value and calldata; a change in its fee tier (within sub-1%), tick spacing, launch price or liquidity (identical on every
+launch seen) is traded and flagged in results.py (`FRONT_PIN=1` skips such launches instead). At most 0.008 ETH may sit ahead of the bot's
+buy with ours, and a bot buy that would fail its 99% minOut is not counted as a take-profit.
 
 ## Layout
 

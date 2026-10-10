@@ -99,8 +99,12 @@ FRONT_TAKE_PROFIT = float(env("FRONT_TAKE_PROFIT", "0.01")); FRONT_HOLD_BLOCKS =
 FRONT_FIRE_MAX = int(env("FRONT_FIRE_MAX", "2")); FRONT_MAX_PER_DAY = int(env("FRONT_MAX_PER_DAY", "400"))                 # fire only while the feed is at the launch + 2 at most (land by + 4)
 FRONT_HALT_FILE = env("FRONT_HALT_FILE", HALT_FILE + ".front")                                                         # a pull before our sell stops the front strategy only
 FRONT_DAILY_STOP_USD = float(env("FRONT_DAILY_STOP_USD", "5"))                                                          # its own stop: front's results never stop follow, nor follow's front
-# the launch's fingerprint beyond its shape: all 532 such launches of Oct 5-9 had this fee, tick spacing, launch price and liquidity (0: any).
-# Their senders are fresh wallets (532 of 532 distinct) and each mints to its own sender, so there is no address to allowlist.
+# what identifies the bot's launches is the value and the calldata above (its other families send 3, 5, 9.33 or 40 ETH at a 1% fee; 5 ETH is
+# a trap). Beyond that, every launch seen so far carried this fee, tick spacing, launch price and liquidity: the engine logs a launch that
+# differs ("fingerprint": "new: ...") and trades it anyway, unless FRONT_PIN=1 (then it is not traded). For a fixed 2.4333 ETH the price and
+# liquidity follow from the token amount the bot puts in; a copycat would copy them too, so the pin buys little and would stop the strategy
+# if the bot changed its token. Senders are fresh wallets (532 of 532 distinct) minting to themselves: no address to allowlist.
+FRONT_PIN = env("FRONT_PIN", "0") != "0"
 FRONT_FEE = int(env("FRONT_FEE", "2500")); FRONT_TICK_SPACING = int(env("FRONT_TICK_SPACING", "50"))
 FRONT_SQRT_P = int(env("FRONT_SQRT_P", "1604517591721945638372359205383840")); FRONT_LIQ = int(env("FRONT_LIQ", "49279426163460954002188"))
 # the bot's first buy (0.05-0.25 ETH) is quoted at the launch state with minOut 99% of that quote: about 0.012 ETH bought ahead of it makes it revert
@@ -404,19 +408,24 @@ def tick_at(sqrt_p):
 
 
 def front_mismatch(d, liq):
-    """why a launch of the front shape is not the volume bot's (None: it is): the pair, the hook, and the fingerprint every one of
-    its launches has carried"""
+    """why a launch of the front shape cannot be traded (None: it can): an ETH pair with no hook, a sub-1% fee (FEE_MIN/MAX_PPM, as
+    for follow; the bot's 1% families are not this one), liquidity at the launch price"""
     if d["c0"] != "0" * 40 or d["hooks"] != "0" * 40:
         return "not an ETH pair without a hook"
-    if d["fee"] != FRONT_FEE or d["tick_spacing"] != FRONT_TICK_SPACING:
-        return f"fee {d['fee']} / tick spacing {d['tick_spacing']}"
-    if FRONT_SQRT_P and d["sqrt_p"] != FRONT_SQRT_P:
-        return "launch price"
-    if FRONT_LIQ and d["mint_liq"] != FRONT_LIQ:
-        return "liquidity"
+    if not FEE_MIN_PPM <= d["fee"] <= FEE_MAX_PPM:
+        return f"fee {d['fee']}"
     if liq < MIN_LIQUIDITY:
         return "no liquidity at the launch price"
     return None
+
+
+def front_fingerprint(d):
+    """what differs from every launch seen so far: [] for none (FRONT_FEE etc.; a setting of 0 is not compared)"""
+    new = []
+    for k, want, name in (("fee", FRONT_FEE, "fee"), ("tick_spacing", FRONT_TICK_SPACING, "tick spacing"), ("sqrt_p", FRONT_SQRT_P, "launch price"), ("mint_liq", FRONT_LIQ, "liquidity")):
+        if want and d[k] != want:
+            new.append(f"{name} {d[k]}")
+    return new
 
 
 def arm_front(data, h, seq, seen_at):
@@ -429,7 +438,9 @@ def arm_front(data, h, seq, seen_at):
         if d["pid"] in state["armed"]:                                                 # the same pool again: the first arming stands
             log({"ev": "skip", "why": "front: pool already armed", "pid": d["pid"], "tx": h, "seq": seq}); return
         t0 = tick_at(d["sqrt_p"]); liq = d["mint_liq"] if d["lo"] <= t0 < d["hi"] else 0
-        why = front_mismatch(d, liq)
+        why = front_mismatch(d, liq); new = front_fingerprint(d)
+        if why is None and new and FRONT_PIN:
+            why = "new fingerprint (FRONT_PIN=1): " + ", ".join(new)
         p = {**{k: d[k] for k in ("pid", "c0", "token", "fee", "tick_spacing", "hooks", "sqrt_p")}, "tick0": t0, "liq": liq, "token_bytes": bytes.fromhex(d["token"]),
              "launch_seq": seq, "launch_ts": state["ts"], "armed_at": mono(), "arm_ms": round(1000 * (mono() - seen_at), 1), "first_buy": None, "status": "armed", "tx": h,
              "sp": float(d["sqrt_p"]), "buys": 0, "eth_in": 0, "bot_seq": None, "entry": "front", "launcher_code": "front", "arm_seq": seq, "eligible": why is None}
@@ -438,7 +449,7 @@ def arm_front(data, h, seq, seen_at):
             state["armed"][p["pid"]] = p
         log({"ev": "armed", "pid": p["pid"], "token": p["token"], "fee": p["fee"], "tick_spacing": p["tick_spacing"], "hooks": p["hooks"][-8:], "liq": liq, "sqrt_p": p["sqrt_p"], "seq": seq,
              "arm_ms": p["arm_ms"], "arm_seq": seq, "eligible": p["eligible"], "eth_pair": p["c0"] == "0" * 40, "buys_before_arm": 0, "launcher_code": "front", "entry": "front",
-             **({"why": "front: " + why} if why else {})})
+             "fingerprint": "new: " + ", ".join(new) if new else "known", **({"why": "front: " + why} if why else {})})
     except Exception:
         log({"ev": "alarm", "what": "front launch not armed (error)", "tx": h, "seq": seq, "trace": traceback.format_exc()[-400:]})
 
@@ -1068,7 +1079,7 @@ def main():
          "entry": ENTRY, "seat_fire_at": SEAT_FIRE_AT, "launch_selectors": sorted(LAUNCH_SELECTORS), "launcher_code_hashes": len(LAUNCHER_CODE_HASHES),
          "front": FRONT, "front_dry_run": FRONT_DRY_RUN, "front_stake_eth": FRONT_STAKE_ETH, "front_take_profit": FRONT_TAKE_PROFIT, "front_hold_blocks": FRONT_HOLD_BLOCKS,
          "front_fire_max": FRONT_FIRE_MAX, "front_max_per_day": FRONT_MAX_PER_DAY, "front_value_wei": FRONT_VALUE_WEI, "front_halted": state["front_halted"],
-         "front_daily_stop_usd": FRONT_DAILY_STOP_USD, "front_fee": FRONT_FEE, "front_tick_spacing": FRONT_TICK_SPACING, "front_sqrt_p": FRONT_SQRT_P, "front_liq": FRONT_LIQ,
+         "front_daily_stop_usd": FRONT_DAILY_STOP_USD, "front_pin": FRONT_PIN, "front_fee": FRONT_FEE, "front_tick_spacing": FRONT_TICK_SPACING, "front_sqrt_p": FRONT_SQRT_P, "front_liq": FRONT_LIQ,
          "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT,
          "halted": state["halted"], "halt_file": HALT_FILE, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()

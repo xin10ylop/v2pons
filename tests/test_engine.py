@@ -608,7 +608,8 @@ assert "sold none" in E.state["front_halted"] and E.state["halted"] is None and 
 E.state["front_halted"] = None; os.remove(E.FRONT_HALT_FILE)
 print("ok front: a front sell that sold nothing halts the front strategy only")
 
-# 18c. a front-shaped launch with a bad price (sqrtPriceX96 0) or another price: not armed, and the rest of the block goes on
+# 18c. a front-shaped launch with a bad price (sqrtPriceX96 0): not armed; another price: armed and marked new (not armed with FRONT_PIN=1);
+# the rest of the block goes on
 FIN = bytes.fromhex(FX["input"][2:]); assert FIN[328:360] == int(FX["sqrt_p"]).to_bytes(32, "big")
 bad0 = FIN[:328] + b"\x00" * 32 + FIN[360:]; other = FIN[:328] + (int(FX["sqrt_p"]) + 1).to_bytes(32, "big") + FIN[360:]
 assert E.decode_launch(bad0) is None and E.decode_launch(other)["sqrt_p"] == int(FX["sqrt_p"]) + 1
@@ -617,12 +618,15 @@ E.ingest(frame(6231, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, "0x" + bad0.hex(
                       signed(CROWD, UR, TRIG, BUY_DATA, 80)]))
 pos = E.state["position"]; assert pos and pos["entry"] == "follow" and pos["trig_seq"] == 6231, "the block was lost after a bad front launch"
 assert events("launch_undecoded")[-1]["seq"] == 6231
-a = [e for e in events("armed") if e["seq"] == 6231]; assert len(a) == 1 and not a[0]["eligible"] and a[0]["why"] == "front: launch price" and FPID not in E.state["armed"], a
+a = [e for e in events("armed") if e["seq"] == 6231]; assert len(a) == 1 and a[0]["eligible"] and a[0]["fingerprint"].startswith("new: launch price") and FPID in E.state["armed"], a
 E.state["position"] = None
-d = dict(E.decode_launch(FIN)); assert E.front_mismatch(d, d["mint_liq"]) is None
-for k, v, why in (("fee", 3000, "fee"), ("tick_spacing", 60, "fee"), ("mint_liq", d["mint_liq"] + 1, "liquidity"), ("hooks", "11" * 20, "hook")):
+reset(); E.FRONT_PIN = True; E.ingest(frame(6240, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, "0x" + other.hex(), 7)])); E.FRONT_PIN = False
+a = events("armed")[-1]; assert a["seq"] == 6240 and not a["eligible"] and "FRONT_PIN" in a["why"] and FPID not in E.state["armed"] and E.state["position"] is None, a
+d = dict(E.decode_launch(FIN)); assert E.front_mismatch(d, d["mint_liq"]) is None and E.front_fingerprint(d) == []
+for k, v, why in (("fee", 10000, "fee"), ("hooks", "11" * 20, "hook")):
     assert why in E.front_mismatch({**d, k: v}, d["mint_liq"]), (k, E.front_mismatch({**d, k: v}, d["mint_liq"]))
-print("ok front: a bad or look-alike launch is not armed (price bounds, fee, tick spacing, launch price, liquidity) and follow's block goes on")
+assert E.front_mismatch(d, 0) and E.front_fingerprint({**d, "fee": 3000, "tick_spacing": 60, "mint_liq": 1}) == ["fee 3000", "tick spacing 60", "liquidity 1"]
+print("ok front: a bad launch is not armed and follow's block goes on; a new price, liquidity or tick spacing is traded and marked (FRONT_PIN=1: not)")
 
 # 18d. an error anywhere in one transaction skips that transaction only
 reset(); E.state["nonce"] = 430; do_launch(6300)
