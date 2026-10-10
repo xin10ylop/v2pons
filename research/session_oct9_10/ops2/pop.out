@@ -1,0 +1,7 @@
+txs 7485 decode errors 0
+metadata hosts: [('https://100kdaily.top', 7485)]
+file prefix: Counter({'launch_': 7485})
+recipient == tx sender: Counter({True: 7485})
+Launched topic1 == tx sender: Counter({True: 7485})
+most common recipients: [('0xef44100548a252403dba9c7b9ee5257f87936c92', 53), ('0x6cfe9fed2c70edf3440766e69876f3ff323fb471', 22), ('0xde851889540a255ed33db7062bb31d5494f9199d', 21), ('0x1c9362ae4cee42b44ab30a970ff85889e45c15c7', 17), ('0xb3e614a32f1c3e599c9d95df96e1921040ee14d5', 15)]
+non-100kdaily metadata examples: 0 []

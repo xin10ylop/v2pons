@@ -1,0 +1,138 @@
+10-08 05:59:08 orig fee   210 pid 0xca04a1e3 pull +816 first real +48 crowd crowd buys 24 first crowd +48 | noncrowd: 
+10-08 06:05:25 orig fee   123 pid 0x069688d0 pull +None first real +111 crowd crowd buys 232 first crowd +111 | noncrowd: +170 outsider 0xf7f00e 0.0004 lag None, +170 outsider 0xb1103d 0.0004 lag None, +279 outsider 0xf5d706 0.0004 lag None
+10-08 09:45:03 orig fee  2205 pid 0x9471ca38 pull +2539 first real +41 crowd crowd buys 131 first crowd +41 | noncrowd: 
+10-08 09:49:48 orig fee   981 pid 0x4d4fbc27 pull +2662 first real +38 crowd crowd buys 133 first crowd +38 | noncrowd: 
+10-08 10:06:21 orig fee  2158 pid 0xcd177f3e pull +218 first real +44 crowd crowd buys 33 first crowd +44 | noncrowd: 
+10-08 10:07:14 orig fee  2337 pid 0x7c47f287 pull +158 first real +46 crowd crowd buys 23 first crowd +46 | noncrowd: 
+10-08 10:08:10 orig fee  3568 pid 0x3d8e5e54 pull +2541 first real +47 crowd crowd buys 132 first crowd +47 | noncrowd: 
+10-08 10:14:53 orig fee  2906 pid 0xfcca4dea pull +111 first real +46 crowd crowd buys 14 first crowd +46 | noncrowd: 
+10-08 10:16:32 orig fee  3331 pid 0x5c6984cc pull +281 first real +47 crowd crowd buys 45 first crowd +47 | noncrowd: 
+10-08 10:17:37 orig fee  4021 pid 0x4f118abc pull +125 first real +43 crowd crowd buys 18 first crowd +43 | noncrowd: 
+10-08 10:18:14 orig fee  3290 pid 0x0efa329f pull +293 first real +52 crowd crowd buys 43 first crowd +52 | noncrowd: 
+10-08 10:19:12 orig fee  1270 pid 0x31f32dce pull +2532 first real +43 crowd crowd buys 130 first crowd +43 | noncrowd: 
+10-08 10:29:46 orig fee  1786 pid 0x200871eb pull +2543 first real +46 crowd crowd buys 141 first crowd +46 | noncrowd: 
+10-08 10:34:51 orig fee  4671 pid 0x2f165487 pull +2570 first real +50 crowd crowd buys 131 first crowd +50 | noncrowd: 
+10-08 10:39:38 orig fee  1141 pid 0xdbe5f086 pull +2532 first real +47 crowd crowd buys 137 first crowd +47 | noncrowd: 
+10-08 10:44:24 orig fee  3880 pid 0x2f62a5a1 pull +2537 first real +48 crowd crowd buys 128 first crowd +48 | noncrowd: 
+10-08 10:49:11 orig fee   643 pid 0xffdf1885 pull +909 first real +45 crowd crowd buys 128 first crowd +45 | noncrowd: +893 outsider 0xa90bd2 0.0012 lag 16
+10-08 10:51:08 orig fee  3416 pid 0xc9420b3f pull +2511 first real +46 crowd crowd buys 142 first crowd +46 | noncrowd: +2499 outsider 0xa2e836 0.0005 lag 12
+10-08 10:56:25 orig fee  3447 pid 0x7b8b847a pull +325 first real +47 crowd crowd buys 44 first crowd +47 | noncrowd: 
+10-08 10:57:21 orig fee  2383 pid 0x34d0cdfc pull +2366 first real +49 crowd crowd buys 103 first crowd +49 | noncrowd: 
+10-08 11:01:50 orig fee  3492 pid 0x270f85ad pull +114 first real +46 crowd crowd buys 13 first crowd +46 | noncrowd: 
+10-08 11:02:10 orig fee   300 pid 0x5736fabe pull +5391 first real +18 crowd crowd buys 186 first crowd +18 | noncrowd: 
+10-08 11:02:26 orig fee  1102 pid 0x994204ce pull +952 first real +49 crowd crowd buys 139 first crowd +49 | noncrowd: +941 outsider 0xcc4bc7 0.0059 lag 11
+10-08 11:04:44 orig fee  1195 pid 0x63392359 pull +2544 first real +48 crowd crowd buys 133 first crowd +48 | noncrowd: 
+10-08 11:09:34 orig fee  4564 pid 0x9aca59f6 pull +989 first real +43 crowd crowd buys 135 first crowd +43 | noncrowd: +948 outsider 0xe46e6e 0.0008 lag 41
+10-08 11:12:07 orig fee  2106 pid 0xcbafe43c pull +330 first real +45 crowd crowd buys 53 first crowd +45 | noncrowd: 
+10-08 11:13:59 orig fee   824 pid 0x272fffe2 pull +2106 first real +44 crowd crowd buys 140 first crowd +44 | noncrowd: 
+10-08 11:46:15 orig fee 10000 pid 0x0fc66860 pull +137 first real +90 crowd crowd buys 5 first crowd +90 | noncrowd: 
+10-08 11:51:26 orig fee 10000 pid 0x93e998f1 pull +6307 first real +100 crowd crowd buys 70 first crowd +100 | noncrowd: 
+10-08 12:07:29 orig fee   300 pid 0x149059c9 pull +9853 first real +67 crowd crowd buys 55 first crowd +67 | noncrowd: 
+10-08 12:26:58 orig fee   300 pid 0xb166f963 pull +383 first real +106 crowd crowd buys 16 first crowd +106 | noncrowd: 
+10-08 12:28:39 orig fee   380 pid 0x8dca7e69 pull +4910 first real +None  crowd buys 0 first crowd +None | noncrowd: 
+10-08 12:43:32 orig fee   380 pid 0xad1607f2 pull +15994 first real +None  crowd buys 0 first crowd +None | noncrowd: 
+10-08 13:15:23 orig fee  2383 pid 0x3a922cb2 pull +149 first real +142 crowd crowd buys 2 first crowd +142 | noncrowd: +143 us 0xab5a34 0.0012 lag 6
+10-08 13:16:13 orig fee  2383 pid 0x7cfa4232 pull +62 first real +54 crowd crowd buys 3 first crowd +54 | noncrowd: +56 us 0xab5a34 0.0012 lag 6
+10-08 13:16:50 orig fee  2383 pid 0xf36b6bac pull +61 first real +53 crowd crowd buys 2 first crowd +53 | noncrowd: +55 us 0xab5a34 0.0012 lag 6
+10-08 13:17:10 orig fee  2383 pid 0x7223753b pull +56 first real +46 crowd crowd buys 3 first crowd +46 | noncrowd: +48 us 0xab5a34 0.0012 lag 8
+10-08 13:18:12 orig fee  2383 pid 0x16df2826 pull +66 first real +51 crowd crowd buys 2 first crowd +51 | noncrowd: +53 us 0xab5a34 0.0012 lag 13
+10-08 13:18:45 orig fee  2383 pid 0x3578b252 pull +66 first real +58 crowd crowd buys 1 first crowd +58 | noncrowd: +59 us 0xab5a34 0.0012 lag 7
+10-08 13:19:44 orig fee   824 pid 0x7490a93c pull +114 first real +108 crowd crowd buys 1 first crowd +108 | noncrowd: +109 us 0xab5a34 0.0012 lag 5
+10-08 13:21:35 orig fee   824 pid 0x751af83f pull +7578 first real +208 crowd crowd buys 59 first crowd +208 | noncrowd: 
+10-08 14:32:16 orig fee   250 pid 0xe27bfddf pull +9901 first real +44 crowd crowd buys 169 first crowd +44 | noncrowd: +45 us 0xab5a34 0.0012 lag 9856, +2416 outsider 0x2bf73b 0.0010 lag 7485, +9894 outsider 0xabb2ac 0.0574 lag 7
+10-08 14:59:03 copy fee   100 pid 0xe95f3c88 pull +397 first real +7 crowd crowd buys 3 first crowd +7 | noncrowd: 
+10-08 15:00:03 copy fee   100 pid 0x5c636ccc pull +403 first real +8 crowd crowd buys 3 first crowd +8 | noncrowd: 
+10-08 15:01:04 copy fee   100 pid 0x8b31207a pull +405 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:02:04 copy fee   100 pid 0xa0e5acee pull +406 first real +10 crowd crowd buys 3 first crowd +10 | noncrowd: 
+10-08 15:03:03 copy fee   100 pid 0xe9e8d428 pull +402 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:04:04 copy fee   100 pid 0x5e591132 pull +402 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:05:04 copy fee   100 pid 0x10d97f58 pull +405 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:06:03 copy fee   100 pid 0xdade93d9 pull +415 first real +8 crowd crowd buys 3 first crowd +8 | noncrowd: 
+10-08 15:07:03 copy fee   100 pid 0xf408c835 pull +400 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:08:04 copy fee   100 pid 0x44c1a601 pull +406 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:09:03 copy fee   100 pid 0x653f5e57 pull +405 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:10:03 copy fee   100 pid 0x44ad39be pull +405 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:11:03 copy fee   100 pid 0x0501f847 pull +396 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:12:03 copy fee   100 pid 0x2a489604 pull +404 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:13:03 copy fee   100 pid 0x0935f633 pull +399 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:14:03 copy fee   100 pid 0x9b248cd0 pull +403 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:16:04 copy fee   100 pid 0x2b12f1ee pull +399 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:17:03 copy fee   100 pid 0x967d7232 pull +402 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:18:04 copy fee   100 pid 0x56b325c9 pull +401 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:19:04 copy fee   100 pid 0x796dbb7b pull +413 first real +10 crowd crowd buys 3 first crowd +10 | noncrowd: 
+10-08 15:20:04 copy fee   100 pid 0xfd6496b4 pull +354 first real +9 crowd crowd buys 3 first crowd +9 | noncrowd: 
+10-08 15:39:10 copy fee   100 pid 0x358c8c95 pull +1471 first real +8 crowd crowd buys 24 first crowd +8 | noncrowd: 
+10-08 15:42:10 copy fee   100 pid 0x747fb175 pull +1479 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 15:45:10 copy fee   300 pid 0x1e956544 pull +1478 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 15:48:10 copy fee   100 pid 0x01de1153 pull +1473 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 15:51:10 copy fee   100 pid 0xd22aa85c pull +1478 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 15:54:11 copy fee   100 pid 0x6ebc44f1 pull +1474 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 15:57:11 copy fee   200 pid 0x323ce6e7 pull +1494 first real +11 crowd crowd buys 24 first crowd +11 | noncrowd: 
+10-08 16:03:11 copy fee   200 pid 0xd45759b5 pull +1476 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 16:06:10 copy fee   300 pid 0x7006d3fc pull +1425 first real +8 crowd crowd buys 24 first crowd +8 | noncrowd: 
+10-08 16:09:10 copy fee   200 pid 0xfb0ae07d pull +1490 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 16:12:10 copy fee   200 pid 0x75d98983 pull +877 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: +871 outsider 0x6d5a7e 0.0020 lag 6
+10-08 16:18:11 copy fee   300 pid 0xbc390271 pull +1467 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 16:21:11 copy fee   100 pid 0xd1ca6bcb pull +1481 first real +8 crowd crowd buys 24 first crowd +8 | noncrowd: 
+10-08 16:24:10 copy fee   300 pid 0xdec49345 pull +1481 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 16:27:11 copy fee   300 pid 0xa5054bc8 pull +1508 first real +8 crowd crowd buys 24 first crowd +8 | noncrowd: 
+10-08 16:33:10 copy fee   200 pid 0xf2995cfa pull +1487 first real +13 crowd crowd buys 24 first crowd +13 | noncrowd: 
+10-08 16:36:10 copy fee   200 pid 0x2d550bd2 pull +1476 first real +8 crowd crowd buys 24 first crowd +8 | noncrowd: 
+10-08 16:39:10 copy fee   200 pid 0x4744b233 pull +1481 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 16:42:10 copy fee   300 pid 0x34c995b7 pull +1487 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 16:45:10 copy fee   200 pid 0xd59c2dc3 pull +1487 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 16:48:10 copy fee   300 pid 0x87f22b73 pull +1487 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 16:51:10 copy fee   200 pid 0x86e75d97 pull +1474 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 16:54:10 copy fee   300 pid 0xd7b199a6 pull +1491 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 16:57:10 copy fee   200 pid 0xe8c0cde2 pull +1476 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 17:03:11 copy fee   100 pid 0x8bbb30ea pull +1458 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 17:06:11 copy fee   100 pid 0xc7f91938 pull +1498 first real +9 crowd crowd buys 24 first crowd +9 | noncrowd: 
+10-08 17:09:10 copy fee   100 pid 0x9f64edf5 pull +1461 first real +8 crowd crowd buys 24 first crowd +8 | noncrowd: 
+10-08 17:12:10 copy fee   100 pid 0x4d573903 pull +1487 first real +8 crowd crowd buys 24 first crowd +8 | noncrowd: 
+10-08 21:58:16 orig fee  2653 pid 0xc36d4e58 pull +2538 first real +49 crowd crowd buys 141 first crowd +49 | noncrowd: 
+10-08 22:27:34 orig fee   603 pid 0x82801ba0 pull +2576 first real +49 crowd crowd buys 136 first crowd +49 | noncrowd: 
+10-08 22:32:46 orig fee   953 pid 0x14259eff pull +2556 first real +48 crowd crowd buys 136 first crowd +48 | noncrowd: 
+10-08 22:41:18 orig fee  2898 pid 0xf6c1a2ad pull +182 first real +46 crowd crowd buys 24 first crowd +46 | noncrowd: 
+10-08 22:42:24 orig fee  3967 pid 0x71a4efac pull +2526 first real +48 crowd crowd buys 141 first crowd +48 | noncrowd: 
+10-08 22:47:55 orig fee  3931 pid 0xf87c9471 pull +141 first real +55 crowd crowd buys 17 first crowd +55 | noncrowd: +90 outsider 0x2b7be2 0.0002 lag 51
+10-08 22:48:47 orig fee   888 pid 0xfd84a22b pull +105 first real +7 us crowd buys 10 first crowd +51 | noncrowd: +7 us 0xab5a34 0.0012 lag 98, +92 outsider 0x2b7be2 0.0002 lag 13
+10-08 22:49:35 orig fee  3548 pid 0xe091fae1 pull +2578 first real +55 crowd crowd buys 135 first crowd +55 | noncrowd: 
+10-08 22:54:40 orig fee   762 pid 0x38dad78e pull +2401 first real +52 crowd crowd buys 32 first crowd +52 | noncrowd: 
+10-09 00:11:03 orig fee  1597 pid 0xbe2a35f9 pull +278 first real +8 us crowd buys 45 first crowd +46 | noncrowd: +8 us 0xab5a34 0.0012 lag 270
+10-09 00:18:54 orig fee  4419 pid 0x373bfe12 pull +1954 first real +43 crowd crowd buys 140 first crowd +43 | noncrowd: 
+10-09 00:23:07 orig fee  2549 pid 0x4e4dc69e pull +107 first real +44 crowd crowd buys 12 first crowd +44 | noncrowd: +84 outsider 0xebfae0 0.0005 lag 23
+10-09 00:23:56 orig fee  2339 pid 0xf3667fde pull +2121 first real +214 crowd crowd buys 132 first crowd +214 | noncrowd: 
+10-09 00:28:21 orig fee  4424 pid 0xad5741b0 pull +307 first real +47 crowd crowd buys 50 first crowd +47 | noncrowd: 
+10-09 00:30:12 orig fee  2129 pid 0x2a16800b pull +4413 first real +4373 crowd crowd buys 9 first crowd +4373 | noncrowd: 
+10-09 05:57:15 orig fee   210 pid 0xca847f04 pull +15269 first real +58 crowd crowd buys 172 first crowd +58 | noncrowd: 
+10-09 09:24:08 orig fee   220 pid 0x758c3c5f pull +2764 first real +24 crowd crowd buys 148 first crowd +24 | noncrowd: 
+10-09 09:30:26 orig fee   170 pid 0xaa64f80b pull +24809 first real +None  crowd buys 0 first crowd +None | noncrowd: 
+10-09 10:00:01 orig fee  4046 pid 0xeb6510d3 pull +1285 first real +60 crowd crowd buys 10 first crowd +60 | noncrowd: 
+10-09 10:03:04 orig fee  2239 pid 0x56fa1008 pull +208 first real +53 crowd crowd buys 30 first crowd +53 | noncrowd: 
+10-09 10:06:10 orig fee  1010 pid 0xf02453af pull +172 first real +61 crowd crowd buys 22 first crowd +61 | noncrowd: 
+10-09 10:07:05 orig fee  2423 pid 0xdbdf382a pull +147 first real +62 crowd crowd buys 17 first crowd +62 | noncrowd: 
+10-09 10:07:51 orig fee  4308 pid 0x9ab05ad7 pull +221 first real +62 crowd crowd buys 32 first crowd +62 | noncrowd: 
+10-09 10:08:53 orig fee  4490 pid 0x93950691 pull +237 first real +69 crowd crowd buys 27 first crowd +69 | noncrowd: 
+10-09 10:09:53 orig fee   766 pid 0xffbb7391 pull +273 first real +59 crowd crowd buys 43 first crowd +59 | noncrowd: 
+10-09 10:11:10 orig fee  2072 pid 0xc2ac14e5 pull +201 first real +66 crowd crowd buys 24 first crowd +66 | noncrowd: 
+10-09 10:12:30 orig fee   872 pid 0x7dc29a50 pull +1968 first real +59 crowd crowd buys 141 first crowd +59 | noncrowd: 
+10-09 10:16:30 orig fee  3248 pid 0x85e5055b pull +224 first real +59 crowd crowd buys 31 first crowd +59 | noncrowd: 
+10-09 10:17:35 orig fee  2532 pid 0x7381c772 pull +811 first real +61 crowd crowd buys 49 first crowd +61 | noncrowd: +792 outsider 0xa67d7e 0.0019 lag 19
+10-09 10:19:34 orig fee   999 pid 0xbfc4d0ff pull +1949 first real +54 crowd crowd buys 136 first crowd +54 | noncrowd: 
+10-09 10:23:46 orig fee  2317 pid 0xc21264c0 pull +1937 first real +60 crowd crowd buys 135 first crowd +60 | noncrowd: 
+10-09 10:27:48 orig fee  1387 pid 0x78681291 pull +1955 first real +57 crowd crowd buys 137 first crowd +57 | noncrowd: 
+10-09 10:31:49 orig fee  4837 pid 0x8537b07d pull +1960 first real +58 crowd crowd buys 136 first crowd +58 | noncrowd: 
+10-09 10:36:06 orig fee  1454 pid 0xc893975b pull +208 first real +59 crowd crowd buys 26 first crowd +59 | noncrowd: 
+10-09 10:37:12 orig fee  4473 pid 0x8f21b54c pull +84 first real +56 crowd crowd buys 5 first crowd +56 | noncrowd: 
+10-09 10:38:00 orig fee  3352 pid 0xeb3c94e6 pull +1054 first real +56 crowd crowd buys 144 first crowd +56 | noncrowd: +1029 outsider 0x1e8d12 0.0005 lag 25
+10-09 10:40:26 orig fee  4496 pid 0x926943d4 pull +1986 first real +76 crowd crowd buys 136 first crowd +76 | noncrowd: 
+10-09 10:44:23 orig fee  3469 pid 0x20a4afb5 pull +2111 first real +61 crowd crowd buys 141 first crowd +61 | noncrowd: 
+10-09 10:48:41 orig fee  2628 pid 0xdfc3a67d pull +206 first real +58 crowd crowd buys 29 first crowd +58 | noncrowd: 
+10-09 10:48:44 orig fee   912 pid 0x2a928e99 pull +18096 first real +21 crowd crowd buys 396 first crowd +21 | noncrowd: +24 us 0xab5a34 0.0012 lag 18072
+10-09 10:49:50 orig fee  4083 pid 0x2749b5d1 pull +75 first real +60 crowd crowd buys 3 first crowd +60 | noncrowd: +61 us 0xab5a34 0.0012 lag 14
+10-09 10:50:40 orig fee  4531 pid 0x43c1ce10 pull +1960 first real +55 crowd crowd buys 143 first crowd +55 | noncrowd: +56 us 0xab5a34 0.0012 lag 1904
+10-09 10:56:37 orig fee  4598 pid 0xe1c6032d pull +3108 first real +73 crowd crowd buys 137 first crowd +73 | noncrowd: 
+10-09 11:03:17 orig fee  4321 pid 0x8d80c853 pull +1953 first real +63 crowd crowd buys 143 first crowd +63 | noncrowd: 
+10-09 11:07:23 orig fee  3214 pid 0xe48a9e84 pull +155 first real +66 crowd crowd buys 20 first crowd +66 | noncrowd: 
+10-09 11:08:27 orig fee  2582 pid 0x7ce39cf9 pull +1977 first real +59 crowd crowd buys 141 first crowd +59 | noncrowd: 
+10-09 11:14:05 orig fee  1830 pid 0xe444ad37 pull +2093 first real +59 crowd crowd buys 138 first crowd +59 | noncrowd: +60 us 0xab5a34 0.0012 lag 2033

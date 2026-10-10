@@ -1,0 +1,708 @@
+{
+ "L:0x58daec31|0xac9650d8|len1444|fee2500|ts50|v2.433": [
+  {
+   "token": "0xaf089685237efdd6dd6619fe9893f8551b657777",
+   "size": 1526,
+   "hash": "63ad5291cdef",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  },
+  {
+   "token": "0xbf2ece21caff4b40a6602541de4e456eb120c777",
+   "size": 1526,
+   "hash": "63ad5291cdef",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  },
+  {
+   "token": "0x88db7142b51f214e3a1acf74ba1666d1f1086777",
+   "size": 1526,
+   "hash": "63ad5291cdef",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  },
+  {
+   "token": "0x245a8777dc7c2640444c31c3f80327e520d60777",
+   "size": 1526,
+   "hash": "63ad5291cdef",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  }
+ ],
+ "L:0x58daec31|0xac9650d8|len1444|fee10000|ts200|v5.0": [
+  {
+   "token": "0xb03965fbd94e7cf6c9675ad3e68554a229337777",
+   "size": 5274,
+   "hash": "7126d19f0165",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "0861ac61",
+    "089fe6aa",
+    "12f16a07",
+    "3de35b79",
+    "536dac9b",
+    "53cd512a",
+    "665a11ca",
+    "66a88d96",
+    "70bffe1b",
+    "7284e416",
+    "791b98bc",
+    "8036d590",
+    "8c0b5e22",
+    "aa4bde28",
+    "abb1dc44",
+    "b8d8fbb4",
+    "baed0765",
+    "d00efb2f",
+    "d5f39488",
+    "fb7f21eb",
+    "ff8ea3e5"
+   ]
+  },
+  {
+   "token": "0xe716dff2d520fb2dfd144a56541974d42b197777",
+   "size": 5274,
+   "hash": "748e0be52b45",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "0861ac61",
+    "089fe6aa",
+    "12f16a07",
+    "3de35b79",
+    "536dac9b",
+    "53cd512a",
+    "665a11ca",
+    "66a88d96",
+    "70bffe1b",
+    "7284e416",
+    "791b98bc",
+    "8036d590",
+    "8c0b5e22",
+    "aa4bde28",
+    "abb1dc44",
+    "b8d8fbb4",
+    "baed0765",
+    "d00efb2f",
+    "d5f39488",
+    "fb7f21eb",
+    "ff8ea3e5"
+   ]
+  },
+  {
+   "token": "0xedd303d855403841e38e3bab7e75bce460b17777",
+   "size": 5274,
+   "hash": "a7c33b82dc3f",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "0861ac61",
+    "089fe6aa",
+    "12f16a07",
+    "3de35b79",
+    "536dac9b",
+    "53cd512a",
+    "665a11ca",
+    "66a88d96",
+    "70bffe1b",
+    "7284e416",
+    "791b98bc",
+    "8036d590",
+    "8c0b5e22",
+    "aa4bde28",
+    "abb1dc44",
+    "b8d8fbb4",
+    "baed0765",
+    "d00efb2f",
+    "d5f39488",
+    "fb7f21eb",
+    "ff8ea3e5"
+   ]
+  },
+  {
+   "token": "0x7a3aad0c3d4a1263ed3bd03fe094db93b6ab7777",
+   "size": 5274,
+   "hash": "5806dfb5b693",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "0861ac61",
+    "089fe6aa",
+    "12f16a07",
+    "3de35b79",
+    "536dac9b",
+    "53cd512a",
+    "665a11ca",
+    "66a88d96",
+    "70bffe1b",
+    "7284e416",
+    "791b98bc",
+    "8036d590",
+    "8c0b5e22",
+    "aa4bde28",
+    "abb1dc44",
+    "b8d8fbb4",
+    "baed0765",
+    "d00efb2f",
+    "d5f39488",
+    "fb7f21eb",
+    "ff8ea3e5"
+   ]
+  }
+ ],
+ "L:0x58daec31|0xac9650d8|len1444|fee10000|ts200|v3.0": [
+  {
+   "token": "0xd95dc7c4bd0d8c5ba8259e74d49b9d47b3651195",
+   "size": 5274,
+   "hash": "8390d0d8cbc0",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "0861ac61",
+    "089fe6aa",
+    "12f16a07",
+    "3de35b79",
+    "536dac9b",
+    "53cd512a",
+    "665a11ca",
+    "66a88d96",
+    "70bffe1b",
+    "7284e416",
+    "791b98bc",
+    "8036d590",
+    "8c0b5e22",
+    "aa4bde28",
+    "abb1dc44",
+    "b8d8fbb4",
+    "baed0765",
+    "d00efb2f",
+    "d5f39488",
+    "fb7f21eb",
+    "ff8ea3e5"
+   ]
+  },
+  {
+   "token": "0x91e5b8fc4fb8d7a0f5a1b0a2ce57878ec0a3ddf5",
+   "size": 5274,
+   "hash": "ce3436af19af",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "0861ac61",
+    "089fe6aa",
+    "12f16a07",
+    "3de35b79",
+    "536dac9b",
+    "53cd512a",
+    "665a11ca",
+    "66a88d96",
+    "70bffe1b",
+    "7284e416",
+    "791b98bc",
+    "8036d590",
+    "8c0b5e22",
+    "aa4bde28",
+    "abb1dc44",
+    "b8d8fbb4",
+    "baed0765",
+    "d00efb2f",
+    "d5f39488",
+    "fb7f21eb",
+    "ff8ea3e5"
+   ]
+  },
+  {
+   "token": "0xa463ffab50c4a7113f2992d695df8c9bec2c7b9a",
+   "size": 5274,
+   "hash": "42d966a2872f",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "0861ac61",
+    "089fe6aa",
+    "12f16a07",
+    "3de35b79",
+    "536dac9b",
+    "53cd512a",
+    "665a11ca",
+    "66a88d96",
+    "70bffe1b",
+    "7284e416",
+    "791b98bc",
+    "8036d590",
+    "8c0b5e22",
+    "aa4bde28",
+    "abb1dc44",
+    "b8d8fbb4",
+    "baed0765",
+    "d00efb2f",
+    "d5f39488",
+    "fb7f21eb",
+    "ff8ea3e5"
+   ]
+  },
+  {
+   "token": "0x6a3ecfbcbe1a45aa96cee9e30e704f719cd6b07a",
+   "size": 5274,
+   "hash": "8e513fd1c740",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "0861ac61",
+    "089fe6aa",
+    "12f16a07",
+    "3de35b79",
+    "536dac9b",
+    "53cd512a",
+    "665a11ca",
+    "66a88d96",
+    "70bffe1b",
+    "7284e416",
+    "791b98bc",
+    "8036d590",
+    "8c0b5e22",
+    "aa4bde28",
+    "abb1dc44",
+    "b8d8fbb4",
+    "baed0765",
+    "d00efb2f",
+    "d5f39488",
+    "fb7f21eb",
+    "ff8ea3e5"
+   ]
+  }
+ ],
+ "L:OURS-orig": [
+  {
+   "token": "0xcb10a97b1b1797ce1269491ef07a161152a424e8",
+   "size": 1770,
+   "hash": "fe89ad0f15d8",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  },
+  {
+   "token": "0x43a006c84537c30aac477da11a532a8d7198cc7d",
+   "size": 1770,
+   "hash": "fe89ad0f15d8",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  },
+  {
+   "token": "0xd0003378562f1db217660804c50dab88adce1079",
+   "size": 1770,
+   "hash": "fe89ad0f15d8",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  },
+  {
+   "token": "0x24b71dd91d9c5369c0f61177aa0f06382760d183",
+   "size": 1770,
+   "hash": "fe89ad0f15d8",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  }
+ ],
+ "L:0x58daec31|0xac9650d8|len2276|fee100|ts1|v0": [
+  {
+   "token": "0xda2f60f3e5f51fe82ed13b5ffd7e36ff0f6a60e8",
+   "size": 3854,
+   "hash": "5fcfacb98bd0",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "burn",
+    "burnFrom",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": []
+  },
+  {
+   "token": "0xa0486d2f633716a8dbd989ec96cf0abd5f48091c",
+   "size": 3854,
+   "hash": "5fcfacb98bd0",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "burn",
+    "burnFrom",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": []
+  },
+  {
+   "token": "0xc67140d33f63ae1110f7ec472446537c3df7f7a9",
+   "size": 3854,
+   "hash": "5fcfacb98bd0",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "burn",
+    "burnFrom",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": []
+  },
+  {
+   "token": "0x01032280f3df07e50a1659db3f1c3f46df5afe18",
+   "size": 3854,
+   "hash": "5fcfacb98bd0",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "burn",
+    "burnFrom",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": []
+  }
+ ],
+ "L:0x8366a39c|0x6276cbbe|len196|fee500|ts1|v0": [
+  {
+   "token": "0x2d58fe66843ac98de7fdc9fd41c755b7abdc73c2",
+   "size": 4655,
+   "hash": "935f30aba51c",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "decreaseAllowance",
+    "increaseAllowance",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": []
+  },
+  {
+   "token": "0x7c1e255e47808be732555789bfcbdfda3bf1e876",
+   "size": 4655,
+   "hash": "38f88592fc7b",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "decreaseAllowance",
+    "increaseAllowance",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": []
+  },
+  {
+   "token": "0x8199b96ec6e397a3e9b0d5114f1e6e8aa99a184b",
+   "size": 4655,
+   "hash": "38f88592fc7b",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "decreaseAllowance",
+    "increaseAllowance",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": []
+  },
+  {
+   "token": "0x62b46667d432503818860a762c52e5768960672d",
+   "size": 4655,
+   "hash": "e7c5deb7fdfc",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "decreaseAllowance",
+    "increaseAllowance",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": []
+  }
+ ],
+ "L:OURS-copy": [
+  {
+   "token": "0x3c515a9d5fdfea9a16bc2106b384cb1e5cc1f8ba",
+   "size": 1770,
+   "hash": "ed383c3d5834",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  },
+  {
+   "token": "0xa677e74829fc053cea3ca679b902f54f27ccfeff",
+   "size": 1770,
+   "hash": "ed383c3d5834",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  },
+  {
+   "token": "0x69809176f776ebf3e6779751322838dd1f47e09d",
+   "size": 1770,
+   "hash": "ed383c3d5834",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  },
+  {
+   "token": "0x87cf5aa1b50c766686404e25186c5106d4a29347",
+   "size": 1770,
+   "hash": "ed383c3d5834",
+   "known": [
+    "allowance",
+    "approve",
+    "balanceOf",
+    "decimals",
+    "name",
+    "symbol",
+    "totalSupply",
+    "transfer",
+    "transferFrom"
+   ],
+   "unknown": [
+    "3c130d90"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,415 @@
+[
+{
+"bn": 84125589,
+"tx": "0xe79119b6a67c15191225aabadae24695b1c5fffdc3535405c20d6830d04f213e",
+"kind": "dump",
+"token": "0x922cdbae0faff516b9854c3adf705e404447863a",
+"launch_bn": 84125151,
+"creator": "0xd57749903e6e8350988df0f62a5a51f501c63b87",
+"curve": "0x36b9d81bc2e6bc68d030787dbf9f876146b31d72",
+"quote": 0,
+"wallets": [
+"0x30311a0f3aef59251597cb97bc115501cf6bfdbe",
+"0x49af8b94945036f4f805075bf4f862bab49425fc",
+"0x513e28fc1d440001b5ddef69a0d0481067284404",
+"0x844676beb1804fd60783d0cd707fd8b6ea4323e3",
+"0x978380cfe88fd1bba6fcc75c6b147bac39d7ebb8",
+"0xb5a13504bfcc84324b4d67c6d6a609b9e74ba4e3",
+"0xd57749903e6e8350988df0f62a5a51f501c63b87"
+],
+"collectors": {
+"0x0ba8c4662c9cf918b6dcb4cc4db3b014b89583a3": 0.097537
+},
+"nh": 7,
+"eth": 0.3013,
+"sweth": 0.0
+},
+{
+"bn": 84125598,
+"tx": "0xce95973c8b671a8cc512d0325e4bf5d4350d8ffab1f33ccf1273d0c4a686c0f0",
+"kind": "sweep",
+"token": null,
+"launch_bn": null,
+"creator": null,
+"curve": null,
+"quote": null,
+"wallets": [
+"0x2efa8950c187b92c6043ed021aa15f5507a67c1d",
+"0x4e553668e5169866d9d54eb26793dcd93b58a3f0",
+"0x67f33bb7d83b305678e8f0619f009d4ad0a69994",
+"0xe816ab09a649079107543021d075acd544121095"
+],
+"collectors": {
+"0x0ba8c4662c9cf918b6dcb4cc4db3b014b89583a3": 0.223671
+},
+"nh": 0,
+"eth": 0.0,
+"sweth": 0.2237
+},
+{
+"bn": 84125778,
+"tx": "0xd6999594645cf2bb5fdf2b13fb8761e8351a21fad8e110d1a8a4c14377880c39",
+"kind": "dump",
+"token": "0xdd59996fef5e5e4018e7660255cf352c083e116a",
+"launch_bn": 84052805,
+"creator": "0x8b18efb54795a67ffdc8ad0777249aff8f0f9311",
+"curve": "0xba05449e08017315c9377f085024187f26b97f5a",
+"quote": 0,
+"wallets": [
+"0x09192ec197c1312ae7a8f2262ce208a46ae3fee8",
+"0x115c69684872858fb9751c227afa37733c073fa1",
+"0x149fab9e5d07ff6154257d0f9ca9440a02261f56",
+"0x26ddeaec08757f793b32d7243abf4c7780d9b837",
+"0x278e423be13f95517c0065eb01e1d0a5ceff8218",
+"0x6808066134b8d43dc72ce8dd1f0889d8ba412dfe",
+"0x6963c316bebe44c2973f95b73a0cacc7af613dea",
+"0x69a0fa259f81cfafe8abb0dcb7c7035c987db76c",
+"0x7458d3af1653352be655cbf54417f356d6802a81",
+"0x8b18efb54795a67ffdc8ad0777249aff8f0f9311",
+"0xaea853c5b880aa96ce5adcb693d2138c16aee71c",
+"0xd6e7b5b5bc8454b0b015623c4fc74354dd549e20",
+"0xe35150465d69ba3906d06e909c36fb46c10b4e7a",
+"0xe90a0f7d0f29d5d619d7f5966ceedc27a7485d90",
+"0xed93eedfc855018ba85768c2c913b09af26f8994",
+"0xff0d294dade9f462d34b4716826db1a2ebab583c"
+],
+"collectors": {
+"0x174c8418468366ec014570619a19dc31091f37c7": 0.093564
+},
+"nh": 16,
+"eth": 0.6747,
+"sweth": 0.0
+},
+{
+"bn": 84125784,
+"tx": "0xf201c1846da21c910c0cdd9366b069e84f0389866e80601f09b59fc76ad50a49",
+"kind": "sweep",
+"token": null,
+"launch_bn": null,
+"creator": null,
+"curve": null,
+"quote": null,
+"wallets": [
+"0x9281ba332cf40057169bb24816b350b448b3dfa6"
+],
+"collectors": {
+"0x174c8418468366ec014570619a19dc31091f37c7": 0.016024
+},
+"nh": 0,
+"eth": 0.0,
+"sweth": 0.016
+},
+{
+"bn": 84126023,
+"tx": "0xe92a079cc602eec76251b0acefab85a1f6923019330824a0eb8554b84bc96bdd",
+"kind": "dump",
+"token": "0xe799b698e83b9c2556d44fc2e4d38c70e82d9eb1",
+"launch_bn": 84125960,
+"creator": "0x4e5ce870e689de29269a9cb50d568866b001e722",
+"curve": "0xc9f63f94eb7d267cc9ed516e26971f91d9c87af5",
+"quote": 0,
+"wallets": [
+"0x0cc986828225cb6ea5f07b0281c0900b7460a3fd",
+"0x0ce815389ff7efa041977759f3b1faf6e5d48257",
+"0x0f6bd3b41cb65974120620e7f72986095f087f7f",
+"0x4e5ce870e689de29269a9cb50d568866b001e722",
+"0x9c6a0716c045603c5f0c61f793ff6d11bdedb5d0",
+"0xf38b54fd8a4305b2b948d57f9cc72c9787597b0d"
+],
+"collectors": {
+"0x34c2f4cc4b73a165448ac34bcd7f7672c03454da": 0.027915
+},
+"nh": 6,
+"eth": 0.2504,
+"sweth": 0.0
+},
+{
+"bn": 84126029,
+"tx": "0xb14ef3fc9d46e5a7f17677385f729d3384f2086fb159c06e8b46d8e50217c4d5",
+"kind": "sweep",
+"token": null,
+"launch_bn": null,
+"creator": null,
+"curve": null,
+"quote": null,
+"wallets": [
+"0x1363846e55231ffea07f0688d9d50042558a2b4e",
+"0x2b2db93fdd716033dd330f0a8be79177c23841c9",
+"0x2e42024452568048ed7571945e239098abbc3560",
+"0x38724aabb8923c3143fdb7c0aaced0e6a505bcf2",
+"0x3982312e1d957a2175d14f75060fed30b4283803",
+"0x4bf049b848f62c6e44772ccaeeaab3861c27d767",
+"0xb4fc77751ff221e773667deae1bd2536bc36075d",
+"0xb868f671af3b5cf79d60a2d7099f73e28749db4c",
+"0xebeb5b0ca8b6c0266483ade8378006485754c47e",
+"0xfdd96af8326e4628c41b531c7515b6fd10a47922"
+],
+"collectors": {
+"0x34c2f4cc4b73a165448ac34bcd7f7672c03454da": 0.488353
+},
+"nh": 0,
+"eth": 0.0,
+"sweth": 0.4884
+},
+{
+"bn": 84127337,
+"tx": "0x9c0a26bc18657aeab6121ae456b92d3f6bb1d6638eed08875991c1ee7c480ccb",
+"kind": "dump",
+"token": "0xae40bcbbfb99ac9b5ab61a1ff49271958f41638f",
+"launch_bn": 84125774,
+"creator": "0x817fa95538dd108361a0ec1efaaade11a9166644",
+"curve": "0x6f02dac3e7b1f1b526d240f80a8bd5e5e28c8c7f",
+"quote": 0,
+"wallets": [
+"0x0ec5b04f25b8da4eb949989b1fb1823108d89957",
+"0x3cf05d78363414c4395a4f7ae99ad334498f9d50",
+"0x40712a6a102a8e257d86d592309d9890035bd761",
+"0x817fa95538dd108361a0ec1efaaade11a9166644",
+"0x90f326b5a8854ddf49816b9928ef504e8cb22e65",
+"0x941f4ef14442b2395179cf7cff284288be3f2589",
+"0x9d0b97bf56828046f76b0547de49a8d37d033ae3",
+"0xb9bf114537ece9065b5215c1b2db3253b1556783",
+"0xc0f4b7720ca6032757c1104297027ebf67a63c95",
+"0xfb36a4dcd941e391d5dfb8a281d3b6a062a7fad8"
+],
+"collectors": {
+"0x7cb0fcfcb1125f0d00b8d60bbcf7e3d3f906846b": 0.204525
+},
+"nh": 10,
+"eth": 0.4084,
+"sweth": 0.0
+},
+{
+"bn": 84127342,
+"tx": "0xeb547a6b830f28f7657fb324f65cb6d6f7febd3a93f48afba34f1ec4cdb806d2",
+"kind": "sweep",
+"token": null,
+"launch_bn": null,
+"creator": null,
+"curve": null,
+"quote": null,
+"wallets": [
+"0xe00b770eb24d39fd0b486c58b50988c9f2628508"
+],
+"collectors": {
+"0x7cb0fcfcb1125f0d00b8d60bbcf7e3d3f906846b": 0.009999
+},
+"nh": 0,
+"eth": 0.0,
+"sweth": 0.01
+},
+{
+"bn": 84128504,
+"tx": "0x8c720d6eb9ff738180e508c632d41f31412f5170895caccef68596bb8b07d2fa",
+"kind": "dump",
+"token": "0x8c3ce9dfb6229c9c33ab0d5b33fe42f6578d4053",
+"launch_bn": 84127600,
+"creator": "0xc2fb0a723b2637a5bbb05b1f71f7072a3ee0480a",
+"curve": "0xe5b021464111f75029d775c429d08cc8a22d1baa",
+"quote": 0,
+"wallets": [
+"0x3132912cc9d3a1fed73847b2f7435e0736a79071",
+"0x39d54ebb03279ed1a98d08287bd46585efcd1879",
+"0x4608e825e1504f058350d92d7aa86bd70231a3d8",
+"0x484b16ba7df1591a59d1688363e04b85c8bfbd3c",
+"0x684eb4b61a566a54e558c91e041eef5885a85044",
+"0x903f2607dd426e0b84c49335164c5575c050ecec",
+"0x9cf4dbaa4443dcd0d1777d398b2ec2fc7fe20e75",
+"0x9f20ed2c994451abb95aa6395b5a4cca31ce507f",
+"0xa5519a534fe77308f66fa5ef055a71578cc01723",
+"0xc2fb0a723b2637a5bbb05b1f71f7072a3ee0480a"
+],
+"collectors": {
+"0xc6d37fd32620025508b3290006dd3eae1300de77": 0.139142
+},
+"nh": 10,
+"eth": 0.4701,
+"sweth": 0.0
+},
+{
+"bn": 84128510,
+"tx": "0x8e8b2173627d00fd38b31ad86b6c33812677be7ff0a23236327de7287650da5e",
+"kind": "sweep",
+"token": null,
+"launch_bn": null,
+"creator": null,
+"curve": null,
+"quote": null,
+"wallets": [
+"0x321e1a78fb07c40e8c74066b6eb2d586b1012252"
+],
+"collectors": {
+"0xc6d37fd32620025508b3290006dd3eae1300de77": 0.010002
+},
+"nh": 0,
+"eth": 0.0,
+"sweth": 0.01
+},
+{
+"bn": 84128647,
+"tx": "0xa53c69a1d05f4b61961013a502fd3cb7df6a42b35081c4322af26865d1cd1208",
+"kind": "dump",
+"token": "0xc7f526e2bd88d4a76f115a9efb7d5d36b0972768",
+"launch_bn": 84127430,
+"creator": "0x9802ee6ab82cb0aad31aa30416036b169e82816a",
+"curve": "0x5f708363aae56ac6fb0522f33537ab7281156f7a",
+"quote": 546752078524806549824452760637979359403954000232,
+"wallets": [
+"0x01b79e0f54711a500d78e95e74a9f4e3581f0ffc",
+"0x31eaae6bff1272322b2dcf572b5ec7c6a0f10fb9",
+"0x4056d0ed69332901f88793f3913d916ee5cb4a79",
+"0x78ad74e60782b768319f23fe4a946fb97b430f6f",
+"0x8c7e2b984897977cf70226d0aff6086d60a4f388",
+"0x8d2e094c64ca8a29161757e09603b4b40c587e74",
+"0x9802ee6ab82cb0aad31aa30416036b169e82816a",
+"0xbe746d31905e3f811ed7aef4e3aa5961f97c4089",
+"0xff6bb8ea1cf58952dd8d93adcf658566109858df"
+],
+"collectors": {
+"0x8ac72cadd648d6302e39e3b716c5d4d9073743d0": 0.005243
+},
+"nh": 9,
+"eth": 0.0,
+"sweth": 0.0
+},
+{
+"bn": 84128652,
+"tx": "0x535cbfd47a2f27b1d01b0876bfc16d02dfd4f5f4910c138000e5ce0cb449fd6b",
+"kind": "sweep",
+"token": null,
+"launch_bn": null,
+"creator": null,
+"curve": null,
+"quote": null,
+"wallets": [
+"0xb16a1184e1b5e7a095377c8d693ee80efcebaee5"
+],
+"collectors": {
+"0x8ac72cadd648d6302e39e3b716c5d4d9073743d0": 0.009004
+},
+"nh": 0,
+"eth": 0.0,
+"sweth": 0.009
+},
+{
+"bn": 84128889,
+"tx": "0x05cc6bcfdbd41a00c142e6d0eeecd37598f350f1bfc761c50998eca920e780e4",
+"kind": "dump",
+"token": "0xcb53f3eaa8cfa4b4e306c879e8604200a2b805ba",
+"launch_bn": 84128737,
+"creator": "0x0e4d15389804a858d5a63e4b12595069fdbf404f",
+"curve": "0xf0253baeeaf852a048d2e66f2bdda02a874ec6b9",
+"quote": 0,
+"wallets": [
+"0x0e4d15389804a858d5a63e4b12595069fdbf404f",
+"0x357c59850c6f54e1e666df8da8944c5590623596",
+"0x80116e24437989e76900eeaa0f72771389a08b33",
+"0x87d8646a0d77173e128ac28fba93cc0bc5c564c8",
+"0x8cb7bcf8c714a542e219388324d6e63f77fb1666",
+"0x8d3940c8f4a7a2b8086362eeee14b5b07dc74d75",
+"0xa296c7c2daa77637b8fc1e0c4828448949cccd96",
+"0xb4d8b2169925e485332e3f24e72995d90594814c",
+"0xba2dc8b4e1a9f26b4474f9a849d07c1ad86ab387",
+"0xd5af444b7fb2f67378bf85124fb69b135807b9f9"
+],
+"collectors": {
+"0x747da386f78abd17283010c4c83a15029413ae94": 0.171667
+},
+"nh": 10,
+"eth": 0.4346,
+"sweth": 0.0
+},
+{
+"bn": 84129687,
+"tx": "0x89211a2ce1f523ce46d7c1e9fd8f748fe0ae647d13741d22b279687c280ca222",
+"kind": "dump",
+"token": "0xb8dd17d7e8c68afc949b0a5f411f1cc7d1fb8e78",
+"launch_bn": 84129471,
+"creator": "0xfb4cab3b3fad1489654fce9a665d8335bff407cc",
+"curve": "0x1f855bd96f3f13029ce9a350e363e42ce817b62f",
+"quote": 1221445924896849309712330396936919634548749819496,
+"wallets": [
+"0x03f5cabebde3d6b7e35500cf7246e275feea5ab9",
+"0x153e6acf59d308b78dd5c8fd74d0c6c41c564b9c",
+"0x4b64e06c5d4ce54b5b44b3acf1d44ca719761c7a",
+"0x719fdb37fc317b6d4762c727d09a88e4b957eafd",
+"0x863513ecf207f8cbdf6eabb9cf0ddbb220cf9ffd",
+"0x9c68e07f72848175caeac694783c37965f33a86d",
+"0xc53c8b17d3766184ef1118bffdb84524a87b4d3b",
+"0xeec40e5285e823b02678a1ec8a3bd516e708d4c2",
+"0xfb4cab3b3fad1489654fce9a665d8335bff407cc"
+],
+"collectors": {
+"0xfbb5a17012663ad00e213ed696d431b63ccc086f": 0.166655
+},
+"nh": 9,
+"eth": 1.4551,
+"sweth": 0.0
+},
+{
+"bn": 84129691,
+"tx": "0xcc88d1348503680e4c1339f69f498dc106b04bc5425abffd4801110bcb072eef",
+"kind": "sweep",
+"token": null,
+"launch_bn": null,
+"creator": null,
+"curve": null,
+"quote": null,
+"wallets": [
+"0x6295d6807ab1e4f3bbbc779ac8d20ae21cb1c2e5"
+],
+"collectors": {
+"0xfbb5a17012663ad00e213ed696d431b63ccc086f": 0.009019
+},
+"nh": 0,
+"eth": 0.0,
+"sweth": 0.009
+},
+{
+"bn": 84145347,
+"tx": "0xd35927266e46875a47403bc5fc495f3478735fe2f5089a91468889ed97e70da8",
+"kind": "dump",
+"token": "0x1a81e0a954041a81c3b5df5c7a70bd563f4591e1",
+"launch_bn": 84144561,
+"creator": "0x72676504dc91c6d4b01081259b0475ad1c964cd8",
+"curve": "0x860e61a9ad1971ec8a374e371f16798b5c5e2581",
+"quote": 0,
+"wallets": [
+"0x5d580c925636c9491feb51a3c615fd77820e8342",
+"0x633cfd248a2c68ce8f660861fc5464b70b1ccae0",
+"0x64be006d1240d492316570e8695fb4b359984231",
+"0x72676504dc91c6d4b01081259b0475ad1c964cd8",
+"0x85cab748eafc3b38b02cf458bbbe266146c1bb5b",
+"0x9ab11e9ec94c536788e26a5aa60bda296626c67d",
+"0xdb4e8f6110f991b9d6b1f852897f68f6e7442cb9",
+"0xe0d9f5ad41318f410c229296c109793d80ccd5a8",
+"0xe2f09f501914c851ba2765a248d6e562e3632990",
+"0xec68ab8f14740404d426979c7e546eb7c1aee858"
+],
+"collectors": {
+"0x0f436279542f02a3c64c6e96f2b6c4613848caa2": 0.046728
+},
+"nh": 10,
+"eth": 0.556,
+"sweth": 0.0
+},
+{
+"bn": 84145355,
+"tx": "0x3c803f873fe93e30d7925cd9742c34c34c9f0c4099c48b2e4bf6d86ff8117f5a",
+"kind": "sweep",
+"token": null,
+"launch_bn": null,
+"creator": null,
+"curve": null,
+"quote": null,
+"wallets": [
+"0xa0f45d146e9fadbff57682d030bc62687d521b05"
+],
+"collectors": {
+"0x0f436279542f02a3c64c6e96f2b6c4613848caa2": 0.010022
+},
+"nh": 0,
+"eth": 0.0,
+"sweth": 0.01
+}
+]

@@ -1,5 +1,7 @@
 # v2pons — the crowd-following flip on Robinhood Chain
 
+> **Continuing this project? Read [`docs/HANDOFF.md`](docs/HANDOFF.md) first.** It is the complete record as of Oct 10, 2026.
+
 A small live test of one idea from the fomo-memebot research (report 24.54, copied here as `research/REPORT_24.54.md`):
 
 One operator (the launcher contract `0x3194e326`) creates about 100-170 Uniswap v4 pools a day on Robinhood Chain, each paired
@@ -126,6 +128,8 @@ buy with ours, and a bot buy that would fail its 99% minOut is not counted as a 
 | `tests/` | `test_v4math.py` (the pricing), `test_engine.py` (the engine on a scripted feed: real signed transactions in real batch frames, the chain stubbed) |
 | `research/` | the analysis scripts, their data and outputs, the survey of other chains and launchpads, report section 24.54; `live_trades.py` reads the live trades back from the chain (`data/live_trades_oct8.txt`), `new_scheme.py` the operator's scheme from 14:59 (`data/new_scheme_oct8.txt`) |
 | `docs/RUNBOOK.md` | from a fresh wallet to the first $3 trade, the dry run's pass criteria, the exit (4b), the stop rules |
+| `docs/HANDOFF.md` | **start here to continue the project**: the goal, the chain and every address, both strategies, all the research of Oct 8-10 and its results, every release, every live trade, the box and its commands, the state at the Oct 10 handoff and the open items |
+| `research/session_oct9_10/` | every research script and result of Oct 9-10 (operator A's money loop and origins, the census of every v4 operator, the volume bot's families and reaction, the rule search, the front replay, the fingerprint history, the dry-run check, the protection backtest), indexed by its README |
 
 ## The trade, exactly
 

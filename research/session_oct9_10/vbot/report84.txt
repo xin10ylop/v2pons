@@ -1,0 +1,112 @@
+84 pools {'census': 60, 'new': 24}; quality {'replay_err_max': 3.833400437047627e-05, 'single_range_all': True, 'swaps_in_window_not_seen_by_feed': 0, 'feed_amount_mismatch': 5, 'feed_events_without_swap': 0, 'first_feed_buy_offset': {8: 28, 9: 22, 10: 17, 15: 6, 11: 4, 7: 3, 16: 2, None: 1, 13: 1}}
+robust ranking (stake 0.0012, latency-averaged mean, worst neighbour):
+   {'entry': 'T+12', 'tp': 'tp0.01', 'D': 'D42', 'latency_mean': 0.02594, 'worst_neighbour': 0.01905}
+   {'entry': 'T+12', 'tp': 'tp0.02', 'D': 'D42', 'latency_mean': 0.0255, 'worst_neighbour': 0.01862}
+   {'entry': 'T+16', 'tp': 'tp0.01', 'D': 'D42', 'latency_mean': 0.0255, 'worst_neighbour': 0.01861}
+   {'entry': 'T+16', 'tp': 'tp0.02', 'D': 'D42', 'latency_mean': 0.02529, 'worst_neighbour': 0.0184}
+   {'entry': 'K25', 'tp': 'tp0.02', 'D': 'D42', 'latency_mean': 0.02353, 'worst_neighbour': 0.01673}
+   {'entry': 'K25', 'tp': 'tp0.01', 'D': 'D42', 'latency_mean': 0.02353, 'worst_neighbour': 0.01673}
+   {'entry': 'T+16', 'tp': 'tp0.03', 'D': 'D42', 'latency_mean': 0.02145, 'worst_neighbour': 0.01579}
+   {'entry': 'T+12', 'tp': 'tp0.03', 'D': 'D42', 'latency_mean': 0.02167, 'worst_neighbour': 0.01565}
+best {'entry': 'T+12', 'tp': 'tp0.01', 'D': 'D42'} | luckiest cell {'key': 'T+12|0.0012|tp0.01|D42', 'latency_mean': 0.02594}
+  T+12|0.0012|b1|tp0.01|D42|s1             {'n': 83, 'mean': 0.0267, 'median': 0.05453, 'pos': 75, 'worst': -1.0035, 'buy_reverted': 0, 'pulled': 4, 'tp': 72, 'deadline': 7, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.0012|b1|tp0.01|D42|s2             {'n': 83, 'mean': 0.02517, 'median': 0.05454, 'pos': 73, 'worst': -1.0035, 'buy_reverted': 0, 'pulled': 4, 'tp': 72, 'deadline': 7, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.0012|b2|tp0.01|D42|s1             {'n': 83, 'mean': 0.02671, 'median': 0.05452, 'pos': 75, 'worst': -1.0035, 'buy_reverted': 0, 'pulled': 4, 'tp': 72, 'deadline': 7, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.0012|b2|tp0.01|D42|s2             {'n': 83, 'mean': 0.02517, 'median': 0.05454, 'pos': 73, 'worst': -1.0035, 'buy_reverted': 0, 'pulled': 4, 'tp': 72, 'deadline': 7, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.0012|b1|ideal                     {'n': 83, 'mean': 0.02979, 'median': 0.05459, 'pos': 77, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 0, 'deadline': 0, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.0012|b2|ideal                     {'n': 83, 'mean': 0.02979, 'median': 0.05459, 'pos': 77, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 0, 'deadline': 0, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.0012|b1|tp0.01|D42|s1|buysonly    {'n': 83, 'mean': 0.0267, 'median': 0.05453, 'pos': 75, 'worst': -1.0035, 'buy_reverted': 0, 'pulled': 4, 'tp': 74, 'deadline': 5, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.0012|b1|tp0.01|D42|s1|stale4      {'n': 83, 'mean': 0.0267, 'median': 0.05453, 'pos': 75, 'worst': -1.0035, 'buy_reverted': 0, 'pulled': 4, 'tp': 72, 'deadline': 7, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.0012|b1|tp0.01|D42|s1|stale0      {'n': 83, 'mean': 0.0267, 'median': 0.05453, 'pos': 75, 'worst': -1.0035, 'buy_reverted': 0, 'pulled': 4, 'tp': 72, 'deadline': 7, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.0012|b1|tp0.01|D42|s1|tail        {'n': 83, 'mean': 0.02517, 'median': 0.05453, 'pos': 73, 'worst': -1.0035, 'buy_reverted': 0, 'pulled': 4, 'tp': 72, 'deadline': 7, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.012|b1|tp0.01|D42|s1              {'n': 83, 'mean': 0.03076, 'median': 0.0573, 'pos': 76, 'worst': -1.0003, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.012|b1|tp0.01|D42|s2              {'n': 83, 'mean': 0.0299, 'median': 0.0573, 'pos': 75, 'worst': -1.0003, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.012|b2|tp0.01|D42|s1              {'n': 83, 'mean': 0.03076, 'median': 0.0573, 'pos': 76, 'worst': -1.0003, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.012|b2|tp0.01|D42|s2              {'n': 83, 'mean': 0.0299, 'median': 0.0573, 'pos': 75, 'worst': -1.0003, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.012|b1|ideal                      {'n': 83, 'mean': 0.03255, 'median': 0.05736, 'pos': 77, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 0, 'deadline': 0, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.012|b2|ideal                      {'n': 83, 'mean': 0.03255, 'median': 0.05736, 'pos': 77, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 0, 'deadline': 0, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.012|b1|tp0.01|D42|s1|buysonly     {'n': 83, 'mean': 0.03076, 'median': 0.0573, 'pos': 76, 'worst': -1.0003, 'buy_reverted': 0, 'pulled': 4, 'tp': 78, 'deadline': 1, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.012|b1|tp0.01|D42|s1|stale4       {'n': 83, 'mean': 0.03076, 'median': 0.0573, 'pos': 76, 'worst': -1.0003, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.012|b1|tp0.01|D42|s1|stale0       {'n': 83, 'mean': 0.03076, 'median': 0.0573, 'pos': 76, 'worst': -1.0003, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.012|b1|tp0.01|D42|s1|tail         {'n': 83, 'mean': 0.0299, 'median': 0.0573, 'pos': 75, 'worst': -1.0003, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.03|b1|tp0.01|D42|s1               {'n': 83, 'mean': 0.03036, 'median': 0.0569, 'pos': 76, 'worst': -1.0001, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.03|b1|tp0.01|D42|s2               {'n': 83, 'mean': 0.02949, 'median': 0.0569, 'pos': 75, 'worst': -1.0001, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.03|b2|tp0.01|D42|s1               {'n': 83, 'mean': 0.03036, 'median': 0.0569, 'pos': 76, 'worst': -1.0001, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.03|b2|tp0.01|D42|s2               {'n': 83, 'mean': 0.02949, 'median': 0.0569, 'pos': 75, 'worst': -1.0001, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.03|b1|ideal                       {'n': 83, 'mean': 0.03214, 'median': 0.05696, 'pos': 77, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 0, 'deadline': 0, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.03|b2|ideal                       {'n': 83, 'mean': 0.03214, 'median': 0.05696, 'pos': 77, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 0, 'deadline': 0, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.03|b1|tp0.01|D42|s1|buysonly      {'n': 83, 'mean': 0.03036, 'median': 0.0569, 'pos': 76, 'worst': -1.0001, 'buy_reverted': 0, 'pulled': 4, 'tp': 78, 'deadline': 1, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.03|b1|tp0.01|D42|s1|stale4        {'n': 83, 'mean': 0.03036, 'median': 0.0569, 'pos': 76, 'worst': -1.0001, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.03|b1|tp0.01|D42|s1|stale0        {'n': 83, 'mean': 0.03036, 'median': 0.0569, 'pos': 76, 'worst': -1.0001, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.03|b1|tp0.01|D42|s1|tail          {'n': 83, 'mean': 0.02949, 'median': 0.0569, 'pos': 75, 'worst': -1.0001, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.1|b1|tp0.01|D42|s1                {'n': 83, 'mean': -0.03634, 'median': -0.01964, 'pos': 8, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 74, 'deadline': 5, 'no_trade': 1, 'bot_buy_reverted': 68}
+  T+12|0.1|b1|tp0.01|D42|s2                {'n': 83, 'mean': -0.03709, 'median': -0.01964, 'pos': 9, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 74, 'deadline': 5, 'no_trade': 1, 'bot_buy_reverted': 68}
+  T+12|0.1|b2|tp0.01|D42|s1                {'n': 83, 'mean': -0.04145, 'median': -0.01964, 'pos': 3, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 74, 'deadline': 5, 'no_trade': 1, 'bot_buy_reverted': 73}
+  T+12|0.1|b2|tp0.01|D42|s2                {'n': 83, 'mean': -0.0433, 'median': -0.01964, 'pos': 3, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 74, 'deadline': 5, 'no_trade': 1, 'bot_buy_reverted': 74}
+  T+12|0.1|b1|ideal                        {'n': 83, 'mean': -0.02812, 'median': -0.01585, 'pos': 33, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 0, 'deadline': 0, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.1|b2|ideal                        {'n': 83, 'mean': -0.03617, 'median': -0.01904, 'pos': 29, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 0, 'deadline': 0, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.1|b1|tp0.01|D42|s1|buysonly       {'n': 83, 'mean': -0.03634, 'median': -0.01964, 'pos': 8, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 68}
+  T+12|0.1|b1|tp0.01|D42|s1|stale4         {'n': 83, 'mean': 0.02695, 'median': 0.05472, 'pos': 75, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 74, 'deadline': 5, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.1|b1|tp0.01|D42|s1|stale0         {'n': 83, 'mean': 0.02695, 'median': 0.05472, 'pos': 75, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 74, 'deadline': 5, 'no_trade': 1, 'bot_buy_reverted': 0}
+  T+12|0.1|b1|tp0.01|D42|s1|tail           {'n': 83, 'mean': -0.03709, 'median': -0.01964, 'pos': 9, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 74, 'deadline': 5, 'no_trade': 1, 'bot_buy_reverted': 68}
+per 6h:
+  10-08 00-06h pools   9 | 0.0012 b1s1 mean +0.0723 med +0.0856 pos 8/8 pulled 0 rev 0 | latmean +0.0669 | 0.1 mean -0.0049 botrev 7 | cheap 0.06913 | exact excl pulled 0.07234
+  10-08 06-12h pools  12 | 0.0012 b1s1 mean +0.0736 med +0.0662 pos 12/12 pulled 0 rev 0 | latmean +0.0736 | 0.1 mean -0.0134 botrev 11 | cheap 0.07357 | exact excl pulled 0.07359
+  10-08 12-18h pools   8 | 0.0012 b1s1 mean +0.0487 med +0.0549 pos 7/8 pulled 0 rev 0 | latmean +0.0547 | 0.1 mean -0.0010 botrev 5 | cheap 0.06095 | exact excl pulled 0.04868
+  10-08 18-24h pools   9 | 0.0012 b1s1 mean +0.0518 med +0.0538 pos 9/9 pulled 0 rev 0 | latmean +0.0518 | 0.1 mean -0.0245 botrev 9 | cheap 0.05221 | exact excl pulled 0.05183
+  10-09 00-06h pools   8 | 0.0012 b1s1 mean +0.0487 med +0.0529 pos 8/8 pulled 0 rev 0 | latmean +0.0451 | 0.1 mean -0.0196 botrev 8 | cheap 0.04873 | exact excl pulled 0.04866
+  10-09 06-12h pools   9 | 0.0012 b1s1 mean +0.0477 med +0.0413 pos 9/9 pulled 0 rev 0 | latmean +0.0477 | 0.1 mean -0.0081 botrev 8 | cheap 0.0477 | exact excl pulled 0.04773
+  10-09 12-18h pools  17 | 0.0012 b1s1 mean +0.0474 med +0.0545 pos 14/17 pulled 1 rev 0 | latmean +0.0474 | 0.1 mean -0.0075 botrev 12 | cheap -0.01515 | exact excl pulled 0.05055
+  10-09 18-24h pools  12 | 0.0012 b1s1 mean -0.1438 med +0.0311 pos 8/12 pulled 3 rev 0 | latmean -0.1470 | 0.1 mean -0.1857 botrev 8 | cheap -0.22709 | exact excl pulled 0.03169
+cheap vs exact: {'cheap_hold30_mean': 0.00356, 'cheap_hold30_median': 0.05454, 'n': 84, 'exact_mean_same_pools': 0.0267, 'diff_mean': 0.02362, 'diff_median': 1e-05, 'abs_diff_lt_0.001': 79}
+    {'b0': 84309796, 'cheap': -1.0035, 'cheap_why': 'pulled', 'cheap_B': 11, 'cheap_send': 41, 'exact': -0.00352, 'exact_exit': 'pull_before_buy', 'exact_B': 23, 'exact_send': None, 'diff': 0.99998}
+    {'b0': 84450872, 'cheap': -1.0035, 'cheap_why': 'pulled', 'cheap_B': 11, 'cheap_send': 41, 'exact': -0.00352, 'exact_exit': 'pull_before_buy', 'exact_B': 23, 'exact_send': None, 'diff': 0.99998}
+    {'b0': 83453841, 'cheap': 0.07255, 'cheap_why': 'tp', 'cheap_B': 16, 'cheap_send': 43, 'exact': -0.02378, 'exact_exit': 'deadline', 'exact_B': 28, 'exact_send': 42, 'diff': -0.09633}
+    {'b0': 84305773, 'cheap': -0.0234, 'cheap_why': 'deadline', 'cheap_B': 9, 'cheap_send': 39, 'exact': 0.03955, 'exact_exit': 'tp', 'exact_B': 21, 'exact_send': 42, 'diff': 0.06294}
+    {'b0': 83493178, 'cheap': 0.05426, 'cheap_why': 'tp', 'cheap_B': 9, 'cheap_send': 33, 'exact': 0.05376, 'exact_exit': 'tp', 'exact_B': 21, 'exact_send': 33, 'diff': -0.0005}
+    {'b0': 83512753, 'cheap': 0.03956, 'cheap_why': 'tp', 'cheap_B': 10, 'cheap_send': 36, 'exact': 0.03908, 'exact_exit': 'tp', 'exact_B': 22, 'exact_send': 36, 'diff': -0.00048}
+    {'b0': 83530464, 'cheap': 0.07178, 'cheap_why': 'tp', 'cheap_B': 17, 'cheap_send': 39, 'exact': 0.07129, 'exact_exit': 'tp', 'exact_B': 29, 'exact_send': 39, 'diff': -0.00048}
+    {'b0': 83589242, 'cheap': 0.0229, 'cheap_why': 'tp', 'cheap_B': 16, 'cheap_send': 36, 'exact': 0.02246, 'exact_exit': 'tp', 'exact_B': 28, 'exact_send': 36, 'diff': -0.00044}
+    {'b0': 83475559, 'cheap': 0.07062, 'cheap_why': 'tp', 'cheap_B': 12, 'cheap_send': 32, 'exact': 0.07018, 'exact_exit': 'tp', 'exact_B': 24, 'exact_send': 32, 'diff': -0.00043}
+    {'b0': 83564493, 'cheap': 0.08922, 'cheap_why': 'tp', 'cheap_B': 9, 'cheap_send': 27, 'exact': 0.08879, 'exact_exit': 'tp', 'exact_B': 21, 'exact_send': 27, 'diff': -0.00043}
+    {'b0': 83612713, 'cheap': 0.05418, 'cheap_why': 'tp', 'cheap_B': 9, 'cheap_send': 32, 'exact': 0.05382, 'exact_exit': 'tp', 'exact_B': 21, 'exact_send': 32, 'diff': -0.00036}
+    {'b0': 83632048, 'cheap': 0.02183, 'cheap_why': 'tp', 'cheap_B': 9, 'cheap_send': 33, 'exact': 0.02148, 'exact_exit': 'tp', 'exact_B': 21, 'exact_send': 33, 'diff': -0.00035}
+stake effect:
+   0.0012 {'n': 83, 'mean': 0.0267, 'median': 0.05453, 'pos': 75, 'worst': -1.0035, 'buy_reverted': 0, 'pulled': 4, 'tp': 72, 'deadline': 7, 'no_trade': 1, 'bot_buy_reverted': 0}
+   0.012 {'n': 83, 'mean': 0.03076, 'median': 0.0573, 'pos': 76, 'worst': -1.0003, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+   0.03 {'n': 83, 'mean': 0.03036, 'median': 0.0569, 'pos': 76, 'worst': -1.0001, 'buy_reverted': 0, 'pulled': 4, 'tp': 76, 'deadline': 3, 'no_trade': 1, 'bot_buy_reverted': 0}
+   0.1 {'n': 83, 'mean': -0.03634, 'median': -0.01964, 'pos': 8, 'worst': -1.0, 'buy_reverted': 0, 'pulled': 4, 'tp': 74, 'deadline': 5, 'no_trade': 1, 'bot_buy_reverted': 68}
+reaction CDF used all/>=0.0001 {'n': 64, 'pulled_after': 64, 'never': 0, 'median': 10.0, 'cdf': {'2': 0.0, '3': 0.016, '4': 0.062, '5': 0.156, '6': 0.219, '8': 0.344, '10': 0.562, '12': 0.828, '15': 0.938, '20': 0.953, '25': 0.969, '30': 0.969, '40': 0.969, '60': 1.0}, 'never_examples': []}
+reaction-adjusted top: [('T+24|0.012|b2|tp0.01|R1|s1', -0.00567), ('T+18|0.012|b2|tp0.01|R1|s1', -0.00721), ('T+20|0.012|b1|tp0.01|R1|s1', -0.00811), ('T+20|0.012|b2|tp0.01|R1|s1', -0.00817), ('T+24|0.0012|b2|tp0.01|R1|s1', -0.00884), ('T+18|0.012|b2|tp0.01|R2|s1', -0.00975)]
+reaction-adjusted best variant: {'0.0012': -0.68562, '0.012': -0.67607, '0.03': -0.67617, '0.1': -0.69822}
+  seat T+16|0.0012|b1|tp0.01|R0|s1 no reaction mean -0.02275 med -0.02338 adjusted -0.02275
+  seat T+16|0.0012|b1|tp0.01|R1|s1 no reaction mean -0.02225 med -0.02338 adjusted -0.02225
+  seat T+16|0.0012|b1|tp0.01|R2|s1 no reaction mean -0.03882 med -0.02338 adjusted -0.05308
+  seat T+16|0.0012|b2|tp0.01|R0|s1 no reaction mean -0.02251 med -0.02339 adjusted -0.02251
+  seat T+16|0.0012|b2|tp0.01|R1|s1 no reaction mean -0.03908 med -0.02338 adjusted -0.03908
+  seat T+16|0.0012|b2|tp0.01|R2|s1 no reaction mean -0.03773 med -0.02338 adjusted -0.05062
+  seat T+18|0.0012|b1|tp0.01|R0|s1 no reaction mean -0.04493 med -0.02338 adjusted -0.04493
+  seat T+18|0.0012|b1|tp0.01|R1|s1 no reaction mean -0.04358 med -0.02338 adjusted -0.04358
+  seat T+18|0.0012|b1|tp0.01|R2|s1 no reaction mean -0.03362 med -0.02338 adjusted -0.04665
+  seat T+18|0.0012|b2|tp0.01|R0|s1 no reaction mean -0.02035 med -0.02338 adjusted -0.02035
+  seat T+18|0.0012|b2|tp0.01|R1|s1 no reaction mean -0.01039 med -0.02338 adjusted -0.01039
+  seat T+18|0.0012|b2|tp0.01|R2|s1 no reaction mean -0.00207 med -0.02337 adjusted -0.01305
+  seat T+20|0.0012|b1|tp0.01|R0|s1 no reaction mean -0.01963 med -0.02338 adjusted -0.01963
+  seat T+20|0.0012|b1|tp0.01|R1|s1 no reaction mean -0.0113 med -0.02338 adjusted -0.0113
+  seat T+20|0.0012|b1|tp0.01|R2|s1 no reaction mean -0.00448 med -0.02337 adjusted -0.0158
+  seat T+20|0.0012|b2|tp0.01|R0|s1 no reaction mean -0.01819 med -0.02338 adjusted -0.01819
+  seat T+20|0.0012|b2|tp0.01|R1|s1 no reaction mean -0.01137 med -0.02337 adjusted -0.01137
+  seat T+20|0.0012|b2|tp0.01|R2|s1 no reaction mean -0.00434 med -0.02337 adjusted -0.01438
+  seat T+22|0.0012|b1|tp0.01|R0|s1 no reaction mean -0.02083 med -0.02338 adjusted -0.02083
+  seat T+22|0.0012|b1|tp0.01|R1|s1 no reaction mean -0.0138 med -0.02337 adjusted -0.0138
+  seat T+22|0.0012|b1|tp0.01|R2|s1 no reaction mean -0.00819 med -0.02337 adjusted -0.02042
+  seat T+22|0.0012|b2|tp0.01|R0|s1 no reaction mean -0.01915 med -0.02337 adjusted -0.01915
+  seat T+22|0.0012|b2|tp0.01|R1|s1 no reaction mean -0.01354 med -0.02337 adjusted -0.01354
+  seat T+22|0.0012|b2|tp0.01|R2|s1 no reaction mean -0.00754 med -0.02337 adjusted -0.01848
+  seat T+24|0.0012|b1|tp0.01|R0|s1 no reaction mean -0.02107 med -0.02338 adjusted -0.02107
+  seat T+24|0.0012|b1|tp0.01|R1|s1 no reaction mean -0.01507 med -0.02337 adjusted -0.01507
+  seat T+24|0.0012|b1|tp0.01|R2|s1 no reaction mean -0.00428 med -0.02337 adjusted -0.01715
+  seat T+24|0.0012|b2|tp0.01|R0|s1 no reaction mean -0.01963 med -0.02337 adjusted -0.01963
+  seat T+24|0.0012|b2|tp0.01|R1|s1 no reaction mean -0.00884 med -0.02337 adjusted -0.00884
+  seat T+24|0.0012|b2|tp0.01|R2|s1 no reaction mean -0.0032 med -0.02337 adjusted -0.01318
+stake 0.1 with P(seen): {'n': 83, 'mean': 0.0135}

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/ops/oct9b.py", line 7, in <module>
+    L = json.load(open(D + "b_launches.json"))
+                       ^
+NameError: name 'D' is not defined

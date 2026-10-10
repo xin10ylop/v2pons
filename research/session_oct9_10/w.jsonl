@@ -1,0 +1,7 @@
+{"ev":"armed","fee":2383,"eligible":true,"t":1791474300}
+{"ev":"fire","trig_value":5290000000000000,"dry":false,"t":1791474305}
+{"ev":"buy_seen","offset":1,"t":1791474305.1}
+{"ev":"sell_sent","after_buy":1,"why":"take profit: a buy behind ours, the sell prices at +7.4%","t":1791474305.2}
+{"ev":"trade_done","dry":false,"ret":0.0731,"pnl_usd":0.21,"sell_after_buy_blocks":3,"pull_after_buy_blocks":6,"pulled_before_sell":false,"t":1791474309}
+{"ev":"skip","why":"daily cap","t":1791474400}
+{"ev":"alarm","what":"live trading halted: the operator's pull landed 3 blocks after our buy","t":1791474500}

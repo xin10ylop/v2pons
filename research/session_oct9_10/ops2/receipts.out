@@ -1,0 +1,57 @@
+
+== tx 0x5abcd10225ed block 19367696 from 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 nonce 1 to LAUNCHER value 0.1 ETH status 0x1 gasUsed 1015073 logs 9
+   TOKEN            Transfer                 ['0x0', 'LAUNCHER'] amount 1e+09
+   PoolManager      Initialize               ['poolId', '0x0', 'TOKEN']
+   TOKEN            Approval                 ['LAUNCHER', 'Permit2'] amount 1.15792e+59
+   Permit2          Approval/p2              ['LAUNCHER', 'TOKEN', 'PositionManager']
+   PositionManager  Transfer                 ['0x0', 'SENDER'] ERC721 id 355169
+   PoolManager      ModifyLiquidity          ['poolId', 'PositionManager']
+   TOKEN            Transfer                 ['LAUNCHER', 'PoolManager'] amount 9.99e+08
+   TOKEN            Transfer                 ['LAUNCHER', 'SENDER'] amount 1e+06
+   LAUNCHER         Launched(launcher event) ['SENDER', 'TOKEN', '0xddd3402b28820d73ee762f91c354f5444af2e7dc'] data words [355169, 20000, 200, 100000000000000000, 1000000000000000000000000000]
+
+== tx 0x0d87f62e98a8 block 54187043 from 0xb68c8c20744d71a4d4747f13cb11d70b27e8c8f6 nonce 0 to LAUNCHER value 0.41 ETH status 0x1 gasUsed 1015202 logs 9
+   TOKEN            Transfer                 ['0x0', 'LAUNCHER'] amount 1e+09
+   PoolManager      Initialize               ['poolId', '0x0', 'TOKEN']
+   TOKEN            Approval                 ['LAUNCHER', 'Permit2'] amount 1.15792e+59
+   Permit2          Approval/p2              ['LAUNCHER', 'TOKEN', 'PositionManager']
+   PositionManager  Transfer                 ['0x0', 'SENDER'] ERC721 id 1772427
+   PoolManager      ModifyLiquidity          ['poolId', 'PositionManager']
+   TOKEN            Transfer                 ['LAUNCHER', 'PoolManager'] amount 9.99e+08
+   TOKEN            Transfer                 ['LAUNCHER', 'SENDER'] amount 1e+06
+   LAUNCHER         Launched(launcher event) ['SENDER', 'TOKEN', '0x1c24da166e28097ed46a58a2e78ce36069b2f1f1'] data words [1772427, 20000, 200, 410000000000000000, 1000000000000000000000000000]
+
+== tx 0xda8a379f61fa block 67106081 from 0x6be635bc89c2d69249b1241165d4f6e3f1629d23 nonce 0 to LAUNCHER value 1.9 ETH status 0x1 gasUsed 1015250 logs 9
+   TOKEN            Transfer                 ['0x0', 'LAUNCHER'] amount 1e+09
+   PoolManager      Initialize               ['poolId', '0x0', 'TOKEN']
+   TOKEN            Approval                 ['LAUNCHER', 'Permit2'] amount 1.15792e+59
+   Permit2          Approval/p2              ['LAUNCHER', 'TOKEN', 'PositionManager']
+   PositionManager  Transfer                 ['0x0', 'SENDER'] ERC721 id 2954008
+   PoolManager      ModifyLiquidity          ['poolId', 'PositionManager']
+   TOKEN            Transfer                 ['LAUNCHER', 'PoolManager'] amount 9.99e+08
+   TOKEN            Transfer                 ['LAUNCHER', 'SENDER'] amount 1e+06
+   LAUNCHER         Launched(launcher event) ['SENDER', 'TOKEN', '0x9313b5fe923448af9312f0021712a0140c46da89'] data words [2954008, 100000, 200, 1900000000000000000, 1000000000000000000000000000]
+
+== tx 0x063763da35d6 block 84125769 from 0xfff2673997309850da7d84394ff807877754c7a6 nonce 0 to LAUNCHER value 2.06 ETH status 0x1 gasUsed 1015369 logs 9
+   TOKEN            Transfer                 ['0x0', 'LAUNCHER'] amount 1e+09
+   PoolManager      Initialize               ['poolId', '0x0', 'TOKEN']
+   TOKEN            Approval                 ['LAUNCHER', 'Permit2'] amount 1.15792e+59
+   Permit2          Approval/p2              ['LAUNCHER', 'TOKEN', 'PositionManager']
+   PositionManager  Transfer                 ['0x0', 'SENDER'] ERC721 id 3682939
+   PoolManager      ModifyLiquidity          ['poolId', 'PositionManager']
+   TOKEN            Transfer                 ['LAUNCHER', 'PoolManager'] amount 9.99e+08
+   TOKEN            Transfer                 ['LAUNCHER', 'SENDER'] amount 1e+06
+   LAUNCHER         Launched(launcher event) ['SENDER', 'TOKEN', '0x4dd7e2256b9b67e4e712076f531ea54803ce344b'] data words [3682939, 1207, 200, 2060000000000000000, 1000000000000000000000000000]
+
+== tx 0x081bd2300a44 block 83425344 from 0xc423cbd20bb5171c5cc46136a35ba0d27d85308e nonce 1 to COPY-LAUNCHER value 4.094 ETH status 0x1 gasUsed 1015450 logs 9
+   TOKEN            Transfer                 ['0x0', 'COPY-LAUNCHER'] amount 1e+09
+   PoolManager      Initialize               ['poolId', '0x0', 'TOKEN']
+   TOKEN            Approval                 ['COPY-LAUNCHER', 'Permit2'] amount 1.15792e+59
+   Permit2          Approval/p2              ['COPY-LAUNCHER', 'TOKEN', 'PositionManager']
+   PositionManager  Transfer                 ['0x0', 'SENDER'] ERC721 id 3669890
+   PoolManager      ModifyLiquidity          ['poolId', 'PositionManager']
+   TOKEN            Transfer                 ['COPY-LAUNCHER', 'PoolManager'] amount 9.99e+08
+   TOKEN            Transfer                 ['COPY-LAUNCHER', 'SENDER'] amount 1e+06
+   COPY-LAUNCHER    Launched(launcher event) ['SENDER', 'TOKEN', '0x45d2a65fa38668de846fa3a39fd97b4938cc747d'] data words [3669890, 100, 200, 4094000000000000000, 1000000000000000000000000000]
+
+addresses in these logs that are not sender/launcher/token/PoolManager/PositionManager/Permit2/0x0: {'0x00000000000000000000000000000000002d1318', '0x4dd7e2256b9b67e4e712076f531ea54803ce344b', '0x45d2a65fa38668de846fa3a39fd97b4938cc747d', '0x1c24da166e28097ed46a58a2e78ce36069b2f1f1', '0x000000000000000000000000000000000038327b', '0xddd3402b28820d73ee762f91c354f5444af2e7dc', '0x9313b5fe923448af9312f0021712a0140c46da89', '0x0000000000000000000000000000000000056b61', '0x000000000000000000000000000000000037ff82', '0x00000000000000000000000000000000001b0b8b'}

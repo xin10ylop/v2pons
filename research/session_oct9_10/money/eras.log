@@ -1,0 +1,23 @@
+
+== era 1.97 ETH: launch blk 62171553 sender 0x1172b44476c23892714f56533d4154506f868965 (nonce 0) value 1.970 ETH pid 0x39f9a65c61 first pull 62172305
+   after pull: blk 62172305 (+0) 0x1172b44476 -> 0x58daec3116 0.0000 ETH nonce 1 0xdd46508f
+
+== era 1.97 ETH: launch blk 84076031 sender 0x6ea95d3df055989aa4d9e2567fab035d19cfbc52 (nonce 0) value 1.970 ETH pid 0xc2ac14e543 first pull 84076232
+   funded: blk 84075662 (-369) 0x5f31f08bef -> 0x6ea95d3df0 2.0200 ETH nonce 0 0x
+   after pull: blk 84076232 (+0) 0x6ea95d3df0 -> 0x58daec3116 0.0000 ETH nonce 1 0xdd46508f
+   after pull: blk 84076315 (+83) 0x6ea95d3df0 -> 0x225e7a47c4 2.7692 ETH nonce 2 0x
+   payout went to 0x225e7a47c4: 33 transfers in around it; its outs: blk 84076339 (+24) 0x225e7a47c4 -> 0xcb30f6f17c 7.0142 ETH nonce 0 0x
+
+== era 0.45 ETH: launch blk 40786326 sender 0x38796a165cfc2fca11b53a30a43795e631d472ff (nonce 0) value 0.450 ETH pid 0xead7f72377 first pull 40808256
+   after pull: blk 40808256 (+0) 0x38796a165c -> 0x58daec3116 0.0000 ETH nonce 2 0xdd46508f
+
+== early: launch blk 19404821 sender 0x1c651c330bcb1c4bd8ac539860b4b2aedf786996 (nonce 0) value 0.300 ETH pid 0xfdf09166d8 first pull 19405431
+   after pull: blk 19405431 (+0) 0x1c651c330b -> 0x58daec3116 0.0000 ETH nonce 2 0xdd46508f
+
+== repeat sender 0xef441005: launch blk 61069586 sender 0xef44100548a252403dba9c7b9ee5257f87936c92 (nonce 0) value 0.400 ETH pid 0x72c10ba47f first pull 61069659
+   funded: blk 61069372 (-214) 0xf02faa6cff -> 0xef44100548 0.5000 ETH nonce 0 0x
+   after pull: blk 61069659 (+0) 0xef44100548 -> 0x58daec3116 0.0000 ETH nonce 1 0xdd46508f
+   after pull: blk 61069867 (+208) 0xef44100548 -> 0x3194e32622 0.4000 ETH nonce 2 0x2fcb9108
+   after pull: blk 61069880 (+221) 0xef44100548 -> 0x58daec3116 0.0000 ETH nonce 3 0xdd46508f
+   after pull: blk 61070159 (+500) 0xef44100548 -> 0x3194e32622 0.4000 ETH nonce 4 0x2fcb9108
+   payout went to 0x3194e32622: 1 transfers in around it; its outs: 

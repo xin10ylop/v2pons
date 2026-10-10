@@ -1,0 +1,196 @@
+83402323 fee 100 burst 7 pull 397 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:-0.0042/buy_/10 7_slow:-0.0042/buy_/11 8_fast:-0.0041/buy_/11 8_slow:-0.0042/buy_/12
+    0.004 7_fast:-0.0013/buy_/10 7_slow:-0.0013/buy_/11 8_fast:-0.0012/buy_/11 8_slow:-0.0013/buy_/12
+    0.012 7_fast:-0.0004/buy_/10 7_slow:-0.0004/buy_/11 8_fast:-0.0004/buy_/11 8_slow:-0.0004/buy_/12
+83402918 fee 100 burst 8 pull 403 late [] code_ok True elig True adds [] relay 0 fvc -1.1102230246251565e-16
+    0.0012 7_fast:+0.0433/take/9 7_slow:+0.0726/take/10 8_fast:-0.0038/buy_/10 8_slow:-0.0037/buy_/11
+    0.004 7_fast:+0.0458/take/9 7_slow:+0.0751/take/10 8_fast:-0.0011/buy_/10 8_slow:-0.0011/buy_/11
+    0.012 7_fast:+0.0465/take/9 7_slow:+0.0757/take/10 8_fast:-0.0004/buy_/10 8_slow:-0.0004/buy_/11
+83403507 fee 100 burst 9 pull 405 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0662/take/10 7_slow:+0.0662/take/11 8_fast:+0.0664/take/10 8_slow:+0.0663/take/11
+    0.004 7_fast:+0.0689/take/10 7_slow:+0.0689/take/11 8_fast:+0.0689/take/10 8_slow:+0.0689/take/11
+    0.012 7_fast:+0.0695/take/10 7_slow:+0.0695/take/11 8_fast:+0.0695/take/10 8_slow:+0.0695/take/11
+83404095 fee 100 burst 10 pull 406 late [] code_ok True elig True adds [] relay 0 fvc -1.1102230246251565e-16
+    0.0012 7_fast:-0.0040/dead/10 7_slow:+0.0860/dead/11 8_fast:+0.0860/take/11 8_slow:+0.0860/take/12
+    0.004 7_fast:-0.0013/dead/10 7_slow:+0.0885/dead/11 8_fast:+0.0885/take/11 8_slow:+0.0885/take/12
+    0.012 7_fast:-0.0006/dead/10 7_slow:+0.0890/dead/11 8_fast:+0.0890/take/11 8_slow:+0.0890/take/12
+83404682 fee 100 burst 9 pull 402 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.1058/take/10 7_slow:+0.1058/take/11 8_fast:+0.1058/take/10 8_slow:+0.1058/take/11
+    0.004 7_fast:+0.1083/take/10 7_slow:+0.1083/take/11 8_fast:+0.1083/take/10 8_slow:+0.1083/take/11
+    0.012 7_fast:+0.1087/take/10 7_slow:+0.1087/take/11 8_fast:+0.1087/take/10 8_slow:+0.1087/take/11
+83405273 fee 100 burst 9 pull 402 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0751/take/10 7_slow:+0.0751/take/11 8_fast:+0.0751/take/10 8_slow:+0.0751/take/11
+    0.004 7_fast:+0.0777/take/10 7_slow:+0.0777/take/11 8_fast:+0.0777/take/10 8_slow:+0.0777/take/11
+    0.012 7_fast:+0.0782/take/10 7_slow:+0.0782/take/11 8_fast:+0.0782/take/10 8_slow:+0.0782/take/11
+83405861 fee 100 burst 9 pull 405 late [] code_ok True elig True adds [] relay 0 fvc -6.738730684574534e-08
+    0.0012 7_fast:+0.0746/take/10 7_slow:+0.0746/take/11 8_fast:+0.0746/take/10 8_slow:+0.0746/take/11
+    0.004 7_fast:+0.0771/take/10 7_slow:+0.0771/take/11 8_fast:+0.0771/take/10 8_slow:+0.0771/take/11
+    0.012 7_fast:+0.0777/take/10 7_slow:+0.0777/take/11 8_fast:+0.0777/take/10 8_slow:+0.0777/take/11
+83406448 fee 100 burst 8 pull 415 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.1019/take/9 7_slow:+0.1018/take/10 8_fast:-0.0038/buy_/11 8_slow:-0.0038/buy_/12
+    0.004 7_fast:+0.1043/take/9 7_slow:+0.1043/take/10 8_fast:-0.0011/buy_/11 8_slow:-0.0011/buy_/12
+    0.012 7_fast:+0.1047/take/9 7_slow:+0.1047/take/10 8_fast:-0.0004/buy_/11 8_slow:-0.0004/buy_/12
+83407050 fee 100 burst 9 pull 400 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0724/take/10 7_slow:+0.0724/take/11 8_fast:+0.0724/take/10 8_slow:+0.0724/take/11
+    0.004 7_fast:+0.0749/take/10 7_slow:+0.0749/take/11 8_fast:+0.0749/take/10 8_slow:+0.0749/take/11
+    0.012 7_fast:+0.0755/take/10 7_slow:+0.0755/take/11 8_fast:+0.0755/take/10 8_slow:+0.0755/take/11
+83407637 fee 100 burst 9 pull 406 late [] code_ok True elig True adds [] relay 0 fvc 2.220446049250313e-16
+    0.0012 7_fast:+0.0971/take/10 7_slow:+0.0971/take/11 8_fast:+0.0971/take/10 8_slow:+0.0971/take/11
+    0.004 7_fast:+0.0996/take/10 7_slow:+0.0996/take/11 8_fast:+0.0996/take/10 8_slow:+0.0996/take/11
+    0.012 7_fast:+0.0999/take/10 7_slow:+0.0999/take/11 8_fast:+0.0999/take/10 8_slow:+0.0999/take/11
+83408225 fee 100 burst 9 pull 405 late [] code_ok True elig True adds [] relay 0 fvc -1.1102230246251565e-16
+    0.0012 7_fast:+0.0901/take/10 7_slow:+0.0901/take/11 8_fast:+0.0901/take/10 8_slow:+0.0901/take/11
+    0.004 7_fast:+0.0926/take/10 7_slow:+0.0926/take/11 8_fast:+0.0926/take/10 8_slow:+0.0926/take/11
+    0.012 7_fast:+0.0930/take/10 7_slow:+0.0930/take/11 8_fast:+0.0930/take/10 8_slow:+0.0930/take/11
+83408816 fee 100 burst 9 pull 405 late [] code_ok True elig True adds [] relay 0 fvc 2.220446049250313e-16
+    0.0012 7_fast:+0.1176/take/10 7_slow:+0.1176/take/11 8_fast:+0.1176/take/10 8_slow:+0.1176/take/11
+    0.004 7_fast:+0.1201/take/10 7_slow:+0.1201/take/11 8_fast:+0.1201/take/10 8_slow:+0.1201/take/11
+    0.012 7_fast:+0.1204/take/10 7_slow:+0.1204/take/11 8_fast:+0.1204/take/10 8_slow:+0.1204/take/11
+83409408 fee 100 burst 9 pull 396 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0930/take/10 7_slow:+0.0930/take/11 8_fast:+0.0930/take/10 8_slow:+0.0930/take/11
+    0.004 7_fast:+0.0955/take/10 7_slow:+0.0955/take/11 8_fast:+0.0955/take/10 8_slow:+0.0955/take/11
+    0.012 7_fast:+0.0959/take/10 7_slow:+0.0959/take/11 8_fast:+0.0959/take/10 8_slow:+0.0959/take/11
+83409990 fee 100 burst 9 pull 404 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.1030/take/10 7_slow:+0.1030/take/11 8_fast:+0.1030/take/10 8_slow:+0.1029/take/11
+    0.004 7_fast:+0.1054/take/10 7_slow:+0.1054/take/11 8_fast:+0.1054/take/10 8_slow:+0.1054/take/11
+    0.012 7_fast:+0.1058/take/10 7_slow:+0.1058/take/11 8_fast:+0.1058/take/10 8_slow:+0.1058/take/11
+83410594 fee 100 burst 9 pull 399 late [] code_ok True elig True adds [] relay 0 fvc -2.220446049250313e-16
+    0.0012 7_fast:+0.1144/take/10 7_slow:+0.1144/take/11 8_fast:+0.1144/take/10 8_slow:+0.1144/take/11
+    0.004 7_fast:+0.1169/take/10 7_slow:+0.1169/take/11 8_fast:+0.1169/take/10 8_slow:+0.1169/take/11
+    0.012 7_fast:+0.1172/take/10 7_slow:+0.1172/take/11 8_fast:+0.1172/take/10 8_slow:+0.1172/take/11
+83411178 fee 100 burst 9 pull 403 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0879/take/10 7_slow:+0.0879/take/11 8_fast:+0.0879/take/10 8_slow:+0.0879/take/11
+    0.004 7_fast:+0.0904/take/10 7_slow:+0.0904/take/11 8_fast:+0.0904/take/10 8_slow:+0.0904/take/11
+    0.012 7_fast:+0.0908/take/10 7_slow:+0.0908/take/11 8_fast:+0.0908/take/10 8_slow:+0.0908/take/11
+83412341 fee 100 burst 9 pull 399 late [] code_ok True elig True adds [] relay 0 fvc -2.220446049250313e-16
+    0.0012 7_fast:+0.0787/take/10 7_slow:+0.0787/take/11 8_fast:+0.0787/take/10 8_slow:+0.0787/take/11
+    0.004 7_fast:+0.0812/take/10 7_slow:+0.0812/take/11 8_fast:+0.0812/take/10 8_slow:+0.0812/take/11
+    0.012 7_fast:+0.0817/take/10 7_slow:+0.0817/take/11 8_fast:+0.0817/take/10 8_slow:+0.0817/take/11
+83412923 fee 100 burst 9 pull 402 late [] code_ok True elig True adds [] relay 0 fvc 2.220446049250313e-16
+    0.0012 7_fast:+0.0812/take/10 7_slow:+0.0812/take/11 8_fast:+0.0812/take/10 8_slow:+0.0812/take/11
+    0.004 7_fast:+0.0837/take/10 7_slow:+0.0837/take/11 8_fast:+0.0837/take/10 8_slow:+0.0837/take/11
+    0.012 7_fast:+0.0842/take/10 7_slow:+0.0842/take/11 8_fast:+0.0842/take/10 8_slow:+0.0842/take/11
+83413506 fee 100 burst 9 pull 401 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0804/take/10 7_slow:+0.0804/take/11 8_fast:+0.0804/take/10 8_slow:+0.0804/take/11
+    0.004 7_fast:+0.0830/take/10 7_slow:+0.0830/take/11 8_fast:+0.0830/take/10 8_slow:+0.0830/take/11
+    0.012 7_fast:+0.0835/take/10 7_slow:+0.0835/take/11 8_fast:+0.0835/take/10 8_slow:+0.0835/take/11
+83414061 fee 100 burst 10 pull 413 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:-0.0047/dead/10 7_slow:+0.0920/dead/11 8_fast:+0.0919/take/11 8_slow:+0.0919/take/12
+    0.004 7_fast:-0.0016/dead/10 7_slow:+0.0950/dead/11 8_fast:+0.0950/take/11 8_slow:+0.0950/take/12
+    0.012 7_fast:-0.0007/dead/10 7_slow:+0.0956/dead/11 8_fast:+0.0956/take/11 8_slow:+0.0956/take/12
+83414658 fee 100 burst 9 pull 354 late [] code_ok True elig True adds [] relay 0 fvc -2.220446049250313e-16
+    0.0012 7_fast:+0.1163/take/10 7_slow:+0.1163/take/11 8_fast:+0.1163/take/10 8_slow:+0.1163/take/11
+    0.004 7_fast:+0.1187/take/10 7_slow:+0.1187/take/11 8_fast:+0.1187/take/10 8_slow:+0.1187/take/11
+    0.012 7_fast:+0.1190/take/10 7_slow:+0.1190/take/11 8_fast:+0.1190/take/10 8_slow:+0.1190/take/11
+83425344 fee 100 burst 8 pull 1471 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0704/take/9 7_slow:+0.0704/take/10 8_fast:-0.0040/buy_/11 8_slow:-0.0040/buy_/12
+    0.004 7_fast:+0.0731/take/9 7_slow:+0.0731/take/10 8_fast:-0.0012/buy_/11 8_slow:-0.0012/buy_/12
+    0.012 7_fast:+0.0737/take/9 7_slow:+0.0737/take/10 8_fast:-0.0004/buy_/11 8_slow:-0.0004/buy_/12
+83427094 fee 100 burst 9 pull 1479 late [] code_ok True elig True adds [] relay 0 fvc 2.220446049250313e-16
+    0.0012 7_fast:+0.0945/take/10 7_slow:+0.0945/take/11 8_fast:+0.0945/take/10 8_slow:+0.0945/take/11
+    0.004 7_fast:+0.0970/take/10 7_slow:+0.0970/take/11 8_fast:+0.0970/take/10 8_slow:+0.0970/take/11
+    0.012 7_fast:+0.0974/take/10 7_slow:+0.0974/take/11 8_fast:+0.0974/take/10 8_slow:+0.0974/take/11
+83428891 fee 300 burst 9 pull 1478 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0998/take/10 7_slow:+0.0998/take/11 8_fast:+0.0998/take/10 8_slow:+0.0998/take/11
+    0.004 7_fast:+0.1023/take/10 7_slow:+0.1023/take/11 8_fast:+0.1023/take/10 8_slow:+0.1023/take/11
+    0.012 7_fast:+0.1027/take/10 7_slow:+0.1027/take/11 8_fast:+0.1027/take/10 8_slow:+0.1027/take/11
+83430652 fee 100 burst 9 pull 1473 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.1065/take/10 7_slow:+0.1065/take/11 8_fast:+0.1065/take/10 8_slow:+0.1065/take/11
+    0.004 7_fast:+0.1091/take/10 7_slow:+0.1091/take/11 8_fast:+0.1091/take/10 8_slow:+0.1091/take/11
+    0.012 7_fast:+0.1094/take/10 7_slow:+0.1094/take/11 8_fast:+0.1094/take/10 8_slow:+0.1094/take/11
+83432432 fee 100 burst 9 pull 1478 late [] code_ok True elig True adds [] relay 0 fvc -1.1102230246251565e-16
+    0.0012 7_fast:+0.0773/take/10 7_slow:+0.0773/take/11 8_fast:+0.0773/take/10 8_slow:+0.0773/take/11
+    0.004 7_fast:+0.0799/take/10 7_slow:+0.0799/take/11 8_fast:+0.0799/take/10 8_slow:+0.0799/take/11
+    0.012 7_fast:+0.0804/take/10 7_slow:+0.0804/take/11 8_fast:+0.0804/take/10 8_slow:+0.0804/take/11
+83434196 fee 100 burst 9 pull 1474 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0688/take/10 7_slow:+0.0689/take/11 8_fast:+0.0688/take/10 8_slow:+0.0689/take/11
+    0.004 7_fast:+0.0715/take/10 7_slow:+0.0715/take/11 8_fast:+0.0715/take/10 8_slow:+0.0715/take/11
+    0.012 7_fast:+0.0721/take/10 7_slow:+0.0721/take/11 8_fast:+0.0721/take/10 8_slow:+0.0721/take/11
+83435949 fee 200 burst 11 pull 1494 late [] code_ok True elig True adds [] relay 0 fvc -1.1102230246251565e-16
+    0.0012 7_fast:-0.0047/dead/10 7_slow:-0.0047/dead/11 8_fast:-0.0047/dead/11 8_slow:+0.0852/dead/12
+    0.004 7_fast:-0.0017/dead/10 7_slow:-0.0017/dead/11 8_fast:-0.0017/dead/11 8_slow:+0.0880/dead/12
+    0.012 7_fast:-0.0008/dead/10 7_slow:-0.0008/dead/11 8_fast:-0.0008/dead/11 8_slow:+0.0885/dead/12
+83439324 fee 200 burst 9 pull 1476 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.1003/take/10 7_slow:+0.1003/take/11 8_fast:+0.1003/take/10 8_slow:+0.1003/take/11
+    0.004 7_fast:+0.1029/take/10 7_slow:+0.1029/take/11 8_fast:+0.1029/take/10 8_slow:+0.1029/take/11
+    0.012 7_fast:+0.1033/take/10 7_slow:+0.1033/take/11 8_fast:+0.1033/take/10 8_slow:+0.1033/take/11
+83441072 fee 300 burst 8 pull 1425 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0788/take/9 7_slow:+0.0788/take/10 8_fast:-0.0039/buy_/11 8_slow:-0.0039/buy_/12
+    0.004 7_fast:+0.0814/take/9 7_slow:+0.0814/take/10 8_fast:-0.0012/buy_/11 8_slow:-0.0012/buy_/12
+    0.012 7_fast:+0.0820/take/9 7_slow:+0.0820/take/10 8_fast:-0.0004/buy_/11 8_slow:-0.0004/buy_/12
+83442774 fee 200 burst 9 pull 1490 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0756/take/10 7_slow:+0.0756/take/11 8_fast:+0.0757/take/10 8_slow:+0.0757/take/11
+    0.004 7_fast:+0.0783/take/10 7_slow:+0.0783/take/11 8_fast:+0.0783/take/10 8_slow:+0.0783/take/11
+    0.012 7_fast:+0.0788/take/10 7_slow:+0.0788/take/11 8_fast:+0.0788/take/10 8_slow:+0.0788/take/11
+83444547 fee 200 burst 9 pull 877 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.1222/take/10 7_slow:+0.1222/take/11 8_fast:+0.1222/take/10 8_slow:+0.1222/take/11
+    0.004 7_fast:+0.1248/take/10 7_slow:+0.1248/take/11 8_fast:+0.1248/take/10 8_slow:+0.1248/take/11
+    0.012 7_fast:+0.1250/take/10 7_slow:+0.1250/take/11 8_fast:+0.1250/take/10 8_slow:+0.1250/take/11
+83448001 fee 300 burst 9 pull 1467 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0951/take/10 7_slow:+0.0950/take/11 8_fast:+0.0952/take/10 8_slow:+0.0952/take/11
+    0.004 7_fast:+0.0986/take/10 7_slow:+0.0985/take/11 8_fast:+0.0986/take/10 8_slow:+0.0986/take/11
+    0.012 7_fast:+0.0992/take/10 7_slow:+0.0992/take/11 8_fast:+0.0992/take/10 8_slow:+0.0992/take/11
+83449748 fee 100 burst 8 pull 1481 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.1061/take/9 7_slow:+0.1061/take/10 8_fast:-0.0039/buy_/11 8_slow:-0.0039/buy_/12
+    0.004 7_fast:+0.1087/take/9 7_slow:+0.1087/take/10 8_fast:-0.0012/buy_/11 8_slow:-0.0012/buy_/12
+    0.012 7_fast:+0.1090/take/9 7_slow:+0.1091/take/10 8_fast:-0.0004/buy_/11 8_slow:-0.0004/buy_/12
+83451508 fee 300 burst 9 pull 1481 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0861/take/10 7_slow:+0.0861/take/11 8_fast:+0.0861/take/10 8_slow:+0.0861/take/11
+    0.004 7_fast:+0.0887/take/10 7_slow:+0.0887/take/11 8_fast:+0.0887/take/10 8_slow:+0.0887/take/11
+    0.012 7_fast:+0.0892/take/10 7_slow:+0.0892/take/11 8_fast:+0.0892/take/10 8_slow:+0.0892/take/11
+83453275 fee 300 burst 8 pull 1508 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.1113/take/9 7_slow:+0.1114/take/10 8_fast:-0.0039/buy_/11 8_slow:-0.0039/buy_/12
+    0.004 7_fast:+0.1140/take/9 7_slow:+0.1140/take/10 8_fast:-0.0012/buy_/11 8_slow:-0.0012/buy_/12
+    0.012 7_fast:+0.1143/take/9 7_slow:+0.1143/take/10 8_fast:-0.0004/buy_/11 8_slow:-0.0004/buy_/12
+83456814 fee 200 burst 13 pull 1487 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:-0.0043/dead/10 7_slow:-0.0043/dead/11 8_fast:-0.0043/dead/11 8_slow:-0.0043/dead/12
+    0.004 7_fast:-0.0016/dead/10 7_slow:-0.0016/dead/11 8_fast:-0.0016/dead/11 8_slow:-0.0016/dead/12
+    0.012 7_fast:-0.0008/dead/10 7_slow:-0.0008/dead/11 8_fast:-0.0008/dead/11 8_slow:-0.0008/dead/12
+83458603 fee 200 burst 8 pull 1476 late [] code_ok True elig True adds [] relay 0 fvc 2.220446049250313e-16
+    0.0012 7_fast:+0.0819/take/9 7_slow:+0.0819/take/10 8_fast:-0.0039/buy_/11 8_slow:-0.0039/buy_/12
+    0.004 7_fast:+0.0845/take/9 7_slow:+0.0845/take/10 8_fast:-0.0012/buy_/11 8_slow:-0.0012/buy_/12
+    0.012 7_fast:+0.0850/take/9 7_slow:+0.0850/take/10 8_fast:-0.0004/buy_/11 8_slow:-0.0004/buy_/12
+83460361 fee 200 burst 9 pull 1481 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0961/take/10 7_slow:+0.0961/take/11 8_fast:+0.0961/take/10 8_slow:+0.0961/take/11
+    0.004 7_fast:+0.0986/take/10 7_slow:+0.0986/take/11 8_fast:+0.0986/take/10 8_slow:+0.0986/take/11
+    0.012 7_fast:+0.0991/take/10 7_slow:+0.0991/take/11 8_fast:+0.0991/take/10 8_slow:+0.0991/take/11
+83462127 fee 300 burst 9 pull 1487 late [] code_ok True elig True adds [] relay 0 fvc -1.1102230246251565e-16
+    0.0012 7_fast:+0.0795/take/10 7_slow:+0.0795/take/11 8_fast:+0.0795/take/10 8_slow:+0.0795/take/11
+    0.004 7_fast:+0.0822/take/10 7_slow:+0.0822/take/11 8_fast:+0.0822/take/10 8_slow:+0.0822/take/11
+    0.012 7_fast:+0.0827/take/10 7_slow:+0.0827/take/11 8_fast:+0.0827/take/10 8_slow:+0.0827/take/11
+83463899 fee 200 burst 9 pull 1487 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0644/take/10 7_slow:+0.0644/take/11 8_fast:+0.0644/take/10 8_slow:+0.0644/take/11
+    0.004 7_fast:+0.0671/take/10 7_slow:+0.0671/take/11 8_fast:+0.0671/take/10 8_slow:+0.0671/take/11
+    0.012 7_fast:+0.0677/take/10 7_slow:+0.0677/take/11 8_fast:+0.0677/take/10 8_slow:+0.0677/take/11
+83465669 fee 300 burst 9 pull 1487 late [] code_ok True elig True adds [] relay 0 fvc -1.1102230246251565e-16
+    0.0012 7_fast:+0.0873/take/10 7_slow:+0.0873/take/11 8_fast:+0.0873/take/10 8_slow:+0.0873/take/11
+    0.004 7_fast:+0.0899/take/10 7_slow:+0.0899/take/11 8_fast:+0.0899/take/10 8_slow:+0.0899/take/11
+    0.012 7_fast:+0.0904/take/10 7_slow:+0.0904/take/11 8_fast:+0.0904/take/10 8_slow:+0.0904/take/11
+83467442 fee 200 burst 9 pull 1474 late [] code_ok True elig True adds [] relay 0 fvc -2.220446049250313e-16
+    0.0012 7_fast:+0.1015/take/10 7_slow:+0.1015/take/11 8_fast:+0.1015/take/10 8_slow:+0.1015/take/11
+    0.004 7_fast:+0.1041/take/10 7_slow:+0.1041/take/11 8_fast:+0.1041/take/10 8_slow:+0.1041/take/11
+    0.012 7_fast:+0.1045/take/10 7_slow:+0.1045/take/11 8_fast:+0.1045/take/10 8_slow:+0.1045/take/11
+83469198 fee 300 burst 9 pull 1491 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0815/take/10 7_slow:+0.0814/take/11 8_fast:+0.0815/take/10 8_slow:+0.0814/take/11
+    0.004 7_fast:+0.0841/take/10 7_slow:+0.0841/take/11 8_fast:+0.0841/take/10 8_slow:+0.0841/take/11
+    0.012 7_fast:+0.0846/take/10 7_slow:+0.0846/take/11 8_fast:+0.0846/take/10 8_slow:+0.0846/take/11
+83470944 fee 200 burst 9 pull 1476 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0770/take/10 7_slow:+0.0770/take/11 8_fast:+0.0770/take/10 8_slow:+0.0770/take/11
+    0.004 7_fast:+0.0797/take/10 7_slow:+0.0797/take/11 8_fast:+0.0797/take/10 8_slow:+0.0797/take/11
+    0.012 7_fast:+0.0803/take/10 7_slow:+0.0803/take/11 8_fast:+0.0803/take/10 8_slow:+0.0803/take/11
+83474461 fee 100 burst 9 pull 1458 late [] code_ok True elig True adds [] relay 0 fvc -1.1102230246251565e-16
+    0.0012 7_fast:+0.0820/take/10 7_slow:+0.0821/take/11 8_fast:+0.0820/take/10 8_slow:+0.0820/take/11
+    0.004 7_fast:+0.0847/take/10 7_slow:+0.0847/take/11 8_fast:+0.0847/take/10 8_slow:+0.0847/take/11
+    0.012 7_fast:+0.0852/take/10 7_slow:+0.0852/take/11 8_fast:+0.0852/take/10 8_slow:+0.0852/take/11
+83476201 fee 100 burst 9 pull 1498 late [] code_ok True elig True adds [] relay 0 fvc 2.220446049250313e-16
+    0.0012 7_fast:+0.1029/take/10 7_slow:+0.1029/take/11 8_fast:+0.1029/take/10 8_slow:+0.1029/take/11
+    0.004 7_fast:+0.1055/take/10 7_slow:+0.1055/take/11 8_fast:+0.1055/take/10 8_slow:+0.1055/take/11
+    0.012 7_fast:+0.1059/take/10 7_slow:+0.1059/take/11 8_fast:+0.1059/take/10 8_slow:+0.1059/take/11
+83477978 fee 100 burst 8 pull 1461 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0980/take/9 7_slow:+0.0980/take/10 8_fast:-0.0040/buy_/11 8_slow:-0.0040/buy_/12
+    0.004 7_fast:+0.1006/take/9 7_slow:+0.1006/take/10 8_fast:-0.0012/buy_/11 8_slow:-0.0012/buy_/12
+    0.012 7_fast:+0.1010/take/9 7_slow:+0.1010/take/10 8_fast:-0.0004/buy_/11 8_slow:-0.0004/buy_/12
+83479720 fee 100 burst 8 pull 1487 late [] code_ok True elig True adds [] relay 0 fvc 0.0
+    0.0012 7_fast:+0.0610/take/9 7_slow:+0.0610/take/10 8_fast:-0.0040/buy_/11 8_slow:-0.0040/buy_/12
+    0.004 7_fast:+0.0637/take/9 7_slow:+0.0637/take/10 8_fast:-0.0012/buy_/11 8_slow:-0.0012/buy_/12
+    0.012 7_fast:+0.0643/take/9 7_slow:+0.0643/take/10 8_fast:-0.0004/buy_/11 8_slow:-0.0004/buy_/12

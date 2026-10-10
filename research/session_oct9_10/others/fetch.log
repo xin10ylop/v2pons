@@ -1,0 +1,35 @@
+inits 82978143 257
+inits 83078143 503
+inits 83178143 733
+inits 83278143 1228
+inits 83378143 1760
+inits 83478143 2341
+inits 83578143 2660
+inits 83678143 3076
+inits 83778143 3353
+inits 83878143 3584
+inits 83978143 3891
+inits 84078143 4144
+inits 84178143 4683
+inits 84238619 5164
+pools 5164
+txs 0 4108
+txs 1000 4108
+txs 2000 4108
+txs 3000 4108
+txs 4000 4108
+codes 0 235
+codes 200 235
+plogs group 0/235 pools 18 0s
+plogs group 20/235 pools 342 37s
+plogs group 40/235 pools 669 44s
+plogs group 60/235 pools 1118 59s
+plogs group 80/235 pools 1663 75s
+plogs group 100/235 pools 2176 116s
+plogs group 120/235 pools 2622 138s
+plogs group 140/235 pools 3113 154s
+plogs group 160/235 pools 3431 169s
+plogs group 180/235 pools 3818 215s
+plogs group 200/235 pools 4161 239s
+plogs group 220/235 pools 4695 258s
+done; head 84238619 pools 5164 with logs 5152

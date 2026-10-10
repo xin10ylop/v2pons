@@ -1,0 +1,55 @@
+10-08 13:15:38 0x3a922cb2 T+142 buy T+1 sell B+6 pull B+6 caught=False ret +0.0753 trig ('0x94e12c34', 0, 0.0053, True)
+      window {'rel_T': 0, 'eth': 0.00529482, 'crowd_fp': True, 'from': '0x94e12c34', 'nonce': 0, 'value': 0.00529482}
+      window {'rel_T': 4, 'eth': 0.0377949, 'crowd_fp': True, 'from': '0x6e0fb625', 'nonce': 0, 'value': 0.0377949}
+10-08 13:16:19 0x7cfa4232 T+54 buy T+2 sell B+None pull B+6 caught=False ret -1.0000 trig ('0x94e12c34', 1, 0.0044, True)
+      window {'rel_T': 0, 'eth': 0.0043993, 'crowd_fp': True, 'from': '0x94e12c34', 'nonce': 1, 'value': 0.0043993}
+      window {'rel_T': 3, 'eth': 0.0396, 'crowd_fp': True, 'from': '0x6e0fb625', 'nonce': 1, 'value': 0.0396}
+      window {'rel_T': 6, 'eth': 0.0375804, 'crowd_fp': True, 'from': '0x64386cda', 'nonce': 1, 'value': 0.0375804}
+10-08 13:16:56 0xf36b6bac T+53 buy T+2 sell B+None pull B+6 caught=False ret -1.0000 trig ('0x7d7aa3dc', 0, 0.005, True)
+      window {'rel_T': 0, 'eth': 0.00497234, 'crowd_fp': True, 'from': '0x7d7aa3dc', 'nonce': 0, 'value': 0.00497234}
+      window {'rel_T': 3, 'eth': 0.0298419, 'crowd_fp': True, 'from': '0x7754be40', 'nonce': 0, 'value': 0.0298419}
+10-08 13:17:15 0x7223753b T+46 buy T+2 sell B+7 pull B+8 caught=False ret +0.1908 trig ('0x7d7aa3dc', 1, 0.0054, True)
+      window {'rel_T': 0, 'eth': 0.00540502, 'crowd_fp': True, 'from': '0x7d7aa3dc', 'nonce': 1, 'value': 0.00540502}
+      window {'rel_T': 3, 'eth': 0.0300597, 'crowd_fp': True, 'from': '0x7754be40', 'nonce': 1, 'value': 0.0300597}
+      window {'rel_T': 8, 'eth': 0.0599031, 'crowd_fp': True, 'from': '0x86faebe1', 'nonce': 1, 'value': 0.0599031}
+10-08 13:18:17 0x16df2826 T+51 buy T+2 sell B+7 pull B+13 caught=False ret +0.0788 trig ('0x42ae38e9', 0, 0.006, True)
+      window {'rel_T': 0, 'eth': 0.00602794, 'crowd_fp': True, 'from': '0x42ae38e9', 'nonce': 0, 'value': 0.00602794}
+      window {'rel_T': 3, 'eth': 0.0394515, 'crowd_fp': True, 'from': '0x30ba291f', 'nonce': 0, 'value': 0.0394515}
+10-08 13:18:51 0x3578b252 T+58 buy T+1 sell B+6 pull B+7 caught=False ret -0.0048 trig ('0x3298d9ca', 0, 0.003, True)
+      window {'rel_T': 0, 'eth': 0.00299516, 'crowd_fp': True, 'from': '0x3298d9ca', 'nonce': 0, 'value': 0.00299516}
+10-08 13:19:56 0x7490a93c T+108 buy T+1 sell B+None pull B+5 caught=False ret -1.0000 trig ('0x91ecbb96', 0, 0.0159, True)
+      window {'rel_T': 0, 'eth': 0.01585488, 'crowd_fp': True, 'from': '0x91ecbb96', 'nonce': 0, 'value': 0.01585488}
+10-08 22:48:48 0xfd84a22b T+None buy T+None sell B+3 pull B+98 caught=False ret -0.0018 trig None
+10-09 00:11:04 0xbe2a35f9 T+None buy T+None sell B+3 pull B+270 caught=False ret -0.0032 trig None
+10-09 10:48:47 0x2a928e99 T+21 buy T+3 sell B+3 pull B+18072 caught=False ret -0.0017 trig ('0x4c45af68', 350, 0.1068, True)
+      window {'rel_T': 0, 'eth': 0.1068254491251811, 'crowd_fp': True, 'from': '0x4c45af68', 'nonce': 350, 'value': 0.1068254491251811}
+      window {'rel_T': 5, 'eth': 5e-05, 'crowd_fp': True, 'from': '0xb4d43149', 'nonce': 2080, 'value': 5e-05}
+10-09 10:49:56 0x2749b5d1 T+60 buy T+1 sell B+3 pull B+14 caught=False ret +0.0011 trig ('0x295877ce', 288, 0.0435, True)
+      window {'rel_T': 0, 'eth': 0.0435, 'crowd_fp': True, 'from': '0x295877ce', 'nonce': 288, 'value': 0.0435}
+      window {'rel_T': 3, 'eth': 0.012, 'crowd_fp': True, 'from': '0x75442507', 'nonce': 1878, 'value': 0.012}
+10-09 10:50:46 0x43c1ce10 T+55 buy T+1 sell B+3 pull B+1904 caught=False ret +0.0390 trig ('0x295877ce', 290, 0.1066, True)
+      window {'rel_T': 0, 'eth': 0.1066, 'crowd_fp': True, 'from': '0x295877ce', 'nonce': 290, 'value': 0.1066}
+      window {'rel_T': 3, 'eth': 0.0478, 'crowd_fp': True, 'from': '0xdc2e8661', 'nonce': 1895, 'value': 0.0478}
+      window {'rel_T': 4, 'eth': 5e-05, 'crowd_fp': True, 'from': '0xb4d43149', 'nonce': 2090, 'value': 5e-05}
+10-09 11:14:11 0xe444ad37 T+59 buy T+1 sell B+3 pull B+2033 caught=False ret +0.0620 trig ('0x8700722d', 381, 0.0368, True)
+      window {'rel_T': 0, 'eth': 0.0368, 'crowd_fp': True, 'from': '0x8700722d', 'nonce': 381, 'value': 0.0368}
+      window {'rel_T': 3, 'eth': 0.0638, 'crowd_fp': True, 'from': '0x295877ce', 'nonce': 338, 'value': 0.0638}
+      window {'rel_T': 3, 'eth': 9e-05, 'crowd_fp': False, 'from': '0x0b410a5f', 'nonce': 821, 'value': 9e-05}
+10-09 11:23:26 0xa5b3513d T+61 buy T+1 sell B+2 pull B+1895 caught=False ret +0.0842 trig ('0x295877ce', 348, 0.0119, True)
+      window {'rel_T': 0, 'eth': 0.0119, 'crowd_fp': True, 'from': '0x295877ce', 'nonce': 348, 'value': 0.0119}
+      window {'rel_T': 2, 'eth': 0.1342, 'crowd_fp': True, 'from': '0x05042f81', 'nonce': 1893, 'value': 0.1342}
+10-09 11:27:48 0x03d90ea1 T+55 buy T+1 sell B+3 pull B+1504 caught=False ret +0.0850 trig ('0x295877ce', 358, 0.0689, True)
+      window {'rel_T': 0, 'eth': 0.0689, 'crowd_fp': True, 'from': '0x295877ce', 'nonce': 358, 'value': 0.0689}
+      window {'rel_T': 3, 'eth': 0.1219, 'crowd_fp': True, 'from': '0xe6af9036', 'nonce': 1941, 'value': 0.1219}
+      window {'rel_T': 4, 'eth': 8e-05, 'crowd_fp': False, 'from': '0x0b410a5f', 'nonce': 827, 'value': 8e-05}
+10-09 11:31:24 0xda701818 T+68 buy T+1 sell B+2 pull B+119 caught=False ret +0.0628 trig ('0xdc2e8661', 1969, 0.0663, True)
+      window {'rel_T': 0, 'eth': 0.0663, 'crowd_fp': True, 'from': '0xdc2e8661', 'nonce': 1969, 'value': 0.0663}
+      window {'rel_T': 2, 'eth': 0.0638, 'crowd_fp': True, 'from': '0x75442507', 'nonce': 1957, 'value': 0.0638}
+      window {'rel_T': 3, 'eth': 7e-05, 'crowd_fp': False, 'from': '0x0b410a5f', 'nonce': 830, 'value': 7e-05}
+10-09 11:32:18 0x12c952fa T+78 buy T+1 sell B+3 pull B+16 caught=False ret -0.0098 trig ('0x8700722d', 415, 0.1203, True)
+      window {'rel_T': 0, 'eth': 0.1203, 'crowd_fp': True, 'from': '0x8700722d', 'nonce': 415, 'value': 0.1203}
+      window {'rel_T': 2, 'eth': 8e-05, 'crowd_fp': False, 'from': '0x0b410a5f', 'nonce': 833, 'value': 8e-05}
+      window {'rel_T': 4, 'eth': 5e-05, 'crowd_fp': True, 'from': '0xb4d43149', 'nonce': 2124, 'value': 5e-05}
+10-09 11:36:19 0x2701d15a T+51 buy T+1 sell B+3 pull B+1609 caught=False ret +0.0462 trig ('0x8700722d', 420, 0.0396, True)
+      window {'rel_T': 0, 'eth': 0.0396, 'crowd_fp': True, 'from': '0x8700722d', 'nonce': 420, 'value': 0.0396}
+      window {'rel_T': 3, 'eth': 0.0506, 'crowd_fp': True, 'from': '0x295877ce', 'nonce': 370, 'value': 0.0506}

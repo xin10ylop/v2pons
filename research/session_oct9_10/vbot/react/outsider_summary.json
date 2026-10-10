@@ -1,0 +1,92 @@
+{
+ "v3.0/census": {
+  "pools": 717,
+  "outsider_buys": 1482,
+  "wallets": 23,
+  "pools_with_outsider_buy>=3e-5": 62,
+  "of_which_after_bot_buy1": 62,
+  "size_q50_q90_q99_max": [
+   "1.0e-05",
+   "2.4e-05",
+   "4.5e-04",
+   "9.9e-03"
+  ],
+  "n>=1e-3": 6,
+  "n>=1e-2": 0
+ },
+ "v5.0/census": {
+  "pools": 389,
+  "outsider_buys": 745,
+  "wallets": 15,
+  "pools_with_outsider_buy>=3e-5": 24,
+  "of_which_after_bot_buy1": 24,
+  "size_q50_q90_q99_max": [
+   "2.3e-05",
+   "2.4e-05",
+   "3.9e-04",
+   "9.9e-04"
+  ],
+  "n>=1e-3": 0,
+  "n>=1e-2": 0
+ },
+ "v2.433/census": {
+  "pools": 531,
+  "outsider_buys": 1853,
+  "wallets": 20,
+  "pools_with_outsider_buy>=3e-5": 490,
+  "of_which_after_bot_buy1": 197,
+  "size_q50_q90_q99_max": [
+   "9.0e-05",
+   "1.3e-04",
+   "2.4e-04",
+   "3.3e-03"
+  ],
+  "n>=1e-3": 2,
+  "n>=1e-2": 0
+ },
+ "v3.0/recent": {
+  "pools": 164,
+  "outsider_buys": 348,
+  "wallets": 12,
+  "pools_with_outsider_buy>=3e-5": 61,
+  "of_which_after_bot_buy1": 52,
+  "size_q50_q90_q99_max": [
+   "2.4e-05",
+   "5.1e-05",
+   "3.0e-03",
+   "4.0e-03"
+  ],
+  "n>=1e-3": 8,
+  "n>=1e-2": 0
+ },
+ "v5.0/recent": {
+  "pools": 70,
+  "outsider_buys": 56,
+  "wallets": 10,
+  "pools_with_outsider_buy>=3e-5": 15,
+  "of_which_after_bot_buy1": 15,
+  "size_q50_q90_q99_max": [
+   "2.4e-05",
+   "5.9e-05",
+   "4.0e-04",
+   "1.2e-03"
+  ],
+  "n>=1e-3": 1,
+  "n>=1e-2": 0
+ },
+ "v2.433/recent": {
+  "pools": 99,
+  "outsider_buys": 344,
+  "wallets": 10,
+  "pools_with_outsider_buy>=3e-5": 93,
+  "of_which_after_bot_buy1": 80,
+  "size_q50_q90_q99_max": [
+   "2.0e-05",
+   "2.4e-04",
+   "5.0e-04",
+   "5.0e-04"
+  ],
+  "n>=1e-3": 0,
+  "n>=1e-2": 0
+ }
+}

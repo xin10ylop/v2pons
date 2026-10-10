@@ -1,0 +1,350 @@
+{
+ "0xca04a1e3cd58fa1a31169015d135316a769cb06c06328dcf2990ae5e061f3ada": {
+  "ts": 1791439148,
+  "b0": 83086638,
+  "deployer": "0x0545c67e2b3b6c8b9f942db63e0c53b8996a775b",
+  "pull": {
+   "bn": 83087454,
+   "li": 5,
+   "dl": -29970000000000000000000,
+   "tl": -887200,
+   "tu": 887200,
+   "tx": "0x3f7da01e2748b7d77f56dd832d6cce7344f26ff949c3bb144f92ec40c3e7ecdb",
+   "sender": "58daec3116aae6d93017baaea7749052e8a04fa7",
+   "from": "0x0545c67e2b3b6c8b9f942db63e0c53b8996a775b",
+   "to": "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+   "nonce": 1,
+   "idx": 3,
+   "sel": "0xdd46508f"
+  },
+  "token": "bfa5204305209f0ec73ea4c230108bed5c80fd8f",
+  "net_pre": 0.36567170058821924,
+  "agg": {
+   "dust|pre": {
+    "buys": 1,
+    "in": 1.999584e-06,
+    "wallets": 1
+   },
+   "B|pre": {
+    "buys": 24,
+    "in": 0.5933856956783446,
+    "wallets": 23,
+    "sells": 5,
+    "out": 0.2278959946741254
+   },
+   "speck|pre": {
+    "buys": 1,
+    "in": 0.0001,
+    "wallets": 1
+   },
+   "outsider|pre": {
+    "buys": 1,
+    "in": 8e-05,
+    "wallets": 1
+   }
+  },
+  "outsiders": {
+   "0x0b410a5f0594fd4500acccd4b97b91da8987c40c": 1
+  }
+ },
+ "0x069688d0760fd7ef89f9eec672f8fbc0d3d3541e24e0c9b438706ab6adbc518b": {
+  "ts": 1791439525,
+  "b0": 83090333,
+  "deployer": "0xa8e0c37d1478851a927c7220bffaf01f42cf69b1",
+  "pull": null,
+  "token": "4ec57c9838627dd989b7136044e7a78945ea30ea",
+  "net_pre": 1.2265345429057797,
+  "agg": {
+   "dust|pre": {
+    "buys": 1,
+    "in": 1.998734e-06,
+    "wallets": 1
+   },
+   "B|pre": {
+    "buys": 232,
+    "in": 4.590936162297856,
+    "wallets": 23,
+    "sells": 153,
+    "out": 3.3649415618568197
+   },
+   "speck|pre": {
+    "buys": 1,
+    "in": 0.0001,
+    "wallets": 1,
+    "sells": 1,
+    "out": 0.000148531628911598
+   },
+   "outsider|pre": {
+    "buys": 3,
+    "in": 0.0010988999999999999,
+    "wallets": 3,
+    "sells": 1,
+    "out": 0.000512424640345287
+   }
+  },
+  "outsiders": {
+   "0xf7f00e4d08a546187ba4d9fbf66dd28a7b98df00": 1,
+   "0xb1103df28778545f7ec2121c1597725cd42c764d": 1,
+   "0xf5d706025bb7e0a02982e0c11ca3b3f4d02ab168": 2
+  }
+ },
+ "0x5736fabe46e92758c2aa08c6ebb1d5a8e99690d6cc1e3379ed65fa5d2811a83a": {
+  "ts": 1791457330,
+  "b0": 83263547,
+  "deployer": "0x516f7e9191cc8eeb88a29097f6c594b82f8d331f",
+  "pull": {
+   "bn": 83268938,
+   "li": 23,
+   "dl": -31591153825082109526668,
+   "tl": -887200,
+   "tu": 887200,
+   "tx": "0x562ff953f8c948af8fac5a096aae1829dd17cb894e0ac030fbff9c4a90e8fdce",
+   "sender": "58daec3116aae6d93017baaea7749052e8a04fa7",
+   "from": "0x516f7e9191cc8eeb88a29097f6c594b82f8d331f",
+   "to": "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+   "nonce": 1,
+   "idx": 5,
+   "sel": "0xdd46508f"
+  },
+  "token": "1286097740a6d4c3503272f55bfe5a43edb76ed7",
+  "net_pre": 4.46846653482973,
+  "agg": {
+   "dust|pre": {
+    "buys": 1,
+    "in": 1.998526e-06,
+    "wallets": 1
+   },
+   "B|pre": {
+    "buys": 189,
+    "in": 12.389635340137932,
+    "wallets": 20,
+    "sells": 88,
+    "out": 7.921170803834202
+   }
+  },
+  "outsiders": {}
+ },
+ "0xe27bfddf52e8841e7999df7855fd2b8b597dc4a0c34e08baaeb272913183e175": {
+  "ts": 1791469936,
+  "b0": 83386507,
+  "deployer": "0x1821144f9d9c8f773ba295641a5a730c9b8cb066",
+  "pull": {
+   "bn": 83396408,
+   "li": 39,
+   "dl": -58251209429504551704032,
+   "tl": -887200,
+   "tu": 887200,
+   "tx": "0xe3feca4d604f81cd7b4674e1cd381e87ba0e50079a17d8d7abbe5157976853bc",
+   "sender": "58daec3116aae6d93017baaea7749052e8a04fa7",
+   "from": "0x1821144f9d9c8f773ba295641a5a730c9b8cb066",
+   "to": "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+   "nonce": 6,
+   "idx": 3,
+   "sel": "0xdd46508f"
+  },
+  "token": "5f9215b061a3d337f72185724365176124c87efb",
+  "net_pre": 2.752796173533337,
+  "agg": {
+   "dust|pre": {
+    "buys": 1,
+    "in": 1.999552e-06,
+    "wallets": 1
+   },
+   "B|pre": {
+    "buys": 164,
+    "in": 4.598004865316424,
+    "wallets": 28,
+    "sells": 74,
+    "out": 2.000528440973818
+   },
+   "us|pre": {
+    "buys": 1,
+    "in": 0.0012,
+    "wallets": 1,
+    "sells": 1,
+    "out": 0.001088471991339004
+   },
+   "outsider|pre": {
+    "buys": 2,
+    "in": 0.05836824354996291,
+    "wallets": 2,
+    "sells": 1,
+    "out": 0.001035921919893609
+   },
+   "fresh|pre": {
+    "buys": 5,
+    "in": 0.0978739,
+    "wallets": 1
+   }
+  },
+  "outsiders": {
+   "0x2bf73b90f9ef46ff33627a0b615c6b2d25c8863d": 2,
+   "0xabb2acd3be814a80e502575d6c1dc5f789e9cd10": 1
+  }
+ },
+ "0xca847f040ed4a7050ef81706d548f4559af4a19cb595e45a3ef4111a79d3e01e": {
+  "ts": 1791525435,
+  "b0": 83927889,
+  "deployer": "0xb4d94437cf0426daae6af53cf6e4370c09acf0ca",
+  "pull": {
+   "bn": 83943158,
+   "li": 4,
+   "dl": -43545400445971328786846,
+   "tl": -887200,
+   "tu": 887200,
+   "tx": "0x08203e9efe001fc36b08a8723067826179bdd732666412dc5e954caa85278e64",
+   "sender": "58daec3116aae6d93017baaea7749052e8a04fa7",
+   "from": "0xb4d94437cf0426daae6af53cf6e4370c09acf0ca",
+   "to": "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+   "nonce": 1,
+   "idx": 3,
+   "sel": "0xdd46508f"
+  },
+  "token": "e4382e772a0620839f8266bbfeda354942f5d138",
+  "net_pre": 2.839828705621366,
+  "agg": {
+   "dust|pre": {
+    "buys": 1,
+    "in": 1.998926e-06,
+    "wallets": 1
+   },
+   "outsider|pre": {
+    "buys": 2,
+    "in": 0.0001,
+    "wallets": 2,
+    "sells": 2,
+    "out": 0.000156980927635725
+   },
+   "B|pre": {
+    "buys": 172,
+    "in": 5.244225018123431,
+    "wallets": 31,
+    "sells": 81,
+    "out": 2.4042246667790264
+   },
+   "speck|pre": {
+    "buys": 1,
+    "in": 0.00015,
+    "wallets": 1,
+    "sells": 1,
+    "out": 0.000266663721402635
+   }
+  },
+  "outsiders": {
+   "0xf7b47b17bebba4b3e9e55ac09e3179f6f4cda8d6": 2,
+   "0x0b410a5f0594fd4500acccd4b97b91da8987c40c": 2
+  }
+ },
+ "0x758c3c5fd7a80310372a6de43d93722be604de61d634e33cde2139e699c84c82": {
+  "ts": 1791537848,
+  "b0": 84048359,
+  "deployer": "0xa57fb285237f62ada4e9265e89321822e1719f98",
+  "pull": {
+   "bn": 84051123,
+   "li": 2,
+   "dl": -22338319095222899067126,
+   "tl": -887200,
+   "tu": 887200,
+   "tx": "0x96b8057ec3dab952adcf4709bb1846d1a408f1e03fb8d4c22e05147450de6be6",
+   "sender": "58daec3116aae6d93017baaea7749052e8a04fa7",
+   "from": "0xa57fb285237f62ada4e9265e89321822e1719f98",
+   "to": "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+   "nonce": 1,
+   "idx": 3,
+   "sel": "0xdd46508f"
+  },
+  "token": "dde8c95c4bc5449f90daeb3403d21e36355b7804",
+  "net_pre": 1.6498948408768401,
+  "agg": {
+   "dust|pre": {
+    "buys": 1,
+    "in": 1.998082e-06,
+    "wallets": 1
+   },
+   "outsider|pre": {
+    "buys": 2,
+    "in": 0.000165215898200441,
+    "wallets": 1,
+    "sells": 1,
+    "out": 0.000271951984385594
+   },
+   "B|pre": {
+    "buys": 148,
+    "in": 4.730638588276909,
+    "wallets": 31,
+    "sells": 129,
+    "out": 3.0804274393248994
+   },
+   "speck|pre": {
+    "buys": 1,
+    "in": 0.0001,
+    "wallets": 1,
+    "sells": 1,
+    "out": 0.000311570070984326
+   }
+  },
+  "outsiders": {
+   "0xf7b47b17bebba4b3e9e55ac09e3179f6f4cda8d6": 3
+  }
+ },
+ "0x2a928e9986997d8ef8c2906f9508be93bd17b1071fc0a2c3bbbc835abd629923": {
+  "ts": 1791542924,
+  "b0": 84097974,
+  "deployer": "0xae35895be6bd3d46df4745e1c5e13205e84ce75f",
+  "pull": {
+   "bn": 84116070,
+   "li": 22,
+   "dl": -31591153825082109526668,
+   "tl": -887200,
+   "tu": 887200,
+   "tx": "0x66c9448559211d6c569544c8e6cfec93cfe9526702b77b32c270744d5e647f02",
+   "sender": "58daec3116aae6d93017baaea7749052e8a04fa7",
+   "from": "0xae35895be6bd3d46df4745e1c5e13205e84ce75f",
+   "to": "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+   "nonce": 1,
+   "idx": 10,
+   "sel": "0xdd46508f"
+  },
+  "token": "a4c96ddde6be5df55cb2267980dc1f3b78ef3c40",
+  "net_pre": 3.6062390614069235,
+  "agg": {
+   "dust|pre": {
+    "buys": 1,
+    "in": 1.999114e-06,
+    "wallets": 1
+   },
+   "B|pre": {
+    "buys": 396,
+    "in": 9.850907280726307,
+    "wallets": 31,
+    "sells": 220,
+    "out": 6.2445701658148245
+   },
+   "us|pre": {
+    "buys": 1,
+    "in": 0.0012,
+    "wallets": 1,
+    "sells": 1,
+    "out": 0.001197921437025498
+   },
+   "speck|pre": {
+    "buys": 1,
+    "in": 5e-05,
+    "wallets": 1,
+    "sells": 1,
+    "out": 0.000176404500976559
+   },
+   "outsider|pre": {
+    "buys": 2,
+    "in": 0.000100136383430898,
+    "wallets": 2,
+    "sells": 1,
+    "out": 7.5863063988556e-05
+   }
+  },
+  "outsiders": {
+   "0xf7b47b17bebba4b3e9e55ac09e3179f6f4cda8d6": 2,
+   "0x330be80910b674167701d65f8c7371c53bdb41bc": 1
+  }
+ }
+}

@@ -1,0 +1,10 @@
+2001 blocks in 1 windows
+250/2001 blocks, through 82425049, 68s, req {'req': 44, '429': 18}
+500/2001 blocks, through 82425299, 80s, req {'req': 60, '429': 21}
+750/2001 blocks, through 82425549, 121s, req {'req': 85, '429': 33}
+1000/2001 blocks, through 82425799, 140s, req {'req': 105, '429': 40}
+1250/2001 blocks, through 82426049, 164s, req {'req': 127, '429': 49}
+1500/2001 blocks, through 82426299, 176s, req {'req': 143, '429': 52}
+1750/2001 blocks, through 82426549, 199s, req {'req': 165, '429': 61}
+2000/2001 blocks, through 82426799, 207s, req {'req': 179, '429': 62}
+2001/2001 blocks, through 82426800, 207s, req {'req': 179, '429': 62}

@@ -1,0 +1,21 @@
+10-08 05:59:08 B 0xca04a1e3 done 0s
+10-08 06:05:25 B 0x069688d0 done 38s
+10-08 11:02:10 B 0x5736fabe done 0s
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/ops/lch/trace.py", line 69, in <module>
+    t0 = time.time(); r = trace(L)
+                          ~~~~~^^^
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/ops/lch/trace.py", line 39, in trace
+    inc, lo = incoming(cur, before, maxback=20000 if hop < 2 else 12000)
+              ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/ops/lch/trace.py", line 18, in incoming
+    for bn, ts, t in bc.txs_desc(lo, before - 1):
+                     ~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/ops/lch/bc.py", line 60, in txs_desc
+    d = chunk(c)
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/ops/lch/bc.py", line 45, in chunk
+    d = _fetch(c * CH, (c + 1) * CH)
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/ops/lch/bc.py", line 29, in _fetch
+    else: raise RuntimeError("blocks %d" % s)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: blocks 83386100

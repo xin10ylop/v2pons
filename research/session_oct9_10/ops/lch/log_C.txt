@@ -1,0 +1,7 @@
+10-08 11:46:15 fresh 0x0fc66860 done 59s
+10-08 13:16:13 fresh 0x7cfa4232 done 70s
+10-08 14:59:03 copy 0xe95f3c88 done 256s
+10-08 15:11:03 copy 0x0501f847 done 59s
+10-08 15:48:10 copy 0x01de1153 done 58s
+10-08 16:33:10 copy 0xf2995cfa done 63s
+10-08 17:12:10 copy 0x4d573903 done 491s

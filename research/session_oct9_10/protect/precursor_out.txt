@@ -1,0 +1,179 @@
+
+== 10-08 13:19:55 us 0xab5a34c3 0.0012 +109 lag 5 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.061076, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 36, 'len': 676} | launch tx {'type': 2, 'gas': 1305231, 'maxFee_gwei': 0.0638, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 17, 'len': 644}
+   pull  -6 buy  -1 idx   7 0x91ecbb96 -> 0x88767899 0x3593564c 0.01585 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -5 buy  +0 idx  55 0xab5a34c3 -> 0x2abb5653 0x5ed06f60 0.00000 ['NAMES_TOKEN', 'US']
+   pull  +1 buy  +6 idx  52 0xab5a34c3 -> 0x2abb5653 0x137f1fdd 0.00000 ['NAMES_TOKEN', 'US']
+   crowd txs in the window (any pool): 1; in this pool: [(-6, '0x3593564c', 0.0159)]
+
+== 10-08 13:15:38 us 0xab5a34c3 0.0012 +143 lag 6 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.060884, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 57, 'len': 676} | launch tx {'type': 2, 'gas': 1305246, 'maxFee_gwei': 0.061576, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 12, 'len': 644}
+   pull  -7 buy  -1 idx  43 0x94e12c34 -> 0x88767899 0x3593564c 0.00529 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -6 buy  +0 idx  24 0x50a17677 -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   pull  -6 buy  +0 idx  52 0xab5a34c3 -> 0x2abb5653 0x5ed06f60 0.00000 ['NAMES_TOKEN', 'US']
+   pull  -3 buy  +3 idx   3 0x6e0fb625 -> 0x88767899 0x3593564c 0.03779 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  +0 buy  +6 idx  25 0x64386cda -> 0x88767899 0x3593564c 0.01708 ['NAMES_TOKEN', 'CROWD']
+   pull  +0 buy  +6 idx  54 0xab5a34c3 -> 0x2abb5653 0x137f1fdd 0.00000 ['NAMES_TOKEN', 'US']
+   crowd txs in the window (any pool): 3; in this pool: [(-7, '0x3593564c', 0.0053), (-3, '0x3593564c', 0.0378)]
+
+== 10-08 13:16:19 us 0xab5a34c3 0.0012 +56 lag 6 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.06094, 'prio_gwei': 0.02, 'nonce': 3, 'idx': 4, 'len': 676} | launch tx {'type': 2, 'gas': 1305261, 'maxFee_gwei': 0.062212, 'prio_gwei': 0.02, 'nonce': 2, 'idx': 5, 'len': 644}
+   pull  -8 buy  -2 idx   5 0x94e12c34 -> 0x88767899 0x3593564c 0.00440 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -6 buy  +0 idx  13 0xab5a34c3 -> 0x2abb5653 0x5ed06f60 0.00000 ['NAMES_TOKEN', 'US']
+   pull  -5 buy  +1 idx   9 0x6e0fb625 -> 0x88767899 0x3593564c 0.03960 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -5 buy  +1 idx  50 0x5a9ab259 -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   pull  -5 buy  +1 idx  57 0x4891d4f3 -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   pull  -3 buy  +3 idx  40 0x57e0017e -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   pull  -2 buy  +4 idx  29 0x64386cda -> 0x88767899 0x3593564c 0.03758 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  +1 buy  +7 idx  25 0xab5a34c3 -> 0x2abb5653 0x137f1fdd 0.00000 ['NAMES_TOKEN', 'US']
+   pull  +1 buy  +7 idx  59 0x14573999 -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   crowd txs in the window (any pool): 3; in this pool: [(-8, '0x3593564c', 0.0044), (-5, '0x3593564c', 0.0396), (-2, '0x3593564c', 0.0376)]
+
+== 10-08 13:16:56 us 0xab5a34c3 0.0012 +55 lag 6 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.06086, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 18, 'len': 676} | launch tx {'type': 2, 'gas': 1305261, 'maxFee_gwei': 0.061444, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 7, 'len': 644}
+   pull  -8 buy  -2 idx   8 0x7d7aa3dc -> 0x88767899 0x3593564c 0.00497 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -6 buy  +0 idx   8 0xab5a34c3 -> 0x2abb5653 0x5ed06f60 0.00000 ['NAMES_TOKEN', 'US']
+   pull  -5 buy  +1 idx   3 0x7754be40 -> 0x88767899 0x3593564c 0.02984 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -2 buy  +4 idx  35 0x86faebe1 -> 0x88767899 0x3593564c 0.06835 ['NAMES_TOKEN', 'CROWD']
+   pull  +1 buy  +7 idx  17 0xab5a34c3 -> 0x2abb5653 0x137f1fdd 0.00000 ['NAMES_TOKEN', 'US']
+   crowd txs in the window (any pool): 3; in this pool: [(-8, '0x3593564c', 0.005), (-5, '0x3593564c', 0.0298)]
+
+== 10-08 16:13:40 outsider 0x6d5a7ef9 0.002048 +871 lag 6 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.064564, 'prio_gwei': 0.02, 'nonce': 2, 'idx': 3, 'len': 676} | launch tx {'type': 2, 'gas': 1305443, 'maxFee_gwei': 0.064616, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 3, 'len': 644}
+   pull  -6 buy  +0 idx  13 0x6d5a7ef9 -> 0x6e2a35a7 0x0c307f76 0.00000 ['NAMES_TOKEN']
+   crowd txs in the window (any pool): 0; in this pool: []
+
+== 10-08 13:18:51 us 0xab5a34c3 0.0012 +59 lag 7 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.061136, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 22, 'len': 676} | launch tx {'type': 2, 'gas': 1305165, 'maxFee_gwei': 0.064452, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 47, 'len': 644}
+   pull  -8 buy  -1 idx  37 0x3298d9ca -> 0x88767899 0x3593564c 0.00300 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -7 buy  +0 idx  36 0xab5a34c3 -> 0x2abb5653 0x5ed06f60 0.00000 ['NAMES_TOKEN', 'US']
+   pull  -1 buy  +6 idx  41 0xab5a34c3 -> 0x2abb5653 0x137f1fdd 0.00000 ['NAMES_TOKEN', 'US']
+   crowd txs in the window (any pool): 1; in this pool: [(-8, '0x3593564c', 0.003)]
+
+== 10-08 14:49:02 outsider 0xabb2acd3 0.057378 +9894 lag 7 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.062932, 'prio_gwei': 0.02, 'nonce': 6, 'idx': 3, 'len': 676} | launch tx {'type': 2, 'gas': 1305377, 'maxFee_gwei': 0.064164, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 5, 'len': 644}
+   pull  -7 buy  +0 idx   8 0xabb2acd3 -> 0xccc88a9d 0x0a2b8f36 0.00000 ['NAMES_TOKEN']
+   pull  -4 buy  +3 idx   3 0x16903382 -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   pull  +0 buy  +7 idx   3 0x1821144f -> 0x58daec31 0xdd46508f 0.00000 ['DEPLOYER_SENDS', 'CROWD_this_pool']
+   crowd txs in the window (any pool): 1; in this pool: [(0, '0xdd46508f', 0.0)]
+
+== 10-08 13:17:15 us 0xab5a34c3 0.0012 +48 lag 8 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.060892, 'prio_gwei': 0.02, 'nonce': 3, 'idx': 8, 'len': 676} | launch tx {'type': 2, 'gas': 1305261, 'maxFee_gwei': 0.062256, 'prio_gwei': 0.02, 'nonce': 2, 'idx': 4, 'len': 644}
+   pull -10 buy  -2 idx  82 0x7d7aa3dc -> 0x88767899 0x3593564c 0.00541 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -8 buy  +0 idx  33 0xab5a34c3 -> 0x2abb5653 0x5ed06f60 0.00000 ['NAMES_TOKEN', 'US']
+   pull  -7 buy  +1 idx  48 0x7754be40 -> 0x88767899 0x3593564c 0.03006 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -2 buy  +6 idx  12 0x86faebe1 -> 0x88767899 0x3593564c 0.05990 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -1 buy  +7 idx  11 0xab5a34c3 -> 0x2abb5653 0x137f1fdd 0.00000 ['NAMES_TOKEN', 'US']
+   crowd txs in the window (any pool): 3; in this pool: [(-10, '0x3593564c', 0.0054), (-7, '0x3593564c', 0.0301), (-2, '0x3593564c', 0.0599)]
+
+== 10-08 11:04:02 outsider 0xcc4bc788 0.005879 +941 lag 11 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.060032, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 6, 'len': 676} | launch tx {'type': 2, 'gas': 1305287, 'maxFee_gwei': 0.060104, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 3, 'len': 644}
+   pull -11 buy  +0 idx   3 0xcc4bc788 -> 0xccc88a9d 0x0a2b8f36 0.00000 ['NAMES_TOKEN']
+   pull  -5 buy  +6 idx   3 0x2d8081eb -> 0xbba894d0 0x053bb775 0.00000 ['NAMES_TOKEN']
+   crowd txs in the window (any pool): 2; in this pool: []
+
+== 10-08 10:55:22 outsider 0xa2e8360c 0.000495 +2499 lag 12 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.06006, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 4, 'len': 676} | launch tx {'type': 2, 'gas': 1304101, 'maxFee_gwei': 0.0603, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 1, 'len': 644}
+   pull -12 buy  +0 idx   3 0xa2e8360c -> 0xf0b7eaaf 0x39ecce49 0.00050 ['NAMES_TOKEN']
+   pull  -9 buy  +3 idx   2 0xa2e8360c -> 0x39acfce3 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3']
+   pull  -3 buy  +9 idx   1 0xc216bfa5 -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   crowd txs in the window (any pool): 0; in this pool: []
+
+== 10-08 13:18:18 us 0xab5a34c3 0.0012 +53 lag 13 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.061172, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 29, 'len': 676} | launch tx {'type': 2, 'gas': 1305367, 'maxFee_gwei': 0.061544, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 54, 'len': 644}
+   pull -15 buy  -2 idx  43 0x42ae38e9 -> 0x88767899 0x3593564c 0.00603 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -13 buy  +0 idx  23 0xab5a34c3 -> 0x2abb5653 0x5ed06f60 0.00000 ['NAMES_TOKEN', 'US']
+   pull -12 buy  +1 idx  37 0x30ba291f -> 0x88767899 0x3593564c 0.03945 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -10 buy  +3 idx  41 0x6a301a69 -> 0x58daec31 0xac9650d8 3.00000 ['POSM 0xac9650d8']
+   pull  -6 buy  +7 idx  31 0xab5a34c3 -> 0x2abb5653 0x137f1fdd 0.00000 ['NAMES_TOKEN', 'US']
+   pull  +1 buy +14 idx  11 0x6a301a69 -> 0x58daec31 0x095ea7b3 0.00000 ['POSM 0x095ea7b3']
+   crowd txs in the window (any pool): 2; in this pool: [(-15, '0x3593564c', 0.006), (-12, '0x3593564c', 0.0395)]
+
+== 10-08 22:48:56 outsider 0x2b7be2fa 0.0002 +92 lag 13 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.063756, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 1, 'len': 676} | launch tx {'type': 2, 'gas': 1305422, 'maxFee_gwei': 0.06386, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 5, 'len': 644}
+   pull -14 buy  -1 idx   3 0x858b7c29 -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -14 buy  -1 idx   5 0x8700722d -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -13 buy  +0 idx   1 0x2b7be2fa -> 0x88767899 0x3593564c 0.00020 ['NAMES_TOKEN']
+   pull -13 buy  +0 idx   4 0xfc74382a -> 0x88767899 0x3593564c 0.06850 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -11 buy  +2 idx   1 0x858b7c29 -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -10 buy  +3 idx   2 0x46e9142e -> 0x0361c582 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull  -8 buy  +5 idx   1 0x46e9142e -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -7 buy  +6 idx   3 0xf1805d5f -> 0x88767899 0x3593564c 0.05370 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -5 buy  +8 idx   2 0x46e9142e -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   crowd txs in the window (any pool): 8; in this pool: [(-14, '0x87517c45', 0.0), (-14, '0x3593564c', 0.0), (-13, '0x3593564c', 0.0685), (-11, '0x3593564c', 0.0), (-8, '0x87517c45', 0.0), (-7, '0x3593564c', 0.0537), (-5, '0x3593564c', 0.0)]
+
+== 10-09 10:49:56 us 0xab5a34c3 0.0012 +61 lag 14 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.060104, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 1, 'len': 676} | launch tx {'type': 2, 'gas': 1306646, 'maxFee_gwei': 0.06026, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 13, 'len': 644}
+   pull -15 buy  -1 idx   2 0x295877ce -> 0x88767899 0x3593564c 0.04350 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -14 buy  +0 idx   1 0xab5a34c3 -> 0x2abb5653 0x5ed06f60 0.00000 ['NAMES_TOKEN', 'US']
+   pull -12 buy  +2 idx   1 0x75442507 -> 0x88767899 0x3593564c 0.01200 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -11 buy  +3 idx   2 0xab5a34c3 -> 0x2abb5653 0x137f1fdd 0.00000 ['NAMES_TOKEN', 'US']
+   pull  -9 buy  +5 idx   3 0xdc2e8661 -> 0x88767899 0x3593564c 0.05710 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -5 buy  +9 idx   2 0xb4d43149 -> 0x88767899 0x3593564c 0.00005 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -2 buy +12 idx   7 0xb4d43149 -> 0xd108a3a6 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull  -2 buy +12 idx  11 0xb4d43149 -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   crowd txs in the window (any pool): 6; in this pool: [(-15, '0x3593564c', 0.0435), (-12, '0x3593564c', 0.012), (-9, '0x3593564c', 0.0571), (-5, '0x3593564c', 0.0001), (-2, '0x87517c45', 0.0)]
+
+== 10-08 10:50:42 outsider 0xa90bd2d1 0.001167 +893 lag 16 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.060184, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 2, 'len': 676} | launch tx {'type': 2, 'gas': 1305185, 'maxFee_gwei': 0.060084, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 7, 'len': 644}
+   pull -16 buy  +0 idx   7 0xa90bd2d1 -> 0x00000000 0x765e827f 0.00000 ['NAMES_TOKEN']
+   pull -15 buy  +1 idx   2 0xc216bfa5 -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   crowd txs in the window (any pool): 0; in this pool: []
+
+== 10-09 10:18:57 outsider 0xa67d7eb4 0.001867 +792 lag 19 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.060072, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 1, 'len': 676} | launch tx {'type': 2, 'gas': 1307211, 'maxFee_gwei': 0.060024, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 5, 'len': 644}
+   pull -19 buy  +0 idx   5 0xa67d7eb4 -> 0xccc88a9d 0x0a2b8f36 0.00000 ['NAMES_TOKEN']
+   pull -15 buy  +4 idx   1 0x2d8081eb -> 0xbba894d0 0x0521a1c7 0.00000 ['NAMES_TOKEN']
+   pull  -7 buy +12 idx   1 0x5beed051 -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   crowd txs in the window (any pool): 0; in this pool: []
+
+== 10-09 00:23:16 outsider 0xebfae010 0.000495 +84 lag 23 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.06244, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 1, 'len': 676} | launch tx {'type': 2, 'gas': 1305515, 'maxFee_gwei': 0.062556, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 1, 'len': 644}
+   pull -25 buy  -2 idx   1 0x8700722d -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -23 buy  +0 idx   8 0xebfae010 -> 0x65050a9b 0x4d819a2a 0.00050 ['NAMES_TOKEN']
+   pull -23 buy  +0 idx   9 0x858b7c29 -> 0x88767899 0x3593564c 0.09590 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -20 buy  +3 idx   4 0x05042f81 -> 0x88767899 0x3593564c 0.01690 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -17 buy  +6 idx   3 0xfc74382a -> 0x1b59088f 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull -15 buy  +8 idx   3 0xfc74382a -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -14 buy  +9 idx   3 0xfe10b9c4 -> 0x88767899 0x3593564c 0.00740 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -12 buy +11 idx   1 0xfc74382a -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -11 buy +12 idx   1 0xa9ec7ecf -> 0x88767899 0x3593564c 0.04290 ['NAMES_TOKEN', 'CROWD_this_pool']
+   crowd txs in the window (any pool): 8; in this pool: [(-25, '0x3593564c', 0.0), (-23, '0x3593564c', 0.0959), (-20, '0x3593564c', 0.0169), (-15, '0x87517c45', 0.0), (-14, '0x3593564c', 0.0074), (-12, '0x3593564c', 0.0), (-11, '0x3593564c', 0.0429)]
+
+== 10-09 10:39:45 outsider 0x1e8d1215 0.000458 +1029 lag 25 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.060016, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 1, 'len': 676} | launch tx {'type': 2, 'gas': 1304723, 'maxFee_gwei': 0.060264, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 2, 'len': 644}
+   pull -25 buy  +0 idx   2 0x1e8d1215 -> 0x00000000 0x765e827f 0.00000 ['NAMES_TOKEN']
+   pull -12 buy +13 idx   9 0x909a0af4 -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   crowd txs in the window (any pool): 0; in this pool: []
+
+== 10-08 11:11:11 outsider 0xe46e6e86 0.000792 +948 lag 41 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.060156, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 3, 'len': 676} | launch tx {'type': 2, 'gas': 1305241, 'maxFee_gwei': 0.060212, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 5, 'len': 644}
+   pull -41 buy  +0 idx   1 0xe46e6e86 -> 0xf0b7eaaf 0x39ecce49 0.00080 ['NAMES_TOKEN']
+   pull -37 buy  +4 idx   1 0xcd578948 -> 0x58daec31 0xdd46508f 0.00000 ['POSM 0xdd46508f']
+   pull -36 buy  +5 idx   3 0xe46e6e86 -> 0x43a006c8 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3']
+   crowd txs in the window (any pool): 0; in this pool: []
+
+== 10-08 22:48:04 outsider 0x2b7be2fa 0.0002 +90 lag 51 | pull tx {'type': 2, 'gas': 1200000, 'maxFee_gwei': 0.063676, 'prio_gwei': 0.02, 'nonce': 1, 'idx': 7, 'len': 676} | launch tx {'type': 2, 'gas': 1305216, 'maxFee_gwei': 0.063752, 'prio_gwei': 0.02, 'nonce': 0, 'idx': 3, 'len': 644}
+   pull -52 buy  -1 idx   3 0xa9ec7ecf -> 0x4db671a8 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull -51 buy  +0 idx   1 0x2b7be2fa -> 0x88767899 0x3593564c 0.00020 ['NAMES_TOKEN']
+   pull -50 buy  +1 idx   3 0xa9ec7ecf -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -49 buy  +2 idx   2 0xe6c9a8e1 -> 0x88767899 0x3593564c 0.05970 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -48 buy  +3 idx   6 0x012755c0 -> 0x58daec31 0xac9650d8 3.00000 ['POSM 0xac9650d8']
+   pull -47 buy  +4 idx   1 0xa9ec7ecf -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -45 buy  +6 idx   6 0xfc74382a -> 0x88767899 0x3593564c 0.00960 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -44 buy  +7 idx   2 0x012755c0 -> 0x58daec31 0x095ea7b3 0.00000 ['POSM 0x095ea7b3']
+   pull -43 buy  +8 idx   3 0x75442507 -> 0x4db671a8 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull -41 buy +10 idx   2 0x75442507 -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -40 buy +11 idx   3 0xe6af9036 -> 0x4db671a8 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull -38 buy +13 idx   2 0xe6af9036 -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -38 buy +13 idx   3 0x75442507 -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -37 buy +14 idx   3 0xf901ed1e -> 0x4db671a8 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull -35 buy +16 idx   2 0xf901ed1e -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -35 buy +16 idx   3 0xe6af9036 -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -34 buy +17 idx   3 0x295877ce -> 0x88767899 0x3593564c 0.03900 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -32 buy +19 idx   3 0xf901ed1e -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -31 buy +20 idx   5 0xf1805d5f -> 0x88767899 0x3593564c 0.06270 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -31 buy +20 idx   6 0xf31115dd -> 0x58daec31 0xac9650d8 3.00000 ['POSM 0xac9650d8']
+   pull -28 buy +23 idx   3 0x858b7c29 -> 0x88767899 0x3593564c 0.05880 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -28 buy +23 idx   6 0x2b7be2fa -> 0x4db671a8 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3']
+   pull -26 buy +25 idx   1 0xf31115dd -> 0x58daec31 0x095ea7b3 0.00000 ['POSM 0x095ea7b3']
+   pull -26 buy +25 idx   2 0x2b7be2fa -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN']
+   pull -25 buy +26 idx   3 0xfc74382a -> 0x4db671a8 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull -23 buy +28 idx   1 0xfc74382a -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -22 buy +29 idx   4 0xe6c9a8e1 -> 0x4db671a8 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull -21 buy +30 idx   1 0xfc74382a -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -20 buy +31 idx   2 0xe6c9a8e1 -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -19 buy +32 idx   1 0x05042f81 -> 0x88767899 0x3593564c 0.05570 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -17 buy +34 idx   1 0xe6c9a8e1 -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -16 buy +35 idx   2 0x46e9142e -> 0x4db671a8 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull -14 buy +37 idx   1 0x46e9142e -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -13 buy +38 idx   1 0x860f9513 -> 0x88767899 0x3593564c 0.06210 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -12 buy +39 idx   6 0x46e9142e -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull -11 buy +40 idx   6 0x858b7c29 -> 0x4db671a8 0x095ea7b3 0.00000 ['TO_TOKEN 0x095ea7b3', 'CROWD']
+   pull  -9 buy +42 idx   1 0x858b7c29 -> 0x00000000 0x87517c45 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -8 buy +43 idx  12 0xb2960438 -> 0x88767899 0x3593564c 0.04490 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -6 buy +45 idx   2 0x858b7c29 -> 0x88767899 0x3593564c 0.00000 ['NAMES_TOKEN', 'CROWD_this_pool']
+   pull  -5 buy +46 idx  24 0x7b85403c -> 0x88767899 0x3593564c 0.04460 ['NAMES_TOKEN', 'CROWD_this_pool']
+   crowd txs in the window (any pool): 33; in this pool: [(-50, '0x87517c45', 0.0), (-49, '0x3593564c', 0.0597), (-47, '0x3593564c', 0.0), (-45, '0x3593564c', 0.0096), (-41, '0x87517c45', 0.0), (-38, '0x87517c45', 0.0), (-38, '0x3593564c', 0.0), (-35, '0x87517c45', 0.0), (-35, '0x3593564c', 0.0), (-34, '0x3593564c', 0.039), (-32, '0x3593564c', 0.0), (-31, '0x3593564c', 0.0627), (-28, '0x3593564c', 0.0588), (-23, '0x87517c45', 0.0), (-21, '0x3593564c', 0.0), (-20, '0x87517c45', 0.0), (-19, '0x3593564c', 0.0557), (-17, '0x3593564c', 0.0), (-14, '0x87517c45', 0.0), (-13, '0x3593564c', 0.0621), (-12, '0x3593564c', 0.0), (-9, '0x87517c45', 0.0), (-8, '0x3593564c', 0.0449), (-6, '0x3593564c', 0.0), (-5, '0x3593564c', 0.0446)]

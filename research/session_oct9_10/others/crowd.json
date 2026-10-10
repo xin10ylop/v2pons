@@ -1,0 +1,1278 @@
+{
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|0xac9650d8|len1444|sub1%|ts50|v2.433": {
+  "pools": 10,
+  "buys": 91,
+  "wallets": 30,
+  "recurring_wallets(>=2 pools)": 22,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+    86
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+    5
+   ]
+  ],
+  "inlen": [
+   [
+    324,
+    86
+   ],
+   [
+    580,
+    5
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.024,
+    46
+   ],
+   [
+    0.0251,
+    6
+   ],
+   [
+    0.0269,
+    6
+   ]
+  ],
+  "buyer_nonce_med": 35875,
+  "sig_1124_002": 0.0
+ },
+ "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e|0x2f53ef2f|len36|sub1%|ts200|v0": {
+  "pools": 6,
+  "buys": 59,
+  "wallets": 43,
+  "recurring_wallets(>=2 pools)": 6,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    24
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+    14
+   ],
+   [
+    "0x2a53386daf0bf3eedd9e715d162649764358c7b5",
+    4
+   ]
+  ],
+  "inlen": [
+   [
+    580,
+    13
+   ],
+   [
+    1124,
+    10
+   ],
+   [
+    1092,
+    9
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    30
+   ],
+   [
+    0.05,
+    17
+   ],
+   [
+    0.01,
+    3
+   ]
+  ],
+  "buyer_nonce_med": 1800,
+  "sig_1124_002": 0.0
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|0xf7020405|len196|1%|ts200|v0": {
+  "pools": 10,
+  "buys": 32,
+  "wallets": 12,
+  "recurring_wallets(>=2 pools)": 8,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    32
+   ]
+  ],
+  "inlen": [
+   [
+    1092,
+    32
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.01,
+    27
+   ],
+   [
+    0.0,
+    5
+   ]
+  ],
+  "buyer_nonce_med": 857.0,
+  "sig_1124_002": 0.0
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|0xac9650d8|len1444|1%|ts200|v3.0": {
+  "pools": 10,
+  "buys": 100,
+  "wallets": 68,
+  "recurring_wallets(>=2 pools)": 21,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+    100
+   ]
+  ],
+  "inlen": [
+   [
+    324,
+    100
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.024,
+    36
+   ],
+   [
+    0.0241,
+    31
+   ],
+   [
+    0.0242,
+    8
+   ]
+  ],
+  "buyer_nonce_med": 55391.5,
+  "sig_1124_002": 0.0
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|0xac9650d8|len1444|1%|ts200|v5.0": {
+  "pools": 10,
+  "buys": 91,
+  "wallets": 60,
+  "recurring_wallets(>=2 pools)": 23,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+    90
+   ],
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    1
+   ]
+  ],
+  "inlen": [
+   [
+    324,
+    90
+   ],
+   [
+    1124,
+    1
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0241,
+    31
+   ],
+   [
+    0.0245,
+    9
+   ],
+   [
+    0.024,
+    7
+   ]
+  ],
+  "buyer_nonce_med": 37183,
+  "sig_1124_002": 0.0
+ },
+ "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0|0xac9650d8|len2884|sub1%|ts25|v0.08": {
+  "pools": 9,
+  "buys": 90,
+  "wallets": 23,
+  "recurring_wallets(>=2 pools)": 14,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    81
+   ],
+   [
+    "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0",
+    9
+   ]
+  ],
+  "inlen": [
+   [
+    1156,
+    81
+   ],
+   [
+    2884,
+    9
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    90
+   ]
+  ],
+  "buyer_nonce_med": 532.0,
+  "sig_1124_002": 0.0
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|0xac9650d8|len2020|sub1%|ts60|v0": {
+  "pools": 10,
+  "buys": 74,
+  "wallets": 36,
+  "recurring_wallets(>=2 pools)": 14,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x75379d5d2ea4c98aeaa57f32e233707550ab03f0",
+    73
+   ],
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf",
+    1
+   ]
+  ],
+  "inlen": [
+   [
+    1540,
+    73
+   ],
+   [
+    1060,
+    1
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    73
+   ],
+   [
+    0.05,
+    1
+   ]
+  ],
+  "buyer_nonce_med": 2946.5,
+  "sig_1124_002": 0.0
+ },
+ "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0|0xac9650d8|len2916|sub1%|ts25|v0.08": {
+  "pools": 10,
+  "buys": 100,
+  "wallets": 24,
+  "recurring_wallets(>=2 pools)": 14,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    90
+   ],
+   [
+    "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0",
+    10
+   ]
+  ],
+  "inlen": [
+   [
+    1156,
+    90
+   ],
+   [
+    2916,
+    10
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    100
+   ]
+  ],
+  "buyer_nonce_med": 535.0,
+  "sig_1124_002": 0.0
+ },
+ "percontract:0|0x60808060|len3740|sub1%|ts25|v2.0": {
+  "pools": 10,
+  "buys": 95,
+  "wallets": 36,
+  "recurring_wallets(>=2 pools)": 22,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    77
+   ],
+   [
+    null,
+    10
+   ],
+   [
+    "0x9689992f5b5c09447f15906d8d11214944488341",
+    3
+   ]
+  ],
+  "inlen": [
+   [
+    1188,
+    67
+   ],
+   [
+    3740,
+    10
+   ],
+   [
+    1156,
+    9
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    89
+   ],
+   [
+    0.04,
+    3
+   ],
+   [
+    0.03,
+    1
+   ]
+  ],
+  "buyer_nonce_med": 30,
+  "sig_1124_002": 0.0
+ },
+ "percontract:0|0x60808060|len3740|sub1%|ts25|v3.5": {
+  "pools": 3,
+  "buys": 30,
+  "wallets": 29,
+  "recurring_wallets(>=2 pools)": 1,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    25
+   ],
+   [
+    null,
+    3
+   ],
+   [
+    "0x5ed3ab98d7ccceac5d92a05e380ebd7c743a9a46",
+    1
+   ]
+  ],
+  "inlen": [
+   [
+    1188,
+    22
+   ],
+   [
+    3740,
+    3
+   ],
+   [
+    1092,
+    2
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    29
+   ],
+   [
+    0.04,
+    1
+   ]
+  ],
+  "buyer_nonce_med": 194.5,
+  "sig_1124_002": 0.0
+ },
+ "0x8366a39cc670b4001a1121b8f6a443a643e40951|0x6276cbbe|len196|sub1%|ts1|v0": {
+  "pools": 10,
+  "buys": 92,
+  "wallets": 87,
+  "recurring_wallets(>=2 pools)": 3,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x410499a03705092ed02a231783d6e96332d84feb",
+    61
+   ],
+   [
+    "0x055de4ce27753aab185eb4387851ea12b00bb341",
+    20
+   ],
+   [
+    "0x3bcc0dec46c831e3c2f0b50d5b35c2ad31cff892",
+    10
+   ]
+  ],
+  "inlen": [
+   [
+    772,
+    91
+   ],
+   [
+    1092,
+    1
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    92
+   ]
+  ],
+  "buyer_nonce_med": 1643.0,
+  "sig_1124_002": 0.0
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|0xac9650d8|len2276|sub1%|ts1|v0": {
+  "pools": 10,
+  "buys": 68,
+  "wallets": 47,
+  "recurring_wallets(>=2 pools)": 12,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6",
+    53
+   ],
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    11
+   ],
+   [
+    "0x5ed3ab98d7ccceac5d92a05e380ebd7c743a9a46",
+    2
+   ]
+  ],
+  "inlen": [
+   [
+    484,
+    53
+   ],
+   [
+    1284,
+    7
+   ],
+   [
+    1124,
+    5
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0215,
+    15
+   ],
+   [
+    0.0,
+    14
+   ],
+   [
+    0.0234,
+    10
+   ]
+  ],
+  "buyer_nonce_med": 1033.0,
+  "sig_1124_002": 0.0
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|0xf7020405|len196|sub1%|ts1|v0": {
+  "pools": 3,
+  "buys": 6,
+  "wallets": 5,
+  "recurring_wallets(>=2 pools)": 1,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    6
+   ]
+  ],
+  "inlen": [
+   [
+    1092,
+    5
+   ],
+   [
+    1124,
+    1
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    6
+   ]
+  ],
+  "buyer_nonce_med": 698.0,
+  "sig_1124_002": 0.0
+ },
+ "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0|0xac9650d8|len3236|sub1%|ts25|v0.25": {
+  "pools": 7,
+  "buys": 17,
+  "wallets": 10,
+  "recurring_wallets(>=2 pools)": 2,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0",
+    7
+   ],
+   [
+    "0x5ed3ab98d7ccceac5d92a05e380ebd7c743a9a46",
+    5
+   ],
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    4
+   ]
+  ],
+  "inlen": [
+   [
+    3236,
+    7
+   ],
+   [
+    104,
+    5
+   ],
+   [
+    1092,
+    4
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    17
+   ]
+  ],
+  "buyer_nonce_med": 191,
+  "sig_1124_002": 0.0
+ },
+ "0x2a53386daf0bf3eedd9e715d162649764358c7b5|0x3d9ab7c9|len292|sub1%|ts200|v0.15": {
+  "pools": 5,
+  "buys": 50,
+  "wallets": 32,
+  "recurring_wallets(>=2 pools)": 9,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    24
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+    11
+   ],
+   [
+    "0x2a53386daf0bf3eedd9e715d162649764358c7b5",
+    5
+   ]
+  ],
+  "inlen": [
+   [
+    1124,
+    13
+   ],
+   [
+    580,
+    11
+   ],
+   [
+    292,
+    6
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    30
+   ],
+   [
+    0.05,
+    15
+   ],
+   [
+    0.01,
+    3
+   ]
+  ],
+  "buyer_nonce_med": 1774.0,
+  "sig_1124_002": 0.0
+ },
+ "percontract:0|0x60808060|len3708|sub1%|ts25|v2.5": {
+  "pools": 3,
+  "buys": 30,
+  "wallets": 13,
+  "recurring_wallets(>=2 pools)": 9,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    24
+   ],
+   [
+    null,
+    3
+   ],
+   [
+    "0x9689992f5b5c09447f15906d8d11214944488341",
+    2
+   ]
+  ],
+  "inlen": [
+   [
+    1188,
+    20
+   ],
+   [
+    3708,
+    3
+   ],
+   [
+    1156,
+    3
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    27
+   ],
+   [
+    0.04,
+    2
+   ],
+   [
+    0.08,
+    1
+   ]
+  ],
+  "buyer_nonce_med": 834.5,
+  "sig_1124_002": 0.0
+ },
+ "OURS-orig": {
+  "pools": 40,
+  "buys": 352,
+  "wallets": 57,
+  "recurring_wallets(>=2 pools)": 31,
+  "share_ours_crowd": 1.0,
+  "wallets_shared_with_ours": 57,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    342
+   ],
+   [
+    "0x2abb5653352f6b2f3b4f4261877cd02d9e05a957",
+    7
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+    3
+   ]
+  ],
+  "inlen": [
+   [
+    1124,
+    341
+   ],
+   [
+    260,
+    7
+   ],
+   [
+    580,
+    3
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.02,
+    341
+   ],
+   [
+    0.0,
+    8
+   ],
+   [
+    0.03,
+    2
+   ]
+  ],
+  "buyer_nonce_med": 1523.5,
+  "sig_1124_002": 0.969
+ },
+ "0x05d552391067389ee44fec3924157ed33f976000|0xce5494bb|len36|1%|ts200|v0": {
+  "pools": 10,
+  "buys": 53,
+  "wallets": 26,
+  "recurring_wallets(>=2 pools)": 12,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    52
+   ],
+   [
+    "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+    1
+   ]
+  ],
+  "inlen": [
+   [
+    1124,
+    52
+   ],
+   [
+    3588,
+    1
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    53
+   ]
+  ],
+  "buyer_nonce_med": 74,
+  "sig_1124_002": 0.0
+ },
+ "0xd0fd42bd8374ac659d3d81242d032211c2481055|0xac9650d8|len1444|sub1%|ts1|v0.0": {
+  "pools": 7,
+  "buys": 21,
+  "wallets": 10,
+  "recurring_wallets(>=2 pools)": 2,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    10
+   ],
+   [
+    "0x597dcbaa9edd2fc950d4f459492a223ff926b654",
+    6
+   ],
+   [
+    "0x550836793e385e488628d3d2a018ee6b01e126b8",
+    4
+   ]
+  ],
+  "inlen": [
+   [
+    1092,
+    10
+   ],
+   [
+    1572,
+    10
+   ],
+   [
+    580,
+    1
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.01,
+    10
+   ],
+   [
+    0.0002,
+    3
+   ],
+   [
+    0.0004,
+    3
+   ]
+  ],
+  "buyer_nonce_med": 2999,
+  "sig_1124_002": 0.0
+ },
+ "OURS-copy": {
+  "pools": 10,
+  "buys": 72,
+  "wallets": 72,
+  "recurring_wallets(>=2 pools)": 0,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    72
+   ]
+  ],
+  "inlen": [
+   [
+    1124,
+    72
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.02,
+    72
+   ]
+  ],
+  "buyer_nonce_med": 0.0,
+  "sig_1124_002": 1.0
+ },
+ "0xca11bde05977b3631167028862be2a173976ca11|0x174dea71|len2948|sub1%|ts25|v0.09": {
+  "pools": 3,
+  "buys": 23,
+  "wallets": 20,
+  "recurring_wallets(>=2 pools)": 3,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    10
+   ],
+   [
+    "0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd",
+    6
+   ],
+   [
+    "0xca11bde05977b3631167028862be2a173976ca11",
+    3
+   ]
+  ],
+  "inlen": [
+   [
+    1092,
+    9
+   ],
+   [
+    548,
+    6
+   ],
+   [
+    2948,
+    3
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    13
+   ],
+   [
+    0.264,
+    2
+   ],
+   [
+    4.0,
+    2
+   ]
+  ],
+  "buyer_nonce_med": 271,
+  "sig_1124_002": 0.0
+ },
+ "0xca11bde05977b3631167028862be2a173976ca11|0x174dea71|len2948|sub1%|ts25|v0.3": {
+  "pools": 9,
+  "buys": 55,
+  "wallets": 15,
+  "recurring_wallets(>=2 pools)": 9,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    14
+   ],
+   [
+    "0x00000000e91fc5bad977c0cc4ad60557c06886a2",
+    12
+   ],
+   [
+    "0xca11bde05977b3631167028862be2a173976ca11",
+    9
+   ]
+  ],
+  "inlen": [
+   [
+    1636,
+    12
+   ],
+   [
+    2948,
+    9
+   ],
+   [
+    580,
+    9
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    23
+   ],
+   [
+    0.5,
+    14
+   ],
+   [
+    0.44,
+    9
+   ]
+  ],
+  "buyer_nonce_med": 526,
+  "sig_1124_002": 0.0
+ },
+ "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|0xa80ac0c2|len1156|sub1%|ts200|v0.073": {
+  "pools": 4,
+  "buys": 8,
+  "wallets": 5,
+  "recurring_wallets(>=2 pools)": 2,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661",
+    4
+   ],
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    4
+   ]
+  ],
+  "inlen": [
+   [
+    1156,
+    7
+   ],
+   [
+    1124,
+    1
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    8
+   ]
+  ],
+  "buyer_nonce_med": 81.5,
+  "sig_1124_002": 0.0
+ },
+ "percontract:18300|0x9f28db91|len388|sub1%|ts60|v0": {
+  "pools": 3,
+  "buys": 3,
+  "wallets": 1,
+  "recurring_wallets(>=2 pools)": 1,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    3
+   ]
+  ],
+  "inlen": [
+   [
+    1092,
+    3
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    3
+   ]
+  ],
+  "buyer_nonce_med": 6,
+  "sig_1124_002": 0.0
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|0xac9650d8|len1444|sub1%|ts60|v0.0": {
+  "pools": 5,
+  "buys": 5,
+  "wallets": 3,
+  "recurring_wallets(>=2 pools)": 2,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x1e7634e5a89556640d83ad15075996ab2ab2a609",
+    3
+   ],
+   [
+    "0x2c8597970756e95b043f1e16ac76486b281508c4",
+    1
+   ],
+   [
+    "0xfe1323d6ed4bec319ea4c0389421166046ea23a1",
+    1
+   ]
+  ],
+  "inlen": [
+   [
+    196,
+    2
+   ],
+   [
+    36,
+    2
+   ],
+   [
+    136,
+    1
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.025,
+    4
+   ],
+   [
+    0.0,
+    1
+   ]
+  ],
+  "buyer_nonce_med": 2067,
+  "sig_1124_002": 0.0
+ },
+ "0x8366a39cc670b4001a1121b8f6a443a643e40951|0x6276cbbe|len196|sub1%|ts60|v0": {
+  "pools": 5,
+  "buys": 5,
+  "wallets": 3,
+  "recurring_wallets(>=2 pools)": 1,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x1e7634e5a89556640d83ad15075996ab2ab2a609",
+    4
+   ],
+   [
+    "0x62326e9ce9b468487f83ea21a8adb2ecd281fe98",
+    1
+   ]
+  ],
+  "inlen": [
+   [
+    196,
+    4
+   ],
+   [
+    2212,
+    1
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.025,
+    4
+   ],
+   [
+    0.0,
+    1
+   ]
+  ],
+  "buyer_nonce_med": 803,
+  "sig_1124_002": 0.0
+ },
+ "0xc763b1795dabe2d2336eba214d16969ebc5db27f|0xf0e9eabf|len1796|1%|ts200|v0": {
+  "pools": 10,
+  "buys": 22,
+  "wallets": 3,
+  "recurring_wallets(>=2 pools)": 3,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf",
+    22
+   ]
+  ],
+  "inlen": [
+   [
+    1060,
+    22
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.01,
+    22
+   ]
+  ],
+  "buyer_nonce_med": 179.0,
+  "sig_1124_002": 0.0
+ },
+ "0xc763b1795dabe2d2336eba214d16969ebc5db27f|0xf0e9eabf|len1828|1%|ts200|v0": {
+  "pools": 3,
+  "buys": 3,
+  "wallets": 1,
+  "recurring_wallets(>=2 pools)": 1,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf",
+    3
+   ]
+  ],
+  "inlen": [
+   [
+    1060,
+    3
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.01,
+    3
+   ]
+  ],
+  "buyer_nonce_med": 197,
+  "sig_1124_002": 0.0
+ },
+ "percontract:0|0x60808060|len3740|sub1%|ts25|v3.4": {
+  "pools": 4,
+  "buys": 27,
+  "wallets": 15,
+  "recurring_wallets(>=2 pools)": 10,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    19
+   ],
+   [
+    null,
+    4
+   ],
+   [
+    "0x9689992f5b5c09447f15906d8d11214944488341",
+    3
+   ]
+  ],
+  "inlen": [
+   [
+    1188,
+    14
+   ],
+   [
+    3740,
+    4
+   ],
+   [
+    1124,
+    3
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    23
+   ],
+   [
+    0.04,
+    3
+   ],
+   [
+    0.05,
+    1
+   ]
+  ],
+  "buyer_nonce_med": 466,
+  "sig_1124_002": 0.0
+ },
+ "percontract:0|0x60808060|len3708|sub1%|ts25|v3.4": {
+  "pools": 3,
+  "buys": 24,
+  "wallets": 13,
+  "recurring_wallets(>=2 pools)": 9,
+  "share_ours_crowd": 0.0,
+  "wallets_shared_with_ours": 0,
+  "to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    18
+   ],
+   [
+    null,
+    3
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+    1
+   ]
+  ],
+  "inlen": [
+   [
+    1188,
+    14
+   ],
+   [
+    3708,
+    3
+   ],
+   [
+    1092,
+    3
+   ]
+  ],
+  "prio_gwei": [
+   [
+    0.0,
+    21
+   ],
+   [
+    0.05,
+    1
+   ],
+   [
+    0.02,
+    1
+   ]
+  ],
+  "buyer_nonce_med": 248.0,
+  "sig_1124_002": 0.0
+ }
+}

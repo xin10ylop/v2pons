@@ -1,0 +1,65 @@
+83923571 84173570 all 37 non-original 0 {} 71s
+83673571 83923570 all 11 non-original 0 {} 6s
+83423571 83673570 all 32 non-original 28 {'0x8ea696db': 1, '0x65229b57': 1, '0x10c6eeea': 1} 18s
+83173571 83423570 all 61 non-original 21 {'0x816d73e4': 1, '0x10fec69a': 1, '0x82401eb5': 1} 5s
+82923571 83173570 all 2 non-original 0 {} 26s
+82673571 82923570 all 51 non-original 0 {} 38s
+82423571 82673570 all 76 non-original 15 {'0xaf73f3ea': 1, '0xd3d2656a': 1, '0xba3b5745': 1} 10s
+82173571 82423570 all 0 non-original 0 {} 27s
+81923571 82173570 all 31 non-original 0 {} 18s
+81673571 81923570 all 61 non-original 17 {'0xf687e631': 1, '0x3e93ffc3': 1, '0x478ef40b': 1} 27s
+81423571 81673570 all 79 non-original 25 {'0xe0cff2b6': 1, '0xd469215a': 1, '0x86280206': 1} 14s
+81173571 81423570 all 6 non-original 0 {} 14s
+80923571 81173570 all 80 non-original 11 {'0xe37c0b27': 1, '0xfb497785': 1, '0x55011a42': 1} 31s
+80673571 80923570 all 32 non-original 7 {'0x204646c6': 1, '0x3522052c': 1, '0x8f51e510': 1} 26s
+80423571 80673570 all 7 non-original 0 {} 19s
+80173571 80423570 all 42 non-original 0 {} 14s
+79923571 80173570 all 0 non-original 0 {} 27s
+79673571 79923570 all 19 non-original 19 {'0x09f4a84a': 1, '0x5fc704a1': 1, '0x7b501c23': 1} 10s
+79423571 79673570 all 44 non-original 0 {} 26s
+79173571 79423570 all 23 non-original 0 {} 26s
+78923571 79173570 all 13 non-original 0 {} 6s
+78673571 78923570 all 7 non-original 0 {} 14s
+78423571 78673570 all 42 non-original 0 {} 18s
+78173571 78423570 all 14 non-original 0 {} 10s
+77923571 78173570 all 27 non-original 22 {'0xc31f69d5': 1, '0xe9f811c8': 1, '0xe54dda93': 1} 18s
+77673571 77923570 all 25 non-original 0 {} 18s
+77423571 77673570 all 34 non-original 26 {'0x83fa9878': 1, '0x2ed0d435': 1, '0xb7054309': 1} 14s
+77173571 77423570 all 15 non-original 0 {} 10s
+76923571 77173570 all 17 non-original 0 {} 26s
+76673571 76923570 all 16 non-original 0 {} 10s
+76423571 76673570 all 97 non-original 68 {'0x070b3eac': 1, '0xa45f5d10': 1, '0xc1272810': 1} 6s
+76173571 76423570 all 12 non-original 11 {'0x4732a287': 1, '0xc93e7fd9': 1, '0x67c7daea': 1} 9s
+75923571 76173570 all 62 non-original 19 {'0xc7cee3ec': 1, '0x3da92f74': 1, '0x5cadd966': 1} 14s
+75673571 75923570 all 122 non-original 75 {'0xa5f3dafb': 1, '0x091fe0bf': 1, '0x19b9ca27': 1} 18s
+75423571 75673570 all 120 non-original 65 {'0x0b40de41': 1, '0x6cf4971b': 1, '0xfaf6501b': 1} 14s
+75173571 75423570 all 11 non-original 0 {} 14s
+74923571 75173570 all 76 non-original 64 {'0x59c3b79c': 1, '0x70329fd9': 1, '0x61ac7ce6': 1} 23s
+74673571 74923570 all 161 non-original 95 {'0xfd401b7f': 1, '0xfe18bae6': 1, '0x9ee82f39': 1} 15s
+74423571 74673570 all 85 non-original 63 {'0x2c893729': 1, '0xa0e0f809': 1, '0x16808784': 1} 34s
+74173571 74423570 all 109 non-original 43 {'0xc3b752c9': 1, '0xc3bb5786': 1, '0xb674678f': 1} 6s
+73923571 74173570 all 117 non-original 88 {'0x9c9edbf5': 1, '0xebc5df14': 1, '0xfbb3ee3f': 1} 22s
+73673571 73923570 all 136 non-original 82 {'0x09e8aa42': 1, '0x9a6c4065': 1, '0x3bcf9047': 1} 22s
+73423571 73673570 all 64 non-original 0 {} 14s
+73173571 73423570 all 85 non-original 32 {'0xa74ce875': 1, '0xfd4c5774': 1, '0xa9120697': 1} 5s
+72923571 73173570 all 29 non-original 19 {'0x80f1e3ed': 1, '0xfbf7e055': 1, '0x1c044490': 1} 10s
+72673571 72923570 all 68 non-original 0 {} 18s
+72423571 72673570 all 87 non-original 48 {'0x4c1ae24e': 1, '0x4a870f85': 1, '0x5768593f': 1} 10s
+72173571 72423570 all 147 non-original 99 {'0x47d2ffcd': 1, '0xe225920a': 1, '0xa6f4b825': 1} 6s
+71923571 72173570 all 127 non-original 108 {'0x508f0296': 1, '0x462039d8': 1, '0xcc0510e8': 1} 6s
+71673571 71923570 all 96 non-original 0 {} 10s
+71423571 71673570 all 174 non-original 109 {'0x172b49db': 1, '0xdf74f586': 1, '0x1e7a4dc5': 1} 10s
+71173571 71423570 all 152 non-original 151 {'0xb916f1c1': 1, '0x5f4d1348': 1, '0xa9affe0c': 1} 6s
+70923571 71173570 all 79 non-original 29 {'0x1676a0f0': 1, '0x7f202b77': 1, '0x39b53c5e': 1} 10s
+70673571 70923570 all 128 non-original 0 {} 10s
+70423571 70673570 all 51 non-original 30 {'0xf23b8fef': 1, '0xeb19688c': 1, '0xf0998763': 1} 10s
+70173571 70423570 all 39 non-original 23 {'0xd57874ed': 1, '0x600770d8': 1, '0x0f009022': 1} 5s
+69923571 70173570 all 110 non-original 15 {'0x1fb51494': 1, '0xf81efa0f': 1, '0x5ce247e4': 1} 13s
+69673571 69923570 all 124 non-original 37 {'0x24ac36dc': 1, '0xffeebf24': 1, '0x4355ee3e': 1} 5s
+69423571 69673570 all 74 non-original 53 {'0x9aafc086': 1, '0x64231eae': 1, '0x8037bf88': 1} 6s
+69173571 69423570 all 95 non-original 0 {} 10s
+68923571 69173570 all 81 non-original 0 {} 6s
+68673571 68923570 all 72 non-original 45 {'0x80048ea1': 1, '0x57e91184': 1, '0x04d5fedd': 1} 10s
+68423571 68673570 all 15 non-original 15 {'0x330a3e65': 1, '0x94f979f8': 1, '0x955a78e2': 1} 10s
+68173571 68423570 all 78 non-original 29 {'0x8039a0a1': 1, '0xc39d3032': 1, '0xd0e3dbff': 1} 5s
+67923571 68173570 all 150 non-original 78 {'0x0d92e6d7': 1, '0xad21f90b': 1, '0x2ccfba7a': 1} 5s

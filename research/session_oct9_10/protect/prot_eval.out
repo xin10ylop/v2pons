@@ -1,0 +1,104 @@
+crowd families Counter({'fresh': 798, 'A': 32, 'B': 31, 'speck': 1})
+
+1. buys by the 862 fingerprint wallets WITHOUT the fingerprint: 0; real-size 0
+   their gas limits: []
+   crowd real buys by gas limit: [(220000, 8194), (880000, 24)]
+
+2. original launches 94; with an engine trigger 88; trigger has the crowd fingerprint 88; feed-visible (value >= 0.0002) 88
+   trigger family: Counter({'A': 70, 'fresh': 11, 'B': 7})
+   trigger nonce <= 3: 11  by family Counter({'fresh': 11})
+   fresh-wallet triggers (nonce <= 3): launch, pull after T, our buy after T, pull after our buy
+     10-08 11:46:15 0x0fc66860 fam fresh nonce 0 T+90 pull T+47 ours T+None react None
+     10-08 11:51:26 0x93e998f1 fam fresh nonce 0 T+100 pull T+6207 ours T+None react None
+     10-08 12:07:29 0x149059c9 fam fresh nonce 0 T+67 pull T+9786 ours T+None react None
+     10-08 12:26:58 0xb166f963 fam fresh nonce 0 T+106 pull T+277 ours T+None react None
+     10-08 13:15:23 0x3a922cb2 fam fresh nonce 0 T+142 pull T+7 ours T+1 react 6
+     10-08 13:16:13 0x7cfa4232 fam fresh nonce 1 T+54 pull T+8 ours T+2 react 6
+     10-08 13:16:50 0xf36b6bac fam fresh nonce 0 T+53 pull T+8 ours T+2 react 6
+     10-08 13:17:10 0x7223753b fam fresh nonce 1 T+46 pull T+10 ours T+2 react 8
+     10-08 13:18:12 0x16df2826 fam fresh nonce 0 T+51 pull T+15 ours T+2 react 13
+     10-08 13:18:45 0x3578b252 fam fresh nonce 0 T+58 pull T+8 ours T+1 react 7
+     10-08 13:19:44 0x7490a93c fam fresh nonce 0 T+108 pull T+6 ours T+1 react 5
+   non-fresh triggers we did not trade: pull after T, lowest: [28, 63, 65, 68, 82, 85, 86, 89]; n 64
+   fresh triggers we did not trade: pull after T: [47, 277, 6207, 9786]
+   our trades (follow) by trigger kind: [time, fam, nonce, pull after our buy]
+     10-08 13:15:23 0x3a922cb2 fresh nonce     0 our buy T+1 pull after our buy 6
+     10-08 13:16:13 0x7cfa4232 fresh nonce     1 our buy T+2 pull after our buy 6
+     10-08 13:16:50 0xf36b6bac fresh nonce     0 our buy T+2 pull after our buy 6
+     10-08 13:17:10 0x7223753b fresh nonce     1 our buy T+2 pull after our buy 8
+     10-08 13:18:12 0x16df2826 fresh nonce     0 our buy T+2 pull after our buy 13
+     10-08 13:18:45 0x3578b252 fresh nonce     0 our buy T+1 pull after our buy 7
+     10-08 13:19:44 0x7490a93c fresh nonce     0 our buy T+1 pull after our buy 5
+     10-08 14:32:16 0xe27bfddf B     nonce  1682 our buy T+1 pull after our buy 9856
+     10-08 22:48:47 0xfd84a22b A     nonce  1675 our buy T+-44 pull after our buy 98
+     10-09 00:11:03 0xbe2a35f9 A     nonce   124 our buy T+-38 pull after our buy 270
+     10-09 10:48:44 0x2a928e99 B     nonce   350 our buy T+3 pull after our buy 18072
+     10-09 10:49:50 0x2749b5d1 A     nonce   288 our buy T+1 pull after our buy 14
+     10-09 10:50:40 0x43c1ce10 A     nonce   290 our buy T+1 pull after our buy 1904
+     10-09 11:14:05 0xe444ad37 A     nonce   381 our buy T+1 pull after our buy 2033
+     10-09 11:23:19 0xa5b3513d A     nonce   348 our buy T+1 pull after our buy 1895
+     10-09 11:27:42 0x03d90ea1 A     nonce   358 our buy T+1 pull after our buy 1504
+     10-09 11:31:17 0xda701818 A     nonce  1969 our buy T+1 pull after our buy 119
+     10-09 11:32:10 0x12c952fa A     nonce   415 our buy T+1 pull after our buy 16
+     10-09 11:36:14 0x2701d15a A     nonce   420 our buy T+1 pull after our buy 1609
+
+3. every non-crowd non-us buy before the pull (any size) -> first pull after (lag) by size bucket
+   <0.0001        n  248 launches 143  pull within 16 blocks:   1  within 60:  10  lowest lags [15, 21, 36, 38, 47, 53, 57, 59, 59, 60]
+   0.0001-0.0002  n    6 launches   5  pull within 16 blocks:   0  within 60:   0  lowest lags [80, 81, 306, 471, 794, 1736]
+   >=0.0002       n   15 launches  12  pull within 16 blocks:   6  within 60:  11  lowest lags [6, 7, 11, 12, 13, 16, 19, 23, 25, 41]
+   sub-0.0002 buys with a pull within 16 blocks after (and any real-size non-crowd/us buy within 16 before that pull):
+     10-09 11:32:18 0x12c952fa orig 0x0b410a5f 0.000080 ETH +80 lag 15 idle False | real non-crowd near the pull: [('us', 0.0012, 16)]
+   sub-0.0002 buyers: [('0xe71a69f4', 143), ('0x0b410a5f', 71), ('0xf7b47b17', 25), ('0xf6e55480', 6), ('0xb002e8a0', 3), ('0x85934797', 2), ('0x0312f701', 1), ('0x93b07902', 1)]
+
+4. non-crowd non-us buys near the trigger T (T-10..T+4), per triggered original launch
+   size >= 0.0000: launches with one in T-10..T-1:  3; in T..T+4: 26  (of 88)
+   size >= 0.0001: launches with one in T-10..T-1:  0; in T..T+4:  0  (of 88)
+   size >= 0.0002: launches with one in T-10..T-1:  0; in T..T+4:  0  (of 88)
+   real-size (>= 0.0002) non-crowd buy anywhere before the trigger: 0
+
+5. CANARY: outsider buys >= 0.0002 ETH (non-crowd, non-us, before the pull) -> the first pull after; feed-visible = tx value >= 0.0002
+   10-08 06:05:42 orig 0x069688d0 0xf7f00e4d 0.000351 value 0.000355 +  170 idle False lag None
+   10-08 06:05:42 orig 0x069688d0 0xb1103df2 0.000351 value 0.000355 +  170 idle False lag None
+   10-08 06:05:54 orig 0x069688d0 0xf5d70602 0.000396 value 0.000400 +  279 idle False lag None
+   10-08 10:50:43 orig 0xffdf1885 0xa90bd2d1 0.001167 value 0.000000 +  893 idle True  lag 16
+   10-08 10:55:24 orig 0xc9420b3f 0xa2e8360c 0.000495 value 0.000500 + 2499 idle True  lag 12
+   10-08 11:04:02 orig 0x994204ce 0xcc4bc788 0.005879 value 0.000000 +  941 idle True  lag 11
+   10-08 11:11:11 orig 0x9aca59f6 0xe46e6e86 0.000792 value 0.000800 +  948 idle True  lag 41
+   10-08 14:36:24 orig 0xe27bfddf 0x2bf73b90 0.000990 value 0.001000 + 2416 idle False lag 7485
+   10-08 14:49:10 orig 0xe27bfddf 0xabb2acd3 0.057378 value 0.000000 + 9894 idle True  lag 7
+   10-08 16:13:39 copy 0x75d98983 0x6d5a7ef9 0.002048 value 0.000000 +  871 idle True  lag 6
+   10-08 22:48:04 orig 0xf87c9471 0x2b7be2fa 0.000200 value 0.000200 +   90 idle False lag 51
+   10-08 22:48:56 orig 0xfd84a22b 0x2b7be2fa 0.000200 value 0.000200 +   92 idle False lag 13
+   10-09 00:23:16 orig 0x4e4dc69e 0xebfae010 0.000495 value 0.000500 +   84 idle False lag 23
+   10-09 10:18:56 orig 0x7381c772 0xa67d7eb4 0.001867 value 0.000000 +  792 idle True  lag 19
+   10-09 10:39:45 orig 0xeb3c94e6 0x1e8d1215 0.000458 value 0.000000 + 1029 idle True  lag 25
+   canary events (feed-visible, pull within 60): 5 lags [12, 13, 23, 41, 51]
+   all (incl. value-0 contract buys) within 60: [6, 7, 11, 12, 13, 16, 19, 23, 25, 41, 51]
+   canary lag <= 3: 0 (feed-visible), 0 (all)
+   canary lag <= 4: 0 (feed-visible), 0 (all)
+   canary lag <= 5: 0 (feed-visible), 0 (all)
+   canary lag <= 6: 0 (feed-visible), 1 (all)
+   chance: crowd real buys on 122 scheduled-pull launches with the pull within 0..4 blocks after them: 0 of 6998 (0.00%)
+   chance: crowd real buys on 122 scheduled-pull launches with the pull within 0..6 blocks after them: 7 of 6998 (0.10%)
+   scheduled launch life (launch -> pull): median 1477 blocks; a uniformly timed buy has the pull within 4 blocks with p = 0.0096
+   outsider real-size buys per hour (feed-visible): 0.25 over 36.0 h; canary events (lag <= 60) per hour 0.14
+
+6. our live trades: pull after our buy, sell after our buy, margin (pull - sell)
+   10-08 13:15:38 0x3a922cb2 buy T+1 sell B+6 pull B+6 margin 0 ret +0.0753 trig ('0x94e12c34', 0)
+   10-08 13:16:19 0x7cfa4232 buy T+2 sell B+None pull B+6 margin None ret -1.0000 trig ('0x94e12c34', 1)
+   10-08 13:16:56 0xf36b6bac buy T+2 sell B+None pull B+6 margin None ret -1.0000 trig ('0x7d7aa3dc', 0)
+   10-08 13:17:15 0x7223753b buy T+2 sell B+7 pull B+8 margin 1 ret +0.1908 trig ('0x7d7aa3dc', 1)
+   10-08 13:18:17 0x16df2826 buy T+2 sell B+7 pull B+13 margin 6 ret +0.0788 trig ('0x42ae38e9', 0)
+   10-08 13:18:51 0x3578b252 buy T+1 sell B+6 pull B+7 margin 1 ret -0.0048 trig ('0x3298d9ca', 0)
+   10-08 13:19:56 0x7490a93c buy T+1 sell B+None pull B+5 margin None ret -1.0000 trig ('0x91ecbb96', 0)
+   10-08 22:48:48 0xfd84a22b buy T+None sell B+3 pull B+98 margin 95 ret -0.0018 trig None
+   10-09 00:11:04 0xbe2a35f9 buy T+None sell B+3 pull B+270 margin 267 ret -0.0032 trig None
+   10-09 10:48:47 0x2a928e99 buy T+3 sell B+3 pull B+18072 margin 18069 ret -0.0017 trig ('0x4c45af68', 350)
+   10-09 10:49:56 0x2749b5d1 buy T+1 sell B+3 pull B+14 margin 11 ret +0.0011 trig ('0x295877ce', 288)
+   10-09 10:50:46 0x43c1ce10 buy T+1 sell B+3 pull B+1904 margin 1901 ret +0.0390 trig ('0x295877ce', 290)
+   10-09 11:14:11 0xe444ad37 buy T+1 sell B+3 pull B+2033 margin 2030 ret +0.0620 trig ('0x8700722d', 381)
+   10-09 11:23:26 0xa5b3513d buy T+1 sell B+2 pull B+1895 margin 1893 ret +0.0842 trig ('0x295877ce', 348)
+   10-09 11:27:48 0x03d90ea1 buy T+1 sell B+3 pull B+1504 margin 1501 ret +0.0850 trig ('0x295877ce', 358)
+   10-09 11:31:24 0xda701818 buy T+1 sell B+2 pull B+119 margin 117 ret +0.0628 trig ('0xdc2e8661', 1969)
+   10-09 11:32:18 0x12c952fa buy T+1 sell B+3 pull B+16 margin 13 ret -0.0098 trig ('0x8700722d', 415)
+   10-09 11:36:19 0x2701d15a buy T+1 sell B+3 pull B+1609 margin 1606 ret +0.0462 trig ('0x8700722d', 420)

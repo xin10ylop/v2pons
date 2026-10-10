@@ -1,0 +1,5 @@
+1679 value txs, 593 plain; dispatchers 0, sweeps 0, launch wallets 0
+
+plain transfers crossing the loop boundary (loop = crowd + dispatchers + sweeps + launch wallets):
+
+launch wallets' calls with value (launch / buys):

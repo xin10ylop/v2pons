@@ -1,0 +1,22 @@
+head 84490227 fresh launches after 84479888 : 2 of 43 ETH inits
+inwin 0xc55534ace9 82978489 blocks 46 txs 234 logs 171
+inwin 0xd04ffa56e8 83223712 blocks 46 txs 608 logs 6
+inwin 0x5e1096454f 83270467 blocks 46 txs 554 logs 13
+inwin 0xbe1c685568 83481713 blocks 46 txs 478 logs 100
+inwin 0xe47e2cd02e 83654583 blocks 46 txs 281 logs 13
+inwin 0x5b5a591665 83755000 blocks 46 txs 333 logs 19
+inwin 0x1b5b095efc 83874216 blocks 46 txs 206 logs 142
+inwin 0xe1cad8c9f1 84063225 blocks 46 txs 355 logs 181
+inwin 0x42d80e6780 84222257 blocks 46 txs 709 logs 184
+inwin 0x6c47407c0b 84234302 blocks 46 txs 446 logs 136
+inwin 0x8fc0b7aa00 84230675 blocks 46 txs 345 logs 138
+inwin 0x3ed14f5888 84229868 blocks 46 txs 805 logs 53
+fwd 0x5ba203562c 84239699 blocks 46 txs 316 logs 182
+fwd 0xc352bb3307 84291940 blocks 46 txs 455 logs 6
+fwd 0x11649b66a6 84324393 blocks 46 txs 354 logs 106
+fwd 0x43dfadefb2 84367534 blocks 46 txs 495 logs 36
+fwd 0x2206adf6b8 84414464 blocks 46 txs 264 logs 11
+fwd 0x79beccb71f 84451737 blocks 46 txs 265 logs 15
+fresh 0x4dd985633c 84483845 blocks 46 txs 283 logs 99
+fresh 0x7371d5ab53 84487524 blocks 46 txs 221 logs 169
+done 20

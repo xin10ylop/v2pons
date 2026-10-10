@@ -1,0 +1,19 @@
+3843 blocks in 3 windows
+250/3843 blocks, through 82582049, 37s, req {'req': 37, '429': 11}
+500/3843 blocks, through 82582299, 51s, req {'req': 54, '429': 15}
+750/3843 blocks, through 82582549, 62s, req {'req': 69, '429': 17}
+1000/3843 blocks, through 82582799, 77s, req {'req': 87, '429': 22}
+1250/3843 blocks, through 82583049, 90s, req {'req': 104, '429': 26}
+1271/3843 blocks, through 82583070, 90s, req {'req': 104, '429': 26}
+1521/3843 blocks, through 82795749, 106s, req {'req': 122, '429': 31}
+1771/3843 blocks, through 82795999, 114s, req {'req': 136, '429': 32}
+2021/3843 blocks, through 82796249, 121s, req {'req': 150, '429': 33}
+2271/3843 blocks, through 82796499, 128s, req {'req': 164, '429': 34}
+2521/3843 blocks, through 82796749, 139s, req {'req': 179, '429': 36}
+2582/3843 blocks, through 82796810, 146s, req {'req': 193, '429': 37}
+2832/3843 blocks, through 82839649, 176s, req {'req': 227, '429': 45}
+3082/3843 blocks, through 82839899, 190s, req {'req': 243, '429': 48}
+3332/3843 blocks, through 82840149, 198s, req {'req': 257, '429': 49}
+3582/3843 blocks, through 82840399, 207s, req {'req': 271, '429': 50}
+3832/3843 blocks, through 82840649, 214s, req {'req': 284, '429': 50}
+3843/3843 blocks, through 82840660, 214s, req {'req': 284, '429': 50}

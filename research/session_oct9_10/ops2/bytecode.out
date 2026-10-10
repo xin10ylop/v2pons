@@ -1,0 +1,10 @@
+launcher runtime 6984 bytes; sections: launcher code 0-3607 (INVALID at 3607), embedded token initcode 3608-5128, token runtime 5129-6845, token CBOR 6846-6930, launcher CBOR 6931-6983
+  selector 2fcb9108 launch(bytes32 salt,string name,string symbol,string uri,uint256 supply,uint256 tokenAmount,uint24 fee,int24 tickSpacing,uint160 sqrtPriceX96,int24 tickLower,int24 tickUpper,uint256 liquidity,address recipient) payable
+  selector 54bc5062 predictTokenAddress(bytes32,string,string,string,uint256) view
+  selector dc4c90d3 poolManager() view
+  selector 791b98bc positionManager() view
+  selector 12261ee7 permit2() view
+opcodes in the launcher's own code: {'CALLER': 0, 'ORIGIN': 0, 'SLOAD': 0, 'SSTORE': 0, 'TLOAD': 0, 'TSTORE': 0, 'DELEGATECALL': 0, 'SELFDESTRUCT': 0, 'CALL': 6, 'STATICCALL': 2, 'CREATE2': 1, 'LOG4': 1}
+PUSH20/32 constants in launcher code: ['000000000022d473030f116ddee9f6b43ac78ba3', '58daec3116aae6d93017baaea7749052e8a04fa7', '8366a39cc670b4001a1121b8f6a443a643e40951']
+address 0x01 (ecrecover) referenced as call target? -> STATICCALLs at [1419, 2117] (nextTokenId on PositionManager, balanceOf on token)
+copy 0x816d73e4 (hash 2793923d) vs original (hash 42544ef5): 64 differing bytes, all in [6856, 6941] = the two solc metadata (ipfs) hashes

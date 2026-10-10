@@ -1,0 +1,16 @@
+launches 7485 distinct buyers 75447 buyers in >=3 launches 755
+components with >=3 launches: 14 covering 1060 launches; singletons/small: 6425
+L000 n=   3 blocks 56194364-56203316 core= 12 senders=1 nonce0=1 pulled=3 vals=[(0.49, 2), (0.47, 1)]
+L001 n=   3 blocks 58871806-58885949 core= 20 senders=3 nonce0=3 pulled=3 vals=[(0.7, 1), (0.94, 1), (1.2, 1)]
+L002 n=   3 blocks 59365531-59367042 core=  8 senders=1 nonce0=0 pulled=3 vals=[(1.2, 3)]
+L003 n=   7 blocks 59383095-59462169 core= 18 senders=7 nonce0=7 pulled=7 vals=[(0.8, 3), (0.5, 1), (0.9, 1), (0.75, 1)]
+L004 n=  58 blocks 59575099-61224296 core= 24 senders=57 nonce0=56 pulled=58 vals=[(1.0, 49), (1.5, 1), (0.98, 1), (0.5, 1)]
+L005 n=   3 blocks 59676157-68948656 core=  5 senders=3 nonce0=3 pulled=3 vals=[(1.0, 2), (1.5, 1)]
+L006 n= 245 blocks 60430173-84125769 core= 52 senders=245 nonce0=245 pulled=244 vals=[(3.17, 4), (4.6, 3), (4.12, 3), (3.36, 3)]
+L007 n=   8 blocks 62074911-69918838 core= 33 senders=8 nonce0=8 pulled=4 vals=[(3.0, 4), (2.0, 3), (1.0, 1)]
+L008 n=  13 blocks 64513570-64545429 core= 54 senders=12 nonce0=12 pulled=13 vals=[(0.4, 2), (0.9, 1), (0.75, 1), (0.85, 1)]
+L009 n=  69 blocks 64592966-69038020 core= 50 senders=69 nonce0=69 pulled=69 vals=[(1.0, 11), (1.5, 10), (2.0, 8), (1.25, 3)]
+L010 n= 170 blocks 66065037-84097974 core= 24 senders=170 nonce0=169 pulled=169 vals=[(1.0, 49), (0.9, 13), (0.8, 12), (0.82, 8)]
+L011 n=  63 blocks 67129849-70770455 core= 39 senders=61 nonce0=61 pulled=63 vals=[(3.0, 6), (2.0, 3), (1.5, 3), (1.0, 3)]
+L012 n= 410 blocks 68851543-79550702 core= 51 senders=410 nonce0=410 pulled=405 vals=[(1.2, 48), (1.0, 29), (1.4, 28), (1.1, 24)]
+L013 n=   5 blocks 80675623-80834199 core= 38 senders=5 nonce0=5 pulled=5 vals=[(1.21, 1), (2.63, 1), (2.47, 1), (2.09, 1)]

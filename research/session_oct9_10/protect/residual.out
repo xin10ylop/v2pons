@@ -1,0 +1,16 @@
+f (our reacted full-stake trade before any canary), cap 10, p_react 0.2: 0.17
+f (our reacted full-stake trade before any canary), cap 10, p_react 1.0: 0.21
+f (our reacted full-stake trade before any canary), cap None, p_react 0.2: 0.38
+f (our reacted full-stake trade before any canary), cap None, p_react 1.0: 0.56
+
+stake | profit/trade | profit/day (10) | one catch | days of profit per catch | residual/day at q=1/30, 1/7 (f=0.56) | break-even q/day
+0.03  | $  1.90 | $   19.0 | $    77 |  4.1 | $   1.4, $   6.2 | 0.44
+0.1   | $  5.99 | $   59.9 | $   257 |  4.3 | $   4.8, $  20.6 | 0.42
+0.3   | $ 15.53 | $  155.3 | $   771 |  5.0 | $  14.4, $  61.8 | 0.36
+1.0   | $ 35.49 | $  354.9 | $  2570 |  7.2 | $  48.1, $ 206.1 | 0.25
+
+current regime, exchangeable lags: P(next reaction is a new minimum) all 0.048 (n=20), A/B launches 0.077 (n=12)
+  0.03: per A/B trade <= 0.2 x 0.077 x stake = $1.19 (upper bound) vs profit $1.90
+  0.1: per A/B trade <= 0.2 x 0.077 x stake = $3.95 (upper bound) vs profit $5.99
+  0.3: per A/B trade <= 0.2 x 0.077 x stake = $11.86 (upper bound) vs profit $15.53
+  1.0: per A/B trade <= 0.2 x 0.077 x stake = $39.54 (upper bound) vs profit $35.49

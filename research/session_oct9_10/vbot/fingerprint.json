@@ -1,0 +1,164 @@
+{
+ "levels": {
+  "L1 to=PositionManager, selector ac9650d8": {
+   "match": 3338,
+   "family": 718,
+   "non_family": 2620,
+   "non_family_kinds": [
+    [
+     "fee 2500 ts 50 value 2.433 len 1444",
+     532
+    ],
+    [
+     "fee 10000 ts 200 value 5.0 len 1444",
+     390
+    ],
+    [
+     "fee 100 ts 1 value 0 len 2276",
+     190
+    ],
+    [
+     "fee 883131 ts 200 value 0.001 len 1444",
+     67
+    ],
+    [
+     "fee 790000 ts 60 value 0.0 len 1444",
+     19
+    ],
+    [
+     "fee 3000 ts 60 value 0 len 2020",
+     16
+    ]
+   ]
+  },
+  "L2 + calldata 1,444 bytes": {
+   "match": 1967,
+   "family": 718,
+   "non_family": 1249,
+   "non_family_kinds": [
+    [
+     "fee 2500 ts 50 value 2.433 len 1444",
+     532
+    ],
+    [
+     "fee 10000 ts 200 value 5.0 len 1444",
+     390
+    ],
+    [
+     "fee 883131 ts 200 value 0.001 len 1444",
+     67
+    ],
+    [
+     "fee 790000 ts 60 value 0.0 len 1444",
+     19
+    ],
+    [
+     "fee 10000 ts 200 value 0 len 1444",
+     9
+    ],
+    [
+     "fee 3000 ts 60 value 0.0 len 1444",
+     6
+    ]
+   ]
+  },
+  "L3 + the 1,444 layout (init + mint/settle_pair/sweep)": {
+   "match": 1967,
+   "family": 718,
+   "non_family": 1249,
+   "non_family_kinds": [
+    [
+     "fee 2500 ts 50 value 2.433 len 1444",
+     532
+    ],
+    [
+     "fee 10000 ts 200 value 5.0 len 1444",
+     390
+    ],
+    [
+     "fee 883131 ts 200 value 0.001 len 1444",
+     67
+    ],
+    [
+     "fee 790000 ts 60 value 0.0 len 1444",
+     19
+    ],
+    [
+     "fee 10000 ts 200 value 0 len 1444",
+     9
+    ],
+    [
+     "fee 3000 ts 60 value 0.0 len 1444",
+     6
+    ]
+   ]
+  },
+  "L4 + key: ETH/token, fee 1%, ts 200, no hook, full range": {
+   "match": 1108,
+   "family": 718,
+   "non_family": 390,
+   "non_family_kinds": [
+    [
+     "fee 10000 ts 200 value 5.0 len 1444",
+     390
+    ]
+   ]
+  },
+  "L5 + value 3.0 ETH": {
+   "match": 718,
+   "family": 718,
+   "non_family": 0,
+   "non_family_kinds": []
+  },
+  "L6 + sqrtP and liquidity pinned (strict)": {
+   "match": 718,
+   "family": 718,
+   "non_family": 0,
+   "non_family_kinds": []
+  },
+  "L6' strict key/price/liquidity, any value": {
+   "match": 718,
+   "family": 718,
+   "non_family": 0,
+   "non_family_kinds": []
+  }
+ },
+ "behaviour": {
+  "b1": [
+   6,
+   8,
+   8,
+   9,
+   10,
+   13,
+   2280
+  ],
+  "b2": [
+   13,
+   29,
+   30,
+   33,
+   36,
+   39,
+   2320
+  ],
+  "s1": [
+   33,
+   37,
+   40,
+   44,
+   47,
+   52,
+   2423
+  ],
+  "pull": [
+   18,
+   120,
+   161,
+   468,
+   1456,
+   2465,
+   2998
+  ]
+ }
+}

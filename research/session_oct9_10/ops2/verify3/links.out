@@ -1,0 +1,33 @@
+BAD A1 main-loop deployer payout -> sweep: blk 84070875 0x1763ea0e0cf584c0879164cc3bade37840993376 -> 0x155f7db68157c145c07b7d282fd4a5aae6b72b66 3.242719 ETH nonce 2 status 1 sel 0x
+BAD A2 main-loop sweep -> dispatcher: blk 84070896 0x155f7db68157c145c07b7d282fd4a5aae6b72b66 -> 0xe777da080ee8cf089fa6cf721e95362518ee78d7 7.015085 ETH nonce 0 status 1 sel 0x
+OK  A3 main-loop dispatcher n0 -> next deployer: blk 84070905 0xe777da080ee8cf089fa6cf721e95362518ee78d7 -> 0xad3a11853c6a45d61f95d6007e0e1c8828555a59 2.700000 ETH nonce 0 status 1 sel 0x
+OK  A4 dispatcher n1 -> crowd A 0x8700722d: blk 84070913 0xe777da080ee8cf089fa6cf721e95362518ee78d7 -> 0x8700722d7ac8d14666c07574317b4e7fb3dc8ae1 0.125606 ETH nonce 1 status 1 sel 0x
+OK  A5 main-loop dispatcher n0 -> latest deployer: blk 84123590 0x99b5ef5bc5fea5485a230a405aff7da38122d345 -> 0xfff2673997309850da7d84394ff807877754c7a6 2.110000 ETH nonce 0 status 1 sel 0x
+OK  A6 latest launch: blk 84125769 0xfff2673997309850da7d84394ff807877754c7a6 -> 0x3194e32622c5d860a0572c74edda99dcfd8fc827 2.060000 ETH nonce 0 status 1 sel 0x2fcb9108
+OK  A7 deployer funding of 0x1763ea0e: blk 84069229 0xc84b18990941fcff11f5d1c50bc34f48b4f20b19 -> 0x1763ea0e0cf584c0879164cc3bade37840993376 2.750000 ETH nonce 0 status 1 sel 0x
+OK  R1 restart: A trading wallet -> restart sweep: blk 83647788 0xb63b68dc20b09430f1010ff88deefb83a349fba3 -> 0xc139beb5c26f01ea5c4dfd84ebddb65a39336e2e 2.219144 ETH nonce 6 status 1 sel 0x
+BAD R2 restart: crowd A 0x5861 -> restart sweep: blk 83647803 0x5861708803b8b73b2df8d985bed333b88c92dcc0 -> 0xc139beb5c26f01ea5c4dfd84ebddb65a39336e2e 0.175690 ETH nonce 1418 status 1 sel 0x
+OK  R3 restart sweep -> dispatcher: blk 83647811 0xc139beb5c26f01ea5c4dfd84ebddb65a39336e2e -> 0x501f4f53e2865908c0d8e4183318d035790b9ea7 7.038845 ETH nonce 0 status 1 sel 0x
+OK  X1 A trading wallet -> 0x3ee51814: blk 83303420 0xb63b68dc20b09430f1010ff88deefb83a349fba3 -> 0x3ee51814a1b2d336a9da81019148aa76da470b2f 1.600000 ETH nonce 5 status 1 sel 0x
+OK  X2 0x3ee51814 -> crowd D sweep: blk 83362505 0x3ee51814a1b2d336a9da81019148aa76da470b2f -> 0xdef59ef12a5b4a40f2ee0ab4d063532c943670c2 0.800000 ETH nonce 17 status 1 sel 0x
+OK  B1 B launch 14:32 deployer payout -> B sweep: blk 83396649 0x1821144f9d9c8f773ba295641a5a730c9b8cb066 -> 0xded28cc0001917222aa2b55ad55f1d236ef1be74 6.154848 ETH nonce 7 status 1 sel 0x
+OK  B2 B sweep -> B dispatcher: blk 83396670 0xded28cc0001917222aa2b55ad55f1d236ef1be74 -> 0x58fc6f17ea0d2e472867fed709cedb6b131a40dc 6.188873 ETH nonce 0 status 1 sel 0x
+OK  B3 B dispatcher n0 -> copy collector: blk 83396678 0x58fc6f17ea0d2e472867fed709cedb6b131a40dc -> 0x3fc5b8b8dada622d7f41a35a0ad8ac2e5d0f8d8a 3.500000 ETH nonce 0 status 1 sel 0x
+OK  B4 B dispatcher n1 -> crowd B 0x4c45af68: blk 83396685 0x58fc6f17ea0d2e472867fed709cedb6b131a40dc -> 0x4c45af684de8293effd3ed9654e906a7cf81ae0e 0.095447 ETH nonce 1 status 1 sel 0x
+OK  B5 crowd B 0x4c45af68 -> collector: blk 83397167 0x4c45af684de8293effd3ed9654e906a7cf81ae0e -> 0x3fc5b8b8dada622d7f41a35a0ad8ac2e5d0f8d8a 0.095446 ETH nonce 276 status 1 sel 0x
+OK  B6 collector n789 exit: blk 83492168 0x3fc5b8b8dada622d7f41a35a0ad8ac2e5d0f8d8a -> 0x1d18f10325a5b4fa584dbad259473107a29a79ac 6.180324 ETH nonce 789 status 1 sel 0x
+OK  B7 relay -> B dispatcher: blk 83492178 0x1d18f10325a5b4fa584dbad259473107a29a79ac -> 0xe50dd00a357018225b86e232e5cb8b762b533556 6.180310 ETH nonce 0 status 1 sel 0x
+OK  B8 B dispatcher -> crowd B 0x4c45af68: blk 83492192 0xe50dd00a357018225b86e232e5cb8b762b533556 -> 0x4c45af684de8293effd3ed9654e906a7cf81ae0e 0.132692 ETH nonce 1 status 1 sel 0x
+OK  B9 collector n0 first copy funding: blk 83402292 0x3fc5b8b8dada622d7f41a35a0ad8ac2e5d0f8d8a -> 0xfcfdd7827033b418490cec6f427aa987a824f7d2 4.762014 ETH nonce 0 status 1 sel 0x
+OK  B10 today B deployer payout -> B sweep: blk 84051605 0xa57fb285237f62ada4e9265e89321822e1719f98 -> 0xf9c48bc5f019e4fa399e9a59555ad037b6d97918 2.249787 ETH nonce 2 status 1 sel 0x
+OK  B11 today B sweep -> B dispatcher: blk 84051627 0xf9c48bc5f019e4fa399e9a59555ad037b6d97918 -> 0xb0c4ef6751ac3165d489053467e553f63c2d5fb0 4.857327 ETH nonce 0 status 1 sel 0x
+OK  B12 today B dispatcher n0 -> next B deployer: blk 84051634 0xb0c4ef6751ac3165d489053467e553f63c2d5fb0 -> 0x3298890ad7b94a88f70f8820fd4d263215c5e090 2.600000 ETH nonce 0 status 1 sel 0x
+OK  B13 today B dispatcher n0 -> deployer 0xae35895b: blk 84096518 0xefa9bf82c1804e8d6cfcc8ab8b8e419d88f0867b -> 0xae35895be6bd3d46df4745e1c5e13205e84ce75f 1.200000 ETH nonce 0 status 1 sel 0x
+OK  B14 today B sweep -> dispatcher 0xefa9bf82: blk 84096509 0x9763030525b25a84d231cd96b452ac6613f8a834 -> 0xefa9bf82c1804e8d6cfcc8ab8b8e419d88f0867b 4.855207 ETH nonce 0 status 1 sel 0x
+OK  C1 launcher creation: blk 19367688 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 -> CREATE 0x3194e32622c5d860a0572c74edda99dcfd8fc827 0.000000 ETH nonce 0 status 1 sel 0x60e03461
+OK  C2 first launch: blk 19367696 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 -> 0x3194e32622c5d860a0572c74edda99dcfd8fc827 0.100000 ETH nonce 1 status 1 sel 0x2fcb9108
+OK  C3 creator funding: blk 19367257 0x3130ea49fdcaaddeb59078b233ca55b705e23f3f -> 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 0.149993 ETH nonce 0 status 1 sel 0x
+OK  F1 pot F: 12:43 deployer payout -> F hub: blk 83340951 0x583fec3510ed754c5953559af2598262fbdc7a9a -> 0xd4b94999f319d423b479f149b427e9593ebb2ad3 1.899952 ETH nonce 2 status 1 sel 0x
+OK  F2 pot F last pull: blk 83352773 0x1fd5451b27d8e68c8f49ef14aea7336b8ea1ac79 -> 0x58daec3116aae6d93017baaea7749052e8a04fa7 0.000000 ETH nonce 1 status 1 sel 0xdd46508f
+OK  K1 copy launch via own copy: blk 83425344 0xc423cbd20bb5171c5cc46136a35ba0d27d85308e -> 0x8ea696dbe340eee0af1d3fd3ad04509fe9d0e229 4.094000 ETH nonce 1 status 1 sel 0x2fcb9108
+29 of 32 match

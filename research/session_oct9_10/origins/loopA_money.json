@@ -1,0 +1,33 @@
+{
+ "note": "Loop A money history from block scans (shared ops/lch/bc cache + origins/fb.py), Relay API (api.relay.link/requests/v2) and Base public RPC. ETH amounts. UTC.",
+ "pot_timeline": [
+  ["2026-10-06 09:46:46", 81535431, "0x795110a4621f6112db99b293554cc08f601a7f65", 7.0695, "pre-birth fan-out (37 fresh-crowd hops + 1 launch hop); same-size pot, link to 17:37 not scanned hop-by-hop"],
+  ["2026-10-06 17:37:15", 81811984, "0xe000a8a99f64d1209caabf7e4a5721a49e639761", 7.0394, "sweep: 37 fresh-crowd wallets + launch wallet 0xf339ced1 (4.892)"],
+  ["2026-10-06 18:14:11", 81833714, "0x30837a8facbbdedc7753cb79a16bd030a2860a22", 7.0442, "birth of persistent crowd: 0x4268b546 (launch wallet + sweep of its 37 fresh buyers) -> sweep -> dispatcher 0xb3db60c7 -> LW 0x711729ad + 49 crowd (30 crowd A + 19 extra)"],
+  ["2026-10-06 18:50:36", 81855147, "0xb7ff42a7fecf0b4f70126d9468842942a96532a7", 7.0389, "sweep"],
+  ["2026-10-06 23:40:42", 82025093, "0x9b26c4eee7d30a468f520b088d7b61ab13ecc015", 7.0466, "last Oct 6 sweep -> disp 0x19ff9c4a -> LW 0xb58b7a1d (held 5.7635 overnight)"],
+  ["2026-10-07 11:09:51", 82426518, "0xa7ec4a6984bb6f42da03b95c140cedc1f60d1955", 7.0459, "restart: 49 crowd + LW 0xb58b7a1d"],
+  ["2026-10-07 13:15:56", 82500489, "0x73a3b3c8aeb3d86819f3971a08db2d959758b826", 7.0592, "sweep"],
+  ["2026-10-07 13:27:11", 82507102, "0xb82f0373ce7ebf3e38565d65482ec72c52838775", 7.059, "19 extra crowd drained here; pot split 1.0/3.054/3.005, rejoined at 0x41c8a980 (also dust collector of 282 old loop wallets) -> 0x345a4b96 7.0596 -> disp 0x8af8d87b"],
+  ["2026-10-07 15:36:12", 82582802, "0xdc9c96553049cfef27b7ddebf83f102947759e12", 7.0572, "restart after 1.5 h pause: 30 crowd + LW 0x703be26b"],
+  ["2026-10-07 22:54:41", 82840257, "0x970bb376fa248b41465e0d113170f8e144600da4", 7.0661, "restart: 30 crowd + LW 0x9efdbb11"],
+  ["2026-10-07 23:20:30", 82855398, "0x8a51c58dd5630bd0c8ad781808d2c6ca5f914195", 7.1135, "last Oct 7 sweep -> disp 0x6c66ef04 -> LW 0x6a85de0a (held 5.9048 overnight)"],
+  ["2026-10-08 09:42:58", 83217189, "0x3542f8013cffa63dd071fd9f7f64247ff1b87914", 7.1127, "restart: 30 crowd + LW 0x6a85de0a"],
+  ["2026-10-08 11:19:38", 83273775, "0x2c167d0fee36721f7c705af0fda4059fb0e221d3", 7.1092, "switch to launchpad 0xe33e9e47"],
+  ["2026-10-08 11:48:16", 83290604, "0x5cd6ccf4e39f06a895e42667300f0ff562e03166", 8.6585, "pot grew +1.55 over 11 launches on 0xe33e9e47 (market income); disp 0xc0fc363a -> LW 0xb63b68dc 3.5"],
+  ["2026-10-08 12:10:05", 83303420, "0xb63b68dc20b09430f1010ff88deefb83a349fba3", -1.6, "EXIT 1.6 -> 0x3ee51814 (operator hub)"],
+  ["2026-10-08 21:57:55", 83647788, "0xc139beb5c26f01ea5c4dfd84ebddb65a39336e2e", 7.0388, "restart: 32 crowd + LW 0xb63b68dc 2.2191"],
+  ["2026-10-09 00:28:57", 83736297, "0xb99efa8c4ffa97753e280fba7616fcb403aaebcc", 7.0153, "15 overnight sweeps 7.0381 -> 7.0153 -> disp 0x5900e604 -> LW 0x8614437e"],
+  ["2026-10-09 09:59:30", 84069199, "0x3fb6bf76870e823a296cbe689d81ffe6c4215186", 7.0153, "restart: 32 crowd + LW 0x8614437e 3.5698"],
+  ["2026-10-09 11:3x", 84123547, "0x6ddf48a5", 6.9999, "33rd sweep of the day"],
+  ["2026-10-09 15:08:34", 84250634, "at rest", 6.9994, "0xfff26739 5.3905 + 32 crowd A 1.6089; crowd idle (nonce sum unchanged since 14:15)"]
+ ],
+ "exits": [
+  {"from": "0xb63b68dc20b09430f1010ff88deefb83a349fba3", "to": "0x3ee51814a1b2d336a9da81019148aa76da470b2f", "eth": 1.6, "block": 83303420, "tx": "0x2974176467b389d234d8e7303bb2774e665a659539929703c31f9a84a19e3104"},
+  {"from": "0x3ee51814a1b2d336a9da81019148aa76da470b2f", "to": "0x6564816d08053153113d3d6e9f7fba3dfe09d552", "eth": 0.8, "block": 83304006, "tx": "0x9ae19bc16498a878229022ef914bb16f5d8bb4a37f9866bb9e52f2497d7a9318", "then": "Relay depositNative 0x57e47bef... -> Base 0xd2fc9f25 (fill 0x6ceb7180...) -> 0x487cab40 (12:11:15) -> 0x3304e22d (12:20:03 batch 1.548)"},
+  {"from": "0x3ee51814a1b2d336a9da81019148aa76da470b2f", "to": "0xdef59ef12a5b4a40f2ee0ab4d063532c943670c2", "eth": 0.8, "block": 83362505, "tx": "0x0b633ab81c65a39d6c24ec712309f8c7b3643828ef7e89ab0fa2f3fae7d51161", "then": "into crowd D sweep (31 crowd D wallets swept 13:50:03); 0xdef59ef1 paid back 0.01+1.24 to 0x3ee51814 at 13:54, 1.25 -> Relay -> Base 0x72fadacc -> 0x487cab40, 3.99 -> 0x0c8c381e -> 0x8ef3c8f1"},
+  {"from": "0x3ee51814a1b2d336a9da81019148aa76da470b2f", "to": "0x5a6c00c376a7f2d2d5feeef54ac6c2e905370ff4", "eth": 1.0, "block": 83418339, "tx": "0x95bd7127ca55ec438f83154cdf6ed5c1792abfbac7580667428e9837b0d3f400", "then": "Relay -> Base 0x7e9e0e2b -> 0x487cab40 (15:27:15)"},
+  {"from": "0x3ee51814a1b2d336a9da81019148aa76da470b2f", "to": "0x0eea9c51985a36f460d79e347e6bc42e89150788", "eth": 0.25, "block": 83427745, "tx": "0x075d405f2b6f06d039390de674ce4391b7dd45edfde3ba3ae0cc0865df6dc0af", "then": "Relay -> Base 0xf6a6f8fa -> 0x487cab40 (15:43:27)"}
+ ],
+ "base_terminal": {"sweeper": "0x487cab40f6d11a278fa7c442c6741eabe44eab5d (Base, nonce ~7.9k, receives from many nonce-0 deposit addresses, forwards to 0x3304e22d every ~7-10 min)", "hot_wallet": "0x3304e22ddaa22bcdc5fca2269b418046ae7b566a (Base, nonce 6,597,154, 29,656 ETH)"}
+}

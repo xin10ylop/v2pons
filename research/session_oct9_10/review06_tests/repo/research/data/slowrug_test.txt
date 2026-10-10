@@ -1,0 +1,107 @@
+window 2026-09-29 21:00 - 2026-10-08 10:30 UTC; 992 launches (no-hook, tick 200, ETH: the 1.5-5% fee band and the operator's launches outside it); stake $3 at $2570/ETH
+
+1. SUPPLY: launches per UTC day by launcher
+   launcher        n   29   30   01   02   03   04   05   06   07   08  fees
+   0x3194e32622  602   22   53   34   56   49   36   94  133  112   13  2%:108, 3%:29, 1.5%:23, 1.2%:18, 2.25%:15
+   0x815542e8b3  179    3   13   35   30   15    4   32    3   42    2  3%:179
+   0x58daec3116   29    1    5    7    3    3    2    5    2    1    0  2%:17, 5%:7, 4.9%:2, 1.9998%:1, 1.999%:1
+   0x7c7e48f9ff   20    0    4    1    0    8    0    2    2    3    0  2%:20
+   0x86f8db744c    5    0    0    0    5    0    0    0    0    0    0  3%:5
+   the operator 0x3194e32622 by fee tier and day:
+      2-2.45%         12   41   11   16   24   22   19    0    0    0
+      1.5-5% other     5    4    7   20   14   14   21    0    1    0
+      < 1%             0    0    0    0    1    0   54  133  111   13
+      other            5    8   16   20   10    0    0    0    0    0
+   (Sep 27-29, report 24.45: 107-126 launches a day, 80% of them at 2.45%)
+
+2. ANATOMY (blocks are ~0.1 s; crowd = fresh + wash wallets, real size)
+   0x3194e32622 n=602: swaps by role wash 71%, fresh 27%, dust 1%, out 1%, dep 0%; a crowd on 579; its first buy at blk p10/50/90 [22, 44, 64]; crowd buys in 30 s 34 (1.49 ETH); pulled in 20 min 94%, at blk p10/50/90 [242, 2393, 6352]
+   0x815542e8b3 n=179: swaps by role out 74%, dep 15%, dust 7%, fresh 4%; a crowd on 0; its first buy at blk p10/50/90 []; crowd buys in 30 s nan (nan ETH); pulled in 20 min 0%, at blk p10/50/90 []
+   0x58daec3116 n=29: swaps by role out 98%, dust 2%, fresh 0%, dep 0%; a crowd on 0; its first buy at blk p10/50/90 []; crowd buys in 30 s nan (nan ETH); pulled in 20 min 48%, at blk p10/50/90 [1326, 2407, 3674]
+   0x7c7e48f9ff n=20: swaps by role out 97%, dep 2%, dust 2%; a crowd on 0; its first buy at blk p10/50/90 []; crowd buys in 30 s nan (nan ETH); pulled in 20 min 0%, at blk p10/50/90 []
+   0x86f8db744c n=5: swaps by role out 100%; a crowd on 0; its first buy at blk p10/50/90 []; crowd buys in 30 s nan (nan ETH); pulled in 20 min 0%, at blk p10/50/90 []
+
+3. THE TEST, part 1: an established outside wallet's real buy (>= 0.0002 ETH) before the operator's crowd
+   the operator's 602 launches: an outsider bought real size on 141, first at blk p10/50/90 [63, 546, 2608]; before the crowd on 8:
+      0x72517b85a0 09-30 fee 1.35%: 0xdee8754965 bought 0.0010 ETH at +1 | crowd first None, 0 crowd buys | pull 15
+      0x4b7fb2d9ee 10-02 fee 1.5%: 0xb4d43149db bought 0.0002 ETH at +6 | crowd first 24, 6 crowd buys | pull 54
+      0xd2f4c33115 10-05 fee 3%: 0x344daadde5 bought 0.0018 ETH at +412 | crowd first None, 0 crowd buys | pull None
+      0xec45e9c565 10-07 fee 0.4438%: 0x3a6cfa4b75 bought 0.0012 ETH at +4298 | crowd first None, 0 crowd buys | pull None
+      0x5cbb92885c 10-07 fee 0.021%: 0xf9c0562a73 bought 0.1929 ETH at +18 | crowd first 95, 121 crowd buys | pull 7009
+      0xbdcc9004fa 10-07 fee 0.0212%: 0xf9c0562a73 bought 0.1830 ETH at +81 | crowd first 154, 37 crowd buys | pull 818
+      0x952ef726d7 10-07 fee 2.5%: 0x482591915f bought 0.0100 ETH at +26 | crowd first None, 0 crowd buys | pull None
+      0x01edfbc627 10-07 fee 0.2039%: 0xb002e8a04b bought 0.0002 ETH at +11 | crowd first 53, 44 crowd buys | pull 358
+   (none is a clean case: see the report; the outsiders who bought at all came a minute or more in, behind the crowd)
+
+3b. THE TEST, part 2: the pull's reflex. Every non-operator buy (out or dust) on the operator's launches: does the deployer's
+    liquidity removal follow it within 1 s (10 blocks) or 3 s (30 blocks)? By fee tier: 2-5% (to Oct 5) and under 1% (from Oct 5)
+   564 pulls in 20 min, sent by the launch's deployer: 563
+   2-5% tiers: 290 launches; gap from the last non-operator buy to the pull, blocks: 3: 3, 5: 39, 6: 11, 7: 2, 8: 1, 10: 3, 11: 2, 12: 3, 13: 2, 14: 3, 18: 1, 19: 2, >30: 137
+      buys of 0.0000-0.0002 ETH ($0.00-0.51): n  420, pulled within 1 s   4%, within 3 s   7%
+      buys of 0.0002-0.0010 ETH ($0.51-2.57): n   34, pulled within 1 s  24%, within 3 s  35%
+      buys of 0.0010-0.0020 ETH ($2.57-5.14): n   23, pulled within 1 s  65%, within 3 s  74%
+      buys of 0.0020-0.0050 ETH ($5.14-12.85): n   16, pulled within 1 s  88%, within 3 s  94%
+      buys of 0.0050-0.0100 ETH ($12.85-25.70): n    4, pulled within 1 s  75%, within 3 s 100%
+      buys of 0.0100-10.0000 ETH ($25.70-25700.00): n   50, pulled within 1 s  34%, within 3 s  38%
+      first outsider buy -> pull within 5 s: 58 of 81 launches
+   < 1% tier: 312 launches; gap from the last non-operator buy to the pull, blocks: 10: 2, 11: 4, 12: 5, 13: 4, 14: 5, 15: 10, 16: 2, 17: 5, 18: 2, 19: 1, 21: 1, 26: 1, 28: 1, >30: 263
+      buys of 0.0000-0.0002 ETH ($0.00-0.51): n  830, pulled within 1 s   0%, within 3 s   1%
+      buys of 0.0002-0.0010 ETH ($0.51-2.57): n   25, pulled within 1 s   0%, within 3 s  36%
+      buys of 0.0010-0.0020 ETH ($2.57-5.14): n   16, pulled within 1 s   0%, within 3 s  44%
+      buys of 0.0020-0.0050 ETH ($5.14-12.85): n   10, pulled within 1 s  10%, within 3 s 100%
+      buys of 0.0050-0.0100 ETH ($12.85-25.70): n    7, pulled within 1 s   0%, within 3 s  86%
+      buys of 0.0100-10.0000 ETH ($25.70-25700.00): n   24, pulled within 1 s   0%, within 3 s  25%
+      first outsider buy -> pull within 5 s: 42 of 60 launches
+   both tiers: first outsider buy -> pull within 5 s on 71% of 141 launches; placebo (launches with no outsider, an arrival time drawn from the outsiders'): 1.6%
+
+4. WHAT THE REAL OUTSIDERS GOT (every established wallet that bought >= 0.0002 ETH; tokens left at the pull = 0)
+   0x3194e32622: 183 outsider positions, mean -89.1%, median -100.0%, win 6%, lost everything 164; net -3.676 ETH on 4.406 ETH in
+   0x815542e8b3: 92 outsider positions, mean -28.4%, median -11.9%, win 21%, lost everything 27; net -0.857 ETH on 4.944 ETH in
+   0x58daec3116: 805 outsider positions, mean +72.2%, median -100.0%, win 9%, lost everything 641; net -36.857 ETH on 45.239 ETH in
+   0x7c7e48f9ff: 37 outsider positions, mean -50.3%, median -14.5%, win 16%, lost everything 18; net -1.125 ETH on 1.779 ETH in
+   0x86f8db744c: 1 outsider positions, mean -6.0%, median -6.0%, win 0%, lost everything 0; net -0.000 ETH on 0.000 ETH in
+
+5. THE $3 FIRST SEAT (head of b0+1) ON PAPER: as if the crowd comes and the pull keeps its schedule regardless of us
+   0x3194e32622 n=602 | 5 s: mean +6.2% med +3.7% win 65% | 10 s: mean +22.1% med +20.3% win 90% | 20 s: mean +54.9% med +44.2% win 89% | 30 s: mean +81.9% med +66.7% win 83%
+   0x815542e8b3 n=179 | 5 s: mean -6.6% med -6.6% win 0% | 10 s: mean -6.5% med -6.6% win 0% | 20 s: mean -6.5% med -6.6% win 0% | 30 s: mean -6.4% med -6.6% win 1%
+   0x58daec3116 n= 23 | 5 s: mean -20.0% med -9.4% win 9% | 10 s: mean -20.8% med -9.7% win 9% | 20 s: mean -18.8% med -11.0% win 13% | 30 s: mean -20.4% med -9.7% win 17%
+   0x7c7e48f9ff n= 20 | 5 s: mean -4.8% med -4.8% win 0% | 10 s: mean -1.6% med -4.8% win 5% | 20 s: mean -1.6% med -4.8% win 5% | 30 s: mean +0.5% med -4.8% win 15%
+   0x86f8db744c n=  5 | 5 s: mean -6.7% med -6.7% win 0% | 10 s: mean -6.7% med -6.7% win 0% | 20 s: mean -6.7% med -6.7% win 0% | 30 s: mean -6.7% med -6.7% win 0%
+      operator, 2-2.45%       09-29: n  12, hold 20 s mean +46.6% median +47.7% win 92%
+      operator, 2-2.45%       09-30: n  41, hold 20 s mean +96.8% median +62.2% win 98%
+      operator, 2-2.45%       10-01: n  11, hold 20 s mean +78.6% median +60.8% win 100%
+      operator, 2-2.45%       10-02: n  16, hold 20 s mean +47.6% median +38.7% win 81%
+      operator, 2-2.45%       10-03: n  24, hold 20 s mean +5.6% median +12.4% win 54%
+      operator, 2-2.45%       10-04: n  22, hold 20 s mean +75.6% median +69.3% win 91%
+      operator, 2-2.45%       10-05: n  19, hold 20 s mean +72.8% median +65.2% win 89%
+      operator, 1.5-5% other  09-29: n   5, hold 20 s mean +178.5% median +150.6% win 100%
+      operator, 1.5-5% other  09-30: n   4, hold 20 s mean +108.1% median +107.1% win 100%
+      operator, 1.5-5% other  10-01: n   7, hold 20 s mean +35.5% median +20.5% win 86%
+      operator, 1.5-5% other  10-02: n  20, hold 20 s mean +35.9% median +39.5% win 85%
+      operator, 1.5-5% other  10-03: n  14, hold 20 s mean +17.6% median +29.6% win 71%
+      operator, 1.5-5% other  10-04: n  14, hold 20 s mean +87.3% median +66.2% win 93%
+      operator, 1.5-5% other  10-05: n  21, hold 20 s mean +86.4% median +59.1% win 81%
+      operator, 1.5-5% other  10-07: n   1, hold 20 s mean +27.2% median +27.2% win 100%
+      operator, < 1%          10-03: n   1, hold 20 s mean -100.7% median -100.7% win 0%
+      operator, < 1%          10-05: n  54, hold 20 s mean +78.5% median +73.7% win 87%
+      operator, < 1%          10-06: n 133, hold 20 s mean +48.4% median +34.0% win 89%
+      operator, < 1%          10-07: n 111, hold 20 s mean +28.2% median +26.7% win 95%
+      operator, < 1%          10-08: n  13, hold 20 s mean +9.8% median +25.0% win 77%
+   With the reflex of 3b (a $2.6-5 buy pulled within 3 s on 74% of the 2-5% launches and 44% of the < 1% ones, a $5-13 buy on 94%
+   and 100%), the pull lands before a 10-30 s exit at least that often; on the paper's 20 s mean:
+      P(pull) 44%: expected return at hold 20 s <= 0.44 x (-100%) + 0.56 x +54.9% = -13.3%
+      P(pull) 74%: expected return at hold 20 s <= 0.74 x (-100%) + 0.26 x +54.9% = -59.7%
+      P(pull) 94%: expected return at hold 20 s <= 0.94 x (-100%) + 0.06 x +54.9% = -90.7%
+
+6. A VARIANT THE CHAIN CANNOT TEST: follow the crowd and leave before the reflex (the < 1% tier, from Oct 5)
+   trigger: the first buy >= 0.0002 ETH by anyone (no wallet list); our buy lands 2 blocks after it; sold k blocks after our buy;
+   the schedule's own pulls count, a pull our buy would trigger does not (the tier's reflex is 10-19 blocks)
+   312 launches; the first real-size buy is the operator's crowd on 306
+   sell 4 blocks after, $3: n 310, mean +3.6%, median +2.2%, win 83%, p5 -0.8% | by day 03 +12.8% (1) 05 +6.2% (52) 06 +3.2% (133) 07 +2.4% (111) 08 +6.2% (13)
+   sell 4 blocks after, $25: n 310, mean +3.4%, median +2.1%, win 84%, p5 -0.9% | by day 03 +12.3% (1) 05 +5.8% (52) 06 +2.9% (133) 07 +2.5% (111) 08 +6.1% (13)
+   sell 9 blocks after, $3: n 310, mean +6.5%, median +4.3%, win 94%, p5 -0.3% | by day 03 -100.7% (1) 05 +11.6% (52) 06 +7.2% (133) 07 +4.1% (111) 08 +9.6% (13)
+   sell 9 blocks after, $25: n 310, mean +6.4%, median +4.2%, win 95%, p5 -0.1% | by day 03 -100.1% (1) 05 +11.1% (52) 06 +6.9% (133) 07 +4.2% (111) 08 +9.4% (13)
+   buys landing inside the hold (our block .. +9), by role: wash 354, dust 321, fresh 199, out 7
+   the same in the 2-5% tiers (land 1 after the crowd's first buy, sell 4 blocks later): n 277, mean +0.1%, median -0.8%
+   the same in the 2-5% tiers (land 2 after the crowd's first buy, sell 4 blocks later): n 277, mean -0.2%, median -0.4%
+   the same in the 2-5% tiers (land 3 after the crowd's first buy, sell 4 blocks later): n 277, mean +0.3%, median -0.1%

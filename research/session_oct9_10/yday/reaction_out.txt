@@ -1,0 +1,634 @@
+replay check (max, median rel. error of sqrtP, n): (2.0641043630583373e-05, 2.2119381815293146e-24, 3849)
+
+STEP 1: OUR TEN LIVE TRADES
+  1 10-08 13:15:23 follow orig_quick_pull  fee 2383 relay trig +142 buy +143 (trig+1) crowd<=4: 1 [(3, 0.0378)] first crowd after 3 pull +6 (base 0/0 clean orig_quick_pull launches) | live sold +6 +7.17% | cur TP False send +2 fast -0.83% (deadline) slow +7.17% (deadline)
+  2 10-08 13:16:13 follow orig_quick_pull  fee 2383 relay trig +54 buy +56 (trig+2) crowd<=4: 2 [(1, 0.0396), (4, 0.0376)] first crowd after 1 pull +6 (base 0/0 clean orig_quick_pull launches) | live sold +7 -100.41% | cur TP True send +1 fast +7.52% (take_profit) slow +7.52% (take_profit)
+  3 10-08 13:16:50 follow orig_quick_pull  fee 2383 relay trig +53 buy +55 (trig+2) crowd<=4: 1 [(1, 0.0298)] first crowd after 1 pull +6 (base 0/0 clean orig_quick_pull launches) | live sold +7 -100.42% | cur TP True send +1 fast +5.40% (take_profit) slow +5.40% (take_profit)
+  4 10-08 13:17:10 follow orig_quick_pull  fee 2383 relay trig +46 buy +48 (trig+2) crowd<=4: 1 [(1, 0.0301)] first crowd after 1 pull +8 (base 0/0 clean orig_quick_pull launches) | live sold +7 +18.72% | cur TP True send +1 fast +5.51% (take_profit) slow +5.51% (take_profit)
+  5 10-08 13:18:12 follow orig_quick_pull  fee 2383 relay trig +51 buy +53 (trig+2) crowd<=4: 1 [(1, 0.0395)] first crowd after 1 pull +13 (base 0/0 clean orig_quick_pull launches) | live sold +7 +7.52% | cur TP True send +1 fast +7.52% (take_profit) slow +7.52% (take_profit)
+  6 10-08 13:18:45 follow orig_quick_pull  fee 2383 relay trig +58 buy +59 (trig+1) crowd<=4: 0 [] first crowd after None pull +7 (base 0/0 clean orig_quick_pull launches) | live sold +6 -0.83% | cur TP False send +2 fast -0.83% (deadline) slow -0.83% (deadline)
+  7 10-08 13:19:44 follow orig_quick_pull  fee  824 relay trig +108 buy +109 (trig+1) crowd<=4: 0 [] first crowd after None pull +5 (base 0/0 clean orig_quick_pull launches) | live sold +6 -100.42% | cur TP False send +2 fast -0.58% (deadline) slow -0.58% (deadline)
+  8 10-08 14:32:16 follow orig_crowdB      fee  250 router trig +44 buy +45 (trig+1) crowd<=4: 1 [(3, 0.0142)] first crowd after 3 pull +9856 (base 2/2 clean orig_crowdB launches) | live sold +3 -9.73% | cur TP False send +2 fast -0.49% (deadline) slow +0.34% (deadline)
+  9 10-08 22:48:47 seat   orig_classic     fee  888 relay trig +51 buy +7 (trig+None) crowd<=4: 0 [] first crowd after 44 pull +98 (base 0/27 clean orig_classic launches) | live sold +3 -0.56% | cur TP False send +2 fast -0.56% (deadline) slow -0.56% (deadline)
+ 10 10-09 00:11:03 seat   orig_classic     fee 1597 relay trig +46 buy +8 (trig+None) crowd<=4: 0 [] first crowd after 38 pull +270 (base 6/27 clean orig_classic launches) | live sold +3 -0.69% | cur TP False send +2 fast -0.69% (deadline) slow -0.69% (deadline)
+
+STEP 2: {
+ "follow_without_us": {
+  "all_orig_without_us": {
+   "land_T+2": "36/40",
+   "land_T+1": "37/40",
+   "by_scheme_land_T+2": {
+    "no_crowd_buy": "0/0",
+    "orig_classic": "32/32",
+    "orig_crowdB": "1/3",
+    "orig_fresh": "3/5"
+   },
+   "pull_after_first_crowd_buy_by_scheme": {
+    "no_crowd_buy": [],
+    "orig_classic": [
+     65,
+     68,
+     82,
+     86,
+     112,
+     136,
+     174,
+     234,
+     241,
+     278,
+     285,
+     864,
+     903,
+     946,
+     2062,
+     2317,
+     2349,
+     2465,
+     2478,
+     2485,
+     2489,
+     2489,
+     2489,
+     2494,
+     2496,
+     2497,
+     2498,
+     2508,
+     2520,
+     2523,
+     2527,
+     2624
+    ],
+    "orig_crowdB": [
+     768,
+     5373
+    ],
+    "orig_fresh": [
+     47,
+     277,
+     6207,
+     7370,
+     9786
+    ]
+   },
+   "crowd_buy_in_TP_window_L+1..L+2": {
+    "land_T+1": "35/40",
+    "land_T+2": "27/40"
+   },
+   "crowd_buy_in_TP_window_by_scheme_land_T+2": {
+    "no_crowd_buy": "0/0",
+    "orig_classic": "24/32",
+    "orig_crowdB": "1/3",
+    "orig_fresh": "2/5"
+   }
+  },
+  "engine_eligible_orig_without_us": {
+   "land_T+2": "34/37",
+   "land_T+1": "35/37",
+   "by_scheme_land_T+2": {
+    "orig_classic": "32/32",
+    "orig_crowdB": "1/3",
+    "orig_fresh": "1/2"
+   },
+   "pull_after_first_crowd_buy_by_scheme": {
+    "orig_classic": [
+     65,
+     68,
+     82,
+     86,
+     112,
+     136,
+     174,
+     234,
+     241,
+     278,
+     285,
+     864,
+     903,
+     946,
+     2062,
+     2317,
+     2349,
+     2465,
+     2478,
+     2485,
+     2489,
+     2489,
+     2489,
+     2494,
+     2496,
+     2497,
+     2498,
+     2508,
+     2520,
+     2523,
+     2527,
+     2624
+    ],
+    "orig_crowdB": [
+     768,
+     5373
+    ],
+    "orig_fresh": [
+     277,
+     9786
+    ]
+   },
+   "crowd_buy_in_TP_window_L+1..L+2": {
+    "land_T+1": "34/37",
+    "land_T+2": "26/37"
+   },
+   "crowd_buy_in_TP_window_by_scheme_land_T+2": {
+    "orig_classic": "24/32",
+    "orig_crowdB": "1/3",
+    "orig_fresh": "1/2"
+   }
+  }
+ },
+ "follow_with_us": {
+  "crowd_buy_behind_ours_in_B+1..B+4": "6/8",
+  "crowd_buy_behind_ours_in_B..B+4": "6/8",
+  "pull_after_trigger": [
+   7,
+   8,
+   8,
+   10,
+   15,
+   8,
+   6,
+   9857
+  ],
+  "pull_after_our_buy": [
+   6,
+   6,
+   6,
+   8,
+   13,
+   7,
+   5,
+   9856
+  ],
+  "current_exit_take_profit": "4/8",
+  "crowd_buy_behind_ours_in_B+1..B+2": "4/8",
+  "current_exit_ret_fast": [
+   -0.0083,
+   0.0752,
+   0.054,
+   0.0551,
+   0.0752,
+   -0.0083,
+   -0.0058,
+   -0.0049
+  ],
+  "current_exit_ret_slow": [
+   0.0717,
+   0.0752,
+   0.054,
+   0.0551,
+   0.0752,
+   -0.0083,
+   -0.0058,
+   0.0034
+  ],
+  "live_ret": [
+   0.0717,
+   -1.0041,
+   -1.0042,
+   0.1872,
+   0.0752,
+   -0.0083,
+   -1.0042,
+   -0.0973
+  ]
+ },
+ "reaction_lags_pull_after_non_crowd_buy": [
+  [
+   "us_follow",
+   "13:19",
+   "orig_quick_pull",
+   5,
+   "0/0 clean orig_quick_pull launches"
+  ],
+  [
+   "outsider",
+   "16:12",
+   "copy_burst_then_crowd",
+   6,
+   "0/27"
+  ],
+  [
+   "us_follow",
+   "13:15",
+   "orig_quick_pull",
+   6,
+   "0/0 clean orig_quick_pull launches"
+  ],
+  [
+   "us_follow",
+   "13:16",
+   "orig_quick_pull",
+   6,
+   "0/0 clean orig_quick_pull launches"
+  ],
+  [
+   "us_follow",
+   "13:16",
+   "orig_quick_pull",
+   6,
+   "0/0 clean orig_quick_pull launches"
+  ],
+  [
+   "outsider",
+   "14:32",
+   "orig_crowdB",
+   7,
+   "0/0"
+  ],
+  [
+   "us_follow",
+   "13:18",
+   "orig_quick_pull",
+   7,
+   "0/0 clean orig_quick_pull launches"
+  ],
+  [
+   "us_follow",
+   "13:17",
+   "orig_quick_pull",
+   8,
+   "0/0 clean orig_quick_pull launches"
+  ],
+  [
+   "outsider",
+   "11:02",
+   "orig_classic",
+   11,
+   "0/17"
+  ],
+  [
+   "outsider",
+   "10:51",
+   "orig_classic",
+   12,
+   "0/14"
+  ],
+  [
+   "outsider",
+   "22:48",
+   "orig_classic",
+   13,
+   "0/27"
+  ],
+  [
+   "us_follow",
+   "13:18",
+   "orig_quick_pull",
+   13,
+   "0/0 clean orig_quick_pull launches"
+  ],
+  [
+   "outsider",
+   "10:49",
+   "orig_classic",
+   16,
+   "0/17"
+  ],
+  [
+   "outsider",
+   "11:09",
+   "orig_classic",
+   41,
+   "0/17"
+  ],
+  [
+   "outsider",
+   "22:47",
+   "orig_classic",
+   51,
+   "3/27"
+  ]
+ ],
+ "non_crowd_buys_not_followed_by_pull_within_60": [
+  [
+   "06:05",
+   "orig_crowdB",
+   170,
+   "65050a9b",
+   0.000351,
+   null
+  ],
+  [
+   "06:05",
+   "orig_crowdB",
+   170,
+   "65050a9b",
+   0.000351,
+   null
+  ],
+  [
+   "06:05",
+   "orig_crowdB",
+   279,
+   "65050a9b",
+   0.000396,
+   null
+  ],
+  [
+   "14:32",
+   "orig_crowdB",
+   2416,
+   "65050a9b",
+   0.00099,
+   7485
+  ],
+  [
+   "us 14:32",
+   "orig_crowdB",
+   45,
+   "router (crowd's calldata)",
+   0.0012,
+   9856
+  ],
+  [
+   "us 22:48",
+   "orig_classic",
+   7,
+   "relay",
+   0.0012,
+   98
+  ],
+  [
+   "us 00:11",
+   "orig_classic",
+   8,
+   "relay",
+   0.0012,
+   270
+  ]
+ ],
+ "dust_tester_copy": {
+  "copy_launches": 49,
+  "with_dust_buy": 49,
+  "dust_offsets": {
+   "5": 2,
+   "3": 31,
+   "4": 13,
+   "2": 1,
+   "9": 2
+  },
+  "burst_offsets": {
+   "7": 1,
+   "8": 9,
+   "9": 35,
+   "10": 2,
+   "11": 1,
+   "13": 1
+  },
+  "burst_after_dust": 47,
+  "burst_size_buys_in_first_block": {
+   "3": 48,
+   "1": 1
+  },
+  "pull_offsets_by_scheme": {
+   "copy_burst_only": [
+    354,
+    396,
+    397,
+    399,
+    399,
+    400,
+    401,
+    402,
+    402,
+    402,
+    403,
+    403,
+    404,
+    405,
+    405,
+    405,
+    405,
+    406,
+    406,
+    413,
+    415
+   ],
+   "copy_burst_then_crowd": [
+    877,
+    1425,
+    1458,
+    1461,
+    1467,
+    1471,
+    1473,
+    1474,
+    1474,
+    1476,
+    1476,
+    1476,
+    1478,
+    1478,
+    1479,
+    1481,
+    1481,
+    1481,
+    1487,
+    1487,
+    1487,
+    1487,
+    1487,
+    1490,
+    1491,
+    1494,
+    1498,
+    1508
+   ]
+  }
+ },
+ "dust_tester_orig": {
+  "orig_launches": 51,
+  "with_dust_buy": 51,
+  "dust_offsets": {
+   "3": 41,
+   "2": 1,
+   "4": 7,
+   "41": 1,
+   "118": 1
+  }
+ },
+ "seat_on_classic": {
+  "clean_classic_first_crowd_buy_offsets": [
+   38,
+   41,
+   43,
+   43,
+   44,
+   44,
+   45,
+   46,
+   46,
+   46,
+   46,
+   46,
+   47,
+   47,
+   47,
+   47,
+   48,
+   48,
+   48,
+   48,
+   49,
+   49,
+   49,
+   50,
+   52,
+   52,
+   55
+  ],
+  "clean_classic_crowd_buys_in_first_50_blocks": [
+   9,
+   9,
+   9,
+   9,
+   10,
+   10,
+   10,
+   10,
+   10,
+   10,
+   11,
+   11,
+   11,
+   11,
+   11,
+   11,
+   11,
+   11,
+   11,
+   11,
+   12,
+   12,
+   12,
+   12,
+   12,
+   13,
+   13
+  ],
+  "ours": [
+   {
+    "n": 9,
+    "buy_offset": 7,
+    "first_crowd_buy_offset": 51,
+    "crowd_buys_in_first_50_blocks": 10,
+    "pull_offset": 105,
+    "pull_after_first_crowd_buy": 54
+   },
+   {
+    "n": 10,
+    "buy_offset": 8,
+    "first_crowd_buy_offset": 46,
+    "crowd_buys_in_first_50_blocks": 10,
+    "pull_offset": 278,
+    "pull_after_first_crowd_buy": 232
+   }
+  ],
+  "clean_classic_pull_after_first_crowd_buy": [
+   65,
+   68,
+   82,
+   112,
+   136,
+   174,
+   234,
+   241,
+   278,
+   285,
+   2062,
+   2317,
+   2349,
+   2478,
+   2485,
+   2489,
+   2489,
+   2489,
+   2494,
+   2496,
+   2497,
+   2498,
+   2508,
+   2520,
+   2523,
+   2527,
+   2624
+  ]
+ },
+ "gas": {
+  "relay_buy_gas_used": [
+   103829,
+   102976,
+   103861,
+   103793,
+   103913,
+   103881,
+   103861,
+   103985,
+   103857
+  ],
+  "relay_sell_gas_used": [
+   103778,
+   135200,
+   135200,
+   103810,
+   103894,
+   103938,
+   135200,
+   103934,
+   103778
+  ],
+  "base_fee_gwei_at_our_buys": [
+   0.020516,
+   0.020716,
+   0.021064,
+   0.02077,
+   0.021146,
+   0.020938,
+   0.020538,
+   0.02166,
+   0.02181,
+   0.021312
+  ],
+  "round_trip_eth_typical": 4.363902795e-06,
+  "round_trip_usd_typical": 0.0112
+ }
+}
+
+STEP 3: OUTSIDER BUYS
+  06:05 orig orig_crowdB            +  170 0xf7f00e4d 0.00035 via 65050a9b before-crowd False crowd prev10 3 (usual 1) next4 2 next10 2 (usual 0 on 2) until pull 226 pull after None (chance None)
+  06:05 orig orig_crowdB            +  170 0xb1103df2 0.00035 via 65050a9b before-crowd False crowd prev10 3 (usual 1) next4 2 next10 2 (usual 0 on 2) until pull 226 pull after None (chance None)
+  06:05 orig orig_crowdB            +  279 0xf5d70602 0.00040 via 65050a9b before-crowd False crowd prev10 0 (usual 1.5) next4 0 next10 0 (usual 0.5 on 2) until pull 214 pull after None (chance None)
+  10:49 orig orig_classic           +  893 0xa90bd2d1 0.00117 via 6aa80dbb before-crowd False crowd prev10 0 (usual 0.12) next4 0 next10 0 (usual 0.06 on 17) until pull 0 pull after 16 (chance 0/17)
+  10:51 orig orig_classic           + 2499 0xa2e8360c 0.00049 via f0b7eaaf before-crowd False crowd prev10 0 (usual 0) next4 0 next10 0 (usual 0 on 14) until pull 0 pull after 12 (chance 0/14)
+  11:02 orig orig_classic           +  941 0xcc4bc788 0.00588 via 0005ea38 before-crowd False crowd prev10 0 (usual 0) next4 0 next10 0 (usual 0 on 17) until pull 0 pull after 11 (chance 0/17)
+  11:09 orig orig_classic           +  948 0xe46e6e86 0.00079 via f0b7eaaf before-crowd False crowd prev10 0 (usual 0) next4 0 next10 0 (usual 0 on 17) until pull 0 pull after 41 (chance 0/17)
+  14:32 orig orig_crowdB            + 2416 0x2bf73b90 0.00099 via 65050a9b before-crowd False crowd prev10 0 (usual 0) next4 0 next10 0 (usual 0 on 1) until pull 22 pull after 7485 (chance 1/1)
+  14:32 orig orig_crowdB            + 9894 0xabb2acd3 0.05738 via 8f10b468 before-crowd False crowd prev10 0 (usual None) next4 0 next10 0 (usual None on 0) until pull 0 pull after 7 (chance 0/0)
+  16:12 copy copy_burst_then_crowd  +  871 0x6d5a7ef9 0.00205 via 36dc95f1 before-crowd False crowd prev10 0 (usual 0) next4 0 next10 0 (usual 0 on 27) until pull 0 pull after 6 (chance 0/27)
+  22:47 orig orig_classic           +   90 0x2b7be2fa 0.00020 via 88767899 before-crowd False crowd prev10 2 (usual 1.85) next4 1 next10 2 (usual 1.7 on 27) until pull 9 pull after 51 (chance 3/27)
+  22:48 orig orig_classic           +   92 0x2b7be2fa 0.00020 via 88767899 before-crowd False crowd prev10 0 (usual 2) next4 1 next10 2 (usual 1.93 on 27) until pull 2 pull after 13 (chance 0/27)
+
+SCHEMES:
+  copy_burst_only        n  21 clean  21 pull offsets (clean) [354, 396, 397, 399, 399, 400, 401, 402, 402, 402, 403, 403, 404, 405, 405, 405, 405, 406, 406, 413, 415]
+                         first crowd buy offsets [(9, 16), (8, 2), (10, 2), (7, 1)]
+  copy_burst_then_crowd  n  28 clean  27 pull offsets (clean) [1425, 1458, 1461, 1467, 1471, 1473, 1474, 1474, 1476, 1476, 1476, 1478, 1478, 1479, 1481, 1481, 1481, 1487, 1487, 1487, 1487, 1487, 1490, 1491, 1494, 1498, 1508]
+                         first crowd buy offsets [(9, 19), (8, 7), (11, 1), (13, 1)]
+  no_crowd_buy           n   2 clean   2 pull offsets (clean) [4910, 15994]
+                         first crowd buy offsets [(None, 2)]
+  orig_classic           n  34 clean  27 pull offsets (clean) [111, 114, 125, 158, 182, 218, 281, 293, 325, 330, 2106, 2366, 2401, 2526, 2532, 2532, 2537, 2538, 2539, 2541, 2543, 2544, 2556, 2570, 2576, 2578, 2662]
+                         first crowd buy offsets [(46, 7), (47, 4), (48, 4), (49, 4), (43, 3), (44, 2), (52, 2), (45, 2), (55, 2), (41, 1), (38, 1), (50, 1)]
+  orig_crowdB            n   4 clean   2 pull offsets (clean) [816, 5391]
+                         first crowd buy offsets [(48, 1), (111, 1), (18, 1), (44, 1)]
+  orig_fresh             n   5 clean   5 pull offsets (clean) [137, 383, 6307, 7578, 9853]
+                         first crowd buy offsets [(90, 1), (100, 1), (67, 1), (106, 1), (208, 1)]
+  orig_quick_pull        n   7 clean   0 pull offsets (clean) []
+                         first crowd buy offsets [(142, 1), (54, 1), (53, 1), (46, 1), (51, 1), (58, 1), (108, 1)]

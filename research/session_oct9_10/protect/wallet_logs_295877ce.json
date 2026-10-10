@@ -1,0 +1,95 @@
+{
+ "0x295877ce91a25528ae17263cb3d30eb11bbfae3e": {
+  "transfers_in": 123,
+  "transfers_out": 101,
+  "approvals": 48,
+  "tokens_in": 49,
+  "tokens_in_operator": 42,
+  "tokens_out": 41,
+  "first_log_block": 83281952,
+  "non_operator_tokens": [
+   "0x57309fd1dc23643e476b1c17419d76ba0d118c41",
+   "0x4335f924b82a79f2d20e7b58274718010093fa9d",
+   "0xaaf877c3db84f0463972a74be0674790dec42767",
+   "0x3f5c9f2db6ee4fbfa2abf7d25ee028c9c151e69b",
+   "0x94af50d35c03b946374696b4f2da75ed4427176c",
+   "0xf6ba88de6bdeb13ad28aa06241037b63740903f9",
+   "0x558d270eef2eac4e13c25469b921df93046ca724"
+  ],
+  "approval_spenders": [
+   [
+    "0x000000000022d473030f116ddee9f6b43ac78ba3",
+    41
+   ],
+   [
+    "0x41a3caa05d60dc86b8b2cc417fd45af701e0c0d4",
+    1
+   ],
+   [
+    "0x0533851f78ff577f25009be3aff58b9b670bb1ab",
+    1
+   ],
+   [
+    "0xb832fa3c93deb4df4ef693c30622dd042208445a",
+    1
+   ],
+   [
+    "0x560529f7baf1778af3f9aa2d6a5e550f122905bf",
+    1
+   ]
+  ]
+ },
+ "0x4c45af684de8293effd3ed9654e906a7cf81ae0e": {
+  "transfers_in": 58,
+  "transfers_out": 27,
+  "approvals": 27,
+  "tokens_in": 27,
+  "tokens_in_operator": 7,
+  "tokens_out": 19,
+  "first_log_block": 82665044,
+  "non_operator_tokens": [
+   "0xd415834ad579cd6aae03ae61dc544d049c04f94f",
+   "0xf8fef142f7ab1af3a4125c57377dda7eaa07e049",
+   "0x8236c887a156cd5331be66960dd8c6b9539db06d",
+   "0xea21cca37aee5693476a5b46b9bee909fab5fc8f",
+   "0x81a4eebe3a4b7e7e5f28dfb6e71c7e54259cbb66",
+   "0xaaf877c3db84f0463972a74be0674790dec42767",
+   "0x3f5c9f2db6ee4fbfa2abf7d25ee028c9c151e69b",
+   "0x48c97fb814920dcb0ebb61697b7a9e3f3a5cb6b6",
+   "0x1cdbba8aaf9d7dc092bd867a8ddab148a02a40d8",
+   "0x8e9262d18c6d981b16d7cbedc6d35e499a99f79b",
+   "0x776becfa5cc2a336bd738cac73ee940aa8e40c0f",
+   "0xd2b25b963297de4e8d71eacfdc58f447a0b144e0",
+   "0xf2dfc5ccbc20fcc17570eeb8d4fcc4e98a13131e",
+   "0xaa0b1a0edea913956f22da199efd535bc4337673",
+   "0x2a7b71a4fd6ffbcfd200e0a3a8ec95823713468b",
+   "0xc4a6bc90fe9073da3ee9835c738b548f07a5e9f7",
+   "0x3c471a0b500fca550ebd22f405f4ba5abc1590bd",
+   "0x9bed4da44f511300e88d65f80cfa882518ac93cd",
+   "0xf6ba88de6bdeb13ad28aa06241037b63740903f9",
+   "0x94af50d35c03b946374696b4f2da75ed4427176c"
+  ],
+  "approval_spenders": [
+   [
+    "0x000000000022d473030f116ddee9f6b43ac78ba3",
+    5
+   ],
+   [
+    "0xb2f72e96bd9e7179fddb654b245d8c2d77cb1011",
+    1
+   ],
+   [
+    "0x96dcb77ce531240a0ae1128772e8c845471ae070",
+    1
+   ],
+   [
+    "0x2c74900c78210cdf3dc3251831c1475265a42dca",
+    1
+   ],
+   [
+    "0x263f061f2d1f6bfbb219f10a5e22321616107ebf",
+    1
+   ]
+  ]
+ }
+}

@@ -1,0 +1,76 @@
+Oct 8 paper mean return by stake (current exit): {'0.0012': 2.19, '0.004': 2.43, '0.012': 2.49, '0.03': 2.47, '0.06': 2.41, '0.1': 2.33, '0.2': 2.16, '0.3': 2.01, '0.5': 1.78, '1.0': 1.38}
+events: 55 trades, 11 canary events
+top 0.1 K 2 cap None     trades  55 profit 0.07624 ETH vs flat 0.12827 (59% kept) resets 5 halted None warn-stakes [('us', '10-08 13:15', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:19', '0.0012'), ('canary', '10-08 16:13', '0.0012')] final 0.1
+top 0.1 K 2 cap 10       trades  19 profit 0.01572 ETH vs flat 0.03942 (40% kept) resets 1 halted None warn-stakes [('canary', '10-08 16:13', '0.1')] final 0.03
+top 0.1 K 3 cap None     trades  55 profit 0.06274 ETH vs flat 0.12827 (49% kept) resets 5 halted None warn-stakes [('us', '10-08 13:15', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:19', '0.0012'), ('canary', '10-08 16:13', '0.0012')] final 0.1
+top 0.1 K 3 cap 10       trades  19 profit 0.00644 ETH vs flat 0.03942 (16% kept) resets 1 halted None warn-stakes [('canary', '10-08 16:13', '0.1')] final 0.012
+top 0.1 K 5 cap None     trades  55 profit 0.03810 ETH vs flat 0.12827 (30% kept) resets 5 halted None warn-stakes [('us', '10-08 13:15', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:19', '0.0012'), ('canary', '10-08 16:13', '0.0012')] final 0.1
+top 0.1 K 5 cap 10       trades  19 profit 0.00245 ETH vs flat 0.03942 (6% kept) resets 1 halted None warn-stakes [('canary', '10-08 16:13', '0.03')] final 0.012
+  (top 0.1 K 3, no fresh rule: profit 0.07506, kept 59%, warn-stakes [('us', '10-08 13:15', '0.1'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:19', '0.0012'), ('canary', '10-08 16:13', '0.0012')])
+top 1.0 K 2 cap None     trades  55 profit 0.38402 ETH vs flat 0.75958 (51% kept) resets 5 halted None warn-stakes [('us', '10-08 13:15', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:19', '0.0012'), ('canary', '10-08 16:13', '0.0012')] final 1.0
+top 1.0 K 2 cap 10       trades  19 profit 0.02126 ETH vs flat 0.25407 (8% kept) resets 1 halted None warn-stakes [('canary', '10-08 16:13', '1.0')] final 0.03
+top 1.0 K 3 cap None     trades  55 profit 0.22609 ETH vs flat 0.75958 (30% kept) resets 5 halted None warn-stakes [('us', '10-08 13:15', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:19', '0.0012'), ('canary', '10-08 16:13', '0.0012')] final 0.3
+top 1.0 K 3 cap 10       trades  19 profit 0.00644 ETH vs flat 0.25407 (3% kept) resets 1 halted None warn-stakes [('canary', '10-08 16:13', '0.1')] final 0.012
+top 1.0 K 5 cap None     trades  55 profit 0.08346 ETH vs flat 0.75958 (11% kept) resets 5 halted None warn-stakes [('us', '10-08 13:15', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:19', '0.0012'), ('canary', '10-08 16:13', '0.0012')] final 0.1
+top 1.0 K 5 cap 10       trades  19 profit 0.00245 ETH vs flat 0.25407 (1% kept) resets 1 halted None warn-stakes [('canary', '10-08 16:13', '0.03')] final 0.012
+  (top 1.0 K 3, no fresh rule: profit 0.27286, kept 36%, warn-stakes [('us', '10-08 13:15', '1.0'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:16', '0.0012'), ('us', '10-08 13:19', '0.0012'), ('canary', '10-08 16:13', '0.0012')])
+
+TRACE top 1.0, K 3, no cap:
+10-08 05:59 0xca04a1e3 stake 0.0012 ret -0.0039 L 767 clean -> next rung 0.0012
+10-08 06:05 0x069688d0 stake 0.0012 ret -0.0037 L None clean -> next rung 0.0012
+10-08 09:45 0x9471ca38 stake 0.0012 ret +0.0129 L 2497 clean -> next rung 0.012
+10-08 09:49 0x4d4fbc27 stake  0.012 ret +0.0190 L 2623 clean -> next rung 0.012
+10-08 10:06 0xcd177f3e stake  0.012 ret +0.0194 L 173 clean -> next rung 0.012
+10-08 10:07 0x7c47f287 stake  0.012 ret +0.0198 L 111 clean -> next rung 0.03
+10-08 10:08 0x3d8e5e54 stake   0.03 ret +0.0629 L 2493 clean -> next rung 0.03
+10-08 10:14 0xfcca4dea stake   0.03 ret +0.0198 L 64 clean -> next rung 0.03
+10-08 10:16 0x5c6984cc stake   0.03 ret +0.0187 L 233 clean -> next rung 0.1
+10-08 10:17 0x4f118abc stake    0.1 ret +0.0137 L 81 clean -> next rung 0.1
+10-08 10:18 0x0efa329f stake    0.1 ret +0.0085 L 240 clean -> next rung 0.1
+10-08 10:19 0x31f32dce stake    0.1 ret +0.0127 L 2488 clean -> next rung 0.3
+10-08 10:29 0x200871eb stake    0.3 ret +0.0604 L 2496 clean -> next rung 0.3
+10-08 10:34 0x2f165487 stake    0.3 ret +0.0135 L 2519 clean -> next rung 0.3
+10-08 10:39 0xdbe5f086 stake    0.3 ret +0.0120 L 2484 clean -> next rung 1.0
+10-08 10:44 0x2f62a5a1 stake    1.0 ret +0.0116 L 2488 clean -> next rung 1.0
+10-08 10:49 0xffdf1885 stake    1.0 ret +0.0177 L 863 clean -> next rung 1.0
+10-08 10:51 0xc9420b3f stake    1.0 ret +0.0142 L 2464 clean -> next rung 1.0
+10-08 10:56 0x7b8b847a stake    1.0 ret +0.0099 L 277 clean -> next rung 1.0
+10-08 10:57 0x34d0cdfc stake    1.0 ret +0.0067 L 2316 clean -> next rung 1.0
+10-08 11:01 0x270f85ad stake    1.0 ret +0.0170 L 67 clean -> next rung 1.0
+10-08 11:02 0x5736fabe stake    1.0 ret -0.0005 L 5372 clean -> next rung 1.0
+10-08 11:02 0x994204ce stake    1.0 ret +0.0162 L 902 clean -> next rung 1.0
+10-08 11:04 0x63392359 stake    1.0 ret +0.0279 L 2495 clean -> next rung 1.0
+10-08 11:09 0x9aca59f6 stake    1.0 ret -0.0020 L 945 clean -> next rung 1.0
+10-08 11:12 0xcbafe43c stake    1.0 ret +0.0191 L 284 clean -> next rung 1.0
+10-08 11:14 0x272fffe2 stake    1.0 ret +0.0161 L 2061 clean -> next rung 1.0
+10-08 12:07 0x149059c9 stake 0.0012 ret +0.0767 L 9785 clean -> next rung 1.0
+10-08 12:27 0xb166f963 stake 0.0012 ret +0.0693 L 276 clean -> next rung 1.0
+10-08 13:15 0x3a922cb2 stake 0.0012 ret -0.0083 L 6 WARN -> next rung 0.0012
+10-08 13:16 0x7cfa4232 stake 0.0012 ret +0.0783 L 6 WARN -> next rung 0.0012
+10-08 13:16 0xf36b6bac stake 0.0012 ret +0.0572 L 6 WARN -> next rung 0.0012
+10-08 13:17 0x7223753b stake 0.0012 ret +0.0576 L 8 WATCH -> next rung 0.0012
+10-08 13:18 0x16df2826 stake 0.0012 ret +0.0777 L 13 WATCH -> next rung 0.0012
+10-08 13:18 0x3578b252 stake 0.0012 ret -0.0084 L 7 WATCH -> next rung 0.0012
+10-08 13:19 0x7490a93c stake 0.0012 ret -0.0052 L 5 WARN -> next rung 0.0012
+10-08 14:32 0xe27bfddf stake 0.0012 ret -0.0042 L 9856 clean -> next rung 0.0012
+10-08 16:13 canary lag 6 -> WARN, stake 0.0012
+10-08 21:58 0xc36d4e58 stake 0.0012 ret +0.0521 L 2488 clean -> next rung 0.0012
+10-08 22:27 0x82801ba0 stake 0.0012 ret +0.0134 L 2526 clean -> next rung 0.0012
+10-08 22:32 0x14259eff stake 0.0012 ret +0.0203 L 2507 clean -> next rung 0.012
+10-08 22:41 0xf6c1a2ad stake  0.012 ret +0.0077 L 135 clean -> next rung 0.012
+10-08 22:42 0x71a4efac stake  0.012 ret +0.0154 L 2477 clean -> next rung 0.012
+10-08 22:48 0xf87c9471 stake  0.012 ret -0.0000 L 85 clean -> next rung 0.03
+10-08 22:48 0xfd84a22b stake   0.03 ret +0.0263 L 98 clean -> next rung 0.03
+10-08 22:49 0xe091fae1 stake   0.03 ret +0.0207 L 2522 clean -> next rung 0.03
+10-08 22:54 0x38dad78e stake   0.03 ret +0.0317 L 2348 clean -> next rung 0.1
+10-09 10:48 0x2a928e99 stake    0.1 ret +0.0233 L 18072 clean -> next rung 0.1
+10-09 10:49 0x2749b5d1 stake    0.1 ret +0.0233 L 14 WATCH -> next rung 0.1
+10-09 10:50 0x43c1ce10 stake    0.1 ret +0.0233 L 1904 clean -> next rung 0.1
+10-09 11:14 0xe444ad37 stake    0.1 ret +0.0233 L 2033 clean -> next rung 0.1
+10-09 11:23 0xa5b3513d stake    0.1 ret +0.0233 L 1895 clean -> next rung 0.3
+10-09 11:27 0x03d90ea1 stake    0.3 ret +0.0201 L 1504 clean -> next rung 0.3
+10-09 11:31 0xda701818 stake    0.3 ret +0.0201 L 119 clean -> next rung 0.3
+10-09 11:32 0x12c952fa stake    0.3 ret +0.0201 L 16 WATCH -> next rung 0.3
+10-09 11:36 0x2701d15a stake    0.3 ret +0.0201 L 1609 clean -> next rung 0.3
+fresh-trigger rule at flat 0.1: forgoes 0.03575 ETH of 0.12827 (27.9%) over 9 fresh trades
+fresh-trigger rule at flat 1.0: forgoes 0.13684 ETH of 0.75958 (18.0%) over 9 fresh trades

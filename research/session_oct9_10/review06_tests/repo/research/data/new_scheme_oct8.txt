@@ -1,0 +1,20 @@
+blocks 83394000-83462500: 455 no-hook ETH pools, 40 by the operator's launch call
+the burst's block after the launch: [(7, 1), (8, 7), (9, 28), (10, 2), (11, 1), (13, 1)]
+
+THE SEAT on the operator's launches: $X at launch + k, sold on the burst
+   $ 0.39 landing at launch +5: n 40, mean +5.8% (gas in), worst +3.3%, positive 40/40
+   $ 0.39 landing at launch +7: n 40, mean +5.8% (gas in), worst +3.3%, positive 40/40
+   $ 1.28 landing at launch +5: n 40, mean +8.3% (gas in), worst +5.9%, positive 40/40
+   $ 1.28 landing at launch +7: n 40, mean +8.3% (gas in), worst +5.9%, positive 40/40
+   $ 3.08 landing at launch +5: n 40, mean +9.0% (gas in), worst +6.6%, positive 40/40
+   $ 3.08 landing at launch +7: n 40, mean +9.0% (gas in), worst +6.6%, positive 40/40
+   $12.85 landing at launch +5: n 40, mean +9.3% (gas in), worst +6.9%, positive 40/40
+   $12.85 landing at launch +7: n 40, mean +9.3% (gas in), worst +6.9%, positive 40/40
+
+THE FOLLOW TRADE on every launch family (land first real buy + 2, take profit, out by + 4)
+   0x58daec31 0xac9650d8        n  94: mean -1.36%, positive 2/94, worst -2.4%
+   operator (0x2fcb9108)        n  40: mean -0.49%, positive 0/40, worst -0.5%
+   0xca11bde0 0x174dea71        n  18: mean +0.11%, positive 7/18, worst -1.0%
+   0x8366a39c 0x6276cbbe        n   3: mean -0.56%, positive 0/3, worst -0.6%
+   0xd0fd42bd 0xac9650d8        n   1: mean -0.48%, positive 0/1, worst -0.5%
+   0x5b91eef3 0x54fd9c4d        n   1: mean -2.45%, positive 0/1, worst -2.4%

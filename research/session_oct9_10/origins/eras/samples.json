@@ -1,0 +1,2272 @@
+[
+ {
+  "tag": "early-1.0",
+  "time": "07-26 02:04",
+  "bn": 19497914,
+  "launch_tx": "0x8eaadc448a424d85c11ecc463e533a907a4f6edd062a46c23053a450f1007897",
+  "creator": "0xb5295f380a03368f6920889655f8fbc84218de55",
+  "creator_nonce": 0,
+  "value": 1.0,
+  "pull_delay_blocks": 2212,
+  "buyers": 29,
+  "crowd": 29,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   0
+  ],
+  "crowd_funders": [
+   [
+    "0xe79093df41f110fc5893fa0c4c05e6a5953582f1",
+    1
+   ],
+   [
+    "0xd98594636cf78f1af2a3c8fdee383ed9feebae89",
+    1
+   ],
+   [
+    "0x6e3ab1798c969e4167c9f6c2851826a326eab47d",
+    1
+   ],
+   [
+    "0xaf6c04f2a1ffaf838c89df38fb76a0e209b27b42",
+    1
+   ],
+   [
+    "0x08cc5c7639710496345983b6ef60800f7b394d3b",
+    1
+   ],
+   [
+    "0xb1180881f9d360a111a0632e4c6286e1a00e0f13",
+    1
+   ]
+  ],
+  "crowd_hop2": [
+   [
+    "0x3691930bc11a858c67f638ceb16b7659fd376210",
+    29
+   ]
+  ],
+  "fund_chain": [
+   [
+    19497633,
+    "0x73c04e35e340a4b824faeb64d54b16ea48c56406",
+    "0xb5295f380a03368f6920889655f8fbc84218de55",
+    1.09999298336,
+    0
+   ],
+   [
+    19497618,
+    "0x3691930bc11a858c67f638ceb16b7659fd376210",
+    "0x73c04e35e340a4b824faeb64d54b16ea48c56406",
+    1.1,
+    0
+   ]
+  ],
+  "dispatcher": "0x3691930bc11a858c67f638ceb16b7659fd376210",
+  "dispatcher_outs": 30,
+  "pot_dispatcher": 7.639,
+  "dispatcher_in_top": [
+   [
+    "0x1f7b37d9574f2d975864200c53eab45ff14b7b76",
+    2.317519277362468,
+    2,
+    19497610
+   ],
+   [
+    "0xec82f77ebb186bfe6066a14383a6d9dde87e2b9c",
+    0.24554515732946888,
+    0,
+    19497608
+   ],
+   [
+    "0xa2033d7af6751d15ac9b23d2e47525bbd11f17f8",
+    0.2446205612823178,
+    0,
+    19497605
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [
+   [
+    "0x1f7b37d9574f2d975864200c53eab45ff14b7b76",
+    19496814,
+    2.317519277362468
+   ]
+  ],
+  "sweep": "0x794495bbbb322001001a87bee86ea29748ee8992",
+  "pot_sweep": 7.6378,
+  "sweep_from_crowd": 29,
+  "sweep_n_out": 30,
+  "sweep_first_outs": [
+   [
+    167,
+    "0x9d291af6c5b87245f23e26563d031c9c4ddbb03b",
+    1.22,
+    0
+   ],
+   [
+    172,
+    "0xb505d8cee1c4489283aaca3c4afca44ddef68dc6",
+    0.23835966767641664,
+    1
+   ],
+   [
+    172,
+    "0xc6b388e05a9a2681ba4d4bec59e0e64ec80e0255",
+    0.2042355745042846,
+    2
+   ]
+  ],
+  "sweep_next": "0x9d291af6c5b87245f23e26563d031c9c4ddbb03b",
+  "payout": [
+   [
+    160,
+    "0x794495bbbb322001001a87bee86ea29748ee8992",
+    4.890887585035738,
+    5
+   ]
+  ]
+ },
+ {
+  "tag": "early-2.0",
+  "time": "07-27 00:38",
+  "bn": 20307751,
+  "launch_tx": "0x854827dbad80eae0ef71e4f4ece40d3f79e734a6f978f3562c2ddbd63b566240",
+  "creator": "0xf2aad4c2981d86bcc0c9ed8a2f03e66b9a03a736",
+  "creator_nonce": 0,
+  "value": 2.0,
+  "pull_delay_blocks": 1388,
+  "buyers": 40,
+  "crowd": 40,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   1205
+  ],
+  "crowd_funders": [
+   [
+    "0xb4646f0f9d05aea9db1e348078f6ca08b34a064f",
+    1
+   ],
+   [
+    "0x51ebf31316d02a518780ccf49da77eaf38556f54",
+    1
+   ],
+   [
+    "0xf559be5e9d223e9c634ccca5d2086e60975190a8",
+    1
+   ],
+   [
+    "0xc7d9f752f9e2d56749ff7dd7813db3b67da28aeb",
+    1
+   ],
+   [
+    "0x180ae7b8a817e62c4eeb26de734330256ba35721",
+    1
+   ],
+   [
+    "0x67b1e78b64880802edb0de227da4bde5af7ba5ba",
+    1
+   ]
+  ],
+  "crowd_hop2": [
+   [
+    "0xb57e00c46ad2c003b2f02f787a7ec65cccec59fd",
+    39
+   ]
+  ],
+  "fund_chain": [
+   [
+    20307267,
+    "0xb6626371b74db449aa640ab5be299997560433c2",
+    "0xf2aad4c2981d86bcc0c9ed8a2f03e66b9a03a736",
+    2.0999942004,
+    0
+   ],
+   [
+    20307252,
+    "0xb57e00c46ad2c003b2f02f787a7ec65cccec59fd",
+    "0xb6626371b74db449aa640ab5be299997560433c2",
+    2.1,
+    0
+   ]
+  ],
+  "dispatcher": "0xb57e00c46ad2c003b2f02f787a7ec65cccec59fd",
+  "dispatcher_outs": 40,
+  "pot_dispatcher": 8.2784,
+  "dispatcher_in_top": [
+   [
+    "0xcb420df6135c1bd2dcaf2ba87c2429910d743300",
+    0.32998839408,
+    0,
+    20307242
+   ],
+   [
+    "0x74bf75227d0e12c8dac2a4573411a227153ddf31",
+    0.17675213879461948,
+    0,
+    20307242
+   ],
+   [
+    "0x6b9b3be8caeb38c3b3b93fc1f65c84ea0b04e685",
+    0.1765250194456837,
+    0,
+    20307239
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0xa4a1e0c3d2e20b3654ba60ae4860bc8078ca5fad",
+  "pot_sweep": 8.3343,
+  "sweep_from_crowd": 39,
+  "sweep_n_out": 50,
+  "sweep_first_outs": [
+   [
+    373,
+    "0x6e778bc5cf419e6e77f60b450d6fc07540fbc577",
+    0.53,
+    0
+   ],
+   [
+    379,
+    "0x0a44140984e9c6a68394c7bf575b9cb78dcbb6c3",
+    0.17323316002262304,
+    1
+   ],
+   [
+    379,
+    "0xa3be5980653abbe625e453f1f9e6479ceefdac5e",
+    0.14529797911982992,
+    2
+   ]
+  ],
+  "sweep_next": "0x6e778bc5cf419e6e77f60b450d6fc07540fbc577",
+  "payout": [
+   [
+    365,
+    "0xa4a1e0c3d2e20b3654ba60ae4860bc8078ca5fad",
+    6.298223159049751,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "early-8.0",
+  "time": "07-27 01:24",
+  "bn": 20335153,
+  "launch_tx": "0x47dd77e26486e2d2125060fbbb55aae73cc13bf48990c084d3ee79a50ef6bd6c",
+  "creator": "0xb63e14855a726b94649f5f5fa5ed6799014ab5d7",
+  "creator_nonce": 0,
+  "value": 8.0,
+  "pull_delay_blocks": 1056,
+  "buyers": 35,
+  "crowd": 35,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   2228
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    3
+   ],
+   [
+    "0x1ba8390db776c8cf85d63e6c802c27c99af5d8f2",
+    1
+   ],
+   [
+    "0xc21fad213cd579f3ca3bc5fea65ce9062cf8c48d",
+    1
+   ],
+   [
+    "0x531332219707f9b9d674151aef33410bbef9d438",
+    1
+   ],
+   [
+    "0xd0a2821ba4977508d1067805815916652e8f7cfd",
+    1
+   ],
+   [
+    "0x2a8902b1aac19a254d9a3dd7fdc529de1fa387ab",
+    1
+   ]
+  ],
+  "crowd_hop2": [
+   [
+    "0x2b4156ac5dd9b41bfec47904c7c1a2b74ecb3ceb",
+    32
+   ]
+  ],
+  "fund_chain": [
+   [
+    20334504,
+    "0x0df0be7ffe0de6a00bc322298c2e6d1e1b975fb0",
+    "0xb63e14855a726b94649f5f5fa5ed6799014ab5d7",
+    8.09999425104,
+    0
+   ],
+   [
+    20334488,
+    "0x2b4156ac5dd9b41bfec47904c7c1a2b74ecb3ceb",
+    "0x0df0be7ffe0de6a00bc322298c2e6d1e1b975fb0",
+    8.1,
+    0
+   ]
+  ],
+  "dispatcher": "0x2b4156ac5dd9b41bfec47904c7c1a2b74ecb3ceb",
+  "dispatcher_outs": 35,
+  "pot_dispatcher": 16.3568,
+  "dispatcher_in_top": [
+   [
+    "0xd4c3fc741e85c382248e03da9650328971f00ab6",
+    16.35694724872889,
+    0,
+    20334481
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "0.45-aug20",
+  "time": "08-19 18:48",
+  "bn": 40786326,
+  "launch_tx": "0x11c62b17bc44b5a6c40c0a564c78021457dba507296500059632d675686b9953",
+  "creator": "0x38796a165cfc2fca11b53a30a43795e631d472ff",
+  "creator_nonce": 0,
+  "value": 0.45,
+  "pull_delay_blocks": 21930,
+  "buyers": 15,
+  "crowd": 14,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   15087
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    14
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "1.2-aug28",
+  "time": "08-28 10:29",
+  "bn": 48227972,
+  "launch_tx": "0xa4ff6640aa35046a0900d13aba9a4abc6c01040018efbcef315b7ced40beca28",
+  "creator": "0x84bd5d6c48c4556f23a72f18e29e7b54755c4293",
+  "creator_nonce": 0,
+  "value": 1.2,
+  "pull_delay_blocks": 5386,
+  "buyers": 14,
+  "crowd": 14,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   3
+  ],
+  "crowd_funders": [
+   [
+    "0x0a7ff63091c6f5105f4a46f0483560712e2c0f47",
+    1
+   ],
+   [
+    "0x8c878ebdb3ba9ce50a244a8d540e342ac7f2ad2d",
+    1
+   ],
+   [
+    "0xa2c8e3b052de3f2302a41b70fa48b2cd4d519c7e",
+    1
+   ],
+   [
+    "0x884800963a4ff5618ce8957c566a6bfd25802087",
+    1
+   ],
+   [
+    "0xdb39869eb5db0efa5a226d8123883f6cfc1e2bde",
+    1
+   ],
+   [
+    "0x4d38356ad37e2e3b7b2d7bc22d48b56c64523da7",
+    1
+   ]
+  ],
+  "crowd_hop2": [
+   [
+    "0xd8c181b3b5ba0bd36417f9a5709ca60fa025e591",
+    14
+   ]
+  ],
+  "fund_chain": [
+   [
+    48227338,
+    "0x5b9bec293e0a59247a1d0e68b6ebad0bd6341d33",
+    "0x84bd5d6c48c4556f23a72f18e29e7b54755c4293",
+    1.2499577908,
+    0
+   ]
+  ],
+  "dispatcher": "0x5b9bec293e0a59247a1d0e68b6ebad0bd6341d33",
+  "dispatcher_outs": 1,
+  "pot_dispatcher": 1.25,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0x408fcf1bdba2f835366e171cdd0f93f0ed135dd7",
+  "pot_sweep": 3.7743,
+  "sweep_from_crowd": 14,
+  "sweep_n_out": 15,
+  "sweep_first_outs": [
+   [
+    291,
+    "0x78026cebc04209daff4b1624b078b20d5437ce35",
+    1.33,
+    0
+   ],
+   [
+    319,
+    "0xcaad415ceea0cbc5679b1511ac4a684d640b4c68",
+    0.1677419936071529,
+    1
+   ],
+   [
+    321,
+    "0x2ef9659d95203fb0879284728b3e35f39101359b",
+    0.1813568484472756,
+    2
+   ]
+  ],
+  "sweep_next": "0x78026cebc04209daff4b1624b078b20d5437ce35",
+  "payout": [
+   [
+    273,
+    "0x408fcf1bdba2f835366e171cdd0f93f0ed135dd7",
+    3.490142139659851,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "0.45-aug28",
+  "time": "08-28 10:33",
+  "bn": 48230318,
+  "launch_tx": "0x32f748488ca1d4c7625ce1eb785ad7a716c30cb2c2eabe30c03c2fe8a905afc9",
+  "creator": "0x67c9abe3699e6f0bb4b7e0a02ade171963d26485",
+  "creator_nonce": 0,
+  "value": 0.44,
+  "pull_delay_blocks": 960,
+  "buyers": 13,
+  "crowd": 13,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   2
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    13
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "0.45-sep05",
+  "time": "09-05 09:09",
+  "bn": 55002698,
+  "launch_tx": "0x50845567bde41251d594070c920110a5832d8233baaa811ea6f811fd7ac19d82",
+  "creator": "0x59fa94e6666ad7d7b25aedbe468d2d3ddf1723b2",
+  "creator_nonce": 0,
+  "value": 0.45,
+  "pull_delay_blocks": 171,
+  "buyers": 14,
+  "crowd": 14,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   65
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    14
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": "0x37a9e49d0a1bb41b27be1c4dfdf67bb72572a798",
+  "pot_sweep": 3.3486,
+  "sweep_from_crowd": 13,
+  "sweep_n_out": 16,
+  "sweep_first_outs": [
+   [
+    127,
+    "0x41197ce734f793b0eca111911f9224b621103d10",
+    0.5,
+    0
+   ],
+   [
+    133,
+    "0x394eea8342f3278fa4bb74c38f9169ad032c7b7c",
+    0.19943212850802622,
+    1
+   ],
+   [
+    136,
+    "0x4560fe2eb4a5d4ea54c02de40576bbc24714a5d3",
+    0.20715732818519744,
+    2
+   ]
+  ],
+  "sweep_next": "0x41197ce734f793b0eca111911f9224b621103d10",
+  "payout": [
+   [
+    114,
+    "0x37a9e49d0a1bb41b27be1c4dfdf67bb72572a798",
+    0.9677389143229198,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "L006",
+  "time": "09-11 17:23",
+  "bn": 60430173,
+  "launch_tx": "0x314e1a1dfd9795c490ff2e1496adf462768b14ef05dec375736f00916c91a01e",
+  "creator": "0xdf66853770f7c19320a8cd15794a0721f467f36b",
+  "creator_nonce": 0,
+  "value": 2.2,
+  "pull_delay_blocks": 4258,
+  "buyers": 14,
+  "crowd": 0,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   579
+  ],
+  "crowd_funders": [],
+  "crowd_hop2": [],
+  "fund_chain": [
+   [
+    60429991,
+    "0xf069e2f98b145f5352f76a24f5a32d92bc24c6bd",
+    "0xdf66853770f7c19320a8cd15794a0721f467f36b",
+    2.2499905784,
+    0
+   ],
+   [
+    60429947,
+    "0xd460e53a7112ff0ff6ec095532dfdd64ba00fabf",
+    "0xf069e2f98b145f5352f76a24f5a32d92bc24c6bd",
+    2.25,
+    0
+   ]
+  ],
+  "dispatcher": "0xd460e53a7112ff0ff6ec095532dfdd64ba00fabf",
+  "dispatcher_outs": 15,
+  "pot_dispatcher": 4.6659,
+  "dispatcher_in_top": [
+   [
+    "0xf6b9ca599bc1bebdeecad3698583d0b291064459",
+    1.136335834566479,
+    14,
+    60429924
+   ],
+   [
+    "0xc8f4e82e12224488f5d2a2effd18ea95a515ce61",
+    0.2132395031072761,
+    4,
+    60429928
+   ],
+   [
+    "0x22d19e3d55da8a92da408299841c675516445e97",
+    0.2065660935733624,
+    4,
+    60429927
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "A-sep11-end",
+  "time": "09-11 17:40",
+  "bn": 60440370,
+  "launch_tx": "0x4ca18d4b4437c0f857dd312cd8b2b77db517ac4c580976830162f10ab542e6ea",
+  "creator": "0xa58747f2ae8d9db3feec40c9479f55cecbe61eb9",
+  "creator_nonce": 0,
+  "value": 2.15,
+  "pull_delay_blocks": 1254,
+  "buyers": 19,
+  "crowd": 2,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   29948
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    2
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "L004",
+  "time": "09-11 18:56",
+  "bn": 60484973,
+  "launch_tx": "0x3dd82c35722be06645f233d99113da7d2ef3a31edb7e1a1964d7df853ee90de8",
+  "creator": "0x2f1f44d2ea66b178d4f0b4291e9cf95d66c5830a",
+  "creator_nonce": 0,
+  "value": 1.0,
+  "pull_delay_blocks": 1281,
+  "buyers": 23,
+  "crowd": 5,
+  "buyer_nonce_min_med_max": [
+   72,
+   693,
+   47557
+  ],
+  "crowd_funders": [
+   [
+    "0x4c9e6d94402e3fc5b3176cbcfa3a03c08ba8fef6",
+    4
+   ],
+   [
+    "(none in window)",
+    1
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [
+   [
+    60484487,
+    "0x4c9e6d94402e3fc5b3176cbcfa3a03c08ba8fef6",
+    "0x2f1f44d2ea66b178d4f0b4291e9cf95d66c5830a",
+    1.1,
+    0
+   ]
+  ],
+  "dispatcher": "0x4c9e6d94402e3fc5b3176cbcfa3a03c08ba8fef6",
+  "dispatcher_outs": 23,
+  "pot_dispatcher": 5.9577,
+  "dispatcher_in_top": [
+   [
+    "0x539e8e22d459b764a95f9e88c38a9f60223b07e9",
+    5.9577217798623,
+    0,
+    60484481
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0xc2bb718beda6e4ff86b40d0ba3d7b5e2f913c27d",
+  "pot_sweep": 5.9643,
+  "sweep_from_crowd": 4,
+  "sweep_n_out": 1,
+  "sweep_first_outs": [
+   [
+    144,
+    "0xdda73063d65374007f424631c40fe7a1835813c3",
+    5.964243024704409,
+    0
+   ]
+  ],
+  "sweep_next": "0xdda73063d65374007f424631c40fe7a1835813c3",
+  "payout": [
+   [
+    100,
+    "0xc2bb718beda6e4ff86b40d0ba3d7b5e2f913c27d",
+    2.0766156991521245,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "ef44-first",
+  "time": "09-12 11:27",
+  "bn": 61069586,
+  "launch_tx": "0xbcc9ac0cd5d9c0ce1d0763cb75fda4633977f39e537617bc19ce2dd861823fbc",
+  "creator": "0xef44100548a252403dba9c7b9ee5257f87936c92",
+  "creator_nonce": 0,
+  "value": 0.4,
+  "pull_delay_blocks": 73,
+  "buyers": 3,
+  "crowd": 0,
+  "buyer_nonce_min_med_max": [
+   723,
+   10877,
+   48225
+  ],
+  "crowd_funders": [],
+  "crowd_hop2": [],
+  "fund_chain": [
+   [
+    61069372,
+    "0xf02faa6cff3e42c4b775903e187ca1d10904f8c5",
+    "0xef44100548a252403dba9c7b9ee5257f87936c92",
+    0.49999183312,
+    0
+   ],
+   [
+    61069325,
+    "0xe4dbffd3d57f7a90bf545242cb68150bd7f2fa53",
+    "0xf02faa6cff3e42c4b775903e187ca1d10904f8c5",
+    0.5,
+    0
+   ]
+  ],
+  "dispatcher": "0xe4dbffd3d57f7a90bf545242cb68150bd7f2fa53",
+  "dispatcher_outs": 16,
+  "pot_dispatcher": 3.5246,
+  "dispatcher_in_top": [
+   [
+    "0xf9a375ec15c43cd65fc4be43498dd1100f09c8a5",
+    0.5028581977421509,
+    10,
+    61069311
+   ],
+   [
+    "0xaf4a0f100bf14340f026e3b0b1dfab6fc0205a4f",
+    0.2278572079436397,
+    0,
+    61069314
+   ],
+   [
+    "0x5d7f0b7d77846407c92f255b9a04b5f0c6871533",
+    0.22783566039035463,
+    0,
+    61069311
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [
+   [
+    "0xf9a375ec15c43cd65fc4be43498dd1100f09c8a5",
+    61069107,
+    0.5028581977421509
+   ]
+  ],
+  "sweep": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+  "pot_sweep": 0.4,
+  "sweep_from_crowd": 0,
+  "sweep_n_out": 0,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": [
+   [
+    208,
+    "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+    0.4,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "1.97-first",
+  "time": "09-13 18:31",
+  "bn": 62171553,
+  "launch_tx": "0xcd71fbd657875972db4e85bf6350da57f8d48d140d36d96bfc4ae3e372b61277",
+  "creator": "0x1172b44476c23892714f56533d4154506f868965",
+  "creator_nonce": 0,
+  "value": 1.97,
+  "pull_delay_blocks": 752,
+  "buyers": 14,
+  "crowd": 11,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   49734
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    11
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "L007",
+  "time": "09-14 20:56",
+  "bn": 63107559,
+  "launch_tx": "0x6250527dc881de9db23afd2828c370fbe2c2df35c00b5fe31d85849969fbc3c4",
+  "creator": "0x8193696cc8b0b98e556b772b1ccfcd0ae35251fe",
+  "creator_nonce": 0,
+  "value": 3.0,
+  "pull_delay_blocks": null,
+  "buyers": 31,
+  "crowd": 30,
+  "buyer_nonce_min_med_max": [
+   105,
+   351,
+   473
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    30
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": null
+ },
+ {
+  "tag": "L008-first",
+  "time": "09-16 12:36",
+  "bn": 64513570,
+  "launch_tx": "0xc3338f6f785032bcfcd13a6af57d0723010848e7171dc7c1274a54ab2c0c07ec",
+  "creator": "0x03de8531a0d8ca71a0cb9ac7f5c978842ca57bbf",
+  "creator_nonce": 0,
+  "value": 0.9,
+  "pull_delay_blocks": 2279,
+  "buyers": 48,
+  "crowd": 48,
+  "buyer_nonce_min_med_max": [
+   4,
+   5,
+   8
+  ],
+  "crowd_funders": [
+   [
+    "0x8d7655fda96a13b95a238946104511a9bffa5bf9",
+    48
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [
+   [
+    64513054,
+    "0x8d7655fda96a13b95a238946104511a9bffa5bf9",
+    "0x03de8531a0d8ca71a0cb9ac7f5c978842ca57bbf",
+    1.0,
+    0
+   ]
+  ],
+  "dispatcher": "0x8d7655fda96a13b95a238946104511a9bffa5bf9",
+  "dispatcher_outs": 51,
+  "pot_dispatcher": 4.6948,
+  "dispatcher_in_top": [
+   [
+    "0xc0903f8f4a6cdac962c6b116dbc0fab4570edb3f",
+    4.694819747625092,
+    0,
+    64513047
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0x55a5ad223325f23884033702febb930cc3a3b378",
+  "pot_sweep": 4.6938,
+  "sweep_from_crowd": 48,
+  "sweep_n_out": 1,
+  "sweep_first_outs": [
+   [
+    129,
+    "0x8ea31e330c68e30074bc8c8bc6dba260c68f3518",
+    4.69378562791429,
+    0
+   ]
+  ],
+  "sweep_next": "0x8ea31e330c68e30074bc8c8bc6dba260c68f3518",
+  "payout": [
+   [
+    99,
+    "0x55a5ad223325f23884033702febb930cc3a3b378",
+    4.381813292183486,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "L009-first",
+  "time": "09-16 14:50",
+  "bn": 64592966,
+  "launch_tx": "0x0fcd5bebb105013c7c396818a67b913363a96adccbe320db7ab0a12f3ab82369",
+  "creator": "0x5dbbf32f492e17b44aa5566e10eec2f44e230f28",
+  "creator_nonce": 0,
+  "value": 1.0,
+  "pull_delay_blocks": 54,
+  "buyers": 7,
+  "crowd": 6,
+  "buyer_nonce_min_med_max": [
+   5,
+   8,
+   390
+  ],
+  "crowd_funders": [
+   [
+    "0x295cc980d6555b3ad8fc78ff3014a66a8b3c3389",
+    5
+   ],
+   [
+    "(none in window)",
+    1
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [
+   [
+    64592717,
+    "0x295cc980d6555b3ad8fc78ff3014a66a8b3c3389",
+    "0x5dbbf32f492e17b44aa5566e10eec2f44e230f28",
+    1.05,
+    0
+   ]
+  ],
+  "dispatcher": "0x295cc980d6555b3ad8fc78ff3014a66a8b3c3389",
+  "dispatcher_outs": 51,
+  "pot_dispatcher": 6.9513,
+  "dispatcher_in_top": [
+   [
+    "0x96ced4427d979ad626555a7c5c0e1e3f5caee88f",
+    6.9513268193393305,
+    0,
+    64592709
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0x1e4c35a709d241c336d07d73e5df0406c36277fc",
+  "pot_sweep": 6.9521,
+  "sweep_from_crowd": 5,
+  "sweep_n_out": 1,
+  "sweep_first_outs": [
+   [
+    180,
+    "0x0521569102346e943ca9099bd1a05435c938709c",
+    6.952102466024482,
+    0
+   ]
+  ],
+  "sweep_next": "0x0521569102346e943ca9099bd1a05435c938709c",
+  "payout": [
+   [
+    147,
+    "0x1e4c35a709d241c336d07d73e5df0406c36277fc",
+    1.158186810431946,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "L010-first-Bbirth",
+  "time": "09-18 07:59",
+  "bn": 66065037,
+  "launch_tx": "0x54be134597e82308adc7c87fa28f6a0f5b3d5e6cbe9835221009dcacce6fd31d",
+  "creator": "0x24f6f988c4f95122b8ad5f353ad9a4700af80297",
+  "creator_nonce": 0,
+  "value": 0.911,
+  "pull_delay_blocks": 1883,
+  "buyers": 21,
+  "crowd": 20,
+  "buyer_nonce_min_med_max": [
+   25,
+   30,
+   2901
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    20
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "L010-2nd",
+  "time": "09-18 14:11",
+  "bn": 66286157,
+  "launch_tx": "0xb06a70c70844c58c7e3402bfd82e46eb27472c5cf27b1b9be008808dbfd15360",
+  "creator": "0x63506bb7075a6d3f9c1197e1164202660b23c29d",
+  "creator_nonce": 0,
+  "value": 0.91,
+  "pull_delay_blocks": 3114,
+  "buyers": 23,
+  "crowd": 21,
+  "buyer_nonce_min_med_max": [
+   95,
+   113,
+   3073
+  ],
+  "crowd_funders": [
+   [
+    "0x092d490be32cc635c0269109bf8d16c94c5cde06",
+    20
+   ],
+   [
+    "(none in window)",
+    1
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [
+   [
+    66285662,
+    "0x092d490be32cc635c0269109bf8d16c94c5cde06",
+    "0x63506bb7075a6d3f9c1197e1164202660b23c29d",
+    1.1,
+    0
+   ]
+  ],
+  "dispatcher": "0x092d490be32cc635c0269109bf8d16c94c5cde06",
+  "dispatcher_outs": 23,
+  "pot_dispatcher": 5.7264,
+  "dispatcher_in_top": [
+   [
+    "0xa6e5d497d79133727a3aac8de5c35fcb833f231e",
+    5.72638494131846,
+    0,
+    66285654
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0x3176c85f9e3774a2c750dd063ae09b5c9248794c",
+  "pot_sweep": 5.7306,
+  "sweep_from_crowd": 20,
+  "sweep_n_out": 1,
+  "sweep_first_outs": [
+   [
+    163,
+    "0xa0cadc79620a234ae286b5e917b687929006cfe7",
+    5.730613433520229,
+    0
+   ]
+  ],
+  "sweep_next": "0xa0cadc79620a234ae286b5e917b687929006cfe7",
+  "payout": [
+   [
+    146,
+    "0x3176c85f9e3774a2c750dd063ae09b5c9248794c",
+    4.11823956496485,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "L009",
+  "time": "09-18 20:11",
+  "bn": 66501040,
+  "launch_tx": "0xd952041d9a4e8a4c35e481886c45b3565de964d1d3d7b086c3cc597c512a7639",
+  "creator": "0x551ecf13eb42c857be17fa57f8c581e4146b11bf",
+  "creator_nonce": 0,
+  "value": 1.5,
+  "pull_delay_blocks": 1172,
+  "buyers": 48,
+  "crowd": 46,
+  "buyer_nonce_min_med_max": [
+   47,
+   274,
+   3301
+  ],
+  "crowd_funders": [
+   [
+    "0xa63a9494aa312c44b01a7bebfc2e69c8408b22b2",
+    45
+   ],
+   [
+    "(none in window)",
+    1
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [
+   [
+    66500434,
+    "0xa63a9494aa312c44b01a7bebfc2e69c8408b22b2",
+    "0x551ecf13eb42c857be17fa57f8c581e4146b11bf",
+    1.55,
+    0
+   ]
+  ],
+  "dispatcher": "0xa63a9494aa312c44b01a7bebfc2e69c8408b22b2",
+  "dispatcher_outs": 51,
+  "pot_dispatcher": 7.2387,
+  "dispatcher_in_top": [
+   [
+    "0xad432962d8c31ebda549fe0cc587f9fb0c87fa09",
+    7.238769924057122,
+    0,
+    66500427
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0x30f2894ff1583f796edb8a003d251c83f7920c29",
+  "pot_sweep": 7.2374,
+  "sweep_from_crowd": 45,
+  "sweep_n_out": 1,
+  "sweep_first_outs": [
+   [
+    382,
+    "0x7842cdcfc001d371c8d51c8a4acd7d2772e06cdd",
+    7.237376231059951,
+    0
+   ]
+  ],
+  "sweep_next": "0x7842cdcfc001d371c8d51c8a4acd7d2772e06cdd",
+  "payout": [
+   [
+    349,
+    "0x30f2894ff1583f796edb8a003d251c83f7920c29",
+    5.113704737059786,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "L011-start",
+  "time": "09-21 19:25",
+  "bn": 69046398,
+  "launch_tx": "0xc0605d78f08b75aff75119e5ede9ccd93e9a43aab9ac8597f4795cfe296eac52",
+  "creator": "0x3eb5d19fe659d65e90106749532566c99ba595e3",
+  "creator_nonce": 0,
+  "value": 1.607,
+  "pull_delay_blocks": 1428,
+  "buyers": 27,
+  "crowd": 23,
+  "buyer_nonce_min_med_max": [
+   5,
+   8,
+   56987
+  ],
+  "crowd_funders": [
+   [
+    "0x3aff11da9bef3a7961aecb3c0b13a3d4a314f098",
+    19
+   ],
+   [
+    "0x70fbed57d7dfc24167836548448d9759e5c423c5",
+    1
+   ],
+   [
+    "0x5cdb751d5b61a2c16acec06045c0bc1b1ed3fed6",
+    1
+   ],
+   [
+    "0x07b17664c12302525a9078c9ea4085be0cc26a23",
+    1
+   ],
+   [
+    "0xd61141a99695d6aad6b777bdbf98caf629f45ff7",
+    1
+   ]
+  ],
+  "crowd_hop2": [
+   [
+    "(none)",
+    4
+   ]
+  ],
+  "fund_chain": [
+   [
+    69046151,
+    "0x3aff11da9bef3a7961aecb3c0b13a3d4a314f098",
+    "0x3eb5d19fe659d65e90106749532566c99ba595e3",
+    1.65,
+    0
+   ]
+  ],
+  "dispatcher": "0x3aff11da9bef3a7961aecb3c0b13a3d4a314f098",
+  "dispatcher_outs": 25,
+  "pot_dispatcher": 8.1527,
+  "dispatcher_in_top": [
+   [
+    "0x450bf4d6df70cc6de67542ed32c3702e3f43ad1c",
+    8.152689804130201,
+    0,
+    69046143
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "L011",
+  "time": "09-22 21:54",
+  "bn": 69992630,
+  "launch_tx": "0x6e3086c60f73e9c10c2b6d902d749610e191cfd9a1f1e7b29f7486d54bd55d72",
+  "creator": "0x4d185a9bec5b8a57e8a8675dc5c544d08ee678d6",
+  "creator_nonce": 0,
+  "value": 1.5,
+  "pull_delay_blocks": 8285,
+  "buyers": 26,
+  "crowd": 25,
+  "buyer_nonce_min_med_max": [
+   17,
+   180,
+   58963
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    25
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": "0x1b06a351d6932322424bcb42ec79e1fd6b0cc70a",
+  "pot_sweep": 6.6283,
+  "sweep_from_crowd": 23,
+  "sweep_n_out": 1,
+  "sweep_first_outs": [
+   [
+    170,
+    "0x0957c4dee1611b7fd2ab9240c45c82b1552e7933",
+    6.628272826218587,
+    0
+   ]
+  ],
+  "sweep_next": "0x0957c4dee1611b7fd2ab9240c45c82b1552e7933",
+  "payout": [
+   [
+    153,
+    "0x1b06a351d6932322424bcb42ec79e1fd6b0cc70a",
+    6.576113463465184,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "L012-first",
+  "time": "09-23 19:54",
+  "bn": 70779052,
+  "launch_tx": "0x8a20cd304d30c1243ba3529a0a64104ebc20946be0496b884ef858837dd236fa",
+  "creator": "0xdd2f08da2cdd7141e64834e97bde1155ffcffda5",
+  "creator_nonce": 0,
+  "value": 1.1,
+  "pull_delay_blocks": 4323,
+  "buyers": 27,
+  "crowd": 23,
+  "buyer_nonce_min_med_max": [
+   4,
+   5,
+   60757
+  ],
+  "crowd_funders": [
+   [
+    "0x8457a88ee68626a87a3286eb5a347ffcd31c31f3",
+    22
+   ],
+   [
+    "(none in window)",
+    1
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [
+   [
+    70778603,
+    "0x8457a88ee68626a87a3286eb5a347ffcd31c31f3",
+    "0xdd2f08da2cdd7141e64834e97bde1155ffcffda5",
+    1.245,
+    0
+   ]
+  ],
+  "dispatcher": "0x8457a88ee68626a87a3286eb5a347ffcd31c31f3",
+  "dispatcher_outs": 25,
+  "pot_dispatcher": 6.6115,
+  "dispatcher_in_top": [
+   [
+    "0x7b7cab121a3287bfbc42bbd552cbc3094745c9ae",
+    6.61153585943658,
+    0,
+    70778596
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0x8f8d2a8077839d20d0b67e1441741deb71e9a561",
+  "pot_sweep": 6.609,
+  "sweep_from_crowd": 22,
+  "sweep_n_out": 1,
+  "sweep_first_outs": [
+   [
+    124,
+    "0x89c84b0c0e9aefb28b52dbb352ad1a892f23fbe1",
+    6.608957703445491,
+    0
+   ]
+  ],
+  "sweep_next": "0x89c84b0c0e9aefb28b52dbb352ad1a892f23fbe1",
+  "payout": [
+   [
+    106,
+    "0x8f8d2a8077839d20d0b67e1441741deb71e9a561",
+    6.134656011966958,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "1.97-sep25",
+  "time": "09-25 16:10",
+  "bn": 72359934,
+  "launch_tx": "0xa09a89d2374ad80e438703866db2eb840c4ac90eb55fd91f465a086367464a10",
+  "creator": "0xe4da3f0e081ac76561694e5aa48ddb5082a5e0c8",
+  "creator_nonce": 0,
+  "value": 1.97,
+  "pull_delay_blocks": 16553,
+  "buyers": 12,
+  "crowd": 11,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   6688
+  ],
+  "crowd_funders": [
+   [
+    "0xb22b043a2ca62a3fa80b5963c90cf80735de515b",
+    1
+   ],
+   [
+    "0xdbb52a1e0c6a30e20e44b5b580eceb02a7fa6e31",
+    1
+   ],
+   [
+    "0x91b2bc3edca7ffd55d52a3c0131e831987b5e4ed",
+    1
+   ],
+   [
+    "0x1e36da9090d7e2bde46a8e2234d7aef4c22a97fd",
+    1
+   ],
+   [
+    "0x183b452926c5c54ba7ced41fa1c158fb89b9d11d",
+    1
+   ],
+   [
+    "0xc41892d9b14536589a848c187b01f2235387b963",
+    1
+   ]
+  ],
+  "crowd_hop2": [
+   [
+    "0xd1277caadce5eb75ad4fafcfac7556928b1447b4",
+    11
+   ]
+  ],
+  "fund_chain": [
+   [
+    72359626,
+    "0x5fceef58f5c787e03cbe17113639f6a3d438b492",
+    "0xe4da3f0e081ac76561694e5aa48ddb5082a5e0c8",
+    1.99999633488,
+    0
+   ],
+   [
+    72359580,
+    "0xd1277caadce5eb75ad4fafcfac7556928b1447b4",
+    "0x5fceef58f5c787e03cbe17113639f6a3d438b492",
+    2.0,
+    0
+   ]
+  ],
+  "dispatcher": "0xd1277caadce5eb75ad4fafcfac7556928b1447b4",
+  "dispatcher_outs": 13,
+  "pot_dispatcher": 3.571,
+  "dispatcher_in_top": [
+   [
+    "0x0438ae7e4b0b3d6be3c942bb0fe5fc524a747ba9",
+    3.543615013295981,
+    2,
+    72359568
+   ],
+   [
+    "0x489d0f5dbbd9c2793072e37ee79c0530623573b3",
+    0.006766564739182792,
+    7,
+    72359572
+   ],
+   [
+    "0x88843a0b17187c02cee927b7df18946819ce36a0",
+    0.005833247268543074,
+    13,
+    72359568
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [
+   [
+    "0x0438ae7e4b0b3d6be3c942bb0fe5fc524a747ba9",
+    71966227,
+    3.543615013295981
+   ]
+  ],
+  "sweep": "0xd364fa92b3e294a54aa1a59da967b0621894e418",
+  "pot_sweep": 3.5705,
+  "sweep_from_crowd": 11,
+  "sweep_n_out": 13,
+  "sweep_first_outs": [
+   [
+    65,
+    "0x15417275cd75a9ad341bd5d3b8db8bd71249ca09",
+    2.0,
+    0
+   ],
+   [
+    72,
+    "0x67da894b621e46e11701dab0de32030324b7b691",
+    0.14587966457985524,
+    1
+   ],
+   [
+    74,
+    "0x67a29aae559429032ee0cf02dc2d8628034cb5ce",
+    0.13929219463206,
+    2
+   ]
+  ],
+  "sweep_next": "0x15417275cd75a9ad341bd5d3b8db8bd71249ca09",
+  "payout": [
+   [
+    50,
+    "0xd364fa92b3e294a54aa1a59da967b0621894e418",
+    3.543990562690944,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "L012-mid",
+  "time": "09-29 21:13",
+  "bn": 75970443,
+  "launch_tx": "0x02a11ffc0278548c36eccc59c4ec3a010c19f866e3db97d5b80e5447088b3717",
+  "creator": "0xdd08954c5d804b0ff948585cf48722dc6140585e",
+  "creator_nonce": 0,
+  "value": 1.32,
+  "pull_delay_blocks": 1859,
+  "buyers": 27,
+  "crowd": 25,
+  "buyer_nonce_min_med_max": [
+   658,
+   1005,
+   72670
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    25
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "F197-last",
+  "time": "10-01 06:53",
+  "bn": 77175201,
+  "launch_tx": "0x71d480fb0e3d62103ee6aad0866ef20908f5639e613adb44b2aa1ce955b9ffc2",
+  "creator": "0x2347be6225110052d2eca39932bad1977479d717",
+  "creator_nonce": 0,
+  "value": 1.97,
+  "pull_delay_blocks": 3204,
+  "buyers": 11,
+  "crowd": 11,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   0
+  ],
+  "crowd_funders": [
+   [
+    "0x8bf569708f5616c19a935bd3f46d24632b4bebc7",
+    1
+   ],
+   [
+    "0x24ac0d5bf8a6732210fd3389866ac1c954fb314c",
+    1
+   ],
+   [
+    "0x782c2b8ca7623b463711cb55f1ee57b6fc6d5dee",
+    1
+   ],
+   [
+    "0xa7eb10abedc474f5e40219030282a5cfab413fa0",
+    1
+   ],
+   [
+    "0xe96e5843f21e57acd199f9384b16e548f4b992c7",
+    1
+   ],
+   [
+    "0x069adcef8c4fe46da3f02cb3b5987105ff1f1e54",
+    1
+   ]
+  ],
+  "crowd_hop2": [
+   [
+    "(none)",
+    10
+   ],
+   [
+    "0x037c01db7efd1f94879c89826e9068f8adb27c0e",
+    1
+   ]
+  ],
+  "fund_chain": [
+   [
+    77174913,
+    "0x45d2dc4b12b3348e6a50146d2fb27af3aff1e440",
+    "0x2347be6225110052d2eca39932bad1977479d717",
+    1.99999759488,
+    0
+   ]
+  ],
+  "dispatcher": "0x45d2dc4b12b3348e6a50146d2fb27af3aff1e440",
+  "dispatcher_outs": 1,
+  "pot_dispatcher": 2.0,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0x2e5d15b6e50762e2e77a9bc21d3721cf556f44d0",
+  "pot_sweep": 3.507,
+  "sweep_from_crowd": 11,
+  "sweep_n_out": 16,
+  "sweep_first_outs": [
+   [
+    134,
+    "0xd3c5ffe05a862d8eda86790f6d4c9d8582acbfa2",
+    0.5,
+    0
+   ],
+   [
+    141,
+    "0x276bc9d125646e178e49d4359c7248dd8d09aa52",
+    0.22827027316148432,
+    1
+   ],
+   [
+    143,
+    "0x553fb23d5380a6a83403612d09754440c747a051",
+    0.20101091755122713,
+    2
+   ]
+  ],
+  "sweep_next": "0xd3c5ffe05a862d8eda86790f6d4c9d8582acbfa2",
+  "payout": [
+   [
+    123,
+    "0x2e5d15b6e50762e2e77a9bc21d3721cf556f44d0",
+    3.480802714261638,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "L012-last",
+  "time": "10-04 01:36",
+  "bn": 79550702,
+  "launch_tx": "0x58b3af95d29e051dd51ba1cc6f15c5a0421394515c8518b3ceebe686e7005d71",
+  "creator": "0x3e3971844105b5ec923ec83d228c9d2a2872d2a4",
+  "creator_nonce": 0,
+  "value": 1.228,
+  "pull_delay_blocks": 8300,
+  "buyers": 53,
+  "crowd": 49,
+  "buyer_nonce_min_med_max": [
+   144,
+   2675,
+   81786
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    49
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "F40-first",
+  "time": "10-04 02:27",
+  "bn": 79581224,
+  "launch_tx": "0x3aed68ba9f399892a07530315b7fc30516abc2d9b79324d83c28d511861e3638",
+  "creator": "0xbd2845bff9bdb96c86afb33dfef9d43c1a5e95a4",
+  "creator_nonce": 0,
+  "value": 2.415,
+  "pull_delay_blocks": 2004,
+  "buyers": 38,
+  "crowd": 36,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   13808
+  ],
+  "crowd_funders": [
+   [
+    "0x1bf5d4dda9d1215e06e6ffc20510f6d2657b3833",
+    1
+   ],
+   [
+    "0x45e5875ff8b14c3b64ef0aacda840b8cd1f7af08",
+    1
+   ],
+   [
+    "0x42f8002674acb8babd9a05135d841b4d27030515",
+    1
+   ],
+   [
+    "0x5bb5e8f4f7e297f37252993673008f91a14a3289",
+    1
+   ],
+   [
+    "0xb1561b707950022e7b59dc61dd880d9cc8f19a1f",
+    1
+   ],
+   [
+    "0x11b221c7982c45608639943e989377d07620ab52",
+    1
+   ]
+  ],
+  "crowd_hop2": [
+   [
+    "0xe4a80014fd313036f8fe31a2aceb5d33f40d6a92",
+    36
+   ]
+  ],
+  "fund_chain": [
+   [
+    79581082,
+    "0x132a05c9217d36f7a3ce21883ce07fa5f6305eca",
+    "0xbd2845bff9bdb96c86afb33dfef9d43c1a5e95a4",
+    2.4659974824,
+    0
+   ],
+   [
+    79580996,
+    "0xe4a80014fd313036f8fe31a2aceb5d33f40d6a92",
+    "0x132a05c9217d36f7a3ce21883ce07fa5f6305eca",
+    2.466,
+    0
+   ]
+  ],
+  "dispatcher": "0xe4a80014fd313036f8fe31a2aceb5d33f40d6a92",
+  "dispatcher_outs": 39,
+  "pot_dispatcher": 6.9749,
+  "dispatcher_in_top": [
+   [
+    "0x14ed2e7091cc813bc7da167d11e025d2e583ec8b",
+    2.7499949592,
+    0,
+    79580968
+   ],
+   [
+    "0x22106d7659225a2aaa4b15521b0162c161114a57",
+    0.1252933390562818,
+    0,
+    79580983
+   ],
+   [
+    "0xa13e6568a74abec039ea97ff6c119bd87599361a",
+    0.12446015008030176,
+    0,
+    79580977
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0x074a83fbbf4ad42a2e11194e528d3ffacfdf8da6",
+  "pot_sweep": 6.9641,
+  "sweep_from_crowd": 36,
+  "sweep_n_out": 39,
+  "sweep_first_outs": [
+   [
+    53,
+    "0xf9606938e352bd1d1f6dc404766217ed14ccab32",
+    2.67,
+    0
+   ],
+   [
+    60,
+    "0xd603ac0fcb4723117e4b45abc4c075c9627137dc",
+    0.11561774647409319,
+    1
+   ],
+   [
+    62,
+    "0x4179bc2424e8a20dcf193d9283551cabf8bb0768",
+    0.11638335009276381,
+    2
+   ]
+  ],
+  "sweep_next": "0xf9606938e352bd1d1f6dc404766217ed14ccab32",
+  "payout": [
+   [
+    30,
+    "0x074a83fbbf4ad42a2e11194e528d3ffacfdf8da6",
+    6.130255342919846,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "fresh-oct05",
+  "time": "10-05 09:17",
+  "bn": 80674380,
+  "launch_tx": "0xa11a845dfc2f7f67c770bc2f114afc148d5b26f9575bda9cd1121ac030fb951a",
+  "creator": "0xb33ab505a8a082d03c8d1b82e3f9f0d7a28f5b06",
+  "creator_nonce": 0,
+  "value": 2.903,
+  "pull_delay_blocks": 986,
+  "buyers": 39,
+  "crowd": 37,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   1386710
+  ],
+  "crowd_funders": [
+   [
+    "0xdb591d735629eab27ce66a54bf88fbc85a9a0d39",
+    1
+   ],
+   [
+    "0xbc74254211f6b7e2f196de8608ed2517a6a8caf2",
+    1
+   ],
+   [
+    "0x004182753b6ce023cb9dfcdd13b8cb59d80ccc2f",
+    1
+   ],
+   [
+    "0x910d2dd06c5fac890751a1c6abf1acc05d0d959e",
+    1
+   ],
+   [
+    "0x026c600e928163a20611a4f395fa3e74f83af667",
+    1
+   ],
+   [
+    "0x16df6c183bec821ef7885fe973dbc7f005c77d0e",
+    1
+   ]
+  ],
+  "crowd_hop2": [
+   [
+    "0x26442204f6efe6655a60b63f6a2a3f729d5f2d39",
+    37
+   ]
+  ],
+  "fund_chain": [
+   [
+    80674278,
+    "0xf548cfb27dbf633aa4bcbcee88f09e1a5f630c23",
+    "0xb33ab505a8a082d03c8d1b82e3f9f0d7a28f5b06",
+    2.95399759072,
+    0
+   ],
+   [
+    80674180,
+    "0x26442204f6efe6655a60b63f6a2a3f729d5f2d39",
+    "0xf548cfb27dbf633aa4bcbcee88f09e1a5f630c23",
+    2.954,
+    0
+   ]
+  ],
+  "dispatcher": "0x26442204f6efe6655a60b63f6a2a3f729d5f2d39",
+  "dispatcher_outs": 39,
+  "pot_dispatcher": 7.06,
+  "dispatcher_in_top": [
+   [
+    "0x1476c547712a806c170b7c90ed4ab47a25d8c9ce",
+    5.8120165290523635,
+    2,
+    80674154
+   ],
+   [
+    "0xf333a21a67f895bb16b08bada257c0aa43eba063",
+    0.21105788491649272,
+    8,
+    80674154
+   ],
+   [
+    "0x5c3a56145648c26ad1037c20a0f3f27d01d0dfb9",
+    0.1404548386751799,
+    7,
+    80674170
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [
+   [
+    "0x1476c547712a806c170b7c90ed4ab47a25d8c9ce",
+    80670629,
+    5.8120165290523635
+   ]
+  ],
+  "sweep": "0x309e3747b276fe702ceb2e621693e35e61b7490e",
+  "pot_sweep": 7.0733,
+  "sweep_from_crowd": 37,
+  "sweep_n_out": 39,
+  "sweep_first_outs": [
+   [
+    51,
+    "0xf8c836cabb4f3b7ef2e0c923e903dd7716f09d26",
+    1.262,
+    0
+   ],
+   [
+    59,
+    "0x03aed5d03adebeef005f8204973166b286117b16",
+    0.16821536630547643,
+    1
+   ],
+   [
+    61,
+    "0x9775ebf358f04f5cb84270ae2070de2eae981040",
+    0.1457950244084986,
+    2
+   ]
+  ],
+  "sweep_next": "0xf8c836cabb4f3b7ef2e0c923e903dd7716f09d26",
+  "payout": [
+   [
+    29,
+    "0x309e3747b276fe702ceb2e621693e35e61b7490e",
+    5.735815132830577,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "L013",
+  "time": "10-05 13:37",
+  "bn": 80826799,
+  "launch_tx": "0xeaa618c85bfd2ace0722a513139b3ac69897b8a1e931484f74ca510c82505129",
+  "creator": "0x64d39defa4102bd3ff97883c6adde4fb3f0d1203",
+  "creator_nonce": 0,
+  "value": 2.469,
+  "pull_delay_blocks": 3413,
+  "buyers": 37,
+  "crowd": 37,
+  "buyer_nonce_min_med_max": [
+   14,
+   16,
+   21
+  ],
+  "crowd_funders": [
+   [
+    "0xe51d909a725f9003fe07ab12e84951c9bbd1ea0e",
+    37
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [
+   [
+    80826619,
+    "0xe51d909a725f9003fe07ab12e84951c9bbd1ea0e",
+    "0x64d39defa4102bd3ff97883c6adde4fb3f0d1203",
+    2.519,
+    0
+   ]
+  ],
+  "dispatcher": "0xe51d909a725f9003fe07ab12e84951c9bbd1ea0e",
+  "dispatcher_outs": 39,
+  "pot_dispatcher": 7.0723,
+  "dispatcher_in_top": [
+   [
+    "0xab486664fba344464a73c511197a21b0157237ba",
+    7.072273064581247,
+    0,
+    80826612
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0xff0c02b80f5bc8ece8991d4a8888bd23cbf03e56",
+  "pot_sweep": 7.0713,
+  "sweep_from_crowd": 37,
+  "sweep_n_out": 1,
+  "sweep_first_outs": [
+   [
+    57,
+    "0x1ceee89404feb0c8fd25dade9571c8de3f98bee0",
+    7.071278782557991,
+    0
+   ]
+  ],
+  "sweep_next": "0x1ceee89404feb0c8fd25dade9571c8de3f98bee0",
+  "payout": [
+   [
+    30,
+    "0xff0c02b80f5bc8ece8991d4a8888bd23cbf03e56",
+    6.447165019372641,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "F40-last",
+  "time": "10-06 17:53",
+  "bn": 81821357,
+  "launch_tx": "0xb78efe4060f3dacbc3750917f9d32cdec9b8e72d82807e0a9e288255bf4f17d6",
+  "creator": "0x4268b54646f1211b7475c9618fd4333d32f13379",
+  "creator_nonce": 0,
+  "value": 1.764,
+  "pull_delay_blocks": 1868,
+  "buyers": 39,
+  "crowd": 37,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   87723
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    37
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": null,
+  "pot_sweep": null,
+  "sweep_from_crowd": null,
+  "sweep_n_out": null,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": []
+ },
+ {
+  "tag": "A-oct06-restart",
+  "time": "10-06 18:14",
+  "bn": 81833971,
+  "launch_tx": "0x625c4092bcd909b56af15a250ca5f8a82fb9f48b01014bb607e578814f2c3473",
+  "creator": "0x711729ad1650a1d760de931ed0903654d89fef6c",
+  "creator_nonce": 0,
+  "value": 2.334,
+  "pull_delay_blocks": 2406,
+  "buyers": 51,
+  "crowd": 0,
+  "buyer_nonce_min_med_max": [
+   3,
+   6,
+   87765
+  ],
+  "crowd_funders": [],
+  "crowd_hop2": [],
+  "fund_chain": [
+   [
+    81833736,
+    "0xb3db60c79fdd92ec50220961d843194e93028f44",
+    "0x711729ad1650a1d760de931ed0903654d89fef6c",
+    2.384,
+    0
+   ]
+  ],
+  "dispatcher": "0xb3db60c79fdd92ec50220961d843194e93028f44",
+  "dispatcher_outs": 51,
+  "pot_dispatcher": 7.0442,
+  "dispatcher_in_top": [
+   [
+    "0x30837a8facbbdedc7753cb79a16bd030a2860a22",
+    7.044202008432656,
+    0,
+    81833728
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0x371d636e7cc14aee272ac0f77698f7fa180e175d",
+  "pot_sweep": 7.0434,
+  "sweep_from_crowd": 0,
+  "sweep_n_out": 1,
+  "sweep_first_outs": [
+   [
+    71,
+    "0x9817364c33f45c820950fc8c6bd69e743c156c24",
+    7.043360868342315,
+    0
+   ]
+  ],
+  "sweep_next": "0x9817364c33f45c820950fc8c6bd69e743c156c24",
+  "payout": [
+   [
+    37,
+    "0x371d636e7cc14aee272ac0f77698f7fa180e175d",
+    4.461450115126744,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "fresh-oct08",
+  "time": "10-08 12:26",
+  "bn": 83313345,
+  "launch_tx": "0x296624883e17da23ff36eafb5cc8c151e8044e859c158afce701793c4b0065e9",
+  "creator": "0xc121a22a4f0b24d534d0c8d742ca99066090dd9d",
+  "creator_nonce": 0,
+  "value": 0.86,
+  "pull_delay_blocks": 383,
+  "buyers": 13,
+  "crowd": 11,
+  "buyer_nonce_min_med_max": [
+   0,
+   0,
+   90838
+  ],
+  "crowd_funders": [
+   [
+    "(none in window)",
+    11
+   ]
+  ],
+  "crowd_hop2": [],
+  "fund_chain": [],
+  "dispatcher": null,
+  "dispatcher_outs": null,
+  "pot_dispatcher": null,
+  "dispatcher_in_top": [],
+  "dispatcher_in_from_prev_creator": null,
+  "sweep": "0xf8c511f8de7f0f3d34a1fa3e0f9087f023084955",
+  "pot_sweep": 3.5111,
+  "sweep_from_crowd": 11,
+  "sweep_n_out": 14,
+  "sweep_first_outs": [
+   [
+    114,
+    "0xe2a3cb4cfcef824620339c17c97e0e268d13d94e",
+    1.9,
+    0
+   ],
+   [
+    121,
+    "0xe2ea9f3e92c4bd9da1f3984d07b69e350ea48907",
+    0.14520674863196056,
+    1
+   ],
+   [
+    123,
+    "0x5430cebcffab226351352d0eec6246780c968c6c",
+    0.12294975853694169,
+    2
+   ]
+  ],
+  "sweep_next": "0xe2a3cb4cfcef824620339c17c97e0e268d13d94e",
+  "payout": [
+   [
+    99,
+    "0xf8c511f8de7f0f3d34a1fa3e0f9087f023084955",
+    2.2355690470756113,
+    2
+   ]
+  ]
+ },
+ {
+  "tag": "reuse-oct08",
+  "time": "10-08 13:14",
+  "bn": 83341600,
+  "launch_tx": "0xcf8e5495bd678c7b40328864e3a4988da997b089b7361c6cfb5dbde724ab80cb",
+  "creator": "0x1b676fa701e2885819b66b08fdcf98f344644dd5",
+  "creator_nonce": 0,
+  "value": 0.95,
+  "pull_delay_blocks": 149,
+  "buyers": 4,
+  "crowd": 3,
+  "buyer_nonce_min_med_max": [
+   0,
+   2,
+   90906
+  ],
+  "crowd_funders": [
+   [
+    "0x5b18301c6d69c6916d01bda3d6a62818206f8ca9",
+    1
+   ],
+   [
+    "(none in window)",
+    1
+   ],
+   [
+    "0x1171cc498a58e5dbbd8f85d8df573221c8385deb",
+    1
+   ]
+  ],
+  "crowd_hop2": [
+   [
+    "0x5477a0daa7e8510ade3822bc5b7d78cc31494b1c",
+    2
+   ]
+  ],
+  "fund_chain": [
+   [
+    83341137,
+    "0x6e7dde8ee5a6f97f39073a0ed7158f065034c197",
+    "0x1b676fa701e2885819b66b08fdcf98f344644dd5",
+    0.99998660288,
+    0
+   ],
+   [
+    83341090,
+    "0x5477a0daa7e8510ade3822bc5b7d78cc31494b1c",
+    "0x6e7dde8ee5a6f97f39073a0ed7158f065034c197",
+    1.0,
+    0
+   ]
+  ],
+  "dispatcher": "0x5477a0daa7e8510ade3822bc5b7d78cc31494b1c",
+  "dispatcher_outs": 14,
+  "pot_dispatcher": 3.51,
+  "dispatcher_in_top": [
+   [
+    "0x1f2e5395703e7f914bf11707c1c3da288242d1f2",
+    1.89997295848,
+    0,
+    83341074
+   ],
+   [
+    "0x5e7939a3ff426023e2bd3d3a256930d8d90efd6a",
+    0.1467717381266742,
+    0,
+    83341081
+   ],
+   [
+    "0xae7c4a4cdce4140b14ae4d57aaceb4b13337e335",
+    0.14572643003716895,
+    0,
+    83341078
+   ]
+  ],
+  "dispatcher_in_from_prev_creator": [],
+  "sweep": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+  "pot_sweep": 0.95,
+  "sweep_from_crowd": 0,
+  "sweep_n_out": 0,
+  "sweep_first_outs": [],
+  "sweep_next": null,
+  "payout": [
+   [
+    338,
+    "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+    0.95,
+    2
+   ]
+  ]
+ }
+]
