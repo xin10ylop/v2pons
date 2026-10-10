@@ -12,11 +12,11 @@ hms = lambda t: time.strftime("%m-%d %H:%M:%S", time.gmtime(t))
 
 
 def read_logs(hours):
-    """the events in the window, and the engine's last start and status lines whenever they were (a start before the window still
-    says how it runs)"""
+    """the events in the window, every live trade's result in all the logs, and the engine's last start and status lines whenever
+    they were (a start before the window still says how it runs)"""
     t_lo = time.time() - hours * 3600
     files = sorted(glob.glob(LOG + ".*"), key=lambda f: (f.endswith(".gz"), f), reverse=True) + [LOG]
-    out = []; last = {}
+    out = []; last = {}; done = {}
     for f in files:
         try:
             for line in (gzip.open(f, "rt") if f.endswith(".gz") else open(f)):
@@ -26,11 +26,45 @@ def read_logs(hours):
                     continue
                 if e.get("ev") in ("start", "flow") and e.get("t", 0) >= last.get(e["ev"], {}).get("t", 0):
                     last[e["ev"]] = e
+                if e.get("ev") == "trade_done" and not e.get("dry"):
+                    done[(e.get("t"), e.get("nonce"))] = e                       # a rotated copy of the same line counts once
                 if e.get("t", 0) >= t_lo:
                     out.append(e)
         except (FileNotFoundError, EOFError, OSError):
             pass
-    return sorted(out, key=lambda e: e.get("t", 0)), last.get("start", {}), last.get("flow", {})
+    return sorted(out, key=lambda e: e.get("t", 0)), last.get("start", {}), last.get("flow", {}), sorted(done.values(), key=lambda e: e.get("t", 0))
+
+
+def profit_table(done, st, e):
+    """each strategy's live result over the last hour, today, the report's window and every log kept, from the trades' own results
+    (the engine's own day counters start again at each restart)"""
+    if not done:
+        return
+    now = time.time(); cols = [("last hour", now - 3600), ("today (UTC)", now - now % 86400), (f"last {HOURS:g} h", now - HOURS * 3600), (f"since {hms(done[0]['t'])[:5]}", 0)]
+    kind = lambda d: d.get("entry") or "follow"
+    keys = sorted({kind(d) for d in done}, key=lambda k: (k != "follow", k))
+    try:
+        eth_usd = float(e.get("ETH_USD", "2570"))
+    except ValueError:
+        eth_usd = 2570.0
+    stake = {"follow": st.get("stake_eth", e.get("STAKE_ETH")), "seat": st.get("stake_eth", e.get("STAKE_ETH")), "front": st.get("front_stake_eth", e.get("FRONT_STAKE_ETH"))}
+    def cell(ds):
+        u = sum(d.get("pnl_usd") or 0 for d in ds)
+        return f"{len(ds):>4}  {'+' if u >= 0 else '-'}${abs(u):.2f}"
+    print(f"\nPROFIT BY STRATEGY (trades, $ after gas; 'since' = every log kept)")
+    print(f"  {'':16s}" + "".join(f"{c:>18s}" for c, _ in cols))
+    for k in keys + ["total"]:
+        ds = [d for d in done if k == "total" or kind(d) == k]
+        try:
+            lab = f"{k} (${float(stake.get(k)) * eth_usd:.0f})" if k != "total" and stake.get(k) else k
+        except (TypeError, ValueError):
+            lab = k
+        print(f"  {lab:16s}" + "".join(f"{cell([d for d in ds if d.get('t', 0) >= t0]):>18s}" for _, t0 in cols))
+    for k in keys:
+        ds = [d for d in done if kind(d) == k]; rets = [d["ret"] for d in ds if d.get("ret") is not None]
+        usd = [d.get("pnl_usd") or 0 for d in ds]
+        print(f"  {k}: {len(ds)} trades, {sum(1 for u in usd if u > 0) / len(ds):.0%} up, {'+' if sum(usd) >= 0 else '-'}${abs(sum(usd)) / len(ds):.3f} a trade"
+              + (f", {100 * sum(rets) / len(rets):+.1f}% average return, worst {100 * min(rets):+.1f}%" if rets else ""))
 
 
 def env():
@@ -75,7 +109,7 @@ def result_col(d):
 
 
 def main():
-    ev, st, flow = read_logs(HOURS); e = env()
+    ev, st, flow, done_all = read_logs(HOURS); e = env()
     active = subprocess.run(["systemctl", "is-active", "--quiet", "flip-engine"], stderr=subprocess.DEVNULL).returncode == 0
     if st:
         dry = st.get("dry_run", True)
@@ -97,13 +131,13 @@ def main():
         fnow = flow if flow.get("t", 0) >= st.get("t", 0) else {}                      # the engine's last status line, if it is from this run
         print(f"front strategy: ON, {'DRY RUN (nothing sent)' if fdry else 'LIVE'}, stake {st.get('front_stake_eth', e.get('FRONT_STAKE_ETH', '?'))} ETH, "
               f"max {st.get('front_max_per_day', e.get('FRONT_MAX_PER_DAY', '?'))} a day, its own daily stop ${st.get('front_daily_stop_usd', e.get('FRONT_DAILY_STOP_USD', '?'))}"
-              + (f", today {fnow['front_today']} trades {'+' if fnow.get('front_pnl_today_usd', 0) >= 0 else '-'}${abs(fnow.get('front_pnl_today_usd', 0)):.2f}" if "front_today" in fnow and not fdry else "")
               + (f";  HALTED: {open(HALT + '.front').read().strip()[:120] or '(empty file)'}  (sudo rm {HALT}.front && sudo systemctl restart flip-engine)" if os.path.exists(HALT + ".front")
                  else (f";  OFF for this run: {str(fnow['front_halted'])[:120]}" if fnow.get("front_halted") else ";  halted: no")))
     if st:
         print(f"last start {hms(st['t'])} UTC; this report covers the last {HOURS:g} hours (to {hms(time.time())} UTC)")
     else:
         print(f"no start line in the logs ({LOG}): the mode above is the env file's ({ENV})")
+    profit_table(done_all, st, e)
     if not ev:
         print(f"\nno engine events in the last {HOURS:g} hours: the engine is not running or not logging.  sudo systemctl status flip-engine --no-pager")
     arm = [x for x in ev if x["ev"] == "armed"]; elig = [x for x in arm if x.get("eligible")]

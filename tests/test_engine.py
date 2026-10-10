@@ -749,4 +749,18 @@ assert pos["sell_sent"] and pos["sell_why"].startswith("the bot's buy behind our
 front_close(pos, 7902, 7911, int(E.FRONT_STAKE_WEI * 0.999))
 print("ok front: a decoy behind ours is no exit; the bot's buy sells at once even below the take-profit")
 E.FRONT = False; E.ENTRY = "follow"
+
+# 18n. a restart keeps the day: today's live trades read back from the log (counts and P&L per strategy); yesterday's and dry ones are not
+log0 = E.LOG_PATH; E.LOG_PATH = LOG + ".day"; now_t = time.time(); y_t = now_t - 86400
+with open(E.LOG_PATH, "w") as f:
+    for t_, entry, pnl, buy in ((now_t, "follow", -2.5, {"status": "ok"}), (now_t, "front", 0.6, {"status": "ok"}), (now_t, "front", -5.7, {"status": "ok"}),
+                                (now_t, "front", 0.0, "no receipt"), (y_t, "front", -9.0, {"status": "ok"})):
+        f.write(json.dumps({"ev": "trade_done", "dry": False, "entry": entry, "pnl_usd": pnl, "buy": buy, "t": t_}, separators=(",", ":")) + "\n")
+    f.write(json.dumps({"ev": "trade_done", "dry": True, "pid": "x", "t": now_t}, separators=(",", ":")) + "\n")
+E.state.update({"trades_today": 0, "front_today": 0, "pnl_today_usd": 0.0, "front_pnl_today_usd": 0.0}); E.roll_day(); got = E.restore_today(); os.remove(E.LOG_PATH); E.LOG_PATH = log0
+if E.today() == time.strftime("%Y-%m-%d", time.gmtime(now_t)):                       # not across midnight
+    assert got == {"trades_today": 1, "front_today": 2, "pnl_today_usd": -2.5, "front_pnl_today_usd": 0.6 - 5.7}, got
+    assert E.state["front_pnl_today_usd"] <= -E.FRONT_DAILY_STOP_USD, "front's day not kept"
+E.state.update({"trades_today": 0, "front_today": 0, "pnl_today_usd": 0.0, "front_pnl_today_usd": 0.0})
+print("ok a restart keeps the day: today's live trades read back per strategy (counts and P&L), so the daily caps and stops hold")
 os.remove(LOG)

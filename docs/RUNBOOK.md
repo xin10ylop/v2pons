@@ -254,6 +254,10 @@ totals, the money):
 
     sudo python3 ~/v2pons/deploy/results.py            # the last 24 hours; add a number for more hours: results.py 72
 
+Its `PROFIT BY STRATEGY` table, under the header, puts follow and front side by side: trades and $ after gas over the last hour,
+today (UTC), the report's window and every log kept, then each strategy's share of winners, $ a trade, and average and worst return.
+The engine reads today's trades back from its log when it starts, so a restart keeps each strategy's daily cap and stop.
+
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py status
     sudo /opt/flip-venv/bin/python3 ~/v2pons/src/score.py /var/log/flip/engine.jsonl 24
 

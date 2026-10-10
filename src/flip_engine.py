@@ -340,6 +340,34 @@ def roll_day():
         state["day"] = d; state["trades_today"] = 0; state["front_today"] = 0; state["pnl_today_usd"] = 0.0; state["front_pnl_today_usd"] = 0.0
 
 
+def restore_today():
+    """today's live trades from the log: a restart keeps the day's counts and P&L, so the daily caps and stops still hold"""
+    d = today(); got = {"trades_today": 0, "front_today": 0, "pnl_today_usd": 0.0, "front_pnl_today_usd": 0.0}
+    for path in (LOG_PATH + ".1", LOG_PATH):                                            # a rotation during the day leaves the morning in .1
+        _restore_from(path, d, got)
+    state.update(got)
+    return got
+
+
+def _restore_from(path, d, got):
+    try:
+        for line in open(path):
+            if '"trade_done"' not in line or '"dry":false' not in line:
+                continue
+            try:
+                e = json.loads(line)
+            except Exception:
+                continue
+            if datetime.datetime.fromtimestamp(e.get("t", 0), datetime.timezone.utc).strftime("%Y-%m-%d") != d:
+                continue
+            front = e.get("entry") == "front"
+            got["front_pnl_today_usd" if front else "pnl_today_usd"] += e.get("pnl_usd") or 0.0
+            if e.get("buy") != "no receipt":                                           # a buy that never went in was given back (uncount)
+                got["front_today" if front else "trades_today"] += 1
+    except (FileNotFoundError, UnicodeDecodeError, OSError):
+        pass
+
+
 def pool_from_receipt(rec):
     """the pool a launch receipt initialized (ETH as currency0, no hook) with its first liquidity, or None"""
     init = None; adds = []
@@ -1093,7 +1121,7 @@ def checks():
 
 
 def main():
-    roll_day(); info = checks()
+    roll_day(); restored = restore_today(); info = checks()
     log({"ev": "start", "release": RELEASE, "dry_run": DRY_RUN, "launchers": sorted(LAUNCHERS), "relay": RELAY, "wallet": WALLET, "stake_eth": STAKE_ETH, "min_trigger_eth": MIN_TRIGGER_ETH,
          "fee_ppm": [FEE_MIN_PPM, FEE_MAX_PPM], "min_liquidity": MIN_LIQUIDITY, "trigger_max_blocks": TRIGGER_MAX_BLOCKS, "buy_slip": BUY_SLIP, "buy_deadline_s": BUY_DEADLINE_S, "gas_headroom": GAS_HEADROOM,
          "hold_blocks": HOLD_BLOCKS, "sell_lead_blocks": SELL_LEAD_BLOCKS, "take_profit": TAKE_PROFIT, "buy_delay_blocks": BUY_DELAY_BLOCKS,
@@ -1102,7 +1130,7 @@ def main():
          "front_fire_max": FRONT_FIRE_MAX, "front_max_per_day": FRONT_MAX_PER_DAY, "front_value_wei": FRONT_VALUE_WEI, "front_halted": state["front_halted"],
          "front_daily_stop_usd": FRONT_DAILY_STOP_USD, "front_pin": FRONT_PIN, "front_fee": FRONT_FEE, "front_tick_spacing": FRONT_TICK_SPACING, "front_sqrt_p": FRONT_SQRT_P, "front_liq": FRONT_LIQ,
          "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_sell_on_eth": FRONT_SELL_ON_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT,
-         "halted": state["halted"], "halt_file": HALT_FILE, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
+         "halted": state["halted"], "halt_file": HALT_FILE, "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()
     try:
         asyncio.run(feed_loop())
