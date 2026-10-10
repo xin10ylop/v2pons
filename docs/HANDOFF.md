@@ -11,6 +11,38 @@ about the project is in them."** The agent then has the whole picture.
 
 ---
 
+## How to get up to speed, in order (for the next agent)
+
+1. **Read sections 0-3** of this file: the picture, the chain and every address, the repository map, both strategies.
+2. **Read the code's own account**: the docstring at the top of `src/flip_engine.py` (the history of the exit and why), then its settings
+   block (lines 60-120), then skim `_fire`, `on_buy`, `on_front_buy`, `_settle`. Read `tests/test_engine.py`'s docstring: the 44 tests
+   describe every behaviour the engine is held to.
+3. **Run the tests** where you are: `python3 tests/test_engine.py 2>&1 | grep -c "^ok"` must print 44 (needs `pip install rlp eth-account
+   eth-utils websockets`); `python3 tests/test_v4math.py` 4.
+4. **Read sections 4-6**: the timeline, then the research: what was found, with the numbers, and which directory under
+   `research/session_oct9_10/` holds each piece. Open the directory's README for the file list. Do not re-run the scans unless you need
+   to; their results are in the JSON/TXT files beside the scripts.
+5. **Read sections 7-9**: the engine's flow and log events, every setting with its value on the box, the releases, the box and its commands.
+   Everything on the box is done by giving the owner exact numbered commands and reading the output they paste back.
+6. **Read section 10**: every live trade and what each one taught; then **section 11**, the exact state at the handoff, and **section 12**,
+   the open items in priority order. Section 12.1 is the one thing a new agent should look at first.
+7. **Ask the owner for the current state** before changing anything: have them run
+   `cd ~/v2pons && git log --oneline -1 && sudo python3 ~/v2pons/deploy/results.py | head -24` and
+   `sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py status`, and paste both. That gives the commit on the box, both
+   strategies' state and halts, today's profit per strategy, the operator's pull margins, and the wallet and relay balances.
+8. Then work section 12 in order. Rules that held throughout: every change is tested (44 ok), committed and pushed to the branch
+   `claude/pensive-rubin-rkj996`; every box step is one numbered command with its expected output and "if any of them fails, stop and paste
+   it to me"; a code change on the box is `git pull`, the test count, then a restart that waits for the trade in progress (section 9.2);
+   the private key is never printed, pasted or committed; nothing is deployed live without a dry run first.
+
+## Contents
+
+0. The one-paragraph picture · 1. The chain and the addresses · 2. The repository · 3. The strategies in detail · 4. Timeline ·
+5. The research before this session · 6. The research of Oct 9-10 · 7. The engine · 8. Releases · 9. The box · 10. Every live result ·
+11. State at the handoff · 12. Open items · 13. Numbers to remember · 14. Why this handoff exists · 15. The prompt for the next agent
+
+---
+
 ## 0. The one-paragraph picture
 
 On Robinhood Chain (an Arbitrum Nitro chain: 0.1-second blocks, first-come-first-served ordering, a public sequencer feed), two automated
