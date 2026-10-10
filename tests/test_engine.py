@@ -700,6 +700,42 @@ a_ = {"pid": "a", "sell_sent": False, "dry": True}; b_ = {"pid": "b", "sell_sent
 E.state["position"] = b_; E.send_sell("time fallback", a_); assert not a_["sell_sent"] and not b_["sell_sent"]
 E.state["position"] = None
 tx = E.tx_buy({"c0": "0" * 40, "token": "ab" * 20, "fee": 2500, "tick_spacing": 50, "hooks": "0" * 40}, 1, 0, 0, 0); assert tx["data"][2 + 8 + 64*5: 2 + 8 + 64*6] == w(0)
-E.FRONT = False; E.ENTRY = "follow"
 print("ok a sell sent for a position no longer in the slot does nothing; tx_buy's stake 0 is 0")
+
+# 18k. a live front trade frees the slot once both receipts are in: follow trades during its pull check, front waits for it, and the
+# nonce follow reserved survives the front's settle; the relay's balance moves by the trade
+reset(); E.state["nonce"] = 520; E.PULL_WATCH_S = 1.0; chain0 = NONCE_ON_CHAIN[0]; NONCE_ON_CHAIN[0] = hex(522); E.state["relay_wei"] = int(0.01e18)
+front_launch(7500, 17); fpos = E.state["position"]; E.ingest(frame(7501, [SENT[0][1]]))
+for s_ in range(7502, 7502 + E.FRONT_HOLD_BLOCKS):
+    E.ingest(frame(s_, []))
+assert fpos["sell_sent"]
+back = int(E.FRONT_STAKE_WEI * 1.08)
+RECEIPTS["0x" + fpos["buy_hash"]] = swap_receipt(7501, -E.FRONT_STAKE_WEI, fpos["feed_tokens"], pid=FPID)
+RECEIPTS["0x" + fpos["sell_hash"]] = swap_receipt(7515, back, -fpos["feed_tokens"], pid=FPID)
+assert wait_for(lambda: E.state["position"] is None and E.state["front_settling"] is fpos), "the front trade kept the slot through its pull check"
+E.state["armed"].pop(FPID); front_launch(7520, 18); assert E.state["position"] is None and "pull check" in events("skip")[-1]["why"]
+E.state["armed"].pop(FPID); do_launch(7600); E.ingest(frame(7631, [signed(CROWD, UR, TRIG, BUY_DATA, 85)])); pos = E.state["position"]
+assert pos and pos["entry"] == "follow" and pos["nonce"] == 522 and E.state["nonce"] == 524, (pos and pos["nonce"], E.state["nonce"])
+assert wait_for(lambda: done_at(520)) and E.state["front_settling"] is None and E.state["nonce"] == 524 and E.state["position"] is pos, E.state["nonce"]
+assert E.state["relay_wei"] == int(0.01e18) + back - E.FRONT_STAKE_WEI, E.state["relay_wei"]
+E.state["position"] = None; E.PULL_WATCH_S = 0; NONCE_ON_CHAIN[0] = chain0; E.state["relay_wei"] = None
+print("ok front: out of the slot once its receipts are in; follow trades during its pull check at the next nonce, kept through the front's settle")
+
+# 18l. front yields only to a follow launch that follow can trade (not at its daily cap); a launch whose arming thread never started leaves nothing behind
+reset(); E.state["nonce"] = 530; E.state["trades_today"] = E.MAX_TRADES_PER_DAY
+do_launch(7700); front_launch(7705, 19); pos = E.state["position"]; assert pos and pos["entry"] == "front", "front yielded to a follow launch follow cannot trade"
+E.state["position"] = None; E.state["trades_today"] = 0
+real_start = threading.Thread.start
+def bad_start(self):
+    if getattr(self, "_target", None) is E.arm_launch_thread:
+        raise RuntimeError("can't start new thread")
+    return real_start(self)
+reset(); threading.Thread.start = bad_start
+try:
+    E.ingest(frame(7800, [signed(DEPLOYER, LAUNCHER, 0, "0x2fcb9108" + w(2), 1)]))
+finally:
+    threading.Thread.start = real_start
+assert not E.state["arming"], E.state["arming"]
+print("ok front: it yields only to a follow launch follow can trade; a launch whose arming never started does not block front")
+E.FRONT = False; E.ENTRY = "follow"
 os.remove(LOG)

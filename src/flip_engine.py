@@ -277,7 +277,8 @@ def parse_tx(t):
 # ---------------------------------------------------------------- state
 state = {"seq": 0, "ts": 0, "nonce": None, "base_fee": 20_000_000, "armed": {}, "position": None, "day": None, "trades_today": 0, "pnl_today_usd": 0.0,
          "launches": 0, "fires": 0, "blocks": 0, "stale_blocks": 0, "connected": False, "halted": None, "front_today": 0, "front_halted": None, "front_pnl_today_usd": 0.0,
-         "relay_wei": None, "arming": set(),                                         # the relay's balance (read at start, after each trade, every minute when idle); launches whose receipt is on its way
+         "relay_wei": None, "arming": set(), "front_settling": None,                 # the relay's balance (read at start and every minute when idle, moved by each trade); launches whose receipt is on its way;
+                                                                                     # a live front trade out of the slot whose pull check is still running
          "recent": collections.deque(maxlen=8000)}                                   # (seq, to, value, data) of recent ETH-carrying calls: replayed onto a pool armed after its first buys
 lock = threading.RLock()
 
@@ -598,7 +599,10 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
     stake = FRONT_STAKE_WEI if front else STAKE_WEI
     if not dry and state["relay_wei"] is not None and state["relay_wei"] < stake:
         log({"ev": "skip", "why": "the relay holds less than the stake", "pid": p["pid"], "seq": seq, "relay_eth": state["relay_wei"] / 1e18}); return
-    if front and not dry and (state["arming"] or any(q.get("entry") != "front" and q["eligible"] and (q["status"] == "delayed" or (q["status"] == "armed" and q["first_buy"] is None))
+    if front and not dry and state["front_settling"] is not None:
+        log({"ev": "skip", "why": "front: the last front trade's pull check is still running", "pid": p["pid"], "seq": seq}); return
+    follow_can = (state["trades_today"] < MAX_TRADES_PER_DAY and state["pnl_today_usd"] > -DAILY_STOP_USD and (state["relay_wei"] is None or state["relay_wei"] >= STAKE_WEI))
+    if front and not dry and follow_can and (state["arming"] or any(q.get("entry") != "front" and q["eligible"] and (q["status"] == "delayed" or (q["status"] == "armed" and q["first_buy"] is None))
                                                      and seq - q["launch_seq"] <= TRIGGER_MAX_BLOCKS
                                                      for q in state["armed"].values())):
         log({"ev": "skip", "why": "front: a follow launch is waiting for its trigger (follow has the slot first)", "pid": p["pid"], "seq": seq}); return
@@ -717,6 +721,8 @@ def settle(pos):
         with lock:
             if state["position"] is pos:
                 state["position"] = None
+            if state["front_settling"] is pos:
+                state["front_settling"] = None
         refresh_nonce()
 
 
@@ -738,6 +744,11 @@ def _settle(pos):
             else:
                 eth_out = a0; out[name]["eth_out"] = eth_out; out[name]["tokens_in"] = -a1
     out["feed_tokens"] = pos["feed_tokens"]; out["tp_ret"] = pos["tp_ret"]
+    if pos.get("entry") == "front" and rb is not None and rs is not None:              # both in, both nonces used: the slot is free for follow during the pull check;
+        with lock:                                                                     # front itself waits for it (front_settling), so a pull still halts it before its next trade
+            state["front_settling"] = pos
+            if state["position"] is pos:
+                state["position"] = None; state["nonce"] = max(state["nonce"] or 0, pos["nonce"] + 2)
     if rb and rs and rb.get("status") == "0x1":
         b0 = int(rb["blockNumber"], 16); b1 = int(rs["blockNumber"], 16); i1 = int(rs["transactionIndex"], 16)
         out["hold_blocks"] = out["sell_after_buy_blocks"] = b1 - b0; out["buy_offset"] = b0 - pos["trig_seq"]
@@ -759,15 +770,17 @@ def _settle(pos):
     out.update({"eth_in": eth_in, "eth_out": eth_out, "gas_wei": gas_wei, "pnl_eth": pnl / 1e18, "pnl_usd": round(pnl / 1e18 * ETH_USD, 3), "ret": round((eth_out - eth_in) / eth_in, 4) if eth_in else None,
                 "flat_eth_back": pos["flat_eth_back"]})
     n = chain_nonce()                                                                  # both transactions are final now: the chain's count is the truth
-    bal = relay_balance()
     with lock:
         roll_day(); k = pos.get("pnl_key", "pnl_today_usd"); state[k] += out["pnl_usd"]
-        if bal is not None:
-            state["relay_wei"] = bal
+        if state["relay_wei"] is not None:                                             # the relay paid the stake and got the sell (the wallet pays the gas); fee_loop reconciles
+            state["relay_wei"] += eth_out - eth_in
         if rb is None:                                                                 # no buy receipt: the buy never went in; it does not count against the cap
             uncount(pos)
-        if n is not None:
-            state["nonce"] = n
+        released = state["front_settling"] is pos
+        if n is not None:                                                              # a front trade out of the slot early: a follow trade may hold nonces above the chain's count
+            state["nonce"] = max(n, state["nonce"] or 0) if released else n
+        if released:
+            state["front_settling"] = None
         if state["position"] is pos:
             state["position"] = None
     log(out)
@@ -834,10 +847,10 @@ def fee_loop():
         except Exception:
             pass
         k += 1
-        if k % 6 == 0 and state["position"] is None:
+        if k % 6 == 0 and state["position"] is None and state["front_settling"] is None:
             bal = relay_balance()
             with lock:
-                if bal is not None and state["position"] is None:
+                if bal is not None and state["position"] is None and state["front_settling"] is None:
                     state["relay_wei"] = bal
         time.sleep(10)
 
@@ -1001,8 +1014,9 @@ def ingest_tx(t, seq, stale, seen_at):
         return
     if to in LAUNCHERS or (LAUNCH_SELECTORS and data[:4].hex() in LAUNCH_SELECTORS):
         if not stale:
-            log({"ev": "launch", "tx": h, "seq": seq, "to": to}); state["arming"].add(h)
+            log({"ev": "launch", "tx": h, "seq": seq, "to": to})
             threading.Thread(target=arm_launch_thread, args=(h, seq, state["ts"], seen_at, to), daemon=True).start()
+            state["arming"].add(h)                                                     # once started (its discard waits for the lock we hold): a thread that never ran leaves nothing behind
         return
     if value == 0 or len(data) < 20:
         return
