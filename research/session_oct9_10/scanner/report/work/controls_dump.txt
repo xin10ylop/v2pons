@@ -1,0 +1,330 @@
+a0	results_final.json	inputs/calib_opA.json	{'n': 73, 'mean': 0.04359, 'median': 0.03256, 'win': 0.8356, 'pulled_first': 0}
+a0	results_final.json	inputs/calib_v2433_live.json/window	{'n': 409, 'mean': 0.13979, 'median': 0.16173, 'win': 0.9853, 'pulled_first': 0}
+a0	results_final.json	inputs/calib_v2433_live.json/with_relay	{'n': 401, 'mean': 0.13964, 'median': 0.16173, 'win': 0.985, 'pulled_first': 0}
+a1	results.json	operator-A/front	{'n': 77, 'mean': 0.05811192578755253, 'median': 0.042809165197577416, 'win': 0.922077922077922, 'pulled_first': 0}
+a1	results.json	operator-A/front_with_sched	{'n': 75, 'mean': 0.05974258645471524, 'median': 0.04377016967953483, 'win': 0.9466666666666667, 'pulled_first': 0}
+a1	results.json	operator-A/front_without_sched	{'n': 2, 'mean': -0.003037849231049052, 'median': -0.003037849231049052, 'win': 0.0, 'pulled_first': 0}
+a1	results.json	operator-A/follow	{'n': 75, 'mean': 0.043378248453266044, 'median': 0.03268313570123914, 'win': 0.84, 'pulled_first': 0}
+a4	results.json	raw/vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a4	results.json	raw/vbot-v2.433/front_from_live	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a4	results.json	raw/vbot-v2.433/front_generic_trigger	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a4	results.json	raw/vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a4	results.json	raw/operator-A/front	{'n': 77, 'mean': -0.0051, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a4	results.json	raw/operator-A/front_from_live	{'n': 77, 'mean': -0.0051, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a4	results.json	raw/operator-A/follow	{'n': 75, 'mean': 0.04333, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a4	results.json	calib_v2433/live_audit_window	{'n': 409, 'mean': 0.13979, 'median': 0.16173, 'win': 0.9853, 'pulled_first': 0}
+a4	results.json	calib_v2433/by_bot_eth/0-0.03	{'n': 160, 'mean': 0.00937, 'median': 0.01249, 'win': None, 'pulled_first': None}
+a4	results.json	calib_v2433/by_bot_eth/0.03-0.08	{'n': 151, 'mean': 0.03901, 'median': 0.03593, 'win': None, 'pulled_first': None}
+a4	results.json	calib_v2433/by_bot_eth/0.08-0.15	{'n': 372, 'mean': 0.08563, 'median': 0.09743, 'win': None, 'pulled_first': None}
+a4	results.json	calib_v2433/by_bot_eth/0.15-0.22	{'n': 601, 'mean': 0.13073, 'median': 0.1418, 'win': None, 'pulled_first': None}
+a4	results.json	calib_v2433/by_bot_eth/0.22-1	{'n': 558, 'mean': 0.18053, 'median': 0.19881, 'win': None, 'pulled_first': None}
+a4	results_raw.json	vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a4	results_raw.json	vbot-v2.433/front_from_live	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a4	results_raw.json	vbot-v2.433/front_generic_trigger	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a4	results_raw.json	vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a4	results_raw.json	operator-A/front	{'n': 77, 'mean': -0.0051, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a4	results_raw.json	operator-A/front_from_live	{'n': 77, 'mean': -0.0051, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a4	results_raw.json	operator-A/follow	{'n': 75, 'mean': 0.04333, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a5	calib.json	opA_follow	{'n': 75, 'mean': 0.04336, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a5	results.json	control-v2433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a5	results.json	control-v2433/front_wait	{'n': 1843, 'mean': 0.11883, 'median': 0.14009, 'win': 0.9512, 'pulled_first': 1}
+a5	results.json	control-v2433/front_hold/20	{'n': 1843, 'mean': -0.58151, 'median': -1.00072, 'win': 0.363, 'pulled_first': 1161}
+a5	results.json	control-v2433/front_hold/100	{'n': 1843, 'mean': -0.59923, 'median': -1.00072, 'win': 0.3114, 'pulled_first': 1263}
+a5	results.json	control-v2433/front_hold/300	{'n': 1843, 'mean': -0.58399, 'median': -1.00072, 'win': 0.2382, 'pulled_first': 1404}
+a5	results.json	control-v2433/front_hold/600	{'n': 1843, 'mean': -0.47403, 'median': -1.00072, 'win': 0.2317, 'pulled_first': 1416}
+a5	results.json	control-v2433/front_hold/900	{'n': 1843, 'mean': -0.41717, 'median': -1.00072, 'win': 0.2219, 'pulled_first': 1434}
+a5	results.json	control-v2433/front_hold/1200	{'n': 1843, 'mean': -0.36802, 'median': -1.00072, 'win': 0.2176, 'pulled_first': 1442}
+a5	results.json	control-v2433/front_hold/1500	{'n': 1843, 'mean': -0.35387, 'median': -1.00072, 'win': 0.2105, 'pulled_first': 1455}
+a5	results.json	control-v2433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a5	results.json	control-v2433/follow_sched	{'n': 1842, 'mean': -0.63286, 'median': -1.00072, 'win': 0.0, 'pulled_first': 1161}
+a5	results.json	control-opA/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a5	results.json	control-opA/front_wait	{'n': 77, 'mean': 0.0572, 'median': 0.04281, 'win': 0.8961, 'pulled_first': 0}
+a5	results.json	control-opA/front_hold/20	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a5	results.json	control-opA/front_hold/100	{'n': 77, 'mean': -0.00985, 'median': 0.18629, 'win': 0.7143, 'pulled_first': 18}
+a5	results.json	control-opA/front_hold/300	{'n': 77, 'mean': 0.1444, 'median': -0.00104, 'win': 0.4935, 'pulled_first': 36}
+a5	results.json	control-opA/front_hold/600	{'n': 77, 'mean': 0.71597, 'median': -0.00501, 'win': 0.4805, 'pulled_first': 37}
+a5	results.json	control-opA/front_hold/900	{'n': 77, 'mean': 1.00297, 'median': -0.00571, 'win': 0.4675, 'pulled_first': 38}
+a5	results.json	control-opA/front_hold/1200	{'n': 77, 'mean': 1.02502, 'median': -1.00072, 'win': 0.4675, 'pulled_first': 39}
+a5	results.json	control-opA/front_hold/1500	{'n': 77, 'mean': 1.09136, 'median': -1.00072, 'win': 0.4416, 'pulled_first': 41}
+a5	results.json	control-opA/follow	{'n': 75, 'mean': 0.04336, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a5	results.json	control-opA/follow_sched	{'n': 75, 'mean': 0.04336, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a6	calib.json	v2433_front/all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a6	calib.json	v2433_front/pools_with_our_relay	{'n': 1048, 'mean': 0.11299, 'median': 0.13682, 'win': 0.9275, 'pulled_first': 0}
+a6	calib.json	v2433_front/pools_before_our_trading	{'n': 795, 'mean': 0.12595, 'median': 0.1401, 'win': 0.9698, 'pulled_first': 0}
+a6	calib.json	v2433_front_by_Boff/1	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a6	calib.json	v2433_front_by_Boff/2	{'n': 1843, 'mean': 0.11771, 'median': 0.13871, 'win': 0.8681, 'pulled_first': 0}
+a6	calib.json	v2433_front_by_Boff/3	{'n': 1843, 'mean': 0.1172, 'median': 0.13723, 'win': 0.8627, 'pulled_first': 0}
+a6	calib.json	opA_follow	{'n': 75, 'mean': 0.04333, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a6	calib.json	opA_front	{'n': 77, 'mean': -0.0051, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a6	calib.json	opA_follow_hold2	{'n': 75, 'mean': 0.0017, 'median': -0.00482, 'win': 0.1333, 'pulled_first': 0}
+a6	calib.json	opA_follow_hold3	{'n': 75, 'mean': 0.03187, 'median': 0.02759, 'win': 0.7333, 'pulled_first': 0}
+a6	calib.json	opA_follow_hold6	{'n': 75, 'mean': 0.02055, 'median': 0.03656, 'win': 0.8933, 'pulled_first': 2}
+a6	calib.json	opA_follow_hold10	{'n': 75, 'mean': 0.024, 'median': 0.03689, 'win': 0.9333, 'pulled_first': 2}
+a6	results.json	control:vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a6	results.json	control:vbot-v2.433/follow	{'n': 1842, 'mean': -0.35422, 'median': -0.00571, 'win': 0.0022, 'pulled_first': 646}
+a6	results.json	control:operator-A/front	{'n': 77, 'mean': -0.0051, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a6	results.json	control:operator-A/follow	{'n': 75, 'mean': 0.04333, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a7	calib.json	v2433_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a7	calib.json	v2433_live_window	{'n': 409, 'mean': 0.13979, 'median': 0.16173, 'win': 0.9853, 'pulled_first': 0}
+a7	calib.json	v2433_relay_traded_pools	{'n': 1048, 'mean': 0.11299, 'median': 0.13682, 'win': 0.9275, 'pulled_first': 0}
+a7	calib.json	v2433_not_dropped	{'n': 1614, 'mean': 0.13538, 'median': 0.14162, 'win': 0.9882, 'pulled_first': 0}
+a7	calib.json	v2433_bot_buy_dropped	{'n': 229, 'mean': 0.00014, 'median': 0.00034, 'win': 0.6463, 'pulled_first': 0}
+a7	calib.json	v2433_by_6h/10-08 18h	{'n': 68, 'mean': 0.12583, 'median': 0.14021, 'win': 0.9706, 'pulled_first': None}
+a7	calib.json	v2433_by_6h/10-09 00h	{'n': 91, 'mean': 0.13262, 'median': 0.14028, 'win': 0.989, 'pulled_first': None}
+a7	calib.json	v2433_by_6h/10-09 06h	{'n': 84, 'mean': 0.14268, 'median': 0.14107, 'win': 0.9762, 'pulled_first': None}
+a7	calib.json	v2433_by_6h/10-09 12h	{'n': 92, 'mean': 0.12526, 'median': 0.126, 'win': 0.9891, 'pulled_first': None}
+a7	calib.json	v2433_by_6h/10-09 18h	{'n': 86, 'mean': 0.13992, 'median': 0.14162, 'win': 1.0, 'pulled_first': None}
+a7	calib.json	v2433_by_6h/10-10 00h	{'n': 102, 'mean': 0.13513, 'median': 0.1403, 'win': 0.9902, 'pulled_first': None}
+a7	calib.json	v2433_by_6h/10-10 06h	{'n': 530, 'mean': 0.13883, 'median': 0.15484, 'win': 0.9868, 'pulled_first': None}
+a7	calib.json	v2433_by_6h/10-10 12h	{'n': 758, 'mean': 0.09448, 'median': 0.0985, 'win': 0.8892, 'pulled_first': None}
+a7	calib.json	v2433_by_6h/10-10 18h	{'n': 32, 'mean': 0.10612, 'median': 0.12415, 'win': 0.9375, 'pulled_first': None}
+a7	calib.json	opA_follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a7	results.json	stats/control:vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a7	results.json	stats/control:vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a7	results.json	stats/control:operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a7	results.json	stats/control:operator-A/follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a7	results.json	calibration/v2433_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a7	results.json	calibration/v2433_live_window	{'n': 409, 'mean': 0.13979, 'median': 0.16173, 'win': 0.9853, 'pulled_first': 0}
+a7	results.json	calibration/v2433_relay_traded_pools	{'n': 1048, 'mean': 0.11299, 'median': 0.13682, 'win': 0.9275, 'pulled_first': 0}
+a7	results.json	calibration/v2433_not_dropped	{'n': 1614, 'mean': 0.13538, 'median': 0.14162, 'win': 0.9882, 'pulled_first': 0}
+a7	results.json	calibration/v2433_bot_buy_dropped	{'n': 229, 'mean': 0.00014, 'median': 0.00034, 'win': 0.6463, 'pulled_first': 0}
+a7	results.json	calibration/v2433_by_6h/10-08 18h	{'n': 68, 'mean': 0.12583, 'median': 0.14021, 'win': 0.9706, 'pulled_first': None}
+a7	results.json	calibration/v2433_by_6h/10-09 00h	{'n': 91, 'mean': 0.13262, 'median': 0.14028, 'win': 0.989, 'pulled_first': None}
+a7	results.json	calibration/v2433_by_6h/10-09 06h	{'n': 84, 'mean': 0.14268, 'median': 0.14107, 'win': 0.9762, 'pulled_first': None}
+a7	results.json	calibration/v2433_by_6h/10-09 12h	{'n': 92, 'mean': 0.12526, 'median': 0.126, 'win': 0.9891, 'pulled_first': None}
+a7	results.json	calibration/v2433_by_6h/10-09 18h	{'n': 86, 'mean': 0.13992, 'median': 0.14162, 'win': 1.0, 'pulled_first': None}
+a7	results.json	calibration/v2433_by_6h/10-10 00h	{'n': 102, 'mean': 0.13513, 'median': 0.1403, 'win': 0.9902, 'pulled_first': None}
+a7	results.json	calibration/v2433_by_6h/10-10 06h	{'n': 530, 'mean': 0.13883, 'median': 0.15484, 'win': 0.9868, 'pulled_first': None}
+a7	results.json	calibration/v2433_by_6h/10-10 12h	{'n': 758, 'mean': 0.09448, 'median': 0.0985, 'win': 0.8892, 'pulled_first': None}
+a7	results.json	calibration/v2433_by_6h/10-10 18h	{'n': 32, 'mean': 0.10612, 'median': 0.12415, 'win': 0.9375, 'pulled_first': None}
+a7	results.json	calibration/opA_follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a8	calib.json	v2433_front_botrouter	{'n': 1843, 'mean': 0.11937, 'median': 0.14009, 'win': 0.951, 'pulled_first': 0}
+a8	calib.json	v2433_front_generic	{'n': 1843, 'mean': 0.10029, 'median': 0.11648, 'win': 0.732, 'pulled_first': 0}
+a8	calib.json	v2433_front_botrouter_norelay	{'n': 795, 'mean': 0.12753, 'median': 0.1401, 'win': 0.98, 'pulled_first': 0}
+a8	calib.json	v2433_follow_generic	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.002, 'pulled_first': 646}
+a8	calib.json	v2433_front_botrouter_relaypools	{'n': 1048, 'mean': 0.11318, 'median': 0.13787, 'win': 0.929, 'pulled_first': 0}
+a8	calib.json	v2433_front_before_oct10_0907	{'n': 640, 'mean': 0.13597, 'median': 0.14029, 'win': 0.998, 'pulled_first': 0}
+a8	calib.json	v2433_front_after	{'n': 1203, 'mean': 0.11054, 'median': 0.12616, 'win': 0.926, 'pulled_first': 0}
+a8	calib.json	opA_follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a8	calib.json	opA_follow_hold2	{'n': 75, 'mean': 0.00174, 'median': -0.00482, 'win': 0.133, 'pulled_first': 0}
+a8	calib.json	opA_front	{'n': 77, 'mean': 0.05811, 'median': 0.04281, 'win': 0.922, 'pulled_first': 0}
+a9	calib.json	v2433_front_botbuy	{'n': 1843, 'mean': 0.11937, 'median': 0.14009, 'win': 0.9512, 'pulled_first': 0}
+a9	calib.json	v2433_front_first_real_buy	{'n': 1843, 'mean': 0.10029, 'median': 0.11648, 'win': 0.732, 'pulled_first': 0}
+a9	calib.json	v2433_follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a9	calib.json	v2433_front_live_window	{'n': 409, 'mean': 0.14027, 'median': 0.16173, 'win': 0.9902, 'pulled_first': 0}
+a9	calib.json	opA_follow	{'n': 75, 'mean': 0.04333, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a9	calib.json	opA_front_first_real_buy	{'n': 77, 'mean': 0.05807, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}
+a9	results.json	calibration/v2433_front_botbuy	{'n': 1843, 'mean': 0.11937, 'median': 0.14009, 'win': 0.9512, 'pulled_first': 0}
+a9	results.json	calibration/v2433_front_first_real_buy	{'n': 1843, 'mean': 0.10029, 'median': 0.11648, 'win': 0.732, 'pulled_first': 0}
+a9	results.json	calibration/v2433_follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a9	results.json	calibration/v2433_front_live_window	{'n': 409, 'mean': 0.14027, 'median': 0.16173, 'win': 0.9902, 'pulled_first': 0}
+a9	results.json	calibration/opA_follow	{'n': 75, 'mean': 0.04333, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a9	results.json	calibration/opA_front_first_real_buy	{'n': 77, 'mean': 0.05807, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}
+a10	calib.json	v2433_front_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a10	calib.json	v2433_front_live_window_0907_1140	{'n': 409, 'mean': 0.13979, 'median': 0.16173, 'win': 0.9853, 'pulled_first': 0}
+a10	calib.json	v2433_front_relay_traded_pools	{'n': 1048, 'mean': 0.11299, 'median': 0.13682, 'win': 0.9275, 'pulled_first': 0}
+a10	calib.json	v2433_front_bot_buy_kept	{'n': 1614, 'mean': 0.13538, 'median': 0.14162, 'win': 0.9882, 'pulled_first': 0}
+a10	calib.json	v2433_front_bot_buy_dropped	{'n': 229, 'mean': 0.00014, 'median': 0.00034, 'win': 0.6463, 'pulled_first': 0}
+a10	calib.json	v2433_front_by_6h/10-08 18h	{'n': 68, 'mean': 0.12583, 'median': 0.14021, 'win': 0.9706, 'pulled_first': None}
+a10	calib.json	v2433_front_by_6h/10-09 00h	{'n': 91, 'mean': 0.13262, 'median': 0.14028, 'win': 0.989, 'pulled_first': None}
+a10	calib.json	v2433_front_by_6h/10-09 06h	{'n': 84, 'mean': 0.14268, 'median': 0.14107, 'win': 0.9762, 'pulled_first': None}
+a10	calib.json	v2433_front_by_6h/10-09 12h	{'n': 92, 'mean': 0.12526, 'median': 0.126, 'win': 0.9891, 'pulled_first': None}
+a10	calib.json	v2433_front_by_6h/10-09 18h	{'n': 86, 'mean': 0.13992, 'median': 0.14162, 'win': 1.0, 'pulled_first': None}
+a10	calib.json	v2433_front_by_6h/10-10 00h	{'n': 102, 'mean': 0.13513, 'median': 0.1403, 'win': 0.9902, 'pulled_first': None}
+a10	calib.json	v2433_front_by_6h/10-10 06h	{'n': 530, 'mean': 0.13883, 'median': 0.15484, 'win': 0.9868, 'pulled_first': None}
+a10	calib.json	v2433_front_by_6h/10-10 12h	{'n': 758, 'mean': 0.09448, 'median': 0.0985, 'win': 0.8892, 'pulled_first': None}
+a10	calib.json	v2433_front_by_6h/10-10 18h	{'n': 32, 'mean': 0.10612, 'median': 0.12415, 'win': 0.9375, 'pulled_first': None}
+a10	calib.json	v2433_front_by_bot_size/0.04-0.12	{'n': 270, 'mean': 0.05315, 'median': 0.05619, 'win': 0.9481, 'pulled_first': None}
+a10	calib.json	v2433_front_by_bot_size/0.12-0.22	{'n': 845, 'mean': 0.12041, 'median': 0.14009, 'win': 0.9479, 'pulled_first': None}
+a10	calib.json	v2433_front_by_bot_size/<0.04	{'n': 169, 'mean': 0.01015, 'median': 0.01309, 'win': 0.8876, 'pulled_first': None}
+a10	calib.json	v2433_front_by_bot_size/>=0.22	{'n': 558, 'mean': 0.18053, 'median': 0.19881, 'win': 0.9606, 'pulled_first': None}
+a10	calib.json	opA_follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a10	calib.json	opA_front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a10	results.json	numbers/stats/control:vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a10	results.json	numbers/stats/control:vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a10	results.json	numbers/stats/control:operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a10	results.json	numbers/stats/control:operator-A/follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a10	results.json	numbers/calib/v2433_front_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a10	results.json	numbers/calib/v2433_front_live_window_0907_1140	{'n': 409, 'mean': 0.13979, 'median': 0.16173, 'win': 0.9853, 'pulled_first': 0}
+a10	results.json	numbers/calib/v2433_front_relay_traded_pools	{'n': 1048, 'mean': 0.11299, 'median': 0.13682, 'win': 0.9275, 'pulled_first': 0}
+a10	results.json	numbers/calib/v2433_front_bot_buy_kept	{'n': 1614, 'mean': 0.13538, 'median': 0.14162, 'win': 0.9882, 'pulled_first': 0}
+a10	results.json	numbers/calib/v2433_front_bot_buy_dropped	{'n': 229, 'mean': 0.00014, 'median': 0.00034, 'win': 0.6463, 'pulled_first': 0}
+a10	results.json	numbers/calib/v2433_front_by_6h/10-08 18h	{'n': 68, 'mean': 0.12583, 'median': 0.14021, 'win': 0.9706, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_6h/10-09 00h	{'n': 91, 'mean': 0.13262, 'median': 0.14028, 'win': 0.989, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_6h/10-09 06h	{'n': 84, 'mean': 0.14268, 'median': 0.14107, 'win': 0.9762, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_6h/10-09 12h	{'n': 92, 'mean': 0.12526, 'median': 0.126, 'win': 0.9891, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_6h/10-09 18h	{'n': 86, 'mean': 0.13992, 'median': 0.14162, 'win': 1.0, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_6h/10-10 00h	{'n': 102, 'mean': 0.13513, 'median': 0.1403, 'win': 0.9902, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_6h/10-10 06h	{'n': 530, 'mean': 0.13883, 'median': 0.15484, 'win': 0.9868, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_6h/10-10 12h	{'n': 758, 'mean': 0.09448, 'median': 0.0985, 'win': 0.8892, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_6h/10-10 18h	{'n': 32, 'mean': 0.10612, 'median': 0.12415, 'win': 0.9375, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_bot_size/0.04-0.12	{'n': 270, 'mean': 0.05315, 'median': 0.05619, 'win': 0.9481, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_bot_size/0.12-0.22	{'n': 845, 'mean': 0.12041, 'median': 0.14009, 'win': 0.9479, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_bot_size/<0.04	{'n': 169, 'mean': 0.01015, 'median': 0.01309, 'win': 0.8876, 'pulled_first': None}
+a10	results.json	numbers/calib/v2433_front_by_bot_size/>=0.22	{'n': 558, 'mean': 0.18053, 'median': 0.19881, 'win': 0.9606, 'pulled_first': None}
+a10	results.json	numbers/calib/opA_follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a10	results.json	numbers/calib/opA_front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a11	calib.json	v2433_front_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a11	calib.json	v2433_front_live_window_0907_1140	{'n': 409, 'mean': 0.13979, 'median': 0.16173, 'win': 0.9853, 'pulled_first': 0}
+a11	calib.json	v2433_front_bot_buy_kept	{'n': 1614, 'mean': 0.13538, 'median': 0.14162, 'win': 0.9882, 'pulled_first': 0}
+a11	calib.json	v2433_front_bot_buy_dropped	{'n': 229, 'mean': 0.00014, 'median': 0.00034, 'win': 0.6463, 'pulled_first': 0}
+a11	calib.json	v2433_front_by_6h/10-08 18h	{'n': 68, 'mean': 0.12583, 'median': 0.14021, 'win': 0.9706, 'pulled_first': None}
+a11	calib.json	v2433_front_by_6h/10-09 00h	{'n': 91, 'mean': 0.13262, 'median': 0.14028, 'win': 0.989, 'pulled_first': None}
+a11	calib.json	v2433_front_by_6h/10-09 06h	{'n': 84, 'mean': 0.14268, 'median': 0.14107, 'win': 0.9762, 'pulled_first': None}
+a11	calib.json	v2433_front_by_6h/10-09 12h	{'n': 92, 'mean': 0.12526, 'median': 0.126, 'win': 0.9891, 'pulled_first': None}
+a11	calib.json	v2433_front_by_6h/10-09 18h	{'n': 86, 'mean': 0.13992, 'median': 0.14162, 'win': 1.0, 'pulled_first': None}
+a11	calib.json	v2433_front_by_6h/10-10 00h	{'n': 102, 'mean': 0.13513, 'median': 0.1403, 'win': 0.9902, 'pulled_first': None}
+a11	calib.json	v2433_front_by_6h/10-10 06h	{'n': 530, 'mean': 0.13883, 'median': 0.15484, 'win': 0.9868, 'pulled_first': None}
+a11	calib.json	v2433_front_by_6h/10-10 12h	{'n': 758, 'mean': 0.09448, 'median': 0.0985, 'win': 0.8892, 'pulled_first': None}
+a11	calib.json	v2433_front_by_6h/10-10 18h	{'n': 32, 'mean': 0.10612, 'median': 0.12415, 'win': 0.9375, 'pulled_first': None}
+a11	calib.json	v2433_front_by_bot_size/0.04-0.12	{'n': 270, 'mean': 0.05315, 'median': 0.05619, 'win': 0.9481, 'pulled_first': None}
+a11	calib.json	v2433_front_by_bot_size/0.12-0.22	{'n': 845, 'mean': 0.12041, 'median': 0.14009, 'win': 0.9479, 'pulled_first': None}
+a11	calib.json	v2433_front_by_bot_size/<0.04	{'n': 169, 'mean': 0.01015, 'median': 0.01309, 'win': 0.8876, 'pulled_first': None}
+a11	calib.json	v2433_front_by_bot_size/>=0.22	{'n': 558, 'mean': 0.18053, 'median': 0.19881, 'win': 0.9606, 'pulled_first': None}
+a11	calib.json	v2433_follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a11	calib.json	opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a11	calib.json	opA_front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a12	results.json	families/control:vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a12	results.json	families/control:vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a12	results.json	families/control:vbot-v2.433/front_generic	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a12	results.json	families/control:vbot-v2.433/front_live_window	{'n': 409, 'mean': 0.13979, 'median': 0.16173, 'win': 0.9853, 'pulled_first': 0}
+a12	results.json	families/control:vbot-v2.433/front_bot_kept	{'n': 1614, 'mean': 0.13538, 'median': 0.14162, 'win': 0.9882, 'pulled_first': 0}
+a12	results.json	families/control:vbot-v2.433/front_bot_dropped	{'n': 229, 'mean': 0.00014, 'median': 0.00034, 'win': 0.6463, 'pulled_first': 0}
+a12	results.json	families/control:operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a12	results.json	families/control:operator-A/follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a14	results.json	CONTROL vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a14	results.json	CONTROL vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a14	results.json	CONTROL operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a14	results.json	CONTROL operator-A/follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a14	results_raw.json	CONTROL vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a14	results_raw.json	CONTROL vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a14	results_raw.json	CONTROL operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a14	results_raw.json	CONTROL operator-A/follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a16	calib.json	v2433_front_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a16	calib.json	v2433_front_livewindow	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a16	calib.json	v2433_front_botbuy_by_20	{'n': 1832, 'mean': 0.11932, 'median': 0.14009, 'win': 0.9514, 'pulled_first': 0}
+a16	calib.json	v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a16	calib.json	opA_follow	{'n': 75, 'mean': 0.04338, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a16	calib.json	opA_front_generic	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a17	results.json	controls/vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a17	results.json	controls/vbot-v2.433/front_wait	{'n': 1843, 'mean': 0.11937, 'median': 0.14009, 'win': 0.9512, 'pulled_first': 0}
+a17	results.json	controls/vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a17	results.json	controls/vbot-v2.433_front_splits/bot_buy_ge_0.04_by_+19	{'n': 1664, 'mean': 0.13034, 'median': 0.14031, 'win': 0.9573, 'pulled_first': 0}
+a17	results.json	controls/vbot-v2.433_front_splits/bot_buy_lt_0.04_by_+19	{'n': 168, 'mean': 0.01024, 'median': 0.01319, 'win': 0.8929, 'pulled_first': 0}
+a17	results.json	controls/vbot-v2.433_front_splits/launched_Oct10_09:07-11:40	{'n': 409, 'mean': 0.13979, 'median': 0.16173, 'win': 0.9853, 'pulled_first': 0}
+a17	results.json	controls/operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a17	results.json	controls/operator-A/front_wait	{'n': 77, 'mean': 0.05811, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}
+a17	results.json	controls/operator-A/follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a18	results.json	controls/v2433_front_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a18	results.json	controls/v2433_front_bot_by_20	{'n': 1832, 'mean': 0.11932, 'median': 0.14009, 'win': 0.9514, 'pulled_first': 0}
+a18	results.json	controls/v2433_front_livewindow	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a18	results.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a18	results.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a18	results.json	controls/opA_front_generic	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a20	results.json	controls/v2433_front_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a20	results.json	controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a20	results.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a20	results.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a20	results.json	controls/opA_front_generic	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a22	results.json	controls/v2433_front_bot_sched_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a22	results.json	controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a22	results.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a22	results.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a22	results_final.json	controls/v2433_front_bot_sched_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a22	results_final.json	controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a22	results_final.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a22	results_final.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a23	results.json	controls/v2433_front_bot_sched_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a23	results.json	controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a23	results.json	controls/v2433_front_bot_bought_by_20 (the live trade: sold one block after the	{'n': 1832, 'mean': 0.11932, 'median': 0.14009, 'win': 0.9514, 'pulled_first': 0}
+a23	results.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a23	results.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a23	results.json	CONTROL vbot-v2.433/front	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a23	results.json	CONTROL vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a23	results.json	CONTROL vbot-v2.433/front_no20cap (sell 1 block after the first real buy, deadline +3000)	{'n': 1843, 'mean': 0.09975, 'median': 0.11648, 'win': 0.732, 'pulled_first': 1}
+a23	results.json	CONTROL vbot-v2.433/front_bot_sched	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a23	results.json	CONTROL operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a23	results.json	CONTROL operator-A/follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a23	results.json	CONTROL operator-A/front_no20cap (sell 1 block after the first real buy, deadline +3000)	{'n': 77, 'mean': 0.05811, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}
+a24	results.json	controls/v2433_front_bot_sched_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a24	results.json	controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a24	results.json	controls/v2433_front_bot_bought_by_20 (the live trade: sold one block after the	{'n': 1832, 'mean': 0.11932, 'median': 0.14009, 'win': 0.9514, 'pulled_first': 0}
+a24	results.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a24	results.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a24	results.json	CONTROL vbot-v2.433/front	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a24	results.json	CONTROL vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a24	results.json	CONTROL vbot-v2.433/front_no20cap (sell 1 block after the first real buy, deadline +3000)	{'n': 1843, 'mean': 0.09975, 'median': 0.11648, 'win': 0.732, 'pulled_first': 1}
+a24	results.json	CONTROL vbot-v2.433/front_bot_sched	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a24	results.json	CONTROL operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a24	results.json	CONTROL operator-A/follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a24	results.json	CONTROL operator-A/front_no20cap (sell 1 block after the first real buy, deadline +3000)	{'n': 77, 'mean': 0.05811, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}
+a25	results.json	controls/v2433_front_bot_sched_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a25	results.json	controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a25	results.json	controls/v2433_front_bot_bought_by_20 (the live trade: sold one block after the	{'n': 1832, 'mean': 0.11932, 'median': 0.14009, 'win': 0.9514, 'pulled_first': 0}
+a25	results.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a25	results.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a25	results.json	CONTROL vbot-v2.433/front	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a25	results.json	CONTROL vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a25	results.json	CONTROL vbot-v2.433/front_no20cap (sell 1 block after the first real buy, deadline +3000)	{'n': 1843, 'mean': 0.09975, 'median': 0.11648, 'win': 0.732, 'pulled_first': 1}
+a25	results.json	CONTROL vbot-v2.433/front_bot_sched	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a25	results.json	CONTROL operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a25	results.json	CONTROL operator-A/follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a25	results.json	CONTROL operator-A/front_no20cap (sell 1 block after the first real buy, deadline +3000)	{'n': 77, 'mean': 0.05811, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}
+a26	results.json	main/controls/v2433_front_bot_sched_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a26	results.json	main/controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a26	results.json	main/controls/v2433_front_bot_bought_by_20	{'n': 1832, 'mean': 0.11932, 'median': 0.14009, 'win': 0.9514, 'pulled_first': 0}
+a26	results.json	main/controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a26	results.json	main/controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a26	results.json	main/F3 LAUNCHER:0x3194e326|2fcb9108|644 (operator A, control)/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a26	results.json	main/F3 LAUNCHER:0x3194e326|2fcb9108|644 (operator A, control)/follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a26	results.json	main/F3 LAUNCHER:0x3194e326|2fcb9108|644 (operator A, control)/front_nocap (sell 1 block after the first real buy whenever it comes, 	{'n': 77, 'mean': 0.05811, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}
+a26	results.json	main/CONTROL vbot-v2.433/front	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a26	results.json	main/CONTROL vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a26	results.json	main/CONTROL vbot-v2.433/front_nocap (sell 1 block after the first real buy whenever it comes, 	{'n': 1843, 'mean': 0.09975, 'median': 0.11648, 'win': 0.732, 'pulled_first': 1}
+a26	results.json	main/CONTROL vbot-v2.433/front_bot_sched	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a26	results_main.json	controls/v2433_front_bot_sched_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a26	results_main.json	controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a26	results_main.json	controls/v2433_front_bot_bought_by_20	{'n': 1832, 'mean': 0.11932, 'median': 0.14009, 'win': 0.9514, 'pulled_first': 0}
+a26	results_main.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a26	results_main.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a26	results_main.json	F3 LAUNCHER:0x3194e326|2fcb9108|644 (operator A, control)/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a26	results_main.json	F3 LAUNCHER:0x3194e326|2fcb9108|644 (operator A, control)/follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a26	results_main.json	F3 LAUNCHER:0x3194e326|2fcb9108|644 (operator A, control)/front_nocap (sell 1 block after the first real buy whenever it comes, 	{'n': 77, 'mean': 0.05811, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}
+a26	results_main.json	CONTROL vbot-v2.433/front	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a26	results_main.json	CONTROL vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a26	results_main.json	CONTROL vbot-v2.433/front_nocap (sell 1 block after the first real buy whenever it comes, 	{'n': 1843, 'mean': 0.09975, 'median': 0.11648, 'win': 0.732, 'pulled_first': 1}
+a26	results_main.json	CONTROL vbot-v2.433/front_bot_sched	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a27	results.json	controls/v2433_front_bot_sched_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a27	results.json	controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a27	results.json	controls/v2433_front_bot_bought_by_20 (the live trade: sold one block after the	{'n': 1832, 'mean': 0.11932, 'median': 0.14009, 'win': 0.9514, 'pulled_first': 0}
+a27	results.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a27	results.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a27	results.json	CONTROL vbot-v2.433/front	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a27	results.json	CONTROL vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a27	results.json	CONTROL vbot-v2.433/front_no20cap (sell 1 block after the first real buy, deadline +3000)	{'n': 1843, 'mean': 0.09975, 'median': 0.11648, 'win': 0.732, 'pulled_first': 1}
+a27	results.json	CONTROL vbot-v2.433/front_bot_sched	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a27	results.json	CONTROL operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a27	results.json	CONTROL operator-A/follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a27	results.json	CONTROL operator-A/front_no20cap (sell 1 block after the first real buy, deadline +3000)	{'n': 77, 'mean': 0.05811, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}
+a28	results.json	controls/v2433_front_bot_sched_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a28	results.json	controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a28	results.json	controls/v2433_front_bot_bought_by_20 (sold one block after the bot's buy)	{'n': 1832, 'mean': 0.11932, 'median': 0.14009, 'win': 0.9514, 'pulled_first': 0}
+a28	results.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a28	results.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a28	results.json	CONTROL vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a28	results.json	CONTROL vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a28	results.json	CONTROL vbot-v2.433/front_no20cap (sell 1 block after the first scheduled buy, deadline +3	{'n': 1843, 'mean': 0.11883, 'median': 0.14009, 'win': 0.9512, 'pulled_first': 1}
+a28	results.json	CONTROL operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a28	results.json	CONTROL operator-A/follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a28	results.json	CONTROL operator-A/front_no20cap (sell 1 block after the first scheduled buy, deadline +3	{'n': 77, 'mean': 0.05811, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}
+a28	results_final.json	controls/v2433_front_bot_sched_all	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a28	results_final.json	controls/v2433_front_livewindow_oct10_0907_1139	{'n': 410, 'mean': 0.13949, 'median': 0.16173, 'win': 0.9854, 'pulled_first': 0}
+a28	results_final.json	controls/v2433_front_bot_bought_by_20 (sold one block after the bot's buy)	{'n': 1832, 'mean': 0.11932, 'median': 0.14009, 'win': 0.9514, 'pulled_first': 0}
+a28	results_final.json	controls/v2433_front_generic_sched	{'n': 1843, 'mean': 0.09967, 'median': 0.11, 'win': 0.7276, 'pulled_first': 0}
+a28	results_final.json	controls/opA_follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a28	results_final.json	CONTROL vbot-v2.433/front	{'n': 1843, 'mean': 0.11858, 'median': 0.14008, 'win': 0.9457, 'pulled_first': 0}
+a28	results_final.json	CONTROL vbot-v2.433/follow	{'n': 1842, 'mean': -0.35433, 'median': -0.00571, 'win': 0.0016, 'pulled_first': 646}
+a28	results_final.json	CONTROL vbot-v2.433/front_no20cap (sell 1 block after the first scheduled buy, deadline +3	{'n': 1843, 'mean': 0.11883, 'median': 0.14009, 'win': 0.9512, 'pulled_first': 1}
+a28	results_final.json	CONTROL operator-A/front	{'n': 77, 'mean': -0.00506, 'median': -0.00544, 'win': 0.013, 'pulled_first': 0}
+a28	results_final.json	CONTROL operator-A/follow	{'n': 75, 'mean': 0.04337, 'median': 0.03268, 'win': 0.84, 'pulled_first': 0}
+a28	results_final.json	CONTROL operator-A/front_no20cap (sell 1 block after the first scheduled buy, deadline +3	{'n': 77, 'mean': 0.05811, 'median': 0.04281, 'win': 0.9221, 'pulled_first': 0}

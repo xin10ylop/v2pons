@@ -1062,67 +1062,100 @@ quicknode.com/chains/robinhood, github.com/chainstacklabs/robinhood-chain-sequen
 The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
 stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
 
-### 16.12 The scanner for other operators (12.6): the volume bot's 3.0 ETH line is the one real front candidate
+### 16.12 The scanner for other operators (12.6): the volume bot's 3.0 ETH line is the one front candidate (conditional, medium confidence)
 
-Run 18:15-22:10 UTC from the research container over the public RPC as one workflow of 36 Opus agents (a census, 29 family analysts, 5
-skeptics who re-derived every flagged family's numbers from the raw rows with their own code and traced its money; the synthesis agent
-produced no report, this section is the session's own synthesis of the skeptics' verdicts). Files: `research/session_oct9_10/scanner/`
-(`README.md`, `REPORT.md` with the five verdicts in full, the census code and small outputs, every agent's scripts and results; the 937 MB of
-raw RPC answers were not kept, `census/code/fetch.py` rebuilds them in about 20 minutes).
+Run Oct 10 18:15-22:10 UTC from the research container over the public RPC as one workflow of 36 Opus agents (a census, 29 family analysts,
+5 skeptics who re-derived every flagged family's numbers from the raw rows with their own code and traced its money). The synthesis agent
+produced no report, so a second pass ran Oct 11 02:50-03:50 UTC on the cached results: two syntheses (one refused to write), a critic that
+checked them and the first version of this section against the raw data and the engine's code, and a final merged report. The second pass
+also read the chain to block 85,513,808 (02:57 UTC Oct 11). Files: `research/session_oct9_10/scanner/` (`README.md`; `REPORT.md` with the five
+skeptics' verdicts in full; `report/REPORT_final.md` the merged report, `report/CRITIQUE.md`, `report/work/` and `report/merge/` the second
+pass's evidence; the census code and small outputs; every agent's scripts and results. The 937 MB of raw RPC answers were not kept,
+`census/code/fetch.py` rebuilds them in about 20 minutes.)
 
-The census: 6,865 ETH-paired v4 pools in the 48 hours to 18:20 UTC (11,889 `Initialize` logs in all), events complete to launch + 3,000
-blocks, 1,644 strict launch families, 104 with 5 or more launches; 153 families analysed, 7 flagged, 5 distinct judged. The V2/V3 factories
-(6,739 and 645 pairs) and the bonding-curve factory (4,693 creates) were counted, not analysed.
+The census: 6,865 ETH-paired v4 pools in the 48 hours to Oct 10 18:20 UTC (11,889 `Initialize` logs in all), events complete to launch + 3,000
+blocks, 1,644 strict launch families; all 104 families with 5 or more launches were assigned to analysts (96 left a result file), the ranked list
+has 7 entries for 6 distinct families, judged as 5 operators. The V2/V3 factories (6,739 and 645 pairs) and the bonding-curve factory (4,693
+creates) were counted, not analysed. The method's controls held: v2.433's front replays at +11.9% mean / +14.0% median over the 1,843 census
+pools and +14.0% / +16.2% over the 409 live-window pools, and the model re-priced 1,080 live relay round trips within 0.5 points
+(`analyse_26/results.json`, `analyse_10/calib.json`); operator A's follow +4.3% (n 75).
 
 **What the chain says, ranked by what it is worth to the owner:**
 
-1. **The volume bot's 3.0 ETH line (v3.0) is the same edge, larger room, same adversary.** Section 1 already named 3.0 and 5.0 ETH as the
-   bot's untraded sizes; the skeptic confirmed 889 v3.0 launches in 48 h (about 510 a day, still launching at 21:28 UTC, after v2.433 went
-   silent at 19:28) and 434 v5.0 (about 270 a day). Same router `0x1cbaf24d`, same `c1120e3d` buy from 110 reused wallets at +6..+10 (92%),
-   full pull by the launch wallet via `a0f7978d`, but **minOut 0.95 x the launch quote** (v2.433's is 0.99): the stake curve is flat at +6.0%
-   from 0.0029 to 0.075 ETH, the bot's buys start reverting at 0.08 ETH. Front replay at 0.0058 ETH over all 889: +6.03% mean, +6.09% median,
-   99.2% win, 7 deadline exits at -2.07%, about $0.90 a trade and $400 a day; the 3.25 h after the census +5.83% (n 69). v5.0 is thin (+1.75%,
-   $57 a day). The caveats: (a) the trap exists here too: 24 pools had an outsider ahead of the bot, the bot still bought, and the pull came at
-   bot+3 in the latest bursts (bot+8..10 on Oct 9), so our sell at bot+1 survives one block of slip, not two; (b) nobody has ever sold into
-   this bot's buy (the three outsiders held and were rugged), so the operator's reaction to a seller is unobserved; (c) it is the operator
-   who answered v2.433 with decoys within 6 hours, and v3.0's fresh pools have none yet; (d) in the 1% fee tier a forced exit costs about
-   -2.1%, so the skeptic says turn off the take-profit and size rules for this family (the router rule alone). **What the engine needs:** it
-   takes one front family at a time: `FRONT_VALUE_WEI 3000000000000000000`, `FRONT_FEE 10000`, `FRONT_TICK_SPACING 200`,
-   `FRONT_SQRT_P 679394651928963067279918579724198`, `FRONT_LIQ 25725498245903809899643`, `FRONT_PIN 1` (16 value-0 look-alikes must be
-   rejected), skip if more than 0.07 ETH sits ahead; trading v2.433 and v3.0 together needs a code change (a set of values) and the one
-   position slot (19 of 889 v3.0 launches fell within 12 blocks of a v2.433 launch). The skeptic's gates: a dry run of at least 200 v3.0
-   launches (recognised in the launch block 98%+, bot buy at +6..+14 in 95%+, minOut 0.95 in 100%, the simulated sell before the pull in
-   100%, replay +5% or better), then 50 live at 0.002 ETH (0 pulled first, 90%+ sold at bot+1, pull at least 2 blocks after our sell every
-   time), then 200 at 0.0058 before calling it live. Halt after 5 consecutive non-bot or deadline exits (the decoy signal).
-2. **Operator C-1 is a different trade: a ride on a wash crowd.** POSM `ac9650d8`, 2,276 bytes, value 0, fee 100/ts 1, 245 launches in 48 h
-   (bursty, about 45 a day after the census). Its "crowd" is its own router `0xd6d35b56` with at least 1,049 wallets that buy and sell (4,072
-   buys for 653 ETH and 1,691 sells in 66 pools; outsiders 0.255 ETH in all), funded in a loop the skeptic traced to the wei (the creators'
-   pulls, 448 ETH in 48 h, go through the multisend `0xf341c935` to the next launcher, which sends the pot to hub `0xbae53801`, which funds
-   the router and pays 965 wallets' gas). The first router buy comes at +4..+501 (median +116), not on a schedule, so there is nothing to
-   front; a buy at the end of the block after the router's first buy, sold 50 blocks later, replays +11.5% mean, +5.7% median, 69% win, 2.4%
-   lost to the pull, $1.73 a trade; a random entry gives +6.0%, so the trigger adds something. One wallet (`0x97ac054b`) already rides these
-   pools at 0.0002 ETH for a realised +13.9%. The objection: 6 of 15 pools with an outsider buy of 0.001 ETH or more among the first swaps
-   were pulled within 100 blocks (controls 12%, p about 0.006); read swap by swap they look like the normal pull after the operator's buying
-   stops, but the operator can tell its wallets from ours. Needs a new entry type in the engine (arm on the launch, fire on the router's
-   buy, hold 50 blocks) and the position slot for 5 s a trade. Gates: a dry run of 100 triggers, then 50 rides at $5.
+1. **The volume bot's 3.0 ETH line (v3.0) is the same edge, larger room, same adversary, now with company.** Section 1 already named 3.0
+   and 5.0 ETH as the bot's untraded sizes. 889 v3.0 launches in the 48 h (444 a day) and 434 v5.0 (217 a day); in the 8.6 h after the
+   census v3.0 launched 231 (19 an hour for 7 h, then 98 in the last 1.6 h) while v2.433 has been silent since 19:28 UTC Oct 10
+   (`report/headcheck3.json`). Same router `0x1cbaf24d`, same `c1120e3d` buy from reused wallets at +6..+10 (92%), full pull by the launch
+   wallet via `a0f7978d`, but **minOut 0.95 x the launch quote** (v2.433's is 0.99): the stake curve is flat at +6.0% from 0.0029 to 0.075 ETH
+   and the bot's buys start reverting at 0.08 ETH (the engine caps the front stake at 0.006 ETH in code anyway). Front replay at 0.0058 ETH
+   over all 889: +6.03% mean, +6.09% median, 99.2% win, 7 deadline exits at -2.07%, about $0.90 a trade and **$400 a day** at 444 launches
+   (`skeptic_0x58.../s4_replay.json`); the 235 pools to 02:57 UTC Oct 11 replay at +6.19% mean, +6.56% median, 98.7% win
+   (`report/work/f8_fresh.json`). v5.0 is thin (+1.75%, $57 a day): log it inside a v3.0 dry run, do not trade it. The caveats:
+   (a) the trap exists here too: an outsider ahead of the bot does not stop the bot's buy, and the pull then comes at bot+3 (bot+8..10 on
+   Oct 9), so our sell at bot+1 keeps a 2-block margin, one block of slip is survivable and two are not; (b) **since 01:57 UTC Oct 11 an
+   outside wallet does our trade there**: `0x8cf143dd` bought 0.000099-0.00495 ETH through router `0x65050a9b` at +1..+6 in 85 of 97 v3.0
+   launches and sold into the bot's buy in 56 of them (18 in the bot's block, 32 at bot+1, 6 later) at +1.2% to +10.9%; the operator answered
+   with the bot+3 pull (31 of 32 bot+1 sellers were pulled at bot+3; 77 of the 83 pulled pools it entered were pulled at exactly bot+3, the
+   48 pulled pools without it at bot+21 or later; `report/work/decoy3.json`). Its sizes and timing match v2.433's decoys (16.10); whether it is
+   the operator's decoy or a competitor cannot be told from public data; (c) v2.433's decoys defeated our size rule within 6 hours (16.10),
+   and this is the same operator; (d) in the 1% fee tier a forced exit costs about -2.1%, so the take-profit and size rules must be off for
+   this family: `FRONT_TAKE_PROFIT 9` (the default 0.01 fires) and `FRONT_SELL_ON_ETH 0`, the router rule alone; (e) the trade breaks even
+   when about 26% of the bot's buys fill (on v2.433 our stake plus two decoys reverted about 72%; on v3.0 that would need about 0.074 ETH
+   ahead of the bot). **What the engine needs, in order:** code first: a front-only fee bound (with the default `FEE_MAX_PPM` 9999,
+   `front_mismatch` rejects all 889 v3.0 launches as `fee 10000`, verified by running the engine's decoder over them, `report/merge/
+   fee_check.txt`; raising `FEE_MAX_PPM` to 10000 would also open follow to 1% pools, so the bound must be front's own), and a halt after 5
+   consecutive non-bot or deadline exits (the decoy signal; no such counter exists, only the pull-first and near-miss halts), each with a
+   test and a review. Then the settings: `FRONT_VALUE_WEI 3000000000000000000`, `FRONT_FEE 10000`, `FRONT_TICK_SPACING 200`,
+   `FRONT_SQRT_P 679394651928963067279918579724198`, `FRONT_LIQ 25725498245903809899643`, `FRONT_PIN 1` (rejects a 3.0 ETH launch whose
+   fee, tick spacing, price or liquidity differ; the 16 value-0 look-alikes are never armed because the engine arms only
+   `value == FRONT_VALUE_WEI`), `FRONT_BOT_MINOUT 0.95`, `FRONT_AHEAD_MAX_ETH 0.07`, `FRONT_TAKE_PROFIT 9`, `FRONT_SELL_ON_ETH 0`,
+   `FRONT_STAKE_ETH 0.0058`. The engine takes one front family at a time; trading v2.433 and v3.0 together needs a set of launch values,
+   each with its own fingerprint, minOut and room, and the one position slot (19 of 889 v3.0 launches fell within 12 blocks of a v2.433
+   launch). The gates: a dry run of at least 200 v3.0 launches (recognised in the launch block 98%+, the bot's buy at +6..+14 in 95%+, minOut
+   0.95 in 100%, non-us ETH ahead of the bot 0.01 or less in 95%+, the sell sent in the feed block of the bot's buy in 99%+ (the 14:28 loss of
+   16.10), the simulated sell before the pull in 100%, replay +5% or better), then 50 live at 0.002 ETH (0 pulled first, 90%+ sold at bot+1,
+   the pull at least 2 blocks after our sell every time, mean +4% or better), then 200 at 0.0058 before calling it live. An hourly RPC watch
+   of minOut, ETH ahead of the bot and pull-minus-bot can start before any of it.
+2. **Operator C-1 is a different trade: a ride on a wash crowd, about $90-127 a day.** POSM `ac9650d8`, 2,276 bytes, value 0, fee 100/ts 1:
+   245 launches in 47.4 h (124 a day, but one 6-h slice holds 92; the other seven run at about 89 a day; 30 in the 8.7 h after the census,
+   about 84 a day, `report/work/c1/c1_fresh.json`). Its "crowd" is its own router `0xd6d35b56` with at least 1,049 wallets that buy and sell
+   (4,072 buys for 653 ETH and 1,691 sells in 66 pools; outsiders 0.255 ETH in all; every call with gas limit 1,000,000, gas price equal to the
+   tip and minOut 0), funded in a loop the skeptic traced to the wei (the creators' pulls, 448 ETH in 48 h, go through the multisend
+   `0xf341c935` to the next launcher, which sends the pot to hub `0xbae53801`, which funds the router and pays 965 wallets' gas). The first
+   router buy comes at +4..+501 (median +116), not on a schedule, so there is nothing to front; a buy at the end of the block after the
+   router's first buy, sold 50 blocks later, replays +11.5% mean, +5.7% median, 69% win, 2.4% lost to the pull, $1.73 a trade over 209
+   pools; the 27 rides since the census +8.1% mean, +3.2% median, 1 stake lost. A random entry gives +6.0%, so the trigger adds something;
+   landing at c1+2 or c1+3 gives +10.5% and +10.0%; hold 20 gives +6.8% with a -0.1% median, hold 100 +21.9% with 16 stakes lost. One wallet
+   (`0x97ac054b`) already rides these pools at 0.0002 ETH for a realised +13.9%. The objection: 6 of 15 pools with an outsider buy of
+   0.001 ETH or more among the first swaps were pulled within 100 blocks (controls 12%, p about 0.006), 60-86 blocks after the outsider's buy
+   and only 10-36 blocks after our planned sell; read swap by swap they look like the normal pull after the operator's buying stops, but the
+   operator can tell its wallets from ours. Needs a new entry type in the engine (arm on the launch calldata, fire on the router's first buy at
+   minOut 0.97 of the quote, hold 50 blocks, shadow exits at +40 and on no router buy within 20 blocks) and the position slot for 5 s a
+   trade. Gates: a dry run of 100 triggers, then 50 rides at $5, then $15.
 3. **The top-scored family (815) was a one-off.** A hooked launcher (code hash `f07d1c53`, selector `e1e75b94`, 5,572 bytes, fee 2500/ts 25):
    102 pools, 100 of them in 23 minutes on Oct 10 17:33-17:56, one buyer `0x9fdd8cea` buying each at +15 (2.01 ETH x8 down to 0.06 in tiers),
    the launch wallet pulling at +30 and both burning the whole supply. 48 ETH ended in 100 fresh wallets and stayed there. minOut 0.95 and
-   room 0.027-0.039 ETH, so a $15 front would have fitted, and the analyst's replay said +71% median, but nothing of this shape recurred and
-   the hook (reads `tx.origin`, makes an external staticcall) is unverified at launch state. Watch-only recogniser if ever.
-4. **Operator C-2 is a trap** (PM `initialize` 196 bytes fee 500/ts 1 from the deployer, a POSM 1,380-byte mint about 41 blocks later, crowd
-   routers `0x628bd69e` and two twins, 192 launches): 24 of 25 outsider buys of 1e-4 ETH or more were followed by a pull within 166 blocks,
-   five exactly 4 blocks after; untouched pools run to a scheduled pull near +4,900. The no-reaction ride is +7.2%; with the observed reaction
-   -96%. A known sniper (`0xe9d83e95`) buys 9.0-9.99e-5 ETH here, tuned under the trigger. Do not trade; a dry run cannot settle it.
-5. **The small-pot operator** (POSM 1,444 bytes at 1.5-2.5 ETH, fee 100/ts 1 or 500/ts 10, a fresh dispatcher funding the launch wallet and 10
+   room 0.027-0.039 ETH, so a $15 front would have fitted, and the analyst's replay said +71% median, but nothing of this shape recurred to
+   02:57 UTC Oct 11 (`report/headcheck3.json`) and the hook (reads `tx.origin`, makes an external staticcall) is unverified at launch state.
+   Watch-only recogniser if ever (the fingerprint, the sibling `0x6765bede`/`82a55dde`, its 100 deployers); reconsider after 3 bursts on 2 days.
+4. **The small-pot operator** (POSM 1,444 bytes at 1.5-2.5 ETH, fee 100/ts 1 or 500/ts 10, a fresh dispatcher funding the launch wallet and 10
    fresh crowd wallets 800-1,200 blocks before, the pot forwarded to the next dispatcher; 339 launches since Sep 11, about 11 a day in
    sessions) is **operator A's design with its own pot** and aborts on real-size early holders: wallet `0x578e7a8e` bought 0.005 ETH at
    +61..+136 in 24 consecutive pools on Oct 5-6, was tolerated for 10, then 10 of the next 14 were pulled with no crowd. The no-reaction front
-   replay is +50-60%; at $15 the expected value is negative. Not a candidate.
+   replay is +50-60%; with an early holder of our size -30.1% mean, -100% median; the follow variant fails too (with a mid-crowd outsider of
+   0.002 ETH or more the crowd reached 10 buys in 2 of 17 cases). `0x5e6ec144` already runs the hold at 0.0003 ETH ($0.40 a trade). About
+   -$50 a day at $15. Not a candidate.
+5. **Operator C-2 is a trap** (PM `initialize` 196 bytes fee 500/ts 1 from the deployer, a POSM 1,380-byte mint about 41 blocks later, crowd
+   routers `0x628bd69e` and two twins, 192 launches): 24 of 25 outsider buys of 1e-4 ETH or more were followed by a pull within 166 blocks,
+   8 of them exactly 4 blocks after; untouched pools run to a scheduled pull near +4,900. The no-reaction ride is +7.2%; with the observed
+   reaction -96% (about -$1,379 a day). A known sniper (`0xe9d83e95`) buys 9.0-9.99e-5 ETH here, tuned under the trigger. Its hooked sibling
+   (23 pools, follow +13.3% mean, +0.8% median) uses the same crowd routers, so the same reaction likely applies. Do not trade; a dry run
+   cannot settle it.
 
-So the only other place the exact edge exists is the same operator's larger line, and every other scheduled buyer on the chain is either
-the operator's own money that pulls on outsiders (C-2, the small pot), a one-off, or a ride rather than a front (C-1). None of it can run
-without an authorized feed (16.11); the box must not reconnect to the public one.
+So the only other place the exact edge exists is the same operator's larger line, a conditional candidate at medium confidence whose pull now
+comes at bot+3 wherever an outside wallet buys ahead of the bot, and every other scheduled buyer on the chain is either the operator's own
+money that pulls on outsiders (C-2, the small pot), a one-off, or a ride rather than a front (C-1). None of it can run without an authorized
+feed (16.11); the box must not reconnect to the public one.
 
 ### 16.9 The study of the whole repository (13 agents, 13:00-14:45 UTC): what it corrected
 

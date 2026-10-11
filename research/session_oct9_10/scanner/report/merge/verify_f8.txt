@@ -1,0 +1,4 @@
+v3.0 rows 235 since fronter's first pool 97 with fronter 85 with fronter since 85
+after 19:28 without fronter, pulled: 48 min pull-bot 21
+n after 19:28 211 head b0 max 85505793
+fronter pools replay n 85 mean 0.0648 median 0.0775 pos 85
