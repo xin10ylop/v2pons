@@ -1,0 +1,43 @@
+test slice 36 pools; background blocks [L+4, T-13]: 868
+
+-- top 25 keys by the most pools at ONE d in 1..4 (a stable lead would put most pools at one d); counts at d = 0..12; bg = share of background blocks holding it
+  LINE failed tx                                                 peak d=4 16/36 ( 44%) bg/blk 0.37 | 10 13 15 12 16 14 16 16 14  7 14 12 14 | as trigger: fires  482 hits  56 prec 0.12 recall 26/36
+  cls other->other:095ea7b3                                      peak d=1 15/36 ( 42%) bg/blk 0.22 |  6 15 14  8  8  6  5 11  9  7  8  7 15 | as trigger: fires  305 hits  45 prec 0.15 recall 26/36
+  cls other->other:                                              peak d=2 11/36 ( 31%) bg/blk 0.18 |  1  7 11  7  8  8  9 11  8  8  9  8  7 | as trigger: fires  256 hits  33 prec 0.13 recall 22/36
+  LINE plain ETH send                                            peak d=2  9/36 ( 25%) bg/blk 0.12 |  1  5  9  5  4  3  6  6  3  2  5  4  6 | as trigger: fires  160 hits  23 prec 0.14 recall 18/36
+  cls other->other:b6621842                                      peak d=4  8/36 ( 22%) bg/blk 0.10 |  1  2  4  2  8  4  4  0  3  1  5  5  4 | as trigger: fires  131 hits  16 prec 0.12 recall 15/36
+  cls other->other:e6cb474f                                      peak d=2  7/36 ( 19%) bg/blk 0.13 |  4  1  7  4  2  3  3  1  4  1  7  1  2 | as trigger: fires  148 hits  14 prec 0.09 recall 12/36
+  to+sel 0xd6d35b56:e6cb474f                                     peak d=2  7/36 ( 19%) bg/blk 0.13 |  4  1  7  4  2  3  3  1  4  1  7  1  2 | as trigger: fires  148 hits  14 prec 0.09 recall 12/36
+  from 0xdb2a8693                                                peak d=4  6/36 ( 17%) bg/blk 0.10 |  1  3  5  2  6  2  6  2  6  2  5  3  5 | as trigger: fires  132 hits  16 prec 0.12 recall 8/36
+  cls other->other:e9ae5c53                                      peak d=4  6/36 ( 17%) bg/blk 0.10 |  1  4  5  2  6  2  7  2  6  2  5  3  5 | as trigger: fires  136 hits  17 prec 0.12 recall 9/36
+  to+sel 0xdb2a8693:e9ae5c53                                     peak d=4  6/36 ( 17%) bg/blk 0.10 |  1  3  5  2  6  2  6  2  6  2  5  3  5 | as trigger: fires  132 hits  16 prec 0.12 recall 8/36
+  cls other->other:b3938887                                      peak d=3  6/36 ( 17%) bg/blk 0.10 |  3  4  5  6  4  6  3  4  6  1  6  2  4 | as trigger: fires  140 hits  19 prec 0.14 recall 18/36
+  to+sel 0x88767899:3593564c                                     peak d=3  6/36 ( 17%) bg/blk 0.15 |  3  5  5  6  3  3  6  3  5  2  7  4  6 | as trigger: fires  181 hits  19 prec 0.10 recall 16/36
+  cls other->UR:3593564c                                         peak d=3  6/36 ( 17%) bg/blk 0.13 |  3  5  5  6  3  3  5  3  5  2  7  4  5 | as trigger: fires  170 hits  19 prec 0.11 recall 16/36
+  cls other->other:3593564c                                      peak d=2  6/36 ( 17%) bg/blk 0.13 |  3  3  6  5  5  4  3  5  1  6  3  7  1 | as trigger: fires  160 hits  19 prec 0.12 recall 12/36
+  LINE any tx from a bot wallet                                  peak d=2  6/36 ( 17%) bg/blk 0.06 |  1  3  6  2  1  3  3  4  1  1  3  4  1 | as trigger: fires   80 hits  12 prec 0.15 recall 12/36
+  to+sel 0x00005ea0:161ac21f                                     peak d=3  5/36 ( 14%) bg/blk 0.09 |  1  1  2  5  2  2  2  2  1  2  3  1  2 | as trigger: fires  102 hits  10 prec 0.10 recall 5/36
+  cls other->other:161ac21f                                      peak d=3  5/36 ( 14%) bg/blk 0.09 |  1  1  2  5  2  2  2  2  1  2  3  1  2 | as trigger: fires  102 hits  10 prec 0.10 recall 5/36
+  cls other->other:ac9650d8                                      peak d=4  4/36 ( 11%) bg/blk 0.04 |  1  2  2  2  4  2  2  4  1  2  1  1  4 | as trigger: fires   61 hits  10 prec 0.16 recall 6/36
+  to+sel 0xcaf681a6:ac9650d8                                     peak d=4  4/36 ( 11%) bg/blk 0.04 |  1  2  1  1  4  2  1  4  1  2  1  1  4 | as trigger: fires   56 hits   8 prec 0.14 recall 5/36
+  LINE any tx to the bot router                                  peak d=2  4/36 ( 11%) bg/blk 0.05 |  1  2  4  1  3  2  1  1  4  2  4  5  2 | as trigger: fires   77 hits  10 prec 0.13 recall 10/36
+  to+sel 0xf4275f24:b3938887                                     peak d=3  4/36 ( 11%) bg/blk 0.06 |  2  2  2  4  3  5  1  3  3  0  4  1  3 | as trigger: fires   82 hits  11 prec 0.13 recall 10/36
+  to+sel 0x1cbaf24d:c1120e3d                                     peak d=2  4/36 ( 11%) bg/blk 0.04 |  1  2  4  1  1  2  1  1  2  2  4  5  2 | as trigger: fires   66 hits   8 prec 0.12 recall 8/36
+  LINE a bot buy c1120e3d (any pool)                             peak d=2  4/36 ( 11%) bg/blk 0.04 |  1  2  4  1  1  2  1  1  2  2  4  5  2 | as trigger: fires   66 hits   8 prec 0.12 recall 8/36
+  LINE event in another 3.0 pool:Swap                            peak d=2  4/36 ( 11%) bg/blk 0.04 |  1  2  4  1  1  1  3  3  0  1  1  4  2 | as trigger: fires   56 hits   8 prec 0.14 recall 8/36
+  cls other->other:04e45aaf                                      peak d=2  4/36 ( 11%) bg/blk 0.08 |  1  1  4  3  2  0  8  0  2  4  5  4  5 | as trigger: fires  106 hits  10 prec 0.09 recall 9/36
+
+-- line-level keys
+  LINE failed tx                                                 in d1-4 26/36 peak d=4 16 bg/blk 0.37 | 10 13 15 12 16 14 16 16 14  7 14 12 14 | trigger: fires  482 hits  56 prec 0.12 recall 26/36
+  LINE plain ETH send                                            in d1-4 18/36 peak d=2  9 bg/blk 0.12 |  1  5  9  5  4  3  6  6  3  2  5  4  6 | trigger: fires  160 hits  23 prec 0.14 recall 18/36
+  LINE any tx from a bot wallet                                  in d1-4 12/36 peak d=2  6 bg/blk 0.06 |  1  3  6  2  1  3  3  4  1  1  3  4  1 | trigger: fires   80 hits  12 prec 0.15 recall 12/36
+  LINE any tx to the bot router                                  in d1-4 10/36 peak d=2  4 bg/blk 0.05 |  1  2  4  1  3  2  1  1  4  2  4  5  2 | trigger: fires   77 hits  10 prec 0.13 recall 10/36
+  LINE a bot buy c1120e3d (any pool)                             in d1-4  8/36 peak d=2  4 bg/blk 0.04 |  1  2  4  1  1  2  1  1  2  2  4  5  2 | trigger: fires   66 hits   8 prec 0.12 recall 8/36
+  LINE event in another 3.0 pool:Swap                            in d1-4  8/36 peak d=2  4 bg/blk 0.04 |  1  2  4  1  1  1  3  3  0  1  1  4  2 | trigger: fires   56 hits   8 prec 0.14 recall 8/36
+  LINE any v4 Initialize                                         in d1-4  2/36 peak d=2  1 bg/blk 0.02 |  0  0  1  0  1  1  0  0  0  1  2  1  0 | trigger: fires   21 hits   2 prec 0.10 recall 2/36
+  LINE a 1444-byte PositionManager launch (any line)             in d1-4  2/36 peak d=2  1 bg/blk 0.01 |  0  0  1  0  1  1  0  0  0  1  1  0  0 | trigger: fires   14 hits   2 prec 0.14 recall 2/36
+  LINE event in another 3.0 pool:Init                            in d1-4  1/36 peak d=2  1 bg/blk 0.00 |  0  0  1  0  0  0  0  0  0  1  0  0  0 | trigger: fires    6 hits   1 prec 0.17 recall 1/36
+  LINE event in another 3.0 pool:ML                              in d1-4  1/36 peak d=2  1 bg/blk 0.00 |  0  0  1  0  0  0  0  0  0  1  0  0  0 | trigger: fires    6 hits   1 prec 0.17 recall 1/36
+
+best single-d coverage of any key: LINE failed tx at d=4: 16/36; a +-1-block predictor needs most pools at one d with a low background
+keys in >= half the pools at a single d in 1..4: []
