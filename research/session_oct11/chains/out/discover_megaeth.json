@@ -1,0 +1,14 @@
+{
+ "chain": "megaeth",
+ "url": "https://mainnet.megaeth.com/rpc",
+ "from": 28864133,
+ "to": 28950533,
+ "head_ts": 1791747544,
+ "hours": 24.0,
+ "block_time_est": 1.0,
+ "n_logs": 0,
+ "secs": 0.7,
+ "final_chunk": 50000,
+ "errlog": [],
+ "by_emitter": []
+}

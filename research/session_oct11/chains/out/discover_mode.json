@@ -1,0 +1,14 @@
+{
+ "chain": "mode",
+ "url": "https://mainnet.mode.network",
+ "from": 45746789,
+ "to": 45789989,
+ "head_ts": 1791747561,
+ "hours": 24.0,
+ "block_time_est": 2.0,
+ "n_logs": 0,
+ "secs": 0.3,
+ "final_chunk": 45000,
+ "errlog": [],
+ "by_emitter": []
+}

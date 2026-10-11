@@ -1,0 +1,14 @@
+{
+ "chain": "xai",
+ "url": "https://xai-chain.net/rpc",
+ "from": 137390093,
+ "to": 137418803,
+ "head_ts": 1791747551,
+ "hours": 24.0,
+ "block_time_est": 2.345,
+ "n_logs": 0,
+ "secs": 0.3,
+ "final_chunk": 25000,
+ "errlog": [],
+ "by_emitter": []
+}

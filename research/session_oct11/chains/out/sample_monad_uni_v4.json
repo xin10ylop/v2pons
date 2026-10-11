@@ -1,0 +1,79 @@
+{
+ "chain": "monad",
+ "venue": "uni_v4",
+ "kind": "v4",
+ "address": "0x188d586ddcf52439676ca21a244753fa19f9ea8e",
+ "hooks_filter": null,
+ "url": "https://rpc.monad.xyz",
+ "head": 112557980,
+ "head_ts": 1791748680,
+ "block_time": 0.302,
+ "from_block": 112546060,
+ "covered_hours": 1.0,
+ "n_creations": 1,
+ "per_day": 24.0,
+ "W_blocks": 600,
+ "top_hooks": [
+  [
+   "0x0000000000000000000000000000000000000000",
+   1
+  ]
+ ],
+ "n_sampled": 1,
+ "traded_only_scan": 0,
+ "n_scanned": 1,
+ "n_scanned_with_external_swap_in_W": 0,
+ "n_traded_in_W": 0,
+ "launch_tx_contains_swap": 0,
+ "first3_offsets_excl_launch_tx": [],
+ "median_offset_first_external_swap": null,
+ "first3_tx_to_by_launches": [],
+ "first3_tx_from_by_launches": [],
+ "first3_swap_sender_by_launches": [],
+ "wallets_first3blocks": [
+  0
+ ],
+ "wallets_first3blocks_excl_launch_tx": [
+  0
+ ],
+ "median_wallets_first3blocks_excl_launch_tx": 0,
+ "median_wallets_first3blocks_traded_only": null,
+ "launch_tx_to_counts": [
+  [
+   "0x5b7ec4a94ff9bedb700fb82ab09d5846972f4016",
+   1
+  ]
+ ],
+ "gasPrice_gwei_median": 103.0,
+ "n_tx_lookups": 1,
+ "rows": [
+  {
+   "block": 112548382,
+   "tx": "0x698888c96d80cd5b8288ddeffd71d22682a28debe96379ecbad2e374b0f091b8",
+   "key": "0xebef087f880b467e7f688e8dcb33e151d794491a2079579430ca016f001830cd",
+   "c0": "0x1111b3ded9f1fe1801ad4ebef8e2788183a24111",
+   "c1": "0xd18b7ec58cdf4876f6afebd3ed1730e4ce10414b",
+   "fee": 800,
+   "hooks": "0x0000000000000000000000000000000000000000",
+   "launch_from": "0xedeffcb4ddbbcd4e5cc46876e451549639ff30e0",
+   "launch_to": "0x5b7ec4a94ff9bedb700fb82ab09d5846972f4016",
+   "n_swaps_W": 0,
+   "first3": [],
+   "n_swaps_first3blocks": 0,
+   "n_tx_first3blocks": 0,
+   "wallets_first3blocks": 0,
+   "wallets_first3blocks_excl_launch_tx": 0,
+   "truncated": false
+  }
+ ],
+ "errlog": [],
+ "rpc_stats": {
+  "https://rpc.monad.xyz": {
+   "ok": 131,
+   "err": 0,
+   "429": 0,
+   "lat": 8.018248558044434,
+   "errs": {}
+  }
+ }
+}

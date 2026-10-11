@@ -1,0 +1,43 @@
+{
+ "chain": "megaeth",
+ "venue": "kumbaya_launchpad",
+ "kind": "kumbaya",
+ "address": "0x69fe0908f1211de66f7067021998f28a5693abbd",
+ "hooks_filter": null,
+ "url": "https://mainnet.megaeth.com/rpc",
+ "head": 28951087,
+ "head_ts": 1791748098,
+ "block_time": 1.0,
+ "from_block": 28864687,
+ "covered_hours": 24.0,
+ "n_creations": 0,
+ "per_day": 0.0,
+ "W_blocks": 3600,
+ "top_hooks": [],
+ "n_sampled": 0,
+ "n_traded_in_W": 0,
+ "launch_tx_contains_swap": 0,
+ "first3_offsets_excl_launch_tx": [],
+ "median_offset_first_external_swap": null,
+ "first3_tx_to_by_launches": [],
+ "first3_tx_from_by_launches": [],
+ "first3_swap_sender_by_launches": [],
+ "wallets_first3blocks": [],
+ "wallets_first3blocks_excl_launch_tx": [],
+ "median_wallets_first3blocks_excl_launch_tx": null,
+ "median_wallets_first3blocks_traded_only": null,
+ "launch_tx_to_counts": [],
+ "gasPrice_gwei_median": null,
+ "n_tx_lookups": 0,
+ "rows": [],
+ "errlog": [],
+ "rpc_stats": {
+  "https://mainnet.megaeth.com/rpc": {
+   "ok": 7,
+   "err": 0,
+   "429": 0,
+   "lat": 2.061052083969116,
+   "errs": {}
+  }
+ }
+}

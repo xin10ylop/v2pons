@@ -1,0 +1,24 @@
+PART 1 - documentation findings (fetched 2026-10-11). Ordering / pre-confirmation stream / URL / published terms.
+
+Base: priority-fee ordering inside 200ms Flashblocks; 2s blocks also priority-fee (docs.base.org/base-chain/network-information/transaction-ordering).
+  Stream: wss://mainnet.flashblocks.base.org/ws (docs.base.org/base-chain/flashblocks/websocket-reference). FAQ: "reserved for infrastructure-to-node data syncing. Applications should not connect to it directly" ; no numeric terms; metadata fields "may be added, modified, or removed without prior notice". Flashblocks planned for deprecation in Denim hardfork (not finalized) -> canonical 200ms blocks.
+Unichain: TEE block builder (Flashbots Rollup-Boost) orders purely by priority fee; revert protection (blog.uniswap.org/rollup-boost-is-live-on-unichain; whitepaper).
+  Stream: wss://mainnet-flashblocks.unichain.org/ws, 200ms, Brotli (developers.uniswap.org/docs/unichain/technical-information/flashblocks). "Any op-reth node can subscribe"; no rate limits/terms stated for WS.
+OP Mainnet: standard PGA (priority fee); stake-based ordering experiment from 2026-05-26, max 4 weeks then revert to PGA (docs.optimism.io/notices/stake-based-priority-ordering).
+  Stream: "Subblocks websocket" wss://op-mainnet-fb-ws-pub.optimism.io/ws, 250ms (docs.optimism.io/op-mainnet/network-information/connecting-to-op): "Strictly rate-limited public URL ... reach out to the Optimism team for a more relaxed private endpoint".
+Ink: OP-stack sequencer. Stream: Subblocks (formerly Flashblocks) wss://subblocks.inkonchain.com/ws ~200ms, JSON payload_id/index/diff (docs.inkonchain.com/tools/rpc#subblocks); no terms/rate limits stated.
+Soneium: no flashblocks/stream documented; WSS RPC "not yet available" (docs.soneium.org/docs/builders/overview).
+World Chain: flashblocks (~200ms, rollup-boost; BAL in flashblocks announced for Aug 17) + PBH priority blockspace for World ID; no public stream endpoint documented (docs.world.org/world-chain/quick-start/info lists only Alchemy public RPC).
+Mode: nothing documented on flashblocks/stream.
+Arbitrum chains: FCFS is "the default for a new Arbitrum chain"; Timeboost available to any chain owner; Arbitrum One moved from Timeboost to PGA (125ms rounds in 250ms blocks) (docs.arbitrum.io/how-arbitrum-works/deep-dives/sequencer-transaction-flow).
+  Feed: "standard sequencer feed ... publishes complete blocks and is free to consume"; available "on every Arbitrum chain"; paid Fast Feed (24h tickets, min $17 USDG, 100 target/200 max per round) is Arbitrum One only (docs.arbitrum.io/how-arbitrum-works/priority-gas-auction/fast-feed).
+  Orbit per-chain feed URLs are NOT in official docs: ApeChain run-node docs ship prepopulated nodeConfig.json (docs.apechain.com/run-node); Xai full-node doc shows placeholder <Sequencer feed url>; Conduit chains expose it in Conduit Hub "Run a Node" popup (docs.conduit.xyz/chains/getting-started/run-a-node/arbitrum-nodes); Caldera pattern wss://<chain>.../feed only seen in community repo. No published terms. ApeChain & RARI also post to Espresso (docs.espressosys.com/network/learn/chains-reference).
+  Degen, Sanko, Proof of Play Apex, RARI, Superposition: public RPCs unreachable from here (HTTP 530/404/proxy 502).
+BNB Chain: public mempool, PBS via builders (BEP-322); 0.45s blocks (Fermi); no official pre-conf stream (third-party bloXroute/BlockRazor streams).
+Polygon PoS: Rio/VEBloP elected block producer (Oct 2025); public mempool; no pre-conf stream documented.
+Avalanche C-Chain: public mempool; ACP-226 dynamic min block time (Granite); no stream.
+Sonic: public txpool, base-fee + priority fee (docs.soniclabs.com gas-pricing-faq); no stream.
+Berachain: public mempool, ~2s; BRIP-0007 200ms preconfirmations proposed Oct 2025, no activation found.
+Monad: leader orders by PGA (descending priority fee) (docs.monad.xyz); WS monadNewHeads/monadLogs fire at Proposed (speculative) stage; newPendingTransactions unsupported (docs.monad.xyz/reference/websockets).
+HyperEVM: dual blocks (1s/3M gas, 1min/30M), onchain mempool (next 8 nonces), priority fees burned; ordering not documented; no stream.
+MegaETH: single sequencer, ~10ms mini-blocks, ~1s EVM blocks; ordering policy not documented (docs.megaeth.com/architecture). Stream: eth_subscribe miniBlocks on wss://mainnet.megaeth.com/ws; published limits: 5 WS conns/IP, 5 subs/conn, 5 msgs/s/conn; reads 2000/500/200 per 10s by class (docs.megaeth.com/developer-docs/rpc/operations-and-limits).

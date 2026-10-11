@@ -1,0 +1,39 @@
+{
+ "blocks": 3000,
+ "curve_topic0s": [
+  [
+   "0xfd4bb47bd45abdbdb2ecd61052c9571773f9cde876e2a7745f488c20b30ab10a",
+   1
+  ],
+  [
+   "0x0eb25df0e2137de8ce042eeaf39080d25f0c8d451372c99db69a4c0a298d0fa1",
+   1
+  ]
+ ],
+ "CurveCreate_or_Buy_any_emitter": [],
+ "CC": "0xd37e3f4f",
+ "CB": "0x00a7ba87",
+ "swap_logs": 275,
+ "top_swap_emitters": [
+  [
+   "0x188d586ddcf52439676ca21a244753fa19f9ea8e",
+   215
+  ],
+  [
+   "0x97199b34564911936bc850ac45ede785892b5aad",
+   13
+  ],
+  [
+   "0x8f889ba499c0a176fb8f233d9d35b1c132eb868c",
+   6
+  ],
+  [
+   "0x4538053fc57d72eb70c6f822a3275531760bc7fd",
+   4
+  ],
+  [
+   "0x659bd0bc4167ba25c62e05656f78043e7ed4a9da",
+   3
+  ]
+ ]
+}

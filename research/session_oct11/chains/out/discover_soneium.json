@@ -1,0 +1,20 @@
+{
+ "chain": "soneium",
+ "url": "https://rpc.soneium.org",
+ "from": 29263833,
+ "to": 29307033,
+ "head_ts": 1791748817,
+ "hours": 24.0,
+ "block_time_est": 2.0,
+ "n_logs": 2,
+ "secs": 0.8,
+ "final_chunk": 10000,
+ "errlog": [],
+ "by_emitter": [
+  [
+   "0x360e68faccca8ca495c1b759fd9eee466db9fb32",
+   "V4 Initialize",
+   2
+  ]
+ ]
+}

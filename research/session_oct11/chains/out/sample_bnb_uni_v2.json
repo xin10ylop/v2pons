@@ -1,0 +1,43 @@
+{
+ "chain": "bnb",
+ "venue": "uni_v2",
+ "kind": "v2",
+ "address": "0x8909dc15e40173ff4699343b6eb8132c65e18ec6",
+ "hooks_filter": null,
+ "url": "https://bsc-rpc.publicnode.com",
+ "head": 127078148,
+ "head_ts": 1791748131,
+ "block_time": 0.45,
+ "from_block": 127068398,
+ "covered_hours": 1.22,
+ "n_creations": 0,
+ "per_day": 0.0,
+ "W_blocks": 1200,
+ "top_hooks": [],
+ "n_sampled": 0,
+ "n_traded_in_W": 0,
+ "launch_tx_contains_swap": 0,
+ "first3_offsets_excl_launch_tx": [],
+ "median_offset_first_external_swap": null,
+ "first3_tx_to_by_launches": [],
+ "first3_tx_from_by_launches": [],
+ "first3_swap_sender_by_launches": [],
+ "wallets_first3blocks": [],
+ "wallets_first3blocks_excl_launch_tx": [],
+ "median_wallets_first3blocks_excl_launch_tx": null,
+ "median_wallets_first3blocks_traded_only": null,
+ "launch_tx_to_counts": [],
+ "gasPrice_gwei_median": null,
+ "n_tx_lookups": 0,
+ "rows": [],
+ "errlog": [],
+ "rpc_stats": {
+  "https://bsc-rpc.publicnode.com": {
+   "ok": 4,
+   "err": 0,
+   "429": 0,
+   "lat": 0.7357368469238281,
+   "errs": {}
+  }
+ }
+}

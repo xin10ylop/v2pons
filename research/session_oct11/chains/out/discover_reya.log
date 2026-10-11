@@ -1,0 +1,2 @@
+{"chain": "reya", "url": "https://rpc.reya.network", "from": 246662668, "to": 246831194, "head_ts": 1791747558, "hours": 24.0, "block_time_est": 0.501, "n_logs": 0, "secs": 0.8, "final_chunk": 50000, "errlog": []}
+stats {'https://rpc.reya.network': {'ok': 24, 'err': 0, '429': 0, 'lat': 3.966299057006836, 'errs': {}}}

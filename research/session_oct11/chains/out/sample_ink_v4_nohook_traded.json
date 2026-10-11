@@ -1,0 +1,223 @@
+{
+ "chain": "ink",
+ "venue": "v4_nohook_traded",
+ "kind": "v4",
+ "address": "0x360e68faccca8ca495c1b759fd9eee466db9fb32",
+ "hooks_filter": "0x0000000000000000000000000000000000000000",
+ "url": "https://rpc-qnd.inkonchain.com",
+ "head": 58250184,
+ "head_ts": 1791748595,
+ "block_time": 1.0,
+ "from_block": 58162737,
+ "covered_hours": 24.0,
+ "n_creations": 485,
+ "per_day": 485.0,
+ "W_blocks": 3600,
+ "top_hooks": [
+  [
+   "0x0000000000000000000000000000000000000000",
+   485
+  ]
+ ],
+ "n_sampled": 2,
+ "traded_only_scan": 485,
+ "n_scanned": 485,
+ "n_scanned_with_external_swap_in_W": 2,
+ "n_traded_in_W": 2,
+ "launch_tx_contains_swap": 0,
+ "first3_offsets_excl_launch_tx": [
+  1,
+  1,
+  1,
+  2696,
+  2696,
+  2970
+ ],
+ "median_offset_first_external_swap": 1348.5,
+ "first3_tx_to_by_launches": [
+  [
+   "0x0000000000001ff3684f28c67538d4d072c22734",
+   1
+  ],
+  [
+   "0x720bcd80c46857f66ef1f17cedd6fb9a2dbca2c9",
+   1
+  ],
+  [
+   "0xca901d7a4404f0c63780b0ab3dfd111ab27b8b05",
+   1
+  ],
+  [
+   "0xd8e55c056977bff4c4f7032a3cc76e4bb2d52e3f",
+   1
+  ],
+  [
+   "0xa44ebc65ff5d8cd7210705e7d77fbe8a2a27d9bd",
+   1
+  ]
+ ],
+ "first3_tx_from_by_launches": [
+  [
+   "0xc37bafd03a9c79ca3204fea99d98f6dfa9db7010",
+   1
+  ],
+  [
+   "0x5503b7cc104674f4db9e88cf33812f3c3992aa92",
+   1
+  ],
+  [
+   "0xb37a8d2ca4bf49612e207e47ea261adf01d9ec97",
+   1
+  ],
+  [
+   "0xbc7af78d5865ecd1c4abc17cb2d28cc59b470130",
+   1
+  ],
+  [
+   "0x4617568ecccce7bc2e95a667360bb71ffadbb16b",
+   1
+  ],
+  [
+   "0x3926abb218b39e76f8cca47c890dfafb157da63e",
+   1
+  ]
+ ],
+ "first3_swap_sender_by_launches": [
+  [
+   "0x48d1f5248f6e5b01fbfab8a6987fe1663fd954cc",
+   1
+  ],
+  [
+   "0x720bcd80c46857f66ef1f17cedd6fb9a2dbca2c9",
+   1
+  ],
+  [
+   "0xca901d7a4404f0c63780b0ab3dfd111ab27b8b05",
+   1
+  ],
+  [
+   "0xd8e55c056977bff4c4f7032a3cc76e4bb2d52e3f",
+   1
+  ],
+  [
+   "0xa44ebc65ff5d8cd7210705e7d77fbe8a2a27d9bd",
+   1
+  ]
+ ],
+ "wallets_first3blocks": [
+  0,
+  3
+ ],
+ "wallets_first3blocks_excl_launch_tx": [
+  0,
+  3
+ ],
+ "median_wallets_first3blocks_excl_launch_tx": 1.5,
+ "median_wallets_first3blocks_traded_only": 1.5,
+ "launch_tx_to_counts": [
+  [
+   "0x1b35d13a2e2528f192637f14b05f0dc0e7deb566",
+   2
+  ]
+ ],
+ "gasPrice_gwei_median": 0.002295643,
+ "n_tx_lookups": 8,
+ "rows": [
+  {
+   "block": 58244857,
+   "tx": "0x3150df25659bce29570a25d078ae8e087fa6bf285e63409fd0c56bd5ecec19c8",
+   "key": "0xa8d6e8661c0595237848c9052fe858fb664207d96f1c27978bb0705298380488",
+   "c0": "0x0000000000000000000000000000000000000000",
+   "c1": "0x398202b031e767a85bd995a6f14970f9e4ad30a9",
+   "fee": 55500,
+   "hooks": "0x0000000000000000000000000000000000000000",
+   "launch_from": "0x3800c0f823f8c62df2e4960d87b16b6aa2dc9f4a",
+   "launch_to": "0x1b35d13a2e2528f192637f14b05f0dc0e7deb566",
+   "n_swaps_W": 3,
+   "first3": [
+    {
+     "offset": 2696,
+     "tx": "0xac18ca0437cae8aa421ab65836c8eb6b0081b6aebf9685581d9de79f7500c9a2",
+     "same_tx_as_launch": false,
+     "to": "0x0000000000001ff3684f28c67538d4d072c22734",
+     "from": "0xb37a8d2ca4bf49612e207e47ea261adf01d9ec97",
+     "swap_sender": "0x48d1f5248f6e5b01fbfab8a6987fe1663fd954cc"
+    },
+    {
+     "offset": 2696,
+     "tx": "0xe6f3aaf3d370c5fda325e38f70da6f5327390b4fe1f0186326304c78be2ce615",
+     "same_tx_as_launch": false,
+     "to": "0x720bcd80c46857f66ef1f17cedd6fb9a2dbca2c9",
+     "from": "0xc37bafd03a9c79ca3204fea99d98f6dfa9db7010",
+     "swap_sender": "0x720bcd80c46857f66ef1f17cedd6fb9a2dbca2c9"
+    },
+    {
+     "offset": 2970,
+     "tx": "0x0518946eff40a9a6021564fd8bea70fe4b067b984e78674318dfa4e496fd03c2",
+     "same_tx_as_launch": false,
+     "to": "0xca901d7a4404f0c63780b0ab3dfd111ab27b8b05",
+     "from": "0x5503b7cc104674f4db9e88cf33812f3c3992aa92",
+     "swap_sender": "0xca901d7a4404f0c63780b0ab3dfd111ab27b8b05"
+    }
+   ],
+   "n_swaps_first3blocks": 0,
+   "n_tx_first3blocks": 0,
+   "wallets_first3blocks": 0,
+   "wallets_first3blocks_excl_launch_tx": 0,
+   "truncated": false
+  },
+  {
+   "block": 58176138,
+   "tx": "0x6e2ecb87d9f27ec4e93d4fef44441b394ba3a903c170a3a5bb625e81f4dd6481",
+   "key": "0xa9c36e7e1a6848b67da5839e6e0293e41ef1de8e2dec7c854972959e2918eac1",
+   "c0": "0x0000000000000000000000000000000000000000",
+   "c1": "0x4f02a2e7b1ac335101a28e3fecd5909aeae7ffa8",
+   "fee": 411000,
+   "hooks": "0x0000000000000000000000000000000000000000",
+   "launch_from": "0x820d27be3b67afaacc85b1a05da127a6aa71f1c6",
+   "launch_to": "0x1b35d13a2e2528f192637f14b05f0dc0e7deb566",
+   "n_swaps_W": 3,
+   "first3": [
+    {
+     "offset": 1,
+     "tx": "0x6740081069018ec70a7b0bc490c84f565bd3921c4a2eed46fdc9e42e9bd3e3c9",
+     "same_tx_as_launch": false,
+     "to": "0xd8e55c056977bff4c4f7032a3cc76e4bb2d52e3f",
+     "from": "0xbc7af78d5865ecd1c4abc17cb2d28cc59b470130",
+     "swap_sender": "0xd8e55c056977bff4c4f7032a3cc76e4bb2d52e3f"
+    },
+    {
+     "offset": 1,
+     "tx": "0x0a497937a15d09360145259830c8d3903a8ade5c71eabd129c0116d4952b4e32",
+     "same_tx_as_launch": false,
+     "to": "0xa44ebc65ff5d8cd7210705e7d77fbe8a2a27d9bd",
+     "from": "0x3926abb218b39e76f8cca47c890dfafb157da63e",
+     "swap_sender": "0xa44ebc65ff5d8cd7210705e7d77fbe8a2a27d9bd"
+    },
+    {
+     "offset": 1,
+     "tx": "0x9c431ef4bda261882f8cdaac68c4c00aa82ad8961009c217e8222cd1ba3d9eb0",
+     "same_tx_as_launch": false,
+     "to": "0xa44ebc65ff5d8cd7210705e7d77fbe8a2a27d9bd",
+     "from": "0x4617568ecccce7bc2e95a667360bb71ffadbb16b",
+     "swap_sender": "0xa44ebc65ff5d8cd7210705e7d77fbe8a2a27d9bd"
+    }
+   ],
+   "n_swaps_first3blocks": 3,
+   "n_tx_first3blocks": 3,
+   "wallets_first3blocks": 3,
+   "wallets_first3blocks_excl_launch_tx": 3,
+   "truncated": false
+  }
+ ],
+ "errlog": [],
+ "rpc_stats": {
+  "https://rpc-qnd.inkonchain.com": {
+   "ok": 495,
+   "err": 0,
+   "429": 0,
+   "lat": 32.17495894432068,
+   "errs": {}
+  }
+ }
+}

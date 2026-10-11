@@ -1,0 +1,14 @@
+{
+ "chain": "reya",
+ "url": "https://rpc.reya.network",
+ "from": 246662668,
+ "to": 246831194,
+ "head_ts": 1791747558,
+ "hours": 24.0,
+ "block_time_est": 0.501,
+ "n_logs": 0,
+ "secs": 0.8,
+ "final_chunk": 50000,
+ "errlog": [],
+ "by_emitter": []
+}

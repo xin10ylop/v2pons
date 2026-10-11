@@ -1,0 +1,141 @@
+{
+ "chain": "unichain",
+ "venue": "v4_all",
+ "kind": "v4",
+ "address": "0x1f98400000000000000000000000000000000004",
+ "hooks_filter": null,
+ "url": "https://mainnet.unichain.org",
+ "head": 61000233,
+ "head_ts": 1791748592,
+ "block_time": 1.0,
+ "from_block": 60912775,
+ "covered_hours": 24.0,
+ "n_creations": 2,
+ "per_day": 2.0,
+ "W_blocks": 3600,
+ "top_hooks": [
+  [
+   "0x0000000000000000000000000000000000000000",
+   1
+  ],
+  [
+   "0x9463925bdeee2be5eade2a60857442b4a15ca0cc",
+   1
+  ]
+ ],
+ "n_sampled": 2,
+ "traded_only_scan": 0,
+ "n_scanned": 2,
+ "n_scanned_with_external_swap_in_W": 1,
+ "n_traded_in_W": 1,
+ "launch_tx_contains_swap": 1,
+ "first3_offsets_excl_launch_tx": [
+  70
+ ],
+ "median_offset_first_external_swap": 70,
+ "first3_tx_to_by_launches": [
+  [
+   "0x6c6526ed287b9b53c0f032a9a58692df72ee4bfd",
+   1
+  ]
+ ],
+ "first3_tx_from_by_launches": [
+  [
+   "0x4bcca83cb0b5561cd415a722e1082a09789f15d1",
+   1
+  ]
+ ],
+ "first3_swap_sender_by_launches": [
+  [
+   "0x6c6526ed287b9b53c0f032a9a58692df72ee4bfd",
+   1
+  ]
+ ],
+ "wallets_first3blocks": [
+  0,
+  1
+ ],
+ "wallets_first3blocks_excl_launch_tx": [
+  0,
+  0
+ ],
+ "median_wallets_first3blocks_excl_launch_tx": 0.0,
+ "median_wallets_first3blocks_traded_only": 0,
+ "launch_tx_to_counts": [
+  [
+   "0x4529a01c7a0410167c5740c487a8de60232617bf",
+   1
+  ],
+  [
+   "0xd4fde2ed5d11c5aa1260937435d1653836b2a14d",
+   1
+  ]
+ ],
+ "gasPrice_gwei_median": 0.0006,
+ "n_tx_lookups": 3,
+ "rows": [
+  {
+   "block": 60954099,
+   "tx": "0x29e61f045205fcf1fc8953a31a3d9b9d438d2707070bb29219ebe5d80a425c81",
+   "key": "0x8ccbdf3f8cc1349526ab8185dce245c73ebd2bda24adab55bcbaeb30be4682d9",
+   "c0": "0x10a85d502ec7a0754625d41fea72f15dfa4ca92b",
+   "c1": "0x15d0e0c55a3e7ee67152ad7e89acf164253ff68d",
+   "fee": 75,
+   "hooks": "0x0000000000000000000000000000000000000000",
+   "launch_from": "0x51b70a285ffc09bc9807393ede13dab73b268e3c",
+   "launch_to": "0x4529a01c7a0410167c5740c487a8de60232617bf",
+   "n_swaps_W": 0,
+   "first3": [],
+   "n_swaps_first3blocks": 0,
+   "n_tx_first3blocks": 0,
+   "wallets_first3blocks": 0,
+   "wallets_first3blocks_excl_launch_tx": 0,
+   "truncated": false
+  },
+  {
+   "block": 60954140,
+   "tx": "0xa78b688f3a88fc07354ee0ec5552c4d6b1f3942c88cd48660df16c6623cf65eb",
+   "key": "0x8a3d5cb98a77a3d3c3f33a3c3108c69e7c99eef3767ab04106d82f3460a9653c",
+   "c0": "0x0000000000000000000000000000000000000000",
+   "c1": "0xaebcd23669e2281a44ff9f539b848c353569b47c",
+   "fee": 0,
+   "hooks": "0x9463925bdeee2be5eade2a60857442b4a15ca0cc",
+   "launch_from": "0x4bcca83cb0b5561cd415a722e1082a09789f15d1",
+   "launch_to": "0xd4fde2ed5d11c5aa1260937435d1653836b2a14d",
+   "n_swaps_W": 2,
+   "first3": [
+    {
+     "offset": 0,
+     "tx": "0xa78b688f3a88fc07354ee0ec5552c4d6b1f3942c88cd48660df16c6623cf65eb",
+     "same_tx_as_launch": true,
+     "to": "0xd4fde2ed5d11c5aa1260937435d1653836b2a14d",
+     "from": "0x4bcca83cb0b5561cd415a722e1082a09789f15d1",
+     "swap_sender": "0xd4fde2ed5d11c5aa1260937435d1653836b2a14d"
+    },
+    {
+     "offset": 70,
+     "tx": "0x7aa0bacf6f8f22557c060fc582142bc9b8fb3c6a9485ef2241c33faeef300523",
+     "same_tx_as_launch": false,
+     "to": "0x6c6526ed287b9b53c0f032a9a58692df72ee4bfd",
+     "from": "0x4bcca83cb0b5561cd415a722e1082a09789f15d1",
+     "swap_sender": "0x6c6526ed287b9b53c0f032a9a58692df72ee4bfd"
+    }
+   ],
+   "n_swaps_first3blocks": 1,
+   "n_tx_first3blocks": 1,
+   "wallets_first3blocks": 1,
+   "wallets_first3blocks_excl_launch_tx": 0,
+   "truncated": false
+  }
+ ],
+ "errlog": [],
+ "rpc_stats": {
+  "https://mainnet.unichain.org": {
+   "ok": 7,
+   "err": 0,
+   "429": 0,
+   "lat": 0.8380095958709717,
+   "errs": {}
+  }
+ }
+}

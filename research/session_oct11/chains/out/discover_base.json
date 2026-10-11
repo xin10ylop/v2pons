@@ -1,0 +1,84 @@
+{
+ "chain": "base",
+ "url": "https://base.drpc.org",
+ "from": 52435909,
+ "to": 52479109,
+ "head_ts": 1791747565,
+ "hours": 24.0,
+ "block_time_est": 2.0,
+ "n_logs": 13260,
+ "secs": 379.6,
+ "final_chunk": 100,
+ "errlog": [
+  "getLogs err at 52444609-52444708: retries exhausted for eth_getLogs -> chunk 50",
+  "getLogs err at 52455534-52455633: retries exhausted for eth_getLogs -> chunk 50",
+  "getLogs err at 52471359-52471458: retries exhausted for eth_getLogs -> chunk 50"
+ ],
+ "by_emitter": [
+  [
+   "0x498581ff718922c3f8e6a244956af099b2652b2b",
+   "V4 Initialize",
+   10394
+  ],
+  [
+   "0x02a84c1b3bbd7401a5f7fa98a384ebc70bb5749e",
+   "V2 PairCreated",
+   1044
+  ],
+  [
+   "0x25e89b02f0c62b67622b4ebd629c882a73d8cabc",
+   "V2 PairCreated",
+   1044
+  ],
+  [
+   "0x8909dc15e40173ff4699343b6eb8132c65e18ec6",
+   "V2 PairCreated",
+   532
+  ],
+  [
+   "0x33128a8fc17869897dce68ed026d694621f6fdfd",
+   "V3 PoolCreated",
+   106
+  ],
+  [
+   "0xf8f2eb4940cfe7d13603dddd87f123820fc061ef",
+   "Slipstream PoolCreated(tickSpacing)",
+   85
+  ],
+  [
+   "0x488db0978b34c6fd901760b9024b565c1117c7c8",
+   "V2 PairCreated",
+   28
+  ],
+  [
+   "0x420dd381b31aef6683db6b902084cb0ffece40da",
+   "Solidly PoolCreated(stable)",
+   13
+  ],
+  [
+   "0xa0ffb9c1ce1fe56963b0321b32e7a0302114058b",
+   "PCS Infinity CL Initialize",
+   9
+  ],
+  [
+   "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865",
+   "V3 PoolCreated",
+   2
+  ],
+  [
+   "0x36077d39cdc65e1e3fb65810430e5b2c4d5fa29e",
+   "Algebra Pool",
+   1
+  ],
+  [
+   "0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a",
+   "Slipstream PoolCreated(tickSpacing)",
+   1
+  ],
+  [
+   "0xade65c38cd4849adba595a4323a8c7ddfe89716a",
+   "Slipstream PoolCreated(tickSpacing)",
+   1
+  ]
+ ]
+}
