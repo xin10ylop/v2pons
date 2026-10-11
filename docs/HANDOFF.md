@@ -1111,6 +1111,17 @@ block or on response times); Cloudflare's forum is consistent that only the site
 `payout` of 0.08 ETH to the owner's Phantom address 0x9B19...1Ba55 on Robinhood Chain (tx 0xb28117fd..., block 85,815,581, status ok; that
 address then held 0.0801 ETH). After it: relay 0.394322 ETH, wallet 0.009581 ETH (nonce 2194), engine stopped.
 
+**Dwellir, Oct 11 12:30-13:20 UTC:** the owner bought the Developer plan ($49, paid in USDC on Base after bridging 0.08 ETH from Robinhood
+Chain through Phantom; Phantom's Base account is an EIP-7702 smart account, which the checkout's signature step rejected, so the payment went
+through a fresh MetaMask account) and started the sequencer-feed trial. The key is on the box in `FEED_URL` (the Dwellir URL with the key in
+its path; the key is not in this document or the repository and should be regenerated in the dashboard, since it passed through a chat).
+Dwellir's archive RPC answers with the key (chain 0x1237). The sequencer endpoint answered 403 Forbidden before the trial and **503 Service
+Unavailable** from about 12:55 UTC on, on every handshake from the box and from the research container (Dwellir request IDs
+db5oq3i85bs9a8r1mn90, db5olci85bs9a8qrc0d0, ...); their status page shows nothing; their guide documents 403 only. The likely reading: the
+feed relay is not provisioned for the organization, or Dwellir's own upstream connection to Robinhood's public feed is down. The owner was
+asked to contact Dwellir support (chat, support@dwellir.com) with the request IDs. Probe: a websocket-upgrade `curl` to the feed URL; 101 =
+open; then the 30-second feed test and the dry run.
+
 The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
 stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
 
