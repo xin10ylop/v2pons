@@ -345,29 +345,57 @@ holds the one slot for its ~8 s, as the c1 one does. REPORT_W's gate to build th
 pull before + 80, 120 launches a day.
 
 A **launch-rule family** (`"launch"`, Oct 11 night, REPORT_V23 line 1, HANDOFF 16.18) is a V3 family known by its launch call: the
-356-byte value-0 call `d27d1e00` to a launcher contract whose code's keccak starts with `89885b75` (a new launcher each launch: one
-`eth_getCode` a launch), the pool from the launch's receipt (about 3 s of retries; a code or a receipt not read is `launch_not_armed` or
-`launch_no_receipt`, with an alarm at most once a minute). No trigger: a dry buy when the feed shows launch + 60 (up to + 70 if the feed lags,
-else `late`), a dry sell at launch + 260, or at once on the pull (the launch position's `decreaseLiquidity` in the feed: `dry_ret` -1.0).
-**Dry run only**, as v3crowd: `"dry_run":false` drops the listed families at start with an alarm. The fingerprint is pinned (fee 100, WETH
-as token0, one token-only mint 1,094,515 ticks wide within 2%, L 3.16e22 within a factor of 3); anything else is `armed` with
-`"eligible":false` and `"fingerprint":"new: ..."`. The object to add to the list:
+356-byte value-0 call `d27d1e00` to a launcher contract whose code's keccak is the line's (a new launcher each launch: one `eth_getCode` a
+launch), the pool from the launch's receipt (a code or a receipt not read is `launch_not_armed` or `launch_no_receipt`, with an alarm at
+most once a minute). No trigger: a dry buy when the feed shows launch + 60 (up to + 70 if the feed lags or the slot is busy, else `late`), a
+dry sell at launch + 260, or at once on the pull (the launch position's `decreaseLiquidity` of half its liquidity or more: `dry_ret` -1.0;
+less is a `partial_pull`). **Dry run only**: `"dry_run":false` is forced to true with an alarm at start. The fingerprint is pinned (fee 100,
+WETH as token0, one token-only mint 1,094,515 ticks wide within 2%, L 3.16e22 within a factor of 3); anything else is `armed` with
+`"eligible":false` and `"fingerprint":"new: ..."`. The object to add:
 
-    {"name":"p356","dex":"v3","launch":{"selector":"d27d1e00","calldata_len":356,"code_hash_prefix":"89885b75","value_wei":0},"fee":100,"tick_spacing":1,"buy_at":60,"sell_at":260,"stake_eth":0.0058,"ahead_max_eth":0.5,"dry_run":true,"pin":true}
+    {"name":"p356","dex":"v3","launch":{"selector":"d27d1e00","calldata_len":356,"code_hash_prefix":"89885b75fd29af130416accacb0351226a4259b3090dc0a2bb56189489efe08a","value_wei":0},"fee":100,"tick_spacing":1,"buy_at":60,"sell_at":260,"stake_eth":0.0058,"ahead_max_eth":0.5,"dry_run":true,"pin":true}
 
-The box's list with it (v3.0, c1 and v3crowd as above, then p356):
+`code_hash_prefix` holds the launcher code's full keccak (64 hex digits). A shorter prefix (8 hex digits or more) is accepted but weak: 8 hex
+digits are 32 bits, which anyone can grind a contract to match.
 
-    sudo sed -i '/^FRONT_FAMILIES=/d' /etc/flip/engine.env; sudo tee -a /etc/flip/engine.env >/dev/null <<'EOF'
-    FRONT_FAMILIES='[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":60,"stake_eth":0.002,"dry_run":true,"pin":true,"fire_at":12,"fire_max":3},{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":60,"stake_eth":0.002,"dry_run":true,"pin":true,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_eth":10,"max_blocks":400}},{"name":"v3crowd","dex":"v3","target":"0x73991a25c818bf1f1128deaab1492d45638de0d3","value_wei":0,"calldata_len":836,"fee":100,"tick_spacing":1,"hold_blocks":78,"exit_after_blocks":18,"take_profit":9,"stake_eth":0.0058,"ahead_max_eth":0.5,"dry_run":true,"pin":true,"trigger":{"shapes":[{"selector":"3593564c","calldata_len":484,"value_word":9},{"selector":"a0193551","calldata_len":452,"value_word":8},{"selector":"49f74a5d","calldata_len":452,"value_word":8}],"any_to":true,"token_anywhere":true,"min_eth":0.005,"max_eth":10}},{"name":"p356","dex":"v3","launch":{"selector":"d27d1e00","calldata_len":356,"code_hash_prefix":"89885b75","value_wei":0},"fee":100,"tick_spacing":1,"buy_at":60,"sell_at":260,"stake_eth":0.0058,"ahead_max_eth":0.5,"dry_run":true,"pin":true}]'
+**A mistake in this object (an unknown key, a bad hash, a `sell_at` under `buy_at` + 13, a selector another family uses) drops the whole
+`FRONT_FAMILIES` list at start, the live c1 with it: after the restart, check the start line and results.py as below.**
+
+Add it to the box's list as it stands (the families already there, c1 live among them, are not touched; the old file is kept as
+`/etc/flip/engine.env.bak`; run twice, the snippet refuses and changes nothing):
+
+    sudo python3 - <<'EOF'
+    import json, shutil
+    P = "/etc/flip/engine.env"
+    P356 = json.loads('{"name":"p356","dex":"v3","launch":{"selector":"d27d1e00","calldata_len":356,"code_hash_prefix":"89885b75fd29af130416accacb0351226a4259b3090dc0a2bb56189489efe08a","value_wei":0},"fee":100,"tick_spacing":1,"buy_at":60,"sell_at":260,"stake_eth":0.0058,"ahead_max_eth":0.5,"dry_run":true,"pin":true}')
+    lines = open(P).read().splitlines()
+    at = [k for k, l in enumerate(lines) if l.startswith("FRONT_FAMILIES=")]
+    assert len(at) == 1, "FRONT_FAMILIES must be set exactly once in " + P
+    v = lines[at[0]][len("FRONT_FAMILIES="):].strip()
+    if len(v) > 1 and v[0] == v[-1] and v[0] in "'\"":
+        v = v[1:-1]
+    fams = json.loads(v)
+    assert isinstance(fams, list) and all(f.get("name") != P356["name"] for f in fams), "not a list, or p356 is listed already: nothing changed"
+    shutil.copy(P, P + ".bak")
+    lines[at[0]] = "FRONT_FAMILIES='" + json.dumps(fams + [P356], separators=(",", ":")) + "'"
+    open(P, "w").write("\n".join(lines) + "\n")
+    print("FRONT_FAMILIES:", [(f.get("name"), f.get("dry_run")) for f in fams + [P356]])
     EOF
-    sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep -E '"ev":"(start|alarm)"' | tail -2 | cut -c1-300
+    sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | python3 -c 'import sys, json; s = json.loads(sys.stdin.read()); print("error:", s.get("front_family_error"), "warnings:", s.get("front_family_warnings")); [print(f["name"], f.get("dex", "v4"), "dry_run", f["dry_run"]) for f in s["front_families"]]'
+    sudo python3 ~/v2pons/deploy/results.py 1 | head -12
 
-The start line lists it with `"dex":"v3"`, its `launch` and `"trigger":"timer: launch + 60 (to + 70), sell at launch + 260"`. Its
+The check must print `error: None`, c1 with `dry_run False` (as before), p356 with `v3 dry_run True`; results.py must show c1 LIVE and p356
+dry. If not: `sudo cp /etc/flip/engine.env.bak /etc/flip/engine.env && sudo systemctl restart flip-engine`.
+
+The start line lists p356 with `"dex":"v3"`, its `launch` and `"trigger":"timer: launch + 60 (to + 70), sell at launch + 260"`. Its
 `trade_done` lines (`"fam":"p356"`, `"dry":true`) carry `dry_ret` and what the line is judged on: `wave_eth` and `wave_buys` (others' buys from
-our buy to our sell), `wave_sells`, `fleet_buys` and `fleet_eth` (those through SwapRouter02 `0xcaf681a6`), `ahead_eth`, `pull_offset` (the
-feed's pull), `first_burn_offset` and `pulled_before_sell` (the chain's Burn logs; `burn_check`). The day's numbers:
+our buy to our sell), `wave_sells`, `fleet_buys` and `fleet_eth` (SwapRouter02 `0xcaf681a6` with ETH as value: the fleet's way in),
+`router_weth_buys` and `router_weth_eth` (SwapRouter02 paid in WETH), `ahead_eth`, `pull_offset` and `partial_pull_offset` (the feed), and from
+the chain's Burn logs of the launch position (`burn_check`): `first_burn_offset` (half its liquidity gone), `partial_burn_offset`,
+`pulled_before_sell`, `burn_by_landing` (by our sell + 2, where a live sell would land), `other_burns`. The day's numbers:
 `sudo python3 ~/v2pons/deploy/englog.py 24 | grep '"trade_done"' | grep '"p356"' | grep -o '"dry_ret":[-0-9.e]*'`. A p356 dry position holds
-the one slot about 20 s (other dry fires are skipped meanwhile; a live fire drops it).
+the one slot about 20 s (other dry fires are skipped meanwhile; a live fire drops it; a stop or restart does not wait for it, and its record
+is then lost).
 
 ## 5. Daily
 
