@@ -1081,6 +1081,25 @@ reconnection from the box or from another address acceptable before they answer.
 block lifts is checked by hand, one handshake at a time (`curl` with the websocket upgrade headers against the feed; 403 while blocked, 101
 when open), not by an automatic loop, and never from another address. (5) The paid feed (Dwellir) stays the sure route.
 
+**Dwellir's feed, checked Oct 11 05:30 UTC from its guide (`dwellir.com/docs/robinhood/sequencer-feed`):** endpoint
+`wss://api-robinhood-mainnet-sequencer.n.dwellir.com/<API_KEY>` (the key in the path: `FEED_URL` alone, no `FEED_HEADERS`); no subscription
+message, the server streams on connect; the envelope is the Nitro feed's (`messages[].sequenceNumber`, `.message.message.header`, `.l2Msg`
+base64, plus `confirmedSequenceNumberMessage` envelopes), which `ingest` already parses. Pricing: a paid base plan (Developer $49 a month, 25M
+responses, 100 a second; Growth $299, 150M; Scale $999, 500M; overage $5/$3/$2 per million) plus the feed add-on $100 a month after a
+three-day trial (the trial needs the paid plan; it does not convert by itself), plus usage: **one response per WebSocket envelope**,
+confirmation-only envelopes included, repeated data after a reconnect included. At one envelope a block (about 9.7 blocks a second) the feed
+alone is about 840,000 responses a day, 25M a month, the whole Developer allowance; the engine's RPC calls are small beside it. Expect
+$150-200 a month on Developer if the feed sends one envelope a block, up to about $400 (or Growth, $399 with the add-on) if it sends two;
+the trial's usage meter settles it in a day. Latency: the sequencer's own host (`sequencer.mainnet.chain.robinhood.com`, 3.136.74.196) is in
+AWS us-east-2 (Ohio), where BlockRazor also benchmarks the public feed at 27-97 ms median; Dwellir says it routes to the nearest of its
+locations and names none for the feed, so a relay hop of 10-30 ms (same region) or 80-150 ms (another continent) is possible, the latter
+costing about one block on the launch and the fire. The engine's own numbers measure it during the trial: `arm_ms` on `armed` lines, the
+`buy_offset` of dry-run `would_fire` lines against the launch block, and the `flow` line's lag. BlockRazor sells a direct feed without a node
+from Ohio and Tokyo (`wss://us.robinhood-feeder.blockrazor.io/ws/direct/<token>`, $80 a day or $800 a month; "Ultra" $2,000 a month), with
+the caveat that it "may skip intermediate blocks during congestion", which would blind the sell-on-bot-buy trigger for that block; the
+node-required variants keep every block but need one's own Robinhood node. Order of trial: Dwellir first (cheap, every block), BlockRazor
+only if the measured hop costs the trade.
+
 The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
 stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
 
