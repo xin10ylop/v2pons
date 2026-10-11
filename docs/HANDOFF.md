@@ -1609,3 +1609,64 @@ with `"dex":"v3"`. Nothing else on the box changes.
   start line, halt files on disk and in memory, a retired line's trades); Opus-reviewed: the fixes (a nested f-string only Python 3.12
   parses, follow's dry trades and rows kept out, a front that is off shown as off, the stake in $5 bands, failed pull checks counted,
   the base line found by its launch value, a broken pipe under `| head` ignored, the trade list moved up so `head -24` shows it).
+
+### 16.18 Oct 11 night: the 356-byte V3 line's dry run (a launch-rule family, `p356`)
+
+The line (REPORT_V23 line 1, G3 o14/o17): value-0 calls `d27d1e00` of 356 bytes, each to its own launcher contract; buy at launch + 60,
+sell at launch + 260, 0.0058 ETH, no trigger. Facts checked for this build (census of Oct 4-11 and the chain):
+
+- **The launch, 111 of 111:** the launcher's code keccak is `89885b75fd29af130416accacb0351226a4259b3090dc0a2bb56189489efe08a` (5,050 bytes;
+  248 launchers of the wider `lc:89885b75` family, one per launch); the call's first word is the token; the receipt holds the factory's
+  PoolCreated (WETH token0, fee 100, tick spacing 1), the pool's Initialize at tick 207243 exactly (sqrtPriceX96 = TickMath at 207243), one
+  Mint by the V3 PositionManager `0x73991a25` (owner and sender) of the token alone from -887272 to 207243 (1,094,515 ticks), L exactly
+  31,622,807,953,636,212,567,716, amount0 0, and the PositionManager's IncreaseLiquidity (the position's id). The pool is not in the call.
+- **The pull:** first Burns at + 239, + 241, + 267 ... (63 of 111 within 3,000 blocks); the two fetched (pool `0x16f2e324` at + 279; the
+  fixture's pool `0xcb38c9f5` at + 2716) are the PositionManager's multicall [decreaseLiquidity(the launch position, all of it), collect,
+  unwrapWETH9, sweepToken], 900 bytes, value 0, from the position's holder.
+- **The flow in the holds (+ 62 .. + 260, 111 launches):** 546 buys for 35.21 ETH, 79 sells for 5.00 ETH out (in 32 pools); SwapRouter02
+  `0xcaf681a6` carried 35.06 ETH of the buys and 4.98 of the sells. The fleet's buys (priority fee 1) are `exactInputSingle` with ETH as value
+  (338 of 338 fetched); 78 fetched value-0 `exactInputSingle` buys paid in WETH are other bots' (priority 0); the router's sells are a
+  multicall [exactInputSingle(token -> WETH, recipient the router), unwrapWETH9], 548 bytes, value 0. Others' ETH at + 1 .. + 61: median 0,
+  p90 0.0018, max 0.0055.
+
+**Built** (one commit, 63 tests, `tests/data/p356_launch.json`: the real launch at block 85587914 with its receipt and launcher code, three real
+buys, a real router sell, the real pull):
+
+- **The family:** a `FRONT_FAMILIES` entry with `launch` {selector, calldata_len, code_hash_prefix, value_wei}, `dex` "v3", fee, tick_spacing,
+  `buy_at`, `sell_at` (and stake, room, dry run, pin, fees_also, tick_spacings_also; anything else is refused). Keyed by its call; `dry_run`
+  false is refused at start (the listed families dropped with an alarm) and `_fire` treats it as dry whatever it says (it is a V3 family).
+  The start line lists `launch`, `buy_at`, `sell_at` and `"trigger":"timer: launch + 60 (to + 70), sell at launch + 260"`.
+- **Recognition** (`ingest_tx`, one branch before the v4/V3 one): a call of the shape (selector and length) and value; a target whose code
+  was read and is another is ignored at once; otherwise a thread reads its code (`eth_getCode` at the head, else at the launch's block; the
+  keccak cached per address) and the receipt (every 0.1 s for about 3 s); at most 8 such reads at a time. A code or receipt not read:
+  `launch_not_armed` / `launch_no_receipt` and an alarm at most once a minute.
+- **Arming** (`pool_from_receipt_v3`, `launch_fingerprint`): the pool record as a V3 family's (pool, token, fee, price, liquidity, range,
+  top tick, launch block) plus the PositionManager and the position's id. Never traded: WETH not token0, another fee, not one token-only
+  range up to the launch price, no liquidity. Pinned (`eligible:false`, `fingerprint:"new: ..."`): another tick spacing, a width more than
+  2% off 1,094,515, an L off 3.16e22 by more than a factor of 3. ETH buys that landed during the read are replayed onto it.
+- **Timers** (`launch_timer`): the dry fire when the feed shows launch + 60, never before; a stale block waits; up to + 70 (skipped blocks,
+  a lagging feed, the slot busy), else `late`. The dry buy is priced at the head of + 62 (fire + 2, as every dry family), the sell at the
+  end of + 260 (`exit_why` "the timer: launch + 260"); the research's replay bought at the head of + 60 and sold at the head of + 260
+  (`v3sim.replay(L + 60, L + 260)`; the engine's blocks are those of `replay(L + 62, L + 261)`).
+- **The price copy** (`on_launch_buy`, `on_launch_sell`, `on_launch_value0`): ETH-value calls carrying the token (as for v3crowd), and
+  SwapRouter02's `exactInputSingle` on the pool in value-0 calls, alone or inside a multicall: WETH in is a buy (at most 10 ETH), the token in
+  is a sell (sqrtP back up, never past the launch price). No take-profit, no exit clock.
+- **The pull** (`on_launch_pull`): a value-0 call to the position's PositionManager carrying `decreaseLiquidity(the position's id, liquidity
+  above 0)`: before the fire the pool is late; with the dry position open the sell goes in that block with `dry_ret` -1.0 (no trade if our
+  buy had not landed).
+- **The record** (`launch_settle`, in `settle_dry`): the chain's Burn logs (liquidity above 0) on the pool from the launch to the sell block
+  (+ 30, 10 under the node's head; 3 tries): a Burn at or before the sell and at or after our buy is -1.0 (`pull_missed_by_feed` if the
+  feed did not show it), before our buy no trade, a feed pull the chain does not show gives back the price copy's return (`pull_unconfirmed`).
+  `trade_done` (`fam` p356, `dry` true) carries `dry_ret`, `wave_eth`, `wave_buys`, `wave_sells`, `fleet_buys`, `fleet_eth`, `ahead_eth`,
+  `ahead_buys`, `pull_offset`, `first_burn_offset`, `pulled_before_sell`, `burn_check`, `burn_check_to`, `launch_seq`, `fire_seq`,
+  `buy_seq`, `stake_eth`. `buy_seen`, `would_sell` and the "dry front position dropped" skip now carry `fam` for every front family.
+- **Unchanged:** the v4 families and v3crowd (their tests as before); `fam_stake` and the flow line's auto stake leave a launch-rule family
+  out (FRONT_AUTO_STAKE is the bot lines'); results.py reads it as a dry line with a fixed stake (checked on a synthetic log).
+
+**Known limits:** sells outside SwapRouter02 (0x65050a9b's 0.014 ETH, the Universal Router's 0.006 ETH in the census holds) and value-0 buys
+outside it are not in the price copy; the code prefix in the JSON is 8 hex digits (32 bits); a p356 dry position holds the one slot for
+about 20 s (other dry fires are skipped meanwhile; a live fire drops it, and that trade has no `trade_done`); its dry fires count toward
+`FRONT_MAX_PER_DAY` (100000 on the box). REPORT_V23's gate before live money is unchanged (an eth_call of the router's buy, approve and
+sell on a live pool; this dry run for 24 h: every launch caught, the buy at + 60, the sell by + 262; then a $5 probe on alternate launches).
+
+Deploying it: `git pull`, then RUNBOOK 4g's list with p356 (v3.0, c1, v3crowd, p356, all dry). Nothing else on the box changes.

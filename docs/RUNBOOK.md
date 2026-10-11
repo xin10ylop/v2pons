@@ -344,6 +344,31 @@ exactly: check the run against the chain (`research/session_oct11/lines/analysis
 holds the one slot for its ~8 s, as the c1 one does. REPORT_W's gate to build the live path: 100 launches or more at +4% mean or better, no
 pull before + 80, 120 launches a day.
 
+A **launch-rule family** (`"launch"`, Oct 11 night, REPORT_V23 line 1, HANDOFF 16.18) is a V3 family known by its launch call: the
+356-byte value-0 call `d27d1e00` to a launcher contract whose code's keccak starts with `89885b75` (a new launcher each launch: one
+`eth_getCode` a launch), the pool from the launch's receipt (about 3 s of retries; a code or a receipt not read is `launch_not_armed` or
+`launch_no_receipt`, with an alarm at most once a minute). No trigger: a dry buy when the feed shows launch + 60 (up to + 70 if the feed lags,
+else `late`), a dry sell at launch + 260, or at once on the pull (the launch position's `decreaseLiquidity` in the feed: `dry_ret` -1.0).
+**Dry run only**, as v3crowd: `"dry_run":false` drops the listed families at start with an alarm. The fingerprint is pinned (fee 100, WETH
+as token0, one token-only mint 1,094,515 ticks wide within 2%, L 3.16e22 within a factor of 3); anything else is `armed` with
+`"eligible":false` and `"fingerprint":"new: ..."`. The object to add to the list:
+
+    {"name":"p356","dex":"v3","launch":{"selector":"d27d1e00","calldata_len":356,"code_hash_prefix":"89885b75","value_wei":0},"fee":100,"tick_spacing":1,"buy_at":60,"sell_at":260,"stake_eth":0.0058,"ahead_max_eth":0.5,"dry_run":true,"pin":true}
+
+The box's list with it (v3.0, c1 and v3crowd as above, then p356):
+
+    sudo sed -i '/^FRONT_FAMILIES=/d' /etc/flip/engine.env; sudo tee -a /etc/flip/engine.env >/dev/null <<'EOF'
+    FRONT_FAMILIES='[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":60,"stake_eth":0.002,"dry_run":true,"pin":true,"fire_at":12,"fire_max":3},{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":60,"stake_eth":0.002,"dry_run":true,"pin":true,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_eth":10,"max_blocks":400}},{"name":"v3crowd","dex":"v3","target":"0x73991a25c818bf1f1128deaab1492d45638de0d3","value_wei":0,"calldata_len":836,"fee":100,"tick_spacing":1,"hold_blocks":78,"exit_after_blocks":18,"take_profit":9,"stake_eth":0.0058,"ahead_max_eth":0.5,"dry_run":true,"pin":true,"trigger":{"shapes":[{"selector":"3593564c","calldata_len":484,"value_word":9},{"selector":"a0193551","calldata_len":452,"value_word":8},{"selector":"49f74a5d","calldata_len":452,"value_word":8}],"any_to":true,"token_anywhere":true,"min_eth":0.005,"max_eth":10}},{"name":"p356","dex":"v3","launch":{"selector":"d27d1e00","calldata_len":356,"code_hash_prefix":"89885b75","value_wei":0},"fee":100,"tick_spacing":1,"buy_at":60,"sell_at":260,"stake_eth":0.0058,"ahead_max_eth":0.5,"dry_run":true,"pin":true}]'
+    EOF
+    sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep -E '"ev":"(start|alarm)"' | tail -2 | cut -c1-300
+
+The start line lists it with `"dex":"v3"`, its `launch` and `"trigger":"timer: launch + 60 (to + 70), sell at launch + 260"`. Its
+`trade_done` lines (`"fam":"p356"`, `"dry":true`) carry `dry_ret` and what the line is judged on: `wave_eth` and `wave_buys` (others' buys from
+our buy to our sell), `wave_sells`, `fleet_buys` and `fleet_eth` (those through SwapRouter02 `0xcaf681a6`), `ahead_eth`, `pull_offset` (the
+feed's pull), `first_burn_offset` and `pulled_before_sell` (the chain's Burn logs; `burn_check`). The day's numbers:
+`sudo python3 ~/v2pons/deploy/englog.py 24 | grep '"trade_done"' | grep '"p356"' | grep -o '"dry_ret":[-0-9.e]*'`. A p356 dry position holds
+the one slot about 20 s (other dry fires are skipped meanwhile; a live fire drops it).
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the

@@ -1460,5 +1460,197 @@ assert d["nonbot_streak"] == 2 and d.get("nonbot_halted") and E.state["front_hal
 E.state["front_halted"] = None; os.remove(E.FRONT_HALT_FILE); base["nonbot_halt"] = None; E.FRONT_NONBOT_HALT = saved_global; E.state["front_nonbot_streak"] = {}; E.state["room_obs"] = {}; reset(); E.FRONT = False; E.ENTRY = "follow"
 print("ok nonbot_halt per family: 0 turns the flat-trade halt off for that family, the default is FRONT_NONBOT_HALT, the threshold travels with the position")
 
+# --- 20k. a launch-rule family (p356, HANDOFF 16.18; REPORT_V23 line 1): the 356-byte value-0 call d27d1e00 to a launcher contract whose code's
+# keccak starts with 89885b75 (a new launcher each launch: its code read once a launch), the pool from the launch's receipt (PoolCreated,
+# Initialize, Mint, the PositionManager's IncreaseLiquidity), a dry buy when the feed shows launch + 60 (never before; up to + 70 if the feed lags),
+# a dry sell at launch + 260 or at once on the pull (the launch position's decreaseLiquidity: -100%), the chain's Burn logs read at the end;
+# the wave behind our buy (wave_eth, fleet_buys) in its record. Dry only; the 2.4333 line trades live beside it as before
+P3 = json.load(open(os.path.join(ROOT, "tests", "data", "p356_launch.json")))
+P356_FAM = {"name": "p356", "dex": "v3", "launch": {"selector": "d27d1e00", "calldata_len": 356, "code_hash_prefix": "89885b75", "value_wei": 0}, "fee": 100, "tick_spacing": 1,
+            "buy_at": 60, "sell_at": 260, "stake_eth": 0.0058, "ahead_max_eth": 0.5, "dry_run": True, "pin": True}
+os.environ["FRONT_FAMILIES"] = json.dumps([C1_FAM, V3_FAM, P356_FAM]); fams = E.front_families(E.front_base_family()); os.environ.pop("FRONT_FAMILIES")
+KP = ("launch", "d27d1e00", 356); pf = fams[KP]
+assert set(fams) == {E.FRONT_VALUE_WEI, 0, K3, KP} and pf["name"] == "p356" and pf["dex"] == "v3" and pf["dry_run"] and pf["pin"] and pf["trigger"] is None and pf["target"] is None \
+    and (pf["buy_at"], pf["sell_at"], pf["hold_blocks"], pf["fire_at"], pf["fire_max"], pf["calldata_len"], pf["value_wei"], pf["sqrt_p"], pf["liq"]) == (60, 260, 260, 0, 10, 356, 0, 0, 0) \
+    and pf["launch"] == {"selector": "d27d1e00", "calldata_len": 356, "code_prefix": "89885b75", "value_wei": 0} and pf["stake_wei"] == int(0.0058e18) and pf["ahead_max_wei"] == int(0.5e18), pf
+for patch, msg in ((("dry_run", False), "not built"), (("dry_run", None), "not built"), (("dex", None), "must give dex"), (("dex", "v4"), 'dex must be "v3"'), (("launch", None), "must give launch"),
+                   (("buy_at", None), "must give buy_at"), (("sell_at", None), "must give sell_at"), (("fee", None), "must give fee"), (("target", V3_NPM), "do not apply"),
+                   (("trigger", T3), "do not apply"), (("hold_blocks", 260), "do not apply"), (("sqrt_p", "1"), "do not apply"), (("take_profit", 9), "do not apply"), (("fire_at", 60), "do not apply"),
+                   (("value_wei", 0), "do not apply"), (("calldata_len", 356), "do not apply"), (("launch", "d27d1e00"), "exactly"),
+                   (("launch", {k: v for k, v in P356_FAM["launch"].items() if k != "value_wei"}), "exactly"), (("launch", {**P356_FAM["launch"], "to": "0x" + "11" * 20}), "exactly"),
+                   (("launch", {**P356_FAM["launch"], "selector": "d27d1e0"}), "8 hex"), (("launch", {**P356_FAM["launch"], "code_hash_prefix": "89885b"}), "8-64 hex"),
+                   (("launch", {**P356_FAM["launch"], "code_hash_prefix": "89885b7z"}), "8-64 hex"), (("launch", {**P356_FAM["launch"], "code_hash_prefix": 89885}), "8-64 hex"),
+                   (("launch", {**P356_FAM["launch"], "calldata_len": 30}), "calldata_len"), (("launch", {**P356_FAM["launch"], "calldata_len": 356.5}), "whole number"),
+                   (("launch", {**P356_FAM["launch"], "value_wei": 0.0}), "integer or a string of digits"), (("buy_at", 0), "buy_at"), (("buy_at", "60"), "must be a number"),
+                   (("sell_at", 601), "sell_at"), (("sell_at", 72), "at least buy_at + 13"), (("stake_eth", 0.02), "stake"), (("ahead_max_eth", 0.001), "at least the stake"),
+                   (("fee", 0), "fee"), (("name", "a b"), "name must be"), (("pin", "yes"), "true or false")):
+    f = dict(P356_FAM); k, v = patch
+    if v is None: f.pop(k)
+    else: f[k] = v
+    why = refused(json.dumps([f])); assert why and msg in why, (patch, why)
+assert "unknown keys" in refused(json.dumps([{**P356_FAM, "sell_after": 260}])) and "do not apply" in refused(json.dumps([{**base3, "buy_at": 60}]))   # base3: the 3.0 line's v4 family
+assert "two families launch with the call d27d1e00/356" in refused(json.dumps([P356_FAM, {**P356_FAM, "name": "p2"}])) \
+    and "two families named" in refused(json.dumps([P356_FAM, {**P356_FAM, "launch": {**P356_FAM["launch"], "calldata_len": 357}}]))
+os.environ["FRONT_FAMILIES"] = json.dumps([{k: v for k, v in P356_FAM.items() if k not in ("name", "stake_eth")}]); g = E.front_families(E.front_base_family())[KP]; os.environ.pop("FRONT_FAMILIES")
+assert g["name"] == "d27d1e00.356" and g["stake_wei"] == E.FRONT_STAKE_WEI, g                                 # the name and the stake default as for any family
+for js in (json.dumps([{**P356_FAM, "dry_run": False}]), json.dumps([{**P356_FAM, "launch": [1]}]), json.dumps([{**P356_FAM, "buy_at": float("inf")}])):
+    err, keys = imported(js); assert err and err.startswith("FRONT_FAMILIES dropped, the FRONT_* line alone trades") and keys == [str(E.FRONT_VALUE_WEI)], (js[:80], err, keys)   # never a crash
+RBP = next(l.strip()[len("FRONT_FAMILIES='"):-1] for l in open(os.path.join(ROOT, "docs", "RUNBOOK.md")) if l.strip().startswith("FRONT_FAMILIES='") and "p356" in l)
+err, keys = imported(RBP); assert err is None and len(keys) == 5 and json.loads(RBP)[-1] == P356_FAM and json.loads(RBP)[2] == V3_FAM, (err, keys)   # the runbook's list for the box
+# the receipt of a real launch (Oct 10, block 85587914): the pool, its price on the top tick, the one token-only position and its id
+d = E.pool_from_receipt_v3(P3["receipt"])
+assert d["pid"] == P3["pool"] and "0x" + d["c0"] == P3["token0"] == "0x" + E.WETH and "0x" + d["token"] == P3["token"] and (d["fee"], d["tick_spacing"], d["sqrt_p"], d["tick0"], d["lo"], d["hi"]) \
+    == (100, 1, P3["sqrt_p"], 207243, -887272, 207243) and d["mint_liq"] == P3["liq"] == E.LAUNCH_LIQ and d["hi"] - d["lo"] == E.LAUNCH_WIDTH and (d["amount0"], d["amount1"], d["mints"]) == (0, P3["amount1"], 1) \
+    and "0x" + d["npm"] == P3["npm"] and int.from_bytes(d["token_id"], "big") == P3["token_id"], d
+assert E.launch_fingerprint(d, P3["liq"], pf) == (None, []) and E.sqrt_at_tick(207243) == P3["sqrt_p"] and E.pool_from_receipt_v3({"logs": [l for l in P3["receipt"]["logs"] if l["address"] != "0x" + E.V3_FACTORY]}) is None
+LI = bytes.fromhex(P3["launch_input"][2:]); assert len(LI) == 356 and LI[:4].hex() == "d27d1e00" and LI[16:36].hex() == P3["token"][2:]   # the call's first word is the token; the pool is not in it
+assert keccak(bytes.fromhex(P3["launcher_code"][2:])).hex() == P3["launcher_code_hash"] and P3["launcher_code_hash"].startswith("89885b75")
+E.FRONT_FAMILIES[KP] = pf; E.LAUNCH_SHAPES = {(bytes.fromhex("d27d1e00"), 356): pf}; E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"
+sf = {f["name"]: f for f in E.start_families()}["p356"]
+assert sf["dex"] == "v3" and sf["launch"] == P356_FAM["launch"] and (sf["buy_at"], sf["sell_at"], sf["dry_run"]) == (60, 260, True) and sf["trigger"] == "timer: launch + 60 (to + 70), sell at launch + 260" \
+    and "target" not in sf, sf                                                                 # the start line: its rule (results.py reads a trigger: no auto stake)
+calls = []
+def rpc_seen(method, params, tries=4, timeout=10):
+    calls.append(method); return fake_rpc(method, params, tries, timeout)
+E.rpc = rpc_seen
+def p356_reset():
+    reset(); E.state["launch_live"].clear(); E.LAUNCH_CODES.clear(); calls.clear(); LOGS[:] = []; E.state["launch_alarm_at"] = None; E.state.pop("launch_alarms_held", None); E.state["front_today"] = 0
+def p356_launch(n, hi=207243, mints=1, liq=None, code=None):
+    """a 356-byte launch as the feed shows it (the real call with its token word) to a new launcher contract n, and its receipt (the real one's
+    logs rebuilt for a new token and pool: a Transfer, PoolCreated, Initialize at the range's top tick, the Mints and IncreaseLiquidity)"""
+    token = "%040x" % (0xa1a1 << 140 | n); pool = keccak(bytes.fromhex(token))[12:].hex(); launcher = "0x" + "5a" * 18 + "%04x" % n; npm = P3["npm"][2:]; liq = liq or P3["liq"]
+    logs = [{"address": "0x" + token, "topics": ["0x" + keccak(text="Transfer(address,address,uint256)").hex(), "0x" + w(0), "0x" + w(launcher)], "data": "0x" + w(10 ** 27)},
+            {"address": "0x" + E.V3_FACTORY, "topics": ["0x" + E.T_V3_CREATED, "0x" + w(E.WETH), "0x" + w(token), "0x" + w(100)], "data": "0x" + w(1) + w(pool)},
+            {"address": "0x" + pool, "topics": ["0x" + E.T_V3_INIT], "data": "0x" + w(E.sqrt_at_tick(hi)) + w(hi)}]
+    for k in range(mints):
+        logs += [{"address": "0x" + pool, "topics": ["0x" + E.T_V3_MINT, "0x" + w(npm), "0x" + w(-887272), "0x" + w(hi)], "data": "0x" + w(npm) + w(liq) + w(0) + w(10 ** 27)},
+                 {"address": "0x" + npm, "topics": ["0x" + E.T_V3_INCREASE, "0x" + w(7000 + 10 * n + k)], "data": "0x" + w(liq) + w(0) + w(10 ** 27)}]
+    raw = signed(DEPLOYER, launcher, 0, P3["launch_input"][:10] + w(token) + P3["launch_input"][74:], 900 + n); h = "0x" + keccak(raw).hex()
+    RECEIPTS[h] = {"status": "0x1", "blockNumber": hex(10 ** 6 + n), "logs": logs}; CODES[launcher] = P3["launcher_code"] if code is None else code
+    return raw, "0x" + pool
+def real_launch(seq, nonce):
+    """the real launch (its call to its launcher, its receipt), armed"""
+    CODES[P3["launch_to"]] = P3["launcher_code"]; raw = signed(DEPLOYER, P3["launch_to"], 0, P3["launch_input"], nonce); RECEIPTS["0x" + keccak(raw).hex()] = P3["receipt"]
+    E.ingest(frame(seq, [raw])); assert wait_for(lambda: P3["pool"] in E.state["armed"]), events()[-3:]
+    return E.state["armed"][P3["pool"]]
+p3_done = lambda L: [e for e in events("trade_done") if e.get("fam") == "p356" and e.get("trig_seq", 0) >= L]
+B109, B115, B222 = P3["buys"]; STAKE = int(0.0058e18)
+# the real launch: armed from its receipt with one code read; a buy ahead of ours; nothing before + 60, the dry fire at + 60, our buy at + 62;
+# SwapRouter02's buys (in WETH, with ETH) and sell move the price copy and make the wave; the timer's sell at + 260 with dry_ret; the Burn log behind it
+p356_reset(); E.state["nonce"] = 1300; L = 20000
+p = real_launch(L, 600); a = events("armed")[-1]; la = events("launch")[-1]
+assert la["fam"] == "p356" and la["code"] == P3["launcher_code_hash"][:16] and la["seq"] == L and la["to"] == P3["launch_to"][2:] and calls == ["eth_getCode", "eth_getTransactionReceipt"], (la, calls)
+assert a["fam"] == "p356" and a["eligible"] and a["fingerprint"] == "known" and a["dex"] == "v3" and a["liq"] == P3["liq"] and a["tick0"] == 207243 and a["width"] == E.LAUNCH_WIDTH and a["mints"] == 1 \
+    and a["token_id"] == P3["token_id"] and a["eth_pair"] and a["sqrt_p"] == P3["sqrt_p"], a
+assert p["status"] == "armed" and p["token"] == P3["token"][2:] and p["npm"] == P3["npm"][2:] and P3["pool"] in E.state["launch_live"] and E.state["position"] is None
+E.ingest(frame(L + 30, [signed(OUTSIDER, B109["to"], B109["value_wei"], B109["input"], 80)]))                 # a bot contract's 0.0004 ETH, ahead of ours
+sp_ahead = p["sp"]; assert sp_ahead == v4math.sqrt_after_buy(float(P3["sqrt_p"]), P3["liq"], E.net_of_fee(B109["value_wei"], 100)) and (p["ahead_wei"], p["ahead_buys"], p["first_buy"]) == (B109["value_wei"], 1, L + 30)
+assert events("first_buy")[-1]["fam"] == "p356"
+for s_ in range(L + 31, L + 60):
+    E.ingest(frame(s_, [])); assert E.state["position"] is None, s_                                                # never before + 60
+E.ingest(frame(L + 60, [])); pos = E.state["position"]; wf = events("would_fire")[-1]
+assert pos and pos["dry"] and pos["launch_rule"] and pos["fam"] == "p356" and (pos["fire_seq"], pos["plan_buy_seq"], pos["exit_seq"], pos["plan_sell_seq"], pos["send_after"]) == (L + 60, L + 62, L + 260, L + 260, 198) \
+    and pos["stake"] == STAKE and wf["fam"] == "p356" and wf["buy_tx"] is None and wf["exit_seq"] == L + 260 and len(SENT) == 0 and p["status"] == "fired", pos
+E.ingest(frame(L + 61, [])); E.ingest(frame(L + 62, [])); assert pos["buy_seq"] == L + 62 and pos["feed_tokens"] == v4math.buy_out_int(int(sp_ahead), P3["liq"], STAKE, 100) and events("buy_seen")[-1]["fam"] == "p356"
+amt115 = int(B115["input"][10 + 64 * 4: 10 + 64 * 5], 16); assert amt115 == int(0.0002e18) and B115["value_wei"] == 0
+E.ingest(frame(L + 115, [signed(CROWD, B115["to"], 0, B115["input"], 81)]))                                    # SwapRouter02, paid in WETH (value 0)
+assert (pos["wave_buys"], pos["wave_wei"], pos["fleet_buys"], p["buys"]) == (1, amt115, 1, 2), (pos["wave_buys"], pos["wave_wei"], pos["fleet_buys"])
+fleet_tokens = v4math.buy_out_int(int(p["sp"]), P3["liq"], B222["value_wei"], 100)
+E.ingest(frame(L + 222, [signed(CROWD, B222["to"], B222["value_wei"], B222["input"], 82)]))                      # the fleet's 0.1227 ETH with ETH as value
+assert (pos["wave_buys"], pos["wave_wei"], pos["fleet_buys"], pos["fleet_wei"]) == (2, amt115 + B222["value_wei"], 2, amt115 + B222["value_wei"])
+sb = bytearray(bytes.fromhex(P3["sell"]["input"][2:].replace(P3["sell"]["token"][2:], P3["token"][2:]))); i = sb.find(E.SEL_EXACT_IN_SINGLE)
+assert i > 0 and sb[i + 16:i + 36].hex() == P3["token"][2:] and sb[i + 48:i + 68] == E.WETH_BYTES; sb[i + 132:i + 164] = (fleet_tokens // 2).to_bytes(32, "big")   # the real SwapRouter02 sell, on this token, half the fleet's
+sp0 = p["sp"]; E.ingest(frame(L + 230, [signed(CROWD, "0x" + E.SWAP_ROUTER02, 0, "0x" + sb.hex(), 83)]))
+assert pos["wave_sells"] == 1 and p["sells"] == 1 and p["sp"] == min(sp0 + E.net_of_fee(fleet_tokens // 2, 100) * 2 ** 96 / P3["liq"], float(P3["sqrt_p"])) and p["sp"] > sp0
+sb[i + 16:i + 36], sb[i + 48:i + 68] = sb[i + 48:i + 68], sb[i + 16:i + 36]; sp1 = p["sp"]                     # the other way (WETH in, value 0) inside a multicall: a buy
+E.ingest(frame(L + 231, [signed(CROWD, "0x" + E.SWAP_ROUTER02, 0, "0x" + sb.hex(), 84)])); assert pos["wave_buys"] == 2 and p["sp"] == sp1, "a WETH-in call whose amount is no ETH amount (over 10 ETH) taken for a buy"
+LOGS[:] = [dict(P3["pull"]["burn"], blockNumber=hex(L + 275)), dict(P3["pull"]["burn"], blockNumber=hex(L + 100), data="0x" + w(0) + w(5) + w(5))]   # a pull after our sell; a fee collect (L 0) before it
+for s_ in range(L + 232, L + 260):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(L + 260, [])); ws = events("would_sell")[-1]
+assert pos["sell_sent"] and pos["sell_seq_sent"] == L + 260 and ws["why"] == "the timer: launch + 260" and ws["fam"] == "p356" and ws["dry_ret"] == v3_dry_ret(p, pos) > 0 and len(SENT) == 0, ws
+assert wait_for(lambda: p3_done(L), 5.0); d = p3_done(L)[-1]
+assert d["dry"] and d["dry_ret"] == ws["dry_ret"] and d["wave_eth"] == round((amt115 + B222["value_wei"]) / 1e18, 6) and (d["wave_buys"], d["wave_sells"], d["fleet_buys"], d["ahead_buys"]) == (2, 1, 2, 1) \
+    and d["fleet_eth"] == d["wave_eth"] and d["ahead_eth"] == round(B109["value_wei"] / 1e18, 6) and d["burn_check"] == "ok" and d["first_burn_offset"] == 275 and d["pulled_before_sell"] is False \
+    and d["pull_offset"] is None and d["burn_check_to"] == 290 and (d["launch_seq"], d["fire_seq"], d["buy_seq"]) == (L, L + 60, L + 62) and abs(d["stake_eth"] - 0.0058) < 1e-12 and d["sell_why"] == "the timer: launch + 260", d
+assert E.state["position"] is None and P3["pool"] not in E.state["launch_live"] and len(SENT) == 0
+# the pull before + 260: the launch position's decreaseLiquidity in the feed (the real one) sells at once at -100%, the chain's Burn confirms it; a
+# decreaseLiquidity of 0 (a fee collect) or of another position is no pull
+p356_reset(); L = 21000; p = real_launch(L, 601)
+E.ingest(frame(L + 60, [])); pos = E.state["position"]; E.ingest(frame(L + 62, [])); assert pos["buy_seq"] == L + 62
+PULL = P3["pull"]; pb = bytes.fromhex(PULL["input"][2:]); j = pb.find(E.SEL_DECREASE_LIQ + P3["token_id"].to_bytes(32, "big")); assert j > 0 and int.from_bytes(pb[j + 36:j + 68], "big") == P3["liq"]
+zero_l = pb[:j + 36] + bytes(32) + pb[j + 68:]; other = pb[:j + 4] + (P3["token_id"] + 1).to_bytes(32, "big") + pb[j + 36:]
+E.ingest(frame(L + 150, [signed(CROWD, PULL["to"], 0, "0x" + zero_l.hex(), 90), signed(CROWD, PULL["to"], 0, "0x" + other.hex(), 91)]))
+assert not pos["sell_sent"] and p["pull_seq"] is None
+LOGS[:] = [dict(PULL["burn"], blockNumber=hex(L + 239))]
+E.ingest(frame(L + 239, [signed(CROWD, PULL["to"], 0, PULL["input"], 92)])); pe = events("pull")[-1]; ws = events("would_sell")[-1]
+assert pe["offset"] == 239 and pe["fam"] == "p356" and pe["seq"] == L + 239 and pos["sell_sent"] and pos["sell_seq_sent"] == L + 239 and ws["dry_ret"] == -1.0 \
+    and ws["why"] == "the pull: the launch position's liquidity removed at launch + 239, our buy + 177", ws
+assert wait_for(lambda: p3_done(L), 5.0); d = p3_done(L)[-1]
+assert d["dry_ret"] == -1.0 and d["pull_offset"] == 239 and d["first_burn_offset"] == 239 and d["pulled_before_sell"] is True and "pull_missed_by_feed" not in d and isinstance(d["dry_ret_unpulled"], float), d
+# the feed's pull the chain does not confirm by our sell (the call reverted): the price copy's return at that block; a Burn the feed missed: -100%
+p356_reset(); L = 21500; p = real_launch(L, 602); E.ingest(frame(L + 60, [])); pos = E.state["position"]; E.ingest(frame(L + 62, []))
+E.ingest(frame(L + 200, [signed(CROWD, PULL["to"], 0, PULL["input"], 93)])); assert pos["sell_sent"] and pos["dry_ret"] == -1.0
+assert wait_for(lambda: p3_done(L), 5.0); d = p3_done(L)[-1]
+assert d["pull_unconfirmed"] and d["first_burn_offset"] is None and not d["pulled_before_sell"] and d["dry_ret"] == d["dry_ret_unpulled"] == v3_dry_ret(p, pos), d
+p356_reset(); L = 22000; p = real_launch(L, 603); E.ingest(frame(L + 60, [])); pos = E.state["position"]; E.ingest(frame(L + 62, []))
+LOGS[:] = [dict(PULL["burn"], blockNumber=hex(L + 250))]
+for s_ in range(L + 63, L + 261):
+    E.ingest(frame(s_, []))
+assert events("would_sell")[-1]["why"] == "the timer: launch + 260" and wait_for(lambda: p3_done(L), 5.0); d = p3_done(L)[-1]
+assert d["dry_ret"] == -1.0 and d["pull_missed_by_feed"] and d["first_burn_offset"] == 250 and d["pulled_before_sell"] and d["pull_offset"] is None, d
+# the fingerprint: a range 2.7% narrower is armed eligible:false, fingerprint "new: tick width ..." (pinned), traded and marked unpinned; two Mints or
+# an L four times the line's are not armed; the builder's own launch is the line's
+p356_reset(); L = 22500; raw, pid = p356_launch(1)
+E.ingest(frame(L, [raw])); assert wait_for(lambda: pid in E.state["armed"]); a = events("armed")[-1]; assert a["eligible"] and a["fingerprint"] == "known" and a["pid"] == pid, a
+for n, kw, want in ((2, {"hi": 207243 - 30000}, "tick width 1064515"), (3, {"mints": 2}, "2 mints"), (4, {"liq": 4 * P3["liq"]}, "liquidity %d" % (4 * P3["liq"]))):
+    p356_reset(); raw, pid = p356_launch(n, **kw); E.ingest(frame(L + 10 * n, [raw])); assert wait_for(lambda: any(e["pid"] == pid for e in events("armed"))), n
+    a = events("armed")[-1]; assert a["pid"] == pid and not a["eligible"] and want in a["fingerprint"] and a["fingerprint"].startswith("new: ") and pid not in E.state["armed"], a
+    assert ("p356 pinned" in a["why"]) == (n != 3) and ("2 mints (the price copy follows one range)" in a["why"]) == (n == 3), a["why"]
+    for s_ in range(L + 10 * n + 1, L + 10 * n + 75, 7):
+        E.ingest(frame(s_, []))
+    assert E.state["position"] is None
+pf["pin"] = False; p356_reset(); raw, pid = p356_launch(5, hi=207243 - 30000); E.ingest(frame(L + 100, [raw])); assert wait_for(lambda: pid in E.state["armed"])
+a = events("armed")[-1]; assert a["eligible"] and a["fingerprint"] == "new: tick width 1064515" and "why" not in a, a
+p356_reset(); raw, pid = p356_launch(6, mints=2); E.ingest(frame(L + 110, [raw])); assert wait_for(lambda: any(e["pid"] == pid for e in events("armed")))
+assert not events("armed")[-1]["eligible"] and pid not in E.state["armed"]; pf["pin"] = True                     # unpinned, more than one range is still never traded
+# the late feed: a jump past + 70 is late; one to + 65 fires there; a stale block at + 60 waits for the next fresh one
+p356_reset(); L = 23000; raw, pid = p356_launch(7); E.ingest(frame(L, [raw])); assert wait_for(lambda: pid in E.state["armed"]); E.ingest(frame(L + 5, []))
+E.ingest(frame(L + 71, [])); sk = events("skip")[-1]
+assert E.state["position"] is None and E.state["armed"][pid]["status"] == "late" and sk["fam"] == "p356" and sk["why"].startswith("launch rule: late, not fired by launch + 70 (the feed lagged") and pid not in E.state["launch_live"], sk
+p356_reset(); L = 23500; raw, pid = p356_launch(8); E.ingest(frame(L, [raw])); assert wait_for(lambda: pid in E.state["armed"])
+E.ingest(frame(L + 65, [])); pos = E.state["position"]; assert pos and (pos["fire_seq"], pos["plan_buy_seq"], pos["exit_seq"]) == (L + 65, L + 67, L + 260), pos
+p356_reset(); L = 24000; raw, pid = p356_launch(9); E.ingest(frame(L, [raw])); assert wait_for(lambda: pid in E.state["armed"])
+E.ingest(frame(L + 60, [], ts=int(time.time()) - 10)); assert E.state["position"] is None and E.state["armed"][pid]["status"] == "armed"
+E.ingest(frame(L + 61, [])); pos = E.state["position"]; assert pos and pos["fire_seq"] == L + 61
+# a live setting behind the parser's back is still dry; a live front trade (the 2.4333 line) drops the dry position and trades as before
+p356_reset(); L = 24500; pf["dry_run"] = False; raw, pid = p356_launch(10); E.ingest(frame(L, [raw])); assert wait_for(lambda: pid in E.state["armed"])
+E.ingest(frame(L + 60, [])); pos = E.state["position"]; assert pos and pos["dry"] and len(SENT) == 0 and events("would_fire")[-1]["fam"] == "p356", "a launch-rule family went live"
+pf["dry_run"] = True; E.state["nonce"] = 1310; E.state["front_halted"] = None
+p4 = front_launch(L + 70, 29); lpos = E.state["position"]; sk = [e for e in events("skip") if "dropped" in e.get("why", "")][-1]
+assert p4 and lpos is not pos and not lpos["dry"] and lpos["fam"] == "v2.433" and len(SENT) == 1 and sk["fam"] == "p356" and sk["pid"] == pid, (lpos, sk)
+E.ingest(frame(L + 71, [SENT[-1][1]])); E.ingest(frame(L + 79, [signed(CROWD, BOT, int(0.12e18), FBUY, 85)])); assert lpos["sell_sent"] and lpos["sell_why"].startswith("take profit")
+d = front_close(lpos, L + 71, L + 80, int(E.FRONT_STAKE_WEI * 1.09)); assert d["fam"] == "v2.433" and d["ret"] > 0.08 and E.state["front_halted"] is None, d
+# another code at the target: ignored (one code read, no receipt; the second call reads nothing); a call of another length or with value: not looked at
+p356_reset(); L = 25000; raw, pid = p356_launch(11, code="0x6001600055"); launcher = "0x" + "5a" * 18 + "%04x" % 11
+E.ingest(frame(L, [raw])); assert wait_for(lambda: any("is not the family's" in e.get("why", "") for e in events("skip")))
+sk = events("skip")[-1]; assert sk["fam"] == "p356" and "(89885b75)" in sk["why"] and calls == ["eth_getCode"] and pid not in E.state["armed"] and (not events("launch") or events("launch")[-1]["seq"] != L), (sk, calls)
+n_ev = len(events("skip")) + len(events("launch")); E.ingest(frame(L + 1, [signed(DEPLOYER, launcher, 0, P3["launch_input"], 912)])); time.sleep(0.2)
+assert calls == ["eth_getCode"] and len(events("skip")) + len(events("launch")) == n_ev
+E.ingest(frame(L + 2, [signed(DEPLOYER, launcher, 1, P3["launch_input"], 913), signed(DEPLOYER, "0x" + "5b" * 20, 0, P3["launch_input"] + "00", 914)])); time.sleep(0.2)
+assert calls == ["eth_getCode"] and E.state["launch_arming"] == 0
+# the target's code not read (no code at the head nor at the launch's block): not armed; one alarm a minute
+p356_reset(); L = 25500; n_alarm = len(events("alarm"))
+for n in (12, 13):
+    raw, pid = p356_launch(n, code="0x"); E.ingest(frame(L + n, [raw])); assert wait_for(lambda: len(events("launch_not_armed")) and events("launch_not_armed")[-1]["seq"] == L + n), n
+    assert pid not in E.state["armed"] and events("launch_not_armed")[-1]["fam"] == "p356"
+assert len(events("alarm")) == n_alarm + 1 and "could not be read" in events("alarm")[-1]["what"] and E.state.get("launch_alarms_held") == 1 and calls.count("eth_getCode") == 4, calls
+assert wait_for(lambda: E.state["launch_arming"] == 0)
+p356_reset(); E.state["launch_alarms_held"] = 0; del E.FRONT_FAMILIES[KP]; E.LAUNCH_SHAPES = {}; E.rpc = fake_rpc; E.FRONT = False; E.ENTRY = "follow"
+print("ok a launch-rule family (p356, the 356-byte V3 launches): the call d27d1e00 to a launcher whose code hash starts 89885b75 (one code read a launch), the pool from the real receipt, "
+      "a dry buy at + 60 (never before, a lagging feed to + 70, else late), the wave through SwapRouter02 (buys with ETH or WETH, sells) in the price copy and the record, the timer's sell "
+      "at + 260 with dry_ret; the pull in the feed at -100%, confirmed or not by the chain's Burn, a missed one caught; a narrower range pinned; another code ignored; bad JSON refused "
+      "at start; dry whatever it says; a live front trade drops it")
+
 for _f in (E.LOG_PATH, E.LOG_PATH + ".1"):
     if os.path.exists(_f): os.remove(_f)
