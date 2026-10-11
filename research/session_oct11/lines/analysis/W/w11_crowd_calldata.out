@@ -1,0 +1,12 @@
+   205  fetched
+   199  crowd shape
+   199  value 0
+   199  min_out 0
+   199  path WETH->token, fee 100
+   199  recipient = tx sender
+   199  gas limit 500000
+   199  prio = gasPrice
+   127  amount == swap WETH in
+    72  amount != swap
+     6  other shape 0x39ecce49/1380
+example [('0x023dba0a8ca4141ecc00c12f2eac3079a2c36987ea6546dc951461c01f047800', '0x84021dc22cf77fb6ba5665cf247c743fe05beb7d', {'amount': 12000000000000000, 'min_out': 0, 'recipient': '0x99b5e007f5089c05bf6e8c9602c4a9cf503d8ece', 'path_len': 43, 'tin': '0bd7d308f8e1639fab988df18a8011f41eacad73', 'fee': 100, 'tout': '330e9afa452a281bc0e8c7624188504291d4b8d9'})]

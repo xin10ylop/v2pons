@@ -1,0 +1,17 @@
+1. router factory 1f7d7550b1b028f7571e69a784071f0205fd2efa WETH9 0bd7d308f8e1639fab988df18a8011f41eacad73 | NPM factory 1f7d7550b1b028f7571e69a784071f0205fd2efa WETH9 0bd7d308f8e1639fab988df18a8011f41eacad73
+2. crowd contracts:
+   0x80114879f80d156c8003676557324c518babd194 size 21313 hash aeef2c9fcc02e35e
+   0xd26c8cfce843f4122753425dd6613d7576777ec8 size 23633 hash d0c17381df09a770
+   0xa28f468cb898cc407c981e26a521dfb2e2774174 size 23633 hash 47336ca4150ed089
+   0xaf9d6fa019328d8cf8598d0d5be22cc6622b09f1 size 21313 hash 5d1ca38ccc0ac446
+   0x84021dc22cf77fb6ba5665cf247c743fe05beb7d size 23633 hash 8c95f67106d931f7
+   0xfc7241d4356564e32b16e8e4838c648efceb8144 size 21313 hash 0523308c78289641
+   0x71a7629fcc6e69b69d00393af53942a87512a4ee size 23633 hash 224e214afc4c94eb
+   0x85ce78329f7449fde7c46658bf646b1cedb59858 size 23633 hash e36f3acbd0a27b40
+   0x7feb3ecbacbd0cc23ec46659d541636d58749a97 size 23633 hash 598fffedadeb56d7
+3. token 0x469b96825ac3b8816d94f97532dd550e0cfd9951 code 5048 bytes (4995 without metadata); PUSH4 constants: ['increaseAllowance(address,uint256)', 'balanceOf(address)', 'symbol()', 'decreaseAllowance(address,uint256)', 'transfer(address,uint256)', 'allowance(address,address)', 'name()', 'approve(address,uint256)', 'totalSupply()', 'transferFrom(address,address,uint256)', 'decimals()', 'ffffffff']; risky opcodes {67: 1, 50: 1, 58: 1}
+4. pool 0x6f08c4cf58474540e1024f650209bfaee65bdb4e slot0 sqrtP 350268068683594754467870043796307 tick 167890 liquidity 54773207779044021846921; buy 0.0058 ETH via SwapRouter02 (value, 420 B calldata): out 113298261232140161466122 vs single-range prediction 113298261232140161465165 (diff 8.446731570215137e-21)
+5. token storage: balances at slot 0, allowances at slot 1
+   sell 113298261232140161466122 tokens via multicall(deadline,[exactInputSingle -> router, unwrapWETH9]) (580 B): 5793416548741537 wei back = -0.1135% round trip (the sell is priced on today's pool, without our buy in it); prediction on the same state 5793416548741537; after our buy (the real round trip) 5798840329315904 = -0.0200%
+   without the allowance: reverts: {"code": 3, "message": "execution reverted: STF", "data": "0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000
+{'posts': 14, 'items': 22, 'r429': 2}
