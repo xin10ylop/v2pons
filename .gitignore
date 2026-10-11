@@ -8,3 +8,4 @@ __pycache__/
 *.env
 # the harness keeps agents' worktrees here (never repo content)
 .claude/
+research/**/rpc_log.jsonl
