@@ -1043,6 +1043,22 @@ the URL), `FEED_HEADERS` (a header token: JSON or `Name: value; Name: value`, e5
 reason), all in `/etc/flip/engine.env`; then `git pull`, the tests, a front dry run (`FRONT_DRY_RUN=1`) over a few launches, then live. The
 owner's choice between the provider route, asking the Robinhood Chain team, and stopping on this chain was open when this was written.
 
+Checked Oct 11 03:30 UTC (web, not with the providers): Robinhood's own connection page names Alchemy "the recommended infrastructure
+provider" and lists Chainstack, QuickNode, Blockdaemon, dRPC, Validation Cloud and GlobalStake; it says the public endpoints are rate-limited
+and not for production and that production should use a provider. **Alchemy, QuickNode and Chainstack sell the RPC and a JSON-RPC websocket
+(`eth_subscribe`), not the sequencer feed**: the engine's `feed_loop` reads the Nitro feed protocol (one message per block with the raw L2
+transactions, before the block is served by any RPC), and an `eth_subscribe` block stream would need new code and would see the launch a
+block or two later. The providers of the feed itself found so far: **Dwellir** (an authenticated Robinhood Chain sequencer feed in the Nitro
+protocol on the existing API key; a three-day trial, then an optional $100 a month add-on plus usage, on its Developer/Growth/Scale plans; its
+"sequencer feed guide" has the endpoint format, not fetched), and **BlockRazor** ("Sequencer Feed Ultra", $200 a day or $2,000 a month, which
+must be fed into one's own Robinhood Chain node, so not a drop-in). Alchemy is the natural `RPC_URL` replacement either way
+(`https://robinhood-mainnet.g.alchemy.com/v2/<key>`, free tier). Robinhood's page also lists a public delayed backup feed
+(`wss://delayed-feed.mainnet.chain.robinhood.com`, about 500 ms behind): it is the same operator's public service and the block names "this
+or any further network range", so it is not an option for the box. The exact feed URL/header of a provider goes in `FEED_URL` /
+`FEED_HEADERS` (the engine sends permessage-deflate, which the feed protocol requires). Sources: docs.robinhood.com/chain/connecting,
+alchemy.com/rpc/robinhood, dwellir.com/networks/robinhood and /docs/robinhood, docs.blockrazor.io (streams/node-stream/robinhood-chain),
+quicknode.com/chains/robinhood, github.com/chainstacklabs/robinhood-chain-sequencer-feed.
+
 The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
 stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
 
