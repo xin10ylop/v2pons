@@ -1027,9 +1027,17 @@ def _settle(pos):
         time.sleep(PULL_WATCH_S)                                                           # the operator's reaction to us comes 5-13 blocks after our buy: let it land, to measure it
         pulls = []
         try:
-            head = int(rpc("eth_blockNumber", []), 16)                                     # Dwellir's node refuses a range past its head ("block range extends beyond current head block"):
-            to = max(min(b1 + 30, head), b1)                                             # never under the sell block: a lagging head must fail the check (an alarm), not miss a pull
-            ls = rpc("eth_getLogs", [{"fromBlock": hex(b0), "toBlock": hex(to), "address": h0x(POOL_MANAGER), "topics": [h0x(T_ML), pos["pid"]]}])   # the halt needs blocks <= b1 only
+            for attempt in range(3):                                                       # a provider's node refuses a range past its head ("block range extends beyond current head block"),
+                head = int(rpc("eth_blockNumber", [], tries=2, timeout=3), 16)             # and a load-balanced one may answer getLogs from a node a few blocks behind: a margin, and up to 3 tries
+                to = max(min(b1 + 30, head - 10), b1)                                      # never under the sell block: a lagging head must fail the check (an alarm), not miss a pull
+                out["pull_check_head"] = head - b1
+                try:
+                    ls = rpc("eth_getLogs", [{"fromBlock": hex(b0), "toBlock": hex(to), "address": h0x(POOL_MANAGER), "topics": [h0x(T_ML), pos["pid"]]}], tries=2, timeout=5)   # the halt needs blocks <= b1 only
+                    break
+                except Exception as e:
+                    if attempt == 2 or "head" not in str(e) and "range" not in str(e):
+                        raise
+                    time.sleep(0.7)
             out["pull_check_to"] = to - b1
             pulls = sorted((int(l["blockNumber"], 16), int(l["transactionIndex"], 16)) for l in ls if sgn(W(l["data"], 2)) < 0)
             out["pull_after_buy_blocks"] = pulls[0][0] - b0 if pulls else None
