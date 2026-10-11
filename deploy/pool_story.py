@@ -39,8 +39,11 @@ def rpc(method, params, tries=4):
                 raise RuntimeError(str(r["error"])[:160])
             return r["result"]
         except Exception as e:
-            err = e; time.sleep(1.5 * (i + 1))
-    raise RuntimeError(f"rpc {method}: {str(err)[:160]}")
+            err = e
+            if i < tries - 1:
+                time.sleep(1.5 * (i + 1))
+    code = getattr(err, "code", "")
+    raise RuntimeError(f"rpc {method} failed: {type(err).__name__} {code}".strip())              # never the URL (it carries the provider's key) nor the provider's text
 
 
 def events(hours):
@@ -75,12 +78,12 @@ def story(pid, launch, head):
                 tx = rpc("eth_getTransactionByHash", [l["transactionHash"]], tries=2); who = (tx.get("to") or "")[2:].lower() or who
             except Exception:
                 pass
-        rows.append((bn, int(l["transactionIndex"], 16), "buy " if a0 < 0 else "sell", abs(a0) / 1e18, who))
+        rows.append((bn, int(l["transactionIndex"], 16), int(l["logIndex"], 16), "buy " if a0 < 0 else "sell", abs(a0) / 1e18, who))
     for l in ml:
         dl = sgn(W(l["data"], 2)); bn = int(l["blockNumber"], 16)
         if dl != 0:
-            rows.append((bn, int(l["transactionIndex"], 16), "PULL" if dl < 0 else "add ", dl / 1e18, l["topics"][2][-40:]))
-    rows.sort()
+            rows.append((bn, int(l["transactionIndex"], 16), int(l["logIndex"], 16), "PULL" if dl < 0 else "add ", dl / 1e18, l["topics"][2][-40:]))
+    rows.sort(); rows = [(bn, ti, kind, amt, who) for bn, ti, li, kind, amt, who in rows]
     return rows, to - launch
 
 
@@ -89,8 +92,11 @@ def main():
     armed = [e for e in events(hours) if e.get("ev") == "armed" and e.get("entry") == "front" and (every or str(e.get("fingerprint", "")).startswith("new"))][-20:]
     if not armed:
         print("no", "armed front pool" if every else "new-fingerprint front launch", f"in the last {hours:g} h"); return
-    head = int(rpc("eth_blockNumber", []), 16)
-    print(f"{len(armed)} pools, head {head}; offsets are blocks after the launch block")
+    try:
+        head = int(rpc("eth_blockNumber", []), 16)
+    except Exception as ex:
+        print("the RPC does not answer:", str(ex)[:80]); return
+    print(f"{len(armed)} pools (the last 20 at most), head {head}; offsets are blocks after the launch block; L = liquidity units")
     summary = []
     for e in armed:
         pid, launch = e["pid"], e["seq"]
@@ -103,13 +109,13 @@ def main():
         bot_buy = pull = None; before = 0.0; n_before = 0
         for bn, ti, kind, amt, who in rows:
             tag = "bot" if who == BOT else who[:8]
-            print(f"   +{bn - launch:<4} {kind} {amt:10.5f}  {tag}")
+            print(f"   +{bn - launch:<4} {kind} {amt:10.5f} {'ETH' if kind in ('buy ', 'sell') else 'L  '}  {tag}")
             if kind == "buy " and who == BOT and bot_buy is None: bot_buy = bn - launch
             if kind == "buy " and who != BOT and bot_buy is None: before += amt; n_before += 1
             if kind == "PULL" and pull is None: pull = bn - launch
         s = f"bot buy +{bot_buy}" if bot_buy is not None else f"no bot buy in {span}"
         s += f", pull +{pull}" if pull is not None else f", no pull in {span}"
-        s += f", {n_before} outside buy(s) {before:.4f} ETH before the bot" if n_before else ", nobody else bought before the bot"
+        s += f", {n_before} other buy(s) {before:.4f} ETH before it (the bot's own dust at +3..+6 counts)" if n_before else ", no other buy before it"
         print("   =>", s); summary.append((launch, s))
     print("\nSUMMARY")
     for launch, s in summary:
