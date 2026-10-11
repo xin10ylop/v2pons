@@ -408,7 +408,7 @@ Follow: `LAUNCHERS` (0x3194e326…) **same**; `LAUNCH_SELECTORS` () **2fcb9108**
 **0.01**; `BUY_DELAY_BLOCKS` (0); `MAX_TRADES_PER_DAY` (10) **100**; `DAILY_STOP_USD` (15) **15**.
 
 Front: `FRONT` (0) **1**; `FRONT_DRY_RUN` (1) **0**; `FRONT_VALUE_WEI` (2433328500000000000); `FRONT_CALLDATA_LEN` (1444);
-`POSITION_MANAGER` (0x58daec31…); `FRONT_STAKE_ETH` (0.0012, capped at 0.006 in code) **0.0058**; `FRONT_TAKE_PROFIT` (0.01);
+`POSITION_MANAGER` (0x58daec31…); `FRONT_STAKE_ETH` (0.0012, capped at 0.012 in code since the Oct 11 17:00 commit, 0.006 before) **0.0058**; `FRONT_TAKE_PROFIT` (0.01);
 `FRONT_HOLD_BLOCKS` (18 since dca5c72; 12 before) **18**; `FRONT_FIRE_MAX` (2); `FRONT_MAX_PER_DAY` (400); `FRONT_HALT_FILE`
 (HALT_FILE + .front); `FRONT_DAILY_STOP_USD` (5); `FRONT_PIN` (0); `FRONT_FEE` (2500); `FRONT_TICK_SPACING` (50); `FRONT_SQRT_P`
 (1604517591721945638372359205383840); `FRONT_LIQ` (49279426163460954002188); `FRONT_BOT_MIN_ETH` (0.04); `FRONT_BOT_MINOUT` (0.99);
@@ -1138,7 +1138,7 @@ stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61
 Built after the scanner (16.12) and the Dwellir feed (16.11): the engine's front strategy trades several of the bot's launch lines at
 once, told apart by the launch transaction's value. The FRONT_* settings make the first family (`FRONT_FAMILY_NAME` v2.433); `FRONT_FAMILIES`
 is a JSON list of further families, each `{name, value_wei, fee, tick_spacing, sqrt_p, liq, bot_minout, ahead_max_eth, take_profit,
-hold_blocks, stake_eth}` (a field left out takes the FRONT_* value; big numbers may be strings; the stake is capped at 0.006 ETH like
+hold_blocks, stake_eth}` (a field left out takes the FRONT_* value; big numbers may be strings; the stake is capped at 0.012 ETH (0.006 before Oct 11 17:00) like
 `FRONT_STAKE_ETH`). The 3.0 ETH line, from the skeptic's numbers (16.12):
 
 ```
@@ -1166,7 +1166,7 @@ within about 15 trades of about +0.3% each). The counts are per family and resto
 
 The review (Opus, on 3d726c2) found it safe with `FRONT_FAMILIES` unset (a replay of the Oct 10 scenarios through the old and the new
 engine gave identical decisions) and listed what had to change before a family goes live, all fixed in the next commit: the JSON is now
-strict (unknown keys, a missing value or fingerprint, a float value, a stake over 0.006 ETH, fee 0, a minOut outside (0, 1], a hold under a
+strict (unknown keys, a missing value or fingerprint, a float value, a stake over the cap (0.012 ETH), fee 0, a minOut outside (0, 1], a hold under a
 block, duplicate values or names: a `SystemExit` naming the family; `stake_wei`/`ahead_max_wei` are not inputs; the base family is checked
 too), each family has its own `dry_run` and `pin` (so one line can be dry-run while another trades live; `FRONT_PIN` still pins all),
 front turns itself off at start with no family at all, the streak is per family, by return, and survives restarts; test 20c covers the

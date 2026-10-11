@@ -269,7 +269,7 @@ hold (HANDOFF 16.13). To add the 3.0 ETH line (fee 1%, the bot's minOut 0.95 of 
     sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | grep -o '"front_families":\[[^]]*\]'
 
 That dry-runs the 3.0 line (`"dry_run":true`: its fires are `would_fire` lines) while the FRONT_* line trades live. The start line lists
-the families the engine will trade; a wrong JSON (an unknown key, a missing field, a stake over 0.006) stops the start with a message naming
+the families the engine will trade; a wrong JSON (an unknown key, a missing field, a stake over 0.012 ETH) stops the start with a message naming
 the family. A launch's `fam` is in its `armed`, `launch`, `would_fire` and `trade_done` lines. After the dry run's gates (HANDOFF 16.12): the
 same JSON with `"dry_run":false` for 50 trades at 0.002 ETH, then `"stake_eth":0.0058`. Remove the setting (an empty value) to go back to
 the FRONT_* line alone. `FRONT_NONBOT_HALT` (5) halts front, with its own file, after that many live front trades of one family in a row

@@ -1043,7 +1043,14 @@ assert "given twice" in refused('[{"name":"a","value_wei":"3000000000000000000",
 assert "not valid JSON" in refused('[{"name":"a",}]')
 assert fams[3 * 10 ** 18]["fire_at"] == 0 and fams[3 * 10 ** 18]["fire_max"] == E.FRONT_FIRE_MAX
 os.environ["FRONT_FAMILIES"] = "  "; assert set(E.front_families()) == {E.FRONT_VALUE_WEI}; os.environ.pop("FRONT_FAMILIES")
-print("ok FRONT_FAMILIES: the runbook's JSON parses (stake, room, dry run, pin, fire offset per family); unknown keys, missing fingerprints, floats, a stake over the cap, fee 0, duplicates are refused at start")
+for stake, ok in ((0.0097, True), (0.012, True), (0.0121, False), (0.013, False)):                  # the stake cap is the 2.4333 bot's room (0.012 ETH), not the old 0.006
+    os.environ["FRONT_FAMILIES"] = V3_JSON.replace('"stake_eth":0.002', f'"stake_eth":{stake}').replace('"ahead_max_eth":0.07', '"ahead_max_eth":0.07')
+    try:
+        got = E.front_families(E.front_base_family()); assert ok and got[3 * 10 ** 18]["stake_wei"] == int(round(stake * 1e9)) * 10 ** 9, (stake, got.get(3 * 10 ** 18, {}).get("stake_wei"))
+    except SystemExit as e:
+        assert not ok and "stake" in str(e), (stake, e)
+assert E.FRONT_STAKE_CAP_WEI == int(0.012e18) and E.FRONT_STAKE_CAP_ETH == 0.012
+print("ok FRONT_FAMILIES: the runbook's JSON parses (stake, room, dry run, pin, fire offset per family); unknown keys, missing fingerprints, floats, a stake over the cap (0.012 ETH), fee 0, duplicates are refused at start")
 
 # 19b. the pull check's block range on a provider whose node refuses a range past its head: it ends 10 under the head, never under the sell block
 reset(); E.state["nonce"] = 6700; E.state["front_halted"] = None; E.state["armed"].pop(FPID, None); E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"

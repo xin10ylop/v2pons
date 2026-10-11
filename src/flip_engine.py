@@ -126,7 +126,8 @@ POSITION_MANAGER = env("POSITION_MANAGER", "0x58daec3116aae6d93017baaea7749052e8
 # Armed from the launch transaction itself (the PoolKey, price and liquidity are in its calldata), so we fire in the launch block.
 FRONT = env("FRONT", "0") != "0"; FRONT_DRY_RUN = env("FRONT_DRY_RUN", "1") != "0"
 FRONT_VALUE_WEI = int(env("FRONT_VALUE_WEI", "2433328500000000000")); FRONT_CALLDATA_LEN = int(env("FRONT_CALLDATA_LEN", "1444"))
-FRONT_STAKE_ETH = min(float(env("FRONT_STAKE_ETH", "0.0012")), 0.006); FRONT_STAKE_WEI = int(FRONT_STAKE_ETH * 1e18)   # the bot's first buy reverts once ~0.012 ETH sits ahead of it
+FRONT_STAKE_CAP_ETH = 0.012                                                                # the 2.4333 bot's first buy reverts once ~0.0124 ETH sits ahead of it (its minOut 0.99 x the launch quote): no stake above the room
+FRONT_STAKE_ETH = min(float(env("FRONT_STAKE_ETH", "0.0012")), FRONT_STAKE_CAP_ETH); FRONT_STAKE_WEI = int(FRONT_STAKE_ETH * 1e18)   # the room is shared with the bot's own decoys: 0.0058 keeps one decoy's room, 0.0097 none
 FRONT_TAKE_PROFIT = float(env("FRONT_TAKE_PROFIT", "0.01")); FRONT_HOLD_BLOCKS = int(env("FRONT_HOLD_BLOCKS", "18"))       # the sell goes on the bot's buy, at the latest when the feed shows our buy + 18
 # (the bot's first buy came by launch + 20 in 432 of 435 pools on Oct 9-10, by + 14 in only 420; no pool was pulled before the bot's buy)
 FRONT_FIRE_MAX = int(env("FRONT_FIRE_MAX", "2")); FRONT_MAX_PER_DAY = int(env("FRONT_MAX_PER_DAY", "400"))                 # fire only while the feed is at the launch + 2 at most (land by + 4)
@@ -168,7 +169,7 @@ FRONT_FAMILY_KEYS = ("name", "value_wei", "fee", "tick_spacing", "sqrt_p", "liq"
 # a line whose bot buys later, with the operator's trap pulls in the first blocks (the 3.0 line on Oct 11: bot at + 18..+ 58, pulls at + 7..+ 9),
 # is entered after that window and before the bot: fire_at 12-16, hold_blocks past the bot's latest offset. fire_max: how many blocks after
 # fire_at the fire may still go (the feed's lag); FRONT_FIRE_MAX for the base family.
-FRONT_STAKE_CAP_WEI = int(0.006e18)
+FRONT_STAKE_CAP_WEI = int(FRONT_STAKE_CAP_ETH * 1e18)
 
 
 def _num(v, what, lo, hi, integer=False):
@@ -281,7 +282,7 @@ def front_families(base=None):
                    "bot_minout": _num(f.get("bot_minout", defaults["bot_minout"]), f"{w} bot_minout", 0.0, 1.0), "take_profit": _num(f.get("take_profit", defaults["take_profit"]), f"{w} take_profit", 0.0, 9.0),
                    "hold_blocks": _num(f.get("hold_blocks", defaults["hold_blocks"]), f"{w} hold_blocks", 1, 600, True),
                    "ahead_max_wei": _eth_wei(f["ahead_max_eth"], f"{w} ahead_max_eth", 0.0, 0.5) if "ahead_max_eth" in f else defaults["ahead_max_wei"],
-                   "stake_wei": _eth_wei(f["stake_eth"], f"{w} stake_eth", 0.0, 0.006) if "stake_eth" in f else defaults["stake_wei"],
+                   "stake_wei": _eth_wei(f["stake_eth"], f"{w} stake_eth", 0.0, FRONT_STAKE_CAP_ETH) if "stake_eth" in f else defaults["stake_wei"],
                    "dry_run": _flag(f.get("dry_run", False), f"{w} dry_run"), "pin": _flag(f.get("pin", FRONT_PIN), f"{w} pin"),
                    "fire_at": _num(f.get("fire_at", 0), f"{w} fire_at", 0, 600, True), "fire_max": _num(f.get("fire_max", FRONT_FIRE_MAX), f"{w} fire_max", 0, 10, True)}
         except SystemExit:
