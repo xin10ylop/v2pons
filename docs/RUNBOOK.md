@@ -304,6 +304,31 @@ return as the engine's price copy (the operator's router buys and strangers' ETH
 buying 0.3 ETH or more by + 60; then `"dry_run":false` at 0.002 ETH for 40 trades, its own halt file, scale only after +5% mean with at most 5%
 pulled before the sell.
 
+A **V3 family** (`"dex":"v3"`, Oct 11 evening, the V3 crowd line of REPORT_C/REPORT_W, HANDOFF 16.16) trades the launches of a Uniswap
+V3 PositionManager (`target`): a value-0 multicall of 836 bytes that creates the pool (WETH, the token, fee 100), mints the token alone
+up to the launch price and refunds. The engine decodes it like a front launch (the pool's address by CREATE2) and fires in the launch
+block (our buy at + 2); the crowd's buys (value-0 calls of the `shapes` through any contract, `any_to`; the token found in the call,
+`token_anywhere`) and anyone's ETH-value buys move the price copy; the first of `min_eth` at or after our buy starts the exit: the sell
+goes `exit_after_blocks` (18) later, so that it lands about 20 blocks after the crowd's first buy, as the research's rule; at the latest
+when the feed shows launch + `hold_blocks` (78: lands about + 80; the line's earliest no-crowd pull was + 83). **Dry run only**: no route
+to a V3 pool is built, and `"dry_run":false` is a wrong setting (the listed families are dropped for the run with an alarm, as for any
+wrong family). The launch price varies per launch, so the JSON gives no `sqrt_p`/`liq`; launches with WETH as token1 (about 3%) are logged
+and skipped. The box's list with it:
+
+    sudo sed -i '/^FRONT_FAMILIES=/d' /etc/flip/engine.env; sudo tee -a /etc/flip/engine.env >/dev/null <<'EOF'
+    FRONT_FAMILIES='[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":60,"stake_eth":0.002,"dry_run":true,"pin":true,"fire_at":12,"fire_max":3},{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":60,"stake_eth":0.002,"dry_run":true,"pin":true,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_eth":10,"max_blocks":400}},{"name":"v3crowd","dex":"v3","target":"0x73991a25c818bf1f1128deaab1492d45638de0d3","value_wei":0,"calldata_len":836,"fee":100,"tick_spacing":1,"hold_blocks":78,"exit_after_blocks":18,"take_profit":9,"stake_eth":0.0058,"ahead_max_eth":0.5,"dry_run":true,"pin":true,"trigger":{"shapes":[{"selector":"3593564c","calldata_len":484,"value_word":9},{"selector":"a0193551","calldata_len":452,"value_word":8},{"selector":"49f74a5d","calldata_len":452,"value_word":8}],"any_to":true,"token_anywhere":true,"min_eth":0.005,"max_eth":10}}]'
+    EOF
+    sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep -E '"ev":"(start|alarm)"' | tail -2 | cut -c1-300
+
+The start line's `front_families` shows it with `"dex":"v3"` and its trigger as `any:3593564c/484,...`. Its dry trades: `armed` and
+`would_fire` with `"dex":"v3"`, `first_buy` (`"trigger":true` for the crowd's call shape), `would_sell` and `trade_done` (`"fam":"v3crowd"`)
+with `dry_ret` and the reason ("the crowd's buy behind ours (...) and the 18 blocks of its wave", or "deadline: launch + 78, the V3
+line's cap"). The day's numbers: `sudo python3 ~/v2pons/deploy/englog.py 24 | grep '"trade_done"' | grep '"v3crowd"' | grep -o '"dry_ret":[-0-9.e]*'`.
+`dry_ret` ignores sells (the crowd sells too), counts the a0193551 calls' whole amount word (they swap 99% of it) and prices our buy at + 2
+exactly: check the run against the chain (`research/session_oct11/lines/analysis/W/w07_forward.py`) before trusting it. A V3 dry position
+holds the one slot for its ~8 s, as the c1 one does. REPORT_W's gate to build the live path: 100 launches or more at +4% mean or better, no
+pull before + 80, 120 launches a day.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the
