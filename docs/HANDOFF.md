@@ -1271,7 +1271,7 @@ from a node a few blocks behind the one that answered `eth_blockNumber`), the fl
 for follow, and the two calls are tried 3 times on any error (`tries=1`, 3 s and 5 s timeouts: 25 s at worst, under the 84 s the rpc defaults
 allowed); `trade_done.pull_check_head` is the head's distance from the sell block on the last try. A lagging head (under the floor) fails the
 check with the `pull check unreadable` alarm rather than looking at a range that could miss a pull; test 19b covers the cap, the floor, a
-refusal followed by success and the +30 cap; 19c covers follow's floor (buy + 4, past the sell block). A live `trade_done` now carries `fam`.
+refusal followed by success and the +30 cap; 19c covers follow's floor (buy + 4, past the sell block). A live `trade_done` carries `fam` (since 78ea92c; 20e asserts it).
 
 **14:41 UTC: a follow trade halted everything.** Three minutes after the restart at the full stake, a follow trade on an operator A launch
 (5 follow launches that hour: A is back) was pulled 3 blocks after our buy, at our sell (+4), -$2.99; on the box's code a follow pull
