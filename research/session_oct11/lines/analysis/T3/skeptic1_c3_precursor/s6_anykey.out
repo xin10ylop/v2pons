@@ -1,0 +1,124 @@
+cur pools with the whole window: 91; known bot buyer wallets 110, line launchers 908, line pools 979
+
+(a) d 1..4 vs d 5..8 / 9..12, top 25 by the excess of d1-4 over the mean of the other two windows (n 91 pools)
+  cls other->BOTROUTER:c1120e3d                                  d1-4  11  d5-8   3  d9-12   4  excess  +7.5
+  sel 7169b574                                                   d1-4  25  d5-8  18  d9-12  19  excess  +6.5
+  cls other->other:7169b574                                      d1-4  25  d5-8  18  d9-12  19  excess  +6.5
+  to+sel 0x1cbaf24d:c1120e3d                                     d1-4  17  d5-8  13  d9-12  10  excess  +5.5
+  sel c1120e3d                                                   d1-4  17  d5-8  13  d9-12  10  excess  +5.5
+  a bot buy (any pool)                                           d1-4  17  d5-8  13  d9-12  10  excess  +5.5
+  sel 34fcd5be                                                   d1-4   6  d5-8   1  d9-12   0  excess  +5.5
+  cls other->other:34fcd5be                                      d1-4   6  d5-8   1  d9-12   0  excess  +5.5
+  to+sel 0x7680ecc6:b3938887                                     d1-4  14  d5-8   8  d9-12  10  excess  +5.0
+  to+sel 0xb300000b:810c705b                                     d1-4   7  d5-8   2  d9-12   2  excess  +5.0
+  sel 810c705b                                                   d1-4   7  d5-8   2  d9-12   2  excess  +5.0
+  cls other->other:810c705b                                      d1-4   7  d5-8   2  d9-12   2  excess  +5.0
+  to+sel 0xbe589244:                                             d1-4   9  d5-8   8  d9-12   1  excess  +4.5
+  from 0xbe589244                                                d1-4   9  d5-8   8  d9-12   1  excess  +4.5
+  to+sel 0x628bd69e:7169b574                                     d1-4  18  d5-8  14  d9-12  14  excess  +4.0
+  sel b6621842                                                   d1-4  29  d5-8  26  d9-12  25  excess  +3.5
+  cls other->other:b6621842                                      d1-4  29  d5-8  26  d9-12  25  excess  +3.5
+  to+sel 0x9a352a0f:14f1065d                                     d1-4   6  d5-8   2  d9-12   3  excess  +3.5
+  sel 14f1065d                                                   d1-4   6  d5-8   2  d9-12   3  excess  +3.5
+  from 0x3f1a6d46                                                d1-4   6  d5-8   2  d9-12   3  excess  +3.5
+  cls other->other:14f1065d                                      d1-4   6  d5-8   2  d9-12   3  excess  +3.5
+  to+sel 0x908c54b3:b6621842                                     d1-4   4  d5-8   0  d9-12   1  excess  +3.5
+  from 0xef63781a                                                d1-4   4  d5-8   0  d9-12   1  excess  +3.5
+  from 0x6e8f6484                                                d1-4   5  d5-8   0  d9-12   3  excess  +3.5
+  to+sel 0xaf9d6fa0:3593564c                                     d1-4   4  d5-8   1  d9-12   0  excess  +3.5
+
+(b) first occurrence at or after L+4 as the trigger: top 15 keys by hits (lead 1..4); 'early' = fired > 4 blocks before T
+  to+sel 0x998b2f00:92057d6b                                     hit   7 ( 7.7%) early  52 miss  32 | lead p10/50/90 3/20/37
+  sel 92057d6b                                                   hit   7 ( 7.7%) early  52 miss  32 | lead p10/50/90 3/20/37
+  from 0x10168749                                                hit   7 ( 7.7%) early  52 miss  32 | lead p10/50/90 3/20/37
+  cls other->other:92057d6b                                      hit   7 ( 7.7%) early  52 miss  32 | lead p10/50/90 3/20/37
+  sel 34fcd5be                                                   hit   6 ( 6.6%) early  16 miss  69 | lead p10/50/90 2/18/35
+  cls other->other:34fcd5be                                      hit   6 ( 6.6%) early  16 miss  69 | lead p10/50/90 2/18/35
+  to+sel 0x9a352a0f:14f1065d                                     hit   6 ( 6.6%) early  17 miss  68 | lead p10/50/90 2/13/32
+  sel 14f1065d                                                   hit   6 ( 6.6%) early  17 miss  68 | lead p10/50/90 2/13/32
+  from 0x3f1a6d46                                                hit   6 ( 6.6%) early  17 miss  68 | lead p10/50/90 2/13/32
+  cls other->other:14f1065d                                      hit   6 ( 6.6%) early  17 miss  68 | lead p10/50/90 2/13/32
+  to+sel 0xb300000b:810c705b                                     hit   6 ( 6.6%) early  19 miss  66 | lead p10/50/90 2/18/42
+  sel 810c705b                                                   hit   6 ( 6.6%) early  19 miss  66 | lead p10/50/90 2/18/42
+  cls other->other:810c705b                                      hit   6 ( 6.6%) early  19 miss  66 | lead p10/50/90 2/18/42
+  to+sel 0x00000000:2213bc0b                                     hit   6 ( 6.6%) early  22 miss  63 | lead p10/50/90 3/16/41
+  sel 2213bc0b                                                   hit   6 ( 6.6%) early  23 miss  62 | lead p10/50/90 3/16/41
+
+(b) first occurrence at or after L+15 as the trigger: top 15 keys by hits (lead 1..4); 'early' = fired > 4 blocks before T
+  to+sel 0xccc88a9d:0a2b8f36                                     hit   9 ( 9.9%) early  38 miss  44 | lead p10/50/90 2/17/31
+  sel 0a2b8f36                                                   hit   9 ( 9.9%) early  38 miss  44 | lead p10/50/90 2/17/31
+  cls other->other:0a2b8f36                                      hit   9 ( 9.9%) early  38 miss  44 | lead p10/50/90 2/17/31
+  sel 7169b574                                                   hit   9 ( 9.9%) early  40 miss  42 | lead p10/50/90 3/20/30
+  cls other->other:7169b574                                      hit   9 ( 9.9%) early  40 miss  42 | lead p10/50/90 3/20/30
+  cls other->UR:3593564c                                         hit   9 ( 9.9%) early  79 miss   3 | lead p10/50/90 4/18/34
+  to+sel 0x628bd69e:7169b574                                     hit   8 ( 8.8%) early  29 miss  54 | lead p10/50/90 3/12/29
+  to+sel 0x7680ecc6:b3938887                                     hit   8 ( 8.8%) early  40 miss  43 | lead p10/50/90 3/15/32
+  sel 765e827f                                                   hit   8 ( 8.8%) early  48 miss  35 | lead p10/50/90 4/17/32
+  cls other->other:765e827f                                      hit   8 ( 8.8%) early  48 miss  35 | lead p10/50/90 4/17/32
+  event in another 3.0/2.433 line pool: Swap                     hit   8 ( 8.8%) early  53 miss  30 | lead p10/50/90 4/16/31
+  to+sel 0xd6d35b56:e6cb474f                                     hit   8 ( 8.8%) early  66 miss  17 | lead p10/50/90 4/17/34
+  sel e6cb474f                                                   hit   8 ( 8.8%) early  66 miss  17 | lead p10/50/90 4/17/34
+  cls other->other:e6cb474f                                      hit   8 ( 8.8%) early  66 miss  17 | lead p10/50/90 4/17/34
+  to+sel 0x88767899:3593564c                                     hit   8 ( 8.8%) early  80 miss   3 | lead p10/50/90 6/18/34
+
+(b) first occurrence at or after L+18 as the trigger: top 15 keys by hits (lead 1..4); 'early' = fired > 4 blocks before T
+  sel 7169b574                                                   hit  12 (13.2%) early  35 miss  44 | lead p10/50/90 3/13/29
+  cls other->other:7169b574                                      hit  12 (13.2%) early  35 miss  44 | lead p10/50/90 3/13/29
+  cls other->UR:3593564c                                         hit  11 (12.1%) early  73 miss   7 | lead p10/50/90 4/15/30
+  to+sel 0x88767899:3593564c                                     hit  11 (12.1%) early  74 miss   6 | lead p10/50/90 3/15/30
+  to+sel 0x7680ecc6:b3938887                                     hit  10 (11.0%) early  36 miss  45 | lead p10/50/90 3/15/32
+  to+sel 0xccc88a9d:0a2b8f36                                     hit   9 ( 9.9%) early  34 miss  48 | lead p10/50/90 2/15/27
+  sel 0a2b8f36                                                   hit   9 ( 9.9%) early  34 miss  48 | lead p10/50/90 2/15/27
+  cls other->other:0a2b8f36                                      hit   9 ( 9.9%) early  34 miss  48 | lead p10/50/90 2/15/27
+  sel 765e827f                                                   hit   9 ( 9.9%) early  46 miss  36 | lead p10/50/90 3/16/28
+  cls other->other:765e827f                                      hit   9 ( 9.9%) early  46 miss  36 | lead p10/50/90 3/16/28
+  to+sel 0xd6d35b56:e6cb474f                                     hit   9 ( 9.9%) early  58 miss  24 | lead p10/50/90 4/15/32
+  sel e6cb474f                                                   hit   9 ( 9.9%) early  58 miss  24 | lead p10/50/90 4/15/32
+  cls other->other:e6cb474f                                      hit   9 ( 9.9%) early  58 miss  24 | lead p10/50/90 4/15/32
+  to+sel 0x628bd69e:7169b574                                     hit   8 ( 8.8%) early  28 miss  55 | lead p10/50/90 3/12/29
+  sel 4d819a2a                                                   hit   8 ( 8.8%) early  33 miss  50 | lead p10/50/90 3/14/28
+
+best precision (hit / (hit + early)) among keys firing in >= 10 pools, arm L+18:
+  cls other->other:b6f9de95                                      hit   5 early   6 miss  80 precision 0.45 coverage 0.05
+  to+sel 0x5fc5360d:095ea7b3                                     hit   5 early   7 miss  79 precision 0.42 coverage 0.05
+  to+sel 0x89e5db8b:b6f9de95                                     hit   5 early   7 miss  79 precision 0.42 coverage 0.05
+  sel b6f9de95                                                   hit   5 early   7 miss  79 precision 0.42 coverage 0.05
+  to+sel 0xb300000b:810c705b                                     hit   7 early  10 miss  74 precision 0.41 coverage 0.08
+  sel 810c705b                                                   hit   7 early  10 miss  74 precision 0.41 coverage 0.08
+  cls other->other:810c705b                                      hit   7 early  10 miss  74 precision 0.41 coverage 0.08
+  to+sel 0x9a352a0f:05f1065d                                     hit   4 early   6 miss  81 precision 0.40 coverage 0.04
+  sel 05f1065d                                                   hit   4 early   6 miss  81 precision 0.40 coverage 0.04
+  from 0xbfd5e385                                                hit   4 early   6 miss  81 precision 0.40 coverage 0.04
+  cls other->other:05f1065d                                      hit   4 early   6 miss  81 precision 0.40 coverage 0.04
+  failed tx 0x628bd69e:7169b574                                  hit   4 early   6 miss  81 precision 0.40 coverage 0.04
+
+named keys (the finder's top keys and the candidate's own) - arm L+4 / L+18:
+  touch pool:pid_in_calldata                                     never occurs in L+4..T
+  touch token:in_calldata                                        d1-4   0 d5-8   0 d9-12   0 | L+4: hit   0 early   4 miss  87 | L+18: hit   0 early   1 miss  90
+  touch token:target                                             never occurs in L+4..T
+  touch token:log_Transfer                                       d1-4   0 d5-8   0 d9-12   0 | L+4: hit   0 early   3 miss  88 | L+18: hit   0 early   0 miss  91
+  touch token:log_Approval                                       never occurs in L+4..T
+  touch buyer:sender                                             never occurs in L+4..T
+  touch buyer:target                                             never occurs in L+4..T
+  touch buyer:target+eth                                         never occurs in L+4..T
+  touch buyer:in_calldata                                        never occurs in L+4..T
+  touch buyer:in_log                                             never occurs in L+4..T
+  touch token:in_log                                             never occurs in L+4..T
+  touch pool:log_Swap                                            d1-4   0 d5-8   0 d9-12   0 | L+4: hit   0 early   3 miss  88 | L+18: hit   0 early   0 miss  91
+  touch pool:log_ML                                              never occurs in L+4..T
+  event in another line pool (any)                               d1-4  13 d5-8  17 d9-12  19 | L+4: hit   4 early  66 miss  21 | L+18: hit   6 early  52 miss  33
+  1444-byte PositionManager launch                               d1-4   2 d5-8   5 d9-12   4 | L+4: hit   1 early  36 miss  54 | L+18: hit   2 early  23 miss  66
+  a bot buy (any pool)                                           d1-4  17 d5-8  13 d9-12  10 | L+4: hit   4 early  53 miss  34 | L+18: hit   6 early  46 miss  39
+  a bot pull (a0f7978d)                                          never occurs in L+4..T
+  a bot sell (UR 24856bc3)                                       d1-4   5 d5-8   5 d9-12  10 | L+4: hit   4 early  23 miss  64 | L+18: hit   4 early  20 miss  67
+  fromcls botwallet                                              d1-4  14 d5-8  20 d9-12  22 | L+4: hit   5 early  46 miss  40 | L+18: hit   7 early  40 miss  44
+  fromcls launcher                                               d1-4   6 d5-8   9 d9-12   9 | L+4: hit   0 early  91 miss   0 | L+18: hit   0 early  20 miss  71
+  fromcls sentinel                                               d1-4   2 d5-8   1 d9-12   3 | L+4: hit   2 early  27 miss  62 | L+18: hit   2 early  12 miss  77
+  tocls BOTROUTER                                                d1-4  17 d5-8  16 d9-12  16 | L+4: hit   4 early  70 miss  17 | L+18: hit   6 early  58 miss  27
+  tocls POSM                                                     d1-4  16 d5-8  16 d9-12  15 | L+4: hit   0 early  91 miss   0 | L+18: hit   7 early  45 miss  39
+  tocls PERMIT2                                                  d1-4  12 d5-8  16 d9-12  12 | L+4: hit   5 early  66 miss  20 | L+18: hit   8 early  47 miss  36
+  to+sel 0x00000000:fd9f1e10                                     d1-4  51 d5-8  49 d9-12  47 | L+4: hit   2 early  64 miss  25 | L+18: hit   6 early  54 miss  31
+  sel 095ea7b3                                                   d1-4  49 d5-8  52 d9-12  61 | L+4: hit   0 early  91 miss   0 | L+18: hit   4 early  78 miss   9
+  sel a9059cbb                                                   d1-4  24 d5-8  24 d9-12  26 | L+4: hit   4 early  75 miss  12 | L+18: hit   4 early  56 miss  31
+  eth-send other->other                                          d1-4  31 d5-8  35 d9-12  32 | L+4: hit   0 early  85 miss   6 | L+18: hit   6 early  64 miss  21
+  to+sel 0xccc88a9d:0a2b8f36                                     d1-4  14 d5-8  11 d9-12  11 | L+4: hit   3 early  57 miss  31 | L+18: hit   9 early  34 miss  48

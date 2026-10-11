@@ -1,0 +1,6 @@
+cur: n 91; deadline - ts(T block) seconds: [(1199, 27), (1200, 64)]
+   T blocks p10/25/50/75/90 [25, 32, 38, 47, 52]; best fixed offset 37: within +-1 in 14 of 91
+   T seconds after L (pools with L's block fetched, n 91): [(2, 9), (3, 24), (4, 26), (5, 20), (6, 12)]
+old: n 145; deadline - ts(T block) seconds: [(1195, 1), (1199, 34), (1200, 110)]
+   T blocks p10/25/50/75/90 [8, 8, 9, 9, 10]; best fixed offset 9: within +-1 in 133 of 145
+   T seconds after L (pools with L's block fetched, n 138): [(0, 21), (1, 115), (2, 2)]

@@ -1,3 +1,5 @@
 start block 86204371
 pool 0xde1fd13c62 L 86206633 T +51 buyer 0x1c94eff7 nonce 51976 q 0.1000; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -100002839322220000, 1)]
 pool 0x50b7eed070 L 86206646 T +44 buyer 0xa5a9ee43 nonce 63854 q 0.1500; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -150002826060000000, 1)]
+pool 0x21221795cc L 86212390 T +53 buyer 0x448908fa nonce 60518 q 0.1750; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -175003003260812000, 1)]
+pool 0x03cf4f879b L 86212404 T +26 buyer 0x1f77b661 nonce 59293 q 0.1353; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -135288513459144361, 1)]

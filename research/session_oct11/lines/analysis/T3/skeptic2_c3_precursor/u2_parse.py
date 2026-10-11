@@ -1,7 +1,7 @@
 """Stage 2: per 3.0 pool, swaps with their transactions; T = offset of the bot's first buy (a buy whose tx calls 0x1cbaf24d with c1120e3d),
 its buyer wallet, size, minOut (word 4) and deadline (word 6); pulls (ModifyLiquidity with negative delta). Labels each pool:
   finder = used by the finder (its 200 pools with T, ../precursor/parsed.pkl - read only for the pid list),
-  recent2h = launched in the last 2 hours before this run's head.
+  recent2h = launched at or after block 86133015 (2 h before the first run's head, 23:01 UTC; later runs add newer pools).
 The test slice = recent2h pools with T that the finder did not use. -> u2_parsed.pkl"""
 import json, pickle, collections, os
 from lib import *
@@ -10,7 +10,7 @@ D = json.load(open("u1_pools.json")); kv_tx = KV("tx")
 FP = pickle.load(open(os.path.join(HERE, "..", "precursor", "parsed.pkl"), "rb"))
 finder = {p["pid"].lower() for p in FP["pools"] if p["line"] == "3.0" and p["T"] is not None}
 finder_all = {p["pid"].lower() for p in FP["pools"] if p["line"] == "3.0"}
-cut2h = D["head"] - int(2 * 3600 * D["bps"])
+cut2h = int(os.environ.get("CUT", "86133015"))   # fixed at the first run: head 86202613 (23:01 UTC) - 2 h; later runs add the newer pools to the slice
 def word(inp, i): return int(inp[10 + 64 * i: 10 + 64 * (i + 1)], 16)
 P = []
 for p in D["pools"]:

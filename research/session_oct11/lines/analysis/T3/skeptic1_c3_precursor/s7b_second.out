@@ -1,0 +1,2 @@
+cur: blocks before T in T's own second: [(0, 9), (1, 8), (2, 10), (3, 10), (4, 9), (5, 12), (6, 6), (7, 8), (8, 12), (9, 7)] (uniform would be ~10% each for 0..9)
+old: blocks before T in T's own second: [(0, 14), (1, 9), (2, 11), (3, 13), (4, 11), (5, 24), (6, 22), (7, 15), (8, 9), (9, 16), (12, 1)] (uniform would be ~10% each for 0..9)

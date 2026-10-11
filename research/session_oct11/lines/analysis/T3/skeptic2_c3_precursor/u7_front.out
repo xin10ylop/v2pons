@@ -1,0 +1,52 @@
+measured pre-T reaction (u6b, ~11.5 h): 27 pools with a non-dust outside buy ahead of T, pulled 27; lags [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 9, 17, 17, 18, 23]; min 3 median 5; the bot bought in 0 of them
+test slice 36 pools; older pools (for fitting k) 95; stake $5.0 = 0.001946 ETH
+
+A. the candidate rule: fires in 0 of 36 test pools (u4_touch.out) -> 0 trades, $0; nothing to time a front on.
+
+B. oracle upper bound (T known in advance), test slice:
+  no reaction                  buy T head sell T+1            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  no reaction                  buy T head sell T+2            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  no reaction                  buy T-1    sell T+1            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  no reaction                  buy T-1    sell T+2            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  no reaction                  buy T-2    sell T+1            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  no reaction                  buy T-2    sell T+2            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 3 (min)    buy T head sell T+1            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 3 (min)    buy T head sell T+1 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 3 (min)    buy T head sell T+2            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 3 (min)    buy T head sell T+2 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 3 (min)    buy T-1    sell T+1            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 3 (min)    buy T-1    sell T+1 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 3 (min)    buy T-1    sell T+2            : n  36 mean -100.40% median -100.40% win 0.00 worst  -100.4% -100%: 36 | $-5.020/trade
+  pull at our buy + 3 (min)    buy T-1    sell T+2 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 3 (min)    buy T-2    sell T+1            : n  36 mean -100.40% median -100.40% win 0.00 worst  -100.4% -100%: 36 | $-5.020/trade
+  pull at our buy + 3 (min)    buy T-2    sell T+1 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 3 (min)    buy T-2    sell T+2            : n  36 mean -100.40% median -100.40% win 0.00 worst  -100.4% -100%: 36 | $-5.020/trade
+  pull at our buy + 3 (min)    buy T-2    sell T+2 tie=survive: n  36 mean -100.40% median -100.40% win 0.00 worst  -100.4% -100%: 36 | $-5.020/trade
+  pull at our buy + 5 (median) buy T head sell T+1            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T head sell T+1 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T head sell T+2            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T head sell T+2 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T-1    sell T+1            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T-1    sell T+1 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T-1    sell T+2            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T-1    sell T+2 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T-2    sell T+1            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T-2    sell T+1 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T-2    sell T+2            : n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+  pull at our buy + 5 (median) buy T-2    sell T+2 tie=survive: n  36 mean   +6.13% median   +5.86% win 1.00 worst    +0.8% -100%: 0 | $+0.306/trade
+
+C. blind fixed landing offset L+k (no signal): k fitted on the older pools by $ per POOL (no trade = $0), measured on the test slice
+  pull +3 hold to bot  best k 61 on older (+0.04% of stake per pool, 1 trades) -> test: n   1 mean   -2.39% median   -2.39% win 0.00 worst    -2.4% -100%: 0 | $-0.119/trade {'no trade': 35, 'late (behind the bot)': 1}
+      test slice, % of stake per pool / trades, by k: k15:-100.4%/36tr k20:-97.7%/36tr k25:-83.2%/35tr k30:-72.4%/29tr k35:-69.8%/26tr k40:-55.3%/24tr k45:-21.5%/17tr k50:-13.9%/7tr k55:-2.7%/3tr k60:+0.1%/1tr k65:+0.0%/0tr
+      best k ON the test slice (in-sample): (0.07, 60); best k that trades at all: (0.07, 60)
+  pull +3 abort at B+2 best k 53 on older (+0.26% of stake per pool, 16 trades) -> test: n   5 mean   +0.93% median   -2.39% win 0.40 worst    -2.4% -100%: 0 | $+0.047/trade {'no trade': 31, 'abort': 2, 'late (behind the bot)': 1, 'in time': 2}
+      test slice, % of stake per pool / trades, by k: k15:-2.4%/36tr k20:-2.4%/36tr k25:-1.5%/35tr k30:-1.6%/29tr k35:-1.7%/26tr k40:-0.8%/24tr k45:+0.3%/17tr k50:-0.3%/7tr k55:-0.0%/3tr k60:+0.1%/1tr k65:+0.0%/0tr
+      best k ON the test slice (in-sample): (1.17, 44); best k that trades at all: (1.17, 44)
+  pull +5 hold to bot  best k 59 on older (+0.11% of stake per pool, 3 trades) -> test: n   1 mean   +2.47% median   +2.47% win 1.00 worst    +2.5% -100%: 0 | $+0.123/trade {'no trade': 35, 'in time': 1}
+      test slice, % of stake per pool / trades, by k: k15:-100.4%/36tr k20:-97.7%/36tr k25:-80.4%/35tr k30:-72.4%/29tr k35:-66.9%/26tr k40:-46.4%/24tr k45:-18.4%/17tr k50:-8.1%/7tr k55:-2.7%/3tr k60:+0.1%/1tr k65:+0.0%/0tr
+      best k ON the test slice (in-sample): (0.07, 60); best k that trades at all: (0.07, 60)
+  pull +5 abort at B+2 best k 53 on older (+0.26% of stake per pool, 16 trades) -> test: n   5 mean   +0.93% median   -2.39% win 0.40 worst    -2.4% -100%: 0 | $+0.047/trade {'no trade': 31, 'abort': 2, 'late (behind the bot)': 1, 'in time': 2}
+      test slice, % of stake per pool / trades, by k: k15:-2.4%/36tr k20:-2.4%/36tr k25:-1.5%/35tr k30:-1.6%/29tr k35:-1.7%/26tr k40:-0.8%/24tr k45:+0.3%/17tr k50:-0.3%/7tr k55:-0.0%/3tr k60:+0.1%/1tr k65:+0.0%/0tr
+      best k ON the test slice (in-sample): (1.17, 44); best k that trades at all: (1.17, 44)
+
+T on the test slice: p10/50/90 26/43/53, best +-1-block window from L holds 25% of pools
