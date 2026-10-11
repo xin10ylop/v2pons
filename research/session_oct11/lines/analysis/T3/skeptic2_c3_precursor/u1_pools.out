@@ -1,0 +1,22 @@
+head 86202613 10-11 23:01:17 UTC, 9.67 blocks/s, launches from block 85959018
+Initialize ETH-pair logs 1373 | no hook, fee 10000, spacing 200, the 3.0 price: 131
+  txs 131/131
+3.0 launches: 131 | same price, not the line's launch tx: {}
+  pool events 20/131
+  pool events 40/131
+  pool events 60/131
+  pool events 80/131
+  pool events 100/131
+  pool events 120/131
+  pool events 131/131
+  txs 400/3681
+  txs 800/3681
+  txs 1200/3681
+  txs 1600/3681
+  txs 2000/3681
+  txs 2400/3681
+  txs 2800/3681
+  txs 3200/3681
+  txs 3600/3681
+  txs 3681/3681
+saved u1_pools.json

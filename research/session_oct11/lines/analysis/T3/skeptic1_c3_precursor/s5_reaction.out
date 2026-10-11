@@ -1,0 +1,46 @@
+current-regime pools: 351 (L 85553521..86202897), with a bot buy 324, pulled to L+400 62
+
+PRE-T outside non-dust buys (before the bot's first buy, or the bot never bought): 27 (pool, wallet) cases in 27 pools; pulled after it to L+400: 27; lag (blocks) sorted: [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 9, 17, 17, 18, 23]
+   lag min 3 p25 4 median 5 p75 7 max 23; within 14 blocks: 23 of 27
+   by wallet: [('0x8c009ea5', 22), ('0x7ae81404', 4), ('0xab5a34c3', 1)]
+   L 85861619 buy at +2 0x7ae81404 via 0x65050a9b:4d819a2a 0.00297 ETH | T None bot bought after it: False | pull +7 lag 5
+   L 85861640 buy at +2 0x7ae81404 via 0x65050a9b:4d819a2a 0.00297 ETH | T None bot bought after it: False | pull +9 lag 7
+   L 85861770 buy at +1 0x7ae81404 via 0x65050a9b:4d819a2a 0.00297 ETH | T None bot bought after it: False | pull +7 lag 6
+   L 85861807 buy at +1 0x7ae81404 via 0x65050a9b:4d819a2a 0.00297 ETH | T None bot bought after it: False | pull +8 lag 7
+   L 85908152 buy at +6 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +23 lag 17
+   L 85908167 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +9 lag 5
+   L 85908326 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +7 lag 3
+   L 85908334 buy at +5 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +9 lag 4
+   L 85908484 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +9 lag 5
+   L 85908507 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +8 lag 4
+   L 85908644 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +7 lag 3
+   L 85908669 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +10 lag 6
+   L 85908802 buy at +5 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +23 lag 18
+   L 85908845 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +10 lag 6
+   L 85908974 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +7 lag 3
+   L 85909008 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +8 lag 4
+   L 85909130 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +7 lag 3
+   L 85909172 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +8 lag 4
+   L 85909287 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +7 lag 3
+   L 85909334 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +9 lag 5
+   L 85909443 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +7 lag 3
+   L 85909504 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +10 lag 6
+   L 85909595 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +8 lag 4
+   L 85909667 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +8 lag 4
+   L 85909752 buy at +4 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +21 lag 17
+   L 85909838 buy at +6 0x8c009ea5 via 0x7ebacc35:bfca01e8 0.00200 ETH | T None bot bought after it: False | pull +29 lag 23
+   L 85949139 buy at +13 0xab5a34c3 via 0x2abb5653:5ed06f60 0.00200 ETH | T None bot bought after it: False | pull +22 lag 9
+
+POST-T outside non-dust buys (to L+120): 8 (pool, wallet) cases in 8 pools; pulled after it to L+400: 8; lag (blocks) sorted: [8, 9, 9, 10, 10, 12, 13, 23]
+   lag min 8 p25 9 median 10 p75 13 max 23; within 14 blocks: 7 of 8
+   by wallet: [('0x5373fb35', 5), ('0x2eb9009a', 2), ('0x2f254751', 1)]
+   L 85926077 buy at +118 0x2eb9009a via 0x88767899:3593564c 0.00200 ETH | T 43 bot bought after it: False | pull +126 lag 8
+   L 85931671 buy at +87 0x2eb9009a via 0x88767899:3593564c 0.00200 ETH | T 40 bot bought after it: False | pull +96 lag 9
+   L 86037170 buy at +67 0x5373fb35 via 0x88767899:24856bc3 0.00233 ETH | T 34 bot bought after it: False | pull +90 lag 23
+   L 86037428 buy at +59 0x5373fb35 via 0x88767899:24856bc3 0.00233 ETH | T 27 bot bought after it: False | pull +69 lag 10
+   L 86037665 buy at +59 0x5373fb35 via 0x88767899:24856bc3 0.00233 ETH | T 27 bot bought after it: False | pull +68 lag 9
+   L 86072276 buy at +57 0x5373fb35 via 0x88767899:24856bc3 0.00197 ETH | T 30 bot bought after it: False | pull +70 lag 13
+   L 86091895 buy at +64 0x5373fb35 via 0x88767899:24856bc3 0.00197 ETH | T 59 bot bought after it: False | pull +74 lag 10
+   L 86183419 buy at +74 0x2f254751 via 0x88767899:3593564c 0.00399 ETH | T 52 bot bought after it: False | pull +86 lag 12
+
+dust (< 0.00003 ETH) buys: {('dust', 'post'): 10}

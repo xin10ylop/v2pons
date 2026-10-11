@@ -4,3 +4,8 @@ slice 84890000..85169999; ETH-pair Initialize logs 1519; fee 10000 / spacing 200
   pool events 15/138
   pool events 90/138
 swap/ml txs: 1489
+  txs 400/1351
+  txs 800/1351
+  txs 1200/1351
+  txs 1351/1351
+done

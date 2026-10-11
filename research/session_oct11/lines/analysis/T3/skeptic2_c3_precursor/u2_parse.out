@@ -1,0 +1,9 @@
+head 86202613 (10-11 23:01:17 UTC); pools 131 (L 85960927..86200806), with a bot buy 131, missing txs 0
+finder's 200 pools with T: L 85728798..86150251; finder head 86150647
+of mine: in the finder's T-set 95, in the finder's launch list 95
+recent 2 h (L >= 86133015): launches 47, with T 47, of them used by the finder 11; TEST SLICE (recent 2 h, with T, not the finder's): 36
+all 7 h: T p10/25/50/75/90 [27, 31, 40, 49, 54] min 19 max 61; T ETH p50 0.1237; bot buys/pool p50 15; 2nd buy at T+25; pulled 18
+test slice: T p10/25/50/75/90 [26, 30, 43, 46, 53] min 19 max 60; T ETH p50 0.1250; bot buys/pool p50 15; 2nd buy at T+25; pulled 5
+no bot buy (L, span, pull, outside buys before pull): []
+puller to/sel: [(('0x1cbaf24d', 'a0f7978d'), 18)]
+bot buyer wallets: 76 | first-buy deadline - ? (see u4)
