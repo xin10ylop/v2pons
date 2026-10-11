@@ -1,6 +1,7 @@
 """Parse the 3.0 pools: swaps (buy/sell, ETH, tokens, sqrtP and liquidity after), liquidity calls (adds / pulls), each event's transaction
 (from, to, selector, nonce), and a class per swap:
-  bot      a buy through the bot's router 0x1cbaf24d (selector c1120e3d); its from = a bot wallet
+  bot      a buy through the bot's router 0x1cbaf24d (selector c1120e3d; the Swap's sender is the UR it calls); its from = a bot wallet;
+           a buy >= 0.021 ETH whose tx was not fetched (size rule, flagged bot_by = "size")
   botsell  a sell from a bot wallet
   sentinel 0xe71a69f4 (the operator's +3 dust)
   ours     our wallet 0xab5a34c3 or our relay 0x2abb5653
@@ -30,15 +31,15 @@ for p in E["pools"]:
                        "delta": sgn(W(d, 2)), "txi": info})
     for s in sw:
         i = s["txi"]
-        if s["buy"] and s["sender"] == BOT and (i is None or (i["to"] == BOT and i["sel"] == "c1120e3d")):
-            s["cls"] = "bot"
+        if s["buy"] and ((i is not None and i["to"] == BOT and i["sel"] == "c1120e3d") or (i is None and s["q"] >= 21 * 10 ** 15)):
+            s["cls"] = "bot"; s["bot_by"] = "tx" if i else "size"
             if i: botw.add(i["from"])
     pools.append({k: p[k] for k in ("pid", "token", "L", "lti", "ts", "launch_tx", "launcher", "launcher_nonce", "span")} | {"sw": sw, "ml": ml})
 for p in pools:
     for s in p["sw"]:
         if s.get("cls") == "bot": continue
         i = s["txi"]
-        if i is None: s["cls"] = "?"
+        if i is None: s["cls"] = "?" if s["buy"] else "sell?"
         elif i["from"] == SENTINEL: s["cls"] = "sentinel"
         elif i["from"] == OURS or i["to"] == RELAY or s["sender"] == RELAY: s["cls"] = "ours"
         elif i["from"] in botw: s["cls"] = "botbuy-other" if s["buy"] else "botsell"

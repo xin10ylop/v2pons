@@ -22,7 +22,7 @@ LOG = open(os.path.join(HERE, "rpc_log.jsonl"), "a")
 
 
 def post(body, what):
-    for i in range(14):
+    for i in range(40):
         dt = time.time() - _last[0]
         if dt < GAP: time.sleep(GAP - dt)
         _last[0] = time.time(); t = time.time()
@@ -32,7 +32,7 @@ def post(body, what):
             return r
         except urllib.error.HTTPError as e:
             LOG.write(json.dumps({"t": round(t, 2), "what": what, "http": e.code}) + "\n"); LOG.flush()
-            time.sleep(min(60, 4 * (i + 1)) if e.code == 429 else 3)
+            time.sleep(min(45, 3 * (i + 1)) if e.code == 429 else 3)
         except Exception as e:
             LOG.write(json.dumps({"t": round(t, 2), "what": what, "err": str(e)[:100]}) + "\n"); LOG.flush()
             time.sleep(3 + 2 * i)
@@ -99,7 +99,7 @@ def get_blocks(nums, kv_b, kv_r, receipts=True, size=50):
     need = [n for n in dict.fromkeys(nums) if str(n) not in kv_b.d]
     for i in range(0, len(need), 200):
         ch = need[i:i + 200]
-        res = batch([("eth_getBlockByNumber", [hex(n), True]) for n in ch], size)
+        res = batch([("eth_getBlockByNumber", [hex(n), True]) for n in ch], 25)
         for n, b in zip(ch, res):
             if b: kv_b.put(str(n), slim_block(b))
         kv_b.flush()
@@ -107,7 +107,7 @@ def get_blocks(nums, kv_b, kv_r, receipts=True, size=50):
         need = [n for n in dict.fromkeys(nums) if str(n) not in kv_r.d]
         for i in range(0, len(need), 200):
             ch = need[i:i + 200]
-            res = batch([("eth_getBlockReceipts", [hex(n)]) for n in ch], size)
+            res = batch([("eth_getBlockReceipts", [hex(n)]) for n in ch], 10)
             for n, r in zip(ch, res):
                 if r is not None: kv_r.put(str(n), slim_receipts(r))
             kv_r.flush()

@@ -34,3 +34,4 @@ head 86165890, start 84482500 (1683390 blocks)
   init 86082500: 163 ETH inits, 24 at the 3.0 shape
   init 86132500: 110 ETH inits, 26 at the 3.0 shape
 3.0-shape Initialize logs: 1162
+  txs 400/1162

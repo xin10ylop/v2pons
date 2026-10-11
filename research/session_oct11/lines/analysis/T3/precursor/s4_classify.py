@@ -7,6 +7,8 @@ from lib import *
 D = pickle.load(open("parsed.pkl", "rb")); ALL = D["pools"]
 P = sorted([p for p in ALL if p["line"] == "3.0" and p["T"] is not None], key=lambda p: p["L"])
 kb = KV("blk"); kr = KV("rcp")
+import sys
+NORCP = "--norcp" in sys.argv   # first look before the receipts are in: touch flags from inputs only
 # known parties from the line pools (both lines)
 botw = collections.Counter(); pullers = collections.Counter(); launchers = set(); line_pid = {}; line_tok = {}
 for p in ALL:
@@ -64,6 +66,7 @@ for p in P:
                              prio=int(t["maxPriorityFeePerGas"], 16) if t.get("maxPriorityFeePerGas") else None, gas=int(t["gas"], 16) if t.get("gas") else None))
     facts.append(dict(L=p["L"], pid=p["pid"], T=p["T"], Tbn=p["Tbn"], buyer=buyer, buyer_nonce=p["buyer_nonce"], Tq=p["Tq"], launcher=p["launcher"],
                       launcher_nonce=p["launcher_nonce"], have_blocks=sum(1 for bn in range(p["L"] - 3, p["Tbn"] + 4) if str(bn) in kb.d), need_blocks=p["Tbn"] + 7 - p["L"],
-                      have_rcp=sum(1 for bn in range(p["L"] - 3, p["Tbn"] + 4) if str(bn) in kr.d)))
+                      have_rcp=sum(1 for bn in range(p["L"] - 3, p["Tbn"] + 4) if str(bn) in kr.d),
+                      near_ok=all(str(bn) in kb.d and (NORCP or str(bn) in kr.d) for bn in range(max(p["L"] - 3, p["Tbn"] - 12), p["Tbn"] + 4))))
 pickle.dump({"rows": rows, "facts": facts, "botw": dict(botw), "pullers": dict(pullers)}, open("events.pkl", "wb"))
 print("pools", len(P), "rows", len(rows), "complete pools", sum(1 for f in facts if f["have_blocks"] == f["need_blocks"] == f["have_rcp"]))
