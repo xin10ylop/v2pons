@@ -414,7 +414,8 @@ Front: `FRONT` (0) **1**; `FRONT_DRY_RUN` (1) **0**; `FRONT_VALUE_WEI` (24333285
 (1604517591721945638372359205383840); `FRONT_LIQ` (49279426163460954002188); `FRONT_BOT_MIN_ETH` (0.04); `FRONT_BOT_MINOUT` (0.99);
 `FRONT_AHEAD_MAX_ETH` (0.008); `FRONT_SELL_ON_ETH` (0 = off, the default since the 18:05 commit; 0.004 from 15:25, 0.001 from 13:00, 0.005
 before: section 16.10) **1 in the env file since the 18:00 command (on the box's code a 1 ETH threshold is never met: the rule is off)**;
-`FRONT_BOT_ROUTERS` (0x1cbaf24d…, since 3a47c34); `FRONT_FAMILIES` (empty: the FRONT_* line only; a JSON list of further launch lines by
+`FRONT_BOT_ROUTERS` (0x1cbaf24d…, since 3a47c34); `FOLLOW` (1; 0 turns the follow strategy and the seat off: no follow launch armed, 16.14);
+`FRONT_FAMILIES` (empty: the FRONT_* line only; a JSON list of further launch lines by
 value, 16.13), `FRONT_FAMILY_NAME` (v2.433), `FRONT_NONBOT_HALT` (5: live front exits in a row not into the bot's buy halt front; 0 off, 16.13).
 Since 16.13 front's fee bound is its family's fee (exact); `FEE_MIN_PPM`/`FEE_MAX_PPM` bound follow only.
 
@@ -1237,6 +1238,14 @@ The replay over the new regime (170 v3.0 pools from 04:22, 86 v5.0), at 0.0058 E
   in the new regime. Its known reaction is to a buy at +2/+3 (a pull about 5 blocks later); a buy at +12 pulled 5 blocks later would be at
   +17, before the bot's buy, and would cost the stake. The only test is a live probe at the smallest stake with the decoy halt on: 20
   trades at 0.002 ETH risk $100 at most and the halt stops it after 5 losses (about $25).
+
+**14:41 UTC: a follow trade halted everything.** Three minutes after the restart at the full stake, a follow trade on an operator A launch
+(5 follow launches that hour: A is back) was pulled 3 blocks after our buy, at our sell (+4), -$2.99; on the box's code a follow pull
+writes the all-trading halt file, so front stopped too (8 front launches skipped `halted`) until the owner cleared it. Operator A's
+reaction is now +3 after our buy (Oct 9-10: +5/+6). The owner's decision: **follow is off** ("it is not making money": 45 trades, -$7.76
+since Oct 8). On the box's code that is `LAUNCHERS none` and `LAUNCH_SELECTORS none` in the env (an empty value would fall back to the
+default launcher); the code after 154e822 has `FOLLOW=0` for it (no follow launch is armed, front has the slot alone) and a follow pull now
+halts follow only (`scope="follow"`), front only front. Follow's code stays for the day operator A's crowd is worth it again.
 
 The dry run cannot measure the landing block: `_fire` plans the dry buy at the fire block + 2 by construction (`plan_buy_seq`). The first
 live trades measured it: **live again from 14:26 UTC Oct 11** on the 2.4333 line at 0.002 ETH (the 3.0 settings removed from the env, the

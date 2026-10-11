@@ -95,7 +95,8 @@ def parse_headers(text):
 FEED_HEADERS = parse_headers(env("FEED_HEADERS", ""))
 SEQ_URL = env("SEQ_URL", "https://sequencer.mainnet.chain.robinhood.com"); RPC_URL = env("RPC_URL", "https://rpc.mainnet.chain.robinhood.com")
 LOG_PATH = env("LOG_PATH", "flip_engine.jsonl"); DRY_RUN = env("DRY_RUN", "1") != "0"; CHAIN_ID = 4663
-LAUNCHERS = {a.strip().lower().replace("0x", "") for a in env("LAUNCHERS", "0x3194e32622c5d860a0572c74edda99dcfd8fc827").split(",") if a.strip()}
+FOLLOW = env("FOLLOW", "1") != "0"                                                          # 0: the follow strategy (and the seat) is off: no follow launch is armed, front has the slot alone
+LAUNCHERS = {a.strip().lower().replace("0x", "") for a in env("LAUNCHERS", "0x3194e32622c5d860a0572c74edda99dcfd8fc827").split(",") if a.strip()} if FOLLOW else set()
 POOL_MANAGER = env("POOL_MANAGER", "0x8366a39cc670b4001a1121b8f6a443a643e40951").lower()
 RELAY = env("RELAY", "").lower(); WALLET = env("WALLET", "").lower()
 STAKE_ETH = float(env("STAKE_ETH", "0.0012")); STAKE_WEI = int(STAKE_ETH * 1e18); ETH_USD = float(env("ETH_USD", "2570"))
@@ -108,7 +109,7 @@ TAKE_PROFIT = float(env("TAKE_PROFIT", "0.01"))                                 
 BUY_DELAY_BLOCKS = int(env("BUY_DELAY_BLOCKS", "0"))                                      # fire this many blocks after the trigger (1: aim to land 2 after it, right ahead of the crowd's next buy)
 LAUNCHER_CODE_HASHES = {x.strip().lower().replace("0x", "") for x in env("LAUNCHER_CODE_HASHES",
     "2793923de1845d8707004ebbf2ab49fe7286113b7b69991aea7d6656f26f6d1c,42544ef5d4754816b3cfe77f3a6fb1c8eb842d6eee101f7d15c638593a3351d2").split(",") if x.strip()}   # the operator's launcher code (6,984 bytes; from 14:59 every launcher is a copy)
-LAUNCH_SELECTORS = {x.strip().lower().replace("0x", "") for x in env("LAUNCH_SELECTORS", "").split(",") if x.strip()}   # a launch known by its call (2fcb9108): from Oct 8 14:59 each launch has a fresh launcher
+LAUNCH_SELECTORS = {x.strip().lower().replace("0x", "") for x in env("LAUNCH_SELECTORS", "").split(",") if x.strip()} if FOLLOW else set()   # a launch known by its call (2fcb9108): from Oct 8 14:59 each launch has a fresh launcher
 ENTRY = env("ENTRY", "follow").lower()                                                     # "follow": behind the operator's first real-size buy; "seat": SEAT_FIRE_AT blocks after the launch, ahead of its burst; "auto": per launch, by the launcher
 SEAT_CODE_HASHES = {x.strip().lower().replace("0x", "") for x in env("SEAT_CODE_HASHES", "2793923de1845d8707004ebbf2ab49fe7286113b7b69991aea7d6656f26f6d1c").split(",") if x.strip()}   # auto: the per-launch launcher copies (the burst scheme) get the seat
 SEAT_FIRE_AT = int(env("SEAT_FIRE_AT", "6"))                                               # seat: fire when the feed shows launch + 6, to land at + 7/8, one or two blocks ahead of the burst (+9 on 30 of 42 launches)
@@ -1000,9 +1001,9 @@ def _settle(pos):
         except Exception as e:
             out["pull_check"] = str(e)[:100]                                           # neither halt can be decided without the logs: say so
             log({"ev": "alarm", "what": "pull check unreadable: check the pool's pull by hand", "pid": pos["pid"], "err": str(e)[:100]})
-        if out.get("pulled_before_sell"):
+        if out.get("pulled_before_sell"):                                                  # each strategy's pull halts that strategy (Oct 11 14:41: a follow pull at +3 had halted front too)
             halt(f"the operator's pull landed {out['pull_after_buy_blocks']} blocks after our buy, at or before our sell ({b1 - b0}): its reaction is now faster than our exit",
-                 front=pos.get("entry") == "front")
+                 scope="front" if pos.get("entry") == "front" else "follow")
         elif pulls and pos.get("entry") != "front" and FOLLOW_NEAR_MISS_BLOCKS and out["pull_after_buy_blocks"] <= FOLLOW_NEAR_MISS_BLOCKS:   # behind our sell, but too close
             out["near_miss"] = True
             halt(f"near miss: the operator's pull landed {out['pull_after_buy_blocks']} blocks after our buy, {out['pull_after_buy_blocks'] - (b1 - b0)} after our sell ({b1 - b0}): "

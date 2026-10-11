@@ -261,11 +261,11 @@ E.ingest(frame(B + 1, [])); E.ingest(frame(B + 2, [])); assert pos["sell_sent"] 
 RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(B, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(B + 5, 0, -pos["feed_tokens"], index=40)
 LOGS[:] = [{"blockNumber": hex(B + 5), "transactionIndex": hex(12), "data": "0x" + w(-887200) + w(TICK0) + w(-LIQ) + w(0)}]
 assert wait_for(lambda: done_at(90)); d = done_at(90)[-1]
-assert d["pulled_before_sell"] is True and d["pull_after_buy_blocks"] == 5 and d["sell_after_buy_blocks"] == 5 and E.state["halted"] and os.path.exists(E.HALT_FILE), d
-assert any(e["what"].startswith("live trading halted") for e in events("alarm"))
+assert d["pulled_before_sell"] is True and d["pull_after_buy_blocks"] == 5 and d["sell_after_buy_blocks"] == 5 and E.state["follow_halted"] and E.state["halted"] is None and os.path.exists(E.FOLLOW_HALT_FILE) and not os.path.exists(E.HALT_FILE), (d, E.state["follow_halted"])   # follow's pull halts follow only (front goes on)
+assert any(e["what"].startswith("the follow strategy halted") for e in events("alarm"))
 reset(); E.state["nonce"] = 95; p = do_launch(1600); E.ingest(frame(1631, [signed(CROWD, UR, TRIG, BUY_DATA, 35)]))
 assert E.state["position"] is None and events("skip")[-1]["why"].startswith("halted"), events("skip")[-1]
-E.state["halted"] = None; os.remove(E.HALT_FILE); LOGS.clear()
+E.state["follow_halted"] = None; os.remove(E.FOLLOW_HALT_FILE); LOGS.clear()
 print("ok halt: the pull landed before our sell, the engine wrote the halt file and fires nothing more")
 
 # --- 13. BUY_DELAY_BLOCKS: fire one block after the trigger if nothing else bought; skip if the crowd's next buy came first
