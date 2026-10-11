@@ -1,6 +1,6 @@
 """T3 precursor study: read-only JSON-RPC to the public Robinhood Chain node (no key), with 429 back-off, a minimum gap between POSTs,
 and append-only disk caches for full blocks, block receipts and transactions (cache/)."""
-import json, time, os, gzip, urllib.request, urllib.error
+import json, time, os, urllib.request, urllib.error
 from eth_utils import keccak
 RPC = "https://rpc.mainnet.chain.robinhood.com"; H = {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 Chrome/128"}
 HERE = os.path.dirname(os.path.abspath(__file__)); CACHE = os.path.join(HERE, "cache"); os.makedirs(CACHE, exist_ok=True)
@@ -17,7 +17,7 @@ T_TRANSFER = "0x" + keccak(text="Transfer(address,address,uint256)").hex()
 T_APPROVAL = "0x" + keccak(text="Approval(address,address,uint256)").hex()
 W = lambda d, i: int(d[2 + 64 * i: 2 + 64 * (i + 1)], 16)
 def sgn(x): return x - (1 << 256) if x >= (1 << 255) else x
-GAP = float(os.environ.get("RPC_GAP", "0.35")); _last = [0.0]
+GAP = float(os.environ.get("RPC_GAP", "0.6")); _last = [0.0]
 LOG = open(os.path.join(HERE, "rpc_log.jsonl"), "a")
 
 
@@ -68,17 +68,16 @@ def logs(flt, a, b):
 
 
 class KV:
-    """append-only gz-jsonl cache keyed by k"""
+    """append-only jsonl cache keyed by k (a torn last line is skipped)"""
     def __init__(self, name):
-        self.path = os.path.join(CACHE, name + ".jsonl.gz"); self.d = {}
+        self.path = os.path.join(CACHE, name + ".jsonl"); self.d = {}
         if os.path.exists(self.path):
-            try:
-                with gzip.open(self.path, "rt") as f:
-                    for l in f:
-                        try: x = json.loads(l); self.d[x["k"]] = x["v"]
-                        except Exception: pass
-            except EOFError: pass
-        self.f = gzip.open(self.path, "at")
+            with open(self.path) as f:
+                for l in f:
+                    try: x = json.loads(l); self.d[x["k"]] = x["v"]
+                    except Exception: pass
+        self.f = open(self.path, "a")
+        if self.f.tell() > 0: self.f.write("\n")
     def put(self, k, v): self.d[k] = v; self.f.write(json.dumps({"k": k, "v": v}) + "\n")
     def flush(self): self.f.flush()
     def close(self): self.f.close()
@@ -96,7 +95,7 @@ def slim_receipts(rs):
              "logs": [{"a": l["address"].lower(), "t": l["topics"], "d": l["data"], "li": int(l["logIndex"], 16)} for l in r.get("logs", [])]} for r in rs]
 
 
-def get_blocks(nums, kv_b, kv_r, receipts=True, size=20):
+def get_blocks(nums, kv_b, kv_r, receipts=True, size=50):
     need = [n for n in dict.fromkeys(nums) if str(n) not in kv_b.d]
     for i in range(0, len(need), 200):
         ch = need[i:i + 200]

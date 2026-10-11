@@ -1,9 +1,10 @@
 """Read-only JSON-RPC to the public Robinhood Chain node: one request at a time, backoff on 429, a request log, a tx/block cache."""
 import json, time, os, urllib.request, urllib.error
 RPC = "https://rpc.mainnet.chain.robinhood.com"; H = {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 Chrome/128"}
+PACE = float(os.environ.get("RPC_PACE", "0.3"))
 HERE = os.path.dirname(os.path.abspath(__file__))
 LOG = open(os.path.join(HERE, "rpc_log.jsonl"), "a")
-ALLOWED = {"eth_getLogs", "eth_getTransactionByHash", "eth_getBlockByNumber", "eth_blockNumber", "eth_getTransactionCount", "eth_getTransactionReceipt"}
+ALLOWED = {"eth_getLogs", "eth_getTransactionByHash", "eth_getBlockByNumber", "eth_blockNumber", "eth_getTransactionCount", "eth_getTransactionReceipt", "eth_getBalance"}
 
 
 def post(body, what):
@@ -12,11 +13,12 @@ def post(body, what):
         try:
             r = json.load(urllib.request.urlopen(urllib.request.Request(RPC, json.dumps(body).encode(), H), timeout=90))
             LOG.write(json.dumps({"t": round(t, 2), "what": what, "ok": 1, "dt": round(time.time() - t, 2)}) + "\n"); LOG.flush()
+            time.sleep(PACE)
             return r
         except urllib.error.HTTPError as e:
             LOG.write(json.dumps({"t": round(t, 2), "what": what, "http": e.code}) + "\n"); LOG.flush()
             ra = e.headers.get("Retry-After") if e.headers else None
-            time.sleep(float(ra) if ra and ra.replace(".", "").isdigit() else (5 * (i + 1) if e.code == 429 else 3))
+            time.sleep(float(ra) if ra and ra.replace(".", "").isdigit() else (min(2 + 1.5 * i, 12) if e.code == 429 else 3))
         except Exception as e:
             LOG.write(json.dumps({"t": round(t, 2), "what": what, "err": str(e)[:100]}) + "\n"); LOG.flush()
             time.sleep(3 + 2 * i)

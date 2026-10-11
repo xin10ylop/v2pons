@@ -1,4 +1,5 @@
-"""Schedule angle, step 1 (public RPC, read-only). Last N hours:
+"""SUPERSEDED by f01_logs.py (aborted: the bot router calls the Universal Router, so no Swap has the bot router as sender; this run found 0).
+Schedule angle, step 1 (public RPC, read-only). Last N hours:
  - every ERC-20 Transfer from the PoolManager to the volume bot's router 0x1cbaf24d, any token (the bot's buys and its pulls' token leg,
    all lines, all pools; the router calls the Universal Router, so the Swap's sender is the UR and cannot be filtered on),
  - every ETH-pair Initialize; the launch tx of each pool the bot bought in and of every 3.0/2.4333/5.0-shaped launch,

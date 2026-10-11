@@ -10,17 +10,33 @@ bps = 20000 / (int(bh["timestamp"], 16) - int(b0["timestamp"], 16))
 start = head - int(hours * 3600 * bps)
 print(f"head {head} {utc(int(bh['timestamp'],16))} UTC, {bps:.2f} blocks/s, window from {start}", flush=True)
 ini = []
-for a in range(start, head + 1, 20000):
+import os
+if os.path.exists("init_logs.json"): ini = json.load(open("init_logs.json"))["ini"]; head = json.load(open("init_logs.json"))["head"]
+else:
+  for a in range(start, head + 1, 20000):
     ini += logs({"address": PM, "topics": [T_INIT, None, "0x" + "0" * 64]}, a, min(a + 19999, head))
-cand = [l for l in ini if W(l["data"], 2) == 0]
-print("Initialize ETH-pair logs:", len(ini), "without hook:", len(cand), flush=True)
+  json.dump({"head": head, "ini": ini}, open("init_logs.json", "w"))
+SP_LINES = {SQRT30, 1604517591721945638372359205383840}   # the 3.0 and the 2.4333 lines' launch prices
+cand = [l for l in ini if W(l["data"], 2) == 0 and W(l["data"], 3) in SP_LINES]
+print("Initialize ETH-pair logs:", len(ini), "without hook at a line's launch price:", len(cand), flush=True)
 kv_tx = KV("tx")
+import os
+# seed the tx cache from the schedule angle's cache (same public RPC answers), to spare the rate limit
+sib = os.path.join(HERE, "..", "schedule", "txcache.jsonl")
+if os.path.exists(sib):
+    n0 = len(kv_tx.d)
+    for l in open(sib):
+        try: x = json.loads(l)
+        except Exception: continue
+        if x.get("hash") and x["hash"] not in kv_tx.d and x.get("input") is not None: kv_tx.put(x["hash"], {k: x.get(k) for k in SLIM_TX})
+    kv_tx.flush(); print("seeded txs from the schedule angle's cache:", len(kv_tx.d) - n0, flush=True)
 def gettx(hashes):
     need = [h for h in dict.fromkeys(hashes) if h not in kv_tx.d]
-    res = batch([("eth_getTransactionByHash", [h]) for h in need])
-    for h, t in zip(need, res):
-        if t: kv_tx.put(h, {k: t.get(k) for k in SLIM_TX})
-    kv_tx.flush()
+    for i in range(0, len(need), 500):
+        ch = need[i:i + 500]; res = batch([("eth_getTransactionByHash", [h]) for h in ch], 20)
+        for h, t in zip(ch, res):
+            if t: kv_tx.put(h, {k: t.get(k) for k in SLIM_TX})
+        kv_tx.flush(); print(f"  txs {i + len(ch)}/{len(need)}", flush=True)
     return [kv_tx.d.get(h) for h in hashes]
 ltx = gettx([l["transactionHash"] for l in cand])
 pools = []
@@ -33,21 +49,28 @@ for l, t in zip(cand, ltx):
     pools.append({"line": line, "fee": W(l["data"], 0), "sqrtP": W(l["data"], 3), "pid": l["topics"][1], "token": "0x" + l["topics"][2][-40:], "L": int(l["blockNumber"], 16), "lti": int(l["transactionIndex"], 16),
                   "launch_tx": l["transactionHash"], "launcher": t["from"].lower(), "launcher_nonce": int(t["nonce"], 16)})
 print("launches:", collections.Counter(p["line"] for p in pools), flush=True)
-# swaps + liquidity per pool, groups of pools close in time
-pools.sort(key=lambda p: p["L"])
-ev = collections.defaultdict(list)
-for i in range(0, len(pools), 20):
-    g = pools[i:i + 20]; a = g[0]["L"]; b = min(g[-1]["L"] + 400, head)
-    for l in logs({"address": PM, "topics": [[T_SWAP, T_ML], [p["pid"] for p in g]]}, a, b):
-        ev[l["topics"][1]].append(l)
-    print(f"  events {i + len(g)}/{len(pools)}", flush=True)
-for p in pools:
-    es = sorted((l for l in ev[p["pid"]] if int(l["blockNumber"], 16) <= p["L"] + 400), key=lambda l: (int(l["blockNumber"], 16), int(l["logIndex"], 16)))
-    p["ev"] = [{"kind": "swap" if l["topics"][0] == T_SWAP else "ml", "bn": int(l["blockNumber"], 16), "li": int(l["logIndex"], 16), "ti": int(l["transactionIndex"], 16),
-                "tx": l["transactionHash"], "sender": "0x" + l["topics"][2][-40:], "data": l["data"]} for l in es]
-    p["span"] = min(400, head - p["L"])
+# swaps + liquidity per pool, groups of pools close in time (cached in pools_ev.json)
+import os
+if os.path.exists("pools_ev.json") and len(json.load(open("pools_ev.json"))["pools"]) >= len(pools):
+    E = json.load(open("pools_ev.json")); pools = E["pools"]; head = E["head"]
+else:
+    pools.sort(key=lambda p: p["L"])
+    ev = collections.defaultdict(list)
+    for i in range(0, len(pools), 20):
+        g = pools[i:i + 20]; a = g[0]["L"]; b = min(g[-1]["L"] + 400, head)
+        for l in logs({"address": PM, "topics": [[T_SWAP, T_ML], [p["pid"] for p in g]]}, a, b):
+            ev[l["topics"][1]].append(l)
+        print(f"  events {i + len(g)}/{len(pools)}", flush=True)
+    for p in pools:
+        es = sorted((l for l in ev[p["pid"]] if int(l["blockNumber"], 16) <= p["L"] + 400), key=lambda l: (int(l["blockNumber"], 16), int(l["logIndex"], 16)))
+        p["ev"] = [{"kind": "swap" if l["topics"][0] == T_SWAP else "ml", "bn": int(l["blockNumber"], 16), "li": int(l["logIndex"], 16), "ti": int(l["transactionIndex"], 16),
+                    "tx": l["transactionHash"], "sender": "0x" + l["topics"][2][-40:], "data": l["data"]} for l in es]
+        p["span"] = min(400, head - p["L"])
+
+    json.dump({"head": head, "pools": pools}, open("pools_ev.json", "w"))
 # transactions of the first 40 swaps and every ML of each pool
-need = [e["tx"] for p in pools for e in ([x for x in p["ev"] if x["kind"] == "swap"][:40] + [x for x in p["ev"] if x["kind"] == "ml"])]
+# 3.0 pools: every swap to L+90 (the bot's first buy is at L+20..+60) and every liquidity call; 2.4333 pools: liquidity calls only
+need = [e["tx"] for p in pools for e in p["ev"] if (e["kind"] == "ml" or (p["line"] == "3.0" and e["bn"] <= p["L"] + 90))]
 print("swap/ml txs to fetch:", len(set(need)) - len(set(need) & set(kv_tx.d)), flush=True)
 gettx(need)
 json.dump({"head": head, "head_ts": int(bh["timestamp"], 16), "bps": bps, "start": start, "pools": pools}, open("pools.json", "w"))

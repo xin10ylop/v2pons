@@ -37,3 +37,5 @@ head 86141191 10-11 21:16:09 UTC, 9.747 blocks/s, start 85790314
   86138314-86141191: PM->bot transfers 30557, ETH inits 2132
 bot-served pool ids 499; candidate launches in window 499
 499 pools; by (to POSM, value, clen): [((True, 2.4333285, 1444, True), 233), ((True, 3.0, 1444, True), 191), ((True, 5.0, 1444, True), 75)]
+per-pool logs fetched
+fetching 33749 transactions

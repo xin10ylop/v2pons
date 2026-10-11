@@ -1,2 +1,8 @@
-head 86141233 10-11 21:16:13 UTC, 9.77 blocks/s, window from 85719358
-Initialize ETH-pair logs: 2230 without hook: 2090
+head 86158232 10-11 21:45:04 UTC, 9.80 blocks/s, window from 85734703
+Initialize ETH-pair logs: 2256 without hook at a line's launch price: 465
+seeded txs from the schedule angle's cache: 0
+launches: Counter({'2.433': 238, '3.0': 227})
+swap/ml txs to fetch: 1295
+  txs 500/1295
+  txs 1000/1295
+  txs 1295/1295
