@@ -412,7 +412,9 @@ Front: `FRONT` (0) **1**; `FRONT_DRY_RUN` (1) **0**; `FRONT_VALUE_WEI` (24333285
 (1604517591721945638372359205383840); `FRONT_LIQ` (49279426163460954002188); `FRONT_BOT_MIN_ETH` (0.04); `FRONT_BOT_MINOUT` (0.99);
 `FRONT_AHEAD_MAX_ETH` (0.008); `FRONT_SELL_ON_ETH` (0 = off, the default since the 18:05 commit; 0.004 from 15:25, 0.001 from 13:00, 0.005
 before: section 16.10) **1 in the env file since the 18:00 command (on the box's code a 1 ETH threshold is never met: the rule is off)**;
-`FRONT_BOT_ROUTERS` (0x1cbaf24d…, since 3a47c34).
+`FRONT_BOT_ROUTERS` (0x1cbaf24d…, since 3a47c34); `FRONT_FAMILIES` (empty: the FRONT_* line only; a JSON list of further launch lines by
+value, 16.13), `FRONT_FAMILY_NAME` (v2.433), `FRONT_NONBOT_HALT` (5: live front exits in a row not into the bot's buy halt front; 0 off, 16.13).
+Since 16.13 front's fee bound is its family's fee (exact); `FEE_MIN_PPM`/`FEE_MAX_PPM` bound follow only.
 
 Follow's own halt (792a8c5, not on the box): `FOLLOW_NEAR_MISS_BLOCKS` (4; 0 = off); `FOLLOW_HALT_FILE` (HALT_FILE + .follow).
 
@@ -1127,6 +1129,41 @@ envelopes are one per block, as costed above. **Any probe of this feed must use 
 
 The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
 stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
+
+### 16.13 Front families: the 2.4333 and 3.0 ETH lines at once, front's own fee bound, the decoy halt (Oct 11)
+
+Built after the scanner (16.12) and the Dwellir feed (16.11): the engine's front strategy trades several of the bot's launch lines at
+once, told apart by the launch transaction's value. The FRONT_* settings make the first family (`FRONT_FAMILY_NAME` v2.433); `FRONT_FAMILIES`
+is a JSON list of further families, each `{name, value_wei, fee, tick_spacing, sqrt_p, liq, bot_minout, ahead_max_eth, take_profit,
+hold_blocks, stake_eth}` (a field left out takes the FRONT_* value; big numbers may be strings; the stake is capped at 0.006 ETH like
+`FRONT_STAKE_ETH`). The 3.0 ETH line, from the skeptic's numbers (16.12):
+
+```
+FRONT_FAMILIES=[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":20}]
+```
+
+What changed in the engine (tests 20a-20b, 53 in all): `ingest_tx` looks the family up by value (any family's value, 1,444 bytes, the
+multicall selector); `arm_front` carries the family in the armed pool (`fam`, `fam_cfg`) and logs it (`armed`, `launch`, `trade_done` lines
+carry `fam`); `front_mismatch` rejects a launch whose fee is not its family's (**front's own fee bound**; `FEE_MIN/MAX_PPM` are follow's now,
+so the 1% line passes while follow keeps its sub-1% bound); `front_fingerprint` compares tick spacing, price and liquidity with the family's
+(`FRONT_PIN` unchanged); `_fire` takes the family's stake, hold and take-profit; `on_front_buy` the family's `bot_minout` (the revert model)
+and `ahead_max_wei` (the room). With `FRONT_FAMILIES` unset the 2.4333 line behaves as before, except that a 2.4333 launch at a fee other
+than 2500 is now refused (`fee N`) instead of traded; every 2.4333 launch seen (1,843 in the census) had fee 2500.
+
+The decoy halt (`FRONT_NONBOT_HALT`, 5): `_settle` counts live front trades in a row whose exit was not into the bot's buy
+(`trade_done.nonbot_streak`, `bot_exit`); a buy through a router in `FRONT_BOT_ROUTERS` behind ours flags the exit as the bot's whichever
+rule then sends the sell (the take-profit fires first on the 2.4333 line, where the bot's buy lifts the price well past 1%), and resets the
+count; at the threshold front halts with its own file, as a pull would. Oct 10's decoys (16.10) would have tripped it within the first few
+trades of each escalation instead of 34 and 289 losses. Caveats: the router is a public contract anyone can call, so a decoy sent through
+it counts as the bot's exit and does not trip the halt (such a decoy would still be sold into at whatever it prices); the deadline exits of a
+quiet period (the bot simply not buying) do count, which is intended, since five in a row means the schedule changed; the count starts at 0
+at every start.
+
+Deploying it: `git pull` (53 tests), then for a dry run of both lines `set_kv FRONT_FAMILIES '<the JSON above>'` with the FRONT_* settings
+back at the 2.4333 line's values (`FRONT_VALUE_WEI 2433328500000000000`, `FRONT_FEE 2500`, `FRONT_TICK_SPACING 50`, `FRONT_SQRT_P
+1604517591721945638372359205383840`, `FRONT_LIQ 49279426163460954002188`, `FRONT_BOT_MINOUT 0.99`, `FRONT_AHEAD_MAX_ETH 0.008`,
+`FRONT_TAKE_PROFIT 0.01`, `FEE_MAX_PPM 9999`), `DRY_RUN 1`, restart; then the gates of 16.12 (50 live at 0.002 ETH on the 3.0 line, then
+200 at the full stake). Review: pending when this was written (an Opus review of the diff was running).
 
 ### 16.12 The scanner for other operators (12.6): the volume bot's 3.0 ETH line is the one front candidate (conditional, medium confidence)
 

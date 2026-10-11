@@ -105,6 +105,7 @@ def do_launch(seq, fee=1134):
 def reset():
     E.state["armed"].clear(); E.state["position"] = None; E.state["trades_today"] = 0; E.state["pnl_today_usd"] = 0.0; E.state["seq"] = 0; SENT.clear(); RECEIPTS.clear()
     E.state["front_pnl_today_usd"] = 0.0; E.state["arming"].clear(); E.state["recent"].clear()     # a test's buys are never replayed onto a later test's launch
+    E.state["front_nonbot_streak"] = 0
 
 
 # --- 1. the live path
@@ -625,10 +626,11 @@ a = [e for e in events("armed") if e["seq"] == 6231]; assert len(a) == 1 and a[0
 E.state["position"] = None
 reset(); E.FRONT_PIN = True; E.ingest(frame(6240, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, "0x" + other.hex(), 7)])); E.FRONT_PIN = False
 a = events("armed")[-1]; assert a["seq"] == 6240 and not a["eligible"] and "FRONT_PIN" in a["why"] and FPID not in E.state["armed"] and E.state["position"] is None, a
-d = dict(E.decode_launch(FIN)); assert E.front_mismatch(d, d["mint_liq"]) is None and E.front_fingerprint(d) == []
+FAM0 = E.FRONT_FAMILIES[E.FRONT_VALUE_WEI]
+d = dict(E.decode_launch(FIN)); assert E.front_mismatch(d, d["mint_liq"], FAM0) is None and E.front_fingerprint(d, FAM0) == []
 for k, v, why in (("fee", 10000, "fee"), ("hooks", "11" * 20, "hook")):
-    assert why in E.front_mismatch({**d, k: v}, d["mint_liq"]), (k, E.front_mismatch({**d, k: v}, d["mint_liq"]))
-assert E.front_mismatch(d, 0) and E.front_fingerprint({**d, "fee": 3000, "tick_spacing": 60, "mint_liq": 1}) == ["fee 3000", "tick spacing 60", "liquidity 1"]
+    assert why in E.front_mismatch({**d, k: v}, d["mint_liq"], FAM0), (k, E.front_mismatch({**d, k: v}, d["mint_liq"], FAM0))
+assert E.front_mismatch(d, 0, FAM0) and E.front_mismatch({**d, "fee": 3000}, d["mint_liq"], FAM0) == "fee 3000" and E.front_fingerprint({**d, "fee": 3000, "tick_spacing": 60, "mint_liq": 1}, FAM0) == ["tick spacing 60", "liquidity 1"]
 print("ok front: a bad launch is not armed and follow's block goes on; a new price, liquidity or tick spacing is traded and marked (FRONT_PIN=1: not)")
 
 # 18d. an error anywhere in one transaction skips that transaction only
@@ -936,3 +938,68 @@ assert E.parse_headers("Authorization: Bearer abc; X-Key: k1") == {"Authorizatio
 assert E.parse_headers("Authorization: Bearer a:b:c") == {"Authorization": "Bearer a:b:c"} and E.FEED_HEADERS == {}
 print("ok FEED_HEADERS: an authenticated feed's handshake headers parse from JSON or 'Name: value' pairs; none by default")
 os.remove(LOG)
+
+# --- 20. front families: the bot's 3.0 ETH line beside the 2.4333 one (FRONT_FAMILIES), each with its own fingerprint, fee bound, room and exit
+W32 = lambda v: v.to_bytes(32, "big")
+def relaunch(fee, ts, sqrt_p, liq):
+    """the fixture's launch calldata with another PoolKey fee and tick spacing, launch price and mint liquidity (both PoolKey copies)"""
+    d0 = E.decode_launch(FIN); key = bytes.fromhex(d0["c0"]).rjust(32, b"\0") + bytes.fromhex(d0["token"]).rjust(32, b"\0") + W32(d0["fee"]) + W32(d0["tick_spacing"]) + bytes.fromhex(d0["hooks"]).rjust(32, b"\0")
+    assert FIN.count(key) == 2, FIN.count(key)
+    i1 = FIN.find(key); i2 = FIN.find(key, i1 + 1); b = bytearray(FIN)
+    nk = key[:64] + W32(fee) + W32(ts) + key[128:]
+    b[i1:i1 + 160] = nk; b[i1 + 160:i1 + 192] = W32(sqrt_p); b[i2:i2 + 160] = nk; b[i2 + 224:i2 + 256] = W32(liq)
+    return bytes(b)
+V3_VALUE = 3 * 10 ** 18; V3_SQRT = 679394651928963067279918579724198; V3_LIQ = 25725498245903809899643
+E.FRONT_FAMILIES[V3_VALUE] = {**FAM0, "name": "v3", "value_wei": V3_VALUE, "fee": 10000, "tick_spacing": 200, "sqrt_p": V3_SQRT, "liq": V3_LIQ, "bot_minout": 0.95, "ahead_max_wei": int(0.07e18),
+                               "take_profit": 9.0, "hold_blocks": 20, "stake_wei": int(0.0058e18)}
+assert E.FEE_MAX_PPM < 10000, "the test needs follow's fee bound below 1%: front's own bound must let the 1% family through"
+E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"
+reset(); E.state["nonce"] = 700; E.state["front_halted"] = None
+d3 = E.decode_launch(relaunch(10000, 200, V3_SQRT, V3_LIQ)); assert d3["fee"] == 10000 and d3["tick_spacing"] == 200 and d3["sqrt_p"] == V3_SQRT and d3["mint_liq"] == V3_LIQ and d3["pid"] != FPID, d3
+E.ingest(frame(9000, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 3)]))
+p3 = E.state["armed"].get(d3["pid"]); assert p3 and p3["fam"] == "v3" and p3["eligible"] and p3["fee"] == 10000 and events("launch")[-1]["fam"] == "v3", (p3 and p3.get("eligible"), events("armed")[-1])
+pos = E.state["position"]; assert pos and pos["fam"] == "v3" and pos["stake"] == int(0.0058e18) and pos["send_after"] == 20 and pos["tp"] == 9.0 and pos["pid"] == d3["pid"], pos
+bf = rlp.decode(SENT[0][1]); assert bf[5].hex()[8 + 64*5: 8 + 64*6] == w(int(0.0058e18)), "the buy's amountIn is the family's stake"
+E.ingest(frame(9001, [SENT[0][1]])); assert pos["buy_seq"] == 9001
+for s_ in range(9002, 9006):
+    E.ingest(frame(s_, [signed(OUTSIDER, SNIPER, int(0.003e18), FBUY, 40 + s_)]))        # 0.003 ETH outsiders behind ours (0.012 in the pool with ours): no take-profit at 9, no size rule
+    assert not pos["sell_sent"], s_
+for s_ in range(9006, 9009):
+    E.ingest(frame(s_, []))
+bot3 = signed(CROWD, BOT, int(0.12e18), "0x" + FBUY[2:10] + w(0) + w(0) + d3["token"].rjust(64, "0") + FBUY[10 + 64*3:], 80) if False else signed(CROWD, BOT, int(0.12e18), FBUY, 80)
+E.ingest(frame(9009, [bot3]))                                                             # the bot's buy through its router: with 0.0058 ahead the 0.95 minOut holds (no revert) and it is the exit
+assert not events("front_bot_reverts") or events("front_bot_reverts")[-1]["seq"] != 9009, "the 3.0 line's 0.95 minOut must survive our stake ahead"
+assert pos["sell_sent"] and pos["sell_why"].startswith("the bot's buy behind ours"), pos.get("sell_why")
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(9001, -int(0.0058e18), pos["feed_tokens"], pid=d3["pid"])
+RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(9010, int(0.0058e18 * 1.06), -pos["feed_tokens"], pid=d3["pid"])
+assert wait_for(lambda: done_at(700)); d = done_at(700)[-1]; assert d["entry"] == "front" and d["fam"] == "v3" and d["ret"] > 0.04 and d["nonbot_streak"] == 0, d
+reset(); E.state["nonce"] = 710; front_launch(9100, 4); q = E.state["armed"].get(FPID); assert q and q["fam"] == "v2.433" and E.state["position"]["fam"] == "v2.433"   # the 2.4333 line, unchanged
+reset(); E.state["nonce"] = 720; E.FRONT_PIN = True
+E.ingest(frame(9200, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, FX_SQRT if "FX_SQRT" in dir() else int(float(FX["sqrt_p"])), V3_LIQ).hex(), 5)]))
+a = events("armed")[-1]; assert a["fam"] == "v3" and not a["eligible"] and "new fingerprint" in a["why"] and "launch price" in a["why"], a   # the 2.4333 price on a 3.0 launch: pinned out
+E.FRONT_PIN = False
+E.ingest(frame(9201, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(2500, 50, V3_SQRT, V3_LIQ).hex(), 6)]))
+a = events("armed")[-1]; assert a["fam"] == "v3" and not a["eligible"] and a["why"] == "front: fee 2500", a                           # another fee: front's own bound, pin or not
+E.ingest(frame(9202, [signed(DEPLOYER, POSM, 4 * 10 ** 18, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 7)]))
+assert events("launch")[-1]["seq"] == 9201, "a 4.0 ETH launch is no family: not a front launch"
+del E.FRONT_FAMILIES[V3_VALUE]; reset()
+print("ok front families: the 3.0 ETH line arms and trades beside the 2.4333 one with its own fee bound (1%), price pin, stake, hold, 0.95 minOut and take-profit")
+
+# 20b. the decoy signal: FRONT_NONBOT_HALT live front exits in a row not into the bot's buy halt front; the bot's buy resets the count
+E.FRONT_NONBOT_HALT = 3; reset(); E.state["front_halted"] = None; E.state["nonce"] = 730
+def front_deadline_trade(seq, nonce):
+    E.state["armed"].pop(FPID, None); front_launch(seq, nonce); pos = E.state["position"]; E.ingest(frame(seq + 1, [SENT[-1][1]]))
+    for s_ in range(seq + 2, seq + 2 + E.FRONT_HOLD_BLOCKS):
+        E.ingest(frame(s_, []))
+    assert pos["sell_sent"] and pos["sell_why"].startswith("deadline"); d = front_close(pos, seq + 1, seq + 1 + E.FRONT_HOLD_BLOCKS + 1, int(E.FRONT_STAKE_WEI * 0.997)); return d
+def front_bot_trade(seq, nonce):
+    E.state["armed"].pop(FPID, None); front_launch(seq, nonce); pos = E.state["position"]; E.ingest(frame(seq + 1, [SENT[-1][1]])); E.ingest(frame(seq + 8, [signed(CROWD, BOT, int(0.12e18), FBUY, 90 + nonce)]))
+    assert pos["sell_sent"] and pos.get("bot_exit") and pos["sell_why"].startswith("take profit"), pos.get("sell_why")   # the 1% take-profit fires on the bot's buy: still the bot's exit
+    return front_close(pos, seq + 1, seq + 9, int(E.FRONT_STAKE_WEI * 1.09))
+d1 = front_deadline_trade(9300, 5); E.state["nonce"] = 732; d2 = front_bot_trade(9400, 6); E.state["nonce"] = 734; d3_ = front_deadline_trade(9500, 7); E.state["nonce"] = 736; d4 = front_deadline_trade(9600, 8)
+assert d2["bot_exit"] and not d1["bot_exit"] and (d1["nonbot_streak"], d2["nonbot_streak"], d3_["nonbot_streak"], d4["nonbot_streak"]) == (1, 0, 1, 2) and E.state["front_halted"] is None, (d1["nonbot_streak"], d2["nonbot_streak"], d3_["nonbot_streak"], d4["nonbot_streak"])
+E.state["nonce"] = 738; d5 = front_deadline_trade(9700, 9)
+assert d5["nonbot_streak"] == 3 and E.state["front_halted"] and "3 front trades in a row" in E.state["front_halted"] and E.state["halted"] is None and os.path.exists(E.FRONT_HALT_FILE), E.state["front_halted"]
+E.state["nonce"] = 740; E.state["armed"].pop(FPID, None); front_launch(9800, 10); assert E.state["position"] is None and events("skip")[-1]["why"].startswith("front halted") or "halted" in events("skip")[-1]["why"], events("skip")[-1]
+os.remove(E.FRONT_HALT_FILE); E.state["front_halted"] = None; E.FRONT_NONBOT_HALT = 5; reset(); E.FRONT = False; E.ENTRY = "follow"
+print("ok the decoy signal: 3 live front exits in a row without the bot's buy halt front (its own file); the bot's buy resets the count")

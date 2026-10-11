@@ -260,6 +260,19 @@ goes on). `relay_ops.py payout 0xADDRESS ETH` sends from the wallet to your own 
 state, the fetch check, the fast-forward and the tests (46), the optional cap and stake changes, the restart and its start line, the gas
 top-up, the log export, the payout.
 
+### 4g. Two launch lines at once (Oct 11): the bot's 2.4333 and 3.0 ETH lines
+
+Front trades every launch line listed in `FRONT_FAMILIES` beside the FRONT_* one, each with its own fee, fingerprint, room, take-profit and
+hold (HANDOFF 16.13). To add the 3.0 ETH line (fee 1%, the bot's minOut 0.95 of the launch quote):
+
+    set_kv FRONT_FAMILIES '[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":20}]'
+    sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | grep -o '"front_families":\[[^]]*\]'
+
+The start line lists the families the engine will trade. A launch's `fam` is in its `armed`, `launch` and `trade_done` lines. Remove the
+setting (an empty value) to go back to the FRONT_* line alone. `FRONT_NONBOT_HALT` (5) halts front, with its own file, after that many live
+front trades in a row that did not exit into the bot's buy (the decoy signal of Oct 10); clear it like any front halt once the cause is
+understood: `sudo rm /var/log/flip/HALTED.front && sudo systemctl restart flip-engine`.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the
