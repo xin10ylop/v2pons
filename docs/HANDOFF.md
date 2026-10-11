@@ -1564,3 +1564,29 @@ the family's own halt file, the dry-only lock in `_fire` and the parser lifted, 
 
 Deploying it: `git pull` (60 tests), then RUNBOOK 4g's `FRONT_FAMILIES` (v3.0, c1 and v3crowd, all dry); the start line lists v3crowd
 with `"dex":"v3"`. Nothing else on the box changes.
+
+### 16.17 Oct 11 night: known fingerprints, the auto stake, the V3 family merged, the watch
+
+- **The $5 front (from 17:58 UTC).** With the decoys at 0.0099 ahead and the room ~0.0124-0.0126, a 0.002 ETH stake fills the bot's buy by a
+  hair (1.0004); the owner ran it: the first four trades +9.4/+16.1/+17.4/+13.6%, $0.72 a trade, all sold into the bot's buy, no pull before
+  the sell (about $8/hour at 12 launches/hour). It stays on overnight; the streak halt (8) ends it if the operator adds a decoy.
+- **Known fingerprints** (f60ae7e): `FRONT_FEES_ALSO` / `FRONT_TICK_SPACINGS_ALSO` and per-family `fees_also` / `tick_spacings_also` (at most
+  8 whole numbers in range): `front_mismatch` accepts the family's fee or a listed one, `front_fingerprint` a listed tick spacing; unseen pairs
+  are refused as before. So a return to 2500/50 trades on the next launch.
+- **The auto stake** (f60ae7e; `FRONT_AUTO_STAKE`, off by default): `room_ahead(p, q_bot, minout)` bisects v4math for the ETH that may sit
+  ahead of the bot's buy before its fill falls under minout x its launch quote; at every bot buy through its router on a front pool
+  `on_front_buy` records room - eth_in (others' ETH before the bot) in `state["room_obs"][fam]` (a deque of 30) and logs a `room` event;
+  `auto_stake(fam)` = the 25th percentile less 0.0004 ETH, floored at 0.002, capped at the family's stake, the floor until 5 observations;
+  `fam_stake(fam)` feeds `_fire` and the room check (not for wave families, whose buyers have no minOut). Test 20h: the decoy regime gives
+  0.0023 (the fixture's fee 2500 room is ~0.0127), clean pools climb to the ceiling, off = the family's stake.
+- **The V3 crowd line's dry-run family** (the builder's four commits, Opus-reviewed "OK to merge and deploy as a dry run": nothing changes for v4
+  families; before any LIVE V3 trade: a per-shape direction check (an exact-output sell or a V2 path of the 484-byte Universal Router shape
+  reads as a buy), a check of the pool's Initialize or slot0 (a pre-created pool would give a wrong price copy), a pull watch from the pool's
+  Burn logs, sells moving the price copy, the router or relay path with the 3-transaction nonce flow, a live settle from the pool's Swap log,
+  its own halt file, the dry lock lifted deliberately, results.py split by family). Section 16.16 (the builder's) describes it; RUNBOOK 4g has
+  the box's JSON with v3.0, c1 and v3crowd.
+- **The watch.** A routine wakes this session every 3 hours (:52) to run the chain checks (C-1's bot buying vs its gate; the V3 crowd line's
+  forward test vs its gate; the V3 self-buyer 13ead562's own buy size, whose return to 0.05 ETH is the go signal for a $678/day replay; the
+  2.433/3.0 lines' decoys and rates; any new launch shape with a repeat buyer in the last 3 hours) and report only when a gate is crossed.
+- **Research closed as no-go tonight:** the ride on 2.433/3.0 (REPORT_R), the hooked pump line (REPORT_H), the bonding-curve launchpad
+  (REPORT_K). Open: the V2/V3 brute-force grid with adversarial verification (a workflow, Opus agents).

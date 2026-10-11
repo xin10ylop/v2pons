@@ -281,6 +281,17 @@ family's halts (a pull before its sell, a sell that sold none, the decoy run) wr
 follow runs. Check after any change: `sudo python3 ~/v2pons/deploy/englog.py 1 | grep -E '"ev":"(start|alarm)"' | tail -2 | cut -c1-300`. A line whose bot buys late takes `"fire_at":N` (fire when the feed
 shows launch + N; 0 = the launch block) and a longer `"hold_blocks"`; the study of HANDOFF 16.14 gives the numbers per line.
 
+**Known fingerprints and the auto stake (Oct 11 evening).** The 2.4333 line moved from fee 2500 / tick spacing 50 to 5000 / 100 at 15:32 and
+may move back: `FRONT_FEES_ALSO=2500` and `FRONT_TICK_SPACINGS_ALSO=50` (comma lists; `fees_also` / `tick_spacings_also` per listed family)
+make the line trade at any pair it is known to use, still refusing anything unseen. `FRONT_AUTO_STAKE=1` sizes the stake to the room the bot's
+decoys leave: at every bot buy the engine computes how much ETH could have sat ahead of it before its fill fell under its minOut (the room,
+~0.0126 ETH on this pool), subtracts what others put there, and keeps the last 30 such observations per family (`room` events); the next fire's
+stake is their 25th percentile less `FRONT_AUTO_STAKE_MARGIN_ETH` (0.0004), never under `FRONT_AUTO_STAKE_MIN_ETH` (0.002) nor over
+`FRONT_STAKE_ETH` (the ceiling), and the minimum until `FRONT_AUTO_STAKE_OBS` (5) observations exist (a restart starts over at the minimum for
+about five launches). With the decoys of Oct 11 16:28 (0.0099 ahead) that is 0.0023; with none it climbs to the ceiling. The `flow` line
+carries `auto_stake_eth`, the `fire`/`trade_done` lines the stake used. Settings for the box: `FRONT_STAKE_ETH=0.0097 FRONT_AUTO_STAKE=1
+FRONT_FEES_ALSO=2500 FRONT_TICK_SPACINGS_ALSO=50`.
+
 A **wave family** (Oct 11 evening, for the operator C-1) is a listed family with a `trigger`: its launches (`calldata_len` 2276, `value_wei` 0,
 fee 100, tick spacing 1, a token-only range up to the launch tick) are armed from the calldata like any front launch, but nothing fires at the
 launch: the operator's own buy through its router (a value-0 call whose calldata carries the token, word `token_word`, the ETH amount in word
