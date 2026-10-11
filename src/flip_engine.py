@@ -999,7 +999,7 @@ def settle(pos):
 
 def _settle(pos):
     rb = wait_receipt(pos["buy_hash"], RECEIPT_TIMEOUT_S); rs = wait_receipt(pos["sell_hash"], RECEIPT_TIMEOUT_S)
-    out = {"ev": "trade_done", "dry": False, "entry": pos.get("entry"), "stake": pos.get("stake", STAKE_WEI), "pid": pos["pid"], "token": pos["token"], "fee": pos["fee"], "trig_seq": pos["trig_seq"], "trig_value": pos["trig_value"], "nonce": pos["nonce"],
+    out = {"ev": "trade_done", "dry": False, "entry": pos.get("entry"), **({"fam": pos["fam"]} if pos.get("fam") else {}), "stake": pos.get("stake", STAKE_WEI), "pid": pos["pid"], "token": pos["token"], "fee": pos["fee"], "trig_seq": pos["trig_seq"], "trig_value": pos["trig_value"], "nonce": pos["nonce"],
            "expected_tokens": pos["expected_tokens"], "min_out": pos["min_out"], "buy_seq_feed": pos["buy_seq"], "sell_why": pos.get("sell_why"), "sell_seq_sent": pos["sell_seq_sent"],
            "launch_seq": pos.get("launch_seq"), **({"fam": pos["fam"]} if pos.get("fam") else {})}
     gas_wei = 0; eth_in = 0; eth_out = 0; tokens = 0

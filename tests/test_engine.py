@@ -1079,6 +1079,30 @@ for i, (head_rel, bump, want_to, asks, ok) in enumerate(((-3, 0, 0, 3, False), (
 E.rpc = rpc0; E.FRONT = False; E.ENTRY = "follow"; reset()
 print("ok the pull check on a provider's node: the range ends 10 blocks under the head and never under the sell (a lagging head fails the check after 3 tries instead of missing a pull; a node that catches up passes)")
 
+# 19c. the pull check's floor for follow: the near-miss halt needs the logs up to buy + FOLLOW_NEAR_MISS_BLOCKS (4) even past the sell block (buy + 3),
+# so a head 2 blocks past the sell (head - 10 under every floor) still asks to buy + 4; a node answers only the range asked
+reset(); E.state["armed"].pop(FPID, None); LOGS[:] = []
+rpc0 = E.rpc; asked = []; HEAD = [0]
+def head_rpc2(method, params, tries=4, timeout=10):
+    if method == "eth_blockNumber": return hex(HEAD[0])
+    if method == "eth_getLogs":
+        lo, hi = int(params[0]["fromBlock"], 16), int(params[0]["toBlock"], 16); asked.append((lo, hi))
+        if hi > HEAD[0]: raise RuntimeError("block range extends beyond current head block")
+        return [l for l in LOGS if lo <= int(l["blockNumber"], 16) <= hi]
+    return rpc0(method, params, tries, timeout)
+E.rpc = head_rpc2
+pos, buy_raw, B = relay_trade(8900, 640, 93)
+E.ingest(frame(B + 1, [])); E.ingest(frame(B + 2, [])); assert pos["sell_sent"]
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(B, -E.STAKE_WEI, pos["feed_tokens"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(B + 3, int(E.STAKE_WEI * 0.995), -pos["feed_tokens"], index=2)
+LOGS[:] = [{"blockNumber": hex(B + 4), "transactionIndex": hex(1), "data": "0x" + w(-887200) + w(TICK0) + w(-LIQ) + w(0)}]
+HEAD[0] = B + 5
+assert wait_for(lambda: done_at(640)); d = done_at(640)[-1]
+assert asked == [(B, B + 4)], asked                                                                            # follow's floor: buy + 4, one past the sell block
+assert d["pull_after_buy_blocks"] == 4 and d.get("near_miss") is True and d["pull_check_to"] == 1 and d["pull_check_head"] == 2 and d.get("fam") is None, d
+assert E.state["follow_halted"] and E.state["follow_halted"].startswith("near miss") and E.state["front_halted"] is None, E.state["follow_halted"]
+E.rpc = rpc0; LOGS[:] = []; E.state["follow_halted"] = None; os.remove(E.FOLLOW_HALT_FILE); E.load_halt(); assert E.state["follow_halted"] is None; reset()
+print("ok the pull check's floor for follow: a head 2 past the sell still asks to buy + FOLLOW_NEAR_MISS_BLOCKS, so the near-miss halt is not missed")
+
 # 20d. a family's fire offset: the delayed front fires when the feed shows launch + fire_at (after the operator's early-pull window, before its late bot buy),
 # not in the launch block; too late past fire_at + fire_max; the bot's buy before the fire still makes the pool late
 E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"; reset(); E.state["nonce"] = 760; E.state["front_halted"] = None
@@ -1128,6 +1152,7 @@ def rpc_pull(method, params, tries=4, timeout=10):
 E.rpc = rpc_pull
 assert wait_for(lambda: done_at(800)); d = done_at(800)[-1]; E.rpc = rpc0
 assert d["pulled_before_sell"] is True and E.state["fam_halted"].get("v3") and E.state["front_halted"] is None and E.state["halted"] is None, (d.get("pulled_before_sell"), E.state["fam_halted"], E.state["front_halted"])
+assert d["fam"] == "v3" and d["entry"] == "front", d                                                             # the trade's record names its family (results and checks filter on it)
 assert os.path.exists(E.fam_halt_file("v3")) and not os.path.exists(E.FRONT_HALT_FILE)
 E.state["armed"].clear(); assert E.state["position"] is None and E.state["front_settling"] is None, "the settle must free the slot"
 E.ingest(frame(10200, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 9)]))
