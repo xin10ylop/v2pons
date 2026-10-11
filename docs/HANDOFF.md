@@ -1483,4 +1483,22 @@ misdescribed scratch-root files (6.12), the repository table (2). Not changed in
   chain: `research/session_oct11/c1_recent.py`); dry positions share the one slot (a c1 dry position holds it ~7 s, 2.4333/3.0 dry fires are
   skipped meanwhile, a c1 trigger during that is lost for sampling); before a LIVE probe the verifier's extra halts (REPORT_V) are manual.
 - **C-1 on the chain at 17:03 UTC** (`c1_recent.py` 150 min): 19 launches, the bot bought in 18, median 0.173 ETH by T + 60 (census days
-  0.3-1.4), the rule's gross return +2.1% mean / +0.8% median, 9/18 above +0.3%, no pull before the exit. Not worth live money yet.
+  0.3-1.4), the rule's gross return +2.1% mean / +0.8% median, 9/18 above +0.3%, no pull before the exit. Not worth live money yet. **The
+  box runs it as a dry-run family from 17:5x** beside the 3.0 dry watch, with `FRONT_DRY_RUN=1` (the 2.4333 line dry too).
+- **The rest of the round (REPORT_R/W/H/G, 17:30-18:20).** R: no ride on the 2.4333 or 3.0 line: the operator pulls about 9 blocks after any
+  stranger's buy, before or after its bot (65 of 86 and 88 of 96 census pools; 3 of 3 small buys after the bot on 3.0 today); a ride holds
+  25 blocks; only dust under 0.00003 ETH goes unpunished; the decoys since 16:28 are a fresh nonce-0 wallet per pool buying 0.00495 through
+  the router 0x65050a9b plus a 0.00495 fronter-shaped buy that sells at T + 1 (self-funding), 0.0099-0.01003 ahead of the bot; a 0.002 front
+  still fills the bot's buy at 1.0004 (4 pools), 0.0058 reverts 4 of 4. W: the V3 crowd line is buildable (launches decode from calldata
+  31/31, a router buy and sell simulate to the wei, approve-then-sell at consecutive nonces works on this chain; ~12 h for a router-path
+  probe, ~14 h for a V3 relay) but today's forward test gives +5.2% mean / +0.17% median on 29 launches (~$65/day at $15, the line at ~90
+  launches/day): forward-test 24-48 h first (`analysis/W/w07_forward.py`), build only at >= 100 launches at >= +4% and >= 120/day. H: the
+  hooked pump line's hooks (one code, beforeSwap/afterSwap with return deltas) could tax or block a sell; no live pool to simulate on (all
+  recent pools pulled within hours, one launch in 6 h): parked. G: the owner's method brute force (123 launch-shape/token families x 2,574
+  rules, validated on days 6-7 and 6-hour slices) finds no new large safe line; the 2.433 line is the calibration and passes (our 1,087
+  real round trips +8.43% vs the replay's +8.34%; 1,035 of our buys landed at launch + 1); the vbot 3.0 late entry (K80, TP 50%) and C-2
+  hookless at K150 score well but die on the operator's reaction; the hooked lines need the sell simulation first.
+- **Where this leaves the box at 18:30 UTC:** nothing live; three dry families (2.4333 via `FRONT_DRY_RUN`, 3.0, c1); today +$188. The
+  2.4333 line comes back with `FRONT_DRY_RUN=0` the moment the decoys leave the room (the `front_bot_reverts` lines with `ours: true` stop);
+  a $5 front fits the 0.0024 ETH the decoys leave (pocket money, the operator can close it with one more decoy). The lines that pay next
+  must come from operators that have not met fronters yet: C-1 if its bot's buying recovers, the V3 crowd line if its forward test holds.
