@@ -12,3 +12,6 @@ research/**/rpc_log.jsonl
 research/**/txcache.jsonl
 research/**/cache/
 research/**/x01_inits.json
+research/**/*_ev.json
+research/**/*.pkl
+research/**/*_inits.json
