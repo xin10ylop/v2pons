@@ -9,7 +9,9 @@ repository, the engine or the box is broken: the engine was running live on both
 **Updated Oct 11 03:00 UTC by the second session** (section 16): open items 12.1 and 12.4 are answered from the chain, 12.3's near-miss halt
 and 12.5's payout command are built and tested, 12.2's independent review completed (16.7: safe, one high side finding fixed; 51 tests), 12.6's
 scanner ran (16.12). The box's clone is on branch `claude/laughing-fermat-48ylv7` at de88eb9 since Oct 11 02:50 UTC (51 tests there); the
-engine is **stopped** since Oct 10 18:30 because the feed's operator blocked the box (16.11). `flip_setup.sh` has not been re-run (16.7 C3).
+engine is **live again since Oct 11 14:26 UTC on Dwellir's authenticated sequencer feed** (16.11, 16.14) after the public feed blocked the
+box on Oct 10 at 17:37; the 2.4333 line at the full stake since 14:40. Pushed and not on the box: the front-families code (16.13, 55
+tests). `flip_setup.sh` has not been re-run (16.7 C3).
 
 **Oct 10 18:35 UTC: the sequencer feed's operator has blocked the box's address range and says that routing around the block is
 unauthorized (section 16.11). The engine is stopped; it cannot trade without the feed. Read 16.11 before anything else.**
@@ -1195,8 +1197,13 @@ families code (16.13) can dry-run it beside the 2.4333 line and tell when it cha
 the same 4 hours (about 200 a day), with the bot's buy at +6..+9 in the dry run.
 
 The dry run cannot measure the landing block: `_fire` plans the dry buy at the fire block + 2 by construction (`plan_buy_seq`). The first
-live trades at 0.002 ETH on the new feed measure it (`trade_done.buy_offset`). The feed itself: live blocks 0.1 s behind the sequencer at
-the box, no gaps, a 90 s backlog on connect that the engine marks stale.
+live trades measured it: **live again from 14:26 UTC Oct 11** on the 2.4333 line at 0.002 ETH (the 3.0 settings removed from the env, the
+code still de88eb9), 25 trades in 10 minutes, +$15.07, every exit into the bot's buy at +12% on average, the buy landing at +2 in 24 of 25
+and +3 in 1 (the Dwellir feed costs about one block against the public one; the bot buys at +6..+9, so it does not matter); then
+`FRONT_STAKE_ETH 0.0058` and `FRONT_DAILY_STOP_USD 50` at 14:40 UTC. The feed itself: live blocks 0.1 s behind the sequencer at the box,
+no gaps, a 90 s backlog on connect that the engine marks stale. The box's env since 14:40: `FEED_URL` and `RPC_URL` on Dwellir,
+`DRY_RUN 0`, `FRONT_STAKE_ETH 0.0058`, `FRONT_DAILY_STOP_USD 50`, `FRONT_SELL_ON_ETH 0`, `FRONT_MAX_PER_DAY 100000`, the FRONT_* fingerprint
+settings at their defaults.
 
 ### 16.12 The scanner for other operators (12.6): the volume bot's 3.0 ETH line is the one front candidate (conditional, medium confidence)
 
