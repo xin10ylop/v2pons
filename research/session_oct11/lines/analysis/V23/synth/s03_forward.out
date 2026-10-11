@@ -1,0 +1,32 @@
+fwd_1910utc.json: 16 crowd-line launches in the 3 h to 18:55 UTC (head 86058845)
+   17:19 frb  124 (0.0160 ETH) real buys before +80 0 first pull  2627 | K20/+80 -0.088% | +2/+80 -0.049%
+   17:25 frb  154 (0.1000 ETH) real buys before +80 0 first pull  3902 | K20/+80 -0.031% | +2/+80 +0.029%
+   17:34 frb  122 (0.0090 ETH) real buys before +80 0 first pull   298 | K20/+80 -0.080% | +2/+80 -0.020%
+   17:39 frb  115 (0.0240 ETH) real buys before +80 0 first pull 12892 | K20/+80 -0.065% | +2/+80 -0.045%
+   18:02 frb  106 (0.0220 ETH) real buys before +80 0 first pull   234 | K20/+80 -0.129% | +2/+80 -0.006%
+   18:04 frb  137 (0.0180 ETH) real buys before +80 0 first pull   321 | K20/+80 -0.052% | +2/+80 -0.032%
+   18:06 frb   88 (0.0178 ETH) real buys before +80 0 first pull   457 | K20/+80 -0.077% | +2/+80 -0.057%
+   18:08 frb  110 (0.1800 ETH) real buys before +80 0 first pull   451 | K20/+80 -0.089% | +2/+80 -0.070%
+   18:10 frb  100 (0.0594 ETH) real buys before +80 0 first pull   854 | K20/+80 -0.089% | +2/+80 -0.070%
+   18:21 frb  118 (0.0792 ETH) real buys before +80 0 first pull   159 | K20/+80 -0.134% | +2/+80 -0.086%
+   18:24 frb   84 (0.0120 ETH) real buys before +80 0 first pull   683 | K20/+80 -0.119% | +2/+80 -0.101%
+   18:29 frb   69 (0.0990 ETH) real buys before +80 1 first pull   685 | K20/+80 +3.854% | +2/+80 +3.918%
+   18:31 frb   90 (0.1100 ETH) real buys before +80 0 first pull  None | K20/+80 -0.102% | +2/+80 -0.074%
+   18:36 frb  171 (0.2178 ETH) real buys before +80 0 first pull   536 | K20/+80 -0.154% | +2/+80 -0.094%
+   18:38 frb  102 (0.2079 ETH) real buys before +80 0 first pull   518 | K20/+80 -0.106% | +2/+80 -0.106%
+   18:40 frb  120 (0.1485 ETH) real buys before +80 0 first pull  None | K20/+80 -0.154% | +2/+80 -0.094%
+fwd_2152utc.json: 7 crowd-line launches in the 3 h to 21:53 UTC (head 86163010)
+   19:49 frb  125 (0.2277 ETH) real buys before +80 0 first pull  1005 | K20/+80 -0.120% | +2/+80 -0.045%
+   19:54 frb  113 (0.2376 ETH) real buys before +80 0 first pull   146 | K20/+80 -0.077% | +2/+80 -0.040%
+   19:59 frb   94 (0.1683 ETH) real buys before +80 0 first pull  1351 | K20/+80 -0.120% | +2/+80 -0.083%
+   20:05 frb  107 (0.0891 ETH) real buys before +80 0 first pull   137 | K20/+80 -0.055% | +2/+80 -0.019%
+   20:07 frb  110 (0.1089 ETH) real buys before +80 0 first pull   682 | K20/+80 -0.080% | +2/+80 -0.060%
+   20:11 frb   96 (0.1188 ETH) real buys before +80 0 first pull   845 | K20/+80 -0.080% | +2/+80 -0.060%
+   20:15 frb   89 (0.1386 ETH) real buys before +80 0 first pull  None | K20/+80 -0.095% | +2/+80 -0.075%
+
+post-census: 23 launches; first real buy by +80 in 1 (4%); frb offsets [69, 84, 88, 89, 90, 94, 96, 100, 102, 106, 107, 110, 110, 113, 115, 118, 120, 122, 124, 125, 137, 154, 171]
+   pulls at or before +80: 0; first pulls [137, 146, 159, 234, 298, 321, 451, 457, 518, 536, 682, 683, 685, 845, 854, 1005, 1351, 2627, 3902, 12892]; never pulled to head 3
+   K20/+80 at $15 net: n 23 mean +0.076% median -0.089% win 1/23 $+0.011/trade
+   +2/+80  at $15 net: n 23 mean +0.116% median -0.060% win 2/23 $+0.017/trade
+   P(<= 1 of 23 with a first real buy by +80 | rate 38.5%, census all days) = 2.13e-04
+   P(<= 1 of 23 with a first real buy by +80 | rate 22.2%, census lowest day) = 2.34e-02

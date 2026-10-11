@@ -1,0 +1,8 @@
+V3 356-B K60 -> +260: trades 111; with a real buy inside the hold 22 (19.8%) mean +588.80% | without 89 mean -2.15% median -0.070%
+   share with a real buy in the hold by day: d1 0/3 d2 - d3 1/1 d4 3/18 d5 1/6 d6 8/58 d7 9/25
+V3 crowd K20 -> +80: trades 1046; with a real buy inside the hold 371 (35.5%) mean +22.31% | without 675 mean -0.24% median -0.095%
+   share with a real buy in the hold by day: d1 29/153 d2 61/155 d3 46/167 d4 71/149 d5 49/142 d6 54/134 d7 61/146
+V2 fleet +20 -> +80: trades 603; with a real buy inside the hold 252 (41.8%) mean +9.45% | without 351 mean -0.73% median -0.730%
+   share with a real buy in the hold by day: d1 51/118 d2 0/1 d3 - d4 47/113 d5 76/188 d6 56/125 d7 22/58
+V2 70adce63 >= 40 ETH +150 -> +250: trades 1029; with a real buy inside the hold 918 (89.2%) mean +1.88% | without 111 mean -0.73% median -0.733%
+   share with a real buy in the hold by day: d1 49/79 d2 145/156 d3 115/131 d4 144/162 d5 163/176 d6 136/145 d7 166/180
