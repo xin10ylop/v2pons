@@ -160,7 +160,12 @@ FRONT_BOT_ROUTERS = {a.strip().lower().replace("0x", "") for a in env("FRONT_BOT
 # settings above make the first; FRONT_FAMILIES (JSON: a list of {name, value_wei, fee, tick_spacing, sqrt_p, liq, bot_minout, ahead_max_eth,
 # take_profit, hold_blocks, stake_eth}; a field left out takes the FRONT_* value; big numbers may be strings) adds the others. A family's fee is
 # front's own fee bound (FEE_MIN/MAX_PPM are follow's): a launch at another fee is not traded, and the pin (FRONT_PIN) compares the rest.
-FRONT_FAMILY_KEYS = ("name", "value_wei", "fee", "tick_spacing", "sqrt_p", "liq", "bot_minout", "ahead_max_eth", "take_profit", "hold_blocks", "stake_eth", "dry_run", "pin")
+FRONT_FAMILY_KEYS = ("name", "value_wei", "fee", "tick_spacing", "sqrt_p", "liq", "bot_minout", "ahead_max_eth", "take_profit", "hold_blocks", "stake_eth", "dry_run", "pin",
+                     "fire_at", "fire_max")
+# fire_at: fire when the feed shows launch + fire_at (0: the launch block itself, landing at + 1/+ 2, for a line whose bot buys at + 6..+ 13);
+# a line whose bot buys later, with the operator's trap pulls in the first blocks (the 3.0 line on Oct 11: bot at + 18..+ 58, pulls at + 7..+ 9),
+# is entered after that window and before the bot: fire_at 12-16, hold_blocks past the bot's latest offset. fire_max: how many blocks after
+# fire_at the fire may still go (the feed's lag); FRONT_FIRE_MAX for the base family.
 FRONT_STAKE_CAP_WEI = int(0.006e18)
 
 
@@ -188,6 +193,8 @@ def front_family_check(fam):
         raise SystemExit(f"front family {n}: bot_minout {fam['bot_minout']} is not in (0, 1]")
     if fam["hold_blocks"] < 1 or fam["ahead_max_wei"] <= 0 or fam["value_wei"] <= 0 or fam["tick_spacing"] < 1:
         raise SystemExit(f"front family {n}: hold_blocks, ahead_max_eth, value_wei and tick_spacing must be above 0")
+    if fam["fire_at"] < 0 or fam["fire_max"] < 0 or fam["fire_at"] > 600:
+        raise SystemExit(f"front family {n}: fire_at must be 0..600 blocks after the launch and fire_max 0 or above")
     return fam
 
 
@@ -196,7 +203,7 @@ def front_families():
     family must give its value, fee, tick spacing, price and liquidity (its own fingerprint) and may set the rest; unknown keys are an error"""
     base = {"name": env("FRONT_FAMILY_NAME", "v2.433"), "value_wei": FRONT_VALUE_WEI, "fee": FRONT_FEE, "tick_spacing": FRONT_TICK_SPACING, "sqrt_p": FRONT_SQRT_P, "liq": FRONT_LIQ,
             "bot_minout": FRONT_BOT_MINOUT, "ahead_max_wei": FRONT_AHEAD_MAX_WEI, "take_profit": FRONT_TAKE_PROFIT, "hold_blocks": FRONT_HOLD_BLOCKS, "stake_wei": FRONT_STAKE_WEI,
-            "dry_run": False, "pin": FRONT_PIN}
+            "dry_run": False, "pin": FRONT_PIN, "fire_at": 0, "fire_max": FRONT_FIRE_MAX}
     fams = [front_family_check(base)] if FRONT_VALUE_WEI > 0 else []
     listed = json.loads(env("FRONT_FAMILIES", "").strip() or "[]")
     if not isinstance(listed, list):
@@ -215,7 +222,7 @@ def front_families():
                "take_profit": float(f.get("take_profit", base["take_profit"])), "hold_blocks": int(f.get("hold_blocks", base["hold_blocks"])),
                "ahead_max_wei": _eth_wei(f["ahead_max_eth"]) if "ahead_max_eth" in f else base["ahead_max_wei"],
                "stake_wei": _eth_wei(f["stake_eth"]) if "stake_eth" in f else base["stake_wei"],
-               "dry_run": bool(f.get("dry_run", False)), "pin": bool(f.get("pin", FRONT_PIN))}
+               "dry_run": bool(f.get("dry_run", False)), "pin": bool(f.get("pin", FRONT_PIN)), "fire_at": int(f.get("fire_at", 0)), "fire_max": int(f.get("fire_max", FRONT_FIRE_MAX))}
         fam["name"] = str(f.get("name") or f"v{fam['value_wei'] / 1e18:g}")
         fams.append(front_family_check(fam))
     by_value = {}
@@ -1203,8 +1210,8 @@ def ingest(raw):
                     p["status"] = "armed" if not stale else "skipped"
                     if not stale:
                         fire(p, p["trig"][0], state["ts"], p["trig"][1], p["trig"][2], seen_at, fire_seq=seq)
-                elif p.get("entry") == "front" and p["status"] == "armed" and seq >= p["launch_seq"]:          # buys ahead of ours make it late (on_front_buy), not any buy
-                    if stale or seq > p["launch_seq"] + FRONT_FIRE_MAX:                         # too late to land ahead of the volume bot's first buy (+7..13)
+                elif p.get("entry") == "front" and p["status"] == "armed" and seq >= p["launch_seq"] + p["fam_cfg"]["fire_at"]:   # buys ahead of ours make it late (on_front_buy), not any buy
+                    if stale or seq > p["launch_seq"] + p["fam_cfg"]["fire_at"] + p["fam_cfg"]["fire_max"]:   # too late to land ahead of the bot's buy (its window is the family's)
                         p["status"] = "late"; log({"ev": "skip", "why": "front: too late to land ahead of the bot's first buy", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]})
                     else:
                         fire(p, seq, state["ts"], 0, p["tx"], seen_at)
@@ -1330,7 +1337,8 @@ def main():
          "front_daily_stop_usd": FRONT_DAILY_STOP_USD, "front_pin": FRONT_PIN, "front_fee": FRONT_FEE, "front_tick_spacing": FRONT_TICK_SPACING, "front_sqrt_p": FRONT_SQRT_P, "front_liq": FRONT_LIQ,
          "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_sell_on_eth": FRONT_SELL_ON_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT, "front_bot_routers": sorted(FRONT_BOT_ROUTERS),
          "front_families": [{"name": f["name"], "value_eth": f["value_wei"] / 1e18, "fee": f["fee"], "tick_spacing": f["tick_spacing"], "bot_minout": f["bot_minout"], "ahead_max_eth": f["ahead_max_wei"] / 1e18,
-                             "take_profit": f["take_profit"], "hold_blocks": f["hold_blocks"], "stake_eth": f["stake_wei"] / 1e18, "dry_run": f["dry_run"], "pin": f["pin"]} for f in FRONT_FAMILIES.values()],
+                             "take_profit": f["take_profit"], "hold_blocks": f["hold_blocks"], "stake_eth": f["stake_wei"] / 1e18, "dry_run": f["dry_run"], "pin": f["pin"], "fire_at": f["fire_at"],
+                             "fire_max": f["fire_max"]} for f in FRONT_FAMILIES.values()],
          "front_nonbot_halt": FRONT_NONBOT_HALT, "front_nonbot_min_ret": FRONT_NONBOT_MIN_RET, "front_nonbot_streak": state["front_nonbot_streak"],
          "halted": state["halted"], "halt_file": HALT_FILE, "follow_halted": state["follow_halted"], "follow_halt_file": FOLLOW_HALT_FILE, "follow_near_miss_blocks": FOLLOW_NEAR_MISS_BLOCKS, "feed_headers": sorted(FEED_HEADERS), "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     signal.signal(signal.SIGTERM, on_stop)

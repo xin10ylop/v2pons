@@ -274,7 +274,8 @@ the family. A launch's `fam` is in its `armed`, `launch`, `would_fire` and `trad
 same JSON with `"dry_run":false` for 50 trades at 0.002 ETH, then `"stake_eth":0.0058`. Remove the setting (an empty value) to go back to
 the FRONT_* line alone. `FRONT_NONBOT_HALT` (5) halts front, with its own file, after that many live front trades of one family in a row
 that paid under +2% (the decoy signal of Oct 10); clear it like any front halt once the cause is understood:
-`sudo rm /var/log/flip/HALTED.front && sudo systemctl restart flip-engine`.
+`sudo rm /var/log/flip/HALTED.front && sudo systemctl restart flip-engine`. A line whose bot buys late takes `"fire_at":N` (fire when the feed
+shows launch + N; 0 = the launch block) and a longer `"hold_blocks"`; the study of HANDOFF 16.14 gives the numbers per line.
 
 ## 5. Daily
 

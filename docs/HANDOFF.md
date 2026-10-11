@@ -1174,7 +1174,12 @@ run: `FRONT_VALUE_WEI 2433328500000000000` or unset, `FRONT_FEE 2500`, `FRONT_TI
 the live 2.4333 line, restart; then the gates of 16.12 (`"dry_run":false` at 0.002 ETH for 50 trades, then the full stake).
 
 **But the 3.0 line changed on Oct 11 (16.14):** the bot's buy moved to +18..+58 after launch and some pools are pulled at +7..+9, so the
-line is not tradeable as a front at the moment; the families code stands ready for when a line is.
+plain front (buy at +1, hold 18) does not meet the bot's buy there. For that shape the family has two more fields (test 20d, 55 in all):
+`fire_at` (fire when the feed shows launch + N; 0 = the launch block, as the 2.4333 line) and `fire_max` (how many blocks later the fire may
+still go; `FRONT_FIRE_MAX` for the base family): the **delayed front** enters after the operator's early-pull window and before its late
+buy (for the 3.0 line's Oct 11 shape: `fire_at` 12-16, `hold_blocks` past the bot's latest offset, say 60), sells into the bot's buy as
+before, and is late if the bot bought first. Which numbers, and whether the line pays at all in its new shape, is the replay study of 16.14
+(running when this was written); nothing of the 3.0 line goes live before it and a dry run.
 
 ### 16.14 Oct 11 afternoon: the dry run on the new feed; the 3.0 line's schedule changed; the 2.4333 line is back
 

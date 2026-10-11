@@ -1031,8 +1031,38 @@ for change, needle in ((("minout", 0.9), "unknown keys"), (("stake_wei", 10 ** 1
     if v is None: f.pop(k)
     else: f[k] = v
     why = refused(json.dumps([f])); assert why and needle in why, (change, why)
-assert "JSON list" in refused('{"a": 1}') and "not an object" in refused("[1]")
+assert "JSON list" in refused('{"a": 1}') and "not an object" in refused("[1]") and "fire_at" in refused(json.dumps([{**base3, "fire_at": -1}]))
+assert fams[3 * 10 ** 18]["fire_at"] == 0 and fams[3 * 10 ** 18]["fire_max"] == E.FRONT_FIRE_MAX
 os.environ["FRONT_FAMILIES"] = "  "; assert set(E.front_families()) == {E.FRONT_VALUE_WEI}; os.environ.pop("FRONT_FAMILIES")
-print("ok FRONT_FAMILIES: the runbook's JSON parses (stake, room, dry run and pin per family); unknown keys, missing fingerprints, floats, a stake over the cap, fee 0, duplicates are refused at start")
+print("ok FRONT_FAMILIES: the runbook's JSON parses (stake, room, dry run, pin, fire offset per family); unknown keys, missing fingerprints, floats, a stake over the cap, fee 0, duplicates are refused at start")
+
+# 20d. a family's fire offset: the delayed front fires when the feed shows launch + fire_at (after the operator's early-pull window, before its late bot buy),
+# not in the launch block; too late past fire_at + fire_max; the bot's buy before the fire still makes the pool late
+E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"; reset(); E.state["nonce"] = 760; E.state["front_halted"] = None
+E.FRONT_FAMILIES[V3_VALUE] = {**FAM0, "name": "v3", "value_wei": V3_VALUE, "fee": 10000, "tick_spacing": 200, "sqrt_p": V3_SQRT, "liq": V3_LIQ, "bot_minout": 0.95, "ahead_max_wei": int(0.07e18),
+                               "take_profit": 9.0, "hold_blocks": 60, "stake_wei": int(0.002e18), "dry_run": False, "pin": False, "fire_at": 12, "fire_max": 2}
+n_sent = len(SENT); E.ingest(frame(9900, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 3)]))
+p3 = E.state["armed"].get(d3["pid"]); assert p3 and p3["status"] == "armed" and E.state["position"] is None and len(SENT) == n_sent, "fired in the launch block despite fire_at 12"
+for s_ in range(9901, 9912):
+    E.ingest(frame(s_, [])); assert E.state["position"] is None and p3["status"] == "armed", s_
+E.ingest(frame(9912, [])); pos = E.state["position"]; assert pos and pos["fam"] == "v3" and pos["fire_seq"] == 9912 and pos["trig_seq"] == 9912 and p3["launch_seq"] == 9900 and len(SENT) == n_sent + 1 and pos["send_after"] == 60, pos
+E.ingest(frame(9913, [SENT[-1][1]])); assert pos["buy_seq"] == 9913
+for s_ in range(9914, 9940):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(9940, [signed(CROWD, BOT, int(0.12e18), FBUY, 85)]))                      # the bot's late buy at launch + 40: the exit
+assert pos["sell_sent"] and pos.get("bot_exit") and pos["sell_why"].startswith("the bot's buy behind ours"), pos.get("sell_why")
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(9913, -int(0.002e18), pos["feed_tokens"], pid=d3["pid"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(9941, int(0.002e18 * 1.06), -pos["feed_tokens"], pid=d3["pid"])
+assert wait_for(lambda: done_at(760)); assert done_at(760)[-1]["fam"] == "v3" and done_at(760)[-1]["ret"] > 0.04, done_at(760)[-1]
+reset(); E.state["nonce"] = 770; E.state["armed"].clear()                                # too late: the feed shows launch + 15 first (a stall): no fire
+E.ingest(frame(9950, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 4)])); p3 = E.state["armed"][d3["pid"]]
+E.ingest(frame(9965, [])); assert E.state["position"] is None and p3["status"] == "late" and events("skip")[-1]["why"].startswith("front: too late"), events("skip")[-1]
+reset(); E.state["nonce"] = 780; E.state["armed"].clear()                                # the bot's buy before our fire offset: late, no fire
+E.ingest(frame(9970, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 5)])); p3 = E.state["armed"][d3["pid"]]
+E.ingest(frame(9975, [signed(CROWD, BOT, int(0.12e18), FBUY, 86)])); assert p3["status"] == "late" and E.state["position"] is None
+for s_ in range(9976, 9984):
+    E.ingest(frame(s_, []))
+assert E.state["position"] is None, "fired after the bot's buy"
+del E.FRONT_FAMILIES[V3_VALUE]; reset(); E.FRONT = False; E.ENTRY = "follow"
+print("ok a family's fire offset: the delayed front fires at launch + fire_at, holds for the bot's late buy, is late past fire_at + fire_max or once the bot has bought")
 for _f in (E.LOG_PATH, E.LOG_PATH + ".1"):
     if os.path.exists(_f): os.remove(_f)
