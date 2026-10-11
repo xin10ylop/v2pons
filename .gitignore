@@ -9,3 +9,5 @@ __pycache__/
 # the harness keeps agents' worktrees here (never repo content)
 .claude/
 research/**/rpc_log.jsonl
+research/**/txcache.jsonl
+research/**/cache/
