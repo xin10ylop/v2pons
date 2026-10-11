@@ -913,8 +913,10 @@ inside the `try`. The settle then aborted with a `settle failed` alarm: no `trad
 halting front (the position was cleared and the nonce refreshed by the `settle()` wrapper, so the engine kept trading). It needs an
 `eth_getLogs` error on the same trade. Fix: `pulls = []` before the `try` (test 18r). The pull-before-sell and near-miss halts cannot be
 decided without the logs, before or after the fix; the engine now logs an alarm (`pull check unreadable: check the pool's pull by hand`)
-instead of only a `pull_check` field in `trade_done`. Whether the crash fired on Oct 10: checked on the box on Oct 11 (`sudo grep -c '"settle failed"' /var/log/flip/engine.jsonl`): **0**, so no
-trade is missing from the day's record. The runbook's wait-for-trade restart is no longer needed (9.2 updated).
+instead of only a `pull_check` field in `trade_done`. Whether the crash fired on Oct 10: the first check on Oct 11 (`grep -c` on `/var/log/flip/engine.jsonl`) printed 0, but it read an empty
+file: the log rotates daily (`copytruncate`, `deploy/flip_setup.sh`), so after midnight the live file holds only the new day and Oct 10 is in
+`engine.jsonl.1`. **Any check of a past day must go through `deploy/englog.py`** (it reads the rotations):
+`sudo python3 ~/v2pons/deploy/englog.py 96 | grep -c '"settle failed"'`. Result: pending when this was written. The runbook's wait-for-trade restart is no longer needed (9.2 updated).
 
 A second Opus review of the fix commit (f0681da; its diff, mutation tests and six suite runs under CPU load) found it safe to deploy and
 nothing that changes the normal live path. Its two low notes: the alarm above (added); a stop can still end before `trade_done` when the
@@ -1066,8 +1068,8 @@ report-issue; no Discord or Telegram; the terms say most concerns are resolved t
 (what we ran, from which address, when the 403 began, asking whether the block is temporary, what limit was exceeded, what usage is
 permitted, and whether the address can be allowed). (3) The one thing on our side that could have looked like abuse is the reconnect rate:
 `feed_loop` drops the socket after 2.0 s without a message (`feed_stall`) and reconnects after 0.2 s, so a flaky hour could mean many
-handshakes; the owner was asked for the per-hour counts of `feed_connected`/`feed_stall`/`feed_error` from the box's log (recorded below when
-pasted). If they are high, the engine should keep the socket through short gaps (ping-based liveness) before any reconnection. (4) Whether the
+handshakes; the owner was asked for the per-hour counts of `feed_connected`/`feed_stall`/`feed_error` from the box's log (the first attempt read the
+rotated-empty live file, see 16.7; the command must go through `englog.py`; recorded below when pasted). If they are high, the engine should keep the socket through short gaps (ping-based liveness) before any reconnection. (4) Whether the
 block lifts is checked by hand, one handshake at a time (`curl` with the websocket upgrade headers against the feed; 403 while blocked, 101
 when open), not by an automatic loop, and never from another address. (5) The paid feed (Dwellir) stays the sure route.
 
