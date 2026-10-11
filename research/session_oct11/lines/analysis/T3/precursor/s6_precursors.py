@@ -16,6 +16,19 @@ def keys(r):
           f"cls {r['fc']}->{r['tc']}:{r['sel']}", f"from {r['fc'] if r['fc'] not in ('other',) else r['frm'][:10]}"]
     ks += [f"touch {t}" for t in r["touch"]]
     if r["val"] > 0 and r["sel"] == "": ks.append(f"eth-send {r['fc']}->{r['tc']}")
+    if r["to"] == BOT: ks.append("ANY tx to the bot router")
+    if r["fc"] in ("botwallet", "BUYER"): ks.append("ANY tx from a bot wallet")
+    if r["tc"] == "POSM" and r["clen"] == 1444: ks.append("a 1444-byte PositionManager launch (any line)")
+    if r["tc"] == "POSM": ks.append("ANY tx to the PositionManager")
+    if r["fc"] == "BUYER": ks.append("ANY tx from T's buyer wallet")
+    if r["fc"] == "LAUNCHER": ks.append("ANY tx from the pool's launcher")
+    if r["fc"] in ("LAUNCHER", "otherlauncher"): ks.append("ANY tx from a line launcher (any pool)")
+    if r["fc"] == "SENTINEL": ks.append("ANY tx from the sentinel 0xe71a69f4")
+    if r["tc"] == "PERMIT2": ks.append("ANY tx to Permit2")
+    if r["tc"] == "TOKEN" or any(t.startswith(("token", "pid", "pool_log")) for t in r["touch"]): ks.append("ANY tx touching the pool or its token")
+    if any(t.startswith("buyer") for t in r["touch"]): ks.append("ANY tx touching T's buyer wallet")
+    if r["val"] > 0 and r["tc"] in ("BUYER", "botwallet"): ks.append("ETH sent to a bot wallet")
+    if any(t.startswith("otherline") for t in r["touch"]): ks.append("ANY event in another line pool")
     return ks
 occ = collections.defaultdict(lambda: collections.defaultdict(set))   # key -> d -> set(pid)
 bg = collections.defaultdict(lambda: collections.defaultdict(int))     # key -> pid -> count of blocks with it in L+4..T-13
@@ -43,10 +56,17 @@ def table(S, label, top=40):
         cnt = [len(dd[d] & S) for d in range(13)]
         w14 = len(set().union(*[dd[d] & S for d in range(1, 5)]))
         r = rate(k, S); exp = len(S) * (1 - (1 - r) ** 4) if r is not None else None
-        if w14 >= 0.15 * len(S): cand.append((w14, k, cnt, r, exp))
-    cand.sort(key=lambda x: -x[0])
-    for w14, k, cnt, r, exp in cand[:top]:
-        print(f"  {k[:62]:62s} win1-4 {w14:3d} ({100*w14/len(S):3.0f}%) exp {exp if exp is None else round(exp,1)!s:>6} bg/blk {('%.3f' % r) if r is not None else '  -  '} | " + " ".join(f"{c:3d}" for c in cnt))
+        base = sum(cnt[5:13]) / 8; peak = max(cnt[1:5]); dpk = 1 + cnt[1:5].index(peak)
+        cand.append(dict(k=k, cnt=cnt, w14=w14, r=r, exp=exp, base=base, peak=peak, dpk=dpk, ratio=(peak + 0.5) / (base + 0.5)))
+    def show(c):
+        print(f"  {c['k'][:60]:60s} win1-4 {c['w14']:3d} ({100*c['w14']/len(S):3.0f}%) exp {c['exp'] if c['exp'] is None else round(c['exp'],1)!s:>6} "
+              f"peak d={c['dpk']} {c['peak']:3d} vs bg {c['base']:5.1f} (x{c['ratio']:.1f}) | " + " ".join(f"{x:3d}" for x in c["cnt"]))
+    print("  -- by coverage of d 1..4 (top %d)" % top)
+    for c in sorted(cand, key=lambda c: -c["w14"])[:top]: show(c)
+    print("  -- by the peak at one d in 1..4 against d 5..12 (keys seen in >= 10% of pools at their peak)")
+    for c in sorted([c for c in cand if c["peak"] >= 0.10 * len(S)], key=lambda c: -c["ratio"])[:25]: show(c)
+    print("  -- named keys")
+    for c in sorted([c for c in cand if c["k"].startswith(("ANY", "a 1444", "ETH sent"))], key=lambda c: c["k"]): show(c)
     return cand
 c1 = table(disc, "DISCOVERY (older two thirds)")
 c2 = table(hold, "HELD OUT (most recent third)")

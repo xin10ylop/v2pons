@@ -46,7 +46,7 @@ for l, t in zip(cand, ltx):
     if line is None: print("  1444-byte PositionManager launch with value", v / 1e18); continue
     if line == "3.0" and not (W(l["data"], 0) == 10000 and sgn(W(l["data"], 1)) == 200 and W(l["data"], 3) == SQRT30):
         print("  3.0 launch with other shape", W(l["data"], 0), sgn(W(l["data"], 1)), W(l["data"], 3)); continue
-    pools.append({"line": line, "fee": W(l["data"], 0), "sqrtP": W(l["data"], 3), "pid": l["topics"][1], "token": "0x" + l["topics"][2][-40:], "L": int(l["blockNumber"], 16), "lti": int(l["transactionIndex"], 16),
+    pools.append({"line": line, "fee": W(l["data"], 0), "sqrtP": W(l["data"], 3), "pid": l["topics"][1], "token": "0x" + l["topics"][3][-40:], "L": int(l["blockNumber"], 16), "lti": int(l["transactionIndex"], 16),
                   "launch_tx": l["transactionHash"], "launcher": t["from"].lower(), "launcher_nonce": int(t["nonce"], 16)})
 print("launches:", collections.Counter(p["line"] for p in pools), flush=True)
 # swaps + liquidity per pool, groups of pools close in time (cached in pools_ev.json)

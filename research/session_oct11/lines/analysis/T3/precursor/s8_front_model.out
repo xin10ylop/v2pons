@@ -1,0 +1,30 @@
+front in time (buy head of T, sell head of T+1), n 200: mean 5.83% median 6.02% min 1.10% max 11.64%
+
+fixed landing offset k: outcome counts and mean return per trade
+  k 16 discovery: in time   1 early 132 late   0 no trade   0 | mean  -99.36% over 133 trades
+  k 18 discovery: in time   5 early 128 late   0 no trade   0 | mean  -96.16% over 133 trades
+  k 20 discovery: in time   4 early 127 late   1 no trade   1 | mean  -96.13% over 132 trades
+  k 22 discovery: in time   3 early 124 late   1 no trade   5 | mean  -96.97% over 128 trades
+  k 24 discovery: in time   2 early 123 late   2 no trade   6 | mean  -96.99% over 127 trades
+  k 26 discovery: in time   7 early 116 late   1 no trade   9 | mean  -93.39% over 124 trades
+  k 28 discovery: in time  16 early 104 late   3 no trade  10 | mean  -83.90% over 123 trades
+  k 30 discovery: in time  11 early  96 late   9 no trade  17 | mean  -82.44% over 116 trades
+  k 32 discovery: in time   7 early  92 late   5 no trade  29 | mean  -88.33% over 104 trades
+  k 34 discovery: in time   8 early  85 late   3 no trade  37 | mean  -88.40% over 96 trades
+  k 36 discovery: in time  15 early  73 late   4 no trade  41 | mean  -78.65% over 92 trades
+  k 38 discovery: in time  12 early  65 late   8 no trade  48 | mean  -76.01% over 85 trades
+  k 40 discovery: in time  13 early  58 late   2 no trade  60 | mean  -78.51% over 73 trades
+  k 42 discovery: in time  13 early  49 late   3 no trade  68 | mean  -74.46% over 65 trades
+  k 44 discovery: in time  15 early  39 late   4 no trade  75 | mean  -66.25% over 58 trades
+  k 46 discovery: in time  14 early  32 late   3 no trade  84 | mean  -64.09% over 49 trades
+  k 48 discovery: in time   9 early  25 late   5 no trade  94 | mean  -62.92% over 39 trades
+  k 50 discovery: in time  10 early  20 late   2 no trade 101 | mean  -60.26% over 32 trades
+  k 52 discovery: in time  11 early  11 late   3 no trade 108 | mean  -41.87% over 25 trades
+  k 54 discovery: in time  11 early   4 late   5 no trade 113 | mean  -17.28% over 20 trades
+  k 56 discovery: in time   6 early   1 late   4 no trade 122 | mean   -6.14% over 11 trades
+  k 58 discovery: in time   1 early   1 late   2 no trade 129 | mean  -24.78% over 4 trades
+  k 60 discovery: in time   1 early   0 late   0 no trade 132 | mean    4.43% over 1 trades
+  k 62 discovery: in time   0 early   0 late   1 no trade 132 | mean   -2.50% over 1 trades
+
+best k on discovery 60 (mean 4.43%); held out: in time 0 early 0 late 2 no trade 65 | mean -2.50% over 2 trades, $-0.38 a trade at $15
+break-even: with in-time gain 5.83% and early -100%, a rule needs in-time / (in-time + early) >= 94.5% (ignoring late)
