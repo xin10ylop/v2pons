@@ -1296,7 +1296,19 @@ for i in range(8):                                                              
     L = 14600 + 50 * i; E.state["armed"].clear(); front_launch(L, 130 + i); E.ingest(frame(L + 9, [signed(CROWD, BOT, int(0.15e18), FBUY, 320 + i)]))
 r = events("room")[-1]; assert r["ahead_eth"] == 0 and 0.0120 < r["room_eth"] < 0.0128 and r["obs"] == 8, r
 assert E.auto_stake(base) == int(0.0097e18), E.auto_stake(base)
-E.state["position"] = None; E.state["armed"].clear(); front_launch(15100, 140); assert E.state["position"]["stake"] == int(0.0097e18), E.state["position"]["stake"]
+E.state["position"] = None; E.state["armed"].clear(); front_launch(15100, 140); pos = E.state["position"]; assert pos["stake"] == int(0.0097e18), pos["stake"]
+E.ingest(frame(15101, [SENT[-1][1]])); assert pos["buy_seq"] == 15101
+for s_ in range(15102, 15102 + E.FRONT_HOLD_BLOCKS):
+    E.ingest(frame(s_, []))
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(15101, -int(0.0097e18), pos["feed_tokens"], pid=FPID); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(15120, int(0.0097e18 * 0.99), -pos["feed_tokens"], pid=FPID)
+assert wait_for(lambda: done_at(pos["nonce"])); d = done_at(pos["nonce"])[-1]
+assert d.get("room_obs_reset") is True and "v2.433" not in E.state["room_obs"] and E.auto_stake(base) == int(0.002e18), (d.get("room_obs_reset"), E.auto_stake(base))   # a raised stake that did not pay: back to the floor
+E.state["front_nonbot_streak"] = {}; E.state["position"] = {"pid": "0x" + "00" * 32, "dry": False, "buy_hash": None, "buy_seq": 1, "sell_sent": True, "plan_buy_seq": 0, "send_after": 0, "feed_tokens": None, "entry": "front"}
+for i in range(8):                                                                                   # eight clean pools again, then one decoyed one: the stake comes down at once
+    L = 15200 + 50 * i; E.state["armed"].clear(); front_launch(L, 150 + i); E.ingest(frame(L + 9, [signed(CROWD, BOT, int(0.15e18), FBUY, 340 + i)]))
+assert E.auto_stake(base) == int(0.0097e18)
+E.state["armed"].clear(); front_launch(15700, 160); p = E.state["armed"][FPID]; E.ingest(frame(15701, [DUST(360), signed(CROWD, UR, int(0.00495e18), "0x12345678" + w(FTOKEN), 361)])); E.ingest(frame(15709, [signed(CROWD, BOT, int(0.15e18), FBUY, 362)]))
+assert int(0.0021e18) <= E.auto_stake(base) <= int(0.0026e18), E.auto_stake(base)                      # one decoyed pool among the last five caps the percentile
 E.FRONT_AUTO_STAKE = False; assert E.fam_stake(base) == int(0.0097e18), "auto stake off: the family's stake"
 base.update(saved); E.state["room_obs"] = {}; E.state["position"] = None; reset(); E.FRONT = False; E.ENTRY = "follow"
 print("ok known fingerprints (fees_also, tick_spacings_also) arm, an unseen fee is refused; the auto stake measures the room at each bot buy and sizes the stake from the minimum to the family's ceiling")

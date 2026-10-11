@@ -144,11 +144,6 @@ FRONT_DAILY_STOP_USD = float(env("FRONT_DAILY_STOP_USD", "5"))                  
 # if the bot changed its token. Senders are fresh wallets (532 of 532 distinct) minting to themselves: no address to allowlist.
 FRONT_PIN = env("FRONT_PIN", "0") != "0"
 FRONT_FEE = int(env("FRONT_FEE", "2500")); FRONT_TICK_SPACING = int(env("FRONT_TICK_SPACING", "50"))
-FRONT_FEES_ALSO = {int(x) for x in env("FRONT_FEES_ALSO", "").split(",") if x.strip()}                 # other fees / tick spacings the line is known to use (Oct 11: 2500/50 -> 5000/100):
-FRONT_TICK_SPACINGS_ALSO = {int(x) for x in env("FRONT_TICK_SPACINGS_ALSO", "").split(",") if x.strip()}   # a launch at any listed pair trades; anything unseen is still refused
-FRONT_AUTO_STAKE = env("FRONT_AUTO_STAKE", "0") != "0"                                                   # size the stake to the room the bot's own decoys leave (see auto_stake)
-FRONT_AUTO_STAKE_MIN_ETH = float(env("FRONT_AUTO_STAKE_MIN_ETH", "0.002")); FRONT_AUTO_STAKE_MARGIN_ETH = float(env("FRONT_AUTO_STAKE_MARGIN_ETH", "0.0004"))
-FRONT_AUTO_STAKE_OBS = int(env("FRONT_AUTO_STAKE_OBS", "5")); FRONT_AUTO_STAKE_WINDOW = int(env("FRONT_AUTO_STAKE_WINDOW", "30")); FRONT_AUTO_STAKE_PCT = float(env("FRONT_AUTO_STAKE_PCT", "25"))
 FRONT_SQRT_P = int(env("FRONT_SQRT_P", "1604517591721945638372359205383840")); FRONT_LIQ = int(env("FRONT_LIQ", "49279426163460954002188"))
 # the bot's first buy (0.05-0.25 ETH) is quoted at the launch state with minOut 99% of that quote: about 0.012 ETH bought ahead of it makes it revert
 FRONT_BOT_MIN_ETH = float(env("FRONT_BOT_MIN_ETH", "0.04")); FRONT_BOT_MIN_WEI = int(FRONT_BOT_MIN_ETH * 1e18); FRONT_BOT_MINOUT = float(env("FRONT_BOT_MINOUT", "0.99"))
@@ -206,6 +201,30 @@ def _num(v, what, lo, hi, integer=False):
     if not lo <= v <= hi:
         raise SystemExit(f"{what} {v!r} is not in {lo}..{hi}")
     return int(v) if integer else float(v)
+
+
+def _int_list(name, lo, hi):
+    """a comma list of whole numbers in a setting (a wrong one stops the start with its name, like the other settings)"""
+    out = set()
+    for x in env(name, "").split(","):
+        if x.strip():
+            if not x.strip().isdigit() or not lo <= int(x) <= hi:
+                raise SystemExit(f"{name} must be a comma list of whole numbers in {lo}..{hi}, not {x.strip()!r}")
+            out.add(int(x))
+    return out
+
+
+def _setting(name, default, lo, hi, integer=False):
+    v = _num(float(env(name, default)) if not integer else int(env(name, default)), name, lo, hi, integer)
+    return v
+
+
+FRONT_FEES_ALSO = _int_list("FRONT_FEES_ALSO", 1, 999999)                                                 # other fees / tick spacings the line is known to use (Oct 11: 2500/50 -> 5000/100):
+FRONT_TICK_SPACINGS_ALSO = _int_list("FRONT_TICK_SPACINGS_ALSO", 1, 32767)                                # a launch at any listed value trades; anything unseen is still refused
+FRONT_AUTO_STAKE = env("FRONT_AUTO_STAKE", "0") != "0"                                                   # size the stake to the room the bot's own decoys leave (see auto_stake)
+FRONT_AUTO_STAKE_MIN_ETH = _setting("FRONT_AUTO_STAKE_MIN_ETH", "0.002", 0.0005, 0.012); FRONT_AUTO_STAKE_MARGIN_ETH = _setting("FRONT_AUTO_STAKE_MARGIN_ETH", "0.0004", 0.0, 0.01)
+FRONT_AUTO_STAKE_WINDOW = _setting("FRONT_AUTO_STAKE_WINDOW", "30", 5, 500, True); FRONT_AUTO_STAKE_OBS = _setting("FRONT_AUTO_STAKE_OBS", "5", 1, FRONT_AUTO_STAKE_WINDOW, True)
+FRONT_AUTO_STAKE_PCT = _setting("FRONT_AUTO_STAKE_PCT", "25", 0.0, 100.0)
 
 
 def _flag(v, what):
@@ -1276,6 +1295,8 @@ def _settle(pos):
         with lock:
             state["front_nonbot_streak"][fam] = 0 if paid else state["front_nonbot_streak"].get(fam, 0) + 1
             streak = state["front_nonbot_streak"][fam]
+            if FRONT_AUTO_STAKE and not paid and pos["stake"] > int(FRONT_AUTO_STAKE_MIN_ETH * 1e18) and state["room_obs"].pop(fam, None) is not None:
+                out["room_obs_reset"] = True                                                  # a raised stake that did not pay: the room may be taken by what the feed cannot see; back to the floor
         out["nonbot_streak"] = streak; out["bot_exit"] = bool(pos.get("bot_exit"))
         if streak >= FRONT_NONBOT_HALT and state["front_halted"] is None and not state["fam_halted"].get(fam):
             out["nonbot_halted"] = halt(f"{streak} {fam} front trades in a row paid under {FRONT_NONBOT_MIN_RET:+.0%} (last: {pos.get('sell_why')}, {pnl / eth_in:+.1%}): "
@@ -1457,6 +1478,7 @@ def auto_stake(fam):
     if not obs or len(obs) < FRONT_AUTO_STAKE_OBS:
         return floor
     xs = sorted(obs); x = xs[min(len(xs) - 1, int(len(xs) * FRONT_AUTO_STAKE_PCT / 100))]
+    x = min(x, min(list(obs)[-5:]))                                                           # one decoyed pool among the last five brings the stake down at the next fire
     return max(floor, min(cap, (x - int(FRONT_AUTO_STAKE_MARGIN_ETH * 1e18)) // 10 ** 14 * 10 ** 14))
 
 
