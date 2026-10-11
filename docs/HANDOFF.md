@@ -6,9 +6,10 @@ the handoff, and what is open. It was written on Oct 10, 2026 at about 12:00 UTC
 on the trading strategies (its work on them was interrupted by an automated safety system twice; see section 14). Nothing about the
 repository, the engine or the box is broken: the engine was running live on both strategies when this was written.
 
-**Updated Oct 10 19:10 UTC by the second session** (section 16): open items 12.1 and 12.4 are answered from the chain, 12.3's near-miss halt
-and 12.5's payout command are built and tested, 12.2's independent review completed (16.7: safe, one high side finding fixed; 51 tests).
-The box runs 4dce46e since 13:33; the engine is **stopped** since 18:30 because the feed's operator blocked the box (16.11).
+**Updated Oct 11 03:00 UTC by the second session** (section 16): open items 12.1 and 12.4 are answered from the chain, 12.3's near-miss halt
+and 12.5's payout command are built and tested, 12.2's independent review completed (16.7: safe, one high side finding fixed; 51 tests), 12.6's
+scanner ran (16.12). The box's clone is on branch `claude/laughing-fermat-48ylv7` at de88eb9 since Oct 11 02:50 UTC (51 tests there); the
+engine is **stopped** since Oct 10 18:30 because the feed's operator blocked the box (16.11). `flip_setup.sh` has not been re-run (16.7 C3).
 
 **Oct 10 18:35 UTC: the sequencer feed's operator has blocked the box's address range and says that routing around the block is
 unauthorized (section 16.11). The engine is stopped; it cannot trade without the feed. Read 16.11 before anything else.**
@@ -37,7 +38,8 @@ about the project is in them."** The agent then has the whole picture.
    `cd ~/v2pons && git log --oneline -1 && sudo python3 ~/v2pons/deploy/results.py | head -24` and
    `sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py status`, and paste both. That gives the commit on the box, both
    strategies' state and halts, today's profit per strategy, the operator's pull margins, and the wallet and relay balances.
-8. Then work section 12 in order. Rules that held throughout: every change is tested (51 ok), committed and pushed (the box pulls `claude/pensive-rubin-rkj996`; the Oct 10 afternoon's work is on
+8. Then work section 12 in order. Rules that held throughout: every change is tested (51 ok), committed and pushed (the box pulled `claude/pensive-rubin-rkj996` until Oct 11, when it was switched to
+`claude/laughing-fermat-48ylv7`; the Oct 10 afternoon's work is on
    `claude/laughing-fermat-48ylv7`, a fast-forward of it, section 16.6); every box step is one numbered command with its expected output and "if any of them fails, stop and paste
    it to me"; a code change on the box is `git pull`, the test count, then a restart that waits for the trade in progress (section 9.2);
    the private key is never printed, pasted or committed; nothing is deployed live without a dry run first.
@@ -626,12 +628,11 @@ push access from the box (section 11.4: a deploy key with write access, or a tok
 - Relay about 0.257 ETH; wallet about 0.0026 ETH (about a day of gas at the Oct 10 pace).
 
 ### 11.2 Pushed but not on the box
-- (Superseded 13:33 UTC Oct 10: the box pulled 4dce46e, which carries ea66cc2, a8ccc3e, 4e8d350, 3a47c34, c9d0201 and 792a8c5.)
-  ea66cc2's review completed at 19:00 (16.7): safe. What is pushed and **not** on the box as of 19:10: 0c76f23 and later on
-  `claude/laughing-fermat-48ylv7` (size rule default off, relay_sim fix, the feed's User-Agent and `FEED_HEADERS`, and the safe-stop fixes of
-  16.7, among them the `pulls` crash fix that must be installed before the engine trades again). Install: `cd ~/v2pons && git pull &&
-  /opt/flip-venv/bin/python3 tests/test_engine.py 2>&1 | grep -c "^ok"` (expect 51), `sudo bash deploy/flip_setup.sh` once for the unit's
-  `TimeoutStopSec` (it restarts the service: run it only when the engine may run again).
+- Nothing, as of Oct 11 02:50 UTC: the box's clone was switched to `claude/laughing-fermat-48ylv7` (`git checkout -B` on origin's branch; its
+  local `claude/pensive-rubin-rkj996` had been reset to 4dce46e at 13:33 while still tracking origin's, so `git pull` said "Already up to
+  date" and installed nothing until the switch) and is at de88eb9 with 51 tests. A plain `git pull` now follows the right branch. Still
+  pending on the box: `sudo bash deploy/flip_setup.sh` once for the unit's `TimeoutStopSec` (16.7 C3; it restarts the service, so only when
+  the engine may run again), and the env settings of 16.6/16.10 that the owner has not decided (stake, daily stop).
 
 ### 11.3 Money
 - Front's profit sits in the relay, which is controlled by the hot key on the box. `relay_ops.py withdraw` moves ETH to the box's wallet;
@@ -912,8 +913,8 @@ inside the `try`. The settle then aborted with a `settle failed` alarm: no `trad
 halting front (the position was cleared and the nonce refreshed by the `settle()` wrapper, so the engine kept trading). It needs an
 `eth_getLogs` error on the same trade. Fix: `pulls = []` before the `try` (test 18r). The pull-before-sell and near-miss halts cannot be
 decided without the logs, before or after the fix; the engine now logs an alarm (`pull check unreadable: check the pool's pull by hand`)
-instead of only a `pull_check` field in `trade_done`. Whether the crash fired today: `sudo grep -c '"settle failed"' /var/log/flip/engine.jsonl`
-on the box (not yet checked when this was written). The runbook's wait-for-trade restart is no longer needed (9.2 updated).
+instead of only a `pull_check` field in `trade_done`. Whether the crash fired on Oct 10: checked on the box on Oct 11 (`sudo grep -c '"settle failed"' /var/log/flip/engine.jsonl`): **0**, so no
+trade is missing from the day's record. The runbook's wait-for-trade restart is no longer needed (9.2 updated).
 
 A second Opus review of the fix commit (f0681da; its diff, mutation tests and six suite runs under CPU load) found it safe to deploy and
 nothing that changes the normal live path. Its two low notes: the alarm above (added); a stop can still end before `trade_done` when the
