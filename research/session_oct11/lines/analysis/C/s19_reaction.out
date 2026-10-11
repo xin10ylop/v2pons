@@ -1,0 +1,40 @@
+
+tok:0f34e3b5: crowd fingerprints [('0x89e5db8b', '7ff36ab5', 228, 5200)]
+  pulled within 50 blocks: after a stranger's buy 0/13 (0.00)  | after the first crowd buy, no stranger 0/586 (0.00)
+  pulled within 100 blocks: after a stranger's buy 12/13 (0.92)  | after the first crowd buy, no stranger 9/586 (0.02)
+  pulled within 150 blocks: after a stranger's buy 12/13 (0.92)  | after the first crowd buy, no stranger 46/586 (0.08)
+  pulled within 300 blocks: after a stranger's buy 12/13 (0.92)  | after the first crowd buy, no stranger 82/586 (0.14)
+  pull delay after the stranger (blocks), first 25: [77, 80, 80, 80, 81, 82, 83, 85, 86, 86, 95, 95]
+  strangers: [(('0x89e5db8b', 'b6f9de95'), 5), (('0x65050a9b', '4d819a2a'), 2), (('0xccc88a9d', '0a2b8f36'), 2), (('0x56d131df', '99e1d016'), 1), (('0xb300000b', '810c705b'), 1)]
+
+tok:70adce63: crowd fingerprints [('0x89e5db8b', '7ff36ab5', 228, 8525)]
+  pulled within 50 blocks: after a stranger's buy 0/61 (0.00)  | after the first crowd buy, no stranger 0/1119 (0.00)
+  pulled within 100 blocks: after a stranger's buy 0/61 (0.00)  | after the first crowd buy, no stranger 0/1119 (0.00)
+  pulled within 150 blocks: after a stranger's buy 0/61 (0.00)  | after the first crowd buy, no stranger 3/1119 (0.00)
+  pulled within 300 blocks: after a stranger's buy 47/61 (0.77)  | after the first crowd buy, no stranger 14/1119 (0.01)
+  pull delay after the stranger (blocks), first 25: [151, 162, 162, 163, 163, 164, 168, 168, 169, 170, 170, 171, 173, 173, 174, 175, 177, 178, 179, 183, 183, 184, 187, 187, 189]
+  strangers: [(('0x89e5db8b', 'b6f9de95'), 17), (('0xccc88a9d', '0a2b8f36'), 15), (('0x204faca1', '3593564c'), 11), (('0xb92fe925', 'cd6e13f7'), 3), (('0x6e2a35a7', '0c307f76'), 3)]
+
+tok:d4e7eae4: crowd fingerprints [('0x80114879', '3593564c', 484, 493), ('0xd26c8cfc', '3593564c', 484, 363), ('0xa28f468c', '3593564c', 484, 343), ('0x80114879', 'a0193551', 452, 294)]
+  pulled within 50 blocks: after a stranger's buy 16/571 (0.03)  | after the first crowd buy, no stranger 14/356 (0.04)
+  pulled within 100 blocks: after a stranger's buy 67/571 (0.12)  | after the first crowd buy, no stranger 61/356 (0.17)
+  pulled within 150 blocks: after a stranger's buy 148/571 (0.26)  | after the first crowd buy, no stranger 91/356 (0.26)
+  pulled within 300 blocks: after a stranger's buy 273/571 (0.48)  | after the first crowd buy, no stranger 129/356 (0.36)
+  pull delay after the stranger (blocks), first 25: [9, 21, 27, 28, 34, 36, 37, 39, 43, 46, 47, 48, 49, 50, 50, 50, 52, 54, 54, 55, 56, 60, 63, 64, 65]
+  strangers: [(('0x570759db', '414bf389'), 301), (('0x65050a9b', '4d819a2a'), 111), (('0xccc88a9d', '0a2b8f36'), 35), (('0xf0b7eaaf', '39ecce49'), 23), (('0xf2c69db0', 'a65563f0'), 19)]
+
+lc:0a493d1a|13ead562: crowd fingerprints [('0xcaf681a6', '04e45aaf', 228, 968)]
+  pulled within 50 blocks: after a stranger's buy 3/55 (0.05)  | after the first crowd buy, no stranger 11/376 (0.03)
+  pulled within 100 blocks: after a stranger's buy 3/55 (0.05)  | after the first crowd buy, no stranger 137/376 (0.36)
+  pulled within 150 blocks: after a stranger's buy 3/55 (0.05)  | after the first crowd buy, no stranger 244/376 (0.65)
+  pulled within 300 blocks: after a stranger's buy 3/55 (0.05)  | after the first crowd buy, no stranger 346/376 (0.92)
+  pull delay after the stranger (blocks), first 25: [39, 40, 48, 347, 379, 1426, 2297, 2398]
+  strangers: [(('0x597dcbaa', '34fcd5be'), 52), (('0xf2c69db0', 'a65563f0'), 1), (('0x475bf67c', '34fcd5be'), 1), (('0x55083679', '34fcd5be'), 1)]
+
+lc:89885b75|d27d1e00: crowd fingerprints [('0xcaf681a6', '04e45aaf', 228, 444)]
+  pulled within 50 blocks: after a stranger's buy 0/70 (0.00)  | after the first crowd buy, no stranger 0/69 (0.00)
+  pulled within 100 blocks: after a stranger's buy 0/70 (0.00)  | after the first crowd buy, no stranger 0/69 (0.00)
+  pulled within 150 blocks: after a stranger's buy 0/70 (0.00)  | after the first crowd buy, no stranger 0/69 (0.00)
+  pulled within 300 blocks: after a stranger's buy 6/70 (0.09)  | after the first crowd buy, no stranger 1/69 (0.01)
+  pull delay after the stranger (blocks), first 25: [153, 174, 181, 194, 254, 260, 311, 341, 419, 427, 428, 533, 534, 867, 952, 994, 1175, 1220, 1251, 1290, 1390, 1469, 1782, 2205, 2450]
+  strangers: [(('0x88767899', '3593564c'), 28), (('0x65050a9b', '4d819a2a'), 24), (('0x80ddae50', 'c2dfc72c'), 8), (('0xcaf681a6', '5ae401dc'), 7), (('0xf2c69db0', 'a65563f0'), 1)]

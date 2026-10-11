@@ -1,0 +1,13 @@
+(1) tok:0f34e3b5 stranger buys (fetched txs only)
+  with a non-fleet buy >= 0.001 ETH before the pull: pools 32 pulled 31 (0.97)
+  without: pools 571 pulled 134 (0.23)
+  pull delay after the stranger's buy (blocks) sorted: [77, 80, 80, 80, 81, 82, 83, 84, 85, 85, 86, 86, 86, 87, 87, 88, 88, 89, 89, 90, 90, 90, 90, 90, 91, 94, 95, 95, 95, 96]
+  strangers: [(('0x89e5db8b', 'b6f9de95'), 12), (('0xccc88a9d', '0a2b8f36'), 6), (('0xf5307745', '5f575529'), 3), (('0x65050a9b', '4d819a2a'), 2), (('0x5ff137d4', '1fad948c'), 1), (('0x00000000', '765e827f'), 1)]
+(2) strict feed key: 0x73991a25 multicall ac9650d8, 836 bytes, fee 100, value 0
+  launches 1046 token templates [('d4e7eae4', 1013), ('1d7cd90a', 22), ('cb79985d', 11)]
+  k=1 cap=80: n 1046/1046 mean +4.6% med +0.2% win 0.88 worst -0% pulled<=sell 0.000 $/trade +0.662 $/day +98.9  days d0..d6 +4.1%(153) +8.6%(155) +3.0%(167) +5.6%(149) +4.0%(142) +3.7%(134) +2.9%(146)
+  k=20 cap=80: n 1046/1046 mean +8.5% med +0.2% win 0.88 worst -0% pulled<=sell 0.000 $/trade +1.240 $/day +185.3  days d0..d6 +8.9%(153) +15.9%(155) +6.2%(167) +10.3%(149) +5.7%(142) +6.3%(134) +5.5%(146)
+  k=1 cap=100: n 1046/1046 mean +4.7% med +0.6% win 0.92 worst -100% pulled<=sell 0.017 $/trade +0.684 $/day +102.2  days d0..d6 +3.8%(153) +3.2%(155) +3.3%(167) +7.4%(149) +4.6%(142) +6.8%(134) +4.4%(146)
+  k=20 cap=100: n 1046/1046 mean +10.2% med +1.0% win 0.92 worst -100% pulled<=sell 0.018 $/trade +1.496 $/day +223.6  days d0..d6 +9.2%(153) +12.4%(155) +9.4%(167) +13.6%(149) +7.5%(142) +10.6%(134) +8.3%(146)
+  k=1 cap=120: n 1046/1046 mean +3.9% med +2.0% win 0.92 worst -100% pulled<=sell 0.036 $/trade +0.562 $/day +84.0  days d0..d6 +1.4%(153) -1.5%(155) +1.6%(167) +7.6%(149) +6.1%(142) +8.5%(134) +4.8%(146)
+  k=20 cap=120: n 1046/1046 mean +10.2% med +3.7% win 0.92 worst -100% pulled<=sell 0.037 $/trade +1.494 $/day +223.3  days d0..d6 +7.7%(153) +8.1%(155) +9.2%(167) +14.9%(149) +9.7%(142) +12.5%(134) +9.6%(146)

@@ -1,0 +1,33 @@
+census d0: pools 71 | buys>=0.01 per pool p10/50/90 (0, 2, 9) | ETH p10/50/90 (0.0, 0.55, 2.2898) | pools with no such buy 16 (23%)
+census d1: pools 44 | buys>=0.01 per pool p10/50/90 (1.0, 6.0, 18.0) | ETH p10/50/90 (0.1756, 1.3205, 2.9557) | pools with no such buy 2 (5%)
+census d2: pools 67 | buys>=0.01 per pool p10/50/90 (0.0, 2, 17.4) | ETH p10/50/90 (0.0, 0.453, 2.9848) | pools with no such buy 16 (24%)
+census d3: pools 82 | buys>=0.01 per pool p10/50/90 (0.0, 4.0, 8.0) | ETH p10/50/90 (0.0, 0.6794, 2.4168) | pools with no such buy 13 (16%)
+census d4: pools 112 | buys>=0.01 per pool p10/50/90 (0.0, 3.0, 8.0) | ETH p10/50/90 (0.0, 0.378, 2.5598) | pools with no such buy 33 (29%)
+census d5: pools 109 | buys>=0.01 per pool p10/50/90 (0.0, 5, 14.2) | ETH p10/50/90 (0.0, 0.657, 3.0316) | pools with no such buy 21 (19%)
+census d6: pools 88 | buys>=0.01 per pool p10/50/90 (0.0, 3.0, 9.0) | ETH p10/50/90 (0.0, 0.31, 2.0681) | pools with no such buy 20 (23%)
+census last-48h slice 0 (10-09 13:52+6h): pools 60 | buys>=0.01 per pool p10/50/90 (0.0, 5.0, 8.0) | ETH p10/50/90 (0.0, 0.6485, 2.267) | pools with no such buy 11 (18%)
+census last-48h slice 1 (10-09 19:52+6h): pools 26 | buys>=0.01 per pool p10/50/90 (0.0, 4.0, 10.0) | ETH p10/50/90 (0.0, 0.565, 2.038) | pools with no such buy 7 (27%)
+census last-48h slice 2 (10-10 01:52+6h): pools 16 | buys>=0.01 per pool p10/50/90 (0.5, 7.5, 30.0) | ETH p10/50/90 (0.025, 1.122, 3.8785) | pools with no such buy 2 (12%)
+census last-48h slice 3 (10-10 07:52+6h): pools 7 | buys>=0.01 per pool p10/50/90 (2.4, 10, 25.2) | ETH p10/50/90 (0.2628, 2.973, 6.6056) | pools with no such buy 1 (14%)
+census last-48h slice 4 (10-10 13:52+6h): pools 32 | buys>=0.01 per pool p10/50/90 (0.0, 1.0, 9.0) | ETH p10/50/90 (0.0, 0.198, 1.4547) | pools with no such buy 6 (19%)
+census last-48h slice 5 (10-10 19:52+6h): pools 22 | buys>=0.01 per pool p10/50/90 (0.1, 3.0, 6.0) | ETH p10/50/90 (0.001, 0.3125, 2.169) | pools with no such buy 3 (14%)
+census last-48h slice 6 (10-11 01:52+6h): pools 15 | buys>=0.01 per pool p10/50/90 (0.0, 3, 18.2) | ETH p10/50/90 (0.0, 0.433, 3.124) | pools with no such buy 6 (40%)
+census last-48h slice 7 (10-11 07:52+6h): pools 19 | buys>=0.01 per pool p10/50/90 (0.0, 3, 9.0) | ETH p10/50/90 (0.0, 0.347, 1.786) | pools with no such buy 5 (26%)
+  fresh 0x9bcc546e7c trig +61: wave buys 1 ETH 0.149 trade 0.02849262046325411
+  fresh 0x5ada5a1446 trig +113: wave buys 0 ETH 0.000 trade -0.0015416740136470993
+  fresh 0xdf4e483fc0 trig +105: wave buys 1 ETH 0.749 trade 0.1530751143755905
+  fresh 0xbc29e64bbc trig +79: wave buys 0 ETH 0.000 trade -0.0014974107641379615
+  fresh 0x85bc277ff0 trig +41: wave buys 1 ETH 0.040 trade 0.0064630293412085895
+  fresh 0xd73b2c0fc1 trig +100: wave buys 0 ETH 0.000 trade -0.0014575522297088236
+  fresh 0x7e9e5906d9 trig +83: wave buys 1 ETH 0.180 trade 0.03456855873820548
+  fresh 0xfd22e2758d trig +66: wave buys 1 ETH 0.119 trade 0.02245724799934704
+  fresh 0x0dc552bc1d trig +110: wave buys 0 ETH 0.000 trade -0.0015416736397657201
+  fresh 0xf470c405da trig +66: wave buys 0 ETH 0.000 trade 0.00018853404721479714
+  fresh 0x7d64b2b8ed trig +74: wave buys 0 ETH 0.000 trade -0.0015416743328391684
+  fresh 0x3c5661913b trig +132: wave buys 0 ETH 0.000 trade -0.001541673825806065
+  fresh 0x03e22aaf4b trig +35: wave buys 1 ETH 0.108 trade 0.019638730301899797
+  fresh 0x087a928e57 trig +86: wave buys 1 ETH 0.135 trade 0.025455207032976004
+  fresh 0x8cfc164076 trig +77: wave buys 0 ETH 0.000 trade -0.001541673658083651
+  fresh 0xb128d40a9d trig +56: wave buys 1 ETH 0.108 trade 0.019037682124474282
+  fresh 0xd1d9991f40 trig +64: wave buys 1 ETH 0.060 trade 0.009355910183252039
+post-census (Oct 11 13:52 -> head): pools 17 | buys>=0.01 per pool p10/50/90 (0.0, 1, 1.0) | ETH p10/50/90 (0.0, 0.0396, 0.1617) | pools with no such buy 8 (47%)

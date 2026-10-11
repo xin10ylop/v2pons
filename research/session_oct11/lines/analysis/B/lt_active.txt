@@ -1,0 +1,164 @@
+c873e135|ac9650d8#cb79985d n=946 /d [117, 60, 141, 153, 179, 158, 138] w909 | 0x58daec31:ac9650d8:2276 94%, 0x58daec31:ac9650d8:1892 4% | val 0.0 98%, 0.0012177 1% | ptx 1 100%
+  ETH 75%, WETH 20% | 100/1 94%, 883131/200 1% | h0 100% sqrt 90% liq 100% off 0/0/0
+  frb 77% off 71/116/214 eth 0.1400 topsz 2% inL 0% lw 0% eoas 97 0x7a685ac7 10% alsoLc 99% np 56.0 fp 0xd6d35b56:e6cb474f:484 99%
+  pulled 62% off 146/360/1961 full 100% bFrb 0% lw 100% | r12nf 1/55 b12 28/834
+bd388118|6276cbbe#4e451d1a n=773 /d [184, 93, 110, 77, 126, 96, 87] w773 | 0x8366a39c:6276cbbe:196 100% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 500/1 100% | h0 88% sqrt 27% liq 100% off 40/42/47
+  frb 92% off 114/125/154 eth 0.0312 topsz 22% inL 0% lw 0% eoas 406 0x91907bee 1% alsoLc 99% np 14.0 fp 0xc9459a24:7169b574:772 21%
+  pulled 38% off 124/452/2432 full 100% bFrb 0% lw 100% | r12nf 0/14 b12 52/746
+42544ef5|2fcb9108#59571c74 n=553 /d [64, 139, 105, 123, 53, 24, 45] w551 | 0x3194e326:2fcb9108:644 100% | val 1.0 3%, 0.95 2% | ptx 1 100%
+  ETH 100% | 20000/200 5%, 10000/200 5% | h0 100% sqrt 3% liq 100% off 0/0/0
+  frb 96% off 37/47/60 eth 0.0539 topsz 1% inL 0% lw 0% eoas 226 0xdc2e8661 15% alsoLc 65% np 83 fp 0x88767899:3593564c:1124 100%
+  pulled 86% off 121/1542/2598 full 100% bFrb 0% lw 100% | r12nf 0/0 b12 28/347
+86b37100|882db707#58d59320 n=486 /d [51, 96, 62, 95, 75, 75, 32] w285 | 0xeb7c0347:882db707:3460 53%, 0xeb7c0347:882db707:3300 32% | val 0.0 100% | ptx 1 100%
+  WETH 97%, ETH 1% | 8388608/200 97%, 8388608/8 1% | h0 0% sqrt 23% liq 100% off 0/0/0
+  frb 22% off 56/124/412 eth 0.0495 topsz 16% inL 0% lw 0% eoas 62 0x21d29bb9 7% alsoLc 72% np 4 fp 0x65050a9b:4d819a2a:580 52%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/33 b12 0/84
+c3cd7006|f0e9eabf#fa4982d5 n=285 /d [0, 0, 6, 22, 212, 31, 14] w92 | 0xc763b179:f0e9eabf:1796 69%, 0xc763b179:f0e9eabf:1924 20% | val 0.0 96%, 0.011914465 1% | ptx 1 99%, 2 1%
+  ETH 67%, USDG 33% | 10000/200 99%, 5000/200 1% | h0 0% sqrt 67% liq 100% off 0/0/0
+  frb 9% off 0/1/446 eth 0.0394 topsz 16% inL 48% lw 48% eoas 18 0xa27210c7 16% alsoLc 48% np 4 fp 0xc763b179:f0e9eabf:1860 44%
+  pulled 0% off 1423/1423/1423 full 0% bFrb 0% lw 0% | r12nf 0/16 b12 0/143
+c873e135|ac9650d8#a98b3b9e n=269 /d [54, 66, 16, 24, 16, 73, 20] w156 | 0x58daec31:ac9650d8:2020 52%, 0x58daec31:ac9650d8:1316 27% | val 0.0 92%, 0.0012177 1% | ptx 1 100%
+  ETH 54%, USDG 45% | 3000/60 46%, 850000/60 4% | h0 57% sqrt 32% liq 100% off 0/0/0
+  frb 46% off 46/52/94 eth 0.0500 topsz 82% inL 0% lw 0% eoas 17 0x9e8f558b 83% alsoLc 93% np 113 fp 0x75379d5d:3593564c:1540 99%
+  pulled 3% off 790/1208/1951 full 100% bFrb 0% lw 100% | r12nf 0/6 b12 0/122
+4a586d92|ac9650d8#65daaea0 n=210 /d [15, 19, 52, 54, 18, 35, 17] w170 | 0x0000ffff:ac9650d8:1316 14%, 0x0000ffff:ac9650d8:3236 14% | val 0.0 39%, 0.08 24% | ptx 1 100%
+  ETH 100% | 2500/25 100% | h0 100% sqrt 100% liq 100% off 0/0/0
+  frb 61% off 0/0/0 eth 0.0800 topsz 39% inL 98% lw 98% eoas 118 0xa78b0b7b 5% alsoLc 12% np 1.0 fp 0x0000ffff:ac9650d8:3236 23%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/99 b12 0/82
+049a3b67|603ed0bc#99e0b5e8 n=204 /d [0, 0, 32, 4, 61, 105, 2] w137 | 0x18cab14c:603ed0bc:1124 26%, 0x18cab14c:603ed0bc:1060 18% | val 0.0 100% | ptx 1 100%
+  WETH 99%, USDG 1% | 0/60 100% | h0 0% sqrt 63% liq 100% off 0/0/0
+  frb 12% off 1/1/2 eth 0.4835 topsz 44% inL 0% lw 0% eoas 2 0x20b5d81a 96% alsoLc 96% np 32 fp 0x8141fec0:a626712c:2020 28%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/2 b12 0/52
+670175c9|7c33638d#31a3f3ec n=181 /d [11, 46, 44, 24, 29, 19, 8] w84 | 0x815542e8:7c33638d:769 69%, 0x815542e8:7c33638d:833 18% | val 0.0 100% | ptx 1 100%
+  ETH 82%, USDG 18% | 30000/200 77%, 10000/200 23% | h0 100% sqrt 9% liq 100% off 0/0/0
+  frb 8% off 56/123/1390 eth 0.0158 topsz 14% inL 0% lw 57% eoas 14 0x16d76e5a 7% alsoLc 0% np 1.0 fp 0x88767899:3593564c:1153 43%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/18 b12 0/31
+5d5f9253|60956835#58d59320 n=175 /d [22, 33, 39, 48, 16, 11, 6] w47 | 0x1eef016f:60956835:2980 100% | val 0.0 100% | ptx 1 100%
+  USDG 77%, ETH 23% | 8388608/8 100% | h0 0% sqrt 77% liq 100% off 0/0/0
+  frb 10% off 83/98/392 eth 0.0669 topsz 11% inL 0% lw 11% eoas 16 0xf1fda27d 17% alsoLc 17% np 1.0 fp 0x65050a9b:4d819a2a:964 44%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/9 b12 0/8
+c873e135|f7020405#c0b7d400 n=132 /d [5, 17, 22, 13, 25, 37, 13] w124 | 0x58daec31:f7020405:196 100% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 10000/200 99%, 2500/60 1% | h0 0% sqrt 20% liq 100% off 4/6/8
+  frb 95% off 61/150/518 eth 0.1134 topsz 10% inL 0% lw 5% eoas 25 0x3855de34 21% alsoLc 94% np 36.0 fp 0x88767899:3593564c:1092 99%
+  pulled 20% off 88/826/2065 full 100% bFrb 0% lw 100% | r12nf 0/1 b12 0/99
+2793923d|2fcb9108#59571c74 n=124 /d [0, 44, 16, 15, 49, 0, 0] w124 | 0x204646c6:2fcb9108:644 1%, 0x3522052c:2fcb9108:644 1% | val 0.442 11%, 1.0 10% | ptx 1 100%
+  ETH 100% | 100/200 66%, 200/200 8% | h0 100% sqrt 11% liq 100% off 0/0/0
+  frb 100% off 8/9/9 eth 0.0472 topsz 2% inL 0% lw 0% eoas 124 0x95c3aa5c 1% alsoLc 0% np 1.0 fp 0x88767899:3593564c:1124 100%
+  pulled 100% off 211/1476/2646 full 100% bFrb 0% lw 100% | r12nf 0/0 b12 0/0
+bd388118|6276cbbe#d4e7eae4 n=116 /d [18, 20, 18, 10, 23, 15, 12] w56 | 0x8366a39c:6276cbbe:196 100% | val 0.0 100% | ptx 1 100%
+  WETH 91%, ETH 9% | 3000/60 97%, 8388608/1 2% | h0 53% sqrt 16% liq 97% off 7/9/37
+  frb 45% off 150/345/605 eth 0.2538 topsz 6% inL 0% lw 0% eoas 49 0x5920458d 4% alsoLc 38% np 1.0 fp 0xc955efd6:b3938887:324 40%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/2 b12 0/10
+8ce82419|bc9d39fd#4ce6cecd n=113 /d [0, 0, 0, 0, 0, 25, 88] w1 | 0x7abb343d:bc9d39fd:900 18%, 0x390b5f5f:bc9d39fd:900 17% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 0/200 100% | h0 0% sqrt 100% liq 100% off 0/0/0
+  frb 22% off 0/25/1698 eth 0.0072 topsz 8% inL 16% lw 100% eoas 1 0xdc7a139c 100% alsoLc 100% np 113 fp 0xf5d4a41c:ba20dec0:260 24%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/0 b12 0/113
+f07d1c53|e1e75b94#9232adcd n=102 /d [0, 0, 0, 0, 0, 0, 102] w100 | 0xc80d96d2:e1e75b94:5572 2%, 0xca49b5b0:e1e75b94:5572 1% | val 5.0019e-05 100% | ptx 1 100%
+  ETH 100% | 2500/25 100% | h0 0% sqrt 100% liq 100% off 0/0/0
+  frb 98% off 14/15/16 eth 0.3169 topsz 2% inL 0% lw 0% eoas 1 0x9fdd8cea 100% alsoLc 100% np 100.0 fp 0x88767899:3593564c:1316 100%
+  pulled 98% off 29/30/32 full 100% bFrb 0% lw 100% | r12nf 0/0 b12 100/100
+51faa3f1|a80ac0c2#fa4982d5 n=86 /d [10, 14, 14, 7, 20, 10, 11] w71 | 0x5bd1fbe7:a80ac0c2:1156 35%, 0x5bd1fbe7:a80ac0c2:1284 15% | val 0.0005 29%, 0.072571 10% | ptx 1 100%
+  ETH 97%, USDG 3% | 0/200 100% | h0 0% sqrt 93% liq 100% off 0/0/0
+  frb 70% off 0/0/0 eth 0.0271 topsz 18% inL 95% lw 95% eoas 50 0x9d420432 5% alsoLc 33% np 1.0 fp 0x5bd1fbe7:a80ac0c2:1156 32%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/43 b12 0/21
+049a3b67|79082bf9#99e0b5e8 n=64 /d [15, 10, 3, 20, 4, 2, 10] w37 | 0x18cab14c:79082bf9:1252 31%, 0x18cab14c:79082bf9:1188 25% | val 0.0001 16%, 0.001 16% | ptx 1 100%
+  WETH 100% | 0/60 100% | h0 0% sqrt 20% liq 100% off 0/0/0
+  frb 20% off 0/1/1133 eth 0.0957 topsz 15% inL 31% lw 31% eoas 9 0x20b5d81a 31% alsoLc 54% np 2 fp 0xf0b7eaaf:39ecce49:1380 15%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/25 b12 0/39
+c873e135|f7020405#16afd61e n=50 /d [6, 17, 10, 3, 8, 5, 1] w17 | 0x58daec31:f7020405:196 100% | val 0.0 100% | ptx 1 100%
+  USDG 88%, WETH 8% | 50000/1000 14%, 100000/60 12% | h0 100% sqrt 4% liq 96% off 5/7/32
+  frb 14% off 107/424/839 eth 0.0170 topsz 14% inL 0% lw 0% eoas 7 0xf2bc4732 14% alsoLc 57% np 48 fp 0x399acc46:3d78507c:1796 14%
+  pulled 60% off 100/720/1947 full 67% bFrb 0% lw 93% | r12nf 0/3 b12 0/7
+aa7b2563|3d9ab7c9#16afd61e n=46 /d [12, 10, 3, 7, 3, 6, 5] w1 | 0x2a53386d:3d9ab7c9:292 100% | val 0.15 96%, 0.25 4% | ptx 1 100%
+  ETH 100% | 0/200 100% | h0 0% sqrt 4% liq 100% off 0/0/0
+  frb 100% off 0/0/2 eth 0.0415 topsz 13% inL 72% lw 72% eoas 7 0x2c2572da 72% alsoLc 98% np 84.0 fp 0x2a53386d:3d9ab7c9:292 72%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/10 b12 0/28
+f895112a|df40224a#f32a354e n=35 /d [1, 2, 3, 1, 1, 21, 6] w21 | 0xd3f2cc17:df40224a:3044 14%, 0xd3f2cc17:df40224a:3012 14% | val 0.0001 34%, 0.0 29% | ptx 1 100%
+  WETH 100% | 8388608/200 100% | h0 0% sqrt 63% liq 100% off 0/0/0
+  frb 31% off 92/591/2086 eth 0.0156 topsz 9% inL 9% lw 9% eoas 11 0xbba911a4 9% alsoLc 9% np 47 fp 0xccc88a9d:0a2b8f36:5156 27%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/12 b12 0/17
+bc62900b|f0e9eabf#fa4982d5 n=32 /d [0, 16, 16, 0, 0, 0, 0] w28 | 0x1a5f2715:f0e9eabf:1796 66%, 0x1a5f2715:f0e9eabf:1860 22% | val 0.0 84%, 0.022804264 6% | ptx 1 88%, 2 12%
+  ETH 81%, USDG 19% | 10000/200 94%, 0/200 3% | h0 0% sqrt 81% liq 100% off 0/0/0
+  frb 38% off 0/2.5/357 eth 0.0598 topsz 33% inL 42% lw 42% eoas 10 0x1c2cffa9 25% alsoLc 50% np 2.0 fp 0x1a5f2715:f0e9eabf:1860 42%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/9 b12 0/2
+fda2774c|7d8559b6#006dae97 n=31 /d [15, 12, 0, 0, 0, 0, 4] w31 | 0x5ff007f0:7d8559b6:452 100% | val 0.0005 90%, 0.056349096 3% | ptx 1 100%
+  WETH 100% | 10000/200 100% | h0 100% sqrt 90% liq 100% off 0/0/0
+  frb 13% off 0/0/386 eth 0.0779 topsz 25% inL 75% lw 75% eoas 4 0xb2d8bff3 25% alsoLc 25% np 2.0 fp 0x5ff007f0:7d8559b6:452 75%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/4 b12 0/0
+9c2b9390|ff734f50#da46f006 n=30 /d [0, 0, 0, 0, 0, 0, 30] w10 | 0x7891ea88:ff734f50:1156 97%, 0x7891ea88:ff734f50:1252 3% | val 0.0 63%, 0.08 3% | ptx 1 100%
+  ETH 93%, USDG 7% | 3000/60 100% | h0 100% sqrt 87% liq 100% off 0/0/0
+  frb 33% off 0/0/386 eth 0.0450 topsz 10% inL 80% lw 80% eoas 5 0xe46a864e 60% alsoLc 70% np 6.0 fp 0x7891ea88:ff734f50:1156 80%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/10 b12 0/2
+c93c806e|1fad948c#d4e7eae4 n=27 /d [8, 4, 0, 4, 7, 1, 3] w5 | 0x5ff137d4:1fad948c:2596 52%, 0x5ff137d4:1fad948c:2468 30% | val 0.0 100% | ptx 1 100%
+  ETH 56%, USDG 44% | 250000/2500 33%, 690000/6900 15% | h0 100% sqrt 4% liq 100% off 0/0/0
+  frb 15% off 1428/2196/2825 eth 0.0078 topsz 25% inL 0% lw 0% eoas 2 0x555ce236 75% alsoLc 100% np 104.0 fp 0x663dc15d:c7a76969:2980 25%
+  pulled 15% off 1332/1818/2440 full 25% bFrb 0% lw 0% | r12nf 0/1 b12 0/12
+6e822d6a|ce5494bb#65daaea0 n=27 /d [0, 0, 5, 8, 12, 0, 2] w12 | 0x05d55239:ce5494bb:36 100% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 10000/200 78%, 20000/200 15% | h0 100% sqrt 11% liq 100% off 0/0/0
+  frb 11% off 56/263/752 eth 0.0495 topsz 33% inL 0% lw 0% eoas 2 0x1b44aceb 67% alsoLc 100% np 13 fp 0xfb4ba195:be9a6555:392 33%
+  pulled 44% off 263/771/1986 full 100% bFrb 0% lw 100% | r12nf 1/1 b12 1/15
+b09ef517|e9ae5c53#16afd61e n=25 /d [13, 7, 2, 1, 0, 1, 1] w7 | 0x9c4d5bd1:e9ae5c53:2724 40%, 0x63701cf9:e9ae5c53:2724 36% | val 0.0 100% | ptx 1 100%
+  ETH 96%, USDG 4% | 0/200 80%, 9000/90 12% | h0 20% sqrt 8% liq 100% off 0/0/0
+  frb 84% off 0/0/0 eth 0.2000 topsz 86% inL 95% lw 95% eoas 3 0x9c4d5bd1 52% alsoLc 95% np 20 fp 0x9c4d5bd1:e9ae5c53:2724 48%
+  pulled 4% off 2311/2311/2311 full 0% bFrb 0% lw 0% | r12nf 0/6 b12 0/13
+42d8eaeb|aa8b8870#fa4982d5 n=20 /d [0, 2, 8, 3, 2, 5, 0] w1 | 0xa45c07d1:aa8b8870:356 100% | val 0.0 100% | ptx 1 100%
+  USDG 100% | 0/1 80%, 0/60 10% | h0 95% sqrt 10% liq 100% off 0/0/0
+  frb 90% off 5/32/226 eth 0.0195 topsz 44% inL 0% lw 44% eoas 3 0xc24d95bd 50% alsoLc 94% np 10.0 fp 0x88fa3733:328bab1d:324 56%
+  pulled 5% off 862/862/862 full 0% bFrb 0% lw 100% | r12nf 0/3 b12 0/15
+9db2a054|7fde822e#deda4933 n=20 /d [0, 0, 20, 0, 0, 0, 0] w1 | 0x096f4edc:7fde822e:772 45%, 0x096f4edc:7fde822e:804 40% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 10000/200 100% | h0 100% sqrt 100% liq 100% off 0/0/0
+  frb 5% off 2180/2180/2180 eth 0.0198 topsz 100% inL 0% lw 0% eoas 1 0x3f8bfdbc 100% alsoLc 0% np 2 fp 0x65050a9b:4d819a2a:580 100%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/0 b12 0/19
+5193acc6|7fde822e#6475eadb n=20 /d [0, 0, 0, 20, 0, 0, 0] w1 | 0x3e398645:7fde822e:804 55%, 0x3e398645:7fde822e:772 20% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 10000/200 100% | h0 100% sqrt 100% liq 100% off 0/0/0
+  frb 5% off 499/499/499 eth 0.0098 topsz 100% inL 0% lw 0% eoas 1 0xde35c04f 100% alsoLc 0% np 3 fp 0xb92fe925:cd6e13f7:3556 100%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/0 b12 0/20
+d5c15df6|174dea71#65daaea0 n=20 /d [0, 0, 0, 2, 18, 0, 0] w11 | 0xca11bde0:174dea71:2948 90%, 0xca11bde0:174dea71:2980 10% | val 0.3 50%, 0.09 15% | ptx 1 100%
+  ETH 100% | 2500/25 100% | h0 100% sqrt 100% liq 100% off 0/0/0
+  frb 100% off 0/0/0 eth 0.3000 topsz 50% inL 100% lw 100% eoas 11 0x77807b3c 40% alsoLc 60% np 2.0 fp 0xca11bde0:174dea71:2948 90%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/13 b12 0/4
+33a97d39|7fde822e#6475eadb n=20 /d [0, 0, 0, 0, 0, 0, 20] w1 | 0x9f81695f:7fde822e:804 80%, 0x9f81695f:7fde822e:740 10% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 10000/200 100% | h0 100% sqrt 100% liq 100% off 0/0/0
+  frb 5% off 843/843/843 eth 0.0107 topsz 100% inL 0% lw 0% eoas 1 0x0312f701 100% alsoLc 0% np 69 fp 0x00000000:765e827f:1956 100%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/0 b12 0/20
+ecd85121|7fde822e#e8df5d48 n=20 /d [0, 0, 0, 0, 0, 0, 20] w1 | 0xdc416cab:7fde822e:804 45%, 0xdc416cab:7fde822e:772 20% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 10000/200 100% | h0 100% sqrt 100% liq 100% off 0/0/0
+  frb 10% off 1289/1387/1485 eth 0.0197 topsz 50% inL 0% lw 0% eoas 2 0xcc940ca2 50% alsoLc 0% np 5.5 fp 0xb300000b:810c705b:6852 50%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/1 b12 0/18
+10e37260|54e231e6#16afd61e n=18 /d [0, 2, 2, 3, 3, 5, 3] w1 | 0x387a453d:54e231e6:1412 100% | val 0.2777 50%, 0.41655 28% | ptx 1 100%
+  ETH 100% | 0/200 100% | h0 0% sqrt 6% liq 100% off 0/0/0
+  frb 100% off 0/0/0.3 eth 0.0527 topsz 6% inL 89% lw 89% eoas 3 0xc0b3535e 89% alsoLc 100% np 34.0 fp 0x387a453d:54e231e6:1412 89%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/2 b12 0/14
+89a27da6|2f53ef2f#16afd61e n=15 /d [1, 3, 3, 2, 6, 0, 0] w2 | 0x7ed598bc:2f53ef2f:36 100% | val 0.0 100% | ptx 1 100%
+  ETH 80%, USDG 20% | 0/200 100% | h0 0% sqrt 7% liq 100% off 0/0/0
+  frb 100% off 1/1/6.2 eth 0.1250 topsz 60% inL 0% lw 0% eoas 7 0x2c2572da 60% alsoLc 73% np 84 fp 0x2a53386d:f1114062:132 60%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/6 b12 0/8
+c873e135|f7020405#8cca56b5 n=14 /d [4, 1, 3, 1, 2, 1, 2] w14 | 0x58daec31:f7020405:196 100% | val 0.0 100% | ptx 1 100%
+  ETH 93%, USDG 7% | 100/1 93%, 200000/4000 7% | h0 100% sqrt 57% liq 93% off 4/6/8
+  frb 86% off 67/202/628 eth 0.0752 topsz 8% inL 0% lw 0% eoas 3 0x786c0664 50% alsoLc 100% np 5.5 fp 0x88767899:3593564c:1092 100%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/0 b12 0/7
+b09ef517|e9ae5c53#db69a8e9 n=13 /d [1, 1, 1, 0, 2, 6, 2] w1 | 0x37f76011:e9ae5c53:6020 69%, 0x37f76011:e9ae5c53:4708 31% | val 0.0 100% | ptx 1 100%
+  USDG 100% | 0/1 100% | h0 0% sqrt 8% liq 100% off 0/0/0
+  frb 100% off 0/0/0 eth 0.0105 topsz 100% inL 100% lw 100% eoas 1 0x37f76011 100% alsoLc 100% np 13 fp 0x37f76011:e9ae5c53:6020 69%
+  pulled 100% off 0/0/0 full 100% bFrb 0% lw 100% | r12nf 0/0 b12 13/13
+256516d7|70282651#cc284f6a n=13 /d [0, 4, 3, 0, 3, 3, 0] w11 | 0x7c7e48f9:70282651:1700 31%, 0x7c7e48f9:70282651:1444 15% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 20000/200 100% | h0 100% sqrt 100% liq 100% off 0/0/0
+  frb 15% off 155/257/359 eth 0.0732 topsz 50% inL 0% lw 0% eoas 2 0xf4931f57 50% alsoLc 0% np 1.0 fp 0x65050a9b:4d819a2a:580 100%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/1 b12 0/0
+1cbcabd5|a86854fc#16afd61e n=12 /d [3, 2, 2, 0, 2, 1, 2] w11 | 0x3af49c05:a86854fc:131 75%, 0x3af49c05:a86854fc:3876 25% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 0/200 100% | h0 0% sqrt 42% liq 100% off 0/0/0
+  frb 100% off 0/0/0 eth 0.0919 topsz 25% inL 100% lw 100% eoas 11 0x1336e57d 17% alsoLc 17% np 1.0 fp 0x3af49c05:a86854fc:131 75%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/12 b12 0/0
+c873e135|f7020405#fa4982d5 n=12 /d [1, 0, 2, 4, 0, 1, 4] w8 | 0x58daec31:f7020405:196 100% | val 0.0 100% | ptx 1 100%
+  USDG 50%, ETH 33% | 100/1 17%, 50000/1000 17% | h0 100% sqrt 8% liq 92% off 5/13/742
+  frb 33% off 189/648/1470 eth 0.1055 topsz 25% inL 0% lw 25% eoas 4 0x101f7a1f 25% alsoLc 25% np 1.5 fp 0x88767899:3593564c:1092 75%
+  pulled 25% off 99/101/926 full 67% bFrb 0% lw 67% | r12nf 0/2 b12 0/0
+7abc863f|bdec33ef#ec74c067 n=10 /d [0, 8, 0, 0, 0, 0, 2] w3 | 0x3c6e7f9b:bdec33ef:1124 40%, 0x3c6e7f9b:bdec33ef:964 20% | val 0.03 60%, 0.08 20% | ptx 2 100%
+  ETH 100% | 0/200 100% | h0 0% sqrt 100% liq 100% off 0/0/0
+  frb 100% off 0/0/0 eth 0.0099 topsz 60% inL 100% lw 100% eoas 3 0x78978033 40% alsoLc 100% np 6.0 fp 0x3c6e7f9b:bdec33ef:1124 40%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/0 b12 0/8
+490121b4|f0e9eabf#fa4982d5 n=10 /d [0, 0, 0, 10, 0, 0, 0] w1 | 0x93828303:f0e9eabf:1700 100% | val 0.0 100% | ptx 1 100%
+  ETH 100% | 10000/200 100% | h0 100% sqrt 100% liq 100% off 0/0/0
+  frb 10% off 512/512/512 eth 0.0248 topsz 100% inL 0% lw 0% eoas 1 0x534e733c 100% alsoLc 0% np 2 fp 0xe9f89a76:2258ac03:644 100%
+  pulled 0% off -/-/- full - bFrb 0% lw - | r12nf 0/3 b12 0/7

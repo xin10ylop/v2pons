@@ -1,0 +1,10 @@
+pools 603; fleet wallets seen (fetched txs) 5048; pools per fleet wallet [(1, 5048)]
+fleet tx nonce [(0, 5010), (1, 245), (3, 1)]  buy size ETH p10/50/90 0.01315/0.03952/0.0953  real buys per pool before the pull (3,000 blocks) p10/50/90 3/24/28
+ETH bought per pool before the pull p10/50/90 0.1172/1.156/1.35  blocks between real buys p10/50/90 34/105/178  price at the pull or +3000 / launch price p10/50/90 1.248/3.804/4.734
+pulled 165/603 at p10/50/90 114/269/1974  by the launch wallet 165  via [(('0x89e5db8b', '02751cec'), 165)]  pull before frb 0
+real buys before the pull in pulled pools p10/50/90 1/3/20 vs never-pulled pools (whole window) 23/25/28
+fleet gas price p10/50/90 20004000/20092000/21352000  type [(2, 5048)]
+launch wallets 603 nonce [(2, 603)] value [(1.0, 603)]
+fblocks lines mentioning a fleet wallet 1086; funding-like txs 219
+ funders: [('0x4a6dbb33bc962c48db40e5eac91edf5ba316fe70', 197), ('0xcad25d4dc86ed35bba9abb1091943e49d77a1874', 11), ('0xf6157dde0083b3d39699630e3c2c97749d647e70', 4), ('0xef8a2318ca5d773a3af1f1aeee7ccd488f110f4c', 2), ('0x48fd3a5ff3bd1ebe59eb1c2e7e6100d2b0a3abe0', 1)]  via: [(('calldata', '0xc4f45c70f055c41add4c5bb61e936f0c03713471'), 11), (('calldata', '0xf1554769d390a69374a8c5f6a3461c1ec63f9170'), 4), (('calldata', '0x0c52fde074222c38faaf599e17b729bf352f938d'), 2), (('direct', '0xc493bba7aadb3603e7be2d0ed09466b09b8a1514'), 1), (('direct', '0xc2c5fca77eafabab4388447d7e6aadf6d8cb38ec'), 1)]
+ values: 8.705e-06/0.1204/0.2062

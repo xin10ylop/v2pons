@@ -1,0 +1,57 @@
+lc family pools (quote pairs excluded): 21018
+vbot (known_fp or value 2.4333285/3/5): 8080  remaining: 12938  wallets: 2169
+known_fp of remaining: Counter({None: 11772, 'C-1': 1044, 'smallpot': 122})
+
+== msg.value spectrum, whole lc family (top 40 exact values) ==
+                 0 ETH    6574  (non-vbot 6574)
+                 3 ETH    3355  (non-vbot 0)
+         2.4333285 ETH    3182  (non-vbot 0)
+          0.000735 ETH    2800  (non-vbot 2800)
+                 5 ETH    1543  (non-vbot 0)
+           0.00063 ETH    1200  (non-vbot 1200)
+         0.0012177 ETH     383  (non-vbot 383)
+             4e-05 ETH     161  (non-vbot 161)
+          0.000525 ETH     150  (non-vbot 150)
+       9.333333333 ETH     111  (non-vbot 111)
+                40 ETH     110  (non-vbot 110)
+                 2 ETH     103  (non-vbot 103)
+               1.8 ETH      29  (non-vbot 29)
+       33.33333333 ETH      16  (non-vbot 16)
+               1.7 ETH      12  (non-vbot 12)
+                 4 ETH      12  (non-vbot 12)
+             0.005 ETH       7  (non-vbot 7)
+                10 ETH       6  (non-vbot 6)
+             1e-06 ETH       6  (non-vbot 6)
+               1.6 ETH       5  (non-vbot 5)
+            0.0005 ETH       5  (non-vbot 5)
+               0.5 ETH       4  (non-vbot 4)
+               1.9 ETH       4  (non-vbot 4)
+       1.000250094 ETH       3  (non-vbot 3)
+       8.333333333 ETH       3  (non-vbot 3)
+             0.004 ETH       3  (non-vbot 3)
+               1.5 ETH       3  (non-vbot 3)
+                16 ETH       2  (non-vbot 2)
+   0.0002000500188 ETH       2  (non-vbot 2)
+    0.001882961294 ETH       2  (non-vbot 2)
+               0.1 ETH       2  (non-vbot 2)
+                 1 ETH       2  (non-vbot 2)
+    0.008823529412 ETH       2  (non-vbot 2)
+       1.008261551 ETH       2  (non-vbot 2)
+   0.0003518947289 ETH       2  (non-vbot 2)
+     0.02042801556 ETH       2  (non-vbot 2)
+             0.001 ETH       2  (non-vbot 2)
+     0.05848591659 ETH       2  (non-vbot 2)
+           0.05124 ETH       2  (non-vbot 2)
+           0.60701 ETH       2  (non-vbot 2)
+distinct exact values: 1237  non-vbot: 1234
+
+== non-vbot value buckets (decade) == [('0', 6574), ('1e-1', 42), ('1e-2', 92), ('1e-3', 678), ('1e-4', 4731), ('1e-5', 355), ('1e-6', 29), ('1e0', 296), ('1e1', 134), ('<1e-6', 7)]
+
+== non-vbot calldata_len == [(1892, 3295), (54500, 2800), (1316, 1747), (1444, 1728), (46788, 1200), (2276, 1084), (2020, 901), (39108, 150), (1828, 7), (2212, 6), (4196, 2), (3236, 2)]
+== non-vbot quote == Counter({'ETH': 7382, 'USDG': 4921, 'WETH': 405, 'USDG2': 230})
+== non-vbot fee/ts == [((100, 1), 1184), ((883131, 200), 383), ((600000, 6000), 220), ((800000, 8000), 195), ((700000, 7000), 194), ((900000, 9000), 189), ((989999, 9900), 189), ((500000, 5000), 178), ((3000, 60), 172), ((790000, 60), 170), ((989998, 9900), 152), ((870000, 8700), 136)]
+== non-vbot hooks zero == Counter({True: 12630, False: 308})
+== non-vbot n_pools_in_tx>1 == Counter({False: 8782, True: 4156})
+
+non-vbot 1444-byte ETH no-hook: 1682  with value>0: 1569
+ their value spectrum (top 30): [('0.0012177', 383), ('4e-05', 161), ('0', 113), ('9.333333333', 111), ('40', 110), ('2', 103), ('1.8', 29), ('33.33333333', 16), ('1.7', 12), ('4', 12), ('10', 6), ('1.6', 5), ('1e-06', 5), ('1.9', 4), ('8.333333333', 3), ('0.005', 3), ('1.5', 3), ('16', 2), ('0.001882961294', 2), ('1', 2), ('0.5', 2), ('0.0005', 2), ('0.60701', 2), ('0.001673834547', 2), ('1.05', 2), ('0.002210132612', 2), ('1.955840033e-05', 2), ('0.0003153098189', 1), ('0.0003153149753', 1), ('0.04285289639', 1)]

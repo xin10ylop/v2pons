@@ -1,0 +1,12 @@
+head 85972258: C-1 pools since the census 17, still unpulled 1: 0x03e22aaf (launch 85959212, 509 swaps, last swap 85972256)
+deployed relay: code 5219 bytes, equals FlipRelay.json runtime with (pm, owner = our wallet): True; owner() 0xab5a34c3f41e57fdee1a1d6f19d3e21f46df3ea8; pm() 0x8366a39cc670b4001a1121b8f6a443a643e40951
+  slot0 protocolFee zeroForOne 25 / oneForZero 25 ppm, lpFee 100 ppm -> swap fee buy 125 / sell 125 ppm
+
+pool 0x03e22aaf4b0214f4a31babd11c4da5594a5db4cb596b591d7bd9d1aeb2c0737e token 0x99cf6c56a585b4327e4f7c7e7de3df57735b15c0 (509 swaps so far): slot0 sqrtP 407354930024199470186837469425055 tick 170910, liquidity 100000088127620690885293; price move of our buy +0.0596%
+  pool depth: virtual ETH in range L/sqrtP = 19.449 ETH
+  A buy+sell: returned words [153260773907371541805865, 153260773907371541805865, 5798550306681173, 0]
+    buy got 153260773907371541805865 tokens (v4math 153260773907371541803051: off +0.00e+00); relay holds 153260773907371541805865; sell returned 5798550306681173 wei = 0.00579855 ETH (v4math 5798550306681173: exact); round trip -0.0250%; tokens left 0
+  B buy, stand-in 0.14 ETH, sell: returned words [153260773907371541805865, 153260773907371541805865, 3671875722973315843500353, 5882280265137976, 0]
+    after the stand-in's 0.14 ETH buy, our sell returned 0.00588228 ETH (v4math 0.00588228): +1.419% before gas; tokens left 0
+  C buy minOut=pred+1: returned words [153260773907371541805865]
+{'posts': 28, 'items': 28, 'r429': 0}

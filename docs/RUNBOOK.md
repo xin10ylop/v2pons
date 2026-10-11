@@ -281,6 +281,24 @@ family's halts (a pull before its sell, a sell that sold none, the decoy run) wr
 follow runs. Check after any change: `sudo python3 ~/v2pons/deploy/englog.py 1 | grep -E '"ev":"(start|alarm)"' | tail -2 | cut -c1-300`. A line whose bot buys late takes `"fire_at":N` (fire when the feed
 shows launch + N; 0 = the launch block) and a longer `"hold_blocks"`; the study of HANDOFF 16.14 gives the numbers per line.
 
+A **wave family** (Oct 11 evening, for the operator C-1) is a listed family with a `trigger`: its launches (`calldata_len` 2276, `value_wei` 0,
+fee 100, tick spacing 1, a token-only range up to the launch tick) are armed from the calldata like any front launch, but nothing fires at the
+launch: the operator's own buy through its router (a value-0 call whose calldata carries the token, word `token_word`, the ETH amount in word
+`value_word` and the buy flag `flag_word == flag_value`), of at least `min_eth` and within `max_blocks` of the launch, is the trigger; we buy
+behind it (landing + 2) and sell `hold_blocks` later (or at `take_profit`). A pull-shaped call before the trigger, a trigger past the window
+or no trigger make the pool late. The C-1 line as a dry run (its halt file, when live: `HALTED.front.c1`):
+
+    sudo sed -i '/^FRONT_FAMILIES=/d' /etc/flip/engine.env; sudo tee -a /etc/flip/engine.env >/dev/null <<'EOF'
+    FRONT_FAMILIES='[{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":60,"stake_eth":0.002,"dry_run":true,"pin":true,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_blocks":400}}]'
+    EOF
+    sudo systemctl restart flip-engine
+
+Its dry trades log `would_fire` (the trigger block, `plan_buy_seq` = + 2), `buy_seen` (`dry` true) and `would_sell` with `dry_ret`, the sell's
+return as the engine's price copy (the operator's router buys and strangers' ETH buys) prices it; `trade_done` (`dry` true, `fam` c1,
+`dry_ret`). The verifier's gate before a live probe (HANDOFF 16.15): 24 h and 100 triggers at a dry mean of +8% or more with the operator still
+buying 0.3 ETH or more by + 60; then `"dry_run":false` at 0.002 ETH for 40 trades, its own halt file, scale only after +5% mean with at most 5%
+pulled before the sell.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the

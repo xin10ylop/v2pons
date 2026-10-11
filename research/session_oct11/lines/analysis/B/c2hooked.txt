@@ -1,0 +1,7 @@
+pools 89 by day [12, 24, 7, 7, 7, 14, 18] quote/fee [(('ETH', 500, 1), 89)] distinct hooks 89 frb 82 pulled 3
+follow_h20 n 82 mean +2.738 med +2.121 win 90% pulled 1% trim5 +2.224 by day {'10-04': (12, 4.95), '10-05': (21, 2.31), '10-06': (7, 1.35), '10-07': (6, 3.4), '10-08': (7, 4.03), '10-09': (12, 2.09), '10-10*': (17, 1.97)}
+follow_h60 n 82 mean +4.352 med +4.258 win 90% pulled 1% trim5 +3.976 by day {'10-04': (12, 5.43), '10-05': (21, 3.05), '10-06': (7, 2.4), '10-07': (6, 6.03), '10-08': (7, 6.42), '10-09': (12, 3.41), '10-10*': (17, 5.23)}
+first-12-swap outsider pools 15 pulled within 166 blocks of the outsider buy 0
+frb share 92% off p10/50/90 111/116/188 eth 0.0158/0.145/0.57 fp 0x055de4ce:7169b574:772 49%, 0xe394ba9f:7169b574:772 23%, 0xebe93d2f:7169b574:772 7% eoas 61 npools med 10.0 price move % p10/50/90 0.995/8.63/27
+wave ETH after frb med: +20 5.876 +60 12.28 +200 25.986
+liq_off p10/50/90 40/42/44 sqrt0 top share 62% clen 196 100%

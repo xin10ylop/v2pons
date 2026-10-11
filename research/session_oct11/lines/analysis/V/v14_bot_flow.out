@@ -1,0 +1,20 @@
+(1) trig+2 / hold 60, all 573 pools: n 573 mean +0.1628 med +0.0992 win 78.2% lost 3.1%
+    only the bot's swaps re-applied: n 573 mean +0.1627 med +0.0989 win 77.8% lost 3.1%
+    only the others' swaps re-applied: n 573 mean -0.0328 med -0.0015 win 1.0% lost 3.1%
+    flow bot      sells n     64 ETH    22.549
+    flow bot      buys  n   2944 ETH   591.275
+    flow other    sells n    254 ETH     0.565
+    flow other    buys  n    983 ETH     0.424
+(2) pools where the bot sold in [T, T+100]: 125/573; first bot sell at T+ p10/50/90 (48.0, 85, 96.0); inside [T+2, T+62): 34; sells per pool by T+100 p50/p90 0/1.0
+(3) first pull minus the bot's last fetched buy before it: n 323 p10/50/90 (5.0, 27, 126.8) min 0
+(4) exit when no bot buy for N blocks (entry T+2):
+    max hold 60 quiet N 10: n 573 mean +0.0829 med -0.0015 win 39.3% lost 0.9%
+    max hold 60 quiet N 15: n 573 mean +0.0956 med -0.0015 win 43.8% lost 0.9%
+    max hold 60 quiet N 20: n 573 mean +0.1052 med -0.0012 win 48.0% lost 0.9%
+    max hold 60 quiet N 30: n 573 mean +0.1338 med +0.0255 win 55.0% lost 1.4%
+    max hold 60 quiet N None: n 573 mean +0.1628 med +0.0992 win 78.2% lost 3.1%
+    max hold 90 quiet N 10: n 573 mean +0.0950 med -0.0015 win 38.9% lost 1.2%
+    max hold 90 quiet N 15: n 573 mean +0.1103 med -0.0015 win 43.3% lost 1.4%
+    max hold 90 quiet N 20: n 573 mean +0.1196 med -0.0013 win 47.3% lost 1.6%
+    max hold 90 quiet N 30: n 573 mean +0.1555 med +0.0225 win 54.3% lost 2.1%
+    max hold 90 quiet N None: n 573 mean +0.2197 med +0.1581 win 83.2% lost 6.6%

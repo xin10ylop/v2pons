@@ -1,0 +1,3 @@
+outsider sells fetched: 639 by 30 wallets, ETH out 0.9286 (p50 0.000213); routes [('0x897c3456:d15ffb3f', 405), ('0x9f611cc3:bfca01e8', 135), ('0x88767899:3593564c', 69), ('0xf0b7eaaf:39ecce49', 11), ('0x65050a9b:4d819a2a', 5)]
+matched round trips: 501; return on ETH in: mean +0.205 median +0.104 positive 81%; held p10/50/90 (41, 51, 114); buy size p50 0.00019 ETH, max 0.2277
+  round trips with a buy >= 0.001 ETH: 32; mean +0.213 median +0.067; held p50 60.0

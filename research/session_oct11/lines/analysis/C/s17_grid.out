@@ -1,0 +1,76 @@
+q = 0.0058 ETH
+
+### tok:0f34e3b5: 603 launches (86.1/day)
+  front a=liq+2, sell first real buy+1 (cap 300): n 603/603 mean +9.7% med +8.5% win 0.99 worst -100% pulled<=sell 0.007 $/trade +1.419 $/day +122.3  days d0..d6 +11.2%(118) +5.0%(1) - +9.5%(113) +9.1%(188) +9.4%(125) +9.2%(58)
+  front a=liq+2, sell first real buy+1 (cap 300), fleet buys in [a,a+2] revert: n 603/603 mean +6.7% med +7.8% win 0.97 worst -100% pulled<=sell 0.028 $/trade +0.984 $/day +84.7  days d0..d6 +9.2%(118) +11.2%(1) - +9.6%(113) +1.5%(188) +8.4%(125) +9.6%(58)
+  front a=liq+2, sell first real buy+1 (cap 300), fleet buys in [a,a+5] revert: n 603/603 mean +6.6% med +7.7% win 0.97 worst -100% pulled<=sell 0.030 $/trade +0.959 $/day +82.6  days d0..d6 +9.1%(118) +11.2%(1) - +9.4%(113) +1.0%(188) +8.4%(125) +10.0%(58)
+  front a=liq+2, sell first real buy+1 (cap 150), fleet buys in [a,a+2] revert: n 603/603 mean +5.0% med +5.9% win 0.79 worst -100% pulled<=sell 0.025 $/trade +0.732 $/day +63.0  days d0..d6 +7.9%(118) -0.6%(1) - +8.0%(113) +0.2%(188) +5.8%(125) +7.8%(58)
+  front a=liq+2, sell first real buy+20 (cap 300), fleet buys in [a,a+2] revert: n 603/603 mean +6.2% med +7.8% win 0.96 worst -100% pulled<=sell 0.036 $/trade +0.905 $/day +77.9  days d0..d6 +9.3%(118) +11.2%(1) - +10.2%(113) -0.1%(188) +7.3%(125) +10.1%(58)
+
+### tok:70adce63: 1184 launches (169.1/day)
+  front a=liq+2, sell first real buy+1 (cap 300): n 1184/1184 mean +1.8% med +1.4% win 0.80 worst -1% pulled<=sell 0.000 $/trade +0.243 $/day +41.1  days d0..d6 +0.9%(91) +1.7%(163) +1.8%(137) +2.1%(179) +1.7%(212) +2.1%(187) +1.6%(215)
+  front a=liq+2, sell first real buy+1 (cap 600): n 1184/1184 mean +1.9% med +1.5% win 0.84 worst -1% pulled<=sell 0.000 $/trade +0.261 $/day +44.2  days d0..d6 +1.6%(91) +1.9%(163) +1.9%(137) +2.2%(179) +1.7%(212) +2.2%(187) +1.6%(215)
+  front a=liq+2, sell first real buy+5 (cap 300): n 1184/1184 mean +1.8% med +1.4% win 0.80 worst -1% pulled<=sell 0.000 $/trade +0.243 $/day +41.1  days d0..d6 +0.9%(91) +1.7%(163) +1.8%(137) +2.1%(179) +1.7%(212) +2.1%(187) +1.6%(215)
+
+### tok:d4e7eae4 (V3 part): 1016 launches (145.1/day)
+  front a=liq+2, sell first real buy+1 (cap 150): n 1016/1016 mean +1.2% med +2.7% win 0.90 worst -100% pulled<=sell 0.072 $/trade +0.156 $/day +22.7  days d0..d6 -9.4%(153) -6.4%(152) +0.3%(163) +6.4%(139) +4.9%(137) +8.9%(131) +5.9%(141)
+  front a=liq+2, sell first real buy+1 (cap 300): n 1016/1016 mean -0.5% med +3.7% win 0.88 worst -100% pulled<=sell 0.110 $/trade -0.101 $/day -14.7  days d0..d6 -13.9%(153) -7.9%(152) -2.6%(163) +3.6%(139) +2.6%(137) +11.0%(131) +6.3%(141)
+  front a=liq+2, sell first real buy+5 (cap 300): n 1016/1016 mean +2.9% med +5.2% win 0.88 worst -100% pulled<=sell 0.110 $/trade +0.414 $/day +60.1  days d0..d6 -9.5%(153) -1.6%(152) +1.1%(163) +7.0%(139) +4.3%(137) +13.2%(131) +8.4%(141)
+  front a=liq+2, sell first real buy+20 (cap 300): n 1016/1016 mean +8.0% med +11.8% win 0.88 worst -100% pulled<=sell 0.113 $/trade +1.175 $/day +170.5  days d0..d6 -3.2%(153) +4.0%(152) +7.4%(163) +12.5%(139) +8.7%(137) +16.8%(131) +11.9%(141)
+  front a=liq+2, sell first real buy+1 (cap 600): n 1016/1016 mean -1.6% med +4.1% win 0.87 worst -100% pulled<=sell 0.131 $/trade -0.263 $/day -38.2  days d0..d6 -18.3%(153) -11.5%(152) -2.4%(163) +3.9%(139) +3.4%(137) +11.6%(131) +5.4%(141)
+
+### lc:0a493d1a|ac9650d8: 1155 launches (165.0/day)
+  front a=liq+2, sell first real buy+1 (cap 300): n 1155/1155 mean -1.7% med +3.2% win 0.82 worst -100% pulled<=sell 0.111 $/trade -0.277 $/day -45.7  days d0..d6 -18.1%(177) -6.7%(171) -2.9%(183) +3.3%(159) +0.0%(164) +9.8%(148) +5.9%(153)
+  front a=liq+2, sell first real buy+5 (cap 300): n 1155/1155 mean +1.4% med +4.5% win 0.82 worst -100% pulled<=sell 0.111 $/trade +0.187 $/day +30.9  days d0..d6 -14.3%(177) -1.1%(171) +0.4%(183) +6.3%(159) +1.4%(164) +12.3%(148) +7.8%(153)
+  front a=liq+2, sell first real buy+20 (cap 300): n 1155/1155 mean +5.9% med +9.1% win 0.82 worst -100% pulled<=sell 0.113 $/trade +0.866 $/day +142.9  days d0..d6 -8.8%(177) +3.8%(171) +6.0%(183) +11.1%(159) +5.1%(164) +16.0%(148) +11.1%(153)
+
+### lc:0a493d1a|13ead562: 493 launches (70.4/day)
+  front a=liq+2, sell first real buy+1 (cap 60): n 483/493 mean +66.0% med +22.8% win 0.95 worst -100% pulled<=sell 0.021 $/trade +9.825 $/day +677.9  days d0..d6 +215.9%(114) +106.5%(7) +12.3%(32) +36.9%(54) +22.5%(209) +12.1%(12) -12.7%(55)
+  front a=liq+2, sell first real buy+1 (cap 100): n 485/493 mean +60.2% med +22.8% win 0.89 worst -100% pulled<=sell 0.076 $/trade +8.955 $/day +620.4  days d0..d6 +215.9%(114) +106.5%(7) +12.3%(32) +37.1%(54) +22.0%(209) +12.1%(12) -58.0%(57)
+  front a=liq+2, sell first real buy+5 (cap 60): n 483/493 mean +66.1% med +22.8% win 0.95 worst -100% pulled<=sell 0.021 $/trade +9.827 $/day +678.1  days d0..d6 +216.0%(114) +106.5%(7) +12.3%(32) +36.9%(54) +22.5%(209) +12.1%(12) -12.7%(55)
+
+### lc:89885b75|d27d1e00 value-0 launches: 111 launches (15.9/day)
+  front a=liq+2, sell first real buy+1 (cap 300): n 111/111 mean +10.5% med +0.4% win 0.81 worst -100% pulled<=sell 0.108 $/trade +1.550 $/day +24.6  days d0..d6 +0.1%(3) - +29.1%(1) +29.3%(18) +16.9%(6) -9.2%(58) +41.8%(25)
+  front a=liq+2, sell first real buy+1 (cap 600): n 111/111 mean +3.2% med +0.4% win 0.64 worst -100% pulled<=sell 0.297 $/trade +0.450 $/day +7.1  days d0..d6 +286.4%(3) - +29.1%(1) +37.5%(18) +17.0%(6) -36.2%(58) +31.4%(25)
+  front a=liq+2, sell first real buy+20 (cap 600): n 111/111 mean +27.8% med +0.4% win 0.64 worst -100% pulled<=sell 0.297 $/trade +4.129 $/day +65.5  days d0..d6 +286.4%(3) - +83.9%(1) +49.1%(18) +34.7%(6) -6.1%(58) +56.2%(25)
+
+### lc:89885b75|d27d1e00 all: 248 launches (35.4/day)
+  front a=liq+2, sell first real buy+1 (cap 600): n 248/248 mean +3.3% med +0.6% win 0.74 worst -100% pulled<=sell 0.137 $/trade +0.472 $/day +16.7  days d0..d6 +29.0%(31) +6.1%(22) +11.2%(20) +13.7%(46) +11.8%(15) -23.8%(85) +26.9%(29)
+
+### lc:b09ef517|e9ae5c53: 50 launches (7.1/day)
+  front a=liq+2, sell first real buy+1 (cap 1000): n 50/50 mean +17.6% med +9.6% win 0.70 worst -1% pulled<=sell 0.000 $/trade +2.596 $/day +18.5  days d0..d6 +19.8%(4) +16.5%(10) +14.3%(13) +20.5%(12) +21.0%(7) +14.8%(3) +9.7%(1)
+  front a=liq+2, sell first real buy+1 (cap 2000): n 50/50 mean +32.9% med +20.7% win 0.92 worst -1% pulled<=sell 0.000 $/trade +4.877 $/day +34.8  days d0..d6 +19.8%(4) +18.6%(10) +21.0%(13) +42.1%(12) +72.3%(7) +28.0%(3) +9.7%(1)
+### tok:d4e7eae4 V3: cap grid (front a=liq+2)
+  k=1 cap=60: n 1016/1016 mean +2.6% med +0.1% win 0.83 worst -2% pulled<=sell 0.000 $/trade +0.369 $/day +53.5  days d0..d6 +2.8%(153) +6.7%(152) +1.3%(163) +3.2%(139) +1.6%(137) +1.2%(131) +1.2%(141)
+  k=5 cap=60: n 1016/1016 mean +3.8% med +0.1% win 0.83 worst -2% pulled<=sell 0.000 $/trade +0.547 $/day +79.4  days d0..d6 +5.4%(153) +9.7%(152) +2.0%(163) +4.2%(139) +2.1%(137) +1.3%(131) +1.5%(141)
+  k=20 cap=60: n 1016/1016 mean +4.5% med +0.1% win 0.83 worst -2% pulled<=sell 0.000 $/trade +0.653 $/day +94.7  days d0..d6 +6.7%(153) +11.5%(152) +2.4%(163) +5.2%(139) +2.2%(137) +1.4%(131) +1.5%(141)
+  k=1 cap=80: n 1016/1016 mean +4.7% med +0.2% win 0.89 worst -2% pulled<=sell 0.000 $/trade +0.678 $/day +98.4  days d0..d6 +4.1%(153) +8.8%(152) +3.1%(163) +5.9%(139) +4.1%(137) +3.7%(131) +3.0%(141)
+  k=5 cap=80: n 1016/1016 mean +6.7% med +0.2% win 0.89 worst -2% pulled<=sell 0.000 $/trade +0.972 $/day +141.1  days d0..d6 +6.9%(153) +13.1%(152) +4.4%(163) +8.0%(139) +5.1%(137) +4.7%(131) +3.9%(141)
+  k=20 cap=80: n 1016/1016 mean +8.7% med +0.2% win 0.89 worst -2% pulled<=sell 0.000 $/trade +1.273 $/day +184.8  days d0..d6 +8.9%(153) +16.2%(152) +6.4%(163) +10.9%(139) +5.9%(137) +6.5%(131) +5.6%(141)
+  k=1 cap=100: n 1016/1016 mean +4.8% med +0.6% win 0.93 worst -100% pulled<=sell 0.018 $/trade +0.695 $/day +100.9  days d0..d6 +3.8%(153) +3.2%(152) +3.4%(163) +7.8%(139) +4.5%(137) +7.0%(131) +4.5%(141)
+  k=5 cap=100: n 1016/1016 mean +7.2% med +1.0% win 0.93 worst -100% pulled<=sell 0.018 $/trade +1.060 $/day +153.9  days d0..d6 +6.7%(153) +8.1%(152) +5.6%(163) +10.9%(139) +5.8%(137) +8.2%(131) +5.7%(141)
+  k=20 cap=100: n 1016/1016 mean +10.4% med +1.0% win 0.92 worst -100% pulled<=sell 0.019 $/trade +1.531 $/day +222.3  days d0..d6 +9.2%(153) +12.6%(152) +9.6%(163) +14.4%(139) +7.6%(137) +10.9%(131) +8.6%(141)
+  k=1 cap=120: n 1016/1016 mean +3.9% med +2.0% win 0.93 worst -100% pulled<=sell 0.037 $/trade +0.567 $/day +82.3  days d0..d6 +1.4%(153) -1.6%(152) +1.6%(163) +7.9%(139) +6.0%(137) +8.7%(131) +4.9%(141)
+  k=5 cap=120: n 1016/1016 mean +6.6% med +2.8% win 0.93 worst -100% pulled<=sell 0.037 $/trade +0.969 $/day +140.6  days d0..d6 +4.9%(153) +3.5%(152) +4.2%(163) +11.1%(139) +7.4%(137) +10.1%(131) +6.3%(141)
+  k=20 cap=120: n 1016/1016 mean +10.4% med +4.1% win 0.92 worst -100% pulled<=sell 0.038 $/trade +1.527 $/day +221.6  days d0..d6 +7.7%(153) +8.3%(152) +9.4%(163) +15.7%(139) +9.8%(137) +12.8%(131) +9.8%(141)
+  k=1 cap=150: n 1016/1016 mean +1.2% med +2.7% win 0.90 worst -100% pulled<=sell 0.072 $/trade +0.156 $/day +22.7  days d0..d6 -9.4%(153) -6.4%(152) +0.3%(163) +6.4%(139) +4.9%(137) +8.9%(131) +5.9%(141)
+  k=5 cap=150: n 1016/1016 mean +4.0% med +3.6% win 0.90 worst -100% pulled<=sell 0.072 $/trade +0.580 $/day +84.2  days d0..d6 -5.6%(153) -1.0%(152) +2.9%(163) +9.7%(139) +6.4%(137) +10.3%(131) +7.5%(141)
+  k=20 cap=150: n 1016/1016 mean +8.4% med +7.7% win 0.90 worst -100% pulled<=sell 0.073 $/trade +1.239 $/day +179.8  days d0..d6 -1.5%(153) +4.1%(152) +8.6%(163) +15.1%(139) +9.9%(137) +13.4%(131) +11.2%(141)
+  k=1 cap=200: n 1016/1016 mean +0.3% med +3.2% win 0.89 worst -100% pulled<=sell 0.094 $/trade +0.023 $/day +3.3  days d0..d6 -12.5%(153) -6.9%(152) -2.7%(163) +6.2%(139) +4.8%(137) +10.9%(131) +5.3%(141)
+  k=5 cap=200: n 1016/1016 mean +3.5% med +4.6% win 0.89 worst -100% pulled<=sell 0.094 $/trade +0.500 $/day +72.5  days d0..d6 -8.3%(153) -1.0%(152) +0.9%(163) +9.6%(139) +6.3%(137) +12.6%(131) +6.9%(141)
+  k=20 cap=200: n 1016/1016 mean +8.2% med +10.2% win 0.88 worst -100% pulled<=sell 0.096 $/trade +1.200 $/day +174.1  days d0..d6 -2.1%(153) +4.3%(152) +6.7%(163) +15.1%(139) +10.0%(137) +15.9%(131) +9.5%(141)
+  pools without a real buy: 143; pulled 138 at p10/50/90 96/144/363
+  pools with a real buy: 873; real buy after +100: 345; of those pulled before +100: 0
+
+### tok:70adce63 long holds (front a=2, fixed b)
+  b=300: n 1184/1184 mean +1.8% med +1.4% win 0.80 worst -1% pulled<=sell 0.000 $/trade +0.243 $/day +41.2  days d0..d6 +1.0%(91) +1.7%(163) +1.8%(137) +2.1%(179) +1.7%(212) +2.1%(187) +1.6%(215)
+  b=600: n 1184/1184 mean +1.2% med +3.4% win 0.92 worst -100% pulled<=sell 0.025 $/trade +0.158 $/day +26.7  days d0..d6 -0.5%(91) +3.3%(163) +0.8%(137) -1.2%(179) +1.2%(212) +4.6%(187) -0.4%(215)
+  b=1000: n 1184/1184 mean -0.4% med +5.7% win 0.93 worst -100% pulled<=sell 0.062 $/trade -0.072 $/day -12.2  days d0..d6 +1.7%(91) +4.4%(163) +2.5%(137) +0.7%(179) -1.1%(212) +5.3%(187) -11.7%(215)
+  b=2000: n 1184/1184 mean +1.9% med +11.8% win 0.90 worst -100% pulled<=sell 0.096 $/trade +0.268 $/day +45.4  days d0..d6 +6.2%(91) +7.7%(163) +3.6%(137) -0.1%(179) +1.4%(212) +11.5%(187) -11.4%(215)
+  b=2900: n 1184/1184 mean +3.3% med +17.1% win 0.87 worst -100% pulled<=sell 0.131 $/trade +0.466 $/day +78.8  days d0..d6 +8.5%(91) +13.0%(163) +6.3%(137) +1.3%(179) -5.7%(212) +16.1%(187) -9.0%(215)
+
+### tok:0f34e3b5 follow: buy at frb+2, sell into the next real buy +1 (cap a+300), stakes
+  q=0.0058: n 599/603 mean +5.7% med +7.4% win 0.97 worst -100% pulled<=sell 0.033 $/trade +0.831 $/day +71.1  days d0..d6 +8.7%(118) +10.8%(1) - +9.5%(113) -1.6%(185) +8.4%(124) +9.8%(58)
+  q=0.02: n 599/603 mean +5.5% med +7.3% win 0.97 worst -100% pulled<=sell 0.033 $/trade +2.817 $/day +241.1  days d0..d6 +8.5%(118) +10.6%(1) - +9.3%(113) -1.8%(185) +8.2%(124) +9.6%(58)
+  q=0.05: n 599/603 mean +5.1% med +7.0% win 0.97 worst -100% pulled<=sell 0.033 $/trade +6.582 $/day +563.2  days d0..d6 +8.1%(118) +10.1%(1) - +8.9%(113) -2.1%(185) +7.8%(124) +9.2%(58)
+  q=0.1: n 599/603 mean +4.6% med +6.5% win 0.97 worst -100% pulled<=sell 0.033 $/trade +11.707 $/day +1001.8  days d0..d6 +7.5%(118) +9.5%(1) - +8.3%(113) -2.6%(185) +7.2%(124) +8.5%(58)

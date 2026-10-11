@@ -1,0 +1,9 @@
+a98b_hook pools 140 distinct hooks 118 top [('0x0000000000000000000000000000000000000000', 23), ('0x46171d1285fc1ec198019bd2df776de4d0f780cc', 1), ('0xd4d12964abcca469f2ceee52462701b8d6c500cc', 1)] 
+   flag sets: [(('AFTER_SWAP_RETURNS_DELTA', 'BEFORE_SWAP_RETURNS_DELTA', 'AFTER_SWAP', 'BEFORE_SWAP'), 117), ((), 23)] 
+   hook code known: 0  token==hook: 0
+564f_weth_hook pools 120 distinct hooks 120 top [('0xd1ca893e1e822034601b070a50f4c19db6a3c144', 1), ('0x5d80c4c64ee86eb998d9730513738bbca044c144', 1), ('0x796238b430f9140990de109e84fe629823390144', 1)] 
+   flag sets: [(('AFTER_SWAP_RETURNS_DELTA', 'AFTER_SWAP', 'AFTER_REMOVE_LIQ'), 120)] 
+   hook code known: 0  token==hook: 0
+C1_eth pools 698 distinct hooks 1 top [('0x0000000000000000000000000000000000000000', 698)] 
+   flag sets: [((), 698)] 
+   hook code known: 0  token==hook: 0

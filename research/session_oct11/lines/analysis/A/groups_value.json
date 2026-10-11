@@ -1,0 +1,12018 @@
+{
+"value_shape": [
+{
+"n": 698,
+"per_day": [
+72,
+45,
+97,
+117,
+131,
+129,
+107
+],
+"wallets": 698,
+"top_wallet_share": 0.001,
+"nonce_p10_50_90": [
+2.0,
+2.0,
+3.0
+],
+"fresh_le3": 0.999,
+"shape_top": [
+[
+"(0, 2276, 100, 1, 792280926924313289846529216293289, 100000088127620690885293, 'ETH', True)",
+686
+],
+[
+"(0, 2276, 100, 1, 835109957917073511657837871095390, 94871533698238694366969, 'ETH', True)",
+5
+]
+],
+"value_top": [
+[
+"0",
+698
+]
+],
+"clen_top": [
+[
+2276,
+698
+]
+],
+"quote": [
+[
+"ETH",
+698
+]
+],
+"fee_ts": [
+[
+"100/1",
+698
+]
+],
+"tok_top": [
+[
+"cb79985d",
+698
+]
+],
+"npos_top": [
+[
+1,
+698
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+698
+]
+],
+"any_buy": 1.0,
+"frb_share": 0.821,
+"first_buy_off_p": [
+2.0,
+3.0,
+4.0
+],
+"frb_off_p": [
+73.2,
+119.0,
+204.8
+],
+"frb_eth_p": [
+0.0297,
+0.14,
+0.32
+],
+"frb_eth_top": [
+[
+0.16,
+11
+],
+[
+0.04,
+8
+]
+],
+"frb_fp_top": [
+[
+"0xd6d35b56:e6cb474f:484",
+567
+],
+[
+"0xf0b7eaaf:39ecce49:1060",
+4
+],
+[
+"0x88767899:3593564c:1124",
+2
+]
+],
+"frb_eoa_distinct": 83,
+"frb_eoa_top": [
+[
+"0x7a685ac7",
+48
+],
+[
+"0x4a50fe0e",
+29
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 563,
+"frb_also_tok": 571,
+"frb_also_lc": 571,
+"pulled_share": 0.64,
+"pull_off_p": [
+146.0,
+349.0,
+1974.2
+],
+"pull_before_frb": 0,
+"pull_no_frb": 124,
+"pull_by_launch_wallet": 447,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+447
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/37",
+"o12_nf_reaction": "0/32",
+"baseline12": "21/661",
+"key": "(0, 2276, 100, 1, 'ETH', True)",
+"n_price_liq": 6,
+"n_sqrtp": 6,
+"n_L": 6,
+"n_tok": 1
+},
+{
+"n": 249,
+"per_day": [
+60,
+48,
+38,
+38,
+29,
+21,
+15
+],
+"wallets": 2,
+"top_wallet_share": 0.819,
+"nonce_p10_50_90": [
+52142.2,
+63322.0,
+64071.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(1217700000000000, 1444, 883131, 200, 600411671415605716701113085314285, 9228048071304835426, 'ETH', True)",
+1
+],
+[
+"(1217700000000000, 1444, 883131, 200, 881259659069791989547422057526248, 13544550987864721182, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"0.0012177",
+249
+]
+],
+"clen_top": [
+[
+1444,
+249
+]
+],
+"quote": [
+[
+"ETH",
+249
+]
+],
+"fee_ts": [
+[
+"883131/200",
+249
+]
+],
+"tok_top": [
+[
+"16afd61e",
+147
+],
+[
+"58d59320",
+36
+],
+[
+"d4e7eae4",
+15
+]
+],
+"npos_top": [
+[
+1,
+249
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+249
+]
+],
+"any_buy": 0.048,
+"frb_share": 0.012,
+"first_buy_off_p": [
+34.6,
+251.5,
+1991.7
+],
+"frb_off_p": [
+115.4,
+529.0,
+959.4
+],
+"frb_eth_p": [
+0.014,
+0.0495,
+0.0899
+],
+"frb_eth_top": [
+[
+0.005177,
+1
+],
+[
+0.0495,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xf5307745:5f575529:4069",
+1
+],
+[
+"0xf0b7eaaf:39ecce49:1060",
+1
+],
+[
+"0xe893cd9d:de033549:292",
+1
+]
+],
+"frb_eoa_distinct": 3,
+"frb_eoa_top": [
+[
+"0x4c7eb0f0",
+1
+],
+[
+"0xac12785b",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/6",
+"o12_nf_reaction": "0/4",
+"baseline12": "0/6",
+"key": "(1217700000000000, 1444, 883131, 200, 'ETH', True)",
+"n_price_liq": 249,
+"n_sqrtp": 249,
+"n_L": 249,
+"n_tok": 33
+},
+{
+"n": 227,
+"per_day": [
+37,
+20,
+45,
+46,
+39,
+22,
+18
+],
+"wallets": 227,
+"top_wallet_share": 0.004,
+"nonce_p10_50_90": [
+2.0,
+2.0,
+3.0
+],
+"fresh_le3": 1.0,
+"shape_top": [
+[
+"(0, 2276, 100, 1, 792280926924313289846529216293289, 100000088127620690885293, 'WETH', True)",
+171
+],
+[
+"(0, 2276, 100, 1, 1446476584571639225752396618629938, 54773207779044021846921, 'WETH', True)",
+16
+]
+],
+"value_top": [
+[
+"0",
+227
+]
+],
+"clen_top": [
+[
+2276,
+227
+]
+],
+"quote": [
+[
+"WETH",
+227
+]
+],
+"fee_ts": [
+[
+"100/1",
+227
+]
+],
+"tok_top": [
+[
+"cb79985d",
+190
+],
+[
+"d4e7eae4",
+37
+]
+],
+"npos_top": [
+[
+1,
+227
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+227
+]
+],
+"any_buy": 1.0,
+"frb_share": 0.841,
+"first_buy_off_p": [
+4.0,
+29.0,
+125.0
+],
+"frb_off_p": [
+67.0,
+110.0,
+231.0
+],
+"frb_eth_p": [
+0.028,
+0.137,
+0.495
+],
+"frb_eth_top": [
+[
+0.099,
+5
+],
+[
+0.117,
+4
+]
+],
+"frb_fp_top": [
+[
+"0xd6d35b56:e6cb474f:484",
+154
+],
+[
+"0xfc7241d4:3593564c:836",
+9
+],
+[
+"0x84021dc2:a0193551:804",
+5
+]
+],
+"frb_eoa_distinct": 68,
+"frb_eoa_top": [
+[
+"0x7a685ac7",
+25
+],
+[
+"0x44647d5c",
+15
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 184,
+"frb_also_tok": 186,
+"frb_also_lc": 181,
+"pulled_share": 0.714,
+"pull_off_p": [
+144.7,
+413.5,
+1942.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 36,
+"pull_by_launch_wallet": 162,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+162
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "1/32",
+"o12_nf_reaction": "1/32",
+"baseline12": "7/195",
+"key": "(0, 2276, 100, 1, 'WETH', True)",
+"n_price_liq": 15,
+"n_sqrtp": 15,
+"n_L": 15,
+"n_tok": 2
+},
+{
+"n": 189,
+"per_day": [
+48,
+25,
+27,
+8,
+29,
+31,
+21
+],
+"wallets": 3,
+"top_wallet_share": 0.989,
+"nonce_p10_50_90": [
+1695.2,
+2244.0,
+2807.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 989999, 9900, 285650685529491337842, 43341986107116, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 989999, 9900, 26408469454751462168378144523613319837, 78502937634176, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+189
+]
+],
+"clen_top": [
+[
+1892,
+189
+]
+],
+"quote": [
+[
+"USDG",
+189
+]
+],
+"fee_ts": [
+[
+"989999/9900",
+189
+]
+],
+"tok_top": [
+[
+"16afd61e",
+181
+],
+[
+"58d59320",
+3
+],
+[
+"037449b1",
+1
+]
+],
+"npos_top": [
+[
+1,
+189
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+189
+]
+],
+"any_buy": 0.032,
+"frb_share": 0.0,
+"first_buy_off_p": [
+735.0,
+1799.0,
+2072.5
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.011,
+"pull_off_p": [
+502.2,
+779.0,
+1055.8
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/5",
+"key": "(0, 1892, 989999, 9900, 'USDG', True)",
+"n_price_liq": 189,
+"n_sqrtp": 54,
+"n_L": 189,
+"n_tok": 7
+},
+{
+"n": 161,
+"per_day": [
+43,
+42,
+11,
+0,
+17,
+28,
+20
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+8989.0,
+9273.0,
+9545.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(40000000000000, 1444, 790000, 60, 1300507757123114174933082936226790, 656588624979896071, 'ETH', True)",
+1
+],
+[
+"(40000000000000, 1444, 790000, 60, 1410472869206208800163268923718445, 712106818810680103, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"4e-05",
+161
+]
+],
+"clen_top": [
+[
+1444,
+161
+]
+],
+"quote": [
+[
+"ETH",
+161
+]
+],
+"fee_ts": [
+[
+"790000/60",
+161
+]
+],
+"tok_top": [
+[
+"16afd61e",
+161
+]
+],
+"npos_top": [
+[
+1,
+161
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+161
+]
+],
+"any_buy": 0.13,
+"frb_share": 0.0,
+"first_buy_off_p": [
+2.0,
+317.0,
+2671.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/21",
+"key": "(40000000000000, 1444, 790000, 60, 'ETH', True)",
+"n_price_liq": 161,
+"n_sqrtp": 161,
+"n_L": 161,
+"n_tok": 1
+},
+{
+"n": 152,
+"per_day": [
+9,
+13,
+25,
+24,
+24,
+27,
+30
+],
+"wallets": 55,
+"top_wallet_share": 0.349,
+"nonce_p10_50_90": [
+85.3,
+441.5,
+5775.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 900000, 9000, 9679255193783565877119594478469200314, 111549803197176, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 900000, 9000, 8644217585319933892591355619104767051, 66614716991295, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+152
+]
+],
+"clen_top": [
+[
+1892,
+152
+]
+],
+"quote": [
+[
+"USDG",
+152
+]
+],
+"fee_ts": [
+[
+"900000/9000",
+152
+]
+],
+"tok_top": [
+[
+"16afd61e",
+90
+],
+[
+"037449b1",
+6
+],
+[
+"58d59320",
+6
+]
+],
+"npos_top": [
+[
+1,
+152
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+152
+]
+],
+"any_buy": 0.039,
+"frb_share": 0.0,
+"first_buy_off_p": [
+631.0,
+1574.0,
+2345.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.033,
+"pull_off_p": [
+1096.8,
+1681.0,
+2867.8
+],
+"pull_before_frb": 0,
+"pull_no_frb": 5,
+"pull_by_launch_wallet": 5,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+5
+]
+],
+"pull_full_share": 0.4,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/3",
+"key": "(0, 1892, 900000, 9000, 'USDG', True)",
+"n_price_liq": 152,
+"n_sqrtp": 109,
+"n_L": 152,
+"n_tok": 31
+},
+{
+"n": 151,
+"per_day": [
+12,
+26,
+40,
+18,
+21,
+25,
+9
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1920.0,
+2290.0,
+2750.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 989998, 9900, 250529391410817816299, 72733040313675, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 989998, 9900, 209617650442783699580, 80621474106384, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+151
+]
+],
+"clen_top": [
+[
+1892,
+151
+]
+],
+"quote": [
+[
+"USDG",
+151
+]
+],
+"fee_ts": [
+[
+"989998/9900",
+151
+]
+],
+"tok_top": [
+[
+"16afd61e",
+142
+],
+[
+"58d59320",
+6
+],
+[
+"8ac8e663",
+2
+]
+],
+"npos_top": [
+[
+1,
+151
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+151
+]
+],
+"any_buy": 0.026,
+"frb_share": 0.0,
+"first_buy_off_p": [
+64.1,
+283.5,
+551.9
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/3",
+"key": "(0, 1892, 989998, 9900, 'USDG', True)",
+"n_price_liq": 151,
+"n_sqrtp": 58,
+"n_L": 151,
+"n_tok": 4
+},
+{
+"n": 141,
+"per_day": [
+14,
+20,
+20,
+17,
+20,
+26,
+24
+],
+"wallets": 62,
+"top_wallet_share": 0.064,
+"nonce_p10_50_90": [
+227.0,
+1251.0,
+8322.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 800000, 8000, 10314305119659217658853239786662832273, 122911276361664, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 800000, 8000, 15845100125461986770576712521594542881, 410418210420074, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+141
+]
+],
+"clen_top": [
+[
+1892,
+141
+]
+],
+"quote": [
+[
+"USDG",
+141
+]
+],
+"fee_ts": [
+[
+"800000/8000",
+141
+]
+],
+"tok_top": [
+[
+"16afd61e",
+60
+],
+[
+"c0b7d400",
+11
+],
+[
+"58d59320",
+11
+]
+],
+"npos_top": [
+[
+1,
+141
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+141
+]
+],
+"any_buy": 0.099,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.0,
+63.0,
+2003.8
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.035,
+"pull_off_p": [
+441.8,
+1187.0,
+1569.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 5,
+"pull_by_launch_wallet": 4,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+5
+]
+],
+"pull_full_share": 0.6,
+"o12_reaction": "0/3",
+"o12_nf_reaction": "0/3",
+"baseline12": "0/10",
+"key": "(0, 1892, 800000, 8000, 'USDG', True)",
+"n_price_liq": 141,
+"n_sqrtp": 105,
+"n_L": 141,
+"n_tok": 28
+},
+{
+"n": 138,
+"per_day": [
+18,
+23,
+22,
+17,
+20,
+18,
+20
+],
+"wallets": 58,
+"top_wallet_share": 0.21,
+"nonce_p10_50_90": [
+115.6,
+1161.5,
+7908.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 700000, 7000, 79224358494714345780, 99994801105127, 'USDG', True)",
+2
+],
+[
+"(0, 1892, 700000, 7000, 11681139775569482070899633010568109369, 314758360697553, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+138
+]
+],
+"clen_top": [
+[
+1892,
+138
+]
+],
+"quote": [
+[
+"USDG",
+138
+]
+],
+"fee_ts": [
+[
+"700000/7000",
+138
+]
+],
+"tok_top": [
+[
+"16afd61e",
+38
+],
+[
+"4e451d1a",
+23
+],
+[
+"c0b7d400",
+12
+]
+],
+"npos_top": [
+[
+1,
+138
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+138
+]
+],
+"any_buy": 0.152,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.0,
+1104.0,
+2529.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.051,
+"pull_off_p": [
+639.0,
+1101.0,
+2262.2
+],
+"pull_before_frb": 0,
+"pull_no_frb": 7,
+"pull_by_launch_wallet": 7,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+7
+]
+],
+"pull_full_share": 0.429,
+"o12_reaction": "0/5",
+"o12_nf_reaction": "0/4",
+"baseline12": "0/15",
+"key": "(0, 1892, 700000, 7000, 'USDG', True)",
+"n_price_liq": 137,
+"n_sqrtp": 111,
+"n_L": 137,
+"n_tok": 35
+},
+{
+"n": 122,
+"per_day": [
+15,
+20,
+11,
+12,
+21,
+23,
+20
+],
+"wallets": 40,
+"top_wallet_share": 0.402,
+"nonce_p10_50_90": [
+866.7,
+1469.0,
+7645.7
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 600000, 6000, 29943985587942488602739187661182558482, 16766450798963, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 600000, 6000, 25054097918373224795268064057513023146, 19179810546603, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+122
+]
+],
+"clen_top": [
+[
+1892,
+122
+]
+],
+"quote": [
+[
+"USDG",
+122
+]
+],
+"fee_ts": [
+[
+"600000/6000",
+122
+]
+],
+"tok_top": [
+[
+"16afd61e",
+59
+],
+[
+"c0b7d400",
+8
+],
+[
+"4e451d1a",
+7
+]
+],
+"npos_top": [
+[
+1,
+122
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+122
+]
+],
+"any_buy": 0.123,
+"frb_share": 0.008,
+"first_buy_off_p": [
+199.2,
+680.0,
+1942.4
+],
+"frb_off_p": [
+1007.0,
+1007.0,
+1007.0
+],
+"frb_eth_p": [
+0.0056,
+0.0056,
+0.0056
+],
+"frb_eth_top": [
+[
+0.005581,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xd29c85f1:deff4b24:4388",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x394311a6",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 1,
+"frb_also_tok": 1,
+"frb_also_lc": 1,
+"pulled_share": 0.049,
+"pull_off_p": [
+1086.0,
+1716.0,
+2455.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 6,
+"pull_by_launch_wallet": 6,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+6
+]
+],
+"pull_full_share": 0.833,
+"o12_reaction": "0/4",
+"o12_nf_reaction": "0/2",
+"baseline12": "0/11",
+"key": "(0, 1892, 600000, 6000, 'USDG', True)",
+"n_price_liq": 122,
+"n_sqrtp": 93,
+"n_L": 122,
+"n_tok": 28
+},
+{
+"n": 121,
+"per_day": [
+18,
+23,
+30,
+10,
+18,
+15,
+7
+],
+"wallets": 2,
+"top_wallet_share": 0.769,
+"nonce_p10_50_90": [
+52073.0,
+63348.0,
+64079.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(1217699999999999, 1444, 883131, 200, 1906654167696912932424497870719153, 29304387560250727772, 'ETH', True)",
+1
+],
+[
+"(1217699999999999, 1444, 883131, 200, 1694508244435775266529528587137852, 26043803412428578511, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"0.0012177",
+121
+]
+],
+"clen_top": [
+[
+1444,
+121
+]
+],
+"quote": [
+[
+"ETH",
+121
+]
+],
+"fee_ts": [
+[
+"883131/200",
+121
+]
+],
+"tok_top": [
+[
+"16afd61e",
+103
+],
+[
+"fa4982d5",
+8
+],
+[
+"58d59320",
+5
+]
+],
+"npos_top": [
+[
+1,
+121
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+121
+]
+],
+"any_buy": 0.008,
+"frb_share": 0.0,
+"first_buy_off_p": [
+2637.0,
+2637.0,
+2637.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/0",
+"key": "(1217699999999999, 1444, 883131, 200, 'ETH', True)",
+"n_price_liq": 121,
+"n_sqrtp": 121,
+"n_L": 121,
+"n_tok": 7
+},
+{
+"n": 119,
+"per_day": [
+13,
+12,
+22,
+14,
+29,
+17,
+12
+],
+"wallets": 119,
+"top_wallet_share": 0.008,
+"nonce_p10_50_90": [
+5.0,
+6.0,
+7.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 2276, 100, 1, 792280926924313289846529216293289, 100000088127620690885293, 'WETH', False)",
+71
+],
+[
+"(0, 2276, 100, 1, 1445753563200224534939232127549289, 54745799260941279145961, 'WETH', False)",
+22
+]
+],
+"value_top": [
+[
+"0",
+119
+]
+],
+"clen_top": [
+[
+2276,
+119
+]
+],
+"quote": [
+[
+"WETH",
+119
+]
+],
+"fee_ts": [
+[
+"100/1",
+119
+]
+],
+"tok_top": [
+[
+"564fe314",
+119
+]
+],
+"npos_top": [
+[
+1,
+119
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+119
+]
+],
+"any_buy": 1.0,
+"frb_share": 1.0,
+"first_buy_off_p": [
+4.0,
+4.0,
+75.8
+],
+"frb_off_p": [
+4.0,
+4.0,
+123.4
+],
+"frb_eth_p": [
+0.0142,
+0.075,
+0.297
+],
+"frb_eth_top": [
+[
+0.099,
+8
+],
+[
+0.0495,
+6
+]
+],
+"frb_fp_top": [
+[
+"0x80e49ed1:3593564c:836",
+50
+],
+[
+"0x7feb3ecb:3593564c:836",
+20
+],
+[
+"0xa0332fd6:3593564c:836",
+9
+]
+],
+"frb_eoa_distinct": 36,
+"frb_eoa_top": [
+[
+"0x4623ca05",
+39
+],
+[
+"0x5a2b20d2",
+12
+]
+],
+"frb_launch_wallet": 2,
+"frb_repeat_ge3": 102,
+"frb_also_tok": 106,
+"frb_also_lc": 106,
+"pulled_share": 0.034,
+"pull_off_p": [
+1032.6,
+1361.0,
+1856.7
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 4,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+4
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/49",
+"o12_nf_reaction": "0/49",
+"baseline12": "0/70",
+"key": "(0, 2276, 100, 1, 'WETH', False)",
+"n_price_liq": 13,
+"n_sqrtp": 13,
+"n_L": 13,
+"n_tok": 1
+},
+{
+"n": 117,
+"per_day": [
+33,
+29,
+8,
+9,
+3,
+26,
+9
+],
+"wallets": 116,
+"top_wallet_share": 0.017,
+"nonce_p10_50_90": [
+3.0,
+3.0,
+3.0
+],
+"fresh_le3": 0.923,
+"shape_top": [
+[
+"(0, 2020, 3000, 60, 884577849510141479780078443616778, 89797578324424114307669, 'ETH', False)",
+87
+],
+[
+"(0, 2020, 3000, 60, 1021577546257916519813872471711632, 77755182674486103644453, 'ETH', False)",
+25
+]
+],
+"value_top": [
+[
+"0",
+117
+]
+],
+"clen_top": [
+[
+2020,
+117
+]
+],
+"quote": [
+[
+"ETH",
+117
+]
+],
+"fee_ts": [
+[
+"3000/60",
+117
+]
+],
+"tok_top": [
+[
+"a98b3b9e",
+117
+]
+],
+"npos_top": [
+[
+1,
+117
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+117
+]
+],
+"any_buy": 0.991,
+"frb_share": 0.991,
+"first_buy_off_p": [
+46.0,
+51.0,
+89.5
+],
+"frb_off_p": [
+46.0,
+52.0,
+89.5
+],
+"frb_eth_p": [
+0.05,
+0.05,
+0.15
+],
+"frb_eth_top": [
+[
+0.05,
+101
+],
+[
+2.5,
+4
+]
+],
+"frb_fp_top": [
+[
+"0x75379d5d:3593564c:1540",
+116
+]
+],
+"frb_eoa_distinct": 10,
+"frb_eoa_top": [
+[
+"0x9e8f558b",
+102
+],
+[
+"0x8c949050",
+4
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 113,
+"frb_also_tok": 113,
+"frb_also_lc": 113,
+"pulled_share": 0.026,
+"pull_off_p": [
+948.6,
+1059.0,
+1741.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 3,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+3
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/6",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/110",
+"key": "(0, 2020, 3000, 60, 'ETH', False)",
+"n_price_liq": 7,
+"n_sqrtp": 7,
+"n_L": 7,
+"n_tok": 1
+},
+{
+"n": 113,
+"per_day": [
+12,
+10,
+13,
+24,
+9,
+20,
+25
+],
+"wallets": 35,
+"top_wallet_share": 0.186,
+"nonce_p10_50_90": [
+774.2,
+2861.0,
+9110.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 870000, 8700, 56022151156514136284931238514606779251, 3258563018694120, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 870000, 8700, 128915287057201719395697672675546247107, 8492920650236148, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+113
+]
+],
+"clen_top": [
+[
+1892,
+113
+]
+],
+"quote": [
+[
+"USDG",
+113
+]
+],
+"fee_ts": [
+[
+"870000/8700",
+113
+]
+],
+"tok_top": [
+[
+"16afd61e",
+27
+],
+[
+"564fe314",
+24
+],
+[
+"4e451d1a",
+7
+]
+],
+"npos_top": [
+[
+1,
+113
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+113
+]
+],
+"any_buy": 0.106,
+"frb_share": 0.027,
+"first_buy_off_p": [
+4.3,
+433.5,
+2198.8
+],
+"frb_off_p": [
+879.8,
+2371.0,
+2667.8
+],
+"frb_eth_p": [
+0.0176,
+0.038,
+0.0584
+],
+"frb_eth_top": [
+[
+0.063471,
+1
+],
+[
+0.012547,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x00000000:765e827f:3940",
+1
+],
+[
+"0xf5307745:5f575529:5829",
+1
+],
+[
+"0x5a705de8:07ed2379:968",
+1
+]
+],
+"frb_eoa_distinct": 3,
+"frb_eoa_top": [
+[
+"0xc3d22b9e",
+1
+],
+[
+"0x49aac0e3",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 1,
+"frb_also_tok": 0,
+"frb_also_lc": 1,
+"pulled_share": 0.071,
+"pull_off_p": [
+1550.8,
+2077.5,
+2927.0
+],
+"pull_before_frb": 1,
+"pull_no_frb": 7,
+"pull_by_launch_wallet": 6,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+8
+]
+],
+"pull_full_share": 0.5,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/10",
+"key": "(0, 1892, 870000, 8700, 'USDG', True)",
+"n_price_liq": 113,
+"n_sqrtp": 90,
+"n_L": 113,
+"n_tok": 32
+},
+{
+"n": 101,
+"per_day": [
+14,
+10,
+13,
+9,
+18,
+18,
+19
+],
+"wallets": 51,
+"top_wallet_share": 0.188,
+"nonce_p10_50_90": [
+144.0,
+1807.0,
+10183.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 500000, 5000, 17715761659241016175833847555301018563, 160922683089534, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 500000, 5000, 14972469446172374206978738372834684200, 10351095692428355, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+101
+]
+],
+"clen_top": [
+[
+1892,
+101
+]
+],
+"quote": [
+[
+"USDG",
+101
+]
+],
+"fee_ts": [
+[
+"500000/5000",
+101
+]
+],
+"tok_top": [
+[
+"16afd61e",
+35
+],
+[
+"4e451d1a",
+13
+],
+[
+"d4e7eae4",
+12
+]
+],
+"npos_top": [
+[
+1,
+101
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+101
+]
+],
+"any_buy": 0.079,
+"frb_share": 0.0,
+"first_buy_off_p": [
+779.3,
+1431.0,
+2701.2
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.01,
+"pull_off_p": [
+926.0,
+926.0,
+926.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/2",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/6",
+"key": "(0, 1892, 500000, 5000, 'USDG', True)",
+"n_price_liq": 101,
+"n_sqrtp": 86,
+"n_L": 101,
+"n_tok": 28
+},
+{
+"n": 98,
+"per_day": [
+31,
+10,
+10,
+21,
+1,
+11,
+14
+],
+"wallets": 6,
+"top_wallet_share": 0.592,
+"nonce_p10_50_90": [
+51.1,
+493.0,
+2371.2
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 990100, 9901, 56022151156514136284931238514606779251, 35873958536026, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 990100, 9901, 56022151156514136284931238514606779251, 29191873382767, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+98
+]
+],
+"clen_top": [
+[
+1892,
+98
+]
+],
+"quote": [
+[
+"USDG",
+98
+]
+],
+"fee_ts": [
+[
+"990100/9901",
+98
+]
+],
+"tok_top": [
+[
+"16afd61e",
+23
+],
+[
+"d4e7eae4",
+12
+],
+[
+"cb79985d",
+11
+]
+],
+"npos_top": [
+[
+1,
+98
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+98
+]
+],
+"any_buy": 0.051,
+"frb_share": 0.01,
+"first_buy_off_p": [
+132.4,
+695.0,
+1224.8
+],
+"frb_off_p": [
+2933.0,
+2933.0,
+2933.0
+],
+"frb_eth_p": [
+0.0086,
+0.0086,
+0.0086
+],
+"frb_eth_top": [
+[
+0.008551,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xac24ce15:01010bd7:290",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x1e1a0852",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/4",
+"key": "(0, 1892, 990100, 9901, 'USDG', True)",
+"n_price_liq": 98,
+"n_sqrtp": 62,
+"n_L": 98,
+"n_tok": 29
+},
+{
+"n": 93,
+"per_day": [
+10,
+15,
+18,
+14,
+11,
+19,
+6
+],
+"wallets": 24,
+"top_wallet_share": 0.323,
+"nonce_p10_50_90": [
+82.0,
+334.0,
+1080.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 860000, 8600, 56022151156514136284931238514606779251, 272686349265654, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 860000, 8600, 116811526434590918235529577584004, 3662280356, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+93
+]
+],
+"clen_top": [
+[
+1892,
+93
+]
+],
+"quote": [
+[
+"USDG",
+93
+]
+],
+"fee_ts": [
+[
+"860000/8600",
+93
+]
+],
+"tok_top": [
+[
+"c0b7d400",
+19
+],
+[
+"16afd61e",
+14
+],
+[
+"58d59320",
+12
+]
+],
+"npos_top": [
+[
+1,
+93
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+93
+]
+],
+"any_buy": 0.032,
+"frb_share": 0.011,
+"first_buy_off_p": [
+97.6,
+160.0,
+1161.6
+],
+"frb_off_p": [
+160.0,
+160.0,
+160.0
+],
+"frb_eth_p": [
+0.0105,
+0.0105,
+0.0105
+],
+"frb_eth_top": [
+[
+0.010452,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xf0b7eaaf:39ecce49:1732",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x5925d2f4",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 1,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.022,
+"pull_off_p": [
+2451.8,
+2603.0,
+2754.2
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 2,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 0.5,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/2",
+"key": "(0, 1892, 860000, 8600, 'USDG', True)",
+"n_price_liq": 93,
+"n_sqrtp": 79,
+"n_L": 93,
+"n_tok": 29
+},
+{
+"n": 90,
+"per_day": [
+7,
+5,
+14,
+17,
+8,
+12,
+27
+],
+"wallets": 35,
+"top_wallet_share": 0.2,
+"nonce_p10_50_90": [
+35.7,
+668.5,
+5304.7
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 880000, 8800, 19806281907237751425123878558598481387, 827522550022599, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 880000, 8800, 45741560543655427930984554118780580549, 438274702732070, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+90
+]
+],
+"clen_top": [
+[
+1892,
+90
+]
+],
+"quote": [
+[
+"USDG",
+90
+]
+],
+"fee_ts": [
+[
+"880000/8800",
+90
+]
+],
+"tok_top": [
+[
+"16afd61e",
+37
+],
+[
+"d4e7eae4",
+6
+],
+[
+"037449b1",
+6
+]
+],
+"npos_top": [
+[
+1,
+90
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+90
+]
+],
+"any_buy": 0.056,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.4,
+245.0,
+1561.6
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.056,
+"pull_off_p": [
+1683.8,
+1919.0,
+2327.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 5,
+"pull_by_launch_wallet": 4,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+5
+]
+],
+"pull_full_share": 0.8,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/5",
+"key": "(0, 1892, 880000, 8800, 'USDG', True)",
+"n_price_liq": 90,
+"n_sqrtp": 76,
+"n_L": 90,
+"n_tok": 29
+},
+{
+"n": 82,
+"per_day": [
+12,
+16,
+17,
+10,
+12,
+6,
+9
+],
+"wallets": 35,
+"top_wallet_share": 0.098,
+"nonce_p10_50_90": [
+302.2,
+1530.0,
+5876.7
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 770000, 7700, 10882751404799233685474736485556917305, 462885620759561, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 770000, 7700, 17715761659241016175833847555301018563, 227479635433311, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+82
+]
+],
+"clen_top": [
+[
+1892,
+82
+]
+],
+"quote": [
+[
+"USDG",
+82
+]
+],
+"fee_ts": [
+[
+"770000/7700",
+82
+]
+],
+"tok_top": [
+[
+"16afd61e",
+24
+],
+[
+"4e451d1a",
+13
+],
+[
+"c0b7d400",
+8
+]
+],
+"npos_top": [
+[
+1,
+82
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+82
+]
+],
+"any_buy": 0.085,
+"frb_share": 0.0,
+"first_buy_off_p": [
+2.8,
+354.0,
+1583.8
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.024,
+"pull_off_p": [
+446.6,
+1009.0,
+1571.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 2,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 0.5,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/6",
+"key": "(0, 1892, 770000, 7700, 'USDG', True)",
+"n_price_liq": 82,
+"n_sqrtp": 64,
+"n_L": 82,
+"n_tok": 26
+},
+{
+"n": 68,
+"per_day": [
+6,
+6,
+7,
+8,
+18,
+13,
+10
+],
+"wallets": 22,
+"top_wallet_share": 0.294,
+"nonce_p10_50_90": [
+263.2,
+651.0,
+5655.5
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 890000, 8900, 1747297921532302771768732231181692827, 384669843721873, 'USDG', True)",
+2
+],
+[
+"(0, 1892, 890000, 8900, 3592282590442628664331, 189251706963303, 'USDG', True)",
+2
+]
+],
+"value_top": [
+[
+"0",
+68
+]
+],
+"clen_top": [
+[
+1892,
+68
+]
+],
+"quote": [
+[
+"USDG",
+68
+]
+],
+"fee_ts": [
+[
+"890000/8900",
+68
+]
+],
+"tok_top": [
+[
+"c0b7d400",
+19
+],
+[
+"16afd61e",
+13
+],
+[
+"564fe314",
+4
+]
+],
+"npos_top": [
+[
+1,
+68
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+68
+]
+],
+"any_buy": 0.0,
+"frb_share": 0.0,
+"first_buy_off_p": [
+null,
+null,
+null
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.029,
+"pull_off_p": [
+1521.2,
+1846.0,
+2170.8
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 2,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/0",
+"key": "(0, 1892, 890000, 8900, 'USDG', True)",
+"n_price_liq": 66,
+"n_sqrtp": 49,
+"n_L": 66,
+"n_tok": 24
+},
+{
+"n": 61,
+"per_day": [
+24,
+6,
+6,
+10,
+6,
+6,
+3
+],
+"wallets": 24,
+"top_wallet_share": 0.262,
+"nonce_p10_50_90": [
+310.0,
+608.0,
+8943.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 750000, 7500, 177158280123727983047, 5154173840274, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 750000, 7500, 209617650442783699580, 315679878326645, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+61
+]
+],
+"clen_top": [
+[
+1892,
+61
+]
+],
+"quote": [
+[
+"USDG",
+61
+]
+],
+"fee_ts": [
+[
+"750000/7500",
+61
+]
+],
+"tok_top": [
+[
+"16afd61e",
+20
+],
+[
+"d4e7eae4",
+14
+],
+[
+"a98b3b9e",
+7
+]
+],
+"npos_top": [
+[
+1,
+61
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+61
+]
+],
+"any_buy": 0.098,
+"frb_share": 0.0,
+"first_buy_off_p": [
+738.5,
+1950.5,
+2336.5
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.082,
+"pull_off_p": [
+1621.2,
+2423.0,
+2679.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 5,
+"pull_by_launch_wallet": 3,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+5
+]
+],
+"pull_full_share": 0.2,
+"o12_reaction": "0/2",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/4",
+"key": "(0, 1892, 750000, 7500, 'USDG', True)",
+"n_price_liq": 61,
+"n_sqrtp": 56,
+"n_L": 61,
+"n_tok": 14
+},
+{
+"n": 60,
+"per_day": [
+13,
+14,
+6,
+7,
+7,
+7,
+6
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1802.6,
+2295.5,
+2807.1
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 989997, 9900, 112041179680891814539, 12289287209656, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 989997, 9900, 56022151156514136284931238514606779251, 24077426619436, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+60
+]
+],
+"clen_top": [
+[
+1892,
+60
+]
+],
+"quote": [
+[
+"USDG",
+60
+]
+],
+"fee_ts": [
+[
+"989997/9900",
+60
+]
+],
+"tok_top": [
+[
+"16afd61e",
+50
+],
+[
+"ad9da489",
+6
+],
+[
+"d21ba36a",
+1
+]
+],
+"npos_top": [
+[
+1,
+60
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+60
+]
+],
+"any_buy": 0.017,
+"frb_share": 0.0,
+"first_buy_off_p": [
+145.0,
+145.0,
+145.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/1",
+"key": "(0, 1892, 989997, 9900, 'USDG', True)",
+"n_price_liq": 60,
+"n_sqrtp": 13,
+"n_L": 60,
+"n_tok": 6
+},
+{
+"n": 51,
+"per_day": [
+6,
+8,
+8,
+4,
+6,
+9,
+10
+],
+"wallets": 51,
+"top_wallet_share": 0.02,
+"nonce_p10_50_90": [
+3.0,
+28.0,
+81.0
+],
+"fresh_le3": 0.137,
+"shape_top": [
+[
+"(0, 1444, 10000, 200, 1456928274338934858290090382021648, 58658205063167835204971, 'ETH', True)",
+2
+],
+[
+"(0, 1444, 10000, 200, 4600995998704522589680421792643243, 160918313584121471980297, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+51
+]
+],
+"clen_top": [
+[
+1444,
+51
+]
+],
+"quote": [
+[
+"ETH",
+51
+]
+],
+"fee_ts": [
+[
+"10000/200",
+51
+]
+],
+"tok_top": [
+[
+"f0e91039",
+1
+],
+[
+"ad249fc4",
+1
+],
+[
+"e1d13a5e",
+1
+]
+],
+"npos_top": [
+[
+1,
+51
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+51
+]
+],
+"any_buy": 1.0,
+"frb_share": 0.039,
+"first_buy_off_p": [
+3.0,
+3.0,
+4.0
+],
+"frb_off_p": [
+1.8,
+5.0,
+8.2
+],
+"frb_eth_p": [
+0.0546,
+0.0748,
+0.095
+],
+"frb_eth_top": [
+[
+0.1,
+1
+],
+[
+0.0495,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xcb9da2b9:2185ced2:260",
+1
+],
+[
+"0xf2251d75:08c1284c:260",
+1
+]
+],
+"frb_eoa_distinct": 2,
+"frb_eoa_top": [
+[
+"0x61e53c3a",
+1
+],
+[
+"0xfebb890f",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 2,
+"frb_also_tok": 0,
+"frb_also_lc": 2,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/51",
+"key": "(0, 1444, 10000, 200, 'ETH', True)",
+"n_price_liq": 50,
+"n_sqrtp": 37,
+"n_L": 50,
+"n_tok": 51
+},
+{
+"n": 48,
+"per_day": [
+4,
+7,
+7,
+12,
+6,
+8,
+4
+],
+"wallets": 26,
+"top_wallet_share": 0.125,
+"nonce_p10_50_90": [
+36.2,
+396.0,
+5917.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 810000, 8100, 12686284242241396461871130931361555302, 16635909263356163, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 810000, 8100, 17715761659241016175833847555301018563, 75347510095370, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+48
+]
+],
+"clen_top": [
+[
+1892,
+48
+]
+],
+"quote": [
+[
+"USDG",
+48
+]
+],
+"fee_ts": [
+[
+"810000/8100",
+48
+]
+],
+"tok_top": [
+[
+"16afd61e",
+14
+],
+[
+"c0b7d400",
+8
+],
+[
+"d4e7eae4",
+5
+]
+],
+"npos_top": [
+[
+1,
+48
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+48
+]
+],
+"any_buy": 0.021,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.0,
+1.0,
+1.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.021,
+"pull_off_p": [
+612.0,
+612.0,
+612.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/1",
+"key": "(0, 1892, 810000, 8100, 'USDG', True)",
+"n_price_liq": 48,
+"n_sqrtp": 42,
+"n_L": 48,
+"n_tok": 20
+},
+{
+"n": 46,
+"per_day": [
+7,
+3,
+5,
+11,
+3,
+10,
+7
+],
+"wallets": 28,
+"top_wallet_share": 0.152,
+"nonce_p10_50_90": [
+54.0,
+2016.0,
+7093.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 200000, 2000, 10682747140680766588339321190342193062, 919205574343700, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 200000, 2000, 494769609759910807586, 3720260709262812, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+46
+]
+],
+"clen_top": [
+[
+1892,
+46
+]
+],
+"quote": [
+[
+"USDG",
+46
+]
+],
+"fee_ts": [
+[
+"200000/2000",
+46
+]
+],
+"tok_top": [
+[
+"16afd61e",
+15
+],
+[
+"d4e7eae4",
+12
+],
+[
+"c0b7d400",
+4
+]
+],
+"npos_top": [
+[
+1,
+46
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+46
+]
+],
+"any_buy": 0.217,
+"frb_share": 0.0,
+"first_buy_off_p": [
+77.6,
+974.5,
+2704.8
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.152,
+"pull_off_p": [
+986.2,
+2038.0,
+2633.2
+],
+"pull_before_frb": 0,
+"pull_no_frb": 7,
+"pull_by_launch_wallet": 5,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+7
+]
+],
+"pull_full_share": 0.714,
+"o12_reaction": "0/2",
+"o12_nf_reaction": "0/2",
+"baseline12": "0/8",
+"key": "(0, 1892, 200000, 2000, 'USDG', True)",
+"n_price_liq": 46,
+"n_sqrtp": 43,
+"n_L": 46,
+"n_tok": 16
+},
+{
+"n": 45,
+"per_day": [
+4,
+9,
+14,
+5,
+5,
+3,
+5
+],
+"wallets": 21,
+"top_wallet_share": 0.2,
+"nonce_p10_50_90": [
+24.4,
+540.0,
+5887.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 850000, 8500, 35430395347332058992410889015847131205, 264201145354680, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 850000, 8500, 4768922308194323146286982018077452310, 23687220057941, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+45
+]
+],
+"clen_top": [
+[
+1892,
+45
+]
+],
+"quote": [
+[
+"USDG",
+45
+]
+],
+"fee_ts": [
+[
+"850000/8500",
+45
+]
+],
+"tok_top": [
+[
+"16afd61e",
+19
+],
+[
+"c0b7d400",
+4
+],
+[
+"4e451d1a",
+3
+]
+],
+"npos_top": [
+[
+1,
+45
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+45
+]
+],
+"any_buy": 0.044,
+"frb_share": 0.0,
+"first_buy_off_p": [
+261.3,
+1302.5,
+2343.7
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/1",
+"key": "(0, 1892, 850000, 8500, 'USDG', True)",
+"n_price_liq": 45,
+"n_sqrtp": 36,
+"n_L": 45,
+"n_tok": 17
+},
+{
+"n": 44,
+"per_day": [
+13,
+3,
+2,
+3,
+9,
+8,
+6
+],
+"wallets": 26,
+"top_wallet_share": 0.182,
+"nonce_p10_50_90": [
+661.5,
+1909.0,
+9822.9
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 500000, 5000, 285650685529491337842, 388642812721854, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 500000, 5000, 29943985587942488602739187661182558482, 377946233237942, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+44
+]
+],
+"clen_top": [
+[
+1316,
+44
+]
+],
+"quote": [
+[
+"USDG",
+44
+]
+],
+"fee_ts": [
+[
+"500000/5000",
+44
+]
+],
+"tok_top": [
+[
+"d4e7eae4",
+12
+],
+[
+"4e451d1a",
+9
+],
+[
+"16afd61e",
+9
+]
+],
+"npos_top": [
+[
+1,
+44
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+44
+]
+],
+"any_buy": 0.182,
+"frb_share": 0.023,
+"first_buy_off_p": [
+1.0,
+355.5,
+848.4
+],
+"frb_off_p": [
+1.0,
+1.0,
+1.0
+],
+"frb_eth_p": [
+0.01,
+0.01,
+0.01
+],
+"frb_eth_top": [
+[
+0.009993,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xa30acab4:00000102:814",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x3bda456a",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.045,
+"pull_off_p": [
+1275.4,
+1725.0,
+2174.6
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 2,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/5",
+"o12_nf_reaction": "0/5",
+"baseline12": "0/3",
+"key": "(0, 1316, 500000, 5000, 'USDG', True)",
+"n_price_liq": 44,
+"n_sqrtp": 38,
+"n_L": 44,
+"n_tok": 14
+},
+{
+"n": 39,
+"per_day": [
+11,
+1,
+11,
+1,
+3,
+7,
+5
+],
+"wallets": 39,
+"top_wallet_share": 0.026,
+"nonce_p10_50_90": [
+5.0,
+5.0,
+6.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 2276, 10000, 200, 25135685339936509999814510248241, 3152019188766008768489, 'WETH', True)",
+38
+],
+[
+"(0, 2276, 10000, 200, 249728688535632982996167587, 3152019188766008768489, 'WETH', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+39
+]
+],
+"clen_top": [
+[
+2276,
+39
+]
+],
+"quote": [
+[
+"WETH",
+39
+]
+],
+"fee_ts": [
+[
+"10000/200",
+39
+]
+],
+"tok_top": [
+[
+"564fe314",
+39
+]
+],
+"npos_top": [
+[
+1,
+39
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+39
+]
+],
+"any_buy": 0.026,
+"frb_share": 0.0,
+"first_buy_off_p": [
+232.0,
+232.0,
+232.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/1",
+"key": "(0, 2276, 10000, 200, 'WETH', True)",
+"n_price_liq": 2,
+"n_sqrtp": 2,
+"n_L": 1,
+"n_tok": 1
+},
+{
+"n": 37,
+"per_day": [
+4,
+12,
+8,
+2,
+0,
+9,
+2
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1478.2,
+1964.0,
+3055.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 810000, 60, 1240819022471648823434769211882209280, 1761019607888, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 810000, 60, 35201883666073207714166919836200861696, 51795024819388, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+37
+]
+],
+"clen_top": [
+[
+1316,
+37
+]
+],
+"quote": [
+[
+"USDG",
+37
+]
+],
+"fee_ts": [
+[
+"810000/60",
+37
+]
+],
+"tok_top": [
+[
+"16afd61e",
+10
+],
+[
+"a98b3b9e",
+9
+],
+[
+"fa4982d5",
+5
+]
+],
+"npos_top": [
+[
+1,
+37
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+37
+]
+],
+"any_buy": 0.054,
+"frb_share": 0.027,
+"first_buy_off_p": [
+564.7,
+1335.5,
+2106.3
+],
+"frb_off_p": [
+372.0,
+372.0,
+372.0
+],
+"frb_eth_p": [
+0.209,
+0.209,
+0.209
+],
+"frb_eth_top": [
+[
+0.209006,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xf0b7eaaf:39ecce49:1732",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x40eebd5d",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/1",
+"key": "(0, 1316, 810000, 60, 'USDG', True)",
+"n_price_liq": 37,
+"n_sqrtp": 37,
+"n_L": 37,
+"n_tok": 13
+},
+{
+"n": 35,
+"per_day": [
+2,
+12,
+3,
+4,
+3,
+5,
+6
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1600.4,
+2173.0,
+3234.2
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 850000, 60, 14764644980855503575996128830475468800, 36013188082623, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 850000, 60, 14716757936469204977418021269797863424, 35913950764884, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+35
+]
+],
+"clen_top": [
+[
+1316,
+35
+]
+],
+"quote": [
+[
+"USDG",
+35
+]
+],
+"fee_ts": [
+[
+"850000/60",
+35
+]
+],
+"tok_top": [
+[
+"a98b3b9e",
+11
+],
+[
+"16afd61e",
+8
+],
+[
+"4e451d1a",
+7
+]
+],
+"npos_top": [
+[
+1,
+35
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+35
+]
+],
+"any_buy": 0.171,
+"frb_share": 0.0,
+"first_buy_off_p": [
+453.0,
+2051.0,
+2431.5
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.029,
+"pull_off_p": [
+2185.0,
+2185.0,
+2185.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 0,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 0.0,
+"o12_reaction": "0/3",
+"o12_nf_reaction": "0/2",
+"baseline12": "0/3",
+"key": "(0, 1316, 850000, 60, 'USDG', True)",
+"n_price_liq": 35,
+"n_sqrtp": 35,
+"n_L": 35,
+"n_tok": 9
+},
+{
+"n": 32,
+"per_day": [
+10,
+6,
+3,
+5,
+1,
+3,
+4
+],
+"wallets": 20,
+"top_wallet_share": 0.188,
+"nonce_p10_50_90": [
+413.9,
+2722.0,
+9520.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 100000, 1000, 9827004900799723583565777539063008744, 82517404536894942, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 100000, 1000, 6818588406201606420805306926576362691, 3300270756962726, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+32
+]
+],
+"clen_top": [
+[
+1892,
+32
+]
+],
+"quote": [
+[
+"USDG",
+32
+]
+],
+"fee_ts": [
+[
+"100000/1000",
+32
+]
+],
+"tok_top": [
+[
+"16afd61e",
+24
+],
+[
+"2be340ff",
+1
+],
+[
+"42d848bb",
+1
+]
+],
+"npos_top": [
+[
+1,
+32
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+32
+]
+],
+"any_buy": 0.375,
+"frb_share": 0.031,
+"first_buy_off_p": [
+1.1,
+638.5,
+1439.0
+],
+"frb_off_p": [
+0.0,
+0.0,
+0.0
+],
+"frb_eth_p": [
+0.0172,
+0.0172,
+0.0172
+],
+"frb_eth_top": [
+[
+0.01725,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xed1c3dea:67d8fe79:1380",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0xb4864f7f",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 1,
+"frb_also_tok": 0,
+"frb_also_lc": 1,
+"pulled_share": 0.156,
+"pull_off_p": [
+451.6,
+951.0,
+2234.6
+],
+"pull_before_frb": 0,
+"pull_no_frb": 5,
+"pull_by_launch_wallet": 4,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+5
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/5",
+"o12_nf_reaction": "0/4",
+"baseline12": "0/7",
+"key": "(0, 1892, 100000, 1000, 'USDG', True)",
+"n_price_liq": 32,
+"n_sqrtp": 31,
+"n_L": 32,
+"n_tok": 9
+},
+{
+"n": 32,
+"per_day": [
+4,
+10,
+4,
+1,
+4,
+4,
+5
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1454.7,
+1986.0,
+3191.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 800000, 60, 16735118440807920647, 298935481154665, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 800000, 60, 60816996967519225730947534902624518144, 206464877046015, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+32
+]
+],
+"clen_top": [
+[
+1316,
+32
+]
+],
+"quote": [
+[
+"USDG",
+32
+]
+],
+"fee_ts": [
+[
+"800000/60",
+32
+]
+],
+"tok_top": [
+[
+"4e451d1a",
+8
+],
+[
+"16afd61e",
+7
+],
+[
+"a98b3b9e",
+6
+]
+],
+"npos_top": [
+[
+1,
+32
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+32
+]
+],
+"any_buy": 0.188,
+"frb_share": 0.0,
+"first_buy_off_p": [
+191.0,
+817.0,
+1696.5
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/5",
+"key": "(0, 1316, 800000, 60, 'USDG', True)",
+"n_price_liq": 32,
+"n_sqrtp": 32,
+"n_L": 32,
+"n_tok": 11
+},
+{
+"n": 32,
+"per_day": [
+0,
+16,
+13,
+2,
+0,
+0,
+1
+],
+"wallets": 32,
+"top_wallet_share": 0.031,
+"nonce_p10_50_90": [
+3.0,
+3.0,
+4.0
+],
+"fresh_le3": 0.625,
+"shape_top": [
+[
+"(1999999999999997576, 1444, 100, 1, 1771595571142957102961017161607260, 44721359549995793928183, 'ETH', True)",
+32
+]
+],
+"value_top": [
+[
+"2",
+32
+]
+],
+"clen_top": [
+[
+1444,
+32
+]
+],
+"quote": [
+[
+"ETH",
+32
+]
+],
+"fee_ts": [
+[
+"100/1",
+32
+]
+],
+"tok_top": [
+[
+"fe6bafbf",
+1
+],
+[
+"c37da644",
+1
+],
+[
+"56c60504",
+1
+]
+],
+"npos_top": [
+[
+1,
+32
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+32
+]
+],
+"any_buy": 1.0,
+"frb_share": 1.0,
+"first_buy_off_p": [
+3.0,
+3.0,
+4.0
+],
+"frb_off_p": [
+63.2,
+273.0,
+572.1
+],
+"frb_eth_p": [
+0.005,
+0.028,
+0.077
+],
+"frb_eth_top": [
+[
+0.005,
+10
+],
+[
+0.011258,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x88767899:3593564c:1284",
+22
+],
+[
+"0x88767899:3593564c:1092",
+10
+]
+],
+"frb_eoa_distinct": 23,
+"frb_eoa_top": [
+[
+"0x578e7a8e",
+10
+],
+[
+"0x1680be9e",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 10,
+"frb_also_tok": 0,
+"frb_also_lc": 10,
+"pulled_share": 0.781,
+"pull_off_p": [
+251.8,
+1589.0,
+2601.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 25,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+25
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/24",
+"o12_nf_reaction": "0/24",
+"baseline12": "0/8",
+"key": "(1999999999999997576, 1444, 100, 1, 'ETH', True)",
+"n_price_liq": 1,
+"n_sqrtp": 1,
+"n_L": 1,
+"n_tok": 32
+},
+{
+"n": 32,
+"per_day": [
+0,
+5,
+2,
+5,
+0,
+3,
+17
+],
+"wallets": 29,
+"top_wallet_share": 0.125,
+"nonce_p10_50_90": [
+3.0,
+3.0,
+5.8
+],
+"fresh_le3": 0.781,
+"shape_top": [
+[
+"(1999999999999992334, 1444, 100, 1, 5602277097478613991873193822745817, 141421356237309504880168, 'ETH', True)",
+32
+]
+],
+"value_top": [
+[
+"2",
+32
+]
+],
+"clen_top": [
+[
+1444,
+32
+]
+],
+"quote": [
+[
+"ETH",
+32
+]
+],
+"fee_ts": [
+[
+"100/1",
+32
+]
+],
+"tok_top": [
+[
+"9595f93c",
+2
+],
+[
+"528c645e",
+1
+],
+[
+"bf17c727",
+1
+]
+],
+"npos_top": [
+[
+1,
+32
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+32
+]
+],
+"any_buy": 1.0,
+"frb_share": 0.906,
+"first_buy_off_p": [
+3.0,
+3.0,
+3.9
+],
+"frb_off_p": [
+194.4,
+319.0,
+578.8
+],
+"frb_eth_p": [
+0.0051,
+0.036,
+0.0646
+],
+"frb_eth_top": [
+[
+0.005,
+3
+],
+[
+0.013547,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x88767899:3593564c:1284",
+25
+],
+[
+"0x88767899:3593564c:1092",
+3
+],
+[
+"0xf0b7eaaf:39ecce49:1060",
+1
+]
+],
+"frb_eoa_distinct": 27,
+"frb_eoa_top": [
+[
+"0x578e7a8e",
+3
+],
+[
+"0x034f4622",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 3,
+"frb_also_tok": 0,
+"frb_also_lc": 3,
+"pulled_share": 0.688,
+"pull_off_p": [
+389.4,
+1609.0,
+2866.6
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 22,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+22
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/28",
+"o12_nf_reaction": "0/27",
+"baseline12": "0/4",
+"key": "(1999999999999992334, 1444, 100, 1, 'ETH', True)",
+"n_price_liq": 1,
+"n_sqrtp": 1,
+"n_L": 1,
+"n_tok": 31
+},
+{
+"n": 31,
+"per_day": [
+2,
+3,
+9,
+4,
+5,
+2,
+6
+],
+"wallets": 25,
+"top_wallet_share": 0.065,
+"nonce_p10_50_90": [
+32.0,
+657.0,
+2055.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 990000, 9900, 2666988857290855795190740726099917, 33394921903, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 990000, 9900, 3067590528181512295380774281591951650, 11406954542445, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+31
+]
+],
+"clen_top": [
+[
+1892,
+31
+]
+],
+"quote": [
+[
+"USDG",
+31
+]
+],
+"fee_ts": [
+[
+"990000/9900",
+31
+]
+],
+"tok_top": [
+[
+"564fe314",
+5
+],
+[
+"16afd61e",
+4
+],
+[
+"4e451d1a",
+3
+]
+],
+"npos_top": [
+[
+1,
+31
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+31
+]
+],
+"any_buy": 0.065,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1029.2,
+1430.0,
+1830.8
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.032,
+"pull_off_p": [
+722.0,
+722.0,
+722.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 0.0,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/1",
+"key": "(0, 1892, 990000, 9900, 'USDG', True)",
+"n_price_liq": 31,
+"n_sqrtp": 30,
+"n_L": 31,
+"n_tok": 17
+},
+{
+"n": 30,
+"per_day": [
+3,
+5,
+5,
+2,
+5,
+7,
+3
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1484.2,
+2285.0,
+3062.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 840000, 60, 529517930847984353280, 662587151656680, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 840000, 60, 40619343547406888723021243351560093696, 56987079636082, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+30
+]
+],
+"clen_top": [
+[
+1316,
+30
+]
+],
+"quote": [
+[
+"USDG",
+30
+]
+],
+"fee_ts": [
+[
+"840000/60",
+30
+]
+],
+"tok_top": [
+[
+"4e451d1a",
+8
+],
+[
+"16afd61e",
+6
+],
+[
+"fa4982d5",
+6
+]
+],
+"npos_top": [
+[
+1,
+30
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+30
+]
+],
+"any_buy": 0.1,
+"frb_share": 0.0,
+"first_buy_off_p": [
+528.6,
+767.0,
+1530.2
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/2",
+"key": "(0, 1316, 840000, 60, 'USDG', True)",
+"n_price_liq": 30,
+"n_sqrtp": 30,
+"n_L": 30,
+"n_tok": 12
+},
+{
+"n": 29,
+"per_day": [
+4,
+4,
+4,
+5,
+3,
+4,
+5
+],
+"wallets": 22,
+"top_wallet_share": 0.069,
+"nonce_p10_50_90": [
+102.2,
+2246.0,
+6411.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 700000, 7000, 7922807523698269125109939133199873, 76923015261, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 700000, 7000, 39613283254511196358343120627587120268, 879476283136054, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+29
+]
+],
+"clen_top": [
+[
+1316,
+29
+]
+],
+"quote": [
+[
+"USDG",
+29
+]
+],
+"fee_ts": [
+[
+"700000/7000",
+29
+]
+],
+"tok_top": [
+[
+"d4e7eae4",
+5
+],
+[
+"16afd61e",
+5
+],
+[
+"4e451d1a",
+5
+]
+],
+"npos_top": [
+[
+1,
+29
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+29
+]
+],
+"any_buy": 0.103,
+"frb_share": 0.034,
+"first_buy_off_p": [
+10.4,
+48.0,
+627.2
+],
+"frb_off_p": [
+48.0,
+48.0,
+48.0
+],
+"frb_eth_p": [
+0.0078,
+0.0078,
+0.0078
+],
+"frb_eth_top": [
+[
+0.00777,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xccc88a9d:0a2b8f36:5764",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x0ec4e45f",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 1,
+"frb_also_tok": 0,
+"frb_also_lc": 1,
+"pulled_share": 0.138,
+"pull_off_p": [
+617.8,
+1190.5,
+1998.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 3,
+"pull_by_launch_wallet": 3,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+3
+],
+[
+"0x24c85b57:aa5a58a5",
+1
+]
+],
+"pull_full_share": 0.25,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/2",
+"key": "(0, 1316, 700000, 7000, 'USDG', True)",
+"n_price_liq": 29,
+"n_sqrtp": 27,
+"n_L": 29,
+"n_tok": 15
+},
+{
+"n": 29,
+"per_day": [
+4,
+2,
+4,
+6,
+6,
+6,
+1
+],
+"wallets": 22,
+"top_wallet_share": 0.103,
+"nonce_p10_50_90": [
+20.4,
+1034.0,
+7046.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 400000, 4000, 70618083584091954163543262813522768, 1146709897663, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 400000, 4000, 1550188496887133314522076350037935097, 36859124989163, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+29
+]
+],
+"clen_top": [
+[
+1892,
+29
+]
+],
+"quote": [
+[
+"USDG",
+29
+]
+],
+"fee_ts": [
+[
+"400000/4000",
+29
+]
+],
+"tok_top": [
+[
+"16afd61e",
+10
+],
+[
+"d4e7eae4",
+7
+],
+[
+"c0b7d400",
+3
+]
+],
+"npos_top": [
+[
+1,
+29
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+29
+]
+],
+"any_buy": 0.207,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.0,
+2.0,
+1451.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.069,
+"pull_off_p": [
+1353.9,
+1653.5,
+1953.1
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 0.5,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/5",
+"key": "(0, 1892, 400000, 4000, 'USDG', True)",
+"n_price_liq": 29,
+"n_sqrtp": 25,
+"n_L": 29,
+"n_tok": 10
+},
+{
+"n": 29,
+"per_day": [
+4,
+3,
+3,
+8,
+3,
+2,
+6
+],
+"wallets": 27,
+"top_wallet_share": 0.069,
+"nonce_p10_50_90": [
+104.8,
+2303.0,
+6924.2
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 200000, 2000, 4361116587675499873583, 110412238720076, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 200000, 2000, 1086698603223362606621050039474444691, 72900883888, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+29
+]
+],
+"clen_top": [
+[
+1316,
+29
+]
+],
+"quote": [
+[
+"USDG",
+29
+]
+],
+"fee_ts": [
+[
+"200000/2000",
+29
+]
+],
+"tok_top": [
+[
+"16afd61e",
+9
+],
+[
+"d4e7eae4",
+6
+],
+[
+"4e451d1a",
+4
+]
+],
+"npos_top": [
+[
+1,
+29
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+29
+]
+],
+"any_buy": 0.172,
+"frb_share": 0.034,
+"first_buy_off_p": [
+1.0,
+496.0,
+1769.4
+],
+"frb_off_p": [
+48.0,
+48.0,
+48.0
+],
+"frb_eth_p": [
+0.0105,
+0.0105,
+0.0105
+],
+"frb_eth_top": [
+[
+0.010458,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xf0b7eaaf:39ecce49:1732",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x9dd6a8b8",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.103,
+"pull_off_p": [
+851.8,
+1235.0,
+2615.8
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 2,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+3
+]
+],
+"pull_full_share": 0.0,
+"o12_reaction": "0/2",
+"o12_nf_reaction": "0/2",
+"baseline12": "0/3",
+"key": "(0, 1316, 200000, 2000, 'USDG', True)",
+"n_price_liq": 29,
+"n_sqrtp": 28,
+"n_L": 29,
+"n_tok": 13
+},
+{
+"n": 29,
+"per_day": [
+3,
+5,
+7,
+2,
+4,
+4,
+4
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1724.6,
+2156.0,
+3194.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 830000, 60, 12533030376833568583274527320428249088, 24825898521589, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 830000, 60, 12813787883010568887116559776602914816, 24195739270945, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+29
+]
+],
+"clen_top": [
+[
+1316,
+29
+]
+],
+"quote": [
+[
+"USDG",
+29
+]
+],
+"fee_ts": [
+[
+"830000/60",
+29
+]
+],
+"tok_top": [
+[
+"a98b3b9e",
+8
+],
+[
+"fa4982d5",
+6
+],
+[
+"16afd61e",
+5
+]
+],
+"npos_top": [
+[
+1,
+29
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+29
+]
+],
+"any_buy": 0.069,
+"frb_share": 0.0,
+"first_buy_off_p": [
+585.7,
+916.5,
+1247.3
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/1",
+"key": "(0, 1316, 830000, 60, 'USDG', True)",
+"n_price_liq": 29,
+"n_sqrtp": 29,
+"n_L": 29,
+"n_tok": 9
+},
+{
+"n": 29,
+"per_day": [
+1,
+8,
+7,
+1,
+2,
+6,
+4
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1556.4,
+2144.0,
+3198.4
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 890000, 60, 3029704852826283307075815594023452672, 4402263590387, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 890000, 60, 248465302923684555590012433786149535744, 347042755250732, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+29
+]
+],
+"clen_top": [
+[
+1316,
+29
+]
+],
+"quote": [
+[
+"USDG",
+29
+]
+],
+"fee_ts": [
+[
+"890000/60",
+29
+]
+],
+"tok_top": [
+[
+"fa4982d5",
+6
+],
+[
+"4e451d1a",
+5
+],
+[
+"a98b3b9e",
+5
+]
+],
+"npos_top": [
+[
+1,
+29
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+29
+]
+],
+"any_buy": 0.138,
+"frb_share": 0.0,
+"first_buy_off_p": [
+740.1,
+1859.5,
+2744.4
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/3",
+"key": "(0, 1316, 890000, 60, 'USDG', True)",
+"n_price_liq": 29,
+"n_sqrtp": 29,
+"n_L": 29,
+"n_tok": 12
+},
+{
+"n": 28,
+"per_day": [
+6,
+0,
+5,
+3,
+6,
+3,
+5
+],
+"wallets": 11,
+"top_wallet_share": 0.357,
+"nonce_p10_50_90": [
+366.1,
+1847.0,
+2867.7
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 920000, 9200, 2596594408766531447462817343029445177, 28168966944453, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 920000, 9200, 2181492887207493215242039261162610677, 27399998889496, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+28
+]
+],
+"clen_top": [
+[
+1892,
+28
+]
+],
+"quote": [
+[
+"USDG",
+28
+]
+],
+"fee_ts": [
+[
+"920000/9200",
+28
+]
+],
+"tok_top": [
+[
+"16afd61e",
+7
+],
+[
+"d4e7eae4",
+6
+],
+[
+"c0b7d400",
+4
+]
+],
+"npos_top": [
+[
+1,
+28
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+28
+]
+],
+"any_buy": 0.143,
+"frb_share": 0.036,
+"first_buy_off_p": [
+371.2,
+1281.5,
+1442.1
+],
+"frb_off_p": [
+1328.0,
+1328.0,
+1328.0
+],
+"frb_eth_p": [
+0.006,
+0.006,
+0.006
+],
+"frb_eth_top": [
+[
+0.006046,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x9b0f4161:0c89e77a:492",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x9b0f4161",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.036,
+"pull_off_p": [
+2633.0,
+2633.0,
+2633.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/2",
+"o12_nf_reaction": "0/2",
+"baseline12": "0/2",
+"key": "(0, 1892, 920000, 9200, 'USDG', True)",
+"n_price_liq": 28,
+"n_sqrtp": 27,
+"n_L": 28,
+"n_tok": 14
+},
+{
+"n": 26,
+"per_day": [
+3,
+2,
+4,
+3,
+3,
+6,
+5
+],
+"wallets": 18,
+"top_wallet_share": 0.192,
+"nonce_p10_50_90": [
+289.5,
+1732.0,
+6986.5
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 400000, 4000, 1709022649738600509031110289570006540, 10660338025003, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 400000, 4000, 56022151156514136284931238514606779251, 141422619998236, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+26
+]
+],
+"clen_top": [
+[
+1316,
+26
+]
+],
+"quote": [
+[
+"USDG",
+26
+]
+],
+"fee_ts": [
+[
+"400000/4000",
+26
+]
+],
+"tok_top": [
+[
+"4e451d1a",
+8
+],
+[
+"564fe314",
+7
+],
+[
+"d4e7eae4",
+3
+]
+],
+"npos_top": [
+[
+1,
+26
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+26
+]
+],
+"any_buy": 0.385,
+"frb_share": 0.038,
+"first_buy_off_p": [
+1.0,
+1.0,
+493.9
+],
+"frb_off_p": [
+30.0,
+30.0,
+30.0
+],
+"frb_eth_p": [
+0.0163,
+0.0163,
+0.0163
+],
+"frb_eth_top": [
+[
+0.016324,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xccc88a9d:0a2b8f36:9700",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0xa67d7eb4",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 1,
+"frb_also_tok": 0,
+"frb_also_lc": 1,
+"pulled_share": 0.154,
+"pull_off_p": [
+805.5,
+2161.0,
+2465.1
+],
+"pull_before_frb": 0,
+"pull_no_frb": 3,
+"pull_by_launch_wallet": 3,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+4
+]
+],
+"pull_full_share": 0.75,
+"o12_reaction": "0/3",
+"o12_nf_reaction": "0/3",
+"baseline12": "0/7",
+"key": "(0, 1316, 400000, 4000, 'USDG', True)",
+"n_price_liq": 26,
+"n_sqrtp": 25,
+"n_L": 26,
+"n_tok": 9
+},
+{
+"n": 26,
+"per_day": [
+2,
+1,
+1,
+5,
+2,
+6,
+9
+],
+"wallets": 16,
+"top_wallet_share": 0.115,
+"nonce_p10_50_90": [
+884.5,
+2966.5,
+5838.5
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 600000, 6000, 19215181511629747012542298317628470954, 142123609643073, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 600000, 6000, 717428750762903496067, 239491041186148, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+26
+]
+],
+"clen_top": [
+[
+1316,
+26
+]
+],
+"quote": [
+[
+"USDG",
+26
+]
+],
+"fee_ts": [
+[
+"600000/6000",
+26
+]
+],
+"tok_top": [
+[
+"4e451d1a",
+8
+],
+[
+"564fe314",
+5
+],
+[
+"d4e7eae4",
+5
+]
+],
+"npos_top": [
+[
+1,
+26
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+26
+]
+],
+"any_buy": 0.192,
+"frb_share": 0.0,
+"first_buy_off_p": [
+3.8,
+5.0,
+836.2
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.115,
+"pull_off_p": [
+459.4,
+769.0,
+901.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 3,
+"pull_by_launch_wallet": 3,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+3
+]
+],
+"pull_full_share": 0.333,
+"o12_reaction": "0/2",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/3",
+"key": "(0, 1316, 600000, 6000, 'USDG', True)",
+"n_price_liq": 26,
+"n_sqrtp": 23,
+"n_L": 26,
+"n_tok": 8
+},
+{
+"n": 26,
+"per_day": [
+2,
+8,
+3,
+2,
+1,
+5,
+5
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1499.0,
+2196.0,
+3208.5
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 870000, 60, 14772740006306131569434899519903891456, 36081865113524, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 870000, 60, 6875104848490365163916855461938200576, 590205222057477, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+26
+]
+],
+"clen_top": [
+[
+1316,
+26
+]
+],
+"quote": [
+[
+"USDG",
+26
+]
+],
+"fee_ts": [
+[
+"870000/60",
+26
+]
+],
+"tok_top": [
+[
+"a98b3b9e",
+6
+],
+[
+"16afd61e",
+6
+],
+[
+"fa4982d5",
+5
+]
+],
+"npos_top": [
+[
+1,
+26
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+26
+]
+],
+"any_buy": 0.077,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1972.8,
+2400.0,
+2827.2
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/1",
+"key": "(0, 1316, 870000, 60, 'USDG', True)",
+"n_price_liq": 26,
+"n_sqrtp": 26,
+"n_L": 26,
+"n_tok": 8
+},
+{
+"n": 25,
+"per_day": [
+5,
+2,
+0,
+3,
+4,
+6,
+5
+],
+"wallets": 25,
+"top_wallet_share": 0.04,
+"nonce_p10_50_90": [
+3.0,
+28.0,
+53.4
+],
+"fresh_le3": 0.2,
+"shape_top": [
+[
+"(0, 1444, 3000, 60, 2048920868250475044841679673589680, 73703088487081942413833, 'ETH', True)",
+1
+],
+[
+"(0, 1444, 3000, 60, 2048920868250475044841679673589680, 85829889735766991319591, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+25
+]
+],
+"clen_top": [
+[
+1444,
+25
+]
+],
+"quote": [
+[
+"ETH",
+25
+]
+],
+"fee_ts": [
+[
+"3000/60",
+25
+]
+],
+"tok_top": [
+[
+"7a2db3eb",
+1
+],
+[
+"2a7cb345",
+1
+],
+[
+"a2d70065",
+1
+]
+],
+"npos_top": [
+[
+1,
+25
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+25
+]
+],
+"any_buy": 1.0,
+"frb_share": 0.04,
+"first_buy_off_p": [
+3.0,
+3.0,
+4.0
+],
+"frb_off_p": [
+12.0,
+12.0,
+12.0
+],
+"frb_eth_p": [
+0.0248,
+0.0248,
+0.0248
+],
+"frb_eth_top": [
+[
+0.02475,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xf2251d75:08c1284c:260",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x6b79f74f",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 1,
+"frb_also_tok": 0,
+"frb_also_lc": 1,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/25",
+"key": "(0, 1444, 3000, 60, 'ETH', True)",
+"n_price_liq": 25,
+"n_sqrtp": 21,
+"n_L": 25,
+"n_tok": 25
+},
+{
+"n": 25,
+"per_day": [
+4,
+3,
+4,
+1,
+2,
+10,
+1
+],
+"wallets": 17,
+"top_wallet_share": 0.16,
+"nonce_p10_50_90": [
+42.2,
+1461.0,
+4010.4
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 660000, 6600, 81465404676994061844112136127156185525, 14592653685365820, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 660000, 6600, 14229477444434452142456226228914769339, 93121634474318, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+25
+]
+],
+"clen_top": [
+[
+1892,
+25
+]
+],
+"quote": [
+[
+"USDG",
+25
+]
+],
+"fee_ts": [
+[
+"660000/6600",
+25
+]
+],
+"tok_top": [
+[
+"16afd61e",
+6
+],
+[
+"4e451d1a",
+5
+],
+[
+"58d59320",
+3
+]
+],
+"npos_top": [
+[
+1,
+25
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+25
+]
+],
+"any_buy": 0.12,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1049.8,
+1417.0,
+1431.4
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/2",
+"key": "(0, 1892, 660000, 6600, 'USDG', True)",
+"n_price_liq": 25,
+"n_sqrtp": 24,
+"n_L": 25,
+"n_tok": 12
+},
+{
+"n": 25,
+"per_day": [
+5,
+3,
+4,
+4,
+4,
+4,
+1
+],
+"wallets": 12,
+"top_wallet_share": 0.32,
+"nonce_p10_50_90": [
+382.4,
+1281.0,
+6304.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 860000, 8600, 79228005415226597966143322011600338113, 2449112143865650, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 860000, 8600, 11204076004015274215283163451092977049, 85097093429195, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+25
+]
+],
+"clen_top": [
+[
+1316,
+25
+]
+],
+"quote": [
+[
+"USDG",
+25
+]
+],
+"fee_ts": [
+[
+"860000/8600",
+25
+]
+],
+"tok_top": [
+[
+"c0b7d400",
+7
+],
+[
+"16afd61e",
+3
+],
+[
+"564fe314",
+3
+]
+],
+"npos_top": [
+[
+1,
+25
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+25
+]
+],
+"any_buy": 0.12,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.8,
+5.0,
+269.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.04,
+"pull_off_p": [
+2452.0,
+2452.0,
+2452.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 0,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 0.0,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/3",
+"key": "(0, 1316, 860000, 8600, 'USDG', True)",
+"n_price_liq": 25,
+"n_sqrtp": 21,
+"n_L": 25,
+"n_tok": 13
+},
+{
+"n": 24,
+"per_day": [
+1,
+5,
+5,
+9,
+1,
+2,
+1
+],
+"wallets": 7,
+"top_wallet_share": 0.333,
+"nonce_p10_50_90": [
+2474.4,
+6926.5,
+9442.1
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 701000, 7010, 2436844387401088102884510871239128964, 23659622660732, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 701000, 7010, 21973649011911960590090126555160364328, 89597322914671, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+24
+]
+],
+"clen_top": [
+[
+1892,
+24
+]
+],
+"quote": [
+[
+"USDG",
+24
+]
+],
+"fee_ts": [
+[
+"701000/7010",
+24
+]
+],
+"tok_top": [
+[
+"d4e7eae4",
+5
+],
+[
+"4e451d1a",
+4
+],
+[
+"564fe314",
+3
+]
+],
+"npos_top": [
+[
+1,
+24
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+24
+]
+],
+"any_buy": 0.25,
+"frb_share": 0.0,
+"first_buy_off_p": [
+178.5,
+1002.5,
+2466.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.083,
+"pull_off_p": [
+2827.5,
+2861.5,
+2895.5
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 0.0,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/5",
+"key": "(0, 1892, 701000, 7010, 'USDG', True)",
+"n_price_liq": 24,
+"n_sqrtp": 22,
+"n_L": 24,
+"n_tok": 13
+},
+{
+"n": 24,
+"per_day": [
+3,
+3,
+2,
+3,
+3,
+8,
+2
+],
+"wallets": 12,
+"top_wallet_share": 0.125,
+"nonce_p10_50_90": [
+495.3,
+1537.0,
+6439.3
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 450000, 4500, 396132745269550010396736360747511972831, 3151805813897781, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 450000, 4500, 3734756303974742779265605428353822492, 32089161891857184, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+24
+]
+],
+"clen_top": [
+[
+1316,
+24
+]
+],
+"quote": [
+[
+"USDG",
+24
+]
+],
+"fee_ts": [
+[
+"450000/4500",
+24
+]
+],
+"tok_top": [
+[
+"4e451d1a",
+6
+],
+[
+"16afd61e",
+5
+],
+[
+"d4e7eae4",
+5
+]
+],
+"npos_top": [
+[
+1,
+24
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+24
+]
+],
+"any_buy": 0.375,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.0,
+1.0,
+469.2
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.167,
+"pull_off_p": [
+1701.6,
+1720.0,
+1828.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 4,
+"pull_by_launch_wallet": 4,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+4
+]
+],
+"pull_full_share": 0.5,
+"o12_reaction": "0/4",
+"o12_nf_reaction": "0/4",
+"baseline12": "0/4",
+"key": "(0, 1316, 450000, 4500, 'USDG', True)",
+"n_price_liq": 24,
+"n_sqrtp": 23,
+"n_L": 24,
+"n_tok": 8
+},
+{
+"n": 24,
+"per_day": [
+4,
+6,
+2,
+2,
+1,
+5,
+4
+],
+"wallets": 16,
+"top_wallet_share": 0.208,
+"nonce_p10_50_90": [
+15.3,
+612.0,
+7716.3
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 150000, 1500, 10314305119659217658853239786662832273, 4328696074931261, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 150000, 1500, 20456435769455173430948366822515337508, 21749445628972968, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+24
+]
+],
+"clen_top": [
+[
+1892,
+24
+]
+],
+"quote": [
+[
+"USDG",
+24
+]
+],
+"fee_ts": [
+[
+"150000/1500",
+24
+]
+],
+"tok_top": [
+[
+"16afd61e",
+14
+],
+[
+"58d59320",
+3
+],
+[
+"4e451d1a",
+1
+]
+],
+"npos_top": [
+[
+1,
+24
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+24
+]
+],
+"any_buy": 0.25,
+"frb_share": 0.083,
+"first_buy_off_p": [
+1.0,
+541.5,
+2152.0
+],
+"frb_off_p": [
+285.7,
+600.5,
+915.3
+],
+"frb_eth_p": [
+0.0054,
+0.0059,
+0.0065
+],
+"frb_eth_top": [
+[
+0.006581,
+1
+],
+[
+0.005296,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xccc88a9d:0a2b8f36:6372",
+1
+],
+[
+"0x62fc8082:00000000:184",
+1
+]
+],
+"frb_eoa_distinct": 2,
+"frb_eoa_top": [
+[
+"0x18dd3c14",
+1
+],
+[
+"0xf692ae41",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 2,
+"frb_also_tok": 1,
+"frb_also_lc": 2,
+"pulled_share": 0.083,
+"pull_off_p": [
+1082.7,
+1185.5,
+1288.3
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 2,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/4",
+"o12_nf_reaction": "0/4",
+"baseline12": "0/2",
+"key": "(0, 1892, 150000, 1500, 'USDG', True)",
+"n_price_liq": 24,
+"n_sqrtp": 23,
+"n_L": 24,
+"n_tok": 9
+},
+{
+"n": 24,
+"per_day": [
+1,
+6,
+5,
+2,
+4,
+1,
+5
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1710.9,
+2171.0,
+3296.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 860000, 60, 11340873292085721048689878526121213952, 636536832554575, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 860000, 60, 12850902985353209659140402859667881984, 24270326743135, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+24
+]
+],
+"clen_top": [
+[
+1316,
+24
+]
+],
+"quote": [
+[
+"USDG",
+24
+]
+],
+"fee_ts": [
+[
+"860000/60",
+24
+]
+],
+"tok_top": [
+[
+"a98b3b9e",
+6
+],
+[
+"16afd61e",
+5
+],
+[
+"4e451d1a",
+5
+]
+],
+"npos_top": [
+[
+1,
+24
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+24
+]
+],
+"any_buy": 0.167,
+"frb_share": 0.042,
+"first_buy_off_p": [
+114.8,
+580.5,
+1464.8
+],
+"frb_off_p": [
+175.0,
+175.0,
+175.0
+],
+"frb_eth_p": [
+0.0073,
+0.0073,
+0.0073
+],
+"frb_eth_top": [
+[
+0.007324,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x6e2a35a7:0c307f76:1956",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x55af6015",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/3",
+"key": "(0, 1316, 860000, 60, 'USDG', True)",
+"n_price_liq": 24,
+"n_sqrtp": 24,
+"n_L": 24,
+"n_tok": 8
+},
+{
+"n": 23,
+"per_day": [
+2,
+8,
+7,
+2,
+0,
+2,
+2
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1500.6,
+1904.0,
+3044.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 820000, 60, 14730135706530949728578592425413443584, 35918488271052, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 820000, 60, 12200653016263375409303024426668785664, 561345296641981, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+23
+]
+],
+"clen_top": [
+[
+1316,
+23
+]
+],
+"quote": [
+[
+"USDG",
+23
+]
+],
+"fee_ts": [
+[
+"820000/60",
+23
+]
+],
+"tok_top": [
+[
+"16afd61e",
+9
+],
+[
+"4e451d1a",
+5
+],
+[
+"a98b3b9e",
+2
+]
+],
+"npos_top": [
+[
+1,
+23
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+23
+]
+],
+"any_buy": 0.13,
+"frb_share": 0.0,
+"first_buy_off_p": [
+869.8,
+1677.0,
+1922.6
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/3",
+"key": "(0, 1316, 820000, 60, 'USDG', True)",
+"n_price_liq": 23,
+"n_sqrtp": 23,
+"n_L": 23,
+"n_tok": 9
+},
+{
+"n": 22,
+"per_day": [
+1,
+7,
+3,
+3,
+2,
+2,
+4
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1580.4,
+2109.5,
+3245.1
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 900000, 60, 11536322254248723266183782929090478080, 27079902821364, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 900000, 60, 6679822311429360320512, 1836018694381, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+22
+]
+],
+"clen_top": [
+[
+1316,
+22
+]
+],
+"quote": [
+[
+"USDG",
+22
+]
+],
+"fee_ts": [
+[
+"900000/60",
+22
+]
+],
+"tok_top": [
+[
+"fa4982d5",
+10
+],
+[
+"16afd61e",
+4
+],
+[
+"ac88142e",
+2
+]
+],
+"npos_top": [
+[
+1,
+22
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+22
+]
+],
+"any_buy": 0.091,
+"frb_share": 0.045,
+"first_buy_off_p": [
+206.7,
+917.5,
+1628.3
+],
+"frb_off_p": [
+578.0,
+578.0,
+578.0
+],
+"frb_eth_p": [
+0.0104,
+0.0104,
+0.0104
+],
+"frb_eth_top": [
+[
+0.010403,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xf0b7eaaf:39ecce49:1732",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x50d31d66",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/2",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/0",
+"key": "(0, 1316, 900000, 60, 'USDG', True)",
+"n_price_liq": 22,
+"n_sqrtp": 22,
+"n_L": 22,
+"n_tok": 8
+},
+{
+"n": 22,
+"per_day": [
+1,
+10,
+2,
+2,
+3,
+1,
+3
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+1537.9,
+1944.0,
+3212.7
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 880000, 60, 14743529614835843475027649382355828736, 35955791900179, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 880000, 60, 59222356342542385152, 154440809494787, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+22
+]
+],
+"clen_top": [
+[
+1316,
+22
+]
+],
+"quote": [
+[
+"USDG",
+22
+]
+],
+"fee_ts": [
+[
+"880000/60",
+22
+]
+],
+"tok_top": [
+[
+"16afd61e",
+6
+],
+[
+"4e451d1a",
+5
+],
+[
+"fa4982d5",
+5
+]
+],
+"npos_top": [
+[
+1,
+22
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+22
+]
+],
+"any_buy": 0.045,
+"frb_share": 0.0,
+"first_buy_off_p": [
+558.0,
+558.0,
+558.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/0",
+"key": "(0, 1316, 880000, 60, 'USDG', True)",
+"n_price_liq": 22,
+"n_sqrtp": 22,
+"n_L": 22,
+"n_tok": 9
+},
+{
+"n": 21,
+"per_day": [
+5,
+4,
+3,
+1,
+1,
+3,
+4
+],
+"wallets": 21,
+"top_wallet_share": 0.048,
+"nonce_p10_50_90": [
+4.0,
+28.0,
+109.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1444, 10000, 200, 13821395708629832272226220787666713, 538284271927110271839236, 'ETH', False)",
+1
+],
+[
+"(0, 1444, 10000, 200, 2904600327610960733498782702536989, 121860166237131973986009, 'ETH', False)",
+1
+]
+],
+"value_top": [
+[
+"0",
+21
+]
+],
+"clen_top": [
+[
+1444,
+21
+]
+],
+"quote": [
+[
+"ETH",
+21
+]
+],
+"fee_ts": [
+[
+"10000/200",
+21
+]
+],
+"tok_top": [
+[
+"b181862b",
+1
+],
+[
+"ab90bf74",
+1
+],
+[
+"3c2d513f",
+1
+]
+],
+"npos_top": [
+[
+1,
+21
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+21
+]
+],
+"any_buy": 0.0,
+"frb_share": 0.0,
+"first_buy_off_p": [
+null,
+null,
+null
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/0",
+"key": "(0, 1444, 10000, 200, 'ETH', False)",
+"n_price_liq": 21,
+"n_sqrtp": 18,
+"n_L": 21,
+"n_tok": 21
+},
+{
+"n": 21,
+"per_day": [
+5,
+7,
+2,
+2,
+0,
+3,
+2
+],
+"wallets": 17,
+"top_wallet_share": 0.095,
+"nonce_p10_50_90": [
+72.0,
+603.0,
+8168.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 100000, 1000, 2870096739898771185413785516147848540, 3602088151038748, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 100000, 1000, 4383194823176038345764, 903771857178534, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+21
+]
+],
+"clen_top": [
+[
+1316,
+21
+]
+],
+"quote": [
+[
+"USDG",
+21
+]
+],
+"fee_ts": [
+[
+"100000/1000",
+21
+]
+],
+"tok_top": [
+[
+"16afd61e",
+7
+],
+[
+"d4e7eae4",
+7
+],
+[
+"fe78194b",
+1
+]
+],
+"npos_top": [
+[
+1,
+21
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+21
+]
+],
+"any_buy": 0.333,
+"frb_share": 0.0,
+"first_buy_off_p": [
+2.8,
+244.0,
+983.8
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.095,
+"pull_off_p": [
+603.1,
+1391.5,
+2179.9
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 0.5,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/6",
+"key": "(0, 1316, 100000, 1000, 'USDG', True)",
+"n_price_liq": 21,
+"n_sqrtp": 21,
+"n_L": 21,
+"n_tok": 9
+},
+{
+"n": 21,
+"per_day": [
+0,
+5,
+0,
+0,
+12,
+4,
+0
+],
+"wallets": 2,
+"top_wallet_share": 0.857,
+"nonce_p10_50_90": [
+240.0,
+291.0,
+2437.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 990101, 9901, 12670487333593103571, 607832342536961, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 990101, 9901, 112041179680891814539, 10864411570811, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+21
+]
+],
+"clen_top": [
+[
+1892,
+21
+]
+],
+"quote": [
+[
+"USDG",
+21
+]
+],
+"fee_ts": [
+[
+"990101/9901",
+21
+]
+],
+"tok_top": [
+[
+"d4e7eae4",
+4
+],
+[
+"cb79985d",
+3
+],
+[
+"16afd61e",
+2
+]
+],
+"npos_top": [
+[
+1,
+21
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+21
+]
+],
+"any_buy": 0.0,
+"frb_share": 0.0,
+"first_buy_off_p": [
+null,
+null,
+null
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/0",
+"key": "(0, 1892, 990101, 9901, 'USDG', True)",
+"n_price_liq": 21,
+"n_sqrtp": 20,
+"n_L": 21,
+"n_tok": 13
+},
+{
+"n": 20,
+"per_day": [
+3,
+5,
+1,
+2,
+4,
+4,
+1
+],
+"wallets": 19,
+"top_wallet_share": 0.1,
+"nonce_p10_50_90": [
+127.2,
+733.0,
+6214.4
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 50000, 500, 326657747158835556963, 195264017698455421, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 50000, 500, 7262682980279583199470879893387606220, 504144373233368, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+20
+]
+],
+"clen_top": [
+[
+1892,
+20
+]
+],
+"quote": [
+[
+"USDG",
+20
+]
+],
+"fee_ts": [
+[
+"50000/500",
+20
+]
+],
+"tok_top": [
+[
+"16afd61e",
+8
+],
+[
+"d4e7eae4",
+3
+],
+[
+"58d59320",
+2
+]
+],
+"npos_top": [
+[
+1,
+20
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+20
+]
+],
+"any_buy": 0.35,
+"frb_share": 0.2,
+"first_buy_off_p": [
+296.8,
+813.0,
+1559.8
+],
+"frb_off_p": [
+237.4,
+595.5,
+1188.8
+],
+"frb_eth_p": [
+0.0061,
+0.0129,
+0.0201
+],
+"frb_eth_top": [
+[
+0.005991,
+1
+],
+[
+0.019634,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x6131b5fa:e21fd0e9:7076",
+1
+],
+[
+"0xac24ce15:01010bd7:291",
+1
+],
+[
+"0x9d439888:0c89e77a:828",
+1
+]
+],
+"frb_eoa_distinct": 4,
+"frb_eoa_top": [
+[
+"0x6c007855",
+1
+],
+[
+"0x08c8c090",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 1,
+"frb_also_tok": 0,
+"frb_also_lc": 2,
+"pulled_share": 0.25,
+"pull_off_p": [
+492.4,
+1485.0,
+2209.2
+],
+"pull_before_frb": 0,
+"pull_no_frb": 4,
+"pull_by_launch_wallet": 4,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+4
+],
+[
+"0x58daec31:b88d4fde",
+1
+]
+],
+"pull_full_share": 0.6,
+"o12_reaction": "0/5",
+"o12_nf_reaction": "0/4",
+"baseline12": "0/2",
+"key": "(0, 1892, 50000, 500, 'USDG', True)",
+"n_price_liq": 20,
+"n_sqrtp": 19,
+"n_L": 20,
+"n_tok": 10
+},
+{
+"n": 20,
+"per_day": [
+2,
+3,
+3,
+1,
+1,
+2,
+8
+],
+"wallets": 14,
+"top_wallet_share": 0.15,
+"nonce_p10_50_90": [
+138.7,
+1668.5,
+7440.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 900000, 9000, 9402601491868683587445033812179188464, 252835838938212, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 900000, 9000, 177157577561233566142484748532087716821, 4637065708824327, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+20
+]
+],
+"clen_top": [
+[
+1316,
+20
+]
+],
+"quote": [
+[
+"USDG",
+20
+]
+],
+"fee_ts": [
+[
+"900000/9000",
+20
+]
+],
+"tok_top": [
+[
+"16afd61e",
+5
+],
+[
+"4e451d1a",
+4
+],
+[
+"564fe314",
+4
+]
+],
+"npos_top": [
+[
+1,
+20
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+20
+]
+],
+"any_buy": 0.1,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.0,
+1.0,
+1.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.2,
+"pull_off_p": [
+1379.3,
+1949.5,
+2387.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 4,
+"pull_by_launch_wallet": 4,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+4
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/2",
+"key": "(0, 1316, 900000, 9000, 'USDG', True)",
+"n_price_liq": 20,
+"n_sqrtp": 17,
+"n_L": 20,
+"n_tok": 9
+},
+{
+"n": 20,
+"per_day": [
+2,
+2,
+2,
+2,
+4,
+5,
+3
+],
+"wallets": 13,
+"top_wallet_share": 0.3,
+"nonce_p10_50_90": [
+185.9,
+757.5,
+4407.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 550000, 5500, 194064196432784959673, 476939877020655, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 550000, 5500, 45741560543655427930984554118780580549, 577339661726778, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+20
+]
+],
+"clen_top": [
+[
+1316,
+20
+]
+],
+"quote": [
+[
+"USDG",
+20
+]
+],
+"fee_ts": [
+[
+"550000/5500",
+20
+]
+],
+"tok_top": [
+[
+"4e451d1a",
+10
+],
+[
+"d4e7eae4",
+3
+],
+[
+"564fe314",
+2
+]
+],
+"npos_top": [
+[
+1,
+20
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+20
+]
+],
+"any_buy": 0.1,
+"frb_share": 0.0,
+"first_buy_off_p": [
+183.4,
+913.0,
+1642.6
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.25,
+"pull_off_p": [
+623.8,
+1557.0,
+2826.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 5,
+"pull_by_launch_wallet": 5,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+5
+]
+],
+"pull_full_share": 0.4,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/1",
+"key": "(0, 1316, 550000, 5500, 'USDG', True)",
+"n_price_liq": 20,
+"n_sqrtp": 18,
+"n_L": 20,
+"n_tok": 8
+},
+{
+"n": 20,
+"per_day": [
+4,
+1,
+1,
+6,
+3,
+1,
+4
+],
+"wallets": 17,
+"top_wallet_share": 0.1,
+"nonce_p10_50_90": [
+147.7,
+877.0,
+7403.1
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 800000, 8000, 6490599742579500797927722398668714078, 66125859911336, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 800000, 8000, 7731834737552975274866087410356429447, 480361108644730, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+20
+]
+],
+"clen_top": [
+[
+1316,
+20
+]
+],
+"quote": [
+[
+"USDG",
+20
+]
+],
+"fee_ts": [
+[
+"800000/8000",
+20
+]
+],
+"tok_top": [
+[
+"16afd61e",
+4
+],
+[
+"564fe314",
+3
+],
+[
+"58d59320",
+2
+]
+],
+"npos_top": [
+[
+1,
+20
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+20
+]
+],
+"any_buy": 0.15,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.4,
+3.0,
+1211.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.1,
+"pull_off_p": [
+1945.6,
+1988.0,
+2030.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 2,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/2",
+"key": "(0, 1316, 800000, 8000, 'USDG', True)",
+"n_price_liq": 20,
+"n_sqrtp": 20,
+"n_L": 20,
+"n_tok": 12
+},
+{
+"n": 20,
+"per_day": [
+1,
+3,
+3,
+3,
+6,
+1,
+3
+],
+"wallets": 16,
+"top_wallet_share": 0.1,
+"nonce_p10_50_90": [
+226.9,
+851.5,
+9031.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 550000, 5500, 13024993798635449417929432913815053583, 353093782264281, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 550000, 5500, 7922802287065985264168822119121494177, 498408621531246, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+20
+]
+],
+"clen_top": [
+[
+1892,
+20
+]
+],
+"quote": [
+[
+"USDG",
+20
+]
+],
+"fee_ts": [
+[
+"550000/5500",
+20
+]
+],
+"tok_top": [
+[
+"16afd61e",
+8
+],
+[
+"4e451d1a",
+2
+],
+[
+"c0b7d400",
+2
+]
+],
+"npos_top": [
+[
+1,
+20
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+20
+]
+],
+"any_buy": 0.25,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1039.4,
+1839.0,
+2757.8
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.05,
+"pull_off_p": [
+319.0,
+319.0,
+319.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 0.0,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/3",
+"key": "(0, 1892, 550000, 5500, 'USDG', True)",
+"n_price_liq": 20,
+"n_sqrtp": 20,
+"n_L": 20,
+"n_tok": 10
+},
+{
+"n": 20,
+"per_day": [
+1,
+3,
+0,
+7,
+5,
+2,
+2
+],
+"wallets": 16,
+"top_wallet_share": 0.1,
+"nonce_p10_50_90": [
+18.8,
+4646.5,
+9401.3
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 880000, 8800, 3543054366140813156, 2632467929666693, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 880000, 8800, 6975481338604715302952610252667556955, 18940856429389, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+20
+]
+],
+"clen_top": [
+[
+1316,
+20
+]
+],
+"quote": [
+[
+"USDG",
+20
+]
+],
+"fee_ts": [
+[
+"880000/8800",
+20
+]
+],
+"tok_top": [
+[
+"564fe314",
+4
+],
+[
+"d4e7eae4",
+4
+],
+[
+"4e451d1a",
+3
+]
+],
+"npos_top": [
+[
+1,
+20
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+20
+]
+],
+"any_buy": 0.1,
+"frb_share": 0.0,
+"first_buy_off_p": [
+137.4,
+683.0,
+1228.6
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/2",
+"key": "(0, 1316, 880000, 8800, 'USDG', True)",
+"n_price_liq": 20,
+"n_sqrtp": 20,
+"n_L": 20,
+"n_tok": 10
+},
+{
+"n": 19,
+"per_day": [
+1,
+3,
+6,
+3,
+2,
+1,
+3
+],
+"wallets": 11,
+"top_wallet_share": 0.158,
+"nonce_p10_50_90": [
+606.8,
+1898.0,
+8622.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 450000, 4500, 501067883008896574630, 187149673760952, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 450000, 4500, 672247712851142688178, 27153106953466, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+19
+]
+],
+"clen_top": [
+[
+1892,
+19
+]
+],
+"quote": [
+[
+"USDG",
+19
+]
+],
+"fee_ts": [
+[
+"450000/4500",
+19
+]
+],
+"tok_top": [
+[
+"16afd61e",
+9
+],
+[
+"4e451d1a",
+2
+],
+[
+"564fe314",
+2
+]
+],
+"npos_top": [
+[
+1,
+19
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+19
+]
+],
+"any_buy": 0.158,
+"frb_share": 0.0,
+"first_buy_off_p": [
+2208.0,
+2576.0,
+2592.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/2",
+"key": "(0, 1892, 450000, 4500, 'USDG', True)",
+"n_price_liq": 19,
+"n_sqrtp": 18,
+"n_L": 19,
+"n_tok": 9
+},
+{
+"n": 19,
+"per_day": [
+0,
+6,
+2,
+5,
+2,
+2,
+2
+],
+"wallets": 14,
+"top_wallet_share": 0.158,
+"nonce_p10_50_90": [
+22.0,
+314.0,
+6002.4
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 9000, 90, 4701215362858298084589366243753428438, 12321943976017, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 9000, 90, 5673530934887584388325831268448645964, 14345708516422, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+19
+]
+],
+"clen_top": [
+[
+1892,
+19
+]
+],
+"quote": [
+[
+"USDG",
+19
+]
+],
+"fee_ts": [
+[
+"9000/90",
+19
+]
+],
+"tok_top": [
+[
+"16afd61e",
+7
+],
+[
+"037449b1",
+3
+],
+[
+"58d59320",
+1
+]
+],
+"npos_top": [
+[
+1,
+19
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+19
+]
+],
+"any_buy": 0.211,
+"frb_share": 0.105,
+"first_buy_off_p": [
+286.2,
+939.0,
+2368.8
+],
+"frb_off_p": [
+198.1,
+870.5,
+1542.9
+],
+"frb_eth_p": [
+0.0354,
+0.0949,
+0.1545
+],
+"frb_eth_top": [
+[
+0.020471,
+1
+],
+[
+0.169426,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x204faca1:3593564c:3866",
+1
+],
+[
+"0x20f92a87:da9bd250:1156",
+1
+]
+],
+"frb_eoa_distinct": 2,
+"frb_eoa_top": [
+[
+"0x38c8af2b",
+1
+],
+[
+"0x2cba368d",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.053,
+"pull_off_p": [
+1925.0,
+1925.0,
+1925.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:b88d4fde",
+1
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/2",
+"o12_nf_reaction": "0/2",
+"baseline12": "0/2",
+"key": "(0, 1892, 9000, 90, 'USDG', True)",
+"n_price_liq": 19,
+"n_sqrtp": 19,
+"n_L": 19,
+"n_tok": 11
+},
+{
+"n": 18,
+"per_day": [
+1,
+2,
+5,
+6,
+1,
+2,
+1
+],
+"wallets": 14,
+"top_wallet_share": 0.167,
+"nonce_p10_50_90": [
+117.5,
+1118.5,
+9038.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 990000, 9900, 9469120711228775340763969672535798165, 358551318526696, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 990000, 9900, 1114823015879956407269006, 2232438336236, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+18
+]
+],
+"clen_top": [
+[
+1316,
+18
+]
+],
+"quote": [
+[
+"USDG",
+18
+]
+],
+"fee_ts": [
+[
+"990000/9900",
+18
+]
+],
+"tok_top": [
+[
+"16afd61e",
+7
+],
+[
+"d4e7eae4",
+3
+],
+[
+"564fe314",
+2
+]
+],
+"npos_top": [
+[
+1,
+18
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+18
+]
+],
+"any_buy": 0.0,
+"frb_share": 0.0,
+"first_buy_off_p": [
+null,
+null,
+null
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.056,
+"pull_off_p": [
+2109.0,
+2109.0,
+2109.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 0,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 0.0,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/0",
+"key": "(0, 1316, 990000, 9900, 'USDG', True)",
+"n_price_liq": 18,
+"n_sqrtp": 18,
+"n_L": 18,
+"n_tok": 9
+},
+{
+"n": 18,
+"per_day": [
+15,
+0,
+0,
+0,
+0,
+0,
+3
+],
+"wallets": 4,
+"top_wallet_share": 0.833,
+"nonce_p10_50_90": [
+445.1,
+569.5,
+588.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 701300, 7013, 137222863173777350711, 56146779872930, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 701300, 7013, 112041179680891814539, 54046275472020, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+18
+]
+],
+"clen_top": [
+[
+1892,
+18
+]
+],
+"quote": [
+[
+"USDG",
+18
+]
+],
+"fee_ts": [
+[
+"701300/7013",
+18
+]
+],
+"tok_top": [
+[
+"16afd61e",
+16
+],
+[
+"28b825e1",
+1
+],
+[
+"d4e7eae4",
+1
+]
+],
+"npos_top": [
+[
+1,
+18
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+18
+]
+],
+"any_buy": 0.333,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.0,
+3.0,
+16.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/6",
+"key": "(0, 1892, 701300, 7013, 'USDG', True)",
+"n_price_liq": 18,
+"n_sqrtp": 7,
+"n_L": 18,
+"n_tok": 3
+},
+{
+"n": 18,
+"per_day": [
+0,
+4,
+0,
+8,
+0,
+0,
+6
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+5642.7,
+5760.5,
+5827.3
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 955950, 9560, 19938425966872617601467372503913186552, 4635294524533, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 955950, 9560, 519511932540429604212, 575096320471, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+18
+]
+],
+"clen_top": [
+[
+1892,
+18
+]
+],
+"quote": [
+[
+"USDG",
+18
+]
+],
+"fee_ts": [
+[
+"955950/9560",
+18
+]
+],
+"tok_top": [
+[
+"16afd61e",
+5
+],
+[
+"037449b1",
+4
+],
+[
+"4e451d1a",
+2
+]
+],
+"npos_top": [
+[
+1,
+18
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+18
+]
+],
+"any_buy": 0.0,
+"frb_share": 0.0,
+"first_buy_off_p": [
+null,
+null,
+null
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/0",
+"key": "(0, 1892, 955950, 9560, 'USDG', True)",
+"n_price_liq": 18,
+"n_sqrtp": 18,
+"n_L": 18,
+"n_tok": 9
+},
+{
+"n": 17,
+"per_day": [
+16,
+0,
+0,
+0,
+0,
+1,
+0
+],
+"wallets": 2,
+"top_wallet_share": 0.941,
+"nonce_p10_50_90": [
+2136.4,
+2170.0,
+2195.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 990010, 9900, 3543040315332058452536689806120265948, 3674418809070, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 990010, 9900, 7922802287065985264168822119121494177, 12847477355732, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+17
+]
+],
+"clen_top": [
+[
+1892,
+17
+]
+],
+"quote": [
+[
+"USDG",
+17
+]
+],
+"fee_ts": [
+[
+"990010/9900",
+17
+]
+],
+"tok_top": [
+[
+"16afd61e",
+8
+],
+[
+"2be340ff",
+4
+],
+[
+"cb79985d",
+1
+]
+],
+"npos_top": [
+[
+1,
+17
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+17
+]
+],
+"any_buy": 0.176,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1864.4,
+2054.0,
+2465.2
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/3",
+"key": "(0, 1892, 990010, 9900, 'USDG', True)",
+"n_price_liq": 17,
+"n_sqrtp": 10,
+"n_L": 17,
+"n_tok": 7
+},
+{
+"n": 17,
+"per_day": [
+3,
+3,
+4,
+1,
+1,
+3,
+2
+],
+"wallets": 12,
+"top_wallet_share": 0.235,
+"nonce_p10_50_90": [
+22.2,
+1583.0,
+3884.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 980000, 9800, 2306328049316947208391831908274153798, 381601938500712, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 980000, 9800, 25054097918373224795268064057513023146, 48960504641214, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+17
+]
+],
+"clen_top": [
+[
+1892,
+17
+]
+],
+"quote": [
+[
+"USDG",
+17
+]
+],
+"fee_ts": [
+[
+"980000/9800",
+17
+]
+],
+"tok_top": [
+[
+"16afd61e",
+4
+],
+[
+"c0b7d400",
+2
+],
+[
+"914191d0",
+1
+]
+],
+"npos_top": [
+[
+1,
+17
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+17
+]
+],
+"any_buy": 0.0,
+"frb_share": 0.0,
+"first_buy_off_p": [
+null,
+null,
+null
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.118,
+"pull_off_p": [
+2200.6,
+2307.0,
+2413.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 2,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+2
+]
+],
+"pull_full_share": 0.5,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/0",
+"key": "(0, 1892, 980000, 9800, 'USDG', True)",
+"n_price_liq": 17,
+"n_sqrtp": 13,
+"n_L": 17,
+"n_tok": 13
+},
+{
+"n": 17,
+"per_day": [
+1,
+4,
+3,
+5,
+1,
+1,
+2
+],
+"wallets": 15,
+"top_wallet_share": 0.118,
+"nonce_p10_50_90": [
+56.6,
+305.0,
+1328.4
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1892, 2500, 25, 13204655100777832500499817593276095621, 152520886887895, 'USDG', True)",
+1
+],
+[
+"(0, 1892, 2500, 25, 7202295067125410746550297945433133445, 16544845426, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+17
+]
+],
+"clen_top": [
+[
+1892,
+17
+]
+],
+"quote": [
+[
+"USDG",
+17
+]
+],
+"fee_ts": [
+[
+"2500/25",
+17
+]
+],
+"tok_top": [
+[
+"16afd61e",
+5
+],
+[
+"037449b1",
+2
+],
+[
+"41e79f39",
+1
+]
+],
+"npos_top": [
+[
+1,
+17
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+17
+]
+],
+"any_buy": 0.118,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1.0,
+1.0,
+1.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/2",
+"o12_nf_reaction": "0/2",
+"baseline12": "0/0",
+"key": "(0, 1892, 2500, 25, 'USDG', True)",
+"n_price_liq": 17,
+"n_sqrtp": 16,
+"n_L": 17,
+"n_tok": 12
+},
+{
+"n": 16,
+"per_day": [
+6,
+3,
+1,
+1,
+1,
+2,
+2
+],
+"wallets": 14,
+"top_wallet_share": 0.125,
+"nonce_p10_50_90": [
+16.5,
+613.0,
+3865.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 770000, 7700, 85933788600100444713615984253228, 1069244817, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 770000, 7700, 79228005415226597966143322011600338113, 508580991578833, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+16
+]
+],
+"clen_top": [
+[
+1316,
+16
+]
+],
+"quote": [
+[
+"USDG",
+16
+]
+],
+"fee_ts": [
+[
+"770000/7700",
+16
+]
+],
+"tok_top": [
+[
+"d4e7eae4",
+4
+],
+[
+"c0b7d400",
+4
+],
+[
+"16afd61e",
+2
+]
+],
+"npos_top": [
+[
+1,
+16
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+16
+]
+],
+"any_buy": 0.125,
+"frb_share": 0.062,
+"first_buy_off_p": [
+314.5,
+520.5,
+726.5
+],
+"frb_off_p": [
+2978.0,
+2978.0,
+2978.0
+],
+"frb_eth_p": [
+0.082,
+0.082,
+0.082
+],
+"frb_eth_top": [
+[
+0.082027,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xfd03abca:260595cf:6276",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0xcad97616",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 1,
+"frb_also_tok": 1,
+"frb_also_lc": 1,
+"pulled_share": 0.062,
+"pull_off_p": [
+457.0,
+457.0,
+457.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/2",
+"key": "(0, 1316, 770000, 7700, 'USDG', True)",
+"n_price_liq": 16,
+"n_sqrtp": 16,
+"n_L": 16,
+"n_tok": 9
+},
+{
+"n": 15,
+"per_day": [
+5,
+1,
+2,
+1,
+1,
+2,
+3
+],
+"wallets": 10,
+"top_wallet_share": 0.2,
+"nonce_p10_50_90": [
+312.8,
+955.0,
+7368.2
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 890000, 8900, 144647499114147171720760151591308485660, 3920193324423185, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 890000, 8900, 9402601491868683587445033812179188464, 218770962981154, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+15
+]
+],
+"clen_top": [
+[
+1316,
+15
+]
+],
+"quote": [
+[
+"USDG",
+15
+]
+],
+"fee_ts": [
+[
+"890000/8900",
+15
+]
+],
+"tok_top": [
+[
+"16afd61e",
+3
+],
+[
+"564fe314",
+3
+],
+[
+"41e79f39",
+2
+]
+],
+"npos_top": [
+[
+1,
+15
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+15
+]
+],
+"any_buy": 0.067,
+"frb_share": 0.0,
+"first_buy_off_p": [
+1491.0,
+1491.0,
+1491.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/1",
+"key": "(0, 1316, 890000, 8900, 'USDG', True)",
+"n_price_liq": 15,
+"n_sqrtp": 14,
+"n_L": 15,
+"n_tok": 7
+},
+{
+"n": 15,
+"per_day": [
+1,
+1,
+4,
+1,
+4,
+3,
+1
+],
+"wallets": 13,
+"top_wallet_share": 0.133,
+"nonce_p10_50_90": [
+206.4,
+1605.0,
+5844.2
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 300000, 3000, 306836829962791429729, 258209428526275, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 300000, 3000, 25054114478056686359066111360432674, 5126374435872, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+15
+]
+],
+"clen_top": [
+[
+1316,
+15
+]
+],
+"quote": [
+[
+"USDG",
+15
+]
+],
+"fee_ts": [
+[
+"300000/3000",
+15
+]
+],
+"tok_top": [
+[
+"c0b7d400",
+3
+],
+[
+"4e451d1a",
+3
+],
+[
+"d4e7eae4",
+2
+]
+],
+"npos_top": [
+[
+1,
+15
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+15
+]
+],
+"any_buy": 0.2,
+"frb_share": 0.067,
+"first_buy_off_p": [
+1.0,
+1.0,
+1.0
+],
+"frb_off_p": [
+1.0,
+1.0,
+1.0
+],
+"frb_eth_p": [
+0.0081,
+0.0081,
+0.0081
+],
+"frb_eth_top": [
+[
+0.008122,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x03b37ff4:bf04568f:1316",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x03b37ff4",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.067,
+"pull_off_p": [
+584.0,
+584.0,
+584.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/2",
+"key": "(0, 1316, 300000, 3000, 'USDG', True)",
+"n_price_liq": 15,
+"n_sqrtp": 15,
+"n_L": 15,
+"n_tok": 9
+},
+{
+"n": 15,
+"per_day": [
+3,
+2,
+1,
+5,
+0,
+2,
+2
+],
+"wallets": 14,
+"top_wallet_share": 0.133,
+"nonce_p10_50_90": [
+487.8,
+2017.0,
+6745.8
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(0, 1316, 150000, 1500, 7768646470656251067946508199869506246, 5799605681925088, 'USDG', True)",
+1
+],
+[
+"(0, 1316, 150000, 1500, 1941023269807590905034478324659930880, 815702914617460, 'USDG', True)",
+1
+]
+],
+"value_top": [
+[
+"0",
+15
+]
+],
+"clen_top": [
+[
+1316,
+15
+]
+],
+"quote": [
+[
+"USDG",
+15
+]
+],
+"fee_ts": [
+[
+"150000/1500",
+15
+]
+],
+"tok_top": [
+[
+"16afd61e",
+5
+],
+[
+"d4e7eae4",
+3
+],
+[
+"fe78194b",
+1
+]
+],
+"npos_top": [
+[
+1,
+15
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+15
+]
+],
+"any_buy": 0.2,
+"frb_share": 0.0,
+"first_buy_off_p": [
+130.4,
+316.0,
+1982.4
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.333,
+"pull_off_p": [
+1631.2,
+2190.0,
+2718.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 5,
+"pull_by_launch_wallet": 5,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+5
+]
+],
+"pull_full_share": 0.8,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/2",
+"key": "(0, 1316, 150000, 1500, 'USDG', True)",
+"n_price_liq": 15,
+"n_sqrtp": 15,
+"n_L": 15,
+"n_tok": 9
+}
+],
+"value_only": [
+{
+"n": 6574,
+"per_day": [
+875,
+875,
+871,
+884,
+932,
+1043,
+1094
+],
+"wallets": 1874,
+"top_wallet_share": 0.061,
+"nonce_p10_50_90": [
+2.0,
+827.5,
+5708.8
+],
+"fresh_le3": 0.163,
+"shape_top": [
+[
+"(0, 2276, 100, 1, 792280926924313289846529216293289, 100000088127620690885293, 'ETH', True)",
+686
+],
+[
+"(0, 2276, 100, 1, 792280926924313289846529216293289, 100000088127620690885293, 'WETH', True)",
+171
+]
+],
+"value_top": [
+[
+"0",
+6574
+]
+],
+"clen_top": [
+[
+1892,
+3295
+],
+[
+1316,
+1747
+],
+[
+2276,
+1084
+]
+],
+"quote": [
+[
+"USDG",
+4921
+],
+[
+"ETH",
+1025
+],
+[
+"WETH",
+398
+]
+],
+"fee_ts": [
+[
+"100/1",
+1064
+],
+[
+"989999/9900",
+189
+],
+[
+"900000/9000",
+176
+]
+],
+"tok_top": [
+[
+"16afd61e",
+1860
+],
+[
+"cb79985d",
+931
+],
+[
+"d4e7eae4",
+495
+]
+],
+"npos_top": [
+[
+1,
+6563
+],
+[
+7,
+3
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+6574
+]
+],
+"any_buy": 0.3,
+"frb_share": 0.173,
+"first_buy_off_p": [
+1.0,
+4.0,
+1254.0
+],
+"frb_off_p": [
+35.0,
+106.0,
+300.5
+],
+"frb_eth_p": [
+0.0149,
+0.099,
+0.3099
+],
+"frb_eth_top": [
+[
+0.05,
+106
+],
+[
+0.099,
+16
+]
+],
+"frb_fp_top": [
+[
+"0xd6d35b56:e6cb474f:484",
+721
+],
+[
+"0x75379d5d:3593564c:1540",
+122
+],
+[
+"0x80e49ed1:3593564c:836",
+51
+]
+],
+"frb_eoa_distinct": 286,
+"frb_eoa_top": [
+[
+"0x9e8f558b",
+102
+],
+[
+"0x7a685ac7",
+73
+]
+],
+"frb_launch_wallet": 4,
+"frb_repeat_ge3": 1031,
+"frb_also_tok": 1024,
+"frb_also_lc": 1042,
+"pulled_share": 0.149,
+"pull_off_p": [
+172.6,
+617.0,
+2357.4
+],
+"pull_before_frb": 3,
+"pull_no_frb": 482,
+"pull_by_launch_wallet": 943,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+973
+],
+[
+"0x58daec31:b88d4fde",
+4
+]
+],
+"pull_full_share": 0.892,
+"o12_reaction": "1/367",
+"o12_nf_reaction": "1/314",
+"baseline12": "31/1581",
+"key": "0",
+"n_price_liq": 5373,
+"n_sqrtp": 2519,
+"n_L": 5371,
+"n_tok": 360
+},
+{
+"n": 2800,
+"per_day": [
+560,
+420,
+420,
+560,
+280,
+280,
+280
+],
+"wallets": 20,
+"top_wallet_share": 0.05,
+"nonce_p10_50_90": [
+3.0,
+4.0,
+5.0
+],
+"fresh_le3": 0.25,
+"shape_top": [
+[
+"(735000000000000, 54500, 3610, 10, 122770550583425618192704942502841, 15495822026835704, 'ETH', True)",
+1
+],
+[
+"(735000000000000, 54500, 3470, 10, 122770550583425618192704942502841, 15495822026835704, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"0.000735",
+2800
+]
+],
+"clen_top": [
+[
+54500,
+2800
+]
+],
+"quote": [
+[
+"ETH",
+2800
+]
+],
+"fee_ts": [
+[
+"3610/10",
+2
+],
+[
+"3470/10",
+2
+],
+[
+"3150/10",
+2
+]
+],
+"tok_top": [
+[
+"16afd61e",
+2800
+]
+],
+"npos_top": [
+[
+1,
+2800
+]
+],
+"n_pools_in_tx_top": [
+[
+70,
+2800
+]
+],
+"any_buy": 0.987,
+"frb_share": 0.0,
+"first_buy_off_p": [
+120.0,
+546.0,
+1051.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/2764",
+"key": "735000000000000",
+"n_price_liq": 20,
+"n_sqrtp": 20,
+"n_L": 20,
+"n_tok": 1
+},
+{
+"n": 1200,
+"per_day": [
+240,
+180,
+180,
+240,
+120,
+120,
+120
+],
+"wallets": 20,
+"top_wallet_share": 0.05,
+"nonce_p10_50_90": [
+5.0,
+5.5,
+6.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(630000000000000, 46788, 4670, 10, 122770550583425618192704942502841, 15495822026835704, 'ETH', True)",
+1
+],
+[
+"(630000000000000, 46788, 4980, 10, 122770550583425618192704942502841, 15495822026835704, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"0.00063",
+1200
+]
+],
+"clen_top": [
+[
+46788,
+1200
+]
+],
+"quote": [
+[
+"ETH",
+1200
+]
+],
+"fee_ts": [
+[
+"4670/10",
+2
+],
+[
+"4980/10",
+2
+],
+[
+"4410/10",
+2
+]
+],
+"tok_top": [
+[
+"16afd61e",
+1200
+]
+],
+"npos_top": [
+[
+1,
+1200
+]
+],
+"n_pools_in_tx_top": [
+[
+60,
+1200
+]
+],
+"any_buy": 0.92,
+"frb_share": 0.0,
+"first_buy_off_p": [
+288.6,
+874.0,
+1411.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/1104",
+"key": "630000000000000",
+"n_price_liq": 20,
+"n_sqrtp": 20,
+"n_L": 20,
+"n_tok": 1
+},
+{
+"n": 249,
+"per_day": [
+60,
+48,
+38,
+38,
+29,
+21,
+15
+],
+"wallets": 2,
+"top_wallet_share": 0.819,
+"nonce_p10_50_90": [
+52142.2,
+63322.0,
+64071.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(1217700000000000, 1444, 883131, 200, 600411671415605716701113085314285, 9228048071304835426, 'ETH', True)",
+1
+],
+[
+"(1217700000000000, 1444, 883131, 200, 881259659069791989547422057526248, 13544550987864721182, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"0.0012177",
+249
+]
+],
+"clen_top": [
+[
+1444,
+249
+]
+],
+"quote": [
+[
+"ETH",
+249
+]
+],
+"fee_ts": [
+[
+"883131/200",
+249
+]
+],
+"tok_top": [
+[
+"16afd61e",
+147
+],
+[
+"58d59320",
+36
+],
+[
+"d4e7eae4",
+15
+]
+],
+"npos_top": [
+[
+1,
+249
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+249
+]
+],
+"any_buy": 0.048,
+"frb_share": 0.012,
+"first_buy_off_p": [
+34.6,
+251.5,
+1991.7
+],
+"frb_off_p": [
+115.4,
+529.0,
+959.4
+],
+"frb_eth_p": [
+0.014,
+0.0495,
+0.0899
+],
+"frb_eth_top": [
+[
+0.005177,
+1
+],
+[
+0.0495,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xf5307745:5f575529:4069",
+1
+],
+[
+"0xf0b7eaaf:39ecce49:1060",
+1
+],
+[
+"0xe893cd9d:de033549:292",
+1
+]
+],
+"frb_eoa_distinct": 3,
+"frb_eoa_top": [
+[
+"0x4c7eb0f0",
+1
+],
+[
+"0xac12785b",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/6",
+"o12_nf_reaction": "0/4",
+"baseline12": "0/6",
+"key": "1217700000000000",
+"n_price_liq": 249,
+"n_sqrtp": 249,
+"n_L": 249,
+"n_tok": 33
+},
+{
+"n": 161,
+"per_day": [
+43,
+42,
+11,
+0,
+17,
+28,
+20
+],
+"wallets": 1,
+"top_wallet_share": 1.0,
+"nonce_p10_50_90": [
+8989.0,
+9273.0,
+9545.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(40000000000000, 1444, 790000, 60, 1300507757123114174933082936226790, 656588624979896071, 'ETH', True)",
+1
+],
+[
+"(40000000000000, 1444, 790000, 60, 1410472869206208800163268923718445, 712106818810680103, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"4e-05",
+161
+]
+],
+"clen_top": [
+[
+1444,
+161
+]
+],
+"quote": [
+[
+"ETH",
+161
+]
+],
+"fee_ts": [
+[
+"790000/60",
+161
+]
+],
+"tok_top": [
+[
+"16afd61e",
+161
+]
+],
+"npos_top": [
+[
+1,
+161
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+161
+]
+],
+"any_buy": 0.13,
+"frb_share": 0.0,
+"first_buy_off_p": [
+2.0,
+317.0,
+2671.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/21",
+"key": "40000000000000",
+"n_price_liq": 161,
+"n_sqrtp": 161,
+"n_L": 161,
+"n_tok": 1
+},
+{
+"n": 150,
+"per_day": [
+0,
+150,
+0,
+0,
+0,
+0,
+0
+],
+"wallets": 3,
+"top_wallet_share": 0.333,
+"nonce_p10_50_90": [
+3.0,
+3.0,
+3.0
+],
+"fresh_le3": 1.0,
+"shape_top": [
+[
+"(525000000000000, 39108, 11110, 10, 122809334836478369231630156372105, 15500717287791146, 'ETH', True)",
+1
+],
+[
+"(525000000000000, 39108, 11300, 10, 122809334836478369231630156372105, 15500717287791146, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"0.000525",
+150
+]
+],
+"clen_top": [
+[
+39108,
+150
+]
+],
+"quote": [
+[
+"ETH",
+150
+]
+],
+"fee_ts": [
+[
+"11110/10",
+1
+],
+[
+"11300/10",
+1
+],
+[
+"11440/10",
+1
+]
+],
+"tok_top": [
+[
+"16afd61e",
+150
+]
+],
+"npos_top": [
+[
+1,
+150
+]
+],
+"n_pools_in_tx_top": [
+[
+50,
+150
+]
+],
+"any_buy": 1.0,
+"frb_share": 0.0,
+"first_buy_off_p": [
+453.0,
+509.0,
+850.4
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/150",
+"key": "525000000000000",
+"n_price_liq": 3,
+"n_sqrtp": 3,
+"n_L": 3,
+"n_tok": 1
+},
+{
+"n": 121,
+"per_day": [
+18,
+23,
+30,
+10,
+18,
+15,
+7
+],
+"wallets": 2,
+"top_wallet_share": 0.769,
+"nonce_p10_50_90": [
+52073.0,
+63348.0,
+64079.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(1217699999999999, 1444, 883131, 200, 1906654167696912932424497870719153, 29304387560250727772, 'ETH', True)",
+1
+],
+[
+"(1217699999999999, 1444, 883131, 200, 1694508244435775266529528587137852, 26043803412428578511, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"0.0012177",
+121
+]
+],
+"clen_top": [
+[
+1444,
+121
+]
+],
+"quote": [
+[
+"ETH",
+121
+]
+],
+"fee_ts": [
+[
+"883131/200",
+121
+]
+],
+"tok_top": [
+[
+"16afd61e",
+103
+],
+[
+"fa4982d5",
+8
+],
+[
+"58d59320",
+5
+]
+],
+"npos_top": [
+[
+1,
+121
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+121
+]
+],
+"any_buy": 0.008,
+"frb_share": 0.0,
+"first_buy_off_p": [
+2637.0,
+2637.0,
+2637.0
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.0,
+"pull_off_p": [
+null,
+null,
+null
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 0,
+"pull_via": [],
+"pull_full_share": null,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/0",
+"key": "1217699999999999",
+"n_price_liq": 121,
+"n_sqrtp": 121,
+"n_L": 121,
+"n_tok": 7
+},
+{
+"n": 111,
+"per_day": [
+0,
+0,
+1,
+15,
+9,
+52,
+34
+],
+"wallets": 2,
+"top_wallet_share": 0.694,
+"nonce_p10_50_90": [
+309.0,
+536.0,
+675.0
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(9333333333333332149, 1444, 10038, 200, 17163887914820232074695009610000, 22483201258328811261466, 'ETH', True)",
+1
+],
+[
+"(9333333333333332149, 1444, 10039, 200, 18506164117189758355697323560000, 22937369115986755791466, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"9.333333333",
+111
+]
+],
+"clen_top": [
+[
+1444,
+111
+]
+],
+"quote": [
+[
+"ETH",
+111
+]
+],
+"fee_ts": [
+[
+"10038/200",
+1
+],
+[
+"10039/200",
+1
+],
+[
+"10040/200",
+1
+]
+],
+"tok_top": [
+[
+"58d59320",
+111
+]
+],
+"npos_top": [
+[
+1,
+111
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+111
+]
+],
+"any_buy": 0.009,
+"frb_share": 0.009,
+"first_buy_off_p": [
+2613.0,
+2613.0,
+2613.0
+],
+"frb_off_p": [
+2753.0,
+2753.0,
+2753.0
+],
+"frb_eth_p": [
+0.1244,
+0.1244,
+0.1244
+],
+"frb_eth_top": [
+[
+0.1244,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x6e2a35a7:f2c42696:2436",
+1
+]
+],
+"frb_eoa_distinct": 1,
+"frb_eoa_top": [
+[
+"0x79c90607",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.387,
+"pull_off_p": [
+1021.0,
+1133.0,
+2175.2
+],
+"pull_before_frb": 0,
+"pull_no_frb": 43,
+"pull_by_launch_wallet": 43,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+43
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/0",
+"key": "9333333333333332149",
+"n_price_liq": 79,
+"n_sqrtp": 77,
+"n_L": 15,
+"n_tok": 1
+},
+{
+"n": 110,
+"per_day": [
+0,
+0,
+7,
+49,
+31,
+7,
+16
+],
+"wallets": 2,
+"top_wallet_share": 0.736,
+"nonce_p10_50_90": [
+126.5,
+226.0,
+643.6
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(40000000000000000000, 1444, 10128, 202, 11085960555030706347864453760000, 58417848724436382022650, 'ETH', True)",
+1
+],
+[
+"(40000000000000000000, 1444, 10129, 202, 11090395604454696232559213920000, 58417848724436382022650, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"40",
+110
+]
+],
+"clen_top": [
+[
+1444,
+110
+]
+],
+"quote": [
+[
+"ETH",
+110
+]
+],
+"fee_ts": [
+[
+"10128/202",
+1
+],
+[
+"10129/202",
+1
+],
+[
+"10130/202",
+1
+]
+],
+"tok_top": [
+[
+"6aa07533",
+110
+]
+],
+"npos_top": [
+[
+1,
+110
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+110
+]
+],
+"any_buy": 0.0,
+"frb_share": 0.0,
+"first_buy_off_p": [
+null,
+null,
+null
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.509,
+"pull_off_p": [
+1046.0,
+1155.5,
+2220.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 56,
+"pull_by_launch_wallet": 56,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+56
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/0",
+"key": "40000000000000000000",
+"n_price_liq": 98,
+"n_sqrtp": 96,
+"n_L": 19,
+"n_tok": 1
+},
+{
+"n": 32,
+"per_day": [
+0,
+16,
+13,
+2,
+0,
+0,
+1
+],
+"wallets": 32,
+"top_wallet_share": 0.031,
+"nonce_p10_50_90": [
+3.0,
+3.0,
+4.0
+],
+"fresh_le3": 0.625,
+"shape_top": [
+[
+"(1999999999999997576, 1444, 100, 1, 1771595571142957102961017161607260, 44721359549995793928183, 'ETH', True)",
+32
+]
+],
+"value_top": [
+[
+"2",
+32
+]
+],
+"clen_top": [
+[
+1444,
+32
+]
+],
+"quote": [
+[
+"ETH",
+32
+]
+],
+"fee_ts": [
+[
+"100/1",
+32
+]
+],
+"tok_top": [
+[
+"fe6bafbf",
+1
+],
+[
+"c37da644",
+1
+],
+[
+"56c60504",
+1
+]
+],
+"npos_top": [
+[
+1,
+32
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+32
+]
+],
+"any_buy": 1.0,
+"frb_share": 1.0,
+"first_buy_off_p": [
+3.0,
+3.0,
+4.0
+],
+"frb_off_p": [
+63.2,
+273.0,
+572.1
+],
+"frb_eth_p": [
+0.005,
+0.028,
+0.077
+],
+"frb_eth_top": [
+[
+0.005,
+10
+],
+[
+0.011258,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x88767899:3593564c:1284",
+22
+],
+[
+"0x88767899:3593564c:1092",
+10
+]
+],
+"frb_eoa_distinct": 23,
+"frb_eoa_top": [
+[
+"0x578e7a8e",
+10
+],
+[
+"0x1680be9e",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 10,
+"frb_also_tok": 0,
+"frb_also_lc": 10,
+"pulled_share": 0.781,
+"pull_off_p": [
+251.8,
+1589.0,
+2601.4
+],
+"pull_before_frb": 0,
+"pull_no_frb": 0,
+"pull_by_launch_wallet": 25,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+25
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/24",
+"o12_nf_reaction": "0/24",
+"baseline12": "0/8",
+"key": "1999999999999997576",
+"n_price_liq": 1,
+"n_sqrtp": 1,
+"n_L": 1,
+"n_tok": 32
+},
+{
+"n": 32,
+"per_day": [
+0,
+17,
+8,
+1,
+6,
+0,
+0
+],
+"wallets": 2,
+"top_wallet_share": 0.656,
+"nonce_p10_50_90": [
+74.5,
+378.5,
+479.7
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(2000000000000000000, 1444, 10002, 200, 49979064009084987170947473940000, 9405398979005888710133, 'ETH', True)",
+1
+],
+[
+"(2000000000000000000, 1444, 10003, 200, 49979064009084987170947473940000, 9405398979005888710133, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"2",
+32
+]
+],
+"clen_top": [
+[
+1444,
+32
+]
+],
+"quote": [
+[
+"ETH",
+32
+]
+],
+"fee_ts": [
+[
+"10002/200",
+1
+],
+[
+"10003/200",
+1
+],
+[
+"10004/200",
+1
+]
+],
+"tok_top": [
+[
+"f21d2b1e",
+32
+]
+],
+"npos_top": [
+[
+1,
+32
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+32
+]
+],
+"any_buy": 0.281,
+"frb_share": 0.281,
+"first_buy_off_p": [
+317.8,
+1911.0,
+2879.8
+],
+"frb_off_p": [
+317.8,
+1911.0,
+2879.8
+],
+"frb_eth_p": [
+0.0066,
+0.0165,
+0.0351
+],
+"frb_eth_top": [
+[
+0.013473,
+2
+],
+[
+0.016467,
+1
+]
+],
+"frb_fp_top": [
+[
+"0xccc88a9d:0a2b8f36:3140",
+3
+],
+[
+"0xccc88a9d:0a2b8f36:3588",
+1
+],
+[
+"0xccc88a9d:0a2b8f36:20708",
+1
+]
+],
+"frb_eoa_distinct": 7,
+"frb_eoa_top": [
+[
+"0x728f5195",
+3
+],
+[
+"0x81adf99f",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 9,
+"frb_also_tok": 5,
+"frb_also_lc": 8,
+"pulled_share": 0.219,
+"pull_off_p": [
+691.0,
+1944.0,
+2141.8
+],
+"pull_before_frb": 0,
+"pull_no_frb": 7,
+"pull_by_launch_wallet": 7,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+7
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/1",
+"o12_nf_reaction": "0/1",
+"baseline12": "0/8",
+"key": "2000000000000000000",
+"n_price_liq": 24,
+"n_sqrtp": 24,
+"n_L": 17,
+"n_tok": 1
+},
+{
+"n": 32,
+"per_day": [
+0,
+5,
+2,
+5,
+0,
+3,
+17
+],
+"wallets": 29,
+"top_wallet_share": 0.125,
+"nonce_p10_50_90": [
+3.0,
+3.0,
+5.8
+],
+"fresh_le3": 0.781,
+"shape_top": [
+[
+"(1999999999999992334, 1444, 100, 1, 5602277097478613991873193822745817, 141421356237309504880168, 'ETH', True)",
+32
+]
+],
+"value_top": [
+[
+"2",
+32
+]
+],
+"clen_top": [
+[
+1444,
+32
+]
+],
+"quote": [
+[
+"ETH",
+32
+]
+],
+"fee_ts": [
+[
+"100/1",
+32
+]
+],
+"tok_top": [
+[
+"9595f93c",
+2
+],
+[
+"528c645e",
+1
+],
+[
+"bf17c727",
+1
+]
+],
+"npos_top": [
+[
+1,
+32
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+32
+]
+],
+"any_buy": 1.0,
+"frb_share": 0.906,
+"first_buy_off_p": [
+3.0,
+3.0,
+3.9
+],
+"frb_off_p": [
+194.4,
+319.0,
+578.8
+],
+"frb_eth_p": [
+0.0051,
+0.036,
+0.0646
+],
+"frb_eth_top": [
+[
+0.005,
+3
+],
+[
+0.013547,
+1
+]
+],
+"frb_fp_top": [
+[
+"0x88767899:3593564c:1284",
+25
+],
+[
+"0x88767899:3593564c:1092",
+3
+],
+[
+"0xf0b7eaaf:39ecce49:1060",
+1
+]
+],
+"frb_eoa_distinct": 27,
+"frb_eoa_top": [
+[
+"0x578e7a8e",
+3
+],
+[
+"0x034f4622",
+1
+]
+],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 3,
+"frb_also_tok": 0,
+"frb_also_lc": 3,
+"pulled_share": 0.688,
+"pull_off_p": [
+389.4,
+1609.0,
+2866.6
+],
+"pull_before_frb": 0,
+"pull_no_frb": 2,
+"pull_by_launch_wallet": 22,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+22
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/28",
+"o12_nf_reaction": "0/27",
+"baseline12": "0/4",
+"key": "1999999999999992334",
+"n_price_liq": 1,
+"n_sqrtp": 1,
+"n_L": 1,
+"n_tok": 31
+},
+{
+"n": 16,
+"per_day": [
+5,
+1,
+2,
+1,
+4,
+2,
+1
+],
+"wallets": 3,
+"top_wallet_share": 0.5,
+"nonce_p10_50_90": [
+291.0,
+516.0,
+4292.5
+],
+"fresh_le3": 0.0,
+"shape_top": [
+[
+"(33333333333333328596, 1444, 10059, 201, 11975652533888619396862391920000, 52773708101523762127533, 'ETH', True)",
+1
+],
+[
+"(33333333333333328596, 1444, 10060, 201, 11731489809598540672267512350000, 51723598032084552127924, 'ETH', True)",
+1
+]
+],
+"value_top": [
+[
+"33.33333333",
+16
+]
+],
+"clen_top": [
+[
+1444,
+16
+]
+],
+"quote": [
+[
+"ETH",
+16
+]
+],
+"fee_ts": [
+[
+"10059/201",
+1
+],
+[
+"10060/201",
+1
+],
+[
+"10061/201",
+1
+]
+],
+"tok_top": [
+[
+"58d59320",
+16
+]
+],
+"npos_top": [
+[
+1,
+16
+]
+],
+"n_pools_in_tx_top": [
+[
+1,
+16
+]
+],
+"any_buy": 0.0,
+"frb_share": 0.0,
+"first_buy_off_p": [
+null,
+null,
+null
+],
+"frb_off_p": [
+null,
+null,
+null
+],
+"frb_eth_p": [
+null,
+null,
+null
+],
+"frb_eth_top": [],
+"frb_fp_top": [],
+"frb_eoa_distinct": 0,
+"frb_eoa_top": [],
+"frb_launch_wallet": 0,
+"frb_repeat_ge3": 0,
+"frb_also_tok": 0,
+"frb_also_lc": 0,
+"pulled_share": 0.062,
+"pull_off_p": [
+1233.0,
+1233.0,
+1233.0
+],
+"pull_before_frb": 0,
+"pull_no_frb": 1,
+"pull_by_launch_wallet": 1,
+"pull_via": [
+[
+"0x58daec31:dd46508f",
+1
+]
+],
+"pull_full_share": 1.0,
+"o12_reaction": "0/0",
+"o12_nf_reaction": "0/0",
+"baseline12": "0/0",
+"key": "33333333333333328596",
+"n_price_liq": 16,
+"n_sqrtp": 16,
+"n_L": 12,
+"n_tok": 1
+}
+]
+}

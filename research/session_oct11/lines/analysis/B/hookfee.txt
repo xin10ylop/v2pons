@@ -1,0 +1,3 @@
+C-1 core (no hook, ETH 100/1): buys with tx value 2790; pool ETH in / tx value p10/p50/p90 1.0000/1.0000/1.0000; share < 0.99: 0.0%
+C-2 core (no hook, ETH 500/1): buys with tx value 1802; pool ETH in / tx value p10/p50/p90 1.0000/1.0000/1.0000; share < 0.99: 0.0%
+a98b3b9e core (hooked, ETH 3000/60): buys with tx value 32; pool ETH in / tx value p10/p50/p90 1.0000/1.0000/1.0000; share < 0.99: 0.0%

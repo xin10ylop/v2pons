@@ -1,0 +1,7 @@
+token 0x99cf6c56a585b4327e4f7c7e7de3df57735b15c0: code 3854 bytes; skeleton cb79985db9ea3746 (census key cb79985d: match)
+  dispatcher selectors (11): 06fdde03=name(), 095ea7b3=approve(address,uint256), 18160ddd=totalSupply(), 23b872dd=transferFrom(address,address,uint256), 313ce567=decimals(), 42966c68=burn(uint256), 70a08231=balanceOf(address), 79cc6790=burnFrom(address,uint256), 95d89b41=symbol(), a9059cbb=transfer(address,uint256), dd62ed3e=allowance(address,address)
+  opcodes of interest: {}; PUSH20 constants: ['ffffffffffffffffffffffffffffffffffffffff']
+token 0x5b5df1b7383568064dbf540a51f8b90d08399bd4: code 3854 bytes; skeleton cb79985db9ea3746 (census key cb79985d: match)
+  dispatcher selectors (11): 06fdde03=name(), 095ea7b3=approve(address,uint256), 18160ddd=totalSupply(), 23b872dd=transferFrom(address,address,uint256), 313ce567=decimals(), 42966c68=burn(uint256), 70a08231=balanceOf(address), 79cc6790=burnFrom(address,uint256), 95d89b41=symbol(), a9059cbb=transfer(address,uint256), dd62ed3e=allowance(address,address)
+  opcodes of interest: {}; PUSH20 constants: ['ffffffffffffffffffffffffffffffffffffffff']
+{'posts': 2, 'items': 2, 'r429': 0}

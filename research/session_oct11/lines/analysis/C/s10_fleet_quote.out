@@ -1,0 +1,21 @@
+(prior buys, slack==500ppm, slack consistent with a quote from the launch state): count
+   ('none before', True, True) 389
+   (' prior earlier-block', True, False) 79
+   ('prior same-block', False, True) 73
+   (' prior earlier-block', False, True) 57
+   (' prior earlier-block', False, False) 1
+  ex ('0x77895502', 4, [(3, 2.998887e-06)], 494.1, 494.1)
+  ex ('0x25357846', 84, [(3, 2.999694e-06)], 500.0, 494.3)
+  ex ('0x53d092a3', 71, [(3, 2.997402e-06)], 500.0, 494.2)
+  ex ('0xdc6129e2', 4, [(3, 2.999052e-06)], 494.1, 494.1)
+  ex ('0xb6cc551c', 3, [(2, 2.998542e-06)], 494.3, 494.3)
+  ex ('0x88e228cf', 4, [(3, 2.999025e-06)], 494.1, 494.1)
+  ex ('0xb8d859b5', 140, [(3, 2.997312e-06)], 500.0, 494.1)
+  ex ('0x3decec03', 4, [(3, 2.997597e-06)], 494.3, 494.3)
+
+quote freshness of fleet buys vs the gap (blocks) to the previous swap in an earlier block
+  gap 1: quote includes the last earlier block 0, quote one block stale 36
+  gap 2: quote includes the last earlier block 0, quote one block stale 17
+  gap 3-5: quote includes the last earlier block 6, quote one block stale 4
+  gap 6-20: quote includes the last earlier block 223, quote one block stale 3
+  gap >20: quote includes the last earlier block 4520, quote one block stale 1

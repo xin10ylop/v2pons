@@ -312,7 +312,7 @@ positive, which became the front strategy (the engine fires at launch+0 and land
 The exact replay of the v2.433 rule on 42 distinct pools with full block data (`adv/replay.json` 24 and `chk/replay.json` 25, seven in both): +13.8% and +13.3% a trade, 24/24 and 25/25 positive. The bot's first
 buy has minOut = 0.99 x its launch-state quote, so the total ETH that can sit ahead of it is about 0.0122-0.0124 ETH (its 0.05 ETH buy's
 fill with ours ahead: 1.0084x minOut at $5, 1.0068x at $10, 1.0052x at $15, 1.0020x at $25, 1.0004x at $30: the strategy's size ceiling is
-about $27 a trade; the engine caps `FRONT_STAKE_ETH` at 0.006). The per-stake fill ratios were computed in the session and not saved; the saved files bracket the
+about $27 a trade; the engine capped `FRONT_STAKE_ETH` at 0.006 until 294f438, 0.012 since). The per-stake fill ratios were computed in the session and not saved; the saved files bracket the
 ceiling: `adv/popreplay.json` 0.012 ETH ahead never reverts the bot's buy, 0.0125 reverts it in 254 of 633 pools, 0.013 in 620 of 633. Our return is about +13.8% on a 0.17 ETH bot buy, +3.6% on 0.05, +23% on
 0.275, at any stake in that range. Nobody but the operator's decoys buys before the bot's buy, so the chain could not say whether the
 operator pulls on a real-size buy ahead of its bot: that was the one open question before going live.
@@ -408,7 +408,7 @@ Follow: `LAUNCHERS` (0x3194e326…) **same**; `LAUNCH_SELECTORS` () **2fcb9108**
 **0.01**; `BUY_DELAY_BLOCKS` (0); `MAX_TRADES_PER_DAY` (10) **100**; `DAILY_STOP_USD` (15) **15**.
 
 Front: `FRONT` (0) **1**; `FRONT_DRY_RUN` (1) **0**; `FRONT_VALUE_WEI` (2433328500000000000); `FRONT_CALLDATA_LEN` (1444);
-`POSITION_MANAGER` (0x58daec31…); `FRONT_STAKE_ETH` (0.0012, capped at 0.012 in code since the Oct 11 17:00 commit, 0.006 before) **0.0058**; `FRONT_TAKE_PROFIT` (0.01);
+`POSITION_MANAGER` (0x58daec31…); `FRONT_STAKE_ETH` (0.0012, capped at 0.012 in code since 294f438 (Oct 11 16:37 UTC), 0.006 before) **0.0058**; `FRONT_TAKE_PROFIT` (0.01);
 `FRONT_HOLD_BLOCKS` (18 since dca5c72; 12 before) **18**; `FRONT_FIRE_MAX` (2); `FRONT_MAX_PER_DAY` (400); `FRONT_HALT_FILE`
 (HALT_FILE + .front); `FRONT_DAILY_STOP_USD` (5); `FRONT_PIN` (0); `FRONT_FEE` (2500); `FRONT_TICK_SPACING` (50); `FRONT_SQRT_P`
 (1604517591721945638372359205383840); `FRONT_LIQ` (49279426163460954002188); `FRONT_BOT_MIN_ETH` (0.04); `FRONT_BOT_MINOUT` (0.99);
@@ -700,7 +700,7 @@ the take-profit floor are assessed in 16.3 and not built.**
 
 ### 12.5 Operational
 - **payout: done (c9d0201). The deploy-key check, the log export and the gas top-up are numbered commands in 16.6.**
-- Gas top-ups from the relay about daily; a `payout` command (11.3); the box's deploy key if `git pull` fails (11.4); the log export (10.5); `FRONT_STAKE_ETH` is capped at 0.006 in code
+- Gas top-ups from the relay about daily; a `payout` command (11.3); the box's deploy key if `git pull` fails (11.4); the log export (10.5); `FRONT_STAKE_ETH` is capped at 0.012 (0.006 before 294f438) in code
   (a $25 stake was computed safe for the bot's minOut: 1.0020x; the owner then chose $15).
 - The dry-run and skip sections of results.py count the whole 24 h window; old skip reasons linger.
 
@@ -1138,7 +1138,7 @@ stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61
 Built after the scanner (16.12) and the Dwellir feed (16.11): the engine's front strategy trades several of the bot's launch lines at
 once, told apart by the launch transaction's value. The FRONT_* settings make the first family (`FRONT_FAMILY_NAME` v2.433); `FRONT_FAMILIES`
 is a JSON list of further families, each `{name, value_wei, fee, tick_spacing, sqrt_p, liq, bot_minout, ahead_max_eth, take_profit,
-hold_blocks, stake_eth}` (a field left out takes the FRONT_* value; big numbers may be strings; the stake is capped at 0.012 ETH (0.006 before Oct 11 17:00) like
+hold_blocks, stake_eth}` (a field left out takes the FRONT_* value; big numbers may be strings; the stake is capped at 0.012 ETH (0.006 before 294f438) like
 `FRONT_STAKE_ETH`). The 3.0 ETH line, from the skeptic's numbers (16.12):
 
 ```
@@ -1315,7 +1315,7 @@ pools and +14.0% / +16.2% over the 409 live-window pools, and the model re-price
    census v3.0 launched 231 (19 an hour for 7 h, then 98 in the last 1.6 h) while v2.433 has been silent since 19:28 UTC Oct 10
    (`report/headcheck3.json`). Same router `0x1cbaf24d`, same `c1120e3d` buy from reused wallets at +6..+10 (92%), full pull by the launch
    wallet via `a0f7978d`, but **minOut 0.95 x the launch quote** (v2.433's is 0.99): the stake curve is flat at +6.0% from 0.0029 to 0.075 ETH
-   and the bot's buys start reverting at 0.08 ETH (the engine caps the front stake at 0.006 ETH in code anyway). Front replay at 0.0058 ETH
+   and the bot's buys start reverting at 0.08 ETH (the engine capped the front stake at 0.006 ETH in code then, 0.012 since 294f438). Front replay at 0.0058 ETH
    over all 889: +6.03% mean, +6.09% median, 99.2% win, 7 deadline exits at -2.07%, about $0.90 a trade and **$400 a day** at 444 launches
    (`skeptic_0x58.../s4_replay.json`); the 235 pools to 02:57 UTC Oct 11 replay at +6.19% mean, +6.56% median, 98.7% win
    (`report/work/f8_fresh.json`). v5.0 is thin (+1.75%, $57 a day): log it inside a v3.0 dry run, do not trade it. The caveats:
@@ -1426,3 +1426,53 @@ misdescribed scratch-root files (6.12), the repository table (2). Not changed in
 - The post-pull sell reverts because `SELL_GAS` (350,000) runs out walking the empty pool's tick bitmap (335,520 used), not because the relay
   refuses it; a larger gas limit would make it succeed with 0 ETH out and the tokens left in the relay. Nothing to change: the pull decides.
 - `results.py`'s `daily cap` skip text is the same for both strategies; the owner's "daily cap x60" was front's (follow had 5 of 100).
+
+### 16.15 Oct 11 evening (15:40-17:00 UTC): the 3.0 probe, the 2.4333 line's three changes, $25 and the room, the research round, the wave mode
+
+- **The 3.0 probe (15:46-15:48).** The dry run of the delayed front (fire at + 12) showed 3 of 5 launches firing at + 12 with the bot's buy at
+  + 29/+ 46/+ 49 behind (`would_sell` "the bot's buy behind ours"), as the replay predicted; the owner switched the family live at 0.002 ETH.
+  One trade: our buy landed at + 13, the operator pulled 9 blocks later (+ 22), the bot never bought, -100% (-$5.15), the family's own halt
+  (`HALTED.front.v3.0`) stopped it; 12 later 3.0 launches skipped `halted`. The trap is not tied to a buy at + 2: any early buy gets the
+  pull about 9 blocks later. The family was removed at 16:07 and re-added as a dry watch at 16:13 (its `first_buy` lines show the bot's offset;
+  if it returns to + 8/+ 9 the line is probeable again).
+- **The 2.4333 line, change 1 (15:32): fee 2500 -> 5000, tick spacing 50 -> 100**, same price and liquidity. The pin refused 14 launches
+  ("front: fee 5000"; `results.py` reported "fingerprint not seen before: tick spacing 100"). `deploy/pool_story.py` (new, read-only: the
+  armed-but-untraded pools' swaps and pulls from the chain, the RPC URL never printed) on 12 of them: the bot bought at + 7..+ 16 on all 12;
+  the 6 pools a stranger (wallet fd1b271f, buy at + 3, sell at + 10) had fronted were pulled at + 27..+ 29, the 6 nobody fronted were not.
+  `FRONT_FEE=5000`, `FRONT_TICK_SPACING=100` at 16:07; the first launch after it traded.
+- **Change 2 (15:40): the bot throttled its 2.4333 launches** from 36 per 10 min (15:20) to 15, 1, 1, 8, 3, 1 (chain scan of every PoolManager
+  Initialize of the hour, `research/session_oct11/recent_launches.py`); its 3.0 and 5.0 lines unchanged (2-3 and 1-2 per 10 min); no new
+  line at another value (2 launches at 2.0 ETH; two batch transactions of 140 and 60 pools at 0.0007 ETH from one wallet).
+- **The room and the stake (16:37-16:44).** `src/v4math.py` on the 2.4333 pool (2.433 ETH deep): our own impact is nil (+11.47% at $15,
+  +11.43% at $30 with the bot buying 0.15 ETH); the bot's fill against its minOut (0.99 x the launch quote) with x ETH ahead: 1.0054 at
+  0.0058, 1.0038 at 0.0078, 1.0022 at 0.0097, 1.0006 at 0.0117, 0.9996 at 0.0130: the room is ~0.0124 ETH. On 2,132 un-fronted census
+  pools the decoys took 0.00495 in 13% and 0.0099 in 7%. Expected $ per trade with that mix: $1.58 at $15, $2.23 at $25, $2.69 at $30.
+  294f438 raised the code cap 0.006 -> 0.012 (Opus review: OK with `FRONT_AHEAD_MAX_ETH` 0.0115 and the streak halt raised, since 20% of
+  trades would end at -1%); the box ran 0.0097 / 0.0115 / `FRONT_DAILY_STOP_USD` 100 / `FRONT_NONBOT_HALT` 8 from 16:44.
+- **Change 3 (16:28): the decoys filled the room.** From 16:28 the decoy wallet 65050a9b bought 0.005 ETH at + 1/+ 2 on every 2.4333 launch and
+  a second 0.005 followed before the bot's buy: 0.010 ahead of the bot on every pool, leaving 0.0024 of the 0.0124. The revert model fired on
+  every fronted pool (`front_bot_reverts`, fill/quote 0.9845-0.9882 with ours in) at $15 (16:34, 16:41) and $25 (16:47: -1.4% "the bot's buy
+  reverts", -1.0% deadline). Three anti-front moves in an hour (fee, throttle, decoys): the operator is reacting to us. **The 2.4333 line went to
+  dry run at 16:52 (`FRONT_DRY_RUN=1`)**; the revert model keeps measuring the room on every launch with our stake as the hypothesis (the
+  `front_bot_reverts` lines with `ours: true` stop when the decoys go), and `FRONT_DRY_RUN=0` brings it back.
+- **The research round (13:46-16:30; `research/session_oct11/lines/`).** Census 2: every new pool for 7 days (64,416; builder's hand-back
+  REPORT_census.md; the data files kept: summary, top40, tables, README; pools.jsonl and the 3 GB cache not kept). Three Opus analysts on
+  BRIEF.md (the replay definition, our mechanics): A (the PositionManager-multicall launches without the volume bot), B (every other v4
+  launcher), C (V2/V3), and the adversarial verifier V on the one candidate both v4 analysts ranked first. Findings: 122 of the 163 families
+  with 10+ launches have a real buyer in under 5% of launches; **C-1** (100 launches/day, a buyer bot through router 0xd6d35b56 at + 73/119/205
+  with minOut 0; follow at T + 2, hold 60: +16.3..16.8% mean, 78-79% win, 2.8-3.1% pulled, ~$200/day at $15; the token a plain ERC20; an
+  eth_call round trip through our relay works) is **NOT YET**: the edge is the operator's own buying (591 ETH vs 0.42 by others in the hold
+  windows), it fell from +27% (Oct 5) to +10% (Oct 10) to +1.8% in the 2.6 h after the census, and the census is blind to a reaction against
+  us (as it was for operator A). The hooked a98b pump line (+83% replay, hook risk, sell simulation first), C-2's hooked sibling (honeypot),
+  58d59320 (a 24%-win lottery), the V3 crowd line (~$185/day at $15, new trading path, profit in the top 10% of trades), the V2 fleet line
+  (its stale minOut reverts on any buy ahead) and operator A are in REPORT_B/C. The verifier's probe design and halts: REPORT_V.md.
+- **The wave mode (this commit).** `FRONT_FAMILIES` entries may give `calldata_len` and a `trigger` (router, selector, value_word, token_word,
+  flag_word/flag_value, min_eth, max_blocks); `value_wei` 0 is allowed with a trigger. `ingest_tx` keys families by value then checks the
+  family's calldata length; a value-0 call to a wave family's router (`WAVE_ROUTERS`) goes to `on_wave_call`: the token word must be an armed
+  pool's token and the flag the buy flag; the amount word is the buy; the first of `min_eth` within `max_blocks` fires (`_fire`'s window is
+  the family's); later ones move the price copy and may take the profit; the router's sell flag is ignored. `arm_front` counts the position's
+  liquidity when the launch tick is the range's top tick (`lo < t0 <= hi`: a buy moves the tick down into it; C-1 mints a token-only range).
+  `on_front_buy` on a wave pool only moves the price copy. The `ingest` loop never fires a wave pool at its launch and marks it late past the
+  window; the pull-shaped-call check covers wave pools. Dry positions log `dry_ret` (the sell's return as the price copy prices it) in
+  `would_sell` and `trade_done`. Fixture `tests/data/c1_launch.json` (a real C-1 launch and its bot's router buy); test 20f. Reviewed by Opus
+  (see the commit after this one for its findings).

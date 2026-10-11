@@ -1,0 +1,5 @@
+C-2 hooked sibling: pools 89, with any sell 81, buys 73333, sells 47505, sell routers [('0x88767899', 47505)], first-12 sells {'sell by a wallet that bought earlier': 20}
+C-2 core (no hook): pools 684, with any sell 598, buys 49870, sells 16209, sell routers [('0x88767899', 15741), ('0x4f881c6a', 405), ('0x65050a9b', 16)], first-12 sells {'sell by a wallet that bought earlier': 365}
+a98b3b9e hooked core: pools 117, with any sell 110, buys 25027, sells 11991, sell routers [('0x88767899', 11989), ('0x8f10b468', 1), ('0x9689992f', 1)], first-12 sells {}
+C-1 core: pools 888, with any sell 686, buys 50924, sells 19750, sell routers [('0x88767899', 18868), ('0x897c3456', 448), ('0x9f611cc3', 156)], first-12 sells {'sell by a wallet that bought earlier': 238, 'sell by other': 149}
+58d59320 via 0xeb7c0347: pools 486, with any sell 151, buys 4571, sells 7090, sell routers [('0x9982538f', 5122), ('0x65050a9b', 1064), ('0x9689992f', 293)], first-12 sells {'sell by a wallet that bought earlier': 830, 'sell by other': 3, 'sell by launch wallet': 4}

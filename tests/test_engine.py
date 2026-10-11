@@ -1044,12 +1044,12 @@ assert "not valid JSON" in refused('[{"name":"a",}]')
 assert fams[3 * 10 ** 18]["fire_at"] == 0 and fams[3 * 10 ** 18]["fire_max"] == E.FRONT_FIRE_MAX
 os.environ["FRONT_FAMILIES"] = "  "; assert set(E.front_families()) == {E.FRONT_VALUE_WEI}; os.environ.pop("FRONT_FAMILIES")
 for stake, ok in ((0.0097, True), (0.012, True), (0.0121, False), (0.013, False)):                  # the stake cap is the 2.4333 bot's room (0.012 ETH), not the old 0.006
-    os.environ["FRONT_FAMILIES"] = V3_JSON.replace('"stake_eth":0.002', f'"stake_eth":{stake}').replace('"ahead_max_eth":0.07', '"ahead_max_eth":0.07')
+    os.environ["FRONT_FAMILIES"] = V3_JSON.replace('"stake_eth":0.002', f'"stake_eth":{stake}')
     try:
         got = E.front_families(E.front_base_family()); assert ok and got[3 * 10 ** 18]["stake_wei"] == int(round(stake * 1e9)) * 10 ** 9, (stake, got.get(3 * 10 ** 18, {}).get("stake_wei"))
     except SystemExit as e:
         assert not ok and "stake" in str(e), (stake, e)
-assert E.FRONT_STAKE_CAP_WEI == int(0.012e18) and E.FRONT_STAKE_CAP_ETH == 0.012
+os.environ.pop("FRONT_FAMILIES"); assert E.FRONT_STAKE_CAP_WEI == int(0.012e18) and E.FRONT_STAKE_CAP_ETH == 0.012
 print("ok FRONT_FAMILIES: the runbook's JSON parses (stake, room, dry run, pin, fire offset per family); unknown keys, missing fingerprints, floats, a stake over the cap (0.012 ETH), fee 0, duplicates are refused at start")
 
 # 19b. the pull check's block range on a provider whose node refuses a range past its head: it ends 10 under the head, never under the sell block
@@ -1169,5 +1169,82 @@ E.state["fam_halted"].clear(); E.load_halt(); assert E.state["fam_halted"].get("
 os.remove(E.fam_halt_file("v3")); E.state["fam_halted"].clear(); del E.FRONT_FAMILIES[V3_VALUE]; reset(); E.FRONT = False; E.ENTRY = "follow"
 print("ok a listed family's pull-first halt halts that family alone (its own file, read back at a start); the FRONT_* line goes on")
 print("ok a family's fire offset: the delayed front fires at launch + fire_at, holds for the bot's late buy, is late past fire_at + fire_max or once the bot has bought")
+# --- 20f. a wave family (C-1): the launch (PositionManager multicall of 2,276 bytes, value 0, a token-only range up to the launch tick) arms and
+# waits; the operator's buy through its router (a value-0 call carrying the token and the buy flag) is the trigger: we buy behind it (landing + 2)
+# and sell hold_blocks later; a pull-shaped call before the trigger, a trigger past the family's window, or no trigger make the pool late; a dry
+# family scores its would-be sell (dry_ret)
+C1 = json.load(open(os.path.join(ROOT, "tests", "data", "c1_launch.json")))
+C1_ROUTER = C1["router_to"]; C1_PID = C1["pid"]; C1_TOKEN = C1["token"]; C1_BUY = C1["router_input"]
+C1_SELL = C1_BUY[:10 + 64 * 7] + w(1) + C1_BUY[10 + 64 * 8:]                                                 # the same call with the action flag 1: the router's sell
+assert C1_BUY[10 + 64 * 8 + 24: 10 + 64 * 9] == C1_TOKEN[2:].lower() and int(C1_BUY[10 + 64 * 2: 10 + 64 * 3], 16) == C1["router_q_wei"] and int(C1_BUY[10 + 64 * 7: 10 + 64 * 8], 16) == 0
+C1_FAM = {"name": "c1", "value_wei": 0, "calldata_len": 2276, "fee": 100, "tick_spacing": 1, "sqrt_p": str(C1["sqrt_p"]), "liq": str(C1["liq"]), "bot_minout": 1.0, "ahead_max_eth": 0.5,
+          "take_profit": 9, "hold_blocks": 60, "stake_eth": 0.0058, "dry_run": False, "pin": True,
+          "trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "value_word": 2, "token_word": 8, "flag_word": 7, "flag_value": 0, "min_eth": 0.005, "max_blocks": 400}}
+os.environ["FRONT_FAMILIES"] = json.dumps([C1_FAM]); fams = E.front_families(E.front_base_family()); os.environ.pop("FRONT_FAMILIES")
+c1 = fams[0]; assert c1["name"] == "c1" and c1["calldata_len"] == 2276 and c1["trigger"]["router"] == C1_ROUTER[2:].lower() and c1["trigger"]["selector"] == "e6cb474f" and c1["trigger"]["words"] == 9 \
+    and c1["trigger"]["min_wei"] == int(0.005e18) and c1["trigger"]["max_blocks"] == 400 and c1["trigger"]["flag_word"] == 7 and c1["fire_at"] == 0 and c1["liq"] == C1["liq"], c1
+for patch, msg in (({"trigger": None}, "needs a trigger"), ({"fire_at": 5}, "fire_at must be 0"), ({"trigger": {"router": C1_ROUTER}}, "selector"),
+                   ({"trigger": {"router": "0x12", "selector": "e6cb474f"}}, "40 hex"), ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "nope": 1}}, "unknown keys"),
+                   ({"calldata_len": 20}, "calldata_len"), ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "max_blocks": 5000}}, "max_blocks"),
+                   ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "min_eth": 0}}, "min_eth"), ({"trigger": "0xd6d35b56"}, "must be an object"), ({"calldata_len": 1444.5}, "whole number")):
+    os.environ["FRONT_FAMILIES"] = json.dumps([{**C1_FAM, **patch}])
+    try:
+        E.front_families(E.front_base_family()); assert False, ("accepted", patch)
+    except SystemExit as e:
+        assert msg in str(e), (patch, str(e))
+os.environ.pop("FRONT_FAMILIES")
+E.FRONT_FAMILIES[0] = c1; E.WAVE_ROUTERS.add(c1["trigger"]["router"]); E.state["delayed"] = True; E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"
+reset(); E.state["nonce"] = 900; E.state["front_halted"] = None; E.state["fam_halted"].clear(); LOGS[:] = []
+n_sent = len(SENT); E.ingest(frame(12000, [signed(DEPLOYER, POSM, 0, C1["launch_input"], 10)]))
+p = E.state["armed"].get(C1_PID); assert p and p["entry"] == "front" and p["fam"] == "c1" and p["eligible"] and p["liq"] == C1["liq"] and p["tick0"] == C1["hi"] and p["status"] == "armed" \
+    and E.state["position"] is None and len(SENT) == n_sent, (p and {k: p[k] for k in ("eligible", "liq", "status", "tick0")}, events("armed")[-1].get("why"))
+assert events("launch")[-1]["fam"] == "c1" and events("armed")[-1]["fingerprint"] == "known"
+for s_ in range(12001, 12100):
+    E.ingest(frame(s_, []))
+assert E.state["position"] is None and p["status"] == "armed", "fired without a trigger"
+E.ingest(frame(12100, [signed(OUTSIDER, UR, int(0.0003e18), "0x12345678" + w(C1_TOKEN), 50)]))         # a stranger's small buy with ETH: the price copy moves, nothing fires
+assert E.state["position"] is None and p["status"] == "armed" and p["buys"] == 1 and p["eth_in"] == int(0.0003e18) and p["first_buy"] is None, (p["status"], p["buys"], p["first_buy"])
+E.ingest(frame(12110, [signed(CROWD, C1_ROUTER, 0, C1_SELL, 51)]))                                      # the router's sell-shaped call: not a buy, no trigger
+assert E.state["position"] is None and p["first_buy"] is None and p["buys"] == 1, "the router's sell was taken for a buy"
+sp_before = p["sp"]; E.ingest(frame(12150, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 52)]))                  # the operator's buy: the trigger
+pos = E.state["position"]; assert pos and pos["fam"] == "c1" and pos["entry"] == "front" and pos["trig_seq"] == 12150 and pos["fire_seq"] == 12150 and pos["plan_buy_seq"] == 12152 \
+    and pos["send_after"] == 60 and pos["stake"] == int(0.0058e18) and pos["trig_value"] == C1["router_q_wei"] and len(SENT) == n_sent + 1 and p["first_buy"] == 12150 and p["sp"] < sp_before, pos
+assert events("first_buy")[-1].get("trigger") is True and events("first_buy")[-1]["value"] == C1["router_q_wei"] and events("first_buy")[-1]["offset"] == 150
+E.ingest(frame(12152, [SENT[-1][1]])); assert pos["buy_seq"] == 12152 and pos["feed_tokens"] > 0
+E.ingest(frame(12160, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 53)]))                                       # a second operator buy behind ours: the price copy moves, take-profit (9) does not fire
+assert not pos["sell_sent"] and p["buys"] == 4, (pos["sell_sent"], p["buys"])                            # the stranger's, the trigger, our own, the operator's second
+for s_ in range(12161, 12212):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(12212, [])); assert pos["sell_sent"] and pos["sell_why"].startswith("deadline"), pos.get("sell_why")
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(12152, -int(0.0058e18), pos["feed_tokens"], pid=C1_PID); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(12213, int(0.0058e18 * 1.1), -pos["feed_tokens"], pid=C1_PID)
+assert wait_for(lambda: done_at(900)); d = done_at(900)[-1]; assert d["fam"] == "c1" and d["entry"] == "front" and d["ret"] > 0.08 and d["hold_blocks"] == 61 and d["buy_offset"] == 2 and not d.get("pulled_before_sell"), d
+assert E.state["front_halted"] is None and not E.state["fam_halted"] and E.state["position"] is None
+reset(); E.state["nonce"] = 910; E.state["armed"].clear()                                                # no trigger within the window: late, nothing fires
+E.ingest(frame(12300, [signed(DEPLOYER, POSM, 0, C1["launch_input"], 11)])); p2 = E.state["armed"][C1_PID]
+for s_ in range(12301, 12701):
+    E.ingest(frame(s_, []))
+assert p2["status"] == "armed", "late before the window's end"
+E.ingest(frame(12701, [])); assert p2["status"] == "late" and events("skip")[-1]["why"].startswith("wave: no trigger within") and E.state["position"] is None, events("skip")[-1]
+E.ingest(frame(12702, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 54)])); assert E.state["position"] is None, "fired after the window"
+reset(); E.state["nonce"] = 920; E.state["armed"].clear()                                                # a pull-shaped call on the pool before the trigger: late
+E.ingest(frame(12800, [signed(DEPLOYER, POSM, 0, C1["launch_input"], 12)])); p3 = E.state["armed"][C1_PID]
+E.ingest(frame(12805, [signed(DEPLOYER, POSM, 0, "0xdd46508f" + w(C1_TOKEN) + w(0) * 3, 13)])); assert p3["status"] == "late" and "pull" in events("skip")[-1]["why"], events("skip")[-1]
+E.ingest(frame(12810, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 55)])); assert E.state["position"] is None, "fired after a pull"
+reset(); E.state["nonce"] = 930; E.state["armed"].clear()                                                # the trigger itself past the window (a stall): late
+E.ingest(frame(13000, [signed(DEPLOYER, POSM, 0, C1["launch_input"], 14)])); p4 = E.state["armed"][C1_PID]
+E.ingest(frame(13401, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 56)])); assert E.state["position"] is None and p4["status"] == "late" and "window" in events("skip")[-1]["why"], events("skip")[-1]
+reset(); E.state["nonce"] = 940; E.state["armed"].clear(); E.FRONT_FAMILIES[0] = {**c1, "dry_run": True}   # the dry family: would_fire, the virtual buy, would_sell with its return
+n_sent = len(SENT); E.ingest(frame(13500, [signed(DEPLOYER, POSM, 0, C1["launch_input"], 15)])); p5 = E.state["armed"][C1_PID]
+E.ingest(frame(13520, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 57)])); pos = E.state["position"]
+assert pos and pos["dry"] and pos["fam"] == "c1" and events("would_fire")[-1]["fam"] == "c1" and events("would_fire")[-1]["plan_buy_seq"] == 13522 and len(SENT) == n_sent, pos
+E.ingest(frame(13521, [])); E.ingest(frame(13522, [])); assert pos["buy_seq"] == 13522 and pos["feed_tokens"] > 0, "the dry run's buy did not land at its planned block"
+E.ingest(frame(13530, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 58)]))                                        # the operator buys again behind us
+for s_ in range(13531, 13583):
+    E.ingest(frame(s_, []))
+assert pos["sell_sent"] and events("would_sell")[-1]["dry_ret"] is not None and -0.02 < events("would_sell")[-1]["dry_ret"] < 0.5, events("would_sell")[-1]
+assert wait_for(lambda: any(e.get("dry") and e.get("fam") == "c1" and "dry_ret" in e for e in events("trade_done")), 3.0), "no dry trade_done with dry_ret"
+del E.FRONT_FAMILIES[0]; E.WAVE_ROUTERS.discard(c1["trigger"]["router"]); E.state["delayed"] = any(f["fire_at"] or f["trigger"] for f in E.FRONT_FAMILIES.values()); reset(); E.FRONT = False; E.ENTRY = "follow"
+print("ok a wave family (C-1): the value-0 launch arms with its one-sided liquidity and waits; the operator's router buy is the trigger (buy + 2, sell at the hold); the router's sell, a stranger's buy, a pull before the trigger and the window's end never fire; the dry family scores its sell")
+
 for _f in (E.LOG_PATH, E.LOG_PATH + ".1"):
     if os.path.exists(_f): os.remove(_f)

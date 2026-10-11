@@ -1,0 +1,21 @@
+tok:0f34e3b5: pools 603  token code size [(3857, 603)]
+   pools with a sell by a non-launch wallet that returned ETH: 158 (311 sells, 0.922 ETH)
+   wallets with buy+sell seen: 310  sold/bought p10/50/90 0.4400/1.0000/1.0000  ratio in [0.999,1.001]: 277  max 1.0
+tok:70adce63: pools 1184  token code size [(3553, 1184)]
+   pools with a sell by a non-launch wallet that returned ETH: 395 (464 sells, 0.056 ETH)
+   wallets with buy+sell seen: 462  sold/bought p10/50/90 1.0000/1.0000/1.0000  ratio in [0.999,1.001]: 459  max 1.0
+lc:0a493d1a|13ead562: pools 493  token code size [(8702, 402), (10322, 41), (5019, 30)]
+   pools with a sell by a non-launch wallet that returned ETH: 64 (111 sells, 1.433 ETH)
+   wallets with buy+sell seen: 110  sold/bought p10/50/90 0.1001/0.3358/1.0000  ratio in [0.999,1.001]: 14  max 1.0
+tok:d4e7eae4: pools 1021  token code size [(1764, 1021)]
+   pools with a sell by a non-launch wallet that returned ETH: 342 (503 sells, 1.944 ETH)
+   wallets with buy+sell seen: 459  sold/bought p10/50/90 0.5000/1.0000/1.0000  ratio in [0.999,1.001]: 361  max 1.0
+lc:0a493d1a|ac9650d8: pools 1155  token code size [(1764, 1016), (44, 34), (1603, 24)]
+   pools with a sell by a non-launch wallet that returned ETH: 396 (584 sells, 3.269 ETH)
+   wallets with buy+sell seen: 535  sold/bought p10/50/90 0.4999/1.0000/1.0000  ratio in [0.999,1.001]: 412  max 78.72395651161418
+lc:89885b75|d27d1e00: pools 248  token code size [(1923, 172), (1764, 76)]
+   pools with a sell by a non-launch wallet that returned ETH: 97 (147 sells, 20.821 ETH)
+   wallets with buy+sell seen: 127  sold/bought p10/50/90 0.2480/1.0000/1.0000  ratio in [0.999,1.001]: 84  max 1.0
+lc:b09ef517|e9ae5c53: pools 50  token code size [(11763, 23), (12046, 10), (3360, 5)]
+   pools with a sell by a non-launch wallet that returned ETH: 26 (31 sells, 2.256 ETH)
+   wallets with buy+sell seen: 31  sold/bought p10/50/90 0.2500/0.5000/1.0000  ratio in [0.999,1.001]: 6  max 1.0

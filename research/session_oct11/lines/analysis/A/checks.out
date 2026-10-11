@@ -1,0 +1,5 @@
+C1_eth: pools whose re-simulated price path deviates (>1e-6): 7, of which before the first pull: 0; follow d2/H60 losses < -50% without a pull: 0/573
+C1_weth: pools whose re-simulated price path deviates (>1e-6): 6, of which before the first pull: 0; follow d2/H60 losses < -50% without a pull: 0/155
+a98b_hook: pools whose re-simulated price path deviates (>1e-6): 1, of which before the first pull: 1; follow d2/H60 losses < -50% without a pull: 0/121
+odd2_1444: pools whose re-simulated price path deviates (>1e-6): 2, of which before the first pull: 0; follow d2/H60 losses < -50% without a pull: 0/116
+564f_weth_hook: pools whose re-simulated price path deviates (>1e-6): 0, of which before the first pull: 0; follow d2/H60 losses < -50% without a pull: 0/120

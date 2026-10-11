@@ -1,0 +1,18 @@
+C-1 core ETH pools 698; with a bot buy (fetched) 573 (82.1%); without 125
+re-simulation check (no trade): max rel sqrt error before the first pull: p50 4.06e-19 p99 3.95e-06 max 9.19e-06; pools with a liquidity add after launch: 0
+trigger block == census frb block (frb via bot): 543
+entry trig+1 hold  20: n 573 mean +0.0909 med +0.0064 win 52.5% worst -0.008 pulled<=sell 0.0% (strictly before 0.0%; before our buy 0) $/day +112
+entry trig+1 hold  40: n 573 mean +0.1388 med +0.0544 win 67.0% worst -1.000 pulled<=sell 0.9% (strictly before 0.7%; before our buy 0) $/day +170
+entry trig+1 hold  60: n 573 mean +0.1754 med +0.1009 win 78.5% worst -1.000 pulled<=sell 3.0% (strictly before 2.8%; before our buy 0) $/day +215
+entry trig+1 hold  80: n 573 mean +0.2104 med +0.1410 win 82.2% worst -1.000 pulled<=sell 5.4% (strictly before 5.4%; before our buy 0) $/day +258
+entry trig+1 hold 100: n 573 mean +0.2322 med +0.1928 win 83.1% worst -1.000 pulled<=sell 7.9% (strictly before 7.7%; before our buy 0) $/day +285
+entry trig+2 hold  20: n 573 mean +0.0803 med -0.0012 win 49.4% worst -0.008 pulled<=sell 0.0% (strictly before 0.0%; before our buy 0) $/day +99
+entry trig+2 hold  40: n 573 mean +0.1282 med +0.0483 win 65.8% worst -1.000 pulled<=sell 1.0% (strictly before 0.9%; before our buy 0) $/day +157
+entry trig+2 hold  60: n 573 mean +0.1628 med +0.0992 win 78.2% worst -1.000 pulled<=sell 3.1% (strictly before 3.0%; before our buy 0) $/day +200
+entry trig+2 hold  80: n 573 mean +0.1998 med +0.1399 win 81.5% worst -1.000 pulled<=sell 5.6% (strictly before 5.4%; before our buy 0) $/day +245
+entry trig+2 hold 100: n 573 mean +0.2197 med +0.1827 win 83.1% worst -1.000 pulled<=sell 7.9% (strictly before 7.9%; before our buy 0) $/day +270
+entry trig+3 hold  20: n 573 mean +0.0643 med -0.0014 win 42.2% worst -0.008 pulled<=sell 0.0% (strictly before 0.0%; before our buy 0) $/day +79
+entry trig+3 hold  40: n 573 mean +0.1140 med +0.0383 win 63.9% worst -1.000 pulled<=sell 1.0% (strictly before 1.0%; before our buy 0) $/day +140
+entry trig+3 hold  60: n 573 mean +0.1470 med +0.0968 win 77.0% worst -1.000 pulled<=sell 3.3% (strictly before 3.1%; before our buy 0) $/day +180
+entry trig+3 hold  80: n 573 mean +0.1818 med +0.1268 win 80.6% worst -1.000 pulled<=sell 5.8% (strictly before 5.6%; before our buy 0) $/day +223
+entry trig+3 hold 100: n 573 mean +0.1976 med +0.1619 win 81.8% worst -1.000 pulled<=sell 8.0% (strictly before 7.9%; before our buy 0) $/day +243

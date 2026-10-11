@@ -1,0 +1,7 @@
+d0: n 114  frb 112  L tiers [('3.68e+22', 60), ('3.68e+20', 38), ('1.23e+22', 11), ('4.09e+21', 3), ('4.28e+22', 2)]  first swap ETH [(0.05, 101), (0.1, 11), (None, 2)]  launch wallets 28
+d1: n 7  frb 7  L tiers [('1.23e+22', 5), ('3.68e+22', 1), ('3.68e+20', 1)]  first swap ETH [(0.05, 7)]  launch wallets 6
+d2: n 32  frb 31  L tiers [('3.68e+22', 24), ('1.23e+22', 6), ('4.28e+22', 1), ('3.68e+21', 1)]  first swap ETH [(0.05, 31), (None, 1)]  launch wallets 17
+d3: n 61  frb 50  L tiers [('1.23e+22', 33), ('3.68e+22', 9), ('3.68e+21', 7), ('3.16e+20', 6), ('4.41e+22', 4)]  first swap ETH [(0.05, 50), (0.0, 6), (None, 5)]  launch wallets 15
+d4: n 209  frb 205  L tiers [('1.23e+22', 184), ('6.27e+21', 20), ('4.09e+21', 3), ('1.83e+22', 1), ('3.68e+22', 1)]  first swap ETH [(0.05, 194), (0.002, 5), (0.0002, 4), (0.01, 4), (None, 1)]  launch wallets 34
+d5: n 12  frb 12  L tiers [('1.23e+22', 6), ('3.68e+22', 6)]  first swap ETH [(0.05, 8), (0.01, 4)]  launch wallets 7
+d6: n 58  frb 14  L tiers [('3.68e+22', 52), ('1.23e+22', 2), ('3.16e+22', 2), ('3.68e+21', 1), ('3.17e+22', 1)]  first swap ETH [(0.001, 46), (0.05, 8), (0.0001, 3), (None, 1)]  launch wallets 10

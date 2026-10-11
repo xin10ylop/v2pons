@@ -1,0 +1,31 @@
+families whose first real buy is in the launch transaction (>= 30% of their frb): launch-tx price move, the wave, follow replays (q=0.0058)
+c3cd7006|f0e9eabf#fa4982d5 n=285 (40.7/d, by day [0, 0, 6, 22, 212, 31, 14]) frb 9% in-launch-tx 48% size 0.0116/0.0394/0.282 | launch-tx price move % p10/50/90 2.03/4.12/11 | wave +60 n med 0 eth med 0 realbuy 36% +200 n med 2 | pulled 0%
+     follow_h20 n 25 mean +0.154 med -0.021 win 24% | follow_h60 n 25 mean +0.392 med -0.021 win 32% | oracle n 25 mean +0.630 med -0.003 win 48%
+4a586d92|ac9650d8#65daaea0 n=210 (30.0/d, by day [15, 19, 52, 54, 18, 35, 17]) frb 61% in-launch-tx 98% size 0.0126/0.08/1.5 | launch-tx price move % p10/50/90 1.01/84/155 | wave +60 n med 2.0 eth med 0.000802 realbuy 45% +200 n med 3.0 | pulled 0%
+     follow_h20 n 128 mean -0.011 med -0.006 win 2% | follow_h60 n 128 mean -0.008 med -0.006 win 5% | oracle n 128 mean +0.013 med -0.006 win 9%
+create#65daaea0 n=105 (15.0/d, by day [27, 19, 28, 16, 13, 0, 2]) frb 100% in-launch-tx 100% size 2/3.4/3.5 | launch-tx price move % p10/50/90 222/453/472 | wave +60 n med 3 eth med 0.00429 realbuy 25% +200 n med 13 | pulled 0%
+     follow_h20 n 105 mean -0.006 med -0.006 win 1% | follow_h60 n 105 mean -0.004 med -0.005 win 3% | oracle n 105 mean +0.011 med +0.003 win 74%
+51faa3f1|a80ac0c2#fa4982d5 n=86 (12.3/d, by day [10, 14, 14, 7, 20, 10, 11]) frb 70% in-launch-tx 95% size 0.0142/0.0271/0.076 | launch-tx price move % p10/50/90 2.11/4.12/14 | wave +60 n med 1.0 eth med 9.6e-05 realbuy 13% +200 n med 1.0 | pulled 0%
+     follow_h20 n 60 mean +0.029 med -0.001 win 35% | follow_h60 n 60 mean +0.047 med -0.001 win 35% | oracle n 60 mean +0.071 med -0.001 win 45%
+049a3b67|79082bf9#99e0b5e8 n=64 (9.1/d, by day [15, 10, 3, 20, 4, 2, 10]) frb 20% in-launch-tx 31% size 0.0131/0.0957/0.803 | launch-tx price move % p10/50/90 6.57/10/14 | wave +60 n med 0 eth med 0 realbuy 31% +200 n med 0 | pulled 0%
+     follow_h20 n 13 mean +0.060 med -0.001 win 8% | follow_h60 n 13 mean +0.079 med -0.001 win 15% | oracle n 13 mean +0.169 med -0.001 win 31%
+aa7b2563|3d9ab7c9#16afd61e n=46 (6.6/d, by day [12, 10, 3, 7, 3, 6, 5]) frb 100% in-launch-tx 72% size 0.0135/0.0415/0.125 | launch-tx price move % p10/50/90 0.697/2.68/6.04 | wave +60 n med 20.0 eth med 0.309 realbuy 100% +200 n med 41.0 | pulled 0%
+     follow_h20 n 46 mean -0.030 med -0.035 win 35% | follow_h60 n 46 mean -0.037 med -0.050 win 37% | oracle n 46 mean +0.116 med +0.066 win 80%
+bc62900b|f0e9eabf#fa4982d5 n=32 (4.6/d, by day [0, 16, 16, 0, 0, 0, 0]) frb 38% in-launch-tx 42% size 0.0228/0.0598/0.104 | launch-tx price move % p10/50/90 1.42/2.03/2.03 | wave +60 n med 1.5 eth med 0.0477 realbuy 50% +200 n med 2.0 | pulled 0%
+     follow_h20 n 12 mean +0.227 med -0.021 win 17% | follow_h60 n 12 mean +0.235 med -0.021 win 17% | oracle n 12 mean +0.381 med -0.011 win 42%
+fda2774c|7d8559b6#006dae97 n=31 (4.4/d, by day [15, 12, 0, 0, 0, 0, 4]) frb 13% in-launch-tx 75% size 0.0237/0.0779/0.17 | launch-tx price move % p10/50/90 11/16/27 | wave +60 n med 0.0 eth med 0 realbuy 0% +200 n med 0.0 | pulled 0%
+     follow_h20 n 4 mean -0.021 med -0.021 win 0% | follow_h60 n 4 mean -0.021 med -0.021 win 0% | oracle n 4 mean -0.021 med -0.021 win 0%
+9c2b9390|ff734f50#da46f006 n=30 (4.3/d, by day [0, 0, 0, 0, 0, 0, 30]) frb 33% in-launch-tx 80% size 0.00968/0.045/0.105 | launch-tx price move % p10/50/90 7.42/17/28 | wave +60 n med 0.0 eth med 0 realbuy 30% +200 n med 3.5 | pulled 0%
+     follow_h20 n 10 mean +0.014 med -0.007 win 10% | follow_h60 n 10 mean +0.233 med -0.007 win 30% | oracle n 10 mean +1.597 med +0.219 win 50%
+b09ef517|e9ae5c53#16afd61e n=25 (3.6/d, by day [13, 7, 2, 1, 0, 1, 1]) frb 84% in-launch-tx 95% size 0.2/0.2/0.2 | launch-tx price move % p10/50/90 9.75/16/18 | wave +60 n med 22 eth med 0.472 realbuy 100% +200 n med 42 | pulled 4%
+     follow_h20 n 21 mean -0.157 med -0.144 win 14% | follow_h60 n 21 mean -0.095 med -0.107 win 24% | oracle n 21 mean +0.216 med +0.013 win 90%
+d5c15df6|174dea71#65daaea0 n=20 (2.9/d, by day [0, 0, 0, 2, 18, 0, 0]) frb 100% in-launch-tx 100% size 0.089/0.3/0.355 | launch-tx price move % p10/50/90 7.21/25/30 | wave +60 n med 4.0 eth med 0.0263 realbuy 85% +200 n med 6.0 | pulled 0%
+     follow_h20 n 20 mean +0.014 med -0.003 win 40% | follow_h60 n 20 mean +0.027 med +0.011 win 65% | oracle n 20 mean +0.131 med +0.039 win 90%
+10e37260|54e231e6#16afd61e n=18 (2.6/d, by day [0, 2, 2, 3, 3, 5, 3]) frb 100% in-launch-tx 89% size 0.0171/0.0527/0.185 | launch-tx price move % p10/50/90 0.774/3.03/9.27 | wave +60 n med 19.0 eth med 0.25 realbuy 100% +200 n med 29.5 | pulled 0%
+     follow_h20 n 18 mean -0.128 med -0.029 win 44% | follow_h60 n 18 mean -0.129 med -0.043 win 39% | oracle n 18 mean +0.064 med +0.052 win 89%
+b09ef517|e9ae5c53#db69a8e9 n=13 (1.9/d, by day [1, 1, 1, 0, 2, 6, 2]) frb 100% in-launch-tx 100% size 0.0105/0.0105/0.0105 | launch-tx price move % p10/50/90 0.00218/0.0103/0.283 | wave +60 n med 1 eth med 0.000393 realbuy 0% +200 n med 2 | pulled 100%
+     follow_h20 n 13 mean -1.001 med -1.001 win 0% | follow_h60 n 13 mean -1.001 med -1.001 win 0% | oracle n 13 mean -1.001 med -1.001 win 0%
+1cbcabd5|a86854fc#16afd61e n=12 (1.7/d, by day [3, 2, 2, 0, 2, 1, 2]) frb 100% in-launch-tx 100% size 0.0297/0.0919/0.315 | launch-tx price move % p10/50/90 1.42/4.42/16 | wave +60 n med 45.0 eth med 2.62 realbuy 100% +200 n med 66.5 | pulled 0%
+     follow_h20 n 12 mean +0.205 med +0.267 win 58% | follow_h60 n 12 mean +0.128 med -0.002 win 50% | oracle n 12 mean +0.573 med +0.495 win 100%
+7abc863f|bdec33ef#ec74c067 n=10 (1.4/d, by day [0, 8, 0, 0, 0, 0, 2]) frb 100% in-launch-tx 100% size 0.00988/0.00988/0.0494 | launch-tx price move % p10/50/90 1.2/1.2/6.05 | wave +60 n med 0.5 eth med 9.74e-05 realbuy 0% +200 n med 1.0 | pulled 0%
+     follow_h20 n 10 mean -0.001 med -0.001 win 0% | follow_h60 n 10 mean -0.001 med -0.001 win 0% | oracle n 10 mean -0.001 med -0.001 win 0%

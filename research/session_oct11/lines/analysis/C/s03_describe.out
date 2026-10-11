@@ -1,0 +1,359 @@
+
+######## tok:0f34e3b5: V2/V3 n=603 (with v4: 609)  dex [('v2a', 603), ('v4', 6)]
+  tok: [('0f34e3b5', 603)]  lc: [('bd55ea26|f305d719', 603)]
+  by day: [('10-04', 55), ('10-05', 64), ('10-06', 0), ('10-07', 36), ('10-08', 135), ('10-09', 182), ('10-10', 89), ('10-11', 42)]
+  launch to: [('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 603)]  sel/clen: [(('f305d719', 196), 603)]
+  value: [(1.0, 603)]  fee/ts: [((3000, None), 603)]  n_pools_in_tx: [(1, 603)]
+  launch wallets: 603  nonce: 2/2/2  created_contract: 0  token_code size: [(3857, 603)]
+  liq: with adds 603  liq_in_launch_tx 603  liq_off p10/50/90 0/0/0
+  frb: 599/603  off 2/3/41  eth 0.0157/0.0453/0.1049  idx 0/0/1
+   frb to/sel/clen: [(('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', '7ff36ab5', 228), 599)]  router: [('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 599)]
+   frb eoa distinct 599  is launch wallet 0  eoa npools_seen 1/1/1  also_in_tok_family>0 0  prio [(0, 599)]
+   frb_off - liq_off: 2/3/41
+  pulled 165/603  first pull off 114/269/1974  full 165  by launch wallet 165  before frb 0  pull-frb 111/257/1972
+   pull via: [(('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', '02751cec'), 165)]
+  outsider12 reaction 26/599  nf 0/3  baseline 0/4
+  n_swaps 11/32/37  n_buys 9/26/30  n_sells 2/5/9  buy_eth_total 0.1173/1.1588/1.3505
+
+######## lc:0a493d1a|13ead562: V2/V3 n=493 (with v4: 493)  dex [('v3', 493)]
+  tok: [('203caacb', 402), ('fbe37854', 41), ('884da06b', 30), ('41931686', 7)]  lc: [('0a493d1a|13ead562', 493)]
+  by day: [('10-04', 40), ('10-05', 76), ('10-06', 8), ('10-07', 32), ('10-08', 183), ('10-09', 88), ('10-10', 11), ('10-11', 55)]
+  launch to: [('0x73991a25c818bf1f1128deaab1492d45638de0d3', 493)]  sel/clen: [(('13ead562', 132), 493)]
+  value: [(0.0, 493)]  fee/ts: [((100, 1), 477), ((10000, 200), 9), ((500, 10), 7)]  n_pools_in_tx: [(1, 493)]
+  launch wallets: 114  nonce: 2/29/84  created_contract: 0  token_code size: [(8702, 402), (10322, 41), (5019, 30)]
+  liq: with adds 492  liq_in_launch_tx 0  liq_off p10/50/90 6/7/9
+  frb: 431/493  off 22/28/35  eth 0.05/0.05/0.05  idx 0/0/0
+   frb to/sel/clen: [(('0xcaf681a66d020601342297493863e78c959e5cb2', '04e45aaf', 228), 431)]  router: [('0xcaf681a66d020601342297493863e78c959e5cb2', 431)]
+   frb eoa distinct 110  is launch wallet 431  eoa npools_seen 1/9/18  also_in_tok_family>0 375  prio [(None, 431)]
+   frb_off - liq_off: 16/21/27
+  pulled 426/493  first pull off 80/145/294  full 426  by launch wallet 426  before frb 0  pull-frb 71/124/270
+   pull via: [(('0x73991a25c818bf1f1128deaab1492d45638de0d3', 'ac9650d8'), 426)]
+  outsider12 reaction 5/77  nf 0/1  baseline 82/406
+  n_swaps 2/4/9  n_buys 2/4/9  n_sells 0/0/2  buy_eth_total 0.0018/0.0607/0.3323
+
+######## lc:89885b75|d27d1e00: V2/V3 n=248 (with v4: 248)  dex [('v3', 248)]
+  tok: [('97c7ba1b', 172), ('2be340ff', 76)]  lc: [('89885b75|d27d1e00', 248)]
+  by day: [('10-04', 22), ('10-05', 24), ('10-06', 22), ('10-07', 26), ('10-08', 31), ('10-09', 72), ('10-10', 31), ('10-11', 20)]
+  launch to: [('0xe85cbb49c86a9268b4cf1b8ecfba9741f61ee4b7', 1), ('0x329ccf27c2a68e28c49a923c6fd37c41d0b67826', 1), ('0x65cbdfd0eaf267b63c58062220456398159cb3db', 1)]  sel/clen: [(('d27d1e00', 356), 120), (('d27d1e00', 676), 28), (('d27d1e00', 612), 20), (('d27d1e00', 996), 20)]
+  value: [(0.0, 111), (10.2, 12), (12.7, 10), (0.1, 8), (12.0, 8), (19.001, 8)]  fee/ts: [((100, 1), 248)]  n_pools_in_tx: [(1, 248)]
+  launch wallets: 151  nonce: 1/1/27  created_contract: 0  token_code size: [(1923, 172), (1764, 76)]
+  liq: with adds 248  liq_in_launch_tx 248  liq_off p10/50/90 0/0/0
+  frb: 176/248  off 0/0/258  eth 0.05/0.1761/1.0  idx 0/0/3
+   frb to/sel/clen: [(('0xcaf681a66d020601342297493863e78c959e5cb2', '04e45aaf', 228), 38), (('0xe85cbb49c86a9268b4cf1b8ecfba9741f61ee4b7', 'd27d1e00', 676), 1), (('0x329ccf27c2a68e28c49a923c6fd37c41d0b67826', 'd27d1e00', 868), 1)]  router: [('0xcaf681a66d020601342297493863e78c959e5cb2', 175), ('0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc', 1)]
+   frb eoa distinct 156  is launch wallet 139  eoa npools_seen 1/1/2  also_in_tok_family>0 34  prio [(1, 175), (50000000, 1)]
+   frb_off - liq_off: 0/0/258
+  pulled 65/248  first pull off 279/490/1887  full 64  by launch wallet 1  before frb 0  pull-frb 224/1103/2180
+   pull via: [(('0x73991a25c818bf1f1128deaab1492d45638de0d3', 'ac9650d8'), 64), (('0xe1b24ecafcd783a4d8b1cdaaa6e818a2fd36cf78', 'd27d1e00'), 1)]
+  outsider12 reaction 1/176  nf 1/127  baseline 0/67
+  n_swaps 3/238/541  n_buys 3/159/329  n_sells 0/72/199  buy_eth_total 0.0015/26.1891/78.1728
+
+######## tok:97c7ba1b: V2/V3 n=172 (with v4: 240)  dex [('v3', 172), ('v4', 68)]
+  tok: [('97c7ba1b', 172)]  lc: [('89885b75|d27d1e00', 172)]
+  by day: [('10-04', 2), ('10-05', 7), ('10-06', 11), ('10-07', 11), ('10-08', 24), ('10-09', 68), ('10-10', 29), ('10-11', 20)]
+  launch to: [('0xb7c437cc4aa28290f76b027d109cf1b12f449542', 1), ('0x9b64fb3d09f55c1f76d94bbc71ba23dc4c124158', 1), ('0x58f0236d463d2c7d11183d04eda3be42e8482654', 1)]  sel/clen: [(('d27d1e00', 356), 101), (('d27d1e00', 612), 13), (('d27d1e00', 676), 13), (('d27d1e00', 996), 12)]
+  value: [(0.0, 100), (12.7, 10), (12.0, 8), (19.001, 8), (16.0, 5), (15.01, 5)]  fee/ts: [((100, 1), 172)]  n_pools_in_tx: [(1, 172)]
+  launch wallets: 94  nonce: 1/2/28  created_contract: 0  token_code size: [(1923, 172)]
+  liq: with adds 172  liq_in_launch_tx 172  liq_off p10/50/90 0/0/0
+  frb: 106/172  off 0/0/283  eth 0.0495/0.1654/1.0  idx 0/0/3
+   frb to/sel/clen: [(('0xcaf681a66d020601342297493863e78c959e5cb2', '04e45aaf', 228), 33), (('0xb7c437cc4aa28290f76b027d109cf1b12f449542', 'd27d1e00', 484), 1), (('0x9b64fb3d09f55c1f76d94bbc71ba23dc4c124158', 'd27d1e00', 1124), 1)]  router: [('0xcaf681a66d020601342297493863e78c959e5cb2', 105), ('0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc', 1)]
+   frb eoa distinct 100  is launch wallet 72  eoa npools_seen 1/1/2  also_in_tok_family>0 13  prio [(1, 105), (50000000, 1)]
+   frb_off - liq_off: 0/0/283
+  pulled 63/172  first pull off 287/490/1887  full 63  by launch wallet 0  before frb 0  pull-frb 224/1349/2444
+   pull via: [(('0x73991a25c818bf1f1128deaab1492d45638de0d3', 'ac9650d8'), 63)]
+  outsider12 reaction 0/107  nf 0/73  baseline 0/60
+  n_swaps 3/191/470  n_buys 3/103/254  n_sells 0/50/171  buy_eth_total 0.0011/13.0402/78.1728
+
+######## lc:0a493d1a|ac9650d8: V2/V3 n=1155 (with v4: 1155)  dex [('v3', 1155)]
+  tok: [('d4e7eae4', 1016), ('58d59320', 34), ('3c6faa4f', 24), ('1d7cd90a', 22)]  lc: [('0a493d1a|ac9650d8', 1155)]
+  by day: [('10-04', 79), ('10-05', 166), ('10-06', 192), ('10-07', 173), ('10-08', 155), ('10-09', 153), ('10-10', 140), ('10-11', 97)]
+  launch to: [('0x73991a25c818bf1f1128deaab1492d45638de0d3', 1155)]  sel/clen: [(('ac9650d8', 836), 1091), (('ac9650d8', 740), 63), (('ac9650d8', 1412), 1)]
+  value: [(0.0, 1113), (0.001, 23), (1.0, 3), (0.003, 1), (0.95, 1), (0.004, 1)]  fee/ts: [((100, 1), 1128), ((3000, 60), 13), ((10000, 200), 9)]  n_pools_in_tx: [(1, 1155)]
+  launch wallets: 1118  nonce: 2/2/3  created_contract: 0  token_code size: [(1764, 1016), (44, 34), (1603, 24)]
+  liq: with adds 1155  liq_in_launch_tx 1155  liq_off p10/50/90 0/0/0
+  frb: 915/1155  off 46/86/269  eth 0.016/0.05/0.2178  idx 0/5/10
+   frb to/sel/clen: [(('0x80114879f80d156c8003676557324c518babd194', '3593564c', 484), 122), (('0xd26c8cfce843f4122753425dd6613d7576777ec8', '3593564c', 484), 99), (('0xa28f468cb898cc407c981e26a521dfb2e2774174', '3593564c', 484), 84)]  router: [('0x8876789976decbfcbbbe364623c63652db8c0904', 868), ('0xf0b7eaaf868191adc00065ca13391ef436ce8faf', 38)]
+   frb eoa distinct 150  is launch wallet 2  eoa npools_seen 14/69/106  also_in_tok_family>0 891  prio [(21000000, 62), (60000000, 35), (21012600, 15)]
+   frb_off - liq_off: 46/86/269
+  pulled 840/1155  first pull off 126/291/1216  full 840  by launch wallet 840  before frb 0  pull-frb 58/230/1177
+   pull via: [(('0x73991a25c818bf1f1128deaab1492d45638de0d3', 'ac9650d8'), 840)]
+  outsider12 reaction 6/142  nf 0/57  baseline 70/1002
+  n_swaps 6/30/163  n_buys 6/26/118  n_sells 0/3/48  buy_eth_total 0.0024/1.0496/10.5907
+
+######## lc:bd55ea26|f305d719: V2/V3 n=1834 (with v4: 1834)  dex [('v2a', 1834)]
+  tok: [('70adce63', 1184), ('0f34e3b5', 603), ('e9f4efb3', 8), ('d4e7eae4', 4)]  lc: [('bd55ea26|f305d719', 1834)]
+  by day: [('10-04', 102), ('10-05', 184), ('10-06', 164), ('10-07', 187), ('10-08', 350), ('10-09', 394), ('10-10', 292), ('10-11', 161)]
+  launch to: [('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 1834)]  sel/clen: [(('f305d719', 196), 1834)]
+  value: [(1.0, 627), (50.09, 527), (40.09, 391), (30.09, 146), (40.59, 111), (0.0, 6)]  fee/ts: [((3000, None), 1834)]  n_pools_in_tx: [(1, 1834)]
+  launch wallets: 1819  nonce: 2/2/2  created_contract: 0  token_code size: [(3553, 1184), (3857, 603), (11987, 8)]
+  liq: with adds 1834  liq_in_launch_tx 1834  liq_off p10/50/90 0/0/0
+  frb: 1804/1834  off 2/171/242  eth 0.0255/0.1711/0.9481  idx 0/1/1
+   frb to/sel/clen: [(('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', '7ff36ab5', 228), 1781), (('0x204faca1764b154221e35c0d20abb3c525710498', '3593564c', 730), 9), (('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 'b6f9de95', 228), 7)]  router: [('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 1792), ('0x204faca1764b154221e35c0d20abb3c525710498', 9)]
+   frb eoa distinct 624  is launch wallet 0  eoa npools_seen 1/506/525  also_in_tok_family>0 1189  prio [(0, 1797), (None, 3), (1020150000, 1)]
+   frb_off - liq_off: 2/171/242
+  pulled 326/1834  first pull off 118/768/2402  full 326  by launch wallet 326  before frb 0  pull-frb 115/617/2292
+   pull via: [(('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', '02751cec'), 326)]
+  outsider12 reaction 26/641  nf 0/38  baseline 0/1188
+  n_swaps 8/11/35  n_buys 8/10/28  n_sells 0/1/7  buy_eth_total 0.5505/2.4318/5.4101
+
+######## tok:70adce63: V2/V3 n=1184 (with v4: 1217)  dex [('v2a', 1184), ('v4', 33)]
+  tok: [('70adce63', 1184)]  lc: [('bd55ea26|f305d719', 1184)]
+  by day: [('10-04', 43), ('10-05', 112), ('10-06', 159), ('10-07', 146), ('10-08', 197), ('10-09', 207), ('10-10', 202), ('10-11', 118)]
+  launch to: [('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 1184)]  sel/clen: [(('f305d719', 196), 1184)]
+  value: [(50.09, 527), (40.09, 391), (30.09, 146), (40.59, 111), (4.29, 5), (46.59, 3)]  fee/ts: [((3000, None), 1184)]  n_pools_in_tx: [(1, 1184)]
+  launch wallets: 1184  nonce: 2/2/2  created_contract: 0  token_code size: [(3553, 1184)]
+  liq: with adds 1184  liq_in_launch_tx 1184  liq_off p10/50/90 0/0/0
+  frb: 1180/1184  off 161/202/249  eth 0.0839/0.4955/1.0297  idx 1/1/1
+   frb to/sel/clen: [(('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', '7ff36ab5', 228), 1178), (('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 'b6f9de95', 228), 2)]  router: [('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 1180)]
+   frb eoa distinct 7  is launch wallet 0  eoa npools_seen 146/506/525  also_in_tok_family>0 1180  prio [(0, 1180)]
+   frb_off - liq_off: 161/202/249
+  pulled 160/1184  first pull off 456/1188/2578  full 160  by launch wallet 160  before frb 0  pull-frb 255/956/2361
+   pull via: [(('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', '02751cec'), 160)]
+  outsider12 reaction 0/28  nf 0/25  baseline 0/1156
+  n_swaps 8/10/13  n_buys 8/9/12  n_sells 0/0/2  buy_eth_total 1.0737/4.0507/5.742
+
+######## tok:d4e7eae4: V2/V3 n=1021 (with v4: 1991)  dex [('v3', 1016), ('v4', 970), ('v2a', 5)]
+  tok: [('d4e7eae4', 1021)]  lc: [('0a493d1a|ac9650d8', 1016), ('bd55ea26|f305d719', 4), ('c93c806e|1fad948c', 1)]
+  by day: [('10-04', 73), ('10-05', 137), ('10-06', 179), ('10-07', 152), ('10-08', 131), ('10-09', 132), ('10-10', 129), ('10-11', 88)]
+  launch to: [('0x73991a25c818bf1f1128deaab1492d45638de0d3', 1016), ('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 4), ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 1)]  sel/clen: [(('ac9650d8', 836), 1014), (('f305d719', 196), 4), (('ac9650d8', 740), 2), (('1fad948c', 1604), 1)]
+  value: [(0.0, 1020), (0.0008, 1)]  fee/ts: [((100, 1), 1013), ((3000, None), 5), ((10000, 200), 2)]  n_pools_in_tx: [(1, 1021)]
+  launch wallets: 1017  nonce: 2/2/3  created_contract: 0  token_code size: [(1764, 1021)]
+  liq: with adds 1021  liq_in_launch_tx 1021  liq_off p10/50/90 0/0/0
+  frb: 873/1021  off 48/86/264  eth 0.017/0.058/0.2178  idx 1/5/10
+   frb to/sel/clen: [(('0x80114879f80d156c8003676557324c518babd194', '3593564c', 484), 122), (('0xd26c8cfce843f4122753425dd6613d7576777ec8', '3593564c', 484), 99), (('0xa28f468cb898cc407c981e26a521dfb2e2774174', '3593564c', 484), 84)]  router: [('0x8876789976decbfcbbbe364623c63652db8c0904', 833), ('0xf0b7eaaf868191adc00065ca13391ef436ce8faf', 37)]
+   frb eoa distinct 131  is launch wallet 0  eoa npools_seen 19/73/106  also_in_tok_family>0 858  prio [(21000000, 60), (60000000, 35), (21012600, 15)]
+   frb_off - liq_off: 48/86/264
+  pulled 815/1021  first pull off 128/293/1212  full 815  by launch wallet 815  before frb 0  pull-frb 58/226/1148
+   pull via: [(('0x73991a25c818bf1f1128deaab1492d45638de0d3', 'ac9650d8'), 815)]
+  outsider12 reaction 6/110  nf 0/30  baseline 62/910
+  n_swaps 8/31/169  n_buys 8/28/119  n_sells 0/4/52  buy_eth_total 0.0038/1.2462/10.8619
+
+######## lc:cecb292d|8cb5772c: V2/V3 n=2003 (with v4: 2003)  dex [('v2b', 1014), ('v2a', 989)]
+  tok: [('fa4982d5', 2003)]  lc: [('cecb292d|8cb5772c', 2003)]
+  by day: [('10-04', 213), ('10-05', 459), ('10-06', 103), ('10-07', 313), ('10-08', 345), ('10-09', 257), ('10-10', 232), ('10-11', 81)]
+  launch to: [('0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09', 2003)]  sel/clen: [(('8cb5772c', 1156), 1993), (('8cb5772c', 2180), 2), (('8cb5772c', 1188), 2), (('8cb5772c', 1220), 2)]
+  value: [(0.0, 1975), (0.001, 4), (0.0005, 3), (0.01, 3), (0.0001, 3), (0.02, 2)]  fee/ts: [((3000, None), 2003)]  n_pools_in_tx: [(2, 1978), (1, 25)]
+  launch wallets: 52  nonce: 23/132/261  created_contract: 0  token_code size: [(45, 2003)]
+  liq: with adds 981  liq_in_launch_tx 974  liq_off p10/50/90 0/0/0
+  frb: 12/2003  off 0/0/95  eth 0.0055/0.02/0.09  idx 0/0/1
+   frb to/sel/clen: [(('0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09', '8cb5772c', 1156), 8), (('0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f', 'cd6e13f7', 3492), 1), (('0x5399d94d2cab7c252a6034042e1917a0e5e17a18', '814920c0', 2308), 1)]  router: [('0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09', 12)]
+   frb eoa distinct 11  is launch wallet 9  eoa npools_seen 1/1/51  also_in_tok_family>0 4  prio [(0, 10), (None, 1), (1, 1)]
+   frb_off - liq_off: 0/0/95
+  pulled 0/2003  first pull off -  full 0  by launch wallet 0  before frb 0  pull-frb -
+  outsider12 reaction 0/18  nf 0/15  baseline 0/963
+  n_swaps 0/0/1  n_buys 0/0/1  n_sells 0/0/0  buy_eth_total 0.0/0.0/0.0
+
+######## tok:2be340ff: V2/V3 n=76 (with v4: 76)  dex [('v3', 76)]
+  tok: [('2be340ff', 76)]  lc: [('89885b75|d27d1e00', 76)]
+  by day: [('10-04', 20), ('10-05', 17), ('10-06', 11), ('10-07', 15), ('10-08', 7), ('10-09', 4), ('10-10', 2), ('10-11', 0)]
+  launch to: [('0xe85cbb49c86a9268b4cf1b8ecfba9741f61ee4b7', 1), ('0x329ccf27c2a68e28c49a923c6fd37c41d0b67826', 1), ('0x65cbdfd0eaf267b63c58062220456398159cb3db', 1)]  sel/clen: [(('d27d1e00', 356), 19), (('d27d1e00', 676), 15), (('d27d1e00', 868), 8), (('d27d1e00', 996), 8)]
+  value: [(0.0, 11), (10.2, 10), (0.1, 7), (12.2, 6), (8.08, 3), (9.2, 3)]  fee/ts: [((100, 1), 76)]  n_pools_in_tx: [(1, 76)]
+  launch wallets: 58  nonce: 1/1/24  created_contract: 0  token_code size: [(1764, 76)]
+  liq: with adds 76  liq_in_launch_tx 76  liq_off p10/50/90 0/0/0
+  frb: 70/76  off 0/0/0  eth 0.05/0.2/0.5  idx 0/0/0
+   frb to/sel/clen: [(('0xcaf681a66d020601342297493863e78c959e5cb2', '04e45aaf', 228), 5), (('0xe85cbb49c86a9268b4cf1b8ecfba9741f61ee4b7', 'd27d1e00', 676), 1), (('0x329ccf27c2a68e28c49a923c6fd37c41d0b67826', 'd27d1e00', 868), 1)]  router: [('0xcaf681a66d020601342297493863e78c959e5cb2', 70)]
+   frb eoa distinct 57  is launch wallet 67  eoa npools_seen 1/1/3  also_in_tok_family>0 21  prio [(1, 70)]
+   frb_off - liq_off: 0/0/0
+  pulled 2/76  first pull off 0/765/765  full 1  by launch wallet 1  before frb 0  pull-frb 0/765/765
+   pull via: [(('0xe1b24ecafcd783a4d8b1cdaaa6e818a2fd36cf78', 'd27d1e00'), 1), (('0x73991a25c818bf1f1128deaab1492d45638de0d3', 'ac9650d8'), 1)]
+  outsider12 reaction 1/69  nf 1/54  baseline 0/7
+  n_swaps 25/305/762  n_buys 15/195/443  n_sells 10/85/261  buy_eth_total 0.4752/36.2479/69.8193
+
+######## tok:fbe37854: V2/V3 n=41 (with v4: 41)  dex [('v3', 41)]
+  tok: [('fbe37854', 41)]  lc: [('0a493d1a|13ead562', 41)]
+  by day: [('10-04', 4), ('10-05', 9), ('10-06', 5), ('10-07', 8), ('10-08', 6), ('10-09', 5), ('10-10', 3), ('10-11', 1)]
+  launch to: [('0x73991a25c818bf1f1128deaab1492d45638de0d3', 41)]  sel/clen: [(('13ead562', 132), 41)]
+  value: [(0.0, 41)]  fee/ts: [((100, 1), 41)]  n_pools_in_tx: [(1, 41)]
+  launch wallets: 41  nonce: 2/2/2  created_contract: 0  token_code size: [(10322, 41)]
+  liq: with adds 41  liq_in_launch_tx 0  liq_off p10/50/90 6/7/9
+  frb: 41/41  off 27/31/40  eth 0.05/0.05/0.05  idx 0/0/0
+   frb to/sel/clen: [(('0xcaf681a66d020601342297493863e78c959e5cb2', '04e45aaf', 228), 41)]  router: [('0xcaf681a66d020601342297493863e78c959e5cb2', 41)]
+   frb eoa distinct 41  is launch wallet 41  eoa npools_seen 1/1/1  also_in_tok_family>0 0  prio [(None, 41)]
+   frb_off - liq_off: 21/23/32
+  pulled 0/41  first pull off -  full 0  by launch wallet 0  before frb 0  pull-frb -
+  outsider12 reaction 0/41  nf 0/0  baseline 0/0
+  n_swaps 20/25/31  n_buys 16/21/23  n_sells 3/5/9  buy_eth_total 0.5931/0.8014/1.0035
+
+######## tok:ad9da489: V2/V3 n=32 (with v4: 32)  dex [('v3', 32)]
+  tok: [('ad9da489', 32)]  lc: [('e00e8777|686399cb', 31), ('79fd03de|135ef2aa', 1)]
+  by day: [('10-04', 3), ('10-05', 23), ('10-06', 4), ('10-07', 0), ('10-08', 2), ('10-09', 0), ('10-10', 0), ('10-11', 0)]
+  launch to: [('0xf4fc0cd27fc8ecf17e55ee4c3f7201897df3eb75', 31), ('0x823e4d50ae44f6dd700e39600ec33406cdf5a699', 1)]  sel/clen: [(('686399cb', 1060), 8), (('686399cb', 1028), 7), (('686399cb', 964), 6), (('686399cb', 1124), 5)]
+  value: [(3.5005, 8), (0.0005, 6), (0.0006, 4), (0.2005, 1), (3.5605, 1), (2.0005, 1)]  fee/ts: [((10000, 200), 32)]  n_pools_in_tx: [(1, 32)]
+  launch wallets: 17  nonce: 27/232/749  created_contract: 0  token_code size: [(5256, 32)]
+  liq: with adds 32  liq_in_launch_tx 32  liq_off p10/50/90 0/0/0
+  frb: 20/32  off 0/0/0  eth 0.0699/3.5/3.56  idx 0/0/0
+   frb to/sel/clen: [(('0xf4fc0cd27fc8ecf17e55ee4c3f7201897df3eb75', '686399cb', 1028), 6), (('0xf4fc0cd27fc8ecf17e55ee4c3f7201897df3eb75', '686399cb', 1060), 6), (('0xf4fc0cd27fc8ecf17e55ee4c3f7201897df3eb75', '686399cb', 1124), 4)]  router: [('0xcaf681a66d020601342297493863e78c959e5cb2', 19), ('0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd', 1)]
+   frb eoa distinct 11  is launch wallet 19  eoa npools_seen 1/5/13  also_in_tok_family>0 12  prio [(0, 18), (50000000000, 1), (6464000, 1)]
+   frb_off - liq_off: 0/0/0
+  pulled 0/32  first pull off -  full 0  by launch wallet 0  before frb 0  pull-frb -
+  outsider12 reaction 0/15  nf 0/6  baseline 0/13
+  n_swaps 0/33/717  n_buys 0/33/708  n_sells 0/1/105  buy_eth_total 0.0/2.9546/5.1094
+
+######## tok:884da06b: V2/V3 n=30 (with v4: 30)  dex [('v3', 30)]
+  tok: [('884da06b', 30)]  lc: [('0a493d1a|13ead562', 30)]
+  by day: [('10-04', 0), ('10-05', 0), ('10-06', 0), ('10-07', 11), ('10-08', 16), ('10-09', 3), ('10-10', 0), ('10-11', 0)]
+  launch to: [('0x73991a25c818bf1f1128deaab1492d45638de0d3', 30)]  sel/clen: [(('13ead562', 132), 30)]
+  value: [(0.0, 30)]  fee/ts: [((100, 1), 30)]  n_pools_in_tx: [(1, 30)]
+  launch wallets: 7  nonce: 2/25/59  created_contract: 0  token_code size: [(5019, 30)]
+  liq: with adds 30  liq_in_launch_tx 0  liq_off p10/50/90 5/6/7
+  frb: 30/30  off 21/23/28  eth 0.05/0.05/0.05  idx 0/0/0
+   frb to/sel/clen: [(('0xcaf681a66d020601342297493863e78c959e5cb2', '04e45aaf', 228), 30)]  router: [('0xcaf681a66d020601342297493863e78c959e5cb2', 30)]
+   frb eoa distinct 7  is launch wallet 30  eoa npools_seen 2/9/9  also_in_tok_family>0 27  prio [(None, 30)]
+   frb_off - liq_off: 16/17/21
+  pulled 28/30  first pull off 73/106/256  full 28  by launch wallet 28  before frb 0  pull-frb 46/77/233
+   pull via: [(('0x73991a25c818bf1f1128deaab1492d45638de0d3', 'ac9650d8'), 28)]
+  outsider12 reaction 1/5  nf 0/0  baseline 5/25
+  n_swaps 3/4/5  n_buys 3/4/5  n_sells 0/0/0  buy_eth_total 0.0504/0.0604/0.1004
+
+######## tok:02b73fb7: V2/V3 n=23 (with v4: 23)  dex [('v2a', 23)]
+  tok: [('02b73fb7', 23)]  lc: [('b09ef517|e9ae5c53', 23)]
+  by day: [('10-04', 0), ('10-05', 3), ('10-06', 5), ('10-07', 9), ('10-08', 5), ('10-09', 1), ('10-10', 0), ('10-11', 0)]
+  launch to: [('0xc2a96000d8387831c1c7eaaeb6cbcf7ece7a2c17', 1), ('0xe2b7c173b97b13d3701e28b7715062c02535ed1a', 1), ('0x199ab570b86129733aa65a36b634a5ddb0819ec3', 1)]  sel/clen: [(('e9ae5c53', 804), 23)]
+  value: [(0.0, 23)]  fee/ts: [((3000, None), 23)]  n_pools_in_tx: [(1, 23)]
+  launch wallets: 23  nonce: 1/1/1  created_contract: 0  token_code size: [(11763, 23)]
+  liq: with adds 23  liq_in_launch_tx 23  liq_off p10/50/90 0/0/0
+  frb: 23/23  off 529/635/1173  eth 0.1/0.2/0.22  idx 0/0/0
+   frb to/sel/clen: [(('0x204faca1764b154221e35c0d20abb3c525710498', '3593564c', 730), 23)]  router: [('0x204faca1764b154221e35c0d20abb3c525710498', 23)]
+   frb eoa distinct 2  is launch wallet 0  eoa npools_seen 23/24/24  also_in_tok_family>0 23  prio [(0, 23)]
+   frb_off - liq_off: 529/635/1173
+  pulled 0/23  first pull off -  full 0  by launch wallet 0  before frb 0  pull-frb -
+  outsider12 reaction 0/3  nf 0/3  baseline 0/20
+  n_swaps 7/9/12  n_buys 6/8/11  n_sells 0/1/1  buy_eth_total 0.7179/0.9739/1.268
+
+######## tok:0a600ad0: V2/V3 n=22 (with v4: 22)  dex [('v2a', 22)]
+  tok: [('0a600ad0', 22)]  lc: [('d71ebca5|60c06040', 1), ('895bd6dd|60c06040', 1), ('8edcb8b5|60c06040', 1), ('31d28d84|60c06040', 1)]
+  by day: [('10-04', 0), ('10-05', 3), ('10-06', 6), ('10-07', 1), ('10-08', 2), ('10-09', 3), ('10-10', 3), ('10-11', 4)]
+  launch to: [(None, 22)]  sel/clen: [(('60c06040', 4207), 22)]
+  value: [(0.0, 22)]  fee/ts: [((3000, None), 22)]  n_pools_in_tx: [(1, 22)]
+  launch wallets: 22  nonce: 0/0/0  created_contract: 22  token_code size: [(2567, 22)]
+  liq: with adds 22  liq_in_launch_tx 0  liq_off p10/50/90 329/466/1220
+  frb: 22/22  off 329/466/1220  eth 0.0148/0.0837/0.1533  idx 0/0/0
+   frb to/sel/clen: [(('0xbbf5c604b2d1c99d78f74686532dc4002758ad58', 'fb5836eb', 3940), 21), (('0xbbf5c604b2d1c99d78f74686532dc4002758ad58', 'fb5836eb', 3460), 1)]  router: [('0xbbf5c604b2d1c99d78f74686532dc4002758ad58', 22)]
+   frb eoa distinct 1  is launch wallet 0  eoa npools_seen 77/77/77  also_in_tok_family>0 22  prio [(None, 22)]
+   frb_off - liq_off: 0/0/0
+  pulled 2/22  first pull off 2161/2185/2185  full 2  by launch wallet 0  before frb 0  pull-frb 1845/1856/1856
+   pull via: [(('0xbbf5c604b2d1c99d78f74686532dc4002758ad58', '0c88f6c2'), 2)]
+  outsider12 reaction 0/0  nf 0/0  baseline 0/22
+  n_swaps 35/36/39  n_buys 35/36/37  n_sells 0/0/2  buy_eth_total 0.2089/0.4214/0.4457
+
+######## tok:1d7cd90a: V2/V3 n=22 (with v4: 22)  dex [('v3', 22)]
+  tok: [('1d7cd90a', 22)]  lc: [('0a493d1a|ac9650d8', 22)]
+  by day: [('10-04', 0), ('10-05', 0), ('10-06', 2), ('10-07', 8), ('10-08', 5), ('10-09', 2), ('10-10', 2), ('10-11', 3)]
+  launch to: [('0x73991a25c818bf1f1128deaab1492d45638de0d3', 22)]  sel/clen: [(('ac9650d8', 836), 22)]
+  value: [(0.0, 22)]  fee/ts: [((100, 1), 22)]  n_pools_in_tx: [(1, 22)]
+  launch wallets: 22  nonce: 2/2/2  created_contract: 0  token_code size: [(5048, 22)]
+  liq: with adds 22  liq_in_launch_tx 22  liq_off p10/50/90 0/0/0
+  frb: 22/22  off 46/96/201  eth 0.01/0.025/0.146  idx 0/0/1
+   frb to/sel/clen: [(('0x7feb3ecbacbd0cc23ec46659d541636d58749a97', '3593564c', 484), 9), (('0x85ce78329f7449fde7c46658bf646b1cedb59858', '3593564c', 484), 7), (('0x80e49ed118b932d9538ec817ef8b29fbac31e080', '3593564c', 484), 2)]  router: [('0x8876789976decbfcbbbe364623c63652db8c0904', 22)]
+   frb eoa distinct 10  is launch wallet 0  eoa npools_seen 5/15/41  also_in_tok_family>0 20  prio [(21000000, 2), (21069300, 1), (21027300, 1)]
+   frb_off - liq_off: 46/96/201
+  pulled 1/22  first pull off 1904/1904/1904  full 1  by launch wallet 1  before frb 0  pull-frb 1788/1788/1788
+   pull via: [(('0x73991a25c818bf1f1128deaab1492d45638de0d3', 'ac9650d8'), 1)]
+  outsider12 reaction 0/7  nf 0/7  baseline 0/15
+  n_swaps 63/73/121  n_buys 43/49/75  n_sells 18/26/39  buy_eth_total 2.2415/3.422/7.0978
+
+######## tok:c40bd4ef: V2/V3 n=20 (with v4: 20)  dex [('v2a', 20)]
+  tok: [('c40bd4ef', 20)]  lc: [('292413d1|5cc7f538', 20)]
+  by day: [('10-04', 0), ('10-05', 19), ('10-06', 0), ('10-07', 1), ('10-08', 0), ('10-09', 0), ('10-10', 0), ('10-11', 0)]
+  launch to: [('0x4440798a6b8d8f7089a52043371ac53282975128', 1), ('0x5379b1feae524a10a640f52a3e662acac811994d', 1), ('0x833d535a989157ecab7dfd1eb541f433f64513ed', 1)]  sel/clen: [(('5cc7f538', 68), 20)]
+  value: [(0.4909, 2), (0.489, 1), (0.4889, 1), (0.4888, 1), (0.49, 1), (0.491, 1)]  fee/ts: [((3000, None), 20)]  n_pools_in_tx: [(1, 20)]
+  launch wallets: 20  nonce: 1/1/1  created_contract: 0  token_code size: [(8449, 20)]
+  liq: with adds 20  liq_in_launch_tx 20  liq_off p10/50/90 0/0/0
+  frb: 20/20  off 19/29/82  eth 0.0247/0.0495/0.0622  idx 1/1/1
+   frb to/sel/clen: [(('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 'b6f9de95', 228), 20)]  router: [('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 20)]
+   frb eoa distinct 20  is launch wallet 0  eoa npools_seen 1/1/1  also_in_tok_family>0 0  prio [(0, 20)]
+   frb_off - liq_off: 19/29/82
+  pulled 20/20  first pull off 835/1168/1945  full 20  by launch wallet 20  before frb 0  pull-frb 819/1141/1926
+   pull via: [(('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 'af2979eb'), 20)]
+  outsider12 reaction 0/20  nf 0/0  baseline 0/0
+  n_swaps 10/11/15  n_buys 9/10/14  n_sells 1/1/1  buy_eth_total 0.1972/0.1992/0.2004
+
+######## tok:516ca2d6: V2/V3 n=19 (with v4: 19)  dex [('v3', 19)]
+  tok: [('516ca2d6', 19)]  lc: [('19bb04ed|bc53abb9', 19)]
+  by day: [('10-04', 2), ('10-05', 3), ('10-06', 10), ('10-07', 1), ('10-08', 3), ('10-09', 0), ('10-10', 0), ('10-11', 0)]
+  launch to: [('0x2b933199ba34b9d7bbf3896b8b808d32d50d0fbf', 19)]  sel/clen: [(('bc53abb9', 612), 9), (('bc53abb9', 644), 2), (('bc53abb9', 708), 1), (('bc53abb9', 676), 1)]
+  value: [(0.0, 4), (0.05, 3), (0.1, 3), (0.002, 2), (0.033, 1), (0.0003, 1)]  fee/ts: [((10000, 200), 19)]  n_pools_in_tx: [(1, 19)]
+  launch wallets: 17  nonce: 1/54/491  created_contract: 0  token_code size: [(4297, 19)]
+  liq: with adds 19  liq_in_launch_tx 19  liq_off p10/50/90 0/0/0
+  frb: 13/19  off 0/0/81  eth 0.032/0.0495/0.1164  idx 0/0/1
+   frb to/sel/clen: [(('0x2b933199ba34b9d7bbf3896b8b808d32d50d0fbf', 'bc53abb9', 612), 5), (('0x2b933199ba34b9d7bbf3896b8b808d32d50d0fbf', 'bc53abb9', 708), 1), (('0xf2251d75c172990385a03940640dac089faf0286', '08c1284c', 228), 1)]  router: [('0xcaf681a66d020601342297493863e78c959e5cb2', 11), ('0xf2251d75c172990385a03940640dac089faf0286', 1)]
+   frb eoa distinct 13  is launch wallet 11  eoa npools_seen 1/2/6  also_in_tok_family>0 2  prio [(0, 8), (3, 1), (100000000, 1)]
+   frb_off - liq_off: 0/0/81
+  pulled 0/19  first pull off -  full 0  by launch wallet 0  before frb 0  pull-frb -
+  outsider12 reaction 0/15  nf 0/13  baseline 0/3
+  n_swaps 2/7/18  n_buys 1/6/13  n_sells 0/1/6  buy_eth_total 0.0002/0.0631/0.4861
+
+######## tok:cb79985d: V2/V3 n=11 (with v4: 11)  dex [('v3', 11)]
+  tok: [('cb79985d', 11)]  lc: [('0a493d1a|ac9650d8', 11)]
+  by day: [('10-04', 0), ('10-05', 1), ('10-06', 0), ('10-07', 2), ('10-08', 5), ('10-09', 0), ('10-10', 1), ('10-11', 2)]
+  launch to: [('0x73991a25c818bf1f1128deaab1492d45638de0d3', 11)]  sel/clen: [(('ac9650d8', 836), 11)]
+  value: [(0.0, 11)]  fee/ts: [((100, 1), 11)]  n_pools_in_tx: [(1, 11)]
+  launch wallets: 11  nonce: 2/2/3  created_contract: 0  token_code size: [(3854, 11)]
+  liq: with adds 11  liq_in_launch_tx 11  liq_off p10/50/90 0/0/0
+  frb: 11/11  off 39/103/219  eth 0.0995/0.16/0.266  idx 0/0/1
+   frb to/sel/clen: [(('0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6', 'e6cb474f', 484), 11)]  router: [('0x8876789976decbfcbbbe364623c63652db8c0904', 11)]
+   frb eoa distinct 6  is launch wallet 0  eoa npools_seen 6/37/186  also_in_tok_family>0 11  prio [(21602180, 1), (21125320, 1), (21140090, 1)]
+   frb_off - liq_off: 39/103/219
+  pulled 6/11  first pull off 426/2309/2961  full 6  by launch wallet 6  before frb 0  pull-frb 323/2270/2850
+   pull via: [(('0x73991a25c818bf1f1128deaab1492d45638de0d3', 'ac9650d8'), 6)]
+  outsider12 reaction 0/2  nf 0/1  baseline 0/9
+  n_swaps 43/147/185  n_buys 37/97/147  n_sells 6/38/47  buy_eth_total 3.7373/13.0125/26.5349
+
+######## tok:a8dbcb39: V2/V3 n=10 (with v4: 10)  dex [('v2a', 10)]
+  tok: [('a8dbcb39', 10)]  lc: [('b09ef517|e9ae5c53', 10)]
+  by day: [('10-04', 1), ('10-05', 4), ('10-06', 0), ('10-07', 2), ('10-08', 1), ('10-09', 1), ('10-10', 0), ('10-11', 1)]
+  launch to: [('0x004ad8a3013a2dc1dc65df86b33ddecc9b7f155c', 1), ('0xc54f3f4e07ed6e31b58cf89c271ae7963f9d16a1', 1), ('0x57b68ee0524def1159c35c1947921c1e998ff18c', 1)]  sel/clen: [(('e9ae5c53', 804), 10)]
+  value: [(0.0, 10)]  fee/ts: [((3000, None), 10)]  n_pools_in_tx: [(1, 10)]
+  launch wallets: 10  nonce: 1/1/2  created_contract: 0  token_code size: [(12046, 10)]
+  liq: with adds 10  liq_in_launch_tx 10  liq_off p10/50/90 0/0/0
+  frb: 9/10  off 430/661/936  eth 0.01/0.0504/0.1489  idx 0/0/1
+   frb to/sel/clen: [(('0x204faca1764b154221e35c0d20abb3c525710498', '3593564c', 730), 8), (('0xccc88a9d1b4ed6b0eaba998850414b24f1c315be', '0a2b8f36', 7652), 1)]  router: [('0x204faca1764b154221e35c0d20abb3c525710498', 8), ('0x8f10b468b06c6fd214b65f87778827f7d113f996', 1)]
+   frb eoa distinct 4  is launch wallet 0  eoa npools_seen 8/9/67  also_in_tok_family>0 8  prio [(0, 9)]
+   frb_off - liq_off: 430/661/936
+  pulled 0/10  first pull off -  full 0  by launch wallet 0  before frb 0  pull-frb -
+  outsider12 reaction 0/2  nf 0/1  baseline 0/7
+  n_swaps 6/9/13  n_buys 6/8/12  n_sells 0/1/2  buy_eth_total 0.5031/1.1803/1.5583
+
+######## lc:b09ef517|e9ae5c53: V2/V3 n=50 (with v4: 50)  dex [('v2a', 49), ('v3', 1)]
+  tok: [('02b73fb7', 23), ('a8dbcb39', 10), ('5986097c', 5), ('04813826', 4)]  lc: [('b09ef517|e9ae5c53', 50)]
+  by day: [('10-04', 3), ('10-05', 7), ('10-06', 9), ('10-07', 16), ('10-08', 11), ('10-09', 3), ('10-10', 0), ('10-11', 1)]
+  launch to: [('0x0469b557f340c061f3cf1b84edc006fce7bd0c06', 3), ('0xd57494ea561d953d4e6c7aeced2f138bc70b1835', 2), ('0x004ad8a3013a2dc1dc65df86b33ddecc9b7f155c', 1)]  sel/clen: [(('e9ae5c53', 804), 49), (('e9ae5c53', 1348), 1)]
+  value: [(0.0, 50)]  fee/ts: [((3000, None), 49), ((100, 1), 1)]  n_pools_in_tx: [(1, 50)]
+  launch wallets: 47  nonce: 1/1/27  created_contract: 0  token_code size: [(11763, 23), (12046, 10), (3360, 5)]
+  liq: with adds 50  liq_in_launch_tx 50  liq_off p10/50/90 0/0/0
+  frb: 46/50  off 507/705/1532  eth 0.015/0.1/0.2  idx 0/0/1
+   frb to/sel/clen: [(('0x204faca1764b154221e35c0d20abb3c525710498', '3593564c', 730), 32), (('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', '7ff36ab5', 228), 5), (('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 'b6f9de95', 228), 4)]  router: [('0x204faca1764b154221e35c0d20abb3c525710498', 32), ('0x89e5db8b5aa49aa85ac63f691524311aeb649eba', 9)]
+   frb eoa distinct 13  is launch wallet 0  eoa npools_seen 3/23/24  also_in_tok_family>0 42  prio [(0, 43), (None, 2), (10, 1)]
+   frb_off - liq_off: 507/705/1532
+  pulled 0/50  first pull off -  full 0  by launch wallet 0  before frb 0  pull-frb -
+  outsider12 reaction 0/14  nf 0/11  baseline 0/34
+  n_swaps 3/9/64  n_buys 3/8/49  n_sells 0/1/16  buy_eth_total 0.227/0.9739/1.5583
+
+######## launchpad-frb:fa4982d5: V2/V3 n=98 (with v4: 98)  dex [('v2b', 95), ('v3', 3)]
+  tok: [('fa4982d5', 98)]  lc: [('49451fc9|f752ef6c', 45), ('e830de83|f752ef6c', 30), ('cecb292d|8cb5772c', 12), ('e7109718|1b806220', 4)]
+  by day: [('10-04', 7), ('10-05', 16), ('10-06', 12), ('10-07', 11), ('10-08', 12), ('10-09', 16), ('10-10', 15), ('10-11', 9)]
+  launch to: [('0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09', 14), ('0xc30e2178ab747be95f502148f92c288363ad1f66', 8), ('0xf14dd16e59a2d4b284c5606e51987e3b5d7d0f66', 8)]  sel/clen: [(('f752ef6c', 1252), 75), (('8cb5772c', 1156), 11), (('1b806220', 1444), 3), (('08c1284c', 196), 2)]
+  value: [(0.0, 79), (0.02, 3), (0.019, 3), (0.01, 2), (0.025, 2), (0.005, 2)]  fee/ts: [((3000, None), 95), ((10000, 200), 3)]  n_pools_in_tx: [(2, 87), (1, 11)]
+  launch wallets: 38  nonce: 3/410/1435  created_contract: 0  token_code size: [(45, 98)]
+  liq: with adds 98  liq_in_launch_tx 98  liq_off p10/50/90 0/0/0
+  frb: 98/98  off 0/162/1028  eth 0.0058/0.0102/0.0693  idx 0/1/1
+   frb to/sel/clen: [(('0x5399d94d2cab7c252a6034042e1917a0e5e17a18', '814920c0', 2308), 25), (('0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc', '4d819a2a', 580), 17), (('0xf0b7eaaf868191adc00065ca13391ef436ce8faf', '39ecce49', 1348), 8)]  router: [('0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09', 95), ('0xcaf681a66d020601342297493863e78c959e5cb2', 2)]
+   frb eoa distinct 66  is launch wallet 19  eoa npools_seen 1/2/192  also_in_tok_family>0 45  prio [(1, 31), (0, 24), (50000000, 16)]
+   frb_off - liq_off: 0/162/1028
+  pulled 0/98  first pull off -  full 0  by launch wallet 0  before frb 0  pull-frb -
+  outsider12 reaction 0/54  nf 0/41  baseline 0/44
+  n_swaps 2/3/8  n_buys 2/2/6  n_sells 0/1/3  buy_eth_total 0.007/0.0145/0.2324
+
+######## lc:cecb292d|2e2fdbd9: V2/V3 n=17 (with v4: 17)  dex [('v2b', 17)]
+  tok: [('fa4982d5', 17)]  lc: [('cecb292d|2e2fdbd9', 17)]
+  by day: [('10-04', 2), ('10-05', 5), ('10-06', 5), ('10-07', 0), ('10-08', 0), ('10-09', 3), ('10-10', 1), ('10-11', 1)]
+  launch to: [('0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09', 17)]  sel/clen: [(('2e2fdbd9', 1028), 17)]
+  value: [(0.0, 13), (0.0003, 1), (0.019, 1), (0.025, 1), (0.0002, 1)]  fee/ts: [((3000, None), 17)]  n_pools_in_tx: [(1, 17)]
+  launch wallets: 12  nonce: 0/11/106  created_contract: 0  token_code size: [(45, 17)]
+  liq: with adds 9  liq_in_launch_tx 7  liq_off p10/50/90 0/0/1407
+  frb: 2/17  off 0/0/0  eth 0.019/0.025/0.025  idx 0/0/0
+   frb to/sel/clen: [(('0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09', '2e2fdbd9', 1028), 2)]  router: [('0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09', 2)]
+   frb eoa distinct 2  is launch wallet 2  eoa npools_seen 1/1/1  also_in_tok_family>0 0  prio [(0, 2)]
+   frb_off - liq_off: 0/0/0
+  pulled 0/17  first pull off -  full 0  by launch wallet 0  before frb 0  pull-frb -
+  outsider12 reaction 0/6  nf 0/6  baseline 0/3
+  n_swaps 0/1/11  n_buys 0/1/6  n_sells 0/0/5  buy_eth_total 0.0/0.0/0.2324

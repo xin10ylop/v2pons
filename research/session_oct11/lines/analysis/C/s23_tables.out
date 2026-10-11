@@ -1,0 +1,16 @@
+V3 crowd line (836 B, fee 100): launches 1046; per calendar day [('10-04', 73), ('10-05', 138), ('10-06', 179), ('10-07', 162), ('10-08', 138), ('10-09', 131), ('10-10', 132), ('10-11', 93)]; per 24-h window d0..d6 [153, 155, 167, 149, 142, 134, 146]
+   rule over all: n 1046 mean +8.5% $/trade +1.240 $/day +185.3
+   last 24 h: n 146 mean +5.5% median +0.1% pulled 0 $/day +116.0
+V3 crowd line cap 60: launches 1046; per calendar day [('10-04', 73), ('10-05', 138), ('10-06', 179), ('10-07', 162), ('10-08', 138), ('10-09', 131), ('10-10', 132), ('10-11', 93)]; per 24-h window d0..d6 [153, 155, 167, 149, 142, 134, 146]
+   rule over all: n 1046 mean +4.4% $/trade +0.636 $/day +95.0
+   last 24 h: n 146 mean +1.5% median +0.1% pulled 0 $/day +29.9
+lc:0a493d1a|13ead562: launches 493; per calendar day [('10-04', 40), ('10-05', 76), ('10-06', 8), ('10-07', 32), ('10-08', 183), ('10-09', 88), ('10-10', 11), ('10-11', 55)]; per 24-h window d0..d6 [114, 7, 32, 61, 209, 12, 58]
+   rule over all: n 483 mean +66.0% $/trade +9.825 $/day +677.9
+   last 24 h: n 55 mean -12.7% median +0.2% pulled 8 $/day -105.4
+tok:70adce63: launches 1184; per calendar day [('10-04', 43), ('10-05', 112), ('10-06', 159), ('10-07', 146), ('10-08', 197), ('10-09', 207), ('10-10', 202), ('10-11', 118)]; per 24-h window d0..d6 [91, 163, 137, 179, 212, 187, 215]
+   rule over all: n 1184 mean +1.9% $/trade +0.260 $/day +43.9
+   last 24 h: n 215 mean +1.6% median +1.5% pulled 0 $/day +48.0
+tok:0f34e3b5 (front, no revert model): launches 603; per calendar day [('10-04', 55), ('10-05', 64), ('10-07', 36), ('10-08', 135), ('10-09', 182), ('10-10', 89), ('10-11', 42)]; per 24-h window d0..d6 [118, 1, 0, 113, 188, 125, 58]
+   rule over all: n 603 mean +9.5% $/trade +1.402 $/day +120.8
+   last 24 h: n 58 mean +9.2% median +8.6% pulled 0 $/day +78.3
+V3 crowd cap 80: worst -0.033%  p10/p90 -0.01%/+24.90%  share > +1%: 0.36  top-10% trades' share of PnL 0.71
