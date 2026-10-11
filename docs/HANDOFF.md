@@ -916,7 +916,8 @@ decided without the logs, before or after the fix; the engine now logs an alarm 
 instead of only a `pull_check` field in `trade_done`. Whether the crash fired on Oct 10: the first check on Oct 11 (`grep -c` on `/var/log/flip/engine.jsonl`) printed 0, but it read an empty
 file: the log rotates daily (`copytruncate`, `deploy/flip_setup.sh`), so after midnight the live file holds only the new day and Oct 10 is in
 `engine.jsonl.1`. **Any check of a past day must go through `deploy/englog.py`** (it reads the rotations):
-`sudo python3 ~/v2pons/deploy/englog.py 96 | grep -c '"settle failed"'`. Result: pending when this was written. The runbook's wait-for-trade restart is no longer needed (9.2 updated).
+`sudo python3 ~/v2pons/deploy/englog.py 96 | grep -c '"settle failed"'`. Result (Oct 11 04:50 UTC, 96 h through the rotations): **0**. No
+trade of Oct 8-10 is missing from the record. The runbook's wait-for-trade restart is no longer needed (9.2 updated).
 
 A second Opus review of the fix commit (f0681da; its diff, mutation tests and six suite runs under CPU load) found it safe to deploy and
 nothing that changes the normal live path. Its two low notes: the alarm above (added); a stop can still end before `trade_done` when the
@@ -1069,7 +1070,14 @@ report-issue; no Discord or Telegram; the terms say most concerns are resolved t
 permitted, and whether the address can be allowed). (3) The one thing on our side that could have looked like abuse is the reconnect rate:
 `feed_loop` drops the socket after 2.0 s without a message (`feed_stall`) and reconnects after 0.2 s, so a flaky hour could mean many
 handshakes; the owner was asked for the per-hour counts of `feed_connected`/`feed_stall`/`feed_error` from the box's log (the first attempt read the
-rotated-empty live file, see 16.7; the command must go through `englog.py`; recorded below when pasted). If they are high, the engine should keep the socket through short gaps (ping-based liveness) before any reconnection. (4) Whether the
+rotated-empty live file, see 16.7; the command must go through `englog.py`). **The counts (Oct 8 12:00 to Oct 10 18:30 UTC, per hour):
+1 to 3 `feed_connected` in most hours that had any, 7 at 09h Oct 10 (the owner's restarts), about 55 handshakes in three days in all; 6
+`feed_stall` and about 12 `feed_error` before the block; then 276 `feed_error` at 17h and 361 at 18h Oct 10, the 5-second retry after the
+403 until the stop at 18:30.** So the engine held one socket at a time and reconnected about once an hour on average: nothing on our side
+resembles connection-rate abuse or limit evasion. The block's text ("exceed or evade this feed service's limits", "acquiring or routing
+additional IP address space") describes a client spreading connections over many addresses, which fits a range block aimed at such a client
+in the box's AWS range, with the box as collateral. That is the case to put to Robinhood, with these numbers; it does not make any
+reconnection from the box or from another address acceptable before they answer. If they are high, the engine should keep the socket through short gaps (ping-based liveness) before any reconnection. (4) Whether the
 block lifts is checked by hand, one handshake at a time (`curl` with the websocket upgrade headers against the feed; 403 while blocked, 101
 when open), not by an automatic loop, and never from another address. (5) The paid feed (Dwellir) stays the sure route.
 
