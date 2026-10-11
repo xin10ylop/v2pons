@@ -1471,9 +1471,9 @@ def on_v3_buy(p, seq, value, to, stale, crowd):
     """a buy on a V3 family's pool (under the lock): a call of the crowd's shapes (crowd) or anyone's call carrying the token with ETH as its
     value. It moves the price copy; the first of the trigger's min_eth is the pool's first_buy; the first of min_eth at or after our buy
     starts the exit's clock: the sell goes when the feed shows it + exit_after_blocks (ingest), or at the cap (launch + hold_blocks) if that
-    comes first. The research's rule (REPORT_C candidate 1, w07_forward.py: the sell at the first real buy at or after ours + 20): the crowd's
-    wave comes in the 20 blocks after its first buy (5 buys, 0.34 ETH, the price + 17%, typically); selling on that first buy instead made
-    + 4.7% a trade against + 8.7% over the 7-day census (analysis/C/s17_grid.out, cap 80)."""
+    comes first. The research's rule (REPORT_C candidate 1, w07_forward.py: the sell 20 blocks after the first real buy at or after ours):
+    the crowd's wave comes in the 20 blocks after its first buy (5 buys, 0.34 ETH, the price + 17%, typically); selling on that first buy
+    instead made + 4.7% a trade against + 8.7% over the 7-day census (analysis/C/s17_grid.out, cap 80)."""
     apply_buy(p, value); p["eth_in"] += value
     pos = state["position"]; ours = pos if pos is not None and pos["pid"] == p["pid"] else None; k = p["fam_cfg"]["exit_after_blocks"]
     if value >= p["fam_cfg"]["trigger"]["min_wei"]:
@@ -1492,7 +1492,9 @@ def on_v3_buy(p, seq, value, to, stale, crowd):
 def trigger_word(trig, to, data, p):
     """the amount's calldata word if `data`, a zero-value call to `to`, is one of the trigger's calls on pool p (else None): to its router
     (any contract with any_to), one of its (selector, length) shapes (length 0: any), carrying p's token at token_word or, with
-    token_anywhere, as an address word or as a V3 path's output after WETH and the pool's fee (a buy: a sell's path starts with the token)"""
+    token_anywhere, as an address word or as a V3 path's output after WETH and the pool's fee (a buy: a sell's path starts with the token).
+    Neither carries the direction everywhere: an exact-output sell's path is reversed too, and an address word could be a V2 swap's path;
+    the crowd's 199 buys checked were all exact-input V3 paths"""
     if trig["router"] is not None and to != trig["router"]:
         return None
     sel = data[:4].hex(); vw = trig["shapes"].get((sel, len(data)), trig["shapes"].get((sel, 0)))

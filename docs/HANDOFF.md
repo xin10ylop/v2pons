@@ -1547,7 +1547,9 @@ the shape; `sqrt_p`/`liq` stay out of the box's JSON (RUNBOOK 4g).
 
 **Known limits of the dry run** (score it from the chain before trusting it): `dry_ret` ignores sells (the crowd sells through the same
 contracts), takes the a0193551/49f74a5d calls' whole amount word (they swap 99%/99.3% of it), prices our buy at + 2 exactly (landing at
-+ 2 was measured on v4 only); value-0 WETH buys outside the shapes are invisible; a V3 dry position holds the one slot for ~8 s (other
++ 2 was measured on v4 only); value-0 WETH buys outside the shapes are invisible, while a 484-byte Universal Router call that sells the token for an exact WETH
+amount (its path is reversed: WETH first) or swaps it on a V2 pair (the token as an address word) would count as a buy (none seen; the
+crowd's 199 buys checked by REPORT_W were exact-input V3 paths; a token amount read as ETH is refused by `max_eth`); a V3 dry position holds the one slot for ~8 s (other
 dry fires are skipped meanwhile, a live front fire drops it); `results.py` lists it among front's dry decisions without a family split.
 
 **What the live path still needs** (REPORT_W): (a) the router path: the buy through SwapRouter02 `0xcaf681a6...` `exactInputSingle`
