@@ -1,0 +1,99 @@
+launch rate per day from the last 60/90/180 min: {('2.433', 60): 360, ('2.433', 90): 432, ('2.433', 180): 1248, ('3.0', 60): 384, ('3.0', 90): 352, ('3.0', 180): 568}
+        2.433 fee2500         q0.0058 T+2 a 2nd-bot+1  n  40 mean   +8.75% med   +8.95% win 0.925 worst   -10.0% pulled   0 (  0.0%) $/tr +1.3047 $/day  +563.65 incompl 0 botbuys-dropped 0
+        2.433 fee2500         q0.0058 T+2 b hold10     n  40 mean   -1.13% med   -1.13% win 0.000 worst    -1.1% pulled   0 (  0.0%) $/tr -0.1683 $/day   -72.71 incompl 0 botbuys-dropped 0
+        2.433 fee2500         q0.0058 T+2 b hold20     n  40 mean   +1.23% med   -1.13% win 0.175 worst    -1.1% pulled   0 (  0.0%) $/tr +0.1828 $/day   +78.97 incompl 0 botbuys-dropped 0
+        2.433 fee2500         q0.0058 T+2 b hold30     n  40 mean   +4.92% med   +4.29% win 0.650 worst    -6.6% pulled   0 (  0.0%) $/tr +0.7330 $/day  +316.65 incompl 0 botbuys-dropped 0
+        2.433 fee2500         q0.0058 T+2 b hold40     n  40 mean   -0.15% med   -0.58% win 0.450 worst    -9.6% pulled   0 (  0.0%) $/tr -0.0229 $/day    -9.88 incompl 0 botbuys-dropped 0
+        2.433 fee2500         q0.0058 T+2 b hold60     n  40 mean   +4.31% med   +3.47% win 0.700 worst   -10.0% pulled   0 (  0.0%) $/tr +0.6421 $/day  +277.37 incompl 0 botbuys-dropped 0
+        2.433 fee2500         q0.0058 T+2 c botsell-1  n  40 mean   +8.38% med   +8.74% win 0.825 worst    -1.1% pulled   0 (  0.0%) $/tr +1.2491 $/day  +539.63 incompl 0 botbuys-dropped 0
+        2.433 fee5000<16:28   q0.0058 T+2 a 2nd-bot+1  n  14 mean  -38.18% med   +2.86% win 0.571 worst  -100.1% pulled   6 ( 42.9%) $/tr -5.6907 $/day -2458.39 incompl 0 botbuys-dropped 0
+        2.433 fee5000<16:28   q0.0058 T+2 b hold10     n  14 mean   -1.13% med   -1.13% win 0.000 worst    -1.1% pulled   0 (  0.0%) $/tr -0.1685 $/day   -72.80 incompl 0 botbuys-dropped 0
+        2.433 fee5000<16:28   q0.0058 T+2 b hold20     n  14 mean  -42.62% med   -1.13% win 0.071 worst  -100.1% pulled   6 ( 42.9%) $/tr -6.3524 $/day -2744.25 incompl 0 botbuys-dropped 0
+        2.433 fee5000<16:28   q0.0058 T+2 b hold30     n  14 mean  -40.09% med   -5.59% win 0.429 worst  -100.1% pulled   6 ( 42.9%) $/tr -5.9757 $/day -2581.50 incompl 0 botbuys-dropped 0
+        2.433 fee5000<16:28   q0.0058 T+2 b hold40     n  14 mean  -42.03% med   -4.78% win 0.357 worst  -100.1% pulled   6 ( 42.9%) $/tr -6.2643 $/day -2706.18 incompl 0 botbuys-dropped 0
+        2.433 fee5000<16:28   q0.0058 T+2 b hold60     n  14 mean  -40.74% med   -0.85% win 0.357 worst  -100.1% pulled   6 ( 42.9%) $/tr -6.0720 $/day -2623.11 incompl 0 botbuys-dropped 0
+        2.433 fee5000<16:28   q0.0058 T+2 c botsell-1  n  14 mean  -39.10% med   -1.13% win 0.429 worst  -100.1% pulled   6 ( 42.9%) $/tr -5.8280 $/day -2517.71 incompl 0 botbuys-dropped 0
+        2.433 fee5000>=16:28  q0.0058 T+2 a 2nd-bot+1  n   4 mean  +10.70% med  +12.83% win 1.000 worst    +0.4% pulled   0 (  0.0%) $/tr +1.5954 $/day  +689.20 incompl 0 botbuys-dropped 0
+        2.433 fee5000>=16:28  q0.0058 T+2 b hold10     n   4 mean   -1.34% med   -1.34% win 0.000 worst    -1.5% pulled   0 (  0.0%) $/tr -0.1994 $/day   -86.13 incompl 0 botbuys-dropped 0
+        2.433 fee5000>=16:28  q0.0058 T+2 b hold20     n   4 mean   +5.76% med   +3.91% win 0.500 worst    -1.5% pulled   0 (  0.0%) $/tr +0.8592 $/day  +371.18 incompl 0 botbuys-dropped 0
+        2.433 fee5000>=16:28  q0.0058 T+2 b hold30     n   4 mean  +10.70% med  +12.83% win 1.000 worst    +0.4% pulled   0 (  0.0%) $/tr +1.5954 $/day  +689.20 incompl 0 botbuys-dropped 0
+        2.433 fee5000>=16:28  q0.0058 T+2 b hold40     n   4 mean   -2.47% med   -2.59% win 0.500 worst    -8.2% pulled   0 (  0.0%) $/tr -0.3683 $/day  -159.10 incompl 0 botbuys-dropped 0
+        2.433 fee5000>=16:28  q0.0058 T+2 b hold60     n   4 mean   +5.44% med   +7.45% win 0.750 worst    -6.9% pulled   0 (  0.0%) $/tr +0.8108 $/day  +350.29 incompl 0 botbuys-dropped 0
+        2.433 fee5000>=16:28  q0.0058 T+2 c botsell-1  n   4 mean  +10.70% med  +12.83% win 1.000 worst    +0.4% pulled   0 (  0.0%) $/tr +1.5954 $/day  +689.20 incompl 0 botbuys-dropped 0
+        3.0 new               q0.0058 T+2 a 2nd-bot+1  n  95 mean   +2.23% med   +2.53% win 0.726 worst    -9.3% pulled   0 (  0.0%) $/tr +0.3330 $/day   +92.04 incompl 0 botbuys-dropped 0
+        3.0 new               q0.0058 T+2 b hold10     n  95 mean   -2.26% med   -2.12% win 0.000 worst   -11.0% pulled   0 (  0.0%) $/tr -0.3365 $/day   -92.99 incompl 0 botbuys-dropped 0
+        3.0 new               q0.0058 T+2 b hold20     n  95 mean   -3.22% med   -2.12% win 0.211 worst   -13.6% pulled   0 (  0.0%) $/tr -0.4799 $/day  -132.63 incompl 0 botbuys-dropped 0
+        3.0 new               q0.0058 T+2 b hold30     n  95 mean   +0.22% med   +0.20% win 0.526 worst    -9.3% pulled   0 (  0.0%) $/tr +0.0325 $/day    +8.99 incompl 0 botbuys-dropped 0
+        3.0 new               q0.0058 T+2 b hold40     n  95 mean   -1.87% med   -1.73% win 0.305 worst   -13.1% pulled   0 (  0.0%) $/tr -0.2784 $/day   -76.93 incompl 0 botbuys-dropped 0
+        3.0 new               q0.0058 T+2 b hold60     n  95 mean   +2.17% med   +3.04% win 0.737 worst  -100.1% pulled   1 (  1.1%) $/tr +0.3230 $/day   +89.26 incompl 0 botbuys-dropped 0
+        3.0 new               q0.0058 T+2 c botsell-1  n  95 mean   +1.48% med   -2.12% win 0.453 worst    -2.1% pulled   0 (  0.0%) $/tr +0.2202 $/day   +60.84 incompl 0 botbuys-dropped 0
+        2.433 fee5000 all     q0.0058 T+2 a 2nd-bot+1  n  18 mean  -27.32% med   +5.32% win 0.667 worst  -100.1% pulled   6 ( 33.3%) $/tr -4.0716 $/day -1758.93 incompl 0 botbuys-dropped 0
+        2.433 fee5000 all     q0.0058 T+2 b hold10     n  18 mean   -1.18% med   -1.13% win 0.000 worst    -1.5% pulled   0 (  0.0%) $/tr -0.1754 $/day   -75.76 incompl 0 botbuys-dropped 0
+        2.433 fee5000 all     q0.0058 T+2 b hold20     n  18 mean  -31.87% med   -1.13% win 0.167 worst  -100.1% pulled   6 ( 33.3%) $/tr -4.7498 $/day -2051.93 incompl 0 botbuys-dropped 0
+        2.433 fee5000 all     q0.0058 T+2 b hold30     n  18 mean  -28.80% med   +1.49% win 0.556 worst  -100.1% pulled   6 ( 33.3%) $/tr -4.2932 $/day -1854.67 incompl 0 botbuys-dropped 0
+        2.433 fee5000 all     q0.0058 T+2 b hold40     n  18 mean  -33.24% med   -4.78% win 0.389 worst  -100.1% pulled   6 ( 33.3%) $/tr -4.9541 $/day -2140.16 incompl 0 botbuys-dropped 0
+        2.433 fee5000 all     q0.0058 T+2 b hold60     n  18 mean  -30.47% med   -0.34% win 0.444 worst  -100.1% pulled   6 ( 33.3%) $/tr -4.5425 $/day -1962.35 incompl 0 botbuys-dropped 0
+        2.433 fee5000 all     q0.0058 T+2 c botsell-1  n  18 mean  -28.03% med   +1.49% win 0.556 worst  -100.1% pulled   6 ( 33.3%) $/tr -4.1784 $/day -1805.06 incompl 0 botbuys-dropped 0
+        ALL 6h 2.433          q0.0058 T+2 a 2nd-bot+1  n  58 mean   -2.44% med   +8.52% win 0.845 worst  -100.1% pulled   6 ( 10.3%) $/tr -0.3638 $/day  -157.15 incompl 0 botbuys-dropped 0
+        ALL 6h 2.433          q0.0058 T+2 b hold10     n  58 mean   -1.14% med   -1.13% win 0.000 worst    -1.5% pulled   0 (  0.0%) $/tr -0.1705 $/day   -73.66 incompl 0 botbuys-dropped 0
+        ALL 6h 2.433          q0.0058 T+2 b hold20     n  58 mean   -9.04% med   -1.13% win 0.172 worst  -100.1% pulled   6 ( 10.3%) $/tr -1.3480 $/day  -582.34 incompl 0 botbuys-dropped 0
+        ALL 6h 2.433          q0.0058 T+2 b hold30     n  58 mean   -5.55% med   +3.33% win 0.621 worst  -100.1% pulled   6 ( 10.3%) $/tr -0.8269 $/day  -357.21 incompl 0 botbuys-dropped 0
+        ALL 6h 2.433          q0.0058 T+2 b hold40     n  58 mean  -10.42% med   -0.95% win 0.431 worst  -100.1% pulled   6 ( 10.3%) $/tr -1.5533 $/day  -671.01 incompl 0 botbuys-dropped 0
+        ALL 6h 2.433          q0.0058 T+2 b hold60     n  58 mean   -6.49% med   +2.03% win 0.621 worst  -100.1% pulled   6 ( 10.3%) $/tr -0.9669 $/day  -417.72 incompl 0 botbuys-dropped 0
+        ALL 6h 2.433          q0.0058 T+2 c botsell-1  n  58 mean   -2.92% med   +8.51% win 0.741 worst  -100.1% pulled   6 ( 10.3%) $/tr -0.4353 $/day  -188.03 incompl 0 botbuys-dropped 0
+        ALL 6h 3.0            q0.0058 T+2 a 2nd-bot+1  n  95 mean   +2.23% med   +2.53% win 0.726 worst    -9.3% pulled   0 (  0.0%) $/tr +0.3330 $/day   +92.04 incompl 0 botbuys-dropped 0
+        ALL 6h 3.0            q0.0058 T+2 b hold10     n  95 mean   -2.26% med   -2.12% win 0.000 worst   -11.0% pulled   0 (  0.0%) $/tr -0.3365 $/day   -92.99 incompl 0 botbuys-dropped 0
+        ALL 6h 3.0            q0.0058 T+2 b hold20     n  95 mean   -3.22% med   -2.12% win 0.211 worst   -13.6% pulled   0 (  0.0%) $/tr -0.4799 $/day  -132.63 incompl 0 botbuys-dropped 0
+        ALL 6h 3.0            q0.0058 T+2 b hold30     n  95 mean   +0.22% med   +0.20% win 0.526 worst    -9.3% pulled   0 (  0.0%) $/tr +0.0325 $/day    +8.99 incompl 0 botbuys-dropped 0
+        ALL 6h 3.0            q0.0058 T+2 b hold40     n  95 mean   -1.87% med   -1.73% win 0.305 worst   -13.1% pulled   0 (  0.0%) $/tr -0.2784 $/day   -76.93 incompl 0 botbuys-dropped 0
+        ALL 6h 3.0            q0.0058 T+2 b hold60     n  95 mean   +2.17% med   +3.04% win 0.737 worst  -100.1% pulled   1 (  1.1%) $/tr +0.3230 $/day   +89.26 incompl 0 botbuys-dropped 0
+        ALL 6h 3.0            q0.0058 T+2 c botsell-1  n  95 mean   +1.48% med   -2.12% win 0.453 worst    -2.1% pulled   0 (  0.0%) $/tr +0.2202 $/day   +60.84 incompl 0 botbuys-dropped 0
+react+7 2.433 fee2500         q0.0058 T+2 a 2nd-bot+1  n  40 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  40 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee2500         q0.0058 T+2 b hold10     n  40 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  40 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee2500         q0.0058 T+2 b hold20     n  40 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  40 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee2500         q0.0058 T+2 b hold30     n  40 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  40 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee2500         q0.0058 T+2 b hold40     n  40 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  40 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee2500         q0.0058 T+2 b hold60     n  40 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  40 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee2500         q0.0058 T+2 c botsell-1  n  40 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  40 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000<16:28   q0.0058 T+2 a 2nd-bot+1  n  14 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  14 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000<16:28   q0.0058 T+2 b hold10     n  14 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  14 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000<16:28   q0.0058 T+2 b hold20     n  14 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  14 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000<16:28   q0.0058 T+2 b hold30     n  14 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  14 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000<16:28   q0.0058 T+2 b hold40     n  14 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  14 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000<16:28   q0.0058 T+2 b hold60     n  14 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  14 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000<16:28   q0.0058 T+2 c botsell-1  n  14 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  14 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000>=16:28  q0.0058 T+2 a 2nd-bot+1  n   4 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled   4 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000>=16:28  q0.0058 T+2 b hold10     n   4 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled   4 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000>=16:28  q0.0058 T+2 b hold20     n   4 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled   4 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000>=16:28  q0.0058 T+2 b hold30     n   4 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled   4 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000>=16:28  q0.0058 T+2 b hold40     n   4 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled   4 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000>=16:28  q0.0058 T+2 b hold60     n   4 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled   4 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000>=16:28  q0.0058 T+2 c botsell-1  n   4 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled   4 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 3.0 new               q0.0058 T+2 a 2nd-bot+1  n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 3.0 new               q0.0058 T+2 b hold10     n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 3.0 new               q0.0058 T+2 b hold20     n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 3.0 new               q0.0058 T+2 b hold30     n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 3.0 new               q0.0058 T+2 b hold40     n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 3.0 new               q0.0058 T+2 b hold60     n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 3.0 new               q0.0058 T+2 c botsell-1  n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000 all     q0.0058 T+2 a 2nd-bot+1  n  18 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  18 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000 all     q0.0058 T+2 b hold10     n  18 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  18 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000 all     q0.0058 T+2 b hold20     n  18 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  18 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000 all     q0.0058 T+2 b hold30     n  18 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  18 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000 all     q0.0058 T+2 b hold40     n  18 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  18 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000 all     q0.0058 T+2 b hold60     n  18 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  18 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 2.433 fee5000 all     q0.0058 T+2 c botsell-1  n  18 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  18 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 2.433          q0.0058 T+2 a 2nd-bot+1  n  58 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  58 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 2.433          q0.0058 T+2 b hold10     n  58 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  58 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 2.433          q0.0058 T+2 b hold20     n  58 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  58 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 2.433          q0.0058 T+2 b hold30     n  58 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  58 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 2.433          q0.0058 T+2 b hold40     n  58 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  58 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 2.433          q0.0058 T+2 b hold60     n  58 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  58 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 2.433          q0.0058 T+2 c botsell-1  n  58 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  58 (100.0%) $/tr -14.9260 $/day -6448.03 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 3.0            q0.0058 T+2 a 2nd-bot+1  n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 3.0            q0.0058 T+2 b hold10     n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 3.0            q0.0058 T+2 b hold20     n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 3.0            q0.0058 T+2 b hold30     n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 3.0            q0.0058 T+2 b hold40     n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 3.0            q0.0058 T+2 b hold60     n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
+react+7 ALL 6h 3.0            q0.0058 T+2 c botsell-1  n  95 mean -100.13% med -100.13% win 0.000 worst  -100.1% pulled  95 (100.0%) $/tr -14.9260 $/day -4125.00 incompl 0 botbuys-dropped 0
