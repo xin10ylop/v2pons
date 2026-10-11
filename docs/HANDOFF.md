@@ -1107,6 +1107,10 @@ Virginia (not geo-routed), so its hop is Ohio-Virginia-Ohio. The feed still refu
 operator can find the rule. No published reply time exists for that address (searched Reddit, X, GitHub, Cloudflare's forum: nothing on this
 block or on response times); Cloudflare's forum is consistent that only the site owner can lift a block it set.
 
+**Payout, Oct 11 about 12:10 UTC** (the owner, for the Dwellir subscription): `withdraw 0.08` (tx 0x1572d339..., block 85,815,431) then
+`payout` of 0.08 ETH to the owner's Phantom address 0x9B19...1Ba55 on Robinhood Chain (tx 0xb28117fd..., block 85,815,581, status ok; that
+address then held 0.0801 ETH). After it: relay 0.394322 ETH, wallet 0.009581 ETH (nonce 2194), engine stopped.
+
 The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
 stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
 
