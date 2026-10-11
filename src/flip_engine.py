@@ -163,8 +163,9 @@ FRONT_BOT_ROUTERS = {a.strip().lower().replace("0x", "") for a in env("FRONT_BOT
 # take_profit, hold_blocks, stake_eth}; a field left out takes the FRONT_* value; big numbers may be strings) adds the others. A family's fee is
 # front's own fee bound (FEE_MIN/MAX_PPM are follow's): a launch at another fee is not traded, and the pin (FRONT_PIN) compares the rest.
 MIN_SQRT_P = 4295128739; MAX_SQRT_P = 1461446703485210103287273052203988822378723970342                                # v4's price bounds
+FRONT_NONBOT_HALT = int(env("FRONT_NONBOT_HALT", "5")); FRONT_NONBOT_MIN_RET = float(env("FRONT_NONBOT_MIN_RET", "0.02"))
 FRONT_FAMILY_KEYS = ("name", "value_wei", "fee", "tick_spacing", "sqrt_p", "liq", "bot_minout", "ahead_max_eth", "take_profit", "hold_blocks", "stake_eth", "dry_run", "pin",
-                     "fire_at", "fire_max", "calldata_len", "trigger", "fees_also", "tick_spacings_also", "dex", "target", "exit_after_blocks")
+                     "fire_at", "fire_max", "calldata_len", "trigger", "fees_also", "tick_spacings_also", "dex", "target", "exit_after_blocks", "nonbot_halt")
 TRIGGER_KEYS = ("router", "selector", "value_word", "token_word", "flag_word", "flag_value", "min_eth", "max_eth", "max_blocks", "shapes", "any_to", "token_anywhere")
 SHAPE_KEYS = ("selector", "calldata_len", "value_word")
 # calldata_len: the launch call's length (FRONT_CALLDATA_LEN, 1,444 bytes, for the volume bot's lines; C-1's is 2,276). trigger: a "wave" family:
@@ -383,7 +384,8 @@ def front_base_family():
     base = {"name": env("FRONT_FAMILY_NAME", "v2.433"), "value_wei": FRONT_VALUE_WEI, "fee": FRONT_FEE, "tick_spacing": FRONT_TICK_SPACING, "sqrt_p": FRONT_SQRT_P, "liq": FRONT_LIQ,
             "bot_minout": FRONT_BOT_MINOUT, "ahead_max_wei": FRONT_AHEAD_MAX_WEI, "take_profit": FRONT_TAKE_PROFIT, "hold_blocks": FRONT_HOLD_BLOCKS, "stake_wei": FRONT_STAKE_WEI,
             "dry_run": FRONT_BASE_DRY_RUN, "pin": FRONT_PIN, "fire_at": 0, "fire_max": FRONT_FIRE_MAX, "calldata_len": FRONT_CALLDATA_LEN, "trigger": None,
-            "fees_also": sorted(FRONT_FEES_ALSO), "tick_spacings_also": sorted(FRONT_TICK_SPACINGS_ALSO), "dex": "v4", "target": None, "exit_after_blocks": None}
+            "fees_also": sorted(FRONT_FEES_ALSO), "tick_spacings_also": sorted(FRONT_TICK_SPACINGS_ALSO), "dex": "v4", "target": None, "exit_after_blocks": None,
+            "nonbot_halt": None}
     if not re.fullmatch(r"[A-Za-z0-9._-]{1,64}", base["name"]):
         raise SystemExit(f"FRONT_FAMILY_NAME must be 1-64 letters, digits, '.', '_' or '-', not {base['name']!r}")
     return {base["value_wei"]: front_family_check(base)} if FRONT_VALUE_WEI > 0 else {}
@@ -432,7 +434,8 @@ def front_families(base=None):
                    "dry_run": _flag(f.get("dry_run", False), f"{w} dry_run"), "pin": _flag(f.get("pin", FRONT_PIN), f"{w} pin"),
                    "fire_at": _num(f.get("fire_at", 0), f"{w} fire_at", 0, 600, True), "fire_max": _num(f.get("fire_max", FRONT_FIRE_MAX), f"{w} fire_max", 0, 10, True),
                    "calldata_len": _num(f.get("calldata_len", FRONT_CALLDATA_LEN), f"{w} calldata_len", 68, 8192, True), "trigger": _trigger(f.get("trigger"), w),
-                   "fees_also": f.get("fees_also", []), "tick_spacings_also": f.get("tick_spacings_also", [])}
+                   "fees_also": f.get("fees_also", []), "tick_spacings_also": f.get("tick_spacings_also", []),
+                   "nonbot_halt": _num(f["nonbot_halt"], f"{w} nonbot_halt", 0, 1000, True) if "nonbot_halt" in f else None}
         except SystemExit:
             raise
         except (TypeError, ValueError, OverflowError) as e:
@@ -468,7 +471,6 @@ ANY_TO_SELECTORS = {s for f in FRONT_FAMILIES.values() if f["trigger"] and not f
 # against its family; FRONT_NONBOT_HALT in a row halt front (its file), as on Oct 10 when the decoys sold 289 positions ahead of the bot for
 # about -0.3% each; a paying exit resets the family's count. Judged by the return, not by who called the router (the bot's router is public,
 # a decoy can go through it). 0 = off. The counts are restored from the day's log at a restart.
-FRONT_NONBOT_HALT = int(env("FRONT_NONBOT_HALT", "5")); FRONT_NONBOT_MIN_RET = float(env("FRONT_NONBOT_MIN_RET", "0.02"))
 if FRONT_NONBOT_HALT < 0:
     raise SystemExit("FRONT_NONBOT_HALT must be 0 (off) or above")
 SEL_MULTICALL = "ac9650d8"; SEL_INIT_POOL = "f7020405"; SEL_MODLIQ = "dd46508f"
@@ -1110,7 +1112,7 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
            "expected_tokens": expected, "min_out": min_out, "flat_eth_back": eth_back_flat, "buy_seq": None, "sell_sent": False, "sell_seq_sent": None, "buy_hash": None, "sell_hash": None, "sell_raw": None, "dry": dry,
            "fire_seq": fire_seq, "plan_buy_seq": fire_seq + 2, "plan_sell_seq": fire_seq + 2 + hold, "feed_tokens": None, "tp_ret": None,
            "stake": stake, "send_after": send_after, "tp": fam["take_profit"] if front else TAKE_PROFIT, "count_key": count_key, "pnl_key": pnl_key,
-           "fallback_s": SELL_FALLBACK_S + (0.11 * (hold - (HOLD_BLOCKS - SELL_LEAD_BLOCKS)) if front else 0.0), "launch_seq": p["launch_seq"], **({"fam": p["fam"]} if front else {}),
+           "fallback_s": SELL_FALLBACK_S + (0.11 * (hold - (HOLD_BLOCKS - SELL_LEAD_BLOCKS)) if front else 0.0), "launch_seq": p["launch_seq"], **({"fam": p["fam"], "nonbot_halt": fam.get("nonbot_halt")} if front else {}),
            **({"dex": "v3", "exit_seq": None, "exit_why": None} if v3 else {})}                # exit_seq: the block where the crowd's wave ends (on_v3_buy)
     if drop:
         log({"ev": "skip", "why": "dry front position dropped for a live trade", "pid": held["pid"], "seq": seq})
@@ -1290,7 +1292,8 @@ def _settle(pos):
         halt("the buy filled and the sell sold none of it (sell: " + (out["sell"]["status"] if isinstance(out.get("sell"), dict) else str(out.get("sell"))) + ")",
              front=pos.get("entry") == "front")                                          # front-wide even for a listed family: the cause is usually the sell path, not the line
     pnl = eth_out - eth_in - gas_wei
-    if pos.get("entry") == "front" and rb is not None and rb.get("status") == "0x1" and eth_in and FRONT_NONBOT_HALT:   # the decoy signal, by the trade's return (see FRONT_NONBOT_HALT)
+    nonbot_halt = pos.get("nonbot_halt"); nonbot_halt = FRONT_NONBOT_HALT if nonbot_halt is None else nonbot_halt   # the family's own threshold (0: off), else the setting
+    if pos.get("entry") == "front" and rb is not None and rb.get("status") == "0x1" and eth_in and nonbot_halt:   # the decoy signal, by the trade's return (see FRONT_NONBOT_HALT)
         paid = pnl / eth_in >= FRONT_NONBOT_MIN_RET; fam = pos.get("fam") or "front"
         with lock:
             state["front_nonbot_streak"][fam] = 0 if paid else state["front_nonbot_streak"].get(fam, 0) + 1
@@ -1298,7 +1301,7 @@ def _settle(pos):
             if FRONT_AUTO_STAKE and not paid and pos["stake"] > int(FRONT_AUTO_STAKE_MIN_ETH * 1e18) and state["room_obs"].pop(fam, None) is not None:
                 out["room_obs_reset"] = True                                                  # a raised stake that did not pay: the room may be taken by what the feed cannot see; back to the floor
         out["nonbot_streak"] = streak; out["bot_exit"] = bool(pos.get("bot_exit"))
-        if streak >= FRONT_NONBOT_HALT and state["front_halted"] is None and not state["fam_halted"].get(fam):
+        if streak >= nonbot_halt and state["front_halted"] is None and not state["fam_halted"].get(fam):
             out["nonbot_halted"] = halt(f"{streak} {fam} front trades in a row paid under {FRONT_NONBOT_MIN_RET:+.0%} (last: {pos.get('sell_why')}, {pnl / eth_in:+.1%}): "
                                         f"decoys or a changed schedule (FRONT_NONBOT_HALT {FRONT_NONBOT_HALT})", front=True, fam=fam)   # a halt whose file failed resets nothing later
     out.update({"eth_in": eth_in, "eth_out": eth_out, "gas_wei": gas_wei, "pnl_eth": pnl / 1e18, "pnl_usd": round(pnl / 1e18 * ETH_USD, 3), "ret": round((eth_out - eth_in) / eth_in, 4) if eth_in else None,

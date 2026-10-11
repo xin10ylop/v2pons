@@ -1428,5 +1428,37 @@ del E.FRONT_FAMILIES[0], E.FRONT_FAMILIES[K3]; E.WAVE_ROUTERS.discard(fams[0]["t
 E.state["delayed"] = any(f["fire_at"] or f["trigger"] for f in E.FRONT_FAMILIES.values()); reset(); E.FRONT = False; E.ENTRY = "follow"
 print("ok a V3 family (the crowd line): the 836-byte launch decodes as the chain has it (pool by CREATE2, price on the top tick, liquidity), arms by its PositionManager beside C-1 (both value 0) and fires dry in its launch block (+ 2); the crowd's buys move the price copy, its first behind ours sells 18 blocks later with dry_ret, the cap at launch + 78; its sells, other tokens, a mirrored launch and a live setting never trade; bad JSON is refused at start, never a crash; the 2.4333 line trades as before")
 
+# --- 20i. a family's own streak threshold (nonbot_halt): 0 turns the flat-trade halt off for that family (a fat-tailed follow line such as C-1
+# has most trades flat and a few large winners); the default is FRONT_NONBOT_HALT; the setting travels with the position
+E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"; reset(); E.state["nonce"] = 1200; E.state["front_halted"] = None; E.state["fam_halted"].clear(); E.state["front_nonbot_streak"] = {}
+os.environ["FRONT_FAMILIES"] = V3_JSON[:-2] + ',"nonbot_halt":0}]'; fams = E.front_families(E.front_base_family()); os.environ.pop("FRONT_FAMILIES")
+assert fams[3 * 10 ** 18]["nonbot_halt"] == 0 and fams[E.FRONT_VALUE_WEI]["nonbot_halt"] is None, (fams[3 * 10 ** 18]["nonbot_halt"], fams[E.FRONT_VALUE_WEI]["nonbot_halt"])   # absent = the setting
+for bad in (-1, 1.5, "3", 1001):
+    os.environ["FRONT_FAMILIES"] = V3_JSON[:-2] + f',"nonbot_halt":{json.dumps(bad)}}}]'
+    try:
+        E.front_families(E.front_base_family()); assert False, ("accepted", bad)
+    except SystemExit as e:
+        assert "nonbot_halt" in str(e), (bad, str(e))
+os.environ.pop("FRONT_FAMILIES")
+base = E.FRONT_FAMILIES[E.FRONT_VALUE_WEI]; saved_nh, saved_global = base.get("nonbot_halt"), E.FRONT_NONBOT_HALT
+E.FRONT_NONBOT_HALT = 2; base["nonbot_halt"] = 0
+for i in range(3):                                                                                   # three flat trades with the family's halt off: no halt
+    E.state["armed"].clear(); front_launch(16000 + 100 * i, 170 + i); pos = E.state["position"]; assert pos and pos["nonbot_halt"] == 0, pos and pos.get("nonbot_halt")
+    E.ingest(frame(16001 + 100 * i, [SENT[-1][1]]))
+    for s_ in range(16002 + 100 * i, 16002 + 100 * i + E.FRONT_HOLD_BLOCKS):
+        E.ingest(frame(s_, []))
+    d = front_close(pos, 16001 + 100 * i, 16001 + 100 * i + E.FRONT_HOLD_BLOCKS + 1, int(pos["stake"] * 1.005))
+    assert d.get("nonbot_streak") is None and not d.get("nonbot_halted") and E.state["front_halted"] is None, (i, d.get("nonbot_streak"), d.get("nonbot_halted"), E.state["front_halted"])   # off: not even counted
+base["nonbot_halt"] = 2; E.state["front_nonbot_streak"] = {}
+for i in range(2):                                                                                   # with the threshold 2: the second flat trade halts
+    E.state["armed"].clear(); front_launch(16400 + 100 * i, 180 + i); pos = E.state["position"]; assert pos["nonbot_halt"] == 2
+    E.ingest(frame(16401 + 100 * i, [SENT[-1][1]]))
+    for s_ in range(16402 + 100 * i, 16402 + 100 * i + E.FRONT_HOLD_BLOCKS):
+        E.ingest(frame(s_, []))
+    d = front_close(pos, 16401 + 100 * i, 16401 + 100 * i + E.FRONT_HOLD_BLOCKS + 1, int(pos["stake"] * 1.005))
+assert d["nonbot_streak"] == 2 and d.get("nonbot_halted") and E.state["front_halted"] and "2 v2.433 front trades in a row" in E.state["front_halted"], (d.get("nonbot_halted"), E.state["front_halted"])
+E.state["front_halted"] = None; os.remove(E.FRONT_HALT_FILE); base["nonbot_halt"] = None; E.FRONT_NONBOT_HALT = saved_global; E.state["front_nonbot_streak"] = {}; E.state["room_obs"] = {}; reset(); E.FRONT = False; E.ENTRY = "follow"
+print("ok nonbot_halt per family: 0 turns the flat-trade halt off for that family, the default is FRONT_NONBOT_HALT, the threshold travels with the position")
+
 for _f in (E.LOG_PATH, E.LOG_PATH + ".1"):
     if os.path.exists(_f): os.remove(_f)

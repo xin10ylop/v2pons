@@ -1590,3 +1590,8 @@ with `"dex":"v3"`. Nothing else on the box changes.
   2.433/3.0 lines' decoys and rates; any new launch shape with a repeat buyer in the last 3 hours) and report only when a gate is crossed.
 - **Research closed as no-go tonight:** the ride on 2.433/3.0 (REPORT_R), the hooked pump line (REPORT_H), the bonding-curve launchpad
   (REPORT_K). Open: the V2/V3 brute-force grid with adversarial verification (a workflow, Opus agents).
+- **`nonbot_halt` per family (the commit after 32fd40f).** C-1's dry run at 19:50 UTC: 11 scored trades, three large winners (+30.0%, +34.5%,
+  +13.6%), the rest flat at about -0.2%, mean about +7%, median about 0, no pull before the exit; the chain-based check at 18:55 gave
+  +7.3% / +2.1% over 16 launches. A $5 live probe is justified by the cost of the losers (about -0.2% each) and the per-family pull halt; but
+  the streak halt (8 flat trades in a row) would trip such a line within a day, so a family may now set `nonbot_halt` (0 = off); absent means
+  `FRONT_NONBOT_HALT`; the position carries it; test 20i. 62 tests.

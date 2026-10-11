@@ -292,6 +292,10 @@ about five launches). With the decoys of Oct 11 16:28 (0.0099 ahead) that is 0.0
 carries `auto_stake_eth`, the `fire`/`trade_done` lines the stake used. Settings for the box: `FRONT_STAKE_ETH=0.0097 FRONT_AUTO_STAKE=1
 FRONT_FEES_ALSO=2500 FRONT_TICK_SPACINGS_ALSO=50`.
 
+**`nonbot_halt` per family.** The flat-trade streak halt (`FRONT_NONBOT_HALT`, 8 on the box) was built for the 2.4333 pattern, where a trade
+under +2% means the bot's buy did not come; a follow-type line such as C-1 has most trades flat and a few large winners, so its family sets
+`"nonbot_halt":0` (off for that family) or its own count; a family without the key uses the setting. The threshold travels with the position.
+
 A **wave family** (Oct 11 evening, for the operator C-1) is a listed family with a `trigger`: its launches (`calldata_len` 2276, `value_wei` 0,
 fee 100, tick spacing 1, a token-only range up to the launch tick) are armed from the calldata like any front launch, but nothing fires at the
 launch: the operator's own buy through its router (a value-0 call whose calldata carries the token, word `token_word`, the ETH amount in word
