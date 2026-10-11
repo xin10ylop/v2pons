@@ -1117,10 +1117,13 @@ through a fresh MetaMask account) and started the sequencer-feed trial. The key 
 its path; the key is not in this document or the repository and should be regenerated in the dashboard, since it passed through a chat).
 Dwellir's archive RPC answers with the key (chain 0x1237). The sequencer endpoint answered 403 Forbidden before the trial and **503 Service
 Unavailable** from about 12:55 UTC on, on every handshake from the box and from the research container (Dwellir request IDs
-db5oq3i85bs9a8r1mn90, db5olci85bs9a8qrc0d0, ...); their status page shows nothing; their guide documents 403 only. The likely reading: the
-feed relay is not provisioned for the organization, or Dwellir's own upstream connection to Robinhood's public feed is down. The owner was
-asked to contact Dwellir support (chat, support@dwellir.com) with the request IDs. Probe: a websocket-upgrade `curl` to the feed URL; 101 =
-open; then the 30-second feed test and the dry run.
+db5oq3i85bs9a8r1mn90, db5olci85bs9a8qrc0d0, ...); their status page shows nothing; their guide documents 403 only. **Resolved 13:40 UTC: the 503 was our probe, not Dwellir.** `curl` negotiates HTTP/2 over TLS and Dwellir's sequencer gateway answers a
+WebSocket upgrade over HTTP/2 with 503 from the gateway in 0 ms (its log: "Origin GATEWAY, Backend —"); the same handshake with
+`curl --http1.1` gets the stream at once, and the `websockets` library the engine uses speaks HTTP/1.1 only. So the feed has been live for the
+key since the trial started (about 13:00 UTC). From the research container over 30 s: 340 envelopes, 1,144 blocks, 0 gaps, 0 duplicates; the
+feed sends a backlog of about 90 s of blocks on connect (median lag 30 s, which the engine marks stale and does not trade on), then live
+blocks at a lag of 0.08-0.5 s (minimum 81 ms through the container's proxy; the box's own figure is the one to record). Usage: live
+envelopes are one per block, as costed above. **Any probe of this feed must use HTTP/1.1** (`curl --http1.1` or the engine's library).
 
 The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
 stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
