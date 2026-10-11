@@ -1474,5 +1474,13 @@ misdescribed scratch-root files (6.12), the repository table (2). Not changed in
   liquidity when the launch tick is the range's top tick (`lo < t0 <= hi`: a buy moves the tick down into it; C-1 mints a token-only range).
   `on_front_buy` on a wave pool only moves the price copy. The `ingest` loop never fires a wave pool at its launch and marks it late past the
   window; the pull-shaped-call check covers wave pools. Dry positions log `dry_ret` (the sell's return as the price copy prices it) in
-  `would_sell` and `trade_done`. Fixture `tests/data/c1_launch.json` (a real C-1 launch and its bot's router buy); test 20f. Reviewed by Opus
-  (see the commit after this one for its findings).
+  `would_sell` and `trade_done`. Fixture `tests/data/c1_launch.json` (a real C-1 launch and its bot's router buy); test 20f. The Opus review
+  (OK as a dry-run family; nothing changes for families without a trigger) asked for, and the next commit did: a cap on the router amount
+  (`max_eth`, 10: a forged or reverting value-0 call with an absurd word 2 had wrecked the price copy and `dry_ret` raised inside the feed
+  loop, which would have left the dry slot taken), `flag_word` required, `max_blocks + hold_blocks` under 2,600, a value-0 launch-shaped call
+  that does not decode falling through to the pull scan, `dry_ret` guarded, and `FRONT_BASE_DRY_RUN` (a dry flag for the FRONT_* line alone, so
+  a listed family can go live while the 2.4333 line watches). Known limits it noted: `dry_ret` ignores sells (score the dry run from the
+  chain: `research/session_oct11/c1_recent.py`); dry positions share the one slot (a c1 dry position holds it ~7 s, 2.4333/3.0 dry fires are
+  skipped meanwhile, a c1 trigger during that is lost for sampling); before a LIVE probe the verifier's extra halts (REPORT_V) are manual.
+- **C-1 on the chain at 17:03 UTC** (`c1_recent.py` 150 min): 19 launches, the bot bought in 18, median 0.173 ETH by T + 60 (census days
+  0.3-1.4), the rule's gross return +2.1% mean / +0.8% median, 9/18 above +0.3%, no pull before the exit. Not worth live money yet.

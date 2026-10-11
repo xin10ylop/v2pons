@@ -1184,9 +1184,11 @@ os.environ["FRONT_FAMILIES"] = json.dumps([C1_FAM]); fams = E.front_families(E.f
 c1 = fams[0]; assert c1["name"] == "c1" and c1["calldata_len"] == 2276 and c1["trigger"]["router"] == C1_ROUTER[2:].lower() and c1["trigger"]["selector"] == "e6cb474f" and c1["trigger"]["words"] == 9 \
     and c1["trigger"]["min_wei"] == int(0.005e18) and c1["trigger"]["max_blocks"] == 400 and c1["trigger"]["flag_word"] == 7 and c1["fire_at"] == 0 and c1["liq"] == C1["liq"], c1
 for patch, msg in (({"trigger": None}, "needs a trigger"), ({"fire_at": 5}, "fire_at must be 0"), ({"trigger": {"router": C1_ROUTER}}, "selector"),
-                   ({"trigger": {"router": "0x12", "selector": "e6cb474f"}}, "40 hex"), ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "nope": 1}}, "unknown keys"),
-                   ({"calldata_len": 20}, "calldata_len"), ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "max_blocks": 5000}}, "max_blocks"),
-                   ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "min_eth": 0}}, "min_eth"), ({"trigger": "0xd6d35b56"}, "must be an object"), ({"calldata_len": 1444.5}, "whole number")):
+                   ({"trigger": {"router": "0x12", "selector": "e6cb474f", "flag_word": 7}}, "40 hex"), ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "flag_word": 7, "nope": 1}}, "unknown keys"),
+                   ({"calldata_len": 20}, "calldata_len"), ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "flag_word": 7, "max_blocks": 5000}}, "max_blocks"),
+                   ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "flag_word": 7, "min_eth": 0}}, "min_eth"), ({"trigger": "0xd6d35b56"}, "must be an object"), ({"calldata_len": 1444.5}, "whole number"),
+                   ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f"}}, "flag_word"), ({"trigger": {**C1_FAM["trigger"], "max_blocks": 2000}, "hold_blocks": 601}, "hold_blocks"),
+                   ({"trigger": {**C1_FAM["trigger"], "max_blocks": 2000}, "hold_blocks": 600}, "under 2600"), ({"trigger": {**C1_FAM["trigger"], "max_eth": 0}}, "max_eth")):
     os.environ["FRONT_FAMILIES"] = json.dumps([{**C1_FAM, **patch}])
     try:
         E.front_families(E.front_base_family()); assert False, ("accepted", patch)
@@ -1206,6 +1208,11 @@ E.ingest(frame(12100, [signed(OUTSIDER, UR, int(0.0003e18), "0x12345678" + w(C1_
 assert E.state["position"] is None and p["status"] == "armed" and p["buys"] == 1 and p["eth_in"] == int(0.0003e18) and p["first_buy"] is None, (p["status"], p["buys"], p["first_buy"])
 E.ingest(frame(12110, [signed(CROWD, C1_ROUTER, 0, C1_SELL, 51)]))                                      # the router's sell-shaped call: not a buy, no trigger
 assert E.state["position"] is None and p["first_buy"] is None and p["buys"] == 1, "the router's sell was taken for a buy"
+C1_HUGE = C1_BUY[:10 + 64 * 2] + w(2 ** 200) + C1_BUY[10 + 64 * 3:]                                      # a forged or reverting call with an absurd amount: ignored
+E.ingest(frame(12111, [signed(CROWD, C1_ROUTER, 0, C1_HUGE, 60)]))
+assert E.state["position"] is None and p["first_buy"] is None and p["buys"] == 1 and events("skip")[-1]["why"].startswith("wave: a router call with an absurd amount"), events("skip")[-1]
+E.ingest(frame(12112, [signed(DEPLOYER, POSM, 0, "0xac9650d8" + "00" * 2272, 61)]))                     # a value-0 PositionManager call of the family's length that is no launch: logged, not armed, the pull scan still runs
+assert events("launch_undecoded")[-1]["fam"] == "c1" and p["status"] == "armed" and len(E.state["armed"]) == 1
 sp_before = p["sp"]; E.ingest(frame(12150, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 52)]))                  # the operator's buy: the trigger
 pos = E.state["position"]; assert pos and pos["fam"] == "c1" and pos["entry"] == "front" and pos["trig_seq"] == 12150 and pos["fire_seq"] == 12150 and pos["plan_buy_seq"] == 12152 \
     and pos["send_after"] == 60 and pos["stake"] == int(0.0058e18) and pos["trig_value"] == C1["router_q_wei"] and len(SENT) == n_sent + 1 and p["first_buy"] == 12150 and p["sp"] < sp_before, pos

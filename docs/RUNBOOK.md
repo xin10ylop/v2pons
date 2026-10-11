@@ -289,9 +289,14 @@ behind it (landing + 2) and sell `hold_blocks` later (or at `take_profit`). A pu
 or no trigger make the pool late. The C-1 line as a dry run (its halt file, when live: `HALTED.front.c1`):
 
     sudo sed -i '/^FRONT_FAMILIES=/d' /etc/flip/engine.env; sudo tee -a /etc/flip/engine.env >/dev/null <<'EOF'
-    FRONT_FAMILIES='[{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":60,"stake_eth":0.002,"dry_run":true,"pin":true,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_blocks":400}}]'
+    FRONT_FAMILIES='[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":60,"stake_eth":0.002,"dry_run":true,"pin":true,"fire_at":12,"fire_max":3},{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":60,"stake_eth":0.002,"dry_run":true,"pin":true,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_eth":10,"max_blocks":400}}]'
     EOF
     sudo systemctl restart flip-engine
+
+(The setting is one list: a family left out is dropped, so the 3.0 dry watch stays listed beside c1.) `flag_word`/`flag_value` are required
+(the router's sell has the same shape as its buy); `max_eth` (10) ignores a call with an absurd amount (the feed shows calls that revert);
+`max_blocks + hold_blocks` must stay under 2,600 (armed pools are forgotten after 3,000). `FRONT_DRY_RUN=1` dries every family;
+`FRONT_BASE_DRY_RUN=1` dries the FRONT_* line alone (so a listed family can trade live while the 2.4333 line only watches).
 
 Its dry trades log `would_fire` (the trigger block, `plan_buy_seq` = + 2), `buy_seen` (`dry` true) and `would_sell` with `dry_ret`, the sell's
 return as the engine's price copy (the operator's router buys and strangers' ETH buys) prices it; `trade_done` (`dry` true, `fam` c1,
