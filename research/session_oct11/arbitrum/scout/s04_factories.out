@@ -1,0 +1,7 @@
+uniV2 {'addr': '0xf1d7cc64fb4452f05c498126312ebe29f30fbcf9', 'code_bytes': 13859, 'logs_1M': 2, 'topics': {'PairCreated': 2}}
+uniV3 {'addr': '0x1f98431c8ad98523631ae4a59f267346ea31f984', 'code_bytes': 24535, 'logs_1M': 8, 'topics': {'PoolCreated': 8}}
+camelotV2 {'addr': '0x6eccab422d763ac031210895c81787e87b43a652', 'code_bytes': 23646, 'logs_1M': 0, 'topics': {}}
+camelotV3(algebra) {'addr': '0x1a3c9b1d2f0529d97f2afc5136cc23e58f1fd35b', 'code_bytes': 14031, 'logs_1M': 0, 'topics': {}}
+sushiV2 {'addr': '0xc35dadb65012ec5796536bd9864ed8773abc74c4', 'code_bytes': 11264, 'logs_1M': 4, 'topics': {'PairCreated': 4}}
+sushiV3 {'addr': '0x1af415a1eba07a4986a52b6f2e7de7003d82231e', 'code_bytes': 24535, 'logs_1M': 1, 'topics': {'PoolCreated': 1}}
+requests 12 non-ok []

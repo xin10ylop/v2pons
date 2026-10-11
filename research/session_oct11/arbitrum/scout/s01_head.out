@@ -1,0 +1,5 @@
+head 513904384 ts 1791745962 2026-10-11 19:12:42 baseFee_gwei 0.020022 l1BlockNumber 26171224
+blocks/s over last 1,000,000: 3.6071 s/block 0.2772
+block_7d_back 511699412 ts 1791141162 2026-10-04 19:12:42 blocks in 7 d 2204972 rate_7d 3.6458
+block_24h_back 513600845 blocks in 24 h 303539
+requests 43 non-ok []

@@ -1,0 +1,47 @@
+{
+ "PoolManager(docs)": {
+  "addr": "0x360e68faccca8ca495c1b759fd9eee466db9fb32",
+  "size": 24009,
+  "keccak": "e4b2759e456c9c4ef763e3b4e257c5105e1ba283d7de8b131dd321197de794a4"
+ },
+ "PositionManager(docs)": {
+  "addr": "0xd88f38f930b7952f2db2432cb002e7abbf3dd869",
+  "size": 23877,
+  "keccak": "6156ddaa1c8cd2c26d37455a5dc57b1761dc2848856426c0ac261ae0c7fecd68"
+ },
+ "UniversalRouter(docs)": {
+  "addr": "0xa51afafe0263b40edaef0df8781ea9aa03e381a3",
+  "size": 19499,
+  "keccak": "c15e8e18812f640245cac34716a18270e3d3288e99b328a410401888ff484720"
+ },
+ "StateView(docs)": {
+  "addr": "0x76fd297e2d437cd7f76d50f01afe6160f86e9990",
+  "size": 3531,
+  "keccak": "4c0e823a0cd44b6b2d9485e774c421cf929db3996096d9b84ee6b23525184b9e"
+ },
+ "V3Factory": {
+  "addr": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+  "size": 24535,
+  "keccak": "4d7b8525cd5d14343fa67a732fba5b24cddba11620ca88392f4ec6c52f91fd69"
+ },
+ "V2Factory": {
+  "addr": "0xf1d7cc64fb4452f05c498126312ebe29f30fbcf9",
+  "size": 13859,
+  "keccak": "bab145d02e7005f0d84c6c1639d39b799b0ea16df99ebbdaf5a14d9da820b4e0"
+ },
+ "vbot_router_RH": {
+  "addr": "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+  "size": 0,
+  "keccak": null
+ },
+ "RH_POSM_addr": {
+  "addr": "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+  "size": 0,
+  "keccak": null
+ },
+ "RH_PM_addr": {
+  "addr": "0x8366a39cc670b4001a1121b8f6a443a643e40951",
+  "size": 0,
+  "keccak": null
+ }
+}

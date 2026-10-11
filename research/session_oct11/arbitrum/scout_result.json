@@ -1,0 +1,135 @@
+{
+ "endpoints": [
+  {
+   "url": "https://arb1.arbitrum.io/rpc",
+   "works": true,
+   "req_per_s": 5.3,
+   "getlogs_block_cap": 1000000,
+   "batch_ok": true,
+   "notes": "Official endpoint, best of the four. Chain 0xa4b1. 40 serial calls = 5.3 req/s with 0x429 across ~250 requests (did not stress concurrency). eth_getLogs: NO hard block-range cap and NO silent truncation (address-filtered Initialize over 1,000,000 blocks returned 527, identical to 10x100k splits); but high-cardinality queries time out with -32000 'log query timed out' (PoolManager Swap over 200k blocks failed; 50k = 6683 results OK). Batch of 50 returned 50/50, ids preserved. Practice: chunk address-filtered getLogs at ~250k blocks, keep Swap/high-fanout chunks <=50k, 50-item batches, >=0.2s gap."
+  },
+  {
+   "url": "https://arbitrum-one-rpc.publicnode.com",
+   "works": true,
+   "req_per_s": 5,
+   "getlogs_block_cap": 10000,
+   "batch_ok": true,
+   "notes": "Alias arbitrum-one.publicnode.com behaves the same. chainId/blockNumber/batch(50) OK. ARCHIVE getLogs on historical ranges returns HTTP 403 -32602 'Archive requests require a personal token'; range cap -32701 'exceed maximum block range: 10000'. Usable only for head/recent state, not a 7-day log census."
+  },
+  {
+   "url": "https://arbitrum.drpc.org",
+   "works": true,
+   "req_per_s": 4,
+   "getlogs_block_cap": 10000,
+   "batch_ok": false,
+   "notes": "chainId/block OK. getLogs code 35 'ranges over 10000 blocks are not supported on free plan'. Batch >3 rejected code 31. Fallback only."
+  },
+  {
+   "url": "https://arbitrum.llamarpc.com",
+   "works": false,
+   "batch_ok": false,
+   "notes": "CONNECT tunnel failed, response 502 (unreachable via egress proxy / endpoint down). Not usable."
+  },
+  {
+   "url": "https://1rpc.io/arb",
+   "works": false,
+   "batch_ok": false,
+   "notes": "No response within 15s timeout (curl 28). Not usable."
+  },
+  {
+   "url": "https://rpc.ankr.com/arbitrum",
+   "works": false,
+   "batch_ok": false,
+   "notes": "-32000 'Unauthorized: You must authenticate your request with an API key'. Requires a key, not a public endpoint."
+  }
+ ],
+ "head": 513904384,
+ "blocks_per_s": 3.646,
+ "window_start_block": 511699412,
+ "eth_usd": 2532.85,
+ "feed": "wss://arb1-feed.arbitrum.io/feed WORKS. WebSocket handshake succeeded in 0.45s; read one frame = 636 bytes of JSON {version, messages}; compression=deflate. Each frame message is a Nitro broadcast: m.sequenceNumber (e.g. 491697733), m.message.message.header.kind == 3 (batch), header.timestamp present, and inner.l2Msg is base64 - exactly the protocol src/flip_engine.py feed_loop / decode_batch expects (kind 3 batches of 8-byte-length segments, kind 4 single tx). This is the same first-come sequencer-ordering feed the engine fronts on; it is live and decodable with the existing reader (set FEED_URL to this, FEED_COMPRESSION=deflate). Note: the sequence number is the feed's own counter, not the L2 block number.",
+ "limits": "arb1.arbitrum.io/rpc is the only endpoint fit for a census: >=5 req/s serial with no 429 seen, 50-item batches, address-filtered eth_getLogs over very large ranges with no silent truncation (chunk at ~250k blocks; keep high-cardinality Swap chunks <=50k or you hit 'log query timed out'). publicnode is head/recent + batch only (historical getLogs needs a token, 10k-block cap). drpc is a thin fallback (10k-block getLogs, batch<=3). llamarpc/1rpc/ankr unusable (502 / timeout / key required). No archive-state access was needed or tested. Chain head 513904384 at 2026-10-11 19:12:42 UTC; blocks/s 3.646 (7-day avg; 3.51 over last 24h = 303,539 blocks, 3.61 instantaneous over last 1M). 7-day-back block 511699412 (2026-10-04 19:12:42 UTC); 24h-back block 513600845. ETH/USD 2532.85 from the Arbitrum Chainlink ETH/USD aggregator 0x639fe6ab55c921f74e7fac1ee960c0b6293ba612 latestAnswer() (prefer over the 2570 default).",
+ "v4_posm_code_hash_matches_robinhood": "YES (same bytecode template, immutables differ). ARB PositionManager 0xd88f38f930b7952f2db2432cb002e7abbf3dd869: size 23877, exact keccak 6156ddaa1c8cd2c2..., mask32 c02c5e4430c61262..., skel 679e9da86d63f7a0.... RH PositionManager 0x58daec3116aae6d93017baaea7749052e8a04fa7: size 23877, exact c873e135dc9aaec8... (the c873e135 hash from the brief), mask32 c02c5e4430c61262..., skel 679e9da86d63f7a0.... Exact hashes differ ONLY because of baked-in immutables (chain-specific PoolManager/WETH addresses); the PUSH32-masked hash AND the opcode skeleton are byte-identical, so it is the same Uniswap v4 PositionManager. Same holds for the PoolManager: ARB 0x360e68... and RH 0x8366a39c... both size 24009, exact e4b2759e vs bd388118 (differ), but identical mask32 b19cc33125b4d26e... and skel 86c430d8363a7ffe.... Verified by multicall selector too: 604 of 635 v4 launches in 7d went to 0xd88f via selector ac9650d8. The v4 Initialize topic used: 0xdd466e674ea557f56295e2d0218a125ea4b4f0f6f3307b95f85e6110838d6438.",
+ "venues": [
+  {
+   "name": "Uniswap v4 (PoolManager 0x360e68)",
+   "kind": "v4",
+   "address": "0x360e68faccca8ca495c1b759fd9eee466db9fb32",
+   "verified_how": "Initialize topic emitter (527 logs over last 1M blocks, 635 over 7d); PositionManager 0xd88f38... confirmed by ac9650d8 multicall + code-skeleton match to Robinhood; Uniswap docs addresses (PoolManager 0x360e68, PositionManager 0xd88f38, UniversalRouter 0xa51afafe, StateView 0x76fd297e) all have matching on-chain code.",
+   "launches_24h": 11,
+   "launches_7d_estimate": 104,
+   "worth_censusing": false,
+   "notes": "Counts are quote-paired launches (exactly one side ETH/WETH/USDC/USDC.e/USDT): 104/7d (~15/day), 11 in last 24h (ETH 1, USDT 5, USDC 4, USDC.e 1). Of the 104, only 6 pools ever got a buy; 25 swaps and 10 buys total across all of them - essentially no real trading. Far below the 100/day-with-real-buys bar. All v4 PositionManager launches carry msg.value 0 (liquidity added as WETH, not native ETH), so the volume bot's native-ETH fingerprint cannot occur here."
+  },
+  {
+   "name": "v4 90%-fee token/token batch launcher",
+   "kind": "v4-subfamily",
+   "address": "0xd88f38f930b7952f2db2432cb002e7abbf3dd869",
+   "verified_how": "Grouped 7d v4 launch txs by (to,selector,calldata_len,fee,tick_spacing,value): 474 launches at fee 900000/901000 ppm (90%), tick_spacing 1, giant multicalls (40k-45k bytes), value 0, token/token (473 tok/tok, 1 tok/USDT).",
+   "launches_24h": 0,
+   "launches_7d_estimate": 474,
+   "worth_censusing": false,
+   "notes": "This is the bulk of v4 Initialize volume (~68/day) but it is NOT frontable: token/token pairs (no quote asset to buy with), 90% fee, and the first 6 pools sampled had ZERO swaps in launch+3000 blocks - a wash/honeypot batch launcher, not a volume bot. 0 in last 24h."
+  },
+  {
+   "name": "Uniswap V3 (factory 0x1F98431c)",
+   "kind": "v3",
+   "address": "0x1f98431c8ad98523631ae4a59f267346ea31f984",
+   "verified_how": "eth_getCode 24535 bytes; 8 PoolCreated over last 1M blocks, 26 over 7d (WETH-side).",
+   "launches_24h": 1,
+   "launches_7d_estimate": 26,
+   "worth_censusing": false,
+   "notes": "~4/day. Standard Uniswap V3 factory, init-code-hash path reusable from scanner2/analysis/C. Too low to census."
+  },
+  {
+   "name": "Uniswap V2 (factory 0xf1D7CC64)",
+   "kind": "v2",
+   "address": "0xf1d7cc64fb4452f05c498126312ebe29f30fbcf9",
+   "verified_how": "eth_getCode 13859 bytes; 2 PairCreated over last 1M blocks, 7 over 7d (WETH-side).",
+   "launches_24h": 0,
+   "launches_7d_estimate": 7,
+   "worth_censusing": false,
+   "notes": "~1/day. Negligible."
+  },
+  {
+   "name": "SushiSwap V2 (factory 0xc35dAdB6)",
+   "kind": "v2",
+   "address": "0xc35dadb65012ec5796536bd9864ed8773abc74c4",
+   "verified_how": "eth_getCode 11264 bytes; 4 PairCreated over last 1M blocks, 11 over 7d.",
+   "launches_24h": 1,
+   "launches_7d_estimate": 11,
+   "worth_censusing": false,
+   "notes": "~1.5/day. Negligible."
+  },
+  {
+   "name": "SushiSwap V3 (factory 0x1af415a1)",
+   "kind": "v3",
+   "address": "0x1af415a1eba07a4986a52b6f2e7de7003d82231e",
+   "verified_how": "eth_getCode 24535 bytes; 1 PoolCreated over last 1M blocks, 2 over 7d.",
+   "launches_24h": 0,
+   "launches_7d_estimate": 2,
+   "worth_censusing": false,
+   "notes": "Negligible."
+  },
+  {
+   "name": "Camelot V2 (factory 0x6EcCab42)",
+   "kind": "v2-fork",
+   "address": "0x6eccab422d763ac031210895c81787e87b43a652",
+   "verified_how": "eth_getCode 23646 bytes; allPairsLength()=4454 (real factory, 4454 pairs ever) but 0 logs of any kind in the last 50k blocks and 0 PairCreated over 7d.",
+   "launches_24h": 0,
+   "launches_7d_estimate": 0,
+   "worth_censusing": false,
+   "notes": "Live historically but dormant for new-pair creation in this window."
+  },
+  {
+   "name": "Camelot V3 / Algebra (factory 0x1a3c9B1d)",
+   "kind": "v3-fork-algebra",
+   "address": "0x1a3c9b1d2f0529d97f2afc5136cc23e58f1fd35b",
+   "verified_how": "eth_getCode 14031 bytes; 0 logs of any kind on this address in last 50k blocks and 0 Pool/CustomPool events over 7d.",
+   "launches_24h": 0,
+   "launches_7d_estimate": 0,
+   "worth_censusing": false,
+   "notes": "No pool creations observed at this factory; Camelot V3 may route creation through another deployer, but new-pool activity is in any case far below the census bar. Algebra uses Pool(address,address,address) not PoolCreated if ever censused."
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+PM Initialize 1x1M: 527  10x100k: 527  first/last block (512958089, 513837225)
+V3 factory 1x1M: 8  10x100k: 8  first/last block (512937936, 513882910)
+PM Swap span 50000 n=6683 1.4s
+PM Swap span 200000 {"jsonrpc": "2.0", "id": 1, "error": {"code": -32000, "message": "log query timed out"}} 2.2s
+requests 24 non-ok []

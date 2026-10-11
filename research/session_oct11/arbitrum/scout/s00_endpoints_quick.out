@@ -1,0 +1,26 @@
+== https://arb1.arbitrum.io/rpc
+[{"jsonrpc":"2.0","id":1,"result":"0xa4b1"},{"jsonrpc":"2.0","id":2,"result":"0x1ea18dfd"}]
+ [http 200 0.464892s]
+
+== https://arbitrum-one.publicnode.com
+[{"jsonrpc":"2.0","id":1,"result":"0xa4b1"},{"jsonrpc":"2.0","id":2,"result":"0x1ea18e02"}]
+ [http 200 0.530076s]
+
+== https://arbitrum.llamarpc.com
+curl: (56) CONNECT tunnel failed, response 502
+ [http 000 0.080060s]
+
+== https://1rpc.io/arb
+curl: (28) Operation timed out after 15001 milliseconds with 0 bytes received
+ [http 000 15.001904s]
+
+== https://arbitrum-one-rpc.publicnode.com
+[{"jsonrpc":"2.0","id":1,"result":"0xa4b1"},{"jsonrpc":"2.0","id":2,"result":"0x1ea18e3a"}]
+ [http 200 0.419839s]
+
+== https://arbitrum.drpc.org
+[{"id":1,"jsonrpc":"2.0","result":"0xa4b1"},{"id":2,"jsonrpc":"2.0","result":"0x1ea18e3b"}] [http 200 0.230610s]
+
+== https://rpc.ankr.com/arbitrum
+{"jsonrpc": "2.0", "error": {"code": -32000, "message": "Unauthorized: You must authenticate your request with an API key. Create an account on https://www.ankr.com/rpc/ and generate your personal API key for free."}, "id": null} [http 200 0.142015s]
+

@@ -1,0 +1,34 @@
+v4 Initialize 7d: 635
+by quote (7d): {'ETH': 22, 'USDC': 45, 'USDT': 31, 'USDC.e': 5, 'other/non-quote': 528, 'WETH': 1, 'quote-pair': 3}
+by quote (24h): {'USDC.e': 1, 'other': 2, 'quote-pair': 1, 'ETH': 1, 'USDT': 5, 'USDC': 4}
+hooks top: [('0x0000000000000000000000000000000000000000', 618), ('0x561ae0c8d4f3aeeaeb92fa892281a4da97de0aa0', 7), ('0x42bae9191e09b871c1d79d4707d1d653f905a8c0', 3), ('0x4f98afa912d1b7eb82223eaaaca0c7fabb8480cc', 1), ('0x630e9cac0fff557bd3a01daa111ed253c771bcc0', 1), ('0xcab62e007ab6656877ab556cea330de27ae025dc', 1)]
+fee/ts top: [((900000, 1), 301), ((901000, 1), 171), ((950000, 9500), 19), ((2500, 25), 10), ((9000, 90), 8), ((30000, 300), 7), ((0, 30), 7), ((770000, 7700), 6)]
+distinct launch txs: 177
+launch txs fetched: 177
+
+=== top launch shapes (7d) [to, selector, calldata_len, fee, ts, value_eth] ===
+  n= 136 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=42500 fee=900000 ts=1 val=0.0
+  n= 102 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=42500 fee=901000 ts=1 val=0.0
+  n=  66 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=41252 fee=900000 ts=1 val=0.0
+  n=  64 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=40004 fee=900000 ts=1 val=0.0
+  n=  36 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=44996 fee=901000 ts=1 val=0.0
+  n=  35 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=43748 fee=900000 ts=1 val=0.0
+  n=  33 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=41252 fee=901000 ts=1 val=0.0
+  n=  14 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=1892 fee=950000 ts=9500 val=0.0
+  n=   7 24h=  0  to=0x90c8cb83c4257156bf3ee0c9bb8f164b20a04da1 sel=69073b9e len=548 fee=0 ts=30 val=0.0
+  n=   4 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=1316 fee=770000 ts=7700 val=0.0
+  n=   4 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=1316 fee=30000 ts=300 val=0.0
+  n=   3 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=1316 fee=880000 ts=8800 val=0.0
+  n=   3 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=1316 fee=950000 ts=9500 val=0.0
+  n=   3 24h=  1  to=0x360e68faccca8ca495c1b759fd9eee466db9fb32 sel=6276cbbe len=196 fee=3000 ts=60 val=0.0
+  n=   2 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=1316 fee=810000 ts=8100 val=0.0
+  n=   2 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=2020 fee=2500 ts=25 val=0.0
+  n=   2 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=1316 fee=2500 ts=25 val=0.0
+  n=   2 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=2020 fee=30000 ts=300 val=0.0
+  n=   2 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=1316 fee=9000 ts=90 val=0.0
+  n=   2 24h=  0  to=0xd88f38f930b7952f2db2432cb002e7abbf3dd869 sel=ac9650d8 len=2020 fee=989999 ts=9900 val=0.0
+
+vbot-shape (1444 bytes, value in {2.4333285,3.0,5.0}) 7d: 0
+multicall ac9650d8 launches 7d: 604 of which 1444 bytes: 8
+multicall calldata lengths: [(42500, 238), (41252, 99), (40004, 64), (1316, 55), (44996, 36), (1892, 35), (43748, 35), (2020, 25), (1444, 8), (2052, 7)]
+requests 4 non-ok []
