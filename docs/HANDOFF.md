@@ -1100,6 +1100,13 @@ the caveat that it "may skip intermediate blocks during congestion", which would
 node-required variants keep every block but need one's own Robinhood node. Order of trial: Dwellir first (cheap, every block), BlockRazor
 only if the measured hop costs the trade.
 
+Oct 11 11:53 UTC, from the box: its AWS region is **us-east-2 (Ohio)**, the sequencer's own region (an earlier note in this session that
+put the box in Google Cloud was wrong: that was the research container). Dwellir's feed host is one fixed address at OVH in Warrenton,
+Virginia (not geo-routed), so its hop is Ohio-Virginia-Ohio. The feed still refused the box: `HTTP/2 403`, Cloudflare Ray ID
+`a48daa31abf0000e-ORD` (Chicago edge) at 11:53:31 UTC; that Ray ID goes in the owner's mail to chain-developers-group@robinhood.com so the
+operator can find the rule. No published reply time exists for that address (searched Reddit, X, GitHub, Cloudflare's forum: nothing on this
+block or on response times); Cloudflare's forum is consistent that only the site owner can lift a block it set.
+
 The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
 stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
 
