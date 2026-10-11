@@ -1215,6 +1215,29 @@ line's schedule changed after the skeptic's measurement (to 02:57 UTC: +6..+10 i
 families code (16.13) can dry-run it beside the 2.4333 line and tell when it changes back. The 2.4333 line itself came back: 33 launches in
 the same 4 hours (about 200 a day), with the bot's buy at +6..+9 in the dry run.
 
+**The 24-hour study (`research/session_oct9_10/line_adapt/`, every v3.0 and v5.0 launch Oct 10 14:00 to Oct 11 14:30 UTC, every swap
+replayed exactly):** the hour table (`regime.txt`) dates the change. Until 03:59 UTC Oct 11 both 1% lines put the bot's buy at +8..+10 and
+pulled long after it (hundreds of blocks). From 01:00 to 04:00 the fronter `0x8cf143dd` bought 0.00297 ETH at +2/+3 in nearly every v3.0
+pool (78 of 90, 166 of 172, 63 of 80, while the line launched 90-172 an hour) and the operator pulled at bot+3; at 04:00 it began pulling
+pools the fronter had entered at +7..+9, before its own buy (11 of 80 that hour, every one with the fronter's buy before it); from 04:22 it
+moved the bot's buy on BOTH 1% lines to +24..+55 (median about +40; the 5.0 line, which nobody fronted, moved too), launches fell to 13-20
+an hour, the fronter vanished, and at 13:00 it tried again in 4 pools and was pulled at +7..+9 in all 4. So the operator's answer to a
+fronter on the 1% lines was, in order: the pull at bot+3, then a trap pull within about 5 blocks of an outsider's early buy, then a late
+and spread-out bot buy. The 2.4333 line was not changed (our own front's exits at +12% on Oct 11 afternoon).
+
+The replay over the new regime (170 v3.0 pools from 04:22, 86 v5.0), at 0.0058 ETH:
+- v3.0, the plain front (+1, hold 18-20): -4% (the bot comes after the deadline); with hold 60: +3.7% but exposed to the trap (an outsider at
+  +1..+3 was pulled at +7..+9 in 15 of 16 cases: with that reaction, -100%).
+- **v3.0, the delayed front: buy at +10 to +16, sell into the bot's buy, deadline 60: +6.00% mean, +6.17% median, 97.6% win, 0 pulled, $0.90
+  a trade, about $360 a day** at the line's new rate; the 4 trap-pulled pools cost only a reverted buy's gas (the engine now marks a pulled
+  pool late before the fire, 16.13). +18 and +20 give +5.9% (the bot sometimes comes first). The break-even fill rate is near zero.
+- v3.0, the ride (buy after the bot's buy, hold 10-20 or to its next buy): -2% to -4%. The bot's later buys do not lift the price.
+- v5.0, the delayed front at +10 to +25, deadline 60: +1.71% mean, 89.5% win, 0 pulled, $0.26 a trade, about $52 a day; thin.
+- The one unknown that the replay cannot price: the operator's reaction to an outsider buy at +10..+16. No outsider bought at those offsets
+  in the new regime. Its known reaction is to a buy at +2/+3 (a pull about 5 blocks later); a buy at +12 pulled 5 blocks later would be at
+  +17, before the bot's buy, and would cost the stake. The only test is a live probe at the smallest stake with the decoy halt on: 20
+  trades at 0.002 ETH risk $100 at most and the halt stops it after 5 losses (about $25).
+
 The dry run cannot measure the landing block: `_fire` plans the dry buy at the fire block + 2 by construction (`plan_buy_seq`). The first
 live trades measured it: **live again from 14:26 UTC Oct 11** on the 2.4333 line at 0.002 ETH (the 3.0 settings removed from the env, the
 code still de88eb9), 25 trades in 10 minutes, +$15.07, every exit into the bot's buy at +12% on average, the buy landing at +2 in 24 of 25
