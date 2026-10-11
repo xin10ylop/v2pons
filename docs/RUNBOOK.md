@@ -227,8 +227,8 @@ arms these launches from the launch transaction itself (the pool is in its calld
     set_kv FRONT 1 && set_kv FRONT_DRY_RUN 1 && sudo systemctl restart flip-engine
     sleep 10 && sudo python3 ~/v2pons/deploy/results.py | head -5
 
-The header shows `release 0.9   LIVE` (follow unchanged) and `front strategy: ON, DRY RUN`. After an hour, `results.py` shows `FRONT DRY RUN: N
-would-buys ...`; check those against the chain before the live probe:
+The header shows `release 0.9   LIVE` and the LINES table shows the line `dry`. After an hour, its row shows `dry: N would-have-traded in 24 h,
+M priced ...%`; check those against the chain before the live probe:
 
     set_kv FRONT_DRY_RUN 0 && set_kv FRONT_STAKE_ETH 0.0012 && sudo systemctl restart flip-engine
 
@@ -247,7 +247,7 @@ when the bot's buy would fail its own minOut (`front_bot_reverts` in the log; th
 the operator's decoys behind our buy went 0.00012 -> 0.001485 -> 0.00495 ETH, each just above the threshold then set, and sold 323 positions
 ahead of the bot's buy; the two Oct 10 -100% trades were 0.00495 ETH bot buys under the old 0.005 threshold, section 4f) sells at once even below the take-profit: in the
 operator's quick-pull hours the pull comes 2-4 blocks after that buy, and a small one would otherwise leave our sell to the deadline.
-Live, `results.py` lists front's last 5 trades and a `FRONT LIVE:` summary line (count, $, average and worst return, exits, pulls first).
+Live, `results.py` lists the last 8 live trades of every line and, per line, the count, $, average and worst return and the pulls (section 9.3 of the handoff).
 
 ## 4f. Oct 10 afternoon: the bot's buy by its router, follow's near-miss halt, payout (HANDOFF section 16)
 
@@ -351,8 +351,9 @@ totals, the money):
 
     sudo python3 ~/v2pons/deploy/results.py            # the last 24 hours; add a number for more hours: results.py 72
 
-Its `PROFIT BY STRATEGY` table, under the header, puts follow and front side by side: trades and $ after gas over the last hour,
-today (UTC), the report's window and every log kept, then each strategy's share of winners, $ a trade, and average and worst return.
+Its `LINES` table, under the header, has one row per front line (v2.433, c1, v3.0, v3crowd): LIVE or dry, the stake (the auto stake
+and its ceiling, or fixed), then trades and $ after gas over the last hour, today (UTC), the report's window and every log kept; under
+it each line's share of winners, $ a trade, average and worst return, and the operator's pulls. Follow is not shown (it is off).
 The engine reads today's trades back from its log when it starts, so a restart keeps each strategy's daily cap and stop.
 A stop or restart (`systemctl stop/restart`) is safe mid-trade: on SIGTERM the engine starts no new trade, lets the open one sell
 on schedule and settle (front's pull check included), then exits (`stopping`, then `stopped` in the log; at most `STOP_WAIT_S`, 40 s,

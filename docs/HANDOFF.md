@@ -512,12 +512,17 @@ top it up from the relay's profit with `withdraw`. Refills so far: 0.001 ETH at 
 
 ### 9.3 Reading results.py
 
-Header: service, release, LIVE/DRY RUN, entry, caps; `halted:` for all live trading; the `front strategy:` line (ON/OFF, DRY RUN/LIVE,
-stake, cap, daily stop, `halted: no` or `HALTED: <reason>` with the resume command). Then **PROFIT BY STRATEGY**: trades and $ after gas
-per strategy over the last hour, today (UTC), the window and every log kept; per strategy the share up, $ a trade, average and worst
-return, `pull after our sell: N blocks xM …; BEFORE our sell xK` (K > 0 means a halt happened) and `by stake` when the stake changed.
-Then launches seen, `not traded:` skip reasons (the whole window, so old reasons linger for 24 h), LIVE TRADES (every follow row; front's
-last 5 rows), totals, `by strategy`, `FRONT LIVE` summary, `FRONT DRY RUN` summary, DRY-RUN DECISIONS, ALARMS, money.
+Header: service, release, LIVE/DRY RUN, the last start, the window. Then the halts: `halted: no`, or each halt in force with its resume
+command (all live trading `HALTED`, every front line `HALTED.front`, one line `HALTED.front.<name>`, each also "in memory" when the
+file is gone but the engine was not restarted). Then **LINES**, one row per front line (launch family) as the engine's last start line
+lists them: `LIVE` or `dry`, the stake (`auto $5 (up to $25)` = the auto stake now and the family's ceiling; `$5 fixed` for a wave or crowd
+line), then trades and $ after gas over the last hour, today (UTC), the window and every log kept (`since`); a dry line's row carries its
+would-have-traded count and the mean of the `dry_ret` prices instead; a line traded before but not configured now shows `off`. Under the
+table, per line: share up, $ a trade, average and worst return, the operator's pull after our sell in bands (`0-1`, `2-3`, `4-9`, `10+`
+blocks, `none within 30`; `pull BEFORE our sell xK` means K halts) and `by stake` when the stake changed; a dry line's ups, worst and last
+decision. Then `launches seen` per line with the fires, the unseen-fingerprint line, `not traded:` skip reasons (the window), the last 8
+LIVE TRADES (line, stake, result, $, sold at, pull at, exit), each dry line's last 3 decisions, ALARMS, money. Follow does not appear
+(FOLLOW=0 since Oct 11; a follow halt file is still shown if it exists and FOLLOW is on).
 
 ---
 
@@ -1595,3 +1600,9 @@ with `"dex":"v3"`. Nothing else on the box changes.
   +7.3% / +2.1% over 16 launches. A $5 live probe is justified by the cost of the losers (about -0.2% each) and the per-family pull halt; but
   the streak halt (8 flat trades in a row) would trip such a line within a day, so a family may now set `nonbot_halt` (0 = off); absent means
   `FRONT_NONBOT_HALT`; the position carries it; test 20i. 62 tests.
+- **results.py per line (Oct 11 ~20:45 UTC, the owner: "add the c1, make it more clean to read, remove the follow line").** The screen is
+  now built around the front lines as the start line lists them (section 9.3): a LINES table (LIVE/dry, the auto stake and its ceiling or the
+  fixed stake, trades and $ per period, a dry line's would-have-traded count and mean price), per-line detail with the pulls in bands, launches
+  and fires per line, the last 8 live trades with their line and stake, each dry line's last decisions. Follow is gone from the screen (FOLLOW=0).
+  Front trades logged before families existed (no `fam`) count under the first configured line. Tested on synthetic logs (an empty log, an old
+  start line, halt files on disk and in memory, a retired line's trades); Opus-reviewed.
