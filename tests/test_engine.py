@@ -1258,5 +1258,48 @@ assert wait_for(lambda: any(e.get("dry") and e.get("fam") == "c1" and "dry_ret" 
 del E.FRONT_FAMILIES[0]; E.WAVE_ROUTERS.discard(c1["trigger"]["router"]); E.state["delayed"] = any(f["fire_at"] or f["trigger"] for f in E.FRONT_FAMILIES.values()); reset(); E.FRONT = False; E.ENTRY = "follow"
 print("ok a wave family (C-1): the value-0 launch arms with its one-sided liquidity and waits; the operator's router buy is the trigger (buy + 2, sell at the hold); the router's sell, a stranger's buy, a pull before the trigger and the window's end never fire; the dry family scores its sell")
 
+# --- 20h. known fingerprints and the auto stake: a family accepts the fees / tick spacings it is known to use (the 2.4333 line's 2500/50 and
+# 5000/100 of Oct 11) and refuses the rest; FRONT_AUTO_STAKE sizes the stake to the room the bot's decoys leave, measured at each bot buy
+E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"; reset(); E.state["nonce"] = 1000; E.state["front_halted"] = None; E.state["armed"].clear()
+base = E.FRONT_FAMILIES[E.FRONT_VALUE_WEI]; saved = {k: base.get(k) for k in ("fees_also", "tick_spacings_also", "stake_wei", "ahead_max_wei")}
+base["fees_also"] = [5000]; base["tick_spacings_also"] = [100]
+E.state["position"] = {"pid": "0x" + "00" * 32, "dry": False, "buy_hash": None, "buy_seq": 1, "sell_sent": True, "plan_buy_seq": 0, "send_after": 0, "feed_tokens": None, "entry": "front"}   # the slot held: launches arm, none fires
+front_launch(14000, 100); p = E.state["armed"][FPID]; assert p["eligible"] and events("armed")[-1]["fingerprint"] == "known", events("armed")[-1]       # the line's own 2500/50
+E.state["armed"].clear(); E.ingest(frame(14010, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, "0x" + relaunch(5000, 100, FX["sqrt_p"], FX["liq"]).hex(), 101)]))
+p = [q for q in E.state["armed"].values()][-1]; assert p["fee"] == 5000 and p["tick_spacing"] == 100 and p["eligible"] and events("armed")[-1]["fingerprint"] == "known", events("armed")[-1]   # the Oct 11 pair
+E.state["armed"].clear(); E.ingest(frame(14020, [signed(DEPLOYER, POSM, E.FRONT_VALUE_WEI, "0x" + relaunch(3000, 60, FX["sqrt_p"], FX["liq"]).hex(), 102)]))
+assert not E.state["armed"] and events("armed")[-1]["why"] == "front: fee 3000", events("armed")[-1]                                                  # an unseen pair is still refused
+for patch, msg in (({"fees_also": [0]}, "fees_also"), ({"fees_also": list(range(1, 10))}, "fees_also"), ({"fees_also": "5000"}, "fees_also"), ({"tick_spacings_also": [True]}, "tick_spacings_also"), ({"tick_spacings_also": [40000]}, "tick_spacings_also")):
+    os.environ["FRONT_FAMILIES"] = V3_JSON[:-2] + "," + json.dumps(patch)[1:-1] + "}]"
+    try:
+        E.front_families(E.front_base_family()); assert False, ("accepted", patch)
+    except SystemExit as e:
+        assert msg in str(e), (patch, str(e))
+os.environ["FRONT_FAMILIES"] = V3_JSON[:-2] + ',"fees_also":[5000,2500],"tick_spacings_also":[50]}]'; fams = E.front_families(E.front_base_family()); os.environ.pop("FRONT_FAMILIES")
+assert fams[3 * 10 ** 18]["fees_also"] == [2500, 5000] and fams[3 * 10 ** 18]["tick_spacings_also"] == [50], fams[3 * 10 ** 18]
+# the auto stake
+E.FRONT_AUTO_STAKE = True; E.FRONT_AUTO_STAKE_WINDOW = 8; E.state["room_obs"] = {}; base["stake_wei"] = int(0.0097e18); base["ahead_max_wei"] = int(0.0115e18)
+assert E.auto_stake(base) == int(0.002e18) and E.fam_stake(base) == int(0.002e18), "no observations: the minimum"
+DUST = lambda n: signed(OUTSIDER, UR, int(0.00495e18), "0x12345678" + w(FTOKEN), n)
+for i in range(6):                                                                                   # six pools where the decoys took 0.0099 ETH before the bot's buy
+    L = 14100 + 50 * i; E.state["armed"].clear(); front_launch(L, 110 + i); p = E.state["armed"][FPID]
+    E.ingest(frame(L + 1, [DUST(200 + 2 * i), signed(CROWD, UR, int(0.00495e18), "0x12345678" + w(FTOKEN), 201 + 2 * i)])); assert p["eth_in"] == int(0.0099e18)
+    E.ingest(frame(L + 9, [signed(CROWD, BOT, int(0.15e18), FBUY, 300 + i)]))
+    r = events("room")[-1]; assert r["fam"] == "v2.433" and r["obs"] == i + 1 and abs(r["ahead_eth"] - 0.0099) < 1e-9 and 0.0022 < r["room_eth"] < 0.0030, r   # the room (~0.0126 at this fee) less the decoys
+    obs = sorted(E.state["room_obs"]["v2.433"]); exp = max(int(0.002e18), min(base["stake_wei"], (obs[int(len(obs) * 0.25)] - int(0.0004e18)) // 10 ** 14 * 10 ** 14))
+    assert E.auto_stake(base) == (int(0.002e18) if i + 1 < E.FRONT_AUTO_STAKE_OBS else exp) and int(0.0021e18) <= exp <= int(0.0026e18), (i, E.auto_stake(base), exp)   # the 25th percentile less the margin, to 0.0001
+want = E.auto_stake(base); E.state["position"] = None; E.state["armed"].clear(); n_sent = len(SENT); front_launch(14500, 120); pos = E.state["position"]
+assert pos and pos["stake"] == want and len(SENT) == n_sent + 1, (pos and pos["stake"], want)
+bf = rlp.decode(SENT[-1][1]); assert bf[5].hex()[8 + 64 * 5: 8 + 64 * 6] == w(want), "the buy's amountIn is the auto stake"
+E.state["position"] = {"pid": "0x" + "00" * 32, "dry": False, "buy_hash": None, "buy_seq": 1, "sell_sent": True, "plan_buy_seq": 0, "send_after": 0, "feed_tokens": None, "entry": "front"}
+for i in range(8):                                                                                   # eight clean pools: the room is the whole 0.0124, the stake climbs to the family's ceiling
+    L = 14600 + 50 * i; E.state["armed"].clear(); front_launch(L, 130 + i); E.ingest(frame(L + 9, [signed(CROWD, BOT, int(0.15e18), FBUY, 320 + i)]))
+r = events("room")[-1]; assert r["ahead_eth"] == 0 and 0.0120 < r["room_eth"] < 0.0128 and r["obs"] == 8, r
+assert E.auto_stake(base) == int(0.0097e18), E.auto_stake(base)
+E.state["position"] = None; E.state["armed"].clear(); front_launch(15100, 140); assert E.state["position"]["stake"] == int(0.0097e18), E.state["position"]["stake"]
+E.FRONT_AUTO_STAKE = False; assert E.fam_stake(base) == int(0.0097e18), "auto stake off: the family's stake"
+base.update(saved); E.state["room_obs"] = {}; E.state["position"] = None; reset(); E.FRONT = False; E.ENTRY = "follow"
+print("ok known fingerprints (fees_also, tick_spacings_also) arm, an unseen fee is refused; the auto stake measures the room at each bot buy and sizes the stake from the minimum to the family's ceiling")
+
 for _f in (E.LOG_PATH, E.LOG_PATH + ".1"):
     if os.path.exists(_f): os.remove(_f)
