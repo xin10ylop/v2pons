@@ -11,3 +11,4 @@ __pycache__/
 research/**/rpc_log.jsonl
 research/**/txcache.jsonl
 research/**/cache/
+research/**/x01_inits.json
