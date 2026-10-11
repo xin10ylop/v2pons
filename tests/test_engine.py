@@ -1007,14 +1007,16 @@ E.state["nonce"] = 738; d5 = front_deadline_trade(9700, 9)
 assert d5["nonbot_streak"] == 3 and E.state["front_halted"] and "3 v2.433 front trades in a row paid under +2%" in E.state["front_halted"] and E.state["halted"] is None and os.path.exists(E.FRONT_HALT_FILE), E.state["front_halted"]
 E.state["nonce"] = 740; E.state["armed"].pop(FPID, None); front_launch(9800, 10); assert E.state["position"] is None and "halted" in events("skip")[-1]["why"], events("skip")[-1]
 got = E.restore_today(); assert E.state["front_nonbot_streak"].get("v2.433") == 3 and got["front_today"] >= 5, (E.state["front_nonbot_streak"], got)   # the run goes on across a restart
-os.remove(E.FRONT_HALT_FILE); E.state["front_halted"] = None; E.FRONT_NONBOT_HALT = 5; reset(); E.FRONT = False; E.ENTRY = "follow"
+os.remove(E.FRONT_HALT_FILE); E.restore_today()                                          # the owner cleared the halt: the run starts again at the next start
+assert E.state["front_nonbot_streak"].get("v2.433") == 0 and events("nonbot_streak_reset")[-1]["was"] == 3, E.state["front_nonbot_streak"]
+E.state["front_halted"] = None; E.FRONT_NONBOT_HALT = 5; reset(); E.FRONT = False; E.ENTRY = "follow"
 print("ok the decoy signal: 3 live front exits in a row that paid under +2% halt front (its own file, per family, restored at a restart); a paying exit resets the count")
 
 # 20c. the FRONT_FAMILIES parser: the runbook's JSON, and every wrong input refused at start
-V3_JSON = '[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928363067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":20,"stake_eth":0.002,"dry_run":true,"pin":true}]'
+V3_JSON = '[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":20,"stake_eth":0.002,"dry_run":true,"pin":true}]'
 os.environ["FRONT_FAMILIES"] = V3_JSON; fams = E.front_families(); os.environ.pop("FRONT_FAMILIES")
 assert set(fams) == {E.FRONT_VALUE_WEI, 3 * 10 ** 18} and fams[3 * 10 ** 18]["name"] == "v3.0" and fams[3 * 10 ** 18]["stake_wei"] == int(0.002e18) and fams[3 * 10 ** 18]["dry_run"] and fams[3 * 10 ** 18]["pin"] \
-    and fams[3 * 10 ** 18]["ahead_max_wei"] == int(0.07e18) and fams[3 * 10 ** 18]["sqrt_p"] == 679394651928363067279918579724198 and fams[E.FRONT_VALUE_WEI]["name"] == "v2.433" and not fams[E.FRONT_VALUE_WEI]["dry_run"], fams
+    and fams[3 * 10 ** 18]["ahead_max_wei"] == int(0.07e18) and fams[3 * 10 ** 18]["sqrt_p"] == 679394651928963067279918579724198 and fams[E.FRONT_VALUE_WEI]["name"] == "v2.433" and not fams[E.FRONT_VALUE_WEI]["dry_run"], fams
 def refused(js):
     os.environ["FRONT_FAMILIES"] = js
     try:
@@ -1026,12 +1028,16 @@ def refused(js):
 base3 = json.loads(V3_JSON)[0]
 for change, needle in ((("minout", 0.9), "unknown keys"), (("stake_wei", 10 ** 15), "unknown keys"), (("value_wei", None), "must give value_wei"), (("sqrt_p", None), "must give sqrt_p"),
                        (("value_wei", 3e18), "integer or a string of digits"), (("stake_eth", 0.05), "stake"), (("stake_eth", 0), "stake"), (("fee", 0), "fee 0"), (("bot_minout", 1.5), "bot_minout"),
-                       (("hold_blocks", 0), "above 0"), (("value_wei", str(E.FRONT_VALUE_WEI)), "two families launch with"), (("name", "v2.433"), "two families named")):
+                       (("hold_blocks", 0), "hold_blocks"), (("value_wei", str(E.FRONT_VALUE_WEI)), "two families launch with"), (("name", "v2.433"), "two families named"),
+                       (("dry_run", "false"), "true or false"), (("hold_blocks", 1.9), "whole number"), (("fee", True), "must be a number"), (("ahead_max_eth", 0.001), "at least the stake"),
+                       (("name", 5), "name must be"), (("fire_at", 149), "TRIGGER_MAX_BLOCKS"), (("take_profit", -1), "take_profit"), (("liq", "0"), "out of range"), (("sqrt_p", "1"), "sqrt_p")):
     f = dict(base3); k, v = change
     if v is None: f.pop(k)
     else: f[k] = v
     why = refused(json.dumps([f])); assert why and needle in why, (change, why)
 assert "JSON list" in refused('{"a": 1}') and "not an object" in refused("[1]") and "fire_at" in refused(json.dumps([{**base3, "fire_at": -1}]))
+assert "given twice" in refused('[{"name":"a","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"1","dry_run":true,"dry_run":false}]')
+assert "not valid JSON" in refused('[{"name":"a",}]')
 assert fams[3 * 10 ** 18]["fire_at"] == 0 and fams[3 * 10 ** 18]["fire_max"] == E.FRONT_FIRE_MAX
 os.environ["FRONT_FAMILIES"] = "  "; assert set(E.front_families()) == {E.FRONT_VALUE_WEI}; os.environ.pop("FRONT_FAMILIES")
 print("ok FRONT_FAMILIES: the runbook's JSON parses (stake, room, dry run, pin, fire offset per family); unknown keys, missing fingerprints, floats, a stake over the cap, fee 0, duplicates are refused at start")
@@ -1041,7 +1047,7 @@ print("ok FRONT_FAMILIES: the runbook's JSON parses (stake, room, dry run, pin, 
 E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"; reset(); E.state["nonce"] = 760; E.state["front_halted"] = None
 E.FRONT_FAMILIES[V3_VALUE] = {**FAM0, "name": "v3", "value_wei": V3_VALUE, "fee": 10000, "tick_spacing": 200, "sqrt_p": V3_SQRT, "liq": V3_LIQ, "bot_minout": 0.95, "ahead_max_wei": int(0.07e18),
                                "take_profit": 9.0, "hold_blocks": 60, "stake_wei": int(0.002e18), "dry_run": False, "pin": False, "fire_at": 12, "fire_max": 2}
-n_sent = len(SENT); E.ingest(frame(9900, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 3)]))
+E.state["delayed"] = True; n_sent = len(SENT); E.ingest(frame(9900, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 3)]))
 p3 = E.state["armed"].get(d3["pid"]); assert p3 and p3["status"] == "armed" and E.state["position"] is None and len(SENT) == n_sent, "fired in the launch block despite fire_at 12"
 for s_ in range(9901, 9912):
     E.ingest(frame(s_, [])); assert E.state["position"] is None and p3["status"] == "armed", s_
@@ -1062,7 +1068,13 @@ E.ingest(frame(9975, [signed(CROWD, BOT, int(0.12e18), FBUY, 86)])); assert p3["
 for s_ in range(9976, 9984):
     E.ingest(frame(s_, []))
 assert E.state["position"] is None, "fired after the bot's buy"
-del E.FRONT_FAMILIES[V3_VALUE]; reset(); E.FRONT = False; E.ENTRY = "follow"
+reset(); E.state["nonce"] = 790; E.state["armed"].clear()                                # the operator's pull before our fire offset (a value-0 call on its router carrying the token): late, no fire
+E.ingest(frame(9990, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 6)])); p3 = E.state["armed"][d3["pid"]]
+E.ingest(frame(9998, [signed(DEPLOYER, BOT, 0, "0xa0f7978d" + w(FTOKEN) + w(0) * 3, 7)])); assert p3["status"] == "late" and "pull" in events("skip")[-1]["why"], events("skip")[-1]
+for s_ in range(9999, 10004):
+    E.ingest(frame(s_, []))
+assert E.state["position"] is None, "fired into a pulled pool"
+E.state["delayed"] = False; del E.FRONT_FAMILIES[V3_VALUE]; reset(); E.FRONT = False; E.ENTRY = "follow"
 print("ok a family's fire offset: the delayed front fires at launch + fire_at, holds for the bot's late buy, is late past fire_at + fire_max or once the bot has bought")
 for _f in (E.LOG_PATH, E.LOG_PATH + ".1"):
     if os.path.exists(_f): os.remove(_f)

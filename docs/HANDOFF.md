@@ -1141,8 +1141,10 @@ hold_blocks, stake_eth}` (a field left out takes the FRONT_* value; big numbers 
 `FRONT_STAKE_ETH`). The 3.0 ETH line, from the skeptic's numbers (16.12):
 
 ```
-FRONT_FAMILIES=[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":20}]
+FRONT_FAMILIES=[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":20,"stake_eth":0.002,"dry_run":true,"pin":true}]
 ```
+(`dry_run` true: that line's fires are `would_fire` lines while the FRONT_* line trades live; the 3.0 line's numbers for a live probe wait
+for the 16.14 study.)
 
 What changed in the engine (tests 20a-20c, 54 in all): `ingest_tx` looks the family up by value (any family's value, 1,444 bytes, the
 multicall selector); `arm_front` carries the family in the armed pool (`fam`, `fam_cfg`) and logs it (`armed`, `launch`, `trade_done` lines
@@ -1169,7 +1171,24 @@ too), each family has its own `dry_run` and `pin` (so one line can be dry-run wh
 front turns itself off at start with no family at all, the streak is per family, by return, and survives restarts; test 20c covers the
 parser. Not changed: `results.py` shows the base family's stake and averages the lines together (cosmetic).
 
-Deploying it: `git pull` (54 tests). The FRONT_* settings stay the 2.4333 line's (the box's env must be back at them after the Oct 11 dry
+A second review (Opus, on e5f0de1 and 6f72ce3) found the box's path safe (its env parses, the 2.4333 line unchanged apart from the decoy
+halt) and listed what a delayed family still needed, all fixed in the commit after 6f72ce3 (55 tests): a wrong family setting now turns
+front off for the run (`FRONT_FAMILY_ERROR`, an alarm at start) instead of stopping the service, so follow is never taken down by a typo and
+a base-family setting of 0 is an error, not "not compared"; every field has a type and a bound (no booleans for numbers, no 1.9 for a block
+count, no NaN; hold 1..600, fire_max 0..10, fire_at + fire_max within `TRIGGER_MAX_BLOCKS` 150, take_profit (0, 9], the room between the
+stake and 0.5 ETH, the price in v4's range, liquidity above 0, `dry_run`/`pin` true or false, a key given twice is refused, a parse error
+names the family); a pull-shaped call (value 0, on the bot's router, the PositionManager or the PoolManager, carrying the pool's token)
+before a delayed fire marks the pool late (`skip: a liquidity call on the pool before our fire`), so the dry run no longer counts the
+operator's +7..+9 pulls as deadline exits and a live delayed front never buys into a pulled pool; the start's relay-balance check uses the
+smallest live family stake; the streak restore takes each family's last `trade_done` whatever the day (decoys keep no calendar) and a run
+at or over the threshold starts again at 0 when front's halt file is gone (`nonbot_streak_reset` line), so clearing a decoy halt does not
+halt again on the next trade; `fire`, `would_fire` and `trade_done` lines carry `launch_seq`. Open design point (the review's): a live
+delayed family holds the one position slot for its whole hold (60 blocks and the 3 s pull check), during which the 2.4333 line's launches are
+skipped (`position open`, then `too late`); at 200-440 launches a day that can cost several +14% trades a day for a 3.0 trade worth +6% at
+best, so a delayed family stays dry until a precedence rule exists (the simplest: a delayed family only fires when no base-family launch
+is within its hold; not built).
+
+Deploying it: `git pull` (55 tests). The FRONT_* settings stay the 2.4333 line's (the box's env must be back at them after the Oct 11 dry
 run: `FRONT_VALUE_WEI 2433328500000000000` or unset, `FRONT_FEE 2500`, `FRONT_TICK_SPACING 50`, `FRONT_SQRT_P 1604517591721945638372359205383840`,
 `FRONT_LIQ 49279426163460954002188`, `FRONT_BOT_MINOUT 0.99`, `FRONT_AHEAD_MAX_ETH 0.008`, `FRONT_TAKE_PROFIT 0.01`, `FEE_MAX_PPM 9999`,
 `FRONT_PIN 0`), then `FRONT_FAMILIES` with the 3.0 line's JSON plus `"stake_eth":0.002,"dry_run":true,"pin":true` for its dry run beside
