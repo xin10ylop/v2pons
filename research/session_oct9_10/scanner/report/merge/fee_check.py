@@ -20,5 +20,6 @@ for pid in F[k]["pids"]:
     d = E.decode_launch(bytes.fromhex(T[p["launch_tx"]]["input"][2:]))
     if d is None: out["undecoded"] += 1; continue
     t0 = E.tick_at(d["sqrt_p"]); liq = d["mint_liq"] if d["lo"] <= t0 < d["hi"] else 0
-    out[(E.front_mismatch(d, liq), tuple(E.front_fingerprint(d)))] += 1
+    fam = E.FRONT_FAMILIES[E.FRONT_VALUE_WEI]                                          # since 16.13 the checks take the family (its fee is the bound)
+    out[(E.front_mismatch(d, liq, fam), tuple(E.front_fingerprint(d, fam)))] += 1
 print("FEE_MAX_PPM", E.FEE_MAX_PPM, dict(out))

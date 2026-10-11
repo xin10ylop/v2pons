@@ -265,13 +265,16 @@ top-up, the log export, the payout.
 Front trades every launch line listed in `FRONT_FAMILIES` beside the FRONT_* one, each with its own fee, fingerprint, room, take-profit and
 hold (HANDOFF 16.13). To add the 3.0 ETH line (fee 1%, the bot's minOut 0.95 of the launch quote):
 
-    set_kv FRONT_FAMILIES '[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":20}]'
+    set_kv FRONT_FAMILIES '[{"name":"v3.0","value_wei":"3000000000000000000","fee":10000,"tick_spacing":200,"sqrt_p":"679394651928963067279918579724198","liq":"25725498245903809899643","bot_minout":0.95,"ahead_max_eth":0.07,"take_profit":9,"hold_blocks":20,"stake_eth":0.002,"dry_run":true,"pin":true}]'
     sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | grep -o '"front_families":\[[^]]*\]'
 
-The start line lists the families the engine will trade. A launch's `fam` is in its `armed`, `launch` and `trade_done` lines. Remove the
-setting (an empty value) to go back to the FRONT_* line alone. `FRONT_NONBOT_HALT` (5) halts front, with its own file, after that many live
-front trades in a row that did not exit into the bot's buy (the decoy signal of Oct 10); clear it like any front halt once the cause is
-understood: `sudo rm /var/log/flip/HALTED.front && sudo systemctl restart flip-engine`.
+That dry-runs the 3.0 line (`"dry_run":true`: its fires are `would_fire` lines) while the FRONT_* line trades live. The start line lists
+the families the engine will trade; a wrong JSON (an unknown key, a missing field, a stake over 0.006) stops the start with a message naming
+the family. A launch's `fam` is in its `armed`, `launch`, `would_fire` and `trade_done` lines. After the dry run's gates (HANDOFF 16.12): the
+same JSON with `"dry_run":false` for 50 trades at 0.002 ETH, then `"stake_eth":0.0058`. Remove the setting (an empty value) to go back to
+the FRONT_* line alone. `FRONT_NONBOT_HALT` (5) halts front, with its own file, after that many live front trades of one family in a row
+that paid under +2% (the decoy signal of Oct 10); clear it like any front halt once the cause is understood:
+`sudo rm /var/log/flip/HALTED.front && sudo systemctl restart flip-engine`.
 
 ## 5. Daily
 
