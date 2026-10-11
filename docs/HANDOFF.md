@@ -1059,6 +1059,18 @@ or any further network range", so it is not an option for the box. The exact fee
 alchemy.com/rpc/robinhood, dwellir.com/networks/robinhood and /docs/robinhood, docs.blockrazor.io (streams/node-stream/robinhood-chain),
 quicknode.com/chains/robinhood, github.com/chainstacklabs/robinhood-chain-sequencer-feed.
 
+Oct 11 04:30 UTC, the owner's position: "we are not banned, maybe it resets, dig into it". What is known and what is being done: (1) the
+block is of an address *range*, so the box may be collateral in a block aimed at a heavier user of the same AWS range, or the target itself;
+public data cannot tell, only Robinhood can. (2) The official channel is `chain-developers-group@robinhood.com` (docs.robinhood.com/chain/
+report-issue; no Discord or Telegram; the terms say most concerns are resolved through it); a short factual mail was drafted for the owner
+(what we ran, from which address, when the 403 began, asking whether the block is temporary, what limit was exceeded, what usage is
+permitted, and whether the address can be allowed). (3) The one thing on our side that could have looked like abuse is the reconnect rate:
+`feed_loop` drops the socket after 2.0 s without a message (`feed_stall`) and reconnects after 0.2 s, so a flaky hour could mean many
+handshakes; the owner was asked for the per-hour counts of `feed_connected`/`feed_stall`/`feed_error` from the box's log (recorded below when
+pasted). If they are high, the engine should keep the socket through short gaps (ping-based liveness) before any reconnection. (4) Whether the
+block lifts is checked by hand, one handshake at a time (`curl` with the websocket upgrade headers against the feed; 403 while blocked, 101
+when open), not by an automatic loop, and never from another address. (5) The paid feed (Dwellir) stays the sure route.
+
 The money at 18:35: relay 0.474 ETH (about $1,220), wallet 0.0096 ETH; both move with `relay_ops.py` (9.2, 16.6 step 9) while the engine is
 stopped. The day's result: front 1,047 trades +$1,227.11, follow 6 trades +$0.61 (the owner's 17:53 screen).
 
