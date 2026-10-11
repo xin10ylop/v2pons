@@ -520,8 +520,9 @@ line), then trades and $ after gas over the last hour, today (UTC), the window a
 would-have-traded count and the mean of the `dry_ret` prices instead; a line traded before but not configured now shows `off`. Under the
 table, per line: share up, $ a trade, average and worst return, the operator's pull after our sell in bands (`0-1`, `2-3`, `4-9`, `10+`
 blocks, `none within 30`; `pull BEFORE our sell xK` means K halts) and `by stake` when the stake changed; a dry line's ups, worst and last
-decision. Then `launches seen` per line with the fires, the unseen-fingerprint line, `not traded:` skip reasons (the window), the last 8
-LIVE TRADES (line, stake, result, $, sold at, pull at, exit), each dry line's last 3 decisions, ALARMS, money. Follow does not appear
+decision. The order on screen: header, halts, LINES, the last 8 LIVE TRADES (line, stake, result, $, sold at, pull at, exit; so
+`head -24` shows them), BY LINE (the detail above), `launches seen` per line with the fires, the unseen-fingerprint line, `not traded:`
+skip reasons (front only, the window), each dry line's last 3 decisions, ALARMS, money. Follow does not appear
 (FOLLOW=0 since Oct 11; a follow halt file is still shown if it exists and FOLLOW is on).
 
 ---
@@ -1605,4 +1606,6 @@ with `"dex":"v3"`. Nothing else on the box changes.
   fixed stake, trades and $ per period, a dry line's would-have-traded count and mean price), per-line detail with the pulls in bands, launches
   and fires per line, the last 8 live trades with their line and stake, each dry line's last decisions. Follow is gone from the screen (FOLLOW=0).
   Front trades logged before families existed (no `fam`) count under the first configured line. Tested on synthetic logs (an empty log, an old
-  start line, halt files on disk and in memory, a retired line's trades); Opus-reviewed.
+  start line, halt files on disk and in memory, a retired line's trades); Opus-reviewed: the fixes (a nested f-string only Python 3.12
+  parses, follow's dry trades and rows kept out, a front that is off shown as off, the stake in $5 bands, failed pull checks counted,
+  the base line found by its launch value, a broken pipe under `| head` ignored, the trade list moved up so `head -24` shows it).

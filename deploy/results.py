@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """results.py: the flip engine's results in one screen. The engine's state (live or dry run, halted or not), each front line (a launch
 family: v2.433, c1, v3.0, v3crowd, ...) with its stake and its live result over the last hour, today, the report's window and every log
-kept, the launches seen per line, the last live trades, the dry lines' scored decisions, the alarms, and the money in the wallet and the relay.
+kept, the last live trades, each line's detail, the launches seen per line, the dry lines' decisions, the alarms, and the money in the
+wallet and the relay. Follow is not shown.
 
     sudo python3 ~/v2pons/deploy/results.py          # the last 24 hours
     sudo python3 ~/v2pons/deploy/results.py 72       # the last 72 hours
@@ -9,11 +10,12 @@ kept, the launches seen per line, the last live trades, the dry lines' scored de
 import glob, gzip, json, os, subprocess, sys, time, urllib.request
 HOURS = float(sys.argv[1]) if len(sys.argv) > 1 else 24
 LOG = "/var/log/flip/engine.jsonl"; ENV = "/etc/flip/engine.env"; HALT = "/var/log/flip/HALTED"
-LAST_TRADES = 8                                                                # live trades listed one by one (the rest are in the table)
+LAST_TRADES = 8                                                                # live trades listed one by one (every filled one counts in the table)
 hms = lambda t: time.strftime("%m-%d %H:%M:%S", time.gmtime(t))
 hm = lambda t: time.strftime("%m-%d %H:%M", time.gmtime(t))
-usd = lambda u: f"{'+' if u >= 0 else '-'}${abs(u):.2f}"
-n_of = lambda n, w: f"{n} {w}{'' if n == 1 else 's'}"
+usd = lambda u: "%s$%.2f" % ("+" if u >= 0 else "-", abs(u))
+pct = lambda r: "%+.1f%%" % (100 * r)
+n_of = lambda n, w: "%d %s%s" % (n, w, "" if n == 1 else "s")
 
 
 def read_logs(hours):
@@ -68,39 +70,48 @@ def balance(rpc, addr):
         return None
 
 
-def families(st, e, flow):
+def families(st, e, now):
     """the front lines as the engine's last start line lists them (release 0.9's families); before families existed, the one FRONT_* line.
-    Each: name, live (its trades are sent), its stake in ETH (the auto stake's ceiling when the stake is automatic), the auto stake now"""
+    Each: name, mode (LIVE: its trades are sent; dry; off), its stake in ETH (the auto stake's ceiling when the stake is automatic), the
+    auto stake now (from the engine's last status line of this run, if any), and the base line's name (the FRONT_* line: trades logged
+    before families existed are its)"""
     dry_all = st.get("dry_run", e.get("DRY_RUN", "1") != "0") if st else e.get("DRY_RUN", "1") != "0"
-    front_on = st.get("front", e.get("FRONT", "0") != "0") if st else e.get("FRONT", "0") != "0"
+    front_on = (st.get("front", e.get("FRONT", "0") != "0") if st else e.get("FRONT", "0") != "0") and not now.get("front_halted")
     front_dry = st.get("front_dry_run", e.get("FRONT_DRY_RUN", "1") != "0") if st else e.get("FRONT_DRY_RUN", "1") != "0"
     fams = st.get("front_families")
-    if not fams:                                                               # an older start line: the FRONT_* line alone
-        fams = [{"name": e.get("FRONT_FAMILY_NAME", "v2.433"), "stake_eth": num(st.get("front_stake_eth", e.get("FRONT_STAKE_ETH")), 0), "dry_run": False}]
-    auto = flow.get("auto_stake_eth") or {} if flow.get("t", 0) >= st.get("t", 0) else {}   # the engine's last status line, if it is from this run
+    if fams is None:                                                           # an older start line (or none): the FRONT_* line alone
+        fams = [{"name": e.get("FRONT_FAMILY_NAME", "v2.433"), "stake_eth": num(st.get("front_stake_eth", e.get("FRONT_STAKE_ETH")), 0), "dry_run": False, "trigger": None}]
+    auto_on = bool(st.get("front_auto_stake", e.get("FRONT_AUTO_STAKE", "0") != "0")); auto = now.get("auto_stake_eth") or {}
     out = []
     for f in fams:
-        live = front_on and not dry_all and not front_dry and not f.get("dry_run") and f.get("dex") != "v3"   # a V3 family is dry whatever it says
-        out.append({"name": f["name"], "live": live, "stake_eth": num(f.get("stake_eth"), 0), "auto": f["name"] in auto, "auto_eth": auto.get(f["name"]),
-                    "dex": f.get("dex", "v4"), "trigger": f.get("trigger")})
-    return out
+        if not front_on:
+            mode = "off"
+        elif dry_all or front_dry or f.get("dry_run") or f.get("dex") == "v3":   # a V3 family is dry whatever it says
+            mode = "dry"
+        else:
+            mode = "LIVE"
+        out.append({"name": f["name"], "mode": mode, "stake_eth": num(f.get("stake_eth"), 0), "auto": auto_on and not f.get("trigger"), "auto_eth": auto.get(f["name"]),
+                    "dex": f.get("dex", "v4"), "trigger": f.get("trigger"), "value_eth": f.get("value_eth")})
+    base_wei = num(st.get("front_value_wei"), None)
+    base = next((f["name"] for f in out if base_wei and f.get("value_eth") is not None and abs(f["value_eth"] * 1e18 - base_wei) < 1e9), None) or e.get("FRONT_FAMILY_NAME", "v2.433")
+    return out, base
 
 
 def pull_summary(ds):
-    """the operator's reaction to the line's trades: its pull, in blocks after our sell landed, in four bands, and the pulls before our sell"""
-    bands = {"0-1": 0, "2-3": 0, "4-9": 0, "10+": 0}; first = later = 0
+    """the operator's reaction to the line's trades: its pull, in blocks after our sell landed, in four bands; the pulls before our sell"""
+    bands = {"0-1": 0, "2-3": 0, "4-9": 0, "10+": 0}; first = later = failed = 0
     for d in ds:
         sold, pull = d.get("sell_after_buy_blocks"), d.get("pull_after_buy_blocks")
         if d.get("pulled_before_sell") or (pull is not None and sold is not None and pull < sold):
             first += 1
         elif pull is not None and sold is not None:
             g = pull - sold; bands["0-1" if g <= 1 else "2-3" if g <= 3 else "4-9" if g <= 9 else "10+"] += 1
+        elif d.get("pull_check"):
+            failed += 1
         elif "pull_after_buy_blocks" in d:
             later += 1
-    if not (first or later or any(bands.values())):
-        return ""
-    parts = [f"{k} blocks x{v}" for k, v in bands.items() if v] + ([f"none within 30 x{later}"] if later else [])
-    bits = (["pull after our sell: " + ", ".join(parts)] if parts else []) + ([f"pull BEFORE our sell x{first}  <== halts"] if first else [])
+    parts = ["%s blocks x%d" % (k, v) for k, v in bands.items() if v] + (["none within 30 x%d" % later] if later else []) + (["check failed x%d" % failed] if failed else [])
+    bits = (["pull after our sell: " + ", ".join(parts)] if parts else []) + (["pull BEFORE our sell x%d (each one halted the line)" % first] if first else [])
     return "; ".join(bits)
 
 
@@ -132,132 +143,125 @@ def result_col(d):
         return "UNKNOWN"                                                       # no buy receipt within the timeout: it never went in, or the RPC failed
     if isinstance(b, dict) and b.get("status") == "reverted":
         return "buy reverted"
-    return f"{100 * d['ret']:+.1f}%" if d.get("ret") is not None else "?"
+    return pct(d["ret"]) if d.get("ret") is not None else "?"
 
 
-def lines_table(fams, done, ev, e, eth_usd):
-    """each front line: LIVE or dry, its stake, then trades and $ after gas over the last hour, today (UTC), the window and every log kept
-    (from the trades' own results; the engine's own day counters start again at each restart); under it one detail line per line"""
-    base = fams[0]["name"] if fams else "v2.433"
-    fam_of = lambda d: d.get("fam") or base                                    # a front trade before families existed: the FRONT_* line's
-    front = [d for d in done if d.get("entry") == "front"]
-    by = {}
-    for d in front:
-        by.setdefault(fam_of(d), []).append(d)
+def stake_label(f, eth_usd):
+    if f["mode"] == "off" and not f["stake_eth"]:
+        return "-"
+    cap = "$%.0f" % (f["stake_eth"] * eth_usd) if f["stake_eth"] else "?"
+    if f["auto"]:
+        return ("auto $%.0f (up to %s)" % (f["auto_eth"] * eth_usd, cap)) if f["auto_eth"] is not None else "auto (up to %s)" % cap
+    return cap + " fixed"
+
+
+def lines_table(fams, base, by, front, dry_by, eth_usd, cols):
+    """each front line: LIVE, dry or off, its stake, then trades and $ after gas over the last hour, today (UTC), the window and every log
+    kept (from the trades' own results; the engine's own day counters start again at each restart)"""
     names = [f["name"] for f in fams] + sorted(k for k in by if k not in {f["name"] for f in fams})   # a line traded before, not configured now
-    now = time.time(); t0_all = front[0]["t"] if front else now
-    cols = [("last hour", now - 3600), ("today (UTC)", now - now % 86400), (f"last {HOURS:g} h", now - HOURS * 3600), (f"since {hm(t0_all)[:5]}", 0)]
-    cell = lambda ds: f"{len(ds):>4} {usd(sum(d.get('pnl_usd') or 0 for d in ds)):>9s}"
-    dry_done = [x for x in ev if x["ev"] == "trade_done" and x.get("dry")]
+    cell = lambda ds: "%4d %9s" % (len(ds), usd(sum(d.get("pnl_usd") or 0 for d in ds)))
     print("\nLINES  (per period: trades, $ after gas; 'since' = every log kept)")
-    print(f"  {'line':9s}{'':5s}{'stake':22s}" + "".join(f"{c:>15s}" for c, _ in cols))
+    print("  %-9s%-5s%-22s" % ("line", "", "stake") + "".join("%15s" % c for c, _ in cols))
+    if not names:
+        print("  no front line loaded (see the lines above)")
     for n in names:
         f = next((f for f in fams if f["name"] == n), None); ds = by.get(n, [])
-        if f is None:
-            mode, stake = "off", "-"
-        else:
-            mode = "LIVE" if f["live"] else "dry"
-            if f["auto"] and f["auto_eth"] is not None:
-                stake = f"auto ${f['auto_eth'] * eth_usd:.0f} (up to ${f['stake_eth'] * eth_usd:.0f})"
-            elif not f["stake_eth"]:
-                stake = "?"
-            else:
-                stake = f"${f['stake_eth'] * eth_usd:.0f}" + (" fixed" if f["trigger"] else "")
-        if ds:
-            row = "".join(f"{cell([d for d in ds if d.get('t', 0) >= t0]):>15s}" for _, t0 in cols)
-        elif f and f["live"]:
-            row = f"{'no live trades yet':>60s}"
-        else:
-            dd = [x for x in dry_done if (x.get("fam") or base) == n]; sc = [x["dry_ret"] for x in dd if x.get("dry_ret") is not None]
-            row = f"{(f'dry: {len(dd)} would-have-traded in {HOURS:g} h' + (f', {len(sc)} priced {100 * sum(sc) / len(sc):+.1f}% a trade' if sc else '')) if dd else 'dry: nothing is sent':>60s}"
-        print(f"  {n:9s}{mode:5s}{stake:22s}" + row)
+        mode = f["mode"] if f else "off"; stake = stake_label(f, eth_usd) if f else "-"
+        if ds and mode != "dry":
+            row = "".join("%15s" % cell([d for d in ds if d.get("t", 0) >= t0]) for _, t0 in cols)
+        elif mode == "LIVE":
+            row = "%60s" % "no live trades yet"
+        elif mode == "off":
+            row = "%60s" % "off"
+        else:                                                                  # a dry line: its scored decisions (its earlier live trades are under BY LINE)
+            dd = dry_by.get(n, []); sc = [x["dry_ret"] for x in dd if x.get("dry_ret") is not None]
+            row = "%60s" % (("dry: %d would-have-traded in %g h" % (len(dd), HOURS) + (", %d priced %s a trade" % (len(sc), pct(sum(sc) / len(sc))) if sc else "")) if dd else "dry: nothing is sent")
+        print("  %-9s%-5s%-22s" % (n, mode, stake) + row)
     if len([n for n in names if by.get(n)]) > 1:
-        print(f"  {'all lines':36s}" + "".join(f"{cell([d for d in front if d.get('t', 0) >= t0]):>15s}" for _, t0 in cols))
-    for n in names:                                                            # one line of detail per line: live results, then the dry run's scoring
-        ds = by.get(n, [])
+        print("  %-36s" % "all live trades" + "".join("%15s" % cell([d for d in front if d.get("t", 0) >= t0]) for _, t0 in cols))
+
+
+def line_details(fams, by, dry_by, eth_usd):
+    """one block per line: the live results (share up, $ a trade, average and worst return, the pulls, by stake band), a dry line's scoring"""
+    names = [f["name"] for f in fams] + sorted(k for k in by if k not in {f["name"] for f in fams})
+    first = True
+    for n in names:
+        ds = by.get(n, []); f = next((f for f in fams if f["name"] == n), None); dd = dry_by.get(n, [])
+        if not ds and not dd:
+            continue
+        if first:
+            print("\nBY LINE"); first = False
         if ds:
             rets = [d["ret"] for d in ds if d.get("ret") is not None]; u = [d.get("pnl_usd") or 0 for d in ds]
-            print(f"  {n}: {n_of(len(ds), 'trade')}, {sum(1 for x in u if x > 0) / len(ds):.0%} up, {usd(sum(u) / len(ds))} a trade"
-                  + (f", {100 * sum(rets) / len(rets):+.1f}% a trade on average, worst {100 * min(rets):+.1f}%" if rets else ""))
+            print("  %s: %s, %.0f%% up, %s a trade" % (n, n_of(len(ds), "trade"), 100 * sum(1 for x in u if x > 0) / len(ds), usd(sum(u) / len(ds)))
+                  + (", %s a trade on average, worst %s" % (pct(sum(rets) / len(rets)), pct(min(rets))) if rets else ""))
             ps = pull_summary(ds)
             if ps:
-                print(f"    {ps}")
-            stakes = {}
+                print("    " + ps)
+            bands = {}                                                         # the stake changes over time (the auto stake every trade): $ a trade in $5 bands
             for d in ds:
                 if d.get("stake"):
-                    stakes.setdefault(round(d["stake"] / 1e18 * eth_usd), []).append(d.get("pnl_usd") or 0)
-            if len(stakes) > 1:
-                print("    by stake: " + "; ".join(f"${k}: {n_of(len(g), 'trade')} {usd(sum(g))} ({usd(sum(g) / len(g))} a trade)" for k, g in sorted(stakes.items())))
-        dd = [x for x in dry_done if (x.get("fam") or base) == n]
-        f = next((f for f in fams if f["name"] == n), None)
-        if dd and f and not f["live"]:
+                    k = 5 * int(d["stake"] / 1e18 * eth_usd // 5); bands.setdefault(k, []).append(d.get("pnl_usd") or 0)
+            if len(bands) > 1:
+                print("    by stake: " + "; ".join("$%d-%d: %s %s (%s a trade)" % (k, k + 5, n_of(len(g), "trade"), usd(sum(g)), usd(sum(g) / len(g))) for k, g in sorted(bands.items())))
+        if dd and f and f["mode"] != "LIVE":
             sc = [x["dry_ret"] for x in dd if x.get("dry_ret") is not None]
-            print(f"  {n} dry run: " + (f"{sum(1 for r in sc if r > 0)} of {len(sc)} priced trades up, worst {100 * min(sc):+.1f}%; " if sc else "none priced from the chain yet; ")
-                  + f"the last at {hms(dd[-1]['t'])} UTC" + (f": {100 * dd[-1]['dry_ret']:+.1f}%, {exit_of(dd[-1].get('sell_why'))}" if dd[-1].get("dry_ret") is not None else ""))
-    return base
+            print("  %s dry run: %d would-have-traded, " % (n, len(dd)) + ("%d of %d priced from the chain up, %s a trade on average, worst %s" % (sum(1 for r in sc if r > 0), len(sc), pct(sum(sc) / len(sc)), pct(min(sc))) if sc else "none priced from the chain yet")
+                  + "; the last at %s UTC" % hms(dd[-1]["t"]) + (": %s, %s" % (pct(dd[-1]["dry_ret"]), exit_of(dd[-1].get("sell_why"))) if dd[-1].get("dry_ret") is not None else ""))
 
 
 def main():
     ev, st, flow, done_all = read_logs(HOURS); e = env(); eth_usd = num(e.get("ETH_USD"), 2570.0)
     active = subprocess.run(["systemctl", "is-active", "--quiet", "flip-engine"], stderr=subprocess.DEVNULL).returncode == 0
     dry = st.get("dry_run", True) if st else e.get("DRY_RUN", "1") != "0"      # no start line in any log: what the env file says
-    fams = families(st, e, flow); fnow = flow if flow.get("t", 0) >= st.get("t", 0) else {}   # the engine's last status line, if it is from this run
+    now_ = flow if flow.get("t", 0) >= st.get("t", 0) else st                  # the engine's last word on its state: the last status line of this run, else the start line
+    fams, base = families(st, e, now_)
+    front = [d for d in done_all if d.get("entry") == "front"]
+    by = {}
+    for d in front:
+        by.setdefault(d.get("fam") or base, []).append(d)                      # a front trade before families existed: the FRONT_* line's
+    wf = {x.get("pid"): x for x in ev if x["ev"] == "would_fire"}
+    dry_done = [x for x in ev if x["ev"] == "trade_done" and x.get("dry") and (x.get("fam") or wf.get(x.get("pid"), {}).get("entry") == "front")]   # a dry record has no entry: its would_fire has
+    dry_by = {}
+    for x in dry_done:
+        dry_by.setdefault(x.get("fam") or base, []).append(x)
+    now = time.time(); t0_all = front[0]["t"] if front else now
+    cols = [("last hour", now - 3600), ("today (UTC)", now - now % 86400), ("last %g h" % HOURS, now - HOURS * 3600), ("since " + hm(t0_all)[:5], 0)]
     print("=" * 100)
-    print(f"FLIP ENGINE  service {'RUNNING' if active else 'STOPPED'}   release {st.get('release', '?')}   {'DRY RUN (nothing is sent)' if dry else 'LIVE'}   "
-          + (f"started {hm(st['t'])} UTC   " if st else f"no start line in {LOG}   ") + f"report: the last {HOURS:g} h to {hm(time.time())} UTC")
+    print("FLIP ENGINE  service %s   release %s   %s   %s" % ("RUNNING" if active else "STOPPED", st.get("release", "?"), "DRY RUN (nothing is sent)" if dry else "LIVE",
+                                                              ("started %s UTC" % hm(st["t"])) if st else "no start line in " + LOG))
+    print("report: the last %g h, to %s UTC" % (HOURS, hm(now)))
     halts = []
     if os.path.exists(HALT):
-        halts.append(f"HALTED (all live trading): {open(HALT).read().strip()[:120] or '(empty file)'}\n  to resume, once understood: sudo rm {HALT} && sudo systemctl restart flip-engine")
-    elif fnow.get("halted"):
-        halts.append(f"HALTED in memory (all live trading, {hms(fnow['t'])} UTC: {str(fnow['halted'])[:120]}); the file is gone: sudo systemctl restart flip-engine")
+        halts.append("HALTED (all live trading): %s\n  to resume, once understood: sudo rm %s && sudo systemctl restart flip-engine" % (open(HALT).read().strip()[:120] or "(empty file)", HALT))
+    elif now_.get("halted") and active:
+        halts.append("HALTED in memory (all live trading): %s; the file is gone: sudo systemctl restart flip-engine" % str(now_["halted"])[:120])
     if os.path.exists(HALT + ".front"):
-        halts.append(f"HALTED (every front line): {open(HALT + '.front').read().strip()[:120] or '(empty file)'}\n  to resume, once understood: sudo rm {HALT}.front && sudo systemctl restart flip-engine")
-    elif fnow.get("front_halted"):
-        halts.append(f"front lines OFF for this run: {str(fnow['front_halted'])[:120]} (sudo systemctl restart flip-engine)")
+        halts.append("HALTED (every front line): %s\n  to resume, once understood: sudo rm %s.front && sudo systemctl restart flip-engine" % (open(HALT + ".front").read().strip()[:120] or "(empty file)", HALT))
+    elif now_.get("front_halted") and active:
+        halts.append("front lines OFF for this run: %s (sudo systemctl restart flip-engine)" % str(now_["front_halted"])[:120])
     for f in fams:
         p = HALT + ".front." + f["name"]
         if os.path.exists(p):
-            halts.append(f"HALTED ({f['name']} only): {open(p).read().strip()[:120] or '(empty file)'}\n  to resume, once understood: sudo rm {p} && sudo systemctl restart flip-engine")
-        elif (fnow.get("fam_halted") or {}).get(f["name"]):
-            halts.append(f"{f['name']} HALTED in memory: {str(fnow['fam_halted'][f['name']])[:120]}; the file is gone: sudo systemctl restart flip-engine")
+            halts.append("HALTED (%s only): %s\n  to resume, once understood: sudo rm %s && sudo systemctl restart flip-engine" % (f["name"], open(p).read().strip()[:120] or "(empty file)", p))
+        elif (now_.get("fam_halted") or {}).get(f["name"]) and active:
+            halts.append("%s HALTED in memory: %s; the file is gone: sudo systemctl restart flip-engine" % (f["name"], str(now_["fam_halted"][f["name"]])[:120]))
     if os.path.exists(HALT + ".follow") and e.get("FOLLOW", "1") != "0":
-        halts.append(f"follow HALTED: {open(HALT + '.follow').read().strip()[:120] or '(empty file)'} (sudo rm {HALT}.follow && sudo systemctl restart flip-engine)")
+        halts.append("follow HALTED: %s (sudo rm %s.follow && sudo systemctl restart flip-engine)" % (open(HALT + ".follow").read().strip()[:120] or "(empty file)", HALT))
     print("\n".join(halts) if halts else "halted: no")
     if st.get("front_family_error"):
-        print(f"FAMILIES NOT ALL LOADED: {str(st['front_family_error'])[:160]}; tell Claude")
-    base = lines_table(fams, done_all, ev, e, eth_usd)
+        print("FAMILIES NOT ALL LOADED: %s; tell Claude" % str(st["front_family_error"])[:160])
+    lines_table(fams, base, by, front, dry_by, eth_usd, cols)
     if not ev:
-        print(f"\nno engine events in the last {HOURS:g} hours: the engine is not running or not logging.  sudo systemctl status flip-engine --no-pager")
-    arm = [x for x in ev if x["ev"] == "armed" and x.get("entry", "front") == "front"]
-    fired = {}
-    for x in ev:
-        if x["ev"] in ("fire", "would_fire") and x.get("entry") == "front":
-            fired[x.get("fam") or base] = fired.get(x.get("fam") or base, 0) + 1
-    per = {}
-    for x in arm:
-        per[x.get("fam") or base] = per.get(x.get("fam") or base, 0) + 1
-    order = [f["name"] for f in fams] + sorted(k for k in set(per) | set(fired) if k not in {f["name"] for f in fams})
-    print(f"\nlaunches seen {len(arm)}" + (": " + ", ".join(f"{n} {per.get(n, 0)} (fired {fired.get(n, 0)})" for n in order if per.get(n) or fired.get(n)) if arm else "")
-          + (f"; the last at {hms(arm[-1]['t'])} UTC" if arm else " -- none: the operator has not launched (or its launches look different)"))
-    nf = [x for x in arm if str(x.get("fingerprint", "")).startswith("new")]
-    if nf:                                                                     # the bot changed its launch (traded unless the family pins its fingerprint)
-        print(f"launches with a fingerprint not seen before: {len(nf)} (the last at {hms(nf[-1]['t'])} UTC, {nf[-1].get('fam') or base}: {nf[-1]['fingerprint'][5:70]}); "
-              f"{'TRADED' if nf[-1].get('eligible') else 'not traded'}; tell Claude")
-    skips = [x for x in ev if x["ev"] == "skip"]
-    if skips:
-        reasons = {}
-        for x in skips:
-            why = str(x.get("why")); why = "halted (see above)" if why.startswith("halted") else why.split(" (")[0]
-            reasons[why[:60]] = reasons.get(why[:60], 0) + 1
-        top = sorted(reasons.items(), key=lambda kv: -kv[1])
-        print("not traded: " + "; ".join(f"{k} x{v}" for k, v in top[:6]) + (f"; {len(top) - 6} other reasons" if len(top) > 6 else ""))
-    # live trades: every buy we sent, with its result (or why there is none)
-    fires = [x for x in ev if x["ev"] == "fire"]
-    done = [x for x in ev if x["ev"] == "trade_done" and not x.get("dry")]
+        print("\nno engine events in the last %g hours: the engine is not running or not logging.  sudo systemctl status flip-engine --no-pager" % HOURS)
+    # live trades: every front buy we sent in the window, with its result (or why there is none)
+    all_fires = [x for x in ev if x["ev"] == "fire"]
+    fires = [x for x in all_fires if x.get("entry") == "front"]
+    done = [x for x in ev if x["ev"] == "trade_done" and not x.get("dry") and x.get("entry") == "front"]
     refused = [x for x in ev if x["ev"] == "buy_rejected"]
     rows = []; used = set()
-    for i, f in enumerate(fires):                                              # a fire's result: the first trade_done with its nonce, before that nonce fires again (a refused buy's nonce is used again)
-        t1 = next((g["t"] for g in fires[i + 1:] if g.get("nonce") == f.get("nonce")), float("inf"))
+    for f in fires:                                                            # a fire's result: the first trade_done with its nonce before that nonce fires again (a refused buy's nonce is used again)
+        t1 = next((g["t"] for g in all_fires if g["t"] > f["t"] and g.get("nonce") == f.get("nonce")), float("inf"))
         d = next((x for x in done if f["t"] <= x["t"] < t1 and x.get("nonce") == f.get("nonce") and id(x) not in used), None)
         if d is not None:
             rows.append((f, d)); used.add(id(d)); continue
@@ -266,56 +270,81 @@ def main():
             err = (r.get("reply") or {}).get("error"); msg = err.get("message") if isinstance(err, dict) else r.get("reply")
             rows.append((f, "REFUSED by the node: " + str(msg)[:60]))
         else:
-            rows.append((f, "in progress" if time.time() - f["t"] < 120 else "NO RESULT LOGGED (sudo journalctl -u flip-engine)"))
+            rows.append((f, "in progress" if now - f["t"] < 120 else "NO RESULT LOGGED (sudo journalctl -u flip-engine)"))
     rows += [(None, d) for d in done if id(d) not in used]                     # its fire line was before the window
     rows.sort(key=lambda r: (r[0] or r[1])["t"])
-    print(f"\nLIVE TRADES in the window: {len(rows)}" + (f" (the last {LAST_TRADES}; every one counts in the table above)" if len(rows) > LAST_TRADES else ""))
+    print("\nLIVE TRADES in the window: %d%s" % (len(rows), " (the last %d; the filled ones all count in the table above)" % LAST_TRADES if len(rows) > LAST_TRADES else ""))
     if rows:
-        print(f"  {'time (UTC)':15s} {'line':8s} {'stake':>6s} {'result':>12s} {'$':>7s}  {'sold at':>8s} {'pull at':>12s}  exit")
+        print("  %-15s %-8s %6s %12s %7s  %8s %12s  exit" % ("time (UTC)", "line", "stake", "result", "$", "sold at", "pull at"))
     for f, d in rows[-LAST_TRADES:]:
-        x = d if isinstance(d, dict) else f; line = (x.get("fam") or base) if x.get("entry", "front") == "front" else (x.get("entry") or "?")
-        stake = f"${x['stake'] / 1e18 * eth_usd:.0f}" if x.get("stake") else "-"
+        x = d if isinstance(d, dict) else f; line = x.get("fam") or base
+        stake = ("$%.0f" % (x["stake"] / 1e18 * eth_usd)) if x.get("stake") else "-"
         if isinstance(d, str):
-            print(f"  {hms(f['t']):15s} {line:8s} {stake:>6s} {'-':>12s} {'-':>7s}  {'-':>8s} {'-':>12s}  {d}")
+            print("  %-15s %-8s %6s %12s %7s  %8s %12s  %s" % (hms(f["t"]), line, stake, "-", "-", "-", "-", d))
             continue
         sold = d.get("sell_after_buy_blocks", d.get("hold_blocks")); pull = d.get("pull_after_buy_blocks")
         first = d.get("pulled_before_sell")
         if first is None and pull is not None and sold is not None:                  # older releases did not log it: from the blocks
             first = True if pull < sold else (None if pull == sold else False)
-        why = exit_of(d.get("sell_why"))
         flag = "   <== THE PULL CAME FIRST" if first else ("   (same block as the pull: our sell got in first)" if pull is not None and pull == sold else "")
-        print(f"  {hms(d['t']):15s} {line:8s} {stake:>6s} {result_col(d):>12s} {(d.get('pnl_usd') or 0.0):+7.3f}  {'+' + str(sold) if sold is not None else '-':>8s} {pull_col(d):>12s}  {why}{flag}")
+        print("  %-15s %-8s %6s %12s %+7.3f  %8s %12s  %s%s" % (hms(d["t"]), line, stake, result_col(d), d.get("pnl_usd") or 0.0, ("+" + str(sold)) if sold is not None else "-", pull_col(d), exit_of(d.get("sell_why")), flag))
     if rows:
         nores = sum(1 for _, d in rows if isinstance(d, str) and not d.startswith("REFUSED")); ref = sum(1 for _, d in rows if isinstance(d, str) and d.startswith("REFUSED"))
         print("  'sold at' and 'pull at' count blocks after our buy (0.1 s each); 'later' = no pull within 30 blocks of our sell"
-              + (f"; {ref} buy(s) refused by the node (nothing sent)" if ref else "") + (f"; {nores} buy(s) with no result logged" if nores else ""))
+              + ("; %d buy(s) refused by the node (nothing sent)" % ref if ref else "") + ("; %d buy(s) with no result logged" % nores if nores else ""))
+    line_details(fams, by, dry_by, eth_usd)
+    # the launches, per line
+    arm = [x for x in ev if x["ev"] == "armed" and x.get("entry") == "front"]
+    fired = {}
+    for x in ev:
+        if x["ev"] in ("fire", "would_fire") and x.get("entry") == "front":
+            fired[x.get("fam") or base] = fired.get(x.get("fam") or base, 0) + 1
+    per = {}
+    for x in arm:
+        per[x.get("fam") or base] = per.get(x.get("fam") or base, 0) + 1
+    order = [f["name"] for f in fams] + sorted(k for k in set(per) | set(fired) if k not in {f["name"] for f in fams})
+    print("\nlaunches seen %d" % len(arm) + ((": " + ", ".join("%s %d (fired %d)" % (n, per.get(n, 0), fired.get(n, 0)) for n in order if per.get(n) or fired.get(n))) if arm else "")
+          + ("; the last at %s UTC" % hms(arm[-1]["t"]) if arm else " -- none: the operator has not launched (or its launches look different)"))
+    nf = [x for x in arm if str(x.get("fingerprint", "")).startswith("new")]
+    if nf:                                                                     # the bot changed its launch (traded unless the family pins its fingerprint)
+        print("launches with a fingerprint not seen before: %d (the last at %s UTC, %s: %s); %s; tell Claude"
+              % (len(nf), hms(nf[-1]["t"]), nf[-1].get("fam") or base, nf[-1]["fingerprint"][5:70], "ARMED TO TRADE" if nf[-1].get("eligible") else "not traded (pinned)"))
+    fp = {x.get("pid") for x in arm}
+    skips = [x for x in ev if x["ev"] == "skip" and (x.get("pid") in fp or str(x.get("why", "")).startswith(("front:", "wave:")))]
+    if skips:
+        reasons = {}
+        for x in skips:
+            why = str(x.get("why")); why = "halted (see above)" if why.startswith("halted") else why.split(" (")[0]
+            reasons[why[:60]] = reasons.get(why[:60], 0) + 1
+        top = sorted(reasons.items(), key=lambda kv: -kv[1])
+        print("not traded: " + "; ".join("%s x%d" % kv for kv in top[:6]) + ("; %d other reasons" % (len(top) - 6) if len(top) > 6 else ""))
     # the dry lines' last decisions
-    dry_done = [x for x in ev if x["ev"] == "trade_done" and x.get("dry")]
     for f in fams:
-        if f["live"]:
+        dd = dry_by.get(f["name"], [])
+        if f["mode"] == "LIVE" or not dd:
             continue
-        dd = [x for x in dry_done if (x.get("fam") or base) == f["name"]]
-        if not dd:
-            continue
-        print(f"\n{f['name']} DRY RUN, the last {min(3, len(dd))} of {len(dd)} (nothing sent; the scoring is in the table above):")
+        print("\n%s DRY RUN, the last %d of %d (nothing sent):" % (f["name"], min(3, len(dd)), len(dd)))
         for x in dd[-3:]:
-            print(f"  {hms(x['t']):15s} {(f'{100 * x['dry_ret']:+.1f}%' if x.get('dry_ret') is not None else 'not priced'):>12s}  {exit_of(x.get('sell_why'))}")
+            print("  %-15s %12s  %s" % (hms(x["t"]), pct(x["dry_ret"]) if x.get("dry_ret") is not None else "not priced", exit_of(x.get("sell_why"))))
     al = [x for x in ev if x["ev"] == "alarm"]
     if al:
-        print(f"\nALARMS ({len(al)}" + (", the last 5" if len(al) > 5 else "") + "):")
+        print("\nALARMS (%d%s):" % (len(al), ", the last 5" if len(al) > 5 else ""))
         for x in al[-5:]:
-            print(f"  {hms(x['t'])} {str(x.get('what'))[:150]}")
+            print("  %s %s" % (hms(x["t"]), str(x.get("what"))[:150]))
     rpc = e.get("RPC_URL") or "https://rpc.mainnet.chain.robinhood.com"; w = e.get("WALLET"); r = e.get("RELAY")
     if not w or not r:
-        print(f"\nmoney: WALLET or RELAY is not in {ENV} (run with sudo)")
+        print("\nmoney: WALLET or RELAY is not in %s (run with sudo)" % ENV)
     else:
         wb = balance(rpc, w); rb = balance(rpc, r)
         if wb is None or rb is None:
             print("\nmoney: the RPC did not answer; try again")
         else:
-            print(f"\nmoney: wallet {wb:.6f} ETH (gas), relay {rb:.6f} ETH (the stakes); together about ${(wb + rb) * eth_usd:.2f} at ${eth_usd:g}/ETH")
+            print("\nmoney: wallet %.6f ETH (gas), relay %.6f ETH (the stakes); together about $%.2f at $%g/ETH" % (wb, rb, (wb + rb) * eth_usd, eth_usd))
     print("=" * 100)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except BrokenPipeError:                                                    # | head closed the pipe: the rest is not wanted
+        os.dup2(os.open(os.devnull, os.O_WRONLY), sys.stdout.fileno()); sys.exit(0)
