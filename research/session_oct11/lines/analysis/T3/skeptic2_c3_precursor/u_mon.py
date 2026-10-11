@@ -1,7 +1,9 @@
 """Live monitor (state check the chain's history cannot give): the public node keeps state for only ~6,000 recent blocks (~10 min), so for
 every new 3.0 launch this polls until the bot's first buy T, then reads T's buyer wallet's ETH balance and nonce at every block T-15..T
 (eth_getBalance / eth_getTransactionCount at that block). An internal ETH transfer to the buyer (funding with no log and no calldata
-mention) or any own transaction would show as a change ahead of T. Also the balance at L-1 and L+3 where still available.
+mention) or any own transaction would show as a change ahead of T. Also the balance at L-1 and L+3 where still available, and (binary search
+over the ~5,500 blocks of state before T) the LAST balance change of the buyer before T: its block, lead to T, whether the nonce moved with it
+(own tx) or not (incoming), and the transactions of that block that mention the buyer.
 -> u_mon.jsonl (one row per pool). Usage: python3 u_mon.py MINUTES"""
 import sys, json, time, os
 from lib import *
@@ -49,9 +51,28 @@ while time.time() < t_end:
                      tx_nonce=int(t["nonce"], 16), deadline=int(t["input"][10 + 64 * 6: 10 + 64 * 7], 16), gasPrice=t.get("gasPrice"),
                      maxPrio=t.get("maxPriorityFeePerGas"), maxFee=t.get("maxFeePerGas"), head_at_read=head,
                      bal={str(b - Tbn): v for b, v in bal.items()}, nonce={str(b - Tbn): v for b, v in non.items()})
+            # the last balance change before T within the state window
+            try:
+                hi = Tbn - 1; b_hi = bal[hi]; lo = max(head - 5600, Tbn - 5500)
+                b_lo = int(rpc("eth_getBalance", [buyer, hex(lo)]), 16)
+                if b_lo == b_hi: p["last_change"] = {"none_since": lo - Tbn}
+                else:
+                    while hi - lo > 1:
+                        m = (lo + hi) // 2; bm = int(rpc("eth_getBalance", [buyer, hex(m)]), 16)
+                        if bm == b_hi: hi = m
+                        else: lo = m
+                    r2 = batch([("eth_getBalance", [buyer, hex(lo)]), ("eth_getTransactionCount", [buyer, hex(lo)]), ("eth_getTransactionCount", [buyer, hex(hi)]),
+                                ("eth_getBlockByNumber", [hex(hi), True])], 4)
+                    blk = r2[3]; bh_ = buyer[2:]
+                    txs = [{"hash": t["hash"], "from": t["from"].lower(), "to": (t.get("to") or "").lower(), "sel": t["input"][2:10], "value": int(t["value"], 16)}
+                           for t in blk["transactions"] if t["from"].lower() == buyer or (t.get("to") or "").lower() == buyer or bh_ in t["input"].lower()]
+                    p["last_change"] = {"bn": hi, "lead": Tbn - hi, "bal_before": int(r2[0], 16), "bal_after": b_hi, "nonce_before": int(r2[1], 16),
+                                        "nonce_after": int(r2[2], 16), "txs": txs, "n_txs_block": len(blk["transactions"])}
+            except Exception as e:
+                p["last_change"] = {"err": str(e)[:120]}
             out.write(json.dumps(p) + "\n"); out.flush(); done.add(pid); del track[pid]
             print(utc(time.time()), "pool", pid[:12], "T", p["T"], "buyer", buyer[:10], "bal T-15..T", sorted(set(v for k, v in p["bal"].items() if int(k) >= -15 and int(k) <= 0)),
-                  "nonce", sorted(set(v for k, v in p["nonce"].items() if -15 <= int(k) <= 0)), flush=True)
+                  "nonce", sorted(set(v for k, v in p["nonce"].items() if -15 <= int(k) <= 0)), "last change", {k: v for k, v in p["last_change"].items() if k != "txs"}, p["last_change"].get("txs"), flush=True)
     except Exception as e:
         print("error", str(e)[:150], flush=True)
     time.sleep(60)
