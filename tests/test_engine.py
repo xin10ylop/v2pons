@@ -1300,6 +1300,121 @@ E.state["position"] = None; E.state["armed"].clear(); front_launch(15100, 140); 
 E.FRONT_AUTO_STAKE = False; assert E.fam_stake(base) == int(0.0097e18), "auto stake off: the family's stake"
 base.update(saved); E.state["room_obs"] = {}; E.state["position"] = None; reset(); E.FRONT = False; E.ENTRY = "follow"
 print("ok known fingerprints (fees_also, tick_spacings_also) arm, an unseen fee is refused; the auto stake measures the room at each bot buy and sizes the stake from the minimum to the family's ceiling")
+# --- 20g. a V3 family (the V3 crowd line, HANDOFF 16.16): its launch (a V3 PositionManager multicall of 836 bytes, value 0) decoded from the
+# calldata (the pool's address by CREATE2, the price on the top tick of a token-only range) and armed; a dry fire in the launch block (landing
+# + 2); the crowd's buys (value-0 calls of its shapes through any contract, the token at the end of a V3 path) move the price copy, and its
+# first buy behind ours starts the exit's clock (the sell exit_after_blocks later), the cap at launch + hold_blocks; it never sends; C-1 (also
+# value 0) and the 2.4333 line in the same run as before
+import subprocess
+V3 = json.load(open(os.path.join(ROOT, "tests", "data", "v3_launch.json"))); V3_NPM = V3["launch_to"]; V3_PID = V3["pool"]; V3_IN = V3["launch_input"]
+B1, B2 = V3["buys"]; assert (B1["selector"], B1["calldata_len"], B2["selector"], B2["calldata_len"]) == ("3593564c", 484, "a0193551", 452)
+d = E.decode_launch_v3(bytes.fromhex(V3_IN[2:]))
+assert d["pid"] == V3_PID and "0x" + d["c0"] == V3["token0"] == "0x" + E.WETH and "0x" + d["token"] == V3["token"] and d["fee"] == 100 and d["tick_spacing"] == 1 and d["sqrt_p"] == V3["sqrt_p"] \
+    and (d["lo"], d["hi"], d["tick0"]) == (V3["lo"], V3["hi"], V3["hi"]) and d["mint_liq"] == V3["liq"] and (d["amount0"], d["amount1"]) == (0, V3["amount1"]), d   # the chain's PoolCreated, Initialize, Mint
+assert E.sqrt_at_tick(V3["hi"]) == V3["sqrt_p"] and E.sqrt_at_tick(E.V3_MIN_TICK) == E.MIN_SQRT_P and E.decode_launch_v3(bytes.fromhex(V3_IN[2:])[:600]) is None
+assert E.decode_launch_v3(FIN) is None and E.decode_launch(bytes.fromhex(V3_IN[2:])) is None                     # neither decoder takes the other's launch
+fs = V3["first_swap"]; got = v4math.buy_out_int(V3["sqrt_p"], V3["liq"], fs["weth_in"], 100); assert abs(got - fs["tokens_out"]) < fs["tokens_out"] * 1e-15, (got, fs)   # the pool's first real buy (+ 1), from the launch state
+V3_FAM = {"name": "v3crowd", "dex": "v3", "target": V3_NPM, "value_wei": 0, "calldata_len": 836, "fee": 100, "tick_spacing": 1, "hold_blocks": 78, "exit_after_blocks": 18,
+          "take_profit": 9, "stake_eth": 0.0058, "ahead_max_eth": 0.5, "dry_run": True, "pin": True,
+          "trigger": {"shapes": [{"selector": "3593564c", "calldata_len": 484, "value_word": 9}, {"selector": "a0193551", "calldata_len": 452, "value_word": 8},
+                                 {"selector": "49f74a5d", "calldata_len": 452, "value_word": 8}], "any_to": True, "token_anywhere": True, "min_eth": 0.005, "max_eth": 10}}
+os.environ["FRONT_FAMILIES"] = json.dumps([C1_FAM, V3_FAM]); fams = E.front_families(E.front_base_family()); os.environ.pop("FRONT_FAMILIES")
+K3 = ("v3", V3_NPM[2:]); v3f = fams[K3]; t3 = v3f["trigger"]
+assert set(fams) == {E.FRONT_VALUE_WEI, 0, K3} and fams[0]["name"] == "c1" and v3f["dex"] == "v3" and fams[0]["dex"] == "v4", fams.keys()   # C-1 and the V3 line both launch with 0 ETH
+assert v3f["target"] == V3_NPM[2:] and (v3f["exit_after_blocks"], v3f["hold_blocks"], v3f["calldata_len"], v3f["sqrt_p"], v3f["liq"]) == (18, 78, 836, 0, 0) and v3f["dry_run"] \
+    and t3["router"] is None and t3["token_word"] is None and t3["flag_word"] is None and t3["shapes"] == {("3593564c", 484): 9, ("a0193551", 452): 8, ("49f74a5d", 452): 8} \
+    and t3["min_wei"] == int(0.005e18) and E.trigger_desc(t3) == "any:3593564c/484,49f74a5d/452,a0193551/452" and E.trigger_desc(fams[0]["trigger"]) == C1_ROUTER[2:].lower() + ":e6cb474f", v3f
+T3 = V3_FAM["trigger"]
+for patch, msg in (({"dex": "v2"}, "dex must be"), ({"dry_run": False}, "not built"), ({"dry_run": None}, "not built"), ({"target": None}, "must give target"), ({"target": "0x1234"}, "40 hex"),
+                   ({"target": E.POSITION_MANAGER}, "v4's PositionManager"), ({"exit_after_blocks": None}, "must give exit_after_blocks"), ({"exit_after_blocks": 0}, "exit_after_blocks"),
+                   ({"calldata_len": None}, "must give calldata_len"), ({"hold_blocks": None}, "must give hold_blocks"), ({"trigger": None}, "must give trigger"), ({"fire_at": 2}, "fire_at 0"), ({"hold_blocks": 4}, "fire_max + 3"),
+                   ({"sqrt_p": "1"}, "sqrt_p"), ({"trigger": {**T3, "shapes": "3593564c"}}, "list of 1-8"), ({"trigger": {**T3, "shapes": []}}, "list of 1-8"),
+                   ({"trigger": {**T3, "shapes": [{"selector": "3593564c", "calldata_len": 484}]}}, "must give exactly"),
+                   ({"trigger": {**T3, "shapes": [{"selector": "3593564c", "calldata_len": 484, "value_word": 9, "to": 1}]}}, "must give exactly"),
+                   ({"trigger": {**T3, "shapes": [{"selector": "3593564", "calldata_len": 484, "value_word": 9}]}}, "8 hex"),
+                   ({"trigger": {**T3, "shapes": [{"selector": "3593564c", "calldata_len": 300, "value_word": 9}]}}, "shorter than"),
+                   ({"trigger": {**T3, "shapes": T3["shapes"] + T3["shapes"][:1]}}, "given twice"), ({"trigger": {**T3, "router": C1_ROUTER}}, "router or any_to"),
+                   ({"trigger": {**T3, "any_to": False}}, "router or any_to"), ({"trigger": {**T3, "any_to": "yes"}}, "true or false"), ({"trigger": {**T3, "selector": "3593564c"}}, "or shapes"),
+                   ({"trigger": {**T3, "token_word": 8}}, "not both"), ({"trigger": {**T3, "token_anywhere": False}}, "flag_word")):
+    f = {**V3_FAM, **patch}; f = {k: v for k, v in f.items() if v is not None}
+    why = refused(json.dumps([f])); assert why and msg in why, (patch, why)
+os.environ["FRONT_FAMILIES"] = json.dumps([{k: v for k, v in V3_FAM.items() if k != "take_profit"}]); assert E.front_families()[K3]["take_profit"] == 9.0; os.environ.pop("FRONT_FAMILIES")   # off unless given
+assert "for a V3 family" in refused(json.dumps([{**base3, "exit_after_blocks": 20}])) and "for a V3 family" in refused(json.dumps([{**base3, "target": V3_NPM}]))
+assert "two V3 families" in refused(json.dumps([V3_FAM, {**V3_FAM, "name": "w2"}])) and "two families named" in refused(json.dumps([V3_FAM, {**V3_FAM, "target": "0x" + "ab" * 20}]))
+def imported(js):
+    """FRONT_FAMILIES at a real import (the service's start): the error and the families' keys"""
+    r = subprocess.run([sys.executable, "-c", "import flip_engine as E, json; print(json.dumps([E.FRONT_FAMILY_ERROR, sorted(map(str, E.FRONT_FAMILIES))]))"], cwd=os.path.join(ROOT, "src"),
+                       env={**os.environ, "FRONT_FAMILIES": js, "LOG_PATH": LOG + ".import"}, capture_output=True, text=True, timeout=60)
+    assert r.returncode == 0, r.stderr[-400:]; return json.loads(r.stdout.strip().splitlines()[-1])
+for js in (json.dumps([{**V3_FAM, "dry_run": False}]), json.dumps([{**V3_FAM, "trigger": {**T3, "shapes": [[]]}}]), json.dumps([{**V3_FAM, "trigger": {**T3, "shapes": [{**T3["shapes"][0], "calldata_len": 1e400}]}}]), "[" * 10000 + "]" * 10000):
+    err, keys = imported(js); assert err and err.startswith("FRONT_FAMILIES dropped, the FRONT_* line alone trades") and keys == [str(E.FRONT_VALUE_WEI)], (js[:80], err, keys)   # never a crash
+err, keys = imported(json.dumps([C1_FAM, V3_FAM])); assert err is None and keys == sorted(map(str, [E.FRONT_VALUE_WEI, 0, K3])), (err, keys)
+RB = next(l.strip()[len("FRONT_FAMILIES='"):-1] for l in open(os.path.join(ROOT, "docs", "RUNBOOK.md")) if l.strip().startswith("FRONT_FAMILIES='") and "v3crowd" in l)
+err, keys = imported(RB); assert json.loads(RB)[2] == V3_FAM and err is None and len(keys) == 4, (err, keys)    # the runbook's list for the box: v3.0, c1 and v3crowd beside the FRONT_* line
+E.FRONT_FAMILIES[0] = fams[0]; E.FRONT_FAMILIES[K3] = v3f; E.WAVE_ROUTERS.add(fams[0]["trigger"]["router"]); E.ANY_TO_SELECTORS.update(s for s, _ in t3["shapes"])
+E.state["delayed"] = True; E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"; STAKE3 = int(0.0058e18)
+def v3_dry_ret(p, pos):
+    """send_sell's dry_ret, recomputed: our buy put into the price copy, the sell of the tokens it got, the two swaps' gas"""
+    sp = v4math.sqrt_after_buy(p["sp"], p["liq"], E.net_of_fee(STAKE3, 100))
+    return round((v4math.sell_out_int(int(sp), p["liq"], pos["feed_tokens"], 100) - STAKE3 - E.round_trip_gas_wei()) / STAKE3, 4)
+# the crowd's exit: armed and fired (dry) in the launch block; a stranger's small buy ahead of ours; the crowd's first buy behind ours (+ 3 after it) starts the clock
+reset(); E.state["nonce"] = 1000; E.state["front_halted"] = None; E.state["fam_halted"].clear(); L = 14000
+E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 20)])); p = E.state["armed"].get(V3_PID); pos = E.state["position"]; wf = events("would_fire")[-1]; a = events("armed")[-1]
+assert p and p["dex"] == "v3" and p["fam"] == "v3crowd" and p["eligible"] and p["liq"] == V3["liq"] > 0 and p["tick0"] == V3["hi"] and p["token"] == V3["token"][2:] and p["status"] == "fired", a
+assert a["dex"] == "v3" and a["eth_pair"] and a["fingerprint"] == "known" and a["tick_spacing"] == 1 and events("launch")[-1]["fam"] == "v3crowd"
+assert pos and pos["dry"] and pos["dex"] == "v3" and (pos["fire_seq"], pos["plan_buy_seq"], pos["send_after"], pos["plan_sell_seq"]) == (L, L + 2, 76, L + 78) and pos["stake"] == STAKE3 \
+    and len(SENT) == 0 and wf["fam"] == "v3crowd" and wf["buy_tx"] is None and wf["plan_buy_seq"] == L + 2, pos
+E.ingest(frame(L + 1, [signed(OUTSIDER, UR, int(0.001e18), "0x12345678" + w(V3["token"]), 70)])); sp1 = p["sp"]   # 0.001 ETH with ETH as its value: under min_eth, ahead of ours
+assert p["buys"] == 1 and p["first_buy"] is None and sp1 == v4math.sqrt_after_buy(float(V3["sqrt_p"]), V3["liq"], E.net_of_fee(int(0.001e18), 100))
+E.ingest(frame(L + 2, [])); assert pos["buy_seq"] == L + 2 and pos["feed_tokens"] == v4math.buy_out_int(int(sp1), V3["liq"], STAKE3, 100)   # the virtual buy, behind the stranger's
+E.ingest(frame(L + 5, [signed(CROWD, B1["to"], 0, B1["input"], 71)]))                                    # the crowd's 0.016 ETH (3593564c, 484 bytes) through its contract
+fb = events("first_buy")[-1]; assert p["first_buy"] == L + 5 and fb["trigger"] is True and fb["value"] == B1["amount_wei"] == int(0.016e18) and fb["fam"] == "v3crowd" and fb["offset"] == 5, fb
+assert p["sp"] == v4math.sqrt_after_buy(sp1, V3["liq"], E.net_of_fee(B1["amount_wei"], 100)) and pos["exit_seq"] == L + 5 + 18 and not pos["sell_sent"], (pos["exit_seq"], pos["sell_sent"])
+o = 4 + 32 * 13; b1 = bytes.fromhex(B1["input"][2:]); tb = bytes.fromhex(V3["token"][2:]); assert b1[o:o + 43] == E.WETH_BYTES + (100).to_bytes(3, "big") + tb
+sell1 = b1[:o] + tb + (100).to_bytes(3, "big") + E.WETH_BYTES + b1[o + 43:]; other = b1.replace(tb, b"\x77" * 20); sp_ = p["sp"]
+E.ingest(frame(L + 6, [signed(CROWD, B1["to"], 0, "0x" + sell1.hex(), 72), signed(CROWD, B1["to"], 0, "0x" + other.hex(), 73), signed(CROWD, B1["to"], 0, B1["input"][:-2], 74)]))
+assert p["sp"] == sp_ and p["buys"] == 2, "the crowd's sell (the path from the token), another token's buy or another length taken for a buy"
+word_form = bytes.fromhex("3593564c") + bytes(32 * 12) + tb.rjust(32, b"\0") + bytes(484 - 4 - 32 * 13); assert E.trigger_word(t3, "ab" * 20, word_form, p) == 9   # the token as an address word
+E.ingest(frame(L + 10, [signed(CROWD, B2["to"], 0, B2["input"], 75)]))                                  # the crowd's 0.11 ETH (a0193551, 452 bytes): the price moves, the clock stays
+assert p["buys"] == 3 and p["eth_in"] == int(0.001e18) + B1["amount_wei"] + B2["amount_wei"] and pos["exit_seq"] == L + 23 and not pos["sell_sent"]
+for s_ in range(L + 11, L + 23):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(L + 23, [])); ws = events("would_sell")[-1]
+assert pos["sell_sent"] and pos["sell_seq_sent"] == L + 23 and ws["why"].startswith("the crowd's buy behind ours (0.0160 ETH in its call shape, our buy + 3)") and ws["after_buy"] == 21, ws
+assert ws["dry_ret"] == v3_dry_ret(p, pos) and 0.03 < ws["dry_ret"] < 0.2 and len(SENT) == 0, ws                    # the crowd's 0.126 ETH behind our 0.0058
+assert wait_for(lambda: any(e.get("dry") and e.get("fam") == "v3crowd" and e.get("dry_ret") == ws["dry_ret"] for e in events("trade_done")), 3.0), "no dry trade_done with dry_ret"
+# no crowd: the cap (the sell when the feed shows launch + 78); the family set live behind the parser's back still never sends
+reset(); E.state["nonce"] = 1010; v3f["dry_run"] = False; L = 14200
+E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 21)])); pos = E.state["position"]; p = E.state["armed"][V3_PID]
+assert pos and pos["dry"] and len(SENT) == 0 and events("would_fire")[-1]["fam"] == "v3crowd", "a V3 family went live"
+for s_ in range(L + 1, L + 78):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(L + 78, [])); ws = events("would_sell")[-1]
+assert pos["sell_sent"] and pos["sell_seq_sent"] == L + 78 and ws["why"].startswith("deadline: launch + 78, the V3 line's cap") and ws["dry_ret"] == v3_dry_ret(p, pos) and -0.003 < ws["dry_ret"] < 0, ws
+v3f["dry_run"] = True
+# the crowd's buy ahead of ours (+ 1) starts no clock; one at + 70 would end its wave past the cap: the cap first
+reset(); E.state["nonce"] = 1020; L = 14400
+E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 22)])); pos = E.state["position"]
+E.ingest(frame(L + 1, [signed(CROWD, B1["to"], 0, B1["input"], 76)])); E.ingest(frame(L + 2, []))
+assert pos["buy_seq"] == L + 2 and pos["exit_seq"] is None and events("first_buy")[-1]["offset"] == 1
+E.ingest(frame(L + 70, [signed(CROWD, B2["to"], 0, B2["input"], 77)])); assert pos["exit_seq"] == L + 88
+E.ingest(frame(L + 77, [])); assert not pos["sell_sent"]
+E.ingest(frame(L + 78, [])); assert pos["sell_sent"] and events("would_sell")[-1]["why"].startswith("deadline: launch + 78") and events("would_sell")[-1]["dry_ret"] > 0.03
+# a mirrored launch (WETH as token1, a real one) is logged, not armed; the launch's calldata to another contract (v4's PositionManager included) is no launch
+reset(); E.ingest(frame(14600, [signed(DEPLOYER, V3_NPM, 0, V3["mirrored"]["launch_input"], 23)])); a = events("armed")[-1]
+assert a["pid"] == V3["mirrored"]["pool"] and not a["eligible"] and "WETH is token1" in a["why"] and E.state["position"] is None and not E.state["armed"], a
+n_launch = len(events("launch")); E.ingest(frame(14601, [signed(DEPLOYER, POSM, 0, V3_IN, 24), signed(DEPLOYER, "0x" + "99" * 20, 0, V3_IN, 25), signed(DEPLOYER, V3_NPM, 1, V3_IN, 26)]))
+assert len(events("launch")) == n_launch and not E.state["armed"]
+# in the same run: C-1 (value 0, v4's PositionManager) arms as before; the 2.4333 line trades live as before
+reset(); E.ingest(frame(14700, [signed(DEPLOYER, POSM, 0, C1["launch_input"], 27)])); c = E.state["armed"].get(C1_PID); assert c and c["fam"] == "c1" and "dex" not in c and c["status"] == "armed"
+reset(); E.state["nonce"] = 1030; p4 = front_launch(14800, 28); pos = E.state["position"]
+assert p4 and p4["fam"] == "v2.433" and "dex" not in p4 and pos and not pos["dry"] and pos["send_after"] == E.FRONT_HOLD_BLOCKS and "exit_seq" not in pos and len(SENT) == 1, pos
+E.ingest(frame(14801, [SENT[-1][1]])); E.ingest(frame(14809, [signed(CROWD, BOT, int(0.12e18), FBUY, 78)]))
+assert pos["buy_seq"] == 14801 and pos["sell_sent"] and pos["sell_why"].startswith("take profit")
+d = front_close(pos, 14801, 14810, int(E.FRONT_STAKE_WEI * 1.09)); assert d["fam"] == "v2.433" and d["ret"] > 0.08 and not d.get("pulled_before_sell") and E.state["front_halted"] is None, d
+del E.FRONT_FAMILIES[0], E.FRONT_FAMILIES[K3]; E.WAVE_ROUTERS.discard(fams[0]["trigger"]["router"]); E.ANY_TO_SELECTORS.clear()
+E.state["delayed"] = any(f["fire_at"] or f["trigger"] for f in E.FRONT_FAMILIES.values()); reset(); E.FRONT = False; E.ENTRY = "follow"
+print("ok a V3 family (the crowd line): the 836-byte launch decodes as the chain has it (pool by CREATE2, price on the top tick, liquidity), arms by its PositionManager beside C-1 (both value 0) and fires dry in its launch block (+ 2); the crowd's buys move the price copy, its first behind ours sells 18 blocks later with dry_ret, the cap at launch + 78; its sells, other tokens, a mirrored launch and a live setting never trade; bad JSON is refused at start, never a crash; the 2.4333 line trades as before")
 
 for _f in (E.LOG_PATH, E.LOG_PATH + ".1"):
     if os.path.exists(_f): os.remove(_f)

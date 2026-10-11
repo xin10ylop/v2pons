@@ -169,8 +169,9 @@ FRONT_BOT_ROUTERS = {a.strip().lower().replace("0x", "") for a in env("FRONT_BOT
 # front's own fee bound (FEE_MIN/MAX_PPM are follow's): a launch at another fee is not traded, and the pin (FRONT_PIN) compares the rest.
 MIN_SQRT_P = 4295128739; MAX_SQRT_P = 1461446703485210103287273052203988822378723970342                                # v4's price bounds
 FRONT_FAMILY_KEYS = ("name", "value_wei", "fee", "tick_spacing", "sqrt_p", "liq", "bot_minout", "ahead_max_eth", "take_profit", "hold_blocks", "stake_eth", "dry_run", "pin",
-                     "fire_at", "fire_max", "calldata_len", "trigger", "fees_also", "tick_spacings_also")
-TRIGGER_KEYS = ("router", "selector", "value_word", "token_word", "flag_word", "flag_value", "min_eth", "max_eth", "max_blocks")
+                     "fire_at", "fire_max", "calldata_len", "trigger", "fees_also", "tick_spacings_also", "dex", "target", "exit_after_blocks")
+TRIGGER_KEYS = ("router", "selector", "value_word", "token_word", "flag_word", "flag_value", "min_eth", "max_eth", "max_blocks", "shapes", "any_to", "token_anywhere")
+SHAPE_KEYS = ("selector", "calldata_len", "value_word")
 # calldata_len: the launch call's length (FRONT_CALLDATA_LEN, 1,444 bytes, for the volume bot's lines; C-1's is 2,276). trigger: a "wave" family:
 # the launch is armed as any front launch but nothing fires at it; the family's operator buys through its own router with a zero-value call
 # (C-1: router 0xd6d35b56, selector e6cb474f, the ETH amount in calldata word value_word, the token in token_word, flag_word == flag_value
@@ -180,6 +181,19 @@ TRIGGER_KEYS = ("router", "selector", "value_word", "token_word", "flag_word", "
 # a line whose bot buys later, with the operator's trap pulls in the first blocks (the 3.0 line on Oct 11: bot at + 18..+ 58, pulls at + 7..+ 9),
 # is entered after that window and before the bot: fire_at 12-16, hold_blocks past the bot's latest offset. fire_max: how many blocks after
 # fire_at the fire may still go (the feed's lag); FRONT_FIRE_MAX for the base family.
+# A trigger may list call shapes instead of one selector (shapes: [{selector, calldata_len, value_word}], each an exact length), through any
+# contract (any_to: true, for a crowd that rotates its contracts), with the token found anywhere in the call (token_anywhere: true: as an
+# address word, or as a V3 path's output after WETH and the fee, which is a buy's direction; a sell's path starts with the token).
+# dex "v3" (HANDOFF 16.16): the V3 crowd line. Its launch is a value-0 multicall of calldata_len bytes to its own PositionManager (target):
+# createAndInitializePoolIfNecessary(WETH, token, fee 100, the price), mint (the token only, from the lowest tick up to the launch price),
+# refundETH; the pool's address is the factory's CREATE2. It fires in the launch block like any front launch (landing + 2); its trigger lists
+# the crowd's buy calls, and the crowd's first buy of min_eth at or after ours (or anyone's ETH-value buy of the token) starts the exit's
+# clock: the sell goes when the feed shows that buy + exit_after_blocks (the crowd's wave comes in the 20 blocks after its first buy), at the
+# latest when it shows launch + hold_blocks (the cap: the line's no-crowd pulls come from + 83). The launch price and liquidity vary per
+# launch (5 levels on Oct 10-11), so sqrt_p and liq may be left out (not compared). Dry run only: no route to a V3 pool is built yet.
+V3_FACTORY = "1f7d7550b1b028f7571e69a784071f0205fd2efa"; V3_POOL_INIT_HASH = "e34f199b19b2b4f47f68442619d555527d244f78a3297ea89325f843f87b8b54"   # Uniswap V3's (106 of 106 launches)
+WETH = "0bd7d308f8e1639fab988df18a8011f41eacad73"; WETH_BYTES = bytes.fromhex(WETH); V3_MIN_TICK = -887272; V3_TICK_SPACING = {100: 1, 500: 10, 3000: 60, 10000: 200}   # the factory's spacing per fee
+SEL_V3_CREATE = "13ead562"; SEL_V3_MINT = "88316456"; SEL_V3_REFUND = "12210e8a"
 FRONT_STAKE_CAP_WEI = int(FRONT_STAKE_CAP_ETH * 1e18)
 
 
@@ -231,8 +245,9 @@ def _no_dup_keys(pairs):
 def front_family_check(fam):
     """the bounds every family must meet (the FRONT_* one too): a fee in v4's range, a stake above 0 and at most the cap, a minOut in (0, 1],
     a take-profit in (0, 9], a hold of 1..600 blocks, a room of at least the stake, a price in v4's range, liquidity above 0, a fire window
-    inside the trigger window"""
-    n = fam["name"]
+    inside the trigger window; a V3 family: dry, fired in its launch block, its cap past the fire window (its price and liquidity may be 0:
+    not compared)"""
+    n = fam["name"]; v3 = fam["dex"] == "v3"
     if not 1 <= fam["fee"] <= 999999:
         raise SystemExit(f"front family {n}: fee {fam['fee']} is not in 1..999999 ppm")
     for k, lo, hi in (("fees_also", 1, 999999), ("tick_spacings_also", 1, 32767)):
@@ -252,10 +267,16 @@ def front_family_check(fam):
         raise SystemExit(f"front family {n}: hold_blocks {fam['hold_blocks']} is not in 1..600")
     if not fam["stake_wei"] <= fam["ahead_max_wei"] <= int(0.5e18):
         raise SystemExit(f"front family {n}: ahead_max_eth must be at least the stake and at most 0.5 ETH")
-    if not 0 <= fam["value_wei"] <= 10 ** 24 or not MIN_SQRT_P <= fam["sqrt_p"] < MAX_SQRT_P or not 0 < fam["liq"] <= 2 ** 128:
+    if not 0 <= fam["value_wei"] <= 10 ** 24 or not (MIN_SQRT_P <= fam["sqrt_p"] < MAX_SQRT_P or v3 and fam["sqrt_p"] == 0) or not (0 < fam["liq"] <= 2 ** 128 or v3 and fam["liq"] == 0):
         raise SystemExit(f"front family {n}: value_wei (at most 1e6 ETH), sqrt_p (in v4's range) and liq (above 0) are out of range")
     if fam["value_wei"] == 0 and not fam.get("trigger"):
         raise SystemExit(f"front family {n}: a launch value of 0 needs a trigger (a wave family)")
+    if v3 and not fam["dry_run"]:
+        raise SystemExit(f"front family {n}: dry_run must be true: the V3 trading path is not built (HANDOFF 16.16)")
+    if v3 and (fam["fire_at"] or fam["hold_blocks"] < fam["fire_max"] + 3):
+        raise SystemExit(f"front family {n}: a V3 family fires in its launch block (fire_at 0) and its cap (hold_blocks, from the launch) must be at least fire_max + 3")
+    if v3 and fam["target"] == POSITION_MANAGER:
+        raise SystemExit(f"front family {n}: target is v4's PositionManager; a V3 family's launches go to its own")
     if fam.get("trigger") and fam["fire_at"]:
         raise SystemExit(f"front family {n}: a wave family fires on its trigger, not at an offset: fire_at must be 0")
     if fam.get("trigger") and fam["trigger"]["max_blocks"] + fam["hold_blocks"] >= 2600:
@@ -267,8 +288,32 @@ def front_family_check(fam):
     return fam
 
 
+def _hex(v, n, what):
+    """an address or a selector from the JSON: n hex digits, 0x or not, lower case"""
+    h = v.strip().lower().replace("0x", "") if isinstance(v, str) else None
+    if h is None or not re.fullmatch(f"[0-9a-f]{{{n}}}", h):
+        raise SystemExit(f"{what} must be {n} hex digits, not {v!r}")
+    return h
+
+
+def _shapes(v, w):
+    """a trigger's call shapes, {(selector, calldata_len): value_word}: each an exact length"""
+    if not isinstance(v, list) or not 1 <= len(v) <= 8:
+        raise SystemExit(f"{w} trigger shapes must be a list of 1-8 call shapes")
+    out = {}
+    for j, s in enumerate(v):
+        if not isinstance(s, dict) or sorted(s) != sorted(SHAPE_KEYS):
+            raise SystemExit(f"{w} trigger shape {j} must give exactly {', '.join(SHAPE_KEYS)}")
+        k = (_hex(s["selector"], 8, f"{w} trigger shape {j} selector"), _num(s["calldata_len"], f"{w} trigger shape {j} calldata_len", 36, 8192, True))
+        if k in out:
+            raise SystemExit(f"{w} trigger shape {j} is given twice")
+        out[k] = _num(s["value_word"], f"{w} trigger shape {j} value_word", 0, 255, True)
+    return out
+
+
 def _trigger(v, w):
-    """a wave family's trigger (see FRONT_FAMILY_KEYS): the operator's buy as a zero-value call to its router"""
+    """a family's trigger (see FRONT_FAMILY_KEYS): the buys of its operator (a wave family's entry) or of its crowd (a V3 family's exit) as
+    zero-value calls: one router and one selector (C-1), or a list of call shapes, through one router or any contract (any_to)"""
     if v is None:
         return None
     if not isinstance(v, dict):
@@ -276,16 +321,22 @@ def _trigger(v, w):
     bad = sorted(set(v) - set(TRIGGER_KEYS))
     if bad:
         raise SystemExit(f"{w} trigger has unknown keys {bad} (known: {', '.join(TRIGGER_KEYS)})")
-    for k in ("router", "selector"):
-        if k not in v or not isinstance(v[k], str):
-            raise SystemExit(f"{w} trigger must give {k} as a string")
-    if "flag_word" not in v:
+    any_to = _flag(v.get("any_to", False), f"{w} trigger any_to"); anywhere = _flag(v.get("token_anywhere", False), f"{w} trigger token_anywhere")
+    if any_to == ("router" in v):
+        raise SystemExit(f"{w} trigger must give a router or any_to true (one of them)")
+    if ("shapes" in v) == ("selector" in v) or ("shapes" in v and "value_word" in v):
+        raise SystemExit(f"{w} trigger must give a selector (and its value_word) or shapes, one of them")
+    if "flag_word" not in v and not anywhere:
         raise SystemExit(f"{w} trigger must give flag_word (the calldata word that tells the router's buy from its sell) and flag_value")
-    router = v["router"].strip().lower().replace("0x", ""); sel = v["selector"].strip().lower().replace("0x", "")
-    if not re.fullmatch(r"[0-9a-f]{40}", router) or not re.fullmatch(r"[0-9a-f]{8}", sel):
-        raise SystemExit(f"{w} trigger: router must be 40 hex digits and selector 8")
-    t = {"router": router, "selector": sel, "value_word": _num(v.get("value_word", 2), f"{w} trigger value_word", 0, 64, True),
-         "token_word": _num(v.get("token_word", 8), f"{w} trigger token_word", 0, 64, True),
+    if anywhere and "token_word" in v:
+        raise SystemExit(f"{w} trigger must give token_word or token_anywhere, not both")
+    router = None if any_to else _hex(v["router"], 40, f"{w} trigger router")
+    if "shapes" in v:
+        shapes = _shapes(v["shapes"], w); sel = None
+    else:                                                                                      # one selector, any length (C-1's router)
+        sel = _hex(v["selector"], 8, f"{w} trigger selector"); shapes = {(sel, 0): _num(v.get("value_word", 2), f"{w} trigger value_word", 0, 64, True)}
+    t = {"router": router, "selector": sel, "shapes": shapes, "token_anywhere": anywhere,
+         "token_word": None if anywhere else _num(v.get("token_word", 8), f"{w} trigger token_word", 0, 64, True),
          "flag_word": _num(v["flag_word"], f"{w} trigger flag_word", 0, 64, True) if "flag_word" in v else None,
          "flag_value": _num(v.get("flag_value", 0), f"{w} trigger flag_value", 0, 2 ** 63, True),
          "min_wei": _eth_wei(v.get("min_eth", MIN_TRIGGER_ETH), f"{w} trigger min_eth", 0.0, 1.0),
@@ -295,8 +346,17 @@ def _trigger(v, w):
         raise SystemExit(f"{w} trigger min_eth must be above 0 (the operator's buy size that counts as the trigger)")
     if t["max_wei"] < t["min_wei"]:
         raise SystemExit(f"{w} trigger max_eth must be at least min_eth (a family whose cap is under its trigger size never fires)")
-    t["words"] = max(t["value_word"], t["token_word"], t["flag_word"] or 0) + 1                      # calldata words the call must have
+    t["words"] = max(max(shapes.values()), t["token_word"] or 0, t["flag_word"] or 0) + 1           # calldata words the call must have
+    if any(ln and ln < 4 + 32 * t["words"] for _, ln in shapes):
+        raise SystemExit(f"{w} trigger: a shape's calldata_len is shorter than the words it is read at (value_word, token_word, flag_word)")
     return t
+
+
+def trigger_desc(t):
+    """a trigger for the start line: router:selector (C-1's form, as before) or router-or-any:selector/length,..."""
+    if t is None:
+        return None
+    return (t["router"] or "any") + ":" + ",".join(f"{s}/{n}" if n else s for s, n in sorted(t["shapes"]))
 
 
 def front_base_family():
@@ -304,15 +364,16 @@ def front_base_family():
     base = {"name": env("FRONT_FAMILY_NAME", "v2.433"), "value_wei": FRONT_VALUE_WEI, "fee": FRONT_FEE, "tick_spacing": FRONT_TICK_SPACING, "sqrt_p": FRONT_SQRT_P, "liq": FRONT_LIQ,
             "bot_minout": FRONT_BOT_MINOUT, "ahead_max_wei": FRONT_AHEAD_MAX_WEI, "take_profit": FRONT_TAKE_PROFIT, "hold_blocks": FRONT_HOLD_BLOCKS, "stake_wei": FRONT_STAKE_WEI,
             "dry_run": FRONT_BASE_DRY_RUN, "pin": FRONT_PIN, "fire_at": 0, "fire_max": FRONT_FIRE_MAX, "calldata_len": FRONT_CALLDATA_LEN, "trigger": None,
-            "fees_also": sorted(FRONT_FEES_ALSO), "tick_spacings_also": sorted(FRONT_TICK_SPACINGS_ALSO)}
+            "fees_also": sorted(FRONT_FEES_ALSO), "tick_spacings_also": sorted(FRONT_TICK_SPACINGS_ALSO), "dex": "v4", "target": None, "exit_after_blocks": None}
     if not re.fullmatch(r"[A-Za-z0-9._-]{1,64}", base["name"]):
         raise SystemExit(f"FRONT_FAMILY_NAME must be 1-64 letters, digits, '.', '_' or '-', not {base['name']!r}")
     return {base["value_wei"]: front_family_check(base)} if FRONT_VALUE_WEI > 0 else {}
 
 
 def front_families(base=None):
-    """the launch families front trades, by launch value (see FRONT_FAMILIES above): the base family plus FRONT_FAMILIES. A listed family
-    must give its value, fee, tick spacing, price and liquidity (its own fingerprint) and may set the rest; unknown keys are an error"""
+    """the launch families front trades, by launch value (a V3 family by ("v3", its PositionManager); see FRONT_FAMILIES above): the base
+    family plus FRONT_FAMILIES. A listed family must give its value, fee, tick spacing, price and liquidity (its own fingerprint; a V3 family
+    its target, calldata length, trigger and exit instead of the price and liquidity) and may set the rest; unknown keys are an error"""
     base = front_base_family() if base is None else base
     fams = list(base.values())
     defaults = fams[0] if fams else {"bot_minout": FRONT_BOT_MINOUT, "take_profit": FRONT_TAKE_PROFIT, "hold_blocks": FRONT_HOLD_BLOCKS, "ahead_max_wei": FRONT_AHEAD_MAX_WEI, "stake_wei": FRONT_STAKE_WEI}
@@ -329,14 +390,23 @@ def front_families(base=None):
         bad = sorted(set(f) - set(FRONT_FAMILY_KEYS))
         if bad:
             raise SystemExit(f"FRONT_FAMILIES: family {i} has unknown keys {bad} (known: {', '.join(FRONT_FAMILY_KEYS)})")
-        for k in ("value_wei", "fee", "tick_spacing", "sqrt_p", "liq"):
+        dex = f.get("dex", "v4"); v3 = dex == "v3"
+        if dex not in ("v4", "v3"):
+            raise SystemExit(f"FRONT_FAMILIES: family {i}: dex must be \"v4\" or \"v3\", not {dex!r}")
+        for k in ("value_wei", "fee", "tick_spacing") + (("target", "calldata_len", "hold_blocks", "exit_after_blocks", "trigger") if v3 else ("sqrt_p", "liq")):
             if k not in f:
                 raise SystemExit(f"FRONT_FAMILIES: family {i} must give {k} (its own launch value and fingerprint)")
+        for k in ("target", "exit_after_blocks"):
+            if k in f and not v3:
+                raise SystemExit(f"FRONT_FAMILIES: family {i}: {k} is for a V3 family (dex \"v3\") only")
         w = f"FRONT_FAMILIES family {i}"
         try:
-            fam = {"value_wei": _wei(f["value_wei"], f"{w} value_wei", 0, 10 ** 24), "sqrt_p": _wei(f["sqrt_p"], f"{w} sqrt_p", MIN_SQRT_P, MAX_SQRT_P - 1), "liq": _wei(f["liq"], f"{w} liq", 1, 2 ** 128),
+            fam = {"value_wei": _wei(f["value_wei"], f"{w} value_wei", 0, 10 ** 24),
+                   "sqrt_p": _wei(f["sqrt_p"], f"{w} sqrt_p", MIN_SQRT_P, MAX_SQRT_P - 1) if "sqrt_p" in f else 0, "liq": _wei(f["liq"], f"{w} liq", 1, 2 ** 128) if "liq" in f else 0,   # 0: a V3 family's, not compared
+                   "dex": dex, "target": _hex(f["target"], 40, f"{w} target") if v3 else None,
+                   "exit_after_blocks": _num(f["exit_after_blocks"], f"{w} exit_after_blocks", 1, 600, True) if v3 else None,
                    "fee": _num(f["fee"], f"{w} fee", 1, 999999, True), "tick_spacing": _num(f["tick_spacing"], f"{w} tick_spacing", 1, 32767, True),
-                   "bot_minout": _num(f.get("bot_minout", defaults["bot_minout"]), f"{w} bot_minout", 0.0, 1.0), "take_profit": _num(f.get("take_profit", defaults["take_profit"]), f"{w} take_profit", 0.0, 9.0),
+                   "bot_minout": _num(f.get("bot_minout", defaults["bot_minout"]), f"{w} bot_minout", 0.0, 1.0), "take_profit": _num(f.get("take_profit", 9.0 if v3 else defaults["take_profit"]), f"{w} take_profit", 0.0, 9.0),   # a V3 family: off unless given (the crowd's first buy starts its wave)
                    "hold_blocks": _num(f.get("hold_blocks", defaults["hold_blocks"]), f"{w} hold_blocks", 1, 600, True),
                    "ahead_max_wei": _eth_wei(f["ahead_max_eth"], f"{w} ahead_max_eth", 0.0, 0.5) if "ahead_max_eth" in f else defaults["ahead_max_wei"],
                    "stake_wei": _eth_wei(f["stake_eth"], f"{w} stake_eth", 0.0, FRONT_STAKE_CAP_ETH) if "stake_eth" in f else defaults["stake_wei"],
@@ -353,14 +423,15 @@ def front_families(base=None):
             raise SystemExit(f"{w}: name must be 1-64 letters, digits, '.', '_' or '-', not {name!r}")
         fam["name"] = name
         fams.append(front_family_check(fam))
-    by_value = {}
+    by_key = {}
     for fam in fams:
-        if fam["value_wei"] in by_value:
-            raise SystemExit(f"FRONT_FAMILIES: two families launch with {fam['value_wei']} wei")
-        if any(g["name"] == fam["name"] for g in by_value.values()):
+        key = ("v3", fam["target"]) if fam["dex"] == "v3" else fam["value_wei"]                # a V3 family by its PositionManager (C-1's v4 launches carry 0 ETH too)
+        if key in by_key:
+            raise SystemExit(f"FRONT_FAMILIES: two V3 families launch through {fam['target']}" if fam["dex"] == "v3" else f"FRONT_FAMILIES: two families launch with {fam['value_wei']} wei")
+        if any(g["name"] == fam["name"] for g in by_key.values()):
             raise SystemExit(f"FRONT_FAMILIES: two families named {fam['name']}")
-        by_value[fam["value_wei"]] = fam
-    return by_value
+        by_key[key] = fam
+    return by_key
 try:
     FRONT_FAMILIES = front_base_family(); FRONT_FAMILY_ERROR = None
 except (SystemExit, Exception) as e:                                                     # the FRONT_* line itself wrong: front is off for this run (checks); follow runs
@@ -371,7 +442,8 @@ if FRONT_FAMILY_ERROR is None:
     except (SystemExit, Exception) as e:                                                 # a listed family wrong: it is dropped, the FRONT_* line trades, an alarm at start
         FRONT_FAMILY_ERROR = (f"FRONT_FAMILIES dropped, the FRONT_* line alone trades: " if FRONT_FAMILIES else "FRONT_FAMILIES dropped and there is no FRONT_* line: front is off: ") + f"{type(e).__name__}: {e}"
 FRONT_DELAYED = any(f["fire_at"] or f["trigger"] for f in FRONT_FAMILIES.values())            # some armed pool waits after its launch block: value-0 calls are looked at
-WAVE_ROUTERS = {f["trigger"]["router"] for f in FRONT_FAMILIES.values() if f["trigger"]}       # the wave families' routers: their value-0 calls are read (on_wave_call)
+WAVE_ROUTERS = {f["trigger"]["router"] for f in FRONT_FAMILIES.values() if f["trigger"] and f["trigger"]["router"]}   # the wave families' routers: their value-0 calls are read (on_wave_call)
+ANY_TO_SELECTORS = {s for f in FRONT_FAMILIES.values() if f["trigger"] and not f["trigger"]["router"] for s, _ in f["trigger"]["shapes"]}   # a crowd's selectors (any_to): read to any contract
 # the decoy signal: the bot's buy behind ours is the only exit that pays (+14% on the 2.4333 line, +6% on the 3.0 line; a decoy, a revert or
 # the deadline pays -0.6% to +0.3%). A live front trade whose buy filled and whose return after gas is under FRONT_NONBOT_MIN_RET counts one
 # against its family; FRONT_NONBOT_HALT in a row halt front (its file), as on Oct 10 when the decoys sold 289 positions ahead of the bot for
@@ -735,10 +807,72 @@ def tick_at(sqrt_p):
     return math.floor(2 * math.log(sqrt_p / 2 ** 96) / math.log(1.0001))
 
 
+def sqrt_at_tick(tick):
+    """TickMath.getSqrtRatioAtTick, exact (V3 and v4 share it)"""
+    a = abs(tick)
+    r = 0xfffcb933bd6fad37aa2d162d1a594001 if a & 1 else 0x100000000000000000000000000000000
+    for bit, m in ((0x2, 0xfff97272373d413259a46990580e213a), (0x4, 0xfff2e50f5f656932ef12357cf3c7fdcc), (0x8, 0xffe5caca7e10e4e61c3624eaa0941cd0),
+                   (0x10, 0xffcb9843d60f6159c9db58835c926644), (0x20, 0xff973b41fa98c081472e6896dfb254c0), (0x40, 0xff2ea16466c96a3843ec78b326b52861),
+                   (0x80, 0xfe5dee046a99a2a811c461f1969c3053), (0x100, 0xfcbe86c7900a88aedcffc83b479aa3a4), (0x200, 0xf987a7253ac413176f2b074cf7815e54),
+                   (0x400, 0xf3392b0822b70005940c7a398e4b70f3), (0x800, 0xe7159475a2c29b7443b29c7fa6e889d9), (0x1000, 0xd097f3bdfd2022b8845ad8f792aa5825),
+                   (0x2000, 0xa9f746462d870fdf8a65dc1f90e061e5), (0x4000, 0x70d869a156d2a1b890bb3df62baf32f7), (0x8000, 0x31be135f97d08fd981231505542fcfa6),
+                   (0x10000, 0x9aa508b5b7a84e1c677de54f3e99bc9), (0x20000, 0x5d6af8dedb81196699c329225ee604), (0x40000, 0x2216e584f5fa1ea926041bedfe98),
+                   (0x80000, 0x48a170391f7dc42444e8fa2)):
+        if a & bit:
+            r = (r * m) >> 128
+    if tick > 0:
+        r = ((1 << 256) - 1) // r
+    return (r >> 32) + (0 if r % (1 << 32) == 0 else 1)
+
+
+def v3_liquidity(sp, lo, hi, a0, a1):
+    """LiquidityAmounts.getLiquidityForAmounts, as the PositionManager's mint computes it (floor)"""
+    sa, sb = sqrt_at_tick(lo), sqrt_at_tick(hi); Q96 = 1 << 96
+    l0 = lambda sa, sb: (a0 * ((sa * sb) // Q96)) // (sb - sa)
+    l1 = lambda sa, sb: (a1 * Q96) // (sb - sa)
+    if sp <= sa:
+        return l0(sa, sb)
+    return min(l0(sp, sb), l1(sa, sp)) if sp < sb else l1(sa, sb)
+
+
+def decode_launch_v3(data):
+    """a V3 PositionManager multicall [createAndInitializePoolIfNecessary(token0, token1, fee, sqrtPriceX96), mint(MintParams), refundETH()]
+    as the feed shows it (the port of research/session_oct11/lines/analysis/W/v3dec.py, 31 of 31 and 106 of 106 launches exact against the
+    chain): the pool's address (the factory's CREATE2), its tokens, fee and launch price, the minted range and amounts and their liquidity,
+    with no receipt. The keys of decode_launch (pid: the pool's address; c0: token0; token: token1) and the V3 ones. None if not that shape."""
+    b = bytes(data)
+    try:
+        if len(b) < 68 or b[:4].hex() != SEL_MULTICALL:
+            return None
+        arr = 4 + _u(b, 4)
+        if _u(b, arr) != 3:
+            return None
+        calls = [_dyn(b, arr + 32, arr + 32 + 32 * i) for i in range(3)]
+        if [b[st:st + 4].hex() for st, _ in calls] != [SEL_V3_CREATE, SEL_V3_MINT, SEL_V3_REFUND] or calls[0][1] != 132 or calls[1][1] != 356:
+            return None
+        c = calls[0][0] + 4; m = calls[1][0] + 4                                             # createAndInitialize's arguments, mint's MintParams
+        t0, t1, fee, sp = b[c + 12:c + 32].hex(), b[c + 44:c + 64].hex(), _u(b, c + 64), _u(b, c + 96)
+        lo, hi, a0, a1 = _s(b, m + 96), _s(b, m + 128), _u(b, m + 160), _u(b, m + 192)
+        if b[m + 12:m + 32].hex() != t0 or b[m + 44:m + 64].hex() != t1 or _u(b, m + 64) != fee or not V3_MIN_TICK <= lo < hi <= -V3_MIN_TICK or not MIN_SQRT_P <= sp < MAX_SQRT_P:
+            return None
+        salt = keccak(bytes.fromhex(t0).rjust(32, b"\0") + bytes.fromhex(t1).rjust(32, b"\0") + fee.to_bytes(32, "big"))
+        pool = keccak(b"\xff" + bytes.fromhex(V3_FACTORY) + salt + bytes.fromhex(V3_POOL_INIT_HASH))[12:].hex()
+        return {"pid": "0x" + pool, "c0": t0, "token": t1, "fee": fee, "tick_spacing": V3_TICK_SPACING.get(fee), "hooks": "0" * 40, "sqrt_p": sp, "lo": lo, "hi": hi,
+                "mint_liq": v3_liquidity(sp, lo, hi, a0, a1), "amount0": a0, "amount1": a1, "tick0": hi if sp == sqrt_at_tick(hi) else tick_at(sp)}
+    except Exception:
+        return None
+
+
 def front_mismatch(d, liq, fam):
     """why a launch of the front shape cannot be traded (None: it can): an ETH pair with no hook, a fee other than its family's (front's
-    own bound: the 2.4333 line is at 0.25%, the 3.0 and 5.0 lines at 1%; FEE_MIN/MAX_PPM are follow's), liquidity at the launch price"""
-    if d["c0"] != "0" * 40 or d["hooks"] != "0" * 40:
+    own bound: the 2.4333 line is at 0.25%, the 3.0 and 5.0 lines at 1%; FEE_MIN/MAX_PPM are follow's), liquidity at the launch price. A V3
+    launch: WETH as token0 and the line's range, the token alone from the lowest tick up to the launch price exactly (a buy moves into it)"""
+    if fam["dex"] == "v3":
+        if d["c0"] != WETH:                                                                       # 3 of 106 launches on Oct 10-11: the range mirrored above the price
+            return "WETH is token1 (a mirrored launch: not traded)" if d["token"] == WETH else "not a WETH pair"
+        if d["lo"] != V3_MIN_TICK or d["amount0"] or d["sqrt_p"] != sqrt_at_tick(d["hi"]):
+            return "not the line's range (the token alone from the lowest tick up to the launch price)"
+    elif d["c0"] != "0" * 40 or d["hooks"] != "0" * 40:
         return "not an ETH pair without a hook"
     if fam["fee"] and d["fee"] != fam["fee"] and d["fee"] not in (fam.get("fees_also") or ()):   # the family's fee, or another it is known to use
         return f"fee {d['fee']}"
@@ -759,29 +893,29 @@ def front_fingerprint(d, fam):
 
 
 def arm_front(data, h, seq, seen_at, fam):
-    """a front launch in the feed (of the family `fam`, told by its value): armed at once from its calldata; it fires at the end of
-    this block (ingest). Nothing here may raise into the feed (the rest of the block is follow's): a launch that does not decode or
-    does not match is logged and left."""
+    """a front launch in the feed (of the family `fam`, told by its value; a V3 family's by its PositionManager): armed at once from its
+    calldata; it fires at the end of this block (ingest). Nothing here may raise into the feed (the rest of the block is follow's): a launch
+    that does not decode or does not match is logged and left."""
     try:
-        d = decode_launch(data)
+        v3 = fam["dex"] == "v3"; d = decode_launch_v3(data) if v3 else decode_launch(data)
         if d is None:
             log({"ev": "launch_undecoded", "tx": h, "seq": seq, "family": "front", "fam": fam["name"]}); return False
         if d["pid"] in state["armed"]:                                                 # the same pool again: the first arming stands
             log({"ev": "skip", "why": "front: pool already armed", "pid": d["pid"], "tx": h, "seq": seq}); return True
-        t0 = tick_at(d["sqrt_p"]); liq = d["mint_liq"] if d["lo"] < t0 <= d["hi"] else 0          # a buy (ETH in) moves the tick down: the position serves it from the top tick inclusive (C-1 mints a token-only range up to the launch tick)
+        t0 = d["tick0"] if v3 else tick_at(d["sqrt_p"]); liq = d["mint_liq"] if d["lo"] < t0 <= d["hi"] else 0          # a buy (ETH in) moves the tick down: the position serves it from the top tick inclusive (C-1 mints a token-only range up to the launch tick)
         why = front_mismatch(d, liq, fam); new = front_fingerprint(d, fam)
         if why is None and new and (FRONT_PIN or fam["pin"]):                            # FRONT_PIN pins every family; a family's own pin just itself
             why = ("new fingerprint (FRONT_PIN=1): " if FRONT_PIN else f"new fingerprint ({fam['name']} pinned): ") + ", ".join(new)
         p = {**{k: d[k] for k in ("pid", "c0", "token", "fee", "tick_spacing", "hooks", "sqrt_p")}, "tick0": t0, "liq": liq, "token_bytes": bytes.fromhex(d["token"]),
              "launch_seq": seq, "launch_ts": state["ts"], "armed_at": mono(), "arm_ms": round(1000 * (mono() - seen_at), 1), "first_buy": None, "status": "armed", "tx": h,
              "sp": float(d["sqrt_p"]), "buys": 0, "eth_in": 0, "bot_seq": None, "entry": "front", "launcher_code": "front", "arm_seq": seq, "eligible": why is None,
-             "fam": fam["name"], "fam_cfg": fam}
+             "fam": fam["name"], "fam_cfg": fam, **({"dex": "v3"} if v3 else {})}
         state["launches"] += 1
         if why is None:
             state["armed"][p["pid"]] = p
         log({"ev": "armed", "pid": p["pid"], "token": p["token"], "fee": p["fee"], "tick_spacing": p["tick_spacing"], "hooks": p["hooks"][-8:], "liq": liq, "sqrt_p": p["sqrt_p"], "seq": seq,
-             "arm_ms": p["arm_ms"], "arm_seq": seq, "eligible": p["eligible"], "eth_pair": p["c0"] == "0" * 40, "buys_before_arm": 0, "launcher_code": "front", "entry": "front", "fam": fam["name"],
-             "fingerprint": "new: " + ", ".join(new) if new else "known", **({"why": "front: " + why} if why else {})})
+             "arm_ms": p["arm_ms"], "arm_seq": seq, "eligible": p["eligible"], "eth_pair": p["c0"] == (WETH if v3 else "0" * 40), "buys_before_arm": 0, "launcher_code": "front", "entry": "front",
+             "fam": fam["name"], "fingerprint": "new: " + ", ".join(new) if new else "known", **({"why": "front: " + why} if why else {}), **({"dex": "v3"} if v3 else {})})
     except Exception:
         log({"ev": "alarm", "what": "front launch not armed (error)", "tx": h, "seq": seq, "trace": traceback.format_exc()[-400:]})
     return True
@@ -912,7 +1046,8 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
     roll_day()
     if state["stopping"] is not None:
         p["status"] = "skipped"; log({"ev": "skip", "why": "stopping: no new trade", "pid": p["pid"], "seq": seq}); return
-    front = p.get("entry") == "front"; dry = DRY_RUN or (front and (FRONT_DRY_RUN or p["fam_cfg"]["dry_run"]))
+    front = p.get("entry") == "front"; v3 = front and p["fam_cfg"]["dex"] == "v3"                    # no route to a V3 pool is built (HANDOFF 16.16): a V3 family is dry whatever it says
+    dry = DRY_RUN or (front and (FRONT_DRY_RUN or p["fam_cfg"]["dry_run"] or v3))
     halted = state["halted"] or (state["front_halted"] or state["fam_halted"].get(p.get("fam")) if front else state["follow_halted"])
     if halted and not dry:
         log({"ev": "skip", "why": "halted: " + halted, "pid": p["pid"], "seq": seq}); return
@@ -943,18 +1078,21 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
                                                      for q in state["armed"].values())):
         log({"ev": "skip", "why": "front: a follow launch is waiting for its trigger (follow has the slot first)", "pid": p["pid"], "seq": seq}); return
     hold, send_after = (fam["hold_blocks"], fam["hold_blocks"]) if front else (HOLD_BLOCKS, HOLD_BLOCKS - SELL_LEAD_BLOCKS)
+    if v3:                                                                         # a V3 family's cap counts from the launch: the sell goes when the feed shows launch + hold_blocks
+        hold = send_after = p["launch_seq"] + fam["hold_blocks"] - (fire_seq + 2)   # (our buy lands at the fire block + 2: hold_blocks - 2 for a fire in the launch block)
     fee = p["fee"]; sp1 = int(p["sp"])                                             # the pool as the feed shows it: the trigger and every buy before it
     expected = v4math.buy_out_int(sp1, p["liq"], stake, fee); min_out = int(expected * (1 - BUY_SLIP))
     sp2 = int(v4math.sqrt_after_buy(sp1, p["liq"], net_of_fee(stake, fee)))
     eth_back_flat = v4math.sell_out_int(sp2, p["liq"], expected, fee)             # what the sell gets if nobody buys behind us
     nonce = state["nonce"] if state["nonce"] is not None else 0
     deadline = ts + BUY_DEADLINE_S if BUY_DEADLINE_S > 0 else 0                        # 0: no deadline (the relay skips its check)
-    buy = tx_buy(p, nonce, min_out, deadline, stake); sell = tx_sell(p, nonce + 1)
+    buy, sell = (None, None) if v3 else (tx_buy(p, nonce, min_out, deadline, stake), tx_sell(p, nonce + 1))   # the relay's calls are v4's: none for a V3 pool
     pos = {"pid": p["pid"], "token": p["token"], "fee": fee, "entry": p.get("entry", ENTRY), "trig_seq": seq, "trig_ts": ts, "trig_value": trig_value, "trig_hash": trig_hash, "fired_at": mono(), "nonce": nonce,
            "expected_tokens": expected, "min_out": min_out, "flat_eth_back": eth_back_flat, "buy_seq": None, "sell_sent": False, "sell_seq_sent": None, "buy_hash": None, "sell_hash": None, "sell_raw": None, "dry": dry,
            "fire_seq": fire_seq, "plan_buy_seq": fire_seq + 2, "plan_sell_seq": fire_seq + 2 + hold, "feed_tokens": None, "tp_ret": None,
            "stake": stake, "send_after": send_after, "tp": fam["take_profit"] if front else TAKE_PROFIT, "count_key": count_key, "pnl_key": pnl_key,
-           "fallback_s": SELL_FALLBACK_S + (0.11 * (hold - (HOLD_BLOCKS - SELL_LEAD_BLOCKS)) if front else 0.0), "launch_seq": p["launch_seq"], **({"fam": p["fam"]} if front else {})}
+           "fallback_s": SELL_FALLBACK_S + (0.11 * (hold - (HOLD_BLOCKS - SELL_LEAD_BLOCKS)) if front else 0.0), "launch_seq": p["launch_seq"], **({"fam": p["fam"]} if front else {}),
+           **({"dex": "v3", "exit_seq": None, "exit_why": None} if v3 else {})}                # exit_seq: the block where the crowd's wave ends (on_v3_buy)
     if drop:
         log({"ev": "skip", "why": "dry front position dropped for a live trade", "pid": held["pid"], "seq": seq})
     state["position"] = pos; state["fires"] += 1; state[count_key] += 1; p["status"] = "fired"
@@ -1070,6 +1208,10 @@ def settle(pos):
 
 
 def _settle(pos):
+    # A V3 position never comes here: it is dry (settle_dry). Its live settle is not built (HANDOFF 16.16): the fills would come from the
+    # pool's own Swap(address,address,int256,int256,uint160,uint128,int24) log at the pool's address (pos["pid"]), not the PoolManager's
+    # (swap_of), the pull check from the pool's Burn(address,int24,int24,uint128,uint256,uint256) logs with an amount above 0 instead of a
+    # ModifyLiquidity below 0, and the router path's approve (a third nonce) would need its own receipt.
     rb = wait_receipt(pos["buy_hash"], RECEIPT_TIMEOUT_S); rs = wait_receipt(pos["sell_hash"], RECEIPT_TIMEOUT_S)
     out = {"ev": "trade_done", "dry": False, "entry": pos.get("entry"), "stake": pos.get("stake", STAKE_WEI), "pid": pos["pid"], "token": pos["token"], "fee": pos["fee"], "trig_seq": pos["trig_seq"], "trig_value": pos["trig_value"], "nonce": pos["nonce"],
            "expected_tokens": pos["expected_tokens"], "min_out": pos["min_out"], "buy_seq_feed": pos["buy_seq"], "sell_why": pos.get("sell_why"), "sell_seq_sent": pos["sell_seq_sent"],
@@ -1329,6 +1471,8 @@ def on_front_buy(p, seq, to, value, h, stale):
     bot's buy itself, quoted at the launch state with minOut FRONT_BOT_MINOUT of that quote: if what sits ahead of it (ours
     included) fails that, it reverts on the chain though the feed shows it, so it does not move the pool and is no take-profit;
     our position, if its buy is in, sells at once (nothing is coming behind it). Otherwise it is the take-profit's moment."""
+    if p["fam_cfg"]["dex"] == "v3":                                                         # a V3 pool: anyone's buy with ETH is a buy like the crowd's (on_v3_buy)
+        on_v3_buy(p, seq, value, to, stale, False); return
     pos = state["position"]; ours = pos if pos is not None and pos["pid"] == p["pid"] else None
     if p["fam_cfg"]["trigger"]:                                                              # a wave pool: a stranger's buy with ETH moves the price copy; its trigger is the router call (on_wave_call)
         apply_buy(p, value); p["eth_in"] += value
@@ -1377,22 +1521,67 @@ def on_front_buy(p, seq, to, value, h, stale):
             send_sell(who + f": out before the pull, the sell prices at {ret:+.1%}", ours)
 
 
+def on_v3_buy(p, seq, value, to, stale, crowd):
+    """a buy on a V3 family's pool (under the lock): a call of the crowd's shapes (crowd) or anyone's call carrying the token with ETH as its
+    value. It moves the price copy; the first of the trigger's min_eth is the pool's first_buy; the first of min_eth at or after our buy
+    starts the exit's clock: the sell goes when the feed shows it + exit_after_blocks (ingest), or at the cap (launch + hold_blocks) if that
+    comes first. The research's rule (REPORT_C candidate 1, w07_forward.py: the sell 20 blocks after the first real buy at or after ours):
+    the crowd's wave comes in the 20 blocks after its first buy (5 buys, 0.34 ETH, the price + 17%, typically); selling on that first buy
+    instead made + 4.7% a trade against + 8.7% over the 7-day census (analysis/C/s17_grid.out, cap 80)."""
+    apply_buy(p, value); p["eth_in"] += value
+    pos = state["position"]; ours = pos if pos is not None and pos["pid"] == p["pid"] else None; k = p["fam_cfg"]["exit_after_blocks"]
+    if value >= p["fam_cfg"]["trigger"]["min_wei"]:
+        if p["first_buy"] is None:
+            p["first_buy"] = seq
+            log({"ev": "first_buy", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"], "value": value, "to": to, "fee": p["fee"], "eligible": p["eligible"], "stale": stale,
+                 "entry": "front", "fam": p["fam"], "trigger": crowd})
+        if ours is not None and ours["buy_seq"] is not None and seq >= ours["buy_seq"] and ours["exit_seq"] is None and not ours["sell_sent"]:
+            ours["exit_seq"] = seq + k
+            ours["exit_why"] = (f"the crowd's buy behind ours ({value / 1e18:.4f} ETH {'in its call shape' if crowd else 'with ETH'}, our buy + {seq - ours['buy_seq']}) "
+                                f"and the {k} blocks of its wave")
+    if ours is not None and ours["buy_seq"] is not None and not ours["sell_sent"] and ours["feed_tokens"] and not stale:
+        take_profit(ours, p)
+
+
+def trigger_word(trig, to, data, p):
+    """the amount's calldata word if `data`, a zero-value call to `to`, is one of the trigger's calls on pool p (else None): to its router
+    (any contract with any_to), one of its (selector, length) shapes (length 0: any), carrying p's token at token_word or, with
+    token_anywhere, as an address word or as a V3 path's output after WETH and the pool's fee (a buy: a sell's path starts with the token).
+    Neither carries the direction everywhere: an exact-output sell's path is reversed too, and an address word could be a V2 swap's path;
+    the crowd's 199 buys checked were all exact-input V3 paths"""
+    if trig["router"] is not None and to != trig["router"]:
+        return None
+    sel = data[:4].hex(); vw = trig["shapes"].get((sel, len(data)), trig["shapes"].get((sel, 0)))
+    if vw is None or len(data) < 4 + 32 * trig["words"]:
+        return None
+    tok = p["token_bytes"]
+    if trig["token_word"] is not None:
+        return vw if data[4 + 32 * trig["token_word"] + 12: 4 + 32 * (trig["token_word"] + 1)] == tok else None
+    path = WETH_BYTES + p["fee"].to_bytes(3, "big"); i = data.find(tok)
+    while i >= 0:
+        if ((i - 4) % 32 == 12 and data[i - 12:i] == bytes(12)) or ((i - 4) % 32 == 23 and data[i - 23:i] == path):
+            return vw
+        i = data.find(tok, i + 1)
+    return None
+
+
 def on_wave_call(to, data, seq, h, stale, seen_at):
-    """a zero-value call to a wave family's router (under the lock): the operator's buy, if it carries an armed pool's token and the buy
-    flag. The first one of the family's size is the trigger: we buy behind it (landing + 2); every one moves the engine's price copy and
-    may take the profit. A call for another action (the router's sell) is left alone."""
-    sel = data[:4].hex()
+    """a zero-value call of a trigger's kind (under the lock: to a wave family's router, or of a crowd's selector to any contract): a buy, if
+    trigger_word finds it on an armed pool (and the buy flag). A wave family (C-1): the first one of the family's size is the trigger: we buy
+    behind it (landing + 2); every one moves the engine's price copy and may take the profit. A V3 family: the crowd's buy (on_v3_buy). A
+    call for another action (the router's sell) is left alone."""
     for p in list(state["armed"].values()):
         trig = p["fam_cfg"].get("trigger") if p.get("entry") == "front" else None
-        if not trig or trig["router"] != to or trig["selector"] != sel or len(data) < 4 + 32 * trig["words"]:
-            continue
-        if data[4 + 32 * trig["token_word"] + 12: 4 + 32 * (trig["token_word"] + 1)] != p["token_bytes"]:
+        vw = trigger_word(trig, to, data, p) if trig else None
+        if vw is None:
             continue
         if trig["flag_word"] is not None and int.from_bytes(data[4 + 32 * trig["flag_word"]: 4 + 32 * (trig["flag_word"] + 1)], "big") != trig["flag_value"]:
             return                                                                               # the router's other action on this pool (a sell): not a buy
-        amount = int.from_bytes(data[4 + 32 * trig["value_word"]: 4 + 32 * (trig["value_word"] + 1)], "big")
+        amount = int.from_bytes(data[4 + 32 * vw: 4 + 32 * (vw + 1)], "big")
         if amount > trig["max_wei"]:
             log({"ev": "skip", "why": "wave: a router call with an absurd amount (not a buy, or a call that reverts)", "pid": p["pid"], "seq": seq, "amount": str(amount)[:40], "fam": p["fam"]}); return
+        if p["fam_cfg"]["dex"] == "v3":
+            on_v3_buy(p, seq, amount, to, stale, True); return
         apply_buy(p, amount); p["eth_in"] += amount
         pos = state["position"]; ours = pos if pos is not None and pos["pid"] == p["pid"] else None
         if p["first_buy"] is None and amount >= trig["min_wei"]:
@@ -1473,7 +1662,7 @@ def ingest(raw):
                     p["status"] = "armed" if not stale else "skipped"
                     if not stale:
                         fire(p, p["trig"][0], state["ts"], p["trig"][1], p["trig"][2], seen_at, fire_seq=seq)
-                elif p.get("entry") == "front" and p["status"] == "armed" and p["fam_cfg"]["trigger"]:     # a wave pool waits for its operator's buy (on_wave_call), for max_blocks
+                elif p.get("entry") == "front" and p["status"] == "armed" and p["fam_cfg"]["trigger"] and p["fam_cfg"]["dex"] != "v3":   # a wave pool waits for its operator's buy (on_wave_call), for max_blocks
                     if seq > p["launch_seq"] + p["fam_cfg"]["trigger"]["max_blocks"]:
                         p["status"] = "late"; log({"ev": "skip", "why": "wave: no trigger within the family's window", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"], "fam": p["fam"]})
                 elif p.get("entry") == "front" and p["status"] == "armed" and seq >= p["launch_seq"] + p["fam_cfg"]["fire_at"]:   # buys ahead of ours make it late (on_front_buy), not any buy
@@ -1488,8 +1677,11 @@ def ingest(raw):
                         fire(p, seq, state["ts"], 0, p["tx"], seen_at)                          # the seat's trigger is the launch, its block the fire block
             pos = state["position"]
             if pos is not None and not pos["sell_sent"]:
-                if pos["buy_seq"] is not None and seq >= pos["buy_seq"] + pos["send_after"]:
-                    send_sell("deadline: no buy behind ours paid TAKE_PROFIT; out before the operator's reaction")
+                if pos.get("exit_seq") is not None and seq >= pos["exit_seq"]:                   # a V3 position: the crowd's wave after its first buy behind ours (on_v3_buy)
+                    send_sell(pos["exit_why"])
+                elif pos["buy_seq"] is not None and seq >= pos["buy_seq"] + pos["send_after"]:
+                    send_sell(f"deadline: launch + {seq - pos['launch_seq']}, the V3 line's cap (no crowd's buy behind ours in time)" if pos.get("dex") == "v3" else
+                              "deadline: no buy behind ours paid TAKE_PROFIT; out before the operator's reaction")
                 elif pos["buy_seq"] is None and seq >= pos["plan_buy_seq"] + pos["send_after"]:
                     send_sell("deadline from the planned buy block (buy not seen in the feed)")
             if state["blocks"] % 600 == 0:                                   # about once a minute: alive, decoding, and what it has seen
@@ -1509,8 +1701,10 @@ def ingest_tx(t, seq, stale, seen_at):
     pos = state["position"]
     if pos is not None and pos["buy_hash"] == h and pos["buy_seq"] is None:
         our_buy_landed(pos, seq); return
-    fam = FRONT_FAMILIES.get(value) if FRONT and to == POSITION_MANAGER and data[:4].hex() == SEL_MULTICALL else None
-    if fam is not None and len(data) != fam["calldata_len"]:                               # the family's launch call has one length (1,444 bytes for the volume bot's lines)
+    fam = None
+    if FRONT and data[:4].hex() == SEL_MULTICALL:                                          # a v4 family by its launch value at the PositionManager, a V3 family by its own (target)
+        fam = FRONT_FAMILIES.get(value) if to == POSITION_MANAGER else FRONT_FAMILIES.get(("v3", to))
+    if fam is not None and (len(data) != fam["calldata_len"] or value != fam["value_wei"]):  # the family's launch call has one length (1,444 bytes for the volume bot's lines) and value
         fam = None
     if fam is not None:
         if not stale:
@@ -1531,7 +1725,7 @@ def ingest_tx(t, seq, stale, seen_at):
                 for q in list(state["armed"].values()):                                # a front pool waiting for its fire offset or its trigger: a pull-shaped call carrying its token ends it
                     if q.get("entry") == "front" and q["status"] == "armed" and (q["fam_cfg"]["fire_at"] or q["fam_cfg"]["trigger"]) and q["token_bytes"] in data:
                         q["status"] = "late"; log({"ev": "skip", "why": "front: a liquidity call on the pool before our fire (a pull)", "pid": q["pid"], "seq": seq, "to": to, "offset": seq - q["launch_seq"]})
-            elif to in WAVE_ROUTERS:
+            elif to in WAVE_ROUTERS or data[:4].hex() in ANY_TO_SELECTORS:                  # a wave family's router, or a crowd's call shape to any contract (the V3 line)
                 on_wave_call(to, data, seq, h, stale, seen_at)
         return
     state["recent"].append((seq, to, value, data))
@@ -1622,7 +1816,8 @@ def main():
          "front_ahead_max_eth": FRONT_AHEAD_MAX_ETH, "front_sell_on_eth": FRONT_SELL_ON_ETH, "front_bot_min_eth": FRONT_BOT_MIN_ETH, "front_bot_minout": FRONT_BOT_MINOUT, "front_bot_routers": sorted(FRONT_BOT_ROUTERS),
          "front_families": [{"name": f["name"], "value_eth": f["value_wei"] / 1e18, "fee": f["fee"], "tick_spacing": f["tick_spacing"], "bot_minout": f["bot_minout"], "ahead_max_eth": f["ahead_max_wei"] / 1e18,
                              "take_profit": f["take_profit"], "hold_blocks": f["hold_blocks"], "stake_eth": f["stake_wei"] / 1e18, "dry_run": f["dry_run"], "pin": f["pin"], "fire_at": f["fire_at"],
-                             "fire_max": f["fire_max"], "calldata_len": f["calldata_len"], "trigger": f["trigger"]["router"] + ":" + f["trigger"]["selector"] if f["trigger"] else None} for f in FRONT_FAMILIES.values()],
+                             "fire_max": f["fire_max"], "calldata_len": f["calldata_len"], "trigger": trigger_desc(f["trigger"]),
+                             **({"dex": "v3", "target": f["target"], "exit_after_blocks": f["exit_after_blocks"]} if f["dex"] == "v3" else {})} for f in FRONT_FAMILIES.values()],
          "front_nonbot_halt": FRONT_NONBOT_HALT, "front_nonbot_min_ret": FRONT_NONBOT_MIN_RET, "front_nonbot_streak": state["front_nonbot_streak"], "fam_halted": state["fam_halted"],
          "front_auto_stake": FRONT_AUTO_STAKE, "front_auto_stake_min_eth": FRONT_AUTO_STAKE_MIN_ETH, "front_auto_stake_margin_eth": FRONT_AUTO_STAKE_MARGIN_ETH, "front_auto_stake_pct": FRONT_AUTO_STAKE_PCT,
          "front_family_error": FRONT_FAMILY_ERROR,

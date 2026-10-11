@@ -1502,3 +1502,65 @@ misdescribed scratch-root files (6.12), the repository table (2). Not changed in
   2.4333 line comes back with `FRONT_DRY_RUN=0` the moment the decoys leave the room (the `front_bot_reverts` lines with `ours: true` stop);
   a $5 front fits the 0.0024 ETH the decoys leave (pocket money, the operator can close it with one more decoy). The lines that pay next
   must come from operators that have not met fronters yet: C-1 if its bot's buying recovers, the V3 crowd line if its forward test holds.
+
+### 16.16 Oct 11 evening: the V3 crowd line's dry-run half (a `dex: "v3"` family)
+
+The line (REPORT_C candidate 1, REPORT_W): fresh wallets launch a token through Uniswap V3's PositionManager `0x73991a25...8de0d3`
+(multicall `ac9650d8`, 836 bytes, value 0: createAndInitializePoolIfNecessary(WETH, token, fee 100, the price), mint of the token alone
+from tick -887272 up to the launch tick, refundETH); a crowd of bot contracts buys at about + 47/+ 86/+ 264 and the launch wallet pulls
+at + 128/+ 301/+ 1216, never before the first real buy. Built (two commits after b3329a7, 60 tests; nothing changes for the v4 families):
+
+- **The family type.** A `FRONT_FAMILIES` entry with `"dex":"v3"` gives `target` (its PositionManager), `calldata_len`, `hold_blocks`,
+  `exit_after_blocks` and a `trigger`; `sqrt_p`/`liq` may be left out (0, not compared), `take_profit` is off unless given. V3 families
+  are keyed by `("v3", target)`, so the line and C-1 (both value 0) coexist. Refused at start (the listed families dropped with an alarm,
+  as for any wrong family, never a crash): `dry_run` false or absent ("the V3 trading path is not built"), a `fire_at`, a cap under
+  `fire_max + 3`, v4's PositionManager as target, `target`/`exit_after_blocks` on a v4 family, unknown keys, bad shapes.
+- **The trigger, generalised.** `shapes: [{selector, calldata_len, value_word}]` (exact lengths) instead of one selector, `any_to: true`
+  instead of a router (the crowd rotates its contracts: 4 in 8 h, each its own code hash), `token_anywhere: true` instead of `token_word`
+  (the token as an address word, or as a V3 path's output after WETH and the pool's fee: a buy; a sell's path starts with the token and
+  matches neither, so no `flag_word` is needed). C-1's single-router form parses and matches as before (`trigger_word`).
+- **The launch.** `decode_launch_v3` (v3dec.py's port; equal to the chain on 106 of 106 launches of the 24 h to Oct 11 18:00 UTC) gives the
+  pool's address by CREATE2 (factory `0x1f7d7550...2efa`, init code hash `e34f199b...8b54`), the price, range, amounts and liquidity
+  (LiquidityAmounts, TickMath exact). `arm_front` arms it with `pid` = the pool's address and `dex: "v3"` when WETH is token0 and the range
+  is the line's (the token alone from the lowest tick up to the launch price exactly: `tick0` = the top tick, the liquidity counted); a
+  launch with WETH as token1 (3 of 106: the range mirrored above the price) is logged `eligible: false` and skipped.
+- **The trade (dry).** The fire at the end of the launch block (`would_fire`, `plan_buy_seq` = + 2, no relay transaction built); the cap
+  counts from the launch (`send_after = launch + hold_blocks - (fire block + 2)`, 76 for a fire in the launch block: the sell when the feed
+  shows launch + 78). The crowd's calls (value-0, any contract, one of the shapes, the token in a buy's path; the amount word capped by
+  `max_eth`) and anyone's ETH-value call carrying the token move the price copy (`apply_buy`, v4math at fee 100: the pool's first real buy
+  priced to 2e-20); the first of `min_eth` logs `first_buy` (`trigger: true` for the crowd's shape); the first of `min_eth` at or after our
+  buy starts the exit's clock: the sell when the feed shows that buy + `exit_after_blocks`. `_fire` treats a V3 family as dry whatever
+  its setting; `_settle` is not reached and says what its live version reads (the pool's own Swap and Burn logs).
+- **The exit rule, against the build's brief.** The brief asked for "the sell on the first real buy at or after our buy + 20". The
+  research's rule (`w07_forward.py`: `exit = first real buy at or after ours + 20`, capped; REPORT_C "sell 20 blocks after the first real
+  buy") is the one built: the crowd's wave comes in the 20 blocks after its first buy, and selling on that buy instead made + 4.7% a trade
+  against + 8.7% in the census (`analysis/C/s17_grid.out`, k 1 against k 20 at cap 80). The other reading is a few lines in `on_v3_buy`
+  (send the sell instead of setting `exit_seq`). `exit_after_blocks` 18 and `hold_blocks` 78 are send offsets (a sell lands about 2 blocks
+  later): the replay's 20 and 80.
+
+**What is pinned, and how constant it was** (the 106 launches to the PositionManager of the 24 h to Oct 11 18:00 UTC; 217 fee-100 WETH
+pools in all, the rest other shapes): 836 bytes, value 0, fee 100 and tick spacing 1 (the factory's PoolCreated) on 106 of 106; WETH as
+token0 on 103; on those 103 the lower tick -887272, amount0 0 and the launch price exactly on the top tick; amount1 1e27 less some dust
+(5 values, one per price level); the price and liquidity are not constant: 5 levels (top tick 193379 x50, 192201 x31, 191147 x10, 196256
+x10, 184216 x2, the last C-1's own launch price), L about 1e27 x 2^96 / sqrtP. So the family pins the fee and tick spacing and the decoder
+the shape; `sqrt_p`/`liq` stay out of the box's JSON (RUNBOOK 4g).
+
+**Known limits of the dry run** (score it from the chain before trusting it): `dry_ret` ignores sells (the crowd sells through the same
+contracts), takes the a0193551/49f74a5d calls' whole amount word (they swap 99%/99.3% of it), prices our buy at + 2 exactly (landing at
++ 2 was measured on v4 only); value-0 WETH buys outside the shapes are invisible, while a 484-byte Universal Router call that sells the token for an exact WETH
+amount (its path is reversed: WETH first) or swaps it on a V2 pair (the token as an address word) would count as a buy (none seen; the
+crowd's 199 buys checked by REPORT_W were exact-input V3 paths; a token amount read as ETH is refused by `max_eth`); a V3 dry position holds the one slot for ~8 s (other
+dry fires are skipped meanwhile, a live front fire drops it); `results.py` lists it among front's dry decisions without a family split.
+
+**What the live path still needs** (REPORT_W): (a) the router path: the buy through SwapRouter02 `0xcaf681a6...` `exactInputSingle`
+(04e45aaf, WETH -> token, fee 100) with the stake as ETH value (the router wraps), `approve(router)` on the token at the next nonce, the
+sell at the third nonce as a multicall [exactInputSingle(token -> WETH, recipient the router), unwrapWETH9(minOut, wallet)] built from the
+buy's receipt (the exact amount; without the approval it reverts STF), about 317k gas a trade, the stake from the wallet, not the relay; or
+(b) a V3 relay (~80 lines: `pool.swap` with the callback, the pool checked by CREATE2, WETH wrapped and unwrapped inside, a presigned
+sell-everything, no approval: solc, a harness like relay_sim.py, a review, a deploy). Either way: the three-transaction (or relay)
+nonce flow in `_fire`/`send_sell`, the live settle from the pool's Swap log and the pull check from its Burn logs (amount above 0) with
+the family's own halt file, the dry-only lock in `_fire` and the parser lifted, a `results.py` split. REPORT_W's gate before building:
+100 launches or more at +4% mean or better, no pull before + 80, 120 launches a day (Oct 11: about 90).
+
+Deploying it: `git pull` (60 tests), then RUNBOOK 4g's `FRONT_FAMILIES` (v3.0, c1 and v3crowd, all dry); the start line lists v3crowd
+with `"dex":"v3"`. Nothing else on the box changes.
