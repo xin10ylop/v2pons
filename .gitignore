@@ -6,3 +6,5 @@ __pycache__/
 !research/**/*.jsonl
 # secrets never live here; the box keeps them in /etc/flip/engine.env
 *.env
+# the harness keeps agents' worktrees here (never repo content)
+.claude/
