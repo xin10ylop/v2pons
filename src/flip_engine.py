@@ -56,7 +56,7 @@ halt (FOLLOW_HALT_FILE) for a near miss: a pull within FOLLOW_NEAR_MISS_BLOCKS (
 
 Settings come from the environment (/etc/flip/engine.env on the box). Log: JSONL, one event per line, LOG_PATH.
 """
-import os, sys, json, math, time, base64, threading, asyncio, socket, ssl, signal, http.client, urllib.request, urllib.parse, datetime, traceback, collections
+import os, sys, json, math, time, base64, threading, asyncio, socket, ssl, signal, http.client, urllib.request, urllib.parse, datetime, traceback, collections, re
 import rlp
 from eth_utils import keccak, to_checksum_address
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -247,6 +247,8 @@ def front_base_family():
     base = {"name": env("FRONT_FAMILY_NAME", "v2.433"), "value_wei": FRONT_VALUE_WEI, "fee": FRONT_FEE, "tick_spacing": FRONT_TICK_SPACING, "sqrt_p": FRONT_SQRT_P, "liq": FRONT_LIQ,
             "bot_minout": FRONT_BOT_MINOUT, "ahead_max_wei": FRONT_AHEAD_MAX_WEI, "take_profit": FRONT_TAKE_PROFIT, "hold_blocks": FRONT_HOLD_BLOCKS, "stake_wei": FRONT_STAKE_WEI,
             "dry_run": False, "pin": FRONT_PIN, "fire_at": 0, "fire_max": FRONT_FIRE_MAX}
+    if not re.fullmatch(r"[A-Za-z0-9._-]{1,64}", base["name"]):
+        raise SystemExit(f"FRONT_FAMILY_NAME must be 1-64 letters, digits, '.', '_' or '-', not {base['name']!r}")
     return {base["value_wei"]: front_family_check(base)} if FRONT_VALUE_WEI > 0 else {}
 
 
@@ -287,9 +289,9 @@ def front_families(base=None):
         except (TypeError, ValueError, OverflowError) as e:
             raise SystemExit(f"{w}: {e}")
         name = f["name"] if "name" in f else f"v{fam['value_wei'] / 1e18:g}"
-        if not isinstance(name, str) or not name.strip():
-            raise SystemExit(f"{w}: name must be a non-empty string")
-        fam["name"] = name.strip()
+        if not isinstance(name, str) or not re.fullmatch(r"[A-Za-z0-9._-]{1,64}", name):
+            raise SystemExit(f"{w}: name must be 1-64 letters, digits, '.', '_' or '-', not {name!r}")
+        fam["name"] = name
         fams.append(front_family_check(fam))
     by_value = {}
     for fam in fams:
@@ -307,7 +309,7 @@ if FRONT_FAMILY_ERROR is None:
     try:
         FRONT_FAMILIES = front_families(FRONT_FAMILIES)
     except (SystemExit, Exception) as e:                                                 # a listed family wrong: it is dropped, the FRONT_* line trades, an alarm at start
-        FRONT_FAMILY_ERROR = f"FRONT_FAMILIES dropped, the FRONT_* line alone trades: {type(e).__name__}: {e}"
+        FRONT_FAMILY_ERROR = (f"FRONT_FAMILIES dropped, the FRONT_* line alone trades: " if FRONT_FAMILIES else "FRONT_FAMILIES dropped and there is no FRONT_* line: front is off: ") + f"{type(e).__name__}: {e}"
 FRONT_DELAYED = any(f["fire_at"] for f in FRONT_FAMILIES.values())                       # some family fires after the launch block: value-0 calls are looked at for pulls meanwhile
 # the decoy signal: the bot's buy behind ours is the only exit that pays (+14% on the 2.4333 line, +6% on the 3.0 line; a decoy, a revert or
 # the deadline pays -0.6% to +0.3%). A live front trade whose buy filled and whose return after gas is under FRONT_NONBOT_MIN_RET counts one
@@ -519,8 +521,8 @@ def load_halt():
 
 
 def fam_halt_file(fam):
-    """a listed front family's own halt file (the FRONT_* family halts front as a whole)"""
-    return FRONT_HALT_FILE + "." + "".join(c if c.isalnum() or c in "._-" else "_" for c in fam)
+    """a listed front family's own halt file (the FRONT_* family halts front as a whole); names are letters, digits, . _ - (the parser)"""
+    return FRONT_HALT_FILE + "." + fam
 
 
 def is_base_fam(fam):
@@ -541,9 +543,11 @@ def halt(reason, front=False, scope=None, fam=None):
     try:
         with open(path, "w") as f:
             f.write(reason + "\n")
-    except Exception:
-        pass
+        written = True
+    except Exception as e:
+        written = False; log({"ev": "alarm", "what": f"the halt file {path} could not be written ({str(e)[:80]}): the halt holds in memory until a restart"})
     log({"ev": "alarm", "what": f"{name} halted: {reason}; remove {path} and restart to resume", "halt_file": path})
+    return written
 
 
 def front_off(reason):
@@ -1039,7 +1043,7 @@ def _settle(pos):
                  f"the margin before its reaction is gone (FOLLOW_NEAR_MISS_BLOCKS {FOLLOW_NEAR_MISS_BLOCKS})", scope="follow")
     if rb and rb.get("status") == "0x1" and not out.get("pulled_before_sell") and not (isinstance(out.get("sell"), dict) and out["sell"].get("tokens_in")):
         halt("the buy filled and the sell sold none of it (sell: " + (out["sell"]["status"] if isinstance(out.get("sell"), dict) else str(out.get("sell"))) + ")",
-             front=pos.get("entry") == "front", fam=pos.get("fam"))
+             front=pos.get("entry") == "front")                                          # front-wide even for a listed family: the cause is usually the sell path, not the line
     pnl = eth_out - eth_in - gas_wei
     if pos.get("entry") == "front" and rb is not None and rb.get("status") == "0x1" and eth_in and FRONT_NONBOT_HALT:   # the decoy signal, by the trade's return (see FRONT_NONBOT_HALT)
         paid = pnl / eth_in >= FRONT_NONBOT_MIN_RET; fam = pos.get("fam") or "front"
@@ -1048,9 +1052,8 @@ def _settle(pos):
             streak = state["front_nonbot_streak"][fam]
         out["nonbot_streak"] = streak; out["bot_exit"] = bool(pos.get("bot_exit"))
         if streak >= FRONT_NONBOT_HALT and state["front_halted"] is None and not state["fam_halted"].get(fam):
-            out["nonbot_halted"] = True
-            halt(f"{streak} {fam} front trades in a row paid under {FRONT_NONBOT_MIN_RET:+.0%} (last: {pos.get('sell_why')}, {pnl / eth_in:+.1%}): "
-                 f"decoys or a changed schedule (FRONT_NONBOT_HALT {FRONT_NONBOT_HALT})", front=True, fam=fam)
+            out["nonbot_halted"] = halt(f"{streak} {fam} front trades in a row paid under {FRONT_NONBOT_MIN_RET:+.0%} (last: {pos.get('sell_why')}, {pnl / eth_in:+.1%}): "
+                                        f"decoys or a changed schedule (FRONT_NONBOT_HALT {FRONT_NONBOT_HALT})", front=True, fam=fam)   # a halt whose file failed resets nothing later
     out.update({"eth_in": eth_in, "eth_out": eth_out, "gas_wei": gas_wei, "pnl_eth": pnl / 1e18, "pnl_usd": round(pnl / 1e18 * ETH_USD, 3), "ret": round((eth_out - eth_in) / eth_in, 4) if eth_in else None,
                 "flat_eth_back": pos["flat_eth_back"]})
     n = chain_nonce()                                                                  # both transactions are final now: the chain's count is the truth

@@ -1002,7 +1002,7 @@ def front_bot_trade(seq, nonce):
     assert pos["sell_sent"] and pos.get("bot_exit") and pos["sell_why"].startswith("take profit"), pos.get("sell_why")   # the 1% take-profit fires on the bot's buy: a paying exit
     return front_close(pos, seq + 1, seq + 9, int(E.FRONT_STAKE_WEI * 1.09))
 d1 = front_deadline_trade(9300, 5); E.state["nonce"] = 732; d2 = front_bot_trade(9400, 6); E.state["nonce"] = 734; d3_ = front_deadline_trade(9500, 7); E.state["nonce"] = 736; d4 = front_deadline_trade(9600, 8)
-E.restore_today(); assert E.state["front_nonbot_streak"].get("v2.433") == 2 and not events("nonbot_streak_reset") or events("nonbot_streak_reset")[-1]["t"] < d4["t"], "a run that halted nothing must not reset"
+E.restore_today(); assert E.state["front_nonbot_streak"].get("v2.433") == 2 and not [e for e in events("nonbot_streak_reset") if e["t"] >= d4["t"]], "a run that halted nothing must not reset"
 assert d2["bot_exit"] and not d1["bot_exit"] and (d1["nonbot_streak"], d2["nonbot_streak"], d3_["nonbot_streak"], d4["nonbot_streak"]) == (1, 0, 1, 2) and E.state["front_halted"] is None, (d1["nonbot_streak"], d2["nonbot_streak"], d3_["nonbot_streak"], d4["nonbot_streak"])
 E.state["nonce"] = 738; d5 = front_deadline_trade(9700, 9)
 assert d5["nonbot_streak"] == 3 and d5.get("nonbot_halted") and E.state["front_halted"] and "3 v2.433 front trades in a row paid under +2%" in E.state["front_halted"] and E.state["halted"] is None and os.path.exists(E.FRONT_HALT_FILE), E.state["front_halted"]
@@ -1032,7 +1032,7 @@ for change, needle in ((("minout", 0.9), "unknown keys"), (("stake_wei", 10 ** 1
                        (("hold_blocks", 0), "hold_blocks"), (("value_wei", str(E.FRONT_VALUE_WEI)), "two families launch with"), (("name", "v2.433"), "two families named"),
                        (("dry_run", "false"), "true or false"), (("hold_blocks", 1.9), "whole number"), (("fee", True), "must be a number"), (("ahead_max_eth", 0.001), "at least the stake"),
                        (("name", 5), "name must be"), (("fire_at", 149), "TRIGGER_MAX_BLOCKS"), (("take_profit", -1), "take_profit"), (("liq", "0"), "out of range"), (("sqrt_p", "1"), "sqrt_p"),
-                       (("value_wei", "1" + "0" * 30), "value_wei"), (("sqrt_p", str(E.MAX_SQRT_P)), "sqrt_p")):
+                       (("value_wei", "1" + "0" * 30), "value_wei"), (("sqrt_p", str(E.MAX_SQRT_P)), "sqrt_p"), (("name", "a b"), "name must be"), (("name", "x" * 65), "name must be")):
     f = dict(base3); k, v = change
     if v is None: f.pop(k)
     else: f[k] = v
@@ -1094,7 +1094,7 @@ E.rpc = rpc_pull
 assert wait_for(lambda: done_at(800)); d = done_at(800)[-1]; E.rpc = rpc0
 assert d["pulled_before_sell"] is True and E.state["fam_halted"].get("v3") and E.state["front_halted"] is None and E.state["halted"] is None, (d.get("pulled_before_sell"), E.state["fam_halted"], E.state["front_halted"])
 assert os.path.exists(E.fam_halt_file("v3")) and not os.path.exists(E.FRONT_HALT_FILE)
-E.state["armed"].clear(); E.state["position"] = None; E.state["front_settling"] = None
+E.state["armed"].clear(); assert E.state["position"] is None and E.state["front_settling"] is None, "the settle must free the slot"
 E.ingest(frame(10200, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 9)]))
 assert E.state["position"] is None and "halted" in events("skip")[-1]["why"], events("skip")[-1]                                       # the halted family does not fire
 E.state["nonce"] = 810; E.state["front_pnl_today_usd"] = 0.0; front_launch(10300, 10); assert E.state["position"] and E.state["position"]["fam"] == "v2.433", ("the FRONT_* line must go on", events("skip")[-1])   # the base family does

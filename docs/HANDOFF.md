@@ -1202,6 +1202,14 @@ pull-before-fire watch covers. Still open from that review: the slot precedence 
 trade, skipping a 2.4333 launch that falls inside, about 2% of them at today's rates); nothing watches a pull after our buy (a pulled pool
 cannot be sold anyway; the pull-first halt stops the family afterwards).
 
+A fourth review (Opus, on 644fa21): safe for the box's pull, safe for the 3.0 dry family, safe as a 0.002 ETH probe; its low findings
+fixed in the commit after 644fa21 (56 tests): family names are 1-64 letters, digits, `.`, `_`, `-` (no two names can share a halt file);
+`halt()` returns whether its file was written and alarms when not, and the decoy halt's `nonbot_halted` mark follows it (a halt that
+failed to write resets nothing later); the sold-none halt is front-wide again even for a listed family (its cause is usually the sell path,
+not the line; the pull-first and decoy halts stay per family); the start's message says when front is off altogether. Still true: the
+FRONT_* settings themselves are read with bare `int()`/`float()` at import, so a malformed FRONT_* value (not a family) still stops the
+service; check the env before a restart.
+
 Deploying it: `git pull` (56 tests). The FRONT_* settings stay the 2.4333 line's (the box's env must be back at them after the Oct 11 dry
 run: `FRONT_VALUE_WEI 2433328500000000000` or unset, `FRONT_FEE 2500`, `FRONT_TICK_SPACING 50`, `FRONT_SQRT_P 1604517591721945638372359205383840`,
 `FRONT_LIQ 49279426163460954002188`, `FRONT_BOT_MINOUT 0.99`, `FRONT_AHEAD_MAX_ETH 0.008`, `FRONT_TAKE_PROFIT 0.01`, `FEE_MAX_PPM 9999`,
