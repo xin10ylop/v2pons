@@ -1047,34 +1047,37 @@ print("ok FRONT_FAMILIES: the runbook's JSON parses (stake, room, dry run, pin, 
 
 # 19b. the pull check's block range on a provider whose node refuses a range past its head: it ends 10 under the head, never under the sell block
 reset(); E.state["nonce"] = 6700; E.state["front_halted"] = None; E.state["armed"].pop(FPID, None); E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"
-rpc0 = E.rpc; asked = []; HEAD = [0]
+rpc0 = E.rpc; asked = []; HEAD = [0]; BUMP = [0]
 def head_rpc(method, params, tries=4, timeout=10):
     if method == "eth_blockNumber": return hex(HEAD[0])
     if method == "eth_getLogs":
         asked.append((int(params[0]["fromBlock"], 16), int(params[0]["toBlock"], 16)))
-        if asked[-1][1] > HEAD[0]: raise RuntimeError("block range extends beyond current head block")
+        if asked[-1][1] > HEAD[0]:
+            HEAD[0] += BUMP[0]                                                                                     # a node that catches up between the tries
+            raise RuntimeError("block range extends beyond current head block")
         return []
     return rpc0(method, params, tries, timeout)
 E.rpc = head_rpc
-for i, (head_rel, want_to, ok) in enumerate(((-3, 0, False), (5, 0, True), (25, 15, True), (40, 30, True))):   # the head 3 blocks under the sell (lagging), 5, 25, 40 past it
+#                                head  bump  to    asks  ok
+for i, (head_rel, bump, want_to, asks, ok) in enumerate(((-3, 0, 0, 3, False), (-3, 4, 0, 2, True), (5, 0, 0, 1, True), (25, 0, 15, 1, True), (40, 0, 30, 1, True), (60, 0, 30, 1, True))):
     L = 8600 + 200 * i; front_launch(L, 27 + i); pos = E.state["position"]; assert pos and pos["entry"] == "front", (i, E.state["position"])
     E.ingest(frame(L + 1, [SENT[-1][1]]))
     for s_ in range(L + 2, L + 2 + E.FRONT_HOLD_BLOCKS):
         E.ingest(frame(s_, []))
-    b1 = L + 1 + E.FRONT_HOLD_BLOCKS + 1; HEAD[0] = b1 + head_rel; asked.clear()
+    b1 = L + 1 + E.FRONT_HOLD_BLOCKS + 1; HEAD[0] = b1 + head_rel; BUMP[0] = bump; asked.clear(); alarms0 = len([e for e in events("alarm") if e["what"].startswith("pull check unreadable")])
     d = front_close(pos, L + 1, b1, int(E.FRONT_STAKE_WEI * 1.05))
-    assert asked and asked[-1] == (L + 1, b1 + want_to), (head_rel, asked)                                        # the range: our buy's block to min(sell + 30, head - 10), floor the sell block
-    assert len(asked) == (1 if ok else 3), (head_rel, asked)                                                     # a refused range is asked 3 times (a load-balanced node a few blocks behind), then given up
+    assert asked and asked[-1] == (L + 1, b1 + want_to), (head_rel, bump, asked)                                  # the range: our buy's block to min(sell + 30, head - 10), floor the sell block
+    assert len(asked) == asks, (head_rel, bump, asked)                                                            # a refused range is asked again (a load-balanced node a few blocks behind), 3 times at most
+    alarms = len([e for e in events("alarm") if e["what"].startswith("pull check unreadable")]) - alarms0
     if ok:
-        assert d.get("pull_check_to") == want_to and d.get("pull_check") is None and d.get("pulled_before_sell") is False, (head_rel, d)
+        assert d.get("pull_check_to") == want_to and d.get("pull_check") is None and d.get("pulled_before_sell") is False and alarms == 0, (head_rel, bump, d)
     else:
-        assert "head" in (d.get("pull_check") or "") and d.get("pulled_before_sell") is None and "pull_check_to" not in d, (head_rel, d)   # a lagging head fails the check, never misses a pull
-        assert [e for e in events("alarm") if e["what"].startswith("pull check unreadable") and e.get("pid") == pos["pid"]], "no alarm for the lagging head"
-    assert d["pull_check_head"] == head_rel, d
+        assert "head" in (d.get("pull_check") or "") and d.get("pulled_before_sell") is None and "pull_check_to" not in d and alarms == 1, (head_rel, bump, d)   # a lagging head fails the check, never misses a pull
+    assert d["pull_check_head"] == head_rel + bump * (asks - 1), d                                                # the head of the last try
     assert E.state["front_halted"] is None and not E.state["fam_halted"], (E.state["front_halted"], E.state["fam_halted"])
     E.state["armed"].pop(FPID, None)
 E.rpc = rpc0; E.FRONT = False; E.ENTRY = "follow"; reset()
-print("ok the pull check on a provider's node: the range ends 10 blocks under the head and never under the sell (a lagging head fails the check, 3 tries, instead of missing a pull)")
+print("ok the pull check on a provider's node: the range ends 10 blocks under the head and never under the sell (a lagging head fails the check after 3 tries instead of missing a pull; a node that catches up passes)")
 
 # 20d. a family's fire offset: the delayed front fires when the feed shows launch + fire_at (after the operator's early-pull window, before its late bot buy),
 # not in the launch block; too late past fire_at + fire_max; the bot's buy before the fire still makes the pool late

@@ -1264,8 +1264,14 @@ The replay over the new regime (170 v3.0 pools from 04:22, 86 v5.0), at 0.0058 E
 Dwellir's node refuses an `eth_getLogs` whose `toBlock` is past its head (`block range extends beyond current head block`, also `invalid block
 range params`); the pull check asked for our sell block + 30 about 3 s after the sell, which is at or past the head of a node a few blocks
 behind the sequencer. The public RPC had accepted it. On a failed check the pull-first halt cannot fire, so since 14:26 some trades (those
-whose check failed) had no pull protection. Fix (the commit after 5581def): the range ends at `min(sell + 30, head)` (the halt needs blocks up
-to the sell only; `trade_done.pull_check_to` says how far it looked); the test stub answers `eth_blockNumber`.
+whose check failed) had no pull protection. Fix (dcb5235, d492a41): the range ends at `min(sell + 30, head)`, never under the sell block (the
+halt needs blocks up to the sell only; `trade_done.pull_check_to` says how far it looked); the test stub answers `eth_blockNumber`. Then
+(929cba1 and the commit after it, both Opus-reviewed): the range ends 10 blocks under the head (a load-balanced provider may answer `eth_getLogs`
+from a node a few blocks behind the one that answered `eth_blockNumber`), the floor is the sell block for front and `buy + FOLLOW_NEAR_MISS_BLOCKS`
+for follow, and the two calls are tried 3 times on any error (`tries=1`, 3 s and 5 s timeouts: 25 s at worst, under the 84 s the rpc defaults
+allowed); `trade_done.pull_check_head` is the head's distance from the sell block on the last try. A lagging head (under the floor) fails the
+check with the `pull check unreadable` alarm rather than looking at a range that could miss a pull; test 19b covers the cap, the floor, a
+refusal followed by success and the +30 cap.
 
 **14:41 UTC: a follow trade halted everything.** Three minutes after the restart at the full stake, a follow trade on an operator A launch
 (5 follow launches that hour: A is back) was pulled 3 blocks after our buy, at our sell (+4), -$2.99; on the box's code a follow pull
