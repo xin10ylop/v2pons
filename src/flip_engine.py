@@ -1028,8 +1028,9 @@ def _settle(pos):
         pulls = []
         try:
             head = int(rpc("eth_blockNumber", []), 16)                                     # Dwellir's node refuses a range past its head ("block range extends beyond current head block"):
-            ls = rpc("eth_getLogs", [{"fromBlock": hex(b0), "toBlock": hex(min(b1 + 30, head)), "address": h0x(POOL_MANAGER), "topics": [h0x(T_ML), pos["pid"]]}])   # the halt needs blocks <= b1 only
-            out["pull_check_to"] = min(b1 + 30, head) - b1
+            to = max(min(b1 + 30, head), b1)                                             # never under the sell block: a lagging head must fail the check (an alarm), not miss a pull
+            ls = rpc("eth_getLogs", [{"fromBlock": hex(b0), "toBlock": hex(to), "address": h0x(POOL_MANAGER), "topics": [h0x(T_ML), pos["pid"]]}])   # the halt needs blocks <= b1 only
+            out["pull_check_to"] = to - b1
             pulls = sorted((int(l["blockNumber"], 16), int(l["transactionIndex"], 16)) for l in ls if sgn(W(l["data"], 2)) < 0)
             out["pull_after_buy_blocks"] = pulls[0][0] - b0 if pulls else None
             out["pulled_before_sell"] = bool(pulls) and pulls[0] < (b1, i1)               # the one number that decided every live trade
