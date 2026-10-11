@@ -283,6 +283,8 @@ def _trigger(v, w):
          "max_wei": _eth_wei(v.get("max_eth", 10), f"{w} trigger max_eth", 0.001, 1000.0)}                 # a value-0 call shows in the feed even if it reverts: an absurd amount is not a buy
     if t["min_wei"] <= 0:
         raise SystemExit(f"{w} trigger min_eth must be above 0 (the operator's buy size that counts as the trigger)")
+    if t["max_wei"] < t["min_wei"]:
+        raise SystemExit(f"{w} trigger max_eth must be at least min_eth (a family whose cap is under its trigger size never fires)")
     t["words"] = max(t["value_word"], t["token_word"], t["flag_word"] or 0) + 1                      # calldata words the call must have
     return t
 

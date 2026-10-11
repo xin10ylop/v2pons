@@ -1188,7 +1188,8 @@ for patch, msg in (({"trigger": None}, "needs a trigger"), ({"fire_at": 5}, "fir
                    ({"calldata_len": 20}, "calldata_len"), ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "flag_word": 7, "max_blocks": 5000}}, "max_blocks"),
                    ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f", "flag_word": 7, "min_eth": 0}}, "min_eth"), ({"trigger": "0xd6d35b56"}, "must be an object"), ({"calldata_len": 1444.5}, "whole number"),
                    ({"trigger": {"router": C1_ROUTER, "selector": "e6cb474f"}}, "flag_word"), ({"trigger": {**C1_FAM["trigger"], "max_blocks": 2000}, "hold_blocks": 601}, "hold_blocks"),
-                   ({"trigger": {**C1_FAM["trigger"], "max_blocks": 2000}, "hold_blocks": 600}, "under 2600"), ({"trigger": {**C1_FAM["trigger"], "max_eth": 0}}, "max_eth")):
+                   ({"trigger": {**C1_FAM["trigger"], "max_blocks": 2000}, "hold_blocks": 600}, "under 2600"), ({"trigger": {**C1_FAM["trigger"], "max_eth": 0}}, "max_eth"),
+                   ({"trigger": {**C1_FAM["trigger"], "max_eth": 0.004}}, "at least min_eth")):
     os.environ["FRONT_FAMILIES"] = json.dumps([{**C1_FAM, **patch}])
     try:
         E.front_families(E.front_base_family()); assert False, ("accepted", patch)
@@ -1211,12 +1212,16 @@ assert E.state["position"] is None and p["first_buy"] is None and p["buys"] == 1
 C1_HUGE = C1_BUY[:10 + 64 * 2] + w(2 ** 200) + C1_BUY[10 + 64 * 3:]                                      # a forged or reverting call with an absurd amount: ignored
 E.ingest(frame(12111, [signed(CROWD, C1_ROUTER, 0, C1_HUGE, 60)]))
 assert E.state["position"] is None and p["first_buy"] is None and p["buys"] == 1 and events("skip")[-1]["why"].startswith("wave: a router call with an absurd amount"), events("skip")[-1]
-E.ingest(frame(12112, [signed(DEPLOYER, POSM, 0, "0xac9650d8" + "00" * 2272, 61)]))                     # a value-0 PositionManager call of the family's length that is no launch: logged, not armed, the pull scan still runs
-assert events("launch_undecoded")[-1]["fam"] == "c1" and p["status"] == "armed" and len(E.state["armed"]) == 1
+E.ingest(frame(12112, [signed(DEPLOYER, POSM, 0, "0xac9650d8" + "00" * 2240 + w(C1_TOKEN), 61)]))      # a value-0 PositionManager call of the family's length that is no launch but carries the pool's token (a pull shape):
+assert events("launch_undecoded")[-1]["fam"] == "c1" and len(E.state["armed"]) == 1                              # logged, not armed, and the pull scan still ran: the pool is late
+assert p["status"] == "late" and "pull" in events("skip")[-1]["why"], (p["status"], events("skip")[-1])
+reset(); E.state["nonce"] = 905; E.state["armed"].clear(); LOGS[:] = []                                           # a fresh launch for the trigger path below
+n_sent = len(SENT); E.ingest(frame(12120, [signed(DEPLOYER, POSM, 0, C1["launch_input"], 16)])); p = E.state["armed"][C1_PID]
+E.ingest(frame(12121, [signed(OUTSIDER, UR, int(0.0003e18), "0x12345678" + w(C1_TOKEN), 62)])); assert p["buys"] == 1
 sp_before = p["sp"]; E.ingest(frame(12150, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 52)]))                  # the operator's buy: the trigger
 pos = E.state["position"]; assert pos and pos["fam"] == "c1" and pos["entry"] == "front" and pos["trig_seq"] == 12150 and pos["fire_seq"] == 12150 and pos["plan_buy_seq"] == 12152 \
     and pos["send_after"] == 60 and pos["stake"] == int(0.0058e18) and pos["trig_value"] == C1["router_q_wei"] and len(SENT) == n_sent + 1 and p["first_buy"] == 12150 and p["sp"] < sp_before, pos
-assert events("first_buy")[-1].get("trigger") is True and events("first_buy")[-1]["value"] == C1["router_q_wei"] and events("first_buy")[-1]["offset"] == 150
+assert events("first_buy")[-1].get("trigger") is True and events("first_buy")[-1]["value"] == C1["router_q_wei"] and events("first_buy")[-1]["offset"] == 30
 E.ingest(frame(12152, [SENT[-1][1]])); assert pos["buy_seq"] == 12152 and pos["feed_tokens"] > 0
 E.ingest(frame(12160, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 53)]))                                       # a second operator buy behind ours: the price copy moves, take-profit (9) does not fire
 assert not pos["sell_sent"] and p["buys"] == 4, (pos["sell_sent"], p["buys"])                            # the stranger's, the trigger, our own, the operator's second
@@ -1224,7 +1229,7 @@ for s_ in range(12161, 12212):
     E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
 E.ingest(frame(12212, [])); assert pos["sell_sent"] and pos["sell_why"].startswith("deadline"), pos.get("sell_why")
 RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(12152, -int(0.0058e18), pos["feed_tokens"], pid=C1_PID); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(12213, int(0.0058e18 * 1.1), -pos["feed_tokens"], pid=C1_PID)
-assert wait_for(lambda: done_at(900)); d = done_at(900)[-1]; assert d["fam"] == "c1" and d["entry"] == "front" and d["ret"] > 0.08 and d["hold_blocks"] == 61 and d["buy_offset"] == 2 and not d.get("pulled_before_sell"), d
+assert wait_for(lambda: done_at(905)); d = done_at(905)[-1]; assert d["fam"] == "c1" and d["entry"] == "front" and d["ret"] > 0.08 and d["hold_blocks"] == 61 and d["buy_offset"] == 2 and not d.get("pulled_before_sell"), d
 assert E.state["front_halted"] is None and not E.state["fam_halted"] and E.state["position"] is None
 reset(); E.state["nonce"] = 910; E.state["armed"].clear()                                                # no trigger within the window: late, nothing fires
 E.ingest(frame(12300, [signed(DEPLOYER, POSM, 0, C1["launch_input"], 11)])); p2 = E.state["armed"][C1_PID]
