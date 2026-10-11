@@ -1,0 +1,123 @@
+{
+ "n": 200,
+ "from_day": "2026-10-11",
+ "to_day": "2026-10-11",
+ "entry_point": [
+  [
+   "0xe33e9e479df8802cb0866d5d05258bec4cf62948:0xf85f8e41",
+   151
+  ],
+  [
+   "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e:0xa72101af",
+   27
+  ],
+  [
+   "0x7ed598bcef8bd9edd8c97a195c6d13f40801ec7e:0xf35abbcf",
+   15
+  ],
+  [
+   "0x6115c5dd9b2dcf1f41812173e4d8e96a9a239327:0x4f056fb1",
+   1
+  ],
+  [
+   "0xe9a5b7c265787de7bfa2b2f6184f95412b276c22:0x9cfe09a4",
+   1
+  ]
+ ],
+ "create_value_eth_median": 0.0175,
+ "metadata_hosts": [
+  [
+   "t.me",
+   12
+  ],
+  [
+   "t.co",
+   10
+  ],
+  [
+   "gateway.irys.xyz",
+   9
+  ],
+  [
+   "www.replicants.fun",
+   7
+  ],
+  [
+   "nocapprop.xyz",
+   5
+  ],
+  [
+   "overload.build",
+   4
+  ],
+  [
+   "dozzorh.com",
+   4
+  ],
+  [
+   "promptpad.tech",
+   4
+  ],
+  [
+   "fixlantern.xyz",
+   3
+  ],
+  [
+   "vibrantlabs.com",
+   3
+  ],
+  [
+   "landeddigital.io",
+   3
+  ],
+  [
+   "diracdesk.com",
+   2
+  ]
+ ],
+ "distinct_creator_eoas": 196,
+ "buys": 2551,
+ "buy_eth": 86.591,
+ "sells": 1818,
+ "buyer_eoas": 1160,
+ "creator_eoa_buys": 159,
+ "creator_eoa_buy_eth": 12.891,
+ "eoas_in_ge2": 248,
+ "eoas_in_ge5": 64,
+ "eoas_in_ge20": 0,
+ "top_repeat_eoas": [
+  [
+   "0x5373fb35432768b1f5eba51fd480d1a2ecb1287b",
+   18
+  ],
+  [
+   "0x7937febb769492626125efcad47a835036953888",
+   15
+  ],
+  [
+   "0xf546cd4a915469257d9ec8f03a4b3d1856877777",
+   13
+  ],
+  [
+   "0xb280b31684c80c6ab7fb70834695d08f6bec065c",
+   13
+  ],
+  [
+   "0xe4a727d2cca580d95e52d55930f6aac12ec61075",
+   12
+  ],
+  [
+   "0x1649a969d807ae8f6502389e5887b01eccf3a177",
+   12
+  ],
+  [
+   "0x652cc1482d3e64f127129c1df0450a6c1fa0efff",
+   11
+  ],
+  [
+   "0x1ef3e064e1d05346243bbfb1d20a946aaa49dfb6",
+   11
+  ]
+ ],
+ "curves_with_buy_by_ge20_eoa": 0
+}

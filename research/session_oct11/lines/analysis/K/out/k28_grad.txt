@@ -1,0 +1,45 @@
+graduated window curves with a v4 path 120 full-range-only 119
+(c) mig+1 H=5 {'n': 120, 'mean': -0.083, 'median': -0.0802, 'win': 0.133, 'worst': -0.4633, 'best': 0.581, 'usd_per_day': -20.7}
+(c) mig+1 H=10 {'n': 120, 'mean': -0.0842, 'median': -0.0748, 'win': 0.208, 'worst': -0.9448, 'best': 0.8192, 'usd_per_day': -21.02}
+(c) mig+1 H=30 {'n': 120, 'mean': -0.0976, 'median': -0.1065, 'win': 0.242, 'worst': -0.9522, 'best': 0.8172, 'usd_per_day': -24.36}
+(c) mig+1 H=100 {'n': 120, 'mean': -0.0768, 'median': -0.1291, 'win': 0.225, 'worst': -0.9517, 'best': 2.345, 'usd_per_day': -19.17}
+(c) mig+1 H=300 {'n': 120, 'mean': -0.068, 'median': -0.1228, 'win': 0.267, 'worst': -0.954, 'best': 2.3022, 'usd_per_day': -16.97}
+(c) mig+1 H=1000 {'n': 120, 'mean': -0.0712, 'median': -0.16, 'win': 0.325, 'worst': -0.9754, 'best': 3.0874, 'usd_per_day': -17.78}
+(c) mig+1 H=2900 {'n': 120, 'mean': -0.0641, 'median': -0.21, 'win': 0.333, 'worst': -0.9756, 'best': 6.6194, 'usd_per_day': -15.98}
+(c) mig+2 H=5 {'n': 120, 'mean': -0.1062, 'median': -0.0946, 'win': 0.125, 'worst': -0.5676, 'best': 0.5772, 'usd_per_day': -26.51}
+(c) mig+2 H=10 {'n': 120, 'mean': -0.1079, 'median': -0.1002, 'win': 0.192, 'worst': -0.9521, 'best': 0.7861, 'usd_per_day': -26.92}
+(c) mig+2 H=30 {'n': 120, 'mean': -0.1131, 'median': -0.1193, 'win': 0.208, 'worst': -0.9522, 'best': 0.9691, 'usd_per_day': -28.21}
+(c) mig+2 H=100 {'n': 120, 'mean': -0.0971, 'median': -0.1332, 'win': 0.217, 'worst': -0.9517, 'best': 2.345, 'usd_per_day': -24.23}
+(c) mig+2 H=300 {'n': 120, 'mean': -0.0929, 'median': -0.152, 'win': 0.242, 'worst': -0.956, 'best': 1.7677, 'usd_per_day': -23.17}
+(c) mig+2 H=1000 {'n': 120, 'mean': -0.0911, 'median': -0.1741, 'win': 0.3, 'worst': -0.9791, 'best': 2.9944, 'usd_per_day': -22.74}
+(c) mig+2 H=2900 {'n': 120, 'mean': -0.082, 'median': -0.21, 'win': 0.308, 'worst': -0.9793, 'best': 6.6238, 'usd_per_day': -20.46}
+curves whose real ETH crossed 1.0 1359 of which graduated 120
+curves whose real ETH crossed 2.0 583 of which graduated 120
+curves whose real ETH crossed 3.0 294 of which graduated 120
+curves whose real ETH crossed 3.5 202 of which graduated 120
+curves whose real ETH crossed 3.9 130 of which graduated 120
+(b) L=1.0 W=300 h=30 {'n': 1352, 'mean': -0.0226, 'median': -0.026, 'win': 0.443, 'worst': -0.892, 'best': 6.7408, 'usd_per_day': -63.62, 'graduated_in_hold': 17, 'missed_graduated_before_entry': 7}
+(b) L=1.0 W=3000 h=2 {'n': 1351, 'mean': -0.0599, 'median': -0.2932, 'win': 0.343, 'worst': -0.8962, 'best': 9.012, 'usd_per_day': -168.23, 'graduated_in_hold': 48, 'missed_graduated_before_entry': 7}
+(b) L=1.0 W=3000 h=30 {'n': 1351, 'mean': -0.0698, 'median': -0.2943, 'win': 0.342, 'worst': -0.9199, 'best': 6.7408, 'usd_per_day': -196.14, 'graduated_in_hold': 48, 'missed_graduated_before_entry': 7}
+(b) L=1.0 W=3000 h=300 {'n': 1351, 'mean': -0.0715, 'median': -0.3017, 'win': 0.336, 'worst': -0.9053, 'best': 10.0817, 'usd_per_day': -200.96, 'graduated_in_hold': 48, 'missed_graduated_before_entry': 7}
+(b) L=1.0 W=30000 h=30 {'n': 1351, 'mean': -0.2906, 'median': -0.625, 'win': 0.161, 'worst': -0.9199, 'best': 6.7408, 'usd_per_day': -816.42, 'graduated_in_hold': 77, 'missed_graduated_before_entry': 7}
+(b) L=2.0 W=300 h=30 {'n': 574, 'mean': -0.0329, 'median': -0.0386, 'win': 0.406, 'worst': -0.892, 'best': 2.9819, 'usd_per_day': -39.23, 'graduated_in_hold': 20, 'missed_graduated_before_entry': 9}
+(b) L=2.0 W=3000 h=2 {'n': 573, 'mean': -0.1497, 'median': -0.1604, 'win': 0.344, 'worst': -0.8962, 'best': 3.2039, 'usd_per_day': -178.38, 'graduated_in_hold': 52, 'missed_graduated_before_entry': 9}
+(b) L=2.0 W=3000 h=30 {'n': 573, 'mean': -0.1654, 'median': -0.1604, 'win': 0.342, 'worst': -0.9199, 'best': 2.9819, 'usd_per_day': -197.11, 'graduated_in_hold': 52, 'missed_graduated_before_entry': 9}
+(b) L=2.0 W=3000 h=300 {'n': 573, 'mean': -0.1688, 'median': -0.1661, 'win': 0.328, 'worst': -0.9053, 'best': 3.6757, 'usd_per_day': -201.07, 'graduated_in_hold': 52, 'missed_graduated_before_entry': 9}
+(b) L=2.0 W=30000 h=30 {'n': 573, 'mean': -0.3515, 'median': -0.7976, 'win': 0.227, 'worst': -0.9199, 'best': 2.9819, 'usd_per_day': -418.73, 'graduated_in_hold': 79, 'missed_graduated_before_entry': 9}
+(b) L=3.0 W=300 h=30 {'n': 279, 'mean': -0.0382, 'median': -0.0402, 'win': 0.401, 'worst': -0.892, 'best': 1.7961, 'usd_per_day': -22.18, 'graduated_in_hold': 31, 'missed_graduated_before_entry': 15}
+(b) L=3.0 W=3000 h=2 {'n': 278, 'mean': -0.1823, 'median': -0.1424, 'win': 0.367, 'worst': -0.8962, 'best': 2.4357, 'usd_per_day': -105.4, 'graduated_in_hold': 61, 'missed_graduated_before_entry': 15}
+(b) L=3.0 W=3000 h=30 {'n': 278, 'mean': -0.2064, 'median': -0.149, 'win': 0.356, 'worst': -0.9199, 'best': 1.7961, 'usd_per_day': -119.3, 'graduated_in_hold': 61, 'missed_graduated_before_entry': 15}
+(b) L=3.0 W=3000 h=300 {'n': 278, 'mean': -0.2168, 'median': -0.2005, 'win': 0.327, 'worst': -0.9168, 'best': 2.4702, 'usd_per_day': -125.29, 'graduated_in_hold': 61, 'missed_graduated_before_entry': 15}
+(b) L=3.0 W=30000 h=30 {'n': 278, 'mean': -0.3402, 'median': -0.6943, 'win': 0.317, 'worst': -0.9199, 'best': 1.7961, 'usd_per_day': -196.63, 'graduated_in_hold': 84, 'missed_graduated_before_entry': 15}
+(b) L=3.5 W=300 h=30 {'n': 183, 'mean': -0.0626, 'median': -0.0384, 'win': 0.317, 'worst': -0.9306, 'best': 1.7151, 'usd_per_day': -23.8, 'graduated_in_hold': 42, 'missed_graduated_before_entry': 19}
+(b) L=3.5 W=3000 h=2 {'n': 182, 'mean': -0.1226, 'median': -0.0284, 'win': 0.445, 'worst': -0.903, 'best': 1.7664, 'usd_per_day': -46.38, 'graduated_in_hold': 71, 'missed_graduated_before_entry': 19}
+(b) L=3.5 W=3000 h=30 {'n': 182, 'mean': -0.1508, 'median': -0.0536, 'win': 0.407, 'worst': -0.9306, 'best': 1.7151, 'usd_per_day': -57.07, 'graduated_in_hold': 71, 'missed_graduated_before_entry': 19}
+(b) L=3.5 W=3000 h=300 {'n': 182, 'mean': -0.169, 'median': -0.0924, 'win': 0.319, 'worst': -0.9325, 'best': 2.0323, 'usd_per_day': -63.97, 'graduated_in_hold': 71, 'missed_graduated_before_entry': 19}
+(b) L=3.5 W=30000 h=30 {'n': 182, 'mean': -0.2459, 'median': -0.0792, 'win': 0.462, 'worst': -0.9306, 'best': 1.7151, 'usd_per_day': -93.05, 'graduated_in_hold': 88, 'missed_graduated_before_entry': 19}
+(b) L=3.9 W=300 h=30 {'n': 81, 'mean': -0.0162, 'median': -0.0433, 'win': 0.383, 'worst': -0.9096, 'best': 0.881, 'usd_per_day': -2.72, 'graduated_in_hold': 55, 'missed_graduated_before_entry': 49}
+(b) L=3.9 W=3000 h=2 {'n': 81, 'mean': -0.006, 'median': 0.0538, 'win': 0.728, 'worst': -0.9172, 'best': 0.2852, 'usd_per_day': -1.01, 'graduated_in_hold': 63, 'missed_graduated_before_entry': 49}
+(b) L=3.9 W=3000 h=30 {'n': 81, 'mean': -0.0326, 'median': -0.0181, 'win': 0.444, 'worst': -0.9172, 'best': 0.881, 'usd_per_day': -5.48, 'graduated_in_hold': 63, 'missed_graduated_before_entry': 49}
+(b) L=3.9 W=3000 h=300 {'n': 81, 'mean': -0.0549, 'median': -0.0717, 'win': 0.383, 'worst': -0.942, 'best': 2.0323, 'usd_per_day': -9.24, 'graduated_in_hold': 63, 'missed_graduated_before_entry': 49}
+(b) L=3.9 W=30000 h=30 {'n': 81, 'mean': -0.0407, 'median': 0.0032, 'win': 0.506, 'worst': -0.9174, 'best': 0.881, 'usd_per_day': -6.86, 'graduated_in_hold': 69, 'missed_graduated_before_entry': 49}

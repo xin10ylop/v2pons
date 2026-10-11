@@ -1,0 +1,44 @@
+{
+ "0x9689992f5b5c09447f15906d8d11214944488341": {
+  "not graduated": {
+   "n": 1668,
+   "in": 374.598,
+   "out_real": 395.1,
+   "mark": 14.661
+  },
+  "graduated": {
+   "n": 96,
+   "in": 111.394,
+   "out_real": 64.247,
+   "mark": 72.537
+  }
+ },
+ "0xe492912f37c2a4eca45d42dc67548f4c6cd7ce2b": {
+  "not graduated": {
+   "n": 1465,
+   "in": 342.09,
+   "out_real": 346.104,
+   "mark": 2.761
+  },
+  "graduated": {
+   "n": 75,
+   "in": 12.717,
+   "out_real": 8.199,
+   "mark": 9.287
+  }
+ },
+ "0xf0b7eaaf868191adc00065ca13391ef436ce8faf": {
+  "not graduated": {
+   "n": 2137,
+   "in": 436.652,
+   "out_real": 388.783,
+   "mark": 19.802
+  },
+  "graduated": {
+   "n": 98,
+   "in": 144.829,
+   "out_real": 77.255,
+   "mark": 95.577
+  }
+ }
+}

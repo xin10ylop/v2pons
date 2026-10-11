@@ -1,0 +1,10 @@
+seconds 0 {9501: 1, 8800: 1, 9600: 1, 9300: 1} blocks 1 - 6
+seconds 1 {618: 132} blocks 1 - 19
+seconds 2 {19: 171} blocks 11 - 27
+seconds 3 {0: 117} blocks 21 - 38
+seconds 4 {0: 44} blocks 32 - 40
+seconds 5 {0: 1} blocks 40 - 40
+seconds 149 {0: 2} blocks 1452 - 1452
+seconds 203 {0: 1} blocks 1973 - 1973
+seconds 2876 {0: 1} blocks 27788 - 27788
+seconds 103914 {0: 1} blocks 1006507 - 1006507

@@ -9,7 +9,9 @@ PositionManager-multicall launches without the volume bot), REPORT_B.md (every o
 verifier on C-1), REPORT_R.md (the ride on the 2.4333 and 3.0 lines: none, the operator pulls ~9 blocks after any stranger buy), REPORT_W.md
 (scoping the V3 crowd line: buildable in ~12 h, +5.2% mean / +0.17% median today, ~$65/day, forward-test first), REPORT_H.md (the hooked pump
 line: sells unverifiable, every pool pulled within hours, parked), REPORT_G.md (the owner's method brute force: 123 families x 2,574 rules,
-no new large safe line; the 2.433 line is the calibration and passes). Scripts and their outputs: analysis/<letter>/ (files over 1 MB dropped). The engine change that came out of it: the wave
+no new large safe line; the 2.433 line is the calibration and passes), REPORT_K.md (the bonding-curve launchpad 0x7ed598bc: 17,919 ETH-quoted
+curves in 7 days, an anti-snipe surcharge of 88-96% in the create's second, 0.67% graduate, no repeatable edge at our stake; the "918
+graduated" count in the census was wrong). Scripts and their outputs: analysis/<letter>/ (files over 1 MB dropped). The engine change that came out of it: the wave
 family mode (src/flip_engine.py, tests 20f, RUNBOOK 4g, HANDOFF 16.15).
 
 Outcome in one line: 64,416 pools, 184 token families with 5+ launches; 122 of the 163 families with 10+ launches have a real buyer in under

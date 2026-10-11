@@ -1,0 +1,3 @@
+curves with >= 2 trades 14890 constant rate 14890 varying 0
+constant-rate distribution (bps) [(200, 5038), (0, 2864), (100, 1890), (300, 1414), (150, 526), (250, 278), (1000, 203), (400, 181), (500, 172), (180, 150), (50, 74), (188, 73), (199, 70), (220, 57), (190, 54)]
+varying and non-increasing 0

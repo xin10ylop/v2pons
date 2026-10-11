@@ -1,0 +1,50 @@
+[
+ {
+  "curve": "0x1712181ed45959976dc08f1ae543ddd3576d68d0",
+  "holder": "0x69622b810d5b29e5241b4b263c7184b9e998ec89",
+  "age_blocks": 11474,
+  "balance": 9881301380710229565449616,
+  "sell_no_approval": 65226188852616769,
+  "transfer_to_fresh": 1,
+  "buy_0.0058_tokens_out": 424123590176778738590069,
+  "model_tokens_out": 424123590176778738590069,
+  "cf": 0,
+  "model_sell_eth": 65226188852616768
+ },
+ {
+  "curve": "0xa9b7ee4a5d0e8c4c9630b04cb2a4e79707a5c87f",
+  "holder": "0x357c90d3a9a6241d6522b31b3248e3e2256c876b",
+  "age_blocks": 13319,
+  "balance": 410422737289040118434304,
+  "sell_no_approval": 664674085836644,
+  "transfer_to_fresh": 1,
+  "buy_0.0058_tokens_out": 1680382915804901020751526,
+  "model_tokens_out": 1680382915804901020751526,
+  "cf": 0.01999999999999996,
+  "model_sell_eth": 664674085836643
+ },
+ {
+  "curve": "0xb87baa34b5e07a1ab60a203f01e0260034cdee82",
+  "holder": "0xc72b223e905ae6076cb5ea7fda6d4316a990f1e6",
+  "age_blocks": 13391,
+  "balance": 73998380,
+  "sell_no_approval": "REVERT {'code': 3, 'message': 'execution reverted', 'data': '0xfb8f41b2000000000000000000000000b87baa34b5e07a1ab60a203f01e02600",
+  "transfer_to_fresh": 1,
+  "buy_0.0058_tokens_out": 3371567373999528998384352,
+  "model_tokens_out": 3371567373999528998384352,
+  "cf": 0.01,
+  "model_sell_eth": 0
+ },
+ {
+  "curve": "0xdc0ed2f5fa0146f973e0a9504aa9de1acecca00b",
+  "holder": "0x1682185830c7e5fd90f2b13f3a2485f4aace23bc",
+  "age_blocks": 13754,
+  "balance": 20059185982950177385727929,
+  "sell_no_approval": 19179267510417933,
+  "transfer_to_fresh": 1,
+  "buy_0.0058_tokens_out": 2872653121085992828919781,
+  "model_tokens_out": 2872653121085992828919781,
+  "cf": 0.01,
+  "model_sell_eth": 19179267510417932
+ }
+]
