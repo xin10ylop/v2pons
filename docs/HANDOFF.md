@@ -1260,6 +1260,13 @@ The replay over the new regime (170 v3.0 pools from 04:22, 86 v5.0), at 0.0058 E
   +17, before the bot's buy, and would cost the stake. The only test is a live probe at the smallest stake with the decoy halt on: 20
   trades at 0.002 ETH risk $100 at most and the halt stops it after 5 losses (about $25).
 
+**15:20 UTC: the pull check was failing on Dwellir's RPC.** The start of the new code showed two `pull check unreadable` alarms:
+Dwellir's node refuses an `eth_getLogs` whose `toBlock` is past its head (`block range extends beyond current head block`, also `invalid block
+range params`); the pull check asked for our sell block + 30 about 3 s after the sell, which is at or past the head of a node a few blocks
+behind the sequencer. The public RPC had accepted it. On a failed check the pull-first halt cannot fire, so since 14:26 some trades (those
+whose check failed) had no pull protection. Fix (the commit after 5581def): the range ends at `min(sell + 30, head)` (the halt needs blocks up
+to the sell only; `trade_done.pull_check_to` says how far it looked); the test stub answers `eth_blockNumber`.
+
 **14:41 UTC: a follow trade halted everything.** Three minutes after the restart at the full stake, a follow trade on an operator A launch
 (5 follow launches that hour: A is back) was pulled 3 blocks after our buy, at our sell (+4), -$2.99; on the box's code a follow pull
 writes the all-trading halt file, so front stopped too (8 front launches skipped `halted`) until the owner cleared it. Operator A's

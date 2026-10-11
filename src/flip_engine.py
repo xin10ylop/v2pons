@@ -1027,7 +1027,9 @@ def _settle(pos):
         time.sleep(PULL_WATCH_S)                                                           # the operator's reaction to us comes 5-13 blocks after our buy: let it land, to measure it
         pulls = []
         try:
-            ls = rpc("eth_getLogs", [{"fromBlock": hex(b0), "toBlock": hex(b1 + 30), "address": h0x(POOL_MANAGER), "topics": [h0x(T_ML), pos["pid"]]}])
+            head = int(rpc("eth_blockNumber", []), 16)                                     # Dwellir's node refuses a range past its head ("block range extends beyond current head block"):
+            ls = rpc("eth_getLogs", [{"fromBlock": hex(b0), "toBlock": hex(min(b1 + 30, head)), "address": h0x(POOL_MANAGER), "topics": [h0x(T_ML), pos["pid"]]}])   # the halt needs blocks <= b1 only
+            out["pull_check_to"] = min(b1 + 30, head) - b1
             pulls = sorted((int(l["blockNumber"], 16), int(l["transactionIndex"], 16)) for l in ls if sgn(W(l["data"], 2)) < 0)
             out["pull_after_buy_blocks"] = pulls[0][0] - b0 if pulls else None
             out["pulled_before_sell"] = bool(pulls) and pulls[0] < (b1, i1)               # the one number that decided every live trade

@@ -37,6 +37,7 @@ def fake_rpc(method, params, tries=4, timeout=10):
     if method == "eth_getTransactionCount": return NONCE_ON_CHAIN[0]
     if method == "eth_getCode": return CODES.get(params[0].lower(), "0x")
     if method == "eth_getBlockByNumber": return {"baseFeePerGas": hex(20_000_000), "number": "0x1"}
+    if method == "eth_blockNumber": return hex(10 ** 9)                        # the node's head, far ahead: the pull check's range is never capped here
     raise RuntimeError(method)
 E.rpc = fake_rpc
 
