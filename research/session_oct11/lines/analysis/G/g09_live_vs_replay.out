@@ -1,0 +1,9 @@
+our real round trips matched: 1087 (skipped {'not one buy and one sell': 4})
+buy offset [(1, 1035), (2, 10), (56, 3), (51, 3), (45, 3)]; hold blocks p10/50/90 [ 2.  8. 10.]; stake ETH median 0.0058
+actual (before gas): mean +8.43% median +7.20% win 85.6%
+replay (before gas): mean +8.34% median +7.04% win 62.7%
+replay - actual: mean -0.098 pts, median +0.0000 pts, |diff| p90 0.404 pts, p99 0.404 pts
+  day 4: n 7 actual -38.00% replay -38.00%
+  day 5: n 11 actual +3.31% replay +3.31%
+  day 6: n 470 actual +13.64% replay +13.60%
+  day 7: n 599 actual +4.98% replay +4.84%

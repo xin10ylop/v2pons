@@ -1,0 +1,14 @@
+F: families with a pick 14; positive on days 6-7 8; sum of validated $/day 1934
+W: families with a pick 25; positive on day 7 20 of 24 with trades; sum of day-7 $ 12703
+  F shape=0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|1|hook|ETH|0.0000000     K100 hold100         fit +983.2% val +1130.3% (n 32) $2696/day
+  F shape=0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|3000|60|hook|ETH|0.0000000  K40 hold200          fit +134.7% val +535.4% (n 35) $1397/day
+  F tok=tok:037449b17ce607befceb30d243903e3bbe4542ec090ed8eb9ee79edb4000170a                   K200 TP50% dl200     fit +11.4% val +14.4% (n 1215) $1306/day
+  F shape=0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|10000|200|nohook|ETH|5.0000 K1 X>=0.05 dl200     fit +2.3% val +2.0% (n 444) $66/day
+  F shape=0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2276|100|1|hook|WETH|0.0000000   K3 TP50% dl200       fit +9.1% val +9.7% (n 29) $21/day
+  F shape=0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|3000|60|hook|WETH|0.0000000  K200 hold200         fit +7.7% val +7.2% (n 13) $7/day
+  F shape=0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|1|nohook|ETH|0.0000000   K40 hold200          fit +9.3% val +5.1% (n 15) $6/day
+  F shape=0x18cab14c69d0fe6df4a96256318b51c51c98da3f|603ed0bc|1188|0|60|hook|WETH|0.0000000    K1 hold3             fit +20.6% val +3.0% (n 20) $5/day
+  F shape=0x2a53386daf0bf3eedd9e715d162649764358c7b5|3d9ab7c9|292|0|200|hook|ETH|0.1500000     K40 X>=0.01 dl5      fit +0.6% val -0.1% (n 11) $-0/day
+  F shape=0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2276|100|1|nohook|WETH|0.0000000 K2 hold100           fit +10.0% val -3.2% (n 40) $-10/day
+  F tok=tok:59571c748b9f1a442822c820e7c409c7f3e692c4b107fd9e532211b3806933f3                   K4 hold60            fit +36.6% val -7.3% (n 69) $-38/day
+  F tok=tok:aff2095fe75bb5088d995bed2d0567a82aa266bd8cb0d7ffc0996b8df53d84bd                   K1 X>=0.1 dl200      fit +12.2% val -4.5% (n 1768) $-595/day
