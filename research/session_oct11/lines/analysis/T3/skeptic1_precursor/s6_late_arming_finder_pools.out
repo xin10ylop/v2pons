@@ -1,0 +1,19 @@
+finder pools 200: pools with a tx to the bot router at d = 0..12 before T: [3, 13, 5, 12, 4, 13, 15, 10, 10, 13, 9, 9, 13]; d 1..4 any: 33
+lag 3 lat 1/1 g 40: pools 171, trades 21 | front sold 6, pulled before T 12, pulled before sell 3, late 0 | mean -70.12% ($-3.51/trade), win 29%
+lag 3 lat 1/1 g 45: pools 196, trades 21 | front sold 5, pulled before T 15, pulled before sell 1, late 0 | mean -74.95% ($-3.75/trade), win 24%
+lag 3 lat 1/1 g 50: pools 200, trades 8 | front sold 3, pulled before T 5, pulled before sell 0, late 0 | mean -59.96% ($-3.00/trade), win 38%
+lag 3 lat 2/1 g 40: pools 171, trades 21 | front sold 3, pulled before T 12, pulled before sell 0, late 6 | mean -57.38% ($-2.87/trade), win 14%
+lag 3 lat 2/1 g 45: pools 196, trades 21 | front sold 1, pulled before T 14, pulled before sell 1, late 5 | mean -71.94% ($-3.60/trade), win 5%
+lag 3 lat 2/1 g 50: pools 200, trades 8 | front sold 0, pulled before T 3, pulled before sell 2, late 3 | mean -63.65% ($-3.18/trade), win 0%
+lag 5 lat 1/1 g 40: pools 171, trades 21 | front sold 9, pulled before T 9, pulled before sell 3, late 0 | mean -55.11% ($-2.76/trade), win 43%
+lag 5 lat 1/1 g 45: pools 196, trades 21 | front sold 7, pulled before T 9, pulled before sell 5, late 0 | mean -64.72% ($-3.24/trade), win 33%
+lag 5 lat 1/1 g 50: pools 200, trades 8 | front sold 5, pulled before T 2, pulled before sell 1, late 0 | mean -33.50% ($-1.68/trade), win 62%
+lag 5 lat 2/1 g 40: pools 171, trades 21 | front sold 6, pulled before T 8, pulled before sell 1, late 6 | mean -42.30% ($-2.11/trade), win 29%
+lag 5 lat 2/1 g 45: pools 196, trades 21 | front sold 7, pulled before T 4, pulled before sell 5, late 5 | mean -41.08% ($-2.05/trade), win 33%
+lag 5 lat 2/1 g 50: pools 200, trades 8 | front sold 3, pulled before T 0, pulled before sell 2, late 3 | mean -23.71% ($-1.19/trade), win 38%
+lag 9 lat 1/1 g 40: pools 171, trades 21 | front sold 16, pulled before T 2, pulled before sell 3, late 0 | mean -19.68% ($-0.98/trade), win 76%
+lag 9 lat 1/1 g 45: pools 196, trades 21 | front sold 20, pulled before T 0, pulled before sell 1, late 0 | mean 1.39% ($+0.07/trade), win 95%
+lag 9 lat 1/1 g 50: pools 200, trades 8 | front sold 8, pulled before T 0, pulled before sell 0, late 0 | mean 6.70% ($+0.34/trade), win 100%
+lag 9 lat 2/1 g 40: pools 171, trades 21 | front sold 13, pulled before T 0, pulled before sell 2, late 6 | mean -6.72% ($-0.34/trade), win 62%
+lag 9 lat 2/1 g 45: pools 196, trades 21 | front sold 16, pulled before T 0, pulled before sell 0, late 5 | mean 4.31% ($+0.22/trade), win 76%
+lag 9 lat 2/1 g 50: pools 200, trades 8 | front sold 5, pulled before T 0, pulled before sell 0, late 3 | mean 3.01% ($+0.15/trade), win 62%

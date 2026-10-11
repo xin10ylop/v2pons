@@ -1,0 +1,5 @@
+pools with receipts for every block T-4..T: 200 of 200
+touches of the pool / token / T's buyer in d 0..4 ahead of the bot's buy: 0
+status of the bot's T tx: {'0x1': 200}
+events in other line pools (3.0 / 2.433) in d 0..4: {'otherline_3.0:Swap': 42, 'otherline_3.0:Init': 3, 'otherline_3.0:ML': 3, 'otherline_2.433:Swap': 5, 'otherline_2.433:Init': 1, 'otherline_2.433:ML': 1}
+failed txs in d 0..4 (all pools): 576 [(('other', 'other', '39b0ff21'), 184), (('other', 'other', '0c89e77a'), 56), (('other', 'other', '00000000'), 34), (('other', 'other', '9ba1e3b2'), 15), (('other', 'other', 'e9ae5c53'), 15), (('other', 'other', '09c5eabe'), 13), (('other', 'other', '00000001'), 12), (('other', 'other', '791ac947'), 12)]

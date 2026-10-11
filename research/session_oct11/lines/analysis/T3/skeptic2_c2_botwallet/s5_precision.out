@@ -1,0 +1,21 @@
+SL: fires (bot-wallet txs, other pools, in L+1..T-1) 195 over 48 pools (4.1 a pool); at d 1..2 14 (7.2%), d 1..4 24 (12.3%), d >= 5 171 (87.7%)
+   share of window blocks that are d 1..4: 10.5% (what a lead-free signal would give)
+   arm L+4 : first fire in 37/48 pools; lead T-b p10/25/50/75/90 [5, 13, 29, 37, 41]; in 0..2 1, 3..4 2, >= 5 34
+   arm L+10: first fire in 36/48 pools; lead T-b p10/25/50/75/90 [4, 12, 22, 33, 40]; in 0..2 1, 3..4 3, >= 5 32
+   arm L+20: first fire in 33/48 pools; lead T-b p10/25/50/75/90 [3, 8, 17, 23, 28]; in 0..2 2, 3..4 3, >= 5 28
+   arm L+30: first fire in 22/48 pools; lead T-b p10/25/50/75/90 [4, 7, 12, 16, 17]; in 0..2 2, 3..4 1, >= 5 19
+   arm L+40: first fire in 13/48 pools; lead T-b p10/25/50/75/90 [2, 3, 7, 10, 11]; in 0..2 3, 3..4 2, >= 5 8
+NEW: fires (bot-wallet txs, other pools, in L+1..T-1) 146 over 34 pools (4.3 a pool); at d 1..2 12 (8.2%), d 1..4 19 (13.0%), d >= 5 127 (87.0%)
+   share of window blocks that are d 1..4: 10.4% (what a lead-free signal would give)
+   arm L+4 : first fire in 27/34 pools; lead T-b p10/25/50/75/90 [5, 13, 32, 38, 43]; in 0..2 1, 3..4 1, >= 5 25
+   arm L+10: first fire in 26/34 pools; lead T-b p10/25/50/75/90 [4, 11, 21, 33, 40]; in 0..2 1, 3..4 2, >= 5 23
+   arm L+20: first fire in 23/34 pools; lead T-b p10/25/50/75/90 [3, 7, 18, 23, 28]; in 0..2 2, 3..4 2, >= 5 19
+   arm L+30: first fire in 17/34 pools; lead T-b p10/25/50/75/90 [2, 7, 11, 14, 22]; in 0..2 2, 3..4 1, >= 5 14
+   arm L+40: first fire in 9/34 pools; lead T-b p10/25/50/75/90 [2, 4, 8, 10, 15]; in 0..2 2, 3..4 1, >= 5 6
+OLD: fires (bot-wallet txs, other pools, in L+1..T-1) 190 over 67 pools (2.8 a pool); at d 1..2 14 (7.4%), d 1..4 24 (12.6%), d >= 5 166 (87.4%)
+   share of window blocks that are d 1..4: 10.4% (what a lead-free signal would give)
+   arm L+4 : first fire in 43/67 pools; lead T-b p10/25/50/75/90 [10, 18, 26, 35, 45]; in 0..2 1, 3..4 2, >= 5 40
+   arm L+10: first fire in 42/67 pools; lead T-b p10/25/50/75/90 [4, 14, 22, 30, 37]; in 0..2 3, 3..4 2, >= 5 37
+   arm L+20: first fire in 40/67 pools; lead T-b p10/25/50/75/90 [3, 6, 15, 21, 27]; in 0..2 4, 3..4 3, >= 5 33
+   arm L+30: first fire in 28/67 pools; lead T-b p10/25/50/75/90 [3, 5, 9, 16, 20]; in 0..2 2, 3..4 5, >= 5 21
+   arm L+40: first fire in 18/67 pools; lead T-b p10/25/50/75/90 [1, 2, 7, 11, 13]; in 0..2 5, 3..4 4, >= 5 9

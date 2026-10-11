@@ -1,0 +1,11 @@
+  init logs to 86170251 60
+  init logs to 86188201 129
+slice blocks 86150252..86188201  10-11 21:31:31 .. 10-11 22:36:24 UTC; ETH-pair Initialize logs 129
+fee 10000 / spacing 200 / no hook / the 3.0 price: 29
+  txs 29/29
+3.0 launches: 29 ; same price/fee but not the line's launch tx: {}
+  pool events 15/29
+  pool events 29/29
+swap/ml txs: 306
+  txs 277/277
+done

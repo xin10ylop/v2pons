@@ -1,0 +1,42 @@
+user txs per block at d blocks before T (T's block counted whole), all pools:
+  d  0: mean 5.37
+  d  1: mean 5.04
+  d  2: mean 4.43
+  d  3: mean 5.24
+  d  4: mean 4.76
+  d  5: mean 5.33
+  d  6: mean 5.39
+  d  7: mean 5.12
+  d  8: mean 5.05
+  d  9: mean 5.69
+  d 10: mean 5.04
+  d 11: mean 5.10
+  d 12: mean 4.82
+
+top d1-4 excess keys on the discovery pools, and the same keys on the held out pools (share of pools):
+  eth-send other->other                                        discovery +12.8%   held out  +0.0%
+  cls other->other:                                            discovery +10.5%   held out  -8.2%
+  cls other->other:a9059cbb                                    discovery  +9.8%   held out  -6.7%
+  from 0xc256a1bb                                              discovery  +4.5%   held out  +0.0%
+  from 0x769097a2                                              discovery  +4.5%   held out  +0.0%
+  from 0x4a6dbb33                                              discovery  +4.1%   held out  +6.0%
+  cls botwallet->UR:24856bc3                                   discovery  +3.8%   held out  -4.5%
+  to+sel 0xc8914bbb:ae7e8d81                                   discovery  +3.8%   held out  -3.0%
+  cls other->other:ae7e8d81                                    discovery  +3.8%   held out  -3.0%
+  to+sel 0x23070b6a:d1ffe0a2                                   discovery  +3.8%   held out  -0.7%
+  cls other->other:d1ffe0a2                                    discovery  +3.8%   held out  -0.7%
+  cls other->other:765e827f                                    discovery  +3.4%   held out  -0.7%
+
+top d1-4 excess keys on the held out pools, and the same keys on the discovery pools (share of pools):
+  to+sel 0x00000000:fd9f1e10                                   held out +17.9%   discovery  +3.0%
+  cls other->other:fd9f1e10                                    held out +17.9%   discovery  +3.0%
+  cls other->other:095ea7b3                                    held out +15.7%   discovery  -4.5%
+  to+sel 0xccc88a9d:0a2b8f36                                   held out +12.7%   discovery  -4.1%
+  cls other->other:0a2b8f36                                    held out +12.7%   discovery  -4.1%
+  from 0x99914a98                                              held out +11.9%   discovery  -3.0%
+  to+sel 0x698f6005:3593564c                                   held out +11.9%   discovery  +0.8%
+  cls other->other:4d819a2a                                    held out +10.4%   discovery  +2.3%
+  cls other->other:7169b574                                    held out +10.4%   discovery  +3.0%
+  to+sel 0xb740ddd4:00000000                                   held out  +9.7%   discovery  -1.1%
+  from 0xfb3d6d79                                              held out  +9.7%   discovery  -1.1%
+  cls other->other:00000000                                    held out  +7.5%   discovery  -4.9%

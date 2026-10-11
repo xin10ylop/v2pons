@@ -1,0 +1,21 @@
+head 86196014 10-11 22:49:53 UTC, 9.69 blocks/s, launches from block 85882213
+Initialize ETH-pair logs 2130 | no hook, fee 10000, spacing 200, the 3.0 price: 187
+  txs 74/74
+3.0 launches: 187
+  pool events 20/187
+  pool events 40/187
+  pool events 60/187
+  pool events 80/187
+  pool events 100/187
+  pool events 120/187
+  pool events 140/187
+  pool events 160/187
+  pool events 180/187
+  pool events 187/187
+  txs 400/1520
+  txs 800/1520
+  txs 1200/1520
+  txs 1520/1520
+Swaps with the bot router as sender: 0 txs 0
+bot wallets (senders of c1120e3d to the router that produced a Swap): 0
+saved s1_pools.json

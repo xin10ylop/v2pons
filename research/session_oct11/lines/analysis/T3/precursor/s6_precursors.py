@@ -57,7 +57,8 @@ def table(S, label, top=40):
         w14 = len(set().union(*[dd[d] & S for d in range(1, 5)]))
         r = rate(k, S); exp = len(S) * (1 - (1 - r) ** 4) if r is not None else None
         base = sum(cnt[5:13]) / 8; peak = max(cnt[1:5]); dpk = 1 + cnt[1:5].index(peak)
-        cand.append(dict(k=k, cnt=cnt, w14=w14, r=r, exp=exp, base=base, peak=peak, dpk=dpk, ratio=(peak + 0.5) / (base + 0.5)))
+        w58 = len(set().union(*[dd[d] & S for d in range(5, 9)])); w912 = len(set().union(*[dd[d] & S for d in range(9, 13)]))
+        cand.append(dict(k=k, cnt=cnt, w14=w14, w58=w58, w912=w912, r=r, exp=exp, base=base, peak=peak, dpk=dpk, ratio=(peak + 0.5) / (base + 0.5)))
     def show(c):
         print(f"  {c['k'][:60]:60s} win1-4 {c['w14']:3d} ({100*c['w14']/len(S):3.0f}%) exp {c['exp'] if c['exp'] is None else round(c['exp'],1)!s:>6} "
               f"peak d={c['dpk']} {c['peak']:3d} vs bg {c['base']:5.1f} (x{c['ratio']:.1f}) | " + " ".join(f"{x:3d}" for x in c["cnt"]))
@@ -65,6 +66,9 @@ def table(S, label, top=40):
     for c in sorted(cand, key=lambda c: -c["w14"])[:top]: show(c)
     print("  -- by the peak at one d in 1..4 against d 5..12 (keys seen in >= 10% of pools at their peak)")
     for c in sorted([c for c in cand if c["peak"] >= 0.10 * len(S)], key=lambda c: -c["ratio"])[:25]: show(c)
+    print("  -- same-width windows: pools with the key in d 1..4 vs d 5..8 vs d 9..12, by the excess of 1..4 over the mean of the other two (top 15)")
+    for c in sorted(cand, key=lambda c: -(c["w14"] - (c["w58"] + c["w912"]) / 2))[:15]:
+        print(f"  {c['k'][:60]:60s} d1-4 {c['w14']:3d}  d5-8 {c['w58']:3d}  d9-12 {c['w912']:3d}  excess {c['w14'] - (c['w58'] + c['w912']) / 2:+5.1f} ({100 * (c['w14'] - (c['w58'] + c['w912']) / 2) / len(S):+.0f}% of pools)")
     print("  -- named keys")
     for c in sorted([c for c in cand if c["k"].startswith(("ANY", "a 1444", "ETH sent"))], key=lambda c: c["k"]): show(c)
     return cand

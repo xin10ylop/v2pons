@@ -55,6 +55,22 @@ pools with the whole window T-12..T: 200 (discovery 133, held out 67; held-out L
   cls other->other:3593564c                                    win1-4  59 ( 44%) exp   None peak d=4  22 vs bg  20.0 (x1.1) |  14  19  12  18  22  14  17  21  23  18  24  23  20
   cls other->other:095ea7b3                                    win1-4  85 ( 64%) exp   None peak d=2  35 vs bg  34.2 (x1.0) |  10  27  35  31  32  32  41  29  32  37  35  38  30
   cls other->other:b6621842                                    win1-4  38 ( 29%) exp   None peak d=1  14 vs bg  14.9 (x0.9) |   9  14   9  13   7  19  14  12  11  11  14  11  27
+  -- same-width windows: pools with the key in d 1..4 vs d 5..8 vs d 9..12, by the excess of 1..4 over the mean of the other two (top 15)
+  eth-send other->other                                        d1-4  72  d5-8  57  d9-12  53  excess +17.0 (+13% of pools)
+  cls other->other:                                            d1-4  96  d5-8  86  d9-12  78  excess +14.0 (+11% of pools)
+  cls other->other:a9059cbb                                    d1-4  43  d5-8  28  d9-12  32  excess +13.0 (+10% of pools)
+  from 0xc256a1bb                                              d1-4  13  d5-8   7  d9-12   7  excess  +6.0 (+5% of pools)
+  from 0x769097a2                                              d1-4   7  d5-8   1  d9-12   1  excess  +6.0 (+5% of pools)
+  from 0x4a6dbb33                                              d1-4   7  d5-8   2  d9-12   1  excess  +5.5 (+4% of pools)
+  cls botwallet->UR:24856bc3                                   d1-4  11  d5-8   5  d9-12   7  excess  +5.0 (+4% of pools)
+  to+sel 0xc8914bbb:ae7e8d81                                   d1-4  15  d5-8   6  d9-12  14  excess  +5.0 (+4% of pools)
+  cls other->other:ae7e8d81                                    d1-4  15  d5-8   6  d9-12  14  excess  +5.0 (+4% of pools)
+  to+sel 0x23070b6a:d1ffe0a2                                   d1-4   9  d5-8   4  d9-12   4  excess  +5.0 (+4% of pools)
+  cls other->other:d1ffe0a2                                    d1-4   9  d5-8   4  d9-12   4  excess  +5.0 (+4% of pools)
+  cls other->other:765e827f                                    d1-4  30  d5-8  24  d9-12  27  excess  +4.5 (+3% of pools)
+  to+sel POSM:dd46508f                                         d1-4  12  d5-8   7  d9-12   8  excess  +4.5 (+3% of pools)
+  cls other->POSM:dd46508f                                     d1-4  12  d5-8   7  d9-12   8  excess  +4.5 (+3% of pools)
+  cls other->POSM:ac9650d8                                     d1-4   7  d5-8   0  d9-12   5  excess  +4.5 (+3% of pools)
   -- named keys
   ANY tx from a bot wallet                                     win1-4  29 ( 22%) exp   None peak d=1   8 vs bg   8.0 (x1.0) |   2   8   7   8   8   9   7   6   9   9   8   8   8
   ANY tx from a line launcher (any pool)                       win1-4   8 (  6%) exp   None peak d=2   3 vs bg   3.1 (x1.0) |   0   1   3   3   1   1   3   3   3   3   4   2   6
@@ -131,6 +147,22 @@ pools with the whole window T-12..T: 200 (discovery 133, held out 67; held-out L
   cls other->other:765e827f                                    win1-4  19 ( 28%) exp   None peak d=2   7 vs bg   5.9 (x1.2) |   2   3   7   6   7   6   9   6   8   7   2   2   7
   to+sel 0xcaf681a6:ac9650d8                                   win1-4  28 ( 42%) exp   None peak d=4  14 vs bg  14.5 (x1.0) |   5  12  11  12  14  13  11  14   9  14  16  16  23
   cls other->other:ac9650d8                                    win1-4  28 ( 42%) exp   None peak d=4  14 vs bg  14.9 (x0.9) |   5  12  11  12  14  13  12  14   9  16  16  16  23
+  -- same-width windows: pools with the key in d 1..4 vs d 5..8 vs d 9..12, by the excess of 1..4 over the mean of the other two (top 15)
+  to+sel 0x00000000:fd9f1e10                                   d1-4  30  d5-8  16  d9-12  20  excess +12.0 (+18% of pools)
+  cls other->other:fd9f1e10                                    d1-4  30  d5-8  16  d9-12  20  excess +12.0 (+18% of pools)
+  cls other->other:095ea7b3                                    d1-4  56  d5-8  50  d9-12  41  excess +10.5 (+16% of pools)
+  to+sel 0xccc88a9d:0a2b8f36                                   d1-4  23  d5-8  18  d9-12  11  excess  +8.5 (+13% of pools)
+  cls other->other:0a2b8f36                                    d1-4  23  d5-8  18  d9-12  11  excess  +8.5 (+13% of pools)
+  from 0x99914a98                                              d1-4  14  d5-8   5  d9-12   7  excess  +8.0 (+12% of pools)
+  to+sel 0x698f6005:3593564c                                   d1-4  14  d5-8   5  d9-12   7  excess  +8.0 (+12% of pools)
+  cls other->other:4d819a2a                                    d1-4  16  d5-8  10  d9-12   8  excess  +7.0 (+10% of pools)
+  cls other->other:7169b574                                    d1-4  22  d5-8  20  d9-12  10  excess  +7.0 (+10% of pools)
+  to+sel 0xb740ddd4:00000000                                   d1-4   9  d5-8   3  d9-12   2  excess  +6.5 (+10% of pools)
+  from 0xfb3d6d79                                              d1-4   9  d5-8   3  d9-12   2  excess  +6.5 (+10% of pools)
+  cls other->other:00000000                                    d1-4  14  d5-8   9  d9-12   9  excess  +5.0 (+7% of pools)
+  to+sel 0x65050a9b:4d819a2a                                   d1-4  14  d5-8  10  d9-12   8  excess  +5.0 (+7% of pools)
+  to+sel 0x75379d5d:3593564c                                   d1-4   9  d5-8   5  d9-12   3  excess  +5.0 (+7% of pools)
+  to+sel 0xcaf681a6:04e45aaf                                   d1-4  31  d5-8  28  d9-12  25  excess  +4.5 (+7% of pools)
   -- named keys
   ANY tx from a bot wallet                                     win1-4  16 ( 24%) exp   None peak d=1   7 vs bg   4.5 (x1.5) |   5   7   2   5   4   3   5   4   6   6   4   3   5
   ANY tx from a line launcher (any pool)                       win1-4   4 (  6%) exp   None peak d=2   2 vs bg   2.2 (x0.9) |   1   1   2   0   1   3   2   1   3   2   1   3   3
