@@ -1002,9 +1002,10 @@ def front_bot_trade(seq, nonce):
     assert pos["sell_sent"] and pos.get("bot_exit") and pos["sell_why"].startswith("take profit"), pos.get("sell_why")   # the 1% take-profit fires on the bot's buy: a paying exit
     return front_close(pos, seq + 1, seq + 9, int(E.FRONT_STAKE_WEI * 1.09))
 d1 = front_deadline_trade(9300, 5); E.state["nonce"] = 732; d2 = front_bot_trade(9400, 6); E.state["nonce"] = 734; d3_ = front_deadline_trade(9500, 7); E.state["nonce"] = 736; d4 = front_deadline_trade(9600, 8)
+E.restore_today(); assert E.state["front_nonbot_streak"].get("v2.433") == 2 and not events("nonbot_streak_reset") or events("nonbot_streak_reset")[-1]["t"] < d4["t"], "a run that halted nothing must not reset"
 assert d2["bot_exit"] and not d1["bot_exit"] and (d1["nonbot_streak"], d2["nonbot_streak"], d3_["nonbot_streak"], d4["nonbot_streak"]) == (1, 0, 1, 2) and E.state["front_halted"] is None, (d1["nonbot_streak"], d2["nonbot_streak"], d3_["nonbot_streak"], d4["nonbot_streak"])
 E.state["nonce"] = 738; d5 = front_deadline_trade(9700, 9)
-assert d5["nonbot_streak"] == 3 and E.state["front_halted"] and "3 v2.433 front trades in a row paid under +2%" in E.state["front_halted"] and E.state["halted"] is None and os.path.exists(E.FRONT_HALT_FILE), E.state["front_halted"]
+assert d5["nonbot_streak"] == 3 and d5.get("nonbot_halted") and E.state["front_halted"] and "3 v2.433 front trades in a row paid under +2%" in E.state["front_halted"] and E.state["halted"] is None and os.path.exists(E.FRONT_HALT_FILE), E.state["front_halted"]
 E.state["nonce"] = 740; E.state["armed"].pop(FPID, None); front_launch(9800, 10); assert E.state["position"] is None and "halted" in events("skip")[-1]["why"], events("skip")[-1]
 got = E.restore_today(); assert E.state["front_nonbot_streak"].get("v2.433") == 3 and got["front_today"] >= 5, (E.state["front_nonbot_streak"], got)   # the run goes on across a restart
 os.remove(E.FRONT_HALT_FILE); E.restore_today()                                          # the owner cleared the halt: the run starts again at the next start
@@ -1030,7 +1031,8 @@ for change, needle in ((("minout", 0.9), "unknown keys"), (("stake_wei", 10 ** 1
                        (("value_wei", 3e18), "integer or a string of digits"), (("stake_eth", 0.05), "stake"), (("stake_eth", 0), "stake"), (("fee", 0), "fee 0"), (("bot_minout", 1.5), "bot_minout"),
                        (("hold_blocks", 0), "hold_blocks"), (("value_wei", str(E.FRONT_VALUE_WEI)), "two families launch with"), (("name", "v2.433"), "two families named"),
                        (("dry_run", "false"), "true or false"), (("hold_blocks", 1.9), "whole number"), (("fee", True), "must be a number"), (("ahead_max_eth", 0.001), "at least the stake"),
-                       (("name", 5), "name must be"), (("fire_at", 149), "TRIGGER_MAX_BLOCKS"), (("take_profit", -1), "take_profit"), (("liq", "0"), "out of range"), (("sqrt_p", "1"), "sqrt_p")):
+                       (("name", 5), "name must be"), (("fire_at", 149), "TRIGGER_MAX_BLOCKS"), (("take_profit", -1), "take_profit"), (("liq", "0"), "out of range"), (("sqrt_p", "1"), "sqrt_p"),
+                       (("value_wei", "1" + "0" * 30), "value_wei"), (("sqrt_p", str(E.MAX_SQRT_P)), "sqrt_p")):
     f = dict(base3); k, v = change
     if v is None: f.pop(k)
     else: f[k] = v
@@ -1074,7 +1076,31 @@ E.ingest(frame(9998, [signed(DEPLOYER, BOT, 0, "0xa0f7978d" + w(FTOKEN) + w(0) *
 for s_ in range(9999, 10004):
     E.ingest(frame(s_, []))
 assert E.state["position"] is None, "fired into a pulled pool"
-E.state["delayed"] = False; del E.FRONT_FAMILIES[V3_VALUE]; reset(); E.FRONT = False; E.ENTRY = "follow"
+E.state["delayed"] = False
+# 20e. a listed family's pull-first halt halts that family alone (its own file): the FRONT_* line goes on; the file is read back at a start
+reset(); E.state["nonce"] = 800; E.state["armed"].clear(); E.state["front_halted"] = None; E.FRONT_FAMILIES[V3_VALUE]["fire_at"] = 0; E.FRONT_FAMILIES[V3_VALUE]["hold_blocks"] = 20
+E.ingest(frame(10100, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 8)])); pos = E.state["position"]; assert pos and pos["fam"] == "v3"
+E.ingest(frame(10101, [SENT[-1][1]])); assert pos["buy_seq"] == 10101
+for s_ in range(10102, 10102 + 20):
+    E.ingest(frame(s_, []))
+assert pos["sell_sent"] and pos["sell_why"].startswith("deadline")
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(10101, -int(0.002e18), pos["feed_tokens"], pid=d3["pid"]); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(10123, 0, 0, pid=d3["pid"])
+LOGS_PULL = [{"blockNumber": hex(10110), "transactionIndex": "0x1", "data": "0x" + w(0) * 2 + w((2 ** 256) - 10 ** 20) + w(0), "topics": ["0x" + "11" * 32, d3["pid"]]}]
+rpc0 = E.rpc
+def rpc_pull(method, params, tries=4, timeout=10):
+    if method == "eth_getLogs": return LOGS_PULL
+    return rpc0(method, params, tries, timeout)
+E.rpc = rpc_pull
+assert wait_for(lambda: done_at(800)); d = done_at(800)[-1]; E.rpc = rpc0
+assert d["pulled_before_sell"] is True and E.state["fam_halted"].get("v3") and E.state["front_halted"] is None and E.state["halted"] is None, (d.get("pulled_before_sell"), E.state["fam_halted"], E.state["front_halted"])
+assert os.path.exists(E.fam_halt_file("v3")) and not os.path.exists(E.FRONT_HALT_FILE)
+E.state["armed"].clear(); E.state["position"] = None; E.state["front_settling"] = None
+E.ingest(frame(10200, [signed(DEPLOYER, POSM, V3_VALUE, "0x" + relaunch(10000, 200, V3_SQRT, V3_LIQ).hex(), 9)]))
+assert E.state["position"] is None and "halted" in events("skip")[-1]["why"], events("skip")[-1]                                       # the halted family does not fire
+E.state["nonce"] = 810; E.state["front_pnl_today_usd"] = 0.0; front_launch(10300, 10); assert E.state["position"] and E.state["position"]["fam"] == "v2.433", ("the FRONT_* line must go on", events("skip")[-1])   # the base family does
+E.state["fam_halted"].clear(); E.load_halt(); assert E.state["fam_halted"].get("v3"), "the family's halt file was not read back"
+os.remove(E.fam_halt_file("v3")); E.state["fam_halted"].clear(); del E.FRONT_FAMILIES[V3_VALUE]; reset(); E.FRONT = False; E.ENTRY = "follow"
+print("ok a listed family's pull-first halt halts that family alone (its own file, read back at a start); the FRONT_* line goes on")
 print("ok a family's fire offset: the delayed front fires at launch + fire_at, holds for the bot's late buy, is late past fire_at + fire_max or once the bot has bought")
 for _f in (E.LOG_PATH, E.LOG_PATH + ".1"):
     if os.path.exists(_f): os.remove(_f)

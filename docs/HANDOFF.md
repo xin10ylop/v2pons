@@ -1189,7 +1189,20 @@ skipped (`position open`, then `too late`); at 200-440 launches a day that can c
 best, so a delayed family stays dry until a precedence rule exists (the simplest: a delayed family only fires when no base-family launch
 is within its hold; not built).
 
-Deploying it: `git pull` (55 tests). The FRONT_* settings stay the 2.4333 line's (the box's env must be back at them after the Oct 11 dry
+A third review (Opus, on 78ea92c) found the box's path safe, a dry family safe, and listed what a live delayed family still needed; fixed
+in the commit after faef7c0 (56 tests): a listed family's error no longer turns front off (the family is dropped, the FRONT_* line trades,
+an alarm at start names the error; only the FRONT_* family's own error turns front off); the import guard catches every exception (an
+absurd `value_wei` or 10,000 nested brackets cannot loop the service); `value_wei` at most 1e6 ETH, `sqrt_p` in v4's range, `liq` at most
+2^128; **each listed family has its own halt file** (`HALTED.front.<name>`): its pull-first, sold-none and decoy halts stop that family
+alone while the FRONT_* line goes on (the FRONT_* family's halts stay front-wide), read back at a start, shown in the `flow` and `start`
+lines (`fam_halted`); the decoy-streak reset at a restart happens only when the run actually halted (`trade_done.nonbot_halted`) and that
+halt's file is gone, so lowering the threshold or a halt that failed to write its file no longer resets a run. Verified on the chain:
+all 15 of the Oct 11 trap pulls on the 3.0 line were `a0f7978d` calls to the bot's router `0x1cbaf24d` with value 0, the path the
+pull-before-fire watch covers. Still open from that review: the slot precedence (a live delayed family holds the slot about 3-5 s a
+trade, skipping a 2.4333 launch that falls inside, about 2% of them at today's rates); nothing watches a pull after our buy (a pulled pool
+cannot be sold anyway; the pull-first halt stops the family afterwards).
+
+Deploying it: `git pull` (56 tests). The FRONT_* settings stay the 2.4333 line's (the box's env must be back at them after the Oct 11 dry
 run: `FRONT_VALUE_WEI 2433328500000000000` or unset, `FRONT_FEE 2500`, `FRONT_TICK_SPACING 50`, `FRONT_SQRT_P 1604517591721945638372359205383840`,
 `FRONT_LIQ 49279426163460954002188`, `FRONT_BOT_MINOUT 0.99`, `FRONT_AHEAD_MAX_ETH 0.008`, `FRONT_TAKE_PROFIT 0.01`, `FEE_MAX_PPM 9999`,
 `FRONT_PIN 0`), then `FRONT_FAMILIES` with the 3.0 line's JSON plus `"stake_eth":0.002,"dry_run":true,"pin":true` for its dry run beside

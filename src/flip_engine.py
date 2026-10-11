@@ -235,20 +235,27 @@ def front_family_check(fam):
         raise SystemExit(f"front family {n}: hold_blocks {fam['hold_blocks']} is not in 1..600")
     if not fam["stake_wei"] <= fam["ahead_max_wei"] <= int(0.5e18):
         raise SystemExit(f"front family {n}: ahead_max_eth must be at least the stake and at most 0.5 ETH")
-    if fam["value_wei"] <= 0 or not MIN_SQRT_P <= fam["sqrt_p"] < MAX_SQRT_P or fam["liq"] <= 0:
-        raise SystemExit(f"front family {n}: value_wei, sqrt_p (in v4's range) and liq must be above 0")
+    if not 0 < fam["value_wei"] <= 10 ** 24 or not MIN_SQRT_P <= fam["sqrt_p"] < MAX_SQRT_P or not 0 < fam["liq"] <= 2 ** 128:
+        raise SystemExit(f"front family {n}: value_wei (at most 1e6 ETH), sqrt_p (in v4's range) and liq must be above 0")
     if not 0 <= fam["fire_at"] <= 600 or not 0 <= fam["fire_max"] <= 10 or fam["fire_at"] + fam["fire_max"] > TRIGGER_MAX_BLOCKS:
         raise SystemExit(f"front family {n}: fire_at + fire_max must stay within TRIGGER_MAX_BLOCKS ({TRIGGER_MAX_BLOCKS}) and fire_max within 0..10")
     return fam
 
 
-def front_families():
-    """the launch families front trades, by launch value (see FRONT_FAMILIES above). The FRONT_* settings make the base family; a listed
-    family must give its value, fee, tick spacing, price and liquidity (its own fingerprint) and may set the rest; unknown keys are an error"""
+def front_base_family():
+    """the FRONT_* settings as a family (none if FRONT_VALUE_WEI is 0)"""
     base = {"name": env("FRONT_FAMILY_NAME", "v2.433"), "value_wei": FRONT_VALUE_WEI, "fee": FRONT_FEE, "tick_spacing": FRONT_TICK_SPACING, "sqrt_p": FRONT_SQRT_P, "liq": FRONT_LIQ,
             "bot_minout": FRONT_BOT_MINOUT, "ahead_max_wei": FRONT_AHEAD_MAX_WEI, "take_profit": FRONT_TAKE_PROFIT, "hold_blocks": FRONT_HOLD_BLOCKS, "stake_wei": FRONT_STAKE_WEI,
             "dry_run": False, "pin": FRONT_PIN, "fire_at": 0, "fire_max": FRONT_FIRE_MAX}
-    fams = [front_family_check(base)] if FRONT_VALUE_WEI > 0 else []
+    return {base["value_wei"]: front_family_check(base)} if FRONT_VALUE_WEI > 0 else {}
+
+
+def front_families(base=None):
+    """the launch families front trades, by launch value (see FRONT_FAMILIES above): the base family plus FRONT_FAMILIES. A listed family
+    must give its value, fee, tick spacing, price and liquidity (its own fingerprint) and may set the rest; unknown keys are an error"""
+    base = front_base_family() if base is None else base
+    fams = list(base.values())
+    defaults = fams[0] if fams else {"bot_minout": FRONT_BOT_MINOUT, "take_profit": FRONT_TAKE_PROFIT, "hold_blocks": FRONT_HOLD_BLOCKS, "ahead_max_wei": FRONT_AHEAD_MAX_WEI, "stake_wei": FRONT_STAKE_WEI}
     text = env("FRONT_FAMILIES", "").strip()
     try:
         listed = json.loads(text, object_pairs_hook=_no_dup_keys) if text else []
@@ -267,19 +274,19 @@ def front_families():
                 raise SystemExit(f"FRONT_FAMILIES: family {i} must give {k} (its own launch value and fingerprint)")
         w = f"FRONT_FAMILIES family {i}"
         try:
-            fam = {"value_wei": _wei(f["value_wei"], f"{w} value_wei"), "sqrt_p": _wei(f["sqrt_p"], f"{w} sqrt_p"), "liq": _wei(f["liq"], f"{w} liq"),
+            fam = {"value_wei": _wei(f["value_wei"], f"{w} value_wei", 1, 10 ** 24), "sqrt_p": _wei(f["sqrt_p"], f"{w} sqrt_p", MIN_SQRT_P, MAX_SQRT_P - 1), "liq": _wei(f["liq"], f"{w} liq", 1, 2 ** 128),
                    "fee": _num(f["fee"], f"{w} fee", 1, 999999, True), "tick_spacing": _num(f["tick_spacing"], f"{w} tick_spacing", 1, 32767, True),
-                   "bot_minout": _num(f.get("bot_minout", base["bot_minout"]), f"{w} bot_minout", 0.0, 1.0), "take_profit": _num(f.get("take_profit", base["take_profit"]), f"{w} take_profit", 0.0, 9.0),
-                   "hold_blocks": _num(f.get("hold_blocks", base["hold_blocks"]), f"{w} hold_blocks", 1, 600, True),
-                   "ahead_max_wei": _eth_wei(f["ahead_max_eth"], f"{w} ahead_max_eth", 0.0, 0.5) if "ahead_max_eth" in f else base["ahead_max_wei"],
-                   "stake_wei": _eth_wei(f["stake_eth"], f"{w} stake_eth", 0.0, 0.006) if "stake_eth" in f else base["stake_wei"],
+                   "bot_minout": _num(f.get("bot_minout", defaults["bot_minout"]), f"{w} bot_minout", 0.0, 1.0), "take_profit": _num(f.get("take_profit", defaults["take_profit"]), f"{w} take_profit", 0.0, 9.0),
+                   "hold_blocks": _num(f.get("hold_blocks", defaults["hold_blocks"]), f"{w} hold_blocks", 1, 600, True),
+                   "ahead_max_wei": _eth_wei(f["ahead_max_eth"], f"{w} ahead_max_eth", 0.0, 0.5) if "ahead_max_eth" in f else defaults["ahead_max_wei"],
+                   "stake_wei": _eth_wei(f["stake_eth"], f"{w} stake_eth", 0.0, 0.006) if "stake_eth" in f else defaults["stake_wei"],
                    "dry_run": _flag(f.get("dry_run", False), f"{w} dry_run"), "pin": _flag(f.get("pin", FRONT_PIN), f"{w} pin"),
                    "fire_at": _num(f.get("fire_at", 0), f"{w} fire_at", 0, 600, True), "fire_max": _num(f.get("fire_max", FRONT_FIRE_MAX), f"{w} fire_max", 0, 10, True)}
         except SystemExit:
             raise
         except (TypeError, ValueError, OverflowError) as e:
             raise SystemExit(f"{w}: {e}")
-        name = f.get("name", f"v{fam['value_wei'] / 1e18:g}")
+        name = f["name"] if "name" in f else f"v{fam['value_wei'] / 1e18:g}"
         if not isinstance(name, str) or not name.strip():
             raise SystemExit(f"{w}: name must be a non-empty string")
         fam["name"] = name.strip()
@@ -293,9 +300,14 @@ def front_families():
         by_value[fam["value_wei"]] = fam
     return by_value
 try:
-    FRONT_FAMILIES = front_families(); FRONT_FAMILY_ERROR = None
-except SystemExit as e:                                                                  # a wrong family setting turns front off for this run (checks); follow runs
-    FRONT_FAMILIES = {}; FRONT_FAMILY_ERROR = str(e)
+    FRONT_FAMILIES = front_base_family(); FRONT_FAMILY_ERROR = None
+except (SystemExit, Exception) as e:                                                     # the FRONT_* line itself wrong: front is off for this run (checks); follow runs
+    FRONT_FAMILIES = {}; FRONT_FAMILY_ERROR = f"{type(e).__name__}: {e}"
+if FRONT_FAMILY_ERROR is None:
+    try:
+        FRONT_FAMILIES = front_families(FRONT_FAMILIES)
+    except (SystemExit, Exception) as e:                                                 # a listed family wrong: it is dropped, the FRONT_* line trades, an alarm at start
+        FRONT_FAMILY_ERROR = f"FRONT_FAMILIES dropped, the FRONT_* line alone trades: {type(e).__name__}: {e}"
 FRONT_DELAYED = any(f["fire_at"] for f in FRONT_FAMILIES.values())                       # some family fires after the launch block: value-0 calls are looked at for pulls meanwhile
 # the decoy signal: the bot's buy behind ours is the only exit that pays (+14% on the 2.4333 line, +6% on the 3.0 line; a decoy, a revert or
 # the deadline pays -0.6% to +0.3%). A live front trade whose buy filled and whose return after gas is under FRONT_NONBOT_MIN_RET counts one
@@ -471,7 +483,7 @@ def parse_tx(t):
 # ---------------------------------------------------------------- state
 state = {"seq": 0, "ts": 0, "nonce": None, "base_fee": 20_000_000, "armed": {}, "position": None, "day": None, "trades_today": 0, "pnl_today_usd": 0.0,
          "launches": 0, "fires": 0, "blocks": 0, "stale_blocks": 0, "connected": False, "halted": None, "front_today": 0, "front_halted": None, "front_pnl_today_usd": 0.0, "follow_halted": None,
-         "relay_wei": None, "arming": set(), "front_settling": None, "stopping": None, "stop_logged": False, "front_nonbot_streak": {}, "delayed": FRONT_DELAYED,                 # the relay's balance (read at start and every minute when idle, moved by each trade); launches whose receipt is on its way;
+         "relay_wei": None, "arming": set(), "front_settling": None, "stopping": None, "stop_logged": False, "front_nonbot_streak": {}, "delayed": FRONT_DELAYED, "fam_halted": {},                 # the relay's balance (read at start and every minute when idle, moved by each trade); launches whose receipt is on its way;
                                                                                      # a live front trade out of the slot whose pull check is still running
          "recent": collections.deque(maxlen=8000)}                                   # (seq, to, value, data) of recent ETH-carrying calls: replayed onto a pool armed after its first buys
 lock = threading.RLock()
@@ -501,15 +513,31 @@ def load_halt():
         state["front_halted"] = open(FRONT_HALT_FILE).read().strip() or "halted"
     if os.path.exists(FOLLOW_HALT_FILE):
         state["follow_halted"] = open(FOLLOW_HALT_FILE).read().strip() or "halted"
+    for f in FRONT_FAMILIES.values():
+        if not is_base_fam(f["name"]) and os.path.exists(fam_halt_file(f["name"])):
+            state["fam_halted"][f["name"]] = open(fam_halt_file(f["name"])).read().strip() or "halted"
 
 
-def halt(reason, front=False, scope=None):
+def fam_halt_file(fam):
+    """a listed front family's own halt file (the FRONT_* family halts front as a whole)"""
+    return FRONT_HALT_FILE + "." + "".join(c if c.isalnum() or c in "._-" else "_" for c in fam)
+
+
+def is_base_fam(fam):
+    return fam is None or any(f["value_wei"] == FRONT_VALUE_WEI and f["name"] == fam for f in FRONT_FAMILIES.values())
+
+
+def halt(reason, front=False, scope=None, fam=None):
     """scope "front": the front strategy only (its own file); "follow": follow and the seat only (its own file); "all" (the default; front=True
-    is "front"): all live trading"""
+    is "front"): all live trading. A front halt with `fam` naming a listed family halts that family alone (its own file); the FRONT_* family's
+    halts are front-wide"""
     scope = scope or ("front" if front else "all")
-    key, path, name = {"front": ("front_halted", FRONT_HALT_FILE, "the front strategy"), "follow": ("follow_halted", FOLLOW_HALT_FILE, "the follow strategy"),
-                       "all": ("halted", HALT_FILE, "live trading")}[scope]
-    state[key] = reason
+    if scope == "front" and fam is not None and not is_base_fam(fam):
+        state["fam_halted"][fam] = reason; path = fam_halt_file(fam); name = f"the front family {fam}"
+    else:
+        key, path, name = {"front": ("front_halted", FRONT_HALT_FILE, "the front strategy"), "follow": ("follow_halted", FOLLOW_HALT_FILE, "the follow strategy"),
+                           "all": ("halted", HALT_FILE, "live trading")}[scope]
+        state[key] = reason
     try:
         with open(path, "w") as f:
             f.write(reason + "\n")
@@ -540,10 +568,11 @@ def restore_today():
     d = today(); got = {"trades_today": 0, "front_today": 0, "pnl_today_usd": 0.0, "front_pnl_today_usd": 0.0}; streaks = {}
     for path in (LOG_PATH + ".1", LOG_PATH):                                            # a rotation during the day leaves the morning in .1
         _restore_from(path, d, got, streaks)
-    if FRONT_NONBOT_HALT and not os.path.exists(FRONT_HALT_FILE):                      # the owner cleared a decoy halt: that family's run starts again
-        for k, v in list(streaks.items()):
-            if v >= FRONT_NONBOT_HALT:
-                streaks[k] = 0; log({"ev": "nonbot_streak_reset", "fam": k, "was": v, "why": "front's halt file is gone"})
+    for k, (v, halted_on) in list(streaks.items()):                                     # the owner cleared the decoy halt that this run caused: it starts again
+        path = FRONT_HALT_FILE if is_base_fam(k) else fam_halt_file(k)
+        if halted_on and not os.path.exists(path):
+            log({"ev": "nonbot_streak_reset", "fam": k, "was": v, "why": "the decoy halt's file is gone"}); v = 0
+        streaks[k] = v
     state.update(got); state["front_nonbot_streak"] = streaks                          # each family's run of non-paying front exits goes on across a restart
     return got
 
@@ -559,7 +588,7 @@ def _restore_from(path, d, got, streaks):
                 continue
             front = e.get("entry") == "front"
             if front and e.get("nonbot_streak") is not None:                             # the run of non-paying exits goes on across days: decoys keep no calendar
-                streaks[e.get("fam") or "front"] = e["nonbot_streak"]
+                streaks[e.get("fam") or "front"] = (e["nonbot_streak"], bool(e.get("nonbot_halted")))
             if datetime.datetime.fromtimestamp(e.get("t", 0), datetime.timezone.utc).strftime("%Y-%m-%d") != d:
                 continue
             got["front_pnl_today_usd" if front else "pnl_today_usd"] += e.get("pnl_usd") or 0.0
@@ -816,7 +845,7 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
     if state["stopping"] is not None:
         p["status"] = "skipped"; log({"ev": "skip", "why": "stopping: no new trade", "pid": p["pid"], "seq": seq}); return
     front = p.get("entry") == "front"; dry = DRY_RUN or (front and (FRONT_DRY_RUN or p["fam_cfg"]["dry_run"]))
-    halted = state["halted"] or (state["front_halted"] if front else state["follow_halted"])
+    halted = state["halted"] or (state["front_halted"] or state["fam_halted"].get(p.get("fam")) if front else state["follow_halted"])
     if halted and not dry:
         log({"ev": "skip", "why": "halted: " + halted, "pid": p["pid"], "seq": seq}); return
     held = state["position"]
@@ -1003,14 +1032,14 @@ def _settle(pos):
             log({"ev": "alarm", "what": "pull check unreadable: check the pool's pull by hand", "pid": pos["pid"], "err": str(e)[:100]})
         if out.get("pulled_before_sell"):                                                  # each strategy's pull halts that strategy (Oct 11 14:41: a follow pull at +3 had halted front too)
             halt(f"the operator's pull landed {out['pull_after_buy_blocks']} blocks after our buy, at or before our sell ({b1 - b0}): its reaction is now faster than our exit",
-                 scope="front" if pos.get("entry") == "front" else "follow")
+                 scope="front" if pos.get("entry") == "front" else "follow", fam=pos.get("fam"))
         elif pulls and pos.get("entry") != "front" and FOLLOW_NEAR_MISS_BLOCKS and out["pull_after_buy_blocks"] <= FOLLOW_NEAR_MISS_BLOCKS:   # behind our sell, but too close
             out["near_miss"] = True
             halt(f"near miss: the operator's pull landed {out['pull_after_buy_blocks']} blocks after our buy, {out['pull_after_buy_blocks'] - (b1 - b0)} after our sell ({b1 - b0}): "
                  f"the margin before its reaction is gone (FOLLOW_NEAR_MISS_BLOCKS {FOLLOW_NEAR_MISS_BLOCKS})", scope="follow")
     if rb and rb.get("status") == "0x1" and not out.get("pulled_before_sell") and not (isinstance(out.get("sell"), dict) and out["sell"].get("tokens_in")):
         halt("the buy filled and the sell sold none of it (sell: " + (out["sell"]["status"] if isinstance(out.get("sell"), dict) else str(out.get("sell"))) + ")",
-             front=pos.get("entry") == "front")
+             front=pos.get("entry") == "front", fam=pos.get("fam"))
     pnl = eth_out - eth_in - gas_wei
     if pos.get("entry") == "front" and rb is not None and rb.get("status") == "0x1" and eth_in and FRONT_NONBOT_HALT:   # the decoy signal, by the trade's return (see FRONT_NONBOT_HALT)
         paid = pnl / eth_in >= FRONT_NONBOT_MIN_RET; fam = pos.get("fam") or "front"
@@ -1018,9 +1047,10 @@ def _settle(pos):
             state["front_nonbot_streak"][fam] = 0 if paid else state["front_nonbot_streak"].get(fam, 0) + 1
             streak = state["front_nonbot_streak"][fam]
         out["nonbot_streak"] = streak; out["bot_exit"] = bool(pos.get("bot_exit"))
-        if streak >= FRONT_NONBOT_HALT and state["front_halted"] is None:
+        if streak >= FRONT_NONBOT_HALT and state["front_halted"] is None and not state["fam_halted"].get(fam):
+            out["nonbot_halted"] = True
             halt(f"{streak} {fam} front trades in a row paid under {FRONT_NONBOT_MIN_RET:+.0%} (last: {pos.get('sell_why')}, {pnl / eth_in:+.1%}): "
-                 f"decoys or a changed schedule (FRONT_NONBOT_HALT {FRONT_NONBOT_HALT})", front=True)
+                 f"decoys or a changed schedule (FRONT_NONBOT_HALT {FRONT_NONBOT_HALT})", front=True, fam=fam)
     out.update({"eth_in": eth_in, "eth_out": eth_out, "gas_wei": gas_wei, "pnl_eth": pnl / 1e18, "pnl_usd": round(pnl / 1e18 * ETH_USD, 3), "ret": round((eth_out - eth_in) / eth_in, 4) if eth_in else None,
                 "flat_eth_back": pos["flat_eth_back"]})
     n = chain_nonce()                                                                  # both transactions are final now: the chain's count is the truth
@@ -1296,7 +1326,7 @@ def ingest(raw):
                 prune(seq); log({"ev": "flow", "seq": seq, "ts": state["ts"], "lag_s": round(wall - state["ts"], 1), "blocks": state["blocks"], "txs": state["txs"], "launches": state["launches"], "fires": state["fires"], "armed": len(state["armed"]),
                                  "stale_blocks": state["stale_blocks"], "trades_today": state["trades_today"], "front_today": state["front_today"], "pnl_today_usd": round(state["pnl_today_usd"], 2),
                                  "front_pnl_today_usd": round(state["front_pnl_today_usd"], 2), "relay_eth": state["relay_wei"] / 1e18 if state["relay_wei"] is not None else None,
-                                 "halted": state["halted"], "front_halted": state["front_halted"], "follow_halted": state["follow_halted"]})
+                                 "halted": state["halted"], "front_halted": state["front_halted"], "follow_halted": state["follow_halted"], "fam_halted": state["fam_halted"]})
 
 
 def ingest_tx(t, seq, stale, seen_at):
@@ -1380,8 +1410,10 @@ def checks():
             front_off(f"the relay holds {bal / 1e18:.6f} ETH, under the smallest live front stake {min(live_stakes) / 1e18:g}")
     if FRONT and FRONT_STAKE_WEI <= 0:
         front_off(f"FRONT_STAKE_ETH is {FRONT_STAKE_ETH}: it must be above 0")
-    if FRONT and FRONT_FAMILY_ERROR:
+    if FRONT and FRONT_FAMILY_ERROR and not FRONT_FAMILIES:
         front_off(FRONT_FAMILY_ERROR)
+    elif FRONT and FRONT_FAMILY_ERROR:
+        log({"ev": "alarm", "what": FRONT_FAMILY_ERROR})
     elif FRONT and not FRONT_FAMILIES:
         front_off("no front family: FRONT_VALUE_WEI is 0 and FRONT_FAMILIES is empty")
     if WALLET:
@@ -1412,7 +1444,8 @@ def main():
          "front_families": [{"name": f["name"], "value_eth": f["value_wei"] / 1e18, "fee": f["fee"], "tick_spacing": f["tick_spacing"], "bot_minout": f["bot_minout"], "ahead_max_eth": f["ahead_max_wei"] / 1e18,
                              "take_profit": f["take_profit"], "hold_blocks": f["hold_blocks"], "stake_eth": f["stake_wei"] / 1e18, "dry_run": f["dry_run"], "pin": f["pin"], "fire_at": f["fire_at"],
                              "fire_max": f["fire_max"]} for f in FRONT_FAMILIES.values()],
-         "front_nonbot_halt": FRONT_NONBOT_HALT, "front_nonbot_min_ret": FRONT_NONBOT_MIN_RET, "front_nonbot_streak": state["front_nonbot_streak"],
+         "front_nonbot_halt": FRONT_NONBOT_HALT, "front_nonbot_min_ret": FRONT_NONBOT_MIN_RET, "front_nonbot_streak": state["front_nonbot_streak"], "fam_halted": state["fam_halted"],
+         "front_family_error": FRONT_FAMILY_ERROR,
          "halted": state["halted"], "halt_file": HALT_FILE, "follow_halted": state["follow_halted"], "follow_halt_file": FOLLOW_HALT_FILE, "follow_near_miss_blocks": FOLLOW_NEAR_MISS_BLOCKS, "feed_headers": sorted(FEED_HEADERS), "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     signal.signal(signal.SIGTERM, on_stop)
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()
