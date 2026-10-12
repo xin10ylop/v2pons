@@ -3,3 +3,6 @@ Initialize logs 281, fee 100 / ts 1 / ETH 21, new C-1 launches 20; sqrtP == SQRT
 new events 6948 (swaps 6908, ML 40); relay swaps after 86692583: 0
 transactions needed 15045, cached 14204, to fetch 841
   400/841 rpc {'posts': 30, 'items': 448, 'r429': 5}
+  800/841 rpc {'posts': 50, 'items': 848, 'r429': 11}
+  841/841 rpc {'posts': 53, 'items': 889, 'r429': 11}
+rpc {'posts': 53, 'items': 889, 'r429': 11}

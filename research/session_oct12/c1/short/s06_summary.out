@@ -1,0 +1,120 @@
+
+== regime T-aligned ==
+    hold 10        n  31 mean +0.65% pulled 0/31 (Wilson 0%-11%) surv +0.65% | break-even pull rate $5  +0.2% $13  +0.5% | EV $5 +0.013 [-0.016, +0.050]  $13 +0.065 [-0.009, +0.163]
+    hold 20        n  31 mean -2.04% pulled 1/31 (Wilson 1%-16%) surv +1.23% | break-even pull rate $5  +0.8% $13  +1.1% | EV $5 -0.122 [-0.474, +0.079]  $13 -0.285 [-1.201, +0.239]
+    hold 25        n  31 mean -0.98% pulled 1/31 (Wilson 1%-16%) surv +2.32% | break-even pull rate $5  +1.9% $13  +2.1% | EV $5 -0.069 [-0.441, +0.156]  $13 -0.148 [-1.114, +0.438]
+    hold 30        n  31 mean +0.09% pulled 1/31 (Wilson 1%-16%) surv +3.43% | break-even pull rate $5  +2.9% $13  +3.2% | EV $5 -0.015 [-0.405, +0.234]  $13 -0.008 [-1.021, +0.641]
+    hold 40        n  31 mean -2.47% pulled 2/31 (Wilson 2%-21%) surv +4.25% | break-even pull rate $5  +3.7% $13  +3.9% | EV $5 -0.144 [-0.671, +0.244]  $13 -0.342 [-1.712, +0.667]
+    hold 60        n  31 mean -3.08% pulled 3/31 (Wilson 3%-25%) surv +7.30% | break-even pull rate $5  +6.4% $13  +6.7% | EV $5 -0.174 [-0.796, +0.340]  $13 -0.421 [-2.039, +0.916]
+    tp 3% cap 30   n  31 mean -1.02% pulled 1/31 (Wilson 1%-16%) surv +2.28% | break-even pull rate $5  +1.8% $13  +1.9% | EV $5 -0.071 [-0.436, +0.143]  $13 -0.181 [-1.117, +0.363]
+    tp 6% cap 30   n  31 mean -0.53% pulled 1/31 (Wilson 1%-16%) surv +2.78% | break-even pull rate $5  +2.3% $13  +2.6% | EV $5 -0.047 [-0.421, +0.181]  $13 -0.089 [-1.062, +0.502]
+    tp 3% cap 45   n  31 mean +1.12% pulled 1/31 (Wilson 1%-16%) surv +4.49% | break-even pull rate $5  +3.9% $13  +3.9% | EV $5 +0.036 [-0.365, +0.316]  $13 +0.096 [-0.946, +0.823]
+    tp 6% cap 45   n  31 mean +1.64% pulled 1/31 (Wilson 1%-16%) surv +5.03% | break-even pull rate $5  +4.4% $13  +4.6% | EV $5 +0.062 [-0.339, +0.349]  $13 +0.193 [-0.849, +0.939]
+    tp 8% cap 45   n  31 mean +1.64% pulled 1/31 (Wilson 1%-16%) surv +5.03% | break-even pull rate $5  +4.4% $13  +4.6% | EV $5 +0.062 [-0.339, +0.349]  $13 +0.193 [-0.849, +0.939]
+    tp 6% cap 50   n  31 mean +1.95% pulled 1/31 (Wilson 1%-16%) surv +5.35% | break-even pull rate $5  +4.7% $13  +4.9% | EV $5 +0.078 [-0.326, +0.362]  $13 +0.233 [-0.815, +0.972]
+    tp 8% cap 50   n  31 mean +1.95% pulled 1/31 (Wilson 1%-16%) surv +5.35% | break-even pull rate $5  +4.7% $13  +4.9% | EV $5 +0.078 [-0.326, +0.362]  $13 +0.233 [-0.815, +0.972]
+    tp 8% cap 60   n  31 mean -0.32% pulled 2/31 (Wilson 2%-21%) surv +6.56% | break-even pull rate $5  +5.8% $13  +6.0% | EV $5 -0.036 [-0.582, +0.371]  $13 -0.062 [-1.481, +0.996]
+
+== regime holder-aligned ==
+    hold 10        n  31 mean +2.51% pulled 0/31 (Wilson 0%-11%) surv +2.51% | break-even pull rate $5  +2.1% $13  +2.3% | EV $5 +0.106 [+0.007, +0.256]  $13 +0.306 [+0.051, +0.697]
+    hold 20        n  31 mean +0.08% pulled 1/31 (Wilson 1%-16%) surv +3.42% | break-even pull rate $5  +2.9% $13  +3.2% | EV $5 -0.016 [-0.415, +0.264]  $13 -0.009 [-1.047, +0.718]
+    hold 25        n  31 mean +0.70% pulled 1/31 (Wilson 1%-16%) surv +4.05% | break-even pull rate $5  +3.5% $13  +3.7% | EV $5 +0.015 [-0.412, +0.366]  $13 +0.070 [-1.039, +0.983]
+    hold 30        n  31 mean +1.76% pulled 1/31 (Wilson 1%-16%) surv +5.15% | break-even pull rate $5  +4.5% $13  +4.7% | EV $5 +0.068 [-0.376, +0.443]  $13 +0.208 [-0.946, +1.184]
+    hold 40        n  31 mean -1.24% pulled 2/31 (Wilson 2%-21%) surv +5.57% | break-even pull rate $5  +4.9% $13  +5.1% | EV $5 -0.082 [-0.635, +0.383]  $13 -0.181 [-1.619, +1.028]
+    hold 60        n  31 mean -9.26% pulled 5/31 (Wilson 7%-33%) surv +8.19% | break-even pull rate $5  +7.2% $13  +7.4% | EV $5 -0.483 [-1.280, +0.259]  $13 -1.225 [-3.296, +0.705]
+    tp 3% cap 30   n  31 mean +0.25% pulled 1/31 (Wilson 1%-16%) surv +3.59% | break-even pull rate $5  +3.1% $13  +3.1% | EV $5 -0.008 [-0.409, +0.274]  $13 -0.017 [-1.058, +0.708]
+    tp 6% cap 30   n  31 mean +0.41% pulled 1/31 (Wilson 1%-16%) surv +3.75% | break-even pull rate $5  +3.2% $13  +3.5% | EV $5 +0.000 [-0.401, +0.281]  $13 +0.033 [-1.010, +0.761]
+    tp 3% cap 45   n  31 mean -2.66% pulled 2/31 (Wilson 2%-21%) surv +4.06% | break-even pull rate $5  +3.5% $13  +3.5% | EV $5 -0.153 [-0.681, +0.242]  $13 -0.395 [-1.761, +0.630]
+    tp 6% cap 45   n  31 mean -2.12% pulled 2/31 (Wilson 2%-21%) surv +4.63% | break-even pull rate $5  +4.0% $13  +4.3% | EV $5 -0.126 [-0.657, +0.274]  $13 -0.296 [-1.676, +0.743]
+    tp 8% cap 45   n  31 mean -1.64% pulled 2/31 (Wilson 2%-21%) surv +5.15% | break-even pull rate $5  +4.5% $13  +4.7% | EV $5 -0.102 [-0.637, +0.305]  $13 -0.233 [-1.626, +0.825]
+    tp 6% cap 50   n  31 mean -1.88% pulled 2/31 (Wilson 2%-21%) surv +4.89% | break-even pull rate $5  +4.3% $13  +4.5% | EV $5 -0.114 [-0.645, +0.288]  $13 -0.265 [-1.646, +0.781]
+    tp 8% cap 50   n  31 mean -1.40% pulled 2/31 (Wilson 2%-21%) surv +5.40% | break-even pull rate $5  +4.7% $13  +5.0% | EV $5 -0.090 [-0.624, +0.319]  $13 -0.202 [-1.590, +0.861]
+    tp 8% cap 60   n  31 mean -7.63% pulled 4/31 (Wilson 5%-29%) surv +6.05% | break-even pull rate $5  +5.3% $13  +5.5% | EV $5 -0.402 [-1.096, +0.192]  $13 -1.024 [-2.820, +0.514]
+
+== ours (5 fills) ==
+    hold 10        n   5 mean +0.62% pulled 0/5 (Wilson 0%-43%) surv +0.62% | break-even pull rate $5  +0.2% $13  +0.5% | EV $5 +0.011 [-0.021, +0.075]  $13 +0.061 [-0.023, +0.228]
+    hold 20        n   5 mean +2.01% pulled 0/5 (Wilson 0%-43%) surv +2.01% | break-even pull rate $5  +1.6% $13  +1.8% | EV $5 +0.080 [-0.021, +0.283]  $13 +0.241 [-0.023, +0.767]
+    hold 25        n   5 mean +2.01% pulled 0/5 (Wilson 0%-43%) surv +2.01% | break-even pull rate $5  +1.6% $13  +1.8% | EV $5 +0.080 [-0.021, +0.283]  $13 +0.241 [-0.022, +0.767]
+    hold 30        n   5 mean +4.88% pulled 0/5 (Wilson 0%-43%) surv +4.88% | break-even pull rate $5  +4.3% $13  +4.5% | EV $5 +0.224 [-0.021, +0.634]  $13 +0.614 [-0.022, +1.679]
+    hold 40        n   5 mean -18.51% pulled 1/5 (Wilson 4%-62%) surv +1.86% | break-even pull rate $5  +1.4% $13  +1.7% | EV $5 -0.946 [-2.986, +0.135]  $13 -2.427 [-7.731, +0.382]
+    hold 60        n   5 mean -17.17% pulled 1/5 (Wilson 4%-62%) surv +3.53% | break-even pull rate $5  +3.0% $13  +3.3% | EV $5 -0.879 [-2.954, +0.228]  $13 -2.253 [-7.647, +0.625]
+    tp 3% cap 30   n   5 mean +2.81% pulled 0/5 (Wilson 0%-43%) surv +2.81% | break-even pull rate $5  +2.3% $13  +1.3% | EV $5 +0.121 [-0.021, +0.323]  $13 +0.165 [-0.022, +0.374]
+    tp 6% cap 30   n   5 mean +2.81% pulled 0/5 (Wilson 0%-43%) surv +2.81% | break-even pull rate $5  +2.3% $13  +2.6% | EV $5 +0.121 [-0.021, +0.323]  $13 +0.345 [-0.022, +0.871]
+    tp 3% cap 45   n   5 mean +3.51% pulled 0/5 (Wilson 0%-43%) surv +3.51% | break-even pull rate $5  +3.0% $13  +1.9% | EV $5 +0.155 [+0.014, +0.323]  $13 +0.256 [+0.062, +0.450]
+    tp 6% cap 45   n   5 mean +3.51% pulled 0/5 (Wilson 0%-43%) surv +3.51% | break-even pull rate $5  +3.0% $13  +3.2% | EV $5 +0.156 [+0.014, +0.323]  $13 +0.436 [+0.069, +0.872]
+    tp 8% cap 45   n   5 mean +3.51% pulled 0/5 (Wilson 0%-43%) surv +3.51% | break-even pull rate $5  +3.0% $13  +3.2% | EV $5 +0.156 [+0.014, +0.323]  $13 +0.436 [+0.069, +0.872]
+    tp 6% cap 50   n   5 mean +4.85% pulled 0/5 (Wilson 0%-43%) surv +4.85% | break-even pull rate $5  +4.2% $13  +4.5% | EV $5 +0.222 [+0.081, +0.382]  $13 +0.610 [+0.242, +1.024]
+    tp 8% cap 50   n   5 mean +4.85% pulled 0/5 (Wilson 0%-43%) surv +4.85% | break-even pull rate $5  +4.2% $13  +4.5% | EV $5 +0.222 [+0.081, +0.382]  $13 +0.610 [+0.242, +1.024]
+    tp 8% cap 60   n   5 mean +4.85% pulled 0/5 (Wilson 0%-43%) surv +4.85% | break-even pull rate $5  +4.2% $13  +4.5% | EV $5 +0.222 [+0.081, +0.382]  $13 +0.610 [+0.242, +1.024]
+
+== held from <= T+5 (ours + early) ==
+    hold 10        n  10 mean +0.34% pulled 0/10 (Wilson 0%-28%) surv +0.34% | break-even pull rate $5  -0.1% $13  +0.2% | EV $5 -0.003 [-0.021, +0.029]  $13 +0.024 [-0.022, +0.108]
+    hold 20        n  10 mean -8.97% pulled 1/10 (Wilson 2%-40%) surv +1.15% | break-even pull rate $5  +0.7% $13  +1.0% | EV $5 -0.468 [-1.519, +0.132]  $13 -1.186 [-3.917, +0.375]
+    hold 25        n  10 mean -8.96% pulled 1/10 (Wilson 2%-40%) surv +1.15% | break-even pull rate $5  +0.7% $13  +1.0% | EV $5 -0.468 [-1.519, +0.132]  $13 -1.186 [-3.917, +0.375]
+    hold 30        n  10 mean -7.53% pulled 1/10 (Wilson 2%-40%) surv +2.75% | break-even pull rate $5  +2.3% $13  +2.5% | EV $5 -0.396 [-1.500, +0.288]  $13 -0.999 [-3.867, +0.781]
+    hold 40        n  10 mean -19.23% pulled 2/10 (Wilson 6%-51%) surv +0.97% | break-even pull rate $5  +0.6% $13  +0.8% | EV $5 -0.981 [-2.483, +0.051]  $13 -2.519 [-6.424, +0.163]
+    hold 60        n  10 mean -27.70% pulled 3/10 (Wilson 11%-60%) surv +3.28% | break-even pull rate $5  +2.8% $13  +3.0% | EV $5 -1.405 [-2.965, +0.094]  $13 -3.622 [-7.678, +0.275]
+    tp 3% cap 30   n  10 mean -8.56% pulled 1/10 (Wilson 2%-40%) surv +1.60% | break-even pull rate $5  +1.2% $13  +0.7% | EV $5 -0.448 [-1.500, +0.142]  $13 -1.223 [-3.878, +0.179]
+    tp 6% cap 30   n  10 mean -8.56% pulled 1/10 (Wilson 2%-40%) surv +1.60% | break-even pull rate $5  +1.2% $13  +1.4% | EV $5 -0.448 [-1.500, +0.142]  $13 -1.133 [-3.867, +0.400]
+    tp 3% cap 45   n  10 mean -8.21% pulled 1/10 (Wilson 2%-40%) surv +1.98% | break-even pull rate $5  +1.6% $13  +1.0% | EV $5 -0.431 [-1.483, +0.157]  $13 -1.178 [-3.866, +0.248]
+    tp 6% cap 45   n  10 mean -8.21% pulled 1/10 (Wilson 2%-40%) surv +1.99% | break-even pull rate $5  +1.6% $13  +1.8% | EV $5 -0.431 [-1.483, +0.157]  $13 -1.088 [-3.824, +0.441]
+    tp 8% cap 45   n  10 mean -8.21% pulled 1/10 (Wilson 2%-40%) surv +1.99% | break-even pull rate $5  +1.6% $13  +1.8% | EV $5 -0.431 [-1.483, +0.157]  $13 -1.088 [-3.824, +0.441]
+    tp 6% cap 50   n  10 mean -7.55% pulled 1/10 (Wilson 2%-40%) surv +2.73% | break-even pull rate $5  +2.3% $13  +2.5% | EV $5 -0.397 [-1.466, +0.201]  $13 -1.001 [-3.780, +0.553]
+    tp 8% cap 50   n  10 mean -7.55% pulled 1/10 (Wilson 2%-40%) surv +2.73% | break-even pull rate $5  +2.3% $13  +2.5% | EV $5 -0.397 [-1.466, +0.201]  $13 -1.001 [-3.780, +0.553]
+    tp 8% cap 60   n  10 mean -16.69% pulled 2/10 (Wilson 6%-51%) surv +4.14% | break-even pull rate $5  +3.6% $13  +3.8% | EV $5 -0.855 [-2.401, +0.226]  $13 -2.190 [-6.211, +0.620]
+
+== no holder (contrast) ==
+    hold 10        n 154 mean +1.09% pulled 0/154 (Wilson 0%-2%) surv +1.09% | break-even pull rate $5  +0.7% $13  +0.9% | EV $5 +0.034 [+0.013, +0.059]  $13 +0.121 [+0.065, +0.185]
+    hold 20        n 154 mean +1.58% pulled 0/154 (Wilson 0%-2%) surv +1.58% | break-even pull rate $5  +1.2% $13  +1.4% | EV $5 +0.059 [+0.032, +0.089]  $13 +0.186 [+0.115, +0.263]
+    hold 25        n 154 mean +1.83% pulled 0/154 (Wilson 0%-2%) surv +1.83% | break-even pull rate $5  +1.4% $13  +1.6% | EV $5 +0.071 [+0.041, +0.105]  $13 +0.217 [+0.138, +0.305]
+    hold 30        n 154 mean +2.99% pulled 0/154 (Wilson 0%-2%) surv +2.99% | break-even pull rate $5  +2.5% $13  +2.8% | EV $5 +0.129 [+0.088, +0.173]  $13 +0.368 [+0.260, +0.482]
+    hold 40        n 154 mean +5.24% pulled 0/154 (Wilson 0%-2%) surv +5.24% | break-even pull rate $5  +4.6% $13  +4.8% | EV $5 +0.242 [+0.187, +0.300]  $13 +0.660 [+0.518, +0.812]
+    hold 60        n 154 mean +9.23% pulled 0/154 (Wilson 0%-2%) surv +9.23% | break-even pull rate $5  +8.1% $13  +8.3% | EV $5 +0.442 [+0.351, +0.543]  $13 +1.180 [+0.945, +1.442]
+    tp 3% cap 30   n 154 mean +2.47% pulled 0/154 (Wilson 0%-2%) surv +2.47% | break-even pull rate $5  +2.0% $13  +2.3% | EV $5 +0.104 [+0.069, +0.141]  $13 +0.301 [+0.210, +0.400]
+    tp 6% cap 30   n 154 mean +2.79% pulled 0/154 (Wilson 0%-2%) surv +2.79% | break-even pull rate $5  +2.3% $13  +2.6% | EV $5 +0.119 [+0.081, +0.160]  $13 +0.342 [+0.241, +0.448]
+    tp 3% cap 45   n 154 mean +4.47% pulled 0/154 (Wilson 0%-2%) surv +4.47% | break-even pull rate $5  +3.9% $13  +4.1% | EV $5 +0.203 [+0.161, +0.248]  $13 +0.560 [+0.450, +0.677]
+    tp 6% cap 45   n 154 mean +5.13% pulled 0/154 (Wilson 0%-2%) surv +5.13% | break-even pull rate $5  +4.5% $13  +4.7% | EV $5 +0.236 [+0.190, +0.285]  $13 +0.641 [+0.522, +0.767]
+    tp 8% cap 45   n 154 mean +5.40% pulled 0/154 (Wilson 0%-2%) surv +5.40% | break-even pull rate $5  +4.7% $13  +5.0% | EV $5 +0.250 [+0.202, +0.301]  $13 +0.682 [+0.558, +0.814]
+    tp 6% cap 50   n 154 mean +5.37% pulled 0/154 (Wilson 0%-2%) surv +5.37% | break-even pull rate $5  +4.7% $13  +4.9% | EV $5 +0.249 [+0.203, +0.297]  $13 +0.673 [+0.555, +0.798]
+    tp 8% cap 50   n 154 mean +5.75% pulled 0/154 (Wilson 0%-2%) surv +5.75% | break-even pull rate $5  +5.1% $13  +5.3% | EV $5 +0.267 [+0.219, +0.319]  $13 +0.727 [+0.601, +0.860]
+    tp 8% cap 60   n 154 mean +6.74% pulled 0/154 (Wilson 0%-2%) surv +6.74% | break-even pull rate $5  +5.9% $13  +6.1% | EV $5 +0.317 [+0.266, +0.369]  $13 +0.848 [+0.716, +0.982]
+
+== by the trigger's offset from the launch (regime T-aligned / no holder), mean gross 0.002 and pulled ==
+  T in [  0, 60] regime n   6: hold 10  -0.0% (0)  hold 20  +0.2% (0)  hold 30  +0.2% (0)  hold 40  +0.6% (0)  hold 60  +2.4% (0)  tp 6% cap 45  +0.8% (0)
+  T in [  0, 60] none   n  15: hold 10  -0.0% (0)  hold 20  -0.0% (0)  hold 30  +0.4% (0)  hold 40  +0.5% (0)  hold 60  +1.7% (0)  tp 6% cap 45  +0.8% (0)
+  T in [ 61,100] regime n   9: hold 10  +1.6% (0)  hold 20  +1.6% (0)  hold 30  +4.3% (0)  hold 40  +6.2% (0)  hold 60  +8.1% (0)  tp 6% cap 45  +5.2% (0)
+  T in [ 61,100] none   n  56: hold 10  +1.1% (0)  hold 20  +1.9% (0)  hold 30  +3.0% (0)  hold 40  +5.1% (0)  hold 60  +8.2% (0)  tp 6% cap 45  +4.4% (0)
+  T in [101,150] regime n  10: hold 10  -0.0% (0)  hold 20  +0.8% (0)  hold 30  +3.9% (0)  hold 40  +5.6% (0)  hold 60  -3.4% (1)  tp 6% cap 45  +4.2% (0)
+  T in [101,150] none   n  56: hold 10  +1.1% (0)  hold 20  +1.5% (0)  hold 30  +3.0% (0)  hold 40  +5.2% (0)  hold 60  +9.6% (0)  tp 6% cap 45  +5.9% (0)
+  T in [151,400] regime n   6: hold 10  +1.0% (0)  hold 20 -14.5% (1)  hold 30 -12.7% (1)  hold 40 -32.1% (2)  hold 60 -24.7% (2)  tp 6% cap 45  -7.1% (1)
+  T in [151,400] none   n  23: hold 10  +2.0% (0)  hold 20  +2.2% (0)  hold 30  +4.7% (0)  hold 40  +8.3% (0)  hold 60 +14.5% (0)  tp 6% cap 45  +7.4% (0)
+
+== T <= 100 only (trigger max_blocks 100 instead of 400): every exit lands before launch + 147, the earliest pull of any triggered pool ==
+  regime T-aligned
+    hold 10        n  15 mean +0.96% pulled 0/15 (Wilson 0%-20%) surv +0.96% | break-even pull rate $5  +0.6% $13  +0.8% | EV $5 +0.028 [-0.021, +0.097]  $13 +0.105 [-0.022, +0.284]
+    hold 20        n  15 mean +1.06% pulled 0/15 (Wilson 0%-20%) surv +1.06% | break-even pull rate $5  +0.6% $13  +0.9% | EV $5 +0.033 [-0.021, +0.106]  $13 +0.117 [-0.021, +0.309]
+    hold 30        n  15 mean +2.67% pulled 0/15 (Wilson 0%-20%) surv +2.67% | break-even pull rate $5  +2.2% $13  +2.5% | EV $5 +0.114 [-0.011, +0.282]  $13 +0.327 [+0.002, +0.764]
+    hold 40        n  15 mean +3.97% pulled 0/15 (Wilson 0%-20%) surv +3.97% | break-even pull rate $5  +3.4% $13  +3.7% | EV $5 +0.178 [+0.048, +0.340]  $13 +0.496 [+0.157, +0.915]
+    tp 6% cap 40   n  15 mean +3.37% pulled 0/15 (Wilson 0%-20%) surv +3.37% | break-even pull rate $5  +2.9% $13  +3.1% | EV $5 +0.149 [+0.041, +0.277]  $13 +0.418 [+0.140, +0.752]
+    tp 8% cap 40   n  15 mean +3.37% pulled 0/15 (Wilson 0%-20%) surv +3.37% | break-even pull rate $5  +2.9% $13  +3.1% | EV $5 +0.149 [+0.041, +0.277]  $13 +0.418 [+0.140, +0.752]
+  regime holder-aligned
+    hold 10        n  15 mean +0.69% pulled 0/15 (Wilson 0%-20%) surv +0.69% | break-even pull rate $5  +0.3% $13  +0.5% | EV $5 +0.014 [-0.021, +0.073]  $13 +0.069 [-0.022, +0.222]
+    hold 20        n  15 mean +1.34% pulled 0/15 (Wilson 0%-20%) surv +1.34% | break-even pull rate $5  +0.9% $13  +1.2% | EV $5 +0.047 [-0.017, +0.120]  $13 +0.154 [-0.013, +0.345]
+    hold 30        n  15 mean +2.24% pulled 0/15 (Wilson 0%-20%) surv +2.24% | break-even pull rate $5  +1.8% $13  +2.0% | EV $5 +0.092 [+0.023, +0.166]  $13 +0.270 [+0.092, +0.464]
+    hold 40        n  15 mean +3.86% pulled 0/15 (Wilson 0%-20%) surv +3.86% | break-even pull rate $5  +3.3% $13  +3.6% | EV $5 +0.173 [+0.055, +0.334]  $13 +0.482 [+0.175, +0.899]
+    tp 6% cap 40   n  15 mean +2.87% pulled 0/15 (Wilson 0%-20%) surv +2.87% | break-even pull rate $5  +2.4% $13  +2.6% | EV $5 +0.123 [+0.051, +0.197]  $13 +0.352 [+0.165, +0.543]
+    tp 8% cap 40   n  15 mean +3.86% pulled 0/15 (Wilson 0%-20%) surv +3.86% | break-even pull rate $5  +3.3% $13  +3.6% | EV $5 +0.173 [+0.055, +0.334]  $13 +0.482 [+0.175, +0.900]
+  no holder (contrast)
+    hold 10        n  71 mean +0.87% pulled 0/71 (Wilson 0%-5%) surv +0.87% | break-even pull rate $5  +0.5% $13  +0.7% | EV $5 +0.024 [-0.002, +0.054]  $13 +0.093 [+0.028, +0.172]
+    hold 20        n  71 mean +1.53% pulled 0/71 (Wilson 0%-5%) surv +1.53% | break-even pull rate $5  +1.1% $13  +1.4% | EV $5 +0.056 [+0.017, +0.103]  $13 +0.179 [+0.077, +0.300]
+    hold 30        n  71 mean +2.47% pulled 0/71 (Wilson 0%-5%) surv +2.47% | break-even pull rate $5  +2.0% $13  +2.3% | EV $5 +0.103 [+0.049, +0.167]  $13 +0.301 [+0.160, +0.465]
+    hold 40        n  71 mean +4.11% pulled 0/71 (Wilson 0%-5%) surv +4.11% | break-even pull rate $5  +3.6% $13  +3.8% | EV $5 +0.185 [+0.104, +0.283]  $13 +0.513 [+0.302, +0.766]
+    tp 6% cap 40   n  71 mean +3.33% pulled 0/71 (Wilson 0%-5%) surv +3.33% | break-even pull rate $5  +2.8% $13  +3.1% | EV $5 +0.146 [+0.085, +0.214]  $13 +0.412 [+0.254, +0.589]
+    tp 8% cap 40   n  71 mean +3.41% pulled 0/71 (Wilson 0%-5%) surv +3.41% | break-even pull rate $5  +2.9% $13  +3.1% | EV $5 +0.150 [+0.088, +0.219]  $13 +0.423 [+0.261, +0.602]
+
+== our 5 pools: the router's buys after our buy (offset from our buy, ETH), its last buy before the pull, the pull ==
+  10-11 20:58:49 0x5ec68315 T+77 router buys after ours (to +200): [(30, 0.06), (30, 0.08), (30, 0.06)] | pull at our buy + 97
+  10-11 21:01:47 0xd6180333 T+41 router buys after ours (to +200): [(47, 0.332)] | pull at our buy + 115
+  10-11 21:02:38 0x6d80b816 T+33 router buys after ours (to +200): [(76, 0.02), (126, 0.174), (126, 0.16), (126, 0.047), (144, 0.001), (184, 0.0)] | pull at our buy + 65223
+  10-12 01:15:58 0x0e4cc1d8 T+61 router buys after ours (to +200): [(37, 0.174)] | pull at our buy + 84
+  10-12 01:18:11 0xb47b706f T+155 router buys after ours (to +200): [(7, 0.164), (17, 0.346), (27, 0.498)] | pull at our buy + 36
