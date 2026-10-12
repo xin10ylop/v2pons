@@ -1,4 +1,4 @@
-(1) fresh 50 h, 70 line launches: outsider buy before the launcher's own first buy in 0
+(1) fresh 50 h, 10 line launches: outsider buy before the launcher's own first buy in 0
 
 (2) census Oct 4-11: lc:0a493d1a|13ead562 fee 100 WETH launches: 477
    with an outsider buy before the launcher's first buy (within the first 12 swaps): 9; without: 468
