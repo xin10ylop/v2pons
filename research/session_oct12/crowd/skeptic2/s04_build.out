@@ -1,0 +1,4 @@
+pools 1389 with logs 1389; txs 13717; crowd-shaped txs 4645: EOAs 678, contracts 14
+classes {'other': 8539, 'crowd': 4645, 'crowd_s': 8610, 'unf': 8602, 'lw': 1}
+Swap sender/recipient vs class (fetched txs): (class, sender is a crowd contract, recipient crowd EOA/contract) -> [(('other', False, False), 8539), (('crowd', False, True), 4645)]
+pulled within the window 533 of 1389 ; pull from = launch wallet 533 of 533
