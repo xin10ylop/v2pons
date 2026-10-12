@@ -86,11 +86,12 @@ def families(st, e, now):
     for f in fams:
         if not front_on:
             mode = "off"
-        elif dry_all or front_dry or f.get("dry_run") or f.get("dex") == "v3":   # a V3 family is dry whatever it says
+        elif dry_all or front_dry or f.get("dry_run") or (f.get("dex") == "v3" and not f.get("live")):   # a V3 family is dry unless the start line says it is live (RELAY_V3)
             mode = "dry"
         else:
             mode = "LIVE"
-        out.append({"name": f["name"], "mode": mode, "stake_eth": num(f.get("stake_eth"), 0), "auto": auto_on and not f.get("trigger"), "auto_eth": auto.get(f["name"]),
+        stake = f.get("live_stake_eth", f.get("stake_eth")) if mode == "LIVE" else f.get("stake_eth")   # a live V3 family's stake under V3_STAKE_CAP_ETH
+        out.append({"name": f["name"], "mode": mode, "stake_eth": num(stake, 0), "auto": auto_on and not f.get("trigger"), "auto_eth": auto.get(f["name"]),
                     "dex": f.get("dex", "v4"), "trigger": f.get("trigger"), "value_eth": f.get("value_eth")})
     base_wei = num(st.get("front_value_wei"), None)
     base = next((f["name"] for f in out if base_wei and f.get("value_eth") is not None and abs(f["value_eth"] * 1e18 - base_wei) < 1e9), None) or e.get("FRONT_FAMILY_NAME", "v2.433")
@@ -143,6 +144,8 @@ def result_col(d):
         return "UNKNOWN"                                                       # no buy receipt within the timeout: it never went in, or the RPC failed
     if isinstance(b, dict) and b.get("status") == "reverted":
         return "buy reverted"
+    if isinstance(b, dict) and b.get("filled") is False:                       # a V3 buy that took no token (a pulled pool: the relay kept its ETH)
+        return "buy not filled"
     return pct(d["ret"]) if d.get("ret") is not None else "?"
 
 
@@ -339,7 +342,9 @@ def main():
         if wb is None or rb is None:
             print("\nmoney: the RPC did not answer; try again")
         else:
-            print("\nmoney: wallet %.6f ETH (gas), relay %.6f ETH (the stakes); together about $%.2f at $%g/ETH" % (wb, rb, (wb + rb) * eth_usd, eth_usd))
+            r3 = e.get("RELAY_V3"); r3b = (balance(rpc, r3) if r3 else None) or 0.0          # the V3 relay (HANDOFF 16.22): the V3 families' stakes
+            print("\nmoney: wallet %.6f ETH (gas), relay %.6f ETH (the stakes)%s; together about $%.2f at $%g/ETH"
+                  % (wb, rb, ", V3 relay %.6f ETH" % r3b if r3 else "", (wb + rb + r3b) * eth_usd, eth_usd))
     print("=" * 100)
 
 

@@ -329,8 +329,8 @@ up to the launch price and refunds. The engine decodes it like a front launch (t
 block (our buy at + 2); the crowd's buys (value-0 calls of the `shapes` through any contract, `any_to`; the token found in the call,
 `token_anywhere`) and anyone's ETH-value buys move the price copy; the first of `min_eth` at or after our buy starts the exit: the sell
 goes `exit_after_blocks` (18) later, so that it lands about 20 blocks after the crowd's first buy, as the research's rule; at the latest
-when the feed shows launch + `hold_blocks` (78: lands about + 80; the line's earliest no-crowd pull was + 83). **Dry run only**: no route
-to a V3 pool is built, and `"dry_run":false` is a wrong setting (the listed families are dropped for the run with an alarm, as for any
+when the feed shows launch + `hold_blocks` (78: lands about + 80; the line's earliest no-crowd pull was + 83). **Dry run only** while `RELAY_V3` is empty (4j): no route
+to a V3 pool, and `"dry_run":false` is a wrong setting (the listed families are dropped for the run with an alarm, as for any
 wrong family). The launch price varies per launch, so the JSON gives no `sqrt_p`/`liq`; launches with WETH as token1 (about 3%) are logged
 and skipped. The box's list with it:
 
@@ -353,7 +353,7 @@ A **launch-rule family** (`"launch"`, Oct 11 night, REPORT_V23 line 1, HANDOFF 1
 launch), the pool from the launch's receipt (a code or a receipt not read is `launch_not_armed` or `launch_no_receipt`, with an alarm at
 most once a minute). No trigger: a dry buy when the feed shows launch + 60 (up to + 70 if the feed lags or the slot is busy, else `late`), a
 dry sell at launch + 260, or at once on the pull (the launch position's `decreaseLiquidity` of half its liquidity or more: `dry_ret` -1.0;
-less is a `partial_pull`). **Dry run only**: `"dry_run":false` is forced to true with an alarm at start. The fingerprint is pinned (fee 100,
+less is a `partial_pull`). **Dry run only** while `RELAY_V3` is empty (4j): `"dry_run":false` is forced to true with an alarm at start. The fingerprint is pinned (fee 100,
 WETH as token0, one token-only mint 1,094,515 ticks wide within 2%, L 3.16e22 within a factor of 3); anything else is `armed` with
 `"eligible":false` and `"fingerprint":"new: ..."`. The object to add:
 
@@ -495,6 +495,116 @@ is left out of every number and of the gate, and the screen prints how many were
 A restart (`sudo systemctl restart flip-bnb`, e.g. after a `git pull`) loses the pools in flight: those open then never get a `trade_done`.
 Stop it: `sudo systemctl disable --now flip-bnb` (the log stays). Remove it: that, then `sudo rm /etc/systemd/system/flip-bnb.service
 /etc/logrotate.d/flip-bnb && sudo systemctl daemon-reload`.
+
+## 4j. A V3 family live (Oct 12, HANDOFF 16.22)
+
+With `RELAY_V3` set to the V3 relay's address (`contracts/FlipRelayV3.sol`), the engine checks the relay at start and a V3 family (v3crowd or
+p356) whose object says `"dry_run":false` trades live through it. The flow is the v4 one: the buy at the reserved nonce, the presigned sell at
+the next, the same wallet, gas price rule and send paths (`SELL_ALT_URL` included). Each family keeps its own entry and exit:
+
+- v3crowd: it buys in the launch block. It sells 18 blocks after the crowd's first buy behind ours, at the latest when the feed shows launch + 78.
+- p356: it buys at launch + 60. It sells at launch + 260, or at once on the pull.
+
+Every live V3 stake is at most `V3_STAKE_CAP_ETH` (0.004 ETH, about $10), whatever the family's `stake_eth`. A live V3 trade holds the one
+slot like any live trade; a dry position never blocks it. Nothing changes while `RELAY_V3` is empty.
+
+Three rules come from the relay as built:
+
+- **Fixed gas.** Both transactions are signed with a fixed gas limit, `V3_GAS` (400,000), never estimated. A buy that crosses one tick
+  measured 284k and a sell about 141k; on a pulled pool the swap walks to the price limit (about 31 million gas) and the buy runs out of
+  gas: the cost is that gas, nothing more.
+- **Strict deadlines.** The relay refuses a block later than the deadline, and 0 is the past. The buy carries the fire's time +
+  `BUY_DEADLINE_S` (2 h if that is 0); the presigned sell carries the fire's time + 2 h.
+- **The sell check** (`V3_SELL_CHECK`, 1 by default). Before a live buy, the pool's buy and sell are simulated through the relay by
+  `eth_call`, nothing sent: some tokens refuse any outsider's transfer into the pool, so the relay could buy and never sell. A pool whose
+  simulated sell reverts is not bought (skip "v3: the token cannot be sold"). The check runs when the pool is armed, which leaves p356 about
+  6 s before its buy at + 60. v3crowd buys in its launch block, before its pool exists, so with the check on it trades dry (an alarm at
+  start says so); `V3_SELL_CHECK=0` trades it unchecked.
+
+Before: the relay is deployed with WALLET as its owner, and it holds at least 0.004 ETH (its own steps; the engine only reads it).
+
+**1. The code and the setting.** The first line prints `code`, else stop. Put the relay's address in place of `0x...`:
+
+    cd ~/v2pons && git pull -q --ff-only && grep -q '^def relay_v3_check' src/flip_engine.py && echo code
+    set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
+    sudo sed -i -e '$a\' /etc/flip/engine.env && set_kv RELAY_V3 0x...
+
+**2. One family live.** The two words after `-` are the family and the mode. The snippet edits only that family's object in
+`FRONT_FAMILIES`, keeps the old file as `/etc/flip/engine.env.bak`, and restarts only after the edit succeeded:
+
+    cd ~/v2pons && sudo python3 - v3crowd live <<'PY' && sudo systemctl restart flip-engine && sleep 8 && echo restarted
+    import json, os, re, shutil, sys
+    P = "/etc/flip/engine.env"; NAME, MODE = sys.argv[1], sys.argv[2]
+    assert MODE in ("live", "dry"), "the mode is live or dry: nothing changed"
+    lines = open(P).read().splitlines()
+    at = [k for k, l in enumerate(lines) if l.startswith("FRONT_FAMILIES=")]
+    assert len(at) == 1, "FRONT_FAMILIES must be set exactly once in " + P
+    relay = [l.split("=", 1)[1].split(" #", 1)[0].strip().strip("'\"") for l in lines if l.startswith("RELAY_V3=")]
+    assert MODE == "dry" or (relay and re.fullmatch("0x[0-9a-fA-F]{40}", relay[-1])), "no RELAY_V3 address in " + P + ": nothing changed"
+    v = lines[at[0]][len("FRONT_FAMILIES="):].strip()
+    if len(v) > 1 and v[0] == v[-1] and v[0] in "'\"":
+        v = v[1:-1]
+    fams = json.loads(v)
+    mine = [f for f in fams if isinstance(f, dict) and f.get("name") == NAME] if isinstance(fams, list) else []
+    assert len(mine) == 1 and mine[0].get("dex") == "v3", NAME + " is not one V3 family of FRONT_FAMILIES: nothing changed"
+    assert mine[0].get("dry_run", True) != (MODE == "dry"), NAME + " is already " + MODE + ": nothing changed"
+    mine[0]["dry_run"] = MODE == "dry"
+    shutil.copy2(P, P + ".bak")
+    lines[at[0]] = "FRONT_FAMILIES='" + json.dumps(fams, separators=(",", ":")) + "'"
+    tmp = P + ".tmp"; open(tmp, "w").write("\n".join(lines) + "\n"); shutil.copymode(P, tmp); os.replace(tmp, P)
+    print("FRONT_FAMILIES:", [(f.get("name"), f.get("dex", "v4"), f.get("dry_run")) for f in fams])
+    PY
+
+It refuses, and changes nothing (no restart), in these cases:
+
+- the family is not one V3 family of the list;
+- it is already in that mode;
+- (for `live`) the env file has no `RELAY_V3=` address.
+
+**3. The check.** The start line, then the last alarms:
+
+    sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | python3 -c 'import sys, json; s = json.loads(sys.stdin.read()); print("relay_v3:", s.get("relay_v3"), "verified:", s.get("relay_v3_live"), "owner:", s.get("relay_v3_owner"), "eth:", s.get("relay_v3_eth"), "cap:", s.get("v3_stake_cap_eth"), "error:", s.get("front_family_error")); [print(f["name"], f.get("dex", "v4"), "dry_run", f["dry_run"], "live", f.get("live"), "stake", f.get("live_stake_eth", f.get("stake_eth"))) for f in s["front_families"]]'
+    sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"alarm"' | tail -3 | cut -c1-300
+
+It must print:
+
+- the relay's address, `verified: True`, the wallet as `owner`, its balance, `cap: 0.004` and `error: None`;
+- the family with `dry_run False live True stake 0.004`;
+- every other family as before (c1 `dry_run False`, the dry ones `dry_run True`).
+
+`verified: False` means an alarm says why; every V3 family then trades dry and the rest as before. The reasons: no code at the address,
+another owner (or `owner()` reverting), code without the relay's `buy`/`sell`, the v4 relay's address, not an address, or the RPC failed.
+p356's sell check is a `sell_check` line in the log at each arming (`ok`, or `why`). `results.py` shows the
+line LIVE with its capped stake, and the V3 relay's balance on the money line. Its trades are `trade_done` lines with `"dex":"v3"`, `pool`,
+the fills (`buy.eth_in`, `sell.eth_out`), `pnl_usd`, `ret` and the pull fields.
+
+**Off.** The same snippet with `dry` in place of `live` (`sudo python3 - v3crowd dry <<'PY'` ...), then the same check. Remove
+`RELAY_V3` (`sudo sed -i '/^RELAY_V3=/d' /etc/flip/engine.env`) only after every V3 family says `"dry_run":true` again. With `RELAY_V3`
+empty, a V3 crowd family that still says `false` is refused at start and drops the whole `FRONT_FAMILIES` list, c1 with it (a
+launch-rule family is forced dry with an alarm). A stop or restart waits for an open live V3 trade: a p356 hold is about 20 s, then its
+settle; the wait is at most `STOP_WAIT_S`, 40 s.
+
+**The cap.** `V3_STAKE_CAP_ETH` (0.004; 0.0005 to 0.012; anything else is 0.004 with a start alarm) raises it: `set_kv V3_STAKE_CAP_ETH
+0.0058` and a restart. The family's `stake_eth` still bounds the stake. `V3_GAS` (400000; 200000 to 600000, else 400000 with an alarm)
+and `V3_SELL_CHECK` (1; 0 = off) are set the same way.
+
+**The probe's halts.**
+
+- **This family alone**, through its own file `/var/log/flip/HALTED.front.<name>` (for example `HALTED.front.v3crowd`). The v4 lines go on.
+  - A pull at or before our sell, from the pool's Burn logs read after the trade (an amount above 0 counts). For v3crowd, any liquidity
+    removed. For p356, the launch position's Burns reaching half its liquidity.
+  - A buy that filled and a sell that sold none. A v4 line halts all of front for that; a V3 family halts alone, since the path is the
+    V3 relay's.
+  - `FRONT_NONBOT_HALT` live trades in a row that paid under +2%. That is 8 on the box; v3crowd may set its own `nonbot_halt`, but a
+    launch-rule family cannot.
+
+  Once the cause is understood: `sudo rm /var/log/flip/HALTED.front.v3crowd && sudo systemctl restart flip-engine`.
+- **Front as a whole**: the V3 trades count in front's day, so `FRONT_DAILY_STOP_USD` and `FRONT_MAX_PER_DAY` apply.
+- **No halt, the fire skipped**: the V3 relay holds less than the stake (read at start and every minute; the skip says `"relay":"v3"`);
+  the pool's sell check failed (`v3: the token cannot be sold`) or has not finished.
+- **No halt, no trade**: a buy that took no token (a pulled pool: the relay keeps its ETH) is "not filled" (`buy.filled` false), as a
+  reverted buy; its sell reverts with nothing to sell.
+- **An alarm, no halt**: the pull check could not be read (check the pool by hand), as on the v4 lines.
 
 ## 5. Daily
 
