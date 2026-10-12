@@ -1,0 +1,18 @@
+0x5ec68315 buy          gas  104979 (L1      0) price 0.0200 gwei cost 2.101e-06 ETH = $0.0053 at $2500 status 0x1
+0x5ec68315 sell         gas  104911 (L1      0) price 0.0221 gwei cost 2.323e-06 ETH = $0.0058 at $2500 status 0x1
+0xd6180333 buy          gas  104887 (L1      0) price 0.0202 gwei cost 2.119e-06 ETH = $0.0053 at $2500 status 0x1
+0xd6180333 sell         gas  111717 (L1      0) price 0.0200 gwei cost 2.237e-06 ETH = $0.0056 at $2500 status 0x1
+0x6d80b816 buy          gas  104915 (L1      0) price 0.0201 gwei cost 2.107e-06 ETH = $0.0053 at $2500 status 0x1
+0x6d80b816 sell         gas  105856 (L1      0) price 0.0201 gwei cost 2.128e-06 ETH = $0.0053 at $2500 status 0x1
+0x0e4cc1d8 buy          gas  105471 (L1    524) price 0.0201 gwei cost 2.117e-06 ETH = $0.0053 at $2500 status 0x1
+0x0e4cc1d8 sell         gas  106305 (L1    481) price 0.0201 gwei cost 2.138e-06 ETH = $0.0053 at $2500 status 0x1
+0xb47b706f buy          gas  105418 (L1    535) price 0.0200 gwei cost 2.112e-06 ETH = $0.0053 at $2500 status 0x1
+0x35869115 revert buy   gas   59739 (L1      0) price 0.0208 gwei cost 1.243e-06 ETH = $0.0031 at $2500 status 0x0
+0x35869115 revert sell  gas   29039 (L1      0) price 0.0204 gwei cost 5.917e-07 ETH = $0.0015 at $2500 status 0x0
+0xd4654e14 revert buy   gas   61065 (L1   1294) price 0.0201 gwei cost 1.229e-06 ETH = $0.0031 at $2500 status 0x0
+0xd4654e14 revert sell  gas   30247 (L1   1208) price 0.0201 gwei cost 6.069e-07 ETH = $0.0015 at $2500 status 0x0
+0x266d00f1 revert buy   gas   59883 (L1     80) price 0.0201 gwei cost 1.207e-06 ETH = $0.0030 at $2500 status 0x0
+0x266d00f1 revert sell  gas   29109 (L1     70) price 0.0200 gwei cost 5.824e-07 ETH = $0.0015 at $2500 status 0x0
+0xb47b706f revert sell  gas  335553 (L1    497) price 0.0200 gwei cost 6.711e-06 ETH = $0.0168 at $2500 status 0x0
+per filled round trip: 4.317e-06 ETH = $0.0108; a fill whose sell met the pull (335k gas): 8.823e-06 ETH = $0.0221; per reverted attempt (buy + its sell): 1.820e-06 ETH = $0.0045
+rpc {'posts': 1, 'items': 16, 'r429': 0}

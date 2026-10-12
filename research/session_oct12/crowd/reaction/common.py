@@ -2,7 +2,7 @@
 import os, sys, json, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE); sys.dont_write_bytecode = True
-sys.path.insert(0, "/home/user/v2pons/research/session_oct11/lines/analysis/W")
+sys.path.append("/home/user/v2pons/research/session_oct11/lines/analysis/W")
 J = lambda n: os.path.join(HERE, n)
 from eth_utils import keccak
 tp = lambda s: "0x" + keccak(text=s).hex()

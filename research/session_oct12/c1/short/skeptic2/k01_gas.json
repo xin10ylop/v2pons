@@ -1,0 +1,183 @@
+{
+ "tx": [
+  {
+   "pid": "0x5ec68315",
+   "kind": "buy",
+   "tx": "0xfd508db2dcb632c667f3ad01cb9fca4920d72df4e9a55379e27e756b4b0adb64",
+   "gasUsed": 104979,
+   "gasUsedForL1": 0,
+   "effGasPrice": 20018000,
+   "cost_wei": 2101469622000,
+   "status": "0x1",
+   "block": 86131139
+  },
+  {
+   "pid": "0x5ec68315",
+   "kind": "sell",
+   "tx": "0x3bab941d97be827c2489c4cd83efcd3890bdb9c64aca8f4131bed00b70e87de6",
+   "gasUsed": 104911,
+   "gasUsedForL1": 0,
+   "effGasPrice": 22146000,
+   "cost_wei": 2323359006000,
+   "status": "0x1",
+   "block": 86131200
+  },
+  {
+   "pid": "0xd6180333",
+   "kind": "buy",
+   "tx": "0xd107b5de4b674a7ed2f0e2d45057a7f5069d500cc971093d1f50840ca1c625c9",
+   "gasUsed": 104887,
+   "gasUsedForL1": 0,
+   "effGasPrice": 20198000,
+   "cost_wei": 2118507626000,
+   "status": "0x1",
+   "block": 86132848
+  },
+  {
+   "pid": "0xd6180333",
+   "kind": "sell",
+   "tx": "0xbd8b6b1131208041d80f1e8412c633a66e441bb7dd6257681d157cc77a7cf915",
+   "gasUsed": 111717,
+   "gasUsedForL1": 0,
+   "effGasPrice": 20024000,
+   "cost_wei": 2237021208000,
+   "status": "0x1",
+   "block": 86132910
+  },
+  {
+   "pid": "0x6d80b816",
+   "kind": "buy",
+   "tx": "0xb0489df753f90a361b7d89701d0b898a81270175b944e8564c841ae9a19bf2e1",
+   "gasUsed": 104915,
+   "gasUsedForL1": 0,
+   "effGasPrice": 20080000,
+   "cost_wei": 2106693200000,
+   "status": "0x1",
+   "block": 86133336
+  },
+  {
+   "pid": "0x6d80b816",
+   "kind": "sell",
+   "tx": "0xa913d3a550bccb826e21c1e5b7048b48a425a56562dcd985ddca7fc0522f4934",
+   "gasUsed": 105856,
+   "gasUsedForL1": 0,
+   "effGasPrice": 20102000,
+   "cost_wei": 2127917312000,
+   "status": "0x1",
+   "block": 86133398
+  },
+  {
+   "pid": "0x0e4cc1d8",
+   "kind": "buy",
+   "tx": "0xf14b5cb21f407499800a2d2a182b1973df119cfc8cd6fb251c8dc072b19a3824",
+   "gasUsed": 105471,
+   "gasUsedForL1": 524,
+   "effGasPrice": 20070000,
+   "cost_wei": 2116802970000,
+   "status": "0x1",
+   "block": 86281237
+  },
+  {
+   "pid": "0x0e4cc1d8",
+   "kind": "sell",
+   "tx": "0x3bad442c6943cb911c640cf204a538b61d2a859d9a4d8483ba092fd0457d3a73",
+   "gasUsed": 106305,
+   "gasUsedForL1": 481,
+   "effGasPrice": 20112000,
+   "cost_wei": 2138006160000,
+   "status": "0x1",
+   "block": 86281299
+  },
+  {
+   "pid": "0xb47b706f",
+   "kind": "buy",
+   "tx": "0xa0b41adbaad850db758757fc62897bd45b6f2d42dba2345e05053548ec620c50",
+   "gasUsed": 105418,
+   "gasUsedForL1": 535,
+   "effGasPrice": 20032000,
+   "cost_wei": 2111733376000,
+   "status": "0x1",
+   "block": 86282616
+  },
+  {
+   "pid": "0x35869115",
+   "kind": "revert buy",
+   "tx": "0x5302a9427ccf52d9050c6c4a0bc2eb31b37db84aeaf4cdaef2d03445d889e329",
+   "gasUsed": 59739,
+   "gasUsedForL1": 0,
+   "effGasPrice": 20804000,
+   "cost_wei": 1242810156000,
+   "status": "0x0",
+   "block": 86132031
+  },
+  {
+   "pid": "0x35869115",
+   "kind": "revert sell",
+   "tx": "0x8d110f22a96a3ec9e3a27242be13bfa0921b864b5a0b0cd8f05807fcff91eb39",
+   "gasUsed": 29039,
+   "gasUsedForL1": 0,
+   "effGasPrice": 20376000,
+   "cost_wei": 591698664000,
+   "status": "0x0",
+   "block": 86132093
+  },
+  {
+   "pid": "0xd4654e14",
+   "kind": "revert buy",
+   "tx": "0x27dfe3f2769a316f8b3329f2e8a4362f036557bbd791d17cc8be9e89cd0a19aa",
+   "gasUsed": 61065,
+   "gasUsedForL1": 1294,
+   "effGasPrice": 20122000,
+   "cost_wei": 1228749930000,
+   "status": "0x0",
+   "block": 86176771
+  },
+  {
+   "pid": "0xd4654e14",
+   "kind": "revert sell",
+   "tx": "0xea2ce4658aa4585f85f09709371c889e305c25b560ac139121f3354cb16ba52d",
+   "gasUsed": 30247,
+   "gasUsedForL1": 1208,
+   "effGasPrice": 20064000,
+   "cost_wei": 606875808000,
+   "status": "0x0",
+   "block": 86176833
+  },
+  {
+   "pid": "0x266d00f1",
+   "kind": "revert buy",
+   "tx": "0x058090cb9241110693ec177469538a5f5ceed8c60979c7012a298380f0f016c3",
+   "gasUsed": 59883,
+   "gasUsedForL1": 80,
+   "effGasPrice": 20148000,
+   "cost_wei": 1206522684000,
+   "status": "0x0",
+   "block": 86233944
+  },
+  {
+   "pid": "0x266d00f1",
+   "kind": "revert sell",
+   "tx": "0x93c488a79f64d76241c347fa6b683a22bca9fe8f1502ae2c9708eef77e38f97a",
+   "gasUsed": 29109,
+   "gasUsedForL1": 70,
+   "effGasPrice": 20006000,
+   "cost_wei": 582354654000,
+   "status": "0x0",
+   "block": 86234006
+  },
+  {
+   "pid": "0xb47b706f",
+   "kind": "revert sell",
+   "tx": "0x5eac37eb0c5b4da00edb3f33d1bf522eeccbd5369ee2a14bd373f7b2622838e9",
+   "gasUsed": 335553,
+   "gasUsedForL1": 497,
+   "effGasPrice": 20000000,
+   "cost_wei": 6711060000000,
+   "status": "0x0",
+   "block": 86282678
+  }
+ ],
+ "per_fill_wei": 4317444276000.0,
+ "per_pulled_wei": 8822793376000,
+ "per_revert_wei": 1819670632000.0
+}
