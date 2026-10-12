@@ -2,18 +2,106 @@
 """bnb_results.py: the BNB Chain dry run (src/bnb_engine.py, service flip-bnb) in one screen. The reader's state (the head, the lag, the
 price), the launches seen per pool size with what the rule would have done (would-have-traded, the dry results: mean, median, share up,
 pulled before the sell, the crowd's buys), the creator's dumps per size, the gate before live money, the last 8 launches with their
-decision, and the alarms. Nothing here is money: the engine signs nothing and sends nothing. A trade with a missed log or a gap (not
-"clean") is left out of every statistic and of the gate, and counted.
+decision, and the alarms. A trade with a missed log or a gap (not "clean") is left out of every statistic and of the gate, and counted.
+With BNB_LIVE=1 (src/bnb_live.py, RUNBOOK 4k) it adds LIVE vs CONTROL: the live trades settled from their receipts, the same pools at
+the dry price, and the other launches left dry; the halt (HALTED.bnb), the open positions (bnb_positions.json), the day against its stop,
+and the wallet's balance (BNB_WALLET, read from the RPC; the key file is never opened). Dry, nothing here is money.
 
     sudo python3 ~/v2pons/deploy/bnb_results.py          # the last 24 hours
     sudo python3 ~/v2pons/deploy/bnb_results.py 72       # the last 72 hours
 """
-import glob, gzip, json, os, statistics, subprocess, sys, time
+import glob, gzip, json, os, statistics, subprocess, sys, time, urllib.parse, urllib.request
 HOURS = float(sys.argv[1]) if len(sys.argv) > 1 else 24
 LOG = os.environ.get("BNB_LOG_PATH") or "/var/log/flip/bnb.jsonl"; SERVICE = "flip-bnb"; LAST = 8
 hms = lambda t: time.strftime("%m-%d %H:%M:%S", time.gmtime(t))
 hm = lambda t: time.strftime("%m-%d %H:%M", time.gmtime(t))
 pct = lambda r: "%+.1f%%" % (100 * r)
+ENV_FILE = os.environ.get("BNB_ENV_FILE") or "/etc/flip/bnb.env"
+
+
+def setting(k, d=None):
+    """a setting as the engine sees it: the environment, else the env file's last line for it (root: sudo), else the default"""
+    if os.environ.get(k):
+        return os.environ[k].split(" #", 1)[0].strip()
+    v = None
+    try:
+        for line in open(ENV_FILE):
+            if line.startswith(k + "="):
+                v = line.split("=", 1)[1].split(" #", 1)[0].strip() or None
+    except OSError:
+        pass
+    return v if v is not None else d
+
+
+def wallet_balance(wallet, url):
+    """the wallet's BNB by eth_getBalance (only the URL's host is ever printed: the URL may hold a provider's key)"""
+    try:
+        req = urllib.request.Request(url, json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_getBalance", "params": [wallet, "latest"]}).encode(),
+                                     {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 Chrome/128"})
+        return int(json.load(urllib.request.urlopen(req, timeout=8))["result"], 16) / 1e18, None
+    except Exception as e:
+        return None, type(e).__name__
+
+
+def live_section(ev, st, fl, n_g):
+    """LIVE vs CONTROL, the halt, the open positions and the day, the wallet"""
+    live = [e for e in ev if e["ev"] == "trade_done" and e.get("live")]; dry = [e for e in ev if e["ev"] == "trade_done" and e.get("dry")]
+    usd = fl.get("bnb_usd") or st.get("bnb_usd") or 0
+    print("\nLIVE vs CONTROL (every %s-th launch of a traded size live at $%g, the others dry; the trades that ended in the window)"
+          % (st.get("probe_every", "?"), st.get("stake_usd", 0)))
+    print("  %-38s %5s %8s %8s %6s | %9s" % ("", "count", "mean", "median", "up", "$"))
+
+    def row(name, rets, dollars, note=""):
+        print("  %-38s %s | %9s%s" % (name, stats(rets), ("%+.2f" % dollars) if rets else "-", note))
+    traded = [e for e in live if not e.get("reverted") and e.get("pnl_pct") is not None]
+    nrev = sum(1 for e in live if e.get("reverted"))
+    row("LIVE (the receipts, after gas)", [e["pnl_pct"] for e in traded], sum(e.get("pnl_usd") or 0 for e in live),
+        "   ($ includes %d reverted buy(s))" % nrev if nrev else "")
+    same = [e for e in traded if e.get("dry_ret") is not None]
+    row("LIVE's pools at the dry price", [e["dry_ret"] for e in same], sum(e["dry_ret"] * (e.get("stake_wei") or 0) / 1e18 * (e.get("bnb_usd") or usd) for e in same))
+    ctl = [e for e in dry if e.get("role") == "control" and clean(e)]
+    row("CONTROL (the other launches, dry)", [e["dry_ret"] for e in ctl], sum(e["dry_ret"] * (e.get("stake_wei") or 0) / 1e18 * usd for e in ctl))
+    gap = [e["gross_pct"] - e["dry_ret_gross"] for e in same if e.get("gross_pct") is not None and e.get("dry_ret_gross") is not None]
+    if gap:
+        print("  live gross minus its dry price's gross: median %s (the buy lands a few blocks after L+%s, the sale a few after L+%s)"
+              % (pct(statistics.median(gap)), st.get("buy_at"), st.get("sell_at")))
+    skips = [e for e in ev if e["ev"] == "live_skip"]
+    if skips:
+        kinds = {}
+        for e in skips:
+            kinds.setdefault(str(e.get("role")), []).append(e.get("why") or "")
+        print("  live slots not traded: " + "; ".join("%s %d (the last: %s)" % (k, len(v), v[-1][:70]) for k, v in sorted(kinds.items())))
+    checked = [e for e in ev if e["ev"] == "live_check"]; refused = [e for e in checked if not e.get("ok")]
+    if checked:
+        print("  pre-buy checks: %d, refused %d%s" % (len(checked), len(refused), (" (the last: %s)" % str(refused[-1].get("why"))[:80]) if refused else ""))
+    halt_file = setting("BNB_HALT_FILE") or os.path.join(os.path.dirname(os.path.abspath(LOG)), "HALTED.bnb")
+    pos_file = setting("BNB_POSITIONS_FILE") or os.path.join(os.path.dirname(os.path.abspath(LOG)), "bnb_positions.json")
+    if os.path.exists(halt_file):
+        try:
+            why = open(halt_file).read().strip()[:150] or "(empty file)"
+        except OSError:
+            why = "(not readable: sudo)"
+        print("HALTED: %s\n  no new live buy; open positions are still sold. To resume, once understood: sudo rm %s && sudo systemctl restart %s"
+              % (why, halt_file, SERVICE))
+    else:
+        print("halt: none (%s)" % halt_file)
+    try:
+        d = json.load(open(pos_file))
+        pos = d.get("positions") or {}; g = d.get("gate_rets") or []
+        opened = ", ".join("%s %s%s" % (k[:10], x.get("state"), (", selling: " + x["sell_due"]["why"]) if x.get("sell_due") else "") for k, x in pos.items())
+        print("open live positions: %d%s; today (%s UTC) $%+.2f against the daily stop of -$%g; the gate's median: %s"
+              % (len(pos), (" (%s)" % opened) if pos else "", d.get("day"), d.get("pnl_today_usd") or 0, float(st.get("daily_stop_usd") or 10),
+                 ("%s over the first %d live trades%s" % (pct(statistics.median(g)), len(g), "   <== NEGATIVE" if statistics.median(g) < 0 else ""))
+                 if len(g) >= n_g else "%d of %d live trades so far" % (len(g), n_g)))
+    except FileNotFoundError:
+        print("open live positions: none (no %s yet)" % pos_file)
+    except Exception as e:
+        print("open live positions: %s not read (%s)" % (pos_file, type(e).__name__))
+    wallet = setting("BNB_WALLET") or st.get("wallet")
+    if wallet:
+        url = setting("BNB_RPC_URL", "https://bsc-rpc.publicnode.com"); bal, err = wallet_balance(wallet, url)
+        print("wallet %s: %s (read from %s)" % (wallet, ("%.6f BNB, $%.2f" % (bal, bal * usd)) if bal is not None else "balance not read (%s)" % err,
+                                                 urllib.parse.urlparse(url).hostname))
 
 
 def read_logs(hours):
@@ -61,8 +149,9 @@ def main():
     except OSError:                                                            # no systemctl here
         active = False
     print("=" * 100)
-    print("BNB DRY RUN (nothing is signed or sent)  service %s   release %s   %s" % ("RUNNING" if active else "STOPPED", st.get("release", "?"),
-                                                                                 ("started %s UTC" % hm(st["t"])) if st else "no start line in " + LOG))
+    live = bool(st.get("live")) or any(e.get("live") for e in ev if e["ev"] == "trade_done")
+    print("%s  service %s   release %s   %s" % ("BNB LIVE PROBE (BNB_LIVE=1: real trades)" if live else "BNB DRY RUN (nothing is signed or sent)",
+                                            "RUNNING" if active else "STOPPED", st.get("release", "?"), ("started %s UTC" % hm(st["t"])) if st else "no start line in " + LOG))
     if st:
         print("the rule: $%g at L+%s, sold at L+%s; pools of %s BNB skipped; launcher %s, selector %s; the stake at %s $/BNB (%s at the start)"
               % (st.get("stake_usd", 0), st.get("buy_at"), st.get("sell_at"), ", ".join(size_key(x) for x in st.get("skip_pool_bnb", [])) or "no",
@@ -108,21 +197,27 @@ def main():
     print("\nGATE (would halt the line when live)")
     print("  %-42s %s" % ("a dump before +%d:" % gb, "TRIPPED x%d (the last %s UTC, +%d, pool %s BNB)" % (len(early), hms(early[-1]["t"]), early[-1]["off"], early[-1].get("pool_bnb")) if early else "none"))
     print("  %-42s %s" % ("no crowd buy in +%d..+%s:" % (cf, st.get("sell_at", 260)), "TRIPPED x%d (the last %s UTC, %s)" % (len(nocrowd), hms(nocrowd[-1]["t"]), nocrowd[-1]["pair"][:10]) if nocrowd else "none"))
-    print("  %-42s %s" % ("a revert:", "not measurable in a dry run (nothing is sent)"))
+    reverts = [e for e in ev if e["ev"] == "live_receipt" and not e.get("status")]
+    print("  %-42s %s" % ("a revert:", ("TRIPPED x%d (the last %s UTC, a %s)" % (len(reverts), hms(reverts[-1]["t"]), reverts[-1].get("kind")) if reverts else "none")
+                          if live else "not measurable in a dry run (nothing is sent)"))
     print("  %-42s %s" % ("median of the first %d trades:" % n_g if not st else "median of the first %d since %s:" % (n_g, hm(st["t"])), ("%s%s" % (pct(statistics.median(first)), "   <== NEGATIVE" if statistics.median(first) < 0 else "")) if len(first) >= n_g
                                                    else "%d of %d so far" % (len(first), n_g)))
+    if live:
+        live_section(ev, st, fl, n_g)
     # the last launches and what the rule did with each
     by_pair = {}
     for e in ev:
         if e.get("pair") and e["ev"] in ("launch", "would_fire", "trade_done", "skip", "dump"):
-            by_pair.setdefault(e["pair"], {})[e["ev"]] = e
-    order = sorted(by_pair.values(), key=lambda d: (d.get("launch") or d.get("would_fire") or d.get("trade_done") or d.get("skip") or d.get("dump"))["t"])
+            by_pair.setdefault(e["pair"], {})["live_done" if e.get("live") else e["ev"]] = e
+    order = sorted(by_pair.values(), key=lambda d: (d.get("launch") or d.get("would_fire") or d.get("trade_done") or d.get("skip") or d.get("dump") or d.get("live_done"))["t"])
     print("\nTHE LAST %d LAUNCHES (of %d in the window)" % (min(LAST, len(order)), len(order)))
     if order:
         print("  %-15s %-12s %6s  %-9s %5s %9s %6s %5s  %s" % ("time (UTC)", "pair", "BNB", "decision", "crowd", "crowd BNB", "first", "strgr", "result"))
     for d in order[-LAST:]:
-        x = d.get("launch") or d.get("would_fire") or d.get("trade_done") or d.get("skip") or d.get("dump"); td = d.get("trade_done")
+        x = d.get("launch") or d.get("would_fire") or d.get("trade_done") or d.get("skip") or d.get("dump") or d.get("live_done"); td = d.get("trade_done")
         size = x.get("pool_bnb"); dec = "skip" if (d.get("launch") or {}).get("skip") or d.get("skip") else "buy" if d.get("would_fire") else "-"
+        if (d.get("trade_done") or {}).get("role"):
+            dec += "/" + d["trade_done"]["role"][:4]
         if td:
             res = (pct(td["dry_ret"]) if td.get("dry_ret") is not None else "no result") + ("   <== DUMPED BEFORE THE SELL (+%s)" % td.get("dump_off") if td.get("pulled_before_sell") else "") \
                 + ("   (left out: a missed log or a gap)" if not clean(td) else "")
@@ -132,6 +227,9 @@ def main():
             cells = ("-", "-", "-", "-")
         if d.get("dump") and not (td and td.get("pulled_before_sell")):
             res += "  (dumped at +%d)" % d["dump"]["off"]
+        if d.get("live_done"):
+            ld = d["live_done"]
+            res += "   LIVE %s $%+.2f%s" % (pct(ld["pnl_pct"]) if ld.get("pnl_pct") is not None else "-", ld.get("pnl_usd") or 0, " REVERTED " + ld["reverted"] if ld.get("reverted") else "")
         print("  %-15s %-12s %6s  %-9s %5s %9s %6s %5s  %s" % (hms(x["t"]), x["pair"][:12], size_key(size), dec, *cells, res))
     al = [e for e in ev if e["ev"] == "alarm"]
     if al:

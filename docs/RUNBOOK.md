@@ -453,8 +453,9 @@ that signs or sends. Its own service (`flip-bnb`), settings (`/etc/flip/bnb.env`
 files are not touched, and it runs below flip-engine's CPU priority (Nice 10 against -5, at most half a core and 400 MB). The unit
 gives it a read-only file system except `/var/log/flip`, hides `/etc/flip/engine.env` (the wallet's key) from it, and restarts it 30 s
 after an exit; at its start it waits up to 5 minutes for the RPC (a network or DNS failure at boot) before it exits.
+Release bnb-0.2 adds a live path, off unless `BNB_LIVE=1`: section 4k.
 
-Install (once). The code first; the first line prints the two paths and `20` (the tests), else stop. If it also prints
+Install (once). The code first; the first line prints the two paths and `34` (the tests; `20` before release bnb-0.2), else stop. If it also prints
 `flip_engine.py CHANGED`, the pull brought changes to the live engine as well, which flip-engine would pick up at its next restart:
 deploy those per their own section first (or ask), then come back here:
 
@@ -495,6 +496,117 @@ is left out of every number and of the gate, and the screen prints how many were
 A restart (`sudo systemctl restart flip-bnb`, e.g. after a `git pull`) loses the pools in flight: those open then never get a `trade_done`.
 Stop it: `sudo systemctl disable --now flip-bnb` (the log stays). Remove it: that, then `sudo rm /etc/systemd/system/flip-bnb.service
 /etc/logrotate.d/flip-bnb && sudo systemctl daemon-reload`.
+
+## 4k. The BNB line live: the $5 probe (Oct 12, HANDOFF 16.23)
+
+Release bnb-0.2 adds the live path to the BNB engine (`src/bnb_live.py`, loaded only when `/etc/flip/bnb.env` says `BNB_LIVE=1`).
+`BNB_LIVE=0` (the default, and what the box runs after a plain `git pull` and restart) keeps the dry run exactly as it was: the same
+lines, field for field; only the start line's `release` reads `bnb-0.2`. Live, every 2nd launch of a traded size (1, 2.5, 10, 25 BNB) is
+bought with $5 from the line's own wallet straight through the PancakeSwap router and sold at L+260; the other launches stay dry as the
+control. Its own wallet and key file (never the flip engine's), its own halt file (`/var/log/flip/HALTED.bnb`) and positions file
+(`/var/log/flip/bnb_positions.json`); flip-engine and its files are not touched.
+
+What one live trade is, in order (each step a line in `/var/log/flip/bnb.jsonl`):
+
+1. At the launch: `live_arm` (`role` live, control or held, with why), then `live_check`: the round trip of the stake simulated by
+   `eth_call` on the pool as it is (`contracts/BnbRoundTrip.sol` placed by state override; nothing is sent). The pool is refused (`role`
+   refused) when the simulated sell reverts, returns under 90% of the stake, or a leg would need more gas than its limit.
+2. At L+50 seen: the buy (`live_send` kind buy: `swapExactETHForTokensSupportingFeeOnTransferTokens`, value the stake, minOut the tokens
+   expected on the reserves x 0.95, deadline 60 s), 0.1 gwei, 200k gas.
+3. After its receipt (`live_receipt`): `approve(router, max)` at the next nonce, 80k gas.
+4. At L+260 seen, at once on a dump seen first: the sell of the whole token balance (`swapExactTokensForETHSupportingFeeOnTransferTokens`,
+   minOut the BNB expected on the reserves x 0.95), 180k gas. A reverted sell is sent again on the reserves then at 10%, then 20%.
+5. `trade_done` with `live: true`: BNB in, tokens, BNB out, gas, `pnl_bnb`, `pnl_usd`, `pnl_pct`, and `dry_ret` (the dry price of the same
+   trade). The pool's own dry `trade_done` line is still written (`live: false`, `role: live`).
+
+The gate halts the line (writes `HALTED.bnb`): a dump before +997 on a traded pool, no crowd buy in +60..+260 on a traded pool, any
+reverted buy, approve or sell, a negative median over the first 10 live trades. A halt stops new buys and still sells what is open.
+`BNB_DAILY_STOP_USD` ($10) of losses in a UTC day stops new buys until 00:00 UTC (no file). A restart keeps the open positions
+(`bnb_positions.json`, written before each send): one past its sell block is sold at once.
+
+### 1. The code (on the box)
+
+    cd ~/v2pons && OLD=$(git rev-parse HEAD) && git pull -q --ff-only && { git diff --quiet $OLD HEAD -- src/flip_engine.py || echo 'flip_engine.py CHANGED: deploy it per its own section first'; } && ls src/bnb_live.py deploy/bnb_wallet.py contracts/BnbRoundTrip.json && /opt/flip-venv/bin/python3 tests/test_bnb_engine.py | grep -c '^ok'
+
+It prints the three paths and `34`, else stop (`SKIP the live path's tests` means the python has no eth_account: use the venv's). Then the
+unit (its comments and description changed; the hardening is the same) and a restart, still dry:
+
+    sudo cp ~/v2pons/deploy/flip-bnb.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl restart flip-bnb
+    sleep 60 && sudo python3 ~/v2pons/deploy/bnb_results.py | head -4
+
+The screen says `BNB DRY RUN` and `release bnb-0.2`.
+
+### 2. The wallet (once)
+
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/bnb_wallet.py
+
+It writes a new key to `/etc/flip/bnb.key` (mode 600; it refuses to replace a file that exists) and prints two lines: `new BNB wallet:
+0x...` and `add this line to /etc/flip/bnb.env: BNB_WALLET=0x...`. The key is never printed; to back it up, read it on your own screen
+with `sudo cat /etc/flip/bnb.key` and keep it in a password manager. This is not the flip engine's wallet: send nothing from one to the
+other.
+
+### 3. Fund it with about $20 of BNB
+
+From an exchange: withdraw BNB to the address printed, network **BNB Smart Chain (BEP20)** (not "BNB Beacon Chain", not opBNB). From
+another chain: a bridge to BNB Smart Chain, native BNB. $20 covers the two $5 positions that can be open at once (`BNB_MAX_OPEN`), the
+day's stop ($10) and the gas (a round trip is about 300k gas, $0.02 at 0.1 gwei). Check it arrived (the address in the second line):
+
+    curl -s -X POST -H 'Content-Type: application/json' --data '{"jsonrpc":"2.0","id":1,"method":"eth_getBalance","params":["0xYOURADDRESS","latest"]}' https://bsc-rpc.publicnode.com | python3 -c 'import sys, json; print(int(json.load(sys.stdin)["result"], 16) / 1e18, "BNB")'
+
+### 4. Live
+
+`BNB_STAKE_USD=15` is in the env file from 4i (the dry run's stake): it must go to 5 for the probe. The wallet line, the stake and the
+switch (`set_kv` as in 4h; replace `0xYOURADDRESS` with the printed address):
+
+    set_kv() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }
+    set_kv BNB_WALLET 0xYOURADDRESS && set_kv BNB_STAKE_USD 5 && set_kv BNB_LIVE 1 && sudo grep -E '^BNB_(WALLET|STAKE_USD|LIVE)=' /etc/flip/bnb.env
+    sudo systemctl restart flip-bnb && sleep 20 && sudo grep '"ev":"start"' /var/log/flip/bnb.jsonl | tail -1 | python3 -c 'import sys, json; s = json.loads(sys.stdin.read()); print({k: s.get(k) for k in ("release", "dry_run", "live", "wallet", "stake_usd", "balance_bnb", "nonce", "live_off", "halted", "resumed", "send")})'
+
+The last line must show `dry_run: False`, `live: True`, the wallet, `stake_usd: 5.0`, the balance funded, `live_off: None`,
+`halted: None`. `live_off` set means the start's self-test of the pre-buy check failed (the RPC took no `eth_call` state override): the
+run stays dry and every live slot is `held`; with publicnode it passes. If the service is not `active` (`systemctl is-active flip-bnb`),
+`journalctl -u flip-bnb -n 20` says why: a missing `BNB_WALLET`, a key file open to other users, a key for another address.
+
+### 5. The checks
+
+    sudo python3 ~/v2pons/deploy/bnb_results.py
+
+The screen says `BNB LIVE PROBE` and adds, under the gate:
+
+- `LIVE (the receipts, after gas)`: count, mean, median, share up, $; `LIVE's pools at the dry price`: the same trades priced by the
+  dry replay; `CONTROL (the other launches, dry)`: the alternate launches. The research expects about +23.6% mean / +11.1% median at
+  the dry price; the live line pays the gas and lands a few blocks after L+50 and L+260 (the `live gross minus its dry price's gross`
+  line).
+- `live slots not traded`: held (halted, the daily stop, two open, the wallet short of funds, a buy more than 10 blocks late),
+  refused (the pre-buy check), unsent (the node refused the transaction, or it was never mined).
+- `HALTED: <reason>` or `halt: none`; `open live positions` with their state, today's $ against the stop, the gate's median count; the
+  wallet's balance (read from the RPC; the key file is never opened).
+
+The first live trades, raw: `sudo grep -E '"ev":"(live_send|live_receipt|live_check)"' /var/log/flip/bnb.jsonl | tail -6` and
+`sudo grep '"live":true' /var/log/flip/bnb.jsonl | tail -3`. Every transaction is on `https://bscscan.com/address/0xYOURADDRESS`.
+
+A halt, once understood (its reason is in the file and in the screen):
+
+    sudo cat /var/log/flip/HALTED.bnb && sudo rm /var/log/flip/HALTED.bnb && sudo systemctl restart flip-bnb
+
+### 6. Stop
+
+New buys stop, what is open is still sold (the normal stop; the dry run goes on):
+
+    echo "owner stop" | sudo tee /var/log/flip/HALTED.bnb >/dev/null && sudo systemctl restart flip-bnb
+
+When the screen shows `open live positions: 0`, back to a plain dry run: `set_kv BNB_LIVE 0 && sudo systemctl restart flip-bnb` (`set_kv` from step 4; then
+`sudo rm /var/log/flip/HALTED.bnb` if you like; it is only read live). `BNB_LIVE=0` with a position still open is an alarm at the start:
+nothing sells it until live again. In a hurry, `sudo systemctl stop flip-bnb` stops everything at once: tokens bought stay in the wallet
+and in `bnb_positions.json`, and the next live start sells those past their sell block at once. To take the BNB back, import the key
+into a wallet app on your own machine (the engine has no withdraw command).
+
+The settings (`/etc/flip/bnb.env`; restart after a change), with their defaults: `BNB_LIVE` (0), `BNB_WALLET`, `BNB_KEY_FILE`
+(/etc/flip/bnb.key), `BNB_STAKE_USD` (5 when live), `BNB_PROBE_EVERY` (2), `BNB_MAX_OPEN` (2), `BNB_DAILY_STOP_USD` (10), `BNB_SLIP`
+(0.05), `BNB_GAS_BUY` / `BNB_GAS_APPROVE` / `BNB_GAS_SELL` (200000 / 80000 / 180000), `BNB_MIN_GWEI` (0.1), `BNB_MAX_GWEI` (1),
+`BNB_DEADLINE_S` (60), `BNB_CHECK_MIN` (0.9), `BNB_MAX_STAKE_BNB` (0.05: a buy above it is never sent), `BNB_SELL_TRIES` (3),
+`BNB_RECEIPT_WAIT_S` (60), `BNB_BUY_LATE` (10 blocks), `BNB_SEND_URL` (BNB_RPC_URL), `BNB_SEND_ALT_URL`
+(https://bsc-dataseed.bnbchain.org; 0 for none), `BNB_HALT_FILE`, `BNB_POSITIONS_FILE` (beside the log).
 
 ## 5. Daily
 

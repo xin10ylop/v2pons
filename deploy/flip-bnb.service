@@ -1,12 +1,15 @@
-# flip-bnb: the BNB Chain DRY RUN (src/bnb_engine.py): reads the chain, logs what the rule would have done, signs and sends nothing.
+# flip-bnb: the BNB Chain engine (src/bnb_engine.py). A DRY RUN unless /etc/flip/bnb.env says BNB_LIVE=1: dry, it reads the chain, logs
+# what the rule would have done, and signs and sends nothing; live (src/bnb_live.py, RUNBOOK 4k), it also trades the $5 probe from its own
+# wallet, whose key is /etc/flip/bnb.key (mode 600, made by deploy/bnb_wallet.py).
 # Beside flip-engine and touching nothing of it: its own settings (/etc/flip/bnb.env, no key in it), its own log (/var/log/flip/bnb.jsonl),
-# a lower CPU priority than flip-engine (Nice 10 against -5) and a CPU and memory ceiling. The file system is read-only to it except
-# /var/log/flip (which must exist: flip_setup.sh made it), and flip-engine's env file (the wallet's key) is not visible to it at all.
+# halt file (HALTED.bnb) and positions file (bnb_positions.json) there, a lower CPU priority than flip-engine (Nice 10 against -5) and a CPU
+# and memory ceiling. The file system is read-only to it except /var/log/flip (which must exist: flip_setup.sh made it); /etc/flip/bnb.key is
+# under /etc/flip, readable and never writable by it (ProtectSystem=strict); flip-engine's env file (that wallet's key) is not visible to it.
 # RUNBOOK 4i installs it:
 #     sudo cp ~/v2pons/deploy/flip-bnb.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now flip-bnb
 # The paths are the box's clone (/home/ubuntu/v2pons, as in flip-engine.service); change both lines if the clone is elsewhere.
 [Unit]
-Description=flip BNB dry run (v2pons; nothing is signed or sent)
+Description=flip BNB engine (v2pons; a dry run unless BNB_LIVE=1 in /etc/flip/bnb.env)
 After=network-online.target
 Wants=network-online.target
 

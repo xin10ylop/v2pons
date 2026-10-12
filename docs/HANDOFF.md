@@ -1896,3 +1896,113 @@ is used for a go/no-go; 20 tests):
 - Smaller: a null creating transaction is tried 6 times; the gate's median keeps at most 10 trades; the log lock is re-entrant; the
   reader's crash handler exits in a `finally`; `--replay` refuses to write into the service's log (`BNB_LOG_PATH` must name another
   file); the screen's crowd share is rounded, not cut.
+
+### 16.23 Oct 12: the BNB line's live path (`src/bnb_live.py`, release bnb-0.2; off unless `BNB_LIVE=1`)
+
+The dry run as the box showed it at 11:59 UTC (4.4 h from 07:35): 31 launches, 16 skipped (15 BNB), 15 dry trades, mean +28.0%, median
++7.4%, 80% up, no dump before +997, a crowd buy in the hold in 15 of 15 (the research: +23.6% / +11.1%). Nothing below is installed on the
+box, and no transaction was sent to any chain: every send in the tests goes to a stub, and the reads against BNB Chain were `eth_call`,
+`eth_simulateV1` and `eth_estimateGas` only. RUNBOOK 4k turns it on.
+
+How it is built:
+
+- `src/bnb_live.py` (the live module, class `Live`) is loaded by `src/bnb_engine.py` in `main()` only when `BNB_LIVE=1` (`0` or `1`,
+  anything else stops the start), by name (`__import__("bnb_live")`), so the engine file itself still names no sending method and
+  imports nothing new (its static test 12 unchanged). The engine calls it at eleven points, each behind `if LIVE:` (`LIVE` is `None`
+  when dry): the launch line (`on_launch`), the buy (`on_fire`, both branches), the sale (`on_sell`), the dump (`on_dump`), the pool's end
+  (`on_finish`), each range (`after_range`), our own swaps kept out of the dry copy (`ours`), the dry `trade_done` line (`tag`: `live`
+  false and `role`), the flow and start lines. `BNB_STAKE_USD` defaults to 5 when live (15 dry). `--replay` refuses `BNB_LIVE=1`.
+- Dry is unchanged: the 20 dry tests pass unchanged, and the same scenarios run through the engine of f89d204 and this one log the same
+  99 lines, field for field, except the start line's `release` (`bnb-0.1` to `bnb-0.2`) and the file path and line number inside two
+  alarm traces. The one dry-mode addition: at the start, an alarm when `bnb_positions.json` lists open live positions (no file, no line).
+- The wallet: `deploy/bnb_wallet.py` (run with the venv's python) creates a key with `eth_account`, writes it to `/etc/flip/bnb.key`
+  (`os.open` with `O_EXCL`, mode 600; an existing file is never replaced; it refuses a path named `engine.env`), and prints only the
+  address and the `BNB_WALLET=` line. The engine reads the key from `BNB_KEY_FILE` when live only, refuses a file open to group or
+  others, one that is not a key, or one whose address is not `BNB_WALLET`; the key is never printed, logged or written (tests check the
+  log and the positions file for it). `/etc/flip/engine.env` stays hidden by the unit (`InaccessiblePaths`); the unit's comments and
+  `Description` changed, nothing else (the key file under `/etc/flip` is readable and never writable with `ProtectSystem=strict`).
+- The trade, from the wallet straight through the router (no contract on chain): at L+`BNB_BUY_AT` seen,
+  `swapExactETHForTokensSupportingFeeOnTransferTokens(minOut, [WBNB, token], wallet, now+60)` (selector `b6f9de95`), value the engine's
+  stake to the wei, minOut = the engine's tokens for it on the reserves it tracks (the PancakeSwap formula) x the token's measured factor
+  x (1 - `BNB_SLIP`), in integers; after the buy's receipt (the tokens from the token's Transfer to the wallet) `approve(router, 2^256-1)`
+  (`095ea7b3`) at the next nonce, once a token; at L+`BNB_SELL_AT` seen, or at once on a dump seen first (or when the reader drops the
+  pool), `swapExactTokensForETHSupportingFeeOnTransferTokens(balance, minOut, [token, WBNB], wallet, now+60)` (`791ac947`) for the
+  wallet's whole balance (`balanceOf`), minOut = the BNB expected on the tracked reserves at the sale x (1 - `BNB_SLIP`); a reverted sell
+  is sent again on `getReserves` with the slippage doubled (10%, 20%; `BNB_SELL_TRIES` 3), then the position is `stuck` (an alarm; a
+  restart tries again). A buy is not sent more than `BNB_BUY_LATE` (10) blocks after L+50, above `BNB_MAX_STAKE_BNB` (0.05), or when the
+  balance is under the stake plus every gas limit at the price.
+- One sequencer: a single worker thread signs and sends everything; the nonce is read once (`eth_getTransactionCount` pending), kept in
+  memory, read again after any nonce error ("nonce too low/high", "replacement transaction underpriced"), unless that very transaction is
+  already known to the node (a copy that went in counts as in). Each transaction's record (hash, nonce, the signed bytes) is written to the
+  positions file before the send. A transaction no endpoint answered for is polled; unknown to the node after `BNB_RECEIPT_WAIT_S` (60 s)
+  it is sent again once, and after twice that, its nonce not mined, it is dropped (a buy: the slot `unsent`).
+- Receipts: publicnode refuses `eth_getTransactionReceipt` for every transaction (HTTP 403, "Archive requests require a personal token",
+  even for the latest block's), so the engine reads `eth_getTransactionByHash` (its block) and that block's `eth_getBlockReceipts`
+  (publicnode serves it; the same receipt as BNB Chain's dataseed returns), and falls back to `eth_getTransactionReceipt`.
+- Settlement from the receipts: BNB in = the WBNB the router paid the pair (checked against the value), the tokens, BNB out = the WBNB the
+  pair paid the router, the gas of every transaction (gasUsed x effectiveGasPrice, reverted ones too); `trade_done` with `live: true`,
+  `pnl_bnb`, `pnl_usd` (at the USDT/WBNB price), `pnl_pct`, `gross_pct`, `dry_ret` / `dry_ret_gross` / `dry_back_wei` (the dry replay of
+  the same pool), the hashes, the gas used per call, `buy_off` / `sell_off`. The pool's dry line is still written (`live: false`,
+  `role: live`); our own buy's and sell's logs are kept out of its copy (by hash), so the dry price stays the research's.
+- The probe and the gate: `BNB_PROBE_EVERY` (2): the 1st, 3rd, 5th... launch of a traded size is a live slot, the others `control`
+  (every dry `trade_done` says its `role`: live, control, held, refused, unchecked, unsent); `BNB_MAX_OPEN` (2, armed slots counted);
+  `BNB_DAILY_STOP_USD` (10: realized losses of the UTC day, gas included; an alarm once, buys again after 00:00 UTC). Halts
+  (`/var/log/flip/HALTED.bnb`, its own file; the Robinhood halt files and screens untouched): a dump (a sell or Burn of >= 50% of the WBNB)
+  before +997 on a traded pool, no crowd buy in +60..+260 on a traded pool, any reverted buy, approve or sell, the median of the first 10
+  live trades negative (kept in the positions file across restarts). A halt drops the slots not yet bought and still sells what is open;
+  a halt file at the start holds.
+- Restarts: `/var/log/flip/bnb_positions.json` (its own file, written whole by the worker: open positions, the pools they need, the
+  traded pools still watched, the gate's first 10, the day's $): at the start every position that bought (or may have) is taken back
+  with its pool (its dry line flagged, `gaps`); one past L+260, or whose pool lost >= 50% of its WBNB while stopped (a halt when before
+  +997), is sold at once.
+- `deploy/bnb_results.py`, live only (the dry screen unchanged): `BNB LIVE PROBE` in the header; LIVE (the receipts, after gas) vs the
+  same pools at the dry price vs CONTROL (count, mean, median, up, $); the slots not traded and why; the pre-buy checks and refusals; the
+  halt and how to resume; the open positions, the day against its stop, the gate's live count; the wallet's balance by `eth_getBalance`
+  (`BNB_WALLET`; the key file is never opened); a revert counted in the gate.
+
+The pre-buy check (at the launch, ~50 blocks before the buy): `contracts/BnbRoundTrip.sol` (compiled by `contracts/compile_bnb.py` into
+`contracts/BnbRoundTrip.json`, 1,511 bytes, never deployed) is placed by `eth_call` state override (code and a balance) at
+`0x...b0b0b0b0` and called from the wallet: it buys the stake through the router, approves, sells it all back, and returns each leg's
+result and gas. The pool is refused when a leg fails, the sale returns under `BNB_CHECK_MIN` (90%) of the stake, or a leg's gas (the
+harness's plus what a transaction of its own adds: buy +0, approve +23k, sell +40k) is over its limit; a failed `eth_call` refuses the
+pool. At the start a USDT round trip is the self-test; if it fails, live is off for the run (the slots `held`, the dry run goes on).
+publicnode takes state overrides: the check passed on the 7 pools of the line it was run on, with 0.9950 of the stake back on the two
+not yet drained (the two 25 bps fees exactly: no token cut) and 0.9999-1.0000 on the drained ones (the stake larger than what was left
+in them), and 136,550 / 24,932 / 70,714 harness gas on one token template, 144,252-144,302 / 26,525 / 78,473-78,523 on the other.
+
+Gas, measured (`eth_simulateV1` of the wallet's three top-level calls from a fresh address with a balance override, on 7 pools of the
+line, the test fixture's among them, Oct 12 ~12:10-12:20 UTC): buy 131,050 and 138,740-138,802; approve 46,409 and 48,002; sell
+106,761-106,800 and 113,748-113,758; a round trip 284k-301k (the research's 370k was its estimate). `eth_estimateGas` of the buy with a
+balance override: 156,808. Limits: `BNB_GAS_BUY` 200,000, `BNB_GAS_APPROVE` 80,000, `BNB_GAS_SELL` 180,000 (44%, 67%, 58% over the most
+seen; unused gas is not paid). Gas price: `eth_gasPrice` kept between `BNB_MIN_GWEI` 0.1 and `BNB_MAX_GWEI` 1 (an alarm when the network
+asks more than the cap). The network's minimum is 0.05 gwei now: the lowest price in each of 20 blocks (127,208,715-127,208,734) was 0.05
+gwei, 620 of their 1,598 priced transactions paid exactly 0.05, and `eth_gasPrice` is 0.05 on publicnode, bsc-dataseed.bnbchain.org and
+bscrpc.pancakeswap.finance (rpc-bsc.48.club answers 1.0); the launcher and the crowd pay 0.051. At 0.1 gwei a round trip costs about
+0.00003 BNB ($0.02, 0.45% of $5) and orders our transactions ahead of the crowd's in a block.
+
+The endpoint: public. Sends go to `BNB_SEND_URL` (default `BNB_RPC_URL`, publicnode), then to `BNB_SEND_ALT_URL`
+(https://bsc-dataseed.bnbchain.org) only when the first does not answer definitely (the same signed transaction: one hash). Why not a
+private-transaction endpoint, in numbers: a sandwich pushes our price by at most the slippage bound (5%) and pays the pool's fee twice on
+its own size; it nets at most 0.05 x (our BNB - 0.0025 x the pool's WBNB). The $5 buy is 0.0067 BNB: at most $0.16 in a 1-BNB pool,
+$0.02 in a 2.5-BNB pool, nothing in 10 and 25 (negative); the sale at L+260 (a 1-BNB pool holds ~1.86 BNB, our tokens ~0.02 BNB) at
+most $0.65 in a 1-BNB pool, nothing in the others. No one trades these pools at our entry (4 of 290 pools had any swap in +50..+62; 16
+of 1,725 a buyer by +3; strangers bought 0.15 BNB in the holds). A private RPC would trade that bounded loss for inclusion only in the
+blocks its builders win, its own pricing (48 Club's answers 1 gwei), and a nonce the public RPC cannot see after an error.
+`BNB_SEND_URL` can point at one without a code change (`BNB_SLIP` 0.02 would cut the bound to 2%).
+
+Tests: `tests/test_bnb_engine.py` 34 (the 20 dry ones unchanged, 14 live, with a stubbed chain that decodes every signed transaction:
+rlp, the sender recovered, chain 56, the calldata by `eth_abi`), `tests/data/bnb_receipts.json` (two real receipts of the router's
+`b6f9de95` and `791ac947` calls by other wallets, blocks 127210196/127210200, for the settlement parser); `tests/test_engine.py` 71
+(the Robinhood engine untouched: `src/flip_engine.py`, `tests/test_engine.py` and its deploy files not edited). Mutation checks, each on a
+copy of the tree: the buy's minOut without the slippage (fails the round-trip test), the crowd gate that never trips (fails the gate
+test), no nonce re-read after a nonce error (fails the nonce test), our own swaps not kept out of the dry copy (fails the dry test).
+
+Open:
+
+- `eth_sendRawTransaction` was never called against a chain endpoint; whether publicnode takes it shows at the first live buy
+  (`live_send`: `reply`, `via`); the dataseed is tried when it does not answer.
+- The pre-buy check runs once, at the launch; nothing re-checks the token before the sale (the dump and revert gates cover what follows).
+- The live buy goes out when the reader (2 blocks behind the head) reaches L+50, so it lands about L+53 while the dry price is at the
+  start of L+50; the screen's "live gross minus its dry price's gross" line measures the difference.
+- The key: no withdraw command (import the key into a wallet app); the positions file holds signed transactions (public once sent), never
+  the key.
