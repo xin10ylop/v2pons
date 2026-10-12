@@ -29,9 +29,27 @@ grp("any non-bot outside buyer before the crowd", [p for p in G if any(not o["w"
 # scenarios for one $5 trade (stake STAKE/ETH_USD ETH), from the measured groups
 print("\nscenarios per $5 trade:")
 allr = [p["ret"] for p in G if p["ret"] is not None]
-nocrowd = [p["ret"] for p in G if p["ret"] is not None and (p["trig"] is None or p["trig"] > 60)]
+nocrowd = [p["ret"] for p in G if p["ret"] is not None and (p["trig"] is None or p["trig"] > 80)]
 m_all = sum(allr) / len(allr); m_nc = sum(nocrowd) / max(1, len(nocrowd))
 print(f"  no reaction (all pools, the dry-run's situation): {m_all*100:+.2f}% -> ${m_all*STAKE-GAS:+.3f}")
-print(f"  'the crowd never comes while we hold' (every trade sells at + 80 into no wave; measured on pools with no trigger by + 60): {m_nc*100:+.3f}% -> ${m_nc*STAKE-GAS:+.3f}")
+print(f"  'the crowd never comes while we hold' (every trade sells at + 80 into no wave; measured on pools with no trigger by + 80): {m_nc*100:+.3f}% -> ${m_nc*STAKE-GAS:+.3f}")
 for lab, k, n in (("pulled inside the hold, all pools", sum(1 for p in G if p["pulled_hold"]), len(G)),):
     print(f"  {lab}: {k}/{n}; exact one-sided 95% upper {cp_upper(k, n):.2%} -> expected cost at that rate ${cp_upper(k, n)*STAKE:.3f} a trade")
+# the reaction at the cap: in the pools with no crowd trigger by + 60 (our sell is the cap's, at + 80), the pull's offset when an outside
+# holder of our size sits in the pool from + 1..+ 10 (as we would) against pools with no outside holder at all; what a sell landing m
+# blocks after + 80 would lose
+print("\nthe cap's margin: pools with no trigger by + 60 (our sell = the cap's, lands + 80 when on time)")
+cap = [p for p in G if (p["trig"] is None or p["trig"] > 60) and (p["end"] >= 120 or p["pull"] is not None)]
+def hold80(p, f): return [o for o in p["outs"] if f(o) and o["first_off"] <= 78 and (o["exit_off"] is None or o["exit_off"] > 80)]
+share_cap = len([p for p in G if p["trig"] is None or p["trig"] > 60]) / len(G)
+for lab, f in (("non-bot holder >= 0.001 ETH in since +1..+10 (our analog)", lambda o: not o["w"].startswith(BOT1) and o["first_off"] <= 10 and o["eth_pre"] >= 0.001),
+               ("non-bot holder in since +1..+10", lambda o: not o["w"].startswith(BOT1) and o["first_off"] <= 10),
+               ("non-bot holder >= 0.001 ETH (any entry by +78)", lambda o: not o["w"].startswith(BOT1) and o["eth_pre"] >= 0.001),
+               ("any outside holder", lambda o: True)):
+    a = [p for p in cap if hold80(p, f)]; b = [p for p in cap if not hold80(p, lambda o: True)]
+    row = []
+    for m in (0, 2, 3, 5, 10, 20):
+        ka = sum(1 for p in a if p["pull"] is not None and p["pull"] <= 80 + m); kb = sum(1 for p in b if p["pull"] is not None and p["pull"] <= 80 + m)
+        row.append(f"+{80+m}: {ka}/{len(a)} ({ka/max(1,len(a)):.1%}, up {cp_upper(ka, len(a)):.1%}) vs {kb}/{len(b)}; ${share_cap * ka / max(1, len(a)) * STAKE:.3f} (up ${share_cap * cp_upper(ka, len(a)) * STAKE:.3f})")
+    print(f"  {lab}:\n     " + "\n     ".join(row))
+print(f"  (share of trades whose sell is the cap's: {share_cap:.0%}; $ = that share x the pull rate x $5, a trade's expected loss to the reaction for a sell landing at that block)")

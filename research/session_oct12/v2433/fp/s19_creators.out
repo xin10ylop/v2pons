@@ -1,0 +1,27 @@
+ETH-pair tokens launched 1975 with a mint in the window before the launch 1915 distinct first-mint recipients 545
+first-mint recipients with the bot router's code hash: ['0x1cbaf24d53fe930fce8eff149fa797d2611da149']
+  BOT ROUTER                                 968  {'VB 3.0': 697, 'VB 5.0': 180, 'VB 2.4333': 91}
+  EOA                                        384  {'other 0x8366a39c 0x6276cbbe 196B fee 500 ts ': 143, 'C-1': 135, 'other 0x58daec31 0xf7020405 196B fee 10000 t': 12, 'other 0x58daec31 0xac9650d8 2020B fee 3000 t': 6}
+  contract 0x615bece8 d59acb24                69  {'other 0xf90d0624 0xbc9d39fd 900B fee 0 ts 20': 9, 'other 0x2c588f34 0xbc9d39fd 900B fee 0 ts 20': 4, 'other 0x77660488 0xbc9d39fd 996B fee 0 ts 20': 4, 'other 0x465bb17c 0xbc9d39fd 964B fee 0 ts 20': 4}
+  contract 0x3194e326 42544ef5                56  {'operator A': 56}
+  contract 0xeebb2582 ea85919a                36  {'other 0xeebb2582 0xa25a9a3d 868B fee 10000 t': 26, 'other 0xeebb2582 0xa25a9a3d 836B fee 10000 t': 7, 'other 0xeebb2582 0xa25a9a3d 900B fee 10000 t': 2, 'other 0xeebb2582 0xa25a9a3d 804B fee 10000 t': 1}
+  contract 0x0000ffff 4a586d92                30  {'single-sided 2500/25': 30}
+  contract 0xa0816584 eed24cb9                20  {'other 0xa0816584 0x7fde822e 804B fee 10000 t': 14, 'other 0xa0816584 0x7fde822e 772B fee 10000 t': 3, 'other 0xa0816584 0x7fde822e 836B fee 10000 t': 2, 'other 0xa0816584 0x7fde822e 740B fee 10000 t': 1}
+  contract 0x182072b9 0ccd6f12                20  {'other 0x182072b9 0x7fde822e 804B fee 10000 t': 11, 'other 0x182072b9 0x7fde822e 772B fee 10000 t': 5, 'other 0x182072b9 0x7fde822e 836B fee 10000 t': 3, 'other 0x182072b9 0x7fde822e 740B fee 10000 t': 1}
+  contract 0x3876e3c5 832e58b0                20  {'other 0x3876e3c5 0x7fde822e 804B fee 10000 t': 13, 'other 0x3876e3c5 0x7fde822e 772B fee 10000 t': 6, 'other 0x3876e3c5 0x7fde822e 836B fee 10000 t': 1}
+  contract 0x3e78e9e7 448fe6b8                20  {'other 0x3e78e9e7 0x7fde822e 772B fee 10000 t': 11, 'other 0x3e78e9e7 0x7fde822e 804B fee 10000 t': 7, 'other 0x3e78e9e7 0x7fde822e 740B fee 10000 t': 1, 'other 0x3e78e9e7 0x7fde822e 900B fee 10000 t': 1}
+  contract 0xd298b66b e84a6899                20  {'other 0xd298b66b 0x7fde822e 772B fee 10000 t': 13, 'other 0xd298b66b 0x7fde822e 804B fee 10000 t': 7}
+  contract 0x2d0ee806 f662be92                20  {'other 0x2d0ee806 0x7fde822e 804B fee 10000 t': 11, 'other 0x2d0ee806 0x7fde822e 772B fee 10000 t': 5, 'other 0x2d0ee806 0x7fde822e 740B fee 10000 t': 3, 'other 0x2d0ee806 0x7fde822e 836B fee 10000 t': 1}
+  contract 0x96956a00 646a20d8                20  {'other 0x96956a00 0x7fde822e 804B fee 10000 t': 12, 'other 0x96956a00 0x7fde822e 772B fee 10000 t': 6, 'other 0x96956a00 0x7fde822e 868B fee 10000 t': 1, 'other 0x96956a00 0x7fde822e 740B fee 10000 t': 1}
+  contract 0x8a9959fb 099f2ab8                14  {'other 0x8a9959fb 0x7fde822e 772B fee 10000 t': 5, 'other 0x8a9959fb 0x7fde822e 836B fee 10000 t': 4, 'other 0x8a9959fb 0x7fde822e 804B fee 10000 t': 2, 'other 0x8a9959fb 0x7fde822e 740B fee 10000 t': 1}
+  contract 0xeb89d7d3 5a25e605                 9  {'other 0xeb89d7d3 0x7fde822e 804B fee 10000 t': 5, 'other 0xeb89d7d3 0x7fde822e 772B fee 10000 t': 3, 'other 0xeb89d7d3 0x7fde822e 740B fee 10000 t': 1}
+  contract 0x815542e8 670175c9                 8  {'other 0x815542e8 0x7c33638d 769B fee 30000 t': 7, 'other 0x815542e8 0x7c33638d 705B fee 10000 t': 1}
+  contract 0x00004c4c 67200731                 7  {'other 0x05d55239 0xce5494bb 36B fee 10000 ts': 7}
+  contract 0x16cf6788 7939712c                 6  {'other 0x16cf6788 0x4101659e 388B fee 0 ts 20': 5, 'other 0x16cf6788 0x4101659e 420B fee 0 ts 20': 1}
+  contract 0xeb7c0347 86b37100                 5  {'other 0x1eef016f 0x60956835 2980B fee 838860': 3, 'other 0xf45588e8 0x6e5c0c8a 3140B fee 838860': 1, 'other 0x58daec31 0xac9650d8 2020B fee 929200': 1}
+  contract 0x902104f3 62a5a5ec                 4  {'other 0x902104f3 0xdd949047 708B fee 0 ts 10': 3, 'other 0x902104f3 0xdd949047 484B fee 0 ts 10': 1}
+  contract 0x89d6b8ba 39dc453b                 2  {'other 0x89d6b8ba 0x7fde822e 804B fee 10000 t': 2}
+  contract 0xc8ad997f 1e484ba7                 2  {'other 0xc8ad997f 0x6531c1ef 516B fee 100000 ': 1, 'other 0xc8ad997f 0x6531c1ef 644B fee 100000 ': 1}
+  contract 0x7891ea88 9c2b9390                 2  {'other 0x7891ea88 0xff734f50 1156B fee 3000 t': 2}
+  contract 0x6ec95a3c 0a365af0                 2  {'other 0x6ec95a3c 0xa1e7b638 14433B fee 10000': 1, 'other 0x6ec95a3c 0xa1e7b638 14465B fee 10000': 1}
+  contract 0x65e722fd acd4a087                 2  {'other 0x65e722fd 0x6531c1ef 548B fee 60000 t': 1, 'other 0x65e722fd 0x6531c1ef 676B fee 60000 t': 1}

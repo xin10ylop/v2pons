@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/user/v2pons/research/session_oct12/crowd/reaction/r18_bot_funding.py", line 13, in <module>
+    tin = q({"address": WETH, "topics": [T_TR, None, pad(BOTC)]})
+  File "/home/user/v2pons/research/session_oct12/crowd/reaction/r18_bot_funding.py", line 11, in q
+    time.sleep(1.5); return rpc.call("eth_getLogs", [dict(flt, fromBlock=hex(START), toBlock=hex(head))])
+                            ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/v2pons/research/session_oct12/crowd/reaction/rpc.py", line 29, in call
+    if "error" in d: raise RuntimeError(json.dumps(d["error"])[:300])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: {"code": -32602, "message": "query spans 12743913 blocks (74000000 to 86743912), but only 10000000 are allowed for this request; narrow the block range"}

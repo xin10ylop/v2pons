@@ -2,7 +2,7 @@
 call shape, and the first Burn (the pull). Classes: 'crowd' (a crowd-shaped call (3593564c/484, a0193551/452, 49f74a5d/452) not sent to
 the Universal Router, or any tx from an EOA / to a contract seen in such a call), 'lw' (the pool's launch wallet), 'other' (everyone else); a swap whose tx was not fetched (a buy later than the crowd's first + 30) is 'crowd_r' when its
 recipient is a crowd EOA, or (a sell) its sender is the UR and its recipient a crowd contract, else 'unknown'.
--> r04_pools_cache.jsonl (one pool per line) and r04_build.out (counts)."""
+-> r04_pools_cache.jsonl (one pool per line; its raw events only to + 120, all the replay needs) and r04_build.out (counts)."""
 from common import *
 import collections
 from wcommon import compact
@@ -42,7 +42,8 @@ for x in L:
                    "to": t["to"] if t else None, "sel": t["sel"] if t else None, "len": t["len"] if t else None, "val": t["value"] if t else None, "tx": c[12],
                    "snd": c[5], "rcpt": c[6]})
     bt = T.get(fb[-1]) if fb else None
-    rec = dict(x, ev=ev, win_to=e["to"], sw=sw, pull_off=(fb[1] - x["lb"]) if fb else None, pull_bn=fb[1] if fb else None, pull_li=fb[3] if fb else None,
-               pull_from=bt["from"] if bt else None, pull_to=bt["to"] if bt else None, pull_liq=fb[8] if fb else None, head=M["head"])
+    # raw events kept to + 120 only (the replay sells by + 80); the swaps (sw) run to the pull
+    rec = dict(x, ev=[c for c in ev if c[1] - x["lb"] <= 120], win_to=e["to"], sw=sw, pull_off=(fb[1] - x["lb"]) if fb else None, pull_bn=fb[1] if fb else None,
+               pull_li=fb[3] if fb else None, pull_from=bt["from"] if bt else None, pull_to=bt["to"] if bt else None, pull_liq=fb[8] if fb else None, head=M["head"])
     out.write(json.dumps(rec) + "\n")
 print("swap classes", dict(cnt), "tx missing", miss)

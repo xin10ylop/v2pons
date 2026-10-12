@@ -1,0 +1,15 @@
+head 86777536 10-12 15:25:36; base fee 0.0205 gwei; ETH $2,523.53; relay runtime 4672 bytes (owner 0xa3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3a3)
+of the last 40 WETH-token0 launches: live (pool holds > 1e6 tokens) 2, pulled 29
+  0xde9853ccd39c86904839af26bd681b76ccae89c6 (1764 B, launch 10-12 12:57:50) 0.002 ETH: buy 44,973 tokens, EVM gas 213,003 (tx ~235,187); sell ok 0.001999600 ETH, EVM gas 129,812 (tx ~151,688); round trip -0.0200% (two fees -0.0200%); relay ETH after buy 0.018000, after sell 0.020000
+  0xde9853ccd39c86904839af26bd681b76ccae89c6 (1764 B, launch 10-12 12:57:50) 0.004 ETH: buy 89,932 tokens, EVM gas 212,973 (tx ~235,157); sell ok 0.003999200 ETH, EVM gas 129,812 (tx ~151,688); round trip -0.0200% (two fees -0.0200%); relay ETH after buy 0.016000, after sell 0.019999
+  0x4cf25a1e92841a9cdcb36c4f6c5632ae613c5434 (1764 B, launch 10-12 13:44:12) 0.002 ETH: buy 23,067 tokens, EVM gas 212,031 (tx ~234,215); sell ok 0.001999600 ETH, EVM gas 129,894 (tx ~151,770); round trip -0.0200% (two fees -0.0200%); relay ETH after buy 0.018000, after sell 0.020000
+  0x4cf25a1e92841a9cdcb36c4f6c5632ae613c5434 (1764 B, launch 10-12 13:44:12) 0.004 ETH: buy 46,129 tokens, EVM gas 213,083 (tx ~235,267); sell ok 0.003999200 ETH, EVM gas 129,894 (tx ~151,770); round trip -0.0200% (two fees -0.0200%); relay ETH after buy 0.016000, after sell 0.019999
+
+failure paths (EVM gas inside the call; the transaction adds 21,000 + calldata):
+  buy, no pool at the CREATE2 address (a launch that reverted): fee 500 tier: reverted NoPool; EVM gas 8,867; tx ~30,955 gas = 6.34e-07 ETH ($0.0016) at the base fee
+  the presigned sell after it: nothing to sell: reverted NothingToSell; EVM gas 8,917; tx ~30,793 gas = 6.31e-07 ETH ($0.0016) at the base fee
+  buy past its deadline (block time > fire time + 3 s): reverted TooLate; EVM gas 3,598; tx ~25,674 gas = 5.26e-07 ETH ($0.0013) at the base fee
+  buy whose minOut is above the fill (a buy ahead of ours > BUY_SLIP): reverted TooLittleOut; EVM gas 213,104; tx ~235,312 gas = 4.82e-06 ETH ($0.0122) at the base fee
+  sell of 1e23 tokens on a pulled pool 0x5b14790686 under the 500,000 tx gas limit: reverted (no data: out of gas or a plain revert); EVM gas 475,579; tx ~497,455 gas = 1.02e-05 ETH ($0.0257) at the base fee
+  buy on that pulled pool under the 500,000 limit: reverted (no data: out of gas or a plain revert); EVM gas 476,306; tx ~498,370 gas = 1.02e-05 ETH ($0.0258) at the base fee
+{'posts': 13, 'items': 51, 'r429': 1}

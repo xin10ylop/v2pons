@@ -1,0 +1,12 @@
+replay rows 279 (WETH token0 launches 10-10 12:01:26 .. 10-12 13:44:12); ETH $2,523.53
+(1) our buy landing + 1, 0.002 ETH: pools with buys ahead 0/279; ETH ahead p50/p90/max 0.00000/0.00000/0.00000; fill / launch quote min 1.0000 p10 1.0000; under the 0.97 minOut (reverts) 0; who ahead []
+(1) our buy landing + 1, 0.004 ETH: pools with buys ahead 0/279; ETH ahead p50/p90/max 0.00000/0.00000/0.00000; fill / launch quote min 1.0000 p10 1.0000; under the 0.97 minOut (reverts) 0; who ahead []
+(1) our buy landing + 2, 0.002 ETH: pools with buys ahead 139/279; ETH ahead p50/p90/max 0.00000/0.00165/0.00223; fill / launch quote min 0.9988 p10 0.9992; under the 0.97 minOut (reverts) 0; who ahead [('0x570759db', 139)]
+(1) our buy landing + 2, 0.004 ETH: pools with buys ahead 139/279; ETH ahead p50/p90/max 0.00000/0.00165/0.00223; fill / launch quote min 0.9988 p10 0.9992; under the 0.97 minOut (reverts) 0; who ahead [('0x570759db', 139)]
+    buys in block + 2 itself (a race with ours): 5 in 5 pools; ETH max 0.00227; who [('0x570759db', 5)]
+(2) the crowd's first real buy at + 0..+ 2 (ahead of or racing our + 2 buy): 0; at + 3..+ 5: 16; the engine's first trigger (any >= 0.005 ETH) at <= + 2: 0; median 92
+(4) 0.002 ETH ($5.05): trades paying >= +2% net 89/279 (32%); longest run under +2% 8; halts (8 in a row, restarted each time) 9 in 279 launches; from a random start the halt comes after p25/50/75 12/26/56 trades (6.4 h median); never in 16 start points
+    V3 day ($, cumulative, UTC days): end {'10-10': 9.07, '10-11': 34.72, '10-12': 63.27}; lowest point {'10-10': 0.0, '10-11': -0.01, '10-12': 0.0}
+(4) 0.004 ETH ($10.09): trades paying >= +2% net 90/279 (32%); longest run under +2% 8; halts (8 in a row, restarted each time) 9 in 279 launches; from a random start the halt comes after p25/50/75 12/27/58 trades (6.4 h median); never in 16 start points
+    V3 day ($, cumulative, UTC days): end {'10-10': 19.63, '10-11': 72.53, '10-12': 127.91}; lowest point {'10-10': 0.0, '10-11': -0.01, '10-12': 0.0}
+(5) blocks from the launch to our sell landing p50 80 (mean 75.1); at 9.7 blocks/s that is 7.7 s + ~1 s for the receipts (wait_receipt polls every 40 ms) = ~9 s a trade; 135 launches a day -> the slot held 1.36% of the day; the V3 pull check after it (PULL_WATCH_S 3 s + getLogs) holds only the next V3 fire
