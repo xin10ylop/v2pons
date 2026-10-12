@@ -444,6 +444,50 @@ A restart mid-trade is safe (section 5). Off again: `sudo sed -i '/^SELL_ALT_URL
 flip-engine`. Which path wins, over the day:
 `sudo python3 ~/v2pons/deploy/englog.py 24 | grep '"ev":"sell_sent"' | grep -o '"via":[a-z"]*' | sort | uniq -c`, and `accept_ms` on each line.
 
+## 4i. The BNB dry run (Oct 12, HANDOFF 16.21)
+
+A second, separate program: `src/bnb_engine.py`, the dry run of the one BNB Chain line the research kept
+(`research/session_oct12/bnb/REPORT_BNB.md`: the PancakeSwap V2 launcher 0xc9b7cc61; $15 at L+50, sold at L+260, the 15-BNB pools
+skipped). It reads the chain through BNB's public endpoints and logs what the rule would have done. It has no wallet, no key and no code
+that signs or sends. Its own service (`flip-bnb`), settings (`/etc/flip/bnb.env`) and log (`/var/log/flip/bnb.jsonl`); flip-engine and its
+files are not touched, and it runs below flip-engine's CPU priority (Nice 10 against -5, at most half a core and 400 MB).
+
+Install (once). The code first; the first line prints the two paths and `12` (the tests), else stop:
+
+    cd ~/v2pons && git pull -q --ff-only && ls src/bnb_engine.py deploy/flip-bnb.service && /opt/flip-venv/bin/python3 tests/test_bnb_engine.py | grep -c '^ok'
+    sudo test -f /etc/flip/bnb.env || printf '%s\n' '# the BNB dry run (src/bnb_engine.py); no key belongs in this file' BNB_LOG_PATH=/var/log/flip/bnb.jsonl BNB_WS_URL=wss://bsc-rpc.publicnode.com BNB_RPC_URL=https://bsc-rpc.publicnode.com BNB_STAKE_USD=15 BNB_BUY_AT=50 BNB_SELL_AT=260 BNB_SKIP_POOL_BNB=15 BNB_USD=750 | sudo tee /etc/flip/bnb.env >/dev/null; sudo chmod 600 /etc/flip/bnb.env
+    echo '/var/log/flip/bnb.jsonl { daily rotate 30 missingok notifempty compress delaycompress copytruncate }' | sudo tee /etc/logrotate.d/flip-bnb >/dev/null
+    sudo cp ~/v2pons/deploy/flip-bnb.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now flip-bnb
+    sleep 90 && systemctl is-active flip-bnb && sudo python3 ~/v2pons/deploy/bnb_results.py | head -6
+
+The last line prints `active`, then the screen's head: `service RUNNING`, the rule, and a `reader:` line with a block number, `2 blocks
+behind the head` or so and `heads by ws` (`poll`: publicnode's websocket refused or sent no heads, and the reader polls `eth_blockNumber`
+instead: it still works). The unit's paths are `/home/ubuntu/v2pons`; if the clone is elsewhere, edit `ExecStart` and `WorkingDirectory` in
+`/etc/systemd/system/flip-bnb.service` before the `enable`.
+
+The settings (`/etc/flip/bnb.env`; `sudo systemctl restart flip-bnb` after a change): `BNB_STAKE_USD` (15), `BNB_BUY_AT` (50: the buy at the
+start of block L+50, priced on the reserves after L+49), `BNB_SELL_AT` (260), `BNB_SKIP_POOL_BNB` (15; a comma list), `BNB_USD` (750: used
+only until the USDT/WBNB pair is read, at the start and every 133 blocks), `BNB_WS_URL` / `BNB_RPC_URL` (publicnode; a provider's URL with
+its key in it, e.g. nodereal, may go here: only the host is ever logged and the file is mode 600). Others, with their defaults:
+`BNB_POOL_SIZES` (1,2.5,10,15,25: a size outside it is an alarm and not traded), `BNB_GAS_UNITS` (370000) and `BNB_GAS_GWEI` (0.1) for the
+net result, `BNB_DUMP_SHARE` (0.5), `BNB_WATCH_TO` (7200 blocks a pool is watched for its dump), `BNB_LAG_BLOCKS` (2),
+`BNB_LAUNCHER`, `BNB_SELECTOR`, `BNB_CALLDATA_LEN` (196).
+
+Every day (the last 24 hours; a number for more: `bnb_results.py 72`):
+
+    sudo python3 ~/v2pons/deploy/bnb_results.py
+
+It shows the launches per pool size (about 177 a day, half of them 15 BNB and skipped), the would-have-traded count and the dry results
+per size and in all (mean, median, share up, pulled before the sell, the crowd's buys), the creator's dumps per size, the gate, the last 8
+launches with their decision, and the alarms. What the research expects: mean +23.6%, median +11.1% without the 15-BNB pools (1 BNB about
++100%, 10 about +35%, 25 and 2.5 about +8%); dumps from +997 (1 BNB), +2,028 (10), ~+4,000 (2.5 and 15), ~+6,800 (25). The gate's lines
+(`a dump before +997`, `no crowd buy in +60..+260`, the median of the first 10) would each halt the line once it trades: any of them
+tripped is a reason to stop and look, not to go live. The raw lines: `sudo grep '"trade_done"' /var/log/flip/bnb.jsonl | tail -3`.
+
+A restart (`sudo systemctl restart flip-bnb`, e.g. after a `git pull`) loses the pools in flight: those open then never get a `trade_done`.
+Stop it: `sudo systemctl disable --now flip-bnb` (the log stays). Remove it: that, then `sudo rm /etc/systemd/system/flip-bnb.service
+/etc/logrotate.d/flip-bnb && sudo systemctl daemon-reload`.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the
