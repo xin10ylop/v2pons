@@ -4,10 +4,10 @@ import vc, json, collections
 pools = json.load(open(vc.p("v01_launches.json"))); head = json.load(open(vc.p("v02_meta.json")))["head"]
 mlp = json.load(open(vc.p("v02_ml.json")))["ml"]
 sw = {}
-for l in open(vc.p("v02_swaps_cache.jsonl")):
+for l in vc.lines("v02_swaps_cache.jsonl"):
     r = json.loads(l); sw[r["id"]] = r
 botin = collections.defaultdict(set); mint = {}
-for l in open(vc.p("v02_botin_cache.jsonl")):
+for l in vc.lines("v02_botin_cache.jsonl"):
     for x in json.loads(l)["logs"]:
         tok = x["address"].lower(); frm = vc.topaddr(x["topics"][1])
         if frm == vc.Z: mint[tok] = int(x["blockNumber"], 16)

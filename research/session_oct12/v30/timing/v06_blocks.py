@@ -21,8 +21,7 @@ def addrs(inp):
     return sorted(set(out))[:40]
 for h in sorted(blocks):
     fn = vc.p("v06_blk_%s_cache.jsonl" % h); have = set()
-    if os.path.exists(fn):
-        for l in open(fn): have.add(json.loads(l)["b"])
+    for l in vc.lines("v06_blk_%s_cache.jsonl" % h): have.add(json.loads(l)["b"])
     need = sorted(blocks[h] - have)
     print(h, "blocks", len(blocks[h]), "to fetch", len(need), flush=True)
     for i in range(0, len(need), 40):

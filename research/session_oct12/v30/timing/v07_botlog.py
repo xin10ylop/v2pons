@@ -3,7 +3,7 @@ as a lead to T; the background rate; the first-fire rule 'arm at L+a, fire at th
 import vc, json, collections, bisect
 P = json.load(open(vc.p("v03_pools.json"))); P.sort(key=lambda o: o["L"])
 ev = collections.defaultdict(set)  # block -> tokens bought by the bot
-for l in open(vc.p("v02_botin_cache.jsonl")):
+for l in vc.lines("v02_botin_cache.jsonl"):
     for x in json.loads(l)["logs"]:
         if vc.topaddr(x["topics"][1]) == vc.PM: ev[int(x["blockNumber"], 16)].add(x["address"].lower())
 blocks = sorted(ev)

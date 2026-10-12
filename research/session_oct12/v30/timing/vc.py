@@ -27,13 +27,31 @@ def p(n): return os.path.join(HERE, n)
 def ts(t): return time.strftime("%m-%d %H:%M:%S", time.gmtime(t))
 def hh(t): return time.strftime("%Hh", time.gmtime(t))
 def topaddr(t): return "0x" + t[-40:]
+import glob as _glob
+def parts(name):
+    """a cache file and its split parts (<base>_pNN_cache.jsonl), so no file exceeds 2 MB"""
+    base = p(name)[:-len("_cache.jsonl")]
+    return [f for f in [p(name)] if os.path.exists(f)] + sorted(_glob.glob(base + "_p[0-9][0-9]_cache.jsonl"))
+def lines(name):
+    for f in parts(name):
+        for l in open(f): yield l
+def split_big(limit=1900000):
+    """split every *_cache.jsonl over limit into <base>_pNN_cache.jsonl parts (line boundaries)"""
+    for f in sorted(_glob.glob(p("*_cache.jsonl"))):
+        if os.path.getsize(f) <= limit: continue
+        base = f[:-len("_cache.jsonl")]; k = len(_glob.glob(base + "_p[0-9][0-9]_cache.jsonl")); buf = []; size = 0
+        for l in open(f):
+            if size + len(l) > limit and buf:
+                open("%s_p%02d_cache.jsonl" % (base, k), "w").write("".join(buf)); k += 1; buf = []; size = 0
+            buf.append(l); size += len(l)
+        if buf: open("%s_p%02d_cache.jsonl" % (base, k), "w").write("".join(buf))
+        os.remove(f)
 def q(v, x):
     v = sorted(v); return v[min(len(v) - 1, int(x * len(v)))] if v else None
 def cached_logs(name, flt, a, b, step=20000):
     fn = p(name); done = {}
-    if os.path.exists(fn):
-        for l in open(fn):
-            r = json.loads(l); done[(r["a"], r["b"])] = r["logs"]
+    for l in lines(name):
+        r = json.loads(l); done[(r["a"], r["b"])] = r["logs"]
     out = []; x = a
     while x <= b:
         y = min(b, x + step - 1)
@@ -45,9 +63,8 @@ def cached_logs(name, flt, a, b, step=20000):
     return out
 def block_ts_map(name, blocks):
     fn = p(name); m = {}
-    if os.path.exists(fn):
-        for l in open(fn):
-            r = json.loads(l); m[r["b"]] = r["t"]
+    for l in lines(name):
+        r = json.loads(l); m[r["b"]] = r["t"]
     need = sorted(set(b for b in blocks if b not in m))
     for i in range(0, len(need), 20):
         ch = need[i:i + 20]
@@ -58,9 +75,8 @@ def block_ts_map(name, blocks):
     return m
 def txs(name, hashes):
     fn = p(name); m = {}
-    if os.path.exists(fn):
-        for l in open(fn):
-            r = json.loads(l); m[r["hash"]] = r
+    for l in lines(name):
+        r = json.loads(l); m[r["hash"]] = r
     need = sorted(set(h for h in hashes if h not in m))
     for i in range(0, len(need), 20):
         ch = need[i:i + 20]
@@ -75,9 +91,8 @@ def txs(name, hashes):
 def full_blocks(name, blocks):
     """full blocks with txs (input truncated to 202 chars + length), cached as {b, t, txs:[...]}"""
     fn = p(name); m = {}
-    if os.path.exists(fn):
-        for l in open(fn):
-            r = json.loads(l); m[r["b"]] = r
+    for l in lines(name):
+        r = json.loads(l); m[r["b"]] = r
     need = sorted(set(b for b in blocks if b not in m))
     for i in range(0, len(need), 10):
         ch = need[i:i + 10]

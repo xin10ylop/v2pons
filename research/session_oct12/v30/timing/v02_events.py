@@ -21,9 +21,8 @@ for l in ml:
 print("ML logs", len(ml), "pools with ML", len(mlp))
 # 2) Swaps per pool L..(first pull + 3) or head
 fn = vc.p("v02_swaps_cache.jsonl"); done = {}
-if os.path.exists(fn):
-    for l in open(fn):
-        r = json.loads(l); done[r["id"]] = r
+for l in vc.lines("v02_swaps_cache.jsonl"):
+    r = json.loads(l); done[r["id"]] = r
 for k, r in enumerate(pools):
     pulls = sorted(x["b"] for x in mlp[r["id"]] if x["dl"] < 0)
     to = min(head, pulls[0] + 3) if pulls else head

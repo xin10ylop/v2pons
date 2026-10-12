@@ -4,11 +4,11 @@ import vc, json, collections
 R = vc.R
 P = json.load(open(vc.p("v03_pools.json"))); head = json.load(open(vc.p("v02_meta.json")))["head"]; meta = json.load(open(vc.p("v01_meta.json")))
 botin = collections.defaultdict(list)
-for l in open(vc.p("v02_botin_cache.jsonl")):
+for l in vc.lines("v02_botin_cache.jsonl"):
     for x in json.loads(l)["logs"]:
         if vc.topaddr(x["topics"][1]) == vc.PM: botin[x["address"].lower()].append((int(x["blockNumber"], 16), int(x["logIndex"], 16), x["transactionHash"]))
 sw = {}
-for l in open(vc.p("v02_swaps_cache.jsonl")):
+for l in vc.lines("v02_swaps_cache.jsonl"):
     r = json.loads(l); sw[r["id"]] = r
 cand = []
 for o in P:

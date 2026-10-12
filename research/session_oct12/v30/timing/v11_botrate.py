@@ -3,7 +3,7 @@ the share of pools with such an event in another token at each offset from L and
 import vc, json, collections
 P = json.load(open(vc.p("v03_pools.json"))); P.sort(key=lambda o: o["L"])
 ev = collections.defaultdict(set)
-for l in open(vc.p("v02_botin_cache.jsonl")):
+for l in vc.lines("v02_botin_cache.jsonl"):
     for x in json.loads(l)["logs"]:
         if vc.topaddr(x["topics"][1]) == vc.PM: ev[int(x["blockNumber"], 16)].add(x["address"].lower())
 def prof(S, ref, rng):

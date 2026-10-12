@@ -75,10 +75,10 @@ for k, h in hit.items():
     rows.append((k, h[1:5], h[5], rate, best_d, enr))
 print("\nDISCOVERY: keys present in T-4..T-1 in >= 8%% of %d pools, by enrichment of the best lead over the background per-block rate" % len(disc))
 print("%-58s %-18s %6s %9s %5s %7s %7s" % ("key", "pools at d=1..4", "any1-4", "bg/blk", "bestd", "enrich", "inT<bot"))
-cand = sorted([r for r in rows if r[2] >= 0.08 * len(disc)], key=lambda r: -r[5])
+cand = sorted([r for r in rows if r[2] >= 0.08 * len(disc)], key=lambda r: (-r[5], r[0]))
 for k, hd, h5, rate, bd, enr in cand[:30]:
     print("%-58s %-18s %6d %9.4f %5d %7.2f %7d" % (k[:58], hd, h5, rate, bd, enr, tsame[k]))
-print("\nkeys with zero background and any hit in T-4..T-1:", [(k, h5) for k, hd, h5, rate, bd, enr in rows if rate == 0 and h5 > 0][:20])
+print("\nkeys with zero background and any hit in T-4..T-1:", [(k, h5) for k, hd, h5, rate, bd, enr in sorted(rows) if rate == 0 and h5 > 0][:20])
 import os
 cf = vc.p("v09_candidates.json")
 if os.path.exists(cf): top = json.load(open(cf))["keys"]; print("\ncandidates frozen from discovery:", top)
