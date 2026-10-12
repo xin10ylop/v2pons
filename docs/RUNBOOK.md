@@ -409,28 +409,34 @@ The settings (nothing changes while they are unset):
 
 - `SELL_ALT_URL` (empty = off): a second endpoint for the sell, an RPC that forwards transactions to the sequencer (the box's `RPC_URL`, or
   the public `https://rpc.mainnet.chain.robinhood.com`). The same signed sell goes there at the same time as to the sequencer, on its own warm
-  connection (one slot, the same keepalive, a 2 s socket timeout: `SELL_ALT_TIMEOUT_S`), each of the sell's 4 tries mirrored; the first reply
-  that says it is in (`ok`, or `already known`, `nonce too low` and the like: one signed transaction has one hash, a second copy is harmless)
-  ends both, and a hung path no longer holds the sell. `sell_sent` then carries `via` (`seq` or `alt`), `accept_ms`, `seq_tries`/`seq_reply`
-  and `alt_tries`/`alt_reply` (null: that path was still waiting); a reply after that is a `late_reply` line and changes nothing; the "not
-  accepted" alarm comes only when both paths failed. Its keepalive sends that endpoint one `eth_chainId` every 5 s when idle (about 17,000 a day).
+  connection (one slot, the same keepalive, a fixed 2 s socket timeout), each of the sell's 4 tries mirrored; the first reply that says it is
+  in (`ok`, or `already known`, `nonce too low` and the like: one signed transaction has one hash, a second copy is harmless) wins, and a hung
+  path no longer holds the sell. The other path then stops at its first definite reply, but goes on with its tries while all its replies were
+  lost (the winner's "in" may be only a forwarder's own). `sell_sent` then carries `via` (`seq` or `alt`), `accept_kind`, `accept_ms`,
+  `seq_tries`/`seq_posts`/`seq_reply` and `alt_tries`/`alt_posts`/`alt_reply` (tries: replies in hand; posts: posts made, one still waiting
+  included; reply null: that path was still waiting); a reply after that is a `late_reply` line and changes nothing; the "not accepted" alarm
+  comes only when both paths failed, or when neither got it in within the wait's cap (65 s; "a path still waiting"). Its keepalive sends
+  that endpoint one `eth_chainId` every 5 s when idle (about 17,000 a day).
 - `BUY_ALT` (0): 1 sends the buy on both paths too (one try each): in if either says so, refused only if both refuse, otherwise "no reply"
-  (the position kept, the sell on schedule). Leave it 0 until the sell's second path has run for a day.
+  (the position kept, the sell on schedule; one refusal beside a lost reply has its own alarm). Leave it 0 until the sell's second path has
+  run for a day.
 - `SEND_TIMEOUT_S` (4): the sequencer connections' socket timeout, as before.
 
-To point it at the RPC endpoint already in the env file (the value is copied, never printed: the URL may hold the provider's key; the old
-line is deleted first so that `set_kv` appends, since its `sed` replacement would garble a URL holding `&` or `|`):
+To point it at the RPC endpoint already in the env file (its last `RPC_URL` line, the one the engine reads; the value is copied, never
+printed: the URL may hold the provider's key; the old line is deleted first so that `set_kv` appends, since its `sed` replacement would garble
+a URL holding `&` or `|`, and the file is given a final newline first so the append is a line of its own):
 
     cd ~/v2pons && git pull -q --ff-only && grep -q '^SELL_ALT_URL' src/flip_engine.py && echo code
     set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
-    v=$(sudo grep -m1 '^RPC_URL=' /etc/flip/engine.env | cut -d= -f2-); [ -n "$v" ] && sudo sed -i '/^SELL_ALT_URL=/d' /etc/flip/engine.env && set_kv SELL_ALT_URL "$v" && echo set; unset v
+    v=$(sudo grep '^RPC_URL=' /etc/flip/engine.env | tail -n1 | cut -d= -f2-); [ -n "$v" ] && sudo sed -i '/^SELL_ALT_URL=/d' /etc/flip/engine.env && sudo sed -i -e '$a\' /etc/flip/engine.env && set_kv SELL_ALT_URL "$v" && echo set; unset v
     sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | python3 -c 'import sys, json; s = json.loads(sys.stdin.read()); print("sell_alt:", s.get("sell_alt"), "buy_alt:", s.get("buy_alt"), "send_timeout_s:", s.get("send_timeout_s"))'
 
 The first line prints `code` (else stop: the pull failed and the engine would not know the setting), the third `set`; without `set` the env
 file has no `RPC_URL` line: the box is then on the public RPC, and `set_kv SELL_ALT_URL https://rpc.mainnet.chain.robinhood.com` does it.
 The check must print the RPC's host after `sell_alt:` (the host only, never the path); `None` with the engine live means the URL was refused
-(an alarm in the log says so; the sequencer path runs as before). A restart mid-trade is safe (section 5). Off again: `sudo sed -i '/^SELL_ALT_URL=/d'
-/etc/flip/engine.env && sudo systemctl restart flip-engine`. Which path wins, over the day:
+(an alarm in the log says so: not https, no host, user:password@, or a space or control character; the sequencer path runs as before).
+A restart mid-trade is safe (section 5). Off again: `sudo sed -i '/^SELL_ALT_URL=/d' /etc/flip/engine.env && sudo systemctl restart
+flip-engine`. Which path wins, over the day:
 `sudo python3 ~/v2pons/deploy/englog.py 24 | grep '"ev":"sell_sent"' | grep -o '"via":[a-z"]*' | sort | uniq -c`, and `accept_ms` on each line.
 
 ## 5. Daily
