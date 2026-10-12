@@ -9,7 +9,7 @@
 The V3 relay (RELAY_V3 in the env file, deploy/relay_v3_deploy.py; status shows it when it is set):
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py deposit_v3 0.01     # ETH from the wallet into the V3 relay
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py withdraw_v3 [0.005] # V3 relay ETH back to the wallet (no amount = all)
-    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py sweep_v3 0xTOKEN [N] # a token (or WETH) in the V3 relay back to the wallet: all of it,
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py sweep_v3 0xTOKEN [N] # a token (or WETH: the word works) in the V3 relay back to the wallet: all,
                                                                                      # or N raw units (for a token whose transfers are capped)
 The _v3 commands first check RELAY_V3's code (its keccak against RELAY_V3_CODEHASH, written by relay_v3_deploy.py --write-env; without
 that line, byte for byte against the artifact's runtime for this wallet) and that its owner() is the wallet.
@@ -105,16 +105,16 @@ def v3_ops(cmd, acct, wallet, relay_v3, rpc, codehash=""):
         send(acct, relay_v3, 0, "0x2e1a7d4d" + word(amt), rpc)
     else:
         from eth_utils import is_address, is_checksum_address
-        usage = "usage: relay_ops.py sweep_v3 0xTOKEN [RAW_AMOUNT]   (a whole number of the token's smallest units, below 2**256; none = all)"
+        usage = "usage: relay_ops.py sweep_v3 0xTOKEN|WETH [RAW_AMOUNT]   (a whole number of the token's smallest units, below 2**256; none = all)"
         if len(sys.argv) < 3 or len(sys.argv) > 4:
             sys.exit(usage)
-        token = sys.argv[2]
+        token = WETH if sys.argv[2].lower() == "weth" else sys.argv[2]
         if not (token.startswith("0x") and is_address(token)) or (token[2:] not in (token[2:].lower(), token[2:].upper()) and not is_checksum_address(token)):
             sys.exit(f"{token} is not a 0x-prefixed address (a mixed-case one must pass its checksum)\n{usage}")
         if len(rpc("eth_getCode", [token, "latest"])) <= 2:
             sys.exit(f"{token} has no code on the chain: not a token")
         amt = sys.argv[3] if len(sys.argv) > 3 else "0"
-        if not (amt.isascii() and amt.isdigit()) or int(amt) >= 2 ** 256:
+        if not (amt.isascii() and amt.isdigit() and len(amt) <= 78 and int(amt) < 2 ** 256):
             sys.exit(f"{amt} is not a whole number of raw units below 2**256\n{usage}")
         send(acct, relay_v3, 0, "0x6ea056a9" + word(token.lower()) + word(int(amt)), rpc)
 

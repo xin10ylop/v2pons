@@ -11,7 +11,8 @@ relay_ops.py withdraw_v3, sweep_v3 WETH). Checks that the artifact was compiled 
 back, simulates one buy through the new relay on a live V3 pool (eth_call, the relay's ETH given by state override) against QuoterV2,
 and prints (or writes, with --write-env) the RELAY_V3= line and the RELAY_V3_CODEHASH= line (the keccak of the deployed runtime, which
 relay_ops.py's _v3 commands check the relay's code against). --write-env keeps the previous RELAY_V3 and RELAY_V3_CODEHASH lines as
-comments ("# previous ..."), and writes the file through a fresh temporary file (O_EXCL, O_NOFOLLOW, mode 600, fsynced) renamed over it.
+comments ("# previous ..."), and rewrites the file on bytes (every other line byte for byte) through a fresh temporary file (O_EXCL,
+O_NOFOLLOW, mode 600, fsynced, unlinked on any error) renamed over it. The two new lines are printed before the write.
 One transaction, the deployment; nothing else is sent."""
 import argparse, hashlib, json, os, subprocess, sys, time
 from eth_account import Account
@@ -101,28 +102,42 @@ def main():
     except Exception as ex:
         print(f"the simulated buy did not run ({str(ex)[:160]}); try deploy/relay_v3_sim.py later")
     new = [f"RELAY_V3={relay}", "RELAY_V3_CODEHASH=0x" + keccak(bytes.fromhex(code[2:])).hex()]
+    print("\nthe new relay's two env lines:\n" + "\n".join(new))                      # printed before any write, so a failed write loses nothing
     if a.write_env:
         write_env(new)
-        print("\n" + "\n".join(new) + f"\nwritten to {ENV}. Next: relay_ops.py deposit_v3 <eth>, then relay_ops.py status")
+        print(f"written to {ENV}. Next: relay_ops.py deposit_v3 <eth>, then relay_ops.py status")
     else:
-        print(f"\nadd to {ENV} (sudo nano, mode 600 kept), then relay_ops.py deposit_v3 <eth>:\n" + "\n".join(new))
+        print(f"add them to {ENV} (sudo nano, mode 600 kept), then relay_ops.py deposit_v3 <eth>")
 
 
 def write_env(new):
-    """the env file with the previous RELAY_V3 and RELAY_V3_CODEHASH lines kept as comments and the new ones appended, through a fresh
-    temporary file (a stale one unlinked; O_EXCL and O_NOFOLLOW, mode 600), flushed and fsynced, renamed over the file, then the
-    directory fsynced"""
-    keys = ("RELAY_V3=", "RELAY_V3_CODEHASH=")
-    lines = ["# previous " + l if l.startswith(keys) else l for l in open(ENV).read().splitlines()] + new
+    """the env file, on bytes (every other line kept byte for byte: CRLF, any other control or non-UTF-8 byte), with the lines that start
+    with RELAY_V3= or RELAY_V3_CODEHASH= turned into "# previous ..." comments and the new lines appended, through a fresh temporary file
+    (a stale one unlinked; O_EXCL and O_NOFOLLOW, mode 600), flushed and fsynced, renamed over the file, then the directory fsynced. On
+    any error after the temporary file exists, it is unlinked (it holds the key) and the error raised again."""
+    keys = (b"RELAY_V3=", b"RELAY_V3_CODEHASH=")
+    with open(ENV, "rb") as f:
+        lines = f.read().split(b"\n")
+    if lines[-1] == b"":
+        lines.pop()
+    lines = [b"# previous " + l if l.startswith(keys) else l for l in lines] + [n.encode() for n in new]
     tmp = ENV + ".tmp"
     try:
         os.unlink(tmp)
     except FileNotFoundError:
         pass
-    fd = os.open(tmp, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600); os.fchmod(fd, 0o600)
-    with os.fdopen(fd, "w") as f:
-        f.write("\n".join(lines) + "\n"); f.flush(); os.fsync(f.fileno())
-    os.replace(tmp, ENV)
+    fd = os.open(tmp, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+    try:
+        with os.fdopen(fd, "wb") as f:
+            os.fchmod(f.fileno(), 0o600)
+            f.write(b"\n".join(lines) + b"\n"); f.flush(); os.fsync(f.fileno())
+        os.replace(tmp, ENV)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except FileNotFoundError:
+            pass
+        raise
     dfd = os.open(os.path.dirname(ENV) or ".", os.O_RDONLY)
     try:
         os.fsync(dfd)
