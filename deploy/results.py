@@ -7,7 +7,7 @@ wallet and the relay. Follow is not shown.
     sudo python3 ~/v2pons/deploy/results.py          # the last 24 hours
     sudo python3 ~/v2pons/deploy/results.py 72       # the last 72 hours
 """
-import glob, gzip, json, os, subprocess, sys, time, urllib.request
+import glob, gzip, json, os, re, subprocess, sys, time, urllib.request
 HOURS = float(sys.argv[1]) if len(sys.argv) > 1 else 24
 LOG = "/var/log/flip/engine.jsonl"; ENV = "/etc/flip/engine.env"; HALT = "/var/log/flip/HALTED"
 LAST_TRADES = 8                                                                # live trades listed one by one (every filled one counts in the table)
@@ -156,6 +156,16 @@ def stake_label(f, eth_usd):
     if f["auto"]:
         return ("auto $%.0f (up to %s)" % (f["auto_eth"] * eth_usd, cap)) if f["auto_eth"] is not None else "auto (up to %s)" % cap
     return cap + " fixed"
+
+
+def v3_money(e, rpc):
+    """the V3 relay's part of the money line (HANDOFF 16.22): ("", None) without a RELAY_V3 address in the env file; its balance, or "?" when
+    the read fails (then 0 in the total)"""
+    r3 = e.get("RELAY_V3") or ""
+    if not re.fullmatch(r"0x[0-9a-fA-F]{40}", r3):
+        return "", None
+    b = balance(rpc, r3)
+    return ", V3 relay %s ETH" % ("%.6f" % b if b is not None else "?"), b
 
 
 def lines_table(fams, base, by, front, dry_by, eth_usd, cols):
@@ -342,9 +352,9 @@ def main():
         if wb is None or rb is None:
             print("\nmoney: the RPC did not answer; try again")
         else:
-            r3 = e.get("RELAY_V3"); r3b = (balance(rpc, r3) if r3 else None) or 0.0          # the V3 relay (HANDOFF 16.22): the V3 families' stakes
+            part, r3b = v3_money(e, rpc)
             print("\nmoney: wallet %.6f ETH (gas), relay %.6f ETH (the stakes)%s; together about $%.2f at $%g/ETH"
-                  % (wb, rb, ", V3 relay %.6f ETH" % r3b if r3 else "", (wb + rb + r3b) * eth_usd, eth_usd))
+                  % (wb, rb, part, (wb + rb + (r3b or 0.0)) * eth_usd, eth_usd))
     print("=" * 100)
 
 

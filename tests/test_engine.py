@@ -1458,7 +1458,7 @@ assert v3f["target"] == V3_NPM[2:] and (v3f["exit_after_blocks"], v3f["hold_bloc
     and t3["router"] is None and t3["token_word"] is None and t3["flag_word"] is None and t3["shapes"] == {("3593564c", 484): 9, ("a0193551", 452): 8, ("49f74a5d", 452): 8} \
     and t3["min_wei"] == int(0.005e18) and E.trigger_desc(t3) == "any:3593564c/484,49f74a5d/452,a0193551/452" and E.trigger_desc(fams[0]["trigger"]) == C1_ROUTER[2:].lower() + ":e6cb474f", v3f
 T3 = V3_FAM["trigger"]
-for patch, msg in (({"dex": "v2"}, "dex must be"), ({"dry_run": False}, "not built"), ({"dry_run": None}, "not built"), ({"target": None}, "must give target"), ({"target": "0x1234"}, "40 hex"),
+for patch, msg in (({"dex": "v2"}, "dex must be"), ({"target": None}, "must give target"), ({"target": "0x1234"}, "40 hex"),
                    ({"target": E.POSITION_MANAGER}, "v4's PositionManager"), ({"exit_after_blocks": None}, "must give exit_after_blocks"), ({"exit_after_blocks": 0}, "exit_after_blocks"),
                    ({"calldata_len": None}, "must give calldata_len"), ({"hold_blocks": None}, "must give hold_blocks"), ({"trigger": None}, "must give trigger"), ({"fire_at": 2}, "fire_at 0"), ({"hold_blocks": 4}, "fire_max + 3"),
                    ({"sqrt_p": "1"}, "sqrt_p"), ({"trigger": {**T3, "shapes": "3593564c"}}, "list of 1-8"), ({"trigger": {**T3, "shapes": []}}, "list of 1-8"),
@@ -1479,7 +1479,11 @@ def imported(js):
     r = subprocess.run([sys.executable, "-c", "import flip_engine as E, json; print(json.dumps([E.FRONT_FAMILY_ERROR, sorted(map(str, E.FRONT_FAMILIES))]))"], cwd=os.path.join(ROOT, "src"),
                        env={**os.environ, "FRONT_FAMILIES": js, "LOG_PATH": LOG + ".import"}, capture_output=True, text=True, timeout=60)
     assert r.returncode == 0, r.stderr[-400:]; return json.loads(r.stdout.strip().splitlines()[-1])
-for js in (json.dumps([{**V3_FAM, "dry_run": False}]), json.dumps([{**V3_FAM, "trigger": {**T3, "shapes": [[]]}}]), json.dumps([{**V3_FAM, "trigger": {**T3, "shapes": [{**T3["shapes"][0], "calldata_len": 1e400}]}}]), "[" * 10000 + "]" * 10000):
+for dr, warned in ((False, True), (None, False)):                                       # RELAY_V3 empty: false (or absent) is dry; false says so (16.22: never a refusal)
+    os.environ["FRONT_FAMILIES"] = json.dumps([{k: v for k, v in {**V3_FAM, "dry_run": dr}.items() if v is not None}]); g = E.front_families(E.front_base_family())
+    assert g[K3]["dry_run"] is True and bool(E.FRONT_FAMILY_WARNINGS) == warned and all("dry_run false is forced to true" in x for x in E.FRONT_FAMILY_WARNINGS), (dr, E.FRONT_FAMILY_WARNINGS)
+os.environ.pop("FRONT_FAMILIES"); err, keys = imported(json.dumps([{**V3_FAM, "dry_run": False}])); assert err is None and keys == sorted(map(str, [E.FRONT_VALUE_WEI, K3])), (err, keys)
+for js in (json.dumps([{**V3_FAM, "trigger": {**T3, "shapes": [[]]}}]), json.dumps([{**V3_FAM, "trigger": {**T3, "shapes": [{**T3["shapes"][0], "calldata_len": 1e400}]}}]), "[" * 10000 + "]" * 10000):
     err, keys = imported(js); assert err and err.startswith("FRONT_FAMILIES dropped, the FRONT_* line alone trades") and keys == [str(E.FRONT_VALUE_WEI)], (js[:80], err, keys)   # never a crash
 err, keys = imported(json.dumps([C1_FAM, V3_FAM])); assert err is None and keys == sorted(map(str, [E.FRONT_VALUE_WEI, 0, K3])), (err, keys)
 RB = next(l.strip()[len("FRONT_FAMILIES='"):-1] for l in open(os.path.join(ROOT, "docs", "RUNBOOK.md")) if l.strip().startswith("FRONT_FAMILIES='") and "v3crowd" in l)
@@ -2205,10 +2209,10 @@ RV3 = "c3" * 20; STK3 = int(0.004e18); GAS3 = 2 * 120000 * 20_000_000
 SEL_B3 = keccak(text="buy(address,uint24,uint256,uint256,uint256)")[:4].hex(); SEL_S3 = keccak(text="sell(address,uint24,uint256,uint256)")[:4].hex()
 T_SWAP3 = keccak(text="Swap(address,address,int256,int256,uint160,uint128,int24)").hex(); T_BURN3 = keccak(text="Burn(address,int24,int24,uint128,uint256,uint256)").hex()
 assert (E.SEL_V3_BUY, E.SEL_V3_SELL, E.T_V3_SWAP, E.T_V3_BURN) == (SEL_B3, SEL_S3, T_SWAP3, T_BURN3) and (SEL_B3, SEL_S3) == ("a0328eb2", "13318338")
-assert [keccak(text=s_)[:4].hex() for s_ in ("withdraw(uint256)", "sweep(address)", "owner()", "check(address,address,uint24,uint256,uint256)")] == ["2e1a7d4d", "01681a62", E.SEL_OWNER, E.SEL_SELL_CHECK] \
+assert [keccak(text=s_)[:4].hex() for s_ in ("withdraw(uint256)", "sweep(address,uint256)", "owner()", "check(address,address,uint24,uint256,uint256)")] == ["2e1a7d4d", "6ea056a9", E.SEL_OWNER, E.SEL_SELL_CHECK] \
     and E.SEL_SELL_CHECK == "b3aa5416" and E.V3_ERRORS[keccak(text="TransferFailed(address)")[:4].hex()] == "TransferFailed"   # the relay as built; contracts/SellCheckV3.sol's check
 assert E.RELAY_V3 == "" and not E.RELAY_V3_SET and E.RELAY_V3_ERROR is None and not E.V3_LIVE and E.V3_STAKE_CAP_WEI == STK3 and E.state["relay_v3_wei"] is None   # the defaults: off
-assert E.V3_GAS == 400_000 and E.V3_GAS_ERROR is None and E.V3_SELL_CHECK is True and E.V3_SELL_DEADLINE_S == 7200
+assert E.V3_GAS == 500_000 and E.V3_GAS_ERROR is None and E.V3_SELL_CHECK is True and E.V3_SELL_DEADLINE_S == 7200
 try:
     import solcx
     have_solc = "0.8.26" in [str(v) for v in solcx.get_installed_solc_versions()]
@@ -2222,7 +2226,9 @@ if have_solc:                                                                   
 for k in [k for k in E.FRONT_FAMILIES if k != E.FRONT_VALUE_WEI]:
     del E.FRONT_FAMILIES[k]
 # the parser: RELAY_V3 empty as before (a crowd family's false refused, a launch-rule one's forced dry); set, a V3 family is live only if it says false
-assert "not built" in refused(json.dumps([{**V3_FAM, "dry_run": False}])) and "not built" in refused(json.dumps([{k: v for k, v in V3_FAM.items() if k != "dry_run"}]))
+os.environ["FRONT_FAMILIES"] = json.dumps([C1_BOX, {**V3_FAM, "dry_run": False}, {k: v for k, v in V3_FAM.items() if k not in ("dry_run", "target")} | {"target": "0x" + "ab" * 20, "name": "w2"}])
+g = E.front_families(E.front_base_family()); assert g[K3]["dry_run"] is True and g[("v3", "ab" * 20)]["dry_run"] is True and g[0]["dry_run"] is False and len(E.FRONT_FAMILY_WARNINGS) == 1 \
+    and "v3crowd): dry_run false is forced to true: a V3 family trades dry while RELAY_V3 is empty" in E.FRONT_FAMILY_WARNINGS[0], E.FRONT_FAMILY_WARNINGS   # M5: never a refusal, c1 kept live
 os.environ["FRONT_FAMILIES"] = json.dumps([{**P356_FAM, "dry_run": False}]); assert E.front_families()[KP]["dry_run"] is True and len(E.FRONT_FAMILY_WARNINGS) == 1
 E.RELAY_V3_SET = True
 os.environ["FRONT_FAMILIES"] = json.dumps([{**V3_FAM, "dry_run": False}, {**P356_FAM, "dry_run": False}]); fams = E.front_families(E.front_base_family())
@@ -2264,16 +2270,19 @@ assert err is None and rv == "" and rerr and live is False and info["relay_v3"] 
 err, rv, rerr, live, cap, al, info, sf, lg = v3_start({"RELAY_V3": "0x" + RV3}, code=CODE3)                      # verified (DRY_RUN=1: no family live)
 assert live is True and info["relay_v3_live"] is True and info["relay_v3_owner"] == ACCT.address.lower() and info["relay_v3_eth"] == 0.1 and sf[0][2] is False, (al, info, sf)
 assert al == ["V3_SELL_CHECK=1: v3crowd buys in its launch block, before its pool's sell can be checked: it trades dry (V3_SELL_CHECK=0 trades it unchecked)"], al
-assert (info["v3_gas"], info["v3_sell_check"]) == (400_000, True)
+assert (info["v3_gas"], info["v3_sell_check"], info["v3_daily_stop_usd"], info["v3_today"], info["v3_pnl_today_usd"]) == (500_000, True, 10.0, 0, 0.0)
+for v, want, alarmed in (("25", 25.0, False), ("100", 100.0, False), ("0.5", 10.0, True), ("150", 10.0, True), ("abc", 10.0, True)):    # M1: the V3 day's stop
+    err, rv, rerr, live, cap, al, info, sf, lg = v3_start({"RELAY_V3": "0x" + RV3, "V3_DAILY_STOP_USD": v, "V3_SELL_CHECK": "0"}, code=CODE3)
+    assert info["v3_daily_stop_usd"] == want and bool([a for a in al if a.startswith("V3_DAILY_STOP_USD is not a number in 1..100")]) == alarmed, (v, info, al)
 err, rv, rerr, live, cap, al, info, sf, lg = v3_start({"RELAY_V3": "0x" + RV3, "V3_SELL_CHECK": "0"}, code=CODE3); assert live is True and not al and info["v3_sell_check"] is False, al
-for v, want, alarmed in (("250000", 250_000, False), ("600000", 600_000, False), ("150000", 400_000, True), ("700000", 400_000, True), ("4e5", 400_000, True), ("abc", 400_000, True)):
+for v, want, alarmed in (("250000", 250_000, False), ("800000", 800_000, False), ("150000", 500_000, True), ("900000", 500_000, True), ("4e5", 500_000, True), ("abc", 500_000, True)):
     err, rv, rerr, live, cap, al, info, sf, lg = v3_start({"RELAY_V3": "0x" + RV3, "V3_GAS": v, "V3_SELL_CHECK": "0"}, code=CODE3)
-    assert info["v3_gas"] == want and bool([a for a in al if a.startswith("V3_GAS is not a whole number in 200000..600000")]) == alarmed, (v, info, al)
+    assert info["v3_gas"] == want and bool([a for a in al if a.startswith("V3_GAS is not a whole number in 200000..800000")]) == alarmed, (v, info, al)
 for v, want, alarmed in (("0.008", 0.008, False), ("0.012", 0.012, False), ("0.02", 0.004, True), ("0.0004", 0.004, True), ("abc", 0.004, True), ("nan", 0.004, True)):
     err, rv, rerr, live, cap, al, info, sf, lg = v3_start({"RELAY_V3": "0x" + RV3, "V3_STAKE_CAP_ETH": v}, code=CODE3)
     assert cap == want and info["v3_stake_cap_eth"] == want and sf[0][3] == min(0.0058, want) and bool([a for a in al if "V3_STAKE_CAP_ETH" in a]) == alarmed, (v, cap, al)
-err, rv, rerr, live, cap, al, info, sf, lg = v3_start({}, js=json.dumps([{**V3_FAM, "dry_run": False}]))       # RELAY_V3 empty: refused as before, never a crash
-assert err and "not built" in err and info["relay_v3"] is None and info["relay_v3_live"] is False and sf == [], (err, info)
+err, rv, rerr, live, cap, al, info, sf, lg = v3_start({}, js=json.dumps([C1_BOX, {**V3_FAM, "dry_run": False}]))   # RELAY_V3 removed while v3crowd says false: dry, c1 kept
+assert err is None and info["relay_v3"] is None and info["relay_v3_live"] is False and sf == [["v3crowd", True, False, 0.004]] and len(al) == 1 and "dry_run false is forced to true" in al[0], (err, al, sf)
 
 # checks() in this process (DRY_RUN=0): the v4 relay as before (rpc_checks), RELAY_V3 by its own answers
 V3R = {"code": CODE3, "owner": ACCT.address, "bal": int(0.05e18), "fail": None}
@@ -2314,12 +2323,18 @@ E.FRONT_DRY_RUN = True; info, al, sf = v3_checks(); assert E.V3_LIVE and sf["v3c
 R = importlib.util.module_from_spec(importlib.util.spec_from_file_location("results_mod", os.path.join(ROOT, "deploy", "results.py"))); R.__spec__.loader.exec_module(R)
 info, al, sf = v3_checks(); st = {"dry_run": False, "front": True, "front_dry_run": False, "front_value_wei": E.FRONT_VALUE_WEI, "front_families": E.start_families()}
 rf = {f["name"]: (f["mode"], f["stake_eth"]) for f in R.families(st, {}, {})[0]}; assert rf == {"v2.433": ("LIVE", E.FRONT_STAKE_WEI / 1e18), "v3crowd": ("LIVE", 0.004), "p356": ("LIVE", 0.004)}, rf
+bal0 = R.balance; R.balance = lambda rpc_, a: None if a.endswith("ee") else 0.0123                                                  # M4: the money line's V3 relay
+assert R.v3_money({}, "x") == ("", None) and R.v3_money({"RELAY_V3": "0x" + "c3" * 19 + "ee"}, "x") == (", V3 relay ? ETH", None) \
+    and R.v3_money({"RELAY_V3": "0x" + RV3}, "x") == (", V3 relay 0.012300 ETH", 0.0123) and R.v3_money({"RELAY_V3": "0x" + KEYISH}, "x") == ("", None) \
+    and R.v3_money({"RELAY_V3": RV3}, "x") == ("", None) and R.v3_money({"RELAY_V3": "0x12 # c"}, "x") == ("", None); R.balance = bal0
 st["front_families"] = [{k: v for k, v in f.items() if k not in ("live", "live_stake_eth")} for f in st["front_families"]]                          # an older start line
 assert {f["name"]: f["mode"] for f in R.families(st, {}, {})[0]} == {"v2.433": "LIVE", "v3crowd": "dry", "p356": "dry"}
 E.rpc = fake_rpc; E.Sender = real_sender; E.SENDER = FakeSender(); E.SENDER_ALT = None; E.state["relay_wei"] = None; E.state["front_halted"] = None; NONCE_ON_CHAIN[0] = "0x5"
 print("ok the V3 live path's settings: RELAY_V3 empty as before (a crowd family's dry_run false refused, a launch-rule one's forced dry); set, a V3 family is live only if it says false; "
       "the start checks the relay (code with buy a0328eb2 and sell 13318338, owner() WALLET, not the v4 relay, the RPC answering) else an alarm and every V3 family dry, "
-      "never logging a value that is not an address; V3_STAKE_CAP_ETH 0.0005..0.012 else 0.004; V3_GAS 200000..600000 else 400000; V3_SELL_CHECK=1 keeps the crowd family "
+      "never logging a value that is not an address; V3_STAKE_CAP_ETH 0.0005..0.012 else 0.004; V3_GAS 200000..800000 else 500000; V3_DAILY_STOP_USD 1..100 else 10; "
+      "a V3 family's dry_run false without RELAY_V3 forced dry with an alarm, never a refusal (c1 kept live); results.py's V3 relay only for an address, '?' on a failed read; "
+      "V3_SELL_CHECK=1 keeps the crowd family "
       "(its buy in its launch block) dry with an alarm; the sell check's harness is contracts/SellCheckV3.sol; the start line and results.py show each V3 family live or dry")
 
 # a live V3 trade (v3crowd): the buy at nonce n and the presigned sell at n + 1 to RELAY_V3, decoded back; the crowd's clock; the settle from the pool's Swap
@@ -2337,7 +2352,8 @@ def rcpt3(block, weth, tok, pool, weth0=True, index=3, status="0x1", swap=True):
              dict(sw, address="0x" + "5e" * 20)]
     return {"status": status, "blockNumber": hex(block), "gasUsed": hex(120000), "effectiveGasPrice": hex(20_000_000), "transactionIndex": hex(index), "logs": noise + ([sw] if swap else [])}
 def v3_reset():
-    reset(); LOGS[:] = []; E.state.update({"front_halted": None, "relay_wei": None, "relay_v3_wei": int(0.05e18), "front_today": 0, "front_settling": None}); E.state["fam_halted"].clear()
+    reset(); LOGS[:] = []; E.state.update({"front_halted": None, "relay_wei": None, "relay_v3_wei": int(0.05e18), "front_today": 0, "front_settling": None, "v3_settling": None,
+                                           "v3_today": 0, "v3_pnl_today_usd": 0.0}); E.state["fam_halted"].clear()
     E.state["front_nonbot_streak"] = {}
     E.state["launch_live"].clear()
     for f_ in (E.FRONT_HALT_FILE, E.fam_halt_file("v3crowd"), E.fam_halt_file("p356")):
@@ -2350,8 +2366,8 @@ assert pos and not pos["dry"] and pos["dex"] == "v3" and pos["fam"] == "v3crowd"
     and len(SENT) == 1 and SENT[0][0] == 0 and E.state["nonce"] == 2002 and (pos["plan_buy_seq"], pos["send_after"]) == (L + 2, 76), pos   # the family's 0.0058 capped at 0.004
 fe = events("fire")[-1]; assert fe["fam"] == "v3crowd" and fe["dex"] == "v3" and fe["nonce"] == 2000 and fe["stake"] == STK3 and not [e for e in events("would_fire") if e.get("trig_seq") == L], fe
 bt = dec(SENT[0][1]); st_ = dec(pos["sell_raw"])
-assert bt == (2000, int(E.state["base_fee"] * E.GAS_HEADROOM), 400_000, "0x" + RV3, 0, SEL_B3, [TOK3, 100, STK3, int(exp * (1 - E.BUY_SLIP)), ts + E.BUY_DEADLINE_S]) and E.BUY_DEADLINE_S == 3, bt
-assert st_ == (2001, int(E.state["base_fee"] * E.SELL_GAS_HEADROOM), 400_000, "0x" + RV3, 0, SEL_S3, [TOK3, 100, 0, ts + 7200]), st_   # V3_GAS, never estimated; strict deadlines
+assert bt == (2000, int(E.state["base_fee"] * E.GAS_HEADROOM), 500_000, "0x" + RV3, 0, SEL_B3, [TOK3, 100, STK3, int(exp * (1 - E.BUY_SLIP)), ts + E.BUY_DEADLINE_S]) and E.BUY_DEADLINE_S == 3, bt
+assert st_ == (2001, int(E.state["base_fee"] * E.SELL_GAS_HEADROOM), 500_000, "0x" + RV3, 0, SEL_S3, [TOK3, 100, 0, ts + 7200]), st_   # V3_GAS, never estimated; strict deadlines
 assert Account.recover_transaction(SENT[0][1]) == ACCT.address == Account.recover_transaction(pos["sell_raw"]) and keccak(pos["sell_raw"]).hex() == pos["sell_hash"]
 E.ingest(frame(L + 1, [])); E.ingest(frame(L + 2, [SENT[0][1]])); assert pos["buy_seq"] == L + 2 and pos["feed_tokens"] == exp
 n_skip = len(events("skip")); front_launch(L + 3, 33)                                                               # a live V3 position holds the slot like a live v4 one
@@ -2367,7 +2383,8 @@ assert (d["eth_in"], d["eth_out"], d["gas_wei"], d["buy"]["eth_in"], d["buy"]["t
 assert d["pnl_eth"] == (back - STK3 - GAS3) / 1e18 and d["pnl_usd"] == round((back - STK3 - GAS3) / 1e18 * E.ETH_USD, 3) and d["ret"] == 0.06 and d["nonbot_streak"] == 0, d
 assert d["sell_after_buy_blocks"] == 23 and d["buy_offset"] == 2 and d["pull_after_buy_blocks"] is None and d["pulled_before_sell"] is False and "pull_check" not in d and ss["nonce"] == 2001, d
 assert E.state["relay_v3_wei"] == int(0.05e18) + back - STK3 and E.state["relay_wei"] is None and E.state["front_halted"] is None and not E.state["fam_halted"] and E.state["position"] is None
-assert E.state["front_today"] == 1 and E.state["front_pnl_today_usd"] == d["pnl_usd"] and E.state["front_settling"] is None
+assert E.state["v3_today"] == 1 and E.state["v3_pnl_today_usd"] == d["pnl_usd"] and E.state["front_today"] == 0 and E.state["front_pnl_today_usd"] == 0.0 \
+    and E.state["v3_settling"] is None and E.state["front_settling"] is None and (pos["count_key"], pos["pnl_key"]) == ("v3_today", "v3_pnl_today_usd")   # M1: the V3 day
 # the stake: a family under the cap keeps its own; V3_STAKE_CAP_ETH raised; the relay's balance (RELAY_V3's, not the v4 relay's) gates the fire
 for stake, cap, want in ((int(0.003e18), STK3, int(0.003e18)), (int(0.0058e18), int(0.005e18), int(0.005e18))):
     v3_reset(); v3l["stake_wei"] = stake; E.V3_STAKE_CAP_WEI = cap; E.state["nonce"] = 2010
@@ -2376,11 +2393,27 @@ for stake, cap, want in ((int(0.003e18), STK3, int(0.003e18)), (int(0.0058e18), 
 v3l["stake_wei"] = int(0.0058e18); E.V3_STAKE_CAP_WEI = STK3
 v3_reset(); E.BUY_DEADLINE_S = 0; E.V3_GAS = 250_000; E.state["nonce"] = 2015; ts = int(time.time()); E.ingest(frame(L + 150, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 38)], ts=ts))
 bt, st_ = dec(SENT[0][1]), dec(E.state["position"]["sell_raw"]); assert bt[6][4] == ts + 7200 and bt[2] == st_[2] == 250_000, (bt, st_)   # no "none" in the V3 relay: 2 h
-E.BUY_DEADLINE_S = 3; E.V3_GAS = 400_000; E.state["position"] = None
+E.BUY_DEADLINE_S = 3; E.V3_GAS = 500_000; E.state["position"] = None
 v3_reset(); E.state["relay_v3_wei"] = STK3 - 1; E.state["relay_wei"] = 10 ** 18; E.ingest(frame(L + 200, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 35)]))
 sk = events("skip")[-1]; assert E.state["position"] is None and sk["why"] == "the relay holds less than the stake" and sk["relay"] == "v3" and len(SENT) == 0, sk
 v3_reset(); E.state["relay_v3_wei"] = STK3; E.state["relay_wei"] = 1; E.state["nonce"] = 2020; E.ingest(frame(L + 300, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 36)]))
 assert E.state["position"] and not E.state["position"]["dry"] and len(SENT) == 1; E.state["position"] = None                       # the v4 relay's balance is not the V3 one's
+# M1: the V3 day's own stop, front's stop too; a V3 loss does not stop the v4 line; the day rolls and is restored (dex "v3" lines) at a restart
+v3_reset(); E.state["v3_pnl_today_usd"] = -E.V3_DAILY_STOP_USD - 0.01; E.ingest(frame(L + 160, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 39)]))
+assert E.state["position"] is None and events("skip")[-1]["why"] == "daily stop" and events("skip")[-1]["v3_pnl_today_usd"] == round(-E.V3_DAILY_STOP_USD - 0.01, 2) and not SENT
+E.state["armed"].clear(); E.state["nonce"] = 2017; p4 = front_launch(L + 170, 40); lpos = E.state["position"]                    # the V3 day stopped: v2.433 trades
+assert lpos and not lpos["dry"] and lpos["fam"] == "v2.433" and lpos["pnl_key"] == "front_pnl_today_usd"; E.state["position"] = None
+v3_reset(); E.state["front_pnl_today_usd"] = -E.FRONT_DAILY_STOP_USD - 0.01; E.ingest(frame(L + 180, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 41)]))
+assert E.state["position"] is None and events("skip")[-1]["why"] == "daily stop" and "front_pnl_today_usd" in events("skip")[-1] and not SENT     # front's stop holds the V3 fires too
+E.state.update({"v3_today": 3, "v3_pnl_today_usd": -4.0, "day": "2000-01-01"}); E.roll_day(); assert (E.state["v3_today"], E.state["v3_pnl_today_usd"]) == (0, 0.0)
+log0 = E.LOG_PATH; E.LOG_PATH = LOG + ".day3"; now_t = time.time()
+with open(E.LOG_PATH, "w") as f:
+    for entry, dex, pnl, buy in (("front", "v3", -3.5, {"status": "ok"}), ("front", "v3", 1.25, {"status": "ok"}), ("front", "v3", -0.1, "no receipt"), ("front", None, 0.6, {"status": "ok"})):
+        f.write(json.dumps({"ev": "trade_done", "dry": False, "entry": entry, "pnl_usd": pnl, "buy": buy, "t": now_t, **({"dex": dex, "fam": "v3crowd"} if dex else {})}, separators=(",", ":")) + "\n")
+E.state.update({"trades_today": 0, "front_today": 0, "pnl_today_usd": 0.0, "front_pnl_today_usd": 0.0}); got = E.restore_today(); os.remove(E.LOG_PATH); E.LOG_PATH = log0
+if E.today() == time.strftime("%Y-%m-%d", time.gmtime(now_t)):                                                     # (not across midnight)
+    assert got == {"trades_today": 0, "front_today": 1, "pnl_today_usd": 0.0, "front_pnl_today_usd": 0.6} and (E.state["v3_today"], E.state["v3_pnl_today_usd"]) == (2, -3.5 + 1.25 - 0.1), (got, E.state["v3_today"])
+v3_reset(); E.state.update({"front_nonbot_streak": {}, "trades_today": 0, "pnl_today_usd": 0.0})
 # RELAY_V3 set but not verified (V3_LIVE false: the start's alarm), or the family dry, or FRONT_DRY_RUN: dry as before (no transaction, the stake uncapped)
 for setup in (lambda: setattr(E, "V3_LIVE", False), lambda: v3l.update(dry_run=True), lambda: setattr(E, "FRONT_DRY_RUN", True), lambda: setattr(E, "V3_SELL_CHECK", True)):
     v3_reset(); setup(); E.ingest(frame(L + 400, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 37)])); pos = E.state["position"]; wf = events("would_fire")[-1]
@@ -2388,8 +2421,29 @@ for setup in (lambda: setattr(E, "V3_LIVE", False), lambda: v3l.update(dry_run=T
     E.state["position"] = None; E.V3_LIVE = True; v3l["dry_run"] = False; E.FRONT_DRY_RUN = False; E.V3_SELL_CHECK = False
 print("ok a live V3 trade (v3crowd): RELAY_V3.buy(token, fee, stake, minOut, deadline) at nonce n and the presigned sell(token, fee, 0, far deadline) at n + 1, decoded back "
       "(gas price rule, signer, minOut from the V3 price copy and BUY_SLIP); it holds the slot; the crowd's clock sells it; the settle from the pool's own Swap gives eth_in, "
-      "eth_out, gas, pnl and ret; RELAY_V3's balance gates and moves; the stake capped at V3_STAKE_CAP_ETH; the gas limit V3_GAS; the deadlines strict (buy + BUY_DEADLINE_S, "
+      "eth_out, gas, pnl and ret; RELAY_V3's balance gates and moves; the stake capped at V3_STAKE_CAP_ETH; its own day (v3_today, V3_DAILY_STOP_USD; front's stop too; "
+      "rolled and restored); the gas limit V3_GAS; the deadlines strict (buy + BUY_DEADLINE_S, "
       "sell + 2 h); not verified, dry, FRONT_DRY_RUN or (the crowd family) V3_SELL_CHECK on: dry as before")
+
+# H1: a live V3 trade out of the slot with its pull check running (v3_settling): a v2.433 launch fires live, a V3 launch waits; the stop waits too
+v3_reset(); E.state["nonce"] = 2400; L = 51000; gate3 = threading.Event()
+def rpc_hold3(method, params, tries=4, timeout=10):
+    if method == "eth_getLogs" and params[0].get("address") == V3_PID:
+        gate3.wait(10)                                                                                       # the V3 pull check held
+    return fake_rpc(method, params, tries, timeout)
+E.rpc = rpc_hold3; E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 42)])); vpos = E.state["position"]; E.ingest(frame(L + 2, [SENT[0][1]]))
+RECEIPTS["0x" + vpos["buy_hash"]] = rcpt3(L + 2, STK3, -exp, V3_PID); RECEIPTS["0x" + vpos["sell_hash"]] = rcpt3(L + 80, -int(STK3 * 1.05), exp, V3_PID)
+for s_ in range(L + 3, L + 79):
+    E.ingest(frame(s_, []))
+assert vpos["sell_sent"] and wait_for(lambda: E.state["v3_settling"] is vpos and E.state["position"] is None) and E.state["front_settling"] is None and E.state["nonce"] == 2402
+E.state["armed"].pop(V3_PID); E.ingest(frame(L + 90, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 43)])); sk = events("skip")[-1]
+assert E.state["position"] is None and sk["why"] == "v3: the last V3 trade's pull check is still running" and sk["fam"] == "v3crowd", sk
+n_sent = len(SENT); p4 = front_launch(L + 95, 44); lpos = E.state["position"]                                         # the v4 line does not wait for it
+assert lpos and not lpos["dry"] and lpos["fam"] == "v2.433" and lpos["nonce"] == 2402 and len(SENT) == n_sent + 1 and E.state["nonce"] == 2404, (lpos, E.state["nonce"])
+exits = []; E.EXIT = lambda c: exits.append(c); E.state["position"] = None; E.state.update({"stopping": None, "stop_logged": False})
+E.on_stop(15, None); E.stop_tick(); assert exits == [] and events("stopping")[-1]["v3_settling"] is True, "the stop did not wait for the V3 pull check"
+gate3.set(); assert wait_for(lambda: done_at(2400)) and E.state["v3_settling"] is None and E.state["nonce"] == 2404, E.state["nonce"]   # v2.433's nonces kept
+E.stop_tick(); assert exits == [0]; E.EXIT = os._exit; E.state.update({"stopping": None, "stop_logged": False}); E.rpc = fake_rpc; v3_reset()
 
 # the settle on its own (synthetic receipts): the WETH side by token order; the Burn rule; a filled buy with an empty sell; a missing receipt
 def v3pos(nonce, token, pid, fam="v3crowd", buy=100, **kw):
@@ -2441,10 +2495,13 @@ d = settle3(v3pos(2103, TOKHI, POOLX), rcpt3(100, 0, 0, POOLX), rcpt3(108, 0, 0,
 assert d["buy"]["filled"] is False and d["buy"]["status"] == "ok" and d["eth_in"] == 0 and d["ret"] is None and "pulled_before_sell" not in d and "nonbot_streak" not in d, d
 assert not E.state["fam_halted"] and E.state["front_halted"] is None and E.state["front_nonbot_streak"] == {"v3crowd": 1} and R.result_col(d) == "buy not filled", (E.state["fam_halted"], d)
 # a filled buy whose sell sold nothing (reverted, no Swap, no receipt): this family halts, front does not (the cause is RELAY_V3's path)
-for i, sell_r in enumerate((rcpt3(108, 0, 0, PP, status="0x0", swap=False), rcpt3(108, 0, 0, PP, swap=False), None)):
+for i, sell_r in enumerate((rcpt3(108, 0, 0, PP, status="0x0", swap=False), rcpt3(108, 0, 0, PP, swap=False))):            # a sell receipt that sold none: this family
     v3_reset(); E.RECEIPT_TIMEOUT_S = 0.3; d = settle3(v3pos(2130 + i, P3["token"][2:], PP), rcpt3(100, STK3, -T, PP), sell_r)
     assert "sold none" in E.state["fam_halted"].get("v3crowd", "") and "RELAY_V3's path" in E.state["fam_halted"]["v3crowd"] and E.state["front_halted"] is None and E.state["halted"] is None, (i, E.state["fam_halted"])
     assert os.path.exists(E.fam_halt_file("v3crowd")) and not os.path.exists(E.FRONT_HALT_FILE) and d["eth_out"] == 0 and d["pnl_eth"] < 0, d
+v3_reset(); E.RECEIPT_TIMEOUT_S = 0.3; d = settle3(v3pos(2132, P3["token"][2:], PP), rcpt3(100, STK3, -T, PP), None)        # H2: no sell receipt: the send path, front-wide
+assert d["sell"] == "no receipt" and E.state["front_halted"] and "sold none of it (sell: no receipt): the send path the v4 lines share" in E.state["front_halted"] \
+    and not E.state["fam_halted"] and os.path.exists(E.FRONT_HALT_FILE) and not os.path.exists(E.fam_halt_file("v3crowd")) and E.state["halted"] is None, (E.state["front_halted"], E.state["fam_halted"])
 # a missing buy receipt: no trade (the day's count given back), no halt; the chain's nonce
 v3_reset(); E.state["front_today"] = 1; NONCE_ON_CHAIN[0] = hex(2140); d = settle3(v3pos(2140, P3["token"][2:], PP), None, rcpt3(108, 0, 0, PP, status="0x0", swap=False))
 assert d["buy"] == "no receipt" and not E.state["fam_halted"] and E.state["front_today"] == 0 and d["eth_in"] == 0 and "pulled_before_sell" not in d and E.state["nonce"] == 2140, d
@@ -2455,10 +2512,10 @@ for i in range(2):
     d = settle3(v3pos(2150 + i, TOKHI, POOLX), rcpt3(100, STK3, -T, POOLX), rcpt3(108, -int(STK3 * 1.005), T, POOLX))
 assert d["nonbot_streak"] == 2 and d["nonbot_halted"] and "2 v3crowd front trades in a row" in E.state["fam_halted"]["v3crowd"] and E.state["front_halted"] is None, d
 v3_reset(); E.FRONT_NONBOT_HALT = saved_nh; E.state["front_nonbot_streak"] = {}
-print("ok the V3 settle: the fills from the pool's own Swap with WETH as token0 and as token1 (other pools' Swaps and transfers ignored); the pull from the pool's Burn logs "
+print("ok the V3 settle: its pull check holds the V3 fires only (v3_settling: a v2.433 launch fires during it, the stop waits for it); the fills from the pool's own Swap with WETH as token0 and as token1 (other pools' Swaps and transfers ignored); the pull from the pool's Burn logs "
       "(v3crowd: any amount above 0 at or before our sell; p356: the launch position's half, cumulated, other owners and ranges apart); a filled buy with an empty sell, "
-      "or the unpaid streak: the family halts, front never; a buy that took no token (a pulled pool) is not filled: no pull check, no halt, no streak; a missing buy "
-      "receipt: no trade, no halt")
+      "or the unpaid streak: the family halts; a filled buy whose sell has no receipt halts front (the send path the v4 lines share); a buy that took no token (a "
+      "pulled pool) is not filled: no pull check, no halt, no streak; a missing buy receipt: no trade, no halt")
 
 # p356 live, end to end: the timer's buy at + 60 (capped), the pull in the feed sells at once, the chain's Burn of the launch position before our sell
 # halts p356 alone; the v4 line keeps trading live; the dual-path sell race (SELL_ALT_URL) with a hung sequencer and the alternate first
@@ -2471,7 +2528,9 @@ def rpc_sc(method, params, tries=4, timeout=10):
         if SC["mode"] == "hold": SC["gate"].wait(10)
         if SC["mode"] == "lock":
             raise RuntimeError(json.dumps({"code": 3, "message": "execution reverted", "data": "0x" + keccak(text="TransferFailed(address)")[:4].hex() + w(params[0]["data"][74 + 24:74 + 64])}))
-        return "0x" + w(10 ** 21) + w(int(STK3 * 0.998))
+        if SC["mode"] == "down":
+            raise RuntimeError("eth_call: <urlopen error timed out>")                                     # the RPC, not the call
+        return "0x" + w(10 ** 21) + w(SC.get("back", int(STK3 * 0.998)))
     return rpc_seen(method, params, tries, timeout)
 E.rpc = rpc_sc
 p356_reset(); v3_reset(); E.state["nonce"] = 2200; L = 52000
@@ -2489,7 +2548,7 @@ assert pos["sell_sent"] and pos["sell_why"].startswith("the pull: the launch pos
 assert wait_for(lambda: done_at(2200), 5.0); d = done_at(2200)[-1]
 assert d["fam"] == "p356" and d["dex"] == "v3" and d["pulled_before_sell"] and d["pull_after_buy_blocks"] == 88 and d["sell_after_buy_blocks"] == 90 and d["other_burns"] == 0 and d["ret"] == -0.8, d
 assert "p356" in E.state["fam_halted"] and os.path.exists(E.fam_halt_file("p356")) and E.state["front_halted"] is None and not os.path.exists(E.FRONT_HALT_FILE) and P3["pool"] not in E.state["launch_live"]
-assert E.state["front_pnl_today_usd"] == d["pnl_usd"] < -5; E.state["front_pnl_today_usd"] = 0.0                                      # (the V3 loss counts in front's day: its stop)
+assert E.state["v3_pnl_today_usd"] == d["pnl_usd"] < -5 and E.state["front_pnl_today_usd"] == 0.0                                 # (the V3 loss is the V3 day's, M1)
 LOGS[:] = []; E.state["nonce"] = 2210; p4 = front_launch(L + 300, 632); lpos = E.state["position"]                                       # the v4 line goes on
 assert p4 and lpos and not lpos["dry"] and lpos["fam"] == "v2.433" and SENT[-1][0] == 0 and dec(SENT[-1][1])[5] == E.SEL_BUY, (lpos, events("skip")[-2:])
 E.ingest(frame(L + 301, [SENT[-1][1]])); E.ingest(frame(L + 309, [signed(CROWD, BOT, int(0.12e18), FBUY, 633)])); assert lpos["sell_sent"]
@@ -2509,6 +2568,29 @@ E.ingest(frame(L + 660, [])); assert E.state["position"] is None and events("ski
 SC["gate"].set(); assert wait_for(lambda: E.state["armed"][pid].get("sell_check") == "ok")
 E.ingest(frame(L + 661, [])); pos = E.state["position"]; assert pos and not pos["dry"] and pos["fire_seq"] == L + 661 and len(SENT) == 1 and dec(SENT[0][1])[0] == 2250   # the next block buys
 E.state["position"] = None; SC["mode"] = "ok"
+v3_reset(); p356_reset(); E.V3_SELL_CHECK = False; SC["mode"] = "lock"; raw, pid = p356_launch(53); E.ingest(frame(L + 700, [raw]))     # M2: V3_SELL_CHECK=0 checks p356 all the same
+assert wait_for(lambda: pid in E.state["armed"] and E.state["armed"][pid].get("sell_check") not in (None, "ok")); E.ingest(frame(L + 760, []))
+assert E.state["position"] is None and events("skip")[-1]["why"].startswith("v3: the token cannot be sold") and not SENT; E.V3_SELL_CHECK = True
+v3_reset(); p356_reset(); SC["mode"] = "ok"; SC["back"] = int(STK3 * 0.89); raw, pid = p356_launch(54); E.ingest(frame(L + 800, [raw]))   # M3: under 0.9 x the stake back
+assert wait_for(lambda: pid in E.state["armed"] and E.state["armed"][pid].get("sell_check") not in (None, "ok"))
+assert E.state["armed"][pid]["sell_check"] == f"the round trip gave {10 ** 21} tokens and {int(STK3 * 0.89)} wei back for {STK3}" and not E.state["armed"][pid]["sell_check_rpc"]
+E.ingest(frame(L + 860, [])); assert E.state["position"] is None and events("skip")[-1]["why"].startswith("v3: the token cannot be sold: the round trip gave") and not SENT
+SC["back"] = 9 * STK3 // 10                                                                                       # 0.9 x exactly: ok
+v3_reset(); p356_reset(); SC["mode"] = "down"; n_calls = len(SC_CALLS); E.state["nonce"] = 2260; raw, pid = p356_launch(55); E.ingest(frame(L + 900, [raw]))   # M3: the RPC down
+assert wait_for(lambda: pid in E.state["armed"] and E.state["armed"][pid].get("sell_check_rpc")); q = E.state["armed"][pid]
+assert q["sell_check"] == "eth_call: <urlopen error timed out>" and [e for e in events("sell_check") if e["pid"] == pid][-1]["rpc_failed"] is True
+for s_ in range(L + 901, L + 911):                                                                                  # asked again each block (one at a time)
+    E.ingest(frame(s_, [])); assert wait_for(lambda: q.get("sell_check") is not None), s_
+assert len(SC_CALLS) - n_calls == 11 and q["sell_check_rpc"], len(SC_CALLS) - n_calls
+SC["mode"] = "ok"; E.ingest(frame(L + 911, [])); assert wait_for(lambda: q.get("sell_check") == "ok") and not q["sell_check_rpc"]       # back: a verdict
+E.ingest(frame(L + 960, [])); pos = E.state["position"]; assert pos and not pos["dry"] and dec(SENT[0][1])[0] == 2260; E.state["position"] = None
+v3_reset(); p356_reset(); SC["mode"] = "down"; raw, pid = p356_launch(56); E.ingest(frame(L + 1000, [raw])); assert wait_for(lambda: pid in E.state["armed"] and E.state["armed"][pid].get("sell_check_rpc"))
+q = E.state["armed"][pid]; n_calls = len(SC_CALLS)
+E.ingest(frame(L + 1060, [])); assert wait_for(lambda: q.get("sell_check") is not None); sk = events("skip")[-1]
+assert sk["why"] == "v3: the sell check could not run: eth_call: <urlopen error timed out>" and q["status"] == "armed" and E.state["position"] is None and not SENT, sk   # its own skip
+E.ingest(frame(L + 1061, [])); assert events("skip")[-1]["why"].startswith("v3: the sell check could not run") and len(SC_CALLS) == n_calls      # no new ask from launch + buy_at on
+E.ingest(frame(L + 1071, [])); assert q["status"] == "late" and events("skip")[-1]["why"].startswith("launch rule: late, not fired by launch + 70 (a gate refused it")
+SC["mode"] = "ok"
 # the dual path: a dry p356 position dropped for a live v3crowd fire; the sell raced on the sequencer (hung) and SELL_ALT_URL (first); the cap's sell
 v3_reset(); p356_reset(); pf["dry_run"] = True; E.V3_SELL_CHECK = False; E.FRONT_FAMILIES[KP] = pf; E.LAUNCH_SHAPES = {(bytes.fromhex("d27d1e00"), 356): pf}; E.state["nonce"] = 2300; L = 53000
 p = real_launch(L, 640); E.ingest(frame(L + 60, [])); ppos = E.state["position"]; assert ppos and ppos["dry"] and ppos["fam"] == "p356"
@@ -2526,7 +2608,8 @@ seqp.gate.set(); assert wait_for(lambda: new_events("late_reply", l0)) and new_e
 E.SENDER = FakeSender(); E.SENDER_ALT = None
 print("ok p356 live: its pool's sell checked at arm time (the harness at WALLET's address, RELAY_V3 given the stake, by eth_call state overrides); the timer's buy (capped) "
       "and presigned sell to RELAY_V3; the pull in the feed sells at once; the chain's Burn of the launch position before our sell halts p356 alone (its file), the v4 line keeps "
-      "trading, p356's next fire is skipped; a sell-locked token is never bought, a check still running holds the buy to the next block; a dry position dropped for a live V3 "
+      "trading, p356's next fire is skipped; a sell-locked token is never bought, a check still running holds the buy to the next block, V3_SELL_CHECK=0 still checks "
+      "p356, under 0.9 x the stake back is a refusal, an RPC failure is its own skip asked again each block to launch + buy_at; a dry position dropped for a live V3 "
       "fire; the V3 sell raced on both paths (SELL_ALT_URL)")
 
 # the runbook's 4j snippet: one V3 family's dry_run flipped (live, then dry), nothing else in the file changed; refused when it cannot apply

@@ -329,9 +329,8 @@ up to the launch price and refunds. The engine decodes it like a front launch (t
 block (our buy at + 2); the crowd's buys (value-0 calls of the `shapes` through any contract, `any_to`; the token found in the call,
 `token_anywhere`) and anyone's ETH-value buys move the price copy; the first of `min_eth` at or after our buy starts the exit: the sell
 goes `exit_after_blocks` (18) later, so that it lands about 20 blocks after the crowd's first buy, as the research's rule; at the latest
-when the feed shows launch + `hold_blocks` (78: lands about + 80; the line's earliest no-crowd pull was + 83). **Dry run only** while `RELAY_V3` is empty (4j): no route
-to a V3 pool, and `"dry_run":false` is a wrong setting (the listed families are dropped for the run with an alarm, as for any
-wrong family). The launch price varies per launch, so the JSON gives no `sqrt_p`/`liq`; launches with WETH as token1 (about 3%) are logged
+when the feed shows launch + `hold_blocks` (78: lands about + 80; the line's earliest no-crowd pull was + 83). **Dry run only** while `RELAY_V3` is empty (4j): `"dry_run":false`
+is then forced to true with an alarm at start (the list is not dropped). The launch price varies per launch, so the JSON gives no `sqrt_p`/`liq`; launches with WETH as token1 (about 3%) are logged
 and skipped. The box's list with it:
 
     sudo sed -i '/^FRONT_FAMILIES=/d' /etc/flip/engine.env; sudo tee -a /etc/flip/engine.env >/dev/null <<'EOF'
@@ -505,21 +504,48 @@ the next, the same wallet, gas price rule and send paths (`SELL_ALT_URL` include
 - v3crowd: it buys in the launch block. It sells 18 blocks after the crowd's first buy behind ours, at the latest when the feed shows launch + 78.
 - p356: it buys at launch + 60. It sells at launch + 260, or at once on the pull.
 
-Every live V3 stake is at most `V3_STAKE_CAP_ETH` (0.004 ETH, about $10), whatever the family's `stake_eth`. A live V3 trade holds the one
-slot like any live trade; a dry position never blocks it. Nothing changes while `RELAY_V3` is empty.
+Every live V3 stake is at most `V3_STAKE_CAP_ETH` (0.004 ETH, about $10), whatever the family's `stake_eth`. Nothing changes while
+`RELAY_V3` is empty.
+
+What this can trade today:
+
+- **p356 arms nothing.** Its 356-byte launches stopped on Oct 11 at 19:56 UTC (`research/session_oct12/p356/REPORT_P356B.md`).
+- **v3crowd stays dry** while the sell check is on (below).
+- **The first live V3 line** will be decided by its own gate.
+
+**The live V3 day.** The live V3 trades keep their own day: `v3_today`, `v3_pnl_today_usd`, and their own stop, `V3_DAILY_STOP_USD`
+(10; 1 to 100, else 10 with an alarm). Front's own stop (`FRONT_DAILY_STOP_USD`) still holds them too. A V3 loss no longer counts in
+front's day, so it never stops the v4 lines. A restart reads the day back from the log.
+
+**One wallet, one nonce stream, one slot.** A live V3 position holds the slot from its buy to both receipts, because its presigned sell
+holds nonce n + 1. The v2.433 launches in that time are skipped ("position open"). That is about 7% of v2.433 launches per V3 trade's
+~24 s hold, or about 0.4% a day at 16 V3 trades a day. Its pull check after that holds only the next V3 fire, never a v2.433 one. The
+full fix is for later: a second wallet owning a second V3 relay (a relay deploy costs about 0.00005 ETH), with its own nonce stream.
 
 Three rules come from the relay as built:
 
-- **Fixed gas.** Both transactions are signed with a fixed gas limit, `V3_GAS` (400,000), never estimated. A buy that crosses one tick
-  measured 284k and a sell about 141k; on a pulled pool the swap walks to the price limit (about 31 million gas) and the buy runs out of
-  gas: the cost is that gas, nothing more.
+- **Fixed gas.** Both transactions are signed with a fixed gas limit, `V3_GAS` (500,000), never estimated; unused gas is not charged.
+  Measured on the final relay:
+  - buys of 0.002-0.004 ETH 235k-286k;
+  - one initialized tick crossed 333k;
+  - 0.05 ETH up to 364k;
+  - about 48k for each further tick;
+  - sells 167k-181k.
+
+  On a pulled pool the swap walks to the price limit (about 31 million gas) and the buy runs out of gas: the cost is that gas, nothing
+  more.
 - **Strict deadlines.** The relay refuses a block later than the deadline, and 0 is the past. The buy carries the fire's time +
   `BUY_DEADLINE_S` (2 h if that is 0); the presigned sell carries the fire's time + 2 h.
-- **The sell check** (`V3_SELL_CHECK`, 1 by default). Before a live buy, the pool's buy and sell are simulated through the relay by
-  `eth_call`, nothing sent: some tokens refuse any outsider's transfer into the pool, so the relay could buy and never sell. A pool whose
-  simulated sell reverts is not bought (skip "v3: the token cannot be sold"). The check runs when the pool is armed, which leaves p356 about
-  6 s before its buy at + 60. v3crowd buys in its launch block, before its pool exists, so with the check on it trades dry (an alarm at
-  start says so); `V3_SELL_CHECK=0` trades it unchecked.
+- **The sell check.** Before a live buy, the pool's buy and sell are simulated through the relay by `eth_call`, nothing sent: some
+  tokens refuse any outsider's transfer into the pool, so the relay could buy and never sell.
+  - **When it runs:** when the pool is armed, which leaves p356 about 6 s before its buy at + 60.
+  - **Refused:** a simulated sell that reverts, or less than 0.9 x the stake back. The pool is never bought (skip "v3: the token cannot
+    be sold").
+  - **No verdict:** an RPC failure is its own skip ("v3: the sell check could not run"). The check is asked again each block before
+    launch + buy_at.
+  - **Who is checked:** a launch-rule family (p356) is always checked when live. `V3_SELL_CHECK` (1) only decides for a crowd family:
+    v3crowd buys in its launch block, before its pool exists, so it cannot be checked. With 1 it trades dry (an alarm at start says so);
+    with 0 it trades unchecked.
 
 Before: the relay is deployed with WALLET as its owner, and it holds at least 0.004 ETH (its own steps; the engine only reads it).
 
@@ -569,39 +595,48 @@ It refuses, and changes nothing (no restart), in these cases:
 It must print:
 
 - the relay's address, `verified: True`, the wallet as `owner`, its balance, `cap: 0.004` and `error: None`;
-- the family with `dry_run False live True stake 0.004`;
+- the family with `dry_run False live True stake 0.004` (v3crowd shows `live False` while `V3_SELL_CHECK` is 1, with an alarm);
 - every other family as before (c1 `dry_run False`, the dry ones `dry_run True`).
 
 `verified: False` means an alarm says why; every V3 family then trades dry and the rest as before. The reasons: no code at the address,
 another owner (or `owner()` reverting), code without the relay's `buy`/`sell`, the v4 relay's address, not an address, or the RPC failed.
 p356's sell check is a `sell_check` line in the log at each arming (`ok`, or `why`). `results.py` shows the
-line LIVE with its capped stake, and the V3 relay's balance on the money line. Its trades are `trade_done` lines with `"dex":"v3"`, `pool`,
+line LIVE with its capped stake. Its money line shows the V3 relay's balance (`?` when that read fails; nothing if `RELAY_V3` is not an
+address). Its trades are `trade_done` lines with `"dex":"v3"`, `pool`,
 the fills (`buy.eth_in`, `sell.eth_out`), `pnl_usd`, `ret` and the pull fields.
 
 **Off.** The same snippet with `dry` in place of `live` (`sudo python3 - v3crowd dry <<'PY'` ...), then the same check. Remove
-`RELAY_V3` (`sudo sed -i '/^RELAY_V3=/d' /etc/flip/engine.env`) only after every V3 family says `"dry_run":true` again. With `RELAY_V3`
-empty, a V3 crowd family that still says `false` is refused at start and drops the whole `FRONT_FAMILIES` list, c1 with it (a
-launch-rule family is forced dry with an alarm). A stop or restart waits for an open live V3 trade: a p356 hold is about 20 s, then its
+`RELAY_V3` (`sudo sed -i '/^RELAY_V3=/d' /etc/flip/engine.env`) only after every V3 family says `"dry_run":true` again. If it is
+removed first, a V3 family that still says `false` is forced dry with an alarm at the next start. The list is not dropped and c1 keeps
+trading. A stop or restart waits for an open live V3 trade: a p356 hold is about 20 s, then its
 settle; the wait is at most `STOP_WAIT_S`, 40 s.
 
 **The cap.** `V3_STAKE_CAP_ETH` (0.004; 0.0005 to 0.012; anything else is 0.004 with a start alarm) raises it: `set_kv V3_STAKE_CAP_ETH
-0.0058` and a restart. The family's `stake_eth` still bounds the stake. `V3_GAS` (400000; 200000 to 600000, else 400000 with an alarm)
-and `V3_SELL_CHECK` (1; 0 = off) are set the same way.
+0.0058` and a restart. The family's `stake_eth` still bounds the stake. These are set the same way:
+
+- `V3_GAS` (500000; 200000 to 800000, else 500000 with an alarm);
+- `V3_SELL_CHECK` (1; 0 lets a crowd family trade unchecked);
+- `V3_DAILY_STOP_USD` (10).
 
 **The probe's halts.**
 
 - **This family alone**, through its own file `/var/log/flip/HALTED.front.<name>` (for example `HALTED.front.v3crowd`). The v4 lines go on.
   - A pull at or before our sell, from the pool's Burn logs read after the trade (an amount above 0 counts). For v3crowd, any liquidity
     removed. For p356, the launch position's Burns reaching half its liquidity.
-  - A buy that filled and a sell that sold none. A v4 line halts all of front for that; a V3 family halts alone, since the path is the
-    V3 relay's.
+  - A buy that filled and a sell whose receipt shows it sold none. A V3 family halts alone for that, since the path is the V3 relay's.
   - `FRONT_NONBOT_HALT` live trades in a row that paid under +2%. That is 8 on the box; v3crowd may set its own `nonbot_halt`, but a
     launch-rule family cannot.
 
   Once the cause is understood: `sudo rm /var/log/flip/HALTED.front.v3crowd && sudo systemctl restart flip-engine`.
-- **Front as a whole**: the V3 trades count in front's day, so `FRONT_DAILY_STOP_USD` and `FRONT_MAX_PER_DAY` apply.
+- **Front as a whole** (`HALTED.front`): a buy that filled and a sell with no receipt at all. The send path is the one the v4 lines share,
+  so front halts as a v4 line would.
+- **The day**:
+  - `V3_DAILY_STOP_USD` stops the V3 fires for the day.
+  - Front's own stop (`FRONT_DAILY_STOP_USD`) stops them too.
+  - `FRONT_MAX_PER_DAY` caps the V3 day's count as well.
 - **No halt, the fire skipped**: the V3 relay holds less than the stake (read at start and every minute; the skip says `"relay":"v3"`);
-  the pool's sell check failed (`v3: the token cannot be sold`) or has not finished.
+  the pool's sell check refused it (`v3: the token cannot be sold`), could not run, or has not finished; the last V3 trade's pull
+  check is still running.
 - **No halt, no trade**: a buy that took no token (a pulled pool: the relay keeps its ETH) is "not filled" (`buy.filled` false), as a
   reverted buy; its sell reverts with nothing to sell.
 - **An alarm, no halt**: the pull check could not be read (check the pool by hand), as on the v4 lines.

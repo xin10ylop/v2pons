@@ -150,9 +150,13 @@ def _v3_setting(name, default, lo, hi, integer=False):
 # FRONT_DRY_RUN are 0. Empty: exactly as before (a V3 crowd family's dry_run false refused, a launch-rule family's forced dry).
 RELAY_V3_SET = env("RELAY_V3", "") != ""; RELAY_V3, RELAY_V3_ERROR = _relay_v3(env("RELAY_V3", ""))
 V3_STAKE_CAP_ETH, V3_STAKE_CAP_ERROR = _v3_setting("V3_STAKE_CAP_ETH", 0.004, 0.0005, 0.012); V3_STAKE_CAP_WEI = int(round(V3_STAKE_CAP_ETH * 1e9)) * 10 ** 9   # a live V3 stake at most this (~$10)
-V3_GAS, V3_GAS_ERROR = _v3_setting("V3_GAS", 400_000, 200_000, 600_000, True)            # the V3 buy's and sell's fixed gas limit: never estimated (a pulled pool's swap walks to the
-                                                                                            # price limit, ~31M gas in an estimate); measured: a buy crossing one tick 284k, a sell ~141k
-V3_SELL_CHECK = env("V3_SELL_CHECK", "1") != "0"                                            # a pool's buy and sell simulated before a live V3 buy (v3_sell_check): a sell-locked token is not bought
+V3_GAS, V3_GAS_ERROR = _v3_setting("V3_GAS", 500_000, 200_000, 800_000, True)            # the V3 buy's and sell's fixed gas limit: never estimated (a pulled pool's swap walks to the
+                                                                                            # price limit, ~31M gas in an estimate). Measured on the final relay: buys of 0.002-0.004 ETH
+                                                                                            # 235k-286k, one initialized tick crossed 333k, 0.05 ETH up to 364k, ~48k a further tick;
+                                                                                            # sells 167k-181k. Unused gas is not charged
+V3_SELL_CHECK = env("V3_SELL_CHECK", "1") != "0"                                            # 0: a crowd family (no launch rule: it buys before its pool exists) trades unchecked;
+                                                                                            # a launch-rule family's pool is always sell-checked before a live buy (v3_sell_check)
+V3_DAILY_STOP_USD, V3_DAILY_STOP_ERROR = _v3_setting("V3_DAILY_STOP_USD", 10.0, 1, 100)    # the live V3 trades' own day (v3_today, v3_pnl_today_usd); front's stop holds too
 V3_SELL_DEADLINE_S = 7200                                                                   # the V3 relay's deadline is strict (block time <= deadline; 0 is the past): the presigned sell's is
                                                                                             # the fire's feed time + 2 h, the buy's + BUY_DEADLINE_S (+ 2 h if BUY_DEADLINE_S is 0: no "none")
 V3_LIVE = False                                                                             # set by checks(): RELAY_V3 verified (code, owner() WALLET)
@@ -336,8 +340,8 @@ def _no_dup_keys(pairs):
 def front_family_check(fam):
     """the bounds every family must meet (the FRONT_* one too): a fee in v4's range, a stake above 0 and at most the cap, a minOut in (0, 1],
     a take-profit in (0, 9], a hold of 1..600 blocks, a room of at least the stake, a price in v4's range, liquidity above 0, a fire window
-    inside the trigger window; a V3 family: dry unless RELAY_V3 is set, fired in its launch block, its cap past the fire window (its price and
-    liquidity may be 0: not compared)"""
+    inside the trigger window; a V3 family: fired in its launch block, its cap past the fire window (its price and liquidity may be 0: not
+    compared; its dry_run is forced true while RELAY_V3 is empty, by the parser)"""
     n = fam["name"]; v3 = fam["dex"] == "v3"
     if not 1 <= fam["fee"] <= 999999:
         raise SystemExit(f"front family {n}: fee {fam['fee']} is not in 1..999999 ppm")
@@ -362,8 +366,6 @@ def front_family_check(fam):
         raise SystemExit(f"front family {n}: value_wei (at most 1e6 ETH), sqrt_p (in v4's range) and liq (above 0) are out of range")
     if fam["value_wei"] == 0 and not fam.get("trigger") and not fam.get("launch"):
         raise SystemExit(f"front family {n}: a launch value of 0 needs a trigger (a wave family)")
-    if v3 and not fam["dry_run"] and not RELAY_V3_SET:                                     # with RELAY_V3 set, checks() decides whether it trades live (V3_LIVE)
-        raise SystemExit(f"front family {n}: dry_run must be true while RELAY_V3 is empty: the V3 trading path is not built without its relay (HANDOFF 16.22)")
     if v3 and (fam["fire_at"] or fam["hold_blocks"] < fam["fire_max"] + 3):
         raise SystemExit(f"front family {n}: a V3 family fires in its launch block (fire_at 0) and its cap (hold_blocks, from the launch) must be at least fire_max + 3")
     if v3 and fam["target"] == POSITION_MANAGER:
@@ -545,6 +547,8 @@ def front_families(base=None):
             if k in f and not v3:
                 raise SystemExit(f"FRONT_FAMILIES: family {i}: {k} is for a V3 family (dex \"v3\") only")
         w = f"FRONT_FAMILIES family {i}"
+        if v3 and f.get("dry_run") is False and not RELAY_V3_SET:                            # never a refusal: it would drop the whole list, the live families with it
+            warnings.append(f"{w} ({f.get('name')}): dry_run false is forced to true: a V3 family trades dry while RELAY_V3 is empty (HANDOFF 16.22)")
         try:
             fam = {"value_wei": _wei(f["value_wei"], f"{w} value_wei", 0, 10 ** 24),
                    "sqrt_p": _wei(f["sqrt_p"], f"{w} sqrt_p", MIN_SQRT_P, MAX_SQRT_P - 1) if "sqrt_p" in f else 0, "liq": _wei(f["liq"], f"{w} liq", 1, 2 ** 128) if "liq" in f else 0,   # 0: a V3 family's, not compared
@@ -555,7 +559,7 @@ def front_families(base=None):
                    "hold_blocks": _num(f.get("hold_blocks", defaults["hold_blocks"]), f"{w} hold_blocks", 1, 600, True),
                    "ahead_max_wei": _eth_wei(f["ahead_max_eth"], f"{w} ahead_max_eth", 0.0, 0.5) if "ahead_max_eth" in f else defaults["ahead_max_wei"],
                    "stake_wei": _eth_wei(f["stake_eth"], f"{w} stake_eth", 0.0, FRONT_STAKE_CAP_ETH) if "stake_eth" in f else defaults["stake_wei"],
-                   "dry_run": _flag(f.get("dry_run", v3 and RELAY_V3_SET), f"{w} dry_run"), "pin": _flag(f.get("pin", FRONT_PIN), f"{w} pin"),   # a V3 family is live only if it says false
+                   "dry_run": _flag(f.get("dry_run", v3), f"{w} dry_run") or (v3 and not RELAY_V3_SET), "pin": _flag(f.get("pin", FRONT_PIN), f"{w} pin"),   # a V3 family: live only if it says false
                    "fire_at": _num(f.get("fire_at", 0), f"{w} fire_at", 0, 600, True), "fire_max": _num(f.get("fire_max", FRONT_FIRE_MAX), f"{w} fire_max", 0, 10, True),
                    "calldata_len": _num(f.get("calldata_len", FRONT_CALLDATA_LEN), f"{w} calldata_len", 68, 8192, True), "trigger": _trigger(f.get("trigger"), w),
                    "fees_also": f.get("fees_also", []), "tick_spacings_also": f.get("tick_spacings_also", []),
@@ -867,6 +871,7 @@ state = {"seq": 0, "ts": 0, "nonce": None, "base_fee": 20_000_000, "armed": {}, 
                                                                                      # a live front trade out of the slot whose pull check is still running
          "launch_live": {}, "launch_arming": 0,                                       # launch-rule pools armed and not done (their pull and SwapRouter02 calls are read); reads running
          "relay_v3_wei": None,                                                        # RELAY_V3's balance (a live V3 trade's stake comes from it): read at start and by fee_loop
+         "v3_settling": None, "v3_today": 0, "v3_pnl_today_usd": 0.0,                 # a live V3 trade out of the slot whose pull check runs (V3 fires wait for it); the live V3 day
          "recent": collections.deque(maxlen=8000)}                                   # (seq, to, value, data) of recent ETH-carrying calls: replayed onto a pool armed after its first buys
 lock = threading.RLock()
 
@@ -945,23 +950,24 @@ def roll_day():
     d = today()
     if state["day"] != d:
         state["day"] = d; state["trades_today"] = 0; state["front_today"] = 0; state["pnl_today_usd"] = 0.0; state["front_pnl_today_usd"] = 0.0
+        state["v3_today"] = 0; state["v3_pnl_today_usd"] = 0.0
 
 
 def restore_today():
     """today's live trades from the log: a restart keeps the day's counts and P&L, so the daily caps and stops still hold"""
-    d = today(); got = {"trades_today": 0, "front_today": 0, "pnl_today_usd": 0.0, "front_pnl_today_usd": 0.0}; streaks = {}
+    d = today(); got = {"trades_today": 0, "front_today": 0, "pnl_today_usd": 0.0, "front_pnl_today_usd": 0.0}; streaks = {}; v3 = {"v3_today": 0, "v3_pnl_today_usd": 0.0}
     for path in (LOG_PATH + ".1", LOG_PATH):                                            # a rotation during the day leaves the morning in .1
-        _restore_from(path, d, got, streaks)
+        _restore_from(path, d, got, streaks, v3)
     for k, (v, halted_on) in list(streaks.items()):                                     # the owner cleared the decoy halt that this run caused: it starts again
         path = FRONT_HALT_FILE if is_base_fam(k) else fam_halt_file(k)
         if halted_on and not os.path.exists(path):
             log({"ev": "nonbot_streak_reset", "fam": k, "was": v, "why": "the decoy halt's file is gone"}); v = 0
         streaks[k] = v
-    state.update(got); state["front_nonbot_streak"] = streaks                          # each family's run of non-paying front exits goes on across a restart
+    state.update(got); state.update(v3); state["front_nonbot_streak"] = streaks        # each family's run of non-paying front exits goes on across a restart
     return got
 
 
-def _restore_from(path, d, got, streaks):
+def _restore_from(path, d, got, streaks, v3=None):
     try:
         for line in open(path):
             if '"trade_done"' not in line or '"dry":false' not in line:
@@ -974,6 +980,10 @@ def _restore_from(path, d, got, streaks):
             if front and e.get("nonbot_streak") is not None:                             # the run of non-paying exits goes on across days: decoys keep no calendar
                 streaks[e.get("fam") or "front"] = (e["nonbot_streak"], bool(e.get("nonbot_halted")))
             if datetime.datetime.fromtimestamp(e.get("t", 0), datetime.timezone.utc).strftime("%Y-%m-%d") != d:
+                continue
+            if v3 is not None and e.get("dex") == "v3":                                 # a live V3 trade: its own day (V3_DAILY_STOP_USD)
+                v3["v3_pnl_today_usd"] += e.get("pnl_usd") or 0.0
+                v3["v3_today"] += e.get("buy") != "no receipt"
                 continue
             got["front_pnl_today_usd" if front else "pnl_today_usd"] += e.get("pnl_usd") or 0.0
             if e.get("buy") != "no receipt":                                           # a buy that never went in was given back (uncount)
@@ -1480,9 +1490,9 @@ def arm_launch_rule(fam, to, h, seq, ts, seen_at, stale, code):
             for s, to_, value, data in list(state["recent"]):                              # ETH buys that landed while the code and the receipt were read
                 if s >= seq and p["token_bytes"] in data and to_ != p["token"]:
                     on_launch_buy(p, s, value, to_, False)
-            if V3_SELL_CHECK and v3_live(fam):                                             # a live V3 buy waits for its pool's sell check (HANDOFF 16.22)
-                p["sell_check"] = None
-                threading.Thread(target=v3_sell_check, args=(p, min(fam_stake(fam), V3_STAKE_CAP_WEI)), daemon=True).start()
+            if v3_live(fam):                                                               # a live launch-rule buy waits for its pool's sell check (HANDOFF 16.22), always
+                p["sell_check"] = None; p["sell_check_rpc"] = False; p["sell_check_stake"] = min(fam_stake(fam), V3_STAKE_CAP_WEI)
+                threading.Thread(target=v3_sell_check, args=(p, p["sell_check_stake"]), daemon=True).start()
     log({"ev": "armed", "pid": p["pid"], "token": p["token"], "fee": p["fee"], "tick_spacing": p["tick_spacing"], "hooks": p["hooks"][-8:], "liq": liq, "sqrt_p": p["sqrt_p"], "seq": seq,
          "arm_ms": p["arm_ms"], "arm_seq": p["arm_seq"], "eligible": p["eligible"], "eth_pair": p["c0"] == WETH, "buys_before_arm": p["buys"], "launcher_code": p["launcher_code"],
          "entry": "front", "fam": name, "fingerprint": "new: " + ", ".join(new) if new else "known", **({"why": "front: " + why} if why else {}), "dex": "v3", "launch_rule": True,
@@ -1544,27 +1554,26 @@ def v3_revert(e):
 
 
 def v3_sell_check(p, stake):
-    """thread (V3_SELL_CHECK, started when a live launch-rule pool is armed, 60 blocks before its buy): the pool's buy and sell simulated on
-    the latest state, nothing sent. eth_call of contracts/SellCheckV3.sol's check(RELAY_V3, token, fee, stake, deadline), its code placed at
-    WALLET's address (the relay's owner) and RELAY_V3 given the stake as its balance by state overrides: the relay buys with minOut 1 and sells
-    all it got. p["sell_check"]: "ok" (tokens bought and ETH back), else why not; a reverted sell (a sell lock: the token refuses an outsider's
-    transfer into the pool, TransferFailed), a buy that got nothing, or an RPC that failed 3 times. A live buy goes only after "ok" (_fire)"""
-    t0 = mono(); why = None; got = back = None
+    """thread (started when a live launch-rule pool is armed, 60 blocks before its buy, and again each block by launch_timer after an RPC
+    failure, up to launch + buy_at): the pool's buy and sell simulated on the latest state, nothing sent. eth_call of contracts/SellCheckV3.sol's
+    check(RELAY_V3, token, fee, stake, deadline), its code placed at WALLET's address (the relay's owner) and RELAY_V3 given the stake as its
+    balance by state overrides: the relay buys with minOut 1 and sells all it got. p["sell_check"]: "ok" (tokens bought and at least 0.9 x the
+    stake back), else why not: a refusal (the call reverted: a sell lock, TransferFailed, or a buy that got nothing; or too little back), or,
+    with p["sell_check_rpc"], an RPC failure (no verdict). A live buy goes only after "ok" (_fire)"""
+    t0 = mono(); why = None; got = back = None; rpc_fail = False
     data = "0x" + SEL_SELL_CHECK + word(RELAY_V3) + word(p["token"]) + word(p["fee"]) + word(stake) + word(state["ts"] + 600)
     ov = {h0x(WALLET): {"code": SELL_CHECK_CODE}, h0x(RELAY_V3): {"balance": hex(stake)}}
-    for k in range(3):
-        try:
-            r = rpc("eth_call", [{"from": "0x" + "c0" * 20, "to": h0x(WALLET), "data": data, "gas": hex(5_000_000)}, "latest", ov], tries=1, timeout=3)
-            got, back = W(r, 0), W(r, 1); why = None if got > 0 and back > 0 else f"the round trip gave {got} tokens and {back} wei back"
-            break
-        except Exception as e:
-            reverted = isinstance(e, RuntimeError) and str(e).startswith("{") and any(x in str(e).lower() for x in ("revert", "out of gas"))   # the call's own failure, not the node's
-            why = ("the simulated buy and sell reverted: " if reverted else "not checked: ") + v3_revert(e)
-            if reverted:
-                break
-            time.sleep(0.3)
+    try:
+        r = rpc("eth_call", [{"from": "0x" + "c0" * 20, "to": h0x(WALLET), "data": data, "gas": hex(5_000_000)}, "latest", ov], tries=1, timeout=3)
+        got, back = W(r, 0), W(r, 1)
+        why = None if got > 0 and 10 * back >= 9 * stake else f"the round trip gave {got} tokens and {back} wei back for {stake}"
+    except Exception as e:
+        reverted = isinstance(e, RuntimeError) and str(e).startswith("{") and any(x in str(e).lower() for x in ("revert", "out of gas"))   # the call's own failure, not the node's
+        why = ("the simulated buy and sell reverted: " if reverted else "") + v3_revert(e); rpc_fail = not reverted
+    p["sell_check_rpc"] = rpc_fail                                                 # (before the verdict: _fire reads the verdict first)
     p["sell_check"] = why or "ok"
-    log({"ev": "sell_check", "pid": p["pid"], "fam": p["fam"], "ok": why is None, "why": why, "tokens": got, "eth_back": back, "stake": stake, "ms": round(1000 * (mono() - t0), 1)})
+    log({"ev": "sell_check", "pid": p["pid"], "fam": p["fam"], "ok": why is None, "why": why, "rpc_failed": rpc_fail, "tokens": got, "eth_back": back, "stake": stake,
+         "ms": round(1000 * (mono() - t0), 1)})
 
 
 def sign(tx):
@@ -1608,6 +1617,10 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
         log({"ev": "skip", "why": "position open", "pid": p["pid"], "seq": seq}); return
     count_key, cap = ("front_today", FRONT_MAX_PER_DAY) if front else ("trades_today", MAX_TRADES_PER_DAY)
     pnl_key, stop = ("front_pnl_today_usd", FRONT_DAILY_STOP_USD) if front else ("pnl_today_usd", DAILY_STOP_USD)   # each strategy against its own stop
+    if v3 and not dry:                                                             # a live V3 trade: its own day and stop (V3_DAILY_STOP_USD), and front's stop too
+        count_key, pnl_key, stop = "v3_today", "v3_pnl_today_usd", V3_DAILY_STOP_USD
+        if state["front_pnl_today_usd"] <= -FRONT_DAILY_STOP_USD:
+            log({"ev": "skip", "why": "daily stop", "pid": p["pid"], "seq": seq, "front_pnl_today_usd": round(state["front_pnl_today_usd"], 2)}); return
     if state[count_key] >= cap:
         log({"ev": "skip", "why": "daily cap", "pid": p["pid"], "seq": seq, count_key: state[count_key]}); return
     if state[pnl_key] <= -stop:
@@ -1619,9 +1632,11 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
         log({"ev": "skip", "why": "late first buy (not the crowd)", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]}); return
     if not p["eligible"]:
         log({"ev": "skip", "why": "pool not eligible", "pid": p["pid"], "fee": p["fee"], "liq": p["liq"]}); return
-    if v3 and not dry and V3_SELL_CHECK and p.get("sell_check") != "ok":            # a live V3 buy only on a pool whose sell was checked (v3_sell_check)
+    if v3 and not dry and p["fam_cfg"].get("launch") and p.get("sell_check") != "ok":   # a live launch-rule buy only on a pool whose sell was checked (v3_sell_check)
         if p.get("sell_check") is None:                                            # still running: the timer asks again next block (to its window's end)
             log({"ev": "skip", "why": "v3: the sell check has not finished", "pid": p["pid"], "seq": seq, "fam": p.get("fam")}); return
+        if p.get("sell_check_rpc"):                                                # the RPC failed: no verdict (launch_timer asks again each block to launch + buy_at)
+            log({"ev": "skip", "why": "v3: the sell check could not run: " + p["sell_check"], "pid": p["pid"], "seq": seq, "fam": p.get("fam")}); return
         p["status"] = "late"; state["launch_live"].pop(p["pid"], None)
         log({"ev": "skip", "why": "v3: the token cannot be sold: " + p["sell_check"], "pid": p["pid"], "seq": seq, "fam": p.get("fam")}); return
     fam = p.get("fam_cfg") if front else None
@@ -1633,6 +1648,8 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
         log({"ev": "skip", "why": "the relay holds less than the stake", "pid": p["pid"], "seq": seq, "relay_eth": state[bal] / 1e18, **({"relay": "v3"} if v3 else {})}); return
     if front and not dry and state["front_settling"] is not None:
         log({"ev": "skip", "why": "front: the last front trade's pull check is still running", "pid": p["pid"], "seq": seq}); return
+    if v3 and not dry and state["v3_settling"] is not None:                       # a V3 pull check holds the V3 fires only (a v4 fire never waits for one)
+        log({"ev": "skip", "why": "v3: the last V3 trade's pull check is still running", "pid": p["pid"], "seq": seq, "fam": p.get("fam")}); return
     follow_can = (state["trades_today"] < MAX_TRADES_PER_DAY and state["pnl_today_usd"] > -DAILY_STOP_USD and (state["relay_wei"] is None or state["relay_wei"] >= STAKE_WEI))
     if front and not dry and follow_can and (state["arming"] or any(q.get("entry") != "front" and q["eligible"] and (q["status"] == "delayed" or (q["status"] == "armed" and q["first_buy"] is None))
                                                      and seq - q["launch_seq"] <= TRIGGER_MAX_BLOCKS
@@ -1907,6 +1924,8 @@ def settle(pos):
                 state["position"] = None
             if state["front_settling"] is pos:
                 state["front_settling"] = None
+            if state["v3_settling"] is pos:
+                state["v3_settling"] = None
             if pos.get("dex") == "v3":                                             # a launch-rule pool's watch ends with its trade
                 state["launch_live"].pop(pos["pid"], None)
         refresh_nonce()
@@ -2046,13 +2065,13 @@ def v3_pull(ls, pos):
 
 def _settle_v3(pos):
     """a live V3 trade's settle (HANDOFF 16.22), _settle's flow on the V3 pool's own logs: both receipts; the fills from the pool's Swap log
-    (swap_of_v3); eth_in, eth_out, gas, pnl and ret as _settle computes them; the slot freed once both receipts are in (front waits for the
-    pull check: front_settling); the pull from the pool's Burn logs (v3_pull) from our buy's block (a launch-rule family's from its launch: its
-    rule cumulates the launch position's Burns) to our sell + 30, 10 under the node's head and never under our sell, 3 tries. Every halt here is
-    the family's own (its file), never front's: a pull at or before our sell; a buy that filled and a sell that sold none (_settle halts front
-    for that: the v4 lines share one sell path; this one is RELAY_V3's, which only the V3 families use, so it stops them and leaves the v4 lines
-    trading); the streak of exits that paid under FRONT_NONBOT_MIN_RET (the family's nonbot_halt, else FRONT_NONBOT_HALT). The day's count and
-    P&L are front's; RELAY_V3's balance moves by the trade; a launch-rule pool's watch ends (launch_live)."""
+    (swap_of_v3); eth_in, eth_out, gas, pnl and ret as _settle computes them; the slot freed once both receipts are in (the V3 fires wait
+    for the pull check: v3_settling; the v4 ones do not); the pull from the pool's Burn logs (v3_pull) from our buy's block (a launch-rule
+    family's from its launch: its rule cumulates the launch position's Burns) to our sell + 30, 10 under the node's head and never under our sell, 3 tries. The halts are
+    the family's own (its file): a pull at or before our sell; a buy that filled and a sell whose receipt shows it sold none (RELAY_V3's path,
+    which only the V3 families use); the streak of exits that paid under FRONT_NONBOT_MIN_RET (the family's nonbot_halt, else
+    FRONT_NONBOT_HALT). A filled buy whose sell has no receipt halts front, as _settle does: the send path is the one the v4 lines share. The
+    day's count and P&L are the V3 ones (v3_today, v3_pnl_today_usd); RELAY_V3's balance moves by the trade; a launch-rule pool's watch ends."""
     fam = pos["fam"]
     rb = wait_receipt(pos["buy_hash"], RECEIPT_TIMEOUT_S); rs = wait_receipt(pos["sell_hash"], RECEIPT_TIMEOUT_S)
     out = {"ev": "trade_done", "dry": False, "entry": "front", "dex": "v3", "fam": fam, "relay": h0x(RELAY_V3), "stake": pos["stake"], "pid": pos["pid"], "pool": pos["pid"],
@@ -2075,9 +2094,9 @@ def _settle_v3(pos):
     filled = rb is not None and rb.get("status") == "0x1" and (out["buy"].get("tokens") or 0) > 0   # a buy that took no token (a pulled pool: the relay keeps
     if isinstance(out["buy"], dict) and out["buy"]["status"] == "ok" and not filled:               # its ETH) is a buy not filled, as a reverted one
         out["buy"]["filled"] = False
-    if rb is not None and rs is not None:                                          # both in, both nonces used: the slot is free; front waits for the pull check
-        with lock:
-            state["front_settling"] = pos
+    if rb is not None and rs is not None:                                          # both in, both nonces used: the slot is free; the V3 fires wait for the pull check
+        with lock:                                                                 # (v3_settling: a v4 fire never waits for a V3 pull check)
+            state["v3_settling"] = pos
             if state["position"] is pos:
                 state["position"] = None; state["nonce"] = max(state["nonce"] or 0, pos["nonce"] + 2)
     if filled and rs:
@@ -2110,9 +2129,11 @@ def _settle_v3(pos):
             halt(f"the pool's liquidity was pulled {out['pull_after_buy_blocks']} blocks after our buy, at or before our sell ({b1 - b0}; the pool's Burn logs): "
                  f"the operator's reaction is now faster than our exit", scope="front", fam=fam)
     sold = isinstance(out.get("sell"), dict) and (out["sell"].get("tokens_in") or 0) > 0
-    if filled and not out.get("pulled_before_sell") and not sold:
-        halt("the buy filled and the sell sold none of it (sell: " + (out["sell"]["status"] if isinstance(out.get("sell"), dict) else str(out.get("sell")))
-             + "): RELAY_V3's path, which only the V3 families use: this family alone", scope="front", fam=fam)
+    if filled and not out.get("pulled_before_sell") and not sold and isinstance(out.get("sell"), dict):   # the sell went in and sold none: RELAY_V3's path
+        halt("the buy filled and the sell sold none of it (sell: " + out["sell"]["status"] + "): RELAY_V3's path, which only the V3 families use: this family alone",
+             scope="front", fam=fam)
+    elif filled and not out.get("pulled_before_sell") and not sold:                # no sell receipt: the send path, which the v4 lines share: front-wide, as _settle
+        halt("the buy filled and the sell sold none of it (sell: " + str(out.get("sell")) + "): the send path the v4 lines share", scope="front")
     pnl = eth_out - eth_in - gas_wei
     nonbot_halt = pos.get("nonbot_halt"); nonbot_halt = FRONT_NONBOT_HALT if nonbot_halt is None else nonbot_halt
     if filled and eth_in and nonbot_halt:                                              # the streak of unpaid exits, per family (no room observations: no auto stake)
@@ -2133,11 +2154,11 @@ def _settle_v3(pos):
             state["relay_v3_wei"] += eth_out - eth_in
         if rb is None:                                                                 # no buy receipt: the buy never went in; it does not count against the cap
             uncount(pos)
-        released = state["front_settling"] is pos
+        released = state["v3_settling"] is pos
         if n is not None:
             state["nonce"] = max(n, state["nonce"] or 0) if released else n
         if released:
-            state["front_settling"] = None
+            state["v3_settling"] = None
         if state["position"] is pos:
             state["position"] = None
         state["launch_live"].pop(pos["pid"], None)
@@ -2200,11 +2221,13 @@ def stop_tick():
     pos = state["position"]
     if not state["stop_logged"]:
         state["stop_logged"] = True
-        log({"ev": "stopping", "position": pos["pid"] if pos else None, "sell_sent": pos["sell_sent"] if pos else None, "front_settling": state["front_settling"] is not None})
-    idle = (pos is None or bool(pos.get("launch_rule") and pos.get("dry"))) and state["front_settling"] is None   # a dry launch-rule hold (20 s) never delays a restart
+        log({"ev": "stopping", "position": pos["pid"] if pos else None, "sell_sent": pos["sell_sent"] if pos else None, "front_settling": state["front_settling"] is not None,
+             "v3_settling": state["v3_settling"] is not None})
+    idle = (pos is None or bool(pos.get("launch_rule") and pos.get("dry"))) and state["front_settling"] is None and state["v3_settling"] is None   # (a dry launch-rule hold:
+                                                                                   # never waited for)
     if idle or mono() - t0 > STOP_WAIT_S:
         if not idle:
-            log({"ev": "alarm", "what": f"stopped with a trade still open after {STOP_WAIT_S:g} s: check it", "pid": (pos or state["front_settling"] or {}).get("pid")})
+            log({"ev": "alarm", "what": f"stopped with a trade still open after {STOP_WAIT_S:g} s: check it", "pid": (pos or state["front_settling"] or state["v3_settling"] or {}).get("pid")})
         log({"ev": "stopped", "idle": idle, "waited_s": round(mono() - t0, 2)})
         EXIT(0)
 
@@ -2257,7 +2280,7 @@ def fee_loop():
             with lock:
                 if bal is not None and state["position"] is None and state["front_settling"] is None:
                     state["relay_wei"] = bal
-                if bal3 is not None and state["position"] is None and state["front_settling"] is None:
+                if bal3 is not None and state["position"] is None and state["front_settling"] is None and state["v3_settling"] is None:
                     state["relay_v3_wei"] = bal3
         time.sleep(10)
 
@@ -2495,6 +2518,9 @@ def launch_timer(p, seq, stale, seen_at):
     stale block (the feed lagging) waits, and a fire may go up to fire_max (LAUNCH_FIRE_MAX) blocks later (a lagging feed, skipped blocks, the
     slot busy); past that the pool is late"""
     f = p["fam_cfg"]; off = seq - p["launch_seq"]
+    if p.get("sell_check_rpc") and off < f["buy_at"]:                              # a live pool's sell check could not run: again, each block before launch + buy_at
+        p["sell_check"] = None; p["sell_check_rpc"] = False
+        threading.Thread(target=v3_sell_check, args=(p, p["sell_check_stake"]), daemon=True).start()
     if off < f["buy_at"]:
         return
     if off > f["buy_at"] + f["fire_max"]:
@@ -2796,7 +2822,7 @@ def checks():
                 log({"ev": "alarm", "what": "SELL_ALT_URL is not an https URL with a host, no user:password@ and no space or control character: the second path is off"})
     if SEND_TIMEOUT_ERROR:
         log({"ev": "alarm", "what": SEND_TIMEOUT_ERROR})
-    for e in (V3_STAKE_CAP_ERROR, V3_GAS_ERROR):
+    for e in (V3_STAKE_CAP_ERROR, V3_GAS_ERROR, V3_DAILY_STOP_ERROR):
         if e:
             log({"ev": "alarm", "what": e})
     info.update({"send_timeout_s": SEND_TIMEOUT_S, "sell_alt": urllib.parse.urlparse(SELL_ALT_URL).hostname if SENDER_ALT is not None else None,   # the host only
@@ -2823,7 +2849,8 @@ def relay_v3_check(info):
     an alarm too: it buys in its launch block, before its sell can be checked, so it trades dry (v3_route)"""
     global V3_LIVE
     V3_LIVE = False
-    info.update({"relay_v3": h0x(RELAY_V3) if RELAY_V3 else None, "relay_v3_live": False, "v3_stake_cap_eth": V3_STAKE_CAP_WEI / 1e18, "v3_gas": V3_GAS, "v3_sell_check": V3_SELL_CHECK})
+    info.update({"relay_v3": h0x(RELAY_V3) if RELAY_V3 else None, "relay_v3_live": False, "v3_stake_cap_eth": V3_STAKE_CAP_WEI / 1e18, "v3_gas": V3_GAS, "v3_sell_check": V3_SELL_CHECK,
+                 "v3_daily_stop_usd": V3_DAILY_STOP_USD, "v3_today": state["v3_today"], "v3_pnl_today_usd": round(state["v3_pnl_today_usd"], 3)})
     if not RELAY_V3_SET:
         return
     why = RELAY_V3_ERROR
