@@ -1,0 +1,2 @@
+transactions to T's buyer or with its address in calldata, L+1..T-1: 0 []
+balance / nonce history: not available on the public node (non-archive: historical state is not available); buyer nonces at T: [11999, 12622, 13485, 20597, 21554, 21604, 49639, 51938, 51976, 52472, 53077, 54643, 55480, 55961, 56372, 56472, 56558, 56573, 56645, 57221, 57266, 57613, 58063, 58195, 58297, 58604, 58682, 59293, 59573, 60518, 63831, 63854, 64181, 64480, 64496, 65330, 65341, 65442, 65636, 65771, 65948, 66077, 66116, 66130, 66770, 67083, 67635, 68496, 68996]

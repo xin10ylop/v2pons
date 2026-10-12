@@ -1,8 +1,10 @@
-pools 47 blocks near T 707 rest 1213
-  near 400/707 blocks 400 receipts 400
-  near 707/707 blocks 707 receipts 707
-  rest 400/1213 blocks 1107 receipts 1107
-  rest 800/1213 blocks 1507 receipts 1507
-  rest 1200/1213 blocks 1907 receipts 1907
-  rest 1213/1213 blocks 1920 receipts 1920
+pools 69 blocks near T 1031 rest 1710
+  near 400/1031 blocks 3224 receipts 1920
+  near 800/1031 blocks 3317 receipts 2013
+  near 1031/1031 blocks 3548 receipts 2244
+  rest 400/1710 blocks 3548 receipts 2244
+  rest 800/1710 blocks 3548 receipts 2244
+  rest 1200/1710 blocks 3548 receipts 2244
+  rest 1600/1710 blocks 3935 receipts 2631
+  rest 1710/1710 blocks 4045 receipts 2741
 missing blocks or receipts: 0 []

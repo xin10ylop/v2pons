@@ -3,3 +3,8 @@ pool 0xde1fd13c62 L 86206633 T +51 buyer 0x1c94eff7 nonce 51976 q 0.1000; balanc
 pool 0x50b7eed070 L 86206646 T +44 buyer 0xa5a9ee43 nonce 63854 q 0.1500; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -150002826060000000, 1)]
 pool 0x21221795cc L 86212390 T +53 buyer 0x448908fa nonce 60518 q 0.1750; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -175003003260812000, 1)]
 pool 0x03cf4f879b L 86212404 T +26 buyer 0x1f77b661 nonce 59293 q 0.1353; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -135288513459144361, 1)]
+pool 0xe5112c0145 L 86218181 T +47 buyer 0x6684adf4 nonce 57266 q 0.1585; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -158477161328583346, 1)]
+pool 0x26d05c1e50 L 86218197 T +47 buyer 0xf09b76f2 nonce 66130 q 0.1000; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -100002999401704000, 1)]
+pool 0x6185303afe L 86224023 T +57 buyer 0xf9649060 nonce 52472 q 0.1895; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -189460672115363905, 1)]
+pool 0x3832e0145f L 86224031 T +26 buyer 0xb89db00c nonce 21604 q 0.1485; balance/nonce changes (d from T, dbal wei, dnonce): [(0, -148502997554850000, 1)]
+(stopped by hand at 23:45 UTC after 8 pools; buyer balance and nonce unchanged at every block T-15..T-1 in 8 of 8)

@@ -1,0 +1,11 @@
+slice cur: blocks 85553000..85734702 = 10-11 04:21:24 .. 10-11 09:38:24 UTC; ETH-pair Initialize logs 319; 3.0 shape 94
+   txs 94/94
+3.0 launches 94; rejected {}
+   pool events 20/94
+   pool events 40/94
+   pool events 60/94
+   pool events 80/94
+   pool events 94/94
+swap/ml txs: 667
+   txs 400/573
+   txs 573/573

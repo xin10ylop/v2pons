@@ -1,0 +1,6 @@
+head 86220657, state from 86215157; 3 line launches in the last 5000 blocks; subjects 4
+{"kind": "launcher", "line": "2.433", "w": "0x9395649b4e27cd1e76fe1fb627943e1929121d23", "q": null, "off": null, "result": "funded before the state window (>= 3017 blocks before its first act)", "blocks_before_first_act": null, "bal_after": null, "funding_txs": null}
+{"kind": "fresh_buyer", "line": "2.433", "w": "0x3769715d30639f325d11ddc8d9d6ff10aee03cf5", "q": 0.00487872, "off": 1, "result": "funded before the state window (>= 3018 blocks before its first act)", "blocks_before_first_act": null, "bal_after": null, "funding_txs": null}
+{"kind": "launcher", "line": "3.0", "w": "0x661d0a348873ddaf266fa65149cb419b5df38ade", "q": null, "off": null, "result": "found", "blocks_before_first_act": 107, "bal_after": 9.471781444604012, "funding_txs": [{"from": "0x8970c56f5be5e1e2896acd68219eae9ae8a3d10d", "to": "0x661d0a348873ddaf266fa65149cb419b5df38ade", "value": 9.471781444604012, "sel": "0x", "len": 0, "nonce": 6, "hash": "0xeea68b750
+{"kind": "launcher", "line": "3.0", "w": "0x89c93a0874d68094372e52219d058d5b4191abf9", "q": null, "off": null, "result": "funded before the state window (>= 3040 blocks before its first act)", "blocks_before_first_act": null, "bal_after": null, "funding_txs": null}
+posts {'posts': 28, 'items': 46, 'r429': 0}

@@ -1,0 +1,11 @@
+slice oldest: blocks 80000000..80150000 = 10-04 14:18:02 .. 10-04 18:30:33 UTC; ETH-pair Initialize logs 1231; 3.0 shape 89
+   txs 89/89
+3.0 launches 89; rejected {}
+   pool events 20/89
+   pool events 40/89
+   pool events 60/89
+   pool events 80/89
+   pool events 89/89
+swap/ml txs: 774
+   txs 400/685
+   txs 685/685

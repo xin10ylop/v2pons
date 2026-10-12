@@ -1,0 +1,18 @@
+pools read live: 21 | skipped rows: 0
+balance identical at every block T-15..T-1: 21 of 21; nonce identical: 21 of 21; balance at T-1 covers the buy: 21 of 21
+T's buy size p50 0.1500 ETH; deadline - (unknown here) | T offsets: [18, 25, 26, 26, 26, 29, 30, 32, 32, 34, 37, 42, 43, 44, 46, 47, 47, 51, 53, 55, 57]
+last balance change before T: lead (blocks) sorted: [30, 37, 38, 39, 42, 47, 47, 49, 55, 58, 63, 67, 69, 73, 523, 747, 961, 1041, 1473]
+   p10/50/90 37/58/1041; within 1-4 blocks: 0; within 1-15: 0
+kind: [(('incoming', 'tx names it'), 18), (('not measured (first monitor version)',), 2), (('own tx', 'tx names it'), 1)]
+  e.g. ('0x21221795cc', 'T', 53, 'lead', 69, 'delta ETH 0.01072', 'incoming: 0x8970c56f->0x1cbaf24d:7422a284')
+  e.g. ('0x03cf4f879b', 'T', 26, 'lead', 38, 'delta ETH 0.10797', 'incoming: 0xd245fa05->0x1cbaf24d:7422a284')
+  e.g. ('0xe5112c0145', 'T', 47, 'lead', 63, 'delta ETH 0.13726', 'incoming: 0x661d0a34->0x1cbaf24d:7422a284')
+  e.g. ('0x26d05c1e50', 'T', 47, 'lead', 58, 'delta ETH 0.10103', 'incoming: 0x89c93a08->0x1cbaf24d:7422a284')
+  e.g. ('0x6185303afe', 'T', 57, 'lead', 73, 'delta ETH 0.18201', 'incoming: 0x7abd5c00->0x1cbaf24d:7422a284')
+  e.g. ('0x3832e0145f', 'T', 26, 'lead', 39, 'delta ETH 0.15071', 'incoming: 0x8ba478b9->0x1cbaf24d:7422a284')
+  e.g. ('0x97c7094593', 'T', 32, 'lead', 47, 'delta ETH 0.07887', 'incoming: 0xe5aab998->0x1cbaf24d:7422a284')
+  e.g. ('0xc30478b400', 'T', 29, 'lead', 42, 'delta ETH 0.07288', 'incoming: 0x0eed3bd7->0x1cbaf24d:7422a284')
+  e.g. ('0x931e2160cf', 'T', 34, 'lead', 49, 'delta ETH 0.05416', 'incoming: 0x23487b35->0x1cbaf24d:7422a284')
+  e.g. ('0xd3b41d2638', 'T', 26, 'lead', 1473, 'delta ETH 0.16908', 'own tx: 0xf3029830->0x88767899:24856bc3')
+  e.g. ('0x01dd03767a', 'T', 42, 'lead', 1041, 'delta ETH 0.01042', 'incoming: 0x0eed3bd7->0x1cbaf24d:7422a284')
+  e.g. ('0xb0925d3231', 'T', 55, 'lead', 67, 'delta ETH 0.05138', 'incoming: 0x47e8bccf->0x1cbaf24d:7422a284')

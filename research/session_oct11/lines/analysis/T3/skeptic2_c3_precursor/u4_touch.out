@@ -1,14 +1,14 @@
 
-== TEST SLICE (recent 2 h, not the finder's): 36 pools, L 86154146..86200806 (10-11 21:37:43 .. 10-11 22:58:10 UTC)
-  pools with a calldata/sender/recipient touch of pool, token or buyer in [T-12, T): 0 of 36
-  pools with a log touch (token log, pool log, buyer/token/pid in a log) in [T-4, T): 0 of 36
-  pools with ANY touch in the whole [L-3, T) besides the launch tx and the sentinel: 0 of 36; explained touches: {'launch': 36, 'sentinel': 36, 'launcher_prelaunch:0x00000000:87517c45': 14}
-  buyer's first touch after T (block offset from T, flags, to, selector): [('none to T+3', 34), ((3, ('buyer_is_sender', 'token_log:Approval', 'tx_to_token'), '0x8c33c088', '095ea7b3'), 1), ((3, ('buyer_is_sender', 'token_log:Approval', 'tx_to_token'), '0x08ad9840', '095ea7b3'), 1)]
-  swaps in the pool ahead of T: [(('sentinel', 'L+3', 'buy', 2e-06), 29), (('sentinel', 'L+4', 'buy', 2e-06), 3), (('sentinel', 'L+2', 'buy', 2e-06), 3), (('sentinel', 'L+7', 'buy', 2e-06), 1)]
-  bot's T tx: deadline - ts(T block) [(1199, 9), (1200, 27)] (1200 = signed in T's own second); tx type/priority fee [(('0x2', 24000000), 8), (('0x2', 24057600), 2), (('0x2', 24117600), 2), (('0x2', 24139200), 2)]; buyer nonce p10/50/90 49639/57906/66116
-  status of the bot's T tx: {'0x1': 36}
+== TEST SLICE (recent 2 h, not the finder's): 58 pools, L 86154146..86230084 (10-11 21:38:04 .. 10-11 23:48:30 UTC)
+  pools with a calldata/sender/recipient touch of pool, token or buyer in [T-12, T): 0 of 58
+  pools with a log touch (token log, pool log, buyer/token/pid in a log) in [T-4, T): 0 of 58
+  pools with ANY touch in the whole [L-3, T) besides the launch tx and the sentinel: 0 of 58; explained touches: {'launch': 58, 'sentinel': 58, 'launcher_prelaunch:0x00000000:87517c45': 22}
+  buyer's first touch after T (block offset from T, flags, to, selector): [('none to T+3', 56), ((3, ('buyer_is_sender', 'token_log:Approval', 'tx_to_token'), '0x8c33c088', '095ea7b3'), 1), ((3, ('buyer_is_sender', 'token_log:Approval', 'tx_to_token'), '0x08ad9840', '095ea7b3'), 1)]
+  swaps in the pool ahead of T: [(('sentinel', 'L+3', 'buy', 2e-06), 48), (('sentinel', 'L+4', 'buy', 2e-06), 4), (('sentinel', 'L+2', 'buy', 2e-06), 4), (('sentinel', 'L+7', 'buy', 2e-06), 1), (('sentinel', 'L+5', 'buy', 2e-06), 1)]
+  bot's T tx: deadline - ts(T block) [(1199, 15), (1200, 43)] (1200 = signed in T's own second); tx type/priority fee [(('0x2', 24000000), 9), (('0x2', 24139200), 3), (('0x2', 24067200), 3), (('0x2', 24057600), 2)]; buyer nonce p10/50/90 21604/58297/66130
+  status of the bot's T tx: {'0x1': 58}
 
-== finder's own recent pools (overlap): 11 pools, L 86136473..86150251 (10-11 21:07:14 .. 10-11 21:31:00 UTC)
+== finder's own recent pools (overlap): 11 pools, L 86136473..86150251 (10-11 21:07:43 .. 10-11 21:31:23 UTC)
   pools with a calldata/sender/recipient touch of pool, token or buyer in [T-12, T): 0 of 11
   pools with a log touch (token log, pool log, buyer/token/pid in a log) in [T-4, T): 0 of 11
   pools with ANY touch in the whole [L-3, T) besides the launch tx and the sentinel: 0 of 11; explained touches: {'launcher_prelaunch:0x00000000:87517c45': 5, 'launch': 11, 'sentinel': 11}

@@ -1,0 +1,26 @@
+our relay trades on the lines: 1238 (2.433 1237, 3.0 1); other pools (follow etc.): 11
+wallets that sent our buys: Counter({'0xab5a34c3f41e57fdee1a1d6f19d3e21f46df3ea8': 1238})
+
+=== per 6-hour period (2.433 line): n, stake mix, buy offset, T, sell after buy, sell vs T, return, pull vs T, pull vs our sell
+period          n stakes (ETH:n)                       buy@ T p10/50/90  sell-buy sell-T dist                                  ret% p10/50/90  mean% pull-T                       pull-sell                 $net
+Oct10 06-12   401 [(0.0058, 317), (0.0019, 61), (0.0 [(1, 3      8/9/10    8/9/10 [(1, 394), (None, 3), (0, 1), (-8, 1)]        3.4/16.2/22.9  14.07 [(3, 367), (4, 23), (2, 10)] [(2, 361), (3, 24), (1   706.2
+Oct10 12-18   647 [(0.0058, 647)]                    [(1, 6      8/9/10    1/2/10 [(1, 263), (-5, 135), (-6, 96), (-7, 69)      -0.1/0.3/18.6   5.70 [(3, 581), (4, 57), (2, 2)]  [(2, 243), (8, 124), (   534.3
+Oct11 12-18   131 [(0.0058, 100), (0.002, 25), (0.00 [(2, 1     8/10/14    8/9/13 [(2, 86), (1, 32), (3, 3), (None, 3)]         1.5/13.7/18.6  11.63 [(3, 108), (None, 11), (4, 7 [(1, 78), (2, 35), (No   198.1
+Oct11 18-24    58 [(0.002, 39), (0.0069, 9), (0.0021 [(2, 5      7/8/11    7/8/10 [(2, 48), (1, 8), (-25, 1), (None, 1)]        5.2/11.2/15.7  10.38 [(None, 51), (337, 1), (1023 [(None, 50), (335, 1),    47.7
+
+buy offsets by period: {'Oct10 06-12': {1: 399, 2: 2}, 'Oct10 12-18': {2: 8, 1: 639}, 'Oct11 12-18': {2: 124, 3: 3, 1: 4}, 'Oct11 18-24': {2: 56, 3: 1, 1: 1}}
+
+=== 3.0 trades
+  10-11 15:48:02 buy +13 0.0020 ETH T None sell 61 after buy, ret -1.0 pull +22
+
+=== sell relative to T, Oct 10 vs Oct 11 (2.433, bot bought after our buy)
+  Oct10: n 1047; sell at T+k: -39: 1, -16: 1, -13: 4, -12: 4, -11: 1, -10: 10, -9: 5, -8: 23, -7: 69, -6: 96, -5: 135, -4: 32, -3: 3, 0: 1, 1: 657, 2: 2, None: 3
+         buy offset: {1: 1037, 2: 10}; T: 8/9/10; sell-after-buy: 2/8/10; T - buy: 7/8/9
+  Oct11: n 185; sell at T+k: -38: 1, -26: 1, -25: 2, -22: 1, 1: 40, 2: 134, 3: 3, 5: 1, 10: 1, 12: 1
+         buy offset: {2: 177, 3: 4, 1: 4}; T: 8/9/13; sell-after-buy: 7/9/12; T - buy: 6/7/11
+
+=== could we have sold earlier? (2.433, trades with the bot's buy after ours)
+  Oct10: n 1047; value of our tokens at the end of our buy's block: p10/50/90 -0.5/-0.5/-0.49%; best block before T: -0.5/-0.5/0.31% (max 0.31%, > +1%: 0); right behind the bot's buy: 1.86/15.34/22.31%; actual: -0.08/7.71/20.7%
+         others between our buy and T: buys ETH p50/p90 0.00000/0.00990, sells ETH p50/p90 0.00000/0.00005
+  Oct11: n 185; value of our tokens at the end of our buy's block: p10/50/90 -1.0/-0.5/-0.5%; best block before T: -0.62/-0.5/-0.1% (max -0.06%, > +1%: 0); right behind the bot's buy: 5.08/11.98/18.48%; actual: 3.62/11.97/18.48%
+         others between our buy and T: buys ETH p50/p90 0.00456/0.00520, sells ETH p50/p90 0.00000/0.00493

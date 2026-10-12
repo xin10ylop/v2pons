@@ -1,8 +1,8 @@
-pools 47 (last 2 h incl. the finder's overlap)
-T - L in seconds (block timestamps): [(2, 3), (3, 14), (4, 13), (5, 12), (6, 5)]
-by seconds, T in blocks: {2: [19, 24, 26], 3: [26, 26, 26, 27, 29, 29, 30, 30, 30, 30, 31, 34, 34, 35], 4: [36, 38, 39, 40, 40, 40, 42, 42, 43, 44, 44, 44, 45], 5: [41, 41, 44, 44, 45, 45, 45, 46, 47, 48, 49, 50], 6: [52, 53, 54, 55, 60]}
-blocks per timestamp-second (background blocks): [(8, 10), (9, 239), (10, 822)]
-position inside its second, T (bot's first buy)         : n   47 | 0:4% 1:6% 2:13% 3:13% 4:4% 5:19% 6:9% 7:11% 8:15% 9:6% 10:0% 11:0% 12:0% 13:0%
-position inside its second, L (launch)                  : n   19 | 0:26% 1:21% 2:11% 3:5% 4:0% 5:5% 6:0% 7:21% 8:11% 9:0% 10:0% 11:0% 12:0% 13:0%
-position inside its second, sentinel dust buy           : n   34 | 0:18% 1:26% 2:18% 3:12% 4:15% 5:6% 6:3% 7:0% 8:3% 9:0% 10:0% 11:0% 12:0% 13:0%
-position inside its second, background blocks L+4..T-13 : n 1071 | 0:10% 1:11% 2:11% 3:11% 4:11% 5:11% 6:10% 7:10% 8:9% 9:7% 10:0% 11:0% 12:0% 13:0%
+pools 69 (last 2 h incl. the finder's overlap)
+T - L in seconds (block timestamps): [(2, 5), (3, 21), (4, 20), (5, 16), (6, 7)]
+by seconds, T in blocks: {2: [18, 19, 24, 26, 26], 3: [25, 26, 26, 26, 26, 26, 27, 29, 29, 29, 30, 30, 30, 30, 31, 32, 32, 34, 34, 34, 35], 4: [30, 36, 37, 38, 39, 40, 40, 40, 40, 42, 42, 42, 43, 43, 44, 44, 44, 45, 46, 47], 5: [41, 41, 44, 44, 44, 45, 45, 45, 46, 47, 47, 48, 49, 50, 51, 55], 6: [52, 53, 53, 54, 55, 57, 60]}
+blocks per timestamp-second (background blocks): [(8, 13), (9, 378), (10, 1173)]
+position inside its second, T (bot's first buy)         : n   69 | 0:9% 1:6% 2:10% 3:12% 4:4% 5:16% 6:10% 7:12% 8:16% 9:6% 10:0% 11:0% 12:0% 13:0%
+position inside its second, L (launch)                  : n   57 | 0:16% 1:11% 2:5% 3:9% 4:7% 5:9% 6:12% 7:11% 8:12% 9:9% 10:0% 11:0% 12:0% 13:0%
+position inside its second, sentinel dust buy           : n   62 | 0:11% 1:16% 2:16% 3:11% 4:13% 5:5% 6:8% 7:5% 8:10% 9:5% 10:0% 11:0% 12:0% 13:0%
+position inside its second, background blocks L+4..T-13 : n 1564 | 0:10% 1:10% 2:10% 3:11% 4:11% 5:10% 6:10% 7:10% 8:10% 9:7% 10:0% 11:0% 12:0% 13:0%

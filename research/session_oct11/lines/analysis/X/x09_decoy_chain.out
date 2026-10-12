@@ -1,0 +1,26 @@
+fresh wallets via D65/DFD: 542 Counter({('0x65050a9b', True): 341, ('0x65050a9b', False): 200, ('0xfd1b271f', False): 1})
+  0/341 {'posts': 1, 'items': 26, 'r429': 0}
+  40/341 {'posts': 21, 'items': 546, 'r429': 0}
+  80/341 {'posts': 41, 'items': 1066, 'r429': 0}
+  120/341 {'posts': 61, 'items': 1586, 'r429': 1}
+  160/341 {'posts': 81, 'items': 2106, 'r429': 2}
+  200/341 {'posts': 101, 'items': 2626, 'r429': 2}
+  240/341 {'posts': 121, 'items': 3146, 'r429': 2}
+  280/341 {'posts': 141, 'items': 3666, 'r429': 2}
+  320/341 {'posts': 161, 'items': 4186, 'r429': 2}
+sweeps found: 337 of 542
+sweep destinations: [('0x544ef4354283261fb9e258247a80d49c86b9f107', 287), ('0xe322fc6ddb6b29d110b7f84c728d2d743e904616', 23), ('another fresh wallet', 22), ('0x488faf521a2d5f16ee55d1335841bb3ba9a0946e', 4), ('0xc522af57dfc0006ff6f77d8d46f1fc7996431151', 1)]
+fresh wallets nobody in the set funded (chain roots): 520
+chains: 520 lengths: [10, 8, 7, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  len  10 10-11 17:24:46 .. 10-11 18:41:34 router 0x65050a9b sizes [(0.005, 10)] root 0x3196020c91fc302994601a54513eb0703c8e8e60 end -> 0xc522af57dfc0006ff6f77d8d46f1fc7996431151
+  len   8 10-11 16:54:28 .. 10-11 17:18:58 router 0x65050a9b sizes [(0.005, 8)] root 0x76b04a25446a1629a4c78ac89fe548726c20bfed end -> 0x544ef4354283261fb9e258247a80d49c86b9f107
+  len   7 10-11 16:22:16 .. 10-11 16:47:48 router 0x65050a9b sizes [(0.005, 7)] root 0x8dac39a38047450ee4229551ff86b19fb983ad1d end -> 0x544ef4354283261fb9e258247a80d49c86b9f107
+  len   1 10-10 04:34:36 .. 10-10 04:34:36 router 0x65050a9b sizes [(0.0001, 1)] root 0x32c6b1bd645acf07c43bdbac6bdc0a049905f938 end -> None
+  len   1 10-10 04:34:58 .. 10-10 04:34:58 router 0x65050a9b sizes [(0.0001, 1)] root 0x90784b0eac4d3fe028cd111d7801f8c457ab56d4 end -> None
+  len   1 10-10 04:35:19 .. 10-10 04:35:19 router 0x65050a9b sizes [(0.0001, 1)] root 0xbd6d39dea6518aafd11e4d3b7f8084b12447c0f2 end -> None
+  len   1 10-10 04:35:39 .. 10-10 04:35:39 router 0x65050a9b sizes [(0.0001, 1)] root 0x0b5c5afbab008c51448f91d397a9e145b89ac9ed end -> None
+  len   1 10-10 04:35:59 .. 10-10 04:35:59 router 0x65050a9b sizes [(0.0001, 1)] root 0xa0e96ca292049d65ad3d4c404bc01034a8034093 end -> None
+  len   1 10-10 04:36:20 .. 10-10 04:36:20 router 0x65050a9b sizes [(0.0001, 1)] root 0xc0be3b91057a7528918d46bfec130c110aaee9ab end -> None
+  len   1 10-10 04:42:55 .. 10-10 04:42:55 router 0x65050a9b sizes [(0.0001, 1)] root 0xeede1eb2e254dc0532602c9425b9dd224b7e3d28 end -> None
+  len   1 10-10 04:47:42 .. 10-10 04:47:42 router 0x65050a9b sizes [(0.0001, 1)] root 0xe5e884c09b63ac6e1003ab5193040e64f7aa74be end -> None
+  len   1 10-10 04:49:13 .. 10-10 04:49:13 router 0x65050a9b sizes [(0.0001, 1)] root 0xb8b98e4b093f90b958ab2f800a27353621ae6abe end -> None

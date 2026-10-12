@@ -22,7 +22,7 @@ first = {}
 for r in sorted([r for r in R6["rows"] if r["before"] and not r["dust"]], key=lambda r: r["off"]): first.setdefault(r["pid"], r)
 lags = sorted(r["lag"] for r in first.values() if r["lag"] is not None)
 LMIN, LMED = lags[0], pct(lags, .5)
-print(f"measured pre-T reaction (u6b, ~11.5 h): {len(first)} pools with a non-dust outside buy ahead of T, pulled {len(lags)}; lags {lags}; min {LMIN} median {LMED}; "
+print(f"measured pre-T reaction (u6b, 255 pools 11:26-23:48 UTC): {len(first)} pools with a non-dust outside buy ahead of T, pulled {len(lags)}; lags {lags}; min {LMIN} median {LMED}; "
       f"the bot bought in {sum(1 for r in first.values() if r['T'] is not None)} of them")
 def skip(s, sp, L):
     if s.get("who") == "bot" and s.get("minout"): return v4math.buy_out_int(sp, L, s["q"], 10000) < s["minout"]

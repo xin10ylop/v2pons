@@ -1,9 +1,9 @@
-head 86202613 (10-11 23:01:17 UTC); pools 131 (L 85960927..86200806), with a bot buy 131, missing txs 0
+head 86233246 (10-11 23:53:56 UTC); pools 139 (L 85990324..86230084), with a bot buy 139, missing txs 0
 finder's 200 pools with T: L 85728798..86150251; finder head 86150647
-of mine: in the finder's T-set 95, in the finder's launch list 95
-recent 2 h (L >= 86133015): launches 47, with T 47, of them used by the finder 11; TEST SLICE (recent 2 h, with T, not the finder's): 36
-all 7 h: T p10/25/50/75/90 [27, 31, 40, 49, 54] min 19 max 61; T ETH p50 0.1237; bot buys/pool p50 15; 2nd buy at T+25; pulled 18
-test slice: T p10/25/50/75/90 [26, 30, 43, 46, 53] min 19 max 60; T ETH p50 0.1250; bot buys/pool p50 15; 2nd buy at T+25; pulled 5
+of mine: in the finder's T-set 81, in the finder's launch list 81
+recent 2 h (L >= 86133015): launches 69, with T 69, of them used by the finder 11; TEST SLICE (recent 2 h, with T, not the finder's): 58
+all 7 h: T p10/25/50/75/90 [26, 30, 39, 47, 53] min 18 max 61; T ETH p50 0.1250; bot buys/pool p50 15; 2nd buy at T+24; pulled 23
+test slice: T p10/25/50/75/90 [26, 29, 42, 46, 53] min 18 max 60; T ETH p50 0.1485; bot buys/pool p50 15; 2nd buy at T+24; pulled 12
 no bot buy (L, span, pull, outside buys before pull): []
-puller to/sel: [(('0x1cbaf24d', 'a0f7978d'), 18)]
-bot buyer wallets: 76 | first-buy deadline - ? (see u4)
+puller to/sel: [(('0x1cbaf24d', 'a0f7978d'), 23)]
+bot buyer wallets: 82 | first-buy deadline - ? (see u4)

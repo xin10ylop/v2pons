@@ -1,7 +1,7 @@
 """Polite read-only JSON-RPC to the public node: one POST at a time, >= 0.5 s apart, back-off on 429. Read methods only."""
 import json, time, os, ssl, urllib.request, urllib.error
 RPC = "https://rpc.mainnet.chain.robinhood.com"
-ALLOWED = {"eth_call", "eth_getLogs", "eth_getTransactionByHash", "eth_getTransactionReceipt", "eth_getCode", "eth_getBlockByNumber", "eth_blockNumber", "eth_chainId", "eth_getBalance", "eth_getTransactionCount"}
+ALLOWED = {"eth_call", "eth_getLogs", "eth_getTransactionByHash", "eth_getTransactionReceipt", "eth_getCode", "eth_getBlockByNumber", "eth_blockNumber", "eth_chainId", "eth_getBalance", "eth_getTransactionCount", "eth_getStorageAt"}
 H = {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"}
 CTX = ssl.create_default_context(cafile="/root/.ccr/ca-bundle.crt") if os.path.exists("/root/.ccr/ca-bundle.crt") else None
 _last = [0.0]; STATS = {"posts": 0, "items": 0, "r429": 0}

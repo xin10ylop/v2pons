@@ -1,0 +1,11 @@
+   blocks 250/1712
+   blocks 500/1712
+   blocks 750/1712
+   blocks 1000/1712
+   blocks 1250/1712
+   blocks 1500/1712
+   blocks 1712/1712
+oldest: n 89; T - L seconds (sub-second from the block's position in its second) p10/25/50/75/90 [0.8, 0.83, 0.9, 1.0, 1.1] min 0.72 max 2.0
+   histogram (0.5 s bins): [(0.5, 1), (1.0, 80), (1.5, 7), (2.0, 1)]
+   best fixed T - L in seconds within +-0.1 s (about +-1 block): 61 of 89 at 0.9 s
+   integer-second T - L: [(0, 9), (1, 75), (2, 5)]

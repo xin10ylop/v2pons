@@ -1,0 +1,48 @@
+| window (UTC) | line | who bought ahead of the bot | pools | no bot buy | pulled <= T+3 | <= T+10 | not by T+60 | bot's 2nd buy before the pull |
+|---|---|---|---|---|---|---|---|---|
+| Oct10 00:00-09:08 (before our first trade) | 2.433 | others < 0.001 only | 189 | 0 | 5 | 9 | 142 | 163 |
+| Oct10 00:00-09:08 (before our first trade) | 2.433 | nobody | 30 | 0 | 0 | 0 | 30 | 30 |
+| Oct10 00:00-09:08 (before our first trade) | 3.0 | nobody | 148 | 0 | 0 | 0 | 148 | 148 |
+| Oct10 00:00-09:08 (before our first trade) | 3.0 | others < 0.001 only | 8 | 0 | 5 | 8 | 0 | 0 |
+| Oct10 00:00-09:08 (before our first trade) | 3.0 | others >= 0.001 (other router) | 2 | 0 | 1 | 2 | 0 | 0 |
+| Oct10 09:08-11:40 (we trade at +1) | 2.433 | us | 401 | 1 | 377 | 400 | 0 | 0 |
+| Oct10 09:08-11:40 (we trade at +1) | 2.433 | nobody | 7 | 0 | 0 | 0 | 7 | 7 |
+| Oct10 09:08-11:40 (we trade at +1) | 2.433 | others < 0.001 only | 1 | 0 | 0 | 0 | 1 | 1 |
+| Oct10 09:08-11:40 (we trade at +1) | 3.0 | nobody | 37 | 0 | 0 | 0 | 37 | 37 |
+| Oct10 11:40-13:38 (we are off: daily cap) | 2.433 | nobody | 22 | 0 | 0 | 0 | 22 | 22 |
+| Oct10 11:40-13:38 (we are off: daily cap) | 2.433 | others < 0.001 only | 8 | 0 | 2 | 3 | 4 | 4 |
+| Oct10 11:40-13:38 (we are off: daily cap) | 3.0 | nobody | 40 | 0 | 0 | 0 | 37 | 40 |
+| Oct10 13:38-17:37 (we trade) | 2.433 | us | 646 | 0 | 583 | 640 | 4 | 5 |
+| Oct10 13:38-17:37 (we trade) | 2.433 | others < 0.001 only | 14 | 0 | 10 | 13 | 1 | 1 |
+| Oct10 13:38-17:37 (we trade) | 2.433 | others >= 0.001 (0x65050a9b) | 10 | 0 | 10 | 10 | 0 | 0 |
+| Oct10 13:38-17:37 (we trade) | 2.433 | nobody | 5 | 0 | 0 | 0 | 5 | 5 |
+| Oct10 13:38-17:37 (we trade) | 3.0 | nobody | 67 | 0 | 0 | 0 | 65 | 67 |
+| Oct10 17:37-24:00 (feed blocked: we are gone) | 2.433 | others >= 0.001 (0x65050a9b, fresh wallet) | 205 | 0 | 176 | 198 | 3 | 4 |
+| Oct10 17:37-24:00 (feed blocked: we are gone) | 2.433 | others >= 0.001 (0x65050a9b) | 55 | 0 | 44 | 54 | 1 | 1 |
+| Oct10 17:37-24:00 (feed blocked: we are gone) | 2.433 | nobody | 2 | 0 | 0 | 0 | 2 | 2 |
+| Oct10 17:37-24:00 (feed blocked: we are gone) | 2.433 | us | 1 | 0 | 0 | 1 | 0 | 0 |
+| Oct10 17:37-24:00 (feed blocked: we are gone) | 3.0 | nobody | 123 | 0 | 0 | 0 | 120 | 122 |
+| Oct11 00:00-14:26 (we are off) | 2.433 | nobody | 29 | 0 | 0 | 0 | 29 | 29 |
+| Oct11 00:00-14:26 (we are off) | 2.433 | others < 0.001 only | 5 | 0 | 0 | 0 | 5 | 5 |
+| Oct11 00:00-14:26 (we are off) | 3.0 | others >= 0.001 (0x65050a9b) | 253 | 15 | 201 | 230 | 8 | 8 |
+| Oct11 00:00-14:26 (we are off) | 3.0 | nobody | 211 | 0 | 0 | 0 | 210 | 211 |
+| Oct11 00:00-14:26 (we are off) | 3.0 | others < 0.001 only | 69 | 0 | 62 | 66 | 3 | 3 |
+| Oct11 14:26-15:32 (we trade at +2, fee 2500) | 2.433 | us | 118 | 0 | 108 | 116 | 0 | 0 |
+| Oct11 14:26-15:32 (we trade at +2, fee 2500) | 2.433 | others < 0.001 only | 5 | 0 | 0 | 0 | 5 | 5 |
+| Oct11 14:26-15:32 (we trade at +2, fee 2500) | 2.433 | nobody | 1 | 0 | 0 | 0 | 1 | 1 |
+| Oct11 14:26-15:32 (we trade at +2, fee 2500) | 3.0 | others >= 0.001 (other router) | 22 | 22 | 0 | 0 | 0 | 0 |
+| Oct11 14:26-15:32 (we trade at +2, fee 2500) | 3.0 | nobody | 21 | 0 | 0 | 0 | 20 | 21 |
+| Oct11 15:32-16:07 (fee 5000, we refuse it) | 2.433 | nobody | 7 | 0 | 0 | 0 | 7 | 7 |
+| Oct11 15:32-16:07 (fee 5000, we refuse it) | 2.433 | others < 0.001 only | 6 | 0 | 0 | 0 | 0 | 0 |
+| Oct11 15:32-16:07 (fee 5000, we refuse it) | 2.433 | others >= 0.001 (0x65050a9b, fresh wallet) | 1 | 0 | 0 | 0 | 1 | 1 |
+| Oct11 15:32-16:07 (fee 5000, we refuse it) | 3.0 | nobody | 7 | 0 | 0 | 0 | 7 | 7 |
+| Oct11 15:32-16:07 (fee 5000, we refuse it) | 3.0 | us | 1 | 1 | 0 | 0 | 0 | 0 |
+| Oct11 16:07-16:52 (we trade 0.0058/0.0097) | 2.433 | us | 9 | 0 | 0 | 0 | 8 | 9 |
+| Oct11 16:07-16:52 (we trade 0.0058/0.0097) | 3.0 | nobody | 14 | 0 | 0 | 0 | 14 | 14 |
+| Oct11 16:52-17:58 (we are dry) | 2.433 | others >= 0.001 (0x65050a9b, fresh wallet) | 8 | 0 | 0 | 0 | 7 | 7 |
+| Oct11 16:52-17:58 (we are dry) | 2.433 | us | 4 | 3 | 0 | 0 | 1 | 1 |
+| Oct11 16:52-17:58 (we are dry) | 2.433 | others < 0.001 only | 3 | 0 | 0 | 0 | 3 | 3 |
+| Oct11 16:52-17:58 (we are dry) | 3.0 | nobody | 17 | 0 | 0 | 0 | 17 | 17 |
+| Oct11 17:58-23:11 (we trade 0.002/auto) | 2.433 | us | 58 | 1 | 0 | 0 | 56 | 56 |
+| Oct11 17:58-23:11 (we trade 0.002/auto) | 2.433 | others >= 0.001 (0x65050a9b, fresh wallet) | 2 | 0 | 0 | 0 | 0 | 2 |
+| Oct11 17:58-23:11 (we trade 0.002/auto) | 3.0 | nobody | 103 | 0 | 0 | 0 | 97 | 102 |
