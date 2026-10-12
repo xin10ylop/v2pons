@@ -23,3 +23,4 @@ research/session_oct12/c1/c03_txs.jsonl
 research/session_oct12/c1/c05_pools.json
 research/session_oct12/c1/short/*_events_new.jsonl
 research/session_oct12/c1/short/*_txs_new.jsonl
+research/session_oct12/crowd/**/*_cache.jsonl
