@@ -1885,6 +1885,7 @@ time.sleep(max(0.0, E.SELL_ALT_TIMEOUT_S + 0.2 - (time.time() - t0))); seqp.gate
 assert wait_for(lambda: new_events("late_reply", l0)); lr = new_events("late_reply", l0)[-1]
 assert lr["what"] == "sell" and lr["via"] == "seq" and lr["kind"] == "ok" and lr["ms"] >= 1000 * E.SELL_ALT_TIMEOUT_S, lr
 time.sleep(0.1); assert len(sold_at(1601)) == 1 and pos["sell_reply"] == ss["reply"] and not not_accepted(a0) and len(new_events("late_reply", l0)) == 1
+assert [i for i, r in SENT if r == pos["sell_raw"]] == [1], "the sequencer's own (late) ok: no further post"
 
 # 20o-b. the sequencer answers first: the alternate's late reply (a refusal, even) is logged and ignored
 reset(); ALT.clear(); seqp = PathSender(SENT, nonce=1611, delay=0.2); altp = PathSender(ALT, nonce=1611, hang=True, script=[nonce_high]); E.SENDER = seqp; E.SENDER_ALT = altp
@@ -1897,6 +1898,7 @@ assert wait_for(lambda: done_at(1610)); altp.gate.set()
 assert wait_for(lambda: new_events("late_reply", l0)); lr = new_events("late_reply", l0)[-1]
 assert lr["via"] == "alt" and lr["kind"] == "rejected" and lr["what"] == "sell", lr
 time.sleep(0.1); assert len(sold_at(1611)) == 1 and not not_accepted(a0) and E.reply_kind(pos["sell_reply"]) == "ok" and len(ALT) == 1 and E.state["halted"] is None
+assert [i for i, r in SENT if r == pos["sell_raw"]] == [1], "the sequencer's ok: no further post"
 
 # 20o-c. "already known" (and the node's other wordings for a copy it has) is "in": the sequencer hung, the alternate answers that it already
 # has the sell: in, via "alt", no alarm
@@ -1907,26 +1909,39 @@ assert all(E.reply_kind({"error": {"code": -32000, "message": m}}) == "rejected"
            "replacement transaction underpriced", "another transaction with same nonce", "address already reserved", "transaction type not supported"))
 reset(); ALT.clear(); seqp = PathSender(SENT, nonce=1621, script=[nonce_high] * E.SELL_TRIES, hang=True)
 altp = PathSender(ALT, nonce=1621, script=[{"error": {"code": -32000, "message": "already known"}}]); E.SENDER = seqp; E.SENDER_ALT = altp
-pos, buy_raw, B = relay_trade(9200, 1620, 132); receipts_for(pos, B); a0 = len(events("alarm"))
+pos, buy_raw, B = relay_trade(9200, 1620, 132); receipts_for(pos, B); a0 = len(events("alarm")); l0 = len(events("late_reply"))
 E.ingest(frame(B + 1, [])); E.ingest(frame(B + 2, []))
 assert wait_for(lambda: sold_at(1621)); ss = sold_at(1621)[-1]
 assert ss["via"] == "alt" and E.reply_kind(ss["reply"]) == "in" and ss["reply"]["error"]["message"] == "already known" and pos["sell_reply"] == ss["reply"], ss
 assert ss["accept_kind"] == "in", ss
 assert wait_for(lambda: done_at(1620)) and not not_accepted(a0); seqp.gate.set()
+assert wait_for(lambda: len(new_events("late_reply", l0)) == E.SELL_TRIES); time.sleep(0.2)                # (its thread ended before the next test)
+assert [(e["via"], e["kind"]) for e in new_events("late_reply", l0)] == [("seq", "rejected")] * E.SELL_TRIES and [i for i, r in SENT if r == pos["sell_raw"]] == [1, 0, 1, 0]
 
-# 20o-c2. the alternate's "already known" may be hollow (a forwarder's own, the sequencer stalled): the sequencer, whose replies so far were all
-# lost, goes on posting after the alternate's win (its replies late_reply lines, never acted on) and stops at its first definite reply
+# 20o-c2. the alternate's "already known" may be hollow (a forwarder's own, the sequencer stalled, or our buy still being sequenced): the
+# sequencer's path keeps deliver_sell's own loop whatever the race's state, to its own "ok"/"in" or SELL_TRIES, its replies after the win
+# late_reply lines, never acted on. Refused once (before the win), then lost: it still posts SELL_TRIES times (slots 1, 0, 1, 0)
 lost = {"error": {"message": "send failed twice: timed out"}}
-reset(); ALT.clear(); seqp = PathSender(SENT, nonce=1626, script=[lost, nonce_high], delay=0.2)
-altp = PathSender(ALT, nonce=1626, script=[{"error": {"code": -32000, "message": "already known"}}]); E.SENDER = seqp; E.SENDER_ALT = altp
+reset(); ALT.clear(); seqp = PathSender(SENT, nonce=1626, script=[nonce_high, lost, lost, lost], delay=0.15)
+altp = PathSender(ALT, nonce=1626, script=[{"error": {"code": -32000, "message": "already known"}}], delay=0.25); E.SENDER = seqp; E.SENDER_ALT = altp
 pos, buy_raw, B = relay_trade(9250, 1625, 138); receipts_for(pos, B); a0 = len(events("alarm")); l0 = len(events("late_reply"))
 E.ingest(frame(B + 1, [])); E.ingest(frame(B + 2, []))
 assert wait_for(lambda: sold_at(1626)); ss = sold_at(1626)[-1]
-assert ss["via"] == "alt" and ss["accept_kind"] == "in" and ss["seq_tries"] == 0 and ss["seq_posts"] == 1 and ss["alt_posts"] == 1, ss
+assert ss["via"] == "alt" and ss["accept_kind"] == "in" and ss["alt_posts"] == 1 and E.reply_kind(pos["sell_reply"]) == "in", ss
+assert wait_for(lambda: len([1 for _, r in SENT if r == pos["sell_raw"]]) == E.SELL_TRIES and len(new_events("late_reply", l0)) + ss["seq_tries"] == E.SELL_TRIES); time.sleep(0.3)
+assert [i for i, r in SENT if r == pos["sell_raw"]] == [1, 0, 1, 0] and len(ALT) == 1, "the sequencer stopped before SELL_TRIES after the alternate's win"
+lr = new_events("late_reply", l0); assert all(e["via"] == "seq" and e["kind"] in ("unknown", "rejected") for e in lr) and len(lr) + ss["seq_tries"] == E.SELL_TRIES, (lr, ss)
+assert wait_for(lambda: done_at(1625)) and not not_accepted(a0) and len(sold_at(1626)) == 1
+# lost, then its own "ok" after the alternate's win: no further post
+reset(); ALT.clear(); seqp = PathSender(SENT, nonce=1628, script=[lost], delay=0.15)
+altp = PathSender(ALT, nonce=1628, script=[{"error": {"code": -32000, "message": "already known"}}]); E.SENDER = seqp; E.SENDER_ALT = altp
+pos, buy_raw, B = relay_trade(9290, 1627, 140); receipts_for(pos, B); a0 = len(events("alarm")); l0 = len(events("late_reply"))
+E.ingest(frame(B + 1, [])); E.ingest(frame(B + 2, []))
+assert wait_for(lambda: sold_at(1628)) and sold_at(1628)[-1]["via"] == "alt"
 assert wait_for(lambda: len(new_events("late_reply", l0)) == 2); time.sleep(0.4)
-assert [(e["via"], e["kind"]) for e in new_events("late_reply", l0)] == [("seq", "unknown"), ("seq", "rejected")], new_events("late_reply", l0)
-assert [i for i, r in SENT if r == pos["sell_raw"]] == [1, 0] and len(ALT) == 1, "the sequencer posted again after its lost reply, and stopped at the refusal"
-assert wait_for(lambda: done_at(1625)) and not not_accepted(a0) and len(sold_at(1626)) == 1 and E.reply_kind(pos["sell_reply"]) == "in"
+assert [(e["via"], e["kind"]) for e in new_events("late_reply", l0)] == [("seq", "unknown"), ("seq", "ok")], new_events("late_reply", l0)
+assert [i for i, r in SENT if r == pos["sell_raw"]] == [1, 0] and len(ALT) == 1, "the sequencer posted after its own ok"
+assert wait_for(lambda: done_at(1627)) and not not_accepted(a0)
 
 # 20o-d. both paths refuse every try: the alarm, once, after SELL_TRIES on each (the sequencer on slots 1, 0, 1, 0 as before, the alternate on its one)
 reset(); ALT.clear(); E.RECEIPT_TIMEOUT_S = 0.3; NONCE_ON_CHAIN[0] = hex(1630)
@@ -1950,14 +1965,15 @@ pos, buy_raw, B = relay_trade(9350, 1635, 139); receipts_for(pos, B); a0 = len(e
 E.ingest(frame(B + 1, [])); t0 = time.time(); E.ingest(frame(B + 2, []))
 assert wait_for(lambda: sold_at(1636), cap + 1.5); dt = time.time() - t0; ss = sold_at(1636)[-1]
 assert cap - 0.1 <= dt < cap + 1.0 and ss["via"] is None and ss["accept_kind"] is None and ss["tries"] == 0 and ss["seq_posts"] == ss["alt_posts"] == 1 and ss["reply"] is None, (dt, ss)
-al = not_accepted(a0); assert len(al) == 1 and al[0]["what"].startswith("the sell was not accepted (a path still waiting"), al
+assert wait_for(lambda: not_accepted(a0)); al = not_accepted(a0)                                         # (logged just after sell_sent)
+assert len(al) == 1 and al[0]["what"].startswith("the sell was not accepted (a path still waiting"), al
 assert wait_for(lambda: done_at(1635)) and done_at(1635)[-1]["sell"]["block"] == B + 3
 seqp.gate.set(); altp.gate.set(); assert wait_for(lambda: len(new_events("late_reply", l0)) == 2); time.sleep(0.2)
 assert sorted((e["via"], e["kind"]) for e in new_events("late_reply", l0)) == [("alt", "ok"), ("seq", "ok")] and len(sold_at(1636)) == 1 and len(not_accepted(a0)) == 1
 E.SEND_TIMEOUT_S = 4.0; E.SELL_ALT_TIMEOUT_S = 2.0
 print("ok the sell's second path: a hung sequencer with the alternate answering: in at once via alt, settled, the late reply logged and ignored; the sequencer first: "
       "the alternate's late refusal ignored; 'already known' (and ALREADY_EXISTS, nonce too low, ...) is in, whole words only ('unknown transaction type' "
-      "is a refusal); a sequencer whose replies were lost goes on after the alternate's win and stops at a definite reply; both refusing: the alarm "
+      "is a refusal); after the alternate's win the sequencer keeps its own loop to its own ok or SELL_TRIES; both refusing: the alarm "
       "after SELL_TRIES on each; both hung: the wait ends at its cap with the alarm; the posts counted per path")
 
 # 20o-e. SELL_ALT_URL empty (no SENDER_ALT): the sequencer's calls exactly as before: slots 1, 0, 1 for two failures and a success, the same
@@ -1992,6 +2008,22 @@ r = subprocess.run([sys.executable, "-c", "import flip_engine as E; print(E.SELL
                    env={**os.environ, "SELL_ALT_TIMEOUT_S": "abc", "LOG_PATH": LOG + ".imp"}, capture_output=True, text=True, timeout=60)
 assert r.returncode == 0 and r.stdout.strip().splitlines()[-1] == "2.0", r.stderr[-600:]
 if os.path.exists(LOG + ".imp"): os.remove(LOG + ".imp")
+def send_timeout_at_start(v):
+    """SEND_TIMEOUT_S=v at a real import and start checks (the RPC stubbed): (SEND_TIMEOUT_S, the start info's, the SEND_TIMEOUT_S alarms)"""
+    lp = LOG + ".st"
+    code = ("import os, json, flip_engine as E\n"
+            "E.rpc = lambda m, p, tries=4, timeout=10: {'eth_chainId': hex(4663), 'eth_getBlockByNumber': {'baseFeePerGas': hex(20000000), 'number': '0x1'}}[m]\n"
+            "info = E.checks(); al = [json.loads(l)['what'] for l in open(E.LOG_PATH) if json.loads(l)['ev'] == 'alarm'] if os.path.exists(E.LOG_PATH) else []\n"
+            "print(json.dumps([E.SEND_TIMEOUT_S, info['send_timeout_s'], [a for a in al if 'SEND_TIMEOUT_S' in a]]))")
+    r = subprocess.run([sys.executable, "-c", code], cwd=os.path.join(ROOT, "src"), env={**os.environ, "SEND_TIMEOUT_S": v, "LOG_PATH": lp, "RELAY": "", "WALLET": "",
+                       "DRY_RUN": "1", "HALT_FILE": lp + ".halt"}, capture_output=True, text=True, timeout=60)
+    assert r.returncode == 0, (v, r.stderr[-600:])
+    if os.path.exists(lp): os.remove(lp)
+    return json.loads(r.stdout.strip().splitlines()[-1])
+for v in ("nan", "inf", "-inf", "1e10", "abc", "0.4", "31", "0", "-1"):                                  # not finite, not a number, out of 0.5..30: 4 s and a start alarm
+    t_, ti, al = send_timeout_at_start(v); assert t_ == ti == 4.0 and len(al) == 1 and "0.5..30" in al[0], (v, t_, ti, al)
+for v, want in (("0.5", 0.5), ("30", 30.0), ("2.5", 2.5), ("4", 4.0)):
+    t_, ti, al = send_timeout_at_start(v); assert t_ == ti == want and al == [], (v, t_, ti, al)
 E.rpc = fake_rpc; E.Sender = real_sender; E.SENDER = FakeSender(); E.state["relay_wei"] = None; E.state["halted"] = None; E.state["follow_halted"] = None
 srv = socket.socket(); srv.bind(("127.0.0.1", 0)); srv.listen(16); port = srv.getsockname()[1]; held_conns = []
 def hold_conns():
@@ -2009,7 +2041,8 @@ t0 = time.time(); r = S1.post(0, E.body(b"\x01")); dt = time.time() - t0
 assert E.reply_kind(r) == "unknown" and "timed out" in r["error"]["message"] and dt < 1.5, (r, dt)   # the handshake times out, the retry too: 2 x 0.3 s
 srv.close(); [c.close() for c in held_conns]
 print("ok the second path's Sender: built in checks() with one slot, a 2 s timeout and the RPC calls' agent; the start line has its host only; a bad URL is an alarm and "
-      "no second path; the sequencer's Sender as before (4 s, the same headers); a hung endpoint's post ends at its timeout")
+      "no second path; the sequencer's Sender as before (4 s, the same headers); a hung endpoint's post ends at its timeout; SEND_TIMEOUT_S outside 0.5..30 "
+      "(nan, inf, 1e10, not a number) is 4 s with a start alarm, never a stop")
 
 # 20o-g. BUY_ALT=1: the buy on both paths. The sequencer hangs, the alternate accepts: in at once via alt. A refusal beside a lost reply is no
 # reply (the position kept); both refusing is a refusal (closed, as before)

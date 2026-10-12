@@ -1710,8 +1710,9 @@ Built (test 20o; 70 tests):
   shows `sell_alt` (the host only), `sell_alt_timeout_s`, `buy_alt`, `send_timeout_s`.
 - **The sell with it set** (`deliver_sell_alt`, `Race`): the sequencer's 4 tries (slots 1, 0, 1, 0) and 4 on the alternate run at once, each
   path on its own thread with the same 0.05 s pause after a reply that is not in; the first `ok`/`in` wins and the settlement starts then.
-  From then on the other path stops at its first definite reply (`ok`, `in`, `rejected`), but goes on with its tries while all its own
-  replies were lost (`unknown`): the winner's acceptance may be hollow (a forwarder's own `already known` while the sequencer is stalled).
+  From then on the sequencer's path keeps `deliver_sell`'s own loop whatever the race's state (to its own `ok`/`in` or its 4th try), while
+  the alternate's stops at its first definite reply (`ok`, `in`, `rejected`) unless all its own replies were lost (`unknown`): the
+  alternate's acceptance may be hollow (a forwarder's own `already known` while the sequencer is stalled, or our buy still being sequenced).
   Its replies after the win are `late_reply` lines (`what`, `via`, `kind`, `reply`, `ms`), never acted on. `sell_sent` adds `via` (`seq`,
   `alt`, or null), `accept_kind`, `accept_ms`, `seq_tries`, `seq_posts`, `seq_reply`, `alt_tries`, `alt_posts`, `alt_reply`: `*_tries`
   count the replies in hand when the line is written (`tries` both paths'), `*_posts` the posts made (one still waiting included); its

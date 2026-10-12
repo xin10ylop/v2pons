@@ -94,14 +94,26 @@ def parse_headers(text):
 
 FEED_HEADERS = parse_headers(env("FEED_HEADERS", ""))
 SEQ_URL = env("SEQ_URL", "https://sequencer.mainnet.chain.robinhood.com"); RPC_URL = env("RPC_URL", "https://rpc.mainnet.chain.robinhood.com")
-SEND_TIMEOUT_S = float(env("SEND_TIMEOUT_S", "4"))                                         # the sequencer connections' socket timeout (each connect, each read)
+
+
+def _send_timeout(v):
+    """SEND_TIMEOUT_S: the sequencer connections' socket timeout (each connect, each read), 0.5..30 s; anything else (not a number, nan, inf,
+    out of range) is 4 s with a start alarm (the error), never a stop"""
+    try:
+        x = float(v)
+    except ValueError:
+        x = None
+    if x is None or not 0.5 <= x <= 30:                                                    # (nan fails both comparisons)
+        return 4.0, f"SEND_TIMEOUT_S is {str(v)[:40]!r}, not a number of seconds in 0.5..30: 4 s"
+    return x, None
+
+
+SEND_TIMEOUT_S, SEND_TIMEOUT_ERROR = _send_timeout(env("SEND_TIMEOUT_S", "4"))
 SELL_ALT_URL = env("SELL_ALT_URL", ""); SELL_ALT_TIMEOUT_S = 2.0; BUY_ALT = env("BUY_ALT", "0") != "0"                # the alternate's socket timeout: fixed
 # SELL_ALT_URL (empty = off; HANDOFF 16.19): a second path for the sell. Oct 12 00:00 UTC the sequencer's endpoint took ~11.5 s to accept a sell
 # while the chain and the feed ran on (the sell landed 127 blocks after our buy). With it set, the same signed sell is posted at the same time to
 # this endpoint too (an RPC that forwards transactions to the sequencer), on its own warm connection with a 2 s socket timeout,
 # and the first acceptance from either path wins (Race). BUY_ALT=1 sends the buy the same way (off by default). Only the host is ever logged.
-if SEND_TIMEOUT_S <= 0:
-    raise SystemExit("SEND_TIMEOUT_S must be above 0")
 LOG_PATH = env("LOG_PATH", "flip_engine.jsonl"); DRY_RUN = env("DRY_RUN", "1") != "0"; CHAIN_ID = 4663
 FOLLOW = env("FOLLOW", "1") != "0"                                                          # 0: the follow strategy (and the seat) is off: no follow launch is armed, front has the slot alone
 LAUNCHERS = {a.strip().lower().replace("0x", "") for a in env("LAUNCHERS", "0x3194e32622c5d860a0572c74edda99dcfd8fc827").split(",") if a.strip()} if FOLLOW else set()
@@ -696,11 +708,12 @@ def reply_kind(reply):
 class Race:
     """the same signed transaction on two paths at once: the sequencer (SENDER) and SELL_ALT_URL (SENDER_ALT), each on its own thread with
     the same tries (the sequencer on seq_slot(k) of its two slots, the alternate on its one) and the same 0.05 s pause after a reply that is
-    not in. The first "ok" or "in" from either path wins and ends the wait. From then on the other path's replies are late_reply lines, never
-    acted on, and it stops at its first definite reply ("ok", "in", "rejected"); but while every reply of its own so far is a lost one
-    ("unknown"), it goes on with its tries: the winner's acceptance may be hollow (a forwarder's own "already known" while the sequencer is
-    stalled), and a second copy of one signed transaction is harmless (one hash: "already known", or "nonce too low" once the first is in a
-    block). A post that hangs holds only its own path's thread. wait() gives up after cap() s (a DNS lookup or a slow-drip server is outside
+    not in. The first "ok" or "in" from either path wins and ends the wait; from then on the other path's replies are late_reply lines, never
+    acted on. The sequencer's path keeps deliver_sell's own loop whatever the race's state: it stops only at its own "ok"/"in" or after its
+    tries, since the alternate's acceptance may be hollow (a forwarder's own "already known" while the sequencer is stalled, or our buy still
+    being sequenced). The alternate's path, after the sequencer's win (or the close), stops at its first definite reply ("ok", "in",
+    "rejected") and goes on only while every reply of its own so far is a lost one ("unknown"). A second copy of one signed transaction is
+    harmless (one hash: "already known", or "nonce too low" once the first is in a block). A post that hangs holds only its own path's thread. wait() gives up after cap() s (a DNS lookup or a slow-drip server is outside
     the socket timeout): closed, and the replies after that are late_reply lines too. posts: the posts made on each path, one still waiting
     included."""
     def __init__(self, what, pid, raw, tries, seq_slot):
@@ -723,7 +736,7 @@ class Race:
         try:
             for k in range(self.tries):
                 with self.cv:
-                    if (self.via is not None or self.closed) and definite:
+                    if via == "alt" and (self.via is not None or self.closed) and definite:   # (the sequencer's path: its own loop to the end)
                         break
                     self.posts[via] += 1
                 try:
@@ -741,7 +754,7 @@ class Race:
                             self.via = via; self.accept_kind = kind; self.accept_ms = round(1000 * (mono() - self.t0), 1); self.cv.notify_all()
                 if late:
                     log({"ev": "late_reply", "what": self.what, "pid": self.pid, "via": via, "kind": kind, "reply": reply, "ms": round(1000 * (mono() - self.t0), 1)})
-                if kind in ("ok", "in") or (late and kind != "unknown"):
+                if kind in ("ok", "in") or (via == "alt" and late and kind != "unknown"):
                     break
                 definite = definite or kind != "unknown"
                 if k < self.tries - 1:
@@ -1595,12 +1608,13 @@ def deliver_sell(pos, why, seq):
 
 def deliver_sell_alt(pos, why, seq):
     """deliver_sell with the second path (SELL_ALT_URL): the sequencer's SELL_TRIES (its two slots in turn) and as many on the alternate, at
-    once (Race); the first "ok"/"in" from either wins, and the settlement starts then, whatever the other path is waiting on (a path whose
-    replies were all lost goes on posting: Race). sell_sent: via (the path that got it in: "seq" or "alt"; None: neither), accept_kind ("ok"
-    or "in"), accept_ms (from the start to that acceptance), reply (the winner's; neither: the sequencer's last), each path's replies so far
-    (seq_tries, alt_tries; tries: both), posts made (seq_posts, alt_posts: a post still waiting included) and last reply (seq_reply, alt_reply;
-    None: still waiting on its first post). A reply after the win is a late_reply line, never acted on. The alarm only when neither path got
-    the sell in: after every try on both, or after Race.cap() s with a path still waiting."""
+    once (Race); the first "ok"/"in" from either wins, and the settlement starts then, whatever the other path is waiting on (the sequencer's
+    path goes on to its own "ok"/"in" or its last try, the alternate's while its replies were all lost: Race). sell_sent: via (the path that
+    got it in: "seq" or "alt"; None: neither), accept_kind ("ok" or "in"), accept_ms (from the start to that acceptance), reply (the winner's;
+    neither: the sequencer's last), each path's replies so far (seq_tries, alt_tries; tries: both), posts made (seq_posts, alt_posts: a post
+    still waiting included) and last reply (seq_reply, alt_reply; None: still waiting on its first post). A reply after the win is a
+    late_reply line, never acted on. The alarm only when neither path got the sell in: after every try on both, or after Race.cap() s with a
+    path still waiting."""
     race = Race("sell", pos["pid"], pos["sell_raw"], SELL_TRIES, lambda k: 1 if k % 2 == 0 else 0)
     via, rs, accept_ms = race.wait()
     sr, ar = rs["seq"], rs["alt"]
@@ -2459,6 +2473,8 @@ def checks():
                 SENDER_ALT = Sender(SELL_ALT_URL, slots=1, timeout=SELL_ALT_TIMEOUT_S, ua="Mozilla/5.0 Chrome/128")
             else:                                                                  # never the URL itself: its path may hold a key
                 log({"ev": "alarm", "what": "SELL_ALT_URL is not an https URL with a host, no user:password@ and no space or control character: the second path is off"})
+    if SEND_TIMEOUT_ERROR:
+        log({"ev": "alarm", "what": SEND_TIMEOUT_ERROR})
     info.update({"send_timeout_s": SEND_TIMEOUT_S, "sell_alt": urllib.parse.urlparse(SELL_ALT_URL).hostname if SENDER_ALT is not None else None,   # the host only
                  "sell_alt_timeout_s": SELL_ALT_TIMEOUT_S, "buy_alt": BUY_ALT and SENDER_ALT is not None})
     return info

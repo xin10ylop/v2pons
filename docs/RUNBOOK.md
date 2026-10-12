@@ -411,8 +411,9 @@ The settings (nothing changes while they are unset):
   the public `https://rpc.mainnet.chain.robinhood.com`). The same signed sell goes there at the same time as to the sequencer, on its own warm
   connection (one slot, the same keepalive, a fixed 2 s socket timeout), each of the sell's 4 tries mirrored; the first reply that says it is
   in (`ok`, or `already known`, `nonce too low` and the like: one signed transaction has one hash, a second copy is harmless) wins, and a hung
-  path no longer holds the sell. The other path then stops at its first definite reply, but goes on with its tries while all its replies were
-  lost (the winner's "in" may be only a forwarder's own). `sell_sent` then carries `via` (`seq` or `alt`), `accept_kind`, `accept_ms`,
+  path no longer holds the sell. After the alternate's win the sequencer keeps its own loop (to its own `ok`/`in` or its 4th try), and after
+  the sequencer's win the alternate stops at its first definite reply unless all its replies were lost (the winner's "in" may be only a
+  forwarder's own). `sell_sent` then carries `via` (`seq` or `alt`), `accept_kind`, `accept_ms`,
   `seq_tries`/`seq_posts`/`seq_reply` and `alt_tries`/`alt_posts`/`alt_reply` (tries: replies in hand; posts: posts made, one still waiting
   included; reply null: that path was still waiting); a reply after that is a `late_reply` line and changes nothing; the "not accepted" alarm
   comes only when both paths failed, or when neither got it in within the wait's cap (65 s; "a path still waiting"). Its keepalive sends
