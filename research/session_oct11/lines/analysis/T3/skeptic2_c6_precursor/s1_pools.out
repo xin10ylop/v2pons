@@ -1,0 +1,14 @@
+head 86249474 10-12 00:21:40 UTC, 9.76 blocks/s, window from block 86158113
+Initialize ETH-pair logs: 298
+most common launch prices (no hook): [(679394651928963067279918579724198, 62), (1908498483466244238266951834509291, 32), (1604517591721945638372359205383840, 28), (526364174002223567019744861584709, 21), (3961408125713221831437354658330384, 14), (1582215647010010450556252328775749, 9)]
+no hook, fee 10000, spacing 200, the 3.0 price: 62
+  txs 62/62
+3.0 launches: 62
+  pool events 20/62
+  pool events 40/62
+  pool events 60/62
+  pool events 62/62
+  txs 400/453
+  txs 453/453
+bot-router events in the window: Counter() pools: 0
+saved s1_pools.json

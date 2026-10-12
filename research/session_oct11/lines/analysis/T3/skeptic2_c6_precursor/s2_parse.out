@@ -1,0 +1,9 @@
+head 86249474, slice start 86179196 (2 h), finder's head 86158232
+slice: 3.0 pools 48 (all after the finder's head: True), with a bot buy 48, without 0
+T offset p10/25/50/75/90 [25, 30, 40, 47, 53] min 18 max 57
+T distribution: [(18, 1), (20, 1), (23, 2), (25, 1), (26, 5), (29, 2), (30, 2), (32, 2), (34, 1), (36, 1), (37, 1), (38, 1), (39, 1), (40, 4), (41, 1), (42, 2), (43, 2), (44, 2), (45, 1), (46, 3), (47, 2), (50, 2), (51, 1), (52, 1), (53, 2), (54, 2), (55, 1), (57, 1)]
+best fixed offset +-1: 41 covers 7/48
+bot buy size at T (ETH) p10/50/90: [0.0742, 0.1485, 0.175]
+bot buys per pool to L+400 p10/50/90: [2, 4, 5]
+pulled (to L+400 or head): 13 [(86, 52), (69, 26), (67, 42), (79, 55), (69, 46), (90, 37), (69, 25), (68, 18), (73, 50), (70, 46), (70, 42), (71, 40), (130, 20)]
+pools with an outside buy before T (any size): []

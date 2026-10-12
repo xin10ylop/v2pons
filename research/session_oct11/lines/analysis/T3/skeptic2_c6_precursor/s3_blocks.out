@@ -1,0 +1,9 @@
+pools 48 blocks 1835 receipt blocks 726
+  blocks 500/1835 have 500
+  blocks 1000/1835 have 1000
+  blocks 1500/1835 have 1500
+  blocks 1835/1835 have 1835
+  receipts 300/726 have 300
+  receipts 600/726 have 600
+  receipts 726/726 have 726
+missing blocks 0 missing receipts 0

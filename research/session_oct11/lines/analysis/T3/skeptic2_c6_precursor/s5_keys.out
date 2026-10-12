@@ -1,0 +1,92 @@
+slice: 48 pools (L 86183419..86247541), every block [L-3, T+3] with its txs, receipts for [T-12, T+3]
+
+(A) user txs per block at d blocks before T (T's block counted whole):
+  d  0: mean 6.25
+  d  1: mean 4.48
+  d  2: mean 5.15
+  d  3: mean 5.27
+  d  4: mean 5.04
+  d  5: mean 5.12
+  d  6: mean 5.81
+  d  7: mean 5.25
+  d  8: mean 5.48
+  d  9: mean 5.44
+  d 10: mean 7.44
+  d 11: mean 6.69
+  d 12: mean 5.15
+
+(B) the finder's discovery-top keys on the slice (n 48); finder's own sets: discovery 133, held out 67 (its final events.pkl)
+  eth-send other->other                                      slice d1-4 20 d5-8 18 d9-12 23 excess   -1.0% | bg/blk 15.5% exp1-4   49% | finder disc  +12.8% hold   +0.0% | d0..12  5  8  8 10  9  9  3  7  7  9 11  9  8
+  cls other->other:                                          slice d1-4 28 d5-8 29 d9-12 32 excess   -5.2% | bg/blk 22.5% exp1-4   64% | finder disc  +10.5% hold   -8.2% | d0..12  8 11 11 13 15 14 12 11 12 14 16 16 12
+  cls other->other:a9059cbb                                  slice d1-4  6 d5-8 11 d9-12 10 excess   -9.4% | bg/blk  5.0% exp1-4   19% | finder disc   +9.8% hold   -6.7% | d0..12  2  1  1  1  4  3  1  5  4  1  5  5  3
+  from 0xc256a1bb                                            slice d1-4  1 d5-8  2 d9-12  0 excess   +0.0% | bg/blk  1.2% exp1-4    5% | finder disc   +4.5% hold   +0.0% | d0..12  0  0  1  0  0  0  0  1  1  0  0  0  0
+  from 0x769097a2                                            slice d1-4  0 d5-8  0 d9-12  0 excess   +0.0% | bg/blk  0.1% exp1-4    0% | finder disc   +4.5% hold   +0.0% | d0..12  1  0  0  0  0  0  0  0  0  0  0  0  0
+  from 0x4a6dbb33                                            slice d1-4  2 d5-8  2 d9-12  0 excess   +2.1% | bg/blk  0.4% exp1-4    1% | finder disc   +4.1% hold   +6.0% | d0..12  0  0  0  1  1  0  0  2  0  0  0  0  0
+  cls botwallet->UR:24856bc3                                 slice d1-4  7 d5-8  7 d9-12  5 excess   +2.1% | bg/blk  2.7% exp1-4   10% | finder disc   +3.8% hold   -4.5% | d0..12  0  2  2  1  2  3  0  3  1  1  2  2  1
+  to+sel 0xc8914bbb:ae7e8d81                                 slice d1-4  3 d5-8  3 d9-12  3 excess   +0.0% | bg/blk  1.5% exp1-4    6% | finder disc   +3.8% hold   -3.0% | d0..12  0  0  2  0  1  1  0  2  0  2  0  1  0
+  cls other->other:ae7e8d81                                  slice d1-4  3 d5-8  3 d9-12  3 excess   +0.0% | bg/blk  1.5% exp1-4    6% | finder disc   +3.8% hold   -3.0% | d0..12  0  0  2  0  1  1  0  2  0  2  0  1  0
+  to+sel 0x23070b6a:d1ffe0a2                                 slice d1-4  1 d5-8  0 d9-12  0 excess   +2.1% | bg/blk  0.7% exp1-4    3% | finder disc   +3.8% hold   -0.7% | d0..12  0  0  1  0  0  0  0  0  0  0  0  0  0
+  cls other->other:d1ffe0a2                                  slice d1-4  1 d5-8  0 d9-12  0 excess   +2.1% | bg/blk  0.7% exp1-4    3% | finder disc   +3.8% hold   -0.7% | d0..12  0  0  1  0  0  0  0  0  0  0  0  0  0
+  cls other->other:765e827f                                  slice d1-4  6 d5-8  9 d9-12 10 excess   -7.3% | bg/blk  6.4% exp1-4   23% | finder disc   +3.4% hold   -0.7% | d0..12  1  2  2  1  1  4  1  4  2  4  2  1  4
+
+(C) the finder's held-out-top keys on the slice
+  to+sel 0x00000000:fd9f1e10                                 slice d1-4 15 d5-8  9 d9-12 11 excess  +10.4% | bg/blk  7.4% exp1-4   26% | finder disc   +3.0% hold  +17.9% | d0..12  1  6  4  2  5  2  3  3  2  2  4  5  2
+  cls other->other:fd9f1e10                                  slice d1-4 15 d5-8  9 d9-12 11 excess  +10.4% | bg/blk  7.4% exp1-4   26% | finder disc   +3.0% hold  +17.9% | d0..12  1  6  4  2  5  2  3  3  2  2  4  5  2
+  cls other->other:095ea7b3                                  slice d1-4 25 d5-8 26 d9-12 31 excess   -7.3% | bg/blk 18.6% exp1-4   56% | finder disc   -4.5% hold  +15.7% | d0..12  5 10 10 11  5  8 11  7  7 11 11  5 14
+  to+sel 0xccc88a9d:0a2b8f36                                 slice d1-4  8 d5-8  8 d9-12  4 excess   +4.2% | bg/blk  3.6% exp1-4   14% | finder disc   -4.1% hold  +12.7% | d0..12  1  4  2  2  0  0  2  3  3  1  0  2  1
+  cls other->other:0a2b8f36                                  slice d1-4  8 d5-8  8 d9-12  4 excess   +4.2% | bg/blk  3.6% exp1-4   14% | finder disc   -4.1% hold  +12.7% | d0..12  1  4  2  2  0  0  2  3  3  1  0  2  1
+  from 0x99914a98                                            slice d1-4  5 d5-8  2 d9-12  4 excess   +4.2% | bg/blk  2.3% exp1-4    9% | finder disc   -3.0% hold  +11.9% | d0..12  0  1  0  2  2  0  1  0  1  1  2  1  0
+  to+sel 0x698f6005:3593564c                                 slice d1-4  7 d5-8  6 d9-12  5 excess   +3.1% | bg/blk  2.4% exp1-4    9% | finder disc   +0.8% hold  +11.9% | d0..12  0  1  2  3  1  1  2  2  1  2  1  2  0
+  cls other->other:4d819a2a                                  slice d1-4  5 d5-8 10 d9-12 11 excess  -11.5% | bg/blk  3.4% exp1-4   13% | finder disc   +2.3% hold  +10.4% | d0..12  1  0  2  2  1  1  3  3  3  3  3  3  2
+  cls other->other:7169b574                                  slice d1-4  7 d5-8 15 d9-12 10 excess  -11.5% | bg/blk  9.0% exp1-4   31% | finder disc   +3.0% hold  +10.4% | d0..12  1  2  4  1  1  3  7  1  7  4  4  5  2
+  to+sel 0xb740ddd4:00000000                                 slice d1-4  8 d5-8  5 d9-12  0 excess  +11.5% | bg/blk  1.3% exp1-4    5% | finder disc   -1.1% hold   +9.7% | d0..12  0  2  1  2  3  3  1  1  0  0  0  0  0
+  from 0xfb3d6d79                                            slice d1-4  8 d5-8  5 d9-12  1 excess  +10.4% | bg/blk  1.4% exp1-4    5% | finder disc   -1.1% hold   +9.7% | d0..12  0  2  1  2  3  3  1  1  0  0  1  0  0
+  cls other->other:00000000                                  slice d1-4  9 d5-8  7 d9-12  4 excess   +7.3% | bg/blk  2.3% exp1-4    9% | finder disc   -4.9% hold   +7.5% | d0..12  0  2  1  3  4  3  1  2  1  0  1  3  1
+
+(D) named keys, the other-line-pool keys (consistent in the finder's FINAL events.pkl, which its s6b replicate predates), and this skeptic's extra keys
+  ANY event in another line pool                             slice d1-4 14 d5-8 13 d9-12 15 excess   +0.0% | bg/blk  7.6% exp1-4   27% | finder disc  +13.2% hold  +24.6% | d0..12  1  5  4  5  3  4  1  7  3  6  5  5  3
+  touch otherline_3.0:Swap                                   slice d1-4  9 d5-8  9 d9-12 10 excess   -1.0% | bg/blk  4.3% exp1-4   16% | finder disc  +12.0% hold  +20.1% | d0..12  0  3  3  3  1  3  1  4  1  5  1  4  2
+  touch otherline_2.433:Swap                                 slice d1-4  6 d5-8  5 d9-12  7 excess   +0.0% | bg/blk  3.1% exp1-4   12% | finder disc   +1.5% hold   +3.0% | d0..12  1  2  0  2  2  1  0  3  2  1  4  1  1
+  X bot buy tx (bot router c1120e3d), another pool           slice d1-4 11 d5-8  9 d9-12 13 excess   +0.0% | bg/blk  4.4% exp1-4   17% | finder disc   +0.0% hold   +0.0% | d0..12  1  4  3  4  0  1  3  4  2  6  4  3  1
+  X any bot-router tx, another pool                          slice d1-4 11 d5-8 10 d9-12 14 excess   -2.1% | bg/blk  5.3% exp1-4   19% | finder disc   +0.0% hold   +0.0% | d0..12  1  4  3  4  0  2  3  4  2  6  5  3  1
+  X any PoolManager log in another pool                      slice d1-4 45 d5-8 48 d9-12 46 excess   -4.2% | bg/blk 63.0% exp1-4   98% | finder disc   +0.0% hold   +0.0% | d0..12 18 26 35 28 24 28 30 35 34 31 36 35 31
+  ANY tx to the bot router                                   slice d1-4 11 d5-8 10 d9-12 14 excess   -2.1% | bg/blk  5.3% exp1-4   19% | finder disc   -6.8% hold   -3.7% | d0..12  1  4  3  4  0  2  3  4  2  6  5  3  1
+  ANY tx from a bot wallet                                   slice d1-4 20 d5-8 21 d9-12 18 excess   +1.0% | bg/blk  9.4% exp1-4   33% | finder disc   +0.4% hold   +0.7% | d0..12  1  7  6  8  3  6  5  9  5  7  7  7  3
+  ANY tx to the PositionManager                              slice d1-4  5 d5-8  6 d9-12  7 excess   -3.1% | bg/blk  8.5% exp1-4   30% | finder disc   +1.1% hold   +0.0% | d0..12  2  0  2  1  2  2  2  0  2  1  3  2  1
+  a 1444-byte PositionManager launch (any line)              slice d1-4  1 d5-8  1 d9-12  1 excess   +0.0% | bg/blk  1.3% exp1-4    5% | finder disc   +2.6% hold   +1.5% | d0..12  0  0  1  0  0  1  0  0  0  0  1  0  0
+  ANY tx to Permit2                                          slice d1-4 11 d5-8 12 d9-12  7 excess   +3.1% | bg/blk  5.0% exp1-4   19% | finder disc   -0.8% hold   +0.7% | d0..12  0  1  3  4  3  2  6  1  4  0  2  2  3
+  ANY tx touching the pool or its token                      slice d1-4  0 d5-8  0 d9-12  0 excess   +0.0% | bg/blk  0.4% exp1-4    1% | finder disc   +0.0% hold   +0.0% | d0..12  0  0  0  0  0  0  0  0  0  0  0  0  0
+  ANY tx touching T's buyer wallet                           slice d1-4  0 d5-8  0 d9-12  0 excess   +0.0% | bg/blk  0.0% exp1-4    0% | finder disc   +0.0% hold   +0.0% | d0..12  0  0  0  0  0  0  0  0  0  0  0  0  0
+  ANY tx from T's buyer wallet                               slice d1-4  0 d5-8  0 d9-12  0 excess   +0.0% | bg/blk  0.0% exp1-4    0% | finder disc   +0.0% hold   +0.0% | d0..12  0  0  0  0  0  0  0  0  0  0  0  0  0
+  ETH sent to a bot wallet                                   slice d1-4  0 d5-8  0 d9-12  0 excess   +0.0% | bg/blk  0.0% exp1-4    0% | finder disc   +0.0% hold   +0.0% | d0..12  0  0  0  0  0  0  0  0  0  0  0  0  0
+  ANY tx from the sentinel 0xe71a69f4                        slice d1-4  0 d5-8  0 d9-12  0 excess   +0.0% | bg/blk  1.4% exp1-4    5% | finder disc   -4.9% hold   +2.2% | d0..12  0  0  0  0  0  0  0  0  0  0  0  0  0
+
+(E) the slice's own top 15 keys by the d1-4 excess, measured back on the finder's sets
+  to+sel 0xb740ddd4:00000000                                 slice d1-4  8 d5-8  5 d9-12  0 excess  +11.5% | bg/blk  1.3% exp1-4    5% | finder disc   -1.1% hold   +9.7% | d0..12  0  2  1  2  3  3  1  1  0  0  0  0  0
+  to+sel 0x00000000:fd9f1e10                                 slice d1-4 15 d5-8  9 d9-12 11 excess  +10.4% | bg/blk  7.4% exp1-4   26% | finder disc   +3.0% hold  +17.9% | d0..12  1  6  4  2  5  2  3  3  2  2  4  5  2
+  cls other->other:fd9f1e10                                  slice d1-4 15 d5-8  9 d9-12 11 excess  +10.4% | bg/blk  7.4% exp1-4   26% | finder disc   +3.0% hold  +17.9% | d0..12  1  6  4  2  5  2  3  3  2  2  4  5  2
+  from 0xfb3d6d79                                            slice d1-4  8 d5-8  5 d9-12  1 excess  +10.4% | bg/blk  1.4% exp1-4    5% | finder disc   -1.1% hold   +9.7% | d0..12  0  2  1  2  3  3  1  1  0  0  1  0  0
+  to+sel 0xa33e14ac:b6621842                                 slice d1-4  6 d5-8  2 d9-12  1 excess   +9.4% | bg/blk  1.4% exp1-4    5% | finder disc   -0.4% hold   +0.7% | d0..12  0  0  2  1  4  1  0  1  0  0  1  0  0
+  from 0xf9815608                                            slice d1-4  6 d5-8  2 d9-12  1 excess   +9.4% | bg/blk  1.4% exp1-4    5% | finder disc   -0.4% hold   +0.7% | d0..12  0  0  2  1  4  1  0  1  0  0  1  0  0
+  to+sel 0x9a352a0f:06f1065d                                 slice d1-4  5 d5-8  0 d9-12  2 excess   +8.3% | bg/blk  0.6% exp1-4    3% | finder disc   +0.4% hold   +2.2% | d0..12  0  0  4  1  0  0  0  0  0  1  1  0  0
+  cls other->other:06f1065d                                  slice d1-4  5 d5-8  0 d9-12  2 excess   +8.3% | bg/blk  0.6% exp1-4    3% | finder disc   +0.4% hold   +2.2% | d0..12  0  0  4  1  0  0  0  0  0  1  1  0  0
+  to+sel 0xf4275f24:b3938887                                 slice d1-4 13 d5-8  5 d9-12 13 excess   +8.3% | bg/blk  6.6% exp1-4   24% | finder disc   -7.1% hold   +5.2% | d0..12  1  1  4  4  5  3  0  1  1  1  3  5  4
+  cls other->other:b6621842                                  slice d1-4 22 d5-8 19 d9-12 18 excess   +7.3% | bg/blk 14.6% exp1-4   47% | finder disc   -7.5% hold   +6.0% | d0..12  4  9  9  7 11  7 11  7 11  8  7  5  7
+  cls other->other:00000000                                  slice d1-4  9 d5-8  7 d9-12  4 excess   +7.3% | bg/blk  2.3% exp1-4    9% | finder disc   -4.9% hold   +7.5% | d0..12  0  2  1  3  4  3  1  2  1  0  1  3  1
+  from 0x5cc333a8                                            slice d1-4  5 d5-8  0 d9-12  3 excess   +7.3% | bg/blk  0.6% exp1-4    3% | finder disc   +0.4% hold   +2.2% | d0..12  0  0  4  1  0  0  0  0  0  2  1  0  0
+  from 0x8987a30a                                            slice d1-4  3 d5-8  0 d9-12  0 excess   +6.2% | bg/blk  0.4% exp1-4    1% | finder disc   +1.5% hold   +0.0% | d0..12  0  0  0  2  1  0  0  0  0  0  0  0  0
+  to+sel UR:24856bc3                                         slice d1-4 11 d5-8  9 d9-12  7 excess   +6.2% | bg/blk  3.9% exp1-4   15% | finder disc   +1.1% hold   +0.7% | d0..12  0  4  2  3  3  3  2  3  1  1  2  4  2
+  to+sel 0x89e5db8b:7ff36ab5                                 slice d1-4  4 d5-8  1 d9-12  1 excess   +6.2% | bg/blk  1.5% exp1-4    6% | finder disc   +1.1% hold   +3.7% | d0..12  0  0  1  2  1  0  0  0  1  0  0  0  1
+
+keys seen in d 0..12 on the slice: 3615
+
+(F) null: the top d1-4 excess over all keys with a fake anchor T' = T - s (same pools, same blocks, nothing to find)
+  shift  0 pools 48: top excess +11.5% (to+sel 0xb740ddd4:00000000), 2nd +10.4%, 5th  +9.4%, 15th  +6.2%; fd9f1e10 +10.4%
+  shift 13 pools 43: top excess +14.0% (touch otherline_3.0:Swap), 2nd +12.8%, 5th +10.5%, 15th  +9.3%; fd9f1e10  -5.8%
+  shift 14 pools 38: top excess +19.7% (cls other->other:095ea7b3), 2nd +15.8%, 5th +14.5%, 15th  +7.9%; fd9f1e10  -2.6%
+  shift 15 pools 38: top excess +15.8% (to+sel 0x00000000:765e827f), 2nd +14.5%, 5th +13.2%, 15th  +6.6%; fd9f1e10  -5.3%
+  shift 16 pools 38: top excess +19.7% (to+sel 0x7680ecc6:b3938887), 2nd +17.1%, 5th +10.5%, 15th  +6.6%; fd9f1e10  +1.3%
+  shift 17 pools 36: top excess +18.1% (to+sel 0x7680ecc6:b3938887), 2nd +16.7%, 5th +15.3%, 15th  +8.3%; fd9f1e10  +0.0%
+  shift 18 pools 34: top excess +17.6% (to+sel PERMIT2:87517c45), 2nd +17.6%, 5th  +8.8%, 15th  +7.4%; fd9f1e10  +8.8%
+  shift 19 pools 34: top excess +14.7% (to+sel 0x628bd69e:7169b574), 2nd +14.7%, 5th +14.7%, 15th  +8.8%; fd9f1e10 +14.7%
+  shift 20 pools 32: top excess +12.5% (to+sel 0xd703ec4a:8d6cc56d), 2nd +12.5%, 5th +12.5%, 15th  +7.8%; fd9f1e10  -1.6%
