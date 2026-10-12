@@ -159,7 +159,8 @@ bytes); only lines that start with `RELAY_V3=` or `RELAY_V3_CODEHASH=` change. I
 with `O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW` and mode 600, flushes and fsyncs it, renames it over the env file and fsyncs the directory; on
 any error after the `.tmp` exists (a full disk, an I/O error, Ctrl-C) it unlinks the `.tmp`, which holds the key, and raises the error
 again, the env file untouched. Only a `kill -9` between the create and the rename can leave the `.tmp` (mode 600, root's), and the next
-run unlinks it. Without `--write-env`, add the two lines by hand.
+run unlinks it. Without `--write-env`, add the two lines by hand. The engine checks the relay's code against `RELAY_V3_CODEHASH` too
+when it is set (HANDOFF 16.22): another keccak keeps every V3 family dry, with an alarm.
 
 `relay_ops.py`: `status` adds a line for the V3 relay when `RELAY_V3` is set (its ETH, any WETH, its owner against the wallet).
 `deposit_v3 <eth>`, `withdraw_v3 [eth]` (no amount = all) and `sweep_v3 <token|WETH> [raw amount]` (the word WETH, any case, for WETH's

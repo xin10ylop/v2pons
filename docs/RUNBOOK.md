@@ -539,17 +539,21 @@ Three rules come from the relay as built:
 - **The sell check.** Before a live buy, the pool's buy and sell are simulated through the relay by `eth_call`, nothing sent: some
   tokens refuse any outsider's transfer into the pool, so the relay could buy and never sell.
   - **When it runs:** when the pool is armed, which leaves p356 about 6 s before its buy at + 60.
-  - **Refused:** a simulated sell that reverts, or less than 0.9 x the stake back. The pool is never bought (skip "v3: the token cannot
+  - **Refused:** a simulated sell that reverts, or less than 0.99 x the stake less the two fees back (0.9898 x at fee 100, 0.9703 x at
+    fee 10000; the eight live pools measured gave 0.99980 and 0.98010-0.98013). The pool is never bought (skip "v3: the token cannot
     be sold").
-  - **No verdict:** an RPC failure is its own skip ("v3: the sell check could not run"). The check is asked again each block before
-    launch + buy_at.
+  - **No verdict:** an RPC failure, or the relay's `NoPool` from a node behind the feed, is its own skip ("v3: the sell check could not
+    run"). The check is asked again each block, after that block's fire, until launch + buy_at + fire_max (+ 70 for p356).
   - **Who is checked:** a launch-rule family (p356) is always checked when live. `V3_SELL_CHECK` (1) only decides for a crowd family:
     v3crowd buys in its launch block, before its pool exists, so it cannot be checked. With 1 it trades dry (an alarm at start says so);
     with 0 it trades unchecked.
 
 Before: the relay is deployed with WALLET as its owner, and it holds at least 0.004 ETH (its own steps; the engine only reads it).
 
-**1. The code and the setting.** The first line prints `code`, else stop. Put the relay's address in place of `0x...`:
+**1. The code and the setting.** The first line prints `code`, else stop. `deploy/relay_v3_deploy.py --write-env` writes `RELAY_V3`
+and `RELAY_V3_CODEHASH` itself (docs/RELAY_V3.md). By hand, put the relay's address in place of `0x...`, and set `RELAY_V3_CODEHASH` to the
+line the deployment printed (`set_kv RELAY_V3_CODEHASH 0x...`). With `RELAY_V3_CODEHASH` set, the engine also requires the relay's code
+to have that keccak (any case, 0x optional; the value is never logged):
 
     cd ~/v2pons && git pull -q --ff-only && grep -q '^def relay_v3_check' src/flip_engine.py && echo code
     set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
@@ -589,20 +593,24 @@ It refuses, and changes nothing (no restart), in these cases:
 
 **3. The check.** The start line, then the last alarms:
 
-    sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | python3 -c 'import sys, json; s = json.loads(sys.stdin.read()); print("relay_v3:", s.get("relay_v3"), "verified:", s.get("relay_v3_live"), "owner:", s.get("relay_v3_owner"), "eth:", s.get("relay_v3_eth"), "cap:", s.get("v3_stake_cap_eth"), "error:", s.get("front_family_error")); [print(f["name"], f.get("dex", "v4"), "dry_run", f["dry_run"], "live", f.get("live"), "stake", f.get("live_stake_eth", f.get("stake_eth"))) for f in s["front_families"]]'
+    sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | python3 -c 'import sys, json; s = json.loads(sys.stdin.read()); print("relay_v3:", s.get("relay_v3"), "verified:", s.get("relay_v3_live"), "codehash:", s.get("relay_v3_codehash"), "checked:", s.get("relay_v3_codehash_set"), "owner:", s.get("relay_v3_owner"), "eth:", s.get("relay_v3_eth"), "cap:", s.get("v3_stake_cap_eth"), "error:", s.get("front_family_error")); [print(f["name"], f.get("dex", "v4"), "dry_run", f["dry_run"], "live", f.get("live"), "stake", f.get("live_stake_eth", f.get("stake_eth"))) for f in s["front_families"]]'
     sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"alarm"' | tail -3 | cut -c1-300
 
 It must print:
 
-- the relay's address, `verified: True`, the wallet as `owner`, its balance, `cap: 0.004` and `error: None`;
+- the relay's address, `verified: True`, its code's keccak with `checked: True` (`RELAY_V3_CODEHASH` set), the wallet as `owner`, its
+  balance, `cap: 0.004` and `error: None`;
 - the family with `dry_run False live True stake 0.004` (v3crowd shows `live False` while `V3_SELL_CHECK` is 1, with an alarm);
 - every other family as before (c1 `dry_run False`, the dry ones `dry_run True`).
 
 `verified: False` means an alarm says why; every V3 family then trades dry and the rest as before. The reasons: no code at the address,
-another owner (or `owner()` reverting), code without the relay's `buy`/`sell`, the v4 relay's address, not an address, or the RPC failed.
+another owner (or `owner()` reverting), code without the relay's `buy`/`sell`, a keccak other than `RELAY_V3_CODEHASH`, the v4 relay's
+address, not an address, or the RPC failed. A mistake in one V3 family's object (a wrong `dry_run`, an unknown key, a bad hash, a stake
+over the cap) drops that family alone, with an alarm; the other families are kept. The `flow` line carries `v3_today`,
+`v3_pnl_today_usd` and `relay_v3_eth`.
 p356's sell check is a `sell_check` line in the log at each arming (`ok`, or `why`). `results.py` shows the
 line LIVE with its capped stake. Its money line shows the V3 relay's balance (`?` when that read fails; nothing if `RELAY_V3` is not an
-address). Its trades are `trade_done` lines with `"dex":"v3"`, `pool`,
+address, read as the engine reads it, or is `RELAY`). Its trades are `trade_done` lines with `"dex":"v3"`, `pool`,
 the fills (`buy.eth_in`, `sell.eth_out`), `pnl_usd`, `ret` and the pull fields.
 
 **Off.** The same snippet with `dry` in place of `live` (`sudo python3 - v3crowd dry <<'PY'` ...), then the same check. Remove
