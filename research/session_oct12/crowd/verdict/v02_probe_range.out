@@ -1,0 +1,12 @@
+n 279  0.002 ETH ($5.04): mean +7.47%  median -0.46%  win 110  $/trade mean +0.377 median -0.023
+  without top 10% (27): +1.63%  top-10% share 80%
+  10-10: n 68 mean +2.51% median -0.51%
+  10-11: n 143 mean +4.68% median -0.44%
+  10-12: n 68 mean +18.31% median -0.41%
+100-trade sum, no reaction: p5 +18.04  p25 +27.98  median +36.35  p75 +45.96  p95 +61.23  P(<0) 0.0%
+30-trade sum: p5 +2.69 median +9.86 p95 +25.20  P(<0) 0.0%
+exits by the crowd's clock 50/279 (18%); others: ['cap']
+  P(<= 0 crowd exits in 30 | p 0.18) = 0.0027
+  P(<= 1 crowd exits in 30 | p 0.18) = 0.0202
+  P(<= 2 crowd exits in 50 | p 0.18) = 0.0036
+  P(<= 3 crowd exits in 50 | p 0.18) = 0.0141
