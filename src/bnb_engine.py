@@ -22,7 +22,7 @@ negative median over the first 10 trades) is logged as alarms ("gate: ..."); not
 
 Settings from the environment (/etc/flip/bnb.env on the box). Log: JSONL, one event per line with "ev" and "t", BNB_LOG_PATH.
     python3 src/bnb_engine.py                       # live, from the head
-    python3 src/bnb_engine.py --replay FROM TO      # the same reader over past blocks (an archive RPC for more than ~10,000 blocks back)
+    BNB_LOG_PATH=/tmp/r.jsonl python3 src/bnb_engine.py --replay FROM TO    # past blocks (an archive RPC beyond ~10,000 blocks back)
 """
 import os, sys, json, time, asyncio, threading, traceback, statistics, signal, urllib.request, urllib.parse
 
@@ -54,7 +54,7 @@ def _sizes(name, default):
 
 
 WS_URL = env("BNB_WS_URL", "wss://bsc-rpc.publicnode.com"); RPC_URL = env("BNB_RPC_URL", "https://bsc-rpc.publicnode.com")
-LOG_PATH = env("BNB_LOG_PATH", "/var/log/flip/bnb.jsonl")
+LOG_PATH = env("BNB_LOG_PATH", "/var/log/flip/bnb.jsonl")                                # --replay refuses this default (the service's log)
 LAUNCHER = env("BNB_LAUNCHER", "0xc9b7cc619200418649f9e3fc718e45028dfe9c47").lower(); SELECTOR = env("BNB_SELECTOR", "50b6f139").lower().replace("0x", "")
 CALLDATA_LEN = _setting("BNB_CALLDATA_LEN", "196", 0, 100000, True)                       # 0: any length
 STAKE_USD = _setting("BNB_STAKE_USD", "15", 0.01, 10000)
@@ -65,10 +65,13 @@ USD_PAIR = env("BNB_USD_PAIR", "0x16b9a82891338f9ba80e2d6970fdda79d1eb0dae").low
 PRICE_EVERY = 133                                                                       # blocks, about a minute
 GAS_UNITS = _setting("BNB_GAS_UNITS", "370000", 0, 5_000_000, True); GAS_GWEI = _setting("BNB_GAS_GWEI", "0.1", 0, 100)   # approve + buy + sell (verify: ~370k)
 DUMP_SHARE = _setting("BNB_DUMP_SHARE", "0.5", 0.01, 1.0)
-WATCH_TO = _setting("BNB_WATCH_TO", "7200", SELL_AT, 100000, True)                        # blocks after L a pool is watched for its dump (25 BNB: ~+6,800)
+WATCH_TO = _setting("BNB_WATCH_TO", "8000", SELL_AT, 100000, True)                        # blocks after L a pool is watched for its dump (25 BNB: ~+6,800)
 LAG_BLOCKS = _setting("BNB_LAG_BLOCKS", "2", 0, 50, True)                                 # read blocks this far behind the head (a node that just announced a block may not serve its logs yet)
 MAX_RANGE = _setting("BNB_MAX_RANGE", "50", 1, 5000, True); MAX_BEHIND = _setting("BNB_MAX_BEHIND", "2000", 10, 100000, True)
-RANGE_TRIES = 5; RETRY_S = 0.5                                                          # a range's eth_getLogs: 5 tries (each with rpc's own 4) before it is skipped
+RETRY_S = 0.5; RETRY_MAX_S = 10.0                                                      # a range that fails is tried again (doubling pause, capped), never skipped
+TX_NULL_TRIES = 6; TX_NULL_PAUSE_S = 0.3                                                # a creating transaction the node does not have yet (null)
+START_WAIT_S = 300; WS_STABLE_S = 60                                                    # the start waits this long for the RPC; a connection this old resets the back-off
+DEFAULT_LOG = "/var/log/flip/bnb.jsonl"
 GATE_DUMP_BEFORE = _setting("BNB_GATE_DUMP_BEFORE", "997", 0, 100000, True); GATE_CROWD_FROM = _setting("BNB_GATE_CROWD_FROM", "60", 0, 100000, True)
 GATE_PROBES = _setting("BNB_GATE_PROBES", "10", 1, 1000, True)
 FLOW_S = _setting("BNB_FLOW_S", "60", 1, 3600)
@@ -82,11 +85,11 @@ T_BURN = "0xdccd412f0b1252819cb1fd330b93224ca42612892bb3f4f789976e6d81936496"   
 T_SWAP = "0xd78ad95fa46c994b6551d0da85fc275fe613ce37657fb8d5e3d130840159d822"           # Swap(address,uint256,uint256,uint256,uint256,address)
 PAIR_TOPICS = [T_SYNC, T_MINT, T_BURN, T_SWAP]
 
-state = {"head": None, "head_ts": None, "head_at": 0.0, "head_src": None, "polled_at": 0.0, "done_to": None, "ws": False, "stop": False,
+state = {"head": None, "head_ts": None, "head_at": 0.0, "head_src": None, "polled_at": 0.0, "poll_wait": 0.5, "done_to": None, "ws": False, "stop": False,
          "launches": 0, "launches_flow": 0, "pairs_wbnb": 0, "pairs_unread": 0, "blocks_flow": 0, "flow_at": time.monotonic(), "trades": [], "median_alarmed": False,
          "price": None, "price_block": None, "fails": 0, "usdt_is_token0": True, "alarms_quiet": {}}
 pools = {}                                                                              # pair -> its record (many at once: the pools overlap)
-_log_lock = threading.Lock()
+_log_lock = threading.RLock()
 
 
 def log(ev):
@@ -115,16 +118,26 @@ def host(url):
         return "?"
 
 
-def scrub(text):
+def scrub(text, n=200, tail=False):
+    """text for the log without any endpoint's URL: the whole URL becomes its host, and its path, query and user:password@ go
+    wherever they appear alone; the first n characters (the last n with tail, for a trace)"""
     s = str(text)
     for u in (WS_URL, RPC_URL):
         if u:
             s = s.replace(u, host(u))
-    return s[:200]
+            try:
+                x = urllib.parse.urlparse(u)
+            except ValueError:
+                continue
+            for part, mark in ((x.query, "<query>"), (x.path if len(x.path) > 1 else "", "/<path>"), (x.netloc.rpartition("@")[0], "<user>")):
+                if part:
+                    s = s.replace(part, mark)
+    return s[-n:] if tail else s[:n]
 
 
 def rpc(method, params, tries=4, timeout=10):
-    """one JSON-RPC call, retried with a doubling pause (0.25 s to 4 s: a public node's rate limit, HTTP 429, passes)"""
+    """one JSON-RPC call, up to `tries` times with pauses of 0.25, 0.5, 1, 2, then 4 s between them (4 tries: 1.75 s of pauses in all;
+    6 tries: 7.75 s), so that a public node's rate limit (HTTP 429) passes"""
     last = None
     for i in range(tries):
         try:
@@ -205,13 +218,20 @@ def on_pair_created(lg):
     if WBNB not in (t0, t1):
         return None
     state["pairs_wbnb"] += 1
-    try:
-        tx = rpc("eth_getTransactionByHash", [lg["transactionHash"]], tries=6)
-    except Exception as e:
+    tx, err = None, "null each time"
+    for i in range(TX_NULL_TRIES):                                                    # null: the node does not have it yet
+        try:
+            tx = rpc("eth_getTransactionByHash", [lg["transactionHash"]], tries=6)
+        except Exception as e:
+            err = scrub(e); break
+        if tx:
+            break
+        time.sleep(TX_NULL_PAUSE_S)
+    if not tx:
         state["pairs_unread"] += 1
-        alarm(f"a WBNB pair's creating transaction was not read ({scrub(e)}): a launch may be missed", pair="0x" + lg["data"][26:66].lower(), tx=lg["transactionHash"])
+        alarm(f"a WBNB pair's creating transaction was not read ({err}): a launch may be missed", pair="0x" + lg["data"][26:66].lower(), tx=lg["transactionHash"])
         return None
-    if not tx or (tx.get("to") or "").lower() != LAUNCHER:
+    if (tx.get("to") or "").lower() != LAUNCHER:
         return None
     inp = (tx.get("input") or "")[2:]
     if inp[:8].lower() != SELECTOR or (CALLDATA_LEN and len(inp) // 2 != CALLDATA_LEN):
@@ -357,14 +377,16 @@ def advance(p, B):
         if p["size"] is None and p["skip"] is None:
             p["skip"] = "no liquidity by the buy"; log({"ev": "skip", "pair": p["pair"], "L": p["L"], "why": p["skip"]})
         if not p["skip"]:
-            fire(p)
+            fire(p, B)
     if p["fired"] and not p["sold"] and off >= SELL_AT:
-        sell(p)
+        sell(p, B)
     if off >= WATCH_TO and p["pair"] in pools:
         finish(p)
 
 
-def fire(p):
+def fire(p, B):
+    """our buy, first in block L+BUY_AT: B (logged as ran_in_block) is the first block whose logs were not yet applied, L+BUY_AT when the
+    pool had a log in that block, else a later one with no log of the pool in between (the same reserves)"""
     q = stake_wei(); tok = amount_out(q, p["rq"], p["rt"])
     p["fired"] = True
     if tok <= 0:
@@ -372,29 +394,37 @@ def fire(p):
     p["q"], p["tok"], p["sq"], p["st"] = q, tok, p["rq"] + q, p["rt"] - tok
     log({"ev": "would_fire", "dry": True, "pair": p["pair"], "L": p["L"], "at": p["L"] + BUY_AT, "off": BUY_AT, "pool_bnb": p["size"], "stake_wei": q,
          "stake_bnb": q / 1e18, "stake_usd": STAKE_USD, "bnb_usd": round(bnb_usd(), 4), "r_wbnb": p["rq"], "r_token": p["rt"], "tokens": tok,
-         "swaps_before": p["swaps_before"], "crowd_ahead": p["crowd_ahead"]})
+         "swaps_before": p["swaps_before"], "crowd_ahead": p["crowd_ahead"], "ran_in_block": B})
 
 
-def sell(p):
+def sell(p, B):
     back = amount_out(p["tok"], p["st"], p["sq"]); gas = int(round(GAS_UNITS * GAS_GWEI * 1e9))
     p["sold"] = True
-    trade_done(p, (back - p["q"] - gas) / p["q"], (back - p["q"]) / p["q"], back, f"sell at +{SELL_AT}")
-    if p["crowd_gate"] == 0:
+    clean = trade_done(p, (back - p["q"] - gas) / p["q"], (back - p["q"]) / p["q"], back, f"sell at +{SELL_AT}", sold_in=B)
+    if p["crowd_gate"] == 0 and clean:
         alarm(f"gate: no crowd buy in +{GATE_CROWD_FROM}..+{SELL_AT} (pool {p['size']} BNB)", pair=p["pair"])
 
 
-def trade_done(p, ret, gross, back, why, pulled=False):
-    log({"ev": "trade_done", "dry": True, "pair": p["pair"], "L": p["L"], "pool_bnb": p["size"], "why": why, "dry_ret": round(ret, 6), "dry_ret_gross": round(gross, 6),
+def trade_done(p, ret, gross, back, why, pulled=False, sold_in=None):
+    """the dry result; a trade with a missed log (breaks) or a gap (dropped by a jump: dry_ret null) is not clean: the gate and the
+    screen's statistics leave it out"""
+    clean = ret is not None and not p["breaks"] and not p["gaps"]
+    log({"ev": "trade_done", "dry": True, "pair": p["pair"], "L": p["L"], "pool_bnb": p["size"], "why": why, "clean": clean, "sold_in_block": sold_in,
+         "dry_ret": round(ret, 6) if ret is not None else None, "dry_ret_gross": round(gross, 6) if gross is not None else None,
          "stake_wei": p["q"], "tokens": p["tok"], "back_wei": back, "r_wbnb": p["rq"], "r_token": p["rt"], "pulled_before_sell": pulled,
          "crowd_buys": p["crowd"], "crowd_bnb": round(p["crowd_bnb"] / 1e18, 6), "crowd_ahead": p["crowd_ahead"], "crowd_gate": p["crowd_gate"],
          "first_crowd_off": p["first_crowd"], "crowd_minout": round(p["minout"], 6) if p["minout"] is not None else None,
          "strangers": p["strangers"], "stranger_bnb": round(p["stranger_bnb"] / 1e18, 6), "unread_txs": p["unread"], "sells": p["sells"],
          "entry_block_swaps": p["entry_swaps"], "dump_off": p["dump"]["off"] if p["dump"] else None, "breaks": p["breaks"], "gaps": p["gaps"]})
-    gate_probe(ret)
+    if clean:
+        gate_probe(ret)
+    return clean
 
 
 def gate_probe(ret):
-    """the gate's last rule: a negative median over the first GATE_PROBES trades (of this run)"""
+    """the gate's last rule: a negative median over the first GATE_PROBES clean trades (of this run); later ones are not kept"""
+    if len(state["trades"]) >= GATE_PROBES:
+        return
     state["trades"].append(ret)
     if len(state["trades"]) == GATE_PROBES and not state["median_alarmed"]:
         m = statistics.median(state["trades"])
@@ -452,8 +482,11 @@ def handle_safe(lg, to_block):
     try:
         handle(lg, to_block)
     except Exception as e:
-        alarm(f"a log was not understood: {type(e).__name__}: {scrub(e)}", quiet_key="badlog", every_s=60, block=str(lg.get("blockNumber") if isinstance(lg, dict) else lg)[:20],
-              trace=traceback.format_exc()[-300:])
+        p = pools.get(str(lg.get("address", "")).lower()) if isinstance(lg, dict) else None
+        if p is not None:
+            p["breaks"] += 1                                                         # a log of this pool missed: its trade is not clean
+        alarm(f"a log was not understood: {type(e).__name__}: {scrub(e)}", quiet_key="badlog", every_s=60, block=scrub(lg.get("blockNumber") if isinstance(lg, dict) else lg, 20),
+              trace=scrub(traceback.format_exc(), 300, tail=True))
 
 
 def process_range(a, b):
@@ -470,21 +503,23 @@ def process_range(a, b):
     state["blocks_flow"] += b - a + 1; state["done_to"] = b
 
 
-def current_head(poll_every=0.5):
-    """the websocket's newest head; while it is quiet for 3 s, eth_blockNumber (at most every poll_every s)"""
+def current_head():
+    """the websocket's newest head; while it is quiet for 3 s, eth_blockNumber every poll_wait s (0.5 s, doubling to 30 s while the
+    poll fails, back to 0.5 s on an answer)"""
     now = time.monotonic()
     if now - state["head_at"] < 3:                                                 # (head_at starts at the start: the websocket has 3 s)
         return state["head"]
-    if now - state["polled_at"] >= poll_every:
+    if now - state["polled_at"] >= state["poll_wait"]:
         state["polled_at"] = now
         try:
-            n = int(rpc("eth_blockNumber", [], tries=1, timeout=5), 16)
+            n = int(rpc("eth_blockNumber", [], tries=1, timeout=5), 16); state["poll_wait"] = 0.5
             if state["head"] is None or n > state["head"]:
                 state["head"] = n; state["head_ts"] = None
             if state["head_src"] != "poll" and time.monotonic() - state["head_at"] >= 3:   # no websocket head came in while it was asked
                 state["head_src"] = "poll"; log({"ev": "feed_fallback", "head": n, "why": "no head from the websocket for 3 s: eth_blockNumber"})
         except Exception as e:
-            alarm(f"no head: {scrub(e)}", quiet_key="head", every_s=60)
+            state["poll_wait"] = min(30.0, state["poll_wait"] * 2)
+            alarm(f"no head: {scrub(e)}", quiet_key="head", every_s=60, retry_s=state["poll_wait"])
     return state["head"]
 
 
@@ -502,22 +537,20 @@ def step(replay_to=None):
     if target - state["done_to"] > MAX_BEHIND and replay_to is None:
         alarm(f"the reader is {target - state['done_to']} blocks behind: jumping to the head; the pools being watched are dropped")
         for p in list(pools.values()):
+            if p["fired"] and not p["sold"]:
+                p["sold"] = True; p["gaps"] += 1
+                trade_done(p, None, None, 0, "the reader jumped past the sale: no result")
             finish(p, "the reader jumped")
-        state["done_to"] = target - 1
+        state["done_to"] = target - 1; state["fails"] = 0
     if target <= state["done_to"]:
         return False
     a = state["done_to"] + 1; b = min(target, state["done_to"] + MAX_RANGE)
     try:
         process_range(a, b); state["fails"] = 0
-    except Exception as e:
-        state["fails"] += 1
-        alarm(f"blocks {a}..{b} not read ({scrub(e)})", quiet_key="range", every_s=30, tries=state["fails"])
-        if state["fails"] < RANGE_TRIES:
-            time.sleep(min(2.0, RETRY_S * state["fails"])); return True
-        alarm(f"blocks {a}..{b} skipped after {RANGE_TRIES} tries: the pools being watched miss them", pools=len(pools))
-        for p in pools.values():
-            p["gaps"] += 1
-        state["done_to"] = b; state["fails"] = 0
+    except Exception as e:                                                         # never skipped: tried again until it is read (or, live, the jump)
+        state["fails"] += 1; wait = min(RETRY_MAX_S, RETRY_S * 2 ** min(state["fails"] - 1, 10))
+        alarm(f"blocks {a}..{b} not read ({scrub(e)}): trying again", quiet_key="range", every_s=60, tries=state["fails"], retry_s=wait)
+        time.sleep(wait); return True
     refresh_price(state["done_to"], replay=replay_to is not None)
     flow()
     return True
@@ -542,11 +575,14 @@ def reader():
             try:
                 busy = step()
             except Exception as e:
-                alarm(f"reader: {type(e).__name__}: {scrub(e)}", quiet_key="reader", every_s=60, trace=traceback.format_exc()[-400:]); busy = False
+                alarm(f"reader: {type(e).__name__}: {scrub(e)}", quiet_key="reader", every_s=60, trace=scrub(traceback.format_exc(), 400, tail=True)); busy = False
             if not busy:
                 flow(); time.sleep(0.05)                                            # a flow line even when no block comes (a stalled head shows)
     except BaseException:
-        log({"ev": "alarm", "what": "the reader crashed", "trace": traceback.format_exc()[-800:]}); os._exit(1)
+        try:
+            log({"ev": "alarm", "what": "the reader crashed", "trace": scrub(traceback.format_exc(), 800, tail=True)})
+        finally:
+            os._exit(1)
 
 
 # ---------------------------------------------------------------- the websocket
@@ -558,9 +594,9 @@ def on_ws_message(raw):
         return
     if d.get("method") == "eth_subscription":
         h = d["params"]["result"]; n = int(h["number"], 16)
-        if state["head"] is None or n >= state["head"]:
-            state["head"] = n; state["head_ts"] = int(h["timestamp"], 16) if h.get("timestamp") else None
-        state["head_at"] = time.monotonic()
+        if state["head"] is not None and n <= state["head"]:
+            return False                                                             # not newer: the websocket is not giving the head
+        state["head"] = n; state["head_ts"] = int(h["timestamp"], 16) if h.get("timestamp") else None; state["head_at"] = time.monotonic()
         if state["head_src"] != "ws":
             state["head_src"] = "ws"; log({"ev": "feed_heads", "head": n})
         return True
@@ -574,18 +610,18 @@ async def feed_loop():
         try:
             async with websockets.connect(WS_URL, open_timeout=10, max_size=2 ** 22, ping_interval=20, ping_timeout=10) as ws:
                 await ws.send(json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_subscribe", "params": ["newHeads"]}))
-                state["ws"] = True; log({"ev": "feed_connected", "host": host(WS_URL)})
+                state["ws"] = True; log({"ev": "feed_connected", "host": host(WS_URL)}); since = time.monotonic()
                 while not state["stop"]:
                     raw = await asyncio.wait_for(ws.recv(), timeout=10)
                     try:
-                        if on_ws_message(raw):
-                            backoff = 0.5                                            # reset by a head, not by a connection that gives none
+                        if on_ws_message(raw) and time.monotonic() - since >= WS_STABLE_S:
+                            backoff = 0.5                                            # reset by heads over a lasting connection only
                     except RuntimeError:
                         raise
                     except Exception as e:
                         alarm(f"a websocket message was not understood: {scrub(e)}", quiet_key="wsmsg", every_s=60)
         except Exception as e:
-            log({"ev": "feed_error", "err": scrub(f"{type(e).__name__}: {e}")})
+            log({"ev": "feed_error", "err": scrub(f"{type(e).__name__}: {e}"), "retry_s": backoff})
         state["ws"] = False
         if not state["stop"]:
             await asyncio.sleep(backoff); backoff = min(30.0, backoff * 2)
@@ -593,7 +629,17 @@ async def feed_loop():
 
 # ---------------------------------------------------------------- start
 def checks():
-    chain = int(rpc("eth_chainId", []), 16)
+    """the chain id (waiting for the RPC up to START_WAIT_S, a pause doubling from 1 s to 30 s: a DNS or network failure at boot is not
+    an exit), the price pair's side and price, the head"""
+    wait, waited = 1.0, 0.0
+    while True:
+        try:
+            chain = int(rpc("eth_chainId", []), 16); break
+        except Exception as e:
+            if waited >= START_WAIT_S:
+                raise SystemExit(f"BNB_RPC_URL did not answer for {waited:.0f} s: {scrub(e)}")
+            alarm(f"BNB_RPC_URL did not answer at the start ({scrub(e)}): trying again in {wait:.0f} s", quiet_key="start", every_s=60)
+            time.sleep(wait); waited += wait; wait = min(30.0, wait * 2)
     if chain != CHAIN_ID:
         raise SystemExit(f"BNB_RPC_URL is chain {chain}, not {CHAIN_ID}")
     try:
@@ -601,13 +647,19 @@ def checks():
         state["price"] = read_price()
     except Exception as e:
         alarm(f"the USDT/WBNB price was not read at the start ({scrub(e)}): {BNB_USD} $/BNB (BNB_USD) until it is")
-    return {"chain": chain, "head": int(rpc("eth_blockNumber", []), 16)}
+    try:
+        head = int(rpc("eth_blockNumber", []), 16)
+    except Exception:
+        head = None
+    return {"chain": chain, "head": head}
 
 
 def main(argv):
     replay = None
     if len(argv) >= 3 and argv[0] == "--replay":
         replay = (int(argv[1]), int(argv[2]))
+        if os.path.abspath(LOG_PATH) == DEFAULT_LOG:
+            raise SystemExit(f"--replay writes to BNB_LOG_PATH: set it to another file than the service's log {DEFAULT_LOG}")
     info = checks()
     log({"ev": "start", "release": RELEASE, "dry_run": True, "mode": "replay" if replay else "live", "replay": replay, "ws": host(WS_URL), "rpc": host(RPC_URL),
          "launcher": LAUNCHER, "selector": SELECTOR, "calldata_len": CALLDATA_LEN, "stake_usd": STAKE_USD, "buy_at": BUY_AT, "sell_at": SELL_AT,

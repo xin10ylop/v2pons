@@ -113,7 +113,7 @@ the first trade the operator's pull beats.
 | `deploy/relay_deploy.py`, `relay_sim.py` | deploy the relay; simulate a buy and a sell through it on a live pool with eth_call state overrides |
 | `deploy/new_wallet.py`, `englog.py`, `health.sh`, `watch.sh` | create the wallet into the env file; the log for the last N hours; a health screen; trades as they happen |
 | `tests/test_engine.py` (51 tests), `tests/test_v4math.py` (4), `tests/data/front_launch.json` | the engine against a scripted feed with real signed transactions in real L2 batch frames, the chain stubbed; the fixture is a real volume-bot launch (tx `0xe1d91366…`, block 84234302) |
-| `src/bnb_engine.py`, `deploy/bnb_results.py`, `deploy/flip-bnb.service`, `tests/test_bnb_engine.py` (12 tests), `tests/data/bnb_launch.json` | the BNB Chain dry run of Oct 12 (section 16.21, RUNBOOK 4i): reads the chain and logs what the rule would have done; no key, signs and sends nothing |
+| `src/bnb_engine.py`, `deploy/bnb_results.py`, `deploy/flip-bnb.service`, `tests/test_bnb_engine.py` (20 tests), `tests/data/bnb_launch.json` | the BNB Chain dry run of Oct 12 (section 16.21, RUNBOOK 4i): reads the chain and logs what the rule would have done; no key, signs and sends nothing |
 | `docs/RUNBOOK.md` | every deploy step from the first wallet to release 0.9, with the exact box commands |
 | `docs/HANDOFF.md` | this file |
 | `README.md` | the project narrative, releases 0.1-0.9 |
@@ -1795,15 +1795,17 @@ The line (`research/session_oct12/bnb/REPORT_BNB.md`; its three verifications ar
 - **The gate before live money:** a $5 probe; halt the line on a dump before +997, no crowd buy in +60..+260, a revert, or a negative
   median over the first 10 probes.
 
-What was built (dry run only; 12 tests in `tests/test_bnb_engine.py`; `tests/test_engine.py` unchanged, 71):
+What was built (dry run only; 12 tests in `tests/test_bnb_engine.py` at 1e12d18, 20 after the review's fixes below;
+`tests/test_engine.py` unchanged, 71):
 
 - **`src/bnb_engine.py`** (a separate program, nothing shared with `flip_engine.py`; settings from `/etc/flip/bnb.env` with the main
   engine's `env()` pattern, a bad number stops the start with its name). A websocket `eth_subscribe newHeads` (`BNB_WS_URL`, publicnode)
-  gives the head: reconnected with a back-off from 0.5 s doubling to 30 s, reset only when a head arrives; after 3 s without a head the
-  reader polls `eth_blockNumber` on `BNB_RPC_URL` instead (a `feed_fallback` line). A reader thread takes the blocks `BNB_LAG_BLOCKS`
-  (2) behind the head in ranges of at most `BNB_MAX_RANGE` (50), each with one `eth_getLogs` over the factory and every pair being
-  watched (PairCreated, Sync, Mint, Burn, Swap). A WBNB `PairCreated` has its creating transaction read; the launcher, the selector and
-  the calldata length make it a launch. The pair's own logs from that block on are read at once (it was not in the range's filter yet).
+  gives the head: reconnected with a back-off from 0.5 s doubling to 30 s, reset only by heads over a connection 60 s old; after 3 s
+  without a head the reader polls `eth_blockNumber` on `BNB_RPC_URL` instead (a `feed_fallback` line; 0.5 s apart, doubling to 30 s
+  while it fails). A reader thread takes the blocks `BNB_LAG_BLOCKS` (2) behind the head in ranges of at most `BNB_MAX_RANGE` (50),
+  each with one `eth_getLogs` over the factory and every pair being watched (PairCreated, Sync, Mint, Burn, Swap). A WBNB `PairCreated`
+  has its creating transaction read; the launcher, the selector and the calldata length make it a launch. The pair's own logs from
+  that block on are read at once (it was not in the range's filter yet).
 - **Per pool** (any number at once): the size is the first Mint's WBNB (`launch` line; a 15-BNB pool is skipped, a size outside
   `BNB_POOL_SIZES` is skipped with an alarm). The reserves follow every Sync; each Swap/Mint/Burn is checked against the Sync before it in
   the same transaction (a break is an alarm: a missed log). At the start of block L+`BNB_BUY_AT` (50) the stake (`BNB_STAKE_USD` at the
@@ -1815,17 +1817,18 @@ What was built (dry run only; 12 tests in `tests/test_bnb_engine.py`; `tests/tes
   `first_crowd_off`, `crowd_minout` (the lowest minOut over the output at the price before the buy), `strangers`/`stranger_bnb`, `sells`,
   `entry_block_swaps`, `dump_off`. A sell or a Burn taking >= `BNB_DUMP_SHARE` (50%) of the WBNB reserve is the dump (`dump` line: offset,
   share, kind, whether the creator sent it); before our sale it makes the trade `dry_ret` -1.0 with `pulled_before_sell`. A dump in block
-  L+260 itself counts after our sale (the research's head-of-block model). Each pool is watched to its dump or L+`BNB_WATCH_TO` (7200),
+  L+260 itself counts after our sale (the research's head-of-block model). Each pool is watched to its dump or L+`BNB_WATCH_TO` (8000),
   then `pool_done`.
 - **The gate as alarms** (`gate: ...`; nothing halts): a dump before +997 (any pool of the line, the skipped ones included), no crowd buy
   in +60..+260 (each dry trade), a negative median over the first 10 dry trades of the run. A revert cannot be seen in a dry run.
-- **Robustness:** a log that cannot be read is an alarm (at most one a minute) and the rest go on. Every call backs off (0.25 s
-  doubling to 4 s, 4 tries; 6 for a WBNB pair's creating transaction, whose failure is its own alarm and `pairs_unread`); a range whose
-  `eth_getLogs` still fails is tried 5 times and then skipped with an alarm (the pools watched then count a `gap`); a reader more than
-  2,000 blocks behind jumps to the head and drops its pools; the reader thread ends the process only on a bug that escapes all of that
-  (systemd restarts it). A `flow` line every minute: head, `done_to`, `lag_blocks`, `head_age_s`, heads by ws or poll, blocks read,
-  launches (all and new), WBNB pairs seen and not read, pools watched and open, the BNB price. Only the endpoints' hosts are logged,
-  never a URL (a provider's key would be in it).
+- **Robustness:** a log that cannot be read is an alarm (at most one a minute) and the rest go on; a log of a watched pool that
+  cannot be read flags its trade (`breaks`). Every call is tried up to 4 times with pauses of 0.25, 0.5 and 1 s (6 times, adding 2 and
+  4 s, for a WBNB pair's creating transaction, whose failure, or a null answer 6 times 0.3 s apart, is its own alarm and `pairs_unread`);
+  a range whose `eth_getLogs` still fails is tried again with a pause doubling from 0.5 s to 10 s, never skipped; a live reader more
+  than 2,000 blocks behind jumps to the head and drops its pools (an open trade gets a `trade_done` with no result, `gaps` 1); the
+  reader thread ends the process only on a bug that escapes all of that (systemd restarts it). A `flow` line every minute: head,
+  `done_to`, `lag_blocks`, `head_age_s`, heads by ws or poll, blocks read, launches (all and new), WBNB pairs seen and not read, pools
+  watched and open, the BNB price. Only the endpoints' hosts are logged, never a URL (a provider's key would be in it).
 - **`--replay FROM TO`** runs the same reader over past blocks and exits (an archive RPC is needed beyond publicnode's ~10,000 blocks;
   blockmachine and pocket answer `eth_getLogs` about six times faster than sentio).
 - **`deploy/bnb_results.py`**: per pool size the launches, skipped, would-have-traded, dry trades with mean / median / share up, pulled
@@ -1849,8 +1852,8 @@ Checked:
   minOut was 0.9999 in every trade, there was no stranger, every trade had a crowd buy in +60..+260, and the two 1-BNB dumps came at
   +1018 and +1039, both by the creator.
 - That endpoint's rate limit (HTTP 429) cost a few reads in that run: a range was skipped, and some WBNB pairs' transactions were not
-  read. Since then every call backs off (0.25 s doubling to 4 s); the launch's transaction gets 6 tries, and a failure there is its own
-  alarm and count (`pairs_unread` in the flow line); a range gets 5 tries before it is skipped.
+  read. Since then every call is retried with pauses of 0.25 s doubling (to 4 s); the launch's transaction gets 6 tries, and a failure
+  there is its own alarm and count (`pairs_unread` in the flow line); and since the review a range is never skipped.
 - The latest 7,900 blocks (127,156,000-127,163,900, Oct 12 ~05:40-06:40 UTC), replayed on publicnode itself: 10 launches (4 of 15 BNB,
   skipped) and 6 dry trades, all up: +26.4% mean, +21.7% median. There was no 429. publicnode refuses an `eth_call` at a past block, so
   a replay there keeps the price read at its start (one alarm); live reads use `latest`.
@@ -1869,3 +1872,27 @@ Not built (the live path; nothing of it exists):
 - The crowd is recognised by its transactions' shape, not by a list of its ~136 accounts; a stranger using the same router call counts
   as crowd. Exact-output swaps (`swapETHForExactTokens`) are replayed as exact input (the crowd's are exact input).
 - Nothing is installed on the box. The box's clone needs this commit (`git pull`), then RUNBOOK 4i.
+
+Review fixes (second commit; an adversarial review passed 1e12d18 as safe to install as a dry run and listed these before its screen
+is used for a go/no-go; 20 tests):
+
+- The unit: `ProtectSystem=strict`, `ProtectHome=read-only`, `ReadWritePaths=/var/log/flip`, `InaccessiblePaths=-/etc/flip/engine.env`,
+  `RestartSec=30`; `checks()` waits for the RPC at the start (an alarm, a pause doubling from 1 s to 30 s, up to `START_WAIT_S` 300 s)
+  before it exits. RUNBOOK 4i's install line says when the pull also changed `src/flip_engine.py`.
+- The head: the `eth_blockNumber` poll waits 0.5 s, doubling to 30 s while it fails, back to 0.5 s on an answer; a websocket head
+  counts only when its number is new; the websocket's back-off (0.5 s doubling to 30 s) resets only on heads over a connection 60 s old
+  (`feed_error` logs `retry_s`).
+- The results kept honest: a range is never skipped; a trade with a missed log or a gap is `clean: false`, left out of the engine's
+  gate and of every number on the screen, which prints how many it left out; the screen's median is over the first 10 clean trades since
+  the engine's last start, from all the logs kept; the dump gate's offset comes from the start line; a flow line under 60 blocks a
+  minute is a SLOW warning.
+- `would_fire` logs `ran_in_block` and `trade_done` `sold_in_block`: the first block whose logs were not yet applied when the buy and the
+  sale were priced (L+50 and L+260 when the pool had a log there). Tests inject crowd buys at L+49, L+50, L+259 and L+260 (shifting
+  either boundary by one block fails them), mirror the launch with WBNB as token0 (the same lines field for field), and put sells of
+  49.9% and 50.1% of the WBNB at +200 (a sell; the dump).
+- The dry-run-only test is an AST allowlist: the engine imports only os, sys, json, time, asyncio, threading, traceback, statistics,
+  signal, urllib and websockets, and names no RPC method but eth_blockNumber, eth_call, eth_chainId, eth_getLogs, eth_getTransactionByHash
+  and eth_subscribe. `scrub()` also removes a URL's path, query and user:password@ wherever they appear, traces included.
+- Smaller: a null creating transaction is tried 6 times; the gate's median keeps at most 10 trades; the log lock is re-entrant; the
+  reader's crash handler exits in a `finally`; `--replay` refuses to write into the service's log (`BNB_LOG_PATH` must name another
+  file); the screen's crowd share is rounded, not cut.

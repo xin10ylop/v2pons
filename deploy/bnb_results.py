@@ -2,7 +2,8 @@
 """bnb_results.py: the BNB Chain dry run (src/bnb_engine.py, service flip-bnb) in one screen. The reader's state (the head, the lag, the
 price), the launches seen per pool size with what the rule would have done (would-have-traded, the dry results: mean, median, share up,
 pulled before the sell, the crowd's buys), the creator's dumps per size, the gate before live money, the last 8 launches with their
-decision, and the alarms. Nothing here is money: the engine signs nothing and sends nothing.
+decision, and the alarms. Nothing here is money: the engine signs nothing and sends nothing. A trade with a missed log or a gap (not
+"clean") is left out of every statistic and of the gate, and counted.
 
     sudo python3 ~/v2pons/deploy/bnb_results.py          # the last 24 hours
     sudo python3 ~/v2pons/deploy/bnb_results.py 72       # the last 72 hours
@@ -16,10 +17,10 @@ pct = lambda r: "%+.1f%%" % (100 * r)
 
 
 def read_logs(hours):
-    """the events in the window, and the last start and flow lines whenever they were"""
+    """the events in the window, the last start and flow lines whenever they were, and every dry trade in all the logs kept"""
     t_lo = time.time() - hours * 3600
     files = sorted(glob.glob(LOG + ".*"), key=lambda f: (f.endswith(".gz"), f), reverse=True) + [LOG]
-    out, last = [], {}
+    out, last, done = [], {}, {}
     for f in files:
         try:
             for line in (gzip.open(f, "rt") if f.endswith(".gz") else open(f)):
@@ -29,11 +30,18 @@ def read_logs(hours):
                     continue
                 if e.get("ev") in ("start", "flow") and e.get("t", 0) >= last.get(e["ev"], {}).get("t", 0):
                     last[e["ev"]] = e
+                if e.get("ev") == "trade_done" and e.get("dry"):
+                    done[(e.get("t"), e.get("pair"))] = e                           # a rotated copy of the same line counts once
                 if e.get("t", 0) >= t_lo:
                     out.append(e)
         except (FileNotFoundError, EOFError, OSError):
             pass
-    return sorted(out, key=lambda e: e.get("t", 0)), last.get("start", {}), last.get("flow", {})
+    return sorted(out, key=lambda e: e.get("t", 0)), last.get("start", {}), last.get("flow", {}), sorted(done.values(), key=lambda e: e.get("t", 0))
+
+
+def clean(e):
+    """a dry trade with no missed log and no gap (older lines have no "clean" field: the same rule from breaks, gaps and dry_ret)"""
+    return e.get("dry_ret") is not None and not e.get("breaks") and not e.get("gaps")
 
 
 def size_key(x):
@@ -47,8 +55,11 @@ def stats(rets):
 
 
 def main():
-    ev, st, fl = read_logs(HOURS); now = time.time()
-    active = subprocess.run(["systemctl", "is-active", "--quiet", SERVICE], stderr=subprocess.DEVNULL).returncode == 0
+    ev, st, fl, all_done = read_logs(HOURS); now = time.time()
+    try:
+        active = subprocess.run(["systemctl", "is-active", "--quiet", SERVICE], stderr=subprocess.DEVNULL).returncode == 0
+    except OSError:                                                            # no systemctl here
+        active = False
     print("=" * 100)
     print("BNB DRY RUN (nothing is signed or sent)  service %s   release %s   %s" % ("RUNNING" if active else "STOPPED", st.get("release", "?"),
                                                                                  ("started %s UTC" % hm(st["t"])) if st else "no start line in " + LOG))
@@ -61,13 +72,17 @@ def main():
         print("reader: block %s, %s blocks behind the head (heads by %s), %s pools watched, %s open; BNB %s $; the last flow line %.0f min ago%s"
               % (fl.get("done_to"), fl.get("lag_blocks"), fl.get("feed") or "?", fl.get("watching"), fl.get("open"), fl.get("bnb_usd"), age,
                  "   <== NOT READING (journalctl -u %s -n 30)" % SERVICE if age > 3 and active else ""))
+        if isinstance(fl.get("blocks"), int) and fl["blocks"] < 60:
+            print("   <== SLOW: %d blocks read in the last flow line's minute (about 133 a minute expected)" % fl["blocks"])
     print("report: the last %g h, to %s UTC" % (HOURS, hm(now)))
     if not ev:
         print("\nno events in the last %g hours: the dry run is not running or not logging.  sudo systemctl status %s --no-pager" % (HOURS, SERVICE))
-    launches = [e for e in ev if e["ev"] == "launch"]; done = [e for e in ev if e["ev"] == "trade_done" and e.get("dry")]
+    launches = [e for e in ev if e["ev"] == "launch"]; done_all = [e for e in ev if e["ev"] == "trade_done" and e.get("dry")]
+    done = [e for e in done_all if clean(e)]; left_out = [e for e in done_all if not clean(e)]
+    gb = (st.get("gate") or {}).get("dump_before", 997); cf = (st.get("gate") or {}).get("crowd_from", 60); n_g = (st.get("gate") or {}).get("probes", 10)
     fires = [e for e in ev if e["ev"] == "would_fire"]; dumps = [e for e in ev if e["ev"] == "dump"]; skips = [e for e in ev if e["ev"] == "skip"]
     sizes = sorted({e.get("pool_bnb") for e in launches + done + dumps if isinstance(e.get("pool_bnb"), (int, float))})
-    print("\nPER POOL SIZE (BNB)   launches skipped would-trade | dry trades   mean   median    up | pulled  crowd>=1  crowd BNB | dumps  p50 at  <+997")
+    print("\nPER POOL SIZE (BNB)   launches skipped would-trade | dry trades   mean   median    up | pulled  crowd>=1  crowd BNB | dumps  p50 at  <+%d" % gb)
     rows = sizes + ["all"]
     for s in rows:
         pick = (lambda e: True) if s == "all" else (lambda e, s=s: e.get("pool_bnb") == s)
@@ -77,22 +92,24 @@ def main():
         offs = sorted(e["off"] for e in du)
         print("  %-18s %8d %7d %11d | %s | %6d %8s %10s | %5d %7s %6d" % (
             s if s == "all" else size_key(s), len(la), sum(1 for e in la if e.get("skip")), sum(1 for e in fires if pick(e)), stats(rets),
-            sum(1 for e in dn if e.get("pulled_before_sell")), ("%d%%" % (100 * sum(1 for e in crowd if e.get("crowd_buys")) / len(crowd))) if crowd else "-",
+            sum(1 for e in dn if e.get("pulled_before_sell")), ("%.0f%%" % (100 * sum(1 for e in crowd if e.get("crowd_buys")) / len(crowd))) if crowd else "-",
             ("%.2f" % (sum(e.get("crowd_bnb") or 0 for e in crowd) / len(crowd))) if crowd else "-", len(offs), ("+%d" % offs[len(offs) // 2]) if offs else "-",
-            sum(1 for o in offs if o < 997)))
+            sum(1 for o in offs if o < gb)))
     print("  (crowd>=1: share of the dry trades not dumped on with a crowd buy in the hold; crowd BNB: their BNB a trade; a launch counts in the window "
           "it was seen, a trade in the window it ended)")
+    if left_out:
+        print("LEFT OUT of every number above and of the gate: %d dry trade(s) with a missed log or a gap (breaks/gaps in the line; the last %s UTC, %s)"
+              % (len(left_out), hms(left_out[-1]["t"]), left_out[-1].get("why")))
     if skips:
         print("not traded besides the skipped sizes: " + "; ".join("%s x%d" % kv for kv in sorted({s["why"]: sum(1 for x in skips if x["why"] == s["why"]) for s in skips}.items())))
-    # the gate before live money (REPORT_BNB section 5): halts on any of these
-    gb = (st.get("gate") or {}).get("dump_before", 997); cf = (st.get("gate") or {}).get("crowd_from", 60); n_g = (st.get("gate") or {}).get("probes", 10)
+    # the gate before live money (REPORT_BNB section 5): halts on any of these; the median over the first trades since the engine's start
     early = [e for e in dumps if e["off"] < gb]; nocrowd = [e for e in done if not e.get("pulled_before_sell") and not e.get("crowd_gate")]
-    first = [e["dry_ret"] for e in done[:n_g]]
+    first = [e["dry_ret"] for e in all_done if clean(e) and e.get("t", 0) >= st.get("t", 0)][:n_g]
     print("\nGATE (would halt the line when live)")
-    print("  %-32s %s" % ("a dump before +%d:" % gb, "TRIPPED x%d (the last %s UTC, +%d, pool %s BNB)" % (len(early), hms(early[-1]["t"]), early[-1]["off"], early[-1].get("pool_bnb")) if early else "none"))
-    print("  %-32s %s" % ("no crowd buy in +%d..+%s:" % (cf, st.get("sell_at", 260)), "TRIPPED x%d (the last %s UTC, %s)" % (len(nocrowd), hms(nocrowd[-1]["t"]), nocrowd[-1]["pair"][:10]) if nocrowd else "none"))
-    print("  %-32s %s" % ("a revert:", "not measurable in a dry run (nothing is sent)"))
-    print("  %-32s %s" % ("median of the first %d trades:" % n_g, ("%s%s" % (pct(statistics.median(first)), "   <== NEGATIVE" if statistics.median(first) < 0 else "")) if len(first) >= n_g
+    print("  %-42s %s" % ("a dump before +%d:" % gb, "TRIPPED x%d (the last %s UTC, +%d, pool %s BNB)" % (len(early), hms(early[-1]["t"]), early[-1]["off"], early[-1].get("pool_bnb")) if early else "none"))
+    print("  %-42s %s" % ("no crowd buy in +%d..+%s:" % (cf, st.get("sell_at", 260)), "TRIPPED x%d (the last %s UTC, %s)" % (len(nocrowd), hms(nocrowd[-1]["t"]), nocrowd[-1]["pair"][:10]) if nocrowd else "none"))
+    print("  %-42s %s" % ("a revert:", "not measurable in a dry run (nothing is sent)"))
+    print("  %-42s %s" % ("median of the first %d trades:" % n_g if not st else "median of the first %d since %s:" % (n_g, hm(st["t"])), ("%s%s" % (pct(statistics.median(first)), "   <== NEGATIVE" if statistics.median(first) < 0 else "")) if len(first) >= n_g
                                                    else "%d of %d so far" % (len(first), n_g)))
     # the last launches and what the rule did with each
     by_pair = {}
@@ -107,7 +124,8 @@ def main():
         x = d.get("launch") or d.get("would_fire") or d.get("trade_done") or d.get("skip") or d.get("dump"); td = d.get("trade_done")
         size = x.get("pool_bnb"); dec = "skip" if (d.get("launch") or {}).get("skip") or d.get("skip") else "buy" if d.get("would_fire") else "-"
         if td:
-            res = pct(td["dry_ret"]) + ("   <== DUMPED BEFORE THE SELL (+%s)" % td.get("dump_off") if td.get("pulled_before_sell") else "")
+            res = (pct(td["dry_ret"]) if td.get("dry_ret") is not None else "no result") + ("   <== DUMPED BEFORE THE SELL (+%s)" % td.get("dump_off") if td.get("pulled_before_sell") else "") \
+                + ("   (left out: a missed log or a gap)" if not clean(td) else "")
             cells = (td.get("crowd_buys"), "%.4f" % (td.get("crowd_bnb") or 0), ("+%s" % td["first_crowd_off"]) if td.get("first_crowd_off") is not None else "-", td.get("strangers"))
         else:
             res = ((d.get("launch") or {}).get("skip") or (d.get("skip") or {}).get("why") or ("open: sells at %s" % (d["would_fire"]["L"] + st.get("sell_at", 260)) if d.get("would_fire") else "-"))[:60]
