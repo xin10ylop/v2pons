@@ -398,6 +398,41 @@ the chain's Burn logs of the launch position (`burn_check`): `first_burn_offset`
 the one slot about 20 s (other dry fires are skipped meanwhile; a live fire drops it; a stop or restart does not wait for it, and its record
 is then lost).
 
+## 4h. The sell's second path (Oct 12, HANDOFF 16.19)
+
+Oct 12 00:00:09 UTC: our buy landed at block 86236845; the time fallback sent the sell 1.7 s later, and the sequencer's public intake
+accepted it only ~11.5 s after that: it landed at 86236972, 127 blocks after our buy, one block behind the bot's buy, 11 before the pull.
+Blocks came at 9-10 a second and the feed was live throughout; the bot's own buy was delayed by the same stall.
+Under the quick pulls of Oct 10-11 (3 blocks after the bot's buy) such a stall is a -100% trade.
+
+The settings (nothing changes while they are unset):
+
+- `SELL_ALT_URL` (empty = off): a second endpoint for the sell, an RPC that forwards transactions to the sequencer (the box's `RPC_URL`, or
+  the public `https://rpc.mainnet.chain.robinhood.com`). The same signed sell goes there at the same time as to the sequencer, on its own warm
+  connection (one slot, the same keepalive, a 2 s socket timeout: `SELL_ALT_TIMEOUT_S`), each of the sell's 4 tries mirrored; the first reply
+  that says it is in (`ok`, or `already known`, `nonce too low` and the like: one signed transaction has one hash, a second copy is harmless)
+  ends both, and a hung path no longer holds the sell. `sell_sent` then carries `via` (`seq` or `alt`), `accept_ms`, `seq_tries`/`seq_reply`
+  and `alt_tries`/`alt_reply` (null: that path was still waiting); a reply after that is a `late_reply` line and changes nothing; the "not
+  accepted" alarm comes only when both paths failed. Its keepalive sends that endpoint one `eth_chainId` every 5 s when idle (about 17,000 a day).
+- `BUY_ALT` (0): 1 sends the buy on both paths too (one try each): in if either says so, refused only if both refuse, otherwise "no reply"
+  (the position kept, the sell on schedule). Leave it 0 until the sell's second path has run for a day.
+- `SEND_TIMEOUT_S` (4): the sequencer connections' socket timeout, as before.
+
+To point it at the RPC endpoint already in the env file (the value is copied, never printed: the URL may hold the provider's key; the old
+line is deleted first so that `set_kv` appends, since its `sed` replacement would garble a URL holding `&` or `|`):
+
+    cd ~/v2pons && git pull -q --ff-only && grep -q '^SELL_ALT_URL' src/flip_engine.py && echo code
+    set_kv() { sudo grep -q "^$1=" /etc/flip/engine.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/engine.env || echo "$1=$2" | sudo tee -a /etc/flip/engine.env >/dev/null; }
+    v=$(sudo grep -m1 '^RPC_URL=' /etc/flip/engine.env | cut -d= -f2-); [ -n "$v" ] && sudo sed -i '/^SELL_ALT_URL=/d' /etc/flip/engine.env && set_kv SELL_ALT_URL "$v" && echo set; unset v
+    sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | python3 -c 'import sys, json; s = json.loads(sys.stdin.read()); print("sell_alt:", s.get("sell_alt"), "buy_alt:", s.get("buy_alt"), "send_timeout_s:", s.get("send_timeout_s"))'
+
+The first line prints `code` (else stop: the pull failed and the engine would not know the setting), the third `set`; without `set` the env
+file has no `RPC_URL` line: the box is then on the public RPC, and `set_kv SELL_ALT_URL https://rpc.mainnet.chain.robinhood.com` does it.
+The check must print the RPC's host after `sell_alt:` (the host only, never the path); `None` with the engine live means the URL was refused
+(an alarm in the log says so; the sequencer path runs as before). A restart mid-trade is safe (section 5). Off again: `sudo sed -i '/^SELL_ALT_URL=/d'
+/etc/flip/engine.env && sudo systemctl restart flip-engine`. Which path wins, over the day:
+`sudo python3 ~/v2pons/deploy/englog.py 24 | grep '"ev":"sell_sent"' | grep -o '"via":[a-z"]*' | sort | uniq -c`, and `accept_ms` on each line.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the
