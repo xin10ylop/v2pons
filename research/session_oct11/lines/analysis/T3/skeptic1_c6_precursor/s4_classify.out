@@ -1,0 +1,2 @@
+bot buyer wallets: 110 pull senders: [('0x35f9c7927bda47d998805eea71395bbb410eb603', 1), ('0xf5bbf4aa109d20da35eeeb32345650aef875c9cb', 1), ('0x9bf84c98250f7d1ff03276f59885e6c986ee47c1', 1)] line launchers: 644 line pools: 716
+pools 489 rows 45591 complete pools 489 near_ok 489 by regime Counter({'old': 398, 'new': 91})

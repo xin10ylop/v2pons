@@ -1,0 +1,100 @@
+validation: the bot's first buy re-applied in 68 pools, max relative sqrtP error 3.57e-23; other: []
+the bot's first buy: tokens out / minOut p10/50/90 1.0526/1.0526/1.0526 min 1.0526
+
+n pools 68; a $5 front = 0.001946 ETH; reaction lags tested: none / 12 / 5 / 3
+
+== gate L+1, buy lands signal+1, sell lands T+1
+  reaction none             trades 22 (32.4% of pools): mean    +6.4%  median    +6.3%  win 22/22  pulled 0  worst +1%  $/trade +0.170  $ total +3.74  $/pool +0.055
+  reaction pull at buy+12   trades 22 (32.4% of pools): mean   -75.8%  median  -100.0%  win 5/22  pulled 17  worst -100%  $/trade -3.940  $ total -86.68  $/pool -1.275
+  reaction pull at buy+5    trades 22 (32.4% of pools): mean   -90.2%  median  -100.0%  win 2/22  pulled 20  worst -100%  $/trade -4.660  $ total -102.53  $/pool -1.508
+  reaction pull at buy+3    trades 22 (32.4% of pools): mean   -95.0%  median  -100.0%  win 1/22  pulled 21  worst -100%  $/trade -4.902  $ total -107.84  $/pool -1.586
+
+== gate L+1, buy lands signal+1, sell lands T+2
+  reaction none             trades 22 (32.4% of pools): mean    +6.4%  median    +6.3%  win 22/22  pulled 0  worst +1%  $/trade +0.170  $ total +3.74  $/pool +0.055
+  reaction pull at buy+12   trades 22 (32.4% of pools): mean   -75.8%  median  -100.0%  win 5/22  pulled 17  worst -100%  $/trade -3.940  $ total -86.68  $/pool -1.275
+  reaction pull at buy+5    trades 22 (32.4% of pools): mean   -95.0%  median  -100.0%  win 1/22  pulled 21  worst -100%  $/trade -4.902  $ total -107.84  $/pool -1.586
+  reaction pull at buy+3    trades 22 (32.4% of pools): mean  -100.0%  median  -100.0%  win 0/22  pulled 22  worst -100%  $/trade -5.150  $ total -113.30  $/pool -1.666
+
+== gate L+1, buy lands signal+2, sell lands T+1
+  reaction none             trades 22 (32.4% of pools): mean    +6.4%  median    +6.3%  win 22/22  pulled 0  worst +1%  $/trade +0.170  $ total +3.74  $/pool +0.055
+  reaction pull at buy+12   trades 22 (32.4% of pools): mean   -75.8%  median  -100.0%  win 5/22  pulled 17  worst -100%  $/trade -3.940  $ total -86.68  $/pool -1.275
+  reaction pull at buy+5    trades 22 (32.4% of pools): mean   -85.4%  median  -100.0%  win 3/22  pulled 19  worst -100%  $/trade -4.422  $ total -97.28  $/pool -1.431
+  reaction pull at buy+3    trades 22 (32.4% of pools): mean   -95.0%  median  -100.0%  win 1/22  pulled 21  worst -100%  $/trade -4.902  $ total -107.84  $/pool -1.586
+
+== gate L+1, buy lands signal+2, sell lands T+2
+  reaction none             trades 22 (32.4% of pools): mean    +6.4%  median    +6.3%  win 22/22  pulled 0  worst +1%  $/trade +0.170  $ total +3.74  $/pool +0.055
+  reaction pull at buy+12   trades 22 (32.4% of pools): mean   -75.8%  median  -100.0%  win 5/22  pulled 17  worst -100%  $/trade -3.940  $ total -86.68  $/pool -1.275
+  reaction pull at buy+5    trades 22 (32.4% of pools): mean   -90.2%  median  -100.0%  win 2/22  pulled 20  worst -100%  $/trade -4.660  $ total -102.53  $/pool -1.508
+  reaction pull at buy+3    trades 22 (32.4% of pools): mean   -95.0%  median  -100.0%  win 1/22  pulled 21  worst -100%  $/trade -4.902  $ total -107.84  $/pool -1.586
+
+== gate L+16, buy lands signal+1, sell lands T+1
+  reaction none             trades 11 (16.2% of pools): mean    +6.7%  median    +7.9%  win 11/11  pulled 0  worst +1%  $/trade +0.187  $ total +2.05  $/pool +0.030
+  reaction pull at buy+12   trades 11 (16.2% of pools): mean   -51.1%  median  -100.0%  win 5/11  pulled 6  worst -100%  $/trade -2.705  $ total -29.75  $/pool -0.438
+  reaction pull at buy+5    trades 11 (16.2% of pools): mean   -80.4%  median  -100.0%  win 2/11  pulled 9  worst -100%  $/trade -4.171  $ total -45.88  $/pool -0.675
+  reaction pull at buy+3    trades 11 (16.2% of pools): mean   -90.1%  median  -100.0%  win 1/11  pulled 10  worst -100%  $/trade -4.654  $ total -51.19  $/pool -0.753
+
+== gate L+16, buy lands signal+1, sell lands T+2
+  reaction none             trades 11 (16.2% of pools): mean    +6.7%  median    +7.9%  win 11/11  pulled 0  worst +1%  $/trade +0.187  $ total +2.05  $/pool +0.030
+  reaction pull at buy+12   trades 11 (16.2% of pools): mean   -51.1%  median  -100.0%  win 5/11  pulled 6  worst -100%  $/trade -2.705  $ total -29.75  $/pool -0.438
+  reaction pull at buy+5    trades 11 (16.2% of pools): mean   -90.1%  median  -100.0%  win 1/11  pulled 10  worst -100%  $/trade -4.654  $ total -51.19  $/pool -0.753
+  reaction pull at buy+3    trades 11 (16.2% of pools): mean  -100.0%  median  -100.0%  win 0/11  pulled 11  worst -100%  $/trade -5.150  $ total -56.65  $/pool -0.833
+
+== gate L+16, buy lands signal+2, sell lands T+1
+  reaction none             trades 11 (16.2% of pools): mean    +6.7%  median    +7.9%  win 11/11  pulled 0  worst +1%  $/trade +0.187  $ total +2.05  $/pool +0.030
+  reaction pull at buy+12   trades 11 (16.2% of pools): mean   -51.1%  median  -100.0%  win 5/11  pulled 6  worst -100%  $/trade -2.705  $ total -29.75  $/pool -0.438
+  reaction pull at buy+5    trades 11 (16.2% of pools): mean   -70.9%  median  -100.0%  win 3/11  pulled 8  worst -100%  $/trade -3.694  $ total -40.63  $/pool -0.598
+  reaction pull at buy+3    trades 11 (16.2% of pools): mean   -90.1%  median  -100.0%  win 1/11  pulled 10  worst -100%  $/trade -4.654  $ total -51.19  $/pool -0.753
+
+== gate L+16, buy lands signal+2, sell lands T+2
+  reaction none             trades 11 (16.2% of pools): mean    +6.7%  median    +7.9%  win 11/11  pulled 0  worst +1%  $/trade +0.187  $ total +2.05  $/pool +0.030
+  reaction pull at buy+12   trades 11 (16.2% of pools): mean   -51.1%  median  -100.0%  win 5/11  pulled 6  worst -100%  $/trade -2.705  $ total -29.75  $/pool -0.438
+  reaction pull at buy+5    trades 11 (16.2% of pools): mean   -80.4%  median  -100.0%  win 2/11  pulled 9  worst -100%  $/trade -4.171  $ total -45.88  $/pool -0.675
+  reaction pull at buy+3    trades 11 (16.2% of pools): mean   -90.1%  median  -100.0%  win 1/11  pulled 10  worst -100%  $/trade -4.654  $ total -51.19  $/pool -0.753
+
+== gate L+24, buy lands signal+1, sell lands T+1
+  reaction none             trades  7 (10.3% of pools): mean    +6.8%  median    +7.9%  win 7/7  pulled 0  worst +1%  $/trade +0.188  $ total +1.32  $/pool +0.019
+  reaction pull at buy+12   trades  7 (10.3% of pools): mean   -38.1%  median    +6.3%  win 4/7  pulled 3  worst -100%  $/trade -2.057  $ total -14.40  $/pool -0.212
+  reaction pull at buy+5    trades  7 (10.3% of pools): mean   -69.2%  median  -100.0%  win 2/7  pulled 5  worst -100%  $/trade -3.611  $ total -25.28  $/pool -0.372
+  reaction pull at buy+3    trades  7 (10.3% of pools): mean   -84.4%  median  -100.0%  win 1/7  pulled 6  worst -100%  $/trade -4.370  $ total -30.59  $/pool -0.450
+
+== gate L+24, buy lands signal+1, sell lands T+2
+  reaction none             trades  7 (10.3% of pools): mean    +6.8%  median    +7.9%  win 7/7  pulled 0  worst +1%  $/trade +0.188  $ total +1.32  $/pool +0.019
+  reaction pull at buy+12   trades  7 (10.3% of pools): mean   -38.1%  median    +6.3%  win 4/7  pulled 3  worst -100%  $/trade -2.057  $ total -14.40  $/pool -0.212
+  reaction pull at buy+5    trades  7 (10.3% of pools): mean   -84.4%  median  -100.0%  win 1/7  pulled 6  worst -100%  $/trade -4.370  $ total -30.59  $/pool -0.450
+  reaction pull at buy+3    trades  7 (10.3% of pools): mean  -100.0%  median  -100.0%  win 0/7  pulled 7  worst -100%  $/trade -5.150  $ total -36.05  $/pool -0.530
+
+== gate L+24, buy lands signal+2, sell lands T+1
+  reaction none             trades  7 (10.3% of pools): mean    +6.8%  median    +7.9%  win 7/7  pulled 0  worst +1%  $/trade +0.188  $ total +1.32  $/pool +0.019
+  reaction pull at buy+12   trades  7 (10.3% of pools): mean   -38.1%  median    +6.3%  win 4/7  pulled 3  worst -100%  $/trade -2.057  $ total -14.40  $/pool -0.212
+  reaction pull at buy+5    trades  7 (10.3% of pools): mean   -69.2%  median  -100.0%  win 2/7  pulled 5  worst -100%  $/trade -3.611  $ total -25.28  $/pool -0.372
+  reaction pull at buy+3    trades  7 (10.3% of pools): mean   -84.4%  median  -100.0%  win 1/7  pulled 6  worst -100%  $/trade -4.370  $ total -30.59  $/pool -0.450
+
+== gate L+24, buy lands signal+2, sell lands T+2
+  reaction none             trades  7 (10.3% of pools): mean    +6.8%  median    +7.9%  win 7/7  pulled 0  worst +1%  $/trade +0.188  $ total +1.32  $/pool +0.019
+  reaction pull at buy+12   trades  7 (10.3% of pools): mean   -38.1%  median    +6.3%  win 4/7  pulled 3  worst -100%  $/trade -2.057  $ total -14.40  $/pool -0.212
+  reaction pull at buy+5    trades  7 (10.3% of pools): mean   -69.2%  median  -100.0%  win 2/7  pulled 5  worst -100%  $/trade -3.611  $ total -25.28  $/pool -0.372
+  reaction pull at buy+3    trades  7 (10.3% of pools): mean   -84.4%  median  -100.0%  win 1/7  pulled 6  worst -100%  $/trade -4.370  $ total -30.59  $/pool -0.450
+
+per trade, gate L+1, k=1, j=1 (d = T - signal block; B, S relative to T):
+  reaction None: [('0x0dfaf16c', 33, -32, 1, 6.3, 'sold'), ('0x91d081e9', 4, -3, 1, 6.3, 'sold'), ('0x9695caed', 45, -44, 1, 6.2, 'sold'), ('0x7a9304ef', 10, -9, 1, 4.0, 'sold'), ('0x649d6adc', 15, -14, 1, 1.2, 'sold'), ('0x75c4094c', 21, -20, 1, 9.6, 'sold'), ('0x502a612f', 9, -8, 1, 7.9, 'sold'), ('0x9fa3398b', 51, -50, 1, 7.2, 'sold'), ('0x00ae69d8', 32, -31, 1, 4.5, 'sold'), ('0x8355ecc7', 2, -1, 1, 9.2, 'sold'), ('0x1965d139', 5, -4, 1, 5.0, 'sold'), ('0xed9a9e84', 25, -24, 1, 9.6, 'sold'), ('0x864f2d52', 21, -20, 1, 4.6, 'sold'), ('0xde1fd13c', 38, -37, 1, 4.6, 'sold'), ('0x21221795', 39, -38, 1, 9.6, 'sold'), ('0xe5112c01', 31, -30, 1, 8.5, 'sold'), ('0x26d05c1e', 32, -31, 1, 4.6, 'sold'), ('0x6185303a', 49, -48, 1, 10.6, 'sold'), ('0x931e2160', 17, -16, 1, 9.5, 'sold'), ('0xdf419545', 17, -16, 1, 2.9, 'sold'), ('0x48ec580e', 32, -31, 1, 2.6, 'sold'), ('0x0252a41d', 34, -33, 1, 6.3, 'sold')]
+  reaction 5: [('0x0dfaf16c', 33, -32, 1, -100.0, 'pulled before T (no bot buy)'), ('0x91d081e9', 4, -3, 1, 6.3, 'sold'), ('0x9695caed', 45, -44, 1, -100.0, 'pulled before T (no bot buy)'), ('0x7a9304ef', 10, -9, 1, -100.0, 'pulled before T (no bot buy)'), ('0x649d6adc', 15, -14, 1, -100.0, 'pulled before T (no bot buy)'), ('0x75c4094c', 21, -20, 1, -100.0, 'pulled before T (no bot buy)'), ('0x502a612f', 9, -8, 1, -100.0, 'pulled before T (no bot buy)'), ('0x9fa3398b', 51, -50, 1, -100.0, 'pulled before T (no bot buy)'), ('0x00ae69d8', 32, -31, 1, -100.0, 'pulled before T (no bot buy)'), ('0x8355ecc7', 2, -1, 1, 9.2, 'sold'), ('0x1965d139', 5, -4, 1, -100.0, 'pulled'), ('0xed9a9e84', 25, -24, 1, -100.0, 'pulled before T (no bot buy)'), ('0x864f2d52', 21, -20, 1, -100.0, 'pulled before T (no bot buy)'), ('0xde1fd13c', 38, -37, 1, -100.0, 'pulled before T (no bot buy)'), ('0x21221795', 39, -38, 1, -100.0, 'pulled before T (no bot buy)'), ('0xe5112c01', 31, -30, 1, -100.0, 'pulled before T (no bot buy)'), ('0x26d05c1e', 32, -31, 1, -100.0, 'pulled before T (no bot buy)'), ('0x6185303a', 49, -48, 1, -100.0, 'pulled before T (no bot buy)'), ('0x931e2160', 17, -16, 1, -100.0, 'pulled before T (no bot buy)'), ('0xdf419545', 17, -16, 1, -100.0, 'pulled before T (no bot buy)'), ('0x48ec580e', 32, -31, 1, -100.0, 'pulled before T (no bot buy)'), ('0x0252a41d', 34, -33, 1, -100.0, 'pulled before T (no bot buy)')]
+  reaction 3: [('0x0dfaf16c', 33, -32, 1, -100.0, 'pulled before T (no bot buy)'), ('0x91d081e9', 4, -3, 1, -100.0, 'pulled before T (no bot buy)'), ('0x9695caed', 45, -44, 1, -100.0, 'pulled before T (no bot buy)'), ('0x7a9304ef', 10, -9, 1, -100.0, 'pulled before T (no bot buy)'), ('0x649d6adc', 15, -14, 1, -100.0, 'pulled before T (no bot buy)'), ('0x75c4094c', 21, -20, 1, -100.0, 'pulled before T (no bot buy)'), ('0x502a612f', 9, -8, 1, -100.0, 'pulled before T (no bot buy)'), ('0x9fa3398b', 51, -50, 1, -100.0, 'pulled before T (no bot buy)'), ('0x00ae69d8', 32, -31, 1, -100.0, 'pulled before T (no bot buy)'), ('0x8355ecc7', 2, -1, 1, 9.2, 'sold'), ('0x1965d139', 5, -4, 1, -100.0, 'pulled before T (no bot buy)'), ('0xed9a9e84', 25, -24, 1, -100.0, 'pulled before T (no bot buy)'), ('0x864f2d52', 21, -20, 1, -100.0, 'pulled before T (no bot buy)'), ('0xde1fd13c', 38, -37, 1, -100.0, 'pulled before T (no bot buy)'), ('0x21221795', 39, -38, 1, -100.0, 'pulled before T (no bot buy)'), ('0xe5112c01', 31, -30, 1, -100.0, 'pulled before T (no bot buy)'), ('0x26d05c1e', 32, -31, 1, -100.0, 'pulled before T (no bot buy)'), ('0x6185303a', 49, -48, 1, -100.0, 'pulled before T (no bot buy)'), ('0x931e2160', 17, -16, 1, -100.0, 'pulled before T (no bot buy)'), ('0xdf419545', 17, -16, 1, -100.0, 'pulled before T (no bot buy)'), ('0x48ec580e', 32, -31, 1, -100.0, 'pulled before T (no bot buy)'), ('0x0252a41d', 34, -33, 1, -100.0, 'pulled before T (no bot buy)')]
+
+the oracle case: only the pools with a signal at d 1..4, buy at signal+k, sell T+j
+  k=1 j=1 reaction none     trades  2 ( 2.9% of pools): mean    +7.7%  median    +7.7%  win 2/2  pulled 0  worst +6%  $/trade +0.236  $ total +0.47  $/pool +0.007 | [('0x91d081e9', 4, 6.3, 'sold'), ('0x8355ecc7', 2, 9.2, 'sold')]
+  k=1 j=1 reaction buy+5    trades  2 ( 2.9% of pools): mean    +7.7%  median    +7.7%  win 2/2  pulled 0  worst +6%  $/trade +0.236  $ total +0.47  $/pool +0.007 | [('0x91d081e9', 4, 6.3, 'sold'), ('0x8355ecc7', 2, 9.2, 'sold')]
+  k=1 j=1 reaction buy+3    trades  2 ( 2.9% of pools): mean   -45.4%  median   -45.4%  win 1/2  pulled 1  worst -100%  $/trade -2.421  $ total -4.84  $/pool -0.071 | [('0x91d081e9', 4, -100.0, 'pulled before T (no bot buy)'), ('0x8355ecc7', 2, 9.2, 'sold')]
+  k=1 j=2 reaction none     trades  2 ( 2.9% of pools): mean    +7.7%  median    +7.7%  win 2/2  pulled 0  worst +6%  $/trade +0.236  $ total +0.47  $/pool +0.007 | [('0x91d081e9', 4, 6.3, 'sold'), ('0x8355ecc7', 2, 9.2, 'sold')]
+  k=1 j=2 reaction buy+5    trades  2 ( 2.9% of pools): mean   -45.4%  median   -45.4%  win 1/2  pulled 1  worst -100%  $/trade -2.421  $ total -4.84  $/pool -0.071 | [('0x91d081e9', 4, -100.0, 'pulled'), ('0x8355ecc7', 2, 9.2, 'sold')]
+  k=1 j=2 reaction buy+3    trades  2 ( 2.9% of pools): mean  -100.0%  median  -100.0%  win 0/2  pulled 2  worst -100%  $/trade -5.150  $ total -10.30  $/pool -0.151 | [('0x91d081e9', 4, -100.0, 'pulled before T (no bot buy)'), ('0x8355ecc7', 2, -100.0, 'pulled')]
+  k=2 j=1 reaction none     trades  2 ( 2.9% of pools): mean    +7.7%  median    +7.7%  win 2/2  pulled 0  worst +6%  $/trade +0.236  $ total +0.47  $/pool +0.007 | [('0x91d081e9', 4, 6.3, 'sold'), ('0x8355ecc7', 2, 9.2, 'sold')]
+  k=2 j=1 reaction buy+5    trades  2 ( 2.9% of pools): mean    +7.7%  median    +7.7%  win 2/2  pulled 0  worst +6%  $/trade +0.236  $ total +0.47  $/pool +0.007 | [('0x91d081e9', 4, 6.3, 'sold'), ('0x8355ecc7', 2, 9.2, 'sold')]
+  k=2 j=1 reaction buy+3    trades  2 ( 2.9% of pools): mean   -45.4%  median   -45.4%  win 1/2  pulled 1  worst -100%  $/trade -2.421  $ total -4.84  $/pool -0.071 | [('0x91d081e9', 4, -100.0, 'pulled'), ('0x8355ecc7', 2, 9.2, 'sold')]
+  k=2 j=2 reaction none     trades  2 ( 2.9% of pools): mean    +7.7%  median    +7.7%  win 2/2  pulled 0  worst +6%  $/trade +0.236  $ total +0.47  $/pool +0.007 | [('0x91d081e9', 4, 6.3, 'sold'), ('0x8355ecc7', 2, 9.2, 'sold')]
+  k=2 j=2 reaction buy+5    trades  2 ( 2.9% of pools): mean    +7.7%  median    +7.7%  win 2/2  pulled 0  worst +6%  $/trade +0.236  $ total +0.47  $/pool +0.007 | [('0x91d081e9', 4, 6.3, 'sold'), ('0x8355ecc7', 2, 9.2, 'sold')]
+  k=2 j=2 reaction buy+3    trades  2 ( 2.9% of pools): mean   -45.4%  median   -45.4%  win 1/2  pulled 1  worst -100%  $/trade -2.421  $ total -4.84  $/pool -0.071 | [('0x91d081e9', 4, -100.0, 'pulled'), ('0x8355ecc7', 2, 9.2, 'sold')]
+
+for scale, a perfect T predictor (buy lands at T-1 in every pool, sell T+1):
+  reaction none     trades 68 (100.0% of pools): mean    +6.7%  median    +7.1%  win 68/68  pulled 0  worst +1%  $/trade +0.187  $ total +12.69  $/pool +0.187
+  reaction buy+5    trades 68 (100.0% of pools): mean    +6.7%  median    +7.1%  win 68/68  pulled 0  worst +1%  $/trade +0.187  $ total +12.69  $/pool +0.187
+  reaction buy+3    trades 68 (100.0% of pools): mean    +6.7%  median    +7.1%  win 68/68  pulled 0  worst +1%  $/trade +0.187  $ total +12.69  $/pool +0.187

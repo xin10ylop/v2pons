@@ -1,0 +1,18 @@
+pools 500 blocks 8468 cached 500
+  blocks 500/8468 cached 823
+  blocks 1000/8468 cached 1193
+  blocks 1500/8468 cached 1567
+  blocks 2000/8468 cached 2000
+  blocks 2500/8468 cached 2500
+  blocks 3000/8468 cached 3000
+  blocks 3500/8468 cached 3500
+  blocks 4000/8468 cached 4000
+  blocks 4500/8468 cached 4500
+  blocks 5000/8468 cached 5000
+  blocks 5500/8468 cached 5500
+  blocks 6000/8468 cached 6000
+  blocks 6500/8468 cached 6500
+  blocks 7000/8468 cached 7000
+  blocks 7500/8468 cached 7500
+  blocks 8000/8468 cached 8000
+  blocks 8468/8468 cached 8468

@@ -1,0 +1,23 @@
+3.0 pools 68; with a bot buy 68; T-L p10/50/90 26/42/53 min 18 max 60; bot wallets 110; swaps to L+400 without tx 0
+T-L histogram: [(18, 1), (19, 1), (20, 1), (23, 1), (24, 1), (25, 1), (26, 7), (27, 1), (29, 3), (30, 3), (32, 2), (34, 2), (36, 1), (37, 1), (38, 1), (40, 5), (41, 1), (42, 4), (43, 3), (44, 5), (45, 4), (46, 3), (47, 3), (49, 1), (50, 2), (51, 1), (52, 1), (53, 2), (54, 2), (55, 2), (57, 1), (60, 1)]
+first bot buy size ETH p10/50/90: [0.0695, 0.1392, 0.175]
+bot buys per pool (to L+400): [(1, 1), (2, 10), (3, 1), (4, 1), (5, 3), (6, 1), (12, 2), (13, 3), (14, 3), (15, 22), (16, 17), (17, 4)] 2nd bot buy - T p10/50/90: [19, 24, 29]
+pulled within L+400: 17 offsets: [67, 68, 69, 69, 69, 70, 70, 71, 73, 79, 86, 90, 130, 153, 174, 216, 315]
+pools without T: []
+
+outside buys >= 0.00003 ETH (not the bot router, not the sentinel):
+  pool 0x9fa3398b L 86183419 T 52 pull 86 | buy 0.003993 at +74 post-T from 0x2f254751 via 0x88767899 -> pull lag 12
+  pool 0xd3b41d26 L 86225650 T 26 pull 69 | buy 0.001275 at +59 post-T from 0x5373fb35 via 0x88767899 -> pull lag 10
+  pool 0x01dd0376 L 86225875 T 42 pull 67 | buy 0.001275 at +56 post-T from 0x5373fb35 via 0x88767899 -> pull lag 11
+  pool 0xb0925d32 L 86226105 T 55 pull 79 | buy 0.001274 at +60 post-T from 0x5373fb35 via 0x88767899 -> pull lag 19
+  pool 0xb34766f9 L 86226341 T 46 pull 69 | buy 0.001274 at +64 post-T from 0x5373fb35 via 0x88767899 -> pull lag 5
+  pool 0xd7b40e1b L 86226564 T 37 pull 90 | buy 0.001223 at +66 post-T from 0x5373fb35 via 0x88767899 -> pull lag 24
+  pool 0x5594c3ac L 86226809 T 25 pull 69 | buy 0.001172 at +55 post-T from 0x5373fb35 via 0x88767899 -> pull lag 14
+  pool 0x24dcb49b L 86229853 T 18 pull 68 | buy 0.000974 at +61 post-T from 0x5373fb35 via 0x88767899 -> pull lag 7
+  pool 0x48ec580e L 86235721 T 50 pull 73 | buy 0.000865 at +60 post-T from 0x5373fb35 via 0x88767899 -> pull lag 13
+  pool 0x21e673f9 L 86235962 T 46 pull 70 | buy 0.000786 at +62 post-T from 0x5373fb35 via 0x88767899 -> pull lag 8
+  pool 0xe91b3698 L 86236200 T 42 pull 70 | buy 0.000831 at +55 post-T from 0x5373fb35 via 0x88767899 -> pull lag 15
+  pool 0xacad4685 L 86237740 T 40 pull 71 | buy 0.000719 at +65 post-T from 0x5373fb35 via 0x88767899 -> pull lag 6
+  pool 0x17ae46ba L 86237995 T 20 pull 130 | buy 0.000719 at +111 post-T from 0x5373fb35 via 0x88767899 -> pull lag 19
+pre-T lags: [] unpulled: 0
+post-T lags: [5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 19, 19, 24] unpulled: 0

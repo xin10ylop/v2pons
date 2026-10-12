@@ -1,0 +1,3 @@
+blocks to cover: 2589 cached: 0
+1444-byte PositionManager calls in the windows that are not slice Initialize txs: 0
+txs per block in the windows: mean 6.76, p50 5, p90 11, max 118

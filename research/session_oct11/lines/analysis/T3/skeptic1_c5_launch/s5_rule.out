@@ -1,0 +1,142 @@
+slice 10-10 21:24:27 -> 10-11 09:38:24 UTC, 9.61 blocks/s; 3.0 pools 500, with a bot buy 489
+whole blocks scanned 8468; 1444-byte PositionManager calls in them 73, of which without an Initialize (reverted or not a launch) 0
+Initialize-bearing 1444-byte launches in the whole slice: 716 in 423003 blocks = 0.00169 of blocks hold one; by value: [('3.0', 500), ('v5', 113), ('other', 71), ('v9.33333', 19), ('v40', 13)]
+
+pools with a bot buy and every block L+1..T+3: 489; T p10/50/90 8/9/38
+
+== hit rate: pools with a 1444-byte call d blocks before T (d=0 = in T's block ahead of the bot's tx)
+  whole slice, any 1444-byte call              n 489  pools with a call at d=0..12:  1  3  4  3  5  2  5  0  3  2  0  1  3 | d1-4: 15 (3.1%), expected at background 25.2 (bg 0.0131/block over 2435 blocks); nearest lead d1..4: {1: 3, 2: 4, 3: 3, 4: 5}; same-width windows d5-8 10, d9-12 6
+  whole slice, 3.0-valued launches only        n 489  pools with a call at d=0..12:  0  2  3  3  4  2  3  0  1  1  0  1  2 | d1-4: 12 (2.5%), expected at background 18.2 (bg 0.0094/block over 2435 blocks); nearest lead d1..4: {1: 2, 2: 3, 3: 3, 4: 4}; same-width windows d5-8 6, d9-12 4
+  whole slice, other values only               n 489  pools with a call at d=0..12:  1  1  1  0  1  0  2  0  2  1  0  0  1 | d1-4: 3 (0.6%), expected at background 7.2 (bg 0.0037/block over 2435 blocks); nearest lead d1..4: {1: 1, 2: 1, 4: 1}; same-width windows d5-8 4, d9-12 2
+  old regime (L before 04:22 UTC Oct 11)       n 398  pools with a call at d=0..12:  0  2  3  3  5  1  2  0  2  1  0  1  0 | d1-4: 13 (3.3%), expected at background 0.0 (bg 0.0/block over 79 blocks); nearest lead d1..4: {1: 2, 2: 3, 3: 3, 4: 5}; same-width windows d5-8 5, d9-12 2
+  new regime (L from 04:22 UTC Oct 11)         n  91  pools with a call at d=0..12:  1  1  1  0  0  1  3  0  1  1  0  0  3 | d1-4: 2 (2.2%), expected at background 4.8 (bg 0.0136/block over 2356 blocks); nearest lead d1..4: {1: 1, 2: 1}; same-width windows d5-8 5, d9-12 4
+  third 1 (L 10-10 21:28:19..10-11 02:50:34)   n 163  pools with a call at d=0..12:  0  1  3  3  5  1  0  0  1  1  0  1  0 | d1-4: 12 (7.4%), expected at background 0.0 (bg 0.0/block over 58 blocks); nearest lead d1..4: {1: 1, 2: 3, 3: 3, 4: 5}; same-width windows d5-8 2, d9-12 2
+  third 2 (L 10-11 02:50:34..10-11 03:57:06)   n 163  pools with a call at d=0..12:  0  1  0  0  0  0  2  0  1  0  0  0  0 | d1-4: 1 (0.6%), expected at background 0.0 (bg 0.0/block over 18 blocks); nearest lead d1..4: {1: 1}; same-width windows d5-8 3, d9-12 0
+  third 3 (L 10-11 03:57:24..10-11 09:38:05)   n 163  pools with a call at d=0..12:  1  1  1  0  0  1  3  0  1  1  0  0  3 | d1-4: 2 (1.2%), expected at background 8.7 (bg 0.0136/block over 2359 blocks); nearest lead d1..4: {1: 1, 2: 1}; same-width windows d5-8 5, d9-12 4
+
+== gaps between consecutive 1444-byte launches (Initialize stream), blocks
+  old: launches 548 (79.5/h); gap p10/25/50/75/90 21/97/163/238/1190; gaps <= 4 blocks 9, <= 60 115 of 547
+     3.0 only: 403; gap p10/25/50/75/90 22/153/163/173/1397; next 3.0 launch within L+1..L+60 of a 3.0 launch: 65 of 402
+  new: launches 168 (31.9/h); gap p10/25/50/75/90 14/31/234/1536/3674; gaps <= 4 blocks 5, <= 60 57 of 167
+     3.0 only: 97; gap p10/25/50/75/90 7/28/828/4004/5717; next 3.0 launch within L+1..L+60 of a 3.0 launch: 33 of 96
+
+== precision: (pool, call) pairs with the pool armed at the call (L+A <= b, b before T and before any pull, b <= L+65)
+   (current regime only: pools launched from 04:22 UTC Oct 11, n 97; the old regime's T sits at L+8..10)
+  A=10: pools 97, (pool, call) pairs 33, followed by T at +1..+4: 2 (6.1%), at +2..+3: 1 (3.0%)
+  A=18: pools 97, (pool, call) pairs 27, followed by T at +1..+4: 2 (7.4%), at +2..+3: 1 (3.7%)
+  A=25: pools 97, (pool, call) pairs 14, followed by T at +1..+4: 2 (14.3%), at +2..+3: 1 (7.1%)
+  A=30: pools 97, (pool, call) pairs 11, followed by T at +1..+4: 2 (18.2%), at +2..+3: 1 (9.1%)
+  A=35: pools 97, (pool, call) pairs 9, followed by T at +1..+4: 2 (22.2%), at +2..+3: 1 (11.1%)
+  A=40: pools 97, (pool, call) pairs 4, followed by T at +1..+4: 1 (25.0%), at +2..+3: 1 (25.0%)
+
+== engine following the rule (first 1444-byte call while armed -> buy lands k blocks later), $5 stake; current regime: 97 pools in 5.3 h
+   lag = blocks from our buy to the operator's pull ('none' = no reaction). Sell lands at T+1 unless noted.
+  A=10 k=1 lag=   3: trades  31 ( 5.9/h)  mean  -90.56%  median -100.40%  win 0.06  $-4.53/trade  $ -26.64/h | at T (half/half) 1, front ok 1, front pulled 28, late 1, no fire 66
+  A=10 k=1 lag=   4: trades  31 ( 5.9/h)  mean  -90.56%  median -100.40%  win 0.06  $-4.53/trade  $ -26.64/h | at T (half/half) 1, front ok 1, front pulled 28, late 1, no fire 66
+  A=10 k=1 lag=   5: trades  31 ( 5.9/h)  mean  -90.56%  median -100.40%  win 0.06  $-4.53/trade  $ -26.64/h | at T (half/half) 1, front ok 1, front pulled 28, late 1, no fire 66
+  A=10 k=1 lag=   6: trades  31 ( 5.9/h)  mean  -87.24%  median -100.40%  win 0.10  $-4.36/trade  $ -25.67/h | at T (half/half) 1, front ok 2, front pulled 27, late 1, no fire 66
+  A=10 k=1 lag=   9: trades  31 ( 5.9/h)  mean  -73.59%  median -100.40%  win 0.23  $-3.68/trade  $ -21.65/h | at T (half/half) 1, front ok 6, front pulled 23, late 1, no fire 66
+  A=10 k=1 lag=none: trades  31 ( 5.9/h)  mean    5.80%  median    5.77%  win 0.97  $+0.29/trade  $  +1.71/h | at T (half/half) 1, front ok 29, late 1, no fire 66
+  A=10 k=2 lag=   3: trades  31 ( 5.9/h)  mean  -90.70%  median -100.40%  win 0.03  $-4.54/trade  $ -26.69/h | at T (half/half) 1, front pulled 28, late 2, no fire 66
+  A=10 k=2 lag=   4: trades  31 ( 5.9/h)  mean  -90.70%  median -100.40%  win 0.03  $-4.54/trade  $ -26.69/h | at T (half/half) 1, front pulled 28, late 2, no fire 66
+  A=10 k=2 lag=   5: trades  31 ( 5.9/h)  mean  -87.38%  median -100.40%  win 0.06  $-4.37/trade  $ -25.71/h | at T (half/half) 1, front ok 1, front pulled 27, late 2, no fire 66
+  A=10 k=2 lag=   6: trades  31 ( 5.9/h)  mean  -77.16%  median -100.40%  win 0.16  $-3.86/trade  $ -22.70/h | at T (half/half) 1, front ok 4, front pulled 24, late 2, no fire 66
+  A=10 k=2 lag=   9: trades  31 ( 5.9/h)  mean  -73.73%  median -100.40%  win 0.19  $-3.69/trade  $ -21.69/h | at T (half/half) 1, front ok 5, front pulled 23, late 2, no fire 66
+  A=10 k=2 lag=none: trades  31 ( 5.9/h)  mean    5.66%  median    5.77%  win 0.94  $+0.28/trade  $  +1.66/h | at T (half/half) 1, front ok 28, late 2, no fire 66
+  A=18 k=1 lag=   3: trades  26 ( 4.9/h)  mean  -88.66%  median -100.40%  win 0.08  $-4.43/trade  $ -21.88/h | at T (half/half) 1, front ok 1, front pulled 23, late 1, no fire 71
+  A=18 k=1 lag=   4: trades  26 ( 4.9/h)  mean  -88.66%  median -100.40%  win 0.08  $-4.43/trade  $ -21.88/h | at T (half/half) 1, front ok 1, front pulled 23, late 1, no fire 71
+  A=18 k=1 lag=   5: trades  26 ( 4.9/h)  mean  -88.66%  median -100.40%  win 0.08  $-4.43/trade  $ -21.88/h | at T (half/half) 1, front ok 1, front pulled 23, late 1, no fire 71
+  A=18 k=1 lag=   6: trades  26 ( 4.9/h)  mean  -84.71%  median -100.40%  win 0.12  $-4.24/trade  $ -20.90/h | at T (half/half) 1, front ok 2, front pulled 22, late 1, no fire 71
+  A=18 k=1 lag=   9: trades  26 ( 4.9/h)  mean  -68.43%  median -100.40%  win 0.27  $-3.42/trade  $ -16.89/h | at T (half/half) 1, front ok 6, front pulled 18, late 1, no fire 71
+  A=18 k=1 lag=none: trades  26 ( 4.9/h)  mean    5.27%  median    5.77%  win 0.96  $+0.26/trade  $  +1.30/h | at T (half/half) 1, front ok 24, late 1, no fire 71
+  A=18 k=2 lag=   3: trades  26 ( 4.9/h)  mean  -88.84%  median -100.40%  win 0.04  $-4.44/trade  $ -21.92/h | at T (half/half) 1, front pulled 23, late 2, no fire 71
+  A=18 k=2 lag=   4: trades  26 ( 4.9/h)  mean  -88.84%  median -100.40%  win 0.04  $-4.44/trade  $ -21.92/h | at T (half/half) 1, front pulled 23, late 2, no fire 71
+  A=18 k=2 lag=   5: trades  26 ( 4.9/h)  mean  -84.88%  median -100.40%  win 0.08  $-4.24/trade  $ -20.95/h | at T (half/half) 1, front ok 1, front pulled 22, late 2, no fire 71
+  A=18 k=2 lag=   6: trades  26 ( 4.9/h)  mean  -72.69%  median -100.40%  win 0.19  $-3.63/trade  $ -17.94/h | at T (half/half) 1, front ok 4, front pulled 19, late 2, no fire 71
+  A=18 k=2 lag=   9: trades  26 ( 4.9/h)  mean  -64.41%  median -100.40%  win 0.27  $-3.22/trade  $ -15.89/h | at T (half/half) 1, front ok 6, front pulled 17, late 2, no fire 71
+  A=18 k=2 lag=none: trades  26 ( 4.9/h)  mean    5.09%  median    5.77%  win 0.92  $+0.25/trade  $  +1.26/h | at T (half/half) 1, front ok 23, late 2, no fire 71
+  A=25 k=1 lag=   3: trades  14 ( 2.7/h)  mean  -78.60%  median -100.40%  win 0.14  $-3.93/trade  $ -10.44/h | at T (half/half) 1, front ok 1, front pulled 11, late 1, no fire 83
+  A=25 k=1 lag=   4: trades  14 ( 2.7/h)  mean  -78.60%  median -100.40%  win 0.14  $-3.93/trade  $ -10.44/h | at T (half/half) 1, front ok 1, front pulled 11, late 1, no fire 83
+  A=25 k=1 lag=   5: trades  14 ( 2.7/h)  mean  -78.60%  median -100.40%  win 0.14  $-3.93/trade  $ -10.44/h | at T (half/half) 1, front ok 1, front pulled 11, late 1, no fire 83
+  A=25 k=1 lag=   6: trades  14 ( 2.7/h)  mean  -71.25%  median -100.40%  win 0.21  $-3.56/trade  $  -9.47/h | at T (half/half) 1, front ok 2, front pulled 10, late 1, no fire 83
+  A=25 k=1 lag=   9: trades  14 ( 2.7/h)  mean  -48.49%  median  -51.39%  win 0.43  $-2.42/trade  $  -6.44/h | at T (half/half) 1, front ok 5, front pulled 7, late 1, no fire 83
+  A=25 k=1 lag=none: trades  14 ( 2.7/h)  mean    5.45%  median    5.77%  win 0.93  $+0.27/trade  $  +0.72/h | at T (half/half) 1, front ok 12, late 1, no fire 83
+  A=25 k=2 lag=   3: trades  14 ( 2.7/h)  mean  -78.93%  median -100.40%  win 0.07  $-3.95/trade  $ -10.49/h | at T (half/half) 1, front pulled 11, late 2, no fire 83
+  A=25 k=2 lag=   4: trades  14 ( 2.7/h)  mean  -78.93%  median -100.40%  win 0.07  $-3.95/trade  $ -10.49/h | at T (half/half) 1, front pulled 11, late 2, no fire 83
+  A=25 k=2 lag=   5: trades  14 ( 2.7/h)  mean  -71.58%  median -100.40%  win 0.14  $-3.58/trade  $  -9.51/h | at T (half/half) 1, front ok 1, front pulled 10, late 2, no fire 83
+  A=25 k=2 lag=   6: trades  14 ( 2.7/h)  mean  -56.40%  median -100.40%  win 0.29  $-2.82/trade  $  -7.49/h | at T (half/half) 1, front ok 3, front pulled 8, late 2, no fire 83
+  A=25 k=2 lag=   9: trades  14 ( 2.7/h)  mean  -41.02%  median   -2.39%  win 0.43  $-2.05/trade  $  -5.45/h | at T (half/half) 1, front ok 5, front pulled 6, late 2, no fire 83
+  A=25 k=2 lag=none: trades  14 ( 2.7/h)  mean    5.12%  median    5.77%  win 0.86  $+0.26/trade  $  +0.68/h | at T (half/half) 1, front ok 11, late 2, no fire 83
+  A=30 k=1 lag=   3: trades  11 ( 2.1/h)  mean  -72.66%  median -100.40%  win 0.18  $-3.63/trade  $  -7.59/h | at T (half/half) 1, front ok 1, front pulled 8, late 1, no fire 86
+  A=30 k=1 lag=   4: trades  11 ( 2.1/h)  mean  -72.66%  median -100.40%  win 0.18  $-3.63/trade  $  -7.59/h | at T (half/half) 1, front ok 1, front pulled 8, late 1, no fire 86
+  A=30 k=1 lag=   5: trades  11 ( 2.1/h)  mean  -72.66%  median -100.40%  win 0.18  $-3.63/trade  $  -7.59/h | at T (half/half) 1, front ok 1, front pulled 8, late 1, no fire 86
+  A=30 k=1 lag=   6: trades  11 ( 2.1/h)  mean  -72.66%  median -100.40%  win 0.18  $-3.63/trade  $  -7.59/h | at T (half/half) 1, front ok 1, front pulled 8, late 1, no fire 86
+  A=30 k=1 lag=   9: trades  11 ( 2.1/h)  mean  -53.19%  median -100.40%  win 0.36  $-2.66/trade  $  -5.55/h | at T (half/half) 1, front ok 3, front pulled 6, late 1, no fire 86
+  A=30 k=1 lag=none: trades  11 ( 2.1/h)  mean    5.80%  median    6.22%  win 0.91  $+0.29/trade  $  +0.61/h | at T (half/half) 1, front ok 9, late 1, no fire 86
+  A=30 k=2 lag=   3: trades  11 ( 2.1/h)  mean  -73.07%  median -100.40%  win 0.09  $-3.65/trade  $  -7.63/h | at T (half/half) 1, front pulled 8, late 2, no fire 86
+  A=30 k=2 lag=   4: trades  11 ( 2.1/h)  mean  -73.07%  median -100.40%  win 0.09  $-3.65/trade  $  -7.63/h | at T (half/half) 1, front pulled 8, late 2, no fire 86
+  A=30 k=2 lag=   5: trades  11 ( 2.1/h)  mean  -73.07%  median -100.40%  win 0.09  $-3.65/trade  $  -7.63/h | at T (half/half) 1, front pulled 8, late 2, no fire 86
+  A=30 k=2 lag=   6: trades  11 ( 2.1/h)  mean  -63.26%  median -100.40%  win 0.18  $-3.16/trade  $  -6.60/h | at T (half/half) 1, front ok 1, front pulled 7, late 2, no fire 86
+  A=30 k=2 lag=   9: trades  11 ( 2.1/h)  mean  -43.68%  median   -2.39%  win 0.36  $-2.18/trade  $  -4.56/h | at T (half/half) 1, front ok 3, front pulled 5, late 2, no fire 86
+  A=30 k=2 lag=none: trades  11 ( 2.1/h)  mean    5.39%  median    6.22%  win 0.82  $+0.27/trade  $  +0.56/h | at T (half/half) 1, front ok 8, late 2, no fire 86
+  A=35 k=1 lag=   3: trades   9 ( 1.7/h)  mean  -66.49%  median -100.40%  win 0.22  $-3.32/trade  $  -5.68/h | at T (half/half) 1, front ok 1, front pulled 6, late 1, no fire 88
+  A=35 k=1 lag=   4: trades   9 ( 1.7/h)  mean  -66.49%  median -100.40%  win 0.22  $-3.32/trade  $  -5.68/h | at T (half/half) 1, front ok 1, front pulled 6, late 1, no fire 88
+  A=35 k=1 lag=   5: trades   9 ( 1.7/h)  mean  -66.49%  median -100.40%  win 0.22  $-3.32/trade  $  -5.68/h | at T (half/half) 1, front ok 1, front pulled 6, late 1, no fire 88
+  A=35 k=1 lag=   6: trades   9 ( 1.7/h)  mean  -66.49%  median -100.40%  win 0.22  $-3.32/trade  $  -5.68/h | at T (half/half) 1, front ok 1, front pulled 6, late 1, no fire 88
+  A=35 k=1 lag=   9: trades   9 ( 1.7/h)  mean  -42.70%  median   -2.39%  win 0.44  $-2.14/trade  $  -3.65/h | at T (half/half) 1, front ok 3, front pulled 4, late 1, no fire 88
+  A=35 k=1 lag=none: trades   9 ( 1.7/h)  mean    5.57%  median    5.77%  win 0.89  $+0.28/trade  $  +0.48/h | at T (half/half) 1, front ok 7, late 1, no fire 88
+  A=35 k=2 lag=   3: trades   9 ( 1.7/h)  mean  -67.00%  median -100.40%  win 0.11  $-3.35/trade  $  -5.72/h | at T (half/half) 1, front pulled 6, late 2, no fire 88
+  A=35 k=2 lag=   4: trades   9 ( 1.7/h)  mean  -67.00%  median -100.40%  win 0.11  $-3.35/trade  $  -5.72/h | at T (half/half) 1, front pulled 6, late 2, no fire 88
+  A=35 k=2 lag=   5: trades   9 ( 1.7/h)  mean  -67.00%  median -100.40%  win 0.11  $-3.35/trade  $  -5.72/h | at T (half/half) 1, front pulled 6, late 2, no fire 88
+  A=35 k=2 lag=   6: trades   9 ( 1.7/h)  mean  -55.01%  median -100.40%  win 0.22  $-2.75/trade  $  -4.70/h | at T (half/half) 1, front ok 1, front pulled 5, late 2, no fire 88
+  A=35 k=2 lag=   9: trades   9 ( 1.7/h)  mean  -31.08%  median   -2.39%  win 0.44  $-1.55/trade  $  -2.65/h | at T (half/half) 1, front ok 3, front pulled 3, late 2, no fire 88
+  A=35 k=2 lag=none: trades   9 ( 1.7/h)  mean    5.06%  median    5.77%  win 0.78  $+0.25/trade  $  +0.43/h | at T (half/half) 1, front ok 6, late 2, no fire 88
+  A=40 k=1 lag=   3: trades   4 ( 0.8/h)  mean  -49.75%  median  -51.39%  win 0.25  $-2.49/trade  $  -1.89/h | front ok 1, front pulled 2, late 1, no fire 93
+  A=40 k=1 lag=   4: trades   4 ( 0.8/h)  mean  -49.75%  median  -51.39%  win 0.25  $-2.49/trade  $  -1.89/h | front ok 1, front pulled 2, late 1, no fire 93
+  A=40 k=1 lag=   5: trades   4 ( 0.8/h)  mean  -49.75%  median  -51.39%  win 0.25  $-2.49/trade  $  -1.89/h | front ok 1, front pulled 2, late 1, no fire 93
+  A=40 k=1 lag=   6: trades   4 ( 0.8/h)  mean  -49.75%  median  -51.39%  win 0.25  $-2.49/trade  $  -1.89/h | front ok 1, front pulled 2, late 1, no fire 93
+  A=40 k=1 lag=   9: trades   4 ( 0.8/h)  mean  -22.77%  median    0.90%  win 0.50  $-1.14/trade  $  -0.86/h | front ok 2, front pulled 1, late 1, no fire 93
+  A=40 k=1 lag=none: trades   4 ( 0.8/h)  mean    5.00%  median    5.86%  win 0.75  $+0.25/trade  $  +0.19/h | front ok 3, late 1, no fire 93
+  A=40 k=2 lag=   3: trades   4 ( 0.8/h)  mean  -49.75%  median  -51.39%  win 0.25  $-2.49/trade  $  -1.89/h | at T (half/half) 1, front pulled 2, late 1, no fire 93
+  A=40 k=2 lag=   4: trades   4 ( 0.8/h)  mean  -49.75%  median  -51.39%  win 0.25  $-2.49/trade  $  -1.89/h | at T (half/half) 1, front pulled 2, late 1, no fire 93
+  A=40 k=2 lag=   5: trades   4 ( 0.8/h)  mean  -49.75%  median  -51.39%  win 0.25  $-2.49/trade  $  -1.89/h | at T (half/half) 1, front pulled 2, late 1, no fire 93
+  A=40 k=2 lag=   6: trades   4 ( 0.8/h)  mean  -22.77%  median    0.90%  win 0.50  $-1.14/trade  $  -0.86/h | at T (half/half) 1, front ok 1, front pulled 1, late 1, no fire 93
+  A=40 k=2 lag=   9: trades   4 ( 0.8/h)  mean  -22.77%  median    0.90%  win 0.50  $-1.14/trade  $  -0.86/h | at T (half/half) 1, front ok 1, front pulled 1, late 1, no fire 93
+  A=40 k=2 lag=none: trades   4 ( 0.8/h)  mean    5.00%  median    5.86%  win 0.75  $+0.25/trade  $  +0.19/h | at T (half/half) 1, front ok 2, late 1, no fire 93
+  A=45 k=1 lag=   3: trades   3 ( 0.6/h)  mean  -32.87%  median   -2.39%  win 0.33  $-1.64/trade  $  -0.94/h | front ok 1, front pulled 1, late 1, no fire 94
+  A=45 k=1 lag=   4: trades   3 ( 0.6/h)  mean  -32.87%  median   -2.39%  win 0.33  $-1.64/trade  $  -0.94/h | front ok 1, front pulled 1, late 1, no fire 94
+  A=45 k=1 lag=   5: trades   3 ( 0.6/h)  mean  -32.87%  median   -2.39%  win 0.33  $-1.64/trade  $  -0.94/h | front ok 1, front pulled 1, late 1, no fire 94
+  A=45 k=1 lag=   6: trades   3 ( 0.6/h)  mean  -32.87%  median   -2.39%  win 0.33  $-1.64/trade  $  -0.94/h | front ok 1, front pulled 1, late 1, no fire 94
+  A=45 k=1 lag=   9: trades   3 ( 0.6/h)  mean    3.11%  median    4.18%  win 0.67  $+0.16/trade  $  +0.09/h | front ok 2, late 1, no fire 94
+  A=45 k=1 lag=none: trades   3 ( 0.6/h)  mean    3.11%  median    4.18%  win 0.67  $+0.16/trade  $  +0.09/h | front ok 2, late 1, no fire 94
+  A=45 k=2 lag=   3: trades   3 ( 0.6/h)  mean  -32.87%  median   -2.39%  win 0.33  $-1.64/trade  $  -0.94/h | at T (half/half) 1, front pulled 1, late 1, no fire 94
+  A=45 k=2 lag=   4: trades   3 ( 0.6/h)  mean  -32.87%  median   -2.39%  win 0.33  $-1.64/trade  $  -0.94/h | at T (half/half) 1, front pulled 1, late 1, no fire 94
+  A=45 k=2 lag=   5: trades   3 ( 0.6/h)  mean  -32.87%  median   -2.39%  win 0.33  $-1.64/trade  $  -0.94/h | at T (half/half) 1, front pulled 1, late 1, no fire 94
+  A=45 k=2 lag=   6: trades   3 ( 0.6/h)  mean    3.11%  median    4.18%  win 0.67  $+0.16/trade  $  +0.09/h | at T (half/half) 1, front ok 1, late 1, no fire 94
+  A=45 k=2 lag=   9: trades   3 ( 0.6/h)  mean    3.11%  median    4.18%  win 0.67  $+0.16/trade  $  +0.09/h | at T (half/half) 1, front ok 1, late 1, no fire 94
+  A=45 k=2 lag=none: trades   3 ( 0.6/h)  mean    3.11%  median    4.18%  win 0.67  $+0.16/trade  $  +0.09/h | at T (half/half) 1, front ok 1, late 1, no fire 94
+
+best (A, k) under lag 3: A=45 k=1 mean -32.87%
+lead d = T - (block of the triggering call) for the fired pools that had a bot buy, A=25 k=2: [(0, 1), (1, 1), (2, 1), (5, 1), (6, 2), (8, 1), (9, 1), (13, 1), (15, 1), (16, 2), (20, 1), (29, 1)]
+
+== optimistic: our sell lands in T itself (behind the bot's buy)
+  A=18 k=1 lag=3: trades 26 mean  -88.66% $-4.43/trade $-21.88/h | at T (half/half) 1, front ok 1, front pulled 23, late 1, no fire 71
+  A=18 k=1 lag=5: trades 26 mean  -84.71% $-4.24/trade $-20.90/h | at T (half/half) 1, front ok 2, front pulled 22, late 1, no fire 71
+  A=18 k=2 lag=3: trades 26 mean  -88.84% $-4.44/trade $-21.92/h | at T (half/half) 1, front pulled 23, late 2, no fire 71
+  A=18 k=2 lag=5: trades 26 mean  -72.69% $-3.63/trade $-17.94/h | at T (half/half) 1, front ok 4, front pulled 19, late 2, no fire 71
+  A=25 k=1 lag=3: trades 14 mean  -78.60% $-3.93/trade $-10.44/h | at T (half/half) 1, front ok 1, front pulled 11, late 1, no fire 83
+  A=25 k=1 lag=5: trades 14 mean  -71.25% $-3.56/trade $-9.47/h | at T (half/half) 1, front ok 2, front pulled 10, late 1, no fire 83
+  A=25 k=2 lag=3: trades 14 mean  -78.93% $-3.95/trade $-10.49/h | at T (half/half) 1, front pulled 11, late 2, no fire 83
+  A=25 k=2 lag=5: trades 14 mean  -56.40% $-2.82/trade $-7.49/h | at T (half/half) 1, front ok 3, front pulled 8, late 2, no fire 83
+  A=35 k=1 lag=3: trades 9 mean  -66.49% $-3.32/trade $-5.68/h | at T (half/half) 1, front ok 1, front pulled 6, late 1, no fire 88
+  A=35 k=1 lag=5: trades 9 mean  -66.49% $-3.32/trade $-5.68/h | at T (half/half) 1, front ok 1, front pulled 6, late 1, no fire 88
+  A=35 k=2 lag=3: trades 9 mean  -67.00% $-3.35/trade $-5.72/h | at T (half/half) 1, front pulled 6, late 2, no fire 88
+  A=35 k=2 lag=5: trades 9 mean  -55.01% $-2.75/trade $-4.70/h | at T (half/half) 1, front ok 1, front pulled 5, late 2, no fire 88
+
+== oracle bound: fire only on the hits (a call at d 1..4 before T), k=1 or 2, lag 3 / median; T+1 sell
+  k=1 lag=3: trades 2 of 91 pools; mean 3.18% $+0.16/trade, $+0.06/h | {'at T (half/half)': 1, 'front ok': 1}
+  k=1 lag=5: trades 2 of 91 pools; mean 3.18% $+0.16/trade, $+0.06/h | {'at T (half/half)': 1, 'front ok': 1}
+  k=1 lag=None: trades 2 of 91 pools; mean 3.18% $+0.16/trade, $+0.06/h | {'at T (half/half)': 1, 'front ok': 1}
+  k=2 lag=3: trades 2 of 91 pools; mean 0.90% $+0.04/trade, $+0.02/h | {'late': 1, 'at T (half/half)': 1}
+  k=2 lag=5: trades 2 of 91 pools; mean 0.90% $+0.04/trade, $+0.02/h | {'late': 1, 'at T (half/half)': 1}
+  k=2 lag=None: trades 2 of 91 pools; mean 0.90% $+0.04/trade, $+0.02/h | {'late': 1, 'at T (half/half)': 1}
