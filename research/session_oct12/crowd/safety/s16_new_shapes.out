@@ -1,0 +1,7 @@
+fee-100 WETH pools in blocks 86744763..86792584: 5
+block 86757047 10-12 14:50:50 from 0x98e8585371 nonce 2 to 0x73991a25c8 ac9650d8/836 B value 0.001; inner ['13ead562/132', '88316456/356', '12210e8a/4']; WETH token0; mint ranges [(-887272, 887272)]; token code 1603 B 0x27a0e402b29a (not one of the line templates)
+block 86786987 10-12 15:41:37 from 0x844c876d75 nonce 2 to 0x73991a25c8 13ead562/132 B value 0; inner []; WETH token0; mint ranges []; token code 8702 B 0x0402ab611457 (not one of the line templates)
+block 86787612 10-12 15:42:41 from 0xe62d605bcf nonce 2 to 0x73991a25c8 13ead562/132 B value 0; inner []; WETH token0; mint ranges []; token code 11287 B 0x7c9d74897c47 (not one of the line templates)
+block 86789370 10-12 15:45:40 from 0x4b10608d18 nonce 2 to 0x73991a25c8 13ead562/132 B value 0; inner []; WETH token0; mint ranges []; token code 8702 B 0x0402ab611457 (not one of the line templates)
+block 86790642 10-12 15:47:50 from 0xecf0f9e221 nonce 2 to 0x73991a25c8 13ead562/132 B value 0; inner []; WETH token0; mint ranges []; token code 8702 B 0x0402ab611457 (not one of the line templates)
+{'posts': 22, 'items': 22, 'r429': 1}

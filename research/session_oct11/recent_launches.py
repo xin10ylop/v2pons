@@ -20,14 +20,14 @@ for bn in sorted({int(l["blockNumber"], 16) for l in ls})[::max(1, len(ls) // 20
 groups = collections.defaultdict(list)
 for l, tx in zip(ls, txs):
     if not tx: continue
-    d = l["data"]; fee = W(d, 2); ts = W(d, 3); c0 = l["topics"][2][-40:]; c1 = l["topics"][3][-40:]
+    d = l["data"]; fee = W(d, 0); ts = W(d, 1); hk = "%040x" % W(d, 2); sp = W(d, 3); c0 = l["topics"][2][-40:]; c1 = l["topics"][3][-40:]   # Initialize data: fee, tickSpacing, hooks, sqrtPriceX96, tick
     val = int(tx["value"], 16) / 1e18; to = (tx.get("to") or "create")[-8:]; clen = (len(tx["input"]) - 2) // 2
-    key = (to, clen, round(val, 7), fee, ts, "ETH" if c0 == "0" * 40 else c0[:6])
+    key = (to, clen, round(val, 7), fee, ts, "ETH" if c0 == "0" * 40 else c0[:6], "-" if hk == "0" * 40 else hk[-8:], sp)
     groups[key].append((int(l["blockNumber"], 16), tx["from"][-8:]))
 rows = sorted(groups.items(), key=lambda kv: -len(kv[1]))
-print(f"{'to':>8} {'clen':>5} {'value':>11} {'fee':>7} {'ts':>5} quote   n  wallets  first..last block")
+print(f"{'to':>8} {'clen':>5} {'value':>11} {'fee':>7} {'ts':>5} quote  hook     {'sqrtPriceX96':>40}   n  wallets  first..last block")
 for k, v in rows[:25]:
-    print(f"{k[0]:>8} {k[1]:>5} {k[2]:>11} {k[3]:>7} {k[4]:>5} {k[5]:<6} {len(v):>3}  {len({w for _, w in v}):>5}   {min(b for b, _ in v)}..{max(b for b, _ in v)}")
+    print(f"{k[0]:>8} {k[1]:>5} {k[2]:>11} {k[3]:>7} {k[4]:>5} {k[5]:<6} {k[6]:<8} {k[7]:>40} {len(v):>3}  {len({w for _, w in v}):>5}   {min(b for b, _ in v)}..{max(b for b, _ in v)}")
 # the volume bot's PositionManager launches by 10-minute bucket and shape
 posm = [(k, b) for k, v in groups.items() for b, _ in v if k[0] == "e8a04fa7"]
 tsmap = sorted(blocks.items())
@@ -37,7 +37,7 @@ def t_of(bn):
     return t_head
 buck = collections.defaultdict(collections.Counter)
 for k, b in posm:
-    buck[int(t_of(b) // 600) * 600][(k[1], k[2], k[3], k[4])] += 1
-print("\nPositionManager launches per 10 min by (calldata len, value, fee, ts):")
+    buck[int(t_of(b) // 600) * 600][(k[1], k[2], k[3], k[4], k[7])] += 1
+print("\nPositionManager launches per 10 min by (calldata len, value, fee, ts, sqrtPriceX96):")
 for t in sorted(buck):
     print(" ", time.strftime("%H:%M", time.gmtime(t)), dict(buck[t].most_common(6)))
