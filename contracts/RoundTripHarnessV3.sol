@@ -7,6 +7,7 @@ pragma solidity 0.8.26;
 interface IRelayV3 {
     function buy(address token, uint24 fee, uint256 amountIn, uint256 minOut, uint256 deadline) external returns (uint256);
     function sell(address token, uint24 fee, uint256 minOut, uint256 deadline) external returns (uint256);
+    function sweep(address token, uint256 amount) external;
     function WETH() external view returns (address);
 }
 
@@ -64,6 +65,16 @@ contract RoundTripHarnessV3 {
         r[4] = g - gasleft();
         r[2] = relay.balance;
         r[3] = IERC20(IRelayV3(relay).WETH()).balanceOf(relay);
+    }
+
+    /// A buy, then the owner's (this contract's) sweep of `part` of the tokens, then of the rest (amount 0): [0] tokens out, [1] the
+    /// relay's tokens after the partial sweep, [2] this contract's, [3] the relay's after the full sweep, [4] this contract's.
+    function buySweep(address relay, address token, uint24 fee, uint256 amountIn, uint256 deadline, uint256 part) external returns (uint256[5] memory r) {
+        r[0] = IRelayV3(relay).buy(token, fee, amountIn, 0, deadline);
+        IRelayV3(relay).sweep(token, part);
+        (r[1], r[2]) = (IERC20(token).balanceOf(relay), IERC20(token).balanceOf(address(this)));
+        IRelayV3(relay).sweep(token, 0);
+        (r[3], r[4]) = (IERC20(token).balanceOf(relay), IERC20(token).balanceOf(address(this)));
     }
 
     function _state(address pool) private view returns (uint256 sqrtP, uint256 liq) {

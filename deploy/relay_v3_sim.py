@@ -14,7 +14,8 @@ that of a sell, then the failure paths, each of which must revert with its own e
     python3 deploy/relay_v3_sim.py --eth 0.005           # the buy's size (default 0.002 ETH)
 
 A pool whose token refuses a transfer into the pool from an outside address (a sell lock: the relay could buy, never sell) is skipped
-in the search and named; given by hand, it is reported as such. Exit status 1 if anything is not as expected.
+in the search and named; given by hand, it is reported as such. Exit status 1 if anything is not as expected, 2 if no live pool
+was found to run a round trip on (nothing wrong, nothing proven).
 """
 import argparse, json, os, sys, time, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -30,10 +31,11 @@ P356_CODE = "89885b75"                                  # the 356-byte line's la
 T_PC = "0x" + keccak(text="PoolCreated(address,address,uint24,int24,address)").hex()
 sel = lambda sig: keccak(text=sig).hex()[:8]
 ERRORS = {sel(s): s for s in ("NotOwner()", "NotPool(address)", "Busy()", "TooLate(uint256,uint256)", "NoPool(address)", "Insufficient(uint256,uint256)",
-                              "NothingToSell(address)", "TooLittleOut(uint256,uint256)", "TransferFailed(address)")}
+                              "NothingToSell(address)", "TooLittleOut(uint256,uint256)", "Overpay(uint256,uint256)", "TransferFailed(address)")}
 S_BUY, S_SELL, S_CB = sel("buy(address,uint24,uint256,uint256,uint256)"), sel("sell(address,uint24,uint256,uint256)"), sel("uniswapV3SwapCallback(int256,int256,bytes)")
-S_WD, S_SWEEP = sel("withdraw(uint256)"), sel("sweep(address)")
+S_WD, S_SWEEP = sel("withdraw(uint256)"), sel("sweep(address,uint256)")
 S_RUN, S_BUY_ONLY = sel("run((address,address,address,address,uint24,uint256,uint256,uint256,uint256))"), sel("buyOnly(address,address,uint24,uint256,uint256,uint256)")
+S_BUY_SWEEP = sel("buySweep(address,address,uint24,uint256,uint256,uint256)")
 S_QUOTE = sel("quoteExactInputSingle((address,address,uint256,uint24,uint160))")
 Q96 = 1 << 96; U256 = 1 << 256
 
@@ -239,9 +241,12 @@ def failure_paths(p, amount, block, ts, ov, rt):
     tok = token_of(p); fee = p["fee"]; pool = p["pool"]
     buy = lambda amt, mn, dl, f=fee: "0x" + S_BUY + word(tok) + word(f) + word(amt) + word(mn) + word(dl)
     sell = lambda mn, dl: "0x" + S_SELL + word(tok) + word(fee) + word(mn) + word(dl)
-    cb = "0x" + S_CB + word(amount) + word(0) + word(0x60) + word(32) + word(WETH)
+    cb = lambda owed, named=WETH: "0x" + S_CB + word(owed) + word(0) + word(0x60) + word(32) + word(named)
     direct = {RELAY_AT: ov[RELAY_AT]}                                                        # the owner (HARNESS_AT) as a plain address
-    busy = {RELAY_AT: dict(ov[RELAY_AT], stateDiff={"0x" + "0" * 64: "0x" + word(pool)})}    # slot 0 (the swap in progress) set to the pool
+    slot = lambda i: "0x" + "%064x" % i
+    busy = {RELAY_AT: dict(ov[RELAY_AT], stateDiff={slot(0): "0x" + word(pool)})}             # slot 0 (the swap in progress) set to the pool
+    swap_buy = {RELAY_AT: dict(ov[RELAY_AT], stateDiff={slot(0): "0x" + word(pool), slot(1): "0x" + word(WETH), slot(2): "0x" + word(amount)})}  # a buy's record
+    sweep = lambda t, amt: "0x" + S_SWEEP + word(t) + word(amt)
     bal = int(ov[RELAY_AT]["balance"], 16)
     no_fee = next(f for f in (500, 3000, 10000, 100) if f != fee and len(relay_sim.rpc("eth_getCode", [pool_addr(tok, f), "latest"])) <= 2)
     run_sell_min = "0x" + S_RUN + "".join(word(x) for x in (RELAY_AT, QUOTER, pool, tok, fee, amount, 0, rt["eth_back"] + 1, ts + 600))
@@ -249,10 +254,13 @@ def failure_paths(p, amount, block, ts, ov, rt):
         ("a stranger's buy", STRANGER, RELAY_AT, buy(amount, 0, ts + 600), direct, "NotOwner()"),
         ("a stranger's sell", STRANGER, RELAY_AT, sell(0, ts + 600), direct, "NotOwner()"),
         ("a stranger's withdraw(0)", STRANGER, RELAY_AT, "0x" + S_WD + word(0), direct, "NotOwner()"),
-        ("a stranger's sweep(WETH)", STRANGER, RELAY_AT, "0x" + S_SWEEP + word(WETH), direct, "NotOwner()"),
-        ("the callback called by a stranger", STRANGER, RELAY_AT, cb, direct, f"NotPool({STRANGER})"),
-        ("the callback called by the pool itself, no swap in progress", pool, RELAY_AT, cb, direct, f"NotPool({pool})"),
-        ("the callback called by a stranger during a swap (slot set)", STRANGER, RELAY_AT, cb, busy, f"NotPool({STRANGER})"),
+        ("a stranger's sweep(WETH, 0)", STRANGER, RELAY_AT, sweep(WETH, 0), direct, "NotOwner()"),
+        ("the callback called by a stranger", STRANGER, RELAY_AT, cb(amount), direct, f"NotPool({STRANGER})"),
+        ("the callback called by the pool itself, no swap in progress", pool, RELAY_AT, cb(amount), direct, f"NotPool({pool})"),
+        ("the callback called by a stranger during a swap (slots set)", STRANGER, RELAY_AT, cb(amount), swap_buy, f"NotPool({STRANGER})"),
+        ("the pool during a buy asking 1 wei over the recorded maximum", pool, RELAY_AT, cb(amount + 1), swap_buy, f"Overpay({amount + 1}, {amount})"),
+        ("the pool during a buy, owed within the maximum, data naming the token: pays the recorded WETH (none here)", pool, RELAY_AT, cb(amount, tok),
+         swap_buy, f"TransferFailed({WETH})"),
         ("the owner's buy during a swap (re-entry: slot set)", HARNESS_AT, RELAY_AT, buy(amount, 0, ts + 600), busy, "Busy()"),
         ("the owner's sell with nothing to sell", HARNESS_AT, RELAY_AT, sell(0, ts + 600), direct, f"NothingToSell({tok})"),
         ("the owner's buy past its deadline (the block's second - 1)", HARNESS_AT, RELAY_AT, buy(amount, 0, ts - 1), direct, f"TooLate({ts}, {ts - 1})"),
@@ -260,6 +268,7 @@ def failure_paths(p, amount, block, ts, ov, rt):
         ("the owner's sell for minOut one above its output", STRANGER, HARNESS_AT, run_sell_min, ov, f"TooLittleOut({rt['eth_back']}, {rt['eth_back'] + 1})"),
         (f"the owner's buy on a pool that does not exist (fee {no_fee})", HARNESS_AT, RELAY_AT, buy(amount, 0, ts + 600, no_fee), direct, f"NoPool({pool_addr(tok, no_fee)})"),
         ("the owner's buy above the relay's ETH", HARNESS_AT, RELAY_AT, buy(bal + 1, 0, ts + 600), direct, f"Insufficient({bal}, {bal + 1})"),
+        ("the owner's sweep of 1 wei of WETH with none there", HARNESS_AT, RELAY_AT, sweep(WETH, 1), direct, f"TransferFailed({WETH})"),
     ]
     bad = 0
     for name, frm, to, data, o, want in checks:
@@ -269,12 +278,19 @@ def failure_paths(p, amount, block, ts, ov, rt):
         print(f"  {'ok ' if good else 'BAD'} {name}: {'went through' if ok else r}{'' if good else f' (expected {want})'}")
     passes = [("the owner's buy with its deadline at the block's second", buy(amount, rt["out"], ts)),
               ("the owner's withdraw(0)", "0x" + S_WD + word(0)),
-              ("the owner's sweep(WETH) (nothing there)", "0x" + S_SWEEP + word(WETH))]
+              ("the owner's sweep(WETH, 0) (nothing there)", sweep(WETH, 0))]
     for name, data in passes:
         ok, r = call(RELAY_AT, data, block, frm=HARNESS_AT, ov=direct)
         good = ok and (data[2:10] != S_BUY or W(r, 0) == rt["out"])
         bad += not good
         print(f"  {'ok ' if good else 'BAD'} {name}: {('goes through' + (f', {W(r, 0)} tokens' if data[2:10] == S_BUY else '')) if ok else 'REVERTED ' + r}")
+    part = rt["out"] // 3                                                                     # a buy, then sweep(token, a third), then sweep(token, 0)
+    ok, r = call(HARNESS_AT, "0x" + S_BUY_SWEEP + "".join(word(x) for x in (RELAY_AT, tok, fee, amount, ts + 600, part)), block, ov=ov, gas=30_000_000)
+    v = [W(r, i) for i in range(5)] if ok else None
+    good = bool(v) and v[1] == v[0] - part and v[2] == part and v[3] == 0 and v[4] == v[0]
+    bad += not good
+    print(f"  {'ok ' if good else 'BAD'} the owner's sweep(token, a third of the buy), then sweep(token, 0): "
+          + (f"the relay holds {v[1]} then {v[3]}, the owner got {v[2]} then {v[4]} of {v[0]}" if v else r))
     return bad
 
 
@@ -288,7 +304,8 @@ def cut_short(p, amount, block, ts, ov):
             v = [W(r, i) for i in range(5)] if ok else None
             good = bool(v) and v[0] == 0 and v[1] == v[2] and v[3] == 0
             print(f"  {'ok ' if good else 'BAD'} a buy with minOut 0: " + (f"{v[0]} tokens, the relay's ETH {v[1]} before and {v[2]} after, WETH left {v[3]}; "
-                  f"gas {v[4]} (the swap walks every empty tick word to the price limit: a transaction with an ordinary gas limit runs out of gas and reverts)" if v else r))
+                  f"gas {v[4]} (the swap walks every empty tick word to the price limit" + ("; a transaction with a 400k limit runs out of gas and reverts)" if v[4] > 400_000
+                  else ": it fits in a 400k limit)") if v else r))
         else:
             good = not ok and r == "TooLittleOut(0, 1)"
             print(f"  {'ok ' if good else 'BAD'} a buy with minOut 1: {'went through' if ok else r}")
@@ -347,8 +364,10 @@ def main():
               f"gas {rt['gas_buy']}/{rt['gas_sell']}; failure paths {'all ok' if not bad else f'{bad} BAD'}")
     for line, p, lock in skipped:
         print(f"  {line:<11} {p['pool']} sell-locked token ({lock}): skipped")
-    if total_bad or not any(rt for _, rt, _ in results):
+    if total_bad:
         print("SOMETHING IS NOT AS EXPECTED: do not deploy this build"); sys.exit(1)
+    if not any(rt for _, rt, _ in results):
+        print("no live pool found: no round trip was run (what did run is as expected); try --hours 48 or give a live pool"); sys.exit(2)
     print("all as expected")
 
 

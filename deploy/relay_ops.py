@@ -7,9 +7,11 @@
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py sweep 0xTOKEN       # a token left in the relay back to the wallet
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py payout 0xADDR 0.1   # ETH from the wallet to an outside address (asks for a yes; --yes skips)
 The V3 relay (RELAY_V3 in the env file, deploy/relay_v3_deploy.py; status shows it when it is set):
-    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py deposit_v3 0.01     # ETH from the wallet into the V3 relay (checks its owner first)
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py deposit_v3 0.01     # ETH from the wallet into the V3 relay
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py withdraw_v3 [0.005] # V3 relay ETH back to the wallet (no amount = all)
-    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py sweep_v3 0xTOKEN    # a token (or WETH) left in the V3 relay back to the wallet
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py sweep_v3 0xTOKEN [N] # a token (or WETH) in the V3 relay back to the wallet: all of it,
+                                                                                     # or N raw units (for a token whose transfers are capped)
+The _v3 commands first check that RELAY_V3's code is FlipRelayV3's for this wallet, byte for byte, and that its owner() is the wallet.
 Stop the engine before deposit/withdraw/sweep/payout and their _v3 forms (same wallet, same nonce). Profit leaves in two steps: withdraw
 (relay -> wallet), then payout (wallet -> your own address); keep about 0.003 ETH in the wallet for gas."""
 import json, os, subprocess, sys, time
@@ -42,7 +44,7 @@ def send(acct, to, value, data, rpc):
 GAS_RESERVE_WEI = int(0.003e18)                      # what stays in the wallet for the engine's gas (about a day at 300 trades)
 
 
-def payout(acct, wallet, relay, args, yes, rpc):
+def payout(acct, wallet, relay, args, yes, rpc, relay_v3=""):
     """plain ETH from the wallet to an outside address, after the checks: a valid address (a mixed-case one must pass its checksum), not our
     own wallet or relay, an amount above 0 that leaves the gas reserve, and a typed yes (or --yes)"""
     from eth_utils import is_address, is_checksum_address, to_checksum_address
@@ -52,8 +54,8 @@ def payout(acct, wallet, relay, args, yes, rpc):
     if not is_address(to) or (to != to.lower() and to[2:] != to[2:].upper() and not is_checksum_address(to)):
         sys.exit(f"{to} is not a valid address (a mixed-case address must pass its checksum): check it character by character")
     to = to_checksum_address(to)
-    if to.lower() in (wallet, relay):
-        sys.exit("that is our own wallet or relay: use deposit/withdraw for those")
+    if to.lower() in (wallet, relay, relay_v3):
+        sys.exit("that is our own wallet or relay: use deposit/withdraw (deposit_v3/withdraw_v3) for those")
     try:
         amt = int(float(amt_s) * 1e18)
     except ValueError:
@@ -73,10 +75,15 @@ def payout(acct, wallet, relay, args, yes, rpc):
 
 
 def v3_ops(cmd, acct, wallet, relay_v3, rpc):
-    """deposit_v3 <eth>, withdraw_v3 [eth], sweep_v3 <token> on the V3 relay, after checking that RELAY_V3 is a contract owned by the wallet"""
+    """deposit_v3 <eth>, withdraw_v3 [eth], sweep_v3 <token> [raw amount] on the V3 relay, after checking that RELAY_V3's code is the
+    artifact's runtime for this wallet byte for byte (contracts/FlipRelayV3.json with the owner filled in) and that its owner() is the wallet"""
+    import relay_v3_sim
     if acct.address.lower() != wallet or not relay_v3:
         sys.exit("WALLET/PRIVATE_KEY/RELAY_V3 not consistent in the env file")
-    owner = rpc("eth_call", [{"to": relay_v3, "data": "0x8da5cb5b"}, "latest"]) if len(rpc("eth_getCode", [relay_v3, "latest"])) > 2 else "0x"
+    if rpc("eth_getCode", [relay_v3, "latest"]).lower() != relay_v3_sim.relay_v3_runtime(wallet).lower():
+        sys.exit(f"the code at RELAY_V3 {relay_v3} is not FlipRelayV3's for this wallet (contracts/FlipRelayV3.json, owner = WALLET): "
+                 f"check the env file and the repository's version")
+    owner = rpc("eth_call", [{"to": relay_v3, "data": "0x8da5cb5b"}, "latest"])
     if ("0x" + owner[-40:]).lower() != wallet:
         sys.exit(f"RELAY_V3 {relay_v3} is not a relay owned by the wallet: check the env file")
     if cmd == "deposit_v3":
@@ -87,9 +94,9 @@ def v3_ops(cmd, acct, wallet, relay_v3, rpc):
         amt = int(float(sys.argv[2]) * 1e18) if len(sys.argv) > 2 else 0
         send(acct, relay_v3, 0, "0x2e1a7d4d" + word(amt), rpc)
     else:
-        if len(sys.argv) < 3:
-            sys.exit("usage: relay_ops.py sweep_v3 0xTOKEN")
-        send(acct, relay_v3, 0, "0x01681a62" + word(sys.argv[2]), rpc)
+        if len(sys.argv) < 3 or (len(sys.argv) > 3 and not sys.argv[3].isdigit()):
+            sys.exit("usage: relay_ops.py sweep_v3 0xTOKEN [RAW_AMOUNT]   (a whole number of the token's smallest units; none = all)")
+        send(acct, relay_v3, 0, "0x6ea056a9" + word(sys.argv[2]) + word(int(sys.argv[3]) if len(sys.argv) > 3 else 0), rpc)
 
 
 def main():
@@ -133,7 +140,7 @@ def main():
     elif cmd == "sweep":
         send(acct, relay, 0, "0x01681a62" + word(sys.argv[2]), rpc)
     elif cmd == "payout":
-        payout(acct, wallet, relay, [x for x in sys.argv[2:] if not x.startswith("--")], "--yes" in sys.argv, rpc)
+        payout(acct, wallet, relay, [x for x in sys.argv[2:] if not x.startswith("--")], "--yes" in sys.argv, rpc, e.get("RELAY_V3", "").lower())
     else:
         sys.exit(__doc__)
 
