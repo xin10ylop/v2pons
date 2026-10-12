@@ -1,0 +1,7 @@
+head 86818011 10-12 16:34:15
+PoolCreated 17 fee100+WETH 9
+v3crowd launch 86814386 10-12 16:28:07
+v3crowd launch 86816737 10-12 16:32:06
+v3crowd-shaped since 13:44: 2
+shapes: [(('0x73991a25', '13ead562', 132, False), 6), (('0x73991a25', 'ac9650d8', 836, False), 2), (('0x73991a25', 'ac9650d8', 836, True), 1)]
+rpc {'posts': 6, 'items': 14, 'r429': 0}

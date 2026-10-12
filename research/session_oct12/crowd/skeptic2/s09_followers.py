@@ -3,7 +3,7 @@ Followers: outside wallets buying within 5 blocks after the trigger in >= 10 poo
 [trigger, trigger + 5], pull within 20 / 30 / 40 of the trigger. Fisher for the regime change (Oct 10-12 vs Oct 3-9)."""
 from common import *
 import collections
-P = {p["pool"]: p for p in json.load(open(J("s04_pools.json")))}
+P = {p["pool"]: p for p in jl(J("s04_pools_cache.jsonl"))}
 R = {}
 for l in open(J("../reaction/r04_pools_cache.jsonl")):
     r = json.loads(l); R[r["pool"]] = r

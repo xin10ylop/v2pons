@@ -2,7 +2,7 @@
 still held) at the trigger: non-bot, the + 1 bot only, none; and by the outside ETH held at the trigger."""
 from common import *
 BOT1 = "0x776e5a2a72f9711ed818e2a0535d3d01cf8ed3d6"; MIN = 5 * 10 ** 14; OCT10 = 1791590400
-P = {p["pool"]: p for p in json.load(open(J("s04_pools.json")))}
+P = {p["pool"]: p for p in jl(J("s04_pools_cache.jsonl"))}
 R = {}
 for l in open(J("../reaction/r04_pools_cache.jsonl")):
     r = json.loads(l); R[r["pool"]] = r

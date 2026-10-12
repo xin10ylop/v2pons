@@ -2,7 +2,7 @@
 s03), the pull (first Burn with liquidity > 0), the crowd's first real buy, the engine's trigger and our sell, and every outside wallet's
 position by block. Crowd = a crowd-shaped call (3593564c/484, a0193551/452, 49f74a5d/452) not to the UR, or any tx from such a call's EOA or to
 its contract; a swap whose tx was not fetched (after + 80) is the crowd's when its Swap sender is a crowd contract or its recipient a crowd
-EOA/contract. -> s04_pools.json"""
+EOA/contract. -> s04_pools_cache.jsonl"""
 from common import *
 import collections
 BOT1 = "0x776e5a2a72f9711ed818e2a0535d3d01cf8ed3d6"
@@ -49,7 +49,7 @@ for pool, x in L.items():
     trig_an = next((s["off"] for s in sw if s["off"] >= 2 and s["dq"] >= REAL and (s["k"] in ("crowd", "crowd2", "crowd_s") or (s["k"] == "other" and (s["val"] or 0) > 0))), None)
     out.append({"pool": pool, "lb": lb, "ts": x["ts"], "qs": qs, "lw": x["lw"], "sqrtp": x["sqrtp"], "win": e["to"] - lb, "pull": pull, "frb": frb, "trig": trig, "trig_an": trig_an,
                 "sell": min(trig + 20, 80) if trig is not None else 80, "sw": sw})
-json.dump(out, open(J("s04_pools.json"), "w"))
+open(J("s04_pools_cache.jsonl"), "w").write("".join(json.dumps(p) + "\n" for p in out))
 print("classes", dict(cls))
 print("Swap sender/recipient vs class (fetched txs): (class, sender is a crowd contract, recipient crowd EOA/contract) ->", sorted(sndr.items(), key=lambda kv: -kv[1])[:10])
 print("pulled within the window", sum(1 for p in out if p["pull"]), "of", len(out), "; pull from = launch wallet", sum(1 for p in out if p["pull"] and p["pull"]["from"] == p["lw"]),

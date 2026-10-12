@@ -1,4 +1,4 @@
-"""skeptic2 tests on own data (s04_pools.json):
+"""skeptic2 tests on own data (s04_pools_cache.jsonl):
 (A) re-find the early outsider pools (a non-crowd, non-launch-wallet sender buying >= 0.0005 ETH at + 1..+ 10; the + 1 bot apart);
 (B) dose-response: in the cap branch (alive at + 78, no trigger by + 60: our sell is the cap's, landing + 80), the pull by + 80..+ 150 against
     the outside ETH still held at + 78 (non-bot), and against the biggest single holder;
@@ -8,7 +8,7 @@
 from common import *
 import collections, math
 BOT1 = "0x776e5a2a72f9711ed818e2a0535d3d01cf8ed3d6"; MIN = 5 * 10 ** 14; REAL = 5 * 10 ** 15
-P = json.load(open(J("s04_pools.json")))
+P = jl(J("s04_pools_cache.jsonl"))
 def day(p): return time.strftime("%m-%d", time.gmtime(p["ts"]))
 def wallets(p, upto):
     """outside wallets (class other, by tx sender) -> {w: dict(eth_in, tok_in, tok_out, first_off, first_eth, bot)} from swaps with off <= upto"""

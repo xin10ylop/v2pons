@@ -4,7 +4,7 @@ those pulled + 101..+ 300 in held ETH. Also the trigger branch since Oct 10: pul
 from common import *
 import collections, math
 BOT1 = "0x776e5a2a72f9711ed818e2a0535d3d01cf8ed3d6"; MIN = 5 * 10 ** 14
-P = json.load(open(J("s04_pools.json")))
+P = jl(J("s04_pools_cache.jsonl"))
 def held(p, at, incl_bot=False):
     W = {}
     for s in p["sw"]:

@@ -4,7 +4,7 @@ lands at trigger + 20, so a pull within 20 of the trigger in a pool whose trigge
 reaction analyst's raw rows (reaction/r04_pools_cache.jsonl), read with own code."""
 from common import *
 import collections
-P = {p["pool"]: p for p in json.load(open(J("s04_pools.json")))}
+P = {p["pool"]: p for p in jl(J("s04_pools_cache.jsonl"))}
 R = {}
 for l in open(J("../reaction/r04_pools_cache.jsonl")):
     r = json.loads(l); R[r["pool"]] = r

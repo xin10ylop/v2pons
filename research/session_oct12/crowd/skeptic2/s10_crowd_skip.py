@@ -4,7 +4,7 @@ Fisher one-sided for fewer early crowds than in pools with no early holder."""
 from common import *
 import collections
 BOT1 = "0x776e5a2a72f9711ed818e2a0535d3d01cf8ed3d6"; MIN = 5 * 10 ** 14
-P = [p for p in json.load(open(J("s04_pools.json"))) if p["win"] >= 300]
+P = [p for p in jl(J("s04_pools_cache.jsonl")) if p["win"] >= 300]
 def big10(p, bot=False):
     W = {}
     for s in p["sw"]:
