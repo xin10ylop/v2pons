@@ -7,7 +7,7 @@ wallet and the relay. Follow is not shown.
     sudo python3 ~/v2pons/deploy/results.py          # the last 24 hours
     sudo python3 ~/v2pons/deploy/results.py 72       # the last 72 hours
 """
-import glob, gzip, json, os, subprocess, sys, time, urllib.request
+import glob, gzip, json, os, re, subprocess, sys, time, urllib.request
 HOURS = float(sys.argv[1]) if len(sys.argv) > 1 else 24
 LOG = "/var/log/flip/engine.jsonl"; ENV = "/etc/flip/engine.env"; HALT = "/var/log/flip/HALTED"
 LAST_TRADES = 8                                                                # live trades listed one by one (every filled one counts in the table)
@@ -86,11 +86,12 @@ def families(st, e, now):
     for f in fams:
         if not front_on:
             mode = "off"
-        elif dry_all or front_dry or f.get("dry_run") or f.get("dex") == "v3":   # a V3 family is dry whatever it says
+        elif dry_all or front_dry or f.get("dry_run") or (f.get("dex") == "v3" and not f.get("live")):   # a V3 family is dry unless the start line says it is live (RELAY_V3)
             mode = "dry"
         else:
             mode = "LIVE"
-        out.append({"name": f["name"], "mode": mode, "stake_eth": num(f.get("stake_eth"), 0), "auto": auto_on and not f.get("trigger"), "auto_eth": auto.get(f["name"]),
+        stake = f.get("live_stake_eth", f.get("stake_eth")) if mode == "LIVE" else f.get("stake_eth")   # a live V3 family's stake under V3_STAKE_CAP_ETH
+        out.append({"name": f["name"], "mode": mode, "stake_eth": num(stake, 0), "auto": auto_on and not f.get("trigger"), "auto_eth": auto.get(f["name"]),
                     "dex": f.get("dex", "v4"), "trigger": f.get("trigger"), "value_eth": f.get("value_eth")})
     base_wei = num(st.get("front_value_wei"), None)
     base = next((f["name"] for f in out if base_wei and f.get("value_eth") is not None and abs(f["value_eth"] * 1e18 - base_wei) < 1e9), None) or e.get("FRONT_FAMILY_NAME", "v2.433")
@@ -143,6 +144,8 @@ def result_col(d):
         return "UNKNOWN"                                                       # no buy receipt within the timeout: it never went in, or the RPC failed
     if isinstance(b, dict) and b.get("status") == "reverted":
         return "buy reverted"
+    if isinstance(b, dict) and b.get("filled") is False:                       # a V3 buy that took no token (a pulled pool: the relay kept its ETH)
+        return "buy not filled"
     return pct(d["ret"]) if d.get("ret") is not None else "?"
 
 
@@ -153,6 +156,18 @@ def stake_label(f, eth_usd):
     if f["auto"]:
         return ("auto $%.0f (up to %s)" % (f["auto_eth"] * eth_usd, cap)) if f["auto_eth"] is not None else "auto (up to %s)" % cap
     return cap + " fixed"
+
+
+def v3_money(e, rpc):
+    """the V3 relay's part of the money line (HANDOFF 16.22): ("", None) without a RELAY_V3 address in the env file (read as the engine reads
+    it: quotes and spaces stripped, 0x or 0X optional, 40 hex digits) or when it is RELAY or WALLET itself; its balance, or "?" when the read fails (then 0
+    in the total)"""
+    norm = lambda v: (lambda h: h[2:] if h.startswith("0x") else h)((v or "").strip().strip("'\"").strip().lower())
+    r3 = norm(e.get("RELAY_V3"))
+    if not re.fullmatch(r"[0-9a-f]{40}", r3) or r3 in (norm(e.get("RELAY")), norm(e.get("WALLET"))):
+        return "", None
+    b = balance(rpc, "0x" + r3)
+    return ", V3 relay %s ETH" % ("%.6f" % b if b is not None else "?"), b
 
 
 def lines_table(fams, base, by, front, dry_by, eth_usd, cols):
@@ -339,7 +354,9 @@ def main():
         if wb is None or rb is None:
             print("\nmoney: the RPC did not answer; try again")
         else:
-            print("\nmoney: wallet %.6f ETH (gas), relay %.6f ETH (the stakes); together about $%.2f at $%g/ETH" % (wb, rb, (wb + rb) * eth_usd, eth_usd))
+            part, r3b = v3_money(e, rpc)
+            print("\nmoney: wallet %.6f ETH (gas), relay %.6f ETH (the stakes)%s; together about $%.2f at $%g/ETH"
+                  % (wb, rb, part, (wb + rb + (r3b or 0.0)) * eth_usd, eth_usd))
     print("=" * 100)
 
 

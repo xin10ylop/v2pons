@@ -1,0 +1,82 @@
+pools 188, with a trigger 169; launch span 10-11 01:01:47 .. 10-12 12:59:30 UTC; head 86692583
+
+######## MEASURE 1: an outside buy in (trigger, T+10] (our window)
+
+== non-dust (>= 0.001) outside, T..T+10: 3 pools with such a buy, 98 control pools
+    pull within  10 blocks of the buy:   0/  3 =   0.0% (Wilson 95% 0.0%-56.2%); expected from 98 controls   0.0 (0.0%)
+    pull within  30 blocks of the buy:   0/  3 =   0.0% (Wilson 95% 0.0%-56.2%); expected from 98 controls   0.0 (0.0%)
+    pull within  62 blocks of the buy:   0/  3 =   0.0% (Wilson 95% 0.0%-56.2%); expected from 98 controls   0.0 (1.0%)
+    pull within 100 blocks of the buy:   0/  3 =   0.0% (Wilson 95% 0.0%-56.2%); expected from 98 controls   0.1 (4.1%)
+    pull within 200 blocks of the buy:   0/  3 =   0.0% (Wilson 95% 0.0%-56.2%); expected from 98 controls   0.4 (14.3%)
+    lag (pull - buy) p10/25/50/75/90: [7292, 7292, 31548, 49859, 49859]; never pulled 0; lags <= 200: []
+    controls: pull - T p10/25/50/75/90 [184, 374, 1078, 3056, 26299]; pulled by T+62 0/98, by T+100 3, by T+200 14
+      10-11 05:57:48 pool 0x8185f1eaac T +155 buy +158 (T+3) 0.00995 ETH oneoff 0xc2101da8 nonce 0 via 0x6e2a35a7:0c307f76:1156 | pull 7450 (lag 7292) | router ETH by buy+60 0.701
+      10-11 06:12:57 pool 0x23a750296f T +141 buy +144 (T+3) 0.00995 ETH oneoff 0xc2101da8 nonce 5 via 0x6e2a35a7:0c307f76:1156 | pull 31692 (lag 31548) | router ETH by buy+60 0.904
+      10-11 07:15:42 pool 0xe12fa945c9 T +155 buy +158 (T+3) 0.00995 ETH oneoff 0xc2101da8 nonce 8 via 0x6e2a35a7:0c307f76:1156 | pull 50017 (lag 49859) | router ETH by buy+60 0.362
+
+== our size (0.001-0.0105) outside, T..T+10: 3 pools with such a buy, 98 control pools
+    pull within  10 blocks of the buy:   0/  3 =   0.0% (Wilson 95% 0.0%-56.2%); expected from 98 controls   0.0 (0.0%)
+    pull within  30 blocks of the buy:   0/  3 =   0.0% (Wilson 95% 0.0%-56.2%); expected from 98 controls   0.0 (0.0%)
+    pull within  62 blocks of the buy:   0/  3 =   0.0% (Wilson 95% 0.0%-56.2%); expected from 98 controls   0.0 (1.0%)
+    pull within 100 blocks of the buy:   0/  3 =   0.0% (Wilson 95% 0.0%-56.2%); expected from 98 controls   0.1 (4.1%)
+    pull within 200 blocks of the buy:   0/  3 =   0.0% (Wilson 95% 0.0%-56.2%); expected from 98 controls   0.4 (14.3%)
+    lag (pull - buy) p10/25/50/75/90: [7292, 7292, 31548, 49859, 49859]; never pulled 0; lags <= 200: []
+    controls: pull - T p10/25/50/75/90 [184, 374, 1078, 3056, 26299]; pulled by T+62 0/98, by T+100 3, by T+200 14
+      10-11 05:57:48 pool 0x8185f1eaac T +155 buy +158 (T+3) 0.00995 ETH oneoff 0xc2101da8 nonce 0 via 0x6e2a35a7:0c307f76:1156 | pull 7450 (lag 7292) | router ETH by buy+60 0.701
+      10-11 06:12:57 pool 0x23a750296f T +141 buy +144 (T+3) 0.00995 ETH oneoff 0xc2101da8 nonce 5 via 0x6e2a35a7:0c307f76:1156 | pull 31692 (lag 31548) | router ETH by buy+60 0.904
+      10-11 07:15:42 pool 0xe12fa945c9 T +155 buy +158 (T+3) 0.00995 ETH oneoff 0xc2101da8 nonce 8 via 0x6e2a35a7:0c307f76:1156 | pull 50017 (lag 49859) | router ETH by buy+60 0.362
+
+######## MEASURE 2: the first outside buy after the trigger at any offset (before the pull)
+
+== non-dust outside, any offset: 108 pools with such a buy, 6 control pools
+    pull within  10 blocks of the buy:   0/108 =   0.0% (Wilson 95% 0.0%-3.4%); expected from 6 controls   1.1 (1.1%)
+    pull within  30 blocks of the buy:   0/108 =   0.0% (Wilson 95% 0.0%-3.4%); expected from 6 controls   3.9 (3.6%)
+    pull within  62 blocks of the buy:   0/108 =   0.0% (Wilson 95% 0.0%-3.4%); expected from 6 controls  10.9 (10.1%)
+    pull within 100 blocks of the buy:  21/108 =  19.4% (Wilson 95% 13.1%-27.9%); expected from 6 controls  13.0 (12.0%)
+    pull within 200 blocks of the buy:  41/108 =  38.0% (Wilson 95% 29.4%-47.4%); expected from 6 controls  19.4 (18.0%)
+    lag (pull - buy) p10/25/50/75/90: [80, 124, 392, 2412, 38807]; never pulled 3; lags <= 200: [65, 67, 67, 71, 73, 74, 75, 75, 75, 79, 80, 80, 81, 89, 92, 96, 96, 97, 98, 99, 99, 106, 115, 120, 122, 123, 124, 131, 136, 139, 150, 156, 158, 160, 168, 172, 174, 174, 176, 188, 189]
+    controls: pull - T p10/25/50/75/90 [63, 183, 1038, 5470, 12062]; pulled by T+62 0/6, by T+100 1, by T+200 2
+
+== our size outside, any offset: 86 pools with such a buy, 6 control pools
+    pull within  10 blocks of the buy:   0/ 86 =   0.0% (Wilson 95% 0.0%-4.3%); expected from 6 controls   0.5 (0.5%)
+    pull within  30 blocks of the buy:   0/ 86 =   0.0% (Wilson 95% 0.0%-4.3%); expected from 6 controls   2.9 (3.4%)
+    pull within  62 blocks of the buy:   0/ 86 =   0.0% (Wilson 95% 0.0%-4.3%); expected from 6 controls   7.9 (9.2%)
+    pull within 100 blocks of the buy:   9/ 86 =  10.5% (Wilson 95% 5.6%-18.7%); expected from 6 controls   9.8 (11.4%)
+    pull within 200 blocks of the buy:  25/ 86 =  29.1% (Wilson 95% 20.5%-39.4%); expected from 6 controls  14.6 (17.0%)
+    lag (pull - buy) p10/25/50/75/90: [99, 172, 461, 2922, 38875]; never pulled 3; lags <= 200: [67, 71, 75, 75, 75, 80, 89, 99, 99, 106, 115, 120, 122, 123, 124, 131, 136, 150, 160, 168, 172, 174, 176, 188, 189]
+    controls: pull - T p10/25/50/75/90 [63, 183, 1038, 5470, 12062]; pulled by T+62 0/6, by T+100 1, by T+200 2
+
+== one-off non-dust, any offset: 23 pools with such a buy, 6 control pools
+    pull within  10 blocks of the buy:   0/ 23 =   0.0% (Wilson 95% 0.0%-14.3%); expected from 6 controls   0.0 (0.0%)
+    pull within  30 blocks of the buy:   0/ 23 =   0.0% (Wilson 95% 0.0%-14.3%); expected from 6 controls   0.2 (0.7%)
+    pull within  62 blocks of the buy:   0/ 23 =   0.0% (Wilson 95% 0.0%-14.3%); expected from 6 controls   1.2 (5.1%)
+    pull within 100 blocks of the buy:   3/ 23 =  13.0% (Wilson 95% 4.5%-32.1%); expected from 6 controls   1.2 (5.1%)
+    pull within 200 blocks of the buy:   6/ 23 =  26.1% (Wilson 95% 12.5%-46.5%); expected from 6 controls   2.2 (9.7%)
+    lag (pull - buy) p10/25/50/75/90: [89, 120, 2412, 23748, 59574]; never pulled 1; lags <= 200: [67, 86, 89, 106, 115, 120]
+    controls: pull - T p10/25/50/75/90 [63, 183, 1038, 5470, 12062]; pulled by T+62 0/6, by T+100 1, by T+200 2
+
+== any-size outside, any offset: 166 pools with such a buy, 3 control pools
+    pull within  10 blocks of the buy:   0/166 =   0.0% (Wilson 95% 0.0%-2.3%); expected from 3 controls   2.0 (1.2%)
+    pull within  30 blocks of the buy:   2/166 =   1.2% (Wilson 95% 0.3%-4.3%); expected from 3 controls   9.2 (5.5%)
+    pull within  62 blocks of the buy:   3/166 =   1.8% (Wilson 95% 0.6%-5.2%); expected from 3 controls  50.3 (30.3%)
+    pull within 100 blocks of the buy:   6/166 =   3.6% (Wilson 95% 1.7%-7.7%); expected from 3 controls  56.3 (33.9%)
+    pull within 200 blocks of the buy:  21/166 =  12.7% (Wilson 95% 8.4%-18.6%); expected from 3 controls 122.3 (73.7%)
+    lag (pull - buy) p10/25/50/75/90: [176, 326, 1065, 6172, 43684]; never pulled 3; lags <= 200: [16, 28, 45, 74, 74, 83, 107, 108, 110, 112, 142, 158, 161, 163, 165, 169, 176, 181, 182, 183, 194]
+    controls: pull - T p10/25/50/75/90 [63, 63, 183, 241, 241]; pulled by T+62 0/3, by T+100 1, by T+200 2
+
+== every non-dust outside buy after T (per event, before the pull): lag to the first pull
+    within  10: 1/137 = 0.7%
+    within  30: 1/137 = 0.7%
+    within  62: 3/137 = 2.2%
+    within 100: 28/137 = 20.4%
+    within 200: 50/137 = 36.5%
+    by size: 0.001-0.0105 ETH n 107 pulled<=62 2 <=200 32; 0.0105-0.1 ETH n 30 pulled<=62 1 <=200 18; 0.1-100 ETH n 0 pulled<=62 0 <=200 0
+    (137 events listed in c06_cases.txt)
+
+######## MEASURE 4: 6-h slices (by launch time): pulled inside the hold (pull <= T+62) with / without a non-dust outside buy in (T, T+10]; and pull <= buy+62 after any non-dust outside buy after T
+  10-11 01:00:26-07:00:26: launches  24, triggered+complete  19; router ETH by T+60 p50 0.469; pulled <= T+62: with outsider in T..T+10 0/2, without 0/17; pools with a non-dust outside buy after T 12, pulled <= buy+62 0
+  10-11 07:00:26-13:00:26: launches  20, triggered+complete  16; router ETH by T+60 p50 0.731; pulled <= T+62: with outsider in T..T+10 0/1, without 0/15; pools with a non-dust outside buy after T 12, pulled <= buy+62 0
+  10-11 13:00:26-19:00:26: launches  36, triggered+complete  34; router ETH by T+60 p50 0.249; pulled <= T+62: with outsider in T..T+10 0/0, without 0/34; pools with a non-dust outside buy after T 14, pulled <= buy+62 0
+  10-11 19:00:26-01:00:26: launches  16, triggered+complete  15; router ETH by T+60 p50 0.360; pulled <= T+62: with outsider in T..T+10 0/0, without 1/15; pools with a non-dust outside buy after T 3, pulled <= buy+62 0
+  10-12 01:00:26-07:00:26: launches  14, triggered+complete  11; router ETH by T+60 p50 0.858; pulled <= T+62: with outsider in T..T+10 0/0, without 1/11; pools with a non-dust outside buy after T 5, pulled <= buy+62 0
+  10-12 07:00:26-13:00:26: launches  78, triggered+complete  74; router ETH by T+60 p50 0.618; pulled <= T+62: with outsider in T..T+10 0/0, without 0/74; pools with a non-dust outside buy after T 62, pulled <= buy+62 0

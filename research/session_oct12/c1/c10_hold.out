@@ -1,0 +1,28 @@
+our filled pools (gross from the trigger price; the box log: +4.0, +6.7, -0.0, +3.5, -100%):
+   10-11 20:58:49 0x5ec6831561 gross +4.1% router ETH in hold 0.200
+   10-11 21:01:47 0xd6180333d0 gross +6.7% router ETH in hold 0.332
+   10-11 21:02:38 0x6d80b8161c gross +0.0% router ETH in hold 0.000
+   10-12 01:15:58 0x0e4cc1d813 gross +3.5% router ETH in hold 0.174
+   10-12 01:18:11 0xb47b706f2b gross -100.0% router ETH in hold 1.008
+ours         n   5 mean -17.1% median +3.5% up 3 pulled<=T+62 1; router ETH in (T+2, T+62] mean 0.343 median 0.200 zero 1
+others 36 h  n 164 mean +13.6% median +7.0% up 118 pulled<=T+62 1; router ETH in (T+2, T+62] mean 0.462 median 0.283 zero 41
+others 19-03 n  16 mean +6.3% median +4.2% up 9 pulled<=T+62 1; router ETH in (T+2, T+62] mean 0.289 median 0.013 zero 6
+slice 10-11 01:00:26-07:00:26 n  19 mean +23.2% median +3.4% up 12 pulled<=T+62 0; router ETH in (T+2, T+62] mean 0.770 median 0.079 zero 7
+slice 10-11 07:00:26-13:00:26 n  16 mean +18.9% median +13.4% up 10 pulled<=T+62 0; router ETH in (T+2, T+62] mean 0.537 median 0.477 zero 6
+slice 10-11 13:00:26-19:00:26 n  34 mean +13.5% median +2.1% up 20 pulled<=T+62 0; router ETH in (T+2, T+62] mean 0.342 median 0.108 zero 11
+slice 10-11 19:00:26-01:00:26 n  12 mean +4.6% median +4.2% up 6 pulled<=T+62 1; router ETH in (T+2, T+62] mean 0.216 median 0.013 zero 4
+slice 10-12 01:00:26-07:00:26 n   9 mean +12.6% median +12.6% up 7 pulled<=T+62 0; router ETH in (T+2, T+62] mean 0.506 median 0.420 zero 3
+slice 10-12 07:00:26-13:00:26 n  74 mean +11.6% median +8.7% up 63 pulled<=T+62 0; router ETH in (T+2, T+62] mean 0.458 median 0.401 zero 10
+last 3 h       n  55 mean +13.8% median +10.6% up 53 pulled<=T+62 0; router ETH in (T+2, T+62] mean 0.537 median 0.494 zero 3
+last 6 h: pull - T p5/10/25/50/75/90 [187, 260, 303, 682, 1385, 5691] (n 71)
+
+confidence bounds (Wilson 95% two-sided; exact one-sided 95% upper):
+   our relay, pulled inside the hold                              1/5 = 20.0%  Wilson 3.6%-62.4%  exact upper 65.7%
+   our relay, pulled within 120 of our buy                        4/5 = 80.0%  Wilson 37.6%-96.4%  exact upper 99.0%
+   strangers >= 0.001 in T+1..T+10, inside 62                     0/3 = 0.0%  Wilson 0.0%-56.2%  exact upper 63.2%
+   strangers >= 0.001 in T..T+100, held, inside 62                0/15 = 0.0%  Wilson 0.0%-20.4%  exact upper 18.1%
+   strangers >= 0.001 in T..T+100, all, inside 62                 0/18 = 0.0%  Wilson 0.0%-17.6%  exact upper 15.3%
+   strangers 0.001-0.0105 any offset (first per pool), inside 62  0/86 = 0.0%  Wilson 0.0%-4.3%  exact upper 3.4%
+   others pulled by T+62 (36 h)                                   1/161 = 0.6%  Wilson 0.1%-3.4%  exact upper 2.9%
+
+break-even pull rate at $5: winner +11% -> 9.9%; winner +3.5% (our 4 non-pulled fills) -> 3.4%; winner +7% -> 6.5%
