@@ -149,6 +149,7 @@ def _v3_setting(name, default, lo, hi, integer=False):
 # "dry_run": false; it trades live only once checks() found code at the address and its owner() WALLET (V3_LIVE), and only while DRY_RUN and
 # FRONT_DRY_RUN are 0. Empty: exactly as before (a V3 crowd family's dry_run false refused, a launch-rule family's forced dry).
 RELAY_V3_SET = env("RELAY_V3", "") != ""; RELAY_V3, RELAY_V3_ERROR = _relay_v3(env("RELAY_V3", ""))
+RELAY_V3_CODEHASH_SET = env("RELAY_V3_CODEHASH", "").strip() != ""                        # set at all, decided before the 0x is cut (a bare "0x" is a malformed value)
 RELAY_V3_CODEHASH = (lambda h: h[2:] if h.startswith("0x") else h)(env("RELAY_V3_CODEHASH", "").strip().lower())   # set (relay_v3_deploy.py --write-env): the relay's
                                                                                             # code must have this keccak (relay_v3_check); the value itself is never logged
 V3_STAKE_CAP_ETH, V3_STAKE_CAP_ERROR = _v3_setting("V3_STAKE_CAP_ETH", 0.004, 0.0005, 0.012); V3_STAKE_CAP_WEI = int(round(V3_STAKE_CAP_ETH * 1e9)) * 10 ** 9   # a live V3 stake at most this (~$10)
@@ -2883,7 +2884,7 @@ def relay_v3_check(info):
     an alarm too: it buys in its launch block, before its sell can be checked, so it trades dry (v3_route)"""
     global V3_LIVE
     V3_LIVE = False
-    info.update({"relay_v3": h0x(RELAY_V3) if RELAY_V3 else None, "relay_v3_live": False, "relay_v3_codehash_set": bool(RELAY_V3_CODEHASH), "v3_stake_cap_eth": V3_STAKE_CAP_WEI / 1e18, "v3_gas": V3_GAS, "v3_sell_check": V3_SELL_CHECK,
+    info.update({"relay_v3": h0x(RELAY_V3) if RELAY_V3 else None, "relay_v3_live": False, "relay_v3_codehash_set": RELAY_V3_CODEHASH_SET, "v3_stake_cap_eth": V3_STAKE_CAP_WEI / 1e18, "v3_gas": V3_GAS, "v3_sell_check": V3_SELL_CHECK,
                  "v3_daily_stop_usd": V3_DAILY_STOP_USD, "v3_today": state["v3_today"], "v3_pnl_today_usd": round(state["v3_pnl_today_usd"], 3)})
     if not RELAY_V3_SET:
         return
@@ -2892,7 +2893,7 @@ def relay_v3_check(info):
         why = "it is RELAY, the v4 relay"
     if why is None and not WALLET:
         why = "WALLET is not set: its owner cannot be checked"
-    if why is None and RELAY_V3_CODEHASH and not re.fullmatch("[0-9a-f]{64}", RELAY_V3_CODEHASH):
+    if why is None and RELAY_V3_CODEHASH_SET and not re.fullmatch("[0-9a-f]{64}", RELAY_V3_CODEHASH):
         why = "RELAY_V3_CODEHASH is not 64 hex digits"
     if why is None:
         try:

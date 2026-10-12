@@ -2125,10 +2125,10 @@ The v4 families' dry rule is the same expression as before. A dry V3 trade is as
       at a real import and at a start;
     - the flow line;
     - `Overpay`;
-    - `RELAY_V3_CODEHASH` matching in three forms, wrong, and not 64 hex digits (never echoed);
-    - `v3_money`'s forms and `RELAY`'s own address.
+    - `RELAY_V3_CODEHASH` matching in three forms, wrong, and not 64 hex digits, a bare `0x` included (never echoed);
+    - `v3_money`'s forms and `RELAY`'s and `WALLET`'s own addresses.
 - Mutations of the engine, each run against the whole file, each made it fail (22 of 22 on the second commit, 27 of 27 on the
-  third, each at its own test):
+  third, each at its own test; two more after its review: a bare `0x` codehash treated as unset, `v3_money` counting `WALLET`):
   - the token order: WETH's side always amount0, inverted, ignored;
   - the Burn rule: an amount of 0 counted, the owner ignored, the range ignored, half the liquidity turned into any, before our sell by
     block only, p356's Burns read from our buy, p356's rule applied to every V3 family;

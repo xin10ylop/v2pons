@@ -2295,7 +2295,7 @@ for v, want, alarmed in (("25", 25.0, False), ("100", 100.0, False), ("0.5", 10.
     assert info["v3_daily_stop_usd"] == want and bool([a for a in al if a.startswith("V3_DAILY_STOP_USD is not a number in 1..100")]) == alarmed, (v, info, al)
 err, rv, rerr, live, cap, al, info, sf, lg = v3_start({"RELAY_V3": "0x" + RV3, "V3_SELL_CHECK": "0"}, code=CODE3); assert live is True and not al and info["v3_sell_check"] is False, al
 CH3 = keccak(bytes.fromhex(CODE3[2:])).hex(); assert info["relay_v3_codehash"] == "0x" + CH3 and info["relay_v3_codehash_set"] is False      # round 3 (8): RELAY_V3_CODEHASH
-for ch, ok_ in (("0X" + CH3.upper(), True), (CH3, True), (" 0x" + CH3 + " ", True), ("0x" + "77" * 32, False), ("0x1234", False)):
+for ch, ok_ in (("0X" + CH3.upper(), True), (CH3, True), (" 0x" + CH3 + " ", True), ("0x" + "77" * 32, False), ("0x1234", False), ("0x", False), (" 0X ", False)):
     err, rv, rerr, live, cap, al, info, sf, lg = v3_start({"RELAY_V3": "0x" + RV3, "V3_SELL_CHECK": "0", "RELAY_V3_CODEHASH": ch}, code=CODE3)
     assert live is ok_ and info["relay_v3_codehash_set"] is True and bool(al) is (not ok_) and "77777777" not in lg, (ch, al)
     assert ok_ or al == ["RELAY_V3 (0x" + RV3 + "): " + ("its code's keccak is 0x" + CH3 + ", not RELAY_V3_CODEHASH" if len(ch) > 10 else "RELAY_V3_CODEHASH is not 64 hex digits")
@@ -2356,7 +2356,7 @@ assert R.v3_money({}, "x") == ("", None) and R.v3_money({"RELAY_V3": "0x" + "c3"
     and R.v3_money({"RELAY_V3": "0x12 # c"}, "x") == ("", None)
 for v in (RV3, '"0x' + RV3 + '"', "' 0X" + RV3.upper() + " '", "  0x" + RV3 + "  "):                                       # round 3 (9): read as the engine reads it
     assert R.v3_money({"RELAY_V3": v}, "x") == (", V3 relay 0.012300 ETH", 0.0123), v
-assert R.v3_money({"RELAY_V3": "0x" + RV3, "RELAY": "0X" + RV3.upper()}, "x") == ("", None); R.balance = bal0                      # the v4 relay's own address: not shown
+assert R.v3_money({"RELAY_V3": "0x" + RV3, "RELAY": "0X" + RV3.upper()}, "x") == ("", None) and R.v3_money({"RELAY_V3": "0x" + RV3, "WALLET": "0x" + RV3}, "x") == ("", None); R.balance = bal0                      # the v4 relay's own address: not shown
 st["front_families"] = [{k: v for k, v in f.items() if k not in ("live", "live_stake_eth")} for f in st["front_families"]]                          # an older start line
 assert {f["name"]: f["mode"] for f in R.families(st, {}, {})[0]} == {"v2.433": "LIVE", "v3crowd": "dry", "p356": "dry"}
 E.rpc = fake_rpc; E.Sender = real_sender; E.SENDER = FakeSender(); E.SENDER_ALT = None; E.state["relay_wei"] = None; E.state["front_halted"] = None; NONCE_ON_CHAIN[0] = "0x5"
