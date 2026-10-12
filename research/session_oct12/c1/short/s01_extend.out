@@ -1,0 +1,5 @@
+old caches: launches to 86692189, events to 86692583; head now 86735446 10-12 14:14:08
+Initialize logs 281, fee 100 / ts 1 / ETH 21, new C-1 launches 20; sqrtP == SQRTP 18; hooks {'0x0000000000000000000000000000000000000000'}
+new events 6948 (swaps 6908, ML 40); relay swaps after 86692583: 0
+transactions needed 15045, cached 14204, to fetch 841
+  400/841 rpc {'posts': 30, 'items': 448, 'r429': 5}
