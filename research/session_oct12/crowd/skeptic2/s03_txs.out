@@ -1,3 +1,6 @@
 wanted 10815, cached 0, to fetch 10815
 0 {'posts': 10, 'items': 200, 'r429': 0}
 2000 {'posts': 110, 'items': 2200, 'r429': 6}
+4000 {'posts': 210, 'items': 4200, 'r429': 19}
+6000 {'posts': 310, 'items': 6200, 'r429': 27}
+8000 {'posts': 410, 'items': 8200, 'r429': 37}
