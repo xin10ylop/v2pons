@@ -1,0 +1,58 @@
+s01 head 86480222 at 2026-10-12 06:57:35 UTC; s02 head 86480897; 13ead562 pool creations in 50 h: 80 (WETH side 74); NonfungiblePositionManager code hash 0a493d1a
+not the line's shape (4): 85580682 fee 100 wallet 0xd974f9e5 mint [(684, '3.162e+22', -887272, 207243)]; 85584499 fee 100 wallet 0xd974f9e5 mint [(73, '3.162e+22', -887272, 207243)]; 85590630 fee 10000 wallet 0xd974f9e5 mint [(81, '3.169e+22', -887200, 207200)]; 86321042 fee 10000 wallet 0x70830a56 mint [(21, '2.121e+22', -887200, 887200)]
+line launches (shape ok): 70; L tiers [('3.682e+22', 47), ('3.681e+22', 16), ('1.227e+22', 6), ('3.682e+21', 1)]
+
+=== last 6 h: 7 launches (28.0/day), wallets 6
+  own first buy size: [(0.05, 6), (0.001, 1)]
+  own first buy route: [(('0xcaf681a6', '04e45aaf', 228, 0), 7)]
+  mint offset: n 7 min 6 p10 6 med 28 p90 30 max 32
+  own first buy 0.05: offset from launch n 6 min 25 p10 25 med 140 p90 142 max 184; from the mint n 6 min 18 p10 18 med 108 p90 114 max 155
+  own first buy other size: offset from launch n 1 min 23 p10 23 med 23 p90 23 max 23; from the mint n 1 min 16 p10 16 med 16 p90 16 max 16
+  own buys per pool to +5000: [(1, 6), (5, 1)]; own sells to +5000: 0
+  outsider buy at or before the own first buy: 0; no own buy at all: 0
+  pulled by +5000: 2/7; pull offset n 2 min 279 p10 279 med 1681 p90 279 max 1681; by the launch wallet 2; pull - own first buy n 2 min 254 p10 254 med 1543 p90 254 max 1543
+
+=== last 12 h: 7 launches (14.0/day), wallets 6
+  own first buy size: [(0.05, 6), (0.001, 1)]
+  own first buy route: [(('0xcaf681a6', '04e45aaf', 228, 0), 7)]
+  mint offset: n 7 min 6 p10 6 med 28 p90 30 max 32
+  own first buy 0.05: offset from launch n 6 min 25 p10 25 med 140 p90 142 max 184; from the mint n 6 min 18 p10 18 med 108 p90 114 max 155
+  own first buy other size: offset from launch n 1 min 23 p10 23 med 23 p90 23 max 23; from the mint n 1 min 16 p10 16 med 16 p90 16 max 16
+  own buys per pool to +5000: [(1, 6), (5, 1)]; own sells to +5000: 0
+  outsider buy at or before the own first buy: 0; no own buy at all: 0
+  pulled by +5000: 2/7; pull offset n 2 min 279 p10 279 med 1681 p90 279 max 1681; by the launch wallet 2; pull - own first buy n 2 min 254 p10 254 med 1543 p90 254 max 1543
+
+=== last 24 h: 8 launches (8.0/day), wallets 7
+  own first buy size: [(0.05, 7), (0.001, 1)]
+  own first buy route: [(('0xcaf681a6', '04e45aaf', 228, 0), 8)]
+  mint offset: n 8 min 6 p10 6 med 28 p90 30 max 32
+  own first buy 0.05: offset from launch n 7 min 25 p10 25 med 138 p90 142 max 184; from the mint n 7 min 18 p10 18 med 108 p90 114 max 155
+  own first buy other size: offset from launch n 1 min 23 p10 23 med 23 p90 23 max 23; from the mint n 1 min 16 p10 16 med 16 p90 16 max 16
+  own buys per pool to +5000: [(1, 7), (5, 1)]; own sells to +5000: 0
+  outsider buy at or before the own first buy: 0; no own buy at all: 0
+  pulled by +5000: 2/8; pull offset n 2 min 279 p10 279 med 1681 p90 279 max 1681; by the launch wallet 2; pull - own first buy n 2 min 254 p10 254 med 1543 p90 254 max 1543
+
+=== last 48 h: 70 launches (35.0/day), wallets 18
+  own first buy size: [(0.001, 47), (0.05, 19), (0.01, 3), (None, 1)]
+  own first buy route: [(('0xcaf681a6', '04e45aaf', 228, 0), 69), (None, 1)]
+  mint offset: n 70 min 4 p10 5 med 6 p90 7 max 32
+  own first buy 0.05: offset from launch n 19 min 18 p10 23 med 29 p90 140 max 184; from the mint n 19 min 13 p10 17 med 22 p90 108 max 155
+  own first buy other size: offset from launch n 50 min 16 p10 16 med 17 p90 21 max 28; from the mint n 50 min 10 p10 11 med 11 p90 15 max 21
+  own buys per pool to +5000: [(1, 54), (2, 6), (3, 5), (5, 4), (0, 1)]; own sells to +5000: 0
+  outsider buy at or before the own first buy: 0; no own buy at all: 1
+  pulled by +5000: 58/70; pull offset n 58 min 44 p10 57 med 82 p90 500 max 2574; by the launch wallet 58; pull - own first buy n 58 min 28 p10 40 med 63 p90 468 max 2544
+
+=== every line launch of the last 24 h (and the 6 h before it), newest last
+  85557038 10-11 04:28 (26.5 h) 0x69622185 n2 mint +7 L 3.682e+22 own1 +20 0.0010 ETH minOut 0 (own -mint 13) later own [('+172', 0.005)] others<=400 [] pull +1260
+  85558466 10-11 04:30 (26.4 h) 0x69622185 n9 mint +5 L 3.682e+22 own1 +18 0.0500 ETH minOut 0 (own -mint 13) later own [] others<=400 [] pull none to +5000
+  85632093 10-11 06:39 (24.3 h) 0x1cd4303e n2 mint +7 L 3.681e+22 own1 +29 0.0500 ETH minOut 0 (own -mint 22) later own [] others<=400 [('+234', 'B', 0.1144, '0x597dcb', '34fcd5be'), ('+295', 'B', 0.0471, '0x550836', '34fcd5be'), ('+393', 'B', 0.0091, '0x1268c4', '34fcd5be')] pull +581
+  85633167 10-11 06:41 (24.3 h) 0x1cd4303e n9 mint +7 L 3.681e+22 own1 +32 0.0500 ETH minOut 0 (own -mint 25) later own [] others<=400 [('+121', 'B', 0.0405, '0x597dcb', '34fcd5be'), ('+187', 'B', 0.1095, '0x550836', '34fcd5be'), ('+285', 'B', 0.0906, '0x1268c4', '34fcd5be'), ('+373', 'S', 0.0081, '0x550836', 'ac9650d8')] pull +500
+  85635604 10-11 06:45 (24.2 h) 0xd45b13a8 n2 mint +7 L 3.681e+22 own1 +30 0.0500 ETH minOut 0 (own -mint 23) later own [] others<=400 [('+176', 'B', 0.1117, '0x597dcb', '34fcd5be'), ('+233', 'B', 0.0811, '0x550836', '34fcd5be'), ('+278', 'B', 0.0589, '0x1268c4', '34fcd5be'), ('+378', 'S', 0.0272, '0x597dcb', 'ac9650d8')] pull +2574
+  85926517 10-11 15:09 (15.8 h) 0x9ad910e3 n2 mint +6 L 1.227e+22 own1 +27 0.0500 ETH minOut 0 (own -mint 21) later own [] others<=400 [('+57', 'B', 0.0007, '0x1fb3e7', '4d819a2a'), ('+146', 'B', 0.0439, '0x5cd4dc', '34fcd5be'), ('+242', 'B', 0.0338, '0x50d69f', '34fcd5be'), ('+373', 'B', 0.0491, '0x313d45', '34fcd5be')] pull none to +5000
+  86310601 10-12 02:06 (4.9 h) 0x9569b3a5 n2 mint +6 L 1.227e+22 own1 +25 0.0500 ETH minOut 0 (own -mint 19) later own [] others<=400 [('+164', 'B', 0.0005, '0x5cfe42', '4d819a2a'), ('+291', 'B', 0.0313, '0x27b8c8', '34fcd5be'), ('+352', 'B', 0.0747, '0xb72577', '34fcd5be')] pull none to +5000
+  86378827 10-12 04:03 (2.9 h) 0xf41e1a64 n2 mint +7 L 3.681e+22 own1 +25 0.0500 ETH minOut 0 (own -mint 18) later own [('+151', 0.005), ('+187', 0.005), ('+219', 0.005), ('+255', 0.005)] others<=400 [] pull +279
+  86379461 10-12 04:05 (2.9 h) 0xf41e1a64 n13 mint +7 L 3.681e+22 own1 +23 0.0010 ETH minOut 0 (own -mint 16) later own [] others<=400 [] pull none to +5000
+  86425158 10-12 05:23 (1.6 h) 0xf9678e2b n2 mint +29 L 1.227e+22 own1 +184 0.0500 ETH minOut 0 (own -mint 155) later own [] others<=400 [] pull none to +5000
+  86440192 10-12 05:49 (1.1 h) 0xdd0d49ae n2 mint +30 L 3.681e+22 own1 +138 0.0500 ETH minOut 0 (own -mint 108) later own [] others<=400 [] pull +1681
+  86444151 10-12 05:55 (1.0 h) 0x78d7e5cd n2 mint +28 L 3.681e+22 own1 +142 0.0500 ETH minOut 0 (own -mint 114) later own [] others<=400 [('+273', 'B', 0.0673, '0x5cd4dc', '34fcd5be')] pull none to +5000
+  86453459 10-12 06:11 (0.8 h) 0x46e39f0d n2 mint +32 L 3.681e+22 own1 +140 0.0500 ETH minOut 0 (own -mint 108) later own [] others<=400 [('+242', 'B', 0.069, '0x5cd4dc', '34fcd5be'), ('+389', 'B', 0.0228, '0x50d69f', '34fcd5be')] pull none to +5000

@@ -1,0 +1,28 @@
+(1) fresh 50 h, 70 line launches: outsider buy before the launcher's own first buy in 0
+
+(2) census Oct 4-11: lc:0a493d1a|13ead562 fee 100 WETH launches: 477
+   with an outsider buy before the launcher's first buy (within the first 12 swaps): 9; without: 468
+   launcher bought afterwards: 6/9  vs baseline 466/468
+   own first buy size, cases [(0.05, 6)]  baseline [(0.05, 398), (0.001, 46), (0.1, 11), (0.01, 8), (0.0001, 2)]
+   own first buy offset, cases n 6 p10/50/90 22/26/27  baseline n 466 p10/50/90 21/27/35
+   pulled (any time in the census window): cases 9/9  baseline 416/468
+   pull offset, cases n 9 p10/50/90 41/120/261  baseline n 416 p10/50/90 82/145/288
+   pull - first outsider buy, cases n 9 p10/50/90 33/95/253
+   outsider senders/routes: [(('0x81586f00', '04e45aaf'), 5), (('0x8abb9ba6', '04e45aaf'), 4)]
+   outsider first buy offset vs mint: n 9 p10/50/90 1/1/15; size ETH n 9 p10/50/90 0.00019/0.00201/0.00201
+   every case: launch block, day, wallet, mint, outsider buys before the own buy (off, ETH, sender, sel), own first buy (off, ETH), pull off, n launches of that wallet
+     83800036 10-09 02:17 0x03f42c2a (x4) mint +6 outsiders [(13, 0.00019, '0x8abb9ba6', '04e45aaf')] own (22, 0.05) pull 161
+     83862751 10-09 04:04 0x1dcb6ee3 (x10) mint +6 outsiders [(25, 0.00019, '0x8abb9ba6', '04e45aaf')] own (26, 0.05) pull 69
+     83863276 10-09 04:05 0x1dcb6ee3 (x10) mint +6 outsiders [(21, 0.00019, '0x8abb9ba6', '04e45aaf')] own (23, 0.05) pull 72
+     83995142 10-09 07:53 0xab927818 (x10) mint +6 outsiders [(20, 0.0002, '0x8abb9ba6', '04e45aaf')] own (22, 0.05) pull 165
+     84096270 10-09 10:45 0x27041c7a (x9) mint +7 outsiders [(8, 0.00201, '0x81586f00', '04e45aaf'), (15, 0.0002, '0x8abb9ba6', '04e45aaf')] own (28, 0.05) pull 261
+     84096663 10-09 10:46 0x27041c7a (x9) mint +6 outsiders [(7, 0.00201, '0x81586f00', '04e45aaf'), (16, 0.0002, '0x8abb9ba6', '04e45aaf')] own (27, 0.05) pull 304
+     84098016 10-09 10:48 0x27041c7a (x9) mint +24 outsiders [(25, 0.00201, '0x81586f00', '04e45aaf'), (37, 0.0002, '0x8abb9ba6', '04e45aaf')] own None pull 120
+     84098214 10-09 10:49 0x27041c7a (x9) mint +6 outsiders [(7, 0.00201, '0x81586f00', '04e45aaf'), (16, 0.0002, '0x8abb9ba6', '04e45aaf')] own None pull 97
+     84098391 10-09 10:49 0x27041c7a (x9) mint +7 outsiders [(8, 0.00201, '0x81586f00', '04e45aaf'), (21, 0.0002, '0x8abb9ba6', '04e45aaf')] own None pull 41
+
+   paired by wallet (a wallet with both kinds of launch): own buy / pull offset, with vs without an early outsider
+     0x03f42c2a: with [(22, 0.05, 161)]  without [(23, 0.05, 135), (25, 0.05, 262), (22, 0.05, 121)]
+     0x1dcb6ee3: with [(26, 0.05, 69), (23, 0.05, 72)]  without [(24, 0.05, 122), (25, 0.05, 227), (24, 0.05, 77), (29, 0.05, 80), (24, 0.05, 68), (23, 0.05, 64), (26, 0.05, 93), (23, 0.05, 127)]
+     0x27041c7a: with [(28, 0.05, 261), (27, 0.05, 304), (None, None, 120), (None, None, 97), (None, None, 41)]  without [(21, 0.05, 157), (23, 0.05, 135), (None, None, 22), (105, 0.01, 259)]
+     0xab927818: with [(22, 0.05, 165)]  without [(25, 0.05, 123), (22, 0.05, 288), (22, 0.05, 96), (24, 0.05, 162), (20, 0.05, 131), (25, 0.05, 157), (21, 0.05, 136), (25, 0.05, 113), (23, 0.05, 175)]
