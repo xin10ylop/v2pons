@@ -1,0 +1,70 @@
+launches by launcher code 89885b75 in 10-10 11:24 .. 10-12 11:24 UTC: 102
+
+BY CALLDATA LENGTH (selector d27d1e00 in all): n | value ETH | array length | first | last
+    356 B n  57 | value [0.0] | arrays [(0, 0)] | 10-10 17:02 .. 10-11 19:56
+    420 B n   2 | value [1.0] | arrays [(1, 1)] | 10-11 16:25 .. 10-11 16:28
+    548 B n  10 | value [5.0, 12.0, 14.0, 15.0] | arrays [(3, 3)] | 10-10 12:19 .. 10-11 21:54
+    612 B n   7 | value [6.0, 9.0, 9.2, 10.0, 18.0] | arrays [(4, 4)] | 10-11 13:42 .. 10-11 17:36
+    676 B n  11 | value [3.0, 5.0, 5.1, 6.0, 8.0, 15.3] | arrays [(5, 5)] | 10-11 16:33 .. 10-12 04:51
+    996 B n   9 | value [7.0, 12.7] | arrays [(10, 10)] | 10-10 13:58 .. 10-12 10:50
+   1124 B n   1 | value [15.3] | arrays [(12, 12)] | 10-11 20:08 .. 10-11 20:08
+   1636 B n   1 | value [18.01] | arrays [(20, 20)] | 10-11 20:35 .. 10-11 20:35
+   1828 B n   4 | value [20.001, 20.01] | arrays [(23, 23)] | 10-12 06:01 .. 10-12 10:10
+  check: 356 + 64*N == len for all?  True
+  check: value == eth2 + sum(amounts) for all?  True | exceptions: []
+  selectors: Counter({'d27d1e00': 102}) | status: Counter({'0x1': 102}) | prio: Counter({1: 102})
+
+BY HOUR (UTC): 356-B value 0 | other lengths (value > 0)
+  10-10 12h    0 |   1
+  10-10 13h    0 |   1
+  10-10 17h    7 |   0
+  10-10 23h    1 |   0
+  10-11 00h    1 |   0
+  10-11 02h    0 |   2
+  10-11 03h    1 |   0
+  10-11 04h   11 |   0
+  10-11 05h    4 |   0
+  10-11 13h    0 |   1
+  10-11 14h    9 |   1
+  10-11 16h    3 |   8
+  10-11 17h    0 |   8
+  10-11 18h    0 |   2
+  10-11 19h   20 |   0
+  10-11 20h    0 |   3
+  10-11 21h    0 |   1
+  10-12 01h    0 |   2
+  10-12 02h    0 |   1
+  10-12 03h    0 |   1
+  10-12 04h    0 |   1
+  10-12 06h    0 |   1
+  10-12 07h    0 |   2
+  10-12 08h    0 |   4
+  10-12 09h    0 |   2
+  10-12 10h    0 |   3
+
+RECEIPT SHAPE by kind (v0 = 356 B value 0; val = longer, value > 0)
+ [v0] n 57
+   pools per tx: Counter({1: 57}) | WETH token0: 57 | fee: Counter({100: 57})
+   Initialize tick: [(207243, 57)]
+   mints per tx: Counter({1: 57}) | (lo, hi): [((-887272, 207243), 57)]
+   mint L == 31,622,807,953,636,212,567,716: 57 of 57 | other L: []
+   mint owner/sender = PositionManager: 57 | amount0 (WETH) 0: 57 | token amount1: [(999999999999999999999981671, 57)]
+   swaps in the launch tx per tx: Counter({0: 57}) | array length: Counter({0: 57})
+   eth2 (word 2) values: [(0.0, 57)]
+   word1 == word3 == word7: 57 | word6, word8 zero: 57
+   launch wallets: 14 | nonce p50: 5 | gasUsed p50: 5139663
+ [val] n 45
+   pools per tx: Counter({1: 45}) | WETH token0: 45 | fee: Counter({100: 45})
+   Initialize tick: [(207243, 45)]
+   mints per tx: Counter({1: 45}) | (lo, hi): [((-887272, 207243), 45)]
+   mint L == 31,622,807,953,636,212,567,716: 45 of 45 | other L: []
+   mint owner/sender = PositionManager: 45 | amount0 (WETH) 0: 45 | token amount1: [(999999999999999999999981671, 45)]
+   swaps in the launch tx per tx: Counter({4: 13, 5: 8, 11: 8, 6: 5, 24: 4, 1: 2, 3: 2, 10: 1, 13: 1, 21: 1}) | array length: Counter({5: 11, 3: 10, 10: 9, 4: 7, 23: 4, 1: 2, 12: 1, 20: 1})
+   swaps == array length: 16 of 45 | every swap a buy (WETH in, amount0 > 0): True | swap WETH in == array amounts (in order): 16 of 45
+   swap sender: [('caf681a6', 358)] | swap recipient == the array's address (in order): 16 of 45
+   launch-tx buy ETH per launch (sum of amounts) p10/p50/p90: [5.0, 11.0, 18.0]
+   tick after the launch-tx buys p10/p50/p90: [148342, 155943, 171407]
+   from (launch wallet) in the array: 45 of 45 | first array address == from: 45
+   eth2 (word 2) values: [(0.0, 16), (1.0, 9), (0.7, 8), (0.3, 4), (0.01, 3), (0.1, 2), (0.001, 2), (0.2, 1)]
+   word1 == word3 == word7: 45 | word6, word8 zero: 45
+   launch wallets: 27 | nonce p50: 2 | gasUsed p50: 7042752

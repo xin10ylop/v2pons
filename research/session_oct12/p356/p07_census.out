@@ -1,0 +1,20 @@
+census lc:89885b75|d27d1e00 launches 248; with events 248
+by (calldata length, value > 0): [((356, False), 111), ((356, True), 9), ((420, True), 1), ((484, True), 2), ((548, True), 14), ((612, True), 20), ((676, True), 28), ((740, True), 8), ((868, True), 9), ((932, True), 1), ((996, True), 20), ((1124, True), 4), ((1188, True), 1), ((1636, True), 9), ((1764, True), 3), ((1828, True), 8)]
+
+== v0 356-B value 0: n 111; value ETH p10/50/90 0.00/0.00/0.00
+  launch-block mints (count, (lo, hi, L)): [((1, ((-887272, 207243, 31622807953636212567716),)), 111)]
+  swaps in the launch block: pools with any 0; median count 0
+  rule +60/+260 $15: n 111 mean +114.97% median +0.060% win 53.2% pulled 1.8% $271.8/day (7 d) | days 6-7 n 83 +127.24% $787.1/day
+  rule +60/+260 $5: n 111 mean +116.75% median -0.205% win 37.8% pulled 1.8% $92.6/day (7 d) | days 6-7 n 83 +129.35% $268.5/day
+
+== 356-B with value: n 9; value ETH p10/50/90 0.10/0.10/0.50
+  launch-block mints (count, (lo, hi, L)): [((1, ((-887272, 207243, 31622807953636212567716),)), 9)]
+  swaps in the launch block: pools with any 9; median count 1
+  rule +60/+260 $15: n 9 mean +227.80% median +77.275% win 77.8% pulled 0.0% $43.7/day (7 d) | days 6-7 n 0 -
+  rule +60/+260 $5: n 9 mean +230.27% median +77.525% win 77.8% pulled 0.0% $14.8/day (7 d) | days 6-7 n 0 -
+
+== value launches (len != 356): n 128; value ETH p10/50/90 5.10/12.00/19.00
+  launch-block mints (count, (lo, hi, L)): [((1, ((-887272, 207243, 31622807953636212567716),)), 128)]
+  swaps in the launch block: pools with any 128; median count 6.0
+  rule +60/+260 $15: n 127 mean +0.90% median -0.151% win 19.7% pulled 0.0% $2.4/day (7 d) | days 6-7 n 31 -2.05% $-4.7/day
+  rule +60/+260 $5: n 127 mean +0.64% median -0.417% win 17.3% pulled 0.0% $0.6/day (7 d) | days 6-7 n 31 -2.31% $-1.8/day

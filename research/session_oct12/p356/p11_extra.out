@@ -1,0 +1,41 @@
+LAUNCHES BY 6-HOUR SLICE (UTC) AND CALLDATA LENGTH (selector d27d1e00 in all 102; 356 B = value 0, every other length = value > 0)
+  slice start     356   420   548   612   676   996  1124  1636  1828   all
+  10-10 11:24       7     0     1     0     0     1     0     0     0     9
+  10-10 17:24       0     0     0     0     0     0     0     0     0     0
+  10-10 23:24      18     0     2     0     0     0     0     0     0    20
+  10-11 05:24       0     0     0     0     0     0     0     0     0     0
+  10-11 11:24      12     2     3     6     4     0     0     0     0    27
+  10-11 17:24      20     0     4     1     2     0     1     1     0    29
+  10-11 23:24       0     0     0     0     5     0     0     0     0     5
+  10-12 05:24       0     0     0     0     0     8     0     0     4    12
+last 356-B launch: 10-11 19:56:38 UTC block 86094707; data end 10-12 11:24 UTC block 86635957
+since then: 21 launches by the code, all value launches, lengths [(548, 2), (676, 5), (996, 8), (1124, 1), (1636, 1), (1828, 4)], value ETH [3.0, 12.7, 14.0, 15.0, 15.3, 18.01, 20.001, 20.01]; 15.5 h -> 32.6/day; value launches over the 48 h: 45 (22.5/day)
+launch wallets of the value launches since the stop: 19 distinct; nonce [(1, 17), (4, 1), (10, 1), (110, 1), (121, 1)]
+
+OUTSIDE BUY >= 0.0005 ETH AT +1..+59 vs PUMPED (a fleet buy at/after +60), 48 h
+  356-B value 0   all              : with 24, pumped  7 | without 33, pumped 12 | Fisher p 0.777
+  356-B value 0   after the census : with 17, pumped  4 | without 15, pumped  4 | Fisher p 1.000
+  value launches  all              : with  8, pumped  8 | without 37, pumped 34 | Fisher p 1.000
+  value launches  after the census : with  8, pumped  8 | without 32, pumped 29 | Fisher p 1.000
+
+WHAT FOLLOWED THE OUTSIDE BUYS (value launches): pool, outside buys (offset, ETH, caller), first fleet buy, rule $15 return
+  215fa65926 [(16, 0.00099, '65050a9b'), (19, 0.00099, 'f0b7eaaf'), (23, 0.00054, '65050a9b'), (24, 0.00099, '65050a9b'), (25, 0.00054, '65050a9b'), (33, 0.00099, '65050a9b'), (34, 0.00079, '65050a9b'), (39, 0.00069, '65050a9b')] first fleet +282 ret -19.37%
+  2bbf0749c4 [(22, 0.00099, '65050a9b')] first fleet +259 ret +8.37%
+  43ed3bf5c2 [(22, 0.00099, '65050a9b'), (47, 0.00054, '65050a9b')] first fleet +357 ret -0.11%
+  c5f873f69a [(32, 0.00084, '65050a9b')] first fleet +228 ret +1.03%
+  0f592dcbea [(54, 0.00099, '65050a9b')] first fleet +314 ret -0.09%
+  6f4e2d27a0 [(51, 0.00099, '65050a9b')] first fleet +372 ret -0.09%
+  1996432a9c [(39, 0.00099, '65050a9b')] first fleet +268 ret -0.07%
+  afdcfbaee8 [(41, 0.00094, '65050a9b')] first fleet +181 ret +21.38%
+
+THE p08 LEAD (buy +60, sell +600) AT $15 AND $5, 48 h value launches
+  q 0.0058: n 45 mean +12.18% median +5.374% win 60.0% pulled 0 $1.815/trade; at the post-stop rate 32.6/day: $59.15/day; top 10% of trades = 54% of the return
+  q 0.001946: n 45 mean +11.96% median +5.130% win 60.0% pulled 0 $0.598/trade; at the post-stop rate 32.6/day: $19.50/day; top 10% of trades = 55% of the return
+
+RULE +60/+260 IN $/DAY
+  356-B value 0 (48 h set)    $15: n 57, total $391.28 over 48 h = $195.64/day
+  356-B value 0 (48 h set)    $5 : n 57, total $134.16 over 48 h = $67.08/day
+  value launches (48 h set)   $15: n 45, total $2.45 over 48 h = $1.22/day; at the post-stop rate (32.6/day) $1.77/day
+  value launches (48 h set)   $5 : n 45, total $0.23 over 48 h = $0.12/day; at the post-stop rate (32.6/day) $0.17/day
+
+FIRST PULL OFFSETS, value launches: 48 h 8 of 45: [609, 967, 1706, 2496, 2531, 2605, 2640, 2982]; census 2 of 128: smallest [0, 765], <= +600: 1, <= +700: 1

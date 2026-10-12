@@ -15,3 +15,6 @@ research/**/x01_inits.json
 research/**/*_ev.json
 research/**/*.pkl
 research/**/*_inits.json
+research/session_oct12/p356/p04_events.jsonl
+research/session_oct12/p356/p05_txs.jsonl
+research/session_oct12/p356/p10_swaps.json
