@@ -497,8 +497,11 @@ ART = json.load(open(os.path.join(ROOT, "contracts", "BnbRoundTrip.json")))
 KEY = "0x" + "5e" * 32                                                        # a dummy key for these tests only, never funded
 WALLET = Account.from_key(KEY).address.lower(); TOKEN = "0x" + FX["launch_log"]["topics"][1][-40:]; WBNB = E.WBNB
 TMP = tempfile.mkdtemp(); KEYF = os.path.join(TMP, "bnb.key"); POSF = os.path.join(TMP, "bnb_positions.json"); HALTF = os.path.join(TMP, "HALTED.bnb")
+os.remove(LOG); LOG = os.path.join(TMP, "bnb.jsonl"); E.LOG_PATH = LOG                # live, the line's files are named bnb* (or HALTED.bnb)
 _fd = os.open(KEYF, os.O_WRONLY | os.O_CREAT, 0o600); os.write(_fd, (KEY + "\n").encode()); os.close(_fd)
-LIVE_ENV = {"BNB_WALLET": WALLET, "BNB_KEY_FILE": KEYF, "BNB_POSITIONS_FILE": POSF, "BNB_HALT_FILE": HALTF, "BNB_SEND_ALT_URL": "0"}
+TOKEN_CODE = "0x608060405234801561001057600080fd5b50" + "5b" * 64                  # the stub's token code: its keccak is the line's one template here
+CODEHASH = "0x" + keccak(hexstr=TOKEN_CODE).hex()
+LIVE_ENV = {"BNB_WALLET": WALLET, "BNB_KEY_FILE": KEYF, "BNB_POSITIONS_FILE": POSF, "BNB_HALT_FILE": HALTF, "BNB_SEND_ALT_URL": "0", "BNB_TOKEN_CODEHASHES": CODEHASH}
 TT = LV.T_TRANSFER; tp = lambda x: "0x" + w(int(x, 16))
 G_BUY, G_APP, G_SELL = 131050, 46409, 106800                                   # gasUsed of the three calls (eth_simulateV1 on live pools, Oct 12)
 
@@ -516,7 +519,7 @@ class LiveChain(Chain):
         super().__init__()
         self.pairs, self.our, self.bal_tok, self.check, self.byhash, self.blocks = {}, {}, {}, {}, {}, {}
         self.mined = 7; self.sent = []; self.toks = []; self.outs = []; self.balance = 10 ** 17; self.gp = 5 * 10 ** 7
-        self.override = True; self.revert = []; self.replies = []; self.posts = 0
+        self.override = True; self.revert = []; self.replies = []; self.posts = 0; self.codes = {}; self.allow = {}
 
     def pool(self, pair, token, logs):
         self.pairs[pair] = (token, logs); self.our[pair] = (0, 0); self.bal_tok.setdefault(token, 0)
@@ -540,13 +543,19 @@ class LiveChain(Chain):
             assert c["data"][2:10] == ART["selectors"]["run(address,address,address,uint256)"] and "0x" + d[24:64] == E.ROUTER and "0x" + d[88:128] == WBNB
             if token == LV.USDT:
                 return "0x" + w(0) + w(10 ** 18) + w(q * 995 // 1000) + w(136550) + w(24932) + w(70714)
-            rq, rt = self.real(self.pair_of(token)); stage, tax, g = self.check.get(token, (0, 1.0, (136550, 24932, 70714)))
-            tok = E.amount_out(q, rq, rt); back = int(E.amount_out(tok, rt - tok, rq + q) * tax) if stage == 0 else 0
-            return "0x" + w(stage) + w(tok if stage != 1 else 0) + w(back) + "".join(w(x) for x in g)
+            rq, rt = self.real(self.pair_of(token)); stage, tax, g, *bt_ = self.check.get(token, (0, 1.0, (136550, 24932, 70714)))
+            tok = E.amount_out(q, rq, rt); got = int(tok * bt_[0]) if bt_ else tok                  # (a 4th item: the token's own cut on the buy)
+            back = int(E.amount_out(got, rt - tok, rq + q) * tax) if stage == 0 else 0
+            return "0x" + w(stage) + w(got if stage != 1 else 0) + w(back) + "".join(w(x) for x in g)
         if method == "eth_call" and c.get("data") == "0x0902f1ac" and c.get("to") in self.pairs:
             rq, rt = self.real(c["to"]); return "0x" + w(rt) + w(rq) + w(int(time.time()))      # token0 is the token, WBNB token1
         if method == "eth_call" and c.get("data", "").startswith("0x70a08231"):
             assert c["data"][-40:] == WALLET[2:]; return "0x" + w(self.bal_tok.get(c["to"], 0))
+        if method == "eth_call" and c.get("data", "").startswith("0xdd62ed3e"):              # allowance(wallet, router)
+            assert c["data"][34:74] == WALLET[2:] and c["data"][-40:] == E.ROUTER[2:]; return "0x" + w(self.allow.get(c["to"], 0))
+        if method == "eth_getCode":
+            self.calls[method] = self.calls.get(method, 0) + 1; assert params[1] == "latest"
+            return self.codes.get(params[0], TOKEN_CODE)
         if method in ("eth_gasPrice", "eth_getBalance", "eth_getTransactionCount", "eth_getBlockReceipts", "eth_getTransactionReceipt") \
                 or (method == "eth_getTransactionByHash" and params[0] in self.byhash):
             self.calls[method] = self.calls.get(method, 0) + 1
@@ -558,7 +567,8 @@ class LiveChain(Chain):
         return super().rpc(method, params, tries, timeout)
 
     def post(self, url, raw):
-        """eth_sendRawTransaction: decoded, checked and mined at once (a queued reply first, when one is set: (kind, message, mined))"""
+        """eth_sendRawTransaction: decoded, checked and mined at once (a queued reply first, when one is set: (kind, message, mined), mined
+        "hidden": mined, but the node then shows neither the transaction nor its receipt, as a lagging or partial backend would)"""
         self.posts += 1
         b = bytes.fromhex(raw[2:]); f = rlp.decode(b); n = int.from_bytes(f[0], "big")
         assert Account.recover_transaction(b).lower() == WALLET and int.from_bytes(f[6], "big") in (147, 148)    # the wallet's, chain 56 (EIP-155)
@@ -580,8 +590,12 @@ class LiveChain(Chain):
                 logs = [tlog(WBNB, [TT, tp(E.ROUTER), tp(pair)], "0x" + w(value), blk, h, 1), tlog(token, [TT, tp(pair), tp(WALLET)], "0x" + w(tok), blk, h, 2),
                         tlog(pair, [E.T_SYNC], "0x" + w(rt - tok) + w(rq + value), blk, h, 3),
                         tlog(pair, [E.T_SWAP, tp(E.ROUTER), tp(WALLET)], "0x" + w(0) + w(value) + w(tok) + w(0), blk, h, 4)]
+                if getattr(self, "odd_transfer", False):                                   # a token whose Transfer event is not the standard one
+                    logs[1] = dict(logs[1], topics=["0x" + "77" * 32] + logs[1]["topics"][1:])
         elif sel == LV.SEL_APPROVE:
             kind = "approve"; used = G_APP; ok = kind not in self.revert
+            if ok:
+                self.allow[tx["to"]] = 2 ** 256 - 1
         elif sel == LV.SEL_SELL:
             kind = "sell"; amount, mo, path, _to, dl = eth_abi.decode(["uint256", "uint256", "address[]", "address", "uint256"], args); token = path[0].lower()
             pair = self.pair_of(token); rq, rt = self.real(pair); out = E.amount_out(amount, rt, rq); used = G_SELL
@@ -593,13 +607,21 @@ class LiveChain(Chain):
                         tlog(pair, [E.T_SWAP, tp(E.ROUTER), tp(E.ROUTER)], "0x" + w(amount) + w(0) + w(0) + w(out), blk, h, 4)]
         if not ok and kind in self.revert:
             self.revert.remove(kind)                                                      # each queued revert once
+        if reply[2] == "hidden":
+            return reply[:2]
         self.blocks.setdefault(blk, []).append({"transactionHash": h, "blockNumber": hex(blk), "status": "0x1" if ok else "0x0", "gasUsed": hex(used),
                                                 "effectiveGasPrice": hex(gp), "logs": logs})
         self.byhash[h] = dict(tx, blockNumber=hex(blk), value=hex(value), nonce=hex(n))
         return reply[:2]
 
 
-def new_live(chain, **env_):
+LIVES = []
+
+
+def new_live(chain, keep_old=False, **env_):
+    """a Live as main() makes it (the env read then); the instances before it are closed first (a restart: the old process gone)"""
+    while LIVES and not keep_old:
+        LIVES.pop().close()
     keep = {k: os.environ.get(k) for k in list(LIVE_ENV) + list(env_)}
     os.environ.update(LIVE_ENV); os.environ.update({k: str(v) for k, v in env_.items()})
     try:
@@ -610,8 +632,15 @@ def new_live(chain, **env_):
                 os.environ.pop(k, None)
             else:
                 os.environ[k] = v
-    lv.POLL_S = 0; lv.post = chain.post
+    lv.POLL_S = 0; lv.post = getattr(chain, "post", None) or (lambda url, raw: ("rejected", "no chain here")); LIVES.append(lv)
     return lv
+
+
+def age_last(lv, pair, s):
+    """the position's last transaction made s seconds older (its send and its deadline), as if the clock had run on"""
+    rec = lv.pos[pair]["txs"][-1]; rec["sent_at"] -= s; rec["polled"] = 0
+    if rec.get("deadline") is not None:
+        rec["deadline"] -= s
 
 
 def live_start(chain, lv, a, fresh=True):
@@ -725,8 +754,10 @@ print("ok the probe (BNB_PROBE_EVERY 2): three overlapping launches are live, co
 # 17. the pre-buy check refuses: a simulated sell that reverts, a sale under 90% of the stake, a leg over its gas limit, an RPC without state
 # overrides; a start whose self-test fails turns live off for the run; a buy that would go late is not sent
 for setup, why in ((lambda c: c.check.__setitem__(TOKEN, (3, 1.0, (136550, 24932, 0))), "the simulated sell reverted"),
-                   (lambda c: c.check.__setitem__(TOKEN, (0, 0.85, (136550, 24932, 70714))), "under BNB_CHECK_MIN 90%"),
-                   (lambda c: c.check.__setitem__(TOKEN, (0, 1.0, (136550, 24932, 150000))), "the simulated sell needs ~190000 gas, over BNB_GAS_SELL 180000"),
+                   (lambda c: c.check.__setitem__(TOKEN, (0, 0.985, (136550, 24932, 70714))), "under BNB_CHECK_MIN 99%"),
+                   (lambda c: c.check.__setitem__(TOKEN, (0, 1.0, (136550, 24932, 115001))), "the simulated sell needs ~180001 gas, over BNB_GAS_SELL 180000"),
+                   (lambda c: c.check.__setitem__(TOKEN, (0, 1.0, (180001, 24932, 70714))), "the simulated buy needs ~200001 gas, over BNB_GAS_BUY 200000"),
+                   (lambda c: c.codes.__setitem__(TOKEN, TOKEN_CODE + "00"), "the token's code is not one of the line's templates"),
                    (lambda c: setattr(c, "override", False), "the pre-buy check did not run")):
     ch17 = base_chain(); lv = new_live(ch17); live_start(ch17, lv, L - 2); setup(ch17); live_go(ch17, lv, L + 300)
     sk = events("live_skip")
@@ -734,10 +765,11 @@ for setup, why in ((lambda c: c.check.__setitem__(TOKEN, (3, 1.0, (136550, 24932
 ch17 = base_chain(); ch17.override = False; lv = new_live(ch17); st17 = live_start(ch17, lv, L - 2); live_go(ch17, lv, L + 300)
 assert "self-test failed" in st17["live_off"] and not ch17.sent and events("live_arm")[0]["role"] == "held" and "live is off for this run" in events("live_arm")[0]["why"]
 E.MAX_RANGE = 40; ch17 = base_chain(); lv = new_live(ch17); live_start(ch17, lv, L - 2); live_go(ch17, lv, L + 300); E.MAX_RANGE = 5
-assert not ch17.sent and "blocks late (BNB_BUY_LATE 10)" in events("live_skip")[0]["why"]
+assert not ch17.sent and re.search(r"the buy would go 30 blocks late \(it lands at L\+80 .*BNB_BUY_LATE 7\)", events("live_skip")[0]["why"]), events("live_skip")
 print("ok the pre-buy check (BnbRoundTrip by eth_call state override, from the wallet) refuses a pool whose simulated sell reverts, whose sale "
-      "returns under 90% of the stake, or whose leg needs more gas than its limit, and when the RPC takes no override; a failed self-test at "
-      "the start turns live off for the run (the dry run goes on); a buy more than 10 blocks late is not sent")
+      "returns under 99% of the stake, whose leg needs more gas than its limit (the harness's gas plus 20k, 23k, 65k), or whose token's code "
+      "is not the line's, and when the RPC takes no override; a failed self-test at the start turns live off for the run (the dry run goes "
+      "on); a buy that would land more than 7 blocks after L+50 is not sent")
 
 # 18. the gate halts (HALTED.bnb) and still sells: a dump at +200 on a traded pool (that position sold at once, a second open one sold on
 # schedule, a launch after the halt held); no crowd buy in +60..+260; a reverted buy, approve or sell; a negative median over 10 trades
@@ -920,7 +952,7 @@ assert src_e.count('__import__("bnb_live")') == 1 and "    if LIVE_ON:" in main_
 assert set(re.findall(r"acct\.\w+", src_l)) == {"acct.address", "acct.sign_transaction"} and os.path.basename(lv.HALT_FILE) == "HALTED.bnb"
 named = {n.value for n in ast.walk(tl) if isinstance(n, ast.Constant) and isinstance(n.value, str) and re.fullmatch(r"eth_\w+", n.value)}
 assert named == {"eth_call", "eth_gasPrice", "eth_getBalance", "eth_getTransactionCount", "eth_getTransactionByHash", "eth_getBlockReceipts",
-                 "eth_getTransactionReceipt", "eth_sendRawTransaction"}, named
+                 "eth_getTransactionReceipt", "eth_getCode", "eth_sendRawTransaction"}, named
 art = json.load(open(os.path.join(ROOT, "contracts", "BnbRoundTrip.json")))
 assert art["source_sha256"] == __import__("hashlib").sha256(open(os.path.join(ROOT, "contracts", "BnbRoundTrip.sol"), "rb").read()).hexdigest()
 print("ok the files: only bnb_live.py names eth_sendRawTransaction (in post()), it uses the key only to sign, never opens engine.env; "
@@ -939,7 +971,7 @@ print("ok deploy/bnb_wallet.py: a new key in a file it creates mode 600 (O_EXCL)
 
 # 26. the screen with BNB_LIVE=1: LIVE (the receipts) vs the same pools' dry price vs CONTROL, the halt, the open positions and the day,
 # the wallet's balance from the RPC (the key file never opened)
-now = time.time(); S = os.path.join(TMP, "s.jsonl"); H2 = os.path.join(TMP, "H2.bnb"); P2F = os.path.join(TMP, "p2.json")
+now = time.time(); S = os.path.join(TMP, "s.jsonl"); H2 = os.path.join(TMP, "bnb_H2"); P2F = os.path.join(TMP, "p2.json")
 st_ = {"ev": "start", "t": now - 3600, "release": "bnb-0.2", "live": True, "probe_every": 2, "stake_usd": 5, "daily_stop_usd": 10, "wallet": WALLET, "buy_at": 50,
        "sell_at": 260, "skip_pool_bnb": [15.0], "gate": {"dump_before": 997, "crowd_from": 60, "probes": 10}, "bnb_usd": 750}
 dryl = lambda i, ret, role: {"ev": "trade_done", "dry": True, "live": False, "role": role, "t": now - 3000 + i, "pair": "0x%040x" % i, "pool_bnb": 1.0, "dry_ret": ret, "breaks": 0,
@@ -975,9 +1007,10 @@ assert PAIR not in lv.pos and not ch27.sent and "dumped or dropped before the bu
 lv.pos["0x" + "88" * 20] = {"pair": "0x" + "88" * 20, "state": "buying", "L": L}; lv.halt("a test halt")
 assert "0x" + "88" * 20 in lv.pos and open(HALTF).read() == "a test halt\n"
 for replies, mined in (([("unknown", "timed out", False)] * 2, True), ([("unknown", "timed out", False)] * 4, False)):    # a broadcast: two rounds
-    ch27 = base_chain(); ch27.replies = list(replies); lv = new_live(ch27); live_start(ch27, lv, L - 2); lv.RECEIPT_WAIT_S = 0.05; live_go(ch27, lv, L + 60)
-    for _ in range(30):                                                         # the reader holds at L+60 (before the crowd) while the wait runs out
-        time.sleep(0.01); lv.tick()
+    ch27 = base_chain(); ch27.replies = list(replies); lv = new_live(ch27); live_start(ch27, lv, L - 2); live_go(ch27, lv, L + 60)
+    assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_rebroadcast")     # the reader holds at L+60 (before the crowd) while the clock runs on
+    age_last(lv, PAIR, 25); lv.tick()                                           # no receipt after BNB_RECEIPT_WAIT_S (20 s), 35 s before its deadline: sent again
+    age_last(lv, PAIR, 60); lv.tick()                                           # 25 s past its deadline and twice the wait: mined, or dropped
     live_go(ch27, lv, L + 300)
     assert len(events("live_rebroadcast")) == 1 and [e["reply"] for e in events("live_send")][:1] == ["unknown"]
     if mined:
@@ -991,6 +1024,326 @@ print("ok the buy's own window: a dump seen while the buy is due cancels it; a p
       "endpoint answered for is sent again after BNB_RECEIPT_WAIT_S and mined, or dropped (nonce read again) when never mined; a restart "
       "while sending a buy with no transaction recorded drops it")
 
+# 28. the chain's head, not the reader, times the live path. The reader stalled 800 blocks behind the head (an RPC stall: ranges are
+# retried, never skipped, and it jumps only MAX_BEHIND behind) sends no buy at its own L+50 (it would land at L+851); a position already
+# bought is sold once the head is BNB_SELL_LATE (20) blocks past L+260, on the pool's reserves then, not at the reader's L+260
+ch28 = base_chain(); lv = new_live(ch28); live_start(ch28, lv, L - 2)
+while not events("would_fire"):
+    E.step(replay_to=L + 300)
+    if not events("would_fire"):
+        lv.tick()
+E.state["head"] = L + 850; lv.tick()
+assert not ch28.sent and PAIR not in lv.pos and "the buy would go 801 blocks late (it lands at L+851 at the earliest, the head at %d;" % (L + 850) in events("live_skip")[-1]["why"]
+ch28 = base_chain(); lv = new_live(ch28); live_start(ch28, lv, L - 2); live_go(ch28, lv, L + 60)
+assert lv.pos[PAIR]["state"] == "approved" and len(ch28.sent) == 2 and not lv.pos[PAIR].get("sell_due")
+E.state["head"] = L + 260 + 20 + E.LAG_BLOCKS - 1; lv.tick()
+assert not lv.pos[PAIR].get("sell_due") and len(ch28.sent) == 2                       # one block short of BNB_SELL_LATE: not yet
+E.state["head"] = L + 60 + 800; rq_, rt_ = ch28.real(PAIR)
+for _ in range(6):
+    lv.tick()
+td = lives(); amount, mo, *_ = dec(S_T, ch28.sent[-1])
+assert len(td) == 1 and td[0]["why"] == "the reader is behind: sold by the head (L+%d)" % (60 + 800) and ch28.sent[-1]["data"][:8] == "791ac947", td
+assert mo == E.amount_out(amount, rt_, rq_) * 950000 // 10 ** 6 and td[0]["sell_off"] < 260 and not os.path.exists(HALTF)
+assert any(a["what"] == "the reader is 800 blocks behind the head: a live position sold by the head at +858" for a in events("alarm"))
+E.state["head"] = None; live_go(ch28, lv, L + 300)
+assert len(lives()) == 1 and len(drys()) == 1 and len(ch28.sent) == 3
+print("ok the head times the live path: the reader stalled 800 blocks behind sends no buy at its L+50 (it would land at L+851; the "
+      "lateness is measured on the head after the buy's reads), and a bought position is sold when the head is 20 blocks past L+260 (not "
+      "one block before), on the reserves then, while the reader is still at L+60")
+
+# 29. the buy's own reads, just before the send: a pool that lost its WBNB since L+50, or whose price moved past BNB_SLIP (the buy would
+# revert, and a revert halts the line), is not bought; a better price raises minOut to the bound on the fresh reserves; a zero minOut, a
+# stake over 1.5 x BNB_STAKE_USD and a fire with no tokens for the stake (the engine's tok <= 0) send nothing
+def to_buy_due(chain, lv):
+    while lv.pos.get(PAIR, {}).get("state") != "buy_due":
+        E.step(replay_to=L + 300)
+        if lv.pos.get(PAIR, {}).get("state") != "buy_due":
+            lv.tick()
+    return lv.pos[PAIR]
+
+
+for move, want in (((-6 * 10 ** 17, 0), "the pool lost its WBNB before the buy"), ((2 * 10 ** 17, 166000000000000000), "the price moved past BNB_SLIP before the buy"),
+                   (None, "a zero stake or zero minOut"), ("q", "is over 1.5 x BNB_STAKE_USD 5")):
+    ch29 = base_chain(); lv = new_live(ch29); live_start(ch29, lv, L - 2); x = to_buy_due(ch29, lv)
+    if move is None:
+        x["min_out"] = 0
+    elif move == "q":
+        x["q"] = 2 * x["q"]
+    else:
+        ch29.our[PAIR] = move
+    lv.tick()
+    assert not ch29.sent and PAIR not in lv.pos and want in events("live_skip")[-1]["why"] and PAIR not in lv.traded, (want, events("live_skip"))
+ch29 = base_chain(); lv = new_live(ch29); live_start(ch29, lv, L - 2); x = to_buy_due(ch29, lv); old = x["min_out"]
+ch29.our[PAIR] = (-10 ** 16, -3 * 10 ** 16); rq_, rt_ = ch29.real(PAIR); lv.tick()            # someone sold before our buy: more tokens for the stake now
+mo, *_ = dec(B_T, ch29.sent[0])
+assert mo == E.amount_out(Q5, rq_, rt_) * 950000 // 10 ** 6 > old and [e["min_out"] for e in events("live_send")] == [mo]
+ch29 = base_chain(); lv = new_live(ch29); live_start(ch29, lv, L - 2)
+while lv.pos.get(PAIR, {}).get("state") != "checked":
+    E.step(replay_to=L + 300); lv.tick()
+E.pools[PAIR]["rt"] = 0                                                              # no token reserve known at L+50 (the pool's next log is at +80)
+while not events("skip"):
+    E.step(replay_to=L + 300); lv.tick()
+lv.tick()
+assert not ch29.sent and PAIR not in lv.pos and events("live_skip")[-1]["why"] == "no tokens for the stake at +50" and events("live_skip")[-1]["role"] == "held"
+print("ok the buy's own reads: a pool drained since L+50 or a price moved past the slippage is not bought (no revert, no halt), a better "
+      "price raises minOut to the bound on the fresh reserves; a zero minOut, a stake over 1.5 x $5 and a fire with no tokens for the stake "
+      "send nothing")
+
+# 30. a transaction the node cannot show: no copy is sent at or past its deadline (BNB_RECEIPT_WAIT_S equal to BNB_DEADLINE_S); one never
+# mined is dropped only once its deadline is 15 s past; when its nonce was mined (the node lags), the chain decides: a buy whose tokens are
+# in the wallet is kept and sold, a sell whose tokens are gone is settled at its minOut (a floor; no halt, out of the gate), an approve
+# whose allowance is there is done; a nonce that went to another transaction of ours drops it
+ch30 = base_chain(); ch30.replies = [("unknown", "timed out", False)] * 2; lv = new_live(ch30, BNB_RECEIPT_WAIT_S=60); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 60)
+n0 = ch30.posts; rec = lv.pos[PAIR]["txs"][-1]
+assert n0 == 2 and 59 < rec["deadline"] - rec["sent_at"] <= 60 and lv.pos[PAIR]["state"] == "buy_sent"
+age_last(lv, PAIR, 60); lv.tick()                                                   # at its deadline: a copy could only revert (EXPIRED)
+age_last(lv, PAIR, 30); lv.tick()                                                   # 90 s old, 30 s past its deadline: under twice the wait
+assert ch30.posts == n0 and not events("live_rebroadcast") and lv.pos[PAIR]["state"] == "buy_sent"
+age_last(lv, PAIR, 40); lv.tick()                                                   # 130 s old: never mined, dropped
+assert ch30.posts == n0 and PAIR not in lv.pos and events("live_skip")[-1]["why"] == "the buy was never mined" and not ch30.sent
+ch30 = base_chain(); ch30.replies = [("unknown", "timed out", False)] * 2; lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 60)
+age_last(lv, PAIR, 25); lv.tick(); assert len(events("live_rebroadcast")) == 1      # the copy, 35 s before its deadline, mined
+lv.pos[PAIR]["txs"][-1]["nonce"] = 6; lv.pos[PAIR]["txs"].append(dict(lv.pos[PAIR]["txs"][-1], hash="0x" + "ab" * 32, nonce=7, polled=0))   # (a record whose nonce 7 is ours, mined)
+lv.mined_nonces[7] = ch30.sent[0]["hash"]; lv.hashes.add("0x" + "ab" * 32); age_last(lv, PAIR, 100); lv.tick()
+assert any("its nonce 7 went to our " + ch30.sent[0]["hash"] in a["what"] for a in events("alarm"))
+ch30 = base_chain(); ch30.replies = [("ok", None, "hidden")]; lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 60)
+assert lv.pos[PAIR]["state"] == "buy_sent" and len(ch30.sent) == 1 and ch30.bal_tok[TOKEN] > 0
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()                # sent again ('nonce too low': it is in), then the chain asked
+x = lv.pos[PAIR]
+assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch30.toks[0] and x["bnb_in"] == Q5 and x["unconfirmed"].startswith("the buy's receipt") and PAIR in lv.traded
+live_go(ch30, lv, L + 300); td = lives()
+assert len(td) == 1 and td[0]["why"] == "sell at +260" and td[0]["tokens"] == ch30.toks[0] and td[0]["gas_wei"] == (200000 + G_APP + G_SELL) * 10 ** 8 and not os.path.exists(HALTF)
+assert json.load(open(POSF))["gate_rets"] == [td[0]["pnl_pct"]] and any("kept as bought" in a["what"] for a in events("alarm"))
+ch30 = base_chain(); ch30.replies = [("ok", None, True), ("ok", None, "hidden")]; lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 60)
+assert lv.pos[PAIR]["state"] == "approve_sent"
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()
+assert lv.pos[PAIR]["state"] == "approved" and TOKEN in lv.approved
+live_go(ch30, lv, L + 300)
+assert [t["data"][:8] for t in ch30.sent] == ["b6f9de95", "095ea7b3", "791ac947"] and lives()[0]["why"] == "sell at +260"
+ch30 = base_chain(); lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 255)
+ch30.replies = [("ok", None, "hidden")]; live_go(ch30, lv, L + 262)
+assert lv.pos[PAIR]["state"] == "sell_sent" and ch30.bal_tok[TOKEN] == 0
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()
+td = lives(); smo = [e for e in events("live_send") if e["kind"] == "sell"][-1]["min_out"]
+assert len(td) == 1 and td[0]["bnb_out_wei"] == smo > 0 and td[0]["unconfirmed"].startswith("the sell's receipt") and not os.path.exists(HALTF) and lv.halted is None, td
+assert json.load(open(POSF))["gate_rets"] == [] and lv.recent == [] and lv.pnl_today == td[0]["pnl_usd"] and len(ch30.sent) == 3
+print("ok a transaction the node cannot show: no copy at or past its deadline, dropped only 15 s after it when its nonce is not mined (or "
+      "went to another of ours); its nonce mined, the chain decides: a buy whose tokens are in the wallet is kept and sold, an approve whose "
+      "allowance is there is done, a sell whose tokens are gone is settled at its minOut (no halt, out of the gate's medians)")
+
+# 31. the slots by size and the token's template: 1, 10 and 25 BNB (BNB_LIVE_POOL_BNB) alternate live/control; a 2.5-BNB launch stays dry
+# (dry_size, no slot, out of the control) until 2.5 is listed; a token whose runtime code is not one of BNB_TOKEN_CODEHASHES is refused (an
+# alarm once per new code); the default list is the launcher's two templates
+P25, TOK25 = "0x" + "c5" * 20, "0x" + "a5" * 20
+lg25 = [dict(x, data=x["data"][:66] + w(25 * 10 ** 17)) for x in FX["pair_logs"] if blk(x) == L]
+for sizes, want in ((None, {PAIR: ("live", 1), P25: ("dry_size", None), P3: ("control", 2)}), ("1,2.5,10,25", {PAIR: ("live", 1), P25: ("control", 2), P3: ("live", 3)})):
+    ch31 = base_chain()
+    lg, tx = clone(P25, shift=10, tag="e5", logs=lg25); lg[0]["topics"] = [lg[0]["topics"][0], tp(TOK25), lg[0]["topics"][2]]; ch31.add(lg, tx); ch31.pool(P25, TOK25, lg[1:])
+    lg, tx = clone_tok(P3, 20, "e3", TOK3); ch31.add(lg, tx); ch31.pool(P3, TOK3, lg[1:])
+    lv = new_live(ch31, **({"BNB_LIVE_POOL_BNB": sizes} if sizes else {})); live_start(ch31, lv, L - 2); live_go(ch31, lv, L + 300)
+    arms = {e["pair"]: (e["role"], e["slot"]) for e in events("live_arm")}
+    assert arms == want and {e["pair"] for e in lives()} == {p_ for p_, (r_, _) in want.items() if r_ == "live"}, arms
+    assert {e["pair"]: e["role"] for e in drys() if e["pair"] in (PAIR, P3)} == {p_: want[p_][0] for p_ in (PAIR, P3)}
+    if not sizes:
+        assert "pool size 2.5 BNB is not traded live (BNB_LIVE_POOL_BNB 1,10,25)" in next(e["why"] for e in events("live_arm") if e["pair"] == P25)
+ch31 = base_chain()
+for pr, sh, tg, tk in ((P2, 20, "f2", TOK2), (P3, 40, "f3", TOK3)):
+    lg, tx = clone_tok(pr, sh, tg, tk); ch31.add(lg, tx); ch31.pool(pr, tk, lg[1:])
+ch31.codes = {TOKEN: TOKEN_CODE + "00", TOK2: TOKEN_CODE + "00", TOK3: TOKEN_CODE + "01"}
+lv = new_live(ch31, BNB_PROBE_EVERY=1); live_start(ch31, lv, L - 2); live_go(ch31, lv, L + 340)
+new = [a for a in events("alarm") if a["what"].startswith("a launch of the line with a new token code")]
+assert not ch31.sent and [e["role"] for e in events("live_skip")] == ["refused"] * 3 and len(new) == 2 and all(e["code_hash"] for e in events("live_check")), new
+assert new_live(Chain(), BNB_TOKEN_CODEHASHES="").CODEHASHES == set(LV.TOKEN_CODEHASHES.split(",")) and len(LV.TOKEN_CODEHASHES.split(",")) == 2
+print("ok the slots: 1, 10 and 25 BNB alternate live/control, a 2.5-BNB launch stays dry with no slot (dry_size) until BNB_LIVE_POOL_BNB lists "
+      "it; a token whose code is not one of the line's two templates is refused before the round trip (an alarm once per new code)")
+
+# 32. each leg's own factor (the round trip's would loosen each leg's minOut by the other leg's cut too): a token cutting 3% on the buy and
+# 3% on the sale (BNB_CHECK_MIN 0.9 here) gets 97% on each leg, not 94%; a token whose Transfer event is not the standard one is counted by
+# its balance (not settled as 'no tokens', no halt)
+ch32 = base_chain(); ch32.check[TOKEN] = (0, 0.97, (136550, 24932, 70714), 0.97); lv = new_live(ch32, BNB_CHECK_MIN=0.9); live_start(ch32, lv, L - 2); live_go(ch32, lv, L + 300)
+chk = events("live_check")[0]; bt_ = [t for t in ch32.sent if t["data"][:8] == "b6f9de95"][0]; st_ = [t for t in ch32.sent if t["data"][:8] == "791ac947"][0]
+assert chk["ok"] and abs(chk["f_buy_ppm"] - 970000) <= 1 and abs(chk["f_sell_ppm"] - 970000) <= 1 and abs(chk["factor_ppm"] - 940900) < 1000, chk
+assert dec(B_T, bt_)[0] == TOK5 * chk["f_buy_ppm"] // 10 ** 6 * 950000 // 10 ** 6
+s_ = [e for e in events("live_send") if e["kind"] == "sell"][0]; assert dec(S_T, st_)[1] == s_["expected"] * chk["f_sell_ppm"] // 10 ** 6 * 950000 // 10 ** 6
+ch32 = base_chain(); ch32.odd_transfer = True; lv = new_live(ch32); live_start(ch32, lv, L - 2); live_go(ch32, lv, L + 300)
+assert lives()[0]["tokens"] == ch32.toks[0] > 0 and lives()[0]["why"] == "sell at +260" and not os.path.exists(HALTF)
+print("ok each leg's own cut: a 3%%+3%% token gets %.1f%% on the buy's minOut and %.1f%% on the sale's (the round trip's %.1f%% no longer on "
+      "each); a token with a non-standard Transfer event counted by its balance" % (chk["f_buy_ppm"] / 1e4, chk["f_sell_ppm"] / 1e4, chk["factor_ppm"] / 1e4))
+
+# 33. the gate after the first 10: the median of any 10 live trades in a row negative, or 3 in a row under -50%, halts the line (kept in
+# the positions file across restarts)
+def settle_ret(lv, i, r_):
+    x = {"pair": "0x%040x" % (0xa00 + i), "token": TOKEN, "L": L, "pool_bnb": 1.0, "txs": [], "gas_wei": 0, "sell_tries": 0, "q": 10 ** 16, "bnb_in": 10 ** 16,
+         "bnb_out": int(10 ** 16 * (1 + r_)), "sell_due": {"why": "sell at +260"}}
+    lv.pos[x["pair"]] = x; lv.settle(x, "sell at +260")
+
+
+lv = new_live(Chain()); os.path.exists(HALTF) and os.remove(HALTF); lv.save()
+for i, r_ in enumerate([0.2] * 10 + [-0.1] * 5):
+    settle_ret(lv, i, r_)
+assert lv.halted is None and len(lv.gate_rets) == 10 and json.load(open(POSF))["recent_rets"] == [0.2] * 5 + [-0.1] * 5
+settle_ret(lv, 15, -0.1)
+assert lv.halted == "the median of the last 10 live trades is -10.00%" and open(HALTF).read().startswith("the median of the last 10")
+lv = new_live(Chain()); os.remove(HALTF); lv.resume(L)
+assert lv.recent == [0.2] * 4 + [-0.1] * 6 and lv.gate_rets == [0.2] * 10
+lv = new_live(Chain()); os.remove(POSF); lv.save()
+for i, r_ in enumerate([0.1, -0.6, -0.7]):
+    settle_ret(lv, i, r_)
+assert lv.halted is None
+settle_ret(lv, 3, -0.55)
+assert lv.halted == "3 live trades in a row under -50% (-60.0%, -70.0%, -55.0%)", lv.halted
+os.remove(HALTF); os.remove(POSF)
+print("ok the gate after the first 10 trades: the median of the last 10 negative halts (at the 16th here, not the 15th), and so do 3 live "
+      "trades in a row under -50%; the last 10 are kept across a restart")
+
+# 34. the settings live: the $5 probe enforced (BNB_STAKE_USD over $10 stops the start), tight bounds, the defaults; the line's files only
+# (never flip-engine's halt files or log, three different files), one live engine at a time, the check's bytecode from its source, the
+# key file owned by the engine's user; dry, a log path naming flip-engine's files stops the start too
+msgs = {}
+for k, v in (("BNB_SLIP", "0.2"), ("BNB_MAX_OPEN", "5"), ("BNB_DAILY_STOP_USD", "51"), ("BNB_CHECK_MIN", "0.79"), ("BNB_MAX_GWEI", "6"), ("BNB_MAX_STAKE_BNB", "0.2"),
+             ("BNB_HALT_FILE", os.path.join(TMP, "HALTED")), ("BNB_HALT_FILE", os.path.join(TMP, "HALTED.front")), ("BNB_POSITIONS_FILE", os.path.join(TMP, "engine.jsonl")),
+             ("BNB_POSITIONS_FILE", os.path.join(TMP, "HALTED.bnb")), ("BNB_HALT_FILE", LOG), ("BNB_TOKEN_CODEHASHES", "0x12")):
+    try:
+        new_live(Chain(), **{k: v}); raise AssertionError("no refusal: %s=%s" % (k, v))
+    except SystemExit as e:
+        msgs[(k, v)] = str(e)
+assert all("is not in" in m for (k, _), m in msgs.items() if k not in ("BNB_HALT_FILE", "BNB_POSITIONS_FILE", "BNB_TOKEN_CODEHASHES")), msgs
+assert sum("must be named HALTED.bnb (the halt) or start with 'bnb'" in m for m in msgs.values()) == 4 and "three different files" in msgs[("BNB_HALT_FILE", LOG)]
+E.STAKE_USD = 15
+try:
+    new_live(Chain()); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert "BNB_STAKE_USD 15 is over $10: the live line is the $5 probe" in str(e)
+E.STAKE_USD = 5; E.LOG_PATH = os.path.join(TMP, "engine.jsonl")
+try:
+    new_live(Chain()); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert str(e).startswith("BNB_LOG_PATH ")
+E.LOG_PATH = LOG
+assert "names a halt file or flip-engine's log" in sub({"BNB_LOG_PATH": os.path.join(TMP, "engine.jsonl")}, "import bnb_engine as e; e.main([])").stderr
+assert not os.path.exists(os.path.join(TMP, "engine.jsonl"))
+lv = new_live(Chain())
+assert (lv.MAX_STAKE, lv.CHECK_MIN, lv.RECEIPT_WAIT_S, lv.BUY_LATE, lv.SELL_LATE, lv.LIVE_SIZES, lv.SLIP, lv.MAX_OPEN, lv.DAILY_STOP) == (15 * 10 ** 15, 0.99, 20, 7, 20, [1.0, 10.0, 25.0], 0.05, 2, 10)
+try:
+    new_live(Chain(), keep_old=True); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert "another live BNB engine holds" in str(e) and str(e).endswith("stop it first")
+lv.close(); new_live(Chain(), keep_old=True)
+CD = os.path.join(TMP, "contracts"); shutil.copytree(os.path.join(ROOT, "contracts"), CD); open(os.path.join(CD, "BnbRoundTrip.sol"), "a").write("// changed\n")
+_art = LV.ART; LV.ART = os.path.join(CD, "BnbRoundTrip.json")
+try:
+    new_live(Chain()); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert "was not built from the BnbRoundTrip.sol beside it" in str(e)
+finally:
+    LV.ART = _art
+if os.geteuid() == 0:
+    os.chown(KEYF, 4242, -1)
+    try:
+        new_live(Chain()); raise AssertionError("no refusal")
+    except SystemExit as e:
+        assert "is owned by uid 4242" in str(e) and KEY[4:] not in str(e)
+    finally:
+        os.chown(KEYF, 0, -1)
+print("ok the live settings: BNB_STAKE_USD over $10 stops the start (the $5 probe), the bounds (slippage 15%, 4 open, a $50 daily stop, "
+      "BNB_CHECK_MIN from 0.8, 5 gwei, 0.1 BNB a stake) and the defaults; the halt, positions and log files must be the line's own and three; "
+      "one live engine at a time (bnb_positions.json.lock); the check's bytecode from its source; the key file owned by the engine's user; "
+      "dry, a log path naming flip-engine's files stops the start")
+
+# 35. deploy/bnb_wallet.py withdraw and sweep, against a stubbed RPC: the whole balance less 21,000 gas to an address typed twice, signed on
+# the box (chain 56) and only its hash printed; a token sold back through the router after an approve, simulated first, on a typed yes;
+# each refusal sends nothing
+sys.path.insert(0, os.path.join(ROOT, "deploy")); import bnb_wallet as BW, io, contextlib
+BW.KEY_FILE = KEYF; BW.ENV_FILE = os.path.join(TMP, "none"); BW.sleep = lambda s_: None; BW.live_running = lambda: False
+
+
+class WalletChain:
+    def __init__(self):
+        self.sent, self.nonce, self.bal, self.code, self.revert, self.hashes = [], 3, 26 * 10 ** 15, {}, False, []
+        self.tok = {"0x" + "c7" * 20: 10 ** 18}; self.allow = {}
+
+    def rpc(self, method, params):
+        if method == "eth_sendRawTransaction":
+            b = bytes.fromhex(params[0][2:]); f = rlp.decode(b)
+            assert Account.recover_transaction(b).lower() == WALLET and int.from_bytes(f[6], "big") in (147, 148) and int.from_bytes(f[0], "big") == self.nonce
+            self.sent.append({"nonce": self.nonce, "gasPrice": int.from_bytes(f[1], "big"), "gas": int.from_bytes(f[2], "big"), "to": "0x" + f[3].hex(),
+                              "value": int.from_bytes(f[4], "big"), "data": f[5].hex()}); self.nonce += 1; self.hashes.append("0x" + keccak(b).hex())
+            return self.hashes[-1]
+        if method == "eth_call":
+            c = params[0]; d = c["data"]
+            if d.startswith("0x70a08231"):
+                return "0x" + w(self.tok.get(c["to"], 0))
+            if d.startswith("0xe6a43920"):
+                return "0x" + w(int("c8" * 20, 16))
+            if d == "0x0dfe1681":
+                return "0x" + w(int("c7" * 20, 16))
+            if d == "0x0902f1ac":
+                return "0x" + w(5 * 10 ** 20) + w(2 * 10 ** 18) + w(0)
+            if d.startswith("0xdd62ed3e"):
+                return "0x" + w(self.allow.get(c["to"], 0))
+            if d.startswith("0x791ac947"):
+                if self.revert:
+                    raise RuntimeError("eth_call at rpc.example.org: {'message': 'execution reverted: PancakeRouter: INSUFFICIENT_OUTPUT_AMOUNT'}")
+                return "0x"
+        return {"eth_chainId": "0x38", "eth_getBalance": hex(self.bal), "eth_gasPrice": hex(5 * 10 ** 7), "eth_getTransactionCount": hex(self.nonce),
+                "eth_getCode": self.code.get(params[0] if params else None, "0x"), "eth_getTransactionByHash": {"blockNumber": "0x10"},
+                "eth_getBlockReceipts": [{"transactionHash": h_, "status": "0x1"} for h_ in self.hashes]}[method]
+
+
+def wallet_run(argv, answers, chain):
+    BW.rpc = chain.rpc; BW.ask = lambda prompt: answers.pop(0); out = io.StringIO()
+    with contextlib.redirect_stdout(out):
+        try:
+            BW.main(argv); code = None
+        except SystemExit as e:
+            code = str(e)
+    return out.getvalue(), code
+
+
+DEST = "0x" + "d1" * 20; WPOS = os.path.join(TMP, "bnb_positions_w.json"); os.environ["BNB_POSITIONS_FILE"] = WPOS
+wc = WalletChain(); o, code = wallet_run(["withdraw", DEST.upper().replace("0X", "0x")], [DEST], wc)
+assert code is None and len(wc.sent) == 1 and wc.sent[0] == {"nonce": 3, "gasPrice": 10 ** 8, "gas": 21000, "to": DEST, "value": 26 * 10 ** 15 - 21000 * 10 ** 8, "data": ""}, (o, wc.sent)
+assert ("sent: " + wc.hashes[0]) in o and "mined in block 16: ok" in o and KEY[2:] not in o and "k3y" not in o and "via rpc.example.org" in o, o
+for argv, answers, setup, want in ((["withdraw", DEST], ["0x" + "d2" * 20], None, "not the same address"), (["withdraw", WALLET], [], None, "the wallet itself"),
+                                   (["withdraw", DEST], [], lambda c: c.code.__setitem__(DEST, "0x6080"), "is a contract"),
+                                   (["withdraw", DEST], [], lambda c: setattr(BW, "live_running", lambda: True), "runs live"),
+                                   (["withdraw", DEST], [], lambda c: json.dump({"positions": {PAIR: {"token": TOKEN, "state": "approved"}}}, open(WPOS, "w")), "open live position"),
+                                   (["sweep", TOKEN], [], None, "holds this token as an open position"),
+                                   (["sweep", "0x" + "c7" * 20], ["no"], lambda c: os.remove(WPOS), "nothing sent")):
+    wc = WalletChain()
+    if setup:
+        setup(wc)
+    o, code = wallet_run(argv, answers, wc); BW.live_running = lambda: False
+    assert code and want in code and not wc.sent and KEY[2:] not in o + code, (want, code, o)
+wc = WalletChain(); o, code = wallet_run(["sweep", "0x" + "c7" * 20], ["yes"], wc)
+exp = E.amount_out(10 ** 18, 5 * 10 ** 20, 2 * 10 ** 18)
+assert code is None and [t["data"][:8] for t in wc.sent] == ["095ea7b3", "791ac947"] and [t["nonce"] for t in wc.sent] == [3, 4] and wc.sent[0]["to"] == "0x" + "c7" * 20, (o, code)
+amt, mo, path, to_, _ = dec(S_T, wc.sent[1])
+assert (amt, mo, [p_.lower() for p_ in path], to_.lower(), wc.sent[1]["to"], wc.sent[1]["gas"]) == (10 ** 18, exp * 900000 // 10 ** 6, ["0x" + "c7" * 20, WBNB], WALLET, E.ROUTER, 300000)
+wc = WalletChain(); wc.allow = {"0x" + "c7" * 20: 2 ** 256 - 1}; wc.revert = True; o, code = wallet_run(["sweep", "0x" + "c7" * 20, "0.3"], ["yes"], wc)
+assert "the sale would revert" in code and not wc.sent
+os.environ.pop("BNB_POSITIONS_FILE")
+print("ok deploy/bnb_wallet.py withdraw: the whole balance less 21,000 gas at 0.1 gwei to an address typed twice, signed on the box for chain "
+      "56, the hash printed and never the key; refused when retyped wrong, to itself, to a contract, while flip-bnb runs live or holds "
+      "positions; sweep: approve then the sale through the router (minOut 90% of the reserves' price), simulated first, on a typed yes; "
+      "refused for a token the engine holds, on a no, or when the simulated sale reverts")
+
+# 36. the unit and the runbook: flip-bnb sees nothing of /etc/flip but its own two files (a mask on the directory survives the renames of
+# set_kv's sed -i, new_wallet.py and RUNBOOK 4h; engine.env.bak is under it), keeps no capability but CAP_DAC_READ_SEARCH (flip-engine's
+# /proc environ, which holds its key, needs CAP_SYS_PTRACE) and dumps no core; RUNBOOK 4k's commands touch bnb.env only, never set_kv
+unit = open(os.path.join(ROOT, "deploy", "flip-bnb.service")).read()
+svc = dict(l_.split("=", 1) for l_ in unit.split("[Service]")[1].split("[Install]")[0].splitlines() if "=" in l_ and not l_.startswith("#"))
+assert svc["TemporaryFileSystem"] == "/etc/flip:ro" and svc["CapabilityBoundingSet"] == "CAP_DAC_READ_SEARCH" and svc["LimitCORE"] == "0" and "User" not in svc
+assert svc["BindReadOnlyPaths"].split() == ["-/etc/flip/bnb.key", "-/etc/flip/bnb.env"] and "InaccessiblePaths" not in svc and svc["ReadWritePaths"] == "/var/log/flip"
+assert svc["ProtectSystem"] == "strict" and svc["ProtectHome"] == "read-only" and svc["NoNewPrivileges"] == "yes" and svc["EnvironmentFile"] == "/etc/flip/bnb.env"
+rb = open(os.path.join(ROOT, "docs", "RUNBOOK.md")).read(); k4 = rb[rb.index("## 4k."):rb.index("## 5. Daily")]
+cmds = [l_ for l_ in k4.splitlines() if l_.startswith("    ")] + re.findall(r"`([^`\n]*sudo[^`\n]*)`", k4)
+assert cmds and not [c_ for c_ in cmds if "set_kv" in c_ or "engine.env" in c_ or "cat /etc/flip/bnb.key" in c_], [c_ for c_ in cmds if "set_kv" in c_ or "engine.env" in c_]
+assert "set_bnb() {" in k4 and "import the key" not in k4 and "bnb_wallet.py withdraw" in k4
+print("ok the unit: /etc/flip an empty read-only tmpfs with bnb.key and bnb.env bound in, CAP_DAC_READ_SEARCH alone, no core; RUNBOOK 4k: "
+      "its own set_bnb (bnb.env only), no set_kv, never engine.env, never the key on a screen, the BNB back by bnb_wallet.py withdraw")
+
+while LIVES:
+    LIVES.pop().close()
 E.LIVE = None; E.STAKE_USD = 15; E.MAX_RANGE = 40
-shutil.rmtree(TMP, ignore_errors=True)
-os.remove(LOG)
+shutil.rmtree(TMP, ignore_errors=True)                                           # (the live tests' log is in it)

@@ -33,6 +33,12 @@ def setting(k, d=None):
     return v if v is not None else d
 
 
+def own_file(path):
+    """the BNB line's own file in the shared /var/log/flip (src/bnb_live.py's rule): HALTED.bnb, or a name that starts with bnb"""
+    b = os.path.basename(path)
+    return b == "HALTED.bnb" or b.startswith("bnb")
+
+
 def wallet_balance(wallet, url):
     """the wallet's BNB by eth_getBalance (only the URL's host is ever printed: the URL may hold a provider's key)"""
     try:
@@ -47,8 +53,9 @@ def live_section(ev, st, fl, n_g):
     """LIVE vs CONTROL, the halt, the open positions and the day, the wallet"""
     live = [e for e in ev if e["ev"] == "trade_done" and e.get("live")]; dry = [e for e in ev if e["ev"] == "trade_done" and e.get("dry")]
     usd = fl.get("bnb_usd") or st.get("bnb_usd") or 0
-    print("\nLIVE vs CONTROL (every %s-th launch of a traded size live at $%g, the others dry; the trades that ended in the window)"
-          % (st.get("probe_every", "?"), st.get("stake_usd", 0)))
+    sizes = ", ".join("%g" % x for x in st.get("live_pool_bnb") or []) or "every traded"
+    print("\nLIVE vs CONTROL (every %s-th launch of the %s BNB pools live at $%g, the others of those sizes dry; the trades that ended in the window)"
+          % (st.get("probe_every", "?"), sizes, st.get("stake_usd", 0)))
     print("  %-38s %5s %8s %8s %6s | %9s" % ("", "count", "mean", "median", "up", "$"))
 
     def row(name, rets, dollars, note=""):
@@ -76,7 +83,10 @@ def live_section(ev, st, fl, n_g):
         print("  pre-buy checks: %d, refused %d%s" % (len(checked), len(refused), (" (the last: %s)" % str(refused[-1].get("why"))[:80]) if refused else ""))
     halt_file = setting("BNB_HALT_FILE") or os.path.join(os.path.dirname(os.path.abspath(LOG)), "HALTED.bnb")
     pos_file = setting("BNB_POSITIONS_FILE") or os.path.join(os.path.dirname(os.path.abspath(LOG)), "bnb_positions.json")
-    if os.path.exists(halt_file):
+    if not own_file(halt_file):                                                # never tell the owner to remove flip-engine's halt (/var/log/flip/HALTED)
+        print("BNB_HALT_FILE %s is not the line's own file (HALTED.bnb or a name starting with bnb): the live engine refuses to start with it; "
+              "fix /etc/flip/bnb.env" % halt_file)
+    elif os.path.exists(halt_file):
         try:
             why = open(halt_file).read().strip()[:150] or "(empty file)"
         except OSError:

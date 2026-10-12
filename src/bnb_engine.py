@@ -694,6 +694,8 @@ def checks():
 def main(argv):
     global LIVE
     replay = None
+    if os.path.basename(LOG_PATH).startswith(("HALTED", "engine.jsonl", "flip_engine")):   # /var/log/flip is shared: never flip-engine's log or a halt file
+        raise SystemExit(f"BNB_LOG_PATH {LOG_PATH} names a halt file or flip-engine's log: the BNB line logs to its own file (bnb.jsonl)")
     if len(argv) >= 3 and argv[0] == "--replay":
         replay = (int(argv[1]), int(argv[2]))
         if os.path.abspath(LOG_PATH) == DEFAULT_LOG:
