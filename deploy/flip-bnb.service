@@ -13,6 +13,8 @@
 #     contains flip-engine's). No core dumps (LimitCORE=0: the BNB key is in its memory when live).
 #   To check on the box (prints names only): sudo nsenter -t $(systemctl show -p MainPID --value flip-bnb) -m ls /etc/flip
 #   lists bnb.env and bnb.key only.
+# A stop (SIGTERM) live sends nothing new and lets the worker finish the step it is in (up to 8 s; TimeoutStopSec=30 covers it); a
+# crash restarts in 5 s (RestartSec=5: the whole hold is about 95 s).
 # RUNBOOK 4i installs it:
 #     sudo cp ~/v2pons/deploy/flip-bnb.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now flip-bnb
 # The paths are the box's clone (/home/ubuntu/v2pons, as in flip-engine.service); change both lines if the clone is elsewhere.
@@ -26,8 +28,8 @@ EnvironmentFile=/etc/flip/bnb.env
 WorkingDirectory=/home/ubuntu/v2pons
 ExecStart=/opt/flip-venv/bin/python3 /home/ubuntu/v2pons/src/bnb_engine.py
 Restart=always
-RestartSec=30
-TimeoutStopSec=10
+RestartSec=5
+TimeoutStopSec=30
 Nice=10
 CPUQuota=50%
 MemoryMax=400M

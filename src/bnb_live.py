@@ -23,12 +23,18 @@ From the wallet straight through the PancakeSwap V2 router (no contract of ours 
     BNB out (the WBNB the pair paid the router), the gas of every transaction, the P&L in BNB, $ and % beside the dry price of the same
     trade: a trade_done line with live: true.
 One worker thread signs and sends everything: the nonce comes from the RPC (pending) once, is kept in memory and is read again after any
-nonce error. Gas: a fixed limit per call (BNB_GAS_BUY/APPROVE/SELL), the price eth_gasPrice kept between BNB_MIN_GWEI and BNB_MAX_GWEI.
-The gate halts the line (HALTED.bnb beside the log): a dump before +997 on a traded pool, no crowd buy in +60..+260 on a traded pool, any
-reverted buy, approve or sell, a negative median over the first 10 live trades, then over any 10 in a row, and 3 live trades in a row
-under -50%. A halt stops new buys and still sells what is open. BNB_DAILY_STOP_USD of losses stops new buys for the rest of the UTC day.
+nonce error. Gas: a fixed limit per call (BNB_GAS_BUY/APPROVE/SELL; twice it after an out-of-gas revert), the price eth_gasPrice kept
+between BNB_MIN_GWEI and BNB_MAX_GWEI. Every send goes to every send endpoint at once; with no receipt a copy goes again each
+BNB_REBROADCAST_S, and one the node holds unmined is replaced at its nonce after BNB_REPLACE_S (1/8 dearer; a buy past its deadline by a
+0-value transfer to the wallet). Receipts are acted on once their block is final. Reads BNB_RPC_URL cannot answer are asked once at
+BNB_READ_ALT_URL; the worker reads the head itself when the reader gives none for 3 s, and extrapolates it when nothing answers for 10 s.
+The gate halts the line (HALTED.bnb beside the log; the owner's own HALTED.bnb holds without a restart): a dump before +997 on any pool of
+the line (the skipped sizes aside), no crowd buy in +60..+260 on a traded pool whose logs were all read, any reverted buy, approve or
+sell, a negative median over the first 10 live trades, then over any 10 in a row, and 3 live trades in a row under -50%. A halt stops
+new buys and still sells what is open. BNB_DAILY_STOP_USD of losses stops new buys for the rest of the UTC day.
 Open positions and the pools they need are written to bnb_positions.json beside the log on every change and taken back at the start
-(sold at once when past their sell block); one live engine at a time holds bnb_positions.json.lock.
+(sold at once when past their sell block; a position whose last transaction has no receipt waits for it); one live engine at a time
+holds bnb_positions.json.lock and the key file's lock (deploy/bnb_wallet.py takes the same).
 
 The key is read from BNB_KEY_FILE (mode 600, owned by this process's user, made by deploy/bnb_wallet.py) and is never printed, logged or
 written anywhere.
@@ -49,7 +55,10 @@ ART = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
 OPEN = ("buying", "buy_sent", "bought", "approve_sent", "approved", "sell_sent", "stuck")   # a position holding (or buying) tokens: never dropped
 TOKEN_CODEHASHES = "0x18449a1624d9c5270bd1526d891e72a37319e8a08eb3fe687b5ad707e1c487bc,"  \
                    "0x5faca89801207abc52605eeb2ba37eec664b0e6668d96513bcb11f616d441356"     # keccak of the launcher's two token templates (1,365 and 2,995 bytes), Oct 12
-FAST = {"tries": 1, "timeout": 3}                                                    # a read on the buy's own path: one try, 3 s
+FAST = {"tries": 1, "timeout": 3, "alt": False}                                      # a read on the buy's own path: one try, 3 s, no second endpoint
+BLOCK_S = 0.45                                                                       # BNB Chain's block time (Oct 12): a head extrapolated while blind
+HEAD_BLIND_S = 10                                                                    # no head from any source this long: extrapolated
+ZERO_READS = 6                                                                       # a token balance of 0 at the sale read this many times, 1 s apart, before it counts
 w = lambda x: "%064x" % x
 a = lambda s: "%064x" % int(s, 16)
 
@@ -119,10 +128,12 @@ class Live:
             raise SystemExit("BNB_LIVE=1 needs BNB_WALLET=0x... (the address deploy/bnb_wallet.py printed)")
         self.key_file = env("BNB_KEY_FILE", "/etc/flip/bnb.key")
         self.send_urls = list(dict.fromkeys(u for u in (env("BNB_SEND_URL", E.RPC_URL), env("BNB_SEND_ALT_URL", "https://bsc-dataseed.bnbchain.org")) if u != "0"))
-        for u in self.send_urls:
+        ra = env("BNB_READ_ALT_URL", env("BNB_SEND_ALT_URL", "https://bsc-dataseed.bnbchain.org"))
+        self.read_alt = ra if ra not in ("0", E.RPC_URL) else None                      # a read BNB_RPC_URL failed is asked here once
+        for u in self.send_urls + ([self.read_alt] if self.read_alt else []):
             x = urllib.parse.urlparse(u)
             if x.scheme != "https" or not x.hostname:
-                raise SystemExit(f"BNB_SEND_URL / BNB_SEND_ALT_URL must be https URLs (host {E.host(u)})")
+                raise SystemExit(f"BNB_SEND_URL / BNB_SEND_ALT_URL / BNB_READ_ALT_URL must be https URLs (host {E.host(u)})")
         if E.STAKE_USD > 10:                                                            # the probe is $5 (REPORT_BNB section 5): 15 is the dry run's
             raise SystemExit(f"BNB_STAKE_USD {E.STAKE_USD:g} is over $10: the live line is the $5 probe; set BNB_STAKE_USD=5 in /etc/flip/bnb.env")
         self.SLIP = s("BNB_SLIP", "0.05", 0.001, 0.15); self.SLIP_PPM = int(round(self.SLIP * 1e6))     # integer arithmetic for every bound
@@ -139,6 +150,10 @@ class Live:
         self.RECEIPT_WAIT_S = s("BNB_RECEIPT_WAIT_S", "20", 5, 3600)
         self.BUY_LATE = s("BNB_BUY_LATE", "7", 0, 1000, True)                         # blocks past L+BUY_AT (by the head) after which a buy is not sent
         self.SELL_LATE = s("BNB_SELL_LATE", "20", 1, 1000, True)                      # blocks past L+SELL_AT (by the head) at which a lagging reader's position is sold
+        if E.LAG_BLOCKS >= self.BUY_LATE:                                               # the reader sees L+BUY_AT LAG_BLOCKS behind the head: every buy would be late
+            raise SystemExit(f"BNB_LAG_BLOCKS {E.LAG_BLOCKS} must stay below BNB_BUY_LATE {self.BUY_LATE}: every live buy would count as late")
+        self.REBROADCAST_S = s("BNB_REBROADCAST_S", "5", 1, 600)                       # a transaction with no receipt is sent again to every endpoint this often
+        self.REPLACE_S = s("BNB_REPLACE_S", "8", 2, 3600)                              # an approve or sell pending this long is signed anew at its nonce, its gas price raised
         self.LIVE_SIZES = E._sizes("BNB_LIVE_POOL_BNB", "1,10,25")                    # REPORT_BNB section 5: 1, 10 and 25 first, 2.5 later
         self.CODEHASHES = {h.strip().lower() for h in env("BNB_TOKEN_CODEHASHES", TOKEN_CODEHASHES).split(",") if h.strip()}
         if not self.CODEHASHES or not all(re.fullmatch(r"0x[0-9a-f]{64}", h) for h in self.CODEHASHES):
@@ -163,22 +178,46 @@ class Live:
         self.mined_nonces, self.new_codes = {}, set()                                   # nonce -> our transaction mined with it; code hashes alarmed once
         self.POLL_S = 0.4                                                                # a transaction's receipt asked at most this often
         self.REBROADCAST_BEFORE_S = 10; self.EXPIRED_AFTER_S = 15                       # a copy is sent again only this long before its deadline; dropped this long after
-        self.dirty = False; self.snapped_at = 0.0
-        try:                                                                            # one live engine at a time: one nonce sequence, one positions file
-            self.lock_fd = os.open(self.POS_FILE + ".lock", os.O_RDWR | os.O_CREAT, 0o600)
+        self.MAX_REPLACE = 3                                                             # replacements of one pending transaction at most
+        self.dirty = False; self.snapped_at = 0.0; self.thread = None
+        self.halt_written = True; self.halt_seen_at = 0.0                              # the halt file written (else tried again at each save); last looked at
+        self.head_val, self.head_ok_at, self.head_polled_at = None, time.monotonic(), 0.0   # the newest head known and when a source last answered
+        self.HEAD_POLL_S, self.HEAD_BLIND_S = 3.0, HEAD_BLIND_S                        # the worker asks the head itself after this long without one; extrapolates after this
+        self.fin, self.fin_at = None, -1e9                                               # the chain's finalized block, read at most every POLL_S
+        self.off_at, self.SELFTEST_RETRY_S = 0.0, 300                                   # a failed self-test is run again this often
+        self.lock_fds = []
+        try:                                                                            # one live engine at a time: one positions file, and one user of the key (its nonce)
+            for path, flags in ((self.POS_FILE + ".lock", os.O_RDWR | os.O_CREAT), (self.key_file, os.O_RDONLY)):
+                fd = os.open(path, flags, 0o600); self.lock_fds.append(fd)
+                try:
+                    fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                except BlockingIOError:
+                    raise SystemExit(f"another live BNB engine holds {path} (the service and a manual run at once, or bnb_wallet.py running?): stop it first") from None
         except OSError as e:
-            raise SystemExit(f"{self.POS_FILE}.lock cannot be opened ({e.strerror})") from None
-        try:
-            fcntl.flock(self.lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError:
-            os.close(self.lock_fd)
-            raise SystemExit(f"another live BNB engine holds {self.POS_FILE}.lock (the service and a manual run at once?): stop it first") from None
+            self.close()
+            raise SystemExit(f"{self.POS_FILE}.lock or the key file cannot be opened ({e.strerror})") from None
+        except SystemExit:
+            self.close(); raise
 
     def close(self):
-        """the worker stops and the instance lock is let go (a process's exit does the same)"""
+        """the worker stops and the instance locks are let go (a process's exit does the same)"""
         self.stop = True
-        if getattr(self, "lock_fd", None) is not None:
-            os.close(self.lock_fd); self.lock_fd = None
+        for fd in getattr(self, "lock_fds", []):
+            os.close(fd)
+        self.lock_fds = []
+
+    def shutdown(self, wait_s=8):
+        """SIGTERM (a restart, a deploy, the owner's stop): nothing new is sent, the worker finishes the step it is in (a transaction being
+        sent is recorded before its send and its state saved after it), the positions file is written, then the process exits"""
+        self.stop = True
+        t = self.thread
+        if t is not None and t is not threading.current_thread():
+            t.join(wait_s)
+        if self.lock.acquire(timeout=2):                                                # (a worker stuck past the wait must not hold the exit)
+            try:
+                self.save()
+            finally:
+                self.lock.release()
 
     # ------------------------------------------------------------ the key: read once, checked against BNB_WALLET, never shown
     def load_key(self):
@@ -216,7 +255,7 @@ class Live:
 
     def scrub(self, x, n=200):
         t = self.E.scrub(x, 10 ** 6)
-        for u in self.send_urls:
+        for u in self.send_urls + ([self.read_alt] if getattr(self, "read_alt", None) else []):
             t = t.replace(u, self.E.host(u))
             try:
                 p = urllib.parse.urlparse(u)
@@ -247,6 +286,18 @@ class Live:
         self.roll_day()
         if self.off:
             return "live is off for this run: " + self.off
+        if not self.halted and time.monotonic() - self.halt_seen_at >= 1:                # the owner's stop (echo ... > HALTED.bnb) holds without a restart
+            self.halt_seen_at = time.monotonic()
+            if os.path.exists(self.HALT_FILE):
+                try:
+                    with open(self.HALT_FILE) as f:
+                        why = f.read().strip()[:300] or "halted"
+                except OSError:
+                    why = "halted"
+                self.halted = why
+                self.alarm(f"the BNB line halted by its halt file: {why}; open positions are still sold; remove {self.HALT_FILE} and restart flip-bnb to resume",
+                           halt_file=self.HALT_FILE)
+                self.mark()
         if self.halted:
             return "halted: " + self.halted
         if self.pnl_today <= -self.DAILY_STOP:
@@ -264,14 +315,21 @@ class Live:
             for k in [k for k, x in self.pos.items() if x["state"] in ("armed", "checked", "buy_due")]:
                 self.drop(k, "held", "the line halted before the buy")
         if first:
-            try:
-                with open(self.HALT_FILE, "w") as f:
-                    f.write(reason + "\n")
-            except Exception as e:
-                self.alarm(f"the halt file {self.HALT_FILE} could not be written ({self.scrub(e, 80)}): the halt holds in memory until a restart")
+            self.write_halt()
         self.alarm(f"the BNB line halted: {reason}; open positions are still sold; remove {self.HALT_FILE} and restart flip-bnb to resume" if first
                    else f"the BNB line (already halted) would halt again: {reason}", halt_file=self.HALT_FILE)
         self.mark()
+
+    def write_halt(self):
+        """the halt file; one that cannot be written is tried again at every save, and the positions file says so (a restart keeps the halt)"""
+        try:
+            with open(self.HALT_FILE, "w") as f:
+                f.write(self.halted + "\n")
+            self.halt_written = True
+        except Exception as e:
+            first = self.halt_written; self.halt_written = False
+            if first:
+                self.alarm(f"the halt file {self.HALT_FILE} could not be written ({self.scrub(e, 80)}): tried again at every save; the positions file keeps the halt")
 
     def drop(self, pair, role, why):
         """a position that never bought: the pool stays dry (its role says why)"""
@@ -280,8 +338,30 @@ class Live:
         self.log({"ev": "live_skip", "pair": pair, "L": x["L"] if x else None, "role": role, "why": why})
 
     # ------------------------------------------------------------ chain reads (the engine's RPC: tried again, never the key)
-    def rpc(self, method, params, tries=3, timeout=10):
-        return self.E.rpc(method, params, tries=tries, timeout=timeout)
+    def rpc(self, method, params, tries=3, timeout=10, alt=True):
+        """the engine's RPC; a read it could not answer is asked once at BNB_READ_ALT_URL (the sale's reads, the receipts and the nonce
+        must not depend on one public node). Not for the buy's own fast reads (alt False: they have their own fallbacks)"""
+        try:
+            return self.E.rpc(method, params, tries=tries, timeout=timeout)
+        except Exception as e:
+            if not (alt and self.read_alt):
+                raise
+            try:
+                return self.alt_rpc(method, params, timeout)
+            except Exception as e2:
+                raise RuntimeError(f"{self.scrub(e, 120)}; at {self.E.host(self.read_alt)}: {self.scrub(e2, 120)}") from None
+
+    def alt_rpc(self, method, params, timeout):
+        """one JSON-RPC call to BNB_READ_ALT_URL (an error names its host only)"""
+        req = urllib.request.Request(self.read_alt, json.dumps({"jsonrpc": "2.0", "id": 1, "method": method, "params": params}).encode(),
+                                     {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 Chrome/128"})
+        try:
+            d = json.load(urllib.request.urlopen(req, timeout=timeout))
+        except urllib.error.HTTPError as e:
+            raise RuntimeError(f"{method}: HTTP {e.code}") from None
+        if not isinstance(d, dict) or "result" not in d:
+            raise RuntimeError(f"{method}: {self.scrub(json.dumps((d or {}).get('error') if isinstance(d, dict) else d), 160)}")
+        return d["result"]
 
     def gas_price(self, fast=False):
         """eth_gasPrice kept between BNB_MIN_GWEI and BNB_MAX_GWEI (fast, on the buy's path: one try of 3 s, else the floor)"""
@@ -344,31 +424,69 @@ class Live:
         msg = self.scrub((err or {}).get("message") if isinstance(err, dict) else err, 160)
         return reply_kind(msg), msg
 
+    def post_all(self, raw):
+        """the same signed transaction to every send endpoint at once (one transaction has one hash: a second copy is harmless, and an
+        endpoint that takes it but does not pass it on is covered by the other): [(kind, message, host)], back at the first ok/in (the
+        other posts finish on their own), else when every endpoint answered"""
+        if len(self.send_urls) == 1:
+            u = self.send_urls[0]; k, msg = self.post(u, raw)
+            return [(k, msg, self.E.host(u))]
+        q = queue.Queue()
+
+        def one(u):
+            try:
+                k, msg = self.post(u, raw)
+            except Exception as e:
+                k, msg = "unknown", self.scrub(e, 120)
+            q.put((k, msg, self.E.host(u)))
+        for u in self.send_urls:
+            threading.Thread(target=one, args=(u,), daemon=True).start()
+        out = []
+        for _ in self.send_urls:
+            try:
+                out.append(q.get(timeout=15))                                          # (post() gives up after 4 s)
+            except queue.Empty:
+                break
+            if out[-1][0] in ("ok", "in"):
+                break
+        return out
+
     def broadcast(self, raw):
-        """the same signed transaction to each send endpoint in turn until one takes it (one transaction has one hash: a second copy is
-        harmless); a second round when no endpoint gave a definite answer. Otherwise the most telling answer: nonce, rejected, unknown"""
+        """the transaction to every send endpoint (post_all): taken when one says ok or already known; a second round when no endpoint
+        gave a definite answer. Otherwise the most telling answer: nonce, rejected, unknown"""
         got = []
         for _ in range(2):
-            for u in self.send_urls:
-                k, msg = self.post(u, raw)
-                if k in ("ok", "in"):
-                    return k, msg, self.E.host(u)
-                got.append((k, msg, self.E.host(u)))
+            for g in self.post_all(raw):
+                if g[0] in ("ok", "in"):
+                    return g
+                got.append(g)
             if any(k != "unknown" for k, _, _ in got):
                 break
-        return next(g for want in ("nonce", "rejected", "unknown") for g in got if g[0] == want)
+        return next((g for want in ("nonce", "rejected", "unknown") for g in got if g[0] == want), ("unknown", "no answer", "-"))
 
     def read_nonce(self):
         self.nonce = int(self.rpc("eth_getTransactionCount", [self.wallet, "pending"]), 16)
         self.log({"ev": "live_nonce", "nonce": self.nonce})
         return self.nonce
 
-    def send_tx(self, x, kind, to, value, data, gas, gp, info):
+    def send_tx(self, x, kind, to, value, data, gas, gp, info, nonce=None):
         """sign with the sequencer's nonce and send; the record is written before the send (a restart finds it). Returns the record, or
-        None when nothing went in. A nonce error reads the nonce again and signs anew (at most 3 times), unless this very transaction is
-        already known (a copy that went in)."""
-        for attempt in range(3):
-            n = self.nonce if self.nonce is not None else self.read_nonce()
+        None when nothing went in (also when the nonce cannot be read, or the engine is stopping). A nonce error reads the nonce again and
+        signs anew (at most 3 times), unless this very transaction is already known (a copy that went in). With nonce: a replacement of a
+        pending transaction at that nonce, signed once; the sequence is not touched, and a refusal leaves the pending one as it was."""
+        if self.stop:
+            return None
+        for attempt in range(3 if nonce is None else 1):
+            if nonce is not None:
+                n = nonce
+            elif self.nonce is not None:
+                n = self.nonce
+            else:
+                try:
+                    n = self.read_nonce()
+                except Exception as e:
+                    self.alarm(f"the {kind} was not sent: the wallet's nonce was not read ({self.scrub(e, 80)})", quiet_key="nonce-read", every_s=60, pair=x["pair"])
+                    return None
             raw, h = self.sign({"nonce": n, "gasPrice": gp, "gas": gas, "to": self.checksum(to), "value": value, "data": data, "chainId": self.E.CHAIN_ID})
             rec = {"kind": kind, "hash": h, "nonce": n, "gas": gas, "gas_price": gp, "value": value, "raw": raw, "sent_at": time.time(), "rebroadcast": 0, **info}
             with self.lock:
@@ -380,11 +498,15 @@ class Live:
             self.log({"ev": "live_send", "kind": kind, "pair": x["pair"], "L": x["L"], "hash": h, "nonce": n, "gas": gas, "gwei": gp / 1e9, "value_wei": value,
                       **info, "reply": k, "detail": msg, "via": via, "attempt": attempt + 1})
             if k in ("ok", "in", "unknown"):                                       # unknown: perhaps in; its receipt (or its absence) decides
-                self.nonce = n + 1 if k != "unknown" else None
+                if nonce is None:
+                    self.nonce = n + 1 if k != "unknown" else None
                 return rec
             with self.lock:
                 x["txs"].remove(rec); self.hashes.discard(h)
             self.save()
+            if nonce is not None:                                                       # a replacement not taken: the pending one stays
+                self.alarm(f"the {kind}'s replacement at nonce {n} was not taken ({k}: {msg})", quiet_key="replace-" + kind, every_s=60, pair=x["pair"])
+                return None
             if k == "nonce":
                 self.nonce = None; continue
             self.alarm(f"the {kind} was refused by the node ({msg}): nothing went in", quiet_key="refused-" + kind, every_s=60, pair=x["pair"])
@@ -438,17 +560,24 @@ class Live:
         self.mark()
 
     def on_sell(self, p, B, back):
-        """the engine's sale at L+SELL_AT: the live position is sold; a traded pool with no crowd buy in +60..+260 halts the line"""
+        """the engine's sale at L+SELL_AT: the live position is sold; a traded pool with no crowd buy in +60..+260 halts the line, when
+        its logs were all read (after a restart or a jump the crowd's buys in the blocks missed were never seen: an alarm, not a halt)"""
         q = p["q"]; dry = {"dry_ret": round((back - q - int(round(self.E.GAS_UNITS * self.E.GAS_GWEI * 1e9))) / q, 6), "dry_ret_gross": round((back - q) / q, 6), "dry_back_wei": back}
         self.sell_due(p, f"sell at +{self.E.SELL_AT}", dry, B)
         if p["pair"] in self.traded and p["crowd_gate"] == 0:
-            self.halt(f"no crowd buy in +{self.E.GATE_CROWD_FROM}..+{self.E.SELL_AT} on a traded pool ({p['pair']}, {p['size']:g} BNB)")
+            why = f"no crowd buy in +{self.E.GATE_CROWD_FROM}..+{self.E.SELL_AT} on a traded pool ({p['pair']}, {p['size']:g} BNB)"
+            if p["gaps"] or p["breaks"]:
+                self.alarm(f"gate not judged (blocks or logs missed: gaps {p['gaps']}, breaks {p['breaks']}): {why}", pair=p["pair"])
+            else:
+                self.halt(why)
 
     def on_dump(self, p, off):
-        """a dump: an open position is sold at once; before +997 on a traded pool it halts the line"""
+        """a dump: an open position is sold at once; before +997 on any pool of the line (traded, control or not traded live; the 15-BNB
+        pools aside) it halts the line: the creator's schedule (+997 at the earliest, REPORT_BNB section 3) has changed"""
         self.sell_due(p, f"the dump at +{off}", {"dry_ret": -1.0, "dry_ret_gross": -1.0, "dry_back_wei": 0}, None)
-        if p["pair"] in self.traded and off < self.E.GATE_DUMP_BEFORE:
-            self.halt(f"a dump at +{off}, before +{self.E.GATE_DUMP_BEFORE}, on a traded pool ({p['pair']}, {p['size']:g} BNB)")
+        if not p["skip"] and off < self.E.GATE_DUMP_BEFORE:
+            self.halt(f"a dump at +{off}, before +{self.E.GATE_DUMP_BEFORE}, on a {'traded' if p['pair'] in self.traded else 'watched'} pool of the line "
+                      f"({p['pair']}, {p['size'] or 0:g} BNB, {self.roles.get(p['pair']) or 'no slot'})")
 
     def on_finish(self, p, why):
         """the pool is no longer watched: an open position with no sale due is sold at once; one that never bought is dropped"""
@@ -515,32 +644,88 @@ class Live:
                 self.read_balance()
             except Exception:
                 self.balance_at = time.monotonic()
+        self.poll_head()
+        if self.off and self.off.startswith("the pre-buy check's self-test") and time.monotonic() - self.off_at >= self.SELFTEST_RETRY_S:
+            self.off_at = time.monotonic(); why = self.self_test()                      # a failed self-test (a brief RPC error at the start) is run again
+            if why is None:
+                self.off = None; self.alarm("live is on again: the pre-buy check's self-test passed")
+            else:
+                self.alarm(f"live is still off: {why}", quiet_key="selftest", every_s=3600)
         self.sell_by_head()
         with self.lock:
-            pairs = list(self.pos)
+            pairs = sorted(self.pos, key=lambda k: not self.pos[k].get("sell_due"))   # a sale due first: it never waits behind a check or a buy
         for pair in pairs:
+            if self.stop:
+                break
             x = self.pos.get(pair)
             if x is None:
                 continue
-            st = x["state"]
-            if st == "armed":
-                self.check(x)
-            elif st == "buy_due":
-                self.buy(x)
-            elif st in ("buy_sent", "approve_sent", "sell_sent"):
-                self.poll(x)
-            elif st == "bought" and time.time() >= x.get("sell_wait", 0):
-                self.approve(x)
-            elif st == "approved" and x.get("sell_due") and time.time() >= x.get("sell_wait", 0):
-                self.sell(x)
+            try:                                                                        # one position's trouble (a read that keeps failing) never starves the others
+                self.step(x)
+            except Exception as e:
+                self.alarm(f"live ({pair}): {type(e).__name__}: {self.scrub(e)}", quiet_key="live-" + pair, every_s=60, pair=pair, trace=self.scrub(traceback.format_exc(), 400))
         if self.dirty:
             self.save()
+
+    def step(self, x):
+        st = x["state"]
+        if st == "armed":
+            self.check(x)
+        elif st == "buy_due":
+            self.buy(x)
+        elif st == "buying":                                                            # left over (buy() resolves its own): a buy record decides
+            self.unbuying(x, "a buy left half-sent")
+        elif st in ("buy_sent", "approve_sent", "sell_sent"):
+            self.poll(x)
+        elif st == "bought" and time.time() >= x.get("sell_wait", 0):
+            self.approve(x)
+        elif st == "approved" and x.get("sell_due") and time.time() >= x.get("sell_wait", 0):
+            self.sell(x)
+
+    def unbuying(self, x, why):
+        """a position stopped in 'buying': with a buy record it was (perhaps) sent, so its receipt decides; without one nothing went"""
+        with self.lock:
+            if self.pos.get(x["pair"]) is not x or x["state"] != "buying":
+                return
+            if any(t["kind"] == "buy" for t in x["txs"]):
+                x["state"] = "buy_sent"; self.traded.add(x["pair"])
+            else:
+                self.traded.discard(x["pair"]); self.drop(x["pair"], "unsent", f"the buy was not sent ({why})")
+        self.save()
+
+    # ------------------------------------------------------------ the chain's head as the worker knows it
+    def head(self):
+        """the newest head known (no network): the reader's (its websocket or its eth_blockNumber) or the worker's own poll; when no source
+        has answered for HEAD_BLIND_S, extrapolated at BLOCK_S a block (a sale must not wait on a stalled reader and a dead feed)"""
+        h = self.E.state.get("head")
+        if h and (self.head_val is None or h > self.head_val):
+            self.head_val, self.head_ok_at = h, time.monotonic()
+        if self.head_val is None:
+            return None
+        blind = time.monotonic() - self.head_ok_at
+        return self.head_val + (int(blind / BLOCK_S) if blind > self.HEAD_BLIND_S else 0)
+
+    def poll_head(self):
+        """the worker asks eth_blockNumber itself (with the read fallback) when no head came for HEAD_POLL_S: the reader polls only between
+        its own calls, which can hang for tens of seconds"""
+        self.head()
+        now = time.monotonic()
+        if now - self.head_ok_at < self.HEAD_POLL_S or now - self.head_polled_at < 1:
+            return
+        self.head_polled_at = now
+        try:
+            n = int(self.rpc("eth_blockNumber", [], tries=1, timeout=3), 16)
+        except Exception as e:
+            self.alarm(f"no head from the reader for {now - self.head_ok_at:.0f} s and eth_blockNumber not read ({self.scrub(e, 80)})", quiet_key="headpoll", every_s=60)
+            return
+        if self.head_val is None or n >= self.head_val:
+            self.head_val, self.head_ok_at = n, now
 
     def sell_by_head(self):
         """the sale follows the chain, not the reader: while the reader lags (an RPC stall; it jumps only MAX_BEHIND blocks behind), a
         position holding (or buying) tokens is sold once the head is BNB_SELL_LATE blocks past its L+SELL_AT, long before the creator's
         earliest drain (+997); the sale reads the pool's reserves then"""
-        head = self.E.state.get("head")
+        head = self.head()
         if not head:
             return
         late = []
@@ -548,7 +733,8 @@ class Live:
             for x in self.pos.values():
                 off = head - self.E.LAG_BLOCKS - x["L"]
                 if x["state"] in ("buy_sent", "bought", "approve_sent", "approved") and not x.get("sell_due") and off >= self.E.SELL_AT + self.SELL_LATE:
-                    x["sell_due"] = {"why": f"the reader is behind: sold by the head (L+{head - x['L']})", "r_wbnb": None, "r_token": None, "block": None, "at": time.time()}
+                    est = "" if head == self.head_val else ", estimated: no head for %.0f s" % (time.monotonic() - self.head_ok_at)
+                    x["sell_due"] = {"why": f"the reader is behind: sold by the head (L+{head - x['L']}{est})", "r_wbnb": None, "r_token": None, "block": None, "at": time.time()}
                     late.append((x["pair"], off))
         for pair, off in late:
             self.alarm(f"the reader is {head - (self.E.state.get('done_to') or 0)} blocks behind the head: a live position sold by the head at +{off}", pair=pair)
@@ -616,9 +802,10 @@ class Live:
 
     def late(self, x):
         """(how many blocks after L+BUY_AT a buy sent now lands at the earliest, the head): the next block after the chain's head, never
-        the reader's done_to alone (it lags the head by LAG_BLOCKS, and by up to MAX_BEHIND while it catches up after an RPC stall)"""
+        the reader's done_to alone (it lags the head by LAG_BLOCKS, and by up to MAX_BEHIND while it catches up after an RPC stall; inside a
+        range it still holds the range before: the block the engine fired in was already read, so the head is past it too)"""
         done_to = self.E.state.get("done_to") or 0
-        head = max(self.E.state.get("head") or 0, done_to + self.E.LAG_BLOCKS)
+        head = max(self.head() or 0, done_to + self.E.LAG_BLOCKS, (x.get("fire_block") or 0) - 1 + self.E.LAG_BLOCKS)
         return head + 1 - (x["L"] + self.E.BUY_AT), head
 
     def buy(self, x):
@@ -638,6 +825,13 @@ class Live:
             if why:
                 self.drop(x["pair"], "held", why); self.save(); return
             x["state"] = "buying"                                                       # from here no hook drops it; a sale due is kept
+        try:
+            self.buy_send(x)
+        except Exception as e:                                                          # never left in 'buying': a buy record decides
+            self.alarm(f"the buy failed: {type(e).__name__}: {self.scrub(e)}", pair=x["pair"], trace=self.scrub(traceback.format_exc(), 400))
+            self.unbuying(x, f"{type(e).__name__}: {self.scrub(e, 80)}")
+
+    def buy_send(self, x):
         gp = self.gas_price(fast=True)                                                  # the buy's own reads: one try of 3 s each
         need = x["q"] + sum(self.GAS.values()) * gp; err = None
         try:
@@ -666,6 +860,9 @@ class Live:
                 min_out = max(min_out, bound(tok_f, x.get("f_buy", x["factor_ppm"]), self.SLIP_PPM))
         if not why and x.get("sell_due"):                                               # a dump or the pool's end seen by the reader during the reads
             why = "the pool was dumped or dropped before the buy (%s)" % x["sell_due"]["why"]
+        if not why:                                                                     # a halt (another pool's) or the daily stop during the reads
+            with self.lock:
+                why = self.blocked(exclude=x["pair"])
         late, head = self.late(x)                                                       # measured on the chain, after the reads, just before the send
         if not why and late > self.BUY_LATE:
             why = f"the buy would go {late} blocks late (it lands at L+{self.E.BUY_AT + late} at the earliest, the head at {head}; BNB_BUY_LATE {self.BUY_LATE})"
@@ -687,7 +884,7 @@ class Live:
     def approve(self, x):
         if x["token"] in self.approved:
             x["state"] = "approved"; self.save(); return
-        rec = self.send_tx(x, "approve", x["token"], 0, approve_data(self.E.ROUTER), self.GAS["approve"], self.gas_price(), {})
+        rec = self.send_tx(x, "approve", x["token"], 0, approve_data(self.E.ROUTER), x.get("gas_approve") or self.GAS["approve"], self.gas_price(), {})
         if rec is not None:
             x["state"] = "approve_sent"
         else:
@@ -703,46 +900,92 @@ class Live:
                 x["sell_wait"] = time.time() + 1; return                                # not read: tried again, never taken for none
             bal = x["tokens"]
         if bal <= 0:
-            x["bnb_out"] = 0; self.settle(x, "the wallet holds none of the token at the sale")
-            self.halt(f"the wallet held none of the token it bought at the sale ({x['pair']})"); return
-        if tries == 0 and due.get("r_wbnb"):
-            rq, rt = due["r_wbnb"], due["r_token"]                                      # the engine's reserves at the sale
-        else:
+            if any(t["kind"] == "sell" and t.get("block") is None and not t.get("unseen") for t in x["txs"]):
+                x["state"] = "sell_sent"; self.save(); return                           # a sale already on its way (a stop right after its send): its receipt decides
+            x["zero_reads"] = x.get("zero_reads", 0) + 1
+            if x["zero_reads"] < ZERO_READS:                                            # one node behind the buy, or a balance that reads 0 a moment: asked again
+                x["sell_wait"] = time.time() + 1; return
+            with self.lock:
+                x["state"] = "stuck"
+            self.alarm(f"the wallet's balance of the token read 0 {x['zero_reads']} times, 1 s apart, at the sale (bought {x.get('tokens')}): kept as stuck, "
+                       "not settled; look at the wallet on bscscan", pair=x["pair"], token=x["token"])
+            self.halt(f"the wallet held none of the token it bought at the sale ({x['pair']})"); self.save(); return
+        x["zero_reads"] = 0
+        head = self.head()
+        if tries == 0 and due.get("r_wbnb") and due.get("block") is not None and (head is None or head - self.E.LAG_BLOCKS - due["block"] <= 5):
+            rq, rt = due["r_wbnb"], due["r_token"]                                      # the engine's reserves at the sale, read near the head
+        else:                                                                           # a sale by the head, after a dump, the pool's end or a jump: the pool now
             try:
                 rq, rt = self.reserves(x["pair"], x["side"])
             except Exception:
                 x["sell_wait"] = time.time() + 1; return
         slip = min(900_000, self.SLIP_PPM * 2 ** tries)                                 # doubled on each sell after a revert
         expected = self.E.amount_out(bal, rt, rq); min_out = bound(expected, x.get("f_sell", x["factor_ppm"]), slip); dl = int(time.time()) + self.DEADLINE_S
-        rec = self.send_tx(x, "sell", self.E.ROUTER, 0, sell_data(bal, min_out, x["token"], self.wallet, dl, self.E.WBNB), self.GAS["sell"], self.gas_price(),
-                           {"amount": bal, "min_out": min_out, "expected": expected, "slip": slip / PPM, "deadline": dl, "why": due["why"]})
+        rec = self.send_tx(x, "sell", self.E.ROUTER, 0, sell_data(bal, min_out, x["token"], self.wallet, dl, self.E.WBNB), x.get("gas_sell") or self.GAS["sell"],
+                           self.gas_price(), {"amount": bal, "min_out": min_out, "expected": expected, "slip": slip / PPM, "deadline": dl, "why": due["why"]})
         if rec is not None:
             x["state"] = "sell_sent"
         else:
             x["sell_wait"] = time.time() + 2
         self.save()
 
+    def finalized(self):
+        """the chain's finalized block (BNB Chain's fast finality: about 2 blocks behind the head), read at most every POLL_S; None when
+        it cannot be read (a receipt is then acted on at once)"""
+        now = time.monotonic()
+        if now - self.fin_at >= self.POLL_S:
+            self.fin_at = now
+            try:
+                self.fin = int(self.rpc("eth_getBlockByNumber", ["finalized", False], tries=1, timeout=3)["number"], 16)
+            except Exception as e:
+                self.fin = None
+                self.alarm(f"the finalized block not read ({self.scrub(e, 80)}): receipts acted on at the tip", quiet_key="finalized", every_s=600)
+        return self.fin
+
+    def pending(self, x):
+        """the position's transactions at its last one's nonce with no receipt yet: the last one and the ones it replaces"""
+        n = x["txs"][-1]["nonce"]
+        return [t for t in x["txs"] if t["nonce"] == n and t.get("block") is None and not t.get("unseen")]
+
     def poll(self, x):
-        """the receipt of the position's last transaction. One the node does not know after BNB_RECEIPT_WAIT_S is sent again once, while
-        its deadline is more than REBROADCAST_BEFORE_S ahead (a copy mined at or past its deadline could only revert, 'EXPIRED', and a
-        reverted buy halts the line). After twice the wait and EXPIRED_AFTER_S past its deadline (a copy that is mined then can only
-        revert: it can leave no tokens), it is dropped when its nonce is not mined, or went to another transaction of ours; when its nonce
-        is mined and the node cannot show it (a lagging or partial backend), the chain's state decides (unseen())"""
+        """the receipt of the position's last transaction (or of one it replaced at the same nonce), acted on once its block is final.
+        With no receipt, a copy goes to every endpoint each BNB_REBROADCAST_S, whether the node knows it or not, while its deadline is
+        REBROADCAST_BEFORE_S away or more (a copy mined at or past its deadline could only revert, 'EXPIRED', and a reverted buy halts the
+        line). One the node knows but does not mine is replaced at its nonce after BNB_REPLACE_S, its gas price raised: an approve or a
+        sell anew (a sell on fresh reserves and deadline), a buy past its deadline by a 0-value transfer to the wallet (it could only
+        revert, and it holds every later nonce). One the node does not know after twice BNB_RECEIPT_WAIT_S and EXPIRED_AFTER_S past its
+        deadline (a copy mined then can only revert: it can leave no tokens) is dropped when its nonce is not mined (a buy whose tokens are
+        in the wallet aside), or went to another transaction of ours; when its nonce is mined and the node cannot show it (a lagging or
+        partial backend), the chain's state decides (unseen())"""
         rec = x["txs"][-1]; now = time.time()
         if now - rec.get("polled", 0) < self.POLL_S:
             return
         rec["polled"] = now
-        r, known = self.receipt(rec["hash"])
-        if r is not None:
-            return self.on_receipt(x, rec, r)
+        group = self.pending(x) or [rec]; known = False
+        for t in group[::-1]:
+            r, k = self.receipt(t["hash"])
+            if r is not None:
+                fin = self.finalized()
+                if fin is not None and int(r["blockNumber"], 16) > fin:
+                    return                                                              # acted on once final: a reorg can still undo it
+                with self.lock:
+                    for o in group:
+                        if o is not t:
+                            x["txs"].remove(o)
+                            self.log({"ev": "live_replaced", "kind": o["kind"], "pair": x["pair"], "hash": o["hash"], "nonce": o["nonce"], "by": t["hash"]})
+                return self.on_receipt(x, t, r)
+            known = known or k
         age = now - rec["sent_at"]; dl = rec.get("deadline")
-        if known or age < self.RECEIPT_WAIT_S:
-            if known and age > 2 * self.RECEIPT_WAIT_S:
+        if now - rec.get("copied_at", rec["sent_at"]) >= self.REBROADCAST_S and (dl is None or now < dl - self.REBROADCAST_BEFORE_S):
+            rec["copied_at"] = now; rec["rebroadcast"] = rec.get("rebroadcast", 0) + 1; k, msg, via = self.broadcast(rec["raw"])
+            self.log({"ev": "live_rebroadcast", "kind": rec["kind"], "pair": x["pair"], "hash": rec["hash"], "reply": k, "detail": msg, "via": via, "known": known})
+        if known:
+            if age >= self.REPLACE_S and len(group) <= self.MAX_REPLACE and not rec.get("no_replace"):
+                if rec["kind"] in ("approve", "sell", "cancel") or (rec["kind"] == "buy" and dl is not None and now >= dl):
+                    return self.replace(x, rec)
+            if age > 2 * self.RECEIPT_WAIT_S:
                 self.alarm(f"the {rec['kind']} has been pending {age:.0f} s", quiet_key="pending", every_s=300, pair=x["pair"], hash=rec["hash"])
             return
-        if rec["rebroadcast"] == 0 and (dl is None or now < dl - self.REBROADCAST_BEFORE_S):
-            rec["rebroadcast"] = 1; k, msg, via = self.broadcast(rec["raw"])
-            self.log({"ev": "live_rebroadcast", "kind": rec["kind"], "pair": x["pair"], "hash": rec["hash"], "reply": k, "detail": msg, "via": via}); return
         if age < 2 * self.RECEIPT_WAIT_S or (dl is not None and now < dl + self.EXPIRED_AFTER_S):
             return
         try:
@@ -752,18 +995,53 @@ class Live:
         if mined <= rec["nonce"]:
             if self.known(rec["hash"]):
                 return
+            if rec["kind"] == "buy":                                                     # a node that lags may not count the nonce yet: the wallet's tokens decide
+                try:
+                    if self.token_balance(x["token"]) > 0:
+                        return self.unseen(x, rec, now, dl)
+                except Exception:
+                    return
             return self.unsent(x, rec, f"was never mined (the node does not know it; mined nonces {mined})")
         other = self.mined_nonces.get(rec["nonce"])
         if other and other != rec["hash"]:
             return self.unsent(x, rec, f"was not mined: its nonce {rec['nonce']} went to our {other}")
         self.unseen(x, rec, now, dl)
 
+    def replace(self, x, rec):
+        """the pending transaction signed anew at its nonce, the gas price raised by 1/8 (the node takes a replacement 10% dearer), up to
+        BNB_MAX_GWEI: an approve as it was, a sell on the pool now with a fresh deadline, a buy past its deadline (or a cancel) by a
+        0-value transfer to the wallet"""
+        hi = int(round(self.MAX_GWEI * 1e9)); gp = min(hi, max(rec["gas_price"] * 9 // 8 + 1, self.gas_price()))
+        if gp * 10 < rec["gas_price"] * 11:
+            rec["no_replace"] = True
+            self.alarm(f"the {rec['kind']} {rec['hash']} is pending at {rec['gas_price'] / 1e9:g} gwei and cannot be replaced under BNB_MAX_GWEI {self.MAX_GWEI:g}", pair=x["pair"])
+            return
+        info = {"replaces": rec["hash"]}
+        if rec["kind"] == "sell":
+            try:
+                rq, rt = self.reserves(x["pair"], x["side"])
+            except Exception:
+                return
+            exp = self.E.amount_out(rec["amount"], rt, rq); slip = int(round(rec["slip"] * PPM)); mo = bound(exp, x.get("f_sell", x["factor_ppm"]), slip)
+            dl = int(time.time()) + self.DEADLINE_S
+            info.update(amount=rec["amount"], min_out=mo, expected=exp, slip=rec["slip"], deadline=dl, why=rec.get("why"))
+            new = self.send_tx(x, "sell", self.E.ROUTER, 0, sell_data(rec["amount"], mo, x["token"], self.wallet, dl, self.E.WBNB), rec["gas"], gp, info, nonce=rec["nonce"])
+        elif rec["kind"] == "approve":
+            new = self.send_tx(x, "approve", x["token"], 0, approve_data(self.E.ROUTER), rec["gas"], gp, info, nonce=rec["nonce"])
+        else:
+            new = self.send_tx(x, "cancel", self.wallet, 0, "0x", 21000, gp, info, nonce=rec["nonce"])
+        self.log({"ev": "live_replace", "kind": rec["kind"], "pair": x["pair"], "nonce": rec["nonce"], "old": rec["hash"], "new": new["hash"] if new else None,
+                  "as": new["kind"] if new else None, "gwei": gp / 1e9})
+
     def unsent(self, x, rec, what):
-        """a transaction that never went in: dropped (a buy: the slot unsent; an approve or a sell: sent again at a fresh nonce)"""
+        """a transaction that never went in: dropped with the ones it replaced (a buy: the slot unsent; an approve or a sell: sent again at
+        a fresh nonce)"""
         self.alarm(f"the {rec['kind']} {rec['hash']} {what}: dropped", pair=x["pair"])
         with self.lock:
-            x["txs"].remove(rec); self.hashes.discard(rec["hash"]); self.nonce = None
-            if rec["kind"] == "buy":
+            for t in self.pending(x):
+                x["txs"].remove(t); self.hashes.discard(t["hash"])
+            self.nonce = None
+            if rec["kind"] in ("buy", "cancel"):
                 self.traded.discard(x["pair"]); self.drop(x["pair"], "unsent", "the buy was never mined")
             else:
                 x["state"] = "bought" if rec["kind"] == "approve" else "approved"
@@ -772,36 +1050,52 @@ class Live:
     def unseen(self, x, rec, now, dl):
         """its nonce was mined but the node cannot show the transaction (only this engine holds the key: most likely it is ours, behind a
         lagging or partial backend). The chain's state decides: a buy whose token the wallet holds is kept as bought (BNB in its value, its
-        gas the most it could cost), a sell whose token the wallet no longer holds is settled (BNB out its minOut, a floor; out of the
-        gate's medians; no halt), an approve whose allowance is there is done; a sell whose tokens are still there is sent again; a buy
-        whose token is not there is polled (an alarm every 5 min) until 10 waits past its deadline, then dropped"""
+        gas the most it could cost), a sell whose token the wallet no longer holds is settled (BNB out its minOut, the lowest of the ones
+        at that nonce: a floor; out of the gate's medians; no halt), an approve whose allowance is there is done; a sell whose tokens are
+        still there is sent again; a buy whose token is not there is polled (an alarm every 5 min) until 10 waits past its deadline, then
+        dropped and the line halted (a mined buy that left no tokens is most likely a revert the node hides); a cancel whose buy left no
+        tokens is dropped"""
         kind, h = rec["kind"], rec["hash"]
         try:
             bal = self.token_balance(x["token"]); allowed = self.allowance(x["token"]) if kind == "approve" else 0
         except Exception:
             return                                                                      # asked again at the next poll
-        cost = rec["gas"] * rec["gas_price"]
-        if kind == "buy" and bal > 0:
+        group = self.pending(x) or [rec]; cost = max(t["gas"] * t["gas_price"] for t in group)
+        buy = next((t for t in group if t["kind"] == "buy"), None)
+
+        def took(t):
+            """t taken as the one mined at that nonce; the ones it replaced (or that replaced it) dropped"""
             with self.lock:
-                rec.update(unseen=True, gas_wei=cost); x["gas_wei"] += cost; self.mined_nonces[rec["nonce"]] = h
-                x.update(tokens=bal, bnb_in=rec["value"], state="bought", unconfirmed="the buy's receipt was never shown: BNB in is its value, its gas the most it could cost")
-            self.alarm(f"the buy {h} is not shown by the node but its nonce was mined and the wallet holds {bal} of the token: kept as bought", pair=x["pair"])
+                for o in group:
+                    if o is not t:
+                        x["txs"].remove(o)
+                t.update(unseen=True, gas_wei=cost); x["gas_wei"] += cost; self.mined_nonces[t["nonce"]] = t["hash"]
+        if kind in ("buy", "cancel") and bal > 0 and buy is not None:
+            took(buy)
+            with self.lock:
+                x.update(tokens=bal, bnb_in=buy["value"], state="bought", unconfirmed="the buy's receipt was never shown: BNB in is its value, its gas the most it could cost")
+            self.alarm(f"the buy {buy['hash']} is not shown by the node but its nonce was mined and the wallet holds {bal} of the token: kept as bought", pair=x["pair"])
         elif kind == "sell" and bal == 0:
-            rec.update(unseen=True, gas_wei=cost); x["gas_wei"] += cost; self.mined_nonces[rec["nonce"]] = h
-            x.update(bnb_out=rec["min_out"], bnb_out_floor=True, state="done", unconfirmed="the sell's receipt was never shown: BNB out is its minOut (a floor)")
+            took(rec)
+            x.update(bnb_out=min(t["min_out"] for t in group if t["kind"] == "sell"), bnb_out_floor=True, state="done",
+                     unconfirmed="the sell's receipt was never shown: BNB out is its minOut (a floor)")
             self.alarm(f"the sell {h} is not shown by the node but its nonce was mined and the wallet holds none of the token: settled at its minOut "
                        "(a floor; look at the wallet on bscscan)", pair=x["pair"])
             self.settle(x, x["sell_due"]["why"]); return
         elif kind == "approve" and allowed >= max(bal, 1):
+            took(rec)
             with self.lock:
-                rec.update(unseen=True, gas_wei=cost); x["gas_wei"] += cost; self.mined_nonces[rec["nonce"]] = h
                 self.approved.add(x["token"]); x["state"] = "approved"
-        elif kind == "buy" and now < (dl if dl is not None else rec["sent_at"]) + 10 * self.RECEIPT_WAIT_S:
-            self.alarm(f"the buy {h}: its nonce was mined but the node shows neither it nor its tokens: polled on", quiet_key="unseen-" + h, every_s=300, pair=x["pair"])
+        elif kind in ("buy", "cancel") and now < (dl if dl is not None else rec["sent_at"]) + 10 * self.RECEIPT_WAIT_S:
+            self.alarm(f"the {kind} {h}: its nonce was mined but the node shows neither it nor the buy's tokens: polled on", quiet_key="unseen-" + h, every_s=300, pair=x["pair"])
             return
         else:
-            return self.unsent(x, rec, "was not seen (its nonce was mined; the wallet " + ("holds none of the token)" if kind == "buy" else
-                                                                                           "still holds the token)" if kind == "sell" else "has no allowance)"))
+            self.unsent(x, rec, "was not seen (its nonce was mined; the wallet " + ("holds none of the token)" if kind in ("buy", "cancel") else
+                                                                                    "still holds the token)" if kind == "sell" else "has no allowance)"))
+            if kind == "buy":
+                self.halt(f"a buy whose nonce was mined shows neither itself nor its tokens {10 * self.RECEIPT_WAIT_S:.0f} s past its deadline: a revert the node "
+                          f"hides? ({x['pair']}, {h})")
+            return
         self.save()
 
     def on_receipt(self, x, rec, r):
@@ -811,8 +1105,16 @@ class Live:
         self.log({"ev": "live_receipt", "kind": rec["kind"], "pair": x["pair"], "hash": rec["hash"], "status": int(ok), "block": rec["block"], "off": rec["block"] - x["L"],
                   "gas_used": used, "gas_wei": gas})
         kind = rec["kind"]
+        if kind == "cancel":                                                            # the buy past its deadline replaced: nothing bought, the nonce freed
+            with self.lock:
+                self.pnl_today -= gas / 1e18 * self.E.bnb_usd(); self.traded.discard(x["pair"])
+                self.drop(x["pair"], "unsent", "the buy was cancelled: still pending past its deadline (a 0-value transfer took its nonce)")
+            self.save(); return
         if not ok:
             self.halt(f"a reverted {kind} ({x['pair']}, {rec['hash']})")
+            if kind in ("approve", "sell") and used * 100 >= 97 * rec["gas"]:               # out of gas (a token that swaps its fees on a sell): twice the limit next
+                x["gas_" + kind] = min(600_000, 2 * rec["gas"])
+                self.alarm(f"the {kind} ran out of gas ({used} of {rec['gas']}): the next {kind} gets {x['gas_' + kind]}", pair=x["pair"])
             if kind == "buy":
                 x["bnb_in"] = 0; x["state"] = "done"; self.settle(x, "the buy reverted", reverted="buy"); return
             if kind == "approve":
@@ -880,14 +1182,21 @@ class Live:
         """the positions file, written whole (a temporary file, then a rename) by the worker (and at the start); the reader's thread marks"""
         with self.lock:
             self.saved_at = time.monotonic(); self.dirty = False
+            if self.halted and not self.halt_written:                                   # a halt file that could not be written: tried again
+                self.write_halt()
             d = {"saved_at": round(time.time(), 3), "wallet": self.wallet, "positions": self.pos, "pools": {k: v for k, v in self.snaps.items() if k in self.pos or k in self.traded},
                  "traded": sorted(self.traded), "gate_rets": self.gate_rets, "recent_rets": self.recent, "day": self.day, "pnl_today_usd": round(self.pnl_today, 6), "eligible": self.eligible,
-                 "approved": sorted(self.approved), "halted": self.halted}
+                 "approved": sorted(self.approved), "halted": self.halted, "halt_written": self.halt_written}
             tmp = self.POS_FILE + ".tmp"
             try:
                 with open(tmp, "w") as f:
                     f.write(json.dumps(d, separators=(",", ":"))); f.flush(); os.fsync(f.fileno())
                 os.replace(tmp, self.POS_FILE)
+                fd = os.open(os.path.dirname(os.path.abspath(self.POS_FILE)), os.O_RDONLY)    # the rename itself on disk (a power loss must not bring the old file back)
+                try:
+                    os.fsync(fd)
+                finally:
+                    os.close(fd)
             except Exception as e:
                 self.alarm(f"{self.POS_FILE} not written ({self.scrub(e, 80)}): a restart now would not find the open positions", quiet_key="posfile", every_s=60)
 
@@ -895,25 +1204,34 @@ class Live:
         """at the start (after the engine's checks): the halt file, the positions file, the wallet, the check's self-test; the worker"""
         if os.path.exists(self.HALT_FILE):
             self.halted = (open(self.HALT_FILE).read().strip() or "halted")[:300]
+        if head:
+            self.head_val, self.head_ok_at = head, time.monotonic()
         resumed = self.resume(head)
         try:
             self.read_balance(); self.read_nonce()
         except Exception as e:
             self.alarm(f"the wallet's balance or nonce not read at the start ({self.scrub(e, 80)})")
+        self.off = self.self_test(); self.off_at = time.monotonic()
+        if self.off:
+            self.alarm(f"live is off until the self-test passes (it is run again every {self.SELFTEST_RETRY_S} s): {self.off}")
+        if thread:
+            self.thread = threading.Thread(target=self.run, name="live", daemon=True); self.thread.start()
+        return {"live": True, "wallet": self.wallet, "send": [self.E.host(u) for u in self.send_urls], "slip": self.SLIP, "probe_every": self.PROBE_EVERY,
+                "max_open": self.MAX_OPEN, "daily_stop_usd": self.DAILY_STOP, "gas_limits": self.GAS, "gwei": [self.MIN_GWEI, self.MAX_GWEI], "deadline_s": self.DEADLINE_S,
+                "check_min": self.CHECK_MIN, "max_stake_bnb": self.MAX_STAKE / 1e18, "live_pool_bnb": self.LIVE_SIZES, "buy_late": self.BUY_LATE,
+                "sell_late": self.SELL_LATE, "receipt_wait_s": self.RECEIPT_WAIT_S, "rebroadcast_s": self.REBROADCAST_S, "replace_s": self.REPLACE_S,
+                "read_alt": self.E.host(self.read_alt) if self.read_alt else None, "token_codehashes": len(self.CODEHASHES), "halted": self.halted, "live_off": self.off, "resumed": resumed,
+                "balance_bnb": self.balance / 1e18 if self.balance is not None else None, "nonce": self.nonce, "halt_file": self.HALT_FILE, "positions_file": self.POS_FILE}
+
+    def self_test(self):
+        """the pre-buy check's own test: a round trip of USDT by state override; None when it passes, else why"""
         try:
             stage, tokens, back, est = self.simulate(USDT, 10 ** 15)
             if stage != 0 or back < 0.9 * 10 ** 15:
                 raise ValueError(f"stage {stage}, back {back}")
         except Exception as e:
-            self.off = f"the pre-buy check's self-test failed ({self.scrub(e, 120)}): does BNB_RPC_URL take eth_call state overrides?"
-            self.alarm(f"live is off for this run: {self.off}")
-        if thread:
-            threading.Thread(target=self.run, name="live", daemon=True).start()
-        return {"live": True, "wallet": self.wallet, "send": [self.E.host(u) for u in self.send_urls], "slip": self.SLIP, "probe_every": self.PROBE_EVERY,
-                "max_open": self.MAX_OPEN, "daily_stop_usd": self.DAILY_STOP, "gas_limits": self.GAS, "gwei": [self.MIN_GWEI, self.MAX_GWEI], "deadline_s": self.DEADLINE_S,
-                "check_min": self.CHECK_MIN, "max_stake_bnb": self.MAX_STAKE / 1e18, "live_pool_bnb": self.LIVE_SIZES, "buy_late": self.BUY_LATE,
-                "sell_late": self.SELL_LATE, "receipt_wait_s": self.RECEIPT_WAIT_S, "token_codehashes": len(self.CODEHASHES), "halted": self.halted, "live_off": self.off, "resumed": resumed,
-                "balance_bnb": self.balance / 1e18 if self.balance is not None else None, "nonce": self.nonce, "halt_file": self.HALT_FILE, "positions_file": self.POS_FILE}
+            return f"the pre-buy check's self-test failed ({self.scrub(e, 120)}): does BNB_RPC_URL take eth_call state overrides?"
+        return None
 
     def resume(self, head):
         """the positions file: every position that bought (or may have) is taken back with its pool; one past its sell block, or whose pool
@@ -926,6 +1244,9 @@ class Live:
             raise SystemExit(f"{self.POS_FILE} is not readable JSON ({type(e).__name__}): it may hold open positions; look at it, then move it away") from None
         if (d.get("wallet") or self.wallet) != self.wallet:
             raise SystemExit(f"{self.POS_FILE} is for the wallet {d.get('wallet')}, BNB_WALLET is {self.wallet}: move it away first")
+        if d.get("halted") and not self.halted and d.get("halt_written") is False:     # a halt whose file was never written (not one the owner removed)
+            self.halted = d["halted"]; self.halt_written = False
+            self.alarm(f"the positions file holds a halt whose file was never written: it holds ({self.halted})")
         self.gate_rets = list(d.get("gate_rets") or []); self.approved = set(d.get("approved") or []); self.eligible = int(d.get("eligible") or 0)
         self.recent = list(d.get("recent_rets") or self.gate_rets)[-self.E.GATE_PROBES:]
         if d.get("day") == self.today():
@@ -935,6 +1256,12 @@ class Live:
         for pair, x in (d.get("positions") or {}).items():
             if x.get("state") == "buying":                                              # stopped while sending its buy: its record says whether one went
                 x["state"] = "buy_sent" if x.get("txs") else "dropped"
+            last = (x.get("txs") or [None])[-1]
+            if x.get("state") in OPEN and last and last.get("block") is None and not last.get("unseen"):
+                want = {"buy": "buy_sent", "cancel": "buy_sent", "approve": "approve_sent", "sell": "sell_sent"}[last["kind"]]
+                if want != x["state"]:                                                  # stopped after a send, before its state was saved: its receipt decides
+                    self.log({"ev": "live_resume", "pair": pair, "what": f"its last {last['kind']} has no receipt: {x['state']} taken as {want}"})
+                    x["state"] = want
             if x.get("state") not in OPEN:
                 self.log({"ev": "live_resume", "pair": pair, "state": x.get("state"), "what": "never bought: dropped"}); continue
             x["resumed"] = True; self.pos[pair] = x; self.traded.add(pair); self.roles[pair] = "live"; n += 1
@@ -967,7 +1294,7 @@ class Live:
             if x.get("sell_due") is None and (pair not in E.pools or lag_head - x["L"] >= E.SELL_AT):
                 x["sell_due"] = {"why": "past its sell block at the start" if pair in E.pools else "resumed without its pool", "r_wbnb": None, "r_token": None, "block": None, "at": time.time()}
             if x["state"] == "stuck":
-                x["state"] = "approved" if x["token"] in self.approved else "bought"; x["sell_tries"] = 0; x["approve_tries"] = 0
+                x["state"] = "approved" if x["token"] in self.approved else "bought"; x["sell_tries"] = 0; x["approve_tries"] = 0; x["zero_reads"] = 0
             self.log({"ev": "live_resume", "pair": pair, "L": x["L"], "state": x["state"], "sell_due": (x.get("sell_due") or {}).get("why")})
         self.save()
         return n

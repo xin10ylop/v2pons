@@ -719,7 +719,7 @@ def main(argv):
         while state["done_to"] < replay[1]:
             step(replay_to=replay[1])
         flow(force=True); log({"ev": "replay_done", "to": replay[1], "watching": len(pools)}); return
-    signal.signal(signal.SIGTERM, lambda s, f: (log({"ev": "stopped"}), os._exit(0)))
+    signal.signal(signal.SIGTERM, lambda s, f: (LIVE and LIVE.shutdown(), log({"ev": "stopped"}), os._exit(0)))   # live: nothing new sent, the step in flight finished
     state["head_at"] = time.monotonic()
     threading.Thread(target=reader, daemon=True).start()
     try:

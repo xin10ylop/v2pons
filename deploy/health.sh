@@ -23,3 +23,7 @@ if d and not d.get("dry"):                                   # the fields that d
     print("last trade:", {k: d.get(k) for k in ("ret", "pnl_usd", "sell_why", "tp_ret", "buy_offset", "sell_after_buy_blocks", "pull_after_buy_blocks", "pulled_before_sell")})
 '
 /opt/flip-venv/bin/python3 "$REPO/deploy/relay_ops.py" status 2>/dev/null || true
+if [ -f /var/log/flip/bnb.jsonl ]; then                      # the BNB line (flip-bnb): its trouble only, nothing when all is well
+    echo "flip-bnb: $(systemctl is-active flip-bnb 2>/dev/null)"
+    python3 "$REPO/deploy/bnb_results.py" --alerts
+fi

@@ -2240,9 +2240,11 @@ How it is built:
 - One sequencer: a single worker thread signs and sends everything; the nonce is read once (`eth_getTransactionCount` pending), kept in
   memory, read again after any nonce error ("nonce too low/high", "replacement transaction underpriced"), unless that very transaction is
   already known to the node (a copy that went in counts as in). Each transaction's record (hash, nonce, the signed bytes) is written to the
-  positions file before the send. A transaction no endpoint answered for is polled; unknown to the node after `BNB_RECEIPT_WAIT_S` (20 s)
-  it is sent again once while its deadline is 10 s away or more (a copy mined at or past it could only revert), and after twice the wait
-  and 15 s past its deadline it is dropped when its nonce is not mined or went to another of ours (a buy: the slot `unsent`). When its
+  positions file before the send. With no receipt a copy goes to every endpoint each `BNB_REBROADCAST_S` (5 s) while its deadline is
+  10 s away or more (a copy mined at or past it could only revert); one the node holds unmined is replaced at its nonce after
+  `BNB_REPLACE_S` (8 s, 1/8 dearer; a buy past its deadline by a 0-value transfer to the wallet); unknown to the node, after twice
+  `BNB_RECEIPT_WAIT_S` (20 s) and 15 s past its deadline it is dropped when its nonce is not mined or went to another of ours (a buy: the
+  slot `unsent`). When its
   nonce is mined but the node cannot show it, the chain decides: a buy whose tokens are in the wallet is kept (`unconfirmed`), a sell
   whose tokens are gone is settled at its minOut (a floor, out of the gate's medians, no halt), an approve whose allowance is there is
   done; one live engine at a time (`bnb_positions.json.lock`).
@@ -2259,7 +2261,8 @@ How it is built:
   control) (every dry `trade_done` says its `role`: live, control, dry_size, held, refused, unchecked, unsent); `BNB_MAX_OPEN` (2, armed
   slots counted); `BNB_DAILY_STOP_USD` (10: realized losses of the UTC day, gas included; an alarm once, buys again after 00:00 UTC).
   Halts (`/var/log/flip/HALTED.bnb`, its own file; the Robinhood halt files and screens untouched): a dump (a sell or Burn of >= 50% of
-  the WBNB) before +997 on a traded pool, no crowd buy in +60..+260 on a traded pool, any reverted buy, approve or sell, the median of the
+  the WBNB) before +997 on any pool of the line (the skipped 15-BNB pools aside; round 2), no crowd buy in +60..+260 on a traded pool whose
+  logs were all read, any reverted buy, approve or sell, the median of the
   first 10 live trades negative, then of any 10 in a row, and 3 live trades in a row under -50% (kept in the positions file across
   restarts). A halt drops the slots not yet bought and still sells what is open; a halt file at the start holds.
 - Restarts: `/var/log/flip/bnb_positions.json` (its own file, written whole by the worker: open positions, the pools they need, the
@@ -2296,8 +2299,9 @@ gwei, 620 of their 1,598 priced transactions paid exactly 0.05, and `eth_gasPric
 bscrpc.pancakeswap.finance (rpc-bsc.48.club answers 1.0); the launcher and the crowd pay 0.051. At 0.1 gwei a round trip costs about
 0.00003 BNB ($0.02, 0.45% of $5) and orders our transactions ahead of the crowd's in a block.
 
-The endpoint: public. Sends go to `BNB_SEND_URL` (default `BNB_RPC_URL`, publicnode), then to `BNB_SEND_ALT_URL`
-(https://bsc-dataseed.bnbchain.org) only when the first does not answer definitely (the same signed transaction: one hash). Why not a
+The endpoint: public. Sends go to `BNB_SEND_URL` (default `BNB_RPC_URL`, publicnode) and `BNB_SEND_ALT_URL`
+(https://bsc-dataseed.bnbchain.org) at once (round 2; the same signed transaction: one hash); reads `BNB_RPC_URL` cannot answer go once to
+`BNB_READ_ALT_URL` (default the send alternate, which serves `eth_getTransactionReceipt`, `eth_call` and `eth_getTransactionCount`). Why not a
 private-transaction endpoint, in numbers: a sandwich pushes our price by at most the slippage bound (5%) and pays the pool's fee twice on
 its own size; it nets at most 0.05 x (our BNB - 0.0025 x the pool's WBNB). The $5 buy is 0.0067 BNB: at most $0.16 in a 1-BNB pool,
 $0.02 in a 2.5-BNB pool, nothing in 10 and 25 (negative); the sale at L+260 (a 1-BNB pool holds ~1.86 BNB, our tokens ~0.02 BNB) at
@@ -2306,12 +2310,14 @@ of 1,725 a buyer by +3; strangers bought 0.15 BNB in the holds). A private RPC w
 blocks its builders win, its own pricing (48 Club's answers 1 gwei), and a nonce the public RPC cannot see after an error.
 `BNB_SEND_URL` can point at one without a code change (`BNB_SLIP` 0.02 would cut the bound to 2%).
 
-Tests: `tests/test_bnb_engine.py` 43 after the review fixes (the 20 dry ones unchanged, 23 live, with a stubbed chain that decodes every signed transaction:
-rlp, the sender recovered, chain 56, the calldata by `eth_abi`), `tests/data/bnb_receipts.json` (two real receipts of the router's
-`b6f9de95` and `791ac947` calls by other wallets, blocks 127210196/127210200, for the settlement parser); `tests/test_engine.py` 71
-(the Robinhood engine untouched: `src/flip_engine.py`, `tests/test_engine.py` and its deploy files not edited). Mutation checks, each on a
-copy of the tree: the buy's minOut without the slippage (fails the round-trip test), the crowd gate that never trips (fails the gate
-test), no nonce re-read after a nonce error (fails the nonce test), our own swaps not kept out of the dry copy (fails the dry test).
+Tests: `tests/test_bnb_engine.py` 61 after the review's second round (43 after the first; the 20 dry ones unchanged, 41 live, with a
+stubbed chain that decodes every signed transaction: rlp, the sender recovered, chain 56, the calldata by `eth_abi`),
+`tests/data/bnb_receipts.json` (two real receipts of the router's `b6f9de95` and `791ac947` calls by other wallets, blocks
+127210196/127210200, for the settlement parser); `tests/test_engine.py` 76 (the Robinhood engine untouched: `src/flip_engine.py`,
+`tests/test_engine.py` and its deploy files not edited). Mutation checks, each on a copy of the tree: the buy's minOut without the
+slippage (fails the round-trip test), the crowd gate that never trips (fails the gate test), no nonce re-read after a nonce error (fails
+the nonce test), our own swaps not kept out of the dry copy (fails the dry test); round 2: one mutation per fix (41, each in its own
+fresh directory), each failing at its own test (37-54; the line-level dump halt also at test 27).
 
 Open:
 
@@ -2325,8 +2331,16 @@ Open:
 - The key: `deploy/bnb_wallet.py withdraw 0xDEST` sends the BNB back from the box (the key never leaves it), `sweep 0xTOKEN` sells a
   stranded token; the positions file holds signed transactions (public once sent), never the key.
 - Not done from the review: the unit's stronger form (its own user `flipbnb`, `LoadCredential=` for the key, its files in
-  `/var/log/flip/bnb/` with `ReadWritePaths` on that alone). It needs a user, a directory and ownership changes on the box; the root
-  unit with the `/etc/flip` mask and `CAP_DAC_READ_SEARCH` alone closes the three ways to the Robinhood key the review found.
+  `/var/log/flip/bnb/` with `ReadWritePaths` on that alone). It needs a system user, a directory and ownership changes on the box, moves
+  the dry run's log (which `bnb_results.py` and `health.sh` read), and the 750 home needs that user let in: none of it can be run or
+  checked from here. The root unit with the `/etc/flip` mask and `CAP_DAC_READ_SEARCH` alone closes the three ways to the Robinhood key
+  the review found. Do it before the stake goes past the $5 probe.
+- The unit's isolation is checked on paper and by `systemd-analyze verify` only: RUNBOOK 4k step 1's `nsenter ... ls /etc/flip` and
+  `CapBnd` line must be run on the box before `BNB_LIVE=1`.
+- The crowd's buys reverted by ours (the research's 1 in 1,242 launches) are not counted: a reverted transaction has no log, so it
+  needs each block's transactions and receipts (`eth_getBlockByNumber` with transactions and `eth_getBlockReceipts`, a few MB a block
+  over ~70 blocks a trade) on the public node the sale reads from. Better as a check after the first trades (a script over the live
+  trades' blocks) than inside the worker; the crowd rule (no crowd buy in +60..+260) and the median halt catch a crowd that stops.
 
 Review fixes (an adversarial review of a84ca25, two lenses: funds and isolation, trading correctness; 43 tests after them; no
 transaction sent to any chain, the tests' key a dummy one):
@@ -2365,3 +2379,40 @@ transaction sent to any chain, the tests' key a dummy one):
   balance when the Transfer log is not the standard one; the check's artifact refused at the start unless built from the source beside
   it; the key file's owner checked; one live engine at a time (`flock` on `bnb_positions.json.lock`); the check's gas estimate adds what
   a transaction needs on top of the harness's (buy +20k, sell +65k), not its gasUsed.
+
+Review fixes, round 2 (the 23 findings on a84ca25 the first round never saw, and the 11 left open by its check; 61 tests; each fix has a
+test that fails without it: one mutation per fix, each on its own copy of the tree; nothing sent to any chain):
+
+- A sale no longer waits on the reader: the worker reads `eth_blockNumber` itself when no head came for 3 s (the reader polls only
+  between its own calls, which hang up to ~42 s), and with no answer from anywhere for 10 s the head is extrapolated at 0.45 s a block;
+  `late()` and the sale by the head use it, and `late()` also counts the block the engine fired in (a buy woken inside a 40-block catch-up
+  range went out 28 blocks late).
+- A transaction the node knows but never mines: every send goes to every endpoint at once; with no receipt a copy goes each 5 s, known or
+  not; an approve or sell pending 8 s is signed anew at its nonce 1/8 dearer (a sell on fresh reserves and deadline) and whichever is
+  mined settles; a buy pending past its deadline is replaced by a 0-value transfer to the wallet (it could only revert, and it held every
+  later nonce: the wallet froze).
+- A stop between a send and its state's save: a restart takes a position whose last transaction has no receipt as waiting for it; a sale
+  whose tokens are gone while one of our sells has no receipt waits for that receipt (it settled -100% and halted); SIGTERM sends nothing
+  new and lets the worker finish its step (8 s at most), the unit has `TimeoutStopSec=30` and `RestartSec=5` (30 was a third of the hold).
+- A balance of 0 at the sale is read again, 1 s apart, 6 times before the position is called `stuck` (an alarm and a halt; never a -100%
+  trade, never dropped): one read from a node behind the buy settled it at -100% and left the tokens unsold.
+- A buy never stays in `buying`: a nonce not read at its send (HTTP 429) sends nothing and drops the slot; any error inside the send
+  resolves it by its record; a leftover `buying` is resolved by the worker (it kept a `BNB_MAX_OPEN` slot forever).
+- One position's exception no longer stops the others in a tick (an alarm per pair), and a sale due is handled first.
+- Reads have a second endpoint (`BNB_READ_ALT_URL`), the receipts' last fallback included; receipts are acted on once their block is
+  final (`finalized`, about 2 blocks); a sale after the reader's jump, a dump or the pool's end prices its minOut on the pool now (stale
+  reserves made it revert and halt); a sell or approve out of gas is sent again with twice the limit (up to 600,000).
+- The gate: a dump before +997 on any pool of the line halts (control and dry-size pools too: the report's gate is the line's schedule;
+  the 15-BNB pools aside), and no crowd buy halts only a pool whose logs were all read (after a restart the crowd's buys in the missed
+  blocks were never seen: an alarm). `bnb_results.py` counts the two rows as the live line halts, the dry count beside.
+- The halt file: the owner's `echo owner stop > HALTED.bnb` holds within a second, no restart (the restart was the -100% window above);
+  one that cannot be written is tried again at each save and a restart keeps it (`halt_written` in the positions file), while one the
+  owner removed stays removed. A failed self-test at the start is run again every 5 min.
+- Smaller: a halt or the daily stop during the buy's reads cancels it; a hidden buy whose nonce a lagging node does not count yet but
+  whose tokens are in the wallet is kept (it was dropped); a mined nonce with neither the buy nor its tokens 200 s past its deadline halts
+  (a revert the node hides); one user of the key (the engine and `bnb_wallet.py` take a lock on the key file: two engines with different
+  positions files, or a withdraw beside a live engine, are refused); `BNB_LAG_BLOCKS` must stay below `BNB_BUY_LATE`; the positions
+  file's directory fsynced after the rename; `health.sh` prints the BNB trouble (`bnb_results.py --alerts`: the halt, a stuck, overdue
+  or pending position, the last alarm).
+- Already fixed by the first round (checked again): the zero-token fire, the artifact's sha256 checked at the start, the merge of
+  16.22/4j and 16.23/4k. Not done: the unit's own user and the crowd's reverted buys (Open, above).

@@ -9,9 +9,11 @@ and the wallet's balance (BNB_WALLET, read from the RPC; the key file is never o
 
     sudo python3 ~/v2pons/deploy/bnb_results.py          # the last 24 hours
     sudo python3 ~/v2pons/deploy/bnb_results.py 72       # the last 72 hours
+    sudo python3 ~/v2pons/deploy/bnb_results.py --alerts # live trouble only: the halt, a stuck or overdue position, the last alarm (health.sh)
 """
 import glob, gzip, json, os, statistics, subprocess, sys, time, urllib.parse, urllib.request
-HOURS = float(sys.argv[1]) if len(sys.argv) > 1 else 24
+ALERTS = sys.argv[1:2] == ["--alerts"]                                         # health.sh: only what needs the owner now (nothing when all is well)
+HOURS = float(sys.argv[1]) if len(sys.argv) > 1 and not ALERTS else 24
 LOG = os.environ.get("BNB_LOG_PATH") or "/var/log/flip/bnb.jsonl"; SERVICE = "flip-bnb"; LAST = 8
 hms = lambda t: time.strftime("%m-%d %H:%M:%S", time.gmtime(t))
 hm = lambda t: time.strftime("%m-%d %H:%M", time.gmtime(t))
@@ -152,7 +154,43 @@ def stats(rets):
     return "%5d %8s %8s %5.0f%%" % (len(rets), pct(sum(rets) / len(rets)), pct(statistics.median(rets)), 100 * sum(1 for r in rets if r > 0) / len(rets))
 
 
+def alerts():
+    """the line's trouble in a few lines for health.sh (nothing when all is well): the halt, a live position stuck, past its sale by 100
+    blocks or with a sale pending over a minute, and the last alarm of the last 3 hours (the gate's dry alarms aside)"""
+    ev, st, fl, _ = read_logs(3); now = time.time(); out = []
+    halt_file = setting("BNB_HALT_FILE") or os.path.join(os.path.dirname(os.path.abspath(LOG)), "HALTED.bnb")
+    pos_file = setting("BNB_POSITIONS_FILE") or os.path.join(os.path.dirname(os.path.abspath(LOG)), "bnb_positions.json")
+    if own_file(halt_file) and os.path.exists(halt_file):
+        try:
+            why = open(halt_file).read().strip()[:150]
+        except OSError:
+            why = "(not readable: sudo)"
+        out.append("BNB HALTED: %s (no new live buy; open positions still sold; deploy/bnb_results.py has the rest)" % why)
+    try:
+        pos = json.load(open(pos_file)).get("positions") or {}
+    except FileNotFoundError:
+        pos = {}
+    except Exception as e:
+        pos = {}; out.append("BNB positions file %s not read (%s)" % (pos_file, type(e).__name__))
+    head = fl.get("head") or fl.get("done_to"); sell_at = st.get("sell_at", 260)
+    for k, x in pos.items():
+        last = (x.get("txs") or [{}])[-1]; due = x.get("sell_due") or {}
+        if x.get("state") == "stuck":
+            out.append("BNB STUCK %s: the tokens stay in the wallet (%s); a restart of flip-bnb tries to sell them again" % (k[:12], due.get("why") or "no sale"))
+        elif head and x.get("L") and head - x["L"] > sell_at + 100:
+            out.append("BNB SALE OVERDUE %s: %s at L+%d (sold at L+%s)" % (k[:12], x.get("state"), head - x["L"], sell_at))
+        elif x.get("state") == "sell_sent" and last.get("sent_at") and now - last["sent_at"] > 60:
+            out.append("BNB SELL PENDING %s: %.0f s, %s" % (k[:12], now - last["sent_at"], last.get("hash")))
+    al = [e for e in ev if e["ev"] == "alarm" and not str(e.get("what", "")).startswith("gate:")]
+    if out or al:
+        if al:
+            out.append("BNB last alarm %s UTC: %s" % (hms(al[-1]["t"]), str(al[-1].get("what"))[:150]))
+        print("\n".join(out))
+
+
 def main():
+    if ALERTS:
+        return alerts()
     ev, st, fl, all_done = read_logs(HOURS); now = time.time()
     try:
         active = subprocess.run(["systemctl", "is-active", "--quiet", SERVICE], stderr=subprocess.DEVNULL).returncode == 0
@@ -204,9 +242,19 @@ def main():
     # the gate before live money (REPORT_BNB section 5): halts on any of these; the median over the first trades since the engine's start
     early = [e for e in dumps if e["off"] < gb]; nocrowd = [e for e in done if not e.get("pulled_before_sell") and not e.get("crowd_gate")]
     first = [e["dry_ret"] for e in all_done if clean(e) and e.get("t", 0) >= st.get("t", 0)][:n_g]
-    print("\nGATE (would halt the line when live)")
-    print("  %-42s %s" % ("a dump before +%d:" % gb, "TRIPPED x%d (the last %s UTC, +%d, pool %s BNB)" % (len(early), hms(early[-1]["t"]), early[-1]["off"], early[-1].get("pool_bnb")) if early else "none"))
-    print("  %-42s %s" % ("no crowd buy in +%d..+%s:" % (cf, st.get("sell_at", 260)), "TRIPPED x%d (the last %s UTC, %s)" % (len(nocrowd), hms(nocrowd[-1]["t"]), nocrowd[-1]["pair"][:10]) if nocrowd else "none"))
+    all_note = lambda xs, n: "   (all pools, dry: x%d)" % n if n != len(xs) else ""
+    if live:                                                                   # what the live line halts on: a dump on a pool of the line (the skipped sizes
+        skipped = {e["pair"] for e in launches if e.get("skip")}               # aside), no crowd on a pool it traded; the dry count of all pools beside
+        skip_sizes = st.get("skip_pool_bnb") or []
+        early_all, nocrowd_all = len(early), len(nocrowd)
+        early = [e for e in early if e.get("pair") not in skipped and not any(abs((e.get("pool_bnb") or 0) - x) < 0.005 for x in skip_sizes)]
+        traded = {e["pair"] for e in ev if (e["ev"] == "trade_done" and e.get("live")) or (e["ev"] == "live_send" and e.get("kind") == "buy")}
+        nocrowd = [e for e in nocrowd if e["pair"] in traded]
+    print("\nGATE (%s)" % ("halts the live line" if live else "would halt the line when live"))
+    print("  %-42s %s%s" % ("a dump before +%d:" % gb, "TRIPPED x%d (the last %s UTC, +%d, pool %s BNB)" % (len(early), hms(early[-1]["t"]), early[-1]["off"], early[-1].get("pool_bnb")) if early else "none",
+                            all_note(early, early_all) if live else ""))
+    print("  %-42s %s%s" % ("no crowd buy in +%d..+%s:" % (cf, st.get("sell_at", 260)), "TRIPPED x%d (the last %s UTC, %s)" % (len(nocrowd), hms(nocrowd[-1]["t"]), nocrowd[-1]["pair"][:10]) if nocrowd else "none",
+                            all_note(nocrowd, nocrowd_all) if live else ""))
     reverts = [e for e in ev if e["ev"] == "live_receipt" and not e.get("status")]
     print("  %-42s %s" % ("a revert:", ("TRIPPED x%d (the last %s UTC, a %s)" % (len(reverts), hms(reverts[-1]["t"]), reverts[-1].get("kind")) if reverts else "none")
                           if live else "not measurable in a dry run (nothing is sent)"))

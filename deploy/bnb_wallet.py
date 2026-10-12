@@ -10,7 +10,8 @@ create: a new key goes to /etc/flip/bnb.key (or the path given), created mode 60
 replaced); prints only the address, which is what you send the BNB to, and the BNB_WALLET= line for /etc/flip/bnb.env.
 withdraw: signs on the box a plain transfer of the wallet's whole balance less its gas (21,000 at the network's price, at least 0.1 gwei)
 on chain 56 to 0xDEST, once you have typed 0xDEST a second time, and prints the transaction's hash. It refuses while flip-bnb runs live
-(the engine keeps its own nonce) or holds open positions (their sale needs the gas), and a destination that is a contract, the wallet
+or any live engine holds the key file's lock (the engine keeps its own nonce; this script then holds that lock until it exits) or holds
+open positions (their sale needs the gas), and a destination that is a contract, the wallet
 itself or the zero address. An exchange's BNB Smart Chain (BEP20) deposit address is an account.
 sweep: the wallet's whole balance of a token sold through the PancakeSwap V2 router to the wallet itself
 (swapExactTokensForETHSupportingFeeOnTransferTokens, minOut the BNB expected on the pair's reserves x 0.9, or x (1 - SLIP) with a
@@ -21,7 +22,7 @@ The RPC: BNB_RPC_URL from the environment, else /etc/flip/bnb.env, else https://
 A copy of the key that prints nothing (on the same box: it guards against a deleted file, not a lost box):
     sudo install -m 600 /etc/flip/bnb.key /root/bnb.key.bak
 Never `cat` the key: a terminal's output gets pasted into chats and tickets."""
-import json, os, re, subprocess, sys, time, urllib.parse, urllib.request
+import fcntl, json, os, re, subprocess, sys, time, urllib.parse, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KEY_FILE = os.environ.get("BNB_KEY_FILE") or "/etc/flip/bnb.key"
@@ -34,6 +35,7 @@ w = lambda x: "%064x" % x
 a = lambda s: "%064x" % int(s, 16)
 ask = input                                                                              # (the tests answer for the owner)
 sleep = time.sleep
+LOCK_FD = None                                                                           # the key file's lock, held from the guard to the exit
 
 
 def setting(k, d=None):
@@ -184,9 +186,31 @@ def create(p):
     print("send about $20 of BNB to it on BNB Smart Chain (BEP-20, chain id 56); RUNBOOK 4k has the rest")
 
 
+def hold_key():
+    """the lock a live engine holds on the key file while it runs (src/bnb_live.py), whatever its positions file or how it was started:
+    refused while another process holds it; held from here to the exit, so no live engine starts meanwhile"""
+    global LOCK_FD
+    if LOCK_FD is not None:
+        return
+    fd = os.open(KEY_FILE, os.O_RDONLY)
+    try:
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        os.close(fd)
+        sys.exit(f"a live BNB engine holds {KEY_FILE} (flip-bnb live, or a manual run) and keeps the wallet's nonce: stop it first")
+    LOCK_FD = fd
+
+
+def release_key():
+    global LOCK_FD
+    if LOCK_FD is not None:
+        os.close(LOCK_FD); LOCK_FD = None
+
+
 def guard():
     if live_running():
         sys.exit("flip-bnb runs live and keeps the wallet's nonce: stop it first (RUNBOOK 4k step 6, then sudo systemctl stop flip-bnb)")
+    hold_key()
     if int(rpc("eth_chainId", []), 16) != CHAIN_ID:
         sys.exit(f"the RPC ({host(rpc_url())}) is not BNB Smart Chain (56)")
 
@@ -258,6 +282,13 @@ def sweep(token, slip=0.1):
 
 
 def main(argv):
+    try:
+        return run(argv)
+    finally:
+        release_key()
+
+
+def run(argv):
     if argv and argv[0] == "withdraw":
         if len(argv) != 2:
             sys.exit("usage: bnb_wallet.py withdraw 0xDEST")
