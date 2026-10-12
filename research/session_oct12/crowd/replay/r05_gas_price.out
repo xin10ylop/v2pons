@@ -12,3 +12,7 @@ crowd buy receipt {'hash': '0xf7396786e96932abd1aa882bad552f3b70f11f7ec53a7d7756
 crowd buy receipt {'hash': '0xfd34dc0f81b16c5cd1ed8124f9244f0d5f16ae7fcf6e56518b273e979e1648ee', 'gasUsed': 201478, 'l1': 891, 'egp': 20086000, 'status': '0x1'}
 crowd buy receipt {'hash': '0xfffba0cd156a9c4115de35497cf8975e3889b714085e7525358c1e8a5151c636', 'gasUsed': 186480, 'l1': 475, 'egp': 20020000, 'status': '0x1'}
 factory PoolCreated (life): 443090; counterparts of WETH in >= 2 pools: 438
+   USDG 0x5fc5360d0400a0fd4f2af552add042d716f1d168 fee 3000 pool 0xa9188730fe85be88ad499d7d52b099e800fb0334 ETH = $2,518.81 WETH in pool 363.698
+   USDG 0x5fc5360d0400a0fd4f2af552add042d716f1d168 fee 500 pool 0x69bfaf19c9f377bb306a89aed9f6b07e2c1a8d9a ETH = $2,515.09 WETH in pool 907.124
+   USDG 0x5fc5360d0400a0fd4f2af552add042d716f1d168 fee 10000 pool 0x5f009e071f07e92b6c624e83f52f17bbda34680d ETH = $2,537.83 WETH in pool 51.826
+   USDG 0x5fc5360d0400a0fd4f2af552add042d716f1d168 fee 100 pool 0x52e65b17fb6e5ba00ed806f37afcd2daa50271ca ETH = $2,514.62 WETH in pool 5534.037
