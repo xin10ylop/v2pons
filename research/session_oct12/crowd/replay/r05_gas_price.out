@@ -11,3 +11,4 @@ crowd buy receipt {'hash': '0xf6e374606d342da11c7583c92e6b2b5b1ded0952f652ff5e56
 crowd buy receipt {'hash': '0xf7396786e96932abd1aa882bad552f3b70f11f7ec53a7d77560af8673e54d6ce', 'gasUsed': 211978, 'l1': 221, 'egp': 20000000, 'status': '0x1'}
 crowd buy receipt {'hash': '0xfd34dc0f81b16c5cd1ed8124f9244f0d5f16ae7fcf6e56518b273e979e1648ee', 'gasUsed': 201478, 'l1': 891, 'egp': 20086000, 'status': '0x1'}
 crowd buy receipt {'hash': '0xfffba0cd156a9c4115de35497cf8975e3889b714085e7525358c1e8a5151c636', 'gasUsed': 186480, 'l1': 475, 'egp': 20020000, 'status': '0x1'}
+factory PoolCreated (life): 443090; counterparts of WETH in >= 2 pools: 438

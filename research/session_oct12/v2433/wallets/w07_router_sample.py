@@ -5,9 +5,12 @@ from common import *
 h, th = head()
 t0 = 1791720000  # Oct 11 12:00
 hours = list(range(t0, th - 200, 3600))
-starts = {}
-for t in hours:
-    starts[t] = block_at(t, (h, th))
+import bisect
+bts = sorted((d["ts"], d["b"]) for d in jl(J("w02_bts_cache.jsonl"))) + [(th, h)]
+def b_at(t):
+    i = bisect.bisect_left([x for x, _ in bts], t); t1, b1 = bts[min(i, len(bts) - 1)]; t0, b0 = bts[max(i - 1, 0)]
+    return b0 + int((t - t0) * (b1 - b0) / max(1, t1 - t0))
+starts = {t: b_at(t) for t in hours}
 OUT = J("w07_sample.jsonl")
 done = {json.loads(l)["hour"] for l in open(OUT)} if os.path.exists(OUT) else set()
 with open(OUT, "a") as f:
