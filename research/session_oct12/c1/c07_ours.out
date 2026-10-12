@@ -1,0 +1,76 @@
+== our wallet's transactions near the box-log C-1 times
+  nonce 2532 10-11 21:00:28 block 86132031 (idx 6) to 0x2abb5653 sel 5ed06f60 status 0 gas 59739 swaps 0 | C-1 pool 0x3586911526 launch 86131747 10-11 20:59:59 T +277 -> our tx at +284 (T+7); pull +683
+  nonce 2533 10-11 21:00:34 block 86132093 (idx 5) to 0x2abb5653 sel 137f1fdd status 0 gas 29039 swaps 0 | C-1 pool 0x3586911526 launch 86131747 10-11 20:59:59 T +277 -> our tx at +346 (T+69); pull +683
+  nonce 2544 10-11 21:16:36 block 86141454 (idx 3) to 0x2abb5653 sel 2e1a7d4d status 1 gas 28844 swaps 0
+  nonce 2545 10-11 21:16:48 block 86141571 (idx 2) to 0x9b1913bb sel  status 1 gas 21319 swaps 0
+  nonce 2568 10-11 22:16:46 block 86176771 (idx 1) to 0x2abb5653 sel 5ed06f60 status 0 gas 61065 swaps 0 | C-1 pool 0xd4654e14b3 launch 86176651 10-11 22:16:34 T +118 -> our tx at +120 (T+2); pull +56365
+  nonce 2569 10-11 22:16:52 block 86176833 (idx 1) to 0x2abb5653 sel 137f1fdd status 0 gas 30247 swaps 0 | C-1 pool 0xd4654e14b3 launch 86176651 10-11 22:16:34 T +118 -> our tx at +182 (T+64); pull +56365
+  nonce 2604 10-11 23:55:08 block 86233944 (idx 1) to 0x2abb5653 sel 5ed06f60 status 0 gas 59883 swaps 0 | C-1 pool 0x266d00f154 launch 86233839 10-11 23:54:58 T +103 -> our tx at +105 (T+2); pull +67270
+  nonce 2605 10-11 23:55:15 block 86234006 (idx 1) to 0x2abb5653 sel 137f1fdd status 0 gas 29109 swaps 0 | C-1 pool 0x266d00f154 launch 86233839 10-11 23:54:58 T +103 -> our tx at +167 (T+64); pull +67270
+  nonce 2637 10-12 01:18:34 block 86282678 (idx 1) to 0x2abb5653 sel 137f1fdd status 0 gas 335553 swaps 0 | C-1 pool 0xb47b706f2b launch 86282459 10-12 01:18:11 T +155 -> our tx at +219 (T+64); pull +193
+
+== our C-1 pools
+
+ pool 0x5ec6831561c9eaaca7dbd0d1dd5e8894f3df4255daba8af8a178a07f6c5ed8fd token 0x7c34820fd5eecc7d21166c79dc33043d1937bbf6 launch 86131060 10-11 20:58:49 launcher 0x2fdaeb83
+   T +77 (router first buy 0.0600 ETH); our buy +79 (T+2) 0.0020 ETH; our sell [('+140', 0.00208)]; pull 176 (buy+97) by 0x2fdaeb83
+   router buys T..our buy   :   1, 0.0600 ETH
+   router buys our buy..+62 :   3, 0.2000 ETH
+   router buys +62..pull    :   0, 0.0000 ETH
+   router ETH by T+60 0.2600; router sells before the pull 0
+   other (non-router) buys from launch to min(pull, our buy + 200) [offset, class, from, ETH]: [(3, 'recurring', '0xe71a69f4', 2e-06), (6, 'recurring', '0xd2b94182', 0.00015), (40, 'recurring', '0x8dc68003', 0.000485), (102, 'oneoff', '0xba0f83ea', 0.000195), (110, 'recurring', '0x97ac054b', 0.000207), (111, 'oneoff', '0xba0f83ea', 0.000195), (121, 'recurring', '0x93b07902', 2.4e-05), (124, 'recurring', '0xbd9dc5f6', 0.000529)]
+
+ pool 0x3586911526b26f1eed3629a3bfedc3633be23a02af1356d326040e0a2368bff6 token 0x622bd9ca592295c3e69ff6716725f3e79750d792 launch 86131747 10-11 20:59:59 launcher 0x2f35d137
+   T +277 (router first buy 0.0900 ETH); our buy REVERTED at +284 (T+7); our sell []; pull 683 (buy+399) by 0x2f35d137
+   router buys T..our buy   :   5, 0.4400 ETH
+   router buys our buy..+62 :  16, 1.4700 ETH
+   router buys +62..pull    :  33, 2.5800 ETH
+   router ETH by T+60 1.1700; router sells before the pull 0
+   other (non-router) buys from launch to min(pull, our buy + 200) [offset, class, from, ETH]: [(3, 'recurring', '0xe71a69f4', 2e-06), (39, 'recurring', '0x8dc68003', 0.000485), (92, 'recurring', '0x5e6ec144', 0.000307), (284, 'recurring', '0x97ac054b', 0.000186), (304, 'recurring', '0xbd9dc5f6', 0.000317), (316, 'recurring', '0x93b07902', 2.4e-05)]
+
+ pool 0xd6180333d076d3e74405385647181ecf4de318239fa1747c2ae98eb699d6f083 token 0xda262ec24929d85d3b85479a653472f4cd39d024 launch 86132805 10-11 21:01:47 launcher 0xf8c1f538
+   T +41 (router first buy 0.1360 ETH); our buy +43 (T+2) 0.0020 ETH; our sell [('+105', 0.002133)]; pull 158 (buy+115) by 0xf8c1f538
+   router buys T..our buy   :   1, 0.1360 ETH
+   router buys our buy..+62 :   1, 0.3320 ETH
+   router buys +62..pull    :   0, 0.0000 ETH
+   router ETH by T+60 0.4680; router sells before the pull 0
+   other (non-router) buys from launch to min(pull, our buy + 200) [offset, class, from, ETH]: [(2, 'recurring', '0xe71a69f4', 2e-06), (5, 'recurring', '0xd2b94182', 0.00015), (38, 'recurring', '0x8dc68003', 0.000485), (84, 'recurring', '0x4d42774f', 0.000495), (85, 'recurring', '0x5e6ec144', 0.000315), (88, 'oneoff', '0xba0f83ea', 0.000195), (91, 'recurring', '0x97ac054b', 0.000209), (105, 'recurring', '0x93b07902', 2.4e-05), (106, 'recurring', '0xbd9dc5f6', 0.000317)]
+
+ pool 0x6d80b8161c653e77ea0a065f69983ea93ae509a642dadfa5b1245b324689ed23 token 0xd4c4e28f4dd681710fc4442d55070b7d5577f0a7 launch 86133301 10-11 21:02:38 launcher 0xbc5fe5c9
+   T +33 (router first buy 0.1618 ETH); our buy +35 (T+2) 0.0020 ETH; our sell [('+97', 0.002)]; pull 65258 (buy+65223) by 0xbc5fe5c9
+   router buys T..our buy   :   1, 0.1618 ETH
+   router buys our buy..+62 :   0, 0.0000 ETH
+   router buys +62..pull    :  97, 13.7431 ETH
+   router ETH by T+60 0.1618; router sells before the pull 32
+   other (non-router) buys from launch to min(pull, our buy + 200) [offset, class, from, ETH]: [(2, 'recurring', '0xe71a69f4', 2e-06), (38, 'recurring', '0x8dc68003', 0.000485), (112, 'recurring', '0x97ac054b', 0.000202), (167, 'recurring', '0x3155c72d', 0.000389), (174, 'recurring', '0x93b07902', 2.4e-05), (177, 'recurring', '0x4d42774f', 0.000495), (182, 'recurring', '0xbd9dc5f6', 0.000529), (215, 'recurring', '0xff5981a5', 0.000122)]
+
+ pool 0xd4654e14b30fa544c4b44a57177f0eb83707ad153119b24665d6cd4cd1ede143 token 0xee3067227b28573cd94cd58e1084aff0fcea5812 launch 86176651 10-11 22:16:34 launcher 0xa644f8df
+   T +118 (router first buy 0.1000 ETH); our buy REVERTED at +120 (T+2); our sell []; pull 56365 (buy+56245) by 0xa644f8df
+   router buys T..our buy   :   2, 0.3000 ETH
+   router buys our buy..+62 :   1, 0.2800 ETH
+   router buys +62..pull    :  98, 16.3847 ETH
+   router ETH by T+60 0.5800; router sells before the pull 49
+   other (non-router) buys from launch to min(pull, our buy + 200) [offset, class, from, ETH]: [(2, 'recurring', '0xe71a69f4', 2e-06), (6, 'recurring', '0xd2b94182', 0.00015), (40, 'recurring', '0x8dc68003', 0.000485), (94, 'recurring', '0x5e6ec144', 0.00033), (120, 'recurring', '0x97ac054b', 0.000181), (143, 'recurring', '0x89510a2d', 0.000198), (185, 'recurring', '0x93b07902', 2.4e-05)]
+
+ pool 0x266d00f15479e041cd4bc7c83f730afe1fe107f5e5ac113fb9db85b46487bc0d token 0xb2add196641c34927fd8f5d1e2156ca7e87ade06 launch 86233839 10-11 23:54:58 launcher 0x963234b5
+   T +103 (router first buy 0.0200 ETH); our buy REVERTED at +105 (T+2); our sell []; pull 67270 (buy+67165) by 0x963234b5
+   router buys T..our buy   :   2, 0.3600 ETH
+   router buys our buy..+62 :   3, 0.2600 ETH
+   router buys +62..pull    : 121, 29.9185 ETH
+   router ETH by T+60 0.6200; router sells before the pull 60
+   other (non-router) buys from launch to min(pull, our buy + 200) [offset, class, from, ETH]: [(3, 'recurring', '0xe71a69f4', 2e-06), (4, 'recurring', '0xd2b94182', 0.00015), (40, 'recurring', '0x8dc68003', 0.000485), (91, 'recurring', '0x5e6ec144', 0.000295), (130, 'recurring', '0x89510a2d', 0.000197), (159, 'recurring', '0x97ac054b', 0.000194), (170, 'recurring', '0x93b07902', 2.4e-05)]
+
+ pool 0x0e4cc1d813133e526d9a291221dbe44207688da6b60b6b2d99ebc7c6f50237d9 token 0xa72f92ff831d231463ad26acb62cb45e2bd0b7e6 launch 86281174 10-12 01:15:58 launcher 0x2181b490
+   T +61 (router first buy 0.1110 ETH); our buy +63 (T+2) 0.0020 ETH; our sell [('+125', 0.002069)]; pull 147 (buy+84) by 0x2181b490
+   router buys T..our buy   :   1, 0.1110 ETH
+   router buys our buy..+62 :   1, 0.1740 ETH
+   router buys +62..pull    :   0, 0.0000 ETH
+   router ETH by T+60 0.2850; router sells before the pull 0
+   other (non-router) buys from launch to min(pull, our buy + 200) [offset, class, from, ETH]: [(3, 'recurring', '0xe71a69f4', 2e-06), (5, 'recurring', '0xd2b94182', 0.00015), (35, 'oneoff', '0x18dd3c14', 0.000785), (43, 'recurring', '0x8dc68003', 0.000522), (102, 'recurring', '0x97ac054b', 0.000191), (119, 'recurring', '0xbd9dc5f6', 0.000473), (139, 'recurring', '0x93b07902', 2.4e-05)]
+
+ pool 0xb47b706f2bba57dca9f413c7aaedcf9b98747bb7c6c696402329ca6209e59d56 token 0xfd6f77433248fe8294a9b81a760db5641a0743f0 launch 86282459 10-12 01:18:11 launcher 0xd1679317
+   T +155 (router first buy 0.3160 ETH); our buy +157 (T+2) 0.0020 ETH; our sell []; pull 193 (buy+36) by 0xd1679317
+   router buys T..our buy   :   1, 0.3160 ETH
+   router buys our buy..+62 :   3, 1.0080 ETH
+   router buys +62..pull    :   0, 0.0000 ETH
+   router ETH by T+60 1.3240; router sells before the pull 0
+   other (non-router) buys from launch to min(pull, our buy + 200) [offset, class, from, ETH]: [(3, 'recurring', '0xe71a69f4', 2e-06), (21, 'recurring', '0xd2b94182', 0.00015), (45, 'recurring', '0x8dc68003', 0.000522), (105, 'recurring', '0x5e6ec144', 0.000321), (165, 'recurring', '0x97ac054b', 0.000184)]

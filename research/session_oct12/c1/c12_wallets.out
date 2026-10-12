@@ -1,0 +1,67 @@
+
+== 0x5b0320fb
+  10-11 13:32:51 0x8f0f490938 T None buy +68 0.00500 sold - | pull 133 (buy+65) | router buys after T+62: None | age 822394
+  10-11 13:44:10 0x91620507c4 T 103 buy T-23 0.00500 sold - | pull T+63 (buy+86) | router buys after T+62: 0 | age 815811
+  10-11 17:52:57 0x2eb69a8072 T 35 buy T+20 0.00250 sold - | pull T+194 (buy+174) | router buys after T+62: 2 | age 670128
+  10-11 17:56:42 0xf7e808ab4d T 66 buy T+26 0.00250 sold - | pull T+101 (buy+75) | router buys after T+62: 1 | age 667941
+  10-11 19:37:24 0xa52938fae5 T 38 buy T+26 0.00250 sold - | pull T+176 (buy+150) | router buys after T+62: 2 | age 609096
+  10-11 19:46:23 0x8985e55f5a T 90 buy T-9 0.00250 sold - | pull T+156 (buy+165) | router buys after T+62: 1 | age 603868
+
+== 0x5373fb35
+  10-11 19:38:24 0x8d437a11ce T 32 buy T+37 0.00197 sold - | pull T+494 (buy+457) | router buys after T+62: 8 | age 608520
+  10-11 20:25:53 0xcf1d880b4e T 194 buy T-140 0.00198 sold - | pull T+19 (buy+159) | router buys after T+62: 0 | age 580838
+
+== 0xc2101da8
+  10-11 05:57:48 0x8185f1eaac T 155 buy T+3 0.00995 sold +64 | pull T+7295 (buy+7292) | router buys after T+62: 96 | age 1084406
+  10-11 06:12:57 0x23a750296f T 141 buy T+3 0.00995 sold +80 | pull T+31551 (buy+31548) | router buys after T+62: 108 | age 1075731
+  10-11 07:15:42 0xe12fa945c9 T 155 buy T+3 0.00995 sold +56 | pull T+49862 (buy+49859) | router buys after T+62: 106 | age 1039748
+  10-12 11:00:42 0xd259259d38 T 101 buy T+665 0.00302 sold - | pull T+1244 (buy+579) | router buys after T+62: 30 | age 70654
+
+== 0xbd9dc5f6
+  10-11 20:58:49 0x5ec6831561 T 77 buy T+47 0.00053 sold - | pull T+99 (buy+52) | router buys after T+62: 0 | age 561523
+  10-11 20:59:59 0x3586911526 T 277 buy T+27 0.00032 sold +290 | pull T+406 (buy+379) | router buys after T+62: 41 | age 560836
+  10-11 21:01:47 0xd6180333d0 T 41 buy T+65 0.00032 sold - | pull T+117 (buy+52) | router buys after T+62: 0 | age 559778
+  10-11 21:02:38 0x6d80b8161c T 33 buy T+149 0.00053 sold +294 | pull T+65225 (buy+65076) | router buys after T+62: 97 | age 559282
+  10-12 01:15:58 0x0e4cc1d813 T 61 buy T+58 0.00047 sold - | pull T+86 (buy+28) | router buys after T+62: 0 | age 411409
+  10-12 02:02:59 0xf3cd3a75aa T 159 buy T+50 0.00042 sold +301 | pull T+588 (buy+538) | router buys after T+62: 15 | age 384064
+  10-12 02:06:58 0x75e4de5b2f T 83 buy T+92 0.00064 sold +288 | pull T+98293 (buy+98201) | router buys after T+62: 113 | age 381707
+  10-12 03:20:57 0x41f81a91c9 T 100 buy T+59 0.00069 sold +298 | pull T+42093 (buy+42034) | router buys after T+62: 111 | age 338876
+  10-12 06:53:25 0x4278cc5914 T 95 buy T+14 0.00032 sold +286 | pull T+50990 (buy+50976) | router buys after T+62: 91 | age 214754
+  10-12 07:14:10 0x3b6ebf2de0 T 34 buy T+78 0.00042 sold +300 | pull T+2744 (buy+2666) | router buys after T+62: 78 | age 202631
+  10-12 07:19:24 0x2a57874088 T 115 buy T+128 0.00032 sold +303 | pull T+34844 (buy+34716) | router buys after T+62: 77 | age 199553
+  10-12 07:36:04 0x3928e2a057 T 67 buy T+94 0.00047 sold - | pull T+189 (buy+95) | router buys after T+62: 2 | age 189795
+  10-12 07:37:05 0xe8538d09b8 T 69 buy T+92 0.00037 sold +297 | pull T+1050 (buy+958) | router buys after T+62: 18 | age 189212
+  10-12 07:43:32 0x3158c8096b T 91 buy T+20 0.00069 sold - | pull T+183 (buy+163) | router buys after T+62: 1 | age 185443
+  10-12 07:49:32 0xe698ceeb82 T 100 buy T+127 0.00032 sold +296 | pull T+1800 (buy+1673) | router buys after T+62: 27 | age 181952
+  10-12 09:03:41 0x8b794b364b T 337 buy T+81 0.00042 sold - | pull T+320 (buy+239) | router buys after T+62: 2 | age 138791
+  10-12 09:11:25 0xce2df38500 T 101 buy T+19 0.00032 sold +292 | pull T+62825 (buy+62806) | router buys after T+62: 91 | age 134308
+  10-12 10:38:42 0x43e593ebf7 T 102 buy T+18 0.00053 sold +299 | pull T+1067 (buy+1049) | router buys after T+62: 27 | age 83493
+  10-12 10:41:19 0x9ac8e3322b T 209 buy T+18 0.00037 sold - | pull T+166 (buy+148) | router buys after T+62: 8 | age 81954
+  10-12 10:42:32 0x77c0cab52f T 97 buy T+16 0.00064 sold - | pull T+280 (buy+264) | router buys after T+62: 17 | age 81245
+  10-12 10:52:53 0x5deeea27f3 T 95 buy T+18 0.00032 sold - | pull T+187 (buy+169) | router buys after T+62: 6 | age 75231
+  10-12 11:06:31 0x6cc43c4b7b T 106 buy T+16 0.00053 sold +302 | pull T+3056 (buy+3040) | router buys after T+62: 168 | age 67253
+  10-12 11:12:31 0xc8150969a5 T 158 buy T+78 0.00042 sold +297 | pull T+51020 (buy+50942) | router buys after T+62: 92 | age 63721
+  10-12 11:32:48 0x146f7e47a2 T 97 buy T+54 0.00047 sold +289 | pull T+837 (buy+783) | router buys after T+62: 22 | age 51831
+  10-12 11:39:03 0xed7c170905 T 138 buy T+31 0.00032 sold +293 | pull T+825 (buy+794) | router buys after T+62: 23 | age 48152
+  10-12 11:41:27 0x90c319c217 T 100 buy T+40 0.00069 sold +298 | pull T+985 (buy+945) | router buys after T+62: 27 | age 46743
+  10-12 11:44:07 0xe96cdeb25a T 136 buy T+45 0.00032 sold - | pull T+253 (buy+208) | router buys after T+62: 5 | age 45174
+  10-12 11:53:25 0x78e71c04a2 T 133 buy T+52 0.00042 sold +304 | pull T+597 (buy+545) | router buys after T+62: 14 | age 39755
+  10-12 12:00:30 0xf917611f36 T 146 buy T+30 0.00042 sold +301 | pull T+1658 (buy+1628) | router buys after T+62: 47 | age 35613
+  10-12 12:12:32 0x635c9e1c2f T 238 buy T+35 0.00042 sold +308 | pull T+1433 (buy+1398) | router buys after T+62: 42 | age 28536
+  10-12 12:33:45 0xd116728e9b T 234 buy T+26 0.00167 sold +297 | pull T+2010 (buy+1984) | router buys after T+62: 48 | age 16093
+  10-12 12:38:17 0x06c477f75f T 94 buy T+51 0.00129 sold +306 | pull T+607 (buy+556) | router buys after T+62: 20 | age 13442
+  10-12 12:47:55 0xc4ff6a7545 T 116 buy T+15 0.00152 sold - | pull T+260 (buy+245) | router buys after T+62: 7 | age 7771
+  10-12 12:52:57 0x5e3673f7c6 T 131 buy T+18 0.00144 sold +297 | pull T+344 (buy+326) | router buys after T+62: 8 | age 4797
+  10-12 12:53:03 0x13f306ed37 T 101 buy T+101 0.00152 sold +300 | pull T+1249 (buy+1148) | router buys after T+62: 33 | age 4747
+  10-12 12:53:49 0xdd2faa392a T 134 buy T+39 0.00176 sold +278 | pull None (buy+None) | router buys after T+62: 96 | age 4295
+  10-12 12:56:07 0x5a9137ee45 T 245 buy T+44 0.00152 sold +299 | pull None (buy+None) | router buys after T+62: 104 | age 2941
+
+== 0x2eb9009a
+  10-11 15:15:38 0xdf4e483fc0 T 105 buy T+81 0.00200 sold - | pull T+1432 (buy+1351) | router buys after T+62: 36 | age 762365
+
+== ours
+  10-11 20:58:49 0x5ec6831561 T 77 buy T+2 0.00200 sold +61 | pull T+99 (buy+97) | router buys after T+62: 0 | age 561523
+  10-11 21:01:47 0xd6180333d0 T 41 buy T+2 0.00200 sold +62 | pull T+117 (buy+115) | router buys after T+62: 0 | age 559778
+  10-11 21:02:38 0x6d80b8161c T 33 buy T+2 0.00200 sold +62 | pull T+65225 (buy+65223) | router buys after T+62: 97 | age 559282
+  10-12 01:15:58 0x0e4cc1d813 T 61 buy T+2 0.00200 sold +62 | pull T+86 (buy+84) | router buys after T+62: 0 | age 411409
+  10-12 01:18:11 0xb47b706f2b T 155 buy T+2 0.00200 sold - | pull T+38 (buy+36) | router buys after T+62: 0 | age 410124

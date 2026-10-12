@@ -18,3 +18,6 @@ research/**/*_inits.json
 research/session_oct12/p356/p04_events.jsonl
 research/session_oct12/p356/p05_txs.jsonl
 research/session_oct12/p356/p10_swaps.json
+research/session_oct12/c1/c02_events.jsonl
+research/session_oct12/c1/c03_txs.jsonl
+research/session_oct12/c1/c05_pools.json

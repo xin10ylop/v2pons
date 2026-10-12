@@ -1,0 +1,16 @@
+nonce gaps: [(2532, 2533, 86131200, 86132678), (2544, 2545, 86139503, 86143592), (2568, 2569, 86176040, 86179496), (2604, 2605, 86233063, 86236845), (2637, 2637, 86282616, 86284531)]
+gap 2532..2533: found [2532, 2533], missing []
+gap 2544..2545: found [2544, 2545], missing []
+gap 2568..2569: found [2568, 2569], missing []
+gap 2604..2605: found [2604, 2605], missing []
+gap 2637..2637: found [2637], missing []
+nonce 2532 block 86132031 10-11 21:00:28 idx 6 to 0x2abb5653 sel 5ed06f60 n 260 value 0 status 0 gas 59739 logs 0 | C-1 pool 0x3586911526 launch 86131747 10-11 20:59:59 -> +284
+nonce 2533 block 86132093 10-11 21:00:34 idx 5 to 0x2abb5653 sel 137f1fdd n 228 value 0 status 0 gas 29039 logs 0 | C-1 pool 0x3586911526 launch 86131747 10-11 20:59:59 -> +346
+nonce 2544 block 86141454 10-11 21:16:36 idx 3 to 0x2abb5653 sel 2e1a7d4d n 36 value 0 status 1 gas 28844 logs 0
+nonce 2545 block 86141571 10-11 21:16:48 idx 2 to 0x9b1913bb sel  n 0 value 395000000000000000 status 1 gas 21319 logs 0
+nonce 2568 block 86176771 10-11 22:16:46 idx 1 to 0x2abb5653 sel 5ed06f60 n 260 value 0 status 0 gas 61065 logs 0 | C-1 pool 0xd4654e14b3 launch 86176651 10-11 22:16:34 -> +120
+nonce 2569 block 86176833 10-11 22:16:52 idx 1 to 0x2abb5653 sel 137f1fdd n 228 value 0 status 0 gas 30247 logs 0 | C-1 pool 0xd4654e14b3 launch 86176651 10-11 22:16:34 -> +182
+nonce 2604 block 86233944 10-11 23:55:08 idx 1 to 0x2abb5653 sel 5ed06f60 n 260 value 0 status 0 gas 59883 logs 0 | C-1 pool 0x266d00f154 launch 86233839 10-11 23:54:58 -> +105
+nonce 2605 block 86234006 10-11 23:55:15 idx 1 to 0x2abb5653 sel 137f1fdd n 228 value 0 status 0 gas 29109 logs 0 | C-1 pool 0x266d00f154 launch 86233839 10-11 23:54:58 -> +167
+nonce 2637 block 86282678 10-12 01:18:34 idx 1 to 0x2abb5653 sel 137f1fdd n 228 value 0 status 0 gas 335553 logs 0 | C-1 pool 0xb47b706f2b launch 86282459 10-12 01:18:11 -> +219
+rpc {'posts': 229, 'items': 5509, 'r429': 0}
