@@ -26,11 +26,13 @@ From the wallet straight through the PancakeSwap V2 router (no contract of ours 
 One worker thread signs and sends everything: the nonce comes from the RPC (pending) once, is kept in memory and is read again after any
 nonce error. Gas: a fixed limit per call (BNB_GAS_BUY/APPROVE/SELL; twice it after an out-of-gas revert), the price eth_gasPrice kept
 between BNB_MIN_GWEI and BNB_MAX_GWEI. Every send goes to every send endpoint at once; with no receipt a copy goes again each
-BNB_REBROADCAST_S, and one the node holds unmined is replaced at its nonce after BNB_REPLACE_S (1/8 dearer; a buy past its deadline by a
-0-value transfer to the wallet). A buy dropped as never mined while a later nonce of ours is out has its nonce filled the same way.
-Receipts are acted on once their block is final. Reads BNB_RPC_URL cannot answer are asked once at BNB_READ_ALT_URL, and nothing is
-dropped or settled for want of a receipt, a nonce or a token balance until BNB_READ_ALT_URL shows the same (a backend that lags still
-answers, stale); the worker reads the head itself when the reader gives none for 3 s, and extrapolates it when nothing answers for 10 s.
+BNB_REBROADCAST_S, and one a pool holds unmined (either read endpoint's) is replaced at its nonce after BNB_REPLACE_S (1/8 dearer, 3
+times, then once at BNB_MAX_GWEI; a buy past its deadline by a 0-value transfer to the wallet). A buy dropped as never mined while a
+later nonce of ours is out has its nonce filled the same way. Receipts are acted on once their block is final. Reads BNB_RPC_URL cannot
+answer are asked once at BNB_READ_ALT_URL, and nothing is dropped or settled for want of a receipt, a nonce or a token balance until
+BNB_READ_ALT_URL shows the same (a backend that lags still answers, stale, and may hold a mined transaction as pending; a buy whose
+tokens BNB_RPC_URL shows is kept while BNB_READ_ALT_URL cannot answer); the worker reads the head itself when the reader gives none for
+3 s, and extrapolates it when no source shows a new block for 10 s.
 The gate halts the line (HALTED.bnb beside the log; the owner's own HALTED.bnb holds without a restart): a dump before +997 on any pool of
 the line (the skipped sizes aside), no crowd buy in +60..+260 on a traded pool whose logs were all read, any reverted buy, approve or
 sell, a negative median over the first 10 live trades, then over any 10 in a row, and 3 live trades in a row under -50%. A halt stops
@@ -411,23 +413,23 @@ class Live:
 
     def alt_receipt(self, group):
         """BNB_READ_ALT_URL's view of our transactions at one nonce, before anything is dropped or settled for want of a receipt on
-        BNB_RPC_URL: (the one mined, its receipt) once its block is final there, "known" when it holds one (pending, or not final yet),
-        else None; raises when it cannot answer"""
+        BNB_RPC_URL: (the one mined, its receipt) once its block is final there, "unfinal" when one is mined there in a block not final
+        yet (or its receipt is not served yet), "pending" when it holds one unmined, else None; raises when it cannot answer"""
         for t in group[::-1]:
             tx = self.alt_rpc("eth_getTransactionByHash", [t["hash"]], 5)
             if not tx:
                 continue
             if not tx.get("blockNumber"):
-                return "known"
+                return "pending"
             if int(tx["blockNumber"], 16) > int(self.alt_rpc("eth_getBlockByNumber", ["finalized", False], 5)["number"], 16):
-                return "known"
+                return "unfinal"
             r = None
             try:
                 r = next((r_ for r_ in self.alt_rpc("eth_getBlockReceipts", [tx["blockNumber"]], 5) or [] if r_.get("transactionHash", "").lower() == t["hash"].lower()), None)
             except Exception:
                 pass
             r = r or self.alt_rpc("eth_getTransactionReceipt", [t["hash"]], 5)
-            return (t, r) if r else "known"
+            return (t, r) if r else "unfinal"
         return None
 
     def read_balance(self, fast=False):
@@ -744,7 +746,8 @@ class Live:
     # ------------------------------------------------------------ the chain's head as the worker knows it
     def head(self):
         """the newest head known (no network): the reader's (its websocket or its eth_blockNumber) or the worker's own poll; when no source
-        has answered for HEAD_BLIND_S, extrapolated at BLOCK_S a block (a sale must not wait on a stalled reader and a dead feed)"""
+        has shown a new block for HEAD_BLIND_S, extrapolated at BLOCK_S a block (a sale must not wait on a stalled reader and a dead or
+        stalled feed)"""
         h = self.E.state.get("head")
         if h and (self.head_val is None or h > self.head_val):
             self.head_val, self.head_ok_at = h, time.monotonic()
@@ -755,7 +758,8 @@ class Live:
 
     def poll_head(self):
         """the worker asks eth_blockNumber itself (with the read fallback) when no head came for HEAD_POLL_S: the reader polls only between
-        its own calls, which can hang for tens of seconds"""
+        its own calls, which can hang for tens of seconds. Only a newer block counts as a head that came (a node that stalls and still
+        answers its last number leaves the head to be extrapolated after HEAD_BLIND_S, with an alarm)"""
         self.head()
         now = time.monotonic()
         if now - self.head_ok_at < self.HEAD_POLL_S or now - self.head_polled_at < 1:
@@ -766,8 +770,11 @@ class Live:
         except Exception as e:
             self.alarm(f"no head from the reader for {now - self.head_ok_at:.0f} s and eth_blockNumber not read ({self.scrub(e, 80)})", quiet_key="headpoll", every_s=60)
             return
-        if self.head_val is None or n >= self.head_val:
-            self.head_val, self.head_ok_at = n, now
+        if self.head_val is None or n > self.head_val:                                 # a new block only: a node that stalls and still answers its
+            self.head_val, self.head_ok_at = n, now                                     # last head is no fresher than one that does not answer
+        elif now - self.head_ok_at >= self.HEAD_BLIND_S:
+            self.alarm(f"eth_blockNumber still answers {n}, no new block for {now - self.head_ok_at:.0f} s: the head is extrapolated at {BLOCK_S} s a block",
+                       quiet_key="headstill", every_s=60)
 
     def sell_by_head(self):
         """the sale follows the chain, not the reader: while the reader lags (an RPC stall; it jumps only MAX_BEHIND blocks behind), a
@@ -859,11 +866,11 @@ class Live:
 
     def head_now(self):
         """the head for the buy's last lateness check: eth_blockNumber read now (one try, HEAD_NOW_S at most), the newest of it and the
-        reader's; when it cannot be read, the newest head known plus a block for every BLOCK_S since it came (a head up to HEAD_BLIND_S
-        old is otherwise taken as it is: about 22 blocks a buy could go out late)"""
+        reader's; when it cannot be read, or answers no newer block, the newest head known plus a block for every BLOCK_S since it came
+        (a head up to HEAD_BLIND_S old is otherwise taken as it is: about 22 blocks a buy could go out late)"""
         try:
             n = int(self.rpc("eth_blockNumber", [], tries=1, timeout=HEAD_NOW_S, alt=False), 16)
-            if self.head_val is None or n >= self.head_val:
+            if self.head_val is None or n > self.head_val:                             # (the same head again is not a fresh one: aged below)
                 self.head_val, self.head_ok_at = n, time.monotonic()
         except Exception as e:
             self.alarm(f"the head not read before a buy ({self.scrub(e, 80)}): the last one aged at {BLOCK_S} s a block", quiet_key="headnow", every_s=300)
@@ -1017,14 +1024,16 @@ class Live:
         With no receipt, a copy goes to every endpoint each BNB_REBROADCAST_S, whether the node knows it or not, while its deadline is
         REBROADCAST_BEFORE_S away or more (a copy mined at or past its deadline could only revert, 'EXPIRED', and a reverted buy halts the
         line). A buy not mined by the time the head makes it late (BNB_BUY_LATE) is never copied again and is cancelled at its nonce (a
-        0-value transfer to the wallet 1/8 dearer: it would land late, up to its deadline, about 133 blocks). One the node knows but does
-        not mine is replaced at its nonce after BNB_REPLACE_S, its gas price raised: an approve or a sell anew (a sell on fresh reserves and
-        deadline), a buy past its deadline by a 0-value transfer to the wallet (it could only revert, and it holds every later nonce). One
-        the node does not know after twice BNB_RECEIPT_WAIT_S and EXPIRED_AFTER_S past its deadline (a copy mined then can only revert: it
-        can leave no tokens) is first looked for at BNB_READ_ALT_URL (BNB_RPC_URL's backend may lag and still answer: its receipt there is
-        acted on, and its count and the token balance there count too), then dropped when its nonce is not mined (a buy whose tokens are in
-        the wallet aside; a buy's nonce under a later one of ours is filled), or went to another transaction of ours; when its nonce is
-        mined and the node cannot show it (a lagging or partial backend), the chain's state decides (unseen())"""
+        0-value transfer to the wallet 1/8 dearer: it would land late, up to its deadline, about 133 blocks). One a pool holds unmined
+        (BNB_RPC_URL's, or only BNB_READ_ALT_URL's, asked from BNB_REPLACE_S on) is replaced at its nonce (held()). After twice
+        BNB_RECEIPT_WAIT_S (and, for one no pool holds, EXPIRED_AFTER_S past the latest deadline at its nonce: a late buy's cancel has
+        none, and the buy can still land up to its own; a copy mined after it can only revert, leaving no tokens), or at once after a node
+        answered 'nonce too low' at its nonce, the chain is asked (at most every ALT_EVERY_S): BNB_READ_ALT_URL's receipt is acted on
+        (BNB_RPC_URL's backend may stall and still answer, even holding it as pending), its nonce count counts with BNB_RPC_URL's (and a
+        'nonce too low' counts the nonce as mined); a nonce not mined leaves one a pool holds held, and drops the others (a buy whose
+        tokens are in the wallet aside; a buy's nonce under a later one of ours is filled); a nonce that went to another transaction of
+        ours drops it; a nonce mined that no node shows is decided by the chain's state (unseen()). While BNB_READ_ALT_URL cannot answer
+        nothing is dropped or settled, but a buy whose tokens BNB_RPC_URL shows is kept"""
         rec = x["txs"][-1]; now = time.time()
         if now - rec.get("polled", 0) < self.POLL_S:
             return
@@ -1038,57 +1047,96 @@ class Live:
                     return                                                              # acted on once final: a reorg can still undo it
                 return self.mined(x, group, t, r)
             known = known or k
-        age = now - rec["sent_at"]; dl = rec.get("deadline")
+        age = now - rec["sent_at"]; own_dl = rec.get("deadline")
+        dl = max((t["deadline"] for t in group if t.get("deadline")), default=None)    # the wait and the drop: the latest deadline at this nonce
         late = self.late(x)[0] if rec["kind"] == "buy" else 0                           # a buy mined now would land this late
-        if late <= self.BUY_LATE and now - rec.get("copied_at", rec["sent_at"]) >= self.REBROADCAST_S and (dl is None or now < dl - self.REBROADCAST_BEFORE_S):
-            rec["copied_at"] = now; rec["rebroadcast"] = rec.get("rebroadcast", 0) + 1; k, msg, via = self.broadcast(rec["raw"])
+        if late <= self.BUY_LATE and now - rec.get("copied_at", rec["sent_at"]) >= self.REBROADCAST_S and (own_dl is None or now < own_dl - self.REBROADCAST_BEFORE_S):
+            rec["copied_at"] = now; rec["rebroadcast"] = rec.get("rebroadcast", 0) + 1; k, msg, via = self.broadcast(rec["raw"]); self.too_low(rec, k, msg)
             self.log({"ev": "live_rebroadcast", "kind": rec["kind"], "pair": x["pair"], "hash": rec["hash"], "reply": k, "detail": msg, "via": via, "known": known})
         if late > self.BUY_LATE and not rec.get("no_cancel") and len(group) <= self.MAX_REPLACE and now - rec.get("cancel_at", 0) >= self.REPLACE_S \
                 and not self.nonce_used(x, rec["nonce"]):                               # (known or not: a pool the node does not see may hold it)
             rec["cancel_at"] = now
             return self.replace(x, rec, f"not mined {late} blocks after L+{self.E.BUY_AT} (BNB_BUY_LATE {self.BUY_LATE})")
-        if known:
-            if age >= self.REPLACE_S and len(group) <= self.MAX_REPLACE and not rec.get("no_replace"):
-                if rec["kind"] in ("approve", "sell", "cancel") or (rec["kind"] == "buy" and dl is not None and now >= dl):
-                    return self.replace(x, rec)
-            if age > 2 * self.RECEIPT_WAIT_S:
-                self.alarm(f"the {rec['kind']} has been pending {age:.0f} s", quiet_key="pending", every_s=300, pair=x["pair"], hash=rec["hash"])
-            return
-        if age < 2 * self.RECEIPT_WAIT_S or (dl is not None and now < dl + self.EXPIRED_AFTER_S):
-            return
-        try:
-            mined = int(self.rpc("eth_getTransactionCount", [self.wallet, "latest"]), 16)
-        except Exception:
-            return
-        if self.read_alt:                                                               # nothing dropped or settled on one backend's word
-            if now - rec.get("alt_at", 0) < ALT_EVERY_S:
-                return
-            rec["alt_at"] = now
+        low = any(t.get("nonce_low") for t in group)                                   # a node said 'nonce too low' at this nonce: it was mined
+        due = age >= 2 * self.RECEIPT_WAIT_S and (known or dl is None or now >= dl + self.EXPIRED_AFTER_S)
+        ask = bool(self.read_alt) and (due or low or (not known and age >= self.REPLACE_S))
+        if not (due or ask) or now - rec.get("alt_at", 0) < ALT_EVERY_S:
+            return self.held(x, rec, group, age, now) if known else None
+        rec["alt_at"] = now
+        got = err = None
+        if ask:
             try:
                 got = self.alt_receipt(group)
-                if got == "known":
-                    return
-                if got:
-                    return self.mined(x, group, *got)
-                mined = max(mined, int(self.alt_rpc("eth_getTransactionCount", [self.wallet, "latest"], 5), 16))
             except Exception as e:
-                self.alarm(f"the {rec['kind']} {rec['hash']} has no receipt on {self.E.host(self.E.RPC_URL)} and {self.E.host(self.read_alt)} did not answer "
-                           f"({self.scrub(e, 80)}): nothing is dropped or settled until it does", quiet_key="alt-" + rec["hash"], every_s=300, pair=x["pair"])
+                err = e
+            if isinstance(got, tuple):
+                return self.mined(x, group, *got)
+            if got == "unfinal":                                                        # mined there: acted on once its block is final there
+                if age > 2 * self.RECEIPT_WAIT_S:
+                    self.alarm(f"the {rec['kind']} {rec['hash']} is mined at {self.E.host(self.read_alt)} in a block not final there (or its receipt is not "
+                               f"served) {age:.0f} s after its send", quiet_key="unfinal-" + rec["hash"], every_s=300, pair=x["pair"])
                 return
-        if mined <= rec["nonce"]:
+        where = None if known else self.E.host(self.read_alt) if got == "pending" else False    # who holds it unmined (None: BNB_RPC_URL)
+        if not due:
+            return self.held(x, rec, group, age, now, where) if where is not False else None
+        try:
+            count = int(self.rpc("eth_getTransactionCount", [self.wallet, "latest"]), 16)
+        except Exception:
+            return self.held(x, rec, group, age, now, where) if where is not False else None
+        if self.read_alt and err is None:
+            try:
+                count = max(count, int(self.alt_rpc("eth_getTransactionCount", [self.wallet, "latest"], 5), 16))
+            except Exception as e:
+                err = e
+        if low:
+            count = max(count, rec["nonce"] + 1)
+        if where is not False and count <= rec["nonce"]:
+            return self.held(x, rec, group, age, now, where)                           # held unmined, its nonce not mined: waited for
+        buy = next((t for t in group if t["kind"] == "buy"), None)
+        if err is not None:                                                             # nothing dropped or settled on BNB_RPC_URL's word alone,
+            try:                                                                        # but a buy whose tokens it shows is kept (as bought)
+                if buy is not None and self.token_balance(x["token"]) > 0:
+                    return self.unseen(x, rec, now, dl)
+            except Exception:
+                pass
+            self.alarm(f"the {rec['kind']} {rec['hash']} has no receipt on {self.E.host(self.E.RPC_URL)} and {self.E.host(self.read_alt)} did not answer "
+                       f"({self.scrub(err, 80)}): nothing is dropped or settled until it does", quiet_key="alt-" + rec["hash"], every_s=300, pair=x["pair"])
+            return
+        if count <= rec["nonce"]:
             if self.known(rec["hash"]):
                 return
-            if rec["kind"] == "buy":                                                     # a node that lags may not count the nonce yet: the wallet's tokens decide
+            if buy is not None:                                                         # a node that lags may not count the nonce yet: the wallet's tokens decide
                 try:
                     if self.token_balance(x["token"], both=True) > 0:
                         return self.unseen(x, rec, now, dl)
                 except Exception:
                     return
-            return self.unsent(x, rec, f"was never mined (the node does not know it; mined nonces {mined})", fill=True)
+            return self.unsent(x, rec, f"was never mined (the node does not know it; mined nonces {count})", fill=True)
         other = self.mined_nonces.get(rec["nonce"])
         if other and other != rec["hash"]:
             return self.unsent(x, rec, f"was not mined: its nonce {rec['nonce']} went to our {other}")
         self.unseen(x, rec, now, dl)
+
+    def too_low(self, rec, k, msg):
+        """a node answered 'nonce too low' to a transaction at rec's nonce: that nonce was mined (by one of ours: only this engine holds
+        the key), whatever the node shows of it"""
+        if k == "nonce" and "too low" in str(msg).lower():
+            rec["nonce_low"] = True
+
+    def held(self, x, rec, group, age, now, where=None):
+        """a transaction a pool holds unmined (BNB_RPC_URL's; where: only BNB_READ_ALT_URL's): replaced at its nonce after BNB_REPLACE_S,
+        its gas price raised 1/8, MAX_REPLACE times (an approve or a sell anew, a cancel, a buy once past its deadline by a 0-value transfer
+        to the wallet), then once at BNB_MAX_GWEI with an alarm (a sale is not left pending for good; bounded: one more, at the cap); never
+        at a nonce a node said is mined. An alarm while it is pending past twice BNB_RECEIPT_WAIT_S"""
+        due = rec["kind"] in ("approve", "sell", "cancel") or (rec["kind"] == "buy" and rec.get("deadline") is not None and now >= rec["deadline"])
+        if age >= self.REPLACE_S and due and not rec.get("no_replace") and not any(t.get("nonce_low") for t in group):
+            if len(group) <= self.MAX_REPLACE:
+                return self.replace(x, rec)
+            if not any(t.get("capped") for t in group):
+                return self.replace(x, rec, cap=True)
+        if age > 2 * self.RECEIPT_WAIT_S:
+            self.alarm(f"the {rec['kind']} has been pending {age:.0f} s" + (f" (held by {where} only)" if where else ""), quiet_key="pending", every_s=300,
+                       pair=x["pair"], hash=rec["hash"])
 
     def mined(self, x, group, t, r):
         """t mined (its receipt r, in a final block): the others at its nonce dropped, the receipt acted on"""
@@ -1112,12 +1160,12 @@ class Live:
         c = [t for y in list(self.pos.values()) for t in y.get("txs") or [] if t["nonce"] > n and t.get("block") is None and not t.get("unseen")]
         return min(c, key=lambda t: t["nonce"]) if c else None
 
-    def replace(self, x, rec, why=None):
+    def replace(self, x, rec, why=None, cap=False):
         """the pending transaction signed anew at its nonce, the gas price raised by 1/8 (the node takes a replacement 10% dearer), up to
-        BNB_MAX_GWEI: an approve as it was, a sell on the pool now with a fresh deadline, a buy past its deadline or late (why), or a
-        cancel, by a 0-value transfer to the wallet. A late buy's cancel refused for its nonce (taken: the buy, or another of ours, was
-        mined) is not tried again"""
-        hi = int(round(self.MAX_GWEI * 1e9)); gp = min(hi, max(rec["gas_price"] * 9 // 8 + 1, self.gas_price()))
+        BNB_MAX_GWEI (cap: at BNB_MAX_GWEI, once, with an alarm): an approve as it was, a sell on the pool now with a fresh deadline, a buy
+        past its deadline or late (why), or a cancel, by a 0-value transfer to the wallet. A late buy's cancel refused for its nonce (taken:
+        the buy, or another of ours, was mined) is not tried again; a replacement answered 'nonce too low' marks the nonce as mined"""
+        hi = int(round(self.MAX_GWEI * 1e9)); gp = hi if cap else min(hi, max(rec["gas_price"] * 9 // 8 + 1, self.gas_price()))
         if gp * 10 < rec["gas_price"] * 11:
             rec["no_replace"] = rec["no_cancel"] = True
             self.alarm(f"the {rec['kind']} {rec['hash']} is pending at {rec['gas_price'] / 1e9:g} gwei and cannot be replaced under BNB_MAX_GWEI {self.MAX_GWEI:g}", pair=x["pair"])
@@ -1133,6 +1181,11 @@ class Live:
             exp = self.E.amount_out(rec["amount"], rt, rq); slip = int(round(rec["slip"] * PPM)); mo = bound(exp, x.get("f_sell", x["factor_ppm"]), slip)
             dl = int(time.time()) + self.DEADLINE_S
             info.update(amount=rec["amount"], min_out=mo, expected=exp, slip=rec["slip"], deadline=dl, why=rec.get("why"))
+        if cap:                                                                         # past MAX_REPLACE: once more, at the cap (bounded)
+            rec["no_replace"] = True; info["capped"] = True
+            self.alarm(f"the {rec['kind']} {rec['hash']} is still pending at its nonce {rec['nonce']} after {self.MAX_REPLACE} replacements "
+                       f"({rec['gas_price'] / 1e9:g} gwei): signed anew once more at BNB_MAX_GWEI {self.MAX_GWEI:g} gwei", pair=x["pair"])
+        if rec["kind"] == "sell":
             new = self.send_tx(x, "sell", self.E.ROUTER, 0, sell_data(rec["amount"], mo, x["token"], self.wallet, dl, self.E.WBNB), rec["gas"], gp, info, nonce=rec["nonce"])
         elif rec["kind"] == "approve":
             new = self.send_tx(x, "approve", x["token"], 0, approve_data(self.E.ROUTER), rec["gas"], gp, info, nonce=rec["nonce"])
@@ -1140,6 +1193,8 @@ class Live:
             new = self.send_tx(x, "cancel", self.wallet, 0, "0x", 21000, gp, info, nonce=rec["nonce"])
             if new is None and why and self.last_reply[0] == "nonce":
                 rec["no_cancel"] = True
+        if new is None:
+            self.too_low(rec, *self.last_reply)
         self.log({"ev": "live_replace", "kind": rec["kind"], "pair": x["pair"], "nonce": rec["nonce"], "old": rec["hash"], "new": new["hash"] if new else None,
                   "as": new["kind"] if new else None, "gwei": gp / 1e9, **({"why": why} if why else {})})
 
@@ -1165,6 +1220,7 @@ class Live:
                            f"{later['hash']} at nonce {later['nonce']} waited behind it)", pair=x["pair"])
                 self.save(); return
             if k == "nonce" and "too high" not in str(msg).lower():
+                self.too_low(rec, k, msg)                                               # ('nonce too low': mined after all; the chain's state decides)
                 self.alarm(f"the {rec['kind']} {rec['hash']} {what}, but a transfer at its nonce {rec['nonce']} was refused ({msg}): the nonce is taken; not dropped",
                            quiet_key="fill-" + rec["hash"], every_s=300, pair=x["pair"])
                 return
@@ -1188,14 +1244,22 @@ class Live:
         still there is sent again; a buy whose token is not there is polled (an alarm every 5 min) until 10 waits past its deadline, then
         dropped and the line halted (a mined buy that left no tokens is most likely a revert the node hides); a cancel whose buy left no
         tokens is dropped. With BNB_READ_ALT_URL, the state is the one the endpoint that has seen more of our transactions shows, and a buy's
-        tokens seen by either count (view())"""
+        tokens seen by either count (view()); while BNB_READ_ALT_URL cannot answer, only a buy whose tokens BNB_RPC_URL shows is decided
+        (kept as bought), nothing else"""
         kind, h = rec["kind"], rec["hash"]
+        group = self.pending(x) or [rec]; cost = max(t["gas"] * t["gas_price"] for t in group)
+        buy = next((t for t in group if t["kind"] == "buy"), None)
         try:
             bal, any_bal, allowed = self.view(x["token"], approve=kind == "approve")
         except Exception:
-            return                                                                      # asked again at the next poll
-        group = self.pending(x) or [rec]; cost = max(t["gas"] * t["gas_price"] for t in group)
-        buy = next((t for t in group if t["kind"] == "buy"), None)
+            if kind not in ("buy", "cancel") or buy is None:
+                return                                                                  # asked again at the next poll
+            try:                                                                        # (the second endpoint down: the tokens BNB_RPC_URL shows)
+                bal = any_bal = self.token_balance(x["token"]); allowed = 0
+            except Exception:
+                return
+            if bal <= 0:
+                return
 
         def took(t):
             """t taken as the one mined at that nonce; the ones it replaced (or that replaced it) dropped"""

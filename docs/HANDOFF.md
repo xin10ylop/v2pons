@@ -2310,15 +2310,16 @@ of 1,725 a buyer by +3; strangers bought 0.15 BNB in the holds). A private RPC w
 blocks its builders win, its own pricing (48 Club's answers 1 gwei), and a nonce the public RPC cannot see after an error.
 `BNB_SEND_URL` can point at one without a code change (`BNB_SLIP` 0.02 would cut the bound to 2%).
 
-Tests: `tests/test_bnb_engine.py` 68 after the review's third round (61 after the second, 43 after the first; the 20 dry ones
-unchanged, 48 live, with a stubbed chain that decodes every signed transaction: rlp, the sender recovered, chain 56, the calldata by
+Tests: `tests/test_bnb_engine.py` 75 after the review's fourth round (68 after the third, 61 after the second, 43 after the first; the
+20 dry ones unchanged, 55 live, 30 of the earlier live ones run a second time with `BNB_READ_ALT_URL` on, with a stubbed chain that decodes every signed transaction: rlp, the sender recovered, chain 56, the calldata by
 `eth_abi`),
 `tests/data/bnb_receipts.json` (two real receipts of the router's `b6f9de95` and `791ac947` calls by other wallets, blocks
 127210196/127210200, for the settlement parser); `tests/test_engine.py` 76 (the Robinhood engine untouched: `src/flip_engine.py`,
 `tests/test_engine.py` and its deploy files not edited). Mutation checks, each on a copy of the tree: the buy's minOut without the
 slippage (fails the round-trip test), the crowd gate that never trips (fails the gate test), no nonce re-read after a nonce error (fails
 the nonce test), our own swaps not kept out of the dry copy (fails the dry test); round 2: one mutation per fix (41, each in its own
-fresh directory), each failing at its own test (37-54; the line-level dump halt also at test 27).
+fresh directory), each failing at its own test (37-54; the line-level dump halt also at test 27); rounds 3 and 4: the same, listed in
+their own paragraphs below.
 
 Open:
 
@@ -2338,7 +2339,22 @@ Open:
   the review found; it is a mask on what the service's own code sees, not a wall against hostile code inside the process (root still).
   Do it before the stake goes past the $5 probe.
 - The unit's isolation is checked on paper and by `systemd-analyze verify` only: RUNBOOK 4k step 1's `nsenter ... ls /etc/flip` and
-  `CapBnd` line must be run on the box before `BNB_LIVE=1`.
+  `CapBnd` line must be run on the box before `BNB_LIVE=1`. `PrivateDevices=yes` (only the pseudo devices in `/dev`) is not set in
+  `deploy/flip-bnb.service`: it could not be tried against the box's systemd and the venv here; add it with the stronger form above.
+- The SIGTERM handler is installed in `bnb_engine.py`'s `main()` after `LIVE.start()` (outside this line's live files, so not touched in
+  rounds 3 and 4): a SIGTERM during the start's few seconds (the positions file, the self-test) ends the process without
+  `LIVE.shutdown()`. Nothing is sent before the worker starts and each send's record is written before it, so a restart finds the same.
+- Two positions at one nonce (only after a send no endpoint answered: the nonce is read again and the next send may take it) block each
+  other's late cancel (`nonce_used`): the one left out is cancelled only past its deadline, and its minOut bounds the price it can land at.
+- After the one replacement at `BNB_MAX_GWEI`, a transaction still held unmined is only alarmed (`pending` every 5 minutes; `--alerts`
+  shows a sell pending over a minute): raising `BNB_MAX_GWEI` (up to 5) and a restart is the owner's move.
+- A receipt `BNB_READ_ALT_URL` shows in a block not final there is waited for; an endpoint whose `finalized` tag stalls leaves it waiting
+  (an alarm after 40 s). After a 'nonce too low' at a transaction `BNB_RPC_URL` holds pending, `BNB_READ_ALT_URL`'s receipt is asked at
+  once, but a decision on the chain's state alone (no receipt anywhere: the tokens, the allowance; a sale settled at its minOut floor)
+  waits for 40 s, as for one no node holds.
+- `--alerts`: `BNB NOT READING` is fixed at 3 minutes, which assumes `BNB_FLOW_S` 60 (with `BNB_FLOW_S` above 180 it shows all the time),
+  and a positions file left holding a halt after the owner removed `HALTED.bnb` and set the line back to dry still shows `BNB HALTED ...
+  restart flip-bnb` (move `bnb_positions.json` away once it holds no position).
 - The crowd's buys reverted by ours (the research's 1 in 1,242 launches) are not counted: a reverted transaction has no log, so it
   needs each block's transactions and receipts (`eth_getBlockByNumber` with transactions and `eth_getBlockReceipts`, a few MB a block
   over ~70 blocks a trade) on the public node the sale reads from. Better as a check after the first trades (a script over the live
@@ -2450,3 +2466,38 @@ own copy of the tree; nothing sent to any chain):
   balance-0 count reset, a stuck position taken back at a restart, the sale by the head in every state holding tokens); RUNBOOK 4i/4k and
   this section's test count, and 4i's restart delay, are checked against the tree. Scenarios that held the reader at L+60 with a buy on
   its way now hold it at L+52 (at L+60 the buy is late, and is cancelled).
+
+Review fixes, round 4 (the open items of round 3's check: its regression, five LOW items and its six surviving mutations; 75 tests;
+each fix has a test that fails without it, a mutation per fix on its own copy of the tree: 26 in all, the six of round 3's check among
+them, each caught (the one letting the escalation go on once test 39 checked that nothing more is tried after the one at the cap);
+nothing sent to any chain):
+
+- The regression of round 3: after a late buy's cancel the last record at the nonce is the cancel, which has no deadline, so a buy and its
+  cancel that no node showed were dropped 40 s after the cancel (about 44 s after the buy), 16 s before the buy's own deadline; a buy
+  landing then left its tokens in the wallet with no position. The wait and the drop now take the latest deadline at the nonce (the
+  buy's): nothing is dropped before it + 15 s, and a buy landing until then is kept and sold (test 62).
+- A `BNB_RPC_URL` whose backend stalls holding our transaction as pending (no receipt, while the chain mined it) left a buy as `buy_sent`
+  for good with only 'pending' alarms (the creator's drain to come). Now a transaction a node holds is checked like one no node holds
+  once it has been pending twice `BNB_RECEIPT_WAIT_S`, and `BNB_READ_ALT_URL`'s receipt is asked at once after any 'nonce too low' at its
+  nonce (a copy, a replacement, a late cancel or a gap's fill: that nonce was mined); a 'nonce too low' also counts the nonce as mined
+  wherever the counts lag, and nothing more is replaced at it (test 63).
+- A transaction only `BNB_READ_ALT_URL`'s pool holds (asked from `BNB_REPLACE_S` on when `BNB_RPC_URL` does not know it) is held like one
+  `BNB_RPC_URL` holds: replaced after `BNB_REPLACE_S`, the pending alarm (naming that endpoint) after twice `BNB_RECEIPT_WAIT_S`; it was
+  silent for 6 minutes (test 64). `alt_receipt` now says "pending" (held unmined there) and "unfinal" (mined there, not final yet: waited
+  for, an alarm after 40 s) apart.
+- A head answered again unchanged no longer counts as fresh (`poll_head` and `head_now` take a newer block only, the reader's head
+  already did): a node stalled but answering lets the head be extrapolated after 10 s (an alarm) and the sale by the head fire, and a buy
+  is aged by the clock before its send (test 65).
+- While `BNB_READ_ALT_URL` cannot answer (bsc-dataseed rate-limits), a buy whose tokens `BNB_RPC_URL` shows is still kept as bought and
+  sold (a hidden buy stayed `buy_sent` for 10 minutes); dropping and settling still wait for the second endpoint. RUNBOOK 4k step 5 says
+  what to do about the repeated 'did not answer' alarm: another https endpoint in `BNB_READ_ALT_URL`, or 0, and a restart (test 66).
+- A transaction still held after `MAX_REPLACE` (3) replacements, about 0.142 gwei, is signed anew once more at `BNB_MAX_GWEI` (1 gwei),
+  with an alarm; then only alarms (bounded: one more transaction, at the cap). A sell was left `sell_sent` for good (test 39).
+- Tests: the six mutations of round 3's check that survived now fail: `alt_receipt`'s pending verdict turned to `continue` (test 64),
+  its verdict ignored in `poll()` (64 for a transaction held there, 67 for one mined there and not final yet: round 3's single "known"
+  is now the two), a receipt there acted on before its block is final there (67), a gap's fill refused for its nonce dropped anyway (67),
+  the late cancel tried again after a refusal for its nonce (63), and the token check without the second endpoint's balance (67). The earlier
+  live sections run a second time with `BNB_READ_ALT_URL` on, as production runs (68: 30 sections; 38, 40 and 47 take `BNB_RPC_URL` down
+  on purpose and are left out). Test 30's nonce-of-another-transaction case now posts a real transaction of ours at that nonce (it edited
+  the records after the copy's tick, by which time the second endpoint had already shown the copy's receipt); test 39 counts 3
+  replacements then one at the cap; test 56's lost cancel ages both of its records (the drop waits for the buy's deadline).

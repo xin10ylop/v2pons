@@ -522,6 +522,7 @@ class LiveChain(Chain):
         self.override = True; self.revert = []; self.replies = []; self.posts = 0; self.codes = {}; self.allow = {}
         self.pend = {}; self.oog = []; self.zero = 0; self.count_lag = 0; self.fin_lag = 0; self.head_n = None; self.down = set()
         self.lost, self.queued, self.queue_gaps, self.frozen = set(), {}, False, None
+        self.hide = set()                                                             # held by the second endpoint's pool only: BNB_RPC_URL does not know them
 
     def pool(self, pair, token, logs):
         self.pairs[pair] = (token, logs); self.our[pair] = (0, 0); self.bal_tok.setdefault(token, 0)
@@ -537,8 +538,12 @@ class LiveChain(Chain):
     def rpc(self, method, params, tries=3, timeout=10):
         if method in self.down:                                                       # BNB_RPC_URL down for this method (the second endpoint is alt())
             self.calls["down"] = self.calls.get("down", 0) + 1; raise RuntimeError(method + ": HTTP Error 503: Service Unavailable")
+        if method == "eth_getTransactionByHash" and params[0] in self.hide:
+            return None
         f = self.frozen                                                               # BNB_RPC_URL's backend lags and still answers: the wallet's
         if f is not None:                                                             # count, token balances and transactions as before the stale send
+            if method == "eth_getTransactionByHash" and params[0] in f["pend"]:      # (a "stalepend" one held in its pool as pending, never mined)
+                return copy.deepcopy(f["pend"][params[0]])
             if method == "eth_getTransactionCount":
                 return hex(f["count"])
             if method == "eth_call" and params[0].get("data", "").startswith("0x70a08231"):
@@ -594,9 +599,10 @@ class LiveChain(Chain):
     def post(self, url, raw):
         """eth_sendRawTransaction: decoded, checked and mined at once (a queued reply first, when one is set: (kind, message, mined), mined
         "hidden": mined, but the node then shows neither the transaction nor its receipt, as a lagging or partial backend would; "stale":
-        mined, and BNB_RPC_URL (rpc()) answers from then on as before it, while the second endpoint (alt()) shows the chain; "lost": taken,
-        then gone from every pool, its copies too; "pending": held unmined). With queue_gaps a nonce above the next one is queued (the node
-        knows it) and mined once the gap below it is filled"""
+        mined, and BNB_RPC_URL (rpc()) answers from then on as before it, while the second endpoint (alt()) shows the chain; "stalepend": the
+        same, and BNB_RPC_URL's stalled pool holds it as pending (its copies "already known"); "lost": taken, then gone from every pool, its
+        copies too; "pending": held unmined; "altpend": held unmined by the second endpoint's pool only, BNB_RPC_URL does not know it). With
+        queue_gaps a nonce above the next one is queued (the node knows it) and mined once the gap below it is filled"""
         self.posts += 1
         b = bytes.fromhex(raw[2:]); f = rlp.decode(b); n = int.from_bytes(f[0], "big")
         assert Account.recover_transaction(b).lower() == WALLET and int.from_bytes(f[6], "big") in (147, 148)    # the wallet's, chain 56 (EIP-155)
@@ -604,6 +610,8 @@ class LiveChain(Chain):
         tx = {"hash": h, "from": WALLET, "to": "0x" + f[3].hex(), "nonce": n, "gasPrice": gp, "gas": int.from_bytes(f[2], "big"), "value": value, "data": data}
         if h in self.lost:
             return "ok", None
+        if self.frozen is not None and h in self.frozen["pend"]:
+            return "in", "already known"
         if n in self.pend:                                                            # a transaction the node holds unmined at this nonce (a "pending" reply)
             ph, pgp = self.pend[n]
             if ph == h:
@@ -618,13 +626,17 @@ class LiveChain(Chain):
             self.lost.add(h); return reply[:2]
         if n > self.mined and self.queue_gaps:                                       # queued behind a gap: known, mined once the gap is filled
             self.pend[n] = (h, gp); self.byhash[h] = dict(tx, value=hex(value), nonce=hex(n)); self.queued[n] = raw; return reply[:2]
-        if reply[2] == "stale" and self.frozen is None:
-            self.frozen = {"count": self.mined, "bal": dict(self.bal_tok), "seen": set(self.byhash)}
+        if reply[2] in ("stale", "stalepend") and self.frozen is None:
+            self.frozen = {"count": self.mined, "bal": dict(self.bal_tok), "seen": set(self.byhash), "pend": {}}
         if n != self.mined:
             return "nonce", "nonce too low" if n < self.mined else "nonce too high"
-        if reply[2] == "pending":                                                     # the node takes it and knows it, and it is never mined
+        if reply[2] in ("pending", "altpend"):                                        # the node takes it and knows it, and it is never mined
             self.pend[n] = (h, gp); self.byhash[h] = dict(tx, value=hex(value), nonce=hex(n)); self.pending_sent = getattr(self, "pending_sent", []) + [tx]
+            if reply[2] == "altpend":
+                self.hide.add(h)
             return reply[:2]
+        if reply[2] == "stalepend":
+            self.frozen["pend"][h] = dict(tx, value=hex(value), nonce=hex(n))
         self.sent.append(tx); self.mined += 1
         blk = (E.state["done_to"] or L) + 2; sel, args = data[:8], bytes.fromhex(data[8:]); logs, ok, kind, used = [], True, None, 21000
         if sel == LV.SEL_BUY:
@@ -691,10 +703,18 @@ def new_live(chain, keep_old=False, **env_):
 
 
 def age_last(lv, pair, s):
-    """the position's last transaction made s seconds older (its send and its deadline), as if the clock had run on"""
-    rec = lv.pos[pair]["txs"][-1]; rec["sent_at"] -= s; rec["polled"] = 0
+    """the position's last transaction made s seconds older (its send and its deadline), as if the clock had run on (the chain asked again)"""
+    rec = lv.pos[pair]["txs"][-1]; rec["sent_at"] -= s; rec["polled"] = 0; rec.pop("alt_at", None)
     if rec.get("deadline") is not None:
         rec["deadline"] -= s
+
+
+def age_all(lv, pair, s):
+    """every transaction of the position made s seconds older (a cancel and the buy it replaces: the drop waits for the latest deadline)"""
+    for rec in lv.pos[pair]["txs"]:
+        rec["sent_at"] -= s; rec["polled"] = 0; rec.pop("alt_at", None)
+        if rec.get("deadline") is not None:
+            rec["deadline"] -= s
 
 
 def live_start(chain, lv, a, fresh=True):
@@ -1182,11 +1202,11 @@ age_last(lv, PAIR, 30); lv.tick()                                               
 assert ch30.posts == n0 and not events("live_rebroadcast") and lv.pos[PAIR]["state"] == "buy_sent"
 age_last(lv, PAIR, 40); lv.tick()                                                   # 130 s old: never mined, dropped
 assert ch30.posts == n0 and PAIR not in lv.pos and events("live_skip")[-1]["why"] == "the buy was never mined" and not ch30.sent
-ch30 = base_chain(); ch30.replies = [("unknown", "timed out", False)] * 2; lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 52)
-age_last(lv, PAIR, 25); lv.tick(); assert len(events("live_rebroadcast")) == 1      # the copy, 35 s before its deadline, mined
-lv.pos[PAIR]["txs"][-1]["nonce"] = 6; lv.pos[PAIR]["txs"].append(dict(lv.pos[PAIR]["txs"][-1], hash="0x" + "ab" * 32, nonce=7, polled=0))   # (a record whose nonce 7 is ours, mined)
-lv.mined_nonces[7] = ch30.sent[0]["hash"]; lv.hashes.add("0x" + "ab" * 32); age_last(lv, PAIR, 100); lv.tick()
-assert any("its nonce 7 went to our " + ch30.sent[0]["hash"] in a["what"] for a in events("alarm"))
+ch30 = base_chain(); ch30.replies = [("unknown", "timed out", False)] * 4; lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 52)
+age_last(lv, PAIR, 25); lv.tick(); assert len(events("live_rebroadcast")) == 1      # a copy, 35 s before its deadline (no answer either)
+raw30, h30 = lv.sign({"nonce": 7, "gasPrice": 10 ** 8, "gas": 21000, "to": lv.checksum(WALLET), "value": 0, "data": "0x", "chainId": E.CHAIN_ID})
+ch30.post(None, raw30); lv.mined_nonces[7] = h30; age_last(lv, PAIR, 100); lv.tick()   # its nonce 7 went to another transaction of ours (its receipt seen)
+assert any("its nonce 7 went to our " + h30 in a["what"] for a in events("alarm")) and PAIR not in lv.pos and not ch30.toks
 ch30 = base_chain(); ch30.replies = [("ok", None, "hidden")]; lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 52)
 assert lv.pos[PAIR]["state"] == "buy_sent" and len(ch30.sent) == 1 and ch30.bal_tok[TOKEN] > 0
 age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()                # sent again ('nonce too low': it is in), then the chain asked
@@ -1519,14 +1539,25 @@ cx = ch39.sent[-1]
 assert PAIR not in lv.pos and lv.halted is None and not lives() and events("live_skip")[-1]["why"].startswith("the buy was cancelled") and PAIR not in lv.traded
 assert (cx["to"], cx["value"], cx["nonce"], cx["gas"], cx["data"]) == (WALLET, 0, 7, 21000, "") and ch39.mined == 8 and lv.nonce == 8
 assert abs(lv.pnl_today + 21000 * c1["gas_price"] / 1e18 * E.bnb_usd()) < 1e-9 < -lv.pnl_today                     # the cancel's gas in the day's $
-ch39 = base_chain(); lv = new_live(ch39); live_start(ch39, lv, L - 2); live_go(ch39, lv, L + 255)
-ch39.replies = [("ok", None, "pending")] * 4; live_go(ch39, lv, L + 262)
-for _ in range(5):
-    age_last(lv, PAIR, 9); lv.tick()                                            # each 9 s: replaced, 3 times at most
-assert len(events("live_replace")) == 3 and len(lv.pending(lv.pos[PAIR])) == 4 and lv.pos[PAIR]["state"] == "sell_sent" and not lives()
+for held in (4, 5):                                                             # the sell and its 3 replacements held, then the one at the cap mined or held
+    ch39 = base_chain(); lv = new_live(ch39); live_start(ch39, lv, L - 2); live_go(ch39, lv, L + 255)
+    ch39.replies = [("ok", None, "pending")] * held; live_go(ch39, lv, L + 262)
+    for _ in range(6):
+        if PAIR in lv.pos:
+            age_last(lv, PAIR, 9); lv.tick()                                    # each 9 s: replaced 1/8 dearer 3 times, then once at BNB_MAX_GWEI, then no more
+    sl = [t for t in ch39.pending_sent + ch39.sent if t["data"][:8] == "791ac947"]; gps = [t["gasPrice"] for t in sl]
+    assert len(events("live_replace")) == 4 and len(gps) == 5 and gps[-1] == 10 ** 9 and all(b_ == a_ * 9 // 8 + 1 for a_, b_ in zip(gps[:3], gps[1:4])), gps
+    assert len({t["nonce"] for t in sl}) == 1 and any("is still pending at its nonce 9 after 3 replacements" in a["what"] and "at BNB_MAX_GWEI 1 gwei" in a["what"] for a in events("alarm"))
+    if held == 4:                                                               # the one at the cap mined: settled from it
+        td = lives()
+        assert len(td) == 1 and td[0]["hashes"]["sell"] == [sl[-1]["hash"]] and td[0]["bnb_out_wei"] == ch39.outs[0] > 0 and lv.halted is None, td
+    else:                                                                       # held too: bounded, nothing more is sent or tried (the pending alarm only)
+        assert lv.pos[PAIR]["state"] == "sell_sent" and len(lv.pending(lv.pos[PAIR])) == 5 and not lives() and len([e for e in events("live_send") if e["kind"] == "sell"]) == 5
+        assert not any("cannot be replaced" in a["what"] for a in events("alarm")) and len([a for a in events("alarm") if "after 3 replacements" in a["what"]]) == 1
 print("ok a transaction the node holds and never mines: every send to every endpoint at once; a copy each 5 s though the node knows it; a "
       "sell pending 8 s signed anew at its nonce 1/8 dearer and settled from the one mined; a buy pending past its deadline replaced by a "
-      "0-value transfer to the wallet (no revert, no halt, the next nonce free)")
+      "0-value transfer to the wallet (no revert, no halt, the next nonce free); one still held after 3 replacements signed anew once at "
+      "BNB_MAX_GWEI (an alarm), then no more")
 
 # 40. a buy never left in 'buying': the nonce not read at its send (HTTP 429) sends nothing and drops the slot (it kept a BNB_MAX_OPEN slot
 # and any sale behind it before); an error inside the send resolves it the same way; a 'buying' left over is resolved by the worker
@@ -1867,7 +1898,7 @@ assert [e["pair"] for e in lives()] == [P2] and [t["nonce"] for t in ch56.sent] 
 ch56 = base_chain(); ch56.replies = [("ok", None, "pending"), ("ok", None, "lost")]; lv = new_live(ch56); live_start(ch56, lv, L - 2); live_go(ch56, lv, L + 52)
 age_last(lv, PAIR, 65); lv.tick()                                                  # past its deadline: the cancel, which is lost (and the buy with it)
 assert lv.pos[PAIR]["txs"][-1]["kind"] == "cancel" and not ch56.pend
-age_last(lv, PAIR, 60); lv.tick()
+age_all(lv, PAIR, 60); lv.tick()
 assert PAIR not in lv.pos and events("live_skip")[-1]["role"] == "unsent" and not lives() and not ch56.sent and PAIR not in lv.traded
 print("ok the nonce gap: a buy lost from every pool while our next nonce went out has its nonce filled by a 0-value transfer, and the "
       "buy queued behind it is mined and sold; a lost buy with nothing behind it is dropped and the nonce read again (the next buy at 7, not "
@@ -1993,8 +2024,189 @@ print("ok round 2's unchecked paths: an error after the buy's record keeps it bu
 n_ok = sum(1 for l_ in open(os.path.abspath(__file__)) if l_.startswith('print("ok'))
 i4 = rb[rb.index("## 4i."):rb.index("## 4j.")]; ho = open(os.path.join(ROOT, "docs", "HANDOFF.md")).read(); h23 = ho[ho.index("### 16.23"):]
 assert ("the two paths and `%d`" % n_ok) in i4 and ("the three paths and `%d`" % n_ok) in k4 and ("restarts it %s s after an exit" % svc["RestartSec"]) in i4, n_ok
-assert ("`tests/test_bnb_engine.py` %d after the review's third round" % n_ok) in h23
+assert ("`tests/test_bnb_engine.py` %d after the review's fourth round" % n_ok) in h23
 print("ok the docs: RUNBOOK 4i and 4k expect the %d tests this file prints, 4i the unit's 5 s restart; HANDOFF 16.23 the same count" % n_ok)
+
+# ================================================================================ round 4 of the review (the open items of round 3's check):
+# each section fails without its fix (a mutation per fix, run on a copy of the tree); BNB_READ_ALT_URL on, as production runs
+
+# 62. a late buy's cancel has no deadline: the wait before a drop is the latest deadline at the nonce, the buy's. A buy taken and lost from
+# every pool, and its late cancel lost too: nothing is dropped before the buy's deadline + 15 s (it was dropped 40 s after the cancel, 16 s
+# before the buy's deadline, and a buy landing then left its tokens unsold); one landing then is kept and sold, also when no node shows it
+# or counts its nonce yet (the cancel's buy's tokens decide); one that never lands is dropped once it is past
+for lands in (True, "hidden", False):
+    ch62 = base_chain(); ch62.replies = [("ok", None, "lost")] * 2; lv = new_live(ch62); live_start(ch62, lv, L - 2); alt_of(ch62, lv); live_go(ch62, lv, L + 52)
+    b62 = lv.pos[PAIR]["txs"][-1]; T62 = b62["sent_at"]
+    E.state["head"] = L + 57; frozen(T62 + 4, lv.tick)                            # late at L+58: the cancel at its nonce, lost as well
+    c62 = lv.pos[PAIR]["txs"][-1]
+    assert (b62["kind"], c62["kind"], c62["nonce"], c62.get("deadline")) == ("buy", "cancel", 7, None) and T62 + 59 < b62["deadline"] <= T62 + 60, c62
+    for s_ in (41, 45, 50, 60, 70, b62["deadline"] - T62 + 14):
+        frozen(T62 + s_, lv.tick)
+        assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and not ch62.sent, s_
+    if lands:
+        ch62.lost.discard(b62["hash"]); ch62.replies = [("ok", None, lands)] if lands == "hidden" else []; ch62.post(None, b62["raw"])   # a pool that held it mines it
+        ch62.count_lag = 1 if lands == "hidden" else 0; frozen(b62["deadline"] + (16 if lands == "hidden" else 14.5), lv.tick); ch62.count_lag = 0
+        x = lv.pos[PAIR]
+        assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch62.toks[0] and bool(x.get("unconfirmed")) == (lands == "hidden"), x["state"]
+        assert [e["hash"] for e in events("live_replaced")] == ([c62["hash"]] if lands is True else []) and [t["kind"] for t in x["txs"]][0] == "buy"
+        live_go(ch62, lv, L + 300); td = lives()
+        assert len(td) == 1 and td[0]["why"] == "sell at +260" and td[0]["tokens"] == ch62.toks[0] and td[0]["hashes"]["buy"] == [b62["hash"]] and lv.halted is None, td
+    else:
+        frozen(b62["deadline"] + 16, lv.tick)
+        assert PAIR not in lv.pos and events("live_skip")[-1]["why"] == "the buy was never mined" and not ch62.sent and not lives()
+E.state["head"] = None
+print("ok a late buy's cancel has no deadline: a lost buy and its lost cancel drop nothing before the buy's own deadline + 15 s (the slot "
+      "went 40 s after the cancel); the buy landing then is kept and sold, one that never lands is dropped after it")
+
+# 63. BNB_RPC_URL's backend stalls holding our transaction as pending while the chain mined it (it never shows a receipt, its copies are
+# 'already known'): a late buy's cancel answered 'nonce too low' (its nonce was mined) is not tried again and BNB_READ_ALT_URL is asked at
+# once: the buy is kept from its receipt there and sold (it stayed buy_sent for good, the creator's drain to come); with no such answer the
+# second endpoint is asked once it has been pending twice BNB_RECEIPT_WAIT_S; a sell whose replacement is answered 'nonce too low' is
+# settled from its receipt there, never sold again
+ch63 = base_chain(); ch63.replies = [("ok", None, "stalepend")]; lv = new_live(ch63); live_start(ch63, lv, L - 2); alt_of(ch63, lv); live_go(ch63, lv, L + 52)
+b63 = lv.pos[PAIR]["txs"][-1]; T63 = b63["sent_at"]
+assert lv.receipt(b63["hash"]) == (None, True) and ch63.mined == 8 and ch63.bal_tok[TOKEN] > 0 and lv.pos[PAIR]["state"] == "buy_sent"
+E.state["head"] = L + 57; frozen(T63 + 4, lv.tick)                               # late: the cancel at its nonce, 'nonce too low'
+assert [e["reply"] for e in events("live_send") if e["kind"] == "cancel"] == ["nonce"] and b63.get("no_cancel") and b63.get("nonce_low") and lv.pos[PAIR]["state"] == "buy_sent"
+frozen(T63 + 13, lv.tick)                                                        # 9 s on: not cancelled again; the second endpoint's receipt
+x = lv.pos[PAIR]
+assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch63.toks[0] and not x.get("unconfirmed") and len([e for e in events("live_send") if e["kind"] == "cancel"]) == 1, x["state"]
+ch63.frozen = None; live_go(ch63, lv, L + 300); E.state["head"] = None
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["tokens"] == ch63.toks[0] and lives()[0]["hashes"]["buy"] == [b63["hash"]]
+ch63 = base_chain(); ch63.replies = [("ok", None, "stalepend")]; lv = new_live(ch63); live_start(ch63, lv, L - 2); alt_of(ch63, lv); live_go(ch63, lv, L + 52)
+age_last(lv, PAIR, 39); lv.tick()                                                # pending 39 s, its copy 'already known': waited for
+assert lv.pos[PAIR]["state"] == "buy_sent" and [e["reply"] for e in events("live_rebroadcast")] == ["in"]
+age_last(lv, PAIR, 2); lv.tick()                                                 # 41 s: the second endpoint asked
+assert lv.pos[PAIR]["state"] in ("bought", "approve_sent") and not lv.pos[PAIR].get("unconfirmed")
+ch63.frozen = None; live_go(ch63, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["tokens"] == ch63.toks[0]
+down63 = [False]; ch63 = base_chain(); lv = new_live(ch63); live_start(ch63, lv, L - 2); alt_of(ch63, lv, down63); live_go(ch63, lv, L + 255)
+ch63.replies = [("ok", None, "stalepend")]; live_go(ch63, lv, L + 262)
+s63 = lv.pos[PAIR]["txs"][-1]
+assert s63["kind"] == "sell" and lv.pos[PAIR]["state"] == "sell_sent" and lv.receipt(s63["hash"]) == (None, True) and ch63.bal_tok[TOKEN] == 0
+age_last(lv, PAIR, 9); lv.tick()                                                 # replaced at its nonce: 'nonce too low'
+assert [e["reply"] for e in events("live_send") if e["kind"] == "sell"] == ["ok", "nonce"] and lv.pos[PAIR]["state"] == "sell_sent"
+down63[0] = True; age_last(lv, PAIR, 9); lv.tick()                               # the second endpoint down a while: nothing replaced again at a
+assert len([e for e in events("live_send") if e["kind"] == "sell"]) == 2 and lv.pos[PAIR]["state"] == "sell_sent"   # nonce known to be mined
+down63[0] = False; age_last(lv, PAIR, 1); lv.tick()                              # the second endpoint's receipt
+td = lives()
+assert len(td) == 1 and td[0]["bnb_out_wei"] == ch63.outs[0] > 0 and not td[0]["unconfirmed"] and td[0]["hashes"]["sell"] == [s63["hash"]] and lv.halted is None, td
+assert len([e for e in events("live_send") if e["kind"] == "sell"]) == 2 and len(ch63.outs) == 1
+print("ok a stalled BNB_RPC_URL holding our mined transaction as pending: a late buy's cancel answered 'nonce too low' is not tried again "
+      "and BNB_READ_ALT_URL is asked at once (the buy kept from its receipt there and sold); without that answer it is asked after twice "
+      "BNB_RECEIPT_WAIT_S; a sell whose replacement is answered 'nonce too low' is settled from the receipt there, never sold again")
+
+# 64. a transaction only BNB_READ_ALT_URL's pool holds (BNB_RPC_URL does not know it), asked from BNB_REPLACE_S on, is held as one
+# BNB_RPC_URL holds: a sell is replaced at its nonce after 8 s and settled from the one mined; a buy waits for its deadline (the pending
+# alarm after twice BNB_RECEIPT_WAIT_S names the endpoint), then is cancelled at its nonce; never dropped as never mined (6 minutes silent)
+ch64 = base_chain(); lv = new_live(ch64); live_start(ch64, lv, L - 2); alt_of(ch64, lv); live_go(ch64, lv, L + 255)
+ch64.replies = [("ok", None, "altpend")]; live_go(ch64, lv, L + 262)
+s64 = lv.pos[PAIR]["txs"][-1]
+assert s64["kind"] == "sell" and lv.receipt(s64["hash"]) == (None, False) and ch64.pend[9][0] == s64["hash"]
+age_last(lv, PAIR, 9); lv.tick()                                                 # held there 9 s: replaced at its nonce, 1/8 dearer
+s64b = lv.pos[PAIR]["txs"][-1]
+assert s64b["replaces"] == s64["hash"] and s64b["nonce"] == 9 and s64b["gas_price"] == s64["gas_price"] * 9 // 8 + 1, s64b
+for _ in range(3):
+    lv.tick()
+td = lives()
+assert len(td) == 1 and td[0]["hashes"]["sell"] == [s64b["hash"]] and td[0]["bnb_out_wei"] == ch64.outs[0] > 0 and not td[0]["unconfirmed"], td
+ch64 = base_chain(); ch64.replies = [("ok", None, "altpend")]; lv = new_live(ch64); live_start(ch64, lv, L - 2); alt_of(ch64, lv); live_go(ch64, lv, L + 52)
+b64 = lv.pos[PAIR]["txs"][-1]
+age_last(lv, PAIR, 41); lv.tick()                                                # before its deadline: not replaced, not dropped; the pending alarm
+assert lv.pos[PAIR]["txs"][-1] is b64 and not events("live_replace") and not events("live_skip")
+assert any(re.fullmatch(r"the buy has been pending 4\d s \(held by alt\.example\.org only\)", a["what"]) for a in events("alarm")), [a["what"] for a in events("alarm")]
+age_last(lv, PAIR, 24); lv.tick()                                                # 5 s past its deadline: the cancel at its nonce
+c64 = lv.pos[PAIR]["txs"][-1]
+assert c64["kind"] == "cancel" and c64["nonce"] == 7 and c64["replaces"] == b64["hash"]
+for _ in range(3):
+    lv.tick()
+assert PAIR not in lv.pos and events("live_skip")[-1]["why"].startswith("the buy was cancelled") and lv.halted is None and ch64.sent[-1]["to"] == WALLET
+print("ok a transaction only BNB_READ_ALT_URL holds pending: a sell replaced after 8 s and settled from the one mined; a buy held to its "
+      "deadline with the pending alarm (naming the endpoint), then cancelled at its nonce; never dropped as never mined")
+
+# 65. a head that keeps answering the same number is no fresh head: BNB_RPC_URL stalled but answering its last block for 130 s, the head
+# is extrapolated and the position sold by it (an alarm), as with no answer at all; before a buy, the same head answered 9 s on is aged
+# by the clock and a buy it makes late is not sent
+ch65 = base_chain(); lv = new_live(ch65); live_start(ch65, lv, L - 2); live_go(ch65, lv, L + 60)
+assert lv.pos[PAIR]["state"] == "approved"
+ch65.head_n = lv.head_val; lv.HEAD_POLL_S, lv.HEAD_BLIND_S = 3.0, 10; lv.head_ok_at -= 130; hv = lv.head_val - L; n65 = ch65.calls.get("eth_blockNumber", 0)
+for _ in range(4):
+    lv.tick()
+td = lives(); m65 = re.fullmatch(r"the reader is behind: sold by the head \(L\+(\d+), estimated: no head for 13\d s\)", td[0]["why"]) if len(td) == 1 else None
+assert m65 and 288 <= int(m65.group(1)) - hv <= 290 and ch65.calls["eth_blockNumber"] > n65, (hv, td)
+assert any(a["what"].startswith("eth_blockNumber still answers %d, no new block for 13" % (L + hv)) for a in events("alarm"))
+ch65 = base_chain(); lv = new_live(ch65); live_start(ch65, lv, L - 2); to_buy_due(ch65, lv)
+lv.head_val, lv.head_ok_at = L + 52, time.monotonic() - 9; ch65.head_n = L + 52      # the node answers the head it had 9 s ago
+lv.tick()
+assert not ch65.sent and PAIR not in lv.pos and re.search(r"the buy would go 2[0-9] blocks late \(it lands at L\+7\d", events("live_skip")[-1]["why"]), events("live_skip")
+print("ok a head answered again unchanged is not fresh: a node stalled on its last block for 130 s leaves the head extrapolated and the "
+      "position sold by it (an alarm); before a buy, the same head 9 s on is aged by the clock and the late buy is not sent")
+
+# 66. while BNB_READ_ALT_URL cannot answer (the default, bsc-dataseed, rate-limits), a buy whose tokens BNB_RPC_URL shows is still kept as
+# bought and sold (it stayed buy_sent for good); dropping and settling still wait for the second endpoint (test 55). RUNBOOK 4k tells the
+# owner what to do about the repeated 'did not answer' alarm
+ch66 = base_chain(); ch66.replies = [("ok", None, "hidden")]; lv = new_live(ch66); live_start(ch66, lv, L - 2); alt66 = alt_of(ch66, lv, [True]); live_go(ch66, lv, L + 52)
+assert lv.pos[PAIR]["state"] == "buy_sent" and ch66.mined == 8 and ch66.bal_tok[TOKEN] > 0
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()             # shown nowhere; the count and the tokens on BNB_RPC_URL; the second down
+x = lv.pos[PAIR]
+assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch66.toks[0] and x["unconfirmed"].startswith("the buy's receipt") and "eth_getTransactionByHash" in alt66, x["state"]
+live_go(ch66, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["tokens"] == ch66.toks[0] and lv.halted is None
+assert "did not answer" in k4 and "set_bnb BNB_READ_ALT_URL https://" in k4 and "set_bnb BNB_READ_ALT_URL 0" in k4
+print("ok while BNB_READ_ALT_URL cannot answer, a buy whose tokens BNB_RPC_URL shows is kept as bought and sold (dropping and settling "
+      "still wait for it); RUNBOOK 4k says what to do about its repeated 'did not answer' alarm")
+
+# 67. the paths round 3's mutations showed untested: BNB_READ_ALT_URL's receipt in a block not final there is not acted on until it is;
+# a gap's fill refused for its nonce ('replacement transaction underpriced') drops nothing and is sent again after BNB_REPLACE_S; a
+# buy whose nonce neither endpoint counts yet but whose tokens only BNB_READ_ALT_URL shows is kept (both endpoints' balances)
+ch67 = base_chain(); ch67.replies = [("ok", None, "stale")]; lv = new_live(ch67); live_start(ch67, lv, L - 2); alt_of(ch67, lv); live_go(ch67, lv, L + 52)
+ch67.fin_lag = 5; age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()   # the buy's block 3 above the second endpoint's finalized one
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_receipt") and not events("live_skip")
+ch67.fin_lag = 0; age_last(lv, PAIR, 1); lv.tick()
+assert lv.pos[PAIR]["state"] in ("bought", "approve_sent") and events("live_receipt")[0]["kind"] == "buy" and not lv.pos[PAIR].get("unconfirmed")
+ch67 = base_chain(); lg, tx = clone_tok(P2, 2, "c7", TOK2); ch67.add(lg, tx); ch67.pool(P2, TOK2, lg[1:]); ch67.queue_gaps = True
+ch67.replies = [("ok", None, "lost"), ("ok", None, True), ("nonce", "replacement transaction underpriced", False)]
+lv = new_live(ch67, BNB_PROBE_EVERY=1); live_start(ch67, lv, L - 2); live_go(ch67, lv, L + 52)
+q67 = lv.pos[P2]["txs"][-1]
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()             # the lost buy's fill refused for its nonce: nothing dropped
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and not ch67.sent and any("was refused" in a["what"] and "not dropped" in a["what"] for a in events("alarm"))
+lv.pos[PAIR]["txs"][-1]["fill_at"] -= 9; age_last(lv, PAIR, 9); lv.tick()        # BNB_REPLACE_S on: filled
+assert (ch67.sent[0]["to"], ch67.sent[0]["nonce"], ch67.sent[0]["value"]) == (WALLET, 7, 0) and ch67.sent[1]["hash"] == q67["hash"]
+live_go(ch67, lv, L + 300)
+assert [e["pair"] for e in lives()] == [P2] and events("live_skip", PAIR)[-1]["why"].startswith("the buy was cancelled: its nonce 7 filled")
+ch67 = base_chain(); ch67.replies = [("ok", None, "stale")]; lv = new_live(ch67); live_start(ch67, lv, L - 2); alt_of(ch67, lv, partial=True); live_go(ch67, lv, L + 52)
+ch67.count_lag = 1; age_last(lv, PAIR, 85); lv.tick(); ch67.count_lag = 0        # past its deadline (no copy): neither endpoint counts the nonce,
+x = lv.pos[PAIR]                                                                 # BNB_READ_ALT_URL shows the tokens
+assert x["state"] == "bought" and x["tokens"] == ch67.toks[0] and x["unconfirmed"].startswith("the buy's receipt"), x["state"]
+ch67.frozen = None; live_go(ch67, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["tokens"] == ch67.toks[0]
+print("ok round 3's untested paths: the second endpoint's receipt waits for its block to be final there; a gap's fill refused for its "
+      "nonce drops nothing and is sent again after 8 s; a buy whose tokens only the second endpoint shows is kept")
+
+# 68. the earlier live sections again with BNB_READ_ALT_URL on, as production runs (BNB_SEND_ALT_URL's default): each live engine they
+# make on a stubbed chain gets the second endpoint as the chain's true view (alt_of). Left out: 38, 40 and 47, which take BNB_RPC_URL down
+# on purpose to test the path without it (the second endpoint would answer for it), 45 and 55, which wire the second endpoint themselves,
+# and those with no chain of the wallet's (14, 24-26, 33-36, 51, 52, 54, 58, 61); 62-67 run with it already
+import io, contextlib
+SRC = open(os.path.abspath(__file__)).read(); new_live0 = new_live; ALT_ON = (15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28, 29, 30, 31, 32, 37, 39, 41, 42, 43, 44, 46, 48, 49, 50, 53, 56, 57, 59, 60)
+
+
+def new_live_alt(chain, keep_old=False, **env_):
+    lv_ = new_live0(chain, keep_old, **env_)
+    if hasattr(chain, "alt"):                                                     # (a stubbed chain with the wallet's side)
+        alt_of(chain, lv_); WIRED.append(lv_)
+    return lv_
+
+
+for n_ in ALT_ON:
+    code_ = SRC[SRC.index("\n# %d. " % n_):SRC.index("\n# %d. " % (n_ + 1))]; out_ = io.StringIO(); new_live = new_live_alt; WIRED = []
+    try:
+        with contextlib.redirect_stdout(out_):
+            exec(compile("\n" * SRC[:SRC.index("\n# %d. " % n_)].count("\n") + code_, os.path.abspath(__file__), "exec"), globals())
+    finally:
+        new_live = new_live0
+    assert [l_ for l_ in out_.getvalue().splitlines() if l_.startswith("ok ")] and WIRED and all(lv_.read_alt for lv_ in WIRED), n_
+print("ok the earlier live sections (%d of them) pass again with BNB_READ_ALT_URL on, as production runs" % len(ALT_ON))
 
 while LIVES:
     LIVES.pop().close()
