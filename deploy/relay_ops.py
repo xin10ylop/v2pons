@@ -6,13 +6,17 @@
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py withdraw [0.005]    # relay ETH back to the wallet (no amount = all)
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py sweep 0xTOKEN       # a token left in the relay back to the wallet
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py payout 0xADDR 0.1   # ETH from the wallet to an outside address (asks for a yes; --yes skips)
-Stop the engine before deposit/withdraw/sweep/payout (same wallet, same nonce). Profit leaves in two steps: withdraw (relay -> wallet), then
-payout (wallet -> your own address); keep about 0.003 ETH in the wallet for gas."""
+The V3 relay (RELAY_V3 in the env file, deploy/relay_v3_deploy.py; status shows it when it is set):
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py deposit_v3 0.01     # ETH from the wallet into the V3 relay (checks its owner first)
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py withdraw_v3 [0.005] # V3 relay ETH back to the wallet (no amount = all)
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/relay_ops.py sweep_v3 0xTOKEN    # a token (or WETH) left in the V3 relay back to the wallet
+Stop the engine before deposit/withdraw/sweep/payout and their _v3 forms (same wallet, same nonce). Profit leaves in two steps: withdraw
+(relay -> wallet), then payout (wallet -> your own address); keep about 0.003 ETH in the wallet for gas."""
 import json, os, subprocess, sys, time
 from eth_account import Account
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import relay_sim
-ENV = "/etc/flip/engine.env"; word = relay_sim.word
+ENV = "/etc/flip/engine.env"; word = relay_sim.word; WETH = "0x0bd7d308f8e1639fab988df18a8011f41eacad73"
 
 
 def env():
@@ -68,6 +72,26 @@ def payout(acct, wallet, relay, args, yes, rpc):
     send(acct, to, amt, "0x", rpc)
 
 
+def v3_ops(cmd, acct, wallet, relay_v3, rpc):
+    """deposit_v3 <eth>, withdraw_v3 [eth], sweep_v3 <token> on the V3 relay, after checking that RELAY_V3 is a contract owned by the wallet"""
+    if acct.address.lower() != wallet or not relay_v3:
+        sys.exit("WALLET/PRIVATE_KEY/RELAY_V3 not consistent in the env file")
+    owner = rpc("eth_call", [{"to": relay_v3, "data": "0x8da5cb5b"}, "latest"]) if len(rpc("eth_getCode", [relay_v3, "latest"])) > 2 else "0x"
+    if ("0x" + owner[-40:]).lower() != wallet:
+        sys.exit(f"RELAY_V3 {relay_v3} is not a relay owned by the wallet: check the env file")
+    if cmd == "deposit_v3":
+        if len(sys.argv) < 3:
+            sys.exit("usage: relay_ops.py deposit_v3 ETH_AMOUNT")
+        send(acct, relay_v3, int(float(sys.argv[2]) * 1e18), "0x", rpc)
+    elif cmd == "withdraw_v3":
+        amt = int(float(sys.argv[2]) * 1e18) if len(sys.argv) > 2 else 0
+        send(acct, relay_v3, 0, "0x2e1a7d4d" + word(amt), rpc)
+    else:
+        if len(sys.argv) < 3:
+            sys.exit("usage: relay_ops.py sweep_v3 0xTOKEN")
+        send(acct, relay_v3, 0, "0x01681a62" + word(sys.argv[2]), rpc)
+
+
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "status"; e = env(); relay_sim.RPC = e.get("RPC_URL") or relay_sim.RPC; rpc = relay_sim.rpc
     wallet = e.get("WALLET", "").lower(); relay = e.get("RELAY", "").lower()
@@ -77,6 +101,12 @@ def main():
         if relay:
             rb = int(rpc("eth_getBalance", [relay, "latest"]), 16); owner = rpc("eth_call", [{"to": relay, "data": "0x8da5cb5b"}, "latest"])
             print(f"relay {relay}: {rb / 1e18:.6f} ETH (stake {e.get('STAKE_ETH', '?')}), owner 0x{owner[-40:]} {'== wallet' if ('0x' + owner[-40:]).lower() == wallet else '!= WALLET'}")
+        relay_v3 = e.get("RELAY_V3", "").lower()
+        if relay_v3:
+            rb = int(rpc("eth_getBalance", [relay_v3, "latest"]), 16); owner = rpc("eth_call", [{"to": relay_v3, "data": "0x8da5cb5b"}, "latest"])
+            weth = int(rpc("eth_call", [{"to": WETH, "data": "0x70a08231" + word(relay_v3)}, "latest"]), 16)
+            print(f"V3 relay {relay_v3}: {rb / 1e18:.6f} ETH{f', {weth / 1e18:.6f} WETH' if weth else ''}, owner 0x{owner[-40:]} "
+                  f"{'== wallet' if ('0x' + owner[-40:]).lower() == wallet else '!= WALLET'}")
         log = e.get("LOG_PATH", "/var/log/flip/engine.jsonl")
         if os.path.exists(log):
             day = time.strftime("%Y-%m-%d", time.gmtime()); done = []
@@ -91,6 +121,8 @@ def main():
     if subprocess.run(["systemctl", "is-active", "--quiet", "flip-engine"]).returncode == 0:
         sys.exit("stop the engine first: sudo systemctl stop flip-engine")
     acct = Account.from_key(e["PRIVATE_KEY"])
+    if cmd in ("deposit_v3", "withdraw_v3", "sweep_v3"):
+        v3_ops(cmd, acct, wallet, e.get("RELAY_V3", "").lower(), rpc); return
     if acct.address.lower() != wallet or not relay:
         sys.exit("WALLET/PRIVATE_KEY/RELAY not consistent in the env file")
     if cmd == "deposit":
