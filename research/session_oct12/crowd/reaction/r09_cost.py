@@ -3,9 +3,14 @@ sell min(trigger + 20, + 80)) with bootstrap CIs; the pull-inside-the-hold rate 
 no reaction (the group's own mean), 'the crowd stops when we hold' (sell at + 80 into no wave), and 'pulled inside the hold' at the
 measured upper bound. ETH_USD from the environment (r10_ethusd.out); gas per round trip GAS_USD."""
 from rlib import *
-ETH_USD = float(os.environ.get("ETH_USD", "2515")); GAS = float(os.environ.get("GAS_USD", "0.022")); STAKE = 5.0
+ETH_USD = float(os.environ.get("ETH_USD", "2527")); GAS = float(os.environ.get("GAS_USD", "0.022")); STAKE = 5.0
 BOT1 = "0x776e5a2a"
 G = json.load(open(J("r05_groups.json")))
+SINCE = os.environ.get("SINCE")          # e.g. 2026-10-08: only launches from that UTC day on
+if SINCE:
+    import calendar
+    G = [p for p in G if p["ts"] >= calendar.timegm(time.strptime(SINCE, "%Y-%m-%d"))]
+    print(f"launches from {SINCE} UTC on: {len(G)} pools")
 def grp(lab, ps):
     rs = [p["ret"] for p in ps if p["ret"] is not None]; n = len(ps)
     if not rs: print(f"  {lab}: none"); return

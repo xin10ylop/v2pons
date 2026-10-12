@@ -7,7 +7,7 @@ from rlib import *
 import collections
 sys.path.insert(0, "/home/user/v2pons/research/session_oct11/lines/analysis/C")
 from replay import replay
-Q = float(os.environ.get("Q", "0.002"))     # $5 at ~$2,515 (r10_ethusd.out)
+Q = float(os.environ.get("Q", "0.002"))     # $5 at ~$2,527 (r10_ethusd.out: 0.00198 ETH)
 P = load(); head = json.load(open(J("r01_meta.json")))
 BOT1 = "0x776e5a2a"   # prefix of the + 1 bot (via 0x570759db): set after a look at the data
 for p in P:

@@ -1,0 +1,24 @@
+0x776e5a2a72f9711ed818e2a0535d3d01cf8ed3d6 pools  830 nonce    2264 balance 0.0056 ETH  via 0x570759db4ca57e1b785ef3bff4250309a648b21a code 12070 B
+0xfac67b2036c386325aa0daa55e61fe71ce5c403c pools  766 nonce    3153 balance 0.0000 ETH  via 0xcaf681a66d020601342297493863e78c959e5cb2 code 24497 B
+0x9a12867607c191a7191c08e3d8dea7018e277416 pools  605 nonce    2496 balance 0.0088 ETH  via 0xcaf681a66d020601342297493863e78c959e5cb2 code 24497 B
+0x1a16c51d90233669b93d0c498e3042db4666d42f pools  540 nonce    2595 balance 0.0000 ETH  via 0xcaf681a66d020601342297493863e78c959e5cb2 code 24497 B
+0x5718d14b3e736b04764544776ae4b9e855342f33 pools  309 nonce     959 balance 0.0054 ETH  via 0xcaf681a66d020601342297493863e78c959e5cb2 code 24497 B
+0x24a4c20fc32cd216f63e440ab07ec42baf9c5d5f pools  258 nonce    3387 balance 0.0000 ETH  via 0xcaf681a66d020601342297493863e78c959e5cb2 code 24497 B
+0xf3e314694cf7a9f990158303c88ba352c4d80667 pools  118 nonce     855 balance 0.0002 ETH  via 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc code 752 B
+0x3029608e5643e5ed415d5ba1d75d9e0631a8afcd pools   61 nonce     456 balance 0.0000 ETH  via 0xf0b7eaaf868191adc00065ca13391ef436ce8faf code 33121 B
+0x796cd42e0a4fc9de25458fb875ce3666f73bd81b pools   47 nonce     437 balance 0.0002 ETH  via 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc code 752 B
+0x8b42cef6b4814199692a621502926620724dc433 pools   41 nonce     412 balance 0.0002 ETH  via 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc code 752 B
+0x6d8acb0ec1c46805a9b8c2c689264f9985e6b59a pools   38 nonce     406 balance 0.0615 ETH  via 0xf0b7eaaf868191adc00065ca13391ef436ce8faf code 33121 B
+0xb57856b5ab8e1f8b621d56439dcc284479778715 pools   23 nonce     251 balance 0.1166 ETH  via 0xf0b7eaaf868191adc00065ca13391ef436ce8faf code 33121 B
+0x7b55c325d81850d23d5e0f2b4dddf2acd06c0f60 pools   13 nonce      85 balance 0.0002 ETH  via 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc code 752 B
+0x5a4782c1c33436ba4952fdc17deb20590aecff1e pools   10 nonce    3008 balance 0.0002 ETH  via 0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd code 1323 B
+0x35fb3c0872f267fb9ced10f5b9d69ce9bb26627b pools   10 nonce    1030 balance 0.0319 ETH  via 0x6e2a35a7ad683cf634d91492d73bb7ff774c6919 code 13322 B
+  +1 bot in 0x1fc5ec74 (pulled +159): bought 0.00176 ETH, sold 0%; token balance now 503,814
+  +1 bot in 0x4a3748aa (pulled +1328): bought 0.00173 ETH, sold 0%; token balance now 493,713
+  +1 bot in 0x8dffdfe6 (pulled +62136): bought 0.00173 ETH, sold 0%; token balance now 0
+  +1 bot in 0x2c5bece4 (pulled +1607): bought 0.00227 ETH, sold 0%; token balance now 567,525
+  +1 bot in 0x36221cca (pulled +323): bought 0.00223 ETH, sold 0%; token balance now 556,154
+  +1 bot in 0x06417078 (pulled +454): bought 0.00218 ETH, sold 0%; token balance now 545,011
+  +1 bot in 0x046acab6 (pulled +453): bought 0.00214 ETH, sold 0%; token balance now 534,091
+  +1 bot in 0x9b04573c (pulled +5260): bought 0.00209 ETH, sold 0%; token balance now 418,736
+{'posts': 53, 'items': 53, 'r429': 0}

@@ -33,3 +33,16 @@ for d in S:
 print("v2.433 buyer wallets known:", len(retired))
 pre = set().union(*[allc[h] for h in allc if h < 1791770400]); post = set().union(*[allc[h] for h in allc if h >= 1791774000])
 print("callers seen before 02:00:", len(pre), "after 03:00:", len(post), "in both:", len(pre & post), "after-only:", len(post - pre))
+# clones: the bot's selectors sent to any other address in the sampled blocks
+blk = J("w07_blk_cache.jsonl"); sels = {"0xc1120e3d", "0x7422a284", "0xa0f7978d"}
+other = collections.Counter(); tot = collections.Counter(); creations = []
+for l in open(blk):
+    r = json.loads(l)
+    for t in r["txs"]:
+        if t["sel"] in sels:
+            tot[t["to"] == BOT] += 1
+            if t["to"] != BOT: other[(t["to"], t["sel"])] += 1
+        if t["to"] == "": creations.append((r["n"], t["h"], t["f"]))
+print("bot selectors in sampled blocks: to the router", tot[True], "| to any other address", sum(other.values()), other.most_common(5))
+json.dump(creations, open(J("w14_creations.json"), "w"))
+print("contract creations (to = empty) in sampled blocks:", len(creations))

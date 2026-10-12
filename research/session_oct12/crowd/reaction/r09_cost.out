@@ -1,43 +1,43 @@
-ETH $2,515: $5 = 0.00199 ETH; gas per round trip $0.022
-  all pools                                    n 1389  mean  +7.54% (95% +6.45..+8.78)  median +0.14%  top10% share 76%  $ per $5 trade +0.355 (+0.301..+0.417)  pulled<=sell 1/1389 (Wilson 0.0%-0.4%, exact 95% upper 0.3%)  no trigger by +60: 1197 mean +3.78%
-  no outside buyer before the crowd            n  353  mean  +6.96% (95% +4.71..+9.52)  median +0.07%  top10% share 81%  $ per $5 trade +0.326 (+0.213..+0.454)  pulled<=sell 0/353 (Wilson 0.0%-1.1%, exact 95% upper 0.8%)  no trigger by +60: 279 mean +4.78%
-  +1..+10 non-bot holder                       n  183  mean +10.01% (95% +6.71..+13.64)  median +0.22%  top10% share 67%  $ per $5 trade +0.479 (+0.313..+0.660)  pulled<=sell 1/183 (Wilson 0.1%-3.0%, exact 95% upper 2.6%)  no trigger by +60: 157 mean +4.13%
-  +1..+10 non-bot holder >= 0.001 ETH          n   22  mean +12.71% (95% +1.77..+29.96)  median +0.22%  top10% share 81%  $ per $5 trade +0.613 (+0.067..+1.476)  pulled<=sell 0/22 (Wilson 0.0%-14.9%, exact 95% upper 12.7%)  no trigger by +60: 20 mean +2.67%
-  +1 bot holding (no other early buyer)        n  353  mean  +9.64% (95% +7.21..+12.33)  median +0.14%  top10% share 73%  $ per $5 trade +0.460 (+0.339..+0.594)  pulled<=sell 0/353 (Wilson 0.0%-1.1%, exact 95% upper 0.8%)  no trigger by +60: 299 mean +3.53%
-  any non-bot outside buyer before the crowd   n  903  mean  +6.68% (95% +5.44..+8.00)  median +0.16%  top10% share 75%  $ per $5 trade +0.312 (+0.250..+0.378)  pulled<=sell 1/903 (Wilson 0.0%-0.6%, exact 95% upper 0.5%)  no trigger by +60: 819 mean +3.58%
+ETH $2,527: $5 = 0.00198 ETH; gas per round trip $0.022
+  all pools                                    n 1389  mean  +7.53% (95% +6.44..+8.77)  median +0.14%  top10% share 76%  $ per $5 trade +0.354 (+0.300..+0.416)  pulled<=sell 1/1389 (Wilson 0.0%-0.4%, exact 95% upper 0.3%)  no trigger by +60: 1187 mean +3.76%
+  no outside buyer before the crowd            n  209  mean  +6.68% (95% +3.98..+10.00)  median +0.05%  top10% share 82%  $ per $5 trade +0.312 (+0.177..+0.478)  pulled<=sell 0/209 (Wilson 0.0%-1.8%, exact 95% upper 1.4%)  no trigger by +60: 153 mean +5.96%
+  +1..+10 non-bot holder                       n  259  mean +12.39% (95% +8.91..+16.27)  median +0.22%  top10% share 65%  $ per $5 trade +0.597 (+0.424..+0.791)  pulled<=sell 1/259 (Wilson 0.1%-2.2%, exact 95% upper 1.8%)  no trigger by +60: 215 mean +4.23%
+  +1..+10 non-bot holder >= 0.001 ETH          n   25  mean +12.69% (95% +2.64..+27.81)  median +0.22%  top10% share 71%  $ per $5 trade +0.613 (+0.110..+1.368)  pulled<=sell 0/25 (Wilson 0.0%-13.3%, exact 95% upper 11.3%)  no trigger by +60: 21 mean +2.33%
+  +1 bot holding (no other early buyer)        n  463  mean  +8.07% (95% +6.22..+10.05)  median +0.13%  top10% share 71%  $ per $5 trade +0.381 (+0.289..+0.481)  pulled<=sell 0/463 (Wilson 0.0%-0.8%, exact 95% upper 0.6%)  no trigger by +60: 395 mean +3.62%
+  any non-bot outside buyer before the crowd   n 1052  mean  +7.27% (95% +6.00..+8.66)  median +0.15%  top10% share 74%  $ per $5 trade +0.341 (+0.278..+0.411)  pulled<=sell 1/1052 (Wilson 0.0%-0.5%, exact 95% upper 0.5%)  no trigger by +60: 938 mean +3.59%
 
 scenarios per $5 trade:
-  no reaction (all pools, the dry-run's situation): +7.54% -> $+0.355
-  'the crowd never comes while we hold' (every trade sells at + 80 into no wave; measured on pools with no trigger by + 60): +3.784% -> $+0.167
+  no reaction (all pools, the dry-run's situation): +7.53% -> $+0.354
+  'the crowd never comes while we hold' (every trade sells at + 80 into no wave; measured on pools with no trigger by + 80): -0.010% -> $-0.022
   pulled inside the hold, all pools: 1/1389; exact one-sided 95% upper 0.34% -> expected cost at that rate $0.017 a trade
 
 the cap's margin: pools with no trigger by + 60 (our sell = the cap's, lands + 80 when on time)
   non-bot holder >= 0.001 ETH in since +1..+10 (our analog):
-     +80: 0/24 (0.0%, up 11.7%) vs 0/350; $0.000 (up $0.506)
-     +82: 0/24 (0.0%, up 11.7%) vs 0/350; $0.000 (up $0.506)
-     +83: 0/24 (0.0%, up 11.7%) vs 0/350; $0.000 (up $0.506)
-     +85: 0/24 (0.0%, up 11.7%) vs 0/350; $0.000 (up $0.506)
-     +90: 1/24 (4.2%, up 18.3%) vs 0/350; $0.180 (up $0.788)
-     +100: 1/24 (4.2%, up 18.3%) vs 3/350; $0.180 (up $0.788)
+     +80: 0/36 (0.0%, up 8.0%) vs 0/222; $0.000 (up $0.341)
+     +82: 0/36 (0.0%, up 8.0%) vs 0/222; $0.000 (up $0.341)
+     +83: 0/36 (0.0%, up 8.0%) vs 0/222; $0.000 (up $0.341)
+     +85: 0/36 (0.0%, up 8.0%) vs 0/222; $0.000 (up $0.341)
+     +90: 1/36 (2.8%, up 12.5%) vs 0/222; $0.119 (up $0.535)
+     +100: 1/36 (2.8%, up 12.5%) vs 2/222; $0.119 (up $0.535)
   non-bot holder in since +1..+10:
-     +80: 1/162 (0.6%, up 2.9%) vs 0/350; $0.027 (up $0.125)
-     +82: 1/162 (0.6%, up 2.9%) vs 0/350; $0.027 (up $0.125)
-     +83: 2/162 (1.2%, up 3.8%) vs 0/350; $0.053 (up $0.165)
-     +85: 3/162 (1.9%, up 4.7%) vs 0/350; $0.080 (up $0.203)
-     +90: 5/162 (3.1%, up 6.4%) vs 0/350; $0.133 (up $0.275)
-     +100: 7/162 (4.3%, up 8.0%) vs 3/350; $0.186 (up $0.343)
+     +80: 1/224 (0.4%, up 2.1%) vs 0/222; $0.019 (up $0.090)
+     +82: 1/224 (0.4%, up 2.1%) vs 0/222; $0.019 (up $0.090)
+     +83: 2/224 (0.9%, up 2.8%) vs 0/222; $0.038 (up $0.119)
+     +85: 3/224 (1.3%, up 3.4%) vs 0/222; $0.057 (up $0.146)
+     +90: 7/224 (3.1%, up 5.8%) vs 0/222; $0.134 (up $0.247)
+     +100: 11/224 (4.9%, up 8.0%) vs 2/222; $0.210 (up $0.342)
   non-bot holder >= 0.001 ETH (any entry by +78):
-     +80: 1/207 (0.5%, up 2.3%) vs 0/350; $0.021 (up $0.098)
-     +82: 1/207 (0.5%, up 2.3%) vs 0/350; $0.021 (up $0.098)
-     +83: 1/207 (0.5%, up 2.3%) vs 0/350; $0.021 (up $0.098)
-     +85: 2/207 (1.0%, up 3.0%) vs 0/350; $0.042 (up $0.130)
-     +90: 7/207 (3.4%, up 6.3%) vs 0/350; $0.146 (up $0.270)
-     +100: 11/207 (5.3%, up 8.6%) vs 3/350; $0.229 (up $0.372)
+     +80: 1/275 (0.4%, up 1.7%) vs 0/222; $0.016 (up $0.073)
+     +82: 1/275 (0.4%, up 1.7%) vs 0/222; $0.016 (up $0.073)
+     +83: 2/275 (0.7%, up 2.3%) vs 0/222; $0.031 (up $0.097)
+     +85: 3/275 (1.1%, up 2.8%) vs 0/222; $0.047 (up $0.119)
+     +90: 8/275 (2.9%, up 5.2%) vs 0/222; $0.124 (up $0.222)
+     +100: 12/275 (4.4%, up 7.0%) vs 2/222; $0.186 (up $0.298)
   any outside holder:
-     +80: 1/847 (0.1%, up 0.6%) vs 0/350; $0.005 (up $0.024)
-     +82: 1/847 (0.1%, up 0.6%) vs 0/350; $0.005 (up $0.024)
-     +83: 2/847 (0.2%, up 0.7%) vs 0/350; $0.010 (up $0.032)
-     +85: 3/847 (0.4%, up 0.9%) vs 0/350; $0.015 (up $0.039)
-     +90: 10/847 (1.2%, up 2.0%) vs 0/350; $0.051 (up $0.086)
-     +100: 23/847 (2.7%, up 3.8%) vs 3/350; $0.117 (up $0.165)
-  (share of trades whose sell is the cap's: 86%; $ = that share x the pull rate x $5, a trade's expected loss to the reaction for a sell landing at that block)
+     +80: 1/965 (0.1%, up 0.5%) vs 0/222; $0.004 (up $0.021)
+     +82: 1/965 (0.1%, up 0.5%) vs 0/222; $0.004 (up $0.021)
+     +83: 2/965 (0.2%, up 0.7%) vs 0/222; $0.009 (up $0.028)
+     +85: 3/965 (0.3%, up 0.8%) vs 0/222; $0.013 (up $0.034)
+     +90: 10/965 (1.0%, up 1.8%) vs 0/222; $0.044 (up $0.075)
+     +100: 24/965 (2.5%, up 3.5%) vs 2/222; $0.106 (up $0.149)
+  (share of trades whose sell is the cap's: 85%; $ = that share x the pull rate x $5, a trade's expected loss to the reaction for a sell landing at that block)

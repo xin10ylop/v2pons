@@ -1,0 +1,5 @@
+fee 100: pool 0x52e65b17fb6e5ba00ed806f37afcd2daa50271ca liquidity 3.681e+18  ETH = 2,527.48 USDG
+fee 500: pool 0x69bfaf19c9f377bb306a89aed9f6b07e2c1a8d9a liquidity 1.029e+18  ETH = 2,526.78 USDG
+fee 3000: pool 0xa9188730fe85be88ad499d7d52b099e800fb0334 liquidity 4.492e+17  ETH = 2,524.18 USDG
+fee 10000: pool 0x5f009e071f07e92b6c624e83f52f17bbda34680d liquidity 2.711e+16  ETH = 2,536.90 USDG
+{'posts': 12, 'items': 12, 'r429': 0}

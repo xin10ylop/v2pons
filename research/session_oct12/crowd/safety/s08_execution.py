@@ -41,8 +41,11 @@ for q in ("0.002", "0.004"):
     key = f"{q}|2|2"; rets = [r["r"][key]["ret"] for r in R]
     paid = [x >= 0.02 for x in rets]
     streak = 0; halts = []; longest = 0; trades_to_halt = []
+    run = 0
+    for ok in paid:
+        run = 0 if ok else run + 1; longest = max(longest, run)
     for i, ok in enumerate(paid):
-        streak = 0 if ok else streak + 1; longest = max(longest, streak)
+        streak = 0 if ok else streak + 1
         if streak == 8: halts.append(i); streak = 0
     # from each start point: trades until the 8th in a row under +2%
     for s in range(len(paid)):

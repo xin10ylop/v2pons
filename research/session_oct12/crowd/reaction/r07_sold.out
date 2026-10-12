@@ -1,14 +1,14 @@
-not the +1 bot   exits before the crowd  148: crowd within 10 blocks after the exit: observed 8 expected 9.4 (O/E 0.85)
-not the +1 bot   exits before the crowd  148: crowd within 30 blocks after the exit: observed 16 expected 24.9 (O/E 0.64); lag exit -> crowd p10/50/90 9/103/463
-not the +1 bot   exits before the crowd  148: crowd within 60 blocks after the exit: observed 25 expected 41.2 (O/E 0.61)
-the +1 bot       exits before the crowd    3: crowd within 10 blocks after the exit: observed 0 expected 0.1 (O/E 0.00)
-the +1 bot       exits before the crowd    3: crowd within 30 blocks after the exit: observed 1 expected 0.4 (O/E 2.36); lag exit -> crowd p10/50/90 17/300/544
-the +1 bot       exits before the crowd    3: crowd within 60 blocks after the exit: observed 1 expected 1.2 (O/E 0.81)
+not the +1 bot   exits before the crowd  258: crowd within 10 blocks after the exit: observed 10 expected 16.6 (O/E 0.60)
+not the +1 bot   exits before the crowd  258: crowd within 30 blocks after the exit: observed 26 expected 43.1 (O/E 0.60); lag exit -> crowd p10/50/90 13/99/421
+not the +1 bot   exits before the crowd  258: crowd within 60 blocks after the exit: observed 38 expected 70.0 (O/E 0.54)
+the +1 bot       exits before the crowd    6: crowd within 10 blocks after the exit: observed 0 expected 0.1 (O/E 0.00)
+the +1 bot       exits before the crowd    6: crowd within 30 blocks after the exit: observed 2 expected 0.8 (O/E 2.43); lag exit -> crowd p10/50/90 17/136/544
+the +1 bot       exits before the crowd    6: crowd within 60 blocks after the exit: observed 2 expected 2.4 (O/E 0.82)
 
 non-bot outside buyers with a first buy at + 1..+ 20 (>= 0.0005 ETH): held at the crowd / sold before / pool pulled first
-  Counter({'held': 337, 'held/no crowd': 81, 'sold': 18, 'sold/no crowd': 9})
-  held             n  337: frb p25/50/75 68/82/122; its hold (buy -> half sold) p25/50/75 121/189/379; pull - its buy p10/50 120/333; pulled <= our sell 0
-  held/no crowd    n   81: frb p25/50/75 None/None/None; its hold (buy -> half sold) p25/50/75 None/None/None; pull - its buy p10/50 78/129; pulled <= our sell 1
-  sold             n   18: frb p25/50/75 83/170/390; its hold (buy -> half sold) p25/50/75 31/44/81; pull - its buy p10/50 216/660; pulled <= our sell 0
-  sold/no crowd    n    9: frb p25/50/75 None/None/None; its hold (buy -> half sold) p25/50/75 56/99/114; pull - its buy p10/50 109/135; pulled <= our sell 0
+  Counter({'held': 494, 'held/no crowd': 115, 'sold': 30, 'sold/no crowd': 19})
+  held             n  494: frb p25/50/75 67/82/122; its hold (buy -> half sold) p25/50/75 112/181/371; pull - its buy p10/50 125/361; pulled <= our sell 0
+  held/no crowd    n  115: frb p25/50/75 None/None/None; its hold (buy -> half sold) p25/50/75 None/None/None; pull - its buy p10/50 82/129; pulled <= our sell 1
+  sold             n   30: frb p25/50/75 123/173/234; its hold (buy -> half sold) p25/50/75 44/81/97; pull - its buy p10/50 216/587; pulled <= our sell 0
+  sold/no crowd    n   19: frb p25/50/75 None/None/None; its hold (buy -> half sold) p25/50/75 56/90/114; pull - its buy p10/50 82/126; pulled <= our sell 0
 cases -> /home/user/v2pons/research/session_oct12/crowd/reaction/r07_cases.txt

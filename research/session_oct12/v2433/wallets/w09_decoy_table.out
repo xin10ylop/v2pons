@@ -1,0 +1,56 @@
+26883 decoy-router swaps
+
+== 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc: 26297 swaps; buys 13693; first 10-11 12:00:26, last 10-12 14:47:23
+  10-11 12 415 {('pool before Oct 11 12:00', 'sell'): 200, ('pool before Oct 11 12:00', 'buy'): 196, ('non-ETH 0/200', 'buy'): 7, ('non-ETH 0/200', 'sell'): 7, ('0.03 ETH 10000/200 0xaad7eb:900', 'buy'): 2}
+  10-11 13 482 {('pool before Oct 11 12:00', 'sell'): 214, ('pool before Oct 11 12:00', 'buy'): 198, ('non-ETH 8388608/8', 'buy'): 26, ('non-ETH 8388608/8', 'sell'): 14, ('non-ETH 0/200', 'buy'): 7}
+  10-11 14 805 {('pool before Oct 11 12:00', 'sell'): 228, ('pool before Oct 11 12:00', 'buy'): 203, ('non-ETH 0/200', 'buy'): 166, ('non-ETH 0/200', 'sell'): 165, ('v2.433', 'buy'): 8}
+  10-11 15 839 {('pool before Oct 11 12:00', 'sell'): 292, ('pool before Oct 11 12:00', 'buy'): 202, ('v2.433', 'buy'): 74, ('non-ETH 0/200', 'buy'): 72, ('v2.433', 'sell'): 63}
+  10-11 16 1113 {('0.0125 ETH 0/200 0x7eea5f:1284', 'sell'): 288, ('0.0125 ETH 0/200 0x7eea5f:1284', 'buy'): 239, ('pool before Oct 11 12:00', 'buy'): 228, ('pool before Oct 11 12:00', 'sell'): 164, ('non-ETH 0/200', 'buy'): 53}
+  10-11 17 746 {('pool before Oct 11 12:00', 'buy'): 285, ('pool before Oct 11 12:00', 'sell'): 202, ('non-ETH 0/200', 'buy'): 61, ('non-ETH 0/200', 'sell'): 32, ('v2.433', 'buy'): 24}
+  10-11 18 1057 {('pool before Oct 11 12:00', 'sell'): 234, ('pool before Oct 11 12:00', 'buy'): 213, ('0.15 ETH 0/200 0x2a5338:292', 'buy'): 153, ('0.0125 ETH 0/200 0x7eea5f:1284', 'buy'): 110, ('0.15 ETH 0/200 0x2a5338:292', 'sell'): 104}
+  10-11 19 1350 {('0.15 ETH 0/200 0x2a5338:292', 'buy'): 281, ('0.15 ETH 0/200 0x2a5338:292', 'sell'): 199, ('pool before Oct 11 12:00', 'sell'): 194, ('pool before Oct 11 12:00', 'buy'): 170, ('non-ETH 8388608/60', 'buy'): 168}
+  10-11 20 853 {('pool before Oct 11 12:00', 'buy'): 201, ('pool before Oct 11 12:00', 'sell'): 174, ('0.15 ETH 0/200 0x2a5338:292', 'buy'): 94, ('non-ETH 3000/60', 'sell'): 75, ('0.15 ETH 0/200 0x2a5338:292', 'sell'): 70}
+  10-11 21 759 {('pool before Oct 11 12:00', 'buy'): 166, ('pool before Oct 11 12:00', 'sell'): 107, ('non-ETH 3000/60', 'buy'): 80, ('non-ETH 3000/60', 'sell'): 68, ('0.2777 ETH 0/200 0x387a45:1412', 'buy'): 64}
+  10-11 22 819 {('0.15 ETH 0/200 0x2a5338:292', 'buy'): 181, ('0.15 ETH 0/200 0x2a5338:292', 'sell'): 162, ('pool before Oct 11 12:00', 'buy'): 150, ('pool before Oct 11 12:00', 'sell'): 101, ('non-ETH 0/1', 'buy'): 39}
+  10-11 23 630 {('pool before Oct 11 12:00', 'sell'): 156, ('pool before Oct 11 12:00', 'buy'): 118, ('0.15 ETH 0/200 0x2a5338:292', 'buy'): 94, ('0.15 ETH 0/200 0x2a5338:292', 'sell'): 66, ('3.5 ETH 2500/25 :3740', 'buy'): 24}
+  10-12 00 1005 {('pool before Oct 11 12:00', 'buy'): 168, ('pool before Oct 11 12:00', 'sell'): 122, ('0.69425 ETH 0/200 0x387a45:1412', 'buy'): 117, ('0.69425 ETH 0/200 0x387a45:1412', 'sell'): 111, ('0.15 ETH 0/200 0x2a5338:292', 'sell'): 92}
+  10-12 01 542 {('pool before Oct 11 12:00', 'sell'): 119, ('pool before Oct 11 12:00', 'buy'): 104, ('0.15 ETH 0/200 0x2a5338:292', 'buy'): 54, ('0.69425 ETH 0/200 0x387a45:1412', 'buy'): 39, ('3.4 ETH 2500/25 :3740', 'buy'): 37}
+  10-12 02 702 {('pool before Oct 11 12:00', 'buy'): 250, ('pool before Oct 11 12:00', 'sell'): 249, ('0.15 ETH 0/200 0x2a5338:292', 'buy'): 46, ('0.15 ETH 0/200 0x2a5338:292', 'sell'): 45, ('3.4 ETH 2500/25 :3740', 'sell'): 15}
+  10-12 03 4812 {('non-ETH 0/200', 'buy'): 1717, ('non-ETH 0/200', 'sell'): 1207, ('pool before Oct 11 12:00', 'sell'): 959, ('pool before Oct 11 12:00', 'buy'): 695, ('non-ETH 8388608/8', 'buy'): 31}
+  10-12 04 2080 {('non-ETH 0/200', 'sell'): 444, ('non-ETH 0/200', 'buy'): 411, ('pool before Oct 11 12:00', 'sell'): 326, ('pool before Oct 11 12:00', 'buy'): 249, ('0.0 ETH 0/200 0x7ed598:36', 'sell'): 214}
+  10-12 05 832 {('pool before Oct 11 12:00', 'buy'): 189, ('pool before Oct 11 12:00', 'sell'): 189, ('non-ETH 0/200', 'buy'): 118, ('non-ETH 0/200', 'sell'): 111, ('non-ETH 48900/489', 'sell'): 44}
+  10-12 06 821 {('pool before Oct 11 12:00', 'sell'): 249, ('pool before Oct 11 12:00', 'buy'): 194, ('non-ETH 0/200', 'sell'): 96, ('non-ETH 0/200', 'buy'): 65, ('0.0 ETH 0/200 0x7ed598:36', 'sell'): 53}
+  10-12 07 593 {('pool before Oct 11 12:00', 'buy'): 149, ('pool before Oct 11 12:00', 'sell'): 129, ('non-ETH 0/200', 'buy'): 87, ('non-ETH 0/200', 'sell'): 44, ('non-ETH 36000/360', 'sell'): 29}
+  10-12 08 469 {('pool before Oct 11 12:00', 'buy'): 147, ('pool before Oct 11 12:00', 'sell'): 129, ('non-ETH 0/200', 'buy'): 35, ('non-ETH 0/200', 'sell'): 30, ('non-ETH 36000/360', 'sell'): 16}
+  10-12 09 463 {('pool before Oct 11 12:00', 'buy'): 179, ('pool before Oct 11 12:00', 'sell'): 111, ('non-ETH 0/200', 'sell'): 31, ('non-ETH 0/200', 'buy'): 22, ('0.15 ETH 0/200 0x2a5338:292', 'sell'): 16}
+  10-12 10 637 {('pool before Oct 11 12:00', 'buy'): 191, ('pool before Oct 11 12:00', 'sell'): 173, ('0.15 ETH 0/200 0x2a5338:292', 'buy'): 75, ('non-ETH 0/200', 'sell'): 59, ('non-ETH 0/200', 'buy'): 37}
+  10-12 11 623 {('pool before Oct 11 12:00', 'buy'): 146, ('pool before Oct 11 12:00', 'sell'): 130, ('0.15 ETH 0/200 0x2a5338:292', 'sell'): 86, ('0.15 ETH 0/200 0x2a5338:292', 'buy'): 55, ('non-ETH 0/200', 'buy'): 53}
+  10-12 12 706 {('pool before Oct 11 12:00', 'buy'): 202, ('pool before Oct 11 12:00', 'sell'): 158, ('0.0 ETH 0/200 0xf0b7ea:1380', 'buy'): 72, ('0.0 ETH 0/200 0xf0b7ea:1380', 'sell'): 62, ('non-ETH 0/200', 'sell'): 52}
+  10-12 13 999 {('pool before Oct 11 12:00', 'buy'): 212, ('pool before Oct 11 12:00', 'sell'): 185, ('non-ETH 0/200', 'sell'): 90, ('non-ETH 0/200', 'buy'): 65, ('non-ETH 8388608/200', 'buy'): 62}
+  10-12 14 1145 {('pool before Oct 11 12:00', 'buy'): 332, ('pool before Oct 11 12:00', 'sell'): 265, ('0.25 ETH 0/200 0x2a5338:292', 'sell'): 89, ('0.025 ETH 0/200 0x7eea5f:1284', 'buy'): 89, ('0.25 ETH 0/200 0x2a5338:292', 'buy'): 81}
+
+== 0xfd1b271f235e5230eaee9d914ccb1af495bfb758: 586 swaps; buys 383; first 10-11 12:18:02, last 10-12 13:57:37
+  10-11 12 1 {('pool before Oct 11 12:00', 'buy'): 1}
+  10-11 13 5 {('pool before Oct 11 12:00', 'sell'): 3, ('pool before Oct 11 12:00', 'buy'): 2}
+  10-11 14 34 {('non-ETH 0/200', 'buy'): 17, ('non-ETH 0/200', 'sell'): 4, ('v2.433', 'buy'): 4, ('v2.433', 'sell'): 3, ('pool before Oct 11 12:00', 'buy'): 1}
+  10-11 15 27 {('non-ETH 0/200', 'buy'): 10, ('v2.433', 'sell'): 8, ('v2.433', 'buy'): 7, ('non-ETH 0/200', 'sell'): 2}
+  10-11 16 68 {('non-ETH 0/200', 'buy'): 52, ('v2.433', 'buy'): 4, ('v2.433', 'sell'): 4, ('pool before Oct 11 12:00', 'sell'): 4, ('pool before Oct 11 12:00', 'buy'): 4}
+  10-11 17 94 {('non-ETH 0/200', 'buy'): 73, ('v2.433', 'buy'): 10, ('v2.433', 'sell'): 9, ('pool before Oct 11 12:00', 'sell'): 2}
+  10-11 18 32 {('v2.433', 'buy'): 12, ('v2.433', 'sell'): 12, ('non-ETH 0/200', 'buy'): 6, ('pool before Oct 11 12:00', 'buy'): 2}
+  10-11 19 41 {('v2.433', 'buy'): 20, ('v2.433', 'sell'): 18, ('non-ETH 0/200', 'buy'): 3}
+  10-11 20 55 {('v2.433', 'buy'): 24, ('v2.433', 'sell'): 21, ('non-ETH 3000/60', 'buy'): 4, ('pool before Oct 11 12:00', 'buy'): 1, ('pool before Oct 11 12:00', 'sell'): 1}
+  10-11 21 19 {('v2.433', 'buy'): 10, ('v2.433', 'sell'): 9}
+  10-11 22 25 {('v2.433', 'buy'): 12, ('v2.433', 'sell'): 11, ('non-ETH 0/200', 'buy'): 2}
+  10-11 23 20 {('v2.433', 'sell'): 10, ('v2.433', 'buy'): 9, ('pool before Oct 11 12:00', 'sell'): 1}
+  10-12 00 22 {('v2.433', 'buy'): 11, ('v2.433', 'sell'): 10, ('non-ETH 0/200', 'sell'): 1}
+  10-12 01 29 {('v2.433', 'sell'): 11, ('v2.433', 'buy'): 11, ('pool before Oct 11 12:00', 'buy'): 4, ('pool before Oct 11 12:00', 'sell'): 2, ('non-ETH 0/200', 'buy'): 1}
+  10-12 02 10 {('pool before Oct 11 12:00', 'sell'): 4, ('v2.433', 'buy'): 2, ('v2.433', 'sell'): 2, ('pool before Oct 11 12:00', 'buy'): 2}
+  10-12 03 3 {('pool before Oct 11 12:00', 'sell'): 1, ('non-ETH 0/200', 'sell'): 1, ('non-ETH 0/200', 'buy'): 1}
+  10-12 04 37 {('v3.0', 'buy'): 21, ('v3.0', 'sell'): 13, ('pool before Oct 11 12:00', 'buy'): 2, ('pool before Oct 11 12:00', 'sell'): 1}
+  10-12 05 46 {('v3.0', 'buy'): 26, ('v3.0', 'sell'): 20}
+  10-12 06 7 {('v3.0', 'buy'): 4, ('v3.0', 'sell'): 3}
+  10-12 13 11 {('non-ETH 8388608/200', 'sell'): 7, ('non-ETH 8388608/200', 'buy'): 4}
+
+per hour, buys in the volume bot's lines (v2.433 / v3.0 / v5.0) by router
+0x65050a9b 13h:{'v3.0': 4, 'v2.433': 5} 14h:{'v2.433': 8} 15h:{'v2.433': 74} 16h:{'v2.433': 30} 17h:{'v2.433': 24} 18h:{'v2.433': 17} 19h:{'v2.433': 29} 20h:{'v2.433': 29, 'v3.0': 1} 21h:{'v2.433': 24} 22h:{'v2.433': 26} 23h:{'v2.433': 18} 00h:{'v2.433': 22} 01h:{'v2.433': 22} 02h:{'v2.433': 4, 'v3.0': 1} 03h:{'v5.0': 2} 05h:{'v3.0': 1, 'v5.0': 2} 06h:{'v5.0': 1} 08h:{'v3.0': 4, 'v5.0': 1} 09h:{'v3.0': 1}
+0xfd1b271f 14h:{'v2.433': 4} 15h:{'v2.433': 7} 16h:{'v2.433': 4} 17h:{'v2.433': 10} 18h:{'v2.433': 12} 19h:{'v2.433': 20} 20h:{'v2.433': 24} 21h:{'v2.433': 10} 22h:{'v2.433': 12} 23h:{'v2.433': 9} 00h:{'v2.433': 11} 01h:{'v2.433': 11} 02h:{'v2.433': 2} 04h:{'v3.0': 21} 05h:{'v3.0': 26} 06h:{'v3.0': 4}

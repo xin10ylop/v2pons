@@ -1,0 +1,52 @@
+
+== router 0x65050a9b: 350 buys in the bot's lines; wallets 182; fresh (nonce<=1) 169
+  recurring 0x8cf143ddc84dedcd7bedd2b362b63af154dfa4f7 116 buys, nonce 2623..2948, 10-11 15:52:18..10-12 02:06:05, lines {'v2.433': 116}, size p50 0.000129
+  recurring 0xb8c879dcd96d5ce0719e6fb056738f09b33bc33c 21 buys, nonce 83..707, 10-11 15:41:02..10-12 06:08:17, lines {'v2.433': 18, 'v5.0': 3}, size p50 0.000149
+  recurring 0x7ae81404e32aef363eb63bc4befba78fb5b636de 12 buys, nonce 648..729, 10-11 13:18:01..10-11 15:03:53, lines {'v3.0': 4, 'v2.433': 8}, size p50 0.000129
+  recurring 0xbd936de69d72b3a958ee868348ee93f5282849b6 9 buys, nonce 2335..2361, 10-11 19:13:01..10-11 20:06:22, lines {'v2.433': 9}, size p50 0.000049
+  recurring 0x544ef4354283261fb9e258247a80d49c86b9f107 6 buys, nonce 7874..7885, 10-12 05:06:08..10-12 08:51:05, lines {'v3.0': 5, 'v5.0': 1}, size p50 0.000099
+  recurring 0xb4c345dcf30be7ef93abbacb5f67bd3cc3dfaa04 5 buys, nonce 1794..1813, 10-11 13:33:14..10-11 13:53:38, lines {'v2.433': 5}, size p50 0.000099
+  recurring 0x2e234882231cdc99c654a213a5ecc848459cceee 3 buys, nonce 12846..12854, 10-11 21:51:21..10-11 22:08:44, lines {'v2.433': 3}, size p50 0.000297
+  recurring 0x1845a376e183cca973e64dbf0a1e57a74130f31f 3 buys, nonce 87..89, 10-11 14:51:17..10-11 14:56:56, lines {'v2.433': 3}, size p50 0.000224
+   10-11 13 {('v3.0', 'recurring'): 4, ('v2.433', 'recurring'): 5}
+   10-11 14 {('v2.433', 'recurring'): 8}
+   10-11 15 {('v2.433', 'recurring'): 12, ('v2.433', 'fresh'): 62}
+   10-11 16 {('v2.433', 'recurring'): 19, ('v2.433', 'fresh'): 11}
+   10-11 17 {('v2.433', 'fresh'): 8, ('v2.433', 'recurring'): 16}
+   10-11 18 {('v2.433', 'recurring'): 10, ('v2.433', 'fresh'): 7}
+   10-11 19 {('v2.433', 'fresh'): 11, ('v2.433', 'recurring'): 18}
+   10-11 20 {('v2.433', 'fresh'): 13, ('v2.433', 'recurring'): 16, ('v3.0', 'recurring'): 1}
+   10-11 21 {('v2.433', 'fresh'): 12, ('v2.433', 'recurring'): 12}
+   10-11 22 {('v2.433', 'fresh'): 12, ('v2.433', 'recurring'): 14}
+   10-11 23 {('v2.433', 'fresh'): 9, ('v2.433', 'recurring'): 9}
+   10-12 00 {('v2.433', 'fresh'): 11, ('v2.433', 'recurring'): 11}
+   10-12 01 {('v2.433', 'fresh'): 11, ('v2.433', 'recurring'): 11}
+   10-12 02 {('v2.433', 'fresh'): 2, ('v2.433', 'recurring'): 2, ('v3.0', 'recurring'): 1}
+   10-12 03 {('v5.0', 'recurring'): 2}
+   10-12 05 {('v3.0', 'recurring'): 1, ('v5.0', 'recurring'): 2}
+   10-12 06 {('v5.0', 'recurring'): 1}
+   10-12 08 {('v3.0', 'recurring'): 4, ('v5.0', 'recurring'): 1}
+   10-12 09 {('v3.0', 'recurring'): 1}
+  last 5: [('10-12 08:17:29', 'v3.0', '0x544ef435', 7880, 9.9e-05), ('10-12 08:18:51', 'v3.0', '0x544ef435', 7883, 4.9e-05), ('10-12 08:22:18', 'v3.0', '0x544ef435', 7884, 9.9e-05), ('10-12 08:51:05', 'v5.0', '0x544ef435', 7885, 9.9e-05), ('10-12 09:18:20', 'v3.0', '0x71d27bd7', 821, 0.02475)]
+
+== router 0xfd1b271f: 187 buys in the bot's lines; wallets 2; fresh (nonce<=1) 0
+  recurring 0xb8c879dcd96d5ce0719e6fb056738f09b33bc33c 142 buys, nonce 40..691, 10-11 14:48:30..10-12 04:49:05, lines {'v2.433': 136, 'v3.0': 6}, size p50 0.000112
+  recurring 0x8cf143ddc84dedcd7bedd2b362b63af154dfa4f7 45 buys, nonce 2951..3108, 10-12 04:48:17..10-12 06:18:17, lines {'v3.0': 45}, size p50 0.000049
+   10-11 14 {('v2.433', 'recurring'): 4}
+   10-11 15 {('v2.433', 'recurring'): 7}
+   10-11 16 {('v2.433', 'recurring'): 4}
+   10-11 17 {('v2.433', 'recurring'): 10}
+   10-11 18 {('v2.433', 'recurring'): 12}
+   10-11 19 {('v2.433', 'recurring'): 20}
+   10-11 20 {('v2.433', 'recurring'): 24}
+   10-11 21 {('v2.433', 'recurring'): 10}
+   10-11 22 {('v2.433', 'recurring'): 12}
+   10-11 23 {('v2.433', 'recurring'): 9}
+   10-12 00 {('v2.433', 'recurring'): 11}
+   10-12 01 {('v2.433', 'recurring'): 11}
+   10-12 02 {('v2.433', 'recurring'): 2}
+   10-12 04 {('v3.0', 'recurring'): 21}
+   10-12 05 {('v3.0', 'recurring'): 26}
+   10-12 06 {('v3.0', 'recurring'): 4}
+  last 5: [('10-12 05:58:17', 'v3.0', '0x8cf143dd', 3096, 4.9e-05), ('10-12 06:08:11', 'v3.0', '0x8cf143dd', 3099, 4.9e-05), ('10-12 06:08:17', 'v3.0', '0x8cf143dd', 3102, 4.9e-05), ('10-12 06:18:11', 'v3.0', '0x8cf143dd', 3105, 0.00099), ('10-12 06:18:17', 'v3.0', '0x8cf143dd', 3108, 0.00099)]
+{'posts': 0, 'items': 0, 'r429': 0}

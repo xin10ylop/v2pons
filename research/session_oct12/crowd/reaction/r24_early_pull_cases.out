@@ -1,41 +1,41 @@
 36 pools pulled at or before + 100 (of 1389)
-  pull +62   10-04 20:41:58 0x43d0a453 crowd None bot yes | non-bot outsiders: 0x1f099d10 via 0x65050a9b +13 0.0069 held
-  pull +79   10-04 12:33:51 0x29df8fd3 crowd None bot no  | non-bot outsiders: 0xfac67b20 via 0xcaf681a6 +6 0.0005 held; 0xb1103df2 via 0x65050a9b +30 0.0007 held; 0x0beffd1f via 0xcaf681a6 +30 0.0010 held
-  pull +80   10-05 21:43:03 0xde7556be crowd 25 bot no  | non-bot outsiders: none
-  pull +83   10-05 15:25:11 0xe737bf89 crowd None bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +8 0.0005 held
+  pull +62   10-04 20:41:58 0x43d0a453 crowd None bot yes | non-bot outsiders: 0x1f099d10 via 0x65050a9b +13 0.0069 sold@41; 0x39377978 via 0x65050a9b +39 0.0007 held
+  pull +79   10-04 12:33:51 0x29df8fd3 crowd None bot no  | non-bot outsiders: 0xfac67b20 via 0xcaf681a6 +6 0.0005 held; 0x4646774f via 0x65050a9b +30 0.0007 held; 0xb1103df2 via 0x65050a9b +30 0.0007 held; 0x0beffd1f via 0xcaf681a6 +30 0.0010 held; 0x1c5d600f via 0x65050a9b +34 0.0010 held
+  pull +80   10-05 21:43:03 0xde7556be crowd 25 bot no  | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +12 0.0005 held
+  pull +83   10-05 15:25:11 0xe737bf89 crowd None bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +8 0.0005 held; 0x0ec4e45f via 0xccc88a9d +62 0.0011 held
   pull +85   10-05 15:27:44 0x6ff9bbea crowd None bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +8 0.0005 held; 0xabb2acd3 via 0xccc88a9d +35 0.0011 held
-  pull +85   10-05 18:34:02 0x266bf828 crowd 22 bot yes | non-bot outsiders: 0x5a4782c1 via 0xb1000000 +5 0.0010 held
-  pull +86   10-05 15:26:27 0xedb22cde crowd None bot no  | non-bot outsiders: 0x81adf99f via 0xccc88a9d +50 0.0011 held
-  pull +86   10-11 06:44:55 0x7d719e14 crowd 71 bot no  | non-bot outsiders: 0x796cd42e via 0x65050a9b +16 0.0008 held
-  pull +87   10-05 18:38:21 0xda384d07 crowd None bot no  | non-bot outsiders: 0x5a4782c1 via 0xb1000000 +4 0.0015 held
-  pull +87   10-08 06:36:18 0x3f0f732e crowd 51 bot no  | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +8 0.0009 held; 0xf7f00e4d via 0x65050a9b +17 0.0008 held; 0xde4a6c2a via 0x65050a9b +19 0.0011 held; 0x3d8adfc8 via 0x65050a9b +21 0.0007 held
-  pull +88   10-05 15:30:56 0xe970ea25 crowd None bot no  | non-bot outsiders: 0xa310bfff via 0x65050a9b +26 0.0009 held; 0x728f5195 via 0xccc88a9d +38 0.0011 held
-  pull +90   10-04 12:39:42 0x95092af9 crowd None bot yes | non-bot outsiders: 0x4646774f via 0x65050a9b +18 0.0007 held; 0xb1103df2 via 0x65050a9b +18 0.0007 held; 0x69374f82 via 0xccc88a9d +46 0.0007 held
-  pull +90   10-04 20:19:13 0xfb6a0719 crowd None bot no  | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +12 0.0005 held; 0xa67d7eb4 via 0xccc88a9d +26 0.0011 held; 0x12e15d91 via 0x65050a9b +36 0.0005 held
+  pull +85   10-05 18:34:02 0x266bf828 crowd 22 bot yes | non-bot outsiders: 0x5a4782c1 via 0xb1000000 +5 0.0010 held; 0x1a45411c via 0xcaf681a6 +8 0.0005 held
+  pull +86   10-05 15:26:27 0xedb22cde crowd None bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +9 0.0005 held; 0x81adf99f via 0xccc88a9d +50 0.0011 held
+  pull +86   10-11 06:44:55 0x7d719e14 crowd 71 bot yes | non-bot outsiders: 0x796cd42e via 0x65050a9b +16 0.0008 held
+  pull +87   10-05 18:38:21 0xda384d07 crowd None bot yes | non-bot outsiders: 0x5a4782c1 via 0xb1000000 +4 0.0015 held; 0x00fe42db via 0xf0b7eaaf +5 0.0010 sold@81; 0x0937cfad via 0x65050a9b +65 0.0006 held
+  pull +87   10-08 06:36:18 0x3f0f732e crowd 51 bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +8 0.0009 held; 0xf7f00e4d via 0x65050a9b +17 0.0008 held; 0xb1103df2 via 0x65050a9b +18 0.0008 held; 0xde4a6c2a via 0x65050a9b +19 0.0011 held; 0x3d8adfc8 via 0x65050a9b +21 0.0007 held
+  pull +88   10-05 15:30:56 0xe970ea25 crowd None bot yes | non-bot outsiders: 0xa310bfff via 0x65050a9b +26 0.0009 held; 0x728f5195 via 0xccc88a9d +38 0.0011 held
+  pull +90   10-04 12:39:42 0x95092af9 crowd None bot yes | non-bot outsiders: 0xfac67b20 via 0xcaf681a6 +5 0.0005 held; 0x4646774f via 0x65050a9b +18 0.0007 held; 0xb1103df2 via 0x65050a9b +18 0.0007 held; 0x69374f82 via 0xccc88a9d +46 0.0007 held
+  pull +90   10-04 20:19:13 0xfb6a0719 crowd None bot no  | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +12 0.0005 held; 0xa67d7eb4 via 0xccc88a9d +26 0.0011 held; 0x12e15d91 via 0x65050a9b +36 0.0005 held; 0xc4de861b via 0x65050a9b +36 0.0005 held
   pull +90   10-05 15:23:40 0x88e27893 crowd None bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +9 0.0005 held; 0xca7ded7e via 0xccc88a9d +39 0.0011 held
   pull +91   10-06 09:10:51 0x78ac4589 crowd None bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +8 0.0006 held; 0xa310bfff via 0x65050a9b +22 0.0009 held; 0xc81248ff via 0x65050a9b +30 0.0019 held; 0xf7f00e4d via 0x65050a9b +33 0.0007 held; 0xb1103df2 via 0x65050a9b +33 0.0007 held; 0x50165f78 via 0x65050a9b +44 0.0009 held
-  pull +92   10-05 18:41:51 0xa3ef65f6 crowd None bot no  | non-bot outsiders: none
-  pull +92   10-06 09:13:01 0x9af8f172 crowd None bot yes | non-bot outsiders: 0x50165f78 via 0x65050a9b +38 0.0009 held; 0xf7f00e4d via 0x65050a9b +49 0.0007 held; 0xb1103df2 via 0x65050a9b +49 0.0007 held
+  pull +92   10-05 18:41:51 0xa3ef65f6 crowd None bot yes | non-bot outsiders: 0x00fe42db via 0xf0b7eaaf +4 0.0010 held
+  pull +92   10-06 09:13:01 0x9af8f172 crowd None bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +25 0.0006 held; 0xa310bfff via 0x65050a9b +26 0.0009 held; 0x50165f78 via 0x65050a9b +38 0.0009 held; 0xf7f00e4d via 0x65050a9b +49 0.0007 held; 0xb1103df2 via 0x65050a9b +49 0.0007 held
   pull +93   10-08 22:17:51 0xbd69f1c1 crowd None bot no  | non-bot outsiders: 0xf7f00e4d via 0x65050a9b +23 0.0008 held; 0xb1103df2 via 0x65050a9b +23 0.0008 held
   pull +94   10-06 16:20:32 0x134fff59 crowd None bot no  | non-bot outsiders: none
-  pull +94   10-11 01:12:09 0x33ec233d crowd None bot yes | non-bot outsiders: 0xe2076279 via 0x65050a9b +13 0.0008 held; 0xf7f00e4d via 0x65050a9b +21 0.0006 held; 0xb1103df2 via 0x65050a9b +21 0.0006 held; 0xdc22d5d1 via 0x65050a9b +21 0.0006 held
+  pull +94   10-11 01:12:09 0x33ec233d crowd None bot yes | non-bot outsiders: 0x796cd42e via 0x65050a9b +8 0.0008 held; 0xe2076279 via 0x65050a9b +13 0.0008 held; 0xf7f00e4d via 0x65050a9b +21 0.0006 held; 0xb1103df2 via 0x65050a9b +21 0.0006 held; 0xdc22d5d1 via 0x65050a9b +21 0.0006 held
   pull +95   10-03 14:34:37 0xda59e5f2 crowd None bot no  | non-bot outsiders: 0x0beffd1f via 0xcaf681a6 +45 0.0019 held
-  pull +95   10-11 00:18:49 0x583efdb9 crowd 73 bot no  | non-bot outsiders: 0x7b55c325 via 0x65050a9b +11 0.0008 held; 0xe2076279 via 0x65050a9b +15 0.0008 held; 0xdc22d5d1 via 0x65050a9b +29 0.0006 held
-  pull +96   10-03 19:21:37 0x9326f010 crowd None bot no  | non-bot outsiders: 0xb1103df2 via 0x65050a9b +26 0.0007 held; 0x0beffd1f via 0xcaf681a6 +55 0.0019 held
-  pull +96   10-04 23:14:37 0x3b3effc6 crowd None bot no  | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +9 0.0007 held; 0xfc387dea via 0x65050a9b +23 0.0006 held
+  pull +95   10-11 00:18:49 0x583efdb9 crowd 73 bot no  | non-bot outsiders: 0x7b55c325 via 0x65050a9b +11 0.0008 held; 0xe2076279 via 0x65050a9b +15 0.0008 held; 0x3d8adfc8 via 0x65050a9b +27 0.0007 sold@67; 0xf7f00e4d via 0x65050a9b +29 0.0006 held; 0xdc22d5d1 via 0x65050a9b +29 0.0006 held; 0xb1103df2 via 0x65050a9b +29 0.0006 held
+  pull +96   10-03 19:21:37 0x9326f010 crowd None bot no  | non-bot outsiders: 0xb1103df2 via 0x65050a9b +26 0.0007 held; 0x4646774f via 0x65050a9b +26 0.0007 held; 0x0beffd1f via 0xcaf681a6 +55 0.0019 held
+  pull +96   10-04 23:14:37 0x3b3effc6 crowd None bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +9 0.0007 held; 0xfc387dea via 0x65050a9b +23 0.0006 held
   pull +97   10-03 14:42:27 0x43877ed4 crowd None bot no  | non-bot outsiders: 0x0beffd1f via 0xcaf681a6 +52 0.0019 held
-  pull +97   10-03 16:02:37 0x14c20a0b crowd None bot no  | non-bot outsiders: 0x39377978 via 0x65050a9b +27 0.0007 held; 0x12e15d91 via 0x65050a9b +29 0.0005 sold@76; 0x607ff16d via 0x4e715822 +30 0.0200 sold@77
+  pull +97   10-03 16:02:37 0x14c20a0b crowd None bot no  | non-bot outsiders: 0x39377978 via 0x65050a9b +27 0.0007 held; 0x12e15d91 via 0x65050a9b +29 0.0005 sold@76; 0xc4de861b via 0x65050a9b +29 0.0005 sold@76; 0x607ff16d via 0x4e715822 +30 0.0200 sold@77
   pull +97   10-06 14:12:39 0xf1063f97 crowd None bot yes | non-bot outsiders: 0xca7ded7e via 0xccc88a9d +40 0.0007 held
-  pull +97   10-08 06:47:14 0x80e150bb crowd None bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +14 0.0009 held; 0xf7f00e4d via 0x65050a9b +22 0.0008 held; 0xb1103df2 via 0x65050a9b +22 0.0008 held
+  pull +97   10-08 06:47:14 0x80e150bb crowd None bot yes | non-bot outsiders: 0x1a45411c via 0xcaf681a6 +14 0.0009 held; 0xde4a6c2a via 0x65050a9b +15 0.0010 held; 0xf7f00e4d via 0x65050a9b +22 0.0008 held; 0xb1103df2 via 0x65050a9b +22 0.0008 held; 0x3d8adfc8 via 0x65050a9b +39 0.0007 sold@82
   pull +97   10-08 22:18:40 0x616946cd crowd None bot no  | non-bot outsiders: 0xf7f00e4d via 0x65050a9b +19 0.0008 held; 0xb1103df2 via 0x65050a9b +19 0.0008 held
-  pull +97   10-10 00:24:43 0xec314285 crowd 58 bot no  | non-bot outsiders: 0xf7f00e4d via 0x65050a9b +20 0.0006 held; 0xdc22d5d1 via 0x65050a9b +20 0.0006 held
+  pull +97   10-10 00:24:43 0xec314285 crowd 58 bot yes | non-bot outsiders: 0xf7f00e4d via 0x65050a9b +20 0.0006 held; 0xdc22d5d1 via 0x65050a9b +20 0.0006 held; 0xb1103df2 via 0x65050a9b +20 0.0006 held
   pull +98   10-10 00:26:02 0x3e335ac0 crowd 65 bot no  | non-bot outsiders: 0xf7f00e4d via 0x65050a9b +22 0.0006 held; 0xdc22d5d1 via 0x65050a9b +22 0.0006 held; 0xb1103df2 via 0x65050a9b +22 0.0006 held
-  pull +98   10-11 00:22:13 0x9c59f59f crowd 56 bot no  | non-bot outsiders: 0x7b55c325 via 0x65050a9b +7 0.0008 held; 0xe2076279 via 0x65050a9b +12 0.0008 held; 0xf7f00e4d via 0x65050a9b +22 0.0006 held; 0xb1103df2 via 0x65050a9b +22 0.0006 held
+  pull +98   10-11 00:22:13 0x9c59f59f crowd 56 bot no  | non-bot outsiders: 0x7b55c325 via 0x65050a9b +7 0.0008 held; 0xe2076279 via 0x65050a9b +12 0.0008 held; 0xf7f00e4d via 0x65050a9b +22 0.0006 held; 0xb1103df2 via 0x65050a9b +22 0.0006 held; 0xdc22d5d1 via 0x65050a9b +22 0.0006 held
   pull +99   10-06 16:16:55 0xe8bd8a97 crowd None bot no  | non-bot outsiders: none
   pull +99   10-09 10:19:04 0xa2638dbd crowd 67 bot no  | non-bot outsiders: 0x39377978 via 0x65050a9b +23 0.0005 held; 0xce478a3e via 0x65050a9b +35 0.0007 held; 0x0937cfad via 0x65050a9b +41 0.0008 held; 0xf4a0048b via 0xf0b7eaaf +47 0.0594 held
-  pull +99   10-10 00:25:50 0xd3f507f4 crowd 59 bot yes | non-bot outsiders: 0xf7f00e4d via 0x65050a9b +25 0.0006 held; 0xdc22d5d1 via 0x65050a9b +25 0.0006 held
+  pull +99   10-10 00:25:50 0xd3f507f4 crowd 59 bot yes | non-bot outsiders: 0xf7f00e4d via 0x65050a9b +25 0.0006 held; 0xb1103df2 via 0x65050a9b +25 0.0006 held; 0xdc22d5d1 via 0x65050a9b +25 0.0006 held
   pull +100  10-08 06:39:16 0xbcd71d0d crowd 55 bot yes | non-bot outsiders: 0x3d8adfc8 via 0x65050a9b +22 0.0007 held; 0xf7f00e4d via 0x65050a9b +24 0.0008 held; 0xb1103df2 via 0x65050a9b +24 0.0008 held; 0xde4a6c2a via 0x65050a9b +27 0.0011 held; 0x3029608e via 0xf0b7eaaf +49 0.0990 held
 
 early non-bot outside buyers (first >= 0.0005 ETH buy at + 1..+ 10): pull minus its buy
-  all: n 213 p5/10/25/50 96/117/158/280; within 78: 3, within 88: 9, within 98: 12
-  still holding at the crowd/pull: n 201 p5/10/25/50 96/116/152/263; within 78: 3, within 88: 9
+  all: n 327 p5/10/25/50 96/119/163/283; within 78: 5, within 88: 15, within 98: 19
+  still holding at the crowd/pull: n 302 p5/10/25/50 96/119/161/280; within 78: 5, within 88: 14

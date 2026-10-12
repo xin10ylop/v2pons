@@ -6,6 +6,11 @@ observed against expected from every pool at risk at the same age."""
 from rlib import *
 import math
 P = load(); BOT1 = "0x776e5a2a"
+SINCE = os.environ.get("SINCE")          # e.g. 2026-10-08: only launches from that UTC day on
+if SINCE:
+    import calendar
+    t0 = calendar.timegm(time.strptime(SINCE, "%Y-%m-%d")); P = [p for p in P if p["ts"] >= t0]
+    print(f"launches from {SINCE} UTC on: {len(P)} pools")
 BANDS = [(1, 20), (20, 40), (40, 60), (60, 80), (80, 120), (120, 200), (200, 400), (400, 800), (800, 3001)]
 def intervals(p, sel):
     """holding intervals [a, b) of the selected outsiders"""

@@ -1,150 +1,168 @@
 1389 line pools, launches 10-03 01:47:29 to 10-12 13:44:12 UTC; head 86743912 10-12 14:28:27; stake 0.002 ETH; buy at + 2, sell min(trigger + 20, + 80)
-pools with unknown-class swaps (tx not fetched, not a crowd recipient): 1363
+pools with unknown-class swaps (tx not fetched, not a crowd recipient): 1031
 pools observed to + 300 or pulled: 1389
 
 (a) any outside buyer >= 0.0005 ETH before the crowd's first real buy (or before the pull / + 3000 if no crowd)
-  no outside buyer                                           n  353  crowd came 90.4% by+78 35.1%  frb p25/50/75 62/88/139  wave med 0.308 mean 0.508  pulled<=sell 0 (0.0%, CI 0.0%-1.1%)  pulled before crowd  9.3%  pull med 1049  rule mean +6.96% med +0.07%
-  an outside buyer (any)                                     n 1036  crowd came 81.0% by+78 30.4%  frb p25/50/75 70/92/157  wave med 0.344 mean 0.448  pulled<=sell 1 (0.1%, CI 0.0%-0.5%)  pulled before crowd 18.0%  pull med 361  rule mean +7.74% med +0.15%
-  an outside buyer that is not the +1 bot                    n  903  crowd came 79.1% by+78 28.2%  frb p25/50/75 71/95/165  wave med 0.346 mean 0.445  pulled<=sell 1 (0.1%, CI 0.0%-0.6%)  pulled before crowd 19.7%  pull med 332  rule mean +6.68% med +0.16%
-  only the +1 bot                                            n  133  crowd came 94.0% by+78 45.1%  frb p25/50/75 60/80/113  wave med 0.342 mean 0.466  pulled<=sell 0 (0.0%, CI 0.0%-2.8%)  pulled before crowd  6.0%  pull med 630  rule mean +14.95% med +0.14%
-    Fisher any vs none: no crowd by +78 one-sided p 0.0575 (two-sided 0.112); pulled<=sell 0.746 (1); pulled before crowd 4.67e-05 (9.15e-05)
-    Fisher non-bot vs none: no crowd by +78 one-sided p 0.0105 (two-sided 0.02); pulled<=sell 0.719 (1); pulled before crowd 2.97e-06 (5.06e-06)
-    Fisher bot only vs none: no crowd by +78 one-sided p 0.983 (two-sided 0.0467); pulled<=sell 1 (1); pulled before crowd 0.917 (0.276)
+  no outside buyer                                           n  209  crowd came 96.2% by+78 39.7%  frb p25/50/75 56/86/143  wave med 0.200 mean 0.528  pulled<=sell 0 (0.0%, CI 0.0%-1.8%)  pulled before crowd  3.8%  pull med 1644  rule mean +6.68% med +0.05%
+  an outside buyer (any)                                     n 1180  crowd came 81.1% by+78 30.5%  frb p25/50/75 70/92/154  wave med 0.346 mean 0.453  pulled<=sell 1 (0.1%, CI 0.0%-0.5%)  pulled before crowd 17.9%  pull med 385  rule mean +7.68% med +0.15%
+  an outside buyer that is not the +1 bot                    n 1052  crowd came 79.5% by+78 29.5%  frb p25/50/75 71/92/162  wave med 0.350 mean 0.456  pulled<=sell 1 (0.1%, CI 0.0%-0.5%)  pulled before crowd 19.4%  pull med 353  rule mean +7.27% med +0.15%
+  only the +1 bot                                            n  128  crowd came 94.5% by+78 39.1%  frb p25/50/75 59/89/113  wave med 0.320 mean 0.434  pulled<=sell 0 (0.0%, CI 0.0%-2.9%)  pulled before crowd  5.5%  pull med 860  rule mean +11.05% med +0.04%
+    Fisher any vs none: no crowd by +78 one-sided p 0.00588 (two-sided 0.00992); pulled<=sell 0.85 (1); pulled before crowd 5.82e-09 (1.29e-08)
+    Fisher non-bot vs none: no crowd by +78 one-sided p 0.00257 (two-sided 0.00418); pulled<=sell 0.834 (1); pulled before crowd 4.77e-10 (9.37e-10)
+    Fisher bot only vs none: no crowd by +78 one-sided p 0.499 (two-sided 1); pulled<=sell 1 (1); pulled before crowd 0.326 (0.588)
 
 (b) an outside buyer whose first >= 0.0005 buy is in + 1..+ 10 (our landing zone is + 2)
-  no outside buyer at all before the crowd                   n  353  crowd came 90.4% by+78 35.1%  frb p25/50/75 62/88/139  wave med 0.308 mean 0.508  pulled<=sell 0 (0.0%, CI 0.0%-1.1%)  pulled before crowd  9.3%  pull med 1049  rule mean +6.96% med +0.07%
-  +1..+10 buyer (any)                                        n  546  crowd came 85.5% by+78 35.2%  frb p25/50/75 68/86/128  wave med 0.338 mean 0.427  pulled<=sell 1 (0.2%, CI 0.0%-1.0%)  pulled before crowd 14.5%  pull med 329  rule mean +9.60% med +0.18%
-  +1..+10 buyer, not the +1 bot                              n  193  crowd came 82.4% by+78 34.7%  frb p25/50/75 68/84/128  wave med 0.364 mean 0.458  pulled<=sell 1 (0.5%, CI 0.1%-2.9%)  pulled before crowd 17.6%  pull med 288  rule mean +9.53% med +0.22%
-  +1..+10 buyer not the bot, still holding at the crowd/pull n  183  crowd came 82.5% by+78 36.1%  frb p25/50/75 68/83/125  wave med 0.371 mean 0.465  pulled<=sell 1 (0.5%, CI 0.1%-3.0%)  pulled before crowd 17.5%  pull med 277  rule mean +10.01% med +0.22%
-  +1..+10 buyer not the bot, sold before the crowd/pull      n   10  crowd came 80.0% by+78 10.0%  frb p25/50/75 123/138/390  wave med 0.359 mean 0.326  pulled<=sell 0 (0.0%, CI 0.0%-27.8%)  pulled before crowd 20.0%  pull med 593  rule mean +0.73% med +0.24%
-  +1..+10 the +1 bot only                                    n  353  crowd came 87.3% by+78 35.4%  frb p25/50/75 68/88/129  wave med 0.327 mean 0.411  pulled<=sell 0 (0.0%, CI 0.0%-1.1%)  pulled before crowd 12.7%  pull med 347  rule mean +9.64% med +0.14%
-  +1..+10 the +1 bot only, holding at crowd                  n  350  crowd came 87.1% by+78 35.4%  frb p25/50/75 68/88/126  wave med 0.327 mean 0.408  pulled<=sell 0 (0.0%, CI 0.0%-1.1%)  pulled before crowd 12.9%  pull med 347  rule mean +9.68% med +0.14%
-    Fisher +1..+10 any vs none: no crowd by +78 one-sided p 0.532 (two-sided 1); pulled<=sell 0.607 (1); pulled before crowd 0.0141 (0.0232)
-    Fisher +1..+10 non-bot vs none: no crowd by +78 one-sided p 0.5 (two-sided 1); pulled<=sell 0.353 (0.353); pulled before crowd 0.00421 (0.00622)
-    Fisher +1..+10 non-bot holding vs none: no crowd by +78 one-sided p 0.623 (two-sided 0.849); pulled<=sell 0.341 (0.341); pulled before crowd 0.00537 (0.00788)
-    Fisher bot only vs none: no crowd by +78 one-sided p 0.563 (two-sided 1); pulled<=sell 1 (1); pulled before crowd 0.0932 (0.186)
+  no outside buyer at all before the crowd                   n  209  crowd came 96.2% by+78 39.7%  frb p25/50/75 56/86/143  wave med 0.200 mean 0.528  pulled<=sell 0 (0.0%, CI 0.0%-1.8%)  pulled before crowd  3.8%  pull med 1644  rule mean +6.68% med +0.05%
+  +1..+10 buyer (any)                                        n  737  crowd came 85.2% by+78 36.5%  frb p25/50/75 68/85/127  wave med 0.328 mean 0.423  pulled<=sell 1 (0.1%, CI 0.0%-0.8%)  pulled before crowd 14.8%  pull med 351  rule mean +9.46% med +0.17%
+  +1..+10 buyer, not the +1 bot                              n  274  crowd came 80.7% by+78 36.9%  frb p25/50/75 67/82/127  wave med 0.372 mean 0.482  pulled<=sell 1 (0.4%, CI 0.1%-2.0%)  pulled before crowd 19.3%  pull med 295  rule mean +11.81% med +0.22%
+  +1..+10 buyer not the bot, still holding at the crowd/pull n  259  crowd came 80.3% by+78 37.8%  frb p25/50/75 66/82/122  wave med 0.379 mean 0.494  pulled<=sell 1 (0.4%, CI 0.1%-2.2%)  pulled before crowd 19.7%  pull med 291  rule mean +12.39% med +0.22%
+  +1..+10 buyer not the bot, sold before the crowd/pull      n   15  crowd came 86.7% by+78 20.0%  frb p25/50/75 114/166/176  wave med 0.205 mean 0.289  pulled<=sell 0 (0.0%, CI 0.0%-20.4%)  pulled before crowd 13.3%  pull med 411  rule mean +1.82% med +0.23%
+  +1..+10 the +1 bot only                                    n  463  crowd came 87.9% by+78 36.3%  frb p25/50/75 68/88/126  wave med 0.307 mean 0.392  pulled<=sell 0 (0.0%, CI 0.0%-0.8%)  pulled before crowd 12.1%  pull med 387  rule mean +8.07% med +0.13%
+  +1..+10 the +1 bot only, holding at crowd                  n  457  crowd came 88.0% by+78 36.3%  frb p25/50/75 68/88/126  wave med 0.307 mean 0.390  pulled<=sell 0 (0.0%, CI 0.0%-0.8%)  pulled before crowd 12.0%  pull med 385  rule mean +8.11% med +0.13%
+    Fisher +1..+10 any vs none: no crowd by +78 one-sided p 0.221 (two-sided 0.418); pulled<=sell 0.779 (1); pulled before crowd 2.61e-06 (4.31e-06)
+    Fisher +1..+10 non-bot vs none: no crowd by +78 one-sided p 0.293 (two-sided 0.571); pulled<=sell 0.567 (1); pulled before crowd 8.05e-08 (1.35e-07)
+    Fisher +1..+10 non-bot holding vs none: no crowd by +78 one-sided p 0.375 (two-sided 0.703); pulled<=sell 0.553 (1); pulled before crowd 6.62e-08 (9.42e-08)
+    Fisher bot only vs none: no crowd by +78 one-sided p 0.222 (two-sided 0.438); pulled<=sell 1 (1); pulled before crowd 0.000279 (0.000547)
 
 (c) by size of the biggest early (+1..+10) outside holder, not the bot
-  holding, first buy 0.0005-0.001 ETH                        n  175  crowd came 83.4% by+78 36.6%  frb p25/50/75 68/83/125  wave med 0.372 mean 0.462  pulled<=sell 1 (0.6%, CI 0.1%-3.2%)  pulled before crowd 16.6%  pull med 277  rule mean +9.48% med +0.22%
-    Fisher 0.0005-0.001 vs none: no crowd by +78 one-sided p 0.665 (two-sided 0.772); pulled<=sell 0.331 (0.331); pulled before crowd 0.0124 (0.021)
-  holding, first buy 0.001-0.003 ETH                         n   16  crowd came 62.5% by+78 12.5%  frb p25/50/75 82/94/122  wave med 0.300 mean 0.331  pulled<=sell 0 (0.0%, CI 0.0%-19.4%)  pulled before crowd 37.5%  pull med 175  rule mean +1.79% med +0.20%
-    Fisher 0.001-0.003 vs none: no crowd by +78 one-sided p 0.0484 (two-sided 0.102); pulled<=sell 1 (1); pulled before crowd 0.00344 (0.00344)
+  holding, first buy 0.0005-0.001 ETH                        n  252  crowd came 80.6% by+78 37.7%  frb p25/50/75 66/82/122  wave med 0.379 mean 0.492  pulled<=sell 1 (0.4%, CI 0.1%-2.2%)  pulled before crowd 19.4%  pull med 294  rule mean +12.02% med +0.22%
+    Fisher 0.0005-0.001 vs none: no crowd by +78 one-sided p 0.364 (two-sided 0.701); pulled<=sell 0.547 (1); pulled before crowd 1.07e-07 (1.43e-07)
+  holding, first buy 0.001-0.003 ETH                         n   16  crowd came 62.5% by+78 25.0%  frb p25/50/75 74/83/84  wave med 0.271 mean 0.255  pulled<=sell 0 (0.0%, CI 0.0%-19.4%)  pulled before crowd 37.5%  pull med 175  rule mean +2.51% med +0.22%
+    Fisher 0.001-0.003 vs none: no crowd by +78 one-sided p 0.186 (two-sided 0.296); pulled<=sell 1 (1); pulled before crowd 0.000103 (0.000103)
   holding, first buy 0.003-0.01 ETH                          n 0
-  holding, first buy 0.01-100 ETH                            n    1  crowd came 100.0% by+78 100.0%  frb p25/50/75 16/16/16  wave med 1.570 mean 1.570  pulled<=sell 0 (0.0%, CI 0.0%-79.3%)  pulled before crowd  0.0%  pull med 112219  rule mean +160.03% med +160.03%
-    Fisher 0.01-100 vs none: no crowd by +78 one-sided p 1 (two-sided 0.353); pulled<=sell 1 (1); pulled before crowd 1 (1)
+  holding, first buy 0.01-100 ETH                            n    1  crowd came 100.0% by+78 100.0%  frb p25/50/75 16/16/16  wave med 1.810 mean 1.810  pulled<=sell 0 (0.0%, CI 0.0%-79.3%)  pulled before crowd  0.0%  pull med 112219  rule mean +160.03% med +160.03%
+    Fisher 0.01-100 vs none: no crowd by +78 one-sided p 1 (two-sided 0.4); pulled<=sell 1 (1); pulled before crowd 1 (1)
 
 (d) by period (launch day UTC): none / +1..+10 non-bot holders
  10-03
-  none                                                       n   40  crowd came 85.0% by+78 12.5%  frb p25/50/75 94/125/169  wave med 0.279 mean 0.439  pulled<=sell 0 (0.0%, CI 0.0%-8.8%)  pulled before crowd 15.0%  pull med 857  rule mean +0.99% med +0.04%
-  +1..+10 non-bot holder                                     n    2  crowd came 100.0% by+78 50.0%  frb p25/50/75 64/87/87  wave med 0.094 mean 0.085  pulled<=sell 0 (0.0%, CI 0.0%-65.8%)  pulled before crowd  0.0%  pull med 198  rule mean +1.88% med +3.65%
-    Fisher 10-03: no crowd by +78 one-sided p 0.983 (two-sided 0.268); pulled<=sell 1 (1); pulled before crowd 1 (1)
+  none                                                       n   30  crowd came 93.3% by+78 10.0%  frb p25/50/75 105/136/205  wave med 0.221 mean 0.376  pulled<=sell 0 (0.0%, CI 0.0%-11.4%)  pulled before crowd  6.7%  pull med 1980  rule mean +0.54% med +0.04%
+  +1..+10 non-bot holder                                     n    3  crowd came 100.0% by+78 66.7%  frb p25/50/75 64/78/87  wave med 0.094 mean 0.215  pulled<=sell 0 (0.0%, CI 0.0%-56.2%)  pulled before crowd  0.0%  pull med 198  rule mean +2.82% med +3.65%
+    Fisher 10-03: no crowd by +78 one-sided p 0.998 (two-sided 0.0532); pulled<=sell 1 (1); pulled before crowd 1 (1)
  10-04
-  none                                                       n   27  crowd came 81.5% by+78 18.5%  frb p25/50/75 80/115/188  wave med 0.396 mean 0.586  pulled<=sell 0 (0.0%, CI 0.0%-12.5%)  pulled before crowd 14.8%  pull med 791  rule mean +10.47% med +0.05%
-  +1..+10 non-bot holder                                     n   27  crowd came 66.7% by+78 18.5%  frb p25/50/75 70/94/173  wave med 0.266 mean 0.308  pulled<=sell 1 (3.7%, CI 0.7%-18.3%)  pulled before crowd 33.3%  pull med 226  rule mean -1.11% med +0.13%
-    Fisher 10-04: no crowd by +78 one-sided p 0.636 (two-sided 1); pulled<=sell 0.5 (1); pulled before crowd 0.101 (0.202)
+  none                                                       n   14  crowd came 92.9% by+78 21.4%  frb p25/50/75 80/110/138  wave med 0.396 mean 0.583  pulled<=sell 0 (0.0%, CI 0.0%-21.5%)  pulled before crowd  7.1%  pull med 13237  rule mean +0.40% med +0.05%
+  +1..+10 non-bot holder                                     n   41  crowd came 58.5% by+78 22.0%  frb p25/50/75 67/85/173  wave med 0.389 mean 0.458  pulled<=sell 1 (2.4%, CI 0.4%-12.6%)  pulled before crowd 41.5%  pull med 220  rule mean +9.12% med +0.15%
+    Fisher 10-04: no crowd by +78 one-sided p 0.649 (two-sided 1); pulled<=sell 0.745 (1); pulled before crowd 0.0161 (0.0217)
  10-05
-  none                                                       n   18  crowd came 61.1% by+78 27.8%  frb p25/50/75 65/117/149  wave med 0.247 mean 0.377  pulled<=sell 0 (0.0%, CI 0.0%-17.6%)  pulled before crowd 38.9%  pull med 291  rule mean +2.67% med +0.15%
-  +1..+10 non-bot holder                                     n   54  crowd came 66.7% by+78 22.2%  frb p25/50/75 76/90/158  wave med 0.300 mean 0.581  pulled<=sell 0 (0.0%, CI 0.0%-6.6%)  pulled before crowd 33.3%  pull med 228  rule mean +10.49% med +0.19%
-    Fisher 10-05: no crowd by +78 one-sided p 0.425 (two-sided 0.75); pulled<=sell 1 (1); pulled before crowd 0.765 (0.777)
+  none                                                       n    3  crowd came 100.0% by+78 100.0%  frb p25/50/75 59/65/72  wave med 0.210 mean 0.199  pulled<=sell 0 (0.0%, CI 0.0%-56.2%)  pulled before crowd  0.0%  pull med 317  rule mean +8.33% med +8.62%
+  +1..+10 non-bot holder                                     n   63  crowd came 63.5% by+78 23.8%  frb p25/50/75 69/84/151  wave med 0.433 mean 0.647  pulled<=sell 0 (0.0%, CI 0.0%-5.7%)  pulled before crowd 36.5%  pull med 221  rule mean +13.82% med +0.19%
+    Fisher 10-05: no crowd by +78 one-sided p 0.0178 (two-sided 0.0178); pulled<=sell 1 (1); pulled before crowd 0.27 (0.546)
  10-06
-  none                                                       n   36  crowd came 75.0% by+78 19.4%  frb p25/50/75 64/106/276  wave med 0.495 mean 0.541  pulled<=sell 0 (0.0%, CI 0.0%-9.6%)  pulled before crowd 25.0%  pull med 487  rule mean +6.65% med +0.09%
-  +1..+10 non-bot holder                                     n   37  crowd came 91.9% by+78 35.1%  frb p25/50/75 71/90/130  wave med 0.280 mean 0.371  pulled<=sell 0 (0.0%, CI 0.0%-9.4%)  pulled before crowd  8.1%  pull med 351  rule mean +8.46% med +0.28%
-    Fisher 10-06: no crowd by +78 one-sided p 0.962 (two-sided 0.19); pulled<=sell 1 (1); pulled before crowd 0.99 (0.064)
+  none                                                       n   15  crowd came 80.0% by+78 13.3%  frb p25/50/75 88/167/301  wave med 0.533 mean 0.458  pulled<=sell 0 (0.0%, CI 0.0%-20.4%)  pulled before crowd 20.0%  pull med 645  rule mean +3.61% med +0.01%
+  +1..+10 non-bot holder                                     n   55  crowd came 87.3% by+78 32.7%  frb p25/50/75 70/90/138  wave med 0.280 mean 0.378  pulled<=sell 0 (0.0%, CI 0.0%-6.5%)  pulled before crowd 12.7%  pull med 371  rule mean +8.40% med +0.24%
+    Fisher 10-06: no crowd by +78 one-sided p 0.971 (two-sided 0.202); pulled<=sell 1 (1); pulled before crowd 0.869 (0.437)
  10-07
-  none                                                       n   32  crowd came 100.0% by+78 53.1%  frb p25/50/75 62/78/92  wave med 0.360 mean 0.535  pulled<=sell 0 (0.0%, CI 0.0%-10.7%)  pulled before crowd  0.0%  pull med 2471  rule mean +12.79% med +0.69%
-  +1..+10 non-bot holder                                     n   37  crowd came 97.3% by+78 54.1%  frb p25/50/75 58/77/95  wave med 0.542 mean 0.584  pulled<=sell 0 (0.0%, CI 0.0%-9.4%)  pulled before crowd  2.7%  pull med 353  rule mean +18.37% med +8.92%
-    Fisher 10-07: no crowd by +78 one-sided p 0.625 (two-sided 1); pulled<=sell 1 (1); pulled before crowd 0.536 (1)
+  none                                                       n   14  crowd came 100.0% by+78 64.3%  frb p25/50/75 56/71/86  wave med 0.129 mean 0.548  pulled<=sell 0 (0.0%, CI 0.0%-21.5%)  pulled before crowd  0.0%  pull med 4287  rule mean +19.69% med +1.65%
+  +1..+10 non-bot holder                                     n   54  crowd came 96.3% by+78 57.4%  frb p25/50/75 54/75/90  wave med 0.512 mean 0.575  pulled<=sell 0 (0.0%, CI 0.0%-6.6%)  pulled before crowd  3.7%  pull med 416  rule mean +18.51% med +8.92%
+    Fisher 10-07: no crowd by +78 one-sided p 0.44 (two-sided 0.765); pulled<=sell 1 (1); pulled before crowd 0.628 (1)
  10-08
-  none                                                       n   42  crowd came 90.5% by+78 38.1%  frb p25/50/75 58/84/118  wave med 0.308 mean 0.403  pulled<=sell 0 (0.0%, CI 0.0%-8.4%)  pulled before crowd  9.5%  pull med 2120  rule mean +5.11% med +0.05%
-  +1..+10 non-bot holder                                     n   15  crowd came 93.3% by+78 60.0%  frb p25/50/75 61/71/89  wave med 0.408 mean 0.508  pulled<=sell 0 (0.0%, CI 0.0%-20.4%)  pulled before crowd  6.7%  pull med 233  rule mean +13.62% med +7.43%
-    Fisher 10-08: no crowd by +78 one-sided p 0.962 (two-sided 0.225); pulled<=sell 1 (1); pulled before crowd 0.797 (1)
+  none                                                       n   22  crowd came 95.5% by+78 36.4%  frb p25/50/75 46/85/215  wave med 0.100 mean 0.348  pulled<=sell 0 (0.0%, CI 0.0%-14.9%)  pulled before crowd  4.5%  pull med 6590  rule mean +2.67% med +0.04%
+  +1..+10 non-bot holder                                     n   24  crowd came 95.8% by+78 50.0%  frb p25/50/75 61/75/95  wave med 0.408 mean 0.509  pulled<=sell 0 (0.0%, CI 0.0%-13.8%)  pulled before crowd  4.2%  pull med 361  rule mean +12.00% med +5.19%
+    Fisher 10-08: no crowd by +78 one-sided p 0.891 (two-sided 0.388); pulled<=sell 1 (1); pulled before crowd 0.777 (1)
  10-09
-  none                                                       n   55  crowd came 100.0% by+78 50.9%  frb p25/50/75 52/75/102  wave med 0.210 mean 0.437  pulled<=sell 0 (0.0%, CI 0.0%-6.5%)  pulled before crowd  0.0%  pull med 1191  rule mean +8.26% med +0.41%
+  none                                                       n   40  crowd came 100.0% by+78 60.0%  frb p25/50/75 52/74/91  wave med 0.396 mean 0.508  pulled<=sell 0 (0.0%, CI 0.0%-8.8%)  pulled before crowd  0.0%  pull med 901  rule mean +9.97% med +1.28%
   +1..+10 non-bot holder                                     n 0
  10-10
-  none                                                       n   44  crowd came 100.0% by+78 27.3%  frb p25/50/75 74/93/157  wave med 0.370 mean 0.525  pulled<=sell 0 (0.0%, CI 0.0%-8.0%)  pulled before crowd  0.0%  pull med 1625  rule mean +5.95% med +0.01%
+  none                                                       n   29  crowd came 100.0% by+78 37.9%  frb p25/50/75 39/86/116  wave med 0.410 mean 0.545  pulled<=sell 0 (0.0%, CI 0.0%-11.7%)  pulled before crowd  0.0%  pull med 1262  rule mean +7.34% med +0.01%
   +1..+10 non-bot holder                                     n 0
  10-11
-  none                                                       n   35  crowd came 94.3% by+78 45.7%  frb p25/50/75 64/83/203  wave med 0.327 mean 0.727  pulled<=sell 0 (0.0%, CI 0.0%-9.9%)  pulled before crowd  5.7%  pull med 1034  rule mean +7.04% med +0.05%
-  +1..+10 non-bot holder                                     n   10  crowd came 100.0% by+78 50.0%  frb p25/50/75 56/120/128  wave med 0.342 mean 0.259  pulled<=sell 0 (0.0%, CI 0.0%-27.8%)  pulled before crowd  0.0%  pull med 536  rule mean +8.28% med +9.31%
-    Fisher 10-11: no crowd by +78 one-sided p 0.726 (two-sided 1); pulled<=sell 1 (1); pulled before crowd 1 (1)
+  none                                                       n   22  crowd came 95.5% by+78 36.4%  frb p25/50/75 67/113/237  wave med 0.346 mean 0.912  pulled<=sell 0 (0.0%, CI 0.0%-14.9%)  pulled before crowd  4.5%  pull med 1059  rule mean +4.44% med +0.04%
+  +1..+10 non-bot holder                                     n   18  crowd came 94.4% by+78 55.6%  frb p25/50/75 56/69/122  wave med 0.352 mean 0.309  pulled<=sell 0 (0.0%, CI 0.0%-17.6%)  pulled before crowd  5.6%  pull med 549  rule mean +11.40% med +9.31%
+    Fisher 10-11: no crowd by +78 one-sided p 0.938 (two-sided 0.339); pulled<=sell 1 (1); pulled before crowd 0.704 (1)
  10-12
-  none                                                       n   24  crowd came 95.8% by+78 54.2%  frb p25/50/75 4/61/106  wave med 0.070 mean 0.519  pulled<=sell 0 (0.0%, CI 0.0%-13.8%)  pulled before crowd  4.2%  pull med 2301  rule mean +10.86% med +1.00%
-  +1..+10 non-bot holder                                     n    1  crowd came 100.0% by+78 100.0%  frb p25/50/75 76/76/76  wave med 0.204 mean 0.204  pulled<=sell 0 (0.0%, CI 0.0%-79.3%)  pulled before crowd  0.0%  pull med 142  rule mean +12.05% med +12.05%
+  none                                                       n   20  crowd came 100.0% by+78 60.0%  frb p25/50/75 4/51/101  wave med 0.066 mean 0.581  pulled<=sell 0 (0.0%, CI 0.0%-16.1%)  pulled before crowd  0.0%  pull med 2436  rule mean +12.57% med +1.00%
+  +1..+10 non-bot holder                                     n    1  crowd came 100.0% by+78 100.0%  frb p25/50/75 76/76/76  wave med 0.204 mean 0.204  pulled<=sell 0 (0.0%, CI 0.0%-79.3%)  pulled before crowd  0.0%  pull med 142  rule mean +1.53% med +1.53%
     Fisher 10-12: no crowd by +78 one-sided p 1 (two-sided 1); pulled<=sell 1 (1); pulled before crowd 1 (1)
 
 (e) by period: Oct 3-7 / Oct 8-12 (the task's window)
  Oct 3-7
-  none                                                       n  153  crowd came 82.4% by+78 25.5%  frb p25/50/75 70/105/169  wave med 0.396 mean 0.505  pulled<=sell 0 (0.0%, CI 0.0%-2.4%)  pulled before crowd 17.0%  pull med 621  rule mean +6.66% med +0.07%
-  +1..+10 non-bot holder                                     n  157  crowd came 80.3% by+78 32.5%  frb p25/50/75 69/84/128  wave med 0.372 mean 0.478  pulled<=sell 1 (0.6%, CI 0.1%-3.5%)  pulled before crowd 19.7%  pull med 258  rule mean +9.76% med +0.20%
-    Fisher Oct 3-7 non-bot: no crowd by +78 one-sided p 0.931 (two-sided 0.211); pulled<=sell 0.506 (1); pulled before crowd 0.316 (0.56)
-  +1..+10 the +1 bot only                                    n  140  crowd came 76.4% by+78 32.1%  frb p25/50/75 67/85/174  wave med 0.376 mean 0.532  pulled<=sell 0 (0.0%, CI 0.0%-2.7%)  pulled before crowd 23.6%  pull med 332  rule mean +15.08% med +0.16%
-    Fisher Oct 3-7 bot: no crowd by +78 one-sided p 0.917 (two-sided 0.245); pulled<=sell 1 (1); pulled before crowd 0.104 (0.19)
-  any non-bot buyer before the crowd                         n  563  crowd came 73.4% by+78 23.6%  frb p25/50/75 74/97/186  wave med 0.348 mean 0.442  pulled<=sell 1 (0.2%, CI 0.0%-1.0%)  pulled before crowd 25.8%  pull med 318  rule mean +5.69% med +0.16%
-    Fisher Oct 3-7 any non-bot: no crowd by +78 one-sided p 0.351 (two-sided 0.67); pulled<=sell 0.786 (1); pulled before crowd 0.0141 (0.0248)
+  none                                                       n   76  crowd came 92.1% by+78 26.3%  frb p25/50/75 72/107/169  wave med 0.230 mean 0.455  pulled<=sell 0 (0.0%, CI 0.0%-4.8%)  pulled before crowd  7.9%  pull med 2163  rule mean +4.95% med +0.04%
+  +1..+10 non-bot holder                                     n  216  crowd came 77.3% by+78 34.7%  frb p25/50/75 68/82/125  wave med 0.373 mean 0.512  pulled<=sell 1 (0.5%, CI 0.1%-2.6%)  pulled before crowd 22.7%  pull med 283  rule mean +12.57% med +0.21%
+    Fisher Oct 3-7 non-bot: no crowd by +78 one-sided p 0.933 (two-sided 0.202); pulled<=sell 0.74 (1); pulled before crowd 0.0024 (0.00363)
+  +1..+10 the +1 bot only                                    n  173  crowd came 76.3% by+78 33.5%  frb p25/50/75 69/85/166  wave med 0.366 mean 0.499  pulled<=sell 0 (0.0%, CI 0.0%-2.2%)  pulled before crowd 23.7%  pull med 332  rule mean +12.32% med +0.14%
+    Fisher Oct 3-7 bot: no crowd by +78 one-sided p 0.9 (two-sided 0.3); pulled<=sell 1 (1); pulled before crowd 0.00184 (0.00271)
+  any non-bot buyer before the crowd                         n  661  crowd came 73.8% by+78 25.3%  frb p25/50/75 72/94/175  wave med 0.360 mean 0.468  pulled<=sell 1 (0.2%, CI 0.0%-0.9%)  pulled before crowd 25.3%  pull med 336  rule mean +6.80% med +0.16%
+    Fisher Oct 3-7 any non-bot: no crowd by +78 one-sided p 0.469 (two-sided 0.889); pulled<=sell 0.897 (1); pulled before crowd 0.000203 (0.000309)
  Oct 8-12
-  none                                                       n  200  crowd came 96.5% by+78 42.5%  frb p25/50/75 57/83/109  wave med 0.257 mean 0.510  pulled<=sell 0 (0.0%, CI 0.0%-1.9%)  pulled before crowd  3.5%  pull med 1460  rule mean +7.19% med +0.05%
-  +1..+10 non-bot holder                                     n   26  crowd came 96.2% by+78 57.7%  frb p25/50/75 61/74/117  wave med 0.356 mean 0.396  pulled<=sell 0 (0.0%, CI 0.0%-12.9%)  pulled before crowd  3.8%  pull med 370  rule mean +11.50% med +9.31%
-    Fisher Oct 8-12 non-bot: no crowd by +78 one-sided p 0.953 (two-sided 0.149); pulled<=sell 1 (1); pulled before crowd 0.63 (1)
-  +1..+10 the +1 bot only                                    n  213  crowd came 94.4% by+78 37.6%  frb p25/50/75 69/90/119  wave med 0.305 mean 0.347  pulled<=sell 0 (0.0%, CI 0.0%-1.8%)  pulled before crowd  5.6%  pull med 365  rule mean +6.07% med +0.13%
-    Fisher Oct 8-12 bot: no crowd by +78 one-sided p 0.178 (two-sided 0.316); pulled<=sell 1 (1); pulled before crowd 0.213 (0.353)
-  any non-bot buyer before the crowd                         n  340  crowd came 88.5% by+78 35.9%  frb p25/50/75 68/91/140  wave med 0.342 mean 0.449  pulled<=sell 0 (0.0%, CI 0.0%-1.1%)  pulled before crowd  9.7%  pull med 352  rule mean +8.31% med +0.14%
-    Fisher Oct 8-12 any non-bot: no crowd by +78 one-sided p 0.0758 (two-sided 0.143); pulled<=sell 1 (1); pulled before crowd 0.00476 (0.00983)
+  none                                                       n  133  crowd came 98.5% by+78 47.4%  frb p25/50/75 39/79/110  wave med 0.180 mean 0.566  pulled<=sell 0 (0.0%, CI 0.0%-2.8%)  pulled before crowd  1.5%  pull med 1625  rule mean +7.67% med +0.10%
+  +1..+10 non-bot holder                                     n   43  crowd came 95.3% by+78 53.5%  frb p25/50/75 61/74/105  wave med 0.388 mean 0.419  pulled<=sell 0 (0.0%, CI 0.0%-8.2%)  pulled before crowd  4.7%  pull med 427  rule mean +11.50% med +5.19%
+    Fisher Oct 8-12 non-bot: no crowd by +78 one-sided p 0.809 (two-sided 0.599); pulled<=sell 1 (1); pulled before crowd 0.251 (0.251)
+  +1..+10 the +1 bot only                                    n  290  crowd came 94.8% by+78 37.9%  frb p25/50/75 68/90/119  wave med 0.287 mean 0.340  pulled<=sell 0 (0.0%, CI 0.0%-1.3%)  pulled before crowd  5.2%  pull med 454  rule mean +5.53% med +0.11%
+    Fisher Oct 8-12 bot: no crowd by +78 one-sided p 0.0425 (two-sided 0.071); pulled<=sell 1 (1); pulled before crowd 0.0574 (0.107)
+  any non-bot buyer before the crowd                         n  391  crowd came 89.0% by+78 36.6%  frb p25/50/75 68/90/137  wave med 0.346 mean 0.440  pulled<=sell 0 (0.0%, CI 0.0%-1.0%)  pulled before crowd  9.5%  pull med 399  rule mean +8.05% med +0.14%
+    Fisher Oct 8-12 any non-bot: no crowd by +78 one-sided p 0.0183 (two-sided 0.031); pulled<=sell 1 (1); pulled before crowd 0.00079 (0.0017)
 
 (g) the pull floor: pulls at or before + 80 (our cap), + 90, + 100, + 120 by group (an earlier floor would reach our sell)
-  no outside buyer before the crowd            n  353  <=+80: 1 (0.3%, exact upper 1.3%)  <=+90: 1 (0.3%, exact upper 1.3%)  <=+100: 4 (1.1%, exact upper 2.6%)  <=+120: 10 (2.8%, exact upper 4.8%)
-  the +1 bot at +1 (no other early buyer)      n  353  <=+80: 1 (0.3%, exact upper 1.3%)  <=+90: 2 (0.6%, exact upper 1.8%)  <=+100: 8 (2.3%, exact upper 4.1%)  <=+120: 24 (6.8%, exact upper 9.4%)  | Fisher vs none (higher): 0.75 0.5 0.192 0.0105
-  +1..+10 non-bot buyer                        n  193  <=+80: 1 (0.5%, exact upper 2.4%)  <=+90: 7 (3.6%, exact upper 6.7%)  <=+100: 10 (5.2%, exact upper 8.6%)  <=+120: 16 (8.3%, exact upper 12.3%)  | Fisher vs none (higher): 0.582 0.00359 0.00595 0.00479
-  +1..+10 non-bot buyer >= 0.001 ETH           n   28  <=+80: 0 (0.0%, exact upper 10.1%)  <=+90: 1 (3.6%, exact upper 15.9%)  <=+100: 1 (3.6%, exact upper 15.9%)  <=+120: 5 (17.9%, exact upper 33.9%)  | Fisher vs none (higher): 1 0.142 0.319 0.00268
-  +1..+10 any outside buyer                    n  546  <=+80: 2 (0.4%, exact upper 1.1%)  <=+90: 9 (1.6%, exact upper 2.9%)  <=+100: 18 (3.3%, exact upper 4.8%)  <=+120: 40 (7.3%, exact upper 9.4%)  | Fisher vs none (higher): 0.659 0.0501 0.0295 0.0024
-  all pools                                    n 1389  <=+80: 3 (0.2%, exact upper 0.6%)  <=+90: 14 (1.0%, exact upper 1.6%)  <=+100: 36 (2.6%, exact upper 3.4%)  <=+120: 80 (5.8%, exact upper 6.9%)  | Fisher vs none (higher): 0.815 0.16 0.0682 0.0143
+  no outside buyer before the crowd            n  209  <=+80: 0 (0.0%, exact upper 1.4%)  <=+90: 0 (0.0%, exact upper 1.4%)  <=+100: 2 (1.0%, exact upper 3.0%)  <=+120: 3 (1.4%, exact upper 3.7%)
+  the +1 bot at +1 (no other early buyer)      n  463  <=+80: 1 (0.2%, exact upper 1.0%)  <=+90: 3 (0.6%, exact upper 1.7%)  <=+100: 9 (1.9%, exact upper 3.4%)  <=+120: 31 (6.7%, exact upper 8.9%)  | Fisher vs none (higher): 0.689 0.326 0.283 0.00175
+  +1..+10 non-bot buyer                        n  274  <=+80: 1 (0.4%, exact upper 1.7%)  <=+90: 9 (3.3%, exact upper 5.7%)  <=+100: 14 (5.1%, exact upper 7.9%)  <=+120: 22 (8.0%, exact upper 11.3%)  | Fisher vs none (higher): 0.567 0.00574 0.00865 0.000655
+  +1..+10 non-bot buyer >= 0.001 ETH           n   46  <=+80: 0 (0.0%, exact upper 6.3%)  <=+90: 1 (2.2%, exact upper 9.9%)  <=+100: 1 (2.2%, exact upper 9.9%)  <=+120: 5 (10.9%, exact upper 21.5%)  | Fisher vs none (higher): 1 0.18 0.451 0.00572
+  +1..+10 any outside buyer                    n  737  <=+80: 2 (0.3%, exact upper 0.9%)  <=+90: 12 (1.6%, exact upper 2.6%)  <=+100: 23 (3.1%, exact upper 4.4%)  <=+120: 53 (7.2%, exact upper 9.0%)  | Fisher vs none (higher): 0.607 0.049 0.0603 0.000494
+  all pools                                    n 1389  <=+80: 3 (0.2%, exact upper 0.6%)  <=+90: 14 (1.0%, exact upper 1.6%)  <=+100: 36 (2.6%, exact upper 3.4%)  <=+120: 80 (5.8%, exact upper 6.9%)  | Fisher vs none (higher): 0.657 0.139 0.107 0.00299
 
 (h) pools the crowd had not reached by + 100 (the operator's 'abort' branch): pulled by + 90 / + 100 / + 150, with an outside holder at + 80 (bought >= 0.0005 ETH by + 78 and still holding at + 80) or not
-  any outside holder             with  509: <=+80 2 (0.4%) <=+83 3 (0.6%) <=+85 4 (0.8%) <=+90 10 (2.0%) <=+100 22 (4.3%) <=+150 94 (18.5%)  | no holder at all  236: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 3 (1.3%) <=+150 18 (7.6%)  | Fisher one-sided 0.467 0.318 0.217 0.0215 0.0207 4.45e-05
-      CMH by launch day, pulled <= +90: z 1.61, one-sided p 0.0538, MH odds ratio inf
-      CMH by launch day, pulled <= +100: z 1.89, one-sided p 0.0293, MH odds ratio 2.89
-      pulled <= +100: pull minus the holder's first buy [36, 45, 50, 61, 62, 70, 70, 70, 73, 78, 78, 82, 83, 84, 87, 89, 89, 90, 91, 93, 96, 96]
-  non-bot holder                 with  445: <=+80 2 (0.4%) <=+83 3 (0.7%) <=+85 4 (0.9%) <=+90 10 (2.2%) <=+100 22 (4.9%) <=+150 86 (19.3%)  | no holder at all  236: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 3 (1.3%) <=+150 18 (7.6%)  | Fisher one-sided 0.427 0.278 0.181 0.0137 0.00954 2.05e-05
-      CMH by launch day, pulled <= +90: z 1.72, one-sided p 0.0432, MH odds ratio inf
-      CMH by launch day, pulled <= +100: z 2.08, one-sided p 0.0187, MH odds ratio 3.18
-      pulled <= +100: pull minus the holder's first buy [36, 45, 49, 50, 54, 57, 62, 70, 70, 70, 72, 73, 75, 77, 78, 78, 81, 81, 83, 83, 83, 87]
-  the +1 bot                     with  216: <=+80 1 (0.5%) <=+83 2 (0.9%) <=+85 3 (1.4%) <=+90 5 (2.3%) <=+100 10 (4.6%) <=+150 48 (22.2%)  | no holder at all  236: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 3 (1.3%) <=+150 18 (7.6%)  | Fisher one-sided 0.478 0.228 0.108 0.0243 0.0307 8.43e-06
-      CMH by launch day, pulled <= +90: z 1.59, one-sided p 0.0562, MH odds ratio inf
-      CMH by launch day, pulled <= +100: z 1.34, one-sided p 0.0896, MH odds ratio 2.37
-      pulled <= +100: pull minus the holder's first buy [61, 82, 84, 89, 89, 90, 91, 93, 96, 96]
-  non-bot holder >= 0.001 ETH    with  128: <=+80 2 (1.6%) <=+83 2 (1.6%) <=+85 3 (2.3%) <=+90 8 (6.2%) <=+100 12 (9.4%) <=+150 38 (29.7%)  | no holder at all  236: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 3 (1.3%) <=+150 18 (7.6%)  | Fisher one-sided 0.123 0.123 0.0428 0.000202 0.000387 5.9e-08
-      CMH by launch day, pulled <= +90: z 2.57, one-sided p 0.00506, MH odds ratio inf
-      CMH by launch day, pulled <= +100: z 2.70, one-sided p 0.0035, MH odds ratio 5.11
-      pulled <= +100: pull minus the holder's first buy [36, 41, 45, 49, 49, 50, 50, 50, 51, 61, 64, 83]
-  non-bot holder in since +1..+10 with   91: <=+80 1 (1.1%) <=+83 2 (2.2%) <=+85 3 (3.3%) <=+90 5 (5.5%) <=+100 7 (7.7%) <=+150 22 (24.2%)  | no holder at all  236: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 3 (1.3%) <=+150 18 (7.6%)  | Fisher one-sided 0.278 0.0768 0.021 0.00154 0.00598 9.83e-05
-      CMH by launch day, pulled <= +90: z 1.75, one-sided p 0.0397, MH odds ratio inf
-      CMH by launch day, pulled <= +100: z 1.07, one-sided p 0.143, MH odds ratio 2.14
-      pulled <= +100: pull minus the holder's first buy [73, 75, 77, 81, 83, 83, 87]
-  non-bot holder >= 0.001 in since +1..+10 with   15: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 1 (6.7%) <=+100 1 (6.7%) <=+150 6 (40.0%)  | no holder at all  236: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 3 (1.3%) <=+150 18 (7.6%)  | Fisher one-sided 1 1 1 0.0598 0.22 0.00114
-      CMH by launch day, pulled <= +90: z 1.12, one-sided p 0.132, MH odds ratio inf
-      CMH by launch day, pulled <= +100: z -0.02, one-sided p 0.507, MH odds ratio 0.97
+  any outside holder             with  583: <=+80 2 (0.3%) <=+83 3 (0.5%) <=+85 4 (0.7%) <=+90 10 (1.7%) <=+100 23 (3.9%) <=+150 109 (18.7%)  | no holder at all  159: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 2 (1.3%) <=+150 3 (1.9%)  | Fisher one-sided 0.617 0.485 0.38 0.0882 0.0692 1.3e-09
+      CMH by launch day, pulled <= +90: z 0.86, one-sided p 0.195, MH odds ratio inf
+      CMH by launch day, pulled <= +100: z 1.36, one-sided p 0.0875, MH odds ratio 2.52
+      pulled <= +100: pull minus the holder's first buy [45, 50, 61, 70, 70, 70, 73, 78, 78, 82, 84, 85, 86, 87, 89, 89, 90, 91, 91, 93, 95, 96, 96]
+  non-bot holder                 with  515: <=+80 2 (0.4%) <=+83 3 (0.6%) <=+85 4 (0.8%) <=+90 10 (1.9%) <=+100 23 (4.5%) <=+150 103 (20.0%)  | no holder at all  159: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 2 (1.3%) <=+150 3 (1.9%)  | Fisher one-sided 0.584 0.445 0.34 0.0664 0.0419 2.66e-10
+      CMH by launch day, pulled <= +90: z 0.92, one-sided p 0.178, MH odds ratio inf
+      CMH by launch day, pulled <= +100: z 1.49, one-sided p 0.0676, MH odds ratio 2.72
+      pulled <= +100: pull minus the holder's first buy [23, 45, 50, 57, 62, 67, 70, 70, 70, 73, 75, 77, 77, 78, 78, 81, 83, 83, 83, 85, 86, 87, 88]
+  the +1 bot                     with  313: <=+80 1 (0.3%) <=+83 2 (0.6%) <=+85 3 (1.0%) <=+90 8 (2.6%) <=+100 15 (4.8%) <=+150 71 (22.7%)  | no holder at all  159: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 2 (1.3%) <=+150 3 (1.9%)  | Fisher one-sided 0.663 0.439 0.291 0.0363 0.0388 4.29e-11
+      CMH by launch day, pulled <= +90: z 0.80, one-sided p 0.213, MH odds ratio inf
+      CMH by launch day, pulled <= +100: z 0.87, one-sided p 0.193, MH odds ratio 2.07
+      pulled <= +100: pull minus the holder's first buy [61, 82, 84, 85, 86, 87, 89, 89, 90, 91, 91, 93, 95, 96, 96]
+  non-bot holder >= 0.001 ETH    with  173: <=+80 1 (0.6%) <=+83 2 (1.2%) <=+85 3 (1.7%) <=+90 8 (4.6%) <=+100 12 (6.9%) <=+150 49 (28.3%)  | no holder at all  159: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 2 (1.3%) <=+150 3 (1.9%)  | Fisher one-sided 0.521 0.271 0.14 0.00502 0.00868 1.21e-12
+      CMH by launch day, pulled <= +90: z 1.20, one-sided p 0.114, MH odds ratio inf
+      CMH by launch day, pulled <= +100: z 1.51, one-sided p 0.0661, MH odds ratio 3.25
+      pulled <= +100: pull minus the holder's first buy [21, 36, 41, 45, 49, 50, 50, 50, 51, 61, 64, 83]
+  non-bot holder in since +1..+10 with  127: <=+80 1 (0.8%) <=+83 2 (1.6%) <=+85 3 (2.4%) <=+90 7 (5.5%) <=+100 11 (8.7%) <=+150 35 (27.6%)  | no holder at all  159: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 2 (1.3%) <=+150 3 (1.9%)  | Fisher one-sided 0.444 0.196 0.0864 0.0031 0.00302 5.05e-11
+      CMH by launch day, pulled <= +90: z 1.16, one-sided p 0.122, MH odds ratio inf
+      CMH by launch day, pulled <= +100: z 0.97, one-sided p 0.166, MH odds ratio 2.12
+      pulled <= +100: pull minus the holder's first buy [73, 75, 77, 77, 81, 83, 83, 85, 86, 87, 88]
+  non-bot holder >= 0.001 in since +1..+10 with   24: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 1 (4.2%) <=+100 1 (4.2%) <=+150 7 (29.2%)  | no holder at all  159: <=+80 0 (0.0%) <=+83 0 (0.0%) <=+85 0 (0.0%) <=+90 0 (0.0%) <=+100 2 (1.3%) <=+150 3 (1.9%)  | Fisher one-sided 1 1 1 0.131 0.346 2.62e-05
+      CMH by launch day, pulled <= +90: z 0.23, one-sided p 0.409, MH odds ratio inf
+      CMH by launch day, pulled <= +100: z -0.29, one-sided p 0.615, MH odds ratio 0.28
       pulled <= +100: pull minus the holder's first buy [83]
 
 (i) the same question without looking ahead: pools alive at + 78 with no crowd trigger by + 60 (our sell is the cap's), split by an outside holder at + 78; the pull and the crowd's first real buy in the next blocks
-  no outside holder              n  356: pulled before any crowd by +80 0 (0.0%) +83 0 (0.0%) +85 0 (0.0%) +90 0 (0.0%) +100 3 (0.8%) +150 18 (5.1%); crowd by +80 16% +100 32% +150 51%
-  any outside holder             n  841: pulled before any crowd by +80 1 (0.1%) +83 2 (0.2%) +85 3 (0.4%) +90 9 (1.1%) +100 20 (2.4%) +150 82 (9.8%); crowd by +80 27% +100 41% +150 59%
-  non-bot holder                 n  726: pulled before any crowd by +80 1 (0.1%) +83 2 (0.3%) +85 3 (0.4%) +90 9 (1.2%) +100 20 (2.8%) +150 78 (10.7%); crowd by +80 27% +100 41% +150 58%
-  the +1 bot only                n  115: pulled before any crowd by +80 0 (0.0%) +83 0 (0.0%) +85 0 (0.0%) +90 0 (0.0%) +100 0 (0.0%) +150 4 (3.5%); crowd by +80 24% +100 43% +150 66%
-  non-bot holder >= 0.001 ETH    n  205: pulled before any crowd by +80 1 (0.5%) +83 1 (0.5%) +85 2 (1.0%) +90 7 (3.4%) +100 11 (5.4%) +150 36 (17.6%); crowd by +80 29% +100 40% +150 57%
-  non-bot holder since +1..+10   n  162: pulled before any crowd by +80 1 (0.6%) +83 2 (1.2%) +85 3 (1.9%) +90 5 (3.1%) +100 7 (4.3%) +150 22 (13.6%); crowd by +80 28% +100 44% +150 62%
+  no outside holder              n  228: pulled before any crowd by +80 0 (0.0%) +83 0 (0.0%) +85 0 (0.0%) +90 0 (0.0%, Wilson 0.0-1.7%) +100 2 (0.9%, Wilson 0.2-3.1%) +150 3 (1.3%); crowd by +80 14% +100 28% +150 46%
+  any outside holder             n  959: pulled before any crowd by +80 1 (0.1%) +83 2 (0.2%) +85 3 (0.3%) +90 9 (0.9%, Wilson 0.5-1.8%) +100 21 (2.2%, Wilson 1.4-3.3%) +150 96 (10.0%); crowd by +80 26% +100 41% +150 59%
+  non-bot holder                 n  844: pulled before any crowd by +80 1 (0.1%) +83 2 (0.2%) +85 3 (0.4%) +90 9 (1.1%, Wilson 0.6-2.0%) +100 21 (2.5%, Wilson 1.6-3.8%) +150 91 (10.8%); crowd by +80 27% +100 41% +150 58%
+  the +1 bot only                n  115: pulled before any crowd by +80 0 (0.0%) +83 0 (0.0%) +85 0 (0.0%) +90 0 (0.0%, Wilson 0.0-3.2%) +100 0 (0.0%, Wilson 0.0-3.2%) +150 5 (4.3%); crowd by +80 18% +100 39% +150 68%
+  non-bot holder >= 0.001 ETH    n  272: pulled before any crowd by +80 1 (0.4%) +83 2 (0.7%) +85 3 (1.1%) +90 8 (2.9%, Wilson 1.5-5.7%) +100 12 (4.4%, Wilson 2.5-7.6%) +150 46 (16.9%); crowd by +80 26% +100 39% +150 55%
+  non-bot holder since +1..+10   n  225: pulled before any crowd by +80 1 (0.4%) +83 2 (0.9%) +85 3 (1.3%) +90 7 (3.1%, Wilson 1.5-6.3%) +100 11 (4.9%, Wilson 2.8-8.5%) +150 35 (15.6%); crowd by +80 26% +100 43% +150 58%
 
 (j) (i) by period: pulled before any crowd by + 90 / + 100, no outside holder vs a non-bot holder at + 78
-  Oct 3-7    holder  468: +90 9 +100 16 | none  177: +90 0 +100 3 | Fisher +100 one-sided 0.188
-  Oct 8-12   holder  258: +90 0 +100 4 | none  179: +90 0 +100 0 | Fisher +100 one-sided 0.12
-  last 48 h  holder  134: +90 0 +100 1 | none   70: +90 0 +100 0 | Fisher +100 one-sided 0.657
-  last 24 h  holder   52: +90 0 +100 0 | none   34: +90 0 +100 0 | Fisher +100 one-sided 1
+  Oct 3-7    holder  546: +90 9 +100 17 | none  107: +90 0 +100 2 | Fisher +100 one-sided 0.373
+  Oct 8-12   holder  298: +90 0 +100 4 | none  121: +90 0 +100 0 | Fisher +100 one-sided 0.254
+  last 48 h  holder  156: +90 0 +100 1 | none   47: +90 0 +100 0 | Fisher +100 one-sided 0.768
+  last 24 h  holder   64: +90 0 +100 0 | none   23: +90 0 +100 0 | Fisher +100 one-sided 1
+
+(k) (i) by the holder's route (the contract its buy called): pulled before any crowd by + 90 / + 100 / + 150
+  via 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc: pools  712: +90 5 (0.7%) +100 13 (1.8%) +150 65 (9.1%)
+  via 0xcaf681a66d020601342297493863e78c959e5cb2: pools  334: +90 7 (2.1%) +100 14 (4.2%) +150 55 (16.5%)
+  via 0xccc88a9d1b4ed6b0eaba998850414b24f1c315be: pools   99: +90 7 (7.1%) +100 8 (8.1%) +150 24 (24.2%)
+  via 0xf0b7eaaf868191adc00065ca13391ef436ce8faf: pools   52: +90 1 (1.9%) +100 2 (3.8%) +150 5 (9.6%)
+  via 0xf2c69db0311b3ded8ec7f39e80f555a200cc2839: pools   25: +90 0 (0.0%) +100 0 (0.0%) +150 4 (16.0%)
+  via 0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd: pools    5: +90 1 (20.0%) +100 1 (20.0%) +150 4 (80.0%)
+
+(l) anchored on the launch or on the holder's buy? abort-branch pools (no crowd before the pull) pulled by + 150 with a non-bot holder at + 78: the pull offset by the earliest holder's entry
+  holder in since +1..+10: n  35  pull offset p10/50/90 86/127/141  pull minus entry median 119
+  holder in since +11..+40: n  47  pull offset p10/50/90 96/119/142  pull minus entry median 98
+  holder in since +41..+78: n   9  pull offset p10/50/90 95/120/143  pull minus entry median 68
+  slope of the pull offset on the entry offset: 0.10 (1 = anchored on the buy, 0 = on the launch), n 91
 
 (f) the closest analogs of our trade: a non-bot outside buy >= 0.0015 ETH landing at + 1..+ 5 (we land 0.002 ETH at + 2), every pool
-  analog pools                                               n    7  crowd came 85.7% by+78 42.9%  frb p25/50/75 66/82/108  wave med 0.435 mean 0.579  pulled<=sell 0 (0.0%, CI 0.0%-35.4%)  pulled before crowd 14.3%  pull med 283  rule mean +27.01% med +4.05%
+  analog pools                                               n   11  crowd came 90.9% by+78 54.5%  frb p25/50/75 58/78/108  wave med 0.495 mean 0.573  pulled<=sell 0 (0.0%, CI 0.0%-25.9%)  pulled before crowd  9.1%  pull med 549  rule mean +24.76% med +4.05%
    10-05 18:37:01 0x1578b57d 0x5a4782c1 via 0xb1000000 +5 0.0020 ETH; sold half at None; crowd +None wave 0.000; pull +102; our sell +80; rule +0.18%; it got back 0.0000 of 0.0020
-   10-05 22:05:23 0x1f6aef64 0x3029608e via 0xf0b7eaaf +3 0.0297 ETH; sold half at 57; crowd +16 wave 1.570; pull +112219; our sell +23; rule +160.03%; it got back 0.0753 of 0.0297
+   10-05 22:05:23 0x1f6aef64 0x3029608e via 0xf0b7eaaf +3 0.0297 ETH; sold half at 57; crowd +16 wave 1.810; pull +112219; our sell +23; rule +160.03%; it got back 0.0753 of 0.0297
    10-06 01:23:08 0xbca07647 0x6d8acb0e via 0xf0b7eaaf +3 0.0020 ETH; sold half at None; crowd +108 wave 0.095; pull +283; our sell +80; rule +0.23%; it got back 0.0000 of 0.0020
-   10-07 23:52:28 0x12958750 0xf3e31469 via 0x65050a9b +3 0.0010 ETH; sold half at None; crowd +66 wave 0.372; pull +102; our sell +80; rule +15.08%; it got back 0.0006 of 0.0020
-   10-08 00:39:01 0x7d8a3cdf 0x8b42cef6 via 0x65050a9b +4 0.0010 ETH; sold half at 165; crowd +82 wave 0.642; pull +5373; our sell +80; rule +0.22%; it got back 0.0032 of 0.0020
-   10-11 03:49:25 0x93d14424 0x796cd42e via 0x65050a9b +3 0.0008 ETH; sold half at None; crowd +74 wave 0.435; pull +170; our sell +80; rule +9.31%; it got back 0.0010 of 0.0016
+   10-07 23:18:35 0x26b6e47f 0xf3e31469 via 0x65050a9b +3 0.0010 ETH; sold half at 38; crowd +58 wave 0.900; pull +62059; our sell +78; rule +44.12%; it got back 0.0020 of 0.0020
+   10-07 23:52:28 0x12958750 0xf3e31469 via 0x65050a9b +3 0.0010 ETH; sold half at 27; crowd +66 wave 0.372; pull +102; our sell +80; rule +15.08%; it got back 0.0016 of 0.0020
+   10-08 00:39:01 0x7d8a3cdf 0x8b42cef6 via 0x65050a9b +4 0.0010 ETH; sold half at 102; crowd +82 wave 0.642; pull +5373; our sell +80; rule +0.22%; it got back 0.0038 of 0.0020
+   10-08 01:01:59 0x25c51f8d 0x8b42cef6 via 0x65050a9b +4 0.0010 ETH; sold half at 440; crowd +305 wave 0.555; pull +664; our sell +80; rule +0.19%; it got back 0.0018 of 0.0020
+   10-11 00:05:39 0x7ee73fbb 0x7b55c325 via 0x65050a9b +4 0.0010 ETH; sold half at 45; crowd +78 wave 0.069; pull +175; our sell +80; rule +3.21%; it got back 0.0013 of 0.0020
+   10-11 03:49:25 0x93d14424 0x796cd42e via 0x65050a9b +3 0.0008 ETH; sold half at 103; crowd +74 wave 0.435; pull +170; our sell +80; rule +9.31%; it got back 0.0018 of 0.0016
+   10-11 05:49:52 0x40dfaeaa 0x796cd42e via 0x65050a9b +4 0.0008 ETH; sold half at 23; crowd +17 wave 0.495; pull +549; our sell +37; rule +35.77%; it got back 0.0011 of 0.0016
    10-11 05:52:05 0x1a74abf4 0xf4a0048b via 0xf0b7eaaf +3 0.0594 ETH; sold half at 54; crowd +475 wave 0.359; pull +593; our sell +23; rule +4.05%; it got back 0.0594 of 0.0594

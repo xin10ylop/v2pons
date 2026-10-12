@@ -1,0 +1,3 @@
+WALLET 0xab5a34c3f41e57fdee1a1d6f19d3e21f46df3ea8: 0.013599 ETH ($34.32), nonce 2658; v4 RELAY 0x2abb5653352f6b2f3b4f4261877cd02d9e05a957: 0.102325 ETH ($258.22); base fee 0.0204 gwei; ETH $2,523.53
+relay deploy ~1.07M gas: 0.0000218 ETH ($0.055); a v3crowd trade's gas ~387k: 0.0000079 ETH ($0.0199); 135 trades a day: 0.00107 ETH ($2.69) a day from the WALLET; the stake (0.002-0.004 ETH) from RELAY_V3
+{'posts': 3, 'items': 4, 'r429': 0}
