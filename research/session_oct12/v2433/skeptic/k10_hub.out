@@ -1,0 +1,23 @@
+pull               block 86314009 10-12 02:12:21 from 0x3fd5c7ca6a06b568b6ceccfea414a63a91acb2a7 to 0x1cbaf24d53fe930fce8eff149fa797d2611da149 value 0.000000 nonce 13 sel 0xa0f7978d status 0x1 logs 6
+sweep_last_wallet  block 86314055 10-12 02:12:26 from 0x3fd5c7ca6a06b568b6ceccfea414a63a91acb2a7 to 0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d value 3.904115 nonce 14 sel 0x status 0x1 logs 0
+hub_inflow_1305    block 86695397 10-12 13:05:52 from 0x39525d91ffdcc126f052eefed6735fda72ad1dee to 0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d value 0.799900 nonce 3438 sel 0x status 0x1 logs 0
+bridge_test        block 86697087 10-12 13:08:45 from 0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d to 0x794dbdbdbfd3f8a3b887f4513bf5ff29edd04a94 value 0.100000 nonce 8 sel 0x1e04ce08 status 0x1 logs 1
+bridge_main        block 86697687 10-12 13:09:46 from 0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d to 0x794dbdbdbfd3f8a3b887f4513bf5ff29edd04a94 value 9.199000 nonce 9 sel 0x1e04ce08 status 0x1 logs 1
+relay_fill_1       block 86697103 10-12 13:08:47 from 0x394311a6aaa0d8e3411d8b62de4578d41322d1bd to 0x998d7c178a1f9607b47ea3a8e22426451b3ce707 value 0.000000 nonce 355631 sel 0xe3a64e34 status 0x1 logs 7
+     log 0x794dbdbdbfd3f8a3b887f4513bf5ff29edd04a94 0x3e6cc90e 194
+     log 0x0bd7d308f8e1639fab988df18a8011f41eacad73 0xddf252ad 66
+     log 0x0bd7d308f8e1639fab988df18a8011f41eacad73 0x8c5be1e5 66
+     log 0x0bd7d308f8e1639fab988df18a8011f41eacad73 0xddf252ad 66
+     log 0xd29c85f15df544ba632c9e25829fd29d767d7978 0x32ed1a40 834
+     log 0x0bd7d308f8e1639fab988df18a8011f41eacad73 0xddf252ad 66
+     log 0x998d7c178a1f9607b47ea3a8e22426451b3ce707 0xbfaace7f 66
+relay_fill_2       block 86697705 10-12 13:09:48 from 0x07ae8551be970cb1cca11dd7a11f47ae82e70e67 to 0x998d7c178a1f9607b47ea3a8e22426451b3ce707 value 0.000000 nonce 156211 sel 0xe3a64e34 status 0x1 logs 6
+     log 0x794dbdbdbfd3f8a3b887f4513bf5ff29edd04a94 0x3e6cc90e 194
+     log 0x0bd7d308f8e1639fab988df18a8011f41eacad73 0xddf252ad 66
+     log 0x0bd7d308f8e1639fab988df18a8011f41eacad73 0xddf252ad 66
+     log 0xd29c85f15df544ba632c9e25829fd29d767d7978 0x32ed1a40 834
+     log 0x0bd7d308f8e1639fab988df18a8011f41eacad73 0xddf252ad 66
+     log 0x998d7c178a1f9607b47ea3a8e22426451b3ce707 0xbfaace7f 66
+fp_typo_pull ERR {"code": -32602, "message": "invalid argument 0: json: cannot unmarshal hex string of odd length int
+0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d now: balance 0.00088076 nonce 10
+0x3fd5c7ca6a06b568b6ceccfea414a63a91acb2a7 now: balance 0.00000009 nonce 15

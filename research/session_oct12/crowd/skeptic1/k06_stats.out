@@ -1,0 +1,55 @@
+frozen head 86801281 at 10-12 16:05 UTC; last launch 10-12 13:44 UTC; 10 WETH-token1 launches not traded
+validation: 2855/2855 on-chain swaps reproduced exactly (amounts, sqrtP, L, tick)
+base fee at the launches: min 0.0200 median 0.0200 max 0.0212 gwei
+
+== recent 24 h: 10-11 16:05 -> 10-12 16:05 UTC, 115 launches (115/day)
+  stake 0.0012 land +2       n 115  mean  +11.26%  median  -0.64%  p10  -0.75 p25  -0.68 p75  +2.30 p90 +13.71  worst  -0.75 best  +214.4  win 40/115  top10% share   92%  mean w/o top10% +1.04%  gross mean +11.99% med +0.09%  pulled<=sell 0
+                             bootstrap 90% interval of the mean [+5.66, +17.64]
+  stake 0.0058 land +2       n 115  mean  +11.81%  median  -0.06%  p10  -0.17 p25  -0.11 p75  +2.87 p90 +14.26  worst  -0.17 best  +214.3  win 45/115  top10% share   88%  mean w/o top10% +1.62%  gross mean +11.96% med +0.09%  pulled<=sell 0
+                             bootstrap 90% interval of the mean [+6.22, +18.17]
+  stake 0.0058 land +1       n 115  mean   +9.87%  median  -0.06%  p10  -0.17 p25  -0.11 p75  +2.38 p90 +13.39  worst  -0.17 best  +214.3  win 44/115  top10% share   87%  mean w/o top10% +1.39%  gross mean +10.02% med +0.09%  pulled<=sell 0
+  pulls                      pulled by head 112/115 (never 3); before +80 0, <= +80 0, by +100 0, by +150 7; earliest [119, 125, 128, 137, 140]; median 656.0; by launch wallet 112; 100% of L 112; through NPM 112
+  exits: cap 93, crowd clock 22
+
+== prior 24 h: 10-10 16:05 -> 10-11 16:05 UTC, 122 launches (122/day)
+  stake 0.0012 land +2       n 122  mean   +5.82%  median  +0.09%  p10  -0.74 p25  -0.69 p75  +7.78 p90 +18.61  worst  -0.76 best   +51.2  win 61/122  top10% share   55%  mean w/o top10% +2.89%  gross mean  +6.55% med +0.82%  pulled<=sell 0
+                             bootstrap 90% interval of the mean [+4.33, +7.43]
+  stake 0.0058 land +2       n 122  mean   +6.38%  median  +0.67%  p10  -0.16 p25  -0.11 p75  +8.35 p90 +19.15  worst  -0.17 best   +51.6  win 67/122  top10% share   51%  mean w/o top10% +3.46%  gross mean  +6.54% med +0.82%  pulled<=sell 0
+                             bootstrap 90% interval of the mean [+4.89, +7.99]
+  stake 0.0058 land +1       n 122  mean   +6.25%  median  +0.67%  p10  -0.16 p25  -0.11 p75  +8.13 p90 +19.15  worst  -0.17 best   +51.6  win 67/122  top10% share   52%  mean w/o top10% +3.35%  gross mean  +6.40% med +0.82%  pulled<=sell 0
+  pulls                      pulled by head 121/122 (never 1); before +80 0, <= +80 0, by +100 4, by +150 15; earliest [86, 94, 95, 98, 101]; median 589; by launch wallet 121; 100% of L 121; through NPM 121
+  exits: cap 102, crowd clock 20
+
+== replay window: 10-10 12:00 -> 10-12 14:30 UTC, 279 launches (133/day)
+  stake 0.0012 land +2       n 279  mean   +7.32%  median  -0.62%  p10  -0.74 p25  -0.69 p75  +3.84 p90 +17.53  worst  -0.76 best  +214.4  win 109/279  top10% share   82%  mean w/o top10% +1.46%  gross mean  +8.04% med +0.10%  pulled<=sell 0
+                             bootstrap 90% interval of the mean [+4.84, +10.08]
+  stake 0.0058 land +2       n 279  mean   +7.87%  median  -0.05%  p10  -0.17 p25  -0.11 p75  +4.41 p90 +18.08  worst  -0.17 best  +214.3  win 121/279  top10% share   77%  mean w/o top10% +2.04%  gross mean  +8.03% med +0.10%  pulled<=sell 0
+                             bootstrap 90% interval of the mean [+5.41, +10.63]
+  stake 0.0058 land +1       n 279  mean   +6.92%  median  -0.05%  p10  -0.17 p25  -0.11 p75  +4.08 p90 +17.03  worst  -0.17 best  +214.3  win 119/279  top10% share   76%  mean w/o top10% +1.81%  gross mean  +7.07% med +0.10%  pulled<=sell 0
+  pulls                      pulled by head 275/279 (never 4); before +80 0, <= +80 0, by +100 4, by +150 25; earliest [86, 94, 95, 98, 101]; median 682; by launch wallet 275; 100% of L 275; through NPM 275
+  exits: cap 230, crowd clock 49
+
+== their box 24 h: 10-11 14:23 -> 10-12 14:23 UTC, 121 launches (121/day)
+  stake 0.0012 land +2       n 121  mean  +11.12%  median  -0.64%  p10  -0.74 p25  -0.69 p75  +2.31 p90 +14.06  worst  -0.75 best  +214.4  win 42/121  top10% share   92%  mean w/o top10% +0.99%  gross mean +11.85% med +0.09%  pulled<=sell 0
+                             bootstrap 90% interval of the mean [+5.84, +17.34]
+  stake 0.0058 land +2       n 121  mean  +11.67%  median  -0.06%  p10  -0.17 p25  -0.11 p75  +2.88 p90 +14.61  worst  -0.17 best  +214.3  win 47/121  top10% share   88%  mean w/o top10% +1.57%  gross mean +11.82% med +0.09%  pulled<=sell 0
+                             bootstrap 90% interval of the mean [+6.41, +17.87]
+  stake 0.0058 land +1       n 121  mean   +9.82%  median  -0.06%  p10  -0.17 p25  -0.11 p75  +2.41 p90 +13.74  worst  -0.17 best  +214.3  win 46/121  top10% share   88%  mean w/o top10% +1.35%  gross mean  +9.97% med +0.09%  pulled<=sell 0
+  pulls                      pulled by head 118/121 (never 3); before +80 0, <= +80 0, by +100 0, by +150 8; earliest [103, 119, 125, 128, 137]; median 684.0; by launch wallet 118; 100% of L 118; through NPM 118
+  exits: cap 98, crowd clock 23
+
+== launch-by-launch vs the replay analyst (r06_rows.json), entry +2
+  0.0012|2 vs 0.0012|2|2: n 279; |diff| <= 0.01 pt 272, <= 0.1 pt 279; max 0.041 pt; my mean +7.315% theirs +7.316%; my median -0.625% theirs -0.625%
+     largest: 10-10 16:33:34 0x2a1bb63a mine -0.760% theirs -0.719%
+     largest: 10-12 03:24:46 0xded297dd mine +0.925% theirs +0.953%
+     largest: 10-11 01:30:26 0xc6f7bb78 mine -0.665% theirs -0.642%
+  0.0058|2 vs 0.0058|2|2: n 279; |diff| <= 0.01 pt 279, <= 0.1 pt 279; max 0.009 pt; my mean +7.875% theirs +7.875%; my median -0.048% theirs -0.048%
+     largest: 10-10 16:33:34 0x2a1bb63a mine -0.151% theirs -0.142%
+     largest: 10-12 03:24:46 0xded297dd mine +1.521% theirs +1.526%
+     largest: 10-11 01:30:26 0xc6f7bb78 mine -0.070% theirs -0.065%
+  0.0058|1 vs 0.0058|2|1: n 279; |diff| <= 0.01 pt 279, <= 0.1 pt 279; max 0.009 pt; my mean +6.919% theirs +6.919%; my median -0.055% theirs -0.053%
+     largest: 10-10 16:33:34 0x2a1bb63a mine -0.151% theirs -0.142%
+     largest: 10-12 03:24:46 0xded297dd mine +1.521% theirs +1.526%
+     largest: 10-11 01:30:26 0xc6f7bb78 mine -0.070% theirs -0.065%
+  exit-clock trigger offset equal (or both none/after cap): 279/279
+  first pull offset equal: 279/279; differing: []

@@ -1,0 +1,2 @@
+validation (no trade of ours, swaps in [lb, lb+120]): 2855/2855 exact (amounts, sqrtP, L, tick); out differs 0, sqrtP differs 0
+replayed 279 WETH-token0 launches; 10 WETH-token1 launches not traded (the engine skips them)

@@ -1,0 +1,8 @@
+head now 86805848 10-12 16:13:36 UTC; PoolCreated since the frozen head 1, fee-100 WETH 0, line-shaped 0
+last line launch 10-12 13:44:12 UTC: 2.49 h without a launch
+pool 0x52e65b17fb6e5ba00ed806f37afcd2daa50271ca fee 100: token0 0x0bd7d308f8e1639fab988df18a8011f41eacad73 token1 0x5fc5360d0400a0fd4f2af552add042d716f1d168; USDG decimals 6; WETH in pool 5,327.5; ETH = $2,528.08
+  stake 0.0012 ETH = $3.03
+  stake 0.0058 ETH = $14.66
+  $5 = 0.0020 ETH
+  $15 = 0.0059 ETH
+{'posts': 10, 'items': 10, 'r429': 0}

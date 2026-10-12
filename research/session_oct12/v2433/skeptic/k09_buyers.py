@@ -35,3 +35,10 @@ gap = collections.Counter(n - last_nonce[a] for a, n in zip(A, non))
 print("current nonce minus nonce of their last 2.433 buy (1 = nothing since that buy, 2 = one tx since, e.g. a sweep):", sorted(gap.items()))
 print("callers whose last 2.433 buy is in the final pool:", sum(1 for l in b2433 if l["address"].lower() == "0xb28f2d1f01b659bdffd762f4fac660dd25057777"))
 json.dump({"callers2433": W2433, "now": dict(zip(A, zip(bal, non)))}, open(kc.p("k09_buyers.json"), "w"))
+# split: buy callers (c1120e3d) vs pull callers (a0f7978d)
+sel = collections.defaultdict(set)
+for l in b2433:
+    t = tx[l["transactionHash"]]; sel[t["input"][:10]].add(t["from"])
+now = dict(zip(A, zip(bal, non)))
+for s, S in sel.items():
+    print("selector %s: %d callers, balance now total %.8f ETH (max %.8f), nonce now min/max %d/%d, gap counts %s" % (s, len(S), sum(now[a][0] for a in S) / 1e18, max(now[a][0] for a in S) / 1e18, min(now[a][1] for a in S), max(now[a][1] for a in S), sorted(collections.Counter(now[a][1] - last_nonce[a] for a in S).items())))

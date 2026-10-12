@@ -37,7 +37,7 @@ for p in P:
     fb = next((w for w in out if w["buy"] and (w["eth"] or 0) >= 1e-4), None)
     p["first_buy"] = {k: fb[k] for k in ("off", "eth", "from", "to", "sel", "mult")} if fb else None
     p["max_mult"] = max([w["mult"] for w in p["sw"]] + [1.0]); p["last_mult"] = p["sw"][-1]["mult"] if p["sw"] else 1.0
-json.dump({"head": head, "pools": P}, open(J("s06_pools.json"), "w"))
+json.dump({"head": head, "pools": [{k: v for k, v in p.items() if k != "ml"} for p in P]}, open(J("s06_pools.json"), "w"))   # ModifyLiquidity rows stay in s04_pools.json
 for s in ("S1", "S2", "S3", "S4"):
     pp = [p for p in P if p["shape"] == s]
     act = [p for p in pp if p["n_out"]]

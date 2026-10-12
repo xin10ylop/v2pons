@@ -1,0 +1,10 @@
+2.433 buys since 86100000: 4263 txs, 99 distinct callers, selectors Counter({'0xc1120e3d': 4195, '0xa0f7978d': 68}), to Counter({'0x1cbaf24d': 4263})
+ETH spent by bot buyers in 2.433 pools since 86100000: 484.15
+3.0/5.0 sample after the stop: 3000 buys, 283 callers; overlap with 2.433 callers: 0
+3.0/5.0 sample before the stop: 1500 buys, 230 callers; overlap with 2.433 callers: 0
+overlap callers: []
+2.433 callers now: total balance 0.000009 ETH, with balance>0: 99 of 99
+current nonce minus nonce of their last 2.433 buy (1 = nothing since that buy, 2 = one tx since, e.g. a sweep): [(2, 83), (3, 3), (4, 3), (5, 3), (6, 1), (7, 3), (8, 2), (9, 1)]
+callers whose last 2.433 buy is in the final pool: 41
+selector 0xc1120e3d: 31 callers, balance now total 0.00000275 ETH (max 0.00000009), nonce now min/max 37992/41203, gap counts [(2, 16), (3, 2), (4, 3), (5, 3), (6, 1), (7, 3), (8, 2), (9, 1)]
+selector 0xa0f7978d: 68 callers, balance now total 0.00000602 ETH (max 0.00000010), nonce now min/max 15/16, gap counts [(2, 67), (3, 1)]

@@ -1,0 +1,11 @@
+block rate 9.71 blocks/s: the cap (+80) is 8.2 s after the launch; the earliest pull (+86) 8.9 s; 6 blocks = 0.62 s
+replay window, 0.0058, cap send +58 (sell at +60): mean +2.44%, pulled 0
+replay window, 0.0058, cap send +60 (sell at +62): mean +3.30%, pulled 0
+replay window, 0.0058, cap send +68 (sell at +70): mean +4.99%, pulled 0
+replay window, 0.0058, cap send +70 (sell at +72): mean +5.30%, pulled 0
+replay window, 0.0058, cap send +76 (sell at +78): mean +6.54%, pulled 0
+replay window, 0.0058, cap send +78 (sell at +80): mean +7.87%, pulled 0
+replay window, 0.0058, cap send +86 (sell at +88): mean +8.69%, pulled 1
+replay window, 0.0058, cap send +88 (sell at +90): mean +9.00%, pulled 1
+replay window, 0.0058, cap send +96 (sell at +98): mean +9.64%, pulled 2
+replay window, 0.0058, cap send +98 (sell at +100): mean +10.14%, pulled 2
