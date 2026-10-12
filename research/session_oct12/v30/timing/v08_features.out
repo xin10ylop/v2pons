@@ -1,0 +1,8 @@
+sentinel_d   n 491 r +0.026  best groups (value, n, best+-1 share): [(2, 31, 0.26), (4, 42, 0.24), (3, 403, 0.12)]
+7ae81404_d   n 400 r +0.049  best groups (value, n, best+-1 share): [(2, 80, 0.17), (1, 52, 0.15), (3, 218, 0.13)]
+deploy_gap   n 491 r +0.013  best groups (value, n, best+-1 share): [(16, 18, 0.22), (9, 20, 0.2), (11, 79, 0.14)]
+launch_idx   n 491 r +0.069  best groups (value, n, best+-1 share): [(5, 46, 0.22), (7, 24, 0.17), (6, 33, 0.15)]
+nonce_lo     n 491 r +0.200  best groups (value, n, best+-1 share): [(1, 257, 0.13), (0, 234, 0.11)]
+prev_pool_d  n 490 r -0.015  best groups (value, n, best+-1 share): [(41, 15, 0.33), (32, 16, 0.31), (36, 16, 0.25)]
+gap_prev_L   n 490 r +0.034  best groups (value, n, best+-1 share): []
+L_mod_10     n 491 r +0.042  best groups (value, n, best+-1 share): [(5, 61, 0.25), (8, 51, 0.24), (4, 49, 0.22)]
