@@ -38,7 +38,7 @@ def pct(v, q):
     v = sorted(v)
     return None if not v else v[min(len(v) - 1, int(q * len(v)))]
 # block cache: full blocks (with transactions) as compact rows, one JSON line per block
-BLK = J("blk_cache.jsonl")
+BLK = J(os.environ.get("BLK_CACHE", "blk_cache.jsonl"))
 _blk = {}
 def _load_blk():
     if _blk or not os.path.exists(BLK): return

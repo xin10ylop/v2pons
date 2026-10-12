@@ -1,0 +1,26 @@
+held positions bought T+0..T+150 (the engine's trigger), pulled while held: 18
+  pull@buy+  router's last buy@buy+  buy@T+  who        pool       launch          ETH     T   pull@L+
+         36                     27       2  ours       0xb47b706f 10-12 01:18:11 0.0020  155   193
+         45                   None     121  0xbd9dc5f6 0xb63adb7e 10-12 13:20:08 0.0017  148   314
+         54                     23      73  0xbd9dc5f6 0xd6bd637c 10-12 13:37:13 0.0014  150   277
+         72                     38      90  0xbd9dc5f6 0x93c057ea 10-12 13:17:50 0.0017  109   271
+         74                     71     122  0x0bc84163 0x87a03707 10-11 06:00:27 0.0141  137   333
+         75                     62      26  0x5b0320fb 0xf7e808ab 10-11 17:56:42 0.0025   66   167
+         75                     74      91  0x3155c72d 0x9ac8e332 10-12 10:41:19 0.0012  209   375
+         80                     46     107  0x3155c72d 0x5deeea27 10-12 10:52:53 0.0012   95   282
+         91                     51      18  0xbd9dc5f6 0xcae38647 10-12 13:26:14 0.0014   60   169
+        116                     87      74  0xbd9dc5f6 0xa407c512 10-12 13:32:30 0.0015  219   409
+        150                    110      26  0x5b0320fb 0xa52938fa 10-11 19:37:24 0.0025   38   214
+        156                    133      91  0x0bc84163 0xea206767 10-11 05:54:56 0.0156  271   518
+        174                    157      20  0x5b0320fb 0x2eb69a80 10-11 17:52:57 0.0025   35   229
+        245                    236      15  0xbd9dc5f6 0xc4ff6a75 10-12 12:47:55 0.0015  116   376
+        273                    272      56  0xbd9dc5f6 0x7c7e808e 10-12 13:09:41 0.0014   97   426
+        359                    338     144  0x89b1da45 0xf8716ecd 10-12 11:51:16 0.0079   98   601
+        457                    454      37  0x5373fb35 0x8d437a11 10-11 19:38:24 0.0020   32   526
+       1351                   1310      81  0x2eb9009a 0xdf4e483f 10-11 15:15:38 0.0020  105  1537
+  hold 20: the sell lands by buy+23; positions pulled at or before that: 0 of 18 (at buy+21, lag 1: 0)
+  hold 25: the sell lands by buy+28; positions pulled at or before that: 0 of 18 (at buy+26, lag 1: 0)
+  hold 30: the sell lands by buy+33; positions pulled at or before that: 0 of 18 (at buy+31, lag 1: 0)
+  hold 35: the sell lands by buy+38; positions pulled at or before that: 1 of 18 (at buy+36, lag 1: 1)
+  hold 40: the sell lands by buy+43; positions pulled at or before that: 1 of 18 (at buy+41, lag 1: 1)
+  hold 60: the sell lands by buy+63; positions pulled at or before that: 3 of 18 (at buy+61, lag 1: 3)

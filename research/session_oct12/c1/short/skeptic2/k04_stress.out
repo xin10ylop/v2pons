@@ -1,0 +1,52 @@
+(1) trigger max_blocks (the engine's real trigger: the first router buy >= 0.005 ETH) x exit: EV $ per attempt at $5 [95% CI] (attempts)
+  holder regime
+    max_blocks 100 (n  14)  hold 10: +0.041 [-0.01,+0.11]  hold 20: +0.046 [-0.01,+0.12]  hold 30: +0.134 [+0.00,+0.31]  tp 4% cap 30: +0.062 [+0.00,+0.14]  tp 6% cap 50: +0.209 [+0.10,+0.34]  hold 60: +0.300 [+0.13,+0.50]
+    max_blocks 150 (n  24)  hold 10: +0.020 [-0.01,+0.07]  hold 20: +0.027 [-0.01,+0.08]  hold 30: +0.101 [+0.01,+0.21]  tp 4% cap 30: +0.055 [+0.01,+0.11]  tp 6% cap 50: +0.150 [+0.07,+0.24]  hold 60: +0.013 [-0.50,+0.34]
+    max_blocks 400 (n  30)  hold 10: +0.023 [-0.01,+0.06]  hold 20: +0.041 [+0.00,+0.09]  hold 30: +0.118 [+0.03,+0.23]  tp 4% cap 30: +0.064 [+0.02,+0.11]  tp 6% cap 50: +0.216 [+0.10,+0.37]  hold 60: -0.073 [-0.62,+0.34]
+  held from T+2
+    max_blocks 100 (n   4)  hold 10: -0.012 [-0.01,-0.01]  hold 20: -0.012 [-0.01,-0.01]  hold 30: +0.039 [-0.01,+0.14]  tp 4% cap 30: +0.039 [-0.01,+0.14]  tp 6% cap 50: +0.166 [+0.04,+0.28]  hold 60: +0.166 [+0.04,+0.28]
+    max_blocks 150 (n   6)  hold 10: -0.011 [-0.01,-0.01]  hold 20: -0.011 [-0.01,-0.01]  hold 30: +0.023 [-0.01,+0.09]  tp 4% cap 30: +0.023 [-0.01,+0.09]  tp 6% cap 50: +0.108 [+0.02,+0.22]  hold 60: -0.727 [-2.46,+0.21]
+    max_blocks 400 (n   9)  hold 10: +0.008 [-0.01,+0.04]  hold 20: +0.047 [-0.01,+0.16]  hold 30: +0.127 [-0.01,+0.35]  tp 4% cap 30: +0.069 [-0.01,+0.18]  tp 6% cap 50: +0.126 [+0.03,+0.25]  hold 60: -1.044 [-2.73,+0.13]
+  no holder
+    max_blocks 100 (n  68)  hold 10: +0.018 [-0.00,+0.04]  hold 20: +0.039 [+0.01,+0.07]  hold 30: +0.055 [+0.02,+0.09]  tp 4% cap 30: +0.043 [+0.02,+0.07]  tp 6% cap 50: +0.100 [+0.06,+0.14]  hold 60: +0.131 [+0.09,+0.18]
+    max_blocks 150 (n 124)  hold 10: +0.020 [+0.01,+0.04]  hold 20: +0.037 [+0.02,+0.06]  hold 30: +0.069 [+0.04,+0.10]  tp 4% cap 30: +0.055 [+0.03,+0.08]  tp 6% cap 50: +0.119 [+0.09,+0.16]  hold 60: +0.172 [+0.12,+0.22]
+    max_blocks 400 (n 150)  hold 10: +0.024 [+0.01,+0.04]  hold 20: +0.040 [+0.02,+0.06]  hold 30: +0.067 [+0.04,+0.10]  tp 4% cap 30: +0.054 [+0.03,+0.08]  tp 6% cap 50: +0.117 [+0.09,+0.15]  hold 60: +0.185 [+0.13,+0.24]
+
+(2) a faster operator applied to EVERY fill (the router stops after our buy + k, the pull at our buy + k + d): EV $ per attempt at $5 / $13, all usable pools (n 185)
+  stop at buy+47, pull at buy+115: hold 10: +0.023/+0.076  hold 15: +0.029/+0.090  hold 20: +0.039/+0.117  hold 25: +0.053/+0.153  hold 30: +0.073/+0.205  tp 2% cap 30: +0.043/+0.121  tp 4% cap 30: +0.054/+0.153  tp 6% cap 50: +0.127/+0.346
+  stop at buy+30, pull at buy+ 84: hold 10: +0.023/+0.076  hold 15: +0.029/+0.090  hold 20: +0.039/+0.117  hold 25: +0.053/+0.153  hold 30: +0.065/+0.185  tp 2% cap 30: +0.042/+0.119  tp 4% cap 30: +0.047/+0.137  tp 6% cap 50: +0.058/+0.165
+  stop at buy+27, pull at buy+ 36: hold 10: +0.023/+0.076  hold 15: +0.029/+0.090  hold 20: +0.039/+0.117  hold 25: +0.053/+0.153  hold 30: +0.059/+0.168  tp 2% cap 30: +0.038/+0.109  tp 4% cap 30: +0.042/+0.123  tp 6% cap 50: -3.136/-8.126
+  stop at buy+25, pull at buy+ 34: hold 10: +0.023/+0.076  hold 15: +0.029/+0.090  hold 20: +0.039/+0.117  hold 25: +0.048/+0.139  hold 30: +0.048/+0.139  tp 2% cap 30: +0.033/+0.100  tp 4% cap 30: +0.037/+0.110  tp 6% cap 50: -3.209/-8.317
+  stop at buy+22, pull at buy+ 31: hold 10: +0.023/+0.076  hold 15: +0.029/+0.090  hold 20: +0.039/+0.117  hold 25: +0.040/+0.120  hold 30: -3.639/-9.432  tp 2% cap 30: -2.878/-7.385  tp 4% cap 30: -3.090/-8.010  tp 6% cap 50: -3.278/-8.494
+  stop at buy+20, pull at buy+ 29: hold 10: +0.023/+0.076  hold 15: +0.029/+0.090  hold 20: +0.038/+0.115  hold 25: +0.038/+0.115  hold 30: -3.639/-9.432  tp 2% cap 30: -2.899/-7.439  tp 4% cap 30: -3.141/-8.065  tp 6% cap 50: -3.314/-8.588
+  stop at buy+15, pull at buy+ 24: hold 10: +0.023/+0.076  hold 15: +0.027/+0.085  hold 20: +0.027/+0.085  hold 25: -3.639/-9.432  hold 30: -3.639/-9.432  tp 2% cap 30: -3.048/-7.826  tp 4% cap 30: -3.264/-8.385  tp 6% cap 50: -3.402/-8.817
+  stop at buy+27, pull at buy+ 27: hold 10: +0.023/+0.076  hold 15: +0.029/+0.090  hold 20: +0.039/+0.117  hold 25: -2.717/-7.039  hold 30: -3.639/-9.432  tp 2% cap 30: -2.843/-7.299  tp 4% cap 30: -3.078/-7.977  tp 6% cap 50: -3.226/-8.361
+  stop at buy+20, pull at buy+ 20: hold 10: +0.023/+0.076  hold 15: +0.029/+0.090  hold 20: -3.639/-9.432  hold 25: -3.639/-9.432  hold 30: -3.639/-9.432  tp 2% cap 30: -3.012/-7.732  tp 4% cap 30: -3.205/-8.233  tp 6% cap 50: -3.330/-8.631
+
+(3) break-even pull rate (w - g) / (1 + w) of the best exits (REAL mixture over the fills; w = the survivors' mean gross, g = gas / stake), and the pulls seen
+  holder regime  hold 20       fills  23 (weighted), pulled  0.0; survivors' mean +1.33%; break-even pull rate $5 1.10%; one-sided 95% upper bound on the pull rate from 0/23: 12.2%; fills under +2%: 79%; $13 1.23%
+  holder regime  hold 25       fills  23 (weighted), pulled  0.0; survivors' mean +2.16%; break-even pull rate $5 1.91%; one-sided 95% upper bound on the pull rate from 0/23: 12.2%; fills under +2%: 78%; $13 2.04%
+  holder regime  hold 30       fills  23 (weighted), pulled  0.0; survivors' mean +3.33%; break-even pull rate $5 3.01%; one-sided 95% upper bound on the pull rate from 0/23: 12.2%; fills under +2%: 68%; $13 3.15%
+  holder regime  tp 4% cap 30  fills  23 (weighted), pulled  0.0; survivors' mean +1.91%; break-even pull rate $5 1.66%; one-sided 95% upper bound on the pull rate from 0/23: 12.2%; fills under +2%: 68%; $13 1.80%
+  holder regime  tp 6% cap 30  fills  23 (weighted), pulled  0.0; survivors' mean +2.49%; break-even pull rate $5 2.22%; one-sided 95% upper bound on the pull rate from 0/23: 12.2%; fills under +2%: 68%; $13 2.36%
+  holder regime  tp 6% cap 50  fills  23 (weighted), pulled  0.0; survivors' mean +5.88%; break-even pull rate $5 5.35%; one-sided 95% upper bound on the pull rate from 0/23: 12.2%; fills under +2%: 33%; $13 5.48%
+  held from T+2  hold 20       fills   6 (weighted), pulled  0.0; survivors' mean +1.67%; break-even pull rate $5 1.43%; one-sided 95% upper bound on the pull rate from 0/6: 39.3%; fills under +2%: 83%; $13 1.57%
+  held from T+2  hold 25       fills   6 (weighted), pulled  0.0; survivors' mean +2.32%; break-even pull rate $5 2.05%; one-sided 95% upper bound on the pull rate from 0/6: 39.3%; fills under +2%: 83%; $13 2.19%
+  held from T+2  hold 30       fills   6 (weighted), pulled  0.0; survivors' mean +4.07%; break-even pull rate $5 3.70%; one-sided 95% upper bound on the pull rate from 0/6: 39.3%; fills under +2%: 67%; $13 3.83%
+  held from T+2  tp 4% cap 30  fills   6 (weighted), pulled  0.0; survivors' mean +2.34%; break-even pull rate $5 2.08%; one-sided 95% upper bound on the pull rate from 0/6: 39.3%; fills under +2%: 67%; $13 2.21%
+  held from T+2  tp 6% cap 30  fills   6 (weighted), pulled  0.0; survivors' mean +2.34%; break-even pull rate $5 2.08%; one-sided 95% upper bound on the pull rate from 0/6: 39.3%; fills under +2%: 67%; $13 2.21%
+  held from T+2  tp 6% cap 50  fills   6 (weighted), pulled  0.0; survivors' mean +4.03%; break-even pull rate $5 3.67%; one-sided 95% upper bound on the pull rate from 0/6: 39.3%; fills under +2%: 33%; $13 3.80%
+  all usable     hold 20       fills 134 (weighted), pulled  0.0; survivors' mean +1.33%; break-even pull rate $5 1.10%; one-sided 95% upper bound on the pull rate from 0/134: 2.2%; fills under +2%: 79%; $13 1.24%
+  all usable     hold 25       fills 134 (weighted), pulled  0.0; survivors' mean +1.71%; break-even pull rate $5 1.47%; one-sided 95% upper bound on the pull rate from 0/134: 2.2%; fills under +2%: 76%; $13 1.60%
+  all usable     hold 30       fills 134 (weighted), pulled  0.0; survivors' mean +2.27%; break-even pull rate $5 2.01%; one-sided 95% upper bound on the pull rate from 0/134: 2.2%; fills under +2%: 73%; $13 2.14%
+  all usable     tp 4% cap 30  fills 134 (weighted), pulled  0.0; survivors' mean +1.74%; break-even pull rate $5 1.49%; one-sided 95% upper bound on the pull rate from 0/134: 2.2%; fills under +2%: 73%; $13 1.61%
+  all usable     tp 6% cap 30  fills 134 (weighted), pulled  0.0; survivors' mean +2.04%; break-even pull rate $5 1.79%; one-sided 95% upper bound on the pull rate from 0/134: 2.2%; fills under +2%: 73%; $13 1.92%
+  all usable     tp 6% cap 50  fills 134 (weighted), pulled  0.0; survivors' mean +3.85%; break-even pull rate $5 3.50%; one-sided 95% upper bound on the pull rate from 0/134: 2.2%; fills under +2%: 50%; $13 3.63%
+
+(4) the non-bot streak halt (FRONT_NONBOT_HALT 5: five fills in a row under +2% halt the family; reverted buys do not count), REAL dB 2 lag 2, fills in time order over all usable pools:
+  hold 10       fills 134, under +2%: 84%; the halt would trip 17 times (each needs the owner to clear it) unless the family sets nonbot_halt 0
+  hold 20       fills 134, under +2%: 79%; the halt would trip 16 times (each needs the owner to clear it) unless the family sets nonbot_halt 0
+  hold 30       fills 134, under +2%: 73%; the halt would trip 12 times (each needs the owner to clear it) unless the family sets nonbot_halt 0
+  tp 4% cap 30  fills 134, under +2%: 73%; the halt would trip 12 times (each needs the owner to clear it) unless the family sets nonbot_halt 0
+  tp 6% cap 50  fills 134, under +2%: 50%; the halt would trip 8 times (each needs the owner to clear it) unless the family sets nonbot_halt 0
+  hold 60       fills 134, under +2%: 43%; the halt would trip 4 times (each needs the owner to clear it) unless the family sets nonbot_halt 0

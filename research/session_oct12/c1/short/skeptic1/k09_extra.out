@@ -1,0 +1,20 @@
+== (1) the no-holder path (what a dry run measures): n 155
+  hold 10      mean +1.08% median -0.02% up(>+0.5%)  27 under +2% 132 pulled 0
+  hold 30      mean +2.90% median -0.01% up(>+0.5%)  53 under +2% 109 pulled 0
+  hold 40      mean +4.89% median +0.92% up(>+0.5%)  79 under +2%  87 pulled 0
+  hold 60      mean +8.74% median +4.67% up(>+0.5%) 110 under +2%  54 pulled 0
+  tp4 cap30    mean +2.43% median -0.01% up(>+0.5%)  53 under +2% 109 pulled 0
+  tp4 cap40    mean +3.75% median +0.92% up(>+0.5%)  79 under +2%  88 pulled 0
+  tp6 cap50    mean +5.05% median +2.86% up(>+0.5%)  96 under +2%  68 pulled 0
+
+== (2) triggered pools with an outside >= 0.001 ETH holder already at T (bought before T, not sold by T)
+  3 of 182 triggered pools:
+   0x91620507 holder 0x5b0320fb 0.005 ETH at T-23, sold never; T launch+103, pull T+63
+   0x049464f8 holder 0xf4a0048b 0.0594 ETH at T-16, sold T+21; T launch+100, pull T+43687
+   0xcf1d880b holder 0x5373fb35 0.00198 ETH at T-140, sold never; T launch+194, pull T+19
+
+== (3) candidate exits with max_blocks 100 (engine T <= 100)
+  regime (ours + outsider at T+2..10): n 5 hold 10 +1.09%/0p  hold 30 +1.55%/0p  hold 40 +2.24%/0p  hold 60 +3.58%/0p  tp4 cap30 +1.89%/0p  tp4 cap40 +2.59%/0p  tp6 cap50 +3.58%/0p
+  regime (ours + outsider at T+2..10) T > 100: n 6 hold 10 +0.61%/0p  hold 30 -13.17%/1p  hold 40 -33.25%/2p  hold 60 -49.68%/3p  tp4 cap30 -14.90%/1p  tp4 cap40 -14.90%/1p  tp6 cap50 -14.90%/1p
+  no holder: n 69 hold 10 +0.90%/0p  hold 30 +2.48%/0p  hold 40 +4.17%/0p  hold 60 +6.98%/0p  tp4 cap30 +2.03%/0p  tp4 cap40 +2.55%/0p  tp6 cap50 +3.93%/0p
+  no holder T > 100: n 86 hold 10 +1.22%/0p  hold 30 +3.24%/0p  hold 40 +5.47%/0p  hold 60 +10.15%/0p  tp4 cap30 +2.75%/0p  tp4 cap40 +4.70%/0p  tp6 cap50 +5.95%/0p
