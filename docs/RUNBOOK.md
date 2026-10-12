@@ -421,7 +421,7 @@ The settings (nothing changes while they are unset):
 - `BUY_ALT` (0): 1 sends the buy on both paths too (one try each): in if either says so, refused only if both refuse, otherwise "no reply"
   (the position kept, the sell on schedule; one refusal beside a lost reply has its own alarm). Leave it 0 until the sell's second path has
   run for a day.
-- `SEND_TIMEOUT_S` (4): the sequencer connections' socket timeout, as before.
+- `SEND_TIMEOUT_S` (4): the sequencer connections' socket timeout, as before; 0.5 to 30 s, anything else falls back to 4 with an alarm at start.
 
 To point it at the RPC endpoint already in the env file (its last `RPC_URL` line, the one the engine reads; the value is copied, never
 printed: the URL may hold the provider's key; the old line is deleted first so that `set_kv` appends, since its `sed` replacement would garble
