@@ -100,10 +100,12 @@ and 40k per sell (the record's three storage slots).
   `0x59a6ba5d`, `0xa72dfd49`, `0x4a3748aa`); on a 1% pool (spacing 200, `0xeafa6cdf`) 330,341 gas inside the harness. The review
   measured 3.4M on a 0.05% pool and found the 0.3% and 1% walks cheap, where a pulled pool's sell with minOut 0 goes through for about
   0 ETH.
-- **Gas limits.** 400,000 is fine for buys and sells up to about 0.05 ETH (measured with this build: at 0.05 ETH a buy is 230-286k and
-  a sell about 163-193k; the tick-crossing pool's 0.002 ETH buy 333k). Larger buys on the 0.01% pools need more: 0.2 ETH 348k, 1 ETH
-  658k (a buy) and about 591k (its sell) on the never-bought p356 pool; on the 1% pool 1 ETH is 293k. Set the limit from the size, never
-  from a fresh eth_estimateGas (a pulled 0.01% pool would make it 31M).
+- **Gas limits (this build, round 2's numbers).** Buys of 0.002-0.004 ETH are 235k-286k as transactions, plus about 48k for each
+  initialized tick the buy crosses (the tick-crossing pool's 0.002 ETH buy: 333k); a 0.05 ETH buy is up to 364k (230-286k on the pools
+  above); sells about 163-193k at those sizes. **The engine uses 500,000** for both, which covers these with room. Larger buys on the
+  0.01% pools need more: 0.2 ETH 348k, 1 ETH 658k (a buy) and about 591k (its sell) on the never-bought p356 pool; on the 1% pool 1 ETH
+  is 293k. Set the limit from the size, never from a fresh eth_estimateGas (a pulled 0.01% pool would make it 31M; with a 500k limit
+  such a buy runs out of gas and reverts for about 500k gas, 0.00001 ETH at 0.02 gwei).
 - **A sell-locked token**: the pool `0xa72dfd49bb136834d2f70881a477abb22dc28e47`, whose token is `0x7399605a3b127dc670ab5dba91946dd55bfa1185`
   (round 1, while it was live): the buy went through and equalled QuoterV2 (107,193,561,789,085,926,109,185 tokens at block 86,595,250);
   the sell reverted `TransferFailed(0x7399605a...1185)`: the token refuses any transfer into its pool from an outside address (`verkoop
@@ -148,14 +150,28 @@ address, is). If the file already has a `RELAY_V3` that still holds ETH or WETH 
 wallet's balance and the deployment's estimate (about 1.07M gas with the L1 component; at most about 0.00006 ETH at twice the current
 0.02 gwei), asks for a typed `yes`, deploys with the wallet as `owner_`, waits for the receipt, compares the code on the chain byte for
 byte with the artifact's runtime (the owner filled in), reads `owner()`, simulates a 0.0001 ETH buy through the new relay on the newest
-live, not sell-locked V3 pool against QuoterV2, and prints the line `RELAY_V3=0x...`. With `--write-env` it writes that line into the env
-file through a temporary file created with mode 600 (`os.open(..., 0o600)`), then renamed over it.
+live, not sell-locked V3 pool against QuoterV2, and prints two lines: `RELAY_V3=0x...` and `RELAY_V3_CODEHASH=0x...` (the keccak of
+the deployed runtime). With `--write-env` it writes both into the env file and keeps the previous `RELAY_V3` and `RELAY_V3_CODEHASH`
+lines as comments (`# previous RELAY_V3=0x...`); the write unlinks a stale `engine.env.tmp`, creates a fresh one with
+`O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW` and mode 600, flushes and fsyncs it, renames it over the env file and fsyncs the directory. Without
+`--write-env`, add the two lines by hand.
 
 `relay_ops.py`: `status` adds a line for the V3 relay when `RELAY_V3` is set (its ETH, any WETH, its owner against the wallet).
 `deposit_v3 <eth>`, `withdraw_v3 [eth]` (no amount = all) and `sweep_v3 <token> [raw amount]` (none = all; the amount in the token's
-smallest units, for a token whose transfers are capped) first check that the code at `RELAY_V3` is the artifact's runtime for this
-wallet byte for byte and that its `owner()` is the wallet. `payout` refuses `RELAY_V3` as a destination as it refuses `RELAY`. The other
-commands are unchanged. Profit leaves as for the v4 relay: `withdraw_v3`, then `payout`.
+smallest units, for a token whose transfers are capped) first check the code at `RELAY_V3`: its keccak against `RELAY_V3_CODEHASH` when
+the env file has that line (so a later recompile of the artifact never locks them out of the deployed relay), otherwise byte for byte
+against the artifact's runtime for this wallet; then that its `owner()` is the wallet. `sweep_v3` refuses a token that is not a
+0x-prefixed address (a mixed-case one must pass its checksum) or has no code on the chain, and an amount that is not a whole number of
+raw units below 2**256. `payout` refuses `RELAY_V3` as a destination as it refuses `RELAY`. The other commands are unchanged. Profit
+leaves as for the v4 relay: `withdraw_v3`, then `payout`.
+
+**Round 3 (scripts only; the contract and its artifact are as the final review passed them, 8801311):** `sweep_v3`'s argument checks;
+`--write-env` keeps the previous `RELAY_V3` (and `RELAY_V3_CODEHASH`) as comments; `RELAY_V3_CODEHASH` written at the deployment and
+checked by the `_v3` commands, with the byte-for-byte comparison as the fallback; the env file written through an exclusive, no-follow,
+fsynced temporary file. Tested with a throwaway key and an RPC stub that intercepts every send: two deployments in a row over a stale
+`.tmp` that was a symlink to another file (the symlink removed, its target untouched, mode 600, both previous lines commented), the
+`_v3` commands with a matching, a wrong and a missing codehash (and with the artifact changed under them), and 14 `sweep_v3` argument
+cases.
 
 ## 5. For the engine (not built here)
 
@@ -163,7 +179,7 @@ commands are unchanged. Profit leaves as for the v4 relay: `withdraw_v3`, then `
   `RELAY_V3`, value 0 (the stake is the relay's ETH). The sell can be presigned at the buy's nonce + 1: it sells whatever the buy got.
 - minOut: the buy's from the one-range math on the price copy less a relative slip (section 2: the math can overshoot by up to ~1e-16
   relative once the buy crosses a tick-bitmap word); the sell's from the expected ETH less the slip.
-- Gas limits by size (400k up to about 0.05 ETH; section 2 for more), never a live estimate.
+- Gas limit 500k for the buy and the sell at the stakes in use (section 2 for larger sizes), never a live estimate.
 - A sell that reverts (`TooLittleOut`, a pull, a sell-locked token) leaves the tokens in the relay; the next `sell` of the same token sells
   them all, or the owner sweeps them (`relay_ops.py sweep_v3 0xTOKEN [raw amount]`).
 

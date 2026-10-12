@@ -9,9 +9,13 @@ address, is). Refuses while the env file's RELAY_V3 (an earlier deployment) stil
 relay_ops.py withdraw_v3, sweep_v3 WETH). Checks that the artifact was compiled from the source beside it, estimates the deployment's gas and cost, asks for a typed yes, deploys with the wallet as the owner
 (the constructor's argument), waits for the receipt, checks the code on the chain byte for byte with the owner filled in, reads owner()
 back, simulates one buy through the new relay on a live V3 pool (eth_call, the relay's ETH given by state override) against QuoterV2,
-and prints (or writes, with --write-env) the RELAY_V3= line. One transaction, the deployment; nothing else is sent."""
+and prints (or writes, with --write-env) the RELAY_V3= line and the RELAY_V3_CODEHASH= line (the keccak of the deployed runtime, which
+relay_ops.py's _v3 commands check the relay's code against). --write-env keeps the previous RELAY_V3 and RELAY_V3_CODEHASH lines as
+comments ("# previous ..."), and writes the file through a fresh temporary file (O_EXCL, O_NOFOLLOW, mode 600, fsynced) renamed over it.
+One transaction, the deployment; nothing else is sent."""
 import argparse, hashlib, json, os, subprocess, sys, time
 from eth_account import Account
+from eth_utils import keccak
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import relay_sim, relay_v3_sim as v3
 ENV = "/etc/flip/engine.env"; ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); word = relay_sim.word
@@ -96,15 +100,34 @@ def main():
         print(simulated_buy(relay, wallet))
     except Exception as ex:
         print(f"the simulated buy did not run ({str(ex)[:160]}); try deploy/relay_v3_sim.py later")
+    new = [f"RELAY_V3={relay}", "RELAY_V3_CODEHASH=0x" + keccak(bytes.fromhex(code[2:])).hex()]
     if a.write_env:
-        lines = [l for l in open(ENV).read().splitlines() if not l.startswith("RELAY_V3=")] + [f"RELAY_V3={relay}"]
-        tmp = ENV + ".tmp"; fd = os.open(tmp, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600); os.fchmod(fd, 0o600)
-        with os.fdopen(fd, "w") as f:
-            f.write("\n".join(lines) + "\n")
-        os.replace(tmp, ENV)
-        print(f"\nRELAY_V3={relay} written to {ENV}. Next: relay_ops.py deposit_v3 <eth>, then relay_ops.py status")
+        write_env(new)
+        print("\n" + "\n".join(new) + f"\nwritten to {ENV}. Next: relay_ops.py deposit_v3 <eth>, then relay_ops.py status")
     else:
-        print(f"\nadd to {ENV} (sudo nano, mode 600 kept), then relay_ops.py deposit_v3 <eth>:\nRELAY_V3={relay}")
+        print(f"\nadd to {ENV} (sudo nano, mode 600 kept), then relay_ops.py deposit_v3 <eth>:\n" + "\n".join(new))
+
+
+def write_env(new):
+    """the env file with the previous RELAY_V3 and RELAY_V3_CODEHASH lines kept as comments and the new ones appended, through a fresh
+    temporary file (a stale one unlinked; O_EXCL and O_NOFOLLOW, mode 600), flushed and fsynced, renamed over the file, then the
+    directory fsynced"""
+    keys = ("RELAY_V3=", "RELAY_V3_CODEHASH=")
+    lines = ["# previous " + l if l.startswith(keys) else l for l in open(ENV).read().splitlines()] + new
+    tmp = ENV + ".tmp"
+    try:
+        os.unlink(tmp)
+    except FileNotFoundError:
+        pass
+    fd = os.open(tmp, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600); os.fchmod(fd, 0o600)
+    with os.fdopen(fd, "w") as f:
+        f.write("\n".join(lines) + "\n"); f.flush(); os.fsync(f.fileno())
+    os.replace(tmp, ENV)
+    dfd = os.open(os.path.dirname(ENV) or ".", os.O_RDONLY)
+    try:
+        os.fsync(dfd)
+    finally:
+        os.close(dfd)
 
 
 if __name__ == "__main__":
