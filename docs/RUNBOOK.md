@@ -289,10 +289,10 @@ decoys leave: at every bot buy the engine computes how much ETH could have sat a
 stake is their 25th percentile less `FRONT_AUTO_STAKE_MARGIN_ETH` (0.0004), never under `FRONT_AUTO_STAKE_MIN_ETH` (0.002) nor over
 `FRONT_STAKE_ETH` (the ceiling), and the minimum until `FRONT_AUTO_STAKE_OBS` (5) observations exist. With the decoys of Oct 11 16:28
 (0.0099 ahead) that is 0.0023; with none it climbs to the ceiling. A raised stake that pays under +2% drops the observations (the minimum
-again for five launches) only when no bot buy came behind ours (it reverted, or the deadline sold); a sell into the bot's buy, even a
-small one like the one at Oct 12 01:45, keeps them (`room_obs_kept` in its `trade_done`, HANDOFF 16.20). A restart reads back the
-`room` lines of the last `FRONT_AUTO_STAKE_RESTORE_MIN` (60; 0 = off) minutes from the log, so the stake goes on where it was
-(`room_obs_restored` in the start line) instead of starting at the minimum. The `flow` line carries `auto_stake_eth`, the
+again for five launches) unless it sold into a bot buy the feed itself priced under +2%, a small one like Oct 12 01:45's, which keeps
+them (`room_obs_kept` in its `trade_done`, HANDOFF 16.20). A restart reads the last run's observations back from the log and its `.1`
+(`room_obs_restored` in the start line), so the stake goes on where it was instead of starting at the minimum, unless the launch line's last
+`room` line is older than `FRONT_AUTO_STAKE_RESTORE_MIN` (60; 0 = off) minutes. The `flow` line carries `auto_stake_eth`, the
 `fire`/`trade_done` lines the stake used. Settings for the box: `FRONT_STAKE_ETH=0.0097 FRONT_AUTO_STAKE=1 FRONT_FEES_ALSO=2500
 FRONT_TICK_SPACINGS_ALSO=50`. These two rules need no setting: `git pull` on the box and a restart.
 

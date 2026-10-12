@@ -1747,19 +1747,28 @@ The facts (box log):
   ran at the $5 floor, and the floor holds for 5 launches (~30 min, about $6 of profit at today's rate).
 - Each restart (00:17 and 01:53 UTC) also started at the floor for 5 launches.
 
-The two rules (test 20h; 71 tests):
+The two rules (test 20h; 71 tests; revised after an adversarial review of the first version, c9b8807):
 
-- **The reset** (`settle`): a raised-stake trade under `FRONT_NONBOT_MIN_RET` drops the observations only when it did not sell into the
-  bot's buy. That means `bot_exit` is false: the bot's buy reverted, or the deadline came with no bot buy, which is the decoy signature.
-  A sell into the bot's buy keeps them and its `trade_done` says `room_obs_kept: true`. The `room` observation taken at that same buy still
-  lowers the stake through the minimum of the last 5 if the room shrank. The streak halt (`FRONT_NONBOT_HALT`) counts both as before.
-- **The restart** (`restore_room_obs`, `FRONT_AUTO_STAKE_RESTORE_MIN`: 60 minutes by default, 0 = off, 0..1440): at start, each bot line's
-  observations (every family that is not a wave or launch-rule family) are rebuilt from the log's `room` lines of the last N minutes.
-  - The lines come from `LOG_PATH`, and from `.1` when its last write is within the window. They are taken in order, at most
-    `FRONT_AUTO_STAKE_WINDOW`.
-  - Each line's `obs` (the run's count after it) drops what that run no longer held (a reset, or a restart under the old code), so the
-    restored list is the one the engine had, cut at the window. Families are matched by name only.
-  - The start line has `room_obs_restored: {fam: count}` and `front_auto_stake_restore_min`. The `room` line now also carries the exact
-    `room_wei`; older lines are read from `room_eth` (to 1e-6 ETH).
+- **The reset** (`settle`): a raised-stake trade under `FRONT_NONBOT_MIN_RET` keeps the observations only when it sold into a bot buy
+  that the feed itself priced under that threshold (`bot_exit`, and `tp_ret` under +2%): a small bot buy, like the 0.03 ETH one of the
+  test, which the feed prices at +1.9%. Its `trade_done` then says `room_obs_kept: true` (only when observations exist). The `room`
+  observation taken at that same buy still lowers the stake through the minimum of the last 5 if the room shrank.
+- Every other raised-stake trade under the threshold resets, as before:
+  - no bot buy behind ours: it reverted on the feed, or the deadline came first (the decoy signature);
+  - or a bot buy the feed priced above the threshold that still returned under it: it reverted on the chain, or landed after our sell.
+  - The streak halt (`FRONT_NONBOT_HALT`) counts all of them as before.
+- **The restart** (`restore_room_obs`): with `FRONT_AUTO_STAKE` on, the start rebuilds each bot line's observations (every family that
+  is not a wave or launch-rule family) from the log, as the last run held them.
+  - It reads `LOG_PATH.1` and then `LOG_PATH`, whole and in order, at most `FRONT_AUTO_STAKE_WINDOW` per family.
+  - It replays the cuts the run made. A `trade_done` with `room_obs_reset` empties its family's list, so a reset with no `room` line
+    after it is not undone. A `start` line cuts each list to its `room_obs_restored` count (0 for the old code's start lines). Each
+    `room` line's `obs` (that run's count after it) drops what the run no longer held.
+  - `FRONT_AUTO_STAKE_RESTORE_MIN` (60 by default, 0 = off, 0..1440) drops a family whose last `room` line is older than that many
+    minutes. There is no cut per line: the live list of 30 reaches back hours, and its last hour alone can give a higher stake than
+    the live one (decoys 1-3 hours old: 0.0022 live, 0.0097 from the last hour).
+  - A `room` line counts for a family only if its `value_wei` and `bot_minout` (now logged) match the configured family's; lines
+    written before they were logged match by name. Lines without `room_wei` (written before c9b8807) are read from `room_eth`,
+    rounded down (less 5e-7 ETH).
+  - The start line has `room_obs_restored: {fam: count}` and `front_auto_stake_restore_min`.
 
 Deploy: nothing to set; `git pull` on the box and a restart (`sudo systemctl restart flip-engine`) are all it needs.

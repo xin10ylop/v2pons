@@ -1307,90 +1307,132 @@ assert d.get("room_obs_reset") is True and "v2.433" not in E.state["room_obs"] a
 CLEAN = lambda L0, n0, k0: [(E.state["armed"].clear(), front_launch(L0 + 50 * i, n0 + i), E.ingest(frame(L0 + 50 * i + 9, [signed(CROWD, BOT, int(0.15e18), FBUY, k0 + i)]))) for i in range(8)]
 E.state["front_nonbot_streak"] = {}; E.state["position"] = {"pid": "0x" + "00" * 32, "dry": False, "buy_hash": None, "buy_seq": 1, "sell_sent": True, "plan_buy_seq": 0, "send_after": 0, "feed_tokens": None, "entry": "front"}
 CLEAN(15200, 150, 340); assert E.auto_stake(base) == int(0.0097e18)                                # eight clean pools again: the ceiling
-# (a) Oct 12 01:45:58: a raised stake sold INTO the bot's buy at -0.9% (its first buy a small one, 0.03 ETH, not a decoy taking the room): the observations stay
+HOLD = lambda: E.state.update(front_nonbot_streak={}, position={"pid": "0x" + "00" * 32, "dry": False, "buy_hash": None, "buy_seq": 1, "sell_sent": True, "plan_buy_seq": 0, "send_after": 0, "feed_tokens": None, "entry": "front"})
+def raised(L, nd, bot_wei, nb, ahead=None, before=None):
+    """a fire at L at the raised stake, our buy at L + 1, (`ahead`: a stranger's buy behind ours at L + 2), the bot's buy of bot_wei at L + 5, the
+    sell on it; (`before` runs), then the receipts, which return -0.9% whatever the feed priced: (the position, its trade_done)"""
+    E.state["position"] = None; E.state["armed"].clear(); front_launch(L, nd); pos = E.state["position"]; assert pos["stake"] == int(0.0097e18), pos["stake"]
+    E.ingest(frame(L + 1, [SENT[-1][1]])); assert pos["buy_seq"] == L + 1
+    if ahead:
+        E.ingest(frame(L + 2, [ahead])); assert not pos["sell_sent"], pos.get("sell_why")
+    E.ingest(frame(L + 5, [signed(CROWD, BOT, bot_wei, FBUY, nb)])); assert pos["sell_sent"], "no sell on the bot's buy"
+    if before:
+        before()
+    RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(L + 1, -int(0.0097e18), pos["feed_tokens"], pid=FPID); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(L + 6, int(0.0097e18 * 0.991), -pos["feed_tokens"], pid=FPID)
+    assert wait_for(lambda: done_at(pos["nonce"])); d = done_at(pos["nonce"])[-1]
+    assert abs(d["ret"] + 0.009) < 1e-6 and d["pnl_eth"] / 0.0097 < E.FRONT_NONBOT_MIN_RET, d                    # did not pay
+    return pos, d
 tp0 = base["take_profit"]; base["take_profit"] = 9                                                  # the sell on the bot's buy whatever its price (as at 01:45:58), not the take-profit
-E.state["position"] = None; E.state["armed"].clear(); front_launch(15600, 170); pos = E.state["position"]; assert pos["stake"] == int(0.0097e18), pos["stake"]
-E.ingest(frame(15601, [SENT[-1][1]])); assert pos["buy_seq"] == 15601
-E.ingest(frame(15603, [signed(CROWD, BOT, int(0.03e18), FBUY, 370)]))
-assert pos["sell_sent"] and pos.get("bot_exit") and pos["sell_why"].startswith("the bot's buy behind ours (0.03000 ETH)") and events("room")[-1]["bot_eth"] == 0.03, (pos.get("sell_why"), events("room")[-1])
-assert events("room")[-1]["room_wei"] == E.state["room_obs"]["v2.433"][-1] and len(E.state["room_obs"]["v2.433"]) == 8, events("room")[-1]    # that buy's own room observation, in the window
-RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(15601, -int(0.0097e18), pos["feed_tokens"], pid=FPID); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(15604, int(0.0097e18 * 0.991), -pos["feed_tokens"], pid=FPID)
-assert wait_for(lambda: done_at(pos["nonce"])); d = done_at(pos["nonce"])[-1]
-assert abs(d["ret"] + 0.009) < 1e-6 and d["pnl_eth"] / 0.0097 < E.FRONT_NONBOT_MIN_RET and d["nonbot_streak"] == 1 and d["bot_exit"] is True, d   # did not pay; the streak counts it as before
-assert d.get("room_obs_kept") is True and not d.get("room_obs_reset") and len(E.state["room_obs"]["v2.433"]) == 8 and E.auto_stake(base) == int(0.0097e18), (d, E.auto_stake(base))
-E.state["armed"].clear(); front_launch(15650, 171); pos = E.state["position"]; assert pos["stake"] == int(0.0097e18), pos["stake"]   # the next fire's stake: from the observations, not the floor
-# (b) the same return with the bot's buy reverting behind ours (a stranger's 0.004 ETH behind ours leaves it too little room): no bot exit, the observations reset
-E.ingest(frame(15651, [SENT[-1][1]])); E.ingest(frame(15652, [signed(OUTSIDER, UR, int(0.004e18), "0x12345678" + w(FTOKEN), 220)])); assert not pos["sell_sent"], pos.get("sell_why")
-E.ingest(frame(15655, [signed(CROWD, BOT, int(0.15e18), FBUY, 371)]))
-assert pos["sell_sent"] and pos["sell_why"].startswith("the bot's buy reverts") and not pos.get("bot_exit") and events("front_bot_reverts")[-1]["ours"], pos.get("sell_why")
-RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(15651, -int(0.0097e18), pos["feed_tokens"], pid=FPID); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(15656, int(0.0097e18 * 0.991), -pos["feed_tokens"], pid=FPID)
-assert wait_for(lambda: done_at(pos["nonce"])); d = done_at(pos["nonce"])[-1]
-assert d["bot_exit"] is False and d.get("room_obs_reset") is True and not d.get("room_obs_kept") and d["nonbot_streak"] == 2, d
+# (a) Oct 12 01:45:58: a raised stake sold INTO the bot's buy at -0.9% (its first buy a small one, 0.03 ETH, not a decoy taking the room), a buy the
+# feed itself priced under +2% (+1.9% here): the observations stay
+pos, d = raised(15600, 170, int(0.03e18), 370); r = events("room")[-1]
+assert pos.get("bot_exit") and pos["sell_why"].startswith("the bot's buy behind ours (0.03000 ETH)") and 0 < d["tp_ret"] < E.FRONT_NONBOT_MIN_RET, (pos["sell_why"], d["tp_ret"])
+assert r["seq"] == 15605 and r["bot_eth"] == 0.03 and r["value_wei"] == E.FRONT_VALUE_WEI and r["bot_minout"] == base["bot_minout"], r            # the room line names its line's launch value and minOut
+assert d["bot_exit"] is True and d["nonbot_streak"] == 1 and d.get("room_obs_kept") is True and not d.get("room_obs_reset"), d                   # the streak counts it as before
+assert list(E.state["room_obs"]["v2.433"])[-1] == r["room_wei"] and len(E.state["room_obs"]["v2.433"]) == 8 and E.auto_stake(base) == int(0.0097e18), E.auto_stake(base)   # that buy's own observation in it
+# the same with no observations left when it settles: nothing kept, nothing reset; then the next fire's stake comes from the observations, not the floor
+pos, d = raised(15650, 171, int(0.03e18), 371, before=lambda: E.state["room_obs"].pop("v2.433")); assert pos["stake"] == int(0.0097e18)        # (raised: the fire at the observations' stake)
+assert d["bot_exit"] is True and d["tp_ret"] < E.FRONT_NONBOT_MIN_RET and "room_obs_kept" not in d and "room_obs_reset" not in d, d
+HOLD(); CLEAN(15700, 180, 380); assert E.auto_stake(base) == int(0.0097e18)
+# (b) a bot buy the feed priced above +2% (0.15 ETH: about +12%) that still returned -0.9% (it reverted on the chain, or landed after our sell): reset
+pos, d = raised(16100, 172, int(0.15e18), 372)
+assert pos.get("bot_exit") and d["tp_ret"] > 0.1 and d["bot_exit"] is True and d.get("room_obs_reset") is True and not d.get("room_obs_kept"), d
+assert "v2.433" not in E.state["room_obs"] and E.auto_stake(base) == int(0.002e18), E.auto_stake(base)
+HOLD(); CLEAN(16200, 190, 390); assert E.auto_stake(base) == int(0.0097e18)
+# (b) the same return with the bot's buy reverting behind ours (a stranger's 0.004 ETH behind ours leaves it too little room): no bot exit, reset
+pos, d = raised(16600, 173, int(0.15e18), 373, ahead=signed(OUTSIDER, UR, int(0.004e18), "0x12345678" + w(FTOKEN), 220))
+assert pos["sell_why"].startswith("the bot's buy reverts") and not pos.get("bot_exit") and events("front_bot_reverts")[-1]["ours"], pos.get("sell_why")
+assert d["bot_exit"] is False and d.get("room_obs_reset") is True and not d.get("room_obs_kept"), d
 assert "v2.433" not in E.state["room_obs"] and E.auto_stake(base) == int(0.002e18), E.auto_stake(base)
 base["take_profit"] = tp0
-E.state["front_nonbot_streak"] = {}; E.state["position"] = {"pid": "0x" + "00" * 32, "dry": False, "buy_hash": None, "buy_seq": 1, "sell_sent": True, "plan_buy_seq": 0, "send_after": 0, "feed_tokens": None, "entry": "front"}
-CLEAN(15700, 180, 380); assert E.auto_stake(base) == int(0.0097e18)                                # eight clean pools again, then one decoyed one: the stake comes down at once
-E.state["armed"].clear(); front_launch(16100, 160); p = E.state["armed"][FPID]; E.ingest(frame(16101, [DUST(360), signed(CROWD, UR, int(0.00495e18), "0x12345678" + w(FTOKEN), 361)])); E.ingest(frame(16109, [signed(CROWD, BOT, int(0.15e18), FBUY, 362)]))
+HOLD(); CLEAN(16700, 200, 400); assert E.auto_stake(base) == int(0.0097e18)                        # eight clean pools again, then one decoyed one: the stake comes down at once
+E.state["armed"].clear(); front_launch(17100, 160); p = E.state["armed"][FPID]; E.ingest(frame(17101, [DUST(360), signed(CROWD, UR, int(0.00495e18), "0x12345678" + w(FTOKEN), 361)])); E.ingest(frame(17109, [signed(CROWD, BOT, int(0.15e18), FBUY, 362)]))
 assert int(0.0021e18) <= E.auto_stake(base) <= int(0.0026e18), E.auto_stake(base)                      # one decoyed pool among the last five caps the percentile
 E.FRONT_AUTO_STAKE = False; assert E.fam_stake(base) == int(0.0097e18), "auto stake off: the family's stake"
 print("ok known fingerprints (fees_also, tick_spacings_also) arm, an unseen fee is refused; the auto stake measures the room at each bot buy and sizes the stake from the minimum to the family's ceiling; "
-      "a raised stake under +2% sold into the bot's buy keeps the observations (room_obs_kept), one with no bot buy behind it (the deadline, a revert) resets them")
-# (c) a restart keeps the observations (FRONT_AUTO_STAKE_RESTORE_MIN): the `room` lines of the last 60 minutes read back from the log, in order
+      "a raised stake under +2% sold into a bot buy the feed priced under +2% keeps the observations (room_obs_kept); one priced above it, a revert or the deadline resets them")
+# (c) a restart keeps the observations: the last run's list read back from the log (restore_room_obs)
+import collections
 E.FRONT_AUTO_STAKE = True; snap = list(E.state["room_obs"]["v2.433"]); want = E.auto_stake(base); assert len(snap) == 8 and int(0.002e18) < want < int(0.0097e18), want
-E.state["room_obs"] = {}; got = E.restore_room_obs()                                                 # this run's own log: every reset and the start of 20h above are in it
+E.state["room_obs"] = {}; got = E.restore_room_obs()                                                 # this run's own log, from its first line: every reset in it
 assert got["v2.433"] == 8 and list(E.state["room_obs"]["v2.433"]) == snap and E.state["room_obs"]["v2.433"].maxlen == 8 and E.auto_stake(base) == want, (got, E.auto_stake(base), want)
-log0 = E.LOG_PATH; E.LOG_PATH = LOG + ".room"; now_t = time.time()
-ROOM = lambda t_, wei, n, fam="v2.433", exact=True: json.dumps({"ev": "room", "pid": FPID, "fam": fam, "seq": 1, "offset": 9, "bot_eth": 0.15, "ahead_eth": 0.0, "room_eth": round(wei / 1e18, 6),
-                                                                 **({"room_wei": wei} if exact else {}), "obs": n, "auto_stake_eth": None, "t": t_}, separators=(",", ":")) + "\n"
-with open(E.LOG_PATH + ".1", "w") as f:                                                              # the morning, rotated into .1 within the window
-    f.write(ROOM(now_t - 3720, int(0.0005e18), 1))                                                   # 62 minutes old: outside the window
-    f.write(ROOM(now_t - 1800, int(0.0040e18), 2, exact=False))                                      # a line written before room_wei: room_eth
-with open(E.LOG_PATH, "w") as f:
-    f.write(ROOM(now_t - 1740, int(0.0041e18), 3)); f.write(ROOM(now_t - 1700, int(0.0001e18), 1, fam="v9.9"))   # a family not configured now: not restored
-    f.write('{"ev":"room","fam":"v2.433","t":"x"}\n{"ev":"room",bad\n' + json.dumps({"ev": "start", "t": now_t - 1690}) + "\n")
-    for k in range(3):
-        f.write(ROOM(now_t - 1680 + 60 * k, (42 + k) * 10 ** 14, 4 + k))
-E.state["room_obs"] = {}; got = E.restore_room_obs(); obs = list(E.state["room_obs"]["v2.433"])
-assert got == {"v2.433": 5} and obs == [int(0.0040e18), int(0.0041e18), int(0.0042e18), int(0.0043e18), int(0.0044e18)] and E.auto_stake(base) == int(0.0036e18), (got, obs, E.auto_stake(base))
-os.utime(E.LOG_PATH + ".1", (now_t - 3700, now_t - 3700))                                            # rotated before the window: .1 is not read
-E.state["room_obs"] = {}; got = E.restore_room_obs(); assert got == {"v2.433": 4} and E.auto_stake(base) == int(0.002e18), (got, E.auto_stake(base))   # 4 < FRONT_AUTO_STAKE_OBS: the floor
-with open(E.LOG_PATH, "w") as f:                                                                     # a reset (or a restart that kept none) in the window: its run's obs starts at 1 again
-    f.write(ROOM(now_t - 1800, int(0.0010e18), 4)); f.write(ROOM(now_t - 1790, int(0.0011e18), 5))
-    for k in range(6):
-        f.write(ROOM(now_t - 1200 + 60 * k, (50 + k) * 10 ** 14, 1 + k))
-E.state["room_obs"] = {}; got = E.restore_room_obs(); obs = list(E.state["room_obs"]["v2.433"])
-assert got == {"v2.433": 6} and obs == [(50 + k) * 10 ** 14 for k in range(6)] and E.auto_stake(base) == int(0.0047e18), (got, obs, E.auto_stake(base))   # not the 0.0010 and 0.0011 before it
-with open(E.LOG_PATH, "a") as f:
-    for k in range(6, 10):
-        f.write(ROOM(now_t - 1200 + 60 * k, (50 + k) * 10 ** 14, 1 + k))
-E.state["room_obs"] = {}; got = E.restore_room_obs(); obs = list(E.state["room_obs"]["v2.433"])
-assert got == {"v2.433": 8} and obs == [(52 + k) * 10 ** 14 for k in range(8)] and E.auto_stake(base) == int(0.0050e18), (got, obs, E.auto_stake(base))   # the last 8 (the window's maxlen)
-E.FRONT_AUTO_STAKE_RESTORE_MIN = 0; E.state["room_obs"] = {}; assert E.restore_room_obs() == {} and E.state["room_obs"] == {} and E.auto_stake(base) == int(0.002e18)   # 0: off, the floor
-E.FRONT_AUTO_STAKE_RESTORE_MIN = 60; os.remove(E.LOG_PATH); os.remove(E.LOG_PATH + ".1"); E.LOG_PATH = log0
+log0 = E.LOG_PATH; E.LOG_PATH = LOG + ".room"; now_t = time.time(); BM = base["bot_minout"]; V0 = E.FRONT_VALUE_WEI; FLOOR = int(0.002e18)
+ROOM = lambda t_, wei, n, fam="v2.433", exact=True, cfg=(V0, BM): json.dumps({"ev": "room", "pid": FPID, "fam": fam, "seq": 1, "offset": 9, "bot_eth": 0.15, "ahead_eth": 0.0,
+    "room_eth": round(wei / 1e18, 6), **({"room_wei": wei} if exact else {}), **({"value_wei": cfg[0], "bot_minout": cfg[1]} if cfg else {}), "obs": n, "auto_stake_eth": None, "t": t_}, separators=(",", ":")) + "\n"
+START = lambda t_, kept=None: json.dumps({"ev": "start", "release": "0.9", **({"room_obs_restored": kept} if kept is not None else {}), "t": t_}, separators=(",", ":")) + "\n"
+RESET = lambda t_, fam="v2.433": json.dumps({"ev": "trade_done", "dry": False, "entry": "front", **({"fam": fam} if fam else {}), "room_obs_reset": True, "nonbot_streak": 1, "t": t_}, separators=(",", ":")) + "\n"
+def restore(main, rotated=None, rot_age=None):
+    """the restore over a log holding `main` and a LOG_PATH.1 holding `rotated` (last written rot_age s ago): (its counts, the base line's list)"""
+    for path_, lines in ((E.LOG_PATH, main), (E.LOG_PATH + ".1", rotated)):
+        if lines is None:
+            if os.path.exists(path_): os.remove(path_)
+        else:
+            open(path_, "wb").write(b"".join(x if isinstance(x, bytes) else x.encode() for x in lines))
+    if rot_age is not None:
+        os.utime(E.LOG_PATH + ".1", (now_t - rot_age, now_t - rot_age))
+    E.state["room_obs"] = {}; got = E.restore_room_obs()
+    return got, list(E.state["room_obs"].get("v2.433", []))
+# a live list of 30 whose decoyed pools came 1-3 h ago, in .1 (written 2 h ago) and the log: restored as it was, not just its last hour
+E.FRONT_AUTO_STAKE_WINDOW = 30
+LIVE = [(25 + k % 3) * 10 ** 14 if k < 20 else 124 * 10 ** 14 for k in range(30)]; TS = [now_t - 3 * 3600 + 360 * k for k in range(20)] + [now_t - 3300 + 300 * k for k in range(10)]
+L30 = [ROOM(TS[k], LIVE[k], k + 1) for k in range(30)]
+got, obs = restore(L30[12:], L30[:12], rot_age=7200); st = E.auto_stake(base)
+E.state["room_obs"] = {"v2.433": collections.deque(LIVE, maxlen=30)}; live = E.auto_stake(base)
+E.state["room_obs"] = {"v2.433": collections.deque(LIVE[20:], maxlen=30)}; last_hour = E.auto_stake(base)
+assert got == {"v2.433": 30} and obs == LIVE and st == live == int(0.0022e18) and last_hour == int(0.0097e18), (got, st, live, last_hour)
+E.FRONT_AUTO_STAKE_WINDOW = 8
+# a family whose last room line is older than FRONT_AUTO_STAKE_RESTORE_MIN: not restored; another whose last is recent is, its older lines too
+assert 3 * 10 ** 18 not in E.FRONT_FAMILIES; V3F = {**base, "name": "v3.0", "value_wei": 3 * 10 ** 18, "bot_minout": 0.95}; E.FRONT_FAMILIES[3 * 10 ** 18] = V3F
+V3L = lambda t_, wei, n: ROOM(t_, wei, n, fam="v3.0", cfg=(3 * 10 ** 18, 0.95))
+got, obs = restore([V3L(now_t - 3 * 3600 + 60 * k, (60 + k) * 10 ** 14, k + 1) for k in range(5)] + [ROOM(now_t - 3960 + 60 * k, (50 + k) * 10 ** 14, k + 1) for k in range(6)] + [V3L(now_t - 120, 70 * 10 ** 14, 6)])
+assert got == {"v3.0": 6} and obs == [] and E.auto_stake(base) == FLOOR and E.auto_stake(V3F) == int(0.0057e18), (got, obs, E.auto_stake(V3F))
+# resets and restarts the log shows: a reset with no room line after it (the deadline decoy logs none) is not undone; a start line keeps its count
+A6 = [ROOM(now_t - 1800 + 10 * k, (50 + k) * 10 ** 14, k + 1) for k in range(6)]
+assert restore(A6) == ({"v2.433": 6}, [(50 + k) * 10 ** 14 for k in range(6)]) and E.auto_stake(base) == int(0.0047e18)
+got, obs = restore(A6 + [RESET(now_t - 1700)]); assert got == {} and E.auto_stake(base) == FLOOR, (got, E.auto_stake(base))
+got, obs = restore(A6 + [RESET(now_t - 1700, "v3.0"), RESET(now_t - 1690, None)]); assert got == {"v2.433": 6}, got                  # another family's reset; one without fam is "front"'s
+got, obs = restore(A6 + [START(now_t - 1700)]); assert got == {} and E.auto_stake(base) == FLOOR, got                                   # the old code's start (no room_obs_restored): it kept none
+got, obs = restore(A6 + [START(now_t - 1700, {"v2.433": 3, "v3.0": 9})] + [ROOM(now_t - 1600 + 10 * k, (60 + k) * 10 ** 14, 4 + k) for k in range(2)])
+assert got == {"v2.433": 5} and obs == [53 * 10 ** 14, 54 * 10 ** 14, 55 * 10 ** 14, 60 * 10 ** 14, 61 * 10 ** 14], (got, obs)        # this code's start kept 3: those, then the run's own
+got, obs = restore([ROOM(now_t - 1800, int(0.0010e18), 4), ROOM(now_t - 1790, int(0.0011e18), 5)] + [ROOM(now_t - 1200 + 60 * k, (50 + k) * 10 ** 14, 1 + k) for k in range(6)])
+assert got == {"v2.433": 6} and obs == [(50 + k) * 10 ** 14 for k in range(6)], (got, obs)                                              # a run's obs back at 1: a reset (or a restart) before it
+got, obs = restore([ROOM(now_t - 1200 + 60 * k, (50 + k) * 10 ** 14, 1 + k) for k in range(10)])
+assert got == {"v2.433": 8} and obs == [(52 + k) * 10 ** 14 for k in range(8)] and E.auto_stake(base) == int(0.0050e18), (got, obs)  # at most FRONT_AUTO_STAKE_WINDOW
+# a reused name: lines of another launch value or bot minOut under it are not this line's; lines without them (before they were logged) count by name
+got, obs = restore([ROOM(now_t - 1800 + 10 * k, 10 ** 14, k + 1, cfg=(3 * 10 ** 18, BM)) for k in range(3)] + [ROOM(now_t - 1760, 10 ** 14, 4, cfg=(V0, 0.95))]
+                   + [ROOM(now_t - 1600 + 10 * k, (50 + k) * 10 ** 14, 5 + k, cfg=None) for k in range(5)])
+assert got == {"v2.433": 5} and obs == [(50 + k) * 10 ** 14 for k in range(5)], (got, obs)
+# a line before room_wei (room_eth, to 1e-6 ETH) rounded down; a line that is not UTF-8, unknown families and broken lines skipped, the rest read
+got, obs = restore([ROOM(now_t - 1800, int(0.0040e18), 1, exact=False, cfg=None), b'{"ev":"room","fam":"v2.433",\xff\xfe\n', ROOM(now_t - 1790, 41 * 10 ** 14, 2),
+                    ROOM(now_t - 1780, 10 ** 14, 1, fam="v9.9"), '{"ev":"room","fam":"v2.433","t":"x"}\n{"ev":"room",bad\n'] + [ROOM(now_t - 1700 + 60 * k, (42 + k) * 10 ** 14, 3 + k) for k in range(3)])
+assert got == {"v2.433": 5} and obs == [3_999_500_000_000_000] + [(41 + k) * 10 ** 14 for k in range(4)] and E.auto_stake(base) == int(0.0035e18), (got, obs, E.auto_stake(base))
+E.FRONT_AUTO_STAKE = False; assert restore(A6) == ({}, []); E.FRONT_AUTO_STAKE = True                                                  # the auto stake off: nothing read
+E.FRONT_AUTO_STAKE_RESTORE_MIN = 0; assert restore(A6) == ({}, []) and E.auto_stake(base) == FLOOR; E.FRONT_AUTO_STAKE_RESTORE_MIN = 60      # 0: off, the floor
+del E.FRONT_FAMILIES[3 * 10 ** 18]; os.remove(E.LOG_PATH); E.LOG_PATH = log0
 import subprocess
 def start_line(extra, lines):
-    """the engine's real start (main() with the RPC stubbed, the feed, watchdog and fee loop stubbed, dry) over a log holding `lines`:
-    (its start line's room_obs_restored, front_auto_stake_restore_min, the base family's stake after it)"""
+    """the engine's real start, twice (main() with the RPC stubbed, the feed, watchdog and fee loop stubbed, dry), over a log holding `lines`:
+    (each start line's room_obs_restored, the last one's front_auto_stake_restore_min, the base family's stake after it)"""
     lp = LOG + ".main"; open(lp, "w").write("".join(lines))
     code = ("import os, json, flip_engine as E\n"
             "E.rpc = lambda m, p, tries=4, timeout=10: {'eth_chainId': hex(4663), 'eth_getBlockByNumber': {'baseFeePerGas': hex(20000000), 'number': '0x1'}}[m]\n"
             "async def no_feed(): return None\n"
-            "E.feed_loop = no_feed; E.watchdog = E.fee_loop = lambda: None; E.main()\n"
-            "st = [json.loads(l) for l in open(E.LOG_PATH) if json.loads(l)['ev'] == 'start'][-1]\n"
-            "print(json.dumps([st['room_obs_restored'], st['front_auto_stake_restore_min'], E.fam_stake(E.FRONT_FAMILIES[E.FRONT_VALUE_WEI])]))")
+            "E.feed_loop = no_feed; E.watchdog = E.fee_loop = lambda: None; E.main(); E.state['room_obs'] = {}; E.main()\n"
+            "st = [json.loads(l) for l in open(E.LOG_PATH) if json.loads(l)['ev'] == 'start']\n"
+            "print(json.dumps([[s['room_obs_restored'] for s in st], st[-1]['front_auto_stake_restore_min'], E.fam_stake(E.FRONT_FAMILIES[E.FRONT_VALUE_WEI])]))")
     r = subprocess.run([sys.executable, "-c", code], cwd=os.path.join(ROOT, "src"), env={**os.environ, "FRONT": "1", "FRONT_AUTO_STAKE": "1", "FRONT_STAKE_ETH": "0.0097", "FRONT_AHEAD_MAX_ETH": "0.0115", "LOG_PATH": lp,
                        "RELAY": "", "WALLET": "", "DRY_RUN": "1", "HALT_FILE": lp + ".halt", **extra}, capture_output=True, text=True, timeout=60)
     os.remove(lp); assert r.returncode == 0, r.stderr[-600:]
     return json.loads(r.stdout.strip().splitlines()[-1])
 LINES = [ROOM(time.time() - 600 + 60 * k, (50 + k) * 10 ** 14, 1 + k) for k in range(6)]
-assert start_line({}, LINES) == [{"v2.433": 6}, 60, int(0.0047e18)], start_line({}, LINES)          # the start line says what it restored; the stake is the observations'
-assert start_line({"FRONT_AUTO_STAKE_RESTORE_MIN": "0"}, LINES) == [{}, 0, int(0.002e18)]              # off: the floor, as before
+s_ = start_line({}, LINES); assert s_ == [[{"v2.433": 6}, {"v2.433": 6}], 60, int(0.0047e18)], s_           # the start line says what it restored; the next start reads it back
+s_ = start_line({"FRONT_AUTO_STAKE_RESTORE_MIN": "0"}, LINES); assert s_ == [[{}, {}], 0, FLOOR], s_       # off: the floor, as before
 r = subprocess.run([sys.executable, "-c", "import flip_engine"], cwd=os.path.join(ROOT, "src"), env={**os.environ, "FRONT_AUTO_STAKE_RESTORE_MIN": "1441", "LOG_PATH": LOG + ".imp"}, capture_output=True, text=True, timeout=60)
 assert r.returncode != 0 and "FRONT_AUTO_STAKE_RESTORE_MIN 1441 is not in 0..1440" in r.stderr, r.stderr[-300:]
 if os.path.exists(LOG + ".imp"): os.remove(LOG + ".imp")
 E.FRONT_AUTO_STAKE = False; base.update(saved); E.state["room_obs"] = {}; E.state["position"] = None; reset(); E.FRONT = False; E.ENTRY = "follow"
-print("ok a restart keeps the auto stake: the room lines of the last FRONT_AUTO_STAKE_RESTORE_MIN minutes (the log, and .1 if rotated within them) read back in order, "
-      "each run's obs count dropping what a reset left behind; older lines, unknown families and 0 restore nothing; the start line's room_obs_restored")
+print("ok a restart keeps the auto stake: the last run's room observations read back from the log and its .1 in order (a reset, a start line's count and each run's obs "
+      "cut them as the run did), a family whose last room line is older than FRONT_AUTO_STAKE_RESTORE_MIN dropped, a reused name's other lines skipped; off and 0 restore nothing")
 # --- 20g. a V3 family (the V3 crowd line, HANDOFF 16.16): its launch (a V3 PositionManager multicall of 836 bytes, value 0) decoded from the
 # calldata (the pool's address by CREATE2, the price on the top tick of a token-only range) and armed; a dry fire in the launch block (landing
 # + 2); the crowd's buys (value-0 calls of its shapes through any contract, the token at the end of a V3 path) move the price copy, and its
