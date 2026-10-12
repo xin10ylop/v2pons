@@ -1,0 +1,19 @@
+exit           | REGIME T-aligned (n, mean, median, up, pulled) |  0.0058 | STRICT held from T+2           | holder-aligned   | NO HOLDER                           
+hold 5         | n 31 +0.47% med -0.02% up  4 pulled 0       | +0.47% | n 10  +0.02% up 2 pulled 0  | +1.59% pulled 0 | n 154 +0.48% med -0.02% up  13 pulled 0
+hold 10        | n 31 +0.65% med -0.02% up  6 pulled 0       | +0.65% | n 10  +0.34% up 3 pulled 0  | +2.51% pulled 0 | n 154 +1.09% med -0.02% up  28 pulled 0
+hold 15        | n 31 -2.39% med -0.02% up 10 pulled 1       | -2.39% | n 10  -9.66% up 3 pulled 1  | -0.45% pulled 1 | n 154 +1.18% med -0.02% up  33 pulled 0
+hold 20        | n 31 -2.04% med -0.01% up 12 pulled 1       | -2.04% | n 10  -8.97% up 3 pulled 1  | +0.08% pulled 1 | n 154 +1.58% med -0.02% up  41 pulled 0
+hold 25        | n 31 -0.98% med +0.01% up 16 pulled 1       | -0.99% | n 10  -8.96% up 3 pulled 1  | +0.70% pulled 1 | n 154 +1.83% med -0.02% up  45 pulled 0
+hold 30        | n 31 +0.09% med +0.04% up 18 pulled 1       | +0.09% | n 10  -7.53% up 4 pulled 1  | +1.76% pulled 1 | n 154 +2.99% med -0.01% up  57 pulled 0
+hold 40        | n 31 -2.47% med +0.17% up 22 pulled 2       | -2.47% | n 10 -19.23% up 4 pulled 2  | -1.24% pulled 2 | n 154 +5.24% med +1.43% up  89 pulled 0
+hold 60        | n 31 -3.08% med +4.02% up 26 pulled 3       | -3.08% | n 10 -27.70% up 6 pulled 3  | -9.26% pulled 5 | n 154 +9.23% med +5.53% up 118 pulled 0
+tp 2% cap 30   | n 31 -1.34% med +0.04% up 18 pulled 1       | -1.34% | n 10  -9.26% up 4 pulled 1  | +0.02% pulled 1 | n 154 +2.39% med -0.01% up  57 pulled 0
+tp 3% cap 30   | n 31 -1.02% med +0.04% up 18 pulled 1       | -1.24% | n 10  -8.56% up 4 pulled 1  | +0.25% pulled 1 | n 154 +2.47% med -0.01% up  57 pulled 0
+tp 4% cap 30   | n 31 -1.02% med +0.04% up 18 pulled 1       | -1.02% | n 10  -8.56% up 4 pulled 1  | +0.28% pulled 1 | n 154 +2.51% med -0.01% up  57 pulled 0
+tp 6% cap 30   | n 31 -0.53% med +0.04% up 18 pulled 1       | -0.53% | n 10  -8.56% up 4 pulled 1  | +0.41% pulled 1 | n 154 +2.79% med -0.01% up  57 pulled 0
+tp 8% cap 30   | n 31 -0.53% med +0.04% up 18 pulled 1       | -0.53% | n 10  -8.56% up 4 pulled 1  | +0.41% pulled 1 | n 154 +2.91% med -0.01% up  57 pulled 0
+tp 2% cap 60   | n 31 -1.63% med +3.45% up 27 pulled 2       | -1.64% | n 10 -17.39% up 7 pulled 2  | -5.72% pulled 3 | n 154 +5.19% med +3.84% up 118 pulled 0
+tp 3% cap 60   | n 31 -1.17% med +4.00% up 27 pulled 2       | -1.40% | n 10 -16.69% up 7 pulled 2  | -8.82% pulled 4 | n 154 +5.35% med +4.12% up 118 pulled 0
+tp 4% cap 60   | n 31 -1.14% med +4.66% up 27 pulled 2       | -1.14% | n 10 -16.69% up 7 pulled 2  | -8.40% pulled 4 | n 154 +5.53% med +4.77% up 118 pulled 0
+tp 6% cap 60   | n 31 -0.65% med +4.66% up 27 pulled 2       | -0.66% | n 10 -16.69% up 7 pulled 2  | -8.20% pulled 4 | n 154 +6.16% med +5.53% up 118 pulled 0
+tp 8% cap 60   | n 31 -0.32% med +4.66% up 27 pulled 2       | -0.32% | n 10 -16.69% up 7 pulled 2  | -7.63% pulled 4 | n 154 +6.74% med +5.53% up 118 pulled 0
