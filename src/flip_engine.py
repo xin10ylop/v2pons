@@ -94,6 +94,26 @@ def parse_headers(text):
 
 FEED_HEADERS = parse_headers(env("FEED_HEADERS", ""))
 SEQ_URL = env("SEQ_URL", "https://sequencer.mainnet.chain.robinhood.com"); RPC_URL = env("RPC_URL", "https://rpc.mainnet.chain.robinhood.com")
+
+
+def _send_timeout(v):
+    """SEND_TIMEOUT_S: the sequencer connections' socket timeout (each connect, each read), 0.5..30 s; anything else (not a number, nan, inf,
+    out of range) is 4 s with a start alarm (the error), never a stop"""
+    try:
+        x = float(v)
+    except ValueError:
+        x = None
+    if x is None or not 0.5 <= x <= 30:                                                    # (nan fails both comparisons)
+        return 4.0, f"SEND_TIMEOUT_S is {str(v)[:40]!r}, not a number of seconds in 0.5..30: 4 s"
+    return x, None
+
+
+SEND_TIMEOUT_S, SEND_TIMEOUT_ERROR = _send_timeout(env("SEND_TIMEOUT_S", "4"))
+SELL_ALT_URL = env("SELL_ALT_URL", ""); SELL_ALT_TIMEOUT_S = 2.0; BUY_ALT = env("BUY_ALT", "0") != "0"                # the alternate's socket timeout: fixed
+# SELL_ALT_URL (empty = off; HANDOFF 16.19): a second path for the sell. Oct 12 00:00 UTC the sequencer's endpoint took ~11.5 s to accept a sell
+# while the chain and the feed ran on (the sell landed 127 blocks after our buy). With it set, the same signed sell is posted at the same time to
+# this endpoint too (an RPC that forwards transactions to the sequencer), on its own warm connection with a 2 s socket timeout,
+# and the first acceptance from either path wins (Race). BUY_ALT=1 sends the buy the same way (off by default). Only the host is ever logged.
 LOG_PATH = env("LOG_PATH", "flip_engine.jsonl"); DRY_RUN = env("DRY_RUN", "1") != "0"; CHAIN_ID = 4663
 FOLLOW = env("FOLLOW", "1") != "0"                                                          # 0: the follow strategy (and the seat) is off: no follow launch is armed, front has the slot alone
 LAUNCHERS = {a.strip().lower().replace("0x", "") for a in env("LAUNCHERS", "0x3194e32622c5d860a0572c74edda99dcfd8fc827").split(",") if a.strip()} if FOLLOW else set()
@@ -595,14 +615,18 @@ def rpc(method, params, tries=4, timeout=10):
 
 
 class Sender:
-    """warm HTTPS connections to the sequencer (one per slot), TCP_NODELAY, a keepalive every 5 s; post() returns the parsed reply"""
-    def __init__(self, url, slots=2):
-        u = urllib.parse.urlparse(url); self.host = u.hostname; self.port = u.port or 443; self.path = u.path or "/"
+    """warm HTTPS connections to the sequencer (one per slot), TCP_NODELAY, a keepalive every 5 s; post() returns the parsed reply.
+    timeout: the socket timeout (SEND_TIMEOUT_S, 4 s, unless given: SELL_ALT_URL's is SELL_ALT_TIMEOUT_S); ua: a User-Agent header (the
+    alternate's, as the RPC calls send; none for the sequencer, as before). The URL's query, if any, is part of the path."""
+    def __init__(self, url, slots=2, timeout=None, ua=None):
+        u = urllib.parse.urlparse(url); self.host = u.hostname; self.port = u.port or 443; self.path = (u.path or "/") + ("?" + u.query if u.query else "")
+        self.timeout = SEND_TIMEOUT_S if timeout is None else timeout; extra = {"User-Agent": ua} if ua else {}
+        self.h1 = {"Content-Type": "application/json", **extra}; self.hk = {"Content-Type": "application/json", "Connection": "keep-alive", **extra}   # one-off, warm
         self.conns = [None] * slots; self.locks = [threading.Lock() for _ in range(slots)]; self.last = [0.0] * slots
         threading.Thread(target=self._keepalive, daemon=True).start()
 
     def _open(self, i):
-        c = http.client.HTTPSConnection(self.host, self.port, timeout=4, context=ssl.create_default_context()); c.connect()
+        c = http.client.HTTPSConnection(self.host, self.port, timeout=self.timeout, context=ssl.create_default_context()); c.connect()
         c.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1); self.conns[i] = c; return c
 
     def post(self, i, body, retry=True):
@@ -615,9 +639,9 @@ class Sender:
 
     def _oneoff(self, body):
         try:
-            c = http.client.HTTPSConnection(self.host, self.port, timeout=4, context=ssl.create_default_context()); c.connect()
+            c = http.client.HTTPSConnection(self.host, self.port, timeout=self.timeout, context=ssl.create_default_context()); c.connect()
             c.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-            c.request("POST", self.path, body, {"Content-Type": "application/json"}); r = c.getresponse(); data = r.read(); c.close()
+            c.request("POST", self.path, body, self.h1); r = c.getresponse(); data = r.read(); c.close()
             return json.loads(data)
         except Exception as e:
             return {"error": {"message": f"send failed (one-off connection): {e}"}}
@@ -625,7 +649,7 @@ class Sender:
     def _post_locked(self, i, body, retry):
         try:
             c = self.conns[i] or self._open(i)
-            c.request("POST", self.path, body, {"Content-Type": "application/json", "Connection": "keep-alive"})
+            c.request("POST", self.path, body, self.hk)
             r = c.getresponse(); data = r.read(); self.last[i] = mono()
             return json.loads(data)
         except Exception as e:
@@ -640,7 +664,7 @@ class Sender:
 
     def _retry(self, i, body):
         try:
-            c = self._open(i); c.request("POST", self.path, body, {"Content-Type": "application/json", "Connection": "keep-alive"})
+            c = self._open(i); c.request("POST", self.path, body, self.hk)
             r = c.getresponse(); data = r.read(); self.last[i] = mono(); return json.loads(data)
         except Exception as e:
             self.conns[i] = None; return {"error": {"message": f"send failed twice: {e}"}}
@@ -653,29 +677,104 @@ class Sender:
                 if mono() - self.last[i] > 5.0 and self.locks[i].acquire(blocking=False):
                     try:
                         c = self.conns[i] or self._open(i)
-                        c.request("POST", self.path, body, {"Content-Type": "application/json", "Connection": "keep-alive"}); c.getresponse().read(); self.last[i] = mono()
+                        c.request("POST", self.path, body, self.hk); c.getresponse().read(); self.last[i] = mono()
                     except Exception:
                         self.conns[i] = None
                     finally:
                         self.locks[i].release()
 
 
+IN_RE = re.compile(r"\b(already_exists|already exists|already imported|known transaction)\b")   # other nodes' ways of saying they have it: whole words only
+
+
 def reply_kind(reply):
     """what a reply to eth_sendRawTransaction says about the transaction: "ok" (accepted), "in" (the node already has it or its
     nonce: it went in), "rejected" (the node refused it: it did not go in), "unknown" (no reply from the node: a transport failure,
-    after which the transaction may or may not have been sequenced; Nitro answers only once it is in a block)"""
+    after which the transaction may or may not have been sequenced; Nitro answers only once it is in a block). "In": "already known" or
+    "nonce too low" anywhere in the message (as before), or IN_RE's whole words: a second copy of one signed transaction (the second path,
+    SELL_ALT_URL) is answered "already known" (geth's txpool; "ALREADY_EXISTS", "already imported", "known transaction" elsewhere) or, once
+    the first copy is in a block, "nonce too low". Whole words: "unknown transaction type" is a refusal."""
     if "result" in reply:
         return "ok"
     err = reply.get("error") or {}
     msg = str(err.get("message", "")).lower()
     if "code" not in err:
         return "unknown"
-    if "already known" in msg or "nonce too low" in msg:
+    if "already known" in msg or "nonce too low" in msg or IN_RE.search(msg):
         return "in"
     return "rejected"
 
 
+class Race:
+    """the same signed transaction on two paths at once: the sequencer (SENDER) and SELL_ALT_URL (SENDER_ALT), each on its own thread with
+    the same tries (the sequencer on seq_slot(k) of its two slots, the alternate on its one) and the same 0.05 s pause after a reply that is
+    not in. The first "ok" or "in" from either path wins and ends the wait; from then on the other path's replies are late_reply lines, never
+    acted on. The sequencer's path keeps deliver_sell's own loop whatever the race's state: it stops only at its own "ok"/"in" or after its
+    tries, since the alternate's acceptance may be hollow (a forwarder's own "already known" while the sequencer is stalled, or our buy still
+    being sequenced). The alternate's path, after the sequencer's win (or the close), stops at its first definite reply ("ok", "in",
+    "rejected") and goes on only while every reply of its own so far is a lost one ("unknown"). A second copy of one signed transaction is
+    harmless (one hash: "already known", or "nonce too low" once the first is in a block). A post that hangs holds only its own path's thread. wait() gives up after cap() s (a DNS lookup or a slow-drip server is outside
+    the socket timeout): closed, and the replies after that are late_reply lines too. posts: the posts made on each path, one still waiting
+    included."""
+    def __init__(self, what, pid, raw, tries, seq_slot):
+        self.what = what; self.pid = pid; self.body = body(raw); self.tries = tries; self.t0 = mono()
+        self.cv = threading.Condition(); self.replies = {"seq": [], "alt": []}; self.posts = {"seq": 0, "alt": 0}; self.posts_seen = None
+        self.via = None; self.accept_ms = None; self.accept_kind = None; self.closed = False; self.ended = 0
+        for via, sender, slot in (("seq", SENDER, seq_slot), ("alt", SENDER_ALT, lambda k: 0)):
+            try:
+                threading.Thread(target=self._path, args=(via, sender, slot), daemon=True).start()
+            except Exception as e:                                                 # no thread for this path: it counts as tried and ended, the other goes on
+                with self.cv:
+                    self.replies[via].append({"error": {"message": f"path not started: {e}"}}); self.ended += 1; self.cv.notify_all()
+
+    def cap(self):
+        """the longest wait() waits: about the sequencer path's old worst case (each try's connect, send and read, twice)"""
+        return self.tries * 4 * max(SEND_TIMEOUT_S, SELL_ALT_TIMEOUT_S) + 1
+
+    def _path(self, via, sender, slot):
+        definite = False                                                           # a reply of this path's own that was not "unknown"
+        try:
+            for k in range(self.tries):
+                with self.cv:
+                    if via == "alt" and (self.via is not None or self.closed) and definite:   # (the sequencer's path: its own loop to the end)
+                        break
+                    self.posts[via] += 1
+                try:
+                    reply = sender.post(slot(k), self.body)
+                except Exception as e:                                             # (the Sender catches its own failures: this is a last guard) no reply
+                    reply = {"error": {"message": f"send failed: {e}"}}
+                if not isinstance(reply, dict) or not isinstance(reply.get("error") or {}, dict):   # not a JSON-RPC reply (reply_kind would raise): no reply
+                    reply = {"error": {"message": f"not a JSON-RPC reply: {str(reply)[:100]}"}}
+                kind = reply_kind(reply)
+                with self.cv:
+                    late = self.via is not None or self.closed
+                    if not late:
+                        self.replies[via].append(reply)
+                        if kind in ("ok", "in"):
+                            self.via = via; self.accept_kind = kind; self.accept_ms = round(1000 * (mono() - self.t0), 1); self.cv.notify_all()
+                if late:
+                    log({"ev": "late_reply", "what": self.what, "pid": self.pid, "via": via, "kind": kind, "reply": reply, "ms": round(1000 * (mono() - self.t0), 1)})
+                if kind in ("ok", "in") or (via == "alt" and late and kind != "unknown"):
+                    break
+                definite = definite or kind != "unknown"
+                if k < self.tries - 1:
+                    time.sleep(0.05)
+        finally:
+            with self.cv:
+                self.ended += 1; self.cv.notify_all()
+
+    def wait(self):
+        """(the winning path: "seq", "alt", or None when neither got it in; each path's replies so far; ms from the start to the acceptance),
+        as soon as a path has it in, else once both paths have ended, else after cap() s (closed: a path still waiting). posts_seen: posts then"""
+        with self.cv:
+            if not self.cv.wait_for(lambda: self.via is not None or self.ended >= 2, timeout=self.cap()):
+                self.closed = True
+            self.posts_seen = dict(self.posts)
+            return self.via, {k: list(v) for k, v in self.replies.items()}, self.accept_ms
+
+
 SENDER = None; SIGNER = None
+SENDER_ALT = None                                                                  # SELL_ALT_URL's Sender (checks); None: the second path is off
 
 
 # ---------------------------------------------------------------- feed decoding
@@ -1414,12 +1513,18 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
 def deliver_buy(pos, raw_b, t1):
     """thread: the buy to the sequencer, off the feed thread and the lock. Nitro answers once the transaction is in a block, and a
     reply that never comes (4 s timeout, then a second try) must not hold up the feed: if the buy went in, the feed shows it and the
-    sell goes on schedule. A refusal closes the position; a lost reply leaves it open for the schedule and settle to finish."""
-    reply = SENDER.post(0, body(raw_b)); kind = reply_kind(reply)
-    log({"ev": "buy_reply", "pid": pos["pid"], "kind": kind, "reply": reply, "send_ms": round(1000 * (mono() - t1), 1)})
+    sell goes on schedule. A refusal closes the position; a lost reply leaves it open for the schedule and settle to finish.
+    BUY_ALT=1 (with SELL_ALT_URL): the buy on both paths at once (buy_race), its reply and kind from there; off: the sequencer alone, as before."""
+    two = buy_race(pos, raw_b) if BUY_ALT and SENDER_ALT is not None else None
+    if two is None:
+        reply = SENDER.post(0, body(raw_b)); kind = reply_kind(reply)
+    else:
+        reply = two.pop("reply"); kind = two.pop("kind")
+    log({"ev": "buy_reply", "pid": pos["pid"], "kind": kind, "reply": reply, "send_ms": round(1000 * (mono() - t1), 1), **(two or {})})
     if kind == "unknown":
         pos["buy_reply_lost"] = True
-        log({"ev": "alarm", "what": "no reply to our buy: it may have gone in; the position stays open, the sell goes on schedule, settle reads the receipts", "pid": pos["pid"], "reply": reply})
+        log({"ev": "alarm", "what": "one path refused the buy, the other gave no reply: the position stays open, settle reads the receipts" if two and two["split"]
+             else "no reply to our buy: it may have gone in; the position stays open, the sell goes on schedule, settle reads the receipts", "pid": pos["pid"], "reply": reply})
     elif kind == "rejected":                                                       # the node refused it: it is not in
         pos["buy_rejected"] = True; log({"ev": "buy_rejected", "pid": pos["pid"], "nonce": pos["nonce"], "reply": reply})
     pos["buy_reply"] = reply
@@ -1436,6 +1541,22 @@ def deliver_buy(pos, raw_b, t1):
             state["position"] = None; uncount(pos)
         log({"ev": "nonce", "chain": n, "engine": state["nonce"]})
     # refused after its sell went out (a slow refusal): the sell is refused too, and settle closes the trade
+
+
+def buy_race(pos, raw_b):
+    """BUY_ALT: the buy to the sequencer (slot 0) and to the alternate at once, one try each (Race). Its kind: "ok"/"in" from the first path
+    that has it in; "rejected" only when both refused it (one refusal beside a lost reply may be a node behind the chain: the buy may be in,
+    so that is "unknown", the position kept for the schedule and settle: split, its own alarm); else "unknown". The reply is the winner's,
+    else the sequencer's."""
+    via, rs, accept_ms = Race("buy", pos["pid"], raw_b, 1, lambda k: 0).wait()
+    s = rs["seq"][-1] if rs["seq"] else None; a = rs["alt"][-1] if rs["alt"] else None
+    if via is not None:
+        reply = s if via == "seq" else a; kind = reply_kind(reply)
+    else:
+        kind = "rejected" if s is not None and a is not None and reply_kind(s) == reply_kind(a) == "rejected" else "unknown"
+        reply = s if s is not None else a
+    split = kind == "unknown" and any(r is not None and reply_kind(r) == "rejected" for r in (s, a))   # one refusal, the other no reply
+    return {"reply": reply, "kind": kind, "via": via, "accept_ms": accept_ms, "seq_reply": s, "alt_reply": a, "split": split}
 
 
 def send_sell(why, pos=None):
@@ -1467,7 +1588,10 @@ SELL_TRIES = 4
 
 def deliver_sell(pos, why, seq):
     """thread: the presigned sell to the sequencer until it is in: alternating connections, a short pause between tries (a sell
-    refused for its nonce while our buy is still being sequenced goes in on the next try); then the settlement"""
+    refused for its nonce while our buy is still being sequenced goes in on the next try); then the settlement. With SELL_ALT_URL set
+    (SENDER_ALT): deliver_sell_alt"""
+    if SENDER_ALT is not None:
+        return deliver_sell_alt(pos, why, seq)
     replies = []
     for k in range(SELL_TRIES):
         reply = SENDER.post(1 if k % 2 == 0 else 0, body(pos["sell_raw"])); replies.append(reply)
@@ -1479,6 +1603,33 @@ def deliver_sell(pos, why, seq):
          "hash": pos["sell_hash"], "nonce": pos["nonce"] + 1, "tries": len(replies), "reply": replies[-1], "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
     if reply_kind(replies[-1]) not in ("ok", "in"):
         log({"ev": "alarm", "what": f"the sell was not accepted after {len(replies)} tries", "pid": pos["pid"], "replies": replies})
+    settle(pos)
+
+
+def deliver_sell_alt(pos, why, seq):
+    """deliver_sell with the second path (SELL_ALT_URL): the sequencer's SELL_TRIES (its two slots in turn) and as many on the alternate, at
+    once (Race); the first "ok"/"in" from either wins, and the settlement starts then, whatever the other path is waiting on (the sequencer's
+    path goes on to its own "ok"/"in" or its last try, the alternate's while its replies were all lost: Race). sell_sent: via (the path that
+    got it in: "seq" or "alt"; None: neither), accept_kind ("ok" or "in"), accept_ms (from the start to that acceptance), reply (the winner's;
+    neither: the sequencer's last), each path's replies so far (seq_tries, alt_tries; tries: both), posts made (seq_posts, alt_posts: a post
+    still waiting included) and last reply (seq_reply, alt_reply; None: still waiting on its first post). A reply after the win is a
+    late_reply line, never acted on. The alarm only when neither path got the sell in: after every try on both, or after Race.cap() s with a
+    path still waiting."""
+    race = Race("sell", pos["pid"], pos["sell_raw"], SELL_TRIES, lambda k: 1 if k % 2 == 0 else 0)
+    via, rs, accept_ms = race.wait()
+    sr, ar = rs["seq"], rs["alt"]
+    reply = (sr if via == "seq" else ar)[-1] if via is not None else (sr or ar or [None])[-1]
+    pos["sell_reply"] = reply
+    log({"ev": "sell_sent", "pid": pos["pid"], "seq": seq, "why": why, "buy_seq": pos["buy_seq"], "after_buy": seq - pos["buy_seq"] if pos["buy_seq"] else None, "tp_ret": pos["tp_ret"],
+         "hash": pos["sell_hash"], "nonce": pos["nonce"] + 1, "tries": len(sr) + len(ar), "reply": reply, "via": via, "accept_kind": race.accept_kind if via is not None else None,
+         "accept_ms": accept_ms, "seq_tries": len(sr), "seq_posts": race.posts_seen["seq"], "seq_reply": sr[-1] if sr else None,
+         "alt_tries": len(ar), "alt_posts": race.posts_seen["alt"], "alt_reply": ar[-1] if ar else None, "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
+    if via is None and race.closed:
+        log({"ev": "alarm", "what": f"the sell was not accepted (a path still waiting after {race.cap():g} s): {len(sr)} replies from the sequencer and {len(ar)} from the alternate (SELL_ALT_URL)",
+             "pid": pos["pid"], "replies": sr, "alt_replies": ar})
+    elif via is None:
+        log({"ev": "alarm", "what": f"the sell was not accepted after {len(sr)} tries on the sequencer and {len(ar)} on the alternate (SELL_ALT_URL)", "pid": pos["pid"],
+             "replies": sr, "alt_replies": ar})
     settle(pos)
 
 
@@ -2303,7 +2454,7 @@ def checks():
         state["nonce"] = int(rpc("eth_getTransactionCount", [h0x(WALLET), "pending"]), 16); info["wallet_nonce"] = state["nonce"]
         info["wallet_eth"] = int(rpc("eth_getBalance", [h0x(WALLET), "latest"]), 16) / 1e18
     if not DRY_RUN:
-        global SIGNER, SENDER
+        global SIGNER, SENDER, SENDER_ALT
         from eth_account import Account
         SIGNER = Account.from_key(os.environ["PRIVATE_KEY"])
         if SIGNER.address.lower() != h0x(WALLET):
@@ -2311,6 +2462,21 @@ def checks():
         if not RELAY:
             raise SystemExit("RELAY is required when DRY_RUN=0")
         SENDER = Sender(SEQ_URL)
+        SENDER_ALT = None
+        if SELL_ALT_URL:                                                           # the second path: a URL that cannot work is an alarm and no second path, never a stop
+            try:
+                u = urllib.parse.urlparse(SELL_ALT_URL)                                # no space or control character: http.client would raise with the path
+                usable = not re.search(r"[\x00-\x20\x7f]", SELL_ALT_URL) and u.scheme == "https" and bool(u.hostname) and not u.username and u.port != 0
+            except ValueError:                                                     # a port that is not a number
+                usable = False
+            if usable:
+                SENDER_ALT = Sender(SELL_ALT_URL, slots=1, timeout=SELL_ALT_TIMEOUT_S, ua="Mozilla/5.0 Chrome/128")
+            else:                                                                  # never the URL itself: its path may hold a key
+                log({"ev": "alarm", "what": "SELL_ALT_URL is not an https URL with a host, no user:password@ and no space or control character: the second path is off"})
+    if SEND_TIMEOUT_ERROR:
+        log({"ev": "alarm", "what": SEND_TIMEOUT_ERROR})
+    info.update({"send_timeout_s": SEND_TIMEOUT_S, "sell_alt": urllib.parse.urlparse(SELL_ALT_URL).hostname if SENDER_ALT is not None else None,   # the host only
+                 "sell_alt_timeout_s": SELL_ALT_TIMEOUT_S, "buy_alt": BUY_ALT and SENDER_ALT is not None})
     return info
 
 

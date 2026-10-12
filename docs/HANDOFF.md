@@ -1690,3 +1690,49 @@ Deploying it: `git pull`, then RUNBOOK 4g's snippet, which appends p356 to the b
 v3.0 and v3crowd dry, none of them changed; the old file kept as `engine.env.bak`), the restart and the start-line check (c1 `dry_run`
 False, p356 dry). A mistake in the p356 object other than `dry_run` drops the whole list at start, c1 with it. Nothing else on the box
 changes.
+
+### 16.19 Oct 12 00:00 UTC: a sell held ~11.5 s at the sequencer's endpoint; the sell's second path (`SELL_ALT_URL`)
+
+The trade (Oct 12 00:00:09-00:00:22 UTC, blocks 86236845-86236972):
+
+- Our buy landed at block 86236845. The time fallback called `send_sell` 1.7 s later.
+- The sequencer's public intake (`https://sequencer.mainnet.chain.robinhood.com`) accepted the sell only ~11.5 s after that: the
+  `sell_sent` line came 13.68 s after the fire.
+- The sell landed at block 86236972: 127 blocks after our buy, 1 block behind the bot's buy, 11 blocks before the operator's pull.
+- Blocks were produced normally throughout (9-10 a second) and the feed was live. The bot's own buy was delayed by the same stall.
+- Under the quick-pull regime of Oct 10-11 (the pull 3 blocks after the bot's buy) such a stall makes a -100% trade.
+
+Built (test 20o; 70 tests):
+
+- **`SELL_ALT_URL`** (empty = off, the default): `checks()` builds a second `Sender` for it beside the sequencer's (one warm slot, the same
+  keepalive, a fixed 2 s socket timeout, the User-Agent the RPC calls send; the URL's query kept in the path). A URL that is not https with a
+  host (or has user:password@, a bad port, a space or a control character) is an alarm and no second path, never a stop. The start line
+  shows `sell_alt` (the host only), `sell_alt_timeout_s`, `buy_alt`, `send_timeout_s`.
+- **The sell with it set** (`deliver_sell_alt`, `Race`): the sequencer's 4 tries (slots 1, 0, 1, 0) and 4 on the alternate run at once, each
+  path on its own thread with the same 0.05 s pause after a reply that is not in; the first `ok`/`in` wins and the settlement starts then.
+  From then on the sequencer's path keeps `deliver_sell`'s own loop whatever the race's state (to its own `ok`/`in` or its 4th try), while
+  the alternate's stops at its first definite reply (`ok`, `in`, `rejected`) unless all its own replies were lost (`unknown`): the
+  alternate's acceptance may be hollow (a forwarder's own `already known` while the sequencer is stalled, or our buy still being sequenced).
+  Its replies after the win are `late_reply` lines (`what`, `via`, `kind`, `reply`, `ms`), never acted on. `sell_sent` adds `via` (`seq`,
+  `alt`, or null), `accept_kind`, `accept_ms`, `seq_tries`, `seq_posts`, `seq_reply`, `alt_tries`, `alt_posts`, `alt_reply`: `*_tries`
+  count the replies in hand when the line is written (`tries` both paths'), `*_posts` the posts made (one still waiting included); its
+  `reply` is the winner's (neither: the sequencer's last). The "not accepted" alarm comes only when both paths failed every try. A hung
+  endpoint holds only its own path (each connect and read on it ends at its socket timeout, the `Sender`'s one retry included); with
+  neither path in, `sell_sent` and the settlement wait for both paths to end, at most `Race.cap()` (tries x 4 x the larger socket timeout
+  + 1 s: 65 s for the sell, 17 s for the buy; a DNS lookup or a slow-drip server is outside the socket timeout), then the alarm says a
+  path is still waiting and its later replies are `late_reply` lines.
+- **`BUY_ALT`** (0): 1 sends the buy on both paths (one try each, slot 0 on the sequencer as before): `ok`/`in` from either is in, `rejected`
+  only when both refused, otherwise `unknown` (the lost-reply handling: the position kept, the sell on schedule; one refusal beside a lost
+  reply has its own alarm text, `split` in `buy_reply`). `buy_reply` adds `via`, `accept_ms`, `seq_reply`, `alt_reply`, `split`. Off by
+  default; documented as off.
+- **`SEND_TIMEOUT_S`** (4): the sequencer connections' socket timeout, which was a fixed 4.
+- **`reply_kind`**: "in" also for `ALREADY_EXISTS`, `already exists`, `already imported`, `known transaction` as whole words (`unknown
+  transaction type` stays a refusal), case-insensitive, besides `already known` and `nonce too low` matched as before; still only for a node
+  reply (one with an error code).
+- **Unchanged with `SELL_ALT_URL` empty:** `deliver_sell` and `deliver_buy` make the same calls as before (slots, tries, pauses, the same
+  `sell_sent` and `buy_reply` fields); the sequencer's `Sender` has the same host, path, 4 s timeout and headers. The 66 earlier tests pass
+  unchanged; 20o counts the posts with it off. Two differences even when off: `reply_kind`'s new wordings count as "in" on the sequencer
+  path too (no sell retry and no alarm on them), and the start line has the four new keys.
+- **Not known:** whether the alternate's own forwarding avoids the stall (RPC nodes forward transactions to the sequencer); `via` and
+  `accept_ms` in `sell_sent` will show it. RUNBOOK 4h has the box commands (`set_kv SELL_ALT_URL` with the env file's `RPC_URL` value,
+  never printed) and the restart. Nothing is set on the box yet.
