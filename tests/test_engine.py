@@ -1779,8 +1779,10 @@ def start_alarms(js):
     return json.loads(r.stdout.strip().splitlines()[-1])
 err, warns, alarms, sfams = start_alarms(json.dumps([C1_BOX, {**P356_FAM, "dry_run": False}]))
 assert err is None and len(warns) == 1 and any("dry_run false is forced to true" in a for a in alarms) and ["c1", False] in sfams and ["p356", True] in sfams, (err, warns, alarms, sfams)
-RBT = open(os.path.join(ROOT, "docs", "RUNBOOK.md")).read(); assert RBT.count("sudo python3 - <<'EOF'\n") == 1
-SNIP = textwrap.dedent(RBT.split("    sudo python3 - <<'EOF'\n", 1)[1].split("\n    EOF\n", 1)[0]); assert SNIP.count('"/etc/flip/engine.env"') == 1
+RBT = open(os.path.join(ROOT, "docs", "RUNBOOK.md")).read(); assert RBT.count("sudo python3 - <<'EOF'") == 1
+HEAD_LINE = [l for l in RBT.splitlines() if "sudo python3 - <<'EOF'" in l][0]                                      # the guarded one-liner: pull, code check, the snippet, then the restart
+assert HEAD_LINE.strip().startswith("cd ~/v2pons && git pull -q --ff-only && grep -q '^def launch_family' src/flip_engine.py && sudo python3 - <<'EOF' && sudo systemctl restart flip-engine"), HEAD_LINE
+SNIP = textwrap.dedent(RBT.split("sudo python3 - <<'EOF'", 1)[1].split("\n", 1)[1].split("\n    EOF\n", 1)[0]); assert SNIP.count('"/etc/flip/engine.env"') == 1
 BOX = [json.loads(V3_JSON)[0], C1_BOX, V3_FAM]; envp = LOG + ".env"
 for form in ("'%s'", "%s"):                                                                                         # as the runbook's tee wrote it, and as set_kv writes it
     open(envp, "w").write("DRY_RUN=0\nFRONT=1\nFRONT_FAMILIES=" + form % json.dumps(BOX, separators=(",", ":")) + "\nFRONT_STAKE_ETH=0.0097\n"); before = open(envp).read()

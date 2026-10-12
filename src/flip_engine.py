@@ -2171,7 +2171,12 @@ def ingest(raw):
                     else:
                         fire(p, seq, state["ts"], 0, p["tx"], seen_at)                          # the seat's trigger is the launch, its block the fire block
             for p in [q for q in state["launch_live"].values() if q["status"] == "armed"]:   # the launch-rule timers last: a live fire of this block takes the slot first
-                launch_timer(p, seq, stale, seen_at)
+                try:
+                    launch_timer(p, seq, stale, seen_at)
+                except Exception:                                                      # a dry timer never costs the block's live handling below
+                    if seq - state.get("timer_alarm_seq", -10**9) >= 600:
+                        state["timer_alarm_seq"] = seq
+                        log({"ev": "alarm", "what": "a launch-rule timer failed (at most one such alarm a minute)", "pid": p["pid"], "seq": seq, "trace": traceback.format_exc()[-400:]})
             pos = state["position"]
             if pos is not None and not pos["sell_sent"]:
                 if pos.get("exit_seq") is not None and seq >= pos["exit_seq"]:                   # a V3 position: the crowd's wave after its first buy behind ours (on_v3_buy)
@@ -2338,7 +2343,7 @@ def main():
          "front_families": start_families(),
          "front_nonbot_halt": FRONT_NONBOT_HALT, "front_nonbot_min_ret": FRONT_NONBOT_MIN_RET, "front_nonbot_streak": state["front_nonbot_streak"], "fam_halted": state["fam_halted"],
          "front_auto_stake": FRONT_AUTO_STAKE, "front_auto_stake_min_eth": FRONT_AUTO_STAKE_MIN_ETH, "front_auto_stake_margin_eth": FRONT_AUTO_STAKE_MARGIN_ETH, "front_auto_stake_pct": FRONT_AUTO_STAKE_PCT,
-         "front_family_error": FRONT_FAMILY_ERROR, "front_family_warnings": FRONT_FAMILY_WARNINGS,
+         "front_family_error": FRONT_FAMILY_ERROR, **({"front_family_warnings": FRONT_FAMILY_WARNINGS} if FRONT_FAMILY_WARNINGS else {}),
          "halted": state["halted"], "halt_file": HALT_FILE, "follow_halted": state["follow_halted"], "follow_halt_file": FOLLOW_HALT_FILE, "follow_near_miss_blocks": FOLLOW_NEAR_MISS_BLOCKS, "feed_headers": sorted(FEED_HEADERS), "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     signal.signal(signal.SIGTERM, on_stop)
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()

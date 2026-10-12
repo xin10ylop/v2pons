@@ -1674,7 +1674,7 @@ sell at launch + 260, 0.0058 ETH, no trigger. Facts checked for this build (cens
   `partial_pull_offset`, `first_burn_offset`, `partial_burn_offset`, `other_burns`, `pulled_before_sell`, `burn_by_landing`, `burn_check`,
   `burn_check_to`, `launch_seq`, `fire_seq`, `buy_seq`, `stake_eth`. `buy_seen`, `would_sell` and the "dry front position dropped" skip
   carry `fam` for every front family.
-- **The slot and the stop:** a live fire (any family) drops a dry p356 position (it leaves the pull watch; that trade has no `trade_done`);
+- **The slot and the stop:** a live fire (any family) drops a dry p356 position (it leaves the pull watch; that trade has no `trade_done` unless the drop lands in the second after its sell, when `settle_dry` still logs it);
   a stop or restart does not wait for a dry launch-rule position (its record is lost); every other open trade is waited for as before.
 - **Unchanged:** the v4 families and v3crowd (their tests as before); `fam_stake` and the flow line's auto stake leave a launch-rule family
   out (FRONT_AUTO_STAKE is the bot lines'); results.py reads it as a dry line with a fixed stake (checked on a synthetic log).

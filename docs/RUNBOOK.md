@@ -362,10 +362,11 @@ digits are 32 bits, which anyone can grind a contract to match.
 `FRONT_FAMILIES` list at start, the live c1 with it: after the restart, check the start line and results.py as below.**
 
 Add it to the box's list as it stands (the families already there, c1 live among them, are not touched; the old file is kept as
-`/etc/flip/engine.env.bak`; run twice, the snippet refuses and changes nothing):
+`/etc/flip/engine.env.bak`; run twice, the snippet refuses and changes nothing). The first line pulls the engine that knows launch-rule
+families and stops before editing anything if the pull or that check fails; the restart runs only after the edit succeeded:
 
-    sudo python3 - <<'EOF'
-    import json, shutil
+    cd ~/v2pons && git pull -q --ff-only && grep -q '^def launch_family' src/flip_engine.py && sudo python3 - <<'EOF' && sudo systemctl restart flip-engine && sleep 8 && echo restarted
+    import json, os, shutil
     P = "/etc/flip/engine.env"
     P356 = json.loads('{"name":"p356","dex":"v3","launch":{"selector":"d27d1e00","calldata_len":356,"code_hash_prefix":"89885b75fd29af130416accacb0351226a4259b3090dc0a2bb56189489efe08a","value_wei":0},"fee":100,"tick_spacing":1,"buy_at":60,"sell_at":260,"stake_eth":0.0058,"ahead_max_eth":0.5,"dry_run":true,"pin":true}')
     lines = open(P).read().splitlines()
@@ -375,13 +376,13 @@ Add it to the box's list as it stands (the families already there, c1 live among
     if len(v) > 1 and v[0] == v[-1] and v[0] in "'\"":
         v = v[1:-1]
     fams = json.loads(v)
-    assert isinstance(fams, list) and all(f.get("name") != P356["name"] for f in fams), "not a list, or p356 is listed already: nothing changed"
-    shutil.copy(P, P + ".bak")
+    assert isinstance(fams, list) and all(f.get("name") != P356["name"] and "launch" not in f for f in fams), "not a list, or a launch-rule family is listed already: nothing changed"
+    shutil.copy2(P, P + ".bak")
     lines[at[0]] = "FRONT_FAMILIES='" + json.dumps(fams + [P356], separators=(",", ":")) + "'"
-    open(P, "w").write("\n".join(lines) + "\n")
+    tmp = P + ".tmp"; open(tmp, "w").write("\n".join(lines) + "\n"); shutil.copymode(P, tmp); os.replace(tmp, P)
     print("FRONT_FAMILIES:", [(f.get("name"), f.get("dry_run")) for f in fams + [P356]])
     EOF
-    sudo systemctl restart flip-engine && sleep 8 && sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | python3 -c 'import sys, json; s = json.loads(sys.stdin.read()); print("error:", s.get("front_family_error"), "warnings:", s.get("front_family_warnings")); [print(f["name"], f.get("dex", "v4"), "dry_run", f["dry_run"]) for f in s["front_families"]]'
+    sudo python3 ~/v2pons/deploy/englog.py 1 | grep '"ev":"start"' | tail -1 | python3 -c 'import sys, json; s = json.loads(sys.stdin.read()); print("error:", s.get("front_family_error"), "warnings:", s.get("front_family_warnings")); [print(f["name"], f.get("dex", "v4"), "dry_run", f["dry_run"]) for f in s["front_families"]]'
     sudo python3 ~/v2pons/deploy/results.py 1 | head -12
 
 The check must print `error: None`, c1 with `dry_run False` (as before), p356 with `v3 dry_run True`; results.py must show c1 LIVE and p356
