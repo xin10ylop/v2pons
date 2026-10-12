@@ -259,6 +259,7 @@ FRONT_AUTO_STAKE = env("FRONT_AUTO_STAKE", "0") != "0"                          
 FRONT_AUTO_STAKE_MIN_ETH = _setting("FRONT_AUTO_STAKE_MIN_ETH", "0.002", 0.0005, 0.012); FRONT_AUTO_STAKE_MARGIN_ETH = _setting("FRONT_AUTO_STAKE_MARGIN_ETH", "0.0004", 0.0, 0.01)
 FRONT_AUTO_STAKE_WINDOW = _setting("FRONT_AUTO_STAKE_WINDOW", "30", 5, 500, True); FRONT_AUTO_STAKE_OBS = _setting("FRONT_AUTO_STAKE_OBS", "5", 1, FRONT_AUTO_STAKE_WINDOW, True)
 FRONT_AUTO_STAKE_PCT = _setting("FRONT_AUTO_STAKE_PCT", "25", 0.0, 100.0)
+FRONT_AUTO_STAKE_RESTORE_MIN = _setting("FRONT_AUTO_STAKE_RESTORE_MIN", "60", 0, 1440, True)              # a restart reads back the last N minutes' room observations (restore_room_obs; 0: none)
 
 
 def _flag(v, what):
@@ -934,6 +935,38 @@ def _restore_from(path, d, got, streaks):
                 got["front_today" if front else "trades_today"] += 1
     except (FileNotFoundError, UnicodeDecodeError, OSError):
         pass
+
+
+def restore_room_obs():
+    """each bot line's room observations (on_front_buy's `room` lines) of the last FRONT_AUTO_STAKE_RESTORE_MIN minutes, read back from the log
+    (and its .1 when the rotation came within them) in order, at most FRONT_AUTO_STAKE_WINDOW: a restart keeps the auto stake instead of the floor
+    for FRONT_AUTO_STAKE_OBS launches. Each line's `obs` (the run's count after it) drops what that run no longer held (a reset in settle, a
+    restart that kept none). A family by its name only: a name not configured now is not restored. {fam: observations restored}"""
+    if not FRONT_AUTO_STAKE_RESTORE_MIN:
+        return {}
+    since = time.time() - 60 * FRONT_AUTO_STAKE_RESTORE_MIN; got = {}
+    names = {f["name"] for f in FRONT_FAMILIES.values() if not f["trigger"] and not f.get("launch")}   # the lines fam_stake sizes
+    for path in (LOG_PATH + ".1", LOG_PATH):
+        try:
+            if path != LOG_PATH and os.path.getmtime(path) < since:                             # rotated before the window: none of it is in it
+                continue
+            for line in open(path):
+                if '"ev":"room"' not in line:
+                    continue
+                try:
+                    e = json.loads(line); fam = e["fam"]
+                    if fam not in names or not e["t"] >= since:
+                        continue
+                    room = e["room_wei"] if type(e.get("room_wei")) is int else int(round(float(e["room_eth"]) * 1e18))   # a line before room_wei: to 1e-6 ETH
+                except Exception:
+                    continue
+                obs = got.setdefault(fam, collections.deque(maxlen=FRONT_AUTO_STAKE_WINDOW)); obs.append(room); n = e.get("obs")
+                while type(n) is int and 0 < n < len(obs):
+                    obs.popleft()
+        except (FileNotFoundError, UnicodeDecodeError, OSError):
+            pass
+    state["room_obs"].update(got)
+    return {k: len(v) for k, v in got.items()}
 
 
 def pool_from_receipt(rec):
@@ -1813,8 +1846,11 @@ def _settle(pos):
         with lock:
             state["front_nonbot_streak"][fam] = 0 if paid else state["front_nonbot_streak"].get(fam, 0) + 1
             streak = state["front_nonbot_streak"][fam]
-            if FRONT_AUTO_STAKE and not paid and pos["stake"] > int(FRONT_AUTO_STAKE_MIN_ETH * 1e18) and state["room_obs"].pop(fam, None) is not None:
-                out["room_obs_reset"] = True                                                  # a raised stake that did not pay: the room may be taken by what the feed cannot see; back to the floor
+            if FRONT_AUTO_STAKE and not paid and pos["stake"] > int(FRONT_AUTO_STAKE_MIN_ETH * 1e18):   # a raised stake that did not pay:
+                if pos.get("bot_exit"):                                                       # sold into the bot's buy (a small one, Oct 12 01:45): no decoy took the room; that
+                    out["room_obs_kept"] = True                                               # buy's own room observation already lowers the stake if the room shrank
+                elif state["room_obs"].pop(fam, None) is not None:                            # no bot buy behind ours (it reverted, or the deadline): the room may be taken
+                    out["room_obs_reset"] = True                                              # by what the feed cannot see; back to the floor
         out["nonbot_streak"] = streak; out["bot_exit"] = bool(pos.get("bot_exit"))
         if streak >= nonbot_halt and state["front_halted"] is None and not state["fam_halted"].get(fam):
             out["nonbot_halted"] = halt(f"{streak} {fam} front trades in a row paid under {FRONT_NONBOT_MIN_RET:+.0%} (last: {pos.get('sell_why')}, {pnl / eth_in:+.1%}): "
@@ -1991,7 +2027,8 @@ def room_ahead(p, q_bot, minout):
 def auto_stake(fam):
     """FRONT_AUTO_STAKE: the stake sized to the room the bot's decoys leave: the FRONT_AUTO_STAKE_PCT percentile of the room left for us
     over the last FRONT_AUTO_STAKE_WINDOW bot buys of the family, less FRONT_AUTO_STAKE_MARGIN_ETH, within [FRONT_AUTO_STAKE_MIN_ETH, the
-    family's stake]; the minimum until FRONT_AUTO_STAKE_OBS observations exist (a restart starts over)"""
+    family's stake]; the minimum until FRONT_AUTO_STAKE_OBS observations exist (a restart reads back the last FRONT_AUTO_STAKE_RESTORE_MIN
+    minutes' observations from the log: restore_room_obs)"""
     cap = fam["stake_wei"]; floor = min(int(FRONT_AUTO_STAKE_MIN_ETH * 1e18), cap); obs = state["room_obs"].get(fam["name"])
     if not obs or len(obs) < FRONT_AUTO_STAKE_OBS:
         return floor
@@ -2026,7 +2063,7 @@ def on_front_buy(p, seq, to, value, h, stale):
             try:
                 room = room_ahead(p, value, p["fam_cfg"]["bot_minout"]) - p["eth_in"]
                 obs = state["room_obs"].setdefault(p["fam"], collections.deque(maxlen=FRONT_AUTO_STAKE_WINDOW)); obs.append(room)
-                log({"ev": "room", "pid": p["pid"], "fam": p["fam"], "seq": seq, "offset": seq - p["launch_seq"], "bot_eth": value / 1e18, "ahead_eth": p["eth_in"] / 1e18, "room_eth": round(room / 1e18, 6),
+                log({"ev": "room", "pid": p["pid"], "fam": p["fam"], "seq": seq, "offset": seq - p["launch_seq"], "bot_eth": value / 1e18, "ahead_eth": p["eth_in"] / 1e18, "room_eth": round(room / 1e18, 6), "room_wei": room,
                      "obs": len(obs), "auto_stake_eth": auto_stake(p["fam_cfg"]) / 1e18 if FRONT_AUTO_STAKE else None})
             except Exception as e:
                 log({"ev": "alarm", "what": "room not measured", "pid": p["pid"], "err": str(e)[:100]})
@@ -2497,7 +2534,7 @@ def start_families():
 
 
 def main():
-    roll_day(); restored = restore_today(); info = checks()
+    roll_day(); restored = restore_today(); room_restored = restore_room_obs(); info = checks()
     log({"ev": "start", "release": RELEASE, "dry_run": DRY_RUN, "launchers": sorted(LAUNCHERS), "relay": RELAY, "wallet": WALLET, "stake_eth": STAKE_ETH, "min_trigger_eth": MIN_TRIGGER_ETH,
          "fee_ppm": [FEE_MIN_PPM, FEE_MAX_PPM], "min_liquidity": MIN_LIQUIDITY, "trigger_max_blocks": TRIGGER_MAX_BLOCKS, "buy_slip": BUY_SLIP, "buy_deadline_s": BUY_DEADLINE_S, "gas_headroom": GAS_HEADROOM,
          "hold_blocks": HOLD_BLOCKS, "sell_lead_blocks": SELL_LEAD_BLOCKS, "take_profit": TAKE_PROFIT, "buy_delay_blocks": BUY_DELAY_BLOCKS,
@@ -2509,6 +2546,7 @@ def main():
          "front_families": start_families(),
          "front_nonbot_halt": FRONT_NONBOT_HALT, "front_nonbot_min_ret": FRONT_NONBOT_MIN_RET, "front_nonbot_streak": state["front_nonbot_streak"], "fam_halted": state["fam_halted"],
          "front_auto_stake": FRONT_AUTO_STAKE, "front_auto_stake_min_eth": FRONT_AUTO_STAKE_MIN_ETH, "front_auto_stake_margin_eth": FRONT_AUTO_STAKE_MARGIN_ETH, "front_auto_stake_pct": FRONT_AUTO_STAKE_PCT,
+         "front_auto_stake_restore_min": FRONT_AUTO_STAKE_RESTORE_MIN, "room_obs_restored": room_restored,
          "front_family_error": FRONT_FAMILY_ERROR, **({"front_family_warnings": FRONT_FAMILY_WARNINGS} if FRONT_FAMILY_WARNINGS else {}),
          "halted": state["halted"], "halt_file": HALT_FILE, "follow_halted": state["follow_halted"], "follow_halt_file": FOLLOW_HALT_FILE, "follow_near_miss_blocks": FOLLOW_NEAR_MISS_BLOCKS, "feed_headers": sorted(FEED_HEADERS), "today_restored": {k: round(v, 3) for k, v in restored.items()}, "sell_fallback_s": SELL_FALLBACK_S, "max_trades_per_day": MAX_TRADES_PER_DAY, "daily_stop_usd": DAILY_STOP_USD, "feed": FEED_URL, "seq": SEQ_URL, "rpc": RPC_URL, **info})
     signal.signal(signal.SIGTERM, on_stop)

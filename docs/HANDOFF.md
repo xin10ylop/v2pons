@@ -1736,3 +1736,30 @@ Built (test 20o; 70 tests):
 - **Not known:** whether the alternate's own forwarding avoids the stall (RPC nodes forward transactions to the sequencer); `via` and
   `accept_ms` in `sell_sent` will show it. RUNBOOK 4h has the box commands (`set_kv SELL_ALT_URL` with the env file's `RPC_URL` value,
   never printed) and the restart. Nothing is set on the box yet.
+
+### 16.20 Oct 12: the auto stake kept through a small bot buy and through a restart
+
+The facts (box log):
+
+- At 01:45:58 UTC a raised-stake trade ($18, 0.0069 ETH) sold into the bot's buy: "the bot's buy behind ours ... the sell prices at
+  -0.9%", `bot_exit` true. That buy was small: in a few percent of pools the bot's first buy is 0.025-0.05 ETH, against 0.1-0.2 usually.
+- It was not a decoy taking the room, yet the old rule (any raised-stake trade under +2% resets) dropped the observations. The next trade
+  ran at the $5 floor, and the floor holds for 5 launches (~30 min, about $6 of profit at today's rate).
+- Each restart (00:17 and 01:53 UTC) also started at the floor for 5 launches.
+
+The two rules (test 20h; 71 tests):
+
+- **The reset** (`settle`): a raised-stake trade under `FRONT_NONBOT_MIN_RET` drops the observations only when it did not sell into the
+  bot's buy. That means `bot_exit` is false: the bot's buy reverted, or the deadline came with no bot buy, which is the decoy signature.
+  A sell into the bot's buy keeps them and its `trade_done` says `room_obs_kept: true`. The `room` observation taken at that same buy still
+  lowers the stake through the minimum of the last 5 if the room shrank. The streak halt (`FRONT_NONBOT_HALT`) counts both as before.
+- **The restart** (`restore_room_obs`, `FRONT_AUTO_STAKE_RESTORE_MIN`: 60 minutes by default, 0 = off, 0..1440): at start, each bot line's
+  observations (every family that is not a wave or launch-rule family) are rebuilt from the log's `room` lines of the last N minutes.
+  - The lines come from `LOG_PATH`, and from `.1` when its last write is within the window. They are taken in order, at most
+    `FRONT_AUTO_STAKE_WINDOW`.
+  - Each line's `obs` (the run's count after it) drops what that run no longer held (a reset, or a restart under the old code), so the
+    restored list is the one the engine had, cut at the window. Families are matched by name only.
+  - The start line has `room_obs_restored: {fam: count}` and `front_auto_stake_restore_min`. The `room` line now also carries the exact
+    `room_wei`; older lines are read from `room_eth` (to 1e-6 ETH).
+
+Deploy: nothing to set; `git pull` on the box and a restart (`sudo systemctl restart flip-engine`) are all it needs.

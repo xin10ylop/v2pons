@@ -287,10 +287,14 @@ make the line trade at any pair it is known to use, still refusing anything unse
 decoys leave: at every bot buy the engine computes how much ETH could have sat ahead of it before its fill fell under its minOut (the room,
 ~0.0126 ETH on this pool), subtracts what others put there, and keeps the last 30 such observations per family (`room` events); the next fire's
 stake is their 25th percentile less `FRONT_AUTO_STAKE_MARGIN_ETH` (0.0004), never under `FRONT_AUTO_STAKE_MIN_ETH` (0.002) nor over
-`FRONT_STAKE_ETH` (the ceiling), and the minimum until `FRONT_AUTO_STAKE_OBS` (5) observations exist (a restart starts over at the minimum for
-about five launches). With the decoys of Oct 11 16:28 (0.0099 ahead) that is 0.0023; with none it climbs to the ceiling. The `flow` line
-carries `auto_stake_eth`, the `fire`/`trade_done` lines the stake used. Settings for the box: `FRONT_STAKE_ETH=0.0097 FRONT_AUTO_STAKE=1
-FRONT_FEES_ALSO=2500 FRONT_TICK_SPACINGS_ALSO=50`.
+`FRONT_STAKE_ETH` (the ceiling), and the minimum until `FRONT_AUTO_STAKE_OBS` (5) observations exist. With the decoys of Oct 11 16:28
+(0.0099 ahead) that is 0.0023; with none it climbs to the ceiling. A raised stake that pays under +2% drops the observations (the minimum
+again for five launches) only when no bot buy came behind ours (it reverted, or the deadline sold); a sell into the bot's buy, even a
+small one like the one at Oct 12 01:45, keeps them (`room_obs_kept` in its `trade_done`, HANDOFF 16.20). A restart reads back the
+`room` lines of the last `FRONT_AUTO_STAKE_RESTORE_MIN` (60; 0 = off) minutes from the log, so the stake goes on where it was
+(`room_obs_restored` in the start line) instead of starting at the minimum. The `flow` line carries `auto_stake_eth`, the
+`fire`/`trade_done` lines the stake used. Settings for the box: `FRONT_STAKE_ETH=0.0097 FRONT_AUTO_STAKE=1 FRONT_FEES_ALSO=2500
+FRONT_TICK_SPACINGS_ALSO=50`. These two rules need no setting: `git pull` on the box and a restart.
 
 **`nonbot_halt` per family.** The flat-trade streak halt (`FRONT_NONBOT_HALT`, 8 on the box) was built for the 2.4333 pattern, where a trade
 under +2% means the bot's buy did not come; a follow-type line such as C-1 has most trades flat and a few large winners, so its family sets
