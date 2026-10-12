@@ -159,12 +159,14 @@ def stake_label(f, eth_usd):
 
 
 def v3_money(e, rpc):
-    """the V3 relay's part of the money line (HANDOFF 16.22): ("", None) without a RELAY_V3 address in the env file; its balance, or "?" when
-    the read fails (then 0 in the total)"""
-    r3 = e.get("RELAY_V3") or ""
-    if not re.fullmatch(r"0x[0-9a-fA-F]{40}", r3):
+    """the V3 relay's part of the money line (HANDOFF 16.22): ("", None) without a RELAY_V3 address in the env file (read as the engine reads
+    it: quotes and spaces stripped, 0x or 0X optional, 40 hex digits) or when it is RELAY or WALLET itself; its balance, or "?" when the read fails (then 0
+    in the total)"""
+    norm = lambda v: (lambda h: h[2:] if h.startswith("0x") else h)((v or "").strip().strip("'\"").strip().lower())
+    r3 = norm(e.get("RELAY_V3"))
+    if not re.fullmatch(r"[0-9a-f]{40}", r3) or r3 in (norm(e.get("RELAY")), norm(e.get("WALLET"))):
         return "", None
-    b = balance(rpc, r3)
+    b = balance(rpc, "0x" + r3)
     return ", V3 relay %s ETH" % ("%.6f" % b if b is not None else "?"), b
 
 

@@ -1939,13 +1939,17 @@ This section describes b202829 as amended by the second commit (the review's rou
 - `V3_SELL_CHECK` (1): only for a crowd family, which cannot be checked. 1 keeps it dry; 0 lets it trade unchecked. A launch-rule family is
   always checked (below).
 - `V3_DAILY_STOP_USD` (10; 1 to 100): the live V3 trades' own daily stop (below).
+- `RELAY_V3_CODEHASH` (empty = not checked; round 3): the keccak the relay's code must have (64 hex digits, any case, 0x optional), as
+  `deploy/relay_v3_deploy.py --write-env` writes it. Not 64 hex digits, or another keccak: an alarm and every V3 family dry. The value is
+  never logged; the start line has the code's own keccak (`relay_v3_codehash`) and `relay_v3_codehash_set`.
 - A value of these four outside its bounds is the default with a start alarm, never a stop.
 
 **The start** (`relay_v3_check`, in `checks()`). `V3_LIVE` is set only if all of these hold:
 
 - `RELAY_V3` is an address (40 hex digits), and not `RELAY`;
 - `WALLET` is set;
-- its code is non-empty and holds both selectors as PUSH4 (`63` + selector; the relay's compiled code at d6c3e3c does);
+- its code is non-empty, has the keccak `RELAY_V3_CODEHASH` names when that is set, and holds both selectors as PUSH4 (`63` + selector;
+  the relay's final compiled code does);
 - `owner()` returns `WALLET` (a revert, no word or another address is a failure);
 - its balance is read.
 
@@ -1979,9 +1983,13 @@ The v4 families' dry rule is the same expression as before. A dry V3 trade is as
   - the harness's code at WALLET's address (the relay's owner);
   - RELAY_V3's balance set to the stake.
 - The harness's `check(relay, token, fee, stake, deadline)` (`b3aa5416`) has the relay buy with minOut 1 and sell all it got.
-- `p["sell_check"]` becomes `ok` (tokens bought and at least 0.9 x the stake back), or why not. A `sell_check` line logs each check.
-  - **A refusal:** the call reverted (`TransferFailed`: a sell lock; a buy that got nothing), or less than 0.9 x the stake came back.
-  - **No verdict** (`sell_check_rpc`): the RPC failed. `launch_timer` asks again, one call at a time, each block before launch + buy_at.
+- `p["sell_check"]` becomes `ok`, or why not; `sell_check_rpc` is written with it, under the lock. A `sell_check` line logs each check.
+  - **ok:** tokens bought and at least 0.99 x the stake less the two fees back: `100 back 10^12 >= 99 stake (10^6 - fee)^2`. That is
+    0.9898 x at fee 100 and 0.9703 x at fee 10000; the eight live pools measured gave 0.99980 and 0.98010-0.98013.
+  - **A refusal:** the call reverted (`TransferFailed`: a sell lock; a buy that got nothing), or less than that came back.
+  - **No verdict** (`sell_check_rpc`): the RPC failed, or the relay reverted `NoPool` (`d0dc3f10`): a node behind the feed that does not
+    have the pool yet. `launch_timer` asks again, one call at a time, each block until launch + buy_at + fire_max (+ 70 for p356). In
+    the fire window it asks after that block's fire, which skipped with "could not run".
 - `_fire` buys live only after `ok`, with three skips:
   - the check is still running: "v3: the sell check has not finished"; the timer asks again next block (to + 70);
   - no verdict: "v3: the sell check could not run: ..."; the pool stays armed;
@@ -2037,7 +2045,7 @@ The v4 families' dry rule is the same expression as before. A dry V3 trade is as
 - **The slot:** freed once both receipts are in. The pull check then runs under `v3_settling`, a V3-only flag.
   - Only the V3 fires wait for it ("v3: the last V3 trade's pull check is still running"); a v2.433 fire never waits for a V3 pull check.
   - A v4 trade that fires meanwhile keeps its nonces: the V3 settle ends at the larger of the chain's count and the engine's.
-  - A stop waits for it, and `fee_loop` does not read RELAY_V3's balance during it.
+  - A stop waits for it, and `fee_loop` reads RELAY_V3's balance during it but does not apply it.
 - **The pull check** (`v3_pull`), for a filled buy:
   - After `PULL_WATCH_S`, `eth_getLogs` of the pool's `Burn` logs, up to our sell + 30, 10 blocks under the node's head and never under
     our sell, 3 tries (v4's head and retry rule).
@@ -2066,8 +2074,9 @@ The v4 families' dry rule is the same expression as before. A dry V3 trade is as
   - for p356, `partial_burn_after_buy_blocks` and `other_burns`.
 
   `results.py` reads them as a v4 trade's. Its LINES table shows a V3 family LIVE when the start line says `live` (an older start line:
-  dry, as before), with the capped stake. The money line adds the V3 relay's balance: only when `RELAY_V3` in the env file is an address,
-  `?` when the read fails.
+  dry, as before), with the capped stake. The money line adds the V3 relay's balance: only when `RELAY_V3` in the env file is an address
+  (read as the engine reads it: quotes and spaces stripped, 0x or 0X optional) and not `RELAY`; `?` when the read fails. The `flow`
+  line carries `v3_today`, `v3_pnl_today_usd` and `relay_v3_eth`.
 
 **Checked:**
 
@@ -2075,7 +2084,8 @@ The v4 families' dry rule is the same expression as before. A dry V3 trade is as
 - Against the second commit, with two of its asserts taken out (20g: a V3 crowd family's `dry_run` false or absent refused and the list
   dropped, which round 2's item 7 reverses): 71 of 71. Unmodified, it stops at that assert after 61.
 - The new file: 76. 20g's two asserts were rewritten for the warning; the rest of the 71 are unchanged. 20p (five blocks) was extended for
-  each round-2 item.
+  each round-2 and round-3 item. Round 3 changed three things in the earlier tests: `refused()` now also returns a dropped V3 family's
+  warning, which carries the old message, and the 20g and 20k real-import loops expect that family dropped alone.
 - 20p covers:
   - the relay's selectors and the harness (recompiled);
   - the parser with RELAY_V3 empty and set;
@@ -2100,12 +2110,25 @@ The v4 families' dry rule is the same expression as before. A dry V3 trade is as
     - a sold-none with no sell receipt halts front, and with a receipt the family;
     - a V3 pull check holds a V3 fire while a v2.433 launch fires live at the next nonce, which the settle keeps, and the stop waits for it;
     - the V3 day: its stop, front's stop, a V3 loss leaving v2.433 trading, `roll_day`, the restore and `V3_DAILY_STOP_USD`'s bounds;
-    - `V3_SELL_CHECK=0` still checks p356; under 0.9 x the stake back is refused, exactly 0.9 x is ok;
+    - `V3_SELL_CHECK=0` still checks p356; one wei under the threshold is refused, exactly at it is ok (0.9 x then; fee-aware since
+      round 3);
     - an RPC failure: its own skip, asked again each block (the arming's ask, then one a block for 10 blocks), a verdict once the RPC
-      answers, no ask from launch + buy_at on, then late;
+      answers, then late (round 3 asks on to launch + buy_at + fire_max);
     - results.py's V3 relay line;
-    - `RELAY_V3` removed while v3crowd says false: dry with an alarm, c1 kept live.
-- Mutations of the engine, each run against the whole file, each made it fail (22 of 22 on the second commit):
+    - `RELAY_V3` removed while v3crowd says false: dry with an alarm, c1 kept live;
+  - round 3:
+    - `NoPool` as no verdict, asked again and then ok;
+    - the fee-aware threshold one wei under and exactly at it, at fee 100 (in the flow) and 10000 (unit);
+    - the verdict held while the lock is held;
+    - the asks in the fire window (10 from + 60 to + 69), and a buy at + 64 once the RPC is back at + 63;
+    - ten mistakes in one V3 family's object, each dropping it alone beside c1 and v3.0, while a v4 family's mistake still drops the list,
+      at a real import and at a start;
+    - the flow line;
+    - `Overpay`;
+    - `RELAY_V3_CODEHASH` matching in three forms, wrong, and not 64 hex digits, a bare `0x` included (never echoed);
+    - `v3_money`'s forms and `RELAY`'s and `WALLET`'s own addresses.
+- Mutations of the engine, each run against the whole file, each made it fail (22 of 22 on the second commit, 27 of 27 on the
+  third, each at its own test; two more after its review: a bare `0x` codehash treated as unset, `v3_money` counting `WALLET`):
   - the token order: WETH's side always amount0, inverted, ignored;
   - the Burn rule: an amount of 0 counted, the owner ignored, the range ignored, half the liquidity turned into any, before our sell by
     block only, p356's Burns read from our buy, p356's rule applied to every V3 family;
@@ -2117,8 +2140,14 @@ The v4 families' dry rule is the same expression as before. A dry V3 trade is as
     - the V3 day booked to front;
     - p356 unchecked with `V3_SELL_CHECK=0`;
     - an RPC failure taken as a refusal;
-    - "ok" without the 0.9 x stake;
-    - a V3 family's false kept live with `RELAY_V3` empty.
+    - "ok" without the 0.9 x stake (round 3: "ok" at 0.9 x, fees ignored);
+    - a V3 family's false kept live with `RELAY_V3` empty;
+  - round 3:
+    - `NoPool` taken as a refusal;
+    - the verdict written outside the lock;
+    - the asks only before launch + buy_at;
+    - a V3 family's mistake dropping the list;
+    - `RELAY_V3_CODEHASH` ignored.
 
 **Not known, and limits:**
 
@@ -2147,7 +2176,22 @@ The v4 families' dry rule is the same expression as before. A dry V3 trade is as
    `_restore_from` reads `"dex":"v3"` lines into them; the start line shows them.
 4. **A live launch-rule family is always sell-checked.** `V3_SELL_CHECK=0` only lets a crowd family trade unchecked.
 5. **The sell check's outcomes:** an RPC failure is its own skip, asked again each block before launch + buy_at; a revert stays an
-   immediate refusal; "ok" needs at least 0.9 x the stake back.
+   immediate refusal; "ok" needs at least 0.9 x the stake back. (Round 3: `NoPool` is no verdict too, the asks go on to + fire_max,
+   and "ok" is fee-aware.)
 6. **results.py:** RELAY_V3 is used only when it is an address; a failed balance read prints `?`.
 7. **`RELAY_V3` removed** while a V3 family says false: that family is forced dry with a warning and a start alarm, never a refusal.
 8. **Docs:** p356 arms nothing today, v3crowd stays dry with the check on, and the first live V3 line is decided by its own gate.
+
+**Round 3** (the last before any V3 family goes live; two final reviews passed cc42b8a with no HIGH):
+
+1. **The relay's `NoPool`** (a node behind the feed) is no verdict, asked again next block; any other revert is still a refusal.
+2. **"ok" is fee-aware:** at least 0.99 x the stake less two fees back.
+3. **`sell_check_rpc` and `sell_check`** are written together under the lock.
+4. **The check is asked again** to launch + buy_at + fire_max, after each block's fire.
+5. **A mistake in one V3 family's object** drops that family alone, with a warning; the other families are kept. A non-V3 family's
+   mistake, and the list-wide checks (JSON, selectors, duplicates), still drop the whole list.
+6. **The flow line** carries `v3_today`, `v3_pnl_today_usd` and `relay_v3_eth`.
+7. **`Overpay(uint256,uint256)`** (`d7573691`) is in the relay's error names.
+8. **`RELAY_V3_CODEHASH`** is required to match when it is set.
+9. **results.py's `v3_money`** reads `RELAY_V3` as the engine does, and skips `RELAY` itself.
+10. **The `fee_loop` wording** is corrected above: it reads the V3 balance during the pull check but does not apply it.
