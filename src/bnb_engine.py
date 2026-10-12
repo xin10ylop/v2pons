@@ -8,8 +8,10 @@ about 177 times a day, with pools of 1, 2.5, 10, 15 and 25 BNB. A crowd of ~136 
 the creator never buys and drains each pool by selling into it on a schedule by size (+997 at the earliest; no Burn was ever seen).
 The rule: buy $15 at L+40..58 (BNB_BUY_AT, 50), sell at L+260 (BNB_SELL_AT), skip the 15-BNB pools.
 
-This program signs nothing and sends nothing: it has no key, no wallet and no transaction code. It reads the chain and logs what the
-rule would have done. A websocket newHeads subscription (BNB_WS_URL; eth_blockNumber over BNB_RPC_URL while it is down) gives the head;
+With BNB_LIVE=0 (the default) this program signs nothing and sends nothing: it has no key, no wallet and no transaction code of its own.
+It reads the chain and logs what the rule would have done. BNB_LIVE=1 loads src/bnb_live.py (the live path: its own wallet's key from
+BNB_KEY_FILE, the pre-buy check, the router calls, the nonce, the halts, the positions file); every `if LIVE:` hook below is a no-op
+without it. A websocket newHeads subscription (BNB_WS_URL; eth_blockNumber over BNB_RPC_URL while it is down) gives the head;
 for every block (BNB_LAG_BLOCKS behind the head) one eth_getLogs over the factory and every pair being watched returns PairCreated, Sync,
 Mint, Burn and Swap. A WBNB PairCreated has its creating transaction read (eth_getTransactionByHash): the launcher and the selector make
 it a launch of the line. The pair's own logs give its size (the first Mint's WBNB), the reserves (every Sync), the crowd (each buy's
@@ -26,7 +28,7 @@ Settings from the environment (/etc/flip/bnb.env on the box). Log: JSONL, one ev
 """
 import os, sys, json, time, asyncio, threading, traceback, statistics, signal, urllib.request, urllib.parse
 
-RELEASE = "bnb-0.1"
+RELEASE = "bnb-0.2"
 
 
 def env(k, d=""):
@@ -57,7 +59,11 @@ WS_URL = env("BNB_WS_URL", "wss://bsc-rpc.publicnode.com"); RPC_URL = env("BNB_R
 LOG_PATH = env("BNB_LOG_PATH", "/var/log/flip/bnb.jsonl")                                # --replay refuses this default (the service's log)
 LAUNCHER = env("BNB_LAUNCHER", "0xc9b7cc619200418649f9e3fc718e45028dfe9c47").lower(); SELECTOR = env("BNB_SELECTOR", "50b6f139").lower().replace("0x", "")
 CALLDATA_LEN = _setting("BNB_CALLDATA_LEN", "196", 0, 100000, True)                       # 0: any length
-STAKE_USD = _setting("BNB_STAKE_USD", "15", 0.01, 10000)
+LIVE_ON = env("BNB_LIVE", "0")
+if LIVE_ON not in ("0", "1"):
+    raise SystemExit(f"BNB_LIVE must be 0 or 1, not {LIVE_ON!r}")
+LIVE_ON = LIVE_ON == "1"                                                                  # 1: src/bnb_live.py trades every BNB_PROBE_EVERY-th launch
+STAKE_USD = _setting("BNB_STAKE_USD", "5" if LIVE_ON else "15", 0.01, 10000)              # live: the $5 probe unless set
 BUY_AT = _setting("BNB_BUY_AT", "50", 1, 5000, True); SELL_AT = _setting("BNB_SELL_AT", "260", BUY_AT + 1, 20000, True)
 SKIP_POOL_BNB = _sizes("BNB_SKIP_POOL_BNB", "15"); POOL_SIZES = _sizes("BNB_POOL_SIZES", "1,2.5,10,15,25")   # a size outside POOL_SIZES: skipped, an alarm
 BNB_USD = _setting("BNB_USD", "750", 1, 1e6)                                              # the fallback until the pair is read
@@ -89,6 +95,7 @@ state = {"head": None, "head_ts": None, "head_at": 0.0, "head_src": None, "polle
          "launches": 0, "launches_flow": 0, "pairs_wbnb": 0, "pairs_unread": 0, "blocks_flow": 0, "flow_at": time.monotonic(), "trades": [], "median_alarmed": False,
          "price": None, "price_block": None, "fails": 0, "usdt_is_token0": True, "alarms_quiet": {}}
 pools = {}                                                                              # pair -> its record (many at once: the pools overlap)
+LIVE = None                                                                             # the live path (bnb_live.Live) when BNB_LIVE=1, else None
 _log_lock = threading.RLock()
 
 
@@ -277,6 +284,8 @@ def launch_line(p):
     state["launches"] += 1; state["launches_flow"] += 1
     log({"ev": "launch", "pair": p["pair"], "token": p["token"], "L": p["L"], "pool_bnb": round(size, 6), "value_bnb": p["value_bnb"], "creator": p["creator"],
          "launch_tx": p["launch_tx"], "wbnb_side": p["side"], "skip": p["skip"]})
+    if LIVE:
+        LIVE.on_launch(p)                                                               # live: the slot (live or control), the pre-buy check
 
 
 def classify_buy(p, lg, off, a, bq, bt):
@@ -310,6 +319,8 @@ def on_dump(p, off, share, kind, lg):
         frm = None
     p["dump"] = {"off": off, "share": round(share, 4), "kind": kind, "by_creator": (frm == p["creator"]) if frm else None, "tx": lg["transactionHash"]}
     log({"ev": "dump", "pair": p["pair"], "L": p["L"], "pool_bnb": p["size"], "traded": p["fired"], **p["dump"]})
+    if LIVE:
+        LIVE.on_dump(p, off)                                                            # live: an open position sold at once; the gate
     if off < GATE_DUMP_BEFORE:
         alarm(f"gate: a dump at +{off}, before +{GATE_DUMP_BEFORE} ({kind}, {share:.0%} of the WBNB reserve, pool {p['size']} BNB)", pair=p["pair"])
     if p["fired"] and not p["sold"]:
@@ -348,6 +359,8 @@ def on_event(p, lg):
         w = words(lg["data"])[:4]
         q_in, t_in = by_side(p, w[0], w[1]); q_out, t_out = by_side(p, w[2], w[3])
         bq, bt = take_pend(p, lg, q_in - q_out, t_in - t_out)
+        if LIVE and LIVE.ours(lg):
+            return                                                                      # live: our own buy or sell, out of the dry copy and the counts
         if off < BUY_AT:
             p["swaps_before"] += 1
         elif off == BUY_AT:
@@ -390,11 +403,16 @@ def fire(p, B):
     q = stake_wei(); tok = amount_out(q, p["rq"], p["rt"])
     p["fired"] = True
     if tok <= 0:
-        p["sold"] = True; log({"ev": "skip", "pair": p["pair"], "L": p["L"], "why": "no tokens for the stake at +%d" % BUY_AT}); return
+        p["sold"] = True; log({"ev": "skip", "pair": p["pair"], "L": p["L"], "why": "no tokens for the stake at +%d" % BUY_AT})
+        if LIVE:
+            LIVE.on_fire(p, B)                                                          # live: no buy (the position is dropped)
+        return
     p["q"], p["tok"], p["sq"], p["st"] = q, tok, p["rq"] + q, p["rt"] - tok
     log({"ev": "would_fire", "dry": True, "pair": p["pair"], "L": p["L"], "at": p["L"] + BUY_AT, "off": BUY_AT, "pool_bnb": p["size"], "stake_wei": q,
          "stake_bnb": q / 1e18, "stake_usd": STAKE_USD, "bnb_usd": round(bnb_usd(), 4), "r_wbnb": p["rq"], "r_token": p["rt"], "tokens": tok,
          "swaps_before": p["swaps_before"], "crowd_ahead": p["crowd_ahead"], "ran_in_block": B})
+    if LIVE:
+        LIVE.on_fire(p, B)                                                              # live: the buy, minOut from these tokens
 
 
 def sell(p, B):
@@ -403,6 +421,8 @@ def sell(p, B):
     clean = trade_done(p, (back - p["q"] - gas) / p["q"], (back - p["q"]) / p["q"], back, f"sell at +{SELL_AT}", sold_in=B)
     if p["crowd_gate"] == 0 and clean:
         alarm(f"gate: no crowd buy in +{GATE_CROWD_FROM}..+{SELL_AT} (pool {p['size']} BNB)", pair=p["pair"])
+    if LIVE:
+        LIVE.on_sell(p, B, back)                                                        # live: the sale; the crowd gate on a traded pool
 
 
 def trade_done(p, ret, gross, back, why, pulled=False, sold_in=None):
@@ -415,7 +435,8 @@ def trade_done(p, ret, gross, back, why, pulled=False, sold_in=None):
          "crowd_buys": p["crowd"], "crowd_bnb": round(p["crowd_bnb"] / 1e18, 6), "crowd_ahead": p["crowd_ahead"], "crowd_gate": p["crowd_gate"],
          "first_crowd_off": p["first_crowd"], "crowd_minout": round(p["minout"], 6) if p["minout"] is not None else None,
          "strangers": p["strangers"], "stranger_bnb": round(p["stranger_bnb"] / 1e18, 6), "unread_txs": p["unread"], "sells": p["sells"],
-         "entry_block_swaps": p["entry_swaps"], "dump_off": p["dump"]["off"] if p["dump"] else None, "breaks": p["breaks"], "gaps": p["gaps"]})
+         "entry_block_swaps": p["entry_swaps"], "dump_off": p["dump"]["off"] if p["dump"] else None, "breaks": p["breaks"], "gaps": p["gaps"],
+         **(LIVE.tag(p) if LIVE else {})})
     if clean:
         gate_probe(ret)
     return clean
@@ -436,6 +457,8 @@ def gate_probe(ret):
 def finish(p, why=None):
     if pools.pop(p["pair"], None) is None:
         return
+    if LIVE:
+        LIVE.on_finish(p, why)                                                          # live: a position still open is sold at once
     if p["pend"]:
         flush(p)
     d = p["dump"] or {}
@@ -501,6 +524,8 @@ def process_range(a, b):
         except Exception as e:
             alarm(f"a pool's step failed: {scrub(e)}", quiet_key="advance", every_s=60, pair=p.get("pair"))
     state["blocks_flow"] += b - a + 1; state["done_to"] = b
+    if LIVE:
+        LIVE.after_range(b)                                                             # live: the pools of open positions kept for a restart
 
 
 def current_head():
@@ -564,7 +589,8 @@ def flow(force=False):
     log({"ev": "flow", "head": head, "done_to": state["done_to"], "lag_blocks": (head - state["done_to"]) if head is not None and state["done_to"] is not None else None,
          "head_age_s": round(time.time() - state["head_ts"], 2) if state["head_ts"] else None, "feed": state["head_src"], "ws": state["ws"],
          "blocks": state["blocks_flow"], "launches": state["launches"], "launches_new": state["launches_flow"], "pairs_wbnb": state["pairs_wbnb"],
-         "pairs_unread": state["pairs_unread"], "watching": len(pools), "open": sum(1 for p in pools.values() if p["fired"] and not p["sold"]), "bnb_usd": round(bnb_usd(), 4)})
+         "pairs_unread": state["pairs_unread"], "watching": len(pools), "open": sum(1 for p in pools.values() if p["fired"] and not p["sold"]), "bnb_usd": round(bnb_usd(), 4),
+         **(LIVE.flow_info() if LIVE else {})})
     state["flow_at"] = now; state["blocks_flow"] = 0; state["launches_flow"] = 0
 
 
@@ -628,6 +654,17 @@ async def feed_loop():
 
 
 # ---------------------------------------------------------------- start
+def open_positions_warning():
+    """BNB_LIVE=0 with live positions left open in the positions file: nothing would sell them; an alarm (no file, nothing logged)"""
+    path = env("BNB_POSITIONS_FILE", os.path.join(os.path.dirname(os.path.abspath(LOG_PATH)), "bnb_positions.json"))
+    try:
+        n = len(json.load(open(path)).get("positions") or {})
+    except Exception:
+        return
+    if n:
+        alarm(f"BNB_LIVE=0 with {n} live position(s) open in {path}: they are not sold; set BNB_LIVE=1 (with HALTED.bnb in place to stop new buys) until they are")
+
+
 def checks():
     """the chain id (waiting for the RPC up to START_WAIT_S, a pause doubling from 1 s to 30 s: a DNS or network failure at boot is not
     an exit), the price pair's side and price, the head"""
@@ -655,13 +692,24 @@ def checks():
 
 
 def main(argv):
+    global LIVE
     replay = None
+    if os.path.basename(LOG_PATH).startswith(("HALTED", "engine.jsonl", "flip_engine")):   # /var/log/flip is shared: never flip-engine's log or a halt file
+        raise SystemExit(f"BNB_LOG_PATH {LOG_PATH} names a halt file or flip-engine's log: the BNB line logs to its own file (bnb.jsonl)")
     if len(argv) >= 3 and argv[0] == "--replay":
         replay = (int(argv[1]), int(argv[2]))
         if os.path.abspath(LOG_PATH) == DEFAULT_LOG:
             raise SystemExit(f"--replay writes to BNB_LOG_PATH: set it to another file than the service's log {DEFAULT_LOG}")
+        if LIVE_ON:
+            raise SystemExit("--replay never trades: run it with BNB_LIVE=0")
+    if LIVE_ON:                                                                         # the live module by name, so that this file holds no signing code
+        LIVE = __import__("bnb_live").Live(sys.modules[__name__])                       # the key read and checked against BNB_WALLET, or a stop
     info = checks()
-    log({"ev": "start", "release": RELEASE, "dry_run": True, "mode": "replay" if replay else "live", "replay": replay, "ws": host(WS_URL), "rpc": host(RPC_URL),
+    if LIVE:
+        info.update(LIVE.start(info["head"]))                                           # the halt file, the positions taken back, the worker
+    else:
+        open_positions_warning()
+    log({"ev": "start", "release": RELEASE, "dry_run": LIVE is None, "mode": "replay" if replay else "live", "replay": replay, "ws": host(WS_URL), "rpc": host(RPC_URL),
          "launcher": LAUNCHER, "selector": SELECTOR, "calldata_len": CALLDATA_LEN, "stake_usd": STAKE_USD, "buy_at": BUY_AT, "sell_at": SELL_AT,
          "skip_pool_bnb": SKIP_POOL_BNB, "pool_sizes": POOL_SIZES, "bnb_usd": round(bnb_usd(), 4), "bnb_usd_src": "chain" if state["price"] else "BNB_USD",
          "usd_pair": USD_PAIR, "gas_units": GAS_UNITS, "gas_gwei": GAS_GWEI, "dump_share": DUMP_SHARE, "watch_to": WATCH_TO, "lag_blocks": LAG_BLOCKS,
@@ -671,7 +719,7 @@ def main(argv):
         while state["done_to"] < replay[1]:
             step(replay_to=replay[1])
         flow(force=True); log({"ev": "replay_done", "to": replay[1], "watching": len(pools)}); return
-    signal.signal(signal.SIGTERM, lambda s, f: (log({"ev": "stopped"}), os._exit(0)))
+    signal.signal(signal.SIGTERM, lambda s, f: (LIVE and LIVE.shutdown(), log({"ev": "stopped"}), os._exit(0)))   # live: nothing new sent, the step in flight finished
     state["head_at"] = time.monotonic()
     threading.Thread(target=reader, daemon=True).start()
     try:
