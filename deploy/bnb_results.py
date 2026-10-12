@@ -9,7 +9,7 @@ and the wallet's balance (BNB_WALLET, read from the RPC; the key file is never o
 
     sudo python3 ~/v2pons/deploy/bnb_results.py          # the last 24 hours
     sudo python3 ~/v2pons/deploy/bnb_results.py 72       # the last 72 hours
-    sudo python3 ~/v2pons/deploy/bnb_results.py --alerts # live trouble only: the halt, a stuck or overdue position, the last alarm (health.sh)
+    sudo python3 ~/v2pons/deploy/bnb_results.py --alerts # live trouble only: the halt, a stuck or overdue position, a hung reader, the last alarm (health.sh)
 """
 import glob, gzip, json, os, statistics, subprocess, sys, time, urllib.parse, urllib.request
 ALERTS = sys.argv[1:2] == ["--alerts"]                                         # health.sh: only what needs the owner now (nothing when all is well)
@@ -19,6 +19,16 @@ hms = lambda t: time.strftime("%m-%d %H:%M:%S", time.gmtime(t))
 hm = lambda t: time.strftime("%m-%d %H:%M", time.gmtime(t))
 pct = lambda r: "%+.1f%%" % (100 * r)
 ENV_FILE = os.environ.get("BNB_ENV_FILE") or "/etc/flip/bnb.env"
+BLOCK_S = 0.45                                                                 # BNB Chain's block time: the head now from the last flow line's, by the clock
+NOT_READING_S = 180                                                            # no flow line (one a minute) this long while the service is active: the reader hangs
+
+
+def service_active():
+    """systemctl's word on flip-bnb (False where there is no systemctl)"""
+    try:
+        return subprocess.run(["systemctl", "is-active", "--quiet", SERVICE], stderr=subprocess.DEVNULL).returncode == 0
+    except OSError:
+        return False
 
 
 def setting(k, d=None):
@@ -95,6 +105,8 @@ def live_section(ev, st, fl, n_g):
             why = "(not readable: sudo)"
         print("HALTED: %s\n  no new live buy; open positions are still sold. To resume, once understood: sudo rm %s && sudo systemctl restart %s"
               % (why, halt_file, SERVICE))
+    elif halt_in_positions(read_json(pos_file), halt_file):
+        print("HALTED: %s\n  no new live buy; open positions are still sold" % halt_in_positions(read_json(pos_file), halt_file))
     else:
         print("halt: none (%s)" % halt_file)
     try:
@@ -114,6 +126,13 @@ def live_section(ev, st, fl, n_g):
         url = setting("BNB_RPC_URL", "https://bsc-rpc.publicnode.com"); bal, err = wallet_balance(wallet, url)
         print("wallet %s: %s (read from %s)" % (wallet, ("%.6f BNB, $%.2f" % (bal, bal * usd)) if bal is not None else "balance not read (%s)" % err,
                                                  urllib.parse.urlparse(url).hostname))
+
+
+def read_json(path):
+    try:
+        return json.load(open(path))
+    except Exception:
+        return {}
 
 
 def read_logs(hours):
@@ -154,9 +173,32 @@ def stats(rets):
     return "%5d %8s %8s %5.0f%%" % (len(rets), pct(sum(rets) / len(rets)), pct(statistics.median(rets)), 100 * sum(1 for r in rets if r > 0) / len(rets))
 
 
+def halt_in_positions(d, halt_file):
+    """the engine's halt as its positions file holds it, when HALTED.bnb does not: never written (the engine keeps trying), or removed by
+    the owner while the engine still runs halted (it reads the file only at its start)"""
+    if not d.get("halted") or os.path.exists(halt_file):
+        return None
+    return "%s (%s)" % (str(d["halted"])[:150], "only in the positions file: HALTED.bnb could not be written" if d.get("halt_written") is False
+                        else "HALTED.bnb was removed but the engine still holds the halt: restart flip-bnb to resume")
+
+
+def head_by_clock(fl, x, buy_at, now):
+    """the chain's head now, by the clock: the last flow line's head plus a block for every BLOCK_S since (a reader that stalls stops
+    writing them), and no less than L+BNB_BUY_AT plus the blocks since the position's buy was sent; None when neither is known"""
+    est = []
+    if fl.get("t") and (fl.get("head") or fl.get("done_to")):
+        est.append((fl.get("head") or fl["done_to"]) + int((now - fl["t"]) / BLOCK_S))
+    buy = next((t for t in x.get("txs") or [] if t.get("kind") == "buy" and t.get("sent_at")), None)
+    if buy and x.get("L"):
+        est.append(x["L"] + buy_at + int((now - buy["sent_at"]) / BLOCK_S))
+    return max(est) if est else None
+
+
 def alerts():
-    """the line's trouble in a few lines for health.sh (nothing when all is well): the halt, a live position stuck, past its sale by 100
-    blocks or with a sale pending over a minute, and the last alarm of the last 3 hours (the gate's dry alarms aside)"""
+    """the line's trouble in a few lines for health.sh (nothing when all is well): the halt (its file, or the positions file when the file
+    is not there), a reader that wrote no flow line for 3 minutes while the service is active, a live position stuck, past its sale by 100
+    blocks by the clock (not by the last flow line's head: a reader that stalls stops moving it) or with a sale pending over a minute, and
+    the last alarm of the last 3 hours (the gate's dry alarms aside)"""
     ev, st, fl, _ = read_logs(3); now = time.time(); out = []
     halt_file = setting("BNB_HALT_FILE") or os.path.join(os.path.dirname(os.path.abspath(LOG)), "HALTED.bnb")
     pos_file = setting("BNB_POSITIONS_FILE") or os.path.join(os.path.dirname(os.path.abspath(LOG)), "bnb_positions.json")
@@ -167,18 +209,25 @@ def alerts():
             why = "(not readable: sudo)"
         out.append("BNB HALTED: %s (no new live buy; open positions still sold; deploy/bnb_results.py has the rest)" % why)
     try:
-        pos = json.load(open(pos_file)).get("positions") or {}
+        d = json.load(open(pos_file)); pos = d.get("positions") or {}
     except FileNotFoundError:
-        pos = {}
+        d, pos = {}, {}
     except Exception as e:
-        pos = {}; out.append("BNB positions file %s not read (%s)" % (pos_file, type(e).__name__))
-    head = fl.get("head") or fl.get("done_to"); sell_at = st.get("sell_at", 260)
+        d, pos = {}, {}; out.append("BNB positions file %s not read (%s)" % (pos_file, type(e).__name__))
+    held = halt_in_positions(d, halt_file) if own_file(halt_file) else None
+    if held:
+        out.append("BNB HALTED: %s (no new live buy; open positions still sold)" % held)
+    seen = max(fl.get("t") or 0, st.get("t") or 0)                             # the last flow line, or the start when none came since
+    if now - seen > NOT_READING_S and service_active():
+        out.append("BNB NOT READING: %s while flip-bnb is active (the reader hangs; sales go by the chain's head: journalctl -u %s -n 30)"
+                   % (("no flow line for %.0f min" % ((now - seen) / 60)) if seen else "no flow line in " + LOG, SERVICE))
+    sell_at, buy_at = st.get("sell_at", 260), st.get("buy_at", 50)
     for k, x in pos.items():
-        last = (x.get("txs") or [{}])[-1]; due = x.get("sell_due") or {}
+        last = (x.get("txs") or [{}])[-1]; due = x.get("sell_due") or {}; head = head_by_clock(fl, x, buy_at, now)
         if x.get("state") == "stuck":
             out.append("BNB STUCK %s: the tokens stay in the wallet (%s); a restart of flip-bnb tries to sell them again" % (k[:12], due.get("why") or "no sale"))
         elif head and x.get("L") and head - x["L"] > sell_at + 100:
-            out.append("BNB SALE OVERDUE %s: %s at L+%d (sold at L+%s)" % (k[:12], x.get("state"), head - x["L"], sell_at))
+            out.append("BNB SALE OVERDUE %s: %s at about L+%d by the clock (sold at L+%s)" % (k[:12], x.get("state"), head - x["L"], sell_at))
         elif x.get("state") == "sell_sent" and last.get("sent_at") and now - last["sent_at"] > 60:
             out.append("BNB SELL PENDING %s: %.0f s, %s" % (k[:12], now - last["sent_at"], last.get("hash")))
     al = [e for e in ev if e["ev"] == "alarm" and not str(e.get("what", "")).startswith("gate:")]
@@ -192,10 +241,7 @@ def main():
     if ALERTS:
         return alerts()
     ev, st, fl, all_done = read_logs(HOURS); now = time.time()
-    try:
-        active = subprocess.run(["systemctl", "is-active", "--quiet", SERVICE], stderr=subprocess.DEVNULL).returncode == 0
-    except OSError:                                                            # no systemctl here
-        active = False
+    active = service_active()
     print("=" * 100)
     live = bool(st.get("live")) or any(e.get("live") for e in ev if e["ev"] == "trade_done")
     print("%s  service %s   release %s   %s" % ("BNB LIVE PROBE (BNB_LIVE=1: real trades)" if live else "BNB DRY RUN (nothing is signed or sent)",

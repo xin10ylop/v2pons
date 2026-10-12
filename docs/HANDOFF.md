@@ -1878,7 +1878,7 @@ is used for a go/no-go; 20 tests):
 
 - The unit: `ProtectSystem=strict`, `ProtectHome=read-only`, `ReadWritePaths=/var/log/flip`, `InaccessiblePaths=-/etc/flip/engine.env`
   (replaced in 16.23's review fixes by a mask on all of `/etc/flip` and a reduced capability set: that mask was lost on a rename),
-  `RestartSec=30`; `checks()` waits for the RPC at the start (an alarm, a pause doubling from 1 s to 30 s, up to `START_WAIT_S` 300 s)
+  `RestartSec=30` (5 since 16.23's round 2: 30 s was a third of the hold); `checks()` waits for the RPC at the start (an alarm, a pause doubling from 1 s to 30 s, up to `START_WAIT_S` 300 s)
   before it exits. RUNBOOK 4i's install line says when the pull also changed `src/flip_engine.py`.
 - The head: the `eth_blockNumber` poll waits 0.5 s, doubling to 30 s while it fails, back to 0.5 s on an answer; a websocket head
   counts only when its number is new; the websocket's back-off (0.5 s doubling to 30 s) resets only on heads over a connection 60 s old
@@ -2310,8 +2310,9 @@ of 1,725 a buyer by +3; strangers bought 0.15 BNB in the holds). A private RPC w
 blocks its builders win, its own pricing (48 Club's answers 1 gwei), and a nonce the public RPC cannot see after an error.
 `BNB_SEND_URL` can point at one without a code change (`BNB_SLIP` 0.02 would cut the bound to 2%).
 
-Tests: `tests/test_bnb_engine.py` 61 after the review's second round (43 after the first; the 20 dry ones unchanged, 41 live, with a
-stubbed chain that decodes every signed transaction: rlp, the sender recovered, chain 56, the calldata by `eth_abi`),
+Tests: `tests/test_bnb_engine.py` 68 after the review's third round (61 after the second, 43 after the first; the 20 dry ones
+unchanged, 48 live, with a stubbed chain that decodes every signed transaction: rlp, the sender recovered, chain 56, the calldata by
+`eth_abi`),
 `tests/data/bnb_receipts.json` (two real receipts of the router's `b6f9de95` and `791ac947` calls by other wallets, blocks
 127210196/127210200, for the settlement parser); `tests/test_engine.py` 76 (the Robinhood engine untouched: `src/flip_engine.py`,
 `tests/test_engine.py` and its deploy files not edited). Mutation checks, each on a copy of the tree: the buy's minOut without the
@@ -2327,14 +2328,15 @@ Open:
   templates, and the rolling gate (any 10 in a row, 3 in a row under -50%) stops a token that turns bad after the first 10 trades.
 - The live buy goes out when the reader (2 blocks behind the head) reaches L+50, so it lands about L+53 while the dry price is at the
   start of L+50; the screen's "live gross minus its dry price's gross" line measures the difference. A buy that would land after L+57 by
-  the head is not sent.
+  the head (read just before the send) is not sent, and one not mined by then is cancelled.
 - The key: `deploy/bnb_wallet.py withdraw 0xDEST` sends the BNB back from the box (the key never leaves it), `sweep 0xTOKEN` sells a
   stranded token; the positions file holds signed transactions (public once sent), never the key.
 - Not done from the review: the unit's stronger form (its own user `flipbnb`, `LoadCredential=` for the key, its files in
   `/var/log/flip/bnb/` with `ReadWritePaths` on that alone). It needs a system user, a directory and ownership changes on the box, moves
   the dry run's log (which `bnb_results.py` and `health.sh` read), and the 750 home needs that user let in: none of it can be run or
   checked from here. The root unit with the `/etc/flip` mask and `CAP_DAC_READ_SEARCH` alone closes the three ways to the Robinhood key
-  the review found. Do it before the stake goes past the $5 probe.
+  the review found; it is a mask on what the service's own code sees, not a wall against hostile code inside the process (root still).
+  Do it before the stake goes past the $5 probe.
 - The unit's isolation is checked on paper and by `systemd-analyze verify` only: RUNBOOK 4k step 1's `nsenter ... ls /etc/flip` and
   `CapBnd` line must be run on the box before `BNB_LIVE=1`.
 - The crowd's buys reverted by ours (the research's 1 in 1,242 launches) are not counted: a reverted transaction has no log, so it
@@ -2416,3 +2418,35 @@ test that fails without it: one mutation per fix, each on its own copy of the tr
   or pending position, the last alarm).
 - Already fixed by the first round (checked again): the zero-token fire, the artifact's sha256 checked at the start, the merge of
   16.22/4j and 16.23/4k. Not done: the unit's own user and the crowd's reverted buys (Open, above).
+
+Review fixes, round 3 (the open items of round 2's check; 68 tests; each fix has a test that fails without it, a mutation per fix on its
+own copy of the tree; nothing sent to any chain):
+
+- A backend of `BNB_RPC_URL` can lag and still answer (no receipt, the transaction unknown, the nonce not counted, a token balance of 0):
+  a buy that landed was dropped as never mined and its tokens left unsold, a sell that landed was sent again. Now nothing is dropped or
+  settled for want of a receipt until `BNB_READ_ALT_URL` is asked (at most every 5 s): a receipt there (in a block final there) is acted
+  on, a transaction it holds is waited for, its nonce count counts, a buy's tokens seen by either endpoint are kept, and the chain's state
+  after a mined nonce is read from the endpoint that has seen more of our transactions. While it cannot answer nothing is dropped (an
+  alarm). With `BNB_READ_ALT_URL=0` `BNB_RPC_URL`'s word stands alone, as before.
+- The nonce gap: a buy dropped as never mined while a later nonce of ours is out (the sequencer gave it on) left that later transaction
+  queued for good. Now the dropped buy's nonce is filled by a 0-value transfer to the wallet (1/8 dearer), the slot dropped once it is
+  mined; a fill refused because the nonce is taken drops nothing.
+- The buy's last lateness check reads `eth_blockNumber` itself (one try, 1.5 s; else the last head aged at 0.45 s a block): a head up to
+  10 s old, about 22 blocks, could let a buy out that late. A buy not mined once the head makes it late (`BNB_BUY_LATE`) is no longer
+  copied and is cancelled at its nonce at once (it could land up to its 60 s deadline, about L+183); a cancel refused for its nonce
+  (the buy mined after all) is not tried again. Neither this cancel nor a gap's fill is sent at a nonce another position's transaction
+  holds (after a send no endpoint answered the nonce is read again, and the next transaction may take the same one: a transfer there
+  would replace it).
+- Settled once: the position leaves the positions file and the gate and the day take the trade (a halt it makes written) before the
+  `trade_done` line, which is kept there as not yet logged; a hard kill after the line no longer settles the trade a second time at the
+  restart (the start finds the line in the log's tail), and one before it writes the line at the start.
+- `bnb_results.py --alerts` (health.sh) also prints `BNB NOT READING` (no flow line for 3 minutes while flip-bnb is active), a sale overdue
+  by the clock (the last flow line's head plus 0.45 s a block, or the buy's send time; a stalled reader no longer hides it) and a halt
+  held only in the positions file (never written, or removed while the engine still holds it); the full screen shows that halt too.
+- Tests: the deadline assertion of test 30 is exact (bnb_live's clock held at one instant for the send; the old one failed 4 and 8
+  runs in 1,000 in two measurements, when the send crossed a second; the new one passed 1,000 of 1,000); the eleven paths round 2's mutations showed untested now each have an assertion (a replaced sell's
+  minOut on the pool now and its fresh deadline, a buy kept as `buy_sent` after an error past its record, the nonce read again after a
+  drop, a lost cancel, the cancel's gas in the day's $, receipts at the tip when the finalized block is unreadable, 3 replacements, the
+  balance-0 count reset, a stuck position taken back at a restart, the sale by the head in every state holding tokens); RUNBOOK 4i/4k and
+  this section's test count, and 4i's restart delay, are checked against the tree. Scenarios that held the reader at L+60 with a buy on
+  its way now hold it at L+52 (at L+60 the buy is late, and is cancelled).
