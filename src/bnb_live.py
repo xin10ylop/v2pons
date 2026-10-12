@@ -27,14 +27,16 @@ One worker thread signs and sends everything: the nonce comes from the RPC (pend
 nonce error. Gas: a fixed limit per call (BNB_GAS_BUY/APPROVE/SELL; twice it after an out-of-gas revert), the price eth_gasPrice kept
 between BNB_MIN_GWEI and BNB_MAX_GWEI. Every send goes to every send endpoint at once; with no receipt a copy goes again each
 BNB_REBROADCAST_S, and one a pool holds unmined (either read endpoint's) is replaced at its nonce after BNB_REPLACE_S (1/8 dearer, 3
-times, then once at BNB_MAX_GWEI; a buy past its deadline by a 0-value transfer to the wallet). A buy dropped as never mined while a
+times, then once at BNB_MAX_GWEI, and once more at a higher BNB_MAX_GWEI after a restart; a refused one is tried again after
+BNB_REPLACE_S and counts; a buy past its deadline by a 0-value transfer to the wallet). A buy dropped as never mined while a
 later nonce of ours is out has its nonce filled the same way. Reads BNB_RPC_URL cannot answer are asked once at BNB_READ_ALT_URL. What a
-transaction with no receipt did is decided by one rule, written at Live.outcome(): from a receipt at either read endpoint in a block
-final there, or from the state of an endpoint whose count shows its nonce mined; a 'nonce too low' or a refused replacement only stops
-the signing at that nonce and asks both endpoints at once; anything else is held (alarms; nothing dropped, sent again or settled), and a
-transaction is dropped as never mined only when every endpoint answers that its nonce is free, no pool holds it, no node said 'nonce
-too low' at it and its deadline is past (a backend that lags still answers, stale, and may hold a mined transaction as pending). The worker reads the head itself when the
-reader gives none for 3 s, and extrapolates it when no source shows a new block for 10 s.
+transaction with no receipt did is decided by one rule, written at Live.outcome() (a count, a balance, an allowance, a pool read at
+each endpoint alone, never one for the other): from a receipt at either read endpoint in a block final there, or from the state of an
+endpoint whose count shows its nonce mined; a 'nonce too low' only stops the signing at that nonce and asks both endpoints at once;
+anything else is held (alarms; nothing dropped, sent again or settled), and a transaction is dropped as never mined only when every
+endpoint answers that its nonce is free, no pool holds it, no node said 'nonce too low' at it and its deadline is past (a backend that
+lags still answers, stale, and may hold a mined transaction as pending). The worker reads the head itself when the reader gives none for
+3 s, and extrapolates it when no source shows a new block for 10 s.
 The gate halts the line (HALTED.bnb beside the log; the owner's own HALTED.bnb holds without a restart): a dump before +997 on any pool of
 the line (the skipped sizes aside), no crowd buy in +60..+260 on a traded pool whose logs were all read, any reverted buy, approve or
 sell, a negative median over the first 10 live trades, then over any 10 in a row, and 3 live trades in a row under -50%. A halt stops
@@ -388,20 +390,16 @@ class Live:
         r = self.E.words(self.rpc("eth_call", [{"to": pair, "data": "0x" + SEL_RESERVES}, "latest"], **(FAST if fast else {})))
         return (r[0], r[1]) if side == 0 else (r[1], r[0])                           # (WBNB, token)
 
-    def token_balance(self, token, both=False, alt=False):
-        """the wallet's balance of the token (alt: BNB_READ_ALT_URL's alone); both: the larger of BNB_RPC_URL's and BNB_READ_ALT_URL's (a
-        buy's tokens seen by either are there: a backend that lags shows the balance before the buy; raises when the second cannot answer)"""
+    def token_balance(self, token, alt=None):
+        """the wallet's balance of the token: BNB_RPC_URL's, asked at BNB_READ_ALT_URL when it cannot answer (alt None: the sale, a buy's
+        receipt); one endpoint's own, an error raised (alt True: BNB_READ_ALT_URL's, False: BNB_RPC_URL's; outcome() reads each alone)"""
         call = [{"to": token, "data": "0x" + SEL_BALANCE + a(self.wallet)}, "latest"]
-        if alt:
-            return self.E.words(self.alt_rpc("eth_call", call, 5))[0]
-        bal = self.E.words(self.rpc("eth_call", call))[0]
-        if both and self.read_alt:
-            bal = max(bal, self.E.words(self.alt_rpc("eth_call", call, 5))[0])
-        return bal
+        return self.E.words(self.alt_rpc("eth_call", call, 5) if alt else self.rpc("eth_call", call, alt=alt is None))[0]
 
     def allowance(self, token, alt=False):
+        """one endpoint's own allowance (outcome(): BNB_READ_ALT_URL's with alt, else BNB_RPC_URL's; never one for the other)"""
         call = [{"to": token, "data": "0x" + SEL_ALLOWANCE + a(self.wallet) + a(self.E.ROUTER)}, "latest"]
-        return self.E.words(self.alt_rpc("eth_call", call, 5) if alt else self.rpc("eth_call", call))[0]
+        return self.E.words(self.alt_rpc("eth_call", call, 5) if alt else self.rpc("eth_call", call, alt=False))[0]
 
     def alt_receipt(self, group):
         """BNB_READ_ALT_URL's view of our transactions at one nonce, before anything is dropped or settled for want of a receipt on
@@ -556,7 +554,11 @@ class Live:
         self.alarm(f"the {kind} was not sent: nonce errors 3 times", pair=x["pair"])
         return None
 
-    def known(self, h):
+    def known(self, h, alt=True):
+        """whether a node knows the transaction (BNB_RPC_URL's, else BNB_READ_ALT_URL's; False when neither answers); alt False:
+        BNB_RPC_URL's pool alone, an error raised (outcome())"""
+        if not alt:
+            return bool(self.rpc("eth_getTransactionByHash", [h], tries=2, alt=False))
         try:
             return bool(self.rpc("eth_getTransactionByHash", [h], tries=2))
         except Exception:
@@ -1020,7 +1022,8 @@ class Live:
         halts the line); a buy not mined by the time the head makes it late (BNB_BUY_LATE) is never copied again and is cancelled at its
         nonce (a 0-value transfer to the wallet 1/8 dearer: it would land late, up to its deadline, about 133 blocks); one a pool holds
         unmined (BNB_RPC_URL's, or only BNB_READ_ALT_URL's) is replaced at its nonce (held()). A copy, a cancel or a replacement answered
-        'nonce too low', or a cancel or a replacement refused, is a signal (signal()): nothing more is signed at that nonce"""
+        'nonce too low' is a signal (signal()): nothing more is signed at that nonce; a cancel or a replacement refused for another reason
+        is tried again after BNB_REPLACE_S and counts toward MAX_REPLACE and the cap (tries(), capped())"""
         rec = x["txs"][-1]; now = time.time()
         if now - rec.get("polled", 0) < self.POLL_S:
             return
@@ -1043,7 +1046,7 @@ class Live:
         if late <= self.BUY_LATE and now - rec.get("copied_at", rec["sent_at"]) >= self.REBROADCAST_S and (own_dl is None or now < own_dl - self.REBROADCAST_BEFORE_S):
             rec["copied_at"] = now; rec["rebroadcast"] = rec.get("rebroadcast", 0) + 1; k, msg, via = self.broadcast(rec["raw"]); self.signal(rec, k, msg)
             self.log({"ev": "live_rebroadcast", "kind": rec["kind"], "pair": x["pair"], "hash": rec["hash"], "reply": k, "detail": msg, "via": via, "known": where is None})
-        if late > self.BUY_LATE and not self.signalled(group) and not rec.get("no_cancel") and len(group) <= self.MAX_REPLACE \
+        if late > self.BUY_LATE and not self.signalled(group) and not self.capped(group) and self.tries(group) < self.MAX_REPLACE \
                 and now - rec.get("cancel_at", 0) >= self.REPLACE_S and not self.nonce_used(x, rec["nonce"]):    # (held or not: a pool no node shows may hold it)
             rec["cancel_at"] = now
             return self.replace(x, rec, f"not mined {late} blocks after L+{self.E.BUY_AT} (BNB_BUY_LATE {self.BUY_LATE})")
@@ -1051,8 +1054,17 @@ class Live:
             self.held(x, rec, group, now - rec["sent_at"], now, where)
 
     def signalled(self, group):
-        """a signal at this nonce (signal()): nothing more is signed at it"""
-        return any(t.get("nonce_low") or t.get("refused") for t in group)
+        """a signal at this nonce ('nonce too low', signal()): nothing more is signed at it"""
+        return any(t.get("nonce_low") for t in group)
+
+    def tries(self, group):
+        """the replacements and cancels tried at this nonce: the ones taken (the group past its first) and the ones refused (signal())"""
+        return len(group) - 1 + sum(t.get("refused") or 0 for t in group)
+
+    def capped(self, group):
+        """the cap reached at this nonce at today's BNB_MAX_GWEI (replace(): the one at the cap tried, taken or not, or a raise of 1/10 not
+        possible under it): nothing more is signed at it until a restart raises BNB_MAX_GWEI, then once more"""
+        return max((t.get("capped") or 0) for t in group) >= int(round(self.MAX_GWEI * 1e9))
 
     def outcome(self, x, group, rec, now):
         """THE RULE: what happened to a transaction of ours with no receipt seen yet (rec, the last at its nonce, and the ones it replaces
@@ -1067,10 +1079,12 @@ class Live:
           (c) NEVER MINED, the one drop without (a) or (b): every endpoint answered with a count at or below the nonce, no pool holds it, no
               node answered 'nonce too low' at it, neither endpoint shows a buy's tokens, and the same waits passed (past the latest
               deadline at the nonce, a buy or a sell could land only to revert). Then it is dropped (unsent()).
-        A send at the nonce answered 'nonce too low' (a copy, a replacement, a late cancel, a gap's fill), and a replacement or a late cancel
-        refused, is a SIGNAL (signal()): it asks both endpoints for the receipt at once (BNB_RPC_URL at every poll, BNB_READ_ALT_URL from then
-        on at most every ALT_EVERY_S) and stops anything more being signed at that nonce. It never raises a count, and it never lets a state
-        decide that does not itself show the nonce mined.
+        A send at the nonce answered 'nonce too low' (a copy, a replacement, a late cancel, a gap's fill) is a SIGNAL (signal()): it asks
+        both endpoints for the receipt at once (BNB_RPC_URL at every poll, BNB_READ_ALT_URL from then on at most every ALT_EVERY_S) and stops
+        anything more being signed at that nonce. It never raises a count, and it never lets a state decide that does not itself show the
+        nonce mined. (A replacement or a cancel refused for another reason is no signal: tried again after BNB_REPLACE_S, counted.)
+        Each endpoint is read alone here (no read of one answered by the other: a count, a balance, an allowance, a pool is always the named
+        endpoint's own); one that does not answer is the 'did not answer' alarm and a hold (only a receipt may come from either).
         Anything else is HELD: alarms; nothing dropped, nothing sent again at a new nonce, nothing settled (a copy while its deadline allows;
         held()'s replacements while a pool holds it and no signal stopped them). So a 'nonce too low' that neither endpoint's count confirms
         is held until a receipt or a count shows the nonce mined.
@@ -1092,12 +1106,12 @@ class Live:
         if not (due or ask) or now - rec.get("alt_at", 0) < ALT_EVERY_S:
             return ("held", None if known else False)
         rec["alt_at"] = now
-        got = err = None
+        got = err = None                                                                # err: (the endpoint that did not answer, 0 or 1; its error)
         if ask:                                                                         # (a) BNB_READ_ALT_URL's receipt
             try:
                 got = self.alt_receipt(group)
             except Exception as e:
-                err = e
+                err = (1, e)
             if isinstance(got, tuple):
                 return ("mined",) + got
             if got == "unfinal":
@@ -1108,27 +1122,24 @@ class Live:
         where = None if known else self.E.host(self.read_alt) if got == "pending" else False
         if not due:
             return ("held", where)
-        counts = [None, None]                                                           # the counts: BNB_RPC_URL's (or the second's for it), BNB_READ_ALT_URL's
-        try:
-            counts[0] = int(self.rpc("eth_getTransactionCount", [self.wallet, "latest"]), 16)
-        except Exception as e:
-            self.alarm(f"the {rec['kind']} {rec['hash']} has no receipt and the wallet's count was not read ({self.scrub(e, 80)}): held", quiet_key="count-" + rec["hash"],
-                       every_s=300, pair=x["pair"])
+
+        def down(i, e):
+            self.alarm(f"the {rec['kind']} {rec['hash']} has no receipt on {self.E.host(self.E.RPC_URL)} and {self.E.host(self.read_alt if i else self.E.RPC_URL)} "
+                       f"did not answer ({self.scrub(e, 80)}): nothing is dropped or settled until it does", quiet_key="alt-" + rec["hash"], every_s=300, pair=x["pair"])
             return ("held", where)
+        counts = [None, None]                                                           # the counts: BNB_RPC_URL's, BNB_READ_ALT_URL's (each its own)
+        try:
+            counts[0] = int(self.rpc("eth_getTransactionCount", [self.wallet, "latest"], alt=False), 16)
+        except Exception as e:
+            return down(0, e)
         if self.read_alt and err is None:
             try:
                 counts[1] = int(self.alt_rpc("eth_getTransactionCount", [self.wallet, "latest"], 5), 16)
             except Exception as e:
-                err = e
+                err = (1, e)
         shows = [i for i in (0, 1) if counts[i] is not None and counts[i] > n]         # the endpoints whose count shows the nonce mined
-
-        def down(e):
-            self.alarm(f"the {rec['kind']} {rec['hash']} has no receipt on {self.E.host(self.E.RPC_URL)} and "
-                       + (f"{self.E.host(self.read_alt)} did not answer" if self.read_alt else "the chain's state was not read")
-                       + f" ({self.scrub(e, 80)}): nothing is dropped or settled until it does", quiet_key="alt-" + rec["hash"], every_s=300, pair=x["pair"])
-            return ("held", where)
         if where is not False and not shows:                                            # held unmined, its nonce not mined: waited for
-            return down(err) if err is not None else ("held", where)
+            return down(*err) if err is not None else ("held", where)
         buy = next((t for t in group if t["kind"] == "buy"), None)
         view = None
         if shows:
@@ -1140,12 +1151,13 @@ class Live:
         elif err is None:                                                               # every endpoint answered: none shows the nonce mined
             why = "a node answered 'nonce too low' at it" if low else None
             try:
-                if why is None and self.known(rec["hash"]):
-                    return ("held", None)                                               # BNB_RPC_URL's pool holds it now
-                if why is None and buy is not None and self.token_balance(x["token"], both=True) > 0:
-                    why = "the wallet holds the buy's tokens"                           # (it landed; a count that lags shows it soon)
+                if why is None and any(self.known(t["hash"], alt=False) for t in group):
+                    return ("held", None)                                               # BNB_RPC_URL's pool holds one of them now
             except Exception as e:
-                err = e
+                err = (0, e)
+            if why is None and err is None and buy is not None:
+                v, err = self.state_at([0, 1] if self.read_alt else [0], counts, x["token"], False)
+                why = "the wallet holds the buy's tokens" if err is None and v["any_bal"] > 0 else None    # (it landed; a count that lags shows it soon)
             if err is None:
                 if why is None:
                     return ("never", max(c for c in counts if c is not None))
@@ -1155,44 +1167,43 @@ class Live:
         if err is not None:                                                             # an endpoint did not answer: only the safe half
             if buy is not None and view is not None and view["any_bal"] > 0:
                 return ("state", dict(view, bal=None, allowed=0))                       # a buy whose tokens an endpoint counting its nonce shows: kept
-            return down(err)
+            return down(*err)
         return ("state", view)
 
     def state_at(self, shows, counts, token, approve):
-        """(view, error) for outcome() (b): the token's balance at each endpoint in shows (its count shows the nonce mined), and the
-        allowance at the one with the higher count (BNB_RPC_URL on a tie): {bal, any_bal, allowed} of that one; error when one did not
-        answer (the view then holds the balances read)"""
+        """(view, error) for outcome(): the token's balance at each endpoint in shows, each endpoint's own (never one read for the other),
+        and the allowance at the one with the higher count (BNB_RPC_URL on a tie): {bal, any_bal, allowed} of that one; error (the endpoint,
+        0 or 1, and its error) when one did not answer (the view then holds the balances read)"""
         best = max(shows, key=lambda i: counts[i])
-        bals, allowed = {}, 0
+        bals, allowed, i = {}, 0, best
         try:
             for i in shows:
                 bals[i] = self.token_balance(token, alt=i == 1)
             if approve:
-                allowed = self.allowance(token, alt=best == 1)
+                i = best; allowed = self.allowance(token, alt=best == 1)
         except Exception as e:
-            return {"bal": None, "any_bal": max(bals.values(), default=0), "allowed": 0}, e
+            return {"bal": None, "any_bal": max(bals.values(), default=0), "allowed": 0}, (i, e)
         return {"bal": bals[best], "any_bal": max(bals.values()), "allowed": allowed}, None
 
     def signal(self, rec, k, msg, refused=False):
-        """a send at rec's nonce answered (outcome()'s SIGNAL): 'nonce too low' (that nonce was mined somewhere: by one of ours, only this
-        engine holds the key), or refused (a replacement or a late cancel not taken: 'nonce', 'rejected'). Nothing more is signed at that
-        nonce and both endpoints are asked for its receipt at once; never a count, never a decision"""
+        """a send at rec's nonce answered: 'nonce too low' is outcome()'s SIGNAL (that nonce was mined somewhere: by one of ours, only this
+        engine holds the key): nothing more is signed at that nonce, for good, and both endpoints are asked for its receipt at once; never
+        a count, never a decision. A replacement or a late cancel refused for another reason ('insufficient funds', 'replacement transaction
+        underpriced', 'rejected': refused) is counted (tries(): toward MAX_REPLACE and the cap) and tried again after BNB_REPLACE_S (cancel_at)"""
         if k == "nonce" and "too low" in str(msg).lower():
             rec["nonce_low"] = True
-        if refused and k in ("nonce", "rejected"):
-            rec["refused"] = rec["no_replace"] = rec["no_cancel"] = True
+        elif refused and k in ("nonce", "rejected"):
+            rec["refused"] = (rec.get("refused") or 0) + 1; rec["cancel_at"] = time.time()
 
     def held(self, x, rec, group, age, now, where=None):
         """a transaction a pool holds unmined (outcome()'s HELD: BNB_RPC_URL's; where: only BNB_READ_ALT_URL's): replaced at its nonce
         after BNB_REPLACE_S, its gas price raised 1/8, MAX_REPLACE times (an approve or a sell anew, a cancel, a buy once past its deadline
         by a 0-value transfer to the wallet), then once at BNB_MAX_GWEI with an alarm (a sale is not left pending for good; bounded: one
-        more, at the cap); never after a signal at its nonce (signal()). An alarm while it is pending past twice BNB_RECEIPT_WAIT_S"""
+        more, at the cap, and one more after a restart that raised BNB_MAX_GWEI); a refused one tried again after BNB_REPLACE_S, counted
+        (tries()); never after a 'nonce too low' at its nonce (signal()). An alarm while it is pending past twice BNB_RECEIPT_WAIT_S"""
         due = rec["kind"] in ("approve", "sell", "cancel") or (rec["kind"] == "buy" and rec.get("deadline") is not None and now >= rec["deadline"])
-        if age >= self.REPLACE_S and due and not rec.get("no_replace") and not self.signalled(group):
-            if len(group) <= self.MAX_REPLACE:
-                return self.replace(x, rec)
-            if not any(t.get("capped") for t in group):
-                return self.replace(x, rec, cap=True)
+        if age >= self.REPLACE_S and due and not self.signalled(group) and not self.capped(group) and now - rec.get("cancel_at", 0) >= self.REPLACE_S:
+            return self.replace(x, rec, cap=self.tries(group) >= self.MAX_REPLACE)
         if age > 2 * self.RECEIPT_WAIT_S:
             low = any(t.get("nonce_low") for t in group)
             self.alarm(f"the {rec['kind']} has been pending {age:.0f} s" + (f" (held by {where} only)" if where else "")
@@ -1223,13 +1234,15 @@ class Live:
 
     def replace(self, x, rec, why=None, cap=False):
         """the pending transaction signed anew at its nonce, the gas price raised by 1/8 (the node takes a replacement 10% dearer), up to
-        BNB_MAX_GWEI (cap: at BNB_MAX_GWEI, once, with an alarm): an approve as it was, a sell on the pool now with a fresh deadline, a buy
-        past its deadline or late (why), or a cancel, by a 0-value transfer to the wallet. One refused is a signal (signal(): nothing more is
-        signed at that nonce, both endpoints asked at once)"""
+        BNB_MAX_GWEI (cap: at BNB_MAX_GWEI, once at each BNB_MAX_GWEI, with an alarm): an approve as it was, a sell on the pool now with a
+        fresh deadline, a buy past its deadline or late (why), or a cancel, by a 0-value transfer to the wallet. One refused: signal() ('nonce
+        too low': nothing more signed at that nonce; else tried again after BNB_REPLACE_S). capped (the cap's price) marks the cap reached at
+        this BNB_MAX_GWEI (capped()): the one at the cap tried, or no raise of 1/10 possible under it"""
         hi = int(round(self.MAX_GWEI * 1e9)); gp = hi if cap else min(hi, max(rec["gas_price"] * 9 // 8 + 1, self.gas_price()))
         if gp * 10 < rec["gas_price"] * 11:
-            rec["no_replace"] = rec["no_cancel"] = True
-            self.alarm(f"the {rec['kind']} {rec['hash']} is pending at {rec['gas_price'] / 1e9:g} gwei and cannot be replaced under BNB_MAX_GWEI {self.MAX_GWEI:g}", pair=x["pair"])
+            rec["capped"] = hi
+            self.alarm(f"the {rec['kind']} {rec['hash']} is pending at {rec['gas_price'] / 1e9:g} gwei and cannot be replaced under BNB_MAX_GWEI {self.MAX_GWEI:g} "
+                       "(a replacement must be 1/10 dearer): raise it (up to 5) and restart", pair=x["pair"])
             return
         info = {"replaces": rec["hash"]}
         if rec["kind"] in ("buy", "cancel"):
@@ -1243,7 +1256,7 @@ class Live:
             dl = int(time.time()) + self.DEADLINE_S
             info.update(amount=rec["amount"], min_out=mo, expected=exp, slip=rec["slip"], deadline=dl, why=rec.get("why"))
         if cap:                                                                         # past MAX_REPLACE: once more, at the cap (bounded)
-            rec["no_replace"] = True; info["capped"] = True
+            rec["capped"] = info["capped"] = gp
             self.alarm(f"the {rec['kind']} {rec['hash']} is still pending at its nonce {rec['nonce']} after {self.MAX_REPLACE} replacements "
                        f"({rec['gas_price'] / 1e9:g} gwei): signed anew once more at BNB_MAX_GWEI {self.MAX_GWEI:g} gwei", pair=x["pair"])
         if rec["kind"] == "sell":

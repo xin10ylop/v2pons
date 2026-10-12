@@ -457,7 +457,7 @@ is refused to it), dumps no core, and restarts it 5 s after an exit; at its star
 failure at boot) before it exits. That is a mask on what the service's own code sees, not a wall against hostile code inside it (it still
 runs as root; its own user is open: HANDOFF 16.23). Release bnb-0.2 adds a live path, off unless `BNB_LIVE=1`: section 4k.
 
-Install (once). The code first; the first line prints the two paths and `78` (the tests, the count 4k step 1 expects too; `20` before
+Install (once). The code first; the first line prints the two paths and `82` (the tests, the count 4k step 1 expects too; `20` before
 release bnb-0.2), else stop. If it also prints
 `flip_engine.py CHANGED`, the pull brought changes to the live engine as well, which flip-engine would pick up at its next restart:
 deploy those per their own section first (or ask), then come back here:
@@ -698,7 +698,7 @@ service, even with another positions file) stops at its start (`bnb_positions.js
 
     cd ~/v2pons && OLD=$(git rev-parse HEAD) && git pull -q --ff-only && { git diff --quiet $OLD HEAD -- src/flip_engine.py || echo 'flip_engine.py CHANGED: deploy it per its own section first'; } && ls src/bnb_live.py deploy/bnb_wallet.py contracts/BnbRoundTrip.json && /opt/flip-venv/bin/python3 tests/test_bnb_engine.py | grep -c '^ok'
 
-It prints the three paths and `78`, else stop (`SKIP the live path's tests` means the python has no eth_account: use the venv's). Then the
+It prints the three paths and `82`, else stop (`SKIP the live path's tests` means the python has no eth_account: use the venv's). Then the
 unit (its isolation changed: `/etc/flip` is an empty read-only tmpfs inside it with only `bnb.key` and `bnb.env` bound in, its only
 capability reads files, no core dumps; and a crash restarts in 5 s, a stop waits up to 30 s) and a restart, still dry:
 
@@ -784,7 +784,10 @@ tokens `BNB_RPC_URL` shows, its count showing the buy's nonce mined, is still ke
 serves `eth_getTransactionByHash`, `eth_getBlockReceipts` (or `eth_getTransactionReceipt`), `eth_getTransactionCount` and `eth_call`
 (another public one, or a provider's URL with its key in it: only its host is logged; one with `&`, `|` or `\` in it: edit
 `/etc/flip/bnb.env` by hand), or set it to 0 (`BNB_RPC_URL`'s word alone), then restart (a restart keeps the open positions); one of the
-two lines, each whole (it defines step 4's `set_bnb` itself, so it works in a new SSH session too):
+two lines, each whole (it defines step 4's `set_bnb` itself, so it works in a new SSH session too). When the second host named is
+`BNB_RPC_URL`'s own (the same as the first), a read of `BNB_RPC_URL`'s own failed (its count, a balance, an allowance or its pool: each
+endpoint is read alone, never one for the other): a rate limit passes by itself; for more than a few minutes it is `BNB_RPC_URL`'s
+trouble, not the second endpoint's, and these two lines do not help:
 
     set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }; set_bnb BNB_READ_ALT_URL https://OTHER_ENDPOINT && sudo systemctl restart flip-bnb
     set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }; set_bnb BNB_READ_ALT_URL 0 && sudo systemctl restart flip-bnb
@@ -795,6 +798,20 @@ a node answered 'nonce too low' at its nonce, ...`: the chain has that nonce min
 transaction waits, the sale behind it too, until one of them shows its receipt or counts its nonce (a 'nonce too low' is never taken as
 proof on its own). For more than a few minutes: look at the wallet on bscscan, and point `BNB_READ_ALT_URL` at an endpoint that is up
 to date (the first line above).
+
+The alarm `the sell|approve|cancel 0x... is still pending at its nonce N after 3 replacements (X gwei): signed anew once more at
+BNB_MAX_GWEI 1 gwei`, then `the sell has been pending N s` every 5 minutes (`BNB SELL PENDING` in `--alerts`), or `the ... 0x... is
+pending at X gwei and cannot be replaced under BNB_MAX_GWEI Y (a replacement must be 1/10 dearer): raise it (up to 5) and restart`: a
+node holds the transaction unmined at the most the line may pay (the network asks more, or the pools keep it out). A higher
+`BNB_MAX_GWEI` and a restart sign it anew once more at the new cap (a restart keeps the open positions; then only the alarms again, and
+the next raise once more). Raise it more than a tenth above the price in the alarm, else no node takes it (the same alarm, nothing
+sent); 2 here, up to 5, in one whole line:
+
+    set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }; set_bnb BNB_MAX_GWEI 2 && sudo systemctl restart flip-bnb
+
+A replacement or cancel refused for another reason (`the sell's replacement at nonce N was not taken (rejected: insufficient funds
+...)`, or `nonce: replacement transaction underpriced`) is tried again 8 s later (`BNB_REPLACE_S`) and counts among the 3 and the one
+at the cap; for funds, top the wallet up. Only a 'nonce too low' stops the signing at a nonce for good.
 
 A halt, once understood (its reason is in the file and in the screen):
 
@@ -835,8 +852,9 @@ above it is never sent; 0.0001..0.1), `BNB_SELL_TRIES` (3), `BNB_RECEIPT_WAIT_S`
 this and 15 s past its deadline, a late buy's cancel 15 s past the buy's, unless a count shows its nonce mined, when the chain's state at
 that endpoint decides, or a node answered 'nonce too low' at it, when it is held until a receipt or a count shows it), `BNB_REBROADCAST_S` (5: with no receipt, a copy to every endpoint this
 often, while its deadline is 10 s away or more), `BNB_REPLACE_S` (8: an approve or sell a node holds unmined this long, `BNB_RPC_URL`'s or only
-`BNB_READ_ALT_URL`'s, is signed anew at its nonce, 1/8 dearer, 3 times, then once at `BNB_MAX_GWEI` with an alarm; a buy still pending
-past its deadline is replaced by a 0-value transfer to the wallet),
+`BNB_READ_ALT_URL`'s, is signed anew at its nonce, 1/8 dearer, 3 times, then once at `BNB_MAX_GWEI` with an alarm, and once more
+after a restart with `BNB_MAX_GWEI` raised; one refused for any reason but 'nonce too low' is tried again after this long and counts
+among them; a buy still pending past its deadline is replaced by a 0-value transfer to the wallet),
 `BNB_BUY_LATE` (7 blocks after L+50, by the head read just before the send; a buy not mined by then is cancelled; `BNB_LAG_BLOCKS` must
 stay below it, else the live start stops), `BNB_SELL_LATE` (20
 blocks after L+260, by the head, while the reader lags), `BNB_SEND_URL` (BNB_RPC_URL), `BNB_SEND_ALT_URL`
@@ -873,6 +891,12 @@ receipt did: a receipt at either read endpoint in a block final there, or the ch
 mined. A 'nonce too low', or a replacement or late cancel refused, only stops the signing at that nonce and asks both endpoints at once;
 anything else is held with alarms (a stalled `BNB_RPC_URL` holding our mined sell, with `BNB_READ_ALT_URL` 0, had the sell sent again
 26 to 32 times and the line halted; it now waits for the receipt). Step 5's two lines define `set_bnb` themselves (78 tests).
+
+Round 6 (HANDOFF 16.23 has the list): only a 'nonce too low' stops the signing at a nonce; a replacement or cancel refused for another
+reason is tried again after `BNB_REPLACE_S` and counts (round 5 stopped it for good: a sale left pending for hours); what decides a
+transaction with no receipt reads each endpoint alone (a failed read of `BNB_RPC_URL` was answered by the second endpoint's stale view,
+and a mined sell was sold again); a transaction held at `BNB_MAX_GWEI` is signed anew once more after a restart with it raised (step 5;
+before, nothing was ever sent again) (82 tests).
 
 ## 5. Daily
 
