@@ -1,0 +1,121 @@
+
+######## S1 (166 core pools in 12 h)
+
+== pool 0x16fbfb6b863f100a launched 10-12 04:43:27 UTC block 86401922 by 0x43370350f0a1c28aba50545fb34722b06ae25627 via 0x5ff137d4 (4324 B, value 0); quote USDG, coin 0xae66cd12c1; fee 8388608 ts 8 hook 0x4e346895
+   launch tx: 22 ModifyLiquidity (owner ['0x4e346895'], range -380824..166216); no swap in the launch tx
+   after +600 to the head (+396657): 2 swaps, first at +607 (buy 0.00058 by 0xafa54e69), largest 0.0006 at +607; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0x25a7019f9ac1e343 launched 10-12 14:20:55 UTC block 86739827 by 0x4337070ac081475a9a04143106893d2606da2eed via 0x5ff137d4 (4324 B, value 0); quote USDG, coin 0x3b671dd8de; fee 8388608 ts 8 hook 0x4e346895
+   launch tx: 22 ModifyLiquidity (owner ['0x4e346895'], range -166216..380824); no swap in the launch tx
+   +373  BUY  0.000455 ETH-eq  0xafa54e6945 via 0x5399d94d:814920c0  price x1.000
+   +462  SELL 0.000450 ETH-eq  0xafa54e6945 via 0x9797bffb:c3c16ee4  price x1.000
+   after +600 to the head (+58752): 2 swaps, first at +4263 (buy 0.00039 by 0x738389ef), largest 0.0004 at +4263; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0x871ea520d8a4224b launched 10-12 15:55:52 UTC block 86795379 by 0x4337050608d02173feea2e27ba65a1af0f948538 via 0x5ff137d4 (4324 B, value 0); quote WETH, coin 0xa7c1a70197; fee 8388608 ts 8 hook 0x4e346895
+   launch tx: 22 ModifyLiquidity (owner ['0x4e346895'], range -380824..166216); no swap in the launch tx
+   after +600 to the head (+3200): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0x1c559ec1d5469aa7 launched 10-12 15:56:03 UTC block 86795488 by 0x43370146366cfea21302962ae3a558d72bbcc487 via 0x5ff137d4 (4324 B, value 0); quote USDG, coin 0xc6ec93bea6; fee 8388608 ts 8 hook 0x4e346895
+   launch tx: 22 ModifyLiquidity (owner ['0x4e346895'], range -380824..166216); no swap in the launch tx
+   after +600 to the head (+3091): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0xe6719a5e792ffc15 launched 10-12 03:57:26 UTC block 86374994 by 0x4337bf7afceef9788a60c4cb98830ed6d8e79fb1 via 0x5ff137d4 (4324 B, value 0); quote USDG, coin 0x26729dfc67; fee 8388608 ts 8 hook 0x4e346895
+   launch tx: 22 ModifyLiquidity (owner ['0x4e346895'], range -166216..380824); no swap in the launch tx
+   after +600 to the head (+423585): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0xfbba91e19de44b23 launched 10-12 03:59:52 UTC block 86376416 by 0x43375ce21e2c538a13bd3b46dd5c6001ca7c9b7c via 0x5ff137d4 (4324 B, value 0); quote USDG, coin 0x5a4d6504ea; fee 8388608 ts 8 hook 0x4e346895
+   launch tx: 22 ModifyLiquidity (owner ['0x4e346895'], range -166216..380824); no swap in the launch tx
+   after +600 to the head (+422163): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+######## S2 (85 core pools in 12 h)
+
+== pool 0x2ea3457a7caf30f2 launched 10-12 06:41:38 UTC block 86471075 by 0xf3b023ab8279a4639a0157db544c75ba259d8f50 via 0xc739229d (900 B, value 0); quote WETH, coin 0xe216e35822; fee 0 ts 200 hook 0x2c668601
+   launch tx: 1 ModifyLiquidity (owner ['0x58daec31'], range -887200..212200); launcher's own buy in the launch tx 0.00149 ETH-eq (price x1.015)
+   +503  BUY  0.002940 ETH-eq  0x9d208d8a7f via 0xf0b7eaaf:39ecce49  price x1.025
+   after +600 to the head (+327504): 2 swaps, first at +1228 (sell 0.00294 by 0x9d208d8a), largest 0.0029 at +1228; price now x1.010, max x1.025; liquidity removals: none
+
+== pool 0xaccedd05f03c2306 launched 10-12 09:15:03 UTC block 86560851 by 0xf3b023ab8279a4639a0157db544c75ba259d8f50 via 0xc739229d (900 B, value 0); quote WETH, coin 0x8357ab6f96; fee 0 ts 200 hook 0x2c668601
+   launch tx: 1 ModifyLiquidity (owner ['0x58daec31'], range -887200..212200); launcher's own buy in the launch tx 0.00198 ETH-eq (price x1.017)
+   after +600 to the head (+237728): 3 swaps, first at +1049 (buy 0.00980 by 0xc072f72a), largest 0.0098 at +1049; price now x1.010, max x1.050; liquidity removals: none
+
+== pool 0x1cacdcb03d23d7be launched 10-12 12:23:05 UTC block 86670875 by 0xe243d2de1988ff91937bd8e0d670420a2c821377 via 0xc739229d (900 B, value 0); quote WETH, coin 0x7f7e651299; fee 0 ts 200 hook 0x2c668601
+   launch tx: 1 ModifyLiquidity (owner ['0x58daec31'], range -887200..212200); launcher's own buy in the launch tx 0.00149 ETH-eq (price x1.015)
+   after +600 to the head (+127704): 3 swaps, first at +5889 (sell 0.00148 by LAUNCHER), largest 0.0015 at +5889; price now x1.010, max x1.015; liquidity removals: none
+
+== pool 0xc1ffeb8564822c69 launched 10-12 13:59:09 UTC block 86727085 by 0x6901126c133e908d25f31cc18afec6e0e45d705c via 0xc739229d (900 B, value 0); quote WETH, coin 0x2773b23925; fee 0 ts 200 hook 0x2c668601
+   launch tx: 1 ModifyLiquidity (owner ['0x58daec31'], range -887200..212200); launcher's own buy in the launch tx 0.03234 ETH-eq (price x1.120)
+   +3    BUY  0.039440 ETH-eq  0xbffebe7825 via 0x88767899:3593564c  price x1.262
+   +488  BUY  0.138028 ETH-eq  0x493e2bf9d6 via 0x88767899:3593564c  price x1.826
+   after +600 to the head (+71494): 250 swaps, first at +667 (buy 0.09317 by 0x5598a2a0), largest 0.6135 at +16042; price now x81.239, max x101.944; liquidity removals: none
+
+== pool 0x4a01c328c2b1d876 launched 10-12 15:43:21 UTC block 86788060 by 0xf3b023ab8279a4639a0157db544c75ba259d8f50 via 0xc739229d (900 B, value 0); quote WETH, coin 0x5b197071aa; fee 0 ts 200 hook 0x2c668601
+   launch tx: 1 ModifyLiquidity (owner ['0x58daec31'], range -887200..212200); launcher's own buy in the launch tx 0.00149 ETH-eq (price x1.015)
+   after +600 to the head (+10519): 1 swaps, first at +5900 (sell 0.00148 by LAUNCHER), largest 0.0015 at +5900; price now x1.010, max x1.015; liquidity removals: none
+
+== pool 0x9262750e4f22dbf5 launched 10-12 15:52:13 UTC block 86793251 by 0xe243d2de1988ff91937bd8e0d670420a2c821377 via 0xc739229d (900 B, value 0); quote WETH, coin 0x0dee3a3c12; fee 0 ts 200 hook 0x2c668601
+   launch tx: 1 ModifyLiquidity (owner ['0x58daec31'], range -887200..212200); launcher's own buy in the launch tx 0.00099 ETH-eq (price x1.013)
+   after +600 to the head (+5328): 1 swaps, first at +5894 (sell 0.00099 by LAUNCHER), largest 0.0010 at +5894; price now x1.010, max x1.013; liquidity removals: none
+
+######## S3 (36 core pools in 12 h)
+
+== pool 0x4039b9642c8a89d2 launched 10-12 14:15:20 UTC block 86736557 by 0x836f53705532e8501b8f0e791edc51ea485a583a via 0xeebb2582 (868 B, value 0.000100683); quote ETH, coin 0xf8699f682c; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeebb2582'], range 87200..207200); no swap in the launch tx
+   +3    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+62022): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0x5d296f33e1a392a4 launched 10-12 14:20:22 UTC block 86739500 by 0x836f53705532e8501b8f0e791edc51ea485a583a via 0xeebb2582 (868 B, value 0.000100683); quote ETH, coin 0x25283c2ca6; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeebb2582'], range 87200..207200); no swap in the launch tx
+   +2    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+59079): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0x627e1c985ac24df2 launched 10-12 11:33:58 UTC block 86642135 by 0x836f53705532e8501b8f0e791edc51ea485a583a via 0xeebb2582 (868 B, value 0.000100683); quote ETH, coin 0x0ca94cf0e9; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeebb2582'], range 87200..207200); no swap in the launch tx
+   +3    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+156444): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0x40c09100f6ecc4bc launched 10-12 11:36:27 UTC block 86643584 by 0x836f53705532e8501b8f0e791edc51ea485a583a via 0xeebb2582 (836 B, value 0.000100683); quote ETH, coin 0x8ef259437f; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeebb2582'], range 87200..207200); no swap in the launch tx
+   +3    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+154995): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0xce33db181258e3f2 launched 10-12 11:36:48 UTC block 86643793 by 0x836f53705532e8501b8f0e791edc51ea485a583a via 0xeebb2582 (836 B, value 0.000100683); quote ETH, coin 0x0279f709ee; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeebb2582'], range 87200..207200); no swap in the launch tx
+   +3    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+154786): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0xf65ad5ee10823d8b launched 10-12 11:38:59 UTC block 86645069 by 0x836f53705532e8501b8f0e791edc51ea485a583a via 0xeebb2582 (868 B, value 0.000100683); quote ETH, coin 0x876bf36a67; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeebb2582'], range 87200..207200); no swap in the launch tx
+   +3    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+153510): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+######## S4 (26 core pools in 12 h)
+
+== pool 0xea62714213f2947e launched 10-12 15:47:33 UTC block 86790514 by 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 via 0xeec51433 (804 B, value 0); quote ETH, coin 0x1e7c45f1cf; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeec51433'], range 132800..201800); no swap in the launch tx
+   +3    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+8065): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0x0ff9707512a6db05 launched 10-12 15:52:37 UTC block 86793480 by 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 via 0xeec51433 (804 B, value 0); quote ETH, coin 0x0227e67095; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeec51433'], range 132800..201800); no swap in the launch tx
+   +3    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+5099): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0xbfb697ab8f05ba5c launched 10-12 13:46:44 UTC block 86719818 by 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 via 0xeb89d7d3 (772 B, value 0); quote ETH, coin 0x11220ee47a; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeb89d7d3'], range 132800..201800); no swap in the launch tx
+   +3    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+78761): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0xd553cb3b4debe5cf launched 10-12 13:51:48 UTC block 86722788 by 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 via 0xeb89d7d3 (740 B, value 0); quote ETH, coin 0x020d7e35ac; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeb89d7d3'], range 132800..201800); no swap in the launch tx
+   +4    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+75791): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0xd38d6ec4e78203e2 launched 10-12 13:56:51 UTC block 86725744 by 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 via 0xeb89d7d3 (772 B, value 0); quote ETH, coin 0xc09e518b8b; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeb89d7d3'], range 132800..201800); no swap in the launch tx
+   +3    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+72835): 0 swaps; price now x1.000, max x1.000; liquidity removals: none
+
+== pool 0xd413d63a18b31b34 launched 10-12 14:01:51 UTC block 86728670 by 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 via 0xeb89d7d3 (804 B, value 0); quote ETH, coin 0xf261a18f89; fee 10000 ts 200 hook 0x00000000
+   launch tx: 1 ModifyLiquidity (owner ['0xeb89d7d3'], range 132800..201800); no swap in the launch tx
+   +4    BUY  0.000002 ETH-eq  sentinel     via 0x88767899:3593564c  price x1.000
+   after +600 to the head (+69909): 0 swaps; price now x1.000, max x1.000; liquidity removals: none

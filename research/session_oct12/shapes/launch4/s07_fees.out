@@ -1,0 +1,55 @@
+== S2 launcher sell: pool 0xb95bdfe4 quote WETH off 5884 from 0xbf2d27ed61c2c6dca26ae9de8f9dfcd317416239 swap-event quote 989999999999999 coin 1622550071934018132322204 buy False swfee 0
+    Swap pool 0xb95bdfe4 a0 989999999999999 a1 -1622550071934018132322204 fee 0
+    log 0x2c668601 0x31daeaf3 data 128 B
+    Transfer 0x0bd7d308 8366a39cc6 -> 2c66860119 9899999999999
+    log 0x2c668601 0x7ac51ab7 data 160 B
+    Transfer 0xea8e21ab bf2d27ed61 -> 8366a39cc6 1622550071934018132322204
+    Transfer 0x0bd7d308 8366a39cc6 -> bf2d27ed61 980100000000000
+== S2 runner first outside buy: pool 0xc1ffeb85 quote WETH off 3 from 0xbffebe7825665c749740ed99ce5ba0edb18b4b17 swap-event quote 39440029936915869 coin 55000000000000002010802838 buy True swfee 0
+    Transfer 0x0bd7d308 0000000000 -> 8876789976 40244928507057009
+    log 0x2c668601 0x31daeaf3 data 128 B
+    Transfer 0x0bd7d308 8366a39cc6 -> 2c66860119 804898570141140
+    log 0x2c668601 0x7ac51ab7 data 160 B
+    Swap pool 0xc1ffeb85 a0 -39440029936915869 a1 55000000000000002010802838 fee 0
+    Transfer 0x0bd7d308 8876789976 -> 8366a39cc6 40244928507057009
+    Transfer 0x2773b239 8366a39cc6 -> bffebe7825 55000000000000002010802838
+== S2 runner first outside sell: pool 0xc1ffeb85 quote WETH off 1089 from 0x51d5826c3b454a65cc7e8e8fddf9670564dde584 swap-event quote 475356260214696 coin 148474043938881511520648 buy False swfee 0
+    Transfer 0x2773b239 51d5826c3b -> 8366a39cc6 148474043938881511520648
+    Swap pool 0xc1ffeb85 a0 475356260214696 a1 -148474043938881511520648 fee 0
+    log 0x2c668601 0x31daeaf3 data 128 B
+    Transfer 0x0bd7d308 8366a39cc6 -> 2c66860119 9507125204292
+    log 0x2c668601 0x7ac51ab7 data 160 B
+    Transfer 0x0bd7d308 8366a39cc6 -> 9689992f5b 465849135010404
+    Transfer 0x0bd7d308 9689992f5b -> 0000000000 465849135010404
+    log 0x6fb4460e 0x393c1cce data 224 B
+    log 0x9689992f 0x5603e2fc data 64 B
+    log 0x9689992f 0xa615c02f data 64 B
+== S1 buy: pool 0x25a7019f quote USDG off 373 from 0xafa54e6945803ec0025bb5adf7dea1e50c32bb41 swap-event quote 1168870 coin 19322995968266 buy True swfee 0
+    log 0x5fc5360d 0x8c5be1e5 data 32 B
+    Swap pool 0x25a7019f a0 19322995968266 a1 -1168870 fee 0
+    log 0xe2aebc98 0x9e08adfc data 32 B
+    Transfer 0x3b671dd8 8366a39cc6 -> e2aebc9875 193229959682
+    Transfer 0x3b671dd8 8366a39cc6 -> 4e3468951d 193229959682
+    Transfer 0x3b671dd8 4e3468951d -> 8366a39cc6 193229959682
+    log 0x4e346895 0x1d9f7b5e data 224 B
+    Transfer 0x3b671dd8 8366a39cc6 -> 6aa80dbbed 19129766008584
+    Transfer 0x5fc5360d 5399d94d2c -> 8366a39cc6 1168870
+    Transfer 0x3b671dd8 6aa80dbbed -> 5399d94d2c 19129766008584
+    log 0x5fc5360d 0x8c5be1e5 data 32 B
+    Transfer 0x3b671dd8 5399d94d2c -> 9797bffb5f 19129766008584
+    log 0x5399d94d 0x84da3a1d data 64 B
+== S1 sell: pool 0x25a7019f quote USDG off 462 from 0xafa54e6945803ec0025bb5adf7dea1e50c32bb41 swap-event quote 1157181 coin 19129766008584 buy False swfee 0
+    log 0x3b671dd8 0x8c5be1e5 data 32 B
+    Transfer 0x3b671dd8 9797bffb5f -> 5399d94d2c 19129766008584
+    log 0x3b671dd8 0x8c5be1e5 data 32 B
+    Swap pool 0x25a7019f a0 -19129766008584 a1 1157181 fee 0
+    Transfer 0x5fc5360d 8366a39cc6 -> e2aebc9875 11571
+    Transfer 0x5fc5360d 8366a39cc6 -> 4e3468951d 11571
+    Transfer 0x5fc5360d 4e3468951d -> 8366a39cc6 11571
+    log 0x4e346895 0x1d9f7b5e data 224 B
+    Transfer 0x5fc5360d 8366a39cc6 -> 6aa80dbbed 1145610
+    Transfer 0x3b671dd8 5399d94d2c -> 8366a39cc6 19129766008584
+    Transfer 0x5fc5360d 6aa80dbbed -> 5399d94d2c 1145610
+    log 0x3b671dd8 0x8c5be1e5 data 32 B
+    log 0x5399d94d 0xcdad0230 data 96 B
+{'posts': 5, 'items': 5, 'r429': 0}

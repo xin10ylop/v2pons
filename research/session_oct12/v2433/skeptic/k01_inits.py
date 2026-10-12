@@ -14,4 +14,4 @@ bt = kc.block_ts_map("k01_bt_cache.jsonl", [r["block"] for r in rows])
 for r in rows:
     x = tx.get(r["tx"], {})
     r.update({"t": bt[r["block"]], "from": x.get("from"), "to": x.get("to"), "value": x.get("value"), "clen": (len(x.get("input", "0x")) - 2) // 2, "sel": x.get("input", "")[:10], "nonce": x.get("nonce"), "gas": x.get("gas")})
-json.dump({"head": head, "rows": rows}, open(kc.p("k01_inits_cache.json"), "w"))
+open(kc.p("k01_launches_cache.jsonl"), "w").write("".join(json.dumps(r) + "\n" for r in rows))
