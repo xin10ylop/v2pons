@@ -1,0 +1,58 @@
+2.4333 full-range mint: ETH 2.433329, tokens 9.980000e+08, launch tick from sqrtP 198329.95
+
+== value == 2.4333285: 91 launches in 1 clusters
+     91  VB 2.4333 (fee 5000)                                           11 18:03..12 02:06  senders 91  e.g. value 2.433329 sqrtP 1.6045e+33 liq 4.9279e+22 range -887200..887200
+
+== value within 10% of 2.4333: 103 launches in 4 clusters
+     91  VB 2.4333 (fee 5000)                                           11 18:03..12 02:06  senders 91  e.g. value 2.433329 sqrtP 1.6045e+33 liq 4.9279e+22 range -887200..887200
+     10  operator A (0x3194e326)                                        11 20:50..11 23:18  senders 10  e.g. value 2.400000 sqrtP 1.6172e+33 liq 4.8941e+22 range -887200..887200
+      1  other 0x29c5eb12 0x82a55dde 1252B fee 0 ts 1                   12 10:33..12 10:33  senders 1  e.g. value 2.302360 sqrtP 2.5855e+33 liq 3.0686e+22 range 76133..207872
+      1  other 0xe4ca37a4 0x82a55dde 1252B fee 0 ts 1                   12 12:24..12 12:24  senders 1  e.g. value 2.402375 sqrtP 2.5772e+33 liq 3.0784e+22 range 76073..207808
+
+== sqrtP == 2.4333's: 91 launches in 1 clusters
+     91  VB 2.4333 (fee 5000)                                           11 18:03..12 02:06  senders 91  e.g. value 2.433329 sqrtP 1.6045e+33 liq 4.9279e+22 range -887200..887200
+
+== sqrtP within 3% (either orientation): 137 launches in 9 clusters
+     91  VB 2.4333 (fee 5000)                                           11 18:03..12 02:06  senders 91  e.g. value 2.433329 sqrtP 1.6045e+33 liq 4.9279e+22 range -887200..887200
+     30  single-sided 2500/25 (NFT to 0x23f82095)                       11 18:25..12 13:52  senders 17  e.g. value 1.500000 sqrtP 1.5822e+33 liq 5.0074e+22 range -160100..198050
+      6  other 0xd0fd42bd 0xac9650d8 1444B fee 100 ts 1                 12 00:32..12 13:27  senders 6  e.g. value 0.000000 sqrtP 1.5830e+33 liq 1.6680e+22 range -887272..198060
+      5  operator A (0x3194e326)                                        11 20:50..11 23:18  senders 5  e.g. value 2.400000 sqrtP 1.6172e+33 liq 4.8941e+22 range -887200..887200
+      1  other 0x8366a39c 0x6276cbbe 196B fee 836798 ts 9303            11 19:15..11 19:15  senders 1  e.g. value 0.000000 sqrtP 1.5878e+33 liq 0.0000e+00 range None..None
+      1  other 0x1331e909 0x0e4d760a 6756B fee 0 ts 200                 11 19:48..11 19:48  senders 1  e.g. value 0.002500 sqrtP 1.5783e+33 liq 2.0080e+22 range -887200..198000
+      1  other 0x612ac07e 0x68bb0543 420B fee 50 ts 1                   12 03:14..12 03:14  senders 1  e.g. value 0.000000 sqrtP 3.9949e+24 liq 0.0000e+00 range None..None
+      1  other 0xa0374413 0x675535aa 612B fee 0 ts 1 non-ETH            12 13:50..12 13:50  senders 1  e.g. value 0.000600 sqrtP 1.5977e+33 liq 0.0000e+00 range None..None
+      1  other 0xa7972415 0xc5b0c650 1380B fee 0 ts 200                 12 14:05..12 14:05  senders 1  e.g. value 0.000000 sqrtP 1.6263e+33 liq 9.8093e+21 range 98600..198600
+
+== liquidity == 2.4333's: 91 launches in 1 clusters
+     91  VB 2.4333 (fee 5000)                                           11 18:03..12 02:06  senders 91  e.g. value 2.433329 sqrtP 1.6045e+33 liq 4.9279e+22 range -887200..887200
+
+== liquidity within 3%: 127 launches in 4 clusters
+     91  VB 2.4333 (fee 5000)                                           11 18:03..12 02:06  senders 91  e.g. value 2.433329 sqrtP 1.6045e+33 liq 4.9279e+22 range -887200..887200
+     30  single-sided 2500/25 (NFT to 0x23f82095)                       11 18:25..12 13:52  senders 17  e.g. value 1.500000 sqrtP 1.5822e+33 liq 5.0074e+22 range -160100..198050
+      5  operator A (0x3194e326)                                        11 20:50..11 23:18  senders 5  e.g. value 2.400000 sqrtP 1.6172e+33 liq 4.8941e+22 range -887200..887200
+      1  other 0x58daec31 0xac9650d8 1444B fee 10000 ts 200             12 13:40..12 13:40  senders 1  e.g. value 0.000000 sqrtP 1.2540e+33 liq 5.0221e+22 range 154200..193200
+
+== implied ETH (L/sqrtP) within 3% of 2.4333: 103 launches in 4 clusters
+     91  VB 2.4333 (fee 5000)                                           11 18:03..12 02:06  senders 91  e.g. value 2.433329 sqrtP 1.6045e+33 liq 4.9279e+22 range -887200..887200
+      7  other 0xe2182781 0x506aba45 30244B fee 0 ts 60                 11 18:02..12 14:15  senders 1  e.g. value 0.000000 sqrtP 1.7477e+33 liq 5.2420e+22 range 160020..200040
+      4  operator A (0x3194e326)                                        11 20:50..11 23:18  senders 4  e.g. value 2.400000 sqrtP 1.6172e+33 liq 4.8941e+22 range -887200..887200
+      1  other 0xe2182781 0x506aba45 29316B fee 0 ts 60                 12 11:18..12 11:18  senders 1  e.g. value 0.001000 sqrtP 1.7477e+33 liq 5.2420e+22 range 160020..200040
+
+== calldata 1,444 B: 1185 launches in 104 clusters
+    697  VB 3.0                                                         11 18:04..12 14:29  senders 697  e.g. value 3.000000 sqrtP 6.7939e+32 liq 2.5725e+22 range -887200..887200
+    180  VB 5.0                                                         11 18:08..12 14:28  senders 180  e.g. value 5.000000 sqrtP 5.2636e+32 liq 3.3218e+22 range -887200..887200
+     91  VB 2.4333 (fee 5000)                                           11 18:03..12 02:06  senders 91  e.g. value 2.433329 sqrtP 1.6045e+33 liq 4.9279e+22 range -887200..887200
+     32  other 0x58daec31 0xac9650d8 1444B fee 790000 ts 60             11 18:01..12 12:51  senders 1  e.g. value 0.000040 sqrtP 1.4322e+33 liq 7.2310e+17 range -887220..887220
+     32  other 0x58daec31 0xac9650d8 1444B fee 883131 ts 200            11 18:54..12 14:24  senders 2  e.g. value 0.001218 sqrtP 8.2523e+32 liq 1.2683e+19 range -887200..887200
+      8  VB 4.0 (fees 1005x)                                            11 19:39..12 11:56  senders 2  e.g. value 4.000000 sqrtP 3.5633e+31 liq 1.9517e+22 range 123012..125022
+      7  other 0x58daec31 0xac9650d8 1444B fee 10000 ts 200             11 19:47..12 13:57  senders 7  e.g. value 0.000000 sqrtP 3.5572e+32 liq 1.6870e+22 range 135800..168000
+      7  other 0x58daec31 0xac9650d8 1444B fee 200000 ts 2000           11 21:00..12 12:10  senders 7  e.g. value 0.001305 sqrtP 4.0754e+32 liq 1.2708e+20 range 170000..172000
+      6  other 0x58daec31 0xac9650d8 1444B fee 3000 ts 60               11 19:16..12 14:18  senders 6  e.g. value 0.000000 sqrtP 1.2549e+32 liq 4.7477e+21 range 115080..147300
+      6  other 0xd0fd42bd 0xac9650d8 1444B fee 100 ts 1                 12 00:32..12 13:27  senders 6  e.g. value 0.000000 sqrtP 1.5830e+33 liq 1.6680e+22 range -887272..198060
+      6  other 0x58daec31 0xac9650d8 1444B fee 900000 ts 9000           12 06:05..12 07:43  senders 1  e.g. value 0.000069 sqrtP 4.3437e+32 liq 3.7992e+17 range -882000..882000
+      4  other 0x58daec31 0xac9650d8 1444B fee 700000 ts 7000           11 20:35..12 03:24  senders 3  e.g. value 0.000402 sqrtP 6.4579e+32 liq 3.2726e+18 range -882000..882000
+      3  other 0x58daec31 0xac9650d8 1444B fee 600000 ts 6000           11 20:32..11 21:03  senders 3  e.g. value 0.000751 sqrtP 6.5571e+32 liq 6.2148e+18 range -882000..882000
+      3  other 0x58daec31 0xac9650d8 1444B fee 965000 ts 200            11 23:41..12 09:30  senders 1  e.g. value 0.000018 sqrtP 8.6291e+33 liq 1.9481e+18 range -887200..887200
+
+== fee 2500 ts 50 or fee 5000 ts 100: 91 launches in 1 clusters
+     91  VB 2.4333 (fee 5000)                                           11 18:03..12 02:06  senders 91  e.g. value 2.433329 sqrtP 1.6045e+33 liq 4.9279e+22 range -887200..887200

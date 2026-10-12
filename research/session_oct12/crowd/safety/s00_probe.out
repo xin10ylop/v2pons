@@ -1,0 +1,10 @@
+head 86764358 10-12 15:03:14 base fee 0.0206 gwei
+WETH/USDG fee 100: 0x52e65b17fb6e5ba00ed806f37afcd2daa50271ca L 3.549e+18 ETH = $2,523.53
+WETH/USDG fee 500: 0x69bfaf19c9f377bb306a89aed9f6b07e2c1a8d9a L 1.015e+18 ETH = $2,522.67
+WETH/USDG fee 3000: 0xa9188730fe85be88ad499d7d52b099e800fb0334 L 4.428e+17 ETH = $2,518.81
+ETH price used: $2,523.53
+      1000 blocks back (0.0 h): code 1764 bytes, totalSupply call -> 0x000000000000000000...
+    100000 blocks back: {"code": -32000, "message": "historical state 9215e5517b7420ce7a16d21476d3c81ddbbc1f9d5540f724a83f78208eb42b0e is not available"}
+    900000 blocks back: {"code": -32000, "message": "historical state 143a2a13bd218913be165b465e110036a76d7525cdb4bb7ef14e391fd7e26585 is not available"}
+   1700000 blocks back: {"code": -32000, "message": "historical state 610e3ed31d3bc9a0c541d114dff5a71c7648961274e2875b7488c3c4a3e1d490 is not available"}
+{'posts': 16, 'items': 16, 'r429': 0}

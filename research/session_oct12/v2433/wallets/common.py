@@ -49,7 +49,8 @@ def compact_block(b):
     return {"n": int(b["number"], 16), "ts": int(b["timestamp"], 16),
             "txs": [{"h": t["hash"], "f": t["from"].lower(), "to": (t.get("to") or "").lower(), "v": str(int(t["value"], 16)), "nonce": int(t["nonce"], 16),
                      "sel": t["input"][:10], "len": (len(t["input"]) - 2) // 2, "type": t.get("type"),
-                     "inp": t["input"] if (len(t["input"]) <= 4000) else t["input"][:4000]} for t in b["transactions"]]}
+                     "inp": t["input"][:1000] if (t.get("to") or "").lower() in KEEP_INP else ""} for t in b["transactions"]]}
+KEEP_INP = {"0x1cbaf24d53fe930fce8eff149fa797d2611da149", "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc", "0xfd1b271f235e5230eaee9d914ccb1af495bfb758"}
 def get_blocks(nums, per=25):
     _load_blk()
     need = sorted(set(n for n in nums if n not in _blk))

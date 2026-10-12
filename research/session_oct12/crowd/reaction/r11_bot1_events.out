@@ -1,0 +1,42 @@
++1 bot present (its contract bought at + 1..+ 2) or not
+  bot          n  814 first real buy by +78 34.9%  median 88  none before the pull 15.6%  pulled<=sell 0  <=150 17.3%  pull median 365  rule mean +8.38% median +0.162%
+  no bot       n  575 first real buy by +78 32.9%  median 93  none before the pull 11.8%  pulled<=sell 1  <=150 10.1%  pull median 671  rule mean +6.31% median +0.099%
+  Fisher pulled <= +150 (bot higher): (8.099516913314303e-05, 0.00013354840842503505)  no real buy before the pull: (0.026964541672916092, 0.04993977214359708)
+10-03
+  bot          n   85 first real buy by +78 21.2%  median 119  none before the pull 27.1%  pulled<=sell 0  <=150 16.5%  pull median 414  rule mean +1.33% median +0.170%
+  no bot       n   54 first real buy by +78 24.1%  median 120  none before the pull 14.8%  pulled<=sell 0  <=150  9.3%  pull median 546  rule mean +0.83% median +0.086%
+10-04
+  bot          n   86 first real buy by +78 22.1%  median 104  none before the pull 31.4%  pulled<=sell 0  <=150 29.1%  pull median 341  rule mean +12.20% median +0.120%
+  no bot       n   67 first real buy by +78 10.4%  median 143  none before the pull 28.4%  pulled<=sell 1  <=150 13.4%  pull median 324  rule mean -0.72% median +0.086%
+10-05
+  bot          n  111 first real buy by +78 27.0%  median 84  none before the pull 33.3%  pulled<=sell 0  <=150 27.0%  pull median 271  rule mean +13.32% median +0.177%
+  no bot       n   27 first real buy by +78 29.6%  median 138  none before the pull 25.9%  pulled<=sell 0  <=150 14.8%  pull median 411  rule mean +8.03% median +0.209%
+10-06
+  bot          n  133 first real buy by +78 32.3%  median 93  none before the pull 17.3%  pulled<=sell 0  <=150 13.5%  pull median 347  rule mean +8.43% median +0.189%
+  no bot       n   46 first real buy by +78 17.4%  median 163  none before the pull 13.0%  pulled<=sell 0  <=150 13.0%  pull median 645  rule mean +4.71% median +0.055%
+10-07
+  bot          n   84 first real buy by +78 50.0%  median 77  none before the pull  3.6%  pulled<=sell 0  <=150 10.7%  pull median 413  rule mean +13.33% median +3.394%
+  no bot       n   78 first real buy by +78 37.2%  median 85  none before the pull  9.0%  pulled<=sell 0  <=150 12.8%  pull median 702  rule mean +7.80% median +0.139%
+10-08
+  bot          n   61 first real buy by +78 34.4%  median 93  none before the pull  6.6%  pulled<=sell 0  <=150 18.0%  pull median 421  rule mean +8.49% median +0.141%
+  no bot       n   77 first real buy by +78 36.4%  median 85  none before the pull 15.6%  pulled<=sell 0  <=150  7.8%  pull median 774  rule mean +5.02% median +0.147%
+10-09
+  bot          n   62 first real buy by +78 43.5%  median 86  none before the pull  3.2%  pulled<=sell 0  <=150 14.5%  pull median 285  rule mean +5.27% median +0.114%
+  no bot       n   69 first real buy by +78 43.5%  median 83  none before the pull  0.0%  pulled<=sell 0  <=150  8.7%  pull median 1004  rule mean +7.27% median +0.099%
+10-10
+  bot          n   68 first real buy by +78 47.1%  median 81  none before the pull  2.9%  pulled<=sell 0  <=150 16.2%  pull median 501  rule mean +4.21% median +0.125%
+  no bot       n   64 first real buy by +78 34.4%  median 99  none before the pull  4.7%  pulled<=sell 0  <=150  9.4%  pull median 795  rule mean +6.60% median +0.059%
+10-11
+  bot          n   84 first real buy by +78 44.0%  median 84  none before the pull  4.8%  pulled<=sell 0  <=150 13.1%  pull median 589  rule mean +5.35% median +0.155%
+  no bot       n   63 first real buy by +78 42.9%  median 100  none before the pull  7.9%  pulled<=sell 0  <=150  9.5%  pull median 756  rule mean +5.58% median +0.129%
+10-12
+  bot          n   40 first real buy by +78 37.5%  median 89  none before the pull  5.0%  pulled<=sell 0  <=150  7.5%  pull median 454  rule mean +9.02% median +0.113%
+  no bot       n   30 first real buy by +78 56.7%  median 61  none before the pull  3.3%  pulled<=sell 0  <=150  0.0%  pull median 1433  rule mean +30.89% median +1.001%
+
+pull relative to the first real buy (pools with one before the pull), bot / no bot
+  bot     n 687: pull - first real buy p5/10/25/50 47/63/117/323; <= +20: 3 (0.4%)   <= +40: 24 (3.5%)   <= +60: 62 (9.0%)   <= +100: 148 (21.5%)   <= +150: 236 (34.4%)   <= +300: 333 (48.5%)
+  no bot  n 507: pull - first real buy p5/10/25/50 55/72/156/599; <= +20: 0 (0.0%)   <= +40: 6 (1.2%)   <= +60: 37 (7.3%)   <= +100: 89 (17.6%)   <= +150: 122 (24.1%)   <= +300: 177 (34.9%)
+
+no real buy before the pull: when the pull came, bot / no bot
+  bot     n 127: pull p5/10/25/50 90/95/115/140; <= 80: 0, <= 100: 18, <= 150: 73
+  no bot  n 68: pull p5/10/25/50 96/114/137/216; <= 80: 1, <= 100: 5, <= 150: 22

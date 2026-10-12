@@ -1,0 +1,11 @@
+head 86764763 10-12 15:03:55; start 84562145 10-10 00:00:00; 9.70 blocks/s
+PoolCreated 687; fee 100 with WETH 565
+v3crowd-shaped launches 349 (WETH token0 338, token1 11)
+  per UTC day: [('10-10', 132), ('10-11', 147), ('10-12', 70)]
+  launch wallets distinct 349; launch nonce [(2, 245), (3, 101), (4, 2), (12, 1)]
+  token deployed by the launch wallet at nonce: [(0, 248), (1, 98), (10, 1), (2, 2)]
+  recipient == launch wallet: Counter({True: 349})
+other fee-100 WETH pool creators: [(('0x73991a25', '13ead562', 132), 75), (('0x73991a25', 'ac9650d8', 740), 8), (('0x73991a25', 'ac9650d8', 836), 4), (('0x1d2fbecd', 'd27d1e00', 548), 1), (('0xdf142458', 'd27d1e00', 356), 1), (('0x1c38b956', 'd27d1e00', 1828), 1), (('0xf9045b6e', 'd27d1e00', 612), 1), (('0x97d10b0a', 'd27d1e00', 1828), 1), (('0x258f352b', 'd27d1e00', 356), 1), (('0x96ed2585', 'd27d1e00', 1828), 1)]
+NPM mints from tick -887272: 564; on fee-100 WETH pools created in the window 547; on v3crowd pools 338; mint tx != the pool's creating tx: 72 (on v3crowd pools 0)
+NPM mints up to tick 887272 on fee-100 WETH pools: 18; mint tx != creating tx: 3
+{'posts': 415, 'items': 1282, 'r429': 42}

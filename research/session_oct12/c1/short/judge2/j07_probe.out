@@ -1,0 +1,106 @@
+(1) robustness, mix scenario, $ per attempt at $5
+   max_blocks 400 holder regime hold 25      : +0.068; leave-one-out +0.045..+0.071; without the 3 best +0.006; median attempt -0.0045; best 3 [0.735, 0.673, 0.475]
+   max_blocks 400 holder regime hold 30      : +0.089; leave-one-out +0.065..+0.092; without the 3 best +0.028; median attempt -0.0045; best 3 [0.767, 0.735, 0.405]
+   max_blocks 400 holder regime tp 4% cap 30 : +0.062; leave-one-out +0.047..+0.065; without the 3 best +0.027; median attempt -0.0045; best 3 [0.495, 0.376, 0.26]
+   max_blocks 400 all triggered hold 25      : +0.054; leave-one-out +0.050..+0.054; without the 3 best +0.043; median attempt -0.0045; best 3 [0.735, 0.673, 0.601]
+   max_blocks 400 all triggered hold 30      : +0.070; leave-one-out +0.065..+0.071; without the 3 best +0.057; median attempt -0.0045; best 3 [1.111, 0.767, 0.735]
+   max_blocks 400 all triggered tp 4% cap 30 : +0.055; leave-one-out +0.049..+0.056; without the 3 best +0.044; median attempt -0.0045; best 3 [1.111, 0.6, 0.512]
+   max_blocks 100 holder regime hold 25      : +0.084; leave-one-out +0.033..+0.091; without the 3 best -0.009; median attempt -0.0101; best 3 [0.735, 0.475, 0.055]
+   max_blocks 100 holder regime hold 30      : +0.121; leave-one-out +0.072..+0.132; without the 3 best +0.001; median attempt -0.0090; best 3 [0.767, 0.735, 0.189]
+   max_blocks 100 holder regime tp 4% cap 30 : +0.058; leave-one-out +0.034..+0.064; without the 3 best +0.001; median attempt -0.0090; best 3 [0.376, 0.244, 0.189]
+   max_blocks 100 all triggered hold 25      : +0.051; leave-one-out +0.042..+0.052; without the 3 best +0.031; median attempt -0.0112; best 3 [0.735, 0.515, 0.513]
+   max_blocks 100 all triggered hold 30      : +0.065; leave-one-out +0.056..+0.066; without the 3 best +0.042; median attempt -0.0108; best 3 [0.767, 0.735, 0.515]
+   max_blocks 100 all triggered tp 4% cap 30 : +0.045; leave-one-out +0.039..+0.046; without the 3 best +0.032; median attempt -0.0108; best 3 [0.512, 0.376, 0.328]
+
+(2) reaction lags on positions bought by T+150: n 22, median 94.0, lognormal mu 4.72 sd 0.65
+   P(lag <= 27) = 0.0155; x P(a reaction pull at all | we hold) 0.8 = 0.0124
+   P(lag <= 32) = 0.0286; x P(a reaction pull at all | we hold) 0.8 = 0.0229
+   P(lag <= 33) = 0.0318; x P(a reaction pull at all | we hold) 0.8 = 0.0255
+   P(lag <= 37) = 0.0463; x P(a reaction pull at all | we hold) 0.8 = 0.0371
+   P(lag <= 42) = 0.0682; x P(a reaction pull at all | we hold) 0.8 = 0.0545
+
+(3) live probe until 100 attempts or the first pull in the hold: E[$] = E[N] x E[$ per attempt]; Monte Carlo 5% / median / 95%, P(net loss)
+   mb 400 holder regime hold 25 q 0.0%: fill 0.76, $/fill +0.092, $/attempt +0.068, E[N] 100.0, P(stopped by a pull) 0.00, E[probe $] +6.83 (MC +6.74; 5% +3.60, 50% +6.66, 95% +10.20; P(loss) 0.00)
+   mb 400 holder regime hold 25 q 0.5%: fill 0.76, $/fill +0.092, $/attempt +0.049, E[N]  83.4, P(stopped by a pull) 0.32, E[probe $] +4.08 (MC +4.04; 5% -4.47, 50% +5.48, 95% +9.76; P(loss) 0.25)
+   mb 400 holder regime hold 25 q 1.0%: fill 0.76, $/fill +0.092, $/attempt +0.030, E[N]  70.3, P(stopped by a pull) 0.53, E[probe $] +2.08 (MC +2.07; 5% -4.98, 50% +2.14, 95% +9.29; P(loss) 0.43)
+   mb 400 holder regime hold 25 q 2.0%: fill 0.76, $/fill +0.092, $/attempt -0.009, E[N]  51.6, P(stopped by a pull) 0.78, E[probe $] -0.48 (MC -0.42; 5% -5.03, 50% -2.07, 95% +8.32; P(loss) 0.66)
+   mb 400 holder regime hold 25 q 3.0%: fill 0.76, $/fill +0.092, $/attempt -0.048, E[N]  39.6, P(stopped by a pull) 0.90, E[probe $] -1.90 (MC -1.83; 5% -5.04, 50% -3.08, 95% +6.82; P(loss) 0.80)
+   mb 400 holder regime hold 25 q 5.0%: fill 0.76, $/fill +0.092, $/attempt -0.126, E[N]  25.8, P(stopped by a pull) 0.98, E[probe $] -3.24 (MC -3.20; 5% -5.05, 50% -3.92, 95% +1.14; P(loss) 0.92)
+   mb 400 holder regime hold 25 q 10.0%: fill 0.76, $/fill +0.092, $/attempt -0.319, E[N]  13.2, P(stopped by a pull) 1.00, E[probe $] -4.21 (MC -4.20; 5% -5.07, 50% -4.49, 95% -2.01; P(loss) 0.99)
+   mb 400 holder regime hold 25 q 20.0%: fill 0.76, $/fill +0.092, $/attempt -0.707, E[N]   6.6, P(stopped by a pull) 1.00, E[probe $] -4.66 (MC -4.67; 5% -5.07, 50% -5.01, 95% -3.46; P(loss) 1.00)
+     break-even q (per fill) 1.76%
+   mb 400 holder regime hold 30 q 0.0%: fill 0.76, $/fill +0.118, $/attempt +0.089, E[N] 100.0, P(stopped by a pull) 0.00, E[probe $] +8.86 (MC +8.79; 5% +5.49, 50% +8.68, 95% +12.49; P(loss) 0.00)
+   mb 400 holder regime hold 30 q 0.5%: fill 0.76, $/fill +0.118, $/attempt +0.069, E[N]  83.4, P(stopped by a pull) 0.32, E[probe $] +5.76 (MC +5.74; 5% -4.16, 50% +7.47, 95% +12.08; P(loss) 0.21)
+   mb 400 holder regime hold 30 q 1.0%: fill 0.76, $/fill +0.118, $/attempt +0.050, E[N]  70.3, P(stopped by a pull) 0.53, E[probe $] +3.49 (MC +3.50; 5% -4.80, 50% +3.84, 95% +11.62; P(loss) 0.37)
+   mb 400 holder regime hold 30 q 2.0%: fill 0.76, $/fill +0.118, $/attempt +0.011, E[N]  51.6, P(stopped by a pull) 0.78, E[probe $] +0.55 (MC +0.62; 5% -5.02, 50% -1.17, 95% +10.39; P(loss) 0.59)
+   mb 400 holder regime hold 30 q 3.0%: fill 0.76, $/fill +0.118, $/attempt -0.028, E[N]  39.6, P(stopped by a pull) 0.90, E[probe $] -1.12 (MC -1.03; 5% -5.03, 50% -2.45, 95% +8.83; P(loss) 0.73)
+   mb 400 holder regime hold 30 q 5.0%: fill 0.76, $/fill +0.118, $/attempt -0.106, E[N]  25.8, P(stopped by a pull) 0.98, E[probe $] -2.74 (MC -2.68; 5% -5.03, 50% -3.55, 95% +2.57; P(loss) 0.87)
+   mb 400 holder regime hold 30 q 10.0%: fill 0.76, $/fill +0.118, $/attempt -0.301, E[N]  13.2, P(stopped by a pull) 1.00, E[probe $] -3.97 (MC -3.96; 5% -5.04, 50% -4.40, 95% -1.25; P(loss) 0.98)
+   mb 400 holder regime hold 30 q 20.0%: fill 0.76, $/fill +0.118, $/attempt -0.691, E[N]   6.6, P(stopped by a pull) 1.00, E[probe $] -4.56 (MC -4.57; 5% -5.05, 50% -4.88, 95% -3.09; P(loss) 1.00)
+     break-even q (per fill) 2.27%
+   mb 400 all triggered hold 25 q 0.0%: fill 0.73, $/fill +0.075, $/attempt +0.054, E[N] 100.0, P(stopped by a pull) 0.00, E[probe $] +5.35 (MC +5.35; 5% +2.96, 50% +5.28, 95% +7.99; P(loss) 0.00)
+   mb 400 all triggered hold 25 q 0.5%: fill 0.73, $/fill +0.075, $/attempt +0.035, E[N]  83.9, P(stopped by a pull) 0.31, E[probe $] +2.92 (MC +2.94; 5% -4.51, 50% +4.42, 95% +7.48; P(loss) 0.27)
+   mb 400 all triggered hold 25 q 1.0%: fill 0.73, $/fill +0.075, $/attempt +0.016, E[N]  71.1, P(stopped by a pull) 0.52, E[probe $] +1.15 (MC +1.26; 5% -4.87, 50% +1.53, 95% +7.25; P(loss) 0.46)
+   mb 400 all triggered hold 25 q 2.0%: fill 0.73, $/fill +0.075, $/attempt -0.021, E[N]  52.6, P(stopped by a pull) 0.77, E[probe $] -1.11 (MC -1.04; 5% -5.02, 50% -2.48, 95% +6.47; P(loss) 0.72)
+   mb 400 all triggered hold 25 q 3.0%: fill 0.73, $/fill +0.075, $/attempt -0.059, E[N]  40.6, P(stopped by a pull) 0.89, E[probe $] -2.37 (MC -2.31; 5% -5.04, 50% -3.47, 95% +5.39; P(loss) 0.85)
+   mb 400 all triggered hold 25 q 5.0%: fill 0.73, $/fill +0.075, $/attempt -0.133, E[N]  26.6, P(stopped by a pull) 0.98, E[probe $] -3.55 (MC -3.49; 5% -5.06, 50% -4.11, 95% -0.15; P(loss) 0.95)
+   mb 400 all triggered hold 25 q 10.0%: fill 0.73, $/fill +0.075, $/attempt -0.320, E[N]  13.6, P(stopped by a pull) 1.00, E[probe $] -4.36 (MC -4.35; 5% -5.06, 50% -4.63, 95% -2.65; P(loss) 1.00)
+   mb 400 all triggered hold 25 q 20.0%: fill 0.73, $/fill +0.075, $/attempt -0.693, E[N]   6.8, P(stopped by a pull) 1.00, E[probe $] -4.73 (MC -4.74; 5% -5.07, 50% -4.98, 95% -3.79; P(loss) 1.00)
+     break-even q (per fill) 1.43%
+   mb 400 all triggered hold 30 q 0.0%: fill 0.73, $/fill +0.098, $/attempt +0.070, E[N] 100.0, P(stopped by a pull) 0.00, E[probe $] +7.04 (MC +7.04; 5% +4.18, 50% +6.97, 95% +10.19; P(loss) 0.00)
+   mb 400 all triggered hold 30 q 0.5%: fill 0.73, $/fill +0.098, $/attempt +0.052, E[N]  83.9, P(stopped by a pull) 0.31, E[probe $] +4.33 (MC +4.36; 5% -4.26, 50% +5.88, 95% +9.67; P(loss) 0.22)
+   mb 400 all triggered hold 30 q 1.0%: fill 0.73, $/fill +0.098, $/attempt +0.033, E[N]  71.1, P(stopped by a pull) 0.52, E[probe $] +2.33 (MC +2.47; 5% -4.74, 50% +3.06, 95% +9.30; P(loss) 0.40)
+   mb 400 all triggered hold 30 q 2.0%: fill 0.73, $/fill +0.098, $/attempt -0.005, E[N]  52.6, P(stopped by a pull) 0.77, E[probe $] -0.25 (MC -0.15; 5% -5.02, 50% -1.67, 95% +8.43; P(loss) 0.64)
+   mb 400 all triggered hold 30 q 3.0%: fill 0.73, $/fill +0.098, $/attempt -0.042, E[N]  40.6, P(stopped by a pull) 0.89, E[probe $] -1.71 (MC -1.63; 5% -5.03, 50% -2.95, 95% +7.38; P(loss) 0.78)
+   mb 400 all triggered hold 30 q 5.0%: fill 0.73, $/fill +0.098, $/attempt -0.117, E[N]  26.6, P(stopped by a pull) 0.98, E[probe $] -3.12 (MC -3.04; 5% -5.05, 50% -3.78, 95% +1.33; P(loss) 0.91)
+   mb 400 all triggered hold 30 q 10.0%: fill 0.73, $/fill +0.098, $/attempt -0.305, E[N]  13.6, P(stopped by a pull) 1.00, E[probe $] -4.16 (MC -4.13; 5% -5.05, 50% -4.51, 95% -1.94; P(loss) 0.99)
+   mb 400 all triggered hold 30 q 20.0%: fill 0.73, $/fill +0.098, $/attempt -0.680, E[N]   6.8, P(stopped by a pull) 1.00, E[probe $] -4.64 (MC -4.64; 5% -5.06, 50% -4.93, 95% -3.46; P(loss) 1.00)
+     break-even q (per fill) 1.88%
+   mb 100 holder regime hold 25 q 0.0%: fill 0.98, $/fill +0.085, $/attempt +0.084, E[N] 100.0, P(stopped by a pull) 0.00, E[probe $] +8.35 (MC +8.36; 5% +4.69, 50% +8.25, 95% +12.33; P(loss) 0.00)
+   mb 100 holder regime hold 25 q 0.5%: fill 0.98, $/fill +0.085, $/attempt +0.058, E[N]  79.2, P(stopped by a pull) 0.39, E[probe $] +4.63 (MC +4.68; 5% -4.48, 50% +6.32, 95% +11.71; P(loss) 0.27)
+   mb 100 holder regime hold 25 q 1.0%: fill 0.98, $/fill +0.085, $/attempt +0.033, E[N]  63.9, P(stopped by a pull) 0.63, E[probe $] +2.13 (MC +2.25; 5% -5.02, 50% +0.99, 95% +11.04; P(loss) 0.45)
+   mb 100 holder regime hold 25 q 2.0%: fill 0.98, $/fill +0.085, $/attempt -0.017, E[N]  43.9, P(stopped by a pull) 0.86, E[probe $] -0.74 (MC -0.63; 5% -5.05, 50% -2.11, 95% +9.23; P(loss) 0.69)
+   mb 100 holder regime hold 25 q 3.0%: fill 0.98, $/fill +0.085, $/attempt -0.067, E[N]  32.2, P(stopped by a pull) 0.95, E[probe $] -2.16 (MC -2.08; 5% -5.06, 50% -3.18, 95% +5.61; P(loss) 0.81)
+   mb 100 holder regime hold 25 q 5.0%: fill 0.98, $/fill +0.085, $/attempt -0.167, E[N]  20.2, P(stopped by a pull) 0.99, E[probe $] -3.38 (MC -3.35; 5% -5.07, 50% -4.02, 95% +0.53; P(loss) 0.93)
+   mb 100 holder regime hold 25 q 10.0%: fill 0.98, $/fill +0.085, $/attempt -0.418, E[N]  10.2, P(stopped by a pull) 1.00, E[probe $] -4.26 (MC -4.24; 5% -5.08, 50% -4.53, 95% -2.03; P(loss) 0.99)
+   mb 100 holder regime hold 25 q 20.0%: fill 0.98, $/fill +0.085, $/attempt -0.920, E[N]   5.1, P(stopped by a pull) 1.00, E[probe $] -4.68 (MC -4.69; 5% -5.07, 50% -5.02, 95% -3.44; P(loss) 1.00)
+     break-even q (per fill) 1.67%
+   mb 100 holder regime hold 30 q 0.0%: fill 0.98, $/fill +0.124, $/attempt +0.121, E[N] 100.0, P(stopped by a pull) 0.00, E[probe $] +12.15 (MC +12.15; 5% +7.79, 50% +12.02, 95% +16.87; P(loss) 0.00)
+   mb 100 holder regime hold 30 q 0.5%: fill 0.98, $/fill +0.124, $/attempt +0.096, E[N]  79.2, P(stopped by a pull) 0.39, E[probe $] +7.62 (MC +7.68; 5% -4.09, 50% +9.77, 95% +16.15; P(loss) 0.20)
+   mb 100 holder regime hold 30 q 1.0%: fill 0.98, $/fill +0.124, $/attempt +0.071, E[N]  63.9, P(stopped by a pull) 0.63, E[probe $] +4.53 (MC +4.67; 5% -4.87, 50% +3.68, 95% +15.31; P(loss) 0.35)
+   mb 100 holder regime hold 30 q 2.0%: fill 0.98, $/fill +0.124, $/attempt +0.020, E[N]  43.9, P(stopped by a pull) 0.86, E[probe $] +0.90 (MC +1.03; 5% -5.02, 50% -0.77, 95% +13.13; P(loss) 0.56)
+   mb 100 holder regime hold 30 q 3.0%: fill 0.98, $/fill +0.124, $/attempt -0.030, E[N]  32.2, P(stopped by a pull) 0.95, E[probe $] -0.97 (MC -0.86; 5% -5.03, 50% -2.27, 95% +9.13; P(loss) 0.69)
+   mb 100 holder regime hold 30 q 5.0%: fill 0.98, $/fill +0.124, $/attempt -0.131, E[N]  20.2, P(stopped by a pull) 0.99, E[probe $] -2.65 (MC -2.60; 5% -5.04, 50% -3.35, 95% +2.62; P(loss) 0.86)
+   mb 100 holder regime hold 30 q 10.0%: fill 0.98, $/fill +0.124, $/attempt -0.384, E[N]  10.2, P(stopped by a pull) 1.00, E[probe $] -3.91 (MC -3.89; 5% -5.05, 50% -4.20, 95% -0.86; P(loss) 0.97)
+   mb 100 holder regime hold 30 q 20.0%: fill 0.98, $/fill +0.124, $/attempt -0.889, E[N]   5.1, P(stopped by a pull) 1.00, E[probe $] -4.53 (MC -4.54; 5% -5.05, 50% -4.99, 95% -3.04; P(loss) 1.00)
+     break-even q (per fill) 2.40%
+   mb 100 all triggered hold 25 q 0.0%: fill 0.88, $/fill +0.059, $/attempt +0.051, E[N] 100.0, P(stopped by a pull) 0.00, E[probe $] +5.08 (MC +5.08; 5% +2.78, 50% +5.00, 95% +7.65; P(loss) 0.00)
+   mb 100 all triggered hold 25 q 0.5%: fill 0.88, $/fill +0.059, $/attempt +0.029, E[N]  81.1, P(stopped by a pull) 0.35, E[probe $] +2.32 (MC +2.25; 5% -4.71, 50% +3.91, 95% +7.20; P(loss) 0.33)
+   mb 100 all triggered hold 25 q 1.0%: fill 0.88, $/fill +0.059, $/attempt +0.006, E[N]  66.8, P(stopped by a pull) 0.58, E[probe $] +0.42 (MC +0.48; 5% -5.02, 50% -0.78, 95% +6.82; P(loss) 0.53)
+   mb 100 all triggered hold 25 q 2.0%: fill 0.88, $/fill +0.059, $/attempt -0.038, E[N]  47.4, P(stopped by a pull) 0.83, E[probe $] -1.80 (MC -1.70; 5% -5.04, 50% -3.06, 95% +5.89; P(loss) 0.78)
+   mb 100 all triggered hold 25 q 3.0%: fill 0.88, $/fill +0.059, $/attempt -0.083, E[N]  35.4, P(stopped by a pull) 0.93, E[probe $] -2.92 (MC -2.85; 5% -5.05, 50% -3.74, 95% +4.37; P(loss) 0.90)
+   mb 100 all triggered hold 25 q 5.0%: fill 0.88, $/fill +0.059, $/attempt -0.171, E[N]  22.6, P(stopped by a pull) 0.99, E[probe $] -3.87 (MC -3.85; 5% -5.07, 50% -4.29, 95% -1.12; P(loss) 0.98)
+   mb 100 all triggered hold 25 q 10.0%: fill 0.88, $/fill +0.059, $/attempt -0.394, E[N]  11.4, P(stopped by a pull) 1.00, E[probe $] -4.50 (MC -4.48; 5% -5.07, 50% -4.75, 95% -2.96; P(loss) 1.00)
+   mb 100 all triggered hold 25 q 20.0%: fill 0.88, $/fill +0.059, $/attempt -0.838, E[N]   5.7, P(stopped by a pull) 1.00, E[probe $] -4.79 (MC -4.78; 5% -5.07, 50% -5.02, 95% -3.99; P(loss) 1.00)
+     break-even q (per fill) 1.14%
+   mb 100 all triggered hold 30 q 0.0%: fill 0.88, $/fill +0.075, $/attempt +0.065, E[N] 100.0, P(stopped by a pull) 0.00, E[probe $] +6.51 (MC +6.50; 5% +3.75, 50% +6.41, 95% +9.44; P(loss) 0.00)
+   mb 100 all triggered hold 30 q 0.5%: fill 0.88, $/fill +0.075, $/attempt +0.043, E[N]  81.1, P(stopped by a pull) 0.35, E[probe $] +3.47 (MC +3.39; 5% -4.56, 50% +5.15, 95% +8.97; P(loss) 0.29)
+   mb 100 all triggered hold 30 q 1.0%: fill 0.88, $/fill +0.075, $/attempt +0.020, E[N]  66.8, P(stopped by a pull) 0.58, E[probe $] +1.37 (MC +1.42; 5% -4.95, 50% +0.33, 95% +8.55; P(loss) 0.48)
+   mb 100 all triggered hold 30 q 2.0%: fill 0.88, $/fill +0.075, $/attempt -0.024, E[N]  47.4, P(stopped by a pull) 0.83, E[probe $] -1.14 (MC -1.02; 5% -5.03, 50% -2.47, 95% +7.38; P(loss) 0.72)
+   mb 100 all triggered hold 30 q 3.0%: fill 0.88, $/fill +0.075, $/attempt -0.069, E[N]  35.4, P(stopped by a pull) 0.93, E[probe $] -2.44 (MC -2.36; 5% -5.04, 50% -3.38, 95% +5.60; P(loss) 0.85)
+   mb 100 all triggered hold 30 q 5.0%: fill 0.88, $/fill +0.075, $/attempt -0.158, E[N]  22.6, P(stopped by a pull) 0.99, E[probe $] -3.57 (MC -3.54; 5% -5.05, 50% -4.09, 95% -0.22; P(loss) 0.95)
+   mb 100 all triggered hold 30 q 10.0%: fill 0.88, $/fill +0.075, $/attempt -0.381, E[N]  11.4, P(stopped by a pull) 1.00, E[probe $] -4.35 (MC -4.33; 5% -5.06, 50% -4.65, 95% -2.51; P(loss) 1.00)
+   mb 100 all triggered hold 30 q 20.0%: fill 0.88, $/fill +0.075, $/attempt -0.827, E[N]   5.7, P(stopped by a pull) 1.00, E[probe $] -4.73 (MC -4.72; 5% -5.06, 50% -4.98, 95% -3.70; P(loss) 1.00)
+     break-even q (per fill) 1.46%
+
+(4) adaptation: q 1% until the operator answers after K filled exits (then the next fill is pulled): E[probe $]
+   mb 400 hold 30, K  3: E[probe $] -4.75, P(loss) 1.00
+   mb 400 hold 30, K  5: E[probe $] -4.56, P(loss) 1.00
+   mb 400 hold 30, K 10: E[probe $] -4.11, P(loss) 1.00
+   mb 400 hold 30, K 20: E[probe $] -3.29, P(loss) 1.00
+   mb 400 hold 30, K 40: E[probe $] -1.84, P(loss) 0.88
+   mb 100 hold 30, K  3: E[probe $] -4.81, P(loss) 1.00
+   mb 100 hold 30, K  5: E[probe $] -4.66, P(loss) 1.00
+   mb 100 hold 30, K 10: E[probe $] -4.32, P(loss) 1.00
+   mb 100 hold 30, K 20: E[probe $] -3.68, P(loss) 1.00
+   mb 100 hold 30, K 40: E[probe $] -2.58, P(loss) 0.96

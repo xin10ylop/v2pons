@@ -15,7 +15,14 @@ CROWD_SHAPES = {("3593564c", 484), ("a0193551", 452), ("49f74a5d", 452)}
 def S(x): x = int(x, 16); return x - (1 << 256) if x >> 255 else x
 def Wd(d, i): return d[2 + 64 * i: 2 + 64 * (i + 1)]
 def utc(ts): return time.strftime("%m-%d %H:%M:%S", time.gmtime(ts))
-def jl(p): return [json.loads(l) for l in open(p)] if os.path.exists(p) else []
+def jl(p):
+    """a .jsonl file's rows; a line still being written (a fetch running) is skipped"""
+    out = []
+    if not os.path.exists(p): return out
+    for l in open(p):
+        try: out.append(json.loads(l))
+        except ValueError: pass
+    return out
 def pct(v, q):
     v = sorted(v)
     return None if not v else v[min(len(v) - 1, int(q * len(v)))]

@@ -1,0 +1,12 @@
+0.0012|2|2: mean +7.32%  bootstrap 90% [+4.89%, +10.05%]  without top 1 +6.57%  top 5 +4.16%  top 10 +2.99%  top 28 (10%) +1.40%  without Oct 12 03:00-03:30 +4.30%
+0.002|2|2: mean +7.60%  bootstrap 90% [+5.17%, +10.34%]  without top 1 +6.86%  top 5 +4.45%  top 10 +3.28%  top 28 (10%) +1.69%  without Oct 12 03:00-03:30 +4.59%
+0.0036|2|2: mean +7.79%  bootstrap 90% [+5.36%, +10.52%]  without top 1 +7.05%  top 5 +4.64%  top 10 +3.47%  top 28 (10%) +1.88%  without Oct 12 03:00-03:30 +4.78%
+0.004|2|2: mean +7.81%  bootstrap 90% [+5.39%, +10.54%]  without top 1 +7.07%  top 5 +4.66%  top 10 +3.50%  top 28 (10%) +1.91%  without Oct 12 03:00-03:30 +4.81%
+0.0058|2|2: mean +7.87%  bootstrap 90% [+5.45%, +10.60%]  without top 1 +7.13%  top 5 +4.73%  top 10 +3.56%  top 28 (10%) +1.97%  without Oct 12 03:00-03:30 +4.87%
+0.0058, entry +2, sell at the END of its landing block (+2): mean +7.97% median -0.047% pulled 0
+0.0058, entry +2, cap 76 (lands +78): mean +6.54% median -0.057% pulled 0
+0.0058, entry +2, cap 70 (lands +72): mean +5.30% median -0.072% pulled 0
+0.0058, entry +2, cap 60 (lands +62): mean +3.30% median -0.090% pulled 0
+0.0058, entry +2, cap 88 (lands +90): mean +9.00% median -0.012% pulled 1
+0.0058, entry +2, cap 98 (lands +100): mean +10.14% median +1.038% pulled 2
+wrote r12_launches.tsv 279 rows

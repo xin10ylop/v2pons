@@ -1,4 +1,4 @@
-"""Polite read-only JSON-RPC to the public node: one POST at a time, >= 0.5 s apart, back-off on 429. Read methods only."""
+"""Polite read-only JSON-RPC to the public node: one POST at a time, >= 0.6 s apart, back-off on 429. Read methods only."""
 import json, time, os, ssl, urllib.request, urllib.error
 RPC = "https://rpc.mainnet.chain.robinhood.com"
 ALLOWED = {"eth_call", "eth_getLogs", "eth_getTransactionByHash", "eth_getTransactionReceipt", "eth_getCode", "eth_getBlockByNumber", "eth_blockNumber", "eth_chainId", "eth_getBalance", "eth_getTransactionCount"}
@@ -10,7 +10,7 @@ def _post(body):
     err = None
     for i in range(8):
         dt = time.time() - _last[0]
-        if dt < 0.5: time.sleep(0.5 - dt)
+        if dt < 0.6: time.sleep(0.6 - dt)
         _last[0] = time.time()
         try:
             d = json.load(urllib.request.urlopen(urllib.request.Request(RPC, json.dumps(body).encode(), H), timeout=60, context=CTX))

@@ -1,0 +1,13 @@
+pools with an engine trigger, usable: 186; left out: {'no router buy >= 0.005 ETH': 20, "not the family's launch (pin: not armed)": 2}
+groups (all T): {('none', None, False): 154, ('holder', 'early', False): 4, ('sold', None, False): 2, ('holder', 'later', False): 14, ('ours', None, False): 5, ('none', None, True): 5, ('holder', 'later', True): 2}
+T offsets: engine T differs from the analyst's T in 7 pools; engine T > 400: 4 ; > 100: 103
+   0x495da375 analyst T +233 -> engine T +310 (0.2178 ETH) none
+   0x0dc552bc analyst T +110 -> engine T +207 (0.0891 ETH) none
+   0x8cfc1640 analyst T +77 -> engine T +187 (0.0199 ETH) none
+   0x2ef8526c analyst T +43 -> engine T +72 (0.1883 ETH) none
+   0x19cae735 analyst T +69 -> engine T +138 (0.0290 ETH) none
+   0x2a578740 analyst T +115 -> engine T +155 (0.7770 ETH) none
+   0x3928e2a0 analyst T +67 -> engine T +145 (0.0158 ETH) none
+
+our 5 fills at dB 2 lag 2, hold 60 (real: +4.02 / +6.66 / -0.01 / +3.46 / -100): [4.02, 6.66, -0.01, 3.46, -100.0] lag 1: [4.02, 6.66, -0.01, 3.46, -100.0]
+our 3 reverted attempts, model at dB 2: [('0x35869115', False, -3.7), ('0xd4654e14', False, -0.87), ('0x266d00f1', False, -3.56)] dB 7: [('0x35869115', False, -3.7), ('0xd4654e14', False, -0.87), ('0x266d00f1', False, -3.56)]

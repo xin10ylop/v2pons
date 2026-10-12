@@ -1,0 +1,7 @@
+all T    : n 22, lags [36, 45, 54, 72, 74, 75, 75, 80]..., lognormal mu 4.72 sd 0.65; hazard at landing buy+27 0.0124, +32 0.0229, +33 0.0255
+T <= 100 : n 11, lags [75, 80, 84, 91, 97, 115, 150, 174]..., lognormal mu 4.98 sd 0.64; hazard at landing buy+27 0.0037, +32 0.0078, +33 0.0088
+T > 100  : n 11, lags [36, 45, 54, 72, 74, 75, 86, 116]..., lognormal mu 4.46 sd 0.58; hazard at landing buy+27 0.0192, +32 0.0364, +33 0.0406
+mb 100 holder regime hold 30 at hazard q 0.0078: $/attempt +0.082, E[N] 70.2, P(stopped by a pull) 0.53, E[probe $] +5.78; MC 5% -4.70 50% +6.39 95% +15.75, P(loss) 0.28
+mb 100 all triggered hold 30 at hazard q 0.0078: $/attempt +0.030, E[N] 72.8, P(stopped by a pull) 0.49, E[probe $] +2.22; MC 5% -4.82 50% +3.25 95% +8.79, P(loss) 0.41
+mb 400 holder regime hold 30 at hazard q 0.0284: $/attempt -0.022, E[N] 41.2, P(stopped by a pull) 0.89, E[probe $] -0.91; MC 5% -5.03 50% -2.38 95% +8.99, P(loss) 0.71
+mb 400 all triggered hold 30 at hazard q 0.0284: $/attempt -0.036, E[N] 42.2, P(stopped by a pull) 0.88, E[probe $] -1.53; MC 5% -5.03 50% -2.80 95% +7.34, P(loss) 0.77

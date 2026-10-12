@@ -1,0 +1,21 @@
+(1) mb 100 hold 25 holder regime n 14 mean +0.0862; 95% CI seeds 1-3 x 50,000: [-0.0107, +0.2345]; [-0.0107, +0.2348]; [-0.0107, +0.2346]
+(1) mb 100 hold 30 holder regime n 14 mean +0.1325; 95% CI seeds 1-3 x 50,000: [-0.0016, +0.3124]; [-0.0016, +0.3128]; [-0.0014, +0.3108]
+(1) mb 400 hold 25 holder regime n 30 mean +0.0615; 95% CI seeds 1-3 x 50,000: [+0.0040, +0.1367]; [+0.0039, +0.1368]; [+0.0038, +0.1368]
+(1) mb 400 hold 30 holder regime n 30 mean +0.1171; 95% CI seeds 1-3 x 50,000: [+0.0288, +0.2263]; [+0.0287, +0.2266]; [+0.0286, +0.2262]
+(2) holders bought T..T+150 in pools with T <= 100, pulled within 600 blocks: lags [75, 80, 91, 150, 174, 273, 359, 457]
+    every triggered pool with T <= 100: earliest pulls after our would-be buy [84, 97, 99, 105, 107, 111]
+(3) $13 (0.0052 ETH) mb 400 hold 30 holder: +0.319 [+0.087, +0.608] fills 23/30
+(3) $13 (0.0052 ETH) mb 400 hold 30 all: +0.208 [+0.137, +0.288] fills 136/185
+(3) $13 (0.0052 ETH) mb 100 hold 30 holder: +0.361 [+0.013, +0.824] fills 14/14
+(3) $13 (0.0052 ETH) mb 100 hold 30 all: +0.188 [+0.096, +0.295] fills 74/84
+(4) 0x5ec68315 our buy block 86131139 (T+2) sell block 86131200: sell landed buy+61 (tx index 2)
+(4) 0xd6180333 our buy block 86132848 (T+2) sell block 86132910: sell landed buy+62 (tx index 1)
+(4) 0x6d80b816 our buy block 86133336 (T+2) sell block 86133398: sell landed buy+62 (tx index 44)
+(4) 0x0e4cc1d8 our buy block 86281237 (T+2) sell block 86281299: sell landed buy+62 (tx index 1)
+(4) reverted 0x5ed06f60 0x35869115 block 86132031
+(4) reverted 0x137f1fdd 0x35869115 block 86132093
+(4) reverted 0x5ed06f60 0xd4654e14 block 86176771
+(4) reverted 0x137f1fdd 0xd4654e14 block 86176833
+(4) reverted 0x5ed06f60 0x266d00f1 block 86233944
+(4) reverted 0x137f1fdd 0x266d00f1 block 86234006
+(4) reverted 0x137f1fdd 0xb47b706f block 86282678

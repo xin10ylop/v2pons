@@ -1,0 +1,36 @@
+  bot     n  814: wave med 0.311 mean 0.403; total buys ETH med 1.222 mean 3.157; buying span (last - first real buy) med 227; pull - last real buy med 80 p10 16
+  no bot  n  575: wave med 0.348 mean 0.560; total buys ETH med 1.736 mean 4.280; buying span (last - first real buy) med 489; pull - last real buy med 115 p10 33
+   Mann-Whitney wave: p 0.912
+   Mann-Whitney total: p 0.00133
+   Mann-Whitney pull - last real buy: p 8.6e-09
+   Mann-Whitney buying span: p 0.000324
+10-03
+  bot     n   85: wave med 0.229 mean 0.316; total buys ETH med 0.845 mean 3.509; buying span (last - first real buy) med 283; pull - last real buy med 114 p10 29
+  no bot  n   54: wave med 0.098 mean 0.518; total buys ETH med 1.125 mean 3.184; buying span (last - first real buy) med 467; pull - last real buy med 109 p10 43
+10-04
+  bot     n   86: wave med 0.308 mean 0.483; total buys ETH med 1.102 mean 3.331; buying span (last - first real buy) med 256; pull - last real buy med 102 p10 13
+  no bot  n   67: wave med 0.476 mean 0.604; total buys ETH med 0.531 mean 3.448; buying span (last - first real buy) med 144; pull - last real buy med 102 p10 37
+10-05
+  bot     n  111: wave med 0.523 mean 0.625; total buys ETH med 1.046 mean 3.378; buying span (last - first real buy) med 171; pull - last real buy med 86 p10 16
+  no bot  n   27: wave med 0.175 mean 0.546; total buys ETH med 0.762 mean 3.918; buying span (last - first real buy) med 296; pull - last real buy med 98 p10 31
+10-06
+  bot     n  133: wave med 0.321 mean 0.373; total buys ETH med 0.937 mean 2.073; buying span (last - first real buy) med 216; pull - last real buy med 67 p10 26
+  no bot  n   46: wave med 0.527 mean 0.541; total buys ETH med 0.928 mean 3.759; buying span (last - first real buy) med 442; pull - last real buy med 194 p10 40
+10-07
+  bot     n   84: wave med 0.415 mean 0.495; total buys ETH med 1.539 mean 3.474; buying span (last - first real buy) med 204; pull - last real buy med 91 p10 19
+  no bot  n   78: wave med 0.347 mean 0.507; total buys ETH med 2.101 mean 3.613; buying span (last - first real buy) med 434; pull - last real buy med 100 p10 34
+10-08
+  bot     n   61: wave med 0.367 mean 0.471; total buys ETH med 1.264 mean 2.970; buying span (last - first real buy) med 185; pull - last real buy med 75 p10 15
+  no bot  n   77: wave med 0.367 mean 0.510; total buys ETH med 2.279 mean 5.776; buying span (last - first real buy) med 1078; pull - last real buy med 215 p10 29
+10-09
+  bot     n   62: wave med 0.319 mean 0.326; total buys ETH med 1.016 mean 2.099; buying span (last - first real buy) med 126; pull - last real buy med 54 p10 17
+  no bot  n   69: wave med 0.276 mean 0.433; total buys ETH med 2.379 mean 5.091; buying span (last - first real buy) med 674; pull - last real buy med 155 p10 35
+10-10
+  bot     n   68: wave med 0.249 mean 0.309; total buys ETH med 2.204 mean 3.792; buying span (last - first real buy) med 285; pull - last real buy med 72 p10 12
+  no bot  n   64: wave med 0.427 mean 0.631; total buys ETH med 1.268 mean 4.223; buying span (last - first real buy) med 387; pull - last real buy med 121 p10 37
+10-11
+  bot     n   84: wave med 0.214 mean 0.245; total buys ETH med 2.614 mean 3.728; buying span (last - first real buy) med 519; pull - last real buy med 76 p10 10
+  no bot  n   63: wave med 0.357 mean 0.635; total buys ETH med 2.482 mean 4.159; buying span (last - first real buy) med 555; pull - last real buy med 97 p10 14
+10-12
+  bot     n   40: wave med 0.273 mean 0.388; total buys ETH med 1.605 mean 4.017; buying span (last - first real buy) med 245; pull - last real buy med 101 p10 12
+  no bot  n   30: wave med 0.145 mean 0.829; total buys ETH med 2.908 mean 5.635; buying span (last - first real buy) med 1243; pull - last real buy med 182 p10 55

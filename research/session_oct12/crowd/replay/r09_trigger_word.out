@@ -1,0 +1,20 @@
+('buy', '0xa28f468c', '3593564c', True) 567
+('buy', '0x80114879', '3593564c', True) 359
+('buy', '0x80114879', 'a0193551', True) 311
+('buy', '0x7feb3ecb', '3593564c', True) 198
+('buy', '0xfc7241d4', '3593564c', True) 166
+('buy', '0xfc7241d4', 'a0193551', True) 149
+('buy', '0xaf9d6fa0', 'a0193551', True) 113
+('buy', '0xd26c8cfc', '3593564c', True) 87
+('buy', '0xa28f468c', 'a0193551', True) 52
+('buy', '0x84021dc2', '3593564c', True) 43
+('buy', '0x71a7629f', '3593564c', True) 43
+('sell', '0x7feb3ecb', '3593564c', False) 33
+('buy', '0x85ce7832', '3593564c', True) 30
+('buy', '0xfc7241d4', '49f74a5d', True) 30
+('buy', '0xa28f468c', '49f74a5d', True) 24
+('buy', '0x84021dc2', 'a0193551', True) 9
+('buy', '0xd26c8cfc', 'a0193551', True) 7
+('buy', '0x80e49ed1', '3593564c', True) 6
+('sell', '0x85ce7832', '3593564c', False) 2
+sells the engine reads as buys (tx, offset, to, sel, the engine's amount, the swap's WETH):

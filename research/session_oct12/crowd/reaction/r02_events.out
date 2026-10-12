@@ -1,0 +1,14 @@
+1389 launches, 1389 to fetch; head 86743912
+0 {'posts': 1, 'items': 10, 'r429': 4}
+200 {'posts': 21, 'items': 210, 'r429': 27}
+400 {'posts': 41, 'items': 410, 'r429': 57}
+600 {'posts': 61, 'items': 610, 'r429': 68}
+800 {'posts': 81, 'items': 810, 'r429': 82}
+1000 {'posts': 101, 'items': 1010, 'r429': 97}
+1200 {'posts': 121, 'items': 1210, 'r429': 125}
+window logs written 1389 {'posts': 139, 'items': 1389, 'r429': 137}
+pools with no Burn by +3000: 300
+burns 0 {'posts': 140, 'items': 1390, 'r429': 138}
+burns 100 {'posts': 240, 'items': 1490, 'r429': 142}
+burns 200 {'posts': 340, 'items': 1590, 'r429': 152}
+done {'posts': 439, 'items': 1689, 'r429': 156}

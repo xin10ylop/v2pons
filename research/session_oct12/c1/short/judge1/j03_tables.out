@@ -1,0 +1,433 @@
+
+== max_blocks 400, buy at top of T+2, sell lag 2 (base)
+  (a) holder regime: attempts 30, fills 23, reverts 7 (minOut 7)
+    hold 10       pulled 0/23  gross of fills +0.87%  survivors +0.87%  $/attempt +0.024 [-0.006, +0.063]  under +2%: 19/23  landing buy+12..12
+    hold 20       pulled 0/23  gross of fills +1.34%  survivors +1.34%  $/attempt +0.042 [+0.002, +0.093]  under +2%: 18/23  landing buy+22..22
+    hold 25       pulled 0/23  gross of fills +1.85%  survivors +1.85%  $/attempt +0.062 [+0.004, +0.135]  under +2%: 18/23  landing buy+27..27
+    hold 30       pulled 0/23  gross of fills +3.30%  survivors +3.30%  $/attempt +0.117 [+0.028, +0.228]  under +2%: 16/23  landing buy+32..32
+    hold 35       pulled 1/23  gross of fills -1.24%  survivors +3.25%  $/attempt -0.057 [-0.443, +0.178]  under +2%: 14/23  landing buy+37..37
+    hold 40       pulled 1/23  gross of fills -0.79%  survivors +3.72%  $/attempt -0.040 [-0.427, +0.196]  under +2%: 12/23  landing buy+42..42
+    hold 60       pulled 2/23  gross of fills -1.63%  survivors +7.74%  $/attempt -0.073 [-0.619, +0.345]  under +2%: 7/23  landing buy+62..62
+    tp 4% cap 30  pulled 0/23  gross of fills +1.81%  survivors +1.81%  $/attempt +0.060 [+0.016, +0.112]  under +2%: 16/23  landing buy+4..32
+    tp 6% cap 30  pulled 0/23  gross of fills +2.46%  survivors +2.46%  $/attempt +0.085 [+0.022, +0.161]  under +2%: 16/23  landing buy+4..32
+    tp 4% cap 40  pulled 0/23  gross of fills +2.96%  survivors +2.96%  $/attempt +0.104 [+0.052, +0.160]  under +2%: 11/23  landing buy+4..42
+    tp 6% cap 40  pulled 0/23  gross of fills +3.61%  survivors +3.61%  $/attempt +0.129 [+0.060, +0.206]  under +2%: 11/23  landing buy+4..42
+  (a') held from T+2 (ours, holders in by T+5): attempts 9, fills 6, reverts 3 (minOut 3)
+    hold 10       pulled 0/6  gross of fills +0.52%  survivors +0.52%  $/attempt +0.008 [-0.011, +0.044]  under +2%: 5/6  landing buy+12..12
+    hold 20       pulled 0/6  gross of fills +1.67%  survivors +1.67%  $/attempt +0.047 [-0.011, +0.159]  under +2%: 5/6  landing buy+22..22
+    hold 25       pulled 0/6  gross of fills +1.67%  survivors +1.67%  $/attempt +0.047 [-0.011, +0.159]  under +2%: 5/6  landing buy+27..27
+    hold 30       pulled 0/6  gross of fills +4.07%  survivors +4.07%  $/attempt +0.127 [-0.009, +0.355]  under +2%: 4/6  landing buy+32..32
+    hold 35       pulled 1/6  gross of fills -16.01%  survivors +0.79%  $/attempt -0.544 [-1.680, +0.057]  under +2%: 5/6  landing buy+37..37
+    hold 40       pulled 1/6  gross of fills -15.43%  survivors +1.48%  $/attempt -0.524 [-1.661, +0.076]  under +2%: 4/6  landing buy+42..42
+    hold 60       pulled 2/6  gross of fills -30.98%  survivors +3.53%  $/attempt -1.044 [-2.730, +0.115]  under +2%: 3/6  landing buy+62..62
+    tp 4% cap 30  pulled 0/6  gross of fills +2.34%  survivors +2.34%  $/attempt +0.069 [-0.009, +0.183]  under +2%: 4/6  landing buy+19..32
+    tp 6% cap 30  pulled 0/6  gross of fills +2.34%  survivors +2.34%  $/attempt +0.069 [-0.009, +0.183]  under +2%: 4/6  landing buy+19..32
+    tp 4% cap 40  pulled 0/6  gross of fills +2.92%  survivors +2.92%  $/attempt +0.089 [-0.006, +0.204]  under +2%: 3/6  landing buy+19..42
+    tp 6% cap 40  pulled 0/6  gross of fills +2.92%  survivors +2.92%  $/attempt +0.089 [-0.006, +0.204]  under +2%: 3/6  landing buy+19..42
+  (b) all triggered: attempts 185, fills 136, reverts 49 (minOut 49)
+    hold 10       pulled 0/136  gross of fills +0.90%  survivors +0.90%  $/attempt +0.024 [+0.010, +0.040]  under +2%: 115/136  landing buy+12..12
+    hold 20       pulled 0/136  gross of fills +1.31%  survivors +1.31%  $/attempt +0.039 [+0.022, +0.058]  under +2%: 108/136  landing buy+22..22
+    hold 25       pulled 0/136  gross of fills +1.62%  survivors +1.62%  $/attempt +0.050 [+0.030, +0.072]  under +2%: 105/136  landing buy+27..27
+    hold 30       pulled 0/136  gross of fills +2.27%  survivors +2.27%  $/attempt +0.074 [+0.047, +0.105]  under +2%: 100/136  landing buy+32..32
+    hold 35       pulled 1/136  gross of fills +1.80%  survivors +2.55%  $/attempt +0.057 [-0.015, +0.108]  under +2%: 96/136  landing buy+37..37
+    hold 40       pulled 1/136  gross of fills +2.42%  survivors +3.18%  $/attempt +0.080 [+0.007, +0.134]  under +2%: 86/136  landing buy+42..42
+    hold 60       pulled 2/136  gross of fills +4.00%  survivors +5.55%  $/attempt +0.138 [+0.036, +0.221]  under +2%: 60/136  landing buy+62..62
+    tp 4% cap 30  pulled 0/136  gross of fills +1.74%  survivors +1.74%  $/attempt +0.055 [+0.035, +0.079]  under +2%: 100/136  landing buy+4..32
+    tp 6% cap 30  pulled 0/136  gross of fills +2.04%  survivors +2.04%  $/attempt +0.066 [+0.042, +0.093]  under +2%: 100/136  landing buy+4..32
+    tp 4% cap 40  pulled 0/136  gross of fills +2.57%  survivors +2.57%  $/attempt +0.085 [+0.061, +0.112]  under +2%: 85/136  landing buy+4..42
+    tp 6% cap 40  pulled 0/136  gross of fills +2.93%  survivors +2.93%  $/attempt +0.099 [+0.070, +0.129]  under +2%: 85/136  landing buy+4..42
+      no holder: attempts 155, fills 113, reverts 42 (minOut 42)
+    hold 10       pulled 0/113  gross of fills +0.91%  survivors +0.91%  $/attempt +0.024 [+0.009, +0.042]  under +2%: 96/113  landing buy+12..12
+    hold 20       pulled 0/113  gross of fills +1.30%  survivors +1.30%  $/attempt +0.038 [+0.020, +0.059]  under +2%: 90/113  landing buy+22..22
+    hold 25       pulled 0/113  gross of fills +1.57%  survivors +1.57%  $/attempt +0.048 [+0.027, +0.071]  under +2%: 87/113  landing buy+27..27
+    hold 30       pulled 0/113  gross of fills +2.07%  survivors +2.07%  $/attempt +0.066 [+0.039, +0.096]  under +2%: 84/113  landing buy+32..32
+    hold 35       pulled 0/113  gross of fills +2.41%  survivors +2.41%  $/attempt +0.079 [+0.049, +0.111]  under +2%: 82/113  landing buy+37..37
+    hold 40       pulled 0/113  gross of fills +3.08%  survivors +3.08%  $/attempt +0.103 [+0.069, +0.139]  under +2%: 74/113  landing buy+42..42
+    hold 60       pulled 0/113  gross of fills +5.15%  survivors +5.15%  $/attempt +0.179 [+0.129, +0.233]  under +2%: 53/113  landing buy+62..62
+    tp 4% cap 30  pulled 0/113  gross of fills +1.73%  survivors +1.73%  $/attempt +0.054 [+0.031, +0.080]  under +2%: 84/113  landing buy+4..32
+    tp 6% cap 30  pulled 0/113  gross of fills +1.95%  survivors +1.95%  $/attempt +0.062 [+0.037, +0.090]  under +2%: 84/113  landing buy+5..32
+    tp 4% cap 40  pulled 0/113  gross of fills +2.49%  survivors +2.49%  $/attempt +0.082 [+0.053, +0.112]  under +2%: 74/113  landing buy+4..42
+    tp 6% cap 40  pulled 0/113  gross of fills +2.79%  survivors +2.79%  $/attempt +0.093 [+0.061, +0.126]  under +2%: 74/113  landing buy+5..42
+
+  regime counts: {'none': 153, 'holder-early': 2, 'sold': 2, 'holder-pre': 2, 'holder-later': 16, 'ours': 5, 'bd13': 5}
+  holder-regime pools:
+    10-11 05:57:48 0x8185f1ea holder-early T +155 rev  pull@buy+7293  (short -7.42%)
+    10-11 06:12:57 0x23a75029 holder-early T +141 rev  pull@buy+31549  (short -6.54%)
+    10-11 13:44:10 0x91620507 holder-pre   T +103 FILL pull@buy+61  hold30 -0.02% hold60 -100.00% tp4c40 -0.02%
+    10-11 17:52:57 0x2eb69a80 holder-later T + 35 FILL pull@buy+192  hold30 +0.05% hold60 +3.13% tp4c40 +0.05%
+    10-11 17:56:42 0xf7e808ab holder-later T + 66 FILL pull@buy+99  hold30 +0.04% hold60 +0.04% tp4c40 +0.04%
+    10-11 19:37:24 0xa52938fa holder-later T + 38 FILL pull@buy+174  hold30 +0.03% hold60 +0.04% tp4c40 +0.03%
+    10-11 19:38:24 0x8d437a11 holder-later T + 32 FILL pull@buy+492  hold30 -0.01% hold60 +0.03% tp4c40 +0.03%
+    10-11 20:25:53 0xcf1d880b holder-pre   T +194 rev  pull@buy+17  (short -5.33%)
+    10-11 20:58:49 0x5ec68315 ours         T + 77 FILL pull@buy+97  hold30 +4.00% hold60 +4.02% tp4c40 +4.01%
+    10-11 21:01:47 0xd6180333 ours         T + 41 FILL pull@buy+115  hold30 -0.02% hold60 +6.66% tp4c40 -0.01%
+    10-11 21:02:38 0x6d80b816 ours         T + 33 FILL pull@buy+65223  hold30 -0.01% hold60 -0.01% tp4c40 -0.01%
+    10-12 01:15:58 0x0e4cc1d8 ours         T + 61 FILL pull@buy+84  hold30 -0.02% hold60 +3.46% tp4c40 +3.45%
+    10-12 01:18:11 0xb47b706f ours         T +155 FILL pull@buy+36  hold30 +20.47% hold60 -100.00% tp4c40 +10.11%
+    10-12 12:33:45 0xd116728e holder-later T +234 FILL pull@buy+2008  hold30 +2.86% hold60 +7.12% tp4c40 +7.12%
+    10-12 12:38:17 0x06c477f7 holder-later T + 94 FILL pull@buy+605  hold30 -0.02% hold60 +6.54% tp4c40 +6.51%
+    10-12 12:47:55 0xc4ff6a75 holder-later T +116 rev  pull@buy+258  (short -4.38%)
+    10-12 12:52:57 0x5e3673f7 holder-later T +131 rev  pull@buy+342  (short -6.59%)
+    10-12 12:53:49 0xdd2faa39 holder-later T +134 rev  pull@buy+None  (short -6.12%)
+    10-12 12:56:07 0x5a9137ee holder-later T +245 FILL pull@buy+18303  hold30 +0.23% hold60 +39.90% tp4c40 +0.23%
+    10-12 13:03:04 0xc6145374 holder-later T +106 rev  pull@buy+361  (short -4.79%)
+    10-12 13:06:22 0xe96620dc holder-later T + 94 FILL pull@buy+360  hold30 +17.03% hold60 +23.21% tp4c40 +5.80%
+    10-12 13:09:41 0x7c7e808e holder-later T + 97 FILL pull@buy+327  hold30 -0.02% hold60 +17.42% tp4c40 +6.97%
+    10-12 13:11:12 0x85318393 holder-later T + 99 FILL pull@buy+None  hold30 +17.76% hold60 +17.76% tp4c40 +8.82%
+    10-12 13:17:50 0x93c057ea bd13         T +109 FILL pull@buy+160  hold30 -0.02% hold60 +2.75% tp4c40 +2.75%
+    10-12 13:20:08 0xb63adb7e bd13         T +148 FILL pull@buy+164  hold30 +3.54% hold60 +3.54% tp4c40 +3.54%
+    10-12 13:24:27 0x35847e2f holder-later T +106 FILL pull@buy+319  hold30 +8.76% hold60 +11.47% tp4c40 +4.92%
+    10-12 13:26:14 0xcae38647 holder-later T + 60 FILL pull@buy+107  hold30 +1.31% hold60 +4.82% tp4c40 +3.72%
+    10-12 13:32:30 0xa407c512 bd13         T +219 FILL pull@buy+188  hold30 -0.02% hold60 +4.66% tp4c40 -0.02%
+    10-12 13:33:41 0x40caa830 bd13         T + 96 FILL pull@buy+1244  hold30 -0.02% hold60 -0.02% tp4c40 -0.02%
+    10-12 13:37:13 0xd6bd637c bd13         T +150 FILL pull@buy+125  hold30 -0.02% hold60 +5.98% tp4c40 -0.02%
+
+== max_blocks 100, buy at top of T+2, sell lag 2 (base)
+  (a) holder regime: attempts 14, fills 14, reverts 0 ()
+    hold 10       pulled 0/14  gross of fills +1.03%  survivors +1.03%  $/attempt +0.041 [-0.012, +0.115]  under +2%: 12/14  landing buy+12..12
+    hold 20       pulled 0/14  gross of fills +1.13%  survivors +1.13%  $/attempt +0.046 [-0.011, +0.120]  under +2%: 12/14  landing buy+22..22
+    hold 25       pulled 0/14  gross of fills +1.94%  survivors +1.94%  $/attempt +0.086 [-0.011, +0.234]  under +2%: 12/14  landing buy+27..27
+    hold 30       pulled 0/14  gross of fills +2.87%  survivors +2.87%  $/attempt +0.132 [-0.002, +0.310]  under +2%: 11/14  landing buy+32..32
+    hold 35       pulled 0/14  gross of fills +3.51%  survivors +3.51%  $/attempt +0.165 [+0.027, +0.335]  under +2%: 9/14  landing buy+37..37
+    hold 40       pulled 0/14  gross of fills +4.25%  survivors +4.25%  $/attempt +0.202 [+0.065, +0.364]  under +2%: 7/14  landing buy+42..42
+    hold 60       pulled 0/14  gross of fills +6.22%  survivors +6.22%  $/attempt +0.300 [+0.125, +0.506]  under +2%: 5/14  landing buy+62..62
+    tp 4% cap 30  pulled 0/14  gross of fills +1.42%  survivors +1.42%  $/attempt +0.060 [-0.002, +0.137]  under +2%: 11/14  landing buy+4..32
+    tp 6% cap 30  pulled 0/14  gross of fills +2.22%  survivors +2.22%  $/attempt +0.100 [-0.002, +0.242]  under +2%: 11/14  landing buy+4..32
+    tp 4% cap 40  pulled 0/14  gross of fills +2.81%  survivors +2.81%  $/attempt +0.130 [+0.053, +0.210]  under +2%: 7/14  landing buy+4..42
+    tp 6% cap 40  pulled 0/14  gross of fills +3.61%  survivors +3.61%  $/attempt +0.170 [+0.059, +0.305]  under +2%: 7/14  landing buy+4..42
+  (a') held from T+2 (ours, holders in by T+5): attempts 4, fills 4, reverts 0 ()
+    hold 10       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+12..12
+    hold 20       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+22..22
+    hold 25       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+27..27
+    hold 30       pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+32..32
+    hold 35       pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+37..37
+    hold 40       pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.011, +0.176]  under +2%: 2/4  landing buy+42..42
+    hold 60       pulled 0/4  gross of fills +3.53%  survivors +3.53%  $/attempt +0.166 [+0.039, +0.282]  under +2%: 1/4  landing buy+62..62
+    tp 4% cap 30  pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+32..32
+    tp 6% cap 30  pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+32..32
+    tp 4% cap 40  pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.011, +0.176]  under +2%: 2/4  landing buy+42..42
+    tp 6% cap 40  pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.011, +0.176]  under +2%: 2/4  landing buy+42..42
+  (b) all triggered: attempts 84, fills 74, reverts 10 (minOut 10)
+    hold 10       pulled 0/74  gross of fills +0.73%  survivors +0.73%  $/attempt +0.022 [+0.002, +0.046]  under +2%: 65/74  landing buy+12..12
+    hold 20       pulled 0/74  gross of fills +1.09%  survivors +1.09%  $/attempt +0.038 [+0.014, +0.067]  under +2%: 61/74  landing buy+22..22
+    hold 25       pulled 0/74  gross of fills +1.34%  survivors +1.34%  $/attempt +0.049 [+0.020, +0.084]  under +2%: 60/74  landing buy+27..27
+    hold 30       pulled 0/74  gross of fills +1.73%  survivors +1.73%  $/attempt +0.066 [+0.031, +0.108]  under +2%: 57/74  landing buy+32..32
+    hold 35       pulled 0/74  gross of fills +1.92%  survivors +1.92%  $/attempt +0.075 [+0.038, +0.116]  under +2%: 55/74  landing buy+37..37
+    hold 40       pulled 0/74  gross of fills +2.60%  survivors +2.60%  $/attempt +0.105 [+0.063, +0.153]  under +2%: 48/74  landing buy+42..42
+    hold 60       pulled 0/74  gross of fills +3.75%  survivors +3.75%  $/attempt +0.155 [+0.108, +0.209]  under +2%: 36/74  landing buy+62..62
+    tp 4% cap 30  pulled 0/74  gross of fills +1.27%  survivors +1.27%  $/attempt +0.046 [+0.022, +0.073]  under +2%: 57/74  landing buy+4..32
+    tp 6% cap 30  pulled 0/74  gross of fills +1.61%  survivors +1.61%  $/attempt +0.061 [+0.029, +0.098]  under +2%: 57/74  landing buy+4..32
+    tp 4% cap 40  pulled 0/74  gross of fills +1.96%  survivors +1.96%  $/attempt +0.076 [+0.047, +0.109]  under +2%: 48/74  landing buy+4..42
+    tp 6% cap 40  pulled 0/74  gross of fills +2.35%  survivors +2.35%  $/attempt +0.093 [+0.057, +0.134]  under +2%: 48/74  landing buy+4..42
+      no holder: attempts 70, fills 60, reverts 10 (minOut 10)
+    hold 10       pulled 0/60  gross of fills +0.65%  survivors +0.65%  $/attempt +0.018 [-0.001, +0.043]  under +2%: 53/60  landing buy+12..12
+    hold 20       pulled 0/60  gross of fills +1.08%  survivors +1.08%  $/attempt +0.037 [+0.010, +0.067]  under +2%: 49/60  landing buy+22..22
+    hold 25       pulled 0/60  gross of fills +1.20%  survivors +1.20%  $/attempt +0.042 [+0.015, +0.073]  under +2%: 48/60  landing buy+27..27
+    hold 30       pulled 0/60  gross of fills +1.47%  survivors +1.47%  $/attempt +0.053 [+0.023, +0.088]  under +2%: 46/60  landing buy+32..32
+    hold 35       pulled 0/60  gross of fills +1.55%  survivors +1.55%  $/attempt +0.057 [+0.025, +0.093]  under +2%: 46/60  landing buy+37..37
+    hold 40       pulled 0/60  gross of fills +2.22%  survivors +2.22%  $/attempt +0.085 [+0.045, +0.130]  under +2%: 41/60  landing buy+42..42
+    hold 60       pulled 0/60  gross of fills +3.18%  survivors +3.18%  $/attempt +0.126 [+0.084, +0.174]  under +2%: 31/60  landing buy+62..62
+    tp 4% cap 30  pulled 0/60  gross of fills +1.24%  survivors +1.24%  $/attempt +0.043 [+0.018, +0.073]  under +2%: 46/60  landing buy+4..32
+    tp 6% cap 30  pulled 0/60  gross of fills +1.47%  survivors +1.47%  $/attempt +0.053 [+0.023, +0.088]  under +2%: 46/60  landing buy+5..32
+    tp 4% cap 40  pulled 0/60  gross of fills +1.76%  survivors +1.76%  $/attempt +0.066 [+0.035, +0.101]  under +2%: 41/60  landing buy+4..42
+    tp 6% cap 40  pulled 0/60  gross of fills +2.05%  survivors +2.05%  $/attempt +0.078 [+0.042, +0.119]  under +2%: 41/60  landing buy+5..42
+
+== max_blocks 400, buy at T+3 (stress)
+  (a) holder regime: attempts 30, fills 23, reverts 7 (minOut 7)
+    hold 10       pulled 0/23  gross of fills +0.87%  survivors +0.87%  $/attempt +0.024 [-0.006, +0.063]  under +2%: 19/23  landing buy+12..12
+    hold 20       pulled 0/23  gross of fills +1.34%  survivors +1.34%  $/attempt +0.042 [+0.002, +0.093]  under +2%: 18/23  landing buy+22..22
+    hold 25       pulled 0/23  gross of fills +2.69%  survivors +2.69%  $/attempt +0.094 [+0.004, +0.205]  under +2%: 18/23  landing buy+27..27
+    hold 30       pulled 0/23  gross of fills +3.42%  survivors +3.42%  $/attempt +0.122 [+0.033, +0.232]  under +2%: 15/23  landing buy+32..32
+    hold 35       pulled 1/23  gross of fills -1.09%  survivors +3.40%  $/attempt -0.052 [-0.438, +0.183]  under +2%: 13/23  landing buy+37..37
+    hold 40       pulled 1/23  gross of fills -0.79%  survivors +3.72%  $/attempt -0.040 [-0.426, +0.196]  under +2%: 12/23  landing buy+42..42
+    hold 60       pulled 2/23  gross of fills -1.63%  survivors +7.74%  $/attempt -0.073 [-0.619, +0.345]  under +2%: 7/23  landing buy+62..62
+    tp 4% cap 30  pulled 0/23  gross of fills +1.93%  survivors +1.93%  $/attempt +0.064 [+0.020, +0.117]  under +2%: 15/23  landing buy+3..32
+    tp 6% cap 30  pulled 0/23  gross of fills +2.58%  survivors +2.58%  $/attempt +0.090 [+0.027, +0.166]  under +2%: 15/23  landing buy+3..32
+    tp 4% cap 40  pulled 0/23  gross of fills +2.96%  survivors +2.96%  $/attempt +0.104 [+0.052, +0.160]  under +2%: 11/23  landing buy+3..42
+    tp 6% cap 40  pulled 0/23  gross of fills +3.61%  survivors +3.61%  $/attempt +0.129 [+0.060, +0.206]  under +2%: 11/23  landing buy+3..42
+  (a') held from T+2 (ours, holders in by T+5): attempts 9, fills 6, reverts 3 (minOut 3)
+    hold 10       pulled 0/6  gross of fills +0.52%  survivors +0.52%  $/attempt +0.008 [-0.011, +0.044]  under +2%: 5/6  landing buy+12..12
+    hold 20       pulled 0/6  gross of fills +1.67%  survivors +1.67%  $/attempt +0.047 [-0.011, +0.159]  under +2%: 5/6  landing buy+22..22
+    hold 25       pulled 0/6  gross of fills +3.40%  survivors +3.40%  $/attempt +0.105 [-0.011, +0.332]  under +2%: 5/6  landing buy+27..27
+    hold 30       pulled 0/6  gross of fills +4.07%  survivors +4.07%  $/attempt +0.127 [-0.009, +0.355]  under +2%: 4/6  landing buy+32..32
+    hold 35       pulled 1/6  gross of fills -15.43%  survivors +1.48%  $/attempt -0.524 [-1.661, +0.076]  under +2%: 4/6  landing buy+37..37
+    hold 40       pulled 1/6  gross of fills -15.43%  survivors +1.48%  $/attempt -0.524 [-1.661, +0.076]  under +2%: 4/6  landing buy+42..42
+    hold 60       pulled 2/6  gross of fills -30.98%  survivors +3.53%  $/attempt -1.044 [-2.730, +0.115]  under +2%: 3/6  landing buy+62..62
+    tp 4% cap 30  pulled 0/6  gross of fills +2.34%  survivors +2.34%  $/attempt +0.069 [-0.009, +0.183]  under +2%: 4/6  landing buy+18..32
+    tp 6% cap 30  pulled 0/6  gross of fills +2.34%  survivors +2.34%  $/attempt +0.069 [-0.009, +0.183]  under +2%: 4/6  landing buy+18..32
+    tp 4% cap 40  pulled 0/6  gross of fills +2.92%  survivors +2.92%  $/attempt +0.089 [-0.006, +0.204]  under +2%: 3/6  landing buy+18..42
+    tp 6% cap 40  pulled 0/6  gross of fills +2.92%  survivors +2.92%  $/attempt +0.089 [-0.006, +0.204]  under +2%: 3/6  landing buy+18..42
+  (b) all triggered: attempts 185, fills 136, reverts 49 (minOut 49)
+    hold 10       pulled 0/136  gross of fills +0.89%  survivors +0.89%  $/attempt +0.024 [+0.010, +0.039]  under +2%: 116/136  landing buy+12..12
+    hold 20       pulled 0/136  gross of fills +1.32%  survivors +1.32%  $/attempt +0.040 [+0.022, +0.058]  under +2%: 109/136  landing buy+22..22
+    hold 25       pulled 0/136  gross of fills +1.83%  survivors +1.83%  $/attempt +0.058 [+0.035, +0.084]  under +2%: 103/136  landing buy+27..27
+    hold 30       pulled 0/136  gross of fills +2.30%  survivors +2.30%  $/attempt +0.075 [+0.049, +0.105]  under +2%: 99/136  landing buy+32..32
+    hold 35       pulled 1/136  gross of fills +2.02%  survivors +2.78%  $/attempt +0.065 [-0.006, +0.117]  under +2%: 91/136  landing buy+37..37
+    hold 40       pulled 1/136  gross of fills +2.73%  survivors +3.49%  $/attempt +0.091 [+0.018, +0.147]  under +2%: 83/136  landing buy+42..42
+    hold 60       pulled 2/136  gross of fills +3.98%  survivors +5.53%  $/attempt +0.137 [+0.036, +0.220]  under +2%: 60/136  landing buy+62..62
+    tp 4% cap 30  pulled 0/136  gross of fills +1.74%  survivors +1.74%  $/attempt +0.055 [+0.035, +0.077]  under +2%: 99/136  landing buy+3..32
+    tp 6% cap 30  pulled 0/136  gross of fills +2.06%  survivors +2.06%  $/attempt +0.067 [+0.043, +0.093]  under +2%: 99/136  landing buy+3..32
+    tp 4% cap 40  pulled 0/136  gross of fills +2.64%  survivors +2.64%  $/attempt +0.088 [+0.064, +0.114]  under +2%: 82/136  landing buy+3..42
+    tp 6% cap 40  pulled 0/136  gross of fills +3.05%  survivors +3.05%  $/attempt +0.103 [+0.075, +0.133]  under +2%: 82/136  landing buy+3..42
+      no holder: attempts 155, fills 113, reverts 42 (minOut 42)
+    hold 10       pulled 0/113  gross of fills +0.89%  survivors +0.89%  $/attempt +0.023 [+0.008, +0.041]  under +2%: 97/113  landing buy+12..12
+    hold 20       pulled 0/113  gross of fills +1.32%  survivors +1.32%  $/attempt +0.039 [+0.020, +0.060]  under +2%: 91/113  landing buy+22..22
+    hold 25       pulled 0/113  gross of fills +1.65%  survivors +1.65%  $/attempt +0.051 [+0.030, +0.074]  under +2%: 85/113  landing buy+27..27
+    hold 30       pulled 0/113  gross of fills +2.07%  survivors +2.07%  $/attempt +0.066 [+0.040, +0.095]  under +2%: 84/113  landing buy+32..32
+    hold 35       pulled 0/113  gross of fills +2.66%  survivors +2.66%  $/attempt +0.088 [+0.057, +0.120]  under +2%: 78/113  landing buy+37..37
+    hold 40       pulled 0/113  gross of fills +3.44%  survivors +3.44%  $/attempt +0.116 [+0.078, +0.157]  under +2%: 71/113  landing buy+42..42
+    hold 60       pulled 0/113  gross of fills +5.12%  survivors +5.12%  $/attempt +0.177 [+0.128, +0.232]  under +2%: 53/113  landing buy+62..62
+    tp 4% cap 30  pulled 0/113  gross of fills +1.71%  survivors +1.71%  $/attempt +0.053 [+0.031, +0.078]  under +2%: 84/113  landing buy+3..32
+    tp 6% cap 30  pulled 0/113  gross of fills +1.96%  survivors +1.96%  $/attempt +0.062 [+0.037, +0.089]  under +2%: 84/113  landing buy+4..32
+    tp 4% cap 40  pulled 0/113  gross of fills +2.58%  survivors +2.58%  $/attempt +0.085 [+0.057, +0.115]  under +2%: 71/113  landing buy+3..42
+    tp 6% cap 40  pulled 0/113  gross of fills +2.93%  survivors +2.93%  $/attempt +0.098 [+0.067, +0.131]  under +2%: 71/113  landing buy+4..42
+
+== max_blocks 400, sell lag 1 (stress)
+  (a) holder regime: attempts 30, fills 23, reverts 7 (minOut 7)
+    hold 10       pulled 0/23  gross of fills +0.76%  survivors +0.76%  $/attempt +0.020 [-0.010, +0.059]  under +2%: 20/23  landing buy+11..11
+    hold 20       pulled 0/23  gross of fills +1.25%  survivors +1.25%  $/attempt +0.038 [-0.002, +0.089]  under +2%: 19/23  landing buy+21..21
+    hold 25       pulled 0/23  gross of fills +1.85%  survivors +1.85%  $/attempt +0.061 [+0.004, +0.135]  under +2%: 18/23  landing buy+26..26
+    hold 30       pulled 0/23  gross of fills +3.13%  survivors +3.13%  $/attempt +0.111 [+0.024, +0.220]  under +2%: 16/23  landing buy+31..31
+    hold 35       pulled 1/23  gross of fills -1.43%  survivors +3.05%  $/attempt -0.064 [-0.450, +0.170]  under +2%: 14/23  landing buy+36..36
+    hold 40       pulled 1/23  gross of fills -0.79%  survivors +3.72%  $/attempt -0.040 [-0.427, +0.196]  under +2%: 12/23  landing buy+41..41
+    hold 60       pulled 2/23  gross of fills -1.63%  survivors +7.74%  $/attempt -0.073 [-0.619, +0.345]  under +2%: 7/23  landing buy+61..61
+    tp 4% cap 30  pulled 0/23  gross of fills +1.80%  survivors +1.80%  $/attempt +0.060 [+0.016, +0.112]  under +2%: 16/23  landing buy+3..31
+    tp 6% cap 30  pulled 0/23  gross of fills +2.29%  survivors +2.29%  $/attempt +0.079 [+0.018, +0.152]  under +2%: 16/23  landing buy+3..31
+    tp 4% cap 40  pulled 0/23  gross of fills +2.96%  survivors +2.96%  $/attempt +0.104 [+0.052, +0.160]  under +2%: 11/23  landing buy+3..41
+    tp 6% cap 40  pulled 0/23  gross of fills +3.61%  survivors +3.61%  $/attempt +0.129 [+0.060, +0.206]  under +2%: 11/23  landing buy+3..41
+  (a') held from T+2 (ours, holders in by T+5): attempts 9, fills 6, reverts 3 (minOut 3)
+    hold 10       pulled 0/6  gross of fills +0.52%  survivors +0.52%  $/attempt +0.008 [-0.011, +0.044]  under +2%: 5/6  landing buy+11..11
+    hold 20       pulled 0/6  gross of fills +1.67%  survivors +1.67%  $/attempt +0.047 [-0.011, +0.159]  under +2%: 5/6  landing buy+21..21
+    hold 25       pulled 0/6  gross of fills +1.67%  survivors +1.67%  $/attempt +0.047 [-0.011, +0.159]  under +2%: 5/6  landing buy+26..26
+    hold 30       pulled 0/6  gross of fills +4.07%  survivors +4.07%  $/attempt +0.127 [-0.009, +0.355]  under +2%: 4/6  landing buy+31..31
+    hold 35       pulled 1/6  gross of fills -16.01%  survivors +0.79%  $/attempt -0.544 [-1.680, +0.057]  under +2%: 5/6  landing buy+36..36
+    hold 40       pulled 1/6  gross of fills -15.43%  survivors +1.48%  $/attempt -0.524 [-1.661, +0.076]  under +2%: 4/6  landing buy+41..41
+    hold 60       pulled 2/6  gross of fills -30.98%  survivors +3.53%  $/attempt -1.044 [-2.730, +0.115]  under +2%: 3/6  landing buy+61..61
+    tp 4% cap 30  pulled 0/6  gross of fills +2.34%  survivors +2.34%  $/attempt +0.069 [-0.009, +0.183]  under +2%: 4/6  landing buy+18..31
+    tp 6% cap 30  pulled 0/6  gross of fills +2.34%  survivors +2.34%  $/attempt +0.069 [-0.009, +0.183]  under +2%: 4/6  landing buy+18..31
+    tp 4% cap 40  pulled 0/6  gross of fills +2.92%  survivors +2.92%  $/attempt +0.089 [-0.006, +0.204]  under +2%: 3/6  landing buy+18..41
+    tp 6% cap 40  pulled 0/6  gross of fills +2.92%  survivors +2.92%  $/attempt +0.089 [-0.006, +0.204]  under +2%: 3/6  landing buy+18..41
+  (b) all triggered: attempts 185, fills 136, reverts 49 (minOut 49)
+    hold 10       pulled 0/136  gross of fills +0.81%  survivors +0.81%  $/attempt +0.020 [+0.008, +0.035]  under +2%: 116/136  landing buy+11..11
+    hold 20       pulled 0/136  gross of fills +1.28%  survivors +1.28%  $/attempt +0.038 [+0.021, +0.057]  under +2%: 109/136  landing buy+21..21
+    hold 25       pulled 0/136  gross of fills +1.52%  survivors +1.52%  $/attempt +0.047 [+0.028, +0.068]  under +2%: 105/136  landing buy+26..26
+    hold 30       pulled 0/136  gross of fills +1.94%  survivors +1.94%  $/attempt +0.062 [+0.039, +0.088]  under +2%: 100/136  landing buy+31..31
+    hold 35       pulled 1/136  gross of fills +1.68%  survivors +2.43%  $/attempt +0.052 [-0.019, +0.103]  under +2%: 96/136  landing buy+36..36
+    hold 40       pulled 1/136  gross of fills +2.38%  survivors +3.14%  $/attempt +0.078 [+0.005, +0.132]  under +2%: 86/136  landing buy+41..41
+    hold 60       pulled 2/136  gross of fills +3.99%  survivors +5.54%  $/attempt +0.137 [+0.036, +0.220]  under +2%: 61/136  landing buy+61..61
+    tp 4% cap 30  pulled 0/136  gross of fills +1.46%  survivors +1.46%  $/attempt +0.044 [+0.029, +0.062]  under +2%: 100/136  landing buy+3..31
+    tp 6% cap 30  pulled 0/136  gross of fills +1.74%  survivors +1.74%  $/attempt +0.055 [+0.035, +0.077]  under +2%: 100/136  landing buy+3..31
+    tp 4% cap 40  pulled 0/136  gross of fills +2.52%  survivors +2.52%  $/attempt +0.083 [+0.059, +0.110]  under +2%: 85/136  landing buy+3..41
+    tp 6% cap 40  pulled 0/136  gross of fills +2.92%  survivors +2.92%  $/attempt +0.098 [+0.070, +0.128]  under +2%: 85/136  landing buy+3..41
+      no holder: attempts 155, fills 113, reverts 42 (minOut 42)
+    hold 10       pulled 0/113  gross of fills +0.81%  survivors +0.81%  $/attempt +0.021 [+0.007, +0.036]  under +2%: 96/113  landing buy+11..11
+    hold 20       pulled 0/113  gross of fills +1.29%  survivors +1.29%  $/attempt +0.038 [+0.020, +0.058]  under +2%: 90/113  landing buy+21..21
+    hold 25       pulled 0/113  gross of fills +1.46%  survivors +1.46%  $/attempt +0.044 [+0.025, +0.066]  under +2%: 87/113  landing buy+26..26
+    hold 30       pulled 0/113  gross of fills +1.70%  survivors +1.70%  $/attempt +0.053 [+0.031, +0.076]  under +2%: 84/113  landing buy+31..31
+    hold 35       pulled 0/113  gross of fills +2.31%  survivors +2.31%  $/attempt +0.075 [+0.046, +0.107]  under +2%: 82/113  landing buy+36..36
+    hold 40       pulled 0/113  gross of fills +3.02%  survivors +3.02%  $/attempt +0.101 [+0.067, +0.137]  under +2%: 74/113  landing buy+41..41
+    hold 60       pulled 0/113  gross of fills +5.13%  survivors +5.13%  $/attempt +0.178 [+0.128, +0.232]  under +2%: 54/113  landing buy+61..61
+    tp 4% cap 30  pulled 0/113  gross of fills +1.39%  survivors +1.39%  $/attempt +0.041 [+0.024, +0.060]  under +2%: 84/113  landing buy+3..31
+    tp 6% cap 30  pulled 0/113  gross of fills +1.63%  survivors +1.63%  $/attempt +0.050 [+0.030, +0.073]  under +2%: 84/113  landing buy+4..31
+    tp 4% cap 40  pulled 0/113  gross of fills +2.43%  survivors +2.43%  $/attempt +0.079 [+0.051, +0.109]  under +2%: 74/113  landing buy+3..41
+    tp 6% cap 40  pulled 0/113  gross of fills +2.78%  survivors +2.78%  $/attempt +0.092 [+0.061, +0.125]  under +2%: 74/113  landing buy+4..41
+
+== max_blocks 400, sell lag 3 (stress)
+  (a) holder regime: attempts 30, fills 23, reverts 7 (minOut 7)
+    hold 10       pulled 0/23  gross of fills +0.87%  survivors +0.87%  $/attempt +0.024 [-0.006, +0.063]  under +2%: 19/23  landing buy+13..13
+    hold 20       pulled 0/23  gross of fills +1.34%  survivors +1.34%  $/attempt +0.042 [+0.002, +0.093]  under +2%: 18/23  landing buy+23..23
+    hold 25       pulled 0/23  gross of fills +2.69%  survivors +2.69%  $/attempt +0.094 [+0.004, +0.205]  under +2%: 18/23  landing buy+28..28
+    hold 30       pulled 0/23  gross of fills +3.42%  survivors +3.42%  $/attempt +0.122 [+0.033, +0.232]  under +2%: 15/23  landing buy+33..33
+    hold 35       pulled 1/23  gross of fills -1.09%  survivors +3.40%  $/attempt -0.052 [-0.438, +0.183]  under +2%: 13/23  landing buy+38..38
+    hold 40       pulled 1/23  gross of fills -0.79%  survivors +3.72%  $/attempt -0.040 [-0.426, +0.196]  under +2%: 12/23  landing buy+43..43
+    hold 60       pulled 2/23  gross of fills -1.63%  survivors +7.74%  $/attempt -0.073 [-0.619, +0.345]  under +2%: 7/23  landing buy+63..63
+    tp 4% cap 30  pulled 0/23  gross of fills +2.09%  survivors +2.09%  $/attempt +0.071 [+0.023, +0.128]  under +2%: 15/23  landing buy+5..33
+    tp 6% cap 30  pulled 0/23  gross of fills +2.58%  survivors +2.58%  $/attempt +0.090 [+0.027, +0.166]  under +2%: 15/23  landing buy+5..33
+    tp 4% cap 40  pulled 0/23  gross of fills +3.12%  survivors +3.12%  $/attempt +0.110 [+0.055, +0.171]  under +2%: 11/23  landing buy+5..43
+    tp 6% cap 40  pulled 0/23  gross of fills +3.61%  survivors +3.61%  $/attempt +0.129 [+0.060, +0.207]  under +2%: 11/23  landing buy+5..43
+  (a') held from T+2 (ours, holders in by T+5): attempts 9, fills 6, reverts 3 (minOut 3)
+    hold 10       pulled 0/6  gross of fills +0.52%  survivors +0.52%  $/attempt +0.008 [-0.011, +0.044]  under +2%: 5/6  landing buy+13..13
+    hold 20       pulled 0/6  gross of fills +1.67%  survivors +1.67%  $/attempt +0.047 [-0.011, +0.159]  under +2%: 5/6  landing buy+23..23
+    hold 25       pulled 0/6  gross of fills +3.40%  survivors +3.40%  $/attempt +0.105 [-0.011, +0.332]  under +2%: 5/6  landing buy+28..28
+    hold 30       pulled 0/6  gross of fills +4.07%  survivors +4.07%  $/attempt +0.127 [-0.009, +0.355]  under +2%: 4/6  landing buy+33..33
+    hold 35       pulled 1/6  gross of fills -15.43%  survivors +1.48%  $/attempt -0.524 [-1.661, +0.076]  under +2%: 4/6  landing buy+38..38
+    hold 40       pulled 1/6  gross of fills -15.43%  survivors +1.48%  $/attempt -0.524 [-1.661, +0.076]  under +2%: 4/6  landing buy+43..43
+    hold 60       pulled 2/6  gross of fills -30.98%  survivors +3.53%  $/attempt -1.044 [-2.730, +0.115]  under +2%: 3/6  landing buy+63..63
+    tp 4% cap 30  pulled 0/6  gross of fills +2.34%  survivors +2.34%  $/attempt +0.069 [-0.009, +0.183]  under +2%: 4/6  landing buy+20..33
+    tp 6% cap 30  pulled 0/6  gross of fills +2.34%  survivors +2.34%  $/attempt +0.069 [-0.009, +0.183]  under +2%: 4/6  landing buy+20..33
+    tp 4% cap 40  pulled 0/6  gross of fills +2.92%  survivors +2.92%  $/attempt +0.089 [-0.006, +0.204]  under +2%: 3/6  landing buy+20..43
+    tp 6% cap 40  pulled 0/6  gross of fills +2.92%  survivors +2.92%  $/attempt +0.089 [-0.006, +0.204]  under +2%: 3/6  landing buy+20..43
+  (b) all triggered: attempts 185, fills 136, reverts 49 (minOut 49)
+    hold 10       pulled 0/136  gross of fills +0.91%  survivors +0.91%  $/attempt +0.024 [+0.010, +0.040]  under +2%: 115/136  landing buy+13..13
+    hold 20       pulled 0/136  gross of fills +1.35%  survivors +1.35%  $/attempt +0.040 [+0.023, +0.059]  under +2%: 108/136  landing buy+23..23
+    hold 25       pulled 0/136  gross of fills +1.85%  survivors +1.85%  $/attempt +0.059 [+0.036, +0.085]  under +2%: 102/136  landing buy+28..28
+    hold 30       pulled 0/136  gross of fills +2.32%  survivors +2.32%  $/attempt +0.076 [+0.049, +0.107]  under +2%: 99/136  landing buy+33..33
+    hold 35       pulled 1/136  gross of fills +2.05%  survivors +2.80%  $/attempt +0.066 [-0.005, +0.118]  under +2%: 91/136  landing buy+38..38
+    hold 40       pulled 1/136  gross of fills +2.75%  survivors +3.51%  $/attempt +0.092 [+0.019, +0.148]  under +2%: 83/136  landing buy+43..43
+    hold 60       pulled 2/136  gross of fills +4.00%  survivors +5.55%  $/attempt +0.138 [+0.036, +0.221]  under +2%: 60/136  landing buy+63..63
+    tp 4% cap 30  pulled 0/136  gross of fills +1.80%  survivors +1.80%  $/attempt +0.057 [+0.036, +0.081]  under +2%: 99/136  landing buy+5..33
+    tp 6% cap 30  pulled 0/136  gross of fills +2.10%  survivors +2.10%  $/attempt +0.068 [+0.044, +0.095]  under +2%: 99/136  landing buy+5..33
+    tp 4% cap 40  pulled 0/136  gross of fills +2.69%  survivors +2.69%  $/attempt +0.090 [+0.065, +0.118]  under +2%: 82/136  landing buy+5..43
+    tp 6% cap 40  pulled 0/136  gross of fills +3.08%  survivors +3.08%  $/attempt +0.104 [+0.076, +0.135]  under +2%: 82/136  landing buy+5..43
+      no holder: attempts 155, fills 113, reverts 42 (minOut 42)
+    hold 10       pulled 0/113  gross of fills +0.92%  survivors +0.92%  $/attempt +0.024 [+0.009, +0.042]  under +2%: 96/113  landing buy+13..13
+    hold 20       pulled 0/113  gross of fills +1.35%  survivors +1.35%  $/attempt +0.040 [+0.021, +0.061]  under +2%: 90/113  landing buy+23..23
+    hold 25       pulled 0/113  gross of fills +1.68%  survivors +1.68%  $/attempt +0.052 [+0.031, +0.075]  under +2%: 84/113  landing buy+28..28
+    hold 30       pulled 0/113  gross of fills +2.10%  survivors +2.10%  $/attempt +0.067 [+0.040, +0.097]  under +2%: 84/113  landing buy+33..33
+    hold 35       pulled 0/113  gross of fills +2.69%  survivors +2.69%  $/attempt +0.089 [+0.057, +0.123]  under +2%: 78/113  landing buy+38..38
+    hold 40       pulled 0/113  gross of fills +3.47%  survivors +3.47%  $/attempt +0.117 [+0.079, +0.159]  under +2%: 71/113  landing buy+43..43
+    hold 60       pulled 0/113  gross of fills +5.15%  survivors +5.15%  $/attempt +0.179 [+0.129, +0.233]  under +2%: 53/113  landing buy+63..63
+    tp 4% cap 30  pulled 0/113  gross of fills +1.74%  survivors +1.74%  $/attempt +0.054 [+0.031, +0.080]  under +2%: 84/113  landing buy+5..33
+    tp 6% cap 30  pulled 0/113  gross of fills +2.00%  survivors +2.00%  $/attempt +0.064 [+0.038, +0.092]  under +2%: 84/113  landing buy+6..33
+    tp 4% cap 40  pulled 0/113  gross of fills +2.61%  survivors +2.61%  $/attempt +0.086 [+0.057, +0.117]  under +2%: 71/113  landing buy+5..43
+    tp 6% cap 40  pulled 0/113  gross of fills +2.97%  survivors +2.97%  $/attempt +0.099 [+0.067, +0.134]  under +2%: 71/113  landing buy+6..43
+
+== max_blocks 100, buy at T+3 (stress)
+  (a) holder regime: attempts 14, fills 14, reverts 0 ()
+    hold 10       pulled 0/14  gross of fills +1.03%  survivors +1.03%  $/attempt +0.041 [-0.012, +0.115]  under +2%: 12/14  landing buy+12..12
+    hold 20       pulled 0/14  gross of fills +1.13%  survivors +1.13%  $/attempt +0.046 [-0.011, +0.120]  under +2%: 12/14  landing buy+22..22
+    hold 25       pulled 0/14  gross of fills +2.58%  survivors +2.58%  $/attempt +0.118 [-0.011, +0.303]  under +2%: 12/14  landing buy+27..27
+    hold 30       pulled 0/14  gross of fills +2.87%  survivors +2.87%  $/attempt +0.132 [-0.002, +0.310]  under +2%: 11/14  landing buy+32..32
+    hold 35       pulled 0/14  gross of fills +3.75%  survivors +3.75%  $/attempt +0.177 [+0.040, +0.345]  under +2%: 8/14  landing buy+37..37
+    hold 40       pulled 0/14  gross of fills +4.25%  survivors +4.25%  $/attempt +0.202 [+0.065, +0.364]  under +2%: 7/14  landing buy+42..42
+    hold 60       pulled 0/14  gross of fills +6.22%  survivors +6.22%  $/attempt +0.300 [+0.125, +0.506]  under +2%: 5/14  landing buy+62..62
+    tp 4% cap 30  pulled 0/14  gross of fills +1.42%  survivors +1.42%  $/attempt +0.060 [-0.002, +0.137]  under +2%: 11/14  landing buy+3..32
+    tp 6% cap 30  pulled 0/14  gross of fills +2.22%  survivors +2.22%  $/attempt +0.100 [-0.002, +0.242]  under +2%: 11/14  landing buy+3..32
+    tp 4% cap 40  pulled 0/14  gross of fills +2.81%  survivors +2.81%  $/attempt +0.130 [+0.053, +0.210]  under +2%: 7/14  landing buy+3..42
+    tp 6% cap 40  pulled 0/14  gross of fills +3.61%  survivors +3.61%  $/attempt +0.170 [+0.059, +0.305]  under +2%: 7/14  landing buy+3..42
+  (a') held from T+2 (ours, holders in by T+5): attempts 4, fills 4, reverts 0 ()
+    hold 10       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+12..12
+    hold 20       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+22..22
+    hold 25       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+27..27
+    hold 30       pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+32..32
+    hold 35       pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.012, +0.176]  under +2%: 2/4  landing buy+37..37
+    hold 40       pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.011, +0.176]  under +2%: 2/4  landing buy+42..42
+    hold 60       pulled 0/4  gross of fills +3.53%  survivors +3.53%  $/attempt +0.166 [+0.039, +0.282]  under +2%: 1/4  landing buy+62..62
+    tp 4% cap 30  pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+32..32
+    tp 6% cap 30  pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+32..32
+    tp 4% cap 40  pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.011, +0.176]  under +2%: 2/4  landing buy+42..42
+    tp 6% cap 40  pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.011, +0.176]  under +2%: 2/4  landing buy+42..42
+  (b) all triggered: attempts 84, fills 74, reverts 10 (minOut 10)
+    hold 10       pulled 0/74  gross of fills +0.73%  survivors +0.73%  $/attempt +0.022 [+0.003, +0.046]  under +2%: 65/74  landing buy+12..12
+    hold 20       pulled 0/74  gross of fills +1.16%  survivors +1.16%  $/attempt +0.041 [+0.016, +0.070]  under +2%: 61/74  landing buy+22..22
+    hold 25       pulled 0/74  gross of fills +1.55%  survivors +1.55%  $/attempt +0.058 [+0.025, +0.098]  under +2%: 58/74  landing buy+27..27
+    hold 30       pulled 0/74  gross of fills +1.79%  survivors +1.79%  $/attempt +0.069 [+0.032, +0.110]  under +2%: 57/74  landing buy+32..32
+    hold 35       pulled 0/74  gross of fills +2.12%  survivors +2.12%  $/attempt +0.083 [+0.046, +0.126]  under +2%: 52/74  landing buy+37..37
+    hold 40       pulled 0/74  gross of fills +2.73%  survivors +2.73%  $/attempt +0.110 [+0.069, +0.158]  under +2%: 46/74  landing buy+42..42
+    hold 60       pulled 0/74  gross of fills +3.75%  survivors +3.75%  $/attempt +0.155 [+0.108, +0.209]  under +2%: 36/74  landing buy+62..62
+    tp 4% cap 30  pulled 0/74  gross of fills +1.28%  survivors +1.28%  $/attempt +0.046 [+0.022, +0.073]  under +2%: 57/74  landing buy+3..32
+    tp 6% cap 30  pulled 0/74  gross of fills +1.66%  survivors +1.66%  $/attempt +0.063 [+0.030, +0.101]  under +2%: 57/74  landing buy+3..32
+    tp 4% cap 40  pulled 0/74  gross of fills +2.09%  survivors +2.09%  $/attempt +0.082 [+0.052, +0.115]  under +2%: 46/74  landing buy+3..42
+    tp 6% cap 40  pulled 0/74  gross of fills +2.48%  survivors +2.48%  $/attempt +0.099 [+0.062, +0.140]  under +2%: 46/74  landing buy+3..42
+      no holder: attempts 70, fills 60, reverts 10 (minOut 10)
+    hold 10       pulled 0/60  gross of fills +0.67%  survivors +0.67%  $/attempt +0.019 [-0.001, +0.043]  under +2%: 53/60  landing buy+12..12
+    hold 20       pulled 0/60  gross of fills +1.16%  survivors +1.16%  $/attempt +0.040 [+0.013, +0.072]  under +2%: 49/60  landing buy+22..22
+    hold 25       pulled 0/60  gross of fills +1.31%  survivors +1.31%  $/attempt +0.046 [+0.019, +0.078]  under +2%: 46/60  landing buy+27..27
+    hold 30       pulled 0/60  gross of fills +1.53%  survivors +1.53%  $/attempt +0.056 [+0.024, +0.092]  under +2%: 46/60  landing buy+32..32
+    hold 35       pulled 0/60  gross of fills +1.74%  survivors +1.74%  $/attempt +0.065 [+0.032, +0.102]  under +2%: 44/60  landing buy+37..37
+    hold 40       pulled 0/60  gross of fills +2.38%  survivors +2.38%  $/attempt +0.092 [+0.052, +0.139]  under +2%: 39/60  landing buy+42..42
+    hold 60       pulled 0/60  gross of fills +3.18%  survivors +3.18%  $/attempt +0.126 [+0.084, +0.174]  under +2%: 31/60  landing buy+62..62
+    tp 4% cap 30  pulled 0/60  gross of fills +1.24%  survivors +1.24%  $/attempt +0.043 [+0.019, +0.073]  under +2%: 46/60  landing buy+3..32
+    tp 6% cap 30  pulled 0/60  gross of fills +1.53%  survivors +1.53%  $/attempt +0.056 [+0.024, +0.092]  under +2%: 46/60  landing buy+4..32
+    tp 4% cap 40  pulled 0/60  gross of fills +1.92%  survivors +1.92%  $/attempt +0.073 [+0.041, +0.109]  under +2%: 39/60  landing buy+3..42
+    tp 6% cap 40  pulled 0/60  gross of fills +2.21%  survivors +2.21%  $/attempt +0.085 [+0.048, +0.127]  under +2%: 39/60  landing buy+4..42
+
+== max_blocks 100, sell lag 1 (stress)
+  (a) holder regime: attempts 14, fills 14, reverts 0 ()
+    hold 10       pulled 0/14  gross of fills +1.03%  survivors +1.03%  $/attempt +0.041 [-0.012, +0.115]  under +2%: 12/14  landing buy+11..11
+    hold 20       pulled 0/14  gross of fills +1.13%  survivors +1.13%  $/attempt +0.046 [-0.011, +0.120]  under +2%: 12/14  landing buy+21..21
+    hold 25       pulled 0/14  gross of fills +1.94%  survivors +1.94%  $/attempt +0.086 [-0.011, +0.234]  under +2%: 12/14  landing buy+26..26
+    hold 30       pulled 0/14  gross of fills +2.86%  survivors +2.86%  $/attempt +0.132 [-0.002, +0.310]  under +2%: 11/14  landing buy+31..31
+    hold 35       pulled 0/14  gross of fills +3.51%  survivors +3.51%  $/attempt +0.165 [+0.027, +0.335]  under +2%: 9/14  landing buy+36..36
+    hold 40       pulled 0/14  gross of fills +4.25%  survivors +4.25%  $/attempt +0.202 [+0.065, +0.364]  under +2%: 7/14  landing buy+41..41
+    hold 60       pulled 0/14  gross of fills +6.22%  survivors +6.22%  $/attempt +0.300 [+0.125, +0.506]  under +2%: 5/14  landing buy+61..61
+    tp 4% cap 30  pulled 0/14  gross of fills +1.42%  survivors +1.42%  $/attempt +0.060 [-0.002, +0.137]  under +2%: 11/14  landing buy+3..31
+    tp 6% cap 30  pulled 0/14  gross of fills +2.22%  survivors +2.22%  $/attempt +0.100 [-0.002, +0.242]  under +2%: 11/14  landing buy+3..31
+    tp 4% cap 40  pulled 0/14  gross of fills +2.81%  survivors +2.81%  $/attempt +0.130 [+0.053, +0.210]  under +2%: 7/14  landing buy+3..41
+    tp 6% cap 40  pulled 0/14  gross of fills +3.61%  survivors +3.61%  $/attempt +0.170 [+0.059, +0.305]  under +2%: 7/14  landing buy+3..41
+  (a') held from T+2 (ours, holders in by T+5): attempts 4, fills 4, reverts 0 ()
+    hold 10       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+11..11
+    hold 20       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+21..21
+    hold 25       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+26..26
+    hold 30       pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+31..31
+    hold 35       pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+36..36
+    hold 40       pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.012, +0.176]  under +2%: 2/4  landing buy+41..41
+    hold 60       pulled 0/4  gross of fills +3.53%  survivors +3.53%  $/attempt +0.166 [+0.039, +0.282]  under +2%: 1/4  landing buy+61..61
+    tp 4% cap 30  pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+31..31
+    tp 6% cap 30  pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+31..31
+    tp 4% cap 40  pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.012, +0.176]  under +2%: 2/4  landing buy+41..41
+    tp 6% cap 40  pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.012, +0.176]  under +2%: 2/4  landing buy+41..41
+  (b) all triggered: attempts 84, fills 74, reverts 10 (minOut 10)
+    hold 10       pulled 0/74  gross of fills +0.62%  survivors +0.62%  $/attempt +0.017 [+0.001, +0.037]  under +2%: 65/74  landing buy+11..11
+    hold 20       pulled 0/74  gross of fills +1.09%  survivors +1.09%  $/attempt +0.038 [+0.014, +0.067]  under +2%: 61/74  landing buy+21..21
+    hold 25       pulled 0/74  gross of fills +1.34%  survivors +1.34%  $/attempt +0.049 [+0.020, +0.084]  under +2%: 60/74  landing buy+26..26
+    hold 30       pulled 0/74  gross of fills +1.62%  survivors +1.62%  $/attempt +0.061 [+0.028, +0.100]  under +2%: 57/74  landing buy+31..31
+    hold 35       pulled 0/74  gross of fills +1.91%  survivors +1.91%  $/attempt +0.074 [+0.037, +0.116]  under +2%: 55/74  landing buy+36..36
+    hold 40       pulled 0/74  gross of fills +2.54%  survivors +2.54%  $/attempt +0.102 [+0.062, +0.148]  under +2%: 48/74  landing buy+41..41
+    hold 60       pulled 0/74  gross of fills +3.73%  survivors +3.73%  $/attempt +0.154 [+0.106, +0.208]  under +2%: 37/74  landing buy+61..61
+    tp 4% cap 30  pulled 0/74  gross of fills +1.11%  survivors +1.11%  $/attempt +0.039 [+0.019, +0.062]  under +2%: 57/74  landing buy+3..31
+    tp 6% cap 30  pulled 0/74  gross of fills +1.49%  survivors +1.49%  $/attempt +0.056 [+0.026, +0.091]  under +2%: 57/74  landing buy+3..31
+    tp 4% cap 40  pulled 0/74  gross of fills +1.92%  survivors +1.92%  $/attempt +0.074 [+0.046, +0.106]  under +2%: 48/74  landing buy+3..41
+    tp 6% cap 40  pulled 0/74  gross of fills +2.35%  survivors +2.35%  $/attempt +0.093 [+0.057, +0.134]  under +2%: 48/74  landing buy+3..41
+      no holder: attempts 70, fills 60, reverts 10 (minOut 10)
+    hold 10       pulled 0/60  gross of fills +0.52%  survivors +0.52%  $/attempt +0.012 [-0.002, +0.031]  under +2%: 53/60  landing buy+11..11
+    hold 20       pulled 0/60  gross of fills +1.08%  survivors +1.08%  $/attempt +0.036 [+0.010, +0.067]  under +2%: 49/60  landing buy+21..21
+    hold 25       pulled 0/60  gross of fills +1.20%  survivors +1.20%  $/attempt +0.042 [+0.015, +0.073]  under +2%: 48/60  landing buy+26..26
+    hold 30       pulled 0/60  gross of fills +1.32%  survivors +1.32%  $/attempt +0.047 [+0.019, +0.079]  under +2%: 46/60  landing buy+31..31
+    hold 35       pulled 0/60  gross of fills +1.53%  survivors +1.53%  $/attempt +0.056 [+0.024, +0.092]  under +2%: 46/60  landing buy+36..36
+    hold 40       pulled 0/60  gross of fills +2.15%  survivors +2.15%  $/attempt +0.082 [+0.044, +0.125]  under +2%: 41/60  landing buy+41..41
+    hold 60       pulled 0/60  gross of fills +3.14%  survivors +3.14%  $/attempt +0.125 [+0.082, +0.173]  under +2%: 32/60  landing buy+61..61
+    tp 4% cap 30  pulled 0/60  gross of fills +1.04%  survivors +1.04%  $/attempt +0.035 [+0.014, +0.058]  under +2%: 46/60  landing buy+3..31
+    tp 6% cap 30  pulled 0/60  gross of fills +1.32%  survivors +1.32%  $/attempt +0.047 [+0.019, +0.079]  under +2%: 46/60  landing buy+4..31
+    tp 4% cap 40  pulled 0/60  gross of fills +1.71%  survivors +1.71%  $/attempt +0.063 [+0.034, +0.097]  under +2%: 41/60  landing buy+3..41
+    tp 6% cap 40  pulled 0/60  gross of fills +2.05%  survivors +2.05%  $/attempt +0.078 [+0.042, +0.119]  under +2%: 41/60  landing buy+4..41
+
+== max_blocks 100, sell lag 3 (stress)
+  (a) holder regime: attempts 14, fills 14, reverts 0 ()
+    hold 10       pulled 0/14  gross of fills +1.03%  survivors +1.03%  $/attempt +0.041 [-0.012, +0.115]  under +2%: 12/14  landing buy+13..13
+    hold 20       pulled 0/14  gross of fills +1.13%  survivors +1.13%  $/attempt +0.046 [-0.011, +0.120]  under +2%: 12/14  landing buy+23..23
+    hold 25       pulled 0/14  gross of fills +2.58%  survivors +2.58%  $/attempt +0.118 [-0.011, +0.303]  under +2%: 12/14  landing buy+28..28
+    hold 30       pulled 0/14  gross of fills +2.87%  survivors +2.87%  $/attempt +0.132 [-0.002, +0.310]  under +2%: 11/14  landing buy+33..33
+    hold 35       pulled 0/14  gross of fills +3.75%  survivors +3.75%  $/attempt +0.177 [+0.040, +0.345]  under +2%: 8/14  landing buy+38..38
+    hold 40       pulled 0/14  gross of fills +4.25%  survivors +4.25%  $/attempt +0.202 [+0.065, +0.364]  under +2%: 7/14  landing buy+43..43
+    hold 60       pulled 0/14  gross of fills +6.22%  survivors +6.22%  $/attempt +0.300 [+0.125, +0.506]  under +2%: 5/14  landing buy+63..63
+    tp 4% cap 30  pulled 0/14  gross of fills +1.42%  survivors +1.42%  $/attempt +0.060 [-0.002, +0.137]  under +2%: 11/14  landing buy+5..33
+    tp 6% cap 30  pulled 0/14  gross of fills +2.23%  survivors +2.23%  $/attempt +0.101 [-0.002, +0.243]  under +2%: 11/14  landing buy+5..33
+    tp 4% cap 40  pulled 0/14  gross of fills +2.81%  survivors +2.81%  $/attempt +0.130 [+0.053, +0.210]  under +2%: 7/14  landing buy+5..43
+    tp 6% cap 40  pulled 0/14  gross of fills +3.62%  survivors +3.62%  $/attempt +0.170 [+0.059, +0.306]  under +2%: 7/14  landing buy+5..43
+  (a') held from T+2 (ours, holders in by T+5): attempts 4, fills 4, reverts 0 ()
+    hold 10       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+13..13
+    hold 20       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+23..23
+    hold 25       pulled 0/4  gross of fills -0.02%  survivors -0.02%  $/attempt -0.012 [-0.012, -0.011]  under +2%: 4/4  landing buy+28..28
+    hold 30       pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+33..33
+    hold 35       pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.012, +0.176]  under +2%: 2/4  landing buy+38..38
+    hold 40       pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.011, +0.176]  under +2%: 2/4  landing buy+43..43
+    hold 60       pulled 0/4  gross of fills +3.53%  survivors +3.53%  $/attempt +0.166 [+0.039, +0.282]  under +2%: 1/4  landing buy+63..63
+    tp 4% cap 30  pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+33..33
+    tp 6% cap 30  pulled 0/4  gross of fills +0.99%  survivors +0.99%  $/attempt +0.039 [-0.012, +0.139]  under +2%: 3/4  landing buy+33..33
+    tp 4% cap 40  pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.011, +0.176]  under +2%: 2/4  landing buy+43..43
+    tp 6% cap 40  pulled 0/4  gross of fills +1.86%  survivors +1.86%  $/attempt +0.082 [-0.011, +0.176]  under +2%: 2/4  landing buy+43..43
+  (b) all triggered: attempts 84, fills 74, reverts 10 (minOut 10)
+    hold 10       pulled 0/74  gross of fills +0.74%  survivors +0.74%  $/attempt +0.022 [+0.003, +0.046]  under +2%: 65/74  landing buy+13..13
+    hold 20       pulled 0/74  gross of fills +1.16%  survivors +1.16%  $/attempt +0.041 [+0.016, +0.070]  under +2%: 61/74  landing buy+23..23
+    hold 25       pulled 0/74  gross of fills +1.55%  survivors +1.55%  $/attempt +0.058 [+0.025, +0.098]  under +2%: 58/74  landing buy+28..28
+    hold 30       pulled 0/74  gross of fills +1.79%  survivors +1.79%  $/attempt +0.069 [+0.032, +0.110]  under +2%: 57/74  landing buy+33..33
+    hold 35       pulled 0/74  gross of fills +2.12%  survivors +2.12%  $/attempt +0.083 [+0.046, +0.126]  under +2%: 52/74  landing buy+38..38
+    hold 40       pulled 0/74  gross of fills +2.73%  survivors +2.73%  $/attempt +0.110 [+0.069, +0.158]  under +2%: 46/74  landing buy+43..43
+    hold 60       pulled 0/74  gross of fills +3.75%  survivors +3.75%  $/attempt +0.155 [+0.108, +0.209]  under +2%: 36/74  landing buy+63..63
+    tp 4% cap 30  pulled 0/74  gross of fills +1.28%  survivors +1.28%  $/attempt +0.046 [+0.022, +0.073]  under +2%: 57/74  landing buy+5..33
+    tp 6% cap 30  pulled 0/74  gross of fills +1.66%  survivors +1.66%  $/attempt +0.063 [+0.030, +0.101]  under +2%: 57/74  landing buy+5..33
+    tp 4% cap 40  pulled 0/74  gross of fills +2.09%  survivors +2.09%  $/attempt +0.082 [+0.052, +0.115]  under +2%: 46/74  landing buy+5..43
+    tp 6% cap 40  pulled 0/74  gross of fills +2.48%  survivors +2.48%  $/attempt +0.099 [+0.062, +0.140]  under +2%: 46/74  landing buy+5..43
+      no holder: attempts 70, fills 60, reverts 10 (minOut 10)
+    hold 10       pulled 0/60  gross of fills +0.67%  survivors +0.67%  $/attempt +0.019 [-0.001, +0.043]  under +2%: 53/60  landing buy+13..13
+    hold 20       pulled 0/60  gross of fills +1.16%  survivors +1.16%  $/attempt +0.040 [+0.013, +0.072]  under +2%: 49/60  landing buy+23..23
+    hold 25       pulled 0/60  gross of fills +1.31%  survivors +1.31%  $/attempt +0.046 [+0.019, +0.078]  under +2%: 46/60  landing buy+28..28
+    hold 30       pulled 0/60  gross of fills +1.53%  survivors +1.53%  $/attempt +0.056 [+0.024, +0.092]  under +2%: 46/60  landing buy+33..33
+    hold 35       pulled 0/60  gross of fills +1.74%  survivors +1.74%  $/attempt +0.065 [+0.032, +0.102]  under +2%: 44/60  landing buy+38..38
+    hold 40       pulled 0/60  gross of fills +2.38%  survivors +2.38%  $/attempt +0.092 [+0.052, +0.139]  under +2%: 39/60  landing buy+43..43
+    hold 60       pulled 0/60  gross of fills +3.18%  survivors +3.18%  $/attempt +0.126 [+0.084, +0.174]  under +2%: 31/60  landing buy+63..63
+    tp 4% cap 30  pulled 0/60  gross of fills +1.24%  survivors +1.24%  $/attempt +0.043 [+0.019, +0.073]  under +2%: 46/60  landing buy+5..33
+    tp 6% cap 30  pulled 0/60  gross of fills +1.53%  survivors +1.53%  $/attempt +0.056 [+0.024, +0.092]  under +2%: 46/60  landing buy+6..33
+    tp 4% cap 40  pulled 0/60  gross of fills +1.92%  survivors +1.92%  $/attempt +0.073 [+0.041, +0.109]  under +2%: 39/60  landing buy+5..43
+    tp 6% cap 40  pulled 0/60  gross of fills +2.21%  survivors +2.21%  $/attempt +0.085 [+0.048, +0.127]  under +2%: 39/60  landing buy+6..43

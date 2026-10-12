@@ -1,0 +1,11 @@
+pools 216 (old 206, rebuilt/new 10); shapes Counter({'line': 209, '1400': 7}); head 86759173 10-12 14:54:26
+  10-12 14:06:31 0xcbb06b45 shape 1400 launcher 0xac234191 swaps 91 router buys 62 pull 2675 by 0xac234191 via 0x58daec31 untx 0
+  10-12 14:12:23 0x7a40b381 shape 1400 launcher 0x6ec1b420 swaps 90 router buys 44 pull 3003 by 0x6ec1b420 via 0x58daec31 untx 0
+  10-12 14:18:25 0xa4cee6a6 shape 1400 launcher 0xf4677479 swaps 65 router buys 53 pull 1377 by 0xf4677479 via 0x58daec31 untx 0
+  10-12 14:21:47 0x3b423ab8 shape 1400 launcher 0x3f332694 swaps 45 router buys 33 pull 1228 by 0x3f332694 via 0x58daec31 untx 0
+  10-12 14:24:37 0x8613514c shape 1400 launcher 0x691042b4 swaps 55 router buys 37 pull 1623 by 0x691042b4 via 0x58daec31 untx 0
+  10-12 14:27:59 0xfceb3b8e shape 1400 launcher 0x281cee8a swaps 163 router buys 33 pull 6261 by 0x281cee8a via 0x58daec31 untx 0
+  10-12 14:37:09 0xc580b628 shape line launcher 0x16b761df swaps 78 router buys 34 pull 1949 by 0x16b761df via 0x58daec31 untx 0
+  10-12 14:39:58 0xcafc8c8e shape 1400 launcher 0x749e1574 swaps 280 router buys 37 pull None by - via - untx 0
+  10-12 14:41:11 0x45929ba3 shape line launcher 0x0d763f4e swaps 427 router buys 81 pull None by - via - untx 0
+  10-12 14:42:43 0xc5d416dc shape line launcher 0xbdd25e83 swaps 377 router buys 97 pull None by - via - untx 0
