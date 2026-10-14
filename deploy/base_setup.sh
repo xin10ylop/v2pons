@@ -95,7 +95,9 @@ BASE_STAKE_CAP_ETH=0.005
 BASE_BUY_SLIP=0.03
 # the buy's deadline in seconds
 BASE_BUY_DEADLINE_S=20
-# the fire is refused once the head is this many blocks past the add's block
+# the buy is aimed at the add's block + this many blocks (3: two blocks before the bot's first buy at add + 5; 0 = the add's own block)
+BASE_FIRE_DELAY_BLOCKS=3
+# with no delay: the fire is refused once the head is this many blocks past the add's block
 BASE_FIRE_MAX=2
 # the deadline exit: sold at our buy's block + this many blocks if nothing sold it before
 BASE_HOLD_BLOCKS=6
@@ -107,6 +109,8 @@ BASE_SELL_SLIP=0.05
 BASE_SELL_DEADLINE_S=30
 # a pull this many blocks or fewer after our buy halts the line even when our sell landed first
 BASE_NEAR_MISS_BLOCKS=3
+# a pull this many blocks or fewer after our sell halts the line too (the operator is reacting: 14:31 UTC Oct 14, a pull 2 blocks behind our sell)
+BASE_NEAR_MISS_SELL_BLOCKS=3
 # this many live trades in a row under BASE_NONBOT_MIN_RET halt the line
 BASE_NONBOT_HALT=5
 # the return under which a live trade counts toward BASE_NONBOT_HALT

@@ -154,9 +154,13 @@ event's `sender` is the Universal Router for every swap, the bot's and anyone el
 is recognised pending by its transaction, and a confirmed buy behind ours sells by the take-profit rule), `BASE_MIN_POOL_ETH` (1.0),
 `BASE_ADD_MAX_BLOCKS` (10).
 
-The trade: `BASE_STAKE_ETH` (0.002), `BASE_STAKE_CAP_ETH` (half the smallest room b11 measured; 0.005 until then), `BASE_BUY_SLIP` (0.03),
-`BASE_BUY_DEADLINE_S` (20), `BASE_FIRE_MAX` (2 blocks after the add), `BASE_HOLD_BLOCKS` (6), `BASE_TAKE_PROFIT` (0.01), `BASE_SELL_SLIP`
-(0.05), `BASE_SELL_DEADLINE_S` (30), `BASE_NEAR_MISS_BLOCKS` (3), `BASE_NONBOT_HALT` (5), `BASE_NONBOT_MIN_RET` (0.02), `BASE_MAX_PER_DAY`
+The trade: `BASE_STAKE_ETH` (0.002), `BASE_STAKE_CAP_ETH` (0.005; the owner raises it in steps, RUNBOOK 4l step 8), `BASE_BUY_SLIP` (0.03),
+`BASE_BUY_DEADLINE_S` (20), `BASE_FIRE_DELAY_BLOCKS` (3: the buy is aimed at the add's block + 3, two blocks before the bot's first buy at
+add + 5, so the position is open 4 s instead of 10; 0 = the add's own block, as the first 13 live trades did), `BASE_FIRE_MAX` (2 blocks
+after the add, with delay 0; with a delay the fire is late once the head is past the target block), `BASE_HOLD_BLOCKS` (6),
+`BASE_TAKE_PROFIT` (0.01), `BASE_SELL_SLIP` (0.05), `BASE_SELL_DEADLINE_S` (30), `BASE_NEAR_MISS_BLOCKS` (3, after our buy),
+`BASE_NEAR_MISS_SELL_BLOCKS` (3: a pull within this many blocks after our sell halts the line too; on Oct 14 14:31 UTC the operator pulled
+2 blocks behind our sell, 7 after our buy, the first early pull on Base), `BASE_NONBOT_HALT` (5), `BASE_NONBOT_MIN_RET` (0.02), `BASE_MAX_PER_DAY`
 (400), `BASE_DAILY_STOP_USD` (10), `BASE_ETH_USD` (2570), `BASE_PRIO_GWEI` (0.01: the bot pays 0.0011; a round trip of about 320k gas at
 0.015 gwei plus two L1 data fees is about 0.2% of a 0.002 ETH stake; 0.05 would be 0.9%), `BASE_MAX_FEE_GWEI` (0.5), `BASE_BUY_GAS` (400000),
 `BASE_SELL_GAS` (400000), `BASE_RELAY_MARGIN_ETH` (0.0005).
