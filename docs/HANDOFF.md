@@ -2627,7 +2627,7 @@ buy seen pending, else the first paying buy behind ours, else at our buy + 6 blo
 our buy, halts the line (`HALTED.base`); a $10 daily stop; the dry run (the default) logs `would_fire` and `trade_done` with `dry: true`.
 Every setting (section 5) and log line (section 6) is there.
 
-**The files**: `src/base_engine.py` and `tests/test_base_engine.py` (the engine and its tests against the 09:42 pool's real events, NN
+**The files**: `src/base_engine.py` and `tests/test_base_engine.py` (the engine and its tests against the 09:42 pool's real events, 34
 tests); `deploy/base_setup.sh` (the venv's packages, `/etc/flip/base.env` from a template with every setting of BASE.md section 5 and its
 default, logrotate, the unit, a dry start; idempotent) and `deploy/flip-base.service` (flip-bnb's hardened unit with Base's names);
 `deploy/base_wallet.py` (the key in `/etc/flip/base.key`, `BASE_WALLET=` in the env file; `withdraw`; the key's fcntl lock shared with a

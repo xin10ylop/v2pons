@@ -933,7 +933,7 @@ something else, stop and paste it.** `0xYOURADDRESS` below is the address step 3
 
     cd ~/v2pons && OLD=$(git rev-parse HEAD) && git pull -q --ff-only && { git diff --quiet $OLD HEAD -- src/flip_engine.py || echo 'flip_engine.py CHANGED: deploy it per its own section first'; } && ls src/base_engine.py deploy/base_setup.sh deploy/flip-base.service deploy/base_wallet.py deploy/base_relay_deploy.py && /opt/flip-venv/bin/python3 tests/test_base_engine.py | grep -c '^ok'
 
-It prints the five paths and the number of tests, `NN` (HANDOFF 16.24 gives it). Fewer, or `flip_engine.py CHANGED`: stop and paste.
+It prints the five paths and the number of tests, `34`. Fewer, or `flip_engine.py CHANGED`: stop and paste.
 
 ### 2. Install and the dry run
 
