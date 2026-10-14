@@ -1524,22 +1524,41 @@ async def keep_connected(url, session, down):
 async def confirmed_session(ws):
     await ws.send(json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_subscribe", "params": ["newHeads"]}))
     await ws.send(json.dumps({"jsonrpc": "2.0", "id": 2, "method": "eth_subscribe", "params": ["logs", {"address": S.PM, "topics": [[T_INIT, T_ML, T_SWAP]]}]}))
-    subs = {}
-    while True:
-        raw = await asyncio.wait_for(ws.recv(), timeout=S.WS_SILENT_S)          # silent: an exception, the reconnection, the gap filled
-        for _ in range(500):                                                   # the burst: every message already here, then the actions
+    subs = {}; last = [mono()]
+
+    async def reader():
+        """one plain await per message, never cancelled while frames flow: the websockets library's assembler asserts ("cannot reset()
+        while queue isn't empty") when a cancelled recv() meets a frame that just arrived, which a drain loop of 3 ms timeouts did on the
+        box every minute or two (Oct 14); the actions run after every message (cheap: a loop over the few pools in play)"""
+        while True:
+            raw = await ws.recv()
+            last[0] = mono()
             try:
                 on_ws_message(raw, subs)
             except RuntimeError:
                 raise
             except Exception as e:
                 alarm(f"a websocket message was not understood: {type(e).__name__}: {scrub(e, 80)}", quiet_key="wsmsg", every_s=60)
-            try:
-                raw = await asyncio.wait_for(ws.recv(), timeout=DRAIN_S)
-            except asyncio.TimeoutError:
-                break
-        with lock:
-            end_burst()
+            with lock:
+                end_burst()
+
+    async def watchdog():
+        """silent for WS_SILENT_S: the session ends (the one cancellation of recv(), with no frame in flight), the reconnection and the gap
+        fill follow"""
+        while mono() - last[0] <= S.WS_SILENT_S:
+            await asyncio.sleep(0.25)
+        raise asyncio.TimeoutError(f"silent for {S.WS_SILENT_S:g} s")
+
+    tasks = [asyncio.ensure_future(reader()), asyncio.ensure_future(watchdog())]
+    try:
+        done, _ = await asyncio.wait(tasks, return_when=asyncio.FIRST_EXCEPTION)
+        for t in done:
+            t.result()                                                         # raises the first exception: the reconnection
+    finally:
+        for t in tasks:
+            if not t.done():
+                t.cancel()
+        await asyncio.gather(*tasks, return_exceptions=True)
 
 
 async def flash_session(ws):
