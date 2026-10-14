@@ -1186,12 +1186,14 @@ def chain_pull(pos, to_block):
     """the first negative ModifyLiquidity of our pool from our buy's block to to_block, by eth_getLogs (the settlement's own read: after a
     restart or a gap the feed's events are not all there); None: none, or the read failed (an alarm)"""
     a = pos["buy_block"] or pos.get("fire_head") or to_block
-    try:
-        ls = read("eth_getLogs", [{"fromBlock": hex(a), "toBlock": hex(max(a, to_block)), "address": S.PM, "topics": [T_ML, pos["pid"]]}], timeout=SLOW_TIMEOUT_S, tries=2)
-        pulls = sorted(order(l) for l in ls if l["topics"][0].lower() == T_ML and l["topics"][1].lower() == pos["pid"] and sgn(W(l["data"], 2)) < 0)
-        return pulls[0] if pulls else None
-    except Exception as e:
-        alarm(f"the pull check was not read ({scrub(e, 100)}): the feed's events decide", pool=pos["pid"]); return None
+    for attempt in range(4):                                                   # off the trade path: a rate limit (publicnode -32011 right after the receipts' polls) is waited out
+        try:
+            ls = read("eth_getLogs", [{"fromBlock": hex(a), "toBlock": hex(max(a, to_block)), "address": S.PM, "topics": [T_ML, pos["pid"]]}], timeout=SLOW_TIMEOUT_S, tries=1)
+            pulls = sorted(order(l) for l in ls if l["topics"][0].lower() == T_ML and l["topics"][1].lower() == pos["pid"] and sgn(W(l["data"], 2)) < 0)
+            return pulls[0] if pulls else None
+        except Exception as e:
+            err = e; time.sleep(2.0 * (attempt + 1))
+    alarm(f"the pull check was not read in 4 tries ({scrub(err, 100)}): the feed's events decide", pool=pos["pid"]); return None
 
 
 def wait_sell(pos):
