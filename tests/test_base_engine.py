@@ -127,7 +127,7 @@ def fresh(logs=None, txs=None, dry=True, **env):
         os.environ.pop(k)
     os.environ.update(BASE_ENV); os.environ["BASE_DRY_RUN"] = "1" if dry else "0"
     os.environ.update({k: str(v) for k, v in env.items()})
-    E.S = E.settings(); E.S.LAUNCHER_PREFIX = E.code_hash(FAKE_LAUNCHER_CODE)[2:14]   # the launcher's real code is not in the fixture (its hash is)
+    E.S = E.settings(); E.S.LAUNCHER_PREFIXES = [E.code_hash(FAKE_LAUNCHER_CODE)[2:14]]   # the launcher's real code is not in the fixture (its hash is)
     E.reset(); E.SIGNER = None
     if E.KEY_LOCK:
         E.KEY_LOCK.close(); E.KEY_LOCK = None
@@ -301,8 +301,44 @@ def arm_skips():
     assert not e["armed"] and "token code" in e["skip"] and PID not in E.pools, e
     c = fresh(); c.code[LAUNCHER] = "0x6002"; feed(c, L, L); e = wait_ev("launch")[0]
     assert not e["armed"] and "launcher code" in e["skip"], e
-    c = fresh(BASE_LAUNCH_CALLDATA_LEN="0"); tx2 = copy.deepcopy(FX["txs"]); tx2[LAUNCH_TX["hash"]]["input"] += "00" * 32; c.txs = tx2
-    feed(c, L, L); assert wait_ev("launch")[0]["armed"]                       # 0: any length
+    c = fresh(BASE_LAUNCH_SELECTOR="c3e0ff3d"); tx2 = copy.deepcopy(FX["txs"]); tx2[LAUNCH_TX["hash"]]["input"] += "00" * 32; c.txs = tx2
+    feed(c, L, L); assert wait_ev("launch")[0]["armed"]                       # a bare selector: any length
+
+
+@test
+def arm_on_the_second_launch_call():
+    """the operator's launch call from 19:42 UTC Oct 14: selector 99dfa5c4 to a fresh launcher of code 53959585f666..., the calldata's length
+    varying with the launch (868-1348 B: a list of addresses at its end); the same token code, add (2346bb56 at L+3) and pull (f2f230a8)"""
+    def with_launch(sel, extra=0, prefixes=None):
+        txs = copy.deepcopy(FX["txs"]); t = txs[LAUNCH_TX["hash"]]; t["input"] = "0x" + sel + t["input"][10:] + "00" * extra
+        c = fresh(txs=txs)
+        if prefixes is not None:
+            E.S.LAUNCHER_PREFIXES = prefixes
+        feed(c, L, L); return wait_ev("launch")[0]
+    fake = E.code_hash(FAKE_LAUNCHER_CODE)[2:14]
+    for extra in (0, 32, 1088):                                                  # 260, 292 and 1348 B: any length for the new call
+        e = with_launch("99dfa5c4", extra); assert e["armed"] and e["selector"] == "99dfa5c4" and e["calldata_len"] == 260 + extra, e
+        assert E.pools[PID]["status"] == "armed" and E.pools[PID]["launch_from"] == LAUNCH_TX["from"]
+    e = with_launch("c3e0ff3d", 32); assert not e["armed"] and "launch calldata 292 B, not 260" in e["skip"], e        # the first call keeps its length
+    e = with_launch("deadbeef"); assert not e["armed"] and e["skip"] == "launch selector deadbeef, not c3e0ff3d or 99dfa5c4", e
+    e = with_launch("99dfa5c4", 32, ["deadbeefdead", fake]); assert e["armed"], e                                     # any of the prefixes
+    e = with_launch("99dfa5c4", 32, ["deadbeefdead"]); assert not e["armed"] and "launcher code" in e["skip"] and "deadbeefdead" in e["skip"], e
+    e = with_launch("99dfa5c4", 32, []); assert e["armed"], e                                                           # empty: any launcher
+    assert "99dfa5c4" in E.flash_watch() and "c3e0ff3d" in E.flash_watch()
+    os.environ.update(BASE_ENV); os.environ.pop("BASE_LAUNCH_SELECTOR", None); os.environ.pop("BASE_LAUNCHER_CODEHASH_PREFIX", None)
+    s = E.settings(); assert s.LAUNCHES == {"c3e0ff3d": 260, "99dfa5c4": 0} and s.LAUNCHER_PREFIXES == ["225f9af97d88", "53959585f666"], vars(s)
+    os.environ["BASE_LAUNCH_SELECTOR"] = "0xC3E0FF3D/260, 99dfa5c4/1156"; os.environ["BASE_LAUNCHER_CODEHASH_PREFIX"] = "0xAB12, 53959585f666"
+    s = E.settings(); assert s.LAUNCHES == {"c3e0ff3d": 260, "99dfa5c4": 1156} and s.LAUNCHER_PREFIXES == ["ab12", "53959585f666"], vars(s)
+    for k, v in [("BASE_LAUNCH_SELECTOR", "c3e0ff3d/x"), ("BASE_LAUNCH_SELECTOR", "c3e0ff3"), ("BASE_LAUNCH_SELECTOR", ","), ("BASE_LAUNCH_SELECTOR", "c3e0ff3d/2600000"),
+                 ("BASE_LAUNCH_CALLDATA_LEN", "260"), ("BASE_LAUNCHER_CODEHASH_PREFIX", "zz"), ("BASE_LAUNCHER_CODEHASH_PREFIX", "ab" * 33)]:
+        os.environ.update(BASE_ENV); os.environ.pop("BASE_LAUNCH_SELECTOR", None); os.environ.pop("BASE_LAUNCHER_CODEHASH_PREFIX", None); os.environ[k] = v
+        try:
+            E.settings()
+        except SystemExit as e:
+            assert k in str(e), (k, str(e))
+        else:
+            raise AssertionError(f"{k}={v} was accepted")
+        os.environ.pop(k)
 
 
 @test

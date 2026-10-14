@@ -8,6 +8,8 @@ L+3 (once L+2) the launch wallet calls the hook (2346bb56, 2.133329 ETH; the 0.1
 46141758126452008872416 + 1. The operator's bot buys from L+8 (0x987d5db8, 27f7e6ee, the token in the calldata, 0.15-0.27 ETH, minOut 0.95
 of its quote), its 35 wallets sell through the Universal Router from L+12, and the launch wallet pulls (f2f230a8 to the hook) on a ~4.1
 minute timer (+126, +128; the 09:42 test pool at +30). The Swap event's sender is the Universal Router for every swap, the bot's included.
+From 19:42 UTC Oct 14 the launch call is 99dfa5c4 to a fresh launcher of code hash 53959585f666..., its calldata 868-1348 B (a list of
+addresses at its end, the launch wallet last); the token, the hook's flags, the add (1.533 ETH at L+3) and the pull are the same.
 
 ARM on an Initialize of the line's fingerprint (currency0 0, BASE_FEE, BASE_TICK_SPACING, the hook's low 14 address bits BASE_HOOK_FLAGS; the
 launch transaction's selector and calldata length from its Flashblocks copy, else eth_getTransactionByHash; the token's code hash in
@@ -82,7 +84,7 @@ from eth_utils import keccak, to_checksum_address
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import v4math
 
-RELEASE = "base-0.1"
+RELEASE = "base-0.2"
 CHAIN_ID = 8453
 Q96 = v4math.Q96
 T_INIT = "0x" + keccak(text="Initialize(bytes32,address,address,uint24,int24,address,uint160,int24)").hex()
@@ -149,6 +151,30 @@ def _hex(name, default, n=None, empty_ok=False):
 _addr = lambda name, default, empty_ok=False: (lambda v: "0x" + v if v else "")(_hex(name, default, 40, empty_ok))
 
 
+def _launches(name, default):
+    """the operator's launch calls, comma-separated `selector` or `selector/calldata_len`: {selector: calldata length in bytes, 0 = any}"""
+    out = {}
+    for x in [x.strip().lower() for x in env(name, default).split(",") if x.strip()]:
+        sel, _, ln = x.partition("/"); sel = sel[2:] if sel.startswith("0x") else sel
+        if len(sel) != 8 or any(c not in "0123456789abcdef" for c in sel) or (ln and not ln.isdigit()) or len(ln) > 6:
+            raise SystemExit(f"{name} must be a comma list of 8-digit hex selectors, each with an optional /calldata_len, not {env(name, default)!r}")
+        out[sel] = int(ln) if ln else 0
+    if not out:
+        raise SystemExit(f"{name} is empty")
+    return out
+
+
+def _prefixes(name, default):
+    """code hash prefixes, comma-separated, each 1-64 hex digits; empty = any"""
+    out = []
+    for x in [x.strip().lower() for x in env(name, default).split(",") if x.strip()]:
+        v = x[2:] if x.startswith("0x") else x
+        if not v or len(v) > 64 or any(c not in "0123456789abcdef" for c in v):
+            raise SystemExit(f"{name} must be a comma list of hex prefixes, not {env(name, default)!r}")
+        out.append(v)
+    return out
+
+
 def _hexlist(name, default, n):
     out = []
     for x in [x.strip().lower() for x in env(name, default).split(",") if x.strip()]:
@@ -190,8 +216,10 @@ def settings():
     s.KEY_FILE = env("BASE_KEY_FILE", "/etc/flip/base.key"); s.PM = _addr("BASE_POOL_MANAGER", "0x498581ff718922c3f8e6a244956af099b2652b2b")
     s.HALT_FILE = env("BASE_HALT_FILE", os.path.join(here, "HALTED.base")); s.POSITIONS_FILE = os.path.join(here, "base_positions.json")
     s.WS_SILENT_S = _setting("BASE_WS_SILENT_S", "10", 1, 600)
-    s.LAUNCH_SELECTOR = _hex("BASE_LAUNCH_SELECTOR", "c3e0ff3d", 8); s.LAUNCH_CALLDATA_LEN = _setting("BASE_LAUNCH_CALLDATA_LEN", "260", 0, 100000, True)
-    s.LAUNCHER_PREFIX = _hex("BASE_LAUNCHER_CODEHASH_PREFIX", "225f9af97d88", empty_ok=True)
+    s.LAUNCHES = _launches("BASE_LAUNCH_SELECTOR", "c3e0ff3d/260,99dfa5c4")
+    if env("BASE_LAUNCH_CALLDATA_LEN", ""):
+        raise SystemExit("BASE_LAUNCH_CALLDATA_LEN is gone: the length goes with its selector in BASE_LAUNCH_SELECTOR (c3e0ff3d/260); a bare selector takes any length")
+    s.LAUNCHER_PREFIXES = _prefixes("BASE_LAUNCHER_CODEHASH_PREFIX", "225f9af97d88,53959585f666")
     s.TOKEN_CODEHASHES = set(_hexlist("BASE_TOKEN_CODEHASHES", "0x63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb", 64))
     if not s.TOKEN_CODEHASHES:
         raise SystemExit("BASE_TOKEN_CODEHASHES is empty")
@@ -596,18 +624,18 @@ def arm(p):
     rec = {"launcher": None, "selector": None, "calldata_len": None, "token_code": None}; why = None; tx = {}
     try:
         tx = read_launch_tx(p["launch_tx"]); rec.update(launcher=tx["to"], selector=tx["sel"], calldata_len=tx["len"], tx_src=tx["src"])
-        if tx["sel"] != S.LAUNCH_SELECTOR:
-            why = f"launch selector {tx['sel']}, not {S.LAUNCH_SELECTOR}"
-        elif S.LAUNCH_CALLDATA_LEN and tx["len"] != S.LAUNCH_CALLDATA_LEN:
-            why = f"launch calldata {tx['len']} B, not {S.LAUNCH_CALLDATA_LEN}"
+        if tx["sel"] not in S.LAUNCHES:
+            why = f"launch selector {tx['sel']}, not {' or '.join(S.LAUNCHES)}"
+        elif S.LAUNCHES[tx["sel"]] and tx["len"] != S.LAUNCHES[tx["sel"]]:
+            why = f"launch calldata {tx['len']} B, not {S.LAUNCHES[tx['sel']]}"
         else:
             th = code_hash(read("eth_getCode", [p["token"], "latest"])); rec["token_code"] = th[:14]
             if th not in S.TOKEN_CODEHASHES:
                 why = f"token code {th[:14]} is not in BASE_TOKEN_CODEHASHES"
-            elif S.LAUNCHER_PREFIX:
+            elif S.LAUNCHER_PREFIXES:
                 lh = code_hash(read("eth_getCode", [tx["to"], "latest"])); rec["launcher_code"] = lh[:14]
-                if not lh[2:].startswith(S.LAUNCHER_PREFIX):
-                    why = f"launcher code {lh[:14]}, not {S.LAUNCHER_PREFIX}"
+                if not any(lh[2:].startswith(x) for x in S.LAUNCHER_PREFIXES):
+                    why = f"launcher code {lh[:14]}, not {' or '.join(S.LAUNCHER_PREFIXES)}"
     except Exception as e:
         why = f"not read: {scrub(e, 120)}"
         alarm(f"a launch was not read: {why}", quiet_key="arm", every_s=60, pool=p["pid"])
@@ -760,9 +788,9 @@ def near_miss(p, B, at=None):
 
 # ---------------------------------------------------------------- the Flashblocks feed
 def flash_watch():
-    """the hex strings that make a pending transaction worth decoding: the launch selector, the pools' hooks, the bot's routers (a pool held)"""
+    """the hex strings that make a pending transaction worth decoding: the launch selectors, the pools' hooks, the bot's routers (a pool held)"""
     live = [p for p in pools.values() if p["status"] in ("arming", "armed", "fired", "traded")]
-    return {S.LAUNCH_SELECTOR} | {p["hook"][2:] for p in live} | ({r[2:] for r in S.BOT_ROUTERS} if any(p["status"] != "arming" for p in live) else set())
+    return set(S.LAUNCHES) | {p["hook"][2:] for p in live} | ({r[2:] for r in S.BOT_ROUTERS} if any(p["status"] != "arming" for p in live) else set())
 
 
 def on_flash(m):
@@ -803,7 +831,7 @@ def on_flash_tx(s, N, at):
     if tx is None or not tx["to"]:
         return
     sel = tx["data"][:4].hex(); to = tx["to"]; h = None
-    if sel == S.LAUNCH_SELECTOR:
+    if sel in S.LAUNCHES:
         h = "0x" + keccak(raw).hex()
         flash_txs[h] = {"to": to, "from": tx_sender(s), "sel": sel, "len": len(tx["data"])}
         while len(flash_txs) > 256:

@@ -58,7 +58,7 @@ wallet's +1 call); **no outsider has traded in any pool**, so the reaction to on
 The front, as on Robinhood (HANDOFF 3.2), timed off the liquidity add instead of the launch:
 
 1. **Arm** on the launch: an `Initialize` with currency0 = 0, fee `BASE_FEE`, tick spacing `BASE_TICK_SPACING`, a hook whose low 14 address
-   bits are `BASE_HOOK_FLAGS`; the launch transaction's selector `BASE_LAUNCH_SELECTOR` and calldata length `BASE_LAUNCH_CALLDATA_LEN`
+   bits are `BASE_HOOK_FLAGS`; the launch transaction's selector and calldata length, one of `BASE_LAUNCH_SELECTOR`
    (read from the Flashblock's raw transaction if it was seen there, else `eth_getTransactionByHash`); the token's runtime code hash in
    `BASE_TOKEN_CODEHASHES` (`eth_getCode` at the arm); the launcher's code hash prefix `BASE_LAUNCHER_CODEHASH_PREFIX` when set. A
    mismatch logs `launch` with `skip` and the reason and arms nothing. The armed pool keeps its key (with the hook), sqrtPriceX96 and tick.
@@ -144,8 +144,9 @@ https://mainnet-sequencer.base.org,https://mainnet.base.org), `BASE_FLASH_URL` (
 (/etc/flip/base.key), `BASE_RELAY` (""), `BASE_POOL_MANAGER` (0x498581ff718922c3f8e6a244956af099b2652b2b), `BASE_HALT_FILE` (HALTED.base
 beside the log), `BASE_WS_SILENT_S` (10).
 
-The line's fingerprint: `BASE_LAUNCH_SELECTOR` (c3e0ff3d), `BASE_LAUNCH_CALLDATA_LEN` (260; 0 = any), `BASE_LAUNCHER_CODEHASH_PREFIX`
-(225f9af97d88; "" = any), `BASE_TOKEN_CODEHASHES` (0x63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb), `BASE_FEE` (5000),
+The line's fingerprint: `BASE_LAUNCH_SELECTOR` (c3e0ff3d/260,99dfa5c4: the launch calls, each with an optional /calldata length in bytes,
+a bare selector any length; the second is the operator's call since 19:42 UTC Oct 14), `BASE_LAUNCHER_CODEHASH_PREFIX`
+(225f9af97d88,53959585f666: any of; "" = any), `BASE_TOKEN_CODEHASHES` (0x63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb), `BASE_FEE` (5000),
 `BASE_TICK_SPACING` (100), `BASE_HOOK_FLAGS` (0x80; -1 = any hook, 0 = no hook), `BASE_ADD_SELECTOR` (2346bb56), `BASE_PULL_SELECTOR`
 (f2f230a8), `BASE_BOT_ROUTERS` (0x987d5db84d105c1f49391af409cc34c6050fb1d0), `BASE_BOT_SELECTORS` (27f7e6ee: a pending call to a bot
 router counts as the bot's buy only with one of these selectors and value > 0; the fleet's funding call 4977dff6 to the same contract is

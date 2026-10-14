@@ -172,8 +172,11 @@ fingerprint again. Relay 0.037 ETH, wallet 0.0117 ETH, 28 live trades, +$48.60.
 
 **What was not done.**
 
-- The engine was not adapted to the operator's new launch transaction. This file records that the change happened and nothing
-  more about the new launch.
+- The engine was adapted to the operator's new launch transaction in the commit after 51b4daa (measured on its first twelve pools:
+  selector 99dfa5c4, a fresh launcher of code hash 53959585f666... each time, calldata 868-1348 B, the same token code, the add 2346bb56
+  at L+3 of 1.533 ETH (two early pools of 0.053 ETH, under `BASE_MIN_POOL_ETH`), the pull f2f230a8 at +13 to +224). The box's env must
+  set `BASE_LAUNCH_SELECTOR=c3e0ff3d/260,99dfa5c4` and `BASE_LAUNCHER_CODEHASH_PREFIX=225f9af97d88,53959585f666` and drop
+  `BASE_LAUNCH_CALLDATA_LEN` (refused if set) before the restart.
 - The stake's ceiling was not measured on chain (section 8).
 - The code's `BASE_NEAR_MISS_SELL_BLOCKS` default was not brought in line with the box (section 8).
 

@@ -57,12 +57,11 @@ BASE_HALT_FILE=/var/log/flip/HALTED.base
 BASE_WS_SILENT_S=10
 
 # ---- the line's fingerprint (the operator's launch, measured on its five Base pools of Oct 14)
-# the launch transaction's selector (to the per-launch launcher)
-BASE_LAUNCH_SELECTOR=c3e0ff3d
-# the launch's calldata length in bytes; 0 = any
-BASE_LAUNCH_CALLDATA_LEN=260
-# the launcher's code hash prefix; empty = any
-BASE_LAUNCHER_CODEHASH_PREFIX=225f9af97d88
+# the launch transactions' selectors (to the per-launch launcher), comma-separated, each with an optional /calldata length in bytes
+# (c3e0ff3d, 260 B, to 19:42 UTC Oct 14; 99dfa5c4, 868-1348 B, since: a bare selector takes any length)
+BASE_LAUNCH_SELECTOR=c3e0ff3d/260,99dfa5c4
+# the launchers' code hash prefixes, comma-separated (225f9af97d88 the first launcher, 53959585f666 the one since 19:42); empty = any
+BASE_LAUNCHER_CODEHASH_PREFIX=225f9af97d88,53959585f666
 # the token's runtime code hash(es), comma-separated (the 2.433 token, byte for byte the Robinhood one)
 BASE_TOKEN_CODEHASHES=0x63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb
 # the pool's fee (5000 = 0.5%)

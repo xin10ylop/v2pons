@@ -162,9 +162,11 @@ def main():
     print("%s   service %s   release %s   %s" % ("BASE DRY RUN (nothing is signed or sent)" if dry_run else "BASE LIVE (BASE_DRY_RUN=0: real trades)",
                                              "RUNNING" if active else "STOPPED", st.get("release", "?"),
                                              ("started %s UTC at block %s" % (hm(st["t"]), st.get("head"))) if st else "no start line in " + LOG))
-    print("the line: fee %s / tick spacing %s, hook flags %s, launch %s (%s B), pools of %s ETH and more; stake %s ETH (cap %s), hold %s blocks, "
+    launches = cfg(st, "BASE_LAUNCHES", {"c3e0ff3d": 260, "99dfa5c4": 0})
+    launches = ", ".join(f"{k} ({v} B)" if v else k for k, v in launches.items()) if isinstance(launches, dict) else str(launches)
+    print("the line: fee %s / tick spacing %s, hook flags %s, launch %s, pools of %s ETH and more; stake %s ETH (cap %s), hold %s blocks, "
           "take profit %s, daily stop $%s" % (cfg(st, "BASE_FEE", 5000), cfg(st, "BASE_TICK_SPACING", 100), cfg(st, "BASE_HOOK_FLAGS", "0x80"),
-                                              cfg(st, "BASE_LAUNCH_SELECTOR", "c3e0ff3d"), cfg(st, "BASE_LAUNCH_CALLDATA_LEN", 260), cfg(st, "BASE_MIN_POOL_ETH", 1.0),
+                                              launches, cfg(st, "BASE_MIN_POOL_ETH", 1.0),
                                               cfg(st, "BASE_STAKE_ETH", 0.002), cfg(st, "BASE_STAKE_CAP_ETH", 0.005), cfg(st, "BASE_HOLD_BLOCKS", 6),
                                               pct(num(cfg(st, "BASE_TAKE_PROFIT", 0.01))), cfg(st, "BASE_DAILY_STOP_USD", 10)))
     if fl:

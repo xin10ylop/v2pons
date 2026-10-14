@@ -94,8 +94,10 @@ Search by function name; line numbers drift.
 - Settings that differ from the code's defaults: `BASE_DRY_RUN=0`, `BASE_STAKE_ETH=0.02`, `BASE_STAKE_CAP_ETH=0.02`,
   `BASE_DAILY_STOP_USD=60`, `BASE_NEAR_MISS_SELL_BLOCKS=1`, plus `BASE_WALLET` and `BASE_RELAY`.
 - Results: 28 live trades, 27 up, +$48.60. Relay 0.037 ETH, wallet 0.0117 ETH. No open position, no halt.
-- **Current situation:** from 19:42 UTC the operator's launches stopped matching the engine's fingerprint. Its log reads
-  `launch selector 99dfa5c4, not c3e0ff3d` for each one, and the engine trades none of them. The engine is otherwise healthy.
+- **Current situation:** from 19:42 UTC the operator launches with a new call (99dfa5c4 to a fresh launcher of code 53959585f666...,
+  calldata 868-1348 B; the token, hook flags, add and pull unchanged; pools of 1.533 ETH). The engine accepts it since the commit after
+  51b4daa (`BASE_LAUNCH_SELECTOR=c3e0ff3d/260,99dfa5c4`, `BASE_LAUNCHER_CODEHASH_PREFIX=225f9af97d88,53959585f666`; `BASE_LAUNCH_CALLDATA_LEN`
+  is gone and refused if set). The box's `/etc/flip/base.env` must carry those two lines and lose `BASE_LAUNCH_CALLDATA_LEN` before the restart.
 
 ## Known open items
 
