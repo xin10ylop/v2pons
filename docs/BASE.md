@@ -173,7 +173,10 @@ block, eth, liquidity, pending or confirmed), `fire` / `would_fire` (pool, add_b
 `buy_sent`, `sell_sent` (hash, nonce, block_seen, reason), `bot_buy` (pool, block or pending, value, via), `pull` (pool, block, before:
 fire|sell|after), `trade_done` (pool, token, buy_block, sell_block, eth_in_wei, tokens, eth_out_wei, gas_wei, l1_fee_wei, ret, usd, exit,
 pulled_at, nonbot_streak, dry, live), `halt` (reason), `stop` (day, losses), `alarm` (what, at most one a key every 10 min), `skip`,
-`stopped` (the process ending, with the open position if any). `exit` `buy_reverted` also covers a buy that never mined.
+`stopped` (the process ending, with the open position if any). `exit` `buy_reverted` also covers a buy that never mined. A re-sent sell
+logs `sell_sent` with `via: "retry"` and `min_out: 0`; a sell after an unread buy receipt `via: "balance"`; the sell after a pull carries
+`exit: "pulled"` and `min_out: 0`, and a pulled trade's `trade_done` includes that sell's ETH and gas. The settlement of every live trade
+makes one `eth_getLogs` read on `BASE_RPC_URL` (the pool's ModifyLiquidity between our buy's and our sell's blocks).
 
 ## 7. Files
 

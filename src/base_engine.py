@@ -9,32 +9,36 @@ L+3 (once L+2) the launch wallet calls the hook (2346bb56, 2.133329 ETH; the 0.1
 of its quote), its 35 wallets sell through the Universal Router from L+12, and the launch wallet pulls (f2f230a8 to the hook) on a ~4.1
 minute timer (+126, +128; the 09:42 test pool at +30). The Swap event's sender is the Universal Router for every swap, the bot's included.
 
-ARM on an Initialize of the line's fingerprint (currency0 0, BASE_FEE, BASE_TICK_SPACING, the hook's low 14 address bits BASE_HOOK_FLAGS;
-the launch transaction's selector and calldata length from its Flashblocks copy, else eth_getTransactionByHash; the token's code hash in
+ARM on an Initialize of the line's fingerprint (currency0 0, BASE_FEE, BASE_TICK_SPACING, the hook's low 14 address bits BASE_HOOK_FLAGS; the
+launch transaction's selector and calldata length from its Flashblocks copy, else eth_getTransactionByHash; the token's code hash in
 BASE_TOKEN_CODEHASHES; the launcher's code hash prefix): one `launch` line for every v4 Initialize on Base, armed or skip and why (no read
 for a pool that fails the event's own fields). FIRE on the first positive ModifyLiquidity of an armed pool, or earlier on its add seen
 pending in a Flashblock (to the hook, BASE_ADD_SELECTOR, from the launch wallet): FlipRelay.buy(key, stake, minOut, deadline), the stake
-min(BASE_STAKE_ETH, BASE_STAKE_CAP_ETH), minOut = v4math.buy_out_int at the pool's state x (1 - BASE_BUY_SLIP) (a pending add's liquidity
-is value x sqrtPriceX96 / 2^96, a full-range position at the launch price: the chain's to the unit on the 09:42 pool), a type-2
-transaction at the wallet's nonce to every BASE_SEND_URLS at once. Refused (a `skip` line): the pool's ETH under BASE_MIN_POOL_ETH (the
-pending add's value, or the confirmed add's liquidity at the pool's price), a pull seen, the head past the add's block + BASE_FIRE_MAX, a
-position open, halted (BASE_HALT_FILE is read again before every live fire), stopped for the day, BASE_MAX_PER_DAY fires today, the relay
-under the stake + BASE_RELAY_MARGIN_ETH. An armed pool with no add by L + BASE_ADD_MAX_BLOCKS expires. SELL (FlipRelay.sell(key, minOut,
-deadline), everything the relay holds) on the first of: the bot's buy seen pending (to BASE_BOT_ROUTERS with the token, in a Flashblock
-after the one holding our buy: one sequenced ahead of ours is no exit) or confirmed behind ours (that transaction, or a Swap sender in
-BASE_BOT_SENDERS, off by default) (`exit: bot`); a confirmed buy behind ours at whose price our tokens are worth the stake x (1 +
+min(BASE_STAKE_ETH, BASE_STAKE_CAP_ETH), minOut = v4math.buy_out_int at the pool's state x (1 - BASE_BUY_SLIP) (a pending add's liquidity is
+value x sqrtPriceX96 / 2^96, a full-range position at the launch price: the chain's to the unit on the 09:42 pool), a type-2 transaction at
+the wallet's nonce to every BASE_SEND_URLS at once. Refused (a `skip` line): the pool's ETH under BASE_MIN_POOL_ETH (the pending add's value,
+or the confirmed add's liquidity at the pool's price), a pull seen, the head past the add's block + BASE_FIRE_MAX, a position open, halted
+(BASE_HALT_FILE is read again before every live fire), stopped for the day, BASE_MAX_PER_DAY fires today, the relay under the stake +
+BASE_RELAY_MARGIN_ETH. An armed pool with no add by L + BASE_ADD_MAX_BLOCKS expires. SELL (FlipRelay.sell(key, minOut, deadline), everything
+the relay holds) on the first of: the bot's buy seen pending (a BASE_BOT_SELECTORS call with ETH to BASE_BOT_ROUTERS carrying the token, in a
+Flashblock after the one holding our buy: one sequenced ahead of ours is no exit) or confirmed behind ours (that transaction, or a Swap
+sender in BASE_BOT_SENDERS, off by default) (`exit: bot`); a confirmed buy behind ours at whose price our tokens are worth the stake x (1 +
 BASE_TAKE_PROFIT) + the round trip's estimated gas (`take_profit`); our buy's block + BASE_HOLD_BLOCKS reached by the head or a Flashblock
 (`deadline`, minOut 0). A live sell goes only once our buy is in (its Swap, receipt or Flashblock); its minOut is the ETH out at the tracked
-price (our buy in it) x (1 - BASE_SELL_SLIP). THE PULL (a negative ModifyLiquidity; a pending f2f230a8 from the launch wallet skips the
-pool before our fire and only logs after it): after our buy and at or before our sell the trade is -100% (`pulled`; the sell still goes,
-minOut 0: a partial pull would strand tokens), the line halts, and it is read again from eth_getLogs at the settlement; a pull
-within BASE_NEAR_MISS_BLOCKS of our buy halts even behind our sell; a sell that sold nothing on a pool not pulled halts ("sold none");
+price (our buy in it) x (1 - BASE_SELL_SLIP). THE PULL (a negative ModifyLiquidity; a pending f2f230a8 from the launch wallet skips the pool
+before our fire and only logs after it): after our buy and at or before our sell the trade is -100% (`pulled`; the sell still goes, minOut 0:
+a partial pull would strand tokens), the line halts, and it is read again from eth_getLogs at the settlement; a pull within
+BASE_NEAR_MISS_BLOCKS of our buy halts even behind our sell; a sell that sold nothing on a pool not pulled halts ("sold none");
 BASE_NONBOT_HALT live trades in a row under BASE_NONBOT_MIN_RET halt (the decoy rule). A halt writes HALTED.base (beside the log; held across
 restarts until the owner removes it), stops new buys and still sells what is open. SETTLE from the receipts: the tokens and ETH in from our
 buy's Swap (or the token's Transfer to the relay), the ETH out from our sell's, the gas of each = gasUsed x effectiveGasPrice + l1Fee; a
-reverted (or never mined) buy is a gas-only loss (`buy_reverted`, no sell sent); one `trade_done`; BASE_DAILY_STOP_USD of losses in a UTC
-day stops new buys (`stop`). One position at a time, in base_positions.json ({"positions": {pool: ...}}) beside the log, taken back at a
-start: a sell already sent has its receipt waited for, else it is sold at once (minOut 0).
+reverted (or never mined) buy is a gas-only loss (`buy_reverted`, no sell sent); one `trade_done`; BASE_DAILY_STOP_USD of losses in a UTC day
+stops new buys (`stop`). A sell that reverted or was refused on a pool not pulled is sent again at minOut 0 (twice at most, each after the
+last one's receipt or refusal, at the chain's nonce) before "sold none"; a sell of 0 ETH is "sold none" too; the settlement's own eth_getLogs
+finds a pull the feed missed (a restart, a gap), and one the feed shows after the settlement, before our sell, halts the line ("pulled"). A
+buy that is in (its Swap, its Flashblock, or the relay's tokens) is never booked lost for want of its receipt: it is sold. The settlement
+waits on the hash the trader finally sent (a "nonce too low" signs again). One position at a time, in base_positions.json ({"positions":
+{pool: ...}}) beside the log, taken back at a start: a sell already sent has its receipt waited for, else it is sold at once (minOut 0).
 
 THE DRY RUN (BASE_DRY_RUN=1, the default): everything but sign and send; no key is read. A dry buy lands at the end of the block after the
 fire's head (the add's block for a Flashblocks fire, the next for a confirmed one), behind that block's recorded swaps: buy_out_int there
@@ -87,6 +91,7 @@ UA = "Mozilla/5.0 Chrome/128"                                                   
 DRY_GAS_UNITS = 320_000                  # the round trip's gas used, estimated (the bot's buys used 150-167k through the Universal Router; FlipRelay is direct)
 L1_FEE_EST_WEI = 4_200_000_000           # two L1 data fees (the bot's 356 B buys paid 2.09e9 wei each on Oct 14)
 READ_TIMEOUT_S = 3.0; SEND_TIMEOUT_S = 4.0; SLOW_TIMEOUT_S = 10.0
+RECEIPT_GRACE_S = 60.0; BLOCK_S = 2.0; SELL_RETRIES = 2                        # a receipt's wait past a deadline; a block; a failed sell's re-sends
 RECEIPT_POLL_S = 0.25; POLL_S = 0.5; POLL_LAG = 1; MAX_RANGE = 20; DRAIN_S = 0.003; FLASH_SILENT_S = 10.0; FLOW_S = 60.0
 WATCH_BLOCKS = 200                       # a traded pool is watched to L + 200 for its pull (the real pools: +126, +128)
 START_WAIT_S = 300; DEFAULT_LOG = "/var/log/flip/base.jsonl"
@@ -688,7 +693,7 @@ def apply(p, lg):
         if e["d"] > 0 and p["add_conf"] is None:
             p["add_conf"] = {"block": B, "tx": txh, "via": "logs", "seen_at": mono()}
         if e["d"] < 0:
-            on_pull(p, B, "logs")
+            on_pull(p, B, "logs", at=(B, li))
     else:
         e = {"k": "swap", "a0": sgn(W(d, 0)), "a1": sgn(W(d, 1)), "sp": W(d, 2), "liq": W(d, 3), "tick": sgn(W(d, 4)), "tx": txh, "bh": bh, "sender": sender}
         p["ev"][(B, li)] = e
@@ -704,7 +709,7 @@ def apply(p, lg):
     p["kick"] = True
 
 
-def on_pull(p, B, via, pending=False):
+def on_pull(p, B, via, pending=False, at=None):
     """a pull (a negative ModifyLiquidity, or its call seen pending): the `pull` line; before our fire the pool is skipped; a traded pool's
     near miss. The trade's own outcome is decided from the pool's events (check_position) and the receipts (finish_live)"""
     pos = state["position"]; ours = pos is not None and pos["pid"] == p["pid"]
@@ -722,7 +727,12 @@ def on_pull(p, B, via, pending=False):
         p["status"] = "skip"; pools.pop(p["pid"], None)
         log({"ev": "skip", "pool": p["pid"], "why": "pulled before our fire", "block": B})
     elif not pending and p["trade"] and not ours:
-        near_miss(p, B)
+        t = p["trade"]
+        if t["exit"] not in ("pulled", "buy_reverted", "unsent") and t.get("sell_at") and at is not None and at < t["sell_at"]:
+            t["near_checked"] = True                                           # the trade booked was -100%: the feed missed this pull at its settlement
+            halt(f"pulled: a pull at block {B}, before our sell at {t['sell_at'][0]}, was seen after the settlement: the trade was -100%")
+        else:
+            near_miss(p, B)
 
 
 def near_miss(p, B):
@@ -904,12 +914,13 @@ def check_position(pos):
     p = pools.get(pos["pid"])
     if pos["closed"] or pos["dry"]:
         return None if pos["closed"] else check_dry(pos, p)
-    pull = fold(p)["pull"] if p is not None else None
-    if pull is not None and not pos["sell_sent"] and not pos["no_sell"] and (pos["buy_at"] is None or pull > pos["buy_at"]):
-        pos["no_sell"] = True; pos["exit"] = "pulled"                             # the pool is empty: no sell; the settlement closes it (-100%, a halt)
     if pos["sell_sent"] or pos["no_sell"] or pos["buy_status"] in ("reverted", "lost") or (pos["buy_block"] is None and pos.get("buy_seen") is None):
         return
-    trig = pos["trigger"] or (scan_swaps(pos, p) if p is not None else None) or deadline(pos)
+    pull = fold(p)["pull"] if p is not None else None
+    if pull is not None and (pos["buy_at"] is None or pull > pos["buy_at"]):     # pulled behind our buy: still sold (a partial pull would strand tokens)
+        trig = {"exit": "pulled", "block": pull[0], "via": "logs", "reason": f"the pool was pulled at {pull[0]}, behind our buy: sold at minOut 0"}
+    else:
+        trig = pos["trigger"] or (scan_swaps(pos, p) if p is not None else None) or deadline(pos)
     if trig:
         do_sell(pos, trig)
 
@@ -961,7 +972,7 @@ def do_sell(pos, trig):
         log({"ev": "sell_sent", "dry": True, "pool": pos["pid"], "hash": None, "nonce": None, "block_seen": pos["sell_block_seen"], "reason": trig["reason"],
              "exit": trig["exit"], "via": trig["via"], "priced_at_block": pos["X"]}); return
     min_out = 0
-    if trig["exit"] != "deadline" and p is not None:
+    if trig["exit"] not in ("deadline", "pulled") and p is not None:
         st = pool_state(p); min_out = sell_value(pos, p, st["sp"], st["liq"]) * (10 ** 6 - S.SELL_SLIP_PPM) // 10 ** 6
     orders.put(("sell", pos, (min_out, int(now()) + S.SELL_DEADLINE_S, trig)))
 
@@ -1040,10 +1051,15 @@ def trader():
         try:
             (send_buy(pos) if kind == "buy" else send_sell(pos, *arg))
         except Exception as e:
-            alarm(f"the trader failed on a {kind}: {type(e).__name__}: {scrub(e, 120)}", trace=traceback.format_exc()[-400:])
-            if kind == "buy":
+            try:
+                alarm(f"the trader failed on a {kind}: {type(e).__name__}: {scrub(e, 120)}", trace=traceback.format_exc()[-400:])
                 with lock:
-                    close_unsent(pos, "the buy could not be sent")
+                    if kind == "buy":
+                        close_unsent(pos, "the buy could not be sent")
+                    else:
+                        pos.update(sell_refused=True, sell_done=True)           # the settlement goes on: a re-send, else "sold none"
+            except Exception:
+                pass
 
 
 def chain_nonce():
@@ -1098,13 +1114,17 @@ def close_unsent(pos, why):
 
 
 def send_sell(pos, min_out, deadline_ts, trig):
+    if trig.get("renonce"):                                                    # a re-send: the chain's count (a sell that never landed frees its nonce)
+        n = chain_nonce()
+        with lock:
+            state["nonce"] = n if n is not None else state["nonce"]
     h, nonce, kind, replies = send_signed(pos, "sell", lambda n: tx_dict(sell_data(pos["key"], min_out, deadline_ts), S.SELL_GAS, n))
     log({"ev": "sell_sent", "dry": False, "pool": pos["pid"], "hash": h, "nonce": nonce, "block_seen": pos["sell_block_seen"], "reason": trig["reason"],
          "exit": trig["exit"], "via": trig["via"], "min_out": min_out, "kind": kind, "replies": replies})
     if kind == "rejected":
-        with lock:
-            pos["sell_refused"] = True
         alarm("the sell was refused by every endpoint", pool=pos["pid"], replies=replies)
+    with lock:
+        pos.update(sell_refused=kind == "rejected", sell_done=True)            # the final hash is in: the settlement waits on it
 
 
 # ---------------------------------------------------------------- settlement (live)
@@ -1154,10 +1174,52 @@ def settle_live(pos):
             save_positions()
 
 
+def relay_tokens(pos):
+    """the relay's balance of the token (None: not read)"""
+    try:
+        return int(read("eth_call", [{"to": pos["token"], "data": "0x70a08231" + aword(S.RELAY)}, "latest"], tries=2), 16)
+    except Exception as e:
+        alarm(f"the relay's token balance was not read: {scrub(e, 100)}", pool=pos["pid"]); return None
+
+
+def chain_pull(pos, to_block):
+    """the first negative ModifyLiquidity of our pool from our buy's block to to_block, by eth_getLogs (the settlement's own read: after a
+    restart or a gap the feed's events are not all there); None: none, or the read failed (an alarm)"""
+    a = pos["buy_block"] or pos.get("fire_head") or to_block
+    try:
+        ls = read("eth_getLogs", [{"fromBlock": hex(a), "toBlock": hex(max(a, to_block)), "address": S.PM, "topics": [T_ML, pos["pid"]]}], timeout=SLOW_TIMEOUT_S, tries=2)
+        pulls = sorted(order(l) for l in ls if l["topics"][0].lower() == T_ML and l["topics"][1].lower() == pos["pid"] and sgn(W(l["data"], 2)) < 0)
+        return pulls[0] if pulls else None
+    except Exception as e:
+        alarm(f"the pull check was not read ({scrub(e, 100)}): the feed's events decide", pool=pos["pid"]); return None
+
+
+def wait_sell(pos):
+    """the sell's final hash (the trader's), or no sell (the buy did not fill); a sell the feeds never decided goes on the clock"""
+    t0 = mono()
+    while True:
+        with lock:
+            if pos["no_sell"] or pos.get("sell_done"):
+                return not pos["no_sell"]
+            if not pos["sell_sent"] and mono() - t0 > BLOCK_S * S.HOLD_BLOCKS * 2 + 120:
+                do_sell(pos, {"exit": "deadline", "block": state["head"] or 0, "via": "clock", "reason": "the deadline by the clock: no block came"})
+        time.sleep(RECEIPT_POLL_S)
+
+
 def _settle_live(pos):
-    rb = wait_receipt(pos["buy_hash"], S.BUY_DEADLINE_S + 60)
+    rb = wait_receipt(pos["buy_hash"], S.BUY_DEADLINE_S + RECEIPT_GRACE_S)
+    if rb is None and (pos["buy_at"] is not None or pos.get("buy_seen")):         # in (its Swap, its Flashblock): never "lost"; asked again
+        alarm("our buy is in (its Swap or its Flashblock) but its receipt is not read: still asking", pool=pos["pid"], buy_hash=pos["buy_hash"])
+        rb = wait_receipt(pos["buy_hash"], BLOCK_S * S.HOLD_BLOCKS + RECEIPT_GRACE_S)
+    held = relay_tokens(pos) if rb is None and not pos["sell_sent"] else None
     with lock:
-        if rb is None:
+        if rb is None and (pos["sell_sent"] or pos["buy_at"] is not None or pos.get("buy_seen") or held):
+            pos["buy_status"] = "unread"; pos["tokens"] = pos["tokens"] or held; pos["eth_in"] = pos["eth_in"] or pos["stake"]
+            alarm("our buy's receipt was not read but the buy is in: " + ("its sell went" if pos["sell_sent"] else f"the relay holds {held} tokens: sold at minOut 0"),
+                  pool=pos["pid"], buy_hash=pos["buy_hash"])
+            if not pos["sell_sent"]:
+                do_sell(pos, {"exit": "deadline", "block": state["head"] or 0, "via": "balance", "reason": "our buy's receipt was not read: sold at minOut 0"})
+        elif rb is None:
             pos["buy_status"] = "lost"
         elif rb.get("status") != "0x1":
             pos["buy_status"] = "reverted"
@@ -1171,47 +1233,56 @@ def _settle_live(pos):
                     pos.update(buy_at=(pos["buy_block"], 0), tokens=tokens_in(rb, pos), eth_in=pos["stake"])
             if pos.get("restart") and not pos["sell_sent"]:
                 do_sell(pos, {"exit": "deadline", "block": state["head"] or 0, "via": "start", "reason": "restart: an open position taken back at the start, sold at once"})
-        if pos["buy_status"] != "ok" and not pos["sell_sent"]:
+        if pos["buy_status"] not in ("ok", "unread") and not pos["sell_sent"]:
             pos["no_sell"] = True
         save_positions()
-    t0 = mono()
-    while True:                                                                    # the sell's decision (the feeds), or no sell (a pull)
+    sells = []                                                                 # every sell's receipt (a reverted one's gas counts)
+    for attempt in range(SELL_RETRIES + 1):
+        if not wait_sell(pos):
+            break
+        rs = wait_receipt(pos["sell_hash"], S.SELL_DEADLINE_S + RECEIPT_GRACE_S) if pos["sell_hash"] and not pos.get("sell_refused") else None
+        sells += [rs] if rs else []
+        if (rs and rs.get("status") == "0x1" and our_swap(rs, pos)) or attempt == SELL_RETRIES or pos["buy_status"] not in ("ok", "unread"):
+            break
+        if chain_pull(pos, int(rs["blockNumber"], 16) if rs else state["head"] or 0) is not None:
+            break                                                              # pulled: nothing to sell; settled "pulled"
+        why = "was refused" if pos.get("sell_refused") else "reverted" if rs else "has no receipt"
+        alarm(f"our sell {why}: sent again at minOut 0 ({attempt + 1} of {SELL_RETRIES})", pool=pos["pid"], hash=pos["sell_hash"])
         with lock:
-            if pos["no_sell"] or pos.get("sell_refused") or (pos["sell_sent"] and pos["sell_hash"]):
-                break
-        if mono() - t0 > 2.0 * S.HOLD_BLOCKS + 120:
-            with lock:
-                if not pos["sell_sent"]:
-                    do_sell(pos, {"exit": "deadline", "block": state["head"] or 0, "via": "clock", "reason": "the deadline by the clock: no block came"})
-            t0 = mono()
-        time.sleep(RECEIPT_POLL_S)
-    rs = wait_receipt(pos["sell_hash"], S.SELL_DEADLINE_S + 60) if pos["sell_hash"] and not pos.get("sell_refused") else None
-    finish_live(pos, rb, rs)
+            pos.update(sell_done=False, sell_refused=False, sell_hash=None)
+            orders.put(("sell", pos, (0, int(now()) + S.SELL_DEADLINE_S, {"exit": pos["exit"], "via": "retry", "renonce": True, "block": state["head"] or 0,
+                                                                          "reason": f"re-send {attempt + 1}: the sell {why}"})))
+    finish_live(pos, rb, sells)
 
 
-def finish_live(pos, rb, rs):
-    n = chain_nonce()                                                          # both transactions are final: the chain's count, read before the slot frees
-    gas = l1 = eth_in = eth_out = 0; tokens = pos["tokens"]; sell_block = None; sell_at = None
-    for rec in (rb, rs):
+def finish_live(pos, rb, sells):
+    n = chain_nonce()                                                          # every transaction is final: the chain's count, read before the slot frees
+    gas = l1 = eth_in = eth_out = 0; tokens = pos["tokens"]; sell_block = None; sell_at = None; rs = sells[-1] if sells else None
+    for rec in [rb] + sells:
         if rec:
             g, l = gas_of(rec); gas += g; l1 += l
     if rb and rb.get("status") == "0x1":
         sw = our_swap(rb, pos)
         eth_in, tokens = (-sw[0], sw[1]) if sw else (pos["stake"], tokens_in(rb, pos))
+    elif pos["buy_status"] == "unread":
+        eth_in = pos["eth_in"] or pos["stake"]
     if rs:
         sell_block = int(rs["blockNumber"], 16); sw = our_swap(rs, pos) if rs.get("status") == "0x1" else None
         if sw:
             eth_out = sw[0]; sell_at = (sw[2], sw[3])
+    on_chain = chain_pull(pos, sell_block or state["head"] or 0) if pos["buy_status"] in ("ok", "unread") else None
     with lock:
-        p = pools.get(pos["pid"]); pull = fold(p)["pull"] if p is not None else None
+        p = pools.get(pos["pid"]); after = pos["buy_at"] or (0, 0)
+        pull = min([x for x in ((fold(p)["pull"] if p is not None else None), on_chain) if x is not None and x > after], default=None)
         exit_ = pos["exit"]; halt_why = None
         if pos["buy_status"] in ("reverted", "lost"):
             exit_ = "buy_reverted"; pos["sell_reason"] = "our buy reverted" if pos["buy_status"] == "reverted" else "no receipt for our buy: it never landed"
         elif pull is not None and (sell_at is None or pull < sell_at):
             exit_ = "pulled"
             halt_why = f"pulled: the pull at block {pull[0]} came at or before our sell (our buy at {pos['buy_block']}): -100%"
-        elif sell_at is None:
-            halt_why = f"sold none: the buy filled and the sell sold nothing ({'no sell' if not rs else 'reverted' if rs.get('status') != '0x1' else 'no Swap'}): the sell path is broken"
+        elif sell_at is None or eth_out <= 0:
+            halt_why = (f"sold none: the buy filled and the sell got nothing ({'no sell' if not rs else 'reverted' if rs.get('status') != '0x1' else 'no ETH'}"
+                        f", {len(sells)} sell(s) mined): the sell path is broken")
         base = eth_in or pos["stake"]; net = eth_out - eth_in - gas; ret = net / base
         streak = state["nonbot_streak"]
         if exit_ != "buy_reverted":
@@ -1228,7 +1299,7 @@ def finish_live(pos, rb, rs):
         if S.NONBOT_HALT and exit_ != "buy_reverted" and streak >= S.NONBOT_HALT and not halt_why:
             halt(f"{streak} live trades in a row under {S.NONBOT_MIN_RET:+.0%} (last {ret:+.1%}, {exit_}): decoys or a changed schedule (BASE_NONBOT_HALT)")
         if p is not None:
-            p["status"] = "traded"; p["trade"] = {"buy_block": pos["buy_block"], "sell_block": sell_block, "exit": exit_}
+            p["status"] = "traded"; p["trade"] = {"buy_block": pos["buy_block"], "sell_block": sell_block, "sell_at": sell_at, "exit": exit_}
             if pull is not None and exit_ not in ("pulled", "buy_reverted"):
                 near_miss(p, pull[0])
         if state["relay_wei"] is not None:
@@ -1270,7 +1341,7 @@ def take_back(saved):
     """a live position left open by the last run: its buy's receipt, then the sell's (already sent) or a sell at once (minOut 0)"""
     pos = {"dry": False, "buy_at": None, "buy_status": None, "sell_at": None, "trigger": None, "no_sell": False, "closed": False, "scanned": None, "X": None,
            "fired_at": mono(), "eth_in": None, "restart": True, **{k: saved.get(k) for k in POS_KEYS}, "buy_block": None, "tokens": None, "sell_block_seen": state["head"]}
-    pos["sell_sent"] = bool(pos["sell_sent"] and pos["sell_hash"])                # decided but never signed: sold now
+    pos["sell_sent"] = pos["sell_done"] = bool(pos["sell_sent"] and pos["sell_hash"])   # decided but never signed: sold now
     state["position"] = pos
     log({"ev": "alarm", "what": "an open position from the last run is taken back: " + ("its sell's receipt is awaited" if pos["sell_hash"] else "sold at once"),
          "pool": pos["pid"], "buy_hash": pos["buy_hash"], "sell_hash": pos["sell_hash"]})

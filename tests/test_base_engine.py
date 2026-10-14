@@ -18,6 +18,7 @@ os.environ.update(BASE_ENV)
 sys.path.insert(0, os.path.join(ROOT, "src"))
 import base_engine as E
 import v4math
+REAL_HTTP = E.http_json
 E.RECEIPT_POLL_S = 0.005; E.POLL_S = 0.005
 
 FX = json.load(open(os.path.join(ROOT, "tests", "data", "base_launch.json")))
@@ -73,7 +74,7 @@ class Chain:
         self.logs = copy.deepcopy([FX["init_log"]] + FX["pool_logs"] if logs is None else logs)
         self.txs = copy.deepcopy(FX["txs"] if txs is None else txs); self.receipts = {}; self.head = L + 40; self.calls = []; self.ranges = []
         self.code = {TOKEN: FX["token_code"], LAUNCHER: FAKE_LAUNCHER_CODE, RELAY: "0x6001"}; self.chain_ids = {}; self.owner = None; self.pm = E.S.PM
-        self.balance = 10 ** 18; self.nonce = 7; self.sent = []; self.fail = set()
+        self.balance = 10 ** 18; self.nonce = 7; self.sent = []; self.fail = set(); self.auto = None; self.replies = []; self.tokens = 0
 
     def http(self, url, payload, timeout):
         m, prm = payload["method"], payload["params"]; self.calls.append((E.host(url), m))
@@ -94,6 +95,10 @@ class Chain:
         if m == "eth_getTransactionByHash":
             return {"result": copy.deepcopy(self.txs.get(prm[0]))}
         if m == "eth_getTransactionReceipt":
+            if prm[0] not in self.receipts and self.auto and prm[0] in {"0x" + keccak(bytes.fromhex(r[2:])).hex() for _, r in self.sent}:
+                r = self.auto(prm[0])
+                if r:
+                    self.receipts[prm[0]] = r
             return {"result": copy.deepcopy(self.receipts.get(prm[0]))}
         if m == "eth_getCode":
             return {"result": self.code.get(prm[0].lower(), "0x")}
@@ -103,11 +108,15 @@ class Chain:
             return {"result": hex(self.nonce)}
         if m == "eth_call":
             sel = prm[0]["data"][2:10]
+            if sel == "70a08231":
+                return {"result": "0x" + word(self.tokens)}
             return {"result": "0x" + "0" * 24 + ((self.owner or E.S.WALLET)[2:] if sel == E.SEL_OWNER else self.pm[2:])}
         raise RuntimeError(m)
 
     def post(self, url, body):
         raw = json.loads(body)["params"][0]; self.sent.append((E.host(url), raw))
+        if self.replies:
+            return self.replies.pop(0)
         return {"jsonrpc": "2.0", "id": 1, "result": "0x" + keccak(bytes.fromhex(raw[2:])).hex()}
 
 
@@ -590,10 +599,14 @@ def live_buy_reverted_sends_no_sell():
 
 @test
 def live_sold_none_halts():
-    c = fresh(dry=False); live_trade(c, sell_ok=False)
-    t = wait_ev("trade_done")[0]; h = wait_ev("halt")
+    """the sell reverts on a pool not pulled: sent again twice at minOut 0 (each after the last one's receipt), all revert: "sold none", the halt"""
+    c = fresh(dry=False); c.auto = lambda h: None if h == sent_hash(c, 0) else live_receipt(h, L + 10, [], ok=False, gas=120_000, l1=1_500_000_000)
+    live_trade(c, sell_ok=False)
+    t = wait_ev("trade_done")[0]; h = wait_ev("halt"); s = events("sell_sent")
     assert t["exit"] == "take_profit" and t["eth_out_wei"] == 0 and h[0]["reason"].startswith("sold none") and not h[0]["dry"], (t, h)
-    assert open(E.S.HALT_FILE).read().startswith("sold none")
+    assert len(s) == 3 and [x["min_out"] for x in s[1:]] == [0, 0] and [x["via"] for x in s[1:]] == ["retry", "retry"], s
+    assert t["gas_wei"] == 150_000 * 55_000_000 + 2_090_000_000 + 3 * (120_000 * 55_000_000 + 1_500_000_000), t     # the three sells' gas
+    assert open(E.S.HALT_FILE).read().startswith("sold none") and len([a for a in events("alarm") if "sent again" in a["what"]]) == 2
 
 
 @test
@@ -601,27 +614,28 @@ def live_decoy_streak_halts():
     c = fresh(dry=False, BASE_NONBOT_HALT="3")
     for i in range(3):
         pos = {"pid": PID, "token": TOKEN, "key": {}, "dry": False, "stake": E.S.STAKE_WEI, "expected": 1, "min_out": 1, "via": "logs", "add_block": L + 3,
-               "buy_status": "ok", "buy_block": L + 4, "tokens": 10, "exit": "deadline", "nonce": 7 + 2 * i, "buy_hash": "0x1", "sell_hash": "0x2", "closed": False}
+               "buy_status": "ok", "buy_block": L + 4, "buy_at": (L + 4, 1), "tokens": 10, "exit": "deadline", "nonce": 7 + 2 * i, "buy_hash": "0x1", "sell_hash": "0x2", "closed": False}
         E.state["position"] = pos
         rb = live_receipt("0x1", L + 4, [swap_log(L + 4, 1, -E.S.STAKE_WEI, 10, SP0, sender=RELAY)])
         rs = live_receipt("0x2", L + 9, [swap_log(L + 9, 1, E.S.STAKE_WEI * 101 // 100, -10, SP0, sender=RELAY)])
-        E.finish_live(pos, rb, rs)
+        E.finish_live(pos, rb, [rs])
     t = events("trade_done"); h = events("halt")
     assert [x["nonbot_streak"] for x in t] == [1, 2, 3] and len(h) == 1 and "BASE_NONBOT_HALT" in h[0]["reason"], (t, h)
 
 
 @test
 def live_pull_first():
-    """the pull lands between our buy (+4) and the bot's buy: no sell is sent, -100%, the halt"""
+    """the pull lands between our buy (+4) and the bot's buy: the sell still goes at minOut 0 (a partial pull would strand tokens), -100%, the halt"""
     c = fresh(dry=False); launch_armed(c); feed(c, L + 3, L + 3)
     wait_ev("buy_sent"); hb = sent_hash(c, 0); stake = E.S.STAKE_WEI; tokens, sp1 = exact_buy(SP0, LIQ, stake)
     mine = swap_log(L + 4, 7, -stake, tokens, sp1, sender=RELAY, tx=hb); c.receipts[hb] = live_receipt(hb, L + 4, [mine])
     pull = copy.deepcopy(FX["pool_logs"][-1]); pull["blockNumber"] = hex(L + 6); pull["blockHash"] = header(L + 6)["hash"]
     c.logs = [FX["init_log"]] + FX["pool_logs"][:2] + [mine, pull]
+    c.auto = lambda h: None if h == hb else live_receipt(h, L + 7, [swap_log(L + 7, 1, 3, -tokens, SP0, liq=1, sender=RELAY, tx=h)])   # 3 wei: the 1-unit position
     feed(c, L + 4, L + 12)
-    t = wait_ev("trade_done")[0]; h = wait_ev("halt")
-    assert t["exit"] == "pulled" and t["pulled_at"] == L + 6 and t["eth_out_wei"] == 0 and t["ret"] < -1 and not events("sell_sent"), t
-    assert h[0]["reason"].startswith("pulled") and os.path.exists(E.S.HALT_FILE)
+    t = wait_ev("trade_done")[0]; h = wait_ev("halt"); s = events("sell_sent")
+    assert t["exit"] == "pulled" and t["pulled_at"] == L + 6 and t["eth_out_wei"] == 3 and t["ret"] < -0.99 and len(s) == 1, (t, s)
+    assert s[0]["exit"] == "pulled" and s[0]["min_out"] == 0 and h[0]["reason"].startswith("pulled") and os.path.exists(E.S.HALT_FILE)
 
 
 @test
@@ -656,6 +670,200 @@ def live_halt_file_read_before_the_fire():
     feed(c, L + 3, L + 4)
     s = events("skip")
     assert s and s[0]["why"] == "halted: owner: stop" and not events("fire") and not c.sent, s
+
+
+@test
+def live_restart_pull_and_zero_sell():
+    """a restart (no pool in memory) whose sell lands after a pull at +6 and gets 0 ETH: the settlement's own eth_getLogs finds the pull:
+    "pulled", the halt; the same without a pull: a sell of 0 ETH is "sold none", the halt"""
+    for pulled in (True, False):
+        c = fresh(dry=False); stake = E.S.STAKE_WEI; tokens, sp1 = exact_buy(SP0, LIQ, stake)
+        saved = {"pid": PID, "key": {"c0": E.ZERO, "c1": TOKEN, "fee": FEE, "ts": 100, "hooks": HOOK}, "token": TOKEN, "L": L, "stake": stake, "expected": tokens,
+                 "min_out": tokens * 97 // 100, "via": "logs", "add_block": L + 3, "fire_head": L + 3, "D": L + 4, "nonce": 7, "buy_hash": "0x" + "b1" * 32,
+                 "buy_block": None, "tokens": None, "sell_sent": False, "sell_hash": None}
+        json.dump({"positions": {PID: saved}}, open(E.S.POSITIONS_FILE, "w"))
+        c.receipts[saved["buy_hash"]] = live_receipt(saved["buy_hash"], L + 4, [swap_log(L + 4, 7, -stake, tokens, sp1, sender=RELAY)])
+        pull = copy.deepcopy(FX["pool_logs"][-1]); pull["blockNumber"] = hex(L + 6); pull["blockHash"] = header(L + 6)["hash"]
+        c.logs = [pull] if pulled else []; c.head = L + 40
+        c.auto = lambda h: live_receipt(h, L + 40, [swap_log(L + 40, 1, 0, -tokens, SP0, liq=1, sender=RELAY, tx=h)])
+        os.environ.update({"BASE_KEY_FILE": os.path.join(TMP, "k.key"), "BASE_WALLET": KEY.address, "BASE_RELAY": RELAY}); open(os.path.join(TMP, "k.key"), "w").write(KEY.key.hex())
+        E.S = E.settings(); E.start()
+        t = wait_ev("trade_done")[0]; h = wait_ev("halt")
+        assert t["exit"] == ("pulled" if pulled else "deadline") and t["eth_out_wei"] == 0 and t["pulled_at"] == (L + 6 if pulled else None), t
+        assert h[0]["reason"].startswith("pulled" if pulled else "sold none") and len(events("sell_sent")) == 1, h
+
+
+@test
+def live_pull_seen_after_settlement():
+    """a pull at +8, before our sell at +9, that the feed shows only after the trade was settled: the line halts ("pulled"), not a near miss"""
+    c = fresh(dry=False); live_trade(c)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "take_profit" and not events("halt")
+    pull = copy.deepcopy(FX["pool_logs"][-1]); pull["blockNumber"] = hex(L + 8); pull["blockHash"] = header(L + 8)["hash"]; pull["logIndex"] = "0x9"
+    E.on_ws_message(json.dumps({"jsonrpc": "2.0", "method": "eth_subscription", "params": {"subscription": "0xl", "result": pull}}), c.subs)   # a late log
+    h = events("halt")
+    assert len(h) == 1 and h[0]["reason"].startswith("pulled: a pull at block") and "after the settlement" in h[0]["reason"], h
+
+
+@test
+def live_sell_resent_after_a_revert():
+    """the first sell reverts on a pool not pulled: sent again at minOut 0 at the chain's nonce; the second lands: settled from it, the first's gas counted"""
+    c = fresh(dry=False); c.nonce = 9; x = {}
+    def auto(h):
+        if h == sent_hash(c, 0):
+            return None                                                        # our buy: its receipt below
+        if h == sent_hash(c, 2):
+            return live_receipt(h, L + 10, [], ok=False, gas=60_000, l1=10 ** 9)   # the first sell reverts
+        return live_receipt(h, L + 11, [swap_log(L + 11, 1, x["out"], -x["tokens"], SP0, sender=RELAY, tx=h)], gas=110_000, l1=10 ** 9)
+    c.auto = auto
+    launch_armed(c); feed(c, L + 3, L + 3); wait_ev("buy_sent"); hb = sent_hash(c, 0)
+    stake = E.S.STAKE_WEI; tokens, sp1 = exact_buy(SP0, LIQ, stake); x.update(tokens=tokens, out=E.v4math.sell_out_int(sp1, LIQ, tokens, FEE))
+    mine = swap_log(L + 4, 7, -stake, tokens, sp1, sender=RELAY, tx=hb); c.receipts[hb] = live_receipt(hb, L + 4, [mine]); c.logs = [FX["init_log"]] + FX["pool_logs"][:2] + [mine]
+    feed(c, L + 4, L + 10)
+    t = wait_ev("trade_done")[0]; s = events("sell_sent")
+    assert len(s) == 2 and s[1]["min_out"] == 0 and s[1]["nonce"] == 9 and s[1]["via"] == "retry" and t["eth_out_wei"] == x["out"] and t["exit"] == "deadline", (s, t)
+    assert t["gas_wei"] == 150_000 * 55_000_000 + 2_090_000_000 + 60_000 * 55_000_000 + 10 ** 9 + 110_000 * 55_000_000 + 10 ** 9 and not events("halt"), t
+
+
+@test
+def live_buy_receipt_unread():
+    """our buy's receipt never comes: with its Swap logged it is not "lost": the sell goes and the trade settles from it; with no sign of it at
+    all but the relay holding tokens, a sell at minOut 0 and an alarm; with neither, buy_reverted (as before)"""
+    c = fresh(dry=False); E.S.BUY_DEADLINE_S = 0; old = E.RECEIPT_GRACE_S, E.BLOCK_S; E.RECEIPT_GRACE_S = 0.05; E.BLOCK_S = 0
+    try:
+        launch_armed(c); feed(c, L + 3, L + 3); wait_ev("buy_sent"); hb = sent_hash(c, 0)
+        stake = E.S.STAKE_WEI; tokens, sp1 = exact_buy(SP0, LIQ, stake)
+        mine = swap_log(L + 4, 7, -stake, tokens, sp1, sender=RELAY, tx=hb); c.logs = [FX["init_log"]] + FX["pool_logs"][:2] + [mine]
+        out = E.v4math.sell_out_int(sp1, LIQ, tokens, FEE)
+        c.auto = lambda h: None if h == hb else live_receipt(h, L + 11, [swap_log(L + 11, 1, out, -tokens, SP0, sender=RELAY, tx=h)])
+        feed(c, L + 4, L + 10)
+        t = wait_ev("trade_done")[0]
+        assert t["exit"] == "deadline" and t["eth_in_wei"] == stake and t["eth_out_wei"] == out and t["tokens"] == tokens, t
+        assert any("still asking" in a["what"] for a in events("alarm")) and not events("halt")
+        c = fresh(dry=False); E.S.BUY_DEADLINE_S = 0; c.tokens = 12345
+        c.auto = lambda h: None if h == sent_hash(c, 0) else live_receipt(h, L + 30, [swap_log(L + 30, 1, 77, -12345, SP0, sender=RELAY, tx=h)])
+        launch_armed(c); feed(c, L + 3, L + 3)
+        t = wait_ev("trade_done")[0]; s = events("sell_sent")
+        assert s[0]["min_out"] == 0 and s[0]["via"] == "balance" and t["tokens"] == 12345 and t["eth_out_wei"] == 77, (s, t)
+        assert any("receipt was not read" in a["what"] for a in events("alarm"))
+        c = fresh(dry=False); E.S.BUY_DEADLINE_S = 0; launch_armed(c); feed(c, L + 3, L + 3)
+        t = wait_ev("trade_done")[0]
+        assert t["exit"] == "buy_reverted" and "never landed" in t["why"] and not events("sell_sent"), t
+    finally:
+        E.RECEIPT_GRACE_S, E.BLOCK_S = old
+
+
+@test
+def live_nonce_low_resigned_sell():
+    """the sell answered "nonce too low" everywhere: signed again at the chain's nonce; the settlement waits on that final hash"""
+    c = fresh(dry=False); launch_armed(c); feed(c, L + 3, L + 3); wait_ev("buy_sent"); hb = sent_hash(c, 0)
+    stake = E.S.STAKE_WEI; tokens, sp1 = exact_buy(SP0, LIQ, stake); out = E.v4math.sell_out_int(sp1, LIQ, tokens, FEE)
+    mine = swap_log(L + 4, 7, -stake, tokens, sp1, sender=RELAY, tx=hb); c.receipts[hb] = live_receipt(hb, L + 4, [mine]); c.logs = [FX["init_log"]] + FX["pool_logs"][:2] + [mine]
+    low = {"jsonrpc": "2.0", "id": 1, "error": {"code": -32000, "message": "nonce too low"}}
+    c.replies = [low, low]; c.nonce = 9
+    c.auto = lambda h: None if h == hb else live_receipt(h, L + 11, [swap_log(L + 11, 1, out, -tokens, SP0, sender=RELAY, tx=h)])
+    feed(c, L + 4, L + 10)
+    t = wait_ev("trade_done")[0]; s = events("sell_sent")
+    assert len(s) == 1 and s[0]["nonce"] == 9 and s[0]["kind"] == "ok" and t["sell_hash"] == s[0]["hash"] and t["eth_out_wei"] == out and not events("halt"), (s, t)
+    raws = {r for _, r in c.sent}                                                  # the buy, the sell at 8 (refused everywhere), the sell at 9
+    assert len(raws) == 3 and s[0]["hash"] in {"0x" + keccak(bytes.fromhex(r[2:])).hex() for r in raws}
+
+
+@test
+def live_trader_exception_sell():
+    """the signer fails on the first sell: the settlement goes on (a re-send at minOut 0), the trade settles; and log() never raises"""
+    c = fresh(dry=False); calls = {"n": 0}
+    class Flaky:
+        def sign_transaction(self, tx):
+            calls["n"] += 1
+            if calls["n"] == 2:
+                raise ValueError("hsm busy")
+            return KEY.sign_transaction(tx)
+    E.SIGNER = Flaky(); launch_armed(c); feed(c, L + 3, L + 3); wait_ev("buy_sent"); hb = sent_hash(c, 0)
+    stake = E.S.STAKE_WEI; tokens, sp1 = exact_buy(SP0, LIQ, stake); out = E.v4math.sell_out_int(sp1, LIQ, tokens, FEE)
+    mine = swap_log(L + 4, 7, -stake, tokens, sp1, sender=RELAY, tx=hb); c.receipts[hb] = live_receipt(hb, L + 4, [mine]); c.logs = [FX["init_log"]] + FX["pool_logs"][:2] + [mine]
+    c.auto = lambda h: None if h == hb else live_receipt(h, L + 11, [swap_log(L + 11, 1, out, -tokens, SP0, sender=RELAY, tx=h)])
+    feed(c, L + 4, L + 10)
+    t = wait_ev("trade_done")[0]
+    assert t["eth_out_wei"] == out and any(a["what"].startswith("the trader failed on a sell") for a in events("alarm")) and len(events("sell_sent")) == 1, t
+    import contextlib, io
+    good = E.S.LOG_PATH; E.S.LOG_PATH = TMP; err = io.StringIO()                # a directory: the write fails, log() does not raise
+    try:
+        with contextlib.redirect_stderr(err):
+            E.log({"ev": "x"}); E.alarm("y")
+    finally:
+        E.S.LOG_PATH = good
+    assert err.getvalue().count("the log line was not written") == 1, err.getvalue()          # stderr, once a kind
+
+
+@test
+def pending_bot_call_must_be_a_buy():
+    """only a call of BASE_BOT_SELECTORS with value is the bot's buy: its value-0 funding call (4977dff6) carrying the token is not"""
+    c = fresh(); launch_armed(c); feed(c, L + 3, L + 5)
+    k = Account.create(); data = "0x4977dff6" + word(0x40) + "0" * 24 + TOKEN[2:]
+    for sel, value in (("4977dff6", 0), ("4977dff6", 10 ** 17), ("27f7e6ee", 0)):
+        tx = {"type": 2, "chainId": 8453, "nonce": 1, "to": E.to_checksum_address(BOT), "value": value, "data": "0x" + sel + data[10:], "gas": 500000,
+              "maxFeePerGas": 10 ** 7, "maxPriorityFeePerGas": 10 ** 6}
+        flash(L + 8, ["0x" + bytes(k.sign_transaction(tx).raw_transaction).hex()])
+    assert not events("bot_buy") and not events("sell_sent") and E.S.BOT_SELECTORS == {"27f7e6ee"}
+    flash(L + 8, [raw_of(BOT1_TX)])
+    assert len(events("bot_buy")) == 1 and events("sell_sent")[0]["exit"] == "bot"
+
+
+@test
+def pending_add_and_pull_from_the_launch_wallet_only():
+    """a pending add seen while the arm is reading is held, then fires once the launch wallet is known; a stranger's add or pull does nothing"""
+    c = fresh(); slow = c.http
+    def http(url, payload, timeout):
+        if payload["method"] == "eth_getCode":
+            time.sleep(0.2)
+        return slow(url, payload, timeout)
+    E.http_json = http
+    feed(c, L - 1, L); feed(c, L + 1, L + 2)
+    flash(L + 3, [raw_of(ADD_TX)], index=2)                                    # while arming
+    assert E.pools[PID]["status"] == "arming" and not events("would_fire") and E.pools[PID]["add_held"]
+    wait_ev("would_fire")
+    assert events("would_fire")[0]["via"] == "flash" and events("add")[0]["pending"]
+    c = fresh(); launch_armed(c); k = Account.create()
+    for sel in (E.S.ADD_SELECTOR, E.S.PULL_SELECTOR):
+        tx = {"type": 2, "chainId": 8453, "nonce": 1, "to": E.to_checksum_address(HOOK), "value": 3 * 10 ** 18, "data": "0x" + sel + "00" * 32, "gas": 500000,
+              "maxFeePerGas": 10 ** 7, "maxPriorityFeePerGas": 10 ** 6}
+        flash(L + 3, ["0x" + bytes(k.sign_transaction(tx).raw_transaction).hex()])
+    assert not events("would_fire") and not events("pull") and E.pools[PID]["status"] == "armed" and any("another wallet" in a["what"] for a in events("alarm"))
+
+
+@test
+def http_error_without_json():
+    import urllib.error, io
+    real = E.urllib.request.urlopen
+    def boom(req, timeout):
+        raise urllib.error.HTTPError(req.full_url, 502, "Bad Gateway", {}, io.BytesIO(b"<html>bad gateway</html>"))
+    E.urllib.request.urlopen = boom
+    try:
+        try:
+            REAL_HTTP("https://x.example.org", {"jsonrpc": "2.0", "id": 1, "method": "eth_chainId", "params": []}, 1)
+        except RuntimeError as e:
+            assert str(e).startswith("HTTP 502"), str(e)
+        else:
+            raise AssertionError("no error")
+    finally:
+        E.urllib.request.urlopen = real
+
+
+@test
+def ticker_survives_an_exception():
+    c = fresh(); real = E.tick; n = {"k": 0}
+    def bad():
+        n["k"] += 1; raise KeyError("boom")
+    E.tick = bad
+    try:
+        asyncio.run(asyncio.wait_for(E.ticker(), 2.3))
+    except (asyncio.TimeoutError, TimeoutError):
+        pass
+    finally:
+        E.tick = real
+    a = [x for x in events("alarm") if x["what"].startswith("the ticker failed")]
+    assert n["k"] >= 2 and len(a) == 1 and "KeyError" in a[0]["trace"], (n, a)
 
 
 @test
