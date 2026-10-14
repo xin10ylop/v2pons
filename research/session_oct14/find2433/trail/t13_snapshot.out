@@ -1,0 +1,19 @@
+at block 88176582 10-14 07:09:46
+0x544ef4354283261fb9e258247a80d49c86b9f107 nonce    8044 (Oct 12: 7885)   0.155111 ETH code 23 B  decoy funder/collector (funded fresh decoy 0xc32ccde1)
+0x488faf521a2d5f16ee55d1335841bb3ba9a0946e nonce   39485 (Oct 12: None)   0.051291 ETH code 0 B  decoy funder (bought 0.001485 itself, Oct 10)
+0xe322fc6ddb6b29d110b7f84c728d2d743e904616 nonce   10736 (Oct 12: None)   0.013650 ETH code 0 B  decoy collector
+0x8cf143ddc84dedcd7bedd2b362b63af154dfa4f7 nonce    3126 (Oct 12: 3111)   0.022254 ETH code 23 B  fronter via 0x65050a9b/0xfd1b271f
+0xb8c879dcd96d5ce0719e6fb056738f09b33bc33c nonce    4858 (Oct 12: None)   0.000000 ETH code 0 B  fronter via 0xfd1b271f
+0x7ae81404e32aef363eb63bc4befba78fb5b636de nonce    7481 (Oct 12: None)   0.022187 ETH code 0 B  fronter via UR (2e-5 buys)
+0xbd936de69d72b3a958ee868348ee93f5282849b6 nonce    2365 (Oct 12: 2361)   0.000004 ETH code 23 B  recurring decoy-router buyer
+0xb4c345dcf30be7ef93abbacb5f67bd3cc3dfaa04 nonce    1846 (Oct 12: 1813)   0.000000 ETH code 0 B  0xfd1b271f decoy (Oct 10)
+0x2e234882231cdc99c654a213a5ecc848459cceee nonce   12861 (Oct 12: 12854)   0.002685 ETH code 0 B  recurring decoy-router buyer
+0x1845a376e183cca973e64dbf0a1e57a74130f31f nonce     267 (Oct 12: 89)   0.000586 ETH code 0 B  recurring decoy-router buyer
+0xc32ccde1bd14f14cbf7d97a03872d92c57513111 nonce       4 (Oct 12: 4)   0.000002 ETH code 0 B  fresh decoy wallet (last pools)
+0x0c628d6535b781f6c703ad319af8b1bcec63fbb4 nonce    3034 (Oct 12: None)   0.001372 ETH code 0 B  decoy-router 0x65050a9b admin
+0x04a802fe42476e9e9ed3cc3c28ce3a476a73d229 nonce       1 (Oct 12: None)   0.008901 ETH code 0 B  0xfd1b271f admin
+0xe71a69f434a719cd5afa411568b69716aab3b84a nonce  102813 (Oct 12: None)   0.009265 ETH code 0 B  dust sentinel
+0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d nonce      10 (Oct 12: 10)   0.000881 ETH code 0 B  2.433 hub (bridged out)
+0x39525d91ffdcc126f052eefed6735fda72ad1dee nonce    3728 (Oct 12: 3445) 122.683868 ETH code 0 B  exchange-like, sent 0.7999 to hub
+0x74447adf3e9e7c2c4ef7945d1ccfd2c2ac6157b1 nonce      15 (Oct 12: None)   0.000000 ETH code 0 B  2.433 launch wallet (first of the Oct 11 window)
+0xa65254074287c7458666dbd26a8997c3ec590625 nonce       8 (Oct 12: 8)   0.000027 ETH code 0 B  8 self-transfers Oct 11 20:46 (nonce 0-7)
