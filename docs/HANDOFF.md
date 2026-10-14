@@ -2199,6 +2199,12 @@ The v4 families' dry rule is the same expression as before. A dry V3 trade is as
 
 ### 16.23 Oct 12: the BNB line's live path (`src/bnb_live.py`, release bnb-0.2; off unless `BNB_LIVE=1`)
 
+**Live since Oct 14, about 07:00 UTC** (the owner ran RUNBOOK 4k steps 1-4): the isolation check passed (`/etc/flip` inside the unit lists
+`bnb.env` alone, `CapBnd 0000000000000004`); the line's wallet is `0x8881bba6787848f4e86780ef69a34bb45c8d4fcb`, funded 0.0332 BNB
+(about $24.70); `BNB_STAKE_USD=5`, `BNB_GATE_DUMP_BEFORE=700` (the dry day saw a 1-BNB drain at +996, one block under the old 997);
+live pools 1, 10 and 25 BNB, every 2nd launch, the rest the dry control. The dry day before it (24 h to Oct 14 06:27): 94 trades, +35.5%
+mean, +14.7% median, 89% up (1 BNB +128.9%, 10 BNB +35.7%, 25 BNB +7.3%, 2.5 BNB +13.4% and still dry).
+
 The dry run as the box showed it at 11:59 UTC (4.4 h from 07:35): 31 launches, 16 skipped (15 BNB), 15 dry trades, mean +28.0%, median
 +7.4%, 80% up, no dump before +997, a crowd buy in the hold in 15 of 15 (the research: +23.6% / +11.1%). Nothing below is installed on the
 box, and no transaction was sent to any chain: every send in the tests goes to a stub, and the reads against BNB Chain were `eth_call`,
