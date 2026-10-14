@@ -319,7 +319,7 @@ def dry_trade_against_the_fixture():
     ret = (out - E.S.STAKE_WEI - gas) / E.S.STAKE_WEI
     assert t["exit"] == "take_profit" and t["buy_block"] == L + 4 and t["sell_block"] == L + 8 and t["tokens"] == tokens and t["dry"] and not t["live"], t
     assert abs(t["ret"] - ret) < 1e-6 and abs((t["eth_out_wei"] - E.S.STAKE_WEI - t["gas_wei"]) / E.S.STAKE_WEI - ret) < 1e-9 and t["gas_wei"] == gas, (t, ret)
-    assert abs(t["eth_out_wei"] - out) <= 1 and 0.11 < ret < 0.13 and t["pulled_at"] is None
+    assert abs(t["eth_out_wei"] - out) <= 1 and 0.12 < ret < 0.14 and t["pulled_at"] is None            # +13.3% gross, about +13.1% after gas at 0.01 gwei
     s = events("sell_sent")[0]
     assert s["dry"] and s["exit"] == "take_profit" and s["priced_at_block"] == L + 8 and s["block_seen"] == L + 8
 
@@ -573,7 +573,7 @@ def live_trade_settles_with_l1_fee():
     assert f["nonce"] == 7 and b["nonce"] == 7 and s["nonce"] == 8 and b["kind"] == "ok" and len(c.sent) == 4 and {h for h, _ in c.sent} == {"seq.example.org", "send2.example.org"}
     tx = E.decode_tx(bytes.fromhex(c.sent[0][1][2:])); d = tx["data"].hex()
     assert d[:8] == "5ed06f60" and int(d[8 + 64 * 5: 8 + 64 * 6], 16) == E.S.STAKE_WEI and int(d[8 + 64 * 6: 8 + 64 * 7], 16) == f["min_out"] and tx["to"] == RELAY
-    assert tx["prio"] == 5 * 10 ** 7 and tx["max_fee"] == 2 * 5_000_000 + 5 * 10 ** 7 and E.tx_sender(c.sent[0][1]) == KEY.address.lower()
+    assert tx["prio"] == E.S.PRIO_WEI == 10 ** 7 and tx["max_fee"] == 2 * 5_000_000 + E.S.PRIO_WEI and E.tx_sender(c.sent[0][1]) == KEY.address.lower()
     sd = E.decode_tx(bytes.fromhex(c.sent[-1][1][2:]))["data"].hex()
     want = E.v4math.sell_out_int(x["sp2"], LIQ, x["tokens"], FEE) * 95 // 100
     assert sd[:8] == "137f1fdd" and int(sd[8 + 64 * 5: 8 + 64 * 6], 16) == want and E.state["position"] is None, (sd, want)
