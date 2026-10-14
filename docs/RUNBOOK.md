@@ -453,10 +453,12 @@ files are not touched, and it runs below flip-engine's CPU priority (Nice 10 aga
 gives it a read-only file system except `/var/log/flip`, shows it nothing of `/etc/flip` but its own `bnb.env` and `bnb.key` (an empty
 read-only tmpfs there: flip-engine's `engine.env`, which holds that wallet's key, and any copy of it such as `engine.env.bak` are not
 visible, whatever renames them), keeps no capability but reading files (so flip-engine's `/proc/<pid>/environ`, where its key also is,
-is refused to it), dumps no core, and restarts it 30 s after an exit; at its start it waits up to 5 minutes for the RPC (a network or DNS
-failure at boot) before it exits. Release bnb-0.2 adds a live path, off unless `BNB_LIVE=1`: section 4k.
+is refused to it), dumps no core, and restarts it 5 s after an exit; at its start it waits up to 5 minutes for the RPC (a network or DNS
+failure at boot) before it exits. That is a mask on what the service's own code sees, not a wall against hostile code inside it (it still
+runs as root; its own user is open: HANDOFF 16.23). Release bnb-0.2 adds a live path, off unless `BNB_LIVE=1`: section 4k.
 
-Install (once). The code first; the first line prints the two paths and `43` (the tests; `20` before release bnb-0.2), else stop. If it also prints
+Install (once). The code first; the first line prints the two paths and `82` (the tests, the count 4k step 1 expects too; `20` before
+release bnb-0.2), else stop. If it also prints
 `flip_engine.py CHANGED`, the pull brought changes to the live engine as well, which flip-engine would pick up at its next restart:
 deploy those per their own section first (or ask), then come back here:
 
@@ -671,12 +673,15 @@ What one live trade is, in order (each step a line in `/var/log/flip/bnb.jsonl`)
    need more gas than its limit.
 2. At L+50 seen: the buy (`live_send` kind buy: `swapExactETHForTokensSupportingFeeOnTransferTokens`, value the stake, minOut the tokens
    expected on the reserves x 0.95, raised to the same bound on the pool's reserves read just before the send, deadline 60 s), 0.1 gwei,
-   200k gas. Not sent when, by the chain's head, it would land more than 7 blocks after L+50 (`BNB_BUY_LATE`), when the pool lost its
-   WBNB since, or when the price moved more than 5% against it (it would revert, and a revert halts).
+   200k gas. Not sent when, by the chain's head (read once more just before the send), it would land more than 7 blocks after L+50
+   (`BNB_BUY_LATE`), when the pool lost its WBNB since, or when the price moved more than 5% against it (it would revert, and a revert
+   halts). A buy not mined by the time the head makes it late is cancelled at its nonce (a 0-value transfer to the wallet), not left to
+   land late.
 3. After its receipt (`live_receipt`): `approve(router, max)` at the next nonce, 80k gas.
 4. At L+260 seen, at once on a dump seen first, or when the chain's head is 20 blocks past L+260 while the reader lags behind it
    (`BNB_SELL_LATE`): the sell of the whole token balance (`swapExactTokensForETHSupportingFeeOnTransferTokens`, minOut the BNB expected
-   on the reserves x 0.95), 180k gas. A reverted sell is sent again on the reserves then at 10%, then 20%.
+   on the reserves x 0.95), 180k gas. A reverted sell is sent again on the reserves then at 10%, then 20%. A sell (or approve) a node
+   holds unmined is signed anew at its nonce every 8 s, 1/8 dearer, 3 times, then once at `BNB_MAX_GWEI` (an alarm).
 5. `trade_done` with `live: true`: BNB in, tokens, BNB out, gas, `pnl_bnb`, `pnl_usd`, `pnl_pct`, and `dry_ret` (the dry price of the same
    trade). The pool's own dry `trade_done` line is still written (`live: false`, `role: live`).
 
@@ -693,7 +698,7 @@ service, even with another positions file) stops at its start (`bnb_positions.js
 
     cd ~/v2pons && OLD=$(git rev-parse HEAD) && git pull -q --ff-only && { git diff --quiet $OLD HEAD -- src/flip_engine.py || echo 'flip_engine.py CHANGED: deploy it per its own section first'; } && ls src/bnb_live.py deploy/bnb_wallet.py contracts/BnbRoundTrip.json && /opt/flip-venv/bin/python3 tests/test_bnb_engine.py | grep -c '^ok'
 
-It prints the three paths and `61`, else stop (`SKIP the live path's tests` means the python has no eth_account: use the venv's). Then the
+It prints the three paths and `82`, else stop (`SKIP the live path's tests` means the python has no eth_account: use the venv's). Then the
 unit (its isolation changed: `/etc/flip` is an empty read-only tmpfs inside it with only `bnb.key` and `bnb.env` bound in, its only
 capability reads files, no core dumps; and a crash restarts in 5 s, a stop waits up to 30 s) and a restart, still dry:
 
@@ -757,8 +762,8 @@ The screen says `BNB LIVE PROBE` and adds, under the gate:
   line).
 - `live slots not traded`: held (halted, the daily stop, two open, the wallet short of funds, a buy that would land more than 7 blocks
   after L+50, a pool drained or a price moved before the buy), refused (the pre-buy check, a new token template among them), unsent (the
-  node refused the transaction, it was never mined, or it was still pending past its deadline and cancelled); dry_size (a 2.5-BNB pool)
-  is no slot.
+  node refused the transaction, it was never mined, or it was cancelled: still pending past its deadline, not mined once late, or its
+  nonce filled under a later one of ours); dry_size (a 2.5-BNB pool) is no slot.
 - `HALTED: <reason>` or `halt: none`; `open live positions` with their state, today's $ against the stop, the gate's median count; the
   wallet's balance (read from the RPC; the key file is never opened).
 
@@ -766,9 +771,55 @@ The first live trades, raw: `sudo grep -E '"ev":"(live_send|live_receipt|live_ch
 `sudo grep '"live":true' /var/log/flip/bnb.jsonl | tail -3`. Every transaction is on `https://bscscan.com/address/0xYOURADDRESS`.
 
 `sudo bash ~/v2pons/deploy/health.sh` now ends with the BNB line's trouble only (`bnb_results.py --alerts`; nothing when all is
-well): `BNB HALTED`, `BNB STUCK` (a position whose sale reverted 3 times, or whose token balance read 0 six times: the tokens may still be
-in the wallet; a restart tries to sell again; look at the wallet on bscscan), `BNB SALE OVERDUE` (100 blocks past L+260), `BNB SELL
-PENDING` (over a minute) and the last alarm. Any of the first four: look now.
+well): `BNB HALTED` (from `HALTED.bnb`, or from the positions file when that file could not be written or was removed while the engine
+still holds the halt), `BNB NOT READING` (no flow line for 3 minutes while flip-bnb is active: the reader hangs; sales still go by the
+chain's head), `BNB STUCK` (a position whose sale reverted 3 times, or whose token balance read 0 six times: the tokens may still be in
+the wallet; a restart tries to sell again; look at the wallet on bscscan), `BNB SALE OVERDUE` (100 blocks past L+260 by the clock, not by
+the reader's last head), `BNB SELL PENDING` (over a minute) and the last alarm. Any of the first five: look now.
+
+The alarm `the buy|sell|approve|cancel 0x... has no receipt on <host> and <host> did not answer (...): nothing is dropped or settled
+until it does`, again and again (every 5 minutes for the same transaction): the second read endpoint (`BNB_READ_ALT_URL`, by default
+bsc-dataseed, which rate-limits) cannot answer, and a transaction `BNB_RPC_URL` does not show stays unsettled until it does (a buy whose
+tokens `BNB_RPC_URL` shows, its count showing the buy's nonce mined, is still kept and sold). Point it at another https endpoint that
+serves `eth_getTransactionByHash`, `eth_getBlockReceipts` (or `eth_getTransactionReceipt`), `eth_getTransactionCount` and `eth_call`
+(another public one, or a provider's URL with its key in it: only its host is logged; one with `&`, `|` or `\` in it: edit
+`/etc/flip/bnb.env` by hand), or set it to 0 (`BNB_RPC_URL`'s word alone), then restart (a restart keeps the open positions); one of the
+two lines, each whole (it defines step 4's `set_bnb` itself, so it works in a new SSH session too). When the second host named is
+`BNB_RPC_URL`'s own (the same as the first), a read of `BNB_RPC_URL`'s own failed (its count, a balance, an allowance or its pool: each
+endpoint is read alone, never one for the other): a rate limit passes by itself; for more than a few minutes it is `BNB_RPC_URL`'s
+trouble, not the second endpoint's, and these two lines do not help (the third one does):
+
+    set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }; set_bnb BNB_READ_ALT_URL https://OTHER_ENDPOINT && sudo systemctl restart flip-bnb
+    set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }; set_bnb BNB_READ_ALT_URL 0 && sudo systemctl restart flip-bnb
+
+When `BNB_RPC_URL`'s own reads keep failing for more than a few minutes while a sale is open, do not wait: a sell or approve that no
+pool holds any more is held until `BNB_RPC_URL` answers its own count, and past the creator's drain (L+997, about 5 minutes after the
+sale was due at L+260) the tokens can no longer be sold, so the stake can be lost. Point `BNB_RPC_URL` at another https endpoint that
+serves the same calls and restart (a restart keeps the open positions), in one whole line:
+
+    set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }; set_bnb BNB_RPC_URL https://OTHER_ENDPOINT && sudo systemctl restart flip-bnb
+
+The alarm `the buy|sell|... 0x...: a node answered 'nonce too low' at it, but no endpoint counts its nonce N mined ... held (nothing
+dropped, sent again or settled) until one does` (or `... the wallet holds the buy's tokens, but ...`), or `the sell has been pending N s:
+a node answered 'nonce too low' at its nonce, ...`: the chain has that nonce mined while both read endpoints are behind it. The
+transaction waits, the sale behind it too, until one of them shows its receipt or counts its nonce (a 'nonce too low' is never taken as
+proof on its own). For more than a few minutes: look at the wallet on bscscan, and point `BNB_READ_ALT_URL` at an endpoint that is up
+to date (the first line above).
+
+The alarm `the sell|approve|cancel 0x... is still pending at its nonce N after 3 replacements (X gwei): signed anew once more at
+BNB_MAX_GWEI 1 gwei`, then `the sell has been pending N s` every 5 minutes (`BNB SELL PENDING` in `--alerts`), or `the ... 0x... is
+pending at X gwei and cannot be replaced under BNB_MAX_GWEI Y (a replacement must be 1/10 dearer): raise it (up to 5) and restart`: a
+node holds the transaction unmined at the most the line may pay (the network asks more, or the pools keep it out). A higher
+`BNB_MAX_GWEI` and a restart sign it anew once more at the new cap (a restart keeps the open positions; then only the alarms again, and
+the next raise once more). Raise it more than a tenth above the price in the alarm, else no node takes it (the same alarm, nothing
+sent); 2 here, up to 5, in one whole line:
+
+    set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }; set_bnb BNB_MAX_GWEI 2 && sudo systemctl restart flip-bnb
+
+A replacement or cancel refused for another reason (`the sell's replacement at nonce N was not taken (rejected: insufficient funds
+...)`, or `nonce: replacement transaction underpriced`) is tried again 8 s later (`BNB_REPLACE_S`) and counts among the 3 and the one
+at the cap; for funds, top the wallet up, and once the cap alarm above has come, also raise `BNB_MAX_GWEI` (the line above: a top-up
+alone sends nothing more at that nonce). Only a 'nonce too low' stops the signing at a nonce for good.
 
 A halt, once understood (its reason is in the file and in the screen):
 
@@ -806,13 +857,20 @@ start): `BNB_LIVE` (0), `BNB_WALLET`, `BNB_KEY_FILE` (/etc/flip/bnb.key), `BNB_S
 180000), `BNB_MIN_GWEI` (0.1), `BNB_MAX_GWEI` (1; up to 5), `BNB_DEADLINE_S` (60), `BNB_CHECK_MIN` (0.99; 0.8..1),
 `BNB_TOKEN_CODEHASHES` (the keccak of the launcher's two token templates, comma-separated), `BNB_MAX_STAKE_BNB` (0.015, about $11: a buy
 above it is never sent; 0.0001..0.1), `BNB_SELL_TRIES` (3), `BNB_RECEIPT_WAIT_S` (20: a transaction no node shows is dropped after twice
-this and 15 s past its deadline, unless its nonce was mined), `BNB_REBROADCAST_S` (5: with no receipt, a copy to every endpoint this
-often, while its deadline is 10 s away or more), `BNB_REPLACE_S` (8: an approve or sell the node holds unmined this long is signed anew at
-its nonce, 1/8 dearer, up to `BNB_MAX_GWEI`; a buy still pending past its deadline is replaced by a 0-value transfer to the wallet),
-`BNB_BUY_LATE` (7 blocks after L+50, by the head; `BNB_LAG_BLOCKS` must stay below it, else the live start stops), `BNB_SELL_LATE` (20
+this and 15 s past its deadline, a late buy's cancel 15 s past the buy's, unless a count shows its nonce mined, when the chain's state at
+that endpoint decides, or a node answered 'nonce too low' at it, when it is held until a receipt or a count shows it), `BNB_REBROADCAST_S` (5: with no receipt, a copy to every endpoint this
+often, while its deadline is 10 s away or more), `BNB_REPLACE_S` (8: an approve or sell a node holds unmined this long, `BNB_RPC_URL`'s or only
+`BNB_READ_ALT_URL`'s, is signed anew at its nonce, 1/8 dearer, 3 times, then once at `BNB_MAX_GWEI` with an alarm, and once more
+after a restart with `BNB_MAX_GWEI` raised; one refused for any reason but 'nonce too low' is tried again after this long and counts
+among them; a buy still pending past its deadline is replaced by a 0-value transfer to the wallet),
+`BNB_BUY_LATE` (7 blocks after L+50, by the head read just before the send; a buy not mined by then is cancelled; `BNB_LAG_BLOCKS` must
+stay below it, else the live start stops), `BNB_SELL_LATE` (20
 blocks after L+260, by the head, while the reader lags), `BNB_SEND_URL` (BNB_RPC_URL), `BNB_SEND_ALT_URL`
 (https://bsc-dataseed.bnbchain.org; 0 for none; every send goes to both at once), `BNB_READ_ALT_URL` (BNB_SEND_ALT_URL: a read
-BNB_RPC_URL cannot answer is asked there once; 0 for none), `BNB_HALT_FILE`, `BNB_POSITIONS_FILE` (beside the log; live, the halt file must be named `HALTED.bnb` or start with `bnb`, the
+BNB_RPC_URL cannot answer is asked there once, and nothing is dropped or settled for want of a receipt, a nonce or a token balance until
+it shows the same; a transaction BNB_RPC_URL holds pending for 40 s, or that a node answered 'nonce too low' for, is looked for there
+too; 0 for none: BNB_RPC_URL's word alone, and a 'nonce too low' then waits for BNB_RPC_URL's receipt or count; the 'did not answer'
+alarm: step 5), `BNB_HALT_FILE`, `BNB_POSITIONS_FILE` (beside the log; live, the halt file must be named `HALTED.bnb` or start with `bnb`, the
 positions file and the log must start with `bnb`, so that no typo can name flip-engine's `HALTED` or `engine.jsonl`).
 
 Round 2 of the review (HANDOFF 16.23 has the list): a dump before +997 on any pool of the line halts; the crowd rule only on a pool whose
@@ -821,6 +879,32 @@ cancelled; receipts acted on once final; a second read endpoint; the head read b
 answers); a balance of 0 at the sale read 6 times before the position is called stuck (never settled at -100%); the owner's halt file
 read live; a stop lets the step in flight finish; `health.sh` shows the BNB trouble. Not done: the unit's own user (`User=`,
 `LoadCredential=`) and a count of the crowd's reverted buys (HANDOFF 16.23, Open).
+
+Round 3 (HANDOFF 16.23 has the list): nothing is dropped or settled on one backend's word (`BNB_READ_ALT_URL` is asked for the receipt,
+the nonce and the token balance first); a buy dropped as never mined while a later nonce of ours is out has its nonce filled; the buy's
+last lateness check reads the head itself, and a buy not mined once late is cancelled; a hard kill around the `trade_done` line never
+settles a trade twice; `--alerts` also shows a hung reader, a sale overdue by the clock and a halt held only in the positions file; the
+docs' test counts and the unit's 5 s restart are checked by the tests (68).
+
+Round 4 (HANDOFF 16.23 has the list): after a late buy's cancel, nothing is dropped before the buy's own deadline + 15 s (the cancel has
+none, and the buy can land until then); a `BNB_RPC_URL` that holds our mined transaction as pending, never showing a receipt, no longer
+leaves it unsold (`BNB_READ_ALT_URL` is asked after 40 s, or at once after a 'nonce too low'); a transaction only `BNB_READ_ALT_URL`
+holds is replaced and alarmed like one `BNB_RPC_URL` holds; a node answering the same block again no longer counts as a fresh head (the
+sale by the head fires on a node stalled but answering); while `BNB_READ_ALT_URL` cannot answer, a buy whose tokens `BNB_RPC_URL` shows is
+still kept and sold (step 5 says what to do about that alarm); a transaction still held after 3 replacements is signed anew once at
+`BNB_MAX_GWEI`. The earlier live tests run again with `BNB_READ_ALT_URL` on, as production runs (75 tests).
+
+Round 5 (HANDOFF 16.23 has the list): one rule, written at `Live.outcome()` in `src/bnb_live.py`, decides what a transaction with no
+receipt did: a receipt at either read endpoint in a block final there, or the chain's state at an endpoint whose count shows its nonce
+mined. A 'nonce too low', or a replacement or late cancel refused, only stops the signing at that nonce and asks both endpoints at once;
+anything else is held with alarms (a stalled `BNB_RPC_URL` holding our mined sell, with `BNB_READ_ALT_URL` 0, had the sell sent again
+26 to 32 times and the line halted; it now waits for the receipt). Step 5's two lines define `set_bnb` themselves (78 tests).
+
+Round 6 (HANDOFF 16.23 has the list): only a 'nonce too low' stops the signing at a nonce; a replacement or cancel refused for another
+reason is tried again after `BNB_REPLACE_S` and counts (round 5 stopped it for good: a sale left pending for hours); what decides a
+transaction with no receipt reads each endpoint alone (a failed read of `BNB_RPC_URL` was answered by the second endpoint's stale view,
+and a mined sell was sold again); a transaction held at `BNB_MAX_GWEI` is signed anew once more after a restart with it raised (step 5;
+before, nothing was ever sent again) (82 tests).
 
 ## 5. Daily
 
