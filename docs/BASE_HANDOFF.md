@@ -9,13 +9,8 @@ the repository root. The design itself is `docs/BASE.md`; the box steps are RUNB
 
 ## The prompt for a new session
 
-> You are continuing work on the Base engine in this repository, branch `claude/stoic-babbage-iruo94`. Read
-> `docs/BASE_HANDOFF.md` first, then `docs/BASE.md` (sections 1-6), then only the parts of `src/base_engine.py` the task
-> needs: the file is about 1,700 lines and the repository is large. The engine runs live on the owner's AWS box as the
-> service `flip-base`. Never print, paste or commit the wallet's key (`/etc/flip/base.key` on the box). Run
-> `python3 tests/test_base_engine.py` before any push: 47 tests, no network. Changes reach the box only when the owner runs
-> `git pull` and restarts the service between launches (no open position). The current state and the open items are in
-> sections 3, 7 and 8 of this file.
+The full prompt for a new session, with everything it needs to continue and adjust the engine, is `docs/BASE_PROMPT.md`.
+Paste its content below the line as the first message.
 
 ---
 
