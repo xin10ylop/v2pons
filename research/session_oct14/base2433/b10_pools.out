@@ -1,0 +1,197 @@
+
+=== launch 52590492 pool 0x4719b41b token 0xbe07c8c3 hook 0x0a37fce6 wallet 0x4d40df2e
+  +3   ML add  delta      11535243517152119489535 ticks -887200..887200 sender 0x0a37fce6 tx from 0x4d40df2e (bot) to 0x0a37fce6 0x2346bb56 val 0.133328
+  +3   ML add  delta                            1 ticks -887200..887200 sender 0x7c5f5a4b tx from 0x4d40df2e (bot) to 0x0a37fce6 0x2346bb56 val 0.133328
+  +18  ML PULL delta     -11535243517152119489535 ticks -887200..887200 sender 0x0a37fce6 tx from 0x4d40df2e (bot) to 0x0a37fce6 0xf2f230a8 val 0.000000
+  summary: adds [(3, 0.1333), (3, 0.1333)] active liquidity at tick 227373: 11535243517152119489536; first bot buy None; pull (18, '0xf2f230a8', '0x0a37fce6')
+  Swap sender, buys: {}; sells: {}
+  outsiders: 0: []
+
+=== launch 52590658 pool 0x722c5de4 token 0xccc17382 hook 0x9e3653bb wallet 0x505b452d
+  +2   ML add  delta      11535243517152119489535 ticks -887200..887200 sender 0x9e3653bb tx from 0x505b452d (bot) to 0x9e3653bb 0x2346bb56 val 0.133328
+  +2   ML add  delta                            1 ticks -887200..887200 sender 0x7c5f5a4b tx from 0x505b452d (bot) to 0x9e3653bb 0x2346bb56 val 0.133328
+  +32  ML PULL delta     -11535243517152119489535 ticks -887200..887200 sender 0x9e3653bb tx from 0x505b452d (bot) to 0x9e3653bb 0xf2f230a8 val 0.000000
+  summary: adds [(2, 0.1333), (2, 0.1333)] active liquidity at tick 227373: 11535243517152119489536; first bot buy None; pull (32, '0xf2f230a8', '0x9e3653bb')
+  Swap sender, buys: {}; sells: {}
+  outsiders: 0: []
+
+=== launch 52590807 pool 0x3085339d token 0x3a73002f hook 0x1c888901 wallet 0x72d0cac5
+  +3   ML add  delta      46141758126452008872416 ticks -887200..887200 sender 0x1c888901 tx from 0x72d0cac5 (bot) to 0x1c888901 0x2346bb56 val 2.133329
+  +3   ML add  delta                            1 ticks -887200..887200 sender 0x7c5f5a4b tx from 0x72d0cac5 (bot) to 0x1c888901 0x2346bb56 val 2.133329
+  +8   BUY  a0 -0.150000 ETH a1 +6.52558e+25 sender 0x6ff5693b tx from 0x31335015 (bot) to 0x987d5db8 0x27f7e6ee val 0.1500  minOut/out 0.9500
+  +10  BUY  a0 -0.272250 ETH a1 +9.89517e+25 sender 0x6ff5693b tx from 0x8755d81e (bot) to 0x987d5db8 0x27f7e6ee val 0.2722  minOut/out 0.9500
+  +12  BUY  a0 -0.225000 ETH a1 +6.721e+25 sender 0x6ff5693b tx from 0x4180672a (bot) to 0x987d5db8 0x27f7e6ee val 0.2250  minOut/out 0.9500
+  +12  sell a0 +0.202799 ETH a1 -6.06879e+25 sender 0x6ff5693b tx from 0x31335015 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +13  BUY  a0 -0.148500 ETH a1 +4.4885e+25 sender 0x6ff5693b tx from 0x020a1015 (bot) to 0x987d5db8 0x27f7e6ee val 0.1485  minOut/out 0.9500
+  +15  BUY  a0 -0.185394 ETH a1 +4.96319e+25 sender 0x6ff5693b tx from 0x1e5ad030 (bot) to 0x987d5db8 0x27f7e6ee val 0.1854  minOut/out 0.9500
+  +15  sell a0 +0.014537 ETH a1 -3.7e+24 sender 0x6ff5693b tx from 0x31335015 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +17  BUY  a0 -0.162975 ETH a1 +3.90818e+25 sender 0x6ff5693b tx from 0x03947567 (bot) to 0x987d5db8 0x27f7e6ee val 0.1630  minOut/out 0.9500
+  +21  BUY  a0 -0.099000 ETH a1 +2.17777e+25 sender 0x6ff5693b tx from 0x8eb4bbe5 (bot) to 0x987d5db8 0x27f7e6ee val 0.0990  minOut/out 0.9500
+  +23  sell a0 +0.307051 ETH a1 -7.32243e+25 sender 0x6ff5693b tx from 0x8755d81e (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +23  BUY  a0 -0.198000 ETH a1 +4.84378e+25 sender 0x6ff5693b tx from 0x80837e53 (bot) to 0x987d5db8 0x27f7e6ee val 0.1980  minOut/out 0.7789
+  +25  sell a0 +0.218641 ETH a1 -5.44401e+25 sender 0x6ff5693b tx from 0x4180672a (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +25  BUY  a0 -0.173250 ETH a1 +4.3367e+25 sender 0x6ff5693b tx from 0xf8b3c188 (bot) to 0x987d5db8 0x27f7e6ee val 0.1732  minOut/out 0.8218
+  +27  BUY  a0 -0.208636 ETH a1 +4.60314e+25 sender 0x6ff5693b tx from 0xfba0e37c (bot) to 0x987d5db8 0x27f7e6ee val 0.2086  minOut/out 0.9500
+  +27  sell a0 +0.092347 ETH a1 -1.98177e+25 sender 0x6ff5693b tx from 0x8eb4bbe5 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +28  BUY  a0 -0.272250 ETH a1 +5.47891e+25 sender 0x6ff5693b tx from 0x8755d81e (bot) to 0x987d5db8 0x27f7e6ee val 0.2722  minOut/out 0.9500
+  +30  ML PULL delta     -46141758126452008872416 ticks -887200..887200 sender 0x1c888901 tx from 0x72d0cac5 (bot) to 0x1c888901 0xf2f230a8 val 0.000000
+  summary: adds [(3, 2.1333), (3, 2.1333)] active liquidity at tick 199645: 46141758126452008872417; first bot buy (8, 0.15, 0.95); pull (30, '0xf2f230a8', '0x1c888901')
+  Swap sender, buys: {'bot': {'0x6ff5693b99212da76ad316178a184ab56d299b43': 11}}; sells: {'bot': {'0x6ff5693b99212da76ad316178a184ab56d299b43': 5}}
+  outsiders: 0: []
+
+=== launch 52592240 pool 0xb41ad027 token 0x86a7f72b hook 0xc7a81a2a wallet 0x8f79d153
+  +3   ML add  delta      46141758126452008872416 ticks -887200..887200 sender 0xc7a81a2a tx from 0x8f79d153 (bot) to 0xc7a81a2a 0x2346bb56 val 2.133329
+  +3   ML add  delta                            1 ticks -887200..887200 sender 0x7c5f5a4b tx from 0x8f79d153 (bot) to 0xc7a81a2a 0x2346bb56 val 2.133329
+  +8   BUY  a0 -0.200000 ETH a1 +8.51518e+25 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x987d5db8 0x27f7e6ee val 0.2000  minOut/out 0.9500
+  +10  BUY  a0 -0.173250 ETH a1 +6.28257e+25 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x987d5db8 0x27f7e6ee val 0.1732  minOut/out 0.9500
+  +12  BUY  a0 -0.148500 ETH a1 +4.7351e+25 sender 0x6ff5693b tx from 0x578b7cc3 (bot) to 0x987d5db8 0x27f7e6ee val 0.1485  minOut/out 0.9500
+  +12  sell a0 +0.227785 ETH a1 -7.57851e+25 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +13  BUY  a0 -0.175000 ETH a1 +5.88328e+25 sender 0x6ff5693b tx from 0xf8b3c188 (bot) to 0x987d5db8 0x27f7e6ee val 0.1750  minOut/out 0.9500
+  +15  BUY  a0 -0.247500 ETH a1 +7.09118e+25 sender 0x6ff5693b tx from 0xaab209e7 (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.2475  minOut/out 0.9500
+  +17  BUY  a0 -0.150000 ETH a1 +3.73002e+25 sender 0x6ff5693b tx from 0x4180672a (bot) to 0x987d5db8 0x27f7e6ee val 0.1500  minOut/out 0.9500
+  +18  sell a0 +0.203638 ETH a1 -5.21453e+25 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +18  sell a0 +0.139183 ETH a1 -4.02484e+25 sender 0x6ff5693b tx from 0x578b7cc3 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +19  BUY  a0 -0.222750 ETH a1 +6.19414e+25 sender 0x6ff5693b tx from 0x80837e53 (bot) to 0x987d5db8 0x27f7e6ee val 0.2228  minOut/out 0.9500
+  +21  BUY  a0 -0.173250 ETH a1 +4.19437e+25 sender 0x6ff5693b tx from 0xa2deb9f0 (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.1732  minOut/out 0.9500
+  +21  sell a0 +0.021704 ETH a1 -5.04289e+24 sender 0x6ff5693b tx from 0x578b7cc3 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +21  sell a0 +0.203489 ETH a1 -5.10565e+25 sender 0x6ff5693b tx from 0xaab209e7 (OUTSIDER) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +23  BUY  a0 -0.158756 ETH a1 +4.00381e+25 sender 0x6ff5693b tx from 0xf7b323ba (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.1588  minOut/out 0.9500
+  +25  BUY  a0 -0.123750 ETH a1 +2.83811e+25 sender 0x6ff5693b tx from 0x8eb4bbe5 (bot) to 0x987d5db8 0x27f7e6ee val 0.1237  minOut/out 0.9500
+  +27  BUY  a0 -0.272250 ETH a1 +5.51431e+25 sender 0x6ff5693b tx from 0xb1c867cb (bot) to 0x987d5db8 0x27f7e6ee val 0.2722  minOut/out 0.9500
+  +27  sell a0 +0.227201 ETH a1 -4.58366e+25 sender 0x6ff5693b tx from 0x80837e53 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +29  BUY  a0 -0.050000 ETH a1 +1.05413e+25 sender 0x6ff5693b tx from 0xb1c867cb (bot) to 0x987d5db8 0x27f7e6ee val 0.0500  minOut/out 0.9500
+  +31  sell a0 +0.038754 ETH a1 -8.22388e+24 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +31  sell a0 +0.132150 ETH a1 -2.96282e+25 sender 0x6ff5693b tx from 0xf7b323ba (OUTSIDER) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +31  BUY  a0 -0.099000 ETH a1 +2.22113e+25 sender 0x6ff5693b tx from 0x7f4d15e9 (bot) to 0x987d5db8 0x27f7e6ee val 0.0990  minOut/out 0.8525
+  +33  BUY  a0 -0.247500 ETH a1 +4.98453e+25 sender 0x6ff5693b tx from 0xc4e1e81f (bot) to 0x987d5db8 0x27f7e6ee val 0.2475  minOut/out 0.9500
+  +34  sell a0 +0.043155 ETH a1 -8.2427e+24 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +35  BUY  a0 -0.200000 ETH a1 +3.61468e+25 sender 0x6ff5693b tx from 0x80837e53 (bot) to 0x987d5db8 0x27f7e6ee val 0.2000  minOut/out 0.9265
+  +36  BUY  a0 -0.148500 ETH a1 +2.43047e+25 sender 0x6ff5693b tx from 0x578b7cc3 (bot) to 0x987d5db8 0x27f7e6ee val 0.1485  minOut/out 0.9500
+  +38  BUY  a0 -0.100000 ETH a1 +1.52939e+25 sender 0x6ff5693b tx from 0x5aed6bc8 (bot) to 0x987d5db8 0x27f7e6ee val 0.1000  minOut/out 0.9500
+  +40  sell a0 +0.298934 ETH a1 -4.88312e+25 sender 0x6ff5693b tx from 0xf8b3c188 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +41  BUY  a0 -0.200000 ETH a1 +3.32246e+25 sender 0x6ff5693b tx from 0xaab209e7 (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.2000  minOut/out 0.8089
+  +42  sell a0 +0.178523 ETH a1 -2.978e+25 sender 0x6ff5693b tx from 0xa2deb9f0 (OUTSIDER) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +42  BUY  a0 -0.198000 ETH a1 +3.25358e+25 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x987d5db8 0x27f7e6ee val 0.1980  minOut/out 0.8621
+  +44  BUY  a0 -0.049500 ETH a1 +7.59831e+24 sender 0x6ff5693b tx from 0x4180672a (bot) to 0x987d5db8 0x27f7e6ee val 0.0495  minOut/out 0.9500
+  +46  sell a0 +0.160038 ETH a1 -2.55814e+25 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +46  BUY  a0 -0.163047 ETH a1 +2.57873e+25 sender 0x6ff5693b tx from 0x03947567 (bot) to 0x987d5db8 0x27f7e6ee val 0.1630  minOut/out 0.8720
+  +48  BUY  a0 -0.123750 ETH a1 +1.81271e+25 sender 0x6ff5693b tx from 0x1e5ad030 (bot) to 0x987d5db8 0x27f7e6ee val 0.1237  minOut/out 0.9500
+  +48  sell a0 +0.052333 ETH a1 -7.59923e+24 sender 0x6ff5693b tx from 0xf7b323ba (OUTSIDER) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +50  BUY  a0 -0.099000 ETH a1 +1.40644e+25 sender 0x6ff5693b tx from 0xc9c827ad (bot) to 0x987d5db8 0x27f7e6ee val 0.0990  minOut/out 0.9500
+  +52  BUY  a0 -0.284828 ETH a1 +3.67797e+25 sender 0x6ff5693b tx from 0xf8b3c188 (bot) to 0x987d5db8 0x27f7e6ee val 0.2848  minOut/out 0.9500
+  +53  BUY  a0 -0.198000 ETH a1 +2.27707e+25 sender 0x6ff5693b tx from 0xcbca9880 (bot) to 0x987d5db8 0x27f7e6ee val 0.1980  minOut/out 0.9500
+  +53  sell a0 +0.126926 ETH a1 -1.45017e+25 sender 0x6ff5693b tx from 0x1e5ad030 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +55  sell a0 +0.313158 ETH a1 -3.97641e+25 sender 0x6ff5693b tx from 0xf8b3c188 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +55  BUY  a0 -0.099000 ETH a1 +1.3105e+25 sender 0x6ff5693b tx from 0x1e5ad030 (bot) to 0x987d5db8 0x27f7e6ee val 0.0990  minOut/out 0.8171
+  +57  BUY  a0 -0.050000 ETH a1 +6.37936e+24 sender 0x6ff5693b tx from 0x1e5ad030 (bot) to 0x987d5db8 0x27f7e6ee val 0.0500  minOut/out 0.9500
+  +59  BUY  a0 -0.160040 ETH a1 +1.9417e+25 sender 0x6ff5693b tx from 0xf7b323ba (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.1600  minOut/out 0.9500
+  +61  sell a0 +0.140206 ETH a1 -1.71027e+25 sender 0x6ff5693b tx from 0x7f4d15e9 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +61  BUY  a0 -0.025000 ETH a1 +3.10317e+24 sender 0x6ff5693b tx from 0x5aed6bc8 (bot) to 0x987d5db8 0x27f7e6ee val 0.0250  minOut/out 0.8887
+  +64  BUY  a0 -0.024750 ETH a1 +3.03566e+24 sender 0x6ff5693b tx from 0x80837e53 (bot) to 0x987d5db8 0x27f7e6ee val 0.0248  minOut/out 0.9500
+  +66  sell a0 +0.163431 ETH a1 -2.0949e+25 sender 0x6ff5693b tx from 0xcbca9880 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +68  BUY  a0 -0.175000 ETH a1 +2.21514e+25 sender 0x6ff5693b tx from 0xfba0e37c (bot) to 0x987d5db8 0x27f7e6ee val 0.1750  minOut/out 0.9500
+  +72  BUY  a0 -0.200000 ETH a1 +2.31582e+25 sender 0x6ff5693b tx from 0x8755d81e (bot) to 0x987d5db8 0x27f7e6ee val 0.2000  minOut/out 0.9500
+  +72  sell a0 +0.098515 ETH a1 -1.12515e+25 sender 0x6ff5693b tx from 0xc9c827ad (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +74  sell a0 +0.162869 ETH a1 -1.97827e+25 sender 0x6ff5693b tx from 0xf7b323ba (OUTSIDER) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +76  BUY  a0 -0.024867 ETH a1 +3.09004e+24 sender 0x6ff5693b tx from 0x80837e53 (bot) to 0x987d5db8 0x27f7e6ee val 0.0249  minOut/out 0.9500
+  +78  sell a0 +0.170208 ETH a1 -2.21462e+25 sender 0x6ff5693b tx from 0x578b7cc3 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +79  BUY  a0 -0.075000 ETH a1 +9.88934e+24 sender 0x6ff5693b tx from 0xc9c827ad (bot) to 0x987d5db8 0x27f7e6ee val 0.0750  minOut/out 0.9500
+  +83  BUY  a0 -0.104010 ETH a1 +1.31258e+25 sender 0x6ff5693b tx from 0x7f4d15e9 (bot) to 0x987d5db8 0x27f7e6ee val 0.1040  minOut/out 0.9500
+  +87  BUY  a0 -0.175000 ETH a1 +2.06664e+25 sender 0x6ff5693b tx from 0x020a1015 (bot) to 0x987d5db8 0x27f7e6ee val 0.1750  minOut/out 0.9500
+  +87  sell a0 +0.187475 ETH a1 -2.2435e+25 sender 0x6ff5693b tx from 0x03947567 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +90  sell a0 +0.030128 ETH a1 -3.79649e+24 sender 0x6ff5693b tx from 0x578b7cc3 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +91  BUY  a0 -0.074250 ETH a1 +9.16605e+24 sender 0x6ff5693b tx from 0x020a1015 (bot) to 0x987d5db8 0x27f7e6ee val 0.0742  minOut/out 0.9363
+  +94  BUY  a0 -0.024750 ETH a1 +2.98376e+24 sender 0x6ff5693b tx from 0x8eb4bbe5 (bot) to 0x987d5db8 0x27f7e6ee val 0.0248  minOut/out 0.9500
+  +96  sell a0 +0.409177 ETH a1 -5.48746e+25 sender 0x6ff5693b tx from 0x80837e53 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +98  BUY  a0 -0.297000 ETH a1 +4.0529e+25 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x987d5db8 0x27f7e6ee val 0.2970  minOut/out 0.9500
+  +102 BUY  a0 -0.024750 ETH a1 +3.11467e+24 sender 0x6ff5693b tx from 0x1e5ad030 (bot) to 0x987d5db8 0x27f7e6ee val 0.0248  minOut/out 0.9500
+  +103 sell a0 +0.109568 ETH a1 -1.42228e+25 sender 0x6ff5693b tx from 0x7f4d15e9 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +105 BUY  a0 -0.024750 ETH a1 +3.24775e+24 sender 0x6ff5693b tx from 0x4180672a (bot) to 0x987d5db8 0x27f7e6ee val 0.0248  minOut/out 0.9500
+  +109 BUY  a0 -0.346500 ETH a1 +4.16295e+25 sender 0x6ff5693b tx from 0x80837e53 (bot) to 0x987d5db8 0x27f7e6ee val 0.3465  minOut/out 0.9500
+  +115 BUY  a0 -0.225000 ETH a1 +2.36897e+25 sender 0x6ff5693b tx from 0x31335015 (bot) to 0x987d5db8 0x27f7e6ee val 0.2250  minOut/out 0.9500
+  +115 sell a0 +0.523549 ETH a1 -5.97728e+25 sender 0x6ff5693b tx from 0xb1c867cb (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +120 BUY  a0 -0.100000 ETH a1 +1.2451e+25 sender 0x6ff5693b tx from 0xc89e901a (bot) to 0x987d5db8 0x27f7e6ee val 0.1000  minOut/out 0.9500
+  +120 sell a0 +0.334118 ETH a1 -4.45872e+25 sender 0x6ff5693b tx from 0xaab209e7 (OUTSIDER) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +125 BUY  a0 -0.013680 ETH a1 +1.95759e+24 sender 0x6ff5693b tx from 0x4180672a (bot) to 0x987d5db8 0x27f7e6ee val 0.0137  minOut/out 0.9500
+  +126 ML PULL delta     -46141758126452008872416 ticks -887200..887200 sender 0xc7a81a2a tx from 0x8f79d153 (bot) to 0xc7a81a2a 0xf2f230a8 val 0.000000
+  summary: adds [(3, 2.1333), (3, 2.1333)] active liquidity at tick 199645: 46141758126452008872417; first bot buy (8, 0.2, 0.95); pull (126, '0xf2f230a8', '0xc7a81a2a')
+  Swap sender, buys: {'bot': {'0x6ff5693b99212da76ad316178a184ab56d299b43': 40}, 'OUTSIDER': {'0x6ff5693b99212da76ad316178a184ab56d299b43': 5}}; sells: {'bot': {'0x6ff5693b99212da76ad316178a184ab56d299b43': 20}, 'OUTSIDER': {'0x6ff5693b99212da76ad316178a184ab56d299b43': 6}}
+  outsiders: 11: [(15, 'BUY', 0.2475, '0xaab209e7'), (21, 'BUY', 0.17325, '0xa2deb9f0'), (21, 'sell', 0.20349, '0xaab209e7'), (23, 'BUY', 0.15876, '0xf7b323ba'), (31, 'sell', 0.13215, '0xf7b323ba'), (41, 'BUY', 0.2, '0xaab209e7'), (42, 'sell', 0.17852, '0xa2deb9f0'), (48, 'sell', 0.05233, '0xf7b323ba'), (59, 'BUY', 0.16004, '0xf7b323ba'), (74, 'sell', 0.16287, '0xf7b323ba'), (120, 'sell', 0.33412, '0xaab209e7')]; first outsider buy at +15, pull 111 blocks later
+
+=== launch 52592379 pool 0x909c1fda token 0xcff4d5a4 hook 0x48b80af6 wallet 0x78f4b6cc
+  +3   ML add  delta      46141758126452008872416 ticks -887200..887200 sender 0x48b80af6 tx from 0x78f4b6cc (bot) to 0x48b80af6 0x2346bb56 val 2.133329
+  +3   ML add  delta                            1 ticks -887200..887200 sender 0x7c5f5a4b tx from 0x78f4b6cc (bot) to 0x48b80af6 0x2346bb56 val 2.133329
+  +8   BUY  a0 -0.148500 ETH a1 +6.46455e+25 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x987d5db8 0x27f7e6ee val 0.1485  minOut/out 0.9500
+  +10  BUY  a0 -0.198000 ETH a1 +7.42022e+25 sender 0x6ff5693b tx from 0x5f0190f1 (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.1980  minOut/out 0.9500
+  +12  BUY  a0 -0.250000 ETH a1 +7.83741e+25 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x987d5db8 0x27f7e6ee val 0.2500  minOut/out 0.9500
+  +14  BUY  a0 -0.198000 ETH a1 +5.2609e+25 sender 0x6ff5693b tx from 0xc89e901a (bot) to 0x987d5db8 0x27f7e6ee val 0.1980  minOut/out 0.9500
+  +14  sell a0 +0.181672 ETH a1 -4.84841e+25 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +16  BUY  a0 -0.148500 ETH a1 +3.96965e+25 sender 0x6ff5693b tx from 0x31335015 (bot) to 0x987d5db8 0x27f7e6ee val 0.1485  minOut/out 0.9500
+  +18  BUY  a0 -0.227183 ETH a1 +5.34444e+25 sender 0x6ff5693b tx from 0x943bfd27 (bot) to 0x987d5db8 0x27f7e6ee val 0.2272  minOut/out 0.9500
+  +18  sell a0 +0.266661 ETH a1 -6.42668e+25 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +18  sell a0 +0.199023 ETH a1 -5.63937e+25 sender 0x6ff5693b tx from 0x5f0190f1 (OUTSIDER) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +19  BUY  a0 -0.099000 ETH a1 +2.87876e+25 sender 0x6ff5693b tx from 0xc9c827ad (bot) to 0x987d5db8 0x27f7e6ee val 0.0990  minOut/out 0.9500
+  +21  BUY  a0 -0.075000 ETH a1 +2.04715e+25 sender 0x6ff5693b tx from 0xc9c827ad (bot) to 0x987d5db8 0x27f7e6ee val 0.0750  minOut/out 0.9500
+  +22  sell a0 +0.106726 ETH a1 -2.97724e+25 sender 0x6ff5693b tx from 0x31335015 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +23  BUY  a0 -0.198000 ETH a1 +5.2989e+25 sender 0x6ff5693b tx from 0x020a1015 (bot) to 0x987d5db8 0x27f7e6ee val 0.1980  minOut/out 0.9500
+  +25  sell a0 +0.058438 ETH a1 -1.50301e+25 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +26  BUY  a0 -0.198000 ETH a1 +4.81284e+25 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x987d5db8 0x27f7e6ee val 0.1980  minOut/out 0.9135
+  +27  BUY  a0 -0.050000 ETH a1 +1.11868e+25 sender 0x6ff5693b tx from 0x020a1015 (bot) to 0x987d5db8 0x27f7e6ee val 0.0500  minOut/out 0.9500
+  +29  BUY  a0 -0.210994 ETH a1 +4.35057e+25 sender 0x6ff5693b tx from 0xa2deb9f0 (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.2110  minOut/out 0.9500
+  +31  BUY  a0 -0.200442 ETH a1 +3.65114e+25 sender 0x6ff5693b tx from 0x8eb4bbe5 (bot) to 0x987d5db8 0x27f7e6ee val 0.2004  minOut/out 0.9500
+  +33  BUY  a0 -0.247500 ETH a1 +3.9736e+25 sender 0x6ff5693b tx from 0xb1c867cb (bot) to 0x987d5db8 0x27f7e6ee val 0.2475  minOut/out 0.9500
+  +33  sell a0 +0.286678 ETH a1 -4.70311e+25 sender 0x6ff5693b tx from 0x943bfd27 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +35  sell a0 +0.057032 ETH a1 -1.02984e+25 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +35  BUY  a0 -0.025000 ETH a1 +4.51106e+24 sender 0x6ff5693b tx from 0xfba0e37c (bot) to 0x987d5db8 0x27f7e6ee val 0.0250  minOut/out 0.9191
+  +37  BUY  a0 -0.099000 ETH a1 +1.72407e+25 sender 0x6ff5693b tx from 0xc4e1e81f (bot) to 0x987d5db8 0x27f7e6ee val 0.0990  minOut/out 0.9500
+  +38  BUY  a0 -0.018703 ETH a1 +3.14983e+24 sender 0x6ff5693b tx from 0x020a1015 (bot) to 0x987d5db8 0x27f7e6ee val 0.0187  minOut/out 0.9500
+  +39  sell a0 +0.193193 ETH a1 -3.45703e+25 sender 0x6ff5693b tx from 0xb1c867cb (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +40  BUY  a0 -0.024750 ETH a1 +4.60282e+24 sender 0x6ff5693b tx from 0x8eb4bbe5 (bot) to 0x987d5db8 0x27f7e6ee val 0.0248  minOut/out 0.9500
+  +42  BUY  a0 -0.123750 ETH a1 +2.20454e+25 sender 0x6ff5693b tx from 0x1e5ad030 (bot) to 0x987d5db8 0x27f7e6ee val 0.1237  minOut/out 0.9500
+  +42  sell a0 +0.205655 ETH a1 -3.79296e+25 sender 0x6ff5693b tx from 0xc9c827ad (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +44  sell a0 +0.030167 ETH a1 -5.9644e+24 sender 0x6ff5693b tx from 0x943bfd27 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +44  BUY  a0 -0.173250 ETH a1 +3.25132e+25 sender 0x6ff5693b tx from 0xc9c827ad (bot) to 0x987d5db8 0x27f7e6ee val 0.1732  minOut/out 0.9332
+  +46  BUY  a0 -0.037441 ETH a1 +6.60372e+24 sender 0x6ff5693b tx from 0xc9c827ad (bot) to 0x987d5db8 0x27f7e6ee val 0.0374  minOut/out 0.9500
+  +48  BUY  a0 -0.016936 ETH a1 +2.94086e+24 sender 0x6ff5693b tx from 0xc9c827ad (bot) to 0x987d5db8 0x27f7e6ee val 0.0169  minOut/out 0.9500
+  +50  BUY  a0 -0.198000 ETH a1 +3.23944e+25 sender 0x6ff5693b tx from 0xf7b323ba (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.1980  minOut/out 0.9500
+  +50  sell a0 +0.079787 ETH a1 -1.27581e+25 sender 0x6ff5693b tx from 0xc4e1e81f (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +52  sell a0 +0.020311 ETH a1 -3.33818e+24 sender 0x6ff5693b tx from 0xfba0e37c (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +55  BUY  a0 -0.099000 ETH a1 +1.57677e+25 sender 0x6ff5693b tx from 0x31335015 (bot) to 0x987d5db8 0x27f7e6ee val 0.0990  minOut/out 0.9395
+  +57  BUY  a0 -0.099000 ETH a1 +1.49492e+25 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x987d5db8 0x27f7e6ee val 0.0990  minOut/out 0.9500
+  +57  sell a0 +0.219047 ETH a1 -3.4536e+25 sender 0x6ff5693b tx from 0x8eb4bbe5 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +59  BUY  a0 -0.175000 ETH a1 +2.76433e+25 sender 0x6ff5693b tx from 0xf8b3c188 (bot) to 0x987d5db8 0x27f7e6ee val 0.1750  minOut/out 0.9500
+  +61  BUY  a0 -0.321750 ETH a1 +4.46525e+25 sender 0x6ff5693b tx from 0x943bfd27 (bot) to 0x987d5db8 0x27f7e6ee val 0.3217  minOut/out 0.9500
+  +65  BUY  a0 -0.288151 ETH a1 +3.44199e+25 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x987d5db8 0x27f7e6ee val 0.2882  minOut/out 0.9500
+  +65  sell a0 +0.324025 ETH a1 -3.94567e+25 sender 0x6ff5693b tx from 0xc89e901a (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +69  BUY  a0 -0.074250 ETH a1 +9.4965e+24 sender 0x6ff5693b tx from 0xc4e1e81f (bot) to 0x987d5db8 0x27f7e6ee val 0.0742  minOut/out 0.9500
+  +69  sell a0 +0.380414 ETH a1 -5.31873e+25 sender 0x6ff5693b tx from 0x020a1015 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +71  BUY  a0 -0.099000 ETH a1 +1.47135e+25 sender 0x6ff5693b tx from 0x943bfd27 (bot) to 0x987d5db8 0x27f7e6ee val 0.0990  minOut/out 0.9500
+  +74  BUY  a0 -0.074250 ETH a1 +1.05472e+25 sender 0x6ff5693b tx from 0x7f4d15e9 (bot) to 0x987d5db8 0x27f7e6ee val 0.0742  minOut/out 0.9500
+  +76  BUY  a0 -0.074250 ETH a1 +1.0155e+25 sender 0x6ff5693b tx from 0xa2deb9f0 (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.0742  minOut/out 0.9500
+  +78  sell a0 +0.206151 ETH a1 -2.94789e+25 sender 0x6ff5693b tx from 0xf7b323ba (OUTSIDER) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +80  sell a0 +0.312337 ETH a1 -5.13671e+25 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +80  BUY  a0 -0.303550 ETH a1 +4.95596e+25 sender 0x6ff5693b tx from 0x020a1015 (bot) to 0x987d5db8 0x27f7e6ee val 0.3036  minOut/out 0.8043
+  +84  BUY  a0 -0.049500 ETH a1 +7.33568e+24 sender 0x6ff5693b tx from 0xf8b3c188 (bot) to 0x987d5db8 0x27f7e6ee val 0.0495  minOut/out 0.9500
+  +87  BUY  a0 -0.225000 ETH a1 +3.10838e+25 sender 0x6ff5693b tx from 0x5aed6bc8 (bot) to 0x987d5db8 0x27f7e6ee val 0.2250  minOut/out 0.9500
+  +89  sell a0 +0.237296 ETH a1 -3.323e+25 sender 0x6ff5693b tx from 0xf8b3c188 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +91  BUY  a0 -0.031905 ETH a1 +4.66103e+24 sender 0x6ff5693b tx from 0xc4e1e81f (bot) to 0x987d5db8 0x27f7e6ee val 0.0319  minOut/out 0.9500
+  +93  sell a0 +0.123901 ETH a1 -1.87386e+25 sender 0x6ff5693b tx from 0x1e5ad030 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +95  BUY  a0 -0.250000 ETH a1 +3.62491e+25 sender 0x6ff5693b tx from 0xaab209e7 (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.2500  minOut/out 0.9500
+  +96  sell a0 +0.006229 ETH a1 -8.56199e+23 sender 0x6ff5693b tx from 0xfba0e37c (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +98  BUY  a0 -0.049500 ETH a1 +6.66321e+24 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x987d5db8 0x27f7e6ee val 0.0495  minOut/out 0.9500
+  +102 BUY  a0 -0.247500 ETH a1 +3.0993e+25 sender 0x6ff5693b tx from 0x033258a1 (bot) to 0x987d5db8 0x27f7e6ee val 0.2475  minOut/out 0.9500
+  +104 sell a0 +0.354279 ETH a1 -4.60576e+25 sender 0x6ff5693b tx from 0x943bfd27 (bot) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +105 BUY  a0 -0.173250 ETH a1 +2.32984e+25 sender 0x6ff5693b tx from 0x1e5ad030 (bot) to 0x987d5db8 0x27f7e6ee val 0.1732  minOut/out 0.9500
+  +109 BUY  a0 -0.033049 ETH a1 +4.22122e+24 sender 0x6ff5693b tx from 0x8cd2a79c (bot) to 0x987d5db8 0x27f7e6ee val 0.0330  minOut/out 0.9500
+  +113 BUY  a0 -0.173250 ETH a1 +2.10629e+25 sender 0x6ff5693b tx from 0xb1c867cb (bot) to 0x987d5db8 0x27f7e6ee val 0.1732  minOut/out 0.9500
+  +117 sell a0 +0.218874 ETH a1 -2.71868e+25 sender 0x6ff5693b tx from 0xaab209e7 (OUTSIDER) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +117 BUY  a0 -0.100000 ETH a1 +1.26518e+25 sender 0x6ff5693b tx from 0xb1c867cb (bot) to 0x987d5db8 0x27f7e6ee val 0.1000  minOut/out 0.8560
+  +120 sell a0 +0.062968 ETH a1 -7.9748e+24 sender 0x6ff5693b tx from 0xaab209e7 (OUTSIDER) to 0x6ff5693b 0x24856bc3 val 0.0000
+  +121 BUY  a0 -0.024750 ETH a1 +3.13226e+24 sender 0x6ff5693b tx from 0x5aed6bc8 (bot) to 0x987d5db8 0x27f7e6ee val 0.0248  minOut/out 0.9214
+  +126 BUY  a0 -0.187423 ETH a1 +2.25523e+25 sender 0x6ff5693b tx from 0xf7b323ba (OUTSIDER) to 0x987d5db8 0x27f7e6ee val 0.1874  minOut/out 0.9500
+  +128 ML PULL delta     -46141758126452008872416 ticks -887200..887200 sender 0x48b80af6 tx from 0x78f4b6cc (bot) to 0x48b80af6 0xf2f230a8 val 0.000000
+  summary: adds [(3, 2.1333), (3, 2.1333)] active liquidity at tick 199645: 46141758126452008872417; first bot buy (8, 0.1485, 0.95); pull (128, '0xf2f230a8', '0x48b80af6')
+  Swap sender, buys: {'bot': {'0x6ff5693b99212da76ad316178a184ab56d299b43': 39}, 'OUTSIDER': {'0x6ff5693b99212da76ad316178a184ab56d299b43': 6}}; sells: {'bot': {'0x6ff5693b99212da76ad316178a184ab56d299b43': 19}, 'OUTSIDER': {'0x6ff5693b99212da76ad316178a184ab56d299b43': 4}}
+  outsiders: 10: [(10, 'BUY', 0.198, '0x5f0190f1'), (18, 'sell', 0.19902, '0x5f0190f1'), (29, 'BUY', 0.21099, '0xa2deb9f0'), (50, 'BUY', 0.198, '0xf7b323ba'), (76, 'BUY', 0.07425, '0xa2deb9f0'), (78, 'sell', 0.20615, '0xf7b323ba'), (95, 'BUY', 0.25, '0xaab209e7'), (117, 'sell', 0.21887, '0xaab209e7'), (120, 'sell', 0.06297, '0xaab209e7'), (126, 'BUY', 0.18742, '0xf7b323ba')]; first outsider buy at +10, pull 118 blocks later
+
+requests: {'base_t': 24}; wrote b10_pools.json

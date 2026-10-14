@@ -1,0 +1,82 @@
+the four non-listed wallets: ['0x5f0190f108f21a46c8f6249890b80089dd844f61', '0xa2deb9f0339068626db83993f84fef823f648c40', '0xaab209e7b308e0c601e9106d9cef1226f93be3ba', '0xf7b323ba75ef95a990c0fa07e483cd4b784f4f47']
+
+(1) the launch wallet's +1 call to the bot contract (4977dff6), decoded
+  pool 52590807: tx 0x101021ae085d958f161803577c792551852b0e179ebf9e8dd8bed2c519daf618 value 6.1311 ETH, 25 addresses, amounts 0.1252..0.3666 ETH (sum 6.1311)
+    in the 31-buyer list: 21; the four present: ['0x5f0190f1', '0xa2deb9f0', '0xaab209e7', '0xf7b323ba']
+  pool 52592240: tx 0xde598612340493e77b67306938d75439ecf951a520dd0c11cf5051516f8efbb7 value 6.1310 ETH, 25 addresses, amounts 0.1207..0.3532 ETH (sum 6.1310)
+    in the 31-buyer list: 21; the four present: ['0x5f0190f1', '0xa2deb9f0', '0xaab209e7', '0xf7b323ba']
+  pool 52592379: tx 0x097826d6b0a1d5a62c051e70c2d0091b9035c61308b3ef6c7f868861e645b7c6 value 2.3988 ETH, 18 addresses, amounts 0.0042..0.2629 ETH (sum 2.3988)
+    in the 31-buyer list: 17; the four present: ['0xf7b323ba']
+  funded addresses over the three pools: 25; of them not among the 31 buyers: ['0x5f0190f108f21a46c8f6249890b80089dd844f61', '0xa2deb9f0339068626db83993f84fef823f648c40', '0xaab209e7b308e0c601e9106d9cef1226f93be3ba', '0xf7b323ba75ef95a990c0fa07e483cd4b784f4f47']
+
+(2) state now (publicnode)
+  head 52593952 at 11:27:31 UTC (now 11:27:33 UTC)
+  31 buyers: nonce sum 20603 (20,405 at 10:11), ETH 3.1084 (0.0006 at 10:11)
+  collector 0x8f79d153: nonce 11 (1 at 10:11), 0.0000 ETH (8.46 at 10:11)
+  launch wallet 0x4d40df2e (pool 52590492): nonce 11, 0.0000 ETH
+  launch wallet 0x505b452d (pool 52590658): nonce 10, 0.0000 ETH
+  launch wallet 0x72d0cac5 (pool 52590807): nonce 10, 0.0000 ETH
+  launch wallet 0x8f79d153 (pool 52592240): nonce 11, 0.0000 ETH
+  launch wallet 0x78f4b6cc (pool 52592379): nonce 10, 0.0000 ETH
+  four: 0x5f0190f108f21a46c8f6249890b80089dd844f61: nonce 600, 0.2613 ETH
+  four: 0xa2deb9f0339068626db83993f84fef823f648c40: nonce 701, 0.0206 ETH
+  four: 0xaab209e7b308e0c601e9106d9cef1226f93be3ba: nonce 610, 0.3096 ETH
+  four: 0xf7b323ba75ef95a990c0fa07e483cd4b784f4f47: nonce 600, 0.0469 ETH
+  the four on bsc: nonces [9759, 9732, 9611, 9421]
+  the four on eth: nonces [250, 238, 144, 220]
+  the four on rh: nonces [18397, 18491, 18485, 18459]
+
+(3) fee-5000/ts-100 Initialize after 52593544
+  none up to 52593952
+
+(4) the launch wallet's transactions, L..L+8 and the pull block
+  pool 52590492 wallet 0x4d40df2e:
+    +0   to 0x32ab7e98 0xc3e0ff3d  260 B value 0.0000 ETH gas 1984358 prio 0.0010 gwei
+    +1   to 0x987d5db8 0x4977dff6 1732 B value 0.1666 ETH gas 3000000 prio 0.0011 gwei
+    +2   to 0xbe07c8c3 0x095ea7b3   68 B value 0.0000 ETH gas 46591 prio 0.0010 gwei
+    +3   to 0x0a37fce6 0x2346bb56  228 B value 0.1333 ETH gas 619603 prio 0.0011 gwei
+    +4   to 0xbe07c8c3 0x095ea7b3   68 B value 0.0000 ETH gas 600000 prio 0.0011 gwei
+    +5   to 0x00000000 0x87517c45  132 B value 0.0000 ETH gas 48204 prio 0.0011 gwei
+    +18  to 0x0a37fce6 0xf2f230a8  132 B value 0.0000 ETH gas 126070 prio 0.0010 gwei
+  pool 52590658 wallet 0x505b452d:
+    +0   to 0xeb8271d7 0xc3e0ff3d  260 B value 0.0000 ETH gas 1984346 prio 0.0010 gwei
+    +1   to 0x987d5db8 0x4977dff6 1732 B value 0.1665 ETH gas 3000000 prio 0.0011 gwei
+    +1   to 0xccc17382 0x095ea7b3   68 B value 0.0000 ETH gas 46591 prio 0.0010 gwei
+    +2   to 0x9e3653bb 0x2346bb56  228 B value 0.1333 ETH gas 619603 prio 0.0011 gwei
+    +3   to 0xccc17382 0x095ea7b3   68 B value 0.0000 ETH gas 600000 prio 0.0011 gwei
+    +4   to 0x00000000 0x87517c45  132 B value 0.0000 ETH gas 48192 prio 0.0011 gwei
+    +32  to 0x9e3653bb 0xf2f230a8  132 B value 0.0000 ETH gas 126070 prio 0.0010 gwei
+  pool 52590807 wallet 0x72d0cac5:
+    +0   to 0xd93bef10 0xc3e0ff3d  260 B value 0.0000 ETH gas 1984366 prio 0.0010 gwei
+    +1   to 0x987d5db8 0x4977dff6 1732 B value 6.1311 ETH gas 3000000 prio 0.0011 gwei
+    +2   to 0x3a73002f 0x095ea7b3   68 B value 0.0000 ETH gas 46591 prio 0.0010 gwei
+    +3   to 0x1c888901 0x2346bb56  228 B value 2.1333 ETH gas 619591 prio 0.0011 gwei
+    +4   to 0x3a73002f 0x095ea7b3   68 B value 0.0000 ETH gas 600000 prio 0.0011 gwei
+    +5   to 0x00000000 0x87517c45  132 B value 0.0000 ETH gas 48192 prio 0.0011 gwei
+    +30  to 0x1c888901 0xf2f230a8  132 B value 0.0000 ETH gas 165208 prio 0.0010 gwei
+  pool 52592240 wallet 0x8f79d153:
+    +0   to 0x51fc09ed 0xc3e0ff3d  260 B value 0.0000 ETH gas 1984378 prio 0.0010 gwei
+    +1   to 0x987d5db8 0x4977dff6 1732 B value 6.1310 ETH gas 3000000 prio 0.0011 gwei
+    +2   to 0x86a7f72b 0x095ea7b3   68 B value 0.0000 ETH gas 46591 prio 0.0010 gwei
+    +3   to 0xc7a81a2a 0x2346bb56  228 B value 2.1333 ETH gas 619591 prio 0.0011 gwei
+    +4   to 0x86a7f72b 0x095ea7b3   68 B value 0.0000 ETH gas 600000 prio 0.0011 gwei
+    +5   to 0x00000000 0x87517c45  132 B value 0.0000 ETH gas 48204 prio 0.0011 gwei
+    +126 to 0xc7a81a2a 0xf2f230a8  132 B value 0.0000 ETH gas 165208 prio 0.0010 gwei
+  pool 52592379 wallet 0x78f4b6cc:
+    +0   to 0xd1f53e00 0xc3e0ff3d  260 B value 0.0000 ETH gas 1984378 prio 0.0010 gwei
+    +1   to 0x987d5db8 0x4977dff6 1284 B value 2.3988 ETH gas 3000000 prio 0.0011 gwei
+    +2   to 0xcff4d5a4 0x095ea7b3   68 B value 0.0000 ETH gas 46591 prio 0.0010 gwei
+    +3   to 0x48b80af6 0x2346bb56  228 B value 2.1333 ETH gas 619591 prio 0.0011 gwei
+    +4   to 0xcff4d5a4 0x095ea7b3   68 B value 0.0000 ETH gas 600000 prio 0.0011 gwei
+    +5   to 0x00000000 0x87517c45  132 B value 0.0000 ETH gas 48204 prio 0.0011 gwei
+    +128 to 0x48b80af6 0xf2f230a8  132 B value 0.0000 ETH gas 165208 prio 0.0010 gwei
+
+(5) launches and gaps
+  09:32:11 block 52590492
+  09:37:43 block 52590658  +5.5 min
+  09:42:41 block 52590807  +5.0 min
+  10:30:27 block 52592240  +47.8 min
+  10:35:05 block 52592379  +4.6 min
+  since the last launch: 52.4 min
+
+requests: {'base_t': 18, 'base': 10, 'bsc': 1, 'eth': 1, 'rh': 1}

@@ -55,3 +55,49 @@ base.gateway.tenderly.co for logs older than ~20 minutes, since publicnode refus
 - **Before any money:** an exit test that answers whether the afterSwap hook lets an outsider who bought sell again. The BNB line was a
   honeypot (research/session_oct14/bnbfreeze/REPORT_BNBFREEZE.md). The test is an eth_call of a buy and a sell through the pool at a live
   block, with the hook in place.
+
+## Update, Oct 14 11:30 UTC (b09, b10, b12, b07 on the 10:30 pool)
+
+**Five launches so far, all the same shape; the operator has been idle since 10:35.** Head 52,593,952 at 11:27:31 UTC (b12_now.out).
+
+| # | UTC | block L | launch wallet | pool | add (block, ETH) | bot's first buy | pull | swaps |
+|---|---|---|---|---|---|---|---|---|
+| 1 | 09:32:11 | 52590492 | `0x4d40df2e` | `0x4719b41b…` | +3, 0.1333 | none | +18 | 0 |
+| 2 | 09:37:43 | 52590658 | `0x505b452d` | `0x722c5de4…` | +2, 0.1333 | none | +32 | 0 |
+| 3 | 09:42:41 | 52590807 | `0x72d0cac5` | `0x3085339d…` | +3, 2.1333 | +8, 0.150 ETH | +30 | 16 |
+| 4 | 10:30:27 | 52592240 | `0x8f79d153` (the collector) | `0xb41ad027…` | +3, 2.1333 | +8, 0.200 ETH | +126 | 71 |
+| 5 | 10:35:05 | 52592379 | `0x78f4b6cc` (new) | `0x909c1fda…` | +3, 2.1333 | +8, 0.1485 ETH | +128 | 68 |
+
+(b09_census.out has every hash; b10_pools.out every event with its transaction.)
+
+- **The launch sequence is fixed** (b12_now.out section 4): +0 `c3e0ff3d` to the per-launch launcher (value 0); +1 the launch wallet funds the
+  buyer fleet through the bot contract `0x987d5db8` (`4977dff6`: a list of 25 addresses and amounts, 6.131 ETH on pools 3 and 4, 18
+  addresses and 2.399 ETH on pool 5); +2 `approve(token -> hook)`; +3 the liquidity: the launch wallet -> hook `2346bb56` with 2.133329 ETH
+  (pool 2 did this at +2), full range, liquidity 46141758126452008872416 (identical in pools 3, 4, 5; the 0.1333 ETH test pools:
+  11535243517152119489536); +4/+5 the Permit2 and Universal Router approvals; the pull: launch wallet -> hook `f2f230a8`.
+- **The bot's first buy is at +8 in all three real pools** (5 blocks, 10 s, after the add), 0.15-0.20 ETH, then a buy every 1-2 blocks
+  (0.02-0.35 ETH) and sells through the Universal Router from +12. **Its price tolerance is 5%**: calldata minOut / tokens received =
+  0.9500 on every one of the 90 bot buys decoded (Robinhood's line and the BNB line ran at 0.99).
+- **The pull is a timer, about 4.1 minutes**: +126 and +128 on the two real pools (the 09:42 test was cut at +30).
+- **The Swap event's `sender` is the Universal Router `0x6ff5693b` for every swap**, the bot's buys included (the bot contract routes them
+  through it). So the bot's buy cannot be told apart in the PoolManager's logs by its sender; it can by its transaction (to `0x987d5db8`,
+  selector `27f7e6ee`, the token in the calldata), which the Flashblocks stream shows before the block is sealed.
+- **No outsider has traded in any pool.** b10 tagged 21 swaps in pools 4 and 5 as OUTSIDER because their wallets (`0x5f0190f1`,
+  `0xa2deb9f0`, `0xaab209e7`, `0xf7b323ba`) are not among the 31 known buyers. They are the operator's: the +1 funding call of pools 3, 4
+  and 5 lists them with the others (b12 section 1), they buy through the bot contract with the same 0.95 tolerance and sell through the
+  Universal Router like the rest, and they sit at nonce 600-701 on Base, 9,421-9,759 on BNB Chain, 144-250 on Ethereum and 18,397-18,491
+  on Robinhood. The fleet on Base is 35 wallets (the 31 plus these 4). **The operator's reaction to an outsider therefore remains
+  unknown** (on BNB it pulled 6-7 blocks, about 3 s, after an outsider's buy; on Robinhood it never did).
+- **Exit test on the 10:30 pool** (b07_exittest_1030.out): the same as on the 09:42 pool: an outsider's buy and sell through our relay's
+  code go through at every block from +3 to +29 at -1.00% (the two 0.5% fees; the hook takes nothing); a sell alone at +8, after the
+  bot's first buy, returns +18.1% on 0.002 ETH bought at +4.
+- **Correction**: the hooks' address flags are `0x0080` = **beforeSwap** only (b09; bit 7). The 10:11 text above says afterSwap; that was a
+  decoding error in b04. The hook's bytecode carries the beforeSwap selector `575e24b4`.
+- **The operator's money at 11:27**: the collector `0x8f79d153` is empty (nonce 11: it launched pool 4, funded the fleet with 6.131 ETH and
+  the pool with 2.133); the 35 buyer wallets hold about 3.1 ETH (the 31: 3.108, nonce sum 20,603); the five launch wallets are empty. No
+  fee-5000/ts-100 Initialize after block 52,593,544. Gaps: 5.5, 5.0, 47.8, 4.6 minutes; 52 minutes since the last launch at 11:27.
+
+**For the engine (docs/BASE.md)**: fire on the add (seen at +2 or +3; the bot's first buy follows 5 blocks later), hold at most 5 blocks after
+our buy, sell on the bot's buy seen pending (to `0x987d5db8` carrying the token) or on the first paying buy behind ours, `BASE_BOT_SENDERS`
+off (the Swap sender is the Universal Router for everyone), skip pools whose add carries under 1 ETH (the two 0.1333 test pools). The stake:
+the owner sets it; the first live trade is the test of the reaction (RUNBOOK 4l).
