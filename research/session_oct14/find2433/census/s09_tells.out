@@ -1,0 +1,79 @@
+launches after the stop (block > 86310320): 12288 (v4 11771, v3 517)
+
+== value exactly 2.4333285 ETH: 0
+
+== value 2.19-2.68 ETH (10%): 24
+    10 operator A
+     3 v4 0x58daec31 0xac9650d8 1444B f100 ts1 v2.3 ETH
+     1 v4 0x29c5eb12 0x82a55dde 1252B f0 ts1 v2.302 ETH
+     1 v4 0xe4ca37a4 0x82a55dde 1252B f0 ts1 v2.402 ETH
+     1 v4 0x49b5d626 0x82a55dde 1252B f0 ts1 v2.402 ETH
+     1 v4 0x1940c805 0x82a55dde 1252B f0 ts1 v2.402 ETH
+     1 v4 0xc5bbca09 0x82a55dde 1252B f0 ts1 v2.402 ETH
+     1 v4 0xfb069b72 0x82a55dde 1252B f0 ts1 v2.402 ETH
+     1 single-sided 2500/25 (REPORT_2433STOP)
+     1 v4 0xab90db32 0x82a55dde 1252B f0 ts1 v2.402 ETH
+     1 v4 0x4c28c1a9 0x82a55dde 1252B f0 ts1 v2.402 ETH
+     1 v4 0x58daec31 0xac9650d8 1444B f100 ts1 v2.5 ETH
+
+== sqrtP exactly 2.433: 0
+
+== sqrtP within 3% of 2.433 (ETH as currency0): 101
+    67 single-sided 2500/25 (REPORT_2433STOP)
+     7 v4 0xd0fd42bd 0xac9650d8 1444B f100 ts1 v6.004e-12 ETH
+     6 operator A
+     4 v4 0x58daec31 0xac9650d8 1444B f883131 ts200 v0.001218 ETH
+     3 v4 0xd0fd42bd 0xac9650d8 1444B f100 ts1 v1.434e-11 ETH
+     2 v4 0x80725679 0x8aa1a859 1348B f0 ts200 v0.001 ETH
+     1 v4 0xa7972415 0xc5b0c650 1380B f0 ts200 v0 ETH
+     1 v4 0x171cd55a 0xec64ddcf 196B f0 ts60 v0 ETH
+     1 v4 0x80725679 0xc5b0c650 1284B f0 ts200 v0 ETH
+     1 v4 0x80725679 0x8aa1a859 1604B f0 ts200 v0.001 ETH
+     1 v4 0x58daec31 0xac9650d8 2020B f9000 ts90 v0.1122 ETH
+     1 v4 0x80725679 0xc5b0c650 1188B f0 ts200 v0 ETH
+
+== fee 5000 / ts 100: 2
+     1 v4 0x9403365a 0xb70fcf8b 548B f5000 ts100 v0 ETH
+     1 v4 0x9403365a 0xb70fcf8b 644B f5000 ts100 v0 ETH
+
+== fee 2500 / ts 50: 0
+
+== gas limit exactly 15,000,000: 2413
+  1937 VB 3.0
+   476 VB 5.0
+
+== gas limit exactly 15,000,000, not VB 3.0/5.0: 0
+
+== token ending 777, not VB 3.0/5.0: 21
+     2 v4 0x58daec31 0xac9650d8 1892B f990000 ts9900 v0 USDG
+     2 v4 0x58daec31 0xac9650d8 1892B f955950 ts9560 v0 USDG
+     1 v4 0x58daec31 0xac9650d8 1316B f98000 ts1960 v0 USDG
+     1 v4 0x58daec31 0xac9650d8 1892B f600000 ts6000 v0 USDG
+     1 v4 0x58daec31 0xac9650d8 2020B f900000 ts9000 v4.984e-06 ETH
+     1 v4 0x58daec31 0xac9650d8 1316B f900000 ts9000 v0 USDG
+     1 v4 0x58daec31 0xac9650d8 1316B f60000 ts1200 v0 USDG
+     1 v4 0x58daec31 0xac9650d8 1316B f43189 ts427 v0 USDG
+     1 v4 0x58daec31 0xac9650d8 1316B f60650 ts100 v0 USDG
+     1 v4 0x58daec31 0xac9650d8 1316B f60060 ts100 v0 USDG
+     1 v4 0x58daec31 0xac9650d8 1316B f60710 ts100 v0 USDG
+     1 v4 0x58daec31 0xac9650d8 1892B f790000 ts7900 v0 USDG
+
+== tx sent to the bot router 0x1cbaf24d: 0
+
+== launch sender nonce exactly 11 (2.433 launch nonce), POSM ETH, not VB 3.0/5.0: 2
+     1 single-sided 2500/25 (REPORT_2433STOP)
+     1 v4 0x58daec31 0xac9650d8 1444B f8388608 ts60 v1e-05 ETH
+
+== POSM 1444 B ETH value >= 1 ETH, not VB 3.0/5.0: 153
+    19 v4 0x58daec31 0xac9650d8 1444B f100 ts1 v2 ETH
+     3 v4 0x58daec31 0xac9650d8 1444B f100 ts1 v2.3 ETH
+     2 v4 0x58daec31 0xac9650d8 1444B f10057 ts201 v4 ETH
+     2 v4 0x58daec31 0xac9650d8 1444B f10058 ts201 v4 ETH
+     2 v4 0x58daec31 0xac9650d8 1444B f10059 ts201 v4 ETH
+     2 v4 0x58daec31 0xac9650d8 1444B f10060 ts201 v4 ETH
+     2 v4 0x58daec31 0xac9650d8 1444B f10061 ts201 v4 ETH
+     2 v4 0x58daec31 0xac9650d8 1444B f10062 ts201 v4 ETH
+     1 v4 0x58daec31 0xac9650d8 1444B f10173 ts203 v9.333 ETH
+     1 v4 0x58daec31 0xac9650d8 1444B f10053 ts201 v4 ETH
+     1 v4 0x58daec31 0xac9650d8 1444B f10174 ts203 v9.333 ETH
+     1 v4 0x58daec31 0xac9650d8 1444B f10175 ts203 v9.333 ETH
