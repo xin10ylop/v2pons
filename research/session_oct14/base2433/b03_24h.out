@@ -1,0 +1,7 @@
+base head 52591527 (24 h = blocks 52548327..52591527): 3645 v4 Initialize, fee 5000/ts 100: 3
+launch shapes (to, selector, bytes, hook, ETH-quoted): [(('0x32ab7e98', '0xc3e0ff3d', 260, '0x0a37fce6', True), 1), (('0xeb8271d7', '0xc3e0ff3d', 260, '0x9e3653bb', True), 1), (('0xd93bef10', '0xc3e0ff3d', 260, '0x1c888901', True), 1)]
+the operator's candidates (launcher 0xd93bef10, a buyer wallet launching, or a token ending a777): 2
+  L 52590492 10-14 09:32 from 0x4d40df2e to 0x32ab7e98 0xc3e0ff3d 260 B val 0.0000 token ..0ea777 code 63ad5291cdef hook 0x0a37fce6 sqrtP 6854619590099208105460076086768381
+      swaps to +600: 0; buyers in 0.000 out 0.000; outsiders in 0.000 out 0.000 first outsider buys []; liquidity adds at [3, 3] pulls at [18]
+  L 52590807 10-14 09:42 from 0x72d0cac5 to 0xd93bef10 0xc3e0ff3d 260 B val 0.0000 token ..60a777 code 63ad5291cdef hook 0x1c888901 sqrtP 1713625778466099769665432700006961
+      swaps to +600: 16; buyers in 2.095 out 0.835; outsiders in 0.000 out 0.000 first outsider buys []; liquidity adds at [3, 3] pulls at [30]

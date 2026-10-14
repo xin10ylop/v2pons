@@ -1,0 +1,25 @@
+router? 0x987d5db8 0x987d5db84d105c1f49391af409cc34c6050fb1d0: code 22816 B hash 008737874a66  nonce 4  0.0000 ETH
+paid1 0x505b452d 0x505b452dc968ff72aade79fcd87fd31552d212e3: code 0 B hash -  nonce 10  0.0000 ETH
+paid2 0x72d0cac5 0x72d0cac5017dd7e2bcf3cfbde9079eae796c163c: code 0 B hash -  nonce 10  0.0000 ETH
+token a777 0x3a73002fcad288a2ce1aff82fad49229b060a777: code 1526 B hash 63ad5291cdef  nonce 1  0.0000 ETH
+0x8f79d153 0x8f79d153630b327cc84487804f152972cce93cb4: code 0 B hash -  nonce 0  3.6604 ETH
+v4 Initialize logs on Base in 52590500..52590830: 22; with the token: 1
+  launch block 52590807 pool 0x3085339d7dfb6384 c0 0000000000 c1 3a73002fca fee 5000 ts 100 hook 0x1c888901 sqrtP 1713625778466099769665432700006961
+  launch tx 0x2d0c62f21b58c0bdd74772d63e76deeda4cbd6306b5c80fde237e727c20f1dec from 0x72d0cac5017dd7e2bcf3cfbde9079eae796c163c to 0xd93bef10148cce1c7d462ea65d2482a8cca50bab sel 0xc3e0ff3d 260 B value 0.0000000
+  swaps to +400: 16
+    +8 from 0x31335015 to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.1500  ETH delta(amount0) -0.1500
+    +10 from 0x8755d81e to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.2722  ETH delta(amount0) -0.2722
+    +12 from 0x4180672a to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.2250  ETH delta(amount0) -0.2250
+    +12 from 0x31335015 to 0x6ff5693b sel 0x24856bc3 1028 B value 0.0000  ETH delta(amount0) +0.2028
+    +13 from 0x020a1015 to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.1485  ETH delta(amount0) -0.1485
+    +15 from 0x1e5ad030 to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.1854  ETH delta(amount0) -0.1854
+    +15 from 0x31335015 to 0x6ff5693b sel 0x24856bc3 1028 B value 0.0000  ETH delta(amount0) +0.0145
+    +17 from 0x03947567 to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.1630  ETH delta(amount0) -0.1630
+    +21 from 0x8eb4bbe5 to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.0990  ETH delta(amount0) -0.0990
+    +23 from 0x8755d81e to 0x6ff5693b sel 0x24856bc3 1028 B value 0.0000  ETH delta(amount0) +0.3071
+    +23 from 0x80837e53 to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.1980  ETH delta(amount0) -0.1980
+    +25 from 0x4180672a to 0x6ff5693b sel 0x24856bc3 1028 B value 0.0000  ETH delta(amount0) +0.2186
+    +25 from 0xf8b3c188 to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.1732  ETH delta(amount0) -0.1732
+    +27 from 0xfba0e37c to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.2086  ETH delta(amount0) -0.2086
+    +27 from 0x8eb4bbe5 to 0x6ff5693b sel 0x24856bc3 1028 B value 0.0000  ETH delta(amount0) +0.0923
+    +28 from 0x8755d81e to 0x987d5db8 sel 0x27f7e6ee 356 B value 0.2722  ETH delta(amount0) -0.2722

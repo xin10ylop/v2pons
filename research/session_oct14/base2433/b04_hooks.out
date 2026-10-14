@@ -1,0 +1,15 @@
+block 52590492 tx 0x50930b7d703d from 0x4d40df2e5fb79b8b4cfc03ca9451a3462e813084 (nonce now 11) to 0x32ab7e9886af345a53d412401307fabcc55bfee0
+  token 0xbe07c8c3cadd6f601684ef708573215d230ea777  code 1526 B 63ad5291cdef
+  hook 0x0a37fce6d240d416bc5955173c9a6c1af586c080  code 9002 B 9a69c2cd9275  permissions ['afterSwap']
+  launcher code 11031 B 225f9af97d88  calldata 0xc3e0ff3d 260 B
+  calldata words: ['4233', '498581ff718922c3f8e6a244956af099b2652b2b', 'be07c8c3cadd6f601684ef708573215d230ea777', '1388', '64', 'ffffffffffffffffffffffffffffffffffffffff', 'd89a0', '151f5766f5b32f7657d7a044332fd']
+block 52590658 tx 0x8483ae26acc4 from 0x505b452dc968ff72aade79fcd87fd31552d212e3 (nonce now 10) to 0xeb8271d78e36a17049136168c5f932bb04be0fb2
+  token 0xccc17382f57e463928ab29f8d4006b94ae3de777  code 1526 B 63ad5291cdef
+  hook 0x9e3653bb4ad13ba5d8a6d9f4bd8ae475a109c080  code 9002 B b1c118139bdf  permissions ['afterSwap']
+  launcher code 11031 B 225f9af97d88  calldata 0xc3e0ff3d 260 B
+  calldata words: ['9c91', '498581ff718922c3f8e6a244956af099b2652b2b', 'ccc17382f57e463928ab29f8d4006b94ae3de777', '1388', '64', 'ffffffffffffffffffffffffffffffffffffffff', 'd89a0', '151f5766f5b32f7657d7a044332fd']
+block 52590807 tx 0x2d0c62f21b58 from 0x72d0cac5017dd7e2bcf3cfbde9079eae796c163c (nonce now 10) to 0xd93bef10148cce1c7d462ea65d2482a8cca50bab
+  token 0x3a73002fcad288a2ce1aff82fad49229b060a777  code 1526 B 63ad5291cdef
+  hook 0x1c888901220490eb5a1dc0a0e8ee106616c28080  code 9002 B 322ce77ef840  permissions ['afterSwap']
+  launcher code 11031 B 225f9af97d88  calldata 0xc3e0ff3d 260 B
+  calldata words: ['1221', '498581ff718922c3f8e6a244956af099b2652b2b', '3a73002fcad288a2ce1aff82fad49229b060a777', '1388', '64', 'ffffffffffffffffffffffffffffffffffffffff', 'd89a0', '547cff851e4574a33b9f04e73231']

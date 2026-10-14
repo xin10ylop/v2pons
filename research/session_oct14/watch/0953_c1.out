@@ -1,0 +1,31 @@
+head 88276196 09:56:34 UTC; 11 C-1 launches in the last 180 min (of 14 fee-100/ts-1 ETH pools)
+   launch   age  botT   first nbot ETH by T+60  pull others  othETH
+ 88209836 66360    72   0.145    2       0.145   283      6  0.0037
+ 88210690 65506   136   0.024    2       0.024  None      4  0.0011
+ 88215737 60459    66    0.13    7       0.181  None      8  0.0037
+ 88227829 48367   107   0.144   15       0.881  None      8  0.0022
+ 88243192 33004   104   0.176   15       1.386  None      9  0.0028
+ 88244482 31714   128   0.039    1       0.039   292      4  0.0012
+ 88245358 30838    74   0.178    2       0.376  None      4  0.0032
+ 88246223 29973  None    None    0           0  None      3  0.0007
+ 88246902 29294  None    None    0           0  None      4  0.0011
+ 88258898 17298   101   0.096   17       1.522  None      6  0.0012
+ 88264898 11298    93    0.03   14       1.384  None      4  0.0007
+
+launches older than 400 blocks: 11; with a bot buy: 9; median ETH by T+60 among those: 0.376
+
+forward test (gross, before ~0.3% of fees and our own impact): return from the price after the bot's first buy to the last swap <= T+62
+  88209836: T +72, 5 swaps in the hold, gross +0.0%
+  88210690: T +136, 4 swaps in the hold, gross +0.0%
+  88215737: T +66, 9 swaps in the hold, gross +1.0%
+  88227829: T +107, 15 swaps in the hold, gross +15.1%
+  88243192: T +104, 16 swaps in the hold, gross +25.2%
+  88244482: T +128, 4 swaps in the hold, gross +0.0%
+  88245358: T +74, 5 swaps in the hold, gross +3.9%
+  88246223: no bot buy
+  88246902: no bot buy
+  88258898: T +101, 14 swaps in the hold, gross +30.2%
+  88264898: T +93, 13 swaps in the hold, gross +28.8%
+
+9 pools: mean +11.6%, median +3.9%, win 6/9, worst +0.0%
+c1 exit 0

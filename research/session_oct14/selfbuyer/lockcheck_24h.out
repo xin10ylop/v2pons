@@ -1,0 +1,54 @@
+head 88277832 (10-14 09:59 UTC): self-buyer launches of the last 24 h, sell lock = token.transfer(pool, 0) from an outside address (Dwellir archive eth_call)
+  L 87444932 launcher 0xd1be503d pool 0xeffdb288 token 0x4f5f33fb: own buy +23 0.0500 ETH; swaps before it []; after it: 3 buys, 0 sells, 0 outside sellers
+      L+1 LOCK verkoop vergrendeld  buy-1 LOCK verkoop vergrendeld  buy LOCK verkoop vergrendeld  buy+1 LOCK verkoop vergrendeld  buy+3 LOCK verkoop vergrendeld  buy+10 LOCK verkoop vergrendeld  buy+100 LOCK verkoop vergrendeld  now LOCK verkoop vergrendeld   <- LOCKED
+  L 87495089 launcher 0x6c649354 pool 0x49761691 token 0xe28daa62: own buy +35 0.0500 ETH; swaps before it []; after it: 3 buys, 0 sells, 0 outside sellers
+      L+1 LOCK verkoop vergrendeld  buy-1 LOCK verkoop vergrendeld  buy LOCK verkoop vergrendeld  buy+1 LOCK verkoop vergrendeld  buy+3 LOCK verkoop vergrendeld  buy+10 LOCK verkoop vergrendeld  buy+100 LOCK verkoop vergrendeld  now LOCK verkoop vergrendeld   <- LOCKED
+  L 87559273 launcher 0xa4d12937 pool 0xce547a16 token 0x953339aa: own buy +40 0.1000 ETH; swaps before it []; after it: 0 buys, 0 sells, 0 outside sellers
+      L+1 LOCK vente bloquée  buy-1 LOCK vente bloquée  buy LOCK vente bloquée  buy+1 LOCK vente bloquée  buy+3 LOCK vente bloquée  buy+10 LOCK vente bloquée  buy+100 LOCK vente bloquée  now ok   <- LOCKED
+  L 87586263 launcher 0x9cd54073 pool 0x0542b80c token 0xd4fcc1e1: own buy +37 0.0500 ETH; swaps before it []; after it: 1 buys, 0 sells, 0 outside sellers
+      L+1 LOCK verkoop vergrendeld  buy-1 LOCK verkoop vergrendeld  buy LOCK verkoop vergrendeld  buy+1 LOCK verkoop vergrendeld  buy+3 LOCK verkoop vergrendeld  buy+10 LOCK verkoop vergrendeld  buy+100 LOCK verkoop vergrendeld  now LOCK verkoop vergrendeld   <- LOCKED
+  L 87587940 launcher 0x4ad646f0 pool 0x9784eab1 token 0x67f7744d: own buy +36 0.0500 ETH; swaps before it []; after it: 3 buys, 0 sells, 0 outside sellers
+      L+1 LOCK verkoop vergrendeld  buy-1 LOCK verkoop vergrendeld  buy LOCK verkoop vergrendeld  buy+1 LOCK verkoop vergrendeld  buy+3 LOCK verkoop vergrendeld  buy+10 LOCK verkoop vergrendeld  buy+100 LOCK verkoop vergrendeld  now LOCK verkoop vergrendeld   <- LOCKED
+  L 87641854 launcher 0xe311c081 pool 0x45e6c2e3 token 0x3de7392b: own buy none by +400; swaps before it []; after it: 0 buys, 0 sells, 0 outside sellers
+      L+1 ok  now ok
+  L 87647965 launcher 0x96329972 pool 0x7d5a7678 token 0x9a1c2271: own buy +31 0.0500 ETH; swaps before it []; after it: 2 buys, 0 sells, 0 outside sellers
+      L+1 LOCK verkoop vergrendeld  buy-1 LOCK verkoop vergrendeld  buy LOCK verkoop vergrendeld  buy+1 LOCK verkoop vergrendeld  buy+3 LOCK verkoop vergrendeld  buy+10 LOCK verkoop vergrendeld  buy+100 LOCK verkoop vergrendeld  now LOCK verkoop vergrendeld   <- LOCKED
+  L 87667929 launcher 0xfa6fdd42 pool 0x6bcbb435 token 0x3de7392b: own buy none by +400; swaps before it [(338, 0.0)]; after it: 0 buys, 0 sells, 0 outside sellers
+      L+1 ok  now ok
+  L 87667992 launcher 0xfa6fdd42 pool 0xc9a64f9e token 0x3de7392b: own buy none by +400; swaps before it []; after it: 0 buys, 0 sells, 0 outside sellers
+      L+1 ok  now ok
+  L 88005008 launcher 0x2e5acc6a pool 0x9b38198b token 0x6dd1420a: own buy +33 0.0500 ETH; swaps before it []; after it: 0 buys, 0 sells, 0 outside sellers
+      L+1 LOCK vente bloquée  buy-1 LOCK vente bloquée  buy LOCK vente bloquée  buy+1 LOCK vente bloquée  buy+3 LOCK vente bloquée  buy+10 LOCK vente bloquée  buy+100 LOCK vente bloquée  now ok   <- LOCKED
+  L 88006724 launcher 0xd1b25463 pool 0x83723d55 token 0x684c8b96: own buy +34 0.0500 ETH; swaps before it []; after it: 1 buys, 0 sells, 0 outside sellers
+      L+1 LOCK verkoop vergrendeld  buy-1 LOCK verkoop vergrendeld  buy LOCK verkoop vergrendeld  buy+1 LOCK verkoop vergrendeld  buy+3 LOCK verkoop vergrendeld  buy+10 LOCK verkoop vergrendeld  buy+100 LOCK verkoop vergrendeld  now LOCK verkoop vergrendeld   <- LOCKED
+  L 88106978 launcher 0x9bbdbf5b pool 0xa0e7e0c0 token 0x61a70feb: own buy +35 0.0500 ETH; swaps before it []; after it: 0 buys, 0 sells, 0 outside sellers
+      L+1 LOCK vente bloquée  buy-1 LOCK vente bloquée  buy LOCK vente bloquée  buy+1 LOCK vente bloquée  buy+3 LOCK vente bloquée  buy+10 LOCK vente bloquée  buy+100 LOCK vente bloquée  now LOCK vente bloquée   <- LOCKED
+  L 88181512 launcher 0xf48181ad pool 0xa564de29 token 0x138eaf33: own buy +28 0.0500 ETH; swaps before it []; after it: 3 buys, 0 sells, 0 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88184399 launcher 0x752f831f pool 0xee8d39c4 token 0x584c8bdc: own buy +29 0.0500 ETH; swaps before it []; after it: 3 buys, 1 sells, 1 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88186343 launcher 0x752f831f pool 0x3af0c830 token 0x93533ba7: own buy +32 0.0500 ETH; swaps before it []; after it: 1 buys, 0 sells, 0 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88188321 launcher 0xab8d0468 pool 0xa77f1499 token 0x1f25bdaf: own buy +36 0.0500 ETH; swaps before it []; after it: 3 buys, 1 sells, 1 outside sellers
+      L+1 LOCK verkoop vergrendeld  buy-1 LOCK verkoop vergrendeld  buy LOCK verkoop vergrendeld  buy+1 LOCK verkoop vergrendeld  buy+3 LOCK verkoop vergrendeld  buy+10 LOCK verkoop vergrendeld  buy+100 LOCK verkoop vergrendeld  now LOCK verkoop vergrendeld   <- LOCKED
+  L 88257811 launcher 0x7b2b9cdd pool 0x807ad5fe token 0x02b0237b: own buy +29 0.0500 ETH; swaps before it []; after it: 3 buys, 1 sells, 1 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88265393 launcher 0xe30fa99d pool 0x7f83774e token 0xf40aec01: own buy +26 0.0500 ETH; swaps before it []; after it: 3 buys, 0 sells, 0 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88265968 launcher 0xe30fa99d pool 0x3305829d token 0xe7e3a21c: own buy +24 0.0500 ETH; swaps before it []; after it: 1 buys, 0 sells, 0 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88266192 launcher 0xe30fa99d pool 0xe1a62018 token 0x848597ab: own buy +26 0.0500 ETH; swaps before it []; after it: 1 buys, 0 sells, 0 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88266443 launcher 0xe30fa99d pool 0x437db392 token 0x3f9ef8f1: own buy +26 0.0500 ETH; swaps before it []; after it: 2 buys, 0 sells, 0 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88266585 launcher 0xe30fa99d pool 0x2d10ed56 token 0x8bfc60db: own buy +26 0.0500 ETH; swaps before it []; after it: 3 buys, 0 sells, 0 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88266774 launcher 0xe30fa99d pool 0xecea3d9e token 0x60f499ad: own buy +24 0.0500 ETH; swaps before it []; after it: 1 buys, 0 sells, 0 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88267041 launcher 0xe30fa99d pool 0x26f7cfdd token 0x0d7626cf: own buy +22 0.0500 ETH; swaps before it []; after it: 1 buys, 0 sells, 0 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88267229 launcher 0xe30fa99d pool 0x0c613e96 token 0xa863a548: own buy +26 0.0500 ETH; swaps before it []; after it: 2 buys, 0 sells, 0 outside sellers
+      L+1 ok  buy-1 ok  buy ok  buy+1 ok  buy+3 ok  buy+10 ok  buy+100 ok  now ok
+  L 88268321 launcher 0x29887fd1 pool 0x54325d36 token 0x6d139f3d: own buy +29 0.0500 ETH; swaps before it []; after it: 3 buys, 0 sells, 0 outside sellers
+      L+1 LOCK verkoop vergrendeld  buy-1 LOCK verkoop vergrendeld  buy LOCK verkoop vergrendeld  buy+1 LOCK verkoop vergrendeld  buy+3 LOCK verkoop vergrendeld  buy+10 LOCK verkoop vergrendeld  buy+100 LOCK verkoop vergrendeld  now LOCK verkoop vergrendeld   <- LOCKED
+locked 11, never locked at the checked blocks 15

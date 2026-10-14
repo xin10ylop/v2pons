@@ -1,0 +1,9 @@
+the 2.433 operator's keys, 10-14 09:56 UTC (nonce sum / balance):
+  bsc   admin_0152 63/0.254  admin_5b2b 51/0.000  hub_6c3b 6/0.000  next_8b49 14/0.000  consol_31c8 36/0.000  buyers31 294767/0.000  bsc_launch52 677/0.000
+  eth   admin_0152 39/0.000  admin_5b2b 1/0.003  hub_6c3b 11/0.000  next_8b49 4/0.000  consol_31c8 28/0.002  buyers31 6220/0.000  bsc_launch52 4/0.000
+  base  admin_0152 49/0.003  admin_5b2b 1/0.001  hub_6c3b 0/0.000  next_8b49 0/0.000  consol_31c8 31/0.000  buyers31 20405/3.750  bsc_launch52 0/0.000
+  hyper admin_0152 76/0.000  admin_5b2b 0/0.000  hub_6c3b 0/0.000  next_8b49 0/0.000  consol_31c8 0/0.000  buyers31 0/0.000  bsc_launch52 0/0.000
+  rh    admin_0152 228/0.000  admin_5b2b 0/0.000  hub_6c3b 10/0.001  next_8b49 8/0.000  consol_31c8 1/0.003  buyers31 1223687/0.000  bsc_launch52 416/0.000
+SINCE 10-14 09:09 UTC:
+  MOVED base buyers31: nonce 20335 -> 20405, balance 0.0006 -> 3.7500
+xchain exit 0

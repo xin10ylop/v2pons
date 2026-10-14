@@ -1,0 +1,9 @@
+head 88276196: 312 Initialize logs in 3 h; shapes without the ETH value, >= 8 launches:
+      to  clen      fee   ts quote  hook        n wallets values  value min/med/max        prices
+e8a04fa7  1444    10000  200 ETH    -          51      51      2  3.0000/3.0000/5.0000       2
+026d2789  4324  8388608    8 0bd7d3 44a9a544   18      16      1  0.0000/0.0000/0.0000       1
+178489c6   900        0  200 0bd7d3 ff6a2acc   17       1      1  0.0000/0.0000/0.0000       1
+43e40951   196      500    1 ETH    -          17      17      1  0.0000/0.0000/0.0000       4
+e8a04fa7  2276      100    1 ETH    -          11      11      1  0.0000/0.0000/0.0000       1
+f8dfa306   804    10000  200 ETH    -           8       1      1  0.0000/0.0000/0.0000       1
+snv exit 0

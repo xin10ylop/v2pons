@@ -1,0 +1,194 @@
+head 88277664 (s02); launches listed 26 (WETH side, 13ead562 to the NonfungiblePositionManager); window per pool to +5000
+non-WETH 13ead562 pool creations in the same 50 h (not this line): 1
+
+#87444932 10-13 10:34:28 (23.4 h ago) fee 100 wallet 0xd1be503dfacce51aaece4d04d6fe46604fcf7a44 nonce 2 WETH=token0 pool 0xeffdb28807f15b5fa98ec8c20dd3c6d67cc47270
+   mint +5 L 3.272e+22 ticks [-887272,204200] amount0 0 amount1 8.888e+26 by launch wallet via 0x73991a25:88316456
+   swap +23 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +183 B 0.06600 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   swap +252 B 0.03749 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0
+   swap +351 B 0.07726 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0
+   (57 more swaps after +400 to +5000)
+   no burn to +5000
+
+#87495089 10-13 12:00:32 (22.0 h ago) fee 100 wallet 0x6c649354e5f9852627227596a3838e99402abd84 nonce 2 WETH=token0 pool 0x49761691d4a1552e2aa0f2d618acc7e88a90f40b
+   mint +7 L 2.454e+22 ticks [-887272,204200] amount0 0 amount1 6.666e+26 by launch wallet via 0x73991a25:88316456
+   swap +35 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +126 B 0.04612 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   swap +324 B 0.00323 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0
+   swap +393 B 0.02437 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0
+   (41 more swaps after +400 to +5000)
+   no burn to +5000
+
+#87559273 10-13 13:48:21 (20.2 h ago) fee 100 wallet 0xa4d129378a24d71c1efdced13564e57c5fd8653d nonce 2 WETH=token0 pool 0xce547a16c34eacd0b40888a126bd23af7ff2eb6b
+   mint +12 L 1.841e+21 ticks [-887272,204200] amount0 0 amount1 5e+25 by launch wallet via 0x73991a25:88316456
+   swap +40 B 0.10000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.1 minOut 0
+   (133 more swaps after +400 to +5000)
+   no burn to +5000
+
+#87586263 10-13 14:33:32 (19.4 h ago) fee 100 wallet 0x9cd540738a7577e64e0309b8311b833a5d283c5b nonce 2 WETH=token0 pool 0x0542b80c892e5460a96339a41cdc4cc9101a1527
+   mint +9 L 2.454e+22 ticks [-887272,204200] amount0 0 amount1 6.666e+26 by launch wallet via 0x73991a25:88316456
+   swap +37 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +238 B 0.05149 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   (2 more swaps after +400 to +5000)
+   burn +732 L 2.454e+22 by launch wallet call ac9650d8  <- PULL
+
+#87587940 10-13 14:36:19 (19.4 h ago) fee 100 wallet 0x4ad646f04fa1770d772d7581e5e9be21712633ab nonce 2 WETH=token0 pool 0x9784eab17d496ffda2ae36ccadc5f86dd3619aac
+   mint +8 L 3.272e+22 ticks [-887272,204200] amount0 0 amount1 8.888e+26 by launch wallet via 0x73991a25:88316456
+   swap +36 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +162 B 0.04466 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   swap +228 B 0.01567 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0
+   swap +347 B 0.02118 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0
+   (51 more swaps after +400 to +5000)
+   no burn to +5000
+
+#87641854 10-13 16:06:43 (17.9 h ago) fee 10000 wallet 0xe311c0813dbc3a021f71d6f537122fdb830efd8b nonce 0 WETH=token0 pool 0x45e6c2e38cb10efb53893253ead50a6706edff74
+   mint +101 L 2.035e+17 ticks [136000,159200] amount0 0 amount1 4e+20 by launch wallet via 0x73991a25:88316456
+   (3 more swaps after +400 to +5000)
+   burn +4794 L 0 by launch wallet call fc6f7865 (fee poke)
+
+#87647965 10-13 16:16:58 (17.7 h ago) fee 100 wallet 0x96329972f7d496e7f507ca3d9f856231d7633ce5 nonce 2 WETH=token0 pool 0x7d5a767873e10cf3e10b777b18dc6ae7fa1177a2
+   mint +7 L 3.272e+22 ticks [-887272,204200] amount0 0 amount1 8.888e+26 by launch wallet via 0x73991a25:88316456
+   swap +31 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +312 B 0.07687 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   swap +380 B 0.06904 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0
+   (48 more swaps after +400 to +5000)
+   no burn to +5000
+
+#87667929 10-13 16:50:32 (17.1 h ago) fee 3000 wallet 0xfa6fdd423ce5ae0d5fcd68903ed7e214274440e1 nonce 105 WETH=token0 pool 0x6bcbb4359e3d9bc957edc58586e7a22a73a34611
+   mint +338 L 3.471e+15 ticks [130020,153060] amount0 0 amount1 5e+18 by 0xe311c0813dbc3a021f71d6f537122fdb830efd8b via 0xd384301c:192b74a0
+   swap +338 S 0.00000 ETH by 0xe311c0813dbc3a021f71d6f537122fdb830efd8b via 0xd384301c:192b74a0/228 value 0.0
+   no burn to +5000
+
+#87667992 10-13 16:50:38 (17.1 h ago) fee 100 wallet 0xfa6fdd423ce5ae0d5fcd68903ed7e214274440e1 nonce 106 WETH=token0 pool 0xc9a64f9ef04f3feced498c2e0d3239b17d467678
+   mint +106 L 3.93e+14 ticks [157173,165173] amount0 0 amount1 5e+17 by launch wallet via 0x73991a25:88316456
+   mint +958 L 3.469e+15 ticks [130050,153078] amount0 0 amount1 5e+18 by 0xe311c0813dbc3a021f71d6f537122fdb830efd8b via 0xd384301c:192b74a0
+   (1 more swaps after +400 to +5000)
+   no burn to +5000
+
+#88005008 10-14 02:19:39 (7.6 h ago) fee 100 wallet 0x2e5acc6ab2b254f4cf9cf3f0aa9f557e6b0c6d90 nonce 2 WETH=token0 pool 0x9b38198b0f8c0da312ba3e8af2948be7467c8acf
+   mint +8 L 3.682e+21 ticks [-887272,204200] amount0 0 amount1 1e+26 by launch wallet via 0x73991a25:88316456
+   swap +33 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   (83 more swaps after +400 to +5000)
+   no burn to +5000
+
+#88006724 10-14 02:22:35 (7.6 h ago) fee 100 wallet 0xd1b25463fb9f10f107f6b791b95d00390c2c549f nonce 2 WETH=token0 pool 0x83723d55851c75571c7a12fc8f5fd6fb3ddeec71
+   mint +8 L 1.227e+22 ticks [-887272,204200] amount0 0 amount1 3.333e+26 by launch wallet via 0x73991a25:88316456
+   swap +34 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +381 B 0.02452 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   (39 more swaps after +400 to +5000)
+   no burn to +5000
+
+#88106978 10-14 05:12:38 (4.8 h ago) fee 100 wallet 0x9bbdbf5b30e1c9089425d5ef06c93c5864463cb0 nonce 2 WETH=token0 pool 0xa0e7e0c0d32beb05ebd6977cd4ff725e0e828f99
+   mint +9 L 3.682e+20 ticks [-887272,204200] amount0 0 amount1 1e+25 by launch wallet via 0x73991a25:88316456
+   swap +35 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   (92 more swaps after +400 to +5000)
+   no burn to +5000
+
+#88181512 10-14 07:18:02 (2.7 h ago) fee 100 wallet 0xf48181adaed087b14a10155054ca45a27078294f nonce 9 WETH=token0 pool 0xa564de2940faa2a0137c8b3ebbe480e046bcd9e6
+   mint +7 L 3.681e+22 ticks [-887272,204200] amount0 0 amount1 9.997e+26 by launch wallet via 0x73991a25:88316456
+   swap +28 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +266 B 0.00914 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   swap +332 B 0.03301 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0
+   swap +399 B 0.07128 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0
+   (17 more swaps after +400 to +5000)
+   burn +1823 L 3.681e+22 by launch wallet call ac9650d8  <- PULL
+
+#88184399 10-14 07:22:51 (2.6 h ago) fee 100 wallet 0x752f831f728cb458bc923ab3309b2d057635fe4a nonce 2 WETH=token0 pool 0xee8d39c4b2646f880261aefe910a09c0db5139bb
+   mint +8 L 3.681e+22 ticks [-887272,204200] amount0 0 amount1 9.997e+26 by launch wallet via 0x73991a25:88316456
+   swap +29 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +120 B 0.05089 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   swap +188 B 0.06144 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0
+   swap +274 B 0.00164 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0
+   swap +374 S 0.01921 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0xcaf681a6:ac9650d8/548 value 0.0 minOut 15371226660475464
+   (9 more swaps after +400 to +5000)
+   burn +1009 L 3.681e+22 by launch wallet call ac9650d8  <- PULL
+
+#88186343 10-14 07:26:06 (2.5 h ago) fee 100 wallet 0x752f831f728cb458bc923ab3309b2d057635fe4a nonce 9 WETH=token0 pool 0x3af0c8300d84edb5071b6be13886c5ae11b83540
+   mint +10 L 3.681e+22 ticks [-887272,204200] amount0 0 amount1 9.997e+26 by launch wallet via 0x73991a25:88316456
+   swap +32 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +333 B 0.03924 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   (6 more swaps after +400 to +5000)
+   burn +797 L 3.681e+22 by launch wallet call ac9650d8  <- PULL
+
+#88188321 10-14 07:29:25 (2.5 h ago) fee 100 wallet 0xab8d0468703fc1822a4ebf3df3ec4fe13719acd1 nonce 2 WETH=token0 pool 0xa77f14998edcb571cf01c594487a42588f68d85f
+   mint +8 L 3.681e+22 ticks [-887272,204200] amount0 0 amount1 9.997e+26 by launch wallet via 0x73991a25:88316456
+   swap +36 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +117 B 0.03322 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   swap +188 B 0.07605 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0
+   swap +251 B 0.03845 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0
+   swap +357 S 0.03831 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0xcaf681a6:ac9650d8/548 value 0.0 minOut 30650356917971200
+   (53 more swaps after +400 to +5000)
+   no burn to +5000
+
+#88257811 10-14 09:25:47 (0.5 h ago) fee 100 wallet 0x7b2b9cdd5413d5d4a3bea2ce89c7a8ec7521b202 nonce 2 WETH=token1 pool 0x807ad5fe42a6635188cb3d68a19bb0446973dfee
+   mint +8 L 3.681e+22 ticks [-204200,887272] amount0 9.997e+26 amount1 0 by launch wallet via 0x73991a25:88316456
+   swap +29 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +168 B 0.00879 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   swap +244 B 0.01141 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0
+   swap +326 B 0.01984 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0
+   swap +399 S 0.00481 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0xcaf681a6:ac9650d8/548 value 0.0 minOut 3850834465976827
+   (62 more swaps after +400 to +5000)
+   no burn to +5000
+
+#88265393 10-14 09:38:29 (0.3 h ago) fee 100 wallet 0xe30fa99d32e3781817eb31704cce7a34a0dcbde4 nonce 2 WETH=token0 pool 0x7f83774ec731fc12f5b1180b8ccce3ff39414045
+   mint +6 L 2.863e+22 ticks [-887272,204200] amount0 0 amount1 7.777e+26 by launch wallet via 0x73991a25:88316456
+   swap +26 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +30 B 0.00040 ETH by 0xe8b494318ff1f91edfba1b9f7bcd3716922d4ad9 via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 134411753975580817045451
+   swap +193 B 0.06442 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   swap +277 B 0.03589 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0
+   burn +344 L 2.863e+22 by launch wallet call ac9650d8  <- PULL
+
+#88265968 10-14 09:39:27 (0.3 h ago) fee 100 wallet 0xe30fa99d32e3781817eb31704cce7a34a0dcbde4 nonce 9 WETH=token0 pool 0x3305829d3db9b14eb869a9def3375821da43e7fc
+   mint +6 L 2.863e+22 ticks [-887272,204200] amount0 0 amount1 7.777e+26 by launch wallet via 0x73991a25:88316456
+   swap +24 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +28 B 0.00040 ETH by 0xe8b494318ff1f91edfba1b9f7bcd3716922d4ad9 via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 134411753975580817045451
+   burn +162 L 2.863e+22 by launch wallet call ac9650d8  <- PULL
+
+#88266192 10-14 09:39:50 (0.3 h ago) fee 100 wallet 0xe30fa99d32e3781817eb31704cce7a34a0dcbde4 nonce 16 WETH=token0 pool 0xe1a62018709796de0899f6b11fe3771aec1bff10
+   mint +7 L 2.863e+22 ticks [-887272,204200] amount0 0 amount1 7.777e+26 by launch wallet via 0x73991a25:88316456
+   swap +26 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +30 B 0.00040 ETH by 0xe8b494318ff1f91edfba1b9f7bcd3716922d4ad9 via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 134411753975580817045451
+   burn +133 L 2.863e+22 by launch wallet call ac9650d8  <- PULL
+
+#88266443 10-14 09:40:14 (0.3 h ago) fee 100 wallet 0xe30fa99d32e3781817eb31704cce7a34a0dcbde4 nonce 23 WETH=token0 pool 0x437db3921aed11270d3b68b57f109c548d6c81e6
+   mint +6 L 2.863e+22 ticks [-887272,204200] amount0 0 amount1 7.777e+26 by launch wallet via 0x73991a25:88316456
+   swap +26 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +31 B 0.00040 ETH by 0xe8b494318ff1f91edfba1b9f7bcd3716922d4ad9 via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 134411753975580817045451
+   swap +44 B 0.00099 ETH by 0xae59c85a670077fdb7f1f060d9ed2f847fd8d945 via 0x65050a9b:4d819a2a/580 value 0.001
+   burn +97 L 2.863e+22 by launch wallet call ac9650d8  <- PULL
+
+#88266585 10-14 09:40:28 (0.3 h ago) fee 100 wallet 0xe30fa99d32e3781817eb31704cce7a34a0dcbde4 nonce 30 WETH=token0 pool 0x2d10ed5623af709b78d659cad687349fa8904be0
+   mint +6 L 2.863e+22 ticks [-887272,204200] amount0 0 amount1 7.777e+26 by launch wallet via 0x73991a25:88316456
+   swap +26 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +30 B 0.00040 ETH by 0xe8b494318ff1f91edfba1b9f7bcd3716922d4ad9 via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 134411753975580817045451
+   swap +74 B 0.01000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0
+   swap +108 B 0.01000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0
+   burn +150 L 2.863e+22 by launch wallet call ac9650d8  <- PULL
+
+#88266774 10-14 09:40:47 (0.3 h ago) fee 100 wallet 0xe30fa99d32e3781817eb31704cce7a34a0dcbde4 nonce 39 WETH=token0 pool 0xecea3d9e97ac49165a4a11dd386a3a0f790ef1c7
+   mint +7 L 2.863e+22 ticks [-887272,204200] amount0 0 amount1 7.777e+26 by launch wallet via 0x73991a25:88316456
+   swap +24 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +28 B 0.00040 ETH by 0xe8b494318ff1f91edfba1b9f7bcd3716922d4ad9 via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 134411753975580817045451
+   burn +75 L 2.863e+22 by launch wallet call ac9650d8  <- PULL
+
+#88267041 10-14 09:41:14 (0.3 h ago) fee 100 wallet 0xe30fa99d32e3781817eb31704cce7a34a0dcbde4 nonce 46 WETH=token0 pool 0x26f7cfdd754c87c55727d39a085d81797bc8d4e5
+   mint +6 L 2.863e+22 ticks [-887272,204200] amount0 0 amount1 7.777e+26 by launch wallet via 0x73991a25:88316456
+   swap +22 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +26 B 0.00040 ETH by 0xe8b494318ff1f91edfba1b9f7bcd3716922d4ad9 via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 134411753975580817045451
+   burn +106 L 2.863e+22 by launch wallet call ac9650d8  <- PULL
+
+#88267229 10-14 09:41:33 (0.3 h ago) fee 100 wallet 0xe30fa99d32e3781817eb31704cce7a34a0dcbde4 nonce 53 WETH=token0 pool 0x0c613e96fa58aef4558ae5bf376400d746195c44
+   mint +7 L 2.863e+22 ticks [-887272,204200] amount0 0 amount1 7.777e+26 by launch wallet via 0x73991a25:88316456
+   swap +26 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +31 B 0.00040 ETH by 0xe8b494318ff1f91edfba1b9f7bcd3716922d4ad9 via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 134411753975580817045451
+   swap +82 B 0.01000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0
+   burn +114 L 2.863e+22 by launch wallet call ac9650d8  <- PULL
+
+#88268321 10-14 09:43:23 (0.2 h ago) fee 100 wallet 0x29887fd14e7bdf6f80f870d3c5c0194ebb882fb9 nonce 2 WETH=token0 pool 0x54325d368fd6ea0ee9830955d78afe94ee1a58c0
+   mint +6 L 2.454e+22 ticks [-887272,204200] amount0 0 amount1 6.666e+26 by launch wallet via 0x73991a25:88316456
+   swap +29 B 0.05000 ETH by LAUNCHER via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0
+   swap +160 B 0.06990 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0
+   swap +234 B 0.03333 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0
+   swap +309 B 0.07173 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0
+   (61 more swaps after +400 to +5000)
+   no burn to +5000
