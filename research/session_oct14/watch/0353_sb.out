@@ -1,0 +1,4 @@
+head 88060139: 2 launches of the 13ead562 self-buyer in the last 6 h (of 25 V3 pools created)
+  88005008 launcher 0x2e5acc6a: first buy +33 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88006724 launcher 0xd1b25463: first buy +34 0.0500 ETH via 0xcaf681a6, by the launcher: True
+the launcher's own first buy: n 2, median 0.0500 ETH, at 0.045 or more: 2

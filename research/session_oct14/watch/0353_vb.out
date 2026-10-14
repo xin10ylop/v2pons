@@ -1,0 +1,25 @@
+head 88060139 03:53:31 UTC, last 120 min: 19 3.0 launches
+
+=== 3.0: 19 pools with at least 120 blocks of history
+   launch  botT  botETH nbot  bot2 botSell decoyETH     decoy@  pull  strangers before the bot
+ 87990821    37  0.1485    7    65    None        0         []  None  [(3, 2e-05, '0x7ae81404'), (3, 0.0, '0xe71a69f4')]
+ 87992302    32   0.175    7    53    None        0         []  None  [(3, 2e-05, '0x7ae81404'), (3, 0.0, '0xe71a69f4')]
+ 87998246    25 0.07425    9    47    None        0         []  None  [(3, 0.0, '0xe71a69f4'), (4, 2e-05, '0x7ae81404')]
+ 88004008    36 0.12375    7    65    None        0         []  None  [(3, 0.0, '0xe71a69f4'), (3, 2e-05, '0x7ae81404')]
+ 88009935    42 0.12375    8    62    None        0         []  None  [(3, 0.0, '0xe71a69f4')]
+ 88015721    20     0.1    8    38    None        0         []  None  [(3, 0.0, '0xe71a69f4')]
+ 88021544    29 0.10874    7    55    None        0         []  None  [(3, 0.0, '0xe71a69f4')]
+ 88027511    27 0.15339    7    49    None        0         []  None  [(3, 0.0, '0xe71a69f4')]
+ 88030289    23 0.07425    7    52    None        0         []  None  [(3, 0.0, '0xe71a69f4')]
+ 88033327    25   0.075    7    53    None        0         []  None  [(3, 2e-05, '0x7ae81404'), (3, 0.0, '0xe71a69f4')]
+ 88035351    26     0.1    8    47    None        0         []  None  [(3, 2e-05, '0x7ae81404'), (3, 0.0, '0xe71a69f4')]
+ 88037264    47    0.05    7    68    None        0         []  None  [(3, 2e-05, '0x7ae81404'), (4, 0.0, '0xe71a69f4')]
+ 88037820    25 0.11914    8    49    None        0         []  None  [(3, 2e-05, '0x7ae81404'), (3, 0.0, '0xe71a69f4')]
+ 88039215    38    0.15    7    57    None        0         []  None  [(3, 2e-05, '0x7ae81404'), (3, 0.0, '0xe71a69f4')]
+ 88040627    54  0.1485    7    74    None        0         []  None  [(3, 2e-05, '0x7ae81404'), (3, 0.0, '0xe71a69f4')]
+ 88045084    26  0.0495    7    54    None        0         []  None  [(3, 0.0, '0xe71a69f4')]
+ 88051057    25 0.16583    8    46    None        0         []  None  [(3, 2e-05, '0x7ae81404'), (3, 0.0, '0xe71a69f4')]
+ 88056712  None    None    0  None    None        0         []    29  [(3, 0.0, '0xe71a69f4'), (3, 2e-05, '0x7ae81404')]
+ 88057067    35 0.07425    8    62    None        0         []  None  [(3, 0.0, '0xe71a69f4'), (3, 2e-05, '0x7ae81404')]
+  bot first buy offset p10/50/90: 23/29/47; no bot buy: 1; decoy ETH ahead p50/p90/max: 0/0/0; pools with a stranger ahead: 19; pulled within span: 1 (offsets [29])
+  the bot's second buy, blocks after its first (p50): 22 (n 18); its first sell after its first buy (p50): None (n 0)

@@ -1,0 +1,109 @@
+census lc:0a493d1a|13ead562 fee 100 WETH launches: 477, 2026-10-04 14:16:40 .. 2026-10-11 06:45:45 (census window Oct 4 13:52 - Oct 11 13:52)
+cases (an outside buy ahead of the own first buy, list order; or by +200 without an own buy): 9
+
+  83800036 10-09 02:17 wallet 0x03f42c2a launch 1/4 mint +6 pool 0x94fd423ea53d08019ed3a14749d3613a12ecc65c
+     ahead: [(13, 0.00019, '0x8abb9ba6', '04e45aaf', 228)]
+     own first buy +22 0.0500; first pull 161; swaps12 [(13, 'B', 0.00019, '0x8abb9ba6'), (22, 'B', 0.05, '0x03f42c2a'), (94, 'B', 0.01, '0x03f42c2a'), (128, 'B', 0.01, '0x03f42c2a'), (131, 'B', 4e-05, '0xfac67b20')]
+     >> launch 1: 83800036 10-09 02:17 mint +6 own +22 0.0500 ahead 1 pull 161
+        launch 2: 83800321 10-09 02:17 mint +6 own +23 0.0500 ahead 0 pull 135
+        launch 3: 83800507 10-09 02:18 mint +6 own +25 0.0500 ahead 0 pull 262
+        launch 4: 83801098 10-09 02:19 mint +6 own +22 0.0500 ahead 0 pull 121
+
+  83862751 10-09 04:04 wallet 0x1dcb6ee3 launch 5/10 mint +6 pool 0x0bf73c01fc807964eeb0989648cbda83b5430b66
+     ahead: [(25, 0.00019, '0x8abb9ba6', '04e45aaf', 228)]
+     own first buy +26 0.0500; first pull 69; swaps12 [(25, 'B', 0.00019, '0x8abb9ba6'), (26, 'B', 0.05, '0x1dcb6ee3'), (29, 'B', 0.00047, '0x1a45411c')]
+        launch 3: 83862305 10-09 04:03 mint +8 own +24 0.0500 ahead 0 pull 77
+        launch 4: 83862492 10-09 04:04 mint +6 own +29 0.0500 ahead 0 pull 80
+     >> launch 5: 83862751 10-09 04:04 mint +6 own +26 0.0500 ahead 1 pull 69
+        launch 6: 83862858 10-09 04:04 mint +6 own +24 0.0500 ahead 0 pull 68
+        launch 7: 83862965 10-09 04:05 mint +6 own +23 0.0500 ahead 0 pull 64
+        launch 8: 83863068 10-09 04:05 mint +7 own +26 0.0500 ahead 0 pull 93
+
+  83863276 10-09 04:05 wallet 0x1dcb6ee3 launch 9/10 mint +6 pool 0x0d12999e21a1c7038c4a34a710a8cee5dca484a8
+     ahead: [(21, 0.00019, '0x8abb9ba6', '04e45aaf', 228)]
+     own first buy +23 0.0500; first pull 72; swaps12 [(21, 'B', 0.00019, '0x8abb9ba6'), (23, 'B', 0.05, '0x1dcb6ee3'), (26, 'B', 0.00047, '0x1a45411c')]
+        launch 7: 83862965 10-09 04:05 mint +6 own +23 0.0500 ahead 0 pull 64
+        launch 8: 83863068 10-09 04:05 mint +7 own +26 0.0500 ahead 0 pull 93
+     >> launch 9: 83863276 10-09 04:05 mint +6 own +23 0.0500 ahead 1 pull 72
+        launch 10: 83863389 10-09 04:05 mint +6 own +23 0.0500 ahead 0 pull 127
+
+  83995142 10-09 07:53 wallet 0xab927818 launch 10/10 mint +6 pool 0xf66bd403efff477cc0f31f087d1f594ed8fb9066
+     ahead: [(20, 0.0002, '0x8abb9ba6', '04e45aaf', 228)]
+     own first buy +22 0.0500; first pull 165; swaps12 [(20, 'B', 0.0002, '0x8abb9ba6'), (22, 'B', 0.05, '0xab927818'), (94, 'B', 0.01, '0xab927818'), (125, 'B', 0.01, '0xab927818'), (130, 'B', 4e-05, '0xfac67b20')]
+        launch 8: 83994565 10-09 07:52 mint +6 own +25 0.0500 ahead 0 pull 113
+        launch 9: 83994722 10-09 07:52 mint +6 own +23 0.0500 ahead 0 pull 175
+     >> launch 10: 83995142 10-09 07:53 mint +6 own +22 0.0500 ahead 1 pull 165
+
+  84096270 10-09 10:45 wallet 0x27041c7a launch 3/9 mint +7 pool 0x459a749b3f235c4f5182d2f91aca7bfcf3b2f28b
+     ahead: [(8, 0.00201, '0x81586f00', '04e45aaf', 228), (15, 0.0002, '0x8abb9ba6', '04e45aaf', 228)]
+     own first buy +28 0.0500; first pull 261; swaps12 [(8, 'B', 0.00201, '0x81586f00'), (15, 'B', 0.0002, '0x8abb9ba6'), (28, 'B', 0.05, '0x27041c7a'), (29, 'S', 0.00296, '0x81586f00'), (65, 'B', 4e-05, '0xfac67b20'), (181, 'B', 0.01, '0x27041c7a'), (223, 'B', 0.01, '0x27041c7a')]
+        launch 1: 84063731 10-09 09:50 mint +6 own +21 0.0500 ahead 0 pull 157
+        launch 2: 84064672 10-09 09:51 mint +7 own +23 0.0500 ahead 0 pull 135
+     >> launch 3: 84096270 10-09 10:45 mint +7 own +28 0.0500 ahead 2 pull 261
+        launch 4: 84096663 10-09 10:46 mint +6 own +27 0.0500 ahead 2 pull 304
+        launch 5: 84098016 10-09 10:48 mint +24 own NONE ahead 2 pull 120
+        launch 6: 84098214 10-09 10:49 mint +6 own NONE ahead 2 pull 97
+
+  84096663 10-09 10:46 wallet 0x27041c7a launch 4/9 mint +6 pool 0x28e466d4e57f1ca61e12889972d3bd782d01b1df
+     ahead: [(7, 0.00201, '0x81586f00', '04e45aaf', 228), (16, 0.0002, '0x8abb9ba6', '04e45aaf', 228)]
+     own first buy +27 0.0500; first pull 304; swaps12 [(7, 'B', 0.00201, '0x81586f00'), (16, 'B', 0.0002, '0x8abb9ba6'), (27, 'B', 0.05, '0x27041c7a'), (28, 'S', 0.00296, '0x81586f00'), (67, 'B', 4e-05, '0xfac67b20'), (138, 'B', 0.01, '0x27041c7a'), (242, 'B', 0.01, '0x27041c7a'), (274, 'B', 0.01, '0x27041c7a')]
+        launch 2: 84064672 10-09 09:51 mint +7 own +23 0.0500 ahead 0 pull 135
+        launch 3: 84096270 10-09 10:45 mint +7 own +28 0.0500 ahead 2 pull 261
+     >> launch 4: 84096663 10-09 10:46 mint +6 own +27 0.0500 ahead 2 pull 304
+        launch 5: 84098016 10-09 10:48 mint +24 own NONE ahead 2 pull 120
+        launch 6: 84098214 10-09 10:49 mint +6 own NONE ahead 2 pull 97
+        launch 7: 84098391 10-09 10:49 mint +7 own NONE ahead 2 pull 41
+
+  84098016 10-09 10:48 wallet 0x27041c7a launch 5/9 mint +24 pool 0x87898629ed2bef1e27e98a5b4b1ab06ab00e0325
+     ahead: [(25, 0.00201, '0x81586f00', '04e45aaf', 228), (37, 0.0002, '0x8abb9ba6', '04e45aaf', 228)]
+     own first buy NONE; first pull 120; swaps12 [(25, 'B', 0.00201, '0x81586f00'), (37, 'B', 0.0002, '0x8abb9ba6'), (75, 'S', 0.00201, '0x81586f00')]
+        launch 3: 84096270 10-09 10:45 mint +7 own +28 0.0500 ahead 2 pull 261
+        launch 4: 84096663 10-09 10:46 mint +6 own +27 0.0500 ahead 2 pull 304
+     >> launch 5: 84098016 10-09 10:48 mint +24 own NONE ahead 2 pull 120
+        launch 6: 84098214 10-09 10:49 mint +6 own NONE ahead 2 pull 97
+        launch 7: 84098391 10-09 10:49 mint +7 own NONE ahead 2 pull 41
+        launch 8: 84098488 10-09 10:49 mint +7 own NONE ahead 0 pull 22
+
+  84098214 10-09 10:49 wallet 0x27041c7a launch 6/9 mint +6 pool 0xe4ca5b73dd543ee1d89b8db6970e1c137aa37eaa
+     ahead: [(7, 0.00201, '0x81586f00', '04e45aaf', 228), (16, 0.0002, '0x8abb9ba6', '04e45aaf', 228)]
+     own first buy NONE; first pull 97; swaps12 [(7, 'B', 0.00201, '0x81586f00'), (16, 'B', 0.0002, '0x8abb9ba6'), (58, 'S', 0.00201, '0x81586f00')]
+        launch 4: 84096663 10-09 10:46 mint +6 own +27 0.0500 ahead 2 pull 304
+        launch 5: 84098016 10-09 10:48 mint +24 own NONE ahead 2 pull 120
+     >> launch 6: 84098214 10-09 10:49 mint +6 own NONE ahead 2 pull 97
+        launch 7: 84098391 10-09 10:49 mint +7 own NONE ahead 2 pull 41
+        launch 8: 84098488 10-09 10:49 mint +7 own NONE ahead 0 pull 22
+        launch 9: 84098668 10-09 10:49 mint +7 own +105 0.0100 ahead 0 pull 259
+
+  84098391 10-09 10:49 wallet 0x27041c7a launch 7/9 mint +7 pool 0x46166c5b7c045b1ddccda149d37158ba11b0e07d
+     ahead: [(8, 0.00201, '0x81586f00', '04e45aaf', 228), (21, 0.0002, '0x8abb9ba6', '04e45aaf', 228)]
+     own first buy NONE; first pull 41; swaps12 [(8, 'B', 0.00201, '0x81586f00'), (21, 'B', 0.0002, '0x8abb9ba6')]
+        launch 5: 84098016 10-09 10:48 mint +24 own NONE ahead 2 pull 120
+        launch 6: 84098214 10-09 10:49 mint +6 own NONE ahead 2 pull 97
+     >> launch 7: 84098391 10-09 10:49 mint +7 own NONE ahead 2 pull 41
+        launch 8: 84098488 10-09 10:49 mint +7 own NONE ahead 0 pull 22
+        launch 9: 84098668 10-09 10:49 mint +7 own +105 0.0100 ahead 0 pull 259
+
+=== the line by 6-hour slice: launches, own first buy sizes, cases, pulls by +200
+  10-04 12:00 n  40 wallets 10 own1 [(0.05, 29), (0.1, 11)] cases 0 pulled<=+200 22
+  10-05 00:00 n   2 wallets  2 own1 [(0.05, 2)] cases 0 pulled<=+200 0
+  10-05 06:00 n  67 wallets 13 own1 [(0.05, 67)] cases 0 pulled<=+200 42
+  10-05 12:00 n   3 wallets  3 own1 [(0.05, 3)] cases 0 pulled<=+200 0
+  10-05 18:00 n   1 wallets  1 own1 [(0.05, 1)] cases 0 pulled<=+200 0
+  10-06 06:00 n   4 wallets  3 own1 [(0.05, 4)] cases 0 pulled<=+200 0
+  10-06 12:00 n   3 wallets  3 own1 [(0.05, 3)] cases 0 pulled<=+200 0
+  10-07 00:00 n  14 wallets  7 own1 [(0.05, 14)] cases 0 pulled<=+200 8
+  10-07 06:00 n  14 wallets  6 own1 [(0.05, 14)] cases 0 pulled<=+200 8
+  10-07 12:00 n   3 wallets  3 own1 [(0.05, 3)] cases 0 pulled<=+200 0
+  10-08 00:00 n  19 wallets  5 own1 [(0.05, 19)] cases 0 pulled<=+200 16
+  10-08 12:00 n 150 wallets 22 own1 [(0.05, 150)] cases 0 pulled<=+200 113
+  10-08 18:00 n   4 wallets  3 own1 [(0.05, 4)] cases 0 pulled<=+200 3
+  10-09 00:00 n  45 wallets  8 own1 [(0.05, 45)] cases 3 pulled<=+200 41
+  10-09 06:00 n  38 wallets  8 own1 [(0.05, 30), (None, 4), (0.01, 4)] cases 6 pulled<=+200 21
+  10-09 12:00 n   5 wallets  4 own1 [(0.05, 3), (0.005, 1), (0.01, 1)] cases 0 pulled<=+200 0
+  10-10 00:00 n   1 wallets  1 own1 [(0.05, 1)] cases 0 pulled<=+200 0
+  10-10 06:00 n   3 wallets  2 own1 [(0.05, 2), (0.01, 1)] cases 0 pulled<=+200 0
+  10-10 12:00 n   7 wallets  4 own1 [(0.05, 4), (0.01, 2), (None, 1)] cases 0 pulled<=+200 1
+  10-11 00:00 n  51 wallets  5 own1 [(0.001, 46), (0.05, 3), (0.0001, 2)] cases 0 pulled<=+200 43
+  10-11 06:00 n   3 wallets  2 own1 [(0.05, 3)] cases 0 pulled<=+200 0
+
+b06_census_pools.json: 33 pools of 4 case wallets

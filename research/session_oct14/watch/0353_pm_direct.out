@@ -1,0 +1,37 @@
+head 88065056: 34 direct PoolManager.initialize launches in 180 min (of 509)
+  87960954 launcher 0x2cd5e547 fee 3000 ts 60: liquidity events 4, swaps to +600 0, ETH in 0.0000 
+  87961018 launcher 0x2cd5e547 fee 3000 ts 60: liquidity events 1, swaps to +600 6, ETH in 0.8130 first swap +70
+  87965839 launcher 0x84b17335 fee 500 ts 1: liquidity events 2, swaps to +600 34, ETH in 1.4094 first swap +45
+  87967773 launcher 0xcc0ecbc2 fee 500 ts 1: liquidity events 2, swaps to +600 41, ETH in 1.0952 first swap +45
+  87977439 launcher 0xe35e9d34 fee 500 ts 1: liquidity events 2, swaps to +600 22, ETH in 0.6664 first swap +46
+  87979348 launcher 0x1aa8f61a fee 500 ts 1: liquidity events 2, swaps to +600 32, ETH in 0.6666 first swap +44
+  87981604 launcher 0x107e425c fee 500 ts 1: liquidity events 2, swaps to +600 35, ETH in 1.4440 first swap +44
+  87987707 launcher 0x3d0471d9 fee 500 ts 1: liquidity events 2, swaps to +600 42, ETH in 1.1343 first swap +45
+  87994970 launcher 0x73fcec18 fee 0 ts 200: liquidity events 2, swaps to +600 2, ETH in 0.0486 first swap +90
+  87997151 launcher 0x2acaa5f8 fee 500 ts 1: liquidity events 2, swaps to +600 23, ETH in 0.7270 first swap +44
+  87999537 launcher 0xee4526d7 fee 500 ts 1: liquidity events 2, swaps to +600 32, ETH in 0.6666 first swap +47
+  88001444 launcher 0x41625467 fee 500 ts 1: liquidity events 2, swaps to +600 36, ETH in 1.4595 first swap +43
+  88003314 launcher 0x9e3c31d6 fee 500 ts 1: liquidity events 2, swaps to +600 42, ETH in 1.1343 first swap +45
+  88005413 launcher 0x74a5b70d fee 500 ts 1: liquidity events 2, swaps to +600 24, ETH in 0.7372 first swap +45
+  88007636 launcher 0x37b06339 fee 500 ts 1: liquidity events 2, swaps to +600 34, ETH in 0.6980 first swap +43
+  88009533 launcher 0xfa63827d fee 500 ts 1: liquidity events 2, swaps to +600 36, ETH in 1.4901 first swap +44
+  88011301 launcher 0x2972bd4e fee 500 ts 1: liquidity events 2, swaps to +600 40, ETH in 1.0952 first swap +45
+  88012394 launcher 0xd74f5113 fee 10000 ts 200: liquidity events 2, swaps to +600 4, ETH in 0.0000 first swap +130
+  88020652 launcher 0x3d493d7f fee 500 ts 1: liquidity events 2, swaps to +600 23, ETH in 0.7270 first swap +44
+  88022489 launcher 0xcc18eb81 fee 500 ts 1: liquidity events 1, swaps to +600 632, ETH in 62.9645 first swap +111
+  88024075 launcher 0x5caf452a fee 300000 ts 200: liquidity events 0, swaps to +600 0, ETH in 0.0000 
+  88024144 launcher 0x3eca0b98 fee 500 ts 1: liquidity events 2, swaps to +600 31, ETH in 0.6417 first swap +47
+  88027196 launcher 0x7f1005db fee 500 ts 1: liquidity events 1, swaps to +600 654, ETH in 93.8379 first swap +117
+  88029742 launcher 0x28ead6d7 fee 500 ts 1: liquidity events 2, swaps to +600 36, ETH in 1.4440 first swap +44
+  88029870 launcher 0x5caf452a fee 250000 ts 200: liquidity events 2, swaps to +600 0, ETH in 0.0000 
+  88030395 launcher 0xe4a4a11e fee 8388608 ts 60: liquidity events 1, swaps to +600 0, ETH in 0.0000 
+  88036932 launcher 0xbb99e3cd fee 10000 ts 200: liquidity events 2, swaps to +600 5, ETH in 27.1271 first swap +192
+  88037646 launcher 0x5caf452a fee 400000 ts 200: liquidity events 2, swaps to +600 0, ETH in 0.0000 
+  88039199 launcher 0x7a17e183 fee 500 ts 1: liquidity events 2, swaps to +600 41, ETH in 1.1046 first swap +46
+  88042096 launcher 0xf30df3b8 fee 500 ts 1: liquidity events 2, swaps to +600 23, ETH in 0.7270 first swap +45
+  88050050 launcher 0x9af2a1a4 fee 500 ts 1: liquidity events 2, swaps to +600 34, ETH in 0.6980 first swap +44
+  88058161 launcher 0x27d3d242 fee 3000 ts 60: liquidity events 1, swaps to +600 0, ETH in 0.0000 
+  88058310 launcher 0x27d3d242 fee 3000 ts 60: liquidity events 1, swaps to +600 3, ETH in 0.4862 first swap +371
+  88061828 launcher 0x8bb74613 fee 500 ts 1: liquidity events 1, swaps to +600 34, ETH in 1.4440 first swap +45
+pools with liquidity added: 33; with a swap by +600: 28
+swap senders (from, to) seen in more than one swap: [(('0xe71a69f4', '0x88767899'), 21), (('0x57ee6646', '0x88767899'), 21), (('0xda67013c', '0xe394ba9f'), 12), (('0x48fdc7e8', '0x055de4ce'), 12), (('0x3f60c7e8', '0x055de4ce'), 11), (('0x84a768c7', '0xe394ba9f'), 10), (('0x8370637e', '0x055de4ce'), 10), (('0xbb97c0e5', '0x055de4ce'), 10)]
