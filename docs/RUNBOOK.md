@@ -908,6 +908,292 @@ transaction with no receipt reads each endpoint alone (a failed read of `BNB_RPC
 and a mined sell was sold again); a transaction held at `BNB_MAX_GWEI` is signed anew once more after a restart with it raised (step 5;
 before, nothing was ever sent again) (82 tests).
 
+## 4l. The Base line (Oct 14, HANDOFF 16.24)
+
+The 2.433 operator (the Robinhood front line of HANDOFF 3.2, about +14% a trade) moved to Base on Oct 14 (REPORT_BASE2433.md and its 11:30
+UTC update in `research/session_oct14/base2433/`): five launches 09:32-10:35 UTC, two 0.133 ETH tests and three real pools of 2.133 ETH,
+each with the same fixed sequence: the launch at L, the liquidity at L+3, the bot's first buy at L+8 (0.15-0.20 ETH, in all three real
+pools), more buys every block or two, the pull about 4 minutes later (+126, +128). Release base-0.1 is the front on Base, `src/base_engine.py`
+(its design, every setting and log line: `docs/BASE.md`): it arms on the launch, fires on the liquidity add (seen pending on the Flashblocks
+stream, so our buy lands at about L+4), buys through our own FlipRelay (`contracts/FlipRelay.sol`, unchanged; on Base its PoolKey carries
+the operator's hook), and sells into the bot's first buy (seen pending, aiming at the same block), or on the first paying buy behind ours, or
+at our buy + 6 blocks. The exit test passed: our relay's buy and sale go through these pools at every block from +3 to +29 at -1.00% (the
+two 0.5% fees; the hook takes nothing), and a sale at +8 after a buy at +4 returned +13.1% (09:42 pool) and +18.1% (10:30 pool). **No
+outsider has ever traded in these pools, so the operator's reaction to one is unknown**: the first live trade is that test (step 6).
+
+Its own service (`flip-base`), settings (`/etc/flip/base.env`), key (`/etc/flip/base.key`), log (`/var/log/flip/base.jsonl`), halt file
+(`/var/log/flip/HALTED.base`) and positions file (`/var/log/flip/base_positions.json`). flip-engine and flip-bnb (stopped for good, 4k) and
+their files are not touched. The unit is flip-bnb's hardened unit with Base's names (an empty read-only `/etc/flip` with only `base.env` and
+`base.key` bound in, no capability but reading files, no core dumps, Nice 10, half a core, 400 MB).
+
+**The rule for every step: run the lines one at a time, exactly as they are; compare with the expected output; if any fails or prints
+something else, stop and paste it.** `0xYOURADDRESS` below is the address step 3 prints; `0xRELAY` the one step 4 prints.
+
+### 1. The code (on the box)
+
+    cd ~/v2pons && OLD=$(git rev-parse HEAD) && git pull -q --ff-only && { git diff --quiet $OLD HEAD -- src/flip_engine.py || echo 'flip_engine.py CHANGED: deploy it per its own section first'; } && ls src/base_engine.py deploy/base_setup.sh deploy/flip-base.service deploy/base_wallet.py deploy/base_relay_deploy.py && /opt/flip-venv/bin/python3 tests/test_base_engine.py | grep -c '^ok'
+
+It prints the five paths and the number of tests, `NN` (HANDOFF 16.24 gives it). Fewer, or `flip_engine.py CHANGED`: stop and paste.
+
+### 2. Install and the dry run
+
+    cd ~/v2pons && sudo bash deploy/base_setup.sh
+
+It installs what the engine needs into `/opt/flip-venv` (websockets, brotli for the Flashblocks stream, eth-account, rlp, py-solc-x), writes
+`/etc/flip/base.env` from its template (every setting of `docs/BASE.md` section 5 with its default and a comment above it; mode 600; no
+key), the logrotate rule and the unit, and starts the engine as a dry run. The end of its output:
+
+    wrote /etc/flip/base.env (BASE_DRY_RUN=1)
+    flip-base: active; its last start line:
+    {'release': 'base-0.1', 'dry': True, 'head': 5259xxxx}
+
+(Run again later, e.g. after a `git pull`, it says `/etc/flip/base.env exists: not rewritten.`, lists any setting the file lacks, and
+restarts the service only while the file says `BASE_DRY_RUN=1`.) `failed` or `(no start line yet ...)`: `journalctl -u flip-base -n 20`,
+stop and paste. The isolation (names only, nothing secret):
+
+    P=$(systemctl show -p MainPID --value flip-base); sudo nsenter -t $P -m ls /etc/flip; sudo grep CapBnd /proc/$P/status; unset P
+
+`/etc/flip` as the engine sees it lists `base.env` alone (and `base.key` after step 3 and a restart), never `engine.env` or `bnb.key`;
+`CapBnd: 0000000000000004`. Two minutes later, the screen:
+
+    sleep 120 && sudo python3 ~/v2pons/deploy/base_results.py | head -6
+
+    ==============================================================================================================
+    BASE DRY RUN (nothing is signed or sent)   service RUNNING   release base-0.1   started 10-14 hh:mm UTC at block 5259xxxx
+    the line: fee 5000 / tick spacing 100, hook flags 0x80, launch c3e0ff3d (260 B), pools of 1.0 ETH and more; stake 0.002 ETH (cap 0.005), hold 6 blocks, take profit +1.0%, daily stop $10
+    feeds: head 5259xxxx, 0.1 s behind its timestamp; websocket up, flashblocks up; since the start: 0 launches, 0 armed, 0 trades; the last flow line 0 min ago
+    report: the last 24 h, to 10-14 hh:mm UTC
+
+The head advances about 30 blocks a minute (one flow line a minute; `sudo tail -2 /var/log/flip/base.jsonl` shows the raw `flow` lines).
+The words for the two feeds are the engine's own; the Flashblocks one may read down without harm (it is an accelerator: everything it
+does, the confirmed feed does a block later). `<== NOT READING`: stop and paste `journalctl -u flip-base -n 30`.
+
+A launch, in the log (`sudo grep -E '"ev": ?"(launch|add|would_fire|bot_buy|trade_done|skip|pull)"' /var/log/flip/base.jsonl | tail -8`):
+`launch` (block, pool, token ending `777`, hook ending `80` (flags 0x80), fee 5000, ts 100, selector `c3e0ff3d`, calldata_len 260, armed),
+`add` (eth 2.133329, pending then confirmed), `would_fire` (stake_wei 2000000000000000, via flash or logs), `bot_buy` (the bot's buy at
+about L+8, seen pending), `trade_done` (`"dry": true`, `exit`, `ret`), and later `pull` (about L+126). A 0.133 ETH test pool is skipped
+(`skip`: under `BASE_MIN_POOL_ETH`); a launch whose token or launcher is not the operator's is logged `launch` with `skip` and the reason.
+
+**How long dry: until the screen's `DRY GATE` line says `PASSED`**: at least 3 dry trades sold into the bot's buy (`exit` bot, or
+take_profit on the buy behind ours) with a mean of +10% or better:
+
+    sudo python3 ~/v2pons/deploy/base_results.py | grep -A1 'DRY GATE'
+
+What the design expects: our buy at about L+4, the bot's first buy at L+8 lifts the price, our sale behind it returns +13% to +18% less
+the two fees (included in those) and about $0.01 of gas: **+10% or better a trade**. An `exit: deadline` trade (about -1%) means the
+bot did not come within 6 blocks of our buy; an `exit: pulled` dry trade is a -100% that would have been: either one more than once in
+the first few, stop and paste the screen. The operator was idle from 10:35 UTC (still at 11:27): the dry run may have to wait hours for it
+to resume (on BNB it ran 52 pools in 3.7 hours, one every ~4 minutes). Steps 3-5 can be done meanwhile; step 6 waits for the gate.
+
+### 3. The wallet (once)
+
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_wallet.py
+
+    new Base wallet: 0xAbCd...
+    written: /etc/flip/base.key (mode 600, the key: never displayed) and BASE_WALLET=0xabcd... in /etc/flip/base.env
+    send about 0.012 ETH to it on Base (chain id 8453; an exchange's withdrawal on the network "Base"); RUNBOOK 4l has the rest
+
+It refuses to replace a key file that exists. The key is never printed, and nothing here needs it on a screen: the ETH comes back with
+`base_wallet.py withdraw` (step 9), signed on the box. A copy that prints nothing (it guards against a deleted file, not a lost box):
+
+    sudo install -m 600 /etc/flip/base.key /root/base.key.bak
+
+Never display the key file: a terminal's output ends up pasted into chats. This is not the flip engine's or the BNB line's wallet: send
+nothing from one to another.
+
+Fund it with **about 0.012 ETH ($30) on Base**: from an exchange, a withdrawal of ETH on the network **Base** (not Ethereum, not "Base
+Sepolia") to the address printed. It covers the two stakes of step 5 (0.004), the relay's margin, the step to 0.005 ETH later (step 8), the
+0.001 ETH the wallet keeps for gas, the deployment (about $0.02) and the gas of the trades (about $0.01 a round trip). Check it arrived:
+
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_ops.py status
+
+    flip-base: active, dry (BASE_DRY_RUN=1) in /etc/flip/base.env; reads via base-rpc.publicnode.com, mainnet.base.org
+    wallet 0xabcd...: 0.012000 ETH ($30.84), nonce 0   https://basescan.org/address/0xabcd...
+    relay: BASE_RELAY is not set (base_relay_deploy.py --write-env deploys it and writes the line)
+    open positions: 0
+    today (UTC): 0 live trade(s), $+0.00 against the daily stop of -$10; N dry trade(s), mean ...
+
+### 4. The relay (once)
+
+The checks and the cost first; nothing is sent:
+
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_relay_deploy.py --check
+
+    artifact: contracts/FlipRelay.json compiled from contracts/FlipRelay.sol (sha256 14616699fe7c1279…), solc 0.8.26, evm cancun: ok
+    the key file /etc/flip/base.key is BASE_WALLET 0xabcd...: ok
+    chain id 8453 (Base) at base-rpc.publicnode.com, mainnet.base.org: ok; sends go to mainnet-sequencer.base.org, mainnet.base.org
+    the runtime the chain must hold: 5,219 bytes (owner 0xabcd..., PoolManager 0x498581ff718922c3f8e6a244956af099b2652b2b filled in), keccak 0x…
+    wallet 0xabcd...: 0.012000 ETH ($30.84), nonce 0; the relay will be at 0x...
+    the deployment: 5,502 bytes of creation code, eth_estimateGas 1,186,470 (limit 1,542,411); base fee 0.0050 gwei, priority 0.0010, maxFeePerGas 0.0110; L1 data fee at most 0.000000032 ETH
+    cost: about 0.00000715 ETH ($0.0184) at today's base fee, at most 0.00001700 ETH ($0.0437)
+    (flip-base is active: the deployment itself refuses until sudo systemctl stop flip-base)
+    --check: nothing sent. The deployment is the same command with --write-env in place of --check.
+
+(The gas figures are what Base answered on Oct 14; the base fee moves.) Then the deployment, with the engine stopped (same wallet, same
+nonce); it asks `deploy the FlipRelay on Base from 0xabcd... now (at most 0.0000... ETH)? type yes:`, and you type `yes`:
+
+    sudo systemctl stop flip-base && sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_relay_deploy.py --write-env
+
+After the lines above (without the `(flip-base is active ...)` one):
+
+    sent: 0x...   https://basescan.org/tx/0x...   (taken by mainnet-sequencer.base.org, mainnet.base.org)
+    mined in block 5259xxxx: ok; gas 1,1xx,xxx = 0.0000071.. ETH + L1 fee 0.0000000.. ETH
+    deployed at 0xRELAY in block 5259xxxx   https://basescan.org/address/0xRELAY
+    code on the chain matches the artifact (owner and PoolManager filled in); owner() == wallet: ok; pm() == PoolManager: ok
+    simulated buy through the relay on ...: pool 0x... (...) at block ...: 0.0001 ETH -> ... tokens, v4math predicted ... (...relative: ok) via mainnet.base.org
+
+    BASE_RELAY=0xRELAY written to /etc/flip/base.env. Next: base_relay_sim.py, then base_ops.py deposit 0.004 (RUNBOOK 4l steps 4-5)
+
+The simulated buy names its pool: the operator's open pool when one is open, else (the operator pulls each about 4 minutes after its
+launch) `a live ETH-paired pool without a hook`, any recent pool with swaps, which only checks that the new relay buys through the
+PoolManager. `UNEXPECTED`, `DO NOT USE`, `WRONG`, `MISMATCH` or no receipt within two minutes: stop and paste (do not run it again:
+a second run deploys a second relay). Then the full round trip on the operator's latest pool (our relay's code placed by state override
+on Tenderly's copy of the chain at the block our buy would have landed; nothing is sent; the first run downloads solc 0.8.26, about 10 MB):
+
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_relay_sim.py
+
+    the operator's latest pool (fee 5000, tick spacing 100, hook flags 0x80, token code in BASE_TOKEN_CODEHASHES):
+    pool 0x909c1fdac64d…: token 0xcff4d5a446438b717ce88167712b8ede39361777, fee 0.5%, tick spacing 100, hook 0x48b8...4080 (flags 0x80); launched block 52592379; liquidity added +3, pulled +128
+    the pool was pulled at block 52592507 (+128): simulated at block 52592384 (+5), after the add and before the pull, where our buy would land (Tenderly's state of that block; --block N for another)
+    the add's transaction carried 2.133329 ETH (BASE_MIN_POOL_ETH 1.0: traded)
+    the pool at block 52592384: sqrtPriceX96 1713625778466099769665432700006961, tick 199645, active liquidity 46141758126452008872417 (0 swap(s) before)
+    eth_call in 126 ms via base.gateway.tenderly.co
+    buy  0.002000 ETH -> 9.30081e+23 tokens (v4math predicted 9.30081e+23: 9568 raw unit(s) off, +1.0e-20 relative: ok); the relay holds 9.30081e+23
+    sell all -> 0.001980 ETH back (-1.00% round trip at the pool's fee 0.5% each way); relay ETH after 0.003980, tokens left 0: accounting ok
+    a buy with minOut one above the real output is refused: TooLittleOut ok
+
+(A newer pool by then: other numbers, the same `ok`, `-1.00%` and `TooLittleOut ok`; an open pool is simulated at the head. `REVERTED`
+or a round trip worse than -1.1%: stop and paste. `base_relay_sim.py <poolId> [eth] [--block N]` simulates any pool at any block.)
+
+### 5. The stake
+
+Two stakes of 0.002 ETH ($5 each) into the relay, with the engine still stopped:
+
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_ops.py deposit 0.004
+
+    deposit 0.004 ETH ($10.28) from the wallet into the relay 0xRELAY: nonce 1, gas limit 32,586 at most 0.0110 gwei (base 0.0050 + priority 0.0010), L1 fee at most 0.000000001 ETH: at most 0.00000036 ETH of fees; the wallet holds 0.011993 ETH
+    sent: 0x...   https://basescan.org/tx/0x...   (taken by mainnet-sequencer.base.org, mainnet.base.org)
+    mined in block 5259xxxx: ok; gas 21,2xx = 0.00000012. ETH + L1 fee 0.000000030 ETH
+    now: wallet 0.007993 ETH, relay 0.004000 ETH
+
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_ops.py status
+
+Its relay line: `relay  0xRELAY: 0.004000 ETH ($10.28) = 2.0 stakes of 0.002 ETH; code FlipRelay for this wallet, owner() == wallet,
+pm() == PoolManager`. Then, unless step 6 follows now, the dry run again: `sudo systemctl start flip-base`.
+
+### 6. Live
+
+Only after the dry gate passed (step 2), with steps 3-5 done and `open position: none` on the screen. This section's helper `set_base`
+writes `/etc/flip/base.env` and nothing else (never use another section's `set_kv` or `set_bnb` here):
+
+    set_base() { sudo grep -q "^$1=" /etc/flip/base.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/base.env || echo "$1=$2" | sudo tee -a /etc/flip/base.env >/dev/null; }
+    set_base BASE_STAKE_ETH 0.002 && set_base BASE_DAILY_STOP_USD 10 && set_base BASE_DRY_RUN 0 && sudo grep -E '^BASE_(DRY_RUN|WALLET|RELAY|STAKE_ETH|STAKE_CAP_ETH|DAILY_STOP_USD)=' /etc/flip/base.env
+
+Six lines: `BASE_DRY_RUN=0`, `BASE_WALLET=0xabcd...`, `BASE_RELAY=0xRELAY`, `BASE_STAKE_ETH=0.002`, `BASE_STAKE_CAP_ETH=0.005`,
+`BASE_DAILY_STOP_USD=10`. Then the start:
+
+    sudo systemctl restart flip-base && sleep 20 && systemctl is-active flip-base && sudo grep '"start"' /var/log/flip/base.jsonl | tail -1 | cut -c1-400
+    P=$(systemctl show -p MainPID --value flip-base); sudo nsenter -t $P -m ls /etc/flip; unset P
+    sudo flock -n /etc/flip/base.key true && echo 'key file NOT locked' || echo 'key file locked by the engine'
+
+`active`, a start line with release base-0.1 and dry false; `base.env  base.key`; `key file locked by the engine` (if it says `NOT
+locked`, the engine does not take the key's lock: nothing breaks, because the money scripts also refuse while flip-base is active, but
+paste it). Not `active`: `journalctl -u flip-base -n 20` names why (a live start needs `BASE_WALLET`, the key file, a relay whose
+`owner()` is the wallet and `pm()` the PoolManager, chain 8453 on every endpoint, and every number in its bounds); stop and paste.
+
+**The first live trade is THE test of the operator's reaction to an outsider.** On BNB the operator pulled 6-7 blocks (about 3 s) after an
+outsider's buy; on Base's 2 s blocks that is our buy (about L+4) + 3 or 4, before the bot's buy at L+8: the pull would land first and the
+stake (0.002 ETH, $5) is lost. The engine halts on it (`exit: pulled` writes `HALTED.base`), and a pull within 3 blocks after our buy
+(`BASE_NEAR_MISS_BLOCKS`) halts it even when our sale landed first: one such trade stops the line, so the worst case is one stake plus the
+gas. On Robinhood the operator never reacted; if it does not here either, the first trades sell into the bot's buy at about +10% or more
+and the pull comes on its timer, about 120 blocks later. Watch it (Ctrl-C ends the watch, not the engine):
+
+    sudo tail -f /var/log/flip/base.jsonl | grep --line-buffered -E '"ev": ?"(launch|add|fire|buy_sent|bot_buy|sell_sent|pull|trade_done|halt|alarm)"'
+
+In order: `launch`, `add`, `fire`, `buy_sent`, `bot_buy`, `sell_sent`, `trade_done` with `"live": true`, `exit` bot (or take_profit),
+`ret` about 0.10-0.15, `pulled_at` far after `sell_block`; the `pull` line minutes later. A `halt`, an `exit` pulled, or a `ret` under
+0: stop and paste the lines (and the screen of step 7).
+
+### 7. The checks
+
+    sudo python3 ~/v2pons/deploy/base_results.py
+
+The screen says `BASE LIVE (BASE_DRY_RUN=0: real trades)` and shows: the feeds; `LAUNCHES` seen, armed and skipped with the reasons;
+`ADDS`; `FIRES` (would_fire dry, fire live; not fired, with the reasons); `BOT BUYS`; `TRADES`, one row dry and one live: count, mean,
+median, share up, the exits by kind (bot, take_profit, deadline, pulled), pulled, dollars; `PULLS` (before our fire, before our sale,
+after); `DRY GATE`; `HALTED: <reason>` or `halt: none`; `today`: the live trades and their dollars against the daily stop of -$10
+(`<== STOPPED FOR THE DAY` once reached: new buys resume at 00:00 UTC by themselves); `open position: none` (one listed for more than two
+minutes is stuck: paste it); the wallet's and the relay's ETH (read from the RPC; the key is never opened); the last 8 launches, each with
+its decision and result; the alarms. `sudo python3 ~/v2pons/deploy/base_results.py 72` covers 72 hours.
+
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_ops.py status
+    sudo python3 ~/v2pons/deploy/base_results.py --alerts
+
+`status`: the money (the relay should hold its stakes plus the trades' gains), the relay's code, owner and pm, today's trades. `--alerts`
+prints nothing when all is well; otherwise `BASE HALTED`, `BASE NOT READING` (no flow line for 3 minutes while active), `BASE POSITION
+OPEN` (over 2 minutes), `BASE STOPPED FOR THE DAY` and the last alarm. `health.sh` does not run it yet: run it beside it. The raw trades:
+`sudo grep '"trade_done"' /var/log/flip/base.jsonl | tail -3`; every transaction: `https://basescan.org/address/0xRELAY`.
+
+### 8. The stake steps
+
+- **0.002 ETH ($5)** until 20 live trades with a positive median (the `live` row of `TRADES`: count 20 or more, median above 0) and no halt.
+- **Then 0.005 ETH ($13), the cap** (`BASE_STAKE_CAP_ETH`, 0.005: the engine buys the smaller of the stake and the cap). The relay must
+  hold the stake plus `BASE_RELAY_MARGIN_ETH` (0.0005): two stakes are 0.010, so 0.006 more goes in. With no position open (the screen):
+
+        sudo systemctl stop flip-base && sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_ops.py deposit 0.006
+        set_base() { sudo grep -q "^$1=" /etc/flip/base.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/base.env || echo "$1=$2" | sudo tee -a /etc/flip/base.env >/dev/null; }; set_base BASE_STAKE_ETH 0.005 && sudo grep -E '^BASE_STAKE_(ETH|CAP_ETH)=' /etc/flip/base.env && sudo systemctl start flip-base
+
+  (`now: wallet 0.00199. ETH, relay 0.0100.. ETH`, then `BASE_STAKE_ETH=0.005` and `BASE_STAKE_CAP_ETH=0.005`; the wallet then holds
+  about the 0.001 it keeps for gas plus a little: top it up before the next step.)
+- **Beyond 0.005 is your decision**, never above `BASE_STAKE_CAP_ETH`, which you raise first (`set_base BASE_STAKE_CAP_ETH ...`) and
+  only on a measured room: none is measured yet (HANDOFF 16.24, open items). The limit is the bot's own: its buys carry a 5% tolerance
+  (minOut 0.95 of its quote), so a stake that moves the price against its buy by more than that makes the bot's buy revert, and then
+  nothing buys behind ours.
+
+### 9. Stop, withdraw, pay out
+
+Stop new buys (an open position is still sold; the restart reads the file at once and sells an open position at its start):
+
+    echo "owner stop" | sudo tee /var/log/flip/HALTED.base >/dev/null && sudo systemctl restart flip-base
+
+When the screen shows `open position: none`, back to a plain dry run (it writes `/etc/flip/base.env` only and shows the result), or stop it
+entirely:
+
+    sudo sed -i 's|^BASE_DRY_RUN=.*|BASE_DRY_RUN=1|' /etc/flip/base.env && sudo grep '^BASE_DRY_RUN=' /etc/flip/base.env && sudo systemctl restart flip-base
+    sudo systemctl disable --now flip-base
+
+A halt, once understood (its reason is in the file and on the screen), and the line resumes:
+
+    sudo cat /var/log/flip/HALTED.base && sudo rm /var/log/flip/HALTED.base && sudo systemctl restart flip-base
+
+The money back, in two steps, with flip-base stopped (`sudo systemctl stop flip-base`; both refuse while it is active): the relay's ETH to
+the wallet (no amount = all of it), then the wallet's ETH to an account of yours on Base (an exchange's deposit address on the network
+Base): all of it with `base_wallet.py withdraw` (it shows the amount, asks you to type the address a second time, signs on the box and
+prints the hash; it refuses a contract, the wallet itself and an open position), or a part with `base_ops.py payout` (a typed yes; the
+wallet keeps 0.001 ETH for gas):
+
+    sudo systemctl stop flip-base && sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_ops.py withdraw
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_wallet.py withdraw 0xYOUR_OWN_ADDRESS
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_ops.py payout 0xYOUR_OWN_ADDRESS 0.005
+
+Profit taken while the line runs: stop, `withdraw 0.005` (a part), `payout`, `sudo systemctl start flip-base`. A token left in the relay
+that no position holds goes to the wallet with `base_ops.py sweep 0xTOKEN` (a pulled pool's token is worth nothing).
+
+### 10. The decisions (yours)
+
+1. **Go live** (step 6): after the dry gate passed. If the operator does not resume, nothing is lost by waiting.
+2. **The funding**: 0.012 ETH covers the $5 test and the step to 0.005; more is not needed before step 8's later steps.
+3. **The first live trade risks one stake** ($5) on the operator's reaction to an outsider. A pull-first halt (`exit: pulled`, or a pull
+   within 3 blocks of our buy) answers it: the operator reacts as on BNB; stop the line (step 9) and paste the trade. Do not resume it.
+4. **The stake steps** (step 8): 0.002 -> 0.005 after 20 live trades with a positive median; beyond 0.005 only with `BASE_STAKE_CAP_ETH`
+   raised on a measured room.
+5. **A decoy halt** (`BASE_NONBOT_HALT`: 5 live trades in a row under +2%) means the bot stopped buying behind us: stop and paste.
+6. **A changed operator**: launches logged `skip` with a reason (a new token code, launcher, selector, fee) are not traded; paste the
+   reasons. Its BNB move took a day; its Base launches may stop at any time.
+7. **Taking profit out** (step 9): when and how much is yours; the relay needs two stakes plus 0.0005 to keep trading.
+
+The settings, their defaults and meanings: `docs/BASE.md` section 5 and the comments in `/etc/flip/base.env`; restart after a change.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the

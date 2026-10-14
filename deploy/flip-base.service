@@ -1,0 +1,48 @@
+# flip-base: the Base engine (src/base_engine.py, docs/BASE.md; release base-0.1). A DRY RUN unless /etc/flip/base.env says BASE_DRY_RUN=0:
+# dry, it reads the chain (a websocket for heads and the PoolManager's logs, the Flashblocks stream for pending transactions), logs what the
+# rule would have done and signs and sends nothing; live (RUNBOOK 4l step 6), it trades the stake through its FlipRelay (BASE_RELAY) from its
+# own wallet, whose key is /etc/flip/base.key (mode 600, made by deploy/base_wallet.py), and holds an fcntl lock on that file while it runs.
+# Beside flip-engine and flip-bnb and touching nothing of either: its own settings (/etc/flip/base.env, no key in it), its own log
+# (/var/log/flip/base.jsonl), halt file (HALTED.base) and positions file (base_positions.json) there, a lower CPU priority than flip-engine
+# (Nice 10 against -5) and a CPU and memory ceiling. The file system is read-only to it except /var/log/flip (base_setup.sh makes it).
+# Kept away from the other lines' keys (/etc/flip/engine.env, which holds the flip engine's wallet key, any copy of it, and bnb.key):
+#   - /etc/flip is an empty read-only tmpfs inside its mount namespace, with only base.key (and base.env) bound in, read-only. A mask on the
+#     whole directory survives the renames that `sed -i`, base_wallet.py and base_relay_deploy.py --write-env make on the host; a mask on one
+#     file alone is lost at the first rename onto it. systemd reads EnvironmentFile= before it builds the namespace. A file bound in is the
+#     one there at the start: after any change to base.env, restart.
+#   - it runs as root with no capability but CAP_DAC_READ_SEARCH (to read /home/ubuntu/v2pons through a 750 home): flip-engine's
+#     /proc/<pid>/environ and mem, which hold that key, are then refused to it (reading them needs CAP_SYS_PTRACE, or a capability set that
+#     contains flip-engine's). No core dumps (LimitCORE=0: the Base key is in its memory when live).
+#   To check on the box (prints names only): sudo nsenter -t $(systemctl show -p MainPID --value flip-base) -m ls /etc/flip
+#   lists base.env and base.key only.
+# An open position is in base_positions.json and is sold at once at the next start (docs/BASE.md section 3), so a stop or a crash costs at
+# most the restart: a crash restarts in 5 s (RestartSec=5: a whole trade is about 15 s, the operator's pull about 4 minutes after its launch).
+# deploy/base_setup.sh installs it (RUNBOOK 4l step 2), with the paths below replaced by the clone's own when it is not /home/ubuntu/v2pons:
+#     cd ~/v2pons && sudo bash deploy/base_setup.sh
+[Unit]
+Description=flip Base engine (v2pons; a dry run unless BASE_DRY_RUN=0 in /etc/flip/base.env)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/flip/base.env
+WorkingDirectory=/home/ubuntu/v2pons
+ExecStart=/opt/flip-venv/bin/python3 /home/ubuntu/v2pons/src/base_engine.py
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+Nice=10
+CPUQuota=50%
+MemoryMax=400M
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/log/flip
+TemporaryFileSystem=/etc/flip:ro
+BindReadOnlyPaths=-/etc/flip/base.key -/etc/flip/base.env
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH
+LimitCORE=0
+
+[Install]
+WantedBy=multi-user.target

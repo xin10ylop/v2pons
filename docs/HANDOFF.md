@@ -2603,3 +2603,63 @@ chain, the tests' key a dummy one):
 - Tests: test 70's refused-replacement part (round 5's behaviour) is replaced by 72; test 63 checks that a 'nonce too low' is not counted
   as a refusal; test 71's stand-in for `BNB_RPC_URL`'s pool takes `known()`'s new argument. 25 mutations of this round in fresh copies
   (22 of the code, 3 of the docs), each caught. Round 5's mutation count above is corrected (26, not 25).
+
+### 16.24 Oct 14: the 2.433 line on Base, the Base engine (release base-0.1)
+
+**What was found** (research/session_oct14/base2433/REPORT_BASE2433.md and its 11:30 UTC update; scripts b01-b13 beside it): the 2.433
+operator, the Robinhood front line of 3.2 (+14% a trade), set up on Base on Oct 14. Five launches 09:32-10:35 UTC, all Uniswap v4, fee 5000
+/ tick spacing 100, its 777 token (code hash `63ad5291…`, the Robinhood token byte for byte), a per-launch launcher (`c3e0ff3d`, 260 B) and a
+per-launch hook with the beforeSwap flag (0x80). Two were 0.133 ETH tests with no buys; three were real pools of 2.133 ETH. The sequence is
+fixed: the launch at L, the liquidity at L+3 (the launch wallet to the hook, `2346bb56`), **the bot's first buy at L+8 in all three real
+pools** (0.15-0.20 ETH through its contract `0x987d5db8`, `27f7e6ee`, with a 5% tolerance), a buy every block or two after it, and **the
+pull on a timer of about 4.1 minutes** (+126, +128; the 09:42 test was cut at +30). The PoolManager's Swap event names the Universal
+Router as `sender` for every swap, the bot's included, so the bot's buy is recognised only by its transaction, which the Flashblocks
+stream shows about 1-2 s before its block. The fleet is 35 wallets. **The exit test passes** (b07, eth_call with our FlipRelay's code
+placed by state override, the hook in the PoolKey): a buy and its sale go through at every block from +3 to +29 at -1.00% (the two 0.5%
+fees; the hook takes nothing), and a sale at +8 after a buy at +4 returned +13.1% (09:42 pool) and +18.1% (10:30 pool). **No outsider
+has traded in any pool**, so the operator's reaction to one is unknown (on BNB it pulled 6-7 blocks, about 3 s, after an outsider's buy;
+on Robinhood never). The operator was idle from 10:35 UTC (still at 11:27).
+
+**The design** is `docs/BASE.md`: the front timed off the liquidity add. Arm on the launch's fingerprint; fire on the add (pending on
+Flashblocks at +2/+3, else the confirmed `ModifyLiquidity`), pools under 1 ETH skipped; buy `FlipRelay.buy` with the stake (0.002 ETH),
+minOut the exact v4 output less 3%, a type-2 transaction to the sequencer and mainnet.base.org at once; sell `FlipRelay.sell` on the bot's
+buy seen pending, else the first paying buy behind ours, else at our buy + 6 blocks; a pull at or before our sale, or within 3 blocks of
+our buy, halts the line (`HALTED.base`); a $10 daily stop; the dry run (the default) logs `would_fire` and `trade_done` with `dry: true`.
+Every setting (section 5) and log line (section 6) is there.
+
+**The files**: `src/base_engine.py` and `tests/test_base_engine.py` (the engine and its tests against the 09:42 pool's real events, NN
+tests); `deploy/base_setup.sh` (the venv's packages, `/etc/flip/base.env` from a template with every setting of BASE.md section 5 and its
+default, logrotate, the unit, a dry start; idempotent) and `deploy/flip-base.service` (flip-bnb's hardened unit with Base's names);
+`deploy/base_wallet.py` (the key in `/etc/flip/base.key`, `BASE_WALLET=` in the env file; `withdraw`; the key's fcntl lock shared with a
+live engine); `deploy/base_relay_deploy.py` (`--check`, then the type-2 deployment with the code, `owner()`, `pm()` and a simulated buy
+checked, `--write-env`); `deploy/base_relay_sim.py` (a round trip through our relay's code on the operator's latest pool, or any pool at
+any block through Tenderly); `deploy/base_ops.py` (`status` without the key, `deposit`, `withdraw`, `sweep`, `payout`); `deploy/base_results.py`
+(the screen, the dry gate, `--alerts`); RUNBOOK 4l (every box step, numbered, with its expected output).
+
+Verified here, nothing sent to any chain: `base_relay_sim.py` on the 09:42 pool at block 52,590,812 gives b07's result to the token (0.002
+ETH -> 9.30081e+23 tokens, v4math within 1e-20, -1.00% round trip, minOut + 1 refused with TooLittleOut), and the same on the latest pool
+(10:35, at +5) and at +41 behind 26 swaps; `base_relay_deploy.py --check --wallet 0x…dEaD` against Base (the artifact matches its source,
+chain 8453 on both read endpoints, `eth_estimateGas` of the creation 1,186,470, the deployment about $0.02 at 0.005 gwei); every path that
+signs (withdraw, deposit, withdraw, sweep, payout, the deployment) with only the send and the receipt stubbed: type 2, chain 8453, the
+wallet as signer, the expected calldata, sent to both endpoints; `base_wallet.py` create, replace and refusals (an existing key, another
+line's file, the wallet itself, a contract, an open position, the key's lock held) in a scratch directory; `base_results.py` on a synthetic
+log of BASE.md section 6's lines; `base_setup.sh` in a sandbox (first install, re-run, a live env left running, a partial env).
+
+**On the branch, not on the box**: all of it. The box runs flip-engine (untouched) and has flip-bnb stopped and disabled since 08:10.
+RUNBOOK 4l installs it: the code, the dry run until 3 dry trades sold into the bot's buy at +10% or better, the wallet (about 0.012 ETH),
+the relay, two stakes of 0.002 ETH, live at $5 with a $10 daily stop.
+
+Open:
+
+- **The operator's reaction to an outsider is unknown.** The first live trade is the test; the pull-first and near-miss halts stop the line
+  after one lost stake ($5). After such a halt, stop the line for good (RUNBOOK 4l step 10).
+- **The stake cap waits on a measured room.** b11 measured none; `BASE_STAKE_CAP_ETH` stays 0.005 and the steps are 0.002 -> 0.005; the
+  bot's 5% tolerance is the known limit (a stake that moves its price by more makes its buy revert, and nothing buys behind ours).
+- **The Flashblocks feed is an accelerator only**: the add seen pending puts our buy at about L+4 and the bot's buy seen pending puts our
+  sale in its block; without it the fire goes on the confirmed add and the sale on the confirmed buy behind ours (take profit), a block or
+  two later each. Its effect on the returns is measured only once the dry run has trades both ways.
+- `mainnet.base.org` answered every `eth_getLogs` from this machine with HTTP 429 "request limit reached", so the default `BASE_RPC_URL`
+  is publicnode (its last ~10,000 blocks of logs) and `mainnet.base.org` the alternate (BASE.md section 4, the env template, the scripts).
+  Check the engine's catch-up on the box (a websocket drop in the dry run shows it).
+- `health.sh` does not run `base_results.py --alerts` yet (RUNBOOK 4l step 7 runs it beside it). The unit's own user (`User=`), open since
+  16.23 for flip-bnb, is open here too.

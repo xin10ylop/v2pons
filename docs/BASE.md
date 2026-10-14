@@ -66,10 +66,9 @@ The front, as on Robinhood (HANDOFF 3.2), timed off the liquidity add instead of
    L+`BASE_ADD_MAX_BLOCKS` expires). The pool's state is the Initialize price and the liquidity of the adds covering the current tick;
    every `Swap` on the pool before our fire moves it (`v4math`). The add's transaction value must be at least `BASE_MIN_POOL_ETH` (the
    0.133 ETH test pool is skipped). With the Flashblocks feed the add is recognised earlier, as a pending transaction to the armed pool's
-   hook with selector `BASE_ADD_SELECTOR` and value >= `BASE_MIN_POOL_ETH`, and the fire goes then (its liquidity from the calldata is not
-   trusted: the stake's minOut uses the launch price and a liquidity read of `BASE_ADD_LIQ_FALLBACK`... no: the fire on a pending add
-   uses the liquidity predicted from the add's ETH value and the launch price for a full-range position, and a `BASE_BUY_SLIP` wide enough
-   for the rounding; the confirmed `ModifyLiquidity` then fixes the state). The fire is refused when the head is past the add's block +
+   hook with selector `BASE_ADD_SELECTOR` and value >= `BASE_MIN_POOL_ETH`, and the fire goes then (the pending add's liquidity is not in any log yet: the
+   minOut uses the liquidity a full-range position of the add's ETH value makes at the launch price, which `BASE_BUY_SLIP` covers; the
+   confirmed `ModifyLiquidity` then fixes the state). The fire is refused when the head is past the add's block +
    `BASE_FIRE_MAX`, when a pull was seen, when a position is open, when halted or stopped, when the day's count is at
    `BASE_MAX_PER_DAY`, or when the relay holds less than the stake plus a margin. The buy: `FlipRelay.buy(key, stake, minOut, deadline)`
    with the stake min(`BASE_STAKE_ETH`, `BASE_STAKE_CAP_ETH`), minOut = the exact v4 output x (1 - `BASE_BUY_SLIP`), deadline now +
@@ -84,7 +83,8 @@ The front, as on Robinhood (HANDOFF 3.2), timed off the liquidity add instead of
    - **a paying buy behind ours**: any confirmed `Swap` buying (amount0 < 0) after ours whose price values our tokens at the stake x
      (1 + `BASE_TAKE_PROFIT`) plus the round trip's gas (`exit: take_profit`);
    - **the deadline**: the head (or a Flashblock) at our buy's block + `BASE_HOLD_BLOCKS` (`exit: deadline`, minOut 0).
-   The sell's minOut is the ETH out at the tracked price x (1 - `BASE_SELL_SLIP`), 0 at the deadline.
+   The sell's minOut is the ETH out at the tracked price x (1 - `BASE_SELL_SLIP`), 0 at the deadline. The `exit` values: `bot` (the bot's
+   buy, pending or confirmed), `take_profit`, `deadline`, `pulled`, `buy_reverted`.
 4. **The pull watch**: a `ModifyLiquidity` with a negative delta on our pool, or a pending `BASE_PULL_SELECTOR` call to its hook, marks it
    pulled: before our fire, the pool is skipped (`skip: pulled before our fire`); after our buy and at or before our sell's block, the trade
    is -100% (`exit: pulled`) and **the line halts** (`HALTED.base`); a pull within `BASE_NEAR_MISS_BLOCKS` after our buy halts too even when
@@ -112,13 +112,18 @@ One position at a time. Open positions are written to `base_positions.json` besi
   bot's buy seen pending), and confirms our own transactions' inclusion early. Everything it does is also done by the confirmed feed a
   little later, so a Flashblocks outage costs speed, never correctness. The `flow` line reports both feeds' state.
 - **Sends**: `BASE_SEND_URLS`, every one at once; the first "ok" or "already known" counts; "nonce too low" re-reads the nonce.
-- **Reads**: `BASE_RPC_URL` (receipts, `eth_getCode`, `eth_getTransactionByHash`, the relay's balance), `BASE_READ_ALT_URL` once when it fails.
+- **Reads**: `BASE_RPC_URL` (receipts, `eth_getCode`, `eth_getTransactionByHash`, `eth_getLogs` for the catch-up, the relay's balance),
+  `BASE_READ_ALT_URL` once when it fails. `BASE_RPC_URL` defaults to publicnode because `mainnet.base.org` answers `eth_getLogs` with HTTP
+  429 (measured Oct 14); `mainnet.base.org` is the alternate.
+- **Files beside the log**: `HALTED.base` (read at the start and before every fire, so the owner's own file holds without a restart),
+  `base_positions.json` (`{"positions": {...}}`, written on every change), and the engine holds an `fcntl` lock on `BASE_KEY_FILE` while
+  live (what `deploy/base_wallet.py` and `deploy/base_ops.py` test before they sign).
 
 ## 5. Settings (`/etc/flip/base.env`; the code default in parentheses)
 
 Feeds and keys: `BASE_DRY_RUN` (1), `BASE_LOG_PATH` (/var/log/flip/base.jsonl), `BASE_WS_URL` (wss://base-rpc.publicnode.com), `BASE_RPC_URL`
-(https://mainnet.base.org), `BASE_READ_ALT_URL` (https://base-rpc.publicnode.com), `BASE_SEND_URLS` (https://mainnet-sequencer.base.org,
-https://mainnet.base.org), `BASE_FLASH_URL` (wss://mainnet.flashblocks.base.org/ws; 0 = off), `BASE_WALLET` (""), `BASE_KEY_FILE`
+(https://base-rpc.publicnode.com), `BASE_READ_ALT_URL` (https://mainnet.base.org), `BASE_SEND_URLS` (comma-separated:
+https://mainnet-sequencer.base.org,https://mainnet.base.org), `BASE_FLASH_URL` (wss://mainnet.flashblocks.base.org/ws; 0 = off), `BASE_WALLET` (""), `BASE_KEY_FILE`
 (/etc/flip/base.key), `BASE_RELAY` (""), `BASE_POOL_MANAGER` (0x498581ff718922c3f8e6a244956af099b2652b2b), `BASE_HALT_FILE` (HALTED.base
 beside the log), `BASE_WS_SILENT_S` (10).
 

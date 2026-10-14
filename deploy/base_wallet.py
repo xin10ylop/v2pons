@@ -24,8 +24,9 @@ base_ops.py's deposit/withdraw/sweep/payout and base_relay_deploy.py's deploymen
 it, and hold it until they exit, so no live engine starts meanwhile. (flip-base sees the key through a read-only bind mount of the same
 file: the lock is on the file, so both sides see it.)
 
-The RPC: BASE_RPC_URL from the environment, else /etc/flip/base.env, else https://mainnet.base.org, and BASE_READ_ALT_URL
-(https://base-rpc.publicnode.com) when it fails or rate-limits; sends go to every BASE_SEND_URLS. Only hosts are ever printed.
+The RPC: BASE_RPC_URL from the environment, else /etc/flip/base.env, else https://base-rpc.publicnode.com, and BASE_READ_ALT_URL
+(https://mainnet.base.org, which rate-limits eth_getLogs) when it fails or rate-limits; sends go to every BASE_SEND_URLS. Only hosts
+are ever printed.
 A copy of the key that prints nothing (on the same box: it guards against a deleted file, not a lost box):
     sudo install -m 600 /etc/flip/base.key /root/base.key.bak
 Never `cat` the key: a terminal's output gets pasted into chats and tickets.
@@ -75,7 +76,7 @@ def url_list(v):
 
 
 def rpc_urls():
-    return url_list(setting("BASE_RPC_URL", "https://mainnet.base.org")) + url_list(setting("BASE_READ_ALT_URL", "https://base-rpc.publicnode.com"))
+    return url_list(setting("BASE_RPC_URL", "https://base-rpc.publicnode.com")) + url_list(setting("BASE_READ_ALT_URL", "https://mainnet.base.org"))
 
 
 def send_urls():
@@ -237,7 +238,10 @@ def hold_key():
     global LOCK_FD
     if LOCK_FD is not None:
         return
-    fd = os.open(KEY_FILE, os.O_RDONLY)
+    try:
+        fd = os.open(KEY_FILE, os.O_RDONLY)
+    except OSError as e:
+        sys.exit(f"{KEY_FILE} cannot be opened ({e.strerror}): run this with sudo, or create the wallet first (base_wallet.py)")
     try:
         fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except BlockingIOError:

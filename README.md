@@ -157,3 +157,15 @@ follow got its own near-miss halt (a pull within 4 blocks of our buy, even behin
 
 `research/v4_slowrug_pull.py` pulls the operator's launches from the public RPC; `research/v4_slowrug_test.py` reproduces every table
 of report 24.54 from `research/data/*.json.gz`.
+
+## The Base line (Oct 14)
+
+On Oct 14 the same 2.433 operator moved to Base (research/session_oct14/base2433/REPORT_BASE2433.md): Uniswap v4 pools with fee 5000 and
+a per-launch hook, the liquidity added at L+3, its bot's first buy at L+8 and the pull on a timer about 4 minutes after the launch. Release
+base-0.1 is the front on Base: `src/base_engine.py` (designed in `docs/BASE.md`) fires on the liquidity add, buys through our own FlipRelay
+deployed on Base (its PoolKey carries the operator's hook), and sells into the bot's buy, seen pending on Base's Flashblocks stream, or on
+the first paying buy behind ours, or at our buy + 6 blocks; a pull at or before our sale halts it. Its own service (`flip-base`), settings
+(`/etc/flip/base.env`), key (`/etc/flip/base.key`) and log (`/var/log/flip/base.jsonl`); the `deploy/base_*` scripts set up the wallet,
+deploy and simulate the relay, move the money and show the results, and RUNBOOK section 4l is every step on the box, a dry run first. The
+exit test passed (an outsider's round trip costs the two 0.5% fees, a sale into the bot's buy returned +13% to +18%); the operator's
+reaction to an outsider is unknown until the first live trade (HANDOFF 16.24).
