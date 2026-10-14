@@ -11,7 +11,8 @@ from eth_utils import keccak
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); TMP = tempfile.mkdtemp(prefix="base_engine_test_"); LOG = os.path.join(TMP, "base.jsonl")
 BASE_ENV = {"BASE_LOG_PATH": LOG, "BASE_RPC_URL": "https://rpc.example.org/v1/k3y-rpc-secret", "BASE_READ_ALT_URL": "https://alt.example.org/",
             "BASE_WS_URL": "wss://ws.example.org/ws/k3y-ws-secret", "BASE_FLASH_URL": "wss://flash.example.org/ws",
-            "BASE_SEND_URLS": "https://seq.example.org,https://send2.example.org", "BASE_KEY_FILE": os.path.join(TMP, "missing.key")}
+            "BASE_SEND_URLS": "https://seq.example.org,https://send2.example.org", "BASE_KEY_FILE": os.path.join(TMP, "missing.key"),
+            "BASE_FIRE_DELAY_BLOCKS": "0"}                                     # the cases below fire at once unless they set it
 for k in [k for k in os.environ if k.startswith("BASE_")]:
     os.environ.pop(k)
 os.environ.update(BASE_ENV)
@@ -864,6 +865,65 @@ def ticker_survives_an_exception():
         E.tick = real
     a = [x for x in events("alarm") if x["what"].startswith("the ticker failed")]
     assert n["k"] >= 2 and len(a) == 1 and "KeyError" in a[0]["trace"], (n, a)
+
+
+@test
+def fire_delayed_to_the_add_plus_n():
+    """BASE_FIRE_DELAY_BLOCKS 3: the add at +3, the buy aimed at +6: would_fire at head +5 (not before), the dry buy at the end of +6, sold into
+    the bot's +8 buy by v4math; a Flashblocks add waits the same way; a head already past +6 when the add is known is late"""
+    c = fresh(BASE_FIRE_DELAY_BLOCKS="3"); launch_armed(c); feed(c, L + 3, L + 4)
+    assert not events("would_fire") and E.pools[PID]["status"] == "armed"
+    feed(c, L + 5, L + 5)
+    f = events("would_fire")
+    assert len(f) == 1 and f[0]["head"] == L + 5 and f[0]["buy_block"] == L + 6 and f[0]["via"] == "logs", f
+    feed(c, L + 6, L + 9)
+    t = events("trade_done")[0]; tokens, out = expected_dry(W(first_bot_swap()["data"], 2))
+    gas = E.DRY_GAS_UNITS * (int(header(L + 9)["baseFeePerGas"], 16) + E.S.PRIO_WEI) + E.L1_FEE_EST_WEI
+    assert t["buy_block"] == L + 6 and t["sell_block"] == L + 8 and t["tokens"] == tokens and abs(t["eth_out_wei"] - out) <= 1, t
+    assert abs((t["eth_out_wei"] - E.S.STAKE_WEI - t["gas_wei"]) / E.S.STAKE_WEI - (out - E.S.STAKE_WEI - gas) / E.S.STAKE_WEI) < 1e-9
+    c = fresh(BASE_FIRE_DELAY_BLOCKS="3"); flash(L, [raw_of(LAUNCH_TX)]); launch_armed(c); flash(L + 3, [raw_of(ADD_TX)], index=2)
+    feed(c, L + 3, L + 4)
+    assert not events("would_fire")
+    feed(c, L + 5, L + 5)
+    f = events("would_fire")
+    assert len(f) == 1 and f[0]["via"] == "flash" and f[0]["head"] == L + 5 and f[0]["buy_block"] == L + 6, f
+    c = fresh(BASE_FIRE_DELAY_BLOCKS="3"); launch_armed(c); feed(c, L + 3, L + 7, logs=[])           # the heads to +7, the add's logs late
+    for lg in by_block(c.logs)[L + 3]:
+        E.on_ws_message(json.dumps({"jsonrpc": "2.0", "method": "eth_subscription", "params": {"subscription": "0xl", "result": lg}}), c.subs)
+    with E.lock:
+        E.end_burst()
+    s = events("skip")
+    assert len(s) == 1 and s[0]["why"].startswith("late: head") and "BASE_FIRE_DELAY_BLOCKS 3" in s[0]["why"] and not events("would_fire"), s
+    for bad in ("6", "-1", "x"):
+        os.environ.update(BASE_ENV); os.environ["BASE_FIRE_DELAY_BLOCKS"] = bad
+        try:
+            E.settings(); raise AssertionError(bad)
+        except SystemExit as e:
+            assert "BASE_FIRE_DELAY_BLOCKS" in str(e)
+    os.environ.update(BASE_ENV)
+    assert E.settings().FIRE_DELAY == 0 and (os.environ.pop("BASE_FIRE_DELAY_BLOCKS") and E.settings().FIRE_DELAY == 3)
+    os.environ.update(BASE_ENV)
+
+
+@test
+def near_miss_after_our_sell():
+    """the fixture's trade (sold into the bot's +8 buy seen pending: exit bot), then the pull two blocks after our sell: a halt; four after: none"""
+    for gap, halts in ((2, True), (4, False)):
+        c = fresh(); flash(L, [raw_of(LAUNCH_TX)]); launch_armed(c); flash(L + 3, [raw_of(ADD_TX)], index=2); feed(c, L + 3, L + 7)
+        flash(L + 8, [raw_of(BOT1_TX)], index=4); feed(c, L + 8, L + 9)
+        t = events("trade_done")
+        assert len(t) == 1 and t[0]["exit"] == "bot" and t[0]["ret"] > 0 and t[0]["sell_block"] == L + 8 and not events("halt"), t
+        pull = copy.deepcopy(FX["pool_logs"][-1]); pull["blockNumber"] = hex(L + 8 + gap); pull["blockHash"] = header(L + 8 + gap)["hash"]
+        feed(c, L + 10, L + 8 + gap, logs=[pull])
+        h = events("halt")
+        assert (len(h) == 1 and h[0]["reason"] == f"near miss: the pull landed {gap} blocks after our sell (BASE_NEAR_MISS_SELL_BLOCKS 3): the operator is reacting") \
+            if halts else not h, (gap, h)
+    assert E.settings().NEAR_MISS_SELL_BLOCKS == 3
+    c = fresh(dry=False)                                                       # live: the pull one block after our sell, on the chain at the settlement
+    pull = copy.deepcopy(FX["pool_logs"][-1]); pull["blockNumber"] = hex(L + 10); pull["blockHash"] = header(L + 10)["hash"]
+    c.logs = c.logs + [pull]; live_trade(c)
+    t = wait_ev("trade_done")[0]; h = wait_ev("halt")
+    assert t["exit"] == "take_profit" and t["sell_block"] == L + 9 and len(h) == 1 and "1 blocks after our sell" in h[0]["reason"], (t, h)
 
 
 @test

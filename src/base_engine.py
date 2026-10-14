@@ -17,7 +17,9 @@ pending in a Flashblock (to the hook, BASE_ADD_SELECTOR, from the launch wallet)
 min(BASE_STAKE_ETH, BASE_STAKE_CAP_ETH), minOut = v4math.buy_out_int at the pool's state x (1 - BASE_BUY_SLIP) (a pending add's liquidity is
 value x sqrtPriceX96 / 2^96, a full-range position at the launch price: the chain's to the unit on the 09:42 pool), a type-2 transaction at
 the wallet's nonce to every BASE_SEND_URLS at once. Refused (a `skip` line): the pool's ETH under BASE_MIN_POOL_ETH (the pending add's value,
-or the confirmed add's liquidity at the pool's price), a pull seen, the head past the add's block + BASE_FIRE_MAX, a position open, halted
+or the confirmed add's liquidity at the pool's price), a pull seen, late (the head past the add's block A + BASE_FIRE_DELAY_BLOCKS N, default 3:
+the buy is aimed at A + N and fired when the confirmed head reaches A + N - 1, every armed pool with an add being tried again on each head;
+N = 0: fired at once, late past A + BASE_FIRE_MAX), a position open, halted
 (BASE_HALT_FILE is read again before every live fire), stopped for the day, BASE_MAX_PER_DAY fires today, the relay under the stake +
 BASE_RELAY_MARGIN_ETH. An armed pool with no add by L + BASE_ADD_MAX_BLOCKS expires. SELL (FlipRelay.sell(key, minOut, deadline), everything
 the relay holds) on the first of: the bot's buy seen pending (a BASE_BOT_SELECTORS call with ETH to BASE_BOT_ROUTERS carrying the token, in a
@@ -28,7 +30,8 @@ BASE_TAKE_PROFIT) + the round trip's estimated gas (`take_profit`); our buy's bl
 price (our buy in it) x (1 - BASE_SELL_SLIP). THE PULL (a negative ModifyLiquidity; a pending f2f230a8 from the launch wallet skips the pool
 before our fire and only logs after it): after our buy and at or before our sell the trade is -100% (`pulled`; the sell still goes, minOut 0:
 a partial pull would strand tokens), the line halts, and it is read again from eth_getLogs at the settlement; a pull within
-BASE_NEAR_MISS_BLOCKS of our buy halts even behind our sell; a sell that sold nothing on a pool not pulled halts ("sold none");
+BASE_NEAR_MISS_BLOCKS of our buy, or within BASE_NEAR_MISS_SELL_BLOCKS after our sell's block (its own block when the pull's log comes after
+our sell's Swap: the operator reacting), halts even behind our sell; a sell that sold nothing on a pool not pulled halts ("sold none");
 BASE_NONBOT_HALT live trades in a row under BASE_NONBOT_MIN_RET halt (the decoy rule). A halt writes HALTED.base (beside the log; held across
 restarts until the owner removes it), stops new buys and still sells what is open. SETTLE from the receipts: the tokens and ETH in from our
 buy's Swap (or the token's Transfer to the relay), the ETH out from our sell's, the gas of each = gasUsed x effectiveGasPrice + l1Fee; a
@@ -40,8 +43,9 @@ buy that is in (its Swap, its Flashblock, or the relay's tokens) is never booked
 waits on the hash the trader finally sent (a "nonce too low" signs again). One position at a time, in base_positions.json ({"positions":
 {pool: ...}}) beside the log, taken back at a start: a sell already sent has its receipt waited for, else it is sold at once (minOut 0).
 
-THE DRY RUN (BASE_DRY_RUN=1, the default): everything but sign and send; no key is read. A dry buy lands at the end of the block after the
-fire's head (the add's block for a Flashblocks fire, the next for a confirmed one), behind that block's recorded swaps: buy_out_int there
+THE DRY RUN (BASE_DRY_RUN=1, the default): everything but sign and send; no key is read. A dry buy lands at the end of its target block (the
+add's block + BASE_FIRE_DELAY_BLOCKS; with 0, the add's block for a Flashblocks fire, the next for a confirmed one), behind that block's
+recorded swaps: buy_out_int there
 (under its minOut: `buy_reverted`). The sell rules run on the recorded swaps behind it; the dry sell is priced at the end of the block its
 trigger was seen in, our buy put into the recorded price (1/sqrtP adds: exact for one range), by v4math.sell_out_int. Gas: DRY_GAS_UNITS x
 (the base fee + the priority) + L1_FEE_EST_WEI. A dry halt is held in memory. `would_fire`, `sell_sent`, `trade_done` carry dry: true.
@@ -202,8 +206,10 @@ def settings():
     s.STAKE_WEI = min(s.STAKE_ETH_WEI, s.STAKE_CAP_WEI)
     s.BUY_SLIP_PPM = _exact("BASE_BUY_SLIP", "0.03", "0.0001", "0.5", 10 ** 6); s.BUY_DEADLINE_S = _setting("BASE_BUY_DEADLINE_S", "20", 2, 600, True)
     s.FIRE_MAX = _setting("BASE_FIRE_MAX", "2", 0, 50, True); s.HOLD_BLOCKS = _setting("BASE_HOLD_BLOCKS", "6", 1, 500, True)
+    s.FIRE_DELAY = _setting("BASE_FIRE_DELAY_BLOCKS", "3", 0, 5, True)         # the buy aimed at the add's block + N (0: at once, BASE_FIRE_MAX)
     s.TP_PPM = _exact("BASE_TAKE_PROFIT", "0.01", "-0.5", 100, 10 ** 6); s.SELL_SLIP_PPM = _exact("BASE_SELL_SLIP", "0.05", 0, "0.99", 10 ** 6)
     s.SELL_DEADLINE_S = _setting("BASE_SELL_DEADLINE_S", "30", 2, 600, True); s.NEAR_MISS_BLOCKS = _setting("BASE_NEAR_MISS_BLOCKS", "3", 0, 1000, True)
+    s.NEAR_MISS_SELL_BLOCKS = _setting("BASE_NEAR_MISS_SELL_BLOCKS", "3", 0, 1000, True)   # a pull this soon after our sell halts too
     s.NONBOT_HALT = _setting("BASE_NONBOT_HALT", "5", 0, 10000, True); s.NONBOT_MIN_RET = _setting("BASE_NONBOT_MIN_RET", "0.02", -1, 100)
     s.MAX_PER_DAY = _setting("BASE_MAX_PER_DAY", "400", 0, 100000, True); s.DAILY_STOP_USD = _setting("BASE_DAILY_STOP_USD", "10", 0, 1e6)
     s.ETH_USD = _setting("BASE_ETH_USD", "2570", 1, 1e6)
@@ -732,17 +738,23 @@ def on_pull(p, B, via, pending=False, at=None):
             t["near_checked"] = True                                           # the trade booked was -100%: the feed missed this pull at its settlement
             halt(f"pulled: a pull at block {B}, before our sell at {t['sell_at'][0]}, was seen after the settlement: the trade was -100%")
         else:
-            near_miss(p, B)
+            near_miss(p, B, at)
 
 
-def near_miss(p, B):
+def near_miss(p, B, at=None):
+    """a pull behind our sell: within BASE_NEAR_MISS_BLOCKS of our buy, or BASE_NEAR_MISS_SELL_BLOCKS of our sell (its own block counts when the
+    pull's log comes after our sell's Swap), halts the line"""
     t = p["trade"]
     if t.get("near_checked") or t["buy_block"] is None:
         return
     t["near_checked"] = True
+    after_sell = None if t.get("sell_block") is None else B - t["sell_block"]
     if t["exit"] != "pulled" and B - t["buy_block"] <= S.NEAR_MISS_BLOCKS:
         halt(f"near miss: the pull landed {B - t['buy_block']} blocks after our buy (BASE_NEAR_MISS_BLOCKS {S.NEAR_MISS_BLOCKS}), our sell at "
              f"{t['sell_block']}: the reaction is too fast to keep trading")
+    elif t["exit"] != "pulled" and after_sell is not None and 0 <= after_sell <= S.NEAR_MISS_SELL_BLOCKS and \
+            (after_sell > 0 or at is None or t.get("sell_at") is None or at > t["sell_at"]):
+        halt(f"near miss: the pull landed {after_sell} blocks after our sell (BASE_NEAR_MISS_SELL_BLOCKS {S.NEAR_MISS_SELL_BLOCKS}): the operator is reacting")
 
 
 # ---------------------------------------------------------------- the Flashblocks feed
@@ -840,14 +852,14 @@ def end_burst():
     roll_day()
     head = state["head"]
     for p in list(pools.values()):
-        if p["kick"]:
-            p["kick"] = False
+        kicked, p["kick"] = p["kick"], False
+        if kicked:
             if p["add_conf"] and not p["add_logged"] and p["status"] != "arming":
                 st, eth = add_info(p); p["add_logged"] = True; p["add_conf"]["eth"] = eth
                 log({"ev": "add", "pool": p["pid"], "block": p["add_conf"]["block"], "eth": eth / 1e18, "eth_wei": eth, "liquidity": st["liq"], "pending": False,
                      "via": "logs", "tx": p["add_conf"]["tx"], "fired": p["status"] != "armed"})
-            if p["status"] == "armed":
-                try_fire(p)
+        if p["status"] == "armed" and (kicked or p["add_pending"] or p["add_conf"]):     # with BASE_FIRE_DELAY_BLOCKS the head decides when
+            try_fire(p)
         if head is not None and p["status"] in ("arming", "armed") and p["add_pending"] is None and p["add_conf"] is None and head > p["L"] + S.ADD_MAX_BLOCKS:
             log({"ev": "skip", "pool": p["pid"], "why": f"no add by +{S.ADD_MAX_BLOCKS}", "head": head}); pools.pop(p["pid"], None)
         elif head is not None and p["status"] == "traded" and head > p["L"] + WATCH_BLOCKS and (state["position"] or {}).get("pid") != p["pid"]:
@@ -871,12 +883,16 @@ def try_fire(p):
     if add is None:
         return
     eth = add["value"] if add["via"] == "flash" else add.get("eth", 0); head = state["head"]; roll_day()
+    if S.FIRE_DELAY and (head is None or head < add["block"] + S.FIRE_DELAY - 1):  # aimed at the add's block + N: fired at the head before it
+        return
+    late = add["block"] + (S.FIRE_DELAY or S.FIRE_MAX)
     if not S.DRY and not state["halted"] and os.path.exists(S.HALT_FILE):         # the owner's file, read again before every live fire
         state["halted"] = read_halt_file()
     why = next((w for ok, w in (
         (eth >= S.MIN_POOL_WEI, lambda: f"the pool's {eth / 1e18:.4f} ETH is under BASE_MIN_POOL_ETH"),
         (fold(p)["pull"] is None, lambda: "pulled before our fire"),
-        (head is None or head <= add["block"] + S.FIRE_MAX, lambda: f"late: head {head}, the add at {add['block']} (BASE_FIRE_MAX {S.FIRE_MAX})"),
+        (head is None or head <= late, lambda: f"late: head {head}, the add at {add['block']} (" + (f"BASE_FIRE_DELAY_BLOCKS {S.FIRE_DELAY})" if S.FIRE_DELAY
+                                                                                                   else f"BASE_FIRE_MAX {S.FIRE_MAX})")),
         (state["position"] is None, lambda: "a position is open"),
         (not state["halted"], lambda: "halted: " + state["halted"]),
         (not state["stopped"], lambda: "stopped for the day (BASE_DAILY_STOP_USD)"),
@@ -898,7 +914,8 @@ def fire(p, add):
     head = state["head"] or add["block"]
     pos = {"pid": p["pid"], "key": p["key"], "token": p["token"], "L": p["L"], "dry": S.DRY, "stake": stake, "expected": expected, "min_out": min_out,
            "via": via, "add_block": add["block"], "fire_head": head, "nonce": None,
-           "D": max(head, add["block"]) + 1 if via == "logs" else max(head + 1, add["block"]), "buy_hash": None, "buy_at": None,   # D: the dry buy's block
+           "D": max(add["block"] + S.FIRE_DELAY, head + 1) if S.FIRE_DELAY else max(head, add["block"]) + 1 if via == "logs" else max(head + 1, add["block"]),
+           "buy_hash": None, "buy_at": None,                                   # D: the dry buy's block (the target block with BASE_FIRE_DELAY_BLOCKS)
            "buy_block": None, "tokens": None, "eth_in": None, "buy_status": None, "sell_sent": False, "sell_hash": None, "sell_at": None, "exit": None,
            "trigger": None, "no_sell": False, "closed": False, "scanned": None, "X": None, "fired_at": mono(), "sp_fire": st["sp"], "liq_fire": liq}
     state["position"] = pos; state["trades_today"] += 1; p["status"] = "fired"
@@ -1303,7 +1320,7 @@ def finish_live(pos, rb, sells):
         if p is not None:
             p["status"] = "traded"; p["trade"] = {"buy_block": pos["buy_block"], "sell_block": sell_block, "sell_at": sell_at, "exit": exit_}
             if pull is not None and exit_ not in ("pulled", "buy_reverted"):
-                near_miss(p, pull[0])
+                near_miss(p, pull[0], pull)
         if state["relay_wei"] is not None:
             state["relay_wei"] += eth_out - eth_in
 
