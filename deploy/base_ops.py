@@ -106,8 +106,15 @@ def status():
               f"{nd} dry trade(s){'' if md is None else ', mean %+.1f%%' % (100 * md)}")
 
 
-def after(wallet, relay):
-    print(f"now: wallet {BW.balance(wallet) / 1e18:.6f} ETH" + (f", relay {BW.balance(relay) / 1e18:.6f} ETH" if relay else ""))
+def after(wallet, relay, before=None):
+    """the balances after the transaction; a load-balanced node a block behind still shows the old ones, so they are read again for up to
+    10 s until one of them has moved (the first Base deposit printed 'relay 0.000000' from such a node)"""
+    for i in range(6):
+        wb = BW.balance(wallet); rb = BW.balance(relay) if relay else None
+        if before is None or (wb, rb) != before or i == 5:
+            break
+        time.sleep(2)
+    print(f"now: wallet {wb / 1e18:.6f} ETH" + (f", relay {rb / 1e18:.6f} ETH" if relay else "") + ("   (a node a block behind: the balances have not moved yet; base_ops.py status in a moment)" if before is not None and (wb, rb) == before else ""))
 
 
 def main(argv):
@@ -135,7 +142,7 @@ def act(cmd, args):
         if not (oc and oo and op):
             sys.exit(f"BASE_RELAY {relay} is not a FlipRelay of this wallet (code {'ok' if oc else 'differs'}, owner {'ok' if oo else 'not the wallet'}, "
                      f"pm {'ok' if op else 'wrong'}): nothing sent; check {BW.ENV_FILE}")
-    wb = BW.balance(wallet)
+    wb = BW.balance(wallet); rb0 = BW.balance(relay) if relay else None
     if cmd == "deposit":
         amt = eth_arg(args[0])
         if amt + GAS_RESERVE_WEI > wb:
@@ -171,7 +178,7 @@ def act(cmd, args):
         kind = "a contract (or an account with code)" if BW.has_code(to) else "a plain account"
         BW.transact(acct, to, amt, "0x", label=f"payout {amt / 1e18:g} ETH ({usd(amt)}) from the wallet {wallet} to {to} ({kind}) on Base (chain {BW.CHAIN_ID})",
                     confirm=lambda: BW.ask("type yes to send: ").strip().lower() == "yes")
-    after(wallet, relay)
+    after(wallet, relay, (wb, rb0))
 
 
 if __name__ == "__main__":
