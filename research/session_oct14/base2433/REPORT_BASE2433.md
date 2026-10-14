@@ -19,6 +19,9 @@ base.gateway.tenderly.co for logs older than ~20 minutes, since publicnode refus
 - 09:42:57-09:43:37: 11 buys of 0.099-0.272 ETH (2.10 ETH in all) by buyer wallets through `0x987d5db8` (selector 27f7e6ee, 356 B),
   approvals of the token and Permit2, and 6 sells through Uniswap's Universal Router `0x6ff5693b` (24856bc3, 1,028 B).
 - 09:43:47: one buyer sends 0.067 ETH to `0x8f79d153`, an EOA with nonce 0 holding 3.66 ETH.
+- **10:05:29-10:05:31: the buyers sweep their Base ETH to `0x8f79d153`** (22 transfers in this window, b01_sweep.out). At 10:11 UTC it
+  holds 8.46 ETH at nonce 1; the buyers hold 0.0006. The same address has nonce 6 on BNB Chain and 8 on Robinhood. The tracker now
+  reads it (`collect_8f79`) and the three Base launch wallets (`base_launch3`).
 
 ## The three launches (b03_24h.out, b04_hooks.out): the only fee-5000/ts-100 v4 launches on Base in 24 h (of 3,645)
 
