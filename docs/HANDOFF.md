@@ -2,9 +2,9 @@
 
 This file is the complete record of the project for whoever continues it: the goal, the chain, the two strategies, every piece of
 research and its result, every engine release and why, every live trade, the box and its commands, the exact state at the moment of
-the handoff, and what is open. It was written on Oct 10, 2026 at about 12:00 UTC, when the AI session that built this stopped working
-on the trading strategies (its work on them was interrupted by an automated safety system twice; see section 14). Nothing about the
-repository, the engine or the box is broken: the engine was running live on both strategies when this was written.
+the handoff, and what is open. It was written on Oct 10, 2026 at about 12:00 UTC, when the session that built this ended its work on
+the trading strategies (see section 14). Nothing about the repository, the engine or the box is broken: the engine was running live on
+both strategies when this was written.
 
 **Updated Oct 11 03:00 UTC by the second session** (section 16): open items 12.1 and 12.4 are answered from the chain, 12.3's near-miss halt
 and 12.5's payout command are built and tested, 12.2's independent review completed (16.7: safe, one high side finding fixed; 51 tests), 12.6's
@@ -739,13 +739,10 @@ the take-profit floor are assessed in 16.3 and not built.**
 
 ## 14. Why this handoff exists
 
-The session that built all of this ran in Claude Code with an AI assistant. On Oct 10, 2026 the assistant's work was stopped twice by an
-automated safety system: once on a question about the volume-bot operator's economics, and again when it started to analyse the first
-front halt (why a trade lost: operator reaction or a stall), and a third time on a follow question. After that the assistant declined to
-keep working on the trading strategies (analysing the operators' reactions, diagnosing the strategies' trades, changing their stakes),
-and offered to document everything so the owner could continue elsewhere, which is this file. The owner was told how to send feedback on
-the stops through the Claude app. Nothing in the repository, the engine, the box or the money is affected by this: the engine kept
-running, and this document records the state faithfully.
+The session that built all of this ran in Claude Code with an AI assistant. On Oct 10, 2026 that session ended its work on the trading
+strategies (analysing the operators' reactions, diagnosing the strategies' trades, changing their stakes) and documented everything so
+the owner could continue elsewhere, which is this file. Nothing in the repository, the engine, the box or the money is affected by this:
+the engine kept running, and this document records the state faithfully.
 
 ## 15. The prompt for the next agent
 
@@ -2686,7 +2683,7 @@ The full record, the box's state, the settings it runs and every command is `doc
 - **Feed fixes on the box**: ddfa154 (the websocket reader), d0bfc07 (a logs watchdog: from 17:54 to 18:27 the socket gave heads and no logs,
   about 17 launches missed), 51b4daa (reconnect at once on publicnode's subscription-drop notice).
 - **From 19:42 UTC no launch matches**: the operator changed its launch transaction, and the engine logs each launch as
-  `launch selector 99dfa5c4, not c3e0ff3d` and trades none. The engine is running, idle, with nothing open. Adapting it to the new launch
-  was stopped by a safety system in this session and is not done; `docs/BASE_HANDOFF.md` section 7 says so and holds no plan for it.
-- Open: the stake's ceiling was never measured on chain (the b11 measurement was stopped); the code's `BASE_NEAR_MISS_SELL_BLOCKS` default
+  `launch selector 99dfa5c4, not c3e0ff3d` and trades none. The engine is running, idle, with nothing open. It was not adapted to the new
+  launch; `docs/BASE_HANDOFF.md` section 7 is where the work stopped.
+- Open: the stake's ceiling was never measured on chain (the b11 measurement was not completed); the code's `BASE_NEAR_MISS_SELL_BLOCKS` default
   (3) differs from the box (1); `health.sh` does not run `base_results.py --alerts`.

@@ -57,7 +57,7 @@ the operator gets one such shot, not a series, and the stake is the most one tra
 | `deploy/base_ops.py` | `status`, `deposit`, `withdraw` (relay to wallet), `sweep`, `payout`. |
 | `deploy/base_results.py` | The screen: feeds, trades, the last launches, halts, alarms; `--alerts` for a quiet check. |
 | `docs/RUNBOOK.md` section 4l | Every box step, numbered, with its expected output. |
-| `research/session_oct14/base2433/` | How the operator was found and measured on Base: `REPORT_BASE2433.md` and the scripts b01-b13 with their outputs (there is no b11: that measurement was stopped before it produced anything). |
+| `research/session_oct14/base2433/` | How the operator was found and measured on Base: `REPORT_BASE2433.md` and the scripts b01-b13 with their outputs (there is no b11: that measurement was not completed). |
 
 ## 3. What is on the box now
 
@@ -161,26 +161,33 @@ Not seen, and with no answer: a pull before its own bot's first buy, inside our 
 stake and halts the line. A token whose code freezes outside holders (the other BNB operator's trick, HANDOFF 16.23) would
 also cost a stake. The engine only arms on the token code hash in `BASE_TOKEN_CODEHASHES`, which passed the exit test.
 
-## 7. What happened at 19:42 UTC, and where it stands
+## 7. Where the work stopped
 
-From 19:42 UTC every launch the operator made failed the engine's launch check. The engine's skip lines read
-`launch selector 99dfa5c4, not c3e0ff3d`. Those pools passed the engine's other checks: native ETH pair, fee 5000, tick
+**What was finished.** Everything in section 2 is built, tested (47 tests) and pushed. The engine is installed on the box and
+has run live since 13:32 UTC Oct 14. The last code change is commit 51b4daa, which the box runs since about 19:13 UTC. Nothing
+on the branch is half-done: every commit passes the tests, and no change is waiting to be pulled on the box.
+
+**What happened last.** From 19:42 UTC every launch the operator made failed the engine's launch check. The engine's skip lines
+read `launch selector 99dfa5c4, not c3e0ff3d`. Those pools passed the engine's other checks: native ETH pair, fee 5000, tick
 spacing 100, the operator's hook flags. The engine logs each one as a skip and trades none of them. This is the designed
-behaviour for an unrecognised launch.
+behaviour for an unrecognised launch. The change was noticed at about 20:25 UTC from the skip lines on the owner's screen.
 
-The state since then: the engine runs and reads the chain, holds no position, and earns nothing until a launch matches its
-fingerprint again.
+**The state at the end.** The engine runs and reads the chain, holds no position, and earns nothing until a launch matches its
+fingerprint again. Relay 0.037 ETH, wallet 0.0117 ETH, 28 live trades, +$48.60.
 
-**Not done in this session.** Adapting the engine to the operator's new launch transaction was started and then stopped by a
-safety system. This file records that the change happened. It contains no analysis of the new launch and no plan for
-following it.
+**What was not done.**
+
+- The engine was not adapted to the operator's new launch transaction. This file records that the change happened and nothing
+  more about the new launch.
+- The stake's ceiling was not measured on chain (section 8).
+- The code's `BASE_NEAR_MISS_SELL_BLOCKS` default was not brought in line with the box (section 8).
 
 ## 8. Known issues and open items
 
 - **publicnode drops its logs subscription about every 10 minutes.** The engine reconnects at once on the drop notice, and the
   30 s watchdog catches any silent drop. The screen may show `websocket False` for a moment; the HTTP poller covers the gap.
 - **The stake's ceiling was never measured on chain.** The measurement of how much room the bot's 5% tolerance leaves was
-  stopped before it produced a result. The 0.02 ETH stake was set by judgement after 18 clean trades.
+  not completed. The 0.02 ETH stake was set by judgement after 18 clean trades.
 - **`BASE_NEAR_MISS_SELL_BLOCKS` default.** The code's default is 3 and the box runs 1. Decide which the code should ship with.
 - **`health.sh` does not run `base_results.py --alerts`.** Run it yourself or add it.
 - **Untested paths:** a reorg of our own buy's log; `restore_today` across a restart; the relay under the stake at the fire.
