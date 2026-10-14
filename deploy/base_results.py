@@ -146,7 +146,7 @@ def alerts():
     for e in [e for e in ev if e["ev"] == "halt"][-1:]:
         if not os.path.exists(hf) and (e.get("t") or 0) > (st.get("t") or 0):          # a halt since the last start, its file removed
             out.append("BASE halt at %s UTC: %s (the file is gone: the engine may still hold the halt until a restart)" % (hms(e["t"]), str(e.get("reason"))[:150]))
-    al = [e for e in ev if e["ev"] == "alarm"]
+    al = [e for e in ev if e["ev"] == "alarm" and now - (e.get("t") or 0) < 900]           # an alarm of the last 15 minutes; older ones are the screen's
     if out or al:
         if al:
             out.append("BASE last alarm %s UTC: %s" % (hms(al[-1]["t"]), str(al[-1].get("what"))[:150]))
