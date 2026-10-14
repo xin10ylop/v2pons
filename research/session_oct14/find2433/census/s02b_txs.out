@@ -2,3 +2,4 @@ late (known from logs) 3210
 to fetch 7209 have 4600
 200 / 7209 {'posts': 8, 'items': 200, 'r429': 0}
 400 / 7209 {'posts': 16, 'items': 400, 'r429': 0}
+600 / 7209 {'posts': 24, 'items': 600, 'r429': 3}
