@@ -740,10 +740,12 @@ nothing else (the `set_kv` of the other sections writes flip-engine's env file; 
 printed address:
 
     set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }
-    set_bnb BNB_WALLET 0xYOURADDRESS && set_bnb BNB_STAKE_USD 5 && set_bnb BNB_LIVE 1 && sudo grep -E '^BNB_(WALLET|STAKE_USD|LIVE)=' /etc/flip/bnb.env
+    set_bnb BNB_WALLET 0xYOURADDRESS && set_bnb BNB_STAKE_USD 5 && set_bnb BNB_GATE_DUMP_BEFORE 700 && set_bnb BNB_LIVE 1 && sudo grep -E '^BNB_(WALLET|STAKE_USD|GATE_DUMP_BEFORE|LIVE)=' /etc/flip/bnb.env
     sudo systemctl restart flip-bnb && sleep 20 && sudo grep '"ev":"start"' /var/log/flip/bnb.jsonl | tail -1 | python3 -c 'import sys, json; s = json.loads(sys.stdin.read()); print({k: s.get(k) for k in ("release", "dry_run", "live", "wallet", "stake_usd", "balance_bnb", "nonce", "live_off", "halted", "resumed", "send", "live_pool_bnb")})'
 
-The last line must show `dry_run: False`, `live: True`, the wallet, `stake_usd: 5.0`, the balance funded, `live_off: None`,
+`BNB_GATE_DUMP_BEFORE 700` (Oct 14): the dry run saw a 1-BNB pool drained at +996, one block under the gate's +997 (REPORT_BNB's
+earliest), which would halt the line for a schedule edge, not a change that reaches our sale at L+260; at 700 a drift toward the sale
+still halts it 440 blocks (about 3 minutes) ahead. The last line must show `dry_run: False`, `live: True`, the wallet, `stake_usd: 5.0`, the balance funded, `live_off: None`,
 `halted: None`, `live_pool_bnb: [1.0, 10.0, 25.0]`. `live_off` set means the start's self-test of the pre-buy check failed (the RPC took
 no `eth_call` state override): the run stays dry and every live slot is `held`; with publicnode it passes. If the service is not
 `active` (`systemctl is-active flip-bnb`), `journalctl -u flip-bnb -n 20` says why: a missing `BNB_WALLET`, a stake over $10, a key file
