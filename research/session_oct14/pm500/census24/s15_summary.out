@@ -1,0 +1,35 @@
+parameter sets (tick0, range, L, ETH added, tokens added):
+   (216406, '170350..216405', 222236384940296312863228, 0.0, 10.0) tokens (bn) 27
+   (219283, '-887272..887272', 173205080756887440677610, 3.0, 10.0) tokens (bn) 26
+   (216406, '-887272..887272', 199999999999999750000000, 4.0, 10.0) tokens (bn) 26
+   (214174, '168118..214173', 248473458447069140025955, 0.0, 10.0) tokens (bn) 25
+   (217741, '-887272..887272', 187082869338696802017945, 3.5, 10.0) tokens (bn) 24
+ETH value sent with the add vs needed: [((0.0, 0.0), 52), ((3.0, 3.0), 26), ((4.0, 4.0), 26), ((3.5, 3.5), 24)]
+pulled by the launcher: 127 of 127
+pull offset p10/50/90 903 4789 8942 min [167, 184, 327] max 11211
+  with an outside buy >= 0.0003: 64 pools, pull offset p10/50/90 899/2676/7078
+  without: 64 pools, pull offset p10/50/90 1062/8717/11094
+outside net ETH in per pool (sum): 0.2249 | fleet net ETH in (sum): 483.888
+
+per hour: launches, with fleet T, pools with an outside buy >= 0.0003 ETH, median fleet ETH by +600 (s08)
+  10-13 07: 5 launches, T 5, outside 1, fleet ETH by +600 median 0.726
+  10-13 08: 8 launches, T 8, outside 4, fleet ETH by +600 median 1.058
+  10-13 09: 8 launches, T 8, outside 1, fleet ETH by +600 median 1.157
+  10-13 10: 7 launches, T 7, outside 5, fleet ETH by +600 median 1.081
+  10-13 11: 3 launches, T 3, outside 0, fleet ETH by +600 median 0.727
+  10-13 12: 7 launches, T 6, outside 3, fleet ETH by +600 median 1.041
+  10-13 13: 5 launches, T 5, outside 4, fleet ETH by +600 median 0.689
+  10-13 14: 4 launches, T 4, outside 2, fleet ETH by +600 median 1.024
+  10-13 15: 6 launches, T 6, outside 3, fleet ETH by +600 median 1.011
+  10-13 16: 7 launches, T 7, outside 4, fleet ETH by +600 median 0.635
+  10-13 17: 3 launches, T 3, outside 0, fleet ETH by +600 median 0.675
+  10-13 18: 5 launches, T 5, outside 1, fleet ETH by +600 median 1.134
+  10-13 19: 6 launches, T 6, outside 3, fleet ETH by +600 median 1.095
+  10-13 20: 7 launches, T 7, outside 2, fleet ETH by +600 median 1.134
+  10-13 21: 5 launches, T 5, outside 2, fleet ETH by +600 median 0.728
+  10-13 22: 4 launches, T 4, outside 2, fleet ETH by +600 median 1.095
+  10-13 23: 8 launches, T 8, outside 6, fleet ETH by +600 median 1.095
+  10-14 00: 9 launches, T 9, outside 9, fleet ETH by +600 median 0.729
+  10-14 01: 6 launches, T 6, outside 4, fleet ETH by +600 median 1.134
+  10-14 02: 10 launches, T 10, outside 6, fleet ETH by +600 median 0.737
+  10-14 03: 5 launches, T 5, outside 2, fleet ETH by +600 median 1.105
