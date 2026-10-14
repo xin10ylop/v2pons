@@ -168,10 +168,11 @@ def main():
                                               cfg(st, "BASE_STAKE_ETH", 0.002), cfg(st, "BASE_STAKE_CAP_ETH", 0.005), cfg(st, "BASE_HOLD_BLOCKS", 6),
                                               pct(num(cfg(st, "BASE_TAKE_PROFIT", 0.01))), cfg(st, "BASE_DAILY_STOP_USD", 10)))
     if fl:
-        age = (now - fl["t"]) / 60
+        age = (now - fl["t"]) / 60; quiet = (now - max(fl["t"], st.get("t") or 0)) / 60          # a fresh start has no flow line for its first minute
         print("feeds: head %s, %s s behind its timestamp; websocket %s, flashblocks %s; since the start: %s launches, %s armed, %s trades; "
               "the last flow line %.0f min ago%s" % (fl.get("head"), fl.get("lag_s"), fl.get("ws"), fl.get("flash"), fl.get("launches"), fl.get("armed"),
-                                                   fl.get("trades"), age, "   <== NOT READING (journalctl -u flip-base -n 30)" if age > 3 and active else ""))
+                                                   fl.get("trades"), age, "   <== NOT READING (journalctl -u flip-base -n 30)" if quiet > 3 and active else
+                                                   ("   (restarted %.0f min ago: its first flow line comes a minute in)" % ((now - st["t"]) / 60) if st.get("t", 0) > fl["t"] else "")))
         if fl.get("halted") or fl.get("stopped"):
             print("   flow says: halted %s, stopped %s" % (fl.get("halted"), fl.get("stopped")))
     else:
