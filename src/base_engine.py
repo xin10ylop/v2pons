@@ -1504,8 +1504,8 @@ def on_ws_message(raw, subs):
     if d.get("id") in (1, 2):
         if "error" in d:
             raise RuntimeError(f"eth_subscribe refused: {scrub(json.dumps(d['error']), 120)}")
-        if "result" not in d:                                                      # publicnode sends such a reply now and then (Oct 14): not a subscription
-            alarm(f"a websocket reply with id {d['id']} and no result: ignored ({scrub(raw, 100)})", quiet_key="wsreply", every_s=600); return
+        if "result" not in d:                                                      # publicnode's drop notice (Oct 14, about every 10 min): {"id":2,"method":
+            raise RuntimeError(f"the server dropped subscription {d['id']}: reconnecting ({scrub(raw, 100)})")   # "eth_subscription","params":{"error":...}}: the logs stop; reconnect at once
         subs[d["result"]] = "heads" if d["id"] == 1 else "logs"
         with lock:
             state["ws_subs"] = len(subs); state["ws"] = len(subs) >= 2; state["ws_last"] = mono()
