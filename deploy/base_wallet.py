@@ -335,6 +335,8 @@ def transact(acct, to, value, data, gas=None, label="", confirm=None):
     """estimate, check the balance (value + gas at maxFee + twice the L1 bound), optionally confirm, sign, send, wait: the receipt"""
     me = acct.address.lower()
     base, prio, mx = fees()
+    if gas is None and to and data in ("0x", "") and not has_code(to):
+        gas = 21000                                                                      # a plain transfer to an account
     if gas is None:
         q = {"from": me, "value": hex(value), "data": data}
         if to:
@@ -376,7 +378,7 @@ def set_env(path, key, value):
         lines = open(path).read().splitlines()
     except FileNotFoundError:
         lines = ["# the Base engine's settings (src/base_engine.py, docs/BASE.md section 5); no key belongs in this file"]
-    old = [l.split("=", 1)[1].strip() for l in lines if l.startswith(key + "=")]
+    old = [l.split("=", 1)[1].strip() for l in lines if l.startswith(key + "=") and l.split("=", 1)[1].strip()]
     out, done = [], False
     for l in lines:
         if l.startswith(key + "="):
