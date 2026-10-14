@@ -1,0 +1,33 @@
+launch 52590807: pool 0x3085339d7dfb6384 token 0x3a73002fcad288a2ce1aff82fad49229b060a777 fee 5000 ts 100 hook 0x1c888901220490eb5a1dc0a0e8ee106616c28080
+events to +60: [(3, 'add'), (3, 'add'), (8, 'swap'), (10, 'swap'), (12, 'swap'), (12, 'swap'), (13, 'swap'), (15, 'swap'), (15, 'swap'), (17, 'swap'), (21, 'swap'), (23, 'swap'), (23, 'swap'), (25, 'swap'), (25, 'swap'), (27, 'swap'), (27, 'swap'), (28, 'swap'), (30, 'PULL')]
+
+round trip in one call (buy then sell), 0.002 ETH, by an outside relay:
+  at + 1: REVERTED execution reverted 0xcb72d3db0000000000000000000000003a73002fcad288a2ce1aff82fad49229b060a777
+  at + 2: REVERTED execution reverted 0xcb72d3db0000000000000000000000003a73002fcad288a2ce1aff82fad49229b060a777
+  at + 3: buy -> 9.30081e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at + 4: buy -> 9.30081e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at + 5: buy -> 9.30081e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at + 6: buy -> 9.30081e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at + 7: buy -> 9.30081e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at + 8: buy -> 8.12478e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at + 9: buy -> 8.12478e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at +12: buy -> 6.38713e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at +16: buy -> 5.06147e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at +20: buy -> 4.53847e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at +24: buy -> 4.57294e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at +28: buy -> 3.70042e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+  at +29: buy -> 3.70042e+23 tokens, sell -> 0.001980 ETH (-1.00%)
+
+the token's balance mapping is at slot 3
+a sell alone, the relay holding 9.30081e+23 tokens (an outsider's buy at +4), at later blocks:
+  at + 6: sell -> 0.001976 ETH (-1.18% on the 0.002 ETH in)
+  at + 8: sell -> 0.002262 ETH (+13.12% on the 0.002 ETH in)
+  at + 9: sell -> 0.002262 ETH (+13.12% on the 0.002 ETH in)
+  at +10: sell -> 0.002831 ETH (+41.55% on the 0.002 ETH in)
+  at +12: sell -> 0.002878 ETH (+43.89% on the 0.002 ETH in)
+  at +14: sell -> 0.003217 ETH (+60.87% on the 0.002 ETH in)
+  at +16: sell -> 0.003631 ETH (+81.57% on the 0.002 ETH in)
+  at +20: sell -> 0.004050 ETH (+102.49% on the 0.002 ETH in)
+  at +24: sell -> 0.004019 ETH (+100.96% on the 0.002 ETH in)
+  at +28: sell -> 0.004967 ETH (+148.33% on the 0.002 ETH in)
+  at +29: sell -> 0.004967 ETH (+148.33% on the 0.002 ETH in)
