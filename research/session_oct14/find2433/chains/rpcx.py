@@ -8,8 +8,8 @@ EP = {"rh": "https://rpc.mainnet.chain.robinhood.com",
       "eth_h": "https://mainnet.gateway.tenderly.co", "eth_d": "https://eth.drpc.org", "eth_m": "https://rpc.mevblocker.io",
       "base_h": "https://base.gateway.tenderly.co", "base_d": "https://base.drpc.org",
       "uni_h": "https://mainnet.unichain.org", "uni_d": "https://unichain.drpc.org", "uni_t": "https://unichain.gateway.tenderly.co",
-      "arb_h": "https://arb1.arbitrum.io/rpc", "arb_d": "https://arbitrum.drpc.org", "arb_t": "https://arbitrum.gateway.tenderly.co"}
-PACE = {"rh": 0.5, "eth_d": 0.4, "base_d": 0.4, "uni_d": 0.4, "arb_d": 0.4}
+      "arb_h": "https://arb1.arbitrum.io/rpc", "arb_d": "https://arbitrum.drpc.org", "arb_t": "https://arbitrum.gateway.tenderly.co", "bsc_h": "https://rpc-bsc.48.club", "bsc_d": "https://bsc.drpc.org"}
+PACE = {"rh": 0.5, "bsc_h": 0.35, "bsc_d": 1.0, "eth_d": 0.4, "base_d": 0.4, "uni_d": 0.4, "arb_d": 0.4}
 ALLOWED = {"eth_call", "eth_getLogs", "eth_getTransactionByHash", "eth_getTransactionReceipt", "eth_getCode", "eth_getBlockByNumber",
            "eth_blockNumber", "eth_chainId", "eth_getBalance", "eth_getTransactionCount", "eth_getStorageAt"}
 H = {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"}

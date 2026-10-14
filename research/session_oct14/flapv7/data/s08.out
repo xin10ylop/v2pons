@@ -1,0 +1,68 @@
+
+### outsider<+100: 123 pairs, 41 holders, 48 launches
+  held >= 200 blocks, then moved out OK : 83  (hold to first exit p10/50/90 [288.6, 668.0, 1671.2])
+  moved out before 200 blocks            : 40  (p50 69.0)
+  never moved out (still holding)        : 0
+  with a balance at the head             : 6; transfer(dEaD,1%) ok 6, Portal sell ok 4 (3 dust at 1% = AmountTooSmall, full-balance sell ok)
+  exit method of first move: Portal sell 123, plain transfer 0
+  fully exited 117 of 123 that moved
+  buyer type: [('Portal-direct EOA', 76), ('router/bot 0x1de460f3', 20), ('router/bot 0x43dd5eeb', 7), ('router/bot 0x296b0019', 6), ('router/bot 0x5994814f', 4), ('router/bot 0xd36b6d64', 4)]
+  held>=200 by type: [('Portal-direct EOA', 61), ('router/bot 0x1de460f3', 7), ('router/bot 0x43dd5eeb', 7), ('router/bot 0x296b0019', 4), ('router/bot 0xd36b6d64', 1), ('router/bot 0x9b4ec20c', 1)]
+  bought-at offsets p10/50/90: [1.0, 1.0, 60.6]
+   e.g. holder 0x0483324078cf79ae351e77fac1328186e16eeceb token 0x61e1cebbca0a35fdb617d480c8897041a9398888 buy +1 tx 0x5777ce7a350cdc6a2604c01b75855dca256e570f00e134bc7750465fc4e0474f (0.0398 BNB, 0x43dd5eeb:3593564c:580:600000000) -> first exit 21031 blocks later tx 0x75a2ca9f30a3b9d4d03db1ca360d5434bacdaa215336a0ab0928c7b24920163d sold_portal=True
+   e.g. holder 0x4a90530b82743d4df756d49a0693492c3eb5b755 token 0xf793c1a912d9ba6784e5a8b2bdcb6920b31e8888 buy +1 tx 0xc0b08c567835b7ac5f7e0066742c19fc619e8c3bb5a3f72a2ff16940814e387e (0.0398 BNB, 0x43dd5eeb:3593564c:580:600000000) -> first exit 13234 blocks later tx 0xe01ea1e3bea3aabe87b66fde2d09531ee12fe0166d0d0b3198bcce3ffa76a557 sold_portal=True
+   e.g. holder 0x4a90530b82743d4df756d49a0693492c3eb5b755 token 0x034414311a04f962e130b4df5eef7a445bc88888 buy +1 tx 0xb16cabd732e796fdcbbd9fc4c2d184644c645bd2a9bcf5e7182d4ea44e711801 (0.0398 BNB, 0x43dd5eeb:3593564c:580:600000000) -> first exit 12410 blocks later tx 0xd7d2f0b9bf1975049cb036780405845670e78d8c63381a2db90c78e9e3d5e5d1 sold_portal=True
+   e.g. holder 0x4a90530b82743d4df756d49a0693492c3eb5b755 token 0x580367e249fa11160362c5936af84f7434558888 buy +1 tx 0xa974c7d2da780f04edaa820ba36bea3d854638a0cec9c7f9eb55f7e088171ea4 (0.0398 BNB, 0x43dd5eeb:3593564c:580:600000000) -> first exit 8660 blocks later tx 0x14e44117097d2aeda36c0aab6452a4ea7e8deaefb6b4e3676f276eccad9142ed sold_portal=True
+   e.g. holder 0x4a90530b82743d4df756d49a0693492c3eb5b755 token 0x0ee5e8e659dcc83c4d0267dcdb554220f0388888 buy +1 tx 0x7c3f3aa74e90adf77b1f9dc77f16ad7870eb76d43a6442023b6bd319fc0d5b92 (0.0398 BNB, 0x43dd5eeb:3593564c:580:600000000) -> first exit 5774 blocks later tx 0xd70ccf059d8183fb27b0df90d2857af938e7c57a03a2a823e72c3d7e98390201 sold_portal=True
+   e.g. holder 0x0483324078cf79ae351e77fac1328186e16eeceb token 0x1878376dbe9f39ce72637d9c2dc01c2a6c568888 buy +1 tx 0x98622714a169be9e67269e357c5200740dc11f6376e5fb885ecf844542cfe20c (0.0398 BNB, 0x43dd5eeb:3593564c:580:600000000) -> first exit 2686 blocks later tx 0x524bfb531610a985117af4e1344a6a2cc994c944c9f870ac473bdae142f001f1 sold_portal=True
+
+### outsider>=+100: 192 pairs, 168 holders, 35 launches
+  held >= 200 blocks, then moved out OK : 116  (hold to first exit p10/50/90 [332.5, 1333.5, 26546.5])
+  moved out before 200 blocks            : 61  (p50 67.0)
+  never moved out (still holding)        : 15
+  with a balance at the head             : 22; transfer(dEaD,1%) ok 22, Portal sell ok 21 (3 dust at 1% = AmountTooSmall, full-balance sell ok)
+  exit method of first move: Portal sell 173, plain transfer 4
+  fully exited 170 of 177 that moved
+  buyer type: [('router/bot 0x1de460f3', 42), ('router/bot 0xd36b6d64', 24), ('router/bot 0x3508dca9', 24), ('Portal-direct EOA', 22), ('router/bot 0x5994814f', 18), ('router/bot 0xb300000b', 16)]
+  held>=200 by type: [('router/bot 0x1de460f3', 26), ('router/bot 0xd36b6d64', 15), ('router/bot 0x5994814f', 14), ('router/bot 0x3508dca9', 13), ('router/bot 0xb300000b', 12), ('Portal-direct EOA', 9)]
+  bought-at offsets p10/50/90: [159.6, 589.0, 17050.9]
+   e.g. holder 0xef487af9c18bc576f92015389b6f069a44feb403 token 0xb2aaab82e36b035e1f29b9eee306ea204d388888 buy +112 tx 0xc23a9a9d6650ee55e4c0682485f8f01afc58115cef658e93861e1562d703e5e7 (0.0035 BNB, 0xb300000b:810c705b:1572:74768153) -> first exit 193417 blocks later tx 0x456d5cf0261c0f3e84b9b7ea9735a6f8042040b787ebfd6877a97aca4a0ca0d7 sold_portal=True
+   e.g. holder 0x77f30c4c6d2966d5cad3a2e44b8867ff4282ac89 token 0x4161c938d65b304dcc8c61de4a721faa400a8888 buy +1340 tx 0xc617c04d47eface9eaeac316a4e95ce8ab571b1ffa9c626e4256d7aa652e79f1 (0.0030 BNB, 0x5994814f:0c307f76:1092:103650006) -> first exit 96623 blocks later tx 0xef0542d45cc99b386278648cb061cb450d0e546ad10a270bef182c3c8b8de75a sold_portal=True
+   e.g. holder 0x08ceb75c84b64e47a1446253bb0d10e90f5278c0 token 0x339f7c5771c0aec1a0312f1e42c1ada2d25b8888 buy +479 tx 0x6131c56ee5927680e675016c449ad4496da3e02af377a96bd7c782792e1818d5 (0.4975 BNB, 0xb300000b:810c705b:1572:122323855) -> first exit 84225 blocks later tx 0x717a76334c03e1ec3a748a477fd9c5b777a24e6f9c7eefe270fab10fb4c6f2b5 sold_portal=False
+   e.g. holder 0x23a89b1cf3f5b09e3ecd0f1ce8e6acafb79f9a10 token 0xe1fee54d9cb0be202ff0fbc3c8bac18e64ac8888 buy +175 tx 0xd22fa02e6d4a5c17a434b9c9aedfcadbb585f1044ad23b3426d35186d3e68b29 (0.0263 BNB, 0xccc88a9d:0a2b8f36:3652:71500000) -> first exit 79815 blocks later tx 0xbf4a53c42fe0a44d28945a00b2292bf0e04d157d230fff45dbf3b768b08d3340 sold_portal=True
+   e.g. holder 0x525b70c666e17f778e5160a53cff25bf040ee958 token 0xe00b5f834292ec92267db0e5101bde34d2338888 buy +1345 tx 0xd3938e966bad97320d6aadf8ad6fa7d3e7ac031cd329969bc9718bd912e5351a (0.0662 BNB, 0xb300000b:810c705b:2116:81557464) -> first exit 67339 blocks later tx 0x7356b748d4cfa1039ee0541ac9fd4bd41d512e24a6e44b1d4a99d300b538acbd sold_portal=True
+   e.g. holder 0x0972550e66cbc9ee4cb09aecc4e9b1d0347da955 token 0x034414311a04f962e130b4df5eef7a445bc88888 buy +578 tx 0xbae346258e5f1dd69bf67bf5638332946a63b963e467e1830aea73465fd81b36 (0.0015 BNB, 0x3d90f66b:47ee97ff:1284:0) -> first exit 60652 blocks later tx 0xec2bf468fa6aa610fd083ced7846527028ac15c50904af2b72e3ff0203c5bdca sold_portal=True
+
+### crowd: 234 pairs, 164 holders, 37 launches
+  held >= 200 blocks, then moved out OK : 148  (hold to first exit p10/50/90 [240.9, 660.0, 2707.3])
+  moved out before 200 blocks            : 68  (p50 118.0)
+  never moved out (still holding)        : 18
+  with a balance at the head             : 20; transfer(dEaD,1%) ok 20, Portal sell ok 20 (3 dust at 1% = AmountTooSmall, full-balance sell ok)
+  exit method of first move: Portal sell 214, plain transfer 2
+  fully exited 214 of 216 that moved
+  buyer type: [('Portal-direct EOA', 229), ('router/bot 0x3508dca9', 5)]
+  held>=200 by type: [('Portal-direct EOA', 143), ('router/bot 0x3508dca9', 5)]
+  bought-at offsets p10/50/90: [72.6, 295.5, 3734.1]
+   e.g. holder 0xf6d81950eb66b198561aa9ec28a2104cdf8fa32e token 0x339f7c5771c0aec1a0312f1e42c1ada2d25b8888 buy +6511 tx 0xc0431b8801f941e2be9c1f51cbb1aabb9f7117c3cc61e5c7f65204e640fbcd23 (0.3367 BNB, 0xe2ce6ab8:ef7ec2e7:228:50000000) -> first exit 83582 blocks later tx 0xd896e1207578c10f90736de311c776045bf1651f9cdf3e1d7513d24159670e9c sold_portal=False
+   e.g. holder 0xbe74e835a5327e0f56dd0abcb47d81c7c3b8c7aa token 0x339f7c5771c0aec1a0312f1e42c1ada2d25b8888 buy +6513 tx 0xf9b31158b6dd718901f978bdaacf4744ee9dd2a623aea48cb3c5898220a4f236 (0.0200 BNB, 0xe2ce6ab8:ef7ec2e7:228:600000000) -> first exit 56886 blocks later tx 0x544b2ebfdc6fada6b127a18a071e57226f606153fe141cba116ec29616384792 sold_portal=True
+   e.g. holder 0x3c8b73e24bb1a9feb315f871128266ed164d409e token 0x1878376dbe9f39ce72637d9c2dc01c2a6c568888 buy +3736 tx 0x72c6c6ec45aa32cad53d3c10297c8b3300392289ab2ddc16e9fb69a66be353b7 (0.0600 BNB, 0xe2ce6ab8:ef7ec2e7:228:100000000) -> first exit 16094 blocks later tx 0xac1010edfda52d049cb284a68af0687edfd44a53fb5b950715239edc0055eed2 sold_portal=True
+   e.g. holder 0x3c8b73e24bb1a9feb315f871128266ed164d409e token 0xa4c445e1076b10f5f1831e3b50d4ec0cc00b8888 buy +509 tx 0x1c5ec71305fa63e186269646134196c74851f8f424c138a9af3a09f8d1a8e67c (0.0600 BNB, 0xe2ce6ab8:ef7ec2e7:228:100000000) -> first exit 15657 blocks later tx 0xe5dddab8b727b43f9c110b63896922f97838fe800bc685bb63b924e6506b9b5d sold_portal=True
+   e.g. holder 0x279f38c6eda060f153e8498861ea8ea7fd0ebcf0 token 0x339f7c5771c0aec1a0312f1e42c1ada2d25b8888 buy +3383 tx 0x4391441dcea87235f95415f9d53da733f38acc4d50168cf4dabf8a213d66232d (0.0250 BNB, 0xe2ce6ab8:ef7ec2e7:228:100000000) -> first exit 13074 blocks later tx 0x6b390f67c25b5a65ecc2eca4764e63e9834d9f7082d437a513849f0b961106db sold_portal=True
+   e.g. holder 0x3c8b73e24bb1a9feb315f871128266ed164d409e token 0xb4e9f48b9b78f4f9b3a12a34c105bbd779e38888 buy +607 tx 0x26f6af4b004e2a3e2b3df254f644d416df233aa4130bff050f88f0ed7190818f (0.0600 BNB, 0xe2ce6ab8:ef7ec2e7:228:100000000) -> first exit 10123 blocks later tx 0x9c5f86b6f8148e54c6076d681b0196baae594b1bbb4d2bc7727a9b1419c13ef5 sold_portal=True
+
+### dev: 56 pairs, 53 holders, 56 launches
+  held >= 200 blocks, then moved out OK : 34  (hold to first exit p10/50/90 [242.8, 512.5, 7979.9])
+  moved out before 200 blocks            : 20  (p50 105.0)
+  never moved out (still holding)        : 2
+  with a balance at the head             : 3; transfer(dEaD,1%) ok 3, Portal sell ok 3 (3 dust at 1% = AmountTooSmall, full-balance sell ok)
+  exit method of first move: Portal sell 51, plain transfer 3
+  fully exited 53 of 54 that moved
+  buyer type: [('Portal-direct EOA', 56)]
+  held>=200 by type: [('Portal-direct EOA', 34)]
+  bought-at offsets p10/50/90: [0.0, 0.0, 0.0]
+   e.g. holder 0x5b9c097ff44232bfe901cb58b0531bd9565c6cee token 0x22a9866d0c75e5474eec50bc35c4aba7211c8888 buy +0 tx 0xa8477617fce4becb05fad2f03cc7a2ac8724f99b01192d255d25329420a4980d (0.1144 BNB, 0xe2ce6ab8:87ef5b30:1540:59953750) -> first exit 190972 blocks later tx 0x1ed6fa62207ad45adbd99eed67da71574ef69f78e12c797ce34737b008dff2f3 sold_portal=True
+   e.g. holder 0x155878c561888e1bf54921aa61151f14ee4443d9 token 0x339f7c5771c0aec1a0312f1e42c1ada2d25b8888 buy +0 tx 0x93dd68becaa73c61eecc2915e0818bd371153102b901931a585861cf045f0c9b (0.1144 BNB, 0xe2ce6ab8:87ef5b30:1540:64292708) -> first exit 72794 blocks later tx 0x365d16e25725f514a723ab311888ba1ef486451051d4dc59d29197ff5e9de6c0 sold_portal=False
+   e.g. holder 0xe12907333bcf9b76299c553957bd23779abb11fc token 0x052e55ae41222d4e9e5f1d054ffc46330cc18888 buy +0 tx 0xc404e7b02f68febae33d77777dac177b320677342f5e052fc0b283a58064aab1 (0.1144 BNB, 0xe2ce6ab8:87ef5b30:1540:63376229) -> first exit 48438 blocks later tx 0x2328d3db73489e18c76215ec4b7fa9073de68546deb4ad3009bd642f0bade0e6 sold_portal=True
+   e.g. holder 0x0cc0f84ddfca234318305250dbee2e611f3c7d4a token 0x1e2f12e8da1f955c3bf08bc69166a77fccd98888 buy +0 tx 0x9f1342fe7a7845e5e58c646c0ccdb759e496293d005c09f9d02dd0c3d6341edb (0.1144 BNB, 0xe2ce6ab8:87ef5b30:1540:58866015) -> first exit 8846 blocks later tx 0x229096ab8175cda91f680783b15a7cb62a6db41ab2b057b6872b7afd010dba8b sold_portal=False
+   e.g. holder 0x0cc0f84ddfca234318305250dbee2e611f3c7d4a token 0x2fb39f00222197a6d4a2e7711694f2d845428888 buy +0 tx 0x0acb61ea9a7a3ccf178e6175c6a93a8e675c35ca7300eb28848f0d8fd4baf031 (0.1144 BNB, 0xe2ce6ab8:87ef5b30:1540:58074999) -> first exit 5959 blocks later tx 0xe486ad367e0d36a0d090ce96d1a99608c56e0ca41b84f1f922fe646c922a90e8 sold_portal=False
+   e.g. holder 0xf8a8cab66075cc9855e864728e647cfaffe98347 token 0x638af2d8f5b81a40bf3b78b57d2af7b932fa8888 buy +0 tx 0x31a3838aebc6c8d67d8497c7c24b9916f31681439e84bb2be338ff9a136ced6f (0.1144 BNB, 0xe2ce6ab8:87ef5b30:1540:74750000) -> first exit 2540 blocks later tx 0xb72d3c8e5f2c52d1d8cfc897a22bcd04e218a7621f3c3d6051f4b10a83aa5ac5 sold_portal=True

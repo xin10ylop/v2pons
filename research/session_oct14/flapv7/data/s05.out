@@ -1,0 +1,44 @@
+launches 56 head 127560792
+fingerprints (launches, wallets) top 14:
+  0xe2ce6ab8:ef7ec2e7:228:751879699                 39    2  
+  0xc4a58eea:da0b3b3a:964:50100001                  24   16  
+  0xc4a58eea:da0b3b3a:964:50000000                  22   19  
+  0xe2ce6ab8:ef7ec2e7:228:74750000                  22   87 CROWD research-crowd
+  0x1de460f3:4d819a2a:580:120000000                 17   29  
+  0xe2ce6ab8:ef7ec2e7:228:100000000                 16    7 CROWD 
+  0xe2ce6ab8:ef7ec2e7:228:250000000                 15    1  
+  0xe2ce6ab8:ef7ec2e7:228:240000000                 14    1  
+  0xe2ce6ab8:ef7ec2e7:228:600000000                 12    8 CROWD research-crowd
+  0xe2ce6ab8:ef7ec2e7:228:350000000                  8    1  
+  0x43dd5eeb:3593564c:580:600000000                  7    2  
+  0xe2ce6ab8:ef7ec2e7:228:50000000                   7   58 CROWD 
+  0x1de460f3:4d819a2a:580:150000000                  6    3  
+  0xd36b6d64:27772d13:772:150000000                  5    6  
+anomalies {'topic 0x8be0079c': 56, 'topic 0x7f26b83f': 56, 'buy_without_receiver': 62}
+
+OUTSIDERS bought < +100: 123 (token, holder) pairs in 48 launches, 41 addresses
+   held >= 200, then moved out      83
+   moved out < 200 blocks           40
+   exits via Portal sell: 123 via transfer: 0
+
+OUTSIDERS bought >= +100: 192 (token, holder) pairs in 35 launches, 168 addresses
+   held >= 200, then moved out      116
+   moved out < 200 blocks           61
+   still holding (no move out)      15
+   exits via Portal sell: 173 via transfer: 4
+
+CROWD: 234 (token, holder) pairs in 37 launches, 164 addresses
+   held >= 200, then moved out      148
+   moved out < 200 blocks           68
+   still holding (no move out)      18
+   exits via Portal sell: 214 via transfer: 2
+
+DEV: 56 (token, holder) pairs in 56 launches, 53 addresses
+   held >= 200, then moved out      34
+   moved out < 200 blocks           20
+   still holding (no move out)      2
+   exits via Portal sell: 51 via transfer: 3
+
+other/mixed: 1 (token, holder) pairs in 1 launches, 1 addresses
+   held >= 200, then moved out      1
+   exits via Portal sell: 1 via transfer: 0

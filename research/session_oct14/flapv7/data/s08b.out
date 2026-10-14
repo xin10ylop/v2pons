@@ -1,0 +1,47 @@
+outsider (token,holder) pairs by entry offset x outcome:
+  +0..5      {'held200_ok': 64, 'out<200': 19}
+  +6..39     {'out<200': 8, 'held200_ok': 1}
+  +40..99    {'out<200': 13, 'held200_ok': 18}
+  +100..299  {'held200_ok': 32, 'out<200': 29, 'still': 1}
+  >=+300     {'held200_ok': 84, 'still': 14, 'out<200': 32}
+
+entry +20..+99: 37 pairs Counter({'held200_ok': 19, 'out<200': 18}) holders 27
+  + 22 0xd6fca3968cee3e9bd8a2b61d343786f6bfa18534 (3 launches) 0.0251 BNB 0x1de460f3:4d819a2a:580:150000000            -> exit +350 blocks sell 0x1d34c68dc492
+  + 23 0x8df9e4edcf3d04f9a07441f796d419de9b8a4e03 (1 launches) 0.0099 BNB 0x1de460f3:4d819a2a:580:120000000            -> exit +33 blocks sell 0x579ccc7036a3
+  + 24 0xf4372d74d59cca34a65eb40fa921a10def5860b1 (5 launches) 0.0192 BNB 0x1de460f3:4d819a2a:580:150000000            -> exit +150 blocks sell 0x08c168c737b3
+  + 24 0xedcf8f9dbfaf169d582d23c9e3be0ed22fe0b72d (1 launches) 0.1292 BNB 0xd36b6d64:27772d13:772:262000000            -> exit +78 blocks sell 0xcfe4ecbe5178
+  + 25 0xf4372d74d59cca34a65eb40fa921a10def5860b1 (5 launches) 0.0192 BNB 0x1de460f3:4d819a2a:580:150000000            -> exit +153 blocks sell 0xd57d3b77030f
+  + 27 0xd6fca3968cee3e9bd8a2b61d343786f6bfa18534 (3 launches) 0.0192 BNB 0x1de460f3:4d819a2a:580:150000000            -> exit +177 blocks sell 0x941d3606046b
+  + 40 0xf7cd6b7a99f02c5ef383761999dc8ce8a75475bf (1 launches) 0.0192 BNB 0x1de460f3:4d819a2a:580:150000000            -> exit +646 blocks sell 0xb3e84960a434
+  + 41 0x88904c5817eed868b3b698c13a94a5c4c9591e59 (15 launches) 0.0027 BNB 0xe2ce6ab8:ef7ec2e7:228:250000000            -> exit +670 blocks sell 0xed32e1070dc8
+  + 45 0x88904c5817eed868b3b698c13a94a5c4c9591e59 (15 launches) 0.0027 BNB 0xe2ce6ab8:ef7ec2e7:228:250000000            -> exit +265 blocks sell 0xde8c4569f518
+  + 46 0xf4372d74d59cca34a65eb40fa921a10def5860b1 (5 launches) 0.0103 BNB 0x1de460f3:4d819a2a:580:500000000            -> exit +182 blocks sell 0x2c93cffbcc98
+  + 50 0xb0889867a23b391101daed0f5b322e6561eaf615 (2 launches) 0.0010 BNB 0x1de460f3:4d819a2a:580:100000000            -> exit +1240 blocks sell 0x94b28ccda293
+  + 51 0x6d6613e418f3f585c7d1e15a9dfc18e05c55e2b0 (3 launches) 0.0188 BNB 0x5994814f:0c307f76:3172:50000000            -> exit +252 blocks sell 0xdcd150b581b8
+  + 51 0xdca400b21b9923451bbd547681eef5488d8bc657 (1 launches) 0.1292 BNB 0xd36b6d64:27772d13:772:100000000            -> exit +51 blocks sell 0x28db7c24b582
+  + 53 0xbad49b829753cc828bd07f04cde81ebc34ac770f (1 launches) 0.0134 BNB 0xd36b6d64:27772d13:1028:72000000            -> exit +176 blocks sell 0xb7af99e46486
+  + 54 0xced27ee20d609598fee5afeb683338df19af522e (1 launches) 0.0496 BNB 0x296b0019:27772d13:772:1050000000           -> exit +128 blocks sell 0xa9478b822f30
+  + 55 0x1a4305ab81b7f58018ef59febc2cda4c2ccd503a (4 launches) 0.0663 BNB 0x5994814f:0c307f76:2628:123600000           -> exit +50 blocks sell 0xf493f9fc200e
+  + 57 0x785e87783b5237796639114ffd50fd29453bec41 (1 launches) 0.1485 BNB 0x1de460f3:4d819a2a:580:120000000            -> exit +1664 blocks sell 0x6fdeafa00257
+  + 57 0x073c01e779677c6ce5085840794d3647ac183efb (1 launches) 0.1782 BNB 0x1de460f3:4d819a2a:1604:3000000000          -> exit +37 blocks sell 0xf29754a3b9a8
+  + 58 0xfe4d64085d00bcab2db216db12500aec8c062c12 (1 launches) 0.0149 BNB 0x3508dca9:0b3f5cf9:1548:550600000           -> exit +1664 blocks sell 0x6b638ac417ec
+  + 58 0x88904c5817eed868b3b698c13a94a5c4c9591e59 (15 launches) 0.0027 BNB 0xe2ce6ab8:ef7ec2e7:228:250000000            -> exit +668 blocks sell 0x3cf6b8670e6c
+  + 58 0xa8662c60c79e467d1c8e3a24327a27061f09a6e6 (4 launches) 0.1000 BNB 0xe2ce6ab8:ef7ec2e7:228:120000000            -> exit +41 blocks sell 0xb0d2dfa42ac6
+  + 58 0xbdaed514aaaf657d82ee16e7cd42161a9f5505b8 (1 launches) 0.0744 BNB 0x296b0019:27772d13:772:1050000000           -> exit +1664 blocks sell 0x29b5260a7f33
+  + 58 0xba8c7e8e7cdf18fd35c0919a046753485628dcce (1 launches) 0.0198 BNB 0x296b0019:27772d13:772:100000000            -> exit +1432 blocks sell 0xe240fdb229fa
+  + 59 0x0e0046376e7995102c206ab42cab1f57d1d2d4de (1 launches) 0.0050 BNB 0x296b0019:27772d13:772:100000000            -> exit +307 blocks sell 0x56cd568712c1
+  + 61 0x88904c5817eed868b3b698c13a94a5c4c9591e59 (15 launches) 0.0013 BNB 0xe2ce6ab8:ef7ec2e7:228:250000000            -> exit +265 blocks sell 0x4c04edfa45b3
+  + 63 0x4a3b68cce60c64f000aaaffad94a20b78c4423c0 (1 launches) 0.0694 BNB 0x296b0019:27772d13:772:175000000            -> exit +30 blocks sell 0xef28f0737003
+  + 66 0xd6fca3968cee3e9bd8a2b61d343786f6bfa18534 (3 launches) 0.0123 BNB 0x1de460f3:4d819a2a:580:150000000            -> exit +169 blocks sell 0xaf94474a9d77
+  + 66 0xce43407fed961359cf4cbb4435d8fc109f8958d8 (1 launches) 0.0495 BNB 0x1de460f3:4d819a2a:580:120000000            -> exit +49 blocks sell 0xeb673774aa86
+  + 74 0xf4372d74d59cca34a65eb40fa921a10def5860b1 (5 launches) 0.0192 BNB 0x1de460f3:4d819a2a:580:500000000            -> exit +265 blocks sell 0xd3f33b3002b2
+  + 77 0x4d98f70c720448bac7f081ac749497a0f76501d8 (1 launches) 0.0050 BNB 0x296b0019:27772d13:772:150000000            -> exit +274 blocks sell 0xa6298f615cd6
+  + 77 0xb0889867a23b391101daed0f5b322e6561eaf615 (2 launches) 0.0020 BNB 0x1de460f3:4d819a2a:580:100000000            -> exit +1673 blocks sell 0xfc694b2dbf5d
+  + 84 0xc00be05a21f0db365f4b8e43ac68bb8e0095482e (5 launches) 0.0099 BNB 0xd36b6d64:27772d13:772:150000000            -> exit +232 blocks sell 0x7104741111ff
+  + 84 0xead5f430e1ccf37ab5538a357f5e69929badfefa (1 launches) 0.0099 BNB 0x1de460f3:4d819a2a:580:120000000            -> exit +1072 blocks sell 0xca9ede0913ff
+  + 90 0x8d5c9e419328ef2ae741f90a453aadb797ab5476 (1 launches) 0.0990 BNB 0x1de460f3:4d819a2a:580:120000000            -> exit +55 blocks sell 0xa1e15b2fd91b
+  + 90 0x1cce124876bd81845537402c73de67c5d76fd667 (1 launches) 0.0990 BNB 0x1de460f3:4d819a2a:580:120000000            -> exit +55 blocks sell 0x370489c1acdb
+  + 93 0xfa252c7bf56721cdc015a202ce77f15a8a0c5ea2 (1 launches) 0.0100 BNB 0x5994814f:0c307f76:1092:105800006           -> exit +162 blocks sell 0x3040d670f374
+  + 93 0x88904c5817eed868b3b698c13a94a5c4c9591e59 (15 launches) 0.0027 BNB 0xe2ce6ab8:ef7ec2e7:228:250000000            -> exit +668 blocks sell 0x33365f8c582d
+
+fresh outsiders (one family launch) bought<+100: 26 Counter({'out<200': 17, 'held200_ok': 9})

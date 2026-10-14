@@ -1,0 +1,5 @@
+Portal bit flags slot 0xa0: 0x0000000000000000000000000000000000000000000000000000000000000007 bit0 (1 = swapExactInput enabled; clear = FeatureDisabled): 1
+family tokens with the per-token 'Unable to trade' flag set: 0 of 56
+outside holders with isSpammerBlocked = true: 0 of 203
+Portal admin events in the window {'from': 126982000, 'head': 127559000} {}
+token OwnershipTransferred logs (all 56 tokens): 56 (one per token = the initializer)

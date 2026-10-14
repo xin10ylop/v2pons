@@ -5,7 +5,7 @@ URL = {"ethereum": "https://ethereum-rpc.publicnode.com", "base": "https://base-
        "unichain": "https://unichain-rpc.publicnode.com", "bsc": "https://bsc-rpc.publicnode.com", "optimism": "https://optimism-rpc.publicnode.com",
        "bsc_archive": "https://bsc-mainnet.public.blastapi.io", "bsc_drpc": "https://bsc.drpc.org",
        "eth_archive": "https://eth-mainnet.public.blastapi.io", "base_archive": "https://base-mainnet.public.blastapi.io",
-       "eth_drpc": "https://eth.drpc.org"}
+       "eth_drpc": "https://eth.drpc.org", "bsc48": "https://rpc-bsc.48.club"}
 _last = [0.0]
 def post(chain, body):
     err = None

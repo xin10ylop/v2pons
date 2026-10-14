@@ -1,0 +1,5 @@
+head 127563478 pairs 606 with balance 51 errors 0
+outsider 28 transfer: Counter({'ok': 28}) sell: Counter({'ok': 25, 'REVERT:0xe2fae90a': 3})
+crowd 20 transfer: Counter({'ok': 20}) sell: Counter({'ok': 20})
+dev 3 transfer: Counter({'ok': 3}) sell: Counter({'ok': 3})
+other 0 transfer: Counter() sell: Counter()
