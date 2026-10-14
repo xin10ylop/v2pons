@@ -1,0 +1,30 @@
+
+== first outside buy >= 3e-05 ETH: 76 pools (before T: 0)
+  pulled within   5: observed  11 of 76 (14.5%), same-age expected   0.0 ( 0.0%) | fleet buys in that window: 0.09 a pool vs 0.15 same-age
+  pulled within  10: observed  11 of 76 (14.5%), same-age expected   0.1 ( 0.1%) | fleet buys in that window: 0.22 a pool vs 0.30 same-age
+  pulled within  30: observed  17 of 76 (22.4%), same-age expected   0.2 ( 0.2%) | fleet buys in that window: 0.75 a pool vs 0.89 same-age
+  pulled within  60: observed  32 of 76 (42.1%), same-age expected   0.4 ( 0.5%) | fleet buys in that window: 1.33 a pool vs 1.77 same-age
+  pulled within 100: observed  44 of 76 (57.9%), same-age expected   0.5 ( 0.7%) | fleet buys in that window: 1.75 a pool vs 2.91 same-age
+  pulled within 200: observed  72 of 76 (94.7%), same-age expected   1.0 ( 1.3%) | fleet buys in that window: 2.14 a pool vs 5.71 same-age
+  pulled within 600: observed  72 of 76 (94.7%), same-age expected   2.0 ( 2.6%) | fleet buys in that window: 2.95 a pool vs 15.65 same-age
+  lags: [4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 21, 24, 25, 26, 27, 28, 31, 34, 43, 43, 45, 45, 49, 50, 51, 52, 53, 53, 56, 56, 57, 62, 64, 76, 81, 82, 83, 89, 90]
+
+== first outside buy >= 0.0003 ETH: 64 pools (before T: 0)
+  pulled within   5: observed  10 of 64 (15.6%), same-age expected   0.0 ( 0.0%) | fleet buys in that window: 0.11 a pool vs 0.14 same-age
+  pulled within  10: observed  10 of 64 (15.6%), same-age expected   0.1 ( 0.2%) | fleet buys in that window: 0.22 a pool vs 0.28 same-age
+  pulled within  30: observed  16 of 64 (25.0%), same-age expected   0.3 ( 0.4%) | fleet buys in that window: 0.73 a pool vs 0.80 same-age
+  pulled within  60: observed  28 of 64 (43.8%), same-age expected   0.5 ( 0.8%) | fleet buys in that window: 1.20 a pool vs 1.56 same-age
+  pulled within 100: observed  39 of 64 (60.9%), same-age expected   0.7 ( 1.1%) | fleet buys in that window: 1.59 a pool vs 2.59 same-age
+  pulled within 200: observed  64 of 64 (100.0%), same-age expected   1.3 ( 2.0%) | fleet buys in that window: 1.88 a pool vs 5.15 same-age
+  pulled within 600: observed  64 of 64 (100.0%), same-age expected   2.8 ( 4.4%) | fleet buys in that window: 1.88 a pool vs 14.21 same-age
+  lags: [4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 21, 24, 25, 26, 27, 28, 31, 34, 43, 43, 45, 45, 49, 50, 52, 53, 56, 57, 64, 76, 81, 82, 83, 89, 90, 93, 96, 97, 100, 102]
+
+== first outside buy >= 0.001 ETH: 45 pools (before T: 0)
+  pulled within   5: observed   8 of 45 (17.8%), same-age expected   0.0 ( 0.1%) | fleet buys in that window: 0.09 a pool vs 0.14 same-age
+  pulled within  10: observed   8 of 45 (17.8%), same-age expected   0.1 ( 0.2%) | fleet buys in that window: 0.20 a pool vs 0.28 same-age
+  pulled within  30: observed  11 of 45 (24.4%), same-age expected   0.2 ( 0.4%) | fleet buys in that window: 0.64 a pool vs 0.79 same-age
+  pulled within  60: observed  20 of 45 (44.4%), same-age expected   0.3 ( 0.7%) | fleet buys in that window: 1.20 a pool vs 1.54 same-age
+  pulled within 100: observed  30 of 45 (66.7%), same-age expected   0.5 ( 1.0%) | fleet buys in that window: 1.56 a pool vs 2.53 same-age
+  pulled within 200: observed  45 of 45 (100.0%), same-age expected   0.8 ( 1.8%) | fleet buys in that window: 1.87 a pool vs 5.03 same-age
+  pulled within 600: observed  45 of 45 (100.0%), same-age expected   2.3 ( 5.2%) | fleet buys in that window: 1.87 a pool vs 14.13 same-age
+  lags: [4, 4, 4, 4, 4, 4, 4, 5, 21, 24, 28, 31, 42, 43, 43, 45, 49, 50, 56, 57, 76, 76, 81, 82, 83, 89, 90, 96, 97, 100, 114, 114, 117, 121, 135, 137, 138, 140, 142, 144]

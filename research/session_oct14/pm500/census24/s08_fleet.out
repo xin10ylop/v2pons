@@ -1,0 +1,16 @@
+fleet wallets 490 | pools per wallet p50/p90/max 28 34 40
+routers [('0x543282f890f93e6961a6d3cbcd9e003cc88dcb3c', 16545), ('0x628bd69ecbc135cdda02ffd6d6db918f5cd835ce', 6429)]
+wallet nonce at the swap p10/50/90 1373 1801 3219
+per pool n600: p10/50/90 20/27/36 min 5 max 37
+per pool s600: p10/50/90 0/3/6 min 0 max 9
+per pool ein600: p10/50/90 0.6348/0.8634/1.444 min 0.05979 max 1.49
+per pool eout600: p10/50/90 0/0.01844/0.4877 min 0 max 0.4992
+per pool nb: p10/50/90 43/126/188 min 5 max 221
+per pool ns: p10/50/90 8/45/113 min 0 max 185
+per pool ein: p10/50/90 1.581/6.577/13.98 min 0.05979 max 17.83
+per pool eout: p10/50/90 0.219/2.955/9.114 min 0 max 11.77
+ETH-in-by-+600 totals that repeat (value: pools): [(1.1342, 12), (1.4439, 10), (0.6666, 10), (0.727, 6), (1.0952, 6), (1.4595, 5), (1.4901, 5), (0.7181, 5), (1.0582, 3), (0.6346, 3), (0.6649, 2), (1.4409, 2)]
+distinct first-6 sorted buy sizes (schedules): 31 [((0.0003, 0.022085, 0.023312, 0.024905, 0.026288, 0.02655), 23), ((0.0003, 0.019852, 0.027903, 0.030833, 0.031191, 0.031347), 21), ((0.01272, 0.014489, 0.015724, 0.017484, 0.018667, 0.019054), 15), ((0.01272, 0.014489, 0.014728, 0.015724, 0.016608, 0.017484), 11), ((0.002426, 0.003074, 0.008194, 0.008829, 0.008887, 0.010113), 8), ((0.0003, 0.015543, 0.019852, 0.027903, 0.030833, 0.031191), 6)]
+fleet buys 15590: sold later by the same wallet 5769 (37%), never sold before the pull 9821
+  sell lag after its buy p10/50/90 41 530 3184 | return on fully sold p10/50/90 -0.1% +57.1% +475.5%
+pull minus the fleet's last swap: p10/50/90 5 14 82 min 0
