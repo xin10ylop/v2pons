@@ -25,8 +25,9 @@ after the one holding our buy: one sequenced ahead of ours is no exit) or confir
 BASE_BOT_SENDERS, off by default) (`exit: bot`); a confirmed buy behind ours at whose price our tokens are worth the stake x (1 +
 BASE_TAKE_PROFIT) + the round trip's estimated gas (`take_profit`); our buy's block + BASE_HOLD_BLOCKS reached by the head or a Flashblock
 (`deadline`, minOut 0). A live sell goes only once our buy is in (its Swap, receipt or Flashblock); its minOut is the ETH out at the tracked
-price (our buy in it) x (1 - BASE_SELL_SLIP). THE PULL (a negative ModifyLiquidity; a pending f2f230a8 only logs): before our fire the pool
-is skipped; after our buy and at or before our sell the trade is -100% (`pulled`, no sell sent if none was) and the line halts; a pull
+price (our buy in it) x (1 - BASE_SELL_SLIP). THE PULL (a negative ModifyLiquidity; a pending f2f230a8 from the launch wallet skips the
+pool before our fire and only logs after it): after our buy and at or before our sell the trade is -100% (`pulled`; the sell still goes,
+minOut 0: a partial pull would strand tokens), the line halts, and it is read again from eth_getLogs at the settlement; a pull
 within BASE_NEAR_MISS_BLOCKS of our buy halts even behind our sell; a sell that sold nothing on a pool not pulled halts ("sold none");
 BASE_NONBOT_HALT live trades in a row under BASE_NONBOT_MIN_RET halt (the decoy rule). A halt writes HALTED.base (beside the log; held across
 restarts until the owner removes it), stops new buys and still sells what is open. SETTLE from the receipts: the tokens and ETH in from our
@@ -155,6 +156,11 @@ def _url(name, default, schemes, v=None):
     return v
 
 
+def need(ok, why):
+    if not ok:
+        raise SystemExit(why)
+
+
 def settings():
     s = types.SimpleNamespace()
     dry = env("BASE_DRY_RUN", "1")
@@ -184,6 +190,8 @@ def settings():
     s.ADD_SELECTOR = _hex("BASE_ADD_SELECTOR", "2346bb56", 8); s.PULL_SELECTOR = _hex("BASE_PULL_SELECTOR", "f2f230a8", 8)
     s.BOT_ROUTERS = set(_hexlist("BASE_BOT_ROUTERS", "0x987d5db84d105c1f49391af409cc34c6050fb1d0", 40))
     s.BOT_SENDERS = set(_hexlist("BASE_BOT_SENDERS", "", 40))
+    s.BOT_SELECTORS = {x[2:] for x in _hexlist("BASE_BOT_SELECTORS", "27f7e6ee", 8)}         # the bot contract's buy (not its 4977dff6 funding call)
+    need(s.BOT_SELECTORS, "BASE_BOT_SELECTORS is empty")
     s.MIN_POOL_WEI = _exact("BASE_MIN_POOL_ETH", "1.0", 0, 1_000_000, 10 ** 18); s.ADD_MAX_BLOCKS = _setting("BASE_ADD_MAX_BLOCKS", "10", 1, 1000, True)
     s.STAKE_ETH_WEI = _exact("BASE_STAKE_ETH", "0.002", "0.000001", 10, 10 ** 18); s.STAKE_CAP_WEI = _exact("BASE_STAKE_CAP_ETH", "0.005", "0.000001", 10, 10 ** 18)
     s.STAKE_WEI = min(s.STAKE_ETH_WEI, s.STAKE_CAP_WEI)
@@ -235,11 +243,17 @@ reset()
 
 # ---------------------------------------------------------------- log, alarm, halt
 def log(ev):
-    ev["t"] = round(now(), 3)
-    line = json.dumps(ev, separators=(",", ":"), default=str)
-    with _log_lock:
-        with open(S.LOG_PATH, "a") as f:
-            f.write(line + "\n")
+    """one JSON line; never raises (a full disk or a bad value must not end the thread that logs): stderr, once a key"""
+    try:
+        ev["t"] = round(now(), 3)
+        line = json.dumps(ev, separators=(",", ":"), default=str)
+        with _log_lock:
+            with open(S.LOG_PATH, "a") as f:
+                f.write(line + "\n")
+    except Exception as e:
+        if type(e).__name__ not in state.setdefault("log_errors", set()):
+            state["log_errors"].add(type(e).__name__)
+            print(f"base_engine: the log line was not written ({type(e).__name__}: {str(e)[:120]})", file=sys.stderr, flush=True)
 
 
 def alarm(what, quiet_key=None, every_s=600, **kw):
@@ -299,11 +313,11 @@ def http_json(url, payload, timeout):
         with urllib.request.urlopen(req, timeout=timeout) as r:
             return json.loads(r.read())
     except urllib.error.HTTPError as e:
-        body = e.read()
+        body, code = e.read(), e.code
     try:
         return json.loads(body)
     except ValueError:
-        raise RuntimeError(f"HTTP {e.code}: {body[:80]!r}")
+        raise RuntimeError(f"HTTP {code}: {body[:80]!r}")
 
 
 def read(method, params, timeout=READ_TIMEOUT_S, tries=1):
@@ -477,7 +491,7 @@ def tx_sender(raw_hex):
 # ---------------------------------------------------------------- the pools
 def new_pool(pid, key, lg, B, sp0, tick0):
     return {"pid": pid, "key": key, "token": key["c1"], "hook": key["hooks"], "L": B, "launch_tx": lg["transactionHash"], "sp0": sp0, "tick0": tick0,
-            "ev": {}, "status": "arming", "launch_from": None, "add_pending": None, "add_conf": None, "add_logged": False, "kick": False,
+            "ev": {}, "status": "arming", "launch_from": None, "add_pending": None, "add_held": None, "add_conf": None, "add_logged": False, "kick": False,
             "pull_logged": False, "bot_txs": set(), "bot_logged": set(), "trade": None}
 
 
@@ -591,7 +605,8 @@ def arm(p):
         p.update(launch_from=tx.get("from"), status="skip" if why else "armed", kick=not why)
         why and pools.pop(p["pid"], None)
         log({"ev": "launch", **launch_rec(p), **rec, "armed": not why, "skip": why})
-        why or end_burst()
+        if not why:
+            pending_add(p); end_burst()
 
 
 def order(lg):
@@ -772,17 +787,12 @@ def on_flash_tx(s, N, at):
             flash_txs.popitem(last=False)
     for p in list(pools.values()):
         if to == p["hook"] and sel == S.ADD_SELECTOR and p["status"] in ("arming", "armed") and p["add_pending"] is None and p["add_conf"] is None:
-            frm = tx_sender(s)
-            if p["launch_from"] and frm != p["launch_from"]:
-                alarm("a pending add to an armed hook from another wallet than the launch's: not the add", quiet_key="addfrom", pool=p["pid"], sender=frm); continue
             h = h or "0x" + keccak(raw).hex()
-            liq = tx["value"] * p["sp0"] // Q96                                         # a full-range position at the launch price: amount0 = L x 2^96 / sqrtP
-            p["add_pending"] = {"block": N, "tx": h, "via": "flash", "value": tx["value"], "liq_pred": liq, "from": frm, "seen_at": mono()}
-            log({"ev": "add", "pool": p["pid"], "block": N, "eth": tx["value"] / 1e18, "eth_wei": tx["value"], "liquidity": liq, "pending": True, "via": "flash", "tx": h, "from": frm})
-            p["kick"] = True
-        elif to == p["hook"] and sel == S.PULL_SELECTOR and p["status"] != "skip":
+            p["add_held"] = {"block": N, "tx": h, "via": "flash", "value": tx["value"], "liq_pred": tx["value"] * p["sp0"] // Q96, "from": tx_sender(s), "seen_at": mono()}
+            pending_add(p)                                                         # (a full-range position at the launch price: amount0 = L x 2^96 / sqrtP)
+        elif to == p["hook"] and sel == S.PULL_SELECTOR and p["status"] != "skip" and p["launch_from"] and tx_sender(s) == p["launch_from"]:
             on_pull(p, N, "flash", pending=True)
-        elif to in S.BOT_ROUTERS and p["status"] in ("armed", "fired", "traded") and p["token"][2:] in tx["data"].hex():
+        elif to in S.BOT_ROUTERS and sel in S.BOT_SELECTORS and tx["value"] > 0 and p["status"] in ("armed", "fired", "traded") and p["token"][2:] in tx["data"].hex():
             h = h or "0x" + keccak(raw).hex()
             if h in p["bot_txs"]:
                 continue
@@ -791,6 +801,19 @@ def on_flash_tx(s, N, at):
             pos = state["position"]
             if pos is not None and pos["pid"] == p["pid"] and not pos["sell_sent"] and pos["trigger"] is None and bought_before(pos, N, at):
                 pos["trigger"] = {"exit": "bot", "block": N, "via": "flash", "reason": f"the bot's buy seen pending ({tx['value'] / 1e18:.4f} ETH), behind ours"}
+
+
+def pending_add(p):
+    """an add seen pending counts once the launch wallet is known (the arm's read) and is its sender; while arming it is held"""
+    a = p.get("add_held")
+    if a is None or not p["launch_from"]:
+        return
+    p["add_held"] = None
+    if a["from"] != p["launch_from"]:
+        alarm("a pending add to an armed hook from another wallet than the launch's: not the add", quiet_key="addfrom", pool=p["pid"], sender=a["from"]); return
+    p["add_pending"] = a; p["kick"] = True
+    log({"ev": "add", "pool": p["pid"], "block": a["block"], "eth": a["value"] / 1e18, "eth_wei": a["value"], "liquidity": a["liq_pred"], "pending": True, "via": "flash",
+         "tx": a["tx"], "from": a["from"]})
 
 
 def bought_before(pos, N, at):
@@ -1294,11 +1317,6 @@ def start_checks():
     return info
 
 
-def need(ok, why):
-    if not ok:
-        raise SystemExit(why)
-
-
 def live_checks(chains):
     """the wallet, its key (locked while the engine runs), the relay (owner, pm), the send endpoints, the stake, the balance, the nonce"""
     global SIGNER, KEY_LOCK
@@ -1543,8 +1561,11 @@ def tick():
 async def ticker():
     while True:
         await asyncio.sleep(1.0)
-        with lock:
-            tick()
+        try:
+            with lock:
+                tick()
+        except Exception as e:                                                 # one bad pass must not end the process mid-trade
+            alarm(f"the ticker failed: {type(e).__name__}: {scrub(e, 120)}", quiet_key="tick", every_s=60, trace=traceback.format_exc()[-400:])
 
 
 def stop(*_):
