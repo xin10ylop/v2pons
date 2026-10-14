@@ -787,10 +787,17 @@ serves `eth_getTransactionByHash`, `eth_getBlockReceipts` (or `eth_getTransactio
 two lines, each whole (it defines step 4's `set_bnb` itself, so it works in a new SSH session too). When the second host named is
 `BNB_RPC_URL`'s own (the same as the first), a read of `BNB_RPC_URL`'s own failed (its count, a balance, an allowance or its pool: each
 endpoint is read alone, never one for the other): a rate limit passes by itself; for more than a few minutes it is `BNB_RPC_URL`'s
-trouble, not the second endpoint's, and these two lines do not help:
+trouble, not the second endpoint's, and these two lines do not help (the third one does):
 
     set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }; set_bnb BNB_READ_ALT_URL https://OTHER_ENDPOINT && sudo systemctl restart flip-bnb
     set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }; set_bnb BNB_READ_ALT_URL 0 && sudo systemctl restart flip-bnb
+
+When `BNB_RPC_URL`'s own reads keep failing for more than a few minutes while a sale is open, do not wait: a sell or approve that no
+pool holds any more is held until `BNB_RPC_URL` answers its own count, and past the creator's drain (L+997, about 5 minutes after the
+sale was due at L+260) the tokens can no longer be sold, so the stake can be lost. Point `BNB_RPC_URL` at another https endpoint that
+serves the same calls and restart (a restart keeps the open positions), in one whole line:
+
+    set_bnb() { sudo grep -q "^$1=" /etc/flip/bnb.env && sudo sed -i "s|^$1=.*|$1=$2|" /etc/flip/bnb.env || echo "$1=$2" | sudo tee -a /etc/flip/bnb.env >/dev/null; }; set_bnb BNB_RPC_URL https://OTHER_ENDPOINT && sudo systemctl restart flip-bnb
 
 The alarm `the buy|sell|... 0x...: a node answered 'nonce too low' at it, but no endpoint counts its nonce N mined ... held (nothing
 dropped, sent again or settled) until one does` (or `... the wallet holds the buy's tokens, but ...`), or `the sell has been pending N s:
@@ -811,7 +818,8 @@ sent); 2 here, up to 5, in one whole line:
 
 A replacement or cancel refused for another reason (`the sell's replacement at nonce N was not taken (rejected: insufficient funds
 ...)`, or `nonce: replacement transaction underpriced`) is tried again 8 s later (`BNB_REPLACE_S`) and counts among the 3 and the one
-at the cap; for funds, top the wallet up. Only a 'nonce too low' stops the signing at a nonce for good.
+at the cap; for funds, top the wallet up, and once the cap alarm above has come, also raise `BNB_MAX_GWEI` (the line above: a top-up
+alone sends nothing more at that nonce). Only a 'nonce too low' stops the signing at a nonce for good.
 
 A halt, once understood (its reason is in the file and in the screen):
 

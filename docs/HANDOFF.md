@@ -2323,6 +2323,10 @@ their own paragraphs below.
 
 Open:
 
+- A compound failure can still cost the $5 stake: a sell or approve lost from every pool while `BNB_RPC_URL` cannot answer its own
+  count for minutes is held (each endpoint is read alone since round 6) and, past the creator's drain at L+997, the tokens cannot be
+  sold. The owner's move is in RUNBOOK 4k step 5 (point `BNB_RPC_URL` elsewhere and restart); the 'did not answer' alarm repeats every
+  5 minutes. A lost buy's cancel shown again by `BNB_RPC_URL`'s pool just as it is judged is untested (gas only).
 - `eth_sendRawTransaction` was never called against a chain endpoint; whether publicnode takes it shows at the first live buy
   (`live_send`: `reply`, `via`); the dataseed is tried when it does not answer.
 - The pre-buy check runs once, at the launch; nothing re-checks the token before the sale. The token's code is pinned to the two
