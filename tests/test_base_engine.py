@@ -781,6 +781,46 @@ def confirmed_loop_reconnects():
 
 
 @test
+def flash_silent_stream_reconnects():
+    """a Flashblocks stream that goes silent: flash false (the ticker, and the reader's timeout), a reconnection, then messages again"""
+    conns = []
+    msg = lambda n: brotli.compress(json.dumps({"index": 1, "diff": {"transactions": []}, "metadata": {"block_number": n}}).encode())
+
+    class Conn:
+        def __init__(self, data):
+            self.data = list(data)
+        async def __aenter__(self):
+            conns.append(self); return self
+        async def __aexit__(self, *a):
+            return False
+        async def recv(self):
+            if self.data:
+                return self.data.pop(0)
+            await asyncio.sleep(3600)                                          # silent
+    plan = [[msg(L), msg(L + 1)], [msg(L + 2), msg(L + 3), msg(L + 4)]]
+    fake = types.ModuleType("websockets"); fake.connect = lambda *a, **k: Conn(plan.pop(0) if plan else [])
+    c = fresh(); sys.modules["websockets"] = fake; old = E.FLASH_SILENT_S; E.FLASH_SILENT_S = 0.3; seen = []
+
+    async def watch():
+        while True:
+            await asyncio.sleep(0.02)
+            with E.lock:
+                E.tick(); seen.append((E.state["flash"], E.state["flash_total"], E.state["flash_reconnects"]))
+    async def both():
+        await asyncio.gather(E.flash_loop(), watch())
+    try:
+        asyncio.run(asyncio.wait_for(both(), 1.6))
+    except (asyncio.TimeoutError, TimeoutError):
+        pass
+    finally:
+        sys.modules.pop("websockets", None); E.FLASH_SILENT_S = old
+    assert len(conns) >= 2 and E.state["flash_total"] == 5 and E.state["flash_block"] == L + 4 and E.state["flash_reconnects"] >= 1, (len(conns), E.state["flash_total"])
+    i_false = next(i for i, x in enumerate(seen) if x[1] == 2 and not x[0])               # silent after its 2 messages: flash false
+    assert any(x[0] and x[1] == 5 for x in seen[i_false:]), seen                         # then back, with the second connection's messages
+    assert any(a["what"].startswith("Flashblocks is down") for a in events("alarm"))
+
+
+@test
 def scrubbed_and_bounded_log():
     c = fresh(BASE_READ_ALT_URL="0"); c.fail.add("eth_getCode"); feed(c, L, L)
     e = wait_ev("launch")[0]

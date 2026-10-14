@@ -1,76 +1,68 @@
 #!/usr/bin/env python3
 """base_engine: the front on the 2.433 operator's Uniswap v4 launches on Base (docs/BASE.md, the design; research/session_oct14/base2433).
 
-The line on Base (measured on its five launches of Oct 14, 2026): a fresh launch wallet calls a launcher contract made for the launch
-(selector c3e0ff3d, 260 B, code hash prefix 225f9af97d88) that emits the PoolManager's Initialize at block L: currency0 = ETH, currency1 =
-the token (1,526 B, code hash 63ad5291...63bb, the address ending 777), fee 5000, tick spacing 100, a hook made for the launch whose
-address flags are 0x80 (beforeSwap). At L+3 (once L+2) the launch wallet calls the hook (2346bb56, value 2.133329 ETH: the 0.133 ETH pools
-were tests) and the pool gets its liquidity: two ModifyLiquidity events, full range, 46141758126452008872416 + 1. The operator's own bot
-buys from L+8 (its contract 0x987d5db8, selector 27f7e6ee, the token in the calldata, 0.15-0.27 ETH, minOut 0.95 of its quote), its 35
-wallets sell through the Universal Router from L+12, and the launch wallet pulls the liquidity (f2f230a8 to the hook) on a ~4.1 minute
-timer (+126, +128; the 09:42 test pool at +30). The Swap event's sender is the Universal Router for every swap, the bot's included.
+The line on Base (its five launches of Oct 14, 2026): a fresh launch wallet calls a launcher contract made for the launch (c3e0ff3d, 260 B,
+code hash prefix 225f9af97d88) that emits the PoolManager's Initialize at block L: currency0 ETH, currency1 the token (1,526 B, code hash
+63ad5291...63bb, the address ending 777), fee 5000, tick spacing 100, a hook made for the launch with address flags 0x80 (beforeSwap). At
+L+3 (once L+2) the launch wallet calls the hook (2346bb56, 2.133329 ETH; the 0.133 ETH pools were tests): two ModifyLiquidity, full range,
+46141758126452008872416 + 1. The operator's bot buys from L+8 (0x987d5db8, 27f7e6ee, the token in the calldata, 0.15-0.27 ETH, minOut 0.95
+of its quote), its 35 wallets sell through the Universal Router from L+12, and the launch wallet pulls (f2f230a8 to the hook) on a ~4.1
+minute timer (+126, +128; the 09:42 test pool at +30). The Swap event's sender is the Universal Router for every swap, the bot's included.
 
-The trade (docs/BASE.md section 3): ARM on an Initialize of the line's fingerprint (currency0 0, BASE_FEE, BASE_TICK_SPACING, the hook's low
-14 address bits = BASE_HOOK_FLAGS; the launch transaction's selector and calldata length from its Flashblocks copy, else
-eth_getTransactionByHash; the token's runtime code hash in BASE_TOKEN_CODEHASHES; the launcher's code hash prefix): one `launch` line for
-every v4 Initialize on Base, armed or skip with the reason (no read at all for a pool that fails the event's own fields). FIRE on the
-first ModifyLiquidity with a positive delta on an armed pool, or earlier on its add seen pending in a Flashblock (a call to the hook with
-BASE_ADD_SELECTOR, value >= BASE_MIN_POOL_ETH, from the launch wallet): FlipRelay.buy(key, stake, minOut, deadline), the stake
+ARM on an Initialize of the line's fingerprint (currency0 0, BASE_FEE, BASE_TICK_SPACING, the hook's low 14 address bits BASE_HOOK_FLAGS;
+the launch transaction's selector and calldata length from its Flashblocks copy, else eth_getTransactionByHash; the token's code hash in
+BASE_TOKEN_CODEHASHES; the launcher's code hash prefix): one `launch` line for every v4 Initialize on Base, armed or skip and why (no read
+for a pool that fails the event's own fields). FIRE on the first positive ModifyLiquidity of an armed pool, or earlier on its add seen
+pending in a Flashblock (to the hook, BASE_ADD_SELECTOR, from the launch wallet): FlipRelay.buy(key, stake, minOut, deadline), the stake
 min(BASE_STAKE_ETH, BASE_STAKE_CAP_ETH), minOut = v4math.buy_out_int at the pool's state x (1 - BASE_BUY_SLIP) (a pending add's liquidity
-is predicted as value x sqrtPriceX96 / 2^96, a full-range position at the launch price; on the 09:42 pool that is the chain's to the
-unit), a type-2 transaction at the wallet's nonce sent to every BASE_SEND_URLS at once. Refused (a `skip` line, the pool dropped): the
-pool's ETH under BASE_MIN_POOL_ETH (a confirmed add's ETH is computed from its liquidity at the pool's price), a pull seen, the head past
-the add's block + BASE_FIRE_MAX, a position open, halted, stopped for the day, BASE_MAX_PER_DAY fires today, the relay under the stake +
-BASE_RELAY_MARGIN_ETH. An armed pool with no add by L + BASE_ADD_MAX_BLOCKS expires. SELL (FlipRelay.sell(key, minOut, deadline), the next
-nonce, everything the relay holds) on the first of: the bot's buy seen pending (a transaction to BASE_BOT_ROUTERS carrying the token, in
-a Flashblock after the one that holds our buy: a bot buy sequenced ahead of ours is no exit), a confirmed Swap buying behind ours whose
-transaction was such a bot buy or whose sender is in BASE_BOT_SENDERS (off by default: the sender is the Universal Router for everyone)
-(`exit: bot`), a confirmed buy behind ours at whose price our tokens are worth the stake x (1 + BASE_TAKE_PROFIT) + the round trip's
-estimated gas (`exit: take_profit`), our buy's block + BASE_HOLD_BLOCKS reached by the head or by a Flashblock (`exit: deadline`, minOut 0).
-A live sell is sent only once our buy is in (its Swap, its receipt, or its Flashblock), so a sell can never wait behind a buy that is not
-there. The sell's minOut is the ETH out at the tracked price (our buy in it) x (1 - BASE_SELL_SLIP). THE PULL (a negative ModifyLiquidity,
-or a pending BASE_PULL_SELECTOR call to the hook, which only logs: the confirmed one decides): before our fire the pool is skipped; after
-our buy and at or before our sell the trade is -100% (`exit: pulled`, no sell sent if none was) and the line halts; a pull within
-BASE_NEAR_MISS_BLOCKS of our buy halts even behind our sell; a sell that sold nothing on a pool not pulled halts ("sold none");
-BASE_NONBOT_HALT live trades in a row under BASE_NONBOT_MIN_RET halt (the decoy rule). A halt writes BASE_HALT_FILE (HALTED.base beside the
-log; the owner's own file holds across restarts), stops new buys and still sells what is open. SETTLE from the receipts: the tokens and
-the ETH in from our buy's Swap (or the token's Transfer to the relay), the ETH out from our sell's Swap, the gas of each = gasUsed x
-effectiveGasPrice + l1Fee; a reverted buy is a gas-only loss (`exit: buy_reverted`, no sell sent); one `trade_done` line; losses of
-BASE_DAILY_STOP_USD in a UTC day stop new buys (`stop`). One position at a time, kept in base_positions.json beside the log and taken back
-at a start (a sell already sent: its receipt is waited for; else sold at once, minOut 0).
+is value x sqrtPriceX96 / 2^96, a full-range position at the launch price: the chain's to the unit on the 09:42 pool), a type-2
+transaction at the wallet's nonce to every BASE_SEND_URLS at once. Refused (a `skip` line): the pool's ETH under BASE_MIN_POOL_ETH (the
+pending add's value, or the confirmed add's liquidity at the pool's price), a pull seen, the head past the add's block + BASE_FIRE_MAX, a
+position open, halted (BASE_HALT_FILE is read again before every live fire), stopped for the day, BASE_MAX_PER_DAY fires today, the relay
+under the stake + BASE_RELAY_MARGIN_ETH. An armed pool with no add by L + BASE_ADD_MAX_BLOCKS expires. SELL (FlipRelay.sell(key, minOut,
+deadline), everything the relay holds) on the first of: the bot's buy seen pending (to BASE_BOT_ROUTERS with the token, in a Flashblock
+after the one holding our buy: one sequenced ahead of ours is no exit) or confirmed behind ours (that transaction, or a Swap sender in
+BASE_BOT_SENDERS, off by default) (`exit: bot`); a confirmed buy behind ours at whose price our tokens are worth the stake x (1 +
+BASE_TAKE_PROFIT) + the round trip's estimated gas (`take_profit`); our buy's block + BASE_HOLD_BLOCKS reached by the head or a Flashblock
+(`deadline`, minOut 0). A live sell goes only once our buy is in (its Swap, receipt or Flashblock); its minOut is the ETH out at the tracked
+price (our buy in it) x (1 - BASE_SELL_SLIP). THE PULL (a negative ModifyLiquidity; a pending f2f230a8 only logs): before our fire the pool
+is skipped; after our buy and at or before our sell the trade is -100% (`pulled`, no sell sent if none was) and the line halts; a pull
+within BASE_NEAR_MISS_BLOCKS of our buy halts even behind our sell; a sell that sold nothing on a pool not pulled halts ("sold none");
+BASE_NONBOT_HALT live trades in a row under BASE_NONBOT_MIN_RET halt (the decoy rule). A halt writes HALTED.base (beside the log; held across
+restarts until the owner removes it), stops new buys and still sells what is open. SETTLE from the receipts: the tokens and ETH in from our
+buy's Swap (or the token's Transfer to the relay), the ETH out from our sell's, the gas of each = gasUsed x effectiveGasPrice + l1Fee; a
+reverted (or never mined) buy is a gas-only loss (`buy_reverted`, no sell sent); one `trade_done`; BASE_DAILY_STOP_USD of losses in a UTC
+day stops new buys (`stop`). One position at a time, in base_positions.json ({"positions": {pool: ...}}) beside the log, taken back at a
+start: a sell already sent has its receipt waited for, else it is sold at once (minOut 0).
 
-THE DRY RUN (BASE_DRY_RUN=1, the default) does everything but sign and send, and reads no key (a missing key file is fine). A dry buy
-lands at the end of the block after the fire's head (the add's block for a Flashblocks fire, the next one for a confirmed one), behind that
-block's recorded swaps: its tokens are buy_out_int at that state (under its own minOut: `exit: buy_reverted`). The sell rules run on the
-chain's recorded swaps behind it; the dry sell is priced at the end of the block its trigger was seen in (the trigger's Swap, the pending
-bot buy's Flashblock, the deadline's head), with our buy put into the recorded price (1/sqrtP adds: exact for one range), by
-v4math.sell_out_int. Gas is estimated: DRY_GAS_UNITS x (the base fee + BASE_PRIO_GWEI) + L1_FEE_EST_WEI. Dry halts are held in memory
-(no file): the dry run shows what the line would do. Lines `would_fire`, `sell_sent` and `trade_done` carry dry: true.
+THE DRY RUN (BASE_DRY_RUN=1, the default): everything but sign and send; no key is read. A dry buy lands at the end of the block after the
+fire's head (the add's block for a Flashblocks fire, the next for a confirmed one), behind that block's recorded swaps: buy_out_int there
+(under its minOut: `buy_reverted`). The sell rules run on the recorded swaps behind it; the dry sell is priced at the end of the block its
+trigger was seen in, our buy put into the recorded price (1/sqrtP adds: exact for one range), by v4math.sell_out_int. Gas: DRY_GAS_UNITS x
+(the base fee + the priority) + L1_FEE_EST_WEI. A dry halt is held in memory. `would_fire`, `sell_sent`, `trade_done` carry dry: true.
 
-THE FEEDS (docs/BASE.md section 4). Confirmed, required: one websocket (BASE_WS_URL) with eth_subscribe newHeads (the clock: number,
-timestamp, base fee) and logs of the PoolManager (Initialize, ModifyLiquidity, Swap); every log is deduped by (blockHash, logIndex), a log
-with removed: true drops its effect (an alarm), and a pool's state is always folded from its events in (block, logIndex) order, so a log
-that arrives late or twice changes nothing. A block's logs are complete once a head or a log of a later block came on a connection that
-covered it; a websocket down or silent for BASE_WS_SILENT_S makes the poller read eth_getBlockByNumber("latest") and eth_getLogs over
-BASE_RPC_URL (one block behind its head), and a reconnection's first head M makes it fill every block from the last complete one to M:
-no block is ever skipped (a range that fails is read again). Flashblocks, optional (BASE_FLASH_URL; 0 = off): every message is brotli JSON;
-one that fails to decode is dropped (an alarm); the raw transactions that touch an armed pool's hook, a bot router (while a pool is armed or
-held) or carry the launch selector are decoded (types 0, 1, 2, 4; 0x7e deposits skipped) and their sender recovered; our own transactions
-are recognised by their raw bytes. A stream silent for 10 s is reconnected (flow: flash false). Nothing it does is needed for a trade:
-every fire and sell has its confirmed twin, and each is done once. Sends: BASE_SEND_URLS at once over warm connections (a User-Agent: the
-sequencer's Cloudflare refuses Python's), the first "ok" or "already known" counts, "nonce too low" everywhere re-reads the nonce and signs
-once more. Reads on the trade path: BASE_RPC_URL (3 s), BASE_READ_ALT_URL once when it fails. Threads: the asyncio loop runs both
-websockets and the 1 s ticker; the poller, the arm reads, the trader (the only one that holds the nonce and signs) and each trade's
-settlement run on their own threads; the feeds never wait on an RPC; one lock guards the state.
+THE FEEDS. Confirmed, required: one websocket (BASE_WS_URL), eth_subscribe newHeads (the clock) and the PoolManager's logs (Initialize,
+ModifyLiquidity, Swap), deduped by (blockHash, logIndex); removed: true drops a log's effect (an alarm); a pool's state is folded from its
+events in (block, logIndex) order, so a log late or twice changes nothing. A block's logs are complete once a head or log of a later block
+came on a connection that covered it. Down or silent for BASE_WS_SILENT_S: the poller reads eth_getBlockByNumber("latest") and eth_getLogs
+over BASE_RPC_URL (a block behind its head); a reconnection's first head M has every block from the last complete one to M read by
+eth_getLogs: no block is skipped (a failed range is read again). Flashblocks, optional (BASE_FLASH_URL; 0 = off): brotli JSON, a message
+that fails to decode is dropped (an alarm); the raw transactions touching an armed pool's hook, a bot router (while a pool is armed or
+held) or carrying the launch selector are decoded (types 0, 1, 2, 4; 0x7e deposits skipped), their sender recovered; ours are known by
+their bytes. Silent for 10 s: reconnected (flow: flash false). Every fire and sell it advances has its confirmed twin, each done once.
+Sends: BASE_SEND_URLS at once over warm connections (with a User-Agent: the sequencer's Cloudflare refuses Python's); the first "ok" or
+"already known" counts; "nonce too low" everywhere re-reads the nonce and signs once more. Reads: BASE_RPC_URL (3 s on the trade path),
+BASE_READ_ALT_URL once when it fails. Threads: the asyncio loop (both websockets, the 1 s ticker); the poller, the arm reads, the trader (the
+only one that holds the nonce and signs), each settlement; the feeds never wait on an RPC; one lock guards the state.
 
-SETTINGS from the environment (/etc/flip/base.env on the box; docs/BASE.md section 5 lists each with its default). Every one is checked at
-the start, a wrong one stops it naming the setting; amounts in ETH and gwei become exact integer wei (decimal text, never a float). A live
-start (BASE_DRY_RUN=0) also needs BASE_WALLET, BASE_KEY_FILE holding its key, BASE_RELAY whose owner() is the wallet and pm() the
-PoolManager, BASE_STAKE_ETH not over BASE_STAKE_CAP_ETH, and chain 8453 on every endpoint (the sequencer answers no eth_chainId: a send-only
-endpoint must answer a malformed transaction with -32602 instead). A relay under the stake + margin is an alarm, and no buy until funded.
+SETTINGS from the environment (/etc/flip/base.env; docs/BASE.md section 5): each checked at the start, a wrong one stops it by name; ETH and
+gwei amounts become exact integer wei (decimal text, never a float). A live start (BASE_DRY_RUN=0) needs BASE_WALLET, its key in
+BASE_KEY_FILE (flock'ed while the engine runs: base_wallet.py and base_ops.py test the lock before they sign), BASE_RELAY with owner() the
+wallet and pm() the PoolManager, the stake within the cap, chain 8453 on every endpoint (the sequencer answers no eth_chainId: a send-only
+endpoint must answer a malformed transaction with -32602). A relay under the stake + margin is an alarm, and no buy until it is funded.
 
-LOG: JSONL (BASE_LOG_PATH), one event per line with "ev" and "t": start, flow (every 60 s), launch, add, fire / would_fire, buy_sent,
-sell_sent, bot_buy, pull, trade_done, halt, stop, alarm (at most one a key every 10 min), skip.
+LOG: JSONL (BASE_LOG_PATH), "ev" and "t": start, flow (every 60 s), launch, add, fire / would_fire, buy_sent, sell_sent, bot_buy, pull,
+trade_done, halt, stop, alarm (one a key every 10 min at most), skip.
     python3 src/base_engine.py                                   # from the environment (dry unless BASE_DRY_RUN=0)
     BASE_LOG_PATH=/tmp/base.jsonl python3 src/base_engine.py     # a dry run anywhere
 """
@@ -221,7 +213,7 @@ def host(url):
 S = settings()
 now = time.time                                                                  # the clocks, by name: the tests stub them
 mono = time.monotonic
-lock = threading.RLock(); _log_lock = threading.Lock()
+lock = threading.RLock(); _log_lock = threading.RLock()                       # reentrant: a line written from a handler that interrupted one
 state, pools, orphans, seen, flash_txs = {}, {}, {}, {}, collections.OrderedDict()
 orders = queue.Queue(); SIGNER = None; SENDERS = {}; KEY_LOCK = None
 
@@ -230,9 +222,10 @@ def reset():
     """the engine's state at a start (the tests call it between cases)"""
     for d in (state, pools, orphans, seen, flash_txs):
         d.clear()
-    state.update({"head": None, "head_ts": None, "base_fee": 0, "head_src": None, "lag_s": None, "lag_max_s": None, "logs_to": None,
+    state.update({"head": None, "head_ts": None, "base_fee": 0, "head_src": None, "lag_s": None, "lag_max_s": None, "logs_to": None, "started_at": mono(),
                   "ws": False, "ws_subs": 0, "ws_last": 0.0, "ws_from": None, "flash": False, "flash_at": 0.0, "flash_block": None, "flash_base_fee": 0,
-                  "flash_msgs": 0, "flash_bad": 0, "launches": 0, "position": None, "nonce": None, "relay_wei": None, "halted": None, "stopped": None,
+                  "flash_msgs": 0, "flash_total": 0, "flash_reconnects": 0, "flash_bad": 0, "launches": 0, "position": None, "nonce": None, "relay_wei": None,
+                  "halted": None, "stopped": None,
                   "day": None, "trades_today": 0, "pnl_today_usd": 0.0, "nonbot_streak": 0, "dry_streak": 0, "trades_done": 0, "dups": 0, "reorgs": 0,
                   "filled": 0, "ours": {}, "alarms_quiet": {}, "flow_at": mono()})
 
@@ -274,15 +267,11 @@ def scrub(text, n=200):
 def halt(reason):
     """live: HALTED.base written (a halt holds across restarts until the owner removes the file); dry: in memory. No new buy after it;
     what is open is still sold"""
-    state["halted"] = reason
-    path = None
-    if not S.DRY:
-        path = S.HALT_FILE
-        try:
-            with open(path, "w") as f:
-                f.write(reason + "\n")
-        except Exception as e:
-            alarm(f"the halt file {path} could not be written ({str(e)[:80]}): the halt holds in memory until a restart")
+    state["halted"] = reason; path = None if S.DRY else S.HALT_FILE
+    try:
+        path and open(path, "w").write(reason + "\n")
+    except Exception as e:
+        alarm(f"the halt file {path} could not be written ({str(e)[:80]}): the halt holds in memory until a restart")
     log({"ev": "halt", "reason": reason, "dry": S.DRY, "file": path})
 
 
@@ -311,10 +300,10 @@ def http_json(url, payload, timeout):
             return json.loads(r.read())
     except urllib.error.HTTPError as e:
         body = e.read()
-        try:
-            return json.loads(body)
-        except ValueError:
-            raise RuntimeError(f"HTTP {e.code}: {body[:80]!r}")
+    try:
+        return json.loads(body)
+    except ValueError:
+        raise RuntimeError(f"HTTP {e.code}: {body[:80]!r}")
 
 
 def read(method, params, timeout=READ_TIMEOUT_S, tries=1):
@@ -343,15 +332,12 @@ class Sender:
 
     def _open(self):
         proxy = urllib.request.getproxies().get("https" if self.tls else "http")
-        if proxy and not urllib.request.proxy_bypass(self.host):
-            p = urllib.parse.urlparse(proxy)
-            c = http.client.HTTPSConnection(p.hostname, p.port or 80, timeout=SEND_TIMEOUT_S, context=ssl.create_default_context()) if self.tls else \
-                http.client.HTTPConnection(p.hostname, p.port or 80, timeout=SEND_TIMEOUT_S)
+        via = urllib.parse.urlparse(proxy) if proxy and not urllib.request.proxy_bypass(self.host) else None
+        h, port = (via.hostname, via.port or 80) if via else (self.host, self.port)
+        c = http.client.HTTPSConnection(h, port, timeout=SEND_TIMEOUT_S, context=ssl.create_default_context()) if self.tls else \
+            http.client.HTTPConnection(h, port, timeout=SEND_TIMEOUT_S)
+        if via:
             c.set_tunnel(self.host, self.port)
-        elif self.tls:
-            c = http.client.HTTPSConnection(self.host, self.port, timeout=SEND_TIMEOUT_S, context=ssl.create_default_context())
-        else:
-            c = http.client.HTTPConnection(self.host, self.port, timeout=SEND_TIMEOUT_S)
         c.connect(); c.sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1); self.conn = c
         return c
 
@@ -378,28 +364,32 @@ def post_one(url, body):
     return snd.post(body)
 
 
-def keepalive():
-    """thread: an idle send connection gets a cheap request every 15 s, so a send never pays the TLS handshake"""
-    body = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_chainId", "params": []})
+def upkeep():
+    """thread (live): an idle send connection gets a cheap request every 15 s (a send never pays the TLS handshake); the relay's balance every
+    60 s while no position is open (a deposit lifts the fire's refusal)"""
+    body = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_chainId", "params": []}); t_bal = mono()
+    for u in S.SEND_URLS:
+        SENDERS.setdefault(u, Sender(u))
     while True:
         time.sleep(5)
-        for u, snd in list(SENDERS.items()):
+        for snd in list(SENDERS.values()):
             if mono() - snd.last > 15:
                 snd.post(body)
+        if mono() - t_bal > 60 and state["position"] is None:
+            t_bal = mono()
+            try:
+                b = int(read("eth_getBalance", [S.RELAY, "latest"]), 16)
+                with lock:
+                    state["relay_wei"] = b if state["position"] is None else state["relay_wei"]
+            except Exception as e:
+                alarm(f"the relay's balance was not read: {scrub(e, 100)}", quiet_key="balance")
 
 
 def reply_kind(reply):
     """an eth_sendRawTransaction reply: "ok", "known" (the node has it), "nonce_low", "rejected", "unknown" (no answer: it may be in)"""
-    if "result" in reply:
-        return "ok"
     err = reply.get("error") or {}; msg = str(err.get("message", "")).lower()
-    if "code" not in err:
-        return "unknown"
-    if "already known" in msg or "already exists" in msg or "known transaction" in msg or "already imported" in msg:
-        return "known"
-    if "nonce too low" in msg:
-        return "nonce_low"
-    return "rejected"
+    return ("ok" if "result" in reply else "unknown" if "code" not in err else "nonce_low" if "nonce too low" in msg else
+            "known" if any(x in msg for x in ("already known", "already exists", "known transaction", "already imported")) else "rejected")
 
 
 def post_all(raw_hex):
@@ -464,12 +454,10 @@ def decode_tx(raw):
     maxFeePerGas, gas, to, value, data, accessList, ...]); None for a deposit (0x7e), anything else or a malformed one"""
     try:
         t = raw[0]
-        if t >= 0xc0:
-            f = rlp.decode(raw); nonce, gp, _gas, to, value, data = f[:6]; prio = mx = gp
-        elif t == 1:
-            f = rlp.decode(raw[1:]); _c, nonce, gp, _gas, to, value, data = f[:7]; prio = mx = gp
+        if t >= 0xc0 or t == 1:                                                    # legacy, 2930: one gas price
+            f = rlp.decode(raw) if t >= 0xc0 else rlp.decode(raw[1:])[1:]; nonce, gp, _gas, to, value, data = f[:6]; prio = mx = gp
         elif t in (2, 4):
-            f = rlp.decode(raw[1:]); _c, nonce, prio, mx, _gas, to, value, data = f[:8]
+            _c, nonce, prio, mx, _gas, to, value, data = rlp.decode(raw[1:])[:8]
         else:
             return None
         n = lambda b: int.from_bytes(b, "big")
@@ -566,9 +554,8 @@ def on_init(lg, B):
 
 def read_launch_tx(h):
     """the launch transaction from its Flashblocks copy, else eth_getTransactionByHash (a node that does not have it yet: three tries)"""
-    tx = flash_txs.get(h)
-    if tx is not None:
-        return dict(tx, src="flash")
+    if h in flash_txs:
+        return dict(flash_txs[h], src="flash")
     for i in range(3):
         t = read("eth_getTransactionByHash", [h])
         if t:
@@ -601,14 +588,10 @@ def arm(p):
     with lock:
         if pools.get(p["pid"]) is not p:
             return                                                                 # removed meanwhile (a reorg)
-        p["launch_from"] = tx.get("from")
-        if why:
-            p["status"] = "skip"; pools.pop(p["pid"], None)
-        else:
-            p["status"] = "armed"; p["kick"] = True
+        p.update(launch_from=tx.get("from"), status="skip" if why else "armed", kick=not why)
+        why and pools.pop(p["pid"], None)
         log({"ev": "launch", **launch_rec(p), **rec, "armed": not why, "skip": why})
-        if not why:
-            end_burst()
+        why or end_burst()
 
 
 def order(lg):
@@ -671,19 +654,15 @@ def on_log(lg):
 
 
 def unapply(lg, B, li, t0):
-    state["reorgs"] += 1
-    pid = lg["topics"][1].lower(); p = pools.get(pid)
+    """a removed log (a reorg): its event out of the pool's (the state is folded again), an unfired pool's Initialize drops the pool"""
+    state["reorgs"] += 1; pid = lg["topics"][1].lower(); p = pools.get(pid)
     alarm(f"a log was removed (a reorg at block {B}): its effect is dropped", quiet_key="reorg", pool=pid, kind=t0[:10])
-    if p is None:
-        return
-    if t0 == T_INIT and p["status"] in ("arming", "armed") and p["L"] == B:
-        pools.pop(pid, None); return
-    e = p["ev"].get((B, li))
-    if e is not None and e["bh"] == lg["blockHash"].lower():
-        del p["ev"][(B, li)]
+    if p is not None and t0 == T_INIT and p["status"] in ("arming", "armed") and p["L"] == B:
+        pools.pop(pid, None)
+    elif p is not None and (p["ev"].get((B, li)) or {}).get("bh") == lg["blockHash"].lower():
+        e = p["ev"].pop((B, li)); p["kick"] = True
         if p["add_conf"] and p["add_conf"]["tx"] == e["tx"] and p["status"] in ("arming", "armed"):
             p["add_conf"] = None; p["add_logged"] = False
-    p["kick"] = True
 
 
 def apply(p, lg):
@@ -743,15 +722,9 @@ def near_miss(p, B):
 
 # ---------------------------------------------------------------- the Flashblocks feed
 def flash_watch():
-    w = {S.LAUNCH_SELECTOR}
-    held = False
-    for p in pools.values():
-        if p["status"] in ("arming", "armed", "fired", "traded"):
-            w.add(p["hook"][2:])
-            held = held or p["status"] != "arming"
-    if held:
-        w.update(r[2:] for r in S.BOT_ROUTERS)
-    return w
+    """the hex strings that make a pending transaction worth decoding: the launch selector, the pools' hooks, the bot's routers (a pool held)"""
+    live = [p for p in pools.values() if p["status"] in ("arming", "armed", "fired", "traded")]
+    return {S.LAUNCH_SELECTOR} | {p["hook"][2:] for p in live} | ({r[2:] for r in S.BOT_ROUTERS} if any(p["status"] != "arming" for p in live) else set())
 
 
 def on_flash(m):
@@ -768,7 +741,7 @@ def on_flash(m):
         state["flash_bad"] += 1
         alarm(f"a Flashblocks message was not decoded ({type(e).__name__}): dropped", quiet_key="flashmsg", every_s=600); return
     with lock:
-        state.update(flash=True, flash_at=mono()); state["flash_msgs"] += 1
+        state.update(flash=True, flash_at=mono()); state["flash_msgs"] += 1; state["flash_total"] += 1
         if base.get("base_fee_per_gas"):
             state["flash_base_fee"] = int(base["base_fee_per_gas"], 16)
         if state["flash_block"] is None or N > state["flash_block"]:
@@ -842,9 +815,9 @@ def end_burst():
                      "via": "logs", "tx": p["add_conf"]["tx"], "fired": p["status"] != "armed"})
             if p["status"] == "armed":
                 try_fire(p)
-        if p["status"] in ("arming", "armed") and p["add_pending"] is None and p["add_conf"] is None and head is not None and head > p["L"] + S.ADD_MAX_BLOCKS:
+        if head is not None and p["status"] in ("arming", "armed") and p["add_pending"] is None and p["add_conf"] is None and head > p["L"] + S.ADD_MAX_BLOCKS:
             log({"ev": "skip", "pool": p["pid"], "why": f"no add by +{S.ADD_MAX_BLOCKS}", "head": head}); pools.pop(p["pid"], None)
-        elif p["status"] == "traded" and head is not None and head > p["L"] + WATCH_BLOCKS and (state["position"] or {}).get("pid") != p["pid"]:
+        elif head is not None and p["status"] == "traded" and head > p["L"] + WATCH_BLOCKS and (state["position"] or {}).get("pid") != p["pid"]:
             pools.pop(p["pid"], None)
     pos = state["position"]
     if pos is not None:
@@ -864,27 +837,21 @@ def try_fire(p):
     add = p["add_pending"] or p["add_conf"]
     if add is None:
         return
-    eth = add["value"] if add["via"] == "flash" else add.get("eth", 0); head = state["head"]
-    roll_day(); why = None
-    if eth < S.MIN_POOL_WEI:
-        why = f"the pool's {eth / 1e18:.4f} ETH is under BASE_MIN_POOL_ETH"
-    elif fold(p)["pull"] is not None:
-        why = "pulled before our fire"
-    elif head is not None and head > add["block"] + S.FIRE_MAX:
-        why = f"late: head {head}, the add at {add['block']} (BASE_FIRE_MAX {S.FIRE_MAX})"
-    elif state["position"] is not None:
-        why = "a position is open"
-    elif not S.DRY and not state["halted"] and os.path.exists(S.HALT_FILE):         # the owner's file, read again before every fire
-        state["halted"] = read_halt_file(); why = "halted: " + state["halted"]
-    elif state["halted"]:
-        why = "halted: " + state["halted"]
-    elif state["stopped"]:
-        why = "stopped for the day (BASE_DAILY_STOP_USD)"
-    elif state["trades_today"] >= S.MAX_PER_DAY:
-        why = f"daily cap: {state['trades_today']} today (BASE_MAX_PER_DAY)"
-    elif not S.DRY and (state["relay_wei"] is None or state["relay_wei"] < S.STAKE_WEI + S.MARGIN_WEI):
-        why = f"the relay holds {(state['relay_wei'] or 0) / 1e18:.6f} ETH, under the stake + BASE_RELAY_MARGIN_ETH"
+    eth = add["value"] if add["via"] == "flash" else add.get("eth", 0); head = state["head"]; roll_day()
+    if not S.DRY and not state["halted"] and os.path.exists(S.HALT_FILE):         # the owner's file, read again before every live fire
+        state["halted"] = read_halt_file()
+    why = next((w for ok, w in (
+        (eth >= S.MIN_POOL_WEI, lambda: f"the pool's {eth / 1e18:.4f} ETH is under BASE_MIN_POOL_ETH"),
+        (fold(p)["pull"] is None, lambda: "pulled before our fire"),
+        (head is None or head <= add["block"] + S.FIRE_MAX, lambda: f"late: head {head}, the add at {add['block']} (BASE_FIRE_MAX {S.FIRE_MAX})"),
+        (state["position"] is None, lambda: "a position is open"),
+        (not state["halted"], lambda: "halted: " + state["halted"]),
+        (not state["stopped"], lambda: "stopped for the day (BASE_DAILY_STOP_USD)"),
+        (state["trades_today"] < S.MAX_PER_DAY, lambda: f"daily cap: {state['trades_today']} today (BASE_MAX_PER_DAY)"),
+        (S.DRY or (state["relay_wei"] or 0) >= S.STAKE_WEI + S.MARGIN_WEI,
+         lambda: f"the relay holds {(state['relay_wei'] or 0) / 1e18:.6f} ETH, under the stake + BASE_RELAY_MARGIN_ETH")) if not ok), None)
     if why:
+        why = why()
         p["status"] = "skip"; pools.pop(p["pid"], None)
         log({"ev": "skip", "pool": p["pid"], "why": why, "head": head, "add_block": add["block"]}); return
     fire(p, add)
@@ -912,15 +879,11 @@ def fire(p, add):
 
 def check_position(pos):
     p = pools.get(pos["pid"])
-    if pos["closed"]:
-        return
-    if pos["dry"]:
-        return check_dry(pos, p)
-    if p is not None:
-        pull = fold(p)["pull"]
-        if pull is not None and not pos["sell_sent"] and not pos["no_sell"] and (pos["buy_at"] is None or pull > pos["buy_at"]):
-            pos["no_sell"] = True; pos["exit"] = "pulled"                         # the pool is empty: no sell; the settlement closes it (-100%, a halt)
-            return
+    if pos["closed"] or pos["dry"]:
+        return None if pos["closed"] else check_dry(pos, p)
+    pull = fold(p)["pull"] if p is not None else None
+    if pull is not None and not pos["sell_sent"] and not pos["no_sell"] and (pos["buy_at"] is None or pull > pos["buy_at"]):
+        pos["no_sell"] = True; pos["exit"] = "pulled"                             # the pool is empty: no sell; the settlement closes it (-100%, a halt)
     if pos["sell_sent"] or pos["no_sell"] or pos["buy_status"] in ("reverted", "lost") or (pos["buy_block"] is None and pos.get("buy_seen") is None):
         return
     trig = pos["trigger"] or (scan_swaps(pos, p) if p is not None else None) or deadline(pos)
@@ -960,11 +923,10 @@ def sell_value(pos, p, sp, liq, ours_in=None):
 
 
 def deadline(pos):
-    b = pos["D"] if pos["dry"] else (pos["buy_block"] if pos["buy_block"] is not None else pos["buy_seen"][0])
-    if state["head"] is not None and state["head"] >= b + S.HOLD_BLOCKS:
-        return {"exit": "deadline", "block": state["head"], "via": "head", "reason": f"the deadline: our buy's block + {S.HOLD_BLOCKS}"}
-    if state["flash_block"] is not None and state["flash"] and state["flash_block"] >= b + S.HOLD_BLOCKS:
-        return {"exit": "deadline", "block": state["flash_block"], "via": "flash", "reason": f"the deadline: our buy's block + {S.HOLD_BLOCKS} (Flashblocks)"}
+    b = (pos["D"] if pos["dry"] else pos["buy_block"] if pos["buy_block"] is not None else pos["buy_seen"][0]) + S.HOLD_BLOCKS
+    for via, n in (("head", state["head"]), ("flash", state["flash_block"] if state["flash"] else None)):
+        if n is not None and n >= b:
+            return {"exit": "deadline", "block": n, "via": via, "reason": f"the deadline: our buy's block + {S.HOLD_BLOCKS} ({via})"}
     return None
 
 
@@ -1036,7 +998,7 @@ def close_dry(pos, p, eth_out, exit_, why):
 
 
 def trade_done(pos, out):
-    state["trades_done"] += 1
+    state["trades_done"] += 1; state["ours"] = {k: v for k, v in state["ours"].items() if v[0] is not pos}
     if state["position"] is pos:
         state["position"] = None
     save_positions()
@@ -1261,10 +1223,9 @@ def save_positions():
     pos = state["position"]
     data = {"positions": {pos["pid"]: {k: pos.get(k) for k in POS_KEYS}} if pos is not None and not pos["closed"] else {}, "t": round(now(), 3)}
     try:
-        tmp = S.POSITIONS_FILE + ".tmp"
-        with open(tmp, "w") as f:
+        with open(S.POSITIONS_FILE + ".tmp", "w") as f:
             json.dump(data, f)
-        os.replace(tmp, S.POSITIONS_FILE)
+        os.replace(S.POSITIONS_FILE + ".tmp", S.POSITIONS_FILE)
     except Exception as e:
         alarm(f"the positions file was not written: {str(e)[:100]}", quiet_key="posfile", every_s=60)
 
@@ -1285,11 +1246,8 @@ def load_position():
 def take_back(saved):
     """a live position left open by the last run: its buy's receipt, then the sell's (already sent) or a sell at once (minOut 0)"""
     pos = {"dry": False, "buy_at": None, "buy_status": None, "sell_at": None, "trigger": None, "no_sell": False, "closed": False, "scanned": None, "X": None,
-           "fired_at": mono(), "eth_in": None, "restart": True, **{k: saved.get(k) for k in POS_KEYS}}
-    pos["buy_block"] = None; pos["tokens"] = None
-    if pos["sell_sent"] and not pos["sell_hash"]:
-        pos["sell_sent"] = False                                                   # decided but never signed: sold now
-    pos["sell_block_seen"] = state["head"]
+           "fired_at": mono(), "eth_in": None, "restart": True, **{k: saved.get(k) for k in POS_KEYS}, "buy_block": None, "tokens": None, "sell_block_seen": state["head"]}
+    pos["sell_sent"] = bool(pos["sell_sent"] and pos["sell_hash"])                # decided but never signed: sold now
     state["position"] = pos
     log({"ev": "alarm", "what": "an open position from the last run is taken back: " + ("its sell's receipt is awaited" if pos["sell_hash"] else "sold at once"),
          "pool": pos["pid"], "buy_hash": pos["buy_hash"], "sell_hash": pos["sell_hash"]})
@@ -1320,8 +1278,7 @@ def start_checks():
                 raise SystemExit(f"BASE_RPC_URL did not answer for {waited:.0f} s: {scrub(e, 120)}")
             alarm(f"BASE_RPC_URL did not answer at the start ({scrub(e, 120)}): trying again in {wait:.0f} s", quiet_key="start", every_s=60)
             time.sleep(wait); waited += wait; wait = min(30.0, wait * 2)
-    if chain != CHAIN_ID:
-        raise SystemExit(f"BASE_RPC_URL is chain {chain}, not {CHAIN_ID}")
+    need(chain == CHAIN_ID, f"BASE_RPC_URL is chain {chain}, not {CHAIN_ID}")
     chains = {host(S.RPC_URL): chain}
     if S.READ_ALT_URL:
         try:
@@ -1330,24 +1287,25 @@ def start_checks():
             if not S.DRY:
                 raise SystemExit(f"BASE_READ_ALT_URL did not answer eth_chainId: {scrub(e, 120)}")
             alarm(f"BASE_READ_ALT_URL did not answer at the start: {scrub(e, 120)}")
-        if chains.get(host(S.READ_ALT_URL), CHAIN_ID) != CHAIN_ID:
-            raise SystemExit(f"BASE_READ_ALT_URL is chain {chains[host(S.READ_ALT_URL)]}, not {CHAIN_ID}")
+        need(chains.get(host(S.READ_ALT_URL), CHAIN_ID) == CHAIN_ID, f"BASE_READ_ALT_URL is chain {chains.get(host(S.READ_ALT_URL))}, not {CHAIN_ID}")
     info = {"chains": chains, "head": int(read("eth_blockNumber", [], timeout=SLOW_TIMEOUT_S, tries=3), 16)}
     if not S.DRY:
         info.update(live_checks(chains))
     return info
 
 
+def need(ok, why):
+    if not ok:
+        raise SystemExit(why)
+
+
 def live_checks(chains):
-    global SIGNER
+    """the wallet, its key (locked while the engine runs), the relay (owner, pm), the send endpoints, the stake, the balance, the nonce"""
+    global SIGNER, KEY_LOCK
     from eth_account import Account
-    if not S.WALLET:
-        raise SystemExit("BASE_WALLET is not set: a live start needs the wallet (deploy/base_wallet.py)")
-    if not S.RELAY:
-        raise SystemExit("BASE_RELAY is not set: a live start needs the relay (deploy/base_relay_deploy.py)")
-    if S.STAKE_ETH_WEI > S.STAKE_CAP_WEI:
-        raise SystemExit(f"BASE_STAKE_ETH {S.STAKE_ETH_WEI / 1e18:g} is over BASE_STAKE_CAP_ETH {S.STAKE_CAP_WEI / 1e18:g}")
-    global KEY_LOCK
+    need(S.WALLET, "BASE_WALLET is not set: a live start needs the wallet (deploy/base_wallet.py)")
+    need(S.RELAY, "BASE_RELAY is not set: a live start needs the relay (deploy/base_relay_deploy.py)")
+    need(S.STAKE_ETH_WEI <= S.STAKE_CAP_WEI, f"BASE_STAKE_ETH {S.STAKE_ETH_WEI / 1e18:g} is over BASE_STAKE_CAP_ETH {S.STAKE_CAP_WEI / 1e18:g}")
     try:
         f = open(S.KEY_FILE)
         key = f.read().strip()
@@ -1367,42 +1325,21 @@ def live_checks(chains):
 
 
 def _live_reads(acct, chains):
-    if acct.address.lower() != S.WALLET:
-        raise SystemExit("the key in BASE_KEY_FILE is not BASE_WALLET's")
+    need(acct.address.lower() == S.WALLET, "the key in BASE_KEY_FILE is not BASE_WALLET's")
     for u in S.SEND_URLS:
         try:
-            c = endpoint_chain(u)
+            chains[host(u)] = c = endpoint_chain(u)
         except Exception as e:
             raise SystemExit(f"BASE_SEND_URLS {host(u)} did not answer: {scrub(e, 120)}")
-        if c not in (CHAIN_ID, "send-only"):
-            raise SystemExit(f"BASE_SEND_URLS {host(u)} is chain {c}, not {CHAIN_ID}")
-        chains[host(u)] = c
-    if len(read("eth_getCode", [S.RELAY, "latest"], tries=3)) <= 2:
-        raise SystemExit("BASE_RELAY has no code: not a deployed FlipRelay")
-    owner = "0x" + read("eth_call", [{"to": S.RELAY, "data": "0x" + SEL_OWNER}, "latest"], tries=3)[-40:].lower()
-    if owner != S.WALLET:
-        raise SystemExit(f"the relay's owner() is {owner}, not BASE_WALLET")
-    pm = "0x" + read("eth_call", [{"to": S.RELAY, "data": "0x" + SEL_PM}, "latest"], tries=3)[-40:].lower()
-    if pm != S.PM:
-        raise SystemExit(f"the relay's pm() is {pm}, not BASE_POOL_MANAGER")
+        need(c in (CHAIN_ID, "send-only"), f"BASE_SEND_URLS {host(u)} is chain {c}, not {CHAIN_ID}")
+    need(len(read("eth_getCode", [S.RELAY, "latest"], tries=3)) > 2, "BASE_RELAY has no code: not a deployed FlipRelay")
+    for sel, want, name in ((SEL_OWNER, S.WALLET, "owner() is {}, not BASE_WALLET"), (SEL_PM, S.PM, "pm() is {}, not BASE_POOL_MANAGER")):
+        got = "0x" + read("eth_call", [{"to": S.RELAY, "data": "0x" + sel}, "latest"], tries=3)[-40:].lower()
+        need(got == want, "the relay's " + name.format(got))
     state["relay_wei"] = int(read("eth_getBalance", [S.RELAY, "latest"], tries=3), 16)
     if state["relay_wei"] < S.STAKE_WEI + S.MARGIN_WEI:
         alarm(f"the relay holds {state['relay_wei'] / 1e18:.6f} ETH, under the stake + margin ({(S.STAKE_WEI + S.MARGIN_WEI) / 1e18:g}): no buy until it is funded")
     state["nonce"] = int(read("eth_getTransactionCount", [S.WALLET, "pending"], tries=3), 16)
-
-
-def balance_loop():
-    """thread (live): the relay's balance every 60 s while no position is open (a deposit lifts the fire's refusal)"""
-    while True:
-        time.sleep(60)
-        if state["position"] is None:
-            try:
-                b = int(read("eth_getBalance", [S.RELAY, "latest"]), 16)
-                with lock:
-                    if state["position"] is None:
-                        state["relay_wei"] = b
-            except Exception as e:
-                alarm(f"the relay's balance was not read: {scrub(e, 100)}", quiet_key="balance")
 
 
 def restore_today():
@@ -1410,49 +1347,32 @@ def restore_today():
     owner removed the halt file it wrote)"""
     roll_day(); d = state["day"]; streak = 0; streak_halted = False
     for path in (S.LOG_PATH + ".1", S.LOG_PATH):
-        try:
-            lines = open(path).read().splitlines()
-        except OSError:
-            continue
-        for line in lines:
+        for line in (open(path).read().splitlines() if os.path.exists(path) else []):
             try:
-                e = json.loads(line)
+                e = json.loads(line); ev = e.get("ev")
             except ValueError:
                 continue
-            ev = e.get("ev")
             if ev == "trade_done" and e.get("live"):
                 streak = e.get("nonbot_streak") if e.get("nonbot_streak") is not None else streak
             elif ev == "halt" and "BASE_NONBOT_HALT" in str(e.get("reason")):
                 streak_halted = True
-            if datetime.datetime.fromtimestamp(e.get("t", 0), datetime.timezone.utc).strftime("%Y-%m-%d") != d:
-                continue
-            if ev == ("would_fire" if S.DRY else "fire"):
-                state["trades_today"] += 1
-            elif ev == "trade_done" and bool(e.get("dry")) == S.DRY:
-                state["pnl_today_usd"] += e.get("usd") or 0.0
-    if streak_halted and S.NONBOT_HALT and streak >= S.NONBOT_HALT and not os.path.exists(S.HALT_FILE):
-        streak = 0
-    state["nonbot_streak"] = streak
-    if S.DAILY_STOP_USD and state["pnl_today_usd"] <= -S.DAILY_STOP_USD:
-        state["stopped"] = d
+            if datetime.datetime.fromtimestamp(e.get("t", 0), datetime.timezone.utc).strftime("%Y-%m-%d") == d:
+                state["trades_today"] += ev == ("would_fire" if S.DRY else "fire")
+                state["pnl_today_usd"] += (e.get("usd") or 0.0) if ev == "trade_done" and bool(e.get("dry")) == S.DRY else 0.0
+    state["nonbot_streak"] = 0 if streak_halted and S.NONBOT_HALT and streak >= S.NONBOT_HALT and not os.path.exists(S.HALT_FILE) else streak
+    state["stopped"] = d if S.DAILY_STOP_USD and state["pnl_today_usd"] <= -S.DAILY_STOP_USD else None
 
 
 def start():
-    if os.path.basename(S.LOG_PATH).startswith(("HALTED", "engine.jsonl", "flip_engine", "bnb")):
-        raise SystemExit(f"BASE_LOG_PATH {S.LOG_PATH} names a halt file or another engine's log: the Base line logs to its own file (base.jsonl)")
+    need(not os.path.basename(S.LOG_PATH).startswith(("HALTED", "engine.jsonl", "flip_engine", "bnb")),
+         f"BASE_LOG_PATH {S.LOG_PATH} names a halt file or another engine's log: the Base line logs to its own file (base.jsonl)")
     info = start_checks()
     restore_today()
-    halted_file = None
-    if os.path.exists(S.HALT_FILE):
-        halted_file = read_halt_file()
-        if not S.DRY:
-            state["halted"] = halted_file
+    halted_file = read_halt_file() if os.path.exists(S.HALT_FILE) else None
+    state["halted"] = None if S.DRY else halted_file                          # dry: the file is the live line's, not the dry run's
     saved = load_position()
     state["logs_to"] = info["head"] - S.ADD_MAX_BLOCKS - 2                       # a launch of the last blocks is read back (a restart mid-launch)
-    hidden = {"KEY_FILE"}
-    shown = {k: (sorted(v) if isinstance(v, set) else v) for k, v in vars(S).items() if k not in hidden}
-    for k in ("WS_URL", "RPC_URL", "READ_ALT_URL", "FLASH_URL"):
-        shown[k] = host(shown[k]) if shown[k] else shown[k]
+    shown = {k: (sorted(v) if isinstance(v, set) else host(v) if k.endswith("_URL") and v else v) for k, v in vars(S).items() if k != "KEY_FILE"}
     shown["SEND_URLS"] = [host(u) for u in S.SEND_URLS]
     log({"ev": "start", "release": RELEASE, "dry": S.DRY, "head": info["head"], "settings": shown, **{k: v for k, v in info.items() if k != "head"},
          "halted": state["halted"], "halt_file": halted_file, "trades_today": state["trades_today"], "pnl_today_usd": round(state["pnl_today_usd"], 4),
@@ -1497,53 +1417,55 @@ def ws_down(e):
     alarm(f"the websocket is down ({type(e).__name__}: {scrub(e, 100)}): eth_getLogs over BASE_RPC_URL until it is back", quiet_key="ws", was_up=was)
 
 
-async def confirmed_loop():
+async def keep_connected(url, session, down):
+    """a websocket that reconnects for ever: a pause doubling from 0.5 s to 30 s, back to 0.5 s after a connection that lasted a minute"""
     import websockets
     backoff = 0.5
     while True:
+        t0 = mono()
         try:
-            async with websockets.connect(S.WS_URL, ssl=ws_ssl(S.WS_URL), open_timeout=10, max_size=2 ** 24, ping_interval=20, ping_timeout=10) as ws:
-                await ws.send(json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_subscribe", "params": ["newHeads"]}))
-                await ws.send(json.dumps({"jsonrpc": "2.0", "id": 2, "method": "eth_subscribe", "params": ["logs", {"address": S.PM, "topics": [[T_INIT, T_ML, T_SWAP]]}]}))
-                subs = {}; since = mono()
-                while True:
-                    raw = await asyncio.wait_for(ws.recv(), timeout=S.WS_SILENT_S)  # silent: an exception, the reconnection, the gap filled
-                    for _ in range(500):                                       # the burst: every message already here, then the actions
-                        try:
-                            on_ws_message(raw, subs)
-                        except RuntimeError:
-                            raise
-                        except Exception as e:
-                            alarm(f"a websocket message was not understood: {type(e).__name__}: {scrub(e, 80)}", quiet_key="wsmsg", every_s=60)
-                        try:
-                            raw = await asyncio.wait_for(ws.recv(), timeout=DRAIN_S)
-                        except asyncio.TimeoutError:
-                            break
-                    with lock:
-                        end_burst()
-                    if mono() - since > 60:
-                        backoff = 0.5
+            async with websockets.connect(url, ssl=ws_ssl(url), open_timeout=10, max_size=2 ** 24, ping_interval=20, ping_timeout=10) as ws:
+                await session(ws)
         except Exception as e:
-            ws_down(e)
+            down(e)
+        backoff = 0.5 if mono() - t0 > 60 else backoff
         await asyncio.sleep(backoff); backoff = min(30.0, backoff * 2)
 
 
-async def flash_loop():
-    import websockets
-    backoff = 0.5
+async def confirmed_session(ws):
+    await ws.send(json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_subscribe", "params": ["newHeads"]}))
+    await ws.send(json.dumps({"jsonrpc": "2.0", "id": 2, "method": "eth_subscribe", "params": ["logs", {"address": S.PM, "topics": [[T_INIT, T_ML, T_SWAP]]}]}))
+    subs = {}
     while True:
-        try:
-            async with websockets.connect(S.FLASH_URL, ssl=ws_ssl(S.FLASH_URL), open_timeout=10, max_size=2 ** 24, ping_interval=20, ping_timeout=10) as ws:
-                since = mono()
-                while True:
-                    on_flash(await asyncio.wait_for(ws.recv(), timeout=FLASH_SILENT_S))
-                    if mono() - since > 60:
-                        backoff = 0.5
-        except Exception as e:
-            with lock:
-                state["flash"] = False
-            alarm(f"Flashblocks is down ({type(e).__name__}: {scrub(e, 100)}): reconnecting; the confirmed feed trades alone", quiet_key="flash")
-        await asyncio.sleep(backoff); backoff = min(30.0, backoff * 2)
+        raw = await asyncio.wait_for(ws.recv(), timeout=S.WS_SILENT_S)          # silent: an exception, the reconnection, the gap filled
+        for _ in range(500):                                                   # the burst: every message already here, then the actions
+            try:
+                on_ws_message(raw, subs)
+            except RuntimeError:
+                raise
+            except Exception as e:
+                alarm(f"a websocket message was not understood: {type(e).__name__}: {scrub(e, 80)}", quiet_key="wsmsg", every_s=60)
+            try:
+                raw = await asyncio.wait_for(ws.recv(), timeout=DRAIN_S)
+            except asyncio.TimeoutError:
+                break
+        with lock:
+            end_burst()
+
+
+async def flash_session(ws):
+    while True:
+        on_flash(await asyncio.wait_for(ws.recv(), timeout=FLASH_SILENT_S))     # silent for 10 s: reconnected
+
+
+def flash_down(e):
+    with lock:
+        state["flash"] = False; state["flash_reconnects"] += 1
+    alarm(f"Flashblocks is down ({type(e).__name__}: {scrub(e, 100)}): reconnecting; the confirmed feed trades alone", quiet_key="flash")
+
+
+confirmed_loop = lambda: keep_connected(S.WS_URL, confirmed_session, ws_down)
+flash_loop = lambda: keep_connected(S.FLASH_URL, flash_session, flash_down)
 
 
 def poll_step():
@@ -1558,7 +1480,7 @@ def poll_step():
     h = int(hd["number"], 16)
     with lock:
         if not healthy:
-            if state["head_src"] != "poll":
+            if state["head_src"] != "poll" and mono() - state["started_at"] > 15:     # (the websocket's first connection: not an alarm)
                 alarm("no websocket: the head and the logs from BASE_RPC_URL", quiet_key="poll")
             on_head(h, int(hd.get("timestamp") or "0x0", 16), int(hd.get("baseFeePerGas") or "0x0", 16), "poll")
         lt = state["logs_to"] if state["logs_to"] is not None else h - S.ADD_MAX_BLOCKS - 2
@@ -1595,7 +1517,8 @@ def flow():
     log({"ev": "flow", "head": state["head"], "lag_s": state["lag_s"], "lag_max_s": state["lag_max_s"], "ws": ws_healthy(), "flash": state["flash"],
          "launches": state["launches"], "armed": sum(1 for p in pools.values() if p["status"] in ("arming", "armed")), "trades": state["trades_today"],
          "trades_done": state["trades_done"], "halted": state["halted"], "stopped": state["stopped"], "head_src": state["head_src"], "logs_to": state["logs_to"],
-         "flash_block": state["flash_block"], "flash_msgs": state["flash_msgs"], "flash_bad": state["flash_bad"], "dups": state["dups"], "reorgs": state["reorgs"],
+         "flash_block": state["flash_block"], "flash_msgs_min": state["flash_msgs"], "flash_total": state["flash_total"], "flash_bad": state["flash_bad"],
+         "flash_reconnects": state["flash_reconnects"], "dups": state["dups"], "reorgs": state["reorgs"],
          "filled": state["filled"], "position": pos["pid"] if pos else None, "relay_eth": state["relay_wei"] / 1e18 if state["relay_wei"] is not None else None})
     state["flow_at"] = mono(); state["lag_max_s"] = None; state["flash_msgs"] = 0
 
@@ -1624,7 +1547,14 @@ async def ticker():
             tick()
 
 
+def stop(*_):
+    """SIGTERM: a last line and out (an open live position stays in base_positions.json for the next start); run by the loop, between its
+    callbacks, so no lock of the main thread is held"""
+    log({"ev": "stopped", "position": (state["position"] or {}).get("pid")}); os._exit(0)
+
+
 async def run_feeds():
+    asyncio.get_running_loop().add_signal_handler(signal.SIGTERM, stop)
     tasks = [confirmed_loop(), ticker()] + ([flash_loop()] if S.FLASH_URL else [])
     await asyncio.gather(*tasks)
 
@@ -1632,10 +1562,9 @@ async def run_feeds():
 def main(argv):
     start()
     if not S.DRY:
-        for fn in (trader, keepalive, balance_loop):
+        for fn in (trader, upkeep):
             spawn(fn)
     spawn(poller)
-    signal.signal(signal.SIGTERM, lambda s, f: (log({"ev": "stopped", "position": (state["position"] or {}).get("pid")}), os._exit(0)))
     try:
         asyncio.run(run_feeds())
     except KeyboardInterrupt:
