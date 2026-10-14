@@ -13,15 +13,21 @@ def post(body):
         except urllib.error.HTTPError as e: time.sleep(4 * (i + 1) if e.code == 429 else 2)
         except Exception: time.sleep(2 + i)
     raise RuntimeError("rpc")
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))))
+import dwellir as _dw                                                       # the research key's archive RPC for all but eth_getLogs
 def rpc(m, p):
-    r = post({"jsonrpc": "2.0", "id": 1, "method": m, "params": p})
+    r = (_dw.post({"jsonrpc": "2.0", "id": 1, "method": m, "params": p}) if m != "eth_getLogs" else None) or post({"jsonrpc": "2.0", "id": 1, "method": m, "params": p})
     if "error" in r: raise RuntimeError(str(r["error"])[:200])
     return r["result"]
 def batch(calls):
     out = []
-    for i in range(0, len(calls), 50):
-        ch = calls[i:i+50]
-        r = post([{"jsonrpc": "2.0", "id": j, "method": m, "params": p} for j, (m, p) in enumerate(ch)])
+    n = _dw.BATCH if _dw.URL and all(m != "eth_getLogs" for m, _ in calls) else 50
+    for i in range(0, len(calls), n):
+        ch = calls[i:i+n]
+        body = [{"jsonrpc": "2.0", "id": j, "method": m, "params": p} for j, (m, p) in enumerate(ch)]
+        r = (_dw.post(body) if n == _dw.BATCH and _dw.URL else None)
+        if not isinstance(r, list): r = post(body)
         r = sorted(r, key=lambda x: x["id"]); out += [x.get("result") for x in r]
     return out
 def logs(flt, a, b):

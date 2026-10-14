@@ -6,7 +6,15 @@ H = {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"}
 CTX = ssl.create_default_context(cafile="/root/.ccr/ca-bundle.crt") if os.path.exists("/root/.ccr/ca-bundle.crt") else None
 _last = [0.0]; STATS = {"posts": 0, "items": 0, "r429": 0}
 LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "rpc_log.jsonl")
+import sys as _sys
+_sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+import dwellir as _dw                                                       # the research key's archive RPC for all but eth_getLogs
 def _post(body):
+    first = body[0] if isinstance(body, list) else body
+    if _dw.URL and first.get("method") != "eth_getLogs":
+        d = _dw.post(body)
+        if d is not None and not (isinstance(body, list) and not isinstance(d, list)):
+            STATS["posts"] += 1; return d
     err = None
     for i in range(8):
         dt = time.time() - _last[0]
