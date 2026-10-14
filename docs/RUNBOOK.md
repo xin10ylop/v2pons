@@ -931,9 +931,9 @@ something else, stop and paste it.** `0xYOURADDRESS` below is the address step 3
 
 ### 1. The code (on the box)
 
-    cd ~/v2pons && OLD=$(git rev-parse HEAD) && git pull -q --ff-only && { git diff --quiet $OLD HEAD -- src/flip_engine.py || echo 'flip_engine.py CHANGED: deploy it per its own section first'; } && ls src/base_engine.py deploy/base_setup.sh deploy/flip-base.service deploy/base_wallet.py deploy/base_relay_deploy.py && /opt/flip-venv/bin/python3 tests/test_base_engine.py | grep -c '^ok'
+    cd ~/v2pons && OLD=$(git rev-parse HEAD) && git pull -q --ff-only && { git diff --quiet $OLD HEAD -- src/flip_engine.py || echo 'flip_engine.py CHANGED: deploy it per its own section first'; } && ls src/base_engine.py deploy/base_setup.sh deploy/flip-base.service deploy/base_wallet.py deploy/base_relay_deploy.py
 
-It prints the five paths and the number of tests, `45`. Fewer, or `flip_engine.py CHANGED`: stop and paste.
+It prints the five paths. `flip_engine.py CHANGED`: stop and paste. (The tests come after step 2: they need `brotli`, which step 2 installs.)
 
 ### 2. Install and the dry run
 
@@ -949,7 +949,11 @@ key), the logrotate rule and the unit, and starts the engine as a dry run. The e
 
 (Run again later, e.g. after a `git pull`, it says `/etc/flip/base.env exists: not rewritten.`, lists any setting the file lacks, and
 restarts the service only while the file says `BASE_DRY_RUN=1`.) `failed` or `(no start line yet ...)`: `journalctl -u flip-base -n 20`,
-stop and paste. The isolation (names only, nothing secret):
+stop and paste. Then the tests, now that the venv has every package (expect `45`; fewer: stop and paste):
+
+    cd ~/v2pons && /opt/flip-venv/bin/python3 tests/test_base_engine.py | grep -c '^ok'
+
+The isolation (names only, nothing secret):
 
     P=$(systemctl show -p MainPID --value flip-base); sudo nsenter -t $P -m ls /etc/flip; sudo grep CapBnd /proc/$P/status; unset P
 

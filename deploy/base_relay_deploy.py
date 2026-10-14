@@ -19,7 +19,7 @@ PoolManager) back, and simulates a buy through the new relay (eth_call, nothing 
 (it pulls each about 4 minutes after its launch), on a live ETH-paired pool without a hook, which it names. --write-env writes
 BASE_RELAY=<address> into /etc/flip/base.env (replacing any BASE_RELAY= line); without it the line is printed. Then: base_relay_sim.py,
 and base_ops.py deposit (RUNBOOK 4l steps 4-5)."""
-import argparse, hashlib, json, os, sys
+import argparse, hashlib, json, os, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
 import base_wallet as BW
@@ -126,11 +126,17 @@ def run(a, active):
         sys.exit(f"the deployment reverted (block {int(rec['blockNumber'], 16)}): nothing to use")
     relay = (rec.get("contractAddress") or "").lower()
     print(f"deployed at {relay} in block {int(rec['blockNumber'], 16)}   {BW.EXPLORER}/address/{relay}")
-    ok_code, ok_owner, ok_pm = relay_ok(relay, wallet, expected)
+    for i in range(10):                                                       # a load-balanced node may be a block behind the one that mined it
+        ok_code, ok_owner, ok_pm = relay_ok(relay, wallet, expected)
+        if ok_code and ok_owner and ok_pm:
+            break
+        print(f"(the node has not shown the relay's code yet: asked again, {i + 1} of 10)"); time.sleep(2)
     print(f"code on the chain {'matches the artifact (owner and PoolManager filled in)' if ok_code else 'UNEXPECTED'}; owner() "
           f"{'== wallet: ok' if ok_owner else 'is not the wallet: DO NOT USE'}; pm() {'== PoolManager: ok' if ok_pm else 'WRONG: DO NOT USE'}")
     if not (ok_code and ok_owner and ok_pm):
-        sys.exit(1)
+        sys.exit(f"the relay at {relay} did not check out within 20 s: nothing written. Do not deploy again; check it later with\n"
+                 f"  sudo sed -i 's|^BASE_RELAY=.*|BASE_RELAY={relay}|' {BW.ENV_FILE} && sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_ops.py status\n"
+                 f"(status reads its code, owner() and pm() again; use it only when all three are ok)")
     sim = BS.buy_through(relay, wallet)
     if sim is False:
         print("the simulated buy did not pass: do not deposit yet; run base_relay_sim.py and paste both outputs")
