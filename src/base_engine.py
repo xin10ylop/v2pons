@@ -97,6 +97,7 @@ L1_FEE_EST_WEI = 4_200_000_000           # two L1 data fees (the bot's 356 B buy
 READ_TIMEOUT_S = 3.0; SEND_TIMEOUT_S = 4.0; SLOW_TIMEOUT_S = 10.0
 RECEIPT_GRACE_S = 60.0; BLOCK_S = 2.0; SELL_RETRIES = 2                        # a receipt's wait past a deadline; a block; a failed sell's re-sends
 RECEIPT_POLL_S = 0.25; POLL_S = 0.5; POLL_LAG = 1; MAX_RANGE = 20; DRAIN_S = 0.003; FLASH_SILENT_S = 10.0; FLOW_S = 60.0
+LOGS_SILENT_S = 30.0                     # heads flowing but no PoolManager log this long: the logs subscription is dead, reconnect
 WATCH_BLOCKS = 200                       # a traded pool is watched to L + 200 for its pull (the real pools: +126, +128)
 START_WAIT_S = 300; DEFAULT_LOG = "/var/log/flip/base.jsonl"
 END = 1 << 62                            # a logIndex after every real one: (block, END) is the end of a block
@@ -242,7 +243,7 @@ def reset():
     for d in (state, pools, orphans, seen, flash_txs):
         d.clear()
     state.update({"head": None, "head_ts": None, "base_fee": 0, "head_src": None, "lag_s": None, "lag_max_s": None, "logs_to": None, "started_at": mono(),
-                  "ws": False, "ws_subs": 0, "ws_last": 0.0, "ws_from": None, "flash": False, "flash_at": 0.0, "flash_block": None, "flash_base_fee": 0,
+                  "ws": False, "ws_subs": 0, "ws_last": 0.0, "ws_log_at": 0.0, "ws_from": None, "flash": False, "flash_at": 0.0, "flash_block": None, "flash_base_fee": 0,
                   "flash_msgs": 0, "flash_total": 0, "flash_reconnects": 0, "flash_bad": 0, "launches": 0, "position": None, "nonce": None, "relay_wei": None,
                   "halted": None, "stopped": None,
                   "day": None, "trades_today": 0, "pnl_today_usd": 0.0, "nonbot_streak": 0, "dry_streak": 0, "trades_done": 0, "dups": 0, "reorgs": 0,
@@ -647,7 +648,7 @@ def ws_covers(n):
 
 
 def on_ws_log(lg):
-    state["ws_last"] = mono()
+    state["ws_last"] = state["ws_log_at"] = mono()
     if order(lg)[0] >= 0:
         ws_covers(order(lg)[0])
     on_log(lg)
@@ -1503,6 +1504,8 @@ def on_ws_message(raw, subs):
     if d.get("id") in (1, 2):
         if "error" in d:
             raise RuntimeError(f"eth_subscribe refused: {scrub(json.dumps(d['error']), 120)}")
+        if "result" not in d:                                                      # publicnode sends such a reply now and then (Oct 14): not a subscription
+            alarm(f"a websocket reply with id {d['id']} and no result: ignored ({scrub(raw, 100)})", quiet_key="wsreply", every_s=600); return
         subs[d["result"]] = "heads" if d["id"] == 1 else "logs"
         with lock:
             state["ws_subs"] = len(subs); state["ws"] = len(subs) >= 2; state["ws_last"] = mono()
@@ -1544,6 +1547,8 @@ async def confirmed_session(ws):
     await ws.send(json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_subscribe", "params": ["newHeads"]}))
     await ws.send(json.dumps({"jsonrpc": "2.0", "id": 2, "method": "eth_subscribe", "params": ["logs", {"address": S.PM, "topics": [[T_INIT, T_ML, T_SWAP]]}]}))
     subs = {}; last = [mono()]
+    with lock:
+        state["ws_log_at"] = mono()                                                # the logs watchdog's clock starts with the connection
 
     async def reader():
         """one plain await per message, never cancelled while frames flow: the websockets library's assembler asserts ("cannot reset()
@@ -1562,11 +1567,16 @@ async def confirmed_session(ws):
                 end_burst()
 
     async def watchdog():
-        """silent for WS_SILENT_S: the session ends (the one cancellation of recv(), with no frame in flight), the reconnection and the gap
-        fill follow"""
-        while mono() - last[0] <= S.WS_SILENT_S:
+        """silent for WS_SILENT_S, or heads flowing with no PoolManager log for LOGS_SILENT_S (the PoolManager logs every few seconds on
+        Base; from 17:54 to 18:27 UTC on Oct 14 a reconnected publicnode socket delivered heads and not one log, and the engine, believing
+        the feed up, saw no launch for 33 minutes): the session ends (the one cancellation of recv(), with no frame in flight), the
+        reconnection and the gap fill follow"""
+        while True:
             await asyncio.sleep(0.25)
-        raise asyncio.TimeoutError(f"silent for {S.WS_SILENT_S:g} s")
+            if mono() - last[0] > S.WS_SILENT_S:
+                raise asyncio.TimeoutError(f"silent for {S.WS_SILENT_S:g} s")
+            if mono() - state.get("ws_log_at", 0.0) > LOGS_SILENT_S:
+                raise asyncio.TimeoutError(f"heads but no PoolManager log for {LOGS_SILENT_S:g} s: the logs subscription is dead")
 
     tasks = [asyncio.ensure_future(reader()), asyncio.ensure_future(watchdog())]
     try:
