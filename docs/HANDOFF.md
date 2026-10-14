@@ -2205,6 +2205,9 @@ allowed templates let a hidden operator (storage slot 6) freeze any holder with 
 -100% ($5); the dry run's results assumed every buy can be sold and are void. Do not turn `BNB_LIVE` on again for this launcher; the
 `BNB_TOKEN_CODEHASHES` default lists exactly the two trap templates. Lesson: before any line goes live, check on chain that an outside
 buyer who holds through our hold can still sell.
+Closed on the box, Oct 14 about 08:10 UTC: `flip-bnb` stopped and disabled; the frozen position's file moved to
+`/var/log/flip/bnb_positions.frozen.json`; the wallet's 0.02644 BNB sent back to the owner (tx 0xd70f1596..., block 127,557,805; the
+line's wallet now holds 0). Net result of the BNB line: about -$5.4 (the frozen stake and gas).
 
 **Live since Oct 14, about 07:00 UTC** (the owner ran RUNBOOK 4k steps 1-4): the isolation check passed (`/etc/flip` inside the unit lists
 `bnb.env` alone, `CapBnd 0000000000000004`); the line's wallet is `0x8881bba6787848f4e86780ef69a34bb45c8d4fcb`, funded 0.0332 BNB
