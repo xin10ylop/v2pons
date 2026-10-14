@@ -62,6 +62,10 @@ The front, as on Robinhood (HANDOFF 3.2), timed off the liquidity add instead of
    (read from the Flashblock's raw transaction if it was seen there, else `eth_getTransactionByHash`); the token's runtime code hash in
    `BASE_TOKEN_CODEHASHES` (`eth_getCode` at the arm); the launcher's code hash prefix `BASE_LAUNCHER_CODEHASH_PREFIX` when set. A
    mismatch logs `launch` with `skip` and the reason and arms nothing. The armed pool keeps its key (with the hook), sqrtPriceX96 and tick.
+   The pool's state after that is folded from its own events in (block, logIndex) order: each Swap's recorded sqrtPriceX96 and liquidity
+   (exact), each ModifyLiquidity's delta on the active range; `v4math` prices only our own buy and sell (its `buy_out_int` runs up to 6e-22
+   relative LOW against the PoolManager, the safe side for a minOut; the confirmed add's ETH is computed from its liquidity at the pool's
+   price, 2.1333285 ETH on the real pools, so no RPC read sits on the trade path).
 2. **Fire** on the liquidity: the first `ModifyLiquidity` with a positive delta on the armed pool (expected at L+3; an arm with no add by
    L+`BASE_ADD_MAX_BLOCKS` expires). The pool's state is the Initialize price and the liquidity of the adds covering the current tick;
    every `Swap` on the pool before our fire moves it (`v4math`). The add's transaction value must be at least `BASE_MIN_POOL_ETH` (the
@@ -111,7 +115,10 @@ One position at a time. Open positions are written to `base_positions.json` besi
   matter (the armed pool's hook, a bot router, our own wallet). It advances two actions: the fire (the add seen pending) and the sell (the
   bot's buy seen pending), and confirms our own transactions' inclusion early. Everything it does is also done by the confirmed feed a
   little later, so a Flashblocks outage costs speed, never correctness. The `flow` line reports both feeds' state.
-- **Sends**: `BASE_SEND_URLS`, every one at once; the first "ok" or "already known" counts; "nonce too low" re-reads the nonce.
+- **Sends**: `BASE_SEND_URLS`, every one at once over warm connections, with a browser User-Agent (the sequencer's Cloudflare refuses
+  Python's own, error 1010); the first "ok" or "already known" counts; "nonce too low" re-reads the nonce and signs once more. The
+  sequencer refuses `eth_chainId` ("rpc method is not allowed"): a send-only endpoint passes the start's check by answering a malformed raw
+  transaction with -32602 instead.
 - **Reads**: `BASE_RPC_URL` (receipts, `eth_getCode`, `eth_getTransactionByHash`, `eth_getLogs` for the catch-up, the relay's balance),
   `BASE_READ_ALT_URL` once when it fails. `BASE_RPC_URL` defaults to publicnode because `mainnet.base.org` answers `eth_getLogs` with HTTP
   429 (measured Oct 14); `mainnet.base.org` is the alternate.
@@ -138,7 +145,8 @@ is recognised pending by its transaction, and a confirmed buy behind ours sells 
 The trade: `BASE_STAKE_ETH` (0.002), `BASE_STAKE_CAP_ETH` (half the smallest room b11 measured; 0.005 until then), `BASE_BUY_SLIP` (0.03),
 `BASE_BUY_DEADLINE_S` (20), `BASE_FIRE_MAX` (2 blocks after the add), `BASE_HOLD_BLOCKS` (6), `BASE_TAKE_PROFIT` (0.01), `BASE_SELL_SLIP`
 (0.05), `BASE_SELL_DEADLINE_S` (30), `BASE_NEAR_MISS_BLOCKS` (3), `BASE_NONBOT_HALT` (5), `BASE_NONBOT_MIN_RET` (0.02), `BASE_MAX_PER_DAY`
-(400), `BASE_DAILY_STOP_USD` (10), `BASE_ETH_USD` (2570), `BASE_PRIO_GWEI` (0.05), `BASE_MAX_FEE_GWEI` (0.5), `BASE_BUY_GAS` (400000),
+(400), `BASE_DAILY_STOP_USD` (10), `BASE_ETH_USD` (2570), `BASE_PRIO_GWEI` (0.01: the bot pays 0.0011; a round trip of about 320k gas at
+0.015 gwei plus two L1 data fees is about 0.2% of a 0.002 ETH stake; 0.05 would be 0.9%), `BASE_MAX_FEE_GWEI` (0.5), `BASE_BUY_GAS` (400000),
 `BASE_SELL_GAS` (400000), `BASE_RELAY_MARGIN_ETH` (0.0005).
 
 Every number is checked at the start (a wrong one stops the start naming it, as bnb_engine's `_setting`); a live start needs the wallet, the
@@ -146,8 +154,9 @@ key file, the relay (its `owner()` must be the wallet, its `pm()` the PoolManage
 
 ## 6. Log lines (`/var/log/flip/base.jsonl`, one JSON per line, `ev`, `t`)
 
-`start` (release, settings without secrets, dry, head), `flow` (every 60 s: head, lag_s, ws, flash, launches, armed, trades, halted,
-stopped), `launch` (block, pool, token, hook, fee, ts, launcher, selector, calldata_len, token_code, armed or skip + reason), `add` (pool,
+`start` (release, settings without secrets, dry, head), `flow` (every 60 s: head, lag_s, lag_max_s, ws, flash (booleans), head_src,
+logs_to, flash_block, flash_msgs_min (the last minute's messages, about 330 when healthy), flash_total, flash_reconnects, flash_bad, dups,
+reorgs, filled, launches, armed, trades, trades_done, halted, stopped, position, relay_eth), `launch` (block, pool, token, hook, fee, ts, launcher, selector, calldata_len, token_code, armed or skip + reason), `add` (pool,
 block, eth, liquidity, pending or confirmed), `fire` / `would_fire` (pool, add_block, head, stake_wei, min_out, nonce, via: flash|logs),
 `buy_sent`, `sell_sent` (hash, nonce, block_seen, reason), `bot_buy` (pool, block or pending, value, via), `pull` (pool, block, before:
 fire|sell|after), `trade_done` (pool, token, buy_block, sell_block, eth_in_wei, tokens, eth_out_wei, gas_wei, l1_fee_wei, ret, usd, exit,

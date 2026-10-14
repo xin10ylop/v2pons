@@ -194,7 +194,7 @@ def settings():
     s.NONBOT_HALT = _setting("BASE_NONBOT_HALT", "5", 0, 10000, True); s.NONBOT_MIN_RET = _setting("BASE_NONBOT_MIN_RET", "0.02", -1, 100)
     s.MAX_PER_DAY = _setting("BASE_MAX_PER_DAY", "400", 0, 100000, True); s.DAILY_STOP_USD = _setting("BASE_DAILY_STOP_USD", "10", 0, 1e6)
     s.ETH_USD = _setting("BASE_ETH_USD", "2570", 1, 1e6)
-    s.PRIO_WEI = _exact("BASE_PRIO_GWEI", "0.05", 0, 100, 10 ** 9); s.MAX_FEE_WEI = _exact("BASE_MAX_FEE_GWEI", "0.5", "0.000001", 1000, 10 ** 9)
+    s.PRIO_WEI = _exact("BASE_PRIO_GWEI", "0.01", 0, 100, 10 ** 9); s.MAX_FEE_WEI = _exact("BASE_MAX_FEE_GWEI", "0.5", "0.000001", 1000, 10 ** 9)   # 0.01: the round trip about 0.2% of a 0.002 ETH stake (the bot pays 0.0011)
     if s.MAX_FEE_WEI < s.PRIO_WEI:
         raise SystemExit(f"BASE_MAX_FEE_GWEI is under BASE_PRIO_GWEI: no transaction could pay its priority")
     s.BUY_GAS = _setting("BASE_BUY_GAS", "400000", 50_000, 5_000_000, True); s.SELL_GAS = _setting("BASE_SELL_GAS", "400000", 50_000, 5_000_000, True)

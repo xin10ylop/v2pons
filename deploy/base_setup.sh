@@ -115,8 +115,9 @@ BASE_MAX_PER_DAY=400
 BASE_DAILY_STOP_USD=10
 # dollars per ETH, for the dollar figures
 BASE_ETH_USD=2570
-# the priority fee in gwei (Base orders transactions by it within each Flashblock)
-BASE_PRIO_GWEI=0.05
+# the priority fee in gwei (Base orders transactions by it within each 200 ms Flashblock; the bot pays 0.0011; at 0.01 the round trip's gas
+# is about 0.2% of a 0.002 ETH stake, at 0.05 about 0.9%)
+BASE_PRIO_GWEI=0.01
 # the most maxFeePerGas may be, in gwei (2 x the base fee + the priority, capped here)
 BASE_MAX_FEE_GWEI=0.5
 # the buy's gas limit

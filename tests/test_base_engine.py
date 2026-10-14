@@ -257,7 +257,7 @@ def settings_bounds():
             raise AssertionError(f"{k}={v} was accepted")
         os.environ.pop(k)
     s = E.settings()
-    assert s.STAKE_WEI == 2 * 10 ** 15 and s.PRIO_WEI == 5 * 10 ** 7 and s.MAX_FEE_WEI == 5 * 10 ** 8 and s.BUY_SLIP_PPM == 30_000 and s.BOT_SENDERS == set()
+    assert s.STAKE_WEI == 2 * 10 ** 15 and s.PRIO_WEI == 10 ** 7 and s.MAX_FEE_WEI == 5 * 10 ** 8 and s.BUY_SLIP_PPM == 30_000 and s.BOT_SENDERS == set()
     assert isinstance(s.STAKE_WEI, int) and isinstance(s.MIN_POOL_WEI, int) and s.HOOK_FLAGS == 0x80
 
 
