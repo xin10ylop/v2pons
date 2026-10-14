@@ -1,0 +1,15 @@
+
+== 0x82a55dde 9 launches
+10-12 10:33:42 v 2.3024 (events not fetched)
+10-12 12:24:16 v 2.4024 (events not fetched)
+10-12 17:19:47 v 2.4024 (events not fetched)
+10-12 21:12:04 v 2.4024 (events not fetched)
+10-12 23:13:06 v 2.4025 (events not fetched)
+10-13 08:31:38 v 2.4024 swaps 114 buys 77 ETH in 8.6918 pull None first buys [(0, 2.4, '0xfb069b72:0x82a55dde'), (58, 0.01607, '0x88767899:0x3593564c'), (100, 0.02435, '?'), (132, 0.02409, '?'), (166, 0.02494, '?')]
+10-13 14:51:26 v 2.4024 swaps 16 buys 7 ETH in 2.5413 pull None first buys [(0, 2.4, '0xab90db32:0x82a55dde'), (435, 0.01545, '?'), (470, 0.02341, '?'), (511, 0.02422, '?'), (567, 0.02391, '?')]
+10-13 15:44:51 v 2.4024 swaps 110 buys 72 ETH in 7.0631 pull None first buys [(0, 2.4, '0x4c28c1a9:0x82a55dde'), (408, 0.0157, '?'), (446, 0.02378, '?'), (480, 0.02461, '?'), (538, 0.02472, '?')]
+10-13 20:38:52 v 2.5024 swaps 121 buys 85 ETH in 8.9111 pull None first buys [(0, 2.5, '0xbcc218b8:0x82a55dde'), (76, 6e-05, '0x88767899:0x3593564c'), (87, 0.01639, '?'), (122, 0.02483, '?'), (197, 0.02458, '?')]
+
+== hooked fee5000/ts100 2 launches
+10-13 15:34:20 v 0 swaps 0 buys 0 ETH in 0.0000 pull None first buys []
+10-13 15:43:30 v 0 swaps 1 buys 1 ETH in 0.0000 pull None first buys [(1844, 1e-05, '?')]

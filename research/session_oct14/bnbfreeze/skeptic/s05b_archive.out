@@ -1,0 +1,15 @@
+se
+    (127550559, '{"jsonrpc": "2.0", "id": 1, "result": "0x0000000000000000000000000000000000000000000000000000000000000001"}')
+    (127550560, '{"jsonrpc": "2.0", "id": 1, "error": {"code": 3, "message": "execution reverted: 0x", "data": "0x"}, "result":')
+    (127550561, '{"jsonrpc": "2.0", "id": 1, "error": {"code": 3, "message": "execution reverted: 0x", "data": "0x"}, "result":')
+    (127552000, '{"jsonrpc": "2.0", "id": 1, "error": {"code": 3, "message": "execution reverted: 0x", "data": "0x"}, "result":')
+bm
+    (127550559, '{"id": 1, "jsonrpc": "2.0", "result": "0x0000000000000000000000000000000000000000000000000000000000000001"}')
+    (127550560, '{"jsonrpc": "2.0", "id": 1, "error": {"code": 3, "message": "execution reverted"}}')
+    (127550561, '{"jsonrpc": "2.0", "id": 1, "error": {"code": 3, "message": "execution reverted"}}')
+    (127552000, '{"id": 1, "jsonrpc": "2.0", "error": {"code": 3, "message": "execution reverted"}}')
+pk
+    (127550559, '{"jsonrpc": "2.0", "id": 1, "result": "0x0000000000000000000000000000000000000000000000000000000000000001"}')
+    (127550560, '{"jsonrpc": "2.0", "id": 1, "error": {"code": 3, "message": "execution reverted: 0x", "data": "0x"}}')
+    (127550561, '{"jsonrpc": "2.0", "id": 1, "error": {"code": 3, "message": "execution reverted: 0x", "data": "0x"}}')
+    (127552000, '{"jsonrpc": "2.0", "id": 1, "error": {"code": 3, "message": "execution reverted: 0x", "data": "0x"}}')

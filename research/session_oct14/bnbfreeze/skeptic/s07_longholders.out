@@ -1,0 +1,9 @@
+not-frozen, moved after >=210 block hold: 51
+  distinct buyers: [('0x220794f72f4b079a1d32469a3dffeda26b8651d8', 51)]
+  before_dump?: Counter({False: 51})
+  buy method sel: Counter({'0a92c91b': 45, 'f0790e0e': 6})
+  rtype: Counter({'contract': 51})
+  buy offset min/med/max: 1053 4106 6913
+  buyer 0x220794f72f4b pools 519 frozen 464 not-frozen 55 in crowd? False
+
+BEFORE-dump strangers, held>=210, moved, not frozen: 0

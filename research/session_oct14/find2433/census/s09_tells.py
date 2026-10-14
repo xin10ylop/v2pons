@@ -4,7 +4,7 @@ gas limit exactly 15,000,000, a token ending in 777 (code size/hash checked in s
 Prints s09_tells.out and writes s09_tells.json."""
 import collections
 from common import *
-rows = jload("s04_launches.json")
+rows = launches()
 STOP = 86310320
 after = [r for r in rows if r["b"] > STOP]
 print("launches after the stop (block > %d): %d (v4 %d, v3 %d)" % (STOP, len(after), sum(r["ven"] == "v4" for r in after), sum(r["ven"] == "v3" for r in after)))

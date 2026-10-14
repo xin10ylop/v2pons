@@ -1,36 +1,36 @@
-launches after the stop (block > 86310320): 12288 (v4 11771, v3 517)
+launches after the stop (block > 86310320): 12417 (v4 11888, v3 529)
 
 == value exactly 2.4333285 ETH: 0
 
 == value 2.19-2.68 ETH (10%): 24
-    10 operator A
      3 v4 0x58daec31 0xac9650d8 1444B f100 ts1 v2.3 ETH
      1 v4 0x29c5eb12 0x82a55dde 1252B f0 ts1 v2.302 ETH
      1 v4 0xe4ca37a4 0x82a55dde 1252B f0 ts1 v2.402 ETH
      1 v4 0x49b5d626 0x82a55dde 1252B f0 ts1 v2.402 ETH
      1 v4 0x1940c805 0x82a55dde 1252B f0 ts1 v2.402 ETH
+     1 v4 0x3194e326 0x2fcb9108 644B f5000 ts200 v2.35 ETH
      1 v4 0xc5bbca09 0x82a55dde 1252B f0 ts1 v2.402 ETH
      1 v4 0xfb069b72 0x82a55dde 1252B f0 ts1 v2.402 ETH
-     1 single-sided 2500/25 (REPORT_2433STOP)
+     1 v4 0x3194e326 0x2fcb9108 644B f4500 ts200 v2.2 ETH
+     1 v4 CREATE 0x60808060 3964B f2500 ts25 v2.5 ETH
      1 v4 0xab90db32 0x82a55dde 1252B f0 ts1 v2.402 ETH
      1 v4 0x4c28c1a9 0x82a55dde 1252B f0 ts1 v2.402 ETH
-     1 v4 0x58daec31 0xac9650d8 1444B f100 ts1 v2.5 ETH
 
 == sqrtP exactly 2.433: 0
 
-== sqrtP within 3% of 2.433 (ETH as currency0): 101
-    67 single-sided 2500/25 (REPORT_2433STOP)
-     7 v4 0xd0fd42bd 0xac9650d8 1444B f100 ts1 v6.004e-12 ETH
-     6 operator A
+== sqrtP within 3% of 2.433 (ETH as currency0): 102
+     9 v4 CREATE 0x60808060 3740B f2500 ts25 v3.5 ETH
+     8 v4 0xd0fd42bd 0xac9650d8 1444B f100 ts1 v6.004e-12 ETH
+     6 v4 0x0000ffff 0xac9650d8 3204B f2500 ts25 v1.5 ETH
+     6 v4 0x0000ffff 0xac9650d8 1316B f2500 ts25 v0 ETH
+     5 v4 CREATE 0x60808060 3740B f2500 ts25 v3.4 ETH
+     4 v4 0x0000ffff 0xac9650d8 3300B f2500 ts25 v0.3 ETH
      4 v4 0x58daec31 0xac9650d8 1444B f883131 ts200 v0.001218 ETH
+     3 v4 0x0000ffff 0xac9650d8 1348B f2500 ts25 v0 ETH
      3 v4 0xd0fd42bd 0xac9650d8 1444B f100 ts1 v1.434e-11 ETH
-     2 v4 0x80725679 0x8aa1a859 1348B f0 ts200 v0.001 ETH
-     1 v4 0xa7972415 0xc5b0c650 1380B f0 ts200 v0 ETH
-     1 v4 0x171cd55a 0xec64ddcf 196B f0 ts60 v0 ETH
-     1 v4 0x80725679 0xc5b0c650 1284B f0 ts200 v0 ETH
-     1 v4 0x80725679 0x8aa1a859 1604B f0 ts200 v0.001 ETH
-     1 v4 0x58daec31 0xac9650d8 2020B f9000 ts90 v0.1122 ETH
-     1 v4 0x80725679 0xc5b0c650 1188B f0 ts200 v0 ETH
+     3 v4 0x0000ffff 0xac9650d8 3236B f2500 ts25 v1.5 ETH
+     2 v4 0x0000ffff 0xac9650d8 1444B f2500 ts25 v0 ETH
+     2 v4 0x0000ffff 0xac9650d8 3268B f2500 ts25 v0.3 ETH
 
 == fee 5000 / ts 100: 2
      1 v4 0x9403365a 0xb70fcf8b 548B f5000 ts100 v0 ETH
@@ -38,9 +38,9 @@ launches after the stop (block > 86310320): 12288 (v4 11771, v3 517)
 
 == fee 2500 / ts 50: 0
 
-== gas limit exactly 15,000,000: 2413
-  1937 VB 3.0
-   476 VB 5.0
+== gas limit exactly 15,000,000: 2434
+  1952 VB 3.0
+   482 VB 5.0
 
 == gas limit exactly 15,000,000, not VB 3.0/5.0: 0
 
@@ -61,7 +61,7 @@ launches after the stop (block > 86310320): 12288 (v4 11771, v3 517)
 == tx sent to the bot router 0x1cbaf24d: 0
 
 == launch sender nonce exactly 11 (2.433 launch nonce), POSM ETH, not VB 3.0/5.0: 2
-     1 single-sided 2500/25 (REPORT_2433STOP)
+     1 v4 0x58daec31 0xac9650d8 2020B f2500 ts25 v0.0006 ETH
      1 v4 0x58daec31 0xac9650d8 1444B f8388608 ts60 v1e-05 ETH
 
 == POSM 1444 B ETH value >= 1 ETH, not VB 3.0/5.0: 153

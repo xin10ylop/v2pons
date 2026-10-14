@@ -1,0 +1,6 @@
+size  1.0 h 2: fitted K +130 on day 1 (n 9 mean +17.66%) -> day 2 n 17 mean +8.47% median -1.05% win 29%
+size  1.0 h 3: fitted K +129 on day 1 (n 9 mean +17.66%) -> day 2 n 17 mean +8.47% median -1.05% win 29%
+size 10.0 h 2: fitted K +131 on day 1 (n 14 mean +3.82%) -> day 2 n 11 mean +1.87% median -1.05% win 27%
+size 10.0 h 3: fitted K +130 on day 1 (n 14 mean +3.82%) -> day 2 n 11 mean +3.58% median -1.05% win 36%
+size 25.0 h 2: fitted K +131 on day 1 (n 22 mean -0.07%) -> day 2 n 21 mean -0.41% median -1.05% win 19%
+size 25.0 h 3: fitted K +130 on day 1 (n 22 mean +0.14%) -> day 2 n 21 mean -0.41% median -1.05% win 19%

@@ -2,7 +2,7 @@
 to find any actor that buys early and big across many new pools whatever their shape. Resumable; s10_early_cache.jsonl rows {pid, sw:[...]}."""
 from common import *
 W30 = 30
-rows = jload("s04_launches.json")
+rows = launches()
 SKIP = {"S1 coin factory hook 0x4e346895", "S2 lift.fun 7866fa39", "VB 3.0", "VB 5.0"}
 done = {r["pid"] for r in jl_load("s10_early_cache.jsonl")} | {r["pid"] for r in jl_load("s05_events_cache.jsonl")}
 todo = [r for r in rows if r["fam"] not in SKIP and r["pid"] not in done]

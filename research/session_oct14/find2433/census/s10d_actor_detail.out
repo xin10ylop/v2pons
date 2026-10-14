@@ -1,0 +1,61 @@
+
+== 0x88767899:0x24856bc3
+  10-12 14:56:14 +7 0.1984 ETH wallet 0xc08a47f5 n 740 minOut/got 0.9290228834436877 | launch 0x13859bf7 0x6a761202 2148 f0 ts200 hook 0xe5e70264 from 0x6eb21107 n 3
+  10-12 17:56:32 +10 0.0691 ETH wallet 0xec0ca89b n 2003 minOut/got 0.9418996511651624 | launch 0x2a53386d 0x3d9ab7c9 292 f0 ts200 hook 0xe5e70264 from 0x2c2572da n 161812
+  10-12 19:08:05 +10 0.1989 ETH wallet 0xc08a47f5 n 745 minOut/got 0.9002579604466108 | launch 0xd15b95c6 0x8fd3ab80 3876 f0 ts200 hook 0xe5e70264 from 0x400c1237 n 1436
+  10-12 19:20:11 +21 0.1946 ETH wallet 0xc08a47f5 n 749 minOut/got 0.9312144679634722 | launch 0xe0703eaa 0xa67aeb8b 452 f0 ts200 hook 0xe5e70264 from 0xf52b9a54 n 1002
+  10-12 19:25:45 +9 0.1946 ETH wallet 0xc08a47f5 n 754 minOut/got 0.931 | launch 0xe0703eaa 0xa67aeb8b 452 f0 ts200 hook 0xe5e70264 from 0xf52b9a54 n 1004
+  10-12 19:29:01 +12 0.1946 ETH wallet 0xc08a47f5 n 757 minOut/got 0.9309999999999999 | launch 0xe0703eaa 0xa67aeb8b 452 f0 ts200 hook 0xe5e70264 from 0xf52b9a54 n 1006
+  10-12 23:33:26 +10 0.1220 ETH wallet 0xc08a47f5 n 770 minOut/got 0.8772978364820319 | launch 0x7ed598bc 0x2f53ef2f 36 f0 ts200 hook 0xe5e70264 from 0x49bbf2b7 n 3943247
+  10-12 23:42:12 +9 0.1227 ETH wallet 0xc08a47f5 n 773 minOut/got 0.9216784320945313 | launch 0x3af49c05 0xa86854fc 3876 f0 ts200 hook 0xe5e70264 from 0x8637b164 n 476
+  10-13 03:22:08 +15 0.1206 ETH wallet 0xc08a47f5 n 786 minOut/got 0.8427607377808352 | launch 0x9c4d5bd1 0xe9ae5c53 2500 f0 ts200 hook 0xe5e70264 from 0x9c4d5bd1 n 3694
+  10-13 11:44:56 +8 0.1197 ETH wallet 0xc08a47f5 n 792 minOut/got 0.9409425083249849 | launch 0x387a453d 0x9b756348 1284 f0 ts200 hook 0xe5e70264 from 0xc0b3535e n 62313
+  10-13 15:59:26 +18 0.1195 ETH wallet 0xc08a47f5 n 796 minOut/got 0.8209105790902619 | launch 0x3af49c05 0xa86854fc 3876 f0 ts200 hook 0xe5e70264 from 0xa096555c n 498
+  10-13 16:03:41 +20 0.1192 ETH wallet 0xc08a47f5 n 799 minOut/got 0.9509840696545737 | launch 0xd15b95c6 0x8fd3ab80 3876 f0 ts200 hook 0xe5e70264 from 0xa26d43f4 n 1953
+  10-13 20:37:29 +28 0.1198 ETH wallet 0xc08a47f5 n 808 minOut/got 0.9406453191083354 | launch 0x2a53386d 0x3d9ab7c9 292 f0 ts200 hook 0xe5e70264 from 0x2c2572da n 171189
+  10-13 21:16:21 +10 0.1196 ETH wallet 0xc08a47f5 n 811 minOut/got 0.9505541559760652 | launch 0x387a453d 0x9b756348 1284 f0 ts200 hook 0xe5e70264 from 0xc0b3535e n 62363
+  10-13 23:19:29 +28 0.1200 ETH wallet 0xc08a47f5 n 820 minOut/got 0.9187695272575314 | launch 0x09aa1b00 0x51904744 164 f0 ts200 hook 0xe5e70264 from 0x9d586e18 n 912
+  10-14 00:41:49 +11 0.1193 ETH wallet 0xc08a47f5 n 823 minOut/got 0.8025927252363649 | launch 0x8c2b828f 0xe9ae5c53 2244 f0 ts200 hook 0xe5e70264 from 0x8c2b828f n 6202
+  launch targets: [('0xe0703eaa', 3), ('0x2a53386d', 2), ('0xd15b95c6', 2), ('0x3af49c05', 2), ('0x387a453d', 2), ('0x13859bf7', 1)]
+
+== 0x65050a9b:0x4d819a2a
+  10-12 00:00:07 +2 0.0052 ETH wallet 0x0b290dd9 n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0xc116e1d7 n 11
+  10-12 00:00:37 +1 0.0051 ETH wallet 0xb257a92b n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0x29f175ac n 11
+  10-12 00:06:52 +1 0.0046 ETH wallet 0xd3c81720 n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0x33f5fd2d n 11
+  10-12 00:13:10 +1 0.0052 ETH wallet 0xd78732a6 n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0x094612f8 n 11
+  10-12 00:19:42 +2 0.0046 ETH wallet 0xfb1ea686 n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0x9c85bc80 n 11
+  10-12 00:25:31 +1 0.0053 ETH wallet 0x15c3414c n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0x747e7f35 n 11
+  10-12 00:27:38 +15 0.0099 ETH wallet 0x8b0ad0a1 n 20167 minOut/got None | launch 0x387a453d 0x54e231e6 1412 f0 ts200 hook 0xe5e70264 from 0xc0b3535e n 61891
+  10-12 00:31:38 +4 0.0050 ETH wallet 0xac04ebc7 n 993 minOut/got 0.6942396323688939 | launch 0x387a453d 0x54e231e6 1412 f0 ts200 hook 0xe5e70264 from 0xc0b3535e n 61894
+  10-12 00:31:52 +1 0.0049 ETH wallet 0x89a16e2c n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0x45d05df3 n 11
+  10-12 00:34:27 +30 0.0297 ETH wallet 0x143e2f87 n 3118 minOut/got 0.8 | launch 0x73991a25 0xac9650d8 836 f100 ts1 hook 0x00000000 from 0x2be65c1b n 2
+  10-12 00:35:42 +4 0.0050 ETH wallet 0xac04ebc7 n 996 minOut/got 0.6942169970590789 | launch 0x387a453d 0x54e231e6 1412 f0 ts200 hook 0xe5e70264 from 0xc0b3535e n 61898
+  10-12 00:38:18 +2 0.0052 ETH wallet 0xafc2cd46 n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0x00f6b303 n 11
+  10-12 00:43:19 +4 0.0050 ETH wallet 0xac04ebc7 n 999 minOut/got 0.6942187944167344 | launch 0x387a453d 0x54e231e6 1412 f0 ts200 hook 0xe5e70264 from 0xc0b3535e n 61903
+  10-12 00:44:35 +1 0.0049 ETH wallet 0x9b5bff6d n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0xb19d67a3 n 11
+  10-12 00:50:38 +2 0.0049 ETH wallet 0x5fc2d380 n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0xb0177af0 n 12
+  10-12 00:56:37 +1 0.0051 ETH wallet 0x23bcf676 n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0x4647ea02 n 11
+  10-12 01:02:43 +10 0.0047 ETH wallet 0x80765331 n 0 minOut/got None | launch 0x58daec31 0xac9650d8 1444 f5000 ts100 hook 0x00000000 from 0xcb446b29 n 11
+  10-12 01:02:54 +4 0.0050 ETH wallet 0xac04ebc7 n 1002 minOut/got 0.6607887675655274 | launch 0x387a453d 0x54e231e6 1412 f0 ts200 hook 0xe5e70264 from 0xc0b3535e n 61907
+  launch targets: [('0x58daec31', 24), ('0x387a453d', 6), ('0xe0703eaa', 5), ('0xb9aa243b', 5), ('0x2a53386d', 4), ('0x18cab14c', 4)]
+
+== 0xf0b7eaaf:0x39ecce49
+  10-12 00:27:38 +12 0.0099 ETH wallet 0x62f440e5 n 1340 minOut/got None | launch 0x387a453d 0x54e231e6 1412 f0 ts200 hook 0xe5e70264 from 0xc0b3535e n 61891
+  10-12 00:35:42 +17 0.0099 ETH wallet 0x62f440e5 n 1347 minOut/got 0.6000915758056664 | launch 0x387a453d 0x54e231e6 1412 f0 ts200 hook 0xe5e70264 from 0xc0b3535e n 61898
+  10-12 13:58:54 +7 0.0099 ETH wallet 0x62f440e5 n 1427 minOut/got 0.576706632588989 | launch 0x2a53386d 0x3d9ab7c9 292 f0 ts200 hook 0xe5e70264 from 0x2c2572da n 161060
+  10-12 14:30:31 +13 0.0198 ETH wallet 0x02e0828c n 7568 minOut/got 0.8327812767598624 | launch 0x7eea5f60 0x991f1cef 1284 f0 ts200 hook 0xe5e70264 from 0x46bab0a8 n 5194
+  10-12 14:56:14 +12 0.0198 ETH wallet 0x02e0828c n 7570 minOut/got 0.8569984241010496 | launch 0x13859bf7 0x6a761202 2148 f0 ts200 hook 0xe5e70264 from 0x6eb21107 n 3
+  10-12 16:12:23 +11 0.0198 ETH wallet 0x02e0828c n 7576 minOut/got 0.956352665636659 | launch 0xe0703eaa 0xa67aeb8b 452 f0 ts200 hook 0xe5e70264 from 0xf52b9a54 n 993
+  10-12 19:08:05 +19 0.0198 ETH wallet 0x02e0828c n 7584 minOut/got 0.7959481352657772 | launch 0xd15b95c6 0x8fd3ab80 3876 f0 ts200 hook 0xe5e70264 from 0x400c1237 n 1436
+  10-12 19:20:11 +12 0.0193 ETH wallet 0x02e0828c n 7586 minOut/got 0.8413636230828335 | launch 0xe0703eaa 0xa67aeb8b 452 f0 ts200 hook 0xe5e70264 from 0xf52b9a54 n 1002
+  10-12 19:25:45 +11 0.0194 ETH wallet 0x02e0828c n 7590 minOut/got 0.9592568308785725 | launch 0xe0703eaa 0xa67aeb8b 452 f0 ts200 hook 0xe5e70264 from 0xf52b9a54 n 1004
+  10-12 19:29:01 +13 0.0194 ETH wallet 0x02e0828c n 7593 minOut/got 0.9487493443270894 | launch 0xe0703eaa 0xa67aeb8b 452 f0 ts200 hook 0xe5e70264 from 0xf52b9a54 n 1006
+  10-12 23:42:12 +14 0.0198 ETH wallet 0x02e0828c n 7604 minOut/got 0.8149081127176144 | launch 0x3af49c05 0xa86854fc 3876 f0 ts200 hook 0xe5e70264 from 0x8637b164 n 476
+  10-13 03:22:08 +12 0.0198 ETH wallet 0x02e0828c n 7614 minOut/got 0.7431155032734862 | launch 0x9c4d5bd1 0xe9ae5c53 2500 f0 ts200 hook 0xe5e70264 from 0x9c4d5bd1 n 3694
+  10-13 14:16:04 +26 0.0099 ETH wallet 0x02e0828c n 7622 minOut/got 0.8328096402635986 | launch 0x2a53386d 0x3d9ab7c9 292 f0 ts200 hook 0xe5e70264 from 0x2c2572da n 171025
+  10-13 15:59:26 +16 0.0099 ETH wallet 0x02e0828c n 7626 minOut/got 0.7414204735926297 | launch 0x3af49c05 0xa86854fc 3876 f0 ts200 hook 0xe5e70264 from 0xa096555c n 498
+  10-13 16:03:41 +19 0.0099 ETH wallet 0x02e0828c n 7629 minOut/got 0.8567313546920304 | launch 0xd15b95c6 0x8fd3ab80 3876 f0 ts200 hook 0xe5e70264 from 0xa26d43f4 n 1953
+  10-13 18:13:13 +19 0.0099 ETH wallet 0x02e0828c n 7635 minOut/got 0.8282710756056559 | launch 0xfe619510 0x45dff296 2852 f0 ts200 hook 0xe5e70264 from 0x4d02e733 n 7
+  10-13 23:19:29 +23 0.0099 ETH wallet 0x02e0828c n 7643 minOut/got 0.8872523383455179 | launch 0x09aa1b00 0x51904744 164 f0 ts200 hook 0xe5e70264 from 0x9d586e18 n 912
+  10-14 02:38:56 +23 0.0099 ETH wallet 0x02e0828c n 7647 minOut/got 0.6887113363345588 | launch 0xd15b95c6 0x8fd3ab80 3876 f0 ts200 hook 0xe5e70264 from 0x30c12a6e n 744
+  launch targets: [('0xe0703eaa', 4), ('0xd15b95c6', 3), ('0x387a453d', 2), ('0x2a53386d', 2), ('0x3af49c05', 2), ('0x7eea5f60', 1)]

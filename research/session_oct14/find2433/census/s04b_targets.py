@@ -1,13 +1,14 @@
 """Step 4b: choose the families to score. A launch not in a known family is grouped at the finest of five levels that reaches >= 15 launches:
   K1 the exact shape key (target, selector, calldata length, fee, tick spacing, ETH value to 4 significant digits, quote);
   K2 K1 without fee/tick spacing (lines that rotate the fee per launch);  K3 K1 without the value (lines that rotate the value);
-  K4 K1 without the calldata length (name/symbol strings);  K5 (target, selector, quote, hooked) only.
+  K4 K1 without the calldata length (name/symbol strings);  K6 K1 without the target (a fresh launch contract per launch);
+  K7 (selector, quote, hooked) only;  K5 (target, selector, quote, hooked) only.
 Families whose fee is above 3% on every launch are listed but not scored (a front round trip cannot clear the fee).
 Adds the positive control (the last 24 VB 2.433 launches) and samples of VB 3.0 (every 3rd) and VB 5.0 (every 2nd).
 Writes s05_targets.json and s04b_families.json; prints s04b_targets.out."""
 import collections
 from common import *
-rows = jload("s04_launches.json")
+rows = launches()
 def vr(v):
     v = int(v); return "0" if v == 0 else "%.4g" % (v / 1e18)
 H = lambda r: "hooked" if r["hook"] != E else "nohook"
@@ -15,6 +16,8 @@ LEV = [("K1", lambda r: r["key"] + " " + H(r)),
        ("K2", lambda r: "%s %s %s %dB v%s %s %s" % (r["ven"], (r["to"] or "CREATE")[:10], r["sel"], r["clen"], vr(r["v"]), r["q"], H(r))),
        ("K3", lambda r: "%s %s %s %dB f%d ts%d %s %s" % (r["ven"], (r["to"] or "CREATE")[:10], r["sel"], r["clen"], r["fee"], r["ts"], r["q"], H(r))),
        ("K4", lambda r: "%s %s %s f%d ts%d v%s %s %s" % (r["ven"], (r["to"] or "CREATE")[:10], r["sel"], r["fee"], r["ts"], vr(r["v"]), r["q"], H(r))),
+       ("K6", lambda r: "%s ANY-TARGET %s %dB f%d ts%d v%s %s %s" % (r["ven"], r["sel"], r["clen"], r["fee"], r["ts"], vr(r["v"]), r["q"], H(r))),
+       ("K7", lambda r: "%s ANY-TARGET %s %s %s" % (r["ven"], r["sel"], r["q"], H(r))),
        ("K5", lambda r: "%s %s %s %s %s" % (r["ven"], (r["to"] or "CREATE")[:10], r["sel"], r["q"], H(r)))]
 left = [r for r in rows if not r["fam"]]
 fam = {}

@@ -2,7 +2,7 @@
 Looks for the 2.433 token template (1,526 B, keccak 63ad5291cdef...) and for any template shared by many launches."""
 import collections
 from common import *
-rows = jload("s04_launches.json")
+rows = launches()
 SKIP = {"VB 3.0", "VB 5.0", "S1 coin factory hook 0x4e346895", "S2 lift.fun 7866fa39"}
 toks = sorted({r["tok"] for r in rows if r["b"] > 86310320 and r["fam"] not in SKIP})
 have = {r["a"] for r in jl_load("s09c_codes_cache.jsonl")}

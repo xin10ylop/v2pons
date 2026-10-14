@@ -1,0 +1,11 @@
+== SAMPLE VB 3.0 | actor 0x1cbaf24d:0xc1120e3d | pools 658 (repeat buyer present in 653)
+replay check: max rel sqrtP error p50 0.00e+00 p90 0.00e+00 max 0.00e+00 over 12583 swaps
+pools with exact replay (err < 1e-6): 658 of 658
+  front L+1, sell T+1 (no reaction)        n 658 gross mean +6.74% median +7.84% p10 +2.87% min -100.00% pos 653/658 | net mean +6.34%
+  front L+2, sell T+1                      n 658 gross mean +6.74% median +7.84% p10 +2.87% min -100.00% pos 653/658 | net mean +6.34%
+  main skips the pool, sell L+1+60         n 658 gross mean -5.64% median -1.99% p10 -10.61% min -100.00% pos 0/658 | net mean -6.04%
+  main skips, sell L+1+20                  n 658 gross mean -1.99% median -1.99% p10 -1.99% min -1.99% pos 0/658 | net mean -2.39%
+  pulled 4 blocks after our buy            n 658 gross mean -100.00% median -100.00% p10 -100.00% min -100.00% pos 0/658 | net mean -100.40%
+  pulled 8 blocks after our buy            n 658 gross mean -100.00% median -100.00% p10 -100.00% min -100.00% pos 0/658 | net mean -100.40%
+  no reaction, pools where the buyer came  n 653 gross mean +7.10% median +7.84% p10 +2.87% min +1.24% pos 653/653 | net mean +6.70%
+  room (ETH ahead of the repeat buyer's first buy) p10/50/90: 0.07967094442558288/0.08030990615367889/0.08092979439735412 over 59 pools

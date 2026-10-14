@@ -1,0 +1,13 @@
+hook             0xdd0e28aa2d151febbc411ffa8d74204d25230080 size   937 keccak 0xad51c918532c bal 0.00000 nonce 1  ORIGIN 1 CALLER 0 TIMESTAMP 0
+launch contract  0x5d7899240421fcd44d04fc6dbe757ef4fc857142 size  7003 keccak 0xf07d1c5394b1 bal 0.00000 nonce 2  ORIGIN 0 CALLER 4 TIMESTAMP 1
+token            0xd9f8b8382d4005aeb1793c91c35e70b965ab94fe size  2530 keccak 0x9aa40ae8ba02 bal 0.00000 nonce 1  ORIGIN 0 CALLER 10 TIMESTAMP 2
+hook             0x43bb229244b0cc4e2994582b8464dadcba0e4080 size   937 keccak 0xad51c918532c bal 0.00000 nonce 1  ORIGIN 1 CALLER 0 TIMESTAMP 0
+launch contract  0xa9295dfda2bf774d09832ae43c3aee8f6eb457a6 size  7003 keccak 0xf07d1c5394b1 bal 0.00000 nonce 2  ORIGIN 0 CALLER 4 TIMESTAMP 1
+token            0x3e127d33ff873e02d412c9fc2c30eb8021a4cd61 size  2530 keccak 0x7841dc6f4bba bal 0.00000 nonce 1  ORIGIN 0 CALLER 10 TIMESTAMP 2
+hook             0x9abedd02cdf9a3de8662ded3a95b9bbabae30080 size   937 keccak 0xad51c918532c bal 0.00000 nonce 1  ORIGIN 1 CALLER 0 TIMESTAMP 0
+launch contract  0x1774c2841921c3b7fb036c2fcbd0c4e2fefa2b29 size  7003 keccak 0xf07d1c5394b1 bal 0.00000 nonce 2  ORIGIN 0 CALLER 4 TIMESTAMP 1
+token            0xbd5c74f1030505a8e84eea90bd1d07408951b8cd size  2530 keccak 0x11c665f96448 bal 0.00000 nonce 1  ORIGIN 0 CALLER 10 TIMESTAMP 2
+W9               0x9fdd8ceab2de4fa2d9b0f1f37475a47baff8cd9a size     0 keccak - bal 6.86494 nonce 13446  ORIGIN 0 CALLER 0 TIMESTAMP 0
+W9b              0x35eb8c43c7f8da87eb21749787c92cfab6cdf751 size     0 keccak - bal 2.20001 nonce 730  ORIGIN 0 CALLER 0 TIMESTAMP 0
+
+hook PUSH4 constants (dispatcher + external calls): ['06baca8a', '575e24b4', '937380ff', 'a3f4bac7', 'd45adfb1', '15d7892d', '4e487b71', '47535d7b', 'd63a8e11', 'e09f0331'] (0x575e24b4 = beforeSwap, 0x47535d7b = isOpen(), 0xe09f0331 = the revert error)

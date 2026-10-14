@@ -6,7 +6,7 @@ import sys, collections, statistics
 from common import *
 EARLY = 80
 ETHUSD = 2570.0
-rows = {r["pid"]: r for r in jload("s04_launches.json")}
+rows = {r["pid"]: r for r in launches()}
 tg = {t["pid"]: t for t in jload("s05_targets.json")}
 EV = {p["pid"]: p for p in jl_load("s05_events_cache.jsonl")}
 TX = {r["h"]: r for r in jl_load("s06_tx_cache.jsonl") if "miss" not in r}
@@ -97,7 +97,7 @@ def analyse(pids, label):
     reps.sort(key=lambda z: (-(z["eth_med"] or 0) * z["cov"]))
     res["repeat"] = reps
     # pick the main repeat buyer: coverage >= 0.5, median eth >= 0.001, earliest median offset
-    main = [z for z in reps if z["cov"] >= 0.5 and (z["eth_med"] or 0) >= 0.001]
+    main = [z for z in reps if z["cov"] >= 0.5 and (z["eth_med"] or 0) >= 0.01 and not z["actor"].startswith("0x2abb5653")]   # 0x2abb5653 = our relay
     main.sort(key=lambda z: q([y["off"] for y in act[z["actor"]]], .5))
     res["main"] = main[0]["actor"] if main else None
     pl = [x["pull"] for x in P if x["pull"] is not None]

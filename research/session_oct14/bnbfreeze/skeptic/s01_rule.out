@@ -1,0 +1,28 @@
+endpoint pn head 127556203
+slot6 0x000000000000000000000000bd418ce6a83995971de9f1cf9f61f345e91aeadd -> operator 0xbd418ce6a83995971de9f1cf9f61f345e91aeadd
+balanceOf(us) 26815492626516
+balance mapping slot 0
+raw allowance[op][us] (slot keccak(us.keccak(op.1))) 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff odd
+allowance(op,us) view 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+
+[A] head: transfer(dead, 1%) from us: REVERT {"code": 3, "message": "execution reverted"}
+[A] head: transfer(pair, 1%) from us: REVERT {"code": 3, "message": "execution reverted"}
+
+[B] our wallet, override allowance[op][us] parity:
+   value 0x0 even -> ok 0x000000000000000000
+   value 0x2 even -> ok 0x000000000000000000
+   value 0xffffffffff... even -> ok 0x000000000000000000
+   value 0x1 odd -> REVERT {"code": 3, "message": "execution reverted"}
+   value 0x3 odd -> REVERT {"code": 3, "message": "execution reverted"}
+   value 0xffffffffff... odd -> REVERT {"code": 3, "message": "execution reverted"}
+   value 0x8000000000... even -> ok 0x000000000000000000
+   slot6 zeroed (allowance left as is) -> ok 0x000000000000000000
+
+[C] fresh address with an overridden balance:
+   allowance[op][fresh] even 0x0 -> ok 0x000000000000000000
+   allowance[op][fresh] odd 0x1 -> REVERT {"code": 3, "message": "execution reverted"}
+   allowance[op][fresh] even 0x2 -> ok 0x000000000000000000
+   allowance[op][fresh] odd 0x7 -> REVERT {"code": 3, "message": "execution reverted"}
+   allowance[op][fresh] odd 0xffffffff -> REVERT {"code": 3, "message": "execution reverted"}
+   allowance[op][fresh] even 0xffffffff -> ok 0x000000000000000000
+   allowance[other][fresh]=MAX (odd), op allowance 0 -> ok 0x000000000000000000

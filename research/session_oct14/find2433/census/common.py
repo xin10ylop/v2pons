@@ -52,3 +52,7 @@ class BT:
         if i >= len(bb): return bl[-1][1] + (b - bb[-1]) / 9.84
         (b0, t0), (b1, t1) = bl[i - 1], bl[i]
         return t0 + (t1 - t0) * (b - b0) / (b1 - b0)
+
+def launches():
+    """the s04 launch table (one row per v4 Initialize / V3 PoolCreated)"""
+    return jl_load("s04_launches_cache.jsonl")

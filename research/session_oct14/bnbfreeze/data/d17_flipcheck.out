@@ -1,0 +1,8 @@
+0x8881bba6 size 25.0 buy +52 operator approve +70 | transfer ok after the buy True ok just before the approve True reverts at the approve block True | first reverting block +70
+0xd9c2e276 size 2.5 buy +6 operator approve +36 | transfer ok after the buy True ok just before the approve True reverts at the approve block True | first reverting block +36
+0x826c7e39 size 15.0 buy +1826 operator approve +1861 | transfer ok after the buy True ok just before the approve True reverts at the approve block True | first reverting block +1861
+0xda289fca size 25.0 buy +4202 operator approve +4235 | transfer ok after the buy True ok just before the approve True reverts at the approve block True | first reverting block +4235
+0x52b89884 size 15.0 buy +2750 operator approve +2785 | transfer ok after the buy True ok just before the approve True reverts at the approve block True | first reverting block +2785
+0x8a20b47b size 15.0 buy +1722 operator approve +1755 | transfer ok after the buy True ok just before the approve True reverts at the approve block True | first reverting block +1755
+0x1b6f7af4 size 2.5 buy +854 operator approve +868 | transfer ok after the buy True ok just before the approve True reverts at the approve block True | first reverting block +868
+0x6eb0ae42 size 25.0 buy +1051 operator approve +1066 | transfer ok after the buy True ok just before the approve True reverts at the approve block True | first reverting block +1066

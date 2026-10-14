@@ -2,7 +2,7 @@
 The 2.433 token template is 1,526 bytes with code hash 63ad5291cdef..."""
 from common import *
 t = jload("s09_tells.json")
-rows = jload("s04_launches.json")
+rows = launches()
 toks = sorted({x["tok"] for x in t["token ending 777, not VB 3.0/5.0"]})
 ref = [next(r["tok"] for r in rows if r["fam"] == "VB 3.0"), next(r["tok"] for r in rows if r["fam"] == "VB 5.0"), next(r["tok"] for r in rows if r["fam"] == "VB 2.433")]
 codes = rpc.batch("eth_getCode", [[a, "latest"] for a in toks + ref], n=10)

@@ -1,6 +1,6 @@
 """Step 4: one row per launch (v4 Initialize and V3 PoolCreated, Oct 12 00:00 UTC -> s01 head) with its shape key
 (tx target, selector, calldata length, fee, tick spacing, ETH value to 4 significant digits, quote), the known-family label, and the family table.
-Writes s04_launches.json (compact rows) and prints s04_shapes.out."""
+Writes s04_launches_cache.jsonl (one row per launch) and prints s04_shapes.out."""
 import collections
 from common import *
 bt = BT()
@@ -23,8 +23,7 @@ def known(r):
         if r["hook"].startswith("0x2c668601") or r["sel"] == "0x7866fa39": return "S2 lift.fun 7866fa39"
         if r["sel"] == "0xa25a9a3d": return "S3 a25a9a3d"
         if r["sel"] == "0x7fde822e": return "S4 7fde822e launchpads"
-        if to == OPA: return "operator A"
-        if r["fee"] == 2500 and r["ts"] == 25 and q == "ETH": return "single-sided 2500/25 (REPORT_2433STOP)"
+        # operator A (0x3194e326) and the fee-2500/ts-25 launches are NOT in the ruled-out list: they are grouped and scored like any other shape
     else:
         if to == NPM3 and r["clen"] == 836: return "V3 crowd (836 B NPM)"
     return ""
@@ -53,7 +52,7 @@ rows.sort(key=lambda r: (r["b"], r["li"]))
 for r in rows:
     r["key"] = "%s %s %s %dB f%d ts%d v%s %s" % (r["ven"], (r["to"] or "CREATE")[:10], r["sel"], r["clen"], r["fee"], r["ts"], vr(r["v"]), r["q"])
     r["fam"] = known(r)
-jdump(rows, "s04_launches.json")
+open(P("s04_launches_cache.jsonl"), "w").write("".join(json.dumps(r, separators=(",", ":")) + "\n" for r in rows))
 print("launches", len(rows), "v4", sum(r["ven"] == "v4" for r in rows), "v3", sum(r["ven"] == "v3" for r in rows), "missing tx", len(jl_load("s01_v4init_cache.jsonl")) + len(jl_load("s01_v3pc_cache.jsonl")) - len(rows))
 H = (rows[-1]["t"] - rows[0]["t"]) / 3600
 print("window %s .. %s (%.1f h)" % (hm(rows[0]["t"]), hm(rows[-1]["t"]), H))

@@ -2199,6 +2199,13 @@ The v4 families' dry rule is the same expression as before. A dry V3 trade is as
 
 ### 16.23 Oct 12: the BNB line's live path (`src/bnb_live.py`, release bnb-0.2; off unless `BNB_LIVE=1`)
 
+**STOPPED for good, Oct 14 (research/session_oct14/bnbfreeze/REPORT_BNBFREEZE.md): the launcher's tokens are a honeypot.** Both
+allowed templates let a hidden operator (storage slot 6) freeze any holder with a look-alike approve; every stranger who held was frozen
+4-67 blocks after buying (135 of 135 in 3 days), the operator's crowd never. The first live trade (L+52, frozen at L+70) is a permanent
+-100% ($5); the dry run's results assumed every buy can be sold and are void. Do not turn `BNB_LIVE` on again for this launcher; the
+`BNB_TOKEN_CODEHASHES` default lists exactly the two trap templates. Lesson: before any line goes live, check on chain that an outside
+buyer who holds through our hold can still sell.
+
 **Live since Oct 14, about 07:00 UTC** (the owner ran RUNBOOK 4k steps 1-4): the isolation check passed (`/etc/flip` inside the unit lists
 `bnb.env` alone, `CapBnd 0000000000000004`); the line's wallet is `0x8881bba6787848f4e86780ef69a34bb45c8d4fcb`, funded 0.0332 BNB
 (about $24.70); `BNB_STAKE_USD=5`, `BNB_GATE_DUMP_BEFORE=700` (the dry day saw a 1-BNB drain at +996, one block under the old 997);

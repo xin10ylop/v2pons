@@ -1,0 +1,36 @@
+hook flags: Counter({'BS': 151})
+
+ 10-12 09:45:36 L 86578267 pool 0x9c5f928e12 to 0x5d78992404 from 0x25c5de26 n 112 hook 0xdd0e28aa2d
+   +0    LIQ ADD 69075..207250 dL 3.164e+22  tx.to 0x5d789924 sel 0xe1e75b94 from 0x25c5de26
+   +15   BUY  0.40000 ETH  actor 0x88767899:0x3593564c wallet 0x9fdd8cea n 13141
+   +30   LIQ REMOVE 69075..207250 dL -3.164e+22  tx.to 0x58daec31 sel 0xdd46508f from 0x25c5de26
+
+ 10-12 09:45:48 L 86578381 pool 0x17274e6aca to 0xa9295dfda2 from 0x3abaa9a4 n 85 hook 0x43bb229244
+   +0    LIQ ADD 69075..207250 dL 3.164e+22  tx.to 0xa9295dfd sel 0xe1e75b94 from 0x3abaa9a4
+   +14   BUY  0.40000 ETH  actor 0x88767899:0x3593564c wallet 0x9fdd8cea n 13143
+   +29   LIQ REMOVE 69075..207250 dL -3.164e+22  tx.to 0x58daec31 sel 0xdd46508f from 0x3abaa9a4
+
+ 10-12 09:45:59 L 86578488 pool 0x7212d82bfc to 0x02972fde83 from 0x63e165a2 n 106 hook 0x01ac60f92a
+   +0    LIQ ADD 69075..207250 dL 3.164e+22  tx.to 0x02972fde sel 0xe1e75b94 from 0x63e165a2
+   +15   BUY  0.40000 ETH  actor 0x88767899:0x3593564c wallet 0x9fdd8cea n 13145
+   +31   LIQ REMOVE 69075..207250 dL -3.164e+22  tx.to 0x58daec31 sel 0xdd46508f from 0x63e165a2
+
+ 10-12 09:46:10 L 86578599 pool 0x345a30f78a to 0x291e94dc3a from 0x16ff5fa4 n 80 hook 0x03be9fe7ad
+   +0    LIQ ADD 69075..207250 dL 3.164e+22  tx.to 0x291e94dc sel 0xe1e75b94 from 0x16ff5fa4
+   +15   BUY  0.40000 ETH  actor 0x88767899:0x3593564c wallet 0x9fdd8cea n 13147
+   +30   LIQ REMOVE 69075..207250 dL -3.164e+22  tx.to 0x58daec31 sel 0xdd46508f from 0x16ff5fa4
+
+ 10-12 09:46:22 L 86578716 pool 0x8135457fd3 to 0x67c4bd59a5 from 0x052bf407 n 78 hook 0xf25d46d3ba
+   +0    LIQ ADD 69075..207250 dL 3.164e+22  tx.to 0x67c4bd59 sel 0xe1e75b94 from 0x052bf407
+   +15   BUY  0.40000 ETH  actor 0x88767899:0x3593564c wallet 0x9fdd8cea n 13149
+   +29   LIQ REMOVE 69075..207250 dL -3.164e+22  tx.to 0x58daec31 sel 0xdd46508f from 0x052bf407
+
+ 10-12 09:46:34 L 86578828 pool 0x50b1bc2749 to 0x5fcac8d0b5 from 0x939ca8e5 n 75 hook 0x94d6100934
+   +0    LIQ ADD 69075..207250 dL 3.164e+22  tx.to 0x5fcac8d0 sel 0xe1e75b94 from 0x939ca8e5
+   +15   BUY  0.40000 ETH  actor 0x88767899:0x3593564c wallet 0x9fdd8cea n 13151
+   +30   LIQ REMOVE 69075..207250 dL -3.164e+22  tx.to 0x58daec31 sel 0xdd46508f from 0x939ca8e5
+
+all swaps in the family's pools by actor: [(('0x88767899:0x3593564c', 'buy'), 151)]
+by wallet: [(('0x9fdd8cea', 'buy'), 135), (('0x35eb8c43', 'buy'), 16)]
+  offsets 0x9fdd8cea 14 15 16 n 135
+  offsets 0x35eb8c43 13 15 16 n 16

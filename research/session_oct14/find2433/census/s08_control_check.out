@@ -1,0 +1,24 @@
+0x10673143 no relay round trip
+0x6e4f9943 10-12 00:00:37 relay buy +1 0.0070 ETH sell +12 real +6.70% | sim L+1 buy, sell T+1 (T=+10) +7.15% nrev 0
+0xc2c26a78 10-12 00:06:52 relay buy +2 0.0070 ETH sell +12 real +17.53% | sim L+1 buy, sell T+1 (T=+10) +17.97% nrev 0
+0x8ecf2221 10-12 00:13:10 relay buy +2 0.0070 ETH sell +9 real +15.57% | sim L+1 buy, sell T+1 (T=+7) +16.06% nrev 0
+0xcbc34665 10-12 00:19:42 relay buy +2 0.0020 ETH sell +10 real +4.69% | sim L+1 buy, sell T+1 (T=+8) +5.48% nrev 0
+0x70babd67 10-12 00:25:31 relay buy +2 0.0020 ETH sell +10 real +12.95% | sim L+1 buy, sell T+1 (T=+8) +13.97% nrev 0
+0x6d375fbb 10-12 00:31:52 relay buy +2 0.0020 ETH sell +10 real +4.71% | sim L+1 buy, sell T+1 (T=+8) +5.57% nrev 0
+0x99f2fd90 10-12 00:38:18 relay buy +2 0.0020 ETH sell +10 real +16.11% | sim L+1 buy, sell T+1 (T=+8) +16.11% nrev 0
+0x5007f1c8 10-12 00:44:35 relay buy +2 0.0020 ETH sell +9 real +10.10% | sim L+1 buy, sell T+1 (T=+7) +10.54% nrev 0
+0x6f12dcae 10-12 00:50:38 relay buy +2 0.0069 ETH sell +12 real +5.08% | sim L+1 buy, sell T+1 (T=+10) +5.08% nrev 0
+0xd56e2906 10-12 00:56:37 relay buy +2 0.0069 ETH sell +17 real +7.94% | sim L+1 buy, sell T+1 (T=+15) +8.39% nrev 0
+0x3c38e7f4 10-12 01:02:43 relay buy +9 0.0070 ETH sell +25 real +13.49% | sim L+1 buy, sell T+1 (T=+24) +13.49% nrev 0
+0xc562022f 10-12 01:09:23 relay buy +2 0.0070 ETH sell +10 real +8.73% | sim L+1 buy, sell T+1 (T=+8) +9.67% nrev 0
+0xd119b5c9 10-12 01:15:30 relay buy +2 0.0070 ETH sell +10 real +6.71% | sim L+1 buy, sell T+1 (T=+8) +7.53% nrev 0
+0xbedeafe0 10-12 01:21:44 relay buy +2 0.0070 ETH sell +12 real +13.46% | sim L+1 buy, sell T+1 (T=+10) +13.46% nrev 0
+0xa535f21e 10-12 01:27:31 relay buy +2 0.0070 ETH sell +12 real +4.69% | sim L+1 buy, sell T+1 (T=+10) +5.12% nrev 0
+0x9c3b6d99 10-12 01:33:09 relay buy +2 0.0070 ETH sell +12 real +11.70% | sim L+1 buy, sell T+1 (T=+10) +12.15% nrev 0
+0xcfdbc0c9 10-12 01:39:32 relay buy +2 0.0070 ETH sell +10 real +15.54% | sim L+1 buy, sell T+1 (T=+8) +16.05% nrev 0
+0xe8c4dbe6 10-12 01:45:54 relay buy +2 0.0070 ETH sell +11 real -0.87% | sim L+1 buy, sell T+1 (T=+9) -0.46% nrev 0
+0xbb702557 10-12 01:46:15 relay buy +2 0.0020 ETH sell +12 real +10.47% | sim L+1 buy, sell T+1 (T=+10) +10.47% nrev 0
+0xeaa6e517 10-12 01:51:59 relay buy +2 0.0020 ETH sell +9 real +1.42% | sim L+1 buy, sell T+1 (T=+8) +1.42% nrev 0
+0x078dcfb8 10-12 01:53:39 relay buy +2 0.0020 ETH sell +12 real +5.10% | sim L+1 buy, sell T+1 (T=+10) +5.10% nrev 0
+0xe92dfae2 10-12 02:00:28 relay buy +2 0.0020 ETH sell +12 real +4.71% | sim L+1 buy, sell T+1 (T=+10) +5.10% nrev 0
+0x55a35281 10-12 02:06:03 relay buy +2 0.0020 ETH sell +12 real +9.37% | sim L+1 buy, sell T+1 (T=+10) +9.37% nrev 0

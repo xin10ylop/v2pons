@@ -1,0 +1,40 @@
+rows 1798 crowd wallets 120
+stranger (token,buyer) pairs 1798
+strangers who bought BEFORE dump 141
+  of those: frozen 135 not frozen 6
+  escapees (not frozen before dump):
+    buyer 0x4066795cb9 off 4115 moved_before_freeze 2 first_move_off 4121 kind sell bal_now 0 frozen False
+    buyer 0xa2e006c18e off 1995 moved_before_freeze 1 first_move_off 2011 kind sell bal_now 0 frozen False
+    buyer 0x6a000f2000 off 1656 moved_before_freeze 0 first_move_off None kind None bal_now 1 frozen False
+    buyer 0x0b031fcf19 off 284 moved_before_freeze 1 first_move_off 291 kind sell bal_now 0 frozen False
+    buyer 0x0b031fcf19 off 1062 moved_before_freeze 1 first_move_off 1070 kind sell bal_now 0 frozen False
+    buyer 0x0b031fcf19 off 945 moved_before_freeze 1 first_move_off 953 kind sell bal_now 0 frozen False
+strangers who moved/sold after holding >=210 blocks: 52
+    0x220794f72f off 4034 first_move_off 171209 hold 167175 kind sell frozen False
+    0x220794f72f off 4035 first_move_off 167067 hold 163032 kind sell frozen False
+    0x220794f72f off 4110 first_move_off 163320 hold 159210 kind sell frozen False
+    0x220794f72f off 6854 first_move_off 157556 hold 150702 kind sell frozen False
+    0x220794f72f off 2173 first_move_off 136607 hold 134434 kind sell frozen False
+    0x220794f72f off 4131 first_move_off 120911 hold 116780 kind sell frozen False
+    0x220794f72f off 4198 first_move_off 116209 hold 112011 kind sell frozen False
+    0x220794f72f off 4029 first_move_off 87478 hold 83449 kind sell frozen False
+    0x220794f72f off 2054 first_move_off 69173 hold 67119 kind sell frozen False
+    0x220794f72f off 4075 first_move_off 62263 hold 58188 kind sell frozen False
+    0x220794f72f off 4023 first_move_off 228096 hold 224073 kind sell frozen False
+    0x220794f72f off 4106 first_move_off 227752 hold 223646 kind sell frozen False
+    0x220794f72f off 4172 first_move_off 219335 hold 215163 kind sell frozen False
+    0x220794f72f off 6568 first_move_off 199681 hold 193113 kind sell frozen False
+    0x220794f72f off 4025 first_move_off 198594 hold 194569 kind sell frozen False
+    0x220794f72f off 3987 first_move_off 185753 hold 181766 kind sell frozen False
+    0x220794f72f off 3898 first_move_off 177464 hold 173566 kind sell frozen False
+    0x220794f72f off 4120 first_move_off 164771 hold 160651 kind sell frozen False
+    0x220794f72f off 4087 first_move_off 152348 hold 148261 kind sell frozen False
+    0x220794f72f off 6852 first_move_off 148337 hold 141485 kind sell frozen False
+frozen before-dump by buy-offset bucket:
+    +0-19 frozen 25 / 25
+    +20-39 frozen 0 / 0
+    +40-59 frozen 2 / 2
+    +60-259 frozen 14 / 14
+    +260-999 frozen 41 / 43
+    +1000+ frozen 53 / 57
+crowd (token,buyer) pairs frozen: 0

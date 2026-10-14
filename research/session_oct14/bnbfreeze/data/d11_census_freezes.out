@@ -1,0 +1,8 @@
+census-era tokens 290 freeze-shaped logs 4697 callers (top): [('0xbd418ce6a83995971de9f1cf9f61f345e91aeadd', 730), ('0x05321a44691cb8f9969f864e1e51171c49029609', 126), ('0x19c2ebf37caeac3e14f9ac9470fe21d531f5ae86', 123), ('0x78e570100ce4a4b6ce2b9448862865f09baaa132', 122), ('0x082545221add465e4b593ad010b0aa42d9823c0c', 120), ('0x7cfc427745d9fa3945f062ce3d298d8c0a0e32f1', 120), ('0x06e4bad6a230d30e06d6756b19ef7cd6bf868f50', 119), ('0x6addb9d2dafd3805f2b89bb436b622d6c1d25f8d', 118)]
+operator freezes 728 first 2026-10-04 23:11:54 per launch day: [('2026-10-04', 6), ('2026-10-05', 82), ('2026-10-06', 85), ('2026-10-07', 120), ('2026-10-08', 107), ('2026-10-09', 117), ('2026-10-10', 108), ('2026-10-11', 103)]
+pools with >= 1 operator freeze: 281 of 290 | freezes of crowd wallets: 0
+delay buy -> freeze: n 711 min 4 median 45 p90 157 max 106203
+research outsider 0xf4d846a1d6f96f004501197d9f25deffc909eb39 pool 0x95ffc4bf 2026-10-06 10:55:33 size 25.0 buy +15 out +[44] to pair frozen +44
+research outsider 0x6951d19324eb5fff41e55ed9764120649c92b9a1 pool 0x689d9047 2026-10-06 00:17:44 size 25.0 buy +248 out +[269] to pair frozen +321
+research outsider 0xb1ce227d2f591af35af298af767153d35d33ff50 pool 0x3df433a0 2026-10-07 04:04:21 size 10.0 buy +356 out +[380] to pair frozen +389
+research outsider 0x3b81a1636cc344f21c4eaaac5932a9a48d1a0fc2 pool 0xab93877f 2026-10-05 01:38:16 size 25.0 buy +466 out +[491, 530] to pair frozen +578

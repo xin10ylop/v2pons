@@ -1,0 +1,7 @@
+week crowd wallets (>=20 pools, never frozen): 30 of which in d10's crowd: 30
+census-era strangers bought before +990: 32 Counter({'frozen while holding': 28, 'frozen, moved out first': 4})
+today's test by class: [(('frozen while holding', 'revert'), 28), (('frozen, moved out first', 'no balance'), 1), (('frozen, moved out first', 'revert'), 3)]
+   frozen, moved out first 0xf4d846a1 2026-10-06 10:55:33 size 25.0 buy +15 first move (29, 'sell') freeze +44 no balance
+   frozen, moved out first 0x6951d193 2026-10-06 00:17:44 size 25.0 buy +248 first move (21, 'sell') freeze +321 revert
+   frozen, moved out first 0xb1ce227d 2026-10-07 04:04:21 size 10.0 buy +356 first move (24, 'sell') freeze +389 revert
+   frozen, moved out first 0x3b81a163 2026-10-05 01:38:16 size 25.0 buy +466 first move (25, 'sell') freeze +578 revert

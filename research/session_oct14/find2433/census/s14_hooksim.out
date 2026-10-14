@@ -1,0 +1,10 @@
+head 88190855: 6 hooked fee-3000/ts-60 ETH pools initialised in the last 4 h, 5 with the line's launch shape
+pool 0xbd8718acb3 launch 88113668 (chain) hook 0xee36ff2613: liquidity 77755182674486103644453, sqrtP 278610901831847805535151538095907, pulled False
+  fees buy 3000 / sell 3000 ppm; depth 22.111 ETH; v4math: buy 24656023498192304327989 tokens, sell back 0.00198802 ETH (-0.599%)
+  buy only: tokens 24656023498192304330899 (v4math 24656023498192304327989: off +0.00%), relay holds 24656023498192304330899
+  buy+sell: sell returned 0.00000020 ETH (v4math 0.00198802: off -99.99%), round trip -99.990%, tokens left 0
+pool 0x3037e29b5b launch 88103024 (chain) hook 0xb61476796e: liquidity 0, sqrtP 929213324489661748846050274454116, pulled True
+pool 0x4b44de7fc5 launch 88077093 (chain) hook 0x7b2f84555d: liquidity 0, sqrtP 636119485333910454573484516642226, pulled True
+pool 0x9ea56d90f3 launch 88052441 (chain) hook 0x4675344d44: liquidity 0, sqrtP 519726070560595004653289659958448, pulled True
+pool 0x0cfc76fb22 launch 88051354 (chain) hook 0xb37f1afe3f: liquidity 0, sqrtP 671717683733514398273287385060290, pulled True
+{'posts': 60, 'items': 60, 'r429': 0}

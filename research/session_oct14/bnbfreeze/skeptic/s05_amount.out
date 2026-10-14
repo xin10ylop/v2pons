@@ -1,0 +1,10 @@
+head pn: [(1, 'REV'), (2, 'REV'), (100, 'REV'), (10000, 'REV'), (1000000, 'REV'), (100000000, 'REV'), (10000000000, 'REV'), (268154926265, 'REV'), (26815492626516, 'REV')]
+se 127550559 [(1, 'ok:0001'), (1000000, 'ok:0001'), (100000000, 'ok:0001'), (268154926265, 'ok:0001')]
+Traceback (most recent call last):
+  File "/home/user/v2pons/research/session_oct14/bnbfreeze/skeptic/s05_amount.py", line 14, in <module>
+    print(ep, b, [(a, call(a, hex(b), ep)) for a in (1, 10**6, 10**8, 268154926265)])
+                      ~~~~^^^^^^^^^^^^^^^
+  File "/home/user/v2pons/research/session_oct14/bnbfreeze/skeptic/s05_amount.py", line 9, in call
+    return ("ok:" + r["result"][-4:]) if "result" in r else "REV" if "revert" in str(r["error"]).lower() else "E:" + str(r["error"])[:50]
+                    ~~~~~~~~~~~^^^^^
+TypeError: 'NoneType' object is not subscriptable

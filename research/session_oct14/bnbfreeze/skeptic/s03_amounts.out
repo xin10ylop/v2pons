@@ -1,0 +1,5 @@
+freeze txs 1615
+full amount word: {'1': 923, 'MAX': 692}
+parity: {'odd': 1615}
+US target 0x8881...: []
+decoy check: int(our address) = 779315887607126688577176379609004218641311158219

@@ -1,0 +1,8 @@
+router transferFrom(us,pair,1%) -> {"code": 3, "message": "execution reverted"}
+same but alw[op][us]=0 (even) -> ok
+  se +500000blk +432000s -> ERR {"code": -38026, "message": "too many blocks"} ('0x1'=ok '0x0'=revert)
+  se +10000000blk +31536000s -> ERR {"code": -38026, "message": "too many blocks"} ('0x1'=ok '0x0'=revert)
+  bm +500000blk +432000s -> 0x0 ('0x1'=ok '0x0'=revert)
+  bm +10000000blk +31536000s -> ERR {"code": -38026, "message": "too many blocks"} ('0x1'=ok '0x0'=revert)
+  pk +500000blk +432000s -> ERR {"code": -38026, "message": "too many blocks"} ('0x1'=ok '0x0'=revert)
+  pk +10000000blk +31536000s -> ERR {"code": -38026, "message": "too many blocks"} ('0x1'=ok '0x0'=revert)

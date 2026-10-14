@@ -6,11 +6,12 @@ liquidity adds/removals are applied as they happened; sell everything at the hea
 Also: the replay check (sqrtP after each real swap vs its log), the room (largest buy at the L+1 head that keeps the repeat buyer's first buy
 at or above its minOut), and variants for the operator's reaction: the repeat buyer skips the pool; the pool is pulled LAG blocks after our buy.
 Usage: python3 s08_front.py "<family label>" [actor]. Writes s08_front_<n>.json and prints a summary."""
-import sys, collections, json, copy, hashlib
+import sys, os, collections, json, copy, hashlib
 from common import *
 from clsim import Pool
 import s07_traits as S
 ETHUSD = 2570.0; GAS_USD = 0.02
+OURS = "0x2abb5653"   # our relay contract (excluded from every replay)
 def events(p, r):
     ev = []
     if p["ven"] == "v4":
@@ -44,6 +45,7 @@ class Sim:
         self.r = r = S.rows[pid]; self.p = p = S.EV[pid]; self.L = r["b"]; self.actor = actor
         self.ev = events(p, r)
         self.s0 = int(r["sqrtp"]) if r["sqrtp"] else next((e[2] for e in self.ev if e[1] == "I"), None)
+        self.t0 = r["tick"] if r.get("tick") is not None else None
         self.zb = r["c0"] in (E, WETH, USDG)        # buying the token pays currency0
         self.basefee = r["fee"] if r["fee"] < 0x800000 else 0
         main = [e for e in self.ev if e[1] == "S" and e[2]["buy"] and S.actor(e[3]) == actor and e[2]["bn"] > self.L]
@@ -54,32 +56,34 @@ class Sim:
         pl = [e for e in self.ev if e[1] == "M" and e[2][2] < 0]
         self.pull = pl[0][0][0] if pl else None
     def replay_err(self):
-        pool = Pool(self.s0, [], self.basefee); err = 0.0; n = 0
+        pool = Pool(self.s0, [], self.basefee, self.t0); err = 0.0; n = 0
         for key, kind, val, h in self.ev:
-            if kind == "I": pool.s = val; continue
+            if kind == "I": pool.s = val; pool.tick = None; from clsim import tick_at; pool.tick = tick_at(val); continue
             if kind == "M": pool.add(*val); continue
             s = val; amt = s["q"] if s["buy"] else s["tok"]
             if amt <= 0 or s["bn"] > self.L + 400: continue
             pool.swap(amt, self.zb if s["buy"] else not self.zb, s["fee"] if s["fee"] is not None else self.basefee)
-            err = max(err, abs(pool.s - s["sq"]) / s["sq"]); n += 1; pool.s = s["sq"]
+            err = max(err, abs(pool.s - s["sq"]) / s["sq"]); n += 1
         return err, n
-    def front(self, X, H=60, skip_main=False, pull_lag=None, entry=1):
+    def front(self, X, H=60, skip_main=False, pull_lag=None, entry=1, sell_off=None):
         """returns dict(gross, out, T, nrev, sold_at) or None"""
-        L = self.L; pool = Pool(self.s0, [], self.basefee); lastfee = self.basefee
+        L = self.L; pool = Pool(self.s0, [], self.basefee, self.t0); lastfee = self.basefee
         B = max(L, self.A) + entry          # our buy: head of the block after the launch (or after the first liquidity add)
         sell_at = (self.T + 1) if (self.T is not None and not skip_main and self.T >= B) else (B + H)
+        if sell_off is not None: sell_at = L + sell_off
         held = None; nrev = 0; out = None; pulled = False
         forced_pull = (B + pull_lag) if pull_lag is not None else None
         for key, kind, val, h in self.ev:
             bn = key[0]
             if held is None and bn >= B:
-                if pool.liq() == 0 and kind != "M": return None
                 held = pool.swap(X, self.zb, lastfee)
+                if held <= 0: return None
             if held is not None and forced_pull is not None and bn >= forced_pull and not pulled:
                 pool.net = {}; pulled = True
             if held is not None and bn >= sell_at:
                 out = pool.swap(held, not self.zb, lastfee); break
-            if kind == "I": pool.s = val; continue
+            if kind == "I":
+                from clsim import tick_at; pool.s = val; pool.tick = tick_at(val); continue
             if kind == "M":
                 if held is None or not pulled: pool.add(*val)
                 continue
@@ -87,14 +91,15 @@ class Sim:
             if s["fee"] is not None: lastfee = s["fee"]
             amt = s["q"] if s["buy"] else s["tok"]
             if amt <= 0: continue
+            if S.actor(h).startswith(OURS): continue      # our own relay's trades are replaced by the simulated one
             is_main = s["buy"] and S.actor(h) == self.actor
             if is_main and skip_main and held is not None: continue
             if held is not None and is_main:
-                snap = (pool.s, dict(pool.net))
+                snap = pool.snap()
                 got = pool.swap(amt, self.zb, lastfee)
                 mn = minout(h, s["tok"])
                 if mn is not None and got < mn:
-                    pool.s, pool.net = snap; nrev += 1
+                    pool.restore(snap); nrev += 1
                 continue
             pool.swap(amt, self.zb if s["buy"] else not self.zb, lastfee)
         if held is None: return None
@@ -150,6 +155,12 @@ if __name__ == "__main__":
         rs = [x for x in (s.front(X5, **kw) for s in good) if x]
         res[name] = rs
         print("  %-40s %s" % (name, summary(rs, X5)))
+    for so in [int(x) for x in os.environ.get("SELL_OFFS", "").split(",") if x]:
+        rs = [x for x in (s.front(X5, sell_off=so) for s in good) if x]
+        res["sell at L+%d" % so] = rs
+        print("  %-40s %s" % ("front L+1, sell at L+%d (no reaction)" % so, summary(rs, X5)))
+        rs = [x for x in (s.front(X5, sell_off=so, skip_main=True) for s in good) if x]
+        print("  %-40s %s" % ("  same, main skips the pool", summary(rs, X5)))
     rs = [x for x in (s.front(X5) for s in good if s.T) if x]
     print("  %-40s %s" % ("no reaction, pools where the buyer came", summary(rs, X5)))
     rooms = [s.room() for s in good[:60] if s.T]

@@ -1,0 +1,6 @@
+operator freeze wallets: ['0x623e7c23c7c228095f94d9bd567eae55cb87a966', '0xa70b3f34e3ca7d4665b794ce6bb29168b1d2e40d', '0xbd418ce6a83995971de9f1cf9f61f345e91aeadd', '0xd604540564b6f659de163ad928e29782185da2fd']
+freeze txs 1615 tx.from == log caller 1615 selectors Counter({'0x095ea7b3': 1615}) gas price gwei [(0.051, 1615)] amount word [('00000000', 923), ('ffffffff', 692)]
+freezes (distinct token,target) 1615 crowd targets 22 targets that bought 1504 targets that only received 111 targets never holding 0
+freezes BEFORE the target's first buy: 1
+delay buy -> freeze (blocks): n 1503 min 4 p10 14 median 67 p90 165 max 224108
+delay histogram: [(4, 4), (5, 4), (6, 6), (7, 7), (8, 9), (9, 8), (10, 10), (11, 23), (12, 26), (13, 30), (14, 36), (15, 21), (16, 23), (17, 9), (18, 19), (19, 25), (20, 28), (21, 18), (22, 36), (23, 47), (24, 61), (25, 71), (26, 37), (27, 30), (28, 16), (29, 11), (30, 8), (31, 11), (32, 7), (33, 8), (34, 8), (35, 10), (36, 1), (37, 4), (38, 1), (39, 5), (40, 3), (41, 2), (42, 1), (43, 1)]

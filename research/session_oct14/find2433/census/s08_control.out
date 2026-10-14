@@ -1,0 +1,11 @@
+== CONTROL VB 2.433 | actor 0x1cbaf24d:0xc1120e3d | pools 24 (repeat buyer present in 23)
+replay check: max rel sqrtP error p50 0.00e+00 p90 0.00e+00 max 0.00e+00 over 790 swaps
+pools with exact replay (err < 1e-6): 24 of 24
+  front L+1, sell T+1 (no reaction)        n 24 gross mean +8.93% median +9.37% p10 +1.42% min -0.99% pos 22/24 | net mean +8.53%
+  front L+2, sell T+1                      n 24 gross mean +8.74% median +9.37% p10 +1.42% min -0.99% pos 22/24 | net mean +8.34%
+  main skips the pool, sell L+1+60         n 24 gross mean -12.02% median -7.68% p10 -12.61% min -100.00% pos 0/24 | net mean -12.42%
+  main skips, sell L+1+20                  n 24 gross mean -0.99% median -1.00% p10 -1.00% min -1.00% pos 0/24 | net mean -1.39%
+  pulled 4 blocks after our buy            n 24 gross mean -100.00% median -100.00% p10 -100.00% min -100.00% pos 0/24 | net mean -100.40%
+  pulled 8 blocks after our buy            n 24 gross mean -100.00% median -100.00% p10 -100.00% min -100.00% pos 0/24 | net mean -100.40%
+  no reaction, pools where the buyer came  n 23 gross mean +9.36% median +9.37% p10 +5.10% min -0.45% pos 22/23 | net mean +8.96%
+  room (ETH ahead of the repeat buyer's first buy) p10/50/90: 0.007468269150733946/0.007954643003463744/0.012723014108657836 over 23 pools

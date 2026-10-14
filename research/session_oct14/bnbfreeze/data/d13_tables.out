@@ -1,0 +1,33 @@
+(1) strangers before the dump, last 3 days (both templates): 141 Counter({'frozen_holding': 134, 'never_frozen_exited': 5, 'exited_then_frozen_rest': 1, 'never_frozen_dust': 1})
+    buy offset    n  frozen_holding  exited_before_freeze(sold <= 16 blk)  exited_then_frozen_rest  never_frozen_dust | freeze delay min/median/max
+    +   0..+  19   25              25                     0                       0                  0 | 6/29/63
+    +  40..+  59    2               2                     0                       0                  0 | 10/18/18
+    +  60..+  99    1               1                     0                       0                  0 | 26/26/26
+    + 100..+ 199    8               8                     0                       0                  0 | 8/23/35
+    + 200..+ 259    5               5                     0                       0                  0 | 11/14/27
+    + 260..+ 499   19              18                     1                       0                  0 | 4/29/44
+    + 500..+ 999   24              22                     1                       1                  0 | 4/20/54
+    +1000..+1999   24              21                     2                       0                  1 | 6/24/67
+    +2000..+3999   23              23                     0                       0                  0 | 7/27/39
+    +4000..+7999   10               9                     1                       0                  0 | 4/32/40
+    2,995-byte template only (the 1/10/25-BNB pools): Counter({'frozen_holding': 57, 'never_frozen_exited': 1})
+(2) by method (target:selector), recipient type, gas price, tx.from == recipient:
+    method {'other:0c307f76': {'frozen_holding': 43}, 'router:7ff36ab5': {'frozen_holding': 26}, 'router:b6f9de95': {'frozen_holding': 13, 'never_frozen_exited': 1}, 'other:27772d13': {'frozen_holding': 9}, 'other:e21fd0e9': {'frozen_holding': 8}, 'other:4d819a2a': {'frozen_holding': 3, 'never_frozen_exited': 4, 'exited_then_frozen_rest': 1}, 'other:810c705b': {'frozen_holding': 5}, 'other:edad400c': {'frozen_holding': 4}, 'other:d808d889': {'frozen_holding': 3}, 'other:d984396a': {'frozen_holding': 2}, 'other:814920c0': {'frozen_holding': 2}, 'other:34fcd5be': {'frozen_holding': 2}, 'other:3593564c': {'frozen_holding': 2}, 'other:0dc4bdae': {'frozen_holding': 2}, 'other:0a2b8f36': {'frozen_holding': 2}, 'other:5f575529': {'frozen_holding': 2}, 'other:e3ead59e': {'never_frozen_dust': 1, 'frozen_holding': 1}, 'other:765e827f': {'frozen_holding': 1}, 'other:08c1284c': {'frozen_holding': 1}, 'other:9265bb9d': {'frozen_holding': 1}, 'other:59840cd4': {'frozen_holding': 1}, 'other:faf6ef9f': {'frozen_holding': 1}}
+    rtype {'eoa': {'frozen_holding': 119, 'never_frozen_exited': 5, 'exited_then_frozen_rest': 1}, 'eoa7702': {'frozen_holding': 14}, 'contract': {'frozen_holding': 1, 'never_frozen_dust': 1}}
+    gas {'>0.051': {'frozen_holding': 86, 'never_frozen_exited': 5, 'exited_then_frozen_rest': 1}, '<0.051': {'frozen_holding': 47, 'never_frozen_dust': 1}, "0.051 (crowd's)": {'frozen_holding': 1}}
+    self {True: {'frozen_holding': 128, 'never_frozen_exited': 5, 'exited_then_frozen_rest': 1}, False: {'frozen_holding': 6, 'never_frozen_dust': 1}}
+    the strangers that got tokens out before a freeze: [('0x4066795c', '+4115', 'out after 6 blk', 'sell', '4d819a2a', 2.5), ('0xa2e006c1', '+1995', 'out after 16 blk', 'sell', 'b6f9de95', 15.0), ('0xc51df8e5', '+635', 'out after 5 blk', 'sell', '4d819a2a', 2.5), ('0x0b031fcf', '+284', 'out after 7 blk', 'sell', '4d819a2a', 2.5), ('0x0b031fcf', '+1062', 'out after 8 blk', 'sell', '4d819a2a', 2.5), ('0x0b031fcf', '+945', 'out after 8 blk', 'sell', '4d819a2a', 1.0)]
+    after the dump: 1657 Counter({'frozen_holding': 1401, 'never_frozen_holding': 195, 'never_frozen_exited': 52, 'never_frozen_dust': 6, 'exited_then_frozen_rest': 3})
+(3) our buy: msg.value 6722477509199193 V2 formula on the reserves before it -> 26815492626516 | the pair sent 26815492626516
+(4) size  1.0 first crowd buy offsets: [(64, 1), (65, 1), (67, 1), (75, 4), (76, 4), (78, 1), (79, 1), (80, 1), (83, 1), (85, 1), (86, 1), (87, 4), (88, 2), (89, 1), (90, 1), (100, 1)]
+(4) size 10.0 first crowd buy offsets: [(63, 1), (64, 1), (65, 2), (66, 1), (72, 1), (75, 6), (76, 3), (77, 1), (78, 1), (80, 1), (84, 1), (87, 1), (88, 1), (89, 1), (91, 1), (93, 1), (96, 1)]
+(4) size 25.0 first crowd buy offsets: [(64, 3), (65, 1), (68, 2), (73, 2), (74, 1), (75, 5), (76, 6), (77, 4), (78, 2), (79, 1), (80, 1), (81, 1), (84, 1), (85, 1), (86, 5), (87, 1), (88, 1), (90, 1), (94, 2), (95, 1), (120, 1)]
+    short hold size  1.0 h 1: best entries ['+131 mean +10.17% median -1.05% win 27%', '+87 mean +5.00% median -1.05% win 15%', '+198 mean +4.80% median -1.05% win 12%']; at +50: mean -1.05%
+    short hold size  1.0 h 2: best entries ['+130 mean +11.65% median -1.05% win 31%', '+131 mean +10.70% median -1.05% win 31%', '+175 mean +8.09% median -1.05% win 27%']; at +50: mean -1.05%
+    short hold size  1.0 h 3: best entries ['+130 mean +12.18% median -1.04% win 35%', '+129 mean +11.65% median -1.05% win 31%', '+131 mean +11.52% median -1.04% win 35%']; at +50: mean -1.05%
+    short hold size 10.0 h 1: best entries ['+75 mean +2.67% median -1.05% win 24%', '+132 mean +2.21% median -1.05% win 20%', '+76 mean +0.51% median -1.05% win 12%']; at +50: mean -1.05%
+    short hold size 10.0 h 2: best entries ['+75 mean +4.23% median -1.05% win 36%', '+131 mean +2.96% median -1.05% win 28%', '+132 mean +2.77% median -1.05% win 24%']; at +50: mean -1.05%
+    short hold size 10.0 h 3: best entries ['+75 mean +5.06% median -1.05% win 40%', '+74 mean +4.23% median -1.05% win 36%', '+130 mean +3.72% median -1.05% win 32%']; at +50: mean -1.05%
+    short hold size 25.0 h 1: best entries ['+120 mean -0.49% median -1.05% win 16%', '+131 mean -0.55% median -1.05% win 12%', '+287 mean -0.58% median -1.05% win 14%']; at +50: mean -1.05%
+    short hold size 25.0 h 2: best entries ['+131 mean -0.24% median -1.05% win 19%', '+120 mean -0.30% median -1.05% win 23%', '+75 mean -0.32% median -1.05% win 16%']; at +50: mean -1.05%
+    short hold size 25.0 h 3: best entries ['+75 mean -0.04% median -1.05% win 26%', '+130 mean -0.13% median -1.05% win 23%', '+119 mean -0.19% median -1.05% win 26%']; at +50: mean -1.05%
