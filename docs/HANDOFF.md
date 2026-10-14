@@ -2663,3 +2663,10 @@ Open:
   Check the engine's catch-up on the box (a websocket drop in the dry run shows it).
 - `health.sh` does not run `base_results.py --alerts` yet (RUNBOOK 4l step 7 runs it beside it). The unit's own user (`User=`), open since
   16.23 for flip-bnb, is open here too.
+- **The review of 12:10 UTC (Opus, on f3c5ec6)** found the happy path right (the calldata, the type-2 fields, the nonce order, minOut, a bot
+  buy ahead of ours no exit, the dry run reading no key) and four money-path bugs, fixed in the commit after it with a test each: a pull
+  could pass without a halt after a restart or when its log came after the settlement; a reverted or refused sell was never retried; a
+  buy with no receipt for 80 s was booked "lost" even when its Swap was logged; a "nonce too low" re-sign of the sell orphaned its hash.
+  Left as designed: a sell may go on our buy's Flashblock sighting before its receipt (a reverted buy then costs one NothingToSell gas
+  fee); the daily stop is the day's live net P&L; the two websockets are not chain-checked (a wrong `BASE_WS_URL` shows as heads with no
+  PoolManager logs). Untested still: a reorg of our own buy's log, `restore_today` across a restart, the relay under the stake at the fire.

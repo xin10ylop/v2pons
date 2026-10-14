@@ -80,8 +80,9 @@ The front, as on Robinhood (HANDOFF 3.2), timed off the liquidity add instead of
    = 2 x the head's base fee + the priority, at most `BASE_MAX_FEE_GWEI`, gas `BASE_BUY_GAS`), sent to every `BASE_SEND_URLS` at once.
 3. **Sell**: `FlipRelay.sell(key, minOut, deadline)` at the next nonce (the relay sells everything it holds: no amount, no approval), on
    the first of:
-   - **the bot's buy seen pending** (Flashblocks): a transaction to a `BASE_BOT_ROUTERS` address whose calldata carries the pool's token,
-     after our buy was sent; the sell goes at once, aiming at the same block behind it;
+   - **the bot's buy seen pending** (Flashblocks): a transaction to a `BASE_BOT_ROUTERS` address with a selector in `BASE_BOT_SELECTORS`
+     (27f7e6ee), value > 0, whose calldata carries the pool's token, sequenced after our own buy (seen in an earlier Flashblock, logged or
+     mined; a bot buy ahead of ours is no exit); the sell goes at once, aiming at the same block behind it;
    - **the bot's buy confirmed**: a `Swap` on the pool, after our buy's block, whose `sender` is in `BASE_BOT_SENDERS` (b10 says which
      address the Swap event names for the bot's buys), at any size (`exit: bot`);
    - **a paying buy behind ours**: any confirmed `Swap` buying (amount0 < 0) after ours whose price values our tokens at the stake x
@@ -92,12 +93,19 @@ The front, as on Robinhood (HANDOFF 3.2), timed off the liquidity add instead of
 4. **The pull watch**: a `ModifyLiquidity` with a negative delta on our pool, or a pending `BASE_PULL_SELECTOR` call to its hook, marks it
    pulled: before our fire, the pool is skipped (`skip: pulled before our fire`); after our buy and at or before our sell's block, the trade
    is -100% (`exit: pulled`) and **the line halts** (`HALTED.base`); a pull within `BASE_NEAR_MISS_BLOCKS` after our buy halts too even when
-   our sell landed first (the reaction is too fast to keep trading). A sell that reverted on a pool that was not pulled halts (`sold none`:
-   the sell path is broken). `BASE_NONBOT_HALT` live trades in a row under `BASE_NONBOT_MIN_RET` halt (the decoy rule of HANDOFF 16.13).
-   The owner's own `HALTED.base` holds across restarts; a halt stops new buys and still sells what is open.
+   our sell landed first (the reaction is too fast to keep trading; a pull in our sell's own block behind our sell is one). After a
+   confirmed pull on our pool a sell at minOut 0 still goes once (a partial pull would strand the tokens; a full one costs a gas fee).
+   The pulled verdict is taken from the pool's events in (block, logIndex) order against our sell's Swap, and, when the engine's copy of
+   the pool may be incomplete (a restart, a feed gap), from an `eth_getLogs` of the pool's ModifyLiquidity between our buy's and our sell's
+   blocks, read after both receipts. A sell that reverted or was refused on a pool that was not pulled is sent again at the next nonce
+   with minOut 0 (twice at most); only then does the line halt (`sold none`: the sell path is broken), and a buy that filled with no ETH
+   out at all halts the same way. `BASE_NONBOT_HALT` live trades in a row under `BASE_NONBOT_MIN_RET` halt (the decoy rule of HANDOFF
+   16.13). The owner's own `HALTED.base` holds across restarts; a halt stops new buys and still sells what is open.
 5. **Settle** from the receipts: ETH in (the buy's value), the tokens (the Swap of our buy, or the token's Transfer to the relay), ETH out
    (the Swap of our sell), the gas of both (gasUsed x effectiveGasPrice + `l1Fee`), the return and the dollars (`BASE_ETH_USD`), the pull's
-   block against our sell's: one `trade_done` line. `BASE_DAILY_STOP_USD` of losses stops new buys for the UTC day.
+   block against our sell's: one `trade_done` line. A buy with no receipt is not "lost" while its Swap was logged or its transaction was
+   seen in a Flashblock: the receipt is polled on, and failing that the relay's token balance decides (tokens there: a sell at minOut 0).
+   A UTC day whose live net P&L reaches -`BASE_DAILY_STOP_USD` stops new buys until 00:00 UTC (`stop`).
 6. **Dry run** (`BASE_DRY_RUN=1`, the default): everything but sign and send. A dry buy is priced at the state of the block after the fire
    (behind that block's recorded swaps), follows every real swap, sells by the same rules at the chain's recorded price: `would_fire` and
    `trade_done` with `dry: true`. The dry run is how the line is watched before any money (RUNBOOK 4l).
@@ -108,8 +116,10 @@ One position at a time. Open positions are written to `base_positions.json` besi
 
 - **Confirmed (required)**: one websocket to `BASE_WS_URL` with `eth_subscribe newHeads` (the clock: block number, timestamp, base fee) and
   `eth_subscribe logs {address: PoolManager, topics: [[Initialize, ModifyLiquidity, Swap]]}`. Every event of a sealed block arrives within
-  about 100 ms. When the websocket is down or silent for `BASE_WS_SILENT_S`, the engine polls `eth_blockNumber` and `eth_getLogs` over
-  `BASE_RPC_URL` for the blocks it missed (never skipping a block), and reconnects.
+  about 100 ms. When the websocket is down or silent for `BASE_WS_SILENT_S`, the engine polls `eth_getBlockByNumber("latest")` (the
+  head, its timestamp and base fee) and `eth_getLogs` one block behind it over `BASE_RPC_URL` for the blocks it missed (never skipping a
+  block; the start reads the last 12 blocks back, so a restart mid-launch still arms), and reconnects. The HTTP endpoints are chain-checked
+  at the start; the two websockets are not (a wrong `BASE_WS_URL` shows as heads with no PoolManager logs in `flow`).
 - **Flashblocks (optional, on by default; `BASE_FLASH_URL=0` turns it off)**: the pending-block stream. Each raw transaction is decoded
   (types 0x02, 0x00, 0x01, 0x04; 0x7e deposits skipped) for `to`, `value`, `data`, nonce; the sender is recovered only for the few that
   matter (the armed pool's hook, a bot router, our own wallet). It advances two actions: the fire (the add seen pending) and the sell (the
@@ -137,7 +147,9 @@ beside the log), `BASE_WS_SILENT_S` (10).
 The line's fingerprint: `BASE_LAUNCH_SELECTOR` (c3e0ff3d), `BASE_LAUNCH_CALLDATA_LEN` (260; 0 = any), `BASE_LAUNCHER_CODEHASH_PREFIX`
 (225f9af97d88; "" = any), `BASE_TOKEN_CODEHASHES` (0x63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb), `BASE_FEE` (5000),
 `BASE_TICK_SPACING` (100), `BASE_HOOK_FLAGS` (0x80; -1 = any hook, 0 = no hook), `BASE_ADD_SELECTOR` (2346bb56), `BASE_PULL_SELECTOR`
-(f2f230a8), `BASE_BOT_ROUTERS` (0x987d5db84d105c1f49391af409cc34c6050fb1d0), `BASE_BOT_SENDERS` ("" = off: b10 measured that the Swap
+(f2f230a8), `BASE_BOT_ROUTERS` (0x987d5db84d105c1f49391af409cc34c6050fb1d0), `BASE_BOT_SELECTORS` (27f7e6ee: a pending call to a bot
+router counts as the bot's buy only with one of these selectors and value > 0; the fleet's funding call 4977dff6 to the same contract is
+not a buy), `BASE_BOT_SENDERS` ("" = off: b10 measured that the Swap
 event's `sender` is the Universal Router for every swap, the bot's and anyone else's, so a sender rule cannot name the bot; the bot's buy
 is recognised pending by its transaction, and a confirmed buy behind ours sells by the take-profit rule), `BASE_MIN_POOL_ETH` (1.0),
 `BASE_ADD_MAX_BLOCKS` (10).
@@ -160,7 +172,8 @@ reorgs, filled, launches, armed, trades, trades_done, halted, stopped, position,
 block, eth, liquidity, pending or confirmed), `fire` / `would_fire` (pool, add_block, head, stake_wei, min_out, nonce, via: flash|logs),
 `buy_sent`, `sell_sent` (hash, nonce, block_seen, reason), `bot_buy` (pool, block or pending, value, via), `pull` (pool, block, before:
 fire|sell|after), `trade_done` (pool, token, buy_block, sell_block, eth_in_wei, tokens, eth_out_wei, gas_wei, l1_fee_wei, ret, usd, exit,
-pulled_at, nonbot_streak, dry, live), `halt` (reason), `stop` (day, losses), `alarm` (what, at most one a key every 10 min), `skip`.
+pulled_at, nonbot_streak, dry, live), `halt` (reason), `stop` (day, losses), `alarm` (what, at most one a key every 10 min), `skip`,
+`stopped` (the process ending, with the open position if any). `exit` `buy_reverted` also covers a buy that never mined.
 
 ## 7. Files
 

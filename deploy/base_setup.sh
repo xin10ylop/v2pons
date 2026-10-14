@@ -77,6 +77,8 @@ BASE_ADD_SELECTOR=2346bb56
 BASE_PULL_SELECTOR=f2f230a8
 # the bot's buy contract(s): a pending transaction to it carrying our token is the bot's buy (the sell goes at once)
 BASE_BOT_ROUTERS=0x987d5db84d105c1f49391af409cc34c6050fb1d0
+# the bot's buy selector(s) on that contract (comma-separated); a call with another selector or no value is not a buy
+BASE_BOT_SELECTORS=27f7e6ee
 # Swap senders that mark the bot's buy; empty = off (the Swap's sender is the Universal Router for every swap, the bot's included)
 BASE_BOT_SENDERS=
 # the smallest pool (the add's ETH) traded: the 0.133 ETH test pools are skipped
