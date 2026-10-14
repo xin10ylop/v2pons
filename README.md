@@ -168,4 +168,6 @@ the first paying buy behind ours, or at our buy + 6 blocks; a pull at or before 
 (`/etc/flip/base.env`), key (`/etc/flip/base.key`) and log (`/var/log/flip/base.jsonl`); the `deploy/base_*` scripts set up the wallet,
 deploy and simulate the relay, move the money and show the results, and RUNBOOK section 4l is every step on the box, a dry run first. The
 exit test passed (an outsider's round trip costs the two 0.5% fees, a sale into the bot's buy returned +13% to +18%); the operator's
-reaction to an outsider is unknown until the first live trade (HANDOFF 16.24).
+reaction to an outsider is unknown until the first live trade (HANDOFF 16.24). It went live at 13:32 UTC Oct 14 and took 28 trades, 27 up, +$48.60; from
+19:42 UTC the operator's launches no longer match its fingerprint and it trades none. The whole record and how to continue is
+`docs/BASE_HANDOFF.md` (HANDOFF 16.25).

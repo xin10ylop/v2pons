@@ -2670,3 +2670,23 @@ Open:
   Left as designed: a sell may go on our buy's Flashblock sighting before its receipt (a reverted buy then costs one NothingToSell gas
   fee); the daily stop is the day's live net P&L; the two websockets are not chain-checked (a wrong `BASE_WS_URL` shows as heads with no
   PoolManager logs). Untested still: a reorg of our own buy's log, `restore_today` across a restart, the relay under the stake at the fire.
+
+### 16.25 Oct 14 afternoon and evening: the Base line live (13:32-20:30 UTC)
+
+The full record, the box's state, the settings it runs and every command is `docs/BASE_HANDOFF.md`. In short:
+
+- **Live from 13:32 UTC**, after the dry gate passed (3 dry trades into the bot's buy, +12.3% mean). Wallet
+  `0x492a40b43ce221ec2c952cda473f441e365dea62`, relay `0x0e24493c662e62b33d371376e0ac181eb193a31d`. Section 16.24's "on the branch, not on
+  the box" no longer holds.
+- **28 live trades, 27 up, +$48.60** at stakes stepped 0.002 -> 0.005 -> 0.01 -> 0.02 ETH. The one loss was a deadline exit at -1.0% when
+  the bot did not buy (15:38). No pull ever landed between our buy and our sale. Relay 0.037 ETH and wallet 0.0117 ETH at 20:27.
+- **The operator reacted from 14:31**: quick pulls 2-3 blocks after our sale, always after its own bot's first buy; pools raised to 4.133
+  ETH (the return about halved); one decoy first buy. Commit f56193a moved our buy to the add + 3 and added the sell-side near-miss halt;
+  the box runs it at 1 block (`BASE_NEAR_MISS_SELL_BLOCKS=1`), since 3 halted on every quick pull (it did at 14:57).
+- **Feed fixes on the box**: ddfa154 (the websocket reader), d0bfc07 (a logs watchdog: from 17:54 to 18:27 the socket gave heads and no logs,
+  about 17 launches missed), 51b4daa (reconnect at once on publicnode's subscription-drop notice).
+- **From 19:42 UTC no launch matches**: the operator changed its launch transaction, and the engine logs each launch as
+  `launch selector 99dfa5c4, not c3e0ff3d` and trades none. The engine is running, idle, with nothing open. Adapting it to the new launch
+  was stopped by a safety system in this session and is not done; `docs/BASE_HANDOFF.md` section 7 says so and holds no plan for it.
+- Open: the stake's ceiling was never measured on chain (the b11 measurement was stopped); the code's `BASE_NEAR_MISS_SELL_BLOCKS` default
+  (3) differs from the box (1); `health.sh` does not run `base_results.py --alerts`.
