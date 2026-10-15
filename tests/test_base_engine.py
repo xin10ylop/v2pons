@@ -326,7 +326,7 @@ def arm_on_the_second_launch_call():
     e = with_launch("99dfa5c4", 32, []); assert e["armed"], e                                                           # empty: any launcher
     assert "99dfa5c4" in E.flash_watch() and "c3e0ff3d" in E.flash_watch()
     os.environ.update(BASE_ENV); os.environ.pop("BASE_LAUNCH_SELECTOR", None); os.environ.pop("BASE_LAUNCHER_CODEHASH_PREFIX", None)
-    s = E.settings(); assert s.LAUNCHES == {"c3e0ff3d": 260, "99dfa5c4": 0} and s.LAUNCHER_PREFIXES == ["225f9af97d88", "53959585f666"], vars(s)
+    s = E.settings(); assert s.LAUNCHES == {"c3e0ff3d": 260, "99dfa5c4": 0} and s.LAUNCHER_PREFIXES == ["225f9af97d88", "53959585f666", "aee87105d146"], vars(s)
     os.environ["BASE_LAUNCH_SELECTOR"] = "0xC3E0FF3D/260, 99dfa5c4/1156"; os.environ["BASE_LAUNCHER_CODEHASH_PREFIX"] = "0xAB12, 53959585f666"
     s = E.settings(); assert s.LAUNCHES == {"c3e0ff3d": 260, "99dfa5c4": 1156} and s.LAUNCHER_PREFIXES == ["ab12", "53959585f666"], vars(s)
     for k, v in [("BASE_LAUNCH_SELECTOR", "c3e0ff3d/x"), ("BASE_LAUNCH_SELECTOR", "c3e0ff3"), ("BASE_LAUNCH_SELECTOR", ","), ("BASE_LAUNCH_SELECTOR", "c3e0ff3d/2600000"),

@@ -9,7 +9,9 @@ L+3 (once L+2) the launch wallet calls the hook (2346bb56, 2.133329 ETH; the 0.1
 of its quote), its 35 wallets sell through the Universal Router from L+12, and the launch wallet pulls (f2f230a8 to the hook) on a ~4.1
 minute timer (+126, +128; the 09:42 test pool at +30). The Swap event's sender is the Universal Router for every swap, the bot's included.
 From 19:42 UTC Oct 14 the launch call is 99dfa5c4 to a fresh launcher of code hash 53959585f666..., its calldata 868-1348 B (a list of
-addresses at its end, the launch wallet last); the token, the hook's flags, the add (1.533 ETH at L+3) and the pull are the same.
+addresses at its end, the launch wallet last); the token, the hook's flags, the add (1.533 ETH at L+3) and the pull are the same. From
+07:16 UTC Oct 15 the launcher's code hash is aee87105d146... (11,337 B, one byte shorter), everything else unchanged: the operator rotates
+its launcher code; each rotation is a new prefix in BASE_LAUNCHER_CODEHASH_PREFIX, measured first (the token code is the exit's guard).
 
 ARM on an Initialize of the line's fingerprint (currency0 0, BASE_FEE, BASE_TICK_SPACING, the hook's low 14 address bits BASE_HOOK_FLAGS; the
 launch transaction's selector and calldata length from its Flashblocks copy, else eth_getTransactionByHash; the token's code hash in
@@ -219,7 +221,7 @@ def settings():
     s.LAUNCHES = _launches("BASE_LAUNCH_SELECTOR", "c3e0ff3d/260,99dfa5c4")
     if env("BASE_LAUNCH_CALLDATA_LEN", ""):
         raise SystemExit("BASE_LAUNCH_CALLDATA_LEN is gone: the length goes with its selector in BASE_LAUNCH_SELECTOR (c3e0ff3d/260); a bare selector takes any length")
-    s.LAUNCHER_PREFIXES = _prefixes("BASE_LAUNCHER_CODEHASH_PREFIX", "225f9af97d88,53959585f666")
+    s.LAUNCHER_PREFIXES = _prefixes("BASE_LAUNCHER_CODEHASH_PREFIX", "225f9af97d88,53959585f666,aee87105d146")
     s.TOKEN_CODEHASHES = set(_hexlist("BASE_TOKEN_CODEHASHES", "0x63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb", 64))
     if not s.TOKEN_CODEHASHES:
         raise SystemExit("BASE_TOKEN_CODEHASHES is empty")
