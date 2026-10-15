@@ -60,9 +60,12 @@ BASE_WS_SILENT_S=10
 # the launch transactions' selectors (to the per-launch launcher), comma-separated, each with an optional /calldata length in bytes
 # (c3e0ff3d, 260 B, to 19:42 UTC Oct 14; 99dfa5c4, 868-1348 B, since: a bare selector takes any length)
 BASE_LAUNCH_SELECTOR=c3e0ff3d/260,99dfa5c4
-# the launchers' code hash prefixes, comma-separated, any of (225f9af97d88 the first launcher, 53959585f666 from 19:42 UTC Oct 14,
-# aee87105d146 from 07:16 UTC Oct 15: the operator rotates its launcher code; a new prefix is measured on chain, then added here)
-BASE_LAUNCHER_CODEHASH_PREFIX=225f9af97d88,53959585f666,aee87105d146
+# the launchers' code hash prefixes, comma-separated, any of (225f9af97d88 the first launcher, 53959585f666 from 19:42 UTC Oct 14).
+# NOT aee87105d146 (from 07:16 UTC Oct 15): its hook lets only the operator's wallets sell; one stake was lost to it at 08:27 UTC.
+# A new launcher goes here only after base_relay_sim.py sells on one of its pools (--block between the add and the pull).
+BASE_LAUNCHER_CODEHASH_PREFIX=225f9af97d88,53959585f666
+# the hook's runtime code size in bytes, comma-separated, any of (8951 the line's hook; the whitelist hook is 8957); 0 = any
+BASE_HOOK_CODE_SIZES=8951
 # the token's runtime code hash(es), comma-separated (the 2.433 token, byte for byte the Robinhood one)
 BASE_TOKEN_CODEHASHES=0x63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb
 # the pool's fee (5000 = 0.5%)

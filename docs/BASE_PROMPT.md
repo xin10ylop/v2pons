@@ -96,11 +96,13 @@ Search by function name; line numbers drift.
 - Results: 28 live trades, 27 up, +$48.60. Relay 0.037 ETH, wallet 0.0117 ETH. No open position, no halt.
 - **Current situation:** from 19:42 UTC the operator launches with a new call (99dfa5c4 to a fresh launcher of code 53959585f666...,
   calldata 868-1348 B; the token, hook flags, add and pull unchanged; pools of 1.533 ETH). The engine accepts it since the commit after
-  51b4daa (`BASE_LAUNCH_SELECTOR=c3e0ff3d/260,99dfa5c4`, `BASE_LAUNCHER_CODEHASH_PREFIX=225f9af97d88,53959585f666,aee87105d146`;
-  `BASE_LAUNCH_CALLDATA_LEN` is gone and refused if set). The operator rotates its launcher code (53959585f666 from 19:42 UTC Oct 14,
-  aee87105d146 from 07:16 UTC Oct 15, each after a pause of hours); the skip line `launcher code X, not ...` names the new prefix: measure
-  its pools on chain (same selector, token, add at +3, pull, bot at +8), then add the prefix to the box's `/etc/flip/base.env` and restart.
-  A third party now sometimes buys at +4, before the bot (seen 07:51 UTC Oct 15): a competitor for the same exit.
+  51b4daa (`BASE_LAUNCH_SELECTOR=c3e0ff3d/260,99dfa5c4`, `BASE_LAUNCHER_CODEHASH_PREFIX=225f9af97d88,53959585f666`;
+  `BASE_LAUNCH_CALLDATA_LEN` is gone and refused if set). At 07:16 UTC Oct 15 the operator switched to a launcher of code aee87105d146
+  whose hook (8,957 B, the line's 8,951 B) reverts "meta error" on any sell not from the 30 wallets in the launch calldata: a honeypot for
+  outsiders. That prefix was added at 08:22 without an exit test; the first trade bought and could not sell, one stake ($51) lost, the
+  engine halted "sold none" at 08:28 and the prefix was removed. `BASE_HOOK_CODE_SIZES` (8951) now skips a hook of another size under
+  any launcher. THE RULE: a new launcher or hook is accepted only after `deploy/base_relay_sim.py <poolId> --block N` (N between the add
+  and the pull of one of its pools) shows the sell getting ETH back. A third party sometimes buys at +4, before the bot (07:44, 07:51).
 
 ## Known open items
 

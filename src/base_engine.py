@@ -10,8 +10,11 @@ of its quote), its 35 wallets sell through the Universal Router from L+12, and t
 minute timer (+126, +128; the 09:42 test pool at +30). The Swap event's sender is the Universal Router for every swap, the bot's included.
 From 19:42 UTC Oct 14 the launch call is 99dfa5c4 to a fresh launcher of code hash 53959585f666..., its calldata 868-1348 B (a list of
 addresses at its end, the launch wallet last); the token, the hook's flags, the add (1.533 ETH at L+3) and the pull are the same. From
-07:16 UTC Oct 15 the launcher's code hash is aee87105d146... (11,337 B, one byte shorter), everything else unchanged: the operator rotates
-its launcher code; each rotation is a new prefix in BASE_LAUNCHER_CODEHASH_PREFIX, measured first (the token code is the exit's guard).
+07:16 UTC Oct 15 the operator's launcher aee87105d146... (11,337 B, one byte shorter) deploys a hook of 8,957 B (the line's: 8,951 B) whose
+beforeSwap reverts "meta error" on any sell not from the wallets listed in the launch calldata: our buy filled and three sells reverted,
+one stake lost, the engine halted (sold none). The hook's code hash differs per pool (immutables), its size does not: BASE_HOOK_CODE_SIZES
+is the guard against a hook change under any launcher. A new launcher or hook is accepted only after deploy/base_relay_sim.py sells on one
+of its pools (--block between the add and the pull): the token code guards the token, not the hook.
 
 ARM on an Initialize of the line's fingerprint (currency0 0, BASE_FEE, BASE_TICK_SPACING, the hook's low 14 address bits BASE_HOOK_FLAGS; the
 launch transaction's selector and calldata length from its Flashblocks copy, else eth_getTransactionByHash; the token's code hash in
@@ -166,6 +169,16 @@ def _launches(name, default):
     return out
 
 
+def _sizes(name, default):
+    """code sizes in bytes, comma-separated; 0 alone = any"""
+    out = set()
+    for x in [x.strip() for x in env(name, default).split(",") if x.strip()]:
+        if not x.isdigit() or len(x) > 6:
+            raise SystemExit(f"{name} must be a comma list of code sizes in bytes (0 = any), not {env(name, default)!r}")
+        out.add(int(x))
+    return set() if out == {0} else out
+
+
 def _prefixes(name, default):
     """code hash prefixes, comma-separated, each 1-64 hex digits; empty = any"""
     out = []
@@ -221,7 +234,8 @@ def settings():
     s.LAUNCHES = _launches("BASE_LAUNCH_SELECTOR", "c3e0ff3d/260,99dfa5c4")
     if env("BASE_LAUNCH_CALLDATA_LEN", ""):
         raise SystemExit("BASE_LAUNCH_CALLDATA_LEN is gone: the length goes with its selector in BASE_LAUNCH_SELECTOR (c3e0ff3d/260); a bare selector takes any length")
-    s.LAUNCHER_PREFIXES = _prefixes("BASE_LAUNCHER_CODEHASH_PREFIX", "225f9af97d88,53959585f666,aee87105d146")
+    s.LAUNCHER_PREFIXES = _prefixes("BASE_LAUNCHER_CODEHASH_PREFIX", "225f9af97d88,53959585f666")
+    s.HOOK_CODE_SIZES = _sizes("BASE_HOOK_CODE_SIZES", "8951")
     s.TOKEN_CODEHASHES = set(_hexlist("BASE_TOKEN_CODEHASHES", "0x63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb", 64))
     if not s.TOKEN_CODEHASHES:
         raise SystemExit("BASE_TOKEN_CODEHASHES is empty")
@@ -638,6 +652,10 @@ def arm(p):
                 lh = code_hash(read("eth_getCode", [tx["to"], "latest"])); rec["launcher_code"] = lh[:14]
                 if not any(lh[2:].startswith(x) for x in S.LAUNCHER_PREFIXES):
                     why = f"launcher code {lh[:14]}, not {' or '.join(S.LAUNCHER_PREFIXES)}"
+            if not why and S.HOOK_CODE_SIZES:
+                hs = (len(read("eth_getCode", [p["hook"], "latest"])) - 2) // 2; rec["hook_code_size"] = hs
+                if hs not in S.HOOK_CODE_SIZES:
+                    why = f"hook code {hs} B, not {' or '.join(str(x) for x in sorted(S.HOOK_CODE_SIZES))}"
     except Exception as e:
         why = f"not read: {scrub(e, 120)}"
         alarm(f"a launch was not read: {why}", quiet_key="arm", every_s=60, pool=p["pid"])

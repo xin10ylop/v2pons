@@ -26,7 +26,7 @@ FX = json.load(open(os.path.join(ROOT, "tests", "data", "base_launch.json")))
 L = FX["launch_block"]; PID = FX["pool"]; TOKEN = FX["key"]["currency1"]; HOOK = FX["key"]["hooks"]; ROLES = FX["roles"]
 UR = "0x6ff5693b99212da76ad316178a184ab56d299b43"; BOT = "0x987d5db84d105c1f49391af409cc34c6050fb1d0"
 LAUNCH_TX = FX["txs"][ROLES["launch"][0]]; ADD_TX = FX["txs"][ROLES["add"][0]]; BOT1_TX = FX["txs"][ROLES["bot_buys"][0]]; PULL_TX = FX["txs"][ROLES["pull"][0]]
-LAUNCHER = LAUNCH_TX["to"].lower(); FAKE_LAUNCHER_CODE = "0x6080604052" + "00" * 40
+LAUNCHER = LAUNCH_TX["to"].lower(); FAKE_LAUNCHER_CODE = "0x6080604052" + "00" * 40; FAKE_HOOK_CODE = "0x6080604052" + "00" * 8946   # 8,951 B, the line's hook
 W = lambda d, i: int(d[2 + 64 * i: 2 + 64 * (i + 1)], 16); sgn = E.sgn; word = E.word
 blk = lambda lg: int(lg["blockNumber"], 16)
 Q96 = 1 << 96; FEE = 5000
@@ -74,7 +74,7 @@ class Chain:
     def __init__(self, logs=None, txs=None):
         self.logs = copy.deepcopy([FX["init_log"]] + FX["pool_logs"] if logs is None else logs)
         self.txs = copy.deepcopy(FX["txs"] if txs is None else txs); self.receipts = {}; self.head = L + 40; self.calls = []; self.ranges = []
-        self.code = {TOKEN: FX["token_code"], LAUNCHER: FAKE_LAUNCHER_CODE, RELAY: "0x6001"}; self.chain_ids = {}; self.owner = None; self.pm = E.S.PM
+        self.code = {TOKEN: FX["token_code"], LAUNCHER: FAKE_LAUNCHER_CODE, HOOK: FAKE_HOOK_CODE, RELAY: "0x6001"}; self.chain_ids = {}; self.owner = None; self.pm = E.S.PM
         self.balance = 10 ** 18; self.nonce = 7; self.sent = []; self.fail = set(); self.auto = None; self.replies = []; self.tokens = 0
 
     def http(self, url, payload, timeout):
@@ -324,14 +324,21 @@ def arm_on_the_second_launch_call():
     e = with_launch("99dfa5c4", 32, ["deadbeefdead", fake]); assert e["armed"], e                                     # any of the prefixes
     e = with_launch("99dfa5c4", 32, ["deadbeefdead"]); assert not e["armed"] and "launcher code" in e["skip"] and "deadbeefdead" in e["skip"], e
     e = with_launch("99dfa5c4", 32, []); assert e["armed"], e                                                           # empty: any launcher
+    # the hook's code size: the whitelist hook of Oct 15 (8,957 B, sells by the operator's wallets only) is skipped under any launcher
+    c = fresh(); c.code[HOOK] = FAKE_HOOK_CODE + "00" * 6; feed(c, L, L); e = wait_ev("launch")[0]
+    assert not e["armed"] and e["skip"] == "hook code 8957 B, not 8951" and e["hook_code_size"] == 8957, e
+    c = fresh(BASE_HOOK_CODE_SIZES="8951, 8957"); c.code[HOOK] = FAKE_HOOK_CODE + "00" * 6; feed(c, L, L); assert wait_ev("launch")[0]["armed"]
+    c = fresh(BASE_HOOK_CODE_SIZES="0"); c.code[HOOK] = "0x60"; feed(c, L, L); assert wait_ev("launch")[0]["armed"]   # 0: any
+    assert E.settings().HOOK_CODE_SIZES == set()
     assert "99dfa5c4" in E.flash_watch() and "c3e0ff3d" in E.flash_watch()
-    os.environ.update(BASE_ENV); os.environ.pop("BASE_LAUNCH_SELECTOR", None); os.environ.pop("BASE_LAUNCHER_CODEHASH_PREFIX", None)
-    s = E.settings(); assert s.LAUNCHES == {"c3e0ff3d": 260, "99dfa5c4": 0} and s.LAUNCHER_PREFIXES == ["225f9af97d88", "53959585f666", "aee87105d146"], vars(s)
+    os.environ.update(BASE_ENV); os.environ.pop("BASE_LAUNCH_SELECTOR", None); os.environ.pop("BASE_LAUNCHER_CODEHASH_PREFIX", None); os.environ.pop("BASE_HOOK_CODE_SIZES", None)
+    s = E.settings(); assert s.LAUNCHES == {"c3e0ff3d": 260, "99dfa5c4": 0} and s.LAUNCHER_PREFIXES == ["225f9af97d88", "53959585f666"] and s.HOOK_CODE_SIZES == {8951}, vars(s)
     os.environ["BASE_LAUNCH_SELECTOR"] = "0xC3E0FF3D/260, 99dfa5c4/1156"; os.environ["BASE_LAUNCHER_CODEHASH_PREFIX"] = "0xAB12, 53959585f666"
     s = E.settings(); assert s.LAUNCHES == {"c3e0ff3d": 260, "99dfa5c4": 1156} and s.LAUNCHER_PREFIXES == ["ab12", "53959585f666"], vars(s)
     for k, v in [("BASE_LAUNCH_SELECTOR", "c3e0ff3d/x"), ("BASE_LAUNCH_SELECTOR", "c3e0ff3"), ("BASE_LAUNCH_SELECTOR", ","), ("BASE_LAUNCH_SELECTOR", "c3e0ff3d/2600000"),
-                 ("BASE_LAUNCH_CALLDATA_LEN", "260"), ("BASE_LAUNCHER_CODEHASH_PREFIX", "zz"), ("BASE_LAUNCHER_CODEHASH_PREFIX", "ab" * 33)]:
-        os.environ.update(BASE_ENV); os.environ.pop("BASE_LAUNCH_SELECTOR", None); os.environ.pop("BASE_LAUNCHER_CODEHASH_PREFIX", None); os.environ[k] = v
+                 ("BASE_LAUNCH_CALLDATA_LEN", "260"), ("BASE_LAUNCHER_CODEHASH_PREFIX", "zz"), ("BASE_LAUNCHER_CODEHASH_PREFIX", "ab" * 33),
+                 ("BASE_HOOK_CODE_SIZES", "8951,x"), ("BASE_HOOK_CODE_SIZES", "-1")]:
+        os.environ.update(BASE_ENV); os.environ.pop("BASE_LAUNCH_SELECTOR", None); os.environ.pop("BASE_LAUNCHER_CODEHASH_PREFIX", None); os.environ.pop("BASE_HOOK_CODE_SIZES", None); os.environ[k] = v
         try:
             E.settings()
         except SystemExit as e:

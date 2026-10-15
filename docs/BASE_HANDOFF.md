@@ -177,8 +177,11 @@ fingerprint again. Relay 0.037 ETH, wallet 0.0117 ETH, 28 live trades, +$48.60.
   at L+3 of 1.533 ETH (two early pools of 0.053 ETH, under `BASE_MIN_POOL_ETH`), the pull f2f230a8 at +13 to +224). The box's env must
   set `BASE_LAUNCH_SELECTOR=c3e0ff3d/260,99dfa5c4` and `BASE_LAUNCHER_CODEHASH_PREFIX=225f9af97d88,53959585f666` and drop
   `BASE_LAUNCH_CALLDATA_LEN` (refused if set) before the restart. Done on the box at 21:03 UTC Oct 14: 86 trades, +$640 by 08:00 UTC Oct 15.
-  At 07:16 UTC Oct 15 the operator rotated its launcher code again (aee87105d146, one byte shorter, everything else the same, measured on
-  its first seven pools); the prefix was added to the defaults and the box's env.
+  At 07:16 UTC Oct 15 the operator switched to launcher aee87105d146 (one byte shorter) whose hook is 6 B longer and reverts every sell
+  not from its own wallets ("meta error" in beforeSwap). The prefix was added at 08:22 on a chain measurement alone (same token, add,
+  bot, pull); the exit was not tested. The first trade (08:27, pool 0x409f086f) bought 0.02 ETH and three sells reverted, even at minOut 0:
+  -$51, the engine halted "sold none". The prefix was removed, `BASE_HOOK_CODE_SIZES=8951` added as the guard, and the rule written
+  down: no new launcher or hook without `base_relay_sim.py --block` on one of its pools first.
 - The stake's ceiling was not measured on chain (section 8).
 - The code's `BASE_NEAR_MISS_SELL_BLOCKS` default was not brought in line with the box (section 8).
 

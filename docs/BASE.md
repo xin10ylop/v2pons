@@ -146,7 +146,8 @@ beside the log), `BASE_WS_SILENT_S` (10).
 
 The line's fingerprint: `BASE_LAUNCH_SELECTOR` (c3e0ff3d/260,99dfa5c4: the launch calls, each with an optional /calldata length in bytes,
 a bare selector any length; the second is the operator's call since 19:42 UTC Oct 14), `BASE_LAUNCHER_CODEHASH_PREFIX`
-(225f9af97d88,53959585f666,aee87105d146: any of, the operator rotates its launcher code; "" = any), `BASE_TOKEN_CODEHASHES` (0x63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb), `BASE_FEE` (5000),
+(225f9af97d88,53959585f666: any of; "" = any; never aee87105d146, whose hook sells only for the operator's wallets), `BASE_HOOK_CODE_SIZES`
+(8951: the hook's runtime code size in bytes, any of; the whitelist hook of Oct 15 is 8957; 0 = any), `BASE_TOKEN_CODEHASHES` (0x63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb), `BASE_FEE` (5000),
 `BASE_TICK_SPACING` (100), `BASE_HOOK_FLAGS` (0x80; -1 = any hook, 0 = no hook), `BASE_ADD_SELECTOR` (2346bb56), `BASE_PULL_SELECTOR`
 (f2f230a8), `BASE_BOT_ROUTERS` (0x987d5db84d105c1f49391af409cc34c6050fb1d0), `BASE_BOT_SELECTORS` (27f7e6ee: a pending call to a bot
 router counts as the bot's buy only with one of these selectors and value > 0; the fleet's funding call 4977dff6 to the same contract is
