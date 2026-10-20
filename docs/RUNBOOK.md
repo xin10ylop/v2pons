@@ -1470,6 +1470,10 @@ the first 3 trades (the engine halts; the stake is the whole loss); go on to sta
 inside 10 blocks of any buy.** A `halt`, an `exit` pulled, `buy_reverted` twice, or `ret` under 0 twice: stop and paste the lines and the
 screen of step 11. The screen's `STAGE 1 RULE` line keeps the count.
 
+(The box can make this one switch by itself: `sudo bash ~/v2pons/deploy/base_v2_autolive.sh` watches the dry log and, at three correct dry
+decisions with the relay set and funded, no halt and no feed alarm, writes the stage-1 settings above and restarts the service; `--check`
+prints its count and switches nothing. It never raises the stake: every stage above $5 is step 10, by your hand.)
+
 ### 10. Raising the stake: 0.02 ETH on 10 pairs (stage 2), then 0.05 and 0.1 (stage 3)
 
 - **Stage 2** when stage 1 passed: with no position open (the screen), stop, fund the relay to the new stake plus the margin, set the
