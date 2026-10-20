@@ -27,3 +27,7 @@ if [ -f /var/log/flip/bnb.jsonl ]; then                      # the BNB line (fli
     echo "flip-bnb: $(systemctl is-active flip-bnb 2>/dev/null)"
     python3 "$REPO/deploy/bnb_results.py" --alerts
 fi
+if [ -f /var/log/flip/base_v2.jsonl ]; then                  # the Base V2 line (flip-base-v2): its trouble only, nothing when all is well
+    echo "flip-base-v2: $(systemctl is-active flip-base-v2 2>/dev/null)"
+    python3 "$REPO/deploy/base_v2_results.py" --alerts
+fi

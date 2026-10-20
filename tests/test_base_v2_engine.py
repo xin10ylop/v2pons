@@ -658,15 +658,16 @@ def arm_reads_the_creation_block():
     c = fresh(Stream("2.0")); f = fired(c)[0]
     o = wait_ev("outsider_buy")[0]
     assert f["ev"] == "would_fire" and o["block"] == N and o["who"] == "probe" and o["sender"] == PROBE and o["action"] == "none" and not o["ours"] and o["via"] == "logs", (f, o)
-    assert c.ranges and c.ranges[0] == (N, N) and c.calls.count(("rpc.example.org", "eth_getTransactionByHash")) <= 3 and E.pairs[PAIR]["buys"][0]["who"] == "probe"
+    assert c.ranges and c.ranges[0] == (N, N) and c.calls.count(("rpc.example.org", "eth_getTransactionByHash")) <= 3 and E.pairs[PAIR]["buys"][0]["who"] == "probe", (c.ranges, c.calls)
     st = Stream("2.0"); c = fresh(st); inject_buy(c, st, N, 10 ** 15, STRANGER.address.lower()); f = fired(c)[0]
     assert f["ev"] == "skip" and f["why"] == "outsider before our fire" and f["block"] == N and not events("would_fire"), f
     o = wait_ev("outsider_buy", 2)
-    assert {(x["who"], x["action"]) for x in o} == {("probe", "none"), ("outsider", "none")} and E.pairs[PAIR]["status"] == "watched"
+    assert {(x["who"], x["action"]) for x in o} == {("probe", "none"), ("outsider", "none")} and E.pairs[PAIR]["status"] == "watched", o
     st = Stream("2.0"); c = fresh(st); inject_buy(c, st, N, 10 ** 15, FLEET[3]); f = fired(c)[0]        # a roster wallet in the creation block: not an outsider
-    assert f["ev"] == "would_fire" and E.pairs[PAIR]["fleet_first"] == N and len(events("outsider_buy")) == 1
+    assert f["ev"] == "would_fire" and E.pairs[PAIR]["fleet_first"] == N and len(events("outsider_buy")) == 1, (f, events("outsider_buy"))
     st = Stream("2.0"); c = fresh(st); inject_buy(c, st, N, 10 ** 15, "0x" + "ab" * 20, sender=CREATOR); f = fired(c)[0]   # the creator's own buy: not an outsider
-    assert f["ev"] == "would_fire" and [x["who"] for x in wait_ev("outsider_buy", 2)] == ["probe", "creator"] or sorted(x["who"] for x in events("outsider_buy")) == ["creator", "probe"]
+    assert f["ev"] == "would_fire", f
+    assert sorted(x["who"] for x in wait_ev("outsider_buy", 2)) == ["creator", "probe"] and all(x["action"] == "none" for x in events("outsider_buy")), events("outsider_buy")
 
 
 @test
@@ -851,25 +852,25 @@ def dry_pulled_before_our_sell_halts():
 
 @test
 def burn_on_another_pair_ends_the_tier():
-    """a Burn earlier than SCHEDULE_MIN on any pair of the tier: stop what:tier; our open position still sells; the next creation of the
-    tier is refused (tier ended) until the day rolls"""
-    a = Stream("2.0"); b = Stream("2.0", creator=creator_key("pair-b"), li_offset=1000, fleet=False); c = fresh(a, b); feed(c, N - 2, N)
-    wait_ev("would_fire", 2); assert {x["pair"] for x in events("would_fire")} == {PAIR, b.pair} and E.state["trades_today"] == 2
-    feed(c, N + 1, N + 20); E.positions[b.pair]["trigger"] = None
-    inject_burn(c, b, N + 100); feed(c, N + 21, N + 101)
+    """a Burn earlier than SCHEDULE_MIN on another pair of the tier (followed, refused by MAX_POSITIONS): stop what:tier, no halt; our open
+    position still sells at the hard block; the next creation of the tier is refused (tier ended) until the day rolls"""
+    a = Stream("2.0"); b = Stream("2.0", creator=creator_key("pair-b"), li_offset=1000); c = fresh(a, b, BASE_V2_MAX_POSITIONS="1"); feed(c, N - 2, N)
+    ours = c.streams[wait_ev("would_fire")[0]["pair"]]; theirs = b if ours is a else a      # two guards in one block: either may finish first
+    s = wait_ev("skip", pair=theirs.pair)[0]
+    assert s["why"] == "positions" and s["positions"] == [ours.pair] and len(events("would_fire")) == 1 and E.pairs[theirs.pair]["status"] == "watched", s
+    feed(c, N + 1, N + 99); inject_burn(c, theirs, N + 100); feed(c, N + 100, N + 101)
     t = events("stop")
     assert len(t) == 1 and t[0]["what"] == "tier" and t[0]["tier"] == "1.3-2.3" and "+100" in t[0]["reason"] and "BASE_V2_SCHEDULE_MIN 220" in t[0]["reason"] and t[0]["day"] == "2026-10-20", t
-    d = wait_ev("trade_done", pair=b.pair)[0]
-    assert d["exit"] == "pulled" and not events("halt") and E.positions[PAIR]["sell_sent"] is False       # b's pull came 99 blocks after its buy: no reaction, no halt
-    assert events("pull")[0]["ours"] and events("pull")[0]["before"] == "sell" and not events("pull")[0]["reaction"]
-    d3 = Stream("2.0", creator=creator_key("pair-d"), shift=110, li_offset=2000); c.streams[d3.pair] = d3; c.by_token[d3.token] = d3
+    p = events("pull")[0]
+    assert p["pair"] == theirs.pair and not p["ours"] and p["before"] == "after" and not p["reaction"] and p["since_creation"] == 100 and not events("halt") and theirs.pair not in E.pairs, p
+    assert E.positions[ours.pair]["sell_sent"] is False and E.state["tiers_ended"] == {"1.3-2.3": "2026-10-20"}
+    feed(c, N + 102, N + 178)
+    d = wait_ev("trade_done", pair=ours.pair)[0]; assert d["exit"] == "hard" and d["ret"] > 0 and not E.positions
+    d3 = Stream("2.0", creator=creator_key("pair-d"), shift=180, li_offset=2000); c.streams[d3.pair] = d3; c.by_token[d3.token] = d3
     c.txs.update(d3.txs); c.txs[d3.creation_hash] = d3.creation_tx; c.receipts[d3.creation_hash] = {"status": "0x1", "blockNumber": hex(d3.N), "logs": d3.rlogs}
-    feed(c, N + 102, N + 110)
+    feed(c, N + 179, N + 180)
     s = wait_ev("skip", pair=d3.pair)[0]
-    assert s["why"] == "tier ended" and events("guard", pair=d3.pair)[0]["verdict"] == "ok" and not events("would_fire", pair=d3.pair), s
-    feed(c, N + 111, N + 178)
-    t = wait_ev("trade_done", pair=PAIR)[0]; assert t["exit"] == "hard" and t["ret"] > 0
-    assert E.state["tiers_ended"] == {"1.3-2.3": "2026-10-20"}
+    assert s["why"] == "tier ended" and events("guard", pair=d3.pair)[0]["verdict"] == "ok" and not events("would_fire", pair=d3.pair) and len(events("stop")) == 1, s
     CLOCK[0] = ts(N) + 86400; E.roll_day()                                    # 00:00 UTC: the tier's stop clears
     assert E.state["tiers_ended"] == {} and E.state["day"] == "2026-10-21" and E.state["trades_today"] == 0
 
@@ -888,6 +889,516 @@ def daily_cap():
     assert s["why"] == "stopped" and s["trades_today"] == 2 and not events("would_fire", pair=d3.pair) and len(events("stop")) == 1, s
     feed(c, N + 6, N + 178)
     assert len(wait_ev("trade_done", 2)) == 2 and len(events("would_fire")) == 2
+
+
+# ---------------------------------------------------------------- live (the key, the relay and the sends stubbed)
+def live_start(c, **env):
+    """a live start through start(): the key file written, the wallet and the relay in the env"""
+    open(os.path.join(TMP, "k.key"), "w").write("0x" + bytes(KEY.key).hex() + "\n"); E.SIGNER = None
+    os.environ.update({"BASE_V2_KEY_FILE": os.path.join(TMP, "k.key"), "BASE_V2_WALLET": KEY.address, "BASE_V2_RELAY": RELAY, **{k: str(v) for k, v in env.items()}})
+    E.S = E.settings(); E.S.STAKE_WEI_MAX = lambda: min(E.S.STAKE_ETH_WEI, E.S.STAKE_CAP_WEI)
+    return E.start()
+
+
+def add_stream(c, st):
+    c.streams[st.pair] = st; c.by_token[st.token] = st; c.txs.update(st.txs); c.txs[st.creation_hash] = st.creation_tx
+    c.receipts[st.creation_hash] = {"status": "0x1", "blockNumber": hex(st.N), "transactionHash": st.creation_hash, "logs": st.rlogs}
+
+
+@test
+def live_fire_signs_a_type2_buy():
+    """the fire: a real signed type-2 transaction to the relay's buy selector with the token, the stake, minOut and the deadline, at the
+    wallet's nonce and BASE_V2_PRIO_GWEI, max fee 2 x the base fee + the priority, to both send endpoints; the refusals before a live fire"""
+    c = fresh(dry=False); f = fired(c)[0]; b = wait_ev("buy_sent")[0]; stake = 2 * 10 ** 16; min_out = cp_out(stake, 2 * 10 ** 18, R_TOK0) * 970_000 // 10 ** 6
+    assert f["ev"] == "fire" and not f["dry"] and f["nonce"] == 7 and f["aim"] == N + 1 and f["head"] == N and f["min_out"] == min_out and f["prio_gwei"] == 0.03 and f["max_fee_gwei"] == 0.04, f
+    assert b["nonce"] == 7 and b["kind"] == "ok" and b["reason"] == "fire" and b["via"] == "first" and b["min_out"] == min_out and b["deadline"] == ts(N) + 6 and b["prio_gwei"] == 0.03, b
+    assert b["block_seen"] == N and set(b["replies"]) == {"seq.example.org", "send2.example.org"} and b["replies"]["seq.example.org"]["kind"] == "ok" and b["ms_since_fire"] >= 0
+    assert len(c.sent) == 2 and {h for h, _ in c.sent} == {"seq.example.org", "send2.example.org"} and c.sent[0][1] == c.sent[1][1]
+    raw = c.sent[0][1]; tx = raw_sent(c, 0); d = "0x" + tx["data"].hex()
+    assert raw.startswith("0x02") and tx["type"] == 2 and tx["to"] == RELAY and tx["value"] == 0 and tx["nonce"] == 7 and tx["gas"] == 250_000, tx
+    assert tx["prio"] == 3 * 10 ** 7 == E.S.PRIO_WEI and tx["max_fee"] == 2 * 5_000_000 + 3 * 10 ** 7 and int.from_bytes(rlp.decode(bytes.fromhex(raw[4:]))[0], "big") == 8453
+    assert d[2:10] == E.SEL_BUY == "1622dbe4" and len(d) == 10 + 64 * 4 and inaddr(d, 0) == TOKEN and inword(d, 1) == stake and inword(d, 2) == min_out and inword(d, 3) == ts(N) + 6
+    assert E.tx_sender(raw) == KEY.address.lower() and b["hash"] == hash_of(raw) and E.state["nonce"] == 8 and b["hash"] in E.state["our_hashes"]
+    saved = json.load(open(E.S.POSITIONS_FILE))["positions"]
+    assert list(saved) == [PAIR] and saved[PAIR]["buy_hash"] == b["hash"] and saved[PAIR]["buy_nonce"] == 7 and saved[PAIR]["stake"] == stake and not saved[PAIR]["sell_sent"]
+    feed(c, N + 1, N + 1); feed(c, N + 2, N + 177); wait_ev("trade_done")
+    c = fresh(dry=False); E.state["relay_wei"] = 10 ** 16; f = fired(c)[0]
+    assert f["ev"] == "skip" and f["why"] == "relay balance" and f["relay_eth"] == 0.01 and f["needed_eth"] == 0.0205 and not c.sent and events("guard")[0]["verdict"] == "ok", f
+    c = fresh(dry=False); open(E.S.HALT_FILE, "w").write("the owner's halt\\n"); f = fired(c)[0]
+    assert f["ev"] == "skip" and f["why"] == "halted" and f["reason"] == "the owner's halt" and E.state["halted"] == "the owner's halt" and not c.sent, f
+    c = fresh(dry=False); c.replies = [{"error": {"code": -32000, "message": "insufficient funds"}}, {"error": {"code": -32000, "message": "insufficient funds"}}]; fired(c)
+    b = wait_ev("buy_sent")[0]; a = wait_ev("alarm")[0]
+    assert b["kind"] == "rejected" and "refused by every endpoint" in a["what"] and E.state["trades_today"] == 0 and not E.positions and E.state["nonce"] == 7, (b, a)
+
+
+@test
+def live_trade_settles_from_the_receipts():
+    """the hard exit live: the buy mined at N + 1, the sell sent at N + SELL_SEND_BLOCK (minOut 0, the next nonce) and mined; settled from
+    the receipts: the tokens from the Transfer to the relay (not the Swap), the ETH out, gas = gasUsed x effectiveGasPrice + l1Fee of both"""
+    c = fresh(dry=False); c.transfer_cut = 1; st = c.streams[PAIR]; fired(c); wait_ev("buy_sent"); stake = 2 * 10 ** 16
+    feed(c, N + 1, N + 1)
+    tokens = cp_out(stake, *st.sync_at(N)); got = tokens - tokens // 100; pos = E.positions[PAIR]
+    assert c.held[PAIR] == got and pos["buy_at"] == (N + 1, 0x804 + 2) and pos["buy_block"] == N + 1 and not pos["sell_sent"]
+    feed(c, N + 2, N + 175)
+    assert not events("sell_sent") and len(c.sent) == 2 and pos["tokens"] == got            # the receipt's Transfer, read by the settlement
+    feed(c, N + 176, N + 176)
+    s = wait_ev("sell_sent")[0]
+    assert s["reason"] == "hard" and s["nonce"] == 8 and s["min_out"] == 0 and s["via"] == "first" and s["deadline"] == ts(N + 176) + 6 and s["kind"] == "ok" and s["block_seen"] == N + 176, s
+    tx = raw_sent(c, 2); d = "0x" + tx["data"].hex()
+    assert d[2:10] == E.SEL_SELL == "6a272462" and inaddr(d, 0) == TOKEN and inword(d, 1) == 0 and inword(d, 2) == ts(N + 176) + 6 and tx["nonce"] == 8 and tx["prio"] == 3 * 10 ** 7
+    feed(c, N + 177, N + 178)
+    t = wait_ev("trade_done")[0]; re_, rt_ = st.sync_at(N + 177); eth_out = cp_out(got, rt_, re_)
+    gas = 125_000 * 35_000_000 + 2_090_000_000 + 118_000 * 35_000_000 + 2_000_000_000
+    assert t["live"] and not t["dry"] and t["exit"] == "hard" and t["buy_block"] == N + 1 and t["buy_index"] == 0x806 and t["sell_block"] == N + 177 and t["eth_in_wei"] == stake, t
+    assert t["tokens"] == got and t["eth_out_wei"] == eth_out and t["gas_wei"] == gas and t["l1_fee_wei"] == 4_090_000_000 and t["net_wei"] == eth_out - stake - gas
+    assert t["ret"] == round((eth_out - stake - gas) / stake, 6) and t["ret"] > 0.03 and t["nonce"] == 7 and t["buy_hash"] == events("buy_sent")[0]["hash"] and t["sell_hash"] == s["hash"]
+    assert t["loss_streak"] == 0 and not t["late"] and t["pulled_at"] is None and t["outsider_at"] is None and t["fleet_first_buy"] == N + 2 and t["fleet_eth"] > 0.05 and t["trades_today"] == 1
+    assert json.load(open(E.S.POSITIONS_FILE))["positions"] == {} and not E.positions and E.state["nonce"] == 9 and E.state["relay_wei"] == 10 ** 18 + eth_out - stake
+    assert len(c.sent) == 4 and not events("halt") and not events("alarm") and E.pairs[PAIR]["status"] == "traded"
+
+
+@test
+def live_hard_sell_resent_when_unseen():
+    """the hard sell unseen (no Flashblock, no Swap, no receipt) by N + SELL_RESEND_BLOCK: sent again at the same nonce with twice the
+    priority and a bumped max fee; the replacement's receipt settles the trade"""
+    c = fresh(dry=False); st = c.streams[PAIR]; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 1); c.auto_mine = False
+    feed(c, N + 2, N + 177)
+    s = wait_ev("sell_sent")
+    assert len(s) == 1 and s[0]["reason"] == "hard" and s[0]["nonce"] == 8 and len(c.sent) == 4
+    feed(c, N + 178, N + 178)
+    s = wait_ev("sell_sent", 2)
+    assert s[1]["via"] == "resend" and s[1]["nonce"] == 8 and s[1]["prio_gwei"] == 0.06 and s[1]["min_out"] == 0 and s[1]["reason"] == "hard" and "SELL_RESEND_BLOCK" in s[1]["why"], s
+    assert s[1]["hash"] != s[0]["hash"] and s[1]["deadline"] == ts(N + 178) + 6 and len(c.sent) == 6
+    first, again = raw_sent(c, 2), raw_sent(c, 4)
+    assert again["nonce"] == first["nonce"] == 8 and again["prio"] == 2 * first["prio"] == 6 * 10 ** 7 and again["max_fee"] == max(2 * 5_000_000 + 6 * 10 ** 7, first["max_fee"] * 11 // 10 + 1)
+    assert again["data"][4:36] == first["data"][4:36] and E.positions[PAIR]["resent"]
+    c.mine(N + 179, only={s[1]["hash"]}); feed(c, N + 179, N + 180)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "hard" and t["sell_block"] == N + 179 and t["sell_hash"] == s[1]["hash"] and t["eth_out_wei"] > 0 and len(events("sell_sent")) == 2, t
+    assert t["gas_wei"] == 125_000 * 35_000_000 + 2_090_000_000 + 118_000 * 35_000_000 + 2_000_000_000       # one buy, one mined sell
+
+
+@test
+def live_take_profit_min_out():
+    c = fresh(dry=False); st = c.streams[PAIR]; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 19); pos = E.positions[PAIR]
+    inject_buy(c, st, N + 20, 3 * 10 ** 17, FLEET[4]); feed(c, N + 20, N + 20)
+    s = wait_ev("sell_sent")[0]; re_, rt_ = c.reserves_at(PAIR, N + 20); want = cp_out(pos["tokens"], rt_, re_) * 950_000 // 10 ** 6
+    assert s["reason"] == "take_profit" and s["min_out"] == want and want > 25 * 10 ** 15 and s["nonce"] == 8 and "BASE_V2_TAKE_PROFIT" in s["why"], (s, want)
+    d = "0x" + raw_sent(c, 2)["data"].hex(); assert inword(d, 1) == want and inaddr(d, 0) == TOKEN
+    feed(c, N + 21, N + 22)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "take_profit" and t["sell_block"] == N + 21 and t["eth_out_wei"] == cp_out(pos["tokens"], rt_, re_) and t["ret"] > 0.25 and t["peak_ret"] > 0.25, t
+
+
+@test
+def live_outsider_pending_sells_before_the_block():
+    c = fresh(dry=False); st = c.streams[PAIR]; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 4)
+    raw = signed(STRANGER, 9, ROUTER, 2 * 10 ** 15, "0x7ff36ab5" + word(0) + word(128) + aword(STRANGER.address) + word(ts(N) + 60) + word(2) + aword(WETH) + aword(TOKEN))
+    flash(N + 5, [raw], index=3)
+    s = wait_ev("sell_sent")[0]; o = events("outsider_buy", pending=True)[0]
+    assert s["reason"] == "outsider" and s["via"] == "flash" and s["block_seen"] == N + 5 and s["min_out"] == 0 and s["nonce"] == 8 and "seen pending at" in s["why"], s
+    assert o["who"] == "outsider" and o["action"] == "sell" and o["ours"] and o["sender"] == STRANGER.address.lower() and o["tx"] == hash_of(raw), o
+    flash(N + 5, [c.sent[2][1]], index=4)                                     # our sell seen in the next Flashblock
+    assert E.positions[PAIR].get("sell_seen") == (N + 5, 4, 0)
+    inject_buy(c, st, N + 5, 2 * 10 ** 15, STRANGER.address.lower(), tx=hash_of(raw)); feed(c, N + 5, N + 6)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "outsider" and t["outsider_at"] == N + 5 and t["sell_block"] == N + 5 and len(events("sell_sent")) == 1 and len(events("outsider_buy", block=N + 5)) == 1, t
+
+
+@test
+def live_pulled_before_our_sell_halts_with_the_file():
+    """a Burn before our sell: the sell at minOut 0 still goes once (reverts), the trade is -100%, the halt file is written with the reason,
+    no new buy after it; the pull line; the day's P&L"""
+    c = fresh(dry=False); st = c.streams[PAIR]; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 9); pos = E.positions[PAIR]; tokens = pos["tokens"]
+    inject_burn(c, st, N + 10); c.sell_ok = False; feed(c, N + 10, N + 10)
+    s = wait_ev("sell_sent")[0]
+    assert s["reason"] == "pulled" and s["min_out"] == 0 and s["nonce"] == 8 and "pulled at" in s["why"], s
+    p = events("pull")[0]
+    assert p["block"] == N + 10 and p["before"] == "sell" and p["ours"] and p["reaction"] and p["since_last_buy"] == 8 and p["since_outsider"] is None and p["eth_out_wei"] > 0, p
+    feed(c, N + 11, N + 12)
+    t = wait_ev("trade_done")[0]; gas = 125_000 * 35_000_000 + 2_090_000_000 + 40_000 * 35_000_000 + 2_000_000_000
+    assert t["exit"] == "pulled" and t["eth_out_wei"] == 0 and t["pulled_at"] == N + 10 and t["sell_block"] == N + 11 and t["gas_wei"] == gas and t["tokens"] == tokens, t
+    assert t["net_wei"] == -(2 * 10 ** 16 + gas) and t["ret"] == round(-(2 * 10 ** 16 + gas) / 2e16, 6) and t["loss_streak"] == 1 and t["live"] and len(events("sell_sent")) == 1
+    h = events("halt")
+    assert len(h) == 1 and h[0]["reason"].startswith("pulled:") and "no outsider before it: -100%" in h[0]["reason"] and not h[0]["dry"] and h[0]["file"] == E.S.HALT_FILE, h
+    assert open(E.S.HALT_FILE).read().strip() == h[0]["reason"] == E.state["halted"] and h[0]["tier"] == "1.3-2.3" and h[0]["pair"] == PAIR
+    assert E.state["pnl_today_wei"] == t["net_wei"] and json.load(open(E.S.POSITIONS_FILE))["positions"] == {} and not E.positions
+    d = Stream("2.0", creator=creator_key("after-file"), shift=20, li_offset=1000); add_stream(c, d); feed(c, N + 13, N + 20)
+    s = wait_ev("skip", pair=d.pair)[0]
+    assert s["why"] == "halted" and s["reason"].startswith("pulled:") and not events("fire", pair=d.pair) and len(c.sent) == 4, s
+    # the reaction rule: a Burn within REACT_BLOCKS after our buy even when our sell landed first, no outsider before it: the line halts too
+    c = fresh(dry=False); st = c.streams[PAIR]; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 2)
+    inject_buy(c, st, N + 3, 3 * 10 ** 17, FLEET[4]); feed(c, N + 3, N + 3); wait_ev("sell_sent"); feed(c, N + 4, N + 7)
+    t = wait_ev("trade_done")[0]; assert t["exit"] == "take_profit" and t["sell_block"] == N + 4 and not events("halt")
+    inject_burn(c, st, N + 8); feed(c, N + 8, N + 8)
+    h = events("halt"); p = events("pull")[0]
+    assert len(h) == 1 and h[0]["reason"].startswith("reaction:") and "7 blocks after our buy" in h[0]["reason"] and os.path.exists(E.S.HALT_FILE), h
+    assert p["before"] == "after" and p["ours"] and p["reaction"] and events("stop")[0]["what"] == "tier"
+    c = fresh(dry=False); st = c.streams[PAIR]; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 2)     # an outsider between our buy and the Burn: no halt
+    inject_buy(c, st, N + 3, 10 ** 15, STRANGER.address.lower()); feed(c, N + 3, N + 3); wait_ev("sell_sent"); feed(c, N + 4, N + 7); wait_ev("trade_done")
+    inject_burn(c, st, N + 8); feed(c, N + 8, N + 8)
+    assert not events("halt") and events("pull")[0]["reaction"] and events("stop")[0]["what"] == "tier" and "after an outsider's buy" in events("stop")[0]["reason"]
+
+
+@test
+def live_max_positions_with_three_open():
+    """three pairs open at once at distinct nonces; a fourth creation is refused (positions) and followed; every position settles"""
+    a = Stream("2.0"); b = Stream("2.0", creator=creator_key("three-b"), li_offset=1000); c2 = Stream("2.0", creator=creator_key("three-c"), li_offset=2000)
+    d = Stream("2.0", creator=creator_key("three-d"), shift=3, li_offset=3000); c = fresh(a, b, c2, d, dry=False); feed(c, N - 2, N)
+    f = wait_ev("fire", 3); bs = wait_ev("buy_sent", 3)
+    assert {x["pair"] for x in f} == {a.pair, b.pair, c2.pair} and sorted(x["nonce"] for x in bs) == [7, 8, 9] and E.state["nonce"] == 10, bs
+    raws = {raw_sent(c, i)["nonce"]: raw_sent(c, i) for i in range(0, 6, 2)}
+    assert sorted(raws) == [7, 8, 9] and len({inaddr("0x" + t["data"].hex(), 0) for t in raws.values()}) == 3 and all(t["to"] == RELAY for t in raws.values())
+    assert [x["positions"] for x in sorted(f, key=lambda x: x["t"])] and len(E.positions) == 3 and len(json.load(open(E.S.POSITIONS_FILE))["positions"]) == 3
+    feed(c, N + 1, N + 3)
+    s = wait_ev("skip", pair=d.pair)[0]
+    assert s["why"] == "positions" and sorted(s["positions"]) == sorted([a.pair, b.pair, c2.pair]) and E.pairs[d.pair]["status"] == "watched" and events("guard", pair=d.pair), s
+    feed(c, N + 4, N + 178)
+    t = wait_ev("trade_done", 3)
+    assert {x["pair"] for x in t} == {a.pair, b.pair, c2.pair} and all(x["exit"] == "hard" and x["buy_block"] == N + 1 and x["sell_block"] == N + 177 for x in t), t
+    ss = events("sell_sent"); assert sorted(x["nonce"] for x in ss) == [10, 11, 12] and len(c.sent) == 12 and not E.positions and E.state["nonce"] == 13
+    assert json.load(open(E.S.POSITIONS_FILE))["positions"] == {} and E.state["trades_today"] == 3 and not events("halt") and d.pair in E.pairs
+
+
+@test
+def live_loss_streak_halts():
+    a = Stream("2.0", fleet=False); b = Stream("2.0", creator=creator_key("loss-b"), li_offset=1000, fleet=False); c = fresh(a, b, dry=False); feed(c, N - 2, N)
+    wait_ev("buy_sent", 2); feed(c, N + 1, N + 178)
+    t = wait_ev("trade_done", 2)
+    assert all(x["exit"] == "hard" and x["net_wei"] < 0 and -0.01 < x["ret"] < 0 for x in t) and sorted(x["loss_streak"] for x in t) == [1, 2], t
+    h = events("halt")
+    assert len(h) == 1 and h[0]["reason"].startswith("2 live losses in a row") and "BASE_V2_LOSS_STREAK_HALT" in h[0]["reason"] and open(E.S.HALT_FILE).read().strip() == h[0]["reason"], h
+    assert E.state["loss_streak"] == 2 and E.state["halted"] and not E.positions
+    d = Stream("2.0", creator=creator_key("loss-d"), shift=185, li_offset=2000); add_stream(c, d); feed(c, N + 179, N + 185)
+    assert wait_ev("skip", pair=d.pair)[0]["why"] == "halted"
+    a = Stream("2.0", fleet=False); b = Stream("2.0", creator=creator_key("loss-b2"), li_offset=1000, fleet=False); c = fresh(a, b, dry=False, BASE_V2_LOSS_STREAK_HALT="0"); feed(c, N - 2, N)
+    wait_ev("buy_sent", 2); feed(c, N + 1, N + 178); t = wait_ev("trade_done", 2)
+    assert sorted(x["loss_streak"] for x in t) == [1, 2] and not events("halt")                      # 0 = off
+
+
+@test
+def live_late_halt():
+    """two live buys mined past N + LAND_MAX: the line halts (BASE_V2_LATE_HALT); the loss streak rule off"""
+    a = Stream("2.0"); b = Stream("2.0", creator=creator_key("late-b"), li_offset=1000); c = fresh(a, b, dry=False, BASE_V2_LOSS_STREAK_HALT="0"); feed(c, N - 2, N)
+    wait_ev("buy_sent", 2); c.auto_mine = False; feed(c, N + 1, N + 2)
+    assert not events("trade_done") and all(p["buy_block"] is None for p in E.positions.values())
+    c.mine(N + 3); c.auto_mine = True; feed(c, N + 3, N + 178)
+    t = wait_ev("trade_done", 2)
+    assert all(x["late"] and x["buy_block"] == N + 3 and x["exit"] == "hard" for x in t) and E.state["late_count"] == 2, t
+    h = events("halt")
+    assert len(h) == 1 and h[0]["reason"].startswith("2 live buys mined past N + BASE_V2_LAND_MAX 1") and "(the last at +3)" in h[0]["reason"] and os.path.exists(E.S.HALT_FILE), h
+
+
+@test
+def live_daily_stop():
+    """the live net P&L at -BASE_V2_DAILY_STOP_ETH stops the day; the next creation is refused (stopped); no halt"""
+    c = fresh(Stream("2.0", fleet=False), dry=False, BASE_V2_DAILY_STOP_ETH="0.0001", BASE_V2_LOSS_STREAK_HALT="0"); fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 178)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "hard" and -0.01 < t["ret"] < -0.005 and t["net_wei"] <= -10 ** 14 and t["pnl_today_eth"] == round(t["net_wei"] / 1e18, 6), t
+    s = events("stop")
+    assert len(s) == 1 and s[0]["what"] == "day" and "-BASE_V2_DAILY_STOP_ETH 0.0001" in s[0]["reason"] and s[0]["trades_today"] == 1 and E.state["stopped"] == "2026-10-20", s
+    d = Stream("2.0", creator=creator_key("stop-d"), shift=185, li_offset=2000); add_stream(c, d); feed(c, N + 179, N + 185)
+    assert wait_ev("skip", pair=d.pair)[0]["why"] == "stopped" and not events("halt") and not events("fire", pair=d.pair)
+    CLOCK[0] = ts(N) + 86400
+    with E.lock:
+        E.end_burst()
+    assert E.state["stopped"] is None and E.state["pnl_today_wei"] == 0 and E.state["trades_today"] == 0
+
+
+@test
+def live_sold_none_halts():
+    """a sell that reverted is sent again at minOut 0 at the next nonce, twice at most, then the line halts (sold none)"""
+    c = fresh(dry=False); c.sell_ok = False; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 176)
+    wait_ev("sell_sent")
+    for n in range(N + 177, N + 190):
+        feed(c, n, n); time.sleep(0.03)
+        if events("trade_done"):
+            break
+    t = wait_ev("trade_done")[0]; s = events("sell_sent"); a = [x["what"] for x in events("alarm")]
+    assert t["exit"] == "hard" and t["eth_out_wei"] == 0 and t["ret"] < -1 and [x["via"] for x in s].count("retry") == 2 and all(x["min_out"] == 0 for x in s), (t, s)
+    assert len({x["nonce"] for x in s if x["via"] != "resend"}) == 3 and sum("sent again at minOut 0" in x for x in a) == 2
+    h = events("halt")
+    assert len(h) == 1 and h[0]["reason"].startswith("sold none") and "reverted" in h[0]["reason"] and open(E.S.HALT_FILE).read().strip() == h[0]["reason"], h
+    assert t["gas_wei"] >= 125_000 * 35_000_000 + 2_090_000_000 + 3 * (40_000 * 35_000_000 + 2_000_000_000) and E.state["sold_none"] == 1
+
+
+@test
+def live_buy_reverted_sends_no_sell():
+    c = fresh(dry=False); c.buy_ok = False; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 3)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "buy_reverted" and t["eth_in_wei"] == 0 and t["eth_out_wei"] == 0 and t["gas_wei"] == 60_000 * 35_000_000 + 2_090_000_000 and t["usd"] < 0, t
+    assert "our buy reverted" in t["why"] and not events("sell_sent") and len(c.sent) == 2 and t["loss_streak"] == 0 and not events("halt") and not E.positions
+    c = fresh(dry=False); fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 1); pos = E.positions[PAIR]       # the wall clock's fallback: no head after the buy
+    CLOCK[0] = ts(N) + 370
+    with E.lock:
+        E.end_burst()
+    s = wait_ev("sell_sent")[0]
+    assert s["reason"] == "hard" and "wall clock" in s["why"] and s["min_out"] == 0 and E.positions[PAIR]["sell_via"] == "clock", s
+    feed(c, N + 2, N + 3); assert wait_ev("trade_done")[0]["exit"] == "hard"
+
+
+# ---------------------------------------------------------------- the start, the restart
+@test
+def restart_restores_the_day_and_the_halt_file():
+    """today's fires, P&L, late buys, tier stops and the loss streak from the log; the halt file read (live) and ignored (dry); the start line"""
+    c = fresh(dry=False); open(E.S.HALT_FILE, "w").write("pulled: by hand\\n")
+    t0 = ts(N); lines = [{"ev": "fire", "t": t0 - 3600}, {"ev": "fire", "t": t0 - 1800}, {"ev": "would_fire", "t": t0 - 1700},
+                         {"ev": "trade_done", "live": True, "dry": False, "net_wei": -5 * 10 ** 15, "loss_streak": 1, "late": True, "t": t0 - 1000},
+                         {"ev": "trade_done", "live": False, "dry": True, "net_wei": 7 * 10 ** 15, "loss_streak": 0, "late": False, "t": t0 - 900},
+                         {"ev": "stop", "what": "tier", "tier": "1.3-2.3", "t": t0 - 500}, {"ev": "fire", "t": t0 - 86400 * 2}, {"ev": "stop", "what": "day", "t": t0 - 86400 * 2}]
+    open(LOG, "w").write("\\n".join(json.dumps(x) for x in lines) + "\\nnot json\\n")
+    info = live_start(c)
+    assert E.state["trades_today"] == 2 and E.state["pnl_today_wei"] == -5 * 10 ** 15 and E.state["loss_streak"] == 1 and E.state["late_count"] == 1 and E.state["stopped"] is None
+    assert E.state["tiers_ended"] == {"1.3-2.3": "2026-10-20"} and E.state["halted"] == "pulled: by hand" and info["nonce"] == 7 and info["relay_eth"] == 1.0
+    st = events("start")[0]
+    assert st["release"] == E.RELEASE and not st["dry"] and st["head"] == N - 3 and st["wallet"] == KEY.address.lower() and st["relay"] == RELAY and st["roster_n"] == 12, st
+    assert st["halted"] == st["halt_file"] == "pulled: by hand" and st["trades_today"] == 2 and st["pnl_today_eth"] == -0.005 and st["loss_streak"] == 1 and st["tiers_ended"] == ["1.3-2.3"]
+    assert st["positions"] == [] and st["settings"]["RPC_URL"] == "rpc.example.org" and st["settings"]["ARCHIVE_URL"] == "arch.example.org" and "KEY_FILE" not in st["settings"]
+    assert st["settings"]["SEND_URLS"] == ["seq.example.org", "send2.example.org"] and st["settings"]["PROBE"] == [PROBE] and st["chains"]["rpc.example.org"] == 8453
+    assert "k3y" not in open(LOG).read() and bytes(KEY.key).hex() not in open(LOG).read() and events("guard", self_test=True)[0]["verdict"] == "ok"
+    E.state["logs_to"] = N - 2; fired(c)
+    assert events("skip")[-1]["why"] == "halted" and events("skip")[-1]["reason"] == "pulled: by hand" and not c.sent
+    c = fresh(dry=False); open(LOG, "w").write(json.dumps({"ev": "trade_done", "live": True, "dry": False, "net_wei": -1, "loss_streak": 2, "t": t0 - 100}) + "\\n" +
+                                                 json.dumps({"ev": "halt", "reason": "2 live losses in a row: BASE_V2_LOSS_STREAK_HALT", "t": t0 - 99}) + "\\n")
+    live_start(c); assert E.state["loss_streak"] == 0 and E.state["halted"] is None           # the owner removed the file it wrote: the streak starts again
+    c = fresh(dry=False); open(LOG, "w").write(json.dumps({"ev": "trade_done", "live": True, "dry": False, "net_wei": -1, "loss_streak": 2, "t": t0 - 100}) + "\\n")
+    open(E.S.HALT_FILE, "w").write("2 live losses in a row: BASE_V2_LOSS_STREAK_HALT\\n"); live_start(c); assert E.state["loss_streak"] == 2 and E.state["halted"].startswith("2 live")
+    c = fresh(dry=False); open(LOG, "w").write("\\n".join(json.dumps({"ev": "fire", "t": t0 - k}) for k in range(1, 21)) + "\\n"); live_start(c)
+    assert E.state["trades_today"] == 20 and E.state["stopped"] == "2026-10-20"              # MAX_PER_DAY reached before the restart: the day stays stopped
+    c = fresh(); open(E.S.HALT_FILE, "w").write("pulled: by hand\\n"); open(LOG, "w").write(json.dumps({"ev": "would_fire", "t": t0 - 10}) + "\\n" + json.dumps({"ev": "fire", "t": t0 - 9}) + "\\n")
+    E.start(); st = events("start")[0]
+    assert st["dry"] and E.state["halted"] is None and st["halt_file"] == "pulled: by hand" and E.state["trades_today"] == 1 and E.SIGNER is None    # dry: the file is the live line's
+
+
+@test
+def restart_takes_back_an_open_position():
+    """an open position from the last run: its buy's receipt read, the sell at once (minOut 0) at the chain's nonce; a sell already sent
+    has its receipt awaited, nothing new signed"""
+    c = fresh(dry=False); st = c.streams[PAIR]; stake = 2 * 10 ** 16; expect = cp_out(stake, 2 * 10 ** 18, R_TOK0)
+    raw = signed(KEY, 7, RELAY, 0, E.buy_data(TOKEN, stake, expect * 97 // 100, ts(N) + 6), 3 * 10 ** 7, 4 * 10 ** 7, 250_000); hb = hash_of(raw); c.sent.append(("seq.example.org", raw)); c.nonces.add(7)
+    c.mine(N + 1); tokens = c.held[PAIR]
+    saved = {"pair": PAIR, "token": TOKEN, "weth_is0": True, "N": N, "tier": "1.3-2.3", "stake": stake, "expect": expect, "min_out": expect * 97 // 100, "via": "logs", "aim": N + 1, "D": N + 1,
+             "creation_ts": ts(N), "prio": 3 * 10 ** 7, "nonce": 7, "buy_hash": hb, "buy_nonce": 7, "buy_block": None, "tokens": None, "sell_sent": False, "sell_hash": None, "sell_hashes": [],
+             "sell_nonce": None, "sell_prio": None, "sell_max_fee": None, "exit": None, "sell_min_out": None}
+    json.dump({"positions": {PAIR: saved}}, open(E.S.POSITIONS_FILE, "w")); c.head = N + 4
+    info = live_start(c)
+    assert info["nonce"] == 8 and events("start")[0]["positions"] == [PAIR] and "sold at once" in wait_ev("alarm")[-1]["what"]
+    s = wait_ev("sell_sent")[0]
+    assert s["reason"] == "hard" and s["why"].startswith("restart") and s["min_out"] == 0 and s["nonce"] == 8 and s["via"] == "first" and len(c.sent) == 3, s
+    d = "0x" + raw_sent(c, 1)["data"].hex(); assert d[2:10] == E.SEL_SELL and inaddr(d, 0) == TOKEN and inword(d, 1) == 0
+    c.mine(N + 5); c.head = N + 5
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "hard" and t["tokens"] == tokens and t["buy_block"] == N + 1 and t["sell_block"] == N + 5 and t["eth_out_wei"] == cp_out(tokens, *reversed(st.sync_at(N + 1))) * 0 + t["eth_out_wei"] > 0, t
+    assert t["eth_in_wei"] == stake and t["nonce"] == 7 and json.load(open(E.S.POSITIONS_FILE))["positions"] == {} and E.state["nonce"] == 9 and not E.positions
+    c2 = fresh(dry=False); c2.sent.append(("seq.example.org", raw)); c2.nonces.add(7); c2.mine(N + 1)
+    raw_s = signed(KEY, 8, RELAY, 0, E.sell_data(TOKEN, 0, ts(N) + 60), 3 * 10 ** 7, 4 * 10 ** 7, 250_000); hs = hash_of(raw_s); c2.sent.append(("seq.example.org", raw_s)); c2.nonces.add(8); c2.mine(N + 9)
+    saved.update(sell_sent=True, sell_hash=hs, sell_hashes=[hs], sell_nonce=8, exit="hard"); json.dump({"positions": {PAIR: saved}}, open(E.S.POSITIONS_FILE, "w")); c2.head = N + 10
+    live_start(c2)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "hard" and t["sell_block"] == N + 9 and t["eth_out_wei"] > 0 and not events("sell_sent") and len(c2.sent) == 2 and "receipt is awaited" in events("alarm")[0]["what"], t
+
+
+@test
+def live_start_refusals():
+    """a live start needs the wallet, the relay, the stake under its cap, the roster, the key file (the wallet's, unlocked), the relay's owner,
+    router and weth, chain 8453 on every endpoint, the relay's code and the guard's self-test answering ok"""
+    def refused(why, setup=None, **env):
+        c = fresh(dry=False)
+        if setup:
+            setup(c)
+        try:
+            live_start(c, **env)
+        except SystemExit as e:
+            assert why in str(e), (why, str(e))
+        else:
+            raise AssertionError(f"started: {why}")
+        return c
+    refused("BASE_V2_WALLET is not set", BASE_V2_WALLET=""); refused("BASE_V2_RELAY is not set", BASE_V2_RELAY=""); refused("over BASE_V2_STAKE_CAP_ETH", BASE_V2_STAKE_ETH="0.05")
+    refused("BASE_V2_ROSTER_FILE", BASE_V2_ROSTER_FILE=os.path.join(TMP, "none.json")); refused("does not hold a key", BASE_V2_KEY_FILE=os.path.join(TMP, "none.key"))
+    refused("not BASE_V2_WALLET's", BASE_V2_WALLET="0x" + "ab" * 20)
+    refused("owner()", lambda c: setattr(c, "owner", "0x" + "cd" * 20)); refused("router()", lambda c: setattr(c, "router", "0x" + "ef" * 20)); refused("weth()", lambda c: setattr(c, "weth", "0x" + "12" * 20))
+    refused("chain 1", lambda c: c.chain_ids.update({"send2.example.org": 1})); refused("chain 10", lambda c: c.chain_ids.update({"alt.example.org": 10})); refused("chain 11", lambda c: c.chain_ids.update({"arch.example.org": 11}))
+    refused("no code", lambda c: setattr(c, "relay_code", "0x")); refused("not SELLABLE", lambda c: setattr(c, "verdict", "taxed")); refused("found no pair of the line", lambda c: setattr(c, "archive_head", N - 10))
+    c = fresh(dry=False); open(os.path.join(TMP, "k.key"), "w").write("0x" + bytes(KEY.key).hex()); held = open(os.path.join(TMP, "k.key")); fcntl.flock(held, fcntl.LOCK_EX)
+    try:
+        live_start(c); raise AssertionError("started with the key file locked")
+    except SystemExit as e:
+        assert "locked by another process" in str(e), str(e)
+    held.close()
+    c = fresh(dry=False); c.balance = 10 ** 14; c.chain_ids["seq.example.org"] = "send-only"
+    info = live_start(c)
+    assert info["chains"]["seq.example.org"] == "send-only" and info["chains"]["arch.example.org"] == 8453 and E.SIGNER is not None and E.state["nonce"] == 7 and E.KEY_LOCK is not None
+    probe = open(os.path.join(TMP, "k.key"))
+    try:
+        fcntl.flock(probe, fcntl.LOCK_EX | fcntl.LOCK_NB); raise AssertionError("the running engine does not hold the key file's lock")
+    except BlockingIOError:
+        pass
+    probe.close()
+    assert "under the stake + margin" in events("alarm")[0]["what"] and events("start")[0]["dry"] is False and E.state["relay_wei"] == 10 ** 14
+    g = events("guard", self_test=True)[0]; assert g["verdict"] == "ok" and g["pair"] == PAIR and g["block"] == hex(N + 5) and g["src"] == "arch.example.org"
+    assert bytes(KEY.key).hex() not in open(LOG).read() and "k3y" not in open(LOG).read() and not any(h == "alt.example.org" and m == "eth_call" and "roundTrip" in str(m) for h, m in c.calls)
+    assert E.state["roster"] == set(FLEET) | {FLEET_KEY.address.lower()} and E.state["roster_built"] == "2026-10-20T00:00:00Z"
+
+
+@test
+def dry_start_reads_no_key():
+    c = fresh(); E.SIGNER = None
+    info = E.start(); st = events("start")[0]
+    assert st["dry"] and E.SIGNER is None and info["head"] == c.head == N - 3 and not any(m == "eth_getTransactionCount" for _, m in c.calls) and st["wallet"] is None
+    assert st["settings"]["RPC_URL"] == "rpc.example.org" and "KEY_FILE" not in st["settings"] and E.state["logs_to"] == c.head - 14 and st["roster_n"] == 12
+    assert "k3y" not in open(LOG).read() and not events("guard") and E.KEY_LOCK is None
+    c = fresh(); c.fail.add(("alt.example.org", "eth_chainId")); E.start()
+    assert "BASE_V2_READ_ALT_URL did not answer" in events("alarm")[0]["what"] and "k3y" not in open(LOG).read()     # dry: an alarm, not a refusal
+
+
+# ---------------------------------------------------------------- the feeds
+@test
+def silent_websocket_polls():
+    """the websocket silent for WS_SILENT_S: the head and the logs from eth_getLogs one block behind the head; a creation seen that way
+    arms and fires (at the poller's lag: LAND_MAX 2 lands it; the default refuses it as late)"""
+    c = fresh(Stream("2.0"), BASE_V2_LAND_MAX="2"); E.state["ws_last"] = E.mono() - 60; E.state["started_at"] = E.mono() - 20; c.head = N + 1
+    while E.poll_step():
+        pass
+    assert E.state["head"] == N + 1 and E.state["head_src"] == "poll" and E.state["logs_to"] == N and c.ranges[0] == (N - 1, N) and not E.ws_healthy()
+    assert events("alarm")[0]["what"].startswith("no websocket") and events("creation")[0]["via"] == "logs"
+    f = wait_ev("would_fire")[0]
+    assert f["head"] == N + 1 and f["aim"] == N + 2 and f["via"] == "logs" and events("arm")[0]["block"] == N
+    c.head = N + 3
+    while E.poll_step():
+        pass
+    assert E.state["logs_to"] == N + 2 and E.positions[PAIR]["tokens"] is not None and E.state["filled"] == 4
+    c = fresh(Stream("2.0")); E.state["ws_last"] = E.mono() - 60; c.head = N + 1
+    while E.poll_step():
+        pass
+    s = wait_ev("skip")[0]; assert s["why"] == "late" and s["head"] == N + 1
+
+
+@test
+def websocket_drop_gap_filled():
+    c = fresh(Stream("2.0"), BASE_V2_LAND_MAX="3"); feed(c, N - 2, N - 1)
+    E.ws_down(ConnectionError("dropped"))                                     # down before N; back at N + 1
+    assert events("alarm")[-1]["what"].startswith("the websocket is down") and not E.state["ws"]
+    c.subs = {}; c.pend = {}
+    E.on_ws_message(json.dumps({"jsonrpc": "2.0", "id": 1, "result": "0xh"}), c.subs, c.pend); E.on_ws_message(json.dumps({"jsonrpc": "2.0", "id": 2, "result": "0xl"}), c.subs, c.pend)
+    head(c, N + 1)
+    assert E.state["ws_from"] == N + 1 and E.state["logs_to"] == N - 2 and E.state["ws"]
+    c.head = N + 1
+    while E.poll_step():
+        pass
+    assert c.ranges[0][0] == N - 1 and c.ranges[-1][1] == N + 1 and E.state["logs_to"] == N + 1 and E.state["head_src"] == "ws"
+    f = wait_ev("would_fire")[0]; assert f["head"] == N + 1 and f["aim"] == N + 2
+    dups = E.state["dups"]; push(c, [l for l in c.streams[PAIR].rlogs if l["address"].lower() == FACTORY][0])     # the websocket's own copy: deduped
+    assert E.state["dups"] == dups + 1 and len(events("creation")) == 1
+    feed(c, N + 2, N + 4); assert E.positions[PAIR]["tokens"] is not None and E.state["logs_to"] == N + 3
+
+
+@test
+def duplicate_and_removed_logs():
+    st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 15); P = E.pairs[PAIR]
+    before = E.reserves(P)[:2]; sync = [l for l in st.logs if blk(l) == N + 15 and l["topics"][0] == T["Sync"]][0]
+    push(c, sync); assert E.state["dups"] == 1 and E.reserves(P)[:2] == before
+    push(c, dict(sync, removed=True))
+    assert E.state["reorgs"] == 1 and E.reserves(P)[:2] == tuple(c.reserves_at(PAIR, N + 14)) and "reorg" in events("alarm")[-1]["what"]
+    assert (N + 15, int(sync["logIndex"], 16)) not in P["ev"] and len(P["ev"]) == 5
+
+
+@test
+def confirmed_session_subscribes_followed_pairs():
+    """the asyncio session on a stubbed websockets module: newHeads and the factory subscribed, one logs subscription per followed pair
+    (added as pairs come), the burst's actions after every message; silent for WS_SILENT_S: the session ends, the reconnection follows"""
+    st = Stream("2.0"); c = fresh(st, BASE_V2_WS_SILENT_S="1"); sent = []; conns = []
+    sub = lambda sid, r: json.dumps({"jsonrpc": "2.0", "method": "eth_subscription", "params": {"subscription": sid, "result": r}})
+    hd = lambda n: sub("0xh", {"number": hex(n), "timestamp": header(n)["timestamp"], "baseFeePerGas": header(n)["baseFeePerGas"]})
+
+    class Conn:
+        def __init__(self):
+            self.q = asyncio.Queue(); self.n = 0
+        async def __aenter__(self):
+            conns.append(self); return self
+        async def __aexit__(self, *a):
+            return False
+        async def send(self, m):
+            d = json.loads(m); sent.append(d)
+            if d["method"] == "eth_subscribe" and d["params"][0] == "newHeads":
+                await self.q.put(json.dumps({"jsonrpc": "2.0", "id": d["id"], "result": "0xh"}))
+            elif d["method"] == "eth_subscribe" and d["params"][1]["address"] == FACTORY:
+                await self.q.put(json.dumps({"jsonrpc": "2.0", "id": d["id"], "result": "0xl"}))
+                for n in (N - 2, N - 1):
+                    await self.q.put(hd(n))
+                await self.q.put(sub("0xl", [l for l in st.rlogs if l["address"].lower() == FACTORY][0]))
+            elif d["method"] == "eth_subscribe":
+                assert d["params"][1] == {"address": PAIR, "topics": [E.PAIR_TOPICS]}, d
+                await self.q.put(json.dumps({"jsonrpc": "2.0", "id": d["id"], "result": "0xp1"}))
+                for l in sorted([l for l in st.rlogs + st.logs if blk(l) == N and l["address"].lower() == PAIR and l["topics"][0] in E.PAIR_TOPICS], key=E.order):
+                    await self.q.put(sub("0xp1", l))
+                await self.q.put(hd(N))
+        async def recv(self):
+            return await self.q.get()                                          # then silent: the watchdog ends the session
+    fake = types.ModuleType("websockets"); fake.connect = lambda *a, **k: Conn(); sys.modules["websockets"] = fake
+
+    async def run():
+        await asyncio.wait_for(E.confirmed_loop(), 2.6)
+    try:
+        asyncio.run(run())
+    except (asyncio.TimeoutError, TimeoutError):
+        pass
+    finally:
+        sys.modules.pop("websockets", None)
+    assert len(conns) >= 2 and [d["params"][0] for d in sent[:2]] == ["newHeads", "logs"] and sent[1]["params"][1] == {"address": FACTORY, "topics": [[E.T_PC]]}, sent[:3]
+    assert any(d["method"] == "eth_subscribe" and d["params"][1].get("address") == PAIR for d in sent) and E.pairs[PAIR]["sub"] in ("0xp1", None)
+    assert events("creation")[0]["via"] == "logs" and events("would_fire")[0]["head"] == N and E.state["head"] == N
+    a = [x["what"] for x in events("alarm")]
+    assert any(x.startswith("the websocket is down") and "silent for 1 s" in x for x in a), a
+
+
+@test
+def flash_stream_reconnects_when_silent():
+    conns = []
+    msg = lambda n: brotli.compress(json.dumps({"index": 1, "diff": {"transactions": []}, "metadata": {"block_number": n}}).encode())
+
+    class Conn:
+        def __init__(self, data):
+            self.data = list(data)
+        async def __aenter__(self):
+            conns.append(self); return self
+        async def __aexit__(self, *a):
+            return False
+        async def recv(self):
+            if self.data:
+                return self.data.pop(0)
+            await asyncio.sleep(3600)
+    plan = [[msg(N), msg(N + 1)], [msg(N + 2), msg(N + 3), msg(N + 4)]]
+    fake = types.ModuleType("websockets"); fake.connect = lambda *a, **k: Conn(plan.pop(0) if plan else [])
+    c = fresh(); sys.modules["websockets"] = fake; old = E.FLASH_SILENT_S; E.FLASH_SILENT_S = 0.3; seen = []
+
+    async def watch():
+        while True:
+            await asyncio.sleep(0.02)
+            with E.lock:
+                E.tick(); seen.append((E.state["flash"], E.state["flash_total"], E.state["flash_reconnects"]))
+
+    async def both():
+        await asyncio.gather(E.flash_loop(), watch())
+    try:
+        asyncio.run(asyncio.wait_for(both(), 1.6))
+    except (asyncio.TimeoutError, TimeoutError):
+        pass
+    finally:
+        sys.modules.pop("websockets", None); E.FLASH_SILENT_S = old
+    assert len(conns) >= 2 and E.state["flash_total"] == 5 and E.state["flash_block"] == N + 4 and E.state["flash_reconnects"] >= 1, (len(conns), E.state["flash_total"])
+    i_false = next(i for i, x in enumerate(seen) if x[1] == 2 and not x[0])
+    assert any(x[0] and x[1] == 5 for x in seen[i_false:]) and any(a["what"].startswith("Flashblocks is down") for a in events("alarm"))
+
+
+@test
+def flow_line_and_the_ticker():
+    c = fresh(Stream("2.0")); fired(c); feed(c, N + 1, N + 3); E.state["flow_at"] = E.mono() - 61
+    with E.lock:
+        E.tick()
+    f = events("flow")[0]
+    assert f["head"] == N + 3 and f["ws"] and f["positions"] == [PAIR] and f["trades_today"] == 1 and f["followed"] == 1 and f["tradable"] == 1 and f["roster_n"] == 12, f
+    assert f["ready_ms_last"] is not None and f["guard_ms_last"] is not None and f["logs_to"] == N + 2 and f["halted"] is None and f["tiers_ended"] == [] and f["head_src"] == "ws"
+    assert "k3y" not in open(LOG).read()
 
 
 if __name__ == "__main__":

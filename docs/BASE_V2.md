@@ -238,8 +238,9 @@ wallet, the key file and its lock, the relay (its `owner()` the wallet, `router(
 | `contracts/FlipRelayV2.sol`, `.json` | the relay; `deploy/base_v2_relay_deploy.py` deploys it (`constructor(router, weth)`) and writes `BASE_V2_RELAY=` |
 | `contracts/V2RoundTrip.sol`, `deploy/base_v2_sim.py` | the exit test by hand: `SELLABLE` / `TAXED` / `HONEYPOT` on any pair at any block |
 | `deploy/base_v2_relay_sim.py` | the relay's own round trip on a live pair, and the owner check |
-| `deploy/base_v2_roster.py` | the fleet roster from the chain, daily (a cron entry the setup installs) |
+| `deploy/base_v2_roster.py` | the fleet roster from the chain, daily (a cron entry the setup installs); written in place, since the unit binds the file into the engine's namespace |
 | `deploy/base_v2_results.py` | the owner's screen from the log: feeds, positions, trades, tiers, skips, halts, alarms |
+| `deploy/base_v2_wallet.py`, `deploy/base_v2_ops.py` | base_wallet.py's helpers pointed at the V2 files (`address`, `withdraw`); the money: status, deposit, withdraw, sweep, payout through the relay, refused while the engine is live |
 | `deploy/base_v2_setup.sh`, `deploy/flip-base-v2.service` | the box: the env template (every setting of section 5), the hardened unit, logrotate, the roster cron, a dry start |
 | `docs/RUNBOOK.md` 4m | every box step, numbered, with expected output |
 
