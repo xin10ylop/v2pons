@@ -200,6 +200,8 @@ class Chain:
         token = E.A(args, 2); stake = W(args, 3); do_sell = W(args, 4); self.guard_calls.append((h, tag, do_sell, override))
         if self.exit_lag:
             time.sleep(self.exit_lag)
+        if (h, "roundTrip") in self.fail:
+            raise RuntimeError(f"stub: {E.S.ARCHIVE_URL if h == 'arch.example.org' else E.S.READ_ALT_URL} is down")
         if self.verdict == "unreadable" or tag == "pending":
             return {"error": {"code": -32000, "message": "header not found"}}
         st = self.by_token[token]; re_, rt_ = self.reserves_at(st.pair, int(tag, 16)); tokens = cp_out(stake, re_, rt_)
@@ -579,6 +581,296 @@ def tier_gate():
     assert wait_ev("skip")[0]["why"] == "excluded tier"
     c = fresh(Stream("1.2"), BASE_V2_TIER_BAND="1.1,2.3", BASE_V2_TIER_EXCLUDE=""); f = fired(c)[0]
     assert f["ev"] == "would_fire" and f["tier"] == "1.1-2.3" and f["stake_wei"] == 2 * 10 ** 16
+
+
+# ---------------------------------------------------------------- the guard
+@test
+def guard_verdicts():
+    """the exit test's five verdicts: ok fires; taxed, honeypot (the sell reverts, the buy alone works), buy_tax and unreadable are each one
+    guard line and a skip naming the verdict; nothing retries a failed guard"""
+    want = {"ok": "would_fire", "taxed": "skip", "honeypot": "skip", "buy_tax": "skip", "unreadable": "skip"}
+    for verdict, ev in want.items():
+        st = Stream("2.0"); c = fresh(st); c.verdict = verdict; f = fired(c)[0]
+        g = events("guard")[0]; re_, rt_ = c.reserves_at(PAIR, N); expect = cp_out(2 * 10 ** 16, re_, rt_)
+        assert f["ev"] == ev and g["verdict"] == verdict and g["expect_tokens"] == expect and g["stake_wei"] == 2 * 10 ** 16 and g["block"] == N and g["ms"] is not None, (verdict, f, g)
+        assert len(events("guard")) == 1 and g["code_size"] == 3553 and g["supply_share"] == 1.0 and "k3y" not in open(LOG).read()
+        if verdict == "ok":
+            back = cp_out(expect, rt_ - expect, re_ + 2 * 10 ** 16)
+            assert g["tokens"] == expect and g["eth_back_wei"] == g["quote_wei"] == back and g["ratio"] == 1.0 and g["src"] == "arch.example.org" and g["error"] is None
+            assert len(c.guard_calls) == 2 and {x[0] for x in c.guard_calls} == {"arch.example.org", "alt.example.org"} and all(x[2] == 1 for x in c.guard_calls)
+            continue
+        assert f["why"] == "guard" and f["verdict"] == verdict and E.pairs[PAIR]["status"] == "watched" and events("arm")
+        if verdict == "taxed":
+            assert g["ratio"] == 0.9 and g["tokens"] == expect and g["eth_back_wei"] * 10 == g["quote_wei"] * 9 and f["ratio"] == 0.9
+        elif verdict == "buy_tax":
+            assert g["tokens"] == expect * 95 // 100 and g["ratio"] == 1.0
+        elif verdict == "honeypot":
+            assert g["tokens"] == expect and g["eth_back_wei"] is None and "revert" in g["error"] and [x[2] for x in c.guard_calls].count(0) == 1   # the buy-only probe once
+        else:
+            assert g["tokens"] is None and g["src"] is None and "header not found" in g["error"] and g["ms"] >= 300 and "arch.example.org" not in g["error"]
+        n_calls = len(c.guard_calls); feed(c, N + 1, N + 3)
+        assert len(events("guard")) == 1 and not events("would_fire") and len(c.guard_calls) == n_calls and (verdict == "unreadable" or n_calls <= 3)
+    c = fresh(Stream("2.0"), BASE_V2_EXIT_MIN="0.9"); c.verdict = "taxed"; f = fired(c)[0]
+    assert f["ev"] == "would_fire" and events("guard")[0]["verdict"] == "ok" and events("guard")[0]["ratio"] == 0.9     # 0.9 passes a 0.9 floor
+    c = fresh(Stream("2.0"), BASE_V2_READ_ALT_URL="0"); c.fail.add(("arch.example.org", "roundTrip")); f = fired(c)[0]
+    g = events("guard")[0]                                                     # the exit test's own read failing: unreadable, the host named, never the key
+    assert f["why"] == "guard" and g["verdict"] == "unreadable" and "arch.example.org is down" in g["error"] and "k3y" not in open(LOG).read() and g["src"] is None, g
+    c = fresh(Stream("2.0"), BASE_V2_READ_ALT_URL="0"); c.fail.add(("arch.example.org", "eth_call")); f = fired(c)[0]
+    assert f["why"] == "guard" and f["verdict"] == "unreadable" and "totalSupply" not in f["error"] and "arch.example.org is down" in f["error"] and "k3y" not in open(LOG).read(), f
+    assert not events("guard") and not events("arm")                           # the supply read failed: refused before the exit test's verdict
+
+
+@test
+def guard_code_size_and_supply():
+    """eth_getCode's size and totalSupply against the pool's token side, before N seals when the creation came pending; the real pair's
+    98.2% refused at 0.99, armed at 0.98; 0 = any size"""
+    c = fresh(Stream("2.0")); c.code_size = 3000; f = fired(c)[0]
+    assert f["ev"] == "skip" and f["why"] == "code size" and f["code_size"] == 3000 and "supply_share" not in f and not events("arm") and not events("would_fire"), f
+    assert ("arch.example.org", "eth_getCode") in c.calls and not any(m == "eth_call" and h == "arch.example.org" and "totalSupply" in str(c.calls) for h, m in c.calls[:1])
+    c = fresh(Stream("2.0")); c.supply = SUPPLY; f = fired(c)[0]
+    assert f["ev"] == "skip" and f["why"] == "supply share" and f["supply_share"] == 0.982142 and f["code_size"] == 3553 and events("creation")[0]["cls"] == "tradable", f
+    c = fresh(Stream("2.0"), BASE_V2_MIN_SUPPLY_IN_POOL="0.98"); c.supply = SUPPLY; f = fired(c)[0]
+    assert f["ev"] == "would_fire" and events("guard")[0]["supply_share"] == 0.982142
+    c = fresh(Stream("2.0"), BASE_V2_TOKEN_CODE_SIZES="0"); c.code_size = 999; f = fired(c)[0]
+    assert f["ev"] == "would_fire" and events("guard")[0]["code_size"] == 999
+    c = fresh(Stream("2.0"), BASE_V2_TOKEN_CODE_SIZES="3553, 3600"); c.code_size = 3600; assert fired(c)[0]["ev"] == "would_fire"
+    k = creator_key("pend"); st = Stream("2.0", creator=k); c = fresh(st); c.code_size = 1; feed(c, N - 2, N - 1)
+    flash(N, [st.creation_raw], index=1)                                      # pending: refused before N seals, no exit test
+    s = wait_ev("skip")[0]
+    assert s["why"] == "code size" and s["code_size"] == 1 and E.state["head"] == N - 1 and not c.guard_calls and E.pairs[st.pair]["status"] == "watched", s
+    c = fresh(Stream("2.0")); c.fail.add("eth_getCode"); f = fired(c)[0]
+    assert f["why"] == "guard" and f["verdict"] == "unreadable" and "alt.example.org is down" in f["error"] and "k3y" not in open(LOG).read(), f
+
+
+@test
+def arm_reads_the_creation_block():
+    """the arm's eth_getLogs of block N: the probe's swap passes (its sender read: the Swap's `to` is not the probe), anyone else's in the
+    creation block is an outsider before our fire"""
+    c = fresh(Stream("2.0")); f = fired(c)[0]
+    o = wait_ev("outsider_buy")[0]
+    assert f["ev"] == "would_fire" and o["block"] == N and o["who"] == "probe" and o["sender"] == PROBE and o["action"] == "none" and not o["ours"] and o["via"] == "logs", (f, o)
+    assert c.ranges and c.ranges[0] == (N, N) and c.calls.count(("rpc.example.org", "eth_getTransactionByHash")) <= 3 and E.pairs[PAIR]["buys"][0]["who"] == "probe"
+    st = Stream("2.0"); c = fresh(st); inject_buy(c, st, N, 10 ** 15, STRANGER.address.lower()); f = fired(c)[0]
+    assert f["ev"] == "skip" and f["why"] == "outsider before our fire" and f["block"] == N and not events("would_fire"), f
+    o = wait_ev("outsider_buy", 2)
+    assert {(x["who"], x["action"]) for x in o} == {("probe", "none"), ("outsider", "none")} and E.pairs[PAIR]["status"] == "watched"
+    st = Stream("2.0"); c = fresh(st); inject_buy(c, st, N, 10 ** 15, FLEET[3]); f = fired(c)[0]        # a roster wallet in the creation block: not an outsider
+    assert f["ev"] == "would_fire" and E.pairs[PAIR]["fleet_first"] == N and len(events("outsider_buy")) == 1
+    st = Stream("2.0"); c = fresh(st); inject_buy(c, st, N, 10 ** 15, "0x" + "ab" * 20, sender=CREATOR); f = fired(c)[0]   # the creator's own buy: not an outsider
+    assert f["ev"] == "would_fire" and [x["who"] for x in wait_ev("outsider_buy", 2)] == ["probe", "creator"] or sorted(x["who"] for x in events("outsider_buy")) == ["creator", "probe"]
+
+
+@test
+def late_or_pulled_before_the_fire():
+    """a slow guard: the head at N + LAND_MAX refuses the fire (late); the creator's pull seen pending before the fire skips the pair;
+    an outsider's pending buy before the fire too"""
+    c = fresh(Stream("2.0")); c.exit_lag = 0.25; feed(c, N - 2, N + 1)
+    s = wait_ev("skip")[0]
+    assert s["why"] == "late" and s["block"] == N and s["head"] == N + 1 and not events("would_fire"), s
+    wait_ev("guard"); time.sleep(0.05); assert not events("would_fire") and events("arm")
+    c = fresh(Stream("2.0"), BASE_V2_LAND_MAX="3"); c.exit_lag = 0.25; feed(c, N - 2, N + 1)
+    f = wait_ev("would_fire")[0]; assert f["head"] == N + 1 and f["aim"] == N + 2 and events("arm")[0]["block"] == N
+    st = Stream("2.0", creator=creator_key("pull")); c = fresh(st); c.exit_lag = 0.25; feed(c, N - 2, N)
+    wait_ev("creation"); flash(N + 1, [signed(st.key, 4, ROUTER, 0, "0x02751cec" + aword(st.token) + word(1) + word(0) + word(0) + aword(st.creator) + word(ts(N) + 60))], index=1)
+    p = events("pull")[0]
+    assert p["pending"] and p["before"] == "fire" and p["via"] == "flash" and p["block"] == N + 1 and not p["ours"] and p["since_creation"] == 1, p
+    s = wait_ev("skip")[0]
+    assert s["why"] == "pulled before our fire" and s["pending"] and s["block"] == N + 1 and not events("would_fire")
+    wait_ev("guard"); time.sleep(0.05); assert not events("would_fire") and len(events("skip")) == 1
+    st = Stream("2.0"); c = fresh(st); c.exit_lag = 0.25; feed(c, N - 2, N)
+    wait_ev("creation"); flash(N + 1, [signed(STRANGER, 9, ROUTER, 10 ** 15, "0x7ff36ab5" + word(0) + word(128) + aword(STRANGER.address) + word(ts(N) + 60) + word(2) + aword(WETH) + aword(TOKEN))], index=1)
+    o = events("outsider_buy")[0]
+    assert o["pending"] and o["who"] == "outsider" and o["sender"] == STRANGER.address.lower() and o["action"] == "skip" and o["value_eth"] == 0.001 and o["via"] == "flash", o
+    s = wait_ev("skip")[0]
+    assert s["why"] == "outsider before our fire" and s["block"] == N + 1 and not events("would_fire")
+
+
+# ---------------------------------------------------------------- the dry run
+@test
+def dry_fire_and_hard_exit():
+    """would_fire aimed at N + 1 with minOut = (1 - BUY_SLIP) x the constant-product output on the Mint's reserves; the dry fill priced at the
+    end of N + 1 behind the creation block's swaps; the hard sell at N + SELL_SEND_BLOCK priced at the next block; the fleet behind us"""
+    st = Stream("2.0"); c = fresh(st); f = fired(c)[0]
+    stake = 2 * 10 ** 16; expect = cp_out(stake, 2 * 10 ** 18, R_TOK0); min_out = expect * 970_000 // 10 ** 6
+    assert f["ev"] == "would_fire" and f["dry"] and f["aim"] == N + 1 and f["head"] == N and f["creation"] == N and f["stake_wei"] == stake and f["min_out"] == min_out, f
+    assert f["expect_tokens"] == expect and f["nonce"] is None and f["prio_gwei"] == 0.03 and f["max_fee_gwei"] == 0.04 and f["via"] == "logs" and f["positions"] == 1
+    assert 0 <= f["ready_ms"] < 1500 and f["tier"] == "1.3-2.3" and f["token"] == TOKEN and E.state["trades_today"] == 1 and E.pairs[PAIR]["status"] == "fired"
+    pos = E.positions[PAIR]; assert pos["D"] == N + 1 and pos["tokens"] is None and pos["dry"] and not c.sent
+    feed(c, N + 1, N + 2)
+    tokens = cp_out(stake, *c.reserves_at(PAIR, N + 1))                      # the probe's swap ahead of us
+    assert pos["tokens"] == tokens and tokens != expect and tokens >= min_out and pos["buy_block"] == N + 1 and pos["eth_in"] == stake and not pos["sell_sent"]
+    feed(c, N + 3, N + 175)
+    assert not events("sell_sent") and pos["peak"] > 0.05 and E.positions[PAIR] is pos
+    feed(c, N + 176, N + 176)
+    s = events("sell_sent")
+    assert len(s) == 1 and s[0]["dry"] and s[0]["reason"] == "hard" and s[0]["block_seen"] == N + 176 and s[0]["priced_at_block"] == N + 177 and s[0]["via"] == "head" and s[0]["hash"] is None, s
+    assert "N + 176 reached" in s[0]["why"] and not events("trade_done")
+    feed(c, N + 177, N + 178)
+    t = wait_ev("trade_done")[0]; eth_out = dry_value(c, st, tokens, stake, N + 177); gas = 250_000 * (5_000_000 + 30_000_000) + 4_200_000_000
+    assert t["exit"] == "hard" and t["dry"] and not t["live"] and t["buy_block"] == N + 1 and t["sell_block"] == N + 177 and t["eth_in_wei"] == stake and t["tokens"] == tokens, t
+    assert t["eth_out_wei"] == eth_out and t["gas_wei"] == gas and t["l1_fee_wei"] == 4_200_000_000 and t["net_wei"] == eth_out - stake - gas and t["ret"] == round((eth_out - stake - gas) / stake, 6)
+    assert 0.05 < t["ret"] < 0.08 and t["usd"] == round(t["net_wei"] / 1e18 * 2570, 4) and t["pulled_at"] is None and t["outsider_at"] is None and t["fleet_first_buy"] == N + 2
+    fleet_eth = sum(W(l["data"], 0) for l in st.logs if l["topics"][0] == T["Swap"] and N + 1 <= blk(l) <= N + 178 and W(l["data"], 0) > 0)
+    assert t["fleet_eth"] == round(fleet_eth / 1e18, 6) and t["peak_ret"] == round(pos["peak"], 6) and t["trades_today"] == 1 and t["pnl_today_eth"] == round(t["net_wei"] / 1e18, 6)
+    assert t["loss_streak"] == 0 and t["stake_wei"] == stake and t["min_out"] == min_out and t["expect_tokens"] == expect and PAIR not in E.positions and E.pairs[PAIR]["status"] == "traded"
+    assert E.state["trades_done"] == 1 and E.state["pnl_today_wei"] == t["net_wei"] and not events("halt") and not events("stop")
+    c = fresh(Stream("2.0"), BASE_V2_STAKE_ETH="0.5", BASE_V2_STAKE_CAP_ETH="0.5"); f = fired(c)[0]
+    assert f["stake_wei"] == 10 ** 17 and f["expect_tokens"] == cp_out(10 ** 17, 2 * 10 ** 18, R_TOK0)       # the share cap: 5% of the ETH reserve
+    c = fresh(Stream("2.0"), BASE_V2_STAKE_ETH="0.05", BASE_V2_STAKE_CAP_ETH="0.03"); assert fired(c)[0]["stake_wei"] == 3 * 10 ** 16
+
+
+@test
+def dry_buy_reverts_under_its_min_out():
+    """the dry fill is priced at the end of N + 1: a buy ahead of us there beyond the slip reverts the dry buy"""
+    st = Stream("2.0"); c = fresh(st); inject_buy(c, st, N + 1, 10 ** 17, FLEET[2]); fired(c)
+    feed(c, N + 1, N + 2)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "buy_reverted" and t["eth_in_wei"] == 0 and t["eth_out_wei"] == 0 and t["tokens"] is None and t["buy_block"] is None and "under the buy's minOut" in t["why"], t
+    assert t["gas_wei"] == (250_000 * 35_000_000 + 4_200_000_000) // 2 and t["ret"] < 0 and PAIR not in E.positions and E.state["trades_done"] == 1
+
+
+@test
+def dry_take_profit():
+    st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 19); pos = E.positions[PAIR]
+    inject_buy(c, st, N + 20, 3 * 10 ** 17, FLEET[4]); feed(c, N + 20, N + 20)        # a 0.3 ETH buy: +30% and more
+    s = events("sell_sent")
+    assert len(s) == 1 and s[0]["reason"] == "take_profit" and s[0]["priced_at_block"] == N + 21 and s[0]["via"] == "logs" and "BASE_V2_TAKE_PROFIT" in s[0]["why"], s
+    feed(c, N + 21, N + 22)
+    t = wait_ev("trade_done")[0]; eth_out = dry_value(c, st, pos["tokens"], pos["stake"], N + 21)
+    assert t["exit"] == "take_profit" and t["sell_block"] == N + 21 and t["eth_out_wei"] == eth_out and t["ret"] > 0.25 and t["fleet_eth"] >= 0.3 and t["outsider_at"] is None, t
+    assert len(events("outsider_buy")) == 1                                   # the probe only: the fleet's buys are never logged
+
+
+@test
+def dry_outsider_sells_at_once():
+    """an outsider's confirmed buy behind ours: the instant sell, priced at the next block; pending in a Flashblock: before the block seals"""
+    st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 29); pos = E.positions[PAIR]
+    sw = inject_buy(c, st, N + 30, 10 ** 15, STRANGER.address.lower()); feed(c, N + 30, N + 30)
+    s = events("sell_sent"); o = wait_ev("outsider_buy", block=N + 30)[0]
+    assert len(s) == 1 and s[0]["reason"] == "outsider" and s[0]["priced_at_block"] == N + 31 and "confirmed at" in s[0]["why"], s
+    assert o["who"] == "outsider" and o["action"] == "sell" and o["ours"] and o["sender"] == STRANGER.address.lower() and o["tx"] == sw["transactionHash"] and not o["pending"], o
+    feed(c, N + 31, N + 32)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "outsider" and t["outsider_at"] == N + 30 and t["sell_block"] == N + 31 and t["eth_out_wei"] == dry_value(c, st, pos["tokens"], pos["stake"], N + 31), t
+    st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 4)
+    raw = signed(STRANGER, 9, ROUTER, 2 * 10 ** 15, "0x7ff36ab5" + word(0) + word(128) + aword(STRANGER.address) + word(ts(N) + 60) + word(2) + aword(WETH) + aword(TOKEN))
+    flash(N + 5, [raw], index=2)
+    s = events("sell_sent"); o = events("outsider_buy", pending=True)[0]
+    assert len(s) == 1 and s[0]["reason"] == "outsider" and s[0]["via"] == "flash" and s[0]["priced_at_block"] == N + 5 and s[0]["block_seen"] == N + 5 and "seen pending" in s[0]["why"], s
+    assert o["who"] == "outsider" and o["action"] == "sell" and o["ours"] and o["sender"] == STRANGER.address.lower() and o["value_eth"] == 0.002 and o["to"] == ROUTER, o
+    inject_buy(c, st, N + 5, 2 * 10 ** 15, STRANGER.address.lower(), tx=hash_of(raw)); feed(c, N + 5, N + 6)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "outsider" and len(events("sell_sent")) == 1 and len(events("outsider_buy")) == 2 and t["outsider_at"] == N + 5 and t["sell_block"] == N + 5, t
+    c = fresh(Stream("2.0"), BASE_V2_OUTSIDER_MIN_ETH="0.01"); st = next(iter(c.streams.values())); fired(c); feed(c, N + 1, N + 9)
+    inject_buy(c, st, N + 10, 10 ** 15, STRANGER.address.lower()); feed(c, N + 10, N + 11)
+    o = wait_ev("outsider_buy", block=N + 10)[0]
+    assert o["action"] == "none" and not events("sell_sent")                  # under the floor: logged, no sell
+
+
+@test
+def probe_creator_and_fleet_never_trigger():
+    """after our buy: the probe's, the creator's and a roster wallet's buys, confirmed and pending, never sell; the probe and the creator are
+    logged, the fleet never"""
+    c = fresh(Stream("2.0"), BASE_V2_PROBE=PROBE + "," + PROBE_KEY.address); st = next(iter(c.streams.values())); fired(c); feed(c, N + 1, N + 4)
+    inject_buy(c, st, N + 5, 3 * 10 ** 12, "0x6aa98924" + "00" * 16, sender=PROBE, li=900); inject_buy(c, st, N + 5, 9 * 10 ** 13, CREATOR, li=910)
+    inject_buy(c, st, N + 5, 10 ** 16, FLEET[5], li=920); inject_buy(c, st, N + 5, 10 ** 16, STRANGER.address.lower(), sender=FLEET[6], li=930)   # a fleet buy sent to another wallet
+    feed(c, N + 5, N + 5)
+    time.sleep(0.05)
+    o = events("outsider_buy", block=N + 5)
+    assert sorted(x["who"] for x in o) == ["creator", "probe"] and all(x["action"] == "none" and x["ours"] for x in o) and not events("sell_sent"), o
+    assert E.pairs[PAIR]["fleet_first"] == N + 2 and len([b for b in E.pairs[PAIR]["buys"] if b["who"] == "fleet"]) == 3
+    buy = lambda key, nonce, eth: signed(key, nonce, ROUTER, eth, "0x7ff36ab5" + word(0) + word(128) + aword(key.address) + word(ts(N) + 60) + word(2) + aword(WETH) + aword(TOKEN))
+    flash(N + 6, [buy(PROBE_KEY, 1, 3 * 10 ** 12), buy(FLEET_KEY, 2, 10 ** 16)], index=1)
+    o = events("outsider_buy", pending=True)
+    assert [x["who"] for x in o] == ["probe"] and o[0]["action"] == "none" and not events("sell_sent"), o
+    flash(N + 6, [buy(STRANGER, 3, 10 ** 15)], index=2)
+    assert len(events("sell_sent")) == 1 and events("outsider_buy", pending=True)[-1]["who"] == "outsider"
+    st = Stream("2.0", creator=creator_key("self-buy")); c = fresh(st); fired(c); feed(c, N + 1, N + 4)
+    flash(N + 5, [signed(st.key, 4, ROUTER, 9 * 10 ** 13, "0x7ff36ab5" + word(0) + word(128) + aword(st.creator) + word(ts(N) + 60) + word(2) + aword(WETH) + aword(st.token))], index=1)
+    o = events("outsider_buy", pending=True)
+    assert len(o) == 1 and o[0]["who"] == "creator" and o[0]["action"] == "none" and not events("sell_sent"), o
+
+
+@test
+def dry_fleet_sell_and_the_dump_rule():
+    """the fleet's first sell on our pair (its sender read: a router sell shows the router as `to`) is the exit; a sell taking PULL_SHARE
+    of the ETH reserve on a pair of the tier ends the tier for the day"""
+    st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 39); pos = E.positions[PAIR]
+    inject_sell(c, st, N + 40, 10 ** 24, FLEET[0]); feed(c, N + 40, N + 40)
+    s = wait_ev("sell_sent")
+    assert len(s) == 1 and s[0]["reason"] == "fleet_sell" and s[0]["priced_at_block"] == N + 41 and "fleet's first sell" in s[0]["why"], s
+    feed(c, N + 41, N + 42)
+    t = wait_ev("trade_done")[0]
+    assert t["exit"] == "fleet_sell" and t["sell_block"] == N + 41 and t["eth_out_wei"] == dry_value(c, st, pos["tokens"], pos["stake"], N + 41) and not events("stop"), t
+    st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 39)
+    inject_sell(c, st, N + 40, 10 ** 24, STRANGER.address.lower()); feed(c, N + 40, N + 42)   # an outsider's small sell: no exit
+    time.sleep(0.05); assert not events("sell_sent")
+    inject_sell(c, st, N + 50, 3 * 10 ** 27, FLEET[1]); feed(c, N + 50, N + 50)              # a dump: 35% of the ETH reserve
+    t = events("stop")
+    assert len(t) == 1 and t[0]["what"] == "tier" and t[0]["tier"] == "1.3-2.3" and "BASE_V2_PULL_SHARE" in t[0]["reason"] and "35%" in t[0]["reason"], t
+    assert events("sell_sent")[0]["reason"] == "fleet_sell"
+
+
+@test
+def dry_pulled_before_our_sell_halts():
+    """a Burn before our sell: -100%, the line halts (in memory in the dry run), no new buy after it; the pull line's fields"""
+    st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 9); pos = E.positions[PAIR]
+    inject_burn(c, st, N + 10); feed(c, N + 10, N + 11)
+    t = wait_ev("trade_done")[0]; gas = 250_000 * 35_000_000 + 4_200_000_000
+    assert t["exit"] == "pulled" and t["eth_out_wei"] == 0 and t["pulled_at"] == N + 10 and t["net_wei"] == -(2 * 10 ** 16 + gas) and t["ret"] == round(-(2 * 10 ** 16 + gas) / 2e16, 6), t
+    assert t["tokens"] == pos["tokens"] and t["sell_block"] is None and not events("sell_sent")
+    p = events("pull")[0]
+    assert p["block"] == N + 10 and p["before"] == "sell" and p["ours"] and p["reaction"] and p["since_creation"] == 10 and p["since_last_buy"] == 8 and p["since_outsider"] is None, p
+    h = events("halt")
+    assert len(h) == 1 and h[0]["reason"].startswith("pulled:") and h[0]["dry"] and h[0]["file"] is None and h[0]["pair"] == PAIR and h[0]["tier"] == "1.3-2.3", h
+    assert E.state["halted"] == h[0]["reason"] and not os.path.exists(E.S.HALT_FILE)
+    assert events("stop")[0]["what"] == "tier" and "BASE_V2_SCHEDULE_MIN" in events("stop")[0]["reason"]
+    st2 = Stream("2.0", creator=creator_key("after-halt"), shift=20, li_offset=1000); c.streams[st2.pair] = st2; c.by_token[st2.token] = st2
+    c.txs.update(st2.txs); c.txs[st2.creation_hash] = st2.creation_tx; c.receipts[st2.creation_hash] = {"status": "0x1", "blockNumber": hex(st2.N), "logs": st2.rlogs}
+    feed(c, N + 12, N + 20)
+    s = wait_ev("skip", pair=st2.pair)[0]
+    assert s["why"] == "halted" and s["reason"].startswith("pulled:") and events("guard", pair=st2.pair) and not events("would_fire", pair=st2.pair), s
+
+
+@test
+def burn_on_another_pair_ends_the_tier():
+    """a Burn earlier than SCHEDULE_MIN on any pair of the tier: stop what:tier; our open position still sells; the next creation of the
+    tier is refused (tier ended) until the day rolls"""
+    a = Stream("2.0"); b = Stream("2.0", creator=creator_key("pair-b"), li_offset=1000, fleet=False); c = fresh(a, b); feed(c, N - 2, N)
+    wait_ev("would_fire", 2); assert {x["pair"] for x in events("would_fire")} == {PAIR, b.pair} and E.state["trades_today"] == 2
+    feed(c, N + 1, N + 20); E.positions[b.pair]["trigger"] = None
+    inject_burn(c, b, N + 100); feed(c, N + 21, N + 101)
+    t = events("stop")
+    assert len(t) == 1 and t[0]["what"] == "tier" and t[0]["tier"] == "1.3-2.3" and "+100" in t[0]["reason"] and "BASE_V2_SCHEDULE_MIN 220" in t[0]["reason"] and t[0]["day"] == "2026-10-20", t
+    d = wait_ev("trade_done", pair=b.pair)[0]
+    assert d["exit"] == "pulled" and not events("halt") and E.positions[PAIR]["sell_sent"] is False       # b's pull came 99 blocks after its buy: no reaction, no halt
+    assert events("pull")[0]["ours"] and events("pull")[0]["before"] == "sell" and not events("pull")[0]["reaction"]
+    d3 = Stream("2.0", creator=creator_key("pair-d"), shift=110, li_offset=2000); c.streams[d3.pair] = d3; c.by_token[d3.token] = d3
+    c.txs.update(d3.txs); c.txs[d3.creation_hash] = d3.creation_tx; c.receipts[d3.creation_hash] = {"status": "0x1", "blockNumber": hex(d3.N), "logs": d3.rlogs}
+    feed(c, N + 102, N + 110)
+    s = wait_ev("skip", pair=d3.pair)[0]
+    assert s["why"] == "tier ended" and events("guard", pair=d3.pair)[0]["verdict"] == "ok" and not events("would_fire", pair=d3.pair), s
+    feed(c, N + 111, N + 178)
+    t = wait_ev("trade_done", pair=PAIR)[0]; assert t["exit"] == "hard" and t["ret"] > 0
+    assert E.state["tiers_ended"] == {"1.3-2.3": "2026-10-20"}
+    CLOCK[0] = ts(N) + 86400; E.roll_day()                                    # 00:00 UTC: the tier's stop clears
+    assert E.state["tiers_ended"] == {} and E.state["day"] == "2026-10-21" and E.state["trades_today"] == 0
+
+
+@test
+def daily_cap():
+    """MAX_PER_DAY fires stop the day (stop what:day); the next creation is refused"""
+    a = Stream("2.0"); b = Stream("2.0", creator=creator_key("cap-b"), li_offset=1000); c = fresh(a, b, BASE_V2_MAX_PER_DAY="2"); feed(c, N - 2, N)
+    wait_ev("would_fire", 2)
+    t = events("stop")
+    assert len(t) == 1 and t[0]["what"] == "day" and "BASE_V2_MAX_PER_DAY 2 buys" in t[0]["reason"] and t[0]["trades_today"] == 2 and E.state["stopped"] == "2026-10-20", t
+    d3 = Stream("2.0", creator=creator_key("cap-d"), shift=5, li_offset=2000); c.streams[d3.pair] = d3; c.by_token[d3.token] = d3
+    c.txs.update(d3.txs); c.txs[d3.creation_hash] = d3.creation_tx; c.receipts[d3.creation_hash] = {"status": "0x1", "blockNumber": hex(d3.N), "logs": d3.rlogs}
+    feed(c, N + 1, N + 5)
+    s = wait_ev("skip", pair=d3.pair)[0]
+    assert s["why"] == "stopped" and s["trades_today"] == 2 and not events("would_fire", pair=d3.pair) and len(events("stop")) == 1, s
+    feed(c, N + 6, N + 178)
+    assert len(wait_ev("trade_done", 2)) == 2 and len(events("would_fire")) == 2
 
 
 if __name__ == "__main__":

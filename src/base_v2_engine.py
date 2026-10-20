@@ -1039,9 +1039,20 @@ def prepare(P):
     back-run); the verdict once both are in; then the fire. Nothing retries a failed guard"""
     try:
         checks = {}; stake = stake_for(P)
-        t_checks = threading.Thread(target=lambda: checks.update(zip(("why", "meas"), pending_checks(P))), daemon=True); t_checks.start()
+
+        def run_checks():
+            try:
+                checks.update(zip(("why", "meas"), pending_checks(P)))
+            except Exception as e:                                             # a read that failed: the skip names it (scrubbed), the thread ends quietly
+                checks.update(why="guard", meas={"verdict": "unreadable", "error": scrub(f"{type(e).__name__}: {e}", 120)})
+        t_checks = threading.Thread(target=run_checks, daemon=True); t_checks.start()
         if P["via"] == "flash":
             t_checks.join()                                                    # the pending window: refused before N seals (nothing else to do yet)
+            with lock:
+                if P["status"] != "arming":
+                    return
+                if checks.get("why"):
+                    return skip_pair(P, checks["why"], **checks["meas"])
         if S.BACKRUN:
             tag, urls = "pending", [S.PENDING_URL]
         else:

@@ -1,0 +1,50 @@
+# flip-base-v2: the Base V2 line's engine (src/base_v2_engine.py, docs/BASE_V2.md; release base-v2-0.1). A DRY RUN unless /etc/flip/base_v2.env
+# says BASE_V2_DRY_RUN=0: dry, it reads the chain (a websocket for heads and the factory's and the followed pairs' logs, the Flashblocks stream
+# for pending transactions), runs the guard, logs what the rule would have done and signs and sends nothing; live (RUNBOOK 4m step 9), it
+# trades the stake through its FlipRelayV2 (BASE_V2_RELAY) from its own wallet, whose key is /etc/flip/base_v2.key (mode 600, made by
+# deploy/base_wallet.py create), and holds an fcntl lock on that file while it runs. Beside flip-engine and flip-base and touching nothing
+# of either: its own settings (/etc/flip/base_v2.env, no key in it), its own log (/var/log/flip/base_v2.jsonl), halt file (HALTED.base_v2) and
+# positions file (base_v2_positions.json) there, its roster (/etc/flip/base_v2_roster.json, written by deploy/base_v2_roster.py), the same
+# user as flip-base (root with no capability but CAP_DAC_READ_SEARCH, to read /home/ubuntu/v2pons through a 750 home), a lower CPU priority
+# than flip-engine (Nice 10 against -5) and a CPU and memory ceiling (it follows every pair of the line for 1,400 blocks and decodes the
+# Flashblocks stream: more memory than flip-base). The file system is read-only to it except /var/log/flip.
+# Kept away from the other lines' keys exactly as flip-base is (deploy/flip-base.service explains why a mask on single files is not enough):
+#   - /etc/flip is an empty read-only tmpfs inside its mount namespace, with only base_v2.key, base_v2.env and base_v2_roster.json bound in,
+#     read-only. A file bound in is the inode there at the start: after any change to base_v2.env, restart. The roster is rewritten IN PLACE
+#     by base_v2_roster.py (the same inode), so a running engine sees each daily rebuild (it re-reads the file when its mtime changes);
+#     a roster made after the start (the first one) needs one restart to be bound in.
+#   - no capability but CAP_DAC_READ_SEARCH: flip-engine's /proc/<pid>/environ and mem, which hold that engine's key, are refused to it.
+#     No core dumps (LimitCORE=0: the V2 key is in its memory when live).
+#   To check on the box (prints names only): sudo nsenter -t $(systemctl show -p MainPID --value flip-base-v2) -m ls /etc/flip
+#   lists base_v2.env, base_v2.key and base_v2_roster.json only.
+# An open position is in base_v2_positions.json and is sold at once at the next start (docs/BASE_V2.md section 3), so a stop or a crash costs
+# at most the restart: a crash restarts in 5 s (RestartSec=5; a position lives up to 180 blocks, six minutes, and is sold at the restart).
+# deploy/base_v2_setup.sh installs it (RUNBOOK 4m step 2), with the paths below replaced by the clone's own when it is not /home/ubuntu/v2pons:
+#     cd ~/v2pons && sudo bash deploy/base_v2_setup.sh
+[Unit]
+Description=flip Base V2 engine (v2pons; a dry run unless BASE_V2_DRY_RUN=0 in /etc/flip/base_v2.env)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/flip/base_v2.env
+WorkingDirectory=/home/ubuntu/v2pons
+ExecStart=/opt/flip-venv/bin/python3 /home/ubuntu/v2pons/src/base_v2_engine.py
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+Nice=10
+CPUQuota=60%
+MemoryMax=600M
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/log/flip
+TemporaryFileSystem=/etc/flip:ro
+BindReadOnlyPaths=-/etc/flip/base_v2.key -/etc/flip/base_v2.env -/etc/flip/base_v2_roster.json
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH
+LimitCORE=0
+
+[Install]
+WantedBy=multi-user.target
