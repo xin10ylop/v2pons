@@ -817,7 +817,15 @@ def read_creation(P):
     """thread: the creation transaction (its Flashblocks copy, else eth_getTransactionByHash) for the shape, and its receipt for the Mint"""
     h = P["creation_tx"]; t = flash_txs.get(h); why = None; r_eth = r_tok = 0
     try:
+        rc_box = {}
         if t is None:
+            def get_receipt():
+                for _ in range(3):
+                    rc_box["rc"] = read("eth_getTransactionReceipt", [h])
+                    if rc_box["rc"]:
+                        return
+                    time.sleep(0.3)
+            t_rc = threading.Thread(target=get_receipt, daemon=True); t_rc.start()        # beside the transaction's read: one round trip, not two
             r = None
             for _ in range(3):
                 r = read("eth_getTransactionByHash", [h])
@@ -839,12 +847,7 @@ def read_creation(P):
             why = shape_why(t["from"], t["nonce"], P["token"])
         r_eth, r_tok = t["value"], int.from_bytes(t["data"][36:68], "big") if len(t["data"]) >= 68 else 0
         if why is None and t["src"] == "rpc":                                   # the receipt: the Mint in the same transaction, its amounts the reserves
-            rc = None
-            for _ in range(3):
-                rc = read("eth_getTransactionReceipt", [h])
-                if rc:
-                    break
-                time.sleep(0.3)
+            t_rc.join(READ_TIMEOUT_S * 6 + 1); rc = rc_box.get("rc")
             mint = next((l for l in (rc or {}).get("logs") or [] if (l.get("address") or "").lower() == P["pair"] and (l.get("topics") or [""])[0].lower() == T_MINT), None)
             if mint is not None:
                 a0, a1 = W(mint["data"], 0), W(mint["data"], 1); r_eth, r_tok = (a0, a1) if P["weth_is0"] else (a1, a0)
@@ -949,11 +952,11 @@ def outsider_before_fire(P):
     return None
 
 
-def exit_test(P, stake, tag, urls):
+def exit_test(P, stake, tag, urls, ready=None):
     """the V2RoundTrip harness by eth_call with the state override at `tag` on every url at once (an endpoint without the block yet is asked
     again every 100 ms; the first verdict counts), as deploy/base_v2_sim.py: the tokens bought must equal the constant-product expectation
     on the reserves the call ran on (else buy_tax), the ETH back >= BASE_V2_EXIT_MIN of the quote (else taxed); a reverted sell is a honeypot
-    (the buy alone works), a pair nobody could read is unreadable"""
+    (the buy alone works), a pair nobody could read is unreadable. `ready` (an Event) holds the verdict until the arm's read of block N is in"""
     t0 = mono()
     args = aword(S.ROUTER) + aword(S.WETH) + aword(P["token"]) + word(stake)
     ov = {HARNESS_AT: {"code": HARNESS_CODE, "balance": hex(stake * 2)}}
@@ -986,6 +989,8 @@ def exit_test(P, stake, tag, urls):
         if kind == "none":
             nones.append((u, r)); continue
         got = (u, kind, r); break
+    if ready is not None:
+        ready.wait(GUARD_WAIT_S + GUARD_TIMEOUT_S)
     with lock:
         r_eth, r_tok, _ = reserves(P) if S.BACKRUN else reserves(P, (P["N"], END))   # the state the call ran on: the end of block N (the probe's swap in it)
     expect = cp_out(stake, r_eth, r_tok)
@@ -1010,37 +1015,46 @@ def exit_test(P, stake, tag, urls):
 
 
 def prepare(P):
-    """thread, a tradable pair: the pending window's checks, block N sealed, the arm's read (the creation block's swaps), the exit test at
-    block N (the `pending` tag with the back-run), then the fire. Nothing retries a failed guard"""
+    """thread, a tradable pair: the pending window's checks (the code size, the supply: before N seals when the creation was seen pending),
+    block N sealed, then at once the arm's read (the creation block's swaps) and the exit test's calls at block N (the `pending` tag with the
+    back-run); the verdict once both are in; then the fire. Nothing retries a failed guard"""
     try:
-        why, meas = pending_checks(P)
-        with lock:
-            if P["status"] != "arming":
-                return
-            if why:
-                return skip_pair(P, why, **meas)
+        checks = {}; stake = stake_for(P)
+        t_checks = threading.Thread(target=lambda: checks.update(zip(("why", "meas"), pending_checks(P))), daemon=True); t_checks.start()
+        if P["via"] == "flash":
+            t_checks.join()                                                    # the pending window: refused before N seals (nothing else to do yet)
         if S.BACKRUN:
             tag, urls = "pending", [S.PENDING_URL]
         else:
             if not wait_sealed(P):
                 return
             tag, urls = hex(P["N"]), [S.ARCHIVE_URL] + ([S.READ_ALT_URL] if S.READ_ALT_URL else [])
-            backfill(P)
-            at = outsider_before_fire(P)
-            with lock:
-                if P["status"] != "arming":
-                    return
-                if at is not None:
-                    return skip_pair(P, "outsider before our fire", block=at)
-                if reserves(P)[2] is not None or P["pull_pending"] is not None:
-                    return skip_pair(P, "pulled before our fire")
         with lock:
             if P["status"] != "arming":
                 return
+        ready = threading.Event(); box = {}
+        t_exit = threading.Thread(target=lambda: box.update(v=exit_test(P, stake, tag, urls, ready)), daemon=True); t_exit.start()
+        if not S.BACKRUN:
+            backfill(P)
+            at = outsider_before_fire(P)
+        ready.set(); t_checks.join(GUARD_WAIT_S + GUARD_TIMEOUT_S)
+        if "why" not in checks:
+            checks.update(why="guard", meas={"error": "the code size and supply checks did not answer"})
+        why, meas = checks["why"], checks["meas"]
+        with lock:
+            if P["status"] != "arming":
+                return
+            if why:
+                return skip_pair(P, why, **meas)
+            if not S.BACKRUN and at is not None:
+                return skip_pair(P, "outsider before our fire", block=at)
+            if reserves(P)[2] is not None or P["pull_pending"] is not None:
+                return skip_pair(P, "pulled before our fire")
             r_eth, r_tok, _ = reserves(P)
             log({"ev": "arm", "pair": P["pair"], "token": P["token"], "block": P["N"], "tier": P["tier"], "r_eth_wei": r_eth, "r_tok": r_tok, "followed": len(pairs)})
-        stake = stake_for(P)
-        v = exit_test(P, stake, tag, urls)
+        t_exit.join(GUARD_WAIT_S + 2 * GUARD_TIMEOUT_S + 2)
+        v = box.get("v") or {"tokens": None, "expect_tokens": None, "eth_back_wei": None, "quote_wei": None, "ratio": None, "verdict": "unreadable", "ms": None, "src": None,
+                             "error": "the exit test did not answer"}
         with lock:
             P["guard"] = v; state["guard_ms_last"] = v["ms"]
             log({"ev": "guard", "pair": P["pair"], "token": P["token"], "block": P["N"], "stake_wei": stake, **v, **meas})
@@ -1657,9 +1671,10 @@ def send_signed(pos, what, build, nonce=None, bump=False):
         if n is None or n <= nonce:
             break
         nonce = n
+    n = chain_nonce() if kind == "unknown" and not bump else None               # no answer: the chain's count decides (a nonce gap would hold every later send)
     with lock:
         if kind != "rejected" and not bump:
-            state["nonce"] = max(state["nonce"] or 0, nonce + 1)
+            state["nonce"] = max(state["nonce"] or 0, nonce + 1) if n is None else max(n, nonce if kind == "unknown" else nonce + 1)
     return h, nonce, kind, replies
 
 
@@ -2059,7 +2074,7 @@ def self_test():
     try:
         p = newest_line_pair(3000) or newest_line_pair(30000)
         need(p is not None, "the guard's self-test found no pair of the line in the last 30,000 blocks on BASE_V2_ARCHIVE_URL")
-        tag = hex(p["bn"] + 30) if p["burn"] else "latest"
+        tag = hex(p["bn"] + 30) if p["burn"] else hex(int(read_from([S.ARCHIVE_URL], "eth_blockNumber", [], timeout=SLOW_TIMEOUT_S, tries=2), 16))
         r = read_from([S.ARCHIVE_URL], "eth_call", [{"to": p["pair"], "data": "0x0902f1ac"}, tag], timeout=SLOW_TIMEOUT_S, tries=2)
         r0, r1 = W(r, 0), W(r, 1); r_eth, r_tok = (r0, r1) if p["weth_is0"] else (r1, r0)
         P = new_pair(p["pair"], p["token"], p["weth_is0"], None, 0, "logs"); P.update(r_eth0=r_eth, r_tok0=r_tok)
