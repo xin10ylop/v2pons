@@ -101,6 +101,26 @@ the operator's, and the operator's detector ignores it. Four more dust-only wall
   settles that, so it is a live test (three wallets at 0.0001 ETH on one pool), not a deployment. An independent refutation pass on
   these numbers is pending.
 
+## 4c. The money trail on Robinhood (traced live through eight launches)
+
+- **Two floats, fully recycled, nothing parked.** Line A: about 7.29 ETH and a roster of 42 fleet wallets; line B: about 6.79 ETH and
+  29-31 wallets (disjoint rosters, launches interleaved, two launches 6 s apart). Each cycle: a fresh collector wallet receives the
+  deployer's sweep (its nonce-2 transaction, 100-310 blocks after the pull, about 5.5 ETH) and every roster wallet's remainder in the
+  same 20-block burst (about 1.7 ETH), forwards all of it 21-28 blocks later to a fresh distributor, which funds the next deployer
+  (1.2-2.6 ETH) 8 blocks later and then the roster in a fixed order two blocks apart (0.11-0.16 ETH each). Every hop is a one-shot
+  wallet that forwards everything minus a gas reserve of 0.0000132 ETH. The deployer's nonce-3 transaction is a dust sweep.
+- **No bridge, no exchange, no inflow but victims.** No wallet in the loop ever touched the Orbit bridge or an exchange-like address.
+  The float was seeded on Oct 15 21:30 UTC from the previous generation's sweeps (an older launcher) and grew from 5.84 to 7.29 ETH
+  in 4.6 days: +0.32 ETH a day.
+- **Economics per pool**: 1.9 ETH added (the launcher skims exactly 0.1% of the launch value), the fleet buys 2.2-2.6 ETH and sells
+  0.8-1.3 ETH, the pull removes 3.2 ETH; net per pool equals exactly what outsiders paid in: 0.000 ETH on 391 of 419 pulled pools,
+  +0.089 ETH mean on the 28 that had an outsider. Per day at 175 launches: about 1.0 ETH from outsiders, 0.4 ETH launcher fee, 0.2-0.35
+  ETH gas, net about +0.3 to +0.5 ETH on roughly 14 ETH of float and about 500 ETH of self-traded volume.
+- **Why he reacts the way he does**: the outsider's ETH is the whole profit, so the program takes it the moment it lands (the pull
+  3-7 blocks after any buy at or above its size rule). The 0.5 s reaction is not defensive; it is the business.
+- Old-generation fleet wallets (234-253 pools each, nonces 3,800-5,900) were retired on Oct 15 and sit empty; the current roster
+  wallets hold 0.008-0.118 ETH between cycles; the launcher's 0.1% fee recipient could not be resolved without traces.
+
 ## 5. The errors behind us and what the engine lacks for a relaunch
 
 The repository (5 commits) is the Robinhood flip only. The Base engine, the second launch call, the honeypot launcher and the hook
