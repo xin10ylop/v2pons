@@ -58,7 +58,48 @@ launchpad's migrations, not a pump-and-pull. Ethereum's five hooked pools with t
 
 ## 4. Base
 
-(filled from the Base scan below)
+The operator's Base launchers from Oct 14-15 are on the box, not in the repo, so Base was read by fingerprint. Every v4 pool paired
+with ETH (5,127), with WETH as currency0 (2,267) or as currency1 (940) since Oct 15 21:30 UTC was grouped; the liquidity and the pull
+were read for all 5,127 ETH-paired pools. Result: **the operator's v4 line on Base is gone.** The groups with real ETH liquidity and
+fast pulls are one line only: direct PositionManager launches at tick spacing 1, fee 0, a fixed 1.2 ETH per pool (2,215 pools, 20/h,
+2,237 funded deployer wallets, 581 pulled a median 4 blocks = 8 s after launch); its buyers and its reaction are being read (pending).
+Everything else is launchpads (Clanker, Zora, 4337 launches) with no pulls, or two token mills: a family of 30 rotating launcher
+contracts (a new one every 15 pools, 404 pools, 2 persistent deployers, Oct 15 22:11 to Oct 20 02:00 UTC) and a single-wallet launcher
+(426 pools) that both initialize token-only pools with no ETH side; their only swap is a probe bot's dust buy; nobody buys them.
+Those mills are not attributable to the operator and have nothing in them to trade.
+
+**The live Base lead is Uniswap V2.** A pair created at 12:07 UTC today by a fresh wallet (nonce 2) with 15 ETH of liquidity drew a
+probe's dust buy in the creation block and then 0.08-0.12 ETH buys from wallets with nonces 1,800-2,900 within a minute. Whether that
+is a pump-and-pull with a fleet and a pull, and how many such pairs there are, is being read from every WETH pair created on the V2
+factory in the window (773 pairs; pending).
+
+A correction on wallets: the wallet `0xe71a69f434a719cd5afa411568b69716aab3b84a`, which looked like a shared fleet wallet across
+chains, is a probe bot: it buys exactly 0.000002 ETH on every new pool (468 of the operator's 527 Robinhood pools at launch+3 blocks,
+about 800 pools a day on Base across v4, V2 and v3, 250k transactions on BNB in the past, idle there since before Oct 12). It is not
+the operator's, and the operator's detector ignores it. Four more dust-only wallets do the same on Robinhood.
+
+## 4b. Inside the operator's Robinhood line (527 pools, read swap by swap)
+
+- **The fleet**: 98 recurring wallets with median buys of 0.03 ETH (menu 0.03 / 0.05 / 0.07 / 0.08 / 0.09, up to 0.26), about 40 of
+  them new this week; buys from 2 s after launch, sells from 5-8 s, both interleaved until the pull; the price plateaus at about 3x
+  the launch price from 50 s. Per pool the fleet buys 2.85 ETH and sells 1.45 ETH back; the deployer's pull (its nonce-1 transaction
+  to the PositionManager) recovers the rest: a closed loop. Half the buy ETH is in by 33 s.
+- **The pull**: bimodal. 40% of pools with no outsider at all are pulled inside 30 s by the program's own end; the rest at 210-250 s.
+- **The detector**: a wallet whitelist plus a size rule. Every outside buy of 0.002 ETH or more was followed by the pull 3-7 blocks
+  later (33 of 33; median 5 blocks = 0.5 s), 89% of buys of 0.0005-0.002 ETH, 74% of 0.0002-0.0005 ETH, independent of fee tier,
+  router, hour and phase (a 0.099 ETH buy at launch+18, before any fleet buy, was pulled at +23). Dust under 0.0001 ETH triggered it
+  0 of 69 times on Oct 20 (36-39% on Oct 16: the threshold is a setting and moves). No outsider ever sold before the pull.
+- **A second shape**: pools at 2-3% fee with no fleet, where 12-30 of the operator's own fresh wallets buy one menu size each and never
+  sell, as bait; the snipers who followed them lost everything (pull 48 blocks after the last sniper buy).
+- **Seats priced** (paper, fees both legs, our impact, gas, real pulls): the pre-first-buy seat (buy +22, sell one block after the
+  fleet's first buy) is +3 to +4% only if the operator did not react, and -57% once his 5-block reaction is modelled; a fixed exit
+  inside his reaction window (+24..+26) is 0 to +1%; the shortest flip (+2 and +3 blocks after the first fleet buy) is -1 to -2%;
+  an LP seat (adding 5-10% of his liquidity) is -11 to -13% even with no reaction, and the token purchase to build it would itself
+  be pulled. **The one positive seat is under his threshold**: 0.0001-0.00015 ETH bought at launch+22 and held to +300..+1000 blocks
+  prices at +74% to +168% mean after gas (about $0.5 of expected value per pool, about $50 a day), losing 25-37% of pools to the
+  program-end pulls. It scales by wallet count only if the trigger is per transaction rather than per pool; nothing in the data
+  settles that, so it is a live test (three wallets at 0.0001 ETH on one pool), not a deployment. An independent refutation pass on
+  these numbers is pending.
 
 ## 5. The errors behind us and what the engine lacks for a relaunch
 
