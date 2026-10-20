@@ -33,7 +33,7 @@ ROSTER_DEFAULT = "/etc/flip/base_v2_roster.json"
 FACTORY_DEFAULT = "0x8909dc15e40173ff4699343b6eb8132c65e18ec6"                           # Uniswap V2 on Base (BASE_V2_FACTORY)
 ROUTER_DEFAULT = "0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24"                            # its router02 (BASE_V2_ROUTER)
 WETH_DEFAULT = "0x4200000000000000000000000000000000000006"                              # (BASE_V2_WETH)
-PROBE_DEFAULT = "0xe71a69f434a719cd5afa411568b69716aab3b84a"                             # the line's probe (BASE_V2_PROBE)
+PROBE_DEFAULT = "0xe71a69f434a719cd5afa411568b69716aab3b84a,0x0e77610e9f13062c2eaa709ef1c59b8c22e549c9"                             # the line's probe (BASE_V2_PROBE)
 SEL = {"buy": "1622dbe4", "sell": "6a272462", "withdraw": "2e1a7d4d", "sweep": "01681a62", "owner": "8da5cb5b", "router": "f887ea40", "weth": "3fc8cef3"}
 _setting = BW.setting                                                                     # the original: the environment, else the env file's last line
 

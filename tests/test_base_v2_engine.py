@@ -470,7 +470,7 @@ def settings_bounds():
         os.environ.pop(k)
     s = E.settings()
     assert s.STAKE_ETH_WEI == s.STAKE_CAP_WEI == 2 * 10 ** 16 and s.PRIO_WEI == 3 * 10 ** 7 and s.MAX_FEE_WEI == 5 * 10 ** 8 and s.BUY_SLIP_PPM == 30_000 and s.SELL_SLIP_PPM == 50_000
-    assert (s.BAND_LO_WEI, s.BAND_HI_WEI, s.TIER_LABEL) == (13 * 10 ** 17, 23 * 10 ** 17, "1.3-2.3") and s.EXCLUDE_MILLI == {1200} and s.PROBE == {PROBE} and s.TOKEN_CODE_SIZES == {3553}
+    assert (s.BAND_LO_WEI, s.BAND_HI_WEI, s.TIER_LABEL) == (13 * 10 ** 17, 23 * 10 ** 17, "1.3-2.3") and s.EXCLUDE_MILLI == {1200} and s.PROBE == {PROBE, "0x0e77610e9f13062c2eaa709ef1c59b8c22e549c9"} and s.TOKEN_CODE_SIZES == {3553}
     assert s.MIN_SUPPLY_PPM == 990_000 and s.EXIT_MIN_PPM == 980_000 and s.TP_PPM == 250_000 and s.SHARE_CAP_PPM == 50_000 and s.PULL_SHARE_PPM == 300_000 and s.DAILY_STOP_WEI == 15 * 10 ** 16
     assert (s.HARD_BLOCK, s.SELL_SEND_BLOCK, s.SELL_RESEND_BLOCK, s.SCHEDULE_MIN, s.REACT_BLOCKS, s.LAND_MAX, s.MAX_POSITIONS, s.MAX_PER_DAY) == (180, 176, 178, 190, 10, 1, 3, 20)
     assert all(isinstance(x, int) for x in (s.STAKE_ETH_WEI, s.PRIO_WEI, s.MARGIN_WEI, s.OUTSIDER_MIN_WEI, s.CREATOR_NONCE)) and s.HALT_FILE == os.path.join(TMP, "HALTED.base_v2")
@@ -842,6 +842,20 @@ def dry_fleet_sell_and_the_dump_rule():
 
 
 @test
+def outsider_in_the_burn_block_is_no_reaction():
+    """an outsider's buy seen pending in the Burn's own block (Oct 20: the dust buy in every pull block) does not end the tier; one 3
+    blocks before the Burn does"""
+    buy = lambda: signed(STRANGER, 9, ROUTER, 10 ** 13, "0x7ff36ab5" + word(0) + word(128) + aword(STRANGER.address) + word(ts(N) + 600) + word(2) + aword(WETH) + aword(TOKEN))
+    for before, stops in ((0, 0), (3, 1)):
+        st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 239 - before)
+        flash(N + 240 - before, [buy()], index=2); inject_burn(c, st, N + 240); feed(c, N + 240 - before, N + 241)
+        p = wait_ev("pull")[0]
+        assert p["since_outsider"] == before and p["since_creation"] == 240 and not events("halt"), p
+        t = [x for x in events("stop") if x["what"] == "tier"]
+        assert len(t) == stops and (not stops or f"{before} blocks after an outsider" in t[0]["reason"]), t
+
+
+@test
 def dry_fleet_sell_exit_off():
     """BASE_V2_FLEET_SELL_EXIT=0: the fleet's sell on our pair is no exit; take-profit or the hard block decides"""
     st = Stream("2.0"); c = fresh(st, BASE_V2_FLEET_SELL_EXIT=0); fired(c); feed(c, N + 1, N + 39)
@@ -1043,7 +1057,7 @@ def live_pulled_before_our_sell_halts_with_the_file():
     t = wait_ev("trade_done")[0]; gas = 125_000 * 35_000_000 + 2_090_000_000 + 40_000 * 35_000_000 + 2_000_000_000
     assert t["exit"] == "pulled" and t["eth_out_wei"] == 0 and t["pulled_at"] == N + 10 and t["sell_block"] == N + 11 and t["gas_wei"] == gas and t["tokens"] == tokens, t
     assert t["net_wei"] == -(2 * 10 ** 16 + gas) and t["ret"] == round(-(2 * 10 ** 16 + gas) / 2e16, 6) and t["loss_streak"] == 1 and t["live"] and len(events("sell_sent")) == 1
-    h = events("halt")
+    h = wait_ev("halt")
     assert len(h) == 1 and h[0]["reason"].startswith("pulled:") and "no outsider before it: -100%" in h[0]["reason"] and not h[0]["dry"] and h[0]["file"] == E.S.HALT_FILE, h
     assert open(E.S.HALT_FILE).read().strip() == h[0]["reason"] == E.state["halted"] and h[0]["tier"] == "1.3-2.3" and h[0]["pair"] == PAIR
     assert E.state["pnl_today_wei"] == t["net_wei"] and json.load(open(E.S.POSITIONS_FILE))["positions"] == {} and not E.positions
@@ -1177,7 +1191,7 @@ def restart_restores_the_day_and_the_halt_file():
     assert st["release"] == E.RELEASE and not st["dry"] and st["head"] == N - 3 and st["wallet"] == KEY.address.lower() and st["relay"] == RELAY and st["roster_n"] == 12, st
     assert st["halted"] == st["halt_file"] == "pulled: by hand" and st["trades_today"] == 2 and st["pnl_today_eth"] == -0.005 and st["loss_streak"] == 1 and st["tiers_ended"] == ["1.3-2.3"]
     assert st["positions"] == [] and st["settings"]["RPC_URL"] == "rpc.example.org" and st["settings"]["ARCHIVE_URL"] == "arch.example.org" and "KEY_FILE" not in st["settings"]
-    assert st["settings"]["SEND_URLS"] == ["seq.example.org", "send2.example.org"] and st["settings"]["PROBE"] == [PROBE] and st["chains"]["rpc.example.org"] == 8453
+    assert st["settings"]["SEND_URLS"] == ["seq.example.org", "send2.example.org"] and st["settings"]["PROBE"] == sorted([PROBE, "0x0e77610e9f13062c2eaa709ef1c59b8c22e549c9"]) and st["chains"]["rpc.example.org"] == 8453
     assert "k3y" not in open(LOG).read() and bytes(KEY.key).hex() not in open(LOG).read() and events("guard", self_test=True)[0]["verdict"] == "ok"
     E.state["logs_to"] = N - 2; fired(c)
     assert events("skip")[-1]["why"] == "halted" and events("skip")[-1]["reason"] == "pulled: by hand" and not c.sent

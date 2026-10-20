@@ -163,7 +163,7 @@ http/https, logged as its host), `BASE_V2_PENDING_URL` (https://mainnet.base.org
 The fingerprint: `BASE_V2_CREATE_SELECTOR` (f305d719; 8 hex), `BASE_V2_PULL_SELECTOR` (02751cec; 8 hex), `BASE_V2_CREATOR_NONCE` (2; 0..100),
 `BASE_V2_TOKEN_CODE_SIZES` (3553; comma list of bytes, 0 = any), `BASE_V2_MIN_SUPPLY_IN_POOL` (0.99; 0..1), `BASE_V2_TIER_BAND` (1.3,2.3; two
 ETH values lo,hi with 0 < lo <= hi <= 1000), `BASE_V2_TIER_EXCLUDE` (1.2; comma list of ETH values, a creation whose value rounds to one at
-0.001 ETH is never traded; may be empty), `BASE_V2_PROBE` (0xe71a69f434a719cd5afa411568b69716aab3b84a; comma list of 40 hex, may be empty),
+0.001 ETH is never traded; may be empty), `BASE_V2_PROBE` (0xe71a69f434a719cd5afa411568b69716aab3b84a, the creation block's probe, and 0x0e77610e9f13062c2eaa709ef1c59b8c22e549c9, the dust buy in the pull's own block on every pair of every tier; comma list of 40 hex, may be empty),
 `BASE_V2_OUTSIDER_MIN_ETH` (0; 0..1: a confirmed buy under it is not an outsider; 0 = any buy, dust included), `BASE_V2_WATCH_BLOCKS`
 (1400; 200..5000), `BASE_V2_LAND_MAX` (1; 0..10: the fire is refused once the confirmed head is at N + this), `BASE_V2_BACKRUN` (0; 0 or 1),
 `BASE_V2_EXIT_MIN` (0.98; 0.5..1: the exit test's ETH back over its quote).
@@ -221,8 +221,8 @@ wallet, the key file and its lock, the relay (its `owner()` the wallet, `router(
   before it** (we were the trigger: the tier reacts); `BASE_V2_LOSS_STREAK_HALT` live losses in a row; `BASE_V2_LATE_HALT` live buys mined
   past N + `BASE_V2_LAND_MAX`; `sold none` twice or a buy that filled with no tokens (the path is broken). The dry run halts in memory.
 - **The tier ended for the day** (`stop`, what: tier; cleared at 00:00 UTC, never by the engine before): a Burn earlier than
-  `BASE_V2_SCHEDULE_MIN` on any pair of the tier, a Burn within `BASE_V2_REACT_BLOCKS` after any buy on any pair of the tier (a reaction on
-  someone else's buy), or a sell taking >= `BASE_V2_PULL_SHARE` of the ETH reserve on any pair of the tier (the dump pattern).
+  `BASE_V2_SCHEDULE_MIN` on any pair of the tier, a Burn 1 to `BASE_V2_REACT_BLOCKS` blocks after an outsider's buy on any pair of the tier (a reaction on
+  someone else's buy; a buy in the Burn's own block never counts), or a sell taking >= `BASE_V2_PULL_SHARE` of the ETH reserve on any pair of the tier (the dump pattern).
 - **The day stopped** (`stop`, what: day): the live net P&L at -`BASE_V2_DAILY_STOP_ETH`, or `BASE_V2_MAX_PER_DAY` buys; both restored from
   the log's own lines of the day at a restart, as the Base engine does.
 - **Never**: the 1.2, 13.79, 15.0, 17.79 tiers at any stake; a tier re-qualified by the engine itself (the owner does it from the chain

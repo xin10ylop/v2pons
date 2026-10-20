@@ -55,7 +55,7 @@ THE HALTS (HALTED.base_v2 beside the log, held across restarts until the owner r
 run halts in memory): a Burn on a pair of ours before our sell, or within BASE_V2_REACT_BLOCKS after our buy even when our sell landed first,
 when no outsider bought before it (we were the trigger); BASE_V2_LOSS_STREAK_HALT live losses in a row; BASE_V2_LATE_HALT live buys mined past
 N + LAND_MAX; sold none twice, or a buy that filled with no tokens. THE TIER ENDED FOR THE DAY (`stop`, what: tier; cleared at 00:00 UTC): a
-Burn earlier than BASE_V2_SCHEDULE_MIN on any pair of the tier, a Burn within REACT_BLOCKS after an outsider's buy on any pair of the tier, or
+Burn earlier than BASE_V2_SCHEDULE_MIN on any pair of the tier, a Burn 1 to REACT_BLOCKS blocks after an outsider's buy on any pair of the tier, or
 a sell taking >= BASE_V2_PULL_SHARE of the ETH reserve on any pair of the tier. THE DAY STOPPED (`stop`, what: day): the live net P&L at
 -BASE_V2_DAILY_STOP_ETH, or BASE_V2_MAX_PER_DAY buys; both restored from the log's own lines at a restart.
 
@@ -276,7 +276,7 @@ def settings():
     s.MIN_SUPPLY_PPM = _exact("BASE_V2_MIN_SUPPLY_IN_POOL", "0.99", 0, 1, 10 ** 6)
     s.BAND_LO_WEI, s.BAND_HI_WEI, s.TIER_LABEL = _band("BASE_V2_TIER_BAND", "1.3,2.3")
     s.EXCLUDE_MILLI = {(w + 5 * 10 ** 14) // 10 ** 15 for w in _ethlist("BASE_V2_TIER_EXCLUDE", "1.2", 0, 1000)}   # a value rounds to one at 0.001 ETH: never traded
-    s.PROBE = set(_hexlist("BASE_V2_PROBE", "0xe71a69f434a719cd5afa411568b69716aab3b84a", 40))
+    s.PROBE = set(_hexlist("BASE_V2_PROBE", "0xe71a69f434a719cd5afa411568b69716aab3b84a,0x0e77610e9f13062c2eaa709ef1c59b8c22e549c9", 40))
     s.OUTSIDER_MIN_WEI = _exact("BASE_V2_OUTSIDER_MIN_ETH", "0", 0, 1, 10 ** 18)
     s.WATCH_BLOCKS = _setting("BASE_V2_WATCH_BLOCKS", "1400", 200, 5000, True)
     s.LAND_MAX = _setting("BASE_V2_LAND_MAX", "1", 0, 10, True)
@@ -1299,7 +1299,7 @@ def on_pull(P, B, via, pending=False, tx=None, eth_out=None, at=None):
         return
     if since_c < S.SCHEDULE_MIN:
         tier_end(P["tier"], f"a Burn at +{since_c} on {P['pair']}, earlier than BASE_V2_SCHEDULE_MIN {S.SCHEDULE_MIN}")
-    if so is not None and 0 <= so <= S.REACT_BLOCKS:
+    if so is not None and 1 <= so <= S.REACT_BLOCKS:                           # (a buy in the Burn's own block did not draw it: the reactions come 3-6 blocks later)
         tier_end(P["tier"], f"a Burn at +{since_c} on {P['pair']}, {so} blocks after an outsider's buy (BASE_V2_REACT_BLOCKS {S.REACT_BLOCKS}): a reaction")
     if P["trade"] is not None:
         react_check(P, B, at)

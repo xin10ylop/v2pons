@@ -95,7 +95,7 @@ BASE_V2_TIER_BAND=1.3,2.3
 # ETH values never traded even inside the band (the 1.2 tier reacts to any buy), comma-separated at 0.001 ETH; may be empty
 BASE_V2_TIER_EXCLUDE=1.2
 # the line's probe wallet(s), comma-separated: its creation-block dust buy triggers nothing and is not an outsider
-BASE_V2_PROBE=0xe71a69f434a719cd5afa411568b69716aab3b84a
+BASE_V2_PROBE=0xe71a69f434a719cd5afa411568b69716aab3b84a,0x0e77610e9f13062c2eaa709ef1c59b8c22e549c9
 # a confirmed buy under this many ETH is not an outsider's; 0 = any buy, dust included
 BASE_V2_OUTSIDER_MIN_ETH=0
 # how many blocks a pair of the line is followed after its creation (its outsider_buy and pull lines), at most, when no Burn ends it
