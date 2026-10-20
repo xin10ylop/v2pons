@@ -131,6 +131,36 @@ the operator's, and the operator's detector ignores it. Four more dust-only wall
 - Old-generation fleet wallets (234-253 pools each, nonces 3,800-5,900) were retired on Oct 15 and sit empty; the current roster
   wallets hold 0.008-0.118 ETH between cycles; the launcher's 0.1% fee recipient could not be resolved without traces.
 
+## 4d. The volume bot (the 2.433 line proper) on Robinhood, and the live engine
+
+A correction to section 1: launcher `0x3194e326` is operator A of the engine's **follow** strategy. The **2.433 line** is the volume bot,
+which launched exactly 2.4333285 ETH through the PositionManager at fee 0.25% and is the family the live engine's **front** strategy
+earned on (Oct 10-12). Its state now:
+
+- **Its 2.433 family has not launched since Oct 15 21:30** (zero PositionManager launches at fee 2500/50 or 5000/100 with its price).
+- **Its 3.0 and 5.0 ETH families are live at about 650 pools a day** (1,006 + 810 pools of exactly 3.000 ETH, 969 of exactly 5.000 ETH,
+  fee 1%, tick 200, full range; the fresh-wallet sub-line at deployer nonce 3, the recycled one at nonce 290-304; sweeps of 7-10 ETH to
+  the next launch wallet 48 blocks after every pull; fleets of 51, 60 and 105 wallets buying 0.10-0.15 ETH through the bot's own
+  contract `0x1cbaf24d53`, the very router the engine's `FRONT_BOT_ROUTERS` names). 100% of their pools are pulled, on a 9.5-minute
+  timer when nothing touches them and **5-21 blocks (median 13) after any outside swap down to 0.00001 ETH**. The front rule replayed
+  exactly on 300 of these pools (fire at launch, land +1, sell into the bot's first buy, take-profit 1%, hold 18, the bot's minOut
+  revert model): **-2% to -5% at every stake**, because the bot's real buys come 24-46 blocks after the launch, after the 18-block
+  deadline, and its pull reaction (5-21 blocks after our buy) comes before them. These families were marginal on Oct 10 (v3.0 +3%,
+  v5.0 "pulls on outsiders") and are worse now.
+- **The volume bot also runs the V2 line** on Robinhood's factory `0x8bceaa40`: 236 fresh-wallet pairs a day in tiers of exactly
+  1.00, 30.09, 40.59 and 50.09 ETH, created by `addLiquidityETH` from wallets at nonce 2; 17 core wallets buy until the pool holds
+  30% more ETH than the mint (price 1.7x), then the pull returns mint plus buys (net -0.003 ETH a pool); 99.96% of the first hour's
+  9-14 ETH of buys is its own money. On the 40.59 and 50.09 tiers every foreign buy of 0.00015 ETH or more (19 of 20) was pulled
+  134-603 blocks later; the 30.09 tier tolerates buys up to 0.004 ETH (a seat worth 0.0016 ETH a pool). **The 1.00 ETH tier is the one
+  open question**: a 9.6-minute timer with a third of pools aborted early, price 1.5x at 1 minute and 3.6x at 5 minutes, paper +94%
+  mean at a 3-minute hold (70% win, 30% pulled, stake-insensitive up to 0.5 ETH because the round trip cancels its own impact), and no
+  foreign buy above dust has ever landed on it, so its reaction is unknown, not absent.
+
+**The live Robinhood engine** (`flip-engine`, branch `claude/laughing-fermat-48ylv7` at de88eb9, release 0.9, front on the 2.433
+family only, fee gate under 1%): it is idle by construction, since no launch matches `FRONT_VALUE_WEI` and the live families are at 1%.
+It needs no change to stay safe, and no setting makes it earn on today's lines: admitting the 1% families loses (above), and the V2 line
+is another venue the engine cannot see. The one thing to do is confirm its state from the box: `sudo python3 ~/v2pons/deploy/results.py | head -24`.
+
 ## 5. The errors behind us and what the engine lacks for a relaunch
 
 The repository (5 commits) is the Robinhood flip only. The Base engine, the second launch call, the honeypot launcher and the hook
