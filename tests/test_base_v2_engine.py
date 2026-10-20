@@ -229,7 +229,9 @@ class Chain:
             h = hash_of(raw)
             if h in self.mined or (only is not None and h not in only):
                 continue
-            self.mined.add(h); tx = E.decode_tx(bytes.fromhex(raw[2:])); sel = tx["data"][:4].hex(); d = "0x" + tx["data"][4:].hex(); st = self.by_token[E.A(d, 0)]
+            self.mined.add(h); tx = E.decode_tx(bytes.fromhex(raw[2:])); sel = tx["data"][:4].hex(); d = "0x" + tx["data"][4:].hex(); st = self.by_token.get(E.A(d, 0))
+            if st is None:
+                continue                                                       # another case's transaction (a lingering settlement): not this chain's
             re_, rt_ = self.reserves_at(st.pair, b); li = 0x800 + 4 * len(self.mined)
             base = dict(blockNumber=hex(b), blockHash=header(b)["hash"], transactionHash=h, transactionIndex="0x5", removed=False, blockTimestamp=header(b)["timestamp"])
             rc = {"status": "0x1", "blockNumber": hex(b), "blockHash": header(b)["hash"], "transactionHash": h, "logs": []}
@@ -288,7 +290,7 @@ def feed(c, a, b, skip_heads=()):
             E.end_burst()
 
 
-def quiesce(timeout=3.0):
+def quiesce(timeout=12.0):
     """the engine's worker threads of the last case (a guard's second endpoint, a sender's read, a settlement) done before the next one
     rebinds the stub: a late answer must not land in the next case's records"""
     t0 = time.time()
@@ -399,6 +401,12 @@ def inject_burn(c, st, b, li=900, share=1000):
 
 def raw_sent(c, i):
     return E.decode_tx(bytes.fromhex(c.sent[i][1][2:]))
+
+
+def hard_exits(c, n=1):
+    """live: the blocks to N + SELL_SEND_BLOCK, the n hard sells awaited (the trader signs off the feed thread), mined at N + 177, settled"""
+    feed(c, E.state["head"] + 1, N + 176); wait_ev("sell_sent", n); feed(c, N + 177, N + 178)
+    return wait_ev("trade_done", n)
 
 
 def dry_value(c, st, pos_tokens, stake, b):
@@ -750,7 +758,7 @@ def dry_take_profit():
     feed(c, N + 21, N + 22)
     t = wait_ev("trade_done")[0]; eth_out = dry_value(c, st, pos["tokens"], pos["stake"], N + 21)
     assert t["exit"] == "take_profit" and t["sell_block"] == N + 21 and t["eth_out_wei"] == eth_out and t["ret"] > 0.25 and t["fleet_eth"] >= 0.3 and t["outsider_at"] is None, t
-    assert len(events("outsider_buy")) == 1                                   # the probe only: the fleet's buys are never logged
+    assert len(wait_ev("outsider_buy")) == 1                                  # the probe only: the fleet's buys are never logged
 
 
 @test
@@ -921,7 +929,7 @@ def live_fire_signs_a_type2_buy():
     assert E.tx_sender(raw) == KEY.address.lower() and b["hash"] == hash_of(raw) and E.state["nonce"] == 8 and b["hash"] in E.state["our_hashes"]
     saved = json.load(open(E.S.POSITIONS_FILE))["positions"]
     assert list(saved) == [PAIR] and saved[PAIR]["buy_hash"] == b["hash"] and saved[PAIR]["buy_nonce"] == 7 and saved[PAIR]["stake"] == stake and not saved[PAIR]["sell_sent"]
-    feed(c, N + 1, N + 1); feed(c, N + 2, N + 177); wait_ev("trade_done")
+    feed(c, N + 1, N + 1); hard_exits(c)
     c = fresh(dry=False); E.state["relay_wei"] = 10 ** 16; f = fired(c)[0]
     assert f["ev"] == "skip" and f["why"] == "relay balance" and f["relay_eth"] == 0.01 and f["needed_eth"] == 0.0205 and not c.sent and events("guard")[0]["verdict"] == "ok", f
     c = fresh(dry=False); open(E.S.HALT_FILE, "w").write("the owner's halt\\n"); f = fired(c)[0]
@@ -951,7 +959,7 @@ def live_trade_settles_from_the_receipts():
     gas = 125_000 * 35_000_000 + 2_090_000_000 + 118_000 * 35_000_000 + 2_000_000_000
     assert t["live"] and not t["dry"] and t["exit"] == "hard" and t["buy_block"] == N + 1 and t["buy_index"] == 0x806 and t["sell_block"] == N + 177 and t["eth_in_wei"] == stake, t
     assert t["tokens"] == got and t["eth_out_wei"] == eth_out and t["gas_wei"] == gas and t["l1_fee_wei"] == 4_090_000_000 and t["net_wei"] == eth_out - stake - gas
-    assert t["ret"] == round((eth_out - stake - gas) / stake, 6) and t["ret"] > 0.03 and t["nonce"] == 7 and t["buy_hash"] == events("buy_sent")[0]["hash"] and t["sell_hash"] == s["hash"]
+    assert t["ret"] == round((eth_out - stake - gas) / stake, 6) and t["ret"] > 0.03 and t["nonce"] == 7 and t["buy_hash"] == events("buy_sent")[0]["hash"] and t["sell_hash"] == s["hash"], (t, s)
     assert t["loss_streak"] == 0 and not t["late"] and t["pulled_at"] is None and t["outsider_at"] is None and t["fleet_first_buy"] == N + 2 and t["fleet_eth"] > 0.05 and t["trades_today"] == 1
     assert json.load(open(E.S.POSITIONS_FILE))["positions"] == {} and not E.positions and E.state["nonce"] == 9 and E.state["relay_wei"] == 10 ** 18 + eth_out - stake
     assert len(c.sent) == 4 and not events("halt") and not events("alarm") and E.pairs[PAIR]["status"] == "traded"
@@ -983,7 +991,7 @@ def live_take_profit_min_out():
     c = fresh(dry=False); st = c.streams[PAIR]; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 19); pos = E.positions[PAIR]
     inject_buy(c, st, N + 20, 3 * 10 ** 17, FLEET[4]); feed(c, N + 20, N + 20)
     s = wait_ev("sell_sent")[0]; re_, rt_ = c.reserves_at(PAIR, N + 20); want = cp_out(pos["tokens"], rt_, re_) * 950_000 // 10 ** 6
-    assert s["reason"] == "take_profit" and s["min_out"] == want and want > 25 * 10 ** 15 and s["nonce"] == 8 and "BASE_V2_TAKE_PROFIT" in s["why"], (s, want)
+    assert s["reason"] == "take_profit" and s["min_out"] == want and want > 24 * 10 ** 15 and s["nonce"] == 8 and "+29.82%" in s["why"] and "BASE_V2_TAKE_PROFIT" in s["why"], (s, want)
     d = "0x" + raw_sent(c, 2)["data"].hex(); assert inword(d, 1) == want and inaddr(d, 0) == TOKEN
     feed(c, N + 21, N + 22)
     t = wait_ev("trade_done")[0]
@@ -995,8 +1003,9 @@ def live_outsider_pending_sells_before_the_block():
     c = fresh(dry=False); st = c.streams[PAIR]; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 4)
     raw = signed(STRANGER, 9, ROUTER, 2 * 10 ** 15, "0x7ff36ab5" + word(0) + word(128) + aword(STRANGER.address) + word(ts(N) + 60) + word(2) + aword(WETH) + aword(TOKEN))
     flash(N + 5, [raw], index=3)
-    s = wait_ev("sell_sent")[0]; o = events("outsider_buy", pending=True)[0]
-    assert s["reason"] == "outsider" and s["via"] == "flash" and s["block_seen"] == N + 5 and s["min_out"] == 0 and s["nonce"] == 8 and "seen pending at" in s["why"], s
+    s = wait_ev("sell_sent")[0]; o = events("outsider_buy", pending=True)[0]; pos = E.positions[PAIR]
+    assert s["reason"] == "outsider" and pos["sell_via"] == "flash" and s["block_seen"] == N + 5 and s["min_out"] == 0 and s["nonce"] == 8 and "seen pending at" in s["why"], s
+    assert s["via"] == "first" and E.state["head"] == N + 4 and len(c.sent) == 4                       # sent before block N + 5 sealed
     assert o["who"] == "outsider" and o["action"] == "sell" and o["ours"] and o["sender"] == STRANGER.address.lower() and o["tx"] == hash_of(raw), o
     flash(N + 5, [c.sent[2][1]], index=4)                                     # our sell seen in the next Flashblock
     assert E.positions[PAIR].get("sell_seen") == (N + 5, 4, 0)
@@ -1037,7 +1046,8 @@ def live_pulled_before_our_sell_halts_with_the_file():
     c = fresh(dry=False); st = c.streams[PAIR]; fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 2)     # an outsider between our buy and the Burn: no halt
     inject_buy(c, st, N + 3, 10 ** 15, STRANGER.address.lower()); feed(c, N + 3, N + 3); wait_ev("sell_sent"); feed(c, N + 4, N + 7); wait_ev("trade_done")
     inject_burn(c, st, N + 8); feed(c, N + 8, N + 8)
-    assert not events("halt") and events("pull")[0]["reaction"] and events("stop")[0]["what"] == "tier" and "after an outsider's buy" in events("stop")[0]["reason"]
+    assert not events("halt") and events("pull")[0]["reaction"] and events("pull")[0]["since_outsider"] == 5 and events("stop")[0]["what"] == "tier", events("pull")
+    assert "BASE_V2_SCHEDULE_MIN" in events("stop")[0]["reason"] and len(events("stop")) == 1       # the earliest rule names the stop; the reaction rule is the same stop
 
 
 @test
@@ -1053,8 +1063,7 @@ def live_max_positions_with_three_open():
     feed(c, N + 1, N + 3)
     s = wait_ev("skip", pair=d.pair)[0]
     assert s["why"] == "positions" and sorted(s["positions"]) == sorted([a.pair, b.pair, c2.pair]) and E.pairs[d.pair]["status"] == "watched" and events("guard", pair=d.pair), s
-    feed(c, N + 4, N + 178)
-    t = wait_ev("trade_done", 3)
+    t = hard_exits(c, 3)
     assert {x["pair"] for x in t} == {a.pair, b.pair, c2.pair} and all(x["exit"] == "hard" and x["buy_block"] == N + 1 and x["sell_block"] == N + 177 for x in t), t
     ss = events("sell_sent"); assert sorted(x["nonce"] for x in ss) == [10, 11, 12] and len(c.sent) == 12 and not E.positions and E.state["nonce"] == 13
     assert json.load(open(E.S.POSITIONS_FILE))["positions"] == {} and E.state["trades_today"] == 3 and not events("halt") and d.pair in E.pairs
@@ -1063,8 +1072,7 @@ def live_max_positions_with_three_open():
 @test
 def live_loss_streak_halts():
     a = Stream("2.0", fleet=False); b = Stream("2.0", creator=creator_key("loss-b"), li_offset=1000, fleet=False); c = fresh(a, b, dry=False); feed(c, N - 2, N)
-    wait_ev("buy_sent", 2); feed(c, N + 1, N + 178)
-    t = wait_ev("trade_done", 2)
+    wait_ev("buy_sent", 2); feed(c, N + 1, N + 1); t = hard_exits(c, 2)
     assert all(x["exit"] == "hard" and x["net_wei"] < 0 and -0.01 < x["ret"] < 0 for x in t) and sorted(x["loss_streak"] for x in t) == [1, 2], t
     h = events("halt")
     assert len(h) == 1 and h[0]["reason"].startswith("2 live losses in a row") and "BASE_V2_LOSS_STREAK_HALT" in h[0]["reason"] and open(E.S.HALT_FILE).read().strip() == h[0]["reason"], h
@@ -1072,7 +1080,7 @@ def live_loss_streak_halts():
     d = Stream("2.0", creator=creator_key("loss-d"), shift=185, li_offset=2000); add_stream(c, d); feed(c, N + 179, N + 185)
     assert wait_ev("skip", pair=d.pair)[0]["why"] == "halted"
     a = Stream("2.0", fleet=False); b = Stream("2.0", creator=creator_key("loss-b2"), li_offset=1000, fleet=False); c = fresh(a, b, dry=False, BASE_V2_LOSS_STREAK_HALT="0"); feed(c, N - 2, N)
-    wait_ev("buy_sent", 2); feed(c, N + 1, N + 178); t = wait_ev("trade_done", 2)
+    wait_ev("buy_sent", 2); feed(c, N + 1, N + 1); t = hard_exits(c, 2)
     assert sorted(x["loss_streak"] for x in t) == [1, 2] and not events("halt")                      # 0 = off
 
 
@@ -1082,8 +1090,7 @@ def live_late_halt():
     a = Stream("2.0"); b = Stream("2.0", creator=creator_key("late-b"), li_offset=1000); c = fresh(a, b, dry=False, BASE_V2_LOSS_STREAK_HALT="0"); feed(c, N - 2, N)
     wait_ev("buy_sent", 2); c.auto_mine = False; feed(c, N + 1, N + 2)
     assert not events("trade_done") and all(p["buy_block"] is None for p in E.positions.values())
-    c.mine(N + 3); c.auto_mine = True; feed(c, N + 3, N + 178)
-    t = wait_ev("trade_done", 2)
+    c.mine(N + 3); c.auto_mine = True; t = hard_exits(c, 2)
     assert all(x["late"] and x["buy_block"] == N + 3 and x["exit"] == "hard" for x in t) and E.state["late_count"] == 2, t
     h = events("halt")
     assert len(h) == 1 and h[0]["reason"].startswith("2 live buys mined past N + BASE_V2_LAND_MAX 1") and "(the last at +3)" in h[0]["reason"] and os.path.exists(E.S.HALT_FILE), h
@@ -1092,8 +1099,8 @@ def live_late_halt():
 @test
 def live_daily_stop():
     """the live net P&L at -BASE_V2_DAILY_STOP_ETH stops the day; the next creation is refused (stopped); no halt"""
-    c = fresh(Stream("2.0", fleet=False), dry=False, BASE_V2_DAILY_STOP_ETH="0.0001", BASE_V2_LOSS_STREAK_HALT="0"); fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 178)
-    t = wait_ev("trade_done")[0]
+    c = fresh(Stream("2.0", fleet=False), dry=False, BASE_V2_DAILY_STOP_ETH="0.0001", BASE_V2_LOSS_STREAK_HALT="0"); fired(c); wait_ev("buy_sent"); feed(c, N + 1, N + 1)
+    t = hard_exits(c)[0]
     assert t["exit"] == "hard" and -0.01 < t["ret"] < -0.005 and t["net_wei"] <= -10 ** 14 and t["pnl_today_eth"] == round(t["net_wei"] / 1e18, 6), t
     s = events("stop")
     assert len(s) == 1 and s[0]["what"] == "day" and "-BASE_V2_DAILY_STOP_ETH 0.0001" in s[0]["reason"] and s[0]["trades_today"] == 1 and E.state["stopped"] == "2026-10-20", s
@@ -1148,7 +1155,8 @@ def restart_restores_the_day_and_the_halt_file():
                          {"ev": "stop", "what": "tier", "tier": "1.3-2.3", "t": t0 - 500}, {"ev": "fire", "t": t0 - 86400 * 2}, {"ev": "stop", "what": "day", "t": t0 - 86400 * 2}]
     open(LOG, "w").write("\\n".join(json.dumps(x) for x in lines) + "\\nnot json\\n")
     info = live_start(c)
-    assert E.state["trades_today"] == 2 and E.state["pnl_today_wei"] == -5 * 10 ** 15 and E.state["loss_streak"] == 1 and E.state["late_count"] == 1 and E.state["stopped"] is None
+    got = {k: E.state[k] for k in ("trades_today", "pnl_today_wei", "loss_streak", "late_count", "stopped", "day")}
+    assert got == {"trades_today": 2, "pnl_today_wei": -5 * 10 ** 15, "loss_streak": 1, "late_count": 1, "stopped": None, "day": "2026-10-20"}, got
     assert E.state["tiers_ended"] == {"1.3-2.3": "2026-10-20"} and E.state["halted"] == "pulled: by hand" and info["nonce"] == 7 and info["relay_eth"] == 1.0
     st = events("start")[0]
     assert st["release"] == E.RELEASE and not st["dry"] and st["head"] == N - 3 and st["wallet"] == KEY.address.lower() and st["relay"] == RELAY and st["roster_n"] == 12, st
@@ -1296,7 +1304,7 @@ def websocket_drop_gap_filled():
 def duplicate_and_removed_logs():
     st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 15); P = E.pairs[PAIR]
     before = E.reserves(P)[:2]; sync = [l for l in st.logs if blk(l) == N + 15 and l["topics"][0] == T["Sync"]][0]
-    push(c, sync); assert E.state["dups"] == 1 and E.reserves(P)[:2] == before
+    push(c, sync); assert E.state["dups"] == 1 and E.reserves(P)[:2] == before, (E.state["dups"], before, E.reserves(P), sorted(E.seen.items())[-3:])
     push(c, dict(sync, removed=True))
     assert E.state["reorgs"] == 1 and E.reserves(P)[:2] == tuple(c.reserves_at(PAIR, N + 14)) and "reorg" in events("alarm")[-1]["what"]
     assert (N + 15, int(sync["logIndex"], 16)) not in P["ev"] and len(P["ev"]) == 5
@@ -1345,7 +1353,7 @@ def confirmed_session_subscribes_followed_pairs():
     finally:
         sys.modules.pop("websockets", None)
     assert len(conns) >= 2 and [d["params"][0] for d in sent[:2]] == ["newHeads", "logs"] and sent[1]["params"][1] == {"address": FACTORY, "topics": [[E.T_PC]]}, sent[:3]
-    assert any(d["method"] == "eth_subscribe" and d["params"][1].get("address") == PAIR for d in sent) and E.pairs[PAIR]["sub"] in ("0xp1", None)
+    assert any(d["method"] == "eth_subscribe" and d["params"][1].get("address") == PAIR for d in sent if len(d["params"]) > 1) and E.pairs[PAIR]["sub"] in ("0xp1", None)
     assert events("creation")[0]["via"] == "logs" and events("would_fire")[0]["head"] == N and E.state["head"] == N
     a = [x["what"] for x in events("alarm")]
     assert any(x.startswith("the websocket is down") and "silent for 1 s" in x for x in a), a

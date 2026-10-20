@@ -1761,10 +1761,12 @@ def send_resend(pos):
 
 # ---------------------------------------------------------------- settlement (live)
 def wait_receipt(hashes, timeout_s, stop=lambda: False):
-    """the first receipt among `hashes` (a replacement's or the original's), None within timeout_s"""
-    hashes = [hashes] if isinstance(hashes, str) else list(hashes); t0 = mono()
+    """the first receipt among `hashes` (a replacement's or the original's), None within timeout_s; a callable is asked again every pass,
+    so a replacement sent while this waits (the hard sell's re-send) is polled too"""
+    t0 = mono()
     while mono() - t0 < timeout_s and not stop():
-        for h in hashes:
+        hs = hashes() if callable(hashes) else [hashes] if isinstance(hashes, str) else list(hashes)
+        for h in hs:
             try:
                 r = read("eth_getTransactionReceipt", [h])
                 if r:
@@ -1876,7 +1878,7 @@ def _settle_live(pos):
     for attempt in range(SELL_RETRIES + 1):
         if not wait_sell(pos):
             break
-        rs = wait_receipt(pos.get("sell_hashes") or [], S.SELL_DEADLINE_S + RECEIPT_GRACE_S) if pos.get("sell_hashes") and not pos.get("sell_refused") else None
+        rs = wait_receipt(lambda: list(pos.get("sell_hashes") or []), S.SELL_DEADLINE_S + RECEIPT_GRACE_S) if pos.get("sell_hashes") and not pos.get("sell_refused") else None
         if rs:
             with lock:
                 pos["sell_receipt"] = True
