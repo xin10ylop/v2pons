@@ -1,192 +1,141 @@
-# The 2.433 operator, Oct 15 21:30 to Oct 20 11:35 UTC: where it is, what it does, what the engine needs
+# The chase, Oct 15 21:30 to Oct 20 13:30 UTC: where every operator is, what each line pays, what we do now
 
-Scanned from public RPCs with `research/chase/scan.py` (every Uniswap v4 pool paired with the native coin, grouped by the launch
-transaction's target contract, the hook and the tick spacing), `deep.py` (every swap and liquidity event in the first five minutes
-of a launcher's pools, with the wallet behind each swap) and `price_deep.py` (the paper return of the two trade shapes). The box's
-log was not reachable from here, so this is the chain's report, not the engine's. The operator's fingerprint, from report 24.54:
-a fresh wallet per launch (nonce 0), a pool with ETH as currency0, tick spacing 200, a sub-1% fee, 1-5 ETH of liquidity, a
-scripted buying fleet starting a few seconds after the launch, the liquidity pulled minutes later.
+Read from public RPCs with `research/chase/report.sh` (every Uniswap v4 pool paired with ETH, WETH or WBNB on Robinhood, Base, BNB and
+Ethereum, grouped by launch contract, hook and tick spacing; every V2 pair on the factories the pump-and-pull lines use), deep pulls of
+every swap and liquidity event with the wallet behind each, and exact paper replays with the engines' own rules. Independent agents
+re-derived every money figure and tried to refute every seat. The box's logs were not reachable; the owner's `results.py` screen of
+13:07 UTC Oct 20 is folded in.
 
-## 1. Where the operator is
+## 1. The answer in one table
 
-| chain | native-paired v4 pools in the window | the operator | verdict |
-|---|---|---|---|
-| **Robinhood Chain** | 10,185 | **launcher `0x3194e32622c5d860a0572c74edda99dcfd8fc827` (the original one, same launch selector `0x2fcb9108`): 527 pools from Oct 16 04:51 UTC, 165 in the last 24 h (about 7/h, bursty: 22/h at 15:00 UTC Oct 19, nothing 19:00-23:00 Oct 19 and 01:00-06:00 Oct 20), latest at 11:33 UTC Oct 20.** No hook, tick 200, every deployer a nonce-0 wallet, 111 recurring buying wallets. | **back since Oct 16, live now** |
-| Base | 5,127 | see section 4 | |
-| BNB Chain | 1,260 | no group with fresh-wallet deployers and pulls within minutes; the big groups are direct PositionManager launches by funded wallets (739 pools at a fixed 10.53 BNB, 1 of 25 pulled) | not here since Oct 15 |
-| Ethereum | 591 | no group at scale; the only pull-in-4-minutes group (5 pools, 1.5-2.5 ETH, one wallet, hook `0xba01b983…`) has zero swaps: an LP test, not the operator | not here |
+| line | chain, venue | state now | our engine | seat |
+|---|---|---|---|---|
+| **the 2.433 line** (the volume bot's 2.4333285 ETH family: flip-engine's `v2.433`, +$1,515 over 1,267 trades) | Robinhood v4 | **dead since Oct 12 02:06 UTC** (last launch; tapered from 132 to 20 per 2.8 h on its last day) | flip-engine, release 0.9, idle, service stopped, relay empty | none: the family does not launch |
+| the volume bot's 3.0 and 5.0 ETH families | Robinhood v4 | live, about 650 pools a day, through the same contract the engine watches (`0x1cbaf24d53`) | refused by the engine's sub-1% fee gate (they are 1%) | none: the pull follows any outside swap in 5-21 blocks, before its own fleet buys; the front rule replays at -2% to -5% |
+| the volume bot's V2 line (1, 30, 40, 50 ETH pairs, 236 a day) | Robinhood V2 | live | none | the big tiers pull 13-60 s after any foreign buy of 0.00015 ETH; **the 1 ETH tier is the one untested seat** (+94% paper at a 3-minute hold, 70% win) |
+| operator A (launcher `0x3194e326`, flip-engine's `follow`) | Robinhood v4 | back since Oct 16 04:51, about 175 a day | idle (the flip prices -4%) | none: a per-pool counter of outside buying, exact at 0.0002 ETH, pull 5 blocks later; the dust seat is -$0.05 a pool |
+| the tick-spacing-1 direct line, the dust traps, the fee traps, the launchpads | Robinhood v4 | live or dead, see section 4 | none | none |
+| the 2.433 operator's v4 line (base-0.2's +$588) | Base v4 | **gone since the honeypot of Oct 15**; no pool of its shape since | flip-base, idle by design, relay 0.045 ETH | none |
+| **the Base V2 line** (a different crew, same playbook; 749 fresh-wallet pairs in 4.6 days) | Base V2 | live, 24 h a day, about 5-7 pairs an hour | none yet: **being built** (section 6) | **the 1.4-2.2 ETH tier**: +29% mean, 96% win on paper, 4% pulled; the 1.2 and 13.8-17.8 ETH tiers react and are off-limits |
+| the Base 1.2 ETH tick-1 line, the token mills | Base v4 | live | none | none: a sniper trap and empty pools |
+| BNB Chain, Ethereum | v4 and V2 | nothing of any operator in the window | flip-bnb disabled | none |
 
-Robinhood, Base, BNB and Ethereum were scanned in full. Arbitrum, Unichain and Optimism were checked only for the Robinhood
-fleet's wallets (none present); the operator uses fresh wallets per chain, so that check proves nothing, and those chains are not scanned.
+Two operators were found on Robinhood, one crew on Base, and none of the three has a seat our engines can take as they are. The one
+thing worth money that the data supports is the Base V2 tolerant tier, under a staged live test; the one cheap experiment is the
+Robinhood V2 1 ETH tier.
 
-## 2. The Robinhood line now (527 pools, Oct 16-20)
+## 2. Operator A on Robinhood (launcher `0x3194e32622c5d860a0572c74edda99dcfd8fc827`)
 
-- **Fees**: 0.05% to 6%, mode 0.45%; 136 of 527 at exactly 1% (10000 ppm), one at 3%. The engine's `FEE_MAX_PPM=9999` skips the 1% pools.
-- **Liquidity**: median 1.87 ETH, p10 1.30, p90 2.25; the last 20 pools 2.25 ETH median (2.13-2.39). The "2.433 line" is 2.1-2.4 again.
-- **The fleet**: the first real-size buy lands 26 blocks (2.6 s) after the launch (p10/p90 23/56). Median 54 buys and 2.23 ETH bought per pool
-  (as much as the liquidity), 20 buying wallets per pool, 111 recurring wallets in the five days, 25,887 of 26,450 swaps through the
-  router `0x8876789976decbfcbbbe364623c63652db8c0904` (a public router; not a fingerprint).
-- **The pull**: inside 5 minutes on 419 of 527 pools, median 137 s after the launch (p10 10.6 s, p90 248 s), never before the fleet's first buy.
-- **Nobody else is trading it**: 19 of 527 pools saw a buyer outside the fleet (wallet on one pool only, nonce above 5 or not via the fleet's router).
+- **Back since Oct 16 04:51 UTC**, 527 pools by Oct 20 11:14, 165 in the last 24 h (bursty, up to 22 an hour), latest at 11:33 UTC; no hook,
+  tick 200, fees 0.05-6% (136 at exactly 1%), 1.3-2.4 ETH per pool (the last 20 at 2.25), a fresh nonce-0 deployer per pool.
+- **The fleet**: 98 recurring wallets with 0.03-0.09 ETH buys through router `0x8876…`, about 40 of them new this week; buys from 2 s after
+  the launch (first real buy at 26 blocks), sells from 5-8 s, the price plateaus at 3x from 50 s; per pool the fleet buys 2.85 ETH and
+  sells 1.45 back; the deployer's pull recovers the rest. Bimodal pulls: 40% of untouched pools inside 30 s, the rest at 210-250 s.
+- **The detector**: a wallet whitelist plus **a per-pool counter of net outside buying, exact at 0.0002 ETH** (highest net position never
+  pulled 0.000195, smallest pulled 0.000200), pull 5 blocks after the crossing; pre-fleet buys count; 33 pools were crossed by several dust
+  wallets and 25 pulled 5-7 blocks after the crossing buy; 100% of outside buys of 0.002 ETH or more pulled (33 of 33); probe dust of
+  0.000002 ETH never. No outsider ever sold before the pull on the main line.
+- **A second shape**: 2-3%-fee pools with no fleet where 12-30 of its own fresh wallets buy one menu size each as bait; snipers who followed
+  lost everything.
+- **Money**: two floats of 7.29 and 6.79 ETH, each recycled every pool through a fresh collector and a fresh distributor (every hop a
+  one-shot wallet forwarding everything minus 0.0000132 ETH), the roster of 42 or 31 fleet wallets refunded 0.11-0.16 ETH each per cycle,
+  nothing parked, no bridge or exchange ever touched; profit is exactly what outsiders leave: 1.06 ETH ($2,700) in 4.27 days, net about
+  $500-770 a day after gas ($0.77 a pool); the launcher skims 0.1%. The $1.8M a day of self-trade is out of proportion to that, so a
+  volume or activity incentive is the plausible second purpose. The 0.5 s reaction is the business: the outsider's ETH is the only income.
+- **Seats, all dead** (paper, fees both legs, our impact, the reaction modelled): the flip -3.9%; the pre-first-buy seat +3-4% with no
+  reaction and -57% with it; a fixed exit inside the reaction window 0 to +1%; the LP seat -11%; the dust seat under the threshold
+  +74-168% on paper but -$0.05 a pool once the counter and the probe bots' routine buys are modelled; only a stake under 0.00003 ETH
+  survives, worth one gas round trip, not multipliable because every wallet shares the counter.
 
-**The two trade shapes, priced from the chain (paper, both legs pay the pool fee, a pull at or before the exit counts -100%):**
+## 3. The volume bot (the 2.433 line) on Robinhood
 
-| shape | 0.02 ETH stake | 0.0012 ETH stake |
-|---|---|---|
-| the flip the repo trades (buy 2 blocks after the fleet's first buy, sell 7 blocks later) | **-3.9% mean, 14.5% win**, 13 pulled | -1.8% (gas excluded) / -2.5% (with $0.02 gas), 16% win |
-| the early seat the Base engine traded (buy at launch+2, sell at launch+100 = 10 s) | +15.6% mean, +21.5% median, 92% win, 38 pulled (7%) | +17.9% mean |
-| early seat sold 20 blocks after the fleet's first buy | +6.2% mean, 95% win, 18 pulled | +8.2% |
+- **The 2.4333285 ETH family stopped on Oct 12 at 02:06 UTC** (the last launch; 132 launches per 2.8 h the previous afternoon, 33 and 31
+  that evening, 20 in its last stretch). Nothing of that fingerprint since.
+- **Its 3.0 and 5.0 ETH families are live** at about 650 pools a day: exactly 3.000 ETH (1,006 pools from fresh nonce-3 wallets and 810
+  from a recycled family at nonce 290-304) and exactly 5.000 ETH (969), fee 1%, tick 200, full range, the same 5,274-byte token template,
+  launched through the PositionManager's multicall and pulled through the bot's own contract `0x1cbaf24d53` (the engine's
+  `FRONT_BOT_ROUTERS`), which also carries the fleets' 0.10-0.15 ETH buys (fleets of 51, 60 and 105 wallets, no overlap). Each slot sweeps
+  7-10 ETH to the next launch wallet 48 blocks after every pull and relaunches 126-157 blocks later. 100% pulled: a 9.5-minute timer when
+  nothing touches the pool, **5-21 blocks (median 13) after any outside swap down to 0.00001 ETH**. About 9,000 ETH of wash buys over five
+  days, a closed loop. The front rule replayed exactly on 300 of these pools (fire at launch, land +1, sell into the bot's first buy,
+  take-profit 1%, hold 18, the bot's minOut revert model): -2% to -5% at every stake, because the bot's real buys come 24-46 blocks after
+  the launch and its reaction comes first. Oct 10's verdict on v3.0 (+3%, rejected) and v5.0 (pulls on outsiders) holds.
+- **Its V2 line** on factory `0x8bceaa40`: 236 fresh-wallet (nonce 2) pairs a day at exactly 1.00, 30.09, 40.59 and 50.09 ETH; 17 core
+  wallets buy until the pool holds 30% more ETH than the mint (price 1.7x), the pull returns mint plus buys (net -0.003 ETH a pool);
+  99.96% of the first hour's 9-14 ETH of buys is its own money. The 40.59 and 50.09 tiers pull 134-603 blocks after any foreign buy of
+  0.00015 ETH or more (19 of 20); the 30.09 tier tolerates up to 0.004 ETH (a seat worth 0.0016 ETH a pool). **The 1.00 ETH tier**: a
+  9.6-minute timer with a third of pools aborted early, price 1.5x at 1 minute and 3.6x at 5 minutes, paper +94% mean at a 3-minute hold
+  (70% win, 30% pulled, stake-insensitive up to 0.5 ETH), and no foreign buy above dust has ever landed on it: its reaction is unknown. A
+  $20 live test settles it (0.005 ETH at +300 blocks on one fresh pair, three trials; a pull inside the next 700 blocks has a 20% base rate).
+- The money trail and the identity link between the bot's V2 and v4 lines are still being traced (pending at the time of writing).
 
-The flip is dead: the fleet's first buys no longer move the price enough to cover two fees of 0.4-1% and our own impact; the engine
-would lose on Robinhood as configured. Both numbers were reproduced by an independent script (`scratchpad/verify/backtest.py`, 3 pools
-checked event by event against the chain).
+## 4. The other Robinhood lines
 
-**The early seat's paper return is not real money on Robinhood.** Of the 19 pools where an outsider bought, 12 were pulled 5-7 blocks
-(0.5-0.7 s) after that buy, 6 pools confirmed on the chain event by event. The 7 that survived longer were dust buys (0.00001-0.001 ETH);
-**every outside buy of 0.002 ETH ($5) or more, 9 of 9, was followed by the pull within 3-7 blocks** (0.0025, 0.0022, 0.0022, 0.099,
-0.005, 0.02, 0.006, 0.02, 0.02 ETH). Outsider pools are pulled at a median of 200 blocks after the launch against 1,800 for the rest,
-so this is a reaction to the buy, as in report 24.54, and faster than any sell the engine can land (its sell goes out at buy+5). With a
-0.02 ETH stake the expected return is about -60%: the seat is the trap again. The only outsider who got out bought 0.0001 ETH.
+- **The tick-spacing-1 direct line** (720 pools at 0.05% fee launched straight on the PoolManager, 3-4 ETH, pulled at 27 s median): a
+  closed-loop wash machine recycling the same ETH 6.7 times an hour through about 490 gas-only fleet wallets; 35 of 150 pools ever saw an
+  outsider, who never sold; the pull is event-driven. No seat.
+- **The bonding-curve graduation launchpad** (hook `0xe5e7…e044`, 4.2 ETH of permanent full-range liquidity per pool, real crowds of up
+  to 135 ETH in five minutes): a flat 2.5-5% hook tax each way, no time cliff, the first 30 blocks dominated by curve holders dumping.
+  Both seats lose on median. Informational only (which curve graduates).
+- The 89% and 96% fee traps, the dust wash line (pools holding 0.004 ETH), the 1.00xx%-fee bid walls, the scam-token factories, the
+  one-off launchers: nothing to trade.
+- Six probe bots dust-buy every new pool on the chain (0.000002-0.0001 ETH at +3 blocks); `0xe71a69f4…` does it on Base and Robinhood
+  alike (800 a day on Base, 110k transactions on Robinhood). They are not any operator's wallets and the operators' detectors ignore them.
 
-Robinhood therefore has the operator but no trade for us until its reaction changes: neither the flip (negative) nor the seat (pulled).
+## 5. Base
 
-## 3. BNB Chain and Ethereum
+- **The 2.433 operator's v4 line is gone.** Every v4 pool paired with ETH (5,127), WETH as currency0 (2,267) or currency1 (940) since Oct 15
+  21:30 was read; the only ETH-funded fast-pull group is a PositionManager tick-1 line (2,215 pools at a fixed 1.2 ETH, fee 0, a quarter
+  pulled 8 s after launch, 0-1 blocks after the first outside buy of about 0.02 ETH: a sniper trap), plus launchpads and two token mills
+  (empty token-only pools; 404 of them from 30 rotating launcher contracts). Nothing of his shape.
+- **The V2 line** (factory `0x8909Dc15`): 749 fresh-wallet pairs in 4.6 days, 24 h a day, 1.8x busier at 01-07 UTC. A persistent hub funds
+  a fresh wallet with exactly tier plus gas; it deploys the token at nonce 0 (3,553 bytes, no owner, no tax), approves at nonce 1, and at
+  nonce 2 calls the router's `addLiquidityETH` with the tier (1.2, 1.4, 1.5, 1.9-2.2, 2.5, 13.79, 15.0, 17.79 ETH); a fleet of about 143
+  wallets buys from +2 blocks (first real buy at +8/+11/+54 blocks); the creator pulls on a schedule per tier (1.2: +393; 1.4-2.2: +540,
+  never under +198; 15: +1,131 blocks) a median 9 blocks after the fleet's last buy; the pool plus the fleet's buys sweep back to the hub,
+  which funds the next creator 8-15 blocks later. **A different crew from the Robinhood operator**: persistent hubs since Sep 22 with
+  thousands of nonces, no intermediate hops, no shared wallet, a different token template; the same playbook and the same detector.
+- **The reaction**: on the 1.2, 13.79, 15.0 and 17.79 tiers every non-fleet buy, dust included, is followed by the pull 2-8 blocks later
+  (18 of 22 dust buys, 20 of 20 above 0.0005 ETH); the 15 ETH tier is negative even with no reaction (the fleet lifts the price 2.5% in 2
+  minutes). **The tolerant tier, 1.4-2.2 ETH**: about 40 outsider buys of 0.0005-0.04 ETH drew no reaction (31 of them from two bots on
+  Oct 20 that may be whitelisted; one 0.0008 ETH buy on Oct 16 was pulled 2 blocks later); the fleet buys 0.58-0.65 ETH, 30-40% of the pool,
+  over 5-10 minutes; price +13% at +60 blocks, +24% at +120, +34% at +180. The rule "buy at creation+1, hard exit at +180 blocks, take
+  +25% early" prices **+28.8% mean, +34.3% median, 96% win, 9 of 219 pulled over all days, +59% and 100% win on Oct 20's 16 pairs**, at 0.02-0.1
+  ETH (above 0.2 ETH we are the pump). The tier is intermittent (none on Oct 18-19) and its size moves (1.9, then 2.1-2.2, then 1.5-1.6,
+  now 1.4-1.5): zero-trade days are accepted rather than widening the band.
+- **The exit test passed**: a simulated buy and sell through the router (`deploy/base_v2_sim.py`) on the seven latest 15 ETH pairs, six
+  of them between mint and pull, returns 99.4% of the stake, the two 0.3% fees exactly; the same through the new relay
+  (`deploy/base_v2_relay_sim.py`) on the open pair. The 2.5 ETH tier (now stopped) used a 1,366-byte token that freezes a holder on demand:
+  a pre-buy exit test cannot catch that, so only the 3,553-byte template is admitted.
 
-The operator's Oct 13 BNB pools and its Ethereum test were before this window; in the window neither chain has a launcher group with
-the fingerprint. BNB's PositionManager-direct launches (739 pools, fixed 10.53 BNB liquidity, 8/h, stopped Oct 19 18:27 UTC) are a
-launchpad's migrations, not a pump-and-pull. Ethereum's five hooked pools with the 4-minute pull had no swaps at all.
+## 6. The engines, and what is being built
 
-## 4. Base
+- **flip-engine (Robinhood, release 0.9, the one that made the money)**: idle because its family stopped on Oct 12; the service is stopped,
+  the relay holds 0 ETH and the wallet 0.0001 ETH (your screen of 13:07 UTC). No setting makes it earn on today's lines (the 1% families
+  lose, the V2 line is another venue). Leave it; nothing to fix.
+- **flip-base (base-0.2, +$588)**: idle by design since the honeypot; its line never came back. Leave it.
+- **The Base V2 engine (`src/base_v2_engine.py`, in progress on this branch)**: designed in `docs/BASE_V2.md`; reuses base-0.2's transport
+  (the Flashblocks stream, the confirmed websocket with its poller, the sender, the signer, the halts, the positions) and trades the
+  tolerant tier only: creation recognised from the pending `addLiquidityETH` (router, selector `0xf305d719`, value in the band, sender
+  nonce 2, the token equal to the sender's nonce-0 CREATE address) or the confirmed PairCreated plus Mint; the guard chain before every buy
+  (the exit test on the very pair, the 3,553-byte template, 99% of the supply in the pool, the tier gate); the buy through `FlipRelayV2`
+  at creation+1 with minOut 97% of the constant-product output; three exits (hard +180 blocks sent at +176, +25% early take, instant sell on
+  any buy whose recipient is not the fleet roster, the probe or the creator); a Burn before our sell is -100% and halts the tier; up to 3
+  positions; daily stop -0.15 ETH. Already in the tree: the relay (`contracts/FlipRelayV2.sol`, 2,994 bytes), the exit test, the relay
+  simulator, the fixture of a real pair (`tests/data/base_v2_pair.json`).
+- **The staged live test** (in `docs/BASE_V2.md` section 9): stage 0 a 24 h dry run; stage 1 a 0.001 ETH reaction probe on up to 5 pairs of
+  the tolerant tier (stop the tier if 1 of the first 3 draws a pull inside 10 blocks); stage 2 0.02 ETH on 10 pairs; stage 3 0.05 then 0.1
+  ETH. Never the 1.2, 13.79, 15.0 or 17.79 tiers at any stake.
 
-The operator's Base launchers from Oct 14-15 are on the box, not in the repo, so Base was read by fingerprint. Every v4 pool paired
-with ETH (5,127), with WETH as currency0 (2,267) or as currency1 (940) since Oct 15 21:30 UTC was grouped; the liquidity and the pull
-were read for all 5,127 ETH-paired pools. Result: **the operator's v4 line on Base is gone.** The groups with real ETH liquidity and
-fast pulls are one line only: direct PositionManager launches at tick spacing 1, fee 0, a fixed 1.2 ETH per pool (2,215 pools, 20/h,
-2,237 funded deployer wallets, 581 pulled a median 4 blocks = 8 s after launch); its buyers and its reaction are being read (pending).
-Everything else is launchpads (Clanker, Zora, 4337 launches) with no pulls, or two token mills: a family of 30 rotating launcher
-contracts (a new one every 15 pools, 404 pools, 2 persistent deployers, Oct 15 22:11 to Oct 20 02:00 UTC) and a single-wallet launcher
-(426 pools) that both initialize token-only pools with no ETH side; their only swap is a probe bot's dust buy; nobody buys them.
-Those mills are not attributable to the operator and have nothing in them to trade.
+## 7. Open
 
-**The live Base lead is Uniswap V2.** A pair created at 12:07 UTC today by a fresh wallet (nonce 2) with 15 ETH of liquidity drew a
-probe's dust buy in the creation block and then 0.08-0.12 ETH buys from wallets with nonces 1,800-2,900 within a minute. Whether that
-is a pump-and-pull with a fleet and a pull, and how many such pairs there are, is being read from every WETH pair created on the V2
-factory in the window (773 pairs; pending).
+- The volume bot's V2 money trail and its identity link to the v4 families (agents pending).
+- Whether the two Oct-20 bots on the tolerant tier are whitelisted rather than tolerated: stage 1 of the live test exists for this.
+- The Robinhood V2 1 ETH tier's reaction: a $20 live test.
+- The Flashblocks latency from the box, and whether a 0.02-0.05 gwei tip lands our buy in the creation block: stage 0.
+- The Denim hardfork (200 ms native blocks) will remove the Flashblocks subscriptions; the feed layer must stay swappable.
 
-A correction on wallets: the wallet `0xe71a69f434a719cd5afa411568b69716aab3b84a`, which looked like a shared fleet wallet across
-chains, is a probe bot: it buys exactly 0.000002 ETH on every new pool (468 of the operator's 527 Robinhood pools at launch+3 blocks,
-about 800 pools a day on Base across v4, V2 and v3, 250k transactions on BNB in the past, idle there since before Oct 12). It is not
-the operator's, and the operator's detector ignores it. Four more dust-only wallets do the same on Robinhood.
+## 8. Reproducing this
 
-## 4b. Inside the operator's Robinhood line (527 pools, read swap by swap)
-
-- **The fleet**: 98 recurring wallets with median buys of 0.03 ETH (menu 0.03 / 0.05 / 0.07 / 0.08 / 0.09, up to 0.26), about 40 of
-  them new this week; buys from 2 s after launch, sells from 5-8 s, both interleaved until the pull; the price plateaus at about 3x
-  the launch price from 50 s. Per pool the fleet buys 2.85 ETH and sells 1.45 ETH back; the deployer's pull (its nonce-1 transaction
-  to the PositionManager) recovers the rest: a closed loop. Half the buy ETH is in by 33 s.
-- **The pull**: bimodal. 40% of pools with no outsider at all are pulled inside 30 s by the program's own end; the rest at 210-250 s.
-- **The detector**: a wallet whitelist plus a size rule. Every outside buy of 0.002 ETH or more was followed by the pull 3-7 blocks
-  later (33 of 33; median 5 blocks = 0.5 s), 89% of buys of 0.0005-0.002 ETH, 74% of 0.0002-0.0005 ETH, independent of fee tier,
-  router, hour and phase (a 0.099 ETH buy at launch+18, before any fleet buy, was pulled at +23). Dust under 0.0001 ETH triggered it
-  0 of 69 times on Oct 20 (36-39% on Oct 16: the threshold is a setting and moves). No outsider ever sold before the pull.
-- **A second shape**: pools at 2-3% fee with no fleet, where 12-30 of the operator's own fresh wallets buy one menu size each and never
-  sell, as bait; the snipers who followed them lost everything (pull 48 blocks after the last sniper buy).
-- **Seats priced** (paper, fees both legs, our impact, gas, real pulls): the pre-first-buy seat (buy +22, sell one block after the
-  fleet's first buy) is +3 to +4% only if the operator did not react, and -57% once his 5-block reaction is modelled; a fixed exit
-  inside his reaction window (+24..+26) is 0 to +1%; the shortest flip (+2 and +3 blocks after the first fleet buy) is -1 to -2%;
-  an LP seat (adding 5-10% of his liquidity) is -11 to -13% even with no reaction, and the token purchase to build it would itself
-  be pulled.
-- **The sub-threshold seat is dead too.** A buy under his size rule (0.0001-0.00015 ETH at launch+22, held into the 3x pump) prices
-  at +74% to +168% on paper, but an independent refutation showed the trigger is a **per-pool counter of net outside buying**, exact at
-  0.0002 ETH (highest net position never pulled: 0.000195; smallest pulled: 0.000200), pull 5 blocks after the crossing, pre-fleet buys
-  included: 33 pools crossed it through several dust wallets and 25 were pulled 5-7 blocks after the crossing buy. The probe bots'
-  routine 0.00005-0.00017 ETH buys push 397 of 514 pools over the line once our 0.00015 sits in the counter: 404 of 514 seats pulled,
-  mean -43% / -13% at +300 / +500 blocks, expected value -$0.05 a pool. Only a stake at or under 0.00003 ETH survives (+80% mean, about
-  +$0.06 a pool, one gas round trip), and wallets cannot be multiplied because they share the counter. **No seat at any size.**
-- **His economics** (all 527 pools, every swap attributed): seed 1.79 ETH in and fleet buys 2.85 in, fleet sells 1.45 and the pull 3.19
-  out: 4.638 against 4.639 ETH, a closed loop to the fourth decimal. Profit is exactly what outsiders leave: 1.063 ETH (about $2,700)
-  in 4.27 days, 0.55 of it taken within 10 blocks of the buy; gas about $0.77 a pool (launch 1.0M gas, pull 159k, 115 transactions a pool
-  at 0.02 gwei); net about +0.0018 ETH a pool, $500-770 a day. Another 2.7 ETH came from 57 fresh menu-size wallets on four 2-3%-fee
-  pools that look like his own bait (one of them deployed a pool and bought its own token); if they were victims, the take triples.
-  The fleet's 1,465 ETH of buys and 744 ETH of sells (about $1.8M a day of self-trade) are out of all proportion to the trapped ETH, so
-  a volume or activity incentive on Robinhood Chain or its DEX is the plausible second purpose; the chain data cannot verify it.
-
-## 4c. The money trail on Robinhood (traced live through eight launches)
-
-- **Two floats, fully recycled, nothing parked.** Line A: about 7.29 ETH and a roster of 42 fleet wallets; line B: about 6.79 ETH and
-  29-31 wallets (disjoint rosters, launches interleaved, two launches 6 s apart). Each cycle: a fresh collector wallet receives the
-  deployer's sweep (its nonce-2 transaction, 100-310 blocks after the pull, about 5.5 ETH) and every roster wallet's remainder in the
-  same 20-block burst (about 1.7 ETH), forwards all of it 21-28 blocks later to a fresh distributor, which funds the next deployer
-  (1.2-2.6 ETH) 8 blocks later and then the roster in a fixed order two blocks apart (0.11-0.16 ETH each). Every hop is a one-shot
-  wallet that forwards everything minus a gas reserve of 0.0000132 ETH. The deployer's nonce-3 transaction is a dust sweep.
-- **No bridge, no exchange, no inflow but victims.** No wallet in the loop ever touched the Orbit bridge or an exchange-like address.
-  The float was seeded on Oct 15 21:30 UTC from the previous generation's sweeps (an older launcher) and grew from 5.84 to 7.29 ETH
-  in 4.6 days: +0.32 ETH a day.
-- **Economics per pool**: 1.9 ETH added (the launcher skims exactly 0.1% of the launch value), the fleet buys 2.2-2.6 ETH and sells
-  0.8-1.3 ETH, the pull removes 3.2 ETH; net per pool equals exactly what outsiders paid in: 0.000 ETH on 391 of 419 pulled pools,
-  +0.089 ETH mean on the 28 that had an outsider. Per day at 175 launches: about 1.0 ETH from outsiders, 0.4 ETH launcher fee, 0.2-0.35
-  ETH gas, net about +0.3 to +0.5 ETH on roughly 14 ETH of float and about 500 ETH of self-traded volume.
-- **Why he reacts the way he does**: the outsider's ETH is the whole profit, so the program takes it the moment it lands (the pull
-  3-7 blocks after any buy at or above its size rule). The 0.5 s reaction is not defensive; it is the business.
-- Old-generation fleet wallets (234-253 pools each, nonces 3,800-5,900) were retired on Oct 15 and sit empty; the current roster
-  wallets hold 0.008-0.118 ETH between cycles; the launcher's 0.1% fee recipient could not be resolved without traces.
-
-## 4d. The volume bot (the 2.433 line proper) on Robinhood, and the live engine
-
-A correction to section 1: launcher `0x3194e326` is operator A of the engine's **follow** strategy. The **2.433 line** is the volume bot,
-which launched exactly 2.4333285 ETH through the PositionManager at fee 0.25% and is the family the live engine's **front** strategy
-earned on (Oct 10-12). Its state now:
-
-- **Its 2.433 family has not launched since Oct 15 21:30** (zero PositionManager launches at fee 2500/50 or 5000/100 with its price).
-- **Its 3.0 and 5.0 ETH families are live at about 650 pools a day** (1,006 + 810 pools of exactly 3.000 ETH, 969 of exactly 5.000 ETH,
-  fee 1%, tick 200, full range; the fresh-wallet sub-line at deployer nonce 3, the recycled one at nonce 290-304; sweeps of 7-10 ETH to
-  the next launch wallet 48 blocks after every pull; fleets of 51, 60 and 105 wallets buying 0.10-0.15 ETH through the bot's own
-  contract `0x1cbaf24d53`, the very router the engine's `FRONT_BOT_ROUTERS` names). 100% of their pools are pulled, on a 9.5-minute
-  timer when nothing touches them and **5-21 blocks (median 13) after any outside swap down to 0.00001 ETH**. The front rule replayed
-  exactly on 300 of these pools (fire at launch, land +1, sell into the bot's first buy, take-profit 1%, hold 18, the bot's minOut
-  revert model): **-2% to -5% at every stake**, because the bot's real buys come 24-46 blocks after the launch, after the 18-block
-  deadline, and its pull reaction (5-21 blocks after our buy) comes before them. These families were marginal on Oct 10 (v3.0 +3%,
-  v5.0 "pulls on outsiders") and are worse now.
-- **The volume bot also runs the V2 line** on Robinhood's factory `0x8bceaa40`: 236 fresh-wallet pairs a day in tiers of exactly
-  1.00, 30.09, 40.59 and 50.09 ETH, created by `addLiquidityETH` from wallets at nonce 2; 17 core wallets buy until the pool holds
-  30% more ETH than the mint (price 1.7x), then the pull returns mint plus buys (net -0.003 ETH a pool); 99.96% of the first hour's
-  9-14 ETH of buys is its own money. On the 40.59 and 50.09 tiers every foreign buy of 0.00015 ETH or more (19 of 20) was pulled
-  134-603 blocks later; the 30.09 tier tolerates buys up to 0.004 ETH (a seat worth 0.0016 ETH a pool). **The 1.00 ETH tier is the one
-  open question**: a 9.6-minute timer with a third of pools aborted early, price 1.5x at 1 minute and 3.6x at 5 minutes, paper +94%
-  mean at a 3-minute hold (70% win, 30% pulled, stake-insensitive up to 0.5 ETH because the round trip cancels its own impact), and no
-  foreign buy above dust has ever landed on it, so its reaction is unknown, not absent.
-
-**The live Robinhood engine** (`flip-engine`, branch `claude/laughing-fermat-48ylv7` at de88eb9, release 0.9, front on the 2.433
-family only, fee gate under 1%): it is idle by construction, since no launch matches `FRONT_VALUE_WEI` and the live families are at 1%.
-It needs no change to stay safe, and no setting makes it earn on today's lines: admitting the 1% families loses (above), and the V2 line
-is another venue the engine cannot see. The one thing to do is confirm its state from the box: `sudo python3 ~/v2pons/deploy/results.py | head -24`.
-
-## 5. The errors behind us and what the engine lacks for a relaunch
-
-The repository (5 commits) is the Robinhood flip only. The Base engine, the second launch call, the honeypot launcher and the hook
-code-size guard live on the box and were never committed; whatever runs next should start from a committed engine.
-
-Errors fixed in the history: the first live first-buy crashed the engine (the dry run with no relay built transactions against an empty
-address; fixed in f8796f5, fire() failures are alarms now), and relay_deploy's buy check printed "differs" on a 1e-20 gap (b6b0268).
-Errors from the Base run, none of them in the repo: the engine sat idle 81 minutes when the operator changed its launch call
-(the engine matches only the launcher address, `LAUNCHERS`, src/flip_engine.py:36 and :455, not the selector, so a new call on a new
-contract is invisible until added by hand); the honeypot (a launcher added without a sell simulation; the hook that only lets the fleet
-sell is not detectable from the launch receipt, the engine only checks `hooks == 0`, :232); and the guard that followed skipped every pool.
-
-What the engine lacks (file:line in src/flip_engine.py):
-
-1. **Chain config.** `CHAIN_ID=4663` is a constant (:35), the feed decoder is Nitro-only (:143-154, :432-443), gas is legacy `gasPrice` (:253, :258),
-   every timing is in 100 ms blocks (`HOLD_BLOCKS`, `TRIGGER_MAX_BLOCKS`, `SELL_FALLBACK_S`, :42-44). Base needs a per-chain map, a Flashblocks
-   or mempool source, type-2 transactions with a priority fee, and timings in seconds.
-2. **Launcher recognition by (contract, selector, hook, tick spacing, liquidity band)**, not by address alone, with new groups logged as
-   `unverified` until step 3 passes. `scan.py` already groups this way; it is not wired into the engine.
-3. **The exit test before any trade on a new group**: an `eth_call` round trip (buy, then sell, through the relay with a state override, as
-   `deploy/relay_sim.py` does by hand) on the group's latest live pool; refuse the group if the sell reverts or returns under a floor. This is
-   the check that would have caught the honeypot. The hook code-size guard is a weaker proxy for it; a hook with code should be refused unless
-   the exit test passes on it.
-4. **The entry rule of the Base trade**: buy off the launch receipt (the liquidity add), stake 0.02 ETH, sell when the fleet's buys are seen
-   behind us (a swap counter per pool from the feed or Swap logs), not on the fleet's first buy (:457-465) with a fixed hold.
-5. **Defaults that misfire today**: `FEE_MAX_PPM=9999` (:41) skips the 1% pools; `MIN_TRIGGER_ETH=0.0002` with first-match semantics (:461-466)
-   fires on any tx carrying the token address, outsider or not; the 4 s receipt wait (:225) can arm a pool after the fleet's first buy has
-   passed, so the engine fires on the second buy as if it were the first; `MIN_LIQUIDITY=1e21` is a raw v4 L figure, check it against today's
-   pools from the `armed` lines; `ETH_USD=2570` is static and sets the daily stop.
+`bash research/chase/report.sh "2026-10-20 00:00"` reruns every scan and pricing for a window; `research/chase/front_replay.py` replays the
+front rule on a deep sample; `deploy/base_v2_sim.py --all 6000` runs the exit test on every recent fresh-wallet pair on Base.
