@@ -245,17 +245,18 @@ wallet, the key file and its lock, the relay (its `owner()` the wallet, `router(
 
 ## 9. The staged live test (each stage's settings in the env; a stage ends by the owner's hand, never by the engine)
 
-- **Stage 0, the dry run, 24 h** (`BASE_V2_DRY_RUN=1`). Pass: every creation of the line armed or classified within 1 s of its block
-  (`seen_ms`; checked afterwards against `eth_getLogs` of the factory: 100% of the 1.4-2.2 and 1.2 pairs, no false arm), the tier right,
-  every guard under 1 s (`guard` ms), every `would_fire` with `ready_ms` under 1,500 (the N+1 landing), and the dry log showing the two
-  Oct-20 bots and the probe as `outsider_buy` on the pairs they bought, the fleet never.
-- **Stage 1, the reaction probe**: `BASE_V2_STAKE_ETH=0.001`, `BASE_V2_MAX_POSITIONS=1`, `BASE_V2_MAX_PER_DAY=5`, `BASE_V2_HARD_BLOCK=60`,
-  `BASE_V2_SELL_SEND_BLOCK=56`, `BASE_V2_SELL_RESEND_BLOCK=58`, `BASE_V2_SELL_FALLBACK_S=130`, `BASE_V2_TAKE_PROFIT=100`; up to 5 pairs of the
-  tolerant tier. Stop: a Burn inside 10 blocks of our buy on 1 of the first 3 (the halt of section 7 does it). Go on only when all 5 were
-  pulled on schedule (>= +198).
-- **Stage 2, 0.02 ETH on 10 pairs**, the full rule (`BASE_V2_MAX_PER_DAY=10`, the other defaults). Pass: 7 of 10 positive and the mean
-  >= +10% net. Stop (automatic): a Burn before our exit on a pair with no outsider buy, two losses in a row (`BASE_V2_LOSS_STREAK_HALT`),
-  our buy mined later than N+1 twice (`BASE_V2_LATE_HALT`).
+- **Stage 0, the dry run, until three correct decisions** (`BASE_V2_DRY_RUN=1`; the owner's choice, Oct 20: not a full day). Pass: the
+  first three creations of the tolerant tier armed within 1 s of their block (`seen_ms`), the tier right, every guard under 1 s (`guard`
+  ms), each `would_fire` with `ready_ms` under 1,500 (the N+1 landing) and a dry `trade_done` priced from the recorded swaps; the watched
+  tiers refused with the right `why`; the probe logged as `outsider_buy`, the fleet never. A tolerant-tier creation comes every 20-60
+  minutes when the tier is running (none at all on some days: wait, do not widen the band).
+- **Stage 1, $5 live on 5 pairs** (`BASE_V2_DRY_RUN=0`, `BASE_V2_STAKE_ETH=0.002`, `BASE_V2_STAKE_CAP_ETH=0.002`, `BASE_V2_MAX_POSITIONS=1`,
+  `BASE_V2_MAX_PER_DAY=5`, the full rule otherwise: hard +180, take-profit +25%, the instant sell on an outsider buy). The reaction
+  question is answered here: stop at once if a Burn lands inside 10 blocks of our buy on any of the first 3 (section 7's halt does it;
+  the stake is the whole loss). Go on when 3 of the first 5 are positive and no pull came inside 10 blocks of any buy.
+- **Stage 2, 0.02 ETH on 10 pairs**, the same rule (`BASE_V2_STAKE_ETH=0.02`, `BASE_V2_STAKE_CAP_ETH=0.02`, `BASE_V2_MAX_PER_DAY=10`). Pass:
+  7 of 10 positive and the mean >= +10% net. Stop (automatic): a Burn before our exit on a pair with no outsider buy, two losses in a row
+  (`BASE_V2_LOSS_STREAK_HALT`), our buy mined later than N+1 twice (`BASE_V2_LATE_HALT`).
 - **Stage 3, 0.05 then 0.1 ETH, 20 pairs each**, `BASE_V2_TIER_BAND=1.95,2.3` preferred (0.1 ETH is 5% of a 2.0 pool, the share cap's
   edge), `BASE_V2_MAX_POSITIONS=3`, `BASE_V2_DAILY_STOP_ETH=0.15`, the stage-2 stops; the tier's pulls moving under +220 end it for the
   day by section 7.
