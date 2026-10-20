@@ -63,6 +63,7 @@ while true; do
         bal=$(balance_eth "$relay")
         if ! python3 -c "import sys; sys.exit(0 if float('$bal') >= float('$STAKE') + 0.0005 else 1)"; then echo "$(date -u +%H:%M:%S) $n decisions but the relay holds $bal ETH, under the stake $STAKE + margin: deposit first"; sleep 60; continue; fi
         set_kv BASE_V2_DRY_RUN 0; set_kv BASE_V2_STAKE_ETH "$STAKE"; set_kv BASE_V2_STAKE_CAP_ETH "$STAKE"; set_kv BASE_V2_MAX_POSITIONS 1; set_kv BASE_V2_MAX_PER_DAY 5
+        set_kv BASE_V2_DAILY_STOP_ETH "$(python3 -c "print(round(3 * float('$STAKE'), 6))")"      # three stakes a day at this stage
         systemctl restart "$SERVICE" && sleep 20
         echo "$(date -u +%H:%M:%S) switched to the \$5 stage: live, stake $STAKE ETH, one position, five trades a day; service $(systemctl is-active "$SERVICE")"
         grep '"ev":"start"' "$LOG" | tail -n 1 | cut -c1-200
