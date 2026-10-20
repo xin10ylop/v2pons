@@ -125,6 +125,19 @@ START_BACK = 12                          # the start reads this many blocks back
 SEAL_GRACE = 5                           # a creation seen pending whose block never sealed by N + this is dropped
 START_WAIT_S = 300; DEFAULT_LOG = "/var/log/flip/base_v2.jsonl"
 END = 1 << 62                            # a logIndex after every real one: (block, END) is the end of a block
+# GAP: the back-run (BASE_V2_BACKRUN=1: the guard at the `pending` tag on BASE_V2_PENDING_URL, the buy into the creation block above the creation's
+#      priority) is written but has not been exercised against a node or a stub; stage 0 measures the N+1 delay before it is considered.
+# GAP: tests/test_base_v2_engine.py (the box's test file against tests/data/base_v2_pair.json) is not written here; the dry and live paths were
+#      replayed from a scratch harness (the stream at 15 and 2.0 ETH, via the logs and via a Flashblock; the guard's four verdicts; the outsider,
+#      take-profit, fleet-sell, hard and pulled exits; a reverted sell's re-sends to "sold none"; a restart taking a position back).
+# GAP: deploy/base_v2_roster.py (the roster the engine reads), base_v2_relay_deploy.py, base_v2_results.py, base_v2_setup.sh and the unit are the
+#      box's other items, not this module's.
+# GAP: a creation transaction the node cannot answer (eth_getTransactionByHash empty three times) is an `alarm` and the pair is dropped, not a `skip`
+#      line: the design's `why` list has no value for it.
+# GAP: `seen_ms` of a creation seen on the logs feed needs the block's timestamp: the log's `blockTimestamp` field (publicnode carries it on Base) or
+#      the head's when the head is that block; otherwise it is null.
+# GAP: the confirmed feed's `fleet_sell` exit needs the seller: a Swap's `to` is the router for every router sell, so an unknown seller costs one
+#      eth_getTransactionByHash off the feed thread (the Flashblocks copy, when seen, makes it free).
 
 
 # ---------------------------------------------------------------- settings
