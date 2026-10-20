@@ -1,0 +1,2687 @@
+{
+ "v3.0": {
+  "all": {
+   "n": 708,
+   "bot_off_p10_50_90": [
+    8,
+    9,
+    42
+   ],
+   "bot_off_min_max": [
+    5,
+    58
+   ],
+   "no_bot": 15,
+   "no_bot_frac": 0.021,
+   "early_pull": 15,
+   "early_pull_frac": 0.021,
+   "early_pull_offs": [
+    7,
+    7,
+    7,
+    7,
+    8,
+    8,
+    8,
+    8,
+    9,
+    9,
+    9,
+    9,
+    9,
+    9,
+    10
+   ],
+   "early_pull_with_outsider_before": 15,
+   "early_pull_outsiders": [
+    [
+     [
+      3,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      3,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      3,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      3,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      3,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      2,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      3,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      2,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      3,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      3,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      2,
+      0.00297,
+      "0x8cf143dd"
+     ]
+    ],
+    [
+     [
+      2,
+      0.00297,
+      "0x7ae81404"
+     ]
+    ]
+   ],
+   "pulled_within_1200": 387,
+   "pull_minus_bot_p10_50_90": [
+    3,
+    3,
+    483
+   ],
+   "pull_minus_bot_min": 2,
+   "bot_eth_p10_50_90": [
+    0.0742,
+    0.1429,
+    0.175
+   ],
+   "minout_ratio_min_med_max": [
+    0.95,
+    0.95,
+    0.95
+   ],
+   "room_eth_min_p10_med": [
+    0.0794,
+    0.0797,
+    0.0805
+   ],
+   "eth_ahead_p50_p90_max": [
+    0.0,
+    0.00297,
+    0.00495
+   ],
+   "with_outsider_ahead": 322,
+   "bot_buys_per_pool_p50": 26
+  },
+  "hours": {
+   "10-10 14": {
+    "n": 8,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     7,
+     15
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.1092,
+     0.1485,
+     0.175
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0797,
+     0.0801,
+     0.0806
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 51
+   },
+   "10-10 15": {
+    "n": 16,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     14
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 3,
+    "pull_minus_bot_p10_50_90": [
+     127,
+     655,
+     885
+    ],
+    "pull_minus_bot_min": 127,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.125,
+     0.15
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0797,
+     0.0797,
+     0.0803
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 49
+   },
+   "10-10 16": {
+    "n": 16,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     14
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 2,
+    "pull_minus_bot_p10_50_90": [
+     24,
+     24,
+     1009
+    ],
+    "pull_minus_bot_min": 24,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.099,
+     0.1692
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0797,
+     0.08
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-10 17": {
+    "n": 17,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     9
+    ],
+    "bot_off_min_max": [
+     7,
+     10
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 5,
+    "pull_minus_bot_p10_50_90": [
+     32,
+     862,
+     1144
+    ],
+    "pull_minus_bot_min": 32,
+    "bot_eth_p10_50_90": [
+     0.075,
+     0.099,
+     0.1732
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0796,
+     0.0797,
+     0.08
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-10 18": {
+    "n": 20,
+    "bot_off_p10_50_90": [
+     8,
+     8,
+     9
+    ],
+    "bot_off_min_max": [
+     8,
+     10
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 6,
+    "pull_minus_bot_p10_50_90": [
+     123,
+     137,
+     955
+    ],
+    "pull_minus_bot_min": 123,
+    "bot_eth_p10_50_90": [
+     0.0922,
+     0.1481,
+     0.1732
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0796,
+     0.0799,
+     0.0806
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-10 19": {
+    "n": 24,
+    "bot_off_p10_50_90": [
+     8,
+     8,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     15
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 9,
+    "pull_minus_bot_p10_50_90": [
+     27,
+     321,
+     994
+    ],
+    "pull_minus_bot_min": 21,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.125,
+     0.15
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0797,
+     0.0803
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 48
+   },
+   "10-10 20": {
+    "n": 22,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     14
+    ],
+    "bot_off_min_max": [
+     6,
+     21
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 4,
+    "pull_minus_bot_p10_50_90": [
+     22,
+     475,
+     931
+    ],
+    "pull_minus_bot_min": 22,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.1,
+     0.1514
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0797,
+     0.08
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 49
+   },
+   "10-10 21": {
+    "n": 14,
+    "bot_off_p10_50_90": [
+     8,
+     8,
+     9
+    ],
+    "bot_off_min_max": [
+     8,
+     10
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 1,
+    "pull_minus_bot_p10_50_90": [
+     599,
+     599,
+     599
+    ],
+    "pull_minus_bot_min": 599,
+    "bot_eth_p10_50_90": [
+     0.0495,
+     0.1172,
+     0.175
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0794,
+     0.0802
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-10 22": {
+    "n": 15,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     14
+    ],
+    "bot_off_min_max": [
+     7,
+     21
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 2,
+    "pull_minus_bot_p10_50_90": [
+     265,
+     265,
+     982
+    ],
+    "pull_minus_bot_min": 265,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.1237,
+     0.1869
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0797,
+     0.0797,
+     0.0803
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-10 23": {
+    "n": 21,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     57
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 9,
+    "pull_minus_bot_p10_50_90": [
+     394,
+     463,
+     629
+    ],
+    "pull_minus_bot_min": 140,
+    "bot_eth_p10_50_90": [
+     0.0871,
+     0.1485,
+     0.1737
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0797,
+     0.0798,
+     0.0806
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 47
+   },
+   "10-11 00": {
+    "n": 15,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     10
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.05,
+     0.1485,
+     0.175
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0794,
+     0.0806
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 51
+   },
+   "10-11 01": {
+    "n": 23,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     10
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 12,
+    "pull_minus_bot_p10_50_90": [
+     3,
+     3,
+     400
+    ],
+    "pull_minus_bot_min": 3,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.1145,
+     0.1732
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0797,
+     0.0802
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0001,
+     0.0001
+    ],
+    "with_outsider_ahead": 11,
+    "bot_buys_per_pool_p50": 44
+   },
+   "10-11 02": {
+    "n": 90,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     15
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 78,
+    "pull_minus_bot_p10_50_90": [
+     3,
+     3,
+     3
+    ],
+    "pull_minus_bot_min": 3,
+    "bot_eth_p10_50_90": [
+     0.075,
+     0.1485,
+     0.175
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0797,
+     0.0806
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.00099,
+     0.00297,
+     0.00495
+    ],
+    "with_outsider_ahead": 78,
+    "bot_buys_per_pool_p50": 1
+   },
+   "10-11 03": {
+    "n": 172,
+    "bot_off_p10_50_90": [
+     7,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     5,
+     18
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 163,
+    "pull_minus_bot_p10_50_90": [
+     3,
+     3,
+     4
+    ],
+    "pull_minus_bot_min": 2,
+    "bot_eth_p10_50_90": [
+     0.099,
+     0.15,
+     0.198
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.08,
+     0.0806
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.00297,
+     0.00297,
+     0.00297
+    ],
+    "with_outsider_ahead": 166,
+    "bot_buys_per_pool_p50": 1
+   },
+   "10-11 04": {
+    "n": 80,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     36
+    ],
+    "bot_off_min_max": [
+     7,
+     55
+    ],
+    "no_bot": 11,
+    "no_bot_frac": 0.138,
+    "early_pull": 11,
+    "early_pull_frac": 0.138,
+    "early_pull_offs": [
+     7,
+     7,
+     8,
+     8,
+     8,
+     9,
+     9,
+     9,
+     9,
+     9,
+     10
+    ],
+    "early_pull_with_outsider_before": 11,
+    "early_pull_outsiders": [
+     [
+      [
+       3,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ],
+     [
+      [
+       3,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ],
+     [
+      [
+       3,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ],
+     [
+      [
+       3,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ],
+     [
+      [
+       3,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ],
+     [
+      [
+       2,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ],
+     [
+      [
+       3,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ],
+     [
+      [
+       2,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ],
+     [
+      [
+       3,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ],
+     [
+      [
+       3,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ],
+     [
+      [
+       2,
+       0.00297,
+       "0x8cf143dd"
+      ]
+     ]
+    ],
+    "pulled_within_1200": 65,
+    "pull_minus_bot_p10_50_90": [
+     3,
+     3,
+     4
+    ],
+    "pull_minus_bot_min": 2,
+    "bot_eth_p10_50_90": [
+     0.075,
+     0.1485,
+     0.1732
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0797,
+     0.0806
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.00297,
+     0.00297,
+     0.00297
+    ],
+    "with_outsider_ahead": 63,
+    "bot_buys_per_pool_p50": 1
+   },
+   "10-11 05": {
+    "n": 20,
+    "bot_off_p10_50_90": [
+     24,
+     40,
+     51
+    ],
+    "bot_off_min_max": [
+     18,
+     54
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 8,
+    "pull_minus_bot_p10_50_90": [
+     125,
+     265,
+     894
+    ],
+    "pull_minus_bot_min": 113,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.125,
+     0.15
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0796,
+     0.0797,
+     0.0803
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 48
+   },
+   "10-11 06": {
+    "n": 17,
+    "bot_off_p10_50_90": [
+     24,
+     37,
+     47
+    ],
+    "bot_off_min_max": [
+     18,
+     54
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 3,
+    "pull_minus_bot_p10_50_90": [
+     228,
+     372,
+     946
+    ],
+    "pull_minus_bot_min": 228,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.1485,
+     0.1732
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0797,
+     0.0806
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 47
+   },
+   "10-11 07": {
+    "n": 14,
+    "bot_off_p10_50_90": [
+     32,
+     45,
+     55
+    ],
+    "bot_off_min_max": [
+     28,
+     55
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.0638,
+     0.1237,
+     0.198
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0795,
+     0.0803
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 49
+   },
+   "10-11 08": {
+    "n": 15,
+    "bot_off_p10_50_90": [
+     26,
+     36,
+     48
+    ],
+    "bot_off_min_max": [
+     22,
+     52
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 2,
+    "pull_minus_bot_p10_50_90": [
+     844,
+     844,
+     970
+    ],
+    "pull_minus_bot_min": 844,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.1,
+     0.1732
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.0797,
+     0.08
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 48
+   },
+   "10-11 09": {
+    "n": 18,
+    "bot_off_p10_50_90": [
+     28,
+     40,
+     54
+    ],
+    "bot_off_min_max": [
+     20,
+     56
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 5,
+    "pull_minus_bot_p10_50_90": [
+     35,
+     910,
+     1158
+    ],
+    "pull_minus_bot_min": 35,
+    "bot_eth_p10_50_90": [
+     0.0982,
+     0.1347,
+     0.1732
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0794,
+     0.08,
+     0.0804
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 48
+   },
+   "10-11 10": {
+    "n": 13,
+    "bot_off_p10_50_90": [
+     29,
+     35,
+     47
+    ],
+    "bot_off_min_max": [
+     27,
+     48
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 1,
+    "pull_minus_bot_p10_50_90": [
+     573,
+     573,
+     573
+    ],
+    "pull_minus_bot_min": 573,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.1237,
+     0.1732
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0795,
+     0.0797,
+     0.0803
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 49
+   },
+   "10-11 11": {
+    "n": 16,
+    "bot_off_p10_50_90": [
+     24,
+     42,
+     53
+    ],
+    "bot_off_min_max": [
+     19,
+     58
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.1,
+     0.169
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0795,
+     0.0797,
+     0.08
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 48
+   },
+   "10-11 12": {
+    "n": 18,
+    "bot_off_p10_50_90": [
+     28,
+     40,
+     51
+    ],
+    "bot_off_min_max": [
+     20,
+     55
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 3,
+    "pull_minus_bot_p10_50_90": [
+     115,
+     355,
+     532
+    ],
+    "pull_minus_bot_min": 115,
+    "bot_eth_p10_50_90": [
+     0.099,
+     0.125,
+     0.1732
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0797,
+     0.08,
+     0.0803
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 47
+   },
+   "10-11 13": {
+    "n": 18,
+    "bot_off_p10_50_90": [
+     28,
+     35,
+     53
+    ],
+    "bot_off_min_max": [
+     18,
+     54
+    ],
+    "no_bot": 4,
+    "no_bot_frac": 0.222,
+    "early_pull": 4,
+    "early_pull_frac": 0.222,
+    "early_pull_offs": [
+     7,
+     7,
+     8,
+     9
+    ],
+    "early_pull_with_outsider_before": 4,
+    "early_pull_outsiders": [
+     [
+      [
+       2,
+       0.00297,
+       "0x7ae81404"
+      ]
+     ],
+     [
+      [
+       2,
+       0.00297,
+       "0x7ae81404"
+      ]
+     ],
+     [
+      [
+       1,
+       0.00297,
+       "0x7ae81404"
+      ]
+     ],
+     [
+      [
+       1,
+       0.00297,
+       "0x7ae81404"
+      ]
+     ]
+    ],
+    "pulled_within_1200": 6,
+    "pull_minus_bot_p10_50_90": [
+     265,
+     265,
+     919
+    ],
+    "pull_minus_bot_min": 265,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.099,
+     0.1732
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.0797,
+     0.0797,
+     0.08
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.00297,
+     0.00297
+    ],
+    "with_outsider_ahead": 4,
+    "bot_buys_per_pool_p50": 46
+   },
+   "10-11 14": {
+    "n": 6,
+    "bot_off_p10_50_90": [
+     27,
+     38,
+     47
+    ],
+    "bot_off_min_max": [
+     27,
+     52
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.1,
+     0.1237,
+     0.125
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.08,
+     0.08,
+     0.0803
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 47
+   }
+  }
+ },
+ "v5.0": {
+  "all": {
+   "n": 223,
+   "bot_off_p10_50_90": [
+    8,
+    10,
+    48
+   ],
+   "bot_off_min_max": [
+    7,
+    128
+   ],
+   "no_bot": 0,
+   "no_bot_frac": 0.0,
+   "early_pull": 0,
+   "early_pull_frac": 0.0,
+   "early_pull_offs": [],
+   "early_pull_with_outsider_before": 0,
+   "early_pull_outsiders": [],
+   "pulled_within_1200": 52,
+   "pull_minus_bot_p10_50_90": [
+    61,
+    791,
+    1034
+   ],
+   "pull_minus_bot_min": 21,
+   "bot_eth_p10_50_90": [
+    0.05,
+    0.099,
+    0.125
+   ],
+   "minout_ratio_min_med_max": [
+    0.95,
+    0.95,
+    0.95
+   ],
+   "room_eth_min_p10_med": [
+    0.1315,
+    0.1318,
+    0.1325
+   ],
+   "eth_ahead_p50_p90_max": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "with_outsider_ahead": 0,
+   "bot_buys_per_pool_p50": 49
+  },
+  "hours": {
+   "10-10 14": {
+    "n": 4,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     11
+    ],
+    "bot_off_min_max": [
+     8,
+     11
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 2,
+    "pull_minus_bot_p10_50_90": [
+     918,
+     918,
+     1170
+    ],
+    "pull_minus_bot_min": 918,
+    "bot_eth_p10_50_90": [
+     0.0546,
+     0.099,
+     0.1
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1319,
+     0.1319,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-10 15": {
+    "n": 14,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     128
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 6,
+    "pull_minus_bot_p10_50_90": [
+     21,
+     742,
+     1034
+    ],
+    "pull_minus_bot_min": 21,
+    "bot_eth_p10_50_90": [
+     0.05,
+     0.1,
+     0.125
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1318,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 46
+   },
+   "10-10 16": {
+    "n": 7,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     15
+    ],
+    "bot_off_min_max": [
+     8,
+     18
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.05,
+     0.075,
+     0.099
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1318,
+     0.1322
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 51
+   },
+   "10-10 17": {
+    "n": 6,
+    "bot_off_p10_50_90": [
+     8,
+     8,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     10
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.0605,
+     0.099,
+     0.1151
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.132,
+     0.132,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-10 18": {
+    "n": 15,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     10
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 7,
+    "pull_minus_bot_p10_50_90": [
+     59,
+     61,
+     596
+    ],
+    "pull_minus_bot_min": 44,
+    "bot_eth_p10_50_90": [
+     0.0495,
+     0.0762,
+     0.1237
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1318,
+     0.1322
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 49
+   },
+   "10-10 19": {
+    "n": 8,
+    "bot_off_p10_50_90": [
+     8,
+     8,
+     9
+    ],
+    "bot_off_min_max": [
+     8,
+     10
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 2,
+    "pull_minus_bot_p10_50_90": [
+     840,
+     840,
+     895
+    ],
+    "pull_minus_bot_min": 840,
+    "bot_eth_p10_50_90": [
+     0.0495,
+     0.099,
+     0.1237
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1315,
+     0.1318,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 49
+   },
+   "10-10 20": {
+    "n": 15,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     9
+    ],
+    "bot_off_min_max": [
+     8,
+     10
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 6,
+    "pull_minus_bot_p10_50_90": [
+     666,
+     763,
+     853
+    ],
+    "pull_minus_bot_min": 666,
+    "bot_eth_p10_50_90": [
+     0.0765,
+     0.1,
+     0.1463
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1322,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 47
+   },
+   "10-10 21": {
+    "n": 8,
+    "bot_off_p10_50_90": [
+     8,
+     8,
+     9
+    ],
+    "bot_off_min_max": [
+     8,
+     9
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 2,
+    "pull_minus_bot_p10_50_90": [
+     223,
+     223,
+     460
+    ],
+    "pull_minus_bot_min": 223,
+    "bot_eth_p10_50_90": [
+     0.065,
+     0.099,
+     0.128
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.132,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-10 22": {
+    "n": 10,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     14
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 3,
+    "pull_minus_bot_p10_50_90": [
+     850,
+     902,
+     963
+    ],
+    "pull_minus_bot_min": 850,
+    "bot_eth_p10_50_90": [
+     0.075,
+     0.099,
+     0.1237
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1321,
+     0.1322,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 47
+   },
+   "10-10 23": {
+    "n": 8,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "bot_off_min_max": [
+     8,
+     10
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 2,
+    "pull_minus_bot_p10_50_90": [
+     913,
+     913,
+     1003
+    ],
+    "pull_minus_bot_min": 913,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.1,
+     0.125
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1322,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 51
+   },
+   "10-11 00": {
+    "n": 11,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     9
+    ],
+    "bot_off_min_max": [
+     8,
+     19
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 2,
+    "pull_minus_bot_p10_50_90": [
+     634,
+     634,
+     991
+    ],
+    "pull_minus_bot_min": 634,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.099,
+     0.125
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1321,
+     0.1322,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-11 01": {
+    "n": 13,
+    "bot_off_p10_50_90": [
+     8,
+     8,
+     10
+    ],
+    "bot_off_min_max": [
+     7,
+     14
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 6,
+    "pull_minus_bot_p10_50_90": [
+     56,
+     475,
+     539
+    ],
+    "pull_minus_bot_min": 56,
+    "bot_eth_p10_50_90": [
+     0.0495,
+     0.1237,
+     0.1313
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1318,
+     0.1328
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 47
+   },
+   "10-11 02": {
+    "n": 7,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     9
+    ],
+    "bot_off_min_max": [
+     8,
+     9
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 1,
+    "pull_minus_bot_p10_50_90": [
+     1075,
+     1075,
+     1075
+    ],
+    "pull_minus_bot_min": 1075,
+    "bot_eth_p10_50_90": [
+     0.0909,
+     0.099,
+     0.1237
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1322,
+     0.1324,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 48
+   },
+   "10-11 03": {
+    "n": 8,
+    "bot_off_p10_50_90": [
+     8,
+     9,
+     16
+    ],
+    "bot_off_min_max": [
+     8,
+     16
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.075,
+     0.1237,
+     0.125
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1322,
+     0.1328
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 51
+   },
+   "10-11 04": {
+    "n": 11,
+    "bot_off_p10_50_90": [
+     9,
+     32,
+     54
+    ],
+    "bot_off_min_max": [
+     8,
+     56
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 3,
+    "pull_minus_bot_p10_50_90": [
+     436,
+     602,
+     945
+    ],
+    "pull_minus_bot_min": 436,
+    "bot_eth_p10_50_90": [
+     0.0685,
+     0.075,
+     0.125
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.132,
+     0.1321,
+     0.1322
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 51
+   },
+   "10-11 05": {
+    "n": 8,
+    "bot_off_p10_50_90": [
+     33,
+     39,
+     48
+    ],
+    "bot_off_min_max": [
+     32,
+     56
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 1,
+    "pull_minus_bot_p10_50_90": [
+     554,
+     554,
+     554
+    ],
+    "pull_minus_bot_min": 554,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.1,
+     0.1237
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1322,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 51
+   },
+   "10-11 06": {
+    "n": 10,
+    "bot_off_p10_50_90": [
+     32,
+     35,
+     47
+    ],
+    "bot_off_min_max": [
+     29,
+     52
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 3,
+    "pull_minus_bot_p10_50_90": [
+     687,
+     942,
+     1065
+    ],
+    "pull_minus_bot_min": 687,
+    "bot_eth_p10_50_90": [
+     0.099,
+     0.1237,
+     0.1274
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1322,
+     0.1325,
+     0.1328
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-11 07": {
+    "n": 7,
+    "bot_off_p10_50_90": [
+     36,
+     38,
+     53
+    ],
+    "bot_off_min_max": [
+     34,
+     56
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.0742,
+     0.1222
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1322,
+     0.1322
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-11 08": {
+    "n": 9,
+    "bot_off_p10_50_90": [
+     36,
+     39,
+     48
+    ],
+    "bot_off_min_max": [
+     35,
+     50
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 2,
+    "pull_minus_bot_p10_50_90": [
+     969,
+     969,
+     1113
+    ],
+    "pull_minus_bot_min": 969,
+    "bot_eth_p10_50_90": [
+     0.075,
+     0.099,
+     0.1237
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1322,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 49
+   },
+   "10-11 09": {
+    "n": 8,
+    "bot_off_p10_50_90": [
+     37,
+     47,
+     49
+    ],
+    "bot_off_min_max": [
+     35,
+     55
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 1,
+    "pull_minus_bot_p10_50_90": [
+     1025,
+     1025,
+     1025
+    ],
+    "pull_minus_bot_min": 1025,
+    "bot_eth_p10_50_90": [
+     0.099,
+     0.125,
+     0.1267
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1321,
+     0.1325,
+     0.1328
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 51
+   },
+   "10-11 10": {
+    "n": 10,
+    "bot_off_p10_50_90": [
+     31,
+     40,
+     50
+    ],
+    "bot_off_min_max": [
+     30,
+     64
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 1,
+    "pull_minus_bot_p10_50_90": [
+     352,
+     352,
+     352
+    ],
+    "pull_minus_bot_min": 352,
+    "bot_eth_p10_50_90": [
+     0.0495,
+     0.0719,
+     0.099
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1318,
+     0.1321
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 48
+   },
+   "10-11 11": {
+    "n": 7,
+    "bot_off_p10_50_90": [
+     37,
+     45,
+     47
+    ],
+    "bot_off_min_max": [
+     33,
+     53
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 1,
+    "pull_minus_bot_p10_50_90": [
+     890,
+     890,
+     890
+    ],
+    "pull_minus_bot_min": 890,
+    "bot_eth_p10_50_90": [
+     0.0842,
+     0.099,
+     0.1237
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1319,
+     0.1323,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 45
+   },
+   "10-11 12": {
+    "n": 7,
+    "bot_off_p10_50_90": [
+     37,
+     40,
+     48
+    ],
+    "bot_off_min_max": [
+     36,
+     52
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 1,
+    "pull_minus_bot_p10_50_90": [
+     970,
+     970,
+     970
+    ],
+    "pull_minus_bot_min": 970,
+    "bot_eth_p10_50_90": [
+     0.0597,
+     0.1,
+     0.1237
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.132,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 49
+   },
+   "10-11 13": {
+    "n": 9,
+    "bot_off_p10_50_90": [
+     29,
+     39,
+     56
+    ],
+    "bot_off_min_max": [
+     27,
+     62
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.075,
+     0.1047,
+     0.1219
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1318,
+     0.1322,
+     0.1325
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 50
+   },
+   "10-11 14": {
+    "n": 3,
+    "bot_off_p10_50_90": [
+     43,
+     45,
+     55
+    ],
+    "bot_off_min_max": [
+     43,
+     55
+    ],
+    "no_bot": 0,
+    "no_bot_frac": 0.0,
+    "early_pull": 0,
+    "early_pull_frac": 0.0,
+    "early_pull_offs": [],
+    "early_pull_with_outsider_before": 0,
+    "early_pull_outsiders": [],
+    "pulled_within_1200": 0,
+    "pull_minus_bot_p10_50_90": null,
+    "pull_minus_bot_min": null,
+    "bot_eth_p10_50_90": [
+     0.0742,
+     0.075,
+     0.099
+    ],
+    "minout_ratio_min_med_max": [
+     0.95,
+     0.95,
+     0.95
+    ],
+    "room_eth_min_p10_med": [
+     0.1322,
+     0.1322,
+     0.1322
+    ],
+    "eth_ahead_p50_p90_max": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "with_outsider_ahead": 0,
+    "bot_buys_per_pool_p50": 48
+   }
+  }
+ }
+}

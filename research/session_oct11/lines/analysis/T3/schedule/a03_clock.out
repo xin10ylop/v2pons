@@ -1,0 +1,12 @@
+=== 3.0: n 168; T - L seconds hist [(2, 9), (3, 41), (4, 54), (5, 41), (6, 23)]
+   T is the first block of its second in 15 (9%); T-1: 17; T+1: 19; L: 18 (base ~10%)
+   T blocks by T-L seconds: {2: (9, 18, 28), 3: (41, 23, 38), 4: (54, 31, 48), 5: (41, 41, 55), 6: (23, 51, 61)}
+   T tx index in block p10/50/90: [1, 3, 7]  ntx in T block p50: [6]
+=== 5.0: n 76; T - L seconds hist [(3, 23), (4, 18), (5, 25), (6, 10)]
+   T is the first block of its second in 9 (12%); T-1: 8; T+1: 9; L: 13 (base ~10%)
+   T blocks by T-L seconds: {3: (23, 27, 37), 4: (18, 35, 48), 5: (25, 40, 55), 6: (10, 52, 62)}
+   T tx index in block p10/50/90: [1, 3, 6]  ntx in T block p50: [6]
+=== 2.433: n 69; T - L seconds hist [(0, 7), (1, 60), (2, 2)]
+   T is the first block of its second in 5 (7%); T-1: 4; T+1: 9; L: 8 (base ~10%)
+   T blocks by T-L seconds: {0: (7, 8, 9), 1: (60, 7, 18), 2: (2, 15, 15)}
+   T tx index in block p10/50/90: [1, 2, 6]  ntx in T block p50: [6]

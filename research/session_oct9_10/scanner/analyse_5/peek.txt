@@ -1,0 +1,427 @@
+============================== 0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|100|1|true
+-- 0x2ba5fed9f0 b0 84335701 ts 1791567185 from 0x818b8bd2 nonce 3 val 1.8 tick0 224391 liq 134164078649987381784550 nsw 13 buys 12 sells 1 pulls 1 adds 1 ethin 0.67761
+   add +0 lo -887272 hi 887272 dl 134164078649987381784550 tx 0x1ddc1746
+   sw +    3 ti  13 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93353
+   sw +  273 ti   1 BUY  0.031552 fee 100 snd 0x88767899 to 0x88767899 from 0x48411155 sel 3593564c len 1284 nonce 0
+   sw +  410 ti   2 BUY  0.112679 fee 100 snd 0x88767899 to 0x88767899 from 0xc9cf26ef sel 3593564c len 1284 nonce 0
+   sw +  504 ti   2 BUY  0.029139 fee 100 snd 0x88767899 to 0x88767899 from 0x5897679b sel 3593564c len 1284 nonce 0
+   sw +  622 ti   3 BUY  0.020750 fee 100 snd 0x88767899 to 0x88767899 from 0x909b3cc6 sel 3593564c len 1284 nonce 0
+   sw +  715 ti   8 BUY  0.023623 fee 100 snd 0x88767899 to 0x88767899 from 0x39d732df sel 3593564c len 1284 nonce 0
+   sw +  857 ti   6 BUY  0.104980 fee 100 snd 0x88767899 to 0x88767899 from 0xd7f89b40 sel 3593564c len 1284 nonce 0
+   sw +  964 ti  28 BUY  0.097051 fee 100 snd 0x88767899 to 0x88767899 from 0x5ed6ebf3 sel 3593564c len 1284 nonce 0
+   sw + 1051 ti   1 BUY  0.066829 fee 100 snd 0x88767899 
+   sw + 1167 ti   5 BUY  0.108887 fee 100 snd 0x88767899 
+   sw + 1179 ti   7 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1304 ti   2 BUY  0.082100 fee 100 snd 0x88767899 
+   sw + 1777 ti   2 SELL 0.000026 fee 100 snd 0x88767899 
+   PULL +2019 dl -134164078649987381784550 snd 0x58daec31 to 0x58daec31 from 0x818b8bd2 sel dd46508f
+-- 0x96177e60c6 b0 84345470 ts 1791568179 from 0xa578bc85 nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 15 buys 13 sells 2 pulls 0 adds 1 ethin 0.48358
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0x004490bf
+   sw +    3 ti   1 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93380
+   sw +  280 ti   3 BUY  0.053429 fee 100 snd 0x88767899 to 0x88767899 from 0x1b71c6eb sel 3593564c len 1284 nonce 0
+   sw +  290 ti   9 BUY  0.000070 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 867
+   sw +  362 ti  43 SELL 0.000070 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 869
+   sw +  454 ti   2 BUY  0.050386 fee 100 snd 0x88767899 to 0x88767899 from 0x1cfd2f73 sel 3593564c len 1284 nonce 0
+   sw +  627 ti   8 BUY  0.009547 fee 100 snd 0x88767899 to 0x88767899 from 0x57845875 sel 3593564c len 1284 nonce 0
+   sw +  742 ti   7 BUY  0.025461 fee 100 snd 0x88767899 to 0x88767899 from 0x68305d2a sel 3593564c len 1284 nonce 0
+   sw +  878 ti  11 BUY  0.074726 fee 100 snd 0x88767899 to 0x88767899 from 0x6e972134 sel 3593564c len 1284 nonce 0
+   sw + 1020 ti   4 BUY  0.053663 fee 100 snd 0x88767899 
+   sw + 1190 ti   3 BUY  0.009781 fee 100 snd 0x88767899 
+   sw + 1204 ti   4 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1305 ti   7 BUY  0.090172 fee 100 snd 0x88767899 
+   sw + 1476 ti   9 BUY  0.064428 fee 100 snd 0x88767899 
+   sw + 1590 ti   8 BUY  0.051894 fee 100 snd 0x88767899 
+-- 0xc7c4ffa93f b0 84352126 ts 1791568857 from 0xb9bdb6f2 nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 19 buys 16 sells 3 pulls 0 adds 1 ethin 0.48461
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0x7babdb4b
+   sw +    3 ti   4 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93395
+   sw +  299 ti  12 BUY  0.097813 fee 100 snd 0x88767899 to 0x88767899 from 0x0ab5b3bc sel 3593564c len 1284 nonce 0
+   sw +  313 ti   6 BUY  0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 870
+   sw +  322 ti   2 BUY  0.000450 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 531
+   sw +  385 ti   5 SELL 0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 872
+   sw +  507 ti   5 BUY  0.013013 fee 100 snd 0x88767899 to 0x88767899 from 0x4e8b10ee sel 3593564c len 1284 nonce 0
+   sw +  616 ti   4 SELL 0.000456 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 534
+   sw +  693 ti   5 BUY  0.010903 fee 100 snd 0x88767899 to 0x88767899 from 0x6c49484c sel 3593564c len 1284 nonce 0
+   sw +  807 ti   4 BUY  0.087163 fee 100 snd 0x88767899 
+   sw +  998 ti   1 BUY  0.023764 fee 100 snd 0x88767899 
+   sw + 1011 ti   5 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1121 ti   2 BUY  0.034414 fee 100 snd 0x88767899 
+   sw + 1294 ti   3 BUY  0.065662 fee 100 snd 0x88767899 
+   sw + 1503 ti   1 BUY  0.040644 fee 100 snd 0x88767899 
+-- 0x49611ae86a b0 84365286 ts 1791570199 from 0xc2545e7e nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 17 buys 14 sells 3 pulls 1 adds 1 ethin 0.48446
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0x615f7a6f
+   sw +    3 ti  20 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93427
+   sw +  277 ti   3 BUY  0.026048 fee 100 snd 0x88767899 to 0x88767899 from 0x81413b4c sel 3593564c len 1284 nonce 0
+   sw +  290 ti   2 BUY  0.000070 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 873
+   sw +  298 ti   5 BUY  0.000439 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 535
+   sw +  363 ti   5 SELL 0.000070 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 875
+   sw +  521 ti   4 BUY  0.044315 fee 100 snd 0x88767899 to 0x88767899 from 0x134d2c1e sel 3593564c len 1284 nonce 0
+   sw +  595 ti   3 SELL 0.000458 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 538
+   sw +  691 ti   1 BUY  0.032137 fee 100 snd 0x88767899 to 0x88767899 from 0x07fa9a8a sel 3593564c len 1284 nonce 0
+   sw +  942 ti   3 BUY  0.084813 fee 100 snd 0x88767899 
+   sw + 1076 ti   1 BUY  0.016576 fee 100 snd 0x88767899 
+   sw + 1090 ti   2 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1198 ti   6 BUY  0.076694 fee 100 snd 0x88767899 
+   sw + 1372 ti   2 BUY  0.032814 fee 100 snd 0x88767899 
+   sw + 1535 ti   2 BUY  0.072828 fee 100 snd 0x88767899 
+   PULL +2431 dl -141421356237309504880168 snd 0x58daec31 to 0x58daec31 from 0xc2545e7e sel dd46508f
+-- 0x48f9655aa6 b0 85122142 ts 1791648065 from 0xdabcf3c2 nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 19 buys 15 sells 4 pulls 0 adds 1 ethin 0.48525
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0xc1a8c8ce
+   sw +    3 ti   4 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95591
+   sw +   90 ti   2 BUY  0.000324 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1094
+   sw +  105 ti   4 BUY  0.000511 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 592
+   sw +  402 ti   2 SELL 0.000511 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 595
+   sw +  461 ti   6 BUY  0.007205 fee 100 snd 0x88767899 to 0x88767899 from 0x218de88c sel 3593564c len 1284 nonce 0
+   sw +  592 ti   5 BUY  0.028374 fee 100 snd 0x88767899 to 0x88767899 from 0x66a8603b sel 3593564c len 1284 nonce 0
+   sw +  608 ti   6 BUY  0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 895
+   sw +  692 ti   3 SELL 0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 897
+   sw +  755 ti   7 BUY  0.070711 fee 100 snd 0x88767899 
+   sw +  903 ti   3 BUY  0.043325 fee 100 snd 0x88767899 
+   sw +  914 ti   1 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1050 ti   1 BUY  0.030742 fee 100 snd 0x88767899 
+   sw + 1233 ti   2 BUY  0.063531 fee 100 snd 0x88767899 
+   sw + 1530 ti   1 BUY  0.073154 fee 100 snd 0x88767899 
+-- 0x0ffcb2b292 b0 85127456 ts 1791648610 from 0x2a3def04 nonce 3 val 1.8 tick0 201364 liq 42426406871192851464050 nsw 19 buys 15 sells 4 pulls 1 adds 1 ethin 0.67932
+   add +0 lo -887272 hi 887272 dl 42426406871192851464050 tx 0x21c97f52
+   sw +    3 ti   4 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95615
+   sw +   98 ti   1 BUY  0.000303 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1099
+   sw +  138 ti   6 BUY  0.000381 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 596
+   sw +  405 ti   3 BUY  0.080786 fee 100 snd 0x88767899 to 0x88767899 from 0xfec4a441 sel 3593564c len 1284 nonce 0
+   sw +  417 ti   7 BUY  0.000070 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 901
+   sw +  428 ti   1 SELL 0.000416 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 599
+   sw +  491 ti   1 SELL 0.000070 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 903
+   sw +  798 ti   1 BUY  0.021809 fee 100 snd 0x88767899 to 0x88767899 from 0xc61f0be0 sel 3593564c len 1284 nonce 0
+   sw +  991 ti   3 BUY  0.038903 fee 100 snd 0x88767899 
+   sw + 1166 ti   2 BUY  0.050870 fee 100 snd 0x88767899 
+   sw + 1180 ti   1 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1286 ti   4 BUY  0.121814 fee 100 snd 0x88767899 
+   sw + 1485 ti   1 BUY  0.095317 fee 100 snd 0x88767899 
+   sw + 1540 ti   3 BUY  0.090921 fee 100 snd 0x88767899 
+   PULL +2477 dl -42426406871192851464050 snd 0x58daec31 to 0x58daec31 from 0x2a3def04 sel dd46508f
+-- 0xdcaeef1bdb b0 85131978 ts 1791649074 from 0xe8679379 nonce 3 val 2.0 tick0 200311 liq 44721359549995793928183 nsw 18 buys 16 sells 2 pulls 1 adds 1 ethin 0.48502
+   add +0 lo -887272 hi 887272 dl 44721359549995793928183 tx 0x11e1c0e4
+   sw +    3 ti   1 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95645
+   sw +   90 ti   2 BUY  0.000313 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1105
+   sw +   97 ti   1 BUY  0.000439 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 600
+   sw +  398 ti   4 SELL 0.000439 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 603
+   sw +  469 ti   4 BUY  0.000040 fee 100 snd 0x88767899 to 0x88767899 from 0x3155c72d sel 3593564c len 1124 nonce 1550
+   sw +  480 ti   2 BUY  0.000040 fee 100 snd 0x88767899 to 0x88767899 from 0x3155c72d sel 3593564c len 1124 nonce 1553
+   sw +  921 ti   3 BUY  0.050248 fee 100 snd 0x88767899 to 0x88767899 from 0x772a90ce sel 3593564c len 1284 nonce 0
+   sw + 1092 ti   1 BUY  0.066808 fee 100 snd 0x88767899 to 0x88767899 from 0xdada082c sel 3593564c len 1284 nonce 0
+   sw + 1280 ti   3 BUY  0.075551 fee 100 snd 0x88767899 
+   sw + 1540 ti   5 BUY  0.036054 fee 100 snd 0x88767899 
+   sw + 1551 ti   3 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1677 ti   3 BUY  0.054054 fee 100 snd 0x88767899 
+   sw + 1829 ti   1 SELL 0.000408 fee 100 snd 0x88767899 
+   sw + 1860 ti   6 BUY  0.045620 fee 100 snd 0x88767899 
+   PULL +2627 dl -44721359549995793928183 snd 0x58daec31 to 0x58daec31 from 0xe8679379 sel dd46508f
+-- 0x734490ef2e b0 85136008 ts 1791649488 from 0x67ac8185 nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 21 buys 17 sells 4 pulls 0 adds 1 ethin 0.48488
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0xf9f74e0b
+   sw +    3 ti   1 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95678
+   sw +   82 ti   4 BUY  0.000320 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1110
+   sw +   91 ti   2 BUY  0.000303 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 604
+   sw +  371 ti   1 BUY  0.022416 fee 100 snd 0x88767899 to 0x88767899 from 0x2c940967 sel 3593564c len 1284 nonce 0
+   sw +  385 ti   4 SELL 0.000309 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 607
+   sw +  386 ti   4 BUY  0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 904
+   sw +  461 ti   2 BUY  0.000040 fee 100 snd 0x88767899 to 0x88767899 from 0x3155c72d sel 3593564c len 1124 nonce 1567
+   sw +  468 ti   2 SELL 0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 906
+   sw +  472 ti   1 BUY  0.000040 fee 100 snd 0x88767899 
+   sw +  998 ti   2 BUY  0.064450 fee 100 snd 0x88767899 
+   sw + 1013 ti   1 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1119 ti   2 BUY  0.018029 fee 100 snd 0x88767899 
+   sw + 1321 ti   1 BUY  0.031718 fee 100 snd 0x88767899 
+   sw + 1424 ti   3 BUY  0.055587 fee 100 snd 0x88767899 
+-- 0x7215ffa6f9 b0 85143248 ts 1791650229 from 0x277482e3 nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 7 buys 6 sells 1 pulls 1 adds 1 ethin 0.00589
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0x958a7a3e
+   sw +    7 ti   2 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95735
+   sw +   89 ti   4 BUY  0.000341 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1120
+   sw +   97 ti   1 BUY  0.000317 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 608
+   sw +  391 ti   3 SELL 0.000317 fee 125 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 611
+   sw +  466 ti   2 BUY  0.000040 fee 125 snd 0x88767899 to 0x88767899 from 0x3155c72d sel 3593564c len 1124 nonce 1591
+   sw +  477 ti   2 BUY  0.000040 fee 125 snd 0x88767899 to 0x88767899 from 0x3155c72d sel 3593564c len 1124 nonce 1594
+   sw +  586 ti   3 BUY  0.005148 fee 125 snd 0xf0b7eaaf to 0xf0b7eaaf from 0xc74d9ced sel 39ecce49 len 1060 nonce 792
+   PULL +663 dl -141421356237309504880168 snd 0x58daec31 to 0x58daec31 from 0x277482e3 sel dd46508f
+-- 0x8b0595fd07 b0 85149361 ts 1791650857 from 0x3af409a0 nonce 4 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 19 buys 15 sells 4 pulls 0 adds 1 ethin 0.48997
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0x0300ef3a
+   sw +    7 ti   3 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95780
+   sw +   84 ti   7 BUY  0.000295 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1127
+   sw +   96 ti   6 BUY  0.000326 fee 100 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 612
+   sw +  387 ti   8 SELL 0.000326 fee 125 snd 0x88767899 to 0x88767899 from 0x13301ff0 sel 3593564c len 1092 nonce 615
+   sw +  577 ti   5 BUY  0.014813 fee 125 snd 0x88767899 to 0x88767899 from 0xce294aeb sel 3593564c len 1284 nonce 0
+   sw +  590 ti   2 BUY  0.000070 fee 125 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 907
+   sw +  672 ti   3 SELL 0.000070 fee 125 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 909
+   sw +  706 ti   1 BUY  0.012039 fee 125 snd 0x88767899 to 0x88767899 from 0xb874b7f4 sel 3593564c len 1284 nonce 0
+   sw +  826 ti   5 BUY  0.098832 fee 125 snd 0x88767899 
+   sw +  951 ti   1 BUY  0.061182 fee 125 snd 0x88767899 
+   sw +  963 ti   5 BUY  0.000024 fee 125 snd 0x88767899 
+   sw + 1066 ti   1 BUY  0.088925 fee 125 snd 0x88767899 
+   sw + 1238 ti   2 BUY  0.016993 fee 125 snd 0x88767899 
+   sw + 1373 ti   1 BUY  0.024127 fee 125 snd 0x88767899 
+-- 0xc7f3c9705d b0 85158771 ts 1791651818 from 0x3f5dec1c nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 17 buys 14 sells 3 pulls 1 adds 1 ethin 0.48941
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0x578dd473
+   sw +    3 ti   2 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95845
+   sw +   92 ti   9 BUY  0.000311 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1130
+   sw +  340 ti   4 BUY  0.071266 fee 100 snd 0x88767899 to 0x88767899 from 0x29c2f5e7 sel 3593564c len 1284 nonce 0
+   sw +  354 ti   4 BUY  0.000090 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 910
+   sw +  442 ti   8 SELL 0.000090 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 912
+   sw +  517 ti   1 BUY  0.047855 fee 100 snd 0x88767899 to 0x88767899 from 0x97fba863 sel 3593564c len 1284 nonce 0
+   sw +  647 ti   5 BUY  0.072257 fee 100 snd 0x88767899 to 0x88767899 from 0x3a6afe53 sel 3593564c len 1284 nonce 0
+   sw +  874 ti   3 BUY  0.057129 fee 100 snd 0x88767899 to 0x88767899 from 0xdd1a7031 sel 3593564c len 1284 nonce 0
+   sw +  999 ti   1 BUY  0.012107 fee 100 snd 0x88767899 
+   sw + 1091 ti   4 BUY  0.079730 fee 100 snd 0x88767899 
+   sw + 1104 ti   2 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1351 ti   4 BUY  0.023723 fee 100 snd 0x88767899 
+   sw + 1503 ti   1 BUY  0.028495 fee 100 snd 0x88767899 
+   sw + 1610 ti   2 BUY  0.011567 fee 100 snd 0x88767899 
+   PULL +2985 dl -141421356237309504880168 snd 0x58daec31 to 0x58daec31 from 0x3f5dec1c sel dd46508f
+-- 0xde0101f9e0 b0 85163013 ts 1791652251 from 0x13743bd7 nonce 3 val 1.8 tick0 224391 liq 134164078649987381784550 nsw 16 buys 15 sells 1 pulls 1 adds 1 ethin 0.68320
+   add +0 lo -887272 hi 887272 dl 134164078649987381784550 tx 0x2f2efb55
+   sw +    3 ti   4 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95878
+   sw +   91 ti   5 BUY  0.000328 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1133
+   sw +  316 ti  12 BUY  0.097062 fee 100 snd 0x88767899 to 0x88767899 from 0xfe119bd9 sel 3593564c len 1284 nonce 0
+   sw +  329 ti   3 BUY  0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 913
+   sw +  403 ti   7 SELL 0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 915
+   sw +  431 ti  12 BUY  0.087262 fee 100 snd 0x88767899 to 0x88767899 from 0x253cbcc8 sel 3593564c len 1284 nonce 0
+   sw +  574 ti   5 BUY  0.104190 fee 100 snd 0x88767899 to 0x88767899 from 0x30d62122 sel 3593564c len 1284 nonce 0
+   sw +  633 ti   2 BUY  0.000050 fee 100 snd 0x36dc95f1 to 0x6e2a35a7 from 0x4e3c0b0a sel 0c307f76 len 1156 nonce 953
+   sw +  807 ti   6 BUY  0.018534 fee 100 snd 0x88767899 
+   sw +  949 ti   3 BUY  0.047680 fee 100 snd 0x88767899 
+   sw +  962 ti   3 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1059 ti   3 BUY  0.066644 fee 100 snd 0x88767899 
+   sw + 1246 ti   5 BUY  0.047425 fee 100 snd 0x88767899 
+   sw + 1350 ti   7 BUY  0.060916 fee 100 snd 0x88767899 
+   PULL +1766 dl -134164078649987381784550 snd 0x58daec31 to 0x58daec31 from 0x13743bd7 sel dd46508f
+-- 0xad44a81c41 b0 85166838 ts 1791652641 from 0xf0aa360f nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 17 buys 14 sells 3 pulls 0 adds 1 ethin 0.48943
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0x0dc7b0a5
+   sw +    3 ti   2 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95901
+   sw +   90 ti   2 BUY  0.000326 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1135
+   sw +  552 ti   3 BUY  0.062873 fee 125 snd 0x88767899 to 0x88767899 from 0x7d1020e1 sel 3593564c len 1284 nonce 0
+   sw +  566 ti   8 BUY  0.000070 fee 125 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 916
+   sw +  641 ti   3 SELL 0.000070 fee 125 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 918
+   sw +  713 ti   3 BUY  0.058040 fee 125 snd 0x88767899 to 0x88767899 from 0x6d0e5bd3 sel 3593564c len 1284 nonce 0
+   sw +  881 ti   1 BUY  0.064664 fee 125 snd 0x88767899 to 0x88767899 from 0xae793640 sel 3593564c len 1284 nonce 0
+   sw +  976 ti   6 BUY  0.033874 fee 125 snd 0x88767899 to 0x88767899 from 0xa6165ecd sel 3593564c len 1284 nonce 0
+   sw + 1091 ti   6 BUY  0.007201 fee 125 snd 0x88767899 
+   sw + 1192 ti   1 BUY  0.056608 fee 125 snd 0x88767899 
+   sw + 1203 ti   3 BUY  0.000024 fee 125 snd 0x88767899 
+   sw + 1270 ti   1 BUY  0.062247 fee 125 snd 0x88767899 
+   sw + 1392 ti   3 BUY  0.075762 fee 125 snd 0x88767899 
+   sw + 1531 ti   5 BUY  0.029399 fee 125 snd 0x88767899 
+-- 0xcee0878d6b b0 85171428 ts 1791653110 from 0x5fe0dc07 nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 15 buys 14 sells 1 pulls 1 adds 1 ethin 0.48914
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0x6ca8035d
+   sw +    3 ti   6 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95938
+   sw +   88 ti   2 BUY  0.000309 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1140
+   sw +  258 ti   2 BUY  0.059158 fee 100 snd 0x88767899 to 0x88767899 from 0xbd0be06a sel 3593564c len 1284 nonce 0
+   sw +  273 ti   7 BUY  0.000090 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 919
+   sw +  347 ti   4 SELL 0.000090 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 921
+   sw +  431 ti   7 BUY  0.012382 fee 100 snd 0x88767899 to 0x88767899 from 0xbaa0a12c sel 3593564c len 1284 nonce 0
+   sw +  581 ti   6 BUY  0.087426 fee 100 snd 0x88767899 to 0x88767899 from 0x95da65e5 sel 3593564c len 1284 nonce 0
+   sw +  764 ti   3 BUY  0.054186 fee 100 snd 0x88767899 to 0x88767899 from 0x7d988169 sel 3593564c len 1284 nonce 0
+   sw +  888 ti   2 BUY  0.049213 fee 100 snd 0x88767899 
+   sw + 1053 ti   2 BUY  0.053909 fee 100 snd 0x88767899 
+   sw + 1065 ti   3 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1156 ti   4 BUY  0.082914 fee 100 snd 0x88767899 
+   sw + 1273 ti   1 BUY  0.023155 fee 100 snd 0x88767899 
+   sw + 1384 ti   1 BUY  0.009251 fee 100 snd 0x88767899 
+   PULL +1567 dl -141421356237309504880168 snd 0x58daec31 to 0x58daec31 from 0x5fe0dc07 sel dd46508f
+-- 0xc99153ca90 b0 85181248 ts 1791654121 from 0x44ce1a5b nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 17 buys 14 sells 3 pulls 0 adds 1 ethin 0.48936
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0x97032c93
+   sw +    3 ti   1 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 96008
+   sw +   93 ti   5 BUY  0.000310 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1146
+   sw +  290 ti   1 BUY  0.061150 fee 100 snd 0x88767899 to 0x88767899 from 0x7f253e45 sel 3593564c len 1284 nonce 0
+   sw +  303 ti   1 BUY  0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 922
+   sw +  376 ti   1 SELL 0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 924
+   sw +  428 ti   1 BUY  0.071757 fee 100 snd 0x88767899 to 0x88767899 from 0x76ad533e sel 3593564c len 1284 nonce 0
+   sw +  607 ti   9 BUY  0.021464 fee 100 snd 0x88767899 to 0x88767899 from 0x599d329e sel 3593564c len 1284 nonce 0
+   sw +  749 ti   1 BUY  0.041418 fee 100 snd 0x88767899 to 0x88767899 from 0x1e347032 sel 3593564c len 1284 nonce 0
+   sw +  877 ti   4 BUY  0.052471 fee 100 snd 0x88767899 
+   sw + 1032 ti   5 BUY  0.027769 fee 100 snd 0x88767899 
+   sw + 1043 ti   1 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1187 ti   1 BUY  0.037486 fee 100 snd 0x88767899 
+   sw + 1290 ti   7 BUY  0.059666 fee 100 snd 0x88767899 
+   sw + 1466 ti   2 BUY  0.044163 fee 100 snd 0x88767899 
+-- 0x98c29405e7 b0 85186762 ts 1791654689 from 0xa2197cbe nonce 4 val 1.5 tick0 226215 liq 122474487139158904909864 nsw 15 buys 14 sells 1 pulls 1 adds 1 ethin 0.97410
+   add +0 lo -887272 hi 887272 dl 122474487139158904909864 tx 0x21d6218b
+   sw +    3 ti   1 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 96034
+   sw +   90 ti   1 BUY  0.000314 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1149
+   sw +  299 ti   1 BUY  0.018490 fee 100 snd 0x88767899 to 0x88767899 from 0x7ad1004c sel 3593564c len 1284 nonce 0
+   sw +  309 ti   2 BUY  0.000090 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 925
+   sw +  390 ti   4 SELL 0.000090 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 927
+   sw +  442 ti   4 BUY  0.151923 fee 100 snd 0x88767899 to 0x88767899 from 0x37d85d24 sel 3593564c len 1284 nonce 0
+   sw +  573 ti   1 BUY  0.018693 fee 100 snd 0x88767899 to 0x88767899 from 0x85604d51 sel 3593564c len 1284 nonce 0
+   sw +  723 ti   5 BUY  0.193073 fee 100 snd 0x88767899 to 0x88767899 from 0x778eca0f sel 3593564c len 1284 nonce 0
+   sw +  921 ti   2 BUY  0.151311 fee 100 snd 0x88767899 
+   sw + 1091 ti   7 BUY  0.148256 fee 100 snd 0x88767899 
+   sw + 1103 ti   3 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1327 ti   6 BUY  0.084289 fee 100 snd 0x88767899 
+   sw + 1463 ti   2 BUY  0.038046 fee 100 snd 0x88767899 
+   sw + 1592 ti   3 BUY  0.062492 fee 100 snd 0x88767899 
+   PULL +1787 dl -122474487139158904909864 snd 0x58daec31 to 0x58daec31 from 0xa2197cbe sel dd46508f
+-- 0x0788f75cf5 b0 85191062 ts 1791655130 from 0x9b983672 nonce 3 val 2.0 tick0 223338 liq 141421356237309504880168 nsw 18 buys 15 sells 3 pulls 1 adds 1 ethin 0.49090
+   add +0 lo -887272 hi 887272 dl 141421356237309504880168 tx 0xdcda26fe
+   sw +    3 ti   1 BUY  0.000002 fee 100 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 96066
+   sw +   85 ti   3 BUY  0.000326 fee 100 snd 0x88767899 to 0x88767899 from 0x5e6ec144 sel 3593564c len 1124 nonce 1151
+   sw +  319 ti   4 BUY  0.036032 fee 100 snd 0x88767899 to 0x88767899 from 0x0c3ef0e7 sel 3593564c len 1284 nonce 0
+   sw +  336 ti   3 BUY  0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1092 nonce 928
+   sw +  409 ti   1 SELL 0.000080 fee 100 snd 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c len 1508 nonce 930
+   sw +  462 ti   1 BUY  0.026820 fee 100 snd 0x88767899 to 0x88767899 from 0x7d5e0567 sel 3593564c len 1284 nonce 0
+   sw +  558 ti   1 BUY  0.018759 fee 100 snd 0x88767899 to 0x88767899 from 0x1ed8df44 sel 3593564c len 1284 nonce 0
+   sw +  665 ti   3 BUY  0.056663 fee 100 snd 0x88767899 to 0x88767899 from 0xb7e686e9 sel 3593564c len 1284 nonce 0
+   sw +  940 ti   2 BUY  0.052633 fee 100 snd 0x88767899 
+   sw + 1207 ti   4 BUY  0.001576 fee 100 snd 0x88767899 
+   sw + 1219 ti   3 BUY  0.000024 fee 100 snd 0x88767899 
+   sw + 1642 ti   9 SELL 0.000024 fee 100 snd 0x88767899 
+   sw + 1806 ti   1 SELL 0.000392 fee 100 snd 0x88767899 
+   sw + 1892 ti   1 BUY  0.057815 fee 100 snd 0x88767899 
+   PULL +2791 dl -141421356237309504880168 snd 0x58daec31 to 0x58daec31 from 0x9b983672 sel dd46508f
+============================== 0x9f81695f2d705e81f8fb7a4f8831afe92c4e6b35|7fde822e|804|10000|200|true
+-- 0x30bc1df3e9 b0 85112799 ts 1791647107 from 0x06cb3a68 nonce 2281 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x832db4be
+   sw +    4 ti  20 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95525
+-- 0x826f756fb5 b0 85115738 ts 1791647407 from 0x06cb3a68 nonce 2282 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xfae624f7
+   sw +    3 ti   3 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95546
+-- 0xe045483a47 b0 85118701 ts 1791647711 from 0x06cb3a68 nonce 2283 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x655c72e9
+   sw +    3 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95566
+-- 0x0c769be242 b0 85121589 ts 1791648008 from 0x06cb3a68 nonce 2284 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x272f45db
+   sw +    3 ti   8 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95587
+-- 0x5572e5751b b0 85124521 ts 1791648307 from 0x06cb3a68 nonce 2285 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x353035af
+   sw +    3 ti   2 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95607
+-- 0x9d3d6a4049 b0 85127457 ts 1791648610 from 0x06cb3a68 nonce 2286 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xb0dd0223
+   sw +    4 ti   2 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95616
+-- 0xceec9bcbe1 b0 85130338 ts 1791648906 from 0x06cb3a68 nonce 2287 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xde8f05ff
+   sw +    3 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95636
+-- 0x30fbf56c85 b0 85133267 ts 1791649207 from 0x06cb3a68 nonce 2288 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x3a6022f1
+   sw +    4 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95654
+-- 0xc2dcab44b0 b0 85136186 ts 1791649506 from 0x06cb3a68 nonce 2289 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xb067d350
+   sw +    3 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95681
+-- 0xe5c8e8afb7 b0 85139119 ts 1791649806 from 0x06cb3a68 nonce 2290 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xb68e7c40
+   sw +    3 ti  11 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95705
+-- 0x39ba85b291 b0 85142034 ts 1791650106 from 0x06cb3a68 nonce 2291 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x6911d29f
+   sw +    3 ti   2 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95724
+-- 0x6692ad7cf8 b0 85145028 ts 1791650412 from 0x06cb3a68 nonce 2292 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 3 buys 2 sells 1 pulls 0 adds 1 ethin 0.01075
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x70a0d840
+   sw +    3 ti   4 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95749
+   sw +  843 ti   1 BUY  0.010745 fee 10000 snd 0x36dc95f1 to 0x00000000 from 0x0312f701 sel 765e827f len 1956 nonce 114169
+   sw +  846 ti   2 SELL 0.010532 fee 10000 snd 0xfa9b5811 to 0xfa9b5811 from 0x94dddbb5 sel bbb2e1a6 len 260 nonce 2438
+-- 0xb554841e83 b0 85147902 ts 1791650707 from 0x06cb3a68 nonce 2293 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x69719050
+   sw +    3 ti   6 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95770
+-- 0x9318bf0fec b0 85150844 ts 1791651009 from 0x06cb3a68 nonce 2294 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xdffbdc65
+   sw +    2 ti   3 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95792
+-- 0x64ed816d1c b0 85156960 ts 1791651635 from 0x06cb3a68 nonce 2296 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xd4b25bd3
+   sw +    3 ti  10 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95833
+-- 0x6ff131130a b0 85162649 ts 1791652213 from 0x06cb3a68 nonce 2297 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x5b310b0f
+   sw +    3 ti   5 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 95876
+============================== 0xb7758ae7102037e3db22fe472689e6598a78f639|7fde822e|804|10000|200|true
+-- 0xd8d38500d4 b0 84291059 ts 1791562631 from 0x06cb3a68 nonce 2089 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x719eca72
+   sw +    3 ti  12 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93193
+-- 0x097cc9ea91 b0 84296671 ts 1791563203 from 0x06cb3a68 nonce 2091 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xcac5163d
+   sw +    3 ti   2 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93212
+-- 0xc925853eb8 b0 84302533 ts 1791563801 from 0x06cb3a68 nonce 2093 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x4cd96515
+   sw +    3 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93227
+-- 0xc05e536c02 b0 84305453 ts 1791564098 from 0x06cb3a68 nonce 2094 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x226618b8
+   sw +    3 ti   9 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93245
+-- 0x39ef335190 b0 84308436 ts 1791564402 from 0x06cb3a68 nonce 2095 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 3 buys 2 sells 1 pulls 0 adds 1 ethin 0.00005
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x2f0cc07b
+   sw +    3 ti   4 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93252
+   sw +    7 ti   1 BUY  0.000049 fee 10000 snd 0xf0b7eaaf to 0xf0b7eaaf from 0xfeda1c58 sel 39ecce49 len 1060 nonce 2409
+   sw + 2242 ti   7 SELL 0.000048 fee 10990 snd 0xf0b7eaaf to 0xf0b7eaaf from 0xfeda1c58 sel 39ecce49 len 1060 nonce 2445
+-- 0xe4c5c0596c b0 84311271 ts 1791564689 from 0x06cb3a68 nonce 2096 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 2 buys 2 sells 0 pulls 0 adds 1 ethin 0.00002
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xd4cf534c
+   sw +    4 ti   2 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93270
+   sw +    7 ti   1 BUY  0.000020 fee 10000 snd 0xf0b7eaaf to 0xf0b7eaaf from 0xfeda1c58 sel 39ecce49 len 1060 nonce 2448
+-- 0x05c4912d16 b0 84314259 ts 1791564994 from 0x06cb3a68 nonce 2097 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x27223937
+   sw +    4 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93279
+-- 0x9b06056b93 b0 84317179 ts 1791565295 from 0x06cb3a68 nonce 2098 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xae4793e3
+   sw +    3 ti   5 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93294
+-- 0xf3c5a9789f b0 84320076 ts 1791565592 from 0x06cb3a68 nonce 2099 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x7477d2ac
+   sw +    4 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93301
+-- 0xa8515f5613 b0 84323077 ts 1791565899 from 0x06cb3a68 nonce 2100 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x7219379d
+   sw +    4 ti   6 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93306
+-- 0xda4f92a3af b0 84325872 ts 1791566185 from 0x06cb3a68 nonce 2101 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x794b39b7
+   sw +    2 ti   8 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93311
+-- 0x1635de6f1f b0 84328968 ts 1791566500 from 0x06cb3a68 nonce 2102 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x4999d66a
+   sw +    3 ti   3 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93325
+-- 0xb0063e0fd7 b0 84334870 ts 1791567101 from 0x06cb3a68 nonce 2104 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x137e8a17
+   sw +    4 ti   4 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93351
+-- 0xef7545057c b0 84337719 ts 1791567390 from 0x06cb3a68 nonce 2105 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x5b32daab
+   sw +    3 ti   8 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93358
+-- 0x79ff6c1ae7 b0 84340757 ts 1791567699 from 0x06cb3a68 nonce 2106 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xb9dc8e2a
+   sw +    4 ti   7 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93364
+-- 0x6b26650c59 b0 84346651 ts 1791568299 from 0x06cb3a68 nonce 2108 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x37df5e20
+   sw +    3 ti   5 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93382
+============================== 0xf6b59a71e1a3169bd418169ee20e37e6a7152b5c|7fde822e|804|10000|200|true
+-- 0x6e51157bf4 b0 84350203 ts 1791568660 from 0x06cb3a68 nonce 2110 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x44991287
+   sw +   16 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93389
+-- 0x06469a4585 b0 84352439 ts 1791568889 from 0x06cb3a68 nonce 2111 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x92ef324c
+   sw +    3 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93396
+-- 0x3981d7424b b0 84355383 ts 1791569189 from 0x06cb3a68 nonce 2112 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xe1ac5ed3
+   sw +    4 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93400
+-- 0x8fdf804636 b0 84361236 ts 1791569787 from 0x06cb3a68 nonce 2114 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xae0399d9
+   sw +    3 ti   4 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93416
+-- 0xacf1caf1a4 b0 84364149 ts 1791570083 from 0x06cb3a68 nonce 2115 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xd5d39d3a
+   sw +    3 ti  10 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93423
+-- 0x3779cb4723 b0 84367142 ts 1791570388 from 0x06cb3a68 nonce 2116 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x68527a0b
+   sw +    4 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93431
+-- 0xbfc5fc7b71 b0 84370109 ts 1791570689 from 0x06cb3a68 nonce 2117 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x1564227a
+   sw +    3 ti   3 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93440
+-- 0x84adb84a49 b0 84372950 ts 1791570981 from 0x06cb3a68 nonce 2118 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x6966f9c9
+   sw +    3 ti   2 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93444
+-- 0x51903e9871 b0 84376014 ts 1791571294 from 0x06cb3a68 nonce 2119 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xcf0ba7b9
+   sw +    3 ti   8 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93451
+-- 0xfbaae82778 b0 84378824 ts 1791571582 from 0x06cb3a68 nonce 2120 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xa35b4365
+   sw +    3 ti   1 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93454
+-- 0x925757acc5 b0 84384695 ts 1791572182 from 0x06cb3a68 nonce 2122 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x734de850
+   sw +    3 ti   3 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93463
+-- 0x00137579db b0 84387666 ts 1791572487 from 0x06cb3a68 nonce 2123 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x1a64a9e6
+   sw +    3 ti   4 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93471
+-- 0x05ecca5626 b0 84393540 ts 1791573087 from 0x06cb3a68 nonce 2125 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xfa94fda2
+   sw +    3 ti   6 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93483
+-- 0xf8a518dec6 b0 84396581 ts 1791573398 from 0x06cb3a68 nonce 2126 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xf53e46ee
+   sw +    3 ti   2 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93488
+-- 0x21d8f9824f b0 84399398 ts 1791573686 from 0x06cb3a68 nonce 2127 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xa1ff3a9f
+   sw +    3 ti   3 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93495
+-- 0xfcd123f7fa b0 84405254 ts 1791574283 from 0x06cb3a68 nonce 2129 val 0.0 tick0 201800 liq 32156000099526845215062 nsw 1 buys 1 sells 0 pulls 0 adds 1 ethin 0.00000
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xea8c74bc
+   sw +    3 ti   2 BUY  0.000002 fee 10000 snd 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 nonce 93507

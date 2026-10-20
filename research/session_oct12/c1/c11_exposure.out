@@ -1,0 +1,21 @@
+pools triggered and >= T+300 old: {'ours': 5, 'holder': 15, 'sold': 2, 'none': 147}
+pulled by T+ 62: ours 1/5 (20.0%), holder 1/15 (6.7%), sold 0/2 (0.0%), none 0/147 (0.0%) | Fisher holder vs none p 0.093; ours vs none p 0.033
+pulled by T+120: ours 4/5 (80.0%), holder 3/15 (20.0%), sold 0/2 (0.0%), none 2/147 (1.4%) | Fisher holder vs none p 0.0058; ours vs none p 3.5e-06
+pulled by T+200: ours 4/5 (80.0%), holder 6/15 (40.0%), sold 0/2 (0.0%), none 12/147 (8.2%) | Fisher holder vs none p 0.0022; ours vs none p 0.0004
+router never buys after T+62 (before the pull): ours 4/5, holder 2/15, sold 0/2, none 6/147
+holder pools:
+  10-11 05:57:48 0x8185f1eaac T +155 outsider 0xc2101da8 (oneoff) 0.00995 at T+3 | pull T+7295 | router buys after T+62: 96
+  10-11 06:12:57 0x23a750296f T +141 outsider 0xc2101da8 (oneoff) 0.00995 at T+3 | pull T+31551 | router buys after T+62: 108
+  10-11 13:44:10 0x91620507c4 T +103 outsider 0x5b0320fb (recurring) 0.00500 at T-23 | pull T+63 | router buys after T+62: 0
+  10-11 17:52:57 0x2eb69a8072 T +35 outsider 0x5b0320fb (recurring) 0.00250 at T+20 | pull T+194 | router buys after T+62: 2
+  10-11 17:56:42 0xf7e808ab4d T +66 outsider 0x5b0320fb (recurring) 0.00250 at T+26 | pull T+101 | router buys after T+62: 1
+  10-11 19:37:24 0xa52938fae5 T +38 outsider 0x5b0320fb (recurring) 0.00250 at T+26 | pull T+176 | router buys after T+62: 2
+  10-11 19:38:24 0x8d437a11ce T +32 outsider 0x5373fb35 (oneoff) 0.00197 at T+37 | pull T+494 | router buys after T+62: 8
+  10-11 19:46:23 0x8985e55f5a T +90 outsider 0x5b0320fb (recurring) 0.00250 at T-9 | pull T+156 | router buys after T+62: 1
+  10-11 20:25:53 0xcf1d880b4e T +194 outsider 0x5373fb35 (oneoff) 0.00198 at T-140 | pull T+19 | router buys after T+62: 0
+  10-12 12:33:45 0xd116728e9b T +234 outsider 0xbd9dc5f6 (recurring) 0.00167 at T+26 | pull T+2010 | router buys after T+62: 48
+  10-12 12:38:17 0x06c477f75f T +94 outsider 0xbd9dc5f6 (recurring) 0.00129 at T+51 | pull T+607 | router buys after T+62: 20
+  10-12 12:47:55 0xc4ff6a7545 T +116 outsider 0xbd9dc5f6 (recurring) 0.00152 at T+15 | pull T+260 | router buys after T+62: 7
+  10-12 12:52:57 0x5e3673f7c6 T +131 outsider 0xbd9dc5f6 (recurring) 0.00144 at T+18 | pull T+344 | router buys after T+62: 8
+  10-12 12:53:49 0xdd2faa392a T +134 outsider 0xbd9dc5f6 (recurring) 0.00176 at T+39 | pull T+None | router buys after T+62: 96
+  10-12 12:56:07 0x5a9137ee45 T +245 outsider 0xbd9dc5f6 (recurring) 0.00152 at T+44 | pull T+None | router buys after T+62: 104

@@ -1,0 +1,27 @@
+buys before T by sender (top 20):
+  0xe71a69f4  491 buys  eth min/med/max 2.00e-06/2.00e-06/2.00e-06
+  0x7ae81404  400 buys  eth min/med/max 1.00e-05/1.20e-05/2.00e-05
+  0xb8c879dc   80 buys  eth min/med/max 1.20e-05/1.20e-05/1.20e-05
+  0xed165972    1 buys  eth min/med/max 3.95e-04/3.95e-04/3.95e-04
+sentinel offsets: [(2, 31), (3, 403), (4, 42), (5, 6), (6, 3), (7, 1), (8, 1), (10, 2), (11, 1), (14, 1)]  pools with sentinel: 491
+sells before T: 0 []
+
+POOLS WITH A NON-DUST NON-BOT NON-SENTINEL BUY BEFORE T (incl. in block T ahead of the bot):
+launch UTC              L  T-L  buyd from        to          sel              ETH  pull pull-buy  nbuy  botETH pull-T
+10-12 14:18:34   86738069   32    32 0xed165972  0x88767899  0x3593564c   0.00040    38        6     1   0.198     6 
+
+1 pools with an early non-dust buy, the bot bought in 1; pull lag after the first early buy: [6]
+clean    n 490  pull-T p10/50/90 108/130/5617  bot buys p10/50/90 5/6/123  bot ETH med 0.93
+fronted  n   1  pull-T p10/50/90 6/6/6  bot buys p10/50/90 1/1/1  bot ETH med 0.20
+
+OUTLIER T (T-L > 61):
+  10-12 07:39:52 L 86505007 T-L 96 nbuy 5 pull-T 121 pre: [(3, 'buy', '0xe71a69f4', 2e-06), (18, 'buy', '0x7ae81404', 1.5e-05)]
+  10-12 08:30:07 L 86534189 T-L 147 nbuy 5 pull-T 106 pre: [(2, 'buy', '0x7ae81404', 1e-05), (3, 'buy', '0xe71a69f4', 2e-06)]
+  10-12 08:45:06 L 86542962 T-L 150 nbuy 6 pull-T 119 pre: [(3, 'buy', '0x7ae81404', 1e-05), (3, 'buy', '0xe71a69f4', 2e-06)]
+  10-12 08:58:15 L 86550632 T-L 93 nbuy 5 pull-T 111 pre: [(3, 'buy', '0x7ae81404', 1e-05), (3, 'buy', '0xe71a69f4', 2e-06)]
+  10-12 09:30:08 L 86569197 T-L 134 nbuy 101 pull-T 4373 pre: [(3, 'buy', '0xe71a69f4', 2e-06)]
+  10-12 10:00:07 L 86586723 T-L 141 nbuy 13 pull-T 322 pre: [(2, 'buy', '0x7ae81404', 2e-05), (4, 'buy', '0xe71a69f4', 2e-06)]
+  10-12 12:15:06 L 86665557 T-L 146 nbuy 5 pull-T 125 pre: [(2, 'buy', '0x7ae81404', 2e-05), (3, 'buy', '0xe71a69f4', 2e-06)]
+  10-12 13:28:02 L 86708424 T-L 68 nbuy 102 pull-T 5477 pre: [(3, 'buy', '0x7ae81404', 1.2e-05), (4, 'buy', '0xb8c879dc', 1.2e-05), (4, 'buy', '0xe71a69f4', 2e-06)]
+  10-12 17:07:58 L 86837838 T-L 66 nbuy 57 pull-T 1341 pre: [(3, 'buy', '0x7ae81404', 1.2e-05), (3, 'buy', '0xe71a69f4', 2e-06), (4, 'buy', '0xb8c879dc', 1.2e-05)]
+  10-12 17:29:57 L 86850685 T-L 62 nbuy 63 pull-T 4393 pre: [(3, 'buy', '0xe71a69f4', 2e-06), (3, 'buy', '0x7ae81404', 1.2e-05), (4, 'buy', '0xb8c879dc', 1.2e-05)]

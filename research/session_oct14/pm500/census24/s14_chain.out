@@ -1,0 +1,10 @@
+=== L 87329062 launcher 0xb61490f8 funded 9.5878 by 0x3f88ba0c133f3b33da1e137e33c521eb7fe23a3a (nonce now 1, balance 0.0000); funding tx nonce 0
+   funder got 9.5878 at L-287 from 0xa6f8c32f32b0184233b9922366315110d3269a41 (nonce 0) 
+   after the pull: L+5279 (pull+309) nonce 8 to 0x864ec079a19fcccf68eebd196a717a10dc4104c4 value 7.1714 sel 0x 
+=== L 87334687 launcher 0x2240d2d5 funded 7.1714 by 0xe88361e0af8e6a3bfe833dea33285620b3353280 (nonce now 1, balance 0.0000); funding tx nonce 0
+   funder got 7.1714 at L-307 from 0x864ec079a19fcccf68eebd196a717a10dc4104c4 (nonce 0) 
+   after the pull: L+5374 (pull+345) nonce 8 to 0x7d8855aa2f86be79ee6a5c9fafc18de64324c948 value 5.1085 sel 0x 
+=== L 87340401 launcher 0x1968d5a8 funded 5.1085 by 0x40ca414f66bb9ee89c852f8ab41aa9e37ddf9d2f (nonce now 1, balance 0.0000); funding tx nonce 0
+   funder got 5.1085 at L-302 from 0x7d8855aa2f86be79ee6a5c9fafc18de64324c948 (nonce 0) 
+   after the pull: L+5686 (pull+546) nonce 8 to 0xd96174cb3e54b030d90b4272119b37dff752ac7f value 7.2853 sel 0x 
+=== L 87486373 launcher 0x63b85ef7 funded 9.7701 by 0x53a829562e47e828f9a7e26c4f95c20f66a2999e (nonce now 1, balance 0.0000); funding tx nonce 0

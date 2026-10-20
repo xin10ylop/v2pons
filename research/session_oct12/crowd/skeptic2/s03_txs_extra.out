@@ -1,0 +1,4 @@
+wanted 13717, cached 10815, to fetch 2902
+0 {'posts': 10, 'items': 200, 'r429': 2}
+2000 {'posts': 110, 'items': 2200, 'r429': 22}
+done {'posts': 146, 'items': 2902, 'r429': 29}

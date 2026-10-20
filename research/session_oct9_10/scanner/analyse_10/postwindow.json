@@ -1,0 +1,80 @@
+{
+ "head": 85255938,
+ "per_family": {
+  "0x258dd351af960bc487532c0108d3f90e8d115369|7fde822e|804|10000|200|true": {
+   "modify_liquidity": 9,
+   "pulls_ever": 0,
+   "pulled_pools_ever": 0,
+   "pull_rel": [],
+   "swaps_logged": 9,
+   "swaps_after_window": 0,
+   "late_buys_eth": [],
+   "late_real_buys": 0
+  },
+  "0x2a53386daf0bf3eedd9e715d162649764358c7b5|3d9ab7c9|292|0|200|false": {
+   "modify_liquidity": 13,
+   "pulls_ever": 2,
+   "pulled_pools_ever": 1,
+   "pull_rel": [
+    124363,
+    135360
+   ],
+   "swaps_logged": "not fetched (active market)",
+   "swaps_after_window": 0,
+   "late_buys_eth": [],
+   "late_real_buys": 0
+  },
+  "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|200000|2000|true": {
+   "modify_liquidity": 55,
+   "pulls_ever": 20,
+   "pulled_pools_ever": 8,
+   "pull_rel": [
+    4269,
+    4313,
+    4623,
+    5153,
+    12455,
+    13395,
+    35867,
+    110777,
+    328188,
+    633932,
+    646695,
+    668055,
+    750082,
+    798192,
+    897603,
+    928278,
+    975698,
+    984777,
+    996551,
+    1365193
+   ],
+   "swaps_logged": 284,
+   "swaps_after_window": 270,
+   "late_buys_eth": [
+    0.001484560770078793,
+    0.001552759673361845,
+    0.001592892297042435,
+    0.001618255441258894,
+    0.00173215876658421,
+    0.002098549394812098,
+    0.002779996190482945,
+    0.002813390123281005,
+    0.002842712851723973,
+    0.003082522358802584
+   ],
+   "late_real_buys": 76
+  },
+  "0x78ba8b21e8adbbc84f2e11f0e92c6f2299b78281|7fde822e|804|10000|200|true": {
+   "modify_liquidity": 9,
+   "pulls_ever": 0,
+   "pulled_pools_ever": 0,
+   "pull_rel": [],
+   "swaps_logged": 9,
+   "swaps_after_window": 0,
+   "late_buys_eth": [],
+   "late_real_buys": 0
+  }
+ }
+}

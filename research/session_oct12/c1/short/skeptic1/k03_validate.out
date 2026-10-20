@@ -1,0 +1,11 @@
+== (1) our 5 real fills
+  0x5ec68315 T+2 buy 0.002000 ETH tokens real 197537277152397591544154 sim 197537277152397591536612 (diff -7542) | sell at buy+61 ETH real 2080326106421210 sim 2080326106421210 (rel +0.00e+00); real gross +4.02%
+  0xd6180333 T+2 buy 0.002000 ETH tokens real 194586872942919544932770 sim 194586872942919544931677 (diff -1093) | sell at buy+62 ETH real 2133169319847626 sim 2133169319847626 (rel +0.00e+00); real gross +6.66%
+  0x6d80b816 T+2 buy 0.002000 ETH tokens real 193624491433629346123606 sim 193624491433629346118879 (diff -4727) | sell at buy+62 ETH real 1999790821960851 sim 1999790821960851 (rel +0.00e+00); real gross -0.01%
+  0x0e4cc1d8 T+2 buy 0.002000 ETH tokens real 195518279731137058726022 sim 195518279731137058718043 (diff -7979) | sell at buy+62 ETH real 2069243258298840 sim 2069243258298840 (rel +0.00e+00); real gross +3.46%
+  0xb47b706f T+2 buy 0.002000 ETH tokens real 187844258455643145380405 sim 187844258455643145378519 (diff -1886) | no sell (pull at buy+36): -100%
+
+== (2) against the analyst's s04_exits.json (T-aligned, 0.002 ETH, analyst's T)
+  pools compared 185; max |analyst - mine| per exit: {5: '0.0e+00', 10: '0.0e+00', 15: '0.0e+00', 20: '0.0e+00', 25: '0.0e+00', 30: '0.0e+00', 35: '0.0e+00', 40: '0.0e+00', 45: '0.0e+00', 50: '0.0e+00', 60: '0.0e+00', 'tp0.02c30': '0.0e+00', 'tp0.02c45': '0.0e+00', 'tp0.02c50': '0.0e+00', 'tp0.02c60': '0.0e+00', 'tp0.03c30': '0.0e+00', 'tp0.03c45': '0.0e+00', 'tp0.03c50': '0.0e+00', 'tp0.03c60': '0.0e+00', 'tp0.04c30': '0.0e+00', 'tp0.04c45': '0.0e+00', 'tp0.04c50': '0.0e+00', 'tp0.04c60': '0.0e+00', 'tp0.06c30': '0.0e+00', 'tp0.06c45': '0.0e+00', 'tp0.06c50': '0.0e+00', 'tp0.06c60': '0.0e+00', 'tp0.08c30': '0.0e+00', 'tp0.08c45': '0.0e+00', 'tp0.08c50': '0.0e+00', 'tp0.08c60': '0.0e+00'}
+  differences > 1e-4: 0
+  pools whose L changes before the pull: []

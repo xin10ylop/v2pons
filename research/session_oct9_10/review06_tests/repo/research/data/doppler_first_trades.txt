@@ -1,0 +1,7 @@
+Doppler-hook launches in the last 24 h: 1135 (19 paired with ETH); tick spacing {8: 980, 200: 153, 10: 2}
+sampled 200: 8 had a swap in the first minute (4%); first swap at second p10/50/90 [10, 17, 29]
+   second 10 :    6 swaps, Swap-event fee median 0.20%
+   second 15 :    3 swaps, Swap-event fee median 0.20%
+   second 17 :    3 swaps, Swap-event fee median 0.20%
+   second 18 :    6 swaps, Swap-event fee median 0.45%
+   second 20+:  116 swaps, Swap-event fee median 0.20%

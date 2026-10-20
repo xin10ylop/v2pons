@@ -1,0 +1,161 @@
+{
+ "base": {
+  "block_time_s": 2.0,
+  "gas_gwei": 0.006,
+  "gas_src": "sampled swap txs",
+  "native_per_swap": 9.000000000000001e-07,
+  "native": "ETH",
+  "usd_per_swap": 0.00228
+ },
+ "unichain": {
+  "block_time_s": 1.0,
+  "gas_gwei": 0.0006,
+  "gas_src": "sampled swap txs",
+  "native_per_swap": 9e-08,
+  "native": "ETH",
+  "usd_per_swap": 0.00023
+ },
+ "optimism": {
+  "block_time_s": 2.0,
+  "gas_gwei": 1.84e-06,
+  "gas_src": "sampled swap txs",
+  "native_per_swap": 2.76e-10,
+  "native": "ETH",
+  "usd_per_swap": 0.0
+ },
+ "ink": {
+  "block_time_s": 1.0,
+  "gas_gwei": 0.002076423,
+  "gas_src": "sampled swap txs",
+  "native_per_swap": 3.1146345000000003e-07,
+  "native": "ETH",
+  "usd_per_swap": 0.00079
+ },
+ "soneium": {
+  "block_time_s": 2.0,
+  "gas_gwei": 2.72e-07,
+  "gas_src": "head baseFee",
+  "native_per_swap": 4.0800000000000004e-11,
+  "native": "ETH",
+  "usd_per_swap": 0.0
+ },
+ "worldchain": {
+  "block_time_s": 2.0,
+  "gas_gwei": 0.0005,
+  "gas_src": "head baseFee",
+  "native_per_swap": 7.500000000000001e-08,
+  "native": "ETH",
+  "usd_per_swap": 0.00019
+ },
+ "mode": {
+  "block_time_s": 2.0,
+  "gas_gwei": 2.52e-07,
+  "gas_src": "head baseFee",
+  "native_per_swap": 3.78e-11,
+  "native": "ETH",
+  "usd_per_swap": 0.0
+ },
+ "apechain": {
+  "block_time_s": 1.005,
+  "gas_gwei": 101.68276,
+  "gas_src": "head baseFee",
+  "native_per_swap": 0.015252414000000002,
+  "native": "APE",
+  "usd_per_swap": null
+ },
+ "xai": {
+  "block_time_s": 1.84,
+  "gas_gwei": 0.1,
+  "gas_src": "head baseFee",
+  "native_per_swap": 1.5000000000000002e-05,
+  "native": "XAI",
+  "usd_per_swap": null
+ },
+ "degen": {
+  "status": "unreachable: retries exhausted for eth_blockNumber"
+ },
+ "sanko": {
+  "status": "unreachable: retries exhausted for eth_blockNumber"
+ },
+ "pop_apex": {
+  "status": "unreachable: retries exhausted for eth_blockNumber"
+ },
+ "rari": {
+  "status": "unreachable: http 404: <html>\r\n<head><title>404 Not Found</title></head>\r"
+ },
+ "reya": {
+  "block_time_s": 0.505,
+  "gas_gwei": 0.0001,
+  "gas_src": "head baseFee",
+  "native_per_swap": 1.5000000000000002e-08,
+  "native": "?",
+  "usd_per_swap": null
+ },
+ "superposition": {
+  "status": "unreachable: retries exhausted for eth_blockNumber"
+ },
+ "bnb": {
+  "block_time_s": 0.45,
+  "gas_gwei": 0.051,
+  "gas_src": "sampled swap txs",
+  "native_per_swap": 7.65e-06,
+  "native": "BNB",
+  "usd_per_swap": 0.00576
+ },
+ "polygon": {
+  "block_time_s": 1.5,
+  "gas_gwei": 248.129995849,
+  "gas_src": "head baseFee",
+  "native_per_swap": 0.03721949937735001,
+  "native": "POL",
+  "usd_per_swap": null
+ },
+ "avalanche": {
+  "block_time_s": 1.115,
+  "gas_gwei": 5.0,
+  "gas_src": "head baseFee",
+  "native_per_swap": 0.00075,
+  "native": "AVAX",
+  "usd_per_swap": null
+ },
+ "sonic": {
+  "block_time_s": 0.535,
+  "gas_gwei": 50.0,
+  "gas_src": "head baseFee",
+  "native_per_swap": 0.007500000000000001,
+  "native": "S",
+  "usd_per_swap": null
+ },
+ "berachain": {
+  "block_time_s": 2.0,
+  "gas_gwei": 1.0,
+  "gas_src": "head baseFee",
+  "native_per_swap": 0.00015000000000000001,
+  "native": "BERA",
+  "usd_per_swap": null
+ },
+ "monad": {
+  "block_time_s": 0.3,
+  "gas_gwei": 103.0,
+  "gas_src": "sampled swap txs",
+  "native_per_swap": 0.015450000000000002,
+  "native": "MON",
+  "usd_per_swap": null
+ },
+ "hyperevm": {
+  "block_time_s": 0.985,
+  "gas_gwei": 0.12103644,
+  "gas_src": "head baseFee",
+  "native_per_swap": 1.8155466e-05,
+  "native": "HYPE",
+  "usd_per_swap": null
+ },
+ "megaeth": {
+  "block_time_s": 1.0,
+  "gas_gwei": 0.001,
+  "gas_src": "head baseFee",
+  "native_per_swap": 1.5000000000000002e-07,
+  "native": "ETH",
+  "usd_per_swap": 0.00038
+ }
+}

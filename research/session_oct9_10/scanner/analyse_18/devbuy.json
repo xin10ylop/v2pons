@@ -1,0 +1,128 @@
+{
+ "openlaunch all H20": {
+  "n": 35,
+  "mean": -0.04979,
+  "median": -0.05979,
+  "win": 0.0,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 35
+  },
+  "usd_trade": -0.7468,
+  "trades_day": 17.51,
+  "usd_day": -13.07,
+  "p10_50_90": [
+   -0.05987,
+   -0.05979,
+   -0.02061
+  ],
+  "min": -0.06169,
+  "max": -0.0206
+ },
+ "openlaunch all H100": {
+  "n": 35,
+  "mean": -0.0487,
+  "median": -0.05978,
+  "win": 0.0,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 35
+  },
+  "usd_trade": -0.7305,
+  "trades_day": 17.51,
+  "usd_day": -12.79,
+  "p10_50_90": [
+   -0.05987,
+   -0.05978,
+   -0.02061
+  ],
+  "min": -0.06169,
+  "max": -0.00628
+ },
+ "openlaunch all H3000": {
+  "n": 35,
+  "mean": -0.04869,
+  "median": -0.05978,
+  "win": 0.0,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 35
+  },
+  "usd_trade": -0.7304,
+  "trades_day": 17.51,
+  "usd_day": -12.79,
+  "p10_50_90": [
+   -0.05987,
+   -0.05978,
+   -0.02061
+  ],
+  "min": -0.06168,
+  "max": -0.00628
+ },
+ "assigned 0x815542e8b392389a13 H20": {
+  "n": 6,
+  "mean": -0.0598,
+  "median": -0.0598,
+  "win": 0.0,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 6
+  },
+  "usd_trade": -0.897,
+  "trades_day": 3.0,
+  "usd_day": -2.69,
+  "p10_50_90": [
+   -0.05983,
+   -0.0598,
+   -0.05978
+  ],
+  "min": -0.05983,
+  "max": -0.05978
+ },
+ "assigned 0x815542e8b392389a13 H100": {
+  "n": 6,
+  "mean": -0.0598,
+  "median": -0.0598,
+  "win": 0.0,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 6
+  },
+  "usd_trade": -0.897,
+  "trades_day": 3.0,
+  "usd_day": -2.69,
+  "p10_50_90": [
+   -0.05983,
+   -0.0598,
+   -0.05978
+  ],
+  "min": -0.05983,
+  "max": -0.05978
+ },
+ "assigned 0x815542e8b392389a13 H3000": {
+  "n": 6,
+  "mean": -0.0598,
+  "median": -0.0598,
+  "win": 0.0,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 6
+  },
+  "usd_trade": -0.897,
+  "trades_day": 3.0,
+  "usd_day": -2.69,
+  "p10_50_90": [
+   -0.05983,
+   -0.0598,
+   -0.05978
+  ],
+  "min": -0.05983,
+  "max": -0.05978
+ }
+}

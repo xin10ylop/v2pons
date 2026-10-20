@@ -1,0 +1,119 @@
+
+### tok:0f34e3b5 (603 launches, 86.1/day)
+  front a=liq+2 b=frb+1: n 597 (0.99) mean +10.4% med +8.5% win 1.00 worst +1% pulled 0.000 $/trade +1.532 $/day +130.6 top10%-share-of-PnL 0.24  days +11.3%(117) +5.0%(1) - +9.5%(113) +10.9%(184) +10.3%(124) +9.2%(58)
+  front a=liq+2 b=frb+2: n 597 (0.99) mean +10.4% med +8.5% win 1.00 worst +1% pulled 0.000 $/trade +1.532 $/day +130.7 top10%-share-of-PnL 0.24
+  front a=liq+2 b=frb+3: n 597 (0.99) mean +10.4% med +8.5% win 1.00 worst +1% pulled 0.000 $/trade +1.532 $/day +130.7 top10%-share-of-PnL 0.24
+  front a=liq+2 b=frb+5: n 597 (0.99) mean +10.4% med +8.5% win 1.00 worst +1% pulled 0.000 $/trade +1.532 $/day +130.7 top10%-share-of-PnL 0.24  days +11.3%(117) +5.0%(1) - +9.5%(113) +10.9%(184) +10.3%(124) +9.2%(58)
+  front a=liq+2 b=frb+10: n 597 (0.99) mean +10.4% med +8.5% win 1.00 worst +1% pulled 0.000 $/trade +1.532 $/day +130.7 top10%-share-of-PnL 0.24
+  front a=liq+2 b=frb+20: n 597 (0.99) mean +10.5% med +8.8% win 1.00 worst +1% pulled 0.000 $/trade +1.549 $/day +132.1 top10%-share-of-PnL 0.24  days +11.3%(117) +5.0%(1) - +9.9%(113) +10.9%(184) +10.5%(124) +9.2%(58)
+  front a=liq+2 b=frb+40: n 597 (0.99) mean +11.5% med +9.6% win 1.00 worst +1% pulled 0.000 $/trade +1.689 $/day +144.1 top10%-share-of-PnL 0.25
+  front a=liq+2 sell into next real buy (cap 100): n 603 (1.00) mean +9.7% med +8.1% win 0.96 worst -100% pulled 0.002 $/trade +1.428 $/day +123.0 top10%-share-of-PnL 0.25  days +11.1%(118) +5.0%(1) - +9.2%(113) +10.1%(188) +8.8%(125) +8.6%(58)
+  follow a=frb+2 sell into next real buy (cap 100): n 599 (0.99) mean +3.7% med +1.8% win 0.55 worst -100% pulled 0.012 $/trade +0.530 $/day +45.3 top10%-share-of-PnL 0.58  days +4.9%(118) -0.6%(1) - +5.6%(113) +1.2%(185) +4.1%(124) +4.5%(58)
+  front a=liq+2 sell into next real buy (cap 300): n 603 (1.00) mean +9.7% med +8.5% win 0.99 worst -100% pulled 0.007 $/trade +1.419 $/day +122.3 top10%-share-of-PnL 0.26  days +11.2%(118) +5.0%(1) - +9.5%(113) +9.1%(188) +9.4%(125) +9.2%(58)
+  follow a=frb+2 sell into next real buy (cap 300): n 599 (0.99) mean +5.7% med +7.4% win 0.97 worst -100% pulled 0.033 $/trade +0.831 $/day +71.1 top10%-share-of-PnL 0.41  days +8.7%(118) +10.8%(1) - +9.5%(113) -1.6%(185) +8.4%(124) +9.8%(58)
+  q=0.02 ETH front a=liq+2 b=frb+1: n 597 (0.99) mean +10.2% med +8.3% win 1.00 worst +1% pulled 0.000 $/trade +5.212 $/day +444.5 top10%-share-of-PnL 0.24
+  q=0.05 ETH front a=liq+2 b=frb+1: n 597 (0.99) mean +9.7% med +8.0% win 1.00 worst +0% pulled 0.000 $/trade +12.467 $/day +1063.2 top10%-share-of-PnL 0.24
+  q=0.1 ETH front a=liq+2 b=frb+1: n 597 (0.99) mean +9.0% med +7.4% win 1.00 worst +0% pulled 0.000 $/trade +23.179 $/day +1976.8 top10%-share-of-PnL 0.24
+  q=0.2 ETH front a=liq+2 b=frb+1: n 597 (0.99) mean +7.9% med +6.5% win 1.00 worst +0% pulled 0.000 $/trade +40.503 $/day +3454.3 top10%-share-of-PnL 0.24
+
+### tok:70adce63 (1184 launches, 169.1/day)
+  front a=liq+2 b=frb+1: n 1180 (1.00) mean +1.9% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +0.258 $/day +43.5 top10%-share-of-PnL 0.30  days +1.7%(90) +1.9%(162) +1.9%(137) +2.0%(177) +1.7%(212) +2.2%(187) +1.6%(215)
+  front a=liq+2 b=frb+2: n 1180 (1.00) mean +1.9% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +0.258 $/day +43.5 top10%-share-of-PnL 0.30
+  front a=liq+2 b=frb+3: n 1180 (1.00) mean +1.9% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +0.258 $/day +43.5 top10%-share-of-PnL 0.30
+  front a=liq+2 b=frb+5: n 1180 (1.00) mean +1.9% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +0.258 $/day +43.5 top10%-share-of-PnL 0.30  days +1.7%(90) +1.9%(162) +1.9%(137) +2.0%(177) +1.7%(212) +2.2%(187) +1.6%(215)
+  front a=liq+2 b=frb+10: n 1180 (1.00) mean +1.9% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +0.258 $/day +43.5 top10%-share-of-PnL 0.30
+  front a=liq+2 b=frb+20: n 1180 (1.00) mean +1.9% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +0.258 $/day +43.5 top10%-share-of-PnL 0.30  days +1.7%(90) +1.9%(162) +1.9%(137) +2.0%(177) +1.7%(212) +2.2%(187) +1.6%(215)
+  front a=liq+2 b=frb+40: n 1180 (1.00) mean +1.9% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +0.258 $/day +43.5 top10%-share-of-PnL 0.30
+  front a=liq+2 sell into next real buy (cap 100): n 1184 (1.00) mean -0.6% med -0.6% win 0.00 worst -1% pulled 0.000 $/trade -0.109 $/day -18.5 top10%-share-of-PnL nan  days -0.6%(91) -0.6%(163) -0.6%(137) -0.6%(179) -0.6%(212) -0.6%(187) -0.6%(215)
+  follow a=frb+2 sell into next real buy (cap 100): n 1180 (1.00) mean -0.6% med -0.6% win 0.00 worst -1% pulled 0.000 $/trade -0.109 $/day -18.4 top10%-share-of-PnL nan  days -0.6%(90) -0.6%(162) -0.6%(137) -0.6%(177) -0.6%(212) -0.6%(187) -0.6%(215)
+  front a=liq+2 sell into next real buy (cap 300): n 1184 (1.00) mean +1.8% med +1.4% win 0.80 worst -1% pulled 0.000 $/trade +0.243 $/day +41.1 top10%-share-of-PnL 0.33  days +0.9%(91) +1.7%(163) +1.8%(137) +2.1%(179) +1.7%(212) +2.1%(187) +1.6%(215)
+  follow a=frb+2 sell into next real buy (cap 300): n 1180 (1.00) mean -2.2% med -0.6% win 0.12 worst -100% pulled 0.019 $/trade -0.345 $/day -58.2 top10%-share-of-PnL nan  days -0.4%(90) -1.0%(162) -3.4%(137) -4.8%(177) -2.6%(212) -0.2%(187) -2.2%(215)
+  q=0.02 ETH front a=liq+2 b=frb+1: n 1180 (1.00) mean +1.9% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +0.937 $/day +158.0 top10%-share-of-PnL 0.29
+  q=0.05 ETH front a=liq+2 b=frb+1: n 1180 (1.00) mean +1.9% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +2.369 $/day +399.4 top10%-share-of-PnL 0.29
+  q=0.1 ETH front a=liq+2 b=frb+1: n 1180 (1.00) mean +1.9% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +4.745 $/day +800.0 top10%-share-of-PnL 0.29
+  q=0.2 ETH front a=liq+2 b=frb+1: n 1180 (1.00) mean +1.8% med +1.5% win 0.84 worst -1% pulled 0.000 $/trade +9.459 $/day +1594.5 top10%-share-of-PnL 0.28
+
+### tok:d4e7eae4 (V3) (1016 launches, 145.1/day)
+  front a=liq+2 b=frb+1: n 873 (0.86) mean +14.0% med +5.5% win 1.00 worst +0% pulled 0.000 $/trade +2.069 $/day +258.1 top10%-share-of-PnL 0.40  days +14.8%(109) +17.6%(115) +13.6%(140) +14.9%(124) +13.1%(123) +12.9%(130) +11.9%(132)
+  front a=liq+2 b=frb+2: n 873 (0.86) mean +15.5% med +6.2% win 1.00 worst +0% pulled 0.000 $/trade +2.291 $/day +285.7 top10%-share-of-PnL 0.39
+  front a=liq+2 b=frb+3: n 873 (0.86) mean +17.5% med +7.9% win 1.00 worst +0% pulled 0.000 $/trade +2.590 $/day +323.0 top10%-share-of-PnL 0.39
+  front a=liq+2 b=frb+5: n 873 (0.86) mean +18.9% med +8.9% win 1.00 worst +0% pulled 0.000 $/trade +2.803 $/day +349.5 top10%-share-of-PnL 0.39  days +22.1%(109) +26.2%(115) +18.9%(140) +20.4%(124) +16.3%(123) +15.7%(130) +14.3%(132)
+  front a=liq+2 b=frb+10: n 873 (0.86) mean +21.9% med +12.6% win 1.00 worst +0% pulled 0.000 $/trade +3.249 $/day +405.2 top10%-share-of-PnL 0.39
+  front a=liq+2 b=frb+20: n 873 (0.86) mean +25.9% med +18.0% win 1.00 worst -100% pulled 0.003 $/trade +3.844 $/day +479.5 top10%-share-of-PnL 0.37  days +31.5%(109) +34.2%(115) +27.1%(140) +28.3%(124) +23.4%(123) +19.6%(130) +19.3%(132)
+  front a=liq+2 b=frb+40: n 873 (0.86) mean +30.3% med +22.6% win 0.97 worst -100% pulled 0.029 $/trade +4.495 $/day +560.6 top10%-share-of-PnL 0.40
+  front a=liq+2 sell into next real buy (cap 100): n 1016 (1.00) mean +4.5% med +0.7% win 0.92 worst -100% pulled 0.021 $/trade +0.658 $/day +95.5 top10%-share-of-PnL 0.96  days +3.8%(153) +1.9%(152) +3.5%(163) +7.8%(139) +4.5%(137) +7.0%(131) +4.0%(141)
+  follow a=frb+2 sell into next real buy (cap 100): n 873 (0.86) mean -1.1% med +3.3% win 0.86 worst -100% pulled 0.087 $/trade -0.187 $/day -23.4 top10%-share-of-PnL nan  days +4.3%(109) +5.7%(115) +1.1%(140) -3.7%(124) -3.7%(123) -7.6%(130) -2.6%(132)
+  front a=liq+2 sell into next real buy (cap 300): n 1016 (1.00) mean -0.5% med +3.7% win 0.88 worst -100% pulled 0.110 $/trade -0.097 $/day -14.1 top10%-share-of-PnL nan  days -13.9%(153) -7.9%(152) -2.4%(163) +3.6%(139) +2.6%(137) +11.0%(131) +6.3%(141)
+  follow a=frb+2 sell into next real buy (cap 300): n 873 (0.86) mean -1.4% med +4.0% win 0.89 worst -100% pulled 0.107 $/trade -0.234 $/day -29.1 top10%-share-of-PnL nan  days +4.7%(109) +4.7%(115) +0.6%(140) -3.3%(124) -2.4%(123) -10.1%(130) -2.9%(132)
+  q=0.02 ETH front a=liq+2 b=frb+1: n 873 (0.86) mean +13.9% med +5.4% win 1.00 worst +0% pulled 0.000 $/trade +7.137 $/day +890.1 top10%-share-of-PnL 0.40
+  q=0.05 ETH front a=liq+2 b=frb+1: n 873 (0.86) mean +13.7% med +5.4% win 1.00 worst +0% pulled 0.000 $/trade +17.628 $/day +2198.5 top10%-share-of-PnL 0.40
+  q=0.1 ETH front a=liq+2 b=frb+1: n 873 (0.86) mean +13.4% med +5.3% win 1.00 worst +0% pulled 0.000 $/trade +34.488 $/day +4301.1 top10%-share-of-PnL 0.40
+  q=0.2 ETH front a=liq+2 b=frb+1: n 873 (0.86) mean +12.9% med +5.1% win 1.00 worst +0% pulled 0.000 $/trade +66.040 $/day +8236.1 top10%-share-of-PnL 0.39
+
+### lc:0a493d1a|ac9650d8 (1155 launches, 165.0/day)
+  front a=liq+2 b=frb+1: n 913 (0.79) mean +13.6% med +5.2% win 0.99 worst -10% pulled 0.000 $/trade +2.000 $/day +260.9 top10%-share-of-PnL 0.41  days +14.6%(110) +17.3%(118) +13.3%(146) +13.9%(135) +12.5%(131) +12.6%(134) +11.4%(139)
+  front a=liq+2 b=frb+2: n 913 (0.79) mean +15.0% med +5.8% win 0.99 worst -10% pulled 0.000 $/trade +2.214 $/day +288.8 top10%-share-of-PnL 0.40
+  front a=liq+2 b=frb+3: n 913 (0.79) mean +16.9% med +7.3% win 0.99 worst -10% pulled 0.000 $/trade +2.505 $/day +326.7 top10%-share-of-PnL 0.40
+  front a=liq+2 b=frb+5: n 913 (0.79) mean +18.4% med +8.3% win 0.99 worst -10% pulled 0.000 $/trade +2.726 $/day +355.5 top10%-share-of-PnL 0.40  days +21.8%(110) +26.3%(118) +18.3%(146) +19.0%(135) +15.6%(131) +15.9%(134) +13.7%(139)
+  front a=liq+2 b=frb+10: n 913 (0.79) mean +21.4% med +12.0% win 0.99 worst -9% pulled 0.000 $/trade +3.166 $/day +413.0 top10%-share-of-PnL 0.40
+  front a=liq+2 b=frb+20: n 913 (0.79) mean +25.2% med +17.0% win 0.99 worst -100% pulled 0.003 $/trade +3.743 $/day +488.2 top10%-share-of-PnL 0.38  days +31.1%(110) +34.6%(118) +26.2%(146) +26.3%(135) +22.2%(131) +20.1%(134) +18.5%(139)
+  front a=liq+2 b=frb+40: n 913 (0.79) mean +29.5% med +21.9% win 0.96 worst -100% pulled 0.027 $/trade +4.373 $/day +570.3 top10%-share-of-PnL 0.41
+  front a=liq+2 sell into next real buy (cap 100): n 1155 (1.00) mean +3.5% med +0.3% win 0.86 worst -100% pulled 0.024 $/trade +0.501 $/day +82.7 top10%-share-of-PnL 1.19  days +0.7%(177) +2.0%(171) +3.0%(183) +7.0%(159) +2.7%(164) +6.2%(148) +3.7%(153)
+  follow a=frb+2 sell into next real buy (cap 100): n 915 (0.79) mean -0.9% med +3.2% win 0.86 worst -100% pulled 0.083 $/trade -0.151 $/day -19.7 top10%-share-of-PnL nan  days +4.3%(110) +5.8%(118) +1.2%(146) -3.2%(135) -3.0%(132) -7.1%(135) -2.4%(139)
+  front a=liq+2 sell into next real buy (cap 300): n 1155 (1.00) mean -1.7% med +3.2% win 0.82 worst -100% pulled 0.111 $/trade -0.270 $/day -44.6 top10%-share-of-PnL nan  days -18.1%(177) -6.6%(171) -2.7%(183) +3.3%(159) +0.0%(164) +9.8%(148) +5.9%(153)
+  follow a=frb+2 sell into next real buy (cap 300): n 915 (0.79) mean -1.1% med +3.9% win 0.89 worst -100% pulled 0.102 $/trade -0.191 $/day -25.0 top10%-share-of-PnL nan  days +4.7%(110) +4.8%(118) +0.8%(146) -2.6%(135) -1.8%(132) -9.5%(135) -2.6%(139)
+  q=0.02 ETH front a=liq+2 b=frb+1: n 913 (0.79) mean +13.5% med +5.1% win 0.99 worst -10% pulled 0.000 $/trade +6.900 $/day +899.9 top10%-share-of-PnL 0.41
+  q=0.05 ETH front a=liq+2 b=frb+1: n 913 (0.79) mean +13.3% med +5.1% win 0.99 worst -10% pulled 0.000 $/trade +17.043 $/day +2222.9 top10%-share-of-PnL 0.41
+  q=0.1 ETH front a=liq+2 b=frb+1: n 913 (0.79) mean +13.0% med +5.0% win 0.99 worst -10% pulled 0.000 $/trade +33.345 $/day +4349.1 top10%-share-of-PnL 0.40
+  q=0.2 ETH front a=liq+2 b=frb+1: n 913 (0.79) mean +12.4% med +4.8% win 0.99 worst -10% pulled 0.000 $/trade +63.857 $/day +8328.7 top10%-share-of-PnL 0.40
+
+### lc:0a493d1a|13ead562 (493 launches, 70.4/day)
+  front a=liq+2 b=frb+1: n 431 (0.87) mean +76.6% med +22.8% win 1.00 worst +1% pulled 0.000 $/trade +11.398 $/day +701.8 top10%-share-of-PnL 0.76  days +220.5%(112) +106.5%(7) +12.8%(31) +40.2%(50) +24.0%(205) +12.1%(12) +7.0%(14)
+  front a=liq+2 b=frb+2: n 431 (0.87) mean +76.6% med +22.8% win 1.00 worst +1% pulled 0.000 $/trade +11.395 $/day +701.6 top10%-share-of-PnL 0.76
+  front a=liq+2 b=frb+3: n 431 (0.87) mean +76.6% med +22.8% win 1.00 worst +1% pulled 0.000 $/trade +11.395 $/day +701.6 top10%-share-of-PnL 0.76
+  front a=liq+2 b=frb+5: n 431 (0.87) mean +76.6% med +22.8% win 1.00 worst +1% pulled 0.000 $/trade +11.400 $/day +701.9 top10%-share-of-PnL 0.76  days +220.6%(112) +106.5%(7) +12.8%(31) +40.2%(50) +24.0%(205) +12.1%(12) +7.0%(14)
+  front a=liq+2 b=frb+10: n 431 (0.87) mean +77.0% med +22.8% win 1.00 worst +1% pulled 0.000 $/trade +11.464 $/day +705.8 top10%-share-of-PnL 0.77
+  front a=liq+2 b=frb+20: n 431 (0.87) mean +77.4% med +22.8% win 1.00 worst +1% pulled 0.000 $/trade +11.524 $/day +709.5 top10%-share-of-PnL 0.77  days +223.6%(112) +106.5%(7) +12.8%(31) +40.3%(50) +24.1%(205) +12.1%(12) +7.0%(14)
+  front a=liq+2 b=frb+40: n 431 (0.87) mean +77.5% med +22.8% win 0.99 worst -100% pulled 0.007 $/trade +11.529 $/day +709.8 top10%-share-of-PnL 0.77
+  front a=liq+2 sell into next real buy (cap 100): n 492 (1.00) mean +58.6% med +22.8% win 0.88 worst -100% pulled 0.079 $/trade +8.710 $/day +612.2 top10%-share-of-PnL 0.89  days +215.9%(114) +106.5%(7) +12.3%(32) +30.1%(60) +21.6%(209) +12.1%(12) -58.7%(58)
+  follow a=frb+2 sell into next real buy (cap 100): n 431 (0.87) mean -10.2% med +3.9% win 0.71 worst -100% pulled 0.132 $/trade -1.545 $/day -95.1 top10%-share-of-PnL nan  days -22.1%(112) +4.2%(7) +2.3%(31) -21.5%(50) -2.9%(205) -7.0%(12) -20.7%(14)
+  front a=liq+2 sell into next real buy (cap 300): n 492 (1.00) mean +57.7% med +22.8% win 0.88 worst -100% pulled 0.089 $/trade +8.584 $/day +603.4 top10%-share-of-PnL 0.91  days +216.6%(114) +106.5%(7) +12.3%(32) +30.1%(60) +21.7%(209) +12.1%(12) -67.3%(58)
+  follow a=frb+2 sell into next real buy (cap 300): n 431 (0.87) mean -12.9% med +3.9% win 0.80 worst -100% pulled 0.174 $/trade -1.940 $/day -119.5 top10%-share-of-PnL nan  days -33.5%(112) +18.4%(7) +4.6%(31) -20.9%(50) -3.9%(205) -2.5%(12) -14.7%(14)
+  q=0.02 ETH front a=liq+2 b=frb+1: n 431 (0.87) mean +38.8% med +21.7% win 1.00 worst +1% pulled 0.000 $/trade +19.912 $/day +1226.0 top10%-share-of-PnL 0.56
+  q=0.05 ETH front a=liq+2 b=frb+1: n 431 (0.87) mean +24.7% med +19.7% win 1.00 worst +1% pulled 0.000 $/trade +31.704 $/day +1952.0 top10%-share-of-PnL 0.38
+  q=0.1 ETH front a=liq+2 b=frb+1: n 431 (0.87) mean +17.9% med +17.0% win 1.00 worst +1% pulled 0.000 $/trade +46.105 $/day +2838.7 top10%-share-of-PnL 0.27
+  q=0.2 ETH front a=liq+2 b=frb+1: n 431 (0.87) mean +12.7% med +13.2% win 1.00 worst +1% pulled 0.000 $/trade +65.263 $/day +4018.3 top10%-share-of-PnL 0.19
+
+### lc:89885b75|d27d1e00 (248 launches, 35.4/day)
+  front a=liq+2 b=frb+1: n 39 (0.16) mean +94.0% med +41.7% win 1.00 worst +12% pulled 0.000 $/trade +13.997 $/day +78.0 top10%-share-of-PnL 0.48  days +429.6%(2) - +29.1%(1) +111.8%(6) +49.5%(2) +43.4%(16) +109.6%(12)
+  front a=liq+2 b=frb+2: n 39 (0.16) mean +96.5% med +48.3% win 1.00 worst +12% pulled 0.000 $/trade +14.369 $/day +80.1 top10%-share-of-PnL 0.47
+  front a=liq+2 b=frb+3: n 39 (0.16) mean +100.3% med +49.5% win 1.00 worst +12% pulled 0.000 $/trade +14.931 $/day +83.2 top10%-share-of-PnL 0.45
+  front a=liq+2 b=frb+5: n 39 (0.16) mean +104.5% med +49.8% win 1.00 worst +12% pulled 0.000 $/trade +15.559 $/day +86.7 top10%-share-of-PnL 0.43  days +429.6%(2) - +29.1%(1) +121.1%(6) +49.5%(2) +53.2%(16) +125.9%(12)
+  front a=liq+2 b=frb+10: n 39 (0.16) mean +126.9% med +59.1% win 1.00 worst +12% pulled 0.000 $/trade +18.900 $/day +105.3 top10%-share-of-PnL 0.37
+  front a=liq+2 b=frb+20: n 39 (0.16) mean +166.7% med +120.8% win 1.00 worst +18% pulled 0.000 $/trade +24.825 $/day +138.3 top10%-share-of-PnL 0.27  days +429.6%(2) - +83.9%(1) +146.7%(6) +102.7%(2) +152.7%(16) +169.1%(12)
+  front a=liq+2 b=frb+40: n 39 (0.16) mean +257.3% med +211.2% win 1.00 worst +15% pulled 0.000 $/trade +38.329 $/day +213.5 top10%-share-of-PnL 0.21
+  front a=liq+2 sell into next real buy (cap 100): n 248 (1.00) mean +5.1% med -0.0% win 0.46 worst -100% pulled 0.004 $/trade +0.740 $/day +26.2 top10%-share-of-PnL 1.09  days +0.0%(31) +0.0%(22) +1.1%(20) +4.6%(46) +0.2%(15) +1.5%(85) +31.2%(29)
+  follow a=frb+2 sell into next real buy (cap 100): n 176 (0.71) mean +5.0% med -0.0% win 0.40 worst -100% pulled 0.006 $/trade +0.724 $/day +18.2 top10%-share-of-PnL 0.81  days -0.0%(30) +0.0%(22) +3.2%(20) +0.1%(34) +6.5%(11) +10.8%(43) +17.3%(16)
+  front a=liq+2 sell into next real buy (cap 300): n 248 (1.00) mean +5.6% med +0.2% win 0.71 worst -100% pulled 0.056 $/trade +0.813 $/day +28.8 top10%-share-of-PnL 1.76  days +0.6%(31) +5.8%(22) +10.4%(20) +9.6%(46) +11.2%(15) -7.2%(85) +35.7%(29)
+  follow a=frb+2 sell into next real buy (cap 300): n 176 (0.71) mean +7.0% med +0.1% win 0.69 worst -100% pulled 0.006 $/trade +1.030 $/day +25.9 top10%-share-of-PnL 0.64  days +0.6%(30) +5.8%(22) +11.1%(20) -0.6%(34) +12.5%(11) +11.3%(43) +16.7%(16)
+  q=0.02 ETH front a=liq+2 b=frb+1: n 39 (0.16) mean +90.6% med +40.7% win 1.00 worst +12% pulled 0.000 $/trade +46.558 $/day +259.4 top10%-share-of-PnL 0.47
+  q=0.05 ETH front a=liq+2 b=frb+1: n 39 (0.16) mean +84.2% med +38.8% win 1.00 worst +11% pulled 0.000 $/trade +108.184 $/day +602.7 top10%-share-of-PnL 0.47
+  q=0.1 ETH front a=liq+2 b=frb+1: n 39 (0.16) mean +75.4% med +35.8% win 1.00 worst +11% pulled 0.000 $/trade +193.766 $/day +1079.6 top10%-share-of-PnL 0.45
+  q=0.2 ETH front a=liq+2 b=frb+1: n 39 (0.16) mean +62.5% med +31.1% win 1.00 worst +9% pulled 0.000 $/trade +321.132 $/day +1789.2 top10%-share-of-PnL 0.43
+
+### lc:b09ef517|e9ae5c53 (50 launches, 7.1/day)
+  front a=liq+2 b=frb+1: n 46 (0.92) mean +36.6% med +27.4% win 1.00 worst +1% pulled 0.000 $/trade +5.437 $/day +35.7 top10%-share-of-PnL 0.35  days +25.5%(3) +23.3%(8) +24.3%(13) +46.0%(11) +72.3%(7) +28.0%(3) +9.7%(1)
+  front a=liq+2 b=frb+2: n 46 (0.92) mean +41.5% med +33.5% win 1.00 worst +1% pulled 0.000 $/trade +6.166 $/day +40.5 top10%-share-of-PnL 0.40
+  front a=liq+2 b=frb+3: n 46 (0.92) mean +41.5% med +33.5% win 1.00 worst +1% pulled 0.000 $/trade +6.166 $/day +40.5 top10%-share-of-PnL 0.40
+  front a=liq+2 b=frb+5: n 46 (0.92) mean +45.1% med +33.5% win 1.00 worst +1% pulled 0.000 $/trade +6.707 $/day +44.1 top10%-share-of-PnL 0.45  days +25.5%(3) +23.3%(8) +24.3%(13) +81.6%(11) +72.3%(7) +28.0%(3) +9.7%(1)
+  front a=liq+2 b=frb+10: n 46 (0.92) mean +52.6% med +33.5% win 1.00 worst +1% pulled 0.000 $/trade +7.822 $/day +51.4 top10%-share-of-PnL 0.52
+  front a=liq+2 b=frb+20: n 46 (0.92) mean +53.4% med +33.5% win 1.00 worst +1% pulled 0.000 $/trade +7.936 $/day +52.2 top10%-share-of-PnL 0.52  days +25.5%(3) +23.3%(8) +24.3%(13) +112.9%(11) +77.3%(7) +28.0%(3) +9.7%(1)
+  front a=liq+2 b=frb+40: n 46 (0.92) mean +53.4% med +33.5% win 1.00 worst +1% pulled 0.000 $/trade +7.936 $/day +52.2 top10%-share-of-PnL 0.52
+  front a=liq+2 sell into next real buy (cap 100): n 50 (1.00) mean -0.5% med -0.6% win 0.02 worst -1% pulled 0.000 $/trade -0.096 $/day -0.7 top10%-share-of-PnL nan  days +0.2%(4) -0.5%(10) -0.6%(13) -0.6%(12) -0.6%(7) -0.6%(3) -0.6%(1)
+  follow a=frb+2 sell into next real buy (cap 100): n 46 (0.92) mean +10.0% med -0.6% win 0.41 worst -35% pulled 0.000 $/trade +1.473 $/day +9.7 top10%-share-of-PnL 0.58  days +13.1%(3) +3.0%(8) +7.9%(13) +8.5%(11) +17.4%(7) +26.9%(3) -0.6%(1)
+  front a=liq+2 sell into next real buy (cap 300): n 50 (1.00) mean -0.5% med -0.6% win 0.02 worst -1% pulled 0.000 $/trade -0.096 $/day -0.7 top10%-share-of-PnL nan  days +0.2%(4) -0.5%(10) -0.6%(13) -0.6%(12) -0.6%(7) -0.6%(3) -0.6%(1)
+  follow a=frb+2 sell into next real buy (cap 300): n 46 (0.92) mean +21.0% med +14.8% win 0.80 worst -35% pulled 0.000 $/trade +3.118 $/day +20.5 top10%-share-of-PnL 0.41  days +13.1%(3) +14.2%(8) +26.5%(13) +18.5%(11) +23.9%(7) +33.6%(3) -0.6%(1)
+  q=0.02 ETH front a=liq+2 b=frb+1: n 46 (0.92) mean +32.8% med +25.3% win 1.00 worst +1% pulled 0.000 $/trade +16.837 $/day +110.6 top10%-share-of-PnL 0.32
+  q=0.05 ETH front a=liq+2 b=frb+1: n 46 (0.92) mean +28.2% med +20.5% win 1.00 worst +1% pulled 0.000 $/trade +36.203 $/day +237.9 top10%-share-of-PnL 0.27
+  q=0.1 ETH front a=liq+2 b=frb+1: n 46 (0.92) mean +24.0% med +17.9% win 1.00 worst +1% pulled 0.000 $/trade +61.705 $/day +405.5 top10%-share-of-PnL 0.23
+  q=0.2 ETH front a=liq+2 b=frb+1: n 46 (0.92) mean +19.4% med +15.6% win 1.00 worst +1% pulled 0.000 $/trade +99.767 $/day +655.6 top10%-share-of-PnL 0.20

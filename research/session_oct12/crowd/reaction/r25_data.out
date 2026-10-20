@@ -1,0 +1,7 @@
+pools 1389: launches 10-03 01:47:29 .. 10-12 13:15:54..10-12 13:44:12 UTC; per day [('10-03', 139), ('10-04', 153), ('10-05', 138), ('10-06', 179), ('10-07', 162), ('10-08', 138), ('10-09', 131), ('10-10', 132), ('10-11', 147), ('10-12', 70)]
+blocks 78707139 .. head 86743912 (10-12 14:28:27); WETH token1 61
+pulled 1381 (by the launch wallet 1089); pull offset p10/50/90 136/448/16929
+the crowd's first real buy before the pull (within + 3000): 1158; offset p10/25/50/75/90 51/69/91/153/296; by + 60 183, by + 78 443; first buy >= 0.005 not the crowd's: 63
+swaps up to the pull or + 3000: 88123; classes {'other': 18220, 'crowd': 14278, 'crowd_r': 38076, 'unknown': 17547, 'lw': 2}
+outside wallets (bought >= 0.0005 ETH before the crowd): 204 in 1180 pools
+RPC (this directory's log): 2218 POSTs, 35704 items (plus r01's 213 POSTs logged under analysis/W)

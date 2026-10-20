@@ -1,0 +1,22 @@
+tok:0f34e3b5: router-buy selectors [('7ff36ab5', 5280), ('b6f9de95', 814), ('c91f5491', 391), ('f345fd64', 120)]
+   minOut/actual first real buys n=599 p10/25/50/75/90 1.000/1.000/1.000/1.000/1.000  zero-minOut 0
+   minOut/actual all fetched buys n=6094 0.769/1.000/1.000/1.000/1.000  zero 7
+tok:70adce63: router-buy selectors [('7ff36ab5', 8606), ('b6f9de95', 1576), ('c91f5491', 319), ('f345fd64', 260)]
+   minOut/actual first real buys n=1180 p10/25/50/75/90 0.990/0.990/0.990/0.990/0.990  zero-minOut 0
+   minOut/actual all fetched buys n=10182 0.700/0.990/0.990/0.990/0.990  zero 41
+lc:0a493d1a|13ead562: router-buy selectors [('04e45aaf', 1394), ('34fcd5be', 405), ('ac9650d8', 298), ('3593564c', 43)]
+   minOut/actual first real buys n=431 p10/25/50/75/90 0.000/0.000/0.000/0.000/0.000  zero-minOut 431
+   minOut/actual all fetched buys n=1394 0.000/0.000/0.000/0.400/0.925  zero 1041
+lc:b09ef517|e9ae5c53: router-buy selectors [('3593564c', 250), ('b6f9de95', 68), ('175accdc', 29), ('0a2b8f36', 15)]
+   minOut/actual first real buys n=13 p10/25/50/75/90 0.000/0.452/0.899/0.995/0.995  zero-minOut 2
+   minOut/actual all fetched buys n=76 0.000/0.000/0.452/0.899/0.995  zero 35
+tok:d4e7eae4: router-buy selectors [('3593564c', 5862), ('04e45aaf', 3374), ('4d819a2a', 2594), ('a0193551', 1396)]
+   minOut/actual first real buys n=0 p10/25/50/75/90 -  zero-minOut 0
+   minOut/actual all fetched buys n=3377 0.000/0.000/0.400/0.800/0.925  zero 23
+lc:89885b75|d27d1e00: router-buy selectors [('d27d1e00', 1220), ('04e45aaf', 844), ('4d819a2a', 291), ('3593564c', 140)]
+   minOut/actual first real buys n=73 p10/25/50/75/90 0.000/0.000/0.000/0.750/0.873  zero-minOut 46
+   minOut/actual all fetched buys n=844 0.500/0.700/0.750/0.850/0.925  zero 67
+
+0f34e3b5 fleet slack (actual-minOut)/actual in ppm
+tok:0f34e3b5 frb n 599 slack ppm p10/25/50/75/90 494.125/500.000/500.000/500.000/500.000  exact zero 0 | all n 5280 500.000/500.000/500.000/500.000/500.000 zero 0
+tok:70adce63 frb n 1178 slack ppm p10/25/50/75/90 10000.000/10000.000/10000.000/10000.000/10000.000  exact zero 0 | all n 8606 10000.000/10000.000/10000.000/10000.000/10000.000 zero 0

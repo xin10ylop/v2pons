@@ -1,0 +1,7 @@
+follower wallets (>= 10 pools, buying within 5 blocks after the trigger): [('0x686061ad', 386, '10-03 10:20:10'), ('0xb4aff48f', 385, '10-03 10:20:10'), ('0xe9d83e95', 149, '10-04 19:53:16'), ('0xfac67b20', 113, '10-03 08:52:19'), ('0x8c009ea5', 85, '10-09 09:51:17'), ('0x1a45411c', 39, '10-03 05:15:11'), ('0x5718d14b', 38, '10-10 07:18:29'), ('0x3029608e', 27, '10-03 05:43:55'), ('0x3e0b2a2e', 24, '10-03 05:41:41'), ('0x8ad93b2a', 19, '10-10 07:24:05'), ('0x1a16c51d', 18, '10-03 21:16:12'), ('0xa4be5de3', 15, '10-03 08:43:00'), ('0x24a4c20f', 14, '10-03 05:57:41'), ('0xf4a0048b', 13, '10-09 10:19:04'), ('0xf3ce52b1', 11, '10-03 05:43:55')]
+  Oct 3-9    follower buy after the trigger yes: n  476; pulled within 20 0, 30 0, 40 10; triggers <= +60: 95
+  Oct 3-9    follower buy after the trigger no : n  284; pulled within 20 0, 30 1, 40 3; triggers <= +60: 40
+  Oct 10-12  follower buy after the trigger yes: n  198; pulled within 20 1, 30 4, 40 7; triggers <= +60: 40
+  Oct 10-12  follower buy after the trigger no : n  113; pulled within 20 2, 30 4, 40 9; triggers <= +60: 27
+pulled within 30 of the trigger: Oct 10-12 8/311 vs Oct 3-9 1/760: one-sided Fisher p 0.00032
+pulled within 20 of the trigger: Oct 10-12 3/311 vs Oct 3-9 0/760: one-sided Fisher p 0.024; Oct 10-12 rate 0.96% (Wilson 0.33-2.80%)

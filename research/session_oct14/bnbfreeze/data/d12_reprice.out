@@ -1,0 +1,37 @@
+pools (1/10/25 BNB, last 2 days): 94 Counter({25.0: 43, 1.0: 26, 10.0: 25}) | freeze delays n 135 S(3)=1.000 S(10)=0.874 S(25)=0.504 S(67)=0.000 S(210)=0.000
+our pool K=52: replay tokens for $5 26813104429061 | our wallet received 26815492626516 for 0.006722 BNB (it was tx index 35 of its block)
+K + 50 sell +260 hold 210 | 1.0  n  26 | gross mean +133.98% median +115.79% | net (no freeze) mean +133.42% win  92% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K + 50 sell +260 hold 210 | 10.0 n  25 | gross mean  +35.56% median  +33.77% | net (no freeze) mean  +35.01% win 100% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K + 50 sell +260 hold 210 | 25.0 n  43 | gross mean   +7.78% median   +6.78% | net (no freeze) mean   +7.23% win  98% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K + 50 sell +260 hold 210 | all  n  94 | gross mean  +50.07% median  +17.54% | net (no freeze) mean  +49.52% win  97% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K + 60 sell +260 hold 200 | all  n  94 | gross mean  +50.07% median  +17.54% | net (no freeze) mean  +49.52% win  97% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K + 70 sell +260 hold 190 | all  n  94 | gross mean  +48.23% median  +16.40% | net (no freeze) mean  +47.68% win  97% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K + 80 sell +260 hold 180 | all  n  94 | gross mean  +38.49% median  +11.25% | net (no freeze) mean  +37.94% win  97% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K +100 sell +260 hold 160 | all  n  94 | gross mean  +32.26% median   +9.54% | net (no freeze) mean  +31.71% win  94% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K +120 sell +260 hold 140 | all  n  94 | gross mean  +31.36% median   +9.44% | net (no freeze) mean  +30.80% win  91% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K +150 sell +260 hold 110 | all  n  94 | gross mean  +18.80% median   +5.65% | net (no freeze) mean  +18.25% win  81% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K +180 sell +260 hold  80 | all  n  94 | gross mean  +14.51% median   +4.43% | net (no freeze) mean  +13.96% win  76% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K +193 sell +260 hold  67 | all  n  94 | gross mean   +9.51% median   +2.93% | net (no freeze) mean   +8.96% win  68% | S(hold) 0.000 -> net with the freeze -100.00% ($-5.000 a trade)
+K +200 sell +260 hold  60 | all  n  94 | gross mean   +7.07% median   +2.50% | net (no freeze) mean   +6.52% win  68% | S(hold) 0.015 -> net with the freeze  -98.42% ($-4.921 a trade)
+K +220 sell +260 hold  40 | all  n  94 | gross mean   +7.12% median   +1.98% | net (no freeze) mean   +6.57% win  63% | S(hold) 0.059 -> net with the freeze  -93.68% ($-4.684 a trade)
+K +240 sell +260 hold  20 | all  n  94 | gross mean   +3.10% median   -0.50% | net (no freeze) mean   +2.55% win  32% | S(hold) 0.615 -> net with the freeze  -36.95% ($-1.847 a trade)
+K +250 sell +260 hold  10 | all  n  94 | gross mean   +0.70% median   -0.50% | net (no freeze) mean   +0.15% win  16% | S(hold) 0.874 -> net with the freeze  -12.46% ($-0.623 a trade)
+K +257 sell +260 hold   3 | 1.0  n  26 | gross mean   -0.50% median   -0.50% | net (no freeze) mean   -1.05% win   0% | S(hold) 1.000 -> net with the freeze   -1.05% ($-0.052 a trade)
+K +257 sell +260 hold   3 | 10.0 n  25 | gross mean   -0.50% median   -0.50% | net (no freeze) mean   -1.05% win   0% | S(hold) 1.000 -> net with the freeze   -1.05% ($-0.052 a trade)
+K +257 sell +260 hold   3 | 25.0 n  43 | gross mean   -0.50% median   -0.50% | net (no freeze) mean   -1.05% win   0% | S(hold) 1.000 -> net with the freeze   -1.05% ($-0.053 a trade)
+K +257 sell +260 hold   3 | all  n  94 | gross mean   -0.50% median   -0.50% | net (no freeze) mean   -1.05% win   0% | S(hold) 1.000 -> net with the freeze   -1.05% ($-0.052 a trade)
+K +259 sell +260 hold   1 | all  n  94 | gross mean   -0.50% median   -0.50% | net (no freeze) mean   -1.05% win   0% | S(hold) 1.000 -> net with the freeze   -1.05% ($-0.052 a trade)
+short holds (sell h blocks after the buy, before any freeze seen): best entry per tier and h, mean net over the pools
+  size  1.0 h 1: best K ['+75 mean +4.786% win 8% n 26', '+175 mean +4.118% win 19% n 26', '+365 mean +2.451% win 8% n 26']
+  size  1.0 h 2: best K ['+130 mean +11.653% win 31% n 26', '+175 mean +8.090% win 27% n 26', '+75 mean +7.595% win 19% n 26']
+  size  1.0 h 3: best K ['+130 mean +12.182% win 35% n 26', '+185 mean +8.340% win 19% n 26', '+175 mean +8.090% win 27% n 26']
+  size 10.0 h 1: best K ['+75 mean +2.670% win 24% n 25', '+765 mean +0.188% win 8% n 25', '+920 mean +0.037% win 8% n 25']
+  size 10.0 h 2: best K ['+75 mean +4.229% win 36% n 25', '+240 mean +0.634% win 12% n 25', '+130 mean +0.462% win 12% n 25']
+  size 10.0 h 3: best K ['+75 mean +5.063% win 40% n 25', '+130 mean +3.717% win 32% n 25', '+785 mean +0.990% win 16% n 25']
+  size 25.0 h 1: best K ['+120 mean -0.495% win 16% n 43', '+75 mean -0.678% win 7% n 43', '+665 mean -0.749% win 9% n 43']
+  size 25.0 h 2: best K ['+120 mean -0.298% win 23% n 43', '+75 mean -0.321% win 16% n 43', '+130 mean -0.442% win 16% n 43']
+  size 25.0 h 3: best K ['+75 mean -0.035% win 26% n 43', '+130 mean -0.130% win 23% n 43', '+120 mean -0.298% win 23% n 43']
+crowd buying by offset (BNB bought by the 120 crowd wallets, 1/10/25 pools of the last 2 days):
+  size  1.0: first crowd buy at +64; crowd BNB before +260 14.42 (260..dump 23.93); share of it at or after +K: +50 100% +60 100% +70 97% +80 89% +100 79% +150 58% +200 24% +250 3%
+  size 10.0: first crowd buy at +63; crowd BNB before +260 42.75 (260..dump 254.49); share of it at or after +K: +50 100% +60 100% +70 95% +80 77% +100 70% +150 42% +200 25% +250 6%
+  size 25.0: first crowd buy at +64; crowd BNB before +260 49.42 (260..dump 1232.21); share of it at or after +K: +50 100% +60 100% +70 99% +80 84% +100 75% +150 48% +200 25% +250 4%

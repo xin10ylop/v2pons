@@ -1,0 +1,50 @@
+
+=== 356-B value-0 launches: n 57 (10-10 17:02 .. 10-11 19:56 UTC); after census 2's end (Oct 11 13:52 UTC): 32
+ FLEET (fetched to +600): pools with a fleet buy 19 of 57 (33%); pumped (a fleet buy at/after +60) 19; with a fleet buy inside the hold +60..+259 16
+   first fleet buy offset p10/50/90 107/165/368; fleet buys per pumped pool (to +600) 5/15/71; ETH per pool 0.55/1.85/7.37; ETH per buy 0.081/0.101/0.130
+   fleet buys inside the hold per pumped pool 0/8/21, ETH 0/1.08/1.98; buyer nonce 0: 95 of 585; buyers in 1 pool only: 477; buyer nonce p10/50/90 0/7/49; distinct fleet wallets 560, of them in > 1 pool 83
+   gap between consecutive fleet buys p10/50/90 0/4/20
+ OPERATOR WALLETS' SELLS (fetched to +600): pools 7; first offset p10/50/90 219/260/575; ETH out per pool to +600 0.00/0.00/0.00; inside the hold 0/0.00/0.00; calls [(('caf681a6', 'ac9650d8', 548), 8)]
+ OPERATOR WALLETS' BUYS after the launch tx: pools 1; ETH 0.219/0.219/0.219
+ OTHER BUYS (not fleet/operator; fetched to +600): in the hold +60..+259: pools 51, ETH total 0.1383, buys >= 0.01 ETH 0; top calls [(('65050a9b', '4d819a2a', 580, 50000000), 53), (('88767899', '3593564c', 676, 0), 35), (('caf681a6', '04e45aaf', 228, 0), 27), (('88767899', '3593564c', 740, 0), 14)]
+ OUTSIDE BUYS >= 0.0005 ETH at +1..+59: pools 24; max 0.00200 ETH; callers [(('570759db', '414bf389', 260), 18), (('65050a9b', '4d819a2a', 580), 17), (('88767899', '3593564c', 676), 1)]
+   with an outside buy before +60: n 24, pumped 7; rule $15 mean +46.62%
+   without an outside buy before +60: n 33, pumped 12; rule $15 mean +45.64%
+ PULLS of the launch position (to +3000): 34 of 57; first pull offset p10/50/90 310/1113/1941; <= +260: 2; <= +300: 3; full (all L): 34
+   pull calls [(('73991a25', 'ac9650d8', 900, False), 34)]; pull from: launch wallet 0, the call's address word 1 34; distinct pullers [('cecbcc19', 15), ('1e39c691', 5), ('ab5b3c33', 4), ('74ecd113', 3), ('e4faee89', 3)]
+   pull after the last fleet buy (pumped pools): 146/757/1949
+ other Burns: 0; other Mints: 0
+ RULE buy +60 sell +260 (C's V3Sim):
+  $15 all: n 57 mean +46.05% median +0.282% win 77.2% pulled 2 (3.5%) worst -100.1% best +900.5% | $6.865/trade, total $391.28 | skipped (pull <= buy-2) 0 | top 10% of trades = 84% of the return
+  $15 pumped: n 19 mean +148.21% median +72.017% win 73.7% pulled 0 (0.0%) worst -27.9% best +900.5% | $22.092/trade, total $419.74 | skipped (pull <= buy-2) 0 | top 10% of trades = 32% of the return
+  $15 not pumped: n 38 mean -5.02% median +0.242% win 78.9% pulled 2 (5.3%) worst -100.1% best +1.0% | $-0.749/trade, total $-28.46 | skipped (pull <= buy-2) 0
+  $15 after the census: n 32 mean +27.23% median +0.240% win 75.0% pulled 1 (3.1%) worst -100.1% best +700.2% | $4.058/trade, total $129.86 | skipped (pull <= buy-2) 0 | top 10% of trades = 111% of the return
+  $5  all: n 57 mean +47.06% median +0.019% win 54.4% pulled 2 (3.5%) worst -100.4% best +913.9% | $2.354/trade, total $134.16 | skipped (pull <= buy-2) 0 | top 10% of trades = 83% of the return
+  $5  pumped: n 19 mean +151.76% median +72.793% win 78.9% pulled 0 (0.0%) worst -0.6% best +913.9% | $7.590/trade, total $144.21 | skipped (pull <= buy-2) 0 | top 10% of trades = 32% of the return
+  $5  not pumped: n 38 mean -5.29% median -0.021% win 42.1% pulled 2 (5.3%) worst -100.4% best +0.7% | $-0.264/trade, total $-10.05 | skipped (pull <= buy-2) 0
+  $5  after the census: n 32 mean +28.42% median -0.021% win 43.8% pulled 1 (3.1%) worst -100.4% best +709.5% | $1.422/trade, total $45.49 | skipped (pull <= buy-2) 0 | top 10% of trades = 108% of the return
+
+=== value launches (548-1828 B): n 45 (10-10 12:19 .. 10-12 10:50 UTC); after census 2's end (Oct 11 13:52 UTC): 40
+ launch-tx buys per launch (count) p10/50/90: 4/5/21; ETH 5.00/12.00/18.01; tick after the launch tx 148342/155943/171407 (launch tick 207243)
+ tick at +60 (last swap before) p10/50/90: 148342/155942/171407; moved from the launch-tx end by -2/-1/0 ticks
+ FLEET (fetched to +600): pools with a fleet buy 42 of 45 (93%); pumped (a fleet buy at/after +60) 42; with a fleet buy inside the hold +60..+259 13
+   first fleet buy offset p10/50/90 201/314/462; fleet buys per pumped pool (to +600) 9/22/47; ETH per pool 1.56/4.05/8.53; ETH per buy 0.082/0.126/0.358
+   fleet buys inside the hold per pumped pool 0/0/4, ETH 0/0/1.02; buyer nonce 0: 344 of 1051; buyers in 1 pool only: 782; buyer nonce p10/50/90 0/9/36; distinct fleet wallets 914, of them in > 1 pool 135
+   gap between consecutive fleet buys p10/50/90 0/9/28
+ OPERATOR WALLETS' SELLS (fetched to +600): pools 32; first offset p10/50/90 209/371/516; ETH out per pool to +600 0.41/4.81/8.29; inside the hold 0/0/1.61; calls [(('caf681a6', 'ac9650d8', 548), 227)]
+ OPERATOR WALLETS' BUYS after the launch tx: pools 0; ETH -
+ OTHER BUYS (not fleet/operator; fetched to +600): in the hold +60..+259: pools 33, ETH total 0.0777, buys >= 0.01 ETH 0; top calls [(('caf681a6', '5ae401dc', 516, 0), 20), (('65050a9b', '4d819a2a', 580, 50000000), 17), (('d390500a', '6426eb7b', 132, 1), 10), (('a39266fa', '6426eb7b', 132, 1), 7)]
+ OUTSIDE BUYS >= 0.0005 ETH at +1..+59: pools 8; max 0.00099 ETH; callers [(('65050a9b', '4d819a2a', 580), 15), (('f0b7eaaf', '39ecce49', 1380), 1)]
+   with an outside buy before +60: n 8, pumped 8; rule $15 mean +1.38%
+   without an outside buy before +60: n 37, pumped 34; rule $15 mean +0.14%
+ PULLS of the launch position (to +3000): 8 of 45; first pull offset p10/50/90 609/2531/2982; <= +260: 0; <= +300: 0; full (all L): 8
+   pull calls [(('73991a25', 'ac9650d8', 900, False), 8)]; pull from: launch wallet 0, the call's address word 1 8; distinct pullers [('20a0d61d', 7), ('71f79f19', 1)]
+   pull after the last fleet buy (pumped pools): 268/1956/2392
+ other Burns: 0; other Mints: 0
+ RULE buy +60 sell +260 (C's V3Sim):
+  $15 all: n 45 mean +0.36% median -0.140% win 15.6% pulled 0 (0.0%) worst -24.5% best +36.8% | $0.054/trade, total $2.45 | skipped (pull <= buy-2) 0 | top 10% of trades = 634% of the return
+  $15 pumped: n 42 mean +0.40% median -0.133% win 16.7% pulled 0 (0.0%) worst -24.5% best +36.8% | $0.059/trade, total $2.49 | skipped (pull <= buy-2) 0 | top 10% of trades = 621% of the return
+  $15 not pumped: n 3 mean -0.11% median -0.141% win 0.0% pulled 0 (0.0%) worst -0.2% best -0.0% | $-0.016/trade, total $-0.05 | skipped (pull <= buy-2) 0
+  $5  all: n 45 mean +0.10% median -0.405% win 15.6% pulled 0 (0.0%) worst -24.7% best +36.5% | $0.005/trade, total $0.23 | skipped (pull <= buy-2) 0 | top 10% of trades = 2224% of the return
+  $5  pumped: n 42 mean +0.14% median -0.399% win 16.7% pulled 0 (0.0%) worst -24.7% best +36.5% | $0.007/trade, total $0.29 | skipped (pull <= buy-2) 0 | top 10% of trades = 1790% of the return
+  $5  not pumped: n 3 mean -0.37% median -0.407% win 0.0% pulled 0 (0.0%) worst -0.4% best -0.3% | $-0.019/trade, total $-0.06 | skipped (pull <= buy-2) 0

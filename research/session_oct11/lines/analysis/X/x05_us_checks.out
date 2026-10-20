@@ -1,0 +1,6 @@
+Transfer logs touching our addresses: {('0x2abb5653', 'from', 'PM'): 1244, ('0x2abb5653', 'to', 'PM'): 1249}
+  not via the PoolManager: 0
+pool swaps by others whose calldata carries our wallet or relay: 0 []
+liquidity calls whose calldata carries our wallet or relay: 0 []
+sampled trades 124; blocks read 1500; transactions by others to or carrying our addresses: 0
+posts {'posts': 671, 'items': 1960, 'r429': 8}

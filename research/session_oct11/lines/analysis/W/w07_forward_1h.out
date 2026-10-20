@@ -1,0 +1,11 @@
+2 launches of the V3 crowd line in the 1 h to 17:28 UTC (stake 0.0058 ETH; rule: buy +2, sell first real buy at/after ours +20, cap +80)
+   launch   UTC qs  frb  frbETH via                                wave20 exit  pull   gross     net
+ 86002926 17:19  0  124  0.0160 crowd:0xd26c8cfc:3593564c:484       0.026   80  2627  +0.11%  +0.09%
+ 86006461 17:25  0  154  0.1000 crowd:0xd26c8cfc:3593564c:484       0.240   80  None  +0.18%  +0.16%
+all: n 2 net mean +0.12% median +0.12% win 2/2 pulled<=sell 0 gross mean +0.14% median +0.14%; frb by +60: 0, by +80: 0, any frb: 2; $/trade at 0.0058 ETH -0.001
+last 3 h: n 2 net mean +0.12% median +0.12% win 2/2 pulled<=sell 0 gross mean +0.14% median +0.14%; frb by +60: 0, by +80: 0, any frb: 2; $/trade at 0.0058 ETH -0.001
+before the last 3 h: none
+frb offsets [124, 154]
+frb ETH [0.016, 0.1]
+pull offsets [2627] never pulled (to head) 1
+mint top tick / L variants [(193379, 63246764568802612649417)]

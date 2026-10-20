@@ -1,0 +1,844 @@
+pools 882 buy txs missing 0
+who pulls: [(('deployer', '0x1cbaf24d 0xa0f7978d'), 293)]
+
+pools with an OUTSIDE buy in [b0, min(pull, b0+400)]: 830 of 882
+  delay first outside buy -> pull (blocks): [3, 3, 3, 3, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 13, 14, 14, 14, 15, 15, 16, 16, 16, 16, 16, 17, 18, 19, 19, 20, 22, 22, 23, 23, 24, 24, 27, 27, 28, 31, 31, 32, 33, 33, 36, 37, 37, 38, 38, 39, 40, 41, 41, 47, 49, 53, 54, 55, 57, 57, 58, 60, 62, 62, 67, 68, 72, 75, 78, 79, 79, 80, 90, 91, 92, 96, 101, 102, 103, 106, 107, 110, 112, 117, 117, 117, 118, 119, 120, 120, 121, 121, 121, 121, 123, 126, 127, 127, 128, 128, 128, 128, 128, 130, 130, 131, 133, 134, 136, 139, 141, 143, 148, 149, 149, 167, 172, 182, 187, 208, 222, 226, 231, 247, 254, 268, 271, 273, 304, 313, 315, 332, 351, 351, 399, 401, 434, 435, 443, 445, 469, 470, 503, 504, 509, 509, 518, 528, 528, 533, 541, 572, 575, 583, 619, 626, 628, 637, 647, 657, 665, 684, 705, 719, 721, 811, 827, 827, 832, 839, 867, 894, 911, 913, 920, 935, 936, 942, 961, 967, 971, 978, 982, 994, 999, 1023, 1032, 1052, 1075, 1078, 1082, 1104, 1105, 1110, 1114, 1130, 1134, 1139, 1154, 1156, 1177, 1186, 1189, 1189, 1194, 1213, 1226, 1242, 1254, 1274, 1285, 1288, 1305, 1324, 1340, 1352, 1366]
+  of them never pulled within the logs: 546
+  pulled within 20 blocks of the first outside buy: 97 | within 60: 129
+
+pools with NO outside buy before the pull/+400: 52; pulled <= +45: 1, <= +400: 4, never/later: 48
+
+outside buys by route: [(('0x88767899', '0x3593564c'), 873), (('0x65050a9b', '0x4d819a2a'), 48), (('0xf0b7eaaf', '0x39ecce49'), 23), (('0x6e2a35a7', '0x0c307f76'), 3), (('0x2dfb2643', '0x7fb16707'), 2), (('0x88767899', '0x24856bc3'), 2), (('0xb1000000', '0x549299b8'), 2), (('0xb300000b', '0x810c705b'), 1), (('0xccc88a9d', '0x0a2b8f36'), 1), (('0x5399d94d', '0x814920c0'), 1)]
+outside wallets (pools): [('0x93b07902', 792), ('0xf6e55480', 27), ('0xb002e8a0', 18), ('0xfeda1c58', 18), ('0xd54bad00', 17), ('0x3c886772', 14), ('0xe282bb19', 10), ('0x0ed4dfff', 10), ('0xbead1521', 8), ('0x2fc0827a', 7), ('0xf5d70602', 4), ('0xc9caf996', 4)]
+
+first outside buy, then pull delay, per pool (time, offset, eth, wallet, delay):
+  10-08 00:07 census out +217 0.000024 ETH 0x93b07902 n7878 via 0x88767899 0x3593564c -> pull 233 (delay 16) bots before pull 5
+  10-08 00:08 census out +114 0.000024 ETH 0x93b07902 n7875 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 00:08 census out +129 0.000024 ETH 0x93b07902 n7887 via 0x88767899 0x3593564c -> pull 1107 (delay 978) bots before pull 15
+  10-08 00:10 census out +133 0.000024 ETH 0x93b07902 n7894 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 00:18 census out +131 0.000024 ETH 0x93b07902 n7908 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 00:18 census out +136 0.000024 ETH 0x93b07902 n7911 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 00:28 census out +136 0.000024 ETH 0x93b07902 n7931 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 00:28 census out +136 0.000024 ETH 0x93b07902 n7934 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 00:38 census out +130 0.000024 ETH 0x93b07902 n7955 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 00:38 census out +145 0.000024 ETH 0x93b07902 n7958 via 0x88767899 0x3593564c -> pull 648 (delay 503) bots before pull 17
+  10-08 00:39 census out +133 0.000024 ETH 0x93b07902 n7971 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 00:46 census out +135 0.000024 ETH 0x93b07902 n7982 via 0x88767899 0x3593564c -> pull 578 (delay 443) bots before pull 16
+  10-08 00:48 census out +142 0.000024 ETH 0x93b07902 n7988 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 00:48 census out +141 0.000024 ETH 0x93b07902 n7991 via 0x88767899 0x3593564c -> pull 1054 (delay 913) bots before pull 16
+  10-08 00:50 census out +119 0.000024 ETH 0x93b07902 n8001 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 00:54 census out +127 0.000024 ETH 0x93b07902 n8012 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 00:58 census out +119 0.000024 ETH 0x93b07902 n8025 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 00:58 census out +152 0.000024 ETH 0x93b07902 n8028 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 13
+  10-08 01:07 census out +132 0.000024 ETH 0x93b07902 n8057 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 01:07 census out +129 0.000024 ETH 0x93b07902 n8059 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 01:18 census out +142 0.000024 ETH 0x93b07902 n8077 via 0x88767899 0x3593564c -> pull 670 (delay 528) bots before pull 16
+  10-08 01:18 census out +132 0.000024 ETH 0x93b07902 n8080 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 01:19 census out +131 0.000024 ETH 0x93b07902 n8093 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 01:28 census out +133 0.000024 ETH 0x93b07902 n8102 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 01:28 census out +125 0.000024 ETH 0x93b07902 n8109 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 01:38 census out +123 0.000024 ETH 0x93b07902 n8122 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 01:38 census out +130 0.000024 ETH 0x93b07902 n8124 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 01:48 census out +125 0.000024 ETH 0x93b07902 n8154 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 01:48 census out +139 0.000024 ETH 0x93b07902 n8157 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 01:58 census out +122 0.000024 ETH 0x93b07902 n8171 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 01:58 census out +123 0.000024 ETH 0x93b07902 n8174 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 02:07 census out +122 0.000024 ETH 0x93b07902 n8194 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 02:08 census out +131 0.000024 ETH 0x93b07902 n8197 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 02:17 census out +126 0.000024 ETH 0x93b07902 n8215 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 02:18 census out +127 0.000024 ETH 0x93b07902 n8218 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 02:23 census out +150 0.000024 ETH 0x93b07902 n8229 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 14
+  10-08 02:24 census out +157 0.000024 ETH 0x93b07902 n8232 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 02:28 census out +130 0.000024 ETH 0x93b07902 n8246 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 02:28 census out +129 0.000024 ETH 0x93b07902 n8247 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 02:38 census out +210 0.000023 ETH 0xe282bb19 n316 via 0x88767899 0x3593564c -> pull 263 (delay 53) bots before pull 5
+  10-08 02:38 census out +239 0.000023 ETH 0x2fc0827a n208 via 0x88767899 0x3593564c -> pull 258 (delay 19) bots before pull 6
+  10-08 02:38 census out +124 0.000024 ETH 0x93b07902 n8277 via 0x88767899 0x3593564c -> pull 657 (delay 533) bots before pull 16
+  10-08 02:38 census out +140 0.000024 ETH 0x93b07902 n8280 via 0x88767899 0x3593564c -> pull 649 (delay 509) bots before pull 17
+  10-08 02:40 census out +126 0.000024 ETH 0x93b07902 n8283 via 0x88767899 0x3593564c -> pull 965 (delay 839) bots before pull 17
+  10-08 02:40 census out +132 0.000024 ETH 0x93b07902 n8289 via 0x88767899 0x3593564c -> pull 964 (delay 832) bots before pull 17
+  10-08 02:42 census out +118 0.000024 ETH 0x93b07902 n8295 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 02:42 census out +133 0.000024 ETH 0x93b07902 n8298 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 02:48 census out +130 0.000024 ETH 0x93b07902 n8317 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 02:48 census out +129 0.000024 ETH 0x93b07902 n8320 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 02:57 census out +128 0.000024 ETH 0x93b07902 n8331 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 02:57 census out +129 0.000024 ETH 0x93b07902 n8334 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 03:08 census out +129 0.000024 ETH 0x93b07902 n8347 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 03:08 census out +121 0.000024 ETH 0x93b07902 n8345 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 03:18 census out +132 0.000024 ETH 0x93b07902 n8362 via 0x88767899 0x3593564c -> pull 533 (delay 401) bots before pull 16
+  10-08 03:18 census out +124 0.000024 ETH 0x93b07902 n8365 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 03:19 census out +122 0.000024 ETH 0x93b07902 n8374 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 03:26 census out +138 0.000024 ETH 0x93b07902 n8379 via 0x88767899 0x3593564c -> pull 583 (delay 445) bots before pull 17
+  10-08 03:28 census out +140 0.000024 ETH 0x93b07902 n8385 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 03:28 census out +141 0.000024 ETH 0x93b07902 n8388 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 03:38 census out +141 0.000024 ETH 0x93b07902 n8401 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 03:38 census out +121 0.000024 ETH 0x93b07902 n8399 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 19
+  10-08 03:42 census out +162 0.000024 ETH 0x93b07902 n8413 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 03:48 census out +127 0.000024 ETH 0x93b07902 n8423 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 03:48 census out +147 0.000024 ETH 0x93b07902 n8426 via 0x88767899 0x3593564c -> pull 688 (delay 541) bots before pull 17
+  10-08 03:49 census out +120 0.000024 ETH 0x93b07902 n8435 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 03:54 census out +144 0.000024 ETH 0x93b07902 n8440 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 03:58 census out +116 0.000024 ETH 0x93b07902 n8444 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 13
+  10-08 03:58 census out +138 0.000024 ETH 0x93b07902 n8447 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 13
+  10-08 04:02 census out +138 0.000024 ETH 0x93b07902 n8463 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 04:08 census out +118 0.000024 ETH 0x93b07902 n8467 via 0x88767899 0x3593564c -> pull 175 (delay 57) bots before pull 8
+  10-08 04:08 census out +164 0.000024 ETH 0x93b07902 n8470 via 0x88767899 0x3593564c -> pull 242 (delay 78) bots before pull 8
+  10-08 04:08 census out +119 0.000024 ETH 0x93b07902 n8479 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 04:08 census out +149 0.000024 ETH 0x93b07902 n8482 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 8
+  10-08 04:18 census out +119 0.000024 ETH 0x93b07902 n8502 via 0x88767899 0x3593564c -> pull 146 (delay 27) bots before pull 8
+  10-08 04:18 census out +129 0.000024 ETH 0x93b07902 n8505 via 0x88767899 0x3593564c -> pull 161 (delay 32) bots before pull 7
+  10-08 04:18 census out +134 0.000024 ETH 0x93b07902 n8524 via 0x88767899 0x3593564c -> pull 181 (delay 47) bots before pull 9
+  10-08 04:18 census out +131 0.000024 ETH 0x93b07902 n8527 via 0x88767899 0x3593564c -> pull 169 (delay 38) bots before pull 7
+  10-08 04:19 census out +137 0.000024 ETH 0x93b07902 n8540 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 04:19 census out +132 0.000024 ETH 0x93b07902 n8539 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 04:28 census out +124 0.000010 ETH 0x93b07902 n8557 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 04:28 census out +140 0.000010 ETH 0x93b07902 n8561 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-08 04:38 census out +136 0.000010 ETH 0x93b07902 n8606 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 04:38 census out +130 0.000010 ETH 0x93b07902 n8610 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 19
+  10-08 04:43 census out +130 0.000010 ETH 0x93b07902 n8654 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 04:48 census out +145 0.000010 ETH 0x93b07902 n8669 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 04:48 census out +131 0.000010 ETH 0x93b07902 n8671 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 04:58 census out +160 0.000010 ETH 0x93b07902 n8727 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 04:58 census out +150 0.000010 ETH 0x93b07902 n8725 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 05:08 census out +141 0.000010 ETH 0x93b07902 n8780 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 05:08 census out +148 0.000010 ETH 0x93b07902 n8782 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 05:18 census out +125 0.000010 ETH 0x93b07902 n8843 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 05:18 census out +136 0.000010 ETH 0x93b07902 n8846 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 05:28 census out +138 0.000010 ETH 0x93b07902 n8871 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 10
+  10-08 05:28 census out +136 0.000010 ETH 0x93b07902 n8873 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 10
+  10-08 05:38 census out +151 0.000010 ETH 0x93b07902 n8920 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 05:38 census out +138 0.000010 ETH 0x93b07902 n8918 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 05:48 census out + 15 0.000390 ETH 0x3c886772 n126 via 0x88767899 0x3593564c -> pull 26 (delay 11) bots before pull 1
+  10-08 05:48 census out + 13 0.000390 ETH 0x3c886772 n127 via 0x88767899 0x3593564c -> pull 18 (delay 5) bots before pull 1
+  10-08 05:48 census out + 13 0.000390 ETH 0x3c886772 n138 via 0x88767899 0x3593564c -> pull 19 (delay 6) bots before pull 1
+  10-08 05:48 census out + 14 0.000390 ETH 0x3c886772 n141 via 0x88767899 0x3593564c -> pull 19 (delay 5) bots before pull 1
+  10-08 05:48 census out +127 0.000024 ETH 0x93b07902 n8963 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 05:48 census out +129 0.000024 ETH 0x93b07902 n8966 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 05:58 census out +131 0.000024 ETH 0x93b07902 n8990 via 0x88767899 0x3593564c -> pull 1325 (delay 1194) bots before pull 11
+  10-08 05:58 census out +134 0.000024 ETH 0x93b07902 n8993 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 06:00 census out +120 0.000024 ETH 0x93b07902 n9013 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 06:08 census out +129 0.000024 ETH 0x93b07902 n9030 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 06:08 census out +133 0.000024 ETH 0x93b07902 n9033 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 06:18 census out +119 0.000024 ETH 0x93b07902 n9056 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 06:18 census out +126 0.000024 ETH 0x93b07902 n9059 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 06:28 census out +124 0.000024 ETH 0x93b07902 n9091 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-08 06:28 census out +132 0.000024 ETH 0x93b07902 n9094 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-08 06:38 census out +133 0.000024 ETH 0x93b07902 n9133 via 0x88767899 0x3593564c -> pull 225 (delay 92) bots before pull 10
+  10-08 06:38 census out +139 0.000024 ETH 0x93b07902 n9136 via 0x88767899 0x3593564c -> pull 230 (delay 91) bots before pull 10
+  10-08 06:38 census out +165 0.000024 ETH 0x93b07902 n9145 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 14
+  10-08 06:38 census out +140 0.000024 ETH 0x93b07902 n9148 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 06:42 census out +142 0.000024 ETH 0x93b07902 n9171 via 0x88767899 0x3593564c -> pull 217 (delay 75) bots before pull 9
+  10-08 06:43 census out +215 0.000023 ETH 0xe282bb19 n324 via 0x88767899 0x3593564c -> pull 277 (delay 62) bots before pull 5
+  10-08 06:44 census out +146 0.000024 ETH 0x93b07902 n9183 via 0x88767899 0x3593564c -> pull 248 (delay 102) bots before pull 9
+  10-08 06:44 census out +124 0.000024 ETH 0x93b07902 n9186 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 06:48 census out +150 0.000024 ETH 0x93b07902 n9206 via 0x88767899 0x3593564c -> pull 218 (delay 68) bots before pull 9
+  10-08 06:48 census out +113 0.000024 ETH 0x93b07902 n9203 via 0x88767899 0x3593564c -> pull 223 (delay 110) bots before pull 10
+  10-08 06:48 census out +132 0.000024 ETH 0x93b07902 n9218 via 0x88767899 0x3593564c -> pull 233 (delay 101) bots before pull 10
+  10-08 06:48 census out +138 0.000024 ETH 0x93b07902 n9221 via 0x88767899 0x3593564c -> pull 241 (delay 103) bots before pull 10
+  10-08 06:49 census out +128 0.000024 ETH 0x93b07902 n9230 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 06:49 census out +128 0.000024 ETH 0x93b07902 n9233 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 06:56 census out +131 0.000024 ETH 0x93b07902 n9270 via 0x88767899 0x3593564c -> pull 649 (delay 518) bots before pull 13
+  10-08 06:58 census out +131 0.000024 ETH 0x93b07902 n9282 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 06:58 census out +123 0.000024 ETH 0x93b07902 n9284 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-08 07:08 census out +139 0.000024 ETH 0x93b07902 n9308 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 07:08 census out +133 0.000024 ETH 0x93b07902 n9311 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 07:18 census out +132 0.000024 ETH 0x93b07902 n9365 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 07:18 census out +129 0.000024 ETH 0x93b07902 n9368 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 07:27 census out +136 0.000024 ETH 0x93b07902 n9397 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 07:27 census out +119 0.000024 ETH 0x93b07902 n9399 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 13
+  10-08 07:38 census out + 37 0.000238 ETH 0xb002e8a0 n2847 via 0x65050a9b 0x4d819a2a -> pull 50 (delay 13) bots before pull 2
+  10-08 07:38 census out +117 0.000024 ETH 0x93b07902 n9445 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 07:38 census out +139 0.000024 ETH 0x93b07902 n9457 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 07:48 census out +113 0.000024 ETH 0x93b07902 n9506 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 07:48 census out +136 0.000024 ETH 0x93b07902 n9511 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 07:58 census out +129 0.000024 ETH 0x93b07902 n9570 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 07:58 census out +238 0.000023 ETH 0xe282bb19 n328 via 0x88767899 0x3593564c -> pull 256 (delay 18) bots before pull 6
+  10-08 07:58 census out +130 0.000024 ETH 0x93b07902 n9584 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 08:08 census out +115 0.000024 ETH 0x93b07902 n9599 via 0x88767899 0x3593564c -> pull 1057 (delay 942) bots before pull 17
+  10-08 08:08 census out +122 0.000024 ETH 0x93b07902 n9602 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 08:10 census out +126 0.000024 ETH 0x93b07902 n9621 via 0x88767899 0x3593564c -> pull 394 (delay 268) bots before pull 16
+  10-08 08:11 census out +122 0.000024 ETH 0x93b07902 n9625 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 08:18 census out +137 0.000024 ETH 0x93b07902 n9650 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 08:18 census out +118 0.000024 ETH 0x93b07902 n9648 via 0x88767899 0x3593564c -> pull 744 (delay 626) bots before pull 17
+  10-08 08:19 census out +130 0.000024 ETH 0x93b07902 n9664 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 08:22 census out +124 0.000024 ETH 0x93b07902 n9672 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 08:27 census out +131 0.000024 ETH 0x93b07902 n9687 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 08:28 census out +128 0.000024 ETH 0x93b07902 n9690 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 08:35 census out +121 0.000024 ETH 0x93b07902 n9732 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 08:38 census out +138 0.000024 ETH 0x93b07902 n9742 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 08:38 census out +125 0.000024 ETH 0x93b07902 n9740 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 08:47 census out +127 0.000024 ETH 0x93b07902 n9770 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 08:47 census out +132 0.000024 ETH 0x93b07902 n9772 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 08:58 census out +129 0.000024 ETH 0x93b07902 n9808 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 10
+  10-08 08:58 census out +294 0.000023 ETH 0xe282bb19 n332 via 0x88767899 0x3593564c -> pull 308 (delay 14) bots before pull 8
+  10-08 08:58 census out +134 0.000024 ETH 0x93b07902 n9821 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 09:02 census out +129 0.000024 ETH 0x93b07902 n9834 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 09:08 census out +120 0.000024 ETH 0x93b07902 n9855 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 09:08 census out +124 0.000024 ETH 0x93b07902 n9858 via 0x88767899 0x3593564c -> pull 1258 (delay 1134) bots before pull 18
+  10-08 09:10 census out +130 0.000024 ETH 0x93b07902 n9871 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 09:17 census out +140 0.000024 ETH 0x93b07902 n9892 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 09:18 census out +123 0.000024 ETH 0x93b07902 n9894 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 09:28 census out +  3 0.000015 ETH 0xf6e55480 n16835 via 0x65050a9b 0x4d819a2a -> pull 151 (delay 148) bots before pull 6
+  10-08 09:28 census out + 17 0.000015 ETH 0xf6e55480 n16837 via 0x65050a9b 0x4d819a2a -> pull 158 (delay 141) bots before pull 6
+  10-08 09:28 census out +  3 0.000015 ETH 0xf6e55480 n16841 via 0x65050a9b 0x4d819a2a -> pull 120 (delay 117) bots before pull 5
+  10-08 09:28 census out +  3 0.000015 ETH 0xf6e55480 n16843 via 0x65050a9b 0x4d819a2a -> pull 124 (delay 121) bots before pull 5
+  10-08 09:29 census out +  3 0.000015 ETH 0xf6e55480 n16845 via 0x65050a9b 0x4d819a2a -> pull 133 (delay 130) bots before pull 6
+  10-08 09:29 census out +  3 0.000015 ETH 0xf6e55480 n16847 via 0x65050a9b 0x4d819a2a -> pull 152 (delay 149) bots before pull 6
+  10-08 09:29 census out +  3 0.000015 ETH 0xf6e55480 n16849 via 0x65050a9b 0x4d819a2a -> pull 142 (delay 139) bots before pull 6
+  10-08 09:29 census out +  3 0.000015 ETH 0xf6e55480 n16851 via 0x65050a9b 0x4d819a2a -> pull 124 (delay 121) bots before pull 5
+  10-08 09:30 census out +  3 0.000015 ETH 0xf6e55480 n16853 via 0x65050a9b 0x4d819a2a -> pull 130 (delay 127) bots before pull 5
+  10-08 09:30 census out +  3 0.000015 ETH 0xf6e55480 n16855 via 0x65050a9b 0x4d819a2a -> pull 124 (delay 121) bots before pull 5
+  10-08 09:30 census out +  3 0.000015 ETH 0xf6e55480 n16857 via 0x65050a9b 0x4d819a2a -> pull 120 (delay 117) bots before pull 5
+  10-08 09:30 census out +  3 0.000015 ETH 0xf6e55480 n16859 via 0x65050a9b 0x4d819a2a -> pull 124 (delay 121) bots before pull 5
+  10-08 09:31 census out +  3 0.000015 ETH 0xf6e55480 n16861 via 0x65050a9b 0x4d819a2a -> pull 131 (delay 128) bots before pull 5
+  10-08 09:31 census out +  3 0.000015 ETH 0xf6e55480 n16863 via 0x65050a9b 0x4d819a2a -> pull 134 (delay 131) bots before pull 6
+  10-08 09:31 census out +  3 0.000015 ETH 0xf6e55480 n16865 via 0x65050a9b 0x4d819a2a -> pull 109 (delay 106) bots before pull 5
+  10-08 09:31 census out +  3 0.000015 ETH 0xf6e55480 n16867 via 0x65050a9b 0x4d819a2a -> pull 185 (delay 182) bots before pull 8
+  10-08 09:32 census out +  3 0.000015 ETH 0xf6e55480 n16869 via 0x65050a9b 0x4d819a2a -> pull 130 (delay 127) bots before pull 6
+  10-08 09:32 census out +  3 0.000015 ETH 0xf6e55480 n16871 via 0x65050a9b 0x4d819a2a -> pull 137 (delay 134) bots before pull 6
+  10-08 09:32 census out +  6 0.000015 ETH 0xf6e55480 n16873 via 0x65050a9b 0x4d819a2a -> pull 118 (delay 112) bots before pull 5
+  10-08 09:32 census out +  3 0.000015 ETH 0xf6e55480 n16875 via 0x65050a9b 0x4d819a2a -> pull 131 (delay 128) bots before pull 6
+  10-08 09:33 census out +  3 0.000015 ETH 0xf6e55480 n16877 via 0x65050a9b 0x4d819a2a -> pull 129 (delay 126) bots before pull 6
+  10-08 09:33 census out +  3 0.000015 ETH 0xf6e55480 n16879 via 0x65050a9b 0x4d819a2a -> pull 126 (delay 123) bots before pull 5
+  10-08 09:33 census out +  5 0.000015 ETH 0xf6e55480 n16881 via 0x65050a9b 0x4d819a2a -> pull 148 (delay 143) bots before pull 6
+  10-08 09:33 census out +  3 0.000015 ETH 0xf6e55480 n16883 via 0x65050a9b 0x4d819a2a -> pull 123 (delay 120) bots before pull 5
+  10-08 09:34 census out +  3 0.000015 ETH 0xf6e55480 n16885 via 0x65050a9b 0x4d819a2a -> pull 123 (delay 120) bots before pull 6
+  10-08 09:34 census out +  3 0.000015 ETH 0xf6e55480 n16887 via 0x65050a9b 0x4d819a2a -> pull 122 (delay 119) bots before pull 5
+  10-08 09:34 census out +  3 0.000015 ETH 0xf6e55480 n16889 via 0x65050a9b 0x4d819a2a -> pull 120 (delay 117) bots before pull 5
+  10-08 09:34 census out +129 0.000024 ETH 0x93b07902 n10016 via 0x88767899 0x3593564c -> pull 1243 (delay 1114) bots before pull 17
+  10-08 09:34 census out +164 0.000024 ETH 0x93b07902 n10018 via 0x88767899 0x3593564c -> pull 633 (delay 469) bots before pull 16
+  10-08 09:36 census out +116 0.000024 ETH 0x93b07902 n10022 via 0x88767899 0x3593564c -> pull 420 (delay 304) bots before pull 17
+  10-08 09:37 census out +127 0.000024 ETH 0x93b07902 n10025 via 0x88767899 0x3593564c -> pull 349 (delay 222) bots before pull 15
+  10-08 09:37 census out +138 0.000024 ETH 0x93b07902 n10028 via 0x88767899 0x3593564c -> pull 346 (delay 208) bots before pull 15
+  10-08 09:38 census out +115 0.000024 ETH 0x93b07902 n10031 via 0x88767899 0x3593564c -> pull 1109 (delay 994) bots before pull 16
+  10-08 09:38 census out +127 0.000024 ETH 0x93b07902 n10034 via 0x88767899 0x3593564c -> pull 1098 (delay 971) bots before pull 18
+  10-08 09:40 census out +139 0.000024 ETH 0x93b07902 n10049 via 0x88767899 0x3593564c -> pull 1365 (delay 1226) bots before pull 18
+  10-08 09:40 census out +126 0.000024 ETH 0x93b07902 n10047 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 09:43 census out +136 0.000024 ETH 0x93b07902 n10072 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 14
+  10-08 09:46 census out +134 0.000024 ETH 0x93b07902 n10080 via 0x88767899 0x3593564c -> pull 1069 (delay 935) bots before pull 17
+  10-08 09:48 census out +144 0.000024 ETH 0x93b07902 n10102 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 09:48 census out +132 0.000024 ETH 0x93b07902 n10100 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 09:58 census out +136 0.000024 ETH 0x93b07902 n10152 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 09:58 census out +139 0.000024 ETH 0x93b07902 n10155 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 10:08 census out +117 0.000024 ETH 0x93b07902 n10187 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 10:08 census out +132 0.000024 ETH 0x93b07902 n10190 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 10:18 census out +127 0.000024 ETH 0x93b07902 n10240 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 10:18 census out +129 0.000024 ETH 0x93b07902 n10242 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 10:22 census out +124 0.000024 ETH 0x93b07902 n10265 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 10:28 census out +141 0.000024 ETH 0x93b07902 n10285 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 10
+  10-08 10:28 census out +191 0.000024 ETH 0x93b07902 n10287 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 10
+  10-08 10:38 census out +125 0.000024 ETH 0x93b07902 n10312 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 10:38 census out +127 0.000024 ETH 0x93b07902 n10315 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 10:48 census out +130 0.000024 ETH 0x93b07902 n10346 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 10:48 census out +127 0.000024 ETH 0x93b07902 n10349 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 10:58 census out +130 0.000024 ETH 0x93b07902 n10386 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-08 10:58 census out +307 0.000024 ETH 0x93b07902 n10389 via 0x88767899 0x3593564c -> pull 317 (delay 10) bots before pull 5
+  10-08 10:59 census out +129 0.000024 ETH 0x93b07902 n10401 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 11:04 census out + 31 0.000129 ETH 0xb002e8a0 n2975 via 0x65050a9b 0x4d819a2a -> pull 38 (delay 7) bots before pull 2
+  10-08 11:05 census out +135 0.000024 ETH 0x93b07902 n10410 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 11:05 census out + 16 0.000121 ETH 0xb002e8a0 n2977 via 0x65050a9b 0x4d819a2a -> pull 28 (delay 12) bots before pull 1
+  10-08 11:05 census out +140 0.000024 ETH 0x93b07902 n10416 via 0x88767899 0x3593564c -> pull 1353 (delay 1213) bots before pull 16
+  10-08 11:08 census out +137 0.000024 ETH 0x93b07902 n10430 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 11:08 census out +124 0.000024 ETH 0x93b07902 n10428 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 11:18 census out +131 0.000024 ETH 0x93b07902 n10479 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 11:18 census out +127 0.000024 ETH 0x93b07902 n10482 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 11:28 census out +127 0.000024 ETH 0x93b07902 n10510 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 11:28 census out +127 0.000024 ETH 0x93b07902 n10513 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 10
+  10-08 11:38 census out +212 0.000023 ETH 0x2fc0827a n236 via 0x88767899 0x3593564c -> pull 1466 (delay 1254) bots before pull 17
+  10-08 11:38 census out +216 0.000023 ETH 0xe282bb19 n336 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 11:40 census out +215 0.000023 ETH 0xe282bb19 n340 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 11:48 census out +134 0.000024 ETH 0x93b07902 n10531 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 13
+  10-08 11:48 census out +120 0.000024 ETH 0x93b07902 n10534 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 11:58 census out +138 0.000024 ETH 0x93b07902 n10574 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 10
+  10-08 11:58 census out +115 0.000024 ETH 0x93b07902 n10572 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-08 12:01 census out +123 0.000024 ETH 0x93b07902 n10610 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 12:07 census out +130 0.000024 ETH 0x93b07902 n10651 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 12:08 census out +143 0.000024 ETH 0x93b07902 n10654 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 12:12 census out +130 0.000024 ETH 0x93b07902 n10685 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 13
+  10-08 12:18 census out +138 0.000024 ETH 0x93b07902 n10717 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 12:18 census out +137 0.000024 ETH 0x93b07902 n10722 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 12:28 census out +138 0.000024 ETH 0x93b07902 n10776 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-08 12:28 census out +141 0.000024 ETH 0x93b07902 n10779 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-08 12:38 census out +134 0.000024 ETH 0x93b07902 n10845 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 12:38 census out +142 0.000024 ETH 0x93b07902 n10847 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 12:48 census out +127 0.000024 ETH 0x93b07902 n10883 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 12:48 census out +129 0.000024 ETH 0x93b07902 n10886 via 0x88767899 0x3593564c -> pull 1090 (delay 961) bots before pull 16
+  10-08 12:50 census out +178 0.000024 ETH 0x93b07902 n10917 via 0x88767899 0x3593564c -> pull 797 (delay 619) bots before pull 17
+  10-08 12:52 census out +133 0.000024 ETH 0x93b07902 n10936 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 12:57 census out +160 0.000024 ETH 0x93b07902 n10987 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-08 12:58 census out +150 0.000024 ETH 0x93b07902 n10985 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 13:08 census out +123 0.000024 ETH 0x93b07902 n11053 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 13:08 census out +135 0.000024 ETH 0x93b07902 n11056 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 13:18 census out +162 0.000024 ETH 0x93b07902 n11145 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 13:18 census out +148 0.000024 ETH 0x93b07902 n11148 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 13:28 census out +140 0.000024 ETH 0x93b07902 n11174 via 0x88767899 0x3593564c -> pull 307 (delay 167) bots before pull 13
+  10-08 13:28 census out +141 0.000024 ETH 0x93b07902 n11177 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 13:28 census out +139 0.000024 ETH 0x93b07902 n11187 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 13
+  10-08 13:38 census out +143 0.000024 ETH 0x93b07902 n11217 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 13:38 census out +131 0.000024 ETH 0x93b07902 n11219 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 13:48 census out +180 0.000024 ETH 0x93b07902 n11247 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 14
+  10-08 13:48 census out +169 0.000024 ETH 0x93b07902 n11250 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 13:58 census out +213 0.000023 ETH 0xe282bb19 n344 via 0x88767899 0x3593564c -> pull 271 (delay 58) bots before pull 11
+  10-08 13:58 census out +216 0.000023 ETH 0x2fc0827a n240 via 0x88767899 0x3593564c -> pull 288 (delay 72) bots before pull 12
+  10-08 13:58 census out +145 0.000024 ETH 0x93b07902 n11343 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 13:58 census out +164 0.000024 ETH 0x93b07902 n11346 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-08 14:08 census out +123 0.000024 ETH 0x93b07902 n11385 via 0x88767899 0x3593564c -> pull 455 (delay 332) bots before pull 13
+  10-08 14:08 census out +137 0.000024 ETH 0x93b07902 n11388 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 14:09 census out +134 0.000024 ETH 0x93b07902 n11398 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 14:16 census out +144 0.000024 ETH 0x93b07902 n11439 via 0x88767899 0x3593564c -> pull 614 (delay 470) bots before pull 16
+  10-08 14:18 census out +137 0.000024 ETH 0x93b07902 n11448 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 14:18 census out +132 0.000024 ETH 0x93b07902 n11450 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 14:28 census out +144 0.000024 ETH 0x93b07902 n11522 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 14:28 census out +121 0.000024 ETH 0x93b07902 n11520 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 14:37 census out +145 0.000024 ETH 0x93b07902 n11565 via 0x88767899 0x3593564c -> pull 371 (delay 226) bots before pull 15
+  10-08 14:38 census out +133 0.000024 ETH 0x93b07902 n11568 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 14:38 census out +118 0.000024 ETH 0x93b07902 n11578 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 14:42 census out +142 0.000024 ETH 0x93b07902 n11598 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 14:47 census out +136 0.000024 ETH 0x93b07902 n11611 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 14:48 census out +128 0.000024 ETH 0x93b07902 n11617 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 14:58 census out +164 0.000024 ETH 0x93b07902 n11668 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 14:58 census out +130 0.000024 ETH 0x93b07902 n11665 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 15:08 census out +137 0.000024 ETH 0x93b07902 n11720 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 15:08 census out +131 0.000024 ETH 0x93b07902 n11723 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 15:18 census out +120 0.000024 ETH 0x93b07902 n11758 via 0x88767899 0x3593564c -> pull 785 (delay 665) bots before pull 17
+  10-08 15:18 census out +139 0.000024 ETH 0x93b07902 n11761 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 15:20 census out +112 0.000024 ETH 0x93b07902 n11774 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 15:27 census out +129 0.000024 ETH 0x93b07902 n11796 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 15:28 census out +119 0.000024 ETH 0x93b07902 n11799 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 15:37 census out +231 0.000023 ETH 0xe282bb19 n348 via 0x88767899 0x3593564c -> pull 251 (delay 20) bots before pull 8
+  10-08 15:38 census out +212 0.000024 ETH 0x93b07902 n11848 via 0x88767899 0x3593564c -> pull 234 (delay 22) bots before pull 8
+  10-08 15:38 census out +125 0.000024 ETH 0x93b07902 n11857 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 15:38 census out +137 0.000024 ETH 0x93b07902 n11860 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 15:48 census out +133 0.000024 ETH 0x93b07902 n11890 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 15:48 census out +136 0.000024 ETH 0x93b07902 n11893 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 15:58 census out +139 0.000024 ETH 0x93b07902 n11955 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 15:58 census out +133 0.000024 ETH 0x93b07902 n11958 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 16:03 census out +121 0.000024 ETH 0x93b07902 n12012 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 16:08 census out +139 0.000024 ETH 0x93b07902 n12052 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 13
+  10-08 16:08 census out +122 0.000024 ETH 0x93b07902 n12049 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 16:17 census out +187 0.000024 ETH 0x93b07902 n12097 via 0x88767899 0x3593564c -> pull 1373 (delay 1186) bots before pull 15
+  10-08 16:18 census out +146 0.000024 ETH 0x93b07902 n12103 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 16:20 census out +146 0.000024 ETH 0x93b07902 n12113 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 16:22 census out +163 0.000024 ETH 0x93b07902 n12117 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 14
+  10-08 16:27 census out +124 0.000024 ETH 0x93b07902 n12145 via 0x88767899 0x3593564c -> pull 296 (delay 172) bots before pull 13
+  10-08 16:27 census out +115 0.000024 ETH 0x93b07902 n12149 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 16:28 census out +168 0.000024 ETH 0x93b07902 n12152 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 16:38 census out +195 0.000024 ETH 0x93b07902 n12179 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 4
+  10-08 16:38 census out +257 0.000023 ETH 0xe282bb19 n352 via 0x88767899 0x3593564c -> pull 692 (delay 435) bots before pull 2
+  10-08 16:39 census out +184 0.000024 ETH 0x93b07902 n12185 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 5
+  10-08 16:48 census out +214 0.000023 ETH 0x2fc0827a n248 via 0x88767899 0x3593564c -> pull 468 (delay 254) bots before pull 3
+  10-08 16:48 census out +189 0.000024 ETH 0x93b07902 n12221 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 16:49 census out +165 0.000024 ETH 0x93b07902 n12234 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 6
+  10-08 16:52 census out +162 0.000024 ETH 0x93b07902 n12240 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 9
+  10-08 16:58 census out +139 0.000024 ETH 0x93b07902 n12260 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 16:58 census out +119 0.000024 ETH 0x93b07902 n12258 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 10
+  10-08 17:04 census out + 37 0.000080 ETH 0x0b410a5f n711 via 0x88767899 0x3593564c -> pull 54 (delay 17) bots before pull 3
+  10-08 17:05 census out +131 0.000024 ETH 0x93b07902 n12292 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 14
+  10-08 17:08 census out +129 0.000024 ETH 0x93b07902 n12305 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 17:08 census out +132 0.000024 ETH 0x93b07902 n12308 via 0x88767899 0x3593564c -> pull 959 (delay 827) bots before pull 16
+  10-08 17:10 census out +136 0.000024 ETH 0x93b07902 n12317 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 14
+  10-08 17:13 census out +128 0.000024 ETH 0x93b07902 n12328 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 17:18 census out +132 0.000024 ETH 0x93b07902 n12338 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 17:18 census out +127 0.000024 ETH 0x93b07902 n12341 via 0x88767899 0x3593564c -> pull 478 (delay 351) bots before pull 16
+  10-08 17:19 census out +137 0.000024 ETH 0x93b07902 n12357 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 17:24 census out +130 0.000024 ETH 0x93b07902 n12380 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 17:28 census out +118 0.000024 ETH 0x93b07902 n12393 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 17:28 census out +120 0.000024 ETH 0x93b07902 n12395 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 17:33 census out +127 0.000024 ETH 0x93b07902 n12426 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 17:35 census out +116 0.000024 ETH 0x93b07902 n12430 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 17:38 census out +128 0.000024 ETH 0x93b07902 n12440 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 17:38 census out +150 0.000024 ETH 0x93b07902 n12445 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 17:44 census out +235 0.000023 ETH 0xe282bb19 n356 via 0x88767899 0x3593564c -> pull 272 (delay 37) bots before pull 5
+  10-08 17:45 census out +116 0.000024 ETH 0x93b07902 n12494 via 0x88767899 0x3593564c -> pull 1404 (delay 1288) bots before pull 15
+  10-08 17:45 census out +129 0.000024 ETH 0x93b07902 n12497 via 0x88767899 0x3593564c -> pull 1371 (delay 1242) bots before pull 16
+  10-08 17:48 census out +223 0.000024 ETH 0x93b07902 n12514 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 13
+  10-08 17:48 census out +132 0.000024 ETH 0x93b07902 n12509 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 17:52 census out +134 0.000024 ETH 0x93b07902 n12526 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 17:58 census out +138 0.000024 ETH 0x93b07902 n12546 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 17:58 census out +138 0.000024 ETH 0x93b07902 n12547 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 18:05 census out +135 0.000024 ETH 0x93b07902 n12588 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 18:08 census out +127 0.000024 ETH 0x93b07902 n12600 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 18:08 census out +128 0.000024 ETH 0x93b07902 n12603 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 18:14 census out +128 0.000024 ETH 0x93b07902 n12622 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 18:18 census out +135 0.000024 ETH 0x93b07902 n12635 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 18:18 census out +129 0.000024 ETH 0x93b07902 n12637 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 18:25 census out +130 0.000024 ETH 0x93b07902 n12674 via 0x88767899 0x3593564c -> pull 192 (delay 62) bots before pull 8
+  10-08 18:25 census out +115 0.000024 ETH 0x93b07902 n12677 via 0x88767899 0x3593564c -> pull 245 (delay 130) bots before pull 8
+  10-08 18:26 census out +118 0.000024 ETH 0x93b07902 n12687 via 0x88767899 0x3593564c -> pull 839 (delay 721) bots before pull 17
+  10-08 18:26 census out +155 0.000024 ETH 0x93b07902 n12690 via 0x88767899 0x3593564c -> pull 470 (delay 315) bots before pull 16
+  10-08 18:28 census out +127 0.000024 ETH 0x93b07902 n12700 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 18:28 census out +133 0.000024 ETH 0x93b07902 n12702 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 18:38 census out +145 0.000024 ETH 0x93b07902 n12741 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 18:38 census out +131 0.000024 ETH 0x93b07902 n12744 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 18:47 census out +128 0.000024 ETH 0x93b07902 n12772 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 18:48 census out +131 0.000024 ETH 0x93b07902 n12775 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 18:58 census out +124 0.000024 ETH 0x93b07902 n12845 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 18:58 census out +124 0.000024 ETH 0x93b07902 n12848 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 19:08 census out +123 0.000024 ETH 0x93b07902 n12892 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 19:08 census out +130 0.000024 ETH 0x93b07902 n12895 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 19:18 census out +129 0.000024 ETH 0x93b07902 n12941 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 19:18 census out +136 0.000024 ETH 0x93b07902 n12944 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 19:28 census out +127 0.000024 ETH 0x93b07902 n12998 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 19:28 census out +133 0.000024 ETH 0x93b07902 n13001 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 19:36 census out +125 0.000024 ETH 0x93b07902 n13033 via 0x88767899 0x3593564c -> pull 1036 (delay 911) bots before pull 17
+  10-08 19:38 census out +137 0.000024 ETH 0x93b07902 n13048 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 19:38 census out +132 0.000024 ETH 0x93b07902 n13050 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 19:48 census out +135 0.000024 ETH 0x93b07902 n13102 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 19:48 census out +140 0.000024 ETH 0x93b07902 n13105 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 19:55 census out +132 0.000024 ETH 0x93b07902 n13133 via 0x88767899 0x3593564c -> pull 1321 (delay 1189) bots before pull 18
+  10-08 19:58 census out +142 0.000024 ETH 0x93b07902 n13140 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 19:58 census out +137 0.000024 ETH 0x93b07902 n13143 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 20:08 census out +146 0.000024 ETH 0x93b07902 n13165 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 20:08 census out +126 0.000024 ETH 0x93b07902 n13162 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 20:13 census out +136 0.000024 ETH 0x93b07902 n13184 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 20:18 census out + 75 0.000500 ETH 0xbead1521 n3 via 0x88767899 0x3593564c -> pull 79 (delay 4) bots before pull 3
+  10-08 20:18 census out + 67 0.000500 ETH 0xbead1521 n4 via 0x88767899 0x3593564c -> pull 78 (delay 11) bots before pull 3
+  10-08 20:18 census out +134 0.000024 ETH 0x93b07902 n13199 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 21:08 census out +145 0.000100 ETH 0x93b07902 n13257 via 0x88767899 0x3593564c -> pull 150 (delay 5) bots before pull 6
+  10-08 21:08 census out +130 0.000100 ETH 0x93b07902 n13260 via 0x88767899 0x3593564c -> pull 143 (delay 13) bots before pull 6
+  10-08 21:08 census out +129 0.000100 ETH 0x93b07902 n13269 via 0x88767899 0x3593564c -> pull 138 (delay 9) bots before pull 6
+  10-08 21:08 census out +128 0.000100 ETH 0x93b07902 n13272 via 0x88767899 0x3593564c -> pull 144 (delay 16) bots before pull 6
+  10-08 21:17 census out +114 0.000010 ETH 0x93b07902 n13286 via 0x88767899 0x3593564c -> pull 686 (delay 572) bots before pull 17
+  10-08 21:18 census out +119 0.000010 ETH 0x93b07902 n13289 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 21:19 census out +138 0.000010 ETH 0x93b07902 n13298 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 21:27 census out +133 0.000010 ETH 0x93b07902 n13306 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 21:28 census out +130 0.000010 ETH 0x93b07902 n13309 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 21:31 census out +121 0.000024 ETH 0x93b07902 n13319 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 21:38 census out +138 0.000024 ETH 0x93b07902 n13326 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 21:38 census out +130 0.000024 ETH 0x93b07902 n13329 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 21:48 census out +138 0.000024 ETH 0x93b07902 n13346 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 21:48 census out +123 0.000024 ETH 0x93b07902 n13344 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 21:58 census out +113 0.000024 ETH 0x93b07902 n13358 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 21:58 census out +120 0.000024 ETH 0x93b07902 n13360 via 0x88767899 0x3593564c -> pull 519 (delay 399) bots before pull 17
+  10-08 21:59 census out +134 0.000024 ETH 0x93b07902 n13370 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 22:08 census out +139 0.000024 ETH 0x93b07902 n13379 via 0x88767899 0x3593564c -> pull 1491 (delay 1352) bots before pull 16
+  10-08 22:08 census out +133 0.000024 ETH 0x93b07902 n13382 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 22:10 census out +127 0.000024 ETH 0x93b07902 n13393 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 14
+  10-08 22:18 census out +129 0.000024 ETH 0x93b07902 n13406 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 22:18 census out +127 0.000024 ETH 0x93b07902 n13409 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 22:27 census out +205 0.000024 ETH 0x93b07902 n13423 via 0x88767899 0x3593564c -> pull 1359 (delay 1154) bots before pull 16
+  10-08 22:28 census out +331 0.000297 ETH 0xf5d70602 n4907 via 0x65050a9b 0x4d819a2a -> pull 342 (delay 11) bots before pull 14
+  10-08 22:28 census out +115 0.000024 ETH 0x93b07902 n13424 via 0x88767899 0x3593564c -> pull 194 (delay 79) bots before pull 9
+  10-08 22:29 census out + 65 0.000049 ETH 0xf5d70602 n4909 via 0x65050a9b 0x4d819a2a -> pull 78 (delay 13) bots before pull 3
+  10-08 22:30 census out +112 0.000024 ETH 0x93b07902 n13430 via 0x88767899 0x3593564c -> pull 1190 (delay 1078) bots before pull 15
+  10-08 22:30 census out + 95 0.000049 ETH 0xf5d70602 n4911 via 0x65050a9b 0x4d819a2a -> pull 105 (delay 10) bots before pull 5
+  10-08 22:31 census out +293 0.000024 ETH 0x93b07902 n13440 via 0x88767899 0x3593564c -> pull 1449 (delay 1156) bots before pull 16
+  10-08 22:32 census out +140 0.000024 ETH 0x93b07902 n13446 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 22:33 census out +141 0.000024 ETH 0x93b07902 n13456 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 22:38 census out +130 0.000024 ETH 0x93b07902 n13477 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 22:38 census out +132 0.000024 ETH 0x93b07902 n13479 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-08 22:48 census out +142 0.000024 ETH 0x93b07902 n13491 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 22:48 census out +136 0.000024 ETH 0x93b07902 n13493 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 22:58 census out +126 0.000024 ETH 0x93b07902 n13517 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 22:58 census out +123 0.000024 ETH 0x93b07902 n13520 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 23:08 census out +132 0.000024 ETH 0x93b07902 n13541 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-08 23:08 census out +128 0.000024 ETH 0x93b07902 n13544 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 23:11 census out +131 0.000024 ETH 0x93b07902 n13555 via 0x88767899 0x3593564c -> pull 264 (delay 133) bots before pull 11
+  10-08 23:12 census out +129 0.000024 ETH 0x93b07902 n13558 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 23:18 census out +134 0.000024 ETH 0x93b07902 n13565 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 23:18 census out +124 0.000024 ETH 0x93b07902 n13567 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 23:28 census out +139 0.000024 ETH 0x93b07902 n13582 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 23:28 census out +138 0.000024 ETH 0x93b07902 n13585 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 23:37 census out +130 0.000024 ETH 0x93b07902 n13596 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-08 23:38 census out +144 0.000024 ETH 0x93b07902 n13599 via 0x88767899 0x3593564c -> pull 849 (delay 705) bots before pull 17
+  10-08 23:39 census out +127 0.000024 ETH 0x93b07902 n13612 via 0x88767899 0x3593564c -> pull 1231 (delay 1104) bots before pull 18
+  10-08 23:42 census out +126 0.000024 ETH 0x93b07902 n13622 via 0x88767899 0x3593564c -> pull 1149 (delay 1023) bots before pull 17
+  10-08 23:44 census out +126 0.000024 ETH 0x93b07902 n13637 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 13
+  10-08 23:47 census out +132 0.000024 ETH 0x93b07902 n13647 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-08 23:48 census out +131 0.000024 ETH 0x93b07902 n13650 via 0x88767899 0x3593564c -> pull 659 (delay 528) bots before pull 18
+  10-08 23:49 census out +139 0.000024 ETH 0x93b07902 n13659 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 23:58 census out +123 0.000024 ETH 0x93b07902 n13670 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-08 23:58 census out +128 0.000024 ETH 0x93b07902 n13673 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 00:08 census out +130 0.000024 ETH 0x93b07902 n13684 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 00:08 census out +128 0.000024 ETH 0x93b07902 n13687 via 0x88767899 0x3593564c -> pull 1494 (delay 1366) bots before pull 17
+  10-09 00:10 census out +126 0.000024 ETH 0x93b07902 n13698 via 0x88767899 0x3593564c -> pull 1236 (delay 1110) bots before pull 18
+  10-09 00:13 census out +127 0.000024 ETH 0x93b07902 n13704 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 00:17 census out +121 0.000024 ETH 0x93b07902 n13711 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 00:17 census out +124 0.000024 ETH 0x93b07902 n13714 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 00:28 census out +128 0.000024 ETH 0x93b07902 n13744 via 0x88767899 0x3593564c -> pull 1233 (delay 1105) bots before pull 17
+  10-09 00:28 census out +137 0.000024 ETH 0x93b07902 n13747 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 00:30 census out + 29 0.000008 ETH 0xf7b47b17 n14865 via 0x88767899 0x24856bc3 -> pull 136 (delay 107) bots before pull 5
+  10-09 00:30 census out + 53 0.000008 ETH 0xf7b47b17 n14868 via 0x88767899 0x24856bc3 -> pull 120 (delay 67) bots before pull 5
+  10-09 00:31 census out +138 0.000024 ETH 0x93b07902 n13763 via 0x88767899 0x3593564c -> pull 766 (delay 628) bots before pull 16
+  10-09 00:33 census out +137 0.000024 ETH 0x93b07902 n13770 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 00:38 census out +130 0.000024 ETH 0x93b07902 n13774 via 0x88767899 0x3593564c -> pull 1129 (delay 999) bots before pull 17
+  10-09 00:38 census out +150 0.000024 ETH 0x93b07902 n13777 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 00:40 census out +124 0.000024 ETH 0x93b07902 n13786 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-09 00:48 census out +129 0.000024 ETH 0x93b07902 n13791 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 00:48 census out +122 0.000024 ETH 0x93b07902 n13794 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 00:57 census out +147 0.000058 ETH 0x93b07902 n13805 via 0x88767899 0x3593564c -> pull 201 (delay 54) bots before pull 7
+  10-09 00:57 census out +145 0.000058 ETH 0x93b07902 n13807 via 0x88767899 0x3593564c -> pull 157 (delay 12) bots before pull 6
+  10-09 00:58 census out +145 0.000058 ETH 0x93b07902 n13819 via 0x88767899 0x3593564c -> pull 158 (delay 13) bots before pull 7
+  10-09 00:58 census out +138 0.000058 ETH 0x93b07902 n13821 via 0x88767899 0x3593564c -> pull 149 (delay 11) bots before pull 7
+  10-09 00:59 census out +154 0.000024 ETH 0x93b07902 n13833 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 00:59 census out +164 0.000024 ETH 0x93b07902 n13835 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 01:16 census out +129 0.000024 ETH 0x93b07902 n13853 via 0x88767899 0x3593564c -> pull 956 (delay 827) bots before pull 18
+  10-09 01:17 census out +125 0.000024 ETH 0x93b07902 n13856 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 01:17 census out +126 0.000024 ETH 0x93b07902 n13858 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 01:22 census out +119 0.000024 ETH 0x93b07902 n13876 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 01:28 census out +127 0.000024 ETH 0x93b07902 n13890 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 01:28 census out +124 0.000024 ETH 0x93b07902 n13893 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 01:38 census out +140 0.000024 ETH 0x93b07902 n13911 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 01:38 census out +127 0.000024 ETH 0x93b07902 n13914 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 01:48 census out +127 0.000024 ETH 0x93b07902 n13931 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 01:48 census out +136 0.000024 ETH 0x93b07902 n13934 via 0x88767899 0x3593564c -> pull 1030 (delay 894) bots before pull 17
+  10-09 01:50 census out +119 0.000024 ETH 0x93b07902 n13943 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 01:58 census out +123 0.000024 ETH 0x93b07902 n13961 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 01:58 census out +139 0.000024 ETH 0x93b07902 n13964 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 02:08 census out +127 0.000024 ETH 0x93b07902 n13987 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 02:08 census out +130 0.000024 ETH 0x93b07902 n13989 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 02:18 census out +122 0.000024 ETH 0x93b07902 n14001 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 02:18 census out +137 0.000024 ETH 0x93b07902 n14004 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 02:22 census out +127 0.000024 ETH 0x93b07902 n14023 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 02:28 census out +119 0.000024 ETH 0x93b07902 n14028 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 02:28 census out +122 0.000024 ETH 0x93b07902 n14031 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 02:38 census out +120 0.000024 ETH 0x93b07902 n14042 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 02:38 census out +143 0.000024 ETH 0x93b07902 n14045 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 02:44 census out +297 0.000024 ETH 0x93b07902 n14059 via 0x88767899 0x3593564c -> pull 1372 (delay 1075) bots before pull 10
+  10-09 02:47 census out +112 0.000024 ETH 0x93b07902 n14063 via 0x88767899 0x3593564c -> pull 240 (delay 128) bots before pull 10
+  10-09 02:48 census out +156 0.000024 ETH 0x93b07902 n14069 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 14
+  10-09 02:48 census out +132 0.000024 ETH 0x93b07902 n14066 via 0x88767899 0x3593564c -> pull 1456 (delay 1324) bots before pull 17
+  10-09 02:50 census out +126 0.000024 ETH 0x93b07902 n14085 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 02:58 census out +125 0.000024 ETH 0x93b07902 n14089 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 02:58 census out +126 0.000024 ETH 0x93b07902 n14092 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 03:08 census out +146 0.000024 ETH 0x93b07902 n14116 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 03:08 census out +132 0.000024 ETH 0x93b07902 n14118 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 03:17 census out +143 0.000024 ETH 0x93b07902 n14130 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 03:18 census out +137 0.000024 ETH 0x93b07902 n14133 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 03:28 census out + 58 0.000500 ETH 0xbead1521 n15 via 0x88767899 0x3593564c -> pull 69 (delay 11) bots before pull 3
+  10-09 03:28 census out +123 0.000024 ETH 0x93b07902 n14144 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 03:28 census out +134 0.000024 ETH 0x93b07902 n14153 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 03:38 census out +119 0.000024 ETH 0x93b07902 n14158 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 03:38 census out +123 0.000024 ETH 0x93b07902 n14161 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 03:48 census out +138 0.000024 ETH 0x93b07902 n14178 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 03:48 census out +133 0.000024 ETH 0x93b07902 n14181 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 03:54 census out +134 0.000024 ETH 0x93b07902 n14192 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 03:58 census out +112 0.000024 ETH 0x93b07902 n14199 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 03:58 census out +120 0.000024 ETH 0x93b07902 n14202 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 04:08 census out +126 0.000024 ETH 0x93b07902 n14221 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 04:08 census out +130 0.000024 ETH 0x93b07902 n14225 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 04:18 census out +138 0.000024 ETH 0x93b07902 n14239 via 0x88767899 0x3593564c -> pull 1005 (delay 867) bots before pull 16
+  10-09 04:18 census out +130 0.000024 ETH 0x93b07902 n14242 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 04:20 census out +117 0.000024 ETH 0x93b07902 n14251 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 04:28 census out +122 0.000024 ETH 0x93b07902 n14259 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 04:28 census out + 84 0.000905 ETH 0x1a2d2cd5 n612 via 0x88767899 0x3593564c -> pull 96 (delay 12) bots before pull 4
+  10-09 04:28 census out +120 0.000024 ETH 0x93b07902 n14268 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 04:38 census out +106 0.000024 ETH 0x93b07902 n14277 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-09 04:38 census out +130 0.000024 ETH 0x93b07902 n14280 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 04:42 census out +119 0.000024 ETH 0x93b07902 n14292 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 04:48 census out +131 0.000024 ETH 0x93b07902 n14308 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 04:48 census out +120 0.000024 ETH 0x93b07902 n14311 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 05:00 census out +124 0.000024 ETH 0x93b07902 n14323 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 05:00 census out +132 0.000024 ETH 0x93b07902 n14332 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 05:08 census out +117 0.000024 ETH 0x93b07902 n14343 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 05:08 census out +127 0.000024 ETH 0x93b07902 n14346 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 05:18 census out +144 0.000024 ETH 0x93b07902 n14361 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 05:18 census out +141 0.000024 ETH 0x93b07902 n14363 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 05:27 census out +141 0.000024 ETH 0x93b07902 n14375 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 05:27 census out +135 0.000024 ETH 0x93b07902 n14378 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 05:37 census out +125 0.000024 ETH 0x93b07902 n14395 via 0x88767899 0x3593564c -> pull 274 (delay 149) bots before pull 11
+  10-09 05:38 census out +125 0.000024 ETH 0x93b07902 n14398 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 05:38 census out +131 0.000024 ETH 0x93b07902 n14400 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 05:48 census out +154 0.000024 ETH 0x93b07902 n14418 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 05:48 census out +131 0.000024 ETH 0x93b07902 n14416 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 19
+  10-09 05:58 census out +129 0.000024 ETH 0x93b07902 n14428 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 05:58 census out +126 0.000024 ETH 0x93b07902 n14430 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 06:08 census out +125 0.000024 ETH 0x93b07902 n14448 via 0x88767899 0x3593564c -> pull 156 (delay 31) bots before pull 7
+  10-09 06:08 census out +154 0.000024 ETH 0x93b07902 n14455 via 0x88767899 0x3593564c -> pull 176 (delay 22) bots before pull 8
+  10-09 06:08 census out +144 0.000024 ETH 0x93b07902 n14468 via 0x88767899 0x3593564c -> pull 181 (delay 37) bots before pull 8
+  10-09 06:08 census out +140 0.000024 ETH 0x93b07902 n14472 via 0x88767899 0x3593564c -> pull 173 (delay 33) bots before pull 8
+  10-09 06:09 census out +141 0.000024 ETH 0x93b07902 n14476 via 0x88767899 0x3593564c -> pull 164 (delay 23) bots before pull 7
+  10-09 06:09 census out +147 0.000024 ETH 0x93b07902 n14482 via 0x88767899 0x3593564c -> pull 188 (delay 41) bots before pull 8
+  10-09 06:09 census out +151 0.000024 ETH 0x93b07902 n14496 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 06:09 census out +201 0.000024 ETH 0x93b07902 n14499 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 06:28 census out +146 0.000024 ETH 0x93b07902 n14536 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-09 06:28 census out +144 0.000024 ETH 0x93b07902 n14538 via 0x88767899 0x3593564c -> pull 1226 (delay 1082) bots before pull 17
+  10-09 06:58 census out +148 0.000024 ETH 0x93b07902 n14549 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 06:58 census out +124 0.000024 ETH 0x93b07902 n14547 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 07:08 census out +135 0.000024 ETH 0x93b07902 n14561 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 07:08 census out +136 0.000024 ETH 0x93b07902 n14564 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 07:18 census out +119 0.000024 ETH 0x93b07902 n14575 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 07:18 census out +118 0.000024 ETH 0x93b07902 n14578 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 07:28 census out +125 0.000024 ETH 0x93b07902 n14589 via 0x88767899 0x3593564c -> pull 476 (delay 351) bots before pull 18
+  10-09 07:28 census out +130 0.000024 ETH 0x93b07902 n14592 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 07:29 census out +138 0.000024 ETH 0x93b07902 n14601 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 07:37 census out +135 0.000024 ETH 0x93b07902 n14610 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 07:38 census out +128 0.000024 ETH 0x93b07902 n14612 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 07:47 census out +125 0.000024 ETH 0x93b07902 n14624 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 07:47 census out +118 0.000024 ETH 0x93b07902 n14627 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 07:57 census out +160 0.000024 ETH 0x93b07902 n14655 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 07:57 census out +118 0.000024 ETH 0x93b07902 n14652 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 08:08 census out +138 0.000024 ETH 0x93b07902 n14668 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 08:08 census out +127 0.000024 ETH 0x93b07902 n14670 via 0x88767899 0x3593564c -> pull 1257 (delay 1130) bots before pull 17
+  10-09 08:10 census out +130 0.000024 ETH 0x93b07902 n14681 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 08:18 census out +169 0.000024 ETH 0x93b07902 n14694 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-09 08:18 census out +134 0.000024 ETH 0x93b07902 n14692 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 08:27 census out +124 0.000024 ETH 0x93b07902 n14715 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 08:27 census out +130 0.000024 ETH 0x93b07902 n14717 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 08:38 census out + 82 0.000894 ETH 0x1a2d2cd5 n631 via 0x88767899 0x3593564c -> pull 90 (delay 8) bots before pull 4
+  10-09 08:38 census out +142 0.000024 ETH 0x93b07902 n14729 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 08:38 census out + 77 0.000894 ETH 0x1a2d2cd5 n635 via 0x88767899 0x3593564c -> pull 89 (delay 12) bots before pull 4
+  10-09 08:38 census out +137 0.000024 ETH 0x93b07902 n14738 via 0x88767899 0x3593564c -> pull 1477 (delay 1340) bots before pull 17
+  10-09 08:41 census out +128 0.000024 ETH 0x93b07902 n14743 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 08:41 census out +133 0.000024 ETH 0x93b07902 n14746 via 0x88767899 0x3593564c -> pull 708 (delay 575) bots before pull 16
+  10-09 08:43 census out +123 0.000024 ETH 0x93b07902 n14749 via 0x88767899 0x3593564c -> pull 706 (delay 583) bots before pull 17
+  10-09 08:44 census out +131 0.000024 ETH 0x93b07902 n14752 via 0x88767899 0x3593564c -> pull 186 (delay 55) bots before pull 8
+  10-09 08:45 census out +134 0.000024 ETH 0x93b07902 n14755 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 08:48 census out +141 0.000024 ETH 0x93b07902 n14765 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 08:48 census out +120 0.000024 ETH 0x93b07902 n14763 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 08:58 census out +189 0.000024 ETH 0x93b07902 n14797 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 12
+  10-09 08:58 census out +134 0.000024 ETH 0x93b07902 n14790 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:07 census out +140 0.000024 ETH 0x93b07902 n14807 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:07 census out +149 0.000024 ETH 0x93b07902 n14809 via 0x88767899 0x3593564c -> pull 277 (delay 128) bots before pull 12
+  10-09 09:08 census out +131 0.000024 ETH 0x93b07902 n14813 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 09:13 census out +137 0.000024 ETH 0x93b07902 n14827 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:18 census out +137 0.000024 ETH 0x93b07902 n14835 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 09:18 census out +138 0.000024 ETH 0x93b07902 n14837 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:27 census out +112 0.000024 ETH 0x93b07902 n14849 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:28 census out +124 0.000024 ETH 0x93b07902 n14852 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:38 census out +145 0.000024 ETH 0x93b07902 n14869 via 0x88767899 0x3593564c -> pull 1197 (delay 1052) bots before pull 17
+  10-09 09:38 census out +137 0.000024 ETH 0x93b07902 n14872 via 0x88767899 0x3593564c -> pull 1169 (delay 1032) bots before pull 17
+  10-09 09:40 census out +136 0.000024 ETH 0x93b07902 n14875 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:40 census out +140 0.000024 ETH 0x93b07902 n14878 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:48 census out +129 0.000024 ETH 0x93b07902 n14898 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:48 census out +132 0.000024 ETH 0x93b07902 n14900 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:58 census out +117 0.000024 ETH 0x93b07902 n14941 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 09:58 census out +132 0.000024 ETH 0x93b07902 n14944 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 10:07 census out +129 0.000024 ETH 0x93b07902 n14972 via 0x88767899 0x3593564c -> pull 209 (delay 80) bots before pull 9
+  10-09 10:08 census out +140 0.000024 ETH 0x93b07902 n14980 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 10:08 census out +127 0.000024 ETH 0x93b07902 n14978 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 10:18 census out +129 0.000024 ETH 0x93b07902 n15013 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 10:18 census out +153 0.000024 ETH 0x93b07902 n15016 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 10:27 census out +118 0.000024 ETH 0x93b07902 n15051 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 10:27 census out +137 0.000024 ETH 0x93b07902 n15054 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 10:37 census out +139 0.000024 ETH 0x93b07902 n15074 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-09 10:37 census out +124 0.000024 ETH 0x93b07902 n15077 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 10:47 census out +118 0.000024 ETH 0x93b07902 n15119 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 10:48 census out +187 0.000024 ETH 0x93b07902 n15122 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-09 10:53 census out +123 0.000024 ETH 0x93b07902 n15159 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 10:58 census out +114 0.000024 ETH 0x93b07902 n15163 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 10:58 census out +132 0.000024 ETH 0x93b07902 n15166 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 11:07 census out +124 0.000024 ETH 0x93b07902 n15180 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 11:08 census out +123 0.000024 ETH 0x93b07902 n15183 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 11:13 census out +137 0.000024 ETH 0x93b07902 n15194 via 0x88767899 0x3593564c -> pull 1314 (delay 1177) bots before pull 17
+  10-09 11:16 census out +127 0.000024 ETH 0x93b07902 n15197 via 0x88767899 0x3593564c -> pull 1047 (delay 920) bots before pull 18
+  10-09 11:18 census out +113 0.000024 ETH 0x93b07902 n15200 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 11:18 census out +128 0.000024 ETH 0x93b07902 n15203 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 11:27 census out +116 0.000024 ETH 0x93b07902 n15223 via 0x88767899 0x3593564c -> pull 363 (delay 247) bots before pull 15
+  10-09 11:28 census out + 72 0.000447 ETH 0xeb168c90 n0 via 0x88767899 0x3593564c -> pull 80 (delay 8) bots before pull 3
+  10-09 11:28 census out +127 0.000024 ETH 0x93b07902 n15232 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 11:28 census out +124 0.000024 ETH 0x93b07902 n15235 via 0x88767899 0x3593564c -> pull 164 (delay 40) bots before pull 7
+  10-09 11:29 census out +181 0.000024 ETH 0x93b07902 n15239 via 0x88767899 0x3593564c -> pull 212 (delay 31) bots before pull 5
+  10-09 11:29 census out +245 0.000024 ETH 0x93b07902 n15243 via 0x88767899 0x3593564c -> pull 341 (delay 96) bots before pull 7
+  10-09 11:30 census out +119 0.000024 ETH 0x93b07902 n15249 via 0x88767899 0x3593564c -> pull 152 (delay 33) bots before pull 6
+  10-09 11:31 census out +136 0.000024 ETH 0x93b07902 n15254 via 0x88767899 0x3593564c -> pull 174 (delay 38) bots before pull 7
+  10-09 11:31 census out +151 0.000024 ETH 0x93b07902 n15258 via 0x88767899 0x3593564c -> pull 187 (delay 36) bots before pull 7
+  10-09 11:32 census out +134 0.000024 ETH 0x93b07902 n15262 via 0x88767899 0x3593564c -> pull 162 (delay 28) bots before pull 7
+  10-09 11:33 census out +155 0.000024 ETH 0x93b07902 n15266 via 0x88767899 0x3593564c -> pull 182 (delay 27) bots before pull 7
+  10-09 11:33 census out +144 0.000024 ETH 0x93b07902 n15273 via 0x88767899 0x3593564c -> pull 168 (delay 24) bots before pull 7
+  10-09 11:34 census out +157 0.000024 ETH 0x93b07902 n15280 via 0x88767899 0x3593564c -> pull 198 (delay 41) bots before pull 6
+  10-09 11:34 census out +175 0.000012 ETH 0x93b07902 n15287 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 11:38 census out +149 0.000012 ETH 0x93b07902 n15313 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 11:38 census out +159 0.000012 ETH 0x93b07902 n15315 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 12:28 census out +124 0.000032 ETH 0x93b07902 n15410 via 0x88767899 0x3593564c -> pull 129 (delay 5) bots before pull 5
+  10-09 12:28 census out +144 0.000032 ETH 0x93b07902 n15413 via 0x88767899 0x3593564c -> pull 154 (delay 10) bots before pull 6
+  10-09 12:28 census out +177 0.000032 ETH 0x93b07902 n15424 via 0x88767899 0x3593564c -> pull 190 (delay 13) bots before pull 5
+  10-09 12:29 census out +115 0.000032 ETH 0x93b07902 n15422 via 0x88767899 0x3593564c -> pull 121 (delay 6) bots before pull 6
+  10-09 12:29 census out +133 0.000032 ETH 0x93b07902 n15428 via 0x88767899 0x3593564c -> pull 139 (delay 6) bots before pull 6
+  10-09 12:29 census out +164 0.000032 ETH 0x93b07902 n15431 via 0x88767899 0x3593564c -> pull 167 (delay 3) bots before pull 5
+  10-09 12:30 census out +262 0.000032 ETH 0x93b07902 n15434 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 11
+  10-09 12:30 census out +286 0.000032 ETH 0x93b07902 n15437 via 0x88767899 0x3593564c -> pull 300 (delay 14) bots before pull 6
+  10-09 12:30 census out +114 0.000032 ETH 0x93b07902 n15440 via 0x88767899 0x3593564c -> pull 119 (delay 5) bots before pull 5
+  10-09 12:31 census out +136 0.000032 ETH 0x93b07902 n15443 via 0x88767899 0x3593564c -> pull 407 (delay 271) bots before pull 17
+  10-09 12:32 census out +131 0.000032 ETH 0x93b07902 n15446 via 0x88767899 0x3593564c -> pull 139 (delay 8) bots before pull 6
+  10-09 12:32 census out +127 0.000032 ETH 0x93b07902 n15450 via 0x88767899 0x3593564c -> pull 137 (delay 10) bots before pull 6
+  10-09 12:33 census out +136 0.000032 ETH 0x93b07902 n15453 via 0x88767899 0x3593564c -> pull 449 (delay 313) bots before pull 14
+  10-09 12:34 census out +130 0.000032 ETH 0x93b07902 n15456 via 0x88767899 0x3593564c -> pull 135 (delay 5) bots before pull 5
+  10-09 12:34 census out +132 0.000032 ETH 0x93b07902 n15459 via 0x88767899 0x3593564c -> pull 139 (delay 7) bots before pull 6
+  10-09 12:37 census out +134 0.000024 ETH 0x93b07902 n15462 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 12:37 census out +136 0.000024 ETH 0x93b07902 n15465 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 12:53 census out +220 0.009900 ETH 0x9619b699 n1672 via 0xf0b7eaaf 0x39ecce49 -> pull 236 (delay 16) bots before pull 10
+  10-09 13:03 census out +130 0.000024 ETH 0x93b07902 n15497 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 13:08 census out +131 0.000024 ETH 0x93b07902 n15514 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 13:08 census out +124 0.000024 ETH 0x93b07902 n15517 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 13:18 census out +146 0.000024 ETH 0x93b07902 n15570 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 13:18 census out +121 0.000024 ETH 0x93b07902 n15567 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 13:28 census out +133 0.000024 ETH 0x93b07902 n15605 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 13:28 census out +131 0.000024 ETH 0x93b07902 n15608 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 13:38 census out +127 0.000024 ETH 0x93b07902 n15634 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 13:38 census out +148 0.000024 ETH 0x93b07902 n15637 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 13:47 census out + 50 0.000990 ETH 0xb3916f3a n138 via 0xf0b7eaaf 0x39ecce49 -> pull 59 (delay 9) bots before pull 3
+  10-09 13:47 census out +115 0.000024 ETH 0x93b07902 n15668 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 13:48 census out +136 0.000024 ETH 0x93b07902 n15671 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-09 13:57 census out +133 0.000024 ETH 0x93b07902 n15691 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 13:58 census out +129 0.000024 ETH 0x93b07902 n15694 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 14:08 census out +138 0.000024 ETH 0x93b07902 n15720 via 0x88767899 0x3593564c -> pull 369 (delay 231) bots before pull 15
+  10-09 14:08 census out + 38 0.000990 ETH 0xb3916f3a n144 via 0xf0b7eaaf 0x39ecce49 -> pull 50 (delay 12) bots before pull 2
+  10-09 14:08 census out +143 0.000024 ETH 0x93b07902 n15729 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 14:09 census out +141 0.000024 ETH 0x93b07902 n15732 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 14:18 census out +150 0.000024 ETH 0x93b07902 n15753 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 14:18 census out +126 0.000024 ETH 0x93b07902 n15751 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 14:26 census out +126 0.000024 ETH 0x93b07902 n15789 via 0x88767899 0x3593564c -> pull 763 (delay 637) bots before pull 17
+  10-09 14:28 census out +125 0.000024 ETH 0x93b07902 n15792 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 14:28 census out +131 0.000024 ETH 0x93b07902 n15795 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 14:38 census out +149 0.000024 ETH 0x93b07902 n15842 via 0x88767899 0x3593564c -> pull 1288 (delay 1139) bots before pull 15
+  10-09 14:38 census out +156 0.000024 ETH 0x93b07902 n15844 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 14:40 census out +142 0.000024 ETH 0x93b07902 n15857 via 0x88767899 0x3593564c -> pull 270 (delay 128) bots before pull 11
+  10-09 14:41 census out +127 0.000024 ETH 0x93b07902 n15861 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 14:48 new    out +176 0.000024 ETH 0x93b07902 n15879 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-09 14:58 new    out +127 0.000024 ETH 0x93b07902 n15888 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 14:58 new    out +134 0.000024 ETH 0x93b07902 n15891 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 15:02 new    out +133 0.000024 ETH 0x93b07902 n15901 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 15:08 new    out +140 0.000024 ETH 0x93b07902 n15914 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 15:08 new    out +142 0.000024 ETH 0x93b07902 n15916 via 0x88767899 0x3593564c -> pull 576 (delay 434) bots before pull 16
+  10-09 15:09 new    out +148 0.000024 ETH 0x93b07902 n15927 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 15:12 new    out +123 0.000024 ETH 0x93b07902 n15941 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 15:18 new    out +147 0.000024 ETH 0x93b07902 n15955 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 15:18 new    out + 77 0.000080 ETH 0x0b410a5f n844 via 0x88767899 0x3593564c -> pull 83 (delay 6) bots before pull 4
+  10-09 15:18 new    out +123 0.000024 ETH 0x93b07902 n15958 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 15:26 new    out + 35 0.003153 ETH 0x0ed4dfff n1394 via 0x88767899 0x3593564c -> pull 40 (delay 5) bots before pull 2
+  10-09 15:26 new    out + 35 0.003000 ETH 0x0ed4dfff n1397 via 0x88767899 0x3593564c -> pull 48 (delay 13) bots before pull 2
+  10-09 15:27 new    out + 36 0.003000 ETH 0x0ed4dfff n1400 via 0x88767899 0x3593564c -> pull 60 (delay 24) bots before pull 2
+  10-09 15:27 new    out + 38 0.003000 ETH 0x0ed4dfff n1403 via 0x88767899 0x3593564c -> pull 48 (delay 10) bots before pull 2
+  10-09 15:28 new    out + 44 0.003000 ETH 0x0ed4dfff n1406 via 0x88767899 0x3593564c -> pull 57 (delay 13) bots before pull 2
+  10-09 15:28 new    out +138 0.000024 ETH 0x93b07902 n15990 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 15:28 new    out +128 0.000024 ETH 0x93b07902 n15999 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 15:38 new    out +128 0.000024 ETH 0x93b07902 n16029 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 15:38 new    out +133 0.000024 ETH 0x93b07902 n16032 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 14
+  10-09 15:48 new    out +145 0.000024 ETH 0x93b07902 n16059 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 15:48 new    out +133 0.000024 ETH 0x93b07902 n16057 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 15:58 new    out +139 0.000024 ETH 0x93b07902 n16089 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 15:58 new    out +128 0.000024 ETH 0x93b07902 n16092 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 16:02 new    out +127 0.000024 ETH 0x93b07902 n16103 via 0x88767899 0x3593564c -> pull 1412 (delay 1285) bots before pull 17
+  10-09 16:05 new    out +134 0.000024 ETH 0x93b07902 n16113 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 16:08 new    out +185 0.000024 ETH 0x93b07902 n16126 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 16:08 new    out +222 0.000024 ETH 0x93b07902 n16128 via 0x88767899 0x3593564c -> pull 1189 (delay 967) bots before pull 17
+  10-09 16:10 new    out + 35 0.000500 ETH 0x0ed4dfff n1409 via 0x88767899 0x3593564c -> pull 40 (delay 5) bots before pull 2
+  10-09 16:10 new    out + 35 0.000500 ETH 0x0ed4dfff n1412 via 0x88767899 0x3593564c -> pull 40 (delay 5) bots before pull 2
+  10-09 16:11 new    out + 35 0.000500 ETH 0x0ed4dfff n1415 via 0x88767899 0x3593564c -> pull 44 (delay 9) bots before pull 2
+  10-09 16:11 new    out +126 0.000024 ETH 0x93b07902 n16149 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 16:18 new    out + 33 0.000500 ETH 0x0ed4dfff n1426 via 0x88767899 0x3593564c -> pull 38 (delay 5) bots before pull 2
+  10-09 16:18 new    out +128 0.000024 ETH 0x93b07902 n16161 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 16:18 new    out + 33 0.000500 ETH 0x0ed4dfff n1432 via 0x88767899 0x3593564c -> pull 39 (delay 6) bots before pull 2
+  10-09 16:18 new    out +150 0.000024 ETH 0x93b07902 n16170 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 16:37 new    out +119 0.000024 ETH 0x93b07902 n16209 via 0x88767899 0x3593564c -> pull 628 (delay 509) bots before pull 17
+  10-09 16:38 new    out +123 0.000024 ETH 0x93b07902 n16212 via 0x88767899 0x3593564c -> pull 627 (delay 504) bots before pull 17
+  10-09 16:39 new    out +122 0.000024 ETH 0x93b07902 n16220 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 16:39 new    out +123 0.000024 ETH 0x93b07902 n16223 via 0x88767899 0x3593564c -> pull 213 (delay 90) bots before pull 9
+  10-09 16:40 new    out +122 0.000121 ETH 0xb002e8a0 n5000 via 0x65050a9b 0x4d819a2a -> pull 179 (delay 57) bots before pull 6
+  10-09 16:40 new    out +126 0.000000 ETH 0xb002e8a0 n5004 via 0x65050a9b 0x4d819a2a -> pull 139 (delay 13) bots before pull 6
+  10-09 16:41 new    out +125 0.000024 ETH 0x93b07902 n16234 via 0x88767899 0x3593564c -> pull 261 (delay 136) bots before pull 12
+  10-09 16:41 new    out + 33 0.000000 ETH 0xb002e8a0 n5007 via 0x65050a9b 0x4d819a2a -> pull 48 (delay 15) bots before pull 2
+  10-09 16:42 new    out + 38 0.000000 ETH 0xb002e8a0 n5008 via 0x65050a9b 0x4d819a2a -> pull None (delay None) bots before pull 17
+  10-09 16:48 new    out +  6 0.000049 ETH 0xfeda1c58 n2415 via 0xf0b7eaaf 0x39ecce49 -> pull 17 (delay 11) bots before pull 1
+  10-09 16:48 new    out +  6 0.000049 ETH 0xfeda1c58 n2417 via 0xf0b7eaaf 0x39ecce49 -> pull 18 (delay 12) bots before pull 1
+  10-09 16:48 new    out +  6 0.000049 ETH 0xfeda1c58 n2419 via 0xf0b7eaaf 0x39ecce49 -> pull 18 (delay 12) bots before pull 1
+  10-09 16:48 new    out +  6 0.000049 ETH 0xfeda1c58 n2421 via 0xf0b7eaaf 0x39ecce49 -> pull 13 (delay 7) bots before pull 1
+  10-09 16:48 new    out +  6 0.000049 ETH 0xfeda1c58 n2423 via 0xf0b7eaaf 0x39ecce49 -> pull 18 (delay 12) bots before pull 1
+  10-09 16:48 new    out +  6 0.000049 ETH 0xfeda1c58 n2425 via 0xf0b7eaaf 0x39ecce49 -> pull 18 (delay 12) bots before pull 1
+  10-09 16:49 new    out +  6 0.000049 ETH 0xfeda1c58 n2427 via 0xf0b7eaaf 0x39ecce49 -> pull 18 (delay 12) bots before pull 1
+  10-09 16:49 new    out +  5 0.000049 ETH 0xfeda1c58 n2429 via 0xf0b7eaaf 0x39ecce49 -> pull 12 (delay 7) bots before pull 1
+  10-09 16:49 new    out +  8 0.000049 ETH 0xfeda1c58 n2431 via 0xf0b7eaaf 0x39ecce49 -> pull 18 (delay 10) bots before pull 1
+  10-09 16:49 new    out +  9 0.000020 ETH 0xfeda1c58 n2433 via 0xf0b7eaaf 0x39ecce49 -> pull 127 (delay 118) bots before pull 5
+  10-09 16:49 new    out +  6 0.000020 ETH 0xfeda1c58 n2437 via 0xf0b7eaaf 0x39ecce49 -> pull 193 (delay 187) bots before pull 8
+  10-09 16:57 new    out +120 0.000024 ETH 0x93b07902 n16273 via 0x88767899 0x3593564c -> pull 931 (delay 811) bots before pull 17
+  10-09 16:58 new    out +145 0.000024 ETH 0x93b07902 n16279 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 16:59 new    out +115 0.000000 ETH 0xb002e8a0 n5035 via 0x65050a9b 0x4d819a2a -> pull 131 (delay 16) bots before pull 4
+  10-09 17:00 new    out +135 0.000024 ETH 0x93b07902 n16288 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 17:08 new    out +125 0.000024 ETH 0x93b07902 n16304 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 17:08 new    out +132 0.000024 ETH 0x93b07902 n16307 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 17:27 new    out +141 0.000024 ETH 0x93b07902 n16351 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 17:28 new    out +125 0.000024 ETH 0x93b07902 n16355 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 17:38 new    out +138 0.000024 ETH 0x93b07902 n16378 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 17:38 new    out +124 0.000024 ETH 0x93b07902 n16380 via 0x88767899 0x3593564c -> pull 1313 (delay 1189) bots before pull 17
+  10-09 17:40 new    out + 63 0.000500 ETH 0xbead1521 n48 via 0x88767899 0x3593564c -> pull 71 (delay 8) bots before pull 3
+  10-09 17:41 new    out + 82 0.000500 ETH 0xbead1521 n51 via 0x88767899 0x3593564c -> pull 92 (delay 10) bots before pull 4
+  10-09 17:41 new    out +139 0.000024 ETH 0x93b07902 n16388 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 17:48 new    out +134 0.000024 ETH 0x93b07902 n16402 via 0x88767899 0x3593564c -> pull 194 (delay 60) bots before pull 8
+  10-09 17:48 new    out +130 0.000024 ETH 0x93b07902 n16405 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 17:48 new    out +122 0.000024 ETH 0x93b07902 n16408 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 17:58 new    out + 45 0.000500 ETH 0xbead1521 n57 via 0x88767899 0x3593564c -> pull 55 (delay 10) bots before pull 2
+  10-09 17:58 new    out +136 0.000024 ETH 0x93b07902 n16427 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 17:58 new    out +165 0.000024 ETH 0x93b07902 n16430 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:08 new    out +122 0.000024 ETH 0x93b07902 n16453 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:08 new    out +134 0.000024 ETH 0x93b07902 n16456 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:18 new    out +177 0.000024 ETH 0x93b07902 n16464 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 18:18 new    out +149 0.000024 ETH 0x93b07902 n16461 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:28 new    out +128 0.000024 ETH 0x93b07902 n16478 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:28 new    out +137 0.000024 ETH 0x93b07902 n16481 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:38 new    out +124 0.000024 ETH 0x93b07902 n16486 via 0x88767899 0x3593564c -> pull 808 (delay 684) bots before pull 17
+  10-09 18:38 new    out +137 0.000024 ETH 0x93b07902 n16489 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:39 new    out +141 0.000024 ETH 0x93b07902 n16492 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:48 new    out +133 0.000024 ETH 0x93b07902 n16501 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:48 new    out +131 0.000024 ETH 0x93b07902 n16503 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 18:51 new    out +121 0.000024 ETH 0x93b07902 n16513 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:58 new    out +140 0.000024 ETH 0x93b07902 n16521 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 18:58 new    out +133 0.000024 ETH 0x93b07902 n16524 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 19:08 new    out +140 0.000024 ETH 0x93b07902 n16529 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 19:08 new    out +144 0.000024 ETH 0x93b07902 n16532 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 19:17 new    out +130 0.000024 ETH 0x93b07902 n16537 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-09 19:18 new    out +136 0.000024 ETH 0x93b07902 n16540 via 0x88767899 0x3593564c -> pull 1410 (delay 1274) bots before pull 16
+  10-09 19:20 new    out + 57 0.000500 ETH 0xbead1521 n69 via 0x88767899 0x3593564c -> pull 61 (delay 4) bots before pull 2
+  10-09 19:21 new    out +138 0.000024 ETH 0x93b07902 n16545 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 19:28 new    out +127 0.000024 ETH 0x93b07902 n16553 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 19:28 new    out +134 0.000024 ETH 0x93b07902 n16556 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 19:35 new    out +133 0.000024 ETH 0x93b07902 n16564 via 0x88767899 0x3593564c -> pull 1069 (delay 936) bots before pull 17
+  10-09 19:38 new    out +135 0.000024 ETH 0x93b07902 n16576 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 15
+  10-09 19:38 new    out +120 0.000024 ETH 0x93b07902 n16573 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 19:48 new    out +123 0.000024 ETH 0x93b07902 n16597 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 19:48 new    out +134 0.000024 ETH 0x93b07902 n16600 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 19:58 new    out +143 0.000024 ETH 0x93b07902 n16616 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 19:58 new    out +139 0.000024 ETH 0x93b07902 n16619 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 20:08 new    out +132 0.000024 ETH 0x93b07902 n16625 via 0x88767899 0x3593564c -> pull 151 (delay 19) bots before pull 6
+  10-09 20:08 new    out +127 0.000024 ETH 0x93b07902 n16628 via 0x88767899 0x3593564c -> pull 176 (delay 49) bots before pull 8
+  10-09 20:09 new    out +134 0.000403 ETH 0xc9caf996 n42 via 0x88767899 0x3593564c -> pull 149 (delay 15) bots before pull 6
+  10-09 20:09 new    out +140 0.000024 ETH 0x93b07902 n16634 via 0x88767899 0x3593564c -> pull 1445 (delay 1305) bots before pull 18
+  10-09 20:09 new    out +141 0.000024 ETH 0x93b07902 n16637 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 20:11 new    out +136 0.000024 ETH 0x93b07902 n16644 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 20:18 new    out + 17 0.000238 ETH 0xb002e8a0 n5239 via 0x65050a9b 0x4d819a2a -> pull 27 (delay 10) bots before pull 1
+  10-09 20:18 new    out + 30 0.000238 ETH 0xb002e8a0 n5240 via 0x65050a9b 0x4d819a2a -> pull 42 (delay 12) bots before pull 2
+  10-09 20:18 new    out +118 0.000024 ETH 0x93b07902 n16648 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 20:18 new    out +132 0.000024 ETH 0x93b07902 n16651 via 0x88767899 0x3593564c -> pull 851 (delay 719) bots before pull 18
+  10-09 20:20 new    out +134 0.000024 ETH 0x93b07902 n16654 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 20:28 new    out +132 0.000024 ETH 0x93b07902 n16659 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 16
+  10-09 20:28 new    out +129 0.000024 ETH 0x93b07902 n16662 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 20:38 new    out +134 0.000024 ETH 0x93b07902 n16682 via 0x88767899 0x3593564c -> pull 173 (delay 39) bots before pull 7
+  10-09 20:38 new    out +100 0.003960 ETH 0xf9149de7 n0 via 0xb1000000 0x549299b8 -> pull 112 (delay 12) bots before pull 4
+  10-09 20:38 new    out +149 0.000024 ETH 0x93b07902 n16691 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 20:38 new    out +122 0.000024 ETH 0x93b07902 n16688 via 0x88767899 0x3593564c -> pull 201 (delay 79) bots before pull 9
+  10-09 20:39 new    out +117 0.000024 ETH 0x93b07902 n16694 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 20:48 new    out + 22 0.000037 ETH 0xd54bad00 n20 via 0x88767899 0x3593564c -> pull 28 (delay 6) bots before pull 1
+  10-09 20:48 new    out + 26 0.000050 ETH 0xd54bad00 n23 via 0x88767899 0x3593564c -> pull 29 (delay 3) bots before pull 1
+  10-09 20:48 new    out + 16 0.000030 ETH 0xd54bad00 n29 via 0x88767899 0x3593564c -> pull 30 (delay 14) bots before pull 2
+  10-09 20:48 new    out + 18 0.000038 ETH 0xd54bad00 n32 via 0x88767899 0x3593564c -> pull 30 (delay 12) bots before pull 1
+  10-09 20:48 new    out + 16 0.000038 ETH 0xd54bad00 n35 via 0x88767899 0x3593564c -> pull 32 (delay 16) bots before pull 2
+  10-09 20:48 new    out + 16 0.000042 ETH 0xd54bad00 n38 via 0x88767899 0x3593564c -> pull 29 (delay 13) bots before pull 1
+  10-09 20:49 new    out + 21 0.000041 ETH 0xd54bad00 n45 via 0x88767899 0x3593564c -> pull 28 (delay 7) bots before pull 1
+  10-09 20:49 new    out + 16 0.000029 ETH 0xd54bad00 n48 via 0x88767899 0x3593564c -> pull 20 (delay 4) bots before pull 1
+  10-09 20:49 new    out + 15 0.000035 ETH 0xd54bad00 n54 via 0x88767899 0x3593564c -> pull 28 (delay 13) bots before pull 1
+  10-09 20:49 new    out + 16 0.000051 ETH 0xd54bad00 n57 via 0x88767899 0x3593564c -> pull 19 (delay 3) bots before pull 1
+  10-09 20:49 new    out + 14 0.000035 ETH 0xd54bad00 n63 via 0x88767899 0x3593564c -> pull 17 (delay 3) bots before pull 1
+  10-09 20:49 new    out + 17 0.000041 ETH 0xd54bad00 n66 via 0x88767899 0x3593564c -> pull 30 (delay 13) bots before pull 1
+  10-09 20:49 new    out + 15 0.000033 ETH 0xd54bad00 n69 via 0x88767899 0x3593564c -> pull 28 (delay 13) bots before pull 1
+  10-09 20:50 new    out + 43 0.000031 ETH 0xd54bad00 n75 via 0x88767899 0x3593564c -> pull 52 (delay 9) bots before pull 2
+  10-09 20:50 new    out + 16 0.000041 ETH 0xd54bad00 n81 via 0x88767899 0x3593564c -> pull 28 (delay 12) bots before pull 1
+  10-09 20:50 new    out + 25 0.000031 ETH 0xd54bad00 n84 via 0x88767899 0x3593564c -> pull 30 (delay 5) bots before pull 1
+  10-09 20:50 new    out + 18 0.000047 ETH 0xd54bad00 n87 via 0x88767899 0x3593564c -> pull 27 (delay 9) bots before pull 1
+  10-09 20:50 new    out +149 0.000024 ETH 0x93b07902 n16715 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 20:50 new    out +159 0.000024 ETH 0x93b07902 n16718 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 18
+  10-09 20:57 new    out +139 0.000024 ETH 0x93b07902 n16746 via 0x88767899 0x3593564c -> pull 412 (delay 273) bots before pull 18
+  10-09 20:58 new    out +151 0.000024 ETH 0x93b07902 n16749 via 0x88767899 0x3593564c -> pull 160 (delay 9) bots before pull 7
+  10-09 20:58 new    out +147 0.000024 ETH 0x93b07902 n16751 via 0x88767899 0x3593564c -> pull 170 (delay 23) bots before pull 7
+  10-09 20:58 new    out +143 0.000024 ETH 0x93b07902 n16758 via 0x88767899 0x3593564c -> pull 148 (delay 5) bots before pull 6
+  10-09 20:58 new    out +146 0.000024 ETH 0x93b07902 n16761 via 0x88767899 0x3593564c -> pull 152 (delay 6) bots before pull 6
+  10-09 20:59 new    out +156 0.000024 ETH 0x93b07902 n16764 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 20:59 new    out +148 0.000024 ETH 0x93b07902 n16767 via 0x88767899 0x3593564c -> pull 1130 (delay 982) bots before pull 17
+  10-09 21:01 new    out +153 0.000024 ETH 0x93b07902 n16793 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 21:08 new    out +177 0.000024 ETH 0x93b07902 n16810 via 0x88767899 0x3593564c -> pull 824 (delay 647) bots before pull 18
+  10-09 21:08 new    out +144 0.000024 ETH 0x93b07902 n16808 via 0x88767899 0x3593564c -> pull 801 (delay 657) bots before pull 18
+  10-09 21:09 new    out +141 0.000024 ETH 0x93b07902 n16814 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 21:09 new    out +150 0.000024 ETH 0x93b07902 n16816 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 21:18 new    out +153 0.000024 ETH 0x93b07902 n16829 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 21:18 new    out +150 0.000024 ETH 0x93b07902 n16833 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 21:28 new    out +170 0.000024 ETH 0x93b07902 n16861 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17
+  10-09 21:28 new    out +160 0.000024 ETH 0x93b07902 n16863 via 0x88767899 0x3593564c -> pull None (delay None) bots before pull 17

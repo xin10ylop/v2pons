@@ -1,0 +1,15 @@
+0x436bdc6f2436627ce357578eadd557fc43dfd2cf launch 10-12 13:04:00 (tx index 9): 4 txs name the token in + 0..+ 100; reverted 0; in the launch block after it 0 []
+0x2fd38d55acd0862c05ac0adc07cbf2faa2b3d25f launch 10-12 13:06:12 (tx index 4): 4 txs name the token in + 0..+ 100; reverted 0; in the launch block after it 0 []
+0xcd3a43d8fee0c22edcfef9fb686bc36c63dd57a5 launch 10-12 13:10:03 (tx index 6): 3 txs name the token in + 0..+ 100; reverted 0; in the launch block after it 0 []
+0x7dcc381b448099dae7fe1d6b08ab0c3a6646a59b launch 10-12 13:12:45 (tx index 4): 3 txs name the token in + 0..+ 100; reverted 0; in the launch block after it 0 []
+0x7a848ee973283c744942e500e4540190f6cfc2ab launch 10-12 13:14:40 (tx index 2): 3 txs name the token in + 0..+ 100; reverted 0; in the launch block after it 0 []
+0x9b04573cf52d7a89b4dd8cbc5eeef2f370b1d1ea launch 10-12 13:15:54 (tx index 6): 5 txs name the token in + 0..+ 100; reverted 0; in the launch block after it 0 []
+0x7a979f4a0bcffb3b2c28a68f58312385c65f2efe launch 10-12 13:26:49 (tx index 4): 10 txs name the token in + 0..+ 100; reverted 0; in the launch block after it 0 []
+0x5b147906863691e6b1ca13480a06886e7d68658d launch 10-12 13:39:41 (tx index 16): 4 txs name the token in + 0..+ 100; reverted 0; in the launch block after it 0 []
+0xe37c7cd669b537437e0c40abde7fd8b67171bead launch 10-12 13:42:29 (tx index 15): 4 txs name the token in + 0..+ 100; reverted 0; in the launch block after it 0 []
+0x4cf25a1e92841a9cdcb36c4f6c5632ae613c5434 launch 10-12 13:44:12 (tx index 18): 0 txs name the token in + 0..+ 100; reverted 0; in the launch block after it 0 []
+
+all: 40 txs; reverted 0; by (to, selector, bytes, status): [(('0x7feb3ecb', '3593564c', 484, 1), 12), (('0xcaf681a6', '04e45aaf', 228, 1), 10), (('0x4f881c6a', 'c91f5491', 388, 1), 7), (('0x80e49ed1', '3593564c', 484, 1), 4), (('0x65050a9b', '4d819a2a', 580, 1), 2), (('0x00000000', '87517c45', 132, 1), 2), (('0x88767899', '3593564c', 580, 1), 2), (('0x570759db', '414bf389', 260, 1), 1)]
+reverted: []
+sells (the token -> WETH path) 2, reverted 0; first offsets of any tx naming the token: [(1, 1), (3, 2), (4, 5)]
+{'posts': 69, 'items': 1050, 'r429': 11}

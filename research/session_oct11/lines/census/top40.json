@@ -1,0 +1,1809 @@
+[
+ {
+  "grouping": "tok",
+  "key": "fa4982d5acd820b31baf7b45db61a5f9b5a8a765018dbaff78254efad8a4830e",
+  "count": 28547,
+  "per_day": 4078.6,
+  "frb_off_med": 36,
+  "first_buy_off_med": 0,
+  "pull_off_med": 1103.5,
+  "pulled": "22/28547",
+  "outsider_reaction_rate": 0.004,
+  "outsider_reactions": "1/255",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/13984",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/254",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/13983",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/193",
+  "pull_after_outsider12_med": 809,
+  "outsider12_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    48
+   ],
+   [
+    "0x8a8bac79fcd16fdad053596f10a9f325d42bb510:4d819a2a:580:0",
+    15
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x5399d94d2cab7c252a6034042e1917a0e5e17a18:814920c0:2308:1",
+    25
+   ]
+  ],
+  "n_deployers": 440,
+  "first_utc": "2026-10-04 13:53:12",
+  "last_utc": "2026-10-11 13:51:59",
+  "pull_minus_frb_med": 963,
+  "frb_eoa_in_same_tok_family": "117/239",
+  "known_fp": [],
+  "frb_n": 239,
+  "desc": "[new] v2b 13951/v2a 13883 WETH 27846/ETH 398 fee/ts 3000/None; 28547 launches (4078.6/d) by 440 wallets via 0x563b2841:f752ef6c value 6e-07,6.3e-07; first real buy +36 (n 239, med 0.0209 ETH, via 0x5bd1fbe7); pulled 22/28547 at +1103.5; early-outsider reaction 0/254 (baseline 0/13983)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "c873e135dc9aaec88489cfbad146b4cb49d6a32e0d80326377784b7ba17670b2|ac9650d8",
+  "count": 21018,
+  "per_day": 3002.9,
+  "frb_off_med": 9.0,
+  "first_buy_off_med": 3,
+  "pull_off_med": 204,
+  "pulled": "5369/21018",
+  "outsider_reaction_rate": 0.404,
+  "outsider_reactions": "551/1365",
+  "reaction_baseline_rate": 0.27,
+  "reaction_baseline": "3567/13194",
+  "outsider12_reaction_rate": 0.253,
+  "outsider12_reactions": "260/1027",
+  "baseline12_rate": 0.157,
+  "baseline12": "2127/13508",
+  "outsider12_nf_reaction_rate": 0.013,
+  "outsider12_nf_reactions": "7/553",
+  "pull_after_outsider12_med": 35.0,
+  "outsider12_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:2000000",
+    402
+   ],
+   [
+    "0x6e2a35a7ad683cf634d91492d73bb7ff774c6919:0c307f76:1156:10",
+    27
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x1cbaf24d53fe930fce8eff149fa797d2611da149:c1120e3d:324:24000000",
+    616
+   ]
+  ],
+  "n_deployers": 7990,
+  "first_utc": "2026-10-04 13:52:43",
+  "last_utc": "2026-10-11 13:51:42",
+  "pull_minus_frb_med": 122.0,
+  "frb_eoa_in_same_tok_family": "9112/9386",
+  "known_fp": [
+   "vbot-v3.0 3355",
+   "vbot-v2.433 3182",
+   "vbot-v5.0 1543"
+  ],
+  "frb_n": 9386,
+  "desc": "[vbot-v3.0 3355/21018,vbot-v2.433 3182/21018,vbot-v5.0 1543/21018] v4 21018 ETH 15462/USDG 4921 fee/ts 10000/200; 21018 launches (3002.9/d) by 7990 wallets via POSM:ac9650d8 value 0.0,3.0; first real buy +9.0 (n 9386, med 0.125 ETH, via 0x1cbaf24d); pulled 5369/21018 at +204; early-outsider reaction 260/1027 (baseline 2127/13508)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "49451fc9bcb24bce9ac9910ac806661fde64225f39c3513b253b819ad833c475|f752ef6c",
+  "count": 13780,
+  "per_day": 1998.2,
+  "frb_off_med": 292,
+  "first_buy_off_med": 0.0,
+  "pull_off_med": null,
+  "pulled": "0/13780",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/56",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/6834",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/56",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/6834",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/41",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    13
+   ],
+   [
+    "0x8a8bac79fcd16fdad053596f10a9f325d42bb510:4d819a2a:580:0",
+    10
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x5399d94d2cab7c252a6034042e1917a0e5e17a18:814920c0:2308:1",
+    18
+   ]
+  ],
+  "n_deployers": 38,
+  "first_utc": "2026-10-04 15:00:13",
+  "last_utc": "2026-10-11 12:30:51",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "26/45",
+  "known_fp": [],
+  "frb_n": 45,
+  "desc": "[new] v2a 6890/v2b 6890 WETH 13780 fee/ts 3000/None; 13780 launches (1998.2/d) by 38 wallets via 0x67050116:f752ef6c value 6.3e-07,2.01e-07; first real buy +292 (n 45, med 0.0099 ETH, via 0x5399d94d); pulled 0/13780 at +None; early-outsider reaction 0/56 (baseline 0/6834)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "e830de831f4cde39bcc53a779fe1c4041d35453108f9eefae8587f0a8ad86a87|f752ef6c",
+  "count": 11970,
+  "per_day": 1710.2,
+  "frb_off_med": 251.5,
+  "first_buy_off_med": 0,
+  "pull_off_med": null,
+  "pulled": "0/11970",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/51",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/5934",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/51",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/5934",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/26",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    22
+   ],
+   [
+    "0x8a8bac79fcd16fdad053596f10a9f325d42bb510:4d819a2a:580:0",
+    5
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    10
+   ]
+  ],
+  "n_deployers": 5,
+  "first_utc": "2026-10-04 13:53:12",
+  "last_utc": "2026-10-11 13:51:59",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "11/30",
+  "known_fp": [],
+  "frb_n": 30,
+  "desc": "[new] v2a 5985/v2b 5985 WETH 11970 fee/ts 3000/None; 11970 launches (1710.2/d) by 5 wallets via 0x563b2841:f752ef6c value 2.48e-07,2.13e-07; first real buy +251.5 (n 30, med 0.0114 ETH, via 0x65050a9b); pulled 0/11970 at +None; early-outsider reaction 0/51 (baseline 0/5934)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "16afd61e5922756dace7a0a6da326b8f8dcdf22525f9621230ec12bc5b4114eb",
+  "count": 8102,
+  "per_day": 1158.6,
+  "frb_off_med": 1.0,
+  "first_buy_off_med": 558,
+  "pull_off_med": 99,
+  "pulled": "457/8102",
+  "outsider_reaction_rate": 0.005,
+  "outsider_reactions": "1/199",
+  "reaction_baseline_rate": 0.005,
+  "reaction_baseline": "22/4392",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/193",
+  "baseline12_rate": 0.004,
+  "baseline12": "18/4387",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/159",
+  "pull_after_outsider12_med": 913.5,
+  "outsider12_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    10
+   ],
+   [
+    "0x076b36019cfb1604ae452a31fafda70dea87fbb0:bd6858d6:260:1",
+    9
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x2a53386daf0bf3eedd9e715d162649764358c7b5:3d9ab7c9:292:0",
+    33
+   ]
+  ],
+  "n_deployers": 508,
+  "first_utc": "2026-10-04 13:52:43",
+  "last_utc": "2026-10-11 13:42:33",
+  "pull_minus_frb_med": 928,
+  "frb_eoa_in_same_tok_family": "163/222",
+  "known_fp": [],
+  "frb_n": 222,
+  "desc": "[new] v4 8101/v3 1 ETH 5832/USDG 2251 fee/ts 883131/200; 8102 launches (1158.6/d) by 508 wallets via POSM:ac9650d8 value 0.0,0.000735; first real buy +1.0 (n 222, med 0.03 ETH, via 0x2a53386d); pulled 457/8102 at +99; early-outsider reaction 0/193 (baseline 18/4387)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "037449b17ce607befceb30d243903e3bbe4542ec090ed8eb9ee79edb4000170a",
+  "count": 5061,
+  "per_day": 723.7,
+  "frb_off_med": 9,
+  "first_buy_off_med": 3,
+  "pull_off_med": 517.5,
+  "pulled": "2092/5061",
+  "outsider_reaction_rate": 0.961,
+  "outsider_reactions": "171/178",
+  "reaction_baseline_rate": 0.385,
+  "reaction_baseline": "1821/4733",
+  "outsider12_reaction_rate": 0.5,
+  "outsider12_reactions": "4/8",
+  "baseline12_rate": 0.156,
+  "baseline12": "765/4903",
+  "outsider12_nf_reaction_rate": 0.5,
+  "outsider12_nf_reactions": "3/6",
+  "pull_after_outsider12_med": 10.0,
+  "outsider12_fp_top": [
+   [
+    "0x6e2a35a7ad683cf634d91492d73bb7ff774c6919:0c307f76:1156:10",
+    2
+   ],
+   [
+    "0x4509d5938562e6db0b102926d024d1736801abd8:96c6ff42:2345:0",
+    1
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x1cbaf24d53fe930fce8eff149fa797d2611da149:c1120e3d:324:24000000",
+    351
+   ]
+  ],
+  "n_deployers": 2726,
+  "first_utc": "2026-10-04 13:58:04",
+  "last_utc": "2026-10-11 13:48:15",
+  "pull_minus_frb_med": 512.0,
+  "frb_eoa_in_same_tok_family": "4886/4889",
+  "known_fp": [
+   "vbot-v3.0 3355",
+   "vbot-v5.0 1543"
+  ],
+  "frb_n": 4889,
+  "desc": "[vbot-v3.0 3355/5061,vbot-v5.0 1543/5061] v4 5061 ETH 4938/USDG 118 fee/ts 10000/200; 5061 launches (723.7/d) by 2726 wallets via POSM:ac9650d8 value 3.0,5.0; first real buy +9 (n 4889, med 0.1237 ETH, via 0x1cbaf24d); pulled 2092/5061 at +517.5; early-outsider reaction 4/8 (baseline 765/4903)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "aff2095fe75bb5088d995bed2d0567a82aa266bd8cb0d7ffc0996b8df53d84bd",
+  "count": 3207,
+  "per_day": 458.4,
+  "frb_off_med": 9,
+  "first_buy_off_med": 3,
+  "pull_off_med": 13.0,
+  "pulled": "2028/3207",
+  "outsider_reaction_rate": 0.677,
+  "outsider_reactions": "315/465",
+  "reaction_baseline_rate": 0.581,
+  "reaction_baseline": "1581/2720",
+  "outsider12_reaction_rate": 0.624,
+  "outsider12_reactions": "254/407",
+  "baseline12_rate": 0.479,
+  "baseline12": "1330/2778",
+  "outsider12_nf_reaction_rate": 1.0,
+  "outsider12_nf_reactions": "2/2",
+  "pull_after_outsider12_med": 10.5,
+  "outsider12_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:2000000",
+    402
+   ],
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1092:None",
+    2
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x1cbaf24d53fe930fce8eff149fa797d2611da149:c1120e3d:324:24000000",
+    265
+   ]
+  ],
+  "n_deployers": 3198,
+  "first_utc": "2026-10-04 13:53:07",
+  "last_utc": "2026-10-11 13:47:35",
+  "pull_minus_frb_med": 3.0,
+  "frb_eoa_in_same_tok_family": "3173/3173",
+  "known_fp": [
+   "vbot-v2.433 3182"
+  ],
+  "frb_n": 3173,
+  "desc": "[vbot-v2.433 3182/3207] v4 3207 ETH 3189/USDG 18 fee/ts 2500/50; 3207 launches (458.4/d) by 3198 wallets via POSM:ac9650d8 value 2.4333285,0.0; first real buy +9 (n 3173, med 0.1732 ETH, via 0x1cbaf24d); pulled 2028/3207 at +13.0; early-outsider reaction 254/407 (baseline 1330/2778)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "58d5932051387e189cc0a3281cd10192ad6ba2944f729620e1607ab6de2a91f9",
+  "count": 2772,
+  "per_day": 396.1,
+  "frb_off_med": 133.0,
+  "first_buy_off_med": 187,
+  "pull_off_med": 1144.0,
+  "pulled": "70/2772",
+  "outsider_reaction_rate": 0.016,
+  "outsider_reactions": "2/128",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/209",
+  "outsider12_reaction_rate": 0.008,
+  "outsider12_reactions": "1/128",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/206",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/83",
+  "pull_after_outsider12_med": 31,
+  "outsider12_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    33
+   ],
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf:39ecce49:1380:10000000",
+    7
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    38
+   ]
+  ],
+  "n_deployers": 708,
+  "first_utc": "2026-10-04 13:53:00",
+  "last_utc": "2026-10-11 13:51:22",
+  "pull_minus_frb_med": 369.0,
+  "frb_eoa_in_same_tok_family": "100/160",
+  "known_fp": [],
+  "frb_n": 160,
+  "desc": "[new] v4 2710/v3 62 WETH 1451/USDG 961 fee/ts 8388608/8; 2772 launches (396.1/d) by 708 wallets via 0x5ff137d4:1fad948c value 0.0,9.333333333; first real buy +133.0 (n 160, med 0.0495 ETH, via 0x65050a9b); pulled 70/2772 at +1144.0; early-outsider reaction 1/128 (baseline 0/206)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "cecb292d9c022858199c9348abf0d5836f9ea4dab5cf03710e1dcf41fd9a4c35|8cb5772c",
+  "count": 2003,
+  "per_day": 287.8,
+  "frb_off_med": 0.0,
+  "first_buy_off_med": 0,
+  "pull_off_med": null,
+  "pulled": "0/2003",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/18",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/963",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/18",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/963",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/15",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09:8cb5772c:1156:0",
+    5
+   ],
+   [
+    "0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09:ef7ec2e7:228:0",
+    3
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09:8cb5772c:1156:0",
+    7
+   ]
+  ],
+  "n_deployers": 52,
+  "first_utc": "2026-10-04 13:57:02",
+  "last_utc": "2026-10-11 12:57:43",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "4/12",
+  "known_fp": [],
+  "frb_n": 12,
+  "desc": "[new] v2b 1014/v2a 989 WETH 2003 fee/ts 3000/None; 2003 launches (287.8/d) by 52 wallets via 0x26605f32:8cb5772c value 6e-07,0.0; first real buy +0.0 (n 12, med 0.0158 ETH, via 0x26605f32); pulled 0/2003 at +None; early-outsider reaction 0/18 (baseline 0/963)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "d4e7eae43daa222b2f8e97be53376a3d434d42e2871c651d5e3c69dba24d672e",
+  "count": 1991,
+  "per_day": 284.6,
+  "frb_off_med": 92,
+  "first_buy_off_med": 2,
+  "pull_off_med": 351,
+  "pulled": "951/1991",
+  "outsider_reaction_rate": 0.048,
+  "outsider_reactions": "18/376",
+  "reaction_baseline_rate": 0.22,
+  "reaction_baseline": "225/1023",
+  "outsider12_reaction_rate": 0.024,
+  "outsider12_reactions": "6/252",
+  "baseline12_rate": 0.055,
+  "baseline12": "63/1141",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/114",
+  "pull_after_outsider12_med": 278.5,
+  "outsider12_fp_top": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:708:0",
+    73
+   ],
+   [
+    "0xc955efd62944fcea581194ba722db08592865b8b:b3938887:324:0",
+    21
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf:39ecce49:1380:60000000",
+    37
+   ]
+  ],
+  "n_deployers": 1294,
+  "first_utc": "2026-10-04 13:53:14",
+  "last_utc": "2026-10-11 13:48:22",
+  "pull_minus_frb_med": 230.0,
+  "frb_eoa_in_same_tok_family": "954/1011",
+  "known_fp": [
+   "C-1 37"
+  ],
+  "frb_n": 1011,
+  "desc": "[C-1 37/1991] v3 1016/v4 970 WETH 1164/USDG 612 fee/ts 100/1; 1991 launches (284.6/d) by 1294 wallets via 0x73991a25:ac9650d8 value 0.0,0.0012177; first real buy +92 (n 1011, med 0.0594 ETH, via 0x80114879); pulled 951/1991 at +351; early-outsider reaction 6/252 (baseline 63/1141)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "bd55ea26b2f8d42a8ff151511cef92a326a9817686899fe96a8a8f81ee7fc55e|f305d719",
+  "count": 1834,
+  "per_day": 262.2,
+  "frb_off_med": 171.0,
+  "first_buy_off_med": 3,
+  "pull_off_med": 767.5,
+  "pulled": "326/1834",
+  "outsider_reaction_rate": 0.058,
+  "outsider_reactions": "37/641",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/1188",
+  "outsider12_reaction_rate": 0.041,
+  "outsider12_reactions": "26/641",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/1188",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/38",
+  "pull_after_outsider12_med": 87,
+  "outsider12_fp_top": [
+   [
+    "0x89e5db8b5aa49aa85ac63f691524311aeb649eba:7ff36ab5:228:0",
+    598
+   ],
+   [
+    "0x204faca1764b154221e35c0d20abb3c525710498:3593564c:730:0",
+    9
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x89e5db8b5aa49aa85ac63f691524311aeb649eba:7ff36ab5:228:0",
+    1781
+   ]
+  ],
+  "n_deployers": 1819,
+  "first_utc": "2026-10-04 13:56:53",
+  "last_utc": "2026-10-11 13:48:14",
+  "pull_minus_frb_med": 615.0,
+  "frb_eoa_in_same_tok_family": "1189/1804",
+  "known_fp": [],
+  "frb_n": 1804,
+  "desc": "[new] v2a 1834 WETH 1834 fee/ts 3000/None; 1834 launches (262.2/d) by 1819 wallets via 0x89e5db8b:f305d719 value 1.0,50.09; first real buy +171.0 (n 1804, med 0.1704 ETH, via 0x89e5db8b); pulled 326/1834 at +767.5; early-outsider reaction 26/641 (baseline 0/1188)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "c93c806e738300b5357ecdc2e971d6438d34d8e4e17b99b758b1f9cac91c8e70|1fad948c",
+  "count": 1482,
+  "per_day": 211.7,
+  "frb_off_med": 637.5,
+  "first_buy_off_med": 282,
+  "pull_off_med": 1818.0,
+  "pulled": "8/1482",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/8",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/79",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/8",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/79",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/7",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0x796a62748090397ea33cca1bb93ecb4524e6a06c:53f10001:529:None",
+    1
+   ],
+   [
+    "0xc1e27db6031b5189dcc56e5e4e39fec6de584f02:0c89e77a:308:0",
+    1
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x5399d94d2cab7c252a6034042e1917a0e5e17a18:814920c0:1540:1",
+    3
+   ]
+  ],
+  "n_deployers": 105,
+  "first_utc": "2026-10-04 13:53:00",
+  "last_utc": "2026-10-11 13:51:22",
+  "pull_minus_frb_med": 1035,
+  "frb_eoa_in_same_tok_family": "9/12",
+  "known_fp": [],
+  "frb_n": 12,
+  "desc": "[new] v4 1479/v2a 2 WETH 845/USDG 616 fee/ts 8388608/8; 1482 launches (211.7/d) by 105 wallets via 0x5ff137d4:1fad948c value 0.0; first real buy +637.5 (n 12, med 0.0101 ETH, via 0xf0b7eaaf); pulled 8/1482 at +1818.0; early-outsider reaction 0/8 (baseline 0/79)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "bd3881180b547f5fe817545743cfb4343e96b1bc6640dcd70c106b0066e95626|6276cbbe",
+  "count": 1433,
+  "per_day": 204.9,
+  "frb_off_med": 127,
+  "first_buy_off_med": 46,
+  "pull_off_med": 567,
+  "pulled": "329/1433",
+  "outsider_reaction_rate": 0.049,
+  "outsider_reactions": "6/123",
+  "reaction_baseline_rate": 0.252,
+  "reaction_baseline": "200/794",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/95",
+  "baseline12_rate": 0.085,
+  "baseline12": "70/819",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/32",
+  "pull_after_outsider12_med": 206,
+  "outsider12_fp_top": [
+   [
+    "0xc955efd62944fcea581194ba722db08592865b8b:b3938887:324:0",
+    21
+   ],
+   [
+    "0x7680ecc68ec6dbc017b6de97b481c64724be101b:b3938887:324:0",
+    16
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xc9459a2475c6db38751360ef0a99d86577955de0:7169b574:772:None",
+    152
+   ]
+  ],
+  "n_deployers": 902,
+  "first_utc": "2026-10-04 13:54:36",
+  "last_utc": "2026-10-11 13:45:52",
+  "pull_minus_frb_med": 472.0,
+  "frb_eoa_in_same_tok_family": "733/781",
+  "known_fp": [
+   "C-2 779"
+  ],
+  "frb_n": 781,
+  "desc": "[C-2 779/1433] v4 1433 ETH 1196/WETH 126 fee/ts 500/1; 1433 launches (204.9/d) by 902 wallets via PoolManager:6276cbbe value 0.0; first real buy +127 (n 781, med 0.0312 ETH, via 0xc9459a24); pulled 329/1433 at +567; early-outsider reaction 0/95 (baseline 70/819)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "4e451d1aef8a2d19ea832ccc787c715d5e62e6505c11464716793eb6e25b1489",
+  "count": 1230,
+  "per_day": 175.9,
+  "frb_off_med": 125.0,
+  "first_buy_off_med": 46,
+  "pull_off_med": 576.0,
+  "pulled": "322/1230",
+  "outsider_reaction_rate": 0.076,
+  "outsider_reactions": "6/79",
+  "reaction_baseline_rate": 0.23,
+  "reaction_baseline": "182/790",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/51",
+  "baseline12_rate": 0.064,
+  "baseline12": "52/816",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/36",
+  "pull_after_outsider12_med": 106,
+  "outsider12_fp_top": [
+   [
+    "0xe394ba9ff1b3d7337e01f89537a5c4980af1e439:7169b574:772:None",
+    6
+   ],
+   [
+    "0x6e2a35a7ad683cf634d91492d73bb7ff774c6919:0c307f76:1156:10",
+    5
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xc9459a2475c6db38751360ef0a99d86577955de0:7169b574:772:None",
+    152
+   ]
+  ],
+  "n_deployers": 844,
+  "first_utc": "2026-10-04 13:54:36",
+  "last_utc": "2026-10-11 13:46:21",
+  "pull_minus_frb_med": 545.0,
+  "frb_eoa_in_same_tok_family": "708/714",
+  "known_fp": [
+   "C-2 773"
+  ],
+  "frb_n": 714,
+  "desc": "[C-2 773/1230] v4 1230 ETH 827/USDG 403 fee/ts 500/1; 1230 launches (175.9/d) by 844 wallets via PoolManager:6276cbbe value 0.0,0.000375103; first real buy +125.0 (n 714, med 0.0312 ETH, via 0xc9459a24); pulled 322/1230 at +576.0; early-outsider reaction 0/51 (baseline 52/816)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "70adce63e2b26b9350075e6934c9204c09dd0534884b162b9386ff9bff162a22",
+  "count": 1217,
+  "per_day": 174.0,
+  "frb_off_med": 202.0,
+  "first_buy_off_med": 3.0,
+  "pull_off_med": 1188,
+  "pulled": "161/1217",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/28",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/1164",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/28",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/1164",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/25",
+  "pull_after_outsider12_med": 183.5,
+  "outsider12_fp_top": [
+   [
+    "0x204faca1764b154221e35c0d20abb3c525710498:3593564c:730:0",
+    5
+   ],
+   [
+    "0xb477751b76cf82d00a686a1232f5fcd772414af3:736eac0b:3812:0",
+    3
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x89e5db8b5aa49aa85ac63f691524311aeb649eba:7ff36ab5:228:0",
+    1178
+   ]
+  ],
+  "n_deployers": 1197,
+  "first_utc": "2026-10-04 13:56:53",
+  "last_utc": "2026-10-11 13:48:14",
+  "pull_minus_frb_med": 956,
+  "frb_eoa_in_same_tok_family": "1180/1180",
+  "known_fp": [],
+  "frb_n": 1180,
+  "desc": "[new] v2a 1184/v4 33 WETH 1184/USDG 24 fee/ts 3000/None; 1217 launches (174.0/d) by 1197 wallets via 0x89e5db8b:f305d719 value 50.09,40.09; first real buy +202.0 (n 1180, med 0.4952 ETH, via 0x89e5db8b); pulled 161/1217 at +1188; early-outsider reaction 0/28 (baseline 0/1164)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "0a493d1af3d0f25fed8efa205244ebee14114267a08647fc38c515c7cd6ead4f|ac9650d8",
+  "count": 1155,
+  "per_day": 165.1,
+  "frb_off_med": 86,
+  "first_buy_off_med": 1.0,
+  "pull_off_med": 290.5,
+  "pulled": "840/1155",
+  "outsider_reaction_rate": 0.073,
+  "outsider_reactions": "19/261",
+  "reaction_baseline_rate": 0.262,
+  "reaction_baseline": "231/883",
+  "outsider12_reaction_rate": 0.042,
+  "outsider12_reactions": "6/142",
+  "baseline12_rate": 0.07,
+  "baseline12": "70/1002",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/57",
+  "pull_after_outsider12_med": 256.5,
+  "outsider12_fp_top": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:708:0",
+    75
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    7
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf:39ecce49:1380:60000000",
+    35
+   ]
+  ],
+  "n_deployers": 1118,
+  "first_utc": "2026-10-04 13:53:14",
+  "last_utc": "2026-10-11 13:48:22",
+  "pull_minus_frb_med": 230.0,
+  "frb_eoa_in_same_tok_family": "891/915",
+  "known_fp": [],
+  "frb_n": 915,
+  "desc": "[new] v3 1155 WETH 1155 fee/ts 100/1; 1155 launches (165.1/d) by 1118 wallets via 0x73991a25:ac9650d8 value 0.0,0.001; first real buy +86 (n 915, med 0.05 ETH, via 0x80114879); pulled 840/1155 at +290.5; early-outsider reaction 6/142 (baseline 70/1002)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "cb79985db9ea37468d888540c7e2ad4312d146e22df38d92ac2b3962884c1248",
+  "count": 960,
+  "per_day": 137.2,
+  "frb_off_med": 116,
+  "first_buy_off_med": 3,
+  "pull_off_med": 370,
+  "pulled": "597/960",
+  "outsider_reaction_rate": 0.391,
+  "outsider_reactions": "63/161",
+  "reaction_baseline_rate": 0.208,
+  "reaction_baseline": "155/746",
+  "outsider12_reaction_rate": 0.016,
+  "outsider12_reactions": "1/62",
+  "baseline12_rate": 0.033,
+  "baseline12": "28/844",
+  "outsider12_nf_reaction_rate": 0.018,
+  "outsider12_nf_reactions": "1/56",
+  "pull_after_outsider12_med": 586,
+  "outsider12_fp_top": [
+   [
+    "0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6:e6cb474f:484:21410170",
+    3
+   ],
+   [
+    "0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6:e6cb474f:484:21100000",
+    3
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6:e6cb474f:484:21100000",
+    37
+   ]
+  ],
+  "n_deployers": 923,
+  "first_utc": "2026-10-04 13:53:19",
+  "last_utc": "2026-10-11 13:51:42",
+  "pull_minus_frb_med": 374.5,
+  "frb_eoa_in_same_tok_family": "734/739",
+  "known_fp": [
+   "C-1 888"
+  ],
+  "frb_n": 739,
+  "desc": "[C-1 888/960] v4 949/v3 11 ETH 714/WETH 201 fee/ts 100/1; 960 launches (137.2/d) by 923 wallets via POSM:ac9650d8 value 0.0,0.0012177; first real buy +116 (n 739, med 0.14 ETH, via 0xd6d35b56); pulled 597/960 at +370; early-outsider reaction 1/62 (baseline 28/844)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "59571c748b9f1a442822c820e7c409c7f3e692c4b107fd9e532211b3806933f3",
+  "count": 686,
+  "per_day": 102.7,
+  "frb_off_med": 44,
+  "first_buy_off_med": 3,
+  "pull_off_med": 1476.0,
+  "pulled": "600/686",
+  "outsider_reaction_rate": 0.379,
+  "outsider_reactions": "132/348",
+  "reaction_baseline_rate": 0.345,
+  "reaction_baseline": "112/325",
+  "outsider12_reaction_rate": 0.043,
+  "outsider12_reactions": "14/326",
+  "baseline12_rate": 0.081,
+  "baseline12": "28/347",
+  "outsider12_nf_reaction_rate": null,
+  "outsider12_nf_reactions": "0/0",
+  "pull_after_outsider12_med": 1390.5,
+  "outsider12_fp_top": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1124:20000000",
+    323
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:2000000",
+    3
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1124:20000000",
+    657
+   ]
+  ],
+  "n_deployers": 684,
+  "first_utc": "2026-10-04 20:21:29",
+  "last_utc": "2026-10-11 12:38:08",
+  "pull_minus_frb_med": 1469.0,
+  "frb_eoa_in_same_tok_family": "345/657",
+  "known_fp": [
+   "operatorA 677"
+  ],
+  "frb_n": 657,
+  "desc": "[operatorA 677/686] v4 686 ETH 678/USDG 8 fee/ts 100/200; 686 launches (102.7/d) by 684 wallets via 0x3194e326:2fcb9108 value 1.0,0.442; first real buy +44 (n 657, med 0.0527 ETH, via 0x88767899); pulled 600/686 at +1476.0; early-outsider reaction 14/326 (baseline 28/347)",
+  "same_as": [
+   "lc:42544ef5d4754816b3cfe77f3a6fb1c8eb842d6eee101f7d15c638593a3351d2|2fcb9108"
+  ]
+ },
+ {
+  "grouping": "lc",
+  "key": "c873e135dc9aaec88489cfbad146b4cb49d6a32e0d80326377784b7ba17670b2|f7020405",
+  "count": 627,
+  "per_day": 89.7,
+  "frb_off_med": 164,
+  "first_buy_off_med": 10.0,
+  "pull_off_med": 160,
+  "pulled": "403/627",
+  "outsider_reaction_rate": 0.019,
+  "outsider_reactions": "1/54",
+  "reaction_baseline_rate": 0.671,
+  "reaction_baseline": "314/468",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/52",
+  "baseline12_rate": 0.651,
+  "baseline12": "306/470",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/12",
+  "pull_after_outsider12_med": 923.5,
+  "outsider12_fp_top": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1092:0",
+    27
+   ],
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1092:10000000",
+    11
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1092:10000000",
+    76
+   ]
+  ],
+  "n_deployers": 188,
+  "first_utc": "2026-10-04 13:58:17",
+  "last_utc": "2026-10-11 13:38:51",
+  "pull_minus_frb_med": 946,
+  "frb_eoa_in_same_tok_family": "146/163",
+  "known_fp": [],
+  "frb_n": 163,
+  "desc": "[new] v4 627 ETH 519/USDG 76 fee/ts 10000/200; 627 launches (89.7/d) by 188 wallets via POSM:f7020405 value 0.0; first real buy +164 (n 163, med 0.1015 ETH, via 0x88767899); pulled 403/627 at +160; early-outsider reaction 0/52 (baseline 306/470)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "0f34e3b5f0599dd75dae3f5228a1ef936f4b3b483718bc6ce17002d24581092d",
+  "count": 609,
+  "per_day": 87.1,
+  "frb_off_med": 3,
+  "first_buy_off_med": 3,
+  "pull_off_med": 269.5,
+  "pulled": "166/609",
+  "outsider_reaction_rate": 0.062,
+  "outsider_reactions": "37/599",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/6",
+  "outsider12_reaction_rate": 0.043,
+  "outsider12_reactions": "26/599",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/6",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/3",
+  "pull_after_outsider12_med": 83,
+  "outsider12_fp_top": [
+   [
+    "0x89e5db8b5aa49aa85ac63f691524311aeb649eba:7ff36ab5:228:0",
+    596
+   ],
+   [
+    "0x56d131dfa75f14619ac4269cdf40e8c18e70fee9:99e1d016:1028:0",
+    1
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x89e5db8b5aa49aa85ac63f691524311aeb649eba:7ff36ab5:228:0",
+    599
+   ]
+  ],
+  "n_deployers": 608,
+  "first_utc": "2026-10-04 13:58:19",
+  "last_utc": "2026-10-11 13:44:23",
+  "pull_minus_frb_med": 257,
+  "frb_eoa_in_same_tok_family": "0/599",
+  "known_fp": [],
+  "frb_n": 599,
+  "desc": "[new] v2a 603/v4 6 WETH 603/USDG 4 fee/ts 3000/None; 609 launches (87.1/d) by 608 wallets via 0x89e5db8b:f305d719 value 1.0,0.0; first real buy +3 (n 599, med 0.0453 ETH, via 0x89e5db8b); pulled 166/609 at +269.5; early-outsider reaction 26/599 (baseline 0/6)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "cd37624e07828adc45597ec17308dbff17462a4728ad4709d4163a1da8b9ef41|6fe958d8",
+  "count": 516,
+  "per_day": 350.5,
+  "frb_off_med": null,
+  "first_buy_off_med": null,
+  "pull_off_med": 12.0,
+  "pulled": "230/516",
+  "outsider_reaction_rate": null,
+  "outsider_reactions": "0/0",
+  "reaction_baseline_rate": null,
+  "reaction_baseline": "0/0",
+  "outsider12_reaction_rate": null,
+  "outsider12_reactions": "0/0",
+  "baseline12_rate": null,
+  "baseline12": "0/0",
+  "outsider12_nf_reaction_rate": null,
+  "outsider12_nf_reactions": "0/0",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [],
+  "frb_fp_top": [],
+  "n_deployers": 1,
+  "first_utc": "2026-10-09 03:05:50",
+  "last_utc": "2026-10-10 14:25:36",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "0/0",
+  "known_fp": [],
+  "frb_n": 0,
+  "desc": "[new] v4 516 ETH 258/USDG 258 fee/ts 3000/60; 516 launches (350.5/d) by 1 wallets via 0xfcd18241:6fe958d8 value 0.0; first real buy +None (n 0, med None ETH, via None); pulled 230/516 at +12.0; early-outsider reaction 0/0 (baseline 0/0)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "65daaea0eb5368eeb9e19c5a7b24de3bfc8689ba1a100d74ea024cb09f4ea15b",
+  "count": 511,
+  "per_day": 73.6,
+  "frb_off_med": 0,
+  "first_buy_off_med": 0.0,
+  "pull_off_med": 1143.5,
+  "pulled": "38/511",
+  "outsider_reaction_rate": 0.014,
+  "outsider_reactions": "3/209",
+  "reaction_baseline_rate": 0.019,
+  "reaction_baseline": "4/215",
+  "outsider12_reaction_rate": 0.005,
+  "outsider12_reactions": "1/206",
+  "baseline12_rate": 0.005,
+  "baseline12": "1/216",
+  "outsider12_nf_reaction_rate": 0.007,
+  "outsider12_nf_reactions": "1/138",
+  "pull_after_outsider12_med": 566.5,
+  "outsider12_fp_top": [
+   [
+    "0x75379d5d2ea4c98aeaa57f32e233707550ab03f0:3593564c:1540:0",
+    27
+   ],
+   [
+    "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0:ac9650d8:2916:None",
+    22
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "None:60808060:3740:0",
+    86
+   ]
+  ],
+  "n_deployers": 281,
+  "first_utc": "2026-10-04 14:29:30",
+  "last_utc": "2026-10-11 13:06:25",
+  "pull_minus_frb_med": 156,
+  "frb_eoa_in_same_tok_family": "138/269",
+  "known_fp": [],
+  "frb_n": 269,
+  "desc": "[new] v4 511 ETH 444/USDG 64 fee/ts 2500/25; 511 launches (73.6/d) by 281 wallets via 0x0000ffff:ac9650d8 value 0.0,0.08; first real buy +0 (n 269, med 0.4 ETH, via 0x0000ffff); pulled 38/511 at +1143.5; early-outsider reaction 1/206 (baseline 1/216)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "0a493d1af3d0f25fed8efa205244ebee14114267a08647fc38c515c7cd6ead4f|13ead562",
+  "count": 493,
+  "per_day": 73.7,
+  "frb_off_med": 28,
+  "first_buy_off_med": 27,
+  "pull_off_med": 144.5,
+  "pulled": "426/493",
+  "outsider_reaction_rate": 0.078,
+  "outsider_reactions": "6/77",
+  "reaction_baseline_rate": 0.202,
+  "reaction_baseline": "82/406",
+  "outsider12_reaction_rate": 0.065,
+  "outsider12_reactions": "5/77",
+  "baseline12_rate": 0.202,
+  "baseline12": "82/406",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/1",
+  "pull_after_outsider12_med": 40.0,
+  "outsider12_fp_top": [
+   [
+    "0xcaf681a66d020601342297493863e78c959e5cb2:04e45aaf:228:None",
+    75
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    1
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xcaf681a66d020601342297493863e78c959e5cb2:04e45aaf:228:None",
+    431
+   ]
+  ],
+  "n_deployers": 114,
+  "first_utc": "2026-10-04 14:16:40",
+  "last_utc": "2026-10-11 06:45:45",
+  "pull_minus_frb_med": 123.5,
+  "frb_eoa_in_same_tok_family": "375/431",
+  "known_fp": [],
+  "frb_n": 431,
+  "desc": "[new] v3 493 WETH 493 fee/ts 100/1; 493 launches (73.7/d) by 114 wallets via 0x73991a25:13ead562 value 0.0; first real buy +28 (n 431, med 0.05 ETH, via 0xcaf681a6); pulled 426/493 at +144.5; early-outsider reaction 5/77 (baseline 82/406)",
+  "same_as": [
+   "tok:203caacbe184341e9a6f0bcbfbe42e227bc496aec986efaa154f410874e6c07c"
+  ]
+ },
+ {
+  "grouping": "lc",
+  "key": "86b37100cbe9841771c452a592985b4e921254b127a380246073b84ec953f7f8|882db707",
+  "count": 486,
+  "per_day": 70.3,
+  "frb_off_med": 124,
+  "first_buy_off_med": 139.5,
+  "pull_off_med": null,
+  "pulled": "0/486",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/68",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/84",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/68",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/84",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/33",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    29
+   ],
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf:39ecce49:1380:10000000",
+    6
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    34
+   ]
+  ],
+  "n_deployers": 285,
+  "first_utc": "2026-10-04 13:57:05",
+  "last_utc": "2026-10-11 11:45:25",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "79/107",
+  "known_fp": [],
+  "frb_n": 107,
+  "desc": "[new] v4 486 WETH 472/ETH 7 fee/ts 8388608/200; 486 launches (70.3/d) by 285 wallets via 0xeb7c0347:882db707 value 0.0; first real buy +124 (n 107, med 0.0495 ETH, via 0x65050a9b); pulled 0/486 at +None; early-outsider reaction 0/68 (baseline 0/84)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "c0b7d40078fadc4b213e3d6e393c1647ab5109391f6cc0cb1e326bbd694734d5",
+  "count": 458,
+  "per_day": 75.1,
+  "frb_off_med": 150.5,
+  "first_buy_off_med": 138.0,
+  "pull_off_med": 810,
+  "pulled": "31/458",
+  "outsider_reaction_rate": 0.03,
+  "outsider_reactions": "1/33",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/107",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/32",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/107",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/5",
+  "pull_after_outsider12_med": 696.5,
+  "outsider12_fp_top": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1092:0",
+    18
+   ],
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1092:10000000",
+    8
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1092:10000000",
+    67
+   ]
+  ],
+  "n_deployers": 238,
+  "first_utc": "2026-10-05 11:12:14",
+  "last_utc": "2026-10-11 13:38:16",
+  "pull_minus_frb_med": 702,
+  "frb_eoa_in_same_tok_family": "118/126",
+  "known_fp": [],
+  "frb_n": 126,
+  "desc": "[new] v4 458 USDG 249/ETH 209 fee/ts 10000/200; 458 launches (75.1/d) by 238 wallets via POSM:ac9650d8 value 0.0,0.000351895; first real buy +150.5 (n 126, med 0.1134 ETH, via 0x88767899); pulled 31/458 at +810; early-outsider reaction 0/32 (baseline 0/107)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "695e20af24bc5d601f8fc20181a73c7ff51f0a2d1acefd054bbeaa07cdc158c3",
+  "count": 440,
+  "per_day": 85.2,
+  "frb_off_med": 407.0,
+  "first_buy_off_med": 0,
+  "pull_off_med": null,
+  "pulled": "0/440",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/7",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/422",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/7",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/422",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/5",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf:39ecce49:1380:10000000",
+    3
+   ],
+   [
+    "0xc739229dc490ee67f3472604f4addd57178489c6:7866fa39:900:0",
+    2
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf:39ecce49:1380:10000000",
+    2
+   ]
+  ],
+  "n_deployers": 10,
+  "first_utc": "2026-10-06 09:48:20",
+  "last_utc": "2026-10-11 13:46:43",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "0/4",
+  "known_fp": [],
+  "frb_n": 4,
+  "desc": "[new] v4 440 WETH 436/USDG 4 fee/ts 0/200; 440 launches (85.2/d) by 10 wallets via 0xc739229d:7866fa39 value 0.0; first real buy +407.0 (n 4, med 0.0106 ETH, via 0x9689992f); pulled 0/440 at +None; early-outsider reaction 0/7 (baseline 0/422)",
+  "same_as": [
+   "lc:724433a2b51661504287dcbbc9c430286295ccd36b644db3eb7ddce89dd62550|7866fa39"
+  ]
+ },
+ {
+  "grouping": "tok",
+  "key": "564fe314d3b6bb72c547d9a8d78c97a090df059a5619e5487aa22d5ae34c62f5",
+  "count": 394,
+  "per_day": 56.8,
+  "frb_off_med": 4.0,
+  "first_buy_off_med": 4,
+  "pull_off_med": 1198,
+  "pulled": "19/394",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/62",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/109",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/59",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/110",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/59",
+  "pull_after_outsider12_med": 561,
+  "outsider12_fp_top": [
+   [
+    "0x8c7b36c84d7ddf623ddc126f2a7019b1581a8de5:3593564c:836:21000000",
+    3
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:964:10000000",
+    2
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x80e49ed118b932d9538ec817ef8b29fbac31e080:3593564c:836:21000000",
+    4
+   ]
+  ],
+  "n_deployers": 174,
+  "first_utc": "2026-10-04 14:14:41",
+  "last_utc": "2026-10-11 12:40:43",
+  "pull_minus_frb_med": 1198,
+  "frb_eoa_in_same_tok_family": "106/124",
+  "known_fp": [
+   "C-1 119"
+  ],
+  "frb_n": 124,
+  "desc": "[C-1 119/394] v4 394 USDG 198/WETH 160 fee/ts 100/1; 394 launches (56.8/d) by 174 wallets via POSM:ac9650d8 value 0.0,1.9558e-05; first real buy +4.0 (n 124, med 0.07 ETH, via 0x80e49ed1); pulled 19/394 at +1198; early-outsider reaction 0/59 (baseline 0/110)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "6a2a8d4f6cd059421eb702046bf4887b5e0ae864d3482b8e58cfd475d5a0ac38",
+  "count": 383,
+  "per_day": 56.8,
+  "frb_off_med": 493.0,
+  "first_buy_off_med": 153.5,
+  "pull_off_med": 723,
+  "pulled": "7/383",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/9",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/9",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/9",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/8",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/9",
+  "pull_after_outsider12_med": 605.5,
+  "outsider12_fp_top": [
+   [
+    "0x7ddbd3952d9fd58cc7d344ad0931d08db072114a:fea69838:2116:1000000",
+    2
+   ],
+   [
+    "0x6d71cce511db78eb0a8ed13a86651dc7c0cd4019:bf04568f:1316:0",
+    1
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x7ddbd3952d9fd58cc7d344ad0931d08db072114a:fea69838:2116:1000000",
+    2
+   ]
+  ],
+  "n_deployers": 51,
+  "first_utc": "2026-10-04 14:25:47",
+  "last_utc": "2026-10-11 08:13:48",
+  "pull_minus_frb_med": 615.5,
+  "frb_eoa_in_same_tok_family": "2/10",
+  "known_fp": [],
+  "frb_n": 10,
+  "desc": "[new] v4 383 USDG2 192/USDG 179 fee/ts 8388608/60; 383 launches (56.8/d) by 51 wallets via POSM:ac9650d8 value 0.0,2e-06; first real buy +493.0 (n 10, med 0.0715 ETH, via 0x7ddbd395); pulled 7/383 at +723; early-outsider reaction 0/9 (baseline 0/8)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "d2b0116c7a1e237492879853db28275e9b652db2bd14140ebb401429d6d4b044",
+  "count": 345,
+  "per_day": 59.5,
+  "frb_off_med": null,
+  "first_buy_off_med": 3,
+  "pull_off_med": null,
+  "pulled": "0/345",
+  "outsider_reaction_rate": null,
+  "outsider_reactions": "0/0",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/345",
+  "outsider12_reaction_rate": null,
+  "outsider12_reactions": "0/0",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/345",
+  "outsider12_nf_reaction_rate": null,
+  "outsider12_nf_reactions": "0/0",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [],
+  "frb_fp_top": [],
+  "n_deployers": 3,
+  "first_utc": "2026-10-04 20:12:56",
+  "last_utc": "2026-10-10 15:25:07",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "0/0",
+  "known_fp": [],
+  "frb_n": 0,
+  "desc": "[new] v4 345 ETH 345 fee/ts 10000/200; 345 launches (59.5/d) by 3 wallets via 0xcc23e1ab:7fde822e value 0.0; first real buy +None (n 0, med None ETH, via None); pulled 0/345 at +None; early-outsider reaction 0/0 (baseline 0/345)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "2dfcf583297e76dbceeea6e0929bb383ea433862b44e87426c590ddfb76a2e94",
+  "count": 340,
+  "per_day": 340.0,
+  "frb_off_med": 158,
+  "first_buy_off_med": 9,
+  "pull_off_med": 159,
+  "pulled": "317/340",
+  "outsider_reaction_rate": null,
+  "outsider_reactions": "0/0",
+  "reaction_baseline_rate": 0.937,
+  "reaction_baseline": "314/335",
+  "outsider12_reaction_rate": null,
+  "outsider12_reactions": "0/0",
+  "baseline12_rate": 0.913,
+  "baseline12": "306/335",
+  "outsider12_nf_reaction_rate": null,
+  "outsider12_nf_reactions": "0/0",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [],
+  "frb_fp_top": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:1572:None",
+    3
+   ]
+  ],
+  "n_deployers": 3,
+  "first_utc": "2026-10-05 05:41:12",
+  "last_utc": "2026-10-06 04:33:13",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "3/3",
+  "known_fp": [],
+  "frb_n": 3,
+  "desc": "[new] v4 340 ETH 337/USDG 3 fee/ts 10000/200; 340 launches (340.0/d) by 3 wallets via POSM:f7020405 value 0.0; first real buy +158 (n 3, med 0.0074 ETH, via 0x88767899); pulled 317/340 at +159; early-outsider reaction 0/0 (baseline 306/335)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "59bf3559ebc157c0b0922f912181f5d16587585c2df098939d82c4dd15a78ffe",
+  "count": 332,
+  "per_day": 63.3,
+  "frb_off_med": null,
+  "first_buy_off_med": 3,
+  "pull_off_med": null,
+  "pulled": "0/332",
+  "outsider_reaction_rate": null,
+  "outsider_reactions": "0/0",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/329",
+  "outsider12_reaction_rate": null,
+  "outsider12_reactions": "0/0",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/329",
+  "outsider12_nf_reaction_rate": null,
+  "outsider12_nf_reactions": "0/0",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [],
+  "frb_fp_top": [],
+  "n_deployers": 2,
+  "first_utc": "2026-10-05 22:58:06",
+  "last_utc": "2026-10-11 04:55:15",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "0/0",
+  "known_fp": [],
+  "frb_n": 0,
+  "desc": "[new] v4 332 ETH 332 fee/ts 10000/200; 332 launches (63.3/d) by 2 wallets via 0xcd5892b5:7fde822e value 0.0; first real buy +None (n 0, med None ETH, via None); pulled 0/332 at +None; early-outsider reaction 0/0 (baseline 0/329)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "e316fe94e950e745f81b3f44540dba416814d16c38d60332cfec9566b90177fe",
+  "count": 300,
+  "per_day": 69.9,
+  "frb_off_med": null,
+  "first_buy_off_med": 3,
+  "pull_off_med": null,
+  "pulled": "0/300",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/1",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/298",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/1",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/298",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/1",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0xf5307745c61de69bf033edfe6a8771256275a323:5f575529:2533:0",
+    1
+   ]
+  ],
+  "frb_fp_top": [],
+  "n_deployers": 23,
+  "first_utc": "2026-10-04 16:08:38",
+  "last_utc": "2026-10-08 23:08:23",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "0/0",
+  "known_fp": [],
+  "frb_n": 0,
+  "desc": "[new] v4 300 ETH 300 fee/ts 10000/200; 300 launches (69.9/d) by 23 wallets via 0x6a57c49c:a25a9a3d value 0.000100683,0.018454156; first real buy +None (n 0, med None ETH, via None); pulled 0/300 at +None; early-outsider reaction 0/1 (baseline 0/298)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "c3cd7006bbddf5bf6a3f79257e8b90f320d2124e614424ddffcb5250196ce34b|f0e9eabf",
+  "count": 285,
+  "per_day": 72.0,
+  "frb_off_med": 1,
+  "first_buy_off_med": 5,
+  "pull_off_med": 1423,
+  "pulled": "1/285",
+  "outsider_reaction_rate": 0.042,
+  "outsider_reactions": "1/24",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/143",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/24",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/143",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/16",
+  "pull_after_outsider12_med": 1420,
+  "outsider12_fp_top": [
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    3
+   ],
+   [
+    "0xc763b1795dabe2d2336eba214d16969ebc5db27f:f0e9eabf:1860:10",
+    3
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xc763b1795dabe2d2336eba214d16969ebc5db27f:f0e9eabf:1860:0",
+    5
+   ]
+  ],
+  "n_deployers": 92,
+  "first_utc": "2026-10-07 00:00:41",
+  "last_utc": "2026-10-10 23:01:43",
+  "pull_minus_frb_med": 1422,
+  "frb_eoa_in_same_tok_family": "15/25",
+  "known_fp": [],
+  "frb_n": 25,
+  "desc": "[new] v4 285 ETH 191/USDG 94 fee/ts 10000/200; 285 launches (72.0/d) by 92 wallets via 0xc763b179:f0e9eabf value 0.0,0.011914465; first real buy +1 (n 25, med 0.0394 ETH, via 0xc763b179); pulled 1/285 at +1423; early-outsider reaction 0/24 (baseline 0/143)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "99e0b5e818fba4d40e58e198121812587b89d5c80ba2cad1b0ce2412026e2ac2",
+  "count": 283,
+  "per_day": 42.5,
+  "frb_off_med": 1.0,
+  "first_buy_off_med": 0.0,
+  "pull_off_med": 2303,
+  "pulled": "1/283",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/28",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/92",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/28",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/91",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/27",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0x18cab14c69d0fe6df4a96256318b51c51c98da3f:79082bf9:1252:0",
+    5
+   ],
+   [
+    "0x06afba43fd06227fa663b0daecf536f6eaa6bf99:3593564c:1316:0",
+    3
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x8141fec0981f5307dce28c542dc474a1e4ce68e9:a626712c:2020:0",
+    7
+   ]
+  ],
+  "n_deployers": 183,
+  "first_utc": "2026-10-04 19:28:41",
+  "last_utc": "2026-10-11 11:08:42",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "31/38",
+  "known_fp": [],
+  "frb_n": 38,
+  "desc": "[new] v4 283 WETH 267/USDG 15 fee/ts 0/60; 283 launches (42.5/d) by 183 wallets via 0x18cab14c:603ed0bc value 0.0,0.0001; first real buy +1.0 (n 38, med 0.1214 ETH, via 0x8141fec0); pulled 1/283 at +2303; early-outsider reaction 0/28 (baseline 0/91)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "a98b3b9e80a70b40ebb72e275a3b16a99162955b647bcdb7196335675fddc854",
+  "count": 269,
+  "per_day": 41.4,
+  "frb_off_med": 52,
+  "first_buy_off_med": 52.0,
+  "pull_off_med": 1207.5,
+  "pulled": "8/269",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/24",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/122",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/24",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/122",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/6",
+  "pull_after_outsider12_med": 812.5,
+  "outsider12_fp_top": [
+   [
+    "0x75379d5d2ea4c98aeaa57f32e233707550ab03f0:3593564c:1540:0",
+    11
+   ],
+   [
+    "0x6e2a35a7ad683cf634d91492d73bb7ff774c6919:0c307f76:1156:10",
+    8
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x75379d5d2ea4c98aeaa57f32e233707550ab03f0:3593564c:1540:0",
+    122
+   ]
+  ],
+  "n_deployers": 156,
+  "first_utc": "2026-10-04 15:18:55",
+  "last_utc": "2026-10-11 03:06:35",
+  "pull_minus_frb_med": 994.0,
+  "frb_eoa_in_same_tok_family": "114/123",
+  "known_fp": [],
+  "frb_n": 123,
+  "desc": "[new] v4 269 ETH 146/USDG 122 fee/ts 3000/60; 269 launches (41.4/d) by 156 wallets via POSM:ac9650d8 value 0.0,0.0012177; first real buy +52 (n 123, med 0.05 ETH, via 0x75379d5d); pulled 8/269 at +1207.5; early-outsider reaction 0/24 (baseline 0/122)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "89885b75fd29af130416accacb0351226a4259b3090dc0a2bb56189489efe08a|d27d1e00",
+  "count": 248,
+  "per_day": 35.5,
+  "frb_off_med": 0.0,
+  "first_buy_off_med": 0,
+  "pull_off_med": 490,
+  "pulled": "65/248",
+  "outsider_reaction_rate": 0.006,
+  "outsider_reactions": "1/177",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/66",
+  "outsider12_reaction_rate": 0.006,
+  "outsider12_reactions": "1/176",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/67",
+  "outsider12_nf_reaction_rate": 0.008,
+  "outsider12_nf_reactions": "1/127",
+  "pull_after_outsider12_med": 1092,
+  "outsider12_fp_top": [
+   [
+    "0xcaf681a66d020601342297493863e78c959e5cb2:04e45aaf:228:1",
+    86
+   ],
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904:3593564c:708:0",
+    3
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xcaf681a66d020601342297493863e78c959e5cb2:04e45aaf:228:1",
+    38
+   ]
+  ],
+  "n_deployers": 151,
+  "first_utc": "2026-10-04 13:59:40",
+  "last_utc": "2026-10-11 13:42:27",
+  "pull_minus_frb_med": 1103,
+  "frb_eoa_in_same_tok_family": "34/176",
+  "known_fp": [],
+  "frb_n": 176,
+  "desc": "[new] v3 248 WETH 248 fee/ts 100/1; 248 launches (35.5/d) by 151 wallets via 0xe85cbb49:d27d1e00 value 0.0,10.2; first real buy +0.0 (n 176, med 0.1724 ETH, via 0xcaf681a6); pulled 65/248 at +490; early-outsider reaction 1/176 (baseline 0/67)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "97c7ba1b0d3f2de327f8c7b22abf2c270505eaa878bc2ae431fc8ffc532271d0",
+  "count": 240,
+  "per_day": 35.4,
+  "frb_off_med": 0.0,
+  "first_buy_off_med": 14,
+  "pull_off_med": 557,
+  "pulled": "67/240",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/108",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/67",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/107",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/68",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/73",
+  "pull_after_outsider12_med": 1313,
+  "outsider12_fp_top": [
+   [
+    "0xcaf681a66d020601342297493863e78c959e5cb2:04e45aaf:228:1",
+    56
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc:4d819a2a:580:50000000",
+    2
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xcaf681a66d020601342297493863e78c959e5cb2:04e45aaf:228:1",
+    33
+   ]
+  ],
+  "n_deployers": 127,
+  "first_utc": "2026-10-04 19:03:06",
+  "last_utc": "2026-10-11 13:42:27",
+  "pull_minus_frb_med": 1349,
+  "frb_eoa_in_same_tok_family": "13/106",
+  "known_fp": [],
+  "frb_n": 106,
+  "desc": "[new] v3 172/v4 68 WETH 174/USDG 52 fee/ts 100/1; 240 launches (35.4/d) by 127 wallets via POSM:d27d1e00 value 0.0,12.7; first real buy +0.0 (n 106, med 0.1634 ETH, via 0xcaf681a6); pulled 67/240 at +557; early-outsider reaction 0/107 (baseline 0/68)",
+  "same_as": []
+ },
+ {
+  "grouping": "tok",
+  "key": "e8df5d48f9f4fb5ef9654528dae01d95486507c6ff732c7ca3ef4f691f73fa4c",
+  "count": 218,
+  "per_day": 33.6,
+  "frb_off_med": 1387.0,
+  "first_buy_off_med": 3,
+  "pull_off_med": null,
+  "pulled": "0/218",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/2",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/195",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/2",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/195",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/1",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf:39ecce49:1060:10000000",
+    1
+   ],
+   [
+    "0xb6c64c031b49343959747320c21db947fd889523:99e1d016:1764:4031200",
+    1
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0xb300000b72deaeb607a12d5f54773d1c19c7028d:810c705b:6852:0",
+    1
+   ]
+  ],
+  "n_deployers": 2,
+  "first_utc": "2026-10-04 20:17:52",
+  "last_utc": "2026-10-11 08:00:20",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "0/2",
+  "known_fp": [],
+  "frb_n": 2,
+  "desc": "[new] v4 218 ETH 218 fee/ts 10000/200; 218 launches (33.6/d) by 2 wallets via 0x1b161a02:7fde822e value 0.0; first real buy +1387.0 (n 2, med 0.0197 ETH, via 0xb300000b); pulled 0/218 at +None; early-outsider reaction 0/2 (baseline 0/195)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "4a586d925c9d59ece13ce2239ebd7dea9ee725f9d33c6667e0fd16ae8d977d80|ac9650d8",
+  "count": 212,
+  "per_day": 30.5,
+  "frb_off_med": 0,
+  "first_buy_off_med": 0,
+  "pull_off_med": null,
+  "pulled": "0/212",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/129",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/82",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/129",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/82",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/100",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0x75379d5d2ea4c98aeaa57f32e233707550ab03f0:3593564c:1540:0",
+    27
+   ],
+   [
+    "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0:ac9650d8:2916:None",
+    22
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0:ac9650d8:3236:0",
+    29
+   ]
+  ],
+  "n_deployers": 171,
+  "first_utc": "2026-10-04 14:29:30",
+  "last_utc": "2026-10-11 13:06:25",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "17/129",
+  "known_fp": [],
+  "frb_n": 129,
+  "desc": "[new] v4 212 ETH 212 fee/ts 2500/25; 212 launches (30.5/d) by 171 wallets via 0x0000ffff:ac9650d8 value 0.0,0.08; first real buy +0 (n 129, med 0.08 ETH, via 0x0000ffff); pulled 0/212 at +None; early-outsider reaction 0/129 (baseline 0/82)",
+  "same_as": []
+ },
+ {
+  "grouping": "lc",
+  "key": "049a3b673e341750ff94b7ba71f9b9e4ab8f9ef2756cdc072769b1bc2083f706|603ed0bc",
+  "count": 204,
+  "per_day": 52.1,
+  "frb_off_med": 1,
+  "first_buy_off_med": 1,
+  "pull_off_med": null,
+  "pulled": "0/204",
+  "outsider_reaction_rate": 0.0,
+  "outsider_reactions": "0/3",
+  "reaction_baseline_rate": 0.0,
+  "reaction_baseline": "0/52",
+  "outsider12_reaction_rate": 0.0,
+  "outsider12_reactions": "0/3",
+  "baseline12_rate": 0.0,
+  "baseline12": "0/52",
+  "outsider12_nf_reaction_rate": 0.0,
+  "outsider12_nf_reactions": "0/2",
+  "pull_after_outsider12_med": null,
+  "outsider12_fp_top": [
+   [
+    "0xe492912f37c2a4eca45d42dc67548f4c6cd7ce2b:4d819a2a:580:100000000",
+    1
+   ],
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf:39ecce49:1380:10000000",
+    1
+   ]
+  ],
+  "frb_fp_top": [
+   [
+    "0x8141fec0981f5307dce28c542dc474a1e4ce68e9:a626712c:2020:0",
+    7
+   ]
+  ],
+  "n_deployers": 137,
+  "first_utc": "2026-10-06 18:00:03",
+  "last_utc": "2026-10-10 16:01:24",
+  "pull_minus_frb_med": null,
+  "frb_eoa_in_same_tok_family": "24/25",
+  "known_fp": [],
+  "frb_n": 25,
+  "desc": "[new] v4 204 WETH 202/USDG 2 fee/ts 0/60; 204 launches (52.1/d) by 137 wallets via 0x18cab14c:603ed0bc value 0.0; first real buy +1 (n 25, med 0.4835 ETH, via 0x8141fec0); pulled 0/204 at +None; early-outsider reaction 0/3 (baseline 0/52)",
+  "same_as": []
+ }
+]

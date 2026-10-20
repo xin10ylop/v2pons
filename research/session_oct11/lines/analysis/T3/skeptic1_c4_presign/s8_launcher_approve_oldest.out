@@ -1,0 +1,4 @@
+oldest: pools 89; launcher approve on the PositionManager found in 89 (none in 0)
+   approve - L (blocks): [(4, 48), (5, 32), (6, 5), (11, 3), (12, 1)]
+   T - approve (blocks): [(3, 2), (4, 57), (5, 9), (6, 16), (9, 1), (10, 3), (12, 1)]
+   T - approve p10/50/90 4/4/6; within 1..4: 59 of 89; approved spender: [('0x1cbaf24d', 89)]

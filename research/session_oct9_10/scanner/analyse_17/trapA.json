@@ -1,0 +1,98 @@
+{
+ "control:operator-A": {
+  "pools_with_relay_buy": 35,
+  "pools_without": 42,
+  "relay_buy_rel_from_launch": [
+   22,
+   46,
+   62
+  ],
+  "relay_buy_from_first_crowd": [
+   1,
+   1,
+   1
+  ],
+  "with_relay_pulled": 28,
+  "with_relay_pull_from_relay_buy": [
+   5,
+   15,
+   1904
+  ],
+  "with_relay_pull_from_first_crowd": [
+   6,
+   16,
+   1905
+  ],
+  "with_relay_pull_from_launch": [
+   47,
+   69,
+   1960
+  ],
+  "with_relay_pull_within_6_of_relay": 10,
+  "without_relay_pulled": 38,
+  "without_relay_pull_from_first_crowd": [
+   89,
+   998,
+   2489
+  ],
+  "without_relay_pull_from_launch": [
+   155,
+   1285,
+   2538
+  ],
+  "without_relay_pull_within_12_of_first_crowd": 0,
+  "with_relay_pull_within_12_of_first_crowd": 10,
+  "crowd_buys_before_pull_without_relay": [
+   13,
+   17,
+   18
+  ],
+  "front_wait_trig_rel": [
+   24,
+   54,
+   66
+  ]
+ },
+ "0x3194e32622c5d860a0572c74edda99dcfd8fc827|2fcb9108|644|1500|200|true": {
+  "pools_with_relay_buy": 6,
+  "pools_without": 0,
+  "relay_buy_rel_from_launch": [
+   23,
+   41,
+   46
+  ],
+  "relay_buy_from_first_crowd": [
+   1,
+   1,
+   2
+  ],
+  "with_relay_pulled": 6,
+  "with_relay_pull_from_relay_buy": [
+   5,
+   5,
+   6
+  ],
+  "with_relay_pull_from_first_crowd": [
+   6,
+   6,
+   8
+  ],
+  "with_relay_pull_from_launch": [
+   28,
+   47,
+   51
+  ],
+  "with_relay_pull_within_6_of_relay": 6,
+  "without_relay_pulled": 0,
+  "without_relay_pull_from_first_crowd": null,
+  "without_relay_pull_from_launch": null,
+  "without_relay_pull_within_12_of_first_crowd": 0,
+  "with_relay_pull_within_12_of_first_crowd": 6,
+  "crowd_buys_before_pull_without_relay": null,
+  "front_wait_trig_rel": [
+   22,
+   39,
+   45
+  ]
+ }
+}

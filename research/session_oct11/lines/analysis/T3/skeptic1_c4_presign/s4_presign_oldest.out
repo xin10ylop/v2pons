@@ -1,0 +1,54 @@
+===== slice oldest: 89 pools with a bot buy, L 80000046..80148595 (10-04 14:18:02 .. 10-04 18:30:33 UTC)
+(a) deadline - ts(T block), seconds: [(1199, 24), (1200, 65)]  (n 89)
+    by j = earlier blocks in T's own second: share with deadline - ts = 1199 (signed in the previous second if deadline = wall clock + 1,200)
+      j 0 : n   5  {1199: 5}  prev-second share 1.00
+      j 1 : n  12  {1199: 12}  prev-second share 1.00
+      j 2 : n   9  {1199: 6, 1200: 3}  prev-second share 0.67
+      j 3 : n   7  {1199: 1, 1200: 6}  prev-second share 0.14
+      j 4 : n   7  {1200: 7}  prev-second share 0.00
+      j 5 : n  16  {1200: 16}  prev-second share 0.00
+      j 6+: n  33  {1200: 33}  prev-second share 0.00
+(b) pools with every block T-12..T: 89; flags (kind, d blocks before T): [(('calldata holds token', 3), 1), (('calldata holds token', 4), 8), (('calldata holds token', 5), 23), (('calldata holds token', 6), 32), (('calldata holds token', 7), 12), (('calldata holds token', 8), 28), (('calldata holds token', 9), 30), (('calldata holds token', 10), 22), (('calldata holds token', 11), 21), (('calldata holds token', 12), 15), (('from a bot wallet', 0), 3), (('from a bot wallet', 1), 7), (('from a bot wallet', 2), 4), (('from a bot wallet', 3), 8), (('from a bot wallet', 4), 4), (('from a bot wallet', 5), 1), (('from a bot wallet', 6), 4), (('from a bot wallet', 7), 3), (('from a bot wallet', 9), 2), (('from a bot wallet', 10), 6), (('from a bot wallet', 11), 5), (('from a bot wallet', 12), 1), (('to bot router', 0), 3), (('to bot router', 1), 11), (('to bot router', 2), 4), (('to bot router', 3), 5), (('to bot router', 4), 3), (('to bot router', 5), 1), (('to bot router', 6), 7), (('to bot router', 7), 3), (('to bot router', 8), 6), (('to bot router', 9), 10), (('to bot router', 10), 7), (('to bot router', 11), 5), (('to bot router', 12), 3)]
+       (80000046, 10, 6, 'calldata holds token', '0xe71a69f4', '0x88767899', '0x3593564c')
+       (80000046, 10, 10, 'calldata holds token', '0x27745428', '0x58daec31', '0xac9650d8')
+       (80000069, 9, 6, 'calldata holds token', '0xe71a69f4', '0x88767899', '0x3593564c')
+       (80000069, 9, 9, 'to bot router:7422a284', '0x9857a364', '0x1cbaf24d', '0x7422a284')
+       (80000069, 9, 9, 'calldata holds token', '0x44d5a73c', '0x58daec31', '0xac9650d8')
+       (80000237, 8, 5, 'calldata holds token', '0xe71a69f4', '0x88767899', '0x3593564c')
+       (80000237, 8, 8, 'calldata holds token', '0x2bdf6a3e', '0x58daec31', '0xac9650d8')
+       (80000237, 8, 9, 'to bot router:c1120e3d', '0xc9ba5c31', '0x1cbaf24d', '0xc1120e3d')
+       (80000237, 8, 11, 'calldata holds token', '0x2bdf6a3e', '0x00000000', '0x87517c45')
+       (80000427, 10, 6, 'calldata holds token', '0xe71a69f4', '0x88767899', '0x3593564c')
+       (80000427, 10, 10, 'calldata holds token', '0xa88e69fc', '0x58daec31', '0xac9650d8')
+       (80000427, 10, 11, 'to bot router:c1120e3d', '0xb74aeda0', '0x1cbaf24d', '0xc1120e3d')
+       (80000427, 10, 11, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0xb74aeda0', '0x1cbaf24d', '0xc1120e3d')
+       (80000605, 8, 5, 'calldata holds token', '0xe71a69f4', '0x88767899', '0x3593564c')
+       (80000605, 8, 8, 'calldata holds token', '0x7b9e189a', '0x58daec31', '0xac9650d8')
+       (80000605, 8, 11, 'to bot router:c1120e3d', '0xa8419c4c', '0x1cbaf24d', '0xc1120e3d')
+       (80000605, 8, 11, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0xa8419c4c', '0x1cbaf24d', '0xc1120e3d')
+       (80000605, 8, 11, 'calldata holds token', '0x7b9e189a', '0x00000000', '0x87517c45')
+       (80000793, 10, 7, 'calldata holds token', '0xe71a69f4', '0x88767899', '0x3593564c')
+       (80000793, 10, 10, 'calldata holds token', '0x52a18197', '0x58daec31', '0xac9650d8')
+       (80000793, 10, 12, 'to bot router:c1120e3d', '0x44af0427', '0x1cbaf24d', '0xc1120e3d')
+       (80000830, 10, 2, 'to bot router:c1120e3d', '0x5b3f4a2e', '0x1cbaf24d', '0xc1120e3d')
+       (80000830, 10, 6, 'calldata holds token', '0xe71a69f4', '0x88767899', '0x3593564c')
+       (80000830, 10, 6, 'to bot router:c1120e3d', '0x801a8102', '0x1cbaf24d', '0xc1120e3d')
+       (80000830, 10, 9, 'to bot router:a0f7978d', '0x52a18197', '0x1cbaf24d', '0xa0f7978d')
+       (80000830, 10, 10, 'calldata holds token', '0x6d4a3e2e', '0x58daec31', '0xac9650d8')
+       (80000830, 10, 12, 'from a bot wallet:0x88767899:24856bc3', '0xc459f296', '0x88767899', '0x24856bc3')
+       (80000986, 8, 1, 'to bot router:c1120e3d', '0x4e7ebb4c', '0x1cbaf24d', '0xc1120e3d')
+       (80000986, 8, 1, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0x4e7ebb4c', '0x1cbaf24d', '0xc1120e3d')
+       (80000986, 8, 5, 'calldata holds token', '0xe71a69f4', '0x88767899', '0x3593564c')
+       (80000986, 8, 8, 'calldata holds token', '0xb48c2dec', '0x58daec31', '0xac9650d8')
+       (80000986, 8, 12, 'calldata holds token', '0xb48c2dec', '0x00000000', '0x87517c45')
+       (80001174, 10, 4, 'to bot router:c1120e3d', '0xa5a9ee43', '0x1cbaf24d', '0xc1120e3d')
+       (80001174, 10, 4, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0xa5a9ee43', '0x1cbaf24d', '0xc1120e3d')
+       (80001174, 10, 6, 'calldata holds token', '0xe71a69f4', '0x88767899', '0x3593564c')
+       (80001174, 10, 9, 'from a bot wallet:0x88767899:24856bc3', '0x9614f6c3', '0x88767899', '0x24856bc3')
+       (80001174, 10, 10, 'calldata holds token', '0x5e097749', '0x58daec31', '0xac9650d8')
+       (80001174, 10, 12, 'to bot router:c1120e3d', '0xdb94b9a1', '0x1cbaf24d', '0xc1120e3d')
+       (80001363, 9, 6, 'to bot router:c1120e3d', '0x1b54ce12', '0x1cbaf24d', '0xc1120e3d')
+       (80001363, 9, 6, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0x1b54ce12', '0x1cbaf24d', '0xc1120e3d')
+    failed txs (receipts T-6..T, ahead of the bot's buy) to the bot router / from a bot wallet / holding the token or pool id: 0 []
+    logs in T-6..T ahead of the bot's buy touching the pool id / token / T buyer: 128 [(80000046, 10, 6, '0x8366a39c', '0x40e9cecb', '0xe71a69f4', '0x88767899'), (80000046, 10, 6, '0x0155cbe3', '0xddf252ad', '0xe71a69f4', '0x88767899'), (80000069, 9, 6, '0x8366a39c', '0x40e9cecb', '0xe71a69f4', '0x88767899'), (80000069, 9, 6, '0xe4971230', '0xddf252ad', '0xe71a69f4', '0x88767899'), (80000237, 8, 5, '0x8366a39c', '0x40e9cecb', '0xe71a69f4', '0x88767899'), (80000237, 8, 5, '0x5b40ac80', '0xddf252ad', '0xe71a69f4', '0x88767899'), (80000427, 10, 6, '0x8366a39c', '0x40e9cecb', '0xe71a69f4', '0x88767899'), (80000427, 10, 6, '0xbf379042', '0xddf252ad', '0xe71a69f4', '0x88767899'), (80000605, 8, 5, '0x8366a39c', '0x40e9cecb', '0xe71a69f4', '0x88767899'), (80000605, 8, 5, '0x05554b38', '0xddf252ad', '0xe71a69f4', '0x88767899')]
+    status of the bot's T tx: {'0x1': 89}

@@ -1,0 +1,17 @@
+blocks with a bot buy: 28219 of 417399 (0.068 per block)
+gap between blocks with a bot buy: p10/50/90 2 11 28 top [(1, 1618), (2, 1584), (3, 1551), (4, 1472), (5, 1376), (6, 1364), (7, 1302), (8, 1255)]
+share of pools with an other-pool bot buy in block T-d: {1: '5.7%', 2: '4.5%', 3: '4.7%', 4: '6.3%'}  background per block L+15..T-5: 4.1%
+same block T, another pool, before T's buy?: n/a from logs
+arm L+15 lat 1: in time 14, early 312, late/no fire 165 -> in-time share of fires 2.9%
+arm L+15 lat 2: in time 16, early 303, late/no fire 172 -> in-time share of fires 3.3%
+arm L+20 lat 1: in time 20, early 264, late/no fire 207 -> in-time share of fires 4.1%
+arm L+20 lat 2: in time 18, early 253, late/no fire 220 -> in-time share of fires 3.7%
+arm L+25 lat 1: in time 17, early 230, late/no fire 244 -> in-time share of fires 3.5%
+arm L+25 lat 2: in time 22, early 215, late/no fire 254 -> in-time share of fires 4.5%
+arm L+30 lat 1: in time 17, early 193, late/no fire 281 -> in-time share of fires 3.5%
+arm L+30 lat 2: in time 22, early 177, late/no fire 292 -> in-time share of fires 4.5%
+arm L+35 lat 1: in time 19, early 126, late/no fire 346 -> in-time share of fires 3.9%
+arm L+35 lat 2: in time 21, early 114, late/no fire 356 -> in-time share of fires 4.3%
+arm L+40 lat 1: in time 23, early 74, late/no fire 394 -> in-time share of fires 4.7%
+arm L+40 lat 2: in time 20, early 64, late/no fire 407 -> in-time share of fires 4.1%
+other-pool bot buy in block T itself: 2.9% of pools

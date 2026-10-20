@@ -1,0 +1,27 @@
+ts             pool          T   buy@T+  ETH      class      buyer      sold@buy+ pull@buy+ pull@T+ router-buys-after first@buy+ routerETH(buy..+60)
+10-11 05:54:56 0xea20676748  271    91 0.01564 recurring  0x0bc84163     None      156     247     9     17 2.220
+10-11 05:57:48 0x8185f1eaac  155     3 0.00995 oneoff     0xc2101da8       64     7292    7295    96    201 0.000
+10-11 06:12:57 0x23a750296f  141     3 0.00995 oneoff     0xc2101da8       80    31548   31551   111     56 0.433
+10-11 07:15:42 0xe12fa945c9  155     3 0.00995 oneoff     0xc2101da8       56    49859   49862   106    102 0.000
+10-11 09:23:41 0x7f8d4b36b9  185    75 0.02970 recurring  0xf4a0048b       30     9863    9938   118     28 0.563
+10-11 13:23:34 0x1ca1fc8c38   35    67 0.05940 recurring  0xf4a0048b       30    17507   17574    81     13 1.271
+10-11 15:15:38 0xdf4e483fc0  105    81 0.00200 oneoff     0x2eb9009a     None     1351    1432    36      2 0.944
+10-11 17:52:57 0x2eb69a8072   35    20 0.00250 recurring  0x5b0320fb     None      174     194     3     29 0.155
+10-11 17:56:42 0xf7e808ab4d   66    26 0.00250 recurring  0x5b0320fb     None       75     101     1     62 0.000
+10-11 19:37:24 0xa52938fae5   38    26 0.00250 recurring  0x5b0320fb     None      150     176     2     52 0.130
+10-11 19:38:24 0x8d437a11ce   32    37 0.00197 oneoff     0x5373fb35     None      457     494     8     32 0.299
+10-11 20:58:49 0x5ec6831561   77     2 0.00200 ours       0xab5a34c3       61       97      99     3     30 0.200
+10-11 21:01:47 0xd6180333d0   41     2 0.00200 ours       0xab5a34c3       62      115     117     1     47 0.332
+10-11 21:02:38 0x6d80b8161c   33     2 0.00200 ours       0xab5a34c3       62    65223   65225    97     76 0.000
+10-12 01:15:58 0x0e4cc1d813   61     2 0.00200 ours       0xab5a34c3       62       84      86     1     37 0.174
+10-12 01:18:11 0xb47b706f2b  155     2 0.00200 ours       0xab5a34c3     None       36      38     3      7 1.008
+10-12 10:41:19 0x9ac8e3322b  209    91 0.00117 recurring  0x3155c72d     None       75     166     3     16 0.075
+10-12 12:33:45 0xd116728e9b  234    26 0.00167 recurring  0xbd9dc5f6      297     1984    2010    51     12 0.780
+10-12 12:38:17 0x06c477f75f   94    51 0.00129 recurring  0xbd9dc5f6      306      556     607    20     20 1.121
+10-12 12:47:55 0xc4ff6a7545  116    15 0.00152 recurring  0xbd9dc5f6     None      245     260    10      2 0.292
+10-12 12:52:57 0x5e3673f7c6  131    18 0.00144 recurring  0xbd9dc5f6      297      326     344    11     10 0.560
+10-12 12:53:49 0xdd2faa392a  134    39 0.00176 recurring  0xbd9dc5f6      278     None    None    96    129 0.000
+10-12 12:56:07 0x5a9137ee45  245    44 0.00152 recurring  0xbd9dc5f6      299     None    None   105      1 4.382
+
+outsiders (non-dust, buy in T..T+100): 18; still holding 62 blocks later (or at the pull): 15; of those pulled within 62 of the buy 0, within 120 2, within 200 5
+outsiders who sold within 62 blocks: 3; pulled within 62 0, within 120 0, within 200 0

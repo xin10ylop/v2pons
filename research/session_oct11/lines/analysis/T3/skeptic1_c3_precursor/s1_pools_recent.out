@@ -1,0 +1,14 @@
+slice 85734703..86205553; ETH-pair Initialize logs 2418; fee 10000 / spacing 200 / no hook / 3.0 price: 260
+  txs 260/260
+3.0 launches: 260 rejected: {}
+  pool events 15/260
+  pool events 90/260
+  pool events 165/260
+  pool events 240/260
+swap/ml txs: 2116
+  txs 400/1856
+  txs 800/1856
+  txs 1200/1856
+  txs 1600/1856
+  txs 1856/1856
+done

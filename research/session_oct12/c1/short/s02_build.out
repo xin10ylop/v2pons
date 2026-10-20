@@ -1,0 +1,36 @@
+pools 208; with a router buy 189; pulled 205; router EOAs 1631; swaps without tx in the window 0
+pull tx: [('0x58daec3116aae6d93017baaea7749052e8a04fa7', 205), (None, 3)] pull sender == launcher: 205 of 205
+buys after T before the pull, by class: n / ETH / pools
+  unknown     42044 7831.4415 ETH   56 pools
+  router       9226 1558.9179 ETH  184 pools
+  recurring     830    1.2839 ETH  186 pools
+  oneoff         76    0.6112 ETH   53 pools
+  ours            5    0.0100 ETH    5 pools
+
+recurring outside wallets (>= 5 pools):
+  0xe71a69f434a719cd5afa411568b69716aab3b84a pools  204 buys   204 size p50 0.000002 max 0.000002 offset-T p10/50/90 -205/-98/-52 via [('0x88767899:3593564c:1156', 204)]
+  0x97ac054b0c6b5dee863b95c250db0e5a8eda0880 pools  175 buys   175 size p50 0.000192 max 0.000210 offset-T p10/50/90 2/27/106 via [('0x897c3456:d03fae92:388', 175)]
+  0x8dc6800395f09dc179def0cf2e395a615b5d400e pools  133 buys   133 size p50 0.000410 max 0.000597 offset-T p10/50/90 -174/-57/0 via [('0x1b6dd57f:0a209187:196', 133)]
+  0x93b0790287720a922bb7e3cf0712062c1669847d pools  114 buys   114 size p50 0.000024 max 0.000030 offset-T p10/50/90 32/105/263 via [('0x88767899:3593564c:1124', 114)]
+  0x3155c72daee67d4aaaf4489fc1d6dc23f68fb119 pools   98 buys   143 size p50 0.000391 max 0.001173 offset-T p10/50/90 111/482/1055 via [('0x88767899:3593564c:1124', 143)]
+  0xd2b9418277e825c1efc8d8fddb03318eb9dc76ee pools   95 buys    95 size p50 0.000150 max 0.000150 offset-T p10/50/90 -231/-101/-36 via [('0x88767899:3593564c:1092', 95)]
+  0xdc3cf9a0429f6147174cdb83c7d71894e6246e8b pools   59 buys    59 size p50 0.000400 max 0.000752 offset-T p10/50/90 116/578/1623 via [('0x88767899:3593564c:1124', 59)]
+  0x5e6ec144b5f0391bdc1338d7788d766c5d76435b pools   58 buys    58 size p50 0.000319 max 0.000345 offset-T p10/50/90 -131/-22/35 via [('0x88767899:3593564c:1124', 58)]
+  0xbd9dc5f684ed24f4a06559ff9dc736748cbbbc41 pools   48 buys    48 size p50 0.000529 max 0.001759 offset-T p10/50/90 17/47/101 via [('0x88767899:3593564c:1124', 48)]
+  0x89b1da45dc8161f6b31ff2b132a90255cf661aea pools   38 buys    38 size p50 0.009100 max 0.029454 offset-T p10/50/90 163/202/261 via [('0x88767899:24856bc3:1060', 38)]
+  0xddc9f9e17a427caba517d2e2e40890d758c135fb pools   33 buys    33 size p50 0.000395 max 0.002001 offset-T p10/50/90 591/807/1424 via [('0x88767899:3593564c:1444', 33)]
+  0x8c009ea554d530dde6ef42d4e105ceb1006749a6 pools   29 buys    29 size p50 0.000400 max 0.000400 offset-T p10/50/90 -284/-113/-30 via [('0x7ebacc35:bfca01e8:388', 29)]
+  0x019e8eb1a39bbf9d4a5a441573b7946bc8d139af pools   26 buys    38 size p50 0.000099 max 0.000990 offset-T p10/50/90 26/298/2157 via [('0x65050a9b:4d819a2a:580', 38)]
+  0x89510a2d932810d67df3fb1338d5a98e4e1f2efd pools   25 buys    25 size p50 0.000197 max 0.000198 offset-T p10/50/90 14/23/76 via [('0x88767899:3593564c:1124', 25)]
+  0xc0e4b0439f595cadf65d85c211d7cde80b06ddae pools   24 buys    24 size p50 0.000495 max 0.000990 offset-T p10/50/90 -45/38/179 via [('0xf0b7eaaf:39ecce49:1060', 24)]
+  0x4d42774f858848698a82739bb61a179059f2f83d pools   21 buys    25 size p50 0.000495 max 0.000990 offset-T p10/50/90 -7/71/223 via [('0xf0b7eaaf:39ecce49:1060', 25)]
+  0xff5981a559f52525b30ba495a5bebeb76ed0a692 pools   19 buys    19 size p50 0.000118 max 0.000197 offset-T p10/50/90 42/51/254 via [('0x88767899:3593564c:1124', 19)]
+  0xf8878ef6b0de5ab6749de7b0977258df5c5459ef pools   18 buys    18 size p50 0.000223 max 0.000894 offset-T p10/50/90 -29/28/71 via [('0xbdbf5b82:0882f9f6:260', 18)]
+  0x353887ec7ee0d1b5fedc6c865eb282ec62dc82b0 pools   16 buys    16 size p50 0.000004 max 0.000004 offset-T p10/50/90 473/591/690 via [('0x88767899:3593564c:1092', 16)]
+  0xf2a8987eff9fc0414996c8e144f097f4885b0e81 pools   13 buys    15 size p50 0.000495 max 0.000792 offset-T p10/50/90 52/243/1509 via [('0xf0b7eaaf:39ecce49:1060', 15)]
+  0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215 pools   10 buys    11 size p50 0.029700 max 0.059400 offset-T p10/50/90 67/187/626 via [('0xf0b7eaaf:39ecce49:1060', 11)]
+  0x8a05e322829dd13db8ab7ed3f69b79a2b3e80bd9 pools    8 buys     8 size p50 0.001800 max 0.001801 offset-T p10/50/90 1552/2387/3990 via [('0x88767899:3593564c:1732', 8)]
+  0xed165972d2ea6dbf719a9fc6f234566090c79314 pools    7 buys     9 size p50 0.000400 max 0.000400 offset-T p10/50/90 395/899/1511 via [('0x88767899:3593564c:1284', 9)]
+  0x5b0320fb2b5cee42c96316f385b26aaa8a8025fd pools    6 buys     6 size p50 0.002500 max 0.005000 offset-T p10/50/90 -23/20/26 via [('0x88767899:3593564c:1124', 6)]
+  0x0bc841634507c6231e054a13652a6e90215d0cff pools    6 buys     6 size p50 0.014835 max 0.016444 offset-T p10/50/90 91/215/416 via [('0x88767899:3593564c:1092', 6)]
+one-off outside wallets: 48; their buys 80; >= 0.001 ETH 41

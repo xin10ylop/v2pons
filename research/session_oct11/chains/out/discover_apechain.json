@@ -1,0 +1,14 @@
+{
+ "chain": "apechain",
+ "url": "https://rpc.apechain.com/http",
+ "from": 51682510,
+ "to": 51780542,
+ "head_ts": 1791747551,
+ "hours": 24.0,
+ "block_time_est": 0.992,
+ "n_logs": 0,
+ "secs": 0.6,
+ "final_chunk": 50000,
+ "errlog": [],
+ "by_emitter": []
+}

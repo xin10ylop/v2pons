@@ -1,0 +1,13 @@
+ModifyLiquidity events 2 swaps 9
+ blk 19367696 (+0) liqDelta 9990000000000000000000 tx from 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 nonce 1 to 0x3194e32622c5d860a0572c74edda99dcfd8fc827 0x2fcb9108
+ blk 19368493 (+797) liqDelta -9990000000000000000000 tx from 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 nonce 3 to 0x58daec3116aae6d93017baaea7749052e8a04fa7 0xdd46508f
+ swap blocks 19368046 -> 19368451 distinct swap txs 9
+ swap blk 19368046 from 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 nonce 2 value 0.02 amount0(ETH, pool view) -0.02
+ swap blk 19368313 from 0xa812c608cacb2ae11f1311d39e7584e6e770ea13 nonce 0 value 0.02 amount0(ETH, pool view) -0.02
+ swap blk 19368340 from 0x62b076aa8b28e1897c5290f1428db5f69a1792f6 nonce 0 value 0.02 amount0(ETH, pool view) -0.02
+ swap blk 19368357 from 0x52045546c0cab25d710436a73aebfbf11afef0f1 nonce 0 value 0.02 amount0(ETH, pool view) -0.02
+ swap blk 19368381 from 0x1c28a18b27cbe0e7605e00233c3bf35c28781f31 nonce 0 value 0.02 amount0(ETH, pool view) -0.02
+ swap blk 19368392 from 0xad4200d0f23790bd65a783a2cf482ab5a4a8ea6b nonce 0 value 0.02 amount0(ETH, pool view) -0.02
+ swap blk 19368419 from 0x9ed722e254bc30a28cf11f8747de1dc6c4ab026d nonce 0 value 0.02 amount0(ETH, pool view) -0.02
+ swap blk 19368447 from 0x777d7bbff22854f905747aff81414c145b280183 nonce 71 value 0.05 amount0(ETH, pool view) -0.0495
+ swap blk 19368451 from 0xd09c2bf49a67ad11160c3a34e837e76bda0a7b56 nonce 0 value 0.02 amount0(ETH, pool view) -0.02

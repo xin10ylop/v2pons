@@ -1,0 +1,131 @@
+window: 10-10 12:00:00 to 10-12 14:30:12 UTC (2.10 days); launches of the line's shape 289, WETH token1 (skipped by the engine) 10, replayed 279 = 132.6 a day; base fee 0.0201 gwei; ETH $2,515 (USDG/WETH 0.01% pool); gas [260000, 175000, 500000] -> $0.0219 a round trip
+
+== 1. the rule, every configuration (net = after gas; -100% if the first Burn lands at or before our sell's block)
+q 0.0012 ($ 3.02) entry +1 sell lands +1: n 279  mean  +6.39%  median  -0.57%  p10  -0.75  p25  -0.67  p75  +3.55  p90 +16.48  worst   -0.75%  best +214.36%  win 107/279  top10% share   83%  mean w/o top10% +1.21%  pulled 0
+q 0.0012 ($ 3.02) entry +1 sell lands +2: n 279  mean  +7.35%  median  -0.57%  p10  -0.75  p25  -0.67  p75  +3.88  p90 +17.54  worst   -0.75%  best +214.36%  win 109/279  top10% share   82%  mean w/o top10% +1.44%  pulled 0
+q 0.0012 ($ 3.02) entry +2 sell lands +1: n 279  mean  +6.36%  median  -0.63%  p10  -0.75  p25  -0.69  p75  +3.51  p90 +16.48  worst   -0.75%  best +214.36%  win 107/279  top10% share   83%  mean w/o top10% +1.18%  pulled 0
+q 0.0012 ($ 3.02) entry +2 sell lands +2: n 279  mean  +7.32%  median  -0.62%  p10  -0.75  p25  -0.69  p75  +3.84  p90 +17.54  worst   -0.75%  best +214.36%  win 109/279  top10% share   83%  mean w/o top10% +1.40%  pulled 0
+q 0.0012 ($ 3.02) entry +3 sell lands +1: n 279  mean  +6.36%  median  -0.63%  p10  -0.75  p25  -0.69  p75  +3.51  p90 +16.48  worst   -0.75%  best +214.36%  win 107/279  top10% share   83%  mean w/o top10% +1.17%  pulled 0
+q 0.0012 ($ 3.02) entry +3 sell lands +2: n 279  mean  +7.31%  median  -0.63%  p10  -0.75  p25  -0.69  p75  +3.84  p90 +17.54  worst   -0.75%  best +214.36%  win 109/279  top10% share   83%  mean w/o top10% +1.40%  pulled 0
+q 0.0012  entry +2 at the END of its block, lands +2: n 279  mean  +7.31%  median  -0.63%  p10  -0.75  p25  -0.69  p75  +3.84  p90 +17.54  worst   -0.75%  best +214.36%  win 109/279  top10% share   83%  mean w/o top10% +1.40%
+q 0.0020 ($ 5.03) entry +1 sell lands +1: n 279  mean  +6.68%  median  -0.28%  p10  -0.46  p25  -0.38  p75  +3.84  p90 +16.77  worst   -0.46%  best +214.55%  win 110/279  top10% share   80%  mean w/o top10% +1.50%  pulled 0
+q 0.0020 ($ 5.03) entry +1 sell lands +2: n 279  mean  +7.64%  median  -0.28%  p10  -0.46  p25  -0.38  p75  +4.16  p90 +17.83  worst   -0.46%  best +214.55%  win 112/279  top10% share   80%  mean w/o top10% +1.73%  pulled 0
+q 0.0020 ($ 5.03) entry +2 sell lands +1: n 279  mean  +6.65%  median  -0.34%  p10  -0.46  p25  -0.40  p75  +3.80  p90 +16.77  worst   -0.46%  best +214.55%  win 110/279  top10% share   80%  mean w/o top10% +1.47%  pulled 0
+q 0.0020 ($ 5.03) entry +2 sell lands +2: n 279  mean  +7.60%  median  -0.33%  p10  -0.46  p25  -0.40  p75  +4.13  p90 +17.82  worst   -0.46%  best +214.55%  win 112/279  top10% share   80%  mean w/o top10% +1.69%  pulled 0
+q 0.0020 ($ 5.03) entry +3 sell lands +1: n 279  mean  +6.64%  median  -0.34%  p10  -0.46  p25  -0.40  p75  +3.80  p90 +16.77  worst   -0.46%  best +214.55%  win 110/279  top10% share   80%  mean w/o top10% +1.46%  pulled 0
+q 0.0020 ($ 5.03) entry +3 sell lands +2: n 279  mean  +7.60%  median  -0.34%  p10  -0.46  p25  -0.40  p75  +4.13  p90 +17.82  worst   -0.46%  best +214.55%  win 112/279  top10% share   80%  mean w/o top10% +1.69%  pulled 0
+q 0.0020  entry +2 at the END of its block, lands +2: n 279  mean  +7.60%  median  -0.34%  p10  -0.46  p25  -0.40  p75  +4.13  p90 +17.82  worst   -0.46%  best +214.55%  win 112/279  top10% share   80%  mean w/o top10% +1.69%
+q 0.0036 ($ 9.05) entry +1 sell lands +1: n 279  mean  +6.87%  median  -0.08%  p10  -0.26  p25  -0.18  p75  +4.03  p90 +16.95  worst   -0.26%  best +214.53%  win 112/279  top10% share   78%  mean w/o top10% +1.69%  pulled 0
+q 0.0036 ($ 9.05) entry +1 sell lands +2: n 279  mean  +7.83%  median  -0.08%  p10  -0.26  p25  -0.18  p75  +4.36  p90 +18.01  worst   -0.26%  best +214.53%  win 114/279  top10% share   78%  mean w/o top10% +1.92%  pulled 0
+q 0.0036 ($ 9.05) entry +2 sell lands +1: n 279  mean  +6.83%  median  -0.14%  p10  -0.26  p25  -0.20  p75  +3.99  p90 +16.95  worst   -0.26%  best +214.53%  win 111/279  top10% share   78%  mean w/o top10% +1.66%  pulled 0
+q 0.0036 ($ 9.05) entry +2 sell lands +2: n 279  mean  +7.79%  median  -0.14%  p10  -0.26  p25  -0.20  p75  +4.32  p90 +18.00  worst   -0.26%  best +214.53%  win 113/279  top10% share   78%  mean w/o top10% +1.88%  pulled 0
+q 0.0036 ($ 9.05) entry +3 sell lands +1: n 279  mean  +6.83%  median  -0.15%  p10  -0.26  p25  -0.20  p75  +3.99  p90 +16.95  worst   -0.26%  best +214.53%  win 111/279  top10% share   78%  mean w/o top10% +1.66%  pulled 0
+q 0.0036 ($ 9.05) entry +3 sell lands +2: n 279  mean  +7.79%  median  -0.15%  p10  -0.26  p25  -0.20  p75  +4.32  p90 +18.00  worst   -0.26%  best +214.53%  win 113/279  top10% share   78%  mean w/o top10% +1.88%  pulled 0
+q 0.0036  entry +2 at the END of its block, lands +2: n 279  mean  +7.79%  median  -0.15%  p10  -0.26  p25  -0.20  p75  +4.32  p90 +18.00  worst   -0.26%  best +214.53%  win 113/279  top10% share   78%  mean w/o top10% +1.88%
+q 0.0040 ($10.06) entry +1 sell lands +1: n 279  mean  +6.89%  median  -0.06%  p10  -0.24  p25  -0.16  p75  +4.06  p90 +16.97  worst   -0.24%  best +214.50%  win 114/279  top10% share   78%  mean w/o top10% +1.72%  pulled 0
+q 0.0040 ($10.06) entry +1 sell lands +2: n 279  mean  +7.85%  median  -0.06%  p10  -0.24  p25  -0.16  p75  +4.38  p90 +18.03  worst   -0.24%  best +214.50%  win 116/279  top10% share   78%  mean w/o top10% +1.94%  pulled 0
+q 0.0040 ($10.06) entry +2 sell lands +1: n 279  mean  +6.86%  median  -0.12%  p10  -0.24  p25  -0.18  p75  +4.02  p90 +16.97  worst   -0.24%  best +214.50%  win 111/279  top10% share   78%  mean w/o top10% +1.68%  pulled 0
+q 0.0040 ($10.06) entry +2 sell lands +2: n 279  mean  +7.81%  median  -0.12%  p10  -0.24  p25  -0.18  p75  +4.34  p90 +18.03  worst   -0.24%  best +214.50%  win 113/279  top10% share   78%  mean w/o top10% +1.91%  pulled 0
+q 0.0040 ($10.06) entry +3 sell lands +1: n 279  mean  +6.86%  median  -0.12%  p10  -0.24  p25  -0.18  p75  +4.02  p90 +16.97  worst   -0.24%  best +214.50%  win 111/279  top10% share   78%  mean w/o top10% +1.68%  pulled 0
+q 0.0040 ($10.06) entry +3 sell lands +2: n 279  mean  +7.81%  median  -0.12%  p10  -0.24  p25  -0.18  p75  +4.34  p90 +18.03  worst   -0.24%  best +214.50%  win 113/279  top10% share   78%  mean w/o top10% +1.91%  pulled 0
+q 0.0040  entry +2 at the END of its block, lands +2: n 279  mean  +7.81%  median  -0.12%  p10  -0.24  p25  -0.18  p75  +4.34  p90 +18.03  worst   -0.24%  best +214.50%  win 113/279  top10% share   78%  mean w/o top10% +1.91%
+q 0.0058 ($14.58) entry +1 sell lands +1: n 279  mean  +6.95%  median  +0.01%  p10  -0.17  p25  -0.09  p75  +4.12  p90 +17.03  worst   -0.17%  best +214.34%  win 147/279  top10% share   77%  mean w/o top10% +1.78%  pulled 0
+q 0.0058 ($14.58) entry +1 sell lands +2: n 279  mean  +7.91%  median  +0.01%  p10  -0.17  p25  -0.09  p75  +4.44  p90 +18.09  worst   -0.17%  best +214.34%  win 149/279  top10% share   77%  mean w/o top10% +2.01%  pulled 0
+q 0.0058 ($14.58) entry +2 sell lands +1: n 279  mean  +6.92%  median  -0.05%  p10  -0.17  p25  -0.11  p75  +4.08  p90 +17.03  worst   -0.17%  best +214.34%  win 119/279  top10% share   77%  mean w/o top10% +1.75%  pulled 0
+q 0.0058 ($14.58) entry +2 sell lands +2: n 279  mean  +7.87%  median  -0.05%  p10  -0.17  p25  -0.11  p75  +4.40  p90 +18.08  worst   -0.17%  best +214.34%  win 121/279  top10% share   77%  mean w/o top10% +1.97%  pulled 0
+q 0.0058 ($14.58) entry +3 sell lands +1: n 279  mean  +6.92%  median  -0.06%  p10  -0.17  p25  -0.11  p75  +4.08  p90 +17.03  worst   -0.17%  best +214.34%  win 118/279  top10% share   77%  mean w/o top10% +1.75%  pulled 0
+q 0.0058 ($14.58) entry +3 sell lands +2: n 279  mean  +7.87%  median  -0.06%  p10  -0.17  p25  -0.11  p75  +4.40  p90 +18.08  worst   -0.17%  best +214.34%  win 120/279  top10% share   77%  mean w/o top10% +1.97%  pulled 0
+q 0.0058  entry +2 at the END of its block, lands +2: n 279  mean  +7.87%  median  -0.06%  p10  -0.17  p25  -0.11  p75  +4.40  p90 +18.08  worst   -0.17%  best +214.34%  win 120/279  top10% share   77%  mean w/o top10% +1.97%
+q 0.0060 ($15.09) entry +1 sell lands +1: n 279  mean  +6.96%  median  +0.01%  p10  -0.17  p25  -0.09  p75  +4.13  p90 +17.03  worst   -0.17%  best +214.32%  win 148/279  top10% share   77%  mean w/o top10% +1.79%  pulled 0
+q 0.0060 ($15.09) entry +1 sell lands +2: n 279  mean  +7.91%  median  +0.01%  p10  -0.17  p25  -0.09  p75  +4.45  p90 +18.09  worst   -0.17%  best +214.32%  win 150/279  top10% share   77%  mean w/o top10% +2.01%  pulled 0
+q 0.0060 ($15.09) entry +2 sell lands +1: n 279  mean  +6.92%  median  -0.05%  p10  -0.17  p25  -0.11  p75  +4.09  p90 +17.03  worst   -0.17%  best +214.32%  win 119/279  top10% share   77%  mean w/o top10% +1.75%  pulled 0
+q 0.0060 ($15.09) entry +2 sell lands +2: n 279  mean  +7.88%  median  -0.04%  p10  -0.17  p25  -0.11  p75  +4.41  p90 +18.09  worst   -0.17%  best +214.32%  win 121/279  top10% share   77%  mean w/o top10% +1.98%  pulled 0
+q 0.0060 ($15.09) entry +3 sell lands +1: n 279  mean  +6.92%  median  -0.05%  p10  -0.17  p25  -0.11  p75  +4.09  p90 +17.03  worst   -0.17%  best +214.32%  win 118/279  top10% share   77%  mean w/o top10% +1.75%  pulled 0
+q 0.0060 ($15.09) entry +3 sell lands +2: n 279  mean  +7.88%  median  -0.05%  p10  -0.17  p25  -0.11  p75  +4.41  p90 +18.09  worst   -0.17%  best +214.32%  win 120/279  top10% share   77%  mean w/o top10% +1.98%  pulled 0
+q 0.0060  entry +2 at the END of its block, lands +2: n 279  mean  +7.88%  median  -0.05%  p10  -0.17  p25  -0.11  p75  +4.41  p90 +18.09  worst   -0.17%  best +214.32%  win 120/279  top10% share   77%  mean w/o top10% +1.98%
+
+== 2. gross (before gas) vs net vs the pool's own price move (no impact, no fees), entry +2, sell lands +2
+q 0.0012: gross mean +8.04% median +0.102% | net mean +7.32% median -0.625% | price move mean +8.07% median +0.122%
+q 0.0036: gross mean +8.03% median +0.102% | net mean +7.79% median -0.140% | price move mean +8.07% median +0.122%
+q 0.0058: gross mean +8.03% median +0.102% | net mean +7.87% median -0.048% | price move mean +8.07% median +0.122%
+
+== 3. per day and per 6-h slice (0.0058|2|2: 0.0058 ETH, entry +2, sell lands +2; and 0.0012 / 0.0036)
+  day 10-10          (12.0 h,   136/day) n  68  mean  +2.93%  median  -0.09%  p10  -0.17  p25  -0.16  p75  +0.36  p90  +8.42  worst   -0.17%  best  +35.52%  win 18/68  top10% share   93%  mean w/o top10% +0.22%  pulled 0 | mean at 0.0012 +2.35%, 0.0036 +2.84%
+  day 10-11          (24.0 h,   143/day) n 143  mean  +5.09%  median  -0.02%  p10  -0.16  p25  -0.10  p75  +6.00  p90 +17.88  worst   -0.17%  best  +51.62%  win 69/143  top10% share   54%  mean w/o top10% +2.60%  pulled 0 | mean at 0.0012 +4.52%, 0.0036 +5.00%
+  day 10-12          (14.5 h,   113/day) n  68  mean +18.68%  median  +0.01%  p10  -0.16  p25  -0.09  p75  +6.97  p90 +48.85  worst   -0.17%  best +214.34%  win 34/68  top10% share   87%  mean w/o top10% +2.78%  pulled 0 | mean at 0.0012 +18.15%, 0.0036 +18.61%
+  6-h 10-10 12-18    ( 6.0 h,   260/day) n  65  mean  +2.89%  median  -0.10%  p10  -0.17  p25  -0.16  p75  -0.03  p90  +5.34  worst   -0.17%  best  +35.52%  win 16/65  top10% share   93%  mean w/o top10% +0.22%  pulled 0 | mean at 0.0012 +2.32%, 0.0036 +2.80%
+  6-h 10-10 18-24    ( 6.0 h,    12/day) n   3  mean  +3.71%  median  +0.34%  p10  -0.06  p25  +0.09  p75  +5.64  p90  +8.83  worst   -0.16%  best  +10.95%  win 2/3  top10% share   98%  mean w/o top10% +0.09%  pulled 0 | mean at 0.0012 +3.14%, 0.0036 +3.62%
+  6-h 10-11 00-06    ( 6.0 h,   200/day) n  50  mean  +6.79%  median  +3.14%  p10  -0.14  p25  -0.05  p75  +9.32  p90 +18.06  worst   -0.17%  best  +50.66%  win 31/50  top10% share   44%  mean w/o top10% +4.22%  pulled 0 | mean at 0.0012 +6.23%, 0.0036 +6.71%
+  6-h 10-11 06-12    ( 6.0 h,   136/day) n  34  mean  +7.05%  median  +2.06%  p10  -0.11  p25  -0.06  p75 +10.23  p90 +22.79  worst   -0.17%  best  +34.42%  win 23/34  top10% share   38%  mean w/o top10% +4.81%  pulled 0 | mean at 0.0012 +6.49%, 0.0036 +6.97%
+  6-h 10-11 12-18    ( 6.0 h,    64/day) n  16  mean  +3.77%  median  -0.07%  p10  -0.15  p25  -0.11  p75  +0.26  p90  +4.45  worst   -0.16%  best  +51.62%  win 5/16  top10% share   95%  mean w/o top10% +0.20%  pulled 0 | mean at 0.0012 +3.21%, 0.0036 +3.69%
+  6-h 10-11 18-24    ( 6.0 h,   172/day) n  43  mean  +2.04%  median  -0.09%  p10  -0.17  p25  -0.11  p75  -0.02  p90  +9.31  worst   -0.17%  best  +20.03%  win 10/43  top10% share   70%  mean w/o top10% +0.68%  pulled 0 | mean at 0.0012 +1.47%, 0.0036 +1.95%
+  6-h 10-12 00-06    ( 6.0 h,    84/day) n  21  mean +43.75%  median  +2.88%  p10  -0.12  p25  +0.35  p75  +9.37  p90 +188.22  worst   -0.17%  best +214.34%  win 17/21  top10% share   45%  mean w/o top10% +26.72%  pulled 0 | mean at 0.0012 +43.28%, 0.0036 +43.71%
+  6-h 10-12 06-12    ( 6.0 h,   124/day) n  31  mean +10.60%  median  -0.08%  p10  -0.15  p25  -0.09  p75  +4.90  p90 +20.08  worst   -0.17%  best +139.05%  win 10/31  top10% share   79%  mean w/o top10% +2.46%  pulled 0 | mean at 0.0012 +10.04%, 0.0036 +10.52%
+  6-h 10-12 12-18    ( 2.5 h,   154/day) n  16  mean  +1.46%  median  -0.04%  p10  -0.17  p25  -0.11  p75  +1.96  p90  +2.87  worst   -0.17%  best  +12.76%  win 7/16  top10% share   69%  mean w/o top10% +0.52%  pulled 0 | mean at 0.0012 +0.89%, 0.0036 +1.37%
+
+== 4. pulls (the pool's first Burn of liquidity > 0)
+pulled by the head: 275/279; offsets: <= +80 0, <= +100 4, <= +150 25, <= +300 83; earliest [86, 94, 95, 98, 101, 103, 105, 119, 122, 125, 126, 128]; median 682
+who: [((True, '0x73991a25', 'ac9650d8'), 275)]; fraction of the launch L removed: [(1.0, 275)]
+  pulled at or before our sell, q 0.0012 entry +1: lands +1 0, lands +2 0
+  pulled at or before our sell, q 0.0012 entry +2: lands +1 0, lands +2 0
+  pulled at or before our sell, q 0.0012 entry +3: lands +1 0, lands +2 0
+  pulled at or before our sell, q 0.0058 entry +1: lands +1 0, lands +2 0
+  pulled at or before our sell, q 0.0058 entry +2: lands +1 0, lands +2 0
+  pulled at or before our sell, q 0.0058 entry +3: lands +1 0, lands +2 0
+
+== 5. the crowd's first real buy (crowd call shape, >= 0.005 WETH in) and the engine's first trigger
+crowd's first real buy found (to +1500) 259/279; offset median 92 p10 47 p90 237 min 3; by +60 46, by +78 101, by +100 144; size median 0.0495 ETH
+   contracts: [('0xa28f468c', 67), ('0x80114879', 55), ('0xfc7241d4', 39), ('0xd26c8cfc', 26), ('0x7feb3ecb', 21), ('0xaf9d6fa0', 17), ('0x84021dc2', 13), ('0x71a7629f', 10), ('0x85ce7832', 9), ('0x80e49ed1', 2)]
+engine's first trigger (any engine-visible buy >= 0.005) offset median 88; not the crowd's in 12
+first buy >= 0.005 of anyone: who [('0xa28f468c:3593564c', 49), ('0x80114879:a0193551', 29), ('0xfc7241d4:a0193551', 25), ('0x80114879:3593564c', 25), ('0xd26c8cfc:3593564c', 23), ('0x7feb3ecb:3593564c', 21), (None, 16), ('0xaf9d6fa0:a0193551', 16)]
+exit (0.0058|2|2): by the crowd's clock 50, at the cap 229; trigger offset median 88
+
+== 6. buyers before the crowd's first real buy (to +200)
+  to 0x65050a9b sel 4d819a2a: 524 buys in 204 pools, 0.3879 ETH, median size 0.00074, offsets median 31.0 min 3
+  to 0xcaf681a6 sel 04e45aaf: 221 buys in 221 pools, 0.0626 ETH, median size 0.00028, offsets median 8 min 5
+  to 0x570759db sel 414bf389: 148 buys in 148 pools, 0.2032 ETH, median size 0.00137, offsets median 1.0 min 1
+  to 0xf0b7eaaf sel 39ecce49: 65 buys in 53 pools, 0.5411 ETH, median size 0.00833, offsets median 44 min 3
+  to 0x6e2a35a7 sel 0c307f76: 22 buys in 22 pools, 0.0060 ETH, median size 0.00027, offsets median 57.0 min 5
+  to 0xd6d35b56 sel e6cb474f: 6 buys in 2 pools, 0.8565 ETH, median size 0.14275, offsets median 183.0 min 58
+  to 0x88767899 sel 3593564c: 4 buys in 4 pools, 0.0001 ETH, median size 0.00002, offsets median 127.5 min 85
+  to 0x7feb3ecb sel 3593564c: 4 buys in 4 pools, 0.0065 ETH, median size 0.00162, offsets median 41.5 min 3
+  to 0x71a7629f sel 3593564c: 2 buys in 2 pools, 0.0025 ETH, median size 0.00124, offsets median 40.5 min 38
+  to 0x4f881c6a sel c91f5491: 1 buys in 1 pools, 0.0002 ETH, median size 0.00021, offsets median 73 min 73
+  buys of >= 0.003 ETH before the crowd: 18 in 14 pools; in blocks <= +10: 1
+     10-10 15:57:11 0xb89a97ea off 77 from 0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215 to 0xf0b7eaaf 39ecce49 0.0594 ETH  engine-visible
+     10-10 16:29:15 0x3ef50459 off 52 from 0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215 to 0xf0b7eaaf 39ecce49 0.0297 ETH  engine-visible
+     10-10 16:37:02 0x278c2f0b off 76 from 0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215 to 0xf0b7eaaf 39ecce49 0.0297 ETH  engine-visible
+     10-10 16:45:35 0x12932497 off 62 from 0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215 to 0xf0b7eaaf 39ecce49 0.0297 ETH  engine-visible
+     10-11 04:53:33 0xbb55867c off 176 from 0x550407935cb4392a922ff41bf5291f45597d0522 to 0xd6d35b56 e6cb474f 0.1650 ETH  
+     10-11 04:53:33 0xbb55867c off 190 from 0x0ade55f425002ad3f9bb31b584b0102a8f27c0ed to 0xd6d35b56 e6cb474f 0.1420 ETH  
+     10-11 04:53:33 0xbb55867c off 190 from 0x54df511665752ca6393f2fc780d4ead1beea078f to 0xd6d35b56 e6cb474f 0.0430 ETH  
+     10-11 04:53:33 0xbb55867c off 191 from 0x99a022dc3b42a7984a4adb2e39aa5819936e9479 to 0xd6d35b56 e6cb474f 0.1700 ETH  
+     10-11 05:47:10 0xdb74b9bf off 58 from 0x550407935cb4392a922ff41bf5291f45597d0522 to 0xd6d35b56 e6cb474f 0.2000 ETH  
+     10-11 05:47:10 0xdb74b9bf off 135 from 0xe2f9e0cfe8a4d8987d5004c08548b0c6affd75a4 to 0xd6d35b56 e6cb474f 0.1365 ETH  
+     10-11 05:52:05 0x1a74abf4 off 3 from 0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215 to 0xf0b7eaaf 39ecce49 0.0594 ETH  engine-visible
+     10-11 06:40:46 0xea014175 off 61 from 0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215 to 0xf0b7eaaf 39ecce49 0.0297 ETH  engine-visible
+     10-11 07:49:17 0x991fbe89 off 78 from 0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215 to 0xf0b7eaaf 39ecce49 0.0297 ETH  engine-visible
+     10-11 13:14:01 0x545219a8 off 84 from 0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215 to 0xf0b7eaaf 39ecce49 0.0297 ETH  engine-visible
+  pools by number of buys in blocks +0..+3 (ahead of or beside ours): [(0, 128), (1, 147), (2, 4)]
+
+== 7. REPORT_W's gate (>= 100 launches at >= +4% mean, no pull before +80, >= 120 launches a day)
+  q 0.0012 entry +1: n 279 (>= 100: True), mean +7.35% (>= 4%: True), pulls before +80 0 (0: True), 133 a day (>= 120: True)
+  q 0.0012 entry +2: n 279 (>= 100: True), mean +7.32% (>= 4%: True), pulls before +80 0 (0: True), 133 a day (>= 120: True)
+  q 0.0012 entry +3: n 279 (>= 100: True), mean +7.31% (>= 4%: True), pulls before +80 0 (0: True), 133 a day (>= 120: True)
+  q 0.0036 entry +1: n 279 (>= 100: True), mean +7.83% (>= 4%: True), pulls before +80 0 (0: True), 133 a day (>= 120: True)
+  q 0.0036 entry +2: n 279 (>= 100: True), mean +7.79% (>= 4%: True), pulls before +80 0 (0: True), 133 a day (>= 120: True)
+  q 0.0036 entry +3: n 279 (>= 100: True), mean +7.79% (>= 4%: True), pulls before +80 0 (0: True), 133 a day (>= 120: True)
+  q 0.0058 entry +1: n 279 (>= 100: True), mean +7.91% (>= 4%: True), pulls before +80 0 (0: True), 133 a day (>= 120: True)
+  q 0.0058 entry +2: n 279 (>= 100: True), mean +7.87% (>= 4%: True), pulls before +80 0 (0: True), 133 a day (>= 120: True)
+  q 0.0058 entry +3: n 279 (>= 100: True), mean +7.87% (>= 4%: True), pulls before +80 0 (0: True), 133 a day (>= 120: True)
+
+== 8. $ a day after gas, all launches traded (no slot conflicts), entry +2, sell lands +2
+  $5 (0.002 ETH = $5.03): $+0.382 a trade -> $+50.70 a day at 133 launches a day (entry +1 $+50.94, +3 $+50.69); without the top 10% of trades $+11.28 a day; median trade $-0.0168
+  $10 (0.004 ETH = $10.06): $+0.786 a trade -> $+104.21 a day at 133 launches a day (entry +1 $+104.68, +3 $+104.19); without the top 10% of trades $+25.44 a day; median trade $-0.0117
+  $15 (0.006 ETH = $15.09): $+1.189 a trade -> $+157.62 a day at 133 launches a day (entry +1 $+158.32, +3 $+157.59); without the top 10% of trades $+39.58 a day; median trade $-0.0065
+
+== 9. the engine's dry pricing (mimic of send_sell's dry_ret: entry +2, price copy of the crowd's amount words and ETH-value buys, sells unseen, pulls not counted) vs the exact replay
+  q 0.0058 all: n 279; engine dry mean +6.97% median -0.004% | exact (lands +2) mean +7.87% median -0.048% | lands +1 mean +6.92% | exact with pulls ignored +7.87%; dry > exact by more than 1 point in 0, less in 11
+  q 0.0058 box's 24 h (Oct 11 14:23 - Oct 12 14:23 UTC): n 121; engine dry mean +9.88% median -0.029% | exact (lands +2) mean +11.67% median -0.061% | lands +1 mean +9.82% | exact with pulls ignored +11.67%; dry > exact by more than 1 point in 0, less in 5
+  q 0.0012 all: n 279; engine dry mean +6.66% median -0.335% | exact (lands +2) mean +7.32% median -0.625% | lands +1 mean +6.36% | exact with pulls ignored +7.32%; dry > exact by more than 1 point in 0, less in 11
+  q 0.0012 box's 24 h (Oct 11 14:23 - Oct 12 14:23 UTC): n 121; engine dry mean +9.57% median -0.360% | exact (lands +2) mean +11.12% median -0.637% | lands +1 mean +9.27% | exact with pulls ignored +11.12%; dry > exact by more than 1 point in 0, less in 5

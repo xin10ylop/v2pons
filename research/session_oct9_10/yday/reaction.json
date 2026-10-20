@@ -1,0 +1,7242 @@
+{
+ "about": "How the operator reacts when someone else is in its pool (the paper prices assume it does not react to us).\n\nReads react_data.json (fetch.py: every Swap / ModifyLiquidity on the operator's 100 Oct 8 launches + the Oct 9 00:11 pool we\ntraded, the transaction of every swap up to the first pull + 50 blocks, our 20 receipts) and react_fp.json (fetch_fp.py: the\nfingerprint of every buy transaction). Writes reaction.json and prints the summary.\n\nThe crowd is identified by its transaction fingerprint, not by a wallet list: every one of the operator's crowd buys (4,680 buys\nfrom 860 wallets: the 33 recurring wallets of the original launcher, the per-launch fresh wallets of the copies, the 13:15 batch's\nreused pairs) is a Universal Router execute() of 1,124 bytes with deadline = 2^256-1, an EIP-1559 transaction with priority fee\nexactly 0.02 gwei and a gas limit of 220,000 (880,000 / 260,000 on two sub-groups). Nobody else on these pools sends that, except\nour own release-0.2 router trade (it copied the crowd's calldata on purpose), which is excluded by our wallet.\n",
+ "conventions": {
+  "real_size_eth": 0.0002,
+  "stake_eth": 0.0012,
+  "take_profit": 0.01,
+  "hold_lead": [
+   4,
+   2
+  ],
+  "engine_tp_gas_units": 250000,
+  "crowd_fingerprint": "UR execute 1124 bytes, deadline 2^256-1, type 2, priority fee 0.02 gwei, gas limit 220000/880000/260000"
+ },
+ "replay_check": {
+  "max_rel_err": 2.0641043630583373e-05,
+  "median_rel_err": 2.2119381815293146e-24,
+  "n": 3849
+ },
+ "summary": {
+  "follow_without_us": {
+   "all_orig_without_us": {
+    "land_T+2": "36/40",
+    "land_T+1": "37/40",
+    "by_scheme_land_T+2": {
+     "no_crowd_buy": "0/0",
+     "orig_classic": "32/32",
+     "orig_crowdB": "1/3",
+     "orig_fresh": "3/5"
+    },
+    "pull_after_first_crowd_buy_by_scheme": {
+     "no_crowd_buy": [],
+     "orig_classic": [
+      65,
+      68,
+      82,
+      86,
+      112,
+      136,
+      174,
+      234,
+      241,
+      278,
+      285,
+      864,
+      903,
+      946,
+      2062,
+      2317,
+      2349,
+      2465,
+      2478,
+      2485,
+      2489,
+      2489,
+      2489,
+      2494,
+      2496,
+      2497,
+      2498,
+      2508,
+      2520,
+      2523,
+      2527,
+      2624
+     ],
+     "orig_crowdB": [
+      768,
+      5373
+     ],
+     "orig_fresh": [
+      47,
+      277,
+      6207,
+      7370,
+      9786
+     ]
+    },
+    "crowd_buy_in_TP_window_L+1..L+2": {
+     "land_T+1": "35/40",
+     "land_T+2": "27/40"
+    },
+    "crowd_buy_in_TP_window_by_scheme_land_T+2": {
+     "no_crowd_buy": "0/0",
+     "orig_classic": "24/32",
+     "orig_crowdB": "1/3",
+     "orig_fresh": "2/5"
+    }
+   },
+   "engine_eligible_orig_without_us": {
+    "land_T+2": "34/37",
+    "land_T+1": "35/37",
+    "by_scheme_land_T+2": {
+     "orig_classic": "32/32",
+     "orig_crowdB": "1/3",
+     "orig_fresh": "1/2"
+    },
+    "pull_after_first_crowd_buy_by_scheme": {
+     "orig_classic": [
+      65,
+      68,
+      82,
+      86,
+      112,
+      136,
+      174,
+      234,
+      241,
+      278,
+      285,
+      864,
+      903,
+      946,
+      2062,
+      2317,
+      2349,
+      2465,
+      2478,
+      2485,
+      2489,
+      2489,
+      2489,
+      2494,
+      2496,
+      2497,
+      2498,
+      2508,
+      2520,
+      2523,
+      2527,
+      2624
+     ],
+     "orig_crowdB": [
+      768,
+      5373
+     ],
+     "orig_fresh": [
+      277,
+      9786
+     ]
+    },
+    "crowd_buy_in_TP_window_L+1..L+2": {
+     "land_T+1": "34/37",
+     "land_T+2": "26/37"
+    },
+    "crowd_buy_in_TP_window_by_scheme_land_T+2": {
+     "orig_classic": "24/32",
+     "orig_crowdB": "1/3",
+     "orig_fresh": "1/2"
+    }
+   }
+  },
+  "follow_with_us": {
+   "crowd_buy_behind_ours_in_B+1..B+4": "6/8",
+   "crowd_buy_behind_ours_in_B..B+4": "6/8",
+   "pull_after_trigger": [
+    7,
+    8,
+    8,
+    10,
+    15,
+    8,
+    6,
+    9857
+   ],
+   "pull_after_our_buy": [
+    6,
+    6,
+    6,
+    8,
+    13,
+    7,
+    5,
+    9856
+   ],
+   "current_exit_take_profit": "4/8",
+   "crowd_buy_behind_ours_in_B+1..B+2": "4/8",
+   "current_exit_ret_fast": [
+    -0.0083,
+    0.0752,
+    0.054,
+    0.0551,
+    0.0752,
+    -0.0083,
+    -0.0058,
+    -0.0049
+   ],
+   "current_exit_ret_slow": [
+    0.0717,
+    0.0752,
+    0.054,
+    0.0551,
+    0.0752,
+    -0.0083,
+    -0.0058,
+    0.0034
+   ],
+   "live_ret": [
+    0.0717,
+    -1.0041,
+    -1.0042,
+    0.1872,
+    0.0752,
+    -0.0083,
+    -1.0042,
+    -0.0973
+   ]
+  },
+  "reaction_lags_pull_after_non_crowd_buy": [
+   [
+    "us_follow",
+    "13:19",
+    "orig_quick_pull",
+    5,
+    "0/0 clean orig_quick_pull launches"
+   ],
+   [
+    "outsider",
+    "16:12",
+    "copy_burst_then_crowd",
+    6,
+    "0/27"
+   ],
+   [
+    "us_follow",
+    "13:15",
+    "orig_quick_pull",
+    6,
+    "0/0 clean orig_quick_pull launches"
+   ],
+   [
+    "us_follow",
+    "13:16",
+    "orig_quick_pull",
+    6,
+    "0/0 clean orig_quick_pull launches"
+   ],
+   [
+    "us_follow",
+    "13:16",
+    "orig_quick_pull",
+    6,
+    "0/0 clean orig_quick_pull launches"
+   ],
+   [
+    "outsider",
+    "14:32",
+    "orig_crowdB",
+    7,
+    "0/0"
+   ],
+   [
+    "us_follow",
+    "13:18",
+    "orig_quick_pull",
+    7,
+    "0/0 clean orig_quick_pull launches"
+   ],
+   [
+    "us_follow",
+    "13:17",
+    "orig_quick_pull",
+    8,
+    "0/0 clean orig_quick_pull launches"
+   ],
+   [
+    "outsider",
+    "11:02",
+    "orig_classic",
+    11,
+    "0/17"
+   ],
+   [
+    "outsider",
+    "10:51",
+    "orig_classic",
+    12,
+    "0/14"
+   ],
+   [
+    "outsider",
+    "22:48",
+    "orig_classic",
+    13,
+    "0/27"
+   ],
+   [
+    "us_follow",
+    "13:18",
+    "orig_quick_pull",
+    13,
+    "0/0 clean orig_quick_pull launches"
+   ],
+   [
+    "outsider",
+    "10:49",
+    "orig_classic",
+    16,
+    "0/17"
+   ],
+   [
+    "outsider",
+    "11:09",
+    "orig_classic",
+    41,
+    "0/17"
+   ],
+   [
+    "outsider",
+    "22:47",
+    "orig_classic",
+    51,
+    "3/27"
+   ]
+  ],
+  "non_crowd_buys_not_followed_by_pull_within_60": [
+   [
+    "06:05",
+    "orig_crowdB",
+    170,
+    "65050a9b",
+    0.000351,
+    null
+   ],
+   [
+    "06:05",
+    "orig_crowdB",
+    170,
+    "65050a9b",
+    0.000351,
+    null
+   ],
+   [
+    "06:05",
+    "orig_crowdB",
+    279,
+    "65050a9b",
+    0.000396,
+    null
+   ],
+   [
+    "14:32",
+    "orig_crowdB",
+    2416,
+    "65050a9b",
+    0.00099,
+    7485
+   ],
+   [
+    "us 14:32",
+    "orig_crowdB",
+    45,
+    "router (crowd's calldata)",
+    0.0012,
+    9856
+   ],
+   [
+    "us 22:48",
+    "orig_classic",
+    7,
+    "relay",
+    0.0012,
+    98
+   ],
+   [
+    "us 00:11",
+    "orig_classic",
+    8,
+    "relay",
+    0.0012,
+    270
+   ]
+  ],
+  "dust_tester_copy": {
+   "copy_launches": 49,
+   "with_dust_buy": 49,
+   "dust_offsets": {
+    "5": 2,
+    "3": 31,
+    "4": 13,
+    "2": 1,
+    "9": 2
+   },
+   "burst_offsets": {
+    "7": 1,
+    "8": 9,
+    "9": 35,
+    "10": 2,
+    "11": 1,
+    "13": 1
+   },
+   "burst_after_dust": 47,
+   "burst_size_buys_in_first_block": {
+    "3": 48,
+    "1": 1
+   },
+   "pull_offsets_by_scheme": {
+    "copy_burst_only": [
+     354,
+     396,
+     397,
+     399,
+     399,
+     400,
+     401,
+     402,
+     402,
+     402,
+     403,
+     403,
+     404,
+     405,
+     405,
+     405,
+     405,
+     406,
+     406,
+     413,
+     415
+    ],
+    "copy_burst_then_crowd": [
+     877,
+     1425,
+     1458,
+     1461,
+     1467,
+     1471,
+     1473,
+     1474,
+     1474,
+     1476,
+     1476,
+     1476,
+     1478,
+     1478,
+     1479,
+     1481,
+     1481,
+     1481,
+     1487,
+     1487,
+     1487,
+     1487,
+     1487,
+     1490,
+     1491,
+     1494,
+     1498,
+     1508
+    ]
+   }
+  },
+  "dust_tester_orig": {
+   "orig_launches": 51,
+   "with_dust_buy": 51,
+   "dust_offsets": {
+    "3": 41,
+    "2": 1,
+    "4": 7,
+    "41": 1,
+    "118": 1
+   }
+  },
+  "seat_on_classic": {
+   "clean_classic_first_crowd_buy_offsets": [
+    38,
+    41,
+    43,
+    43,
+    44,
+    44,
+    45,
+    46,
+    46,
+    46,
+    46,
+    46,
+    47,
+    47,
+    47,
+    47,
+    48,
+    48,
+    48,
+    48,
+    49,
+    49,
+    49,
+    50,
+    52,
+    52,
+    55
+   ],
+   "clean_classic_crowd_buys_in_first_50_blocks": [
+    9,
+    9,
+    9,
+    9,
+    10,
+    10,
+    10,
+    10,
+    10,
+    10,
+    11,
+    11,
+    11,
+    11,
+    11,
+    11,
+    11,
+    11,
+    11,
+    11,
+    12,
+    12,
+    12,
+    12,
+    12,
+    13,
+    13
+   ],
+   "ours": [
+    {
+     "n": 9,
+     "buy_offset": 7,
+     "first_crowd_buy_offset": 51,
+     "crowd_buys_in_first_50_blocks": 10,
+     "pull_offset": 105,
+     "pull_after_first_crowd_buy": 54
+    },
+    {
+     "n": 10,
+     "buy_offset": 8,
+     "first_crowd_buy_offset": 46,
+     "crowd_buys_in_first_50_blocks": 10,
+     "pull_offset": 278,
+     "pull_after_first_crowd_buy": 232
+    }
+   ],
+   "clean_classic_pull_after_first_crowd_buy": [
+    65,
+    68,
+    82,
+    112,
+    136,
+    174,
+    234,
+    241,
+    278,
+    285,
+    2062,
+    2317,
+    2349,
+    2478,
+    2485,
+    2489,
+    2489,
+    2489,
+    2494,
+    2496,
+    2497,
+    2498,
+    2508,
+    2520,
+    2523,
+    2527,
+    2624
+   ]
+  },
+  "gas": {
+   "relay_buy_gas_used": [
+    103829,
+    102976,
+    103861,
+    103793,
+    103913,
+    103881,
+    103861,
+    103985,
+    103857
+   ],
+   "relay_sell_gas_used": [
+    103778,
+    135200,
+    135200,
+    103810,
+    103894,
+    103938,
+    135200,
+    103934,
+    103778
+   ],
+   "base_fee_gwei_at_our_buys": [
+    0.020516,
+    0.020716,
+    0.021064,
+    0.02077,
+    0.021146,
+    0.020938,
+    0.020538,
+    0.02166,
+    0.02181,
+    0.021312
+   ],
+   "round_trip_eth_typical": 4.363902795e-06,
+   "round_trip_usd_typical": 0.0112
+  }
+ },
+ "trades": [
+  {
+   "n": 1,
+   "time_utc": "2026-10-08 13:15:23",
+   "launch_block": 83341600,
+   "pid": "0x3a922cb2f3a9e6e48df0a766704ccfdc71ab513c569ab18bb9dee01f0aaefa2e",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "route": "relay",
+   "trigger_offset": 142,
+   "trigger_eth": 0.00529,
+   "buy_block": 83341743,
+   "buy_offset_from_launch": 143,
+   "buy_after_trigger": 1,
+   "buy_index": 52,
+   "sell_block_live": 83341749,
+   "sell_after_buy_live": 6,
+   "crowd_buys_behind_within_4": 1,
+   "crowd_buys_behind_within_4_detail": [
+    [
+     3,
+     0.0378
+    ]
+   ],
+   "crowd_buys_behind_same_block": 0,
+   "first_crowd_buy_after_ours": 3,
+   "crowd_buys_before_pull_after_ours": 1,
+   "other_real_buys_behind_before_pull": [],
+   "pull_after_our_buy": 6,
+   "pull_after_last_crowd_buy": 3,
+   "pull_after_trigger": 7,
+   "pulled_before_live_sell": false,
+   "live": {
+    "eth_in": 0.0012,
+    "eth_out": 0.001290339500082929,
+    "gas_eth": 4.301606636e-06,
+    "gas_usd": 0.0111,
+    "ret": 0.0717,
+    "pnl_eth": 8.6037893446929e-05,
+    "pnl_usd": 0.221,
+    "buy_gas_used": 103829,
+    "sell_gas_used": 103778,
+    "base_fee_gwei": 0.020516
+   },
+   "current_exit": {
+    "tp_checks_B_to_B2": [],
+    "would_take_profit": false,
+    "sell_send_block": 83341745,
+    "send_after_buy": 2,
+    "tp_ret_engine": null,
+    "tp_ret_chain_at_that_buy": null,
+    "fast": {
+     "sell_land_block": 83341746,
+     "after_buy": 3,
+     "eth_out": 1194291180041572,
+     "ret": -0.0083,
+     "pnl_eth": -1.0010426594428e-05,
+     "exit": "deadline"
+    },
+    "slow": {
+     "sell_land_block": 83341747,
+     "after_buy": 4,
+     "eth_out": 1290339500082929,
+     "ret": 0.0717,
+     "pnl_eth": 8.6037893446929e-05,
+     "exit": "deadline"
+    }
+   },
+   "baseline_pulled_within_same_gap": "0/0 clean orig_quick_pull launches"
+  },
+  {
+   "n": 2,
+   "time_utc": "2026-10-08 13:16:13",
+   "launch_block": 83342087,
+   "pid": "0x7cfa42321d3c75b3ebc274edeac8997e3a54fb7fe0bc566a0f9dee3fe15a8693",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "route": "relay",
+   "trigger_offset": 54,
+   "trigger_eth": 0.0044,
+   "buy_block": 83342143,
+   "buy_offset_from_launch": 56,
+   "buy_after_trigger": 2,
+   "buy_index": 13,
+   "sell_block_live": 83342150,
+   "sell_after_buy_live": 7,
+   "crowd_buys_behind_within_4": 2,
+   "crowd_buys_behind_within_4_detail": [
+    [
+     1,
+     0.0396
+    ],
+    [
+     4,
+     0.0376
+    ]
+   ],
+   "crowd_buys_behind_same_block": 0,
+   "first_crowd_buy_after_ours": 1,
+   "crowd_buys_before_pull_after_ours": 2,
+   "other_real_buys_behind_before_pull": [],
+   "pull_after_our_buy": 6,
+   "pull_after_last_crowd_buy": 2,
+   "pull_after_trigger": 8,
+   "pulled_before_live_sell": true,
+   "live": {
+    "eth_in": 0.0012,
+    "eth_out": 0.0,
+    "gas_eth": 4.927564416e-06,
+    "gas_usd": 0.0127,
+    "ret": -1.0041,
+    "pnl_eth": -0.001204927564416,
+    "pnl_usd": -3.097,
+    "buy_gas_used": 102976,
+    "sell_gas_used": 135200,
+    "base_fee_gwei": 0.020716
+   },
+   "current_exit": {
+    "tp_checks_B_to_B2": [
+     {
+      "block_after_buy": 1,
+      "eth": 0.0396,
+      "cls": "crowd",
+      "ret_engine_feed": 0.0749,
+      "ret_chain": 0.0749
+     }
+    ],
+    "would_take_profit": true,
+    "sell_send_block": 83342144,
+    "send_after_buy": 1,
+    "tp_ret_engine": 0.0749,
+    "tp_ret_chain_at_that_buy": 0.0749,
+    "fast": {
+     "sell_land_block": 83342145,
+     "after_buy": 2,
+     "eth_out": 1295115735179446,
+     "ret": 0.0752,
+     "pnl_eth": 9.0188170763446e-05,
+     "exit": "take_profit"
+    },
+    "slow": {
+     "sell_land_block": 83342146,
+     "after_buy": 3,
+     "eth_out": 1295115735179446,
+     "ret": 0.0752,
+     "pnl_eth": 9.0188170763446e-05,
+     "exit": "take_profit"
+    }
+   },
+   "baseline_pulled_within_same_gap": "0/0 clean orig_quick_pull launches"
+  },
+  {
+   "n": 3,
+   "time_utc": "2026-10-08 13:16:50",
+   "launch_block": 83342440,
+   "pid": "0xf36b6bac46e0fe9b23685090cf447421b4846eded86f2d0de8403912600cbd78",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "route": "relay",
+   "trigger_offset": 53,
+   "trigger_eth": 0.00497,
+   "buy_block": 83342495,
+   "buy_offset_from_launch": 55,
+   "buy_after_trigger": 2,
+   "buy_index": 8,
+   "sell_block_live": 83342502,
+   "sell_after_buy_live": 7,
+   "crowd_buys_behind_within_4": 1,
+   "crowd_buys_behind_within_4_detail": [
+    [
+     1,
+     0.0298
+    ]
+   ],
+   "crowd_buys_behind_same_block": 0,
+   "first_crowd_buy_after_ours": 1,
+   "crowd_buys_before_pull_after_ours": 1,
+   "other_real_buys_behind_before_pull": [],
+   "pull_after_our_buy": 6,
+   "pull_after_last_crowd_buy": 5,
+   "pull_after_trigger": 8,
+   "pulled_before_live_sell": true,
+   "live": {
+    "eth_in": 0.0012,
+    "eth_out": 0.0,
+    "gas_eth": 5.002321704e-06,
+    "gas_usd": 0.0129,
+    "ret": -1.0042,
+    "pnl_eth": -0.001205002321704,
+    "pnl_usd": -3.097,
+    "buy_gas_used": 103861,
+    "sell_gas_used": 135200,
+    "base_fee_gwei": 0.021064
+   },
+   "current_exit": {
+    "tp_checks_B_to_B2": [
+     {
+      "block_after_buy": 1,
+      "eth": 0.02984,
+      "cls": "crowd",
+      "ret_engine_feed": 0.0538,
+      "ret_chain": 0.0538
+     }
+    ],
+    "would_take_profit": true,
+    "sell_send_block": 83342496,
+    "send_after_buy": 1,
+    "tp_ret_engine": 0.0538,
+    "tp_ret_chain_at_that_buy": 0.0538,
+    "fast": {
+     "sell_land_block": 83342497,
+     "after_buy": 2,
+     "eth_out": 1269846160400969,
+     "ret": 0.054,
+     "pnl_eth": 6.4843838696969e-05,
+     "exit": "take_profit"
+    },
+    "slow": {
+     "sell_land_block": 83342498,
+     "after_buy": 3,
+     "eth_out": 1269846160400969,
+     "ret": 0.054,
+     "pnl_eth": 6.4843838696969e-05,
+     "exit": "take_profit"
+    }
+   },
+   "baseline_pulled_within_same_gap": "0/0 clean orig_quick_pull launches"
+  },
+  {
+   "n": 4,
+   "time_utc": "2026-10-08 13:17:10",
+   "launch_block": 83342632,
+   "pid": "0x7223753b88d181442c463554bbd8cc834f27930a456d1e4559012061ea9a7293",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "route": "relay",
+   "trigger_offset": 46,
+   "trigger_eth": 0.00541,
+   "buy_block": 83342680,
+   "buy_offset_from_launch": 48,
+   "buy_after_trigger": 2,
+   "buy_index": 33,
+   "sell_block_live": 83342687,
+   "sell_after_buy_live": 7,
+   "crowd_buys_behind_within_4": 1,
+   "crowd_buys_behind_within_4_detail": [
+    [
+     1,
+     0.0301
+    ]
+   ],
+   "crowd_buys_behind_same_block": 0,
+   "first_crowd_buy_after_ours": 1,
+   "crowd_buys_before_pull_after_ours": 2,
+   "other_real_buys_behind_before_pull": [],
+   "pull_after_our_buy": 8,
+   "pull_after_last_crowd_buy": 2,
+   "pull_after_trigger": 10,
+   "pulled_before_live_sell": false,
+   "live": {
+    "eth_in": 0.0012,
+    "eth_out": 0.001428979129876378,
+    "gas_eth": 4.27931797e-06,
+    "gas_usd": 0.011,
+    "ret": 0.1872,
+    "pnl_eth": 0.000224699811906378,
+    "pnl_usd": 0.577,
+    "buy_gas_used": 103793,
+    "sell_gas_used": 103810,
+    "base_fee_gwei": 0.02077
+   },
+   "current_exit": {
+    "tp_checks_B_to_B2": [
+     {
+      "block_after_buy": 1,
+      "eth": 0.03006,
+      "cls": "crowd",
+      "ret_engine_feed": 0.0543,
+      "ret_chain": 0.0543
+     }
+    ],
+    "would_take_profit": true,
+    "sell_send_block": 83342681,
+    "send_after_buy": 1,
+    "tp_ret_engine": 0.0543,
+    "tp_ret_chain_at_that_buy": 0.0543,
+    "fast": {
+     "sell_land_block": 83342682,
+     "after_buy": 2,
+     "eth_out": 1270371213071358,
+     "ret": 0.0551,
+     "pnl_eth": 6.6091895101358e-05,
+     "exit": "take_profit"
+    },
+    "slow": {
+     "sell_land_block": 83342683,
+     "after_buy": 3,
+     "eth_out": 1270371213071358,
+     "ret": 0.0551,
+     "pnl_eth": 6.6091895101358e-05,
+     "exit": "take_profit"
+    }
+   },
+   "baseline_pulled_within_same_gap": "0/0 clean orig_quick_pull launches"
+  },
+  {
+   "n": 5,
+   "time_utc": "2026-10-08 13:18:12",
+   "launch_block": 83343251,
+   "pid": "0x16df28261b841789c68f66f5cebd3cbdcfb0e599e8b60f49da59cb2c0fa52217",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "route": "relay",
+   "trigger_offset": 51,
+   "trigger_eth": 0.00603,
+   "buy_block": 83343304,
+   "buy_offset_from_launch": 53,
+   "buy_after_trigger": 2,
+   "buy_index": 23,
+   "sell_block_live": 83343311,
+   "sell_after_buy_live": 7,
+   "crowd_buys_behind_within_4": 1,
+   "crowd_buys_behind_within_4_detail": [
+    [
+     1,
+     0.0395
+    ]
+   ],
+   "crowd_buys_behind_same_block": 0,
+   "first_crowd_buy_after_ours": 1,
+   "crowd_buys_before_pull_after_ours": 1,
+   "other_real_buys_behind_before_pull": [],
+   "pull_after_our_buy": 13,
+   "pull_after_last_crowd_buy": 12,
+   "pull_after_trigger": 15,
+   "pulled_before_live_sell": false,
+   "live": {
+    "eth_in": 0.0012,
+    "eth_out": 0.001294556041757788,
+    "gas_eth": 4.368313322e-06,
+    "gas_usd": 0.0112,
+    "ret": 0.0752,
+    "pnl_eth": 9.0187728435788e-05,
+    "pnl_usd": 0.232,
+    "buy_gas_used": 103913,
+    "sell_gas_used": 103894,
+    "base_fee_gwei": 0.021146
+   },
+   "current_exit": {
+    "tp_checks_B_to_B2": [
+     {
+      "block_after_buy": 1,
+      "eth": 0.03945,
+      "cls": "crowd",
+      "ret_engine_feed": 0.0744,
+      "ret_chain": 0.0744
+     }
+    ],
+    "would_take_profit": true,
+    "sell_send_block": 83343305,
+    "send_after_buy": 1,
+    "tp_ret_engine": 0.0744,
+    "tp_ret_chain_at_that_buy": 0.0744,
+    "fast": {
+     "sell_land_block": 83343306,
+     "after_buy": 2,
+     "eth_out": 1294556041757788,
+     "ret": 0.0752,
+     "pnl_eth": 9.0187728435788e-05,
+     "exit": "take_profit"
+    },
+    "slow": {
+     "sell_land_block": 83343307,
+     "after_buy": 3,
+     "eth_out": 1294556041757788,
+     "ret": 0.0752,
+     "pnl_eth": 9.0187728435788e-05,
+     "exit": "take_profit"
+    }
+   },
+   "baseline_pulled_within_same_gap": "0/0 clean orig_quick_pull launches"
+  },
+  {
+   "n": 6,
+   "time_utc": "2026-10-08 13:18:45",
+   "launch_block": 83343560,
+   "pid": "0x3578b252bf1caccc90807eae00dfd4991fdfb20f0db1f44dc9f470674a611855",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "route": "relay",
+   "trigger_offset": 58,
+   "trigger_eth": 0.003,
+   "buy_block": 83343619,
+   "buy_offset_from_launch": 59,
+   "buy_after_trigger": 1,
+   "buy_index": 36,
+   "sell_block_live": 83343625,
+   "sell_after_buy_live": 6,
+   "crowd_buys_behind_within_4": 0,
+   "crowd_buys_behind_within_4_detail": [],
+   "crowd_buys_behind_same_block": 0,
+   "first_crowd_buy_after_ours": null,
+   "crowd_buys_before_pull_after_ours": 0,
+   "other_real_buys_behind_before_pull": [],
+   "pull_after_our_buy": 7,
+   "pull_after_last_crowd_buy": 8,
+   "pull_after_trigger": 8,
+   "pulled_before_live_sell": false,
+   "live": {
+    "eth_in": 0.0012,
+    "eth_out": 0.001194291115245132,
+    "gas_eth": 4.310778402e-06,
+    "gas_usd": 0.0111,
+    "ret": -0.0083,
+    "pnl_eth": -1.0019663156868e-05,
+    "pnl_usd": -0.026,
+    "buy_gas_used": 103881,
+    "sell_gas_used": 103938,
+    "base_fee_gwei": 0.020938
+   },
+   "current_exit": {
+    "tp_checks_B_to_B2": [],
+    "would_take_profit": false,
+    "sell_send_block": 83343621,
+    "send_after_buy": 2,
+    "tp_ret_engine": null,
+    "tp_ret_chain_at_that_buy": null,
+    "fast": {
+     "sell_land_block": 83343622,
+     "after_buy": 3,
+     "eth_out": 1194291115245132,
+     "ret": -0.0083,
+     "pnl_eth": -1.0019663156868e-05,
+     "exit": "deadline"
+    },
+    "slow": {
+     "sell_land_block": 83343623,
+     "after_buy": 4,
+     "eth_out": 1194291115245132,
+     "ret": -0.0083,
+     "pnl_eth": -1.0019663156868e-05,
+     "exit": "deadline"
+    }
+   },
+   "baseline_pulled_within_same_gap": "0/0 clean orig_quick_pull launches"
+  },
+  {
+   "n": 7,
+   "time_utc": "2026-10-08 13:19:44",
+   "launch_block": 83344131,
+   "pid": "0x7490a93cfe6359ce872bc44cb3b3bccc1877a6517f44daa0d7ca602aca542043",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 824,
+   "entry": "follow",
+   "route": "relay",
+   "trigger_offset": 108,
+   "trigger_eth": 0.01585,
+   "buy_block": 83344240,
+   "buy_offset_from_launch": 109,
+   "buy_after_trigger": 1,
+   "buy_index": 55,
+   "sell_block_live": 83344246,
+   "sell_after_buy_live": 6,
+   "crowd_buys_behind_within_4": 0,
+   "crowd_buys_behind_within_4_detail": [],
+   "crowd_buys_behind_same_block": 0,
+   "first_crowd_buy_after_ours": null,
+   "crowd_buys_before_pull_after_ours": 0,
+   "other_real_buys_behind_before_pull": [],
+   "pull_after_our_buy": 5,
+   "pull_after_last_crowd_buy": 6,
+   "pull_after_trigger": 6,
+   "pulled_before_live_sell": true,
+   "live": {
+    "eth_in": 0.0012,
+    "eth_out": 0.0,
+    "gas_eth": 4.995822018e-06,
+    "gas_usd": 0.0128,
+    "ret": -1.0042,
+    "pnl_eth": -0.001204995822018,
+    "pnl_usd": -3.097,
+    "buy_gas_used": 103861,
+    "sell_gas_used": 135200,
+    "base_fee_gwei": 0.020538
+   },
+   "current_exit": {
+    "tp_checks_B_to_B2": [],
+    "would_take_profit": false,
+    "sell_send_block": 83344242,
+    "send_after_buy": 2,
+    "tp_ret_engine": null,
+    "tp_ret_chain_at_that_buy": null,
+    "fast": {
+     "sell_land_block": 83344243,
+     "after_buy": 3,
+     "eth_out": 1198024427404399,
+     "ret": -0.0058,
+     "pnl_eth": -6.971394613601e-06,
+     "exit": "deadline"
+    },
+    "slow": {
+     "sell_land_block": 83344244,
+     "after_buy": 4,
+     "eth_out": 1198024427404399,
+     "ret": -0.0058,
+     "pnl_eth": -6.971394613601e-06,
+     "exit": "deadline"
+    }
+   },
+   "baseline_pulled_within_same_gap": "0/0 clean orig_quick_pull launches"
+  },
+  {
+   "n": 8,
+   "time_utc": "2026-10-08 14:32:16",
+   "launch_block": 83386507,
+   "pid": "0xe27bfddf52e8841e7999df7855fd2b8b597dc4a0c34e08baaeb272913183e175",
+   "kind": "orig",
+   "scheme": "orig_crowdB",
+   "fee_ppm": 250,
+   "entry": "follow",
+   "route": "router (crowd's calldata)",
+   "trigger_offset": 44,
+   "trigger_eth": 0.02298,
+   "buy_block": 83386552,
+   "buy_offset_from_launch": 45,
+   "buy_after_trigger": 1,
+   "buy_index": 2,
+   "sell_block_live": 83386555,
+   "sell_after_buy_live": 3,
+   "crowd_buys_behind_within_4": 1,
+   "crowd_buys_behind_within_4_detail": [
+    [
+     3,
+     0.0142
+    ]
+   ],
+   "crowd_buys_behind_same_block": 0,
+   "first_crowd_buy_after_ours": 3,
+   "crowd_buys_before_pull_after_ours": 168,
+   "other_real_buys_behind_before_pull": [
+    [
+     2371,
+     0.00099,
+     "0x2bf73b90",
+     "other"
+    ],
+    [
+     9849,
+     0.05738,
+     "0xabb2acd3",
+     "other"
+    ]
+   ],
+   "pull_after_our_buy": 9856,
+   "pull_after_last_crowd_buy": 935,
+   "pull_after_trigger": 9857,
+   "pulled_before_live_sell": false,
+   "live": {
+    "eth_in": 0.0012,
+    "eth_out": 0.001088471991339004,
+    "gas_eth": 5.24551656e-06,
+    "gas_usd": 0.0135,
+    "ret": -0.0973,
+    "pnl_eth": -0.000116773525220996,
+    "pnl_usd": -0.3,
+    "buy_gas_used": 116466,
+    "sell_gas_used": 126940,
+    "base_fee_gwei": 0.02166
+   },
+   "current_exit": {
+    "tp_checks_B_to_B2": [],
+    "would_take_profit": false,
+    "sell_send_block": 83386554,
+    "send_after_buy": 2,
+    "tp_ret_engine": null,
+    "tp_ret_chain_at_that_buy": null,
+    "fast": {
+     "sell_land_block": 83386555,
+     "after_buy": 3,
+     "eth_out": 1199400180160343,
+     "ret": -0.0049,
+     "pnl_eth": -5.845336399657e-06,
+     "exit": "deadline"
+    },
+    "slow": {
+     "sell_land_block": 83386556,
+     "after_buy": 4,
+     "eth_out": 1209369329891823,
+     "ret": 0.0034,
+     "pnl_eth": 4.123813331823e-06,
+     "exit": "deadline"
+    }
+   },
+   "baseline_pulled_within_same_gap": "2/2 clean orig_crowdB launches"
+  },
+  {
+   "n": 9,
+   "time_utc": "2026-10-08 22:48:47",
+   "launch_block": 83677577,
+   "pid": "0xfd84a22b14ffda560d848739f07705f641588e80e680fe4c0421aca8f59f806c",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 888,
+   "entry": "seat",
+   "route": "relay",
+   "trigger_offset": 51,
+   "trigger_eth": 0.0473,
+   "buy_block": 83677584,
+   "buy_offset_from_launch": 7,
+   "buy_after_trigger": null,
+   "buy_index": 4,
+   "sell_block_live": 83677587,
+   "sell_after_buy_live": 3,
+   "crowd_buys_behind_within_4": 0,
+   "crowd_buys_behind_within_4_detail": [],
+   "crowd_buys_behind_same_block": 0,
+   "first_crowd_buy_after_ours": 44,
+   "crowd_buys_before_pull_after_ours": 10,
+   "other_real_buys_behind_before_pull": [
+    [
+     85,
+     0.0002,
+     "0x2b7be2fa",
+     "other"
+    ]
+   ],
+   "pull_after_our_buy": 98,
+   "pull_after_last_crowd_buy": 7,
+   "pull_after_trigger": 54,
+   "pulled_before_live_sell": false,
+   "live": {
+    "eth_in": 0.0012,
+    "eth_out": 0.001197870153953576,
+    "gas_eth": 4.545730394e-06,
+    "gas_usd": 0.0117,
+    "ret": -0.0056,
+    "pnl_eth": -6.675576440424e-06,
+    "pnl_usd": -0.017,
+    "buy_gas_used": 103985,
+    "sell_gas_used": 103934,
+    "base_fee_gwei": 0.02181
+   },
+   "current_exit": {
+    "tp_checks_B_to_B2": [],
+    "would_take_profit": false,
+    "sell_send_block": 83677586,
+    "send_after_buy": 2,
+    "tp_ret_engine": null,
+    "tp_ret_chain_at_that_buy": null,
+    "fast": {
+     "sell_land_block": 83677587,
+     "after_buy": 3,
+     "eth_out": 1197870153953576,
+     "ret": -0.0056,
+     "pnl_eth": -6.675576440424e-06,
+     "exit": "deadline"
+    },
+    "slow": {
+     "sell_land_block": 83677588,
+     "after_buy": 4,
+     "eth_out": 1197870153953576,
+     "ret": -0.0056,
+     "pnl_eth": -6.675576440424e-06,
+     "exit": "deadline"
+    }
+   },
+   "baseline_pulled_within_same_gap": "0/27 clean orig_classic launches"
+  },
+  {
+   "n": 10,
+   "time_utc": "2026-10-09 00:11:03",
+   "launch_block": 83725838,
+   "pid": "0xbe2a35f9f0bd033f6e901cc4df7e72bec9ba284171b6d9d8b181f9bedcb76fc6",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 1597,
+   "entry": "seat",
+   "route": "relay",
+   "trigger_offset": 46,
+   "trigger_eth": 0.0668,
+   "buy_block": 83725846,
+   "buy_offset_from_launch": 8,
+   "buy_after_trigger": null,
+   "buy_index": 2,
+   "sell_block_live": 83725849,
+   "sell_after_buy_live": 3,
+   "crowd_buys_behind_within_4": 0,
+   "crowd_buys_behind_within_4_detail": [],
+   "crowd_buys_behind_same_block": 0,
+   "first_crowd_buy_after_ours": 38,
+   "crowd_buys_before_pull_after_ours": 45,
+   "other_real_buys_behind_before_pull": [],
+   "pull_after_our_buy": 270,
+   "pull_after_last_crowd_buy": 7,
+   "pull_after_trigger": 232,
+   "pulled_before_live_sell": false,
+   "live": {
+    "eth_in": 0.0012,
+    "eth_out": 0.00119617147831536,
+    "gas_eth": 4.435287364e-06,
+    "gas_usd": 0.0114,
+    "ret": -0.0069,
+    "pnl_eth": -8.26380904864e-06,
+    "pnl_usd": -0.021,
+    "buy_gas_used": 103857,
+    "sell_gas_used": 103778,
+    "base_fee_gwei": 0.021312
+   },
+   "current_exit": {
+    "tp_checks_B_to_B2": [],
+    "would_take_profit": false,
+    "sell_send_block": 83725848,
+    "send_after_buy": 2,
+    "tp_ret_engine": null,
+    "tp_ret_chain_at_that_buy": null,
+    "fast": {
+     "sell_land_block": 83725849,
+     "after_buy": 3,
+     "eth_out": 1196171478315360,
+     "ret": -0.0069,
+     "pnl_eth": -8.26380904864e-06,
+     "exit": "deadline"
+    },
+    "slow": {
+     "sell_land_block": 83725850,
+     "after_buy": 4,
+     "eth_out": 1196171478315360,
+     "ret": -0.0069,
+     "pnl_eth": -8.26380904864e-06,
+     "exit": "deadline"
+    }
+   },
+   "baseline_pulled_within_same_gap": "6/27 clean orig_classic launches"
+  }
+ ],
+ "launches": [
+  {
+   "block": 83086638,
+   "time_utc": "2026-10-08 05:59:08",
+   "pid": "0xca04a1e3cd58fa1a31169015d135316a769cb06c06328dcf2990ae5e061f3ada",
+   "kind": "orig",
+   "scheme": "orig_crowdB",
+   "fee_ppm": 210,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x0545c67e2b3b6c8b9f942db63e0c53b8996a775b",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 29970000000000000000000,
+   "traded_by_us": false,
+   "trigger_offset": 48,
+   "trigger_value_eth": 0.185317,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 48,
+   "fire_block": 83086686,
+   "pull_block": 83087454,
+   "pull_offset": 816,
+   "pull_after_first_crowd_buy": 768,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 23,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      50,
+      53
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      51,
+      54
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83087484
+  },
+  {
+   "block": 83090333,
+   "time_utc": "2026-10-08 06:05:25",
+   "pid": "0x069688d0760fd7ef89f9eec672f8fbc0d3d3541e24e0c9b438706ab6adbc518b",
+   "kind": "orig",
+   "scheme": "orig_crowdB",
+   "fee_ppm": 123,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xa8e0c37d1478851a927c7220bffaf01f42cf69b1",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 28659288598986542185121,
+   "traded_by_us": false,
+   "trigger_offset": 111,
+   "trigger_value_eth": 0.188908,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 111,
+   "fire_block": 83090444,
+   "pull_block": null,
+   "pull_offset": null,
+   "pull_after_first_crowd_buy": null,
+   "crowd_real_buys_before_pull": 232,
+   "crowd_wallets": 23,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      113,
+      116
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      114,
+      117
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [
+    {
+     "offset": 170,
+     "block": 83090503,
+     "wallet": "0xf7f00e4d08a546187ba4d9fbf66dd28a7b98df00",
+     "nonce": 7607,
+     "eth": 0.000351,
+     "via": "65050a9b",
+     "fingerprint": {
+      "type": 2,
+      "gas": 506706,
+      "prio": 30000000,
+      "len": 580,
+      "dl_max": null
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 2,
+     "crowd_buys_next_1_10": 2,
+     "crowd_buys_until_pull": 226,
+     "first_crowd_buy_after": 1,
+     "crowd_buys_prev_10": 3,
+     "pull_after": null,
+     "baseline_crowd_buys_next_1_10": 0,
+     "baseline_n": 2,
+     "baseline_crowd_buys_prev_10": 1
+    },
+    {
+     "offset": 170,
+     "block": 83090503,
+     "wallet": "0xb1103df28778545f7ec2121c1597725cd42c764d",
+     "nonce": 2384,
+     "eth": 0.000351,
+     "via": "65050a9b",
+     "fingerprint": {
+      "type": 2,
+      "gas": 506706,
+      "prio": 30000000,
+      "len": 580,
+      "dl_max": null
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 2,
+     "crowd_buys_next_1_10": 2,
+     "crowd_buys_until_pull": 226,
+     "first_crowd_buy_after": 1,
+     "crowd_buys_prev_10": 3,
+     "pull_after": null,
+     "baseline_crowd_buys_next_1_10": 0,
+     "baseline_n": 2,
+     "baseline_crowd_buys_prev_10": 1
+    },
+    {
+     "offset": 279,
+     "block": 83090612,
+     "wallet": "0xf5d706025bb7e0a02982e0c11ca3b3f4d02ab168",
+     "nonce": 4400,
+     "eth": 0.000396,
+     "via": "65050a9b",
+     "fingerprint": {
+      "type": 2,
+      "gas": 508340,
+      "prio": 30000000,
+      "len": 580,
+      "dl_max": null
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 0,
+     "crowd_buys_next_1_10": 0,
+     "crowd_buys_until_pull": 214,
+     "first_crowd_buy_after": 44,
+     "crowd_buys_prev_10": 0,
+     "pull_after": null,
+     "baseline_crowd_buys_next_1_10": 0.5,
+     "baseline_n": 2,
+     "baseline_crowd_buys_prev_10": 1.5
+    }
+   ],
+   "live": null,
+   "results": null,
+   "close_block": 83090363
+  },
+  {
+   "block": 83218396,
+   "time_utc": "2026-10-08 09:45:03",
+   "pid": "0x9471ca382dec799e5a1c091a1070ba11b6e5f48f1363e71fa2cb8f886a026fed",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 2205,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x575ab8f51f6f752296b00897d39e0c8cc8ba1140",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 68342114980442330469414,
+   "traded_by_us": false,
+   "trigger_offset": 41,
+   "trigger_value_eth": 0.052,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 41,
+   "fire_block": 83218437,
+   "pull_block": 83220935,
+   "pull_offset": 2539,
+   "pull_after_first_crowd_buy": 2498,
+   "crowd_real_buys_before_pull": 131,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      43,
+      46
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      44,
+      47
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83220965
+  },
+  {
+   "block": 83221188,
+   "time_utc": "2026-10-08 09:49:48",
+   "pid": "0x4d4fbc278ab981b0356ebd3458bba2dd52ce48e79b75087f7688cf2a4e91a5c9",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 981,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x44b9794b3f98ba2bbd51ac66f3adaff86a888ec0",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 70001320773253985796826,
+   "traded_by_us": false,
+   "trigger_offset": 38,
+   "trigger_value_eth": 0.0306,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 38,
+   "fire_block": 83221226,
+   "pull_block": 83223850,
+   "pull_offset": 2662,
+   "pull_after_first_crowd_buy": 2624,
+   "crowd_real_buys_before_pull": 133,
+   "crowd_wallets": 26,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      40,
+      43
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      41,
+      44
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83223880
+  },
+  {
+   "block": 83230831,
+   "time_utc": "2026-10-08 10:06:21",
+   "pid": "0xcd177f3eeb13734ee37f9126ed4ac261cff3788b85330aa8e3682001c76b7b51",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 2158,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xaa136bbbb9291a19bfce70589fc8eef7933d35cc",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 69930000000000000000000,
+   "traded_by_us": false,
+   "trigger_offset": 44,
+   "trigger_value_eth": 0.0171,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 44,
+   "fire_block": 83230875,
+   "pull_block": 83231049,
+   "pull_offset": 218,
+   "pull_after_first_crowd_buy": 174,
+   "crowd_real_buys_before_pull": 33,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      46,
+      49
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      47,
+      50
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83231079
+  },
+  {
+   "block": 83231357,
+   "time_utc": "2026-10-08 10:07:14",
+   "pid": "0x7c47f2871cbb7af3a0d60a1dc3dd17c0549a598997be5f4bdb5cec9a53d6537b",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 2337,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xd0bc5caf8368269f6f477cf2f3eadbc392e0db93",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 63182307650164219053338,
+   "traded_by_us": false,
+   "trigger_offset": 46,
+   "trigger_value_eth": 0.0607,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 46,
+   "fire_block": 83231403,
+   "pull_block": 83231515,
+   "pull_offset": 158,
+   "pull_after_first_crowd_buy": 112,
+   "crowd_real_buys_before_pull": 23,
+   "crowd_wallets": 23,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      48,
+      51
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83231545
+  },
+  {
+   "block": 83231896,
+   "time_utc": "2026-10-08 10:08:10",
+   "pid": "0x3d8e5e54a8d4ae1d2b2a4f8a74047bed7169065ce56a86e5c807e472912e2c6f",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 3568,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xf2e80894f049d3040591e2f83d266da583112eca",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 56688298792607985617883,
+   "traded_by_us": false,
+   "trigger_offset": 47,
+   "trigger_value_eth": 0.029,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 47,
+   "fire_block": 83231943,
+   "pull_block": 83234437,
+   "pull_offset": 2541,
+   "pull_after_first_crowd_buy": 2494,
+   "crowd_real_buys_before_pull": 132,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      50,
+      53
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83234467
+  },
+  {
+   "block": 83235834,
+   "time_utc": "2026-10-08 10:14:53",
+   "pid": "0xfcca4dea74f61d161ea7ad76086756c4d3e4ec9aac1a549b0261b3a2687dc7bd",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 2906,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x4595726f1a958cb2d693b9bd2e1b375261f26adb",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 61176006326009873002477,
+   "traded_by_us": false,
+   "trigger_offset": 46,
+   "trigger_value_eth": 0.1038,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 46,
+   "fire_block": 83235880,
+   "pull_block": 83235945,
+   "pull_offset": 111,
+   "pull_after_first_crowd_buy": 65,
+   "crowd_real_buys_before_pull": 14,
+   "crowd_wallets": 14,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      48,
+      51
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83235975
+  },
+  {
+   "block": 83236788,
+   "time_utc": "2026-10-08 10:16:32",
+   "pid": "0x5c6984cc64ee87d9af353addddf3f31bfee2f286af716dd39a659ffb8e356c83",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 3331,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xb0803f50f4d21db8977ab49de80deac93e732d76",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 67237969407173503665836,
+   "traded_by_us": false,
+   "trigger_offset": 47,
+   "trigger_value_eth": 0.0585,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 47,
+   "fire_block": 83236835,
+   "pull_block": 83237069,
+   "pull_offset": 281,
+   "pull_after_first_crowd_buy": 234,
+   "crowd_real_buys_before_pull": 45,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      50,
+      53
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83237099
+  },
+  {
+   "block": 83237419,
+   "time_utc": "2026-10-08 10:17:37",
+   "pid": "0x4f118abc5e988d56ec7772fedee12dcd0e23d6789e0e96f2dc4fc8ffbda22333",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 4021,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x0b6e3f1bfb28572786275ebea9b9775adc5ae51b",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 56864076885147797148004,
+   "traded_by_us": false,
+   "trigger_offset": 43,
+   "trigger_value_eth": 0.0624,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 43,
+   "fire_block": 83237462,
+   "pull_block": 83237544,
+   "pull_offset": 125,
+   "pull_after_first_crowd_buy": 82,
+   "crowd_real_buys_before_pull": 18,
+   "crowd_wallets": 18,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      45,
+      48
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      46,
+      49
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83237574
+  },
+  {
+   "block": 83237779,
+   "time_utc": "2026-10-08 10:18:14",
+   "pid": "0x0efa329f2ba60f68c316751d92c8953f3c79fb2e7f49fb350e773e2a58c2b58f",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 3290,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x2896313c623322471d050f357ed558f4c1cb04e1",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 68487989458006430808108,
+   "traded_by_us": false,
+   "trigger_offset": 52,
+   "trigger_value_eth": 0.0359,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 52,
+   "fire_block": 83237831,
+   "pull_block": 83238072,
+   "pull_offset": 293,
+   "pull_after_first_crowd_buy": 241,
+   "crowd_real_buys_before_pull": 43,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    2
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      54,
+      57
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      55,
+      58
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83238102
+  },
+  {
+   "block": 83238353,
+   "time_utc": "2026-10-08 10:19:12",
+   "pid": "0x31f32dce8634f45602c781861fea46b68c0021f8ab601eb24e970588d2096926",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 1270,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xc7184c4350196bd0e8a65cb285210f5bf8e05f81",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 66641612000311036893884,
+   "traded_by_us": false,
+   "trigger_offset": 43,
+   "trigger_value_eth": 0.0439,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 43,
+   "fire_block": 83238396,
+   "pull_block": 83240885,
+   "pull_offset": 2532,
+   "pull_after_first_crowd_buy": 2489,
+   "crowd_real_buys_before_pull": 130,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      45,
+      48
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      46,
+      49
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83240915
+  },
+  {
+   "block": 83244516,
+   "time_utc": "2026-10-08 10:29:46",
+   "pid": "0x200871eb295e951736a73b83f73f982494c649aea1488cb6008584430e48c870",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 1786,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x8ce06dea7d4df0a29ab3580843f71853b0243c97",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 56864076885147797148004,
+   "traded_by_us": false,
+   "trigger_offset": 46,
+   "trigger_value_eth": 0.0145,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 46,
+   "fire_block": 83244562,
+   "pull_block": 83247059,
+   "pull_offset": 2543,
+   "pull_after_first_crowd_buy": 2497,
+   "crowd_real_buys_before_pull": 141,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      48,
+      51
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83247089
+  },
+  {
+   "block": 83247488,
+   "time_utc": "2026-10-08 10:34:51",
+   "pid": "0x2f1654878f2aec2004426d5445ee7d00e6c39d599122a254f9140c85eb469329",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 4671,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x714a368ac314aa331a4b6be655ad590c8367303e",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 70072568955333726939602,
+   "traded_by_us": false,
+   "trigger_offset": 50,
+   "trigger_value_eth": 0.0311,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 50,
+   "fire_block": 83247538,
+   "pull_block": 83250058,
+   "pull_offset": 2570,
+   "pull_after_first_crowd_buy": 2520,
+   "crowd_real_buys_before_pull": 131,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      52,
+      55
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      53,
+      56
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83250088
+  },
+  {
+   "block": 83250318,
+   "time_utc": "2026-10-08 10:39:38",
+   "pid": "0xdbe5f0868c681d0df93e60beafbdffd4a7702bcb6f6cb9882dd6c3c71a37fcc8",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 1141,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xf916df1e7411d7cf2b1b034acdb4282ec5f45841",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 67755476531421428709254,
+   "traded_by_us": false,
+   "trigger_offset": 47,
+   "trigger_value_eth": 0.0591,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 47,
+   "fire_block": 83250365,
+   "pull_block": 83252850,
+   "pull_offset": 2532,
+   "pull_after_first_crowd_buy": 2485,
+   "crowd_real_buys_before_pull": 137,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      50,
+      53
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83252880
+  },
+  {
+   "block": 83253103,
+   "time_utc": "2026-10-08 10:44:24",
+   "pid": "0x2f62a5a10faf731c79505b5086da9e83fb40bb4f13c60da5fc033b72c767d781",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 3880,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x38bff5df101af49beae1942d645411ef059ef1f4",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 69068406525704645070529,
+   "traded_by_us": false,
+   "trigger_offset": 48,
+   "trigger_value_eth": 0.056,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 48,
+   "fire_block": 83253151,
+   "pull_block": 83255640,
+   "pull_offset": 2537,
+   "pull_after_first_crowd_buy": 2489,
+   "crowd_real_buys_before_pull": 128,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      50,
+      53
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      51,
+      54
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83255670
+  },
+  {
+   "block": 83255889,
+   "time_utc": "2026-10-08 10:49:11",
+   "pid": "0xffdf18856d5ee19b6651ac9f41957afbe821adc23fb7f7d661bd6eba9a66bc50",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 643,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x695f333e4e1651658212240b40ecfc0d60028ade",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 58422285302784929657588,
+   "traded_by_us": false,
+   "trigger_offset": 45,
+   "trigger_value_eth": 0.0584,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 45,
+   "fire_block": 83255934,
+   "pull_block": 83256798,
+   "pull_offset": 909,
+   "pull_after_first_crowd_buy": 864,
+   "crowd_real_buys_before_pull": 128,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      47,
+      50
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      48,
+      51
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [
+    {
+     "offset": 893,
+     "block": 83256782,
+     "wallet": "0xa90bd2d1c7a8b7b104e7591ff5d52194b523d229",
+     "nonce": 2296,
+     "eth": 0.001167,
+     "via": "6aa80dbb",
+     "fingerprint": {
+      "type": 2,
+      "gas": 375673,
+      "prio": 0,
+      "len": 2884,
+      "dl_max": null
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 0,
+     "crowd_buys_next_1_10": 0,
+     "crowd_buys_until_pull": 0,
+     "first_crowd_buy_after": null,
+     "crowd_buys_prev_10": 0,
+     "pull_after": 16,
+     "baseline_pulled_within_same_gap": "0/17",
+     "baseline_crowd_buys_next_1_10": 0.06,
+     "baseline_n": 17,
+     "baseline_crowd_buys_prev_10": 0.12
+    }
+   ],
+   "live": null,
+   "results": null,
+   "close_block": 83256828
+  },
+  {
+   "block": 83257053,
+   "time_utc": "2026-10-08 10:51:08",
+   "pid": "0xc9420b3ff3dce3d42dedafb4fd46ee40278ef2a3239611d6f6c943b2bf34a196",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 3416,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x19516dd4296db13cbe9624c3579cd028701d5d45",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 64123038917381325245471,
+   "traded_by_us": false,
+   "trigger_offset": 46,
+   "trigger_value_eth": 0.0479,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 46,
+   "fire_block": 83257099,
+   "pull_block": 83259564,
+   "pull_offset": 2511,
+   "pull_after_first_crowd_buy": 2465,
+   "crowd_real_buys_before_pull": 142,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      48,
+      51
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [
+    {
+     "offset": 2499,
+     "block": 83259552,
+     "wallet": "0xa2e8360c4d3aaf7c3bc850791e4f2dede701a3c6",
+     "nonce": 927,
+     "eth": 0.000495,
+     "via": "f0b7eaaf",
+     "fingerprint": {
+      "type": 2,
+      "gas": 306303,
+      "prio": 10000000,
+      "len": 1060,
+      "dl_max": null
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 0,
+     "crowd_buys_next_1_10": 0,
+     "crowd_buys_until_pull": 0,
+     "first_crowd_buy_after": null,
+     "crowd_buys_prev_10": 0,
+     "pull_after": 12,
+     "baseline_pulled_within_same_gap": "0/14",
+     "baseline_crowd_buys_next_1_10": 0,
+     "baseline_n": 14,
+     "baseline_crowd_buys_prev_10": 0
+    }
+   ],
+   "live": null,
+   "results": null,
+   "close_block": 83259594
+  },
+  {
+   "block": 83260146,
+   "time_utc": "2026-10-08 10:56:25",
+   "pid": "0x7b8b847a542aaa8349fbc642f973261e91a6c38d3252c518463387d93265c652",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 3447,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xc5823bf17928f76609e247ece418d863abf3c568",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 68996121412728701296519,
+   "traded_by_us": false,
+   "trigger_offset": 47,
+   "trigger_value_eth": 0.0621,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 47,
+   "fire_block": 83260193,
+   "pull_block": 83260471,
+   "pull_offset": 325,
+   "pull_after_first_crowd_buy": 278,
+   "crowd_real_buys_before_pull": 44,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      50,
+      53
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83260501
+  },
+  {
+   "block": 83260711,
+   "time_utc": "2026-10-08 10:57:21",
+   "pid": "0x34d0cdfcd97b368e4418b028d72d4dafd7aba32e495a74e83fd4aa57547399b4",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x2d216e8675ac32871c2c95d135b037b9368e288a",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 66416597473824266963651,
+   "traded_by_us": false,
+   "trigger_offset": 49,
+   "trigger_value_eth": 0.0504,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 49,
+   "fire_block": 83260760,
+   "pull_block": 83263077,
+   "pull_offset": 2366,
+   "pull_after_first_crowd_buy": 2317,
+   "crowd_real_buys_before_pull": 103,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      51,
+      54
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      52,
+      55
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83263107
+  },
+  {
+   "block": 83263352,
+   "time_utc": "2026-10-08 11:01:50",
+   "pid": "0x270f85ad43a5ffb05401bc3873212ce062c0ff13cddee7ba32a777d9f7eca3b3",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 3492,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x5cc1741ebe96955de1726cd148c5e611f19384c0",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 56600205034964316814554,
+   "traded_by_us": false,
+   "trigger_offset": 46,
+   "trigger_value_eth": 0.052,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 46,
+   "fire_block": 83263398,
+   "pull_block": 83263466,
+   "pull_offset": 114,
+   "pull_after_first_crowd_buy": 68,
+   "crowd_real_buys_before_pull": 13,
+   "crowd_wallets": 13,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      48,
+      51
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83263496
+  },
+  {
+   "block": 83263547,
+   "time_utc": "2026-10-08 11:02:10",
+   "pid": "0x5736fabe46e92758c2aa08c6ebb1d5a8e99690d6cc1e3379ed65fa5d2811a83a",
+   "kind": "orig",
+   "scheme": "orig_crowdB",
+   "fee_ppm": 300,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x516f7e9191cc8eeb88a29097f6c594b82f8d331f",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 31591153825082109526668,
+   "traded_by_us": false,
+   "trigger_offset": 18,
+   "trigger_value_eth": 0.231348,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 18,
+   "fire_block": 83263565,
+   "pull_block": 83268938,
+   "pull_offset": 5391,
+   "pull_after_first_crowd_buy": 5373,
+   "crowd_real_buys_before_pull": 186,
+   "crowd_wallets": 20,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      20,
+      23
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      21,
+      24
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83268968
+  },
+  {
+   "block": 83263709,
+   "time_utc": "2026-10-08 11:02:26",
+   "pid": "0x994204cef0234708a49b1cd1ce6ee57e942f141a5d7c4a390c8c6bd22c87546d",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 1102,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xb833a3b2670c6109496de4905a996b83cd02ecdd",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 67312142589580373570602,
+   "traded_by_us": false,
+   "trigger_offset": 49,
+   "trigger_value_eth": 0.0681,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 49,
+   "fire_block": 83263758,
+   "pull_block": 83264661,
+   "pull_offset": 952,
+   "pull_after_first_crowd_buy": 903,
+   "crowd_real_buys_before_pull": 139,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      51,
+      54
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      52,
+      55
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [
+    {
+     "offset": 941,
+     "block": 83264650,
+     "wallet": "0xcc4bc7882d5ec4a3716e589ab3d816b61ae47a1a",
+     "nonce": 811822,
+     "eth": 0.005879,
+     "via": "0005ea38",
+     "fingerprint": {
+      "type": 2,
+      "gas": 1231006,
+      "prio": 0,
+      "len": 2820,
+      "dl_max": null
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 0,
+     "crowd_buys_next_1_10": 0,
+     "crowd_buys_until_pull": 0,
+     "first_crowd_buy_after": null,
+     "crowd_buys_prev_10": 0,
+     "pull_after": 11,
+     "baseline_pulled_within_same_gap": "0/17",
+     "baseline_crowd_buys_next_1_10": 0,
+     "baseline_n": 17,
+     "baseline_crowd_buys_prev_10": 0
+    }
+   ],
+   "live": null,
+   "results": null,
+   "close_block": 83264691
+  },
+  {
+   "block": 83265056,
+   "time_utc": "2026-10-08 11:04:44",
+   "pid": "0x63392359aa82d5cd4cc00b68fd1ea6835b8c70b6647bca47969708e6a870223a",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 1195,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xcb7a886a330ba5247d7f47de2ce7779a14dd1326",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 56246450287995952785094,
+   "traded_by_us": false,
+   "trigger_offset": 48,
+   "trigger_value_eth": 0.0581,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 48,
+   "fire_block": 83265104,
+   "pull_block": 83267600,
+   "pull_offset": 2544,
+   "pull_after_first_crowd_buy": 2496,
+   "crowd_real_buys_before_pull": 133,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      50,
+      53
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      51,
+      54
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83267630
+  },
+  {
+   "block": 83267903,
+   "time_utc": "2026-10-08 11:09:34",
+   "pid": "0x9aca59f617916aa816161682ceff2c1836c9df6410566a8313817896eadef9bd",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 4564,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x3ad95a9bec4edc11be4b9f426687d5cf460cd0b8",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 64973411715870361858712,
+   "traded_by_us": false,
+   "trigger_offset": 43,
+   "trigger_value_eth": 0.0385,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 43,
+   "fire_block": 83267946,
+   "pull_block": 83268892,
+   "pull_offset": 989,
+   "pull_after_first_crowd_buy": 946,
+   "crowd_real_buys_before_pull": 135,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      45,
+      48
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      46,
+      49
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [
+    {
+     "offset": 948,
+     "block": 83268851,
+     "wallet": "0xe46e6e8635cb3d13261bfc7eaae20c1ac12abe7b",
+     "nonce": 43,
+     "eth": 0.000792,
+     "via": "f0b7eaaf",
+     "fingerprint": {
+      "type": 2,
+      "gas": 307680,
+      "prio": 10000000,
+      "len": 1060,
+      "dl_max": null
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 0,
+     "crowd_buys_next_1_10": 0,
+     "crowd_buys_until_pull": 0,
+     "first_crowd_buy_after": null,
+     "crowd_buys_prev_10": 0,
+     "pull_after": 41,
+     "baseline_pulled_within_same_gap": "0/17",
+     "baseline_crowd_buys_next_1_10": 0,
+     "baseline_n": 17,
+     "baseline_crowd_buys_prev_10": 0
+    }
+   ],
+   "live": null,
+   "results": null,
+   "close_block": 83268922
+  },
+  {
+   "block": 83269377,
+   "time_utc": "2026-10-08 11:12:07",
+   "pid": "0xcbafe43c6490370401e59f110dfdf13897f9c9f30e85b9f6f3402d8d84a097a5",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 2106,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xa443ce1139e7de9600e79724495e38f0c8bb7449",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 59940000000000000000000,
+   "traded_by_us": false,
+   "trigger_offset": 45,
+   "trigger_value_eth": 0.0734,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 45,
+   "fire_block": 83269422,
+   "pull_block": 83269707,
+   "pull_offset": 330,
+   "pull_after_first_crowd_buy": 285,
+   "crowd_real_buys_before_pull": 53,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      47,
+      50
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      48,
+      51
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83269737
+  },
+  {
+   "block": 83270460,
+   "time_utc": "2026-10-08 11:13:59",
+   "pid": "0x272fffe279504949ac893b746bcd06791ee65827b0eae9d0db72021dcae2be79",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 824,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xd9cdf6a31fae61bdddc3cdb5c17dc32fb6ec31f2",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 68778810254321788464502,
+   "traded_by_us": false,
+   "trigger_offset": 44,
+   "trigger_value_eth": 0.0575,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 44,
+   "fire_block": 83270504,
+   "pull_block": 83272566,
+   "pull_offset": 2106,
+   "pull_after_first_crowd_buy": 2062,
+   "crowd_real_buys_before_pull": 140,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      46,
+      49
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      47,
+      50
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83272596
+  },
+  {
+   "block": 83289397,
+   "time_utc": "2026-10-08 11:46:15",
+   "pid": "0x0fc6686088681ce385f67dfd66ea574412c20bc793190cd4047729e90c373779",
+   "kind": "orig",
+   "scheme": "orig_fresh",
+   "fee_ppm": 10000,
+   "entry": "follow",
+   "eligible": false,
+   "skip_reason": "fee >= 1%",
+   "deployer": "0x93108985bc375b5084dea1a337be2fe1c4d22cc6",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 29125604714752275852015,
+   "traded_by_us": false,
+   "trigger_offset": 90,
+   "trigger_value_eth": 0.005022,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 90,
+   "fire_block": 83289487,
+   "pull_block": 83289534,
+   "pull_offset": 137,
+   "pull_after_first_crowd_buy": 47,
+   "crowd_real_buys_before_pull": 5,
+   "crowd_wallets": 5,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      92,
+      95
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      93,
+      96
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83289564
+  },
+  {
+   "block": 83292456,
+   "time_utc": "2026-10-08 11:51:26",
+   "pid": "0x93e998f1bf134d597e441422a10ed12af9a8cd60ea77e5a411738ca89899d49d",
+   "kind": "orig",
+   "scheme": "orig_fresh",
+   "fee_ppm": 10000,
+   "entry": "follow",
+   "eligible": false,
+   "skip_reason": "fee >= 1%",
+   "deployer": "0xc3285d402fde630025ba72afede321e84d1c5f67",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 28255986976214439075056,
+   "traded_by_us": false,
+   "trigger_offset": 100,
+   "trigger_value_eth": 0.006891,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 100,
+   "fire_block": 83292556,
+   "pull_block": 83298763,
+   "pull_offset": 6307,
+   "pull_after_first_crowd_buy": 6207,
+   "crowd_real_buys_before_pull": 70,
+   "crowd_wallets": 12,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      102,
+      105
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      103,
+      106
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83298793
+  },
+  {
+   "block": 83301893,
+   "time_utc": "2026-10-08 12:07:29",
+   "pid": "0x149059c965efc758d976e90cd0dec3009ae99c5283667c8e767120f12305e45a",
+   "kind": "orig",
+   "scheme": "orig_fresh",
+   "fee_ppm": 300,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x4d91257455e843c4ab848c71c9f1ec0dbb05c50a",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 29125604714752275852015,
+   "traded_by_us": false,
+   "trigger_offset": 67,
+   "trigger_value_eth": 0.004511,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 67,
+   "fire_block": 83301960,
+   "pull_block": 83311746,
+   "pull_offset": 9853,
+   "pull_after_first_crowd_buy": 9786,
+   "crowd_real_buys_before_pull": 55,
+   "crowd_wallets": 12,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      69,
+      72
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      70,
+      73
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83311776
+  },
+  {
+   "block": 83313345,
+   "time_utc": "2026-10-08 12:26:58",
+   "pid": "0xb166f963cbfdf47b4cb451ccaed97c89eca2b1ccd0145560209eae7b75304f64",
+   "kind": "orig",
+   "scheme": "orig_fresh",
+   "fee_ppm": 300,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xc121a22a4f0b24d534d0c8d742ca99066090dd9d",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 29296430840633129929754,
+   "traded_by_us": false,
+   "trigger_offset": 106,
+   "trigger_value_eth": 0.004988,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 106,
+   "fire_block": 83313451,
+   "pull_block": 83313728,
+   "pull_offset": 383,
+   "pull_after_first_crowd_buy": 277,
+   "crowd_real_buys_before_pull": 16,
+   "crowd_wallets": 11,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      108,
+      111
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      109,
+      112
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83313758
+  },
+  {
+   "block": 83314335,
+   "time_utc": "2026-10-08 12:28:39",
+   "pid": "0x8dca7e694580f22de354347a5f4efb79ce20dddf723879d29dc3008c3ad6cd0e",
+   "kind": "orig",
+   "scheme": "no_crowd_buy",
+   "fee_ppm": 380,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": "no real-size buy within 150 blocks",
+   "deployer": "0x56e3d10998fd064bbfa2eb67d7e1e45b2da273bd",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 38691103628612094682940,
+   "traded_by_us": false,
+   "trigger_offset": null,
+   "trigger_value_eth": null,
+   "trigger_cls": null,
+   "first_crowd_buy_offset": null,
+   "fire_block": null,
+   "pull_block": 83319245,
+   "pull_offset": 4910,
+   "pull_after_first_crowd_buy": null,
+   "crowd_real_buys_before_pull": 0,
+   "crowd_wallets": 0,
+   "dust_buy_offsets": [
+    41
+   ],
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83319275
+  },
+  {
+   "block": 83323064,
+   "time_utc": "2026-10-08 12:43:32",
+   "pid": "0xad1607f292a6e09ebdc2d00cc5cc2fec96d48de249a3abc2ed151b25aec618d8",
+   "kind": "orig",
+   "scheme": "no_crowd_buy",
+   "fee_ppm": 380,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": "no real-size buy within 150 blocks",
+   "deployer": "0x583fec3510ed754c5953559af2598262fbdc7a9a",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 31591153825082109526668,
+   "traded_by_us": false,
+   "trigger_offset": null,
+   "trigger_value_eth": null,
+   "trigger_cls": null,
+   "first_crowd_buy_offset": null,
+   "fire_block": null,
+   "pull_block": 83339058,
+   "pull_offset": 15994,
+   "pull_after_first_crowd_buy": null,
+   "crowd_real_buys_before_pull": 0,
+   "crowd_wallets": 0,
+   "dust_buy_offsets": [
+    118
+   ],
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83339088
+  },
+  {
+   "block": 83341600,
+   "time_utc": "2026-10-08 13:15:23",
+   "pid": "0x3a922cb2f3a9e6e48df0a766704ccfdc71ab513c569ab18bb9dee01f0aaefa2e",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x1b676fa701e2885819b66b08fdcf98f344644dd5",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 30791247944830037368999,
+   "traded_by_us": true,
+   "trigger_offset": 142,
+   "trigger_value_eth": 0.005295,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 142,
+   "fire_block": 83341742,
+   "pull_block": 83341749,
+   "pull_offset": 149,
+   "pull_after_first_crowd_buy": 7,
+   "crowd_real_buys_before_pull": 2,
+   "crowd_wallets": 2,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      144,
+      147
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      145,
+      148
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": {
+    "n": 1,
+    "entry": "follow",
+    "buy_block": 83341743,
+    "live": {
+     "eth_in": 0.0012,
+     "eth_out": 0.001290339500082929,
+     "gas_eth": 4.301606636e-06,
+     "gas_usd": 0.0111,
+     "ret": 0.0717,
+     "pnl_eth": 8.6037893446929e-05,
+     "pnl_usd": 0.221,
+     "buy_gas_used": 103829,
+     "sell_gas_used": 103778,
+     "base_fee_gwei": 0.020516
+    },
+    "current_exit": {
+     "tp_checks_B_to_B2": [],
+     "would_take_profit": false,
+     "sell_send_block": 83341745,
+     "send_after_buy": 2,
+     "tp_ret_engine": null,
+     "tp_ret_chain_at_that_buy": null,
+     "fast": {
+      "sell_land_block": 83341746,
+      "after_buy": 3,
+      "eth_out": 1194291180041572,
+      "ret": -0.0083,
+      "pnl_eth": -1.0010426594428e-05,
+      "exit": "deadline"
+     },
+     "slow": {
+      "sell_land_block": 83341747,
+      "after_buy": 4,
+      "eth_out": 1290339500082929,
+      "ret": 0.0717,
+      "pnl_eth": 8.6037893446929e-05,
+      "exit": "deadline"
+     }
+    },
+    "pull_after_our_buy": 6,
+    "crowd_buys_behind_within_4": 1
+   },
+   "results": null,
+   "close_block": 83341779
+  },
+  {
+   "block": 83342087,
+   "time_utc": "2026-10-08 13:16:13",
+   "pid": "0x7cfa42321d3c75b3ebc274edeac8997e3a54fb7fe0bc566a0f9dee3fe15a8693",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x1b676fa701e2885819b66b08fdcf98f344644dd5",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 30791247944830037368999,
+   "traded_by_us": true,
+   "trigger_offset": 54,
+   "trigger_value_eth": 0.004399,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 54,
+   "fire_block": 83342141,
+   "pull_block": 83342149,
+   "pull_offset": 62,
+   "pull_after_first_crowd_buy": 8,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      56,
+      59
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      57,
+      60
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": {
+    "n": 2,
+    "entry": "follow",
+    "buy_block": 83342143,
+    "live": {
+     "eth_in": 0.0012,
+     "eth_out": 0.0,
+     "gas_eth": 4.927564416e-06,
+     "gas_usd": 0.0127,
+     "ret": -1.0041,
+     "pnl_eth": -0.001204927564416,
+     "pnl_usd": -3.097,
+     "buy_gas_used": 102976,
+     "sell_gas_used": 135200,
+     "base_fee_gwei": 0.020716
+    },
+    "current_exit": {
+     "tp_checks_B_to_B2": [
+      {
+       "block_after_buy": 1,
+       "eth": 0.0396,
+       "cls": "crowd",
+       "ret_engine_feed": 0.0749,
+       "ret_chain": 0.0749
+      }
+     ],
+     "would_take_profit": true,
+     "sell_send_block": 83342144,
+     "send_after_buy": 1,
+     "tp_ret_engine": 0.0749,
+     "tp_ret_chain_at_that_buy": 0.0749,
+     "fast": {
+      "sell_land_block": 83342145,
+      "after_buy": 2,
+      "eth_out": 1295115735179446,
+      "ret": 0.0752,
+      "pnl_eth": 9.0188170763446e-05,
+      "exit": "take_profit"
+     },
+     "slow": {
+      "sell_land_block": 83342146,
+      "after_buy": 3,
+      "eth_out": 1295115735179446,
+      "ret": 0.0752,
+      "pnl_eth": 9.0188170763446e-05,
+      "exit": "take_profit"
+     }
+    },
+    "pull_after_our_buy": 6,
+    "crowd_buys_behind_within_4": 2
+   },
+   "results": null,
+   "close_block": 83342179
+  },
+  {
+   "block": 83342440,
+   "time_utc": "2026-10-08 13:16:50",
+   "pid": "0xf36b6bac46e0fe9b23685090cf447421b4846eded86f2d0de8403912600cbd78",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x7261b7d6d7f62bda4132e6e92779584589307291",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 30791247944830037368999,
+   "traded_by_us": true,
+   "trigger_offset": 53,
+   "trigger_value_eth": 0.004972,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 53,
+   "fire_block": 83342493,
+   "pull_block": 83342501,
+   "pull_offset": 61,
+   "pull_after_first_crowd_buy": 8,
+   "crowd_real_buys_before_pull": 2,
+   "crowd_wallets": 2,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      55,
+      58
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      56,
+      59
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": {
+    "n": 3,
+    "entry": "follow",
+    "buy_block": 83342495,
+    "live": {
+     "eth_in": 0.0012,
+     "eth_out": 0.0,
+     "gas_eth": 5.002321704e-06,
+     "gas_usd": 0.0129,
+     "ret": -1.0042,
+     "pnl_eth": -0.001205002321704,
+     "pnl_usd": -3.097,
+     "buy_gas_used": 103861,
+     "sell_gas_used": 135200,
+     "base_fee_gwei": 0.021064
+    },
+    "current_exit": {
+     "tp_checks_B_to_B2": [
+      {
+       "block_after_buy": 1,
+       "eth": 0.02984,
+       "cls": "crowd",
+       "ret_engine_feed": 0.0538,
+       "ret_chain": 0.0538
+      }
+     ],
+     "would_take_profit": true,
+     "sell_send_block": 83342496,
+     "send_after_buy": 1,
+     "tp_ret_engine": 0.0538,
+     "tp_ret_chain_at_that_buy": 0.0538,
+     "fast": {
+      "sell_land_block": 83342497,
+      "after_buy": 2,
+      "eth_out": 1269846160400969,
+      "ret": 0.054,
+      "pnl_eth": 6.4843838696969e-05,
+      "exit": "take_profit"
+     },
+     "slow": {
+      "sell_land_block": 83342498,
+      "after_buy": 3,
+      "eth_out": 1269846160400969,
+      "ret": 0.054,
+      "pnl_eth": 6.4843838696969e-05,
+      "exit": "take_profit"
+     }
+    },
+    "pull_after_our_buy": 6,
+    "crowd_buys_behind_within_4": 1
+   },
+   "results": null,
+   "close_block": 83342531
+  },
+  {
+   "block": 83342632,
+   "time_utc": "2026-10-08 13:17:10",
+   "pid": "0x7223753b88d181442c463554bbd8cc834f27930a456d1e4559012061ea9a7293",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x7261b7d6d7f62bda4132e6e92779584589307291",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 30791247944830037368999,
+   "traded_by_us": true,
+   "trigger_offset": 46,
+   "trigger_value_eth": 0.005405,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 46,
+   "fire_block": 83342678,
+   "pull_block": 83342688,
+   "pull_offset": 56,
+   "pull_after_first_crowd_buy": 10,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      48,
+      51
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": {
+    "n": 4,
+    "entry": "follow",
+    "buy_block": 83342680,
+    "live": {
+     "eth_in": 0.0012,
+     "eth_out": 0.001428979129876378,
+     "gas_eth": 4.27931797e-06,
+     "gas_usd": 0.011,
+     "ret": 0.1872,
+     "pnl_eth": 0.000224699811906378,
+     "pnl_usd": 0.577,
+     "buy_gas_used": 103793,
+     "sell_gas_used": 103810,
+     "base_fee_gwei": 0.02077
+    },
+    "current_exit": {
+     "tp_checks_B_to_B2": [
+      {
+       "block_after_buy": 1,
+       "eth": 0.03006,
+       "cls": "crowd",
+       "ret_engine_feed": 0.0543,
+       "ret_chain": 0.0543
+      }
+     ],
+     "would_take_profit": true,
+     "sell_send_block": 83342681,
+     "send_after_buy": 1,
+     "tp_ret_engine": 0.0543,
+     "tp_ret_chain_at_that_buy": 0.0543,
+     "fast": {
+      "sell_land_block": 83342682,
+      "after_buy": 2,
+      "eth_out": 1270371213071358,
+      "ret": 0.0551,
+      "pnl_eth": 6.6091895101358e-05,
+      "exit": "take_profit"
+     },
+     "slow": {
+      "sell_land_block": 83342683,
+      "after_buy": 3,
+      "eth_out": 1270371213071358,
+      "ret": 0.0551,
+      "pnl_eth": 6.6091895101358e-05,
+      "exit": "take_profit"
+     }
+    },
+    "pull_after_our_buy": 8,
+    "crowd_buys_behind_within_4": 1
+   },
+   "results": null,
+   "close_block": 83342718
+  },
+  {
+   "block": 83343251,
+   "time_utc": "2026-10-08 13:18:12",
+   "pid": "0x16df28261b841789c68f66f5cebd3cbdcfb0e599e8b60f49da59cb2c0fa52217",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x962ee746c2016cff4c4f8449af5a5636bfb2d9db",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 30791247944830037368999,
+   "traded_by_us": true,
+   "trigger_offset": 51,
+   "trigger_value_eth": 0.006028,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 51,
+   "fire_block": 83343302,
+   "pull_block": 83343317,
+   "pull_offset": 66,
+   "pull_after_first_crowd_buy": 15,
+   "crowd_real_buys_before_pull": 2,
+   "crowd_wallets": 2,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      53,
+      56
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      54,
+      57
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": {
+    "n": 5,
+    "entry": "follow",
+    "buy_block": 83343304,
+    "live": {
+     "eth_in": 0.0012,
+     "eth_out": 0.001294556041757788,
+     "gas_eth": 4.368313322e-06,
+     "gas_usd": 0.0112,
+     "ret": 0.0752,
+     "pnl_eth": 9.0187728435788e-05,
+     "pnl_usd": 0.232,
+     "buy_gas_used": 103913,
+     "sell_gas_used": 103894,
+     "base_fee_gwei": 0.021146
+    },
+    "current_exit": {
+     "tp_checks_B_to_B2": [
+      {
+       "block_after_buy": 1,
+       "eth": 0.03945,
+       "cls": "crowd",
+       "ret_engine_feed": 0.0744,
+       "ret_chain": 0.0744
+      }
+     ],
+     "would_take_profit": true,
+     "sell_send_block": 83343305,
+     "send_after_buy": 1,
+     "tp_ret_engine": 0.0744,
+     "tp_ret_chain_at_that_buy": 0.0744,
+     "fast": {
+      "sell_land_block": 83343306,
+      "after_buy": 2,
+      "eth_out": 1294556041757788,
+      "ret": 0.0752,
+      "pnl_eth": 9.0187728435788e-05,
+      "exit": "take_profit"
+     },
+     "slow": {
+      "sell_land_block": 83343307,
+      "after_buy": 3,
+      "eth_out": 1294556041757788,
+      "ret": 0.0752,
+      "pnl_eth": 9.0187728435788e-05,
+      "exit": "take_profit"
+     }
+    },
+    "pull_after_our_buy": 13,
+    "crowd_buys_behind_within_4": 1
+   },
+   "results": null,
+   "close_block": 83343347
+  },
+  {
+   "block": 83343560,
+   "time_utc": "2026-10-08 13:18:45",
+   "pid": "0x3578b252bf1caccc90807eae00dfd4991fdfb20f0db1f44dc9f470674a611855",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 2383,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x73bd15c22dc25de135b82ae0e5fed3c78a308712",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 31113678181790079060282,
+   "traded_by_us": true,
+   "trigger_offset": 58,
+   "trigger_value_eth": 0.002995,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 58,
+   "fire_block": 83343618,
+   "pull_block": 83343626,
+   "pull_offset": 66,
+   "pull_after_first_crowd_buy": 8,
+   "crowd_real_buys_before_pull": 1,
+   "crowd_wallets": 1,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      60,
+      63
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      61,
+      64
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": {
+    "n": 6,
+    "entry": "follow",
+    "buy_block": 83343619,
+    "live": {
+     "eth_in": 0.0012,
+     "eth_out": 0.001194291115245132,
+     "gas_eth": 4.310778402e-06,
+     "gas_usd": 0.0111,
+     "ret": -0.0083,
+     "pnl_eth": -1.0019663156868e-05,
+     "pnl_usd": -0.026,
+     "buy_gas_used": 103881,
+     "sell_gas_used": 103938,
+     "base_fee_gwei": 0.020938
+    },
+    "current_exit": {
+     "tp_checks_B_to_B2": [],
+     "would_take_profit": false,
+     "sell_send_block": 83343621,
+     "send_after_buy": 2,
+     "tp_ret_engine": null,
+     "tp_ret_chain_at_that_buy": null,
+     "fast": {
+      "sell_land_block": 83343622,
+      "after_buy": 3,
+      "eth_out": 1194291115245132,
+      "ret": -0.0083,
+      "pnl_eth": -1.0019663156868e-05,
+      "exit": "deadline"
+     },
+     "slow": {
+      "sell_land_block": 83343623,
+      "after_buy": 4,
+      "eth_out": 1194291115245132,
+      "ret": -0.0083,
+      "pnl_eth": -1.0019663156868e-05,
+      "exit": "deadline"
+     }
+    },
+    "pull_after_our_buy": 7,
+    "crowd_buys_behind_within_4": 0
+   },
+   "results": null,
+   "close_block": 83343656
+  },
+  {
+   "block": 83344131,
+   "time_utc": "2026-10-08 13:19:44",
+   "pid": "0x7490a93cfe6359ce872bc44cb3b3bccc1877a6517f44daa0d7ca602aca542043",
+   "kind": "orig",
+   "scheme": "orig_quick_pull",
+   "fee_ppm": 824,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x867bac0f25cfeb2bfdfe083192a4e40fc51ccbc9",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 30952882902889675746352,
+   "traded_by_us": true,
+   "trigger_offset": 108,
+   "trigger_value_eth": 0.015855,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 108,
+   "fire_block": 83344239,
+   "pull_block": 83344245,
+   "pull_offset": 114,
+   "pull_after_first_crowd_buy": 6,
+   "crowd_real_buys_before_pull": 1,
+   "crowd_wallets": 1,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      110,
+      113
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      111,
+      114
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": true
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": {
+    "n": 7,
+    "entry": "follow",
+    "buy_block": 83344240,
+    "live": {
+     "eth_in": 0.0012,
+     "eth_out": 0.0,
+     "gas_eth": 4.995822018e-06,
+     "gas_usd": 0.0128,
+     "ret": -1.0042,
+     "pnl_eth": -0.001204995822018,
+     "pnl_usd": -3.097,
+     "buy_gas_used": 103861,
+     "sell_gas_used": 135200,
+     "base_fee_gwei": 0.020538
+    },
+    "current_exit": {
+     "tp_checks_B_to_B2": [],
+     "would_take_profit": false,
+     "sell_send_block": 83344242,
+     "send_after_buy": 2,
+     "tp_ret_engine": null,
+     "tp_ret_chain_at_that_buy": null,
+     "fast": {
+      "sell_land_block": 83344243,
+      "after_buy": 3,
+      "eth_out": 1198024427404399,
+      "ret": -0.0058,
+      "pnl_eth": -6.971394613601e-06,
+      "exit": "deadline"
+     },
+     "slow": {
+      "sell_land_block": 83344244,
+      "after_buy": 4,
+      "eth_out": 1198024427404399,
+      "ret": -0.0058,
+      "pnl_eth": -6.971394613601e-06,
+      "exit": "deadline"
+     }
+    },
+    "pull_after_our_buy": 5,
+    "crowd_buys_behind_within_4": 0
+   },
+   "results": null,
+   "close_block": 83344275
+  },
+  {
+   "block": 83345195,
+   "time_utc": "2026-10-08 13:21:35",
+   "pid": "0x751af83fb2d7dd1118449a6ad4e48f9ec86a1500751a605637bf3f03384dff3a",
+   "kind": "orig",
+   "scheme": "orig_fresh",
+   "fee_ppm": 824,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": "no real-size buy within 150 blocks",
+   "deployer": "0x1fd5451b27d8e68c8f49ef14aea7336b8ea1ac79",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 30301170274429996014809,
+   "traded_by_us": false,
+   "trigger_offset": 208,
+   "trigger_value_eth": 0.00393,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 208,
+   "fire_block": 83345403,
+   "pull_block": 83352773,
+   "pull_offset": 7578,
+   "pull_after_first_crowd_buy": 7370,
+   "crowd_real_buys_before_pull": 59,
+   "crowd_wallets": 12,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      210,
+      213
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      211,
+      214
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83352803
+  },
+  {
+   "block": 83386507,
+   "time_utc": "2026-10-08 14:32:16",
+   "pid": "0xe27bfddf52e8841e7999df7855fd2b8b597dc4a0c34e08baaeb272913183e175",
+   "kind": "orig",
+   "scheme": "orig_crowdB",
+   "fee_ppm": 250,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x1821144f9d9c8f773ba295641a5a730c9b8cb066",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 58251209429504551704032,
+   "traded_by_us": true,
+   "trigger_offset": 44,
+   "trigger_value_eth": 0.022981,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 44,
+   "fire_block": 83386551,
+   "pull_block": 83396408,
+   "pull_offset": 9901,
+   "pull_after_first_crowd_buy": 9857,
+   "crowd_real_buys_before_pull": 169,
+   "crowd_wallets": 29,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      46,
+      49
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      47,
+      50
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [
+    {
+     "offset": 2416,
+     "block": 83388923,
+     "wallet": "0x2bf73b90f9ef46ff33627a0b615c6b2d25c8863d",
+     "nonce": 9877,
+     "eth": 0.00099,
+     "via": "65050a9b",
+     "fingerprint": {
+      "type": 2,
+      "gas": 506706,
+      "prio": 50000000,
+      "len": 580,
+      "dl_max": null
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 0,
+     "crowd_buys_next_1_10": 0,
+     "crowd_buys_until_pull": 22,
+     "first_crowd_buy_after": 100,
+     "crowd_buys_prev_10": 0,
+     "pull_after": 7485,
+     "baseline_pulled_within_same_gap": "1/1",
+     "baseline_crowd_buys_next_1_10": 0,
+     "baseline_n": 1,
+     "baseline_crowd_buys_prev_10": 0
+    },
+    {
+     "offset": 9894,
+     "block": 83396401,
+     "wallet": "0xabb2acd3be814a80e502575d6c1dc5f789e9cd10",
+     "nonce": 1400178,
+     "eth": 0.057378,
+     "via": "8f10b468",
+     "fingerprint": {
+      "type": 2,
+      "gas": 1325508,
+      "prio": 0,
+      "len": 7076,
+      "dl_max": null
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 0,
+     "crowd_buys_next_1_10": 0,
+     "crowd_buys_until_pull": 0,
+     "first_crowd_buy_after": null,
+     "crowd_buys_prev_10": 0,
+     "pull_after": 7,
+     "baseline_pulled_within_same_gap": "0/0",
+     "baseline_crowd_buys_next_1_10": null,
+     "baseline_n": 0,
+     "baseline_crowd_buys_prev_10": null
+    }
+   ],
+   "live": {
+    "n": 8,
+    "entry": "follow",
+    "buy_block": 83386552,
+    "live": {
+     "eth_in": 0.0012,
+     "eth_out": 0.001088471991339004,
+     "gas_eth": 5.24551656e-06,
+     "gas_usd": 0.0135,
+     "ret": -0.0973,
+     "pnl_eth": -0.000116773525220996,
+     "pnl_usd": -0.3,
+     "buy_gas_used": 116466,
+     "sell_gas_used": 126940,
+     "base_fee_gwei": 0.02166
+    },
+    "current_exit": {
+     "tp_checks_B_to_B2": [],
+     "would_take_profit": false,
+     "sell_send_block": 83386554,
+     "send_after_buy": 2,
+     "tp_ret_engine": null,
+     "tp_ret_chain_at_that_buy": null,
+     "fast": {
+      "sell_land_block": 83386555,
+      "after_buy": 3,
+      "eth_out": 1199400180160343,
+      "ret": -0.0049,
+      "pnl_eth": -5.845336399657e-06,
+      "exit": "deadline"
+     },
+     "slow": {
+      "sell_land_block": 83386556,
+      "after_buy": 4,
+      "eth_out": 1209369329891823,
+      "ret": 0.0034,
+      "pnl_eth": 4.123813331823e-06,
+      "exit": "deadline"
+     }
+    },
+    "pull_after_our_buy": 9856,
+    "crowd_buys_behind_within_4": 1
+   },
+   "results": null,
+   "close_block": 83396438
+  },
+  {
+   "block": 83402323,
+   "time_utc": "2026-10-08 14:59:03",
+   "pid": "0xe95f3c88ff443edba91488d58a8b876c3913df30a9419881d8f78cbe3da30a2f",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xf5b221801c2982ad24c380dfdd4e5e6dc93a6c6f",
+   "launcher": "0x816d73e4f67b671d376973975da0afca1d738d78",
+   "liquidity": 68210561220385806176187,
+   "traded_by_us": false,
+   "trigger_offset": 7,
+   "trigger_value_eth": 0.081676,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 7,
+   "fire_block": 83402329,
+   "pull_block": 83402720,
+   "pull_offset": 397,
+   "pull_after_first_crowd_buy": 390,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    5
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      9,
+      12
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      10,
+      13
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83402750
+  },
+  {
+   "block": 83402918,
+   "time_utc": "2026-10-08 15:00:03",
+   "pid": "0x5c636cccb28865a50c9a9a17e11101e418f97febd6ba805d8f7dca2288c3d7ff",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xf663bf64a2931322a057c892d116cc9c47a6fd8d",
+   "launcher": "0x10fec69ac934fb684a52a88c57617baa8169e42b",
+   "liquidity": 69241582910849171314093,
+   "traded_by_us": false,
+   "trigger_offset": 8,
+   "trigger_value_eth": 0.112059,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 8,
+   "fire_block": 83402924,
+   "pull_block": 83403321,
+   "pull_offset": 403,
+   "pull_after_first_crowd_buy": 395,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      10,
+      13
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 2,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83403351
+  },
+  {
+   "block": 83403507,
+   "time_utc": "2026-10-08 15:01:04",
+   "pid": "0x8b31207a22d04ce624967ab357ce214309df79fb7f2c0e64cc1610a329a7fd2e",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xa416c591c1c67cfd36bbcdc8fd2093742344a4bc",
+   "launcher": "0x82401eb5f95494aaec71d8aec177d5f24fecd0e2",
+   "liquidity": 69241582910849171314093,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.014033,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83403513,
+   "pull_block": 83403912,
+   "pull_offset": 405,
+   "pull_after_first_crowd_buy": 396,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83403942
+  },
+  {
+   "block": 83404095,
+   "time_utc": "2026-10-08 15:02:04",
+   "pid": "0xa0e5acee0738413ebb323eb7473295b548de06c551a9c7d8d2f6c9ba2acaa2ad",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x9024fcbbae43083d949e9af6d3fb44c483ab5f34",
+   "launcher": "0xc020bee2359e82cab4c94743167178de614f082a",
+   "liquidity": 66100290301934378115706,
+   "traded_by_us": false,
+   "trigger_offset": 10,
+   "trigger_value_eth": 0.020854,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 10,
+   "fire_block": 83404101,
+   "pull_block": 83404501,
+   "pull_offset": 406,
+   "pull_after_first_crowd_buy": 396,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      13,
+      16
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83404531
+  },
+  {
+   "block": 83404682,
+   "time_utc": "2026-10-08 15:03:03",
+   "pid": "0xe9e8d4284a7961e824b847c9acd376db18fb6610d641af2abb9dd285f1435d7b",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xdc576ec2f731b53546096b9809d111319edf021c",
+   "launcher": "0xe7036b8aa2efcafd6617d322d565a0875626bdf4",
+   "liquidity": 59320751225856875522266,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.055804,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83404688,
+   "pull_block": 83405084,
+   "pull_offset": 402,
+   "pull_after_first_crowd_buy": 393,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83405114
+  },
+  {
+   "block": 83405273,
+   "time_utc": "2026-10-08 15:04:04",
+   "pid": "0x5e59113280df1bf3d132ed33cfe631ad249ac6ada9775bd3784532f1a808ac9c",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x1aad619171a3b20e1f9e49bf6cd9e42e05fde36a",
+   "launcher": "0xd1cc99aa33b6cfc5246d8f7c4fc4492c367425bc",
+   "liquidity": 68210561220385806176187,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.025145,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83405279,
+   "pull_block": 83405675,
+   "pull_offset": 402,
+   "pull_after_first_crowd_buy": 393,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83405705
+  },
+  {
+   "block": 83405861,
+   "time_utc": "2026-10-08 15:05:04",
+   "pid": "0x10d97f58f729bac61f1afbabc93abe124c9c7903066020ab2ed91b30bf97f333",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xee3b3fb57a9c83e6ee0e6cab6402a62f0e4978c7",
+   "launcher": "0xe6da1578a280c1a903358f8c3b80fece1c017c01",
+   "liquidity": 70257476086178899969115,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.023957,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83405867,
+   "pull_block": 83406266,
+   "pull_offset": 405,
+   "pull_after_first_crowd_buy": 396,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83406296
+  },
+  {
+   "block": 83406448,
+   "time_utc": "2026-10-08 15:06:03",
+   "pid": "0xdade93d981047ef5a91176f213efb90d130cd58276415d3df941859aad30df79",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xcc014527b6b00fa7cabe88429c137a9e3ff754cb",
+   "launcher": "0xbe7ae4428ca72e754adf0b8c72e546a0ce4b610c",
+   "liquidity": 56881624818565089930899,
+   "traded_by_us": false,
+   "trigger_offset": 8,
+   "trigger_value_eth": 0.087455,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 8,
+   "fire_block": 83406454,
+   "pull_block": 83406863,
+   "pull_offset": 415,
+   "pull_after_first_crowd_buy": 407,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      10,
+      13
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83406893
+  },
+  {
+   "block": 83407050,
+   "time_utc": "2026-10-08 15:07:03",
+   "pid": "0xf408c8359fc60c0fb77814e9dfea81ea3baced334ba86ce0232a0672c4a9aa57",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x93b027aa96ae919bfd08cac700d97519f1b7d317",
+   "launcher": "0x05495193f099ab7f9c9d3add1112cc948a27d944",
+   "liquidity": 69241582910849171314093,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.07837,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83407056,
+   "pull_block": 83407450,
+   "pull_offset": 400,
+   "pull_after_first_crowd_buy": 391,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83407480
+  },
+  {
+   "block": 83407637,
+   "time_utc": "2026-10-08 15:08:04",
+   "pid": "0x44c1a6013245eadccbe464dd0ba363faa5f66f07c523df26ea24e57cbb6a0283",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x28ca2011d5636045390472d0d1b4ad593de9b2f7",
+   "launcher": "0x30c9e182d185838de02b2ef339f4045e4d5d349b",
+   "liquidity": 55621965984671919001972,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.02875,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83407643,
+   "pull_block": 83408043,
+   "pull_offset": 406,
+   "pull_after_first_crowd_buy": 397,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83408073
+  },
+  {
+   "block": 83408225,
+   "time_utc": "2026-10-08 15:09:03",
+   "pid": "0x653f5e578f5ef00b2490b0d71862ed89fa6108824f521d802e25c3aa36915942",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x4327db37fec04bba860fe465eead6c900fe0fe56",
+   "launcher": "0x0191f1573e6960b298b226f34c2bb3409fede8ed",
+   "liquidity": 63920388719093378179311,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.017617,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83408231,
+   "pull_block": 83408630,
+   "pull_offset": 405,
+   "pull_after_first_crowd_buy": 396,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83408660
+  },
+  {
+   "block": 83408816,
+   "time_utc": "2026-10-08 15:10:03",
+   "pid": "0x44ad39be34da319c699b7bf74ae5594d19bed0de8528f4f1cb9875f98ab5f9ed",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x1504478184c78257cad980edf7690051c922acad",
+   "launcher": "0x20abc4df7429d86593fb4a96ab9494ca452458ce",
+   "liquidity": 59320751225856875522266,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.107354,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83408822,
+   "pull_block": 83409221,
+   "pull_offset": 405,
+   "pull_after_first_crowd_buy": 396,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83409251
+  },
+  {
+   "block": 83409408,
+   "time_utc": "2026-10-08 15:11:03",
+   "pid": "0x0501f8474442b012547016b04376bf5c315a9f7f6d0aefd825784cf12dffa38b",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xdb81493bdc67296650b247b805606faf3b4b307d",
+   "launcher": "0x0c0cc985d103dd9b793679c6305c8cb99b4106d4",
+   "liquidity": 56881624818565089930899,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.049185,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83409414,
+   "pull_block": 83409804,
+   "pull_offset": 396,
+   "pull_after_first_crowd_buy": 387,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83409834
+  },
+  {
+   "block": 83409990,
+   "time_utc": "2026-10-08 15:12:03",
+   "pid": "0x2a489604f7435bd170fa24cf58d79e0feaac7bd3d538cba580d174737d810602",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x8758ba46e94985b78d9914d8e7386279123f9a10",
+   "launcher": "0x412492f0f3a2cc7e8bb2fd3dad240249eb9a770b",
+   "liquidity": 56881624818565089930899,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.056358,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83409996,
+   "pull_block": 83410394,
+   "pull_offset": 404,
+   "pull_after_first_crowd_buy": 395,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83410424
+  },
+  {
+   "block": 83410594,
+   "time_utc": "2026-10-08 15:13:03",
+   "pid": "0x0935f63371a18f9f4358f6fe416efbd71a4a3bb35512277daefa38219572316e",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x33184a9eb796060d15f4eb8ccd361249421beb99",
+   "launcher": "0x50a555d7139d04e3d1667ac1e5da8b81928044e7",
+   "liquidity": 56881624818565089930899,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.114826,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83410600,
+   "pull_block": 83410993,
+   "pull_offset": 399,
+   "pull_after_first_crowd_buy": 390,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83411023
+  },
+  {
+   "block": 83411178,
+   "time_utc": "2026-10-08 15:14:03",
+   "pid": "0x9b248cd01c21ea7c349834d6d384c9a9277d1bbd6333445f0b1f6cfdc3aaedfc",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x2baa9222d82e510c17621eda0c2faa014878d400",
+   "launcher": "0x5412f0c6e0e5f03c149778d7099e0dba9310091d",
+   "liquidity": 60503451703187976050544,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.06594,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83411184,
+   "pull_block": 83411581,
+   "pull_offset": 403,
+   "pull_after_first_crowd_buy": 394,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    2
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83411611
+  },
+  {
+   "block": 83412341,
+   "time_utc": "2026-10-08 15:16:04",
+   "pid": "0x2b12f1eeeac79566f8f999ab24f2b12dad043e10d3cc4747ca1e4c74db2cc701",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x23c4081763563b67d40dae5686fcbaf0779c06a7",
+   "launcher": "0x131119ee0015e82a12c365c7c7504756736fd2fb",
+   "liquidity": 60503451703187976050544,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.084088,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83412347,
+   "pull_block": 83412740,
+   "pull_offset": 399,
+   "pull_after_first_crowd_buy": 390,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83412770
+  },
+  {
+   "block": 83412923,
+   "time_utc": "2026-10-08 15:17:03",
+   "pid": "0x967d7232ffce1d5cd919b164bd30b2ac62db4b66227878b5b27bc326b0560e33",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xdfb31688cc1f3c5b4f77735cc4fe00adcd7437e8",
+   "launcher": "0x2496ec44af867f5f0b00febd502401cd9c1ae8e0",
+   "liquidity": 66100290301934378115706,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.028746,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83412929,
+   "pull_block": 83413325,
+   "pull_offset": 402,
+   "pull_after_first_crowd_buy": 393,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83413355
+  },
+  {
+   "block": 83413506,
+   "time_utc": "2026-10-08 15:18:04",
+   "pid": "0x56b325c99b88ec23462d1fc806eb009b5524b613688ca072462848c00b6ed223",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x4d5d53f16cc899fb8f42b7373d28d5e552468e50",
+   "launcher": "0x04f073d22e02848270ffa2c6d2e0dfdab4fb1ca9",
+   "liquidity": 68210561220385806176187,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.109938,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83413512,
+   "pull_block": 83413907,
+   "pull_offset": 401,
+   "pull_after_first_crowd_buy": 392,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83413937
+  },
+  {
+   "block": 83414061,
+   "time_utc": "2026-10-08 15:19:04",
+   "pid": "0x796dbb7b27cebbdbb45938087f1ce9c37b657e53c06c6cdf483ca9a01b679653",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xcd3f214ee31cce473b83845e82bdaf7efe137366",
+   "launcher": "0xf487824142cf504ff0c876cadb9f9c5408dafaaf",
+   "liquidity": 60503451703187976050544,
+   "traded_by_us": false,
+   "trigger_offset": 10,
+   "trigger_value_eth": 0.061112,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 10,
+   "fire_block": 83414067,
+   "pull_block": 83414474,
+   "pull_offset": 413,
+   "pull_after_first_crowd_buy": 403,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      13,
+      16
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83414504
+  },
+  {
+   "block": 83414658,
+   "time_utc": "2026-10-08 15:20:04",
+   "pid": "0xfd6496b4ef1fae3521b808fe2c8f6c4ae00aa583b08852829172f7e83e7bb460",
+   "kind": "copy",
+   "scheme": "copy_burst_only",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x040c578f714a9a282e8d44dc3618fd225f0ffb27",
+   "launcher": "0x689bb39f281e36a24df8da42de90cd708afaad10",
+   "liquidity": 56881624818565089930899,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.101835,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83414664,
+   "pull_block": 83415012,
+   "pull_offset": 354,
+   "pull_after_first_crowd_buy": 345,
+   "crowd_real_buys_before_pull": 3,
+   "crowd_wallets": 3,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83415042
+  },
+  {
+   "block": 83425344,
+   "time_utc": "2026-10-08 15:39:10",
+   "pid": "0x358c8c95b0d602fc193db18b45d2a65fa38668de846fa3a39fd97b4938cc747d",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xc423cbd20bb5171c5cc46136a35ba0d27d85308e",
+   "launcher": "0x8ea696dbe340eee0af1d3fd3ad04509fe9d0e229",
+   "liquidity": 63920388719093378179311,
+   "traded_by_us": false,
+   "trigger_offset": 8,
+   "trigger_value_eth": 0.042273,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 8,
+   "fire_block": 83425350,
+   "pull_block": 83426815,
+   "pull_offset": 1471,
+   "pull_after_first_crowd_buy": 1463,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      10,
+      13
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83426845
+  },
+  {
+   "block": 83427094,
+   "time_utc": "2026-10-08 15:42:10",
+   "pid": "0x747fb175319913dc8d42c935295e7da7e0bc3259b133c1a754498cfa611a0bf0",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x7ee4b168d73cbc4347fa2e3fdda473c9fb6a5788",
+   "launcher": "0x65229b5751fb2274429147c424de680ef775cfb0",
+   "liquidity": 55621965984671919001972,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.040157,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83427100,
+   "pull_block": 83428573,
+   "pull_offset": 1479,
+   "pull_after_first_crowd_buy": 1470,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83428603
+  },
+  {
+   "block": 83428891,
+   "time_utc": "2026-10-08 15:45:10",
+   "pid": "0x1e95654457c0920d5e599d2b5280110d4014b8a2e59cbbadfb7c0715e93c5370",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 300,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x7ec14b90ce6699c1b2c60305a13e707214373490",
+   "launcher": "0x10c6eeea66a155a9ea9bb9d873a0e4f807578b75",
+   "liquidity": 61663472250595814141001,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.029161,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83428897,
+   "pull_block": 83430369,
+   "pull_offset": 1478,
+   "pull_after_first_crowd_buy": 1469,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83430399
+  },
+  {
+   "block": 83430652,
+   "time_utc": "2026-10-08 15:48:10",
+   "pid": "0x01de1153f6f620d59b6f01650dcc02837abb1ef9f16d3215920abe708c40d93b",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xd4425f9972032d0bd2f33c619bcaa72f1199c00c",
+   "launcher": "0x3ea20fc060a3284bb1b62e06120820ad7b2f8728",
+   "liquidity": 59320751225856875522266,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.027277,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83430658,
+   "pull_block": 83432125,
+   "pull_offset": 1473,
+   "pull_after_first_crowd_buy": 1464,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83432155
+  },
+  {
+   "block": 83432432,
+   "time_utc": "2026-10-08 15:51:10",
+   "pid": "0xd22aa85c62053cb0dd442c9b1f82aba167106992fb7c565306ad54d91fe62c89",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xd8509b181566440b4410b6ffff55befdeb602b64",
+   "launcher": "0xabd38a5ef74a169095be407d639cc769a621c6d6",
+   "liquidity": 63920388719093378179311,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.049387,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83432438,
+   "pull_block": 83433910,
+   "pull_offset": 1478,
+   "pull_after_first_crowd_buy": 1469,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83433940
+  },
+  {
+   "block": 83434196,
+   "time_utc": "2026-10-08 15:54:11",
+   "pid": "0x6ebc44f1bfd8ef57c315ad5f0d38f170bd7e49b41b8d5cf997e130ca693dd2d6",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x9ddfa771d6a3f0ccfd5104cb8ff01c89cd5ac3b9",
+   "launcher": "0x0ffabeffbc2830c5bc9bf3386c29738a7540192e",
+   "liquidity": 67014957285668697201382,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.083836,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83434202,
+   "pull_block": 83435670,
+   "pull_offset": 1474,
+   "pull_after_first_crowd_buy": 1465,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    9
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83435700
+  },
+  {
+   "block": 83435949,
+   "time_utc": "2026-10-08 15:57:11",
+   "pid": "0x323ce6e7e03f9619ef9735b40ade13b9f712146fb862e3994589ffc4210e885e",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 200,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xe5311fd784eb36d567ee95f9a475ec833ce8d8a9",
+   "launcher": "0x6280adc6c6d602aed8cf6e67b93176d4ee99da31",
+   "liquidity": 63920388719093378179311,
+   "traded_by_us": false,
+   "trigger_offset": 11,
+   "trigger_value_eth": 0.019349,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 11,
+   "fire_block": 83435955,
+   "pull_block": 83437443,
+   "pull_offset": 1494,
+   "pull_after_first_crowd_buy": 1483,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    5
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      13,
+      16
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      14,
+      17
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83437473
+  },
+  {
+   "block": 83439324,
+   "time_utc": "2026-10-08 16:03:11",
+   "pid": "0xd45759b57317aa7d5fef9ac307d4beabd049728da7b356241322db547b7327c3",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 200,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xbb1a2338390f5825ea03eb8e6e3354a1bde1abe0",
+   "launcher": "0x6809c78bb79575c898573ff919211ae32e1b6b02",
+   "liquidity": 60503451703187976050544,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.01661,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83439330,
+   "pull_block": 83440800,
+   "pull_offset": 1476,
+   "pull_after_first_crowd_buy": 1467,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83440830
+  },
+  {
+   "block": 83441072,
+   "time_utc": "2026-10-08 16:06:10",
+   "pid": "0x7006d3fc65e1a3e3f99e9ef0a87eff2752b10bb18f1558a5fc8c4290c5bf775b",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 300,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x000a9afc4a988667b806234aa5e772e04b44d444",
+   "launcher": "0xec36f7bd3d98dee6924ced5e58f92cb3e77932e8",
+   "liquidity": 67014957285668697201382,
+   "traded_by_us": false,
+   "trigger_offset": 8,
+   "trigger_value_eth": 0.063022,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 8,
+   "fire_block": 83441078,
+   "pull_block": 83442497,
+   "pull_offset": 1425,
+   "pull_after_first_crowd_buy": 1417,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      10,
+      13
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83442527
+  },
+  {
+   "block": 83442774,
+   "time_utc": "2026-10-08 16:09:10",
+   "pid": "0xfb0ae07d1596a7f3539d664654b9a20abc93596d1557754335078c7c91fa957f",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 200,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x69a708c505e4e3b0f5b807e7910ec83d30441a77",
+   "launcher": "0x00344844739b38678e30f47405cbd19ff001f52a",
+   "liquidity": 66100290301934378115706,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.104212,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83442780,
+   "pull_block": 83444264,
+   "pull_offset": 1490,
+   "pull_after_first_crowd_buy": 1481,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83444294
+  },
+  {
+   "block": 83444547,
+   "time_utc": "2026-10-08 16:12:10",
+   "pid": "0x75d989838079663844ee551f7de9d23ffde4a6b8fde445b21650fefa31180980",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 200,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x9d69c135d9db211b3640da9b579a00a9212f967d",
+   "launcher": "0xe3bfbf60e23f176270b306bf3fa93e3afc774f05",
+   "liquidity": 55621965984671919001972,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.021423,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83444553,
+   "pull_block": 83445424,
+   "pull_offset": 877,
+   "pull_after_first_crowd_buy": 868,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [
+    {
+     "offset": 871,
+     "block": 83445418,
+     "wallet": "0x6d5a7ef926e71c3a81617800b633e830cb818e19",
+     "nonce": 603,
+     "eth": 0.002048,
+     "via": "36dc95f1",
+     "fingerprint": {
+      "type": 2,
+      "gas": 852097,
+      "prio": 10,
+      "len": 1796,
+      "dl_max": null
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 0,
+     "crowd_buys_next_1_10": 0,
+     "crowd_buys_until_pull": 0,
+     "first_crowd_buy_after": null,
+     "crowd_buys_prev_10": 0,
+     "pull_after": 6,
+     "baseline_pulled_within_same_gap": "0/27",
+     "baseline_crowd_buys_next_1_10": 0,
+     "baseline_n": 27,
+     "baseline_crowd_buys_prev_10": 0
+    }
+   ],
+   "live": null,
+   "results": null,
+   "close_block": 83445454
+  },
+  {
+   "block": 83448001,
+   "time_utc": "2026-10-08 16:18:11",
+   "pid": "0xbc3902718150de28f0bf1deee6d30dc46342aa913a70adb742445c40fc741364",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 300,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x7dbf87376e90f934b3cc9d456ce0a244a8c03687",
+   "launcher": "0x56502725b6595612f4a324df804303baf5bd673e",
+   "liquidity": 55621965984671919001972,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.025404,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83448007,
+   "pull_block": 83449468,
+   "pull_offset": 1467,
+   "pull_after_first_crowd_buy": 1458,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83449498
+  },
+  {
+   "block": 83449748,
+   "time_utc": "2026-10-08 16:21:11",
+   "pid": "0xd1ca6bcbed9405b7327763ee2dbb2db12ecd62f79c30511dcf722bb67185222c",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x9bfd627c81599020b3574e43b4f7e136c9f52622",
+   "launcher": "0x9597df7be0186f02fd834644a980bf5c8bb4e65f",
+   "liquidity": 56881624818565089930899,
+   "traded_by_us": false,
+   "trigger_offset": 8,
+   "trigger_value_eth": 0.116731,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 8,
+   "fire_block": 83449754,
+   "pull_block": 83451229,
+   "pull_offset": 1481,
+   "pull_after_first_crowd_buy": 1473,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      10,
+      13
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83451259
+  },
+  {
+   "block": 83451508,
+   "time_utc": "2026-10-08 16:24:10",
+   "pid": "0xdec4934516e726a0d722dc93a411ad9eedc32d176b01cdb64f9a75bd7032a215",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 300,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xe2bed792d0ac5eeba8079cf5645a9e6f1ff6631a",
+   "launcher": "0x5275cb1ec6de2e5c97c9b0b927ca8de654543a83",
+   "liquidity": 62802069647424837076952,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.072561,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83451514,
+   "pull_block": 83452989,
+   "pull_offset": 1481,
+   "pull_after_first_crowd_buy": 1472,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    9
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83453019
+  },
+  {
+   "block": 83453275,
+   "time_utc": "2026-10-08 16:27:11",
+   "pid": "0xa5054bc809ae5a289508cfafcf801d0f8a6322fa1c075b950654e6d6a4cbfab8",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 300,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x5c5f953396ba824dfced16636c26aff38fdfa503",
+   "launcher": "0x9a2028eed2853785eb1396fb6cec6fb75fbc93e3",
+   "liquidity": 56881624818565089930899,
+   "traded_by_us": false,
+   "trigger_offset": 8,
+   "trigger_value_eth": 0.027805,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 8,
+   "fire_block": 83453281,
+   "pull_block": 83454783,
+   "pull_offset": 1508,
+   "pull_after_first_crowd_buy": 1500,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      10,
+      13
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83454813
+  },
+  {
+   "block": 83456814,
+   "time_utc": "2026-10-08 16:33:10",
+   "pid": "0xf2995cfa03d3c388da7443188a893afa3210e6869a714d8c1860c5dd8995e334",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 200,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x637dc650cf2d72e4a648ba4341663e23f13bf046",
+   "launcher": "0x1fee9205661f4464bede362c8c74a89a29041620",
+   "liquidity": 58113986130706952220724,
+   "traded_by_us": false,
+   "trigger_offset": 13,
+   "trigger_value_eth": 0.044639,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 13,
+   "fire_block": 83456820,
+   "pull_block": 83458301,
+   "pull_offset": 1487,
+   "pull_after_first_crowd_buy": 1474,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      15,
+      18
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      16,
+      19
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83458331
+  },
+  {
+   "block": 83458603,
+   "time_utc": "2026-10-08 16:36:10",
+   "pid": "0x2d550bd2646a7f37f86bf94a2bfc00644d4eea623e5e620767ae07880998b842",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 200,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x5a78d3fe1fea78bf13bc53c5cb2d978d130393a8",
+   "launcher": "0x13f71ef6e863e665cc5fa27f57607fb387be21c9",
+   "liquidity": 67014957285668697201382,
+   "traded_by_us": false,
+   "trigger_offset": 8,
+   "trigger_value_eth": 0.084269,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 8,
+   "fire_block": 83458609,
+   "pull_block": 83460079,
+   "pull_offset": 1476,
+   "pull_after_first_crowd_buy": 1468,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      10,
+      13
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83460109
+  },
+  {
+   "block": 83460361,
+   "time_utc": "2026-10-08 16:39:10",
+   "pid": "0x4744b233fb6c725ab7b8b7fe5829f6f6cac7f117b140ff6e39c420434a098543",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 200,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xa7180fb5b9745e9ca851140b3a158f0b9fcdb5ea",
+   "launcher": "0xace5199d9ee5f4cdea2cc7cfc205ec3087a6001a",
+   "liquidity": 59320751225856875522266,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.0126,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83460367,
+   "pull_block": 83461842,
+   "pull_offset": 1481,
+   "pull_after_first_crowd_buy": 1472,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83461872
+  },
+  {
+   "block": 83462127,
+   "time_utc": "2026-10-08 16:42:10",
+   "pid": "0x34c995b71a0647ea9965645f76ec27ac3a36f3333488f5165f86452a713a085d",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 300,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xa76e941f8ed230ecacb5bf89ea6f8201155b752c",
+   "launcher": "0x524c940669f4bd189ecc2a7e061bce723035c261",
+   "liquidity": 62802069647424837076952,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.047078,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83462133,
+   "pull_block": 83463614,
+   "pull_offset": 1487,
+   "pull_after_first_crowd_buy": 1478,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83463644
+  },
+  {
+   "block": 83463899,
+   "time_utc": "2026-10-08 16:45:10",
+   "pid": "0xd59c2dc33e477f4225ecac0abd871a44a1971985a482b0a876ee04d11d749ac0",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 200,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xb6f7b77638490b7d1e9bb026e42129a14d647e0c",
+   "launcher": "0xbb6d3b0cc41778bafe769244396507b778cf34f4",
+   "liquidity": 67014957285668697201382,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.091748,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83463905,
+   "pull_block": 83465386,
+   "pull_offset": 1487,
+   "pull_after_first_crowd_buy": 1478,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83465416
+  },
+  {
+   "block": 83465669,
+   "time_utc": "2026-10-08 16:48:10",
+   "pid": "0x87f22b7353e6a369da147f2a77d0f07167e7d07386826afd8482f52855c9f5e2",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 300,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x0e4f89f893a08bff512ffc178907571691aa9d7f",
+   "launcher": "0x4bb12835793297570232866d0aec1d931983c557",
+   "liquidity": 62802069647424837076952,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.086154,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83465675,
+   "pull_block": 83467156,
+   "pull_offset": 1487,
+   "pull_after_first_crowd_buy": 1478,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83467186
+  },
+  {
+   "block": 83467442,
+   "time_utc": "2026-10-08 16:51:10",
+   "pid": "0x86e75d979c1b17e12acf93eaceac9ad85c216f14a5e9b971a948001339dc2115",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 200,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xcb363989fd247759f1587c724434c45a9c5fb7ae",
+   "launcher": "0xf6ba4f857a8002d7ee33a66fad577dd505e0dd8c",
+   "liquidity": 60503451703187976050544,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.029832,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83467448,
+   "pull_block": 83468916,
+   "pull_offset": 1474,
+   "pull_after_first_crowd_buy": 1465,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83468946
+  },
+  {
+   "block": 83469198,
+   "time_utc": "2026-10-08 16:54:10",
+   "pid": "0xd7b199a6871848c46d699234c2aa37fd537cf485f953ea84ab311711541e8f43",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 300,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x2537b07bda96c84677626b9829625eedf5e21a56",
+   "launcher": "0x288403ee7abbe5a0b30577db9794e0a7b6a92766",
+   "liquidity": 66100290301934378115706,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.090065,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83469204,
+   "pull_block": 83470689,
+   "pull_offset": 1491,
+   "pull_after_first_crowd_buy": 1482,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83470719
+  },
+  {
+   "block": 83470944,
+   "time_utc": "2026-10-08 16:57:10",
+   "pid": "0xe8c0cde20c02f8687ea4e30acca9c0ff36e64be601e78112a3bc5d125f51f4cf",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 200,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xaa64ad07a903be819f6500b1cce90b27caeeec4a",
+   "launcher": "0xeac7ef036135b50171114b6d2212b80fe6a97b79",
+   "liquidity": 67014957285668697201382,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.014601,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83470950,
+   "pull_block": 83472420,
+   "pull_offset": 1476,
+   "pull_after_first_crowd_buy": 1467,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83472450
+  },
+  {
+   "block": 83474461,
+   "time_utc": "2026-10-08 17:03:11",
+   "pid": "0x8bbb30ea29e4d52d7fd52d78e7ecc3accef450d1d5166051bf8ead5bf3afb60f",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xbd8997fd2e6b6ea2179fcc704ecac3ed07ae1311",
+   "launcher": "0x0415934f26cd3a9df21406c285f69e8e3b798752",
+   "liquidity": 63920388719093378179311,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.105875,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83474467,
+   "pull_block": 83475919,
+   "pull_offset": 1458,
+   "pull_after_first_crowd_buy": 1449,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83475949
+  },
+  {
+   "block": 83476201,
+   "time_utc": "2026-10-08 17:06:11",
+   "pid": "0xc7f9193899101f182416abe7f4149553d7e7b5411ba7128cddf8c0f24db9c1c6",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x5b6d674c2954cd3c98e0f0d377b66fbbd3e5edb9",
+   "launcher": "0x84685ea8fa59d73f1c0e350d8824cf7ed86ffe44",
+   "liquidity": 58113986130706952220724,
+   "traded_by_us": false,
+   "trigger_offset": 9,
+   "trigger_value_eth": 0.10752,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 9,
+   "fire_block": 83476207,
+   "pull_block": 83477699,
+   "pull_offset": 1498,
+   "pull_after_first_crowd_buy": 1489,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      12,
+      15
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83477729
+  },
+  {
+   "block": 83477978,
+   "time_utc": "2026-10-08 17:09:10",
+   "pid": "0x9f64edf53a7b66b8bde90b60a38bf306a33a6b440301c6c71f64590e310740e3",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x41d9aea11ddec38d164db4bacba6a1e1a2935625",
+   "launcher": "0xf511d4a0dfdad48182e07d75ce8bae815479065d",
+   "liquidity": 59320751225856875522266,
+   "traded_by_us": false,
+   "trigger_offset": 8,
+   "trigger_value_eth": 0.018298,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 8,
+   "fire_block": 83477984,
+   "pull_block": 83479439,
+   "pull_offset": 1461,
+   "pull_after_first_crowd_buy": 1453,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    4
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      10,
+      13
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83479469
+  },
+  {
+   "block": 83479720,
+   "time_utc": "2026-10-08 17:12:10",
+   "pid": "0x4d5739034565f9a7fc65d4d38f77e7b4ddb5950435d6842c9e5bc6151f80aa7f",
+   "kind": "copy",
+   "scheme": "copy_burst_then_crowd",
+   "fee_ppm": 100,
+   "entry": "seat",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x54c463710ced2e4f5a86e36e960c1f492b8c3600",
+   "launcher": "0xaeef219d4292583d30f173f58cfbac9925d2060d",
+   "liquidity": 67014957285668697201382,
+   "traded_by_us": false,
+   "trigger_offset": 8,
+   "trigger_value_eth": 0.086295,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 8,
+   "fire_block": 83479726,
+   "pull_block": 83481207,
+   "pull_offset": 1487,
+   "pull_after_first_crowd_buy": 1479,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      10,
+      13
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      11,
+      14
+     ],
+     "crowd_buys": 0,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 0,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83481237
+  },
+  {
+   "block": 83647992,
+   "time_utc": "2026-10-08 21:58:16",
+   "pid": "0xc36d4e5884f714f6c9c885c1834a8992312af390b48037c0a57b7f1ddf5170be",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 2653,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x4348ffca6467fdb687fb771c2370f691a7a940e9",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 59940000000000000000000,
+   "traded_by_us": false,
+   "trigger_offset": 49,
+   "trigger_value_eth": 0.0072,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 49,
+   "fire_block": 83648041,
+   "pull_block": 83650530,
+   "pull_offset": 2538,
+   "pull_after_first_crowd_buy": 2489,
+   "crowd_real_buys_before_pull": 141,
+   "crowd_wallets": 32,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      51,
+      54
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      52,
+      55
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83650560
+  },
+  {
+   "block": 83665111,
+   "time_utc": "2026-10-08 22:27:34",
+   "pid": "0x82801ba0a95474df4553cbdba11fe91e088da3eb59050c7a2d08c3ff05f4edb3",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 603,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x1dd279c972e7e7e2c5523a36abe317606ec76816",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 70285880160954091875165,
+   "traded_by_us": false,
+   "trigger_offset": 49,
+   "trigger_value_eth": 0.061,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 49,
+   "fire_block": 83665160,
+   "pull_block": 83667687,
+   "pull_offset": 2576,
+   "pull_after_first_crowd_buy": 2527,
+   "crowd_real_buys_before_pull": 136,
+   "crowd_wallets": 32,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      51,
+      54
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      52,
+      55
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83667717
+  },
+  {
+   "block": 83668192,
+   "time_utc": "2026-10-08 22:32:46",
+   "pid": "0x14259eff87815c1bd4bd2e2ba962ecf35766d7de50db23022079a078615df3d9",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 953,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x40af0dac85abdac6f026f3adb1bdc2afd8e88efb",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 68049427918241899059868,
+   "traded_by_us": false,
+   "trigger_offset": 48,
+   "trigger_value_eth": 0.0417,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 48,
+   "fire_block": 83668240,
+   "pull_block": 83670748,
+   "pull_offset": 2556,
+   "pull_after_first_crowd_buy": 2508,
+   "crowd_real_buys_before_pull": 136,
+   "crowd_wallets": 32,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      50,
+      53
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      51,
+      54
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83670778
+  },
+  {
+   "block": 83673204,
+   "time_utc": "2026-10-08 22:41:18",
+   "pid": "0xf6c1a2ad8329b8a8c7e713ce72edba64a078d915ecaf204946574d0c7c5276a3",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 2898,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x974fd99cfe771ab953fa90a7a44a56e170ebb769",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 63889154713456649394509,
+   "traded_by_us": false,
+   "trigger_offset": 46,
+   "trigger_value_eth": 0.0121,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 46,
+   "fire_block": 83673250,
+   "pull_block": 83673386,
+   "pull_offset": 182,
+   "pull_after_first_crowd_buy": 136,
+   "crowd_real_buys_before_pull": 24,
+   "crowd_wallets": 24,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      48,
+      51
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83673416
+  },
+  {
+   "block": 83673852,
+   "time_utc": "2026-10-08 22:42:24",
+   "pid": "0x71a4eface664a272f2bffa6b9500904d8d1de0ca9f5ccea8d34ff0fa4ba1b4af",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 3967,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x1cbe5cac39a1f08aa30b51295613f4b57594c958",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 58251209429504551704032,
+   "traded_by_us": false,
+   "trigger_offset": 48,
+   "trigger_value_eth": 0.0492,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 48,
+   "fire_block": 83673900,
+   "pull_block": 83676378,
+   "pull_offset": 2526,
+   "pull_after_first_crowd_buy": 2478,
+   "crowd_real_buys_before_pull": 141,
+   "crowd_wallets": 32,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      50,
+      53
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      51,
+      54
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83676408
+  },
+  {
+   "block": 83677068,
+   "time_utc": "2026-10-08 22:47:55",
+   "pid": "0xf87c94713e3dd68c95e36cfe39622202a2de2e76ef87a1ffdd5d187b96665b19",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 3931,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x0d98dc5f7a62cd6a846672d16b1ee6a0982ed05f",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 69356793611008287441064,
+   "traded_by_us": false,
+   "trigger_offset": 55,
+   "trigger_value_eth": 0.0143,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 55,
+   "fire_block": 83677123,
+   "pull_block": 83677209,
+   "pull_offset": 141,
+   "pull_after_first_crowd_buy": 86,
+   "crowd_real_buys_before_pull": 17,
+   "crowd_wallets": 17,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      57,
+      60
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      58,
+      61
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [
+    {
+     "offset": 90,
+     "block": 83677158,
+     "wallet": "0x2b7be2fa187b14f266b7ad5124476d0bf18b3f6a",
+     "nonce": 51,
+     "eth": 0.0002,
+     "via": "88767899",
+     "fingerprint": {
+      "type": 2,
+      "gas": 900000,
+      "prio": 10000000,
+      "len": 1092,
+      "dl_max": false
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 1,
+     "crowd_buys_next_1_10": 2,
+     "crowd_buys_until_pull": 9,
+     "first_crowd_buy_after": 2,
+     "crowd_buys_prev_10": 2,
+     "pull_after": 51,
+     "baseline_pulled_within_same_gap": "3/27",
+     "baseline_crowd_buys_next_1_10": 1.7,
+     "baseline_n": 27,
+     "baseline_crowd_buys_prev_10": 1.85
+    }
+   ],
+   "live": null,
+   "results": null,
+   "close_block": 83677239
+  },
+  {
+   "block": 83677577,
+   "time_utc": "2026-10-08 22:48:47",
+   "pid": "0xfd84a22b14ffda560d848739f07705f641588e80e680fe4c0421aca8f59f806c",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 888,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0xc81435b07174399cc0a7a2306fc895f6dc7752d1",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 55890456519874660977272,
+   "traded_by_us": true,
+   "trigger_offset": 51,
+   "trigger_value_eth": 0.0473,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 51,
+   "fire_block": 83677628,
+   "pull_block": 83677682,
+   "pull_offset": 105,
+   "pull_after_first_crowd_buy": 54,
+   "crowd_real_buys_before_pull": 10,
+   "crowd_wallets": 10,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      53,
+      56
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      54,
+      57
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [
+    {
+     "offset": 92,
+     "block": 83677669,
+     "wallet": "0x2b7be2fa187b14f266b7ad5124476d0bf18b3f6a",
+     "nonce": 54,
+     "eth": 0.0002,
+     "via": "88767899",
+     "fingerprint": {
+      "type": 2,
+      "gas": 900000,
+      "prio": 10000000,
+      "len": 1092,
+      "dl_max": false
+     },
+     "before_first_crowd_buy": false,
+     "crowd_buys_next_1_4": 1,
+     "crowd_buys_next_1_10": 2,
+     "crowd_buys_until_pull": 2,
+     "first_crowd_buy_after": 0,
+     "crowd_buys_prev_10": 0,
+     "pull_after": 13,
+     "baseline_pulled_within_same_gap": "0/27",
+     "baseline_crowd_buys_next_1_10": 1.93,
+     "baseline_n": 27,
+     "baseline_crowd_buys_prev_10": 2
+    }
+   ],
+   "live": {
+    "n": 9,
+    "entry": "seat",
+    "buy_block": 83677584,
+    "live": {
+     "eth_in": 0.0012,
+     "eth_out": 0.001197870153953576,
+     "gas_eth": 4.545730394e-06,
+     "gas_usd": 0.0117,
+     "ret": -0.0056,
+     "pnl_eth": -6.675576440424e-06,
+     "pnl_usd": -0.017,
+     "buy_gas_used": 103985,
+     "sell_gas_used": 103934,
+     "base_fee_gwei": 0.02181
+    },
+    "current_exit": {
+     "tp_checks_B_to_B2": [],
+     "would_take_profit": false,
+     "sell_send_block": 83677586,
+     "send_after_buy": 2,
+     "tp_ret_engine": null,
+     "tp_ret_chain_at_that_buy": null,
+     "fast": {
+      "sell_land_block": 83677587,
+      "after_buy": 3,
+      "eth_out": 1197870153953576,
+      "ret": -0.0056,
+      "pnl_eth": -6.675576440424e-06,
+      "exit": "deadline"
+     },
+     "slow": {
+      "sell_land_block": 83677588,
+      "after_buy": 4,
+      "eth_out": 1197870153953576,
+      "ret": -0.0056,
+      "pnl_eth": -6.675576440424e-06,
+      "exit": "deadline"
+     }
+    },
+    "pull_after_our_buy": 98,
+    "crowd_buys_behind_within_4": 0
+   },
+   "results": null,
+   "close_block": 83677712
+  },
+  {
+   "block": 83678047,
+   "time_utc": "2026-10-08 22:49:35",
+   "pid": "0xe091fae1a016cef56534bc6fc00dae99e500b52fd6e26abd3f22b5cbc3db1eae",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 3548,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x16710808d8023caf90ac92204d4adaf0a18fba61",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 57993649393705169724672,
+   "traded_by_us": false,
+   "trigger_offset": 55,
+   "trigger_value_eth": 0.1085,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 55,
+   "fire_block": 83678102,
+   "pull_block": 83680625,
+   "pull_offset": 2578,
+   "pull_after_first_crowd_buy": 2523,
+   "crowd_real_buys_before_pull": 135,
+   "crowd_wallets": 32,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      57,
+      60
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      58,
+      61
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83680655
+  },
+  {
+   "block": 83681062,
+   "time_utc": "2026-10-08 22:54:40",
+   "pid": "0x38dad78e139c74cf6370f162a848734306a41ab40e852d8fde5655b877ab67c8",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 762,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x1c12e9c4b95b5b014a353d0c779937e08266c539",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 56157663412930563274047,
+   "traded_by_us": false,
+   "trigger_offset": 52,
+   "trigger_value_eth": 0.1162,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 52,
+   "fire_block": 83681114,
+   "pull_block": 83683463,
+   "pull_offset": 2401,
+   "pull_after_first_crowd_buy": 2349,
+   "crowd_real_buys_before_pull": 32,
+   "crowd_wallets": 30,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      54,
+      57
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      55,
+      58
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": null,
+   "results": null,
+   "close_block": 83683493
+  },
+  {
+   "block": 83725838,
+   "time_utc": "2026-10-09 00:11:03",
+   "pid": "0xbe2a35f9f0bd033f6e901cc4df7e72bec9ba284171b6d9d8b181f9bedcb76fc6",
+   "kind": "orig",
+   "scheme": "orig_classic",
+   "fee_ppm": 1597,
+   "entry": "follow",
+   "eligible": true,
+   "skip_reason": null,
+   "deployer": "0x43494947b53632d21ad46e9b3be3398b6e1f7afe",
+   "launcher": "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+   "liquidity": 43315607810580241239141,
+   "traded_by_us": true,
+   "trigger_offset": 46,
+   "trigger_value_eth": 0.0668,
+   "trigger_cls": "crowd",
+   "first_crowd_buy_offset": 46,
+   "fire_block": 83725884,
+   "pull_block": 83726116,
+   "pull_offset": 278,
+   "pull_after_first_crowd_buy": 232,
+   "crowd_real_buys_before_pull": 45,
+   "crowd_wallets": 32,
+   "dust_buy_offsets": [
+    3
+   ],
+   "crowd_continues": {
+    "land_T+1": {
+     "window": [
+      48,
+      51
+     ],
+     "crowd_buys": 1,
+     "pull_in_or_before_window": false
+    },
+    "land_T+2": {
+     "window": [
+      49,
+      52
+     ],
+     "crowd_buys": 2,
+     "pull_in_or_before_window": false
+    }
+   },
+   "crowd_buys_T+1_to_T+4": 1,
+   "outsider_buys": [],
+   "live": {
+    "n": 10,
+    "entry": "seat",
+    "buy_block": 83725846,
+    "live": {
+     "eth_in": 0.0012,
+     "eth_out": 0.00119617147831536,
+     "gas_eth": 4.435287364e-06,
+     "gas_usd": 0.0114,
+     "ret": -0.0069,
+     "pnl_eth": -8.26380904864e-06,
+     "pnl_usd": -0.021,
+     "buy_gas_used": 103857,
+     "sell_gas_used": 103778,
+     "base_fee_gwei": 0.021312
+    },
+    "current_exit": {
+     "tp_checks_B_to_B2": [],
+     "would_take_profit": false,
+     "sell_send_block": 83725848,
+     "send_after_buy": 2,
+     "tp_ret_engine": null,
+     "tp_ret_chain_at_that_buy": null,
+     "fast": {
+      "sell_land_block": 83725849,
+      "after_buy": 3,
+      "eth_out": 1196171478315360,
+      "ret": -0.0069,
+      "pnl_eth": -8.26380904864e-06,
+      "exit": "deadline"
+     },
+     "slow": {
+      "sell_land_block": 83725850,
+      "after_buy": 4,
+      "eth_out": 1196171478315360,
+      "ret": -0.0069,
+      "pnl_eth": -8.26380904864e-06,
+      "exit": "deadline"
+     }
+    },
+    "pull_after_our_buy": 270,
+    "crowd_buys_behind_within_4": 0
+   },
+   "results": null,
+   "close_block": 83726146
+  }
+ ]
+}

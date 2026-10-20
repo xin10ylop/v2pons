@@ -1,0 +1,20 @@
+shape=0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|2500|50|nohook|ETH|2.4333285
+day 1 not ours n  276 pulled by +30    0% pull offset p10/50/90 [204.5, 408.5, 2459.2000000000003] pull - bot's buy p10/50/90 [196.4, 398.5, 2449.2000000000003]
+day 2 not ours n  348 pulled by +30    1% pull offset p10/50/90 [69.7, 221.0, 1536.0999999999992] pull - bot's buy p10/50/90 [59.7, 212.5, 1527.499999999999]
+day 3 not ours n  151 pulled by +30    5% pull offset p10/50/90 [30.700000000000003, 129.0, 1285.0999999999995] pull - bot's buy p10/50/90 [20.900000000000006, 119.0, 1277.0999999999995]
+day 4 not ours n  309 pulled by +30    7% pull offset p10/50/90 [27.0, 115.5, 1227.0000000000005] pull - bot's buy p10/50/90 [16.1, 104.0, 1218.8000000000006]
+day 5 not ours n  334 pulled by +30    4% pull offset p10/50/90 [28.0, 130.0, 1254.2000000000003] pull - bot's buy p10/50/90 [19.8, 119.0, 1244.6000000000001]
+day 6 ours     n  449 pulled by +30   99% pull offset p10/50/90 [11.0, 12.0, 13.0] pull - bot's buy p10/50/90 [3.0, 3.0, 3.0]
+day 6 not ours n  400 pulled by +30    7% pull offset p10/50/90 [28.0, 119.0, 1464.9000000000012] pull - bot's buy p10/50/90 [19.0, 109.5, 1456.3000000000013]
+day 7 ours     n  599 pulled by +30   99% pull offset p10/50/90 [11.0, 12.0, 13.0] pull - bot's buy p10/50/90 [3.0, 3.0, 3.0]
+day 7 not ours n  316 pulled by +30   87% pull offset p10/50/90 [11.0, 11.0, 13.0] pull - bot's buy p10/50/90 [3.0, 3.0, 4.0]
+
+last 48 h by 6-hour slice: pulled by +30 (ours n / share | not ours n / share)
+slice 20: ours    0    0% | not ours   81    2%
+slice 21: ours    0    0% | not ours   84    1%
+slice 22: ours    0    0% | not ours  133   16%
+slice 23: ours  449   99% | not ours  102    5%
+slice 24: ours  599   99% | not ours  291   95%
+slice 25: ours    0    0% | not ours    0    0%
+slice 26: ours    0    0% | not ours    0    0%
+slice 27: ours    0    0% | not ours   25    0%

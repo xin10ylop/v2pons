@@ -1,0 +1,45 @@
+(i) early stretch 85850000..85916000: 3.0 pools 55
+  early stretch: first non-dust outside buy before T (or no T): pools 26, pulled 26; lag min 3 p25/50/75 4/5/6 max 23; sorted [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 17, 17, 18, 23]; bot bought after it 0
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85861619, 2, None, 0.00297, '0x7ae81404', 5, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85861640, 2, None, 0.00297, '0x7ae81404', 7, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85861770, 1, None, 0.00297, '0x7ae81404', 6, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85861807, 1, None, 0.00297, '0x7ae81404', 7, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908152, 6, None, 0.002, '0x8c009ea5', 17, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908167, 4, None, 0.002, '0x8c009ea5', 5, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908326, 4, None, 0.002, '0x8c009ea5', 3, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908334, 5, None, 0.002, '0x8c009ea5', 4, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908484, 4, None, 0.002, '0x8c009ea5', 5, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908507, 4, None, 0.002, '0x8c009ea5', 4, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908644, 4, None, 0.002, '0x8c009ea5', 3, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908669, 4, None, 0.002, '0x8c009ea5', 6, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908802, 5, None, 0.002, '0x8c009ea5', 18, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908845, 4, None, 0.002, '0x8c009ea5', 6, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85908974, 4, None, 0.002, '0x8c009ea5', 3, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909008, 4, None, 0.002, '0x8c009ea5', 4, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909130, 4, None, 0.002, '0x8c009ea5', 3, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909172, 4, None, 0.002, '0x8c009ea5', 4, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909287, 4, None, 0.002, '0x8c009ea5', 3, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909334, 4, None, 0.002, '0x8c009ea5', 5, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909443, 4, None, 0.002, '0x8c009ea5', 3, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909504, 4, None, 0.002, '0x8c009ea5', 6, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909595, 4, None, 0.002, '0x8c009ea5', 4, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909667, 4, None, 0.002, '0x8c009ea5', 4, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909752, 4, None, 0.002, '0x8c009ea5', 17, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (85909838, 6, None, 0.002, '0x8c009ea5', 23, False)
+  early stretch: first non-dust outside buy after T: pools 0, pulled 0; lag min None p25/50/75 None/None/None max None; sorted []; bot bought after it 0
+  early stretch: pulls with no non-dust outside buy before them: 1 [(85884947, 307, 42)]
+
+(ii) our slice: 3.0 pools 49
+  our slice: first non-dust outside buy before T (or no T): pools 0, pulled 0; lag min None p25/50/75 None/None/None max None; sorted []; bot bought after it 0
+  our slice: first non-dust outside buy after T: pools 8, pulled 8; lag min 5 p25/50/75 10/12/19 max 24; sorted [5, 7, 10, 11, 12, 14, 19, 24]; bot bought after it 0
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (86183419, 74, 52, 0.00399, '0x2f254751', 12, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (86225650, 59, 26, 0.00127, '0x5373fb35', 10, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (86225875, 56, 42, 0.00127, '0x5373fb35', 11, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (86226105, 60, 55, 0.00127, '0x5373fb35', 19, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (86226341, 64, 46, 0.00127, '0x5373fb35', 5, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (86226564, 66, 37, 0.00122, '0x5373fb35', 24, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (86226809, 55, 25, 0.00117, '0x5373fb35', 14, False)
+     L, buy off, T, ETH, wallet, pull lag, bot bought after: (86229853, 61, 18, 0.00097, '0x5373fb35', 7, False)
+  our slice: pulls with no non-dust outside buy before them: 1 [(86160012, 216, 45)]
+
+pre-T lags (both): n 26 min 3 median 5: [3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 17, 17, 18, 23]

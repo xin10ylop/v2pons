@@ -1,0 +1,178 @@
+====================================================================================================
+0xc97b9d2da8ec41ce090e8f3f8d7b664eda013da8|7fde822e|804|10000|200|true
+{'count': 8, 'values_eth': [0.0], 'n_deployers': 1, 'top_deployers': [['0x06cb3a6841c92525e7a1998328e7c9d37e98d937', 8]], 'nonce_med': 2245.5, 'first_block': 84714248, 'last_block': 84754870, 'to_code_size': 19034, 'swap_tx_to_top': [['0x8876789976decbfcbbbe364623c63652db8c0904', 8]], 'first_pull_to_sel_top': [], 'first_buy_rel_p10_50_90': [2, 3, 4], 'first_pull_rel_p10_50_90': None, 'first_buy_eth_p10_50_90': [1.999e-06, 1.999e-06, 2e-06], 'n_no_pull_in_window': 8, 'hooks': ['0x0000000000000000000000000000000000000000']}
+-- 0x3056a8e0a9 b0 84714248 ts 1791606085 from 0x06cb3a68 nonce 2241 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xebef30d5 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xd37829a1 LAUNCH
+    sw +3 ti 1 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 94171 val 1.999032e-06
+-- 0xd712435eee b0 84717127 ts 1791606383 from 0x06cb3a68 nonce 2242 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x34ab08ff nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 2 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x19226d5a LAUNCH
+    sw +2 ti 5 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 94173 val 1.999022e-06
+-- 0x43e3ee9be8 b0 84722937 ts 1791606985 from 0x06cb3a68 nonce 2244 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x5407e53d nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 2e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x3c901c1f LAUNCH
+    sw +3 ti 1 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 94189 val 1.999568e-06
+-- 0xd8a1e3b2f8 b0 84725833 ts 1791607284 from 0x06cb3a68 nonce 2245 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x5dc81e26 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 5 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x322dd16f LAUNCH
+    sw +5 ti 4 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 94203 val 1.999096e-06
+-- 0x6dcb46c459 b0 84728742 ts 1791607583 from 0x06cb3a68 nonce 2246 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xc9ab8580 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x5f0062a6 LAUNCH
+    sw +3 ti 2 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 94208 val 1.998966e-06
+-- 0x2724e5aa64 b0 84731709 ts 1791607887 from 0x06cb3a68 nonce 2247 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xb0d6dfa4 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x0bc43199 LAUNCH
+    sw +3 ti 1 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 94217 val 1.999378e-06
+-- 0x3819d79fa6 b0 84737498 ts 1791608484 from 0x06cb3a68 nonce 2249 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x5a54950a nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x1fe5902d LAUNCH
+    sw +3 ti 1 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 94225 val 1.998866e-06
+-- 0x592f0f6de0 b0 84754870 ts 1791610282 from 0x06cb3a68 nonce 2255 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xe7b575aa nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 4 2e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x2d0b0721 LAUNCH
+    sw +4 ti 5 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 94255 val 1.999562e-06
+====================================================================================================
+0xe181b36e96e9cab0130707bcb513fc1401e0ba32|a25a9a3d|868|10000|200|true
+{'count': 8, 'values_eth': [0.000101], 'n_deployers': 1, 'top_deployers': [['0x843784a6d2c839ca170e64c75dcc797dfc4a86a3', 8]], 'nonce_med': 33.0, 'first_block': 83644939, 'last_block': 83689110, 'to_code_size': 23627, 'swap_tx_to_top': [['0x8876789976decbfcbbbe364623c63652db8c0904', 8]], 'first_pull_to_sel_top': [], 'first_buy_rel_p10_50_90': [2, 3, 3], 'first_pull_rel_p10_50_90': None, 'first_buy_eth_p10_50_90': [1.998e-06, 1.999e-06, 2e-06], 'n_no_pull_in_window': 8, 'hooks': ['0x0000000000000000000000000000000000000000']}
+-- 0x43a808dd3d b0 83644939 ts 1791496379 from 0x843784a6 nonce 27 val 0.000100683 tick0 207199 liq 25416985444112370758962 token 0xb25e5de6 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 2e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 87200 hi 207200 dl 25416985444112370758962 tx 0xf45e813e LAUNCH
+    sw +3 ti 4 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91668 val 1.99958e-06
+-- 0x8bdfb40af2 b0 83650752 ts 1791496980 from 0x843784a6 nonce 29 val 0.000100683 tick0 207199 liq 25416985444112370758962 token 0x36c203bf nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.998e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 87200 hi 207200 dl 25416985444112370758962 tx 0xa705bf5e LAUNCH
+    sw +3 ti 2 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91680 val 1.998282e-06
+-- 0x50187651a9 b0 83653707 ts 1791497284 from 0x843784a6 nonce 30 val 0.000100683 tick0 207199 liq 25416985444112370758962 token 0x75c620f0 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.998e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 87200 hi 207200 dl 25416985444112370758962 tx 0x5b440d67 LAUNCH
+    sw +3 ti 3 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91689 val 1.998146e-06
+-- 0xcea0a73356 b0 83656642 ts 1791497583 from 0x843784a6 nonce 31 val 0.000100683 tick0 207199 liq 25416985444112370758962 token 0xbff9c914 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 2 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 87200 hi 207200 dl 25416985444112370758962 tx 0x1969c8a4 LAUNCH
+    sw +2 ti 4 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91705 val 1.999356e-06
+-- 0xa4d43bd7ca b0 83668367 ts 1791498784 from 0x843784a6 nonce 35 val 0.000100683 tick0 207199 liq 25416985444112370758962 token 0xd5a646ef nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 87200 hi 207200 dl 25416985444112370758962 tx 0x50fe6cc9 LAUNCH
+    sw +3 ti 3 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91741 val 1.998502e-06
+-- 0x321c1db641 b0 83671297 ts 1791499083 from 0x843784a6 nonce 36 val 0.000100683 tick0 207199 liq 25416985444112370758962 token 0x008aed15 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.998e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 87200 hi 207200 dl 25416985444112370758962 tx 0x299d1f68 LAUNCH
+    sw +3 ti 3 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91751 val 1.998088e-06
+-- 0x21c779d253 b0 83677156 ts 1791499684 from 0x843784a6 nonce 38 val 0.000100683 tick0 207199 liq 25416985444112370758962 token 0x6137b959 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 87200 hi 207200 dl 25416985444112370758962 tx 0xa2355702 LAUNCH
+    sw +3 ti 2 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91766 val 1.999372e-06
+-- 0x2e34ad3718 b0 83689110 ts 1791500904 from 0x843784a6 nonce 42 val 0.000100683 tick0 207199 liq 25416985444112370758962 token 0xd240b41c nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 2e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 87200 hi 207200 dl 25416985444112370758962 tx 0x5729574d LAUNCH
+    sw +3 ti 2 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91791 val 1.999758e-06
+====================================================================================================
+0x0000ffffbe8efe702c8703ae3477ff5de3d319c0|ac9650d8|3236|2500|25|true
+{'count': 7, 'values_eth': [1.5], 'n_deployers': 7, 'top_deployers': [['0x1e45e77fc7c795220765f88f59525f7f3c6be628', 1], ['0x24ac3c97583d32ad0b069ad81c055aaf5d373740', 1], ['0x334b97ac2aa01c0d27ff8b5b347fe2ee266e4d03', 1]], 'nonce_med': 0, 'first_block': 84087810, 'last_block': 85100266, 'to_code_size': 4127, 'swap_tx_to_top': [['0x8876789976decbfcbbbe364623c63652db8c0904', 7], ['0x0000ffffbe8efe702c8703ae3477ff5de3d319c0', 7], ['0x75379d5d2ea4c98aeaa57f32e233707550ab03f0', 6], ['0x4f881c6afe5ced5e4469b15269fd0c1390f089c6', 3], ['0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc', 1]], 'first_pull_to_sel_top': [], 'first_buy_rel_p10_50_90': [0, 0, 0], 'first_pull_rel_p10_50_90': None, 'first_buy_eth_p10_50_90': [1.5, 1.5, 1.5], 'n_no_pull_in_window': 7, 'hooks': ['0x0000000000000000000000000000000000000000']}
+-- 0x6085221e9c b0 84087810 ts 1791541885 from 0x1e45e77f nonce 0 val 1.5 tick0 198050 liq 50074188046840591947412 token 0xa1b3a639 nsw 133 nb 90 ns 43 npull 0 nadd 1 fb 0 1.5 fp None pullfrom None pullto None None
+    add bn+0 lo -160100 hi 198050 dl 50074188046840591947412 tx 0x16d75ee9 LAUNCH
+    sw +0 ti 3 a0 -1.500000 fee 2500 sender 0x88767899 to 0x0000ffff from 0x1e45e77f sel ac9650d8 clen 3236 nonce 0 val 1.5
+    sw +3 ti 4 a0 -0.000002 fee 2500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 92631 val 1.999522e-06
+    sw +177 ti 2 a0 -0.200000 fee 2500 sender 0x88767899 to 0x75379d5d from 0x16908429 sel 3593564c clen 1540 nonce 2070 val 0.0
+    sw +181 ti 1 a0 -0.000070 fee 2500 sender 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c clen 1092 nonce 797 val 7e-05
+    sw +211 ti 2 a0 -0.000100 fee 2500 sender 0x88767899 to 0x75379d5d from 0xde06c7b8 sel 3593564c clen 1540 nonce 3040 val 0.0
+    sw +237 ti 3 a0 -0.001000 fee 2500 sender 0x88767899 to 0x75379d5d from 0x4b4a6714 sel 3593564c clen 1540 nonce 1203 val 0.0
+    sw +238 ti 2 a0 +0.000070 fee 2500 sender 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c clen 1508 nonce 798 val 0.0
+    sw +252 ti 1 a0 -0.017320 fee 2500 sender 0x88767899 to 0x75379d5d from 0x82d2b416 sel 3593564c clen 1540 nonce 1279 val 0.0
+    sw +253 ti 1 a0 -0.000700 fee 2500 sender 0x88767899 notx
+    sw +254 ti 1 a0 -0.000476 fee 2500 sender 0x4f881c6a notx
+    sw +268 ti 1 a0 -0.000350 fee 2500 sender 0x88767899 notx
+    sw +312 ti 2 a0 -0.000100 fee 2500 sender 0x88767899 notx
+-- 0x1858c80955 b0 84874865 ts 1791622633 from 0x24ac3c97 nonce 0 val 1.5 tick0 198050 liq 50074188046840591947412 token 0x7bf8e8b6 nsw 180 nb 147 ns 33 npull 0 nadd 2 fb 0 1.5 fp None pullfrom None pullto None None
+    add bn+0 lo -160100 hi 198050 dl 50074188046840591947412 tx 0x22052f2e LAUNCH
+    add bn+2306 lo -160100 hi 198050 dl 100000000000000000000 tx 0xc03e9226 
+    sw +0 ti 3 a0 -1.500000 fee 2500 sender 0x88767899 to 0x0000ffff from 0x24ac3c97 sel ac9650d8 clen 3236 nonce 0 val 1.5
+    sw +3 ti 2 a0 -0.000002 fee 2500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 94509 val 1.999786e-06
+    sw +210 ti 1 a0 -0.180000 fee 2500 sender 0x88767899 to 0x75379d5d from 0x685c48d5 sel 3593564c clen 1540 nonce 2748 val 0.0
+    sw +222 ti 1 a0 -0.000090 fee 2500 sender 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c clen 1092 nonce 882 val 9e-05
+    sw +238 ti 1 a0 -0.000700 fee 2500 sender 0x88767899 to 0x75379d5d from 0xda40a769 sel 3593564c clen 1540 nonce 1416 val 0.0
+    sw +255 ti 11 a0 -0.000700 fee 2500 sender 0x88767899 to 0x75379d5d from 0x4b4a6714 sel 3593564c clen 1540 nonce 1266 val 0.0
+    sw +268 ti 3 a0 -0.025000 fee 2500 sender 0x88767899 to 0x75379d5d from 0x7172f843 sel 3593564c clen 1540 nonce 1511 val 0.0
+    sw +271 ti 3 a0 -0.000441 fee 2500 sender 0x88767899 to 0x88767899 from 0x1a2d2cd5 sel 3593564c clen 1124 nonce 666 val 0.000441010313
+    sw +277 ti 2 a0 -0.001000 fee 2500 sender 0x88767899 notx
+    sw +313 ti 2 a0 -0.001000 fee 2500 sender 0x88767899 notx
+    sw +335 ti 3 a0 -0.001000 fee 2899 sender 0x88767899 notx
+    sw +341 ti 3 a0 -0.000500 fee 2899 sender 0x88767899 notx
+-- 0x24ff807184 b0 85048611 ts 1791640534 from 0x334b97ac nonce 0 val 1.5 tick0 198050 liq 50074188046840591947412 token 0x8a6287f9 nsw 177 nb 142 ns 35 npull 0 nadd 1 fb 0 1.5 fp None pullfrom None pullto None None
+    add bn+0 lo -160100 hi 198050 dl 50074188046840591947412 tx 0x9d0e6f63 LAUNCH
+    sw +0 ti 2 a0 -1.500000 fee 2500 sender 0x88767899 to 0x0000ffff from 0x334b97ac sel ac9650d8 clen 3236 nonce 0 val 1.5
+    sw +3 ti 1 a0 -0.000002 fee 2500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 95190 val 1.998522e-06
+    sw +225 ti 4 a0 -0.160000 fee 2500 sender 0x88767899 to 0x75379d5d from 0xe0b83d57 sel 3593564c clen 1540 nonce 1686 val 0.0
+    sw +240 ti 1 a0 -0.000080 fee 2500 sender 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c clen 1092 nonce 887 val 8e-05
+    sw +249 ti 3 a0 -0.297000 fee 2500 sender 0x88767899 to 0x75379d5d from 0x32cf0414 sel 3593564c clen 1540 nonce 1241 val 0.0
+    sw +264 ti 1 a0 -0.000430 fee 2500 sender 0x88767899 to 0x75379d5d from 0x62a05401 sel 3593564c clen 1540 nonce 736 val 0.0
+    sw +294 ti 2 a0 -0.000500 fee 2500 sender 0x88767899 to 0x75379d5d from 0x3430d420 sel 3593564c clen 1540 nonce 1133 val 0.0
+    sw +295 ti 3 a0 -0.000486 fee 2500 sender 0x4f881c6a to 0x4f881c6a from 0xe9d83e95 sel c91f5491 clen 388 nonce 9181 val 0.0
+    sw +298 ti 2 a0 -0.100000 fee 2500 sender 0x88767899 notx
+    sw +306 ti 2 a0 -0.000448 fee 2500 sender 0x88767899 notx
+    sw +308 ti 1 a0 -0.004950 fee 2500 sender 0x65050a9b notx
+    sw +309 ti 5 a0 -0.000700 fee 2500 sender 0x88767899 notx
+-- 0x59f05142f6 b0 85067841 ts 1791642503 from 0x121c0ed6 nonce 0 val 1.5 tick0 198050 liq 50074188046840591947412 token 0x97f0972d nsw 7 nb 4 ns 3 npull 0 nadd 1 fb 0 1.5 fp None pullfrom None pullto None None
+    add bn+0 lo -160100 hi 198050 dl 50074188046840591947412 tx 0x34b3d592 LAUNCH
+    sw +0 ti 1 a0 -1.500000 fee 2500 sender 0x88767899 to 0x0000ffff from 0x121c0ed6 sel ac9650d8 clen 3236 nonce 0 val 1.5
+    sw +3 ti 1 a0 -0.000002 fee 2500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 95324 val 1.999308e-06
+    sw +15 ti 7 a0 -0.008004 fee 2500 sender 0x88767899 to 0x88767899 from 0x81586f00 sel 3593564c clen 1188 nonce 480 val 0.008004498528
+    sw +195 ti 3 a0 +1.498756 fee 2500 sender 0x88767899 to 0x88767899 from 0x121c0ed6 sel 3593564c clen 1700 nonce 1 val 0.0
+    sw +196 ti 2 a0 +0.003127 fee 2500 sender 0x88767899 to 0x88767899 from 0x81586f00 sel 3593564c clen 1188 nonce 481 val 0.0
+    sw +231 ti 1 a0 -0.001000 fee 2500 sender 0x88767899 to 0x88767899 from 0xc56a36ee sel 3593564c clen 1092 nonce 686 val 0.001
+    sw +820 ti 6 a0 +0.000995 fee 2500 sender 0x88767899 to 0x88767899 from 0xc56a36ee sel 3593564c clen 1092 nonce 688 val 0.0
+-- 0xecb7272ba2 b0 85068499 ts 1791642570 from 0xca077729 nonce 0 val 1.5 tick0 198050 liq 50074188046840591947412 token 0x010d8db8 nsw 148 nb 70 ns 78 npull 0 nadd 2 fb 0 1.5 fp None pullfrom None pullto None None
+    add bn+0 lo -160100 hi 198050 dl 50074188046840591947412 tx 0x482a8413 LAUNCH
+    add bn+1223 lo -160100 hi 198050 dl 100000000000000000000 tx 0xef40be21 
+    sw +0 ti 1 a0 -1.500000 fee 2500 sender 0x88767899 to 0x0000ffff from 0xca077729 sel ac9650d8 clen 3236 nonce 0 val 1.5
+    sw +3 ti 9 a0 -0.000002 fee 2500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 95329 val 1.999248e-06
+    sw +198 ti 28 a0 -0.200000 fee 2500 sender 0x88767899 to 0x75379d5d from 0x7f6eef10 sel 3593564c clen 1540 nonce 3059 val 0.0
+    sw +216 ti 1 a0 -0.000350 fee 2500 sender 0x88767899 to 0x75379d5d from 0x589d469c sel 3593564c clen 1540 nonce 1163 val 0.0
+    sw +249 ti 1 a0 -0.000463 fee 2500 sender 0x88767899 to 0x88767899 from 0x1a2d2cd5 sel 3593564c clen 1124 nonce 669 val 0.00046327808
+    sw +256 ti 2 a0 -0.120000 fee 2500 sender 0x88767899 to 0x75379d5d from 0x12c8410e sel 3593564c clen 1540 nonce 939 val 0.0
+    sw +257 ti 5 a0 -0.000471 fee 2500 sender 0x4f881c6a to 0x4f881c6a from 0xe9d83e95 sel c91f5491 clen 388 nonce 9194 val 0.0
+    sw +259 ti 2 a0 -0.000200 fee 2500 sender 0x88767899 to 0x75379d5d from 0xfb2c999e sel 3593564c clen 1540 nonce 757 val 0.0
+    sw +287 ti 4 a0 -0.000100 fee 2500 sender 0x88767899 notx
+    sw +302 ti 2 a0 -0.000500 fee 2500 sender 0x88767899 notx
+    sw +327 ti 3 a0 -0.000600 fee 2500 sender 0x88767899 notx
+    sw +327 ti 8 a0 -0.297000 fee 2500 sender 0x88767899 notx
+-- 0xbf864f4239 b0 85099213 ts 1791645718 from 0x77fe4624 nonce 0 val 1.5 tick0 198050 liq 50074188046840591947412 token 0xaf7c8fde nsw 39 nb 21 ns 18 npull 0 nadd 2 fb 0 1.5 fp None pullfrom None pullto None None
+    add bn+0 lo -160100 hi 198050 dl 50074188046840591947412 tx 0x8028a0c3 LAUNCH
+    add bn+651 lo -160100 hi 198050 dl 100000000000000000000 tx 0xf0d9ce32 
+    sw +0 ti 4 a0 -1.500000 fee 2500 sender 0x88767899 to 0x0000ffff from 0x77fe4624 sel ac9650d8 clen 3236 nonce 0 val 1.5
+    sw +3 ti 4 a0 -0.000002 fee 2500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 95452 val 1.998982e-06
+    sw +162 ti 2 a0 -0.160000 fee 2500 sender 0x88767899 to 0x75379d5d from 0x55652c72 sel 3593564c clen 1540 nonce 4004 val 0.0
+    sw +175 ti 1 a0 -0.000070 fee 2500 sender 0x88767899 to 0x88767899 from 0x0b410a5f sel 3593564c clen 1092 nonce 889 val 7e-05
+    sw +194 ti 4 a0 -0.005927 fee 2500 sender 0x65050a9b to 0x65050a9b from 0x7e8d3488 sel 4d819a2a clen 964 nonce 346 val 0.0
+    sw +194 ti 5 a0 -0.000430 fee 2500 sender 0x88767899 to 0x75379d5d from 0x4793d7ad sel 3593564c clen 1540 nonce 772 val 0.0
+    sw +204 ti 3 a0 -0.000650 fee 2500 sender 0x88767899 to 0x75379d5d from 0xb0477ea6 sel 3593564c clen 1540 nonce 1190 val 0.0
+    sw +224 ti 8 a0 -0.009990 fee 2500 sender 0x88767899 to 0x75379d5d from 0xec393d7f sel 3593564c clen 1540 nonce 1059 val 0.0
+    sw +225 ti 14 a0 -0.000464 fee 2500 sender 0x4f881c6a notx
+    sw +226 ti 2 a0 -0.000100 fee 2500 sender 0x88767899 notx
+    sw +248 ti 3 a0 -0.100000 fee 2500 sender 0x88767899 notx
+    sw +265 ti 2 a0 -0.001000 fee 2500 sender 0x88767899 notx
+-- 0xd8b8b92cb4 b0 85100266 ts 1791645826 from 0x168ea37f nonce 0 val 1.5 tick0 198050 liq 50074188046840591947412 token 0x51b62c9a nsw 70 nb 38 ns 32 npull 0 nadd 2 fb 0 1.5 fp None pullfrom None pullto None None
+    add bn+0 lo -160100 hi 198050 dl 50074188046840591947412 tx 0xcf2f1224 LAUNCH
+    add bn+836 lo -160100 hi 198050 dl 100000000000000000000 tx 0x584de307 
+    sw +0 ti 7 a0 -1.500000 fee 2500 sender 0x88767899 to 0x0000ffff from 0x168ea37f sel ac9650d8 clen 3236 nonce 0 val 1.5
+    sw +3 ti 2 a0 -0.000002 fee 2500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 95459 val 1.998194e-06
+    sw +18 ti 5 a0 +1.493906 fee 2500 sender 0x88767899 to 0x88767899 from 0x168ea37f sel 3593564c clen 1700 nonce 1 val 0.0
+    sw +140 ti 1 a0 -0.160000 fee 2500 sender 0x88767899 to 0x75379d5d from 0x597f0f42 sel 3593564c clen 1540 nonce 4144 val 0.0
+    sw +150 ti 3 a0 -0.000430 fee 2500 sender 0x88767899 to 0x75379d5d from 0xf8d8588c sel 3593564c clen 1540 nonce 1877 val 0.0
+    sw +167 ti 4 a0 -0.000430 fee 2500 sender 0x88767899 to 0x75379d5d from 0x58e1ffe0 sel 3593564c clen 1540 nonce 892 val 0.0
+    sw +168 ti 3 a0 -0.000455 fee 2500 sender 0x4f881c6a to 0x4f881c6a from 0xe9d83e95 sel c91f5491 clen 388 nonce 9220 val 0.0
+    sw +194 ti 5 a0 -0.000413 fee 2500 sender 0x88767899 to 0x88767899 from 0x1a2d2cd5 sel 3593564c clen 1124 nonce 672 val 0.000413180572
+    sw +207 ti 1 a0 -0.000350 fee 2500 sender 0x88767899 notx
+    sw +218 ti 5 a0 -0.028190 fee 2500 sender 0x88767899 notx
+    sw +231 ti 5 a0 -0.000400 fee 2500 sender 0x88767899 notx
+    sw +250 ti 1 a0 -0.001000 fee 2500 sender 0x88767899 notx
+====================================================================================================
+0x3493ab3ec9358cb77b335507248c68fcaa84bf5e|7fde822e|772|10000|200|true
+{'count': 7, 'values_eth': [0.0], 'n_deployers': 1, 'top_deployers': [['0x06cb3a6841c92525e7a1998328e7c9d37e98d937', 7]], 'nonce_med': 1914, 'first_block': 83700490, 'last_block': 83753261, 'to_code_size': 19028, 'swap_tx_to_top': [['0x8876789976decbfcbbbe364623c63652db8c0904', 7]], 'first_pull_to_sel_top': [], 'first_buy_rel_p10_50_90': [2, 3, 3], 'first_pull_rel_p10_50_90': None, 'first_buy_eth_p10_50_90': [1.998e-06, 1.999e-06, 1.999e-06], 'n_no_pull_in_window': 7, 'hooks': ['0x0000000000000000000000000000000000000000']}
+-- 0xa487285ae9 b0 83700490 ts 1791502073 from 0x06cb3a68 nonce 1901 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x01a95abd nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 2 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x949f26f7 LAUNCH
+    sw +2 ti 3 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91811 val 1.998578e-06
+-- 0x00244f0fec b0 83721021 ts 1791504172 from 0x06cb3a68 nonce 1908 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xaf2da7ab nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x9504717a LAUNCH
+    sw +3 ti 3 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91856 val 1.999064e-06
+-- 0x5c88f92e8b b0 83732785 ts 1791505378 from 0x06cb3a68 nonce 1912 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x23518d07 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 6 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xfd71ddcd LAUNCH
+    sw +6 ti 1 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91880 val 1.998528e-06
+-- 0xe53e78d7d6 b0 83738638 ts 1791505976 from 0x06cb3a68 nonce 1914 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x23bccdee nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 2 1.998e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x8b3dfa51 LAUNCH
+    sw +2 ti 9 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91901 val 1.998056e-06
+-- 0xf9200f0db8 b0 83741563 ts 1791506276 from 0x06cb3a68 nonce 1915 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x0bf541a9 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xda85b645 LAUNCH
+    sw +3 ti 2 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91906 val 1.999242e-06
+-- 0x5a84abe9e6 b0 83750344 ts 1791507175 from 0x06cb3a68 nonce 1918 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x8563f565 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x1c36ec4a LAUNCH
+    sw +3 ti 1 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91931 val 1.998766e-06
+-- 0x4b65e3f987 b0 83753261 ts 1791507472 from 0x06cb3a68 nonce 1919 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x2f42a408 nsw 1 nb 1 ns 0 npull 0 nadd 1 fb 3 1.999e-06 fp None pullfrom None pullto None None
+    add bn+0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x52b59320 LAUNCH
+    sw +3 ti 3 a0 -0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156 nonce 91934 val 1.999214e-06

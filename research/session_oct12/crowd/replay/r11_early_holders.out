@@ -1,0 +1,15 @@
+('0x65050a9b', '4d819a2a'): 524 buys from 38 senders; top [('0xdc22d5d1a776358799b6f3121ded8c90e9806e15', 48), ('0x796cd42e0a4fc9de25458fb875ce3666f73bd81b', 48), ('0xf7f00e4d08a546187ba4d9fbf66dd28a7b98df00', 47)]
+('0xcaf681a6', '04e45aaf'): 221 buys from 1 senders; top [('0x5718d14b3e736b04764544776ae4b9e855342f33', 221)]
+('0x570759db', '414bf389'): 148 buys from 1 senders; top [('0x776e5a2a72f9711ed818e2a0535d3d01cf8ed3d6', 148)]
+('0xf0b7eaaf', '39ecce49'): 65 buys from 6 senders; top [('0xb57856b5ab8e1f8b621d56439dcc284479778715', 23), ('0x4d42774f858848698a82739bb61a179059f2f83d', 18), ('0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215', 11)]
+('0x6e2a35a7', '0c307f76'): 22 buys from 2 senders; top [('0x7bb92c30acc5e0b07559ef8e07839fedf5737d28', 15), ('0x35fb3c0872f267fb9ced10f5b9d69ce9bb26627b', 7)]
+('0xd6d35b56', 'e6cb474f'): 6 buys from 5 senders; top [('0x550407935cb4392a922ff41bf5291f45597d0522', 2), ('0x0ade55f425002ad3f9bb31b584b0102a8f27c0ed', 1), ('0x54df511665752ca6393f2fc780d4ead1beea078f', 1)]
+pools with / without an early holder:
+  0x570759db dust buy at +1                      n 144: crowd by +80 0.38; crowd's 1st median 90; pull median 504, by +150 0.12; replay 0.0058|2|2 mean +5.44% median -0.042%
+  not 0x570759db dust buy at +1                  n 135: crowd by +80 0.39; crowd's 1st median 98; pull median 784, by +150 0.06; replay 0.0058|2|2 mean +10.47% median -0.065%
+  any non-crowd buy >= 0.001 ETH by +10          n 137: crowd by +80 0.36; crowd's 1st median 92; pull median 457, by +150 0.12; replay 0.0058|2|2 mean +5.41% median -0.039%
+  not any non-crowd buy >= 0.001 ETH by +10      n 142: crowd by +80 0.39; crowd's 1st median 92; pull median 832, by +150 0.06; replay 0.0058|2|2 mean +10.25% median -0.057%
+  any non-crowd buy >= 0.001 ETH by +40          n 147: crowd by +80 0.37; crowd's 1st median 92; pull median 467, by +150 0.12; replay 0.0058|2|2 mean +6.96% median -0.039%
+  not any non-crowd buy >= 0.001 ETH by +40      n 132: crowd by +80 0.39; crowd's 1st median 92; pull median 858, by +150 0.06; replay 0.0058|2|2 mean +8.90% median -0.061%
+  non-crowd buys >= 0.003 ETH total by +60       n  82: crowd by +80 0.48; crowd's 1st median 80; pull median 322, by +150 0.15; replay 0.0058|2|2 mean +12.48% median +1.451%
+  not non-crowd buys >= 0.003 ETH total by +60   n 197: crowd by +80 0.34; crowd's 1st median 98; pull median 859, by +150 0.07; replay 0.0058|2|2 mean +5.96% median -0.091%

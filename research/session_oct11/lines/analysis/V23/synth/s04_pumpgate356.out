@@ -1,0 +1,19 @@
+356-B d27d1e00 value-0 launches: 111; with a V trade at $15: 111
+buys at +1..+59 (outside the launch tx) by class (n, ETH): REUSED 146 0.0706
+largest non-operator buy before +60: 0.00198 ETH
+all days  W +60 T 0.0001 : early outside buy:  49 pools, pumped   9 ( 18%) | none:  62, pumped  29 ( 47%) | pumped before +60 (excluded) 0 | Fisher p 0.0024 | MH odds ratio by day 0.31
+all days  W +60 T 0.0005 : early outside buy:  44 pools, pumped   6 ( 14%) | none:  67, pumped  32 ( 48%) | pumped before +60 (excluded) 0 | Fisher p 0.0002 | MH odds ratio by day 0.21
+      V rule $15, with an early outside buy: n 44 mean +12.65% median -0.081%
+      V rule $15, without: n 67 mean +182.17% median +0.282%
+all days  W +60 T 0.001  : early outside buy:   4 pools, pumped   0 (  0%) | none: 107, pumped  38 ( 36%) | pumped before +60 (excluded) 0 | Fisher p 0.2969 | MH odds ratio by day 0.00
+days 6-7  W +60 T 0.0001 : early outside buy:  36 pools, pumped   6 ( 17%) | none:  47, pumped  22 ( 47%) | pumped before +60 (excluded) 0 | Fisher p 0.0049 | MH odds ratio by day 0.26
+days 6-7  W +60 T 0.0005 : early outside buy:  34 pools, pumped   4 ( 12%) | none:  49, pumped  24 ( 49%) | pumped before +60 (excluded) 0 | Fisher p 0.0004 | MH odds ratio by day 0.17
+      V rule $15, with an early outside buy: n 34 mean +7.34% median -0.102%
+      V rule $15, without: n 49 mean +210.44% median +0.404%
+days 6-7  W +60 T 0.001  : early outside buy:   4 pools, pumped   0 (  0%) | none:  79, pumped  28 ( 35%) | pumped before +60 (excluded) 0 | Fisher p 0.2948 | MH odds ratio by day 0.00
+all days: V trades in pools pumped at/after +60 n 38 mean +340.90% | not pumped n 73 mean -2.63% | observed pump share 34%
+   if our buy cut the pump share to 14%: expected mean +45.46%
+   if our buy cut the pump share to 12%: expected mean +38.59%
+days 6-7: V trades in pools pumped at/after +60 n 28 mean +384.13% | not pumped n 55 mean -3.53% | observed pump share 34%
+   if our buy cut the pump share to 14%: expected mean +50.74%
+   if our buy cut the pump share to 12%: expected mean +42.99%

@@ -1,0 +1,1224 @@
+{
+ "treated": [
+  {
+   "pid": "0x8aca1058",
+   "off": 117,
+   "eth": 0.0023,
+   "from": "0xf8878ef6",
+   "to": "0xbdbf5b82",
+   "c1": 39,
+   "rel_c1": 78,
+   "eth_in_before": 0.197,
+   "pull_after": 2760,
+   "pull_off": 2877
+  },
+  {
+   "pid": "0xbf638e62",
+   "off": 87,
+   "eth": 0.0297,
+   "from": "0xf4a0048b",
+   "to": "0xf0b7eaaf",
+   "c1": 121,
+   "rel_c1": -34,
+   "eth_in_before": 0.03,
+   "pull_after": null,
+   "pull_off": null
+  },
+  {
+   "pid": "0xc877ac1e",
+   "off": 122,
+   "eth": 0.0023,
+   "from": "0xf8878ef6",
+   "to": "0xbdbf5b82",
+   "c1": 125,
+   "rel_c1": -3,
+   "eth_in_before": 0.003,
+   "pull_after": 140,
+   "pull_off": 262
+  },
+  {
+   "pid": "0xc11b63f9",
+   "off": 109,
+   "eth": 0.0023,
+   "from": "0xf8878ef6",
+   "to": "0xbdbf5b82",
+   "c1": 100,
+   "rel_c1": 9,
+   "eth_in_before": 0.243,
+   "pull_after": 60,
+   "pull_off": 169
+  },
+  {
+   "pid": "0xb8cabf6d",
+   "off": 93,
+   "eth": 0.0297,
+   "from": "0xf4a0048b",
+   "to": "0xf0b7eaaf",
+   "c1": null,
+   "rel_c1": null,
+   "eth_in_before": 0.03,
+   "pull_after": null,
+   "pull_off": null
+  },
+  {
+   "pid": "0x1f19eb79",
+   "off": 117,
+   "eth": 0.001,
+   "from": "0xb632072d",
+   "to": "0x88767899",
+   "c1": 102,
+   "rel_c1": 15,
+   "eth_in_before": 0.547,
+   "pull_after": 2648,
+   "pull_off": 2765
+  },
+  {
+   "pid": "0x41a45657",
+   "off": 123,
+   "eth": 0.001,
+   "from": "0xb632072d",
+   "to": "0x88767899",
+   "c1": 104,
+   "rel_c1": 19,
+   "eth_in_before": 0.614,
+   "pull_after": null,
+   "pull_off": null
+  },
+  {
+   "pid": "0xa1c3ce35",
+   "off": 127,
+   "eth": 0.001,
+   "from": "0xb632072d",
+   "to": "0x88767899",
+   "c1": 105,
+   "rel_c1": 22,
+   "eth_in_before": 0.209,
+   "pull_after": null,
+   "pull_off": null
+  },
+  {
+   "pid": "0x54d15595",
+   "off": 111,
+   "eth": 0.001,
+   "from": "0xb632072d",
+   "to": "0x88767899",
+   "c1": 93,
+   "rel_c1": 18,
+   "eth_in_before": 0.434,
+   "pull_after": 80,
+   "pull_off": 191
+  },
+  {
+   "pid": "0xee1a2e29",
+   "off": 106,
+   "eth": 0.0297,
+   "from": "0x3029608e",
+   "to": "0xf0b7eaaf",
+   "c1": 68,
+   "rel_c1": 38,
+   "eth_in_before": 0.07,
+   "pull_after": 68,
+   "pull_off": 174
+  },
+  {
+   "pid": "0xae0afacf",
+   "off": 130,
+   "eth": 0.2277,
+   "from": "0x3029608e",
+   "to": "0xf0b7eaaf",
+   "c1": 149,
+   "rel_c1": -19,
+   "eth_in_before": 0.228,
+   "pull_after": 70,
+   "pull_off": 200
+  },
+  {
+   "pid": "0x4f06832d",
+   "off": 258,
+   "eth": 0.0012,
+   "from": "0x884c99f0",
+   "to": "0x88767899",
+   "c1": 91,
+   "rel_c1": 167,
+   "eth_in_before": 0.142,
+   "pull_after": 112,
+   "pull_off": 370
+  },
+  {
+   "pid": "0xf9559176",
+   "off": 123,
+   "eth": 0.0012,
+   "from": "0xb632072d",
+   "to": "0x88767899",
+   "c1": 83,
+   "rel_c1": 40,
+   "eth_in_before": 0.191,
+   "pull_after": 86,
+   "pull_off": 209
+  },
+  {
+   "pid": "0xeef312bd",
+   "off": 98,
+   "eth": 0.0297,
+   "from": "0xf4a0048b",
+   "to": "0xf0b7eaaf",
+   "c1": null,
+   "rel_c1": null,
+   "eth_in_before": 0.03,
+   "pull_after": 68,
+   "pull_off": 166
+  },
+  {
+   "pid": "0xbff13fc3",
+   "off": 281,
+   "eth": 0.0297,
+   "from": "0xf4a0048b",
+   "to": "0xf0b7eaaf",
+   "c1": 203,
+   "rel_c1": 78,
+   "eth_in_before": 0.128,
+   "pull_after": 830,
+   "pull_off": 1111
+  }
+ ],
+ "ctrl": [
+  [
+   6,
+   37
+  ],
+  [
+   16,
+   179
+  ],
+  [
+   15,
+   114
+  ],
+  [
+   4,
+   38
+  ],
+  [
+   18,
+   167
+  ],
+  [
+   2,
+   31
+  ],
+  [
+   2,
+   30
+  ],
+  [
+   7,
+   38
+  ],
+  [
+   3,
+   33
+  ],
+  [
+   3,
+   15
+  ],
+  [
+   15,
+   102
+  ],
+  [
+   4,
+   19
+  ],
+  [
+   7,
+   33
+  ],
+  [
+   18,
+   153
+  ],
+  [
+   3,
+   10
+  ]
+ ],
+ "round_trips": [
+  {
+   "wallet": "0x97ac054b0c6b5dee863b95c250db0e5a8eda0880",
+   "trades": 52,
+   "sold": 49,
+   "lost_to_pull": 2,
+   "mean_ret": 0.1385,
+   "eth_in_med": [
+    0.000191877135279349
+   ],
+   "buy_rel_c1": [
+    2,
+    33,
+    246
+   ],
+   "hold": [
+    40,
+    50,
+    60
+   ]
+  },
+  {
+   "wallet": "0xd2b9418277e825c1efc8d8fddb03318eb9dc76ee",
+   "trades": 33,
+   "sold": 12,
+   "lost_to_pull": 13,
+   "mean_ret": 0.2088,
+   "eth_in_med": [
+    0.00015
+   ],
+   "buy_rel_c1": [
+    -1042,
+    -120,
+    -28
+   ],
+   "hold": [
+    591,
+    2886,
+    2954
+   ]
+  },
+  {
+   "wallet": "0x8dc6800395f09dc179def0cf2e395a615b5d400e",
+   "trades": 30,
+   "sold": 0,
+   "lost_to_pull": 14,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.0001492
+   ],
+   "buy_rel_c1": [
+    -1007,
+    -91,
+    4
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x8c009ea554d530dde6ef42d4e105ceb1006749a6",
+   "trades": 29,
+   "sold": 0,
+   "lost_to_pull": 12,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.0001
+   ],
+   "buy_rel_c1": [
+    -1041,
+    -121,
+    -27
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xdc3cf9a0429f6147174cdb83c7d71894e6246e8b",
+   "trades": 25,
+   "sold": 0,
+   "lost_to_pull": 6,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.000400984225565666
+   ],
+   "buy_rel_c1": [
+    54,
+    398,
+    828
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x3155c72daee67d4aaaf4489fc1d6dc23f68fb119",
+   "trades": 24,
+   "sold": 0,
+   "lost_to_pull": 6,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.000389370724925452
+   ],
+   "buy_rel_c1": [
+    25,
+    235,
+    1488
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xbfb6354d88d8d35ad71cd04ff4c26e07b5a11af8",
+   "trades": 23,
+   "sold": 0,
+   "lost_to_pull": 16,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.00040166691770849
+   ],
+   "buy_rel_c1": [
+    -126,
+    -66,
+    -5
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x5e6ec144b5f0391bdc1338d7788d766c5d76435b",
+   "trades": 16,
+   "sold": 8,
+   "lost_to_pull": 8,
+   "mean_ret": 0.3159,
+   "eth_in_med": [
+    0.000318985004107231
+   ],
+   "buy_rel_c1": [
+    -958,
+    -17,
+    54
+   ],
+   "hold": [
+    1129,
+    1757,
+    1982
+   ]
+  },
+  {
+   "wallet": "0xf9d180a0b496561aaf324d209a09d0f6d0fe44c3",
+   "trades": 15,
+   "sold": 11,
+   "lost_to_pull": 4,
+   "mean_ret": 0.1593,
+   "eth_in_med": [
+    0.000707662362169528
+   ],
+   "buy_rel_c1": [
+    186,
+    231,
+    328
+   ],
+   "hold": [
+    2312,
+    2358,
+    2371
+   ]
+  },
+  {
+   "wallet": "0x89510a2d932810d67df3fb1338d5a98e4e1f2efd",
+   "trades": 14,
+   "sold": 10,
+   "lost_to_pull": 2,
+   "mean_ret": 0.0573,
+   "eth_in_med": [
+    0.000200485174121373
+   ],
+   "buy_rel_c1": [
+    12,
+    18,
+    202
+   ],
+   "hold": [
+    23,
+    47,
+    1025
+   ]
+  },
+  {
+   "wallet": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "trades": 11,
+   "sold": 7,
+   "lost_to_pull": 4,
+   "mean_ret": 0.1531,
+   "eth_in_med": [
+    0.001
+   ],
+   "buy_rel_c1": [
+    15,
+    18,
+    196
+   ],
+   "hold": [
+    291,
+    296,
+    301
+   ]
+  },
+  {
+   "wallet": "0x330be80910b674167701d65f8c7371c53bdb41bc",
+   "trades": 9,
+   "sold": 0,
+   "lost_to_pull": 4,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    4.0363269424823e-05
+   ],
+   "buy_rel_c1": [
+    683,
+    980,
+    1512
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x7cbdcf636571403b6d20d4cf91d4bd77fbd63fad",
+   "trades": 8,
+   "sold": 4,
+   "lost_to_pull": 4,
+   "mean_ret": -0.1375,
+   "eth_in_med": [
+    0.00020009364382531
+   ],
+   "buy_rel_c1": [
+    16,
+    20,
+    28
+   ],
+   "hold": [
+    196,
+    306,
+    652
+   ]
+  },
+  {
+   "wallet": "0xf5d706025bb7e0a02982e0c11ca3b3f4d02ab168",
+   "trades": 7,
+   "sold": 4,
+   "lost_to_pull": 2,
+   "mean_ret": -0.3042,
+   "eth_in_med": [
+    0.000396
+   ],
+   "buy_rel_c1": [
+    49,
+    86,
+    1423
+   ],
+   "hold": [
+    159,
+    437,
+    530
+   ]
+  },
+  {
+   "wallet": "0xed165972d2ea6dbf719a9fc6f234566090c79314",
+   "trades": 5,
+   "sold": 0,
+   "lost_to_pull": 1,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.000410393741385207
+   ],
+   "buy_rel_c1": [
+    109,
+    295,
+    787
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x8a05e322829dd13db8ab7ed3f69b79a2b3e80bd9",
+   "trades": 4,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.001806851581195894
+   ],
+   "buy_rel_c1": [
+    1460,
+    2442,
+    2703
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xd54bad007f9da40134dc9b1ed08cd23e407602eb",
+   "trades": 4,
+   "sold": 2,
+   "lost_to_pull": 2,
+   "mean_ret": -0.2945,
+   "eth_in_med": [
+    4.0648705518061e-05
+   ],
+   "buy_rel_c1": [
+    -191,
+    -71,
+    -42
+   ],
+   "hold": [
+    172,
+    247,
+    247
+   ]
+  },
+  {
+   "wallet": "0xf8878ef6b0de5ab6749de7b0977258df5c5459ef",
+   "trades": 3,
+   "sold": 2,
+   "lost_to_pull": 1,
+   "mean_ret": 0.0166,
+   "eth_in_med": [
+    0.000896772515715938
+   ],
+   "buy_rel_c1": [
+    -10,
+    33,
+    78
+   ],
+   "hold": [
+    185,
+    195,
+    195
+   ]
+  },
+  {
+   "wallet": "0x6d8acb0ec1c46805a9b8c2c689264f9985e6b59a",
+   "trades": 3,
+   "sold": 1,
+   "lost_to_pull": 2,
+   "mean_ret": -0.5257,
+   "eth_in_med": [
+    0.000495
+   ],
+   "buy_rel_c1": [
+    -5,
+    55,
+    55
+   ],
+   "hold": [
+    438,
+    438,
+    438
+   ]
+  },
+  {
+   "wallet": "0xf2a8987eff9fc0414996c8e144f097f4885b0e81",
+   "trades": 3,
+   "sold": 0,
+   "lost_to_pull": 3,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.000594
+   ],
+   "buy_rel_c1": [
+    55,
+    58,
+    174
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xba0f83eaf4eead97d3effad84a3e9b563374eb22",
+   "trades": 3,
+   "sold": 1,
+   "lost_to_pull": 2,
+   "mean_ret": -0.1969,
+   "eth_in_med": [
+    0.000197554827931034
+   ],
+   "buy_rel_c1": [
+    -62,
+    20,
+    20
+   ],
+   "hold": [
+    223,
+    223,
+    223
+   ]
+  },
+  {
+   "wallet": "0xcff69aa866bf5c1d5a460592c8af07638b63b7ec",
+   "trades": 2,
+   "sold": 2,
+   "lost_to_pull": 0,
+   "mean_ret": -0.105,
+   "eth_in_med": [
+    0.008715200650274564
+   ],
+   "buy_rel_c1": [
+    726,
+    1013,
+    1013
+   ],
+   "hold": [
+    348,
+    662,
+    662
+   ]
+  },
+  {
+   "wallet": "0x884c99f0e0053ce9736d4cd05e5f28fd6c61e87d",
+   "trades": 2,
+   "sold": 1,
+   "lost_to_pull": 1,
+   "mean_ret": -0.1653,
+   "eth_in_med": [
+    0.0014
+   ],
+   "buy_rel_c1": [
+    15,
+    19,
+    19
+   ],
+   "hold": [
+    298,
+    298,
+    298
+   ]
+  },
+  {
+   "wallet": "0xc9caf996d8a956de18fecf1ad79b470c6189ee2a",
+   "trades": 2,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.001
+   ],
+   "buy_rel_c1": [
+    2047,
+    2621,
+    2621
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x1a2d2cd5b44a1130a208b68bd06638dc7f6a4b1d",
+   "trades": 2,
+   "sold": 2,
+   "lost_to_pull": 0,
+   "mean_ret": 0.5985,
+   "eth_in_med": [
+    0.00044791749556757
+   ],
+   "buy_rel_c1": [
+    -24,
+    -3,
+    -3
+   ],
+   "hold": [
+    1433,
+    1484,
+    1484
+   ]
+  },
+  {
+   "wallet": "0xce2841c532af2628df7166badfa2eaf401c217a7",
+   "trades": 2,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.001
+   ],
+   "buy_rel_c1": [
+    190,
+    222,
+    222
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xc10518f81f2be96d8f37bef336f37a1e7fd686f3",
+   "trades": 2,
+   "sold": 0,
+   "lost_to_pull": 1,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.00099
+   ],
+   "buy_rel_c1": [
+    480,
+    690,
+    690
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x76508769cf9a85cc37522d1417dccc596d2e1f65",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 1,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.0099
+   ],
+   "buy_rel_c1": [
+    669,
+    669,
+    669
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xd517f65c07d7697a6fb48ba92fac445e876c20c9",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.04
+   ],
+   "buy_rel_c1": [
+    2359,
+    2359,
+    2359
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xf22e13f4fecf19c17cd142b58a3ed3fbfc361ff5",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.0001986534
+   ],
+   "buy_rel_c1": [
+    1260,
+    1260,
+    1260
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x7f13cf2cb9fa34915d9f8592ca85cbac45aa8700",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.000448238534618582
+   ],
+   "buy_rel_c1": [
+    920,
+    920,
+    920
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xbead1521414abd514d2cdd91c681672ea277b2ec",
+   "trades": 1,
+   "sold": 1,
+   "lost_to_pull": 0,
+   "mean_ret": 1.2647,
+   "eth_in_med": [
+    0.0005
+   ],
+   "buy_rel_c1": [
+    143,
+    143,
+    143
+   ],
+   "hold": [
+    629,
+    629,
+    629
+   ]
+  },
+  {
+   "wallet": "0xc60f849c4ee41c54e7575022c10e73ef10fce363",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.001203129291161138
+   ],
+   "buy_rel_c1": [
+    1975,
+    1975,
+    1975
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x0bc841634507c6231e054a13652a6e90215d0cff",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.002485
+   ],
+   "buy_rel_c1": [
+    1122,
+    1122,
+    1122
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x728f51950ff096dc03a48f5e83f45ac8bb75f500",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.002387579165808129
+   ],
+   "buy_rel_c1": [
+    543,
+    543,
+    543
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x42fdb641b70b2216308943082cc826d4da658c3e",
+   "trades": 1,
+   "sold": 1,
+   "lost_to_pull": 0,
+   "mean_ret": 0.1312,
+   "eth_in_med": [
+    0.00013207593291195
+   ],
+   "buy_rel_c1": [
+    931,
+    931,
+    931
+   ],
+   "hold": [
+    160,
+    160,
+    160
+   ]
+  },
+  {
+   "wallet": "0x1cd9d560440aab96f7b0a007ced7c2191cac5baf",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 1,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.002387521153784685
+   ],
+   "buy_rel_c1": [
+    1677,
+    1677,
+    1677
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x6d0af87fabe19ae6a41814d2b43e809eac217bf0",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 1,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.00999
+   ],
+   "buy_rel_c1": [
+    1692,
+    1692,
+    1692
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xda9cae528a4083d4ab24285f5a173639bbebcac8",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 1,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.0014
+   ],
+   "buy_rel_c1": [
+    204,
+    204,
+    204
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xc47d2139bfa1c830cf68836a43701587a834886c",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.000198
+   ],
+   "buy_rel_c1": [
+    -32,
+    -32,
+    -32
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xe9d83e95b2248d8b33d63583762bd7f7465ddb28",
+   "trades": 1,
+   "sold": 1,
+   "lost_to_pull": 0,
+   "mean_ret": 0.5444,
+   "eth_in_med": [
+    0.00020389665616338
+   ],
+   "buy_rel_c1": [
+    165,
+    165,
+    165
+   ],
+   "hold": [
+    246,
+    246,
+    246
+   ]
+  },
+  {
+   "wallet": "0x9bc462bce2acd6fbe2ef5470d55b439453451083",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.003990522481243518
+   ],
+   "buy_rel_c1": [
+    1497,
+    1497,
+    1497
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xa67d7eb4dc68fa6ce8e34ef8cadaf075b9893fbb",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.002385051950736476
+   ],
+   "buy_rel_c1": [
+    1777,
+    1777,
+    1777
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x961c7258361c22ec96a9fc3cdea8e189f7ea0d8c",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 1,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.001089
+   ],
+   "buy_rel_c1": [
+    118,
+    118,
+    118
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215",
+   "trades": 1,
+   "sold": 1,
+   "lost_to_pull": 0,
+   "mean_ret": 0.2288,
+   "eth_in_med": [
+    0.0297
+   ],
+   "buy_rel_c1": [
+    -27,
+    -27,
+    -27
+   ],
+   "hold": [
+    33,
+    33,
+    33
+   ]
+  },
+  {
+   "wallet": "0xc0e4b0439f595cadf65d85c211d7cde80b06ddae",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 1,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.00099
+   ],
+   "buy_rel_c1": null,
+   "hold": null
+  },
+  {
+   "wallet": "0x8dddf8f2ca2a79a9c54219fa96636491466ba6c4",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 1,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.00495
+   ],
+   "buy_rel_c1": [
+    766,
+    766,
+    766
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xd1e9a50dee8d03fb07372a78af1eeb94a43f1e1c",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.00099
+   ],
+   "buy_rel_c1": [
+    2137,
+    2137,
+    2137
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x4381045063b19a615a272733fa6b5f169b622646",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.003201803982991495
+   ],
+   "buy_rel_c1": [
+    2565,
+    2565,
+    2565
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x3029608e5643e5ed415d5ba1d75d9e0631a8afcd",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 1,
+   "mean_ret": -1.0,
+   "eth_in_med": [
+    0.000495
+   ],
+   "buy_rel_c1": [
+    42,
+    42,
+    42
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x4d42774f858848698a82739bb61a179059f2f83d",
+   "trades": 1,
+   "sold": 1,
+   "lost_to_pull": 0,
+   "mean_ret": 0.8425,
+   "eth_in_med": [
+    0.00099
+   ],
+   "buy_rel_c1": [
+    218,
+    218,
+    218
+   ],
+   "hold": [
+    1310,
+    1310,
+    1310
+   ]
+  },
+  {
+   "wallet": "0x019e8eb1a39bbf9d4a5a441573b7946bc8d139af",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.000198
+   ],
+   "buy_rel_c1": [
+    300,
+    300,
+    300
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x6019f8f759cef9299874f451799679c120fe0b2d",
+   "trades": 1,
+   "sold": 1,
+   "lost_to_pull": 0,
+   "mean_ret": 0.5353,
+   "eth_in_med": [
+    0.000398472257365261
+   ],
+   "buy_rel_c1": [
+    201,
+    201,
+    201
+   ],
+   "hold": [
+    303,
+    303,
+    303
+   ]
+  },
+  {
+   "wallet": "0x386157d1b6585dc658fb8c89c096462cd49b2e8e",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    3.9659215407082e-05
+   ],
+   "buy_rel_c1": [
+    1568,
+    1568,
+    1568
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0x329ca263df30c3e506c39081403ec95d5942ece8",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.001956876780320762
+   ],
+   "buy_rel_c1": [
+    2048,
+    2048,
+    2048
+   ],
+   "hold": null
+  },
+  {
+   "wallet": "0xedd37caf0f19179522f77b101fd1b00d3cd1a2a4",
+   "trades": 1,
+   "sold": 0,
+   "lost_to_pull": 0,
+   "mean_ret": null,
+   "eth_in_med": [
+    0.000398
+   ],
+   "buy_rel_c1": [
+    2848,
+    2848,
+    2848
+   ],
+   "hold": null
+  }
+ ]
+}

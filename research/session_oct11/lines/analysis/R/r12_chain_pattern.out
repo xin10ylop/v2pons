@@ -1,0 +1,17 @@
+window: 10-11 11:27 .. 10-11 17:18 UTC; head 10-11 17:21
+2.433 fee2500 untouched        n  40 T  40 (no bot buy 0, of them pulled 0) T 8/9/10 T_eth50 0.1683 | bot buys in [T,T+400] p50 15 | 2nd n 40 at T+21/26/35 eth50 0.148 move50 +11.6% | 3rd T+45/55/62 | 1st sell n 40 T+30/33/35 eth50 0.1434 sell<2nd 4 | pull n 8 T+81/121/247 by T+3/10/30/60/400 0/0/0/0/8 | span-T p10 390
+2.433 fee2500 OURS             n 118 T 118 (no bot buy 0, of them pulled 0) T 8/10/12 T_eth50 0.1732 | bot buys in [T,T+400] p50 1 | 2nd n 0 at T+-/-/- eth50 0.000 move50 +0.0% | 3rd T+-/-/- | 1st sell n 0 T+-/-/- eth50 0.0000 sell<2nd 0 | pull n 118 T+3/3/3 by T+3/10/30/60/400 108/116/118/118/118 | span-T p10 388
+2.433 fee5000<16:28 untouched  n  14 T  14 (no bot buy 0, of them pulled 0) T 8/9/11 T_eth50 0.1485 | bot buys in [T,T+400] p50 12 | 2nd n 8 at T+19/30/34 eth50 0.148 move50 +12.1% | 3rd T+46/56/68 | 1st sell n 8 T+29/36/38 eth50 0.1332 sell<2nd 2 | pull n 7 T+18/19/241 by T+3/10/30/60/400 0/0/6/6/7 | span-T p10 389
+2.433 fee5000<16:28 OURS       n   3 T   3 (no bot buy 0, of them pulled 0) T 8/8/10 T_eth50 0.1485 | bot buys in [T,T+400] p50 15 | 2nd n 3 at T+23/25/33 eth50 0.118 move50 +9.1% | 3rd T+50/54/63 | 1st sell n 3 T+31/31/33 eth50 0.1038 sell<2nd 0 | pull n 0 T+-/-/- by T+3/10/30/60/400 0/0/0/0/0 | span-T p10 390
+2.433 fee5000>=16:28 untouched n   4 T   4 (no bot buy 0, of them pulled 0) T 7/8/8 T_eth50 0.1237 | bot buys in [T,T+400] p50 15 | 2nd n 4 at T+18/23/25 eth50 0.223 move50 +18.1% | 3rd T+45/51/54 | 1st sell n 4 T+32/35/35 eth50 0.1730 sell<2nd 0 | pull n 0 T+-/-/- by T+3/10/30/60/400 0/0/0/0/0 | span-T p10 392
+2.433 fee5000>=16:28 OURS      n  10 T   7 (no bot buy 3, of them pulled 3) T 8/34/59 T_eth50 0.1237 | bot buys in [T,T+400] p50 15 | 2nd n 7 at T+23/28/42 eth50 0.125 move50 +10.3% | 3rd T+42/53/68 | 1st sell n 7 T+9/30/36 eth50 0.1006 sell<2nd 4 | pull n 2 T+43/101/101 by T+3/10/30/60/400 0/0/0/1/2 | span-T p10 341
+3.0 new untouched              n 121 T  95 (no bot buy 26, of them pulled 26) T 28/42/54 T_eth50 0.1237 | bot buys in [T,T+400] p50 15 | 2nd n 95 at T+20/24/28 eth50 0.125 move50 +8.3% | 3rd T+42/48/54 | 1st sell n 95 T+15/25/36 eth50 0.1148 sell<2nd 45 | pull n 9 T+56/123/355 by T+3/10/30/60/400 0/0/0/1/9 | span-T p10 346
+3.0 new OURS                   n   1 T   0 (no bot buy 1, of them pulled 1) T -/-/- T_eth50 0.0000 | bot buys in [T,T+400] p50 None | 2nd n 0 at T+-/-/- eth50 0.000 move50 +0.0% | 3rd T+-/-/- | 1st sell n 0 T+-/-/- eth50 0.0000 sell<2nd 0 | pull n 0 T+-/-/- by T+3/10/30/60/400 0/0/0/0/0 | span-T p10 None
+2.433 fee2500          bot buy out/minOut: first n 158 min 1.0010 p10/50 1.0015/1.0055; later n 471 min 1.0101 p10/50 1.0107/1.0121
+2.433 fee5000<16:28    bot buy out/minOut: first n 17 min 1.0015 p10/50 1.0054/1.0098; later n 147 min 1.0102 p10/50 1.0112/1.0144
+2.433 fee5000>=16:28   bot buy out/minOut: first n 11 min 1.0015 p10/50 1.0020/1.0022; later n 125 min 1.0104 p10/50 1.0111/1.0140
+3.0 new                bot buy out/minOut: first n 95 min 1.0526 p10/50 1.0526/1.0526; later n 1273 min 1.0010 p10/50 1.0547/1.0607
+non-bot buys >= 0.02 ETH by (line, to, selector, from a bot wallet): []
+bot buys by (to, selector): [(('3.0', '0x1cbaf24d', 'c1120e3d'), 1368), (('2.433', '0x1cbaf24d', 'c1120e3d'), 929)]
+bot sells by (to, selector): [(('3.0', '0x88767899', '24856bc3'), 1174), (('2.433', '0x88767899', '24856bc3'), 726)]
+first pulls by (to, selector): [(('2.433', '0x1cbaf24d', 'a0f7978d'), 138), (('3.0', '0x1cbaf24d', 'a0f7978d'), 36)]

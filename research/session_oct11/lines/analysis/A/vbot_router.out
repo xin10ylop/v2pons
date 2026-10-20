@@ -1,0 +1,59 @@
+non-vbot pools whose frb went to the vbot router: 0  with any of first-12 swaps via it: 0
+
+vbot router in whole lc family (incl. vbot): frb via it by known_fp/value: [(('vbot-v3.0', '3'), 3339), (('vbot-v2.433', '2.4333285'), 3173), (('vbot-v5.0', '5'), 1543)]
+
+skeleton 037449b1: 5040 pools; by (value, clen, fee/ts, quote, known_fp):
+    ('3', 1444, '10000/200', 'ETH', 'vbot-v3.0') 3355
+    ('5', 1444, '10000/200', 'ETH', 'vbot-v5.0') 1543
+    ('0', 1892, '900000/9000', 'USDG', None) 6
+    ('0', 1892, '800000/8000', 'USDG', None) 6
+    ('0', 1892, '880000/8800', 'USDG', None) 6
+    ('0', 1892, '750000/7500', 'USDG', None) 4
+    ('0', 1892, '955950/9560', 'USDG', None) 4
+    ('0', 1892, '870000/8700', 'USDG', None) 4
+    ('0', 1892, '850000/8500', 'USDG', None) 3
+    ('0', 1892, '9000/90', 'USDG', None) 3
+    ('0', 1892, '770000/7700', 'USDG', None) 3
+    ('0', 1316, '890000/8900', 'USDG', None) 2
+    ('0', 1892, '700000/7000', 'USDG', None) 2
+    ('0', 1892, '780000/7800', 'USDG', None) 2
+   non-vbot: 142 with frb: 4  value>0: 38  value>0 values: [('4', 5), ('16', 2), ('10', 1), ('6.42745797e-05', 1), ('9.309876584e-05', 1), ('0.004240509', 1), ('0.0003747318358', 1), ('0.0001965536645', 1)]
+
+skeleton aff2095f: 3205 pools; by (value, clen, fee/ts, quote, known_fp):
+    ('2.4333285', 1444, '2500/50', 'ETH', 'vbot-v2.433') 3182
+    ('0', 1892, '880000/8800', 'USDG', None) 3
+    ('0', 1892, '915150/9152', 'USDG', None) 2
+    ('0', 1892, '907110/9071', 'USDG', None) 2
+    ('0', 1892, '870000/8700', 'USDG', None) 1
+    ('0', 1316, '955950/9560', 'USDG', None) 1
+    ('0', 1892, '955950/9560', 'USDG', None) 1
+    ('0', 1892, '900000/9000', 'USDG', None) 1
+    ('0', 1892, '981000/9810', 'USDG', None) 1
+    ('0', 1892, '860000/8600', 'USDG', None) 1
+    ('0', 1892, '990000/9900', 'USDG', None) 1
+    ('0.0001983303712', 2020, '810000/8100', 'ETH', None) 1
+    ('1.792981078e-06', 1444, '945150/9452', 'ETH', None) 1
+    ('0.0004339144842', 2020, '9000/90', 'ETH', None) 1
+   non-vbot: 23 with frb: 0  value>0: 6  value>0 values: [('0.0001983303712', 1), ('1.792981078e-06', 1), ('0.0004339144842', 1), ('3.587158932e-05', 1), ('9.534330625e-05', 1), ('0.0001937561847', 1)]
+
+1444-byte ETH no-hook value>0 (non-vbot): 1569 pools, 634 distinct values; values with >= 3 launches:
+  0.00121769999999999995 n=249 days=[60, 48, 38, 38, 29, 21, 15] wal=2 nonce50=63322.0 fee=[(883131, 249)] ts=[(200, 249)] sqrtL=249 tok=[('16afd61e', 147), ('58d59320', 36)] anybuy=12 fb_off=[34.6, 251.5, 1991.7] frb=3 frb_off=[115.4, 529.0, 959.4] frb_to=[('0xf5307745', 1), ('0xf0b7eaaf', 1)] pulled=0 pull_off50=None
+  4.00000000000000033e-05 n=161 days=[43, 42, 11, 0, 17, 28, 20] wal=1 nonce50=9273.0 fee=[(790000, 161)] ts=[(60, 161)] sqrtL=161 tok=[('16afd61e', 161)] anybuy=21 fb_off=[2.0, 317.0, 2671.0] frb=0 frb_off=[None, None, None] frb_to=[] pulled=0 pull_off50=None
+  0.00121769999999999908 n=121 days=[18, 23, 30, 10, 18, 15, 7] wal=2 nonce50=63348.0 fee=[(883131, 121)] ts=[(200, 121)] sqrtL=121 tok=[('16afd61e', 103), ('fa4982d5', 8)] anybuy=1 fb_off=[2637.0, 2637.0, 2637.0] frb=0 frb_off=[None, None, None] frb_to=[] pulled=0 pull_off50=None
+  9.33333333333333215 n=111 days=[0, 0, 1, 15, 9, 52, 34] wal=2 nonce50=536.0 fee=[(10038, 1), (10039, 1)] ts=[(201, 50)] sqrtL=79 tok=[('58d59320', 111)] anybuy=1 fb_off=[2613.0, 2613.0, 2613.0] frb=1 frb_off=[2753.0, 2753.0, 2753.0] frb_to=[('0x6e2a35a7', 1)] pulled=43 pull_off50=1133.0
+  40 n=110 days=[0, 0, 7, 49, 31, 7, 16] wal=2 nonce50=226.0 fee=[(10128, 1), (10129, 1)] ts=[(203, 48)] sqrtL=98 tok=[('6aa07533', 110)] anybuy=0 fb_off=[None, None, None] frb=0 frb_off=[None, None, None] frb_to=[] pulled=56 pull_off50=1155.5
+  1.99999999999999778 n=32 days=[0, 16, 13, 2, 0, 0, 1] wal=32 nonce50=3.0 fee=[(100, 32)] ts=[(1, 32)] sqrtL=1 tok=[('fe6bafbf', 1), ('c37da644', 1)] anybuy=32 fb_off=[3.0, 3.0, 4.0] frb=32 frb_off=[63.2, 273.0, 572.1] frb_to=[('0x88767899', 32)] pulled=25 pull_off50=1589.0
+  2 n=32 days=[0, 17, 8, 1, 6, 0, 0] wal=2 nonce50=378.5 fee=[(10002, 1), (10003, 1)] ts=[(200, 32)] sqrtL=24 tok=[('f21d2b1e', 32)] anybuy=9 fb_off=[317.8, 1911.0, 2879.8] frb=9 frb_off=[317.8, 1911.0, 2879.8] frb_to=[('0xccc88a9d', 8), ('0x88767899', 1)] pulled=7 pull_off50=1944.0
+  1.99999999999999223 n=32 days=[0, 5, 2, 5, 0, 3, 17] wal=29 nonce50=3.0 fee=[(100, 32)] ts=[(1, 32)] sqrtL=1 tok=[('9595f93c', 2), ('528c645e', 1)] anybuy=32 fb_off=[3.0, 3.0, 3.9] frb=29 frb_off=[194.4, 319.0, 578.8] frb_to=[('0x88767899', 28), ('0xf0b7eaaf', 1)] pulled=22 pull_off50=1609.0
+  33.3333333333333286 n=16 days=[5, 1, 2, 1, 4, 2, 1] wal=3 nonce50=516.0 fee=[(10059, 1), (10060, 1)] ts=[(201, 16)] sqrtL=16 tok=[('58d59320', 16)] anybuy=0 fb_off=[None, None, None] frb=0 frb_off=[None, None, None] frb_to=[] pulled=1 pull_off50=1233.0
+  1.79999999999999294 n=14 days=[0, 5, 2, 4, 0, 1, 2] wal=14 nonce50=3.0 fee=[(100, 14)] ts=[(1, 14)] sqrtL=1 tok=[('948ca772', 1), ('c522f0fa', 1)] anybuy=14 fb_off=[3.0, 3.0, 3.0] frb=14 frb_off=[118.3, 280.0, 468.4] frb_to=[('0x88767899', 14)] pulled=11 pull_off50=1858.0
+  4 n=12 days=[0, 0, 0, 5, 1, 1, 5] wal=2 nonce50=445.5 fee=[(10049, 2), (10050, 2)] ts=[(201, 7)] sqrtL=11 tok=[('58d59320', 7), ('037449b1', 5)] anybuy=2 fb_off=[417.9, 1157.5, 1897.1] frb=2 frb_off=[418.1, 1158.5, 1898.9] frb_to=[('0x6e2a35a7', 1), ('0xccc88a9d', 1)] pulled=0 pull_off50=None
+  1.7999999999999976 n=11 days=[0, 5, 5, 0, 0, 0, 1] wal=11 nonce50=3.0 fee=[(100, 11)] ts=[(1, 11)] sqrtL=1 tok=[('3df39090', 1), ('5596cb99', 1)] anybuy=11 fb_off=[3.0, 3.0, 4.0] frb=11 frb_off=[120.0, 306.0, 405.0] frb_to=[('0x88767899', 11)] pulled=7 pull_off50=2477.0
+  1.69999999999999774 n=7 days=[0, 7, 0, 0, 0, 0, 0] wal=5 nonce50=3.0 fee=[(100, 7)] ts=[(1, 7)] sqrtL=1 tok=[('69ca8a3e', 2), ('96fa7dc9', 2)] anybuy=7 fb_off=[3.0, 3.0, 3.4] frb=5 frb_off=[87.0, 283.0, 399.6] frb_to=[('0x88767899', 4), ('0x65050a9b', 1)] pulled=5 pull_off50=1045.0
+  10 n=6 days=[4, 2, 0, 0, 0, 0, 0] wal=2 nonce50=4296.5 fee=[(10045, 1), (1000, 1)] ts=[(200, 5)] sqrtL=6 tok=[('58d59320', 5), ('037449b1', 1)] anybuy=3 fb_off=[98.4, 480.0, 1339.2] frb=3 frb_off=[694.8, 1554.0, 1971.6] frb_to=[('0x603206d6', 1), ('0x1521027b', 1)] pulled=1 pull_off50=664.0
+  1.99999999999999223 n=6 days=[0, 0, 0, 2, 0, 4, 0] wal=6 nonce50=3.0 fee=[(500, 6)] ts=[(10, 6)] sqrtL=1 tok=[('1bd534c7', 1), ('39c08df6', 1)] anybuy=6 fb_off=[3.0, 3.5, 4.0] frb=6 frb_off=[232.5, 270.5, 332.5] frb_to=[('0x88767899', 6)] pulled=5 pull_off50=2631.0
+  0.00121769999999999496 n=5 days=[1, 2, 1, 0, 1, 0, 0] wal=1 nonce50=63429.0 fee=[(883131, 5)] ts=[(200, 5)] sqrtL=5 tok=[('58d59320', 5)] anybuy=0 fb_off=[None, None, None] frb=0 frb_off=[None, None, None] frb_to=[] pulled=1 pull_off50=1694.0
+  1.00000000000100009e-06 n=5 days=[0, 0, 0, 0, 5, 0, 0] wal=1 nonce50=2318.0 fee=[(3000, 4), (10000, 1)] ts=[(60, 4)] sqrtL=3 tok=[('d4e7eae4', 5)] anybuy=5 fb_off=[0.4, 1.0, 3.0] frb=0 frb_off=[None, None, None] frb_to=[] pulled=0 pull_off50=None
+  8.33333333333333215 n=3 days=[3, 0, 0, 0, 0, 0, 0] wal=1 nonce50=361.0 fee=[(10033, 1), (10034, 1)] ts=[(200, 3)] sqrtL=3 tok=[('58d59320', 3)] anybuy=0 fb_off=[None, None, None] frb=0 frb_off=[None, None, None] frb_to=[] pulled=0 pull_off50=None
+  1.59999999999999298 n=3 days=[0, 3, 0, 0, 0, 0, 0] wal=3 nonce50=3.0 fee=[(100, 3)] ts=[(1, 3)] sqrtL=1 tok=[('7da24858', 1), ('ea416896', 1)] anybuy=3 fb_off=[3.2, 4.0, 4.0] frb=3 frb_off=[339.6, 386.0, 622.0] frb_to=[('0x88767899', 3)] pulled=3 pull_off50=2835.0
+  0.0050000000000000001 n=3 days=[0, 2, 0, 1, 0, 0, 0] wal=1 nonce50=1861.0 fee=[(100000, 2), (800000, 1)] ts=[(1000, 2)] sqrtL=3 tok=[('d4e7eae4', 3)] anybuy=0 fb_off=[None, None, None] frb=0 frb_off=[None, None, None] frb_to=[] pulled=1 pull_off50=313.0

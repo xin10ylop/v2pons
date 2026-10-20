@@ -1,0 +1,2 @@
+FEE_MAX_PPM 9999 {('fee 10000', ()): 889}
+FEE_MAX_PPM 10000 {(None, ()): 889}

@@ -1,0 +1,49 @@
+== 1) beforeSwap now (the token is open now, so every origin passes)
+0xdd0e28aa2d from 0x9fdd8ceab2 OK 0x575e24b4
+0xdd0e28aa2d from 0x35eb8c43c7 OK 0x575e24b4
+0xdd0e28aa2d from 0x25c5de26f8 OK 0x575e24b4
+0xdd0e28aa2d from 0x1111111111 OK 0x575e24b4
+0xdd0e28aa2d from 0x2abb565300 OK 0x575e24b4
+0x243e834a0b from 0x9fdd8ceab2 OK 0x575e24b4
+0x243e834a0b from 0x35eb8c43c7 OK 0x575e24b4
+0x243e834a0b from 0x4d7a2d1674 OK 0x575e24b4
+0x243e834a0b from 0x1111111111 OK 0x575e24b4
+0x243e834a0b from 0x2abb565300 OK 0x575e24b4
+0x9abedd02cd from 0x9fdd8ceab2 OK 0x575e24b4
+0x9abedd02cd from 0x35eb8c43c7 OK 0x575e24b4
+0x9abedd02cd from 0xad67fd1dc0 OK 0x575e24b4
+0x9abedd02cd from 0x1111111111 OK 0x575e24b4
+0x9abedd02cd from 0x2abb565300 OK 0x575e24b4
+
+== 2) isOpen() now
+token 0xd9f8b8382d 0x0000000000000000000000000000000000000000000000000000000000000001
+launch contract 0x5d78992404 ERR {"code": 3, "message": "execution reverted", "data": "0x"}
+hook 0xdd0e28aa2d ERR {"code": 3, "message": "execution reverted", "data": "0x"}
+token 0xbd5c74f103 0x0000000000000000000000000000000000000000000000000000000000000001
+launch contract 0x1774c28419 ERR {"code": 3, "message": "execution reverted", "data": "0x"}
+hook 0x9abedd02cd ERR {"code": 3, "message": "execution reverted", "data": "0x"}
+
+== 3) open time in the token code vs launch (pull at ~+30 blocks = ~3 s)
+10-12 09:45:36 tok 0xd9f8b8382d open at 10-12 09:50:36 = launch + 300 s | pull at +30 blocks
+10-12 09:48:27 tok 0x92045901be open at 10-12 09:53:28 = launch + 301 s | pull at +32 blocks
+10-12 09:51:17 tok 0xe4ff877674 open at 10-12 09:56:16 = launch + 299 s | pull at +29 blocks
+10-12 11:39:04 tok 0x5b3c0ae7f4 open at 10-12 11:44:04 = launch + 300 s | pull at +29 blocks
+10-12 17:11:28 tok 0x9ca94f450b open at 10-12 17:16:28 = launch + 300 s | pull at +30 blocks
+10-12 22:41:44 tok 0x8036aef346 open at 10-12 22:46:44 = launch + 300 s | pull at +28 blocks
+10-12 22:49:20 tok 0x6f9237e5e4 open at 10-12 22:54:19 = launch + 299 s | pull at +29 blocks
+10-13 11:58:05 tok 0x8775a59f48 open at 10-13 12:03:06 = launch + 301 s | pull at +31 blocks
+10-13 20:36:21 tok 0xf9239a1aa3 open at 10-13 20:41:21 = launch + 300 s | pull at +31 blocks
+10-13 22:34:05 tok 0x8033719ae8 open at 10-13 22:39:05 = launch + 300 s | pull at +29 blocks
+10-13 22:51:31 tok 0xbd5c74f103 open at 10-13 22:56:31 = launch + 300 s | pull at +31 blocks
+
+== 4) allowlist d63a8e11(address) on two tokens (1 = allowed)
+0xd9f8b8382d 0x9fdd8ceab2 1
+0xd9f8b8382d 0x35eb8c43c7 0
+0xd9f8b8382d 0x25c5de26f8 1
+0xd9f8b8382d 0x1111111111 0
+0xd9f8b8382d 0x2abb565300 0
+0xbd5c74f103 0x9fdd8ceab2 1
+0xbd5c74f103 0x35eb8c43c7 0
+0xbd5c74f103 0xad67fd1dc0 1
+0xbd5c74f103 0x1111111111 0
+0xbd5c74f103 0x2abb565300 0

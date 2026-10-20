@@ -1,0 +1,24 @@
+slice 86150648..86243852 (93205 blocks, 10-11 21:32:11 -> 10-12 00:12:04 UTC); 3.0 pools 68, all with T
+1444-byte PositionManager launches in the slice: 146 by line: [('3.0', 68), ('2.433', 28), ('v5', 21), ('v4e-05', 6), ('v9.33333', 4), ('v0', 3), ('v0.000945457', 1), ('v0.000220158', 1), ('v4', 1), ('v0.000393527', 1), ('v0.00145048', 1), ('v0.00100758', 1), ('v0.00442789', 1), ('v0.0012177', 1), ('v0.000769711', 1), ('v0.00268309', 1), ('v0.00018556', 1), ('v0.0018619', 1), ('v1.845e-05', 1), ('v0.000204773', 1), ('v1.83507e-05', 1), ('v8.49582e-06', 1)] senders distinct: 130
+background: blocks holding one 146 of 93205 = 0.00157 per block (one every 638 blocks = 66 s)
+background inside the pools' windows L+1..T-5: 24 of 2328 blocks = 0.01031 per block
+
+(1) coverage: pools with a signal at d = 0..12: [0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 2, 0, 0]
+    d 1..4: 2 of 68 (2.9%), d 5..8: 1, d 9..12: 3; expected at the background rate in any 4-block window: 0.43 (0.6%); P(X >= 2) = 0.068
+    pool 0x91d081e9 L 86154153 T-L 45: signals at d = [(4, 'v5', '0xfdd6a599', 3)]
+    pool 0x7a9304ef L 86158206 T-L 24: signals at d = [(10, 'v9.33333', '0x1139bb10', 2)]
+    pool 0x502a612f L 86177521 T-L 42: signals at d = [(9, '3.0', '0xe9ffc107', 2)]
+    pool 0x8355ecc7 L 86194966 T-L 29: signals at d = [(2, '3.0', '0x11022c3e', 1)]
+    pool 0x1965d139 L 86194993 T-L 26: signals at d = [(5, 'v5', '0xddbc5550', 3)]
+    pool 0x21221795 L 86212390 T-L 53: signals at d = [(10, 'v5', '0x3684fa7f', 2)]
+
+(2) every signal between L+1 and T (n 26 in 68 pools, 0.38 per pool): d histogram [(2, 1), (4, 1), (5, 1), (9, 1), (10, 2), (14, 1), (15, 1), (16, 1), (17, 2), (21, 2), (25, 1), (31, 1), (32, 3), (33, 1), (34, 1), (38, 1), (39, 1), (43, 1), (45, 1), (49, 1), (51, 1)]
+    share at d 1..4: 2/26; window length T-L p50 42 -> a uniform signal puts 10% of its hits in d 1..4
+
+(3) the rule as the engine runs it (the first signal while the pool is open fires; the buy lands k blocks later; useful = lands in T-2..T-1)
+  gate L+1  k=1: fires 22 of 68 pools; useful 1 (5% of fires, 1.5% of pools); too early (lands <= T-3) 21; too late (lands >= T) 0; no fire 46; first-fire lead d p10/50/90 5/31/45
+  gate L+1  k=2: fires 22 of 68 pools; useful 1 (5% of fires, 1.5% of pools); too early (lands <= T-3) 20; too late (lands >= T) 1; no fire 46; first-fire lead d p10/50/90 5/31/45
+  gate L+16 k=1: fires 11 of 68 pools; useful 1 (9% of fires, 1.5% of pools); too early (lands <= T-3) 10; too late (lands >= T) 0; no fire 57; first-fire lead d p10/50/90 4/15/31
+  gate L+16 k=2: fires 11 of 68 pools; useful 1 (9% of fires, 1.5% of pools); too early (lands <= T-3) 9; too late (lands >= T) 1; no fire 57; first-fire lead d p10/50/90 4/15/31
+  gate L+24 k=1: fires 7 of 68 pools; useful 1 (14% of fires, 1.5% of pools); too early (lands <= T-3) 6; too late (lands >= T) 0; no fire 61; first-fire lead d p10/50/90 2/10/21
+  gate L+24 k=2: fires 7 of 68 pools; useful 1 (14% of fires, 1.5% of pools); too early (lands <= T-3) 5; too late (lands >= T) 1; no fire 61; first-fire lead d p10/50/90 2/10/21

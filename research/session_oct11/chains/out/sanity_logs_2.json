@@ -1,0 +1,59 @@
+{
+ "worldchain": {
+  "blocks": 100,
+  "transfers": 1590,
+  "swaps": 173,
+  "swap_emitters_top": [
+   [
+    "0x02371da6173cf95623da4189e68912233cc7107c",
+    19
+   ],
+   [
+    "0xb1860d529182ac3bc1f51fa2abd56662b7d13f33",
+    17
+   ],
+   [
+    "0xc19bc89ac024426f5a23c5bb8bc91d8017c90684",
+    16
+   ]
+  ]
+ },
+ "soneium": {
+  "blocks": 1800,
+  "transfers": 2037,
+  "swaps": 175,
+  "swap_emitters_top": [
+   [
+    "0x9099f8b695249baa9a7efde5d3f84197820fcdbb",
+    42
+   ],
+   [
+    "0x360e68faccca8ca495c1b759fd9eee466db9fb32",
+    21
+   ],
+   [
+    "0x30f4fddb02a82076694682dcc9fc92e3aecff99c",
+    10
+   ]
+  ]
+ },
+ "ink": {
+  "blocks": 3600,
+  "transfers": 40098,
+  "swaps": 1849,
+  "swap_emitters_top": [
+   [
+    "0x360e68faccca8ca495c1b759fd9eee466db9fb32",
+    705
+   ],
+   [
+    "0xac7fc3e9b9d3377a90650fe62b858ff56bd841c9",
+    367
+   ],
+   [
+    "0x31826a86cd62c6fa12a0a8441ec4c8bcfee8a453",
+    359
+   ]
+  ]
+ }
+}

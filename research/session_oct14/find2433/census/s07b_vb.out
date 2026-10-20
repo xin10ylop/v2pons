@@ -1,0 +1,32 @@
+== SAMPLE VB 3.0
+  fresh      12 00  n  19  bot first buy 32/38/50 (<= +20: 0)  pull 52/2441/5721  big buys in +4000 1/81/110
+  fresh      12 06  n  65  bot first buy 31/44/53 (<= +20: 0)  pull 140/173/5617  big buys in +4000 5/6/108
+  fresh      12 12  n  20  bot first buy 32/44/53 (<= +20: 0)  pull 160/3553/5772  big buys in +4000 5/96/112
+  fresh      12 18  n  87  bot first buy 30/40/52 (<= +20: 0)  pull 128/146/1457  big buys in +4000 4/5/52
+  fresh      13 00  n  29  bot first buy 32/46/60 (<= +20: 0)  pull 140/166/5555  big buys in +4000 5/6/109
+  fresh      13 06  n  33  bot first buy 31/41/54 (<= +20: 0)  pull 152/171/5324  big buys in +4000 5/6/109
+  fresh      13 12  n  38  bot first buy 35/45/56 (<= +20: 0)  pull 159/194/4115  big buys in +4000 5/6/107
+  fresh      all    n 291  bot first buy 32/42/55 (<= +20: 0)  pull 139/169/5554  big buys in +4000 4/6/108
+  highnonce  12 00  n  27  bot first buy 23/39/49 (<= +20: 1)  pull 50/3424/5640  big buys in +4000 1/99/112
+  highnonce  12 06  n  56  bot first buy 21/37/55 (<= +20: 5)  pull 148/168/1578  big buys in +4000 5/6/58
+  highnonce  12 12  n  21  bot first buy 27/39/55 (<= +20: 0)  pull 391/4612/5754  big buys in +4000 15/103/112
+  highnonce  12 18  n  87  bot first buy 24/38/54 (<= +20: 2)  pull 128/150/2727  big buys in +4000 4/5/95
+  highnonce  13 00  n  41  bot first buy 20/38/53 (<= +20: 5)  pull 125/164/5334  big buys in +4000 5/5/113
+  highnonce  13 06  n  42  bot first buy 23/41/54 (<= +20: 3)  pull 147/171/5204  big buys in +4000 5/6/110
+  highnonce  13 12  n  31  bot first buy 23/36/54 (<= +20: 0)  pull 151/173/5465  big buys in +4000 5/6/109
+  highnonce  13 18  n  39  bot first buy 21/42/53 (<= +20: 2)  pull 150/174/5773  big buys in +4000 5/6/111
+  highnonce  14 00  n  19  bot first buy 25/36/55 (<= +20: 1)  pull 778/3308/5796  big buys in +4000 30/106/113
+  highnonce  14 06  n   4  bot first buy 32/55/60 (<= +20: 0)  pull 1489/2411/5792  big buys in +4000 61/89/109
+  highnonce  all    n 367  bot first buy 23/38/54 (<= +20: 19)  pull 130/171/5591  big buys in +4000 5/6/111
+== SAMPLE VB 5.0
+  highnonce  12 00  n  31  bot first buy 31/44/56 (<= +20: 0)  pull 124/2351/5657  big buys in +4000 4/85/111
+  highnonce  12 06  n  24  bot first buy 28/44/56 (<= +20: 0)  pull 749/5487/5681  big buys in +4000 30/105/113
+  highnonce  12 12  n  28  bot first buy 30/45/56 (<= +20: 0)  pull 381/3877/5665  big buys in +4000 14/105/111
+  highnonce  12 18  n  25  bot first buy 30/42/55 (<= +20: 0)  pull 1031/5456/5704  big buys in +4000 41/106/112
+  highnonce  13 00  n  28  bot first buy 32/44/53 (<= +20: 0)  pull 598/5001/5569  big buys in +4000 26/94/112
+  highnonce  13 06  n  24  bot first buy 35/44/54 (<= +20: 0)  pull 1484/5486/5680  big buys in +4000 58/104/111
+  highnonce  13 12  n  27  bot first buy 39/49/58 (<= +20: 0)  pull 312/2968/5780  big buys in +4000 12/94/110
+  highnonce  13 18  n  28  bot first buy 33/43/54 (<= +20: 0)  pull 1438/4667/5667  big buys in +4000 60/109/111
+  highnonce  14 00  n  29  bot first buy 31/45/55 (<= +20: 0)  pull 486/2056/5744  big buys in +4000 20/78/112
+  highnonce  14 06  n   3  bot first buy 37/48/52 (<= +20: 0)  pull 2978/3955/5719  big buys in +4000 99/110/111
+  highnonce  all    n 247  bot first buy 31/44/55 (<= +20: 0)  pull 536/4239/5687  big buys in +4000 22/104/111

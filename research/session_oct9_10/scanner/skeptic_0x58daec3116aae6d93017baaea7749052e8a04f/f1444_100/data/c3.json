@@ -1,0 +1,506 @@
+{
+ "all|claim rule k10/abort640/dl2400": {
+  "n": 316,
+  "mean": 58.9,
+  "median": 62.12,
+  "win": 0.826,
+  "pulled_first": 32,
+  "usd_trade": 8.836
+ },
+ "all|k10 + gap300": {
+  "n": 316,
+  "mean": 46.64,
+  "median": 49.12,
+  "win": 0.861,
+  "pulled_first": 21,
+  "usd_trade": 6.996
+ },
+ "all|k8": {
+  "n": 316,
+  "mean": 48.21,
+  "median": 54.91,
+  "win": 0.842,
+  "pulled_first": 27,
+  "usd_trade": 7.231
+ },
+ "all|k6": {
+  "n": 316,
+  "mean": 36.71,
+  "median": 39.36,
+  "win": 0.87,
+  "pulled_first": 18,
+  "usd_trade": 5.506
+ },
+ "all|k5": {
+  "n": 316,
+  "mean": 31.38,
+  "median": 32.21,
+  "win": 0.886,
+  "pulled_first": 13,
+  "usd_trade": 4.706
+ },
+ "all|k3": {
+  "n": 316,
+  "mean": 17.54,
+  "median": 18.6,
+  "win": 0.899,
+  "pulled_first": 9,
+  "usd_trade": 2.631
+ },
+ "all|k1": {
+  "n": 316,
+  "mean": 6.78,
+  "median": 5.76,
+  "win": 0.927,
+  "pulled_first": 0,
+  "usd_trade": 1.017
+ },
+ "all|k5 + gap250": {
+  "n": 316,
+  "mean": 24.3,
+  "median": 24.79,
+  "win": 0.902,
+  "pulled_first": 8,
+  "usd_trade": 3.646
+ },
+ "all|follow: B=1st crowd+1, k10": {
+  "n": 316,
+  "mean": 47.85,
+  "median": 53.0,
+  "win": 0.813,
+  "pulled_first": 32,
+  "usd_trade": 7.177
+ },
+ "mo0.8 (Sep 28 on)|claim rule k10/abort640/dl2400": {
+  "n": 227,
+  "mean": 59.7,
+  "median": 71.71,
+  "win": 0.833,
+  "pulled_first": 20,
+  "usd_trade": 8.955
+ },
+ "mo0.8 (Sep 28 on)|k10 + gap300": {
+  "n": 227,
+  "mean": 50.69,
+  "median": 53.85,
+  "win": 0.859,
+  "pulled_first": 14,
+  "usd_trade": 7.603
+ },
+ "mo0.8 (Sep 28 on)|k8": {
+  "n": 227,
+  "mean": 45.9,
+  "median": 54.94,
+  "win": 0.837,
+  "pulled_first": 19,
+  "usd_trade": 6.885
+ },
+ "mo0.8 (Sep 28 on)|k6": {
+  "n": 227,
+  "mean": 35.36,
+  "median": 39.61,
+  "win": 0.868,
+  "pulled_first": 12,
+  "usd_trade": 5.304
+ },
+ "mo0.8 (Sep 28 on)|k5": {
+  "n": 227,
+  "mean": 29.83,
+  "median": 32.54,
+  "win": 0.881,
+  "pulled_first": 9,
+  "usd_trade": 4.474
+ },
+ "mo0.8 (Sep 28 on)|k3": {
+  "n": 227,
+  "mean": 16.86,
+  "median": 18.98,
+  "win": 0.894,
+  "pulled_first": 6,
+  "usd_trade": 2.529
+ },
+ "mo0.8 (Sep 28 on)|k1": {
+  "n": 227,
+  "mean": 6.53,
+  "median": 5.49,
+  "win": 0.921,
+  "pulled_first": 0,
+  "usd_trade": 0.98
+ },
+ "mo0.8 (Sep 28 on)|k5 + gap250": {
+  "n": 227,
+  "mean": 25.22,
+  "median": 26.85,
+  "win": 0.894,
+  "pulled_first": 6,
+  "usd_trade": 3.783
+ },
+ "mo0.8 (Sep 28 on)|follow: B=1st crowd+1, k10": {
+  "n": 227,
+  "mean": 49.04,
+  "median": 59.4,
+  "win": 0.828,
+  "pulled_first": 20,
+  "usd_trade": 7.357
+ },
+ "mo0.98 (Sep 11-27)|claim rule k10/abort640/dl2400": {
+  "n": 89,
+  "mean": 56.87,
+  "median": 54.92,
+  "win": 0.809,
+  "pulled_first": 12,
+  "usd_trade": 8.53
+ },
+ "mo0.98 (Sep 11-27)|k10 + gap300": {
+  "n": 89,
+  "mean": 36.31,
+  "median": 22.91,
+  "win": 0.865,
+  "pulled_first": 7,
+  "usd_trade": 5.446
+ },
+ "mo0.98 (Sep 11-27)|k8": {
+  "n": 89,
+  "mean": 54.09,
+  "median": 54.87,
+  "win": 0.854,
+  "pulled_first": 8,
+  "usd_trade": 8.113
+ },
+ "mo0.98 (Sep 11-27)|k6": {
+  "n": 89,
+  "mean": 40.15,
+  "median": 37.15,
+  "win": 0.876,
+  "pulled_first": 6,
+  "usd_trade": 6.022
+ },
+ "mo0.98 (Sep 11-27)|k5": {
+  "n": 89,
+  "mean": 35.32,
+  "median": 31.63,
+  "win": 0.899,
+  "pulled_first": 4,
+  "usd_trade": 5.298
+ },
+ "mo0.98 (Sep 11-27)|k3": {
+  "n": 89,
+  "mean": 19.28,
+  "median": 16.58,
+  "win": 0.91,
+  "pulled_first": 3,
+  "usd_trade": 2.892
+ },
+ "mo0.98 (Sep 11-27)|k1": {
+  "n": 89,
+  "mean": 7.42,
+  "median": 6.17,
+  "win": 0.944,
+  "pulled_first": 0,
+  "usd_trade": 1.114
+ },
+ "mo0.98 (Sep 11-27)|k5 + gap250": {
+  "n": 89,
+  "mean": 21.97,
+  "median": 17.77,
+  "win": 0.921,
+  "pulled_first": 2,
+  "usd_trade": 3.295
+ },
+ "mo0.98 (Sep 11-27)|follow: B=1st crowd+1, k10": {
+  "n": 89,
+  "mean": 44.79,
+  "median": 48.01,
+  "win": 0.775,
+  "pulled_first": 12,
+  "usd_trade": 6.719
+ },
+ "claim17|claim rule k10/abort640/dl2400": {
+  "n": 16,
+  "mean": 64.62,
+  "median": 54.5,
+  "win": 0.938,
+  "pulled_first": 0,
+  "usd_trade": 9.693
+ },
+ "claim17|k10 + gap300": {
+  "n": 16,
+  "mean": 54.24,
+  "median": 54.18,
+  "win": 0.938,
+  "pulled_first": 0,
+  "usd_trade": 8.135
+ },
+ "claim17|k8": {
+  "n": 16,
+  "mean": 49.62,
+  "median": 42.68,
+  "win": 0.938,
+  "pulled_first": 0,
+  "usd_trade": 7.443
+ },
+ "claim17|k6": {
+  "n": 16,
+  "mean": 36.22,
+  "median": 29.94,
+  "win": 0.938,
+  "pulled_first": 0,
+  "usd_trade": 5.432
+ },
+ "claim17|k5": {
+  "n": 16,
+  "mean": 28.13,
+  "median": 24.9,
+  "win": 0.938,
+  "pulled_first": 0,
+  "usd_trade": 4.219
+ },
+ "claim17|k3": {
+  "n": 16,
+  "mean": 15.33,
+  "median": 14.36,
+  "win": 0.938,
+  "pulled_first": 0,
+  "usd_trade": 2.299
+ },
+ "claim17|k1": {
+  "n": 16,
+  "mean": 4.8,
+  "median": 4.42,
+  "win": 0.938,
+  "pulled_first": 0,
+  "usd_trade": 0.72
+ },
+ "claim17|k5 + gap250": {
+  "n": 16,
+  "mean": 24.19,
+  "median": 24.08,
+  "win": 0.938,
+  "pulled_first": 0,
+  "usd_trade": 3.629
+ },
+ "claim17|follow: B=1st crowd+1, k10": {
+  "n": 16,
+  "mean": 56.9,
+  "median": 49.57,
+  "win": 0.938,
+  "pulled_first": 0,
+  "usd_trade": 8.536
+ },
+ "analog 0x578e (0.005 held before crowd)|claim rule k10/abort640/dl2400": {
+  "n": 13,
+  "mean": 18.66,
+  "median": 42.22,
+  "win": 0.769,
+  "pulled_first": 3,
+  "usd_trade": 2.799
+ },
+ "analog 0x578e (0.005 held before crowd)|k10 + gap300": {
+  "n": 13,
+  "mean": 23.95,
+  "median": 41.66,
+  "win": 0.846,
+  "pulled_first": 2,
+  "usd_trade": 3.593
+ },
+ "analog 0x578e (0.005 held before crowd)|k8": {
+  "n": 13,
+  "mean": 10.83,
+  "median": 36.57,
+  "win": 0.769,
+  "pulled_first": 3,
+  "usd_trade": 1.624
+ },
+ "analog 0x578e (0.005 held before crowd)|k6": {
+  "n": 13,
+  "mean": 1.85,
+  "median": 26.12,
+  "win": 0.769,
+  "pulled_first": 3,
+  "usd_trade": 0.278
+ },
+ "analog 0x578e (0.005 held before crowd)|k5": {
+  "n": 13,
+  "mean": -1.5,
+  "median": 23.99,
+  "win": 0.769,
+  "pulled_first": 3,
+  "usd_trade": -0.226
+ },
+ "analog 0x578e (0.005 held before crowd)|k3": {
+  "n": 13,
+  "mean": 6.99,
+  "median": 13.08,
+  "win": 0.923,
+  "pulled_first": 1,
+  "usd_trade": 1.048
+ },
+ "analog 0x578e (0.005 held before crowd)|k1": {
+  "n": 13,
+  "mean": 5.45,
+  "median": 3.68,
+  "win": 1.0,
+  "pulled_first": 0,
+  "usd_trade": 0.817
+ },
+ "analog 0x578e (0.005 held before crowd)|k5 + gap250": {
+  "n": 13,
+  "mean": 13.74,
+  "median": 22.86,
+  "win": 0.923,
+  "pulled_first": 1,
+  "usd_trade": 2.061
+ },
+ "analog 0x578e (0.005 held before crowd)|follow: B=1st crowd+1, k10": {
+  "n": 13,
+  "mean": 13.04,
+  "median": 38.4,
+  "win": 0.692,
+  "pulled_first": 3,
+  "usd_trade": 1.956
+ },
+ "tiny outsider held before crowd (mo0.8)|claim rule k10/abort640/dl2400": {
+  "n": 70,
+  "mean": 46.45,
+  "median": 54.51,
+  "win": 0.757,
+  "pulled_first": 10,
+  "usd_trade": 6.967
+ },
+ "tiny outsider held before crowd (mo0.8)|k10 + gap300": {
+  "n": 70,
+  "mean": 43.94,
+  "median": 52.75,
+  "win": 0.8,
+  "pulled_first": 7,
+  "usd_trade": 6.59
+ },
+ "tiny outsider held before crowd (mo0.8)|k8": {
+  "n": 70,
+  "mean": 34.56,
+  "median": 42.68,
+  "win": 0.757,
+  "pulled_first": 10,
+  "usd_trade": 5.183
+ },
+ "tiny outsider held before crowd (mo0.8)|k6": {
+  "n": 70,
+  "mean": 31.75,
+  "median": 35.93,
+  "win": 0.829,
+  "pulled_first": 5,
+  "usd_trade": 4.762
+ },
+ "tiny outsider held before crowd (mo0.8)|k5": {
+  "n": 70,
+  "mean": 31.23,
+  "median": 31.27,
+  "win": 0.871,
+  "pulled_first": 2,
+  "usd_trade": 4.684
+ },
+ "tiny outsider held before crowd (mo0.8)|k3": {
+  "n": 70,
+  "mean": 16.43,
+  "median": 16.33,
+  "win": 0.871,
+  "pulled_first": 2,
+  "usd_trade": 2.464
+ },
+ "tiny outsider held before crowd (mo0.8)|k1": {
+  "n": 70,
+  "mean": 6.35,
+  "median": 5.24,
+  "win": 0.9,
+  "pulled_first": 0,
+  "usd_trade": 0.953
+ },
+ "tiny outsider held before crowd (mo0.8)|k5 + gap250": {
+  "n": 70,
+  "mean": 26.57,
+  "median": 25.13,
+  "win": 0.886,
+  "pulled_first": 1,
+  "usd_trade": 3.986
+ },
+ "tiny outsider held before crowd (mo0.8)|follow: B=1st crowd+1, k10": {
+  "n": 70,
+  "mean": 36.39,
+  "median": 48.19,
+  "win": 0.757,
+  "pulled_first": 10,
+  "usd_trade": 5.459
+ },
+ "no outsider before crowd (mo0.8)|claim rule k10/abort640/dl2400": {
+  "n": 144,
+  "mean": 69.85,
+  "median": 81.19,
+  "win": 0.875,
+  "pulled_first": 7,
+  "usd_trade": 10.478
+ },
+ "no outsider before crowd (mo0.8)|k10 + gap300": {
+  "n": 144,
+  "mean": 56.38,
+  "median": 53.9,
+  "win": 0.889,
+  "pulled_first": 5,
+  "usd_trade": 8.457
+ },
+ "no outsider before crowd (mo0.8)|k8": {
+  "n": 144,
+  "mean": 54.59,
+  "median": 63.94,
+  "win": 0.882,
+  "pulled_first": 6,
+  "usd_trade": 8.188
+ },
+ "no outsider before crowd (mo0.8)|k6": {
+  "n": 144,
+  "mean": 40.14,
+  "median": 43.25,
+  "win": 0.896,
+  "pulled_first": 4,
+  "usd_trade": 6.021
+ },
+ "no outsider before crowd (mo0.8)|k5": {
+  "n": 144,
+  "mean": 31.98,
+  "median": 35.6,
+  "win": 0.896,
+  "pulled_first": 4,
+  "usd_trade": 4.796
+ },
+ "no outsider before crowd (mo0.8)|k3": {
+  "n": 144,
+  "mean": 17.96,
+  "median": 20.03,
+  "win": 0.903,
+  "pulled_first": 3,
+  "usd_trade": 2.694
+ },
+ "no outsider before crowd (mo0.8)|k1": {
+  "n": 144,
+  "mean": 6.71,
+  "median": 5.92,
+  "win": 0.924,
+  "pulled_first": 0,
+  "usd_trade": 1.007
+ },
+ "no outsider before crowd (mo0.8)|k5 + gap250": {
+  "n": 144,
+  "mean": 25.6,
+  "median": 27.7,
+  "win": 0.896,
+  "pulled_first": 4,
+  "usd_trade": 3.84
+ },
+ "no outsider before crowd (mo0.8)|follow: B=1st crowd+1, k10": {
+  "n": 144,
+  "mean": 58.44,
+  "median": 69.1,
+  "win": 0.875,
+  "pulled_first": 7,
+  "usd_trade": 8.767
+ }
+}

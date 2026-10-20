@@ -1,0 +1,39 @@
+day (UTC start) | launches | triggered | trigger offset p10/50/90 | bot first buy ETH med | trade n mean med win lost | trimmed mean (drop top 5%) | pulled share (3000 blocks)
+d0 10-04 13:52 |   72 |   71 (99%) | (73, 107, 192) | 0.130 | 71 +0.1536 +0.0964 79% 1.4% | +0.1240 | 68%
+d1 10-05 13:52 |   45 |   44 (98%) | (96.5, 142.0, 166.4) | 0.152 | 44 +0.2727 +0.2536 95% 0.0% | +0.2444 | 53%
+d2 10-06 13:52 |   97 |   67 (69%) | (79.2, 122, 237.8) | 0.148 | 67 +0.1595 +0.0856 76% 6.0% | +0.1200 | 66%
+d3 10-07 13:52 |  117 |   82 (70%) | (74.0, 113.5, 202.2) | 0.128 | 82 +0.1689 +0.1103 80% 3.7% | +0.1326 | 74%
+d4 10-08 13:52 |  131 |  112 (85%) | (61.0, 101.0, 166.6) | 0.130 | 112 +0.1665 +0.0742 71% 1.8% | +0.1273 | 66%
+d5 10-09 13:52 |  129 |  109 (84%) | (81.2, 124, 190.4) | 0.139 | 109 +0.1671 +0.1285 80% 4.6% | +0.1204 | 58%
+d6 10-10 13:52 |  107 |   88 (82%) | (65.4, 132.0, 229.5) | 0.115 | 88 +0.1021 +0.0499 76% 3.4% | +0.0666 | 59%
+
+last 24 h, hour by hour (hour index from Oct 10 13:52 UTC): launches, triggered, trade mean/median, lost
+  h00 10-10 13:52 launches   4 triggered   3 mean +0.465 med +0.628 lost 0
+  h01 10-10 14:52 launches   3 triggered   3 mean +0.128 med +0.104 lost 0
+  h02 10-10 15:52 launches  19 triggered  17 mean -0.023 med +0.028 lost 1
+  h03 10-10 16:52 launches   8 triggered   5 mean +0.108 med +0.040 lost 0
+  h04 10-10 17:52 launches   2 triggered   2 mean +0.029 med +0.029 lost 0
+  h05 10-10 18:52 launches   2 triggered   2 mean +0.055 med +0.055 lost 0
+  h06 10-10 19:52 launches   1 triggered   1 mean -0.001 med -0.001 lost 0
+  h07 10-10 20:52 launches   2 triggered   2 mean +0.317 med +0.317 lost 0
+  h08 10-10 21:52 launches   4 triggered   4 mean +0.283 med +0.210 lost 0
+  h09 10-10 22:52 launches   8 triggered   7 mean -0.131 med +0.066 lost 2
+  h10 10-10 23:52 launches   2 triggered   2 mean +0.237 med +0.237 lost 0
+  h11 10-11 00:52 launches   7 triggered   6 mean +0.005 med +0.002 lost 0
+  h12 10-11 01:52 launches   2 triggered   1 mean -0.002 med -0.002 lost 0
+  h13 10-11 02:52 launches   0 triggered   0 
+  h14 10-11 03:52 launches   2 triggered   0 
+  h15 10-11 04:52 launches   3 triggered   2 mean -0.002 med -0.002 lost 0
+  h16 10-11 05:52 launches  11 triggered   9 mean +0.328 med +0.228 lost 0
+  h17 10-11 06:52 launches   5 triggered   3 mean +0.064 med -0.002 lost 0
+  h18 10-11 07:52 launches   3 triggered   3 mean +0.223 med +0.326 lost 0
+  h19 10-11 08:52 launches   6 triggered   5 mean +0.050 med +0.066 lost 0
+  h20 10-11 09:52 launches   4 triggered   3 mean +0.054 med +0.057 lost 0
+  h21 10-11 10:52 launches   2 triggered   2 mean +0.157 med +0.157 lost 0
+  h22 10-11 11:52 launches   0 triggered   0 
+  h23 10-11 12:52 launches   7 triggered   6 mean +0.168 med +0.129 lost 0
+
+longest gaps between launches (h, from): [(3.26, '10-08 01:43'), (5.1, '10-05 17:10'), (5.44, '10-06 21:06'), (7.68, '10-06 02:40'), (8.65, '10-04 23:31')]
+longest gaps between triggered launches (h, from): [(3.26, '10-08 01:43'), (5.1, '10-05 17:10'), (5.44, '10-06 21:06'), (7.68, '10-06 02:40'), (8.65, '10-04 23:31')]
+last C-1 launch in the census: 2026-10-11 13:51:42
+launch shape variants (sqrt_p0, mint L): [((792280926924313289846529216293289, 100000088127620690885293), 686), ((835109957917073511657837871095390, 94871533698238694366969), 5), ((646889939753375374376401562675059, 122475490258002481112151), 3), ((885772776255721460164785180475032, 89445244466839731675934), 2), ((755378100664400837239864022495544, 104885437431371607344549), 1), ((560222128702570272483239940334470, 141422765105245730276150), 1)]

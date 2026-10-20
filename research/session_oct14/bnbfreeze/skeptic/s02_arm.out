@@ -1,0 +1,17 @@
+Approval(address,address,uint256) topic0 = 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925
+
+[D] operator approve(fresh, amt) then fresh.transfer(dead, 1e8), then allowance(op,fresh) view:
+   amt 0x0 -> [('ok', '00000001'), ('ok', '00000001'), ('ok', '00000000')] [('0x8c5be1e5..aeeaa0', '0x0000000000000000')]
+   amt 0x1 -> [('ok', '00000001'), ('REVERT(0x)', '0x'), ('ok', '00000001')] [('0x8c5be1e5..aeeaa0', '0x0000000000000000')]
+   amt 0x2 -> [('ok', '00000001'), ('ok', '00000001'), ('ok', '00000000')] [('0x8c5be1e5..aeeaa0', '0x0000000000000000')]
+   amt 0xa -> [('ok', '00000001'), ('ok', '00000001'), ('ok', '00000000')] [('0x8c5be1e5..aeeaa0', '0x0000000000000000')]
+   amt 0xffffffff -> [('ok', '00000001'), ('ok', '00000001'), ('ok', '00000000')] [('0x8c5be1e5..aeeaa0', '0x0000000000000000')]
+   amt 0xffffffff -> ERR {"code": -32603, "message": "global signer not initialized for mining mode"} 
+
+[D'] NON-operator approve(fresh, MAX) then fresh transfers:
+    ERR {"code": -32603, "message": "global signer not initialized for mining mode"}
+
+[E] our wallet, far-future block (number +10M, time +1 year):
+   +1 blocks +1s -> REVERT(0x)
+   +200000 blocks +259200s -> ERR {"code": -32603, "message": "global signer not initialized for mining mode"}
+   +10000000 blocks +31536000s -> ERR {"code": -32603, "message": "global signer not initialized for mining mode"}

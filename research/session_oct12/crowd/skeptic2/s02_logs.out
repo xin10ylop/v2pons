@@ -1,0 +1,9 @@
+1389 launches, 1389 to fetch, window +300
+0 {'posts': 1, 'items': 10, 'r429': 0}
+200 {'posts': 21, 'items': 210, 'r429': 0}
+400 {'posts': 41, 'items': 410, 'r429': 8}
+600 {'posts': 61, 'items': 610, 'r429': 19}
+800 {'posts': 81, 'items': 810, 'r429': 21}
+1000 {'posts': 101, 'items': 1010, 'r429': 26}
+1200 {'posts': 121, 'items': 1210, 'r429': 31}
+done {'posts': 139, 'items': 1389, 'r429': 34}

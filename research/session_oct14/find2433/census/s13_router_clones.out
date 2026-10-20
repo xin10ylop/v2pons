@@ -1,0 +1,3 @@
+distinct tx targets 622
+same code as the bot router: ['0x1cbaf24d53fe930fce8eff149fa797d2611da149']
+contracts within 200 B of 20,443 B: [('0x076b36019cfb1604ae452a31fafda70dea87fbb0', 20286, '0xd89926fe22388125'), ('0x1cbaf24d53fe930fce8eff149fa797d2611da149', 20443, '0xbd31d4da7db89e01')]

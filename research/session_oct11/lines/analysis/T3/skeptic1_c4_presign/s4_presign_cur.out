@@ -1,0 +1,54 @@
+===== slice cur: 91 pools with a bot buy, L 85553521..85734527 (10-11 04:21:24 .. 10-11 09:38:24 UTC)
+(a) deadline - ts(T block), seconds: [(1199, 27), (1200, 64)]  (n 91)
+    by j = earlier blocks in T's own second: share with deadline - ts = 1199 (signed in the previous second if deadline = wall clock + 1,200)
+      j 0 : n   9  {1199: 9}  prev-second share 1.00
+      j 1 : n   8  {1199: 8}  prev-second share 1.00
+      j 2 : n  10  {1199: 5, 1200: 5}  prev-second share 0.50
+      j 3 : n  10  {1199: 4, 1200: 6}  prev-second share 0.40
+      j 4 : n   9  {1199: 1, 1200: 8}  prev-second share 0.11
+      j 5 : n  12  {1200: 12}  prev-second share 0.00
+      j 6+: n  33  {1200: 33}  prev-second share 0.00
+(b) pools with every block T-12..T: 91; flags (kind, d blocks before T): [(('from a bot wallet', 1), 4), (('from a bot wallet', 2), 4), (('from a bot wallet', 3), 1), (('from a bot wallet', 4), 6), (('from a bot wallet', 5), 5), (('from a bot wallet', 6), 6), (('from a bot wallet', 7), 4), (('from a bot wallet', 8), 4), (('from a bot wallet', 9), 9), (('from a bot wallet', 10), 2), (('from a bot wallet', 11), 3), (('from a bot wallet', 12), 9), (('to bot router', 0), 1), (('to bot router', 1), 4), (('to bot router', 2), 4), (('to bot router', 3), 3), (('to bot router', 4), 6), (('to bot router', 5), 3), (('to bot router', 6), 7), (('to bot router', 7), 3), (('to bot router', 8), 3), (('to bot router', 9), 5), (('to bot router', 10), 3), (('to bot router', 11), 3), (('to bot router', 12), 5)]
+       (85553962, 35, 3, 'to bot router:c1120e3d', '0xaf8f08f2', '0x1cbaf24d', '0xc1120e3d')
+       (85553962, 35, 12, 'from a bot wallet:0x88767899:24856bc3', '0x06e877bb', '0x88767899', '0x24856bc3')
+       (85555918, 45, 1, 'from a bot wallet:0x88767899:24856bc3', '0xa3db7d63', '0x88767899', '0x24856bc3')
+       (85555918, 45, 2, 'to bot router:c1120e3d', '0xd08dd6b8', '0x1cbaf24d', '0xc1120e3d')
+       (85555918, 45, 4, 'from a bot wallet:0x00000000:87517c45', '0xa3db7d63', '0x00000000', '0x87517c45')
+       (85555918, 45, 7, 'from a bot wallet:0xcb408f22:095ea7b3', '0xa3db7d63', '0xcb408f22', '0x095ea7b3')
+       (85556746, 52, 12, 'to bot router:c1120e3d', '0xb5e950bd', '0x1cbaf24d', '0xc1120e3d')
+       (85556764, 38, 4, 'to bot router:c1120e3d', '0x448908fa', '0x1cbaf24d', '0xc1120e3d')
+       (85556764, 38, 4, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0x448908fa', '0x1cbaf24d', '0xc1120e3d')
+       (85558408, 29, 7, 'to bot router:c1120e3d', '0x6e72ca95', '0x1cbaf24d', '0xc1120e3d')
+       (85558408, 29, 7, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0x6e72ca95', '0x1cbaf24d', '0xc1120e3d')
+       (85558408, 29, 11, 'to bot router:c1120e3d', '0x8d5dda57', '0x1cbaf24d', '0xc1120e3d')
+       (85558408, 29, 11, 'from a bot wallet:0x88767899:24856bc3', '0x81a0bdd6', '0x88767899', '0x24856bc3')
+       (85562412, 55, 1, 'to bot router:c1120e3d', '0x961d2614', '0x1cbaf24d', '0xc1120e3d')
+       (85562412, 55, 2, 'from a bot wallet:0x88767899:24856bc3', '0xb74aeda0', '0x88767899', '0x24856bc3')
+       (85562412, 55, 6, 'from a bot wallet:0x00000000:87517c45', '0xb74aeda0', '0x00000000', '0x87517c45')
+       (85562412, 55, 10, 'from a bot wallet:0xd1bd9668:095ea7b3', '0xb74aeda0', '0xd1bd9668', '0x095ea7b3')
+       (85562419, 25, 2, 'to bot router:c1120e3d', '0xa123fa0c', '0x1cbaf24d', '0xc1120e3d')
+       (85565981, 52, 11, 'to bot router:c1120e3d', '0x1c94eff7', '0x1cbaf24d', '0xc1120e3d')
+       (85565981, 52, 11, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0x1c94eff7', '0x1cbaf24d', '0xc1120e3d')
+       (85567198, 47, 3, 'to bot router:c1120e3d', '0xa874d84b', '0x1cbaf24d', '0xc1120e3d')
+       (85568128, 36, 5, 'to bot router:c1120e3d', '0x657deecf', '0x1cbaf24d', '0xc1120e3d')
+       (85568128, 36, 5, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0x657deecf', '0x1cbaf24d', '0xc1120e3d')
+       (85573830, 52, 9, 'to bot router:c1120e3d', '0x10bc8523', '0x1cbaf24d', '0xc1120e3d')
+       (85573830, 52, 9, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0x10bc8523', '0x1cbaf24d', '0xc1120e3d')
+       (85579670, 32, 7, 'to bot router:7422a284', '0x1fa01204', '0x1cbaf24d', '0x7422a284')
+       (85579707, 42, 8, 'from a bot wallet:0x88767899:24856bc3', '0xbcb47a64', '0x88767899', '0x24856bc3')
+       (85591122, 54, 8, 'to bot router:c1120e3d', '0xd63beac5', '0x1cbaf24d', '0xc1120e3d')
+       (85591122, 54, 8, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0xd63beac5', '0x1cbaf24d', '0xc1120e3d')
+       (85596911, 44, 7, 'to bot router:7422a284', '0xf78477e5', '0x1cbaf24d', '0x7422a284')
+       (85596929, 46, 2, 'from a bot wallet:0x00000000:87517c45', '0x81997e08', '0x00000000', '0x87517c45')
+       (85596929, 46, 5, 'from a bot wallet:0x843bc94e:095ea7b3', '0x81997e08', '0x843bc94e', '0x095ea7b3')
+       (85597221, 34, 9, 'to bot router:7422a284', '0x797f5b11', '0x1cbaf24d', '0x7422a284')
+       (85597754, 52, 4, 'to bot router:c1120e3d', '0x4fbc61d5', '0x1cbaf24d', '0xc1120e3d')
+       (85597754, 52, 8, 'from a bot wallet:0x88767899:24856bc3', '0x42b4a6a5', '0x88767899', '0x24856bc3')
+       (85597754, 52, 11, 'from a bot wallet:0x00000000:87517c45', '0x42b4a6a5', '0x00000000', '0x87517c45')
+       (85598156, 41, 8, 'to bot router:c1120e3d', '0xc0efecb7', '0x1cbaf24d', '0xc1120e3d')
+       (85598156, 41, 8, 'from a bot wallet:0x1cbaf24d:c1120e3d', '0xc0efecb7', '0x1cbaf24d', '0xc1120e3d')
+       (85598156, 41, 12, 'to bot router:c1120e3d', '0x00b49f56', '0x1cbaf24d', '0xc1120e3d')
+       (85600863, 25, 6, 'to bot router:c1120e3d', '0x01ba5255', '0x1cbaf24d', '0xc1120e3d')
+    failed txs (receipts T-6..T, ahead of the bot's buy) to the bot router / from a bot wallet / holding the token or pool id: 0 []
+    logs in T-6..T ahead of the bot's buy touching the pool id / token / T buyer: 0 []
+    status of the bot's T tx: {'0x1': 91}

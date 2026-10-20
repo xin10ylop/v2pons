@@ -1,0 +1,127 @@
+{
+ "v3.0": {
+  "bot_wallets": 110,
+  "launch_wallets": 889
+ },
+ "v5.0": {
+  "bot_wallets": 100,
+  "launch_wallets": 434
+ },
+ "v2.433": {
+  "bot_wallets": 31,
+  "launch_wallets": 1843
+ },
+ "bot_wallets_v3_and_v2433": 0,
+ "bot_wallets_v5_and_v2433": 0,
+ "bot_wallets_v3_and_v5": 0,
+ "launch_wallets_v3_and_v2433": 0,
+ "launch_wallets_v5_and_v2433": 0,
+ "launch_wallet_also_bot_buyer_any": 0,
+ "opA_overlap": 0,
+ "n_opA_addrs": 145,
+ "v3_reused_launch_wallets": 431,
+ "v3_launch_from_seen_in_v2433": 0,
+ "outsider 0xfeda1c58462150b4cb94c63efce3647e78f883eb": {
+  "refs": [
+   [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|100",
+     "swap",
+     "buy"
+    ],
+    16
+   ],
+   [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|250",
+     "swap",
+     "buy"
+    ],
+    9
+   ],
+   [
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|",
+     "swap",
+     "buy"
+    ],
+    5
+   ],
+   [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|500",
+     "swap",
+     "buy"
+    ],
+    2
+   ],
+   [
+    [
+     "0xb7758ae7102037e3db22fe472689e6598a78f639|7fde822e|804|1000",
+     "swap",
+     "buy"
+    ],
+    2
+   ],
+   [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2276|100",
+     "swap",
+     "buy"
+    ],
+    2
+   ],
+   [
+    [
+     "0xb7758ae7102037e3db22fe472689e6598a78f639|7fde822e|804|1000",
+     "swap",
+     ""
+    ],
+    1
+   ],
+   [
+    [
+     "0x6c62d60161fcc8c1caf9d4f29b52576a0e825f33|655d8499|996|1000",
+     "swap",
+     "buy"
+    ],
+    1
+   ]
+  ],
+  "first_bn": 84303399,
+  "last_bn": 84318039
+ },
+ "outsider 0x9a12867607c191a7191c08e3d8dea7018e277416": {
+  "refs": [
+   [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|100",
+     "swap",
+     "buy"
+    ],
+    11
+   ]
+  ],
+  "first_bn": 84723879,
+  "last_bn": 84724412
+ },
+ "outsider 0x9f3b9a449dfaa2fdfb4dd5e1d8c47b9f12d051ea": {
+  "refs": [
+   [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|100",
+     "swap",
+     "buy"
+    ],
+    3
+   ]
+  ],
+  "first_bn": 84532055,
+  "last_bn": 84613488
+ },
+ "v3_with_v2433_launch_in_slot": 19,
+ "v3_count": 889,
+ "hours_v3_only": 0,
+ "hours_v2433_only": 0,
+ "hours_both": 49
+}

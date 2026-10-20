@@ -1,0 +1,11 @@
+27 verdicts, 9 candidates
+SURVIVES refuted-by 1/3  replay - reaction R execution -  | lc:89885b75|d27d1e00, the 356-byte value-0 launches (a lottery on the operator's pump fleet)
+SURVIVES refuted-by 0/3  replay - reaction - execution -  | V3 crowd line (PositionManager multicall 836 B, token template d4e7eae4)
+SURVIVES refuted-by 1/3  replay - reaction R execution -  | token template d4e7eae4 (the V3 crowd line under the tok key)
+SURVIVES refuted-by 0/3  replay - reaction - execution -  | lc:0a493d1a|ac9650d8 (every V3 PositionManager multicall launch)
+SURVIVES refuted-by 1/3  replay - reaction R execution -  | lc:89885b75|d27d1e00, all launches (C rejected)
+SURVIVES refuted-by 1/3  replay - reaction R execution -  | token template 97c7ba1b (inside lc:89885b75)
+SURVIVES refuted-by 0/3  replay - reaction - execution -  | Fleet line (token skeleton 0f34e3b5)
+SURVIVES refuted-by 0/3  replay - reaction - execution -  | Router addLiquidityETH launches at 1.0 ETH
+SURVIVES refuted-by 1/3  replay - reaction R execution -  | Token 70adce63 (40-50 ETH launches; the union of the four value shapes)
+lens refutation counts: Counter({'reaction': 5})

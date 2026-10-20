@@ -1,0 +1,15 @@
+template launch tx 0x063763da35d62e07e8b83d3fb526682a85b564ad831861dd71c1eef20add9303 block 84125769 sender 0xfff2673997309850da7d84394ff807877754c7a6 nonce 0 value 2.06
+decoded: {'salt': 'c68477991a2bf0b7248ff27c18395bb7951dfc6e6646d5dab6a6ba397e37f381', 'name': 'Roblynz', 'symbol': 'ROBLYNZ', 's3': 'https://100kdaily.top/metadata/launch_5fc9fb472490.json', 'u84': 1000000000000000000000000000, 'ua4': 1000000000000000000000000000, 'fee': 1207, 'tickSpacing': 200, 'hooks': '0x0000000000005610a1e906f0fabe270a644cafb7', 'tickLower': -887200, 'tickUpper': 887200, 'u164': 45341835648769228010936, 'recipient': '0xfff2673997309850da7d84394ff807877754c7a6'}
+random sender 0x45f97c25857b499e6e590ddd94e13a708203bdae latest nonce/balance: 0 0
+ - A exact replay, sender has 0 ETH (no override) -> REVERT/ERR err: insufficient funds for gas * price + value: address 0x45f97c25857B499E6e590Ddd94e13A708203BDAe have 0 want 2060000000000000000 (supplied gas 5000000)
+ - B exact replay, sender given 1000 ETH via state override -> REVERT/ERR execution reverted data=0x
+   predictTokenAddress(salt,name,symbol,uri,supply) of the template = 0xb0e0ed120a89b98905a2441e3a218c64340074b1 ; code there now: 1770 bytes
+   the template's real token (from its receipt logs) is among: True
+ - C new salt, recipient = random sender, value = template value, 1000 ETH override -> SUCCESS 0x0000000000000000000000008776e671bdf1a50e0a3323345b9059a2b435e991214e78b3f8672d6d7d2cb3e8593cf0267ab3054291263a750d96af245e20794e0000000000000000000000000000000000000000000000000000000000383fda
+     decoded return: token 0x8776e671bdf1a50e0a3323345b9059a2b435e991 poolId 0x214e78b3f8672d6d.. position NFT id 3686362
+ - D same as C but recipient = a different random address -> SUCCESS 0x0000000000000000000000009f9511132e5637f2fed88b5bad45fd40c1f0e4039eac1de735be1c5f71a443af243c9fa41720a2df60e1df3ed5d27f2c7f7e76dc0000000000000000000000000000000000000000000000000000000000383fda
+     decoded return: token 0x9f9511132e5637f2fed88b5bad45fd40c1f0e403 poolId 0x9eac1de735be1c5f.. position NFT id 3686362
+ - E same as C, value 0 -> REVERT/ERR execution reverted: LIQUIDITY_AMOUNTS | reason=LIQUIDITY_AMOUNTS data=0x08c379a00000000000
+ - F same as C, recipient = 0x0 -> REVERT/ERR execution reverted: RECIPIENT | reason=RECIPIENT data=0x08c379a00000000000
+ - G same as C, sent from 0x000...dEaD with no override but gas price 0 (pure EVM check) -> SUCCESS 0x00000000000000000000000044395c36875ab7a051170844c87c96a2353336821b94863df08d5d9e21df86aadb6cd70a8060912df12adeb52593219889c7e9f30000000000000000000000000000000000000000000000000000000000383fda
+     decoded return: token 0x44395c36875ab7a051170844c87c96a235333682 poolId 0x1b94863df08d5d9e.. position NFT id 3686362

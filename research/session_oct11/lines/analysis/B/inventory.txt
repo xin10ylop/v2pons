@@ -1,0 +1,850 @@
+=== grouping lc: 147 families >= 10, pools in them 19029 of 20512
+lc:c873e135|ac9650d8 n=9127 inA=9127 frb=928 pulled=823
+    tok 16afd61e x6954, cb79985d x946, 58d59320 x480, c0b7d400 x321
+    quote ETH x6319, USDG x2590, WETH x195 | fee/ts 100/1 x889, 883131/200 x322, 989999/9900 x184 | hooks 0x00000000 x8997, 0x7566a3bf x3
+    to:sel:clen 0x58daec31:ac9650d8:54500 x2800, 0x58daec31:ac9650d8:1892 x1878, 0x58daec31:ac9650d8:46788 x1200, 0x58daec31:ac9650d8:1444 x963 | value 0.0 x3656, 0.000735 x2800, 0.00063 x1200
+lc:c93c806e|1fad948c n=1479 inA=0 frb=12 pulled=8
+    tok 58d59320 x1396, d4e7eae4 x27, 97c7ba1b x12, 4e451d1a x8
+    quote WETH x842, USDG x616, ETH x21 | fee/ts 8388608/8 x1396, 250000/2500 x20, 690000/6900 x16 | hooks 0x4e346895 x1396, 0x00000000 x82
+    to:sel:clen 0x5ff137d4:1fad948c:4324 x1388, 0x5ff137d4:1fad948c:3044 x40, 0x5ff137d4:1fad948c:2468 x20, 0x5ff137d4:1fad948c:2596 x15 | value 0.0 x1479
+lc:bd388118|6276cbbe n=1433 inA=0 frb=781 pulled=329
+    tok 4e451d1a x773, 16afd61e x296, d4e7eae4 x116, 6a2a8d4f x61
+    quote ETH x1196, WETH x126, USDG x111 | fee/ts 500/1 x773, 836798/9303 x206, 3000/60 x129 | hooks 0x00000000 x1162, 0xfc3d4663 x34
+    to:sel:clen 0x8366a39c:6276cbbe:196 x1433 | value 0.0 x1433
+lc:c873e135|f7020405 n=627 inA=0 frb=163 pulled=403
+    tok 2dfcf583 x337, c0b7d400 x132, 16afd61e x50, 8cca56b5 x14
+    quote ETH x519, USDG x76, WETH x32 | fee/ts 10000/200 x491, 200000/4000 x27, 100/1 x15 | hooks 0x00000000 x480, 0x8b76e087 x1
+    to:sel:clen 0x58daec31:f7020405:196 x627 | value 0.0 x627
+lc:42544ef5|2fcb9108 n=553 inA=0 frb=533 pulled=476
+    tok 59571c74 x553
+    quote ETH x553 | fee/ts 20000/200 x30, 10000/200 x27, 30000/200 x23 | hooks 0x00000000 x553
+    to:sel:clen 0x3194e326:2fcb9108:644 x553 | value 1.0 x16, 0.95 x9, 1.9 x6
+lc:cd37624e|6fe958d8 n=516 inA=0 frb=0 pulled=230
+    tok 16afd61e x516
+    quote ETH x258, USDG x258 | fee/ts 3000/60 x202, 10000/100 x166, 30000/200 x104 | hooks 0xfcd18241 x516
+    to:sel:clen 0xfcd18241:6fe958d8:68 x516 | value 0.0 x516
+lc:86b37100|882db707 n=486 inA=0 frb=107 pulled=0
+    tok 58d59320 x486
+    quote WETH x472, ETH x7, USDG x7 | fee/ts 8388608/200 x472, 8388608/8 x7, 8388608/60 x3 | hooks 0x4e346895 x486
+    to:sel:clen 0xeb7c0347:882db707:3460 x256, 0xeb7c0347:882db707:3300 x155, 0xeb7c0347:882db707:3972 x27, 0xeb7c0347:882db707:2628 x6 | value 0.0 x486
+lc:724433a2|7866fa39 n=438 inA=0 frb=4 pulled=0
+    tok 695e20af x438
+    quote WETH x435, USDG x3 | fee/ts 0/200 x438 | hooks 0x2c668601 x438
+    to:sel:clen 0xc739229d:7866fa39:900 x437, 0xc739229d:7866fa39:932 x1 | value 0.0 x438
+lc:c3cd7006|f0e9eabf n=285 inA=0 frb=25 pulled=1
+    tok fa4982d5 x285
+    quote ETH x191, USDG x94 | fee/ts 10000/200 x283, 5000/200 x2 | hooks 0xae4c0cf7 x191, 0x24d93085 x94
+    to:sel:clen 0xc763b179:f0e9eabf:1796 x196, 0xc763b179:f0e9eabf:1924 x58, 0xc763b179:f0e9eabf:1860 x12, 0xc763b179:f0e9eabf:1828 x7 | value 0.0 x273, 0.011914465 x3, 0.060199401 x2
+lc:4a586d92|ac9650d8 n=212 inA=0 frb=129 pulled=0
+    tok 65daaea0 x210, a40df312 x1, 99b67b20 x1
+    quote ETH x212 | fee/ts 2500/25 x212 | hooks 0x00000000 x212
+    to:sel:clen 0x0000ffff:ac9650d8:1316 x30, 0x0000ffff:ac9650d8:3236 x29, 0x0000ffff:ac9650d8:2916 x28, 0x0000ffff:ac9650d8:2884 x26 | value 0.0 x82, 0.08 x50, 1.5 x27
+lc:049a3b67|603ed0bc n=204 inA=0 frb=25 pulled=0
+    tok 99e0b5e8 x204
+    quote WETH x202, USDG x2 | fee/ts 0/60 x204 | hooks 0xba4375fc x1, 0xa8ccf6c1 x1
+    to:sel:clen 0x18cab14c:603ed0bc:1124 x54, 0x18cab14c:603ed0bc:1060 x37, 0x18cab14c:603ed0bc:1188 x33, 0x18cab14c:603ed0bc:1156 x20 | value 0.0 x204
+lc:670175c9|7c33638d n=181 inA=0 frb=14 pulled=0
+    tok 31a3f3ec x181
+    quote ETH x149, USDG x32 | fee/ts 30000/200 x140, 10000/200 x41 | hooks 0x00000000 x181
+    to:sel:clen 0x815542e8:7c33638d:769 x124, 0x815542e8:7c33638d:833 x33, 0x815542e8:7c33638d:836 x10, 0x815542e8:7c33638d:900 x3 | value 0.0 x181
+lc:5d5f9253|60956835 n=175 inA=0 frb=18 pulled=0
+    tok 58d59320 x175
+    quote USDG x134, ETH x41 | fee/ts 8388608/8 x175 | hooks 0x4e346895 x175
+    to:sel:clen 0x1eef016f:60956835:2980 x175 | value 0.0 x175
+lc:7939712c|4101659e n=143 inA=0 frb=2 pulled=0
+    tok da6e18c6 x143
+    quote ETH x143 | fee/ts 0/200 x143 | hooks 0x745d7176 x143
+    to:sel:clen 0x16cf6788:4101659e:388 x135, 0x16cf6788:4101659e:420 x8 | value 0.0 x141, 1e-05 x1, 0.012 x1
+lc:2793923d|2fcb9108 n=124 inA=0 frb=124 pulled=124
+    tok 59571c74 x124
+    quote ETH x124 | fee/ts 100/200 x82, 200/200 x10, 300/200 x8 | hooks 0x00000000 x124
+    to:sel:clen 0x204646c6:2fcb9108:644 x1, 0x3522052c:2fcb9108:644 x1, 0x8f51e510:2fcb9108:644 x1, 0x23887ae2:2fcb9108:644 x1 | value 0.442 x14, 1.0 x12, 0.3 x11
+lc:8ce82419|bc9d39fd n=113 inA=0 frb=25 pulled=0
+    tok 4ce6cecd x113
+    quote ETH x113 | fee/ts 0/200 x113 | hooks 0xdbebc6a7 x113
+    to:sel:clen 0x7abb343d:bc9d39fd:900 x20, 0x390b5f5f:bc9d39fd:900 x19, 0x7abb343d:bc9d39fd:932 x10, 0x390b5f5f:bc9d39fd:932 x6 | value 0.0 x113
+lc:f07d1c53|e1e75b94 n=102 inA=0 frb=100 pulled=100
+    tok 9232adcd x102
+    quote ETH x102 | fee/ts 2500/25 x102 | hooks 0x8b4b35c7 x2, 0xab5dd423 x1
+    to:sel:clen 0xc80d96d2:e1e75b94:5572 x2, 0xca49b5b0:e1e75b94:5572 x1, 0xb43c6abd:e1e75b94:5572 x1, 0x3c3f4475:e1e75b94:5572 x1 | value 5.0019e-05 x102
+lc:51faa3f1|a80ac0c2 n=86 inA=0 frb=60 pulled=0
+    tok fa4982d5 x86
+    quote ETH x83, USDG x3 | fee/ts 0/200 x86 | hooks 0x75a54357 x86
+    to:sel:clen 0x5bd1fbe7:a80ac0c2:1156 x30, 0x5bd1fbe7:a80ac0c2:1284 x13, 0x5bd1fbe7:a80ac0c2:1220 x7, 0x5bd1fbe7:a80ac0c2:1316 x7 | value 0.0005 x25, 0.072571 x9, 0.0225 x5
+lc:3ac2f37c|4a6d4380 n=67 inA=0 frb=2 pulled=0
+    tok 58d59320 x67
+    quote WETH x67 | fee/ts 8388608/200 x67 | hooks 0x4e346895 x67
+    to:sel:clen 0x8212f89c:4a6d4380:4964 x67 | value 0.0 x67
+lc:049a3b67|79082bf9 n=64 inA=0 frb=13 pulled=0
+    tok 99e0b5e8 x64
+    quote WETH x64 | fee/ts 0/60 x64 | hooks 0x824181da x1, 0x13143ed8 x1
+    to:sel:clen 0x18cab14c:79082bf9:1252 x20, 0x18cab14c:79082bf9:1188 x16, 0x18cab14c:79082bf9:1284 x10, 0x18cab14c:79082bf9:1316 x6 | value 0.0001 x10, 0.001 x10, 1e-05 x7
+lc:b09ef517|e9ae5c53 n=51 inA=0 frb=38 pulled=15
+    tok 16afd61e x25, db69a8e9 x13, 65daaea0 x2, 58d59320 x2
+    quote ETH x30, USDG x21 | fee/ts 0/200 x20, 0/1 x13, 2500/25 x5 | hooks 0xe5e70264 x20, 0x00000000 x16
+    to:sel:clen 0x9c4d5bd1:e9ae5c53:2724 x10, 0x63701cf9:e9ae5c53:2724 x9, 0x37f76011:e9ae5c53:6020 x9, 0x37f76011:e9ae5c53:4708 x4 | value 0.0 x51
+lc:920db74f|a25a9a3d n=50 inA=0 frb=0 pulled=0
+    tok e316fe94 x50
+    quote ETH x50 | fee/ts 10000/200 x50 | hooks 0x00000000 x50
+    to:sel:clen 0x6a57c49c:a25a9a3d:868 x20, 0x6a57c49c:a25a9a3d:900 x8, 0x6a57c49c:a25a9a3d:836 x7, 0x6a57c49c:a25a9a3d:804 x7 | value 0.000100683 x50
+lc:dd9d12ae|a25a9a3d n=50 inA=0 frb=0 pulled=0
+    tok e316fe94 x50
+    quote ETH x50 | fee/ts 10000/200 x50 | hooks 0x00000000 x50
+    to:sel:clen 0xf89d2cce:a25a9a3d:868 x22, 0xf89d2cce:a25a9a3d:836 x12, 0xf89d2cce:a25a9a3d:900 x9, 0xf89d2cce:a25a9a3d:804 x5 | value 0.000100683 x50
+lc:cd37624e|f8425a2f n=48 inA=0 frb=0 pulled=14
+    tok 16afd61e x48
+    quote ETH x24, USDG x24 | fee/ts 100000/200 x12, 3000/60 x12, 10000/100 x12 | hooks 0xfcd18241 x48
+    to:sel:clen 0xfcd18241:f8425a2f:36 x48 | value 0.0 x48
+lc:aa7b2563|3d9ab7c9 n=46 inA=0 frb=46 pulled=0
+    tok 16afd61e x46
+    quote ETH x46 | fee/ts 0/200 x46 | hooks 0xe5e70264 x46
+    to:sel:clen 0x2a53386d:3d9ab7c9:292 x46 | value 0.15 x44, 0.25 x2
+lc:09303719|7fde822e n=44 inA=0 frb=0 pulled=0
+    tok 44ec7eff x44
+    quote ETH x44 | fee/ts 10000/200 x44 | hooks 0x00000000 x44
+    to:sel:clen 0x6fd29ff3:7fde822e:772 x25, 0xa1c9c202:7fde822e:772 x11, 0xa1c9c202:7fde822e:740 x3, 0x6fd29ff3:7fde822e:740 x2 | value 0.0 x44
+lc:543148c9|a25a9a3d n=42 inA=0 frb=0 pulled=0
+    tok e316fe94 x42
+    quote ETH x42 | fee/ts 10000/200 x42 | hooks 0x00000000 x42
+    to:sel:clen 0xe181b36e:a25a9a3d:868 x22, 0xe181b36e:a25a9a3d:900 x8, 0xe181b36e:a25a9a3d:836 x6, 0xe181b36e:a25a9a3d:804 x6 | value 0.000100683 x42
+lc:a8f04c1b|c0c43d8b n=41 inA=0 frb=0 pulled=9
+    tok 65daaea0 x39, ad9da489 x2
+    quote ETH x41 | fee/ts 100/1 x41 | hooks 0x426bc439 x1, 0xe0d40aa2 x1
+    to:sel:clen 0x3d6845fb:c0c43d8b:164 x41 | value 0.0 x41
+lc:adb26f86|82a55dde n=38 inA=0 frb=38 pulled=9
+    tok 414037bb x1, 2166be6a x1, e71bd109 x1, 0bc052b5 x1
+    quote ETH x38 | fee/ts 0/1 x38 | hooks 0x2f50f2d8 x1, 0xe7bd4f8a x1
+    to:sel:clen 0x9fa84245:82a55dde:6820 x1, 0x84217550:82a55dde:7588 x1, 0x01ffb0c6:82a55dde:6820 x1, 0x0766b8f7:82a55dde:7588 x1 | value 9.702231641 x3, 16.002231641 x2, 16.002218959 x2
+lc:f895112a|df40224a n=35 inA=0 frb=11 pulled=0
+    tok f32a354e x35
+    quote WETH x35 | fee/ts 8388608/200 x35 | hooks 0x48b8f6ad x35
+    to:sel:clen 0xd3f2cc17:df40224a:3044 x5, 0xd3f2cc17:df40224a:3012 x5, 0xd3f2cc17:df40224a:2564 x3, 0xd3f2cc17:df40224a:2980 x3 | value 0.0001 x12, 0.0 x10, 0.00012 x6
+lc:f6d9fecb|831a3ab9 n=35 inA=0 frb=0 pulled=0
+    tok 6a2a8d4f x35
+    quote USDG x35 | fee/ts 0/1 x35 | hooks 0x4d08b15c x35
+    to:sel:clen 0x033dd87a:831a3ab9:932 x35 | value 0.0 x35
+lc:bc62900b|f0e9eabf n=32 inA=0 frb=12 pulled=0
+    tok fa4982d5 x32
+    quote ETH x26, USDG x6 | fee/ts 10000/200 x30, 0/200 x1, 5000/200 x1 | hooks 0xae4c0cf7 x26, 0x24d93085 x6
+    to:sel:clen 0x1a5f2715:f0e9eabf:1796 x21, 0x1a5f2715:f0e9eabf:1860 x7, 0x1a5f2715:f0e9eabf:1924 x3, 0x7c377735:f0e9eabf:1796 x1 | value 0.0 x27, 0.022804264 x2, 0.023516897 x2
+lc:fda2774c|7d8559b6 n=31 inA=0 frb=4 pulled=0
+    tok 006dae97 x31
+    quote WETH x31 | fee/ts 10000/200 x31 | hooks 0x00000000 x31
+    to:sel:clen 0x5ff007f0:7d8559b6:452 x31 | value 0.0005 x28, 0.056349096 x1, 0.1005 x1
+lc:9c2b9390|ff734f50 n=30 inA=0 frb=10 pulled=0
+    tok da46f006 x30
+    quote ETH x28, USDG x2 | fee/ts 3000/60 x30 | hooks 0x00000000 x30
+    to:sel:clen 0x7891ea88:ff734f50:1156 x29, 0x7891ea88:ff734f50:1252 x1 | value 0.0 x19, 0.08 x1, 0.06 x1
+lc:9fb8f46c|41e91dfd n=29 inA=0 frb=0 pulled=0
+    tok f4bdc2f1 x25, ccc2b6e7 x4
+    quote WETH x21, USDG x8 | fee/ts 3000/60 x29 | hooks 0xcf180bcb x1, 0x5291cf86 x1
+    to:sel:clen 0x91560876:41e91dfd:3300 x5, 0x91560876:41e91dfd:9636 x4, 0x91560876:41e91dfd:10212 x4, 0x91560876:41e91dfd:9604 x2 | value 0.0 x29
+lc:6d2beafa|617ac5de n=27 inA=0 frb=1 pulled=0
+    tok 2ba81154 x27
+    quote ETH x27 | fee/ts 8388608/200 x27 | hooks 0xe693a697 x27
+    to:sel:clen 0xa0ce0291:617ac5de:676 x27 | value 0.0 x27
+lc:fbae4dd5|bd2784cd n=27 inA=0 frb=0 pulled=0
+    tok c20d2c41 x27
+    quote USDG x27 | fee/ts 0/1 x27 | hooks 0x6404ddb4 x27
+    to:sel:clen 0xc35d4eb5:bd2784cd:548 x27 | value 0.0 x27
+lc:6e822d6a|ce5494bb n=27 inA=0 frb=3 pulled=12
+    tok 65daaea0 x27
+    quote ETH x27 | fee/ts 10000/200 x21, 20000/200 x4, 45000/450 x2 | hooks 0x00000000 x27
+    to:sel:clen 0x05d55239:ce5494bb:36 x27 | value 0.0 x27
+lc:272632b7|773fb192 n=26 inA=0 frb=0 pulled=7
+    tok 16afd61e x14, fa4982d5 x11, da46f006 x1
+    quote USDG x19, ETH x7 | fee/ts 50000/200 x7, 50000/100 x5, 50000/50 x4 | hooks 0x00000000 x26
+    to:sel:clen 0x09fc1bc5:773fb192:1252 x19, 0x09fc1bc5:773fb192:1188 x7 | value 0.0 x19, 0.036841729 x1, 0.037042747 x1
+lc:c8c384fa|45d52c5a n=24 inA=0 frb=0 pulled=0
+    tok 88d6de16 x24
+    quote ETH x24 | fee/ts 3000/200 x24 | hooks 0xf7521cf0 x24
+    to:sel:clen 0xc783221a:45d52c5a:1156 x8, 0xc783221a:45d52c5a:1220 x4, 0xc783221a:45d52c5a:1348 x3, 0xc783221a:45d52c5a:1380 x2 | value 0.0 x23, 0.0001 x1
+lc:65bf6c98|7fde822e n=23 inA=0 frb=0 pulled=0
+    tok d2b0116c x23
+    quote ETH x23 | fee/ts 10000/200 x23 | hooks 0x00000000 x23
+    to:sel:clen 0xcc23e1ab:7fde822e:740 x10, 0xcc23e1ab:7fde822e:804 x7, 0xcc23e1ab:7fde822e:772 x3, 0xcc23e1ab:7fde822e:836 x2 | value 0.0 x23
+lc:84d712e8|7fde822e n=23 inA=0 frb=0 pulled=0
+    tok d2b0116c x23
+    quote ETH x23 | fee/ts 10000/200 x23 | hooks 0x00000000 x23
+    to:sel:clen 0x6033c07c:7fde822e:804 x9, 0x6033c07c:7fde822e:836 x5, 0x6033c07c:7fde822e:772 x4, 0x6033c07c:7fde822e:740 x2 | value 0.0 x23
+lc:0a365af0|a1e7b638 n=21 inA=0 frb=1 pulled=0
+    tok 5a64f0d6 x19, 7dee6843 x2
+    quote ETH x21 | fee/ts 10000/200 x21 | hooks 0x037bf303 x21
+    to:sel:clen 0x6ec95a3c:a1e7b638:14433 x7, 0x6ec95a3c:a1e7b638:14401 x6, 0x6ec95a3c:a1e7b638:14657 x2, 0x6ec95a3c:a1e7b638:28417 x1 | value 0.0 x20, 1.8892e-05 x1
+lc:fe92160e|7fde822e n=21 inA=0 frb=0 pulled=0
+    tok f4ce0178 x21
+    quote ETH x21 | fee/ts 10000/200 x21 | hooks 0x00000000 x21
+    to:sel:clen 0x5237cc91:7fde822e:804 x14, 0x5237cc91:7fde822e:772 x4, 0x5237cc91:7fde822e:836 x3 | value 0.0 x21
+lc:42d8eaeb|aa8b8870 n=21 inA=0 frb=18 pulled=1
+    tok fa4982d5 x20, 8cbde8f3 x1
+    quote USDG x21 | fee/ts 0/1 x16, 0/60 x3, 0/2 x2 | hooks 0x00000000 x20, 0x9c1105ce x1
+    to:sel:clen 0xa45c07d1:aa8b8870:356 x21 | value 0.0 x21
+lc:1fd32fb6|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x2a7c91ad:7fde822e:804 x12, 0x2a7c91ad:7fde822e:772 x4, 0x2a7c91ad:7fde822e:836 x3, 0x2a7c91ad:7fde822e:868 x1 | value 0.0 x20
+lc:69ae00ba|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 7301910a x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xa7427f42:7fde822e:804 x11, 0xa7427f42:7fde822e:772 x4, 0xa7427f42:7fde822e:740 x2, 0xa7427f42:7fde822e:900 x1 | value 0.0 x20
+lc:52afb06c|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x8c0268ae:7fde822e:772 x8, 0x8c0268ae:7fde822e:804 x5, 0x8c0268ae:7fde822e:836 x3, 0x8c0268ae:7fde822e:740 x3 | value 0.0 x20
+lc:b643d285|aa7ec999 n=20 inA=0 frb=0 pulled=0
+    tok fa4982d5 x20
+    quote ETH x19, USDG x1 | fee/ts 0/200 x20 | hooks 0xd7d01126 x20
+    to:sel:clen 0x6d9ba28f:aa7ec999:580 x20 | value 0.00010182 x2, 3.0997e-05 x2, 1.0333e-05 x2
+lc:0a2007ca|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x1d6b27ec:7fde822e:804 x12, 0x1d6b27ec:7fde822e:772 x5, 0x1d6b27ec:7fde822e:836 x2, 0x1d6b27ec:7fde822e:740 x1 | value 0.0 x20
+lc:bcfbc39b|c3c16ee4 n=20 inA=0 frb=0 pulled=2
+    tok 16afd61e x12, da46f006 x4, 97c7ba1b x2, 2be340ff x1
+    quote USDG x20 | fee/ts 50000/500 x7, 49900/499 x7, 49800/498 x3 | hooks 0x00000000 x20
+    to:sel:clen 0x3a6360e4:c3c16ee4:2212 x13, 0x677c26a0:c3c16ee4:2212 x5, 0x3a6360e4:c3c16ee4:2724 x1, 0x36d11b0e:c3c16ee4:2724 x1 | value 0.0 x20
+lc:7d4fe10f|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok f4ce0178 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x9acff978:7fde822e:804 x11, 0x9acff978:7fde822e:772 x6, 0x9acff978:7fde822e:740 x2, 0x9acff978:7fde822e:836 x1 | value 0.0 x20
+lc:379a46e4|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok deda4933 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x6d099a10:7fde822e:804 x15, 0x6d099a10:7fde822e:772 x2, 0x6d099a10:7fde822e:900 x2, 0x6d099a10:7fde822e:740 x1 | value 0.0 x20
+lc:1fb1f85c|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xa7dc0ffa:7fde822e:804 x11, 0xa7dc0ffa:7fde822e:740 x6, 0xa7dc0ffa:7fde822e:868 x2, 0xa7dc0ffa:7fde822e:772 x1 | value 0.0 x20
+lc:ece67e66|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 7301910a x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x3601b5b0:7fde822e:804 x10, 0x3601b5b0:7fde822e:772 x5, 0x3601b5b0:7fde822e:740 x3, 0x3601b5b0:7fde822e:836 x2 | value 0.0 x20
+lc:09e95d6f|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xcd5892b5:7fde822e:772 x8, 0xcd5892b5:7fde822e:804 x8, 0xcd5892b5:7fde822e:836 x3, 0xcd5892b5:7fde822e:740 x1 | value 0.0 x20
+lc:7b8e9385|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 6475eadb x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x4d013e4e:7fde822e:804 x8, 0x4d013e4e:7fde822e:772 x6, 0x4d013e4e:7fde822e:836 x2, 0x4d013e4e:7fde822e:868 x2 | value 0.0 x20
+lc:064fc336|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xcafc1d58:7fde822e:804 x9, 0xcafc1d58:7fde822e:772 x8, 0xcafc1d58:7fde822e:868 x2, 0xcafc1d58:7fde822e:836 x1 | value 0.0 x20
+lc:c11b6307|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x2935e96b:7fde822e:804 x8, 0x2935e96b:7fde822e:772 x7, 0x2935e96b:7fde822e:868 x3, 0x2935e96b:7fde822e:836 x2 | value 0.0 x20
+lc:10a44445|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x5c750a12:7fde822e:804 x14, 0x5c750a12:7fde822e:740 x3, 0x5c750a12:7fde822e:772 x2, 0x5c750a12:7fde822e:900 x1 | value 0.0 x20
+lc:61713bbd|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok e8df5d48 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x1b161a02:7fde822e:804 x15, 0x1b161a02:7fde822e:772 x3, 0x1b161a02:7fde822e:868 x1, 0x1b161a02:7fde822e:740 x1 | value 0.0 x20
+lc:f48d8fbb|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 6475eadb x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x58327b40:7fde822e:804 x8, 0x58327b40:7fde822e:772 x4, 0x58327b40:7fde822e:836 x4, 0x58327b40:7fde822e:868 x3 | value 0.0 x20
+lc:45a110a1|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 5ba4e6bc x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xe0cd7e0c:7fde822e:804 x7, 0xe0cd7e0c:7fde822e:836 x4, 0xe0cd7e0c:7fde822e:772 x4, 0xe0cd7e0c:7fde822e:740 x4 | value 0.0 x20
+lc:9db2a054|7fde822e n=20 inA=0 frb=1 pulled=0
+    tok deda4933 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x096f4edc:7fde822e:772 x9, 0x096f4edc:7fde822e:804 x8, 0x096f4edc:7fde822e:740 x3 | value 0.0 x20
+lc:e708e985|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x4a930dfd:7fde822e:772 x10, 0x4a930dfd:7fde822e:804 x9, 0x4a930dfd:7fde822e:836 x1 | value 0.0 x20
+lc:852d2dea|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 7301910a x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x7bbe0982:7fde822e:772 x7, 0x7bbe0982:7fde822e:804 x7, 0x7bbe0982:7fde822e:836 x4, 0x7bbe0982:7fde822e:740 x2 | value 0.0 x20
+lc:eddd5e94|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x3990c1aa:7fde822e:804 x12, 0x3990c1aa:7fde822e:836 x3, 0x3990c1aa:7fde822e:868 x2, 0x3990c1aa:7fde822e:772 x2 | value 0.0 x20
+lc:72cdd99d|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xf6a48199:7fde822e:804 x11, 0xf6a48199:7fde822e:836 x5, 0xf6a48199:7fde822e:772 x4 | value 0.0 x20
+lc:5193acc6|7fde822e n=20 inA=0 frb=1 pulled=0
+    tok 6475eadb x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x3e398645:7fde822e:804 x11, 0x3e398645:7fde822e:772 x4, 0x3e398645:7fde822e:836 x3, 0x3e398645:7fde822e:868 x2 | value 0.0 x20
+lc:e2dd269f|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok deda4933 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xced330be:7fde822e:804 x10, 0xced330be:7fde822e:772 x4, 0xced330be:7fde822e:836 x3, 0xced330be:7fde822e:868 x2 | value 0.0 x20
+lc:758e1800|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x63e01e9a:7fde822e:772 x10, 0x63e01e9a:7fde822e:804 x8, 0x63e01e9a:7fde822e:836 x2 | value 0.0 x20
+lc:49e08e29|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 6475eadb x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xea047f8e:7fde822e:772 x12, 0xea047f8e:7fde822e:804 x6, 0xea047f8e:7fde822e:836 x2 | value 0.0 x20
+lc:57071afb|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x4a5cef82:7fde822e:804 x10, 0x4a5cef82:7fde822e:772 x6, 0x4a5cef82:7fde822e:836 x2, 0x4a5cef82:7fde822e:740 x2 | value 0.0 x20
+lc:ef8b94eb|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x6b31f4b7:7fde822e:804 x12, 0x6b31f4b7:7fde822e:772 x4, 0x6b31f4b7:7fde822e:836 x2, 0x6b31f4b7:7fde822e:868 x1 | value 0.0 x20
+lc:d5c15df6|174dea71 n=20 inA=0 frb=20 pulled=0
+    tok 65daaea0 x20
+    quote ETH x20 | fee/ts 2500/25 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xca11bde0:174dea71:2948 x18, 0xca11bde0:174dea71:2980 x2 | value 0.3 x10, 0.09 x3, 0.4 x2
+lc:be2028da|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x960ef8c4:7fde822e:804 x13, 0x960ef8c4:7fde822e:836 x3, 0x960ef8c4:7fde822e:740 x2, 0x960ef8c4:7fde822e:772 x2 | value 0.0 x20
+lc:02dbb81d|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok e8df5d48 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x84f0ec72:7fde822e:804 x12, 0x84f0ec72:7fde822e:740 x5, 0x84f0ec72:7fde822e:772 x3 | value 0.0 x20
+lc:abb4f0ea|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xcd9a0579:7fde822e:804 x11, 0xcd9a0579:7fde822e:772 x6, 0xcd9a0579:7fde822e:740 x2, 0xcd9a0579:7fde822e:932 x1 | value 0.0 x20
+lc:8e1956bb|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 6475eadb x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xca674081:7fde822e:804 x12, 0xca674081:7fde822e:772 x5, 0xca674081:7fde822e:740 x2, 0xca674081:7fde822e:836 x1 | value 0.0 x20
+lc:72ba7b27|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x07805eb7:7fde822e:804 x11, 0x07805eb7:7fde822e:836 x3, 0x07805eb7:7fde822e:772 x3, 0x07805eb7:7fde822e:740 x2 | value 0.0 x20
+lc:af2ae785|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok e8df5d48 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xc7f8917a:7fde822e:804 x15, 0xc7f8917a:7fde822e:740 x2, 0xc7f8917a:7fde822e:836 x2, 0xc7f8917a:7fde822e:772 x1 | value 0.0 x20
+lc:ee527181|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x9bd98b64:7fde822e:804 x12, 0x9bd98b64:7fde822e:836 x4, 0x9bd98b64:7fde822e:740 x3, 0x9bd98b64:7fde822e:772 x1 | value 0.0 x20
+lc:d1c0cbbe|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok e8df5d48 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x575b952f:7fde822e:804 x8, 0x575b952f:7fde822e:772 x7, 0x575b952f:7fde822e:836 x3, 0x575b952f:7fde822e:740 x1 | value 0.0 x20
+lc:93eda754|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x258dd351:7fde822e:804 x9, 0x258dd351:7fde822e:772 x5, 0x258dd351:7fde822e:836 x4, 0x258dd351:7fde822e:740 x2 | value 0.0 x20
+lc:0d7bb269|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x3493ab3e:7fde822e:804 x10, 0x3493ab3e:7fde822e:772 x7, 0x3493ab3e:7fde822e:740 x1, 0x3493ab3e:7fde822e:900 x1 | value 0.0 x20
+lc:848e3004|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok deda4933 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xb6ed4932:7fde822e:804 x12, 0xb6ed4932:7fde822e:740 x3, 0xb6ed4932:7fde822e:772 x3, 0xb6ed4932:7fde822e:836 x2 | value 0.0 x20
+lc:a5f8b1cd|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok deda4933 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x78ba8b21:7fde822e:804 x9, 0x78ba8b21:7fde822e:772 x6, 0x78ba8b21:7fde822e:740 x5 | value 0.0 x20
+lc:c09760b9|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok e8df5d48 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xd1e3060e:7fde822e:804 x7, 0xd1e3060e:7fde822e:740 x5, 0xd1e3060e:7fde822e:772 x5, 0xd1e3060e:7fde822e:836 x3 | value 0.0 x20
+lc:5c798ed7|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xcd1e2cbe:7fde822e:804 x12, 0xcd1e2cbe:7fde822e:772 x6, 0xcd1e2cbe:7fde822e:740 x1, 0xcd1e2cbe:7fde822e:836 x1 | value 0.0 x20
+lc:8ac5f6b2|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x80521fc9:7fde822e:804 x11, 0x80521fc9:7fde822e:772 x6, 0x80521fc9:7fde822e:740 x2, 0x80521fc9:7fde822e:836 x1 | value 0.0 x20
+lc:27f33e28|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xd912ed6c:7fde822e:804 x10, 0xd912ed6c:7fde822e:772 x6, 0xd912ed6c:7fde822e:740 x2, 0xd912ed6c:7fde822e:836 x2 | value 0.0 x20
+lc:8bdf370e|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 7301910a x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xce4c6a28:7fde822e:804 x7, 0xce4c6a28:7fde822e:836 x5, 0xce4c6a28:7fde822e:772 x4, 0xce4c6a28:7fde822e:740 x4 | value 0.0 x20
+lc:955a47b1|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 6475eadb x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x31cc7dde:7fde822e:804 x12, 0x31cc7dde:7fde822e:836 x3, 0x31cc7dde:7fde822e:772 x3, 0x31cc7dde:7fde822e:740 x2 | value 0.0 x20
+lc:22228fe0|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok deda4933 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xb7758ae7:7fde822e:804 x16, 0xb7758ae7:7fde822e:740 x2, 0xb7758ae7:7fde822e:836 x1, 0xb7758ae7:7fde822e:772 x1 | value 0.0 x20
+lc:aaf98095|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok e8df5d48 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xf6b59a71:7fde822e:804 x16, 0xf6b59a71:7fde822e:740 x3, 0xf6b59a71:7fde822e:836 x1 | value 0.0 x20
+lc:d979b822|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xb4038254:7fde822e:804 x14, 0xb4038254:7fde822e:772 x5, 0xb4038254:7fde822e:836 x1 | value 0.0 x20
+lc:896ba1d8|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x57689a47:7fde822e:804 x12, 0x57689a47:7fde822e:772 x3, 0x57689a47:7fde822e:836 x3, 0x57689a47:7fde822e:740 x2 | value 0.0 x20
+lc:500be5da|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x404700be:7fde822e:804 x15, 0x404700be:7fde822e:836 x2, 0x404700be:7fde822e:772 x1, 0x404700be:7fde822e:868 x1 | value 0.0 x20
+lc:175233ff|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok e8df5d48 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x2b0c7775:7fde822e:804 x11, 0x2b0c7775:7fde822e:772 x4, 0x2b0c7775:7fde822e:740 x4, 0x2b0c7775:7fde822e:964 x1 | value 0.0 x20
+lc:4eaf3ea3|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xe43be69c:7fde822e:772 x7, 0xe43be69c:7fde822e:804 x7, 0xe43be69c:7fde822e:740 x6 | value 0.0 x20
+lc:784a490d|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 6475eadb x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xc97b9d2d:7fde822e:804 x8, 0xc97b9d2d:7fde822e:740 x5, 0xc97b9d2d:7fde822e:772 x5, 0xc97b9d2d:7fde822e:868 x1 | value 0.0 x20
+lc:e0b3b890|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok d2b0116c x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xe696daf6:7fde822e:804 x15, 0xe696daf6:7fde822e:836 x3, 0xe696daf6:7fde822e:740 x1, 0xe696daf6:7fde822e:772 x1 | value 0.0 x20
+lc:33a97d39|7fde822e n=20 inA=0 frb=1 pulled=0
+    tok 6475eadb x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x9f81695f:7fde822e:804 x16, 0x9f81695f:7fde822e:740 x2, 0x9f81695f:7fde822e:772 x2 | value 0.0 x20
+lc:ecd85121|7fde822e n=20 inA=0 frb=2 pulled=0
+    tok e8df5d48 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xdc416cab:7fde822e:804 x9, 0xdc416cab:7fde822e:772 x4, 0xdc416cab:7fde822e:740 x3, 0xdc416cab:7fde822e:836 x3 | value 0.0 x20
+lc:b4adf5a0|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok deda4933 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x1a2835d9:7fde822e:804 x12, 0x1a2835d9:7fde822e:836 x3, 0x1a2835d9:7fde822e:740 x2, 0x1a2835d9:7fde822e:772 x2 | value 0.0 x20
+lc:74ae7526|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok e8df5d48 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xd5d70c19:7fde822e:804 x13, 0xd5d70c19:7fde822e:836 x4, 0xd5d70c19:7fde822e:740 x2, 0xd5d70c19:7fde822e:772 x1 | value 0.0 x20
+lc:ff9e79de|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 7301910a x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x2be2facd:7fde822e:804 x11, 0x2be2facd:7fde822e:772 x5, 0x2be2facd:7fde822e:740 x2, 0x2be2facd:7fde822e:836 x2 | value 0.0 x20
+lc:91a79808|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x9b7e715b:7fde822e:804 x9, 0x9b7e715b:7fde822e:740 x4, 0x9b7e715b:7fde822e:772 x4, 0x9b7e715b:7fde822e:836 x2 | value 0.0 x20
+lc:92aeed3d|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok e8df5d48 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x766bbe29:7fde822e:804 x9, 0x766bbe29:7fde822e:772 x6, 0x766bbe29:7fde822e:740 x4, 0x766bbe29:7fde822e:836 x1 | value 0.0 x20
+lc:850cfb80|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 59bf3559 x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0xe8cf9042:7fde822e:804 x8, 0xe8cf9042:7fde822e:772 x6, 0xe8cf9042:7fde822e:836 x3, 0xe8cf9042:7fde822e:740 x3 | value 0.0 x20
+lc:aff4db6a|7fde822e n=20 inA=0 frb=0 pulled=0
+    tok 6475eadb x20
+    quote ETH x20 | fee/ts 10000/200 x20 | hooks 0x00000000 x20
+    to:sel:clen 0x87f34721:7fde822e:804 x12, 0x87f34721:7fde822e:772 x4, 0x87f34721:7fde822e:740 x2, 0x87f34721:7fde822e:868 x2 | value 0.0 x20
+lc:087ca62f|7fde822e n=19 inA=0 frb=0 pulled=0
+    tok d2b0116c x19
+    quote ETH x19 | fee/ts 10000/200 x19 | hooks 0x00000000 x19
+    to:sel:clen 0xe26fd8b9:7fde822e:804 x9, 0xe26fd8b9:7fde822e:740 x6, 0xe26fd8b9:7fde822e:772 x3, 0xe26fd8b9:7fde822e:836 x1 | value 0.0 x19
+lc:8b8aaee8|e37dea82 n=19 inA=0 frb=0 pulled=0
+    tok c7f87421 x19
+    quote ETH x19 | fee/ts 8388608/60 x19 | hooks 0xee588bcf x19
+    to:sel:clen 0xe3a826c0:e37dea82:1284 x10, 0xe3a826c0:e37dea82:1572 x2, 0xe3a826c0:e37dea82:1348 x2, 0xe3a826c0:e37dea82:1444 x1 | value 0.0 x17, 0.001946391 x2
+lc:a74d098c|0a1f9663 n=19 inA=0 frb=0 pulled=5
+    tok 19332411 x19
+    quote WETH x19 | fee/ts 0/1 x19 | hooks 0xc6bf3449 x19
+    to:sel:clen 0xa53d764b:0a1f9663:382 x19 | value 0.0 x19
+lc:10e37260|54e231e6 n=18 inA=0 frb=18 pulled=0
+    tok 16afd61e x18
+    quote ETH x18 | fee/ts 0/200 x18 | hooks 0xe5e70264 x18
+    to:sel:clen 0x387a453d:54e231e6:1412 x18 | value 0.2777 x9, 0.41655 x5, 0.21777 x3
+lc:6fc5deb4|7fde822e n=17 inA=0 frb=0 pulled=0
+    tok e8df5d48 x17
+    quote ETH x17 | fee/ts 10000/200 x17 | hooks 0x00000000 x17
+    to:sel:clen 0xfa8427c6:7fde822e:804 x9, 0xfa8427c6:7fde822e:772 x5, 0xfa8427c6:7fde822e:836 x2, 0xfa8427c6:7fde822e:868 x1 | value 0.0 x17
+lc:7cfd3d49|f8425a2f n=16 inA=0 frb=0 pulled=0
+    tok 16afd61e x16
+    quote ETH x8, USDG x8 | fee/ts 100000/200 x4, 10000/100 x4, 30000/200 x4 | hooks 0x3bdad0b5 x16
+    to:sel:clen 0x3bdad0b5:f8425a2f:36 x16 | value 0.0 x16
+lc:89a27da6|2f53ef2f n=15 inA=0 frb=15 pulled=0
+    tok 16afd61e x15
+    quote ETH x12, USDG x3 | fee/ts 0/200 x15 | hooks 0xe5e70264 x15
+    to:sel:clen 0x7ed598bc:2f53ef2f:36 x15 | value 0.0 x15
+lc:bcfbc39b|99e1d016 n=15 inA=0 frb=0 pulled=2
+    tok 2ba81154 x8, 16afd61e x6, f842cbc3 x1
+    quote ETH x11, USDG x4 | fee/ts 10000/100 x5, 2500/25 x3, 8388608/60 x3 | hooks 0x7566a3bf x11, 0x00000000 x4
+    to:sel:clen 0x59f31b7f:99e1d016:1764 x9, 0x59f31b7f:99e1d016:2212 x3, 0x59f31b7f:99e1d016:1636 x1, 0x59f31b7f:99e1d016:2340 x1 | value 0.0 x4, 0.000307161 x1, 0.000761657 x1
+lc:c6818a11|a25a9a3d n=15 inA=0 frb=0 pulled=0
+    tok e316fe94 x15
+    quote ETH x15 | fee/ts 10000/200 x15 | hooks 0x00000000 x15
+    to:sel:clen 0xe827d0ac:a25a9a3d:868 x11, 0xe827d0ac:a25a9a3d:708 x3, 0xe827d0ac:a25a9a3d:804 x1 | value 0.000100683 x15
+lc:f6b9c8ac|34fcd5be n=14 inA=0 frb=0 pulled=0
+    tok 16afd61e x6, d4e7eae4 x2, c0b7d400 x2, 58d59320 x1
+    quote USDG x14 | fee/ts 770000/7700 x2, 2500/25 x1, 877800/8778 x1 | hooks 0x00000000 x14
+    to:sel:clen 0x0121debe:34fcd5be:2148 x4, 0x1799a0da:34fcd5be:2148 x4, 0x0121debe:34fcd5be:1892 x2, 0x29327257:34fcd5be:1828 x1 | value 0.0 x14
+lc:8db5ff69|765e827f n=14 inA=0 frb=0 pulled=0
+    tok 58d59320 x14
+    quote USDG x13, WETH x1 | fee/ts 16000/1 x13, 8388608/200 x1 | hooks 0x4e346895 x14
+    to:sel:clen 0x00000000:765e827f:2948 x8, 0x00000000:765e827f:2916 x5, 0x00000000:765e827f:4036 x1 | value 0.0 x14
+lc:112ce10c|327b4d65 n=14 inA=0 frb=0 pulled=0
+    tok 6a2a8d4f x11, 58d59320 x1, 6aa07533 x1, 037449b1 x1
+    quote USDG x14 | fee/ts 8388608/10 x11, 8388608/60 x3 | hooks 0x2093dfc8 x14
+    to:sel:clen 0x625a55af:327b4d65:516 x14 | value 0.0 x14
+lc:256516d7|70282651 n=13 inA=0 frb=2 pulled=0
+    tok cc284f6a x13
+    quote ETH x13 | fee/ts 20000/200 x13 | hooks 0x00000000 x13
+    to:sel:clen 0x7c7e48f9:70282651:1700 x4, 0x7c7e48f9:70282651:1444 x2, 0x7c7e48f9:70282651:1668 x2, 0x7c7e48f9:70282651:1732 x1 | value 0.0 x13
+lc:1cbcabd5|a86854fc n=12 inA=0 frb=12 pulled=0
+    tok 16afd61e x12
+    quote ETH x12 | fee/ts 0/200 x12 | hooks 0xe5e70264 x12
+    to:sel:clen 0x3af49c05:a86854fc:131 x9, 0x3af49c05:a86854fc:3876 x3 | value 0.0 x12
+lc:173943cf|12dda99a n=12 inA=0 frb=0 pulled=0
+    tok 26bdd7d5 x12
+    quote ETH x12 | fee/ts 0/60 x12 | hooks 0xdac9e3db x12
+    to:sel:clen 0x5089455f:12dda99a:228 x12 | value 0.0 x12
+lc:a1838b23|7fde822e n=12 inA=0 frb=0 pulled=0
+    tok 5ba4e6bc x12
+    quote ETH x12 | fee/ts 10000/200 x12 | hooks 0x00000000 x12
+    to:sel:clen 0xcba394ba:7fde822e:772 x4, 0xcba394ba:7fde822e:804 x4, 0xcba394ba:7fde822e:740 x2, 0xcba394ba:7fde822e:836 x1 | value 0.0 x12
+lc:93df112c|7fde822e n=12 inA=0 frb=0 pulled=0
+    tok 5ba4e6bc x12
+    quote ETH x12 | fee/ts 10000/200 x12 | hooks 0x00000000 x12
+    to:sel:clen 0x8c439615:7fde822e:804 x7, 0x8c439615:7fde822e:644 x2, 0x8c439615:7fde822e:772 x2, 0x8c439615:7fde822e:836 x1 | value 0.0 x12
+lc:04dc74ae|7fde822e n=12 inA=0 frb=0 pulled=0
+    tok 59bf3559 x12
+    quote ETH x12 | fee/ts 10000/200 x12 | hooks 0x00000000 x12
+    to:sel:clen 0x1756c648:7fde822e:740 x6, 0x1756c648:7fde822e:804 x5, 0x1756c648:7fde822e:644 x1 | value 0.0 x12
+lc:95b32001|7fde822e n=12 inA=0 frb=0 pulled=0
+    tok 5ba4e6bc x12
+    quote ETH x12 | fee/ts 10000/200 x12 | hooks 0x00000000 x12
+    to:sel:clen 0xdf4ca4e1:7fde822e:804 x9, 0xdf4ca4e1:7fde822e:772 x2, 0xdf4ca4e1:7fde822e:644 x1 | value 0.0 x12
+lc:f627dcc5|a25a9a3d n=11 inA=0 frb=0 pulled=0
+    tok e316fe94 x11
+    quote ETH x11 | fee/ts 10000/200 x11 | hooks 0x00000000 x11
+    to:sel:clen 0x58c011a2:a25a9a3d:868 x4, 0x58c011a2:a25a9a3d:836 x2, 0x58c011a2:a25a9a3d:900 x2, 0x58c011a2:a25a9a3d:804 x1 | value 0.000100683 x10, 0.018454156 x1
+lc:d9c7aeec|94a46511 n=11 inA=0 frb=0 pulled=0
+    tok 043b5875 x11
+    quote WETH x11 | fee/ts 0/1 x11 | hooks 0x48902a8c x1, 0xf32f390d x1
+    to:sel:clen 0xb208aa95:94a46511:580 x11 | value 0.0005 x11
+lc:02b70e57|a25a9a3d n=10 inA=0 frb=0 pulled=0
+    tok e316fe94 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0xd6552cb2:a25a9a3d:868 x6, 0xd6552cb2:a25a9a3d:836 x2, 0xd6552cb2:a25a9a3d:804 x1, 0xd6552cb2:a25a9a3d:900 x1 | value 0.000100683 x10
+lc:389e630d|a25a9a3d n=10 inA=0 frb=0 pulled=0
+    tok e316fe94 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0x431f4a8f:a25a9a3d:868 x5, 0x431f4a8f:a25a9a3d:900 x3, 0x431f4a8f:a25a9a3d:836 x1, 0x431f4a8f:a25a9a3d:804 x1 | value 0.000100683 x10
+lc:e7ddcc11|a25a9a3d n=10 inA=0 frb=0 pulled=0
+    tok e316fe94 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0x95e91f17:a25a9a3d:868 x6, 0x95e91f17:a25a9a3d:900 x1, 0x95e91f17:a25a9a3d:708 x1, 0x95e91f17:a25a9a3d:836 x1 | value 0.000100683 x10
+lc:64639026|a25a9a3d n=10 inA=0 frb=0 pulled=0
+    tok e316fe94 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0x234400e0:a25a9a3d:868 x8, 0x234400e0:a25a9a3d:804 x1, 0x234400e0:a25a9a3d:836 x1 | value 0.000100683 x10
+lc:c53353f8|a25a9a3d n=10 inA=0 frb=0 pulled=0
+    tok e316fe94 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0x6da4a34c:a25a9a3d:868 x9, 0x6da4a34c:a25a9a3d:836 x1 | value 0.000100683 x10
+lc:b2b79268|a25a9a3d n=10 inA=0 frb=0 pulled=0
+    tok e316fe94 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0x86a06eb5:a25a9a3d:868 x8, 0x86a06eb5:a25a9a3d:932 x1, 0x86a06eb5:a25a9a3d:804 x1 | value 0.000100683 x10
+lc:7abc863f|bdec33ef n=10 inA=0 frb=10 pulled=0
+    tok ec74c067 x10
+    quote ETH x10 | fee/ts 0/200 x10 | hooks 0x5f746b7b x10
+    to:sel:clen 0x3c6e7f9b:bdec33ef:1124 x4, 0x3c6e7f9b:bdec33ef:964 x2, 0x3c6e7f9b:bdec33ef:932 x2, 0x3c6e7f9b:bdec33ef:1060 x2 | value 0.03 x6, 0.08 x2, 0.11 x2
+lc:e786ff2e|a25a9a3d n=10 inA=0 frb=0 pulled=0
+    tok e316fe94 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0xac3fd571:a25a9a3d:868 x5, 0xac3fd571:a25a9a3d:804 x2, 0xac3fd571:a25a9a3d:900 x2, 0xac3fd571:a25a9a3d:836 x1 | value 0.000100683 x10
+lc:f7592319|a25a9a3d n=10 inA=0 frb=0 pulled=0
+    tok e316fe94 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0x70c2059d:a25a9a3d:868 x4, 0x70c2059d:a25a9a3d:836 x3, 0x70c2059d:a25a9a3d:932 x2, 0x70c2059d:a25a9a3d:900 x1 | value 0.000100683 x10
+lc:b54bb4a8|a25a9a3d n=10 inA=0 frb=0 pulled=0
+    tok e316fe94 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0xc2aae229:a25a9a3d:868 x5, 0xc2aae229:a25a9a3d:836 x1, 0xc2aae229:a25a9a3d:964 x1, 0xc2aae229:a25a9a3d:804 x1 | value 0.000100683 x10
+lc:0ee984bb|a25a9a3d n=10 inA=0 frb=0 pulled=0
+    tok e316fe94 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0x9a4ef896:a25a9a3d:868 x7, 0x9a4ef896:a25a9a3d:932 x1, 0x9a4ef896:a25a9a3d:900 x1, 0x9a4ef896:a25a9a3d:836 x1 | value 0.000100683 x10
+lc:9fc44f7a|56c87388 n=10 inA=0 frb=0 pulled=0
+    tok 5eaf300c x10
+    quote WETH x6, USDG x4 | fee/ts 8388608/200 x10 | hooks 0x306e2a57 x10
+    to:sel:clen 0x341649d9:56c87388:1028 x4, 0x341649d9:56c87388:1348 x2, 0x341649d9:56c87388:1124 x1, 0x341649d9:56c87388:1060 x1 | value 0.0005 x9, 0.00051 x1
+lc:490121b4|f0e9eabf n=10 inA=0 frb=1 pulled=0
+    tok fa4982d5 x10
+    quote ETH x10 | fee/ts 10000/200 x10 | hooks 0x00000000 x10
+    to:sel:clen 0x93828303:f0e9eabf:1700 x10 | value 0.0 x10
+lc:dd40b6c7|ac9650d8 n=10 inA=0 frb=10 pulled=0
+    tok fbe37854 x8, 203caacb x1, f89ceadb x1
+    quote ETH x10 | fee/ts 100/1 x10 | hooks 0x00000000 x9, 0x242ca6b2 x1
+    to:sel:clen 0xd0fd42bd:ac9650d8:1444 x10 | value 0.0 x10
+lc:4a586d92|b6982b48 n=10 inA=0 frb=0 pulled=0
+    tok 7eadc71a x10
+    quote ETH x10 | fee/ts 2500/25 x10 | hooks 0x00000000 x10
+    to:sel:clen 0x0000ffff:b6982b48:260 x10 | value 0.0 x10
+=== grouping tok: 65 families >= 10, pools in them 19640 of 20512
+tok:16afd61e n=8101 inA=6954 frb=222 pulled=457
+    lc c873e135|ac9650d8 x6954, cd37624e|6fe958d8 x516, bd388118|6276cbbe x296, c873e135|f7020405 x50
+    quote ETH x5832, USDG x2251, USDG2 x10 | fee/ts 883131/200 x250, 3000/60 x223, 10000/100 x187 | hooks 0x00000000 x7341, 0xfcd18241 x564
+    to:sel:clen 0x58daec31:ac9650d8:54500 x2800, 0x58daec31:ac9650d8:1892 x1342, 0x58daec31:ac9650d8:46788 x1200, 0x58daec31:ac9650d8:1444 x693 | value 0.0 x2907, 0.000735 x2800, 0.00063 x1200
+tok:58d59320 n=2710 inA=480 frb=156 pulled=70
+    lc c93c806e|1fad948c x1396, 86b37100|882db707 x486, c873e135|ac9650d8 x480, 5d5f9253|60956835 x175
+    quote WETH x1389, USDG x961, ETH x350 | fee/ts 8388608/8 x1578, 8388608/200 x551, 883131/200 x51 | hooks 0x4e346895 x2149, 0x00000000 x542
+    to:sel:clen 0x5ff137d4:1fad948c:4324 x1388, 0xeb7c0347:882db707:3460 x256, 0x58daec31:ac9650d8:1444 x212, 0x1eef016f:60956835:2980 x175 | value 0.0 x2464, 9.333333333 x111, 0.0012177 x51
+tok:cb79985d n=949 inA=946 frb=728 pulled=591
+    lc c873e135|ac9650d8 x946, c93c806e|1fad948c x1, 5f9d1a8f|de72d4f3 x1, f6b9c8ac|34fcd5be x1
+    quote ETH x714, WETH x190, USDG x45 | fee/ts 100/1 x888, 883131/200 x13, 990100/9901 x11 | hooks 0x00000000 x948, 0x5b907b52 x1
+    to:sel:clen 0x58daec31:ac9650d8:2276 x888, 0x58daec31:ac9650d8:1892 x34, 0x58daec31:ac9650d8:1444 x13, 0x58daec31:ac9650d8:1316 x8 | value 0.0 x933, 0.0012177 x13, 0.000179853 x1
+tok:4e451d1a n=782 inA=0 frb=714 pulled=292
+    lc bd388118|6276cbbe x773, c93c806e|1fad948c x8, f6b9c8ac|34fcd5be x1
+    quote ETH x774, USDG x8 | fee/ts 500/1 x773, 250000/2500 x5, 550000/5500 x1 | hooks 0x00000000 x693, 0x9c5bfd49 x1
+    to:sel:clen 0x8366a39c:6276cbbe:196 x773, 0x5ff137d4:1fad948c:3044 x4, 0x5ff137d4:1fad948c:2468 x3, 0x5ff137d4:1fad948c:3172 x1 | value 0.0 x782
+tok:59571c74 n=686 inA=8 frb=657 pulled=600
+    lc 42544ef5|2fcb9108 x553, 2793923d|2fcb9108 x124, c873e135|ac9650d8 x8, c93c806e|1fad948c x1
+    quote ETH x678, USDG x8 | fee/ts 100/200 x89, 20000/200 x30, 10000/200 x27 | hooks 0x00000000 x686
+    to:sel:clen 0x3194e326:2fcb9108:644 x553, 0x58daec31:ac9650d8:1892 x7, 0x204646c6:2fcb9108:644 x1, 0x3522052c:2fcb9108:644 x1 | value 1.0 x28, 0.442 x14, 0.3 x11
+tok:fa4982d5 n=524 inA=0 frb=137 pulled=12
+    lc c3cd7006|f0e9eabf x285, 51faa3f1|a80ac0c2 x86, bc62900b|f0e9eabf x32, b643d285|aa7ec999 x20
+    quote ETH x369, USDG x150, WETH x5 | fee/ts 10000/200 x342, 0/200 x112, 0/1 x16 | hooks 0xae4c0cf7 x217, 0x24d93085 x101
+    to:sel:clen 0xc763b179:f0e9eabf:1796 x196, 0xc763b179:f0e9eabf:1924 x58, 0x5bd1fbe7:a80ac0c2:1156 x30, 0x1a5f2715:f0e9eabf:1796 x21 | value 0.0 x390, 0.0005 x27, 0.072571 x9
+tok:65daaea0 n=511 inA=83 frb=269 pulled=38
+    lc 4a586d92|ac9650d8 x210, c873e135|ac9650d8 x83, a8f04c1b|c0c43d8b x39, 6e822d6a|ce5494bb x27
+    quote ETH x444, USDG x64, USDG2 x3 | fee/ts 2500/25 x345, 100/1 x40, 10000/200 x22 | hooks 0x00000000 x468, 0x89c9fb50 x2
+    to:sel:clen create:60808060:3740 x86, 0x58daec31:ac9650d8:1892 x55, 0x3d6845fb:c0c43d8b:164 x39, 0x0000ffff:ac9650d8:1316 x30 | value 0.0 x231, 0.08 x51, 3.5 x47
+tok:c0b7d400 n=458 inA=321 frb=126 pulled=31
+    lc c873e135|ac9650d8 x321, c873e135|f7020405 x132, bd388118|6276cbbe x3, f6b9c8ac|34fcd5be x2
+    quote USDG x249, ETH x209 | fee/ts 10000/200 x131, 860000/8600 x26, 890000/8900 x21 | hooks 0x00000000 x322, 0x147467ac x2
+    to:sel:clen 0x58daec31:ac9650d8:1892 x178, 0x58daec31:f7020405:196 x132, 0x58daec31:ac9650d8:1316 x63, 0x58daec31:ac9650d8:2020 x53 | value 0.0 x386, 0.000351895 x2, 0.002590646 x1
+tok:695e20af n=439 inA=0 frb=4 pulled=0
+    lc 724433a2|7866fa39 x438, c873e135|f7020405 x1
+    quote WETH x436, USDG x3 | fee/ts 0/200 x438, 200000/4000 x1 | hooks 0x2c668601 x438, 0x00000000 x1
+    to:sel:clen 0xc739229d:7866fa39:900 x437, 0x58daec31:f7020405:196 x1, 0xc739229d:7866fa39:932 x1 | value 0.0 x439
+tok:d2b0116c n=345 inA=0 frb=0 pulled=0
+    lc 65bf6c98|7fde822e x23, 84d712e8|7fde822e x23, 1fd32fb6|7fde822e x20, 52afb06c|7fde822e x20
+    quote ETH x345 | fee/ts 10000/200 x345 | hooks 0x00000000 x345
+    to:sel:clen 0x404700be:7fde822e:804 x15, 0xe696daf6:7fde822e:804 x15, 0x5c750a12:7fde822e:804 x14, 0xb4038254:7fde822e:804 x14 | value 0.0 x345
+tok:2dfcf583 n=340 inA=3 frb=3 pulled=317
+    lc c873e135|f7020405 x337, c873e135|ac9650d8 x3
+    quote ETH x337, USDG x3 | fee/ts 10000/200 x337, 990000/9900 x2, 880000/8800 x1 | hooks 0x00000000 x340
+    to:sel:clen 0x58daec31:f7020405:196 x337, 0x58daec31:ac9650d8:1892 x2, 0x58daec31:ac9650d8:1316 x1 | value 0.0 x340
+tok:59bf3559 n=332 inA=0 frb=0 pulled=0
+    lc 09e95d6f|7fde822e x20, e708e985|7fde822e x20, eddd5e94|7fde822e x20, 72cdd99d|7fde822e x20
+    quote ETH x332 | fee/ts 10000/200 x332 | hooks 0x00000000 x332
+    to:sel:clen 0x960ef8c4:7fde822e:804 x13, 0x3990c1aa:7fde822e:804 x12, 0x9bd98b64:7fde822e:804 x12, 0xcd1e2cbe:7fde822e:804 x12 | value 0.0 x332
+tok:d4e7eae4 n=307 inA=0 frb=88 pulled=25
+    lc bd388118|6276cbbe x116, c93c806e|1fad948c x27, 08e63944|3a4f63f6 x9, c873e135|f7020405 x8
+    quote USDG x175, WETH x106, ETH x26 | fee/ts 3000/60 x115, 950000/60 x21, 900000/60 x17 | hooks 0x00000000 x248, 0x80939788 x4
+    to:sel:clen 0x8366a39c:6276cbbe:196 x116, 0x5ff137d4:1fad948c:2596 x14, 0x1acc48d0:3a4f63f6:644 x9, 0x5ff137d4:1fad948c:2468 x8 | value 0.0 x306, 0.0004 x1
+tok:e316fe94 n=300 inA=0 frb=0 pulled=0
+    lc 920db74f|a25a9a3d x50, dd9d12ae|a25a9a3d x50, 543148c9|a25a9a3d x42, c6818a11|a25a9a3d x15
+    quote ETH x300 | fee/ts 10000/200 x300 | hooks 0x00000000 x300
+    to:sel:clen 0xf89d2cce:a25a9a3d:868 x22, 0xe181b36e:a25a9a3d:868 x22, 0x6a57c49c:a25a9a3d:868 x20, 0xf89d2cce:a25a9a3d:836 x12 | value 0.000100683 x299, 0.018454156 x1
+tok:99e0b5e8 n=283 inA=13 frb=38 pulled=1
+    lc 049a3b67|603ed0bc x204, 049a3b67|79082bf9 x64, c873e135|ac9650d8 x13, bd388118|6276cbbe x1
+    quote WETH x267, USDG x15, ETH x1 | fee/ts 0/60 x269, 880000/8800 x1, 860000/8600 x1 | hooks 0x00000000 x14, 0x824181da x1
+    to:sel:clen 0x18cab14c:603ed0bc:1124 x54, 0x18cab14c:603ed0bc:1060 x37, 0x18cab14c:603ed0bc:1188 x33, 0x18cab14c:79082bf9:1252 x20 | value 0.0 x218, 0.0001 x10, 0.001 x10
+tok:a98b3b9e n=269 inA=269 frb=123 pulled=8
+    lc c873e135|ac9650d8 x269
+    quote ETH x146, USDG x122, WETH x1 | fee/ts 3000/60 x123, 850000/60 x11, 810000/60 x9 | hooks 0x00000000 x152, 0x46171d12 x1
+    to:sel:clen 0x58daec31:ac9650d8:2020 x141, 0x58daec31:ac9650d8:1316 x72, 0x58daec31:ac9650d8:1892 x50, 0x58daec31:ac9650d8:1444 x6 | value 0.0 x247, 0.0012177 x2, 1.4449e-05 x1
+tok:e8df5d48 n=218 inA=0 frb=2 pulled=0
+    lc 61713bbd|7fde822e x20, 02dbb81d|7fde822e x20, af2ae785|7fde822e x20, d1c0cbbe|7fde822e x20
+    quote ETH x218 | fee/ts 10000/200 x218 | hooks 0x00000000 x218
+    to:sel:clen 0xf6b59a71:7fde822e:804 x16, 0x1b161a02:7fde822e:804 x15, 0xc7f8917a:7fde822e:804 x15, 0xd5d70c19:7fde822e:804 x13 | value 0.0 x218
+tok:31a3f3ec n=188 inA=0 frb=15 pulled=0
+    lc 670175c9|7c33638d x181, 6e90cf35|7c33638d x7
+    quote ETH x151, USDG x37 | fee/ts 30000/200 x146, 10000/200 x42 | hooks 0x00000000 x188
+    to:sel:clen 0x815542e8:7c33638d:769 x124, 0x815542e8:7c33638d:833 x33, 0x815542e8:7c33638d:836 x10, 0xc1613a96:7c33638d:769 x7 | value 0.0 x188
+tok:6475eadb n=180 inA=0 frb=2 pulled=0
+    lc 7b8e9385|7fde822e x20, f48d8fbb|7fde822e x20, 5193acc6|7fde822e x20, 49e08e29|7fde822e x20
+    quote ETH x180 | fee/ts 10000/200 x180 | hooks 0x00000000 x180
+    to:sel:clen 0x9f81695f:7fde822e:804 x16, 0xea047f8e:7fde822e:772 x12, 0xca674081:7fde822e:804 x12, 0x31cc7dde:7fde822e:804 x12 | value 0.0 x180
+tok:da6e18c6 n=143 inA=0 frb=2 pulled=0
+    lc 7939712c|4101659e x143
+    quote ETH x143 | fee/ts 0/200 x143 | hooks 0x745d7176 x143
+    to:sel:clen 0x16cf6788:4101659e:388 x135, 0x16cf6788:4101659e:420 x8 | value 0.0 x141, 1e-05 x1, 0.012 x1
+tok:deda4933 n=140 inA=0 frb=1 pulled=0
+    lc 379a46e4|7fde822e x20, 9db2a054|7fde822e x20, e2dd269f|7fde822e x20, 848e3004|7fde822e x20
+    quote ETH x140 | fee/ts 10000/200 x140 | hooks 0x00000000 x140
+    to:sel:clen 0xb7758ae7:7fde822e:804 x16, 0x6d099a10:7fde822e:804 x15, 0xb6ed4932:7fde822e:804 x12, 0x1a2835d9:7fde822e:804 x12 | value 0.0 x140
+tok:4ce6cecd n=113 inA=0 frb=25 pulled=0
+    lc 8ce82419|bc9d39fd x113
+    quote ETH x113 | fee/ts 0/200 x113 | hooks 0xdbebc6a7 x113
+    to:sel:clen 0x7abb343d:bc9d39fd:900 x20, 0x390b5f5f:bc9d39fd:900 x19, 0x7abb343d:bc9d39fd:932 x10, 0x390b5f5f:bc9d39fd:932 x6 | value 0.0 x113
+tok:6a2a8d4f n=112 inA=0 frb=0 pulled=3
+    lc bd388118|6276cbbe x61, f6d9fecb|831a3ab9 x35, 112ce10c|327b4d65 x11, 79c1679a|334c6b90 x1
+    quote USDG x107, ETH x3, WETH x2 | fee/ts 8388608/60 x47, 0/1 x35, 8388608/10 x13 | hooks 0x4d08b15c x35, 0xfc3d4663 x34
+    to:sel:clen 0x8366a39c:6276cbbe:196 x61, 0x033dd87a:831a3ab9:932 x35, 0x625a55af:327b4d65:516 x11, 0x964869a2:334c6b90:36 x1 | value 0.0 x111, 2e-06 x1
+tok:9232adcd n=102 inA=0 frb=100 pulled=100
+    lc f07d1c53|e1e75b94 x102
+    quote ETH x102 | fee/ts 2500/25 x102 | hooks 0x8b4b35c7 x2, 0xab5dd423 x1
+    to:sel:clen 0xc80d96d2:e1e75b94:5572 x2, 0xca49b5b0:e1e75b94:5572 x1, 0xb43c6abd:e1e75b94:5572 x1, 0x3c3f4475:e1e75b94:5572 x1 | value 5.0019e-05 x102
+tok:7301910a n=100 inA=0 frb=0 pulled=0
+    lc 69ae00ba|7fde822e x20, ece67e66|7fde822e x20, 852d2dea|7fde822e x20, 8bdf370e|7fde822e x20
+    quote ETH x100 | fee/ts 10000/200 x100 | hooks 0x00000000 x100
+    to:sel:clen 0xa7427f42:7fde822e:804 x11, 0x2be2facd:7fde822e:804 x11, 0x3601b5b0:7fde822e:804 x10, 0x7bbe0982:7fde822e:772 x7 | value 0.0 x100
+tok:09b27ee9 n=77 inA=0 frb=7 pulled=0
+    lc 9b2d6065|ec64ddcf x1, 0ed78a7d|ec64ddcf x1, eeefc40d|ec64ddcf x1, 23593587|ec64ddcf x1
+    quote ETH x77 | fee/ts 0/60 x77 | hooks 0xd8ad4b60 x1, 0xe7a1f985 x1
+    to:sel:clen 0xdcf51254:ec64ddcf:196 x1, 0x82ee110b:ec64ddcf:196 x1, 0xa52e21be:ec64ddcf:196 x1, 0xdcf43b33:ec64ddcf:196 x1 | value 0.0 x77
+tok:97c7ba1b n=68 inA=50 frb=0 pulled=4
+    lc c873e135|ac9650d8 x50, c93c806e|1fad948c x12, bcfbc39b|c3c16ee4 x2, c873e135|f7020405 x2
+    quote USDG x52, ETH x14, WETH x2 | fee/ts 990100/9901 x8, 870000/8700 x6, 690000/6900 x4 | hooks 0x00000000 x67, 0x80939788 x1
+    to:sel:clen 0x58daec31:ac9650d8:1892 x34, 0x58daec31:ac9650d8:2020 x6, 0x58daec31:ac9650d8:1316 x6, 0x5ff137d4:1fad948c:3044 x5 | value 0.0 x57, 0.0012177 x2, 0.000146577 x1
+tok:da46f006 n=67 inA=0 frb=10 pulled=1
+    lc 9c2b9390|ff734f50 x30, 68994779|ff734f50 x8, c37e878e|ff734f50 x7, bcfbc39b|c3c16ee4 x4
+    quote ETH x50, USDG x16, WETH x1 | fee/ts 3000/60 x60, 200000/4000 x1, 50000/200 x1 | hooks 0x00000000 x67
+    to:sel:clen 0x7891ea88:ff734f50:1156 x29, 0x1f3af76c:ff734f50:1060 x8, 0x69f4d500:ff734f50:1060 x7, 0x63d9ada6:93a73b97:1124 x3 | value 0.0 x43, 0.0001 x7, 0.0002 x3
+tok:5ba4e6bc n=61 inA=0 frb=0 pulled=0
+    lc 45a110a1|7fde822e x20, a1838b23|7fde822e x12, 93df112c|7fde822e x12, 95b32001|7fde822e x12
+    quote ETH x61 | fee/ts 10000/200 x61 | hooks 0x00000000 x61
+    to:sel:clen 0xdf4ca4e1:7fde822e:804 x9, 0x8c439615:7fde822e:804 x7, 0xe0cd7e0c:7fde822e:804 x7, 0xcba394ba:7fde822e:772 x4 | value 0.0 x61
+tok:ac88142e n=53 inA=0 frb=23 pulled=1
+    lc 6e4ffdcb|4e5ae177 x9, 75890ed7|5a4b7ef0 x8, bd84df6f|5fe889a4 x8, 6c0653e1|bc9bc035 x5
+    quote ETH x47, USDG x6 | fee/ts 3000/200 x14, 20000/10 x12, 10000/200 x9 | hooks 0x00000000 x39, 0x0ac219e4 x1
+    to:sel:clen 0x3ea29975:5a4b7ef0:1252 x4, 0x73d84bdb:4e5ae177:1156 x3, 0x4fc43c63:5fe889a4:1476 x3, 0xc66c141d:5fe889a4:1604 x2 | value 0.0 x27, 0.000104563 x2, 0.014680754 x2
+tok:006dae97 n=51 inA=0 frb=20 pulled=0
+    lc fda2774c|7d8559b6 x31, e76af197|dfee226f x9, e76af197|a9a8d143 x9, 734dd706|a9a8d143 x1
+    quote WETH x50, USDG x1 | fee/ts 10000/200 x31, 0/200 x19, 200000/4000 x1 | hooks 0x00000000 x32, 0xe692d587 x9
+    to:sel:clen 0x5ff007f0:7d8559b6:452 x31, 0xa37e4343:dfee226f:804 x9, 0xa37e4343:a9a8d143:484 x9, 0x78a0b01b:a9a8d143:484 x1 | value 0.0005 x37, 0.1005 x3, 0.007862415 x1
+tok:44ec7eff n=44 inA=0 frb=0 pulled=0
+    lc 09303719|7fde822e x44
+    quote ETH x44 | fee/ts 10000/200 x44 | hooks 0x00000000 x44
+    to:sel:clen 0x6fd29ff3:7fde822e:772 x25, 0xa1c9c202:7fde822e:772 x11, 0xa1c9c202:7fde822e:740 x3, 0x6fd29ff3:7fde822e:740 x2 | value 0.0 x44
+tok:f32a354e n=42 inA=0 frb=13 pulled=0
+    lc f895112a|df40224a x35, 25eb0753|268dabf7 x7
+    quote WETH x42 | fee/ts 8388608/200 x42 | hooks 0x48b8f6ad x35, 0x09cbc918 x7
+    to:sel:clen 0xd3f2cc17:df40224a:3044 x5, 0xd3f2cc17:df40224a:3012 x5, 0xd3f2cc17:df40224a:2564 x3, 0xd3f2cc17:df40224a:2980 x3 | value 0.0 x13, 0.0001 x12, 0.001 x7
+tok:f4ce0178 n=41 inA=0 frb=0 pulled=0
+    lc fe92160e|7fde822e x21, 7d4fe10f|7fde822e x20
+    quote ETH x41 | fee/ts 10000/200 x41 | hooks 0x00000000 x41
+    to:sel:clen 0x5237cc91:7fde822e:804 x14, 0x9acff978:7fde822e:804 x11, 0x9acff978:7fde822e:772 x6, 0x5237cc91:7fde822e:772 x4 | value 0.0 x41
+tok:2ba81154 n=38 inA=0 frb=2 pulled=2
+    lc 6d2beafa|617ac5de x27, bcfbc39b|99e1d016 x8, 5411c303|88947a05 x2, 1b129156|c5f0a32b x1
+    quote ETH x37, USDG x1 | fee/ts 8388608/200 x28, 10000/100 x3, 2500/25 x2 | hooks 0xe693a697 x27, 0x7566a3bf x6
+    to:sel:clen 0xa0ce0291:617ac5de:676 x27, 0x59f31b7f:99e1d016:1764 x7, 0x4f121366:88947a05:740 x2, 0x59f31b7f:99e1d016:2212 x1 | value 0.0 x31, 0.000761657 x1, 0.000425672 x1
+tok:f4bdc2f1 n=32 inA=0 frb=0 pulled=0
+    lc 9fb8f46c|41e91dfd x25, 9fb8f46c|f4037d46 x7
+    quote WETH x23, USDG x9 | fee/ts 3000/60 x28, 0/200 x3, 10000/200 x1 | hooks 0x5998c29a x1, 0x5f2b8d16 x1
+    to:sel:clen 0x91560876:f4037d46:2756 x6, 0x91560876:41e91dfd:3300 x5, 0x91560876:41e91dfd:9636 x4, 0x91560876:41e91dfd:10212 x4 | value 0.0 x25, 0.0001 x5, 1e-05 x2
+tok:88d6de16 n=28 inA=0 frb=1 pulled=0
+    lc c8c384fa|45d52c5a x24, 26dd1e52|ea2c3a42 x3, bd388118|6276cbbe x1
+    quote ETH x25, USDG x3 | fee/ts 3000/200 x27, 836798/9303 x1 | hooks 0xf7521cf0 x24, 0x4eb19769 x3
+    to:sel:clen 0xc783221a:45d52c5a:1156 x8, 0xc783221a:45d52c5a:1220 x4, 0xc783221a:45d52c5a:1348 x3, 0xc783221a:45d52c5a:1380 x2 | value 0.0 x26, 0.0001 x1, 0.05 x1
+tok:c20d2c41 n=27 inA=0 frb=0 pulled=0
+    lc fbae4dd5|bd2784cd x27
+    quote USDG x27 | fee/ts 0/1 x27 | hooks 0x6404ddb4 x27
+    to:sel:clen 0xc35d4eb5:bd2784cd:548 x27 | value 0.0 x27
+tok:5a64f0d6 n=21 inA=0 frb=0 pulled=0
+    lc 0a365af0|a1e7b638 x19, 41c4123d|d6ac77ce x2
+    quote ETH x21 | fee/ts 10000/200 x21 | hooks 0x037bf303 x21
+    to:sel:clen 0x6ec95a3c:a1e7b638:14433 x7, 0x6ec95a3c:a1e7b638:14401 x6, 0x71278f85:d6ac77ce:15588 x2, 0x6ec95a3c:a1e7b638:14657 x2 | value 0.0 x20, 1.8892e-05 x1
+tok:037449b1 n=21 inA=0 frb=2 pulled=3
+    lc bd388118|6276cbbe x8, c93c806e|1fad948c x8, b09ef517|e9ae5c53 x1, 2ce6aaaf|3593564c x1
+    quote USDG x17, ETH x3, WETH x1 | fee/ts 970000/9700 x4, 8388608/1 x2, 8388608/200 x2 | hooks 0x00000000 x14, 0xe449e013 x2
+    to:sel:clen 0x8366a39c:6276cbbe:196 x8, 0x5ff137d4:1fad948c:3044 x8, 0x874f6879:e9ae5c53:2116 x1, 0x88767899:3593564c:2564 x1 | value 0.0 x20, 3.0 x1
+tok:19332411 n=20 inA=0 frb=0 pulled=5
+    lc a74d098c|0a1f9663 x19, a74d098c|0dcf4bb5 x1
+    quote WETH x20 | fee/ts 0/1 x20 | hooks 0xc6bf3449 x20
+    to:sel:clen 0xa53d764b:0a1f9663:382 x19, 0xa53d764b:0dcf4bb5:292 x1 | value 0.0 x20
+tok:c7f87421 n=19 inA=0 frb=0 pulled=0
+    lc 8b8aaee8|e37dea82 x19
+    quote ETH x19 | fee/ts 8388608/60 x19 | hooks 0xee588bcf x19
+    to:sel:clen 0xe3a826c0:e37dea82:1284 x10, 0xe3a826c0:e37dea82:1572 x2, 0xe3a826c0:e37dea82:1348 x2, 0xe3a826c0:e37dea82:1444 x1 | value 0.0 x17, 0.001946391 x2
+tok:2be340ff n=18 inA=0 frb=6 pulled=4
+    lc c93c806e|1fad948c x4, c873e135|f7020405 x3, b9ac041c|de72d4f3 x2, bcfbc39b|c3c16ee4 x1
+    quote ETH x9, USDG x7, WETH x2 | fee/ts 10000/200 x6, 250000/2500 x2, 0/200 x2 | hooks 0x00000000 x15, 0x80939788 x2
+    to:sel:clen 0x58daec31:f7020405:196 x3, 0x5ff137d4:1fad948c:3044 x2, 0x80939788:de72d4f3:388 x2, 0x5ff137d4:1fad948c:2468 x2 | value 0.0 x14, 0.0004 x1, 0.025 x1
+tok:33b79450 n=17 inA=0 frb=0 pulled=0
+    lc c9ff077c|655d8499 x6, 162bf5ea|655d8499 x6, 7389b3c3|655d8499 x5
+    quote ETH x17 | fee/ts 500/200 x17 | hooks 0x00000000 x17
+    to:sel:clen 0xa1ca5061:655d8499:996 x3, 0x8d0e1f9f:655d8499:964 x3, 0x8d0e1f9f:655d8499:996 x3, 0x070b198e:655d8499:996 x3 | value 0.0 x17
+tok:043b5875 n=17 inA=0 frb=0 pulled=0
+    lc d9c7aeec|94a46511 x11, c8bf4b19|675535aa x6
+    quote WETH x17 | fee/ts 0/1 x17 | hooks 0x48902a8c x1, 0xf32f390d x1
+    to:sel:clen 0xb208aa95:94a46511:580 x11, 0xa0374413:675535aa:612 x6 | value 0.0005 x11, 0.0006 x5, 0.0015 x1
+tok:d17bf511 n=17 inA=0 frb=1 pulled=0
+    lc 9c97ca89|506aba45 x9, b6ddcc32|506aba45 x8
+    quote ETH x17 | fee/ts 0/60 x17 | hooks 0xaa17ea21 x1, 0xf8d77424 x1
+    to:sel:clen 0xe2182781:506aba45:30244 x9, 0x0ad35ef4:506aba45:30244 x8 | value 0.0 x17
+tok:db69a8e9 n=15 inA=0 frb=15 pulled=15
+    lc b09ef517|e9ae5c53 x13, 84bcfe06|5b1fe192 x1, a965f226|5b1fe192 x1
+    quote USDG x15 | fee/ts 0/1 x15 | hooks 0x99a670d2 x13, 0xb672a5d8 x1
+    to:sel:clen 0x37f76011:e9ae5c53:6020 x9, 0x37f76011:e9ae5c53:4708 x4, 0xb672a5d8:5b1fe192:36 x1, 0x44718445:5b1fe192:36 x1 | value 0.0 x15
+tok:8213fb3a n=15 inA=0 frb=5 pulled=9
+    lc bd388118|6276cbbe x4, 5e7a1657|3e993775 x3, c873e135|f7020405 x3, 41797477|3f707e6b x2
+    quote ETH x8, USDG x6, WETH x1 | fee/ts 8388608/10 x4, 500/10 x3, 0/60 x3 | hooks 0x00000000 x4, 0xa3172962 x3
+    to:sel:clen 0x8366a39c:6276cbbe:196 x4, 0xa3172962:3e993775:420 x3, 0x58daec31:f7020405:196 x3, 0x2f9b224e:3f707e6b:3140 x2 | value 0.0 x13, 0.1 x1, 10.588235294 x1
+tok:8cca56b5 n=14 inA=0 frb=12 pulled=0
+    lc c873e135|f7020405 x14
+    quote ETH x13, USDG x1 | fee/ts 100/1 x13, 200000/4000 x1 | hooks 0x00000000 x14
+    to:sel:clen 0x58daec31:f7020405:196 x14 | value 0.0 x14
+tok:12db0eac n=14 inA=0 frb=1 pulled=0
+    lc aea1e2c6|6531c1ef x3, a7e8034f|6531c1ef x2, ef66042f|6531c1ef x2, 8e916952|6531c1ef x2
+    quote ETH x14 | fee/ts 100000/60 x7, 50000/60 x5, 70000/60 x2 | hooks 0x00000000 x14
+    to:sel:clen 0xe48af69e:6531c1ef:644 x2, 0xe48af69e:6531c1ef:516 x1, 0x3f692293:6531c1ef:548 x1, 0x3f692293:6531c1ef:676 x1 | value 0.0 x13, 0.001845 x1
+tok:c3696ffc n=13 inA=0 frb=0 pulled=2
+    lc c873e135|f7020405 x5, 124ed238|37865ce5 x1, fe405876|37865ce5 x1, ae393198|37865ce5 x1
+    quote ETH x13 | fee/ts 8388608/60 x7, 10000/200 x5, 0/60 x1 | hooks 0x00000000 x5, 0x443703ea x1
+    to:sel:clen 0x58daec31:f7020405:196 x5, create:6101c080:37415 x2, 0x567cb9bf:37865ce5:100 x1, 0x055cfa87:37865ce5:100 x1 | value 0.0 x13
+tok:cc284f6a n=13 inA=0 frb=2 pulled=0
+    lc 256516d7|70282651 x13
+    quote ETH x13 | fee/ts 20000/200 x13 | hooks 0x00000000 x13
+    to:sel:clen 0x7c7e48f9:70282651:1700 x4, 0x7c7e48f9:70282651:1444 x2, 0x7c7e48f9:70282651:1668 x2, 0x7c7e48f9:70282651:1732 x1 | value 0.0 x13
+tok:b302dc77 n=12 inA=0 frb=0 pulled=0
+    lc 5ee1f89c|cb2ff583 x4, 5335819a|cb2ff583 x3, faf9e4b2|cb2ff583 x2, 622e7f8b|cb2ff583 x2
+    quote ETH x12 | fee/ts 0/4 x5, 10000/40 x3, 10000/200 x2 | hooks 0x00000000 x7, 0x6954c41f x4
+    to:sel:clen 0xb4d3c736:cb2ff583:900 x3, 0x89687248:cb2ff583:900 x2, 0xd94606e7:cb2ff583:900 x2, 0xacc66c64:cb2ff583:900 x2 | value 0.0 x12
+tok:26bdd7d5 n=12 inA=0 frb=0 pulled=0
+    lc 173943cf|12dda99a x12
+    quote ETH x12 | fee/ts 0/60 x12 | hooks 0xdac9e3db x12
+    to:sel:clen 0x5089455f:12dda99a:228 x12 | value 0.0 x12
+tok:42d848bb n=12 inA=0 frb=1 pulled=0
+    lc 8ef4b432|314a0b92 x9, 4c99bfaf|27995707 x1, 8ef4b432|2621571e x1, b59b6993|baac450f x1
+    quote ETH x11, WETH x1 | fee/ts 0/200 x12 | hooks 0x6172fd46 x12
+    to:sel:clen 0x085c4932:314a0b92:1380 x5, 0x085c4932:314a0b92:1348 x3, 0xacc83f35:27995707:2180 x1, 0x085c4932:2621571e:2148 x1 | value 0.0002 x7, 0.0 x3, 0.0001 x1
+tok:ec74c067 n=12 inA=0 frb=12 pulled=0
+    lc 7abc863f|bdec33ef x10, 4e381985|6a761202 x2
+    quote ETH x12 | fee/ts 0/200 x12 | hooks 0x5f746b7b x12
+    to:sel:clen 0x3c6e7f9b:bdec33ef:1124 x4, 0x42798091:6a761202:1924 x2, 0x3c6e7f9b:bdec33ef:964 x2, 0x3c6e7f9b:bdec33ef:932 x2 | value 0.03 x6, 0.0 x2, 0.08 x2
+tok:63e129d5 n=12 inA=0 frb=0 pulled=0
+    lc 52034d6a|655d8499 x6, e6e647e4|655d8499 x6
+    quote ETH x12 | fee/ts 10000/200 x6, 500/200 x6 | hooks 0x00000000 x12
+    to:sel:clen 0x140b83d8:655d8499:996 x2, 0x140b83d8:655d8499:1028 x2, 0xdd1d4dfa:655d8499:1028 x2, 0x140b83d8:655d8499:900 x1 | value 0.0 x12
+tok:a0778c80 n=12 inA=0 frb=0 pulled=0
+    lc abda0735|655d8499 x6, 502fdcad|655d8499 x6
+    quote ETH x12 | fee/ts 10000/200 x6, 500/200 x6 | hooks 0x00000000 x12
+    to:sel:clen 0xdeaced3e:655d8499:932 x3, 0xdeaced3e:655d8499:900 x2, 0x8835a171:655d8499:964 x2, 0x8835a171:655d8499:900 x2 | value 0.0 x12
+tok:caee1242 n=12 inA=0 frb=0 pulled=0
+    lc 1a3cb134|f03e0011 x7, f91f9868|f03e0011 x5
+    quote ETH x12 | fee/ts 0/200 x12 | hooks 0xbba868de x7, 0x0025115d x5
+    to:sel:clen 0x34c0d66f:f03e0011:292 x7, 0x038ed9c7:f03e0011:292 x5 | value 1e-05 x10, 1e-06 x1, 0.0005 x1
+tok:58138ffe n=11 inA=0 frb=0 pulled=0
+    lc 7100ba52|42a81515 x6, 0b3123c9|42a81515 x4, 44899495|42a81515 x1
+    quote ETH x11 | fee/ts 0/60 x11 | hooks 0xe4d9b381 x6, 0x34fc5aac x4
+    to:sel:clen 0xa9e4dc50:42a81515:516 x6, 0x098321cd:42a81515:356 x3, 0x098321cd:42a81515:260 x1, 0x62aabc92:42a81515:356 x1 | value 0.0 x11
+tok:f6867794 n=10 inA=0 frb=5 pulled=0
+    lc be9b134a|35fd03de x4, 9fac1038|55949803 x2, be9b134a|4efc50ac x1, be9b134a|4b29b826 x1
+    quote WETH x8, USDG x2 | fee/ts 8388608/60 x4, 3000/60 x3, 10000/200 x2 | hooks 0x00000000 x6, 0x33299968 x3
+    to:sel:clen 0x3ef03a34:55949803:772 x2, 0x9f8d5d16:4efc50ac:580 x1, 0x2c2797db:4b29b826:516 x1, 0x2c2797db:c67af2d4:612 x1 | value 0.0 x3, 0.05 x2, 0.0002 x2
+tok:df545910 n=10 inA=0 frb=2 pulled=0
+    lc 7f15c882|d530cde3 x8, 7f15c882|e353749f x2
+    quote ETH x10 | fee/ts 0/200 x10 | hooks 0xe0552156 x10
+    to:sel:clen 0x29cad997:d530cde3:996 x8, 0x29cad997:e353749f:1572 x2 | value 0.001 x8, 0.072 x1, 0.101 x1
+tok:5eaf300c n=10 inA=0 frb=0 pulled=0
+    lc 9fc44f7a|56c87388 x10
+    quote WETH x6, USDG x4 | fee/ts 8388608/200 x10 | hooks 0x306e2a57 x10
+    to:sel:clen 0x341649d9:56c87388:1028 x4, 0x341649d9:56c87388:1348 x2, 0x341649d9:56c87388:1124 x1, 0x341649d9:56c87388:1060 x1 | value 0.0005 x9, 0.00051 x1
+tok:c989d7d8 n=10 inA=0 frb=6 pulled=0
+    lc 4125ff6e|6a388ec2 x4, 2ad44ab3|6a388ec2 x1, 0c87e3fe|6a388ec2 x1, 2f73a928|6a388ec2 x1
+    quote ETH x9, WETH x1 | fee/ts 0/200 x8, 200000/4000 x1, 838974/9303 x1 | hooks 0x00000000 x2, 0x07eca5ac x1
+    to:sel:clen 0x908de7c9:6a388ec2:1284 x3, 0x908de7c9:6a388ec2:1188 x1, 0x944d4e3b:6a388ec2:1188 x1, 0xef863da5:6a388ec2:1252 x1 | value 0.01 x4, 0.0 x4, 0.001 x1
+tok:7eadc71a n=10 inA=0 frb=0 pulled=0
+    lc 4a586d92|b6982b48 x10
+    quote ETH x10 | fee/ts 2500/25 x10 | hooks 0x00000000 x10
+    to:sel:clen 0x0000ffff:b6982b48:260 x10 | value 0.0 x10

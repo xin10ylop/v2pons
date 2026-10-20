@@ -1,0 +1,201 @@
+{
+ "window": {
+  "from_block": 79984897,
+  "from_ts": 1791121962,
+  "head": 85881750,
+  "head_ts": 1791726761,
+  "now_at_start": 1791726762,
+  "target_from_ts": 1791121962
+ },
+ "window_utc": [
+  "2026-10-04 13:52:42",
+  "2026-10-11 13:52:41"
+ ],
+ "built_utc": "2026-10-11 15:27:55",
+ "pools": 64416,
+ "by_dex": {
+  "v4": 32416,
+  "v2a": 15947,
+  "v2b": 13951,
+  "v3": 2102
+ },
+ "by_dex_quote": {
+  "v4/ETH": 22524,
+  "v4/USDG": 6792,
+  "v2a/WETH": 15947,
+  "v2b/WETH": 13951,
+  "v3/WETH": 2102,
+  "v4/WETH": 2869,
+  "v4/USDG2": 231
+ },
+ "quote_pairs": 13,
+ "with_events": 64416,
+ "ev_complete": 64416,
+ "with_liquidity": 49870,
+ "with_swaps": 40214,
+ "with_real_buy": 15900,
+ "with_pull": 8889,
+ "with_outsider_buy": 4306,
+ "launch_txs": 46065,
+ "missing_launch_tx": 0,
+ "swap_txs_cached": 207304,
+ "eoas_seen": 21680,
+ "swaps_without_tx_in_first12": 0,
+ "families": {
+  "tok": {
+   "all": 1050,
+   "ge5": 184,
+   "ge5_pools": 63132,
+   "ge20": 70,
+   "singletons": 615
+  },
+  "tokm": {
+   "all": 1317,
+   "ge5": 264,
+   "ge5_pools": 62926,
+   "ge20": 137,
+   "singletons": 785
+  },
+  "tokx": {
+   "all": 11189,
+   "ge5": 451,
+   "ge5_pools": 52364,
+   "ge20": 75,
+   "singletons": 9878
+  },
+  "lc": {
+   "all": 1152,
+   "ge5": 245,
+   "ge5_pools": 63148,
+   "ge20": 122,
+   "singletons": 672
+  },
+  "strict": {
+   "all": 8665,
+   "ge5": 607,
+   "ge5_pools": 54859,
+   "ge20": 146,
+   "singletons": 7034
+  },
+  "fund": {
+   "all": 166,
+   "ge5": 6,
+   "ge5_pools": 4772,
+   "ge20": 2,
+   "singletons": 129
+  },
+  "fund1": {
+   "all": 182,
+   "ge5": 6,
+   "ge5_pools": 4772,
+   "ge20": 2,
+   "singletons": 157
+  }
+ },
+ "funding_sample": {
+  "wallets": 350,
+  "wallets_scanned": 241,
+  "wallets_from_cache": 109,
+  "hop2_scanned": 69,
+  "hop2_found": 52,
+  "status": {
+   "no_funding_in_range": 78,
+   "found": 214,
+   "nonce0_not_found": 58
+  },
+  "pools_covered": 6839,
+  "pools_with_funder": 4974
+ },
+ "shared_fps": 42,
+ "params": {
+  "SFP_MIN": 25,
+  "REAL": 0.005,
+  "OUT_MIN": 0.0001,
+  "OUT_POOLS": 3,
+  "REACT": 30,
+  "SPAN": 3000,
+  "ETH_PER_USDG": 0.0003891050583657588,
+  "NF": 12
+ },
+ "per_dex": {
+  "v2a": {
+   "pools": 15947,
+   "quote_pairs": 0,
+   "by_quote": {
+    "WETH": 15947
+   },
+   "with_events": 15947,
+   "with_liquidity": 2037,
+   "with_swaps": 2028,
+   "with_real_buy": 1982,
+   "with_pull": 355,
+   "first_pull_full": 355,
+   "with_outsider_buy": 714,
+   "outsider_reactions": 37,
+   "launch_txs": 15947,
+   "launch_wallets": 2119,
+   "tok_families": 145,
+   "lc_families": 161
+  },
+  "v2b": {
+   "pools": 13951,
+   "quote_pairs": 0,
+   "by_quote": {
+    "WETH": 13951
+   },
+   "with_events": 13951,
+   "with_liquidity": 13909,
+   "with_swaps": 13909,
+   "with_real_buy": 95,
+   "with_pull": 0,
+   "first_pull_full": 0,
+   "with_outsider_buy": 140,
+   "outsider_reactions": 0,
+   "launch_txs": 13951,
+   "launch_wallets": 127,
+   "tok_families": 1,
+   "lc_families": 23
+  },
+  "v3": {
+   "pools": 2102,
+   "quote_pairs": 0,
+   "by_quote": {
+    "WETH": 2102
+   },
+   "with_events": 2102,
+   "with_liquidity": 2093,
+   "with_swaps": 1994,
+   "with_real_buy": 1574,
+   "with_pull": 1331,
+   "first_pull_full": 1330,
+   "with_outsider_buy": 590,
+   "outsider_reactions": 26,
+   "launch_txs": 2102,
+   "launch_wallets": 1508,
+   "tok_families": 101,
+   "lc_families": 65
+  },
+  "v4": {
+   "pools": 32416,
+   "quote_pairs": 13,
+   "by_quote": {
+    "ETH": 22524,
+    "USDG": 6792,
+    "WETH": 2869,
+    "USDG2": 231
+   },
+   "with_events": 32416,
+   "with_liquidity": 31831,
+   "with_swaps": 22283,
+   "with_real_buy": 12249,
+   "with_pull": 7203,
+   "first_pull_full": 6985,
+   "with_outsider_buy": 2862,
+   "outsider_reactions": 703,
+   "launch_txs": 27946,
+   "launch_wallets": 11971,
+   "tok_families": 854,
+   "lc_families": 920
+  }
+ }
+}

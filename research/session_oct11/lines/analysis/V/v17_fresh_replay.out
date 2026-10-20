@@ -1,0 +1,20 @@
+0x9bcc546e7c launch 85887344 age 86403 swaps 114 bot trigger +61 pull +None (trig+None) trade T+2/H60 0.02849262046325411
+0x5ada5a1446 launch 85924979 age 48768 swaps 155 bot trigger +113 pull +None (trig+None) trade T+2/H60 -0.0015416740136470993
+0xdf4e483fc0 launch 85930218 age 43529 swaps 68 bot trigger +105 pull +1537 (trig+1432) trade T+2/H60 0.1530751143755905
+0xbc29e64bbc launch 85932148 age 41599 swaps 186 bot trigger +79 pull +None (trig+None) trade T+2/H60 -0.0014974107641379615
+0x85bc277ff0 launch 85936965 age 36782 swaps 177 bot trigger +41 pull +None (trig+None) trade T+2/H60 0.0064630293412085895
+0xd73b2c0fc1 launch 85940860 age 32887 swaps 9 bot trigger +100 pull +293 (trig+193) trade T+2/H60 -0.0014575522297088236
+0x7e9e5906d9 launch 85941415 age 32332 swaps 13 bot trigger +83 pull +361 (trig+278) trade T+2/H60 0.03456855873820548
+0xfd22e2758d launch 85942135 age 31612 swaps 35 bot trigger +66 pull +1460 (trig+1394) trade T+2/H60 0.02245724799934704
+0x0dc552bc1d launch 85945350 age 28397 swaps 10 bot trigger +110 pull +330 (trig+220) trade T+2/H60 -0.0015416736397657201
+0xf470c405da launch 85946012 age 27735 swaps 50 bot trigger +66 pull +2004 (trig+1938) trade T+2/H60 0.00018853404721479714
+0x7d64b2b8ed launch 85948531 age 25216 swaps 83 bot trigger +74 pull +None (trig+None) trade T+2/H60 -0.0015416743328391684
+0xc6662ef9f8 launch 85957352 age 16395 swaps 4 bot trigger +None pull +231 (trig+None) trade T+2/H60 None
+0x3c5661913b launch 85958289 age 15458 swaps 6 bot trigger +132 pull +373 (trig+241) trade T+2/H60 -0.001541673825806065
+0x03e22aaf4b launch 85959212 age 14535 swaps 164 bot trigger +35 pull +None (trig+None) trade T+2/H60 0.019638730301899797
+0x087a928e57 launch 85960342 age 13405 swaps 7 bot trigger +86 pull +224 (trig+138) trade T+2/H60 0.025455207032976004
+0x8cfc164076 launch 85968663 age 5084 swaps 103 bot trigger +77 pull +2707 (trig+2630) trade T+2/H60 -0.001541673658083651
+0xb128d40a9d launch 85971680 age 2067 swaps 7 bot trigger +56 pull +240 (trig+184) trade T+2/H60 0.019037682124474282
+0xd1d9991f40 launch 85972336 age 1411 swaps 64 bot trigger +64 pull +None (trig+None) trade T+2/H60 0.009355910183252039
+fresh: 18 launches, 17 triggered, traded 17: mean +0.0181 med +0.0065 win 10/17 lost 0
+{'posts': 37, 'items': 289, 'r429': 1}

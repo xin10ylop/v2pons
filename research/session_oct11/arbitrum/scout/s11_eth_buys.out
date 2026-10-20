@@ -1,0 +1,8 @@
+Chainlink ETH/USD: 2532.8522
+quote-paired v4 pools (7d): 104 in 24h: 11
+quote-paired pools with >=1 buy: 6 / 104  total swaps: 25  total buys: 10
+
+90%-fee launches (fee 900000/901000) 7d: 474
+  side types: [(('tok', 'tok'), 473), (('tok', 'USDT'), 1)]
+  swaps in first 6 of those pools (launch+3000): 0
+requests 111 non-ok []

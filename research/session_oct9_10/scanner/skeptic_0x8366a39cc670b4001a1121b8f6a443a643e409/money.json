@@ -1,0 +1,136 @@
+{
+ "sweeps": [
+  {
+   "pid": "0x7a930cad0fc101976d9807149028c8ff6efe742c92ff165212acba1762ed9e6b",
+   "dep": "0x6ec9cfc58a26c9c6f125926759c5c12a7d342cc1",
+   "after_pull": [
+    [
+     0,
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+     0.0,
+     "dd46508f",
+     7
+    ]
+   ]
+  },
+  {
+   "pid": "0x9526fc0ac3a1e31fa30849a4f316caa061b5ef22f725641e99b7a33c886ed26e",
+   "dep": "0x8d527d9f80489222d29876ed2ae45a0c392c7f73",
+   "after_pull": [
+    [
+     0,
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+     0.0,
+     "dd46508f",
+     7
+    ]
+   ]
+  },
+  {
+   "pid": "0x92b826689d9f6f53548d2febfcfcbf19584c48e310995c56ace35cae3064e7e0",
+   "dep": "0x07b1886745ee961600cc2a16f951c4ae632c75d5",
+   "after_pull": [
+    [
+     0,
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+     0.0,
+     "dd46508f",
+     7
+    ]
+   ]
+  },
+  {
+   "pid": "0x23df5393add2c88a29df7d5fba3004ab2bdc5e8bfa8776785fc3a2e32abce3dc",
+   "dep": "0x061048f3f519e69720dd1a8893effc2c3197ef6d",
+   "after_pull": [
+    [
+     0,
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+     0.0,
+     "dd46508f",
+     7
+    ]
+   ]
+  },
+  {
+   "pid": "0x6858163acf240aa8e990593b5c1d56e93cf75d677a357250085c9771148cca01",
+   "dep": "0xaa209a4765793f1dfedc5837f4fa678bd6284512",
+   "after_pull": [
+    [
+     0,
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+     0.0,
+     "dd46508f",
+     7
+    ]
+   ]
+  },
+  {
+   "pid": "0x405fc32aa172947ea201605d029ad4dc818a75bbaa28a711c245623436557200",
+   "dep": "0xcfd35f7af57bf8c286f7a4af58e9889876ade8e8",
+   "after_pull": [
+    [
+     0,
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+     0.0,
+     "dd46508f",
+     7
+    ]
+   ]
+  }
+ ],
+ "funding": [
+  {
+   "dep": "0x6ec9cfc58a26c9c6f125926759c5c12a7d342cc1",
+   "token_mint_block": 85205352,
+   "mint_from": "0x6ec9cfc58a26c9c6f125926759c5c12a7d342cc1",
+   "funding": [
+    [
+     -108,
+     "0x4755014160c7ae63cb23b2bc0833d8a3e48e707e",
+     8.078853471968717,
+     ""
+    ]
+   ]
+  },
+  {
+   "dep": "0x8d527d9f80489222d29876ed2ae45a0c392c7f73",
+   "token_mint_block": 85210861,
+   "mint_from": "0x8d527d9f80489222d29876ed2ae45a0c392c7f73",
+   "funding": [
+    [
+     -105,
+     "0xa477fe4c2dd3514174ba6673e9b7b6b180a42555",
+     6.199709554693245,
+     ""
+    ]
+   ]
+  },
+  {
+   "dep": "0x07b1886745ee961600cc2a16f951c4ae632c75d5",
+   "token_mint_block": 85216533,
+   "mint_from": "0x07b1886745ee961600cc2a16f951c4ae632c75d5",
+   "funding": [
+    [
+     -107,
+     "0x5f56ba7f2f21dc6cc38b4a1e201c57cb2c534f78",
+     8.907830778638365,
+     ""
+    ]
+   ]
+  },
+  {
+   "dep": "0x061048f3f519e69720dd1a8893effc2c3197ef6d",
+   "token_mint_block": 85222322,
+   "mint_from": "0x061048f3f519e69720dd1a8893effc2c3197ef6d",
+   "funding": [
+    [
+     -99,
+     "0x60c43dbdbcb94684fbad598b65530a8500859da4",
+     3.1104346306499764,
+     ""
+    ]
+   ]
+  }
+ ]
+}

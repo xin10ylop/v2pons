@@ -1,0 +1,51 @@
+hook flags: Counter({'BS+AS+BS_RD+AS_RD': 42})
+
+swap actors in +400:
+   ('0x75379d5d:0x3593564c', 'buy') swaps 1825 pools 41 wallets 119 first offset p10/50/90 44 45 52
+   ('0x75379d5d:0x3593564c', 'sell') swaps 262 pools 40 wallets 32 first offset p10/50/90 182 187 194
+   ('0x88767899:0x3593564c', 'buy') swaps 18 pools 18 wallets 1 first offset p10/50/90 85 111 220
+   ('0xa238604a:0x3593564c', 'buy') swaps 14 pools 1 wallets 14 first offset p10/50/90 16 16 16
+
+per pool:
+10-12 05:26:38 L 86427168 from 0x95d44d08 n 3 sqrtP 8.8458e+32  T 51  op buys (txs known) 44  pull 12874  swaps 358  non-operator []
+10-12 05:34:41 L 86431832 from 0xc5a313b5 n 3 sqrtP 1.0216e+33  T 307  op buys (txs known) 83  pull 305910  swaps 2757  non-operator []
+10-12 14:41:23 L 86751496 from 0x3cd9f664 n 3 sqrtP 1.0216e+33  T 53  op buys (txs known) 157  pull 277099  swaps 2659  non-operator [(98, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-12 15:23:17 L 86776168 from 0x810ae8b7 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 29  pull 1180  swaps 35  non-operator [(111, 'B', 5.9e-05, '0x88767899:0x3593564c')]
+10-12 15:32:18 L 86781494 from 0x43e26e78 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 47  pull 5378  swaps 368  non-operator []
+10-12 15:42:19 L 86787397 from 0xdea70b94 n 3 sqrtP 1.0216e+33  T 47  op buys (txs known) 43  pull 13326  swaps 403  non-operator []
+10-12 16:26:51 L 86813646 from 0x54b751f9 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 40  pull 13023  swaps 342  non-operator []
+10-12 17:10:54 L 86839569 from 0x7bf6cf01 n 3 sqrtP 1.0216e+33  T 44  op buys (txs known) 44  pull 12796  swaps 349  non-operator []
+10-12 17:54:57 L 86865273 from 0xf2b69736 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 44  pull 13042  swaps 351  non-operator [(91, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-12 18:39:01 L 86891234 from 0xb9f7b9a2 n 3 sqrtP 1.0216e+33  T 47  op buys (txs known) 43  pull 13025  swaps 350  non-operator []
+10-12 19:23:04 L 86917194 from 0x94ccb955 n 3 sqrtP 1.0216e+33  T 46  op buys (txs known) 43  pull 13136  swaps 354  non-operator [(132, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 00:08:43 L 87082799 from 0x5c2bcfdf n 5 sqrtP 1.0216e+33  T 54  op buys (txs known) 44  pull 12870  swaps 351  non-operator []
+10-13 01:15:36 L 87121505 from 0xdfa36ccf n 3 sqrtP 1.0216e+33  T 52  op buys (txs known) 37  pull 12815  swaps 353  non-operator []
+10-13 01:59:55 L 87147212 from 0xa9ed33e3 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 42  pull 12781  swaps 350  non-operator [(94, 'B', 6.1e-05, '0x88767899:0x3593564c')]
+10-13 05:01:28 L 87251989 from 0x0871d2c4 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 42  pull 13391  swaps 352  non-operator []
+10-13 05:32:04 L 87269634 from 0x1519d195 n 3 sqrtP 1.0216e+33  T 43  op buys (txs known) 43  pull 217529  swaps 1416  non-operator []
+10-13 10:33:33 L 87444402 from 0x4dc7b777 n 3 sqrtP 1.0216e+33  T 43  op buys (txs known) 41  pull 48599  swaps 354  non-operator []
+10-13 11:57:54 L 87493545 from 0x79a0091b n 3 sqrtP 1.0216e+33  T 51  op buys (txs known) 45  pull 13143  swaps 345  non-operator [(96, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 13:56:40 L 87564250 from 0x13b247db n 4 sqrtP 1.0216e+33  T 53  op buys (txs known) 36  pull 40450  swaps 343  non-operator [(99, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 15:21:20 L 87614789 from 0x12e96321 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 37  pull 2668  swaps 198  non-operator [(98, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 15:27:06 L 87618233 from 0x1e427521 n 3 sqrtP 1.0216e+33  T 44  op buys (txs known) 44  pull 509148  swaps 345  non-operator []
+10-13 15:59:15 L 87637396 from 0x8b43ed5c n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 43  pull 13880  swaps 344  non-operator []
+10-13 16:43:02 L 87663475 from 0x961c54ce n 3 sqrtP 1.0216e+33  T 46  op buys (txs known) 37  pull 13809  swaps 347  non-operator [(97, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 17:26:43 L 87689393 from 0x67ccb2dc n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 36  pull 13760  swaps 346  non-operator [(130, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 18:10:26 L 87715301 from 0xfbb1a352 n 3 sqrtP 1.0216e+33  T 46  op buys (txs known) 38  pull 13880  swaps 349  non-operator []
+10-13 18:54:10 L 87741341 from 0x428d99f9 n 3 sqrtP 1.0216e+33  T 44  op buys (txs known) 45  pull 13895  swaps 358  non-operator [(235, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 19:38:04 L 87767500 from 0xac9eaf85 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 39  pull 13888  swaps 352  non-operator [(143, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 20:21:52 L 87793546 from 0x37dd47d6 n 3 sqrtP 1.0216e+33  T 41  op buys (txs known) 43  pull 13776  swaps 351  non-operator [(134, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 21:05:38 L 87819461 from 0xba40a0c4 n 3 sqrtP 1.0216e+33  T 46  op buys (txs known) 36  pull 13788  swaps 349  non-operator [(220, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 21:49:31 L 87845503 from 0x08043ecf n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 36  pull 13844  swaps 345  non-operator []
+10-13 22:33:22 L 87871531 from 0x4090e0a3 n 3 sqrtP 1.0216e+33  T 46  op buys (txs known) 45  pull 13799  swaps 352  non-operator [(82, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-13 23:17:17 L 87897573 from 0x6cf91f42 n 3 sqrtP 1.0216e+33  T 44  op buys (txs known) 45  pull 13671  swaps 351  non-operator []
+10-14 00:00:53 L 87923070 from 0xb6f7cec2 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 37  pull 13791  swaps 352  non-operator [(147, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-14 00:44:25 L 87948834 from 0xf6b48fef n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 40  pull 13767  swaps 352  non-operator [(113, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-14 01:27:57 L 87974594 from 0x7c70505b n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 39  pull 13761  swaps 348  non-operator []
+10-14 02:11:29 L 88000215 from 0x365a2ad3 n 3 sqrtP 1.0216e+33  T 43  op buys (txs known) 36  pull 13637  swaps 346  non-operator [(85, 'B', 6e-05, '0x88767899:0x3593564c')]
+10-14 02:55:02 L 88025696 from 0xce79c254 n 3 sqrtP 1.0216e+33  T 46  op buys (txs known) 37  pull 13721  swaps 353  non-operator []
+10-14 03:38:37 L 88051354 from 0x1c72a314 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 45  pull 13748  swaps 350  non-operator []
+10-14 03:40:27 L 88052441 from 0x38c3a410 n 3 sqrtP 1.4338e+33  T None  op buys (txs known) 0  pull 7937  swaps 169  non-operator [(16, 'B', 0.25, '0xa238604a:0x3593564c'), (45, 'B', 1.03, '0xa238604a:0x3593564c'), (72, 'B', 1.0, '0xa238604a:0x3593564c'), (102, 'B', 0.0055, '0xa238604a:0x3593564c')]
+10-14 04:22:10 L 88077093 from 0x181de2c1 n 3 sqrtP 1.0216e+33  T 45  op buys (txs known) 42  pull 13793  swaps 348  non-operator []
+10-14 05:06:00 L 88103024 from 0xb77a8e5c n 3 sqrtP 1.0216e+33  T 46  op buys (txs known) 36  pull 17088  swaps 349  non-operator []
+10-14 05:23:54 L 88113668 from 0x35fb8c9d n 3 sqrtP 1.0216e+33  T 44  op buys (txs known) 42  pull None  swaps 2445  non-operator []

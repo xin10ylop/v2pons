@@ -1,0 +1,101 @@
+pools with complete blocks: discovery 94/94, held out 118/118
+bot buyer wallets seen 177 launchers 491
+
+DISCOVERY: keys present in T-4..T-1 in >= 8% of 94 pools, by enrichment of the best lead over the background per-block rate
+key                                                        pools at d=1..4    any1-4    bg/blk bestd  enrich inT<bot
+fc:other>0xf533b2c4 0x3593564c                             [2, 1, 4, 3]           10    0.0058     3    7.38       0
+to:0xf533b2c4 0x3593564c                                   [2, 1, 4, 3]           10    0.0058     3    7.38       0
+fc:other>0x581e04e1 0xdbb80a68                             [2, 3, 1, 2]            8    0.0079     2    4.06       0
+to:0x581e04e1 0xdbb80a68                                   [2, 3, 1, 2]            8    0.0079     2    4.06       0
+fc:other>0xc8914bbb 0xae7e8d81                             [2, 3, 0, 4]            9    0.0136     4    3.12       1
+to:0xc8914bbb 0xae7e8d81                                   [2, 3, 0, 4]            9    0.0136     4    3.12       1
+fc:other>0x520ed467 0xb2460c48                             [5, 7, 2, 2]           12    0.0267     2    2.79       2
+to:0x520ed467 0xb2460c48                                   [5, 7, 2, 2]           12    0.0267     2    2.79       2
+fc:botbuyer>0x00000000 0x87517c45                          [1, 2, 3, 2]            8    0.0120     3    2.65       1
+fc:other>0x97f12df3 0xa9059cbb                             [2, 2, 3, 1]            8    0.0131     3    2.44       1
+to:0x97f12df3 0xa9059cbb                                   [2, 2, 3, 1]            8    0.0131     3    2.44       1
+fc:other>0x00000000 0x765e827f                             [3, 5, 1, 3]           11    0.0225     2    2.36       0
+to:0x00000000 0x765e827f                                   [3, 5, 1, 3]           11    0.0225     2    2.36       0
+fc:other>0x30a88bf8 0x00070000                             [5, 8, 11, 4]          22    0.0498     3    2.35       8
+to:0x30a88bf8 0x00070000                                   [5, 8, 11, 4]          22    0.0498     3    2.35       8
+fc:other>0x998b2f00 0x92057d6b                             [4, 5, 1, 5]           15    0.0230     2    2.31       1
+to:0x998b2f00 0x92057d6b                                   [4, 5, 1, 5]           15    0.0230     2    2.31       1
+fc:launcher_other                                          [5, 1, 1, 2]            9    0.0241     1    2.21       1
+fc:botbuyer>0x1cbaf24d 0xc1120e3d                          [4, 6, 4, 4]           17    0.0320     2    2.00       3
+to:0x1cbaf24d 0xc1120e3d                                   [4, 6, 4, 4]           17    0.0320     2    2.00       3
+to:0x88767899 0x24856bc3                                   [2, 6, 1, 1]           10    0.0320     2    2.00       1
+to:0x00000000 0x87517c45                                   [3, 6, 3, 3]           14    0.0325     2    1.97       2
+fc:other>0x055de4ce 0x7169b574                             [6, 5, 3, 1]           12    0.0335     1    1.90       0
+to:0x055de4ce 0x7169b574                                   [6, 5, 3, 1]           12    0.0335     1    1.90       0
+fc:botbuyer                                                [8, 14, 9, 6]          30    0.0807     2    1.85       7
+rel:from_any_botbuyer                                      [8, 14, 9, 6]          30    0.0807     2    1.85       7
+fc:botbuyer>0x88767899 0x24856bc3                          [2, 4, 1, 1]            8    0.0236     2    1.81       1
+fc:other>0xd6d35b56 0xe6cb474f                             [4, 4, 9, 5]           20    0.0534     3    1.79       4
+to:0xd6d35b56 0xe6cb474f                                   [4, 4, 9, 5]           20    0.0534     3    1.79       4
+rel:to_botrouter_any                                       [6, 7, 5, 5]           21    0.0419     2    1.78       3
+
+keys with zero background and any hit in T-4..T-1: [('fc:0x7ae81404>0xd34f35d5 0x095ea7b3', 1), ('fc:botbuyer>0x50372600 0x095ea7b3', 1), ('fc:botbuyer>0x62dac33f 0x', 1), ('fc:botbuyer>0x91afcc3c 0x095ea7b3', 1), ('fc:botbuyer>0xd6d76d92 0x095ea7b3', 1), ('fc:launcher_other>0x30d4735a 0x095ea7b3', 1), ('fc:launcher_other>0xb8bf91c1 0x095ea7b3', 1), ('fc:other>0x02ae83ee 0xff214647', 1), ('fc:other>0x034c412c 0x095ea7b3', 1), ('fc:other>0x0440e61b 0x', 3), ('fc:other>0x0611c04d 0x', 1), ('fc:other>0x06b39822 0x0c89e77a', 1), ('fc:other>0x076b3601 0xd3e9dbb9', 1), ('fc:other>0x083a5da9 0x', 1), ('fc:other>0x087655a7 0x', 1), ('fc:other>0x08e96f71 0x095ea7b3', 1), ('fc:other>0x091f0c7e 0x7acb7757', 1), ('fc:other>0x09378534 0x', 1), ('fc:other>0x096a4eb6 0x', 1), ('fc:other>0x09cbc918 0xd5678679', 1)]
+
+candidates frozen from discovery: ['to:0xf533b2c4 0x3593564c', 'to:0x581e04e1 0xdbb80a68', 'fc:other>0xc8914bbb 0xae7e8d81', 'rel:to_botrouter_any', 'rel:from_any_botbuyer']
+
+FIRST-FIRE RULE (our buy lands e+lat; in time = T-1..T); discovery vs held out
+to:0xf533b2c4 0x3593564c                 arm L+15 lat 1 | disc in-time   2 early  13 none/late  79 (13.3% of fires) | held in-time   1 early  16 none/late 101 (5.9% of fires)
+to:0xf533b2c4 0x3593564c                 arm L+15 lat 2 | disc in-time   2 early  12 none/late  80 (14.3% of fires) | held in-time   2 early  15 none/late 101 (11.8% of fires)
+to:0xf533b2c4 0x3593564c                 arm L+25 lat 1 | disc in-time   2 early  11 none/late  81 (15.4% of fires) | held in-time   1 early  11 none/late 106 (8.3% of fires)
+to:0xf533b2c4 0x3593564c                 arm L+25 lat 2 | disc in-time   2 early  10 none/late  82 (16.7% of fires) | held in-time   2 early  10 none/late 106 (16.7% of fires)
+to:0x581e04e1 0xdbb80a68                 arm L+15 lat 1 | disc in-time   5 early  18 none/late  71 (21.7% of fires) | held in-time   1 early  27 none/late  90 (3.6% of fires)
+to:0x581e04e1 0xdbb80a68                 arm L+15 lat 2 | disc in-time   4 early  17 none/late  73 (19.0% of fires) | held in-time   1 early  27 none/late  90 (3.6% of fires)
+to:0x581e04e1 0xdbb80a68                 arm L+25 lat 1 | disc in-time   2 early   7 none/late  85 (22.2% of fires) | held in-time   2 early  20 none/late  96 (9.1% of fires)
+to:0x581e04e1 0xdbb80a68                 arm L+25 lat 2 | disc in-time   3 early   6 none/late  85 (33.3% of fires) | held in-time   1 early  20 none/late  97 (4.8% of fires)
+fc:other>0xc8914bbb 0xae7e8d81           arm L+15 lat 1 | disc in-time   5 early  30 none/late  59 (14.3% of fires) | held in-time   2 early  46 none/late  70 (4.2% of fires)
+fc:other>0xc8914bbb 0xae7e8d81           arm L+15 lat 2 | disc in-time   3 early  30 none/late  61 (9.1% of fires) | held in-time   2 early  45 none/late  71 (4.3% of fires)
+fc:other>0xc8914bbb 0xae7e8d81           arm L+25 lat 1 | disc in-time   5 early  19 none/late  70 (20.8% of fires) | held in-time   2 early  26 none/late  90 (7.1% of fires)
+fc:other>0xc8914bbb 0xae7e8d81           arm L+25 lat 2 | disc in-time   3 early  19 none/late  72 (13.6% of fires) | held in-time   2 early  25 none/late  91 (7.4% of fires)
+rel:to_botrouter_any                     arm L+15 lat 1 | disc in-time   5 early  56 none/late  33 (8.2% of fires) | held in-time   2 early  79 none/late  37 (2.5% of fires)
+rel:to_botrouter_any                     arm L+15 lat 2 | disc in-time   3 early  55 none/late  36 (5.2% of fires) | held in-time   3 early  77 none/late  38 (3.8% of fires)
+rel:to_botrouter_any                     arm L+25 lat 1 | disc in-time   5 early  40 none/late  49 (11.1% of fires) | held in-time   2 early  66 none/late  50 (2.9% of fires)
+rel:to_botrouter_any                     arm L+25 lat 2 | disc in-time   3 early  39 none/late  52 (7.1% of fires) | held in-time   3 early  64 none/late  51 (4.5% of fires)
+rel:from_any_botbuyer                    arm L+15 lat 1 | disc in-time   2 early  59 none/late  33 (3.3% of fires) | held in-time   3 early  75 none/late  40 (3.8% of fires)
+rel:from_any_botbuyer                    arm L+15 lat 2 | disc in-time   0 early  59 none/late  35 (0.0% of fires) | held in-time   3 early  74 none/late  41 (3.9% of fires)
+rel:from_any_botbuyer                    arm L+25 lat 1 | disc in-time   3 early  45 none/late  46 (6.2% of fires) | held in-time   3 early  66 none/late  49 (4.3% of fires)
+rel:from_any_botbuyer                    arm L+25 lat 2 | disc in-time   4 early  44 none/late  46 (8.3% of fires) | held in-time   6 early  62 none/late  50 (8.8% of fires)
+rel:mentions_token                       arm L+15 lat 1 | disc in-time   0 early   2 none/late  92 (0.0% of fires) | held in-time   0 early   3 none/late 115 (0.0% of fires)
+rel:mentions_token                       arm L+15 lat 2 | disc in-time   0 early   2 none/late  92 (0.0% of fires) | held in-time   0 early   3 none/late 115 (0.0% of fires)
+rel:mentions_token                       arm L+25 lat 1 | disc in-time   0 early   0 none/late  94 (0.0% of fires) | held in-time   0 early   0 none/late 118 (0.0% of fires)
+rel:mentions_token                       arm L+25 lat 2 | disc in-time   0 early   0 none/late  94 (0.0% of fires) | held in-time   0 early   0 none/late 118 (0.0% of fires)
+rel:mentions_Tbuyer                      arm L+15 lat 1 | disc in-time   0 early   0 none/late  94 (0.0% of fires) | held in-time   0 early   0 none/late 118 (0.0% of fires)
+rel:mentions_Tbuyer                      arm L+15 lat 2 | disc in-time   0 early   0 none/late  94 (0.0% of fires) | held in-time   0 early   0 none/late 118 (0.0% of fires)
+rel:mentions_Tbuyer                      arm L+25 lat 1 | disc in-time   0 early   0 none/late  94 (0.0% of fires) | held in-time   0 early   0 none/late 118 (0.0% of fires)
+rel:mentions_Tbuyer                      arm L+25 lat 2 | disc in-time   0 early   0 none/late  94 (0.0% of fires) | held in-time   0 early   0 none/late 118 (0.0% of fires)
+fc:launcher                              arm L+15 lat 1 | disc in-time   0 early   1 none/late  93 (0.0% of fires) | held in-time   0 early   2 none/late 116 (0.0% of fires)
+fc:launcher                              arm L+15 lat 2 | disc in-time   0 early   1 none/late  93 (0.0% of fires) | held in-time   0 early   2 none/late 116 (0.0% of fires)
+fc:launcher                              arm L+25 lat 1 | disc in-time   0 early   0 none/late  94 (0.0% of fires) | held in-time   0 early   0 none/late 118 (0.0% of fires)
+fc:launcher                              arm L+25 lat 2 | disc in-time   0 early   0 none/late  94 (0.0% of fires) | held in-time   0 early   0 none/late 118 (0.0% of fires)
+
+HELD OUT profile of the same keys (pools at d=1..4, any, bg/blk):
+  to:0xf533b2c4 0x3593564c                           [0, 1, 1, 1] 3 0.0057
+  to:0x581e04e1 0xdbb80a68                           [1, 1, 0, 2] 4 0.0096
+  fc:other>0xc8914bbb 0xae7e8d81                     [1, 1, 1, 2] 5 0.0154
+  rel:to_botrouter_any                               [4, 6, 3, 8] 21 0.0436
+  rel:from_any_botbuyer                              [5, 9, 9, 10] 29 0.0775
+  rel:mentions_token                                 [0, 0, 0, 0] 0 0.0025
+  rel:mentions_Tbuyer                                [0, 0, 0, 0] 0 0.0000
+  fc:launcher                                        [0, 0, 0, 0] 0 0.0007
+
+A-PRIORI KEYS, discovery | held out: pools with the key in block T-d (d=1..4), any of T-4..T-1, background per block L+15..T-5, in block T ahead of the bot
+  to:0x1cbaf24d 0xc1120e3d     disc [4, 6, 4, 4]     any  17/94 bg 0.0320 T<bot   3 | held [3, 4, 2, 6]     any  15/118 bg 0.0346
+  rel:to_botrouter_any         disc [6, 7, 5, 5]     any  21/94 bg 0.0419 T<bot   3 | held [4, 6, 3, 8]     any  21/118 bg 0.0436
+  rel:from_any_botbuyer        disc [8, 14, 9, 6]    any  30/94 bg 0.0807 T<bot   7 | held [5, 9, 9, 10]    any  29/118 bg 0.0775
+  fc:botbuyer                  disc [8, 14, 9, 6]    any  30/94 bg 0.0807 T<bot   7 | held [5, 9, 9, 10]    any  29/118 bg 0.0775
+  fc:Tbuyer                    disc [0, 0, 0, 0]     any   0/94 bg 0.0000 T<bot   0 | held [0, 0, 0, 0]     any   0/118 bg 0.0000
+  fc:launcher                  disc [0, 0, 0, 0]     any   0/94 bg 0.0005 T<bot   0 | held [0, 0, 0, 0]     any   0/118 bg 0.0007
+  fc:launcher_other            disc [5, 1, 1, 2]     any   9/94 bg 0.0241 T<bot   1 | held [1, 0, 3, 1]     any   4/118 bg 0.0211
+  rel:mentions_token           disc [0, 0, 0, 0]     any   0/94 bg 0.0010 T<bot   1 | held [0, 0, 0, 0]     any   0/118 bg 0.0025
+  rel:mentions_Tbuyer          disc [0, 0, 0, 0]     any   0/94 bg 0.0000 T<bot   0 | held [0, 0, 0, 0]     any   0/118 bg 0.0000
+  rel:to_token                 disc [0, 0, 0, 0]     any   0/94 bg 0.0010 T<bot   0 | held [0, 0, 0, 0]     any   0/118 bg 0.0025
+  rel:to_Tbuyer                disc [0, 0, 0, 0]     any   0/94 bg 0.0000 T<bot   0 | held [0, 0, 0, 0]     any   0/118 bg 0.0000
+  rel:to_Tbuyer_value          disc [0, 0, 0, 0]     any   0/94 bg 0.0000 T<bot   0 | held [0, 0, 0, 0]     any   0/118 bg 0.0000
+  fc:0xe71a69f4                disc [0, 0, 1, 0]     any   1/94 bg 0.0058 T<bot   0 | held [0, 0, 0, 1]     any   1/118 bg 0.0061
+  fc:0x7ae81404                disc [0, 0, 1, 1]     any   2/94 bg 0.0183 T<bot   1 | held [2, 0, 2, 2]     any   4/118 bg 0.0221
+  fc:0xb8c879dc                disc [0, 0, 0, 0]     any   0/94 bg 0.0000 T<bot   0 | held [3, 3, 3, 1]     any   4/118 bg 0.0278
+  fc:0xed165972                disc [0, 0, 0, 0]     any   0/94 bg 0.0000 T<bot   0 | held [0, 0, 0, 0]     any   0/118 bg 0.0014

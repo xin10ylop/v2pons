@@ -1,0 +1,17 @@
+   blocks 250/3028
+   blocks 500/3028
+   blocks 750/3028
+   blocks 1000/3028
+   blocks 1250/3028
+   blocks 1500/3028
+   blocks 1750/3028
+   blocks 2000/3028
+   blocks 2250/3028
+   blocks 2500/3028
+   blocks 2750/3028
+   blocks 3000/3028
+   blocks 3028/3028
+cur: n 91; T - L seconds (sub-second from the block's position in its second) p10/25/50/75/90 [2.6, 3.3, 3.93, 4.9, 5.5] min 1.89 max 5.7
+   histogram (0.5 s bins): [(2.0, 3), (2.5, 10), (3.0, 8), (3.5, 18), (4.0, 14), (4.5, 10), (5.0, 12), (5.5, 16)]
+   best fixed T - L in seconds within +-0.1 s (about +-1 block): 10 of 91 at 5.45 s
+   integer-second T - L: [(2, 9), (3, 24), (4, 26), (5, 20), (6, 12)]

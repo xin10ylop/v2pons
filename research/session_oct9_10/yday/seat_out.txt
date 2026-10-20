@@ -1,0 +1,32 @@
+gas: buy 103861, sell 103894, sell into pulled pool 135200 (n 8/5/3); base fee median 0.0222 gwei; round trip 4.618e-06 ETH = $0.0119
+49 copy launches; traded 49; skips: {}
+  stake 0.0012 land7_fast: n 49 mean +0.0792 median +0.0820 worst -0.0047 wins 44 total +0.004660 ETH exits {'buy_reverted': 1, 'take_profit': 44, 'deadline': 4}
+  stake 0.0012 land7_slow: n 49 mean +0.0837 median +0.0861 worst -0.0047 wins 46 total +0.004919 ETH exits {'buy_reverted': 1, 'take_profit': 44, 'deadline': 4}
+  stake 0.0012 land8_fast: n 49 mean +0.0670 median +0.0812 worst -0.0047 wins 37 total +0.003938 ETH exits {'buy_reverted': 10, 'take_profit': 37, 'deadline': 2}
+  stake 0.0012 land8_slow: n 49 mean +0.0688 median +0.0814 worst -0.0043 wins 38 total +0.004046 ETH exits {'buy_reverted': 10, 'take_profit': 37, 'deadline': 2}
+  stake 0.004 land7_fast: n 49 mean +0.0819 median +0.0847 worst -0.0017 wins 44 total +0.016047 ETH exits {'buy_reverted': 1, 'take_profit': 44, 'deadline': 4}
+  stake 0.004 land7_slow: n 49 mean +0.0863 median +0.0887 worst -0.0017 wins 46 total +0.016910 ETH exits {'buy_reverted': 1, 'take_profit': 44, 'deadline': 4}
+  stake 0.004 land8_fast: n 49 mean +0.0696 median +0.0837 worst -0.0017 wins 37 total +0.013646 ETH exits {'buy_reverted': 10, 'take_profit': 37, 'deadline': 2}
+  stake 0.004 land8_slow: n 49 mean +0.0715 median +0.0841 worst -0.0016 wins 38 total +0.014005 ETH exits {'buy_reverted': 10, 'take_profit': 37, 'deadline': 2}
+  stake 0.012 land7_fast: n 49 mean +0.0824 median +0.0852 worst -0.0008 wins 44 total +0.048437 ETH exits {'buy_reverted': 1, 'take_profit': 44, 'deadline': 4}
+  stake 0.012 land7_slow: n 49 mean +0.0868 median +0.0892 worst -0.0008 wins 46 total +0.051018 ETH exits {'buy_reverted': 1, 'take_profit': 44, 'deadline': 4}
+  stake 0.012 land8_fast: n 49 mean +0.0702 median +0.0842 worst -0.0008 wins 37 total +0.041258 ETH exits {'buy_reverted': 10, 'take_profit': 37, 'deadline': 2}
+  stake 0.012 land8_slow: n 49 mean +0.0720 median +0.0846 worst -0.0008 wins 38 total +0.042330 ETH exits {'buy_reverted': 10, 'take_profit': 37, 'deadline': 2}
+  (extra: fired at L+7) stake 0.0012 land8_fast: n 48 (late at +7: 1) mean +0.0685 total +0.003943 ETH exits {'buy_reverted': 9, 'take_profit': 37, 'deadline': 2}
+  (extra: fired at L+7) stake 0.0012 land8_slow: n 48 (late at +7: 1) mean +0.0703 total +0.004051 ETH exits {'buy_reverted': 9, 'take_profit': 37, 'deadline': 2}
+  (extra: fired at L+7) stake 0.0012 land9_fast: n 48 (late at +7: 1) mean +0.0018 total +0.000106 ETH exits {'buy_reverted': 44, 'take_profit': 3, 'deadline': 1}
+  (extra: fired at L+7) stake 0.0012 land9_slow: n 48 (late at +7: 1) mean +0.0018 total +0.000106 ETH exits {'buy_reverted': 44, 'take_profit': 3, 'deadline': 1}
+  (extra: fired at L+7) stake 0.004 land8_fast: n 48 (late at +7: 1) mean +0.0711 total +0.013651 ETH exits {'buy_reverted': 9, 'take_profit': 37, 'deadline': 2}
+  (extra: fired at L+7) stake 0.004 land8_slow: n 48 (late at +7: 1) mean +0.0730 total +0.014010 ETH exits {'buy_reverted': 9, 'take_profit': 37, 'deadline': 2}
+  (extra: fired at L+7) stake 0.004 land9_fast: n 48 (late at +7: 1) mean +0.0046 total +0.000875 ETH exits {'buy_reverted': 44, 'take_profit': 3, 'deadline': 1}
+  (extra: fired at L+7) stake 0.004 land9_slow: n 48 (late at +7: 1) mean +0.0046 total +0.000875 ETH exits {'buy_reverted': 44, 'take_profit': 3, 'deadline': 1}
+  (extra: fired at L+7) stake 0.012 land8_fast: n 48 (late at +7: 1) mean +0.0716 total +0.041263 ETH exits {'buy_reverted': 9, 'take_profit': 37, 'deadline': 2}
+  (extra: fired at L+7) stake 0.012 land8_slow: n 48 (late at +7: 1) mean +0.0735 total +0.042335 ETH exits {'buy_reverted': 9, 'take_profit': 37, 'deadline': 2}
+  (extra: fired at L+7) stake 0.012 land9_fast: n 48 (late at +7: 1) mean +0.0053 total +0.003064 ETH exits {'buy_reverted': 44, 'take_profit': 3, 'deadline': 1}
+  (extra: fired at L+7) stake 0.012 land9_slow: n 48 (late at +7: 1) mean +0.0053 total +0.003064 ETH exits {'buy_reverted': 44, 'take_profit': 3, 'deadline': 1}
+  seat alone, cap 3/day, stake 0.0012 land7_slow: first 3 trades +0.000162 ETH ($+0.42)
+  seat alone, cap 3/day, stake 0.0012 land8_slow: first 3 trades +0.000070 ETH ($+0.18)
+  seat alone, cap 3/day, stake 0.004 land7_slow: first 3 trades +0.000571 ETH ($+1.47)
+  seat alone, cap 3/day, stake 0.004 land8_slow: first 3 trades +0.000266 ETH ($+0.68)
+  seat alone, cap 3/day, stake 0.012 land7_slow: first 3 trades +0.001737 ETH ($+4.47)
+  seat alone, cap 3/day, stake 0.012 land8_slow: first 3 trades +0.000825 ETH ($+2.12)

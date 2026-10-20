@@ -1,0 +1,11 @@
+V3 356-B K60 -> +260 at $5: n 111 total $648.11 | worst drawdown $-5.04 | longest losing run 16 | -100% trades 2 | 40-trade blocks: 2, losing 0, worst $62.61, median $145.17
+V3 crowd K20 -> +80 at $5: n 1046 total $392.74 | worst drawdown $-5.08 | longest losing run 33 | -100% trades 2 | 40-trade blocks: 26, losing 1, worst $-0.36, median $13.26
+V2 fleet +20 -> +80 at $5: n 603 total $99.04 | worst drawdown $-0.59 | longest losing run 12 | -100% trades 0 | 40-trade blocks: 15, losing 0, worst $4.36, median $6.49
+V2 70adce63 >= 40 ETH +150 -> +250 at $5: n 1029 total $68.73 | worst drawdown $-0.42 | longest losing run 7 | -100% trades 0 | 40-trade blocks: 25, losing 0, worst $0.31, median $2.62
+
+356-B probe: pump share 34.2% (census) vs 13.6% (after an early outside buy)
+   n 20: halt if pumped <= 2: false halt (no deterrence) 1.4% | missed deterrence 52.6%
+   n 40: halt if pumped <= 4: false halt (no deterrence) 0.0% | missed deterrence 65.2%
+   n 40: halt if pumped <= 7: false halt (no deterrence) 1.6% | missed deterrence 17.1%
+   n 40: halt if pumped <= 8: false halt (no deterrence) 3.8% | missed deterrence 8.6%
+   n 40: halt if pumped <= 9: false halt (no deterrence) 7.8% | missed deterrence 3.9%

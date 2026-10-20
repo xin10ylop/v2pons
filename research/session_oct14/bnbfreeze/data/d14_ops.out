@@ -1,0 +1,7 @@
+launch txs gas price (gwei): [(0.051, 554)] creator nonce: [(2, 554)]
+freeze wallet 0x623e7c23c7c228095f94d9bd567eae55cb87a966 freezes 354 first block 126958690 last 127511607 nonce now 66456
+freeze wallet 0xa70b3f34e3ca7d4665b794ce6bb29168b1d2e40d freezes 461 first block 126959017 last 127552324 nonce now 78773
+freeze wallet 0xbd418ce6a83995971de9f1cf9f61f345e91aeadd freezes 424 first block 126961814 last 127550560 nonce now 38812
+freeze wallet 0xd604540564b6f659de163ad928e29782185da2fd freezes 376 first block 126959279 last 127548694 nonce now 65087
+freeze txs gas price (gwei): [(0.051, 1615)]
+d10_strangers.csv rows 1798

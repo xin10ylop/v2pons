@@ -1,0 +1,9 @@
+txs wanted 26497, cached 29003, to fetch 4583
+0 {'posts': 10, 'items': 200, 'r429': 3}
+4000 {'posts': 210, 'items': 4200, 'r429': 56}
+done 4583 {'posts': 230, 'items': 4583, 'r429': 61}
+txs wanted 26484, cached 33586, to fetch 2
+0 {'posts': 1, 'items': 2, 'r429': 0}
+done 2 {'posts': 1, 'items': 2, 'r429': 0}
+txs wanted 26484, cached 33588, to fetch 0
+done 0 {'posts': 0, 'items': 0, 'r429': 0}

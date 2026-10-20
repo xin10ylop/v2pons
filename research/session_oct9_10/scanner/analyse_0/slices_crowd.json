@@ -1,0 +1,433 @@
+{
+ "fee100-2276|crowd1+1|H50": {
+  "all": {
+   "n": 203,
+   "mean": 0.11631,
+   "median": 0.05774,
+   "win": 0.6946,
+   "pulled_first": 5,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 198,
+    "pulled_first": 5
+   },
+   "usd_trade": 1.7446,
+   "trades_day": 101.5,
+   "usd_day": 177.14,
+   "p10_50_90": [
+    -0.0009,
+    0.0577,
+    0.4063
+   ],
+   "min": -1.0007,
+   "max": 1.2119
+  },
+  "by_6h": {
+   "10-08 18h": {
+    "n": 14,
+    "mean": 0.19603,
+    "median": 0.0644,
+    "win": 0.5714,
+    "pulled_first": 0
+   },
+   "10-09 00h": {
+    "n": 15,
+    "mean": 0.19582,
+    "median": 0.1777,
+    "win": 0.8,
+    "pulled_first": 0
+   },
+   "10-09 06h": {
+    "n": 16,
+    "mean": 0.01222,
+    "median": -0.00084,
+    "win": 0.3125,
+    "pulled_first": 0
+   },
+   "10-09 12h": {
+    "n": 70,
+    "mean": 0.07501,
+    "median": 0.06238,
+    "win": 0.7714,
+    "pulled_first": 3
+   },
+   "10-09 18h": {
+    "n": 37,
+    "mean": 0.10995,
+    "median": 0.07524,
+    "win": 0.7297,
+    "pulled_first": 0
+   },
+   "10-10 00h": {
+    "n": 13,
+    "mean": 0.31362,
+    "median": 0.0813,
+    "win": 0.7692,
+    "pulled_first": 0
+   },
+   "10-10 06h": {
+    "n": 7,
+    "mean": 0.44712,
+    "median": 0.38315,
+    "win": 0.8571,
+    "pulled_first": 0
+   },
+   "10-10 12h": {
+    "n": 31,
+    "mean": 0.03897,
+    "median": 0.03072,
+    "win": 0.6129,
+    "pulled_first": 2
+   }
+  }
+ },
+ "fee100-2276|crowd1+1|H100": {
+  "all": {
+   "n": 203,
+   "mean": 0.21794,
+   "median": 0.14582,
+   "win": 0.803,
+   "pulled_first": 16,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 187,
+    "pulled_first": 16
+   },
+   "usd_trade": 3.2691,
+   "trades_day": 101.5,
+   "usd_day": 331.92,
+   "p10_50_90": [
+    -0.0009,
+    0.1458,
+    0.8027
+   ],
+   "min": -1.0008,
+   "max": 3.047
+  },
+  "by_6h": {
+   "10-08 18h": {
+    "n": 14,
+    "mean": 0.28491,
+    "median": 0.3176,
+    "win": 0.7857,
+    "pulled_first": 1
+   },
+   "10-09 00h": {
+    "n": 15,
+    "mean": 0.58856,
+    "median": 0.58958,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-09 06h": {
+    "n": 16,
+    "mean": -0.05834,
+    "median": 0.00307,
+    "win": 0.5,
+    "pulled_first": 3
+   },
+   "10-09 12h": {
+    "n": 70,
+    "mean": 0.13204,
+    "median": 0.13002,
+    "win": 0.8857,
+    "pulled_first": 6
+   },
+   "10-09 18h": {
+    "n": 37,
+    "mean": 0.12569,
+    "median": 0.15214,
+    "win": 0.7027,
+    "pulled_first": 4
+   },
+   "10-10 00h": {
+    "n": 13,
+    "mean": 0.52419,
+    "median": 0.36726,
+    "win": 0.7692,
+    "pulled_first": 0
+   },
+   "10-10 06h": {
+    "n": 7,
+    "mean": 1.26075,
+    "median": 0.89409,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-10 12h": {
+    "n": 31,
+    "mean": 0.09115,
+    "median": 0.06697,
+    "win": 0.7742,
+    "pulled_first": 2
+   }
+  }
+ },
+ "pm-init-500|live+1|H200": {
+  "all": {
+   "n": 192,
+   "mean": 0.0869,
+   "median": 0.09357,
+   "win": 0.974,
+   "pulled_first": 3,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 189,
+    "pulled_first": 3
+   },
+   "usd_trade": 1.3035,
+   "trades_day": 96.0,
+   "usd_day": 125.17,
+   "p10_50_90": [
+    0.0301,
+    0.0971,
+    0.1903
+   ],
+   "min": -1.0007,
+   "max": 0.2515
+  },
+  "by_6h": {
+   "10-08 18h": {
+    "n": 34,
+    "mean": 0.10058,
+    "median": 0.08644,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-09 00h": {
+    "n": 29,
+    "mean": 0.10869,
+    "median": 0.10265,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-09 06h": {
+    "n": 27,
+    "mean": 0.06471,
+    "median": 0.09001,
+    "win": 0.963,
+    "pulled_first": 1
+   },
+   "10-09 12h": {
+    "n": 22,
+    "mean": 0.10413,
+    "median": 0.10323,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-09 18h": {
+    "n": 26,
+    "mean": 0.06876,
+    "median": 0.10527,
+    "win": 0.9615,
+    "pulled_first": 1
+   },
+   "10-10 00h": {
+    "n": 5,
+    "mean": 0.09515,
+    "median": 0.06638,
+    "win": 0.8,
+    "pulled_first": 0
+   },
+   "10-10 06h": {
+    "n": 23,
+    "mean": 0.04979,
+    "median": 0.07908,
+    "win": 0.913,
+    "pulled_first": 1
+   },
+   "10-10 12h": {
+    "n": 23,
+    "mean": 0.10033,
+    "median": 0.07879,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-10 18h": {
+    "n": 3,
+    "mean": 0.11925,
+    "median": 0.09005,
+    "win": 1.0,
+    "pulled_first": 0
+   }
+  }
+ },
+ "pm-init-500|crowd1+1|H100": {
+  "all": {
+   "n": 192,
+   "mean": 0.05992,
+   "median": 0.07351,
+   "win": 0.974,
+   "pulled_first": 4,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 188,
+    "pulled_first": 4
+   },
+   "usd_trade": 0.8988,
+   "trades_day": 96.0,
+   "usd_day": 86.31,
+   "p10_50_90": [
+    0.0235,
+    0.0735,
+    0.162
+   ],
+   "min": -1.0007,
+   "max": 0.1991
+  },
+  "by_6h": {
+   "10-08 18h": {
+    "n": 34,
+    "mean": 0.0808,
+    "median": 0.06812,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-09 00h": {
+    "n": 29,
+    "mean": 0.04964,
+    "median": 0.08596,
+    "win": 0.9655,
+    "pulled_first": 1
+   },
+   "10-09 06h": {
+    "n": 27,
+    "mean": 0.0394,
+    "median": 0.04992,
+    "win": 0.963,
+    "pulled_first": 1
+   },
+   "10-09 12h": {
+    "n": 22,
+    "mean": 0.08371,
+    "median": 0.06445,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-09 18h": {
+    "n": 26,
+    "mean": 0.08296,
+    "median": 0.07965,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-10 00h": {
+    "n": 5,
+    "mean": 0.08797,
+    "median": 0.07559,
+    "win": 0.8,
+    "pulled_first": 0
+   },
+   "10-10 06h": {
+    "n": 23,
+    "mean": -0.01621,
+    "median": 0.05923,
+    "win": 0.913,
+    "pulled_first": 2
+   },
+   "10-10 12h": {
+    "n": 23,
+    "mean": 0.08239,
+    "median": 0.06841,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-10 18h": {
+    "n": 3,
+    "mean": 0.09803,
+    "median": 0.08603,
+    "win": 1.0,
+    "pulled_first": 0
+   }
+  }
+ },
+ "pm-init-500|crowd1+1|H50": {
+  "all": {
+   "n": 192,
+   "mean": 0.03061,
+   "median": 0.02628,
+   "win": 0.9688,
+   "pulled_first": 2,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 190,
+    "pulled_first": 2
+   },
+   "usd_trade": 0.4592,
+   "trades_day": 96.0,
+   "usd_day": 44.09,
+   "p10_50_90": [
+    0.0087,
+    0.0277,
+    0.0886
+   ],
+   "min": -1.0007,
+   "max": 0.1192
+  },
+  "by_6h": {
+   "10-08 18h": {
+    "n": 34,
+    "mean": 0.03879,
+    "median": 0.02259,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-09 00h": {
+    "n": 29,
+    "mean": 0.04329,
+    "median": 0.04208,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-09 06h": {
+    "n": 27,
+    "mean": 0.00303,
+    "median": 0.02176,
+    "win": 0.9259,
+    "pulled_first": 1
+   },
+   "10-09 12h": {
+    "n": 22,
+    "mean": 0.04331,
+    "median": 0.03117,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-09 18h": {
+    "n": 26,
+    "mean": 0.04088,
+    "median": 0.03113,
+    "win": 1.0,
+    "pulled_first": 0
+   },
+   "10-10 00h": {
+    "n": 5,
+    "mean": 0.05106,
+    "median": 0.0608,
+    "win": 0.8,
+    "pulled_first": 0
+   },
+   "10-10 06h": {
+    "n": 23,
+    "mean": -0.00565,
+    "median": 0.02168,
+    "win": 0.913,
+    "pulled_first": 1
+   },
+   "10-10 12h": {
+    "n": 23,
+    "mean": 0.03968,
+    "median": 0.02444,
+    "win": 0.9565,
+    "pulled_first": 0
+   },
+   "10-10 18h": {
+    "n": 3,
+    "mean": 0.05589,
+    "median": 0.05883,
+    "win": 1.0,
+    "pulled_first": 0
+   }
+  }
+ }
+}

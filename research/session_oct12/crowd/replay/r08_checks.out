@@ -1,0 +1,40 @@
+== 1. vs REPORT_W's forward test (0.0058 ETH, before gas)
+  29 launches in both; W mean +5.191%, ours +5.191%; exit block equal in 29; |diff| < 0.01 point in 29; max |diff| 0.0000 point
+
+== 2. the engine's dry pricing vs the exact replay landing +1 (same price point), per launch
+  q 0.0058: dry - exact: mean -0.008 point, median -0.0092, |d| < 0.1 point in 262/279, dry higher by > 1 point 0, lower by > 1 point 1; send block equal 279
+     10-11 05:47:10 0xdb74b9bf dry -0.11% exact+1 +4.02% (send 78 vs 78, cap)
+     10-11 05:40:59 0xaed33d97 dry +51.29% exact+1 +50.81% (send 36 vs 36, crowd)
+     10-11 05:49:52 0x40dfaeaa dry +36.08% exact+1 +35.70% (send 35 vs 35, crowd)
+     10-11 06:17:43 0x94509f9d dry +34.85% exact+1 +34.57% (send 48 vs 48, crowd)
+     10-12 03:23:11 0x6a4e21a7 dry +197.18% exact+1 +196.93% (send 68 vs 68, crowd)
+     10-11 09:10:15 0x10e8fb75 dry +29.17% exact+1 +28.95% (send 78 vs 78, cap)
+  q 0.0012: dry - exact: mean -0.008 point, median -0.0092, |d| < 0.1 point in 262/279, dry higher by > 1 point 0, lower by > 1 point 1; send block equal 279
+     10-11 05:47:10 0xdb74b9bf dry -0.44% exact+1 +4.02% (send 78 vs 78, cap)
+     10-11 05:40:59 0xaed33d97 dry +51.10% exact+1 +50.94% (send 36 vs 36, crowd)
+     10-11 05:49:52 0x40dfaeaa dry +35.85% exact+1 +35.79% (send 35 vs 35, crowd)
+     10-11 06:17:43 0x94509f9d dry +34.61% exact+1 +34.66% (send 48 vs 48, crowd)
+     10-12 03:23:11 0x6a4e21a7 dry +197.38% exact+1 +197.47% (send 68 vs 68, crowd)
+     10-11 09:10:15 0x10e8fb75 dry +28.90% exact+1 +29.00% (send 78 vs 78, cap)
+
+== 3. the top 15 trades (0.0058|2|2, net)
+   10-12 03:02:47 0xdea91b9f net +214.34% (lands +1 +214.34%) trigger +61 0.1000 ETH, sold landing +80, crowd's 1st +61 0x7feb3ecb, pull +7059, engine dry +214.35%
+   10-12 03:23:11 0x6a4e21a7 net +196.78% (lands +1 +196.78%) trigger +50 0.2000 ETH, sold landing +70, crowd's 1st +50 0x7feb3ecb, pull +474, engine dry +197.18%
+   10-12 03:15:51 0xa2a96cac net +188.22% (lands +1   -0.12%) trigger +79 0.3000 ETH, sold landing +80, crowd's 1st +79 0x7feb3ecb, pull +1485, engine dry -0.07%
+   10-12 03:19:09 0x89211b5f net +163.66% (lands +1 +163.66%) trigger +54 0.5000 ETH, sold landing +74, crowd's 1st +54 0x7feb3ecb, pull +309, engine dry +163.67%
+   10-12 08:46:16 0x59a6ba5d net +139.05% (lands +1 +139.05%) trigger +61 0.1840 ETH, sold landing +80, crowd's 1st +61 0x80114879, pull +72941, engine dry +139.13%
+   10-12 03:20:20 0x3e706185 net +110.05% (lands +1 +110.05%) trigger +64 0.4000 ETH, sold landing +80, crowd's 1st +64 0x7feb3ecb, pull +291, engine dry +110.09%
+   10-12 08:38:59 0x9784c7de net  +89.08% (lands +1  +63.13%) trigger +55 0.0750 ETH, sold landing +75, crowd's 1st +55 0xfc7241d4, pull +760, engine dry +63.20%
+   10-11 14:50:15 0x94521718 net  +51.62% (lands +1  +51.62%) trigger +78 0.2400 ETH, sold landing +80, crowd's 1st +78 0xd26c8cfc, pull +3228, engine dry +51.69%
+   10-11 05:40:59 0xaed33d97 net  +50.66% (lands +1  +50.66%) trigger +18 0.3700 ETH, sold landing +38, crowd's 1st +18 0xd26c8cfc, pull +4233, engine dry +51.29%
+   10-11 05:49:52 0x40dfaeaa net  +35.55% (lands +1  +35.55%) trigger +17 0.0800 ETH, sold landing +37, crowd's 1st +17 0xaf9d6fa0, pull +549, engine dry +36.08%
+   10-10 16:48:58 0x58db2314 net  +35.52% (lands +1  +30.10%) trigger +61 0.2400 ETH, sold landing +80, crowd's 1st +61 0xfc7241d4, pull +551, engine dry +30.45%
+   10-11 06:17:43 0x94509f9d net  +34.42% (lands +1  +34.42%) trigger +30 0.1300 ETH, sold landing +50, crowd's 1st +30 0xaf9d6fa0, pull +13612, engine dry +34.85%
+   10-12 08:18:52 0x6d5fd4c2 net  +31.61% (lands +1  +31.61%) trigger +45 0.1050 ETH, sold landing +65, crowd's 1st +45 0xfc7241d4, pull +230, engine dry +31.67%
+   10-10 16:28:09 0x9ac35253 net  +31.23% (lands +1  +31.23%) trigger +72 0.2500 ETH, sold landing +80, crowd's 1st +72 0xfc7241d4, pull +215, engine dry +31.60%
+   10-10 12:41:27 0x4454b55b net  +29.47% (lands +1  +29.47%) trigger +4 0.6930 ETH, sold landing +24, crowd's 1st +4 0x85ce7832, pull +4795, engine dry +29.51%
+
+== 4. the box's 24 h (Oct 11 14:23 - Oct 12 14:23 UTC): what a 95-of-n subset does to the dry mean
+  n 121; dry mean +9.88%; random 95-subsets: p5 +6.91% median +10.00% p95 +12.12%; P(mean >= +12.9%) 0.000
+  the subset without the 26 flattest: +12.58%; dry > +9% in 18; the 3 biggest [163.7, 197.2, 214.4]
+  launches in the box's 24 h by 6 h: [28, 32, 27, 34]; gaps between launches under 80 blocks (the dry slot): 1

@@ -1,0 +1,19 @@
+template (1764, 'd4e7eae43daa222b'): balances slot 0, allowances slot 1 (probed on 0x52e3bf36ce4bb6f3ea3e20d7d14f92b7e8977d94)
+template (3854, 'cb79985db9ea3746'): balances slot 0, allowances slot 1 (probed on 0x98e757e81c33c60e805b1dc3961d913a08de1873)
+template (5048, '1d7cd90abaf3b135'): balances slot 0, allowances slot 1 (probed on 0x218c0f762725b894eca371be50ad139cb923e8d2)
+transfer tests (template size, test, result):
+   (1764, 'a', 'true'): 340
+   (1764, 'b', 'true'): 340
+   (1764, 'c', 'true'): 340
+   (3854, 'a', 'true'): 3
+   (3854, 'b', 'true'): 3
+   (3854, 'c', 'true'): 3
+   (5048, 'a', 'true'): 6
+   (5048, 'b', 'true'): 6
+   (5048, 'c', 'true'): 6
+failures: []
+decimals: Counter({18: 349})  supply: [(1000000000000000000000000000, 349)]
+launch wallet's balance now (tokens): [(0.0, 4), (352179089.531, 1), (765977977.56, 1), (479444844.206, 1), (618488998.085, 1), (771068403.029, 1)]
+pool's balance / supply (now): [(0.0, 345), (0.98, 1), (0.55, 1), (0.31, 1), (0.22, 1)]
+names (sample): [('Doge Guy', 'DOGU'), ('LUCY 2.5', 'LUCY'), ('Wired Protocol', 'WIRED'), ('Wired Protocol', 'WIRED'), ('Wired Protocol', 'WIRED'), ('Mysterious Inu', 'MINU'), ('Mysterious Inu', 'MINU'), ('Mysterious Inu', 'MINU'), ('Pelung', 'Pelung'), ('Mysterious Inu', 'MI'), ('Mysterious Inu', 'MI'), ('SpaceX Sexy Inu', 'SXSI')]
+{'posts': 167, 'items': 3150, 'r429': 128}

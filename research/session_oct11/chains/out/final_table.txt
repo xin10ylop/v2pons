@@ -1,0 +1,50 @@
+## base: block 2.0s, gas/swap 9.000000000000001e-07 ETH ($0.00228, sampled swap txs); all-emitter creations 13260 in 24.0h
+   aero_v2: 13.0/day (cov 24.0h) sampled 1 traded 1 in 900 blk; med first ext swap offset 7; wallets first 3 blk med(traded) 0 max 0; recurring tx.to []; top tx.from [['0x018ea3cb', 1]]
+   slipstream_f8f2: 85.0/day (cov 24.0h) sampled 20 traded 4 in 900 blk; med first ext swap offset 130; wallets first 3 blk med(traded) 0.0 max 0; recurring tx.to []; top tx.from [['0x4b5c33c3', 2], ['0xc25a0f17', 1]]
+   univ2: 532.0/day (cov 24.0h) sampled 20 traded 20 in 900 blk; med first ext swap offset 6.0; wallets first 3 blk med(traded) 0.0 max 0; recurring tx.to [['0x4752ba5d(Uniswap UniswapV2Router02)', 20]]; top tx.from [['0x90f6fe80', 7], ['0x4d7f5dcc', 7]]
+   univ3: 106.0/day (cov 24.0h) sampled 20 traded 20 in 900 blk; med first ext swap offset 4.5; wallets first 3 blk med(traded) 0.0 max 3; recurring tx.to [['0x5ff137d4(ERC-4337 EntryPoint v0.6)', 17]]; top tx.from [['0x43370368', 2], ['0x4337002c', 1]]
+   v2_02a84c1b: 1044.0/day (cov 24.0h) sampled 20 traded 0 in 900 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+   v4_clanker: 202.0/day (cov 24.0h) sampled 20 traded 14 in 900 blk; med first ext swap offset 101.5; wallets first 3 blk med(traded) 0.0 max 0; recurring tx.to [['0x6131b5fa(unlabelled)', 3]]; top tx.from [['0xdcadf221', 3], ['0xbdbebd58', 1]]
+   v4_clanker_traded: 202.0/day (cov 24.0h) sampled 9 traded 9 in 900 blk; med first ext swap offset 79; wallets first 3 blk med(traded) 0 max 0; recurring tx.to [['0x6131b5fa(unlabelled)', 3]]; top tx.from [['0xdcadf221', 3], ['0x8f999fb8', 1]]
+   v4_doppler: 591.0/day (cov 24.0h) sampled 20 traded 9 in 900 blk; med first ext swap offset 1; wallets first 3 blk med(traded) 1 max 1; recurring tx.to [['0x6ff5693b(Uniswap UniversalRouter#v2.0)', 4]]; top tx.from [['0x8fde9156', 4], ['0x4337002c', 1]]
+   v4_doppler_traded: 591.0/day (cov 24.0h) sampled 20 traded 20 in 900 blk; med first ext swap offset 1.5; wallets first 3 blk med(traded) 1.0 max 1; recurring tx.to [['0x6ff5693b(Uniswap UniversalRouter#v2.0)', 11], ['0x836b336f(unlabelled)', 3], ['0x5ff137d4(ERC-4337 EntryPoint v0.6)', 3]]; top tx.from [['0x8fde9156', 11], ['0x0dca33ff', 3]]
+   v4_hook87a4: 1859.0/day (cov 24.0h) sampled 8 traded 5 in 900 blk; med first ext swap offset 360; wallets first 3 blk med(traded) 0 max 0; recurring tx.to []; top tx.from [['0xfcad5424', 1]]
+   v4_nohook: 329.0/day (cov 24.0h) sampled 20 traded 12 in 900 blk; med first ext swap offset 38.0; wallets first 3 blk med(traded) 0.0 max 0; recurring tx.to [['0x6ff5693b(Uniswap UniversalRouter#v2.0)', 9]]; top tx.from [['0x1c89b0da', 7], ['0xf09b59fc', 7]]
+   v4_nohook_traded: 329.0/day (cov 24.0h) sampled 20 traded 20 in 900 blk; med first ext swap offset 32.0; wallets first 3 blk med(traded) 0.0 max 1; recurring tx.to [['0x6ff5693b(Uniswap UniversalRouter#v2.0)', 15]]; top tx.from [['0x1c89b0da', 13], ['0x5a909245', 13]]
+   v4_zora: 4161.0/day (cov 24.0h) sampled 20 traded 0 in 900 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+   v4_zora_traded: 4161.0/day (cov 24.0h) sampled 2 traded 2 in 900 blk; med first ext swap offset 53.0; wallets first 3 blk med(traded) 0.0 max 0; recurring tx.to []; top tx.from [['0x1278c1e4', 2], ['0x01fe004d', 1]]
+## bnb: block 0.45s, gas/swap 7.65e-06 BNB ($0.00576, sampled swap txs); no all-emitter scan
+   fourmeme: 3387.1/day (cov 1.22h) sampled 20 traded 20 in 1200 blk; med first ext swap offset 631.0; wallets first 3 blk med(traded) 0.0 max 0; recurring tx.to []; top tx.from [['0xbb51f357', 1], ['0xd4ed6b19', 1]]
+   fourmeme_traded: 3328.0/day (cov 1.22h) sampled 16 traded 16 in 1200 blk; med first ext swap offset 165.5; wallets first 3 blk med(traded) 0.0 max 30; recurring tx.to [['0xb300000b(unlabelled)', 8], ['0x5c952063(four.meme TokenManager2)', 3]]; top tx.from [['0xedd99df8', 4], ['0x9fadab91', 1]]
+   pcs_infinity_cl: 196.9/day (cov 1.22h) sampled 8 traded 1 in 1200 blk; med first ext swap offset 89; wallets first 3 blk med(traded) 0 max 0; recurring tx.to []; top tx.from [['0x9999b0cd', 1], ['0x4fe5fbb2', 1]]
+   pcs_v2: 6380.3/day (cov 1.22h) sampled 20 traded 4 in 1200 blk; med first ext swap offset 51.0; wallets first 3 blk med(traded) 0.0 max 0; recurring tx.to [['0x10ed43c7(PancakeSwap V2 Router)', 3]]; top tx.from [['0x86c91280', 1], ['0xb139a1e3', 1]]
+   pcs_v2_traded: 6025.8/day (cov 1.22h) sampled 20 traded 20 in 1200 blk; med first ext swap offset 38.5; wallets first 3 blk med(traded) 0.0 max 0; recurring tx.to [['0x10ed43c7(PancakeSwap V2 Router)', 14], ['0x07cb6161(unlabelled)', 6], ['0xa3e0e540(unlabelled)', 4]]; top tx.from [['0xad1ac09d', 2], ['0xae22e37a', 2]]
+   pcs_v3: 98.5/day (cov 1.22h) sampled 4 traded 2 in 1200 blk; med first ext swap offset 10; wallets first 3 blk med(traded) 0.0 max 0; recurring tx.to []; top tx.from [['0xd67487b8', 1], ['0x66f87d6d', 1]]
+   uni_v2: 0.0/day (cov 1.22h) sampled 0 traded 0 in 1200 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+   uni_v3: 19.7/day (cov 1.22h) sampled 1 traded 1 in 1200 blk; med first ext swap offset 219; wallets first 3 blk med(traded) 0 max 0; recurring tx.to []; top tx.from [['0x9f1b8a39', 1]]
+   uni_v4: 393.8/day (cov 1.22h) sampled 19 traded 1 in 1200 blk; med first ext swap offset 0; wallets first 3 blk med(traded) 1 max 1; recurring tx.to []; top tx.from [['0x9086719a', 1], ['0xdec409b8', 1]]
+   uni_v4_traded: 315.1/day (cov 1.22h) sampled 1 traded 1 in 1200 blk; med first ext swap offset 0; wallets first 3 blk med(traded) 1 max 1; recurring tx.to []; top tx.from [['0xa0e21cbf', 1], ['0x9086719a', 1]]
+## unichain: block 1.0s, gas/swap 9e-08 ETH ($0.00023, sampled swap txs); all-emitter creations 2 in 24.0h
+   v4_all: 2.0/day (cov 24.0h) sampled 2 traded 1 in 3600 blk; med first ext swap offset 70; wallets first 3 blk med(traded) 0 max 0; recurring tx.to []; top tx.from [['0x4bcca83c', 1]]
+## optimism: block 2.0s, gas/swap 2.76e-10 ETH ($0.0, sampled swap txs); all-emitter creations 14 in 24.0h
+   v4_all: 14.0/day (cov 24.0h) sampled 14 traded 0 in 1800 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+## ink: block 1.0s, gas/swap 3.1146345000000003e-07 ETH ($0.00079, sampled swap txs); all-emitter creations 517 in 24.0h
+   v4_nohook: 485.0/day (cov 24.0h) sampled 20 traded 1 in 3600 blk; med first ext swap offset 2696; wallets first 3 blk med(traded) 0 max 0; recurring tx.to []; top tx.from [['0xb37a8d2c', 1], ['0x5503b7cc', 1]]
+   v4_nohook_traded: 485.0/day (cov 24.0h) sampled 2 traded 2 in 3600 blk; med first ext swap offset 1348.5; wallets first 3 blk med(traded) 1.5 max 3; recurring tx.to []; top tx.from [['0xc37bafd0', 1], ['0x5503b7cc', 1]]
+   v4_sentrystock: 22.0/day (cov 24.0h) sampled 20 traded 0 in 3600 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+## soneium: block 2.0s, gas/swap 4.0800000000000004e-11 ETH ($0.0, head baseFee); all-emitter creations 2 in 24.0h
+## worldchain: block 2.0s, gas/swap 7.500000000000001e-08 ETH ($0.00019, head baseFee); all-emitter creations 0 in 6.0h
+## mode: block 2.0s, gas/swap 3.78e-11 ETH ($0.0, head baseFee); all-emitter creations 0 in 24.0h
+## megaeth: block 1.0s, gas/swap 1.5000000000000002e-07 ETH ($0.00038, head baseFee); all-emitter creations 0 in 24.0h
+   kumbaya_launchpad: 0.0/day (cov 24.0h) sampled 0 traded 0 in 3600 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+   kumbaya_v3: 0.0/day (cov 24.0h) sampled 0 traded 0 in 3600 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+   univ3: 0.0/day (cov 24.0h) sampled 0 traded 0 in 3600 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+   v4_all: 0.0/day (cov 24.0h) sampled 0 traded 0 in 3600 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+## monad: block 0.3s, gas/swap 0.015450000000000002 MON ($None, sampled swap txs); no all-emitter scan
+   nadfun_curve: 0.0/day (cov 1.0h) sampled 0 traded 0 in 600 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+   nadfun_dex_v3: 0.0/day (cov 1.0h) sampled 0 traded 0 in 600 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+   uni_v3: 0.0/day (cov 1.0h) sampled 0 traded 0 in 600 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+   uni_v4: 24.0/day (cov 1.0h) sampled 1 traded 0 in 600 blk; med first ext swap offset None; wallets first 3 blk med(traded) None max 0; recurring tx.to []; top tx.from []
+## apechain: block 1.005s, gas/swap 0.015252414000000002 APE ($None, head baseFee); all-emitter creations 0 in 24.0h
+## xai: block 1.84s, gas/swap 1.5000000000000002e-05 XAI ($None, head baseFee); all-emitter creations 0 in 24.0h
+## reya: block 0.505s, gas/swap 1.5000000000000002e-08 ? ($None, head baseFee); all-emitter creations 0 in 24.0h

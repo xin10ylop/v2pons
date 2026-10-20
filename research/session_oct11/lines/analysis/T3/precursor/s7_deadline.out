@@ -1,0 +1,5 @@
+deadline - ts(T block), seconds: [(1199, 55), (1200, 145)]
+disc: n 133 T blocks p10/25/50/75/90 [28, 31, 40, 48, 54] min 18 max 61; share within +-1 of the mode 0.13
+   T seconds after L (n 8): [(2, 1), (3, 3), (4, 2), (5, 2)]
+hold: n 67 T blocks p10/25/50/75/90 [27, 30, 39, 48, 53] min 20 max 59; share within +-1 of the mode 0.16
+   T seconds after L (n 7): [(3, 2), (4, 3), (5, 2)]

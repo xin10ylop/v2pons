@@ -1,0 +1,156 @@
+{
+ "0xcd1e2cbeda788d2c59b049b5f63810892614182e|7fde822e|804|10000|200|true": {
+  "count": 12,
+  "per_day_window": 6.0,
+  "active_span_h": 1.47,
+  "deployers": 1,
+  "first_buy_off_p10_50_90": [
+   3,
+   3,
+   3
+  ],
+  "first_buy_eth_p10_50_90": [
+   1.998276e-06,
+   1.999548e-06,
+   1.999942e-06
+  ],
+  "pools_with_real_buy": 0,
+  "pulled_3000": 0,
+  "pull_off": [],
+  "swaps_p10_50_90": [
+   1,
+   1,
+   1
+  ],
+  "buys_p10_50_90": [
+   1,
+   1,
+   1
+  ],
+  "front_rule": {
+   "n": 12,
+   "mean": -0.02057,
+   "median": -0.02057,
+   "win": 0.0,
+   "min": -0.0206,
+   "max": -0.0206,
+   "usd_trade": -0.3086,
+   "pulled_first": 0,
+   "usd_day": -1.85
+  }
+ },
+ "0x05d552391067389ee44fec3924157ed33f976000|ce5494bb|36|10000|200|true": {
+  "count": 11,
+  "per_day_window": 5.5,
+  "active_span_h": 15.01,
+  "deployers": 1,
+  "first_buy_off_p10_50_90": [
+   3,
+   3,
+   4
+  ],
+  "first_buy_eth_p10_50_90": [
+   1.99836e-06,
+   1.99933e-06,
+   1.999722e-06
+  ],
+  "pools_with_real_buy": 10,
+  "pulled_3000": 4,
+  "pull_off": [
+   744,
+   798,
+   878,
+   1987
+  ],
+  "swaps_p10_50_90": [
+   14,
+   20,
+   84
+  ],
+  "buys_p10_50_90": [
+   14,
+   20,
+   77
+  ]
+ },
+ "0x2b0c777574bd65ed74b211e0f2bf79bd3c9bff20|7fde822e|804|10000|200|true": {
+  "count": 11,
+  "per_day_window": 5.5,
+  "active_span_h": 1.4,
+  "deployers": 1,
+  "first_buy_off_p10_50_90": [
+   3,
+   3,
+   3
+  ],
+  "first_buy_eth_p10_50_90": [
+   1.998122e-06,
+   1.998664e-06,
+   1.999144e-06
+  ],
+  "pools_with_real_buy": 0,
+  "pulled_3000": 0,
+  "pull_off": [],
+  "swaps_p10_50_90": [
+   1,
+   1,
+   1
+  ],
+  "buys_p10_50_90": [
+   1,
+   1,
+   1
+  ],
+  "front_rule": {
+   "n": 11,
+   "mean": -0.02057,
+   "median": -0.02057,
+   "win": 0.0,
+   "min": -0.0206,
+   "max": -0.0206,
+   "usd_trade": -0.3086,
+   "pulled_first": 0,
+   "usd_day": -1.7
+  }
+ },
+ "0x80521fc999a81e467696fd834d1df0a082d01894|7fde822e|804|10000|200|true": {
+  "count": 11,
+  "per_day_window": 5.5,
+  "active_span_h": 3.38,
+  "deployers": 1,
+  "first_buy_off_p10_50_90": [
+   2,
+   3,
+   3
+  ],
+  "first_buy_eth_p10_50_90": [
+   1.998324e-06,
+   1.998774e-06,
+   1.999464e-06
+  ],
+  "pools_with_real_buy": 0,
+  "pulled_3000": 0,
+  "pull_off": [],
+  "swaps_p10_50_90": [
+   1,
+   1,
+   1
+  ],
+  "buys_p10_50_90": [
+   1,
+   1,
+   1
+  ],
+  "front_rule": {
+   "n": 11,
+   "mean": -0.02058,
+   "median": -0.02058,
+   "win": 0.0,
+   "min": -0.0206,
+   "max": -0.0206,
+   "usd_trade": -0.3086,
+   "pulled_first": 0,
+   "usd_day": -1.7
+  }
+ }
+}

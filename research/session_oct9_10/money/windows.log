@@ -1,0 +1,63 @@
+21906 blocks in 41 windows
+300 84048208
+451 84048359
+751 84051422
+902 84051573
+1202 84051900
+1353 84052051
+1653 84069348
+1804 84069499
+2104 84071083
+2313 84071292
+2613 84071799
+2764 84071950
+3064 84072943
+3215 84073094
+3515 84073492
+3815 84073792
+4115 84074092
+4415 84074392
+4715 84074692
+4781 84074758
+5081 84075126
+5330 84075375
+5630 84075849
+5812 84076031
+6112 84076531
+6388 84076807
+6688 84077159
+6839 84077310
+7139 84078999
+7365 84079225
+7665 84079636
+7853 84079824
+8153 84080804
+8397 84081048
+8697 84083203
+8882 84083388
+9182 84085560
+9397 84085775
+9697 84087889
+9924 84088116
+10224 84090299
+10469 84090544
+10769 84091043
+10928 84091202
+11228 84091524
+11432 84091728
+11732 84092954
+11957 84093179
+12257 84095269
+12529 84095541
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/money/windows.py", line 19, in <module>
+    for bn, t in blocks(s, e):
+                 ~~~~~~^^^^^^
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/money/tr.py", line 12, in blocks
+    for n, blk in zip(ch, batch([("eth_getBlockByNumber", [hex(n), True]) for n in ch])):
+                          ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/chain.py", line 24, in batch
+    r = post([{"jsonrpc": "2.0", "id": j, "method": m, "params": p} for j, (m, p) in enumerate(ch)])
+  File "/tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/chain.py", line 15, in post
+    raise RuntimeError("rpc")
+RuntimeError: rpc

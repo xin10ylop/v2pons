@@ -1,0 +1,18 @@
+C1_eth: 698 pools, no frb 125 (0.179); no-frb pulled 124, pull off p10/50/90 [92.7, 191.0, 358.2]
+   no-frb share by day: [0.01, 0.02, 0.32, 0.3, 0.15, 0.16, 0.16]
+   no-frb pools: n_buys p10/50/90 [2.0, 4.0, 6.0]  buy_eth_total p50 0.001017901  any OPR buy in first 12: 2
+   frb pools pulled: 323  pull - frb p10/50/90: [83.0, 347.0, 2106.4]
+   by +100: frb seen 0.279  pulled 0.020  pulled with no frb before it 0.020
+   by +150: frb seen 0.552  pulled 0.067  pulled with no frb before it 0.053
+   by +200: frb seen 0.732  pulled 0.145  pulled with no frb before it 0.093
+   by +250: frb seen 0.778  pulled 0.228  pulled with no frb before it 0.119
+   by +300: frb seen 0.794  pulled 0.275  pulled with no frb before it 0.135
+C1_weth: 190 pools, no frb 35 (0.184); no-frb pulled 35, pull off p10/50/90 [105.6, 185.0, 374.4]
+   no-frb share by day: [0.06, 0.0, 0.35, 0.04, 0.08, 0.38, 0.4]
+   no-frb pools: n_buys p10/50/90 [2.0, 3.0, 4.6]  buy_eth_total p50 0.000935607  any OPR buy in first 12: 0
+   frb pools pulled: 105  pull - frb p10/50/90: [94.2, 496.0, 1932.2]
+   by +100: frb seen 0.295  pulled 0.011  pulled with no frb before it 0.011
+   by +150: frb seen 0.616  pulled 0.084  pulled with no frb before it 0.058
+   by +200: frb seen 0.695  pulled 0.184  pulled with no frb before it 0.100
+   by +250: frb seen 0.753  pulled 0.226  pulled with no frb before it 0.116
+   by +300: frb seen 0.789  pulled 0.305  pulled with no frb before it 0.153

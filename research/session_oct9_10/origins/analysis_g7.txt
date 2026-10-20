@@ -1,0 +1,13 @@
+5549 value txs, 1693 plain; dispatchers 2, sweeps 2, launch wallets 2
+82582802 10-07 15:36:12 SWEEP 0xdc9c96553049cfef27b7ddebf83f102947759e12 crowd in 30 = 2.5198; other in 0x703be26b(OUTSIDE) 4.5373 n2; total 7.0572; out 0x780c394c 7.0572 n0
+82582833 10-07 15:36:15 DISP 0x780c394c116d75e196143e9cb9975f6fd633b424 in 0xdc9c9655 7.0572 n0; to launch/other 0x7f17dbcb 3.7200 n0; crowd refills 31 = 3.3371
+82840257 10-07 22:54:41 SWEEP 0x970bb376fa248b41465e0d113170f8e144600da4 crowd in 30 = 0.9510; other in 0x9efdbb11(OUTSIDE) 6.1151 n2; total 7.0661; out 0xf5102fae 7.0661 n0
+82840294 10-07 22:54:45 DISP 0xf5102fae257de079759b355b7d9aeef8a3b6b8b4 in 0x970bb376 7.0661 n0; to launch/other 0xb5f52068 3.1900 n0; crowd refills 31 = 3.8761
+
+plain transfers crossing the loop boundary (loop = crowd + dispatchers + sweeps + launch wallets):
+   82582802 10-07 15:36:12 0x703be26b726f5052928096655abcad25f9f50daf  -> 0xdc9c96553049cfef27b7ddebf83f102947759e12 (loop) 4.537348 n 2 0xa1ff2823d3e8ad019d88cf5b7a479b6bd98c47886a2d9492ed353535ec40a2fb
+   82840257 10-07 22:54:41 0x9efdbb1182402ce78c45f6447880cbfacfdb32b0  -> 0x970bb376fa248b41465e0d113170f8e144600da4 (loop) 6.115095 n 2 0x18c190cf52e79e2eafa5ecc200ab88ffb2d03053354d45a07c71ba015779d21e
+
+launch wallets' calls with value (launch / buys):
+   82583063 10-07 15:36:40 0x7f17dbcb -> 0x3194e326 3.6700 0x2fcb9108 n 0
+   82840650 10-07 22:55:21 0xb5f52068 -> 0x3194e326 3.1400 0x2fcb9108 n 0

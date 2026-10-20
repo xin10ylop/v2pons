@@ -1,0 +1,10 @@
+the + 1 bot absent at + 1..+ 10:
+  biggest early non-bot holding none         n  646: crowd by +60  72 ( 11.1%, Wilson 8.9-13.8%), by +78 168 ( 26.0%); first wave (crowd by +78) median 0.211 ETH
+  biggest early non-bot holding <0.001       n   75: crowd by +60  21 ( 28.0%, Wilson 19.1-39.0%), by +78  33 ( 44.0%); first wave (crowd by +78) median 0.383 ETH; one-sided p (fewer than no-holder pools, by +60) 1
+  biggest early non-bot holding 0.001-0.0015 n    6: crowd by +60   0 (  0.0%, Wilson 0.0-39.0%), by +78   0 (  0.0%); first wave (crowd by +78) median 0.000 ETH; one-sided p (fewer than no-holder pools, by +60) 0.47
+  biggest early non-bot holding >=0.0015     n    4: crowd by +60   1 ( 25.0%, Wilson 4.6-69.9%), by +78   1 ( 25.0%); first wave (crowd by +78) median 1.810 ETH; one-sided p (fewer than no-holder pools, by +60) 0.93
+the + 1 bot present at + 1..+ 10:
+  biggest early non-bot holding none         n  459: crowd by +60  58 ( 12.6%, Wilson 9.9-16.0%), by +78 164 ( 35.7%); first wave (crowd by +78) median 0.308 ETH
+  biggest early non-bot holding <0.001       n  172: crowd by +60  30 ( 17.4%, Wilson 12.5-23.8%), by +78  70 ( 40.7%); first wave (crowd by +78) median 0.382 ETH; one-sided p (fewer than no-holder pools, by +60) 0.98
+  biggest early non-bot holding 0.001-0.0015 n   22: crowd by +60   0 (  0.0%, Wilson 0.0-14.9%), by +78   4 ( 18.2%); first wave (crowd by +78) median 0.271 ETH; one-sided p (fewer than no-holder pools, by +60) 0.066
+  biggest early non-bot holding >=0.0015     n    5: crowd by +60   1 ( 20.0%, Wilson 3.6-62.4%), by +78   3 ( 60.0%); first wave (crowd by +78) median 0.435 ETH; one-sided p (fewer than no-holder pools, by +60) 0.89

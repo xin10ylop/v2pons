@@ -1,0 +1,11 @@
+quote: ETH: n=698 frb=0.82; WETH: n=190 frb=0.82
+launch nonce: 2: n=628 frb=0.79; 3: n=259 frb=0.90; 5: n=1 frb=1.00
+launch max_prio: 0: n=888 frb=0.82
+launch type: 2: n=888 frb=0.82
+day: 4: n=169 frb=0.87; 5: n=150 frb=0.81; 3: n=143 frb=0.75; 2: n=140 frb=0.67; 6: n=122 frb=0.81; 0: n=106 frb=0.97; 1: n=58 frb=0.98
+hour-of-day UTC: 12: n=239 frb=0.85; 16: n=212 frb=0.83; 8: n=172 frb=0.78; 4: n=97 frb=0.74; 20: n=95 frb=0.96; 0: n=73 frb=0.73
+token size: 3854: n=888 frb=0.82
+tokm family top: 985d2aba: n=888 frb=0.82
+swap fps before +40: ('0x887678:3593564c',): n=455 frb=0.86; ('0x7ebacc:bfca01e8', '0x887678:3593564c'): n=115 frb=0.79; ('0x1b6dd5:0a209187', '0x887678:3593564c'): n=86 frb=0.79; (): n=68 frb=0.99; ('0x5ed3ab:31010000', '0x887678:3593564c'): n=38 frb=0.58; ('0x1b6dd5:0a209187', '0x7ebacc:bfca01e8', '0x887678:3593564c'): n=36 frb=0.69; ('0x3a03aa:1a2dccad', '0x887678:3593564c'): n=32 frb=0.88; ('0x5158d5:f4f51a2f', '0x887678:3593564c'): n=15 frb=0.80
+n swaps before +40: 2: n=277 frb=0.83; 3: n=215 frb=0.80; 1: n=190 frb=0.91; 4: n=112 frb=0.65; 0: n=68 frb=0.99; 5: n=24 frb=0.58; 6: n=2 frb=0.50
+n buys before +60 (events): 2: n=267 frb=0.87; 4: n=193 frb=0.70; 3: n=184 frb=0.80; 1: n=115 frb=0.94; 5: n=65 frb=0.65; 0: n=64 frb=1.00

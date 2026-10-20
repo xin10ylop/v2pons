@@ -1,0 +1,70 @@
+{
+ "vbot-v2.433": {
+  "count": 1843,
+  "per_day": 921.8,
+  "sched_frac": 0.999,
+  "sched_off_p10_50_90": [
+   8,
+   9,
+   10
+  ],
+  "sched_eth_p10_50_90": [
+   0.0495,
+   0.175,
+   0.25
+  ],
+  "sched_to": [
+   [
+    "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+    1842
+   ]
+  ],
+  "sched_n_from": 31,
+  "pulled_frac": 0.804,
+  "pull_off_p10_50_90": [
+   11,
+   13,
+   127
+  ],
+  "pull_after_sched_p10_50_90": [
+   3,
+   3,
+   117
+  ],
+  "pull_by_launch_wallet": 1482
+ },
+ "operator-A": {
+  "count": 77,
+  "per_day": 38.5,
+  "sched_frac": 0.974,
+  "sched_off_p10_50_90": [
+   24,
+   54,
+   66
+  ],
+  "sched_eth_p10_50_90": [
+   0.0143,
+   0.0547,
+   0.1203
+  ],
+  "sched_to": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    75
+   ]
+  ],
+  "sched_n_from": 10,
+  "pulled_frac": 0.857,
+  "pull_off_p10_50_90": [
+   51,
+   224,
+   2180
+  ],
+  "pull_after_sched_p10_50_90": [
+   6,
+   165,
+   2157
+  ],
+  "pull_by_launch_wallet": 66
+ }
+}

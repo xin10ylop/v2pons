@@ -1,0 +1,37 @@
+{
+ "window": "Oct 8 18:20 - Oct 10 18:20 UTC (census), 1.9994 days",
+ "method_calibration": {
+  "live_relay_reprice": "1080 real relay round trips re-priced, abs median diff 3.3e-16, all 1080 within 0.5pt",
+  "front_control_v2433_bot_sched": "mean +11.86% median +14.01% win 95% (known ~ +14%)",
+  "front_control_v2433_generic_sched": "mean +9.97% median +11.00%",
+  "follow_control_operatorA": "mean +4.34% median +3.27% win 84% (known small-positive)",
+  "pricer_check_max_abs_rel_err": {"G1": 0.42, "G2": 5.5e-16, "G3": 9.1e-17, "G4": 2.9e-16, "note": "G1's 0.42 is a handful of multi-range / below-price pools; all single-range pools price to <1e-14"}
+ },
+ "families": {
+  "G1_POSM_ac9650d8_2020": {
+   "verdict": "unprofitable",
+   "reason": "a calldata-length bucket, not one operator: 238 pools, 121 deployers, 100 strict families, 184 distinct values, fees 0.3%-99%. Front -55% (most pools are high-fee, a round trip loses the fee twice). Only one sub-cluster trades: fee 3000 (0.25%) + non-zero hook (addr ending ..cc, beforeSwap, NO price tax) + range (70080,189300), ~32 pools, a crowd of ~15 recurring wallets (0x9e8f55,0x44bd36,0x9422ef,0x03d789,...) buying at +46..50 then a 0.2-5.0 ETH burst at +95..107 - a follow-type operator like A but weaker: follow mean +15.7% median -0.67% win 35%, and without its top 3 whales -5.9%. Only 6/35 pulled in 3000 blocks, so it is a slow book, not a rug-flip. Not profitable at $15 on a robust (median) basis.",
+   "sub_operator_to_revisit": "fee=3000 hooked follow cluster"
+  },
+  "G2_POSM_ac9650d8_1444_fee10001_10300": {
+   "verdict": "no-schedule",
+   "known": "vbot-other (the volume bot's 9.333/40 ETH fee-1% family)",
+   "reason": "liquidity is placed ABOVE the launch price (active_liquidity=0 at the trading price in all 97); a buy at the pool price gets nothing. Only 1/97 ever had a buy (+233). 34/97 pulled at +1049..1147 through the POSM. No scheduled buy we can sell into: front n=0 (no_liquidity). Not tradeable."
+  },
+  "G3_codehash_f07d1c53_e1e75b94_5572": {
+   "verdict": "candidate",
+   "reason": "THE match. 102 pools, one 75-min burst (Oct 10 16:41-17:56 UTC). Per-launch contract (code hash f07d1c53, selector e1e75b94, calldata 5572, value exactly 0.000050018847145969 ETH, fee 2500, ts 25, a per-pool hook). One operator wallet 0x9fdd8cea does a single scheduled buy of 0.073/0.317/1.011 ETH (p10/50/90) through the Universal Router at launch +14/15/16, then the launch wallet pulls at +29/30/32 = a fixed +15 after its buy (53/100 exactly +15). Nobody else touches these pools: 0/102 have the chain-wide dust bot, 0/102 any non-operator non-dust swap. The per-pool hooks have beforeSwap but do NOT gate swaps (beforeSwap eth_call returns the success selector for our wallet and a random wallet alike; pricer reproduces all 100 observed buys to 9e-17, so no hook tax). Front is spectacular but capacity-limited.",
+   "front_naive_0.0058": "mean +132.1% median +71.3% win 96% $+19.82/trade $+1011/day (assumes the scheduled buy always fills)",
+   "front_honest_0.0058": "mean +106.5% median -0.57% win 33% $+15.98/trade $+815/day (our 0.0058 ahead pushes 65/102 scheduled buys under an assumed 0.99x-quote minOut -> those exit at ~two fees, not a loss; 34 fill and win big)",
+   "front_clean_0.004_$10": "mean +132.8% median +71.5% win 96% $+19.9/trade $+1016/day (0.004 ETH is below the ~0.0052 ETH capacity floor; the scheduled buy never reverts)",
+   "capacity_room_eth_p10_50_90": [0.005229, 0.005742, 0.006747],
+   "capacity_note": "minOut ASSUMED 0.99x the launch-state quote (the scheduled buy is a Universal Router execute 0x3593564c, nested, minOut not decodable from word 4). Room is small because the scheduled buy is large (0.07-1.0 ETH) and already near its own 1% slack.",
+   "no_pull_first_risk": "the pull (+29/30/32) is far behind our sell (sched+1 ~ +16); front has pulled-first 0/102",
+   "caveats": "(1) single 75-min burst, the operator's only appearance in 48h - sustainability unknown; (2) minOut is an assumption; (3) the hook passed a standalone beforeSwap eth_call but a live FRONT_DRY_RUN over a few real launches should confirm before sizing up."
+  },
+  "G4_selector_7fde822e": {
+   "verdict": "no-schedule",
+   "reason": "490 pools, fee 1%, ts 200, hookless, 5 deployers (454 from 0x06cb3a68), 27 launch contracts. The ONLY buy in all 490 is the chain-wide dust bot 0xe71a69f4 (2e-6 ETH) at +3. Only 5/490 have a real buy (scattered, +3..1625). ZERO pulls within 3000 blocks. No scheduled buy, no pull: this is a launchpad whose tokens trade elsewhere, not a front/follow operator. Front -2.06% (two fees + the dust speck)."
+  }
+ }
+}

@@ -1,0 +1,1929 @@
+{
+ "F4a": {
+  "ride buy live+1 sell live+20": {
+   "n": 192,
+   "mean": -0.00174,
+   "median": -0.00172,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 192
+   },
+   "usd_trade": -0.026,
+   "trades_day": 96.03,
+   "usd_day": -2.5,
+   "p10_50_90": [
+    -0.00179,
+    -0.00172,
+    -0.00172
+   ],
+   "min": -0.00187,
+   "max": -0.00171
+  },
+  "ride buy live+1 sell live+50": {
+   "n": 192,
+   "mean": -0.00171,
+   "median": -0.00172,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 192
+   },
+   "usd_trade": -0.0257,
+   "trades_day": 96.03,
+   "usd_day": -2.47,
+   "p10_50_90": [
+    -0.00175,
+    -0.00172,
+    -0.00167
+   ],
+   "min": -0.00183,
+   "max": -0.00165
+  },
+  "ride buy live+1 sell live+100": {
+   "n": 192,
+   "mean": 0.0073,
+   "median": 0.01035,
+   "win": 0.75,
+   "pulled_first": 1,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 191,
+    "pulled_first": 1
+   },
+   "usd_trade": 0.1096,
+   "trades_day": 96.03,
+   "usd_day": 10.52,
+   "p10_50_90": [
+    -0.00172,
+    0.01035,
+    0.03049
+   ],
+   "min": -1.00072,
+   "max": 0.06607
+  },
+  "ride buy live+1 sell live+150": {
+   "n": 192,
+   "mean": 0.04718,
+   "median": 0.04529,
+   "win": 0.974,
+   "pulled_first": 2,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 190,
+    "pulled_first": 2
+   },
+   "usd_trade": 0.7077,
+   "trades_day": 96.03,
+   "usd_day": 67.96,
+   "p10_50_90": [
+    0.01941,
+    0.04531,
+    0.11042
+   ],
+   "min": -1.00072,
+   "max": 0.15892
+  },
+  "ride buy live+1 sell live+200": {
+   "n": 192,
+   "mean": 0.08695,
+   "median": 0.09357,
+   "win": 0.974,
+   "pulled_first": 3,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 189,
+    "pulled_first": 3
+   },
+   "usd_trade": 1.3042,
+   "trades_day": 96.03,
+   "usd_day": 125.24,
+   "p10_50_90": [
+    0.03011,
+    0.09708,
+    0.19061
+   ],
+   "min": -1.00072,
+   "max": 0.25156
+  },
+  "ride buy live+1 sell live+300": {
+   "n": 192,
+   "mean": 0.07369,
+   "median": 0.14013,
+   "win": 0.901,
+   "pulled_first": 19,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 173,
+    "pulled_first": 19
+   },
+   "usd_trade": 1.1054,
+   "trades_day": 96.03,
+   "usd_day": 106.15,
+   "p10_50_90": [
+    0.05909,
+    0.14169,
+    0.34573
+   ],
+   "min": -1.00073,
+   "max": 0.43675
+  },
+  "ride buy live+1 sell live+500": {
+   "n": 192,
+   "mean": 0.22982,
+   "median": 0.3452,
+   "win": 0.875,
+   "pulled_first": 24,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 168,
+    "pulled_first": 24
+   },
+   "usd_trade": 3.4474,
+   "trades_day": 96.03,
+   "usd_day": 331.05,
+   "p10_50_90": [
+    -1.00072,
+    0.34647,
+    0.64498
+   ],
+   "min": -1.00078,
+   "max": 0.82534
+  },
+  "ride buy live+1 sell live+1000": {
+   "n": 192,
+   "mean": 0.65434,
+   "median": 0.84668,
+   "win": 0.8229,
+   "pulled_first": 34,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 158,
+    "pulled_first": 34
+   },
+   "usd_trade": 9.8152,
+   "trades_day": 96.03,
+   "usd_day": 942.55,
+   "p10_50_90": [
+    -1.00072,
+    0.84685,
+    1.42863
+   ],
+   "min": -1.00083,
+   "max": 1.8116
+  },
+  "ride buy live+1 sell live+2000": {
+   "n": 192,
+   "mean": 1.25726,
+   "median": 1.52089,
+   "win": 0.7604,
+   "pulled_first": 46,
+   "pulled_before_buy": 0,
+   "exits": {
+    "pulled_first": 46,
+    "sold": 146
+   },
+   "usd_trade": 18.859,
+   "trades_day": 96.03,
+   "usd_day": 1811.02,
+   "p10_50_90": [
+    -1.00073,
+    1.52227,
+    2.82603
+   ],
+   "min": -1.00083,
+   "max": 3.67652
+  },
+  "front buy live+1 sell 1 block after the 1-th real buy (deadline live+3000)": {
+   "n": 192,
+   "mean": 0.01115,
+   "median": 0.01045,
+   "win": 0.9844,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 192
+   },
+   "usd_trade": 0.1672,
+   "trades_day": 96.03,
+   "usd_day": 16.06,
+   "p10_50_90": [
+    0.00237,
+    0.01051,
+    0.02049
+   ],
+   "min": -0.00091,
+   "max": 0.02884
+  },
+  "front buy live+1 sell 1 block after the 2-th real buy (deadline live+3000)": {
+   "n": 192,
+   "mean": 0.02207,
+   "median": 0.02164,
+   "win": 0.9948,
+   "pulled_first": 1,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 191,
+    "pulled_first": 1
+   },
+   "usd_trade": 0.3311,
+   "trades_day": 96.03,
+   "usd_day": 31.79,
+   "p10_50_90": [
+    0.0065,
+    0.02184,
+    0.05728
+   ],
+   "min": -1.00072,
+   "max": 0.08195
+  },
+  "front buy live+1 sell 1 block after the 3-th real buy (deadline live+3000)": {
+   "n": 192,
+   "mean": 0.03106,
+   "median": 0.03411,
+   "win": 0.9896,
+   "pulled_first": 2,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 190,
+    "pulled_first": 2
+   },
+   "usd_trade": 0.4658,
+   "trades_day": 96.03,
+   "usd_day": 44.73,
+   "p10_50_90": [
+    0.01137,
+    0.03418,
+    0.08189
+   ],
+   "min": -1.00072,
+   "max": 0.11046
+  },
+  "front buy live+1 sell 1 block after the 5-th real buy (deadline live+3000)": {
+   "n": 192,
+   "mean": 0.05924,
+   "median": 0.05929,
+   "win": 0.9896,
+   "pulled_first": 2,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 190,
+    "pulled_first": 2
+   },
+   "usd_trade": 0.8886,
+   "trades_day": 96.03,
+   "usd_day": 85.33,
+   "p10_50_90": [
+    0.02445,
+    0.06044,
+    0.12679
+   ],
+   "min": -1.00072,
+   "max": 0.17123
+  },
+  "front buy live+1 sell 1 block after the 10-th real buy (deadline live+3000)": {
+   "n": 192,
+   "mean": 0.08767,
+   "median": 0.13169,
+   "win": 0.9375,
+   "pulled_first": 12,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 180,
+    "pulled_first": 12
+   },
+   "usd_trade": 1.315,
+   "trades_day": 96.03,
+   "usd_day": 126.28,
+   "p10_50_90": [
+    0.06194,
+    0.1317,
+    0.2632
+   ],
+   "min": -1.00073,
+   "max": 0.35812
+  },
+  "front buy live+1 sell 1 block after the 20-th real buy (deadline live+3000)": {
+   "n": 192,
+   "mean": 0.19315,
+   "median": 0.33057,
+   "win": 0.8698,
+   "pulled_first": 25,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 167,
+    "pulled_first": 25
+   },
+   "usd_trade": 2.8972,
+   "trades_day": 96.03,
+   "usd_day": 278.22,
+   "p10_50_90": [
+    -1.00072,
+    0.33117,
+    0.53167
+   ],
+   "min": -1.00078,
+   "max": 0.69431
+  },
+  "front buy live+1 sell 1 block after the 40-th real buy (deadline live+3000)": {
+   "n": 192,
+   "mean": 0.60978,
+   "median": 0.76326,
+   "win": 0.8438,
+   "pulled_first": 30,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 162,
+    "pulled_first": 30
+   },
+   "usd_trade": 9.1467,
+   "trades_day": 96.03,
+   "usd_day": 878.36,
+   "p10_50_90": [
+    -1.00072,
+    0.76338,
+    1.37207
+   ],
+   "min": -1.00083,
+   "max": 1.75396
+  },
+  "follow hold 4": {
+   "n": 192,
+   "mean": -0.00141,
+   "median": -0.00172,
+   "win": 0.0417,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 192
+   },
+   "usd_trade": -0.0211,
+   "trades_day": 96.03,
+   "usd_day": -2.03,
+   "p10_50_90": [
+    -0.00179,
+    -0.00172,
+    -0.00172
+   ],
+   "min": -0.00198,
+   "max": 0.01686
+  },
+  "follow hold 10": {
+   "n": 192,
+   "mean": -0.00026,
+   "median": -0.00172,
+   "win": 0.2448,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 192
+   },
+   "usd_trade": -0.004,
+   "trades_day": 96.03,
+   "usd_day": -0.38,
+   "p10_50_90": [
+    -0.00179,
+    -0.00172,
+    0.0044
+   ],
+   "min": -0.00198,
+   "max": 0.01686
+  },
+  "follow hold 20": {
+   "n": 192,
+   "mean": 0.00715,
+   "median": 0.00554,
+   "win": 0.7917,
+   "pulled_first": 1,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 191,
+    "pulled_first": 1
+   },
+   "usd_trade": 0.1072,
+   "trades_day": 96.03,
+   "usd_day": 10.3,
+   "p10_50_90": [
+    -0.00172,
+    0.0056,
+    0.03516
+   ],
+   "min": -1.00072,
+   "max": 0.04751
+  },
+  "follow hold 40": {
+   "n": 192,
+   "mean": 0.00978,
+   "median": 0.01106,
+   "win": 0.9583,
+   "pulled_first": 1,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 191,
+    "pulled_first": 1
+   },
+   "usd_trade": 0.1468,
+   "trades_day": 96.03,
+   "usd_day": 14.09,
+   "p10_50_90": [
+    0.00215,
+    0.01123,
+    0.03516
+   ],
+   "min": -1.00072,
+   "max": 0.05933
+  },
+  "follow hold 100": {
+   "n": 192,
+   "mean": 0.01017,
+   "median": 0.01277,
+   "win": 0.974,
+   "pulled_first": 1,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 191,
+    "pulled_first": 1
+   },
+   "usd_trade": 0.1525,
+   "trades_day": 96.03,
+   "usd_day": 14.65,
+   "p10_50_90": [
+    0.00266,
+    0.01281,
+    0.03516
+   ],
+   "min": -1.00072,
+   "max": 0.05933
+  },
+  "follow-ride buy 1 block after the first real buy, sell 50 blocks later": {
+   "n": 192,
+   "mean": 0.03066,
+   "median": 0.02641,
+   "win": 0.9688,
+   "pulled_first": 2,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 190,
+    "pulled_first": 2
+   },
+   "usd_trade": 0.4598,
+   "trades_day": 96.03,
+   "usd_day": 44.16,
+   "p10_50_90": [
+    0.00875,
+    0.02798,
+    0.08864
+   ],
+   "min": -1.00072,
+   "max": 0.11924
+  },
+  "follow-ride buy 1 block after the first real buy, sell 100 blocks later": {
+   "n": 192,
+   "mean": 0.05997,
+   "median": 0.07357,
+   "win": 0.974,
+   "pulled_first": 4,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 188,
+    "pulled_first": 4
+   },
+   "usd_trade": 0.8995,
+   "trades_day": 96.03,
+   "usd_day": 86.38,
+   "p10_50_90": [
+    0.02371,
+    0.0736,
+    0.16224
+   ],
+   "min": -1.00072,
+   "max": 0.19923
+  },
+  "follow-ride buy 1 block after the first real buy, sell 200 blocks later": {
+   "n": 192,
+   "mean": 0.05374,
+   "median": 0.11924,
+   "win": 0.901,
+   "pulled_first": 19,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 173,
+    "pulled_first": 19
+   },
+   "usd_trade": 0.8061,
+   "trades_day": 96.03,
+   "usd_day": 77.41,
+   "p10_50_90": [
+    0.02544,
+    0.12202,
+    0.2924
+   ],
+   "min": -1.00073,
+   "max": 0.39702
+  },
+  "follow-ride buy 1 block after the first real buy, sell 500 blocks later": {
+   "n": 192,
+   "mean": 0.28932,
+   "median": 0.42616,
+   "win": 0.8594,
+   "pulled_first": 27,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 165,
+    "pulled_first": 27
+   },
+   "usd_trade": 4.3398,
+   "trades_day": 96.03,
+   "usd_day": 416.75,
+   "p10_50_90": [
+    -1.00072,
+    0.42656,
+    0.76329
+   ],
+   "min": -1.00083,
+   "max": 1.02562
+  }
+ },
+ "F4b": {
+  "ride buy live+1 sell live+20": {
+   "n": 23,
+   "mean": -0.00173,
+   "median": -0.00172,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": -0.0259,
+   "trades_day": 11.5,
+   "usd_day": -0.3,
+   "p10_50_90": [
+    -0.00173,
+    -0.00172,
+    -0.00172
+   ],
+   "min": -0.00181,
+   "max": -0.00172
+  },
+  "ride buy live+1 sell live+50": {
+   "n": 23,
+   "mean": -0.00173,
+   "median": -0.00172,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": -0.0259,
+   "trades_day": 11.5,
+   "usd_day": -0.3,
+   "p10_50_90": [
+    -0.00173,
+    -0.00172,
+    -0.00172
+   ],
+   "min": -0.00181,
+   "max": -0.00172
+  },
+  "ride buy live+1 sell live+100": {
+   "n": 23,
+   "mean": 4.15161,
+   "median": 5.55233,
+   "win": 0.7391,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 62.2742,
+   "trades_day": 11.5,
+   "usd_day": 716.38,
+   "p10_50_90": [
+    -0.00172,
+    5.55233,
+    8.64349
+   ],
+   "min": -0.00172,
+   "max": 10.13644
+  },
+  "ride buy live+1 sell live+150": {
+   "n": 23,
+   "mean": 8.68494,
+   "median": 10.53702,
+   "win": 0.6957,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 130.274,
+   "trades_day": 11.5,
+   "usd_day": 1498.62,
+   "p10_50_90": [
+    -0.00172,
+    10.53702,
+    17.44934
+   ],
+   "min": -0.00174,
+   "max": 23.17113
+  },
+  "ride buy live+1 sell live+200": {
+   "n": 23,
+   "mean": 6.13821,
+   "median": 4.48475,
+   "win": 0.913,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 92.0732,
+   "trades_day": 11.5,
+   "usd_day": 1059.17,
+   "p10_50_90": [
+    0.12278,
+    4.48475,
+    16.08479
+   ],
+   "min": -0.00172,
+   "max": 20.52816
+  },
+  "ride buy live+1 sell live+300": {
+   "n": 23,
+   "mean": 5.99573,
+   "median": 5.55476,
+   "win": 0.913,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 89.936,
+   "trades_day": 11.5,
+   "usd_day": 1034.59,
+   "p10_50_90": [
+    0.12447,
+    5.55476,
+    15.30449
+   ],
+   "min": -0.00172,
+   "max": 16.25411
+  },
+  "ride buy live+1 sell live+500": {
+   "n": 23,
+   "mean": 12.26134,
+   "median": 13.42849,
+   "win": 0.913,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 183.9201,
+   "trades_day": 11.5,
+   "usd_day": 2115.74,
+   "p10_50_90": [
+    0.37077,
+    13.42849,
+    26.75964
+   ],
+   "min": -0.00172,
+   "max": 32.38042
+  },
+  "ride buy live+1 sell live+1000": {
+   "n": 23,
+   "mean": 5.09139,
+   "median": 4.11862,
+   "win": 0.913,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 76.3708,
+   "trades_day": 11.5,
+   "usd_day": 878.54,
+   "p10_50_90": [
+    0.59934,
+    4.11862,
+    9.08333
+   ],
+   "min": -0.00172,
+   "max": 28.38065
+  },
+  "ride buy live+1 sell live+2000": {
+   "n": 23,
+   "mean": 8.36421,
+   "median": 10.42296,
+   "win": 0.913,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 125.4631,
+   "trades_day": 11.5,
+   "usd_day": 1443.27,
+   "p10_50_90": [
+    0.52001,
+    10.42296,
+    14.96379
+   ],
+   "min": -0.00172,
+   "max": 24.14947
+  },
+  "front buy live+1 sell 1 block after the 1-th real buy (deadline live+3000)": {
+   "n": 23,
+   "mean": 0.2139,
+   "median": 0.06712,
+   "win": 0.7826,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 3.2086,
+   "trades_day": 11.5,
+   "usd_day": 36.91,
+   "p10_50_90": [
+    -0.00113,
+    0.06712,
+    0.91178
+   ],
+   "min": -0.00172,
+   "max": 0.91179
+  },
+  "front buy live+1 sell 1 block after the 2-th real buy (deadline live+3000)": {
+   "n": 23,
+   "mean": 0.2577,
+   "median": 0.0954,
+   "win": 0.913,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 3.8655,
+   "trades_day": 11.5,
+   "usd_day": 44.47,
+   "p10_50_90": [
+    6e-05,
+    0.0954,
+    0.91178
+   ],
+   "min": -0.00172,
+   "max": 0.91179
+  },
+  "front buy live+1 sell 1 block after the 3-th real buy (deadline live+3000)": {
+   "n": 23,
+   "mean": 0.34613,
+   "median": 0.0954,
+   "win": 0.8696,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 5.192,
+   "trades_day": 11.5,
+   "usd_day": 59.73,
+   "p10_50_90": [
+    -0.00104,
+    0.0954,
+    0.91179
+   ],
+   "min": -0.00172,
+   "max": 1.89714
+  },
+  "front buy live+1 sell 1 block after the 5-th real buy (deadline live+3000)": {
+   "n": 23,
+   "mean": 0.7386,
+   "median": 0.19127,
+   "win": 0.913,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 11.079,
+   "trades_day": 11.5,
+   "usd_day": 127.45,
+   "p10_50_90": [
+    0.00931,
+    0.19127,
+    2.369
+   ],
+   "min": -0.00172,
+   "max": 3.08596
+  },
+  "front buy live+1 sell 1 block after the 10-th real buy (deadline live+3000)": {
+   "n": 23,
+   "mean": 1.25204,
+   "median": 0.48554,
+   "win": 0.913,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 18.7806,
+   "trades_day": 11.5,
+   "usd_day": 216.04,
+   "p10_50_90": [
+    0.01877,
+    0.48554,
+    3.6758
+   ],
+   "min": -0.00172,
+   "max": 4.01384
+  },
+  "front buy live+1 sell 1 block after the 20-th real buy (deadline live+3000)": {
+   "n": 23,
+   "mean": 2.73284,
+   "median": 1.13286,
+   "win": 0.913,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 40.9925,
+   "trades_day": 11.5,
+   "usd_day": 471.56,
+   "p10_50_90": [
+    0.12432,
+    1.13286,
+    7.81735
+   ],
+   "min": -0.00172,
+   "max": 8.81722
+  },
+  "front buy live+1 sell 1 block after the 40-th real buy (deadline live+3000)": {
+   "n": 23,
+   "mean": 5.38082,
+   "median": 6.76282,
+   "win": 0.913,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23
+   },
+   "usd_trade": 80.7122,
+   "trades_day": 11.5,
+   "usd_day": 928.48,
+   "p10_50_90": [
+    0.1578,
+    6.76282,
+    11.55645
+   ],
+   "min": -0.00172,
+   "max": 12.30026
+  },
+  "follow hold 4": {
+   "n": 21,
+   "mean": 0.13307,
+   "median": 0.00795,
+   "win": 0.619,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 21
+   },
+   "usd_trade": 1.9961,
+   "trades_day": 10.5,
+   "usd_day": 20.97,
+   "p10_50_90": [
+    -0.00172,
+    0.00795,
+    0.21214
+   ],
+   "min": -0.00173,
+   "max": 0.83729
+  },
+  "follow hold 10": {
+   "n": 21,
+   "mean": 0.18647,
+   "median": 0.14272,
+   "win": 0.8571,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 21
+   },
+   "usd_trade": 2.797,
+   "trades_day": 10.5,
+   "usd_day": 29.38,
+   "p10_50_90": [
+    -0.0006,
+    0.14272,
+    0.61729
+   ],
+   "min": -0.00113,
+   "max": 0.83729
+  },
+  "follow hold 20": {
+   "n": 21,
+   "mean": 0.18647,
+   "median": 0.14272,
+   "win": 0.8571,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 21
+   },
+   "usd_trade": 2.797,
+   "trades_day": 10.5,
+   "usd_day": 29.38,
+   "p10_50_90": [
+    -0.0006,
+    0.14272,
+    0.61729
+   ],
+   "min": -0.00113,
+   "max": 0.83729
+  },
+  "follow hold 40": {
+   "n": 21,
+   "mean": 0.18647,
+   "median": 0.14272,
+   "win": 0.8571,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 21
+   },
+   "usd_trade": 2.797,
+   "trades_day": 10.5,
+   "usd_day": 29.38,
+   "p10_50_90": [
+    -0.0006,
+    0.14272,
+    0.61729
+   ],
+   "min": -0.00113,
+   "max": 0.83729
+  },
+  "follow hold 100": {
+   "n": 21,
+   "mean": 0.18647,
+   "median": 0.14272,
+   "win": 0.8571,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 21
+   },
+   "usd_trade": 2.797,
+   "trades_day": 10.5,
+   "usd_day": 29.38,
+   "p10_50_90": [
+    -0.0006,
+    0.14272,
+    0.61729
+   ],
+   "min": -0.00113,
+   "max": 0.83729
+  },
+  "follow-ride buy 1 block after the first real buy, sell 50 blocks later": {
+   "n": 21,
+   "mean": 2.77924,
+   "median": 1.58166,
+   "win": 0.9048,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 21
+   },
+   "usd_trade": 41.6886,
+   "trades_day": 10.5,
+   "usd_day": 437.87,
+   "p10_50_90": [
+    0.00471,
+    1.58166,
+    7.41376
+   ],
+   "min": -0.01997,
+   "max": 11.31211
+  },
+  "follow-ride buy 1 block after the first real buy, sell 100 blocks later": {
+   "n": 21,
+   "mean": 7.78303,
+   "median": 9.78699,
+   "win": 1.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 21
+   },
+   "usd_trade": 116.7454,
+   "trades_day": 10.5,
+   "usd_day": 1226.21,
+   "p10_50_90": [
+    0.07287,
+    9.78699,
+    15.04777
+   ],
+   "min": 0.01951,
+   "max": 19.56276
+  },
+  "follow-ride buy 1 block after the first real buy, sell 200 blocks later": {
+   "n": 21,
+   "mean": 4.74414,
+   "median": 5.6603,
+   "win": 1.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 21
+   },
+   "usd_trade": 71.1621,
+   "trades_day": 10.5,
+   "usd_day": 747.43,
+   "p10_50_90": [
+    0.08684,
+    5.6603,
+    9.95623
+   ],
+   "min": 0.03049,
+   "max": 14.40935
+  },
+  "follow-ride buy 1 block after the first real buy, sell 500 blocks later": {
+   "n": 21,
+   "mean": 10.73439,
+   "median": 13.08406,
+   "win": 1.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 21
+   },
+   "usd_trade": 161.0159,
+   "trades_day": 10.5,
+   "usd_day": 1691.19,
+   "p10_50_90": [
+    0.9466,
+    13.08406,
+    20.33303
+   ],
+   "min": 0.65665,
+   "max": 24.06223
+  }
+ },
+ "F3": {
+  "ride buy live+1 sell live+20": {
+   "n": 77,
+   "mean": -0.00506,
+   "median": -0.00544,
+   "win": 0.013,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 77
+   },
+   "usd_trade": -0.0759,
+   "trades_day": 38.51,
+   "usd_day": -2.92,
+   "p10_50_90": [
+    -0.00957,
+    -0.00544,
+    -0.00198
+   ],
+   "min": -0.01068,
+   "max": 0.04151
+  },
+  "ride buy live+1 sell live+50": {
+   "n": 77,
+   "mean": -0.01983,
+   "median": -0.00387,
+   "win": 0.2987,
+   "pulled_first": 6,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 71,
+    "pulled_first": 6
+   },
+   "usd_trade": -0.2975,
+   "trades_day": 38.51,
+   "usd_day": -11.46,
+   "p10_50_90": [
+    -0.00989,
+    -0.00387,
+    0.1157
+   ],
+   "min": -1.00074,
+   "max": 2.11575
+  },
+  "ride buy live+1 sell live+100": {
+   "n": 77,
+   "mean": -0.00984,
+   "median": 0.18629,
+   "win": 0.7143,
+   "pulled_first": 18,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 59,
+    "pulled_first": 18
+   },
+   "usd_trade": -0.1476,
+   "trades_day": 38.51,
+   "usd_day": -5.68,
+   "p10_50_90": [
+    -1.00072,
+    0.18629,
+    0.43534
+   ],
+   "min": -1.00075,
+   "max": 2.11575
+  },
+  "ride buy live+1 sell live+150": {
+   "n": 77,
+   "mean": 0.07593,
+   "median": 0.28637,
+   "win": 0.6623,
+   "pulled_first": 22,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 55,
+    "pulled_first": 22
+   },
+   "usd_trade": 1.1389,
+   "trades_day": 38.51,
+   "usd_day": 43.86,
+   "p10_50_90": [
+    -1.00072,
+    0.28637,
+    0.86475
+   ],
+   "min": -1.00078,
+   "max": 2.40783
+  },
+  "ride buy live+1 sell live+200": {
+   "n": 77,
+   "mean": 0.13068,
+   "median": 0.33251,
+   "win": 0.6104,
+   "pulled_first": 26,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 51,
+    "pulled_first": 26
+   },
+   "usd_trade": 1.9602,
+   "trades_day": 38.51,
+   "usd_day": 75.49,
+   "p10_50_90": [
+    -1.00073,
+    0.33251,
+    1.10995
+   ],
+   "min": -1.00078,
+   "max": 2.21772
+  },
+  "ride buy live+1 sell live+300": {
+   "n": 77,
+   "mean": 0.14441,
+   "median": -0.00104,
+   "win": 0.4935,
+   "pulled_first": 36,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 41,
+    "pulled_first": 36
+   },
+   "usd_trade": 2.1662,
+   "trades_day": 38.51,
+   "usd_day": 83.42,
+   "p10_50_90": [
+    -1.00073,
+    -0.00104,
+    1.83906
+   ],
+   "min": -1.00078,
+   "max": 3.83991
+  },
+  "ride buy live+1 sell live+500": {
+   "n": 77,
+   "mean": 0.53469,
+   "median": -0.00501,
+   "win": 0.4805,
+   "pulled_first": 37,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 40,
+    "pulled_first": 37
+   },
+   "usd_trade": 8.0204,
+   "trades_day": 38.51,
+   "usd_day": 308.88,
+   "p10_50_90": [
+    -1.00073,
+    -0.00501,
+    3.67495
+   ],
+   "min": -1.00078,
+   "max": 5.04432
+  },
+  "ride buy live+1 sell live+1000": {
+   "n": 77,
+   "mean": 1.02986,
+   "median": -0.00571,
+   "win": 0.4675,
+   "pulled_first": 38,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 39,
+    "pulled_first": 38
+   },
+   "usd_trade": 15.448,
+   "trades_day": 38.51,
+   "usd_day": 594.93,
+   "p10_50_90": [
+    -1.00073,
+    -0.00571,
+    5.44509
+   ],
+   "min": -1.00078,
+   "max": 7.54721
+  },
+  "ride buy live+1 sell live+2000": {
+   "n": 77,
+   "mean": 0.29314,
+   "median": -1.00072,
+   "win": 0.2727,
+   "pulled_first": 54,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 23,
+    "pulled_first": 54
+   },
+   "usd_trade": 4.397,
+   "trades_day": 38.51,
+   "usd_day": 169.34,
+   "p10_50_90": [
+    -1.00074,
+    -1.00072,
+    2.78432
+   ],
+   "min": -1.00078,
+   "max": 15.47635
+  },
+  "front buy live+1 sell 1 block after the 1-th real buy (deadline live+3000)": {
+   "n": 77,
+   "mean": 0.05811,
+   "median": 0.04281,
+   "win": 0.9221,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 77
+   },
+   "usd_trade": 0.8716,
+   "trades_day": 38.51,
+   "usd_day": 33.57,
+   "p10_50_90": [
+    0.00565,
+    0.04281,
+    0.10492
+   ],
+   "min": -0.00501,
+   "max": 0.61556
+  },
+  "front buy live+1 sell 1 block after the 2-th real buy (deadline live+3000)": {
+   "n": 77,
+   "mean": 0.09591,
+   "median": 0.1005,
+   "win": 0.9481,
+   "pulled_first": 2,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 75,
+    "pulled_first": 2
+   },
+   "usd_trade": 1.4387,
+   "trades_day": 38.51,
+   "usd_day": 55.41,
+   "p10_50_90": [
+    0.03594,
+    0.1005,
+    0.19086
+   ],
+   "min": -1.00072,
+   "max": 1.28436
+  },
+  "front buy live+1 sell 1 block after the 3-th real buy (deadline live+3000)": {
+   "n": 77,
+   "mean": 0.01421,
+   "median": 0.12393,
+   "win": 0.8312,
+   "pulled_first": 11,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 66,
+    "pulled_first": 11
+   },
+   "usd_trade": 0.2132,
+   "trades_day": 38.51,
+   "usd_day": 8.21,
+   "p10_50_90": [
+    -1.00072,
+    0.12393,
+    0.23374
+   ],
+   "min": -1.00075,
+   "max": 2.11575
+  },
+  "front buy live+1 sell 1 block after the 5-th real buy (deadline live+3000)": {
+   "n": 77,
+   "mean": -0.0291,
+   "median": 0.17653,
+   "win": 0.7532,
+   "pulled_first": 17,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 60,
+    "pulled_first": 17
+   },
+   "usd_trade": -0.4365,
+   "trades_day": 38.51,
+   "usd_day": -16.81,
+   "p10_50_90": [
+    -1.00072,
+    0.17653,
+    0.29156
+   ],
+   "min": -1.00075,
+   "max": 2.29416
+  },
+  "front buy live+1 sell 1 block after the 10-th real buy (deadline live+3000)": {
+   "n": 77,
+   "mean": 0.0388,
+   "median": 0.251,
+   "win": 0.7403,
+   "pulled_first": 18,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 59,
+    "pulled_first": 18
+   },
+   "usd_trade": 0.582,
+   "trades_day": 38.51,
+   "usd_day": 22.41,
+   "p10_50_90": [
+    -1.00072,
+    0.251,
+    0.49301
+   ],
+   "min": -1.00075,
+   "max": 2.31017
+  },
+  "front buy live+1 sell 1 block after the 20-th real buy (deadline live+3000)": {
+   "n": 77,
+   "mean": 0.15667,
+   "median": 0.43025,
+   "win": 0.6753,
+   "pulled_first": 23,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 54,
+    "pulled_first": 23
+   },
+   "usd_trade": 2.3501,
+   "trades_day": 38.51,
+   "usd_day": 90.51,
+   "p10_50_90": [
+    -1.00072,
+    0.43025,
+    0.92169
+   ],
+   "min": -1.00078,
+   "max": 3.35569
+  },
+  "front buy live+1 sell 1 block after the 40-th real buy (deadline live+3000)": {
+   "n": 77,
+   "mean": 0.18764,
+   "median": -0.00501,
+   "win": 0.4805,
+   "pulled_first": 38,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 39,
+    "pulled_first": 38
+   },
+   "usd_trade": 2.8145,
+   "trades_day": 38.51,
+   "usd_day": 108.39,
+   "p10_50_90": [
+    -1.00073,
+    -0.00501,
+    1.80484
+   ],
+   "min": -1.00078,
+   "max": 5.18164
+  },
+  "follow hold 4": {
+   "n": 75,
+   "mean": 0.04337,
+   "median": 0.03268,
+   "win": 0.84,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 75
+   },
+   "usd_trade": 0.6505,
+   "trades_day": 37.51,
+   "usd_day": 24.4,
+   "p10_50_90": [
+    -0.00254,
+    0.03268,
+    0.08327
+   ],
+   "min": -0.01047,
+   "max": 0.41395
+  },
+  "follow hold 10": {
+   "n": 75,
+   "mean": 0.02404,
+   "median": 0.03689,
+   "win": 0.9333,
+   "pulled_first": 2,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 73,
+    "pulled_first": 2
+   },
+   "usd_trade": 0.3606,
+   "trades_day": 37.51,
+   "usd_day": 13.53,
+   "p10_50_90": [
+    0.00734,
+    0.03689,
+    0.08907
+   ],
+   "min": -1.00072,
+   "max": 0.41395
+  },
+  "follow hold 20": {
+   "n": 75,
+   "mean": 0.02404,
+   "median": 0.03689,
+   "win": 0.9333,
+   "pulled_first": 2,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 73,
+    "pulled_first": 2
+   },
+   "usd_trade": 0.3606,
+   "trades_day": 37.51,
+   "usd_day": 13.53,
+   "p10_50_90": [
+    0.00734,
+    0.03689,
+    0.08907
+   ],
+   "min": -1.00072,
+   "max": 0.41395
+  },
+  "follow hold 40": {
+   "n": 75,
+   "mean": 0.02413,
+   "median": 0.03689,
+   "win": 0.9467,
+   "pulled_first": 2,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 73,
+    "pulled_first": 2
+   },
+   "usd_trade": 0.362,
+   "trades_day": 37.51,
+   "usd_day": 13.58,
+   "p10_50_90": [
+    0.00734,
+    0.03689,
+    0.08907
+   ],
+   "min": -1.00072,
+   "max": 0.41395
+  },
+  "follow hold 100": {
+   "n": 75,
+   "mean": 0.0245,
+   "median": 0.03689,
+   "win": 0.96,
+   "pulled_first": 2,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 73,
+    "pulled_first": 2
+   },
+   "usd_trade": 0.3675,
+   "trades_day": 37.51,
+   "usd_day": 13.78,
+   "p10_50_90": [
+    0.00929,
+    0.03689,
+    0.08907
+   ],
+   "min": -1.00072,
+   "max": 0.41395
+  },
+  "follow-ride buy 1 block after the first real buy, sell 50 blocks later": {
+   "n": 75,
+   "mean": -0.05833,
+   "median": 0.14414,
+   "win": 0.76,
+   "pulled_first": 18,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 57,
+    "pulled_first": 18
+   },
+   "usd_trade": -0.875,
+   "trades_day": 37.51,
+   "usd_day": -32.82,
+   "p10_50_90": [
+    -1.00072,
+    0.14414,
+    0.40533
+   ],
+   "min": -1.00075,
+   "max": 0.93081
+  },
+  "follow-ride buy 1 block after the first real buy, sell 100 blocks later": {
+   "n": 75,
+   "mean": -0.01915,
+   "median": 0.24084,
+   "win": 0.6933,
+   "pulled_first": 23,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 52,
+    "pulled_first": 23
+   },
+   "usd_trade": -0.2872,
+   "trades_day": 37.51,
+   "usd_day": -10.77,
+   "p10_50_90": [
+    -1.00073,
+    0.24084,
+    0.6538
+   ],
+   "min": -1.00078,
+   "max": 1.08055
+  },
+  "follow-ride buy 1 block after the first real buy, sell 200 blocks later": {
+   "n": 75,
+   "mean": -0.00412,
+   "median": 0.15729,
+   "win": 0.5333,
+   "pulled_first": 35,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 40,
+    "pulled_first": 35
+   },
+   "usd_trade": -0.0617,
+   "trades_day": 37.51,
+   "usd_day": -2.32,
+   "p10_50_90": [
+    -1.00073,
+    0.15729,
+    1.34927
+   ],
+   "min": -1.00078,
+   "max": 2.68154
+  },
+  "follow-ride buy 1 block after the first real buy, sell 500 blocks later": {
+   "n": 75,
+   "mean": 0.52576,
+   "median": -1.00072,
+   "win": 0.4933,
+   "pulled_first": 38,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 37,
+    "pulled_first": 38
+   },
+   "usd_trade": 7.8863,
+   "trades_day": 37.51,
+   "usd_day": 295.83,
+   "p10_50_90": [
+    -1.00074,
+    -1.00072,
+    3.5544
+   ],
+   "min": -1.00078,
+   "max": 5.27722
+  }
+ },
+ "F4a_rhythm": [
+  [
+   0,
+   282,
+   0.0278
+  ],
+  [
+   100,
+   1131,
+   0.1713
+  ],
+  [
+   200,
+   811,
+   0.145
+  ],
+  [
+   300,
+   866,
+   0.1999
+  ],
+  [
+   400,
+   954,
+   0.1844
+  ],
+  [
+   500,
+   839,
+   0.1826
+  ],
+  [
+   600,
+   843,
+   0.171
+  ],
+  [
+   700,
+   741,
+   0.1942
+  ],
+  [
+   800,
+   833,
+   0.1758
+  ],
+  [
+   900,
+   775,
+   0.187
+  ],
+  [
+   1000,
+   482,
+   0.1184
+  ],
+  [
+   1100,
+   539,
+   0.1822
+  ],
+  [
+   1200,
+   483,
+   0.1472
+  ],
+  [
+   1300,
+   370,
+   0.1235
+  ],
+  [
+   1400,
+   372,
+   0.1159
+  ],
+  [
+   1500,
+   394,
+   0.2066
+  ],
+  [
+   1600,
+   463,
+   0.0961
+  ],
+  [
+   1700,
+   503,
+   0.1116
+  ],
+  [
+   1800,
+   299,
+   0.1095
+  ],
+  [
+   1900,
+   305,
+   0.0974
+  ],
+  [
+   2000,
+   309,
+   0.124
+  ],
+  [
+   2100,
+   363,
+   0.0786
+  ],
+  [
+   2200,
+   466,
+   0.0871
+  ],
+  [
+   2300,
+   375,
+   0.0811
+  ],
+  [
+   2400,
+   341,
+   0.0577
+  ],
+  [
+   2500,
+   276,
+   0.0563
+  ],
+  [
+   2600,
+   408,
+   0.238
+  ],
+  [
+   2700,
+   291,
+   0.1307
+  ],
+  [
+   2800,
+   325,
+   0.0893
+  ],
+  [
+   2900,
+   169,
+   0.0669
+  ]
+ ],
+ "F4b_rhythm": [
+  [
+   0,
+   416,
+   4.9182
+  ],
+  [
+   100,
+   1370,
+   10.6411
+  ],
+  [
+   200,
+   934,
+   7.2839
+  ],
+  [
+   300,
+   759,
+   5.5954
+  ],
+  [
+   400,
+   976,
+   7.0346
+  ],
+  [
+   500,
+   1409,
+   8.5934
+  ],
+  [
+   600,
+   888,
+   6.4375
+  ],
+  [
+   700,
+   832,
+   6.0453
+  ],
+  [
+   800,
+   417,
+   3.6725
+  ],
+  [
+   900,
+   265,
+   2.736
+  ],
+  [
+   1000,
+   401,
+   1.5432
+  ],
+  [
+   1100,
+   457,
+   3.8098
+  ],
+  [
+   1200,
+   717,
+   5.5821
+  ],
+  [
+   1300,
+   1098,
+   2.1216
+  ],
+  [
+   1400,
+   269,
+   1.3155
+  ],
+  [
+   1500,
+   668,
+   6.2526
+  ],
+  [
+   1600,
+   971,
+   6.3786
+  ],
+  [
+   1700,
+   951,
+   5.365
+  ],
+  [
+   1800,
+   340,
+   1.1863
+  ],
+  [
+   1900,
+   402,
+   2.6273
+  ],
+  [
+   2000,
+   473,
+   2.4588
+  ],
+  [
+   2100,
+   641,
+   2.8108
+  ],
+  [
+   2200,
+   579,
+   2.8113
+  ],
+  [
+   2300,
+   511,
+   3.1695
+  ],
+  [
+   2400,
+   548,
+   3.9823
+  ],
+  [
+   2500,
+   206,
+   0.6281
+  ],
+  [
+   2600,
+   321,
+   1.2707
+  ],
+  [
+   2700,
+   456,
+   1.6364
+  ],
+  [
+   2800,
+   657,
+   2.5956
+  ],
+  [
+   2900,
+   340,
+   1.4342
+  ]
+ ]
+}

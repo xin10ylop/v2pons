@@ -1,0 +1,4 @@
+pools 208 with T 189 pulled 205 head 86735442
+unknown-class swaps within launch..min(pull, launch+3000): 0
+T != Teng (engine trigger differs): [('0xc155851c', 66909, None), ('0x495da375', 233, 310), ('0x7bfcca3c', 618, None), ('0x0dc552bc', 110, 207), ('0x8cfc1640', 77, 187), ('0x2ef8526c', 43, 72), ('0x8985e55f', 90, None), ('0x19cae735', 69, 138), ('0xcf80529d', 1523, None), ('0xd343f9db', 1029, None), ('0x2a578740', 115, 155), ('0x3928e2a0', 67, 145), ('0xcbb06b45', 137, 226), ('0x7a40b381', 55, 164)]
+pull by launch wallet: Counter({True: 205, None: 3})

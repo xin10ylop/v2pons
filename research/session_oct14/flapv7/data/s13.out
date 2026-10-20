@@ -1,0 +1,4 @@
+prio 0.07475  stranger in [+40,+120]=True  n  6 mean +5.8% median +8.8% win 67% drain-hit 2  first drain after +80: p50 173.0 within 200: 3/6
+prio 0.07475  stranger in [+40,+120]=False n 22 mean +3.6% median +5.0% win 68% drain-hit 5  first drain after +80: p50 307.0 within 200: 5/22
+all           stranger in [+40,+120]=True  n 12 mean +3.6% median +7.7% win 58% drain-hit 4  first drain after +80: p50 142.0 within 200: 6/12
+all           stranger in [+40,+120]=False n 38 mean +0.4% median -2.7% win 45% drain-hit 14  first drain after +80: p50 248.0 within 200: 14/38

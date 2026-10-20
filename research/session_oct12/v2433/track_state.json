@@ -1,0 +1,275 @@
+{
+"head": 88276195,
+"router_nonce": 36874,
+"t_head": 1791971794,
+"wallets": {
+"0x020a1015916c3faf296ce9c28ad7a1eb51d5d00c": {
+"eth": 9.2732638e-08,
+"nonce": 39192
+},
+"0x033258a16c137c8de553e8c3e07442c13d73cf60": {
+"eth": 8.681859e-08,
+"nonce": 38737
+},
+"0x039475670b67126f91a7de3729d56c5b40c75eb0": {
+"eth": 8.681859e-08,
+"nonce": 39004
+},
+"0x0b5b0748b1f6332cae363f3725f5cce0f875d294": {
+"eth": 8.7480328e-08,
+"nonce": 16
+},
+"0x1376af7e961ee8e0840e62e5e0c55965531ca61f": {
+"eth": 8.5683564e-08,
+"nonce": 40968
+},
+"0x1cc6aac8c27d8277a382448050d76483e6a4d0e4": {
+"eth": 8.890962e-08,
+"nonce": 16
+},
+"0x1e5ad030322862b4cfb609be0580c64fe72b5c9b": {
+"eth": 9.1807802e-08,
+"nonce": 38829
+},
+"0x236e0235b27384fee473338679554ac91ddbd8b8": {
+"eth": 8.7721076e-08,
+"nonce": 17
+},
+"0x241acc5bb77e52da99e9adc2ba383ece47dfb75a": {
+"eth": 8.786954e-08,
+"nonce": 15
+},
+"0x25f4f06594fb43c831befc44eadfabd89698b92d": {
+"eth": 8.684033e-08,
+"nonce": 14
+},
+"0x26ae5c6c40c57d3fe1a6e0b7d9f65fb753d07522": {
+"eth": 9.0173644e-08,
+"nonce": 16
+},
+"0x2df27c96c33da7aa71bddc555abcd5c6de280227": {
+"eth": 9.130867e-08,
+"nonce": 16
+},
+"0x31335015d24c4ba8faf974e6b6400268d21d658f": {
+"eth": 9.1807802e-08,
+"nonce": 38759
+},
+"0x324c82de93a022be0fb3f5c8cafb022d4f277153": {
+"eth": 8.6440248e-08,
+"nonce": 40365
+},
+"0x34e19131448b63235ac846276e610398869be203": {
+"eth": 8.6995968e-08,
+"nonce": 16
+},
+"0x367844cf792ee1a659e8eef8391b4a225fd33569": {
+"eth": 8.6803006e-08,
+"nonce": 14
+},
+"0x3c1b65ed8cb98866dabc5489b04e266b747c5ec0": {
+"eth": 8.5935792e-08,
+"nonce": 40615
+},
+"0x3fd5c7ca6a06b568b6ceccfea414a63a91acb2a7": {
+"eth": 9.0638114e-08,
+"nonce": 15
+},
+"0x4180672adc800d66237917f21444e3f00b7f4114": {
+"eth": 9.1807802e-08,
+"nonce": 38628
+},
+"0x4418b94b8f85bde23f130d3b1926a85c7e08aa03": {
+"eth": 8.1732e-08,
+"nonce": 18
+},
+"0x445fa0dfbd8cf961cda4d7bf62e15523abde81b2": {
+"eth": 8.847776e-08,
+"nonce": 16
+},
+"0x578b7cc30e9389bbb73d600eac69542853c927be": {
+"eth": 9.163965e-08,
+"nonce": 38556
+},
+"0x5aed6bc8403ab1d1bb03816600e3206e496281db": {
+"eth": 8.5431336e-08,
+"nonce": 38280
+},
+"0x5b3f4a2e3426d6257cc5daa0425365b572ba9c1b": {
+"eth": 8.6440248e-08,
+"nonce": 40975
+},
+"0x5c452cd051b1e83ba724dbce363743f012f27029": {
+"eth": 8.6765682e-08,
+"nonce": 16
+},
+"0x5e1003c659f1786ad15f68cf65d5544b14b07a59": {
+"eth": 8.9795302e-08,
+"nonce": 16
+},
+"0x698e1664d8b6627ccb2c4239ef3c04699d65b2c9": {
+"eth": 8.5094964e-08,
+"nonce": 14
+},
+"0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d": {
+"eth": 0.00088076149547132,
+"nonce": 10
+},
+"0x738fe3f9a250bf98f9b7670c85801eac8c38b817": {
+"eth": 8.8022108e-08,
+"nonce": 14
+},
+"0x76646568fd1f267197db7c37befe785693306a71": {
+"eth": 8.9110382e-08,
+"nonce": 14
+},
+"0x7e0bef2c74efbefc62e5e19b821ad284c5b66e94": {
+"eth": 8.6440248e-08,
+"nonce": 40495
+},
+"0x7f4d15e9a79d777a43b54244af6ee66a3977a9af": {
+"eth": 8.850011e-08,
+"nonce": 38911
+},
+"0x80837e53f97992d35e18e1f7fbe9bc68cfd8521d": {
+"eth": 8.6440248e-08,
+"nonce": 38637
+},
+"0x85f6e6701d0240e0ea49bc3215d195f3d32144b7": {
+"eth": 8.9298832e-08,
+"nonce": 15
+},
+"0x8755d81e215993e81690150edbbb01c4d2cc8ead": {
+"eth": 9.2732638e-08,
+"nonce": 38325
+},
+"0x89f85863fe8fd30bdb3eb992aa10af48ef931427": {
+"eth": 8.8645912e-08,
+"nonce": 16
+},
+"0x8cd2a79c8c83d18e5b1a0a66a955188f538b0460": {
+"eth": 9.1807802e-08,
+"nonce": 37992
+},
+"0x8eb4bbe5bc255a8afe39670208a5ef37bc6a054c": {
+"eth": 8.850011e-08,
+"nonce": 38576
+},
+"0x943bfd27181ac2e399c68a0b72c3d6bc0a273e71": {
+"eth": 9.1807802e-08,
+"nonce": 38861
+},
+"0x9550c446a7ce6f34e93456d637cac892e8aa84cc": {
+"eth": 8.6271972e-08,
+"nonce": 14
+},
+"0x975e78ac4fe493ac019618454a6dfa82d3686ad1": {
+"eth": 8.8309608e-08,
+"nonce": 16
+},
+"0xab5261cc3717a4c31bb9cd629af31366ba4f4a47": {
+"eth": 8.6765682e-08,
+"nonce": 16
+},
+"0xae595e35754bbcc44686e8479abc34b0de723dad": {
+"eth": 8.8064146e-08,
+"nonce": 14
+},
+"0xb1c867cbb39fcd346a9b1b5bfac7120340dd4d6a": {
+"eth": 8.850011e-08,
+"nonce": 39516
+},
+"0xb5ffe342022f331306a4c90ead03878d4b6326e4": {
+"eth": 8.6860628e-08,
+"nonce": 15
+},
+"0xc13f6774094cfb94a3afec6d09a10333fc9206d0": {
+"eth": 8.681859e-08,
+"nonce": 40953
+},
+"0xc4e1e81f08ea3ac1a586f9637166aac02562eaf9": {
+"eth": 8.850011e-08,
+"nonce": 38917
+},
+"0xc89e901a91c77c0ebab41435ede97d58cc22e376": {
+"eth": 9.2732638e-08,
+"nonce": 38548
+},
+"0xc9c827ada367118e85712abc958de48f5508de9e": {
+"eth": 8.681859e-08,
+"nonce": 40840
+},
+"0xcbca9880771ef1e7876e9a510c396e57afb68c24": {
+"eth": 8.850011e-08,
+"nonce": 39045
+},
+"0xcc981b842bc9b21e0eb2e134e94c35ff6e2428c9": {
+"eth": 9.0846252e-08,
+"nonce": 16
+},
+"0xccb35d371d53b91eff85e552591d17ea7749f78c": {
+"eth": 8.9654824e-08,
+"nonce": 16
+},
+"0xcff80cda6ff2c84d73fac333d97e695847f69887": {
+"eth": 8.8904906e-08,
+"nonce": 14
+},
+"0xd230313d6998e65aa206f9db9a4e954ad1b4e33d": {
+"eth": 8.8393684e-08,
+"nonce": 16
+},
+"0xdf2c6f64308dc7537bca2c4336f464b1c8b92b2f": {
+"eth": 8.5935792e-08,
+"nonce": 41203
+},
+"0xdf3c7421fc8872b02e031cff6fc4595f3726454e": {
+"eth": 8.5431336e-08,
+"nonce": 40428
+},
+"0xe5ab8b8bb7feacc8ed86aa15fc2a645724f58cd5": {
+"eth": 8.5683564e-08,
+"nonce": 40424
+},
+"0xecd658c15322ae175ced5d3d6a4a9328943cdae3": {
+"eth": 8.5431336e-08,
+"nonce": 41057
+},
+"0xee5a4b0096c327683d53db56539db43495c4386c": {
+"eth": 8.9320572e-08,
+"nonce": 14
+},
+"0xf51e4aaefe5f6a0831840a3c5dee18f590ff0d7e": {
+"eth": 8.7090506e-08,
+"nonce": 16
+},
+"0xf7da38460b5a3625a2c50b58fd75549dd5193cc6": {
+"eth": 8.8309608e-08,
+"nonce": 16
+},
+"0xf8b38485ff515b01d377c6d72dd1ac9820721a0d": {
+"eth": 8.931852e-08,
+"nonce": 16
+},
+"0xf8b3c188f8136ae5b7f44efebab86c9db25980ea": {
+"eth": 9.1807802e-08,
+"nonce": 38827
+},
+"0xf9d07ddbd1e7813f3f12eace4ec3b9c083862462": {
+"eth": 8.5094964e-08,
+"nonce": 14
+},
+"0xf9dffb9f6a32d7c02cc9a663db08935c791f2774": {
+"eth": 8.8904906e-08,
+"nonce": 14
+},
+"0xfb094ea81bae10fc6b3dd6150b66853121cedb87": {
+"eth": 8.8237012e-08,
+"nonce": 17
+},
+"0xfba0e37c02da3446209adef41bcc20b81ed0c04c": {
+"eth": 9.2732638e-08,
+"nonce": 39224
+}
+}
+}

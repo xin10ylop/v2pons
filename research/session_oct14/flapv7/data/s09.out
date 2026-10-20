@@ -1,0 +1,33 @@
+exactness (kind, amount exact|capped, postPrice exact): {('B', True, True): 975, ('S', True, True): 713}
+
+q5_tail: launches 56, traded 50, skipped Counter({1: 6})
+  rule K80 next-buy>=$100 dl200: n 50 mean +1.2% median -1.4% win 48% worst -21.0% best +22.3% | drain hit 18 | trigger exits 9
+  K80 hold200                  : n 50 mean +0.8% median -3.0% win 44% worst -21.0% best +30.9%
+    prio 0.07475  n 28 mean +4.0% median +6.8% win 68% worst -21.0% best +22.3%
+    prio 0.0715   n 14 mean -2.1% median -6.8% win 29% worst -10.0% best +19.0%
+    other prio    n 8 mean -3.3% median -3.0% win 12% worst -8.4% best +3.2%
+    by day: {'10-11': 'n 8 mean +5.2% median +8.9% win 75% worst -21.0% best +22.3%', '10-12': 'n 23 mean -2.3% median -5.2% win 30% worst -10.0% best +12.5%', '10-13': 'n 14 mean +2.9% median +2.2% win 57% worst -12.9% best +19.0%', '10-14': 'n 5 mean +5.8% median +6.3% win 60% worst -3.9% best +22.1%'}
+
+q5_head: launches 56, traded 50, skipped Counter({1: 6})
+  rule K80 next-buy>=$100 dl200: n 50 mean +1.0% median -1.4% win 48% worst -21.0% best +22.3% | drain hit 18 | trigger exits 9
+  K80 hold200                  : n 50 mean +0.8% median -3.0% win 44% worst -21.0% best +30.9%
+    prio 0.07475  n 28 mean +3.8% median +6.3% win 68% worst -21.0% best +22.3%
+    prio 0.0715   n 14 mean -2.3% median -6.8% win 29% worst -10.0% best +15.6%
+    other prio    n 8 mean -3.3% median -3.0% win 12% worst -8.4% best +3.2%
+    by day: {'10-11': 'n 8 mean +5.2% median +8.9% win 75% worst -21.0% best +22.3%', '10-12': 'n 23 mean -2.3% median -5.2% win 30% worst -10.0% best +12.5%', '10-13': 'n 14 mean +2.3% median +2.2% win 57% worst -12.9% best +16.6%', '10-14': 'n 5 mean +5.6% median +5.3% win 60% worst -3.9% best +22.1%'}
+
+q15_tail: launches 56, traded 50, skipped Counter({1: 6})
+  rule K80 next-buy>=$100 dl200: n 50 mean +1.6% median -0.9% win 50% worst -20.5% best +22.8% | drain hit 18 | trigger exits 9
+  K80 hold200                  : n 50 mean +1.3% median -2.5% win 46% worst -20.5% best +31.3%
+    prio 0.07475  n 28 mean +4.5% median +7.3% win 71% worst -20.5% best +22.8%
+    prio 0.0715   n 14 mean -1.6% median -6.3% win 29% worst -9.5% best +19.4%
+    other prio    n 8 mean -2.8% median -2.5% win 12% worst -7.9% best +3.7%
+    by day: {'10-11': 'n 8 mean +5.7% median +9.4% win 75% worst -20.5% best +22.8%', '10-12': 'n 23 mean -1.8% median -4.7% win 35% worst -9.5% best +13.0%', '10-13': 'n 14 mean +3.4% median +2.7% win 57% worst -12.4% best +19.4%', '10-14': 'n 5 mean +6.3% median +6.7% win 60% worst -3.4% best +22.5%'}
+
+q15_head: launches 56, traded 50, skipped Counter({1: 6})
+  rule K80 next-buy>=$100 dl200: n 50 mean +1.5% median -0.9% win 50% worst -20.5% best +22.8% | drain hit 18 | trigger exits 9
+  K80 hold200                  : n 50 mean +1.3% median -2.5% win 46% worst -20.5% best +31.3%
+    prio 0.07475  n 28 mean +4.3% median +6.8% win 71% worst -20.5% best +22.8%
+    prio 0.0715   n 14 mean -1.8% median -6.3% win 29% worst -9.5% best +16.0%
+    other prio    n 8 mean -2.8% median -2.5% win 12% worst -7.9% best +3.7%
+    by day: {'10-11': 'n 8 mean +5.7% median +9.4% win 75% worst -20.5% best +22.8%', '10-12': 'n 23 mean -1.8% median -4.7% win 35% worst -9.5% best +13.0%', '10-13': 'n 14 mean +2.8% median +2.7% win 57% worst -12.4% best +17.1%', '10-14': 'n 5 mean +6.1% median +5.8% win 60% worst -3.4% best +22.5%'}

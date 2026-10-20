@@ -1,0 +1,686 @@
+head 86902493 10-12 18:58:06 UTC; WETH-side 13ead562 launches 85, line shape 76
+
+#85027918 10-10 13:20:18 (53.6 h ago) fee 100 LINE wallet 0x7f2503c4f0733b9970067b5ce0d4b9987f884381 nonce 21 WETH=token0 pool 0x9025166519bdf7cf939a4b5164f9f88a0d3dcd71 token 0xf9370c3631ee1f50e7b4ec172157100dec41eee2
+   mint +6 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x9025166519bdf7cf939a4b5164f9f88a0d3dcd71 9.997e+08
+   LW token transfer +12 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +27 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0x7f2503c4 type 0x0
+   swap +31 B 0.00063 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000629078207201135 minOut 388458943795044531218079 rcpt 0x1a45411c type 0x2
+   swap +46 B 0.00059 ETH by 0x30a6a559b26e9a1fdec8619e03b69ef12788b355 via 0x65050a9b:4d819a2a/580 value 0.0006 minOut None rcpt - type 0x2
+   burn +99 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#85028094 10-10 13:20:36 (53.6 h ago) fee 100 LINE wallet 0x7f2503c4f0733b9970067b5ce0d4b9987f884381 nonce 28 WETH=token0 pool 0xb1a642ee0b25bbaed5600e67266898a762a24733 token 0x318ddfc7710eacb2ae7ea6fc0731a96e5b2a18bb
+   mint +7 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0xb1a642ee0b25bbaed5600e67266898a762a24733 9.997e+08
+   LW token transfer +13 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +28 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0x7f2503c4 type 0x0
+   swap +128 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0x7f2503c4 type 0x0
+   swap +169 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0x7f2503c4 type 0x0
+   burn +204 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#85028458 10-10 13:21:13 (53.6 h ago) fee 100 LINE wallet 0x7f2503c4f0733b9970067b5ce0d4b9987f884381 nonce 37 WETH=token0 pool 0x70a9a36fd7499ec8c49df31ea29254cc8701d624 token 0xa9646ee410de44214e722cc3353bca116985145f
+   mint +6 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x70a9a36fd7499ec8c49df31ea29254cc8701d624 9.997e+08
+   LW token transfer +12 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +27 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x7f2503c4 type 0x0
+   swap +384 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0x7f2503c4 type 0x0
+   burn +552 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#85029472 10-10 13:22:57 (53.6 h ago) fee 100 LINE wallet 0xa4354f1d2c84b1d4d4457da283f1d9f4153aa77d nonce 2 WETH=token0 pool 0x9d57d9e42227699430b3ebd2e56e445a597ba3fb token 0x65b128834f7fa2207c883e77c877e45ca34c6b7f
+   mint +8 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +8 to 0x9d57d9e42227699430b3ebd2e56e445a597ba3fb 9.997e+08
+   LW token transfer +15 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +29 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xa4354f1d type 0x0
+   swap +104 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0xa4354f1d type 0x0
+   swap +138 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0xa4354f1d type 0x0
+   swap +169 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0xa4354f1d type 0x0
+   swap +205 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0xa4354f1d type 0x0
+   burn +242 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#85100093 10-10 15:23:28 (51.6 h ago) fee 100 LINE wallet 0xfc82a9e084b55ad775db79c68b25fb85b8ee6957 nonce 2 WETH=token0 pool 0xb3831803b5cf7c2dd28e07afaa2d4a8199507f4f token 0x375e7bddb2c98fd3394b6834961797b36de399d2
+   mint +7 L 1.227e+22 [-887272,204200] a0 0 a1 3.333e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0xb3831803b5cf7c2dd28e07afaa2d4a8199507f4f 3.333e+08
+   LW token transfer +13 to 0x000000000000000000000000000000000000dead 6.667e+08
+   swap +34 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xfc82a9e0 type 0x0
+   swap +207 B 0.05106 ETH by 0x597dcbaa9edd2fc950d4f459492a223ff926b654 via 0x597dcbaa:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +378 B 0.06779 ETH by 0x550836793e385e488628d3d2a018ee6b01e126b8 via 0x55083679:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (36 more swaps after +400 to +5000; buys 24)
+   no burn to +5000
+
+#85101280 10-10 15:25:29 (51.5 h ago) fee 100 LINE wallet 0xa4354f1d2c84b1d4d4457da283f1d9f4153aa77d nonce 13 WETH=token0 pool 0x60e2931aa0e17d92396bc09d010a1badf785806c token 0xeb664e5aa71feccb54133fe515f7643f4a4079ed
+   mint +7 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x60e2931aa0e17d92396bc09d010a1badf785806c 9.997e+08
+   LW token transfer +13 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +29 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xa4354f1d type 0x0
+   swap +89 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0xa4354f1d type 0x0
+   swap +136 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0xa4354f1d type 0x0
+   swap +287 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0xa4354f1d type 0x0
+   swap +328 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0xa4354f1d type 0x0
+   burn +428 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#85177739 10-10 17:36:00 (49.4 h ago) fee 100 LINE wallet 0xb7ae73c857a17e967b4cb80b6d80d03371b427a0 nonce 2 WETH=token0 pool 0x2dd0a4724bea8034e4b73a1d6ccd8667f4ac6367 token 0x3ea2e56a71f2c5b75a1d1fb2abca69f2684cc17f
+   mint +6 L 3.682e+21 [-887272,204200] a0 0 a1 1e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x2dd0a4724bea8034e4b73a1d6ccd8667f4ac6367 1e+08
+   LW token transfer +11 to 0x000000000000000000000000000000000000dead 9e+08
+   no burn to +5000
+
+#85408028 10-11 00:10:43 (42.8 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 2 WETH=token0 pool 0x799212e1e1ef1ca0977ded7816ce654760fd5035 token 0x23fa0e6f2deb49c72fc565cb7fc1917966a17089
+   mint +6 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x799212e1e1ef1ca0977ded7816ce654760fd5035 9.997e+08
+   LW token transfer +12 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +23 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +110 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +147 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0x0344a29a type 0x0
+   burn +356 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#85408752 10-11 00:11:58 (42.8 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 11 WETH=token0 pool 0xc44add65aa23c94a48fc768e6ac17b9c6d467e34 token 0x29fdc721e656ccb69e32b52492e01ac48388d5d9
+   mint +5 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0xc44add65aa23c94a48fc768e6ac17b9c6d467e34 1e+09
+   swap +16 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +20 B 0.00090 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.00090192627606671 minOut 564244655935378713679881 rcpt 0x1a45411c type 0x2
+   swap +99 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +105 B 0.00049 ETH by 0x5cfe426dde350e72893faa1cef33239837f186ed via 0x65050a9b:4d819a2a/580 value 0.00049 minOut None rcpt - type 0x2
+   swap +142 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0x0344a29a type 0x0
+   burn +179 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85408976 10-11 00:12:21 (42.8 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 19 WETH=token0 pool 0xba23fbb6c246be19c7aecb95603ead6f63ff9eeb token 0x996301e80245fdeb9c639dbea93a368283b49e8c
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xba23fbb6c246be19c7aecb95603ead6f63ff9eeb 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +21 B 0.00089 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000885962979145176 minOut 554264541701761663590306 rcpt 0x1a45411c type 0x2
+   swap +57 B 0.01000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.01 minOut 0 rcpt 0x0344a29a type 0x0
+   burn +90 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85409140 10-11 00:12:37 (42.8 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 26 WETH=token0 pool 0x81d876063eb467d3e26366a9315fb6f719e9ce56 token 0xb6a89467b75f5951ffea9246d699bda9bf3645b0
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x81d876063eb467d3e26366a9315fb6f719e9ce56 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +22 B 0.00087 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000874000890972975 minOut 546785794512798504063138 rcpt 0x1a45411c type 0x2
+   swap +118 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +153 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   burn +187 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85409527 10-11 00:13:17 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 34 WETH=token0 pool 0x4f04b17ad62229c5d4a774b0b5d7939ff6b0d6b1 token 0x6315fca1ee5219a18203ee4d2630361fc4d32b8d
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x4f04b17ad62229c5d4a774b0b5d7939ff6b0d6b1 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +22 B 0.00086 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000858015284491865 minOut 536791321237181185768160 rcpt 0x1a45411c type 0x2
+   swap +120 B 0.00500 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.005 minOut 0 rcpt 0x0344a29a type 0x0
+   burn +155 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85409724 10-11 00:13:37 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 41 WETH=token0 pool 0x0ac172e55bbfedd3b85ff2efef63ebff09973d79 token 0xece87089aee0f651c1dfb8239ba3a86f8fe6d637
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x0ac172e55bbfedd3b85ff2efef63ebff09973d79 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +21 B 0.00085 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.00084602845857841 minOut 529296799226950813425380 rcpt 0x1a45411c type 0x2
+   burn +138 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85409971 10-11 00:14:02 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 47 WETH=token0 pool 0xe935393e0ec621da036c8843d81658a8f01d4135 token 0xba23cace67a3e47ca289072a66517ca121666e49
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xe935393e0ec621da036c8843d81658a8f01d4135 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +22 B 0.00083 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000834049680342818 minOut 521807176656867478500712 rcpt 0x1a45411c type 0x2
+   burn +64 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85410279 10-11 00:14:34 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 53 WETH=token0 pool 0x89aa82516caca8b1c7ad1ba498397279e89b7cab token 0x1c6cf9c5b2b0a50128c7a5ffc428ec365b321e25
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x89aa82516caca8b1c7ad1ba498397279e89b7cab 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +22 B 0.00082 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000822100067867926 minOut 514335658028936908680011 rcpt 0x1a45411c type 0x2
+   burn +77 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85410407 10-11 00:14:47 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 59 WETH=token0 pool 0x9d9b5208d47c4c0ca8c9ef3d44508b761b72e044 token 0x4ce3cac1c68b70525c521473ac76339200a1d964
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x9d9b5208d47c4c0ca8c9ef3d44508b761b72e044 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +21 B 0.00081 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000810127736782471 minOut 506849802641411020145950 rcpt 0x1a45411c type 0x2
+   burn +64 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85410513 10-11 00:14:59 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 65 WETH=token0 pool 0x36820ccce1a13aac4d5e3d738fa28755563c4f7c token 0xed680d431a00985487fb3dc8a3c3eba7e3653b75
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x36820ccce1a13aac4d5e3d738fa28755563c4f7c 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +22 B 0.00080 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.00079813700348729 minOut 499352308696302252371675 rcpt 0x1a45411c type 0x2
+   burn +62 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85410796 10-11 00:15:29 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 71 WETH=token0 pool 0x594bd2220865a7915d18d42a2d1cbece9dcc2398 token 0x9473ca5dcfab3559d39f7441dd8ded9340555939
+   mint +7 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x594bd2220865a7915d18d42a2d1cbece9dcc2398 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +22 B 0.00078 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000782175672636353 minOut 489371897787892651228818 rcpt 0x1a45411c type 0x2
+   burn +70 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85410907 10-11 00:15:40 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 77 WETH=token0 pool 0xf05df0eea09518cbddf0f8d8cadc7b1e769a7623 token 0x2e7f985c89142482d5f19aa60b2ba214789fae3a
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xf05df0eea09518cbddf0f8d8cadc7b1e769a7623 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +21 B 0.00077 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000770203596014368 minOut 481885761212247219688424 rcpt 0x1a45411c type 0x2
+   burn +65 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85411016 10-11 00:15:51 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 83 WETH=token0 pool 0xa78cfffa6311f5fe20264514ea2b8d39958e6a99 token 0x9964be1827f209b780db07f6d4a8850e85f82c41
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xa78cfffa6311f5fe20264514ea2b8d39958e6a99 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +21 B 0.00076 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000762222211599711 minOut 476894930140591432314786 rcpt 0x1a45411c type 0x2
+   burn +71 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85411249 10-11 00:16:15 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 89 WETH=token0 pool 0xa4007920b15b917182308e4d42d15cae204e0f22 token 0x654e3026c1352e963ff2f94d27d0aeb6f852b133
+   mint +5 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0xa4007920b15b917182308e4d42d15cae204e0f22 1e+09
+   swap +16 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +20 B 0.00075 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000750282591333106 minOut 469428869224840704851212 rcpt 0x1a45411c type 0x2
+   burn +69 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85411342 10-11 00:16:25 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 95 WETH=token1 pool 0xd5e4f488581601801c25ddffb749ae2f5ca7d114 token 0x072a1de99f6eded230ba770d08585419633dac61
+   mint +6 L 3.682e+22 [-204200,887272] a0 1e+27 a1 0 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xd5e4f488581601801c25ddffb749ae2f5ca7d114 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +22 B 0.00074 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000738423476183581 minOut 462013019613529163783241 rcpt 0x1a45411c type 0x2
+   burn +73 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85411490 10-11 00:16:40 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 101 WETH=token0 pool 0x280cf8a6b82c3c0b186480a4b66646243129b5fa token 0x17217aa9d2b8d19398c5241fa0fff2a8af92a21f
+   mint +5 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0x280cf8a6b82c3c0b186480a4b66646243129b5fa 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +22 B 0.00073 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000726449041434658 minOut 454524925838970368208409 rcpt 0x1a45411c type 0x2
+   burn +159 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85411866 10-11 00:17:18 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 107 WETH=token0 pool 0xc7ee2c3e8d4b83eba218752a3131fa7611fa22d1 token 0x33ba17133cea639cd3818107b20ab613ad24917a
+   mint +7 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0xc7ee2c3e8d4b83eba218752a3131fa7611fa22d1 1e+09
+   swap +21 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +26 B 0.00071 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000714475153201767 minOut 447037041728437420626937 rcpt 0x1a45411c type 0x2
+   burn +76 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85411984 10-11 00:17:31 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 113 WETH=token0 pool 0xe7eda256891bee58fb3471fc4573b059835a144f token 0xc15f62d96f3c9fc1b43d7d3b2959d848770e4b31
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xe7eda256891bee58fb3471fc4573b059835a144f 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +23 B 0.00070 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000702512308792006 minOut 439555931972657329148300 rcpt 0x1a45411c type 0x2
+   burn +75 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85412101 10-11 00:17:43 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 119 WETH=token0 pool 0x8f611b8ab4c0783d9f1b237f306c2383efde2cba token 0xffd72438c8755e4a880d960b990b057f96453fbe
+   mint +5 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0x8f611b8ab4c0783d9f1b237f306c2383efde2cba 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +27 B 0.00080 ETH by 0xf7f00e4d08a546187ba4d9fbf66dd28a7b98df00 via 0x65050a9b:4d819a2a/580 value 0.0008062497913 minOut None rcpt - type 0x2
+   swap +27 B 0.00080 ETH by 0xdc22d5d1a776358799b6f3121ded8c90e9806e15 via 0x65050a9b:4d819a2a/580 value 0.0008062497913 minOut None rcpt - type 0x2
+   swap +69 S 0.00080 ETH by 0xf7f00e4d08a546187ba4d9fbf66dd28a7b98df00 via 0x65050a9b:4d819a2a/580 value 0.0 minOut None rcpt - type 0x2
+   swap +69 S 0.00080 ETH by 0xdc22d5d1a776358799b6f3121ded8c90e9806e15 via 0x65050a9b:4d819a2a/580 value 0.0 minOut None rcpt - type 0x2
+   burn +94 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85412453 10-11 00:18:20 (42.7 h ago) fee 100 LINE wallet 0x0344a29a70f3c20f2d39a5caed7ef17bfb1a7b4a nonce 125 WETH=token0 pool 0x0a92475062f1e2aee082e5ec52857ac52b5b593c token 0xeba3e8af20d1896ac7f73acb15d015a391f71417
+   mint +7 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x0a92475062f1e2aee082e5ec52857ac52b5b593c 1e+09
+   swap +21 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +340 B 0.00500 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.005 minOut 0 rcpt 0x0344a29a type 0x0
+   swap +379 B 0.00500 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.005 minOut 0 rcpt 0x0344a29a type 0x0
+   (1 more swaps after +400 to +5000; buys 1)
+   burn +465 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85414328 10-11 00:21:33 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 2 WETH=token0 pool 0xab642f605d33a8baf68667b8c5aca248dae8182c token 0xdba965f02bc7746e2cba33717934b8bd190bedf5
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xab642f605d33a8baf68667b8c5aca248dae8182c 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +22 B 0.00071 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000706765348348927 minOut 442215636917038430349162 rcpt 0x1a45411c type 0x2
+   burn +50 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85414447 10-11 00:21:46 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 8 WETH=token0 pool 0x28f91eb34812ee9b510a58eb5c673b70c97404c4 token 0xf3802c12e5ac92f1202e8323fa720dc33bd8d2a2
+   mint +5 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0x28f91eb34812ee9b510a58eb5c673b70c97404c4 1e+09
+   swap +16 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +21 B 0.00069 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000694786274648098 minOut 434724292795272781549932 rcpt 0x1a45411c type 0x2
+   burn +44 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85414531 10-11 00:21:55 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 14 WETH=token0 pool 0xc1c9ddbb5ab7c5ff6dcc79824c6c0d9f458573db token 0x9e92f1d7ded99be0e51b8be6e06527dca3f53a0c
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xc1c9ddbb5ab7c5ff6dcc79824c6c0d9f458573db 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +177 B 0.00500 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.005 minOut 0 rcpt 0xfe94166e type 0x0
+   burn +209 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85414938 10-11 00:22:37 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 21 WETH=token0 pool 0xfcdbb811b08a11f7b068bacbaf96f672e7fc5a75 token 0x7b02f7333001115a0445238f9de64df9ce61440f
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xfcdbb811b08a11f7b068bacbaf96f672e7fc5a75 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +23 B 0.00069 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000686804648343179 minOut 429732755886290388533957 rcpt 0x1a45411c type 0x2
+   burn +59 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85415035 10-11 00:22:47 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 27 WETH=token0 pool 0x9230b2b8f97790421390716637b75fa8bf3fa715 token 0xe7e1cd0494cb29a99bf5e97e380470e1736da459
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x9230b2b8f97790421390716637b75fa8bf3fa715 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +22 B 0.00067 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000674825497499984 minOut 422241143208735684931048 rcpt 0x1a45411c type 0x2
+   burn +54 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85415127 10-11 00:22:56 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 33 WETH=token0 pool 0x778af74c316d9443d6ebcc61723144001eac5698 token 0xa48d2976c678191bde6a5d55801efd2b1002a918
+   mint +5 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0x778af74c316d9443d6ebcc61723144001eac5698 1e+09
+   swap +16 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +21 B 0.00067 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000666892799960418 minOut 417280059576022134028353 rcpt 0x1a45411c type 0x2
+   burn +54 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85415355 10-11 00:23:20 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 39 WETH=token0 pool 0x719f16ad776f13bffd4cc3a61f0f9fc9bb52f314 token 0x223e32b9dc38b55d0d4eb5e765c6f24b29a98538
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x719f16ad776f13bffd4cc3a61f0f9fc9bb52f314 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +24 B 0.00065 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000654912689781488 minOut 409787627135482292220505 rcpt 0x1a45411c type 0x2
+   burn +69 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85415463 10-11 00:23:31 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 45 WETH=token0 pool 0x9705646c95462187052963da099fb611bfbbc562 token 0x48c33534b1fe04e6113c635020aa4080dfe9cee9
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x9705646c95462187052963da099fb611bfbbc562 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +23 B 0.00065 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000647049472156911 minOut 404869851992938090590606 rcpt 0x1a45411c type 0x2
+   burn +56 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85415544 10-11 00:23:39 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 51 WETH=token0 pool 0xe28667b5a5a481367364d69acd6afc6843e914cd token 0xa003ff76abd3b84241414d3b6ea2285a87028ec8
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xe28667b5a5a481367364d69acd6afc6843e914cd 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +22 B 0.00064 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000635067074524375 minOut 397375769856560992945635 rcpt 0x1a45411c type 0x2
+   burn +57 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85415640 10-11 00:23:49 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 57 WETH=token0 pool 0x5b182cfe08986a75fa54ba203b283c4a5cdc21f9 token 0xe76bf6f33b018275c767b6a71fc24efa524f42cb
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x5b182cfe08986a75fa54ba203b283c4a5cdc21f9 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +28 B 0.00063 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000627078809436018 minOut 392379641595938779839856 rcpt 0x1a45411c type 0x2
+   burn +67 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85415929 10-11 00:24:19 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 63 WETH=token0 pool 0x474da8bef24e2389c476225baf32c5da55cb89ae token 0xbce2cc9426cf2c6dd2e69a6ca920a52df151bdc3
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x474da8bef24e2389c476225baf32c5da55cb89ae 1e+09
+   swap +21 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +29 B 0.00061 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000614957146898694 minOut 385365952055249003773982 rcpt 0x1a45411c type 0x2
+   burn +65 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85416034 10-11 00:24:30 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 69 WETH=token0 pool 0xf3c2d66e3c6d4d04925cd030c5d0392f700972c8 token 0x1f40c28baaf36c8c5ce967213cce586e735ce501
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xf3c2d66e3c6d4d04925cd030c5d0392f700972c8 1e+09
+   swap +16 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +25 B 0.00061 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000607076707437121 minOut 380429845721112095811990 rcpt 0x1a45411c type 0x2
+   burn +60 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85416130 10-11 00:24:40 (42.6 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 75 WETH=token0 pool 0x2db78e3551351d3e93a0ab5a4717d569f7c0d3f8 token 0x897deeedf834401e7417e76fa9bc32308adc9c23
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x2db78e3551351d3e93a0ab5a4717d569f7c0d3f8 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +26 B 0.00060 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000599088856023475 minOut 375426400745024915987817 rcpt 0x1a45411c type 0x2
+   burn +61 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85416386 10-11 00:25:06 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 81 WETH=token0 pool 0x4ee103c610765bbacf1948b39ddbace1371a1f40 token 0xfc3df602749238c29db8f7a20e73443647cfd6b1
+   mint +7 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x4ee103c610765bbacf1948b39ddbace1371a1f40 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +26 B 0.00059 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000587183131365305 minOut 367968761784235296068076 rcpt 0x1a45411c type 0x2
+   burn +66 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85416487 10-11 00:25:17 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 87 WETH=token0 pool 0xfc41ffeeaae801859f26864318a2fc44000cda6b token 0xcf4ae6c72afb7c5893a00972a29fb7479699b9a2
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xfc41ffeeaae801859f26864318a2fc44000cda6b 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +25 B 0.00058 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.00057919424522428 minOut 362964521881699351262100 rcpt 0x1a45411c type 0x2
+   burn +68 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85416615 10-11 00:25:30 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 93 WETH=token0 pool 0x189fcacff96f2cb406bb57beb8e83633262c52d2 token 0xa3c9b6620e6291ef8afd873e7a183324ec64b36d
+   mint +5 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0x189fcacff96f2cb406bb57beb8e83633262c52d2 1e+09
+   swap +18 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +27 B 0.00057 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000571418609226293 minOut 358093805302241440072361 rcpt 0x1a45411c type 0x2
+   burn +141 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85417001 10-11 00:26:10 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 99 WETH=token0 pool 0xaa52242351e82fdb9de9a9f15e3796e3fd5bc750 token 0xefb0bec4b9898f059318f9c9496a472f2557e62a
+   mint +5 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0xaa52242351e82fdb9de9a9f15e3796e3fd5bc750 1e+09
+   swap +16 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +24 B 0.00056 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000563387517359387 minOut 353063010627486597511399 rcpt 0x1a45411c type 0x2
+   burn +62 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85417097 10-11 00:26:20 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 105 WETH=token0 pool 0x40ba3dc665c097ba03055be6151ce910624b368e token 0xa020f14e38fc852bea32800196b8797128f56756
+   mint +5 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0x40ba3dc665c097ba03055be6151ce910624b368e 1e+09
+   swap +16 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +25 B 0.00055 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000551400548904932 minOut 345554085554455477573544 rcpt 0x1a45411c type 0x2
+   burn +79 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85417217 10-11 00:26:33 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 111 WETH=token0 pool 0xcb0a9feb61a80c2e28f435203939e93c002f4112 token 0xfc765a112e19b061f467dbeea7eef2068c2672e7
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xcb0a9feb61a80c2e28f435203939e93c002f4112 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +24 B 0.00054 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000543408740676699 minOut 340547751104281722388427 rcpt 0x1a45411c type 0x2
+   burn +71 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85417325 10-11 00:26:44 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 117 WETH=token0 pool 0x2ac97831961c86c4fdf12bb2df0a68fd8fc440a5 token 0x3a141ddb09c3c37f2a84afbdbcef12cdd63aa0bb
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x2ac97831961c86c4fdf12bb2df0a68fd8fc440a5 1e+09
+   swap +16 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +20 B 0.00054 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000535417435666748 minOut 335047342801412873198649 rcpt 0x1a45411c type 0x2
+   burn +75 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85417747 10-11 00:27:28 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 123 WETH=token0 pool 0x2880e9708ef63626f8e1adc5a470a3fb881c3a38 token 0x1e94e554cde741a50f5e45f1c180a2a7142177a1
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x2880e9708ef63626f8e1adc5a470a3fb881c3a38 1e+09
+   swap +21 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +25 B 0.00053 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000527553042630602 minOut 330127966471301068321101 rcpt 0x1a45411c type 0x2
+   burn +82 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85417870 10-11 00:27:41 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 129 WETH=token0 pool 0x3d2865e12d35593d99227206554ab389ed14cc14 token 0x7cdcd132548de368fd09066fe335fcf15d08ee3f
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x3d2865e12d35593d99227206554ab389ed14cc14 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +21 B 0.00052 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000519559814711956 minOut 325127942255482969466318 rcpt 0x1a45411c type 0x2
+   burn +146 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85418090 10-11 00:28:04 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 135 WETH=token1 pool 0xb9754a40a70239e966da6e7365ddf7661a9c53e0 token 0x0604d85f2a754c6048b84b62afc7beab4d6467e3
+   mint +5 L 3.682e+22 [-204200,887272] a0 1e+27 a1 0 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0xb9754a40a70239e966da6e7365ddf7661a9c53e0 1e+09
+   swap +16 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +21 B 0.00051 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000511568446849711 minOut 320129022695315050796915 rcpt 0x1a45411c type 0x2
+   burn +92 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85418248 10-11 00:28:21 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 141 WETH=token0 pool 0xbaa89870fc17a8e5913e11beac8c2c0449a52c75 token 0x3b07e291953a5579a9b0d233b1443972390f9d4a
+   mint +6 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xbaa89870fc17a8e5913e11beac8c2c0449a52c75 1e+09
+   swap +17 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +22 B 0.00050 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000503575189867684 minOut 315128862530090211618072 rcpt 0x1a45411c type 0x2
+   burn +85 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85418468 10-11 00:28:43 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 147 WETH=token0 pool 0xa759e942e53ebbc39e2b10d51dea3e934a52b69a token 0x37a1b85cca4c1ea203df9f754903e1cd11602a44
+   mint +4 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +4 to 0xa759e942e53ebbc39e2b10d51dea3e934a52b69a 1e+09
+   swap +16 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +20 B 0.00050 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000495585605845445 minOut 310130941122226645290729 rcpt 0x1a45411c type 0x2
+   burn +106 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85418614 10-11 00:28:58 (42.5 h ago) fee 100 LINE wallet 0xfe94166ee41402043c1d63043d71bb79151b2595 nonce 153 WETH=token0 pool 0x9292dbf0a1e9a1453c0f24a8d5cffd9b626d204e token 0x28a662dbb6bcfadf98197c0b6995731d06750037
+   mint +8 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +8 to 0x9292dbf0a1e9a1453c0f24a8d5cffd9b626d204e 1e+09
+   swap +20 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xfe94166e type 0x0
+   swap +25 B 0.00049 ETH by 0x1a45411c635f06a563cc61c8e96e6333dbc2420a via 0xcaf681a6:ac9650d8/388 value 0.000487573368979283 minOut 305118790031952945338133 rcpt 0x1a45411c type 0x2
+   burn +99 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85422923 10-11 00:36:21 (42.4 h ago) fee 100 LINE wallet 0xfbc39221420b1401129ecf16516be42386b7ccd7 nonce 2 WETH=token0 pool 0x198d9b909a439efc73a67d521226cf900b2ae967 token 0x96e5635dfaeed1cf503394b5fbaef70025f93852
+   mint +7 L 1.227e+22 [-887272,204200] a0 0 a1 3.333e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x198d9b909a439efc73a67d521226cf900b2ae967 3.333e+08
+   LW token transfer +13 to 0x000000000000000000000000000000000000dead 6.667e+08
+   swap +29 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xfbc39221 type 0x0
+   swap +203 B 0.06974 ETH by 0x597dcbaa9edd2fc950d4f459492a223ff926b654 via 0x597dcbaa:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (40 more swaps after +400 to +5000; buys 30)
+   no burn to +5000
+
+#85557038 10-11 04:28:29 (38.5 h ago) fee 100 LINE wallet 0x69622185068ea9d6cf549a2e518ced53bc0d00a0 nonce 2 WETH=token0 pool 0xe22b8e6ff234e5bdfb4ab0ce05804aa54dab68bf token 0xc0686e34c58d17572aa3867f9bf7f27c9421d65a
+   mint +7 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0xe22b8e6ff234e5bdfb4ab0ce05804aa54dab68bf 1e+09
+   swap +20 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0x69622185 type 0x0
+   swap +172 B 0.00500 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.005 minOut 0 rcpt 0x69622185 type 0x0
+   burn +1260 L 3.682e+22 by LW call ac9650d8  <- PULL
+
+#85558466 10-11 04:30:58 (38.5 h ago) fee 100 LINE wallet 0x69622185068ea9d6cf549a2e518ced53bc0d00a0 nonce 9 WETH=token0 pool 0x753039a8d714e9bb7ed0b317a911605b51b732c8 token 0xb1d1bc52dfc5b9d59c8b194b087a535811e47042
+   mint +5 L 3.682e+22 [-887272,204200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +5 to 0x753039a8d714e9bb7ed0b317a911605b51b732c8 1e+09
+   swap +18 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x69622185 type 0x0
+   (1 more swaps after +400 to +5000; buys 1)
+   no burn to +5000
+
+#85580682 10-11 05:09:57 (37.8 h ago) fee 100 not-line wallet 0xd974f9e556422e5079936543ad222584c377970b nonce 1 WETH=token0 pool 0x6bed772d82df26f477b12e7dc3efa92a10786203 token 0xb701bca5a18e17dec0202d67f32ea62bcf85c3f4
+   mint +684 L 3.162e+22 [-887272,207243] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   (1 more swaps after +400 to +5000; buys 1)
+   no burn to +5000
+
+#85584499 10-11 05:16:36 (37.7 h ago) fee 100 not-line wallet 0xd974f9e556422e5079936543ad222584c377970b nonce 12 WETH=token0 pool 0x2cb172c82c66800608e5960ad6e842e2bf7053ee token 0xaad38a424ee06b9487a57bcc6467f8aa9641a11d
+   mint +73 L 3.162e+22 [-887272,207243] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +73 to 0x2cb172c82c66800608e5960ad6e842e2bf7053ee 1e+09
+   swap +255 B 0.00010 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 0 rcpt 0xd974f9e5 type 0x2
+   swap +259 B 0.00020 ETH by 0x5718d14b3e736b04764544776ae4b9e855342f33 via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 99949822883189623724653 rcpt 0x5718d14b type 0x2
+   swap +385 B 0.00037 ETH by 0x796cd42e0a4fc9de25458fb875ce3666f73bd81b via 0x65050a9b:4d819a2a/580 value 0.0003725 minOut None rcpt - type 0x2
+   (5 more swaps after +400 to +5000; buys 4)
+   no burn to +5000
+
+#85590630 10-11 05:27:14 (37.5 h ago) fee 10000 not-line wallet 0xd974f9e556422e5079936543ad222584c377970b nonce 19 WETH=token0 pool 0xeafa6cdfa1d7ab1a13300315ab85c3aca8f00546 token 0x804251d67901afee228a95d596bae88155d961f7
+   mint +81 L 3.169e+22 [-887200,207200] a0 0 a1 1e+27 by LW via 0x73991a25:88316456/356
+   LW token transfer +81 to 0xeafa6cdfa1d7ab1a13300315ab85c3aca8f00546 1e+09
+   swap +286 B 0.00010 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 0 rcpt 0xd974f9e5 type 0x2
+   (3 more swaps after +400 to +5000; buys 2)
+   burn +760 L 0 by LW call fc6f7865 (fee poke)
+
+#85632093 10-11 06:39:39 (36.3 h ago) fee 100 LINE wallet 0x1cd4303ea31c4cfd90740310aaeb0fde7f020012 nonce 2 WETH=token0 pool 0x253cc11fa8188ef4ad9cd4199c23180c0f917d07 token 0x758af5b873622631ff496d0488012967073ee598
+   mint +7 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x253cc11fa8188ef4ad9cd4199c23180c0f917d07 9.997e+08
+   LW token transfer +14 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +29 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x1cd4303e type 0x0
+   swap +234 B 0.11440 ETH by 0x597dcbaa9edd2fc950d4f459492a223ff926b654 via 0x597dcbaa:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +295 B 0.04710 ETH by 0x550836793e385e488628d3d2a018ee6b01e126b8 via 0x55083679:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +393 B 0.00913 ETH by 0x1268c4ad9dd21fcba9b08c84f2930f75afe35ccf via 0x1268c4ad:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (4 more swaps after +400 to +5000; buys 3)
+   burn +581 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#85633167 10-11 06:41:31 (36.3 h ago) fee 100 LINE wallet 0x1cd4303ea31c4cfd90740310aaeb0fde7f020012 nonce 9 WETH=token0 pool 0x1a5fca655458001eb0411c41234551460cd5afd9 token 0xf0a977d958844138ae86b88d3faabc9ae87a3c78
+   mint +7 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x1a5fca655458001eb0411c41234551460cd5afd9 9.997e+08
+   LW token transfer +13 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +32 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x1cd4303e type 0x0
+   swap +121 B 0.04046 ETH by 0x597dcbaa9edd2fc950d4f459492a223ff926b654 via 0x597dcbaa:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +187 B 0.10948 ETH by 0x550836793e385e488628d3d2a018ee6b01e126b8 via 0x55083679:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +285 B 0.09064 ETH by 0x1268c4ad9dd21fcba9b08c84f2930f75afe35ccf via 0x1268c4ad:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +373 S 0.00811 ETH by 0x550836793e385e488628d3d2a018ee6b01e126b8 via 0xcaf681a6:ac9650d8/548 value 0.0 minOut 6485931029663161 rcpt 0xcaf681a6 type 0x2
+   (3 more swaps after +400 to +5000; buys 3)
+   burn +500 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#85635604 10-11 06:45:45 (36.2 h ago) fee 100 LINE wallet 0xd45b13a8ce2277db77fdd79935a7d7eb1685b16e nonce 2 WETH=token0 pool 0x46c71366874dc684c8da7a90cd7478435ca9748b token 0x5df9176de1e3d754f2cfabf18d148cc993ae7071
+   mint +7 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x46c71366874dc684c8da7a90cd7478435ca9748b 9.997e+08
+   LW token transfer +14 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +30 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xd45b13a8 type 0x0
+   swap +176 B 0.11168 ETH by 0x597dcbaa9edd2fc950d4f459492a223ff926b654 via 0x597dcbaa:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +233 B 0.08111 ETH by 0x550836793e385e488628d3d2a018ee6b01e126b8 via 0x55083679:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +278 B 0.05888 ETH by 0x1268c4ad9dd21fcba9b08c84f2930f75afe35ccf via 0x1268c4ad:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +378 S 0.02720 ETH by 0x597dcbaa9edd2fc950d4f459492a223ff926b654 via 0xcaf681a6:ac9650d8/548 value 0.0 minOut 21761494309727372 rcpt 0xcaf681a6 type 0x2
+   (51 more swaps after +400 to +5000; buys 36)
+   burn +2574 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#85926517 10-11 15:09:19 (27.8 h ago) fee 100 LINE wallet 0x9ad910e312a49a4f661b3cf170cb25075c7508f1 nonce 2 WETH=token0 pool 0x12323d67687954e13ed56fdffb232d1fb07e75da token 0xdb76e96400c74f4773a0474c6916a3ba4115a2ff
+   mint +6 L 1.227e+22 [-887272,204200] a0 0 a1 3.333e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x12323d67687954e13ed56fdffb232d1fb07e75da 3.333e+08
+   LW token transfer +11 to 0x000000000000000000000000000000000000dead 6.667e+08
+   swap +27 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x9ad910e3 type 0x0
+   swap +57 B 0.00069 ETH by 0x1fb3e7395e2ca9dfd2c89cbca2a4399e1f72aa6d via 0x65050a9b:4d819a2a/580 value 0.0007 minOut None rcpt - type 0x2
+   swap +146 B 0.04393 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +242 B 0.03379 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +373 B 0.04908 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (49 more swaps after +400 to +5000; buys 32)
+   no burn to +5000
+
+#86310601 10-12 02:06:30 (16.9 h ago) fee 100 LINE wallet 0x9569b3a52b6a6b84d5994228ca8aee9e05f8685a nonce 2 WETH=token0 pool 0x9c03d2d1de9439efbb933caefe3be8498c637b0b token 0xf25d9a4e6446bf54fe219b541f469d579d444915
+   mint +6 L 1.227e+22 [-887272,204200] a0 0 a1 3.333e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x9c03d2d1de9439efbb933caefe3be8498c637b0b 3.333e+08
+   LW token transfer +11 to 0x000000000000000000000000000000000000dead 6.667e+08
+   swap +25 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x9569b3a5 type 0x0
+   swap +164 B 0.00049 ETH by 0x5cfe426dde350e72893faa1cef33239837f186ed via 0x65050a9b:4d819a2a/580 value 0.00049 minOut None rcpt - type 0x2
+   swap +291 B 0.03133 ETH by 0x27b8c848c61caa0bbdbfbed41dfcb17ea0a40f49 via 0x27b8c848:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +352 B 0.07471 ETH by 0xb72577c6dc60a24952c6b87e52d9154a75608b80 via 0xb72577c6:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (55 more swaps after +400 to +5000; buys 40)
+   no burn to +5000
+
+#86321042 10-12 02:24:30 (16.6 h ago) fee 10000 not-line wallet 0x70830a56679bed9c87917a4e365798c9dcfc9e92 nonce 4 WETH=token0 pool 0x5f224e675cbe6845cb37545bb7a248795da1b03a token 0x1fe841737d302468fe8f90bf469ef8674dad34ed
+   mint +21 L 2.121e+22 [-887200,887200] a0 5e+17 a1 9e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +21 to 0x5f224e675cbe6845cb37545bb7a248795da1b03a 9e+08
+   swap +24 B 0.00000 ETH by 0xe71a69f434a719cd5afa411568b69716aab3b84a via 0xcaf681a6:04e45aaf/228 value 1.999536e-06 minOut 2494211331614608640730 rcpt 0x2be87ad7 type 0x0
+   swap +252 B 0.00002 ETH by 0xdf24e301a392a35b778e86549804bc61ae265ea3 via 0x204faca1:3593564c/740 value 1.9072120258325e-05 minOut None rcpt - type 0x0
+   (1 more swaps after +400 to +5000; buys 0)
+   no burn to +5000
+
+#86378827 10-12 04:03:58 (14.9 h ago) fee 100 LINE wallet 0xf41e1a642450330687b138343eaca63379c0ae1e nonce 2 WETH=token0 pool 0x920780ae89eebd4336cc0be43f741b8114934694 token 0x37dc5ef984e0379d1cb0f7c883f470e1a26bec05
+   mint +7 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x920780ae89eebd4336cc0be43f741b8114934694 9.997e+08
+   LW token transfer +13 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +25 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xf41e1a64 type 0x0
+   swap +151 B 0.00500 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.005 minOut 0 rcpt 0xf41e1a64 type 0x0
+   swap +187 B 0.00500 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.005 minOut 0 rcpt 0xf41e1a64 type 0x0
+   swap +219 B 0.00500 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.005 minOut 0 rcpt 0xf41e1a64 type 0x0
+   swap +255 B 0.00500 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.005 minOut 0 rcpt 0xf41e1a64 type 0x0
+   burn +279 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#86379461 10-12 04:05:03 (14.9 h ago) fee 100 LINE wallet 0xf41e1a642450330687b138343eaca63379c0ae1e nonce 13 WETH=token0 pool 0xa36035a640c8ccc020113fa955306163ed612b3d token 0x7934d71ab23ab910bffabf2c78c6d363dc6374ae
+   mint +7 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0xa36035a640c8ccc020113fa955306163ed612b3d 9.997e+08
+   LW token transfer +12 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +23 B 0.00100 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.001 minOut 0 rcpt 0xf41e1a64 type 0x0
+   no burn to +5000
+
+#86425158 10-12 05:23:10 (13.6 h ago) fee 100 LINE wallet 0xf9678e2b23195d59f3d18c4450ad8188b8fd66f1 nonce 2 WETH=token0 pool 0x45eeecd3dd562116576dd42550468e7a56f69f10 token 0xff2dd088a1a5f7fff7e9523dd059ff02ef7f9854
+   mint +29 L 1.227e+22 [-887272,204200] a0 0 a1 3.333e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +29 to 0x45eeecd3dd562116576dd42550468e7a56f69f10 3.333e+08
+   LW token transfer +55 to 0x000000000000000000000000000000000000dead 6.667e+08
+   swap +184 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xf9678e2b type 0x0
+   (38 more swaps after +400 to +5000; buys 28)
+   no burn to +5000
+
+#86440192 10-12 05:49:02 (13.2 h ago) fee 100 LINE wallet 0xdd0d49aef6d089167111fc8771dc63d440bdab86 nonce 2 WETH=token0 pool 0x8a86b6860c8a05343f7e3b6a9c528380d7736491 token 0x68aeff0660578aaf5dbba2c02faaea765ef8f035
+   mint +30 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +30 to 0x8a86b6860c8a05343f7e3b6a9c528380d7736491 9.997e+08
+   LW token transfer +53 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +138 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xdd0d49ae type 0x0
+   (2 more swaps after +400 to +5000; buys 2)
+   burn +1681 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#86444151 10-12 05:55:47 (13.0 h ago) fee 100 LINE wallet 0x78d7e5cd804260fede0a26e6e559106118c82231 nonce 2 WETH=token0 pool 0x2100a7d07a8ad43e669ee27423a9fffd1ed3e6ed token 0x68f601c825af6571b7c0c57854c0a04550ec4216
+   mint +28 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +28 to 0x2100a7d07a8ad43e669ee27423a9fffd1ed3e6ed 9.997e+08
+   LW token transfer +52 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +142 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x78d7e5cd type 0x0
+   swap +273 B 0.06733 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (40 more swaps after +400 to +5000; buys 27)
+   no burn to +5000
+
+#86453459 10-12 06:11:46 (12.8 h ago) fee 100 LINE wallet 0x46e39f0d7d4858768a5e197d3acefdbef285804e nonce 2 WETH=token1 pool 0x12c5de8572ac4bdd65990bef707d64dc950555d3 token 0x0056b8b9740cd62c008850a8c7da2371048c2904
+   mint +32 L 3.681e+22 [-204200,887272] a0 9.997e+26 a1 0 by LW via 0x73991a25:88316456/356
+   LW token transfer +32 to 0x12c5de8572ac4bdd65990bef707d64dc950555d3 9.997e+08
+   LW token transfer +54 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +140 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x46e39f0d type 0x0
+   swap +242 B 0.06899 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +389 B 0.02282 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (45 more swaps after +400 to +5000; buys 28)
+   no burn to +5000
+
+#86527090 10-12 08:17:50 (10.7 h ago) fee 100 LINE wallet 0x7393b8197ac3ebfff2272708e72ea938c10fd65c nonce 2 WETH=token0 pool 0xa72dfd49bb136834d2f70881a477abb22dc28e47 token 0x7399605a3b127dc670ab5dba91946dd55bfa1185
+   mint +6 L 2.454e+22 [-887272,204200] a0 0 a1 6.666e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0xa72dfd49bb136834d2f70881a477abb22dc28e47 6.666e+08
+   LW token transfer +11 to 0x000000000000000000000000000000000000dead 3.334e+08
+   swap +24 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x7393b819 type 0x0
+   swap +332 B 0.01716 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (45 more swaps after +400 to +5000; buys 31)
+   no burn to +5000
+
+#86596049 10-12 10:16:13 (8.7 h ago) fee 10000 not-line wallet 0xb93262d3cf32de9a4464429146ab86a25b20ee4e nonce 12 WETH=token0 pool 0x1124bd4e73a69736ad15ead80abe60741001f65b token 0x73e95167de6f0c559cceedcb47796fed39f95e1d
+   mint +100 L 2.436e+22 [-887200,198600] a0 0 a1 5e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +100 to 0x1124bd4e73a69736ad15ead80abe60741001f65b 5e+08
+   (1 more swaps after +400 to +5000; buys 1)
+   no burn to +5000
+
+#86606471 10-12 10:34:13 (8.4 h ago) fee 10000 not-line wallet 0xb93262d3cf32de9a4464429146ab86a25b20ee4e nonce 23 WETH=token0 pool 0x3404c56f7d41443b4759f9250ae2de7694015bba token 0xd2ff85e20d8367462b5ad1d7c92b798e7e14df57
+   mint +1132 L 2.436e+22 [-887200,198600] a0 0 a1 5e+26 by LW via 0x73991a25:88316456/356
+   no burn to +5000
+
+#86614007 10-12 10:47:10 (8.2 h ago) fee 100 LINE wallet 0x30a51de712316185bd9bcc0ca932bb62e059a715 nonce 2 WETH=token0 pool 0x39ec6fd7ba7c3f64faba9ca6d13c86a9af09a38c token 0xf474ee62b1afbd489883426c98919ac539941b8b
+   mint +8 L 3.681e+22 [-887272,204200] a0 0 a1 9.998e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +8 to 0x39ec6fd7ba7c3f64faba9ca6d13c86a9af09a38c 9.998e+08
+   LW token transfer +13 to 0x000000000000000000000000000000000000dead 2e+05
+   swap +25 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x30a51de7 type 0x0
+   swap +166 B 0.07053 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +237 B 0.07451 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +362 B 0.06830 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (44 more swaps after +400 to +5000; buys 28)
+   no burn to +5000
+
+#86615569 10-12 10:49:51 (8.1 h ago) fee 10000 not-line wallet 0xb93262d3cf32de9a4464429146ab86a25b20ee4e nonce 32 WETH=token0 pool 0x9270e95935446535c577ed8070e08c74f56eacf1 token 0xbd28399037d69aa08b5e3bb3e11b87fa515b6316
+   mint +1142 L 2.436e+22 [-887200,198600] a0 0 a1 5e+26 by LW via 0x73991a25:88316456/356
+   (1 more swaps after +400 to +5000; buys 1)
+   no burn to +5000
+
+#86641873 10-12 11:34:42 (7.4 h ago) fee 10000 not-line wallet 0xb93262d3cf32de9a4464429146ab86a25b20ee4e nonce 42 WETH=token0 pool 0xf7640bb8e0ae2e35941157371feac814f0c38bd9 token 0x456fc5da26884581abf50ff69ce79c80cdeaef38
+   mint +1148 L 2.436e+22 [-887200,198600] a0 0 a1 5e+26 by LW via 0x73991a25:88316456/356
+   (1 more swaps after +400 to +5000; buys 1)
+   no burn to +5000
+
+#86786987 10-12 15:41:37 (3.3 h ago) fee 100 LINE wallet 0x844c876d759d054506f361a2052626517f8785fa nonce 2 WETH=token0 pool 0x0b1972590145dbb3201042107102a7a523494e74 token 0x48518cfbefee1e930251f953db203239b5b4faa4
+   mint +7 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x0b1972590145dbb3201042107102a7a523494e74 9.997e+08
+   LW token transfer +14 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +29 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x844c876d type 0x0
+   swap +178 B 0.01190 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +241 B 0.03416 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +290 B 0.03923 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +374 S 0.00589 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0xcaf681a6:ac9650d8/548 value 0.0 minOut 4710969468673055 rcpt 0xcaf681a6 type 0x2
+   (12 more swaps after +400 to +5000; buys 10)
+   burn +1424 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#86787612 10-12 15:42:41 (3.3 h ago) fee 100 LINE wallet 0xe62d605bcf58a502ad799067a7c318d0e1954d24 nonce 2 WETH=token0 pool 0x5587bd03bd1dee38434d56ab7e6a32513db1baac token 0x4ab819952cf3a89284f88e4783a43a73930a552a
+   mint +8 L 1.841e+21 [-887272,204200] a0 0 a1 5e+25 by LW via 0x73991a25:88316456/356
+   LW token transfer +8 to 0x5587bd03bd1dee38434d56ab7e6a32513db1baac 5e+07
+   LW token transfer +15 to 0x000000000000000000000000000000000000dead 9.5e+08
+   (10 more swaps after +400 to +5000; buys 10)
+   no burn to +5000
+
+#86789370 10-12 15:45:40 (3.2 h ago) fee 100 LINE wallet 0x4b10608d180a65633b691ff0d6d8d58e78bf04b8 nonce 2 WETH=token0 pool 0x0982ae60f4ce32fa5a4f790ed82c657aed60e8c1 token 0x3710012c71d4dc87cd54735d0dc9ec7c3184a016
+   mint +7 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x0982ae60f4ce32fa5a4f790ed82c657aed60e8c1 9.997e+08
+   LW token transfer +12 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +31 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x4b10608d type 0x0
+   swap +151 B 0.00655 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +243 B 0.01309 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +342 B 0.07919 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +367 B 0.00084 ETH by 0x0937cfad2c394fc440e5b3448a64a6e64f21f008 via 0x65050a9b:4d819a2a/580 value 0.00085 minOut None rcpt - type 0x2
+   swap +400 S 0.00084 ETH by 0x0937cfad2c394fc440e5b3448a64a6e64f21f008 via 0x65050a9b:4d819a2a/580 value 0.0 minOut None rcpt - type 0x2
+   burn +407 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#86790642 10-12 15:47:50 (3.2 h ago) fee 100 LINE wallet 0xecf0f9e22148063fd4104bca043970909fe8a94f nonce 2 WETH=token0 pool 0x608d687d8cd2da5274f7277e125cfe996e7d9f3f token 0xcb636cc7764dde13720743634255337af4133b7f
+   mint +6 L 3.681e+22 [-887272,204200] a0 0 a1 9.997e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x608d687d8cd2da5274f7277e125cfe996e7d9f3f 9.997e+08
+   LW token transfer +12 to 0x000000000000000000000000000000000000dead 3e+05
+   swap +27 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xecf0f9e2 type 0x0
+   swap +111 B 0.04457 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +212 B 0.01954 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +314 B 0.06666 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (21 more swaps after +400 to +5000; buys 18)
+   burn +1988 L 3.681e+22 by LW call ac9650d8  <- PULL
+
+#86793969 10-12 15:53:28 (3.1 h ago) fee 100 LINE wallet 0xfce2267f64fa51f4b366817e2de32e482483eca2 nonce 2 WETH=token0 pool 0x6e3332e70561ba6311a90b2fad7eb2e5b0e25b55 token 0x23d34b8a82378322c530eae759da1b57af0b5367
+   mint +6 L 3.272e+22 [-887272,204200] a0 0 a1 8.888e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +6 to 0x6e3332e70561ba6311a90b2fad7eb2e5b0e25b55 8.888e+08
+   LW token transfer +12 to 0x000000000000000000000000000000000000dead 1.112e+08
+   swap +29 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xfce2267f type 0x0
+   swap +130 B 0.07298 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +234 B 0.06327 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +313 B 0.06569 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   (62 more swaps after +400 to +5000; buys 41)
+   no burn to +5000
+
+#86816258 10-12 16:31:17 (2.4 h ago) fee 100 LINE wallet 0xa78bc64b4742ece66b062ad1621ae529316d287a nonce 2 WETH=token0 pool 0x17a16c934c484838b65888d4b983147bcfc9ef19 token 0xf040dcf20c1aa51329a25306d7ae7ddb3f4658f4
+   mint +7 L 3.272e+22 [-887272,204200] a0 0 a1 8.888e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +7 to 0x17a16c934c484838b65888d4b983147bcfc9ef19 8.888e+08
+   LW token transfer +13 to 0x000000000000000000000000000000000000dead 1.112e+08
+   swap +30 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0xa78bc64b type 0x0
+   swap +135 B 0.03689 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +226 B 0.04391 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +301 B 0.01136 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +376 S 0.00747 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0xcaf681a6:ac9650d8/548 value 0.0 minOut 5978081362663394 rcpt 0xcaf681a6 type 0x2
+   (62 more swaps after +400 to +5000; buys 41)
+   no burn to +5000
+
+#86822061 10-12 16:41:08 (2.3 h ago) fee 10000 not-line wallet 0xb93262d3cf32de9a4464429146ab86a25b20ee4e nonce 68 WETH=token0 pool 0x6a97fc590bca01f0cf44c9f02f88bc57007b5f79 token 0x79923fb1bd54f61ed8f7c38c15ea0a2ca2a97dd9
+   mint +1156 L 2.436e+22 [-887200,198600] a0 0 a1 5e+26 by LW via 0x73991a25:88316456/356
+   (1 more swaps after +400 to +5000; buys 1)
+   no burn to +5000
+
+#86845765 10-12 17:21:23 (1.6 h ago) fee 100 LINE wallet 0x582fd5a08a7ba871acec3ca302ec584fc4a2a56e nonce 2 WETH=token0 pool 0x74a6f2bd0dd3a98d0a35c2009a128a2fc4592a33 token 0x458a33bfe9e461b6c0967559816e69cc2c137bdd
+   mint +8 L 2.454e+22 [-887272,204200] a0 0 a1 6.666e+26 by LW via 0x73991a25:88316456/356
+   LW token transfer +8 to 0x74a6f2bd0dd3a98d0a35c2009a128a2fc4592a33 6.666e+08
+   LW token transfer +13 to 0x000000000000000000000000000000000000dead 3.334e+08
+   swap +32 B 0.05000 ETH by LW via 0xcaf681a6:04e45aaf/228 value 0.05 minOut 0 rcpt 0x582fd5a0 type 0x0
+   swap +104 B 0.03889 ETH by 0x5cd4dc04f8dd8b5bf04de0982a6807513a70f358 via 0x5cd4dc04:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +247 B 0.04563 ETH by 0x50d69fcedb638ce80eb327534fcaba0af4a71116 via 0x50d69fce:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +315 B 0.07534 ETH by 0x313d45beb374ae7cfcbf5a6a46a38d69c6214415 via 0x313d45be:34fcd5be/708 value 0.0 minOut None rcpt - type 0x2
+   swap +318 B 0.00100 ETH by 0x4aba20f1e31a7ebf0293c03d42883f01e22ef9fc via 0xcaf681a6:04e45aaf/228 value 0.0 minOut 1 rcpt 0x4aba20f1 type 0x2
+   (67 more swaps after +400 to +5000; buys 45)
+   no burn to +5000

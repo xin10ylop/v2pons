@@ -1,0 +1,82 @@
+(1) launch calls: line reference 0xfbb2e50a (2276 bytes); 14:00-shape launches 7
+   0xcbb06b45 2276 bytes, selector ac9650d8; 32-byte words that differ from the reference (by index after the selector): [7, 8, 11, 12, 14, 15, 20, 21, 22, 24, 26, 27, 28, 33, 46, 47, 52, 53, 55, 56, 60, 61, 62, 63, 64, 66, 67, 69, 70]
+      w  7 line 000000000000000000000000000000005ff03c182b83dbdd8eb4da05ed6fbf53  14:00 000000000000000000000000000000002d980516a2922146b03d12a3b9eda823
+      w  8 line fc36fbd500000000000000000000000000000000000000000000000000000000  14:00 0f998c9300000000000000000000000000000000000000000000000000000000
+      w 11 line 00000000000000000000000000000000000000000000270ffdbe72847b89e899  14:00 00000000000000000000000000000000000000000000292c91ce89fa76d80669
+      w 12 line 461529a900000000000000000000000000000000000000000000000000000000  14:00 4c7dde5e00000000000000000000000000000000000000000000000000000000
+      w 14 line 002a3e3a000000000000000000000000e9aceaca02542a5f4e263c6d2cd809ec  14:00 002a3e3a000000000000000000000000ac234191c96b17cea3e0d4ec52632e3d
+      w 15 line 48019a4700000000000000000000000000000000000000000000000000000000  14:00 81f3b53700000000000000000000000000000000000000000000000000000000
+      w 20 line 3033e3a900000000000000000000000000000000000000000000000000000000  14:00 306fbb0500000000000000000000000000000000000000000000000000000000
+      w 21 line 000000010000000000000000000000005ff03c182b83dbdd8eb4da05ed6fbf53  14:00 000000010000000000000000000000002d980516a2922146b03d12a3b9eda823
+      w 22 line fc36fbd5000000000000000000000000ffffffffffffffffffffffffffffffff  14:00 0f998c93000000000000000000000000ffffffffffffffffffffffffffffffff
+      w 24 line 3033e38500000000000000000000000000000000000000000000000000000000  14:00 306fbae000000000000000000000000000000000000000000000000000000000
+      w 26 line 0000004122a79e80162560feff9c2c24b806c7bec30adfd9b74e75666af40930  14:00 000000417d8de31d664630fa51e49a9d55c6f5fae6b5876abb81b9ba44f3b742
+      w 27 line fc09f14243b22b15e3d1711eb0e3b175e056721de81ec3d43e37bef63c08a57b  14:00 238b69740dbf0c1e1d924a75d432e388011ee3a740516f9c31776d472bebf49a
+      w 28 line 6858d3001b000000000000000000000000000000000000000000000000000000  14:00 90fadab31c000000000000000000000000000000000000000000000000000000
+      w 33 line 3033e29d00000000000000000000000000000000000000000000000000000000  14:00 306fb9f900000000000000000000000000000000000000000000000000000000
+      w 46 line 000000000000000000000000000000005ff03c182b83dbdd8eb4da05ed6fbf53  14:00 000000000000000000000000000000002d980516a2922146b03d12a3b9eda823
+      w 47 line fc36fbd500000000000000000000000000000000000000000000000000000000  14:00 0f998c9300000000000000000000000000000000000000000000000000000000
+      w 52 line 0002cf9800000000000000000000000000000000000000000000152d0400f8e5  14:00 0002d3b5000000000000000000000000000000000000000000001416ff037f9e
+      w 53 line 9cae3aad00000000000000000000000000000000000000000000000000000000  14:00 b29d1ef900000000000000000000000000000000000000000000000000000000
+      w 55 line e8000000000000000000000000000000e9aceaca02542a5f4e263c6d2cd809ec  14:00 e8000000000000000000000000000000ac234191c96b17cea3e0d4ec52632e3d
+      w 56 line 48019a4700000000000000000000000000000000000000000000000000000000  14:00 81f3b53700000000000000000000000000000000000000000000000000000000
+      w 60 line 000000000000000000000000000000005ff03c182b83dbdd8eb4da05ed6fbf53  14:00 000000000000000000000000000000002d980516a2922146b03d12a3b9eda823
+      w 61 line fc36fbd500000000000000000000000000000000000000000000000000000000  14:00 0f998c9300000000000000000000000000000000000000000000000000000000
+      w 62 line 000000400000000000000000000000005ff03c182b83dbdd8eb4da05ed6fbf53  14:00 000000400000000000000000000000002d980516a2922146b03d12a3b9eda823
+      w 63 line fc36fbd5000000000000000000000000e9aceaca02542a5f4e263c6d2cd809ec  14:00 0f998c93000000000000000000000000ac234191c96b17cea3e0d4ec52632e3d
+      w 64 line 48019a4700000000000000000000000000000000000000000000000000000000  14:00 81f3b53700000000000000000000000000000000000000000000000000000000
+      w 66 line 00000000000000000000000000000000e9aceaca02542a5f4e263c6d2cd809ec  14:00 00000000000000000000000000000000ac234191c96b17cea3e0d4ec52632e3d
+      w 67 line 48019a4700000000000000000000000000000000000000000000000000000000  14:00 81f3b53700000000000000000000000000000000000000000000000000000000
+      w 69 line 00000000000000000000000000000000e9aceaca02542a5f4e263c6d2cd809ec  14:00 00000000000000000000000000000000ac234191c96b17cea3e0d4ec52632e3d
+      w 70 line 48019a4700000000000000000000000000000000000000000000000000000000  14:00 81f3b53700000000000000000000000000000000000000000000000000000000
+
+(2) shape 1400, launched Oct 12 07:00-14:54: 7 pools
+   10-12 14:06:31 0xcbb06b45 T  226 (0.0079) router buys  62 by 57 EOAs (57 seen before 14:14), e6cb474f True, router ETH T..T+60 0.008; pull L+2675 by launcher True via PosM True; dust by L+10 ['0xe71a69f4']; holders []
+   10-12 14:12:23 0x7a40b381 T  164 (0.1287) router buys  44 by 43 EOAs (39 seen before 14:14), e6cb474f True, router ETH T..T+60 0.130; pull L+3003 by launcher True via PosM True; dust by L+10 ['0xd2b94182', '0xe71a69f4']; holders []
+   10-12 14:18:25 0xa4cee6a6 T  268 (0.0693) router buys  53 by 53 EOAs (36 seen before 14:14), e6cb474f True, router ETH T..T+60 0.649; pull L+1377 by launcher True via PosM True; dust by L+10 ['0xe71a69f4']; holders []
+   10-12 14:21:47 0x3b423ab8 T  166 (0.3276) router buys  33 by 31 EOAs (19 seen before 14:14), e6cb474f True, router ETH T..T+60 0.328; pull L+1228 by launcher True via PosM True; dust by L+10 ['0xe71a69f4']; holders []
+   10-12 14:24:37 0x8613514c T  165 (0.0084) router buys  37 by 37 EOAs (20 seen before 14:14), e6cb474f True, router ETH T..T+60 0.008; pull L+1623 by launcher True via PosM True; dust by L+10 ['0xd2b94182', '0xe71a69f4']; holders []
+   10-12 14:27:59 0xfceb3b8e T   31 (0.1782) router buys  33 by 33 EOAs (13 seen before 14:14), e6cb474f True, router ETH T..T+60 0.178; pull L+6261 by launcher True via PosM True; dust by L+10 ['0xe71a69f4']; holders []
+   10-12 14:39:58 0xcafc8c8e T   49 (0.0158) router buys  37 by 37 EOAs (16 seen before 14:14), e6cb474f True, router ETH T..T+60 0.018; pull L+None by launcher False via PosM False; dust by L+10 ['0xd2b94182', '0xe71a69f4']; holders []
+   T: n 7 median 165 range [31]..[268]; router ETH T..T+60 median 0.130; pull age median 2675 min [1228, 1377, 1623]; unpulled 1
+
+(2) shape line, launched Oct 12 07:00-14:54: 84 pools
+   10-12 13:21:18 0xb746ce41 T   70 (0.023) router buys  22 by 22 EOAs (22 seen before 14:14), e6cb474f True, router ETH T..T+60 0.255; pull L+1379 by launcher True via PosM True; dust by L+10 ['0xe71a69f4']; holders []
+   10-12 13:24:27 0x35847e2f T  106 (0.039) router buys   7 by 7 EOAs (7 seen before 14:14), e6cb474f True, router ETH T..T+60 0.747; pull L+427 by launcher True via PosM True; dust by L+10 ['0xd2b94182', '0xe71a69f4']; holders [('0xbd9dc5f6', 0.0013, 23)]
+   10-12 13:26:14 0xcae38647 T   60 (0.199) router buys   5 by 5 EOAs (5 seen before 14:14), e6cb474f True, router ETH T..T+60 0.441; pull L+169 by launcher True via PosM True; dust by L+10 ['0xe71a69f4']; holders [('0xbd9dc5f6', 0.0014, 18)]
+   10-12 13:27:04 0x8711adfe T   62 (0.175) router buys  21 by 21 EOAs (21 seen before 14:14), e6cb474f True, router ETH T..T+60 0.354; pull L+584 by launcher True via PosM True; dust by L+10 ['0xe71a69f4']; holders []
+   10-12 13:32:30 0xa407c512 T  219 (0.2984) router buys   4 by 4 EOAs (4 seen before 14:14), e6cb474f True, router ETH T..T+60 0.537; pull L+409 by launcher True via PosM True; dust by L+10 ['0xd2b94182', '0xe71a69f4']; holders []
+   10-12 13:33:41 0x40caa830 T   96 (0.0158) router buys  34 by 34 EOAs (34 seen before 14:14), e6cb474f True, router ETH T..T+60 0.016; pull L+1342 by launcher True via PosM True; dust by L+10 ['0xe71a69f4']; holders []
+   10-12 13:37:13 0xd6bd637c T  150 (0.0996) router buys   4 by 4 EOAs (4 seen before 14:14), e6cb474f True, router ETH T..T+60 0.398; pull L+277 by launcher True via PosM True; dust by L+10 ['0xe71a69f4']; holders []
+   10-12 13:38:23 0xfbc51b8d T  129 (0.2772) router buys  82 by 77 EOAs (77 seen before 14:14), e6cb474f True, router ETH T..T+60 0.535; pull L+7395 by launcher True via PosM True; dust by L+10 ['0xe71a69f4']; holders []
+   10-12 14:01:09 0x2365de2c T  132 (0.0069) router buys  74 by 72 EOAs (72 seen before 14:14), e6cb474f True, router ETH T..T+60 0.007; pull L+2523 by launcher True via PosM True; dust by L+10 ['0xd2b94182', '0xe71a69f4']; holders []
+   10-12 14:37:09 0xc580b628 T  121 (0.24) router buys  34 by 34 EOAs (34 seen before 14:14), e6cb474f True, router ETH T..T+60 0.240; pull L+1949 by launcher True via PosM True; dust by L+10 ['0xd2b94182', '0xe71a69f4']; holders []
+   10-12 14:41:11 0x45929ba3 T   91 (0.244) router buys  81 by 79 EOAs (72 seen before 14:14), e6cb474f True, router ETH T..T+60 0.244; pull L+None by launcher False via PosM False; dust by L+10 ['0xd2b94182', '0xe71a69f4']; holders []
+   10-12 14:42:43 0xc5d416dc T  357 (0.06) router buys  97 by 91 EOAs (47 seen before 14:14), e6cb474f True, router ETH T..T+60 4.059; pull L+None by launcher False via PosM False; dust by L+10 ['0xe71a69f4']; holders []
+   T: n 80 median 106 range [60]..[357]; router ETH T..T+60 median 0.660; pull age median 634 min [143, 160, 169]; unpulled 4
+
+(3) launch wallets: nonce of the launch transaction (fresh wallets launch at nonce 0..2)
+   10-12 14:06:31 0xcbb06b45 shape 1400 launcher 0xac234191c96b17cea3e0d4ec52632e3d81f3b537 nonce 2 gasPrice 0.0203 gwei
+   10-12 14:12:23 0x7a40b381 shape 1400 launcher 0x6ec1b420fc255bfc0e0d1677411afc017c1f5668 nonce 3 gasPrice 0.0203 gwei
+   10-12 14:18:25 0xa4cee6a6 shape 1400 launcher 0xf46774791e2f2062d64bb82c479f8772d9f528f0 nonce 3 gasPrice 0.0206 gwei
+   10-12 14:21:47 0x3b423ab8 shape 1400 launcher 0x3f332694a1aaca5478d9d008439ce568708c3f88 nonce 3 gasPrice 0.0204 gwei
+   10-12 14:24:37 0x8613514c shape 1400 launcher 0x691042b4b251c92f2553e2cde8bfb7c20b54b5d1 nonce 2 gasPrice 0.0204 gwei
+   10-12 14:27:59 0xfceb3b8e shape 1400 launcher 0x281cee8a53b28dfbd9124049667588eddcf5b2dd nonce 2 gasPrice 0.0203 gwei
+   10-12 14:37:09 0xc580b628 shape line launcher 0x16b761df08e9ca10dd25af853ed8937230c8c91e nonce 2 gasPrice 0.0204 gwei
+   10-12 14:39:58 0xcafc8c8e shape 1400 launcher 0x749e1574ee6338ef8e333ac7b30c35fc179f9984 nonce 3 gasPrice 0.0206 gwei
+   10-12 14:41:11 0x45929ba3 shape line launcher 0x0d763f4ef72d9573d3ab94a51e65d4a4ee7ca98a nonce 2 gasPrice 0.0210 gwei
+   10-12 14:42:43 0xc5d416dc shape line launcher 0xbdd25e83115bf3d3460e456febb1ec078340b40f nonce 2 gasPrice 0.0204 gwei
+
+(4) the 14:00 shape replayed with the engine's fills (its own launch sqrtP and L), max_blocks 400 and 100:
+   mb 400 0xcbb06b45 T +226 FILL pull@buy+2447  hold 20 -0.02%  hold 25 -0.02%  hold 30 -0.02%  hold 60 -0.02%  tp 4% cap 30 -0.02%
+   mb 400 0x7a40b381 T +164 FILL pull@buy+2837  hold 20 -0.02%  hold 25 -0.02%  hold 30 -0.02%  hold 60 +0.01%  tp 4% cap 30 -0.02%
+   mb 400 0xa4cee6a6 T +268 FILL pull@buy+1107  hold 20 -0.02%  hold 25 +7.84%  hold 30 +7.84%  hold 60 +13.17%  tp 4% cap 30 +7.84%
+   mb 400 0x3b423ab8 T +166 FILL pull@buy+1060  hold 20 -0.02%  hold 25 -0.02%  hold 30 -0.02%  hold 60 -0.02%  tp 4% cap 30 -0.02%
+   mb 400 0x8613514c T +165 FILL pull@buy+1456  hold 20 -0.02%  hold 25 -0.02%  hold 30 -0.02%  hold 60 -0.02%  tp 4% cap 30 -0.02%
+   mb 400 0xfceb3b8e T +31 FILL pull@buy+6228  hold 20 -0.02%  hold 25 -0.02%  hold 30 -0.02%  hold 60 -0.02%  tp 4% cap 30 -0.02%
+   mb 400 0xcafc8c8e T +49 FILL pull@buy+None  hold 20 -0.02%  hold 25 -0.02%  hold 30 -0.02%  hold 60 +0.03%  tp 4% cap 30 -0.02%
+   mb 400: attempts 7, fills 7, hold 30 $/attempt +0.044 [-0.012, +0.157]
+   mb 100 0xfceb3b8e T +31 FILL pull@buy+6228  hold 20 -0.02%  hold 25 -0.02%  hold 30 -0.02%  hold 60 -0.02%  tp 4% cap 30 -0.02%
+   mb 100 0xcafc8c8e T +49 FILL pull@buy+None  hold 20 -0.02%  hold 25 -0.02%  hold 30 -0.02%  hold 60 +0.03%  tp 4% cap 30 -0.02%
+   mb 100: attempts 2, fills 2, hold 30 $/attempt -0.012 [-0.012, -0.012]
+rpc {'posts': 1, 'items': 10, 'r429': 1}

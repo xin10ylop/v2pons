@@ -1,0 +1,39 @@
+pools 91; $5 = 0.001946 ETH; pre-T reaction lag from stage 5: n 27 min 3 median 5
+
+1. the candidate rule fires (first pool/token/buyer touch at L+4..T, ahead of the bot's buy) in 4 of 91 pools; trades 0 otherwise
+   fired at +4, T +36, lead 32
+   fired at +4, T +18, lead 14
+   fired at +4, T +47, lead 43
+   fired at +22, T +52, lead 30
+
+2. a hypothetical precursor at T - lam, our buy landing dl blocks after it; mean / median / win / worst per trade, $ per trade
+   no reaction, buy head of T (ahead of the bot), sell head of T+1: mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade
+   no reaction, buy head of T-1, sell head of T+1:                 mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade
+
+   reaction: pull at our buy + 3 (min pre-T lag); sell lands at T+1 (T+2 in brackets); same-block pull counted lost [opt: survived]
+     lead 1 latency 1: buy at T+0 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean   +5.89%] [opt: mean   +5.89%]
+     lead 1 latency 2: buy at T+1 | mean   -2.39% median   -2.39% win 0.00 worst    -2.4% $-0.119/trade | [S=T+2: mean   -2.39%] [opt: mean   -2.39%]
+     lead 2 latency 1: buy at T-1 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean -100.40%] [opt: mean   +5.89%]
+     lead 2 latency 2: buy at T+0 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean   +5.89%] [opt: mean   +5.89%]
+     lead 3 latency 1: buy at T-2 | mean -100.40% median -100.40% win 0.00 worst  -100.4% $-5.020/trade | [S=T+2: mean -100.40%] [opt: mean   +5.89%]
+     lead 3 latency 2: buy at T-1 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean -100.40%] [opt: mean   +5.89%]
+     lead 4 latency 1: buy at T-3 | mean -100.40% median -100.40% win 0.00 worst  -100.4% $-5.020/trade | [S=T+2: mean -100.40%] [opt: mean -100.40%]
+     lead 4 latency 2: buy at T-2 | mean -100.40% median -100.40% win 0.00 worst  -100.4% $-5.020/trade | [S=T+2: mean -100.40%] [opt: mean   +5.89%]
+     lead 5 latency 1: buy at T-4 | mean -100.40% median -100.40% win 0.00 worst  -100.4% $-5.020/trade | [S=T+2: mean -100.40%] [opt: mean -100.40%]
+     lead 5 latency 2: buy at T-3 | mean -100.40% median -100.40% win 0.00 worst  -100.4% $-5.020/trade | [S=T+2: mean -100.40%] [opt: mean -100.40%]
+     lead 6 latency 1: buy at T-5 | mean -100.40% median -100.40% win 0.00 worst  -100.4% $-5.020/trade | [S=T+2: mean -100.40%] [opt: mean -100.40%]
+     lead 6 latency 2: buy at T-4 | mean -100.40% median -100.40% win 0.00 worst  -100.4% $-5.020/trade | [S=T+2: mean -100.40%] [opt: mean -100.40%]
+
+   reaction: pull at our buy + 5 (median pre-T lag); sell lands at T+1 (T+2 in brackets); same-block pull counted lost [opt: survived]
+     lead 1 latency 1: buy at T+0 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean   +5.89%] [opt: mean   +5.89%]
+     lead 1 latency 2: buy at T+1 | mean   -2.39% median   -2.39% win 0.00 worst    -2.4% $-0.119/trade | [S=T+2: mean   -2.39%] [opt: mean   -2.39%]
+     lead 2 latency 1: buy at T-1 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean   +5.89%] [opt: mean   +5.89%]
+     lead 2 latency 2: buy at T+0 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean   +5.89%] [opt: mean   +5.89%]
+     lead 3 latency 1: buy at T-2 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean   +5.89%] [opt: mean   +5.89%]
+     lead 3 latency 2: buy at T-1 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean   +5.89%] [opt: mean   +5.89%]
+     lead 4 latency 1: buy at T-3 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean -100.40%] [opt: mean   +5.89%]
+     lead 4 latency 2: buy at T-2 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean   +5.89%] [opt: mean   +5.89%]
+     lead 5 latency 1: buy at T-4 | mean -100.40% median -100.40% win 0.00 worst  -100.4% $-5.020/trade | [S=T+2: mean -100.40%] [opt: mean   +5.89%]
+     lead 5 latency 2: buy at T-3 | mean   +5.89% median   +5.86% win 1.00 worst    +0.8% $+0.294/trade | [S=T+2: mean -100.40%] [opt: mean   +5.89%]
+     lead 6 latency 1: buy at T-5 | mean -100.40% median -100.40% win 0.00 worst  -100.4% $-5.020/trade | [S=T+2: mean -100.40%] [opt: mean -100.40%]
+     lead 6 latency 2: buy at T-4 | mean -100.40% median -100.40% win 0.00 worst  -100.4% $-5.020/trade | [S=T+2: mean -100.40%] [opt: mean   +5.89%]

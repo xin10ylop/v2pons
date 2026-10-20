@@ -1,0 +1,209 @@
+{
+ "vbot-other": {
+  "with_outsider": {
+   "from_outsider": {
+    "n": 24,
+    "pulled_within_5": 0.0,
+    "pulled_within_10": 0.458,
+    "pulled_within_20": 0.958,
+    "pulled_within_50": 0.958,
+    "pulled_within_100": 0.958,
+    "delay_p10_50_90": [
+     7,
+     11,
+     13
+    ],
+    "never_3000": 0
+   },
+   "from_bot_buy": {
+    "n": 24,
+    "pulled_within_5": 0.5,
+    "pulled_within_10": 0.917,
+    "pulled_within_20": 0.958,
+    "pulled_within_50": 0.958,
+    "pulled_within_100": 0.958,
+    "delay_p10_50_90": [
+     3,
+     8,
+     10
+    ],
+    "never_3000": 0
+   },
+   "pulled_before_bot_buy": 0,
+   "outsider_eth": [
+    2e-05,
+    0.00015,
+    0.01
+   ]
+  },
+  "without": {
+   "from_bot_buy": {
+    "n": 1299,
+    "pulled_within_5": 0.0,
+    "pulled_within_10": 0.003,
+    "pulled_within_20": 0.012,
+    "pulled_within_50": 0.035,
+    "pulled_within_100": 0.062,
+    "delay_p10_50_90": [
+     61,
+     740,
+     2404
+    ],
+    "never_3000": 812
+   }
+  }
+ },
+ "fee100-2276|outsider>=0.0002": {
+  "with": {
+   "from_outsider": {
+    "n": 108,
+    "pulled_within_5": 0.0,
+    "pulled_within_10": 0.0,
+    "pulled_within_20": 0.0,
+    "pulled_within_50": 0.0,
+    "pulled_within_100": 0.019,
+    "delay_p10_50_90": [
+     130,
+     421,
+     2008
+    ],
+    "never_3000": 42
+   },
+   "from_crowd1": {
+    "n": 108,
+    "pulled_within_5": 0.0,
+    "pulled_within_10": 0.0,
+    "pulled_within_20": 0.0,
+    "pulled_within_50": 0.037,
+    "pulled_within_100": 0.139,
+    "delay_p10_50_90": [
+     62,
+     328,
+     1902
+    ],
+    "never_3000": 42
+   },
+   "outsider_eth": [
+    0.000261,
+    0.000401,
+    0.000448,
+    0.2277
+   ]
+  },
+  "without": {
+   "from_crowd1": {
+    "n": 95,
+    "pulled_within_5": 0.0,
+    "pulled_within_10": 0.0,
+    "pulled_within_20": 0.0,
+    "pulled_within_50": 0.0,
+    "pulled_within_100": 0.011,
+    "delay_p10_50_90": [
+     109,
+     491,
+     2166
+    ],
+    "never_3000": 50
+   }
+  }
+ },
+ "fee100-2276|outsider>=0.001": {
+  "with": {
+   "from_outsider": {
+    "n": 3,
+    "pulled_within_5": 0.0,
+    "pulled_within_10": 0.0,
+    "pulled_within_20": 0.0,
+    "pulled_within_50": 0.0,
+    "pulled_within_100": 0.333,
+    "delay_p10_50_90": [
+     70,
+     70,
+     140
+    ],
+    "never_3000": 1
+   },
+   "from_crowd1": {
+    "n": 3,
+    "pulled_within_5": 0.0,
+    "pulled_within_10": 0.0,
+    "pulled_within_20": 0.0,
+    "pulled_within_50": 0.0,
+    "pulled_within_100": 0.333,
+    "delay_p10_50_90": [
+     51,
+     51,
+     137
+    ],
+    "never_3000": 1
+   },
+   "outsider_eth": [
+    0.002269,
+    0.0297,
+    0.2277,
+    0.2277
+   ]
+  },
+  "without": {
+   "from_crowd1": {
+    "n": 95,
+    "pulled_within_5": 0.0,
+    "pulled_within_10": 0.0,
+    "pulled_within_20": 0.0,
+    "pulled_within_50": 0.0,
+    "pulled_within_100": 0.011,
+    "delay_p10_50_90": [
+     109,
+     491,
+     2166
+    ],
+    "never_3000": 50
+   }
+  }
+ },
+ "pm-init-500|sniper": {
+  "with": {
+   "from_outsider": {
+    "n": 120,
+    "pulled_within_50": 0.0,
+    "pulled_within_100": 0.008,
+    "pulled_within_150": 0.008,
+    "pulled_within_200": 0.092,
+    "delay_p10_50_90": [
+     179,
+     673,
+     2714
+    ],
+    "never_3000": 84
+   },
+   "from_crowd1": {
+    "n": 120,
+    "pulled_within_50": 0.008,
+    "pulled_within_100": 0.008,
+    "pulled_within_150": 0.075,
+    "pulled_within_200": 0.092,
+    "delay_p10_50_90": [
+     125,
+     626,
+     2685
+    ],
+    "never_3000": 84
+   }
+  },
+  "without": {
+   "from_crowd1": {
+    "n": 64,
+    "pulled_within_50": 0.016,
+    "pulled_within_100": 0.047,
+    "pulled_within_150": 0.094,
+    "pulled_within_200": 0.109,
+    "delay_p10_50_90": [
+     90,
+     475,
+     2366
+    ],
+    "never_3000": 45
+   }
+  }
+ }
+}

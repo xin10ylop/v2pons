@@ -1,0 +1,16 @@
+slices ['old']: pools 145, with a bot buy 145; T p10/25/50/75/90 [8, 8, 9, 9, 10] min 6 max 57
+  pools without a bot buy to L+400: 0 of which pulled: 0 pull offsets: []
+  T histogram: [(6, 1), (7, 2), (8, 60), (9, 53), (10, 20), (11, 1), (14, 2), (15, 2), (16, 1), (21, 2), (57, 1)]
+  T's buyer nonce p10/50/90: [50628, 58438, 65476] distinct buyers: 80
+  bot buy size (ETH) p10/50/90: [0.0742, 0.1237, 0.1732]
+  later bot buys per pool p50: 5 2nd buy - T p10/50/90: [19, 24, 29]
+  pools with T and pulled to L+400: 13 pull - T: [21, 22, 27, 123, 127, 132, 137, 140, 168, 187, 199, 265, 321]
+  swaps before T: {'sentinel': 145} missing txs among them: 0
+   ~hour old:0: n 14 T p10/50/90 8/9/9
+   ~hour old:1: n 22 T p10/50/90 8/8/10
+   ~hour old:2: n 29 T p10/50/90 8/8/14
+   ~hour old:3: n 16 T p10/50/90 8/9/10
+   ~hour old:4: n 14 T p10/50/90 8/9/10
+   ~hour old:5: n 20 T p10/50/90 8/9/16
+   ~hour old:6: n 18 T p10/50/90 8/9/10
+   ~hour old:7: n 12 T p10/50/90 8/9/10

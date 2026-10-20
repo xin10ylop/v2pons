@@ -1,0 +1,11 @@
+AFTER-T  3.0 new              10-11 12:29 pool 0xf20d6b5823 ours 0 T 20 stranger 0xdc8e4fee (nonce 2854) via 0xf0b7eaaf buy 0.009900 at +348 | 2nd bot buy 43 | pull 375 (lag 27) span 400
+AFTER-T  3.0 new              10-11 13:58 pool 0x8deb355fbc ours 0 T 42 stranger 0x329ca263 (nonce 14642) via 0x5399d94d buy 0.000760 at +288 | 2nd bot buy 64 | pull 307 (lag 19) span 400
+AFTER-T  3.0 new              10-11 14:41 pool 0xcc5709662a ours 0 T 41 stranger 0xdf24e301 (nonce 45) via 0x204faca1 buy 0.000017 at +394 | 2nd bot buy 63 | pull None (lag None) span 400
+AFTER-T  3.0 new              10-11 15:08 pool 0x2c714a08ff ours 0 T 54 stranger 0x2eb9009a (nonce 4025) via 0x88767899 buy 0.002000 at +122 | 2nd bot buy 74 | pull 131 (lag 9) span 400
+AFTER-T  3.0 new              10-11 15:08 pool 0x23a75b392d ours 0 T 43 stranger 0x2eb9009a (nonce 4026) via 0x88767899 buy 0.002000 at +118 | 2nd bot buy 70 | pull 126 (lag 8) span 400
+AFTER-T  3.0 new              10-11 15:18 pool 0x5ee3e46912 ours 0 T 40 stranger 0x2eb9009a (nonce 4030) via 0x88767899 buy 0.002000 at +87 | 2nd bot buy 65 | pull 96 (lag 9) span 400
+AFTER-T  3.0 new              10-11 15:38 pool 0xcb52c38a01 ours 0 T 55 stranger 0xe74fcc81 (nonce 334) via 0x204faca1 buy 0.000005 at +58 | 2nd bot buy 81 | pull 178 (lag 120) span 400
+AFTER-T  3.0 new              10-11 15:38 pool 0x50969c6468 ours 0 T 49 stranger 0xe74fcc81 (nonce 337) via 0x204faca1 buy 0.000002 at +100 | 2nd bot buy 76 | pull None (lag None) span 400
+AFTER-T  2.433 fee5000<16:28  10-11 16:03 pool 0x9e455a4f69 ours 0 T 10 stranger 0xc5d99711 (nonce 51) via 0x6e2a35a7 buy 0.002296 at +224 | 2nd bot buy 44 | pull 251 (lag 27) span 400
+AFTER-T  3.0 new              10-11 16:38 pool 0x718fb30893 ours 0 T 41 stranger 0x4e3c0b0a (nonce 1078) via 0x6e2a35a7 buy 0.000090 at +287 | 2nd bot buy 66 | pull 292 (lag 5) span 400
+AFTER-T  3.0 new              10-11 16:38 pool 0xd368e70c7d ours 0 T 49 stranger 0x4e3c0b0a (nonce 1079) via 0x6e2a35a7 buy 0.000050 at +373 | 2nd bot buy 74 | pull 386 (lag 13) span 400

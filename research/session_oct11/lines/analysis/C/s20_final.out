@@ -1,0 +1,23 @@
+(a) V3 crowd line, 1046 launches (149.4/day)
+  cap 80 q=0.0058: n 1046/1046 mean +8.5% med +0.2% win 0.88 worst -0% pulled<=sell 0.000 $/trade +1.240 $/day +185.3  days d0..d6 +8.9%(153) +15.9%(155) +6.2%(167) +10.3%(149) +5.7%(142) +6.3%(134) +5.5%(146)
+  cap 80 q=0.02: n 1046/1046 mean +8.4% med +0.2% win 0.88 worst -0% pulled<=sell 0.000 $/trade +4.293 $/day +641.5  days d0..d6 +8.8%(153) +15.7%(155) +6.2%(167) +10.2%(149) +5.7%(142) +6.3%(134) +5.4%(146)
+  cap 80 q=0.05: n 1046/1046 mean +8.3% med +0.2% win 0.88 worst -0% pulled<=sell 0.000 $/trade +10.598 $/day +1583.6  days d0..d6 +8.6%(153) +15.4%(155) +6.1%(167) +10.1%(149) +5.6%(142) +6.2%(134) +5.4%(146)
+  cap 80 q=0.1: n 1046/1046 mean +8.1% med +0.1% win 0.88 worst -0% pulled<=sell 0.000 $/trade +20.687 $/day +3091.3  days d0..d6 +8.4%(153) +15.0%(155) +5.9%(167) +9.9%(149) +5.5%(142) +6.1%(134) +5.2%(146)
+  cap 80 q=0.2: n 1046/1046 mean +7.7% med +0.1% win 0.88 worst -0% pulled<=sell 0.000 $/trade +39.433 $/day +5892.5  days d0..d6 +7.9%(153) +14.1%(155) +5.6%(167) +9.5%(149) +5.3%(142) +5.9%(134) +5.0%(146)
+  cap 100 q=0.0058: n 1046/1046 mean +10.2% med +1.0% win 0.92 worst -100% pulled<=sell 0.018 $/trade +1.496 $/day +223.6  days d0..d6 +9.2%(153) +12.4%(155) +9.4%(167) +13.6%(149) +7.5%(142) +10.6%(134) +8.3%(146)
+  cap 100 q=0.02: n 1046/1046 mean +10.1% med +1.0% win 0.92 worst -100% pulled<=sell 0.018 $/trade +5.165 $/day +771.8  days d0..d6 +9.1%(153) +12.2%(155) +9.3%(167) +13.5%(149) +7.5%(142) +10.5%(134) +8.3%(146)
+  cap 100 q=0.05: n 1046/1046 mean +9.9% med +1.0% win 0.92 worst -100% pulled<=sell 0.018 $/trade +12.718 $/day +1900.4  days d0..d6 +9.0%(153) +11.9%(155) +9.2%(167) +13.4%(149) +7.4%(142) +10.4%(134) +8.2%(146)
+  cap 100 q=0.1: n 1046/1046 mean +9.6% med +1.0% win 0.92 worst -100% pulled<=sell 0.018 $/trade +24.738 $/day +3696.6  days d0..d6 +8.7%(153) +11.4%(155) +8.9%(167) +13.1%(149) +7.2%(142) +10.2%(134) +8.0%(146)
+  cap 100 q=0.2: n 1046/1046 mean +9.1% med +0.9% win 0.92 worst -100% pulled<=sell 0.018 $/trade +46.823 $/day +6996.7  days d0..d6 +8.1%(153) +10.4%(155) +8.4%(167) +12.6%(149) +6.8%(142) +9.8%(134) +7.6%(146)
+
+(b) tok:0f34e3b5 follow, 603 launches
+  sell into next real buy by a+76 (reaction-safe): n 599/603 mean +3.1% med -0.6% win 0.40 worst -1% pulled<=sell 0.000 $/trade +0.437 $/day +37.4  days d0..d6 +3.1%(118) -0.6%(1) - +3.5%(113) +2.7%(185) +3.1%(124) +3.1%(58)
+  sell into next real buy by a+300 (reaction ignored): n 599/603 mean +5.7% med +7.4% win 0.97 worst -100% pulled<=sell 0.033 $/trade +0.831 $/day +71.1  days d0..d6 +8.7%(118) +10.8%(1) - +9.5%(113) -1.6%(185) +8.4%(124) +9.8%(58)
+
+(c) tok:70adce63, 1184 launches
+  front a=2 b=frb+1, reaction ignored: n 1184/1184 mean +1.9% med +1.5% win 0.84 worst -1% pulled<=sell 0.000 $/trade +0.260 $/day +43.9  days d0..d6 +1.6%(91) +1.9%(163) +1.9%(137) +2.1%(179) +1.7%(212) +2.2%(187) +1.6%(215)
+  front a=2 b=frb+1, pull 151 blocks after our buy (worst case): n 1184/1184 mean -97.4% med -100.0% win 0.02 worst -100% pulled<=sell 0.975 $/trade -14.543 $/day -2459.8  days d0..d6 -97.8%(91) -100.0%(163) -92.6%(137) -94.3%(179) -99.5%(212) -98.9%(187) -97.7%(215)
+
+(d) lc:0a493d1a|13ead562, 493 launches
+  front a=liq+2, sell first real buy+1 (cap 60): n 483/493 mean +66.0% med +22.8% win 0.95 worst -100% pulled<=sell 0.021 $/trade +9.825 $/day +677.9  days d0..d6 +215.9%(114) +106.5%(7) +12.3%(32) +36.9%(54) +22.5%(209) +12.1%(12) -12.7%(55)
+  same, last 24 h only: n 55/58 mean -12.7% med +0.2% win 0.84 worst -100% pulled<=sell 0.145 $/trade -1.916 $/day -15.1  days d0..d6 - - - - - - -12.7%(55)

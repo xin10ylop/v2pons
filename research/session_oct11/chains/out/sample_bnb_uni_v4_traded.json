@@ -1,0 +1,147 @@
+{
+ "chain": "bnb",
+ "venue": "uni_v4_traded",
+ "kind": "v4",
+ "address": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df",
+ "hooks_filter": null,
+ "url": "https://bsc-rpc.publicnode.com",
+ "head": 127079366,
+ "head_ts": 1791748679,
+ "block_time": 0.45,
+ "from_block": 127069616,
+ "covered_hours": 1.22,
+ "n_creations": 16,
+ "per_day": 315.1,
+ "W_blocks": 1200,
+ "top_hooks": [
+  [
+   "0x0000000000000000000000000000000000000000",
+   16
+  ]
+ ],
+ "n_sampled": 1,
+ "traded_only_scan": 200,
+ "n_scanned": 16,
+ "n_scanned_with_external_swap_in_W": 1,
+ "n_traded_in_W": 1,
+ "launch_tx_contains_swap": 0,
+ "first3_offsets_excl_launch_tx": [
+  0,
+  493,
+  493
+ ],
+ "median_offset_first_external_swap": 0,
+ "first3_tx_to_by_launches": [
+  [
+   "0xac4c6e212a361c968f1725b4d055b47e63f80b75",
+   1
+  ],
+  [
+   "0x7910399a64f14b4825c631ee5719e0a1ab1e70ff",
+   1
+  ],
+  [
+   "0xb585639ff3d61de1187d960cc18924d033f2768f",
+   1
+  ]
+ ],
+ "first3_tx_from_by_launches": [
+  [
+   "0xa0e21cbf1c00a9f1490daf0357de0183f79bb485",
+   1
+  ],
+  [
+   "0x9086719a48fded886eede1f79f53761553fc96e6",
+   1
+  ],
+  [
+   "0xdec409b87c61c806e5f107416d318955283597e9",
+   1
+  ]
+ ],
+ "first3_swap_sender_by_launches": [
+  [
+   "0xb585639ff3d61de1187d960cc18924d033f2768f",
+   1
+  ],
+  [
+   "0x7910399a64f14b4825c631ee5719e0a1ab1e70ff",
+   1
+  ],
+  [
+   "0xc10ee9031f2a0b84766a86b55a8d90f357910fb4",
+   1
+  ]
+ ],
+ "wallets_first3blocks": [
+  1
+ ],
+ "wallets_first3blocks_excl_launch_tx": [
+  1
+ ],
+ "median_wallets_first3blocks_excl_launch_tx": 1,
+ "median_wallets_first3blocks_traded_only": 1,
+ "launch_tx_to_counts": [
+  [
+   "0x7a4a5c919ae2541aed11041a1aeee68f1287f95b",
+   1
+  ]
+ ],
+ "gasPrice_gwei_median": 0.05297,
+ "n_tx_lookups": 4,
+ "rows": [
+  {
+   "block": 127070946,
+   "tx": "0xee5c9e296823f8791b4959cb01f6471a065c0e7ca539703cbf13fb87233678e6",
+   "key": "0xa2fce66e31af3ecfac3ddd8d956d2188c5e916b03fe0509b92a6b17c42dd6463",
+   "c0": "0x55d398326f99059ff775485246999027b3197955",
+   "c1": "0x9de2863390ba2c8209a7e414e83d41d70cfe94f6",
+   "fee": 400000,
+   "hooks": "0x0000000000000000000000000000000000000000",
+   "launch_from": "0x691c2e10f787cf0e609bdf569ad6352a11f89c37",
+   "launch_to": "0x7a4a5c919ae2541aed11041a1aeee68f1287f95b",
+   "n_swaps_W": 3,
+   "first3": [
+    {
+     "offset": 0,
+     "tx": "0x4036cb7b124e93cd6f9d2a6115c9fa9c486b90e7a5450f174369375efc88aeed",
+     "same_tx_as_launch": false,
+     "to": "0x7910399a64f14b4825c631ee5719e0a1ab1e70ff",
+     "from": "0x9086719a48fded886eede1f79f53761553fc96e6",
+     "swap_sender": "0x7910399a64f14b4825c631ee5719e0a1ab1e70ff"
+    },
+    {
+     "offset": 493,
+     "tx": "0xf7fd2e17df53106fe696c9e3254a067958bc723821915876642e5dd00c43addd",
+     "same_tx_as_launch": false,
+     "to": "0xac4c6e212a361c968f1725b4d055b47e63f80b75",
+     "from": "0xdec409b87c61c806e5f107416d318955283597e9",
+     "swap_sender": "0xc10ee9031f2a0b84766a86b55a8d90f357910fb4"
+    },
+    {
+     "offset": 493,
+     "tx": "0xbc4ef29cafae0aba093a726465a9e4809c80bd183d6ffc83ee8118873fec751f",
+     "same_tx_as_launch": false,
+     "to": "0xb585639ff3d61de1187d960cc18924d033f2768f",
+     "from": "0xa0e21cbf1c00a9f1490daf0357de0183f79bb485",
+     "swap_sender": "0xb585639ff3d61de1187d960cc18924d033f2768f"
+    }
+   ],
+   "n_swaps_first3blocks": 1,
+   "n_tx_first3blocks": 1,
+   "wallets_first3blocks": 1,
+   "wallets_first3blocks_excl_launch_tx": 1,
+   "truncated": false
+  }
+ ],
+ "errlog": [],
+ "rpc_stats": {
+  "https://bsc-rpc.publicnode.com": {
+   "ok": 24,
+   "err": 0,
+   "429": 0,
+   "lat": 2.491122007369995,
+   "errs": {}
+  }
+ }
+}

@@ -1,0 +1,495 @@
+{
+ "rows": [
+  {
+   "L": 83402323,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 7,
+   "would_sell_after_buy": 2,
+   "skips": []
+  },
+  {
+   "L": 83402918,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 8,
+   "would_sell_after_buy": 0,
+   "skips": []
+  },
+  {
+   "L": 83403507,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83404095,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 10,
+   "would_sell_after_buy": 2,
+   "skips": []
+  },
+  {
+   "L": 83404682,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83405273,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83405861,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83406448,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 8,
+   "would_sell_after_buy": 0,
+   "skips": []
+  },
+  {
+   "L": 83407050,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83407637,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83408225,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83408816,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83409408,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83409990,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83410594,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83411178,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83412341,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83412923,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83413506,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83414061,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 10,
+   "would_sell_after_buy": 2,
+   "skips": []
+  },
+  {
+   "L": 83414658,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83425344,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 8,
+   "would_sell_after_buy": 0,
+   "skips": []
+  },
+  {
+   "L": 83427094,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83428891,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83430652,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83432432,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83434196,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83435949,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 11,
+   "would_sell_after_buy": 2,
+   "skips": []
+  },
+  {
+   "L": 83439324,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83441072,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 8,
+   "would_sell_after_buy": 0,
+   "skips": []
+  },
+  {
+   "L": 83442774,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83444547,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83448001,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83449748,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 8,
+   "would_sell_after_buy": 0,
+   "skips": []
+  },
+  {
+   "L": 83451508,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83453275,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 8,
+   "would_sell_after_buy": 0,
+   "skips": []
+  },
+  {
+   "L": 83456814,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 13,
+   "would_sell_after_buy": 2,
+   "skips": []
+  },
+  {
+   "L": 83458603,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 8,
+   "would_sell_after_buy": 0,
+   "skips": []
+  },
+  {
+   "L": 83460361,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83462127,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83463899,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83465669,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83467442,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83469198,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83470944,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83474461,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83476201,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 9,
+   "would_sell_after_buy": 1,
+   "skips": []
+  },
+  {
+   "L": 83477978,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 8,
+   "would_sell_after_buy": 0,
+   "skips": []
+  },
+  {
+   "L": 83479720,
+   "entry": "seat",
+   "eligible": true,
+   "launcher_code": "operator",
+   "fire_offset": 6,
+   "first_buy_offset": 8,
+   "would_sell_after_buy": 0,
+   "skips": []
+  }
+ ],
+ "skipped_tx_types": 0
+}

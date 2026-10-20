@@ -1,0 +1,412 @@
+{
+ "0x575b952fd3c079b3e72f4cd45f546edd2486d8fa|7fde822e|804|10000|200|true": {
+  "deployers": [
+   "0x06cb3a6841c92525e7a1998328e7c9d37e98d937"
+  ],
+  "same_launch_to_other_keys": {
+   "pools": 12,
+   "families": [
+    [
+     "0x575b952fd3c079b3e72f4cd45f546edd2486d8fa|7fde822e|772|10000|200|true",
+     7
+    ],
+    [
+     "0x575b952fd3c079b3e72f4cd45f546edd2486d8fa|7fde822e|836|10000|200|true",
+     3
+    ],
+    [
+     "0x575b952fd3c079b3e72f4cd45f546edd2486d8fa|7fde822e|740|10000|200|true",
+     1
+    ],
+    [
+     "0x575b952fd3c079b3e72f4cd45f546edd2486d8fa|7fde822e|932|10000|200|true",
+     1
+    ]
+   ],
+   "known": [
+    [
+     "none",
+     12
+    ]
+   ],
+   "with_real_first_buy": 0,
+   "pulled": 0,
+   "first_buy_rel_p50": [
+    3,
+    3,
+    3
+   ],
+   "first_pull_rel": null
+  },
+  "same_deployers_other_keys": {
+   "pools": 446,
+   "families": [
+    [
+     "0xb7758ae7102037e3db22fe472689e6598a78f639|7fde822e|804|10000|200|true",
+     16
+    ],
+    [
+     "0xf6b59a71e1a3169bd418169ee20e37e6a7152b5c|7fde822e|804|10000|200|true",
+     16
+    ],
+    [
+     "0x9f81695f2d705e81f8fb7a4f8831afe92c4e6b35|7fde822e|804|10000|200|true",
+     16
+    ],
+    [
+     "0x404700be6b535e6aa7fd744f242d8cf78135817c|7fde822e|804|10000|200|true",
+     15
+    ],
+    [
+     "0xe696daf67fe25c5936187fc1edf38404353d5f72|7fde822e|804|10000|200|true",
+     15
+    ],
+    [
+     "0xb40382548413c559ad7f0bb6e24410401238eded|7fde822e|804|10000|200|true",
+     14
+    ]
+   ],
+   "known": [
+    [
+     "none",
+     446
+    ]
+   ],
+   "with_real_first_buy": 0,
+   "pulled": 0,
+   "first_buy_rel_p50": [
+    3,
+    3,
+    4
+   ],
+   "first_pull_rel": null
+  },
+  "same_selector_other_keys": {
+   "pools": 482,
+   "families": [
+    [
+     "0xb7758ae7102037e3db22fe472689e6598a78f639|7fde822e|804|10000|200|true",
+     16
+    ],
+    [
+     "0xf6b59a71e1a3169bd418169ee20e37e6a7152b5c|7fde822e|804|10000|200|true",
+     16
+    ],
+    [
+     "0x9f81695f2d705e81f8fb7a4f8831afe92c4e6b35|7fde822e|804|10000|200|true",
+     16
+    ],
+    [
+     "0x404700be6b535e6aa7fd744f242d8cf78135817c|7fde822e|804|10000|200|true",
+     15
+    ],
+    [
+     "0xe696daf67fe25c5936187fc1edf38404353d5f72|7fde822e|804|10000|200|true",
+     15
+    ],
+    [
+     "0xb40382548413c559ad7f0bb6e24410401238eded|7fde822e|804|10000|200|true",
+     14
+    ]
+   ],
+   "known": [
+    [
+     "none",
+     482
+    ]
+   ],
+   "with_real_first_buy": 0,
+   "pulled": 0,
+   "first_buy_rel_p50": [
+    3,
+    3,
+    4
+   ],
+   "first_pull_rel": null
+  }
+ },
+ "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1156|0|200|false": {
+  "deployers": [
+   "0x04b09ef8483094924798564c41750705834bc9cd",
+   "0x0dd699bb5f31dcf605606c5884e04c4b9fdd9328",
+   "0x4f5e440debdbafe865eacdec68ce8b4d1b3068c8",
+   "0x8056f26ae93b7ef253e20b96fe546aee07ae67f9",
+   "0x8de8584da10ab94d0cb23c699487d0f46079f510",
+   "0xd0e0829b4fe7e54f841b2a8bceb8f8dfdcc51a4c",
+   "0xf091fd7026df4aba80da37954b73addffe2eab55"
+  ],
+  "same_launch_to_other_keys": {
+   "pools": 13,
+   "families": [
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1284|0|200|false",
+     6
+    ],
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1188|0|200|false",
+     2
+    ],
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1220|0|200|false",
+     1
+    ],
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1316|0|200|false",
+     1
+    ],
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1252|0|200|false",
+     1
+    ],
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1412|0|200|false",
+     1
+    ]
+   ],
+   "known": [
+    [
+     "none",
+     13
+    ]
+   ],
+   "with_real_first_buy": 8,
+   "pulled": 0,
+   "first_buy_rel_p50": [
+    0,
+    0,
+    0
+   ],
+   "first_pull_rel": null
+  },
+  "same_deployers_other_keys": {
+   "pools": 0,
+   "families": [],
+   "known": [],
+   "with_real_first_buy": 0,
+   "pulled": 0,
+   "first_buy_rel_p50": null,
+   "first_pull_rel": null
+  },
+  "same_selector_other_keys": {
+   "pools": 13,
+   "families": [
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1284|0|200|false",
+     6
+    ],
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1188|0|200|false",
+     2
+    ],
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1220|0|200|false",
+     1
+    ],
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1316|0|200|false",
+     1
+    ],
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1252|0|200|false",
+     1
+    ],
+    [
+     "0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1412|0|200|false",
+     1
+    ]
+   ],
+   "known": [
+    [
+     "none",
+     13
+    ]
+   ],
+   "with_real_first_buy": 8,
+   "pulled": 0,
+   "first_buy_rel_p50": [
+    0,
+    0,
+    0
+   ],
+   "first_pull_rel": null
+  }
+ },
+ "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|3000|60|true": {
+  "deployers": [
+   "0xc28b7a418bf3abb93f1a08c8208d08880bfa55a0"
+  ],
+  "same_launch_to_other_keys": {
+   "pools": 328,
+   "families": [
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|1|true",
+     192
+    ],
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|836798|9303|true",
+     35
+    ],
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|1|false",
+     23
+    ],
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|838974|9303|true",
+     20
+    ],
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|3000|60|false",
+     4
+    ],
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|200000|2000|true",
+     4
+    ]
+   ],
+   "known": [
+    [
+     "none",
+     328
+    ]
+   ],
+   "with_real_first_buy": 43,
+   "pulled": 76,
+   "first_buy_rel_p50": [
+    43,
+    45,
+    182
+   ],
+   "first_pull_rel": [
+    202,
+    757,
+    2505
+   ]
+  },
+  "same_deployers_other_keys": {
+   "pools": 6,
+   "families": [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|3000|60|true",
+     4
+    ],
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|3000|60|false",
+     1
+    ],
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|10000|200|true",
+     1
+    ]
+   ],
+   "known": [
+    [
+     "none",
+     5
+    ],
+    [
+     "vbot-other",
+     1
+    ]
+   ],
+   "with_real_first_buy": 4,
+   "pulled": 0,
+   "first_buy_rel_p50": [
+    0,
+    1,
+    3
+   ],
+   "first_pull_rel": null
+  },
+  "same_selector_other_keys": {
+   "pools": 328,
+   "families": [
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|1|true",
+     192
+    ],
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|836798|9303|true",
+     35
+    ],
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|1|false",
+     23
+    ],
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|838974|9303|true",
+     20
+    ],
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|3000|60|false",
+     4
+    ],
+    [
+     "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|200000|2000|true",
+     4
+    ]
+   ],
+   "known": [
+    [
+     "none",
+     328
+    ]
+   ],
+   "with_real_first_buy": 43,
+   "pulled": 76,
+   "first_buy_rel_p50": [
+    43,
+    45,
+    182
+   ],
+   "first_pull_rel": [
+    202,
+    757,
+    2505
+   ]
+  }
+ },
+ "0xa0ce0291c181f800e7a5096b433685c37cfbf4df|617ac5de|676|8388608|200|false": {
+  "deployers": [
+   "0x2d4aeaf19e9b3bc47f67a73d37ad23f01dd020d6",
+   "0x8fb7afe5801d7e11e448fec17972bd27d75e0e67",
+   "0xd83ca4575de76b2a96f0ecbefc7df5269cd4f992"
+  ],
+  "same_launch_to_other_keys": {
+   "pools": 0,
+   "families": [],
+   "known": [],
+   "with_real_first_buy": 0,
+   "pulled": 0,
+   "first_buy_rel_p50": null,
+   "first_pull_rel": null
+  },
+  "same_deployers_other_keys": {
+   "pools": 1,
+   "families": [
+    [
+     "0x1eef016f22a943abc7dd11422edee9d235942104|60956835|2980|8388608|8|false",
+     1
+    ]
+   ],
+   "known": [
+    [
+     "none",
+     1
+    ]
+   ],
+   "with_real_first_buy": 0,
+   "pulled": 0,
+   "first_buy_rel_p50": null,
+   "first_pull_rel": null
+  },
+  "same_selector_other_keys": {
+   "pools": 0,
+   "families": [],
+   "known": [],
+   "with_real_first_buy": 0,
+   "pulled": 0,
+   "first_buy_rel_p50": null,
+   "first_pull_rel": null
+  }
+ }
+}

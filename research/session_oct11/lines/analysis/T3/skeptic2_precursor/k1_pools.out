@@ -1,0 +1,16 @@
+head 86191044 10-11 22:41:17 UTC, 9.72 blocks/s, launches from block 85876176
+Initialize ETH-pair logs 2132 | no hook, fee 10000, spacing 200, the 3.0 price: 186
+  txs 13/13
+3.0 launches: 186
+  pool events 20/186
+  pool events 40/186
+  pool events 60/186
+  pool events 80/186
+  pool events 100/186
+  pool events 120/186
+  pool events 140/186
+  pool events 160/186
+  pool events 180/186
+  pool events 186/186
+  txs 382/382
+saved k1_pools.json

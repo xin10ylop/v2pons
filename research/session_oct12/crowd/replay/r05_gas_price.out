@@ -1,0 +1,22 @@
+base fee (gwei) over the window: [0.0201, 0.0202, 0.0203, 0.0201, 0.02, 0.0201, 0.021, 0.0204, 0.02, 0.02, 0.0201, 0.02, 0.02, 0.02, 0.02, 0.02, 0.02, 0.0201, 0.02, 0.0201, 0.02, 0.02, 0.02, 0.0202, 0.0201, 0.0203, 0.02, 0.02, 0.0201, 0.0202, 0.0201, 0.0201, 0.02, 0.02, 0.02, 0.0201, 0.02, 0.0201, 0.0202, 0.0205]
+crowd buy receipt {'hash': '0xec981948745d405f458b748ea6b885bbd3b33a1836f6ea1d14efd858dbfb8647', 'gasUsed': 219925, 'l1': 263, 'egp': 20018000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xee31bf0e9f048ca98e680fd477371c79a6a87f29916bb0b3c6bb0558a69b75a5', 'gasUsed': 201187, 'l1': 480, 'egp': 20026000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xf159fbce25b0d9aa0b855998378fcf8de0c829aeef6f5b6ba801648e6d2533d2', 'gasUsed': 204790, 'l1': 263, 'egp': 20000000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xf27e256ab642c10700df6cc1acd8cd5cd34a63c3da6b874da0115ed7fe1ef50d', 'gasUsed': 197251, 'l1': 225, 'egp': 20024000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xf2958b00ebc74f14d636f93b90c6fd21abd77f89e57037caf0d3e7be32d4dd5e', 'gasUsed': 219571, 'l1': 52, 'egp': 20000000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xf336c9a100f9657aba46c73edab0ba438b3a677db3f75f60d9af4db5cff66f53', 'gasUsed': 211977, 'l1': 230, 'egp': 20000000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xf5bb1b0c605ae9ad87c6300ef638b8da3d26fec287112683d9fd39287d0d1fd5', 'gasUsed': 196687, 'l1': 32, 'egp': 20326000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xf5cad6704db9e21404d8ef010bb1eda1dbba52db40039f843847b34498dc769b', 'gasUsed': 212379, 'l1': 726, 'egp': 20054000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xf6e374606d342da11c7583c92e6b2b5b1ded0952f652ff5e56f5a0d4891398a4', 'gasUsed': 215757, 'l1': 0, 'egp': 20086000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xf7396786e96932abd1aa882bad552f3b70f11f7ec53a7d77560af8673e54d6ce', 'gasUsed': 211978, 'l1': 221, 'egp': 20000000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xfd34dc0f81b16c5cd1ed8124f9244f0d5f16ae7fcf6e56518b273e979e1648ee', 'gasUsed': 201478, 'l1': 891, 'egp': 20086000, 'status': '0x1'}
+crowd buy receipt {'hash': '0xfffba0cd156a9c4115de35497cf8975e3889b714085e7525358c1e8a5151c636', 'gasUsed': 186480, 'l1': 475, 'egp': 20020000, 'status': '0x1'}
+factory PoolCreated (life): 443090; counterparts of WETH in >= 2 pools: 438
+   USDG 0x5fc5360d0400a0fd4f2af552add042d716f1d168 fee 3000 pool 0xa9188730fe85be88ad499d7d52b099e800fb0334 ETH = $2,518.81 WETH in pool 363.698
+   USDG 0x5fc5360d0400a0fd4f2af552add042d716f1d168 fee 500 pool 0x69bfaf19c9f377bb306a89aed9f6b07e2c1a8d9a ETH = $2,515.09 WETH in pool 907.124
+   USDG 0x5fc5360d0400a0fd4f2af552add042d716f1d168 fee 10000 pool 0x5f009e071f07e92b6c624e83f52f17bbda34680d ETH = $2,537.83 WETH in pool 51.826
+   USDG 0x5fc5360d0400a0fd4f2af552add042d716f1d168 fee 100 pool 0x52e65b17fb6e5ba00ed806f37afcd2daa50271ca ETH = $2,514.62 WETH in pool 5534.037
+   USD1 0xfa44874cfc252349153730421baabb9c30ab2330 fee 3000 pool 0x96551c56079feea209506d3205766dca15693e29 ETH = $44,881.46 WETH in pool 0.0
+   USD1 0xfa44874cfc252349153730421baabb9c30ab2330 fee 10000 pool 0x7fdd40c4fc79e001741c8382486739659efc2b44 ETH = $891.47 WETH in pool 0.0
+   USD1 0xfa44874cfc252349153730421baabb9c30ab2330 fee 500 pool 0x729f19aea117ad7fe2048fe175e8fe6705180f97 ETH = $1,730.90 WETH in pool 0.0
+rpc {'posts': 187, 'items': 236, 'r429': 18}

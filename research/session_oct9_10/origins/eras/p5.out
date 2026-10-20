@@ -1,0 +1,49 @@
+core overlaps (nonzero):
+   A L006 30
+   B L010 11
+   L002 L003 1
+   L002 L004 1
+   L002 L008 1
+   L004 L008 1
+   L006 L007 1
+   L006 L009 1
+   L006 L010 1
+   L006 L011 1
+   L006 L013 1
+   L007 L009 1
+   L007 L010 1
+   L007 L011 1
+   L008 L009 1
+   L009 L010 1
+   L009 L011 1
+   L010 L011 1
+   L011 L012 1
+core wallets buying outside their component:
+   L000 core 12 -> launches outside with any core buyer: {'fresh': 136}
+   L001 core 20 -> launches outside with any core buyer: {}
+   L002 core 8 -> launches outside with any core buyer: {'fresh': 778, 'L001': 3, 'L003': 7, 'L004': 33, 'L005': 1, 'L007': 1, 'L008': 4, 'L009': 19, 'L010': 36, 'L011': 5, 'L012': 27}
+   L003 core 18 -> launches outside with any core buyer: {'fresh': 312, 'L001': 1, 'L002': 3, 'L004': 10}
+   L004 core 24 -> launches outside with any core buyer: {'fresh': 564, 'L001': 2, 'L002': 3, 'L003': 2, 'L005': 1, 'L007': 1, 'L008': 4, 'L009': 19, 'L010': 36, 'L011': 5, 'L012': 27}
+   L005 core 5 -> launches outside with any core buyer: {}
+   L006 core 52 -> launches outside with any core buyer: {'fresh': 2287, 'L005': 1, 'L004': 16, 'L007': 3, 'L009': 23, 'L010': 98, 'L012': 165, 'L011': 47, 'L013': 3}
+   L007 core 33 -> launches outside with any core buyer: {'fresh': 2341, 'L001': 2, 'L003': 2, 'L005': 2, 'L004': 20, 'L009': 25, 'L010': 98, 'L012': 118, 'L011': 47, 'L006': 243}
+   L008 core 54 -> launches outside with any core buyer: {'fresh': 1458, 'L001': 2, 'L002': 3, 'L003': 4, 'L004': 35, 'L005': 1, 'L006': 1, 'L007': 4, 'L009': 43, 'L010': 49, 'L011': 6, 'L012': 34, 'L013': 2}
+   L009 core 50 -> launches outside with any core buyer: {'fresh': 2973, 'L001': 1, 'L002': 1, 'L003': 2, 'L004': 30, 'L005': 1, 'L006': 244, 'L007': 4, 'L008': 10, 'L010': 107, 'L011': 48, 'L012': 116, 'L013': 2}
+   L010 core 24 -> launches outside with any core buyer: {'fresh': 2249, 'L005': 1, 'L004': 16, 'L007': 3, 'L009': 23, 'L012': 112, 'L011': 47, 'L006': 243}
+   L011 core 39 -> launches outside with any core buyer: {'fresh': 2963, 'L005': 1, 'L004': 16, 'L007': 3, 'L009': 24, 'L010': 112, 'L012': 226, 'L006': 243}
+   L012 core 51 -> launches outside with any core buyer: {'fresh': 1167, 'L009': 5, 'L011': 20, 'L010': 65, 'L007': 1, 'L006': 19}
+   L013 core 38 -> launches outside with any core buyer: {'L012': 70, 'L010': 19, 'fresh': 172, 'L006': 218}
+frequent buyers (>=40 launches): components/eras
+   0x2be87ad70cf11ea294d7c42044b5b8277a3e4874 2788 08-04 23:32 -> 10-09 11:31 {'fresh': 2249, 'L006': 243, 'L012': 112, 'L010': 94, 'L011': 47, 'L009': 23}
+   0x754cbbe82c17cc32dea516bd73d55982e9517881 1051 08-20 19:35 -> 10-03 00:11 {'fresh': 833, 'L012': 153, 'L010': 43, 'L011': 20, 'L009': 1, 'L007': 1}
+   0xc3c81a3484a206b1e6efc0b9858cf5feb4e4adb6 1030 08-30 17:44 -> 10-06 01:10 {'fresh': 950, 'L009': 23, 'L004': 15, 'L010': 15, 'L008': 10, 'L012': 7}
+   0xf7b47b17bebba4b3e9e55ac09e3179f6f4cda8d6 695 07-26 21:43 -> 10-09 11:31 {'fresh': 471, 'L012': 177, 'L010': 28, 'L006': 19}
+   0xbd484954bff347c7b9522a8489d30b2abbdead5b 690 09-08 14:10 -> 09-29 01:58 {'fresh': 562, 'L010': 36, 'L004': 28, 'L012': 27, 'L009': 19, 'L011': 5}
+   0xb4d43149db36800fbb6c43dd5d77e764aa5b6bd6 482 10-02 10:19 -> 10-09 11:31 {'L006': 218, 'fresh': 172, 'L012': 70, 'L010': 19, 'L013': 3}
+   0x7de968b2821c130bc08ee4121cdd967c10f4a343 334 08-23 05:46 -> 08-25 18:08 {'fresh': 334}
+   0x5f91b34c0d83266984599c380b4920e070ae1c63 304 09-23 19:54 -> 10-04 01:36 {'L012': 297, 'fresh': 7}
+   0x4a5a1ef80e3403c0ef1b5965456d9df866802777 297 09-07 20:45 -> 09-12 12:26 {'fresh': 276, 'L004': 10, 'L003': 7, 'L002': 3, 'L001': 1}
+   0x11054a14c5370ec47aefa953a6d1d6d0e449ee5b 297 09-23 19:54 -> 10-04 01:36 {'L012': 292, 'fresh': 5}
+   0xc84de909d1e73e517294118fe011160c1c798f2b 291 09-23 19:54 -> 10-04 01:36 {'L012': 290, 'fresh': 1}
+   0x5ccd26d4daa07e13f2d368a102d1cf8916105c2f 287 09-23 19:54 -> 10-04 01:36 {'L012': 287}
+fresh launches 6425 buyer slots 85630 single-launch buyers 73536

@@ -1,0 +1,15 @@
+== decoyR 0x65050a9b swaps 76115
+  per 6h-bin [(0, 9817), (1, 4339), (2, 16128), (3, 12192), (4, 6177), (5, 9602), (6, 9122), (7, 5589), (8, 3149)]
+  buys at launch+0..3 by (ETH pair, fee, ts, sqrtP):
+  offsets of those []
+  all swaps in new pools by family (top): [((False, 0, 200, 0), 10453), ((False, 8388608, 200, 0), 4444), ((False, 8388608, 8, 0), 2351), ((False, 12500, 60, 0), 1956), ((True, 0, 60, 2505036234966386302045715536678303), 1020), ((True, 0, 200, 552276925551777191233390175949203), 967)]
+== frontR2 0xfd1b271f swaps 451
+  per 6h-bin [(0, 95), (1, 11), (2, 102), (3, 70), (4, 8), (5, 41), (6, 78), (7, 20), (8, 26)]
+  buys at launch+0..3 by (ETH pair, fee, ts, sqrtP):
+  offsets of those []
+  all swaps in new pools by family (top): [((True, 10000, 200, 679394651928963067279918579724198), 87), ((False, 0, 200, 0), 77), ((False, 8388608, 200, 0), 34), ((False, 8388608, 8, 0), 27), ((True, 0, 200, 2151813121295408910812139624586144), 6), ((True, 0, 60, 2505036234966386302045715536678303), 3)]
+== our relay swaps 128
+  per 6h-bin [(2, 4), (3, 10), (4, 14), (5, 32), (6, 50), (7, 10), (8, 8)]
+  buys at launch+0..3 by (ETH pair, fee, ts, sqrtP):
+  offsets of those []
+  all swaps in new pools by family (top): [((True, 100, 1, 792280926924313289846529216293289), 128)]

@@ -1,0 +1,169 @@
+G3 (opus run): the owner's grid method on every Uniswap V3 family of census 2. Hand-back Oct 11 ~19:10 UTC.
+All numbers below come from the scripts in this directory (run_all.sh re-runs everything in ~75 s from the census cache; no network).
+A previous run's files sit one level up (analysis/G3/*.py, REPORT.md); nothing here reads them.
+
+ANSWER
+V3 has one robust line and it is the known one: the V3 crowd line (PositionManager 0x73991a25 multicall ac9650d8, 836 B, value 0, fee 100,
+token template d4e7eae4), 149 launches/day. The grid's V rule is K20 hold60 (buy at launch + 20, sell at launch + 80): 1,046 trades, +7.8% mean
+net of gas, $1.16/trade, $173/day over 7 days, $118/day validated (days 6-7), $117 in the last 24 h, positive on all 7 days and in 28/28
+six-hour slices, and the fit-only (F) and walk-forward (W) choices pick the same rule (+5.7% on days 6-7, +5.4% on day 7). Buying earlier
+(+2) with the same +80 exit is better off-grid: +9.6% before gas, $1.41/trade, $210/day, 28/28 slices.
+Ranked strictly by validated $/day, a KNOWN sub-shape comes first: the 356-byte value-0 launches of lc:89885b75|d27d1e00 (111 launches, 83 of
+them in the last 48 h), V rule K60 hold200 (buy +60, sell +260): +115% mean but +0.1% median, $787/day validated, 9/9 qualifying slices,
+F +43% and W +70% out of sample. It is a lottery on the operator's own pump fleet (38 of 111 pools pumped by single-use wallets: +341% mean
+there, -2.6% in the other 73; without the best 10 trades +11.5%), 2-4 days old, and it fails the slice test at q 0.002. Report it, do not
+build for it yet.
+lc:0a493d1a|13ead562 is broken in the last 24 h: the operator's own 0.05-ETH buy was present in 8 of 58 launches on day 7 (82-100% on days 1-5, 8 of 12 on day 6);
+the V rule (mint + 1 -> mint + 31) went +215/+106/+12/+33/+23/+12/+1.6% by day; F and W lose out of sample.
+The full lc:89885b75|d27d1e00 and its token template 97c7ba1b have no rule positive in every slice (20/23, 15/17) and F loses (-17%, -13%).
+The 740-byte multicall shape and tok 58d59320 have no rule positive on both fit and validation (flat price paths, real buys in 6-10%).
+
+METHOD (as analyst G, REPORT_G; re-implemented for V3)
+- Rows: the 2,102 V3 pools of census 2 (factory 0x1f7d7550, all WETH-quoted; WETH is token0 in 1,987). o01.
+- Families: launch-shape key = launch target (or created contract), selector, calldata length, fee, tick spacing, quote, msg.value at 7
+  decimals (399 keys); token skeleton fam.tok (101 keys). Kept >= 20 launches in 7 days and >= 8 in the last 48 h: 3 shape + 4 tok = 7
+  families, 1,786 pools. Supplementary (so every named line is priced and marked): lc:0a493d1a|13ead562 (493), lc:0a493d1a|ac9650d8 (1,155),
+  lc:89885b75|d27d1e00 (248), and the shape keyed on the target's code hash, which adds one family: 89885b75|d27d1e00|356 B|value 0 (111;
+  under the address key every 89885b75 launch is a singleton because each launch calls its own launcher contract). 11 families, 1,924 pools. o02, o02b.
+- Replay (v3sim.py): the pool = its positions from Mint/Burn; the price before our buy = the last Swap's recorded sqrtPriceX96; before any swap,
+  the token-side edge of the first mint (no Initialize row in the census; a buy crosses the empty range for free, so it trades identically);
+  our buy of q at the head of block A = anchor + K; every later swap re-applied by its input amount with Uniswap V3's SwapMath step
+  arithmetic (fee per step, SqrtPriceMath rounding, tick crossing between ranges); value recorded at the end of every block A..A+199 plus the
+  in-block maximum (take-profit trigger). Anchor = the first-mint block (= the launch block for every family except 13ead562, whose mint
+  comes 5-9 blocks after the createAndInitializePoolIfNecessary). 18 K (K = 0 an upper bound, never selected) x 143 exits (11 holds; 8
+  take-profits x 11 deadlines; 4 next-buy sizes x 11 deadlines) = 2,574 rules per family. A Burn with liquidity > 0 at or before the sell
+  block = -100%; no trade if the pull is at or before A - 2. Gas $0.02 per round trip is inside every grid return (C's convention puts it
+  only in $; the calibration below uses C's).
+- Our wallet 0xab5a34c3 / relay 0x2abb5653: in no V3 Swap (sender or recipient), Mint/Burn owner, or fetched tx (o03, o04); the code removes
+  them anyway.
+- Rule choice: V = fit days 1-5 mean > 0 (n >= 10), validation days 6-7 mean > 0 (n >= 5), every 6-hour slice with >= 3 trades positive,
+  highest validated $/day (validation $ / 2); F = best fit total among rules with every fit slice positive, measured on days 6-7; W = V's
+  choice on days 1-6, measured on day 7; A = best 7-day $ among the rules V accepts. o08.
+
+VALIDATION OF THE REPLAY
+- o05: every recorded V3 swap (140,896) re-priced from the state synced to the previous recorded price: sqrtP error p99 7.2e-18, max 3.6e-14;
+  output p99 1.7e-16, max 2.3e-12; cumulative never-resynced path p99 9.6e-17, max 3.6e-14; the active liquidity rebuilt from the positions
+  equals the Swap row's liquidity on all 140,896 swaps.
+- o07b: 1,445 random grid cells recomputed from scratch (direct replay; take-profit triggers by brute force): 0 sell-block mismatches, 0 return
+  mismatches where no pull lands by the sell (57 pulled cells differ by design: the grid applies the burn, both count -100%).
+
+CALIBRATION (o06) - passes exactly
+C's headline on the V3 crowd line, buy at +2, sell 20 blocks after the first real buy (>= 0.005 ETH, anyone, at/after our buy) or at +80:
+n 1046/1046, mean +8.45%, median +0.15%, win 0.879, worst -0.0%, 0 pulled, $1.240/trade, $185.3/day; by day +8.9/+15.9/+6.2/+10.3/+5.7/+6.3/
++5.5% (C: +8.5%, +0.2%, 0.88, $1.24, $185, same per day). Cap 60: $95.0/day; cap 100: $223.6/day with 1.8% pulled (C: $95, $224, 1.8%).
+Per trade against C's own float replay (analysis/C/replay.py imported read-only): |difference| median 6.3e-14, max 2.3e-12.
+C's 13ead562 headline (buy mint + 2, sell first real buy + 1, cap creation + 60): n 483, +66.05%, median +22.85%, win 0.952, 2.1% pulled,
+$677.9/day, last 24 h -12.7% (C: 483, +66.0%, +22.8%, 0.95, 2.1%, $678, -12.7%).
+
+RANKED (V rule, q 0.0058 ETH = $14.91; returns net of gas; $/day validated = days 6-7; o08_select_q0.0058.out)
+1. shapecode 89885b75|d27d1e00|356 B|fee 100|value 0 (subset of lc:89885b75|d27d1e00: KNOWN line, NEW rule). 111 launches, 15.9/day over 7 days,
+   41.5/day in the last 48 h; by day 3/0/1/18/6/58/25. Shape: d27d1e00 called on a per-token launcher contract (code hash 89885b75, 248
+   distinct targets for 248 launches), 356 B, value 0, 39 launch wallets (nonce median 4); token-only mint L 3.16e22 over 1,094,515 ticks in
+   the launch tx; WETH token0.
+   V K60 hold200 (buy +60, sell +260): n 111, mean +115.0%, median +0.06%, win 53%, worst -100.1%, pulled 1.8%, $17.14/trade, $272/day (7 d),
+   validation n 83 +127.2% $787/day, last 24 h n 25 +70.2% $261; by day -0.0/-/+83.8/+91.1/+79.6/+151.9/+70.2%; slices 9/9 (only 9 slices
+   have >= 3 trades); 273 rules pass. F K200 hold200: +43.0% on days 6-7; W = V: +70.2% on day 7.
+   Robustness (o11, o17): without the best 1/5/10 trades +95%/+43%/+11.5%; bootstrap 90% of the mean +60%..+178%; top 10% of trades = 93% of
+   the return; q 0.002: +117% mean but slices 7/9 (fails V); neighbours K40/K80 hold200 +93%/+124%, K60 hold100 +27%; sell +160/+210/+260/
+   +310/+360: +26/+60/+115/+135/+177% with 0/0/1.8/13.5/20.7% pulled; 2 first pulls <= +260 (at +239, +241), 12 <= +300.
+   Who moves the price (o10, o14): a fleet of single-use wallets: the census shared fingerprint 0xcaf681a6:04e45aaf:228:1 (SwapRouter02
+   exactInputSingle, priority 1; 472 single-use wallets) appears early in 88 pools census-wide, 86 of them lc:89885b75 pools. In this shape
+   it buys in 38 of 111 pools (fetched evidence): first fleet buy at +111/+222/+370, 8 buys and 1.17 ETH per pool (median; plus ~80 more
+   unfetched SwapRouter02 buys >= 0.05 ETH per fleet pool, none in the other pools), 0.086/0.116/0.209 ETH each, 4 blocks apart. V rule:
+   +341% mean / +68% median in those 38 pools, -2.6% / -0.1% in the other 73. In the V window 54% of the buy ETH is that fleet, 44% unfetched,
+   launch wallet 2%, reused snipers 0.16 ETH of 35 ETH; strangers proper 1 buy. Fleet min-out (o15): 0 in 63 of 311 readable, else slack
+   p10/50/90 4.6%/33%/33%. The launch wallet itself buys in 4 pools.
+   Reaction: unmeasurable on strangers (2 stranger buys in all); census early-outsider 0/40 vs baseline12 0/66 (those outsiders are the
+   fleet); no first pull within 30 blocks of any of 692 early buys. Pulls: 63/111 within 3,000 blocks at +287/+490/+1870, full, by collector
+   wallets via the PositionManager multicall (0 by the launch wallet; across lc:89885b75 1 of 65 by the launch wallet, 0x6de0c019 16,
+   0xcecbcc19 15; o14), 143/985/2219 blocks after the
+   last fleet buy, none before the first real buy.
+   Engine: new trading path (V3 router/relay) plus a decoder for d27d1e00 / 356 B / value 0 keyed on the target's code hash 89885b75;
+   timer entry at +60, fixed exit at +260. Top risk: no edge without the fleet (it chose 38 of 111 pools), 2-4 days of history (58 launches
+   on day 6), the +260 exit 20 blocks before the p10 pull.
+2. V3 crowd line, shape 0x73991a25|ac9650d8|836|100|1|WETH|0 (= tok d4e7eae4 1,013 + 1d7cd90a 22 + cb79985d 11). KNOWN (C #1).
+   1,046 launches, 149.4/day (by day 153/155/167/149/142/134/146). Shape: NonfungiblePositionManager multicall
+   (createAndInitializePoolIfNecessary + mint + refundETH), 836 B, value 0, fee 100 / ts 1, a token-only position from the minimum tick to the
+   launch tick (width 1,080,651 / 1,083,528 / 1,079,473 ticks; L 6.32e22, 5.48e22, 6.71e22 most common) minted in the launch tx; 1,046
+   distinct launch wallets (nonce p50 2); WETH token0 in 995.
+   V K20 hold60: n 1046, mean +7.76%, median -0.05%, win 41%, worst -100.1% (1 pull), pulled 0.19%, $1.16/trade, $173/day; validation n 280
+   +5.67% $118/day; last 24 h n 146 +5.35% $117; by day +5.6/+12.7/+6.6/+11.2/+6.6/+6.0/+5.4%; slices 28/28 (52 rules pass); F = W = K20 hold60.
+   Robustness: without the best 1/5/10 trades +7.6/+7.0/+6.3%; bootstrap 90% +6.6%..+8.8%; q 0.002 +7.5% (28/28 slices still pass at
+   24 rules); neighbours K16/K30 hold60 +7.4/+8.1%, K20 hold40/100 +3.2/+11.1%; brief's pull rule +7.9%. Off-grid (o12, gross of gas): buy +2
+   sell +80 +9.6% median +0.2% win 88% $1.41/trade $210/day val $131/day 28/28; sell +85 $231/day 28/28 (0.5% pulled); +90 $246/day 28/28
+   (1.1%); +100 $258/day 27/28 (2.9%); +120 $284/day 25/28 (6.1%). Stake (buy +2 sell +80): 0.02 ETH +9.5% $726/day, 0.05 +9.3%
+   $1,790/day, 0.1 +9.1% $3,488/day, 0.2 +8.6% $6,632/day; validation +5.9..+6.4% at every stake.
+   Who moves the price: a reused crowd, never the launch wallet. First 12 swaps: 11,347 buys, 0.0007 ETH median, 96% by wallets seen in >= 5
+   pools (227 wallets bought early in >= 5 pools of the family: 0x776e5a2a 629 pools, 0xfac67b20 628, 0x9a128676 603, 0x1a45411c 417),
+   strangers 1%. First real buy in
+   906 (87%; by day 71/76/87/90/92/99/94%) at +47/+86/+264, 0.016/0.050/0.218 ETH, 142 distinct buyers seen in 69 pools (median), through bot
+   contracts 0x80114879 / 0xd26c8cfc / 0xa28f468c / 0xaf9d6fa0 calling the Universal Router 0x88767899. Inside the V window: 5,142 buys,
+   144.7 ETH (0.138 ETH per trade): reused wallets 74%, 3-4-pool wallets 3%, strangers 2%, unfetched 22%; 97.6% of it via 0x88767899.
+   Reaction: none. Early outsider 6/119 (5%) vs baseline12 62/927 (7%); shared fingerprints excluded 0/38; all-fetched 19/238 (8%) vs
+   223/808 (28%); per-buy hazard: 0 of 124 stranger buys followed by the first pull within 30 blocks vs 84 of 10,113 other buys. Pulls: 822
+   (79%) within 3,000 blocks, all full, all by the launch wallet via the PositionManager, at +128/+298/+1216, none before the first real buy,
+   58/230/1173 blocks after it; the 140 pools without a real buy are pulled in 138, from +83 (p10 +97, median +144). First pulls <= +80: 2,
+   <= +90: 12, <= +100: 30.
+   Reaction-safe (o11): if a pull came 31+ blocks after our buy, the best V rule with the sell <= 30 blocks after the buy is K60 hold20
+   (+4.1%, $92/day; validation +4.5%, $93/day).
+   Engine: new trading path (V3 router/relay, being built). The launch is recognisable from calldata alone (fixed target, selector, 836 B,
+   value 0, fee 100); fire on a timer (+20, or +2) and sell at a fixed +80; no decoder of the crowd needed. Top risk: the mean rides the
+   tail (median -0.05% net, top 10% of trades = 75% of the return) and the +80 exit is 3 blocks before the earliest no-crowd pull (+83);
+   the crowd's min-out is not readable (their bot contracts' calldata is not cached).
+3-4. Duplicates of #2 under other keys: tok d4e7eae4 (1,016: K20 hold60 +7.95%, $172/day, val $118/day, 28/28) and lc:0a493d1a|ac9650d8
+   (1,155; KNOWN: every V3 PositionManager multicall launch: +6.85%, $168/day, val $118/day, 28/28; the 740-B, value-0.001 and other-fee
+   launches dilute it).
+5. lc:0a493d1a|13ead562 (493; shape 0x73991a25|13ead562|132|100|1|WETH|0 = 477, tok 203caacb 402). KNOWN (C #2). 70.4/day, bursty
+   114/7/32/61/209/12/58; 114 launch wallets (nonce median 29). Shape: the creation tx is createAndInitializePoolIfNecessary alone (132 B,
+   value 0); the token-only mint (via the PositionManager; L 1.23e22 in 247, 3.68e22 in 153) comes 5-9 blocks later in a separate tx (not
+   cached by the census); the launch wallet then buys exactly 0.05 ETH through SwapRouter02 exactInputSingle with minOut 0 (968 of 968
+   readable) at mint +16..+29.
+   V K1 hold30 (buy mint + 1, sell mint + 31): n 492, +66.4% mean, +22.7% median, win 93%, pulled 0.2%, $9.90/trade, $696/day over 7 days;
+   validation n 70 +3.35% $17.5/day; last 24 h n 58 +1.56% $13.5; slices 17/17. F K16 hold40 -11.1% on days 6-7; W K1 hold40 -0.2% on day 7.
+   By day (o13): launches | pools with the 0.05-ETH own buy | V rule mean/median | C's rule mean
+     day 1  114 | 112 | +215.5%/+11.2% | +215.9%      day 5  209 | 200 | +22.8%/+22.7% | +22.5%
+     day 2    7 |   7 | +106.3%/+22.7% | +106.5%      day 6   12 |   8 | +12.0%/+7.3%  | +12.1%
+     day 3   32 |  31 | +12.2%/+7.3%   | +12.3%       day 7   58 |   8 | +1.6%/+0.1%   | -12.7%
+     day 4   61 |  50 | +33.1%/+22.7%  | +36.9%
+   On day 7, in 43 of 58 pools the launch wallet's largest buy was < 0.005 ETH (0.001-ETH buys: 48 on day 7 vs 22 on days 1-6); the break is in slice 26
+   (47 launches, 2 with the 0.05 buy).
+   Who moves the price: the launch wallet alone (100% of first real buys; 21.06 of 21.14 ETH bought inside the V windows); 56 reused sniper
+   wallets (>= 5 pools of the family) add dust (0x1a45411c 298 pools); strangers 2 buys. Reaction: unmeasurable (2 stranger buys); early outsider 5/77 vs baseline12
+   82/406 (20%: the operator pulls soon after its own buy). Pulls: 426 (86%), full, by the launch wallet, at +80/+144/+291 from the creation,
+   71/124/270 blocks after its own buy, none before it.
+   Engine: new trading path plus a trigger on the separate mint 5-9 blocks after the creation. Top risk: the operator stopped its 0.05-ETH
+   buy on day 7; the 7-day $ is days 1 and 5. The same at q 0.002 is +110% (our 0.0058 buy moves these thin pools).
+6-7. shape 13ead562 fee 100 (477) and tok 203caacb (402): the same line (V K1 hold30 +68.6% / +77.3%, validation +3.4% / +1.3%, F -11.3% /
+   -28.1%).
+8. lc:89885b75|d27d1e00 (248; KNOWN, C rejected). 35.4/day (31/22/20/46/15/85/29). The value launches (8-19 ETH msg.value) buy in their own
+   launch tx (1,005 of 2,332 early buys; first real buy at +0 by the launch wallet in 139 of 176). V K60 hold200 +60.4% mean, median -0.11%,
+   win 37%, $318/day, val $782/day, but slices 20/23 (no rule passes every slice); top 10% of trades = 99% of the return; F K200 TP3% dl200
+   -17.1% on days 6-7; W K100 hold200 +16.3% on day 7. The fleet (above) is in 86 pools: +172% there, +0.6% elsewhere.
+9. tok 97c7ba1b (172; inside lc:89885b75): V K30 hold200 +49.1%, median -0.09%, slices 15/17, F -13.3%.
+10. shape 0x73991a25|ac9650d8|740|100|1|WETH|0 (49, 7/day; not known): 0 of 2,431 rules positive on the fit days; real buy in 5 of 49; a K2 buy
+   is worth -0.15% (median, net) at +10, +60 and +200 blocks; 20% pulled by +202. Rejected.
+11. tok 58d59320 (62, 8.9/day; not known; 34 via the PositionManager multicall (27 of 740 B, 7 of 836 B), 27 via 0x1fae6f16 1,124 B): best fit rule K1 hold100 +7.3% on the fit days,
+   -0.4% on validation; 0 rules positive on both; real buy in 4 of 62. Rejected.
+
+REJECTED BEFORE THE GRID (o02): >= 20 launches but < 8 in the last 48 h: shape 0x1fae6f16|026f2bf0|1124 B|fee 10000 (27 launches, 2 in 48 h),
+0x415cec82|c9b42fa6|260 B (20, 4), the 836-B multicall with value 0.001 (23, 1); tok 2be340ff (76, 6; inside lc:89885b75), fbe37854 (41, 5)
+and 884da06b (30, 3) (13ead562 token variants), ad9da489 (32, 0), 3c6faa4f (24, 1), 1d7cd90a (22, 5; inside the crowd shape), 6f7a81c9 (20,
+4). 393 shape keys and 90 tok keys have < 20 launches. The code-hash and census lc/strict/tokm keys find no other family (o02b).
+
+LIMITS
+- Who bought is known only for fetched transactions (first 12 swaps, first real buy, pulls, up to 12 buys before a pull): 21,514 of 139,705
+  V3 swap txs; inside the V windows 22% (crowd line) and 44% (89885b75 356 B) of the buy ETH has no fetched tx. Wallet pool counts are lower
+  bounds (19,593 wallets; equal to the census's own count for 1,530 of 1,574 V3 first-real-buy wallets).
+- Min-out is readable only for SwapRouter02 exactInputSingle; the crowd's bot contracts (Universal Router execute) are unreadable, so the
+  replay cannot show whether our buy ahead makes their buys revert; reverted transactions are not in the data.
+- V3 Initialize is not in the census: the start price is the mint's token-side edge (exact for buys from a token-only position; 50 two-sided
+  mints in lc:0a493d1a|ac9650d8 use sqrt(lower) + amount1/L).
+- Landing at +2 (and +1 for 13ead562's K1) was measured on v4 only. The 13ead562 mint tx and its selector are not cached.
+- The 356-B family has 111 launches, 83 of them in the last 48 h; its slice test rests on 9 slices.
+- V3 pools outside factory 0x1f7d7550, and non-WETH V3 quotes, are not in the census.
+
+FILES (all in analysis/G3/opus/): common.py, tickmath.py (copied from analysis/G), v3sim.py (replay core), gstats.py, run_all.sh;
+o01_extract (v3rows.pkl), o02_families + o02b_altkeys (families.json), o03_events (ev.pkl, ev_raw.pkl), o04_txs (tx.pkl), o05_validate,
+o06_calib, o07_grid (grid_q0.0058.npz, grid_q0.002.npz), o07b_gridcheck, o08_select (o08_select_q*.out, o08_results_q*.json), o09_wallets
+(wallets.pkl), o10_detail (.out/.json), o11_robust, o12_crowd, o13_13ead562, o14_fleet356, o15_minout, o16_noV, o17_pulls356; each .py
+with its .out.

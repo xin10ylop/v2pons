@@ -1,0 +1,254 @@
+{
+ "to:0x563fee5015943ec183250e63e2b723c49d3eaf1b": {
+  "pools": 6,
+  "known": [
+   [
+    "none",
+    6
+   ]
+  ],
+  "tx_value_p10_50_90": [
+   1e-07,
+   1e-06,
+   1e-06
+  ]
+ },
+ "to:0x95731eecdec385854b30cf2e88c350352b70ae2d": {
+  "pools": 3,
+  "known": [
+   [
+    "none",
+    3
+   ]
+  ],
+  "tx_value_p10_50_90": [
+   1e-06,
+   1e-06,
+   1e-06
+  ]
+ },
+ "from:0xa9acc7fd (UR)": {
+  "pools": 3,
+  "known": [
+   [
+    "none",
+    3
+   ]
+  ],
+  "tx_value_p10_50_90": [
+   1e-05,
+   1e-05,
+   1e-05
+  ]
+ },
+ "to:0x1e7634e5a89556640d83ad15075996ab2ab2a609": {
+  "pools": 10,
+  "known": [
+   [
+    "none",
+    10
+   ]
+  ],
+  "tx_value_p10_50_90": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "from:0xe71a69f4 dust": {
+  "pools": 3912,
+  "known": [
+   [
+    "vbot-v2.433",
+    1728
+   ],
+   [
+    "none",
+    1202
+   ],
+   [
+    "vbot-other",
+    905
+   ],
+   [
+    "operator-A",
+    77
+   ]
+  ],
+  "tx_value_p10_50_90": [
+   2e-06,
+   2e-06,
+   2e-06
+  ]
+ },
+ "family3": [
+  {
+   "pid": "0xa65c9d27cd02f3dcf7c1bc95028c2ebd5041fae782eb086e51470a75b558c524",
+   "add_rel": 74,
+   "add_ti": 10,
+   "L_add": 973178386239780181934,
+   "sniper_rel_add": 1,
+   "sniper_ti": 2,
+   "sniper_eth": 0.001,
+   "sniper_minout_word2": 0,
+   "cap_assumed_0.99": 3.2538082450626e-05,
+   "front_add+1_sell+5": {
+    "B": 75,
+    "S": 79,
+    "exit": "sold",
+    "ret": -0.005220506732926897,
+    "gross": -0.004397472250168276,
+    "dropped": []
+   }
+  },
+  {
+   "pid": "0x8a0fe8ce2e45c0b64bebe8d7eef8699320cd7063bed4403c8c52317bd77b4ab5",
+   "add_rel": 161,
+   "add_ti": 4,
+   "L_add": 973178386239780181934,
+   "sniper_rel_add": 1,
+   "sniper_ti": 3,
+   "sniper_eth": 0.001,
+   "sniper_minout_word2": 0,
+   "cap_assumed_0.99": 3.2538082450626e-05,
+   "front_add+1_sell+5": {
+    "B": 162,
+    "S": 166,
+    "exit": "sold",
+    "ret": -0.0052224067050289655,
+    "gross": -0.004397579118822069,
+    "dropped": []
+   }
+  },
+  {
+   "pid": "0x889b7bc9a01aec27aeaefebebb6341b1744961eb1b408d61cb6157976de4fca5",
+   "add_rel": 441,
+   "add_ti": 3,
+   "L_add": 973178386239780181934,
+   "sniper_rel_add": 1,
+   "sniper_ti": 1,
+   "sniper_eth": 0.001,
+   "sniper_minout_word2": 0,
+   "cap_assumed_0.99": 3.2538082450626e-05,
+   "front_add+1_sell+5": {
+    "B": 442,
+    "S": 446,
+    "exit": "sold",
+    "ret": -0.005215139701057758,
+    "gross": -0.0043975562527818965,
+    "dropped": []
+   }
+  },
+  {
+   "pid": "0x774536abd29a93f79f09212b7835bffc4f4bb1664cc60752b9d52f9ebc55149b",
+   "add_rel": 94,
+   "add_ti": 2,
+   "L_add": 973178386239780181934,
+   "sniper_rel_add": 0,
+   "sniper_ti": 4,
+   "sniper_eth": 0.001,
+   "sniper_minout_word2": 0,
+   "cap_assumed_0.99": 3.2538082450626e-05,
+   "front_add+1_sell+5": {
+    "B": 95,
+    "S": 99,
+    "exit": "sold",
+    "ret": -0.005212505876584655,
+    "gross": -0.004397361048998448,
+    "dropped": []
+   }
+  },
+  {
+   "pid": "0x53186e07b312fcc1631b3a2c84d56511a05361a147d212551613e103f871eb69",
+   "add_rel": 499,
+   "add_ti": 5,
+   "L_add": 973178386239780181934,
+   "sniper_rel_add": 0,
+   "sniper_ti": 6,
+   "sniper_eth": 0.0001,
+   "sniper_minout_word2": 0,
+   "cap_assumed_0.99": 3.0442606657742e-05,
+   "front_add+1_sell+5": {
+    "B": 500,
+    "S": 504,
+    "exit": "sold",
+    "ret": -0.005097492021060517,
+    "gross": -0.004282418917612241,
+    "dropped": []
+   }
+  },
+  {
+   "pid": "0xcd571ce3bae5be19420bd6ca8e77ac454637b5959e9a3be65c987aa5ed0a7988",
+   "add_rel": 1455,
+   "add_ti": 8,
+   "L_add": 973178386239780181934,
+   "sniper_rel_add": 0,
+   "sniper_ti": 9,
+   "sniper_eth": 0.0001,
+   "sniper_minout_word2": null,
+   "cap_assumed_0.99": 3.0442606657742e-05,
+   "front_add+1_sell+5": {
+    "B": 1456,
+    "S": 1460,
+    "exit": "sold",
+    "ret": -0.005091458190249827,
+    "gross": -0.004282553362663621,
+    "dropped": []
+   }
+  },
+  {
+   "pid": "0x7dc16bb81dff8f110609102a1358ac2092e7fb5f8540a7c48e2b05f201687ff2",
+   "add_rel": 69,
+   "add_ti": 3,
+   "L_add": 973178386239780181934,
+   "front_add+1_sell+5": {
+    "B": 70,
+    "S": 74,
+    "exit": "sold",
+    "ret": -0.005055954367634828,
+    "gross": -0.0042687819538417245,
+    "dropped": []
+   }
+  },
+  {
+   "pid": "0x562bdf4263a9088f2c4b5c2ddc3f181d80e556db99c05f02265c847240b83052",
+   "add_rel": 80,
+   "add_ti": 5,
+   "L_add": 973178386239780181934,
+   "sniper_rel_add": 0,
+   "sniper_ti": 6,
+   "sniper_eth": 0.001,
+   "sniper_minout_word2": 0,
+   "cap_assumed_0.99": 3.2538082450626e-05,
+   "front_add+1_sell+5": {
+    "B": 81,
+    "S": 85,
+    "exit": "sold",
+    "ret": -0.005185560713505172,
+    "gross": -0.0043975276100568965,
+    "dropped": []
+   }
+  }
+ ],
+ "family3_front_from_add": {
+  "n": 8,
+  "mean": -0.00516,
+  "median": -0.0052,
+  "win": 0.0,
+  "pulled_first": 0,
+  "pulled_before_buy": 0,
+  "exits": {
+   "sold": 8
+  },
+  "usd_trade": -0.0774,
+  "trades_day": 4.0,
+  "usd_day": -0.31,
+  "p10_50_90": [
+   -0.00522,
+   -0.00519,
+   -0.00509
+  ],
+  "min": -0.00522,
+  "max": -0.00506
+ }
+}

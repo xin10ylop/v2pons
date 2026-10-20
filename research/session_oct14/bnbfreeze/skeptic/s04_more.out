@@ -1,0 +1,26 @@
+[D] operator approve(fresh, amt): fresh transfer outcome, stored allowance(op,fresh)
+   amt 0x0        ('ok', 'stored=0x0')
+   amt 0x1        ('REVERT(0x)', 'stored=0x1')
+   amt 0x2        ('ok', 'stored=0x0')
+   amt 0x3        ('REVERT(0x)', 'stored=0x3')
+   amt 0xa        ('ok', 'stored=0x0')
+   amt 0xffffffff ('ok', 'stored=0x0')
+   amt 0xffffffff ('REVERT(0x)', 'stored=0xffffffffffff')
+[D'] non-operator approve(fresh, amt): fresh transfer outcome, stored allowance(other,fresh)
+   amt 0x1        ('ok', 'stored=0x1')
+   amt 0xffffffff ('ok', 'stored=0xffffffffffff')
+[D''] our wallet after operator approve(us, amt):
+   amt 0x0        ok
+   amt 0x2        ok
+   amt 0xffffffff ok
+   amt 0x1        REVERT(0x)
+[E] our wallet, far-future blocks:
+   +1 blocks +1 s -> REVERT(0x)
+   +200000 blocks +259200 s -> ERR {"code": -32603, "message": "global signer not initialized for mining mode"}
+   +10000000 blocks +31536000 s -> ERR {"code": -32603, "message": "global signer not initialized for mining mode"}
+[F] archive: transfer(dead, 1) from us around the marking block
+   se [(127550543, 'ok'), (127550559, 'ok'), (127550560, 'ok'), (127550561, 'ok')]
+[G] token logs in block 127550560:
+   tx 0xc3177267bcd672252145b9cdd6292b624dcfdb7d59186f34e6c8a8a8d4343b29 from 0xbd418ce6a83995971de9f1cf9f61f345e91aeadd to 0x950e681819a68f595bb3db313346393d64f66bb5 gasPrice 0.051 nonce 38811
+   input 0x095ea7b30000000000000000000000008881bba6787848f4e86780ef69a34bb45c8d4fcbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+   topics ['0x8c5be1e5ebec7d5bd14f714f4f5ec7c46ab3db174da78c3f62f10b71e9aeeaa0', '0x000000000000000000000000bd418ce6a83995971de9f1cf9f61f345e91aeadd', '0x0000000000000000000000008881bba6787848f4e86780ef69a34bb45c8d4fcb'] data 0x0000000000000000000000008881bba6787848f4e86780ef69a34bb45c8d4fcb

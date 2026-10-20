@@ -1,0 +1,26 @@
+[
+ {
+  "pid": "0x5601033f1d2e81c6e1e0a3bb20ea663f586d2aea5d3dc64ab0747dc2bfe01b66",
+  "rel": 95,
+  "eth": 0.0198,
+  "from": "0xf343067ad6ed9a1fdca41b6594fbc8372315f0a9",
+  "minout": 1,
+  "deadline_minus_launch_ts": 100,
+  "quote": 2450314752217459831108870,
+  "minout_over_receipt_quote": 4.134861552052831e-25,
+  "cap_eth_on_receipt": 99.99999990686774,
+  "cap_eth_on_pool_output": 99.99999990686774
+ },
+ {
+  "pid": "0x23d23fe4612bff4563b2864fb9608269d620597d463bf132ff5eca1991b2f7cf",
+  "rel": 96,
+  "eth": 0.04059,
+  "from": "0x254eff45135ab7e0ffc5a8d4c913f89dd3e6166d",
+  "minout": 1483517212454657488716336,
+  "deadline_minus_launch_ts": 60,
+  "quote": 5010189842805327197715935,
+  "minout_over_receipt_quote": 0.30000000000000004,
+  "cap_eth_on_receipt": 6.639368366450071,
+  "cap_eth_on_pool_output": 6.7357280291616926
+ }
+]

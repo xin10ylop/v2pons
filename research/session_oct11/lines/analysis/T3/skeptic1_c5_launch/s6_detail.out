@@ -1,0 +1,35 @@
+================ stage 6 details ================
+pools (current regime) with a 1444-byte call at d 0..4 before T:
+  pool 0x06c68df7 L 85585344 T L+36 | call at d=1 (L+35), value 5 ETH, from 0x86ecca4c, tx index 3 vs bot -
+  pool 0x2759e930 L 85625465 T L+47 | call at d=0 (L+47), value 5 ETH, from 0xd5d31e91, tx index 1 vs bot 2
+  pool 0x1c14a751 L 85694191 T L+52 | call at d=2 (L+50), value 5 ETH, from 0x892daec4, tx index 2 vs bot -
+
+engine A=18 k=1, every trade (lead = T - trigger block):
+  pool 0x97eaffcb L+18 trigger value 3 from 0x68ce8eab; T L+52; lead 34; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +4.1%
+  pool 0x2fa237d6 L+23 trigger value 5 from 0x2fa1b607; T L+42; lead 19; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +5.9%
+  pool 0x06c68df7 L+35 trigger value 5 from 0x86ecca4c; T L+36; lead 1; natural pull none | lag 3: at T (half/half) +2.2%; lag 5: at T (half/half) +2.2%; lag 9: at T (half/half) +2.2%; lag None: at T (half/half) +2.2%
+  pool 0x837695b6 L+31 trigger value 5 from 0x86ecca4c; T L+51; lead 20; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +6.2%
+  pool 0x5651a563 L+24 trigger value 3 from 0x776e7e91; T L+54; lead 30; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +4.1%
+  pool 0xeb04064e L+18 trigger value 3 from 0xa4d1ceb0; T L+44; lead 26; natural pull L+157 | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +2.5%
+  pool 0x3a641cac L+31 trigger value 5 from 0xf78477e5; T L+46; lead 15; natural pull L+171 | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +7.4%
+  pool 0x12159266 L+22 trigger value 3 from 0x854402eb; T L+40; lead 18; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +7.5%
+  pool 0x2759e930 L+47 trigger value 5 from 0xd5d31e91; T L+47; lead 0; natural pull none | lag 3: late -2.4%; lag 5: late -2.4%; lag 9: late -2.4%; lag None: late -2.4%
+  pool 0xcf7c8bd2 L+38 trigger value 5 from 0xd5d31e91; T L+54; lead 16; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +9.2%
+  pool 0x81f366b2 L+23 trigger value 3 from 0x5161a91b; T L+45; lead 22; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +5.8%
+  pool 0x11f49abf L+24 trigger value 5 from 0xf9228efe; T L+48; lead 24; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +1.8%
+  pool 0x47cc1941 L+24 trigger value 3 from 0xa4569870; T L+36; lead 12; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +0.8%
+  pool 0x386efe2e L+26 trigger value 5 from 0x25da4ae7; T L+55; lead 29; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +5.8%
+  pool 0xbd50544b L+46 trigger value 5 from 0xb6f18c3b; T L+52; lead 6; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front ok +7.5%; lag None: front ok +7.5%
+  pool 0x55a7a1e2 L+18 trigger value 3 from 0x4cc23bb0; T L+32; lead 14; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +10.8%
+  pool 0xeb1f26f9 L+39 trigger value 3 from 0xa7ca1370; T L+55; lead 16; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +4.2%
+  pool 0x546446ab L+38 trigger value 5 from 0x49f5ddfb; T L+46; lead 8; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front ok +5.8%; lag None: front ok +5.8%
+  pool 0xb7a2efda L+28 trigger value 3 from 0x7b783efd; T L+33; lead 5; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front ok +2.5%; lag None: front ok +2.5%
+  pool 0x1c14a751 L+50 trigger value 5 from 0x892daec4; T L+52; lead 2; natural pull none | lag 3: front ok +4.2%; lag 5: front ok +4.2%; lag 9: front ok +4.2%; lag None: front ok +4.2%
+  pool 0xeebd521c L+35 trigger value 5 from 0x40041a00; T L+44; lead 9; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +8.8%
+  pool 0x2d1f27d5 L+21 trigger value 5 from 0x40041a00; T L+45; lead 24; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +5.9%
+  pool 0xc31cfa33 L+29 trigger value 3 from 0xb369a136; T L+35; lead 6; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front ok +4.2%; lag None: front ok +4.2%
+  pool 0x987a3b5b L+18 trigger value 5 from 0xc72ca787; T L+24; lead 6; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front ok +4.1%; lag None: front ok +4.1%
+  pool 0xa825464e L+20 trigger value 3 from 0x8887c65f; T L+54; lead 34; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +10.6%
+  pool 0x56d56b5d L+21 trigger value 5 from 0xad6eac1b; T L+50; lead 29; natural pull none | lag 3: front pulled -100.4%; lag 5: front pulled -100.4%; lag 9: front pulled -100.4%; lag None: front ok +7.5%
+
+Poisson: current regime, pools 91, hits in d1..4 2, expected at the pools' own background (0.0136/block) 4.84, P(X >= obs) = 0.954

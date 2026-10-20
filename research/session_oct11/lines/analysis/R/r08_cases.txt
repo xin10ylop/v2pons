@@ -1,0 +1,52 @@
+2.433 d1     10-06 00:27 pool 0xd2ca453440 T +10 stranger 0xccdf2cb9 to 0x88767899 buy 0.000368 at T+19 | 2nd bot buy T+- | pull T+28
+2.433 d1     10-06 00:28 pool 0xed946637f3 T +7 stranger 0xccdf2cb9 to 0x88767899 buy 0.000368 at T+28 | 2nd bot buy T+36 | pull T+41
+2.433 d1     10-06 00:28 pool 0xb21329b69c T +15 stranger 0xccdf2cb9 to 0x88767899 buy 0.000368 at T+15 | 2nd bot buy T+19 | pull T+22
+3.0 d1       10-06 00:28 pool 0xe09dcb164e T +10 stranger 0xccdf2cb9 to 0x88767899 buy 0.000368 at T+13 | 2nd bot buy T+- | pull T+18
+3.0 d1       10-06 00:28 pool 0x01a6333f9d T +8 stranger 0xccdf2cb9 to 0x88767899 buy 0.000368 at T+19 | 2nd bot buy T+22 | pull T+32
+2.433 d1     10-06 00:29 pool 0x887cd9a9e6 T +7 stranger 0xccdf2cb9 to 0x88767899 buy 0.000368 at T+16 | 2nd bot buy T+- | pull T+21
+2.433 d2     10-06 14:13 pool 0xb0bd1c273c T +8 stranger 0x53c9e01e to 0x88767899 buy 0.000003 at T+7 | 2nd bot buy T+23 | pull T+None
+2.433 d2     10-06 14:33 pool 0x4866232525 T +7 stranger 0x53c9e01e to 0x88767899 buy 0.000003 at T+6 | 2nd bot buy T+32 | pull T+None
+2.433 d2     10-06 15:39 pool 0xe43ca56303 T +8 stranger 0x4a8c5d1b to 0x65050a9b buy 0.000495 at T+3 | 2nd bot buy T+- | pull T+10
+2.433 d2     10-06 18:33 pool 0x105598e886 T +8 stranger 0xdd73a3c4 to 0x88767899 buy 0.001000 at T+11 | 2nd bot buy T+- | pull T+20
+2.433 d2     10-07 12:01 pool 0xbdff74b647 T +10 stranger 0xe50450be to 0x88767899 buy 0.004000 at T+3 | 2nd bot buy T+- | pull T+8
+2.433 d2     10-07 12:01 pool 0xbdff74b647 T +10 stranger 0x5d3d2664 to 0xb1000000 buy 0.021780 at T+8 | 2nd bot buy T+- | pull T+8
+2.433 d2     10-07 12:01 pool 0x63951d8b51 T +22 stranger 0xefa99c01 to 0xb1000000 buy 0.021780 at T+1 | 2nd bot buy T+- | pull T+8
+2.433 d2     10-07 12:02 pool 0x706a102e73 T +10 stranger 0xe50450be to 0x88767899 buy 0.004000 at T+7 | 2nd bot buy T+- | pull T+18
+2.433 d2     10-07 12:02 pool 0x706a102e73 T +10 stranger 0xefa99c01 to 0xb1000000 buy 0.021780 at T+11 | 2nd bot buy T+- | pull T+18
+2.433 d2     10-07 12:02 pool 0xb8ed906430 T +10 stranger 0xe50450be to 0x88767899 buy 0.004000 at T+9 | 2nd bot buy T+- | pull T+17
+2.433 d2     10-07 12:02 pool 0xb8ed906430 T +10 stranger 0xefa99c01 to 0xb1000000 buy 0.021780 at T+13 | 2nd bot buy T+- | pull T+17
+2.433 d2     10-07 13:23 pool 0xa9e70d49ff T +8 stranger 0x9dd3bf1e to 0xfd1b271f buy 0.000084 at T+25 | 2nd bot buy T+- | pull T+29
+2.433 d3     10-07 14:17 pool 0xda50267d34 T +10 stranger 0x0b410a5f to 0x88767899 buy 0.000080 at T+26 | 2nd bot buy T+27 | pull T+89
+3.0 d3       10-07 14:58 pool 0x4a61fc2deb T +9 stranger 0xd1879061 to 0x06afba43 buy 0.001000 at T+12 | 2nd bot buy T+- | pull T+19
+3.0 d3       10-07 14:58 pool 0x4a61fc2deb T +9 stranger 0x3c886772 to 0x88767899 buy 0.000426 at T+17 | 2nd bot buy T+- | pull T+19
+3.0 d3       10-07 14:58 pool 0x61cd43d463 T +10 stranger 0xd1879061 to 0x06afba43 buy 0.001000 at T+11 | 2nd bot buy T+- | pull T+21
+3.0 d3       10-07 15:08 pool 0x3fff1fdf00 T +9 stranger 0x3c886772 to 0x88767899 buy 0.000408 at T+13 | 2nd bot buy T+- | pull T+21
+3.0 d3       10-07 15:08 pool 0x3fff1fdf00 T +9 stranger 0xd1879061 to 0x06afba43 buy 0.001000 at T+15 | 2nd bot buy T+- | pull T+21
+3.0 d3       10-07 15:08 pool 0x94ddf8e39a T +8 stranger 0x3c886772 to 0x88767899 buy 0.000408 at T+11 | 2nd bot buy T+- | pull T+20
+3.0 d3       10-07 15:08 pool 0x94ddf8e39a T +8 stranger 0xd1879061 to 0x06afba43 buy 0.001000 at T+19 | 2nd bot buy T+- | pull T+20
+3.0 d3       10-07 15:08 pool 0x92f08db731 T +8 stranger 0xd1879061 to 0x06afba43 buy 0.001000 at T+11 | 2nd bot buy T+- | pull T+19
+3.0 d3       10-07 15:18 pool 0x8855b293ac T +8 stranger 0x3c886772 to 0x88767899 buy 0.000390 at T+13 | 2nd bot buy T+- | pull T+19
+3.0 d3       10-07 15:18 pool 0x694f6ad76b T +9 stranger 0x3c886772 to 0x88767899 buy 0.000390 at T+5 | 2nd bot buy T+- | pull T+11
+3.0 d3       10-07 15:18 pool 0x7a305c1ad0 T +9 stranger 0x3c886772 to 0x88767899 buy 0.000390 at T+15 | 2nd bot buy T+23 | pull T+28
+3.0 d3       10-07 21:05 pool 0x79f5b9b726 T +10 stranger 0x377cca5c to 0x88767899 buy 0.001000 at T+12 | 2nd bot buy T+- | pull T+18
+2.433 d3     10-08 05:12 pool 0x1c8fefa39e T +7 stranger 0x69b54106 to 0x12f420e5 buy 0.000100 at T+21 | 2nd bot buy T+- | pull T+30
+2.433 d3     10-08 05:12 pool 0x74bb5ba083 T +10 stranger 0x69b54106 to 0x12f420e5 buy 0.000100 at T+13 | 2nd bot buy T+- | pull T+18
+2.433 d3     10-08 05:15 pool 0x862491fe6d T +10 stranger 0x69b54106 to 0x12f420e5 buy 0.000100 at T+19 | 2nd bot buy T+31 | pull T+131
+3.0 d3       10-08 05:48 pool 0x5b3dffc76a T +10 stranger 0x3c886772 to 0x88767899 buy 0.000390 at T+5 | 2nd bot buy T+- | pull T+16
+3.0 d3       10-08 05:48 pool 0xcd376c6a2e T +9 stranger 0x3c886772 to 0x88767899 buy 0.000390 at T+4 | 2nd bot buy T+- | pull T+9
+3.0 d3       10-08 05:48 pool 0x2729e24b61 T +11 stranger 0x3c886772 to 0x88767899 buy 0.000390 at T+2 | 2nd bot buy T+- | pull T+8
+3.0 d3       10-08 05:48 pool 0xaa67da3a3b T +8 stranger 0x3c886772 to 0x88767899 buy 0.000390 at T+6 | 2nd bot buy T+- | pull T+11
+3.0 d4       10-08 16:38 pool 0x031b14e800 T +239 stranger 0xe282bb19 to 0x88767899 buy 0.000023 at T+18 | 2nd bot buy T+20 | pull T+453
+3.0 d4       10-08 16:48 pool 0xb68eeb06a5 T +168 stranger 0x2fc0827a to 0x88767899 buy 0.000023 at T+46 | 2nd bot buy T+77 | pull T+300
+2.433 d4     10-08 21:31 pool 0xb5147e1344 T +7 stranger 0x1b4461fa to 0xb1000000 buy 0.000049 at T+5 | 2nd bot buy T+- | pull T+10
+2.433 d4     10-09 02:23 pool 0x3ce0a3b1d0 T +10 stranger 0xf5d70602 to 0x65050a9b buy 0.000049 at T+11 | 2nd bot buy T+- | pull T+18
+3.0 d5       10-09 14:08 pool 0xbdf4c971a2 T +10 stranger 0xb3916f3a to 0xf0b7eaaf buy 0.000990 at T+28 | 2nd bot buy T+29 | pull T+40
+3.0 d5       10-09 15:27 pool 0xd602edf7d9 T +17 stranger 0x0ed4dfff to 0x88767899 buy 0.003000 at T+19 | 2nd bot buy T+39 | pull T+43
+3.0 d5       10-09 16:18 pool 0xabef593145 T +10 stranger 0x0ed4dfff to 0x88767899 buy 0.000500 at T+23 | 2nd bot buy T+26 | pull T+29
+3.0 d6 old   10-10 16:58 pool 0x1341ef186b T +10 stranger 0x5373fb35 to 0x88767899 buy 0.002495 at T+14 | 2nd bot buy T+21 | pull T+24
+3.0 d6 old   10-10 17:08 pool 0xd698637e52 T +10 stranger 0x5373fb35 to 0x88767899 buy 0.002395 at T+20 | 2nd bot buy T+27 | pull T+32
+2.433 d6     10-10 19:21 pool 0x2cf021bc4a T +15 stranger 0x5373fb35 to 0x88767899 buy 0.002118 at T+13 | 2nd bot buy T+19 | pull T+22
+3.0 d6 old   10-10 19:34 pool 0xea9a87c5bf T +15 stranger 0x5373fb35 to 0x88767899 buy 0.002033 at T+10 | 2nd bot buy T+- | pull T+21
+3.0 d6 old   10-10 20:21 pool 0xb61168d6d4 T +14 stranger 0x5373fb35 to 0x88767899 buy 0.001996 at T+14 | 2nd bot buy T+19 | pull T+22
+2.433 d6     10-11 13:39 pool 0x0c06406707 T +8 stranger 0x7ae81404 to 0x88767899 buy 0.000120 at T+6 | 2nd bot buy T+29 | pull T+81
+2.433 d6     10-11 13:47 pool 0xda272ad2c0 T +8 stranger 0x7ae81404 to 0x88767899 buy 0.000120 at T+20 | 2nd bot buy T+33 | pull T+173

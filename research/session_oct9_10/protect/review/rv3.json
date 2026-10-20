@@ -1,0 +1,182 @@
+[
+{
+"pid": "0x3a922cb2",
+"utc": "10-08 13:15:38",
+"buy": 83341743,
+"eth_in": 0.0012,
+"sell_after_buy": 6,
+"eth_out": 0.001290339500082929,
+"tokens_sold": 1244670076961363383733739,
+"pull_after_buy": 6
+},
+{
+"pid": "0x7cfa4232",
+"utc": "10-08 13:16:19",
+"buy": 83342143,
+"eth_in": 0.0012,
+"sell_after_buy": 7,
+"eth_out": 0.0,
+"tokens_sold": 0,
+"pull_after_buy": 6
+},
+{
+"pid": "0xf36b6bac",
+"utc": "10-08 13:16:56",
+"buy": 83342495,
+"eth_in": 0.0012,
+"sell_after_buy": 7,
+"eth_out": 0.0,
+"tokens_sold": 0,
+"pull_after_buy": 6
+},
+{
+"pid": "0x7223753b",
+"utc": "10-08 13:17:15",
+"buy": 83342680,
+"eth_in": 0.0012,
+"sell_after_buy": 7,
+"eth_out": 0.001428979129876378,
+"tokens_sold": 1244383535028662540620353,
+"pull_after_buy": 8
+},
+{
+"pid": "0x16df2826",
+"utc": "10-08 13:18:17",
+"buy": 83343304,
+"eth_in": 0.0012,
+"sell_after_buy": 7,
+"eth_out": 0.001294556041757788,
+"tokens_sold": 1242765705042666213242203,
+"pull_after_buy": 13
+},
+{
+"pid": "0x3578b252",
+"utc": "10-08 13:18:51",
+"buy": 83343619,
+"eth_in": 0.0012,
+"sell_after_buy": 6,
+"eth_out": 0.001194291115245132,
+"tokens_sold": 1225075439894259886244468,
+"pull_after_buy": 7
+},
+{
+"pid": "0x7490a93c",
+"utc": "10-08 13:19:56",
+"buy": 83344240,
+"eth_in": 0.0012,
+"sell_after_buy": 6,
+"eth_out": 0.0,
+"tokens_sold": 0,
+"pull_after_buy": 5
+},
+{
+"pid": "0xfd84a22b",
+"utc": "10-08 22:48:48",
+"buy": 83677584,
+"eth_in": 0.0012,
+"sell_after_buy": 3,
+"eth_out": 0.001197870153953576,
+"tokens_sold": 382898830413015810936376,
+"pull_after_buy": 98
+},
+{
+"pid": "0xbe2a35f9",
+"utc": "10-09 00:11:04",
+"buy": 83725846,
+"eth_in": 0.0012,
+"sell_after_buy": 3,
+"eth_out": 0.00119617147831536,
+"tokens_sold": 636870886333332391663879,
+"pull_after_buy": 270
+},
+{
+"pid": "0x2a928e99",
+"utc": "10-09 10:48:47",
+"buy": 84097998,
+"eth_in": 0.0012,
+"sell_after_buy": 3,
+"eth_out": 0.001197921437025498,
+"tokens_sold": 977568338096560269172107,
+"pull_after_buy": 18072
+},
+{
+"pid": "0x2749b5d1",
+"utc": "10-09 10:49:56",
+"buy": 84098678,
+"eth_in": 0.0012,
+"sell_after_buy": 3,
+"eth_out": 0.001201307156813131,
+"tokens_sold": 456372387195314188995500,
+"pull_after_buy": 14
+},
+{
+"pid": "0x43c1ce10",
+"utc": "10-09 10:50:46",
+"buy": 84099170,
+"eth_in": 0.0012,
+"sell_after_buy": 3,
+"eth_out": 0.0012468159784727,
+"tokens_sold": 568882194332076262172798,
+"pull_after_buy": 1904
+},
+{
+"pid": "0xe444ad37",
+"utc": "10-09 11:14:11",
+"buy": 84112855,
+"eth_in": 0.0012,
+"sell_after_buy": 3,
+"eth_out": 0.001274410304623028,
+"tokens_sold": 597233476987051107230530,
+"pull_after_buy": 2033
+},
+{
+"pid": "0xa5b3513d",
+"utc": "10-09 11:23:26",
+"buy": 84118268,
+"eth_in": 0.0012,
+"sell_after_buy": 2,
+"eth_out": 0.001301034226085513,
+"tokens_sold": 398005746828981444034846,
+"pull_after_buy": 1895
+},
+{
+"pid": "0x03d90ea1",
+"utc": "10-09 11:27:48",
+"buy": 84120807,
+"eth_in": 0.0012,
+"sell_after_buy": 3,
+"eth_out": 0.001301952333483755,
+"tokens_sold": 436232987548603596417439,
+"pull_after_buy": 1504
+},
+{
+"pid": "0xda701818",
+"utc": "10-09 11:31:24",
+"buy": 84122922,
+"eth_in": 0.0012,
+"sell_after_buy": 2,
+"eth_out": 0.001275329812535615,
+"tokens_sold": 591289713716715588995190,
+"pull_after_buy": 119
+},
+{
+"pid": "0x12c952fa",
+"utc": "10-09 11:32:18",
+"buy": 84123455,
+"eth_in": 0.0012,
+"sell_after_buy": 3,
+"eth_out": 0.001188277557679303,
+"tokens_sold": 425469360967319881733550,
+"pull_after_buy": 16
+},
+{
+"pid": "0x2701d15a",
+"utc": "10-09 11:36:19",
+"buy": 84125821,
+"eth_in": 0.0012,
+"sell_after_buy": 3,
+"eth_out": 0.001255436404242731,
+"tokens_sold": 559732459980053140692641,
+"pull_after_buy": 1609
+}
+]

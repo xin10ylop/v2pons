@@ -1,0 +1,57 @@
+(1) code bytes 752 / 752; differing bytes 20 (offsets 19..38)
+    0x65050a9b: admin 0x75fc5cd1794921e617d97e4afa2ff93613413be3 (code 872 bytes), admin owner 0x0c628d6535b781f6c703ad319af8b1bcec63fbb4, owner nonce 3025
+    0xfd1b271f: admin 0xb6b87048dd72ff84f576fe32c83ff1d7a6dc999e (code 872 bytes), admin owner 0x04a802fe42476e9e9ed3cc3c28ce3a476a73d229, owner nonce 1
+(2) collector 0x544ef4354283261fb9e258247a80d49c86b9f107 nonce 7861 balance 0.00497
+(2) collector 0xe322fc6ddb6b29d110b7f84c728d2d743e904616 nonce 10725 balance 0.01935
+(2) collector 0x488faf521a2d5f16ee55d1335841bb3ba9a0946e nonce 39477 balance 0.00356
+(3) wallets calling the two routers: 557; of them bot buyer wallets 0, launch wallets 0
+    0x0c628d6535: bot wallet False, launcher False, in any pool transaction False
+    0x04a802fe42: bot wallet False, launcher False, in any pool transaction False
+    0x544ef43542: bot wallet False, launcher False, in any pool transaction True
+    0xe322fc6ddb: bot wallet False, launcher False, in any pool transaction True
+    0x488faf521a: bot wallet False, launcher False, in any pool transaction True
+    0x8970c56f5b: bot wallet False, launcher False, in any pool transaction False
+(4) pulls by T+10 before our first live trade (10-10 09:08:51):
+    10-10 00:57:58 3.0   T 11 pull T+3: +5 0.003000 0x9f3b9a44 via 0x88767899
+    10-10 01:28:09 3.0   T 9 pull T+9: +5 0.003000 0x9f3b9a44 via 0x88767899
+    10-10 02:48:32 2.433 T 8 pull T+10: +5 0.000129 0x488faf52 via 0x65050a9b, +6 0.000154 0xb002e8a0 via 0xfd1b271f
+    10-10 02:48:50 2.433 T 6 pull T+3: +2 0.000129 0x488faf52 via 0x65050a9b, +3 0.000154 0xb002e8a0 via 0xfd1b271f
+    10-10 02:49:06 2.433 T 8 pull T+3: +3 0.000129 0x488faf52 via 0x65050a9b, +4 0.000154 0xb002e8a0 via 0xfd1b271f
+    10-10 02:49:23 2.433 T 8 pull T+3: +3 0.000129 0x488faf52 via 0x65050a9b, +4 0.000122 0xb002e8a0 via 0xfd1b271f
+    10-10 02:49:40 2.433 T 10 pull T+4: +3 0.000129 0x488faf52 via 0x65050a9b, +4 0.000122 0xb002e8a0 via 0xfd1b271f
+    10-10 02:49:59 2.433 T 8 pull T+8: +2 0.000129 0x488faf52 via 0x65050a9b, +3 0.000122 0xb002e8a0 via 0xfd1b271f
+    10-10 02:50:18 2.433 T 10 pull T+4: +3 0.000129 0x488faf52 via 0x65050a9b, +4 0.000116 0xb002e8a0 via 0xfd1b271f
+    10-10 02:50:35 2.433 T 8 pull T+3: +3 0.000129 0x488faf52 via 0x65050a9b, +4 0.000116 0xb002e8a0 via 0xfd1b271f
+    10-10 04:38:02 3.0   T 9 pull T+8: +5 0.000150 0x9a128676 via 0x88767899
+    10-10 04:38:02 3.0   T 8 pull T+10: +6 0.000150 0x9a128676 via 0x88767899
+    10-10 04:38:19 3.0   T 10 pull T+3: +4 0.000150 0x9a128676 via 0x88767899
+    10-10 04:38:21 3.0   T 7 pull T+3: +3 0.000150 0x9a128676 via 0x88767899
+    10-10 04:38:36 3.0   T 9 pull T+3: +3 0.000150 0x9a128676 via 0x88767899
+    10-10 04:38:38 3.0   T 14 pull T+3: +2 0.000150 0x9a128676 via 0x88767899
+    10-10 04:38:52 3.0   T 10 pull T+3: +3 0.000150 0x9a128676 via 0x88767899
+    10-10 04:38:57 3.0   T 10 pull T+4: +3 0.000150 0x9a128676 via 0x88767899
+    10-10 08:13:59 2.433 T 10 pull T+3: +3 0.000119 0x38727cdc via 0x65050a9b, +4 0.000125 0x259a1b7b via 0xfd1b271f
+(5) buys through the two routers ahead of the bot's first buy: first/last per day
+    ('2.433', '0x65050a9b', 'fresh', '<0.001', '10-10'): n 197, wallets 197, first 10-10 04:34:36 ('0x32c6b1bd', 0.000129), last 10-10 09:28:28 ('0x09f1f7f1', 0.000119)
+    ('2.433', '0x65050a9b', 'fresh', '<0.001', '10-11'): n 20, wallets 20, first 10-11 15:11:51 ('0x695e3f02', 0.000495), last 10-11 15:17:57 ('0x293444b8', 0.000495)
+    ('2.433', '0x65050a9b', 'fresh', '>=0.001', '10-10'): n 205, wallets 205, first 10-10 18:11:25 ('0xded847b1', 0.00495), last 10-10 19:28:22 ('0x292d06e3', 0.00495)
+    ('2.433', '0x65050a9b', 'fresh', '>=0.001', '10-11'): n 118, wallets 118, first 10-11 15:18:50 ('0xf67471b3', 0.00495), last 10-11 23:10:49 ('0x0adacbd8', 0.004931)
+    ('2.433', '0x65050a9b', 'recurring', '<0.001', '10-10'): n 122, wallets 3, first 10-10 01:33:13 ('0xf05d0e3f', 0.000228), last 10-10 14:51:24 ('0x488faf52', 0.00099)
+    ('2.433', '0x65050a9b', 'recurring', '<0.001', '10-11'): n 40, wallets 2, first 10-11 14:41:47 ('0x7ae81404', 0.000129), last 10-11 22:08:46 ('0x8cf143dd', 0.000129)
+    ('2.433', '0x65050a9b', 'recurring', '>=0.001', '10-10'): n 479, wallets 3, first 10-10 14:51:41 ('0x488faf52', 0.00495), last 10-10 17:58:38 ('0x544ef435', 0.00495)
+    ('2.433', '0x65050a9b', 'recurring', '>=0.001', '10-11'): n 1, wallets 1, first 10-11 22:08:46 ('0x2e234882', 0.00495), last 10-11 22:08:46 ('0x2e234882', 0.00495)
+    ('2.433', '0xfd1b271f', 'fresh', '<0.001', '10-10'): n 1, wallets 1, first 10-10 07:29:02 ('0x259a1b7b', 0.000125), last 10-10 07:29:02 ('0x259a1b7b', 0.000125)
+    ('2.433', '0xfd1b271f', 'recurring', '<0.001', '10-10'): n 140, wallets 3, first 10-10 02:23:14 ('0xb002e8a0', 0.000131), last 10-10 16:03:04 ('0xb4c345dc', 0.00099)
+    ('2.433', '0xfd1b271f', 'recurring', '<0.001', '10-11'): n 20, wallets 1, first 10-11 14:48:29 ('0xb8c879dc', 0.000109), last 10-11 22:08:46 ('0xb8c879dc', 0.000112)
+    ('2.433', '0xfd1b271f', 'recurring', '>=0.001', '10-10'): n 391, wallets 1, first 10-10 16:03:22 ('0xb4c345dc', 0.001238), last 10-10 19:28:22 ('0xb4c345dc', 0.00495)
+    ('2.433', '0xfd1b271f', 'recurring', '>=0.001', '10-11'): n 33, wallets 1, first 10-11 16:34:48 ('0xb8c879dc', 0.00495), last 10-11 20:49:13 ('0xb8c879dc', 0.004865)
+    ('3.0', '0x65050a9b', 'recurring', '<0.001', '10-11'): n 69, wallets 1, first 10-11 01:58:01 ('0x8cf143dd', 9.9e-05), last 10-11 02:39:16 ('0x8cf143dd', 0.00099)
+    ('3.0', '0x65050a9b', 'recurring', '>=0.001', '10-11'): n 253, wallets 2, first 10-11 02:39:32 ('0x8cf143dd', 0.00495), last 10-11 13:18:19 ('0x7ae81404', 0.00297)
+(6) 2.433 launch gaps over 1 h: [('10-10 19:28:22', '10-11 11:39:11', 16.2)]
+(7) buyers' gas settings (tx type / tip gwei, gasPrice gwei): top 3 each
+    Universal Router: [(('legacy', 0.04), 2620), (('legacy', 0.026), 765), (('tip 0.0000', 0.02), 112)] (n 3631)
+    bot: [(('tip 0.0240', 0.024), 7268), (('tip 0.0241', 0.024), 7225), (('tip 0.0242', 0.024), 2173)] (n 18166)
+    0x65050a9b: [(('tip 0.0020', 0.022), 1534), (('tip 0.0100', 0.03), 245), (('tip 0.0020', 0.023), 15)] (n 1815)
+    0xfd1b271f: [(('tip 0.0000', 0.02), 628), (('tip 0.0000', 0.021), 8), (('tip 0.0000', 0.022), 1)] (n 637)
+    other: [(('tip 0.0000', 0.02), 107), (('legacy', 0.024), 5), (('tip 0.0100', 0.03), 2)] (n 119)
+    ours: [(('legacy', 0.06), 1078), (('legacy', 0.061), 133), (('legacy', 0.062), 16)] (n 1238)

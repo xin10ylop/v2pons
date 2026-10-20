@@ -1,0 +1,130 @@
+non-dust non-bot buys after T: 85 in 75 pools
+launch                  L  T-L  buy d from        to                ETH pull-buy  pull-T bot buys after it
+10-12 05:38:09   86433880   32     52 0x8cf143dd  0xfd1b271f   0.000049     5564    5584 123
+10-12 05:38:10   86433890   52     97 0x8cf143dd  0xfd1b271f   0.000049       23      68 2
+10-12 05:38:43   86434169   37     52 0x8cf143dd  0xfd1b271f   0.000049     2024    2039 78
+10-12 05:42:34   86436415   36     51 0x8cf143dd  0xfd1b271f   0.000049     2390    2405 81
+10-12 05:47:03   86439036   46     51 0x8cf143dd  0xfd1b271f   0.000049      404     409 18
+10-12 05:48:08   86439663   49     53 0x8cf143dd  0xfd1b271f   0.000049     5612    5616 123
+10-12 05:48:09   86439676   43     93 0x8cf143dd  0xfd1b271f   0.000049     1480    1530 63
+10-12 05:58:06   86445490   38     52 0x8cf143dd  0xfd1b271f   0.000049     5616    5630 117
+10-12 05:58:09   86445522   49     71 0x8cf143dd  0xfd1b271f   0.000049     5562    5584 120
+10-12 06:08:08   86451319   31     51 0x8cf143dd  0xfd1b271f   0.000049     5629    5649 124
+10-12 06:08:09   86451334   44     89 0x8cf143dd  0xfd1b271f   0.000049     5606    5651 126
+10-12 06:18:07   86457163   41     52 0x8cf143dd  0xfd1b271f   0.000990     5550    5561 124
+10-12 06:18:11   86457203   45     64 0x8cf143dd  0xfd1b271f   0.000990        7      26 1
+10-12 06:27:59   86462943   31   1523 0xe74fcc81  0x204faca1   0.000050       16    1508 2
+10-12 06:27:59   86462943   46   1469 0xe74fcc81  0x204faca1   0.000050       10    1433 1
+10-12 06:48:08   86474727   40   1275 0x1cd9d560  0xccc88a9d   0.001917        8    1243 1
+10-12 06:50:38   86476190   47    934 0x67337a62  0x5399d94d   0.007593        5     892 1
+10-12 06:58:05   86480510   29   4227 0xc3e4c743  0x6e2a35a7   0.000097     1496    5694 14
+10-12 07:17:50   86492093   52   2228 0x1cd9d560  0xccc88a9d   0.002377       14    2190 1
+10-12 08:12:54   86524214   49   1887 0x370a7e2d  0xccc88a9d   0.000757        9    1847 1
+10-12 08:13:18   86524446   53   1670 0x544ef435  0x65050a9b   0.000099      967    2584 25
+10-12 08:18:07   86527255   41    816 0x329ca263  0x5399d94d   0.003803        9     784 1
+10-12 08:18:07   86527256   50    430 0x544ef435  0x65050a9b   0.000049       17     397 2
+10-12 08:19:50   86528254   28   1425 0x544ef435  0x65050a9b   0.000099       14    1411 2
+10-12 09:18:06   86562152   54    141 0x71d27bd7  0x65050a9b   0.024750        5      92 1
+10-12 09:30:25   86569357   43    820 0xe209e004  0xccc88a9d   0.002647       14     791 2
+10-12 09:32:42   86570688   41   2871 0x329ca263  0x5399d94d   0.000744       23    2853 1
+10-12 09:58:07   86585548   20    992 0x67337a62  0x5399d94d   0.000135        3     975 1
+10-12 10:00:07   86586723  141    449 0xdb2b5225  0xf0b7eaaf   0.001980       14     322 1
+10-12 10:08:13   86591417   24   1486 0x698dd6c0  0xccc88a9d   0.001186       15    1477 2
+10-12 10:18:13   86597193   42   4531 0x9a0a9df8  0xb477751b   0.002622        9    4498 2
+10-12 10:28:10   86602964   29    989 0xa5a5491b  0xca11bde0   0.005156       12     972 2
+10-12 10:38:06   86608743   38   1948 0x72704b2c  0x6e2a35a7   0.000039     3766    5676 51
+10-12 10:54:39   86618377   47   1487 0x329ca263  0x5399d94d   0.006578       20    1460 2
+10-12 11:58:10   86655613   50   1557 0x01fe004d  0x5399d94d   0.001948       21    1528 2
+10-12 12:10:12   86662685   52    134 0xf0525d02  0xd8fbb0de   0.009900        9      91 1
+10-12 12:18:08   86667326   42   5192 0x01fe004d  0x5399d94d   0.010020       13    5163 1
+10-12 12:18:08   86667327   29   2275 0x81adf99f  0xccc88a9d   0.001546       10    2256 1
+10-12 12:28:02   86673143   57   2357 0x329ca263  0x5399d94d   0.025483       16    2316 1
+10-12 13:08:10   86696748   38   1071 0x01fe004d  0x5399d94d   0.000366       24    1057 2
+10-12 13:18:06   86702586   28    645 0xdc6d3208  0x6e2a35a7   0.000995        9     626 1
+10-12 13:18:07   86702600   28   1207 0xb846173a  0x88767899   0.001997       16    1195 2
+10-12 13:20:30   86703997   36   1403 0xb846173a  0x88767899   0.001797       12    1379 1
+10-12 13:23:12   86705589   46   1080 0x4c11d55c  0x81da6bcd   0.003968       22    1056 2
+10-12 13:47:48   86719933   46    305 0x305aabee  0x88767899   0.010000        7     266 1
+10-12 13:47:52   86719968   54    411 0x305aabee  0x88767899   0.010000        7     364 1
+10-12 14:18:11   86737843   33     59 0xed165972  0x88767899   0.000395        8      34 1
+10-12 14:18:14   86737876   39    132 0xed165972  0x88767899   0.000395       20     113 2
+10-12 14:18:46   86738188   42    122 0xef5efa48  0x88767899   0.000394       11      91 1
+10-12 14:18:54   86738261   34    324 0xed165972  0x88767899   0.000395       18     308 2
+10-12 14:19:17   86738492   48    388 0xed165972  0x88767899   0.000395        3     343 1
+10-12 14:19:45   86738765   45    158 0xed165972  0x88767899   0.000395       17     130 2
+10-12 14:20:16   86739068   22    401 0xed165972  0x88767899   0.000395       10     389 1
+10-12 14:20:19   86739098   32    413 0xed165972  0x88767899   0.000395       16     397 1
+10-12 14:21:15   86739647   46    171 0xed165972  0x88767899   0.000395       29     154 2
+10-12 14:21:19   86739692   48    211 0xed165972  0x88767899   0.000395        8     171 1
+10-12 14:21:51   86740013   55    333 0xef5efa48  0x88767899   0.000394       20     298 2
+10-12 14:21:57   86740071   54    340 0xed165972  0x88767899   0.000395       16     302 1
+10-12 14:22:44   86740538   54    147 0xed165972  0x88767899   0.000395        4      97 1
+10-12 14:22:49   86740585   36    178 0xed165972  0x88767899   0.000395       58     200 1
+10-12 14:23:16   86740852   26   1465 0xef5efa48  0x88767899   0.000394        8    1447 1
+10-12 14:23:29   86740975   43   1409 0xcb0f8e62  0x00000000   0.007733       12    1378 2
+10-12 14:28:10   86743746   37    581 0xef5efa48  0x88767899   0.000394       18     562 2
+10-12 14:38:06   86749591   46   5583 0x59796805  0x6e2a35a7   0.029850       13    5550 1
+10-12 14:48:10   86755470   43   2531 0xe08d9cc9  0x6e2a35a7   0.000498       22    2510 1
+10-12 14:52:53   86758247   55    949 0x3793969e  0x6e2a35a7   0.001552       11     905 1
+10-12 15:38:06   86784907   60   4328 0x72803985  0x6e2a35a7   0.000787        7    4275 1
+10-12 15:48:08   86790817   48    935 0x5087043b  0x00000000   0.019509        6     893 1
+10-12 15:57:56   86796604   55   2312 0xa586f15b  0x88767899   0.001187        8    2265 1
+10-12 16:28:12   86814437   50    683 0xb4339688  0x65050a9b   0.003960       11     644 1
+10-12 17:07:58   86837838   66   1398 0x599453af  0x204faca1   0.001989        9    1341 1
+10-12 17:18:06   86843813   37   2221 0xe74fcc81  0x204faca1   0.000050     3348    5532 36
+10-12 17:18:07   86843821   32   2377 0xe74fcc81  0x204faca1   0.000050     3163    5508 32
+10-12 17:27:59   86849535   41   1475 0xc3d22b9e  0x00000000   0.000055       26    1460 1
+10-12 17:28:01   86849552   50    934 0xf22e13f4  0x00000000   0.000095       19     903 2
+pull lag after the first post-T stranger buy p10/50/90 7/16/3766; senders [('0x8cf143dd', 13), ('0xed165972', 12), ('0xe74fcc81', 4), ('0x329ca263', 4), ('0xef5efa48', 4), ('0x544ef435', 3), ('0x01fe004d', 3), ('0x1cd9d560', 2)]
+pools with no non-dust stranger buy at all: 415, pull-T p10/50/90 108/126/5622, min 8
+
+0xed165972: token transfers in 49, out 17; nonce now 8799, balance 0.00538 ETH
+  block 86469037  token 0x2fa106a1 not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86482409  token 0xb1da35dd not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86518093  token 0x5d0e9fd6 not a 3.0 pool from 0xc51c1e39; bot buys in this token in the same block: [], within +-5: []
+  block 86520658  token 0x65b95b11 not a 3.0 pool from 0x610c7eca; bot buys in this token in the same block: [], within +-5: []
+  block 86523238  token 0x9dcababa not a 3.0 pool from 0xd89895e4; bot buys in this token in the same block: [], within +-5: []
+  block 86530654  token 0x261a24ff not a 3.0 pool from 0x564e430a; bot buys in this token in the same block: [], within +-5: []
+  block 86538352  token 0x09251e89 not a 3.0 pool from 0xc48471a1; bot buys in this token in the same block: [], within +-5: []
+  block 86539548  token 0x8404d764 not a 3.0 pool from 0x9784c7de; bot buys in this token in the same block: [], within +-5: []
+  block 86545900  token 0xa9dab582 not a 3.0 pool from 0x59a6ba5d; bot buys in this token in the same block: [], within +-5: []
+  block 86545940  token 0xa9dab582 not a 3.0 pool from 0x59a6ba5d; bot buys in this token in the same block: [], within +-5: []
+  block 86572754  token 0x9cc90724 not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86572799  token 0x9cc90724 not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86577049  token 0x0c9a3f1d not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86577092  token 0x0c9a3f1d not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86620074  token 0xa2cb1c33 not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86620116  token 0xa2cb1c33 not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86626947  token 0x5b47128b not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86633285  token 0xd44d3c40 not a 3.0 pool from 0xb76cd32f; bot buys in this token in the same block: [], within +-5: []
+  block 86638181  token 0x9ecbd2f5 not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86646672  token 0xb4d8aa00 not a 3.0 pool from 0x8dffdfe6; bot buys in this token in the same block: [], within +-5: []
+  block 86646715  token 0xb4d8aa00 not a 3.0 pool from 0x8dffdfe6; bot buys in this token in the same block: [], within +-5: []
+  block 86666125  token 0x2d7badfd not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86666166  token 0x2d7badfd not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86690582  token 0xfc277b5b not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86691659  token 0x18be90b8 not a 3.0 pool from 0xde9853cc; bot buys in this token in the same block: [], within +-5: []
+  block 86693266  token 0xc72e9712 not a 3.0 pool from 0x266e14b5; bot buys in this token in the same block: [], within +-5: []
+  block 86693304  token 0xc72e9712 not a 3.0 pool from 0x266e14b5; bot buys in this token in the same block: [], within +-5: []
+  block 86695931  token 0x60dab22e not a 3.0 pool from 0x2fd38d55; bot buys in this token in the same block: [], within +-5: []
+  block 86696745  token 0x18be90b8 not a 3.0 pool from 0xde9853cc; bot buys in this token in the same block: [], within +-5: []
+  block 86737902 10-12 14:18:14 token 0x66cb54b4 3.0 pool L+59 (T-L 33) from 0x8366a39c; bot buys in this token in the same block: [(86737902, 25, 23)], within +-5: [0]
+  block 86737965  token 0xa8af0c6a not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86738008 10-12 14:18:18 token 0xf283d557 3.0 pool L+132 (T-L 39) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [5]
+  block 86738101 10-12 14:18:37 token 0x49a7b4f7 3.0 pool L+32 (T-L 32) from 0x8366a39c; bot buys in this token in the same block: [(86738101, 11, 9)], within +-5: [0]
+  block 86738224  token 0xf5e9bb33 not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [-3]
+  block 86738585 10-12 14:18:57 token 0x04d2c234 3.0 pool L+324 (T-L 34) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [4]
+  block 86738631  token 0xd600511c not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [-4]
+  block 86738880 10-12 14:19:22 token 0xe08b0161 3.0 pool L+388 (T-L 48) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [3]
+  block 86738923 10-12 14:19:50 token 0x064a4078 3.0 pool L+158 (T-L 45) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86738967  token 0xe595ccaf not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [-3]
+  block 86739469 10-12 14:20:18 token 0x45869101 3.0 pool L+401 (T-L 22) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [-2]
+  block 86739511 10-12 14:20:22 token 0xa44631ef 3.0 pool L+413 (T-L 32) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [-2]
+  block 86739772  token 0xf6bdce29 not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [3]
+  block 86739818 10-12 14:21:19 token 0xdd03646c 3.0 pool L+171 (T-L 46) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86739903 10-12 14:21:24 token 0x51fe65c5 3.0 pool L+211 (T-L 48) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86740370  token 0x54fbc020 not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86740411 10-12 14:22:02 token 0xec8323e1 3.0 pool L+340 (T-L 54) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []
+  block 86740685 10-12 14:22:50 token 0xb9e7681e 3.0 pool L+147 (T-L 54) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [4]
+  block 86740720  token 0x84276c24 not a 3.0 pool from 0x8366a39c; bot buys in this token in the same block: [], within +-5: [-4]
+  block 86740763 10-12 14:22:53 token 0xc49f8b0a 3.0 pool L+178 (T-L 36) from 0x8366a39c; bot buys in this token in the same block: [], within +-5: []

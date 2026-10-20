@@ -1,0 +1,235 @@
+============================== 0x258dd351af960bc487532c0108d3f90e8d115369|7fde822e|804|10000|200|true
+-- 0x0c08989075 b0 83639379 ts 1791495810 from 0x06cb3a68 nonce 1879 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x45c6fa63 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xcdadf32e LAUNCH
+   sw +3 ti 5 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0xbfeed00829 b0 83641950 ts 1791496073 from 0x06cb3a68 nonce 1880 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x0fcc25bc hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x06f4aff7 LAUNCH
+   sw +3 ti 2 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0xaaab1f3389 b0 83644885 ts 1791496374 from 0x06cb3a68 nonce 1881 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x2dc89498 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x9a7fad25 LAUNCH
+   sw +3 ti 1 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0x987a852dc3 b0 83656544 ts 1791497573 from 0x06cb3a68 nonce 1885 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x17859dbf hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x478de2e3 LAUNCH
+   sw +2 ti 3 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0x5599e254c4 b0 83659481 ts 1791497875 from 0x06cb3a68 nonce 1886 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x2e0a34b1 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x1fff34a1 LAUNCH
+   sw +3 ti 2 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0x4c478167a1 b0 83662399 ts 1791498176 from 0x06cb3a68 nonce 1887 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x21463a73 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 2e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x6443830e LAUNCH
+   sw +3 ti 3 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0x676e4b2ab6 b0 83680041 ts 1791499977 from 0x06cb3a68 nonce 1893 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xd6209a54 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x1202e013 LAUNCH
+   sw +3 ti 3 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0xc3c284a53a b0 83685937 ts 1791500578 from 0x06cb3a68 nonce 1895 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x89c56798 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.998e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x24efb199 LAUNCH
+   sw +2 ti 8 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0xc139a5b505 b0 83688847 ts 1791500877 from 0x06cb3a68 nonce 1896 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xc8aca5b3 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xeea9c8e8 LAUNCH
+   sw +2 ti 6 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+============================== 0x2a53386daf0bf3eedd9e715d162649764358c7b5|3d9ab7c9|292|0|200|false
+-- 0xcc7f76f8cd b0 83532351 ts 1791484887 from 0x2c2572da nonce 155495 val 0.15 tick0 176998 liq 29277002188455996214130 token 0xc3f40ab7 hooks 0xe5e70264 nsw 148 nb 102 ns 46 npull 0 nadd 1 ethin 1.308135088
+   add +0 lo -887200 hi 887200 dl 29277002188455996214130 tx 0x7390d99c LAUNCH
+   sw +0 ti 21 BUY  0.013553 fee 0 sender 0x88767899 to 0x2a53386d from 0x2c2572da sel 3d9ab7c9 len 292 LAUNCHTX
+   sw +4 ti 6 BUY  0.003209 fee 0 sender 0x88767899 to 0x88767899 from 0xf08ad284 sel 3593564c len 1124 
+   sw +4 ti 20 BUY  0.074000 fee 0 sender 0x88767899 to 0x88767899 from 0xb970aa5b sel 3593564c len 1124 
+   sw +9 ti 6 BUY  0.030467 fee 0 sender 0x88767899 to 0x88767899 from 0x3add78a2 sel 3593564c len 1284 
+   sw +16 ti 18 BUY  0.030000 fee 0 sender 0x88767899 to 0x88767899 from 0x46bab0a8 sel 3593564c len 1124 
+   sw +20 ti 7 SELL 0.004683 fee 0 sender 0xf0b7eaaf to 0xf0b7eaaf from 0x44a2a3d7 sel 39ecce49 len 1060 
+   sw +24 ti 2 SELL 0.282765 fee 0 sender 0x9689992f to 0x9689992f from 0x55583a73 sel 3e0f9c3c len 1220 
+   sw +24 ti 12 BUY  0.005000 fee 0 sender 0x88767899 to 0x88767899 from 0x4bc3be50 sel 3593564c len 1252 
+   sw +34 ti 1 BUY  0.000200 fee 0 sender 0xa2815e90 to ? from ? sel ? len ? 
+   sw +35 ti 12 BUY  0.004497 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +41 ti 5 SELL 0.031109 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +41 ti 7 SELL 0.063438 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +60 ti 5 SELL 0.180652 fee 0 sender 0x9689992f to ? from ? sel ? len ? 
+   sw +79 ti 5 BUY  0.005553 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+-- 0x05eed77cf1 b0 84117861 ts 1791544964 from 0x2c2572da nonce 155991 val 0.15 tick0 176998 liq 29277002188455995398556 token 0xa8fbd709 hooks 0xe5e70264 nsw 128 nb 71 ns 57 npull 0 nadd 1 ethin 1.917320678
+   add +0 lo -887200 hi 887200 dl 29277002188455995398556 tx 0x279b3ae0 LAUNCH
+   sw +0 ti 8 BUY  0.064037 fee 0 sender 0x88767899 to 0x2a53386d from 0x2c2572da sel 3d9ab7c9 len 292 LAUNCHTX
+   sw +1 ti 28 SELL 0.003205 fee 0 sender 0x88767899 to 0x88767899 from 0x4bbdacd2 sel 3593564c len 1124 
+   sw +1 ti 31 BUY  0.060000 fee 0 sender 0x88767899 to 0x88767899 from 0x7503caf1 sel 3593564c len 1124 
+   sw +1 ti 37 BUY  0.002646 fee 0 sender 0x88767899 to 0x88767899 from 0x4992e7ad sel 3593564c len 1124 
+   sw +2 ti 3 BUY  0.004018 fee 0 sender 0x63689cf3 to 0x63689cf3 from 0x373fa368 sel b307d1ac len 292 
+   sw +3 ti 6 BUY  0.004019 fee 0 sender 0x8be014e0 to 0x8be014e0 from 0xc8c8d79c sel 8f59ed25 len 836 
+   sw +3 ti 13 BUY  0.002634 fee 0 sender 0x88767899 to 0x88767899 from 0xf08ad284 sel 3593564c len 1124 
+   sw +4 ti 5 BUY  0.004950 fee 0 sender 0x65050a9b to 0x65050a9b from 0xac04ebc7 sel 4d819a2a len 580 
+   sw +4 ti 6 BUY  0.000250 fee 0 sender 0xe0703eaa to ? from ? sel ? len ? 
+   sw +5 ti 1 BUY  0.198391 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +15 ti 1 SELL 0.063521 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +17 ti 5 SELL 0.074975 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +17 ti 6 SELL 0.070266 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +17 ti 7 SELL 0.073687 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+-- 0x458a98e3de b0 84210574 ts 1791554428 from 0x2c2572da nonce 156179 val 0.15 tick0 176998 liq 29277002188455995564359 token 0xa3e00319 hooks 0xe5e70264 nsw 379 nb 235 ns 144 npull 0 nadd 1 ethin 8.877434858
+   add +0 lo -887200 hi 887200 dl 29277002188455995564359 tx 0xa77bca6f LAUNCH
+   sw +0 ti 4 BUY  0.108121 fee 0 sender 0x88767899 to 0x2a53386d from 0x2c2572da sel 3d9ab7c9 len 292 LAUNCHTX
+   sw +1 ti 8 BUY  0.080000 fee 0 sender 0x88767899 to 0x88767899 from 0x7503caf1 sel 3593564c len 1124 
+   sw +1 ti 17 BUY  0.002646 fee 0 sender 0x88767899 to 0x88767899 from 0x4992e7ad sel 3593564c len 1124 
+   sw +1 ti 18 BUY  0.000250 fee 0 sender 0xe0703eaa to 0xe0703eaa from 0xf52b9a54 sel a67aeb8b len 452 
+   sw +4 ti 2 BUY  0.002600 fee 0 sender 0x88767899 to 0x88767899 from 0xf08ad284 sel 3593564c len 1124 
+   sw +4 ti 12 BUY  0.002014 fee 0 sender 0x88767899 to 0x88767899 from 0x20916bba sel 3593564c len 1092 
+   sw +8 ti 9 BUY  0.005000 fee 0 sender 0x88767899 to 0x88767899 from 0x4bc3be50 sel 3593564c len 1252 
+   sw +10 ti 3 BUY  0.178200 fee 0 sender 0xf0b7eaaf to 0xf0b7eaaf from 0xb934ad44 sel 39ecce49 len 1060 
+   sw +12 ti 9 BUY  0.009900 fee 0 sender 0xf0b7eaaf to ? from ? sel ? len ? 
+   sw +13 ti 11 BUY  0.030000 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +14 ti 8 SELL 0.085938 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +15 ti 5 SELL 0.107438 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +15 ti 10 SELL 0.014904 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +15 ti 11 SELL 0.014747 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+-- 0x7020b1109f b0 84265952 ts 1791560074 from 0x2c2572da nonce 156442 val 0.15 tick0 176998 liq 29277002188455995909410 token 0x242edd4e hooks 0xe5e70264 nsw 476 nb 267 ns 209 npull 0 nadd 1 ethin 7.091740481
+   add +0 lo -887200 hi 887200 dl 29277002188455995909410 tx 0x7bcc096b LAUNCH
+   sw +0 ti 9 BUY  0.019622 fee 0 sender 0x88767899 to 0x2a53386d from 0x2c2572da sel 3d9ab7c9 len 292 LAUNCHTX
+   sw +1 ti 9 BUY  0.002646 fee 0 sender 0x88767899 to 0x88767899 from 0x4992e7ad sel 3593564c len 1124 
+   sw +1 ti 11 SELL 0.003711 fee 0 sender 0x88767899 to 0x88767899 from 0x4bbdacd2 sel 3593564c len 1124 
+   sw +2 ti 3 BUY  0.000250 fee 0 sender 0xe0703eaa to 0xe0703eaa from 0xf52b9a54 sel a67aeb8b len 452 
+   sw +3 ti 7 SELL 0.011124 fee 0 sender 0xf0b7eaaf to 0xf0b7eaaf from 0x98883ea8 sel 39ecce49 len 1060 
+   sw +4 ti 2 BUY  0.019800 fee 0 sender 0x65050a9b to 0x65050a9b from 0x90d1b5ca sel 4d819a2a len 580 
+   sw +4 ti 3 SELL 0.013028 fee 0 sender 0x88767899 to 0x88767899 from 0xb8e5d5fd sel 3593564c len 1092 
+   sw +5 ti 3 BUY  0.004950 fee 0 sender 0x65050a9b to 0x65050a9b from 0xac04ebc7 sel 4d819a2a len 580 
+   sw +5 ti 5 BUY  0.002573 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +8 ti 2 BUY  0.024718 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +8 ti 3 BUY  0.000396 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +8 ti 4 SELL 0.000030 fee 0 sender 0x1de17737 to 0x1de17737 from 0x36af22df sel 056ac90a len 123 
+   sw +16 ti 1 BUY  0.000396 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +18 ti 5 BUY  0.000396 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+-- 0xaa3dcd64e1 b0 84387284 ts 1791572448 from 0x2c2572da nonce 157137 val 0.15 tick0 176998 liq 29277002188455998826654 token 0xb9ccb682 hooks 0xe5e70264 nsw 207 nb 141 ns 66 npull 0 nadd 1 ethin 2.18577171
+   add +0 lo -887200 hi 887200 dl 29277002188455998826654 tx 0x6c08c109 LAUNCH
+   sw +1 ti 6 BUY  0.000250 fee 0 sender 0xe0703eaa to 0xe0703eaa from 0xf52b9a54 sel a67aeb8b len 452 
+   sw +3 ti 4 BUY  0.020000 fee 0 sender 0x88767899 to 0x90a8a755 from 0x6f1444ac sel 9bb2c9d7 len 1444 
+   sw +3 ti 14 BUY  0.002015 fee 0 sender 0x88767899 to 0x88767899 from 0x20916bba sel 3593564c len 1092 
+   sw +4 ti 1 BUY  0.002498 fee 0 sender 0x88767899 to 0x88767899 from 0xf08ad284 sel 3593564c len 1124 
+   sw +6 ti 6 BUY  0.002646 fee 0 sender 0x88767899 to 0x88767899 from 0x4992e7ad sel 3593564c len 1124 
+   sw +10 ti 5 BUY  0.000990 fee 0 sender 0xf0b7eaaf to 0xf0b7eaaf from 0x85d88be3 sel 39ecce49 len 1060 
+   sw +11 ti 2 BUY  0.024718 fee 0 sender 0x88767899 to 0x88767899 from 0x3add78a2 sel 3593564c len 1284 
+   sw +11 ti 7 BUY  0.001980 fee 0 sender 0xf0b7eaaf to 0xf0b7eaaf from 0xccec2171 sel 39ecce49 len 1060 
+   sw +11 ti 11 SELL 0.014251 fee 0 sender 0xf0b7eaaf to ? from ? sel ? len ? 
+   sw +12 ti 1 BUY  0.000990 fee 0 sender 0xf0b7eaaf to ? from ? sel ? len ? 
+   sw +16 ti 2 BUY  0.000396 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +16 ti 4 BUY  0.020000 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +16 ti 9 BUY  0.030000 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +17 ti 12 SELL 0.000042 fee 0 sender 0x3c93feb3 to ? from ? sel ? len ? 
+-- 0xa193ebf0af b0 84480725 ts 1791582020 from 0x2c2572da nonce 157177 val 0.15 tick0 176998 liq 29277002188455995591246 token 0xad4d04cb hooks 0xe5e70264 nsw 405 nb 236 ns 169 npull 0 nadd 1 ethin 5.772732875
+   add +0 lo -887200 hi 887200 dl 29277002188455995591246 tx 0x14f97282 LAUNCH
+   sw +0 ti 9 BUY  0.013353 fee 0 sender 0x88767899 to 0x2a53386d from 0x2c2572da sel 3d9ab7c9 len 292 LAUNCHTX
+   sw +1 ti 16 BUY  0.000250 fee 0 sender 0xe0703eaa to 0xe0703eaa from 0xf52b9a54 sel a67aeb8b len 452 
+   sw +2 ti 4 BUY  0.025000 fee 0 sender 0x88767899 to 0x7eea5f60 from 0x46bab0a8 sel 991f1cef len 1284 
+   sw +3 ti 13 SELL 0.040385 fee 0 sender 0x88767899 to 0x88767899 from 0xb61d2d25 sel 3593564c len 1092 
+   sw +4 ti 2 SELL 0.009092 fee 0 sender 0x88767899 to 0x88767899 from 0xb731d85b sel 3593564c len 1092 
+   sw +4 ti 4 SELL 0.016166 fee 0 sender 0x88767899 to 0x88767899 from 0x25e35bd4 sel 3593564c len 1092 
+   sw +4 ti 9 BUY  0.002618 fee 0 sender 0x88767899 to 0x88767899 from 0xf08ad284 sel 3593564c len 1124 
+   sw +4 ti 11 SELL 0.016810 fee 0 sender 0x88767899 to 0x88767899 from 0xc8a5f27a sel 3593564c len 1092 
+   sw +4 ti 12 BUY  0.050000 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +4 ti 14 BUY  0.004950 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +5 ti 1 SELL 0.048268 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +5 ti 2 SELL 0.018216 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +5 ti 3 BUY  0.002015 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +6 ti 6 BUY  0.002646 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+-- 0xabc2d8604f b0 84880898 ts 1791623256 from 0x2c2572da nonce 157440 val 0.15 tick0 176998 liq 29277002188455996500925 token 0xf5d2a116 hooks 0xe5e70264 nsw 232 nb 160 ns 72 npull 0 nadd 1 ethin 3.245082439
+   add +0 lo -887200 hi 887200 dl 29277002188455996500925 tx 0xfed5c6fa LAUNCH
+   sw +0 ti 1 BUY  0.004142 fee 0 sender 0x88767899 to 0x2a53386d from 0x2c2572da sel 3d9ab7c9 len 292 LAUNCHTX
+   sw +1 ti 2 BUY  0.000250 fee 0 sender 0xe0703eaa to 0xe0703eaa from 0xf52b9a54 sel a67aeb8b len 452 
+   sw +1 ti 4 BUY  0.030000 fee 0 sender 0x88767899 to 0x88767899 from 0x46bab0a8 sel 3593564c len 1124 
+   sw +1 ti 7 BUY  0.004411 fee 0 sender 0x88767899 to 0x8c2b828f from 0x8c2b828f sel e9ae5c53 len 2244 
+   sw +3 ti 3 SELL 0.003401 fee 0 sender 0x65050a9b to 0x65050a9b from 0x7a07a854 sel 4d819a2a len 580 
+   sw +3 ti 4 SELL 0.005228 fee 0 sender 0xf0b7eaaf to 0xf0b7eaaf from 0x98883ea8 sel 39ecce49 len 1060 
+   sw +4 ti 1 BUY  0.002005 fee 0 sender 0x88767899 to 0x88767899 from 0x20916bba sel 3593564c len 1092 
+   sw +4 ti 2 BUY  0.002361 fee 0 sender 0x88767899 to 0x88767899 from 0xf08ad284 sel 3593564c len 1124 
+   sw +4 ti 8 SELL 0.009845 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +4 ti 10 SELL 0.044747 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +5 ti 2 SELL 0.015463 fee 0 sender 0xf0b7eaaf to ? from ? sel ? len ? 
+   sw +5 ti 5 SELL 0.096409 fee 0 sender 0xbb75f6e4 to ? from ? sel ? len ? 
+   sw +6 ti 1 BUY  0.002646 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +6 ti 2 SELL 0.184618 fee 0 sender 0x9689992f to ? from ? sel ? len ? 
+-- 0xf918743826 b0 84882599 ts 1791623430 from 0x2c2572da nonce 157730 val 0.15 tick0 176998 liq 29277002188455995797380 token 0x9f47c581 hooks 0xe5e70264 nsw 315 nb 206 ns 109 npull 0 nadd 1 ethin 3.382950068
+   add +0 lo -887200 hi 887200 dl 29277002188455995797380 tx 0xd83d9f0c LAUNCH
+   sw +0 ti 2 BUY  0.026838 fee 0 sender 0x88767899 to 0x2a53386d from 0x2c2572da sel 3d9ab7c9 len 292 LAUNCHTX
+   sw +1 ti 3 BUY  0.012500 fee 0 sender 0x88767899 to 0x7eea5f60 from 0x46bab0a8 sel 991f1cef len 1284 
+   sw +1 ti 5 BUY  0.000250 fee 0 sender 0xe0703eaa to 0xe0703eaa from 0xf52b9a54 sel a67aeb8b len 452 
+   sw +1 ti 7 BUY  0.002646 fee 0 sender 0x88767899 to 0x88767899 from 0x4992e7ad sel 3593564c len 1124 
+   sw +1 ti 9 BUY  0.004411 fee 0 sender 0x88767899 to 0x8c2b828f from 0x8c2b828f sel e9ae5c53 len 2244 
+   sw +2 ti 4 BUY  0.071478 fee 0 sender 0x0afeb98a to 0x0afeb98a from 0x0a74d3bd sel cce7ec13 len 68 
+   sw +3 ti 2 SELL 0.018338 fee 0 sender 0x88767899 to 0x88767899 from 0x043cc008 sel 3593564c len 1092 
+   sw +3 ti 8 BUY  0.002005 fee 0 sender 0x88767899 to 0x88767899 from 0x20916bba sel 3593564c len 1092 
+   sw +3 ti 11 SELL 0.034532 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +3 ti 13 SELL 0.038599 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +3 ti 15 SELL 0.032487 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +4 ti 1 BUY  0.002302 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +4 ti 4 BUY  0.086036 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +4 ti 7 SELL 0.017095 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+-- 0xa532a24a39 b0 85170090 ts 1791652974 from 0x2c2572da nonce 158000 val 0.15 tick0 176998 liq 29277002188455995537472 token 0x96d32d97 hooks 0xe5e70264 nsw 335 nb 206 ns 129 npull 0 nadd 1 ethin 2.913110163
+   add +0 lo -887200 hi 887200 dl 29277002188455995537472 tx 0xfe09b7f4 LAUNCH
+   sw +0 ti 5 BUY  0.026653 fee 0 sender 0x88767899 to 0x2a53386d from 0x2c2572da sel 3d9ab7c9 len 292 LAUNCHTX
+   sw +1 ti 5 BUY  0.002646 fee 0 sender 0x88767899 to 0x88767899 from 0x4992e7ad sel 3593564c len 1124 
+   sw +1 ti 6 BUY  0.025000 fee 0 sender 0x88767899 to 0x7eea5f60 from 0x46bab0a8 sel 991f1cef len 1284 
+   sw +1 ti 7 BUY  0.000250 fee 0 sender 0xe0703eaa to 0xe0703eaa from 0xf52b9a54 sel a67aeb8b len 452 
+   sw +4 ti 2 SELL 0.007730 fee 0 sender 0x65050a9b to 0x65050a9b from 0xde927670 sel 4d819a2a len 1604 
+   sw +4 ti 3 SELL 0.067534 fee 0 sender 0x88767899 to 0x88767899 from 0xe403f743 sel 3593564c len 1092 
+   sw +4 ti 5 BUY  0.002250 fee 0 sender 0x88767899 to 0x88767899 from 0xf08ad284 sel 3593564c len 1124 
+   sw +4 ti 9 BUY  0.001997 fee 0 sender 0x88767899 to 0x88767899 from 0x20916bba sel 3593564c len 1092 
+   sw +4 ti 10 BUY  0.004950 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +5 ti 3 BUY  0.083631 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +6 ti 2 BUY  0.000990 fee 0 sender 0xf0b7eaaf to ? from ? sel ? len ? 
+   sw +7 ti 5 BUY  0.024750 fee 0 sender 0x65050a9b to ? from ? sel ? len ? 
+   sw +9 ti 2 BUY  0.005000 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+   sw +9 ti 5 SELL 0.004133 fee 0 sender 0x88767899 to ? from ? sel ? len ? 
+============================== 0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|200000|2000|true
+-- 0xfc4dbe36bc b0 83534179 ts 1791485072 from 0xec2fa7c1 nonce 319 val 0.007604039 tick0 178334 liq 56652063843555171089 token 0xf782bbef hooks 0x00000000 nsw 4 nb 0 ns 4 npull 0 nadd 1 ethin 0.0
+   add +0 lo -886000 hi 886000 dl 56652063843555171089 tx 0x858daa17 LAUNCH
+   sw +739 ti 52 SELL 0.000227 fee 200000 sender 0x076b3601 to 0x076b3601 from 0xa92eda8f sel bd6858d6 len 260 
+   sw +902 ti 5 SELL 0.000301 fee 200000 sender 0x076b3601 to 0x076b3601 from 0x58eb501f sel bd6858d6 len 260 
+   sw +971 ti 6 SELL 0.000205 fee 200000 sender 0x076b3601 to 0x076b3601 from 0x7c3608d8 sel bd6858d6 len 260 
+   sw +973 ti 2 SELL 0.000268 fee 200000 sender 0x076b3601 to 0x076b3601 from 0xa62e0eff sel bd6858d6 len 260 
+-- 0x8f9ae22c19 b0 83534982 ts 1791485154 from 0xec2fa7c1 nonce 321 val 0.007594125 tick0 179047 liq 58631497698764007912 token 0xc3f40ab7 hooks 0x00000000 nsw 0 nb 0 ns 0 npull 0 nadd 1 ethin 0.0
+   add +0 lo -886000 hi 886000 dl 58631497698764007912 tx 0x92937802 LAUNCH
+-- 0x299739a835 b0 83571860 ts 1791488916 from 0x820d27be nonce 5499 val 0.012136541 tick0 148849 liq 20703305502589408387 token 0xfb2bb4bf hooks 0x00000000 nsw 0 nb 0 ns 0 npull 0 nadd 2 ethin 0.0
+   add +0 lo -886000 hi 886000 dl 20703305502589408387 tx 0xbdf20004 LAUNCH
+   add +296 lo -886000 hi 886000 dl 2617755207824624621 tx 0x8159f2ce 
+-- 0xe8bbca9ec5 b0 84336580 ts 1791567274 from 0xad2616dd nonce 2058 val 0.001070989 tick0 168634 liq 4912857838386556277 token 0x61e0deba hooks 0x00000000 nsw 4 nb 4 ns 0 npull 0 nadd 1 ethin 0.000319488
+   add +0 lo -886000 hi 886000 dl 4912857838386556277 tx 0x8c9aa5cf LAUNCH
+   sw +1165 ti 4 BUY  0.000073 fee 200000 sender 0x076b3601 to 0x076b3601 from 0xbeb1fca4 sel bd6858d6 len 260 
+   sw +1523 ti 33 BUY  0.000088 fee 200000 sender 0x3c93feb3 to 0x3c93feb3 from 0x5473fcd1 sel 018911c3 len 49 
+   sw +2240 ti 4 BUY  0.000074 fee 200800 sender 0x1de17737 to 0x1de17737 from 0x36af22df sel 056ac927 len 123 
+   sw +2687 ti 7 BUY  0.000085 fee 200800 sender 0x076b3601 to 0x076b3601 from 0x51c52381 sel bd6858d6 len 260 
+-- 0x834c4a1ce3 b0 84431835 ts 1791576997 from 0xca211752 nonce 344 val 0.100025009 tick0 -158705 liq 35804450488246 token 0x646a9ebb hooks 0x00000000 nsw 1 nb 0 ns 1 npull 0 nadd 1 ethin 0.0
+   add +0 lo -886000 hi 886000 dl 35804450488246 tx 0x15bfd2c7 LAUNCH
+   sw +2466 ti 1 SELL 0.002029 fee 200800 sender 0xe275df7e to 0xe275df7e from 0x9dda4b70 sel 00000001 len 293 
+-- 0x35ef38fd09 b0 84500298 ts 1791584034 from 0x373733c5 nonce 1816 val 0.001044284 tick0 154257 liq 2334483546100784088 token 0xd577f45d hooks 0x00000000 nsw 0 nb 0 ns 0 npull 0 nadd 1 ethin 0.0
+   add +0 lo -886000 hi 886000 dl 2334483546100784088 tx 0x2a1cb41c LAUNCH
+-- 0x36e2090216 b0 84615226 ts 1791595867 from 0xf9a8e55f nonce 13366 val 0.000434419 tick0 154962 liq 1005979578980081233 token 0x9dfadba0 hooks 0x00000000 nsw 4 nb 0 ns 4 npull 0 nadd 1 ethin 0.0
+   add +0 lo -886000 hi 886000 dl 1005979578980081233 tx 0x43136506 LAUNCH
+   sw +2099 ti 19 SELL 0.000097 fee 200000 sender 0x05e66e1c to 0x05e66e1c from 0x05e66e1c sel 03000000 len 326 
+   sw +2099 ti 24 SELL 0.000057 fee 200000 sender 0xb0550000 to 0xb0550000 from 0x00000000 sel 40e5c1ee len 470 
+   sw +2102 ti 235 SELL 0.000087 fee 200000 sender 0xcd488806 to 0xcd488806 from 0xcf853bde sel 8119c065 len 99 
+   sw +2103 ti 92 SELL 0.000147 fee 200000 sender 0xa99cc9bd to 0x796a6274 from 0x2aa27aa1 sel 53f10001 len 468 
+-- 0x4c5fd1be9d b0 84692558 ts 1791603845 from 0x383c1453 nonce 668 val 0.00269141 tick0 178747 liq 20470053986080573668 token 0x099b34ae hooks 0x00000000 nsw 0 nb 0 ns 0 npull 0 nadd 1 ethin 0.0
+   add +0 lo -886000 hi 886000 dl 20470053986080573668 tx 0x45a73681 LAUNCH
+-- 0x2c679eb413 b0 84795633 ts 1791614475 from 0x01192597 nonce 3374 val 0.00105599 tick0 173754 liq 23312270529483734855 token 0x0dc0f2dd hooks 0x00000000 nsw 1 nb 0 ns 1 npull 0 nadd 1 ethin 0.0
+   add +0 lo 166000 hi 180000 dl 23312270529483734855 tx 0x4dd6dfae LAUNCH
+   sw +1420 ti 1 SELL 0.000144 fee 200000 sender 0x076b3601 to 0x076b3601 from 0x1e94d82e sel bd6858d6 len 260 
+============================== 0x78ba8b21e8adbbc84f2e11f0e92c6f2299b78281|7fde822e|804|10000|200|true
+-- 0x115447d893 b0 83820922 ts 1791514380 from 0x06cb3a68 nonce 1944 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xbd4f17f6 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 2e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x5c539515 LAUNCH
+   sw +4 ti 1 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0x97e2e2ba21 b0 83823768 ts 1791514673 from 0x06cb3a68 nonce 1945 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xef9bb2db hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 2e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x3e8fe2c2 LAUNCH
+   sw +3 ti 4 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0xe332d50bc8 b0 83826681 ts 1791514973 from 0x06cb3a68 nonce 1946 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x4123a7b3 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.998e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x25112462 LAUNCH
+   sw +3 ti 2 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0x6a26449b5f b0 83832600 ts 1791515578 from 0x06cb3a68 nonce 1948 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x59bce1a2 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x932a2850 LAUNCH
+   sw +3 ti 3 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0x5efc4c3fb5 b0 83841389 ts 1791516474 from 0x06cb3a68 nonce 1951 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x3d9a8c0e hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x337d4a32 LAUNCH
+   sw +3 ti 8 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0x9f0f370156 b0 83844275 ts 1791516773 from 0x06cb3a68 nonce 1952 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x4ebd7560 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 2e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xa13da2fe LAUNCH
+   sw +3 ti 5 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0x608f521cde b0 83850096 ts 1791517373 from 0x06cb3a68 nonce 1954 val 0.0 tick0 201800 liq 32156000099526845215062 token 0xced50532 hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xcb3314d4 LAUNCH
+   sw +3 ti 1 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0x29edcbab37 b0 83852978 ts 1791517673 from 0x06cb3a68 nonce 1955 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x37a71b4b hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.999e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0x74272fc8 LAUNCH
+   sw +5 ti 4 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 
+-- 0xa9f7936fae b0 83864620 ts 1791518875 from 0x06cb3a68 nonce 1959 val 0.0 tick0 201800 liq 32156000099526845215062 token 0x47c07b3a hooks 0x00000000 nsw 1 nb 1 ns 0 npull 0 nadd 1 ethin 1.998e-06
+   add +0 lo 132800 hi 201800 dl 32156000099526845215062 tx 0xbd155455 LAUNCH
+   sw +3 ti 3 BUY  0.000002 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c len 1156 

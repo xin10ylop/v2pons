@@ -1,0 +1,46 @@
+head 85994889 17:05:58 UTC; 19 C-1 launches in the last 150 min (of 26 fee-100/ts-1 ETH pools)
+   launch   age  botT   first nbot ETH by T+60  pull others  othETH
+ 85924979 69910   113   0.065   16       0.065  None      7  0.0016
+ 85930218 64671   105 0.03876   18       0.788  None     10  0.0044
+ 85932148 62741    79 0.08632   30       0.086  None      5  0.0008
+ 85936965 57924    41   0.108    6       0.148  None      8  0.0016
+ 85940860 54029   100   0.009    2       0.009   293      6  0.0012
+ 85941415 53474    83   0.069    5       0.249   361      6   0.001
+ 85942135 52754    66   0.008    6       0.127  None      6   0.001
+ 85945350 49539   110  0.0005    4       0.001   330      5  0.0011
+ 85946012 48877    66   0.165    6       0.173  None      5  0.0008
+ 85948531 46358    74   0.122    5       0.122  None      4  0.0008
+ 85957352 37537  None    None    0           0   231      4  0.0009
+ 85958289 36600   132   0.033    2       0.033   373      3  0.0006
+ 85959212 35677    35  0.3258   24       0.434  None      7  0.0015
+ 85960342 34547    86   0.087    2       0.222   224      4  0.0008
+ 85968663 26226    77   0.004    4       0.004  None      4  0.0008
+ 85971680 23209    56    0.63    2       0.738   240      5  0.0014
+ 85972336 22553    64     1.1   13        1.16  None      5  0.0008
+ 85974323 20566    72    0.69   16       0.702  None      5  0.0009
+ 85978979 15910    75    0.12    9       0.451  None      5  0.0008
+
+launches older than 400 blocks: 19; with a bot buy: 18; median ETH by T+60 among those: 0.173
+
+forward test (gross, before ~0.3% of fees and our own impact): return from the price after the bot's first buy to the last swap <= T+62
+  85924979: T +113, 5 swaps in the hold, gross +0.0%
+  85930218: T +105, 7 swaps in the hold, gross +15.5%
+  85932148: T +79, 3 swaps in the hold, gross +0.0%
+  85936965: T +41, 6 swaps in the hold, gross +0.8%
+  85940860: T +100, 5 swaps in the hold, gross +0.0%
+  85941415: T +83, 5 swaps in the hold, gross +3.6%
+  85942135: T +66, 5 swaps in the hold, gross +2.4%
+  85945350: T +110, 4 swaps in the hold, gross +0.0%
+  85946012: T +66, 5 swaps in the hold, gross +0.2%
+  85948531: T +74, 3 swaps in the hold, gross +0.0%
+  85957352: no bot buy
+  85958289: T +132, 3 swaps in the hold, gross +0.0%
+  85959212: T +35, 5 swaps in the hold, gross +2.1%
+  85960342: T +86, 5 swaps in the hold, gross +2.7%
+  85968663: T +77, 3 swaps in the hold, gross +0.0%
+  85971680: T +56, 6 swaps in the hold, gross +2.1%
+  85972336: T +64, 5 swaps in the hold, gross +1.1%
+  85974323: T +72, 5 swaps in the hold, gross +0.2%
+  85978979: T +75, 9 swaps in the hold, gross +6.6%
+
+18 pools: mean +2.1%, median +0.8%, win 9/18, worst +0.0%

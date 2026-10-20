@@ -1,0 +1,1984 @@
+{
+ "families": [
+  {
+   "key": "0x31cc7ddef7ff0e92001b7507cc42097c0ff379e0|7fde822e|804|10000|200|true",
+   "known": "none",
+   "count": 12,
+   "launches_per_day": 6.0,
+   "launcher": "one EOA 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 (nonces 2069-2086 here) calling its own launch contract 0x31cc7ddef7ff0e92001b7507cc42097c0ff379e0 (19034 bytes, code hash 955a47b1...) with 7fde822e, 804-byte calldata, value 0, tip 0, gas limit ~1.70M. The calldata is token metadata from the imortal.buzz launchpad (name, symbol, an imortal.buzz/i/<ipfs cid> image, x.com and t.co links), the same creator/fee address 0x94dddbb54535ee3515b3b9e10be5a6569c586324 in all 48, the constant 2500 and 1.7 ETH (apparently the starting valuation: tick0 201800 prices 1e9 tokens at ~1.72 ETH; the range holds ~749M tokens). Pool: fee 1%, ts 200, hooks 0, one token-only range [132800, 201800] at tick0 201800, L 32156000099526845215062 (no ETH in the pool; virtual ETH depth L/sqrtP = 1.34 ETH). This contract served 12 launches in 1.58 h (blocks 84232255-84287722, gap p10/50/90 [2867, 2956, 8903] blocks), then the wallet moved to a new contract (27 contracts, 490 launches by 5 deployers in 48 h; 0x06cb3a68 alone 454 = 227/day, one every ~2,922 blocks).",
+   "first_buy": "first non-launch buy in 12/12: the chain-wide dust bot 0xe71a69f4 (one wallet, it buys every new pool on the chain) via the Universal Router execute, offset p10/50/90 [3, 3, 3] blocks, size [2e-06, 2e-06, 2e-06] ETH; sender diversity 1 wallet, not fresh. First buy >= 0.0002 ETH: 0/12. Fraction of pools with a scheduled operator buy: 0. RPC check to head 85247779: no swap after the 3,000-block window in any of the 48 pools.",
+   "pull": "0/12 pulled within 3,000 blocks and 0/12 ever (eth_getLogs of every Swap/ModifyLiquidity of my 48 pools from launch to block 85247779, 0.7-1.7M blocks later: only the launch mint and the buys above); offsets from launch / first buy n/a; nobody pulls (0 of the launcher's 490 pools in 3,000 blocks).",
+   "outsiders": "everyone but the launcher is an outsider here: the dust bot in 12/12 pools (2e-6 ETH at +3), no real-size buyer; trap test not computable: 0 pulls with or without outsiders (0/48 ever; 0/490 across the launcher).",
+   "front_rule": "n 12, mean -2.06%, median -2.06%, win 0%, pulled-first 0, $-0.309 a trade, $-1.85 a day (6.0/day) (no scheduled buy: every trade sells at +20 into the untouched pool and pays two 1% fees + 0.07% gas)",
+   "follow_rule": "n 0: no buy >= 0.0002 ETH in any pool (0 trades, $0 a day)",
+   "capacity": "n/a: no scheduled buy to decode (assumption-only reference: about 0.0067 ETH ahead cuts any small buy's output 1%, virtual ETH depth 1.34 ETH)",
+   "engine_config": "none: nothing to trade. Recognizer if ever needed: from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937, selector 7fde822e, value 0, calldata 644-964 bytes (to = its current launch contract, rotates every 12-16 launches); pool fee 10000, ts 200, hooks 0, token-only range at tick0 201800; no exit trigger exists",
+   "verdict": "no-schedule",
+   "candidate_score": 0,
+   "notes": "A launchpad publisher (imortal.buzz user tokens at a 1.7 ETH starting cap), not a pump-and-pull operator: no operator buy, no decoys, liquidity never removed, nobody trades the pools. The whole 7fde822e launcher (all 490 pools on 27 launch contracts, 5 deployers, 454 by 0x06cb3a68) prices the same: front -2.06% on 490/490 (win 0), follow -2.49% on the 5 pools that ever got a buy >= 0.0002 ETH (+3, +843, +959, +1510, +1625 blocks, 0.0012-0.0107 ETH, five different buyers/routers), 0 pulled. Pricer calibration (same code): v2.433 front in the live window (Oct 10 09:07-11:40 UTC, 409 pools) +13.98% mean / +16.17% median / 98.5% win; pool by pool against the 399 priced live relay trades (their real stake and buy/sell blocks) the pricer's gross return equals the realised one to 2e-16; operator A follow +4.34% (n 75)."
+  },
+  {
+   "key": "0x57689a475c5941b855f989edf81d6ddbf10229e6|7fde822e|804|10000|200|true",
+   "known": "none",
+   "count": 12,
+   "launches_per_day": 6.0,
+   "launcher": "one EOA 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 (nonces 2153-2168 here) calling its own launch contract 0x57689a475c5941b855f989edf81d6ddbf10229e6 (19028 bytes, code hash 896ba1d8...) with 7fde822e, 804-byte calldata, value 0, tip 0, gas limit ~1.70M. The calldata is token metadata from the imortal.buzz launchpad (name, symbol, an imortal.buzz/i/<ipfs cid> image, x.com and t.co links), the same creator/fee address 0x94dddbb54535ee3515b3b9e10be5a6569c586324 in all 48, the constant 2500 and 1.7 ETH (apparently the starting valuation: tick0 201800 prices 1e9 tokens at ~1.72 ETH; the range holds ~749M tokens). Pool: fee 1%, ts 200, hooks 0, one token-only range [132800, 201800] at tick0 201800, L 32156000099526845215062 (no ETH in the pool; virtual ETH depth L/sqrtP = 1.34 ETH). This contract served 12 launches in 1.56 h (blocks 84467312-84522128, gap p10/50/90 [2876, 2948, 8733] blocks), then the wallet moved to a new contract (27 contracts, 490 launches by 5 deployers in 48 h; 0x06cb3a68 alone 454 = 227/day, one every ~2,922 blocks).",
+   "first_buy": "first non-launch buy in 12/12: the chain-wide dust bot 0xe71a69f4 (one wallet, it buys every new pool on the chain) via the Universal Router execute, offset p10/50/90 [2, 3, 3] blocks, size [2e-06, 2e-06, 2e-06] ETH; sender diversity 1 wallet, not fresh. First buy >= 0.0002 ETH: 0/12. Fraction of pools with a scheduled operator buy: 0. RPC check to head 85247779: no swap after the 3,000-block window in any of the 48 pools.",
+   "pull": "0/12 pulled within 3,000 blocks and 0/12 ever (eth_getLogs of every Swap/ModifyLiquidity of my 48 pools from launch to block 85247779, 0.7-1.7M blocks later: only the launch mint and the buys above); offsets from launch / first buy n/a; nobody pulls (0 of the launcher's 490 pools in 3,000 blocks).",
+   "outsiders": "everyone but the launcher is an outsider here: the dust bot in 12/12 pools (2e-6 ETH at +3), no real-size buyer; trap test not computable: 0 pulls with or without outsiders (0/48 ever; 0/490 across the launcher).",
+   "front_rule": "n 12, mean -2.06%, median -2.06%, win 0%, pulled-first 0, $-0.309 a trade, $-1.85 a day (6.0/day) (no scheduled buy: every trade sells at +20 into the untouched pool and pays two 1% fees + 0.07% gas)",
+   "follow_rule": "n 0: no buy >= 0.0002 ETH in any pool (0 trades, $0 a day)",
+   "capacity": "n/a: no scheduled buy to decode (assumption-only reference: about 0.0067 ETH ahead cuts any small buy's output 1%, virtual ETH depth 1.34 ETH)",
+   "engine_config": "none: nothing to trade. Recognizer if ever needed: from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937, selector 7fde822e, value 0, calldata 644-964 bytes (to = its current launch contract, rotates every 12-16 launches); pool fee 10000, ts 200, hooks 0, token-only range at tick0 201800; no exit trigger exists",
+   "verdict": "no-schedule",
+   "candidate_score": 0,
+   "notes": "A launchpad publisher (imortal.buzz user tokens at a 1.7 ETH starting cap), not a pump-and-pull operator: no operator buy, no decoys, liquidity never removed, nobody trades the pools. The whole 7fde822e launcher (all 490 pools on 27 launch contracts, 5 deployers, 454 by 0x06cb3a68) prices the same: front -2.06% on 490/490 (win 0), follow -2.49% on the 5 pools that ever got a buy >= 0.0002 ETH (+3, +843, +959, +1510, +1625 blocks, 0.0012-0.0107 ETH, five different buyers/routers), 0 pulled. Pricer calibration (same code): v2.433 front in the live window (Oct 10 09:07-11:40 UTC, 409 pools) +13.98% mean / +16.17% median / 98.5% win; pool by pool against the 399 priced live relay trades (their real stake and buy/sell blocks) the pricer's gross return equals the realised one to 2e-16; operator A follow +4.34% (n 75)."
+  },
+  {
+   "key": "0x9bd98b64980f273d5452e204a3e59a9ab5b4fad6|7fde822e|804|10000|200|true",
+   "known": "none",
+   "count": 12,
+   "launches_per_day": 6.0,
+   "launcher": "one EOA 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 (nonces 1838-1852 here) calling its own launch contract 0x9bd98b64980f273d5452e204a3e59a9ab5b4fad6 (19028 bytes, code hash ee527181...) with 7fde822e, 804-byte calldata, value 0, tip 0, gas limit ~1.70M. The calldata is token metadata from the imortal.buzz launchpad (name, symbol, an imortal.buzz/i/<ipfs cid> image, x.com and t.co links), the same creator/fee address 0x94dddbb54535ee3515b3b9e10be5a6569c586324 in all 48, the constant 2500 and 1.7 ETH (apparently the starting valuation: tick0 201800 prices 1e9 tokens at ~1.72 ETH; the range holds ~749M tokens). Pool: fee 1%, ts 200, hooks 0, one token-only range [132800, 201800] at tick0 201800, L 32156000099526845215062 (no ETH in the pool; virtual ETH depth L/sqrtP = 1.34 ETH). This contract served 12 launches in 1.58 h (blocks 83521755-83577332, gap p10/50/90 [2898, 5839, 5911] blocks), then the wallet moved to a new contract (27 contracts, 490 launches by 5 deployers in 48 h; 0x06cb3a68 alone 454 = 227/day, one every ~2,922 blocks).",
+   "first_buy": "first non-launch buy in 12/12: the chain-wide dust bot 0xe71a69f4 (one wallet, it buys every new pool on the chain) via the Universal Router execute, offset p10/50/90 [3, 3, 3] blocks, size [2e-06, 2e-06, 2e-06] ETH; sender diversity 1 wallet, not fresh. First buy >= 0.0002 ETH: 0/12. Fraction of pools with a scheduled operator buy: 0. RPC check to head 85247779: no swap after the 3,000-block window in any of the 48 pools.",
+   "pull": "0/12 pulled within 3,000 blocks and 0/12 ever (eth_getLogs of every Swap/ModifyLiquidity of my 48 pools from launch to block 85247779, 0.7-1.7M blocks later: only the launch mint and the buys above); offsets from launch / first buy n/a; nobody pulls (0 of the launcher's 490 pools in 3,000 blocks).",
+   "outsiders": "everyone but the launcher is an outsider here: the dust bot in 12/12 pools (2e-6 ETH at +3), no real-size buyer; trap test not computable: 0 pulls with or without outsiders (0/48 ever; 0/490 across the launcher).",
+   "front_rule": "n 12, mean -2.07%, median -2.07%, win 0%, pulled-first 0, $-0.310 a trade, $-1.86 a day (6.0/day) (no scheduled buy: every trade sells at +20 into the untouched pool and pays two 1% fees + 0.07% gas)",
+   "follow_rule": "n 0: no buy >= 0.0002 ETH in any pool (0 trades, $0 a day)",
+   "capacity": "n/a: no scheduled buy to decode (assumption-only reference: about 0.0067 ETH ahead cuts any small buy's output 1%, virtual ETH depth 1.34 ETH)",
+   "engine_config": "none: nothing to trade. Recognizer if ever needed: from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937, selector 7fde822e, value 0, calldata 644-964 bytes (to = its current launch contract, rotates every 12-16 launches); pool fee 10000, ts 200, hooks 0, token-only range at tick0 201800; no exit trigger exists",
+   "verdict": "no-schedule",
+   "candidate_score": 0,
+   "notes": "A launchpad publisher (imortal.buzz user tokens at a 1.7 ETH starting cap), not a pump-and-pull operator: no operator buy, no decoys, liquidity never removed, nobody trades the pools. The whole 7fde822e launcher (all 490 pools on 27 launch contracts, 5 deployers, 454 by 0x06cb3a68) prices the same: front -2.06% on 490/490 (win 0), follow -2.49% on the 5 pools that ever got a buy >= 0.0002 ETH (+3, +843, +959, +1510, +1625 blocks, 0.0012-0.0107 ETH, five different buyers/routers), 0 pulled. Pricer calibration (same code): v2.433 front in the live window (Oct 10 09:07-11:40 UTC, 409 pools) +13.98% mean / +16.17% median / 98.5% win; pool by pool against the 399 priced live relay trades (their real stake and buy/sell blocks) the pricer's gross return equals the realised one to 2e-16; operator A follow +4.34% (n 75)."
+  },
+  {
+   "key": "0xb6ed4932f217c5eb6d21a9be81fc7e6def69a0a9|7fde822e|804|10000|200|true",
+   "known": "none",
+   "count": 12,
+   "launches_per_day": 6.0,
+   "launcher": "one EOA 0x06cb3a6841c92525e7a1998328e7c9d37e98d937 (nonces 1922-1939 here) calling its own launch contract 0xb6ed4932f217c5eb6d21a9be81fc7e6def69a0a9 (19036 bytes, code hash 848e3004...) with 7fde822e, 804-byte calldata, value 0, tip 0, gas limit ~1.70M. The calldata is token metadata from the imortal.buzz launchpad (name, symbol, an imortal.buzz/i/<ipfs cid> image, x.com and t.co links), the same creator/fee address 0x94dddbb54535ee3515b3b9e10be5a6569c586324 in all 48, the constant 2500 and 1.7 ETH (apparently the starting valuation: tick0 201800 prices 1e9 tokens at ~1.72 ETH; the range holds ~749M tokens). Pool: fee 1%, ts 200, hooks 0, one token-only range [132800, 201800] at tick0 201800, L 32156000099526845215062 (no ETH in the pool; virtual ETH depth L/sqrtP = 1.34 ETH). This contract served 12 launches in 1.58 h (blocks 83756576-83812076, gap p10/50/90 [2806, 2953, 8797] blocks), then the wallet moved to a new contract (27 contracts, 490 launches by 5 deployers in 48 h; 0x06cb3a68 alone 454 = 227/day, one every ~2,922 blocks).",
+   "first_buy": "first non-launch buy in 12/12: the chain-wide dust bot 0xe71a69f4 (one wallet, it buys every new pool on the chain) via the Universal Router execute, offset p10/50/90 [3, 3, 3] blocks, size [2e-06, 2e-06, 2e-06] ETH; sender diversity 1 wallet, not fresh. First buy >= 0.0002 ETH: 1/12 pools: 0.0042978 ETH at +959 from 0x329ca263 via 0x5399d94d (selector 814920c0, value 0), and 2 blocks later 0x94dddbb5 (the launch calldata's creator/fee address) sold exactly the same 2,461,071 tokens via 0xfa9b5811 (bbb2e1a6): a one-off, not a schedule. Fraction of pools with a scheduled operator buy: 0. RPC check to head 85247779: no swap after the 3,000-block window in any of the 48 pools.",
+   "pull": "0/12 pulled within 3,000 blocks and 0/12 ever (eth_getLogs of every Swap/ModifyLiquidity of my 48 pools from launch to block 85247779, 0.7-1.7M blocks later: only the launch mint and the buys above); offsets from launch / first buy n/a; nobody pulls (0 of the launcher's 490 pools in 3,000 blocks).",
+   "outsiders": "everyone but the launcher is an outsider here: the dust bot in 12/12 pools (2e-6 ETH at +3), and the one 0.0043 ETH buyer at +959 in 1 pool; trap test not computable: 0 pulls with or without outsiders (0/48 ever; 0/490 across the launcher).",
+   "front_rule": "n 12, mean -2.06%, median -2.06%, win 0%, pulled-first 0, $-0.309 a trade, $-1.85 a day (6.0/day) (no scheduled buy: every trade sells at +20 into the untouched pool and pays two 1% fees + 0.07% gas)",
+   "follow_rule": "n 1, mean -2.68%, median -2.68%, win 0%, pulled-first 0, $-0.402 a trade, $-0.20 a day (0.5/day) (the one trigger: buy at +960 after the 0.0043 ETH buy, no next buy, sold at +964 after 0x94dddbb5's sell at +961)",
+   "capacity": "n/a: no scheduled buy to decode. Assumption for reference only (minOut = 0.99 x the launch-state quote, 814920c0 calldata not decoded): the one 0.0043 ETH buy could carry 0.0068 ETH ahead; any small buy into these pools loses 1% with about 0.0067 ETH ahead (virtual depth 1.34 ETH)",
+   "engine_config": "none: nothing to trade. Recognizer if ever needed: from 0x06cb3a6841c92525e7a1998328e7c9d37e98d937, selector 7fde822e, value 0, calldata 644-964 bytes (to = its current launch contract, rotates every 12-16 launches); pool fee 10000, ts 200, hooks 0, token-only range at tick0 201800; no exit trigger exists",
+   "verdict": "no-schedule",
+   "candidate_score": 0,
+   "notes": "A launchpad publisher (imortal.buzz user tokens at a 1.7 ETH starting cap), not a pump-and-pull operator: no operator buy, no decoys, liquidity never removed, nobody trades the pools. The whole 7fde822e launcher (all 490 pools on 27 launch contracts, 5 deployers, 454 by 0x06cb3a68) prices the same: front -2.06% on 490/490 (win 0), follow -2.49% on the 5 pools that ever got a buy >= 0.0002 ETH (+3, +843, +959, +1510, +1625 blocks, 0.0012-0.0107 ETH, five different buyers/routers), 0 pulled. Pricer calibration (same code): v2.433 front in the live window (Oct 10 09:07-11:40 UTC, 409 pools) +13.98% mean / +16.17% median / 98.5% win; pool by pool against the 399 priced live relay trades (their real stake and buy/sell blocks) the pricer's gross return equals the realised one to 2e-16; operator A follow +4.34% (n 75)."
+  },
+  {
+   "key": "control:vbot-v2.433 (0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|2500|50|true, value 2.4333285 ETH)",
+   "known": "vbot-v2.433",
+   "count": 1843,
+   "launches_per_day": 921.79,
+   "launcher": "POSM multicall ac9650d8, 1,444 bytes, value exactly 2.4333285 ETH, a fresh wallet per launch (1843 senders, nonce p10/50/90 [3, 10, 11])",
+   "first_buy": "first non-launch buy: +[2, 3, 3] blocks, [2e-06, 2e-06, 0.00495] ETH (the dust bot via UR in 940 pools, the bot's decoy router 0x65050a9b in 854; 129 senders, 97 with nonce <= 2). The scheduled buy (router 0x1cbaf24d, c1120e3d) in 1842/1843: offset [8, 9, 10], size [0.0495, 0.175, 0.25] ETH, 31 sender wallets (none fresh).",
+   "pull": "1482/1843 (80%) within 3,000 blocks; from launch [11, 13, 127], from the bot's buy [3, 3, 117]; all 1482 by the launch wallet through the bot's router (a0f7978d); 0 before the bot's buy.",
+   "outsiders": "real outsiders (not the bot's router or decoys, not the dust bot, not our relay) before the bot's buy in 5/1843 pools, [1.98e-05, 4.95e-05, 4.95e-05] ETH (0xfeda1c58 via 0xf0b7eaaf x4); none >= 0.0001 ETH, so the chain's own trap test is empty. With our relay as the outsider (trap_v2433.json): in the relay's hours (Oct 10 09:08-17:37) 1040 of 1045 pulled relay pools were pulled 2-4 blocks after the bot's buy vs 26 of 40 pools the relay skipped (p90 738) and 11 of 311 before the relay started (median 109): the quick pull tracks our trading, but it lands after the bot's buy, so front still sells first.",
+   "front_rule": "n 1843, mean +11.86%, median +14.01%, win 95%, pulled-first 0, $+1.779 a trade, $+1639.55 a day (921.79/day); live window (409 pools) +13.98% mean, +16.17% median, 98.5% win; 229 pools where the bot's decoys put 0.0074-0.0099 ETH ahead and our 0.0058 reverts the bot's buy: +0.01%; the other 1614: +13.54%",
+   "follow_rule": "n 1842, mean -35.43%, median -0.57%, win 0%, pulled-first 646, $-5.315 a trade, $-4896.63 a day (921.29/day) (the pull 3 blocks after the bot's buy beats a sell at our buy + 4)",
+   "capacity": "real minOut (calldata word 4) on 1842: minOut / launch-state quote [0.99, 0.99, 0.99]; total ETH allowed ahead from the launch state [0.01241, 0.01271, 0.01289]; after the decoys' actual pre-buys [0.00528, 0.01253, 0.01283]; 229 pools with less room than 0.0058",
+   "engine_config": "the live front engine: to POSM, ac9650d8, 1,444 bytes, value 2.4333285 ETH; fee 2500, ts 50, hooks 0; fire in the launch block (lands +1); exit on any buy through 0x1cbaf24d; deadline buy + 18",
+   "verdict": "control-known",
+   "candidate_score": 0,
+   "notes": "Pricer calibration (same code): v2.433 front in the live window (Oct 10 09:07-11:40 UTC, 409 pools) +13.98% mean / +16.17% median / 98.5% win; pool by pool against the 399 priced live relay trades (their real stake and buy/sell blocks) the pricer's gross return equals the realised one to 2e-16; operator A follow +4.34% (n 75). By 6 h: {\"10-08 18h\": {\"n\": 68, \"mean\": 0.12583, \"median\": 0.14021, \"win\": 0.9706}, \"10-09 00h\": {\"n\": 91, \"mean\": 0.13262, \"median\": 0.14028, \"win\": 0.989}, \"10-09 06h\": {\"n\": 84, \"mean\": 0.14268, \"median\": 0.14107, \"win\": 0.9762}, \"10-09 12h\": {\"n\": 92, \"mean\": 0.12526, \"median\": 0.126, \"win\": 0.9891}, \"10-09 18h\": {\"n\": 86, \"mean\": 0.13992, \"median\": 0.14162, \"win\": 1.0}, \"10-10 00h\": {\"n\": 102, \"mean\": 0.13513, \"median\": 0.1403, \"win\": 0.9902}, \"10-10 06h\": {\"n\": 530, \"mean\": 0.13883, \"median\": 0.15484, \"win\": 0.9868}, \"10-10 12h\": {\"n\": 758, \"mean\": 0.09448, \"median\": 0.0985, \"win\": 0.8892}, \"10-10 18h\": {\"n\": 32, \"mean\": 0.10612, \"median\": 0.12415, \"win\": 0.9375}}"
+  },
+  {
+   "key": "control:operator-A (0x3194e32622c5d860a0572c74edda99dcfd8fc827|2fcb9108|644, fees vary)",
+   "known": "operator-A",
+   "count": 77,
+   "launches_per_day": 38.51,
+   "launcher": "launcher 0x3194e326, 2fcb9108, 644 bytes, value 1.9-2.7 ETH, fee varies (1500/2500/3500/4000/500...), 77 fresh wallets (nonce 0)",
+   "first_buy": "first non-launch buy: the dust bot at [3, 3, 4]; first real buy (the crowd, UR execute 3593564c) in 75/77 at [24, 54, 66] blocks, [0.0143, 0.0547, 0.1203] ETH, 10 wallets (0x8700722d x25, 0x295877ce x23, 0xdc2e8661 x15), none fresh",
+   "pull": "66/77 (86%) within 3,000; from launch [51, 224, 2180], from the first crowd buy [6, 165, 2157]; all by the launch wallet via the POSM",
+   "outsiders": "29/77 pools with sub-dust outsiders before the crowd ([1.49e-05, 6e-05, 6e-05] ETH, mostly 0xf7b47b17 via UR); >= 0.0001 ETH in 2: pull [6, 6, 28] blocks after the crowd buy vs [6, 201, 2349] without (n 2: too few)",
+   "front_rule": "n 77, mean -0.51%, median -0.54%, win 1%, pulled-first 0, $-0.076 a trade, $-2.92 a day (38.51/day) (the crowd comes at +54, after the +20 deadline)",
+   "follow_rule": "n 75, mean +4.34%, median +3.27%, win 84%, pulled-first 0, $+0.651 a trade, $+24.41 a day (37.51/day)",
+   "capacity": "UR execute is nested: not decoded; assumption minOut = 0.99 x launch-state quote: [0.00823, 0.01148, 0.01729] ETH ahead of the first crowd buy",
+   "engine_config": "the live follow engine (launcher 0x3194e326 / 2fcb9108; trigger the first buy >= 0.0002 ETH; sell on the next buy or buy + 4)",
+   "verdict": "control-known",
+   "candidate_score": 0,
+   "notes": "Matches the handoff's +2-4% follow and analyse_5's +4.34%. Pricer calibration (same code): v2.433 front in the live window (Oct 10 09:07-11:40 UTC, 409 pools) +13.98% mean / +16.17% median / 98.5% win; pool by pool against the 399 priced live relay trades (their real stake and buy/sell blocks) the pricer's gross return equals the realised one to 2e-16; operator A follow +4.34% (n 75)."
+  }
+ ],
+ "stats": {
+  "0x31cc7ddef7ff0e92001b7507cc42097c0ff379e0|7fde822e|804|10000|200|true": {
+   "n": 12,
+   "launches_per_day": 6.0,
+   "span_blocks": [
+    84232255,
+    84287722
+   ],
+   "active_hours": 1.58,
+   "gap_blocks_p10_50_90": [
+    2867,
+    2956,
+    8903
+   ],
+   "launch_from_top": [
+    [
+     "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+     12
+    ]
+   ],
+   "n_launch_wallets": 1,
+   "launch_nonce_p10_50_90": [
+    2069,
+    2078,
+    2086
+   ],
+   "start": {
+    "active": 12
+   },
+   "validate_first_swap_rel_err_max": 1.8555553514834012e-17,
+   "validate_n": 12,
+   "fb": {
+    "pools": 12,
+    "frac": 1.0,
+    "off_p10_50_90": [
+     3,
+     3,
+     3
+    ],
+    "eth_p10_50_90": [
+     2e-06,
+     2e-06,
+     2e-06
+    ],
+    "to_top": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      12
+     ]
+    ],
+    "from_top": [
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      12
+     ]
+    ],
+    "n_from": 1,
+    "fresh_nonce_le2": 0,
+    "sel_top": [
+     [
+      null,
+      12
+     ]
+    ]
+   },
+   "fr": {
+    "pools": 0
+   },
+   "sb": {
+    "pools": 0
+   },
+   "pull": {
+    "pulled": 0,
+    "frac": 0.0,
+    "off_launch_p10_50_90": null,
+    "off_sched_p10_50_90": null,
+    "by_launch_wallet": 0,
+    "pull_from_top": [],
+    "pull_to_top": [],
+    "pulled_before_sched": 0,
+    "pulled_no_sched": 0
+   },
+   "outsiders": {
+    "pools": 0,
+    "frac": 0.0,
+    "eth_p10_50_90": null,
+    "off_p10_50_90": null,
+    "real_ge_0.0002_pools": 0,
+    "to_top": [],
+    "from_top": [],
+    "dust_bot_pools": 12
+   },
+   "trap_test": {
+    "with_outsider_ge_0.0001": {
+     "pools": 0,
+     "with_sched": 0,
+     "pulled": 0,
+     "pull_minus_sched_p10_50_90": null,
+     "pull_le_sched_plus4": 0
+    },
+    "without": {
+     "pools": 12,
+     "with_sched": 0,
+     "pulled": 0,
+     "pull_minus_sched_p10_50_90": null,
+     "pull_le_sched_plus4": 0
+    }
+   },
+   "front": {
+    "n": 12,
+    "mean": -0.02058,
+    "median": -0.02058,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12
+    },
+    "usd_trade": -0.3087,
+    "trades_day": 6.0,
+    "usd_day": -1.85,
+    "p10_50_90": [
+     -0.02059,
+     -0.02058,
+     -0.02058
+    ],
+    "min": -0.02059,
+    "max": -0.02058,
+    "late": 0,
+    "sell_off_p10_50_90": [
+     20,
+     20,
+     20
+    ],
+    "bot_dropped_pools": 0
+   },
+   "follow": {
+    "n": 0,
+    "exits": {},
+    "no_trigger": 12
+   }
+  },
+  "0x57689a475c5941b855f989edf81d6ddbf10229e6|7fde822e|804|10000|200|true": {
+   "n": 12,
+   "launches_per_day": 6.0,
+   "span_blocks": [
+    84467312,
+    84522128
+   ],
+   "active_hours": 1.56,
+   "gap_blocks_p10_50_90": [
+    2876,
+    2948,
+    8733
+   ],
+   "launch_from_top": [
+    [
+     "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+     12
+    ]
+   ],
+   "n_launch_wallets": 1,
+   "launch_nonce_p10_50_90": [
+    2153,
+    2163,
+    2168
+   ],
+   "start": {
+    "active": 12
+   },
+   "validate_first_swap_rel_err_max": 2.0934310105475793e-17,
+   "validate_n": 12,
+   "fb": {
+    "pools": 12,
+    "frac": 1.0,
+    "off_p10_50_90": [
+     2,
+     3,
+     3
+    ],
+    "eth_p10_50_90": [
+     2e-06,
+     2e-06,
+     2e-06
+    ],
+    "to_top": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      12
+     ]
+    ],
+    "from_top": [
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      12
+     ]
+    ],
+    "n_from": 1,
+    "fresh_nonce_le2": 0,
+    "sel_top": [
+     [
+      null,
+      12
+     ]
+    ]
+   },
+   "fr": {
+    "pools": 0
+   },
+   "sb": {
+    "pools": 0
+   },
+   "pull": {
+    "pulled": 0,
+    "frac": 0.0,
+    "off_launch_p10_50_90": null,
+    "off_sched_p10_50_90": null,
+    "by_launch_wallet": 0,
+    "pull_from_top": [],
+    "pull_to_top": [],
+    "pulled_before_sched": 0,
+    "pulled_no_sched": 0
+   },
+   "outsiders": {
+    "pools": 0,
+    "frac": 0.0,
+    "eth_p10_50_90": null,
+    "off_p10_50_90": null,
+    "real_ge_0.0002_pools": 0,
+    "to_top": [],
+    "from_top": [],
+    "dust_bot_pools": 12
+   },
+   "trap_test": {
+    "with_outsider_ge_0.0001": {
+     "pools": 0,
+     "with_sched": 0,
+     "pulled": 0,
+     "pull_minus_sched_p10_50_90": null,
+     "pull_le_sched_plus4": 0
+    },
+    "without": {
+     "pools": 12,
+     "with_sched": 0,
+     "pulled": 0,
+     "pull_minus_sched_p10_50_90": null,
+     "pull_le_sched_plus4": 0
+    }
+   },
+   "front": {
+    "n": 12,
+    "mean": -0.02057,
+    "median": -0.02057,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12
+    },
+    "usd_trade": -0.3086,
+    "trades_day": 6.0,
+    "usd_day": -1.85,
+    "p10_50_90": [
+     -0.02058,
+     -0.02057,
+     -0.02057
+    ],
+    "min": -0.02058,
+    "max": -0.02057,
+    "late": 0,
+    "sell_off_p10_50_90": [
+     20,
+     20,
+     20
+    ],
+    "bot_dropped_pools": 0
+   },
+   "follow": {
+    "n": 0,
+    "exits": {},
+    "no_trigger": 12
+   }
+  },
+  "0x9bd98b64980f273d5452e204a3e59a9ab5b4fad6|7fde822e|804|10000|200|true": {
+   "n": 12,
+   "launches_per_day": 6.0,
+   "span_blocks": [
+    83521755,
+    83577332
+   ],
+   "active_hours": 1.58,
+   "gap_blocks_p10_50_90": [
+    2898,
+    5839,
+    5911
+   ],
+   "launch_from_top": [
+    [
+     "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+     12
+    ]
+   ],
+   "n_launch_wallets": 1,
+   "launch_nonce_p10_50_90": [
+    1838,
+    1845,
+    1852
+   ],
+   "start": {
+    "active": 12
+   },
+   "validate_first_swap_rel_err_max": 1.7366378789400694e-17,
+   "validate_n": 12,
+   "fb": {
+    "pools": 12,
+    "frac": 1.0,
+    "off_p10_50_90": [
+     3,
+     3,
+     3
+    ],
+    "eth_p10_50_90": [
+     2e-06,
+     2e-06,
+     2e-06
+    ],
+    "to_top": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      12
+     ]
+    ],
+    "from_top": [
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      12
+     ]
+    ],
+    "n_from": 1,
+    "fresh_nonce_le2": 0,
+    "sel_top": [
+     [
+      null,
+      12
+     ]
+    ]
+   },
+   "fr": {
+    "pools": 0
+   },
+   "sb": {
+    "pools": 0
+   },
+   "pull": {
+    "pulled": 0,
+    "frac": 0.0,
+    "off_launch_p10_50_90": null,
+    "off_sched_p10_50_90": null,
+    "by_launch_wallet": 0,
+    "pull_from_top": [],
+    "pull_to_top": [],
+    "pulled_before_sched": 0,
+    "pulled_no_sched": 0
+   },
+   "outsiders": {
+    "pools": 0,
+    "frac": 0.0,
+    "eth_p10_50_90": null,
+    "off_p10_50_90": null,
+    "real_ge_0.0002_pools": 0,
+    "to_top": [],
+    "from_top": [],
+    "dust_bot_pools": 12
+   },
+   "trap_test": {
+    "with_outsider_ge_0.0001": {
+     "pools": 0,
+     "with_sched": 0,
+     "pulled": 0,
+     "pull_minus_sched_p10_50_90": null,
+     "pull_le_sched_plus4": 0
+    },
+    "without": {
+     "pools": 12,
+     "with_sched": 0,
+     "pulled": 0,
+     "pull_minus_sched_p10_50_90": null,
+     "pull_le_sched_plus4": 0
+    }
+   },
+   "front": {
+    "n": 12,
+    "mean": -0.02068,
+    "median": -0.02068,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12
+    },
+    "usd_trade": -0.3102,
+    "trades_day": 6.0,
+    "usd_day": -1.86,
+    "p10_50_90": [
+     -0.02068,
+     -0.02067,
+     -0.02067
+    ],
+    "min": -0.02073,
+    "max": -0.02067,
+    "late": 0,
+    "sell_off_p10_50_90": [
+     20,
+     20,
+     20
+    ],
+    "bot_dropped_pools": 0
+   },
+   "follow": {
+    "n": 0,
+    "exits": {},
+    "no_trigger": 12
+   }
+  },
+  "0xb6ed4932f217c5eb6d21a9be81fc7e6def69a0a9|7fde822e|804|10000|200|true": {
+   "n": 12,
+   "launches_per_day": 6.0,
+   "span_blocks": [
+    83756576,
+    83812076
+   ],
+   "active_hours": 1.58,
+   "gap_blocks_p10_50_90": [
+    2806,
+    2953,
+    8797
+   ],
+   "launch_from_top": [
+    [
+     "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+     12
+    ]
+   ],
+   "n_launch_wallets": 1,
+   "launch_nonce_p10_50_90": [
+    1922,
+    1933,
+    1939
+   ],
+   "start": {
+    "active": 12
+   },
+   "validate_first_swap_rel_err_max": 1.9345354782242195e-17,
+   "validate_n": 12,
+   "fb": {
+    "pools": 12,
+    "frac": 1.0,
+    "off_p10_50_90": [
+     3,
+     3,
+     3
+    ],
+    "eth_p10_50_90": [
+     2e-06,
+     2e-06,
+     2e-06
+    ],
+    "to_top": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      12
+     ]
+    ],
+    "from_top": [
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      12
+     ]
+    ],
+    "n_from": 1,
+    "fresh_nonce_le2": 0,
+    "sel_top": [
+     [
+      null,
+      12
+     ]
+    ]
+   },
+   "fr": {
+    "pools": 1,
+    "frac": 0.0833,
+    "off_p10_50_90": [
+     959,
+     959,
+     959
+    ],
+    "eth_p10_50_90": [
+     0.0042978,
+     0.0042978,
+     0.0042978
+    ],
+    "to_top": [
+     [
+      "0x5399d94d2cab7c252a6034042e1917a0e5e17a18",
+      1
+     ]
+    ],
+    "from_top": [
+     [
+      "0x329ca263df30c3e506c39081403ec95d5942ece8",
+      1
+     ]
+    ],
+    "n_from": 1,
+    "fresh_nonce_le2": 0,
+    "sel_top": [
+     [
+      "814920c0",
+      1
+     ]
+    ]
+   },
+   "sb": {
+    "pools": 1,
+    "frac": 0.0833,
+    "off_p10_50_90": [
+     959,
+     959,
+     959
+    ],
+    "eth_p10_50_90": [
+     0.0042978,
+     0.0042978,
+     0.0042978
+    ],
+    "to_top": [
+     [
+      "0x5399d94d2cab7c252a6034042e1917a0e5e17a18",
+      1
+     ]
+    ],
+    "from_top": [
+     [
+      "0x329ca263df30c3e506c39081403ec95d5942ece8",
+      1
+     ]
+    ],
+    "n_from": 1,
+    "fresh_nonce_le2": 0,
+    "sel_top": [
+     [
+      "814920c0",
+      1
+     ]
+    ]
+   },
+   "pull": {
+    "pulled": 0,
+    "frac": 0.0,
+    "off_launch_p10_50_90": null,
+    "off_sched_p10_50_90": null,
+    "by_launch_wallet": 0,
+    "pull_from_top": [],
+    "pull_to_top": [],
+    "pulled_before_sched": 0,
+    "pulled_no_sched": 0
+   },
+   "outsiders": {
+    "pools": 0,
+    "frac": 0.0,
+    "eth_p10_50_90": null,
+    "off_p10_50_90": null,
+    "real_ge_0.0002_pools": 0,
+    "to_top": [],
+    "from_top": [],
+    "dust_bot_pools": 12
+   },
+   "trap_test": {
+    "with_outsider_ge_0.0001": {
+     "pools": 0,
+     "with_sched": 0,
+     "pulled": 0,
+     "pull_minus_sched_p10_50_90": null,
+     "pull_le_sched_plus4": 0
+    },
+    "without": {
+     "pools": 12,
+     "with_sched": 1,
+     "pulled": 0,
+     "pull_minus_sched_p10_50_90": null,
+     "pull_le_sched_plus4": 0
+    }
+   },
+   "capacity": {
+    "pools": 1,
+    "real_minout": 0,
+    "minout_vs_quote_p10_50_90": [
+     0.99,
+     0.99,
+     0.99
+    ],
+    "room_from_launch_p10_50_90": [
+     0.0068,
+     0.0068,
+     0.0068
+    ],
+    "room_after_prebuys_p10_50_90": [
+     0.0068,
+     0.0068,
+     0.0068
+    ],
+    "eth_ahead_actual_p10_50_90": [
+     2e-06,
+     2e-06,
+     2e-06
+    ],
+    "room_lt_stake": 0,
+    "sched_eth_p10_50_90": [
+     0.0043,
+     0.0043,
+     0.0043
+    ]
+   },
+   "front": {
+    "n": 12,
+    "mean": -0.0206,
+    "median": -0.0206,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 12
+    },
+    "usd_trade": -0.3091,
+    "trades_day": 6.0,
+    "usd_day": -1.85,
+    "p10_50_90": [
+     -0.02061,
+     -0.0206,
+     -0.02059
+    ],
+    "min": -0.02062,
+    "max": -0.02059,
+    "late": 0,
+    "sell_off_p10_50_90": [
+     20,
+     20,
+     20
+    ],
+    "bot_dropped_pools": 0
+   },
+   "follow": {
+    "n": 1,
+    "mean": -0.02677,
+    "median": -0.02677,
+    "win": 0.0,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 1
+    },
+    "usd_trade": -0.4015,
+    "trades_day": 0.5,
+    "usd_day": -0.2,
+    "p10_50_90": [
+     -0.02677,
+     -0.02677,
+     -0.02677
+    ],
+    "min": -0.02677,
+    "max": -0.02677,
+    "no_trigger": 11
+   }
+  },
+  "control:vbot-v2.433": {
+   "n": 1843,
+   "launches_per_day": 921.79,
+   "span_blocks": [
+    83523388,
+    85203750
+   ],
+   "active_hours": 47.89,
+   "gap_blocks_p10_50_90": [
+    162,
+    173,
+    3597
+   ],
+   "launch_from_top": [
+    [
+     "0xbe0d58d685ca54cedff66c2c3401192c566a3e63",
+     1
+    ],
+    [
+     "0x5851bd4251493c15e0ce53be5dd13fb6e81ed851",
+     1
+    ],
+    [
+     "0x066a7c9ffeef5230099f63788cd07ff404babb4f",
+     1
+    ]
+   ],
+   "n_launch_wallets": 1843,
+   "launch_nonce_p10_50_90": [
+    3,
+    10,
+    11
+   ],
+   "start": {
+    "active": 1843
+   },
+   "validate_first_swap_rel_err_max": 2.4696944916429075e-17,
+   "validate_n": 1843,
+   "fb": {
+    "pools": 1843,
+    "frac": 1.0,
+    "off_p10_50_90": [
+     2,
+     3,
+     3
+    ],
+    "eth_p10_50_90": [
+     2e-06,
+     2e-06,
+     0.00495
+    ],
+    "to_top": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      940
+     ],
+     [
+      "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+      854
+     ],
+     [
+      "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+      49
+     ]
+    ],
+    "from_top": [
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      940
+     ],
+     [
+      "0x488faf521a2d5f16ee55d1335841bb3ba9a0946e",
+      395
+     ],
+     [
+      "0xf6e55480c5939da146092301e388654879c6e6fb",
+      192
+     ],
+     [
+      "0x544ef4354283261fb9e258247a80d49c86b9f107",
+      142
+     ]
+    ],
+    "n_from": 129,
+    "fresh_nonce_le2": 97,
+    "sel_top": [
+     [
+      null,
+      1843
+     ]
+    ]
+   },
+   "fr": {
+    "pools": 1842,
+    "frac": 0.9995,
+    "off_p10_50_90": [
+     2,
+     8,
+     10
+    ],
+    "eth_p10_50_90": [
+     0.00495,
+     0.125,
+     0.2475
+    ],
+    "to_top": [
+     [
+      "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+      1317
+     ],
+     [
+      "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+      525
+     ]
+    ],
+    "from_top": [
+     [
+      "0x488faf521a2d5f16ee55d1335841bb3ba9a0946e",
+      320
+     ],
+     [
+      "0x544ef4354283261fb9e258247a80d49c86b9f107",
+      142
+     ],
+     [
+      "0xdf2c6f64308dc7537bca2c4336f464b1c8b92b2f",
+      53
+     ],
+     [
+      "0xecd658c15322ae175ced5d3d6a4a9328943cdae3",
+      51
+     ]
+    ],
+    "n_from": 67,
+    "fresh_nonce_le2": 31,
+    "sel_top": [
+     [
+      "c1120e3d",
+      1317
+     ],
+     [
+      "4d819a2a",
+      525
+     ]
+    ]
+   },
+   "sb": {
+    "pools": 1842,
+    "frac": 0.9995,
+    "off_p10_50_90": [
+     8,
+     9,
+     10
+    ],
+    "eth_p10_50_90": [
+     0.0495,
+     0.175,
+     0.25
+    ],
+    "to_top": [
+     [
+      "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+      1842
+     ]
+    ],
+    "from_top": [
+     [
+      "0x8cd2a79c8c83d18e5b1a0a66a955188f538b0460",
+      71
+     ],
+     [
+      "0x8eb4bbe5bc255a8afe39670208a5ef37bc6a054c",
+      68
+     ],
+     [
+      "0x039475670b67126f91a7de3729d56c5b40c75eb0",
+      67
+     ],
+     [
+      "0xdf2c6f64308dc7537bca2c4336f464b1c8b92b2f",
+      67
+     ]
+    ],
+    "n_from": 31,
+    "fresh_nonce_le2": 0,
+    "sel_top": [
+     [
+      "c1120e3d",
+      1842
+     ]
+    ]
+   },
+   "pull": {
+    "pulled": 1482,
+    "frac": 0.8041,
+    "off_launch_p10_50_90": [
+     11,
+     13,
+     127
+    ],
+    "off_sched_p10_50_90": [
+     3,
+     3,
+     117
+    ],
+    "by_launch_wallet": 1482,
+    "pull_from_top": [
+     [
+      "0x609761031f49d7b29f9079f5aa60f26e51b0dedf",
+      1
+     ],
+     [
+      "0xcc099ce6b0ab5a80e1807adacb6b3498d07ce892",
+      1
+     ],
+     [
+      "0xc952b5e46d6c46b03ebbde79f867d99725cad727",
+      1
+     ]
+    ],
+    "pull_to_top": [
+     [
+      "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+      1482
+     ]
+    ],
+    "pulled_before_sched": 0,
+    "pulled_no_sched": 1
+   },
+   "outsiders": {
+    "pools": 5,
+    "frac": 0.0027,
+    "eth_p10_50_90": [
+     1.98e-05,
+     4.95e-05,
+     4.95e-05
+    ],
+    "off_p10_50_90": [
+     6,
+     6,
+     7
+    ],
+    "real_ge_0.0002_pools": 0,
+    "to_top": [
+     [
+      "0xf0b7eaaf868191adc00065ca13391ef436ce8faf",
+      4
+     ],
+     [
+      "0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd",
+      1
+     ]
+    ],
+    "from_top": [
+     [
+      "0xfeda1c58462150b4cb94c63efce3647e78f883eb",
+      4
+     ],
+     [
+      "0x1b4461facb956c39cd3a89bff311190af4b577b1",
+      1
+     ]
+    ],
+    "dust_bot_pools": 1721
+   },
+   "trap_test": {
+    "with_outsider_ge_0.0001": {
+     "pools": 0,
+     "with_sched": 0,
+     "pulled": 0,
+     "pull_minus_sched_p10_50_90": null,
+     "pull_le_sched_plus4": 0
+    },
+    "without": {
+     "pools": 1843,
+     "with_sched": 1842,
+     "pulled": 1482,
+     "pull_minus_sched_p10_50_90": [
+      3,
+      3,
+      117
+     ],
+     "pull_le_sched_plus4": 1159
+    }
+   },
+   "capacity": {
+    "pools": 1842,
+    "real_minout": 1842,
+    "minout_vs_quote_p10_50_90": [
+     0.99,
+     0.99,
+     0.99
+    ],
+    "room_from_launch_p10_50_90": [
+     0.01241,
+     0.01271,
+     0.01289
+    ],
+    "room_after_prebuys_p10_50_90": [
+     0.00528,
+     0.01253,
+     0.01283
+    ],
+    "eth_ahead_actual_p10_50_90": [
+     2e-06,
+     0.000121,
+     0.009902
+    ],
+    "room_lt_stake": 229,
+    "sched_eth_p10_50_90": [
+     0.0495,
+     0.175,
+     0.25
+    ]
+   },
+   "front": {
+    "n": 1843,
+    "mean": 0.11858,
+    "median": 0.14008,
+    "win": 0.9457,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 1843
+    },
+    "usd_trade": 1.7787,
+    "trades_day": 921.79,
+    "usd_day": 1639.55,
+    "p10_50_90": [
+     0.00236,
+     0.14008,
+     0.20786
+    ],
+    "min": -0.00972,
+    "max": 0.28551,
+    "late": 0,
+    "sell_off_p10_50_90": [
+     9,
+     10,
+     11
+    ],
+    "bot_dropped_pools": 229
+   },
+   "follow": {
+    "n": 1842,
+    "mean": -0.35433,
+    "median": -0.00571,
+    "win": 0.0016,
+    "pulled_first": 646,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 1196,
+     "pulled_first": 646
+    },
+    "usd_trade": -5.315,
+    "trades_day": 921.29,
+    "usd_day": -4896.63,
+    "p10_50_90": [
+     -1.00072,
+     -0.00571,
+     -0.00571
+    ],
+    "min": -1.00079,
+    "max": 0.2503,
+    "no_trigger": 1
+   }
+  },
+  "control:operator-A": {
+   "n": 77,
+   "launches_per_day": 38.51,
+   "span_blocks": [
+    83647992,
+    85125353
+   ],
+   "active_hours": 42.1,
+   "gap_blocks_p10_50_90": [
+    497,
+    2343,
+    44776
+   ],
+   "launch_from_top": [
+    [
+     "0x4348ffca6467fdb687fb771c2370f691a7a940e9",
+     1
+    ],
+    [
+     "0x1dd279c972e7e7e2c5523a36abe317606ec76816",
+     1
+    ],
+    [
+     "0x40af0dac85abdac6f026f3adb1bdc2afd8e88efb",
+     1
+    ]
+   ],
+   "n_launch_wallets": 77,
+   "launch_nonce_p10_50_90": [
+    0,
+    0,
+    0
+   ],
+   "start": {
+    "active": 77
+   },
+   "validate_first_swap_rel_err_max": 3.0099171767282146e-17,
+   "validate_n": 77,
+   "fb": {
+    "pools": 77,
+    "frac": 1.0,
+    "off_p10_50_90": [
+     3,
+     3,
+     4
+    ],
+    "eth_p10_50_90": [
+     2e-06,
+     2e-06,
+     2e-06
+    ],
+    "to_top": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      74
+     ],
+     [
+      "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+      3
+     ]
+    ],
+    "from_top": [
+     [
+      "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+      74
+     ],
+     [
+      "0xf6e55480c5939da146092301e388654879c6e6fb",
+      2
+     ],
+     [
+      "0xd818eba04326d1f4336eb969e46bdac5b34ae701",
+      1
+     ]
+    ],
+    "n_from": 3,
+    "fresh_nonce_le2": 1,
+    "sel_top": [
+     [
+      null,
+      77
+     ]
+    ]
+   },
+   "fr": {
+    "pools": 75,
+    "frac": 0.974,
+    "off_p10_50_90": [
+     24,
+     54,
+     66
+    ],
+    "eth_p10_50_90": [
+     0.0143,
+     0.0547,
+     0.1203
+    ],
+    "to_top": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      75
+     ]
+    ],
+    "from_top": [
+     [
+      "0x8700722d7ac8d14666c07574317b4e7fb3dc8ae1",
+      25
+     ],
+     [
+      "0x295877ce91a25528ae17263cb3d30eb11bbfae3e",
+      23
+     ],
+     [
+      "0xdc2e86611b27dc4209dc4055ae4f7cf5b9ee5e80",
+      15
+     ],
+     [
+      "0x754425071f61539f3ca0106634d9f88850c8a151",
+      3
+     ]
+    ],
+    "n_from": 10,
+    "fresh_nonce_le2": 0,
+    "sel_top": [
+     [
+      "3593564c",
+      75
+     ]
+    ]
+   },
+   "sb": {
+    "pools": 75,
+    "frac": 0.974,
+    "off_p10_50_90": [
+     24,
+     54,
+     66
+    ],
+    "eth_p10_50_90": [
+     0.0143,
+     0.0547,
+     0.1203
+    ],
+    "to_top": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      75
+     ]
+    ],
+    "from_top": [
+     [
+      "0x8700722d7ac8d14666c07574317b4e7fb3dc8ae1",
+      25
+     ],
+     [
+      "0x295877ce91a25528ae17263cb3d30eb11bbfae3e",
+      23
+     ],
+     [
+      "0xdc2e86611b27dc4209dc4055ae4f7cf5b9ee5e80",
+      15
+     ],
+     [
+      "0x754425071f61539f3ca0106634d9f88850c8a151",
+      3
+     ]
+    ],
+    "n_from": 10,
+    "fresh_nonce_le2": 0,
+    "sel_top": [
+     [
+      "3593564c",
+      75
+     ]
+    ]
+   },
+   "pull": {
+    "pulled": 66,
+    "frac": 0.8571,
+    "off_launch_p10_50_90": [
+     51,
+     224,
+     2180
+    ],
+    "off_sched_p10_50_90": [
+     6,
+     165,
+     2157
+    ],
+    "by_launch_wallet": 66,
+    "pull_from_top": [
+     [
+      "0x4348ffca6467fdb687fb771c2370f691a7a940e9",
+      1
+     ],
+     [
+      "0x1dd279c972e7e7e2c5523a36abe317606ec76816",
+      1
+     ],
+     [
+      "0x40af0dac85abdac6f026f3adb1bdc2afd8e88efb",
+      1
+     ]
+    ],
+    "pull_to_top": [
+     [
+      "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+      66
+     ]
+    ],
+    "pulled_before_sched": 0,
+    "pulled_no_sched": 0
+   },
+   "outsiders": {
+    "pools": 29,
+    "frac": 0.3766,
+    "eth_p10_50_90": [
+     1.49e-05,
+     6e-05,
+     6e-05
+    ],
+    "off_p10_50_90": [
+     4,
+     20,
+     39
+    ],
+    "real_ge_0.0002_pools": 0,
+    "to_top": [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      28
+     ],
+     [
+      "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+      3
+     ],
+     [
+      "0xfd1b271f235e5230eaee9d914ccb1af495bfb758",
+      2
+     ]
+    ],
+    "from_top": [
+     [
+      "0xf7b47b17bebba4b3e9e55ac09e3179f6f4cda8d6",
+      27
+     ],
+     [
+      "0xf6e55480c5939da146092301e388654879c6e6fb",
+      2
+     ],
+     [
+      "0xb002e8a04b2822d8f2890b022ddea3d25f9c3df8",
+      2
+     ],
+     [
+      "0xd818eba04326d1f4336eb969e46bdac5b34ae701",
+      1
+     ]
+    ],
+    "dust_bot_pools": 77
+   },
+   "trap_test": {
+    "with_outsider_ge_0.0001": {
+     "pools": 2,
+     "with_sched": 2,
+     "pulled": 2,
+     "pull_minus_sched_p10_50_90": [
+      6,
+      6,
+      28
+     ],
+     "pull_le_sched_plus4": 0
+    },
+    "without": {
+     "pools": 75,
+     "with_sched": 73,
+     "pulled": 64,
+     "pull_minus_sched_p10_50_90": [
+      6,
+      201,
+      2349
+     ],
+     "pull_le_sched_plus4": 0
+    }
+   },
+   "capacity": {
+    "pools": 75,
+    "real_minout": 0,
+    "minout_vs_quote_p10_50_90": [
+     0.99,
+     0.99,
+     0.99
+    ],
+    "room_from_launch_p10_50_90": [
+     0.00823,
+     0.01148,
+     0.01729
+    ],
+    "room_after_prebuys_p10_50_90": [
+     0.00822,
+     0.01143,
+     0.01729
+    ],
+    "eth_ahead_actual_p10_50_90": [
+     2e-06,
+     2e-06,
+     6.2e-05
+    ],
+    "room_lt_stake": 3,
+    "sched_eth_p10_50_90": [
+     0.0143,
+     0.0547,
+     0.1203
+    ]
+   },
+   "front": {
+    "n": 77,
+    "mean": -0.00506,
+    "median": -0.00544,
+    "win": 0.013,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 77
+    },
+    "usd_trade": -0.0759,
+    "trades_day": 38.51,
+    "usd_day": -2.92,
+    "p10_50_90": [
+     -0.00957,
+     -0.00544,
+     -0.00198
+    ],
+    "min": -0.01068,
+    "max": 0.04151,
+    "late": 0,
+    "sell_off_p10_50_90": [
+     20,
+     20,
+     20
+    ],
+    "bot_dropped_pools": 0
+   },
+   "follow": {
+    "n": 75,
+    "mean": 0.04338,
+    "median": 0.03268,
+    "win": 0.84,
+    "pulled_first": 0,
+    "pulled_before_buy": 0,
+    "exits": {
+     "sold": 75
+    },
+    "usd_trade": 0.6507,
+    "trades_day": 37.51,
+    "usd_day": 24.41,
+    "p10_50_90": [
+     -0.00254,
+     0.03268,
+     0.08327
+    ],
+    "min": -0.01047,
+    "max": 0.41395,
+    "no_trigger": 2
+   }
+  }
+ },
+ "calibration": {
+  "v2433_all": {
+   "n": 1843,
+   "mean": 0.11858,
+   "median": 0.14008,
+   "win": 0.9457,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 1843
+   },
+   "usd_trade": 1.7787,
+   "trades_day": 921.79,
+   "usd_day": 1639.55,
+   "p10_50_90": [
+    0.00236,
+    0.14008,
+    0.20786
+   ],
+   "min": -0.00972,
+   "max": 0.28551
+  },
+  "v2433_live_window": {
+   "n": 409,
+   "mean": 0.13979,
+   "median": 0.16173,
+   "win": 0.9853,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 409
+   },
+   "usd_trade": 2.0968,
+   "trades_day": 204.56,
+   "usd_day": 428.93,
+   "p10_50_90": [
+    0.03494,
+    0.16173,
+    0.22834
+   ],
+   "min": -0.00571,
+   "max": 0.28551
+  },
+  "v2433_relay_traded_pools": {
+   "n": 1048,
+   "mean": 0.11299,
+   "median": 0.13682,
+   "win": 0.9275,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 1048
+   },
+   "usd_trade": 1.6948,
+   "trades_day": 524.16,
+   "usd_day": 888.37,
+   "p10_50_90": [
+    0.00034,
+    0.13703,
+    0.21312
+   ],
+   "min": -0.00771,
+   "max": 0.28551
+  },
+  "v2433_not_dropped": {
+   "n": 1614,
+   "mean": 0.13538,
+   "median": 0.14162,
+   "win": 0.9882,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 1614
+   },
+   "usd_trade": 2.0307,
+   "trades_day": 807.25,
+   "usd_day": 1639.31,
+   "p10_50_90": [
+    0.03312,
+    0.14162,
+    0.21095
+   ],
+   "min": -0.00972,
+   "max": 0.28551
+  },
+  "v2433_bot_buy_dropped": {
+   "n": 229,
+   "mean": 0.00014,
+   "median": 0.00034,
+   "win": 0.6463,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 229
+   },
+   "usd_trade": 0.0021,
+   "trades_day": 114.54,
+   "usd_day": 0.24,
+   "p10_50_90": [
+    -0.00369,
+    0.00034,
+    0.00236
+   ],
+   "min": -0.00771,
+   "max": 0.00236
+  },
+  "dropped_eth_ahead_p10_50_90": [
+   0.007427,
+   0.009902,
+   0.009902
+  ],
+  "eth_ahead_all_p10_50_90": [
+   2e-06,
+   0.000121,
+   0.009902
+  ],
+  "v2433_by_6h": {
+   "10-08 18h": {
+    "n": 68,
+    "mean": 0.12583,
+    "median": 0.14021,
+    "win": 0.9706
+   },
+   "10-09 00h": {
+    "n": 91,
+    "mean": 0.13262,
+    "median": 0.14028,
+    "win": 0.989
+   },
+   "10-09 06h": {
+    "n": 84,
+    "mean": 0.14268,
+    "median": 0.14107,
+    "win": 0.9762
+   },
+   "10-09 12h": {
+    "n": 92,
+    "mean": 0.12526,
+    "median": 0.126,
+    "win": 0.9891
+   },
+   "10-09 18h": {
+    "n": 86,
+    "mean": 0.13992,
+    "median": 0.14162,
+    "win": 1.0
+   },
+   "10-10 00h": {
+    "n": 102,
+    "mean": 0.13513,
+    "median": 0.1403,
+    "win": 0.9902
+   },
+   "10-10 06h": {
+    "n": 530,
+    "mean": 0.13883,
+    "median": 0.15484,
+    "win": 0.9868
+   },
+   "10-10 12h": {
+    "n": 758,
+    "mean": 0.09448,
+    "median": 0.0985,
+    "win": 0.8892
+   },
+   "10-10 18h": {
+    "n": 32,
+    "mean": 0.10612,
+    "median": 0.12415,
+    "win": 0.9375
+   }
+  },
+  "live_audit_file_keys": "list",
+  "opA_follow": {
+   "n": 75,
+   "mean": 0.04338,
+   "median": 0.03268,
+   "win": 0.84,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 75
+   },
+   "usd_trade": 0.6507,
+   "trades_day": 37.51,
+   "usd_day": 24.41,
+   "p10_50_90": [
+    -0.00254,
+    0.03268,
+    0.08327
+   ],
+   "min": -0.01047,
+   "max": 0.41395
+  }
+ },
+ "calibration_live": {
+  "n": 399,
+  "median_diff_gross_minus_live": -1.6653345369377348e-16,
+  "mean_diff": -1.7476958598651425e-16,
+  "mean_live": 0.14070631578947368,
+  "mean_pricer_gross": 0.14070631578947368,
+  "mean_pricer_net": 0.13974947368421053
+ },
+ "trap_v2433": {
+  "relay_first_launch_utc": "2026-10-10T09:08:51+00:00",
+  "relay_last_launch_utc": "2026-10-10T17:37:07+00:00",
+  "in_relay_hours_with_relay": {
+   "pools": 1048,
+   "pulled": 1045,
+   "pull_minus_sched_p10_50_90": [
+    3,
+    3,
+    3
+   ],
+   "within_2_4": 1040
+  },
+  "in_relay_hours_without_relay": {
+   "pools": 67,
+   "pulled": 40,
+   "pull_minus_sched_p10_50_90": [
+    3,
+    3,
+    738
+   ],
+   "within_2_4": 26
+  },
+  "before_relay_hours": {
+   "pools": 640,
+   "pulled": 311,
+   "pull_minus_sched_p10_50_90": [
+    19,
+    109,
+    1341
+   ],
+   "within_2_4": 11
+  },
+  "by_hour_[without,with]_median_pull_minus_sched_and_n": {
+   "10-10 09": [
+    [
+     236,
+     4
+    ],
+    [
+     3,
+     132
+    ]
+   ],
+   "10-10 10": [
+    [
+     null,
+     1
+    ],
+    [
+     3,
+     178
+    ]
+   ],
+   "10-10 11": [
+    [
+     908,
+     7
+    ],
+    [
+     3,
+     91
+    ]
+   ],
+   "10-10 12": [
+    [
+     180,
+     15
+    ],
+    [
+     null,
+     0
+    ]
+   ],
+   "10-10 13": [
+    [
+     4,
+     11
+    ],
+    [
+     3,
+     73
+    ]
+   ],
+   "10-10 14": [
+    [
+     3,
+     28
+    ],
+    [
+     3,
+     101
+    ]
+   ],
+   "10-10 15": [
+    [
+     null,
+     0
+    ],
+    [
+     3,
+     167
+    ]
+   ],
+   "10-10 16": [
+    [
+     3,
+     1
+    ],
+    [
+     3,
+     180
+    ]
+   ],
+   "10-10 17": [
+    [
+     null,
+     0
+    ],
+    [
+     3,
+     126
+    ]
+   ]
+  }
+ },
+ "loose_7fde822e": {
+  "pools": 490,
+  "launch_contracts": 27,
+  "deployers": [
+   [
+    "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+    454
+   ],
+   [
+    "0x17ad4d45f347794ddc38211de615fb90a641ef1c",
+    12
+   ],
+   [
+    "0xcfa921b4f8a9a549c361ec93cbb045ba9f6f24c0",
+    12
+   ],
+   [
+    "0x970dcc45e066464dcc2cd54c0dbd08859c5d0951",
+    10
+   ],
+   [
+    "0x712134904b367c468d2b36f7986905f205e07cbc",
+    2
+   ]
+  ],
+  "tick0_fee_ts": [
+   [
+    [
+     201800,
+     10000,
+     200
+    ],
+    480
+   ],
+   [
+    [
+     200000,
+     10000,
+     200
+    ],
+    10
+   ]
+  ],
+  "liq_launch": [
+   [
+    32156000099526845215062,
+    480
+   ],
+   [
+    39875324731751109659734,
+    10
+   ]
+  ],
+  "pulled_3000": 0,
+  "real_buys": [
+   [
+    "0xcdbee622",
+    959,
+    0.004298,
+    "0x5399d94d2cab7c252a6034042e1917a0e5e17a18",
+    "0x329ca263df30c3e506c39081403ec95d5942ece8"
+   ],
+   [
+    "0x92e53eff",
+    1625,
+    0.002354,
+    "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f",
+    "0xf42b73d2e4d3912eade2a5f7ab39b54064c2acec"
+   ],
+   [
+    "0x6692ad7c",
+    843,
+    0.010745,
+    "0x0000000071727de22e5e9d8baf0edac6f37da032",
+    "0x0312f70169d6919a6e54c0c9b67ea554986e4980"
+   ],
+   [
+    "0x304bd8fc",
+    3,
+    0.001188,
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf",
+    "0xe5eee7ffeae9aa6bbc43a7c53ba156af9e583ed0"
+   ],
+   [
+    "0x5631e267",
+    1510,
+    0.009494,
+    "0xb300000b72deaeb607a12d5f54773d1c19c7028d",
+    "0xcc940ca2ab64dde0e4f5dc308fa8bb61eeffdcd9"
+   ]
+  ],
+  "front": {
+   "n": 490,
+   "mean": -0.02059,
+   "median": -0.02058,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 490
+   },
+   "usd_trade": -0.3088,
+   "trades_day": 245.08,
+   "usd_day": -75.69,
+   "p10_50_90": [
+    -0.02065,
+    -0.02058,
+    -0.02057
+   ],
+   "min": -0.02073,
+   "max": -0.01886
+  },
+  "follow": {
+   "n": 5,
+   "mean": -0.02488,
+   "median": -0.02058,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 5
+   },
+   "usd_trade": -0.3732,
+   "trades_day": 2.5,
+   "usd_day": -0.93,
+   "p10_50_90": [
+    -0.03589,
+    -0.02058,
+    -0.02058
+   ],
+   "min": -0.03589,
+   "max": -0.02058
+  }
+ },
+ "postwindow": {
+  "head": 85247779,
+  "pools": 48,
+  "with_post_window_swap": 0,
+  "with_pull_ever": 0,
+  "post_window_buys_eth": 0.0
+ }
+}

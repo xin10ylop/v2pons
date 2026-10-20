@@ -1,0 +1,43 @@
+gas measured on our 8 relay buys / 5 sells (Oct 8): buy 103861, sell 103894, sell into a pulled pool 135200
+base fee median 0.0202 gwei; round trip 4.187e-06 ETH = $0.0108
+51 orig launches; traded 46; skips:
+stake 0.0012 land1_fast: n 46 mean +0.0219 median +0.0161 worst -0.0084 wins 37 total +0.001209 ETH exits {'deadline': 14, 'take_profit': 32}
+stake 0.0012 land1_slow: n 46 mean +0.0328 median +0.0168 worst -0.0083 wins 40 total +0.001810 ETH exits {'deadline': 14, 'take_profit': 32}
+stake 0.0012 land2_fast: n 46 mean +0.0270 median +0.0125 worst -0.0116 wins 32 total +0.001490 ETH exits {'deadline': 14, 'take_profit': 28, 'buy_reverted': 4}
+stake 0.0012 land2_slow: n 46 mean +0.0084 median +0.0146 worst -1.0042 wins 37 total +0.000463 ETH exits {'deadline': 13, 'take_profit': 28, 'buy_reverted': 4, 'pull_first': 1}
+stake 0.004 land1_fast: n 46 mean +0.0243 median +0.0185 worst -0.0058 wins 37 total +0.004477 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.004 land1_slow: n 46 mean +0.0352 median +0.0192 worst -0.0058 wins 40 total +0.006472 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.004 land2_fast: n 46 mean +0.0294 median +0.0150 worst -0.0090 wins 32 total +0.005406 ETH exits {'deadline': 12, 'take_profit': 30, 'buy_reverted': 4}
+stake 0.004 land2_slow: n 46 mean +0.0108 median +0.0171 worst -1.0012 wins 37 total +0.001985 ETH exits {'deadline': 11, 'take_profit': 30, 'buy_reverted': 4, 'pull_first': 1}
+stake 0.012 land1_fast: n 46 mean +0.0249 median +0.0192 worst -0.0051 wins 37 total +0.013722 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.012 land1_slow: n 46 mean +0.0356 median +0.0198 worst -0.0051 wins 40 total +0.019628 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.012 land2_fast: n 46 mean +0.0298 median +0.0157 worst -0.0082 wins 32 total +0.016451 ETH exits {'deadline': 12, 'take_profit': 30, 'buy_reverted': 4}
+stake 0.012 land2_slow: n 46 mean +0.0112 median +0.0178 worst -1.0004 wins 37 total +0.006185 ETH exits {'deadline': 11, 'take_profit': 30, 'buy_reverted': 4, 'pull_first': 1}
+stake 0.03 land1_fast: n 46 mean +0.0247 median +0.0193 worst -0.0048 wins 38 total +0.034038 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.03 land1_slow: n 46 mean +0.0351 median +0.0198 worst -0.0048 wins 41 total +0.048376 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.03 land2_fast: n 46 mean +0.0294 median +0.0158 worst -0.0080 wins 32 total +0.040545 ETH exits {'deadline': 12, 'take_profit': 30, 'buy_reverted': 4}
+stake 0.03 land2_slow: n 46 mean +0.0108 median +0.0179 worst -1.0002 wins 37 total +0.014852 ETH exits {'deadline': 11, 'take_profit': 30, 'buy_reverted': 4, 'pull_first': 1}
+stake 0.06 land1_fast: n 46 mean +0.0241 median +0.0191 worst -0.0047 wins 38 total +0.066495 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.06 land1_slow: n 46 mean +0.0340 median +0.0197 worst -0.0047 wins 41 total +0.093851 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.06 land2_fast: n 46 mean +0.0285 median +0.0156 worst -0.0079 wins 32 total +0.078537 ETH exits {'deadline': 12, 'take_profit': 30, 'buy_reverted': 4}
+stake 0.06 land2_slow: n 46 mean +0.0098 median +0.0177 worst -1.0001 wins 37 total +0.027060 ETH exits {'deadline': 11, 'take_profit': 30, 'buy_reverted': 4, 'pull_first': 1}
+stake 0.1 land1_fast: n 46 mean +0.0233 median +0.0189 worst -0.0046 wins 38 total +0.107282 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.1 land1_slow: n 46 mean +0.0327 median +0.0193 worst -0.0046 wins 41 total +0.150224 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.1 land2_fast: n 46 mean +0.0273 median +0.0154 worst -0.0078 wins 32 total +0.125419 ETH exits {'deadline': 12, 'take_profit': 30, 'buy_reverted': 4}
+stake 0.1 land2_slow: n 46 mean +0.0086 median +0.0175 worst -1.0001 wins 37 total +0.039428 ETH exits {'deadline': 11, 'take_profit': 30, 'buy_reverted': 4, 'pull_first': 1}
+stake 0.2 land1_fast: n 46 mean +0.0216 median +0.0183 worst -0.0044 wins 38 total +0.198700 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.2 land1_slow: n 46 mean +0.0297 median +0.0185 worst -0.0044 wins 41 total +0.273562 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.2 land2_fast: n 46 mean +0.0247 median +0.0147 worst -0.0077 wins 32 total +0.227118 ETH exits {'deadline': 12, 'take_profit': 30, 'buy_reverted': 4}
+stake 0.2 land2_slow: n 46 mean +0.0059 median +0.0169 worst -1.0000 wins 37 total +0.054188 ETH exits {'deadline': 11, 'take_profit': 30, 'buy_reverted': 4, 'pull_first': 1}
+stake 0.3 land1_fast: n 46 mean +0.0201 median +0.0176 worst -0.0042 wins 37 total +0.277896 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.3 land1_slow: n 46 mean +0.0273 median +0.0179 worst -0.0042 wins 40 total +0.377239 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.3 land2_fast: n 46 mean +0.0226 median +0.0141 worst -0.0076 wins 32 total +0.311602 ETH exits {'deadline': 12, 'take_profit': 30, 'buy_reverted': 4}
+stake 0.3 land2_slow: n 46 mean +0.0037 median +0.0164 worst -1.0000 wins 37 total +0.050874 ETH exits {'deadline': 11, 'take_profit': 30, 'buy_reverted': 4, 'pull_first': 1}
+stake 0.5 land1_fast: n 46 mean +0.0178 median +0.0164 worst -0.0040 wins 37 total +0.409066 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.5 land1_slow: n 46 mean +0.0236 median +0.0166 worst -0.0040 wins 40 total +0.543113 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.5 land2_fast: n 46 mean +0.0192 median +0.0131 worst -0.0075 wins 32 total +0.442675 ETH exits {'deadline': 13, 'take_profit': 30, 'buy_reverted': 3}
+stake 0.5 land2_slow: n 46 mean +0.0009 median +0.0160 worst -1.0000 wins 38 total +0.020558 ETH exits {'deadline': 12, 'take_profit': 30, 'buy_reverted': 3, 'pull_first': 1}
+stake 1.0 land1_fast: n 46 mean +0.0138 median +0.0132 worst -0.0036 wins 37 total +0.635287 ETH exits {'deadline': 17, 'take_profit': 29}
+stake 1.0 land1_slow: n 46 mean +0.0177 median +0.0140 worst -0.0036 wins 40 total +0.815017 ETH exits {'deadline': 17, 'take_profit': 29}
+stake 1.0 land2_fast: n 46 mean +0.0140 median +0.0109 worst -0.0072 wins 32 total +0.644823 ETH exits {'deadline': 20, 'take_profit': 25, 'buy_reverted': 1}
+stake 1.0 land2_slow: n 46 mean -0.0040 median +0.0136 worst -1.0000 wins 40 total -0.185714 ETH exits {'deadline': 19, 'take_profit': 25, 'buy_reverted': 1, 'pull_first': 1}

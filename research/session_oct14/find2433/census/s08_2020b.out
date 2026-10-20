@@ -1,0 +1,19 @@
+== K1 v4 0x58daec31 0xac9650d8 2020B f3000 ts60 v0 ETH hooked | actor 0x75379d5d:0x3593564c | pools 42 (repeat buyer present in 41)
+replay check: max rel sqrtP error p50 1.78e-19 p90 1.78e-19 max 2.41e-19 over 2119 swaps
+pools with exact replay (err < 1e-6): 42 of 42
+  front L+1, sell T+1 (no reaction)        n 42 gross mean +4.00% median +1.07% p10 +0.64% min -0.58% pos 38/42 | net mean +3.60%
+  front L+2, sell T+1                      n 42 gross mean +4.00% median +1.07% p10 +0.64% min -0.58% pos 38/42 | net mean +3.60%
+  main skips the pool, sell L+1+60         n 42 gross mean +1.84% median -0.60% p10 -0.60% min -0.60% pos 1/42 | net mean +1.44%
+  main skips, sell L+1+20                  n 42 gross mean -0.19% median -0.60% p10 -0.60% min -0.60% pos 1/42 | net mean -0.59%
+  pulled 4 blocks after our buy            n 42 gross mean -100.00% median -100.00% p10 -100.00% min -100.00% pos 0/42 | net mean -100.40%
+  pulled 8 blocks after our buy            n 42 gross mean -100.00% median -100.00% p10 -100.00% min -100.00% pos 0/42 | net mean -100.40%
+  front L+1, sell at L+60 (no reaction)    n 42 gross mean +3.43% median +1.08% p10 +1.07% min -0.60% pos 41/42 | net mean +3.03%
+    same, main skips the pool              n 42 gross mean +1.84% median -0.60% p10 -0.60% min -0.60% pos 1/42 | net mean +1.44%
+  front L+1, sell at L+100 (no reaction)   n 42 gross mean +86.25% median +103.20% p10 +2.73% min -0.60% pos 41/42 | net mean +85.85%
+    same, main skips the pool              n 42 gross mean +4.34% median -0.60% p10 -0.60% min -0.60% pos 1/42 | net mean +3.94%
+  front L+1, sell at L+150 (no reaction)   n 42 gross mean +178.00% median +182.71% p10 +166.20% min -0.60% pos 41/42 | net mean +177.60%
+    same, main skips the pool              n 42 gross mean +4.36% median -0.60% p10 -0.60% min -0.60% pos 1/42 | net mean +3.96%
+  front L+1, sell at L+180 (no reaction)   n 42 gross mean +197.70% median +205.42% p10 +193.90% min -0.60% pos 41/42 | net mean +197.30%
+    same, main skips the pool              n 42 gross mean +2.01% median -0.60% p10 -0.60% min -100.00% pos 1/42 | net mean +1.61%
+  no reaction, pools where the buyer came  n 41 gross mean +1.61% median +1.07% p10 +0.64% min -0.58% pos 37/41 | net mean +1.21%
+  room (ETH ahead of the repeat buyer's first buy) p10/50/90: None/None/None over 0 pools

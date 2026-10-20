@@ -1,0 +1,18 @@
+head 88276194: 15 launches of the 13ead562 self-buyer in the last 6 h (of 44 V3 pools created)
+  88106978 launcher 0x9bbdbf5b: first buy +35 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88181512 launcher 0xf48181ad: first buy +28 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88184399 launcher 0x752f831f: first buy +29 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88186343 launcher 0x752f831f: first buy +32 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88188321 launcher 0xab8d0468: first buy +36 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88257811 launcher 0x7b2b9cdd: first buy +29 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88265393 launcher 0xe30fa99d: first buy +26 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88265968 launcher 0xe30fa99d: first buy +24 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88266192 launcher 0xe30fa99d: first buy +26 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88266443 launcher 0xe30fa99d: first buy +26 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88266585 launcher 0xe30fa99d: first buy +26 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88266774 launcher 0xe30fa99d: first buy +24 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88267041 launcher 0xe30fa99d: first buy +22 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88267229 launcher 0xe30fa99d: first buy +26 0.0500 ETH via 0xcaf681a6, by the launcher: True
+  88268321 launcher 0x29887fd1: first buy +29 0.0500 ETH via 0xcaf681a6, by the launcher: True
+the launcher's own first buy: n 15, median 0.0500 ETH, at 0.045 or more: 15
+sb exit 0

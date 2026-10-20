@@ -1,0 +1,67 @@
+{
+ "pools": 490,
+ "per_day": 245.1,
+ "deployers": [
+  [
+   "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+   454
+  ],
+  [
+   "0x17ad4d45f347794ddc38211de615fb90a641ef1c",
+   12
+  ],
+  [
+   "0xcfa921b4f8a9a549c361ec93cbb045ba9f6f24c0",
+   12
+  ],
+  [
+   "0x970dcc45e066464dcc2cd54c0dbd08859c5d0951",
+   10
+  ],
+  [
+   "0x712134904b367c468d2b36f7986905f205e07cbc",
+   2
+  ]
+ ],
+ "launch_contracts": 27,
+ "pools_with_a_buy_ge_0.0002": 5,
+ "max_buy_eth_p50_90_99_max": [
+  2e-06,
+  2e-06,
+  4.95e-05,
+  0.01074466
+ ],
+ "pools_pulled": 0,
+ "swap_senders": [
+  [
+   "0x8876789976decbfcbbbe364623c63652db8c0904",
+   490
+  ],
+  [
+   "0xf0b7eaaf868191adc00065ca13391ef436ce8faf",
+   3
+  ],
+  [
+   "0x6aa80dbbed9ae5ab45fbf61f9644fada3b29326e",
+   2
+  ],
+  [
+   "0x204faca1764b154221e35c0d20abb3c525710498",
+   1
+  ],
+  [
+   "0x36dc95f1f088e11c0066dc19173f745655002bc2",
+   1
+  ]
+ ],
+ "first_last_block": [
+  83521755,
+  85203522
+ ],
+ "values": [
+  [
+   0.0,
+   490
+  ]
+ ]
+}

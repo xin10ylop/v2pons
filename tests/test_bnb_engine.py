@@ -1,0 +1,2598 @@
+"""The BNB Chain dry run (src/bnb_engine.py) against one real launch of the launcher 0xc9b7cc61: pair 0xea87b24f, block 127093739,
+1 BNB, read from the public BNB RPC on Oct 12 (tests/data/bnb_launch.json, built by research/session_oct12/bnb/code/s2_engine_fixture.py):
+its PairCreated and creating transaction, the pair's Sync/Mint/Swap logs to +1100 (the crowd's four buys at +80..+249, the creator's dump
+at +1039: a sell through the router, as in every pool of this line, which never had a Burn), the swaps' transactions, a router launch of
+another WBNB pair 65 blocks earlier and the USDT/WBNB pair's reserves. The RPC and the websocket are stubbed; nothing reaches a network.
+Plain script: python3 tests/test_bnb_engine.py"""
+import os, sys, json, copy, asyncio, tempfile, time, types, ast, re, subprocess
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); LOG = tempfile.mktemp(suffix=".jsonl")
+for k in [k for k in os.environ if k.startswith("BNB_")]:
+    os.environ.pop(k)
+os.environ.update({"BNB_LOG_PATH": LOG, "BNB_RPC_URL": "https://rpc.example.org/v1/k3y-rpc-secret", "BNB_WS_URL": "wss://ws.example.org/ws/k3y-ws-secret",
+                   "BNB_WATCH_TO": "1100", "BNB_MAX_RANGE": "40"})
+sys.path.insert(0, os.path.join(ROOT, "src"))
+import bnb_engine as E
+E.RETRY_S = 0; E.TX_NULL_PAUSE_S = 0                                         # no pauses between tries here
+
+FX = json.load(open(os.path.join(ROOT, "tests", "data", "bnb_launch.json")))
+L = FX["launch_block"]; PAIR = FX["pair"]; CREATOR = FX["launch_tx"]["from"]; ROUTER = E.ROUTER
+w = lambda x: "%064x" % x
+blk = lambda lg: int(lg["blockNumber"], 16)
+
+
+# --- the stubbed chain
+class Chain:
+    def __init__(self):
+        self.logs, self.txs, self.fail, self.calls = [], {}, [], {}
+        self.usdt = FX["usdt_reserves"][str(L + 49)]
+
+    def add(self, logs, txs):
+        self.logs += logs
+        self.txs.update({t["hash"]: t for t in txs})
+
+    def rpc(self, method, params, tries=3, timeout=10):
+        self.calls[method] = self.calls.get(method, 0) + 1
+        if self.fail and self.fail[0][0] == method and self.fail[0][1] != "PASS":
+            what = self.fail.pop(0)[1]
+            if isinstance(what, Exception):
+                raise what
+            return what
+        if self.fail and self.fail[0] == (method, "PASS"):
+            self.fail.pop(0)
+        if method == "eth_chainId":
+            return "0x38"
+        if method == "eth_blockNumber":
+            return hex(L + 400)
+        if method == "eth_call":
+            return "0x" + w(int(FX["usdt_token0"], 16)) if params[0]["data"] == "0x0dfe1681" else self.usdt
+        if method == "eth_getTransactionByHash":
+            return copy.deepcopy(self.txs.get(params[0]))
+        if method == "eth_getLogs":
+            f = params[0]; a, b = int(f["fromBlock"], 16), int(f["toBlock"], 16)
+            addrs = {x.lower() for x in ([f["address"]] if isinstance(f["address"], str) else f["address"])}; t0 = set(f["topics"][0])
+            out = []
+            for lg in self.logs:
+                try:
+                    ok = a <= blk(lg) <= b and lg["address"].lower() in addrs and lg["topics"][0] in t0
+                except Exception:
+                    ok = True                                                  # a malformed log reaches the engine as a node would hand it over
+                if ok:
+                    out.append(copy.deepcopy(lg))
+            return out
+        raise RuntimeError(method)
+
+
+def clone(pair, shift=0, tag="00", logs=None, txs=None):
+    """the fixture's launch as another pair (shifted by `shift` blocks, its transactions renamed with `tag`): pools that overlap"""
+    rename = lambda h: h[:-2] + tag
+    out = []
+    lc = copy.deepcopy(FX["launch_log"]); lc["data"] = "0x" + "0" * 24 + pair[2:] + lc["data"][66:]
+    for lg in [lc] + copy.deepcopy(logs if logs is not None else FX["pair_logs"]):
+        if lg is not lc:
+            lg["address"] = pair
+        lg["blockNumber"] = hex(blk(lg) + shift); lg["transactionHash"] = rename(lg["transactionHash"]); out.append(lg)
+    tx = [copy.deepcopy(t) for t in [FX["launch_tx"]] + list((txs if txs is not None else FX["txs"]).values())]
+    for t in tx:
+        t["hash"] = rename(t["hash"])
+    return out, tx
+
+
+def reset(chain):
+    E.rpc = chain.rpc; E.pools.clear()
+    E.state.update({"head": None, "head_at": 0.0, "head_src": None, "done_to": None, "launches": 0, "pairs_wbnb": 0, "pairs_unread": 0, "trades": [], "median_alarmed": False,
+                    "price": None, "price_block": None, "fails": 0, "alarms_quiet": {}, "stop": False})
+    open(LOG, "w").close()
+
+
+def run(chain, a, b):
+    reset(chain); E.state["done_to"] = a - 1; E.refresh_price(a)
+    while E.state["done_to"] < b:
+        E.step(replay_to=b)
+
+
+def events(ev=None, pair=None):
+    out = [json.loads(x) for x in open(LOG)]
+    return [e for e in out if (ev is None or e["ev"] == ev) and (pair is None or e.get("pair") == pair)]
+
+
+def reserves_before(logs, off):
+    """(WBNB, token) after the last Sync of the pair before block L + off (the token is token0 here: WBNB is token1)"""
+    r = (0, 0)
+    for lg in logs:
+        if lg["topics"][0] == E.T_SYNC and blk(lg) - L < off:
+            d = lg["data"][2:]; r = (int(d[64:128], 16), int(d[:64], 16))
+    return r
+
+
+def replay(q, logs, a=50, b=260):
+    """an independent exact-input replay: our buy at the start of L+a, every swap of [L+a, L+b) on the pool with it, our sale at L+b"""
+    rq, rt = reserves_before(logs, a); tok = q * 9975 * rt // (rq * 10000 + q * 9975); sq, st = rq + q, rt - tok
+    for lg in logs:
+        if lg["topics"][0] == E.T_SWAP and a <= blk(lg) - L < b:
+            d = lg["data"][2:]; t_in, q_in, t_out, q_out = (int(d[i:i + 64], 16) for i in range(0, 256, 64))
+            if q_in > q_out:
+                o = (q_in - q_out) * 9975 * st // (sq * 10000 + (q_in - q_out) * 9975); sq += q_in - q_out; st -= o
+            else:
+                o = (t_in - t_out) * 9975 * sq // (st * 10000 + (t_in - t_out) * 9975); sq -= o; st += t_in - t_out
+    return tok, tok * 9975 * sq // (st * 10000 + tok * 9975)
+
+
+GAS = int(round(370000 * 0.1e9))
+r = FX["usdt_reserves"][str(L + 49)][2:]; Q = 15_000_000 * int(r[64:128], 16) * 10 ** 12 // int(r[:64], 16)   # $15 at the pair's price, to the wei
+
+# 1. the launch is recognised; the router's WBNB launch 65 blocks earlier is not; the stake and the buy priced to the wei at L+50
+ch = Chain(); ch.add([FX["launch_log"]] + FX["pair_logs"], [FX["launch_tx"]] + list(FX["txs"].values())); ch.add([FX["other_log"]], [FX["other_tx"]])
+run(ch, L - 70, L + 300)
+la = events("launch")
+assert len(la) == 1 and la[0]["pair"] == PAIR and la[0]["L"] == L and la[0]["pool_bnb"] == 1.0 and la[0]["value_bnb"] == 1.0 and la[0]["creator"] == CREATOR, la
+assert la[0]["wbnb_side"] == 1 and la[0]["skip"] is None and la[0]["token"] == "0x" + FX["launch_log"]["topics"][1][-40:] and E.state["pairs_wbnb"] == 2
+wf = events("would_fire")
+rq, rt = reserves_before(FX["pair_logs"], 50)
+assert len(wf) == 1 and wf[0]["at"] == L + 50 and wf[0]["stake_wei"] == Q and (wf[0]["r_wbnb"], wf[0]["r_token"]) == (rq, rt) == (10 ** 18, 10 ** 18), wf
+assert wf[0]["tokens"] == Q * 9975 * rt // (rq * 10000 + Q * 9975) == 19507677382189946 and abs(wf[0]["bnb_usd"] - 752.0432) < 1e-3 and wf[0]["swaps_before"] == 0
+assert L + 50 <= wf[0]["ran_in_block"] <= L + 80                                # the pool's next log after L+49 is at +80: the same reserves until then
+print("ok the decoder: the launcher's 50b6f139 call (196 bytes) with a WBNB PairCreated is a launch of 1 BNB (the first Mint) by its creator; the router's "
+      "WBNB launch is not; the $15 stake at the USDT/WBNB pair's price and the buy at L+50 priced from the reserves to the wei")
+
+# 2. the dry sale at L+260 from the real swaps (the crowd's four buys replayed on the pool with our buy in it), against an independent replay
+td = events("trade_done")
+tok, back = replay(Q, FX["pair_logs"])
+assert len(td) == 1 and td[0]["tokens"] == tok and td[0]["back_wei"] == back and td[0]["dry_ret_gross"] == round((back - Q) / Q, 6), (td, tok, back)
+assert td[0]["dry_ret"] == round((back - Q - GAS) / Q, 6) and abs(td[0]["dry_ret"] - 2.3046) < 1e-3 and not td[0]["pulled_before_sell"] and td[0]["dump_off"] is None
+assert td[0]["crowd_buys"] == 4 and td[0]["crowd_bnb"] == 0.8556 and td[0]["first_crowd_off"] == 80 and td[0]["crowd_gate"] == 4 and td[0]["crowd_minout"] == 0.9999
+assert td[0]["strangers"] == 0 and td[0]["sells"] == 0 and td[0]["entry_block_swaps"] == 0 and td[0]["breaks"] == 0 and not events("alarm"), events("alarm")
+assert ch.calls["eth_getTransactionByHash"] == 2 + 4                           # the two WBNB pairs' creating transactions, the four buys before +260
+assert td[0]["clean"] is True and L + 260 <= td[0]["sold_in_block"] <= L + 283     # (the next log after L+259 is at +283)
+print("ok the dry sale at L+260: +%.1f%% (net of 370k gas at 0.1 gwei), the crowd's 4 buys of 0.8556 BNB from +80 with minOut 0.9999 of the price "
+      "before each, no stranger, equal to an independent replay to the wei" % (100 * td[0]["dry_ret"]))
+
+# 3. the research's own replay (verify/replay_..._83af7929/code/rp.py trade(), K=50 H=210, census events): the same tokens and BNB back to the wei
+ch3 = Chain(); ch3.add([FX["launch_log"]] + FX["pair_logs"], [FX["launch_tx"]] + list(FX["txs"].values()))
+_sw = E.stake_wei; E.stake_wei = lambda: 19945628469917928
+run(ch3, L - 2, L + 300); E.stake_wei = _sw
+td = events("trade_done")[0]
+assert (td["tokens"], td["back_wei"]) == (19507644891997603, 65950139526826465), td
+print("ok the research's replay of this pool (rp.trade, a stake of 19945628469917928 wei): tokens 19507644891997603, back 65950139526826465, the same")
+
+
+# 3b. our buy is first in block L+50, our sale first in block L+260: crowd buys injected at L+49, L+50, L+259 and L+260 (an off-by-one shows)
+def crowd_buy(rq, rt, off, a, n):
+    """a crowd buy of `a` wei at L+off on reserves (rq, rt): its Sync and Swap (WBNB is token1) and its router transaction"""
+    o = E.amount_out(a, rq, rt); h = "0x%064x" % (0xb00 + n); who = "0x%040x" % (0xc00 + n)
+    logs = [{"address": PAIR, "topics": [E.T_SYNC], "data": "0x" + w(rt - o) + w(rq + a), "blockNumber": hex(L + off), "transactionHash": h, "logIndex": "0x1"},
+            {"address": PAIR, "topics": [E.T_SWAP, "0x" + w(int(ROUTER, 16)), "0x" + w(int(who, 16))], "data": "0x" + w(0) + w(a) + w(o) + w(0),
+             "blockNumber": hex(L + off), "transactionHash": h, "logIndex": "0x2"}]
+    return logs, {"hash": h, "from": who, "to": ROUTER, "input": "0x7ff36ab5" + w(o * 9999 // 10000) + w(128) + w(int(who, 16)) + w(0)}, rq + a, rt - o
+
+
+logs3 = [x for x in FX["pair_logs"] if blk(x) == L]; txs3 = [FX["launch_tx"]]; rq3, rt3 = 10 ** 18, 10 ** 18
+for n, (off, a) in enumerate([(49, 10 ** 17), (50, 2 * 10 ** 17), (259, 3 * 10 ** 17), (260, 4 * 10 ** 17)]):
+    lg_, tx_, rq3, rt3 = crowd_buy(rq3, rt3, off, a, n); logs3 += lg_; txs3.append(tx_)
+ch3b = Chain(); ch3b.add([FX["launch_log"]] + logs3, txs3)
+run(ch3b, L - 2, L + 300)
+wf, td = events("would_fire")[0], events("trade_done")[0]; tok3, back3 = replay(Q, logs3)
+assert wf["ran_in_block"] == L + 50 and (wf["r_wbnb"], wf["r_token"]) == reserves_before(logs3, 50) and wf["r_wbnb"] == 11 * 10 ** 17 and wf["tokens"] == tok3, wf
+assert td["sold_in_block"] == L + 260 and td["back_wei"] == back3 and td["crowd_ahead"] == 1 and td["crowd_buys"] == 2 and td["crowd_bnb"] == 0.5, td
+assert td["first_crowd_off"] == 49 and td["entry_block_swaps"] == 1 and td["crowd_gate"] == 1 and td["clean"] and abs(td["crowd_minout"] - 0.9999) < 1e-6, td
+print("ok the boundaries: the buy priced in block L+50 after the +49 buy and before the +50 one, the sale in block L+260 after the +259 buy and "
+      "before the +260 one (ran_in_block, sold_in_block), equal to the independent replay; +49 counts ahead of us, +50 and +259 in the hold")
+
+# 4. the creator's dump: a sell taking the whole WBNB reserve at +1039, after the sale: logged, by the creator, no gate alarm
+run(ch, L - 2, L + 1100)
+du = events("dump"); pd = events("pool_done")
+assert len(du) == 1 and du[0]["off"] == 1039 and du[0]["kind"] == "sell" and du[0]["by_creator"] is True and du[0]["share"] >= 0.9999 and du[0]["traded"], du
+assert len(pd) == 1 and pd[0]["dump_off"] == 1039 and pd[0]["traded"] and PAIR not in E.pools and not [a for a in events("alarm") if "gate" in a["what"]]
+print("ok the creator's dump at +1039 (a router sell of 100,000 tokens, 99.99% of the WBNB reserve): dump and pool_done lines, the pool dropped, no gate alarm")
+
+
+# 4b. the same launch with WBNB as token0 (every log mirrored): the same lines, field for field, but the side
+def mirror(lg):
+    m = copy.deepcopy(lg); d = m["data"][2:]; ws_ = [d[i:i + 64] for i in range(0, len(d), 64)]
+    if m["topics"][0] == E.T_PC:
+        m["topics"] = [m["topics"][0], m["topics"][2], m["topics"][1]]
+    elif m["topics"][0] in (E.T_SYNC, E.T_MINT, E.T_BURN):
+        m["data"] = "0x" + ws_[1] + ws_[0] + "".join(ws_[2:])
+    elif m["topics"][0] == E.T_SWAP:
+        m["data"] = "0x" + ws_[1] + ws_[0] + ws_[3] + ws_[2]
+    return m
+
+
+lines = lambda: [{k: v for k, v in e.items() if k != "t"} for e in events() if e["ev"] in ("launch", "would_fire", "trade_done", "dump", "pool_done")]
+base = lines(); chm = Chain(); chm.add([mirror(FX["launch_log"])] + [mirror(x) for x in FX["pair_logs"]], [FX["launch_tx"]] + list(FX["txs"].values()))
+run(chm, L - 2, L + 1100); mirr = lines()
+assert base[0]["wbnb_side"] == 1 and mirr[0]["wbnb_side"] == 0 and len(mirr) == len(base) == 5
+mirr[0]["wbnb_side"] = 1
+assert mirr == base, (mirr, base)
+print("ok WBNB as token0: the mirrored launch gives the same launch, would_fire, trade_done, dump and pool_done lines field for field")
+
+# 5. a dump before the sell is -1.0: the creator's sell moved to +200 (built on the real reserves after +186), and a Burn of 60% at +150
+rq, rt = reserves_before(FX["pair_logs"], 200); t_in = 10 ** 23; q_out = E.amount_out(t_in, rt, rq); HX = "0x" + "d0" * 32
+early = [lg for lg in FX["pair_logs"] if blk(lg) - L < 200]
+dump = [{"address": PAIR, "topics": [E.T_SYNC], "data": "0x" + w(rt + t_in) + w(rq - q_out), "blockNumber": hex(L + 200), "transactionHash": HX, "logIndex": "0x1"},
+        {"address": PAIR, "topics": [E.T_SWAP, "0x" + w(int(ROUTER, 16)), "0x" + w(int(ROUTER, 16))], "data": "0x" + w(t_in) + w(0) + w(0) + w(q_out),
+         "blockNumber": hex(L + 200), "transactionHash": HX, "logIndex": "0x2"}]
+ch5 = Chain(); ch5.add([FX["launch_log"]] + early + dump, [FX["launch_tx"]] + list(FX["txs"].values()) + [{"hash": HX, "from": CREATOR, "to": ROUTER, "input": "0x18cbafe5"}])
+run(ch5, L - 2, L + 400)
+td = events("trade_done"); al = [a["what"] for a in events("alarm")]
+assert len(td) == 1 and td[0]["dry_ret"] == -1.0 and td[0]["pulled_before_sell"] and td[0]["dump_off"] == 200 and td[0]["crowd_buys"] == 3 and td[0]["sells"] == 1, td
+assert any(a.startswith("gate: a dump at +200, before +997") for a in al) and events("dump")[0]["by_creator"] and PAIR not in E.pools, al
+rq, rt = reserves_before(FX["pair_logs"], 150); lp = 6 * 10 ** 17                # a Burn of 60% of the liquidity (the pool's LP supply is 1e18)
+burn = [{"address": PAIR, "topics": [E.T_SYNC], "data": "0x" + w(rt - rt * 6 // 10) + w(rq - rq * 6 // 10), "blockNumber": hex(L + 150), "transactionHash": HX, "logIndex": "0x1"},
+        {"address": PAIR, "topics": [E.T_BURN, "0x" + w(int(ROUTER, 16)), "0x" + w(int(CREATOR, 16))], "data": "0x" + w(rt * 6 // 10) + w(rq * 6 // 10),
+         "blockNumber": hex(L + 150), "transactionHash": HX, "logIndex": "0x2"}]
+ch5b = Chain(); ch5b.add([FX["launch_log"]] + [lg for lg in FX["pair_logs"] if blk(lg) - L < 150] + burn, [FX["launch_tx"]] + list(FX["txs"].values()) + [{"hash": HX, "from": CREATOR, "to": ROUTER, "input": "0x02751cec"}])
+run(ch5b, L - 2, L + 400)
+td = events("trade_done")
+assert len(td) == 1 and td[0]["dry_ret"] == -1.0 and events("dump")[0]["kind"] == "burn" and events("dump")[0]["share"] == 0.6 and td[0]["dump_off"] == 150, td
+print("ok a dump before the sell: the creator's sell at +200 (all the WBNB) and a Burn of 60% at +150 each give dry_ret -1.0, pulled_before_sell, "
+      "and the gate alarm 'a dump before +997'")
+
+# 5b. the dump's threshold: a sell of 49.9% of the WBNB reserve at +200 is a sell (replayed on our copy), one of 50.1% is the dump
+for share in (499, 501):
+    rq, rt = reserves_before(FX["pair_logs"], 200); q_out = rq * share // 1000; t_in = rt * q_out * 10000 // ((rq - q_out) * 9975) + 1; HS = "0x%064x" % (0xe00 + share)
+    sl = [{"address": PAIR, "topics": [E.T_SYNC], "data": "0x" + w(rt + t_in) + w(rq - q_out), "blockNumber": hex(L + 200), "transactionHash": HS, "logIndex": "0x1"},
+          {"address": PAIR, "topics": [E.T_SWAP, "0x" + w(int(ROUTER, 16)), "0x" + w(int(ROUTER, 16))], "data": "0x" + w(t_in) + w(0) + w(0) + w(q_out),
+           "blockNumber": hex(L + 200), "transactionHash": HS, "logIndex": "0x2"}]
+    chs = Chain(); chs.add([FX["launch_log"]] + early + sl, [FX["launch_tx"]] + list(FX["txs"].values()) + [{"hash": HS, "from": CREATOR, "to": ROUTER, "input": "0x18cbafe5"}])
+    run(chs, L - 2, L + 300); td = events("trade_done")
+    if share == 499:
+        assert len(td) == 1 and td[0]["back_wei"] == replay(Q, early + sl)[1] and not td[0]["pulled_before_sell"] and not events("dump") and td[0]["sells"] == 1, td
+    else:
+        assert len(td) == 1 and td[0]["dry_ret"] == -1.0 and td[0]["dump_off"] == 200 and events("dump")[0]["share"] == 0.501, td
+print("ok the dump's threshold (BNB_DUMP_SHARE 0.5): a sell of 49.9% of the WBNB at +200 is replayed on our copy and the trade sold at +260; "
+      "50.1% is the dump, -1.0")
+
+# 6. another launcher, another selector, another calldata length: ignored; a 15-BNB pool: a launch line, skipped, no buy
+P6 = "0x" + "66" * 20; ch6 = Chain(); bad = []
+for i, (to, inp) in enumerate([("0x" + "12" * 20, FX["launch_tx"]["input"]), (E.LAUNCHER, "0xdeadbeef" + FX["launch_tx"]["input"][10:]), (E.LAUNCHER, FX["launch_tx"]["input"] + "00" * 32)]):
+    lg, tx = clone("0x" + ("7%d" % i) * 20, tag="a%d" % i); tx[0]["to"] = to; tx[0]["input"] = inp; ch6.add(lg, tx)
+lg15 = [x for x in FX["pair_logs"] if blk(x) == L]
+lg15 = [dict(x, data=x["data"][:66] + w(15 * 10 ** 18)) for x in lg15]           # the launch's Sync and Mint with 15 BNB on the WBNB side
+lg, tx = clone(P6, tag="b6", logs=lg15); ch6.add(lg, tx)
+run(ch6, L - 2, L + 300)
+la = events("launch")
+assert len(la) == 1 and la[0]["pair"] == P6 and la[0]["pool_bnb"] == 15.0 and "skipped" in la[0]["skip"] and not events("would_fire") and not events("trade_done"), la
+assert P6 in E.pools and E.state["pairs_wbnb"] == 4 and not events("alarm")    # still watched for its dump (the gate looks at every pool of the line)
+print("ok a WBNB pair from another contract, the launcher with another selector or calldata length: not launches; a 15-BNB pool: its launch "
+      "line says skipped (BNB_SKIP_POOL_BNB), no buy, watched for its dump")
+
+# 7. pools overlap: the launch and a copy 20 blocks later are followed at once, each bought at its own L+50 and sold at its own L+260
+P7 = "0x" + "77" * 20; ch7 = Chain(); ch7.add([FX["launch_log"]] + FX["pair_logs"], [FX["launch_tx"]] + list(FX["txs"].values()))
+lg, tx = clone(P7, shift=20, tag="c7"); ch7.add(lg, tx)
+reset(ch7); E.state["done_to"] = L - 3; E.refresh_price(L)
+opened = 0
+while E.state["done_to"] < L + 300:
+    E.step(replay_to=L + 300); opened = max(opened, sum(1 for p in E.pools.values() if p["fired"] and not p["sold"]))
+wf, td = events("would_fire"), events("trade_done")
+assert [x["at"] for x in wf] == [L + 50, L + 70] and [x["pair"] for x in td] == [PAIR, P7] and opened == 2 and td[0]["dry_ret"] == td[1]["dry_ret"], (wf, td)
+print("ok two pools at once: both bought (L+50, L+70), both open together, both sold at their own L+260 with the same result")
+
+# 8. a malformed block never crashes: bad logs, an RPC that fails, a node answer that is not a list, a range skipped after 3 failures
+ch8 = Chain(); ch8.add([FX["launch_log"]] + FX["pair_logs"], [FX["launch_tx"]] + list(FX["txs"].values()))
+ch8.logs += [{"address": PAIR, "topics": [E.T_SWAP], "data": "0x" + w(1), "blockNumber": hex(L + 100), "transactionHash": "0x01", "logIndex": "0x0"},
+             {"address": PAIR, "topics": [E.T_SYNC], "data": "0x1234", "blockNumber": hex(L + 101), "transactionHash": "0x02", "logIndex": "0x0"},
+             {"address": E.FACTORY, "data": "0x", "blockNumber": hex(L + 102), "logIndex": "0x0"}, {"address": PAIR, "topics": [E.T_SYNC], "blockNumber": "0xzz"}, "garbage"]
+ch8.fail = [("eth_getLogs", RuntimeError("eth_getLogs: limit exceeded")), ("eth_getLogs", {"not": "a list"})]
+run(ch8, L - 2, L + 300)
+td = events("trade_done"); al = [a["what"] for a in events("alarm")]
+assert len(td) == 1 and td[0]["tokens"] == tok and td[0]["back_wei"] == back and td[0]["breaks"] >= 3 and td[0]["clean"] is False, td   # its bad logs flag it
+assert sum(1 for a in al if a.startswith("a log was not understood")) == 1 and sum(1 for a in al if "not read" in a) == 1, al   # each kind once a minute
+assert "k3y" not in open(LOG).read()                                           # the traces scrubbed too
+ch8.fail = [("eth_getLogs", "PASS"), ("eth_getLogs", {"not": "a list"})]                 # the launch's own logs: an answer that is not a list
+run(ch8, L - 2, L + 300)
+assert any(a["what"].startswith("a launch's own logs were not read") for a in events("alarm")) and events("pool_done")[0]["why"] == "logs not read" and not events("would_fire")
+print("ok malformed logs (short data, no topics, a bad block number, not an object), a failed eth_getLogs and an answer that is not a list: alarms, "
+      "no crash, the same numbers, and the trade flagged (breaks, clean false) for its pool's bad logs; a launch whose own logs are not read "
+      "is dropped with an alarm")
+
+# 8b. a range that fails is never skipped: 7 failures leave the reader where it was, the 8th try reads it, the trade clean; live, a head
+# MAX_BEHIND ahead makes the jump: the open trade gets a line with no result (dry_ret null, gaps 1, not clean) and the pool is dropped
+ch8c = Chain(); ch8c.add([FX["launch_log"]] + FX["pair_logs"], [FX["launch_tx"]] + list(FX["txs"].values())); ch8c.fail = [("eth_getLogs", RuntimeError("down"))] * 7
+reset(ch8c); E.state["done_to"] = L - 3; E.refresh_price(L)
+for _ in range(7):
+    E.step(replay_to=L + 300)
+assert E.state["done_to"] == L - 3 and E.state["fails"] == 7
+while E.state["done_to"] < L + 300:
+    E.step(replay_to=L + 300)
+td = events("trade_done")
+assert len(td) == 1 and td[0]["back_wei"] == back and td[0]["clean"] and not any("skipped" in a["what"] for a in events("alarm")), td
+run(ch8c, L - 2, L + 100)
+assert events("would_fire") and not events("trade_done")
+E.state["head"] = L + 100 + E.MAX_BEHIND + 50; E.state["head_at"] = time.monotonic(); E.step()
+td = events("trade_done")
+assert len(td) == 1 and td[0]["dry_ret"] is None and td[0]["gaps"] == 1 and td[0]["clean"] is False and events("pool_done")[0]["why"] == "the reader jumped" and not E.pools, td
+print("ok a range that fails is tried again (7 times here), never skipped, and then read: the same clean trade; the jump past MAX_BEHIND "
+      "leaves the open trade a line with no result, flagged (gaps 1)")
+
+# 8c. a WBNB pair's creating transaction: an error, or null 6 times: not a launch, an alarm and pairs_unread; null twice: read on the 3rd try
+for fail, launched, why in (([("eth_getTransactionByHash", RuntimeError("HTTP Error 429: Too Many Requests"))], False, "429"),
+                            ([("eth_getTransactionByHash", None)] * 6, False, "null each time"), ([("eth_getTransactionByHash", None)] * 2, True, None)):
+    ch8c.fail = list(fail); run(ch8c, L - 2, L + 300); al = [a["what"] for a in events("alarm")]
+    assert len(events("launch")) == launched and E.state["pairs_unread"] == (0 if launched else 1), (why, al)
+    assert launched or any(a.startswith("a WBNB pair's creating transaction was not read") and why in a for a in al), al
+print("ok a launch's creating transaction: an error or null 6 times is an alarm and a count (pairs_unread), never a launch; null twice is "
+      "tried again and read")
+
+# 9. the gate: no crowd buy in +60..+260 (the four buys made strangers' by their transactions), a negative median over the first 10 trades
+txs9 = copy.deepcopy(FX["txs"])
+for t in txs9.values():
+    if t["to"] == ROUTER and t["input"].startswith("0x7ff36ab5"):
+        t["to"] = "0x" + "99" * 20
+ch9 = Chain(); ch9.add([FX["launch_log"]] + FX["pair_logs"], [FX["launch_tx"]] + list(txs9.values()))
+run(ch9, L - 2, L + 300)
+td = events("trade_done")[0]; al = [a["what"] for a in events("alarm")]
+assert td["crowd_buys"] == 0 and td["strangers"] == 4 and abs(td["stranger_bnb"] - 0.8556) < 1e-9 and td["first_crowd_off"] is None, td
+assert any(a.startswith("gate: no crowd buy in +60..+260") for a in al), al
+reset(ch9)
+for x in (0.3, -0.1, -0.2, 0.05, -0.01, -0.3, 0.2, -0.05, -0.4, 0.1):
+    E.gate_probe(x)
+E.gate_probe(-1.0)
+al = [a["what"] for a in events("alarm")]
+assert al == ["gate: the median of the first 10 dry trades is -3.00%"], al
+assert len(E.state["trades"]) == 10                                             # later trades are not kept
+reset(ch9)
+for x in [0.1] * 6 + [-1.0] * 4:
+    E.gate_probe(x)
+assert not events("alarm")
+print("ok the gate as alarms: no crowd buy in +60..+260 (the same buys from another contract are strangers), a negative median over the first 10 "
+      "trades (once); a positive median: none")
+
+
+# 10. the websocket: newHeads subscribed, heads taken, a dropped connection reconnected, a refused subscription and a bad message survived
+class FakeWS:
+    def __init__(self, script):
+        self.script, self.sent = list(script), []
+
+    async def __aenter__(self):
+        return self
+
+    async def __aexit__(self, *a):
+        return False
+
+    async def send(self, m):
+        self.sent.append(json.loads(m))
+
+    async def recv(self):
+        await asyncio.sleep(0)
+        x = self.script.pop(0)
+        if isinstance(x, Exception):
+            raise x
+        if x == "STOP":
+            E.state["stop"] = True; return json.dumps({"jsonrpc": "2.0", "id": 9, "result": None})
+        return x
+
+
+head = lambda n: json.dumps({"jsonrpc": "2.0", "method": "eth_subscription", "params": {"subscription": "0xab", "result": {"number": hex(n), "timestamp": hex(int(time.time()))}}})
+conns = [FakeWS([json.dumps({"jsonrpc": "2.0", "id": 1, "result": "0xab"}), head(L + 1), head(L + 2), "not json", head(L + 3), ConnectionResetError("reset by peer at wss://ws.example.org/ws/k3y-ws-secret")]),
+         FakeWS([json.dumps({"jsonrpc": "2.0", "id": 1, "error": {"code": -32601, "message": "subscriptions disabled"}})]),
+         FakeWS([json.dumps({"jsonrpc": "2.0", "id": 1, "result": "0xac"}), head(L + 4), "STOP"])]
+used = []
+sys.modules["websockets"] = types.SimpleNamespace(connect=lambda url, **kw: (used.append((url, kw)), conns[len(used) - 1])[1])
+reset(Chain())
+asyncio.run(asyncio.wait_for(E.feed_loop(), timeout=10))                       # two reconnects: 0.5 s, then 1 s
+assert len(used) == 3 and all(c.sent == [{"jsonrpc": "2.0", "id": 1, "method": "eth_subscribe", "params": ["newHeads"]}] for c in conns), used
+assert E.state["head"] == L + 4 and E.state["head_src"] == "ws" and len(events("feed_connected")) == 3 and len(events("feed_error")) == 2, events()
+assert [a["what"][:40] for a in events("alarm")] == ["a websocket message was not understood: "] and all(e["host"] == "ws.example.org" for e in events("feed_connected"))
+assert [e["retry_s"] for e in events("feed_error")] == [0.5, 1.0]               # heads over a connection younger than 60 s do not reset it
+E.WS_STABLE_S = 0; reset(Chain()); used.clear()
+conns = [FakeWS([json.dumps({"jsonrpc": "2.0", "id": 1, "result": "0xab"}), head(L + 5 + i), ConnectionResetError("reset")]) for i in range(2)] \
+    + [FakeWS([json.dumps({"jsonrpc": "2.0", "id": 1, "result": "0xab"}), head(L + 9), "STOP"])]
+asyncio.run(asyncio.wait_for(E.feed_loop(), timeout=10)); E.WS_STABLE_S = 60
+assert [e["retry_s"] for e in events("feed_error")] == [0.5, 0.5], events("feed_error")   # a lasting connection with heads resets it
+reset(Chain()); E.state["head"] = L + 5
+assert E.on_ws_message(head(L + 5)) is False and E.state["head_at"] == 0.0     # the same number again: not a new head
+assert E.on_ws_message(head(L + 6)) is True and E.state["head_at"] > 0 and E.state["head"] == L + 6
+print("ok the websocket: eth_subscribe newHeads on each connection, the newest head taken, a reset connection and a refused subscription each "
+      "reconnected (0.5 s, then 1 s; back to 0.5 s only after heads over a connection 60 s old), a repeated head number is not a head, a "
+      "message that is not JSON an alarm; only the host is logged")
+
+# 11. the head without the websocket: eth_blockNumber after 3 s of silence; the flow line; the start line (hosts only) and a replay through main()
+reset(ch); E.state["head"] = L + 10; E.state["head_at"] = time.monotonic()
+assert E.current_head() == L + 10 and "eth_blockNumber" not in ch.calls
+E.state["head_at"] -= 5
+assert E.current_head() == L + 400 and E.state["head_src"] == "poll" and len(events("feed_fallback")) == 1
+E.state["done_to"] = L + 390; E.flow(force=True); fl = events("flow")[-1]
+assert fl["lag_blocks"] == 10 and fl["feed"] == "poll" and {"blocks", "launches", "launches_new", "pairs_wbnb", "watching", "open", "bnb_usd", "head_age_s"} <= set(fl), fl
+reset(ch); E.main(["--replay", str(L - 2), str(L + 300)])
+st = events("start")[0]; text = open(LOG).read()
+assert st["dry_run"] is True and st["ws"] == "ws.example.org" and st["rpc"] == "rpc.example.org" and st["chain"] == 56 and st["bnb_usd_src"] == "chain", st
+assert len(events("trade_done")) == 1 and events("replay_done") and "k3y" not in text and "secret" not in text
+reset(ch); E.state["head_at"] = time.monotonic() - 10; ch.fail = [("eth_blockNumber", RuntimeError("Temporary failure in name resolution"))] * 7; waits = []
+for _ in range(7):
+    E.state["polled_at"] = -100.0; E.current_head(); waits.append(E.state["poll_wait"])
+n0 = ch.calls["eth_blockNumber"]; E.current_head()
+assert waits == [1.0, 2.0, 4.0, 8.0, 16.0, 30.0, 30.0] and ch.calls["eth_blockNumber"] == n0, waits      # not asked again before its wait
+E.state["polled_at"] = -100.0
+assert E.current_head() == L + 400 and E.state["poll_wait"] == 0.5
+print("ok without heads from the websocket the reader polls eth_blockNumber (a feed_fallback line), every 0.5 s, doubling to 30 s while it "
+      "fails, back to 0.5 s on an answer; the flow line (blocks, launches, lag, pools); main() --replay: the start line with the endpoints' "
+      "hosts only, the same trade")
+
+# 11b. the start: an RPC that does not answer is waited for (up to START_WAIT_S), then an exit; --replay refuses the service's own log
+chx = Chain(); reset(chx); E.START_WAIT_S = 0; chx.fail = [("eth_chainId", RuntimeError("Temporary failure in name resolution"))]
+try:
+    E.checks(); raise AssertionError("no exit")
+except SystemExit as e:
+    assert "did not answer" in str(e)
+E.START_WAIT_S = 5; chx.fail = [("eth_chainId", RuntimeError("Temporary failure in name resolution"))]
+assert E.checks()["chain"] == 56 and any(a["what"].startswith("BNB_RPC_URL did not answer at the start") for a in events("alarm"))
+E.START_WAIT_S = 300; chx = Chain(); reset(chx); _lp = E.LOG_PATH; E.LOG_PATH = E.DEFAULT_LOG
+try:
+    E.main(["--replay", str(L), str(L + 1)]); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert "BNB_LOG_PATH" in str(e)
+finally:
+    E.LOG_PATH = _lp
+assert not chx.calls and not events()
+print("ok the start: the RPC not answering is an alarm and a wait (1 s doubling) up to START_WAIT_S, then an exit for systemd; --replay "
+      "refuses to write into the service's log")
+
+# 12. dry run only: the engine imports only the standard modules it reads with and websockets, and calls only reading RPC methods
+tree = ast.parse(open(os.path.join(ROOT, "src", "bnb_engine.py")).read()); mods, called = set(), set()
+for n in ast.walk(tree):
+    if isinstance(n, ast.Import):
+        mods |= {a.name.split(".")[0] for a in n.names}
+    elif isinstance(n, ast.ImportFrom):
+        mods.add((n.module or "").split(".")[0])
+    elif isinstance(n, ast.Call) and isinstance(n.func, ast.Name) and n.func.id == "rpc":
+        assert isinstance(n.args[0], ast.Constant), ast.dump(n)[:120]; called.add(n.args[0].value)       # no method chosen at run time
+    elif isinstance(n, ast.Dict):
+        for k, v in zip(n.keys, n.values):
+            if isinstance(k, ast.Constant) and k.value == "method":
+                assert isinstance(v, ast.Constant) or (isinstance(v, ast.Name) and v.id == "method"), ast.dump(v)
+                called |= {v.value} if isinstance(v, ast.Constant) else set()
+READ = {"eth_blockNumber", "eth_call", "eth_chainId", "eth_getLogs", "eth_getTransactionByHash", "eth_subscribe"}
+named = {n.value for n in ast.walk(tree) if isinstance(n, ast.Constant) and isinstance(n.value, str) and re.fullmatch(r"eth_\w+", n.value)}
+assert mods <= {"os", "sys", "json", "time", "asyncio", "threading", "traceback", "statistics", "signal", "urllib", "websockets"}, mods
+assert called <= READ and called >= {"eth_getLogs", "eth_subscribe"} and named <= READ | {"eth_subscription"}, (called, named)   # (the notification's name)
+print("ok dry run only: the engine imports os, sys, json, time, asyncio, threading, traceback, statistics, signal, urllib and websockets only, "
+      "and names no RPC method but eth_blockNumber, eth_call, eth_chainId, eth_getLogs, eth_getTransactionByHash and eth_subscribe")
+
+# 12b. scrub: a URL's key never reaches the log, whole or in pieces (its path, its query, user:password@); a trace keeps its tail
+_ru = E.RPC_URL; E.RPC_URL = "https://u:pw@rpc.example.org/v1/k3y?apikey=s3cr3t"
+t = E.scrub("POST https://u:pw@rpc.example.org/v1/k3y?apikey=s3cr3t failed; GET /v1/k3y?apikey=s3cr3t as u:pw")
+assert all(x not in t for x in ("k3y", "s3cr3t", "pw")) and "rpc.example.org" in t, t
+assert E.scrub("x" * 500 + "the end", 7, tail=True) == "the end" and len(E.scrub("y" * 500)) == 200
+E.RPC_URL = _ru
+print("ok scrub: an endpoint's URL is its host in the log, and its path, query and user:password@ are removed wherever they appear")
+
+# 13. the screen: trades with a missed log or a gap left out and counted; the gate's median over the first 10 clean trades since the
+# engine's last start, from all the logs kept (a rotated one included), not the window's; the dump gate's offset from the start line; a slow reader
+now = time.time(); S = tempfile.mktemp(suffix=".jsonl")
+start = lambda t, gb: {"ev": "start", "t": t, "release": "bnb-0.1", "stake_usd": 15, "buy_at": 50, "sell_at": 260, "skip_pool_bnb": [15.0], "gate": {"dump_before": gb, "crowd_from": 60, "probes": 10}}
+trade = lambda t, i, ret, **kw: dict({"ev": "trade_done", "dry": True, "t": t, "pair": "0x%040x" % i, "pool_bnb": 25.0, "dry_ret": ret, "breaks": 0, "gaps": 0,
+                                      "crowd_gate": 1, "crowd_buys": 1, "crowd_bnb": 0.5, "pulled_before_sell": False, "why": "sell at +260"}, **kw)
+rets = [0.05, 0.10, -0.02, 0.20, 0.01, 0.30, -0.10, 0.07, 0.03, 0.04, 0.50, 0.60]
+old = [start(now - 40 * 3600, 997)] + [trade(now - 39 * 3600 + i, i, -0.5) for i in range(3)] + [start(now - 30 * 3600, 1500)] \
+    + [trade(now - (29 - i) * 3600, 10 + i, rets[i]) for i in range(3)]
+new = [trade(now - 10 * 3600 + i * 1800, 20 + i, x) for i, x in enumerate(rets[3:])] + [trade(now - 9.9 * 3600, 40, -0.9, breaks=1), trade(now - 9.8 * 3600, 41, None, gaps=1)] \
+    + [{"ev": "dump", "t": now - 3600, "pair": "0x" + "42" * 20, "pool_bnb": 1.0, "off": 1200, "kind": "sell"}, {"ev": "flow", "t": now - 30, "blocks": 30, "done_to": 1, "lag_blocks": 2}]
+open(S + ".1", "w").write("".join(json.dumps(e) + "\n" for e in old)); open(S, "w").write("".join(json.dumps(e) + "\n" for e in new))
+out = subprocess.run([sys.executable, os.path.join(ROOT, "deploy", "bnb_results.py"), "24"], env=dict(os.environ, BNB_LOG_PATH=S), capture_output=True, text=True).stdout
+allrow = next(x for x in out.splitlines() if x.strip().startswith("all "))
+assert re.search(r"\|\s+9\s+\+18\.3%\s+\+7\.0%", allrow) and "LEFT OUT of every number above and of the gate: 2 dry trade(s)" in out, out   # 9 clean in the window
+assert re.search(r"median of the first 10 since [-0-9: ]+:\s+\+4\.5%", out) and "SLOW: 30 blocks" in out, out             # rets[:10]: +4.5%
+assert re.search(r"a dump before \+1500:\s+TRIPPED x1", out) and "<+1500" in out, out
+for f in (S, S + ".1"):
+    os.remove(f)
+print("ok the screen: 2 flagged trades left out of the statistics and the gate and counted; the median of the first 10 clean trades since the "
+      "engine's start read from the rotated log too (+4.5%, not the window's); the dump gate's +1500 from the start line; a slow flow line warned")
+
+
+# ================================================================================ the LIVE path (BNB_LIVE=1: src/bnb_live.py)
+# Every transaction below is signed with a dummy key made up for these tests and goes nowhere: eth_sendRawTransaction is a stub that
+# decodes what it is given (rlp, the sender recovered, the calldata ABI-decoded), checks the nonce and plays the chain's part.
+assert "bnb_live" not in sys.modules and E.LIVE is None                      # every dry test above ran without the live module
+try:
+    from eth_account import Account
+    from eth_utils import keccak
+    import rlp, eth_abi
+except ImportError:
+    print("SKIP the live path's tests: eth_account is not installed for this python (/opt/flip-venv/bin/python3 has it)")
+    os.remove(LOG); sys.exit(0)
+import http.server, threading, stat, shutil, statistics
+import bnb_live as LV
+
+ART = json.load(open(os.path.join(ROOT, "contracts", "BnbRoundTrip.json")))
+KEY = "0x" + "5e" * 32                                                        # a dummy key for these tests only, never funded
+WALLET = Account.from_key(KEY).address.lower(); TOKEN = "0x" + FX["launch_log"]["topics"][1][-40:]; WBNB = E.WBNB
+TMP = tempfile.mkdtemp(); KEYF = os.path.join(TMP, "bnb.key"); POSF = os.path.join(TMP, "bnb_positions.json"); HALTF = os.path.join(TMP, "HALTED.bnb")
+os.remove(LOG); LOG = os.path.join(TMP, "bnb.jsonl"); E.LOG_PATH = LOG                # live, the line's files are named bnb* (or HALTED.bnb)
+_fd = os.open(KEYF, os.O_WRONLY | os.O_CREAT, 0o600); os.write(_fd, (KEY + "\n").encode()); os.close(_fd)
+TOKEN_CODE = "0x608060405234801561001057600080fd5b50" + "5b" * 64                  # the stub's token code: its keccak is the line's one template here
+CODEHASH = "0x" + keccak(hexstr=TOKEN_CODE).hex()
+LIVE_ENV = {"BNB_WALLET": WALLET, "BNB_KEY_FILE": KEYF, "BNB_POSITIONS_FILE": POSF, "BNB_HALT_FILE": HALTF, "BNB_SEND_ALT_URL": "0", "BNB_TOKEN_CODEHASHES": CODEHASH}
+TT = LV.T_TRANSFER; tp = lambda x: "0x" + w(int(x, 16))
+G_BUY, G_APP, G_SELL = 131050, 46409, 106800                                   # gasUsed of the three calls (eth_simulateV1 on live pools, Oct 12)
+
+
+def tlog(address, topics, data, block, h, i):
+    return {"address": address, "topics": topics, "data": data, "blockNumber": hex(block), "transactionHash": h, "logIndex": hex(i)}
+
+
+class LiveChain(Chain):
+    """the stubbed chain with the wallet's side: the pre-buy check's eth_call (by state override only), each pair's reserves, the wallet's
+    token balances, gas price, balance, nonce; a signed transaction posted is decoded (the sender recovered, chain 56), its nonce checked,
+    and it is mined at once two blocks past the reader, with the router's logs in its receipt; eth_getTransactionReceipt is refused as
+    publicnode refuses it (the engine reads its block's receipts)"""
+    def __init__(self):
+        super().__init__()
+        self.pairs, self.our, self.bal_tok, self.check, self.byhash, self.blocks = {}, {}, {}, {}, {}, {}
+        self.mined = 7; self.sent = []; self.toks = []; self.outs = []; self.balance = 10 ** 17; self.gp = 5 * 10 ** 7
+        self.override = True; self.revert = []; self.replies = []; self.posts = 0; self.codes = {}; self.allow = {}
+        self.pend = {}; self.oog = []; self.zero = 0; self.count_lag = 0; self.fin_lag = 0; self.head_n = None; self.down = set()
+        self.lost, self.queued, self.queue_gaps, self.frozen = set(), {}, False, None
+        self.hide = set()                                                             # held by the second endpoint's pool only: BNB_RPC_URL does not know them
+
+    def pool(self, pair, token, logs):
+        self.pairs[pair] = (token, logs); self.our[pair] = (0, 0); self.bal_tok.setdefault(token, 0)
+
+    def pair_of(self, token):
+        return next(p_ for p_, (t_, _) in self.pairs.items() if t_ == token)
+
+    def real(self, pair):
+        """(WBNB, token) of the pair now: its logs up to the reader's block, our own trades on top"""
+        token, logs = self.pairs[pair]; rq, rt = reserves_before(logs, (E.state["done_to"] or L) - L + 1); dq, dt = self.our[pair]
+        return rq + dq, rt - dt
+
+    def rpc(self, method, params, tries=3, timeout=10):
+        if method in self.down:                                                       # BNB_RPC_URL down for this method (the second endpoint is alt())
+            self.calls["down"] = self.calls.get("down", 0) + 1; raise RuntimeError(method + ": HTTP Error 503: Service Unavailable")
+        if method == "eth_getTransactionByHash" and params[0] in self.hide:
+            return None
+        f = self.frozen                                                               # BNB_RPC_URL's backend lags and still answers: the wallet's
+        if f is not None:                                                             # count, token balances and transactions as before the stale send
+            if method == "eth_getTransactionByHash" and params[0] in f["pend"]:      # (a "stalepend" one held in its pool as pending, never mined)
+                return copy.deepcopy(f["pend"][params[0]])
+            if method == "eth_getTransactionCount":
+                return hex(f["count"])
+            if method == "eth_call" and params[0].get("data", "").startswith("0x70a08231"):
+                return "0x" + w(f["bal"].get(params[0]["to"], 0))
+            if method == "eth_getTransactionByHash" and params[0] not in f["seen"]:
+                return None
+            if method == "eth_getBlockReceipts":
+                return [r_ for r_ in self.alt(method, params) if r_["transactionHash"] in f["seen"]]
+        return self.alt(method, params, tries, timeout)
+
+    def alt(self, method, params, tries=3, timeout=10):
+        c = params[0] if params and isinstance(params[0], dict) else {}
+        if method == "eth_blockNumber":                                               # the head: two blocks past the reader (or set)
+            self.calls[method] = self.calls.get(method, 0) + 1
+            return hex(self.head_n if self.head_n is not None else (E.state["done_to"] or L) + E.LAG_BLOCKS)
+        if method == "eth_getBlockByNumber" and params[0] == "finalized":
+            return {"number": hex((E.state["done_to"] or L) + E.LAG_BLOCKS - self.fin_lag)}
+        if method == "eth_call" and c.get("to") == LV.HARNESS:
+            self.calls["check"] = self.calls.get("check", 0) + 1
+            if not self.override or len(params) < 3:
+                raise RuntimeError("eth_call: {'code': -32602, 'message': 'too many arguments, want at most 2'}")
+            o = params[2][LV.HARNESS]; d = c["data"][10:]; token = "0x" + d[152:192]; q = int(d[192:256], 16)
+            assert o["code"] == ART["deployedBytecode"] and int(o["balance"], 16) == q and c["from"] == WALLET and params[1] == "latest"
+            assert c["data"][2:10] == ART["selectors"]["run(address,address,address,uint256)"] and "0x" + d[24:64] == E.ROUTER and "0x" + d[88:128] == WBNB
+            if token == LV.USDT:
+                return "0x" + w(0) + w(10 ** 18) + w(q * 995 // 1000) + w(136550) + w(24932) + w(70714)
+            rq, rt = self.real(self.pair_of(token)); stage, tax, g, *bt_ = self.check.get(token, (0, 1.0, (136550, 24932, 70714)))
+            tok = E.amount_out(q, rq, rt); got = int(tok * bt_[0]) if bt_ else tok                  # (a 4th item: the token's own cut on the buy)
+            back = int(E.amount_out(got, rt - tok, rq + q) * tax) if stage == 0 else 0
+            return "0x" + w(stage) + w(got if stage != 1 else 0) + w(back) + "".join(w(x) for x in g)
+        if method == "eth_call" and c.get("data") == "0x0902f1ac" and c.get("to") in self.pairs:
+            rq, rt = self.real(c["to"]); return "0x" + w(rt) + w(rq) + w(int(time.time()))      # token0 is the token, WBNB token1
+        if method == "eth_call" and c.get("data", "").startswith("0x70a08231"):
+            assert c["data"][-40:] == WALLET[2:]
+            if self.zero:                                                             # a node behind the buy: the balance reads 0
+                self.zero -= 1; return "0x" + w(0)
+            return "0x" + w(self.bal_tok.get(c["to"], 0))
+        if method == "eth_call" and c.get("data", "").startswith("0xdd62ed3e"):              # allowance(wallet, router)
+            assert c["data"][34:74] == WALLET[2:] and c["data"][-40:] == E.ROUTER[2:]; return "0x" + w(self.allow.get(c["to"], 0))
+        if method == "eth_getCode":
+            self.calls[method] = self.calls.get(method, 0) + 1; assert params[1] == "latest"
+            return self.codes.get(params[0], TOKEN_CODE)
+        if method in ("eth_gasPrice", "eth_getBalance", "eth_getTransactionCount", "eth_getBlockReceipts", "eth_getTransactionReceipt") \
+                or (method == "eth_getTransactionByHash" and params[0] in self.byhash):
+            self.calls[method] = self.calls.get(method, 0) + 1
+            if method == "eth_getTransactionReceipt":
+                raise RuntimeError("HTTP Error 403: Forbidden")
+            return {"eth_gasPrice": lambda: hex(self.gp), "eth_getBalance": lambda: hex(self.balance), "eth_getTransactionCount": lambda: hex(self.mined - self.count_lag),
+                    "eth_getBlockReceipts": lambda: copy.deepcopy(self.blocks.get(int(params[0], 16), [])),
+                    "eth_getTransactionByHash": lambda: copy.deepcopy(self.byhash.get(params[0]))}[method]()
+        return super().rpc(method, params, tries, timeout)
+
+    def post(self, url, raw):
+        """eth_sendRawTransaction: decoded, checked and mined at once (a queued reply first, when one is set: (kind, message, mined), mined
+        "hidden": mined, but the node then shows neither the transaction nor its receipt, as a lagging or partial backend would; "stale":
+        mined, and BNB_RPC_URL (rpc()) answers from then on as before it, while the second endpoint (alt()) shows the chain; "stalepend": the
+        same, and BNB_RPC_URL's stalled pool holds it as pending (its copies "already known"); "lost": taken, then gone from every pool, its
+        copies too; "pending": held unmined; "altpend": held unmined by the second endpoint's pool only, BNB_RPC_URL does not know it). With
+        queue_gaps a nonce above the next one is queued (the node knows it) and mined once the gap below it is filled"""
+        self.posts += 1
+        b = bytes.fromhex(raw[2:]); f = rlp.decode(b); n = int.from_bytes(f[0], "big")
+        assert Account.recover_transaction(b).lower() == WALLET and int.from_bytes(f[6], "big") in (147, 148)    # the wallet's, chain 56 (EIP-155)
+        h = "0x" + keccak(b).hex(); gp = int.from_bytes(f[1], "big"); value = int.from_bytes(f[4], "big"); data = f[5].hex()
+        tx = {"hash": h, "from": WALLET, "to": "0x" + f[3].hex(), "nonce": n, "gasPrice": gp, "gas": int.from_bytes(f[2], "big"), "value": value, "data": data}
+        if h in self.lost:
+            return "ok", None
+        if self.frozen is not None and h in self.frozen["pend"]:
+            return "in", "already known"
+        if n in self.pend:                                                            # a transaction the node holds unmined at this nonce (a "pending" reply)
+            ph, pgp = self.pend[n]
+            if ph == h:
+                return "in", "already known"
+            if gp * 10 < pgp * 11:
+                return "nonce", "replacement transaction underpriced"
+            del self.pend[n]; self.byhash.pop(ph, None); self.queued.pop(n, None)     # replaced: the old one is gone from the pool
+        reply = self.replies.pop(0) if self.replies else ("ok", None, True)
+        if not reply[2]:
+            return reply[:2]
+        if reply[2] == "lost":
+            self.lost.add(h); return reply[:2]
+        if n > self.mined and self.queue_gaps:                                       # queued behind a gap: known, mined once the gap is filled
+            self.pend[n] = (h, gp); self.byhash[h] = dict(tx, value=hex(value), nonce=hex(n)); self.queued[n] = raw; return reply[:2]
+        if reply[2] in ("stale", "stalepend") and self.frozen is None:
+            self.frozen = {"count": self.mined, "bal": dict(self.bal_tok), "seen": set(self.byhash), "pend": {}}
+        if n != self.mined:
+            return "nonce", "nonce too low" if n < self.mined else "nonce too high"
+        if reply[2] in ("pending", "altpend"):                                        # the node takes it and knows it, and it is never mined
+            self.pend[n] = (h, gp); self.byhash[h] = dict(tx, value=hex(value), nonce=hex(n)); self.pending_sent = getattr(self, "pending_sent", []) + [tx]
+            if reply[2] == "altpend":
+                self.hide.add(h)
+            return reply[:2]
+        if reply[2] == "stalepend":
+            self.frozen["pend"][h] = dict(tx, value=hex(value), nonce=hex(n))
+        self.sent.append(tx); self.mined += 1
+        blk = (E.state["done_to"] or L) + 2; sel, args = data[:8], bytes.fromhex(data[8:]); logs, ok, kind, used = [], True, None, 21000
+        if sel == LV.SEL_BUY:
+            kind = "buy"; mo, path, _to, dl = eth_abi.decode(["uint256", "address[]", "address", "uint256"], args); token = path[1].lower(); pair = self.pair_of(token)
+            rq, rt = self.real(pair); tok = E.amount_out(value, rq, rt); used = G_BUY
+            ok = tok >= mo and dl >= time.time() and kind not in self.revert
+            if ok:
+                self.our[pair] = (self.our[pair][0] + value, self.our[pair][1] + tok); self.bal_tok[token] += tok; self.toks.append(tok)
+                logs = [tlog(WBNB, [TT, tp(E.ROUTER), tp(pair)], "0x" + w(value), blk, h, 1), tlog(token, [TT, tp(pair), tp(WALLET)], "0x" + w(tok), blk, h, 2),
+                        tlog(pair, [E.T_SYNC], "0x" + w(rt - tok) + w(rq + value), blk, h, 3),
+                        tlog(pair, [E.T_SWAP, tp(E.ROUTER), tp(WALLET)], "0x" + w(0) + w(value) + w(tok) + w(0), blk, h, 4)]
+                if getattr(self, "odd_transfer", False):                                   # a token whose Transfer event is not the standard one
+                    logs[1] = dict(logs[1], topics=["0x" + "77" * 32] + logs[1]["topics"][1:])
+        elif sel == LV.SEL_APPROVE:
+            kind = "approve"; used = G_APP; ok = kind not in self.revert
+            if ok:
+                self.allow[tx["to"]] = 2 ** 256 - 1
+        elif sel == LV.SEL_SELL:
+            kind = "sell"; amount, mo, path, _to, dl = eth_abi.decode(["uint256", "uint256", "address[]", "address", "uint256"], args); token = path[0].lower()
+            pair = self.pair_of(token); rq, rt = self.real(pair); out = E.amount_out(amount, rt, rq); used = G_SELL
+            if kind in self.oog:                                                      # a sell that needs more gas than its limit: out of gas
+                self.oog.remove(kind); used = tx["gas"]; self.revert.append(kind)
+            ok = out >= mo and amount <= self.bal_tok[token] and dl >= time.time() and kind not in self.revert
+            if ok:
+                self.our[pair] = (self.our[pair][0] - out, self.our[pair][1] - amount); self.bal_tok[token] -= amount; self.outs.append(out)
+                logs = [tlog(token, [TT, tp(WALLET), tp(pair)], "0x" + w(amount), blk, h, 1), tlog(WBNB, [TT, tp(pair), tp(E.ROUTER)], "0x" + w(out), blk, h, 2),
+                        tlog(pair, [E.T_SYNC], "0x" + w(rt + amount) + w(rq - out), blk, h, 3),
+                        tlog(pair, [E.T_SWAP, tp(E.ROUTER), tp(E.ROUTER)], "0x" + w(amount) + w(0) + w(0) + w(out), blk, h, 4)]
+        elif not data and tx["to"] == WALLET:
+            kind = "cancel"; used = 21000                                             # a 0-value transfer to itself (a cancel)
+        if not ok and kind in self.revert:
+            self.revert.remove(kind)                                                      # each queued revert once
+        if reply[2] == "hidden":
+            return reply[:2]
+        self.blocks.setdefault(blk, []).append({"transactionHash": h, "blockNumber": hex(blk), "status": "0x1" if ok else "0x0", "gasUsed": hex(used),
+                                                "effectiveGasPrice": hex(gp), "logs": logs})
+        self.byhash[h] = dict(tx, blockNumber=hex(blk), value=hex(value), nonce=hex(n))
+        if self.mined in self.queued:                                                 # the gap filled: the one queued behind it mined next
+            raw2 = self.queued.pop(self.mined); self.pend.pop(self.mined, None); saved, self.replies = self.replies, []
+            self.post(url, raw2); self.replies = saved
+        return reply[:2]
+
+
+LIVES = []
+
+
+def new_live(chain, keep_old=False, **env_):
+    """a Live as main() makes it (the env read then); the instances before it are closed first (a restart: the old process gone)"""
+    while LIVES and not keep_old:
+        LIVES.pop().close()
+    keep = {k: os.environ.get(k) for k in list(LIVE_ENV) + list(env_)}
+    os.environ.update(LIVE_ENV); os.environ.update({k: str(v) for k, v in env_.items()})
+    try:
+        lv = LV.Live(E)
+    finally:
+        for k, v in keep.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+    lv.POLL_S = 0; lv.post = getattr(chain, "post", None) or (lambda url, raw: ("rejected", "no chain here")); LIVES.append(lv)
+    lv.HEAD_POLL_S = lv.HEAD_BLIND_S = 1e9                                         # the worker's own head poll and the blind extrapolation: test 38 turns them on
+    return lv
+
+
+def age_last(lv, pair, s):
+    """the position's last transaction made s seconds older (its send and its deadline), as if the clock had run on (the chain asked again)"""
+    rec = lv.pos[pair]["txs"][-1]; rec["sent_at"] -= s; rec["polled"] = 0; rec.pop("alt_at", None)
+    if rec.get("deadline") is not None:
+        rec["deadline"] -= s
+
+
+def age_all(lv, pair, s):
+    """every transaction of the position made s seconds older (a cancel and the buy it replaces: the drop waits for the latest deadline)"""
+    for rec in lv.pos[pair]["txs"]:
+        rec["sent_at"] -= s; rec["polled"] = 0; rec.pop("alt_at", None)
+        if rec.get("deadline") is not None:
+            rec["deadline"] -= s
+
+
+def live_start(chain, lv, a, fresh=True):
+    reset(chain); E.LIVE = lv; E.state["done_to"] = a - 1; E.refresh_price(a)
+    for f in (POSF, HALTF) if fresh else ():
+        if os.path.exists(f):
+            os.remove(f)
+    return lv.start(a + E.LAG_BLOCKS, thread=False)
+
+
+def live_go(chain, lv, b):
+    while E.state["done_to"] < b:
+        E.step(replay_to=b); lv.tick()
+    for _ in range(8):
+        lv.tick()
+
+
+def base_chain(logs=None, txs=None):
+    ch_ = LiveChain(); logs = FX["pair_logs"] if logs is None else logs
+    ch_.add([FX["launch_log"]] + logs, [FX["launch_tx"]] + list((FX["txs"] if txs is None else txs).values())); ch_.pool(PAIR, TOKEN, logs)
+    return ch_
+
+
+def clone_tok(pair, shift, tag, token):
+    lg, tx = clone(pair, shift=shift, tag=tag); lg[0]["topics"] = [lg[0]["topics"][0], tp(token), lg[0]["topics"][2]]
+    return lg, tx
+
+
+lives = lambda: [e for e in events("trade_done") if e.get("live")]
+drys = lambda: [e for e in events("trade_done") if e.get("dry")]
+dec = lambda types, tx: eth_abi.decode(types, bytes.fromhex(tx["data"][8:]))
+B_T, S_T = ["uint256", "address[]", "address", "uint256"], ["uint256", "uint256", "address[]", "address", "uint256"]
+E.STAKE_USD = 5; E.MAX_RANGE = 5                                              # the live default stake; the reader 5 blocks a step (as at the head)
+r5 = FX["usdt_reserves"][str(L + 49)][2:]; Q5 = 5_000_000 * int(r5[64:128], 16) * 10 ** 12 // int(r5[:64], 16)
+
+# 14. BNB_LIVE: 0 or 1 only; 1 makes the stake default $5 and loads the live module in main() only; --replay never trades; the key file
+# refused when others can read it, when it is not a key, or when it is another wallet's (the key never in the message)
+envb = {k: v for k, v in os.environ.items() if not k.startswith("BNB_")}
+sub = lambda extra, code: subprocess.run([sys.executable, "-c", code], env=dict(envb, **extra), capture_output=True, text=True, cwd=os.path.join(ROOT, "src"))
+assert sub({}, "import bnb_engine as e, sys; print(e.STAKE_USD, e.LIVE_ON, 'bnb_live' in sys.modules)").stdout.split() == ["15.0", "False", "False"]
+assert sub({"BNB_LIVE": "1"}, "import bnb_engine as e, sys; print(e.STAKE_USD, e.LIVE_ON, 'bnb_live' in sys.modules)").stdout.split() == ["5.0", "True", "False"]
+assert sub({"BNB_LIVE": "1", "BNB_STAKE_USD": "7"}, "import bnb_engine as e; print(e.STAKE_USD)").stdout.split() == ["7.0"]
+assert "BNB_LIVE must be 0 or 1" in sub({"BNB_LIVE": "yes"}, "import bnb_engine").stderr
+assert "--replay never trades" in sub({"BNB_LIVE": "1", "BNB_LOG_PATH": os.path.join(TMP, "r.jsonl")}, "import bnb_engine as e; e.main(['--replay', '1', '2'])").stderr
+assert "needs BNB_WALLET" in sub({"BNB_LIVE": "1", "BNB_LOG_PATH": os.path.join(TMP, "r.jsonl"), "BNB_KEY_FILE": KEYF}, "import bnb_engine as e; e.main([])").stderr
+msgs = []
+for mode, content, env_ in ((0o644, KEY, {}), (0o600, "0xzz" + KEY[4:], {}), (0o600, KEY, {"BNB_WALLET": "0x" + "12" * 20})):
+    os.chmod(KEYF, 0o600); open(KEYF, "w").write(content + "\n"); os.chmod(KEYF, mode)
+    try:
+        new_live(Chain(), **env_); raise AssertionError("no refusal")
+    except SystemExit as e:
+        msgs.append(str(e))
+os.chmod(KEYF, 0o600); open(KEYF, "w").write(KEY + "\n")
+assert "open to other users" in msgs[0] and "does not hold a usable key" in msgs[1] and "is for " + WALLET in msgs[2] and not any(KEY[4:] in m for m in msgs), msgs
+print("ok BNB_LIVE: 0 or 1 only (anything else stops the start); 1 makes the stake default $5 and loads src/bnb_live.py in main() only (a dry "
+      "import never loads it); --replay refuses to trade; the key file refused when open to others, not a key, or another wallet's (the key "
+      "never in the message)")
+
+# 15. the round trip on the real launch (1 BNB; the first slot of a run is live): the pre-buy check, the buy at L+50 seen, the approve
+# after its receipt, the sale at L+260 seen; the three signed transactions decoded back; the settlement from the receipts beside the dry price
+ch15 = base_chain(); lv = new_live(ch15); t0 = time.time()
+st15 = live_start(ch15, lv, L - 2)
+assert st15["live"] and st15["wallet"] == WALLET and st15["nonce"] == 7 and st15["live_off"] is None and st15["send"] == ["rpc.example.org"] and st15["balance_bnb"] == 0.1, st15
+live_go(ch15, lv, L + 300)
+arm, chk, snd, rcp = events("live_arm"), events("live_check"), events("live_send"), events("live_receipt")
+assert [(e["role"], e["slot"]) for e in arm] == [("live", 1)] and chk[0]["ok"] and chk[0]["factor_ppm"] == 10 ** 6 and chk[0]["stake_wei"] == Q5, (arm, chk)
+assert [e["kind"] for e in snd] == ["buy", "approve", "sell"] and all(e["reply"] == "ok" for e in snd) and [e["status"] for e in rcp] == [1, 1, 1], (snd, rcp)
+wf = events("would_fire")[0]; TOK5 = wf["tokens"]; bt, at, stx = ch15.sent
+mo, path, to_, dl = dec(B_T, bt)
+assert wf["stake_wei"] == Q5 and bt["data"][:8] == "b6f9de95" and bt["to"] == E.ROUTER and bt["value"] == Q5 and bt["nonce"] == 7 and bt["gas"] == 200000 and bt["gasPrice"] == 10 ** 8
+assert mo == TOK5 * 950000 // 10 ** 6 and [x.lower() for x in path] == [WBNB, TOKEN] and to_.lower() == WALLET and int(t0) + 60 <= dl <= time.time() + 60, (mo, TOK5, dl)
+sp, amt = dec(["address", "uint256"], at)
+assert at["data"][:8] == "095ea7b3" and at["to"] == TOKEN and at["value"] == 0 and at["nonce"] == 8 and at["gas"] == 80000 and sp.lower() == E.ROUTER and amt == 2 ** 256 - 1
+amount, mo2, path2, to2, dl2 = dec(S_T, stx); rq260, rt260 = reserves_before(FX["pair_logs"], 260)
+assert stx["data"][:8] == "791ac947" and stx["to"] == E.ROUTER and stx["value"] == 0 and stx["nonce"] == 9 and stx["gas"] == 180000 and stx["gasPrice"] == 10 ** 8
+assert amount == ch15.toks[0] and mo2 == E.amount_out(amount, rt260, rq260) * 950000 // 10 ** 6 and [x.lower() for x in path2] == [TOKEN, WBNB] and to2.lower() == WALLET
+td, dd = lives(), drys(); gas = (G_BUY + G_APP + G_SELL) * 10 ** 8; pnl = ch15.outs[0] - Q5 - gas
+assert len(td) == 1 and len(dd) == 1 and td[0]["bnb_in_wei"] == Q5 and td[0]["tokens"] == amount and td[0]["bnb_out_wei"] == ch15.outs[0] and td[0]["gas_wei"] == gas, td
+assert td[0]["pnl_bnb"] == round(pnl / 1e18, 9) and td[0]["pnl_pct"] == round(pnl / Q5, 6) and td[0]["pnl_usd"] == round(pnl / 1e18 * E.bnb_usd(), 4) and td[0]["pnl_pct"] > 2
+assert td[0]["dry_ret"] == dd[0]["dry_ret"] and td[0]["dry_back_wei"] == dd[0]["back_wei"] and td[0]["buy_off"] >= 50 and td[0]["sell_off"] >= 260 and td[0]["reverted"] is None
+assert td[0]["gas_used"] == {"buy": [G_BUY], "approve": [G_APP], "sell": [G_SELL]} and td[0]["live"] is True and td[0]["dry"] is False and td[0]["role"] == "live"
+assert dd[0]["role"] == "live" and dd[0]["live"] is False and (dd[0]["tokens"], dd[0]["back_wei"]) == replay(Q5, FX["pair_logs"]) and dd[0]["clean"]
+pf = json.load(open(POSF))
+assert pf["positions"] == {} and pf["gate_rets"] == [td[0]["pnl_pct"]] and pf["wallet"] == WALLET and PAIR in pf["traded"] and not os.path.exists(HALTF)
+assert "eth_getTransactionReceipt" not in ch15.calls and ch15.calls["eth_getBlockReceipts"] == 3 and KEY[2:] not in open(LOG).read() + open(POSF).read()
+print("ok the live round trip on the real launch: the pre-buy check passed, then from the wallet three transactions decoded back from their "
+      "signed bytes (sender recovered, chain 56): swapExactETHForTokensSupportingFeeOnTransferTokens (nonce 7, 200k gas, 0.1 gwei, value the "
+      "$5 stake, minOut the engine's tokens x 0.95, [WBNB, token], the wallet, now+60), approve(router, max) (nonce 8, 80k), "
+      "swapExactTokensForETHSupportingFeeOnTransferTokens (nonce 9, 180k, the whole balance, minOut the BNB on the reserves at L+260 x 0.95); "
+      "settled from the receipts (in, tokens, out, gas: %+.1f%%) beside the dry price of the same pool (%+.1f%%); the key nowhere"
+      % (100 * td[0]["pnl_pct"], 100 * dd[0]["dry_ret"]))
+
+# 16. the probe: every other launch of a traded size live, the rest dry as the control (each trade_done says which); BNB_MAX_OPEN
+TOK2, TOK3, P2, P3 = "0x" + "a2" * 20, "0x" + "a3" * 20, "0x" + "b2" * 20, "0x" + "b3" * 20
+for maxo in (2, 1):
+    ch16 = base_chain()
+    for pr, sh, tg, tk in ((P2, 20, "d2", TOK2), (P3, 40, "d3", TOK3)):
+        lg, tx = clone_tok(pr, sh, tg, tk); ch16.add(lg, tx); ch16.pool(pr, tk, lg[1:])
+    lv = new_live(ch16, BNB_MAX_OPEN=maxo); live_start(ch16, lv, L - 2); live_go(ch16, lv, L + 340)
+    roles = {e["pair"]: e["role"] for e in drys()}; arms = [(e["slot"], e["role"]) for e in events("live_arm")]
+    if maxo == 2:
+        assert roles == {PAIR: "live", P2: "control", P3: "live"} and [e["pair"] for e in lives()] == [PAIR, P3] and arms == [(1, "live"), (2, "control"), (3, "live")], (roles, arms)
+        assert [t["nonce"] for t in ch16.sent] == list(range(7, 13)) and [t["data"][:8] for t in ch16.sent] == ["b6f9de95", "095ea7b3"] * 2 + ["791ac947"] * 2
+        assert len({e["dry_ret"] for e in drys()}) == 1                               # the three pools are the same launch: the same dry price
+    else:
+        assert roles == {PAIR: "live", P2: "control", P3: "held"} and [e["pair"] for e in lives()] == [PAIR] and len(ch16.sent) == 3, roles
+        assert any(e["role"] == "held" and "BNB_MAX_OPEN 1" in e["why"] for e in events("live_arm"))
+print("ok the probe (BNB_PROBE_EVERY 2): three overlapping launches are live, control, live; each trade_done says its role; the live ones' six "
+      "transactions in nonce order 7..12 across the two pools; BNB_MAX_OPEN 1 holds the third (the first still open)")
+
+# 17. the pre-buy check refuses: a simulated sell that reverts, a sale under 99% of the stake, a leg over its gas limit, an RPC without state
+# overrides; a start whose self-test fails turns live off for the run; a buy that would go late is not sent
+for setup, why in ((lambda c: c.check.__setitem__(TOKEN, (3, 1.0, (136550, 24932, 0))), "the simulated sell reverted"),
+                   (lambda c: c.check.__setitem__(TOKEN, (0, 0.985, (136550, 24932, 70714))), "under BNB_CHECK_MIN 99%"),
+                   (lambda c: c.check.__setitem__(TOKEN, (0, 1.0, (136550, 24932, 115001))), "the simulated sell needs ~180001 gas, over BNB_GAS_SELL 180000"),
+                   (lambda c: c.check.__setitem__(TOKEN, (0, 1.0, (180001, 24932, 70714))), "the simulated buy needs ~200001 gas, over BNB_GAS_BUY 200000"),
+                   (lambda c: c.codes.__setitem__(TOKEN, TOKEN_CODE + "00"), "the token's code is not one of the line's templates"),
+                   (lambda c: setattr(c, "override", False), "the pre-buy check did not run")):
+    ch17 = base_chain(); lv = new_live(ch17); live_start(ch17, lv, L - 2); setup(ch17); live_go(ch17, lv, L + 300)
+    sk = events("live_skip")
+    assert not ch17.sent and len(sk) == 1 and sk[0]["role"] == "refused" and why in sk[0]["why"] + str(events("live_check")[0]["why"]) and drys()[0]["role"] == "refused", (why, sk)
+ch17 = base_chain(); ch17.override = False; lv = new_live(ch17); st17 = live_start(ch17, lv, L - 2); live_go(ch17, lv, L + 300)
+assert "self-test failed" in st17["live_off"] and not ch17.sent and events("live_arm")[0]["role"] == "held" and "live is off for this run" in events("live_arm")[0]["why"]
+E.MAX_RANGE = 40; ch17 = base_chain(); lv = new_live(ch17); live_start(ch17, lv, L - 2); live_go(ch17, lv, L + 300); E.MAX_RANGE = 5
+assert not ch17.sent and re.search(r"the buy would go 30 blocks late \(it lands at L\+80 .*BNB_BUY_LATE 7\)", events("live_skip")[0]["why"]), events("live_skip")
+print("ok the pre-buy check (BnbRoundTrip by eth_call state override, from the wallet) refuses a pool whose simulated sell reverts, whose sale "
+      "returns under 99% of the stake, whose leg needs more gas than its limit (the harness's gas plus 20k, 23k, 65k), or whose token's code "
+      "is not the line's, and when the RPC takes no override; a failed self-test at the start turns live off for the run (the dry run goes "
+      "on); a buy that would land more than 7 blocks after L+50 is not sent")
+
+# 18. the gate halts (HALTED.bnb) and still sells: a dump at +200 on a traded pool (that position sold at once, a second open one sold on
+# schedule, a launch after the halt held); no crowd buy in +60..+260; a reverted buy, approve or sell; a negative median over 10 trades
+crt = [{"hash": HX, "from": CREATOR, "to": ROUTER, "input": "0x18cbafe5"}]
+ch18 = LiveChain(); ch18.add([FX["launch_log"]] + early + dump, [FX["launch_tx"]] + list(FX["txs"].values()) + crt); ch18.pool(PAIR, TOKEN, early + dump)
+for pr, sh, tg, tk in ((P2, 30, "f2", TOK2), (P3, 210, "f3", TOK3)):
+    lg, tx = clone_tok(pr, sh, tg, tk); ch18.add(lg, tx); ch18.pool(pr, tk, lg[1:])
+lv = new_live(ch18, BNB_PROBE_EVERY=1); live_start(ch18, lv, L - 2); live_go(ch18, lv, L + 480)
+td = {e["pair"]: e for e in lives()}; roles = {e["pair"]: e["role"] for e in drys()}
+assert td[PAIR]["why"] == "the dump at +200" and td[PAIR]["pnl_pct"] < -0.9 and 200 <= td[PAIR]["sell_off"] <= 212 and td[P2]["why"] == "sell at +260" and P3 not in td, td
+assert open(HALTF).read().startswith("a dump at +200, before +997, on a traded pool") and roles == {PAIR: "live", P2: "live", P3: "held"}, roles
+assert any("halted: a dump at +200" in e["why"] for e in events("live_arm") if e["pair"] == P3) and len(ch18.sent) == 6
+assert json.load(open(POSF))["halted"].startswith("a dump at +200") and any(a["what"].startswith("the BNB line halted: a dump at +200") for a in events("alarm"))
+ch18 = base_chain(txs=txs9); lv = new_live(ch18); live_start(ch18, lv, L - 2); live_go(ch18, lv, L + 300)
+assert open(HALTF).read().startswith("no crowd buy in +60..+260 on a traded pool") and len(lives()) == 1 and lives()[0]["why"] == "sell at +260"
+for kind, n_sent in (("buy", 1), ("approve", 4), ("sell", 4)):
+    ch18 = base_chain(); ch18.revert = [kind]; lv = new_live(ch18); live_start(ch18, lv, L - 2); live_go(ch18, lv, L + 300)
+    td = lives(); k_sent = [t["data"][:8] for t in ch18.sent]
+    assert open(HALTF).read().startswith("a reverted %s" % kind) and len(ch18.sent) == n_sent and len(td) == 1, (kind, k_sent, td)
+    if kind == "buy":
+        assert td[0]["reverted"] == "buy" and td[0]["bnb_in_wei"] == 0 and td[0]["gas_wei"] == G_BUY * 10 ** 8 and td[0]["pnl_bnb"] == round(-G_BUY * 10 ** 8 / 1e18, 9)
+        assert td[0]["pnl_pct"] is None and json.load(open(POSF))["gate_rets"] == [] and drys()[0]["role"] == "live"
+    elif kind == "sell":
+        s1, s2 = [e for e in events("live_send") if e["kind"] == "sell"]
+        assert td[0]["sell_tries"] == 1 and len(td[0]["hashes"]["sell"]) == 2 and td[0]["gas_wei"] == (G_BUY + G_APP + 2 * G_SELL) * 10 ** 8, td
+        assert s1["slip"] == 0.05 and s2["slip"] == 0.1 and dec(S_T, ch18.sent[3])[1] == s2["expected"] * 900000 // 10 ** 6 and td[0]["bnb_out_wei"] == ch18.outs[0]
+    else:
+        assert k_sent == ["b6f9de95", "095ea7b3", "095ea7b3", "791ac947"] and td[0]["gas_used"]["approve"] == [G_APP, G_APP] and td[0]["why"] == "sell at +260"
+lv = new_live(ch18); os.remove(HALTF); lv.save()
+for i, rt_ in enumerate([-0.1] * 6 + [0.2] * 4 + [-0.5]):
+    x = {"pair": "0x%040x" % (0x900 + i), "token": TOKEN, "L": L, "pool_bnb": 1.0, "txs": [], "gas_wei": 0, "sell_tries": 0, "q": 10 ** 16, "bnb_in": 10 ** 16,
+         "bnb_out": int(10 ** 16 * (1 + rt_)), "sell_due": {"why": "sell at +260"}}
+    lv.pos[x["pair"]] = x; lv.settle(x, "sell at +260")
+    assert (lv.halted is None) == (i < 9) and os.path.exists(HALTF) == (i >= 9), (i, lv.halted)
+assert lv.halted == "the median of the first 10 live trades is -10.00%" and len(lv.gate_rets) == 10
+print("ok the gate halts (HALTED.bnb, its own file) and still sells: a dump at +200 on a traded pool (sold at once at -100%; a second open "
+      "position sold on schedule; a launch after the halt held), no crowd buy in +60..+260 on a traded pool, a reverted buy (settled: the gas "
+      "lost), approve (sent again, then sold) or sell (sent again on fresh reserves at 10% slippage), and a negative median over the first 10 "
+      "live trades (at the 10th, not before)")
+
+# 19. the daily stop: a day's losses at BNB_DAILY_STOP_USD stop new buys (an alarm once) until the next UTC day; what is open still sells
+ch19 = base_chain(); lv = new_live(ch19, BNB_PROBE_EVERY=1); live_start(ch19, lv, L - 2)
+x = {"pair": "0x" + "9d" * 20, "token": TOKEN, "L": L, "pool_bnb": 1.0, "txs": [], "gas_wei": 0, "sell_tries": 0, "q": 2 * 10 ** 16, "bnb_in": 2 * 10 ** 16,
+     "bnb_out": 6 * 10 ** 15, "sell_due": {"why": "sell at +260"}}
+lv.pos[x["pair"]] = x; lv.settle(x, "sell at +260"); day_loss = lv.pnl_today; live_go(ch19, lv, L + 300)
+assert lv.pnl_today < -10 and not ch19.sent and "the daily stop" in events("live_arm")[0]["why"] and drys()[0]["role"] == "held"
+assert sum(1 for a in events("alarm") if a["what"].startswith("the BNB daily stop")) == 1
+lv.today = lambda: "2099-01-01"; reset(ch19); E.state["done_to"] = L - 3; E.refresh_price(L); live_go(ch19, lv, L + 300)
+assert lv.pnl_today > 0 and len(ch19.sent) == 3 and lives()[0]["why"] == "sell at +260"
+print("ok the daily stop: $%.2f in a day (BNB_DAILY_STOP_USD 10) holds the next launch (an alarm once); the next UTC day trades again" % day_loss)
+
+# 20. a restart keeps the open position (bnb_positions.json): past its sell block it is sold at once; before it, its pool is taken back and
+# sold at L+260 (its dry line flagged: the blocks missed); a pool that lost its WBNB while the engine was stopped is sold at once and halts
+ch20 = base_chain(); lv = new_live(ch20); live_start(ch20, lv, L - 2); live_go(ch20, lv, L + 120)
+pf = json.load(open(POSF)); assert pf["positions"][PAIR]["state"] == "approved" and PAIR in pf["pools"] and len(ch20.sent) == 2
+lv2 = new_live(ch20); E.pools.clear(); E.LIVE = lv2; st20 = lv2.start(L + 402, thread=False)
+assert st20["resumed"] == 1 and lv2.pos[PAIR]["sell_due"]["why"] == "past its sell block at the start" and E.pools[PAIR]["gaps"] == 1
+for _ in range(6):
+    lv2.tick()
+td = lives()
+assert len(td) == 1 and td[0]["resumed"] and td[0]["why"] == "past its sell block at the start" and td[0]["bnb_in_wei"] == Q5 and td[0]["tokens"] == ch20.toks[0]
+assert td[0]["gas_wei"] == (G_BUY + G_APP + G_SELL) * 10 ** 8 and [t["nonce"] for t in ch20.sent] == [7, 8, 9] and json.load(open(POSF))["positions"] == {}
+ch20 = base_chain(); lv = new_live(ch20); live_start(ch20, lv, L - 2); live_go(ch20, lv, L + 120)
+lv2 = new_live(ch20); E.pools.clear(); E.LIVE = lv2; E.state["done_to"] = L + 129; lv2.start(L + 132, thread=False); live_go(ch20, lv2, L + 300)
+td, dd = lives(), drys()
+assert len(td) == 1 and td[0]["resumed"] and td[0]["why"] == "sell at +260" and td[0]["sell_off"] >= 260 and dd[0]["gaps"] == 1 and dd[0]["clean"] is False and dd[0]["role"] == "live"
+ch20 = base_chain(logs=early + dump); ch20.txs.update({t["hash"]: t for t in crt}); lv = new_live(ch20); live_start(ch20, lv, L - 2); live_go(ch20, lv, L + 120)
+lv2 = new_live(ch20); E.pools.clear(); E.LIVE = lv2; E.state["done_to"] = L + 209; lv2.start(L + 212, thread=False)
+assert lv2.pos[PAIR]["sell_due"]["why"] == "the pool lost its WBNB while the engine was stopped" and open(HALTF).read().startswith("a traded pool lost its WBNB before +997")
+for _ in range(6):
+    lv2.tick()
+assert lives()[0]["pnl_pct"] < -0.9 and lives()[0]["resumed"]
+print("ok a restart keeps the open position (bnb_positions.json, written before each send): past its sell block it is sold at once; before it, "
+      "its pool is taken back (its dry line flagged: gaps 1) and sold at L+260; a pool that lost its WBNB while stopped is sold at once and halts")
+
+# 21. the nonce: one sequence kept in memory, read again on a nonce error (the transaction signed anew with the chain's count), not when the
+# node already holds this very transaction ("already known", or "nonce too low" for a copy already in); a refused buy sends nothing
+ch21 = base_chain(); lv = new_live(ch21); live_start(ch21, lv, L - 2); ch21.mined = 12                  # five of the wallet's transactions sent elsewhere
+live_go(ch21, lv, L + 300)
+buys = [e for e in events("live_send") if e["kind"] == "buy"]
+assert [(e["reply"], e["nonce"]) for e in buys] == [("nonce", 7), ("ok", 12)] and [t["nonce"] for t in ch21.sent] == [12, 13, 14] and ch21.posts == 4, buys
+assert [e["nonce"] for e in events("live_nonce")] == [7, 12] and lives()[0]["why"] == "sell at +260"
+for reply, kind in ((("in", "already known", True), "in"), (("nonce", "nonce too low", True), "in"), (("rejected", "insufficient funds for gas * price + value", False), None)):
+    ch21 = base_chain(); ch21.replies = [reply]; lv = new_live(ch21); live_start(ch21, lv, L - 2); live_go(ch21, lv, L + 300)
+    buys = [e for e in events("live_send") if e["kind"] == "buy"]
+    if kind:
+        assert [e["reply"] for e in buys] == [kind] and len(ch21.sent) == 3 and lives()[0]["why"] == "sell at +260", buys
+    else:
+        assert [e["reply"] for e in buys] == ["rejected"] and not ch21.sent and events("live_skip")[0]["role"] == "unsent" and lv.nonce == 7 and not lives()
+print("ok the nonce: kept in memory from the pending count; a 'nonce too low' (the wallet used elsewhere) reads it again and signs anew (7, then "
+      "12); 'already known' and 'nonce too low' for a copy already in count as in (no second transaction); a refused buy sends nothing, nonce kept")
+
+# 22. sending: eth_sendRawTransaction's answers read from a local HTTP endpoint (the JSON-RPC error inside an HTTP 403 too); the next
+# endpoint tried when one cannot answer; the receipt from eth_getBlockReceipts when eth_getTransactionReceipt is refused
+REPLY, SEEN = {}, []
+
+
+class Stub(http.server.BaseHTTPRequestHandler):
+    def do_POST(self):
+        SEEN.append((self.path, json.loads(self.rfile.read(int(self.headers["Content-Length"])))))
+        code, body = REPLY[self.path].pop(0)
+        self.send_response(code); self.send_header("Content-Type", "application/json"); self.end_headers(); self.wfile.write(body.encode())
+
+    def log_message(self, *a):
+        pass
+
+
+srv = http.server.HTTPServer(("127.0.0.1", 0), Stub); threading.Thread(target=srv.serve_forever, daemon=True).start(); BASE = "http://127.0.0.1:%d" % srv.server_port
+err = lambda m: json.dumps({"jsonrpc": "2.0", "id": 1, "error": {"code": -32000, "message": m}})
+lv = new_live(base_chain()); lv.post = LV.Live.post.__get__(lv)
+REPLY["/a"] = [(200, json.dumps({"jsonrpc": "2.0", "id": 1, "result": "0x" + "ab" * 32})), (403, err("Archive requests require a personal token")), (200, err("nonce too low")),
+               (200, err("insufficient funds for gas * price + value")), (200, err("already known")), (500, "oops"), (200, err("replacement transaction underpriced"))]
+kinds = [lv.post(BASE + "/a", "0x01") for _ in range(7)]
+assert [k for k, _ in kinds] == ["ok", "unknown", "nonce", "rejected", "in", "unknown", "nonce"] and kinds[5][1] == "HTTP 500", kinds
+assert all(b == {"jsonrpc": "2.0", "id": 1, "method": "eth_sendRawTransaction", "params": ["0x01"]} for _, b in SEEN)
+lv.send_urls = [BASE + "/a", BASE + "/b"]
+REPLY["/a"] = [(403, err("Archive requests require a personal token"))]; REPLY["/b"] = [(200, json.dumps({"jsonrpc": "2.0", "id": 1, "result": "0x" + "ab" * 32}))]
+assert lv.broadcast("0x02") == ("ok", None, "127.0.0.1")
+for _ in range(100):                                                          # (the two posts run at once; the answer is back at the first ok)
+    if len(REPLY["/a"]) == 0:
+        break
+    time.sleep(0.02)
+assert sorted(p_ for p_, _ in SEEN[-2:]) == ["/a", "/b"]
+REPLY["/a"] = [(429, "{}"), (429, "{}")]; REPLY["/b"] = [(502, "bad"), (502, "bad")]; n0 = len(SEEN)
+assert lv.broadcast("0x03")[0] == "unknown" and len(SEEN) - n0 == 4                           # two rounds when nobody answers
+REPLY["/a"] = [(200, err("nonce too low"))]; REPLY["/b"] = [(200, err("insufficient funds for gas * price + value"))]
+assert lv.broadcast("0x04")[0] == "nonce"
+srv.shutdown()
+RC = json.load(open(os.path.join(ROOT, "tests", "data", "bnb_receipts.json")))
+btx, brc = RC["buy"]["tx"], RC["buy"]["receipt"]; stx_, src_ = RC["sell"]["tx"], RC["sell"]["receipt"]
+_, bpath, _, _ = eth_abi.decode(B_T, bytes.fromhex(btx["input"][10:])); samt, _, spath, _, _ = eth_abi.decode(S_T, bytes.fromhex(stx_["input"][10:]))
+sw = lambda rc_: next(lg for lg in rc_["logs"] if lg["topics"][0] == E.T_SWAP); words_ = lambda lg: [int(lg["data"][2 + 64 * i: 66 + 64 * i], 16) for i in range(4)]
+bpair, spair = sw(brc)["address"].lower(), sw(src_)["address"].lower(); bw, sw_ = words_(sw(brc)), words_(sw(src_))
+wd = next(int(lg["data"], 16) for lg in src_["logs"] if lg["topics"][0] == "0x7fcf532c15f0a6db0bd6d0e038bea71d30d808c7d98cb3bf7268a95bf5081b65")
+assert LV.transfers(brc, WBNB, frm=E.ROUTER, to=bpair) == int(btx["value"], 16) > 0 and LV.transfers(brc, bpath[1].lower(), to=btx["from"].lower()) == max(bw[2], bw[3]) > 0
+assert LV.transfers(src_, WBNB, frm=spair, to=E.ROUTER) == wd == max(sw_[2], sw_[3]) > 0 and LV.transfers(src_, spath[0].lower(), frm=stx_["from"].lower(), to=spair) == samt
+other = dict(copy.deepcopy(brc), transactionHash="0x" + "11" * 32)
+stubs = {"eth_getTransactionByHash": lambda p_: {"hash": p_[0], "blockNumber": brc["blockNumber"]}, "eth_getBlockReceipts": lambda p_: [other, brc]}
+
+
+def stub_rpc(method, params, tries=3, timeout=10):
+    if method not in stubs:
+        raise RuntimeError("HTTP Error 403: Forbidden")
+    return stubs[method](params)
+
+
+E.rpc = stub_rpc
+assert lv.receipt(brc["transactionHash"]) == (brc, True)
+stubs["eth_getTransactionReceipt"] = lambda p_: src_; del stubs["eth_getBlockReceipts"]
+assert lv.receipt(stx_["hash"]) == (src_, True)
+stubs["eth_getTransactionByHash"] = lambda p_: None; assert lv.receipt("0x" + "22" * 32) == (None, False)
+print("ok sending: eth_sendRawTransaction's answers read (a result; 'nonce too low' and 'replacement ... underpriced'; 'insufficient funds' "
+      "refused; 'already known' in; publicnode's JSON error inside an HTTP 403 and an HTTP 500 unknown), the next endpoint tried, two rounds when "
+      "none answers; two real receipts of the router's calls read (WBNB in = the value, the tokens = the Swap's out; WBNB out = the Withdrawal = "
+      "the Swap's out); the receipt from the block's receipts when eth_getTransactionReceipt is refused, else from it")
+
+# 23. the dry replay is not touched by the live path: a control slot's lines equal a dry run's field for field (role and live aside); our
+# own buy in the pool's logs stays out of the dry copy and of the crowd's counts
+E.LIVE = None; ch23 = base_chain(); run(ch23, L - 2, L + 1100); base5 = lines()
+lv = new_live(ch23); live_start(ch23, lv, L - 2); lv.eligible = 1; live_go(ch23, lv, L + 1100)
+assert [{k: v for k, v in e.items() if k not in ("live", "role")} for e in lines()] == base5 and drys()[0]["role"] == "control" and not ch23.sent
+logs23 = [x for x in FX["pair_logs"] if blk(x) == L]; rq_, rt_ = 10 ** 18, 10 ** 18; HO = "0x" + "0e" * 32; tok_o = E.amount_out(Q5, rq_, rt_)
+logs23 += [{"address": PAIR, "topics": [E.T_SYNC], "data": "0x" + w(rt_ - tok_o) + w(rq_ + Q5), "blockNumber": hex(L + 53), "transactionHash": HO, "logIndex": "0x1"},
+           {"address": PAIR, "topics": [E.T_SWAP, tp(E.ROUTER), tp(WALLET)], "data": "0x" + w(0) + w(Q5) + w(tok_o) + w(0), "blockNumber": hex(L + 53), "transactionHash": HO, "logIndex": "0x2"}]
+rq_, rt_ = rq_ + Q5, rt_ - tok_o; txs23 = [FX["launch_tx"]]
+for n, (off, a_) in enumerate([(80, 2 * 10 ** 17), (120, 3 * 10 ** 17)]):
+    lg_, tx_, rq_, rt_ = crowd_buy(rq_, rt_, off, a_, 10 + n); logs23 += lg_; txs23.append(tx_)
+ch23 = LiveChain(); ch23.add([FX["launch_log"]] + logs23, txs23 + [{"hash": HO, "from": WALLET, "to": ROUTER, "input": "0xb6f9de95"}]); ch23.pool(PAIR, TOKEN, logs23)
+E.LIVE = None; run(ch23, L - 2, L + 300); stranger = drys()[0]
+lv = new_live(ch23); live_start(ch23, lv, L - 2); lv.eligible = 1; lv.hashes.add(HO); live_go(ch23, lv, L + 300); ours = drys()[0]
+assert stranger["strangers"] == 1 and ours["strangers"] == 0 and ours["crowd_buys"] == stranger["crowd_buys"] == 2 and not events("alarm")
+assert (ours["tokens"], ours["back_wei"]) == replay(Q5, [x for x in logs23 if x["transactionHash"] != HO]) and ours["back_wei"] != stranger["back_wei"]
+print("ok the dry replay untouched: a control slot's launch, would_fire, trade_done, dump and pool_done lines equal the dry run's field for "
+      "field; our own buy in the pool's logs (its hash) stays out of the dry copy (equal to an independent replay without it) and is no stranger")
+
+# 24. the files: bnb_live.py alone names eth_sendRawTransaction (in post() only), reads no other key and never engine.env; bnb_engine.py loads
+# it by name in main() under BNB_LIVE=1 only; the halt and positions files are the line's own (the Robinhood engine's halt files untouched)
+src_e = open(os.path.join(ROOT, "src", "bnb_engine.py")).read(); src_l = open(os.path.join(ROOT, "src", "bnb_live.py")).read(); tl = ast.parse(src_l)
+fns = [f.name for f in ast.walk(tl) if isinstance(f, ast.FunctionDef) for d in ast.walk(f) if isinstance(d, ast.Dict)
+       for k, v in zip(d.keys, d.values) if isinstance(k, ast.Constant) and k.value == "method" and isinstance(v, ast.Constant) and v.value == "eth_sendRawTransaction"]
+assert src_l.count('"eth_sendRawTransaction"') == 1                            # the one JSON-RPC body that sends, in post()
+assert fns == ["post"] and "eth_sendRawTransaction" not in src_e and "eth_account" not in src_e and "PRIVATE_KEY" not in src_l and "engine.env" not in src_l
+main_src = ast.get_source_segment(src_e, next(f for f in ast.walk(ast.parse(src_e)) if isinstance(f, ast.FunctionDef) and f.name == "main"))
+assert src_e.count('__import__("bnb_live")') == 1 and "    if LIVE_ON:" in main_src and '__import__("bnb_live")' in main_src
+assert set(re.findall(r"acct\.\w+", src_l)) == {"acct.address", "acct.sign_transaction"} and os.path.basename(lv.HALT_FILE) == "HALTED.bnb"
+named = {n.value for n in ast.walk(tl) if isinstance(n, ast.Constant) and isinstance(n.value, str) and re.fullmatch(r"eth_\w+", n.value)}
+assert named == {"eth_call", "eth_gasPrice", "eth_getBalance", "eth_getTransactionCount", "eth_getTransactionByHash", "eth_getBlockReceipts",
+                 "eth_getTransactionReceipt", "eth_getCode", "eth_blockNumber", "eth_getBlockByNumber", "eth_sendRawTransaction"}, named
+art = json.load(open(os.path.join(ROOT, "contracts", "BnbRoundTrip.json")))
+assert art["source_sha256"] == __import__("hashlib").sha256(open(os.path.join(ROOT, "contracts", "BnbRoundTrip.sol"), "rb").read()).hexdigest()
+print("ok the files: only bnb_live.py names eth_sendRawTransaction (in post()), it uses the key only to sign, never opens engine.env; "
+      "bnb_engine.py loads it by name in main() under BNB_LIVE=1 only; the check's bytecode is built from contracts/BnbRoundTrip.sol")
+
+# 25. deploy/bnb_wallet.py: a new key in a mode-600 file it creates (never one that exists, never engine.env); only the address printed
+kp = os.path.join(TMP, "w", "bnb.key"); os.makedirs(os.path.dirname(kp))
+wl = lambda path: subprocess.run([sys.executable, os.path.join(ROOT, "deploy", "bnb_wallet.py"), path], capture_output=True, text=True)
+o1 = wl(kp); k1 = open(kp).read().strip(); a1 = Account.from_key(k1).address
+assert o1.returncode == 0 and stat.S_IMODE(os.stat(kp).st_mode) == 0o600 and re.fullmatch(r"0x[0-9a-f]{64}", k1) and k1[2:] not in o1.stdout + o1.stderr
+assert ("new BNB wallet: " + a1) in o1.stdout and ("BNB_WALLET=" + a1.lower()) in o1.stdout
+o2 = wl(kp); o3 = wl(os.path.join(TMP, "w", "engine.env"))
+assert o2.returncode != 0 and "exists: not replacing it" in o2.stderr and open(kp).read().strip() == k1 and o3.returncode != 0 and not os.path.exists(os.path.join(TMP, "w", "engine.env"))
+print("ok deploy/bnb_wallet.py: a new key in a file it creates mode 600 (O_EXCL), only the address and the BNB_WALLET= line printed; an "
+      "existing key file is never replaced; it never writes engine.env")
+
+# 26. the screen with BNB_LIVE=1: LIVE (the receipts) vs the same pools' dry price vs CONTROL, the halt, the open positions and the day,
+# the wallet's balance from the RPC (the key file never opened)
+now = time.time(); S = os.path.join(TMP, "s.jsonl"); H2 = os.path.join(TMP, "bnb_H2"); P2F = os.path.join(TMP, "p2.json")
+st_ = {"ev": "start", "t": now - 3600, "release": "bnb-0.2", "live": True, "probe_every": 2, "stake_usd": 5, "daily_stop_usd": 10, "wallet": WALLET, "buy_at": 50,
+       "sell_at": 260, "skip_pool_bnb": [15.0], "gate": {"dump_before": 997, "crowd_from": 60, "probes": 10}, "bnb_usd": 750}
+dryl = lambda i, ret, role: {"ev": "trade_done", "dry": True, "live": False, "role": role, "t": now - 3000 + i, "pair": "0x%040x" % i, "pool_bnb": 1.0, "dry_ret": ret, "breaks": 0,
+                              "gaps": 0, "crowd_gate": 1, "crowd_buys": 2, "crowd_bnb": 0.5, "stake_wei": 6 * 10 ** 15}
+livel = lambda i, pp, usd, dr, rev=None: {"ev": "trade_done", "live": True, "dry": False, "role": "live", "t": now - 2900 + i, "pair": "0x%040x" % i, "pool_bnb": 1.0,
+                                           "pnl_pct": pp, "pnl_usd": usd, "gross_pct": pp, "dry_ret": dr, "dry_ret_gross": dr, "stake_wei": 6 * 10 ** 15, "bnb_usd": 750, "reverted": rev}
+evs = [st_, dryl(1, 0.20, "live"), dryl(2, 0.30, "control"), dryl(3, 0.10, "live"), dryl(4, -0.06, "control"), livel(1, 0.15, 0.75, 0.20), livel(3, 0.05, 0.25, 0.10),
+       livel(5, None, -0.01, None, "buy"), {"ev": "live_receipt", "t": now - 2000, "kind": "buy", "status": 0}, {"ev": "live_skip", "t": now - 1900, "role": "held", "why": "halted: a reverted buy"},
+       {"ev": "live_check", "t": now - 1800, "ok": False, "why": "the simulated sell reverted"}, {"ev": "flow", "t": now - 30, "blocks": 130, "bnb_usd": 750}]
+open(S, "w").write("".join(json.dumps(e) + "\n" for e in evs)); open(H2, "w").write("a reverted buy (0x05, 0xabc)\n")
+json.dump({"positions": {"0x" + "77" * 20: {"state": "approved", "sell_due": None}}, "gate_rets": [0.15, 0.05], "day": "2026-10-12", "pnl_today_usd": 0.99}, open(P2F, "w"))
+REPLY.clear(); SEEN.clear(); REPLY["/rpc"] = [(200, json.dumps({"jsonrpc": "2.0", "id": 1, "result": hex(264 * 10 ** 14)}))]
+srv = http.server.HTTPServer(("127.0.0.1", 0), Stub); threading.Thread(target=srv.serve_forever, daemon=True).start()
+renv = dict(envb, BNB_LOG_PATH=S, BNB_HALT_FILE=H2, BNB_POSITIONS_FILE=P2F, BNB_WALLET=WALLET, BNB_RPC_URL="http://127.0.0.1:%d/rpc" % srv.server_port, BNB_ENV_FILE=os.path.join(TMP, "none"))
+out = subprocess.run([sys.executable, os.path.join(ROOT, "deploy", "bnb_results.py"), "24"], env=renv, capture_output=True, text=True).stdout; srv.shutdown()
+assert out.startswith("=" * 100 + "\nBNB LIVE PROBE") and re.search(r"LIVE \(the receipts, after gas\)\s+2\s+\+10\.0%\s+\+10\.0%\s+100% \|\s+\+0\.99", out), out
+assert re.search(r"LIVE's pools at the dry price\s+2\s+\+15\.0%\s+\+15\.0%\s+100% \|\s+\+1\.35", out) and re.search(r"CONTROL \(the other launches, dry\)\s+2\s+\+12\.0%\s+\+12\.0%\s+50% \|\s+\+1\.08", out), out
+assert "HALTED: a reverted buy (0x05, 0xabc)" in out and re.search(r"a revert:\s+TRIPPED x1", out) and "open live positions: 1" in out and "2 of 10 live trades so far" in out, out
+assert ("wallet %s: 0.026400 BNB, $19.80 (read from 127.0.0.1)" % WALLET) in out and SEEN[0][1]["method"] == "eth_getBalance" and "held 1" in out and "refused 1" in out, out
+print("ok the screen with BNB_LIVE=1: LIVE from the receipts (+$0.99 with a reverted buy's gas), the same pools at the dry price, CONTROL; the "
+      "halt with its reason and how to resume, the revert in the gate, the open positions and the gate's live count, the wallet's balance by RPC")
+
+# 27. the buy's own window: a dump seen while the buy is due cancels it (nothing sent); a position sending its buy is never dropped by a
+# halt; a buy no endpoint answered for is sent again and mined; one never mined is dropped and the nonce read again; a restart mid-send
+ch27 = base_chain(); lv = new_live(ch27); live_start(ch27, lv, L - 2)
+while not events("would_fire"):
+    E.step(replay_to=L + 300)
+    if not events("would_fire"):
+        lv.tick()
+assert lv.pos[PAIR]["state"] == "buy_due"
+lv.on_dump(E.pools[PAIR], 51); lv.tick()                                       # (a dump before +997 on any pool of the line also halts it)
+assert PAIR not in lv.pos and not ch27.sent and events("live_skip")[-1]["why"] == "the line halted before the buy" and lv.halted.startswith("a dump at +51, before +997, on a watched pool")
+lv.pos["0x" + "88" * 20] = {"pair": "0x" + "88" * 20, "state": "buying", "L": L}; lv.halted = None; lv.halt("a test halt")
+assert "0x" + "88" * 20 in lv.pos and open(HALTF).read() == "a test halt\n"
+for replies, mined in (([("unknown", "timed out", False)] * 2, True), ([("unknown", "timed out", False)] * 4, False)):    # a broadcast: two rounds
+    ch27 = base_chain(); ch27.replies = list(replies); lv = new_live(ch27); live_start(ch27, lv, L - 2); live_go(ch27, lv, L + 52)
+    assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_rebroadcast")     # the reader holds at L+52 (the buy not late yet) while the clock runs on
+    age_last(lv, PAIR, 25); lv.tick()                                           # no receipt after BNB_RECEIPT_WAIT_S (20 s), 35 s before its deadline: sent again
+    age_last(lv, PAIR, 60); lv.tick()                                           # 25 s past its deadline and twice the wait: mined, or dropped
+    live_go(ch27, lv, L + 300)
+    assert len(events("live_rebroadcast")) == 1 and [e["reply"] for e in events("live_send")][:1] == ["unknown"]
+    if mined:
+        assert [t["nonce"] for t in ch27.sent] == [7, 8, 9] and lives()[0]["why"] == "sell at +260" and lives()[0]["hashes"]["buy"] == [ch27.sent[0]["hash"]]
+    else:
+        assert not ch27.sent and not lives() and events("live_skip")[-1]["why"] == "the buy was never mined" and lv.nonce is None and PAIR not in lv.traded
+json.dump({"wallet": WALLET, "positions": {PAIR: {"pair": PAIR, "state": "buying", "txs": [], "L": L}}, "pools": {}}, open(POSF, "w"))
+lv = new_live(ch27); E.LIVE = lv
+assert lv.start(L + 10, thread=False)["resumed"] == 0 and events("live_resume")[-1]["what"] == "never bought: dropped" and not lv.pos
+print("ok the buy's own window: a dump seen while the buy is due cancels it; a position sending its buy is not dropped by a halt; a buy no "
+      "endpoint answered for is sent again after BNB_RECEIPT_WAIT_S and mined, or dropped (nonce read again) when never mined; a restart "
+      "while sending a buy with no transaction recorded drops it")
+
+# 28. the chain's head, not the reader, times the live path. The reader stalled 800 blocks behind the head (an RPC stall: ranges are
+# retried, never skipped, and it jumps only MAX_BEHIND behind) sends no buy at its own L+50 (it would land at L+851); a position already
+# bought is sold once the head is BNB_SELL_LATE (20) blocks past L+260, on the pool's reserves then, not at the reader's L+260
+ch28 = base_chain(); lv = new_live(ch28); live_start(ch28, lv, L - 2)
+while not events("would_fire"):
+    E.step(replay_to=L + 300)
+    if not events("would_fire"):
+        lv.tick()
+E.state["head"] = L + 850; lv.tick()
+assert not ch28.sent and PAIR not in lv.pos and "the buy would go 801 blocks late (it lands at L+851 at the earliest, the head at %d;" % (L + 850) in events("live_skip")[-1]["why"]
+ch28 = base_chain(); lv = new_live(ch28); live_start(ch28, lv, L - 2); live_go(ch28, lv, L + 60)
+assert lv.pos[PAIR]["state"] == "approved" and len(ch28.sent) == 2 and not lv.pos[PAIR].get("sell_due")
+E.state["head"] = L + 260 + 20 + E.LAG_BLOCKS - 1; lv.tick()
+assert not lv.pos[PAIR].get("sell_due") and len(ch28.sent) == 2                       # one block short of BNB_SELL_LATE: not yet
+E.state["head"] = L + 60 + 800; rq_, rt_ = ch28.real(PAIR)
+for _ in range(6):
+    lv.tick()
+td = lives(); amount, mo, *_ = dec(S_T, ch28.sent[-1])
+assert len(td) == 1 and td[0]["why"] == "the reader is behind: sold by the head (L+%d)" % (60 + 800) and ch28.sent[-1]["data"][:8] == "791ac947", td
+assert mo == E.amount_out(amount, rt_, rq_) * 950000 // 10 ** 6 and td[0]["sell_off"] < 260 and not os.path.exists(HALTF)
+assert any(a["what"] == "the reader is 800 blocks behind the head: a live position sold by the head at +858" for a in events("alarm"))
+E.state["head"] = None; live_go(ch28, lv, L + 300)
+assert len(lives()) == 1 and len(drys()) == 1 and len(ch28.sent) == 3
+print("ok the head times the live path: the reader stalled 800 blocks behind sends no buy at its L+50 (it would land at L+851; the "
+      "lateness is measured on the head after the buy's reads), and a bought position is sold when the head is 20 blocks past L+260 (not "
+      "one block before), on the reserves then, while the reader is still at L+60")
+
+# 29. the buy's own reads, just before the send: a pool that lost its WBNB since L+50, or whose price moved past BNB_SLIP (the buy would
+# revert, and a revert halts the line), is not bought; a better price raises minOut to the bound on the fresh reserves; a zero minOut, a
+# stake over 1.5 x BNB_STAKE_USD and a fire with no tokens for the stake (the engine's tok <= 0) send nothing
+def to_buy_due(chain, lv):
+    while lv.pos.get(PAIR, {}).get("state") != "buy_due":
+        E.step(replay_to=L + 300)
+        if lv.pos.get(PAIR, {}).get("state") != "buy_due":
+            lv.tick()
+    return lv.pos[PAIR]
+
+
+for move, want in (((-6 * 10 ** 17, 0), "the pool lost its WBNB before the buy"), ((2 * 10 ** 17, 166000000000000000), "the price moved past BNB_SLIP before the buy"),
+                   (None, "a zero stake or zero minOut"), ("q", "is over 1.5 x BNB_STAKE_USD 5")):
+    ch29 = base_chain(); lv = new_live(ch29); live_start(ch29, lv, L - 2); x = to_buy_due(ch29, lv)
+    if move is None:
+        x["min_out"] = 0
+    elif move == "q":
+        x["q"] = 2 * x["q"]
+    else:
+        ch29.our[PAIR] = move
+    lv.tick()
+    assert not ch29.sent and PAIR not in lv.pos and want in events("live_skip")[-1]["why"] and PAIR not in lv.traded, (want, events("live_skip"))
+ch29 = base_chain(); lv = new_live(ch29); live_start(ch29, lv, L - 2); x = to_buy_due(ch29, lv); old = x["min_out"]
+ch29.our[PAIR] = (-10 ** 16, -3 * 10 ** 16); rq_, rt_ = ch29.real(PAIR); lv.tick()            # someone sold before our buy: more tokens for the stake now
+mo, *_ = dec(B_T, ch29.sent[0])
+assert mo == E.amount_out(Q5, rq_, rt_) * 950000 // 10 ** 6 > old and [e["min_out"] for e in events("live_send")] == [mo]
+ch29 = base_chain(); lv = new_live(ch29); live_start(ch29, lv, L - 2)
+while lv.pos.get(PAIR, {}).get("state") != "checked":
+    E.step(replay_to=L + 300); lv.tick()
+E.pools[PAIR]["rt"] = 0                                                              # no token reserve known at L+50 (the pool's next log is at +80)
+while not events("skip"):
+    E.step(replay_to=L + 300); lv.tick()
+lv.tick()
+assert not ch29.sent and PAIR not in lv.pos and events("live_skip")[-1]["why"] == "no tokens for the stake at +50" and events("live_skip")[-1]["role"] == "held"
+print("ok the buy's own reads: a pool drained since L+50 or a price moved past the slippage is not bought (no revert, no halt), a better "
+      "price raises minOut to the bound on the fresh reserves; a zero minOut, a stake over 1.5 x $5 and a fire with no tokens for the stake "
+      "send nothing")
+
+# 30. a transaction the node cannot show: no copy is sent at or past its deadline (BNB_RECEIPT_WAIT_S equal to BNB_DEADLINE_S); one never
+# mined is dropped only once its deadline is 15 s past; when its nonce was mined (the node lags), the chain decides: a buy whose tokens are
+# in the wallet is kept and sold, a sell whose tokens are gone is settled at its minOut (a floor; no halt, out of the gate), an approve
+# whose allowance is there is done; a nonce that went to another transaction of ours drops it
+class Frozen:
+    """bnb_live's wall clock held at one instant (its monotonic clock and sleep run on)"""
+    def __init__(self, t):
+        self.t = t
+
+    def time(self):
+        return self.t
+
+    def __getattr__(self, k):
+        return getattr(time, k)
+
+
+def frozen(t, f, *a):
+    LV.time = Frozen(t)
+    try:
+        return f(*a)
+    finally:
+        LV.time = time
+
+
+ch30 = base_chain(); ch30.replies = [("unknown", "timed out", False)] * 2; lv = new_live(ch30, BNB_RECEIPT_WAIT_S=60); live_start(ch30, lv, L - 2)
+T30 = int(time.time()) + 0.75; bs0 = lv.buy_send; lv.buy_send = lambda x_: frozen(T30, bs0, x_)     # the buy sent at one instant: exact (a send crossing a
+live_go(ch30, lv, L + 52); lv.buy_send = bs0                                                        # second made deadline - sent_at 58.99 s, 4 runs in 1000)
+n0 = ch30.posts; rec = lv.pos[PAIR]["txs"][-1]; dl_signed = dec(B_T, {"data": rlp.decode(bytes.fromhex(rec["raw"][2:]))[5].hex()})[3]
+assert n0 == 2 and rec["sent_at"] == T30 and rec["deadline"] == dl_signed == int(T30) + 60 and lv.pos[PAIR]["state"] == "buy_sent", (rec["sent_at"], rec["deadline"], T30)
+age_last(lv, PAIR, 60); lv.tick()                                                   # at its deadline: a copy could only revert (EXPIRED)
+age_last(lv, PAIR, 30); lv.tick()                                                   # 90 s old, 30 s past its deadline: under twice the wait
+assert ch30.posts == n0 and not events("live_rebroadcast") and lv.pos[PAIR]["state"] == "buy_sent"
+age_last(lv, PAIR, 40); lv.tick()                                                   # 130 s old: never mined, dropped
+assert ch30.posts == n0 and PAIR not in lv.pos and events("live_skip")[-1]["why"] == "the buy was never mined" and not ch30.sent
+ch30 = base_chain(); ch30.replies = [("unknown", "timed out", False)] * 4; lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 52)
+age_last(lv, PAIR, 25); lv.tick(); assert len(events("live_rebroadcast")) == 1      # a copy, 35 s before its deadline (no answer either)
+raw30, h30 = lv.sign({"nonce": 7, "gasPrice": 10 ** 8, "gas": 21000, "to": lv.checksum(WALLET), "value": 0, "data": "0x", "chainId": E.CHAIN_ID})
+ch30.post(None, raw30); lv.mined_nonces[7] = h30; age_last(lv, PAIR, 100); lv.tick()   # its nonce 7 went to another transaction of ours (its receipt seen)
+assert any("its nonce 7 went to our " + h30 in a["what"] for a in events("alarm")) and PAIR not in lv.pos and not ch30.toks
+ch30 = base_chain(); ch30.replies = [("ok", None, "hidden")]; lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 52)
+assert lv.pos[PAIR]["state"] == "buy_sent" and len(ch30.sent) == 1 and ch30.bal_tok[TOKEN] > 0
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()                # sent again ('nonce too low': it is in), then the chain asked
+x = lv.pos[PAIR]
+assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch30.toks[0] and x["bnb_in"] == Q5 and x["unconfirmed"].startswith("the buy's receipt") and PAIR in lv.traded
+live_go(ch30, lv, L + 300); td = lives()
+assert len(td) == 1 and td[0]["why"] == "sell at +260" and td[0]["tokens"] == ch30.toks[0] and td[0]["gas_wei"] == (200000 + G_APP + G_SELL) * 10 ** 8 and not os.path.exists(HALTF)
+assert json.load(open(POSF))["gate_rets"] == [td[0]["pnl_pct"]] and any("kept as bought" in a["what"] for a in events("alarm"))
+ch30 = base_chain(); ch30.replies = [("ok", None, True), ("ok", None, "hidden")]; lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 60)
+assert lv.pos[PAIR]["state"] == "approve_sent"
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()
+assert lv.pos[PAIR]["state"] == "approved" and TOKEN in lv.approved
+live_go(ch30, lv, L + 300)
+assert [t["data"][:8] for t in ch30.sent] == ["b6f9de95", "095ea7b3", "791ac947"] and lives()[0]["why"] == "sell at +260"
+ch30 = base_chain(); lv = new_live(ch30); live_start(ch30, lv, L - 2); live_go(ch30, lv, L + 255)
+ch30.replies = [("ok", None, "hidden")]; live_go(ch30, lv, L + 262)
+assert lv.pos[PAIR]["state"] == "sell_sent" and ch30.bal_tok[TOKEN] == 0
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()
+td = lives(); smo = [e for e in events("live_send") if e["kind"] == "sell"][-1]["min_out"]
+assert len(td) == 1 and td[0]["bnb_out_wei"] == smo > 0 and td[0]["unconfirmed"].startswith("the sell's receipt") and not os.path.exists(HALTF) and lv.halted is None, td
+assert json.load(open(POSF))["gate_rets"] == [] and lv.recent == [] and lv.pnl_today == td[0]["pnl_usd"] and len(ch30.sent) == 3
+print("ok a transaction the node cannot show: no copy at or past its deadline, dropped only 15 s after it when its nonce is not mined (or "
+      "went to another of ours); its nonce mined, the chain decides: a buy whose tokens are in the wallet is kept and sold, an approve whose "
+      "allowance is there is done, a sell whose tokens are gone is settled at its minOut (no halt, out of the gate's medians)")
+
+# 31. the slots by size and the token's template: 1, 10 and 25 BNB (BNB_LIVE_POOL_BNB) alternate live/control; a 2.5-BNB launch stays dry
+# (dry_size, no slot, out of the control) until 2.5 is listed; a token whose runtime code is not one of BNB_TOKEN_CODEHASHES is refused (an
+# alarm once per new code); the default list is the launcher's two templates
+P25, TOK25 = "0x" + "c5" * 20, "0x" + "a5" * 20
+lg25 = [dict(x, data=x["data"][:66] + w(25 * 10 ** 17)) for x in FX["pair_logs"] if blk(x) == L]
+for sizes, want in ((None, {PAIR: ("live", 1), P25: ("dry_size", None), P3: ("control", 2)}), ("1,2.5,10,25", {PAIR: ("live", 1), P25: ("control", 2), P3: ("live", 3)})):
+    ch31 = base_chain()
+    lg, tx = clone(P25, shift=10, tag="e5", logs=lg25); lg[0]["topics"] = [lg[0]["topics"][0], tp(TOK25), lg[0]["topics"][2]]; ch31.add(lg, tx); ch31.pool(P25, TOK25, lg[1:])
+    lg, tx = clone_tok(P3, 20, "e3", TOK3); ch31.add(lg, tx); ch31.pool(P3, TOK3, lg[1:])
+    lv = new_live(ch31, **({"BNB_LIVE_POOL_BNB": sizes} if sizes else {})); live_start(ch31, lv, L - 2); live_go(ch31, lv, L + 300)
+    arms = {e["pair"]: (e["role"], e["slot"]) for e in events("live_arm")}
+    assert arms == want and {e["pair"] for e in lives()} == {p_ for p_, (r_, _) in want.items() if r_ == "live"}, arms
+    assert {e["pair"]: e["role"] for e in drys() if e["pair"] in (PAIR, P3)} == {p_: want[p_][0] for p_ in (PAIR, P3)}
+    if not sizes:
+        assert "pool size 2.5 BNB is not traded live (BNB_LIVE_POOL_BNB 1,10,25)" in next(e["why"] for e in events("live_arm") if e["pair"] == P25)
+ch31 = base_chain()
+for pr, sh, tg, tk in ((P2, 20, "f2", TOK2), (P3, 40, "f3", TOK3)):
+    lg, tx = clone_tok(pr, sh, tg, tk); ch31.add(lg, tx); ch31.pool(pr, tk, lg[1:])
+ch31.codes = {TOKEN: TOKEN_CODE + "00", TOK2: TOKEN_CODE + "00", TOK3: TOKEN_CODE + "01"}
+lv = new_live(ch31, BNB_PROBE_EVERY=1); live_start(ch31, lv, L - 2); live_go(ch31, lv, L + 340)
+new = [a for a in events("alarm") if a["what"].startswith("a launch of the line with a new token code")]
+assert not ch31.sent and [e["role"] for e in events("live_skip")] == ["refused"] * 3 and len(new) == 2 and all(e["code_hash"] for e in events("live_check")), new
+assert new_live(Chain(), BNB_TOKEN_CODEHASHES="").CODEHASHES == set(LV.TOKEN_CODEHASHES.split(",")) and len(LV.TOKEN_CODEHASHES.split(",")) == 2
+print("ok the slots: 1, 10 and 25 BNB alternate live/control, a 2.5-BNB launch stays dry with no slot (dry_size) until BNB_LIVE_POOL_BNB lists "
+      "it; a token whose code is not one of the line's two templates is refused before the round trip (an alarm once per new code)")
+
+# 32. each leg's own factor (the round trip's would loosen each leg's minOut by the other leg's cut too): a token cutting 3% on the buy and
+# 3% on the sale (BNB_CHECK_MIN 0.9 here) gets 97% on each leg, not 94%; a token whose Transfer event is not the standard one is counted by
+# its balance (not settled as 'no tokens', no halt)
+ch32 = base_chain(); ch32.check[TOKEN] = (0, 0.97, (136550, 24932, 70714), 0.97); lv = new_live(ch32, BNB_CHECK_MIN=0.9); live_start(ch32, lv, L - 2); live_go(ch32, lv, L + 300)
+chk = events("live_check")[0]; bt_ = [t for t in ch32.sent if t["data"][:8] == "b6f9de95"][0]; st_ = [t for t in ch32.sent if t["data"][:8] == "791ac947"][0]
+assert chk["ok"] and abs(chk["f_buy_ppm"] - 970000) <= 1 and abs(chk["f_sell_ppm"] - 970000) <= 1 and abs(chk["factor_ppm"] - 940900) < 1000, chk
+assert dec(B_T, bt_)[0] == TOK5 * chk["f_buy_ppm"] // 10 ** 6 * 950000 // 10 ** 6
+s_ = [e for e in events("live_send") if e["kind"] == "sell"][0]; assert dec(S_T, st_)[1] == s_["expected"] * chk["f_sell_ppm"] // 10 ** 6 * 950000 // 10 ** 6
+ch32 = base_chain(); ch32.odd_transfer = True; lv = new_live(ch32); live_start(ch32, lv, L - 2); live_go(ch32, lv, L + 300)
+assert lives()[0]["tokens"] == ch32.toks[0] > 0 and lives()[0]["why"] == "sell at +260" and not os.path.exists(HALTF)
+print("ok each leg's own cut: a 3%%+3%% token gets %.1f%% on the buy's minOut and %.1f%% on the sale's (the round trip's %.1f%% no longer on "
+      "each); a token with a non-standard Transfer event counted by its balance" % (chk["f_buy_ppm"] / 1e4, chk["f_sell_ppm"] / 1e4, chk["factor_ppm"] / 1e4))
+
+# 33. the gate after the first 10: the median of any 10 live trades in a row negative, or 3 in a row under -50%, halts the line (kept in
+# the positions file across restarts)
+def settle_ret(lv, i, r_):
+    x = {"pair": "0x%040x" % (0xa00 + i), "token": TOKEN, "L": L, "pool_bnb": 1.0, "txs": [], "gas_wei": 0, "sell_tries": 0, "q": 10 ** 16, "bnb_in": 10 ** 16,
+         "bnb_out": int(10 ** 16 * (1 + r_)), "sell_due": {"why": "sell at +260"}}
+    lv.pos[x["pair"]] = x; lv.settle(x, "sell at +260")
+
+
+lv = new_live(Chain()); os.path.exists(HALTF) and os.remove(HALTF); lv.save()
+for i, r_ in enumerate([0.2] * 10 + [-0.1] * 5):
+    settle_ret(lv, i, r_)
+assert lv.halted is None and len(lv.gate_rets) == 10 and json.load(open(POSF))["recent_rets"] == [0.2] * 5 + [-0.1] * 5
+settle_ret(lv, 15, -0.1)
+assert lv.halted == "the median of the last 10 live trades is -10.00%" and open(HALTF).read().startswith("the median of the last 10")
+lv = new_live(Chain()); os.remove(HALTF); lv.resume(L)
+assert lv.recent == [0.2] * 4 + [-0.1] * 6 and lv.gate_rets == [0.2] * 10
+lv = new_live(Chain()); os.remove(POSF); lv.save()
+for i, r_ in enumerate([0.1, -0.6, -0.7]):
+    settle_ret(lv, i, r_)
+assert lv.halted is None
+settle_ret(lv, 3, -0.55)
+assert lv.halted == "3 live trades in a row under -50% (-60.0%, -70.0%, -55.0%)", lv.halted
+os.remove(HALTF); os.remove(POSF)
+print("ok the gate after the first 10 trades: the median of the last 10 negative halts (at the 16th here, not the 15th), and so do 3 live "
+      "trades in a row under -50%; the last 10 are kept across a restart")
+
+# 34. the settings live: the $5 probe enforced (BNB_STAKE_USD over $10 stops the start), tight bounds, the defaults; the line's files only
+# (never flip-engine's halt files or log, three different files), one live engine at a time, the check's bytecode from its source, the
+# key file owned by the engine's user; dry, a log path naming flip-engine's files stops the start too
+msgs = {}
+for k, v in (("BNB_SLIP", "0.2"), ("BNB_MAX_OPEN", "5"), ("BNB_DAILY_STOP_USD", "51"), ("BNB_CHECK_MIN", "0.79"), ("BNB_MAX_GWEI", "6"), ("BNB_MAX_STAKE_BNB", "0.2"),
+             ("BNB_HALT_FILE", os.path.join(TMP, "HALTED")), ("BNB_HALT_FILE", os.path.join(TMP, "HALTED.front")), ("BNB_POSITIONS_FILE", os.path.join(TMP, "engine.jsonl")),
+             ("BNB_POSITIONS_FILE", os.path.join(TMP, "HALTED.bnb")), ("BNB_HALT_FILE", LOG), ("BNB_TOKEN_CODEHASHES", "0x12")):
+    try:
+        new_live(Chain(), **{k: v}); raise AssertionError("no refusal: %s=%s" % (k, v))
+    except SystemExit as e:
+        msgs[(k, v)] = str(e)
+assert all("is not in" in m for (k, _), m in msgs.items() if k not in ("BNB_HALT_FILE", "BNB_POSITIONS_FILE", "BNB_TOKEN_CODEHASHES")), msgs
+assert sum("must be named HALTED.bnb (the halt) or start with 'bnb'" in m for m in msgs.values()) == 4 and "three different files" in msgs[("BNB_HALT_FILE", LOG)]
+E.STAKE_USD = 15
+try:
+    new_live(Chain()); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert "BNB_STAKE_USD 15 is over $10: the live line is the $5 probe" in str(e)
+E.STAKE_USD = 5; E.LOG_PATH = os.path.join(TMP, "engine.jsonl")
+try:
+    new_live(Chain()); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert str(e).startswith("BNB_LOG_PATH ")
+E.LOG_PATH = LOG
+assert "names a halt file or flip-engine's log" in sub({"BNB_LOG_PATH": os.path.join(TMP, "engine.jsonl")}, "import bnb_engine as e; e.main([])").stderr
+assert not os.path.exists(os.path.join(TMP, "engine.jsonl"))
+lv = new_live(Chain())
+assert (lv.MAX_STAKE, lv.CHECK_MIN, lv.RECEIPT_WAIT_S, lv.BUY_LATE, lv.SELL_LATE, lv.LIVE_SIZES, lv.SLIP, lv.MAX_OPEN, lv.DAILY_STOP) == (15 * 10 ** 15, 0.99, 20, 7, 20, [1.0, 10.0, 25.0], 0.05, 2, 10)
+try:
+    new_live(Chain(), keep_old=True); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert "another live BNB engine holds" in str(e) and str(e).endswith("stop it first")
+lv.close(); new_live(Chain(), keep_old=True)
+CD = os.path.join(TMP, "contracts"); shutil.copytree(os.path.join(ROOT, "contracts"), CD); open(os.path.join(CD, "BnbRoundTrip.sol"), "a").write("// changed\n")
+_art = LV.ART; LV.ART = os.path.join(CD, "BnbRoundTrip.json")
+try:
+    new_live(Chain()); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert "was not built from the BnbRoundTrip.sol beside it" in str(e)
+finally:
+    LV.ART = _art
+if os.geteuid() == 0:
+    os.chown(KEYF, 4242, -1)
+    try:
+        new_live(Chain()); raise AssertionError("no refusal")
+    except SystemExit as e:
+        assert "is owned by uid 4242" in str(e) and KEY[4:] not in str(e)
+    finally:
+        os.chown(KEYF, 0, -1)
+print("ok the live settings: BNB_STAKE_USD over $10 stops the start (the $5 probe), the bounds (slippage 15%, 4 open, a $50 daily stop, "
+      "BNB_CHECK_MIN from 0.8, 5 gwei, 0.1 BNB a stake) and the defaults; the halt, positions and log files must be the line's own and three; "
+      "one live engine at a time (bnb_positions.json.lock); the check's bytecode from its source; the key file owned by the engine's user; "
+      "dry, a log path naming flip-engine's files stops the start")
+
+# 35. deploy/bnb_wallet.py withdraw and sweep, against a stubbed RPC: the whole balance less 21,000 gas to an address typed twice, signed on
+# the box (chain 56) and only its hash printed; a token sold back through the router after an approve, simulated first, on a typed yes;
+# each refusal sends nothing
+sys.path.insert(0, os.path.join(ROOT, "deploy")); import bnb_wallet as BW, io, contextlib
+BW.KEY_FILE = KEYF; BW.ENV_FILE = os.path.join(TMP, "none"); BW.sleep = lambda s_: None; BW.live_running = lambda: False
+
+
+class WalletChain:
+    def __init__(self):
+        self.sent, self.nonce, self.bal, self.code, self.revert, self.hashes = [], 3, 26 * 10 ** 15, {}, False, []
+        self.tok = {"0x" + "c7" * 20: 10 ** 18}; self.allow = {}
+
+    def rpc(self, method, params):
+        if method == "eth_sendRawTransaction":
+            b = bytes.fromhex(params[0][2:]); f = rlp.decode(b)
+            assert Account.recover_transaction(b).lower() == WALLET and int.from_bytes(f[6], "big") in (147, 148) and int.from_bytes(f[0], "big") == self.nonce
+            self.sent.append({"nonce": self.nonce, "gasPrice": int.from_bytes(f[1], "big"), "gas": int.from_bytes(f[2], "big"), "to": "0x" + f[3].hex(),
+                              "value": int.from_bytes(f[4], "big"), "data": f[5].hex()}); self.nonce += 1; self.hashes.append("0x" + keccak(b).hex())
+            return self.hashes[-1]
+        if method == "eth_call":
+            c = params[0]; d = c["data"]
+            if d.startswith("0x70a08231"):
+                return "0x" + w(self.tok.get(c["to"], 0))
+            if d.startswith("0xe6a43920"):
+                return "0x" + w(int("c8" * 20, 16))
+            if d == "0x0dfe1681":
+                return "0x" + w(int("c7" * 20, 16))
+            if d == "0x0902f1ac":
+                return "0x" + w(5 * 10 ** 20) + w(2 * 10 ** 18) + w(0)
+            if d.startswith("0xdd62ed3e"):
+                return "0x" + w(self.allow.get(c["to"], 0))
+            if d.startswith("0x791ac947"):
+                if self.revert:
+                    raise RuntimeError("eth_call at rpc.example.org: {'message': 'execution reverted: PancakeRouter: INSUFFICIENT_OUTPUT_AMOUNT'}")
+                return "0x"
+        return {"eth_chainId": "0x38", "eth_getBalance": hex(self.bal), "eth_gasPrice": hex(5 * 10 ** 7), "eth_getTransactionCount": hex(self.nonce),
+                "eth_getCode": self.code.get(params[0] if params else None, "0x"), "eth_getTransactionByHash": {"blockNumber": "0x10"},
+                "eth_getBlockReceipts": [{"transactionHash": h_, "status": "0x1"} for h_ in self.hashes]}[method]
+
+
+def wallet_run(argv, answers, chain):
+    BW.rpc = chain.rpc; BW.ask = lambda prompt: answers.pop(0); out = io.StringIO()
+    with contextlib.redirect_stdout(out):
+        try:
+            BW.main(argv); code = None
+        except SystemExit as e:
+            code = str(e)
+    return out.getvalue(), code
+
+
+DEST = "0x" + "d1" * 20; WPOS = os.path.join(TMP, "bnb_positions_w.json"); os.environ["BNB_POSITIONS_FILE"] = WPOS
+wc = WalletChain(); o, code = wallet_run(["withdraw", DEST.upper().replace("0X", "0x")], [DEST], wc)
+assert code is None and len(wc.sent) == 1 and wc.sent[0] == {"nonce": 3, "gasPrice": 10 ** 8, "gas": 21000, "to": DEST, "value": 26 * 10 ** 15 - 21000 * 10 ** 8, "data": ""}, (o, wc.sent)
+assert ("sent: " + wc.hashes[0]) in o and "mined in block 16: ok" in o and KEY[2:] not in o and "k3y" not in o and "via rpc.example.org" in o, o
+for argv, answers, setup, want in ((["withdraw", DEST], ["0x" + "d2" * 20], None, "not the same address"), (["withdraw", WALLET], [], None, "the wallet itself"),
+                                   (["withdraw", DEST], [], lambda c: c.code.__setitem__(DEST, "0x6080"), "is a contract"),
+                                   (["withdraw", DEST], [], lambda c: setattr(BW, "live_running", lambda: True), "runs live"),
+                                   (["withdraw", DEST], [], lambda c: json.dump({"positions": {PAIR: {"token": TOKEN, "state": "approved"}}}, open(WPOS, "w")), "open live position"),
+                                   (["sweep", TOKEN], [], None, "holds this token as an open position"),
+                                   (["sweep", "0x" + "c7" * 20], ["no"], lambda c: os.remove(WPOS), "nothing sent")):
+    wc = WalletChain()
+    if setup:
+        setup(wc)
+    o, code = wallet_run(argv, answers, wc); BW.live_running = lambda: False
+    assert code and want in code and not wc.sent and KEY[2:] not in o + code, (want, code, o)
+wc = WalletChain(); o, code = wallet_run(["sweep", "0x" + "c7" * 20], ["yes"], wc)
+exp = E.amount_out(10 ** 18, 5 * 10 ** 20, 2 * 10 ** 18)
+assert code is None and [t["data"][:8] for t in wc.sent] == ["095ea7b3", "791ac947"] and [t["nonce"] for t in wc.sent] == [3, 4] and wc.sent[0]["to"] == "0x" + "c7" * 20, (o, code)
+amt, mo, path, to_, _ = dec(S_T, wc.sent[1])
+assert (amt, mo, [p_.lower() for p_ in path], to_.lower(), wc.sent[1]["to"], wc.sent[1]["gas"]) == (10 ** 18, exp * 900000 // 10 ** 6, ["0x" + "c7" * 20, WBNB], WALLET, E.ROUTER, 300000)
+wc = WalletChain(); wc.allow = {"0x" + "c7" * 20: 2 ** 256 - 1}; wc.revert = True; o, code = wallet_run(["sweep", "0x" + "c7" * 20, "0.3"], ["yes"], wc)
+assert "the sale would revert" in code and not wc.sent
+os.environ.pop("BNB_POSITIONS_FILE")
+print("ok deploy/bnb_wallet.py withdraw: the whole balance less 21,000 gas at 0.1 gwei to an address typed twice, signed on the box for chain "
+      "56, the hash printed and never the key; refused when retyped wrong, to itself, to a contract, while flip-bnb runs live or holds "
+      "positions; sweep: approve then the sale through the router (minOut 90% of the reserves' price), simulated first, on a typed yes; "
+      "refused for a token the engine holds, on a no, or when the simulated sale reverts")
+
+# 36. the unit and the runbook: flip-bnb sees nothing of /etc/flip but its own two files (a mask on the directory survives the renames of
+# set_kv's sed -i, new_wallet.py and RUNBOOK 4h; engine.env.bak is under it), keeps no capability but CAP_DAC_READ_SEARCH (flip-engine's
+# /proc environ, which holds its key, needs CAP_SYS_PTRACE) and dumps no core; RUNBOOK 4k's commands touch bnb.env only, never set_kv
+unit = open(os.path.join(ROOT, "deploy", "flip-bnb.service")).read()
+svc = dict(l_.split("=", 1) for l_ in unit.split("[Service]")[1].split("[Install]")[0].splitlines() if "=" in l_ and not l_.startswith("#"))
+assert svc["TemporaryFileSystem"] == "/etc/flip:ro" and svc["CapabilityBoundingSet"] == "CAP_DAC_READ_SEARCH" and svc["LimitCORE"] == "0" and "User" not in svc
+assert svc["BindReadOnlyPaths"].split() == ["-/etc/flip/bnb.key", "-/etc/flip/bnb.env"] and "InaccessiblePaths" not in svc and svc["ReadWritePaths"] == "/var/log/flip"
+assert svc["ProtectSystem"] == "strict" and svc["ProtectHome"] == "read-only" and svc["NoNewPrivileges"] == "yes" and svc["EnvironmentFile"] == "/etc/flip/bnb.env"
+rb = open(os.path.join(ROOT, "docs", "RUNBOOK.md")).read(); k4 = rb[rb.index("## 4k."):rb.index("## 5. Daily")]
+cmds = [l_ for l_ in k4.splitlines() if l_.startswith("    ")] + re.findall(r"`([^`\n]*sudo[^`\n]*)`", k4)
+assert cmds and not [c_ for c_ in cmds if "set_kv" in c_ or "engine.env" in c_ or "cat /etc/flip/bnb.key" in c_], [c_ for c_ in cmds if "set_kv" in c_ or "engine.env" in c_]
+assert "set_bnb() {" in k4 and "import the key" not in k4 and "bnb_wallet.py withdraw" in k4
+print("ok the unit: /etc/flip an empty read-only tmpfs with bnb.key and bnb.env bound in, CAP_DAC_READ_SEARCH alone, no core; RUNBOOK 4k: "
+      "its own set_bnb (bnb.env only), no set_kv, never engine.env, never the key on a screen, the BNB back by bnb_wallet.py withdraw")
+
+# ================================================================================ round 2 of the review (the findings on a84ca25 the first
+# round never saw, and the open ones of its check): each section fails without its fix (a mutation per fix, run on a copy of the tree)
+
+# 37. the gate's two pool rules. A dump before +997 on any pool of the line halts it (REPORT_BNB: a sign the creator's schedule changed),
+# a control pool's too, not only a traded one's; a 15-BNB pool (skipped) does not. No crowd buy on a traded pool halts only when its logs
+# were all read: after a restart the crowd's buys in the blocks missed were never seen (an alarm, no halt)
+P15, TOK15 = "0x" + "f5" * 20, "0x" + "e5" * 20
+lg15 = [dict(x, data=x["data"][:66] + w(15 * 10 ** 18)) for x in FX["pair_logs"] if blk(x) == L]
+rt15 = int(next(x for x in lg15 if x["topics"][0] == E.T_SYNC)["data"][2:66], 16)
+d15 = [{"address": P15, "topics": [E.T_SYNC], "data": "0x" + w(rt15 + 10 ** 23) + w(10 ** 18), "blockNumber": hex(L + 200), "transactionHash": "0x" + "f6" * 32, "logIndex": "0x1"},
+       {"address": P15, "topics": [E.T_SWAP, tp(ROUTER), tp(ROUTER)], "data": "0x" + w(10 ** 23) + w(0) + w(0) + w(14 * 10 ** 18), "blockNumber": hex(L + 200),
+        "transactionHash": "0x" + "f6" * 32, "logIndex": "0x2"}]
+ch37 = base_chain(); lg, tx = clone(P15, shift=10, tag="f5", logs=lg15 + d15); lg[0]["topics"] = [lg[0]["topics"][0], tp(TOK15), lg[0]["topics"][2]]; ch37.add(lg, tx)
+lv = new_live(ch37); live_start(ch37, lv, L - 2); live_go(ch37, lv, L + 300)
+assert [e["off"] for e in events("dump") if e["pair"] == P15] == [200] and lv.halted is None and not os.path.exists(HALTF) and lives()[0]["why"] == "sell at +260"
+ch37 = LiveChain(); ch37.add([FX["launch_log"]] + early + dump, [FX["launch_tx"]] + list(FX["txs"].values()) + crt); ch37.pool(PAIR, TOKEN, early + dump)
+lv = new_live(ch37); live_start(ch37, lv, L - 2); lv.eligible = 1; live_go(ch37, lv, L + 300)
+assert not ch37.sent and drys()[0]["role"] == "control" and PAIR not in lv.traded
+assert open(HALTF).read().startswith("a dump at +200, before +997, on a watched pool of the line (%s, 1 BNB, control)" % PAIR), open(HALTF).read()
+ch37 = base_chain(txs=txs9); lv = new_live(ch37); live_start(ch37, lv, L - 2); live_go(ch37, lv, L + 120)
+lv2 = new_live(ch37); E.pools.clear(); E.LIVE = lv2; E.state["done_to"] = L + 129; lv2.start(L + 132, thread=False); live_go(ch37, lv2, L + 300)
+assert lv2.halted is None and not os.path.exists(HALTF) and lives()[0]["why"] == "sell at +260" and drys()[0]["gaps"] == 1
+assert any(re.match(r"gate not judged \(blocks or logs missed: gaps 1, breaks \d\): no crowd buy in \+60\.\.\+260 on a traded pool", a["what"]) for a in events("alarm"))
+print("ok the gate's pool rules: a dump before +997 on a control pool halts the line (a 15-BNB pool's does not); no crowd buy on a traded "
+      "pool whose blocks were partly missed (a restart) is an alarm, not a halt (a clean one halts: test 18)")
+
+# 38. the head without the reader: the reader stuck in a slow call and no websocket head. The worker asks eth_blockNumber itself after 3 s
+# without a head: a bought position is sold by that head, and a buy that head makes late is not sent; with no head from anywhere for 10 s
+# the head is extrapolated at 0.45 s a block, so a sale never waits on a dead feed
+ch38 = base_chain(); lv = new_live(ch38); live_start(ch38, lv, L - 2); live_go(ch38, lv, L + 60)
+assert lv.pos[PAIR]["state"] == "approved" and E.state["head"] is None
+ch38.head_n = L + 302; lv.HEAD_POLL_S = 3.0; lv.head_ok_at -= 4
+for _ in range(4):
+    lv.tick()
+td = lives()
+assert len(td) == 1 and td[0]["why"] == "the reader is behind: sold by the head (L+302)" and td[0]["sell_off"] < 260 and ch38.calls["eth_blockNumber"] >= 1, td
+ch38 = base_chain(); lv = new_live(ch38); live_start(ch38, lv, L - 2); live_go(ch38, lv, L + 60)
+ch38.down = {"eth_blockNumber"}; lv.HEAD_POLL_S, lv.HEAD_BLIND_S = 3.0, 10; lv.head_ok_at -= 130; hv = lv.head_val - L    # 130 s with no head: ~288 blocks
+for _ in range(4):
+    lv.tick()
+td = lives(); m38 = re.fullmatch(r"the reader is behind: sold by the head \(L\+(\d+), estimated: no head for 13\d s\)", td[0]["why"]) if len(td) == 1 else None
+assert m38 and 288 <= int(m38.group(1)) - hv <= 290, (hv, td)                          # (the last head known: the one read just before the buy)
+assert any(a["what"].startswith("no head from the reader for 13") for a in events("alarm"))
+ch38 = base_chain(); lv = new_live(ch38); live_start(ch38, lv, L - 2); to_buy_due(ch38, lv)
+ch38.head_n = L + 850; lv.HEAD_POLL_S = 3.0; lv.head_ok_at -= 4; lv.tick()
+assert not ch38.sent and PAIR not in lv.pos and "the buy would go 801 blocks late" in events("live_skip")[-1]["why"]
+print("ok the head without the reader: the worker's own eth_blockNumber (after 3 s with no head) sells a bought position by the head and "
+      "holds a buy it makes late; with no head at all for 10 s it is extrapolated at 0.45 s a block, and the position is sold (an alarm)")
+
+# 39. a transaction the node knows and never mines. Every send goes to every endpoint at once (one that takes it may not pass it on); with
+# no receipt a copy goes to every endpoint each 5 s, known or not; after 8 s an approve or a sell is signed anew at its nonce, its gas price
+# raised by 1/8 (a sell on fresh reserves and deadline), and whichever is mined settles; a buy still pending past its deadline (it could
+# only revert, and it holds every later nonce) is replaced by a 0-value transfer to the wallet: the slot dropped, no halt, the nonce freed
+srv = http.server.HTTPServer(("127.0.0.1", 0), Stub); threading.Thread(target=srv.serve_forever, daemon=True).start(); BASE = "http://127.0.0.1:%d" % srv.server_port
+lv = new_live(base_chain()); lv.post = LV.Live.post.__get__(lv); lv.send_urls = [BASE + "/a", BASE + "/b"]; ok_ = json.dumps({"jsonrpc": "2.0", "id": 1, "result": "0x" + "ab" * 32})
+REPLY["/a"] = [(200, ok_)]; REPLY["/b"] = [(200, ok_)]; n0 = len(SEEN)
+assert lv.broadcast("0x05")[0] == "ok"
+for _ in range(100):
+    if len(SEEN) - n0 == 2:
+        break
+    time.sleep(0.02)
+assert sorted(p_ for p_, _ in SEEN[n0:]) == ["/a", "/b"], SEEN[n0:]
+srv.shutdown()
+ch39 = base_chain(); lv = new_live(ch39); live_start(ch39, lv, L - 2); live_go(ch39, lv, L + 255)
+ch39.replies = [("ok", None, "pending")]; live_go(ch39, lv, L + 262)
+s1 = lv.pos[PAIR]["txs"][-1]
+assert lv.pos[PAIR]["state"] == "sell_sent" and s1["kind"] == "sell" and lv.receipt(s1["hash"]) == (None, True)
+age_last(lv, PAIR, 6); lv.tick()                                                # 6 s, known: a copy to every endpoint
+cp = events("live_rebroadcast")
+assert len(cp) == 1 and cp[0]["known"] and cp[0]["reply"] == "in" and not events("live_replace"), cp
+ch39.our[PAIR] = (ch39.our[PAIR][0] - 10 ** 16, ch39.our[PAIR][1]); rq_, rt_ = ch39.real(PAIR)     # someone sold 0.01 BNB of the token meanwhile
+age_last(lv, PAIR, 3); lv.tick()                                                # 9 s: replaced at its nonce
+rp = events("live_replace"); s2 = lv.pos[PAIR]["txs"][-1]
+assert rp[0]["nonce"] == s1["nonce"] == s2["nonce"] and s2["kind"] == "sell" and s2["gas_price"] == s1["gas_price"] * 9 // 8 + 1 and s2["replaces"] == s1["hash"], rp
+assert s2["min_out"] == E.amount_out(s2["amount"], rt_, rq_) * 950000 // 10 ** 6 != s1["min_out"] and s2["deadline"] >= s1["deadline"] + 9, (s1, s2)  # the pool now, a fresh deadline
+assert dec(S_T, ch39.sent[-1])[1] == s2["min_out"] and dec(S_T, ch39.sent[-1])[4] == s2["deadline"] and s2["amount"] == s1["amount"]
+for _ in range(4):
+    lv.tick()
+td = lives()
+assert len(td) == 1 and td[0]["hashes"]["sell"] == [s2["hash"]] and td[0]["bnb_out_wei"] == ch39.outs[0] > 0 and not os.path.exists(HALTF), td
+assert [e["hash"] for e in events("live_replaced")] == [s1["hash"]] and [t["nonce"] for t in ch39.sent] == [7, 8, 9]
+ch39 = base_chain(); ch39.replies = [("ok", None, "pending")]; lv = new_live(ch39); live_start(ch39, lv, L - 2); live_go(ch39, lv, L + 52)
+b1 = lv.pos[PAIR]["txs"][-1]
+assert lv.pos[PAIR]["state"] == "buy_sent" and b1["kind"] == "buy" and not ch39.sent
+age_last(lv, PAIR, 20); lv.tick()                                               # before its deadline: copies only, never replaced
+assert not events("live_replace") and len(events("live_rebroadcast")) == 1
+age_last(lv, PAIR, 45); lv.tick()                                               # 5 s past its deadline: the cancel at its nonce
+c1 = lv.pos[PAIR]["txs"][-1]
+assert c1["kind"] == "cancel" and c1["nonce"] == b1["nonce"] == 7 and c1["gas"] == 21000 and c1["gas_price"] == b1["gas_price"] * 9 // 8 + 1
+for _ in range(3):
+    lv.tick()
+cx = ch39.sent[-1]
+assert PAIR not in lv.pos and lv.halted is None and not lives() and events("live_skip")[-1]["why"].startswith("the buy was cancelled") and PAIR not in lv.traded
+assert (cx["to"], cx["value"], cx["nonce"], cx["gas"], cx["data"]) == (WALLET, 0, 7, 21000, "") and ch39.mined == 8 and lv.nonce == 8
+assert abs(lv.pnl_today + 21000 * c1["gas_price"] / 1e18 * E.bnb_usd()) < 1e-9 < -lv.pnl_today                     # the cancel's gas in the day's $
+for held in (4, 5):                                                             # the sell and its 3 replacements held, then the one at the cap mined or held
+    ch39 = base_chain(); lv = new_live(ch39); live_start(ch39, lv, L - 2); live_go(ch39, lv, L + 255)
+    ch39.replies = [("ok", None, "pending")] * held; live_go(ch39, lv, L + 262)
+    for _ in range(6):
+        if PAIR in lv.pos:
+            age_last(lv, PAIR, 9); lv.tick()                                    # each 9 s: replaced 1/8 dearer 3 times, then once at BNB_MAX_GWEI, then no more
+    sl = [t for t in ch39.pending_sent + ch39.sent if t["data"][:8] == "791ac947"]; gps = [t["gasPrice"] for t in sl]
+    assert len(events("live_replace")) == 4 and len(gps) == 5 and gps[-1] == 10 ** 9 and all(b_ == a_ * 9 // 8 + 1 for a_, b_ in zip(gps[:3], gps[1:4])), gps
+    assert len({t["nonce"] for t in sl}) == 1 and any("is still pending at its nonce 9 after 3 replacements" in a["what"] and "at BNB_MAX_GWEI 1 gwei" in a["what"] for a in events("alarm"))
+    if held == 4:                                                               # the one at the cap mined: settled from it
+        td = lives()
+        assert len(td) == 1 and td[0]["hashes"]["sell"] == [sl[-1]["hash"]] and td[0]["bnb_out_wei"] == ch39.outs[0] > 0 and lv.halted is None, td
+    else:                                                                       # held too: bounded, nothing more is sent or tried (the pending alarm only)
+        assert lv.pos[PAIR]["state"] == "sell_sent" and len(lv.pending(lv.pos[PAIR])) == 5 and not lives() and len([e for e in events("live_send") if e["kind"] == "sell"]) == 5
+        assert not any("cannot be replaced" in a["what"] for a in events("alarm")) and len([a for a in events("alarm") if "after 3 replacements" in a["what"]]) == 1
+print("ok a transaction the node holds and never mines: every send to every endpoint at once; a copy each 5 s though the node knows it; a "
+      "sell pending 8 s signed anew at its nonce 1/8 dearer and settled from the one mined; a buy pending past its deadline replaced by a "
+      "0-value transfer to the wallet (no revert, no halt, the next nonce free); one still held after 3 replacements signed anew once at "
+      "BNB_MAX_GWEI (an alarm), then no more")
+
+# 40. a buy never left in 'buying': the nonce not read at its send (HTTP 429) sends nothing and drops the slot (it kept a BNB_MAX_OPEN slot
+# and any sale behind it before); an error inside the send resolves it the same way; a 'buying' left over is resolved by the worker
+ch40 = base_chain(); lv = new_live(ch40); live_start(ch40, lv, L - 2); to_buy_due(ch40, lv); lv.nonce = None; ch40.down = {"eth_getTransactionCount"}; lv.tick(); ch40.down = set()
+assert PAIR not in lv.pos and not ch40.sent and lv.open_count() == 0 and events("live_skip")[-1]["role"] == "unsent", events("live_skip")[-1]
+assert any(a["what"].startswith("the buy was not sent: the wallet's nonce was not read") for a in events("alarm"))
+ch40 = base_chain(); lv = new_live(ch40); live_start(ch40, lv, L - 2); to_buy_due(ch40, lv); lv.sign = lambda tx: (_ for _ in ()).throw(ValueError("a signing failure"))
+lv.tick()
+assert PAIR not in lv.pos and not ch40.sent and events("live_skip")[-1]["why"] == "the buy was not sent (ValueError: a signing failure)", events("live_skip")[-1]
+lv.pos[P2] = {"pair": P2, "state": "buying", "L": L, "txs": []}; lv.tick()
+assert P2 not in lv.pos and events("live_skip")[-1]["why"] == "the buy was not sent (a buy left half-sent)"
+print("ok a buy is never left in 'buying': a nonce not read at its send drops the slot (nothing sent), an error inside the send too, and a "
+      "'buying' left over is resolved by the worker")
+
+# 41. a stop between a send and its state's save. A restart finds the last transaction with no receipt and waits for it (an approve sent
+# just before the stop is not sent again); a sale whose tokens are gone while a sell of ours has no receipt yet waits for that receipt (it
+# was settled at -100% and halted the line before); SIGTERM lets the worker finish its step (nothing new sent), then the unit has 30 s
+ch41 = base_chain(); lv = new_live(ch41); live_start(ch41, lv, L - 2); live_go(ch41, lv, L + 60)
+pf = json.load(open(POSF)); x = pf["positions"][PAIR]; ap = x["txs"][-1]
+assert x["state"] == "approved" and ap["kind"] == "approve" and pf["approved"] == [TOKEN]
+x["gas_wei"] -= ap["gas_wei"]; x["state"] = "bought"; pf["approved"] = []
+for k in ("block", "status", "gas_used", "gas_wei"):
+    ap.pop(k)
+json.dump(pf, open(POSF, "w"))                                                  # as written just before the approve's send
+lv2 = new_live(ch41); E.pools.clear(); E.LIVE = lv2; E.state["done_to"] = L + 62; lv2.start(L + 64, thread=False)
+assert lv2.pos[PAIR]["state"] == "approve_sent" and "approve has no receipt: bought taken as approve_sent" in events("live_resume")[0]["what"]
+live_go(ch41, lv2, L + 300)
+assert [t["data"][:8] for t in ch41.sent] == ["b6f9de95", "095ea7b3", "791ac947"] and lives()[0]["why"] == "sell at +260" and lives()[0]["gas_wei"] == (G_BUY + G_APP + G_SELL) * 10 ** 8
+ch41 = base_chain(); lv = new_live(ch41); live_start(ch41, lv, L - 2); live_go(ch41, lv, L + 255)
+while lv.pos[PAIR]["state"] != "sell_sent":
+    E.step(replay_to=L + 300); lv.tick()
+lv.pos[PAIR]["state"] = "approved"; lv.pos[PAIR]["sell_wait"] = 0                 # its sale on its way, its state not saved
+for _ in range(4):
+    lv.tick()
+td = lives()
+assert len(td) == 1 and td[0]["bnb_out_wei"] == ch41.outs[0] > 0 and td[0]["pnl_pct"] > 0 and not os.path.exists(HALTF) and len(ch41.sent) == 3, td
+ch41 = base_chain(); lv = new_live(ch41); live_start(ch41, lv, L - 2); to_buy_due(ch41, lv); t0_ = lv.tick; began, done = threading.Event(), []
+lv.tick = lambda: (began.set(), time.sleep(0.3), done.append(1))
+lv.thread = threading.Thread(target=lv.run, daemon=True); lv.thread.start(); lv.wake(); began.wait(5); lv.shutdown(8)
+assert done == [1] and not lv.thread.is_alive() and json.load(open(POSF))["positions"][PAIR]["state"] == "buy_due"
+t0_()                                                                            # a step after the stop starts nothing: the buy due stays due, nothing posted
+assert lv.pos[PAIR]["state"] == "buy_due" and ch41.posts == 0
+assert lv.send_tx(lv.pos[PAIR], "buy", ROUTER, 0, "0x", 21000, 10 ** 8, {}) is None and ch41.posts == 0 and lv.pos[PAIR]["txs"] == []
+assert "LIVE and LIVE.shutdown()" in main_src and svc["TimeoutStopSec"] == "30" and svc["RestartSec"] == "5"
+print("ok a stop between a send and its save: a restart waits for the last transaction's receipt (the approve not sent twice), a sale finds "
+      "its own sell on its way instead of settling -100%; SIGTERM lets the worker finish its step and sends nothing new (unit: 30 s to stop, "
+      "5 s to restart)")
+
+# 42. a token balance of 0 at the sale: read again (a node behind the buy) and sold normally; still 0 after 6 reads 1 s apart, the
+# position is kept as stuck with an alarm and the line halted, never settled at -100% (the tokens may still be in the wallet)
+for zeros in (2, 100):
+    ch42 = base_chain(); lv = new_live(ch42); live_start(ch42, lv, L - 2); live_go(ch42, lv, L + 255); ch42.zero = zeros; zr, st42 = [], lv.send_tx
+    lv.send_tx = lambda x_, kind, *a_, **k_: (zr.append(x_.get("zero_reads")) if kind == "sell" else None, st42(x_, kind, *a_, **k_))[1]
+    while E.state["done_to"] < L + 262:
+        E.step(replay_to=L + 262); lv.tick()
+    for _ in range(8):
+        if PAIR in lv.pos:
+            lv.pos[PAIR]["sell_wait"] = 0                                       # (1 s apart: the clock run on)
+        lv.tick()
+    if zeros == 2:
+        td = lives()
+        assert len(td) == 1 and td[0]["bnb_out_wei"] == ch42.outs[0] > 0 and td[0]["why"] == "sell at +260" and lv.halted is None and zr == [0], (td, zr)
+    else:
+        x = lv.pos[PAIR]
+        assert x["state"] == "stuck" and x["zero_reads"] == 6 and not lives() and len(ch42.sent) == 2 and open(HALTF).read().startswith("the wallet held none of the token")
+        assert any("read 0 6 times, 1 s apart, at the sale" in a["what"] for a in events("alarm"))
+print("ok a balance of 0 at the sale: read again and sold when it comes back; 0 six times, 1 s apart: kept as stuck (an alarm, a halt), "
+      "never a -100% trade")
+
+# 43. one position's trouble never starves another: a position whose receipt read fails every time (an exception each tick) and a sale due
+# behind it in the same tick: the sale goes; and a sale due is handled before a pre-buy check in the same tick
+ch43 = base_chain(); lv = new_live(ch43); live_start(ch43, lv, L - 2); live_go(ch43, lv, L + 255)
+x = lv.pos[PAIR]; x["sell_due"] = {"why": "a test sale", "r_wbnb": None, "r_token": None, "block": None, "at": time.time()}; BADH = "0x" + "9b" * 32
+bad = {"pair": P2, "token": TOK2, "L": L, "side": 1, "pool_bnb": 1.0, "state": "sell_sent", "sell_due": {"why": "a test"}, "gas_wei": 0, "sell_tries": 0,
+       "txs": [{"kind": "sell", "hash": BADH, "nonce": 3, "gas": 180000, "gas_price": 10 ** 8, "value": 0, "raw": "0x", "sent_at": time.time(), "rebroadcast": 0, "deadline": None}]}
+lv.pos = {P2: bad, PAIR: x}; r0 = lv.receipt
+lv.receipt = lambda h: (_ for _ in ()).throw(RuntimeError("HTTP Error 403: Forbidden")) if h == BADH else r0(h)
+try:
+    lv.tick()
+except RuntimeError:
+    pass
+assert ch43.sent[-1]["data"][:8] == "791ac947" and lv.pos[PAIR]["state"] == "sell_sent" and any(a["what"].startswith("live (%s): RuntimeError" % P2) for a in events("alarm"))
+order = []; c0, s0 = lv.check, lv.sell
+lv.check = lambda x_: (order.append("check"), c0(x_)); lv.sell = lambda x_: (order.append("sell"), s0(x_))
+x["state"] = "approved"; x["sell_wait"] = 0
+lv.pos = {P3: {"pair": P3, "token": TOK3, "L": L, "side": 1, "pool_bnb": 1.0, "state": "armed", "q_check": Q5, "txs": []}, PAIR: x}; lv.tick()
+assert order[:2] == ["sell", "check"], order
+print("ok one position's trouble never starves another: a receipt read that raises each tick is an alarm for that pair, and the sale due "
+      "behind it goes in the same tick; a sale due goes before a pre-buy check")
+
+# 44. the reader inside a catch-up range (BNB_MAX_RANGE 40) fires at L+78 and wakes the worker at once, while done_to still holds the range
+# before (L+37): the buy is measured from the block it fired in, not from done_to, and is not sent
+E.MAX_RANGE = 40; ch44 = base_chain(); lv = new_live(ch44); live_start(ch44, lv, L - 2); f0 = lv.on_fire
+lv.on_fire = lambda p, B: (f0(p, B), lv.tick())                                  # the worker woken by mark() runs before the range ends
+live_go(ch44, lv, L + 300); E.MAX_RANGE = 5
+assert not ch44.sent and re.search(r"the buy would go 30 blocks late \(it lands at L\+80 ", events("live_skip")[0]["why"]), events("live_skip")
+print("ok a buy woken inside a catch-up range is measured from the block the engine fired in (L+78): 30 blocks late, not sent")
+
+# 45. the reads have a second endpoint: BNB_RPC_URL answering no read at the sale (reserves, balances, receipts, gas price, nonce), the
+# worker asks BNB_READ_ALT_URL once for each and the position is sold and settled on time; the alternate's URL never reaches the log
+ch45 = base_chain(); lv = new_live(ch45); live_start(ch45, lv, L - 2); live_go(ch45, lv, L + 255)
+lv.read_alt = "https://alt.example.org/k3y-alt-secret"; alts = []
+lv.alt_rpc = lambda method, params, timeout: (alts.append(method), ch45.alt(method, params))[1]
+ch45.down = {"eth_call", "eth_getTransactionByHash", "eth_getBlockReceipts", "eth_gasPrice", "eth_getBlockByNumber", "eth_getTransactionCount", "eth_getBalance"}
+live_go(ch45, lv, L + 300); ch45.down = set()
+td = lives()
+assert len(td) == 1 and td[0]["why"] == "sell at +260" and td[0]["bnb_out_wei"] == ch45.outs[0] > 0 and {"eth_call", "eth_getBlockReceipts"} <= set(alts), (td, alts)
+assert "k3y-alt-secret" not in open(LOG).read()
+print("ok the reads' second endpoint: with BNB_RPC_URL answering no read at the sale, BNB_READ_ALT_URL gives the reserves, the balance and "
+      "the receipt, and the position is sold and settled on time (its URL's path never logged)")
+
+# 46. a sale after the reader's jump (or the pool's end, or a dump) prices its minOut on the pool now, not on the reserves the reader held
+# then: the pool lost 0.2 BNB since the reader's last block; the sale goes through on the first try (it reverted and halted the line before)
+ch46 = base_chain(); lv = new_live(ch46); live_start(ch46, lv, L - 2); live_go(ch46, lv, L + 120)
+ch46.our[PAIR] = (ch46.our[PAIR][0] - 2 * 10 ** 17, ch46.our[PAIR][1]); E.finish(E.pools[PAIR], "the reader jumped")
+for _ in range(6):
+    lv.tick()
+td = lives()
+assert len(td) == 1 and td[0]["why"] == "the pool is no longer watched (the reader jumped)" and td[0]["sell_tries"] == 0 and len(td[0]["hashes"]["sell"]) == 1, td
+assert not os.path.exists(HALTF) and lv.halted is None
+print("ok a sale after the reader's jump prices its minOut on the pool's reserves now (the pool moved 0.2 BNB): sold on the first try, no halt")
+
+# 47. a receipt is acted on once its block is final (BNB Chain's finalized tag, about 2 blocks behind): a reverted buy in a block not yet
+# final halts nothing until it is (a 1-2 block reorg can still change it)
+ch47 = base_chain(); ch47.revert = ["buy"]; ch47.fin_lag = 5; lv = new_live(ch47); live_start(ch47, lv, L - 2)
+while not ch47.sent:
+    E.step(replay_to=L + 300); lv.tick()
+for _ in range(3):
+    lv.tick()
+assert lv.halted is None and not os.path.exists(HALTF) and lv.pos[PAIR]["state"] == "buy_sent" and not events("live_receipt")
+ch47.fin_lag = 0; lv.tick()
+assert lv.halted.startswith("a reverted buy") and events("live_receipt")[0]["status"] == 0
+ch47 = base_chain(); ch47.down = {"eth_getBlockByNumber"}; lv = new_live(ch47); live_start(ch47, lv, L - 2); live_go(ch47, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and any(a["what"].startswith("the finalized block not read") for a in events("alarm"))   # acted on at the tip
+print("ok a receipt is acted on once its block is final: a reverted buy 3 blocks above the finalized one halts nothing until it is final")
+
+# 48. a sell that ran out of gas (a token swapping its collected fees on a sale) is sent again with twice the gas limit (up to 600,000)
+ch48 = base_chain(); ch48.oog = ["sell"]; lv = new_live(ch48); live_start(ch48, lv, L - 2); live_go(ch48, lv, L + 300)
+sells = [t for t in ch48.sent if t["data"][:8] == "791ac947"]
+assert [t["gas"] for t in sells] == [180000, 360000] and lives()[0]["bnb_out_wei"] == ch48.outs[0] > 0 and any("ran out of gas (180000 of 180000)" in a["what"] for a in events("alarm"))
+print("ok a sell out of gas is sent again with twice its gas limit (360,000) and sold")
+
+# 49. the halt file. The owner's `echo owner stop > HALTED.bnb` holds the line without a restart (a checked slot and a later launch held);
+# a halt file that cannot be written is tried again at every save, and a restart before it is written keeps the halt (the positions file
+# says it was never written); a halt file the owner removed is not brought back
+ch49 = base_chain(); lg, tx = clone_tok(P2, 30, "f2", TOK2); ch49.add(lg, tx); ch49.pool(P2, TOK2, lg[1:])
+lv = new_live(ch49, BNB_PROBE_EVERY=1); live_start(ch49, lv, L - 2); live_go(ch49, lv, L + 20)
+assert lv.pos[PAIR]["state"] == "checked"
+open(HALTF, "w").write("owner stop\n"); lv.halt_seen_at = 0; live_go(ch49, lv, L + 300)
+assert not ch49.sent and lv.halted == "owner stop" and {e["pair"]: e["why"] for e in events("live_skip")}.get(PAIR) == "halted: owner stop"
+assert {e["pair"]: e["role"] for e in events("live_arm")}[P2] == "held" and any(a["what"].startswith("the BNB line halted by its halt file: owner stop") for a in events("alarm"))
+lv = new_live(Chain()); os.remove(HALTF); os.mkdir(HALTF); lv.save()             # (a directory: the halt file cannot be written)
+lv.halt("a test halt"); lv.save()
+assert lv.halt_written is False and json.load(open(POSF))["halt_written"] is False
+os.rmdir(HALTF); lv2 = new_live(Chain()); lv2.resume(L)                          # a restart: the halt file missing, never written (resume's save writes it)
+assert lv2.halted == "a test halt" and open(HALTF).read() == "a test halt\n" and lv2.halt_written and json.load(open(POSF))["halt_written"] is True
+os.remove(HALTF); lv3 = new_live(Chain()); lv3.resume(L)                         # the owner removed it to resume
+assert lv3.halted is None
+os.remove(POSF)
+print("ok the halt file: the owner's stop holds without a restart; one that cannot be written is tried again at each save and kept across a "
+      "restart until it is; one the owner removed stays removed")
+
+# 50. a self-test that failed at the start (a brief RPC error) is run again every 5 min: live comes back on when it passes (an alarm)
+ch50 = base_chain(); ch50.override = False; lv = new_live(ch50); st50 = live_start(ch50, lv, L - 2)
+assert st50["live_off"].startswith("the pre-buy check's self-test failed")
+ch50.override = True; lv.tick()
+assert lv.off                                                                    # not before 300 s
+lv.off_at -= 301; lv.tick()
+assert lv.off is None and any(a["what"] == "live is on again: the pre-buy check's self-test passed" for a in events("alarm"))
+live_go(ch50, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and events("live_arm")[0]["role"] == "live"
+print("ok a failed self-test is run again every 5 min and live comes back on when it passes")
+
+# 51. the positions file's rename is on disk: the file is fsynced, then its directory
+fs = []; fsync0 = os.fsync
+os.fsync = lambda fd: (fs.append(stat.S_ISDIR(os.fstat(fd).st_mode)), fsync0(fd))[1]
+try:
+    lv = new_live(Chain()); lv.save()
+finally:
+    os.fsync = fsync0
+assert fs == [False, True], fs
+os.remove(POSF)
+print("ok the positions file: the file fsynced, then its directory (the rename survives a power loss)")
+
+# 52. the screen when live: the gate's two pool rows count what halts the live line (a dump on any pool of the line, the skipped sizes
+# aside; no crowd on a pool it traded), with the dry count of all pools beside; `--alerts` (health.sh) prints only the trouble: the halt,
+# a stuck position, one past its sale by 100 blocks, a sell pending over a minute, the last alarm
+now = time.time(); S2 = os.path.join(TMP, "s2.jsonl"); H3 = os.path.join(TMP, "bnb_H3"); P3F = os.path.join(TMP, "p3.json")
+st2 = {"ev": "start", "t": now - 3600, "release": "bnb-0.2", "live": True, "probe_every": 2, "stake_usd": 5, "daily_stop_usd": 10, "wallet": WALLET, "buy_at": 50,
+       "sell_at": 260, "skip_pool_bnb": [15.0], "gate": {"dump_before": 997, "crowd_from": 60, "probes": 10}, "bnb_usd": 750}; pa, pb, pc = "0x" + "a1" * 20, "0x" + "a2" * 20, "0x" + "a3" * 20
+evs = [st2, {"ev": "launch", "t": now - 3000, "pair": pa, "pool_bnb": 1.0, "skip": None}, {"ev": "launch", "t": now - 2990, "pair": pb, "pool_bnb": 15.0, "skip": "pool size 15 BNB is skipped"},
+       {"ev": "launch", "t": now - 2980, "pair": pc, "pool_bnb": 1.0, "skip": None},
+       {"ev": "dump", "t": now - 2500, "pair": pa, "pool_bnb": 1.0, "off": 500, "share": 0.9, "kind": "sell"}, {"ev": "dump", "t": now - 2400, "pair": pb, "pool_bnb": 15.0, "off": 300, "share": 0.9, "kind": "sell"},
+       dict(dryl(7, 0.1, "control"), pair=pc, crowd_gate=0, crowd_buys=0), {"ev": "alarm", "t": now - 100, "what": "the sell 0xabc has been pending 120 s"},
+       {"ev": "flow", "t": now - 30, "head": L + 400, "done_to": L + 398, "blocks": 130, "bnb_usd": 750}]
+open(S2, "w").write("".join(json.dumps(e) + "\n" for e in evs)); open(H3, "w").write("a dump at +500 (a test)\n")
+json.dump({"positions": {"0x" + "71" * 20: {"state": "stuck", "L": L + 300, "txs": []}, "0x" + "72" * 20: {"state": "approved", "L": L, "txs": []},
+                         "0x" + "73" * 20: {"state": "sell_sent", "L": L + 390, "txs": [{"hash": "0xabc", "sent_at": now - 120}]}}, "gate_rets": []}, open(P3F, "w"))
+for st_name, code_ in (("inactive", 3), ("active", 0)):                         # systemctl as the box would answer (flip-bnb stopped, running)
+    os.makedirs(os.path.join(TMP, st_name)); open(os.path.join(TMP, st_name, "systemctl"), "w").write("#!/bin/sh\nexit %d\n" % code_)
+    os.chmod(os.path.join(TMP, st_name, "systemctl"), 0o755)
+renv2 = dict(renv, BNB_LOG_PATH=S2, BNB_HALT_FILE=H3, BNB_POSITIONS_FILE=P3F, BNB_RPC_URL="http://127.0.0.1:9/none", PATH=os.path.join(TMP, "inactive") + os.pathsep + os.environ["PATH"])
+out = subprocess.run([sys.executable, os.path.join(ROOT, "deploy", "bnb_results.py"), "24"], env=renv2, capture_output=True, text=True).stdout
+assert re.search(r"GATE \(halts the live line\)\n  a dump before \+997:\s+TRIPPED x1 \(.*\+500, pool 1\.0 BNB\)   \(all pools, dry: x2\)", out), out
+assert re.search(r"no crowd buy in \+60\.\.\+260:\s+none   \(all pools, dry: x1\)", out), out
+al_ = subprocess.run([sys.executable, os.path.join(ROOT, "deploy", "bnb_results.py"), "--alerts"], env=renv2, capture_output=True, text=True).stdout.splitlines()
+assert al_[0] == "BNB HALTED: a dump at +500 (a test) (no new live buy; open positions still sold; deploy/bnb_results.py has the rest)", al_
+assert al_[1].startswith("BNB STUCK 0x7171717171") and re.fullmatch(r"BNB SALE OVERDUE 0x7272727272: approved at about L\+46\d by the clock \(sold at L\+260\)", al_[2]), al_
+assert al_[3].startswith("BNB SELL PENDING 0x7373737373: 12") and al_[4].endswith("the sell 0xabc has been pending 120 s") and len(al_) == 5, al_
+os.remove(H3); json.dump({"positions": {}}, open(P3F, "w")); open(S2, "w").write(json.dumps(st2) + "\n")
+assert subprocess.run([sys.executable, os.path.join(ROOT, "deploy", "bnb_results.py"), "--alerts"], env=renv2, capture_output=True, text=True).stdout == ""
+assert 'bnb_results.py" --alerts' in open(os.path.join(ROOT, "deploy", "health.sh")).read()
+print("ok the screen when live: the gate's pool rows count what halts the live line (a control pool's dump, not a 15-BNB one's; no crowd on "
+      "a traded pool only), the dry count beside; --alerts (health.sh) prints the halt, a stuck position, an overdue sale, a pending sell and "
+      "the last alarm, and nothing when all is well")
+
+# 53. the buy and the node's view: a halt (another pool's) during the buy's reads cancels it; a buy the node cannot show, whose nonce the
+# node does not count yet (it lags) but whose tokens are in the wallet, is held, never dropped (it was dropped and its tokens left unsold),
+# and kept as bought once the count shows its nonce mined (the rule at Live.outcome(): no count, no decision); a buy whose nonce was mined
+# and that shows neither itself nor its tokens 10 waits past its deadline halts the line (a revert the node hides)
+ch53 = base_chain(); lv = new_live(ch53); live_start(ch53, lv, L - 2); to_buy_due(ch53, lv); g0 = lv.gas_price
+lv.gas_price = lambda fast=False: (lv.halt("another pool's dump (a test)"), g0(fast))[1]; lv.tick()
+assert not ch53.sent and PAIR not in lv.pos and events("live_skip")[-1]["why"] == "halted: another pool's dump (a test)", events("live_skip")[-1]
+ch53 = base_chain(); ch53.replies = [("ok", None, "hidden")]; lv = new_live(ch53); live_start(ch53, lv, L - 2); live_go(ch53, lv, L + 60)
+ch53.count_lag = 1; age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and any("but no endpoint counts its nonce 7 mined" in a["what"] for a in events("alarm"))
+ch53.count_lag = 0; age_last(lv, PAIR, 1); lv.tick()
+x = lv.pos[PAIR]
+assert x["state"] in ("bought", "approve_sent", "approved") and x["tokens"] == ch53.toks[0] and x["unconfirmed"].startswith("the buy's receipt"), x["state"]
+live_go(ch53, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["tokens"] == ch53.toks[0]
+ch53 = base_chain(); ch53.revert = ["buy"]; ch53.replies = [("ok", None, "hidden")]; lv = new_live(ch53); live_start(ch53, lv, L - 2); live_go(ch53, lv, L + 60)
+assert lv.pos[PAIR]["state"] == "buy_sent" and ch53.mined == 8 and ch53.bal_tok[TOKEN] == 0
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()
+assert PAIR in lv.pos and lv.halted is None                                      # polled on (an alarm)
+age_last(lv, PAIR, 200); lv.tick()
+assert PAIR not in lv.pos and lv.halted.startswith("a buy whose nonce was mined shows neither itself nor its tokens 200 s past its deadline"), lv.halted
+print("ok the buy and the node's view: a halt during the buy's reads cancels it; a hidden buy whose nonce the node does not count yet but "
+      "whose tokens are in the wallet is held (never dropped), then kept and sold once the count shows it; a hidden buy that left no tokens "
+      "halts the line once 10 waits past its deadline")
+
+# 54. one user of the key: two live engines with different positions files but the same key cannot run at once (the key file's lock);
+# deploy/bnb_wallet.py withdraw refuses while an engine holds it, and an engine refuses to start while bnb_wallet.py holds it; live,
+# BNB_LAG_BLOCKS must stay below BNB_BUY_LATE (every buy would count as late)
+lv = new_live(Chain())
+try:
+    new_live(Chain(), keep_old=True, BNB_POSITIONS_FILE=os.path.join(TMP, "bnb_positions_b.json")); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert ("another live BNB engine holds " + KEYF) in str(e), str(e)
+wc = WalletChain(); o, code = wallet_run(["withdraw", DEST], [DEST], wc)
+assert code and code.startswith("a live BNB engine holds " + KEYF) and not wc.sent, code
+lv.close(); BW.hold_key()
+try:
+    new_live(Chain()); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert ("another live BNB engine holds " + KEYF) in str(e) and "bnb_wallet.py" in str(e), str(e)
+finally:
+    BW.release_key()
+try:
+    new_live(Chain(), BNB_BUY_LATE=2); raise AssertionError("no refusal")
+except SystemExit as e:
+    assert str(e) == "BNB_LAG_BLOCKS 2 must stay below BNB_BUY_LATE 2: every live buy would count as late", str(e)
+print("ok one user of the key: a second live engine with another positions file stops at its start (the key file's lock), bnb_wallet.py "
+      "withdraw refuses while an engine holds it and an engine refuses while bnb_wallet.py does; BNB_LAG_BLOCKS must stay below BNB_BUY_LATE")
+
+# ================================================================================ round 3 of the review (the open items of round 2's check):
+# each section fails without its fix (a mutation per fix, run on a copy of the tree)
+
+# 55. BNB_RPC_URL's backend lags and still answers (its count, the token's balance and our transactions as they were): nothing is dropped
+# or settled on its word until BNB_READ_ALT_URL shows the same. A buy that landed is found there and kept (it was dropped as never mined,
+# its tokens left unsold); a sell that landed is settled from its receipt there; while the second endpoint cannot answer nothing is dropped
+def alt_of(chain, lv, fail=None, partial=False, fail_methods=()):
+    """BNB_READ_ALT_URL as the chain's true view (fail[0]: it cannot answer; partial: it keeps no index of transactions; fail_methods:
+    the methods it cannot answer)"""
+    lv.read_alt = "https://alt.example.org/k3y-alt-secret"; calls = []
+
+    def alt_rpc(method, params, timeout):
+        calls.append(method)
+        if (fail and fail[0]) or method in fail_methods:
+            raise RuntimeError(method + ": HTTP Error 429: Too Many Requests")
+        if partial and method == "eth_getTransactionByHash":
+            return None
+        return chain.alt(method, params)
+    lv.alt_rpc = alt_rpc
+    return calls
+
+
+ch55 = base_chain(); ch55.replies = [("ok", None, "stale")]; lv = new_live(ch55); live_start(ch55, lv, L - 2); down55 = [True]; alts55 = alt_of(ch55, lv, down55)
+live_go(ch55, lv, L + 52)
+assert lv.pos[PAIR]["state"] == "buy_sent" and ch55.mined == 8 and ch55.bal_tok[TOKEN] > 0 and ch55.frozen["count"] == 7
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()               # the primary: never mined, no tokens; the second view down
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and any("did not answer" in a["what"] and "nothing is dropped" in a["what"] for a in events("alarm"))
+down55[0] = False; lv.pos[PAIR]["txs"][-1]["alt_at"] = 0; lv.tick()               # the second view back: the buy's receipt there
+x = lv.pos[PAIR]
+assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch55.toks[0] and x["bnb_in"] == Q5 and not x.get("unconfirmed") and "eth_getBlockReceipts" in alts55, x
+ch55.frozen = None; live_go(ch55, lv, L + 300)                                    # the backend caught up
+td = lives()
+assert len(td) == 1 and td[0]["why"] == "sell at +260" and td[0]["tokens"] == ch55.toks[0] and td[0]["buy_off"] == 54 and not td[0]["unconfirmed"] and not os.path.exists(HALTF), td
+ch55 = base_chain(); lv = new_live(ch55); live_start(ch55, lv, L - 2); live_go(ch55, lv, L + 255); down55 = [True]; alt_of(ch55, lv, down55)
+ch55.replies = [("ok", None, "stale")]; live_go(ch55, lv, L + 262)
+assert lv.pos[PAIR]["state"] == "sell_sent" and ch55.bal_tok[TOKEN] == 0 and len(ch55.outs) == 1
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()               # the primary: the sell never mined, the tokens still there
+assert lv.pos[PAIR]["state"] == "sell_sent" and len([e for e in events("live_send") if e["kind"] == "sell"]) == 1    # the second view down: not sent again
+down55[0] = False; lv.pos[PAIR]["txs"][-1]["alt_at"] = 0; lv.tick()
+td = lives()
+assert len(td) == 1 and td[0]["bnb_out_wei"] == ch55.outs[0] > 0 and not td[0]["unconfirmed"] and len(ch55.sent) == 3 and lv.halted is None, td
+assert not any(e["kind"] == "sell" and e["reply"] != "ok" for e in events("live_send"))     # never sold again on the stale view
+ch55 = base_chain(); lv = new_live(ch55); live_start(ch55, lv, L - 2); live_go(ch55, lv, L + 255); alt_of(ch55, lv, partial=True)
+ch55.replies = [("ok", None, "stale")]; live_go(ch55, lv, L + 262); smo = lv.pos[PAIR]["txs"][-1]["min_out"]
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()               # no receipt anywhere; the second endpoint counts the nonce, no tokens
+td = lives()
+assert len(td) == 1 and td[0]["bnb_out_wei"] == smo and td[0]["unconfirmed"].startswith("the sell's receipt") and len(ch55.sent) == 3 and lv.halted is None, td
+ch55 = base_chain(); ch55.replies = [("ok", None, "stale")]; lv = new_live(ch55); live_start(ch55, lv, L - 2); alt_of(ch55, lv, partial=True); live_go(ch55, lv, L + 52)
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()               # the buy: its tokens on the second endpoint
+x = lv.pos[PAIR]
+assert x["state"] == "bought" and x["tokens"] == ch55.toks[0] and x["unconfirmed"].startswith("the buy's receipt"), x
+ch55.frozen = None; live_go(ch55, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["tokens"] == ch55.toks[0]
+print("ok a backend of BNB_RPC_URL that lags and still answers: a buy it shows as never mined (no tokens, the nonce not counted) is not "
+      "dropped while BNB_READ_ALT_URL cannot answer, and is kept from its receipt there (then sold); a sell it shows as never mined is "
+      "settled from its receipt there, not sent again; with no receipt there either, the state after the nonce is the second endpoint's "
+      "(a sell settled at its minOut, a buy kept by its tokens)")
+
+# 56. the nonce gap: a buy the node took and lost from every pool (its copies too) while the next nonce went to another position's buy
+# (queued behind the gap for good): the lost buy's nonce is filled by a 0-value transfer to the wallet, the queued buy is mined and that
+# position is sold. A lost buy with no later nonce out is dropped and the nonce read again; a cancel that is lost too drops the slot
+ch56 = base_chain(); lg, tx = clone_tok(P2, 2, "c2", TOK2); ch56.add(lg, tx); ch56.pool(P2, TOK2, lg[1:]); ch56.queue_gaps = True
+ch56.replies = [("ok", None, "lost")]; lv = new_live(ch56, BNB_PROBE_EVERY=1); live_start(ch56, lv, L - 2); live_go(ch56, lv, L + 52)
+b56, q56 = lv.pos[PAIR]["txs"][-1], lv.pos[P2]["txs"][-1]
+assert (b56["nonce"], q56["nonce"], ch56.mined) == (7, 8, 7) and lv.pos[P2]["state"] == "buy_sent" and 8 in ch56.queued, (b56["nonce"], q56["nonce"])
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()               # the lost buy: never mined, a later nonce of ours out
+fill = ch56.sent[0]
+assert (fill["to"], fill["value"], fill["nonce"], fill["data"]) == (WALLET, 0, 7, "") and ch56.sent[1]["hash"] == q56["hash"] and ch56.mined == 9
+live_go(ch56, lv, L + 300)
+assert [e["pair"] for e in lives()] == [P2] and lives()[0]["why"] == "sell at +260" and [t["nonce"] for t in ch56.sent] == [7, 8, 9, 10]
+assert next(e for e in events("live_skip") if e["pair"] == PAIR)["why"].startswith("the buy was cancelled: its nonce 7 filled: our buy at nonce 8 waited behind it")
+ch56 = base_chain(); lg, tx = clone_tok(P2, 30, "c3", TOK2); ch56.add(lg, tx); ch56.pool(P2, TOK2, lg[1:]); ch56.queue_gaps = True
+ch56.replies = [("ok", None, "lost")]; lv = new_live(ch56, BNB_PROBE_EVERY=1); live_start(ch56, lv, L - 2); live_go(ch56, lv, L + 52)
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()
+assert PAIR not in lv.pos and events("live_skip")[-1]["why"] == "the buy was never mined" and lv.nonce is None and not ch56.sent
+live_go(ch56, lv, L + 340)                                                         # the next buy at the nonce read again (7), not at 8 behind a gap
+assert [e["pair"] for e in lives()] == [P2] and [t["nonce"] for t in ch56.sent] == [7, 8, 9]
+ch56 = base_chain(); ch56.replies = [("ok", None, "pending"), ("ok", None, "lost")]; lv = new_live(ch56); live_start(ch56, lv, L - 2); live_go(ch56, lv, L + 52)
+age_last(lv, PAIR, 65); lv.tick()                                                  # past its deadline: the cancel, which is lost (and the buy with it)
+assert lv.pos[PAIR]["txs"][-1]["kind"] == "cancel" and not ch56.pend
+age_all(lv, PAIR, 60); lv.tick()
+assert PAIR not in lv.pos and events("live_skip")[-1]["role"] == "unsent" and not lives() and not ch56.sent and PAIR not in lv.traded
+print("ok the nonce gap: a buy lost from every pool while our next nonce went out has its nonce filled by a 0-value transfer, and the "
+      "buy queued behind it is mined and sold; a lost buy with nothing behind it is dropped and the nonce read again (the next buy at 7, not "
+      "behind a gap); a lost cancel drops the slot (never a position holding tokens)")
+
+# 57. the buy's head: its last lateness check reads the head itself just before the send (a head 9 s old is under HEAD_BLIND_S and was
+# taken as it was: 20 blocks); with no answer, the last head aged at 0.45 s a block. A buy the node holds unmined once the head makes it
+# late (BNB_BUY_LATE) is cancelled at its nonce at once, long before its deadline (it could land up to ~L+183 with its 5% minOut)
+for setup in ("head_n", "down"):
+    ch57 = base_chain(); lv = new_live(ch57); live_start(ch57, lv, L - 2); to_buy_due(ch57, lv)
+    lv.head_val, lv.head_ok_at = L + 52, time.monotonic() - 9                     # the last head 9 s old; the chain 20 blocks on
+    if setup == "head_n":
+        ch57.head_n = L + 72
+    else:
+        ch57.down = {"eth_blockNumber"}
+    lv.tick()
+    assert not ch57.sent and PAIR not in lv.pos and re.search(r"the buy would go 2[0-9] blocks late \(it lands at L\+7\d", events("live_skip")[-1]["why"]), events("live_skip")
+assert any(a["what"].startswith("the head not read before a buy") for a in events("alarm"))
+ch57 = base_chain(); ch57.replies = [("ok", None, "pending")]; lv = new_live(ch57); live_start(ch57, lv, L - 2); live_go(ch57, lv, L + 52)
+b57 = lv.pos[PAIR]["txs"][-1]
+assert b57["kind"] == "buy" and not ch57.sent and lv.late(lv.pos[PAIR])[0] == 5
+E.state["head"] = L + 56; lv.tick()                                                # a buy mined now lands at L+57: 7 blocks, not late
+assert lv.pos[PAIR]["txs"][-1] is b57 and not events("live_replace")
+E.state["head"] = L + 57; age_last(lv, PAIR, 6); lv.tick()                         # L+58: late (and 6 s old: no copy of it now)
+c57 = lv.pos[PAIR]["txs"][-1]
+assert c57["kind"] == "cancel" and c57["nonce"] == 7 and c57["why"] == "not mined 8 blocks after L+50 (BNB_BUY_LATE 7)" and time.time() < b57["deadline"] - 30, c57
+assert not events("live_rebroadcast")
+for _ in range(3):
+    lv.tick()
+assert PAIR not in lv.pos and events("live_skip")[-1]["why"].startswith("the buy was cancelled: not mined 8 blocks after L+50") and ch57.sent[-1]["to"] == WALLET
+assert not lives() and lv.halted is None and ch57.mined == 8
+ch57 = base_chain(); lg, tx = clone_tok(P2, 2, "c4", TOK2); ch57.add(lg, tx); ch57.pool(P2, TOK2, lg[1:])            # a buy no endpoint answered for
+ch57.replies = [("unknown", "timed out", False)] * 2 + [("ok", None, "pending")]                                       # (the nonce read again), and the
+lv = new_live(ch57, BNB_PROBE_EVERY=1); live_start(ch57, lv, L - 2); live_go(ch57, lv, L + 52)                        # next buy held at that same nonce
+bA, bB = lv.pos[PAIR]["txs"][-1], lv.pos[P2]["txs"][-1]
+assert bA["nonce"] == bB["nonce"] == 7 and ch57.pend[7][0] == bB["hash"]
+E.state["head"] = L + 57; lv.tick()                                                # the first buy late: no transfer at 7 (it would replace the other's buy)
+assert ch57.pend[7][0] == bB["hash"] and [t["kind"] for t in lv.pos[PAIR]["txs"]] == ["buy"] and lv.pos[P2]["txs"][-1] is bB
+print("ok the buy's head: read just before the send (a stale head 20 blocks behind no longer lets it out late), else aged by the clock; a "
+      "buy held unmined once the head makes it late is cancelled at its nonce at once, not left to land up to its deadline (never at a nonce "
+      "another position's transaction took)")
+
+# 58. --alerts (health.sh) on what a stalled reader hides: no flow line for 10 minutes while flip-bnb is active (a hung reader), a position
+# past its sale by the clock though the last flow line's head is not past it, and a halt only the positions file holds (its file could not
+# be written, or was removed while the engine still holds it); nothing of it while the service is stopped and the positions file is clean
+now = time.time(); open(S2, "w").write(json.dumps(st2) + "\n" + json.dumps({"ev": "flow", "t": now - 600, "head": L + 300, "done_to": L + 298, "blocks": 130, "bnb_usd": 750}) + "\n")
+json.dump({"positions": {"0x" + "72" * 20: {"state": "approved", "L": L, "txs": [{"kind": "buy", "hash": "0xab", "sent_at": now - 640}]}},
+           "halted": "a reverted sell (a test)", "halt_written": False}, open(P3F, "w"))
+renv3 = dict(renv2, PATH=os.path.join(TMP, "active") + os.pathsep + os.environ["PATH"])
+al3 = subprocess.run([sys.executable, os.path.join(ROOT, "deploy", "bnb_results.py"), "--alerts"], env=renv3, capture_output=True, text=True).stdout.splitlines()
+assert al3[0] == "BNB HALTED: a reverted sell (a test) (only in the positions file: HALTED.bnb could not be written) (no new live buy; open positions still sold)", al3
+assert al3[1].startswith("BNB NOT READING: no flow line for 1") and "while flip-bnb is active" in al3[1], al3
+assert re.fullmatch(r"BNB SALE OVERDUE 0x7272727272: approved at about L\+16\d\d by the clock \(sold at L\+260\)", al3[2]) and len(al3) == 3, al3
+full = subprocess.run([sys.executable, os.path.join(ROOT, "deploy", "bnb_results.py"), "24"], env=renv3, capture_output=True, text=True).stdout
+assert "HALTED: a reverted sell (a test) (only in the positions file" in full and "<== NOT READING" in full, full
+d58 = json.load(open(P3F)); d58["halt_written"] = True; json.dump(d58, open(P3F, "w"))
+al3 = subprocess.run([sys.executable, os.path.join(ROOT, "deploy", "bnb_results.py"), "--alerts"], env=renv2, capture_output=True, text=True).stdout.splitlines()
+assert al3[0].startswith("BNB HALTED: a reverted sell (a test) (HALTED.bnb was removed but the engine still holds the halt: restart flip-bnb") and len(al3) == 2, al3
+json.dump({"positions": {}}, open(P3F, "w"))
+assert subprocess.run([sys.executable, os.path.join(ROOT, "deploy", "bnb_results.py"), "--alerts"], env=renv2, capture_output=True, text=True).stdout == ""
+print("ok --alerts on a stalled reader: BNB NOT READING after 3 minutes without a flow line while flip-bnb is active, a sale overdue by "
+      "the clock (L+16xx, not the last flow line's L+300), and a halt only the positions file holds (never written, or removed while the "
+      "engine still holds it); nothing while the service is stopped and all is clean")
+
+# 59. settled once: a hard kill (SIGKILL, a power loss) right after the trade_done line, before anything else, writes no second line at the
+# restart (the position left the positions file and the gate took the trade before the line); one right before the line writes it then
+class Kill(BaseException):
+    pass
+
+
+for when in ("after", "before"):
+    ch59 = base_chain(); lv = new_live(ch59); live_start(ch59, lv, L - 2); live_go(ch59, lv, L + 255); log59 = lv.log
+
+    def killed(ev, when=when, log59=log59):
+        if when == "before" and ev.get("ev") == "trade_done" and ev.get("live"):
+            raise Kill()
+        log59(ev)
+        if when == "after" and ev.get("ev") == "trade_done" and ev.get("live"):
+            raise Kill()
+    lv.log = killed
+    try:
+        live_go(ch59, lv, L + 300); raise AssertionError("not killed")
+    except Kill:
+        pass
+    assert len(lives()) == (1 if when == "after" else 0)
+    lv2 = new_live(ch59); E.pools.clear(); E.LIVE = lv2; lv2.start(E.state["done_to"] + 2, thread=False)
+    for _ in range(6):
+        lv2.tick()
+    td, pf = lives(), json.load(open(POSF))
+    assert len(td) == 1 and td[0]["bnb_out_wei"] == ch59.outs[0] > 0 and pf["positions"] == {} and pf["gate_rets"] == [td[0]["pnl_pct"]] and pf["unlogged"] == [], (when, td)
+    assert len(ch59.sent) == 3 and bool(td[0].get("resumed_line")) == (when == "before") and events("live_resume")[0]["what"].startswith("its trade_done was")
+print("ok settled once: a hard kill right after the trade_done line writes no second one at the restart (the gate counts it once), and a "
+      "kill right before the line writes it at the restart")
+
+# 60. the paths round 2's tests left unchecked: an error after the buy's record was written keeps the position as buy_sent (it is mined and
+# sold); a stuck position is taken back at a restart as approved, its tries reset, and sold; the sale by the head covers buy_sent, bought
+# and approve_sent as well as approved
+ch60 = base_chain(); lv = new_live(ch60); live_start(ch60, lv, L - 2); to_buy_due(ch60, lv); b60 = lv.broadcast
+lv.broadcast = lambda raw: (_ for _ in ()).throw(RuntimeError("a transport failure after the record")); lv.tick(); lv.broadcast = b60
+x = lv.pos[PAIR]
+assert x["state"] == "buy_sent" and [t["kind"] for t in x["txs"]] == ["buy"] and PAIR in lv.traded and any(a["what"].startswith("the buy failed: RuntimeError") for a in events("alarm"))
+age_last(lv, PAIR, 25); lv.tick(); live_go(ch60, lv, L + 300)                       # a copy (mined), then sold
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["hashes"]["buy"] == [x["txs"][0]["hash"]]
+ch60 = base_chain(); lv = new_live(ch60); live_start(ch60, lv, L - 2); live_go(ch60, lv, L + 255); ch60.zero = 100
+while E.state["done_to"] < L + 262:
+    E.step(replay_to=L + 262); lv.tick()
+for _ in range(8):
+    lv.pos[PAIR]["sell_wait"] = 0; lv.tick()
+assert lv.pos[PAIR]["state"] == "stuck"
+ch60.zero = 0; lv2 = new_live(ch60); E.pools.clear(); E.LIVE = lv2; lv2.start(E.state["done_to"] + 2, thread=False)
+assert (lv2.pos[PAIR]["state"], lv2.pos[PAIR]["zero_reads"], lv2.pos[PAIR]["sell_tries"]) == ("approved", 0, 0)
+for _ in range(6):
+    lv2.tick()
+assert lives()[0]["bnb_out_wei"] == ch60.outs[0] > 0 and lives()[0]["resumed"]
+lv = new_live(base_chain()); E.state.update(head=L + 300, done_to=L + 100); STATES = ("buy_sent", "bought", "approve_sent", "approved", "sell_sent", "stuck", "armed", "checked")
+lv.pos = {"0x%040x" % (0xc00 + i): {"pair": "0x%040x" % (0xc00 + i), "L": L, "state": s_, "txs": []} for i, s_ in enumerate(STATES)}; lv.sell_by_head()
+assert sorted(x_["state"] for x_ in lv.pos.values() if x_.get("sell_due")) == ["approve_sent", "approved", "bought", "buy_sent"]
+print("ok round 2's unchecked paths: an error after the buy's record keeps it buy_sent (mined, sold); a stuck position is taken back as "
+      "approved at a restart and sold; the sale by the head covers buy_sent, bought, approve_sent and approved")
+
+# 61. the runbook and the handoff name this file's count of tests (RUNBOOK 4i's install line and 4k step 1, HANDOFF 16.23), and 4i the
+# unit's restart delay
+n_ok = sum(1 for l_ in open(os.path.abspath(__file__)) if l_.startswith('print("ok'))
+i4 = rb[rb.index("## 4i."):rb.index("## 4j.")]; ho = open(os.path.join(ROOT, "docs", "HANDOFF.md")).read(); h23 = ho[ho.index("### 16.23"):]
+assert ("the two paths and `%d`" % n_ok) in i4 and ("the three paths and `%d`" % n_ok) in k4 and ("restarts it %s s after an exit" % svc["RestartSec"]) in i4, n_ok
+assert ("`tests/test_bnb_engine.py` %d after the review's sixth round" % n_ok) in h23
+print("ok the docs: RUNBOOK 4i and 4k expect the %d tests this file prints, 4i the unit's 5 s restart; HANDOFF 16.23 the same count" % n_ok)
+
+# ================================================================================ round 4 of the review (the open items of round 3's check):
+# each section fails without its fix (a mutation per fix, run on a copy of the tree); BNB_READ_ALT_URL on, as production runs
+
+# 62. a late buy's cancel has no deadline: the wait before a drop is the latest deadline at the nonce, the buy's. A buy taken and lost from
+# every pool, and its late cancel lost too: nothing is dropped before the buy's deadline + 15 s (it was dropped 40 s after the cancel, 16 s
+# before the buy's deadline, and a buy landing then left its tokens unsold); one landing then is kept and sold, also when no node shows it
+# or counts its nonce yet (the cancel's buy's tokens decide); one that never lands is dropped once it is past
+for lands in (True, "hidden", False):
+    ch62 = base_chain(); ch62.replies = [("ok", None, "lost")] * 2; lv = new_live(ch62); live_start(ch62, lv, L - 2); alt_of(ch62, lv)
+    T62 = int(time.time()) + 0.75; bs62 = lv.buy_send; lv.buy_send = lambda x_: frozen(T62, bs62, x_)    # the buy sent at one instant (as in 30: a
+    live_go(ch62, lv, L + 52); lv.buy_send = bs62                                                        # send crossing a second made it 58.99 s)
+    b62 = lv.pos[PAIR]["txs"][-1]
+    assert b62["sent_at"] == T62 and b62["deadline"] == int(T62) + 60
+    E.state["head"] = L + 57; frozen(T62 + 4, lv.tick)                            # late at L+58: the cancel at its nonce, lost as well
+    c62 = lv.pos[PAIR]["txs"][-1]
+    assert (b62["kind"], c62["kind"], c62["nonce"], c62.get("deadline")) == ("buy", "cancel", 7, None) and T62 + 59 < b62["deadline"] <= T62 + 60, c62
+    for s_ in (41, 45, 50, 60, 70, b62["deadline"] - T62 + 14):
+        frozen(T62 + s_, lv.tick)
+        assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and not ch62.sent, s_
+    if lands:
+        ch62.lost.discard(b62["hash"]); ch62.replies = [("ok", None, lands)] if lands == "hidden" else []; ch62.post(None, b62["raw"])   # a pool that held it mines it
+        ch62.count_lag = 1 if lands == "hidden" else 0; frozen(b62["deadline"] + (16 if lands == "hidden" else 14.5), lv.tick); ch62.count_lag = 0
+        if lands == "hidden":                                                     # neither count shows its nonce mined: held by its tokens, never
+            assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip")   # dropped; kept once a count shows it
+            frozen(b62["deadline"] + 22, lv.tick)
+        x = lv.pos[PAIR]
+        assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch62.toks[0] and bool(x.get("unconfirmed")) == (lands == "hidden"), x["state"]
+        assert [e["hash"] for e in events("live_replaced")] == ([c62["hash"]] if lands is True else []) and [t["kind"] for t in x["txs"]][0] == "buy"
+        live_go(ch62, lv, L + 300); td = lives()
+        assert len(td) == 1 and td[0]["why"] == "sell at +260" and td[0]["tokens"] == ch62.toks[0] and td[0]["hashes"]["buy"] == [b62["hash"]] and lv.halted is None, td
+    else:
+        frozen(b62["deadline"] + 16, lv.tick)
+        assert PAIR not in lv.pos and events("live_skip")[-1]["why"] == "the buy was never mined" and not ch62.sent and not lives()
+E.state["head"] = None
+print("ok a late buy's cancel has no deadline: a lost buy and its lost cancel drop nothing before the buy's own deadline + 15 s (the slot "
+      "went 40 s after the cancel); the buy landing then is kept and sold, one that never lands is dropped after it")
+
+# 63. BNB_RPC_URL's backend stalls holding our transaction as pending while the chain mined it (it never shows a receipt, its copies are
+# 'already known'): a late buy's cancel answered 'nonce too low' (its nonce was mined) is not tried again and BNB_READ_ALT_URL is asked at
+# once: the buy is kept from its receipt there and sold (it stayed buy_sent for good, the creator's drain to come); with no such answer the
+# second endpoint is asked once it has been pending twice BNB_RECEIPT_WAIT_S; a sell whose replacement is answered 'nonce too low' is
+# settled from its receipt there, never sold again
+ch63 = base_chain(); ch63.replies = [("ok", None, "stalepend")]; lv = new_live(ch63); live_start(ch63, lv, L - 2); alt_of(ch63, lv); live_go(ch63, lv, L + 52)
+b63 = lv.pos[PAIR]["txs"][-1]; T63 = b63["sent_at"]
+assert lv.receipt(b63["hash"]) == (None, True) and ch63.mined == 8 and ch63.bal_tok[TOKEN] > 0 and lv.pos[PAIR]["state"] == "buy_sent"
+E.state["head"] = L + 57; frozen(T63 + 4, lv.tick)                               # late: the cancel at its nonce, 'nonce too low'
+assert [e["reply"] for e in events("live_send") if e["kind"] == "cancel"] == ["nonce"] and b63.get("nonce_low") and not b63.get("refused") and lv.pos[PAIR]["state"] == "buy_sent"
+frozen(T63 + 13, lv.tick)                                                        # 9 s on: not cancelled again; the second endpoint's receipt
+x = lv.pos[PAIR]
+assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch63.toks[0] and not x.get("unconfirmed") and len([e for e in events("live_send") if e["kind"] == "cancel"]) == 1, x["state"]
+ch63.frozen = None; live_go(ch63, lv, L + 300); E.state["head"] = None
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["tokens"] == ch63.toks[0] and lives()[0]["hashes"]["buy"] == [b63["hash"]]
+ch63 = base_chain(); ch63.replies = [("ok", None, "stalepend")]; lv = new_live(ch63); live_start(ch63, lv, L - 2); alt_of(ch63, lv); live_go(ch63, lv, L + 52)
+age_last(lv, PAIR, 39); lv.tick()                                                # pending 39 s, its copy 'already known': waited for
+assert lv.pos[PAIR]["state"] == "buy_sent" and [e["reply"] for e in events("live_rebroadcast")] == ["in"]
+age_last(lv, PAIR, 2); lv.tick()                                                 # 41 s: the second endpoint asked
+assert lv.pos[PAIR]["state"] in ("bought", "approve_sent") and not lv.pos[PAIR].get("unconfirmed")
+ch63.frozen = None; live_go(ch63, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["tokens"] == ch63.toks[0]
+down63 = [False]; ch63 = base_chain(); lv = new_live(ch63); live_start(ch63, lv, L - 2); alt_of(ch63, lv, down63); live_go(ch63, lv, L + 255)
+ch63.replies = [("ok", None, "stalepend")]; live_go(ch63, lv, L + 262)
+s63 = lv.pos[PAIR]["txs"][-1]
+assert s63["kind"] == "sell" and lv.pos[PAIR]["state"] == "sell_sent" and lv.receipt(s63["hash"]) == (None, True) and ch63.bal_tok[TOKEN] == 0
+age_last(lv, PAIR, 9); lv.tick()                                                 # replaced at its nonce: 'nonce too low'
+assert [e["reply"] for e in events("live_send") if e["kind"] == "sell"] == ["ok", "nonce"] and lv.pos[PAIR]["state"] == "sell_sent"
+down63[0] = True; age_last(lv, PAIR, 9); lv.tick()                               # the second endpoint down a while: nothing replaced again at a
+assert len([e for e in events("live_send") if e["kind"] == "sell"]) == 2 and lv.pos[PAIR]["state"] == "sell_sent"   # nonce known to be mined
+age_last(lv, PAIR, 40); lv.tick()                                                # judged while BNB_RPC_URL holds it: its 'did not answer' alarm too
+assert len([e for e in events("live_send") if e["kind"] == "sell"]) == 2 and lv.pos[PAIR]["state"] == "sell_sent" and not lives()
+assert any("alt.example.org did not answer" in a["what"] for a in events("alarm")), [a["what"] for a in events("alarm")]
+down63[0] = False; age_last(lv, PAIR, 1); lv.tick()                              # the second endpoint's receipt
+td = lives()
+assert len(td) == 1 and td[0]["bnb_out_wei"] == ch63.outs[0] > 0 and not td[0]["unconfirmed"] and td[0]["hashes"]["sell"] == [s63["hash"]] and lv.halted is None, td
+assert len([e for e in events("live_send") if e["kind"] == "sell"]) == 2 and len(ch63.outs) == 1
+print("ok a stalled BNB_RPC_URL holding our mined transaction as pending: a late buy's cancel answered 'nonce too low' is not tried again "
+      "and BNB_READ_ALT_URL is asked at once (the buy kept from its receipt there and sold); without that answer it is asked after twice "
+      "BNB_RECEIPT_WAIT_S; a sell whose replacement is answered 'nonce too low' is settled from the receipt there, never sold again")
+
+# 64. a transaction only BNB_READ_ALT_URL's pool holds (BNB_RPC_URL does not know it), asked from BNB_REPLACE_S on, is held as one
+# BNB_RPC_URL holds: a sell is replaced at its nonce after 8 s and settled from the one mined; a buy waits for its deadline (the pending
+# alarm after twice BNB_RECEIPT_WAIT_S names the endpoint), then is cancelled at its nonce; its cancel held there too is replaced at its
+# nonce once it is old enough to be judged (50 s past the buy's deadline, both counts at its nonce): never dropped as never mined (6
+# minutes silent)
+ch64 = base_chain(); lv = new_live(ch64); live_start(ch64, lv, L - 2); alt_of(ch64, lv); live_go(ch64, lv, L + 255)
+ch64.replies = [("ok", None, "altpend")]; live_go(ch64, lv, L + 262)
+s64 = lv.pos[PAIR]["txs"][-1]
+assert s64["kind"] == "sell" and lv.receipt(s64["hash"]) == (None, False) and ch64.pend[9][0] == s64["hash"]
+age_last(lv, PAIR, 9); lv.tick()                                                 # held there 9 s: replaced at its nonce, 1/8 dearer
+s64b = lv.pos[PAIR]["txs"][-1]
+assert s64b["replaces"] == s64["hash"] and s64b["nonce"] == 9 and s64b["gas_price"] == s64["gas_price"] * 9 // 8 + 1, s64b
+for _ in range(3):
+    lv.tick()
+td = lives()
+assert len(td) == 1 and td[0]["hashes"]["sell"] == [s64b["hash"]] and td[0]["bnb_out_wei"] == ch64.outs[0] > 0 and not td[0]["unconfirmed"], td
+ch64 = base_chain(); ch64.replies = [("ok", None, "altpend")]; lv = new_live(ch64); live_start(ch64, lv, L - 2); alt_of(ch64, lv); live_go(ch64, lv, L + 52)
+b64 = lv.pos[PAIR]["txs"][-1]
+age_last(lv, PAIR, 41); lv.tick()                                                # before its deadline: not replaced, not dropped; the pending alarm
+assert lv.pos[PAIR]["txs"][-1] is b64 and not events("live_replace") and not events("live_skip")
+assert any(re.fullmatch(r"the buy has been pending 4\d s \(held by alt\.example\.org only\)", a["what"]) for a in events("alarm")), [a["what"] for a in events("alarm")]
+ch64.replies = [("ok", None, "altpend")]; age_last(lv, PAIR, 24); lv.tick()        # 5 s past its deadline: the cancel at its nonce, held there too
+c64 = lv.pos[PAIR]["txs"][-1]
+assert c64["kind"] == "cancel" and c64["nonce"] == 7 and c64["replaces"] == b64["hash"] and ch64.pend[7][0] == c64["hash"] and lv.receipt(c64["hash"]) == (None, False)
+age_all(lv, PAIR, 45); lv.tick()                                                 # due to be judged: both counts at 7, no pool BNB_RPC_URL shows,
+c64b = lv.pos[PAIR]["txs"][-1]                                                   # the second endpoint's holds it: held (its cancel replaced)
+assert PAIR in lv.pos and not events("live_skip") and c64b["replaces"] == c64["hash"] and c64b["nonce"] == 7 and lv.halted is None, c64b
+for _ in range(3):
+    lv.tick()
+assert PAIR not in lv.pos and events("live_skip")[-1]["why"].startswith("the buy was cancelled") and lv.halted is None and ch64.sent[-1]["to"] == WALLET
+print("ok a transaction only BNB_READ_ALT_URL holds pending: a sell replaced after 8 s and settled from the one mined; a buy held to its "
+      "deadline with the pending alarm (naming the endpoint), then cancelled at its nonce, its cancel held there too replaced; never "
+      "dropped as never mined")
+
+# 65. a head that keeps answering the same number is no fresh head: BNB_RPC_URL stalled but answering its last block for 130 s, the head
+# is extrapolated and the position sold by it (an alarm), as with no answer at all; before a buy, the same head answered 9 s on is aged
+# by the clock and a buy it makes late is not sent
+ch65 = base_chain(); lv = new_live(ch65); live_start(ch65, lv, L - 2); live_go(ch65, lv, L + 60)
+assert lv.pos[PAIR]["state"] == "approved"
+ch65.head_n = lv.head_val; lv.HEAD_POLL_S, lv.HEAD_BLIND_S = 3.0, 10; lv.head_ok_at -= 130; hv = lv.head_val - L; n65 = ch65.calls.get("eth_blockNumber", 0)
+for _ in range(4):
+    lv.tick()
+td = lives(); m65 = re.fullmatch(r"the reader is behind: sold by the head \(L\+(\d+), estimated: no head for 13\d s\)", td[0]["why"]) if len(td) == 1 else None
+assert m65 and 288 <= int(m65.group(1)) - hv <= 290 and ch65.calls["eth_blockNumber"] > n65, (hv, td)
+assert any(a["what"].startswith("eth_blockNumber still answers %d, no new block for 13" % (L + hv)) for a in events("alarm"))
+ch65 = base_chain(); lv = new_live(ch65); live_start(ch65, lv, L - 2); to_buy_due(ch65, lv)
+lv.head_val, lv.head_ok_at = L + 52, time.monotonic() - 9; ch65.head_n = L + 52      # the node answers the head it had 9 s ago
+lv.tick()
+assert not ch65.sent and PAIR not in lv.pos and re.search(r"the buy would go 2[0-9] blocks late \(it lands at L\+7\d", events("live_skip")[-1]["why"]), events("live_skip")
+print("ok a head answered again unchanged is not fresh: a node stalled on its last block for 130 s leaves the head extrapolated and the "
+      "position sold by it (an alarm); before a buy, the same head 9 s on is aged by the clock and the late buy is not sent")
+
+# 66. while BNB_READ_ALT_URL cannot answer (the default, bsc-dataseed, rate-limits), a buy whose tokens BNB_RPC_URL shows, its count
+# showing the nonce mined, is still kept as bought and sold (it stayed buy_sent for good); with the count behind, the tokens alone decide
+# nothing until it shows it; dropping and settling still wait for the second endpoint (test 55). RUNBOOK 4k tells the
+# owner what to do about the repeated 'did not answer' alarm, in two lines that each define step 4's set_bnb (a new SSH session has none):
+# each run in a fresh shell on a scratch env file (no sudo, no systemctl) sets the line whether it was there or not
+ch66 = base_chain(); ch66.replies = [("ok", None, "hidden")]; lv = new_live(ch66); live_start(ch66, lv, L - 2); alt66 = alt_of(ch66, lv, [True]); live_go(ch66, lv, L + 52)
+assert lv.pos[PAIR]["state"] == "buy_sent" and ch66.mined == 8 and ch66.bal_tok[TOKEN] > 0
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()             # shown nowhere; the count and the tokens on BNB_RPC_URL; the second down
+x = lv.pos[PAIR]
+assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch66.toks[0] and x["unconfirmed"].startswith("the buy's receipt") and "eth_getTransactionByHash" in alt66, x["state"]
+live_go(ch66, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["tokens"] == ch66.toks[0] and lv.halted is None
+ch66 = base_chain(); ch66.replies = [("ok", None, "hidden")]; lv = new_live(ch66); live_start(ch66, lv, L - 2); alt_of(ch66, lv, [True]); live_go(ch66, lv, L + 52)
+ch66.count_lag = 1; age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()   # its count not showing the nonce mined: the tokens
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and any("did not answer" in a["what"] for a in events("alarm"))   # alone decide nothing
+ch66.count_lag = 0; age_last(lv, PAIR, 1); lv.tick()
+assert lv.pos[PAIR]["state"] in ("bought", "approve_sent") and lv.pos[PAIR]["tokens"] == ch66.toks[0]
+assert "did not answer" in k4 and "set_bnb BNB_READ_ALT_URL https://" in k4 and "set_bnb BNB_READ_ALT_URL 0" in k4
+d66 = next(l_.strip() for l_ in k4.splitlines() if l_.strip().startswith("set_bnb() {") and l_.strip().endswith("; }"))    # step 4's helper
+rem66 = [l_.strip() for l_ in k4.splitlines() if "set_bnb BNB_READ_ALT_URL" in l_]
+assert len(rem66) == 2 and all(r_.startswith(d66 + "; set_bnb BNB_READ_ALT_URL ") and r_.endswith(" && sudo systemctl restart flip-bnb") for r_ in rem66), rem66
+env66 = os.path.join(TMP, "bnb66.env")
+for r_, want in zip(rem66, ("https://OTHER_ENDPOINT", "0")):
+    for before in ("BNB_LIVE=1\nBNB_READ_ALT_URL=https://old.example.org\n", "BNB_LIVE=1\n"):
+        open(env66, "w").write(before)
+        cmd = r_.replace("sudo systemctl restart flip-bnb", "true").replace("sudo ", "").replace("/etc/flip/bnb.env", env66)
+        p66 = subprocess.run(["bash", "--norc", "--noprofile", "-c", cmd], capture_output=True, text=True, env={"PATH": os.environ["PATH"]})
+        assert p66.returncode == 0 and open(env66).read() == "BNB_LIVE=1\nBNB_READ_ALT_URL=%s\n" % want, (r_, before, p66.stderr, open(env66).read())
+print("ok while BNB_READ_ALT_URL cannot answer, a buy whose tokens BNB_RPC_URL shows is kept as bought and sold (dropping and settling "
+      "still wait for it); RUNBOOK 4k says what to do about its repeated 'did not answer' alarm, in lines that work in a fresh shell")
+
+# 67. the paths round 3's mutations showed untested: BNB_READ_ALT_URL's receipt in a block not final there is not acted on until it is;
+# a gap's fill refused for its nonce ('replacement transaction underpriced') drops nothing and is sent again after BNB_REPLACE_S; a
+# buy whose nonce neither endpoint counts yet but whose tokens only BNB_READ_ALT_URL shows is never dropped (both endpoints' balances), and
+# kept once that endpoint's count shows its nonce mined
+ch67 = base_chain(); ch67.replies = [("ok", None, "stale")]; lv = new_live(ch67); live_start(ch67, lv, L - 2); alt_of(ch67, lv); live_go(ch67, lv, L + 52)
+ch67.fin_lag = 5; age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()   # the buy's block 3 above the second endpoint's finalized one
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_receipt") and not events("live_skip")
+ch67.fin_lag = 0; age_last(lv, PAIR, 1); lv.tick()
+assert lv.pos[PAIR]["state"] in ("bought", "approve_sent") and events("live_receipt")[0]["kind"] == "buy" and not lv.pos[PAIR].get("unconfirmed")
+ch67 = base_chain(); lg, tx = clone_tok(P2, 2, "c7", TOK2); ch67.add(lg, tx); ch67.pool(P2, TOK2, lg[1:]); ch67.queue_gaps = True
+ch67.replies = [("ok", None, "lost"), ("ok", None, True), ("nonce", "replacement transaction underpriced", False)]
+lv = new_live(ch67, BNB_PROBE_EVERY=1); live_start(ch67, lv, L - 2); live_go(ch67, lv, L + 52)
+q67 = lv.pos[P2]["txs"][-1]
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()             # the lost buy's fill refused for its nonce: nothing dropped
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and not ch67.sent and any("was refused" in a["what"] and "not dropped" in a["what"] for a in events("alarm"))
+lv.pos[PAIR]["txs"][-1]["fill_at"] -= 9; age_last(lv, PAIR, 9); lv.tick()        # BNB_REPLACE_S on: filled
+assert (ch67.sent[0]["to"], ch67.sent[0]["nonce"], ch67.sent[0]["value"]) == (WALLET, 7, 0) and ch67.sent[1]["hash"] == q67["hash"]
+live_go(ch67, lv, L + 300)
+assert [e["pair"] for e in lives()] == [P2] and events("live_skip", PAIR)[-1]["why"].startswith("the buy was cancelled: its nonce 7 filled")
+ch67 = base_chain(); ch67.replies = [("ok", None, "stale")]; lv = new_live(ch67); live_start(ch67, lv, L - 2); alt_of(ch67, lv, partial=True); live_go(ch67, lv, L + 52)
+ch67.count_lag = 1; age_last(lv, PAIR, 85); lv.tick(); ch67.count_lag = 0        # past its deadline (no copy): neither endpoint counts the nonce,
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip")           # BNB_READ_ALT_URL shows the tokens: held, never dropped
+age_last(lv, PAIR, 1); lv.tick()                                                 # the second endpoint's count shows it: its state keeps the buy
+x = lv.pos[PAIR]
+assert x["state"] == "bought" and x["tokens"] == ch67.toks[0] and x["unconfirmed"].startswith("the buy's receipt"), x["state"]
+ch67.frozen = None; live_go(ch67, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["tokens"] == ch67.toks[0]
+print("ok round 3's untested paths: the second endpoint's receipt waits for its block to be final there; a gap's fill refused for its "
+      "nonce drops nothing and is sent again after 8 s; a buy whose tokens only the second endpoint shows is never dropped, and kept once "
+      "its count shows the nonce mined")
+
+# 68. the earlier live sections again with BNB_READ_ALT_URL on, as production runs (BNB_SEND_ALT_URL's default): each live engine they
+# make on a stubbed chain gets the second endpoint as the chain's true view (alt_of). Left out: 38, 40 and 47, which take BNB_RPC_URL down
+# on purpose to test the path without it (the second endpoint would answer for it), 45 and 55, which wire the second endpoint themselves,
+# and those with no chain of the wallet's (14, 24-26, 33-36, 51, 52, 54, 58, 61); 62-67 run with it already
+import io, contextlib
+SRC = open(os.path.abspath(__file__)).read(); new_live0 = new_live; ALT_ON = (15, 16, 17, 18, 19, 20, 21, 22, 23, 27, 28, 29, 30, 31, 32, 37, 39, 41, 42, 43, 44, 46, 48, 49, 50, 53, 56, 57, 59, 60)
+
+
+def new_live_alt(chain, keep_old=False, **env_):
+    lv_ = new_live0(chain, keep_old, **env_)
+    if hasattr(chain, "alt"):                                                     # (a stubbed chain with the wallet's side)
+        alt_of(chain, lv_); WIRED.append(lv_)
+    return lv_
+
+
+for n_ in ALT_ON:
+    code_ = SRC[SRC.index("\n# %d. " % n_):SRC.index("\n# %d. " % (n_ + 1))]; out_ = io.StringIO(); new_live = new_live_alt; WIRED = []
+    try:
+        with contextlib.redirect_stdout(out_):
+            exec(compile("\n" * SRC[:SRC.index("\n# %d. " % n_)].count("\n") + code_, os.path.abspath(__file__), "exec"), globals())
+    finally:
+        new_live = new_live0
+    assert [l_ for l_ in out_.getvalue().splitlines() if l_.startswith("ok ")] and WIRED and all(lv_.read_alt for lv_ in WIRED), n_
+print("ok the earlier live sections (%d of them) pass again with BNB_READ_ALT_URL on, as production runs" % len(ALT_ON))
+
+# ================================================================================ round 5 of the review: one rule (Live.outcome()) decides
+# what a transaction with no receipt did: a receipt at either read endpoint in a block final there, or the state of an endpoint whose count
+# shows its nonce mined; a 'nonce too low' or a refusal is a signal (asks at once, stops the signing at that nonce), never a count
+
+# 69. round 4's probe PC3: BNB_RPC_URL stalls holding our mined sell as pending and the sell's replacement is answered 'nonce too low'.
+# With BNB_READ_ALT_URL off, and with a second endpoint that keeps no index of transactions and whose count lags by 1, no endpoint shows
+# the nonce mined: the sell is held for a minute (its alarm names the 'nonce too low'), nothing dropped, never signed again at its nonce or
+# at a new one, nothing settled; once a node shows it, it is settled from the real receipt (the 'nonce too low' had raised the count: the
+# sell dropped at +40 s as 'not seen', sold again 26 to 32 times into nonce errors, the line halted and the trade left unsettled)
+for alt69 in ("off", "partial-lag"):
+    ch69 = base_chain(); lv = new_live(ch69); live_start(ch69, lv, L - 2)
+    if alt69 != "off":
+        alt_of(ch69, lv, partial=True)
+    live_go(ch69, lv, L + 255); ch69.replies = [("ok", None, "stalepend")]; live_go(ch69, lv, L + 262)
+    s69 = lv.pos[PAIR]["txs"][-1]; T69 = s69["sent_at"]
+    assert s69["kind"] == "sell" and lv.receipt(s69["hash"]) == (None, True) and ch69.bal_tok[TOKEN] == 0 and ch69.mined == 10 and bool(lv.read_alt) == (alt69 != "off")
+    ch69.count_lag = 1 if alt69 != "off" else 0
+    for s_ in range(1, 61):
+        frozen(T69 + s_, lv.tick)
+    sells = [(e["nonce"], e["reply"]) for e in events("live_send") if e["kind"] == "sell"]
+    assert lv.pos[PAIR]["state"] == "sell_sent" and sells == [(9, "ok"), (9, "nonce")] and s69.get("nonce_low") and not events("live_skip"), (alt69, sells)
+    assert not lives() and lv.halted is None and not any(a["what"].endswith(": dropped") or "was not seen" in a["what"] for a in events("alarm")), alt69
+    assert any("a node answered 'nonce too low' at its nonce, but no endpoint counts it mined" in a["what"] for a in events("alarm")), alt69
+    ch69.count_lag = 0; ch69.frozen = None                                          # a node shows the chain again: the sell's receipt
+    for s_ in (61, 62, 63):
+        frozen(T69 + s_, lv.tick)
+    td = lives()
+    assert len(td) == 1 and td[0]["hashes"]["sell"] == [s69["hash"]] and td[0]["bnb_out_wei"] == ch69.outs[0] > 0 and not td[0]["unconfirmed"], (alt69, td)
+    assert len(ch69.outs) == 1 and lv.halted is None and len([e for e in events("live_send") if e["kind"] == "sell"]) == 2
+print("ok a stalled BNB_RPC_URL holding our mined sell as pending, its replacement answered 'nonce too low', BNB_READ_ALT_URL off or "
+      "lagging by one with no index: held a minute (no drop, nothing signed again, nothing settled), then settled from the real receipt")
+
+# 70. the signals round 4's mutations showed untested. A copy answered 'nonce too low' (BNB_READ_ALT_URL off, BNB_RPC_URL's backend
+# stalled before the buy): never dropped as never mined, no halt 10 waits past its deadline, kept from the receipt once the node shows it.
+# A gap's fill answered 'nonce too low': nothing filled again at that nonce, nothing dropped; the buy kept once it is mined. A copy of a
+# buy BNB_RPC_URL holds pending answered 'nonce too low' by the other endpoint: no late cancel, no replacement past its deadline (a
+# replacement refused for another reason: test 72)
+ch70 = base_chain(); ch70.replies = [("ok", None, "stale")]; lv = new_live(ch70); live_start(ch70, lv, L - 2); live_go(ch70, lv, L + 52)
+b70 = lv.pos[PAIR]["txs"][-1]
+assert lv.receipt(b70["hash"]) == (None, False) and ch70.bal_tok[TOKEN] > 0 and ch70.frozen["count"] == 7 and lv.read_alt is None
+age_last(lv, PAIR, 25); lv.tick()                                                # a copy: 'nonce too low' (the chain has it; the node does not)
+assert [e["reply"] for e in events("live_rebroadcast")] == ["nonce"] and b70.get("nonce_low") and lv.pos[PAIR]["state"] == "buy_sent"
+age_last(lv, PAIR, 260); lv.tick()                                               # 225 s past its deadline, the count still 7: held
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and lv.halted is None and not ch70.sent[1:]
+assert any("a node answered 'nonce too low' at it, but no endpoint counts its nonce 7 mined (count 7)" in a["what"] for a in events("alarm"))
+ch70.frozen = None; age_last(lv, PAIR, 1); lv.tick()                             # the backend caught up: the receipt
+x = lv.pos[PAIR]
+assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch70.toks[0] and not x.get("unconfirmed"), x["state"]
+live_go(ch70, lv, L + 300)
+assert lives()[0]["why"] == "sell at +260" and lives()[0]["hashes"]["buy"] == [b70["hash"]] and lv.halted is None
+ch70 = base_chain(); lg, tx = clone_tok(P2, 2, "c8", TOK2); ch70.add(lg, tx); ch70.pool(P2, TOK2, lg[1:]); ch70.queue_gaps = True
+ch70.replies = [("ok", None, "lost"), ("ok", None, True), ("nonce", "nonce too low", False)]
+lv = new_live(ch70, BNB_PROBE_EVERY=1); live_start(ch70, lv, L - 2); live_go(ch70, lv, L + 52)
+b70 = lv.pos[PAIR]["txs"][-1]
+age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 60); lv.tick()             # never mined by every count, a later nonce out: its fill answered
+assert [e["reply"] for e in events("live_send") if e["kind"] == "cancel"] == ["nonce"] and b70.get("nonce_low") and not events("live_skip")    # 'nonce too low'
+b70["fill_at"] -= 9; age_last(lv, PAIR, 9); lv.tick()                            # BNB_REPLACE_S on: no fill again at that nonce, nothing dropped
+assert len([e for e in events("live_send") if e["kind"] == "cancel"]) == 1 and lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and not ch70.sent
+ch70.lost.discard(b70["hash"]); ch70.replies = []; ch70.post(None, b70["raw"])   # it was mined after all (the buy queued behind it with it)
+age_last(lv, PAIR, 1); lv.tick()
+assert lv.pos[PAIR]["state"] in ("bought", "approve_sent") and lv.pos[PAIR]["tokens"] == ch70.toks[0] and not lv.pos[PAIR].get("unconfirmed")
+live_go(ch70, lv, L + 300)
+assert sorted(e["pair"] for e in lives()) == sorted([PAIR, P2]) and all(e["why"] == "sell at +260" for e in lives()) and lv.halted is None
+ch70 = base_chain(); ch70.replies = [("ok", None, "stalepend")]; lv = new_live(ch70); live_start(ch70, lv, L - 2); live_go(ch70, lv, L + 52)
+b70 = lv.pos[PAIR]["txs"][-1]; T70 = b70["sent_at"]; post70 = lv.post
+lv.post = lambda url, raw: ("nonce", "nonce too low"); frozen(T70 + 5, lv.tick); lv.post = post70   # its copy: 'nonce too low' (one endpoint has it mined)
+assert [e["reply"] for e in events("live_rebroadcast")] == ["nonce"] and b70.get("nonce_low") and lv.receipt(b70["hash"]) == (None, True)
+E.state["head"] = L + 57; frozen(T70 + 6, lv.tick)                               # late: no cancel at a nonce a node said is taken
+for s_ in (70, 80):
+    frozen(T70 + s_, lv.tick)                                                    # past its deadline: no replacement either
+assert not [e for e in events("live_send") if e["kind"] == "cancel"] and lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip")
+E.state["head"] = None; ch70.frozen = None; frozen(T70 + 81, lv.tick)            # the node shows it: kept from its receipt
+assert lv.pos[PAIR]["state"] in ("bought", "approve_sent") and lv.pos[PAIR]["tokens"] == ch70.toks[0] and not lv.pos[PAIR].get("unconfirmed")
+print("ok the signals: a copy or a gap's fill answered 'nonce too low' holds the transaction (never dropped as never mined, no fill, "
+      "cancel or replacement at that nonce, no halt) until a node shows it mined")
+
+# 71. the reads (b) takes the state from: the second endpoint answering its count (the nonce mined) but not its state decides nothing on
+# BNB_RPC_URL's stale state (no drop, no halt 10 waits past the deadline; its alarm), and the buy is kept once it answers; the state is the
+# one of the endpoint with the higher count (BNB_RPC_URL on a tie); a lost buy that BNB_RPC_URL's pool shows by the time it is judged (it
+# knows it again) is held as one it holds (past its deadline: cancelled at its nonce), not dropped as never mined
+fail71 = set(); ch71 = base_chain(); ch71.replies = [("ok", None, "stale")]; lv = new_live(ch71); live_start(ch71, lv, L - 2)
+alt_of(ch71, lv, partial=True, fail_methods=fail71); live_go(ch71, lv, L + 52)
+fail71.add("eth_call"); age_last(lv, PAIR, 25); lv.tick(); age_last(lv, PAIR, 260); lv.tick()   # its count 8 there, its balance not read
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and lv.halted is None and not ch71.sent[1:]
+assert any("alt.example.org did not answer" in a["what"] and "nothing is dropped or settled" in a["what"] for a in events("alarm"))
+fail71.clear(); age_last(lv, PAIR, 1); lv.tick()                                 # it answers: its state (the count shows the nonce mined) keeps the buy
+x = lv.pos[PAIR]
+assert x["state"] in ("bought", "approve_sent") and x["tokens"] == ch71.toks[0] and x["unconfirmed"].startswith("the buy's receipt"), x["state"]
+assert [lv.state_at([0, 1], c_, TOKEN, False)[0]["bal"] for c_ in ([8, 9], [9, 8], [9, 9])] == [ch71.toks[0], 0, 0]   # (BNB_RPC_URL's stale: 0)
+assert lv.state_at([0, 1], [8, 9], TOKEN, False)[0]["any_bal"] == ch71.toks[0]
+ch71 = base_chain(); ch71.replies = [("ok", None, "lost")]; lv = new_live(ch71); live_start(ch71, lv, L - 2); live_go(ch71, lv, L + 52)
+age_last(lv, PAIR, 25); lv.tick(); known71 = lv.known; lv.known = lambda h, alt=True: True; age_last(lv, PAIR, 60); lv.tick(); lv.known = known71
+c71 = lv.pos[PAIR]["txs"][-1]                                                    # BNB_RPC_URL's pool shows it again as it is judged: held as one
+assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and (c71["kind"], c71["nonce"]) == ("cancel", 7)   # it holds (past its deadline:
+for _ in range(3):                                                               # cancelled at its nonce), not dropped as never mined
+    lv.tick()
+assert PAIR not in lv.pos and events("live_skip")[-1]["why"].startswith("the buy was cancelled") and ch71.sent[-1]["to"] == WALLET
+print("ok the reads: the second endpoint not answering its state decides nothing on BNB_RPC_URL's (no drop, no halt), the higher count's "
+      "state decides once it answers; a transaction BNB_RPC_URL's pool shows again as it is judged is held as one it holds")
+
+# ================================================================================ round 6 of the review (round 5's check: one LOW regression, one
+# LOW item, one test gap, two INFO items): only a 'nonce too low' stops the signing at a nonce for good; outcome() reads each endpoint
+# alone (a count, a balance, an allowance, a pool are always the named endpoint's own); the owner's raise of BNB_MAX_GWEI works
+
+# 72. round 5's probe NB: a sell a pool holds unmined whose first replacement is refused once ('insufficient funds', or 'replacement
+# transaction underpriced' from a node with a higher bump) is replaced again BNB_REPLACE_S after the refusal (not before) and settled
+# from its receipt (round 5 stopped the signing at that nonce for good: sell_sent for 15 minutes, past the creator's drain); probe R1: the
+# refusal saved and the engine restarted, the same. A refusal counts: every replacement refused is 3 tries 8 s apart and one at
+# BNB_MAX_GWEI, then no more; a late buy's cancels refused, 3 tries 8 s apart, then one at the cap once past its deadline
+sl72 = lambda: [(e["nonce"], e["reply"], e["gwei"]) for e in events("live_send") if e["kind"] == "sell"]
+
+
+def refuse72(lv, keep, why, times=None, at=None):
+    """the endpoints refuse every transaction but keep's copies (times: only that many), each refusal's instant in at"""
+    post, n = lv.post, [0]
+
+    def p(url, raw):
+        if raw != keep["raw"] and (times is None or n[0] < times):
+            n[0] += 1
+            if at is not None:
+                at.append(LV.time.time())
+            return LV.reply_kind(why), why
+        return post(url, raw)
+    lv.post = p
+    return post
+
+
+for why72 in ("insufficient funds for gas * price + value", "replacement transaction underpriced"):
+    k72 = LV.reply_kind(why72); ch72 = base_chain(); lv = new_live(ch72); live_start(ch72, lv, L - 2); live_go(ch72, lv, L + 255)
+    ch72.replies = [("ok", None, "pending")]; live_go(ch72, lv, L + 262)
+    s72 = lv.pos[PAIR]["txs"][-1]; T72 = s72["sent_at"]; refuse72(lv, s72, why72, times=1)
+    frozen(T72 + 9, lv.tick)                                                        # 9 s: replaced at its nonce, refused once
+    assert [x_[:2] for x_ in sl72()] == [(9, "ok"), (9, k72)] and s72["refused"] == 1 and not s72.get("nonce_low") and ch72.pend[9][0] == s72["hash"], sl72()
+    frozen(T72 + 16, lv.tick)                                                       # 7 s on: under BNB_REPLACE_S, not tried again
+    assert len(sl72()) == 2 and lv.pos[PAIR]["state"] == "sell_sent"
+    frozen(T72 + 17, lv.tick); frozen(T72 + 18, lv.tick)                            # BNB_REPLACE_S after the refusal: tried again, taken, mined
+    td = lives(); s3 = [e for e in events("live_send") if e["kind"] == "sell"][-1]
+    assert [x_[:2] for x_ in sl72()] == [(9, "ok"), (9, k72), (9, "ok")] and s3["gwei"] == (s72["gas_price"] * 9 // 8 + 1) / 1e9, sl72()
+    assert len(td) == 1 and td[0]["hashes"]["sell"] == [s3["hash"]] and td[0]["bnb_out_wei"] == ch72.outs[0] > 0 and not td[0]["unconfirmed"] and lv.halted is None, td
+ch72 = base_chain(); lv = new_live(ch72); live_start(ch72, lv, L - 2); live_go(ch72, lv, L + 255)
+ch72.replies = [("ok", None, "pending")]; live_go(ch72, lv, L + 262)
+s72 = lv.pos[PAIR]["txs"][-1]; T72 = s72["sent_at"]; post72 = refuse72(lv, s72, "insufficient funds for gas * price + value")
+frozen(T72 + 9, lv.tick); lv.post = post72; lv.save()                           # refused once; the positions file written (the reader marks it each 5 s)
+assert json.load(open(POSF))["positions"][PAIR]["txs"][-1]["refused"] == 1
+lv2 = new_live(ch72, BNB_MAX_GWEI=2); E.pools.clear(); E.LIVE = lv2; lv2.start(L + 266, thread=False)    # the restart (probe R1)
+for s_ in (12, 16):
+    frozen(T72 + s_, lv2.tick)                                                   # under BNB_REPLACE_S since the refusal
+assert len(sl72()) == 2 and lv2.pos[PAIR]["state"] == "sell_sent"
+frozen(T72 + 17, lv2.tick); frozen(T72 + 18, lv2.tick)
+td = lives()
+assert [x_[:2] for x_ in sl72()] == [(9, "ok"), (9, "rejected"), (9, "ok")] and len(td) == 1 and td[0]["resumed"] and td[0]["bnb_out_wei"] == ch72.outs[0] > 0, (sl72(), td)
+ch72 = base_chain(); lv = new_live(ch72); live_start(ch72, lv, L - 2); live_go(ch72, lv, L + 255)
+ch72.replies = [("ok", None, "pending")]; live_go(ch72, lv, L + 262)
+s72 = lv.pos[PAIR]["txs"][-1]; T72 = s72["sent_at"]; at72 = []; refuse72(lv, s72, "insufficient funds for gas * price + value", at=at72)
+for s_ in range(1, 121):
+    frozen(T72 + s_, lv.tick)                                                    # every replacement refused for two minutes
+assert [round(t_ - T72) for t_ in at72] == [8, 16, 24, 32] and [x_[2] for x_ in sl72()][1:] == [(s72["gas_price"] * 9 // 8 + 1) / 1e9] * 3 + [1.0], (at72, sl72())
+assert s72["refused"] == 4 and s72["capped"] == 10 ** 9 and lv.pos[PAIR]["state"] == "sell_sent" and len(lv.pending(lv.pos[PAIR])) == 1 and ch72.pend[9][0] == s72["hash"]
+ch72 = base_chain(); ch72.replies = [("ok", None, "pending")]; lv = new_live(ch72); live_start(ch72, lv, L - 2); live_go(ch72, lv, L + 52)
+b72 = lv.pos[PAIR]["txs"][-1]; T72 = b72["sent_at"]; at72 = []; refuse72(lv, b72, "insufficient funds for gas * price + value", at=at72)
+E.state["head"] = L + 57                                                         # late: cancelled at its nonce, each cancel refused
+for s_ in range(4, 101):
+    frozen(T72 + s_, lv.tick)
+E.state["head"] = None
+cn72 = [e for e in events("live_send") if e["kind"] == "cancel"]
+assert [round(t_ - T72) for t_ in at72][:3] == [4, 12, 20] and len(at72) == 4 and at72[3] >= b72["deadline"] > at72[2] + 30 and [e["gwei"] for e in cn72][-1] == 1.0, (at72, cn72)
+assert lv.pos[PAIR]["state"] == "buy_sent" and b72["refused"] == 4 and not events("live_skip")
+print("ok a replacement or a cancel refused for any reason but 'nonce too low' is tried again BNB_REPLACE_S after the refusal (a held sell "
+      "refused once settles; a restart with the refusal saved too) and counts: 3 tries and one at BNB_MAX_GWEI, then no more")
+
+# 73. outcome() reads each endpoint alone: a count, a balance, an allowance or a pool that BNB_RPC_URL cannot answer is never answered by
+# BNB_READ_ALT_URL for it (round 5's probes NA and NA2: a stale count or balance of the second endpoint read as BNB_RPC_URL's decided; the
+# mined sell dropped as 'not seen' and sold again, the line halted and the trade left unsettled). Each failed read is the 'did not answer'
+# alarm (naming the endpoint) and a hold, then the rule decides once it answers. NA: BNB_RPC_URL stale, its count failing, the second
+# endpoint with no index; NA2: BNB_RPC_URL with no index, its eth_call failing, the second endpoint one block behind; an approve whose
+# allowance BNB_RPC_URL cannot read, the second's stale; a lost buy whose pool or balance BNB_RPC_URL cannot read as it is judged. Probe
+# ND: a lost buy and its lost cancel, BNB_RPC_URL's pool showing the buy (not the last one) again as it is judged, is held, then cancelled
+rpc_host = E.host(E.RPC_URL)
+not_seen = lambda: [a["what"] for a in events("alarm") if "was not seen" in a["what"] or a["what"].endswith(": dropped")]
+down73 = lambda m: [a["what"] for a in events("alarm") if ("has no receipt on %s and %s did not answer (%s" % (rpc_host, rpc_host, m)) in a["what"]]
+ch73 = base_chain(); lv = new_live(ch73); live_start(ch73, lv, L - 2); alt_of(ch73, lv, partial=True); live_go(ch73, lv, L + 255)
+ch73.replies = [("ok", None, "stale")]; live_go(ch73, lv, L + 262)
+s73 = lv.pos[PAIR]["txs"][-1]; T73 = s73["sent_at"]
+assert s73["kind"] == "sell" and ch73.bal_tok[TOKEN] == 0 and ch73.frozen["count"] == 9 and ch73.frozen["bal"][TOKEN] > 0 and ch73.mined == 10
+ch73.down.add("eth_getTransactionCount")                                         # NA: BNB_RPC_URL's count fails (429): the second's (10) is not its
+for s_ in range(1, 200):
+    frozen(T73 + s_, lv.tick)
+assert lv.pos[PAIR]["state"] == "sell_sent" and [x_[:2] for x_ in sl72()] == [(9, "ok")] and not not_seen() and not lives() and lv.halted is None, (sl72(), not_seen())
+assert down73("eth_getTransactionCount") and "nothing is dropped or settled until it does" in down73("eth_getTransactionCount")[0]
+ch73.down.discard("eth_getTransactionCount")                                     # it answers (9, stale): the second's count shows the nonce mined
+for s_ in range(200, 207):
+    frozen(T73 + s_, lv.tick)
+td = lives()
+assert len(td) == 1 and td[0]["bnb_out_wei"] == s73["min_out"] and td[0]["unconfirmed"].startswith("the sell's receipt") and lv.halted is None and len(sl72()) == 1, td
+ch73 = base_chain(); lv = new_live(ch73); live_start(ch73, lv, L - 2); alt_of(ch73, lv, partial=True); live_go(ch73, lv, L + 255)
+pre73 = ch73.bal_tok[TOKEN]; ch73.replies = [("ok", None, "hidden")]; live_go(ch73, lv, L + 262)
+s73 = lv.pos[PAIR]["txs"][-1]; T73 = s73["sent_at"]; a73 = lv.alt_rpc
+assert ch73.bal_tok[TOKEN] == 0 and ch73.mined == 10 and pre73 > 0
+
+
+def alt_behind(method, params, timeout, a0, n=9, pre=0, allow=None):
+    """BNB_READ_ALT_URL one block behind: its count n, the token's balance pre, the allowance allow (None: as it is)"""
+    if method == "eth_getTransactionCount":
+        return hex(n)
+    if method == "eth_call" and params[0].get("data", "").startswith("0x70a08231"):
+        return "0x" + w(pre)
+    if method == "eth_call" and params[0].get("data", "").startswith("0xdd62ed3e") and allow is not None:
+        return "0x" + w(allow)
+    return a0(method, params, timeout)
+
+
+lv.alt_rpc = lambda m_, p_, t_, a0=a73, pre=pre73: alt_behind(m_, p_, t_, a0=a0, pre=pre)
+for s_ in range(1, 200):                                                         # NA2: BNB_RPC_URL's eth_call fails (429) from 70 s on
+    if s_ >= 70:
+        ch73.down.add("eth_call")
+    frozen(T73 + s_, lv.tick); ch73.down.discard("eth_call")
+assert lv.pos[PAIR]["state"] == "sell_sent" and [x_[:2] for x_ in sl72()] == [(9, "ok")] and not not_seen() and not lives() and lv.halted is None, (sl72(), not_seen())
+assert down73("eth_call") and not os.path.exists(HALTF)
+for s_ in range(200, 207):
+    frozen(T73 + s_, lv.tick)                                                    # it answers: its own state (count 10, no tokens) settles the sale
+td = lives()
+assert len(td) == 1 and td[0]["bnb_out_wei"] == s73["min_out"] and td[0]["unconfirmed"].startswith("the sell's receipt") and lv.halted is None and len(sl72()) == 1, td
+ch73 = base_chain(); ch73.replies = [("ok", None, True), ("ok", None, "hidden")]; lv = new_live(ch73); live_start(ch73, lv, L - 2); alt_of(ch73, lv, partial=True)
+live_go(ch73, lv, L + 60); p73 = lv.pos[PAIR]; ap73 = p73["txs"][-1]; T73 = ap73["sent_at"]
+assert p73["state"] == "approve_sent" and ap73["kind"] == "approve" and ap73["nonce"] == 8 and ch73.allow.get(TOKEN) == 2 ** 256 - 1 and ch73.mined == 9
+lv.alt_rpc = lambda m_, p_, t_, a0=lv.alt_rpc, pre=ch73.bal_tok[TOKEN]: alt_behind(m_, p_, t_, a0=a0, n=8, pre=pre, allow=0); r73 = E.rpc
+
+
+def rpc73(method, params, tries=3, timeout=10):
+    if method == "eth_call" and params[0].get("data", "").startswith("0xdd62ed3e"):
+        raise RuntimeError("eth_call: HTTP Error 429: Too Many Requests")
+    return r73(method, params, tries, timeout)
+
+
+E.rpc = rpc73                                                                    # BNB_RPC_URL (count 9: the approve's nonce 8 mined) cannot read the allowance
+for s_ in range(1, 120):
+    frozen(T73 + s_, lv.tick)
+E.rpc = r73
+assert p73["state"] == "approve_sent" and len([e for e in events("live_send") if e["kind"] == "approve"]) == 1 and not not_seen() and down73("eth_call"), not_seen()
+for s_ in range(120, 127):
+    frozen(T73 + s_, lv.tick)
+assert p73["state"] == "approved" and TOKEN in lv.approved and len([e for e in events("live_send") if e["kind"] == "approve"]) == 1
+for m73 in ("eth_getTransactionByHash", "eth_call"):                             # a lost buy: BNB_RPC_URL's pool, then its balance, not read as it is judged
+    ch73 = base_chain(); ch73.replies = [("ok", None, "lost")]; lv = new_live(ch73); live_start(ch73, lv, L - 2); alt_of(ch73, lv); live_go(ch73, lv, L + 52)
+    b73 = lv.pos[PAIR]["txs"][-1]; ch73.down.add(m73); frozen(b73["deadline"] + 16, lv.tick); ch73.down.discard(m73)
+    assert lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and down73(m73), (m73, events("live_skip"))
+    frozen(b73["deadline"] + 22, lv.tick)                                        # it answers: never mined, dropped
+    assert PAIR not in lv.pos and events("live_skip")[-1]["why"] == "the buy was never mined" and not ch73.sent
+ch73 = base_chain(); ch73.replies = [("ok", None, "lost")] * 2; lv = new_live(ch73); live_start(ch73, lv, L - 2); live_go(ch73, lv, L + 52)
+b73 = lv.pos[PAIR]["txs"][-1]; T73 = b73["sent_at"]; E.state["head"] = L + 57; frozen(T73 + 4, lv.tick); c73 = lv.pos[PAIR]["txs"][-1]; E.state["head"] = None
+known73 = lv.known; lv.known = lambda h, alt=True: h == b73["hash"] or known73(h, alt)
+frozen(b73["deadline"] + 16, lv.tick); lv.known = known73                        # probe ND: only the buy (not its cancel) shown again: held as one it holds
+assert c73["kind"] == "cancel" and lv.pos[PAIR]["state"] == "buy_sent" and not events("live_skip") and lv.pos[PAIR]["txs"][-1]["kind"] == "cancel"
+for _ in range(3):
+    lv.tick()
+assert PAIR not in lv.pos and events("live_skip")[-1]["why"].startswith("the buy was cancelled") and ch73.sent[-1]["to"] == WALLET
+print("ok outcome() reads each endpoint alone: BNB_RPC_URL's count, balance, allowance or pool not read is a 'did not answer' hold "
+      "naming it (never the second endpoint's stale view taken for it: no drop, no second sale, no halt), then the rule decides; a buy "
+      "BNB_RPC_URL's pool shows again as it is judged, not its last cancel, is held")
+
+# 74. round 5's mutation MY4: while an endpoint cannot answer only a buy is kept on the state alone. A sell whose nonce BNB_RPC_URL's
+# count shows mined, its balance there stale (the tokens), BNB_READ_ALT_URL down: held with the 'did not answer' alarm, never dropped or
+# sold again; settled from the receipt once the second endpoint answers
+dn74 = [False]; ch74 = base_chain(); lv = new_live(ch74); live_start(ch74, lv, L - 2); alt_of(ch74, lv, dn74); live_go(ch74, lv, L + 255)
+ch74.replies = [("ok", None, "stale")]; live_go(ch74, lv, L + 262)
+s74 = lv.pos[PAIR]["txs"][-1]; T74 = s74["sent_at"]; ch74.frozen["count"] = 10; dn74[0] = True    # its count fresh, its balance stale; the second down
+for s_ in range(1, 200):
+    frozen(T74 + s_, lv.tick)
+assert lv.pos[PAIR]["state"] == "sell_sent" and [x_[:2] for x_ in sl72()] == [(9, "ok")] and not not_seen() and not lives() and lv.halted is None, (sl72(), not_seen())
+assert any("alt.example.org did not answer" in a["what"] for a in events("alarm"))
+dn74[0] = False
+for s_ in range(200, 207):
+    frozen(T74 + s_, lv.tick)
+td = lives()
+assert len(td) == 1 and td[0]["bnb_out_wei"] == ch74.outs[0] > 0 and not td[0]["unconfirmed"] and td[0]["hashes"]["sell"] == [s74["hash"]] and lv.halted is None, td
+print("ok while the second endpoint cannot answer, a sell whose nonce BNB_RPC_URL counts mined but whose stale balance still shows the "
+      "tokens is held (never dropped or sold again), then settled from its receipt")
+
+# 75. the owner's move after the one replacement at BNB_MAX_GWEI (round 5's probe R2: nothing was ever sent after the restart): a restart
+# with BNB_MAX_GWEI raised signs the transaction anew once more, at the new cap. Raised by less than a tenth (no node takes it), an alarm and
+# nothing sent, and a later restart with more still works; the same restart again sends nothing. A sell sent at the cap while the network
+# asks more (its replacement cannot be dearer), and a late buy's cancel that cannot be dearer: one alarm, then replaced after the restart.
+# RUNBOOK 4k step 5 names the alarms and gives the move in one whole line (it defines set_bnb), run here on a scratch env file
+sell75 = lambda: [e for e in events("live_send") if e["kind"] == "sell"]
+
+
+def restart75(ch_, mx, head=L + 266):
+    lv_ = new_live(ch_, BNB_MAX_GWEI=mx); E.pools.clear(); E.LIVE = lv_; lv_.start(head, thread=False)
+    return lv_
+
+
+ch75 = base_chain(); lv = new_live(ch75); live_start(ch75, lv, L - 2); live_go(ch75, lv, L + 255)
+ch75.replies = [("ok", None, "pending")] * 6; live_go(ch75, lv, L + 262)
+T75 = lv.pos[PAIR]["txs"][-1]["sent_at"]
+for s_ in range(1, 60):
+    frozen(T75 + s_, lv.tick)
+assert [e["gwei"] for e in sell75()][-1] == 1.0 and len(sell75()) == 5 and lv.pos[PAIR]["state"] == "sell_sent"
+for mx75, n75 in ((1, 5), (1.05, 5), (2, 6), (2, 6)):                            # the same cap, a tenth too little, then 2 gwei (held too), then 2 again
+    lv = restart75(ch75, mx75)
+    for s_ in range(60, 120, 2):
+        frozen(T75 + s_, lv.tick)
+    T75 += 60
+    assert len(sell75()) == n75 and lv.pos[PAIR]["state"] == "sell_sent", (mx75, [e["gwei"] for e in sell75()])
+assert [e["gwei"] for e in sell75()][-1] == 2.0 and len([a for a in events("alarm") if "cannot be replaced under BNB_MAX_GWEI 1.05" in a["what"]]) == 1
+lv = restart75(ch75, 3); ch75.replies = []
+for s_ in range(0, 12, 2):
+    frozen(T75 + s_, lv.tick)                                                    # 3 gwei, taken: settled from it
+td = lives()
+assert [e["gwei"] for e in sell75()][-1] == 3.0 and len(td) == 1 and td[0]["hashes"]["sell"] == [sell75()[-1]["hash"]] and td[0]["bnb_out_wei"] == ch75.outs[0] > 0, td
+ch75 = base_chain(); lv = new_live(ch75); live_start(ch75, lv, L - 2); live_go(ch75, lv, L + 255)
+ch75.gp = 3 * 10 ** 9; ch75.replies = [("ok", None, "pending")]; live_go(ch75, lv, L + 262)   # the network asks 3 gwei: the sell at the cap, 1
+T75 = lv.pos[PAIR]["txs"][-1]["sent_at"]
+for s_ in range(1, 60):
+    frozen(T75 + s_, lv.tick)
+assert [e["gwei"] for e in sell75()] == [1.0] and len([a for a in events("alarm") if "cannot be replaced under BNB_MAX_GWEI 1 " in a["what"]]) == 1
+lv = restart75(ch75, 5)
+for s_ in range(60, 66):
+    frozen(T75 + s_, lv.tick)
+td = lives()
+assert [e["gwei"] for e in sell75()] == [1.0, 3.0] and len(td) == 1 and td[0]["hashes"]["sell"] == [sell75()[-1]["hash"]] and td[0]["bnb_out_wei"] == ch75.outs[0] > 0, td
+ch75 = base_chain(); ch75.replies = [("ok", None, "pending")]; lv = new_live(ch75, BNB_MAX_GWEI=0.1); live_start(ch75, lv, L - 2); live_go(ch75, lv, L + 52)
+b75 = lv.pos[PAIR]["txs"][-1]; T75 = b75["sent_at"]; E.state["head"] = L + 57    # late, its cancel cannot be dearer under BNB_MAX_GWEI 0.1
+for s_ in range(4, 40):
+    frozen(T75 + s_, lv.tick)
+assert not [e for e in events("live_send") if e["kind"] == "cancel"] and len([a for a in events("alarm") if "cannot be replaced under BNB_MAX_GWEI 0.1 " in a["what"]]) == 1
+lv = restart75(ch75, 0.2, L + 56)
+for s_ in range(40, 44):
+    frozen(T75 + s_, lv.tick)
+E.state["head"] = None
+assert [e["gwei"] for e in events("live_send") if e["kind"] == "cancel"] == [(b75["gas_price"] * 9 // 8 + 1) / 1e9] and PAIR not in lv.pos
+assert events("live_skip")[-1]["why"].startswith("the buy was cancelled") and ch75.sent[-1]["to"] == WALLET and lv.halted is None
+mx75 = [l_.strip() for l_ in k4.splitlines() if "set_bnb BNB_MAX_GWEI" in l_]
+assert mx75 == [d66 + "; set_bnb BNB_MAX_GWEI 2 && sudo systemctl restart flip-bnb"] and "is still pending at its nonce N after 3 replacements" in k4, mx75
+assert "cannot be replaced under BNB_MAX_GWEI Y (a replacement must be 1/10 dearer): raise it (up to 5) and restart" in k4
+for before in ("BNB_LIVE=1\nBNB_MAX_GWEI=1\n", "BNB_LIVE=1\n"):
+    open(env66, "w").write(before)
+    p75 = subprocess.run(["bash", "--norc", "--noprofile", "-c", mx75[0].replace("sudo systemctl restart flip-bnb", "true").replace("sudo ", "").replace("/etc/flip/bnb.env", env66)],
+                         capture_output=True, text=True, env={"PATH": os.environ["PATH"]})
+    assert p75.returncode == 0 and open(env66).read() == "BNB_LIVE=1\nBNB_MAX_GWEI=2\n", (before, p75.stderr, open(env66).read())
+print("ok a restart with BNB_MAX_GWEI raised signs a transaction held at the old cap anew once more at the new one (a raise under a tenth: "
+      "an alarm, nothing sent; the same cap again: nothing); one sent at the cap while the network asks more, and a late buy's cancel, "
+      "are replaced after that restart; RUNBOOK 4k gives that move in one line that works in a fresh shell")
+
+while LIVES:
+    LIVES.pop().close()
+E.LIVE = None; E.STAKE_USD = 15; E.MAX_RANGE = 40
+shutil.rmtree(TMP, ignore_errors=True)                                           # (the live tests' log is in it)

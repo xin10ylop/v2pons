@@ -1,0 +1,20 @@
+{
+ "chain": "ink",
+ "url": "https://rpc-qnd.inkonchain.com",
+ "from": 58162737,
+ "to": 58249137,
+ "head_ts": 1791747548,
+ "hours": 24.0,
+ "block_time_est": 1.0,
+ "n_logs": 517,
+ "secs": 1.5,
+ "final_chunk": 10000,
+ "errlog": [],
+ "by_emitter": [
+  [
+   "0x360e68faccca8ca495c1b759fd9eee466db9fb32",
+   "V4 Initialize",
+   517
+  ]
+ ]
+}

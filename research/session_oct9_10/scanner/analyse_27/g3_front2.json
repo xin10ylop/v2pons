@@ -1,0 +1,107 @@
+{
+ "stake_0.0058": {
+  "summary": {
+   "n": 102,
+   "mean": 1.06521,
+   "median": -0.0057,
+   "win": 0.3333,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold_nosched": 2,
+    "sold": 35,
+    "sold_reverted": 65
+   },
+   "usd_trade": 15.9782,
+   "trades_day": 51.02,
+   "usd_day": 815.14,
+   "p10_50_90": [
+    -0.0057,
+    -0.0057,
+    2.96616
+   ],
+   "min": -0.00573,
+   "max": 7.80949
+  },
+  "reverts": 65,
+  "win_big": 34
+ },
+ "stake_0.0040": {
+  "summary": {
+   "n": 102,
+   "mean": 1.3275,
+   "median": 0.7153,
+   "win": 0.9608,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold_nosched": 2,
+    "sold": 100
+   },
+   "usd_trade": 19.9125,
+   "trades_day": 51.02,
+   "usd_day": 1015.85,
+   "p10_50_90": [
+    0.134,
+    0.71495,
+    2.97993
+   ],
+   "min": -0.00603,
+   "max": 7.86095
+  },
+  "reverts": 0,
+  "win_big": 98
+ },
+ "stake_0.0030": {
+  "summary": {
+   "n": 102,
+   "mean": 1.33092,
+   "median": 0.71629,
+   "win": 0.9608,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold_nosched": 2,
+    "sold": 100
+   },
+   "usd_trade": 19.9637,
+   "trades_day": 51.02,
+   "usd_day": 1018.47,
+   "p10_50_90": [
+    0.13387,
+    0.71595,
+    2.98747
+   ],
+   "min": -0.00638,
+   "max": 7.88967
+  },
+  "reverts": 0,
+  "win_big": 98
+ },
+ "stake_0.0020": {
+  "summary": {
+   "n": 102,
+   "mean": 1.33401,
+   "median": 0.71695,
+   "win": 0.9608,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold_nosched": 2,
+    "sold": 100
+   },
+   "usd_trade": 20.0101,
+   "trades_day": 51.02,
+   "usd_day": 1020.83,
+   "p10_50_90": [
+    0.13339,
+    0.7166,
+    2.99471
+   ],
+   "min": -0.00708,
+   "max": 7.91825
+  },
+  "reverts": 0,
+  "win_big": 98
+ }
+}

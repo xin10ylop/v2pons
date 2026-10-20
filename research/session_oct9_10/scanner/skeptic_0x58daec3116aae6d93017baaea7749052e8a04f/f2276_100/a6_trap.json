@@ -1,0 +1,2713 @@
+{
+ "rows": [
+  {
+   "pid": "0x8aca105817d21865ccdf04b2ee76c76ebe209219985400a7227cc09289a4f7ad",
+   "c1": 39,
+   "pull": 2877,
+   "eth_at_pull": 0.0019,
+   "since_last_swap": 155,
+   "since_last_buy": 209,
+   "last_buy_eth": 0.007,
+   "since_last_buy_3e15": 209,
+   "n_swaps_before": 128,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x4f1ee752794d72a4063cd95138abf21c5e5be9aa825d8bf2a16cc58e69ed0d4a",
+   "c1": 136,
+   "pull": 464,
+   "eth_at_pull": 8.6293,
+   "since_last_swap": 10,
+   "since_last_buy": 10,
+   "last_buy_eth": 0.1976,
+   "since_last_buy_3e15": 10,
+   "n_swaps_before": 49,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x668681690b4ac81e7ac5f5afff3055d41a51b3b4e86c754db8775538ce0d9bf1",
+   "c1": 136,
+   "pull": 2038,
+   "eth_at_pull": 7.328,
+   "since_last_swap": 6,
+   "since_last_buy": 6,
+   "last_buy_eth": 0.0099,
+   "since_last_buy_3e15": 6,
+   "n_swaps_before": 108,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xbf638e62769ec294b2ef8b93486f0ce2c33fd06aaae0bab949f5a10fe8b0e4cf",
+   "c1": 121,
+   "pull": null
+  },
+  {
+   "pid": "0xcc60a6b70c4056d483e172b89fdd9c6c2a2fb6bdda76c7c4bae047ce35c73bc5",
+   "c1": null,
+   "pull": 248,
+   "eth_at_pull": 0.0015,
+   "since_last_swap": 200,
+   "since_last_buy": 200,
+   "last_buy_eth": 0.00099,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 4,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x9b7d28d1e2a35c2fd07bf9199f0debcf25371ae63cfd8dd30c438e67c65e9f8c",
+   "c1": 117,
+   "pull": null
+  },
+  {
+   "pid": "0xa16f46fea5ddf9afb400a84d8a155f04a47b973284a5700970b3d24f0ecc1706",
+   "c1": null,
+   "pull": 189,
+   "eth_at_pull": 0.0011,
+   "since_last_swap": 11,
+   "since_last_buy": 132,
+   "last_buy_eth": 0.00099,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x081589d6aeafd8b30dc1d7115caaf46729fe442f99de3dba76b827069122e3a8",
+   "c1": 279,
+   "pull": 2196,
+   "eth_at_pull": 9.6974,
+   "since_last_swap": 13,
+   "since_last_buy": 13,
+   "last_buy_eth": 0.01136,
+   "since_last_buy_3e15": 13,
+   "n_swaps_before": 105,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x9ab268ded0c539af4291f963d5d318c1093a76450888f6cd4cb04ec225d26d6a",
+   "c1": 244,
+   "pull": null
+  },
+  {
+   "pid": "0xc877ac1e52382d5286dbb96030067f9264d307d7a20b26401e6392884b23f077",
+   "c1": 125,
+   "pull": 262,
+   "eth_at_pull": 0.2928,
+   "since_last_swap": 137,
+   "since_last_buy": 137,
+   "last_buy_eth": 0.29,
+   "since_last_buy_3e15": 137,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x592df4246d235f3202598b821b95c1ff60c2263ad6a79765fc8ecfc7a2c26490",
+   "c1": 105,
+   "pull": 1919,
+   "eth_at_pull": 8.7653,
+   "since_last_swap": 3,
+   "since_last_buy": 3,
+   "last_buy_eth": 0.005849,
+   "since_last_buy_3e15": 3,
+   "n_swaps_before": 80,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x53218c766310b053dc512906503ded9d9f7e21927826dc40b5a8ce89d8b10324",
+   "c1": 94,
+   "pull": 1649,
+   "eth_at_pull": 8.2074,
+   "since_last_swap": 1,
+   "since_last_buy": 1,
+   "last_buy_eth": 0.0429,
+   "since_last_buy_3e15": 1,
+   "n_swaps_before": 82,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xc11b63f9f5176785c771db460f381f2eb3db54e9b18e5cac442c143f372a0684",
+   "c1": 100,
+   "pull": 169,
+   "eth_at_pull": 0.2427,
+   "since_last_swap": 60,
+   "since_last_buy": 60,
+   "last_buy_eth": 0.00226910701562507,
+   "since_last_buy_3e15": 69,
+   "n_swaps_before": 4,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xb1202efacedb202447317d0aa35a699b6d34c9bb643b5086c1826407f4d5e34f",
+   "c1": 105,
+   "pull": 1613,
+   "eth_at_pull": 8.1882,
+   "since_last_swap": 11,
+   "since_last_buy": 11,
+   "last_buy_eth": 0.1982,
+   "since_last_buy_3e15": 11,
+   "n_swaps_before": 79,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x504709f8bcffd17431c42ce351910f5caad45cf8a30de5cd6f73697d971941cc",
+   "c1": 96,
+   "pull": null
+  },
+  {
+   "pid": "0xa820100884a945cf282b64797eb4c38bd9d6bd1b8e2c86e99e5363720d73219d",
+   "c1": 108,
+   "pull": null
+  },
+  {
+   "pid": "0x653b4d7bb22c7ca1b7a5c95feb5b4f123a19facf270b4492350e9976d4f899fe",
+   "c1": 111,
+   "pull": 2152,
+   "eth_at_pull": 3.6997,
+   "since_last_swap": 4,
+   "since_last_buy": 8,
+   "last_buy_eth": 0.072,
+   "since_last_buy_3e15": 8,
+   "n_swaps_before": 123,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x7c402885cdc3d6730399173c0e796963cfdb70178044b4bcc3f62ea0cdb5fd80",
+   "c1": 139,
+   "pull": 868,
+   "eth_at_pull": 5.1896,
+   "since_last_swap": 45,
+   "since_last_buy": 45,
+   "last_buy_eth": 0.1416,
+   "since_last_buy_3e15": 45,
+   "n_swaps_before": 69,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x67e892598f637d980904ced5013833fcda8f81dfb5ba738b0d43df5b67432920",
+   "c1": 98,
+   "pull": null
+  },
+  {
+   "pid": "0x119103d448611a50176c8e4c4f548268315d9e564bcc3ad2e405e17af9309341",
+   "c1": 101,
+   "pull": null
+  },
+  {
+   "pid": "0xfd208d05930f5aee214f29c286431ba501d1ac34c7e33b2504b54386b765945c",
+   "c1": 167,
+   "pull": 583,
+   "eth_at_pull": 10.3637,
+   "since_last_swap": 1,
+   "since_last_buy": 8,
+   "last_buy_eth": 0.446,
+   "since_last_buy_3e15": 8,
+   "n_swaps_before": 45,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xf79921e4b9d709d5689998b77e72e5b3be73cbd04f8e3baea683142fdef8a06e",
+   "c1": 158,
+   "pull": null
+  },
+  {
+   "pid": "0xb0a3ffccc3a399ec25ceb0f3150f8cfaa7a7efec2cbe41547501898301e88b2f",
+   "c1": 158,
+   "pull": 534,
+   "eth_at_pull": 10.1963,
+   "since_last_swap": 10,
+   "since_last_buy": 10,
+   "last_buy_eth": 0.34,
+   "since_last_buy_3e15": 10,
+   "n_swaps_before": 47,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x77e37a5ac6311a7af2b58ba798da8a63f457fb95c48e03fa827918ca45636170",
+   "c1": 155,
+   "pull": null
+  },
+  {
+   "pid": "0x0cc8cfd30a105566acb0d222c506c4d49ac60220784b0b7b7ee24fae9131d6c7",
+   "c1": 153,
+   "pull": 2624,
+   "eth_at_pull": 10.8064,
+   "since_last_swap": 10,
+   "since_last_buy": 10,
+   "last_buy_eth": 0.302,
+   "since_last_buy_3e15": 10,
+   "n_swaps_before": 254,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xfb2f8288572844ccb2462e4e6f171812997d2d0f585e116bce4e30fe36dc4e4d",
+   "c1": 160,
+   "pull": null
+  },
+  {
+   "pid": "0xed2cfba9ad10863286846fc3e9e644b7c0d4c5ba2927226d505d2acf68628e52",
+   "c1": 159,
+   "pull": null
+  },
+  {
+   "pid": "0x0c000092423d4d0adc5071a706599e04f01ab7ec7333e3d6027d726cadec923e",
+   "c1": 41,
+   "pull": null
+  },
+  {
+   "pid": "0x6154bb49a2d66b34135d7f9e575c244e65cdbc40a8cb1c86c4d508539b7b2566",
+   "c1": 87,
+   "pull": null
+  },
+  {
+   "pid": "0x96da11a5b3476559134d53f60a9122d884c6d97b97d6cea2029d4e1d9e0e7737",
+   "c1": 47,
+   "pull": null
+  },
+  {
+   "pid": "0x2e0417209b1b39457f49b0a2287fd528455f693e92b4d7ff91a68675f5c68346",
+   "c1": 64,
+   "pull": null
+  },
+  {
+   "pid": "0x7b6ca231ef237284b53069bd7cc28b71701de68510b8ca342b89c26c90b0aa83",
+   "c1": 75,
+   "pull": 259,
+   "eth_at_pull": 0.0617,
+   "since_last_swap": 165,
+   "since_last_buy": 165,
+   "last_buy_eth": 0.000199836134369816,
+   "since_last_buy_3e15": 184,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xef40404e2192e7313d05772ae6535da12aea5d9f83c16a1efb7aeb2c613e717d",
+   "c1": null,
+   "pull": 345,
+   "eth_at_pull": 0.0005,
+   "since_last_swap": 308,
+   "since_last_buy": 308,
+   "last_buy_eth": 0.000112,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 3,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xd3e46f3641c6b2668f9c7a5e98786262084b6a69d36dc84728ec3a43883a6631",
+   "c1": 67,
+   "pull": 135,
+   "eth_at_pull": 0.3607,
+   "since_last_swap": 47,
+   "since_last_buy": 47,
+   "last_buy_eth": 0.000199760287654814,
+   "since_last_buy_3e15": 56,
+   "n_swaps_before": 6,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x79947d237242df9b679e0c4d180cd121783f48aa482f3c1684c79537f612405d",
+   "c1": 67,
+   "pull": 445,
+   "eth_at_pull": 0.4861,
+   "since_last_swap": 53,
+   "since_last_buy": 272,
+   "last_buy_eth": 2.4e-05,
+   "since_last_buy_3e15": 295,
+   "n_swaps_before": 12,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x200593a049319d571a9252fd9c7ab2cfa95e4fd699396e62b23d900686c3e18d",
+   "c1": null,
+   "pull": 242,
+   "eth_at_pull": 0.0007,
+   "since_last_swap": 141,
+   "since_last_buy": 204,
+   "last_buy_eth": 0.000112,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 6,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x84df61cffad6803de62b29d0b6f405c4a361c6aa9b83a12cee092bdabee25f42",
+   "c1": 82,
+   "pull": 303,
+   "eth_at_pull": 0.0855,
+   "since_last_swap": 221,
+   "since_last_buy": 221,
+   "last_buy_eth": 0.085,
+   "since_last_buy_3e15": 221,
+   "n_swaps_before": 4,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x027c69f550ae2e7bfbb4586aa1bc3a9bd5a7b3fb344a102caf0907b5dbfe980f",
+   "c1": 317,
+   "pull": 404,
+   "eth_at_pull": 0.2424,
+   "since_last_swap": 33,
+   "since_last_buy": 37,
+   "last_buy_eth": 0.055,
+   "since_last_buy_3e15": 37,
+   "n_swaps_before": 7,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xe5ff77e98b58c7dab5f372cdbab62d8f1e2841edb2e1873c81a652dcb1e1d0ec",
+   "c1": 61,
+   "pull": 190,
+   "eth_at_pull": 0.8805,
+   "since_last_swap": 31,
+   "since_last_buy": 31,
+   "last_buy_eth": 2.4e-05,
+   "since_last_buy_3e15": 61,
+   "n_swaps_before": 11,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xf89df7e4a63bb8c3f72ad97b20d6b071cc07e7f134f352ad86390092e3d41177",
+   "c1": null,
+   "pull": 190,
+   "eth_at_pull": 0.0011,
+   "since_last_swap": 73,
+   "since_last_buy": 73,
+   "last_buy_eth": 0.000495,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 7,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x3d63692e698bae62bb81a328b25fb33b08a8b4ead38817678d2cc889215e006e",
+   "c1": null,
+   "pull": 243,
+   "eth_at_pull": 0.001,
+   "since_last_swap": 138,
+   "since_last_buy": 160,
+   "last_buy_eth": 0.000325760437465148,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 7,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x3adfb2eebf122d53fc4134db338cbeca3e0bcad3b13886fe4ffea73651f3d8d9",
+   "c1": null,
+   "pull": 229,
+   "eth_at_pull": 0.0013,
+   "since_last_swap": 144,
+   "since_last_buy": 144,
+   "last_buy_eth": 0.000322702498516,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 1
+  },
+  {
+   "pid": "0xfa72a9495b7e2d38a737664c961a3d0c89bcdf605b9dc3788bc0a1301d71304e",
+   "c1": 101,
+   "pull": 246,
+   "eth_at_pull": 0.2305,
+   "since_last_swap": 127,
+   "since_last_buy": 127,
+   "last_buy_eth": 0.000199884067241,
+   "since_last_buy_3e15": 145,
+   "n_swaps_before": 7,
+   "swaps_after_pull": 1
+  },
+  {
+   "pid": "0x92f79e84a994eb741988834f9bcd4d76cbacbcc7babfc54d4ac4d8f3d8f55364",
+   "c1": 101,
+   "pull": null
+  },
+  {
+   "pid": "0x78600cfa65e80604d21c5ef9198714a2472c3b7d814b5ffa76dff4bd8eadc5ea",
+   "c1": null,
+   "pull": 176,
+   "eth_at_pull": 0.0007,
+   "since_last_swap": 72,
+   "since_last_buy": 136,
+   "last_buy_eth": 0.000112,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 6,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xc06eef8d6dc3bbe4e911ea03739f4c0f20f8392b6caf00332f0b61e968f72c3c",
+   "c1": 59,
+   "pull": null
+  },
+  {
+   "pid": "0x7064ca597128fc037eda0dcd289036cfa48516db6e528301b6a1b99168ec57d6",
+   "c1": null,
+   "pull": 242,
+   "eth_at_pull": 0.0008,
+   "since_last_swap": 128,
+   "since_last_buy": 141,
+   "last_buy_eth": 0.000495,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 6,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x095eb58c63aba34004380072e5f47ab26efd43e02d1517179c9424d42e10bdf4",
+   "c1": 226,
+   "pull": null
+  },
+  {
+   "pid": "0xe815b64bfe5516944ed3b0b7ff7cb78cd94fa06e639624ca78d796b76fea184a",
+   "c1": 123,
+   "pull": 2808,
+   "eth_at_pull": 5.0828,
+   "since_last_swap": 4,
+   "since_last_buy": 4,
+   "last_buy_eth": 0.297,
+   "since_last_buy_3e15": 4,
+   "n_swaps_before": 159,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xb8cabf6d7bbb8341f7a17d76172544e55485896349f1e2b99a091f5989bf908c",
+   "c1": null,
+   "pull": null
+  },
+  {
+   "pid": "0xbdaf2a60a8458a524f91a7ca41b14b093a15d7976de343cbdef95b21f2e4850b",
+   "c1": 70,
+   "pull": 451,
+   "eth_at_pull": 0.0909,
+   "since_last_swap": 151,
+   "since_last_buy": 354,
+   "last_buy_eth": 0.000200621927976727,
+   "since_last_buy_3e15": 381,
+   "n_swaps_before": 9,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xcb6db0c2cea9af8e6f165089394b5f1db25e3ae9f4f394434fc475e34e212177",
+   "c1": null,
+   "pull": 257,
+   "eth_at_pull": 0.0007,
+   "since_last_swap": 165,
+   "since_last_buy": 165,
+   "last_buy_eth": 0.000337256139327844,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 3,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x8278965bf7f0a464bea54bfe8265ac4d9e118be30a7e3eae15723d576521b0a9",
+   "c1": 86,
+   "pull": 170,
+   "eth_at_pull": 0.1609,
+   "since_last_swap": 66,
+   "since_last_buy": 66,
+   "last_buy_eth": 0.000200647690745727,
+   "since_last_buy_3e15": 84,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x686c9474ec80918ca341613a8522807aa651ce5d8eff9f029c548b67ad173083",
+   "c1": 95,
+   "pull": 586,
+   "eth_at_pull": 12.0864,
+   "since_last_swap": 58,
+   "since_last_buy": 106,
+   "last_buy_eth": 0.000594,
+   "since_last_buy_3e15": 107,
+   "n_swaps_before": 67,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x0b140d20e1eb13eb480bc817dc298716062015dc4fc29b3388c179efc8280b67",
+   "c1": 44,
+   "pull": null
+  },
+  {
+   "pid": "0x2175a92f036531383c1f3353cf09fd95cc6b4562b4a377248f49f9cc9ef9ebf6",
+   "c1": 93,
+   "pull": 1672,
+   "eth_at_pull": 6.7514,
+   "since_last_swap": 48,
+   "since_last_buy": 56,
+   "last_buy_eth": 0.08632,
+   "since_last_buy_3e15": 56,
+   "n_swaps_before": 134,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x19e1ebb3346b89acb0ae3590902ab918784d585cdeea780f488cc6b0e83f1d59",
+   "c1": 35,
+   "pull": null
+  },
+  {
+   "pid": "0xb273edf3a4470c016bf01c7e0d5f8b17c01c6bd8daea294dad651bd5a243f87f",
+   "c1": 124,
+   "pull": 165,
+   "eth_at_pull": 0.0721,
+   "since_last_swap": 13,
+   "since_last_buy": 13,
+   "last_buy_eth": 0.000199465432640523,
+   "since_last_buy_3e15": 41,
+   "n_swaps_before": 8,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xdb988581544a0fe0b111b3fde3d0d6423d9c0ac1a32af3b510677f3b5ff262d6",
+   "c1": 62,
+   "pull": 622,
+   "eth_at_pull": 0.4041,
+   "since_last_swap": 269,
+   "since_last_buy": 492,
+   "last_buy_eth": 0.000396,
+   "since_last_buy_3e15": 521,
+   "n_swaps_before": 12,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x8ee76b1b4ca43a875bdace4cfa20b839d79849847a48cc9c25f3768ddd3fb95a",
+   "c1": 84,
+   "pull": 211,
+   "eth_at_pull": 0.3331,
+   "since_last_swap": 33,
+   "since_last_buy": 33,
+   "last_buy_eth": 0.000204424063351596,
+   "since_last_buy_3e15": 34,
+   "n_swaps_before": 8,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xde7be92196a9bd044016aae0d2701dbf13a717318ecb17b0fbad31604b8f7d60",
+   "c1": 61,
+   "pull": null
+  },
+  {
+   "pid": "0x800e5005bd976430482d5c817227a5603dac91ed4711d8d3a930bf9ce7fde906",
+   "c1": 186,
+   "pull": null
+  },
+  {
+   "pid": "0x6d5910737fdd3f6b63490929161d8b27ddd4520ba67d4ae0cf0a1f7f0654d22d",
+   "c1": 80,
+   "pull": 170,
+   "eth_at_pull": 0.1321,
+   "since_last_swap": 62,
+   "since_last_buy": 62,
+   "last_buy_eth": 0.000200173750815708,
+   "since_last_buy_3e15": 90,
+   "n_swaps_before": 8,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x8492198a835ca32d028e754d52f6602302ccd794f0b30d2f96b85ff6188997bc",
+   "c1": 4,
+   "pull": 146,
+   "eth_at_pull": 0.0299,
+   "since_last_swap": 4,
+   "since_last_buy": 4,
+   "last_buy_eth": 0.0084,
+   "since_last_buy_3e15": 4,
+   "n_swaps_before": 9,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xe7a835d69c69e6409b93675bd0e51e3f100fdb06e269a80a85140c9c864b3ed5",
+   "c1": 47,
+   "pull": 245,
+   "eth_at_pull": 0.2283,
+   "since_last_swap": 27,
+   "since_last_buy": 27,
+   "last_buy_eth": 0.0089,
+   "since_last_buy_3e15": 27,
+   "n_swaps_before": 8,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x575b7e2a321741f56f554674b54e28a65703d3e63e31dbedda42a614228bd852",
+   "c1": 43,
+   "pull": 212,
+   "eth_at_pull": 0.2242,
+   "since_last_swap": 81,
+   "since_last_buy": 81,
+   "last_buy_eth": 0.0059,
+   "since_last_buy_3e15": 81,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xc87adc654da35a025e2d90fe8a544cf5c3421349149cef7ce95633d06ae61c03",
+   "c1": 25,
+   "pull": null
+  },
+  {
+   "pid": "0xd9e848d3f8eddef7164ee9d8e7d7a6d22175dcbc56082b7c56e7b6df9b527bb8",
+   "c1": null,
+   "pull": 118,
+   "eth_at_pull": 0.0009,
+   "since_last_swap": 22,
+   "since_last_buy": 34,
+   "last_buy_eth": 0.000337495781302733,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 6,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xf0c2aea94ac9bbdf51282e3a3548a3620740422da91a85f8e787e63709de2faa",
+   "c1": null,
+   "pull": 151,
+   "eth_at_pull": 0.0007,
+   "since_last_swap": 65,
+   "since_last_buy": 65,
+   "last_buy_eth": 0.000302100661611552,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 3,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xd3d50c92fb5b18460faa14368b553ea339bce896b8344d878167d8bb67468388",
+   "c1": null,
+   "pull": 139,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 109,
+   "since_last_buy": 109,
+   "last_buy_eth": 0.000400683566163875,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xa24b847907dfb8a3ed609f04acc5fdc8b187c48099403e6160bafabc23cbf48e",
+   "c1": null,
+   "pull": 86,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 56,
+   "since_last_buy": 56,
+   "last_buy_eth": 0.000401235001334106,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xaa660dba695b9c0476620d47ccdb6466367af052ac3ef07e8d6c3a96201031ff",
+   "c1": 143,
+   "pull": 1247,
+   "eth_at_pull": 8.3123,
+   "since_last_swap": 3,
+   "since_last_buy": 3,
+   "last_buy_eth": 0.99,
+   "since_last_buy_3e15": 3,
+   "n_swaps_before": 61,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x4f8429cbfba3fc14516a4e6a6b472e7e3410fdede9e33b12430f3061c46256d8",
+   "c1": 501,
+   "pull": null
+  },
+  {
+   "pid": "0x6ec0bccc06be763f8d39a550b97c8943cd4fc78208929a61768af5afe229ebfe",
+   "c1": 77,
+   "pull": 345,
+   "eth_at_pull": 0.1153,
+   "since_last_swap": 59,
+   "since_last_buy": 59,
+   "last_buy_eth": 0.032,
+   "since_last_buy_3e15": 59,
+   "n_swaps_before": 7,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x72b38443b91da98d48b68d6ca3358fe7509ca05bb6a2681dc3400abe21737b4f",
+   "c1": 198,
+   "pull": null
+  },
+  {
+   "pid": "0x8e2efc8cf051e451cfad7d2c56103b36aa0c55c83c02f638c329a744fcfb1b86",
+   "c1": 245,
+   "pull": null
+  },
+  {
+   "pid": "0xf542cc87a1d94d93a7e79c1febb3307aa74383e2ceec6bc5d76997d1ec4bb44b",
+   "c1": 117,
+   "pull": 350,
+   "eth_at_pull": 4.1414,
+   "since_last_swap": 47,
+   "since_last_buy": 47,
+   "last_buy_eth": 0.000774928216583768,
+   "since_last_buy_3e15": 170,
+   "n_swaps_before": 42,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x7a985d721cf6e51307986d3f1a5fb6126d25f456ae2975c75a87e75f3e982ec6",
+   "c1": 89,
+   "pull": 463,
+   "eth_at_pull": 3.0975,
+   "since_last_swap": 66,
+   "since_last_buy": 171,
+   "last_buy_eth": 0.000774928216583768,
+   "since_last_buy_3e15": 174,
+   "n_swaps_before": 34,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xf52784081b971f748833c551f948c663f1718532923eda0c30289f8785b4dda4",
+   "c1": 103,
+   "pull": 1126,
+   "eth_at_pull": 6.0661,
+   "since_last_swap": 6,
+   "since_last_buy": 6,
+   "last_buy_eth": 0.5083,
+   "since_last_buy_3e15": 6,
+   "n_swaps_before": 56,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x1cc8e9595fb208fba62fb53c90fe902ea06817fe5cf01704d0f07cdeee75912a",
+   "c1": 174,
+   "pull": 241,
+   "eth_at_pull": 0.1736,
+   "since_last_swap": 67,
+   "since_last_buy": 67,
+   "last_buy_eth": 0.173,
+   "since_last_buy_3e15": 67,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x9b3ff4f25fce57395bf5661986a40359916771658004833169346cece2f78298",
+   "c1": 99,
+   "pull": 496,
+   "eth_at_pull": 2.0461,
+   "since_last_swap": 65,
+   "since_last_buy": 226,
+   "last_buy_eth": 0.77,
+   "since_last_buy_3e15": 226,
+   "n_swaps_before": 32,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xbc63bf52de316b52cf0bd59f76fbb235596230c4854942507b1b3d0fbc9ad70d",
+   "c1": 94,
+   "pull": 2699,
+   "eth_at_pull": 8.0609,
+   "since_last_swap": 18,
+   "since_last_buy": 18,
+   "last_buy_eth": 0.02,
+   "since_last_buy_3e15": 18,
+   "n_swaps_before": 160,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x766cd3d5bc4247729e8c5bc5fa0269f26c2b620991b7d8d28b119684589d3a91",
+   "c1": 100,
+   "pull": null
+  },
+  {
+   "pid": "0x655d45f4bc4f74fb2de016b3db19dd395086d7765a87b12b90cfc360df6ae137",
+   "c1": 82,
+   "pull": null
+  },
+  {
+   "pid": "0xc9a6c37fd5dec7a625dcec219fa3a4fc6aaf797f1b4f48950a9c8418dea17ff7",
+   "c1": 93,
+   "pull": null
+  },
+  {
+   "pid": "0x777fa8fdf57da421b545de1fce5c7c9186d6d72644c0e8d71985f56dda67065e",
+   "c1": 68,
+   "pull": null
+  },
+  {
+   "pid": "0xc123feca47d4666257469707e3d4595c9d18b11dc6394d8d53196e6bfb7878e1",
+   "c1": 35,
+   "pull": null
+  },
+  {
+   "pid": "0x83259dffd998c8345f6964eb7b5e2c6a0724105b02a73d6daa28d0a760eb6d07",
+   "c1": null,
+   "pull": 76,
+   "eth_at_pull": 0.0007,
+   "since_last_swap": 46,
+   "since_last_buy": 46,
+   "last_buy_eth": 0.000401642718719563,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 4,
+   "swaps_after_pull": 1
+  },
+  {
+   "pid": "0xf71aaec7534ec0920540f1bfda4ad63b102ced2c2fc55004fff088727a7ea331",
+   "c1": null,
+   "pull": 90,
+   "eth_at_pull": 0.0007,
+   "since_last_swap": 61,
+   "since_last_buy": 61,
+   "last_buy_eth": 0.000401642718719563,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 4,
+   "swaps_after_pull": 1
+  },
+  {
+   "pid": "0xc8e89606684fd23dd2b6f2ed7a8aae92c002d1eae8cb48a2c9d7eba6ce208ff2",
+   "c1": null,
+   "pull": 136,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 104,
+   "since_last_buy": 104,
+   "last_buy_eth": 0.000401642718719563,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x577425973a1b312af26d10068beb860050e986cd15238c49d104b8922cd97b86",
+   "c1": null,
+   "pull": 127,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 100,
+   "since_last_buy": 100,
+   "last_buy_eth": 0.000401540308623881,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xa49bfe8a3e7e837e46915ca82cdaf5fbbe07043ee3d998845fd3da36b75b68e5",
+   "c1": 138,
+   "pull": 200,
+   "eth_at_pull": 0.1696,
+   "since_last_swap": 23,
+   "since_last_buy": 23,
+   "last_buy_eth": 0.00020000801676841,
+   "since_last_buy_3e15": 62,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xfb2029c8def04be41074a92a067d44d8bdf3ef10e2c291418de56789a25b6978",
+   "c1": null,
+   "pull": 84,
+   "eth_at_pull": 0.0007,
+   "since_last_swap": 57,
+   "since_last_buy": 57,
+   "last_buy_eth": 0.000401540308623881,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 4,
+   "swaps_after_pull": 1
+  },
+  {
+   "pid": "0x4769de9765b6fa1bd6bbdfeda9630309d073f7bd6cef19de59fa1717cc24c635",
+   "c1": null,
+   "pull": 85,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 56,
+   "since_last_buy": 56,
+   "last_buy_eth": 0.000401540308623881,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xac14f1488b7ab88ce11ddaa20665f5886f4c5f5638a156a5ad6295ffbbd35c5d",
+   "c1": 473,
+   "pull": null
+  },
+  {
+   "pid": "0x080d5e7c660645345e245b8c688dbf992c06dca0ed7d77c0b5af0c056dd31135",
+   "c1": 64,
+   "pull": null
+  },
+  {
+   "pid": "0xee229d0061607c41ab1e75c018ba46be0c5ad12aa3eeb045ce43e477c3336238",
+   "c1": 192,
+   "pull": 1453,
+   "eth_at_pull": 9.2467,
+   "since_last_swap": 21,
+   "since_last_buy": 28,
+   "last_buy_eth": 0.08,
+   "since_last_buy_3e15": 28,
+   "n_swaps_before": 71,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xb3d2506a83c024257de13546363c1403d0974223de1ff5e702a5649fad7284df",
+   "c1": null,
+   "pull": 115,
+   "eth_at_pull": 0.0006,
+   "since_last_swap": 17,
+   "since_last_buy": 85,
+   "last_buy_eth": 0.000402618631579795,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x8156e513fd88390e135a78409265ec83f44e39f2f6f18ed093e51069ec00c17c",
+   "c1": null,
+   "pull": 117,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 84,
+   "since_last_buy": 84,
+   "last_buy_eth": 0.000402618631579795,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xa753b056eb36b7de4324b137c80ddda9f9a74d2a3b875e0d62ceced62124d4fa",
+   "c1": null,
+   "pull": 79,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 49,
+   "since_last_buy": 49,
+   "last_buy_eth": 0.000402618631579795,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x4da29ab58641e52034d5d8903c09058adbfa6befd6e108fb0d5d724bbbd0baf7",
+   "c1": null,
+   "pull": 109,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 79,
+   "since_last_buy": 79,
+   "last_buy_eth": 0.000402618631579795,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xcc4c121ac2c5bb6bbd0f1bde9e96e21b7a63366cca76fbdf91af439a153eae94",
+   "c1": 189,
+   "pull": 2967,
+   "eth_at_pull": 8.95,
+   "since_last_swap": 23,
+   "since_last_buy": 23,
+   "last_buy_eth": 0.03,
+   "since_last_buy_3e15": 23,
+   "n_swaps_before": 135,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x0ebb67ea9e7c641e26376c63b78b28b9b0d9c8de427b68950851008d07c4acf4",
+   "c1": null,
+   "pull": 84,
+   "eth_at_pull": 0.0007,
+   "since_last_swap": 54,
+   "since_last_buy": 54,
+   "last_buy_eth": 0.00040240719986962,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 4,
+   "swaps_after_pull": 1
+  },
+  {
+   "pid": "0x70d8361d9fe74031f73173fdf4a0e72efc851410da97b4529c62e1ea27b449fb",
+   "c1": null,
+   "pull": 109,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 73,
+   "since_last_buy": 73,
+   "last_buy_eth": 0.00040240719986962,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x4e381b10611f90b2e5a4e878f50eecde042bd535e785957c3fb95dcda96e5145",
+   "c1": null,
+   "pull": 104,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 72,
+   "since_last_buy": 72,
+   "last_buy_eth": 0.00040240719986962,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x1f19eb7952384ba391bacb662bbc8889f30983caa9033992239c25e78db66eb4",
+   "c1": 102,
+   "pull": 2765,
+   "eth_at_pull": 15.2709,
+   "since_last_swap": 16,
+   "since_last_buy": 19,
+   "last_buy_eth": 0.00683,
+   "since_last_buy_3e15": 19,
+   "n_swaps_before": 193,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xd1aea81150b631d376922f40ef36ffb88408ce2994e78e6b0c529c64b1cfa6f1",
+   "c1": 99,
+   "pull": null
+  },
+  {
+   "pid": "0xbb59cfbb0722004b57dc83f51a6a9940a4699312fd53a10ae8ce48ae2c59082c",
+   "c1": null,
+   "pull": 220,
+   "eth_at_pull": 0.001,
+   "since_last_swap": 164,
+   "since_last_buy": 164,
+   "last_buy_eth": 0.00099,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x41a456577e4f5fd1f7098747bb0acbd01ebbde9a3167b2006910215e45339d52",
+   "c1": 104,
+   "pull": null
+  },
+  {
+   "pid": "0x9b317630c994822ed951a8055920de1652954160ae5b2b1a99d66fb5f922cdc5",
+   "c1": 94,
+   "pull": 423,
+   "eth_at_pull": 0.3231,
+   "since_last_swap": 69,
+   "since_last_buy": 69,
+   "last_buy_eth": 0.169,
+   "since_last_buy_3e15": 69,
+   "n_swaps_before": 9,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xd2150abd1b2e1ad61b560858bcb057f0cdbcc975bcccf8188c694a2b3f6c7d59",
+   "c1": 88,
+   "pull": 132,
+   "eth_at_pull": 0.0475,
+   "since_last_swap": 36,
+   "since_last_buy": 44,
+   "last_buy_eth": 0.047,
+   "since_last_buy_3e15": 44,
+   "n_swaps_before": 6,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x6e5cb0a943d6c3f57d7c7f9e3040a2d2b862a2274672083d5b5223817b1649fc",
+   "c1": null,
+   "pull": 80,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 52,
+   "since_last_buy": 52,
+   "last_buy_eth": 0.000401695153547972,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xabd3d1a7d1df20fb48e3233338c8544a3bc0454b4bae375db0d8573a8f9c1ce6",
+   "c1": 142,
+   "pull": 755,
+   "eth_at_pull": 4.163,
+   "since_last_swap": 16,
+   "since_last_buy": 16,
+   "last_buy_eth": 0.0166,
+   "since_last_buy_3e15": 16,
+   "n_swaps_before": 30,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x468273262c1273758448f8dfad4f90b79eb5710248e9d2b0733b5251080b6dcd",
+   "c1": 156,
+   "pull": null
+  },
+  {
+   "pid": "0x47e7786c418906ef1ebf6be8dedf3e299156bff586737698ee03d80e37ff5738",
+   "c1": 170,
+   "pull": null
+  },
+  {
+   "pid": "0x2d7344aab9f507f334b350b5b56e8f223e9b5bf7974f79eb8c0944867526f59a",
+   "c1": 154,
+   "pull": null
+  },
+  {
+   "pid": "0x3a5574b5c30a8a8b178c81ae385e2e0920c5d2f8b718bbf9daa93ff25caaceeb",
+   "c1": 120,
+   "pull": null
+  },
+  {
+   "pid": "0x00947b8ff9d6b38016b202880b9c848f338a5c0c4960f4979dd88ca94c1783c6",
+   "c1": 159,
+   "pull": 448,
+   "eth_at_pull": 7.4091,
+   "since_last_swap": 3,
+   "since_last_buy": 3,
+   "last_buy_eth": 0.29,
+   "since_last_buy_3e15": 3,
+   "n_swaps_before": 40,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x8689a78fa0d97bf9b4eb007ac170b800adf49c7e082177b58ffe63faa6d68842",
+   "c1": 154,
+   "pull": null
+  },
+  {
+   "pid": "0x3a77c8c08fc2354c3cb98ceb85961e9d9e063b2be55a47c54e8796fbb8179b7a",
+   "c1": 90,
+   "pull": 533,
+   "eth_at_pull": 0.1745,
+   "since_last_swap": 70,
+   "since_last_buy": 70,
+   "last_buy_eth": 2.4e-05,
+   "since_last_buy_3e15": 106,
+   "n_swaps_before": 12,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x75d340f1094d5f8ac718b1dee1cc74a9c3b48021df28344223f1c30e212b94b1",
+   "c1": 74,
+   "pull": 114,
+   "eth_at_pull": 0.0525,
+   "since_last_swap": 17,
+   "since_last_buy": 40,
+   "last_buy_eth": 0.052,
+   "since_last_buy_3e15": 40,
+   "n_swaps_before": 6,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xdb0b1172657ef24d18e9ffe0385fbe26fee66786cf347bdf4cb5229d3ff945f8",
+   "c1": 158,
+   "pull": 1178,
+   "eth_at_pull": 7.5297,
+   "since_last_swap": 10,
+   "since_last_buy": 10,
+   "last_buy_eth": 0.26,
+   "since_last_buy_3e15": 10,
+   "n_swaps_before": 116,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xa75b1fc552b84180e44d93e49a20797d35a22bdc022471f55288bdb49a3ae5d4",
+   "c1": null,
+   "pull": 336,
+   "eth_at_pull": 0.0002,
+   "since_last_swap": 240,
+   "since_last_buy": 330,
+   "last_buy_eth": 0.0001,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 4,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xd58a6770c8a1a785eff3d1a3c04fd524a3e107158f0a4fc5ba6a8fadcaaab1d2",
+   "c1": 157,
+   "pull": null
+  },
+  {
+   "pid": "0xfcb663ae2465d1f16791b3eb8db2e079b23d89c18242c3ca75ffb8bc0df410b7",
+   "c1": 160,
+   "pull": 2516,
+   "eth_at_pull": 9.1608,
+   "since_last_swap": 23,
+   "since_last_buy": 30,
+   "last_buy_eth": 0.072,
+   "since_last_buy_3e15": 30,
+   "n_swaps_before": 130,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xc676c1906a60c9c29159dc167e8e6b9a1f678cd4e656b031f65a596e2345d2ad",
+   "c1": 162,
+   "pull": 503,
+   "eth_at_pull": 8.196,
+   "since_last_swap": 2,
+   "since_last_buy": 8,
+   "last_buy_eth": 0.414,
+   "since_last_buy_3e15": 8,
+   "n_swaps_before": 52,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x1353d3c288a8d0c7f33ea08c7096d7875ce20b649593a212a1fd3e30658736d0",
+   "c1": 101,
+   "pull": null
+  },
+  {
+   "pid": "0x1f1f8763cbac8ec40cea6eccc83ae3e5b9c72b131e230f3a75b05603228c243e",
+   "c1": null,
+   "pull": 109,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 76,
+   "since_last_buy": 76,
+   "last_buy_eth": 0.000401669337767762,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x99bd068de9f4ba6f5c7c8324e15b7b2dc3fd714bd9c05a1b0e2a0f0c3a07fb1d",
+   "c1": 153,
+   "pull": null
+  },
+  {
+   "pid": "0xd41bd2d10c5369f0d91ab122012a5a9fa4ff55fa8d5d68529fb893a8dc1fd960",
+   "c1": null,
+   "pull": 75,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 46,
+   "since_last_buy": 46,
+   "last_buy_eth": 0.000401669337767762,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xae9ca6b8f3372878159b64e28b4e5d11e44bdeaad3fde9a116f693e2854cc9eb",
+   "c1": 232,
+   "pull": 1781,
+   "eth_at_pull": 7.0309,
+   "since_last_swap": 25,
+   "since_last_buy": 25,
+   "last_buy_eth": 0.718,
+   "since_last_buy_3e15": 25,
+   "n_swaps_before": 66,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xf53df907d816b6a6f52efc3143e0ab0ca89b0d5a7db9d24ec0048f19e3f193d8",
+   "c1": 97,
+   "pull": 436,
+   "eth_at_pull": 4.4678,
+   "since_last_swap": 23,
+   "since_last_buy": 23,
+   "last_buy_eth": 0.1495,
+   "since_last_buy_3e15": 23,
+   "n_swaps_before": 47,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x2d0f2e3e47d4945c4a3779e7b84358005d6fa2828fd967479e2a40ff89dfd7cc",
+   "c1": 89,
+   "pull": 399,
+   "eth_at_pull": 2.8849,
+   "since_last_swap": 83,
+   "since_last_buy": 83,
+   "last_buy_eth": 0.000869669701741261,
+   "since_last_buy_3e15": 133,
+   "n_swaps_before": 33,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x8bc9954be7571ba61864c1804f702a6e942afa62c7eb9460948480ba44eb995f",
+   "c1": 159,
+   "pull": 1465,
+   "eth_at_pull": 13.2053,
+   "since_last_swap": 21,
+   "since_last_buy": 34,
+   "last_buy_eth": 0.622,
+   "since_last_buy_3e15": 34,
+   "n_swaps_before": 124,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x7d4136f03ecf1fbda9141647c8f7a23ec329339d7ac12e3273cce8f7bdcacfcf",
+   "c1": 98,
+   "pull": 1913,
+   "eth_at_pull": 10.8442,
+   "since_last_swap": 11,
+   "since_last_buy": 11,
+   "last_buy_eth": 0.0198,
+   "since_last_buy_3e15": 11,
+   "n_swaps_before": 120,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x94499e8776473e17f39968a1dacfea77e1e6fb0f1ef558012cb63dc5ee95c2ab",
+   "c1": 155,
+   "pull": null
+  },
+  {
+   "pid": "0x098c49fad72c85bd0684d5907ec534416f98b6f113709d3f484711f46eb024e5",
+   "c1": 109,
+   "pull": 1279,
+   "eth_at_pull": 5.3268,
+   "since_last_swap": 4,
+   "since_last_buy": 4,
+   "last_buy_eth": 0.07,
+   "since_last_buy_3e15": 4,
+   "n_swaps_before": 51,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xed1a627bd628b4815cdec0ac638ece92e3763015ab2758d14fd8c63eea1ccf54",
+   "c1": 125,
+   "pull": 1555,
+   "eth_at_pull": 5.0158,
+   "since_last_swap": 5,
+   "since_last_buy": 12,
+   "last_buy_eth": 0.00526,
+   "since_last_buy_3e15": 12,
+   "n_swaps_before": 66,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xf7a2d60fca572abaf0a4b7b87af3b754f894595732a2eb3f724f669b80800aa1",
+   "c1": 97,
+   "pull": 2263,
+   "eth_at_pull": 14.3079,
+   "since_last_swap": 10,
+   "since_last_buy": 18,
+   "last_buy_eth": 0.007,
+   "since_last_buy_3e15": 18,
+   "n_swaps_before": 184,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x9a08cac2e6761708394997fab91cf799bd3905ab4cc9c5f131d75d37bee214bb",
+   "c1": 153,
+   "pull": 660,
+   "eth_at_pull": 10.2574,
+   "since_last_swap": 6,
+   "since_last_buy": 15,
+   "last_buy_eth": 0.334,
+   "since_last_buy_3e15": 15,
+   "n_swaps_before": 65,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x19586f702150ce9478c840dad31be295a87f2faee7fcb2d9cc03a7ccd294bbd4",
+   "c1": 101,
+   "pull": 385,
+   "eth_at_pull": 3.1987,
+   "since_last_swap": 11,
+   "since_last_buy": 11,
+   "last_buy_eth": 0.00258,
+   "since_last_buy_3e15": 60,
+   "n_swaps_before": 22,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xa1c3ce35ff6268faeace84f38377af81d7e6e998badb3d0b7752a6d39fbae857",
+   "c1": 105,
+   "pull": null
+  },
+  {
+   "pid": "0xddc03815c85844f384dcfd23185fbe72c71877eba88647090479eb7516091e7d",
+   "c1": 76,
+   "pull": 1187,
+   "eth_at_pull": 9.5502,
+   "since_last_swap": 30,
+   "since_last_buy": 30,
+   "last_buy_eth": 0.4361,
+   "since_last_buy_3e15": 30,
+   "n_swaps_before": 111,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x88b8a71eb5e4b8459404b97ee722f7537a819fa6df5c51ce7c8d54cbfb49b990",
+   "c1": 155,
+   "pull": null
+  },
+  {
+   "pid": "0x1e9219df6ce4523dc6be2c41ae4c92d05d17e6c6b5f348dc8f97d39372cc94d9",
+   "c1": 88,
+   "pull": null
+  },
+  {
+   "pid": "0xc41747dfe122a2bb96311c65fe5bea9b5d6c3975c899b243686d2598756e644a",
+   "c1": 95,
+   "pull": 402,
+   "eth_at_pull": 4.9771,
+   "since_last_swap": 30,
+   "since_last_buy": 30,
+   "last_buy_eth": 0.01256,
+   "since_last_buy_3e15": 30,
+   "n_swaps_before": 50,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x84937a9f66cd225dc8af8753c3c3558bf0d958d6a5acd0739f80ab7f123ca724",
+   "c1": 88,
+   "pull": 444,
+   "eth_at_pull": 3.8003,
+   "since_last_swap": 28,
+   "since_last_buy": 28,
+   "last_buy_eth": 0.1683,
+   "since_last_buy_3e15": 28,
+   "n_swaps_before": 38,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xfa6f20488e32274de654699182385ce9ceb6855b38667cc0865388b0a63a392d",
+   "c1": 120,
+   "pull": null
+  },
+  {
+   "pid": "0xb56fc3c84c78b3afc91ba6ea18957db331c521a3ccda61199e5c0e36a5e23c05",
+   "c1": 167,
+   "pull": 383,
+   "eth_at_pull": 1.6851,
+   "since_last_swap": 155,
+   "since_last_buy": 165,
+   "last_buy_eth": 0.161,
+   "since_last_buy_3e15": 165,
+   "n_swaps_before": 18,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xd98a2abca354ead56b4c1182df41f99a0b119778a85b1f7d5e7a0a3b30924081",
+   "c1": 86,
+   "pull": null
+  },
+  {
+   "pid": "0xc367b94cdb1ba026c6db4bf39474e53275df88272290b61883efd5b8c231b82e",
+   "c1": 115,
+   "pull": null
+  },
+  {
+   "pid": "0xd1f15f6e886fd06f0edf55ae44da3c83eca781183970b98045605d447cbf2e0b",
+   "c1": 73,
+   "pull": null
+  },
+  {
+   "pid": "0x7da0f53a44e3d5e0f0e37d3d5bf1a03ef52f32644ff7e8e8f227102304543d0c",
+   "c1": 204,
+   "pull": null
+  },
+  {
+   "pid": "0x4223948138de69a7d939f335068dad9af1defc15c3169cb28e0eb0ff12d612cc",
+   "c1": null,
+   "pull": 190,
+   "eth_at_pull": 0.0011,
+   "since_last_swap": 86,
+   "since_last_buy": 86,
+   "last_buy_eth": 0.000304927236939756,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 8,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xe8a2b3f61be85b9b3bc5210138df87484fdad39d89f3409987c714153737ecf0",
+   "c1": 107,
+   "pull": 396,
+   "eth_at_pull": 3.1011,
+   "since_last_swap": 19,
+   "since_last_buy": 19,
+   "last_buy_eth": 0.0004,
+   "since_last_buy_3e15": 58,
+   "n_swaps_before": 26,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x54d1559500d89e69506b0eba5bad98f78de7767fa572dfc3c483d25cee6b2c0d",
+   "c1": 93,
+   "pull": 191,
+   "eth_at_pull": 1.0906,
+   "since_last_swap": 34,
+   "since_last_buy": 45,
+   "last_buy_eth": 2.4e-05,
+   "since_last_buy_3e15": 61,
+   "n_swaps_before": 14,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xbf125b53a34795e948ae024e6ebad15a168180a3714a50c7a0948592c7774f71",
+   "c1": 119,
+   "pull": 708,
+   "eth_at_pull": 4.1621,
+   "since_last_swap": 122,
+   "since_last_buy": 284,
+   "last_buy_eth": 0.000655027992671797,
+   "since_last_buy_3e15": 348,
+   "n_swaps_before": 32,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xee1a2e295d555dbadef706df9b435412287a7f9a13524bda907d32bef8f465fc",
+   "c1": 68,
+   "pull": 174,
+   "eth_at_pull": 0.5771,
+   "since_last_swap": 9,
+   "since_last_buy": 26,
+   "last_buy_eth": 2.4e-05,
+   "since_last_buy_3e15": 37,
+   "n_swaps_before": 12,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x39f09d931f726f5c4a9c9aaea5b0e60df0897c5d47e7f85ee2fb11f058ac10ee",
+   "c1": 100,
+   "pull": 818,
+   "eth_at_pull": 1.4444,
+   "since_last_swap": 5,
+   "since_last_buy": 12,
+   "last_buy_eth": 0.2,
+   "since_last_buy_3e15": 12,
+   "n_swaps_before": 36,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xe7af30aa9d0d13bc975bdb2ce2e78feefc9b4896580a1b2d583aa9030dcb3ae1",
+   "c1": 100,
+   "pull": 230,
+   "eth_at_pull": 0.0596,
+   "since_last_swap": 75,
+   "since_last_buy": 97,
+   "last_buy_eth": 0.000201812274222518,
+   "since_last_buy_3e15": 130,
+   "n_swaps_before": 6,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x296763e2e9cad21c075c72cc29719a29440108b47fafb640468cd42849fb85cf",
+   "c1": 176,
+   "pull": null
+  },
+  {
+   "pid": "0x601e782c70c4e5fb8178d5db97e37be309773e7d0f0a0d8f11e2cf1c066e21f1",
+   "c1": 124,
+   "pull": null
+  },
+  {
+   "pid": "0x5d7bfb7bc8af7cff9087aa3ce8b84de3860905ca93ee1cc534094dc68761cbd2",
+   "c1": 78,
+   "pull": null
+  },
+  {
+   "pid": "0xf86058dacef480065134f146952f91dc7eb7c4ac7f09b5fc3abaca193b82f0a9",
+   "c1": 149,
+   "pull": 217,
+   "eth_at_pull": 1.7627,
+   "since_last_swap": 7,
+   "since_last_buy": 7,
+   "last_buy_eth": 0.138,
+   "since_last_buy_3e15": 7,
+   "n_swaps_before": 18,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x031e58e30b2424e3e7027c947895b1e2cb2587d4dd89c153caec4f93606bdee8",
+   "c1": 83,
+   "pull": 387,
+   "eth_at_pull": 5.9435,
+   "since_last_swap": 27,
+   "since_last_buy": 27,
+   "last_buy_eth": 0.061,
+   "since_last_buy_3e15": 27,
+   "n_swaps_before": 46,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x3d99360eb219426f7d32d2523434c3e2a9d1580b03601b3be5a2365607bebbeb",
+   "c1": 98,
+   "pull": 469,
+   "eth_at_pull": 9.7402,
+   "since_last_swap": 4,
+   "since_last_buy": 4,
+   "last_buy_eth": 0.6137,
+   "since_last_buy_3e15": 4,
+   "n_swaps_before": 72,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x6d5ce8b9c6e5ac8fe3fbe5ae20d3b83e85323470e41ba287681500a0ffda286d",
+   "c1": 84,
+   "pull": 462,
+   "eth_at_pull": 5.4271,
+   "since_last_swap": 1,
+   "since_last_buy": 1,
+   "last_buy_eth": 0.021,
+   "since_last_buy_3e15": 1,
+   "n_swaps_before": 57,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xfad53634d11dd8ba9b19076def3dc6ff8b8c9336d5a3943c880328af76f4723b",
+   "c1": 92,
+   "pull": 189,
+   "eth_at_pull": 3.6719,
+   "since_last_swap": 44,
+   "since_last_buy": 60,
+   "last_buy_eth": 2.4e-05,
+   "since_last_buy_3e15": 96,
+   "n_swaps_before": 28,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x666ca8a38803473daa3eb43816eef80d805a41e3757ca3d15626de1bfb4f899d",
+   "c1": 116,
+   "pull": 225,
+   "eth_at_pull": 4.8019,
+   "since_last_swap": 53,
+   "since_last_buy": 53,
+   "last_buy_eth": 0.000201459380779749,
+   "since_last_buy_3e15": 59,
+   "n_swaps_before": 32,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xe4b5fc387f3962313ef50653f483873ac6cf0c73c7eb55af3013e46f54f819e6",
+   "c1": 88,
+   "pull": 202,
+   "eth_at_pull": 2.192,
+   "since_last_swap": 63,
+   "since_last_buy": 73,
+   "last_buy_eth": 2.4e-05,
+   "since_last_buy_3e15": 112,
+   "n_swaps_before": 23,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x06663eed60598d117e6bf32a7c227a2bd34ea9c8113cacf36ed1417281e57271",
+   "c1": 63,
+   "pull": 508,
+   "eth_at_pull": 1.6391,
+   "since_last_swap": 58,
+   "since_last_buy": 58,
+   "last_buy_eth": 4.0303235919726e-05,
+   "since_last_buy_3e15": 220,
+   "n_swaps_before": 28,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x9d2bc6749110db94b592e6bfb86882bd1de63c9143b1b7d973c5bdad19f9dc78",
+   "c1": 248,
+   "pull": 411,
+   "eth_at_pull": 2.1944,
+   "since_last_swap": 10,
+   "since_last_buy": 10,
+   "last_buy_eth": 0.037,
+   "since_last_buy_3e15": 10,
+   "n_swaps_before": 36,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x083c92eb95dae5f22992543b70205fbc637f1dbe01ca664474b1734e2c6c6842",
+   "c1": 99,
+   "pull": 2311,
+   "eth_at_pull": 7.4432,
+   "since_last_swap": 30,
+   "since_last_buy": 30,
+   "last_buy_eth": 0.0099,
+   "since_last_buy_3e15": 30,
+   "n_swaps_before": 142,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x8880fc00bd146a9a9351949249b4bc0722d28c62e64463cf08a11c4376eda519",
+   "c1": 263,
+   "pull": 506,
+   "eth_at_pull": 6.3601,
+   "since_last_swap": 19,
+   "since_last_buy": 19,
+   "last_buy_eth": 0.308,
+   "since_last_buy_3e15": 19,
+   "n_swaps_before": 39,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x83b2a7409f8e05cbd2aa7514d9eb898e373e7350dd62a4c9c9d8dbf0aa603c17",
+   "c1": 149,
+   "pull": null
+  },
+  {
+   "pid": "0x449c2939da60b83e5a3b826b93a2ef6f9ffc9b02bb5c6e55eca8a461abf3e76d",
+   "c1": 160,
+   "pull": 404,
+   "eth_at_pull": 6.491,
+   "since_last_swap": 9,
+   "since_last_buy": 9,
+   "last_buy_eth": 0.272,
+   "since_last_buy_3e15": 9,
+   "n_swaps_before": 40,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xe5541ef56251da05deabf5d5727fa9eef786df1ac694ed1353c99be46c51aa67",
+   "c1": 155,
+   "pull": 214,
+   "eth_at_pull": 0.3231,
+   "since_last_swap": 10,
+   "since_last_buy": 10,
+   "last_buy_eth": 0.022,
+   "since_last_buy_3e15": 10,
+   "n_swaps_before": 11,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x1880b338756905e02805949d83b94495346eeb2b3b9972e5ca81ad42920ed464",
+   "c1": 151,
+   "pull": null
+  },
+  {
+   "pid": "0xd3ed8e61f1300b25858b887c53b4281812d3407ff15b4f80e9a8fda9fc7266fe",
+   "c1": 83,
+   "pull": 2979,
+   "eth_at_pull": 3.1037,
+   "since_last_swap": 6,
+   "since_last_buy": 29,
+   "last_buy_eth": 0.076,
+   "since_last_buy_3e15": 29,
+   "n_swaps_before": 238,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x057f1fc0dcf73bc2878873dea60a66551b62d3266cf83e8c31c4bf001620469e",
+   "c1": 294,
+   "pull": 2086,
+   "eth_at_pull": 1.2515,
+   "since_last_swap": 37,
+   "since_last_buy": 37,
+   "last_buy_eth": 0.0064,
+   "since_last_buy_3e15": 37,
+   "n_swaps_before": 31,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x5752b6113c2476db16f49e921f60fd73134a2ecb18c07959d9f5a9b822f9c80a",
+   "c1": 190,
+   "pull": null
+  },
+  {
+   "pid": "0x685f6c6adcc901d4100e534afb9e34d50089ac752568628a8c6f5b647da89ba6",
+   "c1": 151,
+   "pull": null
+  },
+  {
+   "pid": "0x7c43e77358ced0b02af92efafb6f94326d3b77c375b1c0ce691308af5daaf8da",
+   "c1": 154,
+   "pull": 1294,
+   "eth_at_pull": 12.1547,
+   "since_last_swap": 3,
+   "since_last_buy": 3,
+   "last_buy_eth": 0.296,
+   "since_last_buy_3e15": 3,
+   "n_swaps_before": 149,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xe0a8edac306e9b0ff2f6066492aea08210e348e60c63bf741241a9e24c488558",
+   "c1": 74,
+   "pull": 1268,
+   "eth_at_pull": 1.0935,
+   "since_last_swap": 46,
+   "since_last_buy": 46,
+   "last_buy_eth": 0.0228,
+   "since_last_buy_3e15": 46,
+   "n_swaps_before": 29,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xb0c62f949721c63f632cb5191415a675b9c75ce019a2f19debb50710b78d89f6",
+   "c1": 151,
+   "pull": null
+  },
+  {
+   "pid": "0x212f4a88add05266a45fa83caa6a7d67eba6a746c215e2a0e31e0c78caee483c",
+   "c1": 77,
+   "pull": null
+  },
+  {
+   "pid": "0xf761f6a1feac8168e15efee61e008d08e502f21d5489390d0730e46264778063",
+   "c1": 156,
+   "pull": null
+  },
+  {
+   "pid": "0x14c41350f2d5386998ee87da4e2df94c660cb905ef4d799fc8dc2874d90b30f2",
+   "c1": 126,
+   "pull": null
+  },
+  {
+   "pid": "0xba91a0ff848cec125386258efccb0839bd1ac4645161cc39e6ce6f00e680b14c",
+   "c1": 214,
+   "pull": null
+  },
+  {
+   "pid": "0xe26f30bfe64e8982c339fc96173528fd4fa6eb2b26865007c04d9290cfe86fc1",
+   "c1": 121,
+   "pull": null
+  },
+  {
+   "pid": "0x28fe572c16a748a10744c742cdc0b350fe17428d919e174b3b0eb3fa19d9c9c8",
+   "c1": 126,
+   "pull": null
+  },
+  {
+   "pid": "0x10901a4181170576cc09ca27edcf412ba1baf5764cab82035cd712cab839dab1",
+   "c1": 140,
+   "pull": null
+  },
+  {
+   "pid": "0xb9476d25522b4b9d9541c30b825a86dcda8e558f9ec4ccbe9db796a86c22e9f2",
+   "c1": 129,
+   "pull": 899,
+   "eth_at_pull": 7.815,
+   "since_last_swap": 48,
+   "since_last_buy": 48,
+   "last_buy_eth": 0.299,
+   "since_last_buy_3e15": 48,
+   "n_swaps_before": 101,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x1a0dac73c3742d076263b55570300ee175ee69057ffb793afd5b4b76c822f396",
+   "c1": 128,
+   "pull": 237,
+   "eth_at_pull": 0.0005,
+   "since_last_swap": 44,
+   "since_last_buy": 91,
+   "last_buy_eth": 0.000200616293252872,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 8,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x26230d776920b2b96421c85bd48552d14139df43375c7b9b65f27202eeb10936",
+   "c1": 142,
+   "pull": null
+  },
+  {
+   "pid": "0x0d5f75dbf07195df7cfe679e0b97eeafbaca8d49d0148c6ed1cd1e6fb5f26232",
+   "c1": 117,
+   "pull": 223,
+   "eth_at_pull": 0.5813,
+   "since_last_swap": 17,
+   "since_last_buy": 44,
+   "last_buy_eth": 0.159,
+   "since_last_buy_3e15": 44,
+   "n_swaps_before": 9,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x8cf68334a3a36af8a693b6d42ca8c3cb4e5ec3f6d3d0b5c1737d04d84860f182",
+   "c1": 88,
+   "pull": 1617,
+   "eth_at_pull": 1.1944,
+   "since_last_swap": 61,
+   "since_last_buy": 68,
+   "last_buy_eth": 0.0178,
+   "since_last_buy_3e15": 68,
+   "n_swaps_before": 36,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x42fb3c68ea6cabf86cc399f4735266af54cc2a6dd1f15deb97a24c6f396553c1",
+   "c1": 186,
+   "pull": null
+  },
+  {
+   "pid": "0x2de80161b1775c2012dc1b6cd36654b19f629a325e65edf36c4325f87108eae9",
+   "c1": 171,
+   "pull": null
+  },
+  {
+   "pid": "0x8453c21610bea611c6e29fe228743fb070a71c5efd816f5b10cb807acf620285",
+   "c1": null,
+   "pull": 235,
+   "eth_at_pull": 0.0007,
+   "since_last_swap": 195,
+   "since_last_buy": 195,
+   "last_buy_eth": 0.0001865,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 4,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x0af23f6325266cbf94bd8d7778451bdb1d0cbea62b605279c828bd8571e942a3",
+   "c1": 175,
+   "pull": null
+  },
+  {
+   "pid": "0x4bfbaef877123ec0065ae4243cedc7d99ddc120c47e1322715b9c5ebcef8f4d0",
+   "c1": 107,
+   "pull": null
+  },
+  {
+   "pid": "0x605e211e4ac42b1e215fd767770fc9149ea77d40e05d9d6d6b44b168111c1749",
+   "c1": 242,
+   "pull": null
+  },
+  {
+   "pid": "0x38444cbf5a2e3b95baf9805edd0fee3e4e4be3fe5953f08571b9c205f5066498",
+   "c1": 145,
+   "pull": null
+  },
+  {
+   "pid": "0x21f2e9847751d86edf71ea18465f378a2676a6a0c270f03723ad7ab7fec77489",
+   "c1": 132,
+   "pull": null
+  },
+  {
+   "pid": "0xd5e1860ba85e4a26802f8bcacf12a6b3e9a7dc0017341eb0a84be2d755a90f3a",
+   "c1": 213,
+   "pull": null
+  },
+  {
+   "pid": "0x82440c3171382b57686569a5d2debad74216ea9a02d3ed16241e916d6abdd197",
+   "c1": 109,
+   "pull": null
+  },
+  {
+   "pid": "0x3f0bfa11917a755fb7853cedc02859969792685e30dd85ad44c0b833978ed362",
+   "c1": 161,
+   "pull": null
+  },
+  {
+   "pid": "0xae0afacf348bc39dd82338d600f88375703ff512d07aa1a891fdf4b4f4a62122",
+   "c1": 149,
+   "pull": 200,
+   "eth_at_pull": 3.3905,
+   "since_last_swap": 7,
+   "since_last_buy": 28,
+   "last_buy_eth": 0.0012,
+   "since_last_buy_3e15": 38,
+   "n_swaps_before": 43,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xa6c1e853ab976c1a4a6b8d6081d2d24dc2ada271678cc5c7cc5669476e59631a",
+   "c1": 229,
+   "pull": null
+  },
+  {
+   "pid": "0x440b91c3138893567a66b1a7432d0daa4b1e2bdfa4df66db2a48bc864e1573c9",
+   "c1": 95,
+   "pull": null
+  },
+  {
+   "pid": "0x6906a0655ba1391933d82324a5770e33679daf4b794d636444a95301ab75c588",
+   "c1": null,
+   "pull": null
+  },
+  {
+   "pid": "0x26c35879451d7a2aee519bce913356d92de50bfb6f3cbc721070a15a27297801",
+   "c1": 210,
+   "pull": null
+  },
+  {
+   "pid": "0xe9a705f7745e863e92585f2d59d3ad7116841b037b8449c50517f81e440e3780",
+   "c1": null,
+   "pull": 320,
+   "eth_at_pull": 0.0004,
+   "since_last_swap": 22,
+   "since_last_buy": 281,
+   "last_buy_eth": 0.0002611,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 7,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x3fd86ebd227d790781943259b1ab66cb5eb0ec39c59db0da9b47779faeaf7123",
+   "c1": 240,
+   "pull": null
+  },
+  {
+   "pid": "0xf3be911fc050653c0f496a38b310f2ab68e436ffc44dd3c383a1ef9c969c16c9",
+   "c1": 252,
+   "pull": 1664,
+   "eth_at_pull": 7.2121,
+   "since_last_swap": 50,
+   "since_last_buy": 50,
+   "last_buy_eth": 0.6137,
+   "since_last_buy_3e15": 50,
+   "n_swaps_before": 95,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x00f441e55b896d9421b60cb9b74b864e4e662222acdd0dd36660c16c050573ff",
+   "c1": 176,
+   "pull": null
+  },
+  {
+   "pid": "0x54b8b95f8ef01f2480da5ba7315643f099647f95ad7f69a7de67476343550b66",
+   "c1": 200,
+   "pull": null
+  },
+  {
+   "pid": "0xdda4f55825ef63736799fd2bc03502e8fe24db41cc3ae0143796e7ba64f2a5a8",
+   "c1": null,
+   "pull": 191,
+   "eth_at_pull": 0.001,
+   "since_last_swap": 73,
+   "since_last_buy": 73,
+   "last_buy_eth": 0.000197289654354324,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 8,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xec4fd2a5a22bcee923394112e2fdb2e9c58a2815d2d787448ce2c31ddfeb4a0a",
+   "c1": 134,
+   "pull": 176,
+   "eth_at_pull": 0.1054,
+   "since_last_swap": 21,
+   "since_last_buy": 21,
+   "last_buy_eth": 0.000199250816928349,
+   "since_last_buy_3e15": 42,
+   "n_swaps_before": 6,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x4f06832d47f65b5434bd98ac025391634ab188232a8f817ceb072b1dd6019e36",
+   "c1": 91,
+   "pull": 370,
+   "eth_at_pull": 0.1415,
+   "since_last_swap": 74,
+   "since_last_buy": 112,
+   "last_buy_eth": 0.0012,
+   "since_last_buy_3e15": 127,
+   "n_swaps_before": 9,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x6244856cc51e2096ec16ce8c4bb705b8f9dd82008d3b4e47f49dc924cd69e5f1",
+   "c1": 74,
+   "pull": 345,
+   "eth_at_pull": 0.2057,
+   "since_last_swap": 18,
+   "since_last_buy": 18,
+   "last_buy_eth": 2.4e-05,
+   "since_last_buy_3e15": 86,
+   "n_swaps_before": 11,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xf95591766fd4fa25fda4aa76e827504cc865950e8b78f94c965607cd84e09fbb",
+   "c1": 83,
+   "pull": 209,
+   "eth_at_pull": 0.1904,
+   "since_last_swap": 45,
+   "since_last_buy": 86,
+   "last_buy_eth": 0.0012,
+   "since_last_buy_3e15": 105,
+   "n_swaps_before": 8,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xd43ab40726fdc771243df3c23c6a79b0f78655a4a5d66250b6c60151facc5cce",
+   "c1": 75,
+   "pull": null
+  },
+  {
+   "pid": "0x467bec5c600c0acf7a21a741a41702bcb82990a1b5701eb698351a5a090e187f",
+   "c1": 140,
+   "pull": null
+  },
+  {
+   "pid": "0x97366e96b58ce61b79bb31499125217c6eb35641364d7e8e9515190538057e7c",
+   "c1": 128,
+   "pull": 340,
+   "eth_at_pull": 0.3564,
+   "since_last_swap": 109,
+   "since_last_buy": 109,
+   "last_buy_eth": 2.4e-05,
+   "since_last_buy_3e15": 116,
+   "n_swaps_before": 13,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x54695c0f166e72734159b503266211deaa91be75e00f37023c10d75f81fa3db3",
+   "c1": 71,
+   "pull": 194,
+   "eth_at_pull": 0.413,
+   "since_last_swap": 33,
+   "since_last_buy": 46,
+   "last_buy_eth": 0.162,
+   "since_last_buy_3e15": 46,
+   "n_swaps_before": 9,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x54ea1ec6ade23602ba02327aff7a73143baaeeccf3998fd5317fa4549650f8e6",
+   "c1": 60,
+   "pull": 856,
+   "eth_at_pull": 1.2767,
+   "since_last_swap": 50,
+   "since_last_buy": 50,
+   "last_buy_eth": 0.522,
+   "since_last_buy_3e15": 50,
+   "n_swaps_before": 28,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xc33ecdd91f708857f63b334157d88b55f4df494d1d11946d0bc1774ba304922f",
+   "c1": 105,
+   "pull": 690,
+   "eth_at_pull": 0.4366,
+   "since_last_swap": 73,
+   "since_last_buy": 73,
+   "last_buy_eth": 0.159,
+   "since_last_buy_3e15": 73,
+   "n_swaps_before": 18,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x7e0d27de37eefb1962bb750707c4b98d746ca4689fc044b2e4b173d3e261a139",
+   "c1": 343,
+   "pull": 868,
+   "eth_at_pull": 3.756,
+   "since_last_swap": 346,
+   "since_last_buy": 346,
+   "last_buy_eth": 1.1,
+   "since_last_buy_3e15": 346,
+   "n_swaps_before": 20,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xe32014cb251a9244728a1ba10de6a90cf1321c6133dd36399cb243fe9e203c58",
+   "c1": null,
+   "pull": 223,
+   "eth_at_pull": 0.001,
+   "since_last_swap": 103,
+   "since_last_buy": 103,
+   "last_buy_eth": 0.000892016894799987,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x81320e284a3f88e6fc0a750494ca427ff802f3c73fe5cc07315da0b26905b33a",
+   "c1": 163,
+   "pull": 1624,
+   "eth_at_pull": 5.4612,
+   "since_last_swap": 23,
+   "since_last_buy": 23,
+   "last_buy_eth": 0.007,
+   "since_last_buy_3e15": 23,
+   "n_swaps_before": 85,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xdd50e8e26887d1b82a22d46054a91c00ca1c333fd9e917f913692263a2da00a3",
+   "c1": 107,
+   "pull": null
+  },
+  {
+   "pid": "0xd93367f04ea536fd76cfd06b67557aac17e5bf0ebab66867d2afd398dc416052",
+   "c1": 97,
+   "pull": null
+  },
+  {
+   "pid": "0x91e5c2cff4c4ed4d3cf0fdd0e19c9077261878329c5c1f0b9c8f74ea4787f3a6",
+   "c1": 217,
+   "pull": null
+  },
+  {
+   "pid": "0xbd6eae9ce061980d6a4d36530d989ec44e3bfbbbc100f58db20ab484273380eb",
+   "c1": 123,
+   "pull": 1530,
+   "eth_at_pull": 0.7812,
+   "since_last_swap": 61,
+   "since_last_buy": 61,
+   "last_buy_eth": 0.1987,
+   "since_last_buy_3e15": 61,
+   "n_swaps_before": 31,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x7e849c707f0c28687ceecb3eddf600c316992b97a081a02915f2b2d4e0d2e6be",
+   "c1": 72,
+   "pull": null
+  },
+  {
+   "pid": "0x2d2e55a4b5bf0bdede4ad13aacc95a6debcd7b904d3219b5d45e4f9fb643c479",
+   "c1": 128,
+   "pull": 863,
+   "eth_at_pull": 4.9263,
+   "since_last_swap": 25,
+   "since_last_buy": 33,
+   "last_buy_eth": 0.0003,
+   "since_last_buy_3e15": 92,
+   "n_swaps_before": 48,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xeef312bda9266b97d9222c11fe6a945d1b3827f5cbae852f3bc38d4e1fe51204",
+   "c1": null,
+   "pull": 166,
+   "eth_at_pull": 0.0006,
+   "since_last_swap": 28,
+   "since_last_buy": 68,
+   "last_buy_eth": 0.0297,
+   "since_last_buy_3e15": 68,
+   "n_swaps_before": 5,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xbff13fc35dea1d4026cea18ed3b87e72ea45e112a90f21080bab598763de9619",
+   "c1": 203,
+   "pull": 1111,
+   "eth_at_pull": 3.9216,
+   "since_last_swap": 5,
+   "since_last_buy": 5,
+   "last_buy_eth": 0.00398,
+   "since_last_buy_3e15": 5,
+   "n_swaps_before": 25,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0xb6448c53f8d1329c60bd0ea4aea647c22c6d2bb4a6907410011b55d60262ac9f",
+   "c1": 198,
+   "pull": 627,
+   "eth_at_pull": 0.7622,
+   "since_last_swap": 36,
+   "since_last_buy": 36,
+   "last_buy_eth": 2.4e-05,
+   "since_last_buy_3e15": 54,
+   "n_swaps_before": 11,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x2d5b4a6a6f1fa57531675a01f9ddb34a1daf21c3bd68fe9342fe0d6e34c5ab04",
+   "c1": null,
+   "pull": 259,
+   "eth_at_pull": 0.0007,
+   "since_last_swap": 171,
+   "since_last_buy": 171,
+   "last_buy_eth": 0.00030184761885749,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 6,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x8742334ef7ab33c9043680cca3949aff82df8459dec8db85c68576b39fcd72c5",
+   "c1": null,
+   "pull": 284,
+   "eth_at_pull": 0.0003,
+   "since_last_swap": 242,
+   "since_last_buy": 242,
+   "last_buy_eth": 0.0002611,
+   "since_last_buy_3e15": null,
+   "n_swaps_before": 2,
+   "swaps_after_pull": 0
+  },
+  {
+   "pid": "0x37a625f05c98a54d366d47eee799f46dd59d8656f84f17aab62d5eeaaa3fb548",
+   "c1": 104,
+   "pull": null
+  },
+  {
+   "pid": "0x6c4f3eba739677412c42cd5d392fb4b263f08115be986e26039891672ecdce03",
+   "c1": 94,
+   "pull": null
+  }
+ ],
+ "outsiders_attributed": [
+  {
+   "pid": "0x083c92eb",
+   "off": 768,
+   "eth": 0.0099,
+   "from": "0x76508769cf9a85cc37522d1417dccc596d2e1f65",
+   "to": "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+   "pull_after": 1543,
+   "c1": 99
+  },
+  {
+   "pid": "0x14c41350",
+   "off": 1152,
+   "eth": 0.004841056459461445,
+   "from": "0xcff69aa866bf5c1d5a460592c8af07638b63b7ec",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 126
+  },
+  {
+   "pid": "0x14c41350",
+   "off": 2829,
+   "eth": 0.001806851581195894,
+   "from": "0x8a05e322829dd13db8ab7ed3f69b79a2b3e80bd9",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 126
+  },
+  {
+   "pid": "0x1e9219df",
+   "off": 106,
+   "eth": 0.001,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 88
+  },
+  {
+   "pid": "0x1e9219df",
+   "off": 1976,
+   "eth": 0.001810690315623441,
+   "from": "0x8a05e322829dd13db8ab7ed3f69b79a2b3e80bd9",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 88
+  },
+  {
+   "pid": "0x1e9219df",
+   "off": 2447,
+   "eth": 0.04,
+   "from": "0xd517f65c07d7697a6fb48ba92fac445e876c20c9",
+   "to": "0xd517f65c07d7697a6fb48ba92fac445e876c20c9",
+   "pull_after": null,
+   "c1": 88
+  },
+  {
+   "pid": "0x26c35879",
+   "off": 229,
+   "eth": 0.0014,
+   "from": "0x884c99f0e0053ce9736d4cd05e5f28fd6c61e87d",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 210
+  },
+  {
+   "pid": "0x26c35879",
+   "off": 947,
+   "eth": 0.008314841423259297,
+   "from": "0xcff69aa866bf5c1d5a460592c8af07638b63b7ec",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 210
+  },
+  {
+   "pid": "0x296763e2",
+   "off": 372,
+   "eth": 0.001,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 176
+  },
+  {
+   "pid": "0x3a5574b5",
+   "off": 137,
+   "eth": 0.001,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 120
+  },
+  {
+   "pid": "0x3a5574b5",
+   "off": 2095,
+   "eth": 0.001203129291161138,
+   "from": "0xc60f849c4ee41c54e7575022c10e73ef10fce363",
+   "to": "0x204faca1764b154221e35c0d20abb3c525710498",
+   "pull_after": null,
+   "c1": 120
+  },
+  {
+   "pid": "0x3a5574b5",
+   "off": 2562,
+   "eth": 0.001804417213338252,
+   "from": "0x8a05e322829dd13db8ab7ed3f69b79a2b3e80bd9",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 120
+  },
+  {
+   "pid": "0x440b91c3",
+   "off": 1217,
+   "eth": 0.002485,
+   "from": "0x0bc841634507c6231e054a13652a6e90215d0cff",
+   "to": "0x81da6bcd98ae46621a1e9743a3f51b10b7e16d97",
+   "pull_after": null,
+   "c1": 95
+  },
+  {
+   "pid": "0x504709f8",
+   "off": 639,
+   "eth": 0.002387579165808129,
+   "from": "0x728f51950ff096dc03a48f5e83f45ac8bb75f500",
+   "to": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+   "pull_after": null,
+   "c1": 96
+  },
+  {
+   "pid": "0x592df424",
+   "off": 1782,
+   "eth": 0.002387521153784685,
+   "from": "0x1cd9d560440aab96f7b0a007ced7c2191cac5baf",
+   "to": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+   "pull_after": 137,
+   "c1": 105
+  },
+  {
+   "pid": "0x592df424",
+   "off": 1797,
+   "eth": 0.00999,
+   "from": "0x6d0af87fabe19ae6a41814d2b43e809eac217bf0",
+   "to": "0x0005ea38eb0a69d1253508ebdbdb9ea8cb26b5ef",
+   "pull_after": 122,
+   "c1": 105
+  },
+  {
+   "pid": "0x6244856c",
+   "off": 278,
+   "eth": 0.0014,
+   "from": "0xda9cae528a4083d4ab24285f5a173639bbebcac8",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": 67,
+   "c1": 74
+  },
+  {
+   "pid": "0x655d45f4",
+   "off": 2703,
+   "eth": 0.001,
+   "from": "0xc9caf996d8a956de18fecf1ad79b470c6189ee2a",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 82
+  },
+  {
+   "pid": "0x72b38443",
+   "off": 267,
+   "eth": 0.001,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 198
+  },
+  {
+   "pid": "0x8aca1058",
+   "off": 117,
+   "eth": 0.002322696929859198,
+   "from": "0xf8878ef6b0de5ab6749de7b0977258df5c5459ef",
+   "to": "0xbdbf5b822d3514a27eecec95bf140797dc84dbc7",
+   "pull_after": 2760,
+   "c1": 39
+  },
+  {
+   "pid": "0x92f79e84",
+   "off": 291,
+   "eth": 0.001,
+   "from": "0xce2841c532af2628df7166badfa2eaf401c217a7",
+   "to": "0x12f420e5cb154acdae7f51313f370d74c0e8cfdd",
+   "pull_after": null,
+   "c1": 101
+  },
+  {
+   "pid": "0xa8201008",
+   "off": 330,
+   "eth": 0.001,
+   "from": "0xce2841c532af2628df7166badfa2eaf401c217a7",
+   "to": "0x12f420e5cb154acdae7f51313f370d74c0e8cfdd",
+   "pull_after": null,
+   "c1": 108
+  },
+  {
+   "pid": "0xa8201008",
+   "off": 1605,
+   "eth": 0.003990522481243518,
+   "from": "0x9bc462bce2acd6fbe2ef5470d55b439453451083",
+   "to": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+   "pull_after": null,
+   "c1": 108
+  },
+  {
+   "pid": "0xa8201008",
+   "off": 1885,
+   "eth": 0.002385051950736476,
+   "from": "0xa67d7eb4dc68fa6ce8e34ef8cadaf075b9893fbb",
+   "to": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+   "pull_after": null,
+   "c1": 108
+  },
+  {
+   "pid": "0xb8cabf6d",
+   "off": 93,
+   "eth": 0.0297,
+   "from": "0xf4a0048b3c3b5e1e8b954c92babcff05e0e3e215",
+   "to": "0xf0b7eaaf868191adc00065ca13391ef436ce8faf",
+   "pull_after": null,
+   "c1": 120
+  },
+  {
+   "pid": "0xb8cabf6d",
+   "off": 136,
+   "eth": 0.001,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 120
+  },
+  {
+   "pid": "0xbc63bf52",
+   "off": 860,
+   "eth": 0.00495,
+   "from": "0x8dddf8f2ca2a79a9c54219fa96636491466ba6c4",
+   "to": "0x46ff2f034ac0eced52e7b0548af12291c50d3ad8",
+   "pull_after": 1839,
+   "c1": 94
+  },
+  {
+   "pid": "0xcc4c121a",
+   "off": 256,
+   "eth": 0.001,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": 2711,
+   "c1": 189
+  },
+  {
+   "pid": "0xd5e1860b",
+   "off": 257,
+   "eth": 0.0012,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 213
+  },
+  {
+   "pid": "0xd5e1860b",
+   "off": 2778,
+   "eth": 0.003201803982991495,
+   "from": "0x4381045063b19a615a272733fa6b5f169b622646",
+   "to": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+   "pull_after": null,
+   "c1": 213
+  },
+  {
+   "pid": "0xe4b5fc38",
+   "off": 103,
+   "eth": 0.001,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": 99,
+   "c1": 88
+  },
+  {
+   "pid": "0xe4b5fc38",
+   "off": 103,
+   "eth": 0.001,
+   "from": "0x884c99f0e0053ce9736d4cd05e5f28fd6c61e87d",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": 99,
+   "c1": 88
+  },
+  {
+   "pid": "0xe8a2b3f6",
+   "off": 123,
+   "eth": 0.001,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": 273,
+   "c1": 107
+  },
+  {
+   "pid": "0xf53df907",
+   "off": 113,
+   "eth": 0.001,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": 323,
+   "c1": 97
+  },
+  {
+   "pid": "0xf542cc87",
+   "off": 138,
+   "eth": 0.001,
+   "from": "0xb632072d6b17b5861277053e51b5c4036bb67f6c",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": 212,
+   "c1": 117
+  },
+  {
+   "pid": "0xfd6a11f2",
+   "off": 1495,
+   "eth": 0.001794322762778568,
+   "from": "0x8a05e322829dd13db8ab7ed3f69b79a2b3e80bd9",
+   "to": "0x8876789976decbfcbbbe364623c63652db8c0904",
+   "pull_after": null,
+   "c1": 35
+  },
+  {
+   "pid": "0xc9e5ed30",
+   "off": 2265,
+   "eth": 0.001956876780320762,
+   "from": "0x329ca263df30c3e506c39081403ec95d5942ece8",
+   "to": "0x5399d94d2cab7c252a6034042e1917a0e5e17a18",
+   "pull_after": null,
+   "c1": 217
+  }
+ ],
+ "outsiders_census_first8": [
+  [
+   117,
+   0.0023,
+   "0xf8878ef6",
+   2760
+  ],
+  [
+   87,
+   0.0297,
+   "0xf4a0048b",
+   null
+  ],
+  [
+   122,
+   0.0023,
+   "0xf8878ef6",
+   140
+  ],
+  [
+   109,
+   0.0023,
+   "0xf8878ef6",
+   60
+  ],
+  [
+   93,
+   0.0297,
+   "0xf4a0048b",
+   null
+  ],
+  [
+   117,
+   0.001,
+   "0xb632072d",
+   2648
+  ],
+  [
+   123,
+   0.001,
+   "0xb632072d",
+   null
+  ],
+  [
+   127,
+   0.001,
+   "0xb632072d",
+   null
+  ],
+  [
+   111,
+   0.001,
+   "0xb632072d",
+   80
+  ],
+  [
+   106,
+   0.0297,
+   "0x3029608e",
+   68
+  ],
+  [
+   130,
+   0.2277,
+   "0x3029608e",
+   70
+  ],
+  [
+   258,
+   0.0012,
+   "0x884c99f0",
+   112
+  ],
+  [
+   123,
+   0.0012,
+   "0xb632072d",
+   86
+  ],
+  [
+   98,
+   0.0297,
+   "0xf4a0048b",
+   68
+  ],
+  [
+   281,
+   0.0297,
+   "0xf4a0048b",
+   830
+  ]
+ ]
+}

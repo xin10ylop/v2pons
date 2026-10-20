@@ -1,0 +1,15 @@
+  5200/5247 rpc {'posts': 260, 'items': 5200, 'r429': 105}
+  5247/5247 rpc {'posts': 263, 'items': 5247, 'r429': 105}
+round 0: pools without a crowd-shaped buy found yet 62; fetching 171
+  171/171 rpc {'posts': 272, 'items': 5418, 'r429': 111}
+round 1: pools without a crowd-shaped buy found yet 20; fetching 8
+  8/8 rpc {'posts': 273, 'items': 5426, 'r429': 111}
+round 2: pools without a crowd-shaped buy found yet 20; fetching 8
+  8/8 rpc {'posts': 274, 'items': 5434, 'r429': 112}
+round 3: pools without a crowd-shaped buy found yet 20; fetching 8
+  8/8 rpc {'posts': 275, 'items': 5442, 'r429': 112}
+round 4: pools without a crowd-shaped buy found yet 20; fetching 8
+  8/8 rpc {'posts': 276, 'items': 5450, 'r429': 112}
+round 5: pools without a crowd-shaped buy found yet 20; fetching 5
+  5/5 rpc {'posts': 277, 'items': 5455, 'r429': 112}
+rpc {'posts': 277, 'items': 5455, 'r429': 112}

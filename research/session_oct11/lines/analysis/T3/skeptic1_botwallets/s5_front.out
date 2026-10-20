@@ -1,0 +1,252 @@
+
+==================== regime cur: 87 pools with a bot buy (all with every block L+1..T)
+in-time gain of a $5 front (buy head of T-1, sold head of T+1, no pull): mean 5.99% median 5.86% min 0.84% max 10.96%
+-- oracle (lands at exactly T-d, no trigger needed), by reaction lag:
+  oracle land T-1  lag 3 sell T+0              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-2  lag 3 sell T+0              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-3  lag 3 sell T+0              trades  87/87 | in time   0 pulled<T  87 pulled<sell   0 late   0 none   0 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/87
+  oracle land T-1  lag 3 sell T+1              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-2  lag 3 sell T+1              trades  87/87 | in time   0 pulled<T   0 pulled<sell  87 late   0 none   0 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/87
+  oracle land T-3  lag 3 sell T+1              trades  87/87 | in time   0 pulled<T  87 pulled<sell   0 late   0 none   0 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/87
+  oracle land T-1  lag 5 sell T+0              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-2  lag 5 sell T+0              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-3  lag 5 sell T+0              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-1  lag 5 sell T+1              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-2  lag 5 sell T+1              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-3  lag 5 sell T+1              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-1  lag 9 sell T+0              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-2  lag 9 sell T+0              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-3  lag 9 sell T+0              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-1  lag 9 sell T+1              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-2  lag 9 sell T+1              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+  oracle land T-3  lag 9 sell T+1              trades  87/87 | in time  87 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    5.99% ($+0.30/trade) median    5.86% p90   9.25% win 87/87
+-- blind fixed landing at L+k (best k of 16..60 on these pools, chosen in-sample):
+  blind L+54  lag 3 sell T+1                   trades  87/87 | in time   6 pulled<T   0 pulled<sell   0 late  81 none   0 | mean   -1.61% ($-0.08/trade) median   -2.39% p90  -2.39% win 7/87
+  blind L+52  lag 5 sell T+1                   trades  87/87 | in time  14 pulled<T   0 pulled<sell   0 late  73 none   0 | mean   -0.75% ($-0.04/trade) median   -2.39% p90   7.39% win 16/87
+  blind L+49  lag 9 sell T+1                   trades  87/87 | in time  19 pulled<T   0 pulled<sell   0 late  68 none   0 | mean   -0.15% ($-0.01/trade) median   -2.39% p90   7.54% win 23/87
+-- the candidate's trigger: first block b >= L+a with the class and b <= T; buy lands b+k
+  ANY bot-wallet tx a= 1 k=1 lag 3 sell T+1    trades  59/87 | in time   0 pulled<T  59 pulled<sell   0 late   0 none  28 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/59
+  ANY bot-wallet tx a= 4 k=1 lag 3 sell T+1    trades  59/87 | in time   0 pulled<T  59 pulled<sell   0 late   0 none  28 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/59
+  ANY bot-wallet tx a=10 k=1 lag 3 sell T+1    trades  56/87 | in time   0 pulled<T  56 pulled<sell   0 late   0 none  31 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/56
+  ANY bot-wallet tx a=15 k=1 lag 3 sell T+1    trades  53/87 | in time   1 pulled<T  52 pulled<sell   0 late   0 none  34 | mean  -98.33% ($-4.92/trade) median -100.40% p90 -100.40% win 1/53
+  ANY bot-wallet tx a=20 k=1 lag 3 sell T+1    trades  52/87 | in time   1 pulled<T  50 pulled<sell   1 late   0 none  35 | mean  -98.29% ($-4.91/trade) median -100.40% p90 -100.40% win 1/52
+  ANY bot-wallet tx a=25 k=1 lag 3 sell T+1    trades  48/87 | in time   4 pulled<T  41 pulled<sell   1 late   2 none  39 | mean  -87.33% ($-4.37/trade) median -100.40% p90  -2.39% win 4/48
+  ANY bot-wallet tx a=30 k=1 lag 3 sell T+1    trades  39/87 | in time   3 pulled<T  35 pulled<sell   1 late   0 none  48 | mean  -92.23% ($-4.61/trade) median -100.40% p90 -100.40% win 3/39
+  ANY bot-wallet tx a=35 k=1 lag 3 sell T+1    trades  26/87 | in time   1 pulled<T  25 pulled<sell   0 late   0 none  61 | mean  -96.25% ($-4.81/trade) median -100.40% p90 -100.40% win 1/26
+  ANY bot-wallet tx a= 1 k=2 lag 3 sell T+1    trades  59/87 | in time   0 pulled<T  58 pulled<sell   1 late   0 none  28 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/59
+  ANY bot-wallet tx a= 4 k=2 lag 3 sell T+1    trades  59/87 | in time   0 pulled<T  58 pulled<sell   1 late   0 none  28 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/59
+  ANY bot-wallet tx a=10 k=2 lag 3 sell T+1    trades  56/87 | in time   0 pulled<T  55 pulled<sell   1 late   0 none  31 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/56
+  ANY bot-wallet tx a=15 k=2 lag 3 sell T+1    trades  53/87 | in time   0 pulled<T  51 pulled<sell   1 late   1 none  34 | mean  -98.55% ($-4.93/trade) median -100.40% p90 -100.40% win 0/53
+  ANY bot-wallet tx a=20 k=2 lag 3 sell T+1    trades  52/87 | in time   1 pulled<T  48 pulled<sell   2 late   1 none  35 | mean  -96.44% ($-4.82/trade) median -100.40% p90 -100.40% win 1/52
+  ANY bot-wallet tx a=25 k=2 lag 3 sell T+1    trades  48/87 | in time   2 pulled<T  40 pulled<sell   1 late   5 none  39 | mean  -85.70% ($-4.28/trade) median -100.40% p90  -2.39% win 2/48
+  ANY bot-wallet tx a=30 k=2 lag 3 sell T+1    trades  39/87 | in time   3 pulled<T  33 pulled<sell   2 late   1 none  48 | mean  -89.74% ($-4.49/trade) median -100.40% p90  -2.39% win 3/39
+  ANY bot-wallet tx a=35 k=2 lag 3 sell T+1    trades  26/87 | in time   0 pulled<T  23 pulled<sell   2 late   1 none  61 | mean  -96.63% ($-4.83/trade) median -100.40% p90 -100.40% win 0/26
+  BEST ANY bot-wallet tx a=25 k=2 lag 3 sell T+1 trades  48/87 | in time   2 pulled<T  40 pulled<sell   1 late   5 none  39 | mean  -85.70% ($-4.28/trade) median -100.40% p90  -2.39% win 2/48
+  BEST ANY bot-wallet tx a=25 k=2 lag 3 sell T+0 trades  48/87 | in time   3 pulled<T  40 pulled<sell   0 late   5 none  39 | mean  -83.48% ($-4.17/trade) median -100.40% p90  -2.39% win 3/48
+  ANY bot-wallet tx a= 1 k=1 lag 5 sell T+1    trades  59/87 | in time   1 pulled<T  57 pulled<sell   1 late   0 none  28 | mean  -98.60% ($-4.93/trade) median -100.40% p90 -100.40% win 1/59
+  ANY bot-wallet tx a= 4 k=1 lag 5 sell T+1    trades  59/87 | in time   1 pulled<T  57 pulled<sell   1 late   0 none  28 | mean  -98.60% ($-4.93/trade) median -100.40% p90 -100.40% win 1/59
+  ANY bot-wallet tx a=10 k=1 lag 5 sell T+1    trades  56/87 | in time   1 pulled<T  54 pulled<sell   1 late   0 none  31 | mean  -98.50% ($-4.93/trade) median -100.40% p90 -100.40% win 1/56
+  ANY bot-wallet tx a=15 k=1 lag 5 sell T+1    trades  53/87 | in time   2 pulled<T  50 pulled<sell   1 late   0 none  34 | mean  -96.33% ($-4.82/trade) median -100.40% p90 -100.40% win 2/53
+  ANY bot-wallet tx a=20 k=1 lag 5 sell T+1    trades  52/87 | in time   4 pulled<T  46 pulled<sell   2 late   0 none  35 | mean  -92.11% ($-4.61/trade) median -100.40% p90 -100.40% win 4/52
+  ANY bot-wallet tx a=25 k=1 lag 5 sell T+1    trades  48/87 | in time   6 pulled<T  39 pulled<sell   1 late   2 none  39 | mean  -82.87% ($-4.14/trade) median -100.40% p90   5.86% win 6/48
+  ANY bot-wallet tx a=30 k=1 lag 5 sell T+1    trades  39/87 | in time   6 pulled<T  30 pulled<sell   3 late   0 none  48 | mean  -83.99% ($-4.20/trade) median -100.40% p90   6.57% win 6/39
+  ANY bot-wallet tx a=35 k=1 lag 5 sell T+1    trades  26/87 | in time   3 pulled<T  22 pulled<sell   1 late   0 none  61 | mean  -87.95% ($-4.40/trade) median -100.40% p90   5.86% win 3/26
+  ANY bot-wallet tx a= 1 k=2 lag 5 sell T+1    trades  59/87 | in time   2 pulled<T  53 pulled<sell   4 late   0 none  28 | mean  -96.74% ($-4.84/trade) median -100.40% p90 -100.40% win 2/59
+  ANY bot-wallet tx a= 4 k=2 lag 5 sell T+1    trades  59/87 | in time   2 pulled<T  53 pulled<sell   4 late   0 none  28 | mean  -96.74% ($-4.84/trade) median -100.40% p90 -100.40% win 2/59
+  ANY bot-wallet tx a=10 k=2 lag 5 sell T+1    trades  56/87 | in time   2 pulled<T  50 pulled<sell   4 late   0 none  31 | mean  -96.55% ($-4.83/trade) median -100.40% p90 -100.40% win 2/56
+  ANY bot-wallet tx a=15 k=2 lag 5 sell T+1    trades  53/87 | in time   2 pulled<T  46 pulled<sell   4 late   1 none  34 | mean  -94.48% ($-4.72/trade) median -100.40% p90 -100.40% win 2/53
+  ANY bot-wallet tx a=20 k=2 lag 5 sell T+1    trades  52/87 | in time   5 pulled<T  43 pulled<sell   3 late   1 none  35 | mean  -88.19% ($-4.41/trade) median -100.40% p90  -2.39% win 5/52
+  ANY bot-wallet tx a=25 k=2 lag 5 sell T+1    trades  48/87 | in time   4 pulled<T  37 pulled<sell   2 late   5 none  39 | mean  -81.20% ($-4.06/trade) median -100.40% p90  -2.39% win 4/48
+  ANY bot-wallet tx a=30 k=2 lag 5 sell T+1    trades  39/87 | in time   8 pulled<T  28 pulled<sell   2 late   1 none  48 | mean  -76.04% ($-3.80/trade) median -100.40% p90   7.44% win 8/39
+  ANY bot-wallet tx a=35 k=2 lag 5 sell T+1    trades  26/87 | in time   3 pulled<T  21 pulled<sell   1 late   1 none  61 | mean  -84.18% ($-4.21/trade) median -100.40% p90   5.86% win 3/26
+  BEST ANY bot-wallet tx a=30 k=2 lag 5 sell T+1 trades  39/87 | in time   8 pulled<T  28 pulled<sell   2 late   1 none  48 | mean  -76.04% ($-3.80/trade) median -100.40% p90   7.44% win 8/39
+  BEST ANY bot-wallet tx a=30 k=2 lag 5 sell T+0 trades  39/87 | in time  10 pulled<T  28 pulled<sell   0 late   1 none  48 | mean  -70.67% ($-3.53/trade) median -100.40% p90   7.44% win 10/39
+  BEST ANY bot-wallet tx a=35 k=2 lag 9 sell T+1 trades  26/87 | in time  14 pulled<T  10 pulled<sell   1 late   1 none  61 | mean  -39.41% ($-1.97/trade) median    2.12% p90   7.54% win 14/26
+  BEST ANY tx from the finder a=25 k=1 lag 3 sell T+1 trades  40/87 | in time   3 pulled<T  37 pulled<sell   0 late   0 none  47 | mean  -92.31% ($-4.62/trade) median -100.40% p90 -100.40% win 3/40
+  BEST ANY tx from the finder a=30 k=2 lag 3 sell T+0 trades  33/87 | in time   5 pulled<T  27 pulled<sell   0 late   1 none  54 | mean  -81.08% ($-4.05/trade) median -100.40% p90   7.44% win 5/33
+  BEST ANY tx from the finder a=30 k=2 lag 5 sell T+1 trades  33/87 | in time   8 pulled<T  22 pulled<sell   2 late   1 none  54 | mean  -71.38% ($-3.57/trade) median -100.40% p90   7.44% win 8/33
+  BEST ANY tx from the finder a=30 k=2 lag 5 sell T+0 trades  33/87 | in time  10 pulled<T  22 pulled<sell   0 late   1 none  54 | mean  -65.04% ($-3.25/trade) median -100.40% p90   7.44% win 10/33
+  BEST ANY tx from the finder a=30 k=2 lag 9 sell T+1 trades  33/87 | in time  20 pulled<T  12 pulled<sell   0 late   1 none  54 | mean  -32.90% ($-1.65/trade) median    2.52% p90   7.54% win 20/33
+  BEST bot buy (another pool) a=35 k=2 lag 3 sell T+1 trades  19/87 | in time   2 pulled<T  12 pulled<sell   3 late   2 none  68 | mean  -79.00% ($-3.95/trade) median -100.40% p90   2.47% win 2/19
+  BEST bot buy (another pool) a=35 k=2 lag 3 sell T+0 trades  19/87 | in time   5 pulled<T  12 pulled<sell   0 late   2 none  68 | mean  -62.06% ($-3.10/trade) median -100.40% p90   7.29% win 5/19
+  BEST bot buy (another pool) a=35 k=1 lag 5 sell T+1 trades  19/87 | in time   7 pulled<T  12 pulled<sell   0 late   0 none  68 | mean  -60.90% ($-3.04/trade) median -100.40% p90   9.13% win 7/19
+  BEST bot buy (another pool) a=35 k=2 lag 5 sell T+0 trades  19/87 | in time   7 pulled<T  10 pulled<sell   0 late   2 none  68 | mean  -51.23% ($-2.56/trade) median -100.40% p90   7.29% win 7/19
+  BEST bot buy (another pool) a=35 k=2 lag 9 sell T+1 trades  19/87 | in time  11 pulled<T   6 pulled<sell   0 late   2 none  68 | mean  -28.78% ($-1.44/trade) median    2.47% p90   7.54% win 11/19
+  BEST bot-wallet sell via UR a=25 k=1 lag 3 sell T+1 trades  26/87 | in time   3 pulled<T  22 pulled<sell   0 late   1 none  61 | mean  -84.29% ($-4.21/trade) median -100.40% p90   5.71% win 3/26
+  BEST bot-wallet sell via UR a=35 k=2 lag 3 sell T+0 trades  13/87 | in time   4 pulled<T   8 pulled<sell   0 late   1 none  74 | mean  -59.62% ($-2.98/trade) median -100.40% p90   9.25% win 4/13
+  BEST bot-wallet sell via UR a=35 k=2 lag 5 sell T+1 trades  13/87 | in time   5 pulled<T   6 pulled<sell   1 late   1 none  74 | mean  -51.32% ($-2.57/trade) median -100.40% p90   9.25% win 5/13
+  BEST bot-wallet sell via UR a=35 k=2 lag 5 sell T+0 trades  13/87 | in time   6 pulled<T   6 pulled<sell   0 late   1 none  74 | mean  -43.28% ($-2.16/trade) median   -2.39% p90   9.25% win 6/13
+  BEST bot-wallet sell via UR a=35 k=2 lag 9 sell T+1 trades  13/87 | in time   9 pulled<T   2 pulled<sell   1 late   1 none  74 | mean  -18.89% ($-0.94/trade) median    4.18% p90   9.25% win 9/13
+  BEST bot-wallet other tx a=30 k=1 lag 3 sell T+1 trades  14/87 | in time   1 pulled<T  13 pulled<sell   0 late   0 none  73 | mean  -92.70% ($-4.63/trade) median -100.40% p90 -100.40% win 1/14
+  BEST bot-wallet other tx a=20 k=2 lag 3 sell T+0 trades  26/87 | in time   3 pulled<T  23 pulled<sell   0 late   0 none  61 | mean  -88.04% ($-4.40/trade) median -100.40% p90   5.71% win 3/26
+  BEST bot-wallet other tx a=20 k=2 lag 5 sell T+1 trades  26/87 | in time   4 pulled<T  22 pulled<sell   0 late   0 none  61 | mean  -83.89% ($-4.19/trade) median -100.40% p90   7.01% win 4/26
+  BEST bot-wallet other tx a=20 k=1 lag 5 sell T+0 trades  26/87 | in time   4 pulled<T  22 pulled<sell   0 late   0 none  61 | mean  -83.89% ($-4.19/trade) median -100.40% p90   7.01% win 4/26
+  BEST bot-wallet other tx a=35 k=1 lag 9 sell T+1 trades  12/87 | in time   4 pulled<T   8 pulled<sell   0 late   0 none  75 | mean  -64.94% ($-3.25/trade) median -100.40% p90   7.44% win 4/12
+
+==================== regime late: 34 pools with a bot buy (all with every block L+1..T)
+in-time gain of a $5 front (buy head of T-1, sold head of T+1, no pull): mean 6.09% median 5.86% min 0.84% max 10.56%
+-- oracle (lands at exactly T-d, no trigger needed), by reaction lag:
+  oracle land T-1  lag 3 sell T+0              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-2  lag 3 sell T+0              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-3  lag 3 sell T+0              trades  34/34 | in time   0 pulled<T  34 pulled<sell   0 late   0 none   0 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/34
+  oracle land T-1  lag 3 sell T+1              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-2  lag 3 sell T+1              trades  34/34 | in time   0 pulled<T   0 pulled<sell  34 late   0 none   0 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/34
+  oracle land T-3  lag 3 sell T+1              trades  34/34 | in time   0 pulled<T  34 pulled<sell   0 late   0 none   0 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/34
+  oracle land T-1  lag 5 sell T+0              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-2  lag 5 sell T+0              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-3  lag 5 sell T+0              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-1  lag 5 sell T+1              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-2  lag 5 sell T+1              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-3  lag 5 sell T+1              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-1  lag 9 sell T+0              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-2  lag 9 sell T+0              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-3  lag 9 sell T+0              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-1  lag 9 sell T+1              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-2  lag 9 sell T+1              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+  oracle land T-3  lag 9 sell T+1              trades  34/34 | in time  34 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.09% ($+0.30/trade) median    5.86% p90   9.25% win 34/34
+-- blind fixed landing at L+k (best k of 16..60 on these pools, chosen in-sample):
+  blind L+60  lag 3 sell T+1                   trades  34/34 | in time   1 pulled<T   0 pulled<sell   0 late  33 none   0 | mean   -2.25% ($-0.11/trade) median   -2.39% p90  -2.39% win 1/34
+  blind L+60  lag 5 sell T+1                   trades  34/34 | in time   1 pulled<T   0 pulled<sell   0 late  33 none   0 | mean   -2.25% ($-0.11/trade) median   -2.39% p90  -2.39% win 1/34
+  blind L+53  lag 9 sell T+1                   trades  34/34 | in time   3 pulled<T   0 pulled<sell   0 late  31 none   0 | mean   -1.47% ($-0.07/trade) median   -2.39% p90   2.47% win 4/34
+-- the candidate's trigger: first block b >= L+a with the class and b <= T; buy lands b+k
+  ANY bot-wallet tx a= 1 k=1 lag 3 sell T+1    trades  27/34 | in time   1 pulled<T  26 pulled<sell   0 late   0 none   7 | mean  -96.53% ($-4.83/trade) median -100.40% p90 -100.40% win 1/27
+  ANY bot-wallet tx a= 4 k=1 lag 3 sell T+1    trades  27/34 | in time   1 pulled<T  26 pulled<sell   0 late   0 none   7 | mean  -96.53% ($-4.83/trade) median -100.40% p90 -100.40% win 1/27
+  ANY bot-wallet tx a=10 k=1 lag 3 sell T+1    trades  26/34 | in time   1 pulled<T  24 pulled<sell   1 late   0 none   8 | mean  -96.38% ($-4.82/trade) median -100.40% p90 -100.40% win 1/26
+  ANY bot-wallet tx a=15 k=1 lag 3 sell T+1    trades  24/34 | in time   1 pulled<T  22 pulled<sell   1 late   0 none  10 | mean  -96.05% ($-4.80/trade) median -100.40% p90 -100.40% win 1/24
+  ANY bot-wallet tx a=20 k=1 lag 3 sell T+1    trades  23/34 | in time   2 pulled<T  19 pulled<sell   2 late   0 none  11 | mean  -91.29% ($-4.56/trade) median -100.40% p90 -100.40% win 2/23
+  ANY bot-wallet tx a=25 k=1 lag 3 sell T+1    trades  22/34 | in time   5 pulled<T  16 pulled<sell   1 late   0 none  12 | mean  -76.60% ($-3.83/trade) median -100.40% p90   4.11% win 5/22
+  ANY bot-wallet tx a=30 k=1 lag 3 sell T+1    trades  17/34 | in time   2 pulled<T  15 pulled<sell   0 late   0 none  17 | mean  -88.20% ($-4.41/trade) median -100.40% p90   2.47% win 2/17
+  ANY bot-wallet tx a=35 k=1 lag 3 sell T+1    trades  13/34 | in time   3 pulled<T  10 pulled<sell   0 late   0 none  21 | mean  -76.41% ($-3.82/trade) median -100.40% p90   4.11% win 3/13
+  ANY bot-wallet tx a= 1 k=2 lag 3 sell T+1    trades  27/34 | in time   1 pulled<T  25 pulled<sell   1 late   0 none   7 | mean  -96.53% ($-4.83/trade) median -100.40% p90 -100.40% win 1/27
+  ANY bot-wallet tx a= 4 k=2 lag 3 sell T+1    trades  27/34 | in time   1 pulled<T  25 pulled<sell   1 late   0 none   7 | mean  -96.53% ($-4.83/trade) median -100.40% p90 -100.40% win 1/27
+  ANY bot-wallet tx a=10 k=2 lag 3 sell T+1    trades  26/34 | in time   2 pulled<T  23 pulled<sell   1 late   0 none   8 | mean  -92.23% ($-4.61/trade) median -100.40% p90 -100.40% win 2/26
+  ANY bot-wallet tx a=15 k=2 lag 3 sell T+1    trades  24/34 | in time   2 pulled<T  21 pulled<sell   1 late   0 none  10 | mean  -91.55% ($-4.58/trade) median -100.40% p90 -100.40% win 2/24
+  ANY bot-wallet tx a=20 k=2 lag 3 sell T+1    trades  23/34 | in time   3 pulled<T  19 pulled<sell   0 late   1 none  11 | mean  -82.50% ($-4.13/trade) median -100.40% p90   0.87% win 3/23
+  ANY bot-wallet tx a=25 k=2 lag 3 sell T+1    trades  22/34 | in time   4 pulled<T  16 pulled<sell   0 late   2 none  12 | mean  -72.16% ($-3.61/trade) median -100.40% p90   4.11% win 4/22
+  ANY bot-wallet tx a=30 k=2 lag 3 sell T+1    trades  17/34 | in time   2 pulled<T  15 pulled<sell   0 late   0 none  17 | mean  -88.20% ($-4.41/trade) median -100.40% p90   2.47% win 2/17
+  ANY bot-wallet tx a=35 k=2 lag 3 sell T+1    trades  13/34 | in time   2 pulled<T   9 pulled<sell   1 late   1 none  21 | mean  -76.91% ($-3.85/trade) median -100.40% p90   2.47% win 2/13
+  BEST ANY bot-wallet tx a=25 k=2 lag 3 sell T+1 trades  22/34 | in time   4 pulled<T  16 pulled<sell   0 late   2 none  12 | mean  -72.16% ($-3.61/trade) median -100.40% p90   4.11% win 4/22
+  BEST ANY bot-wallet tx a=35 k=2 lag 3 sell T+0 trades  13/34 | in time   3 pulled<T   9 pulled<sell   0 late   1 none  21 | mean  -68.47% ($-3.42/trade) median -100.40% p90   4.11% win 3/13
+  ANY bot-wallet tx a= 1 k=1 lag 5 sell T+1    trades  27/34 | in time   2 pulled<T  24 pulled<sell   1 late   0 none   7 | mean  -92.60% ($-4.63/trade) median -100.40% p90 -100.40% win 2/27
+  ANY bot-wallet tx a= 4 k=1 lag 5 sell T+1    trades  27/34 | in time   2 pulled<T  24 pulled<sell   1 late   0 none   7 | mean  -92.60% ($-4.63/trade) median -100.40% p90 -100.40% win 2/27
+  ANY bot-wallet tx a=10 k=1 lag 5 sell T+1    trades  26/34 | in time   3 pulled<T  22 pulled<sell   1 late   0 none   8 | mean  -88.15% ($-4.41/trade) median -100.40% p90   4.11% win 3/26
+  ANY bot-wallet tx a=15 k=1 lag 5 sell T+1    trades  24/34 | in time   3 pulled<T  20 pulled<sell   1 late   0 none  10 | mean  -87.13% ($-4.36/trade) median -100.40% p90   4.11% win 3/24
+  ANY bot-wallet tx a=20 k=1 lag 5 sell T+1    trades  23/34 | in time   4 pulled<T  18 pulled<sell   1 late   0 none  11 | mean  -82.20% ($-4.11/trade) median -100.40% p90   4.11% win 4/23
+  ANY bot-wallet tx a=25 k=1 lag 5 sell T+1    trades  22/34 | in time   6 pulled<T  16 pulled<sell   0 late   0 none  12 | mean  -71.69% ($-3.58/trade) median -100.40% p90   4.56% win 6/22
+  ANY bot-wallet tx a=30 k=1 lag 5 sell T+1    trades  17/34 | in time   2 pulled<T  15 pulled<sell   0 late   0 none  17 | mean  -88.20% ($-4.41/trade) median -100.40% p90   2.47% win 2/17
+  ANY bot-wallet tx a=35 k=1 lag 5 sell T+1    trades  13/34 | in time   4 pulled<T   8 pulled<sell   1 late   0 none  21 | mean  -67.97% ($-3.40/trade) median -100.40% p90   4.11% win 4/13
+  ANY bot-wallet tx a= 1 k=2 lag 5 sell T+1    trades  27/34 | in time   3 pulled<T  24 pulled<sell   0 late   0 none   7 | mean  -88.85% ($-4.44/trade) median -100.40% p90   0.87% win 3/27
+  ANY bot-wallet tx a= 4 k=2 lag 5 sell T+1    trades  27/34 | in time   3 pulled<T  24 pulled<sell   0 late   0 none   7 | mean  -88.85% ($-4.44/trade) median -100.40% p90   0.87% win 3/27
+  ANY bot-wallet tx a=10 k=2 lag 5 sell T+1    trades  26/34 | in time   4 pulled<T  22 pulled<sell   0 late   0 none   8 | mean  -84.25% ($-4.21/trade) median -100.40% p90   4.11% win 4/26
+  ANY bot-wallet tx a=15 k=2 lag 5 sell T+1    trades  24/34 | in time   4 pulled<T  20 pulled<sell   0 late   0 none  10 | mean  -82.91% ($-4.15/trade) median -100.40% p90   4.11% win 4/24
+  ANY bot-wallet tx a=20 k=2 lag 5 sell T+1    trades  23/34 | in time   4 pulled<T  18 pulled<sell   0 late   1 none  11 | mean  -78.10% ($-3.90/trade) median -100.40% p90   0.87% win 4/23
+  ANY bot-wallet tx a=25 k=2 lag 5 sell T+1    trades  22/34 | in time   4 pulled<T  16 pulled<sell   0 late   2 none  12 | mean  -72.16% ($-3.61/trade) median -100.40% p90   4.11% win 4/22
+  ANY bot-wallet tx a=30 k=2 lag 5 sell T+1    trades  17/34 | in time   2 pulled<T  15 pulled<sell   0 late   0 none  17 | mean  -88.20% ($-4.41/trade) median -100.40% p90   2.47% win 2/17
+  ANY bot-wallet tx a=35 k=2 lag 5 sell T+1    trades  13/34 | in time   4 pulled<T   8 pulled<sell   0 late   1 none  21 | mean  -60.05% ($-3.00/trade) median -100.40% p90   9.13% win 4/13
+  BEST ANY bot-wallet tx a=35 k=2 lag 5 sell T+1 trades  13/34 | in time   4 pulled<T   8 pulled<sell   0 late   1 none  21 | mean  -60.05% ($-3.00/trade) median -100.40% p90   9.13% win 4/13
+  BEST ANY bot-wallet tx a=35 k=1 lag 5 sell T+0 trades  13/34 | in time   5 pulled<T   8 pulled<sell   0 late   0 none  21 | mean  -59.55% ($-2.98/trade) median -100.40% p90   9.13% win 5/13
+  BEST ANY bot-wallet tx a=35 k=1 lag 9 sell T+1 trades  13/34 | in time   9 pulled<T   4 pulled<sell   0 late   0 none  21 | mean  -26.21% ($-1.31/trade) median    4.11% p90   9.70% win 9/13
+  BEST ANY tx from the finder a=25 k=2 lag 3 sell T+1 trades  20/34 | in time   3 pulled<T  14 pulled<sell   0 late   3 none  14 | mean  -69.66% ($-3.48/trade) median -100.40% p90   7.44% win 3/20
+  BEST ANY tx from the finder a=25 k=1 lag 3 sell T+0 trades  20/34 | in time   6 pulled<T  14 pulled<sell   0 late   0 none  14 | mean  -68.82% ($-3.44/trade) median -100.40% p90   7.44% win 6/20
+  BEST ANY tx from the finder a=25 k=2 lag 5 sell T+1 trades  20/34 | in time   4 pulled<T  13 pulled<sell   0 late   3 none  14 | mean  -64.35% ($-3.22/trade) median -100.40% p90   7.44% win 4/20
+  BEST ANY tx from the finder a=35 k=2 lag 5 sell T+0 trades  10/34 | in time   4 pulled<T   5 pulled<sell   0 late   1 none  24 | mean  -47.65% ($-2.38/trade) median  -51.39% p90  10.56% win 4/10
+  BEST ANY tx from the finder a=35 k=1 lag 9 sell T+1 trades  10/34 | in time   7 pulled<T   3 pulled<sell   0 late   0 none  24 | mean  -25.70% ($-1.28/trade) median    3.29% p90  10.56% win 7/10
+  BEST bot buy (another pool) a=25 k=1 lag 3 sell T+1 trades  19/34 | in time   3 pulled<T  15 pulled<sell   0 late   1 none  15 | mean  -78.42% ($-3.92/trade) median -100.40% p90   4.56% win 3/19
+  BEST bot buy (another pool) a=15 k=2 lag 3 sell T+0 trades  23/34 | in time   3 pulled<T  18 pulled<sell   0 late   2 none  11 | mean  -77.93% ($-3.90/trade) median -100.40% p90   4.11% win 3/23
+  BEST bot buy (another pool) a=35 k=2 lag 5 sell T+1 trades  10/34 | in time   2 pulled<T   7 pulled<sell   0 late   1 none  24 | mean  -69.20% ($-3.46/trade) median -100.40% p90   9.13% win 2/10
+  BEST bot buy (another pool) a=35 k=1 lag 5 sell T+0 trades  10/34 | in time   3 pulled<T   7 pulled<sell   0 late   0 none  24 | mean  -68.54% ($-3.43/trade) median -100.40% p90   9.13% win 3/10
+  BEST bot buy (another pool) a=35 k=2 lag 9 sell T+1 trades  10/34 | in time   6 pulled<T   3 pulled<sell   0 late   1 none  24 | mean  -25.52% ($-1.28/trade) median    4.94% p90  10.56% win 6/10
+  BEST bot-wallet sell via UR a=35 k=2 lag 3 sell T+1 trades   7/34 | in time   2 pulled<T   4 pulled<sell   1 late   0 none  27 | mean  -70.54% ($-3.53/trade) median -100.40% p90   5.77% win 2/7
+  BEST bot-wallet sell via UR a=35 k=2 lag 3 sell T+0 trades   7/34 | in time   3 pulled<T   4 pulled<sell   0 late   0 none  27 | mean  -54.87% ($-2.74/trade) median -100.40% p90   9.25% win 3/7
+  BEST bot-wallet sell via UR a=35 k=1 lag 5 sell T+1 trades   7/34 | in time   3 pulled<T   4 pulled<sell   0 late   0 none  27 | mean  -54.87% ($-2.74/trade) median -100.40% p90   9.25% win 3/7
+  BEST bot-wallet sell via UR a=35 k=2 lag 5 sell T+0 trades   7/34 | in time   4 pulled<T   3 pulled<sell   0 late   0 none  27 | mean  -39.23% ($-1.96/trade) median    2.47% p90   9.25% win 4/7
+  BEST bot-wallet sell via UR a=35 k=1 lag 9 sell T+1 trades   7/34 | in time   5 pulled<T   2 pulled<sell   0 late   0 none  27 | mean  -23.50% ($-1.17/trade) median    5.77% p90   9.70% win 5/7
+  BEST bot-wallet other tx a=35 k=2 lag 3 sell T+1 trades   5/34 | in time   2 pulled<T   3 pulled<sell   0 late   0 none  29 | mean  -58.38% ($-2.92/trade) median -100.40% p90   6.81% win 2/5
+  BEST bot-wallet other tx a=35 k=1 lag 3 sell T+0 trades   5/34 | in time   2 pulled<T   3 pulled<sell   0 late   0 none  29 | mean  -58.38% ($-2.92/trade) median -100.40% p90   6.81% win 2/5
+  BEST bot-wallet other tx a=35 k=1 lag 5 sell T+1 trades   5/34 | in time   2 pulled<T   3 pulled<sell   0 late   0 none  29 | mean  -58.38% ($-2.92/trade) median -100.40% p90   6.81% win 2/5
+  BEST bot-wallet other tx a=35 k=1 lag 5 sell T+0 trades   5/34 | in time   2 pulled<T   3 pulled<sell   0 late   0 none  29 | mean  -58.38% ($-2.92/trade) median -100.40% p90   6.81% win 2/5
+  BEST bot-wallet other tx a=35 k=1 lag 9 sell T+1 trades   5/34 | in time   3 pulled<T   2 pulled<sell   0 late   0 none  29 | mean  -37.81% ($-1.89/trade) median    2.47% p90   6.81% win 3/5
+
+==================== regime cur+late: 121 pools with a bot buy (all with every block L+1..T)
+in-time gain of a $5 front (buy head of T-1, sold head of T+1, no pull): mean 6.02% median 5.86% min 0.84% max 10.96%
+-- oracle (lands at exactly T-d, no trigger needed), by reaction lag:
+  oracle land T-1  lag 3 sell T+0              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-2  lag 3 sell T+0              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-3  lag 3 sell T+0              trades 121/121 | in time   0 pulled<T 121 pulled<sell   0 late   0 none   0 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/121
+  oracle land T-1  lag 3 sell T+1              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-2  lag 3 sell T+1              trades 121/121 | in time   0 pulled<T   0 pulled<sell 121 late   0 none   0 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/121
+  oracle land T-3  lag 3 sell T+1              trades 121/121 | in time   0 pulled<T 121 pulled<sell   0 late   0 none   0 | mean -100.40% ($-5.02/trade) median -100.40% p90 -100.40% win 0/121
+  oracle land T-1  lag 5 sell T+0              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-2  lag 5 sell T+0              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-3  lag 5 sell T+0              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-1  lag 5 sell T+1              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-2  lag 5 sell T+1              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-3  lag 5 sell T+1              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-1  lag 9 sell T+0              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-2  lag 9 sell T+0              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-3  lag 9 sell T+0              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-1  lag 9 sell T+1              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-2  lag 9 sell T+1              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+  oracle land T-3  lag 9 sell T+1              trades 121/121 | in time 121 pulled<T   0 pulled<sell   0 late   0 none   0 | mean    6.02% ($+0.30/trade) median    5.86% p90   9.25% win 121/121
+-- blind fixed landing at L+k (best k of 16..60 on these pools, chosen in-sample):
+  blind L+60  lag 3 sell T+1                   trades 121/121 | in time   1 pulled<T   0 pulled<sell   0 late 120 none   0 | mean   -2.15% ($-0.11/trade) median   -2.39% p90  -2.39% win 5/121
+  blind L+52  lag 5 sell T+1                   trades 121/121 | in time  17 pulled<T   1 pulled<sell   0 late 103 none   0 | mean   -1.59% ($-0.08/trade) median   -2.39% p90   6.81% win 22/121
+  blind L+49  lag 9 sell T+1                   trades 121/121 | in time  24 pulled<T   1 pulled<sell   0 late  96 none   0 | mean   -1.11% ($-0.06/trade) median   -2.39% p90   7.51% win 31/121
+-- the candidate's trigger: first block b >= L+a with the class and b <= T; buy lands b+k
+  ANY bot-wallet tx a= 1 k=1 lag 3 sell T+1    trades  86/121 | in time   1 pulled<T  85 pulled<sell   0 late   0 none  35 | mean  -99.18% ($-4.96/trade) median -100.40% p90 -100.40% win 1/86
+  ANY bot-wallet tx a= 4 k=1 lag 3 sell T+1    trades  86/121 | in time   1 pulled<T  85 pulled<sell   0 late   0 none  35 | mean  -99.18% ($-4.96/trade) median -100.40% p90 -100.40% win 1/86
+  ANY bot-wallet tx a=10 k=1 lag 3 sell T+1    trades  82/121 | in time   1 pulled<T  80 pulled<sell   1 late   0 none  39 | mean  -99.13% ($-4.96/trade) median -100.40% p90 -100.40% win 1/82
+  ANY bot-wallet tx a=15 k=1 lag 3 sell T+1    trades  77/121 | in time   2 pulled<T  74 pulled<sell   1 late   0 none  44 | mean  -97.62% ($-4.88/trade) median -100.40% p90 -100.40% win 2/77
+  ANY bot-wallet tx a=20 k=1 lag 3 sell T+1    trades  75/121 | in time   3 pulled<T  69 pulled<sell   3 late   0 none  46 | mean  -96.15% ($-4.81/trade) median -100.40% p90 -100.40% win 3/75
+  ANY bot-wallet tx a=25 k=1 lag 3 sell T+1    trades  70/121 | in time   9 pulled<T  57 pulled<sell   2 late   2 none  51 | mean  -83.96% ($-4.20/trade) median -100.40% p90   4.11% win 9/70
+  ANY bot-wallet tx a=30 k=1 lag 3 sell T+1    trades  56/121 | in time   5 pulled<T  50 pulled<sell   1 late   0 none  65 | mean  -91.01% ($-4.55/trade) median -100.40% p90 -100.40% win 5/56
+  ANY bot-wallet tx a=35 k=1 lag 3 sell T+1    trades  39/121 | in time   4 pulled<T  35 pulled<sell   0 late   0 none  82 | mean  -89.63% ($-4.48/trade) median -100.40% p90   2.47% win 4/39
+  ANY bot-wallet tx a= 1 k=2 lag 3 sell T+1    trades  86/121 | in time   1 pulled<T  83 pulled<sell   2 late   0 none  35 | mean  -99.18% ($-4.96/trade) median -100.40% p90 -100.40% win 1/86
+  ANY bot-wallet tx a= 4 k=2 lag 3 sell T+1    trades  86/121 | in time   1 pulled<T  83 pulled<sell   2 late   0 none  35 | mean  -99.18% ($-4.96/trade) median -100.40% p90 -100.40% win 1/86
+  ANY bot-wallet tx a=10 k=2 lag 3 sell T+1    trades  82/121 | in time   2 pulled<T  78 pulled<sell   2 late   0 none  39 | mean  -97.81% ($-4.89/trade) median -100.40% p90 -100.40% win 2/82
+  ANY bot-wallet tx a=15 k=2 lag 3 sell T+1    trades  77/121 | in time   2 pulled<T  72 pulled<sell   2 late   1 none  44 | mean  -96.37% ($-4.82/trade) median -100.40% p90 -100.40% win 2/77
+  ANY bot-wallet tx a=20 k=2 lag 3 sell T+1    trades  75/121 | in time   4 pulled<T  67 pulled<sell   2 late   2 none  46 | mean  -92.17% ($-4.61/trade) median -100.40% p90 -100.40% win 4/75
+  ANY bot-wallet tx a=25 k=2 lag 3 sell T+1    trades  70/121 | in time   6 pulled<T  56 pulled<sell   1 late   7 none  51 | mean  -81.44% ($-4.07/trade) median -100.40% p90  -2.39% win 6/70
+  ANY bot-wallet tx a=30 k=2 lag 3 sell T+1    trades  56/121 | in time   5 pulled<T  48 pulled<sell   2 late   1 none  65 | mean  -89.27% ($-4.46/trade) median -100.40% p90  -2.39% win 5/56
+  ANY bot-wallet tx a=35 k=2 lag 3 sell T+1    trades  39/121 | in time   2 pulled<T  32 pulled<sell   3 late   2 none  82 | mean  -90.06% ($-4.50/trade) median -100.40% p90  -2.39% win 2/39
+  BEST ANY bot-wallet tx a=25 k=2 lag 3 sell T+1 trades  70/121 | in time   6 pulled<T  56 pulled<sell   1 late   7 none  51 | mean  -81.44% ($-4.07/trade) median -100.40% p90  -2.39% win 6/70
+  BEST ANY bot-wallet tx a=25 k=2 lag 3 sell T+0 trades  70/121 | in time   7 pulled<T  56 pulled<sell   0 late   7 none  51 | mean  -79.92% ($-4.00/trade) median -100.40% p90   2.47% win 7/70
+  ANY bot-wallet tx a= 1 k=1 lag 5 sell T+1    trades  86/121 | in time   3 pulled<T  81 pulled<sell   2 late   0 none  35 | mean  -96.71% ($-4.84/trade) median -100.40% p90 -100.40% win 3/86
+  ANY bot-wallet tx a= 4 k=1 lag 5 sell T+1    trades  86/121 | in time   3 pulled<T  81 pulled<sell   2 late   0 none  35 | mean  -96.71% ($-4.84/trade) median -100.40% p90 -100.40% win 3/86
+  ANY bot-wallet tx a=10 k=1 lag 5 sell T+1    trades  82/121 | in time   4 pulled<T  76 pulled<sell   2 late   0 none  39 | mean  -95.22% ($-4.76/trade) median -100.40% p90 -100.40% win 4/82
+  ANY bot-wallet tx a=15 k=1 lag 5 sell T+1    trades  77/121 | in time   5 pulled<T  70 pulled<sell   2 late   0 none  44 | mean  -93.46% ($-4.67/trade) median -100.40% p90 -100.40% win 5/77
+  ANY bot-wallet tx a=20 k=1 lag 5 sell T+1    trades  75/121 | in time   8 pulled<T  64 pulled<sell   3 late   0 none  46 | mean  -89.07% ($-4.45/trade) median -100.40% p90   0.87% win 8/75
+  ANY bot-wallet tx a=25 k=1 lag 5 sell T+1    trades  70/121 | in time  12 pulled<T  55 pulled<sell   1 late   2 none  51 | mean  -79.36% ($-3.97/trade) median -100.40% p90   5.86% win 12/70
+  ANY bot-wallet tx a=30 k=1 lag 5 sell T+1    trades  56/121 | in time   8 pulled<T  45 pulled<sell   3 late   0 none  65 | mean  -85.27% ($-4.26/trade) median -100.40% p90   4.11% win 8/56
+  ANY bot-wallet tx a=35 k=1 lag 5 sell T+1    trades  39/121 | in time   7 pulled<T  30 pulled<sell   2 late   0 none  82 | mean  -81.29% ($-4.06/trade) median -100.40% p90   5.86% win 7/39
+  ANY bot-wallet tx a= 1 k=2 lag 5 sell T+1    trades  86/121 | in time   5 pulled<T  77 pulled<sell   4 late   0 none  35 | mean  -94.26% ($-4.71/trade) median -100.40% p90 -100.40% win 5/86
+  ANY bot-wallet tx a= 4 k=2 lag 5 sell T+1    trades  86/121 | in time   5 pulled<T  77 pulled<sell   4 late   0 none  35 | mean  -94.26% ($-4.71/trade) median -100.40% p90 -100.40% win 5/86
+  ANY bot-wallet tx a=10 k=2 lag 5 sell T+1    trades  82/121 | in time   6 pulled<T  72 pulled<sell   4 late   0 none  39 | mean  -92.65% ($-4.63/trade) median -100.40% p90 -100.40% win 6/82
+  ANY bot-wallet tx a=15 k=2 lag 5 sell T+1    trades  77/121 | in time   6 pulled<T  66 pulled<sell   4 late   1 none  44 | mean  -90.87% ($-4.54/trade) median -100.40% p90 -100.40% win 6/77
+  ANY bot-wallet tx a=20 k=2 lag 5 sell T+1    trades  75/121 | in time   9 pulled<T  61 pulled<sell   3 late   2 none  46 | mean  -85.09% ($-4.25/trade) median -100.40% p90   0.87% win 9/75
+  ANY bot-wallet tx a=25 k=2 lag 5 sell T+1    trades  70/121 | in time   8 pulled<T  53 pulled<sell   2 late   7 none  51 | mean  -78.36% ($-3.92/trade) median -100.40% p90   4.11% win 8/70
+  ANY bot-wallet tx a=30 k=2 lag 5 sell T+1    trades  56/121 | in time  10 pulled<T  43 pulled<sell   2 late   1 none  65 | mean  -79.73% ($-3.99/trade) median -100.40% p90   5.86% win 10/56
+  ANY bot-wallet tx a=35 k=2 lag 5 sell T+1    trades  39/121 | in time   7 pulled<T  29 pulled<sell   1 late   2 none  82 | mean  -76.14% ($-3.81/trade) median -100.40% p90   7.44% win 7/39
+  BEST ANY bot-wallet tx a=35 k=2 lag 5 sell T+1 trades  39/121 | in time   7 pulled<T  29 pulled<sell   1 late   2 none  82 | mean  -76.14% ($-3.81/trade) median -100.40% p90   7.44% win 7/39
+  BEST ANY bot-wallet tx a=35 k=2 lag 5 sell T+0 trades  39/121 | in time   8 pulled<T  29 pulled<sell   0 late   2 none  82 | mean  -73.50% ($-3.68/trade) median -100.40% p90   7.44% win 8/39
+  BEST ANY bot-wallet tx a=35 k=2 lag 9 sell T+1 trades  39/121 | in time  22 pulled<T  14 pulled<sell   1 late   2 none  82 | mean  -35.17% ($-1.76/trade) median    2.47% p90   9.13% win 22/39
+  BEST ANY tx from the finder a=25 k=2 lag 3 sell T+1 trades  60/121 | in time   4 pulled<T  47 pulled<sell   4 late   5 none  61 | mean  -85.09% ($-4.25/trade) median -100.40% p90  -2.39% win 4/60
+  BEST ANY tx from the finder a=25 k=2 lag 3 sell T+0 trades  60/121 | in time   8 pulled<T  47 pulled<sell   0 late   5 none  61 | mean  -77.90% ($-3.89/trade) median -100.40% p90   7.44% win 8/60
+  BEST ANY tx from the finder a=30 k=2 lag 5 sell T+1 trades  47/121 | in time  10 pulled<T  32 pulled<sell   3 late   2 none  74 | mean  -73.49% ($-3.67/trade) median -100.40% p90   7.44% win 10/47
+  BEST ANY tx from the finder a=30 k=2 lag 5 sell T+0 trades  47/121 | in time  13 pulled<T  32 pulled<sell   0 late   2 none  74 | mean  -66.68% ($-3.33/trade) median -100.40% p90   7.44% win 13/47
+  BEST ANY tx from the finder a=35 k=2 lag 9 sell T+1 trades  33/121 | in time  19 pulled<T  11 pulled<sell   1 late   2 none  88 | mean  -33.17% ($-1.66/trade) median    2.47% p90   9.13% win 19/33
+  BEST bot buy (another pool) a=35 k=2 lag 3 sell T+1 trades  29/121 | in time   3 pulled<T  20 pulled<sell   3 late   3 none  92 | mean  -79.40% ($-3.97/trade) median -100.40% p90   2.47% win 3/29
+  BEST bot buy (another pool) a=35 k=2 lag 3 sell T+0 trades  29/121 | in time   6 pulled<T  20 pulled<sell   0 late   3 none  92 | mean  -68.29% ($-3.41/trade) median -100.40% p90   5.86% win 6/29
+  BEST bot buy (another pool) a=35 k=2 lag 5 sell T+1 trades  29/121 | in time   7 pulled<T  17 pulled<sell   2 late   3 none  92 | mean  -64.52% ($-3.23/trade) median -100.40% p90   7.29% win 7/29
+  BEST bot buy (another pool) a=35 k=2 lag 5 sell T+0 trades  29/121 | in time   9 pulled<T  17 pulled<sell   0 late   3 none  92 | mean  -57.43% ($-2.87/trade) median -100.40% p90   7.29% win 9/29
+  BEST bot buy (another pool) a=35 k=2 lag 9 sell T+1 trades  29/121 | in time  17 pulled<T   9 pulled<sell   0 late   3 none  92 | mean  -27.66% ($-1.38/trade) median    2.47% p90   9.13% win 17/29
+  BEST bot-wallet sell via UR a=35 k=2 lag 3 sell T+1 trades  20/121 | in time   2 pulled<T  12 pulled<sell   5 late   1 none 101 | mean  -85.05% ($-4.25/trade) median -100.40% p90   2.47% win 2/20
+  BEST bot-wallet sell via UR a=35 k=2 lag 3 sell T+0 trades  20/121 | in time   7 pulled<T  12 pulled<sell   0 late   1 none 101 | mean  -57.96% ($-2.90/trade) median -100.40% p90   9.25% win 7/20
+  BEST bot-wallet sell via UR a=35 k=2 lag 5 sell T+1 trades  20/121 | in time   8 pulled<T   9 pulled<sell   2 late   1 none 101 | mean  -52.56% ($-2.63/trade) median -100.40% p90   9.25% win 8/20
+  BEST bot-wallet sell via UR a=35 k=2 lag 5 sell T+0 trades  20/121 | in time  10 pulled<T   9 pulled<sell   0 late   1 none 101 | mean  -41.86% ($-2.09/trade) median    0.04% p90   9.25% win 10/20
+  BEST bot-wallet sell via UR a=35 k=2 lag 9 sell T+1 trades  20/121 | in time  14 pulled<T   4 pulled<sell   1 late   1 none 101 | mean  -20.50% ($-1.03/trade) median    4.98% p90   9.70% win 14/20
+  BEST bot-wallet other tx a=25 k=2 lag 3 sell T+1 trades  33/121 | in time   4 pulled<T  28 pulled<sell   0 late   1 none  88 | mean  -84.46% ($-4.22/trade) median -100.40% p90   2.47% win 4/33
+  BEST bot-wallet other tx a=25 k=1 lag 3 sell T+0 trades  33/121 | in time   5 pulled<T  28 pulled<sell   0 late   0 none  88 | mean  -84.36% ($-4.22/trade) median -100.40% p90   2.47% win 5/33
+  BEST bot-wallet other tx a=30 k=2 lag 5 sell T+1 trades  21/121 | in time   4 pulled<T  17 pulled<sell   0 late   0 none 100 | mean  -80.13% ($-4.01/trade) median -100.40% p90   6.81% win 4/21
+  BEST bot-wallet other tx a=30 k=1 lag 5 sell T+0 trades  21/121 | in time   4 pulled<T  17 pulled<sell   0 late   0 none 100 | mean  -80.13% ($-4.01/trade) median -100.40% p90   6.81% win 4/21
+  BEST bot-wallet other tx a=35 k=1 lag 9 sell T+1 trades  17/121 | in time   7 pulled<T  10 pulled<sell   0 late   0 none 104 | mean  -56.96% ($-2.85/trade) median -100.40% p90   7.44% win 7/17

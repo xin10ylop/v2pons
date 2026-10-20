@@ -1,0 +1,13 @@
+(0) replay: 91429 consecutive swaps, 0 differ from the chain by > 1e-12; router buys: calldata word 2 == Swap ETH and flag 0 in 9415, not in 0
+pools simulated 185; left out {'no trigger': 19, 'an outsider >= 0.001 sold again by T+62': 2, "not the family's launch state": 2}
+groups: Counter({('none', None, False): 154, ('holder', 'later', False): 14, ('holder', 'early', False): 5, ('ours', None, False): 5, ('none', None, True): 5, ('holder', 'later', True): 2})
+
+(1) our 8 real attempts under the model (0.002 ETH, dB 2, top):
+   10-11 20:58:49 0x5ec68315 ours   real: FILL; model: FILL; hold 60 lag 2 +4.02%, lag 1 +4.02%; router buys in [T, T+1]: 1
+   10-11 20:59:59 0x35869115 none   real: REVERT; model: REVERT (minOut (BUY_SLIP 3%), -6.59%); router buys in [T, T+1]: 5
+   10-11 21:01:47 0xd6180333 ours   real: FILL; model: FILL; hold 60 lag 2 +6.66%, lag 1 +6.66%; router buys in [T, T+1]: 1
+   10-11 21:02:38 0x6d80b816 ours   real: FILL; model: FILL; hold 60 lag 2 -0.01%, lag 1 -0.01%; router buys in [T, T+1]: 1
+   10-11 22:16:34 0xd4654e14 none   real: REVERT; model: REVERT (minOut (BUY_SLIP 3%), -3.84%); router buys in [T, T+1]: 2
+   10-11 23:54:58 0x266d00f1 none   real: REVERT; model: REVERT (minOut (BUY_SLIP 3%), -6.45%); router buys in [T, T+1]: 2
+   10-12 01:15:58 0x0e4cc1d8 ours   real: FILL; model: FILL; hold 60 lag 2 +3.46%, lag 1 +3.46%; router buys in [T, T+1]: 1
+   10-12 01:18:11 0xb47b706f ours   real: FILL; model: FILL; hold 60 lag 2 -100.00%, lag 1 -100.00%; router buys in [T, T+1]: 1

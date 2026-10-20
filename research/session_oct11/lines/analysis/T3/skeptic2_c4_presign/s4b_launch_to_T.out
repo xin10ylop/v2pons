@@ -1,0 +1,8 @@
+blocks L+1..T-1: 1646 to fetch 1061
+pools 49; blocks scanned 1885; transactions 12162
+
+transactions (not the pool's own swaps / liquidity calls) whose calldata carries this pool's token or pool id, L+1..T-1: 0
+
+transactions to the bot router or from T's buyer in L+1..T-1: 87; by status Counter({'0x1': 87}); from T's buyer 0; carrying the token 0
+   lead (T - block) of bot-router txs: [(1, 1), (2, 1), (3, 2), (4, 1), (5, 2), (6, 2), (7, 4), (8, 4), (9, 2), (10, 6), (11, 2), (12, 1), (13, 3), (14, 2), (15, 1), (16, 1), (17, 2), (18, 2), (19, 2), (20, 1), (21, 2), (22, 5), (23, 2), (24, 1), (26, 5), (27, 2), (28, 1), (29, 2), (30, 1), (31, 2), (32, 2), (33, 4), (36, 1), (37, 1), (38, 1), (39, 1), (40, 3), (42, 2), (43, 1), (44, 1), (45, 1), (46, 1), (47, 1), (50, 1), (51, 1)]
+   selectors: Counter({'0xc1120e3d': 68, '0x7422a284': 19})

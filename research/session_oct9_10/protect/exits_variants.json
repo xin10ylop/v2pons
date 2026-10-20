@@ -1,0 +1,650 @@
+[
+ {
+  "name": "V0 current | stake 0.1 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02332,
+  "mean_ret_with_reaction_lag3": -0.84343,
+  "mean_ret_with_reaction_lag4": 0.02332,
+  "mean_ret_with_reaction_lag5": 0.02332,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 39,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.739,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "TP 1% on a feed buy at B+1/B+2, else deadline sent B+2. Config today. Median +1.89%, mean excluding the 06:05 +40% outlier +2.38%; sell landing distribution {'3': 39, '2': 7}."
+ },
+ {
+  "name": "V1 deadline B+1 | stake 0.1 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.00147,
+  "mean_ret_with_reaction_lag3": 0.00147,
+  "mean_ret_with_reaction_lag4": 0.00147,
+  "mean_ret_with_reaction_lag5": 0.00147,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 0,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.152,
+  "sell_lands_after_buy": "B+2..B+2 (safe if the pull comes >= B+3)",
+  "note": "SELL_LEAD_BLOCKS=3 (config only). Every sell sent at B+1; TP is moot for timing. Median -0.23%, mean excluding the 06:05 +40% outlier +0.15%; sell landing distribution {'2': 46}."
+ },
+ {
+  "name": "V2 split 1/2 at B+1 | stake 0.1 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.01196,
+  "mean_ret_with_reaction_lag3": -0.41161,
+  "mean_ret_with_reaction_lag4": 0.01196,
+  "mean_ret_with_reaction_lag5": 0.01196,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 39,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.413,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Half sent at B+1, half by the V0 rule (TP on the whole trade). Needs a relay change: FlipRelay.sell sells every token it holds. At lag 3 the pull takes half: pull_first counts include half-pulled trades. Median +0.79%, mean excluding the 06:05 +40% outlier +1.22%; sell landing distribution {'3': 39, '2': 7}."
+ },
+ {
+  "name": "V3 TP 1%/0.3% | stake 0.1 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02332,
+  "mean_ret_with_reaction_lag3": -0.84343,
+  "mean_ret_with_reaction_lag4": 0.02332,
+  "mean_ret_with_reaction_lag5": 0.02332,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 39,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.783,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Identical to V0 in landing blocks, returns and pull counts: a TP sent at B+2 lands B+3, same block as the deadline sell. Buys no margin. Median +1.89%, mean excluding the 06:05 +40% outlier +2.38%; sell landing distribution {'3': 39, '2': 7}."
+ },
+ {
+  "name": "V4d deadline at T+3 | stake 0.1 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02332,
+  "mean_ret_with_reaction_lag3": -0.84343,
+  "mean_ret_with_reaction_lag4": 0.02332,
+  "mean_ret_with_reaction_lag5": 0.02332,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 39,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.739,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Deadline anchored on the trigger: send when the feed shows T+3, never before B+1. Equals V0 for a T+1 buy and V1 for a T+2 buy. Median +1.89%, mean excluding the 06:05 +40% outlier +2.38%; sell landing distribution {'3': 39, '2': 7}."
+ },
+ {
+  "name": "V4a quiet-out | stake 0.1 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.00147,
+  "mean_ret_with_reaction_lag3": -0.0422,
+  "mean_ret_with_reaction_lag4": 0.00147,
+  "mean_ret_with_reaction_lag5": 0.00147,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 2,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.152,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Sell at B+1 on TP or if B+1 had no crowd buy; else hold to B+2. Gets V1's return with weaker protection. Dominated. Median -0.23%, mean excluding the 06:05 +40% outlier +0.15%; sell landing distribution {'2': 44, '3': 2}."
+ },
+ {
+  "name": "V4b TP 0% at B+1 | stake 0.1 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02332,
+  "mean_ret_with_reaction_lag3": -0.79976,
+  "mean_ret_with_reaction_lag4": 0.02332,
+  "mean_ret_with_reaction_lag5": 0.02332,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 37,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.783,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Any profit at B+1, else V0. Changes 1-2 trades: no margin. Median +1.89%, mean excluding the 06:05 +40% outlier +2.38%; sell landing distribution {'3': 37, '2': 9}."
+ },
+ {
+  "name": "V4c quiet-out + TP 0% | stake 0.1 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.00147,
+  "mean_ret_with_reaction_lag3": 0.00147,
+  "mean_ret_with_reaction_lag4": 0.00147,
+  "mean_ret_with_reaction_lag5": 0.00147,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 0,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.196,
+  "sell_lands_after_buy": "B+2..B+2 (safe if the pull comes >= B+3)",
+  "note": "V4a+V4b. For a T+1 buy at 0.1 ETH it equals V1. Otherwise dominated by V1. Median -0.23%, mean excluding the 06:05 +40% outlier +0.15%; sell landing distribution {'2': 46}."
+ },
+ {
+  "name": "V0 current | stake 0.1 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02727,
+  "mean_ret_with_reaction_lag3": -0.3075,
+  "mean_ret_with_reaction_lag4": 0.02727,
+  "mean_ret_with_reaction_lag5": 0.02727,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 15,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.652,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "TP 1% on a feed buy at B+1/B+2, else deadline sent B+2. Config today. Median +1.54%, mean excluding the 06:05 +40% outlier +2.01%; sell landing distribution {'3': 15, '2': 27}."
+ },
+ {
+  "name": "V1 deadline B+1 | stake 0.1 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.01793,
+  "mean_ret_with_reaction_lag3": 0.01793,
+  "mean_ret_with_reaction_lag4": 0.01793,
+  "mean_ret_with_reaction_lag5": 0.01793,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 0,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.587,
+  "sell_lands_after_buy": "B+2..B+2 (safe if the pull comes >= B+3)",
+  "note": "SELL_LEAD_BLOCKS=3 (config only). Every sell sent at B+1; TP is moot for timing. With our buy deliberately delayed to T+2 (BUY_DELAY_BLOCKS=1) this is the 'delayed entry' option. Median +1.42%, mean excluding the 06:05 +40% outlier +1.83%; sell landing distribution {'2': 42}."
+ },
+ {
+  "name": "V2 split 1/2 at B+1 | stake 0.1 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02223,
+  "mean_ret_with_reaction_lag3": -0.14065,
+  "mean_ret_with_reaction_lag4": 0.02223,
+  "mean_ret_with_reaction_lag5": 0.02223,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 15,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.652,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Half sent at B+1, half by the V0 rule (TP on the whole trade). Needs a relay change: FlipRelay.sell sells every token it holds. At lag 3 the pull takes half: pull_first counts include half-pulled trades. Median +1.53%, mean excluding the 06:05 +40% outlier +1.91%; sell landing distribution {'3': 15, '2': 27}."
+ },
+ {
+  "name": "V3 TP 1%/0.3% | stake 0.1 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02727,
+  "mean_ret_with_reaction_lag3": -0.3075,
+  "mean_ret_with_reaction_lag4": 0.02727,
+  "mean_ret_with_reaction_lag5": 0.02727,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 15,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.674,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Identical to V0 in landing blocks, returns and pull counts: a TP sent at B+2 lands B+3, same block as the deadline sell. Buys no margin. Median +1.54%, mean excluding the 06:05 +40% outlier +2.01%; sell landing distribution {'3': 15, '2': 27}."
+ },
+ {
+  "name": "V4d deadline at T+3 | stake 0.1 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.01793,
+  "mean_ret_with_reaction_lag3": 0.01793,
+  "mean_ret_with_reaction_lag4": 0.01793,
+  "mean_ret_with_reaction_lag5": 0.01793,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 0,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.587,
+  "sell_lands_after_buy": "B+2..B+2 (safe if the pull comes >= B+3)",
+  "note": "Deadline anchored on the trigger: send when the feed shows T+3, never before B+1. Equals V0 for a T+1 buy and V1 for a T+2 buy. With our buy deliberately delayed to T+2 (BUY_DELAY_BLOCKS=1) this is the 'delayed entry' option. Median +1.42%, mean excluding the 06:05 +40% outlier +1.83%; sell landing distribution {'2': 42}."
+ },
+ {
+  "name": "V4a quiet-out | stake 0.1 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.01793,
+  "mean_ret_with_reaction_lag3": -0.04765,
+  "mean_ret_with_reaction_lag4": 0.01793,
+  "mean_ret_with_reaction_lag5": 0.01793,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 3,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.587,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Sell at B+1 on TP or if B+1 had no crowd buy; else hold to B+2. Gets V1's return with weaker protection. Dominated. Median +1.42%, mean excluding the 06:05 +40% outlier +1.83%; sell landing distribution {'2': 39, '3': 3}."
+ },
+ {
+  "name": "V4b TP 0% at B+1 | stake 0.1 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02727,
+  "mean_ret_with_reaction_lag3": -0.26364,
+  "mean_ret_with_reaction_lag4": 0.02727,
+  "mean_ret_with_reaction_lag5": 0.02727,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 13,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.696,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Any profit at B+1, else V0. Changes 1-2 trades: no margin. Median +1.54%, mean excluding the 06:05 +40% outlier +2.01%; sell landing distribution {'3': 13, '2': 29}."
+ },
+ {
+  "name": "V4c quiet-out + TP 0% | stake 0.1 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.01793,
+  "mean_ret_with_reaction_lag3": -0.00379,
+  "mean_ret_with_reaction_lag4": 0.01793,
+  "mean_ret_with_reaction_lag5": 0.01793,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 1,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.63,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "V4a+V4b. For a T+1 buy at 0.1 ETH it equals V1. Otherwise dominated by V1. Median +1.42%, mean excluding the 06:05 +40% outlier +1.83%; sell landing distribution {'2': 41, '3': 1}."
+ },
+ {
+  "name": "V0 current | stake 0.1 | buy T+3 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": -0.01248,
+  "mean_ret_with_reaction_lag3": -0.64319,
+  "mean_ret_with_reaction_lag4": -0.01248,
+  "mean_ret_with_reaction_lag5": -0.01248,
+  "pull_first_count_by_lag": {
+   "lag2": 33,
+   "lag3": 30,
+   "lag4": 1,
+   "lag5": 1,
+   "lag6": 1
+  },
+  "tp_rate": 0.174,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Buy lands T+3 (a delayed entry that arrives one block late, with the crowd's buy). TP 1% on a feed buy at B+1/B+2, else deadline sent B+2. Config today. Median -0.09%, mean excluding the 06:05 +40% outlier -2.05%; sell landing distribution {'3': 30, '2': 3}."
+ },
+ {
+  "name": "V1 deadline B+1 | stake 0.1 | buy T+3 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.00622,
+  "mean_ret_with_reaction_lag3": 0.00622,
+  "mean_ret_with_reaction_lag4": 0.00622,
+  "mean_ret_with_reaction_lag5": 0.00622,
+  "pull_first_count_by_lag": {
+   "lag2": 33,
+   "lag3": 0,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.065,
+  "sell_lands_after_buy": "B+2..B+2 (safe if the pull comes >= B+3)",
+  "note": "Buy lands T+3 (a delayed entry that arrives one block late, with the crowd's buy). SELL_LEAD_BLOCKS=3 (config only). Every sell sent at B+1; TP is moot for timing. Median -0.19%, mean excluding the 06:05 +40% outlier -0.14%; sell landing distribution {'2': 33}."
+ },
+ {
+  "name": "V0 current | stake 0.0012 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.0219,
+  "mean_ret_with_reaction_lag3": -0.84701,
+  "mean_ret_with_reaction_lag4": 0.0219,
+  "mean_ret_with_reaction_lag5": 0.0219,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 39,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.696,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "TP 1% on a feed buy at B+1/B+2, else deadline sent B+2. Config today. Median +1.61%, mean excluding the 06:05 +40% outlier +2.25%; sell landing distribution {'3': 39, '2': 7}."
+ },
+ {
+  "name": "V1 deadline B+1 | stake 0.0012 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": -0.00171,
+  "mean_ret_with_reaction_lag3": -0.00171,
+  "mean_ret_with_reaction_lag4": -0.00171,
+  "mean_ret_with_reaction_lag5": -0.00171,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 0,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.152,
+  "sell_lands_after_buy": "B+2..B+2 (safe if the pull comes >= B+3)",
+  "note": "SELL_LEAD_BLOCKS=3 (config only). Every sell sent at B+1; TP is moot for timing. Median -0.58%, mean excluding the 06:05 +40% outlier -0.17%; sell landing distribution {'2': 46}."
+ },
+ {
+  "name": "V2 split 1/2 at B+1 | stake 0.0012 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.0083,
+  "mean_ret_with_reaction_lag3": -0.42626,
+  "mean_ret_with_reaction_lag4": 0.0083,
+  "mean_ret_with_reaction_lag5": 0.0083,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 39,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.348,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Half sent at B+1, half by the V0 rule (TP on the whole trade). Needs a relay change: FlipRelay.sell sells every token it holds. At lag 3 the pull takes half: pull_first counts include half-pulled trades. Median +0.30%, mean excluding the 06:05 +40% outlier +0.86%; sell landing distribution {'3': 39, '2': 7}."
+ },
+ {
+  "name": "V3 TP 1%/0.3% | stake 0.0012 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.0219,
+  "mean_ret_with_reaction_lag3": -0.84701,
+  "mean_ret_with_reaction_lag4": 0.0219,
+  "mean_ret_with_reaction_lag5": 0.0219,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 39,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.783,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Identical to V0 in landing blocks, returns and pull counts: a TP sent at B+2 lands B+3, same block as the deadline sell. Buys no margin. Median +1.61%, mean excluding the 06:05 +40% outlier +2.25%; sell landing distribution {'3': 39, '2': 7}."
+ },
+ {
+  "name": "V4d deadline at T+3 | stake 0.0012 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.0219,
+  "mean_ret_with_reaction_lag3": -0.84701,
+  "mean_ret_with_reaction_lag4": 0.0219,
+  "mean_ret_with_reaction_lag5": 0.0219,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 39,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.696,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Deadline anchored on the trigger: send when the feed shows T+3, never before B+1. Equals V0 for a T+1 buy and V1 for a T+2 buy. Median +1.61%, mean excluding the 06:05 +40% outlier +2.25%; sell landing distribution {'3': 39, '2': 7}."
+ },
+ {
+  "name": "V4a quiet-out | stake 0.0012 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": -0.00171,
+  "mean_ret_with_reaction_lag3": -0.04542,
+  "mean_ret_with_reaction_lag4": -0.00171,
+  "mean_ret_with_reaction_lag5": -0.00171,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 2,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.152,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Sell at B+1 on TP or if B+1 had no crowd buy; else hold to B+2. Gets V1's return with weaker protection. Dominated. Median -0.58%, mean excluding the 06:05 +40% outlier -0.17%; sell landing distribution {'2': 44, '3': 2}."
+ },
+ {
+  "name": "V4b TP 0% at B+1 | stake 0.0012 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.0219,
+  "mean_ret_with_reaction_lag3": -0.82507,
+  "mean_ret_with_reaction_lag4": 0.0219,
+  "mean_ret_with_reaction_lag5": 0.0219,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 38,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.717,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Any profit at B+1, else V0. Changes 1-2 trades: no margin. Median +1.61%, mean excluding the 06:05 +40% outlier +2.25%; sell landing distribution {'3': 38, '2': 8}."
+ },
+ {
+  "name": "V4c quiet-out + TP 0% | stake 0.0012 | buy T+1 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": -0.00171,
+  "mean_ret_with_reaction_lag3": -0.02347,
+  "mean_ret_with_reaction_lag4": -0.00171,
+  "mean_ret_with_reaction_lag5": -0.00171,
+  "pull_first_count_by_lag": {
+   "lag2": 46,
+   "lag3": 1,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.174,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "V4a+V4b. For a T+1 buy at 0.1 ETH it equals V1. Otherwise dominated by V1. Median -0.58%, mean excluding the 06:05 +40% outlier -0.17%; sell landing distribution {'2': 45, '3': 1}."
+ },
+ {
+  "name": "V0 current | stake 0.0012 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02699,
+  "mean_ret_with_reaction_lag3": -0.35359,
+  "mean_ret_with_reaction_lag4": 0.02699,
+  "mean_ret_with_reaction_lag5": 0.02699,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 17,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.609,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "TP 1% on a feed buy at B+1/B+2, else deadline sent B+2. Config today. Median +1.25%, mean excluding the 06:05 +40% outlier +1.86%; sell landing distribution {'3': 17, '2': 25}."
+ },
+ {
+  "name": "V1 deadline B+1 | stake 0.0012 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.0161,
+  "mean_ret_with_reaction_lag3": 0.0161,
+  "mean_ret_with_reaction_lag4": 0.0161,
+  "mean_ret_with_reaction_lag5": 0.0161,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 0,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.543,
+  "sell_lands_after_buy": "B+2..B+2 (safe if the pull comes >= B+3)",
+  "note": "SELL_LEAD_BLOCKS=3 (config only). Every sell sent at B+1; TP is moot for timing. With our buy deliberately delayed to T+2 (BUY_DELAY_BLOCKS=1) this is the 'delayed entry' option. Median +1.15%, mean excluding the 06:05 +40% outlier +1.65%; sell landing distribution {'2': 42}."
+ },
+ {
+  "name": "V2 split 1/2 at B+1 | stake 0.0012 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.01975,
+  "mean_ret_with_reaction_lag3": -0.21475,
+  "mean_ret_with_reaction_lag4": 0.01975,
+  "mean_ret_with_reaction_lag5": 0.01975,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 21,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.522,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Half sent at B+1, half by the V0 rule (TP on the whole trade). Needs a relay change: FlipRelay.sell sells every token it holds. At lag 3 the pull takes half: pull_first counts include half-pulled trades. Median +1.07%, mean excluding the 06:05 +40% outlier +1.58%; sell landing distribution {'3': 21, '2': 21}."
+ },
+ {
+  "name": "V3 TP 1%/0.3% | stake 0.0012 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02699,
+  "mean_ret_with_reaction_lag3": -0.35359,
+  "mean_ret_with_reaction_lag4": 0.02699,
+  "mean_ret_with_reaction_lag5": 0.02699,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 17,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.63,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Identical to V0 in landing blocks, returns and pull counts: a TP sent at B+2 lands B+3, same block as the deadline sell. Buys no margin. Median +1.25%, mean excluding the 06:05 +40% outlier +1.86%; sell landing distribution {'3': 17, '2': 25}."
+ },
+ {
+  "name": "V4d deadline at T+3 | stake 0.0012 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.0161,
+  "mean_ret_with_reaction_lag3": 0.0161,
+  "mean_ret_with_reaction_lag4": 0.0161,
+  "mean_ret_with_reaction_lag5": 0.0161,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 0,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.543,
+  "sell_lands_after_buy": "B+2..B+2 (safe if the pull comes >= B+3)",
+  "note": "Deadline anchored on the trigger: send when the feed shows T+3, never before B+1. Equals V0 for a T+1 buy and V1 for a T+2 buy. With our buy deliberately delayed to T+2 (BUY_DELAY_BLOCKS=1) this is the 'delayed entry' option. Median +1.15%, mean excluding the 06:05 +40% outlier +1.65%; sell landing distribution {'2': 42}."
+ },
+ {
+  "name": "V4a quiet-out | stake 0.0012 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.0161,
+  "mean_ret_with_reaction_lag3": -0.09362,
+  "mean_ret_with_reaction_lag4": 0.0161,
+  "mean_ret_with_reaction_lag5": 0.0161,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 5,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.543,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Sell at B+1 on TP or if B+1 had no crowd buy; else hold to B+2. Gets V1's return with weaker protection. Dominated. Median +1.15%, mean excluding the 06:05 +40% outlier +1.65%; sell landing distribution {'2': 37, '3': 5}."
+ },
+ {
+  "name": "V4b TP 0% at B+1 | stake 0.0012 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.02699,
+  "mean_ret_with_reaction_lag3": -0.26561,
+  "mean_ret_with_reaction_lag4": 0.02699,
+  "mean_ret_with_reaction_lag5": 0.02699,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 13,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.696,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Any profit at B+1, else V0. Changes 1-2 trades: no margin. Median +1.25%, mean excluding the 06:05 +40% outlier +1.86%; sell landing distribution {'3': 13, '2': 29}."
+ },
+ {
+  "name": "V4c quiet-out + TP 0% | stake 0.0012 | buy T+2 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.0161,
+  "mean_ret_with_reaction_lag3": -0.00564,
+  "mean_ret_with_reaction_lag4": 0.0161,
+  "mean_ret_with_reaction_lag5": 0.0161,
+  "pull_first_count_by_lag": {
+   "lag2": 42,
+   "lag3": 1,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.63,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "V4a+V4b. For a T+1 buy at 0.1 ETH it equals V1. Otherwise dominated by V1. Median +1.15%, mean excluding the 06:05 +40% outlier +1.65%; sell landing distribution {'2': 41, '3': 1}."
+ },
+ {
+  "name": "V0 current | stake 0.0012 | buy T+3 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": -0.01439,
+  "mean_ret_with_reaction_lag3": -0.64552,
+  "mean_ret_with_reaction_lag4": -0.01439,
+  "mean_ret_with_reaction_lag5": -0.01439,
+  "pull_first_count_by_lag": {
+   "lag2": 33,
+   "lag3": 30,
+   "lag4": 1,
+   "lag5": 1,
+   "lag6": 1
+  },
+  "tp_rate": 0.152,
+  "sell_lands_after_buy": "B+2..B+3 (safe if the pull comes >= B+4)",
+  "note": "Buy lands T+3 (a delayed entry that arrives one block late, with the crowd's buy). TP 1% on a feed buy at B+1/B+2, else deadline sent B+2. Config today. Median -0.44%, mean excluding the 06:05 +40% outlier -2.37%; sell landing distribution {'3': 30, '2': 3}."
+ },
+ {
+  "name": "V1 deadline B+1 | stake 0.0012 | buy T+3 | sell lands send+1",
+  "n": 46,
+  "mean_ret_paper": 0.00421,
+  "mean_ret_with_reaction_lag3": 0.00421,
+  "mean_ret_with_reaction_lag4": 0.00421,
+  "mean_ret_with_reaction_lag5": 0.00421,
+  "pull_first_count_by_lag": {
+   "lag2": 33,
+   "lag3": 0,
+   "lag4": 0,
+   "lag5": 0,
+   "lag6": 0
+  },
+  "tp_rate": 0.065,
+  "sell_lands_after_buy": "B+2..B+2 (safe if the pull comes >= B+3)",
+  "note": "Buy lands T+3 (a delayed entry that arrives one block late, with the crowd's buy). SELL_LEAD_BLOCKS=3 (config only). Every sell sent at B+1; TP is moot for timing. Median -0.55%, mean excluding the 06:05 +40% outlier -0.47%; sell landing distribution {'2': 33}."
+ }
+]

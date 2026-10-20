@@ -1,0 +1,21 @@
+tokens 349; code hashes distinct 8; templates (size, skeleton) 3
+
+== template size 1764 skel d4e7eae43daa222b: 340 tokens, 1 code hashes (top [('0x19e3e2a65b', 340)]); first 10-10 00:03:29 last 10-12 13:44:12; WETH token1 11
+   example 0x52e3bf36ce4bb6f3ea3e20d7d14f92b7e8977d94 (pool 0x4cf25a1e92841a9cdcb36c4f6c5632ae613c5434, launch 10-12 13:44:12); executable part 1710 of 1711 bytes (metadata 53)
+   selectors (9): 06fdde03 095ea7b3 18160ddd 23b872dd 313ce567 70a08231 95d89b41 a9059cbb dd62ed3e
+   opcodes: {'CALLER': 3, 'LOG3': 2, 'SLOAD': 13, 'SSTORE': 5}
+   strings: []
+
+== template size 5048 skel 1d7cd90abaf3b135: 6 tokens, 6 code hashes (top [('0x1fe07ce129', 1), ('0x7c8ff11e5c', 1), ('0x99f019b710', 1)]); first 10-10 01:25:46 last 10-12 13:14:40; WETH token1 0
+   example 0x218c0f762725b894eca371be50ad139cb923e8d2 (pool 0x7a848ee973283c744942e500e4540190f6cfc2ab, launch 10-12 13:14:40); executable part 4919 of 4995 bytes (metadata 53)
+   selectors (11): 06fdde03 095ea7b3 18160ddd 23b872dd 313ce567 39509351 70a08231 95d89b41 a457c2d7 a9059cbb dd62ed3e
+   opcodes: {'CALLER': 1, 'LOG3': 2, 'SLOAD': 17, 'SSTORE': 3}
+   strings: ['ERC20: transfer amount exceeds balanceERC20: decreased allowance below zero', 'ERC20: approve from the zero add', 'ERC20: approve to the zero addre', 'ERC20: transfer from the zero ad', 'ERC20: transfer to the zero addr', 'ERC20: insufficient allowance', 'SafeMath: addition overflow']
+   two of its tokens differ at 32 bytes in 1 runs: [(5005, 32)]
+
+== template size 3854 skel cb79985db9ea3746: 3 tokens, 1 code hashes (top [('0x5fcfacb98b', 3)]); first 10-10 10:26:09 last 10-11 05:47:10; WETH token1 0
+   example 0x98e757e81c33c60e805b1dc3961d913a08de1873 (pool 0xdb74b9bf2ec6b46d3f5ad305261114e343d41ab7, launch 10-11 05:47:10); executable part 3800 of 3801 bytes (metadata 53)
+   selectors (11): 06fdde03 095ea7b3 18160ddd 23b872dd 313ce567 42966c68 70a08231 79cc6790 95d89b41 a9059cbb dd62ed3e
+   opcodes: {'CALLER': 1, 'LOG3': 2, 'SLOAD': 15, 'SSTORE': 5}
+   strings: []
+{'posts': 18, 'items': 349, 'r429': 2}

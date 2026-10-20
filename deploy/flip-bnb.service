@@ -1,0 +1,47 @@
+# flip-bnb: the BNB Chain engine (src/bnb_engine.py). A DRY RUN unless /etc/flip/bnb.env says BNB_LIVE=1: dry, it reads the chain, logs
+# what the rule would have done, and signs and sends nothing; live (src/bnb_live.py, RUNBOOK 4k), it also trades the $5 probe from its own
+# wallet, whose key is /etc/flip/bnb.key (mode 600, made by deploy/bnb_wallet.py).
+# Beside flip-engine and touching nothing of it: its own settings (/etc/flip/bnb.env, no key in it), its own log (/var/log/flip/bnb.jsonl),
+# halt file (HALTED.bnb) and positions file (bnb_positions.json) there, a lower CPU priority than flip-engine (Nice 10 against -5) and a CPU
+# and memory ceiling. The file system is read-only to it except /var/log/flip (which must exist: flip_setup.sh made it).
+# Kept away from flip-engine's wallet key (/etc/flip/engine.env, and any copy of it there: engine.env.bak, a rename's temporary file):
+#   - /etc/flip is an empty read-only tmpfs inside its mount namespace, with only bnb.key (and bnb.env) bound in, read-only. A mask on the
+#     whole directory survives the renames that set_kv's `sed -i`, new_wallet.py and RUNBOOK 4h make on the host; a mask on engine.env
+#     alone (InaccessiblePaths) is lost at the first rename onto it. systemd reads EnvironmentFile= before it builds the namespace.
+#   - it runs as root with no capability but CAP_DAC_READ_SEARCH (to read /home/ubuntu/v2pons through a 750 home): flip-engine's
+#     /proc/<pid>/environ and mem, which hold that key, are then refused to it (reading them needs CAP_SYS_PTRACE, or a capability set that
+#     contains flip-engine's). No core dumps (LimitCORE=0: the BNB key is in its memory when live).
+#   To check on the box (prints names only): sudo nsenter -t $(systemctl show -p MainPID --value flip-bnb) -m ls /etc/flip
+#   lists bnb.env and bnb.key only.
+# A stop (SIGTERM) live sends nothing new and lets the worker finish the step it is in (up to 8 s; TimeoutStopSec=30 covers it); a
+# crash restarts in 5 s (RestartSec=5: the whole hold is about 95 s).
+# RUNBOOK 4i installs it:
+#     sudo cp ~/v2pons/deploy/flip-bnb.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now flip-bnb
+# The paths are the box's clone (/home/ubuntu/v2pons, as in flip-engine.service); change both lines if the clone is elsewhere.
+[Unit]
+Description=flip BNB engine (v2pons; a dry run unless BNB_LIVE=1 in /etc/flip/bnb.env)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/flip/bnb.env
+WorkingDirectory=/home/ubuntu/v2pons
+ExecStart=/opt/flip-venv/bin/python3 /home/ubuntu/v2pons/src/bnb_engine.py
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+Nice=10
+CPUQuota=50%
+MemoryMax=400M
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/log/flip
+TemporaryFileSystem=/etc/flip:ro
+BindReadOnlyPaths=-/etc/flip/bnb.key -/etc/flip/bnb.env
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH
+LimitCORE=0
+
+[Install]
+WantedBy=multi-user.target

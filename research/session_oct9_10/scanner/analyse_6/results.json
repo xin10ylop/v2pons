@@ -1,0 +1,903 @@
+{
+ "0x404700be6b535e6aa7fd744f242d8cf78135817c|7fde822e|804|10000|200|true": {
+  "count": 15,
+  "launches_per_day_window": 7.5,
+  "active_span_days": 0.059,
+  "launches_per_day_active": 253.9,
+  "launch_gap_blocks_p10_50_90": [
+   2892,
+   2927,
+   5845
+  ],
+  "deployers": [
+   [
+    "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+    15
+   ]
+  ],
+  "n_deployers": 1,
+  "first_buy": {
+   "pools_with": 15,
+   "frac": 1.0,
+   "rel_p10_50_90": [
+    3,
+    3,
+    4
+   ],
+   "eth_p10_50_90": [
+    1.998354e-06,
+    1.998972e-06,
+    1.99982e-06
+   ],
+   "via": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     15
+    ]
+   ],
+   "from": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     15
+    ]
+   ],
+   "n_distinct_from": 1
+  },
+  "first_real_buy": {
+   "pools_with": 0,
+   "frac": 0.0,
+   "rel_p10_50_90": null,
+   "eth_p10_50_90": null,
+   "via": [],
+   "n_distinct_from": 0,
+   "from_launch_wallet": 0
+  },
+  "sched": {
+   "pools_with": 0,
+   "rel_p10_50_90": null,
+   "eth_p10_50_90": null,
+   "room_from_launch_eth_p10_50_90": null,
+   "room_left_eth_p10_50_90": null,
+   "minout_assumed": 0
+  },
+  "pull": {
+   "pools_pulled_3000": 0,
+   "frac": 0.0,
+   "rel_p10_50_90": null,
+   "after_sched_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "via": []
+  },
+  "outsiders": {
+   "pools_with_outsider_before_sched": 0,
+   "eth_p10_50_90": null,
+   "pull_after_sched_with_outsider_p10_50_90": null,
+   "pull_after_sched_without_outsider_p10_50_90": null,
+   "n_with": 0,
+   "n_without": 0,
+   "pools_without_sched_with_nonown_buy": 0
+  },
+  "front": {
+   "n": 15,
+   "mean": -0.02058,
+   "median": -0.02058,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 15
+   },
+   "usd_trade": -0.3087,
+   "trades_day": 7.5,
+   "usd_day": -2.32,
+   "p10_50_90": [
+    -0.0206,
+    -0.0206,
+    -0.0206
+   ],
+   "min": -0.0206,
+   "max": -0.0206
+  },
+  "follow": {
+   "n": 0,
+   "exits": {}
+  },
+  "front_sched_rel_p10_50_90": null,
+  "front_exit_S_p10_50_90": [
+   20,
+   20,
+   20
+  ]
+ },
+ "0xe696daf67fe25c5936187fc1edf38404353d5f72|7fde822e|804|10000|200|true": {
+  "count": 15,
+  "launches_per_day_window": 7.5,
+  "active_span_days": 0.405,
+  "launches_per_day_active": 37.0,
+  "launch_gap_blocks_p10_50_90": [
+   2879,
+   2989,
+   5859
+  ],
+  "deployers": [
+   [
+    "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+    15
+   ]
+  ],
+  "n_deployers": 1,
+  "first_buy": {
+   "pools_with": 15,
+   "frac": 1.0,
+   "rel_p10_50_90": [
+    2,
+    3,
+    7
+   ],
+   "eth_p10_50_90": [
+    1.998182e-06,
+    1.998934e-06,
+    1.999488e-06
+   ],
+   "via": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     15
+    ]
+   ],
+   "from": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     15
+    ]
+   ],
+   "n_distinct_from": 1
+  },
+  "first_real_buy": {
+   "pools_with": 0,
+   "frac": 0.0,
+   "rel_p10_50_90": null,
+   "eth_p10_50_90": null,
+   "via": [],
+   "n_distinct_from": 0,
+   "from_launch_wallet": 0
+  },
+  "sched": {
+   "pools_with": 0,
+   "rel_p10_50_90": null,
+   "eth_p10_50_90": null,
+   "room_from_launch_eth_p10_50_90": null,
+   "room_left_eth_p10_50_90": null,
+   "minout_assumed": 0
+  },
+  "pull": {
+   "pools_pulled_3000": 0,
+   "frac": 0.0,
+   "rel_p10_50_90": null,
+   "after_sched_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "via": []
+  },
+  "outsiders": {
+   "pools_with_outsider_before_sched": 0,
+   "eth_p10_50_90": null,
+   "pull_after_sched_with_outsider_p10_50_90": null,
+   "pull_after_sched_without_outsider_p10_50_90": null,
+   "n_with": 0,
+   "n_without": 0,
+   "pools_without_sched_with_nonown_buy": 0
+  },
+  "front": {
+   "n": 15,
+   "mean": -0.02058,
+   "median": -0.02057,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 15
+   },
+   "usd_trade": -0.3086,
+   "trades_day": 7.5,
+   "usd_day": -2.31,
+   "p10_50_90": [
+    -0.0206,
+    -0.0206,
+    -0.0206
+   ],
+   "min": -0.0206,
+   "max": -0.0206
+  },
+  "follow": {
+   "n": 0,
+   "exits": {}
+  },
+  "front_sched_rel_p10_50_90": null,
+  "front_exit_S_p10_50_90": [
+   20,
+   20,
+   20
+  ]
+ },
+ "0xb40382548413c559ad7f0bb6e24410401238eded|7fde822e|804|10000|200|true": {
+  "count": 14,
+  "launches_per_day_window": 7.0,
+  "active_span_days": 0.065,
+  "launches_per_day_active": 214.4,
+  "launch_gap_blocks_p10_50_90": [
+   2762,
+   3060,
+   6121
+  ],
+  "deployers": [
+   [
+    "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+    14
+   ]
+  ],
+  "n_deployers": 1,
+  "first_buy": {
+   "pools_with": 14,
+   "frac": 1.0,
+   "rel_p10_50_90": [
+    3,
+    3,
+    3
+   ],
+   "eth_p10_50_90": [
+    1.998166e-06,
+    1.999328e-06,
+    1.999898e-06
+   ],
+   "via": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     14
+    ]
+   ],
+   "from": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     14
+    ]
+   ],
+   "n_distinct_from": 1
+  },
+  "first_real_buy": {
+   "pools_with": 0,
+   "frac": 0.0,
+   "rel_p10_50_90": null,
+   "eth_p10_50_90": null,
+   "via": [],
+   "n_distinct_from": 0,
+   "from_launch_wallet": 0
+  },
+  "sched": {
+   "pools_with": 0,
+   "rel_p10_50_90": null,
+   "eth_p10_50_90": null,
+   "room_from_launch_eth_p10_50_90": null,
+   "room_left_eth_p10_50_90": null,
+   "minout_assumed": 0
+  },
+  "pull": {
+   "pools_pulled_3000": 0,
+   "frac": 0.0,
+   "rel_p10_50_90": null,
+   "after_sched_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "via": []
+  },
+  "outsiders": {
+   "pools_with_outsider_before_sched": 0,
+   "eth_p10_50_90": null,
+   "pull_after_sched_with_outsider_p10_50_90": null,
+   "pull_after_sched_without_outsider_p10_50_90": null,
+   "n_with": 0,
+   "n_without": 0,
+   "pools_without_sched_with_nonown_buy": 0
+  },
+  "front": {
+   "n": 14,
+   "mean": -0.02058,
+   "median": -0.02057,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 14
+   },
+   "usd_trade": -0.3086,
+   "trades_day": 7.0,
+   "usd_day": -2.16,
+   "p10_50_90": [
+    -0.0206,
+    -0.0206,
+    -0.0206
+   ],
+   "min": -0.0206,
+   "max": -0.0206
+  },
+  "follow": {
+   "n": 0,
+   "exits": {}
+  },
+  "front_sched_rel_p10_50_90": null,
+  "front_exit_S_p10_50_90": [
+   20,
+   20,
+   20
+  ]
+ },
+ "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0|ac9650d8|1316|2500|25|true": {
+  "count": 12,
+  "launches_per_day_window": 6.0,
+  "active_span_days": 1.2,
+  "launches_per_day_active": 10.0,
+  "launch_gap_blocks_p10_50_90": [
+   3911,
+   31786,
+   270402
+  ],
+  "deployers": [
+   [
+    "0x21debf9f7c5e8bf09381a38eecf3347dd492e606",
+    4
+   ],
+   [
+    "0x26e8134ecc3af5cce32f34b03e7bd2f318b25158",
+    2
+   ],
+   [
+    "0x0551dcb0c82101ebdea571bd620eca0bf2108cda",
+    1
+   ],
+   [
+    "0x28e7b7fe2e10c2b07cc0a4a98c4b4c52185343a8",
+    1
+   ],
+   [
+    "0xc085e99438056060cf2a02cd5e2e63028df7ab8f",
+    1
+   ]
+  ],
+  "n_deployers": 8,
+  "first_buy": {
+   "pools_with": 12,
+   "frac": 1.0,
+   "rel_p10_50_90": [
+    3,
+    3,
+    3
+   ],
+   "eth_p10_50_90": [
+    1.99838e-06,
+    1.99924e-06,
+    1.999914e-06
+   ],
+   "via": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     12
+    ]
+   ],
+   "from": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     12
+    ]
+   ],
+   "n_distinct_from": 1
+  },
+  "first_real_buy": {
+   "pools_with": 0,
+   "frac": 0.0,
+   "rel_p10_50_90": null,
+   "eth_p10_50_90": null,
+   "via": [],
+   "n_distinct_from": 0,
+   "from_launch_wallet": 0
+  },
+  "sched": {
+   "pools_with": 0,
+   "rel_p10_50_90": null,
+   "eth_p10_50_90": null,
+   "room_from_launch_eth_p10_50_90": null,
+   "room_left_eth_p10_50_90": null,
+   "minout_assumed": 0
+  },
+  "pull": {
+   "pools_pulled_3000": 0,
+   "frac": 0.0,
+   "rel_p10_50_90": null,
+   "after_sched_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "via": []
+  },
+  "outsiders": {
+   "pools_with_outsider_before_sched": 0,
+   "eth_p10_50_90": null,
+   "pull_after_sched_with_outsider_p10_50_90": null,
+   "pull_after_sched_without_outsider_p10_50_90": null,
+   "n_with": 0,
+   "n_without": 0,
+   "pools_without_sched_with_nonown_buy": 3
+  },
+  "front": {
+   "n": 12,
+   "mean": -0.0065,
+   "median": -0.0065,
+   "win": 0.0,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 12
+   },
+   "usd_trade": -0.0976,
+   "trades_day": 6.0,
+   "usd_day": -0.59,
+   "p10_50_90": [
+    -0.0065,
+    -0.0065,
+    -0.0065
+   ],
+   "min": -0.0065,
+   "max": -0.0065
+  },
+  "follow": {
+   "n": 0,
+   "exits": {}
+  },
+  "front_sched_rel_p10_50_90": null,
+  "front_exit_S_p10_50_90": [
+   20,
+   20,
+   20
+  ]
+ },
+ "control:vbot-v2.433": {
+  "count": 1843,
+  "launches_per_day_window": 921.51,
+  "active_span_days": 1.996,
+  "launches_per_day_active": 923.3,
+  "launch_gap_blocks_p10_50_90": [
+   162,
+   173,
+   3597
+  ],
+  "deployers": [
+   [
+    "0xbe0d58d685ca54cedff66c2c3401192c566a3e63",
+    1
+   ],
+   [
+    "0x5851bd4251493c15e0ce53be5dd13fb6e81ed851",
+    1
+   ],
+   [
+    "0x066a7c9ffeef5230099f63788cd07ff404babb4f",
+    1
+   ],
+   [
+    "0xeade739122bd4d7f670c0a64cce892c282987e7e",
+    1
+   ],
+   [
+    "0x014c956840ed7ccd93becac703b3a7f80e6a48a4",
+    1
+   ]
+  ],
+  "n_deployers": 1843,
+  "first_buy": {
+   "pools_with": 1843,
+   "frac": 1.0,
+   "rel_p10_50_90": [
+    2,
+    3,
+    3
+   ],
+   "eth_p10_50_90": [
+    1.998362e-06,
+    1.999954e-06,
+    0.00495
+   ],
+   "via": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     940
+    ],
+    [
+     "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+     854
+    ],
+    [
+     "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+     49
+    ]
+   ],
+   "from": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     940
+    ],
+    [
+     "0x488faf521a2d5f16ee55d1335841bb3ba9a0946e",
+     395
+    ],
+    [
+     "0xf6e55480c5939da146092301e388654879c6e6fb",
+     192
+    ],
+    [
+     "0x544ef4354283261fb9e258247a80d49c86b9f107",
+     142
+    ]
+   ],
+   "n_distinct_from": 129
+  },
+  "first_real_buy": {
+   "pools_with": 1842,
+   "frac": 0.999,
+   "rel_p10_50_90": [
+    2,
+    8,
+    10
+   ],
+   "eth_p10_50_90": [
+    0.00495,
+    0.125,
+    0.2475
+   ],
+   "via": [
+    [
+     "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+     1317
+    ],
+    [
+     "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+     525
+    ]
+   ],
+   "n_distinct_from": 67,
+   "from_launch_wallet": 0
+  },
+  "sched": {
+   "pools_with": 1842,
+   "rel_p10_50_90": [
+    8,
+    9,
+    10
+   ],
+   "eth_p10_50_90": [
+    0.0495,
+    0.175,
+    0.25
+   ],
+   "room_from_launch_eth_p10_50_90": [
+    0.012412667274475096,
+    0.012714415788650513,
+    0.012888014316558836
+   ],
+   "room_left_eth_p10_50_90": [
+    0.005282461643218993,
+    0.012526661157608032,
+    0.012829154729843138
+   ],
+   "minout_assumed": 0
+  },
+  "pull": {
+   "pools_pulled_3000": 1482,
+   "frac": 0.804,
+   "rel_p10_50_90": [
+    11,
+    13,
+    127
+   ],
+   "after_sched_p10_50_90": [
+    3,
+    3,
+    117
+   ],
+   "by_launch_wallet": 1482,
+   "via": [
+    [
+     [
+      "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+      "a0f7978d"
+     ],
+     1482
+    ]
+   ]
+  },
+  "outsiders": {
+   "pools_with_outsider_before_sched": 5,
+   "eth_p10_50_90": [
+    1.98e-05,
+    4.95e-05,
+    4.95e-05
+   ],
+   "pull_after_sched_with_outsider_p10_50_90": [
+    8,
+    27,
+    30
+   ],
+   "pull_after_sched_without_outsider_p10_50_90": [
+    3,
+    3,
+    117
+   ],
+   "n_with": 3,
+   "n_without": 1478,
+   "pools_without_sched_with_nonown_buy": 0
+  },
+  "front": {
+   "n": 1843,
+   "mean": 0.11858,
+   "median": 0.14008,
+   "win": 0.9457,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 1843
+   },
+   "usd_trade": 1.7787,
+   "trades_day": 921.5,
+   "usd_day": 1639.05,
+   "p10_50_90": [
+    0.0024,
+    0.1401,
+    0.2079
+   ],
+   "min": -0.0097,
+   "max": 0.2855
+  },
+  "follow": {
+   "n": 1842,
+   "mean": -0.35422,
+   "median": -0.00571,
+   "win": 0.0022,
+   "pulled_first": 646,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 1196,
+    "pulled_first": 646
+   },
+   "usd_trade": -5.3133,
+   "trades_day": 921.0,
+   "usd_day": -4893.54,
+   "p10_50_90": [
+    -1.0007,
+    -0.0057,
+    -0.0057
+   ],
+   "min": -1.0008,
+   "max": 0.2503
+  },
+  "front_sched_rel_p10_50_90": [
+   8,
+   9,
+   10
+  ],
+  "front_exit_S_p10_50_90": [
+   9,
+   10,
+   11
+  ]
+ },
+ "control:operator-A": {
+  "count": 77,
+  "launches_per_day_window": 38.5,
+  "active_span_days": 1.756,
+  "launches_per_day_active": 43.9,
+  "launch_gap_blocks_p10_50_90": [
+   497,
+   2343,
+   44776
+  ],
+  "deployers": [
+   [
+    "0x4348ffca6467fdb687fb771c2370f691a7a940e9",
+    1
+   ],
+   [
+    "0x1dd279c972e7e7e2c5523a36abe317606ec76816",
+    1
+   ],
+   [
+    "0x40af0dac85abdac6f026f3adb1bdc2afd8e88efb",
+    1
+   ],
+   [
+    "0x974fd99cfe771ab953fa90a7a44a56e170ebb769",
+    1
+   ],
+   [
+    "0x1cbe5cac39a1f08aa30b51295613f4b57594c958",
+    1
+   ]
+  ],
+  "n_deployers": 77,
+  "first_buy": {
+   "pools_with": 77,
+   "frac": 1.0,
+   "rel_p10_50_90": [
+    3,
+    3,
+    4
+   ],
+   "eth_p10_50_90": [
+    1.998222e-06,
+    1.998954e-06,
+    1.999882e-06
+   ],
+   "via": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     74
+    ],
+    [
+     "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+     3
+    ]
+   ],
+   "from": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     74
+    ],
+    [
+     "0xf6e55480c5939da146092301e388654879c6e6fb",
+     2
+    ],
+    [
+     "0xd818eba04326d1f4336eb969e46bdac5b34ae701",
+     1
+    ]
+   ],
+   "n_distinct_from": 3
+  },
+  "first_real_buy": {
+   "pools_with": 75,
+   "frac": 0.974,
+   "rel_p10_50_90": [
+    24,
+    54,
+    66
+   ],
+   "eth_p10_50_90": [
+    0.0143,
+    0.0547,
+    0.1203
+   ],
+   "via": [
+    [
+     "0x8876789976decbfcbbbe364623c63652db8c0904",
+     75
+    ]
+   ],
+   "n_distinct_from": 10,
+   "from_launch_wallet": 0
+  },
+  "sched": {
+   "pools_with": 75,
+   "rel_p10_50_90": [
+    24,
+    54,
+    66
+   ],
+   "eth_p10_50_90": [
+    0.0143,
+    0.0547,
+    0.1203
+   ],
+   "room_from_launch_eth_p10_50_90": [
+    0.008232891559600828,
+    0.01148208975791931,
+    0.017289817333221436
+   ],
+   "room_left_eth_p10_50_90": [
+    0.008221715688705443,
+    0.011434406042098996,
+    0.017287582159042355
+   ],
+   "minout_assumed": 75
+  },
+  "pull": {
+   "pools_pulled_3000": 66,
+   "frac": 0.857,
+   "rel_p10_50_90": [
+    51,
+    224,
+    2180
+   ],
+   "after_sched_p10_50_90": [
+    6,
+    165,
+    2157
+   ],
+   "by_launch_wallet": 66,
+   "via": [
+    [
+     [
+      "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+      "dd46508f"
+     ],
+     66
+    ]
+   ]
+  },
+  "outsiders": {
+   "pools_with_outsider_before_sched": 27,
+   "eth_p10_50_90": [
+    4e-05,
+    6e-05,
+    6e-05
+   ],
+   "pull_after_sched_with_outsider_p10_50_90": [
+    6,
+    148,
+    2034
+   ],
+   "pull_after_sched_without_outsider_p10_50_90": [
+    6,
+    232,
+    2478
+   ],
+   "n_with": 25,
+   "n_without": 41,
+   "pools_without_sched_with_nonown_buy": 1
+  },
+  "front": {
+   "n": 77,
+   "mean": -0.0051,
+   "median": -0.00544,
+   "win": 0.013,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 77
+   },
+   "usd_trade": -0.0765,
+   "trades_day": 38.5,
+   "usd_day": -2.95,
+   "p10_50_90": [
+    -0.0096,
+    -0.0054,
+    -0.0022
+   ],
+   "min": -0.0107,
+   "max": 0.0415
+  },
+  "follow": {
+   "n": 75,
+   "mean": 0.04333,
+   "median": 0.03268,
+   "win": 0.84,
+   "pulled_first": 0,
+   "pulled_before_buy": 0,
+   "exits": {
+    "sold": 75
+   },
+   "usd_trade": 0.65,
+   "trades_day": 37.5,
+   "usd_day": 24.37,
+   "p10_50_90": [
+    -0.0025,
+    0.0327,
+    0.0831
+   ],
+   "min": -0.0105,
+   "max": 0.414
+  },
+  "front_sched_rel_p10_50_90": [
+   24,
+   54,
+   66
+  ],
+  "front_exit_S_p10_50_90": [
+   20,
+   20,
+   20
+  ]
+ }
+}

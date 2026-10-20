@@ -1,0 +1,158 @@
+{
+ "op_06cb3a68": {
+  "pools": 454,
+  "launch_contracts": 23,
+  "families": 91,
+  "selectors": [
+   [
+    "7fde822e",
+    454
+   ]
+  ],
+  "fee_ts": [
+   [
+    [
+     10000,
+     200
+    ],
+    454
+   ]
+  ],
+  "tick0": [
+   [
+    201800,
+    454
+   ]
+  ],
+  "liq": [
+   [
+    32156000099526845215062,
+    454
+   ]
+  ],
+  "pools_with_real_buy": 5,
+  "real_buys": [
+   [
+    "0xcdbee622b1",
+    959,
+    0.004297816866504537
+   ],
+   [
+    "0x92e53eff0e",
+    1625,
+    0.002353502901058043
+   ],
+   [
+    "0x6692ad7cf8",
+    843,
+    0.010744655630841048
+   ],
+   [
+    "0x304bd8fc6c",
+    3,
+    0.001188
+   ],
+   [
+    "0x5631e267e3",
+    1510,
+    0.009493563076886405
+   ]
+  ],
+  "pulled": 0,
+  "n_swaps": [
+   [
+    1,
+    446
+   ],
+   [
+    3,
+    7
+   ],
+   [
+    2,
+    1
+   ]
+  ],
+  "per_day": 227.1,
+  "gap_blocks_p10_50_90": [
+   2827,
+   2921,
+   3060
+  ],
+  "nonce_range": [
+   1837,
+   2312
+  ]
+ },
+ "launchpad_c763b179": {
+  "pools": 158,
+  "launchers": 44,
+  "pools_with_real_buy": 88,
+  "first_real_rel_p10_50_90": [
+   3,
+   5,
+   9
+  ],
+  "first_real_eth_p10_50_90": [
+   0.001426,
+   0.003326,
+   0.003361
+  ],
+  "pulled": 0,
+  "launcher_to_first_buyer": {
+   "0x69797cb77e0960d83ae03fb4cdad30e629461f4a": {
+    "0x01e28256e35f5cf80dc39eefaf6911706c52940d": 8,
+    "0x1252e24d80b1f9c6e6d657048675a4659b20a751": 6,
+    "0xe77716acbb2dcca3c5749046d298c98b6ae76e1b": 7
+   },
+   "0xb2768473e2e6f03e400568dce96fa5d2957bf22a": {
+    "0xe77716acbb2dcca3c5749046d298c98b6ae76e1b": 7,
+    "0x01e28256e35f5cf80dc39eefaf6911706c52940d": 6,
+    "0x1252e24d80b1f9c6e6d657048675a4659b20a751": 6,
+    "0x01cc6f2eb39fc2852be361b77800fd11ff22edbe": 1
+   },
+   "0x7534013269e96a0172b8aaccb232f6077f3aeb3b": {
+    "0x1252e24d80b1f9c6e6d657048675a4659b20a751": 5,
+    "0xe77716acbb2dcca3c5749046d298c98b6ae76e1b": 1,
+    "0x01e28256e35f5cf80dc39eefaf6911706c52940d": 2
+   },
+   "0xa350a0bfa5a51a9552ca172afa59ea4ee23c0077": {
+    "0x1252e24d80b1f9c6e6d657048675a4659b20a751": 4,
+    "0x01e28256e35f5cf80dc39eefaf6911706c52940d": 3
+   },
+   "0xc8b496f1451089fca1490eb7c7da180ffdfabef6": {
+    "0xe77716acbb2dcca3c5749046d298c98b6ae76e1b": 4,
+    "0x1e467dfde1d23b54d74333fbade18b1902f07412": 1,
+    "0x1252e24d80b1f9c6e6d657048675a4659b20a751": 1
+   },
+   "0x98ebdf96bf68edc92e0f57de29ef47661383dba7": {
+    "0xe77716acbb2dcca3c5749046d298c98b6ae76e1b": 4,
+    "0x1252e24d80b1f9c6e6d657048675a4659b20a751": 1
+   },
+   "0x4c43b265a22398e4f089b4467042d054e0b05789": {
+    "0x01e28256e35f5cf80dc39eefaf6911706c52940d": 4
+   },
+   "0x46455b6a55ba7580d68bae05f8c32ce60bf2654e": {
+    "0xe77716acbb2dcca3c5749046d298c98b6ae76e1b": 2,
+    "0x1252e24d80b1f9c6e6d657048675a4659b20a751": 1
+   },
+   "0x8aa9e9d1710fbef6bd4dfb7f425a09b2b350315e": {
+    "0x8aa9e9d1710fbef6bd4dfb7f425a09b2b350315e": 1,
+    "0xb05451d9b3e441b1abfd3260c5aee01864f6534e": 1,
+    "0x4bc497bf821065d1d1c8b2a554094db96a371731": 1
+   },
+   "0x69ff81391d18412baf6159f3f691c1deabb5ccf5": {
+    "0xe77716acbb2dcca3c5749046d298c98b6ae76e1b": 1,
+    "0x01e28256e35f5cf80dc39eefaf6911706c52940d": 1
+   }
+  },
+  "per_day": 79.0
+ },
+ "posm_2020": {
+  "pools": 238,
+  "launchers": 121,
+  "fee_tiers": 94,
+  "with_real_first_buy": 42,
+  "pulled": 15
+ }
+}

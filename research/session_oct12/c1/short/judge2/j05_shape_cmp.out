@@ -1,0 +1,38 @@
+launches since 13:30 UTC: 15 (new shape 7); head 86761450 10-12 14:58:18
+
+(1) operator: launch wallet, its nonce at the launch, the launch L, who pulled, through what; router buys (to 0xd6d35b56)
+  10-12 13:32:30 0xa407c512 old L 100000088127620690885293 launch wallet 0x2904dc14 (nonce 3); T +219 (0.2984); router buys 4 (0.645 ETH), sells 0; by T+60 0.537 ETH; pull +409 (T+190) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(74, 'recurring', '0xbd9dc5f6', 0.00152, 'held')]
+  10-12 13:33:41 0x40caa830 old L 100000088127620690885293 launch wallet 0x378cb025 (nonce 2); T +96 (0.0158); router buys 34 (3.226 ETH), sells 5; by T+60 0.016 ETH; pull +1342 (T+1246) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(90, 'recurring', '0xbd9dc5f6', 0.00129, 'sold'), (917, 'recurring', '0x3155c72d', 0.00117, 'held')]
+  10-12 13:37:13 0xd6bd637c old L 100000088127620690885293 launch wallet 0xe28ec922 (nonce 2); T +150 (0.0996); router buys 4 (0.549 ETH), sells 0; by T+60 0.398 ETH; pull +277 (T+127) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(73, 'recurring', '0xbd9dc5f6', 0.00144, 'held')]
+  10-12 13:38:23 0xfbc51b8d old L 100000088127620690885293 launch wallet 0x01ca9e7c (nonce 2); T +129 (0.2772); router buys 82 (7.994 ETH), sells 28; by T+60 0.535 ETH; pull +7395 (T+7266) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): []
+  10-12 14:01:09 0x2365de2c old L 100000088127620690885293 launch wallet 0x65e37bd3 (nonce 3); T +132 (0.0069); router buys 74 (6.801 ETH), sells 18; by T+60 0.007 ETH; pull +2523 (T+2391) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(924, 'recurring', '0xdc3cf9a0', 0.00053, 'held'), (1460, 'recurring', '0x3155c72d', 0.00117, 'held')]
+  10-12 14:06:31 0xcbb06b45 NEW L 94871533698238694366969 launch wallet 0xac234191 (nonce 2); T +226 (0.0079); router buys 62 (6.042 ETH), sells 22; by T+60 0.008 ETH; pull +2675 (T+2449) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(2356, 'oneoff', '0x215f9d3c', 0.00498, 'held'), (2360, 'recurring', '0xdc3cf9a0', 0.00053, 'held')]
+  10-12 14:12:23 0x7a40b381 NEW L 94871533698238694366969 launch wallet 0x6ec1b420 (nonce 3); T +164 (0.1287); router buys 44 (4.191 ETH), sells 6; by T+60 0.130 ETH; pull +3003 (T+2839) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(956, 'recurring', '0x3155c72d', 0.00117, 'held')]
+  10-12 14:18:25 0xa4cee6a6 NEW L 94871533698238694366969 launch wallet 0xf4677479 (nonce 3); T +268 (0.0693); router buys 53 (5.763 ETH), sells 5; by T+60 0.651 ETH; pull +1377 (T+1109) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(955, 'recurring', '0x3155c72d', 0.00117, 'held'), (969, 'recurring', '0xdc3cf9a0', 0.00053, 'held'), (983, 'recurring', '0x3155c72d', 0.00078, 'held')]
+  10-12 14:21:47 0x3b423ab8 NEW L 94871533698238694366969 launch wallet 0x3f332694 (nonce 3); T +166 (0.3276); router buys 33 (4.056 ETH), sells 5; by T+60 0.328 ETH; pull +1228 (T+1062) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(122, 'oneoff', '0x9f153cf3', 0.00059, 'held'), (903, 'recurring', '0x3155c72d', 0.00117, 'held'), (922, 'recurring', '0x3155c72d', 0.00078, 'held')]
+  10-12 14:24:37 0x8613514c NEW L 94871533698238694366969 launch wallet 0x691042b4 (nonce 2); T +165 (0.0084); router buys 37 (2.896 ETH), sells 4; by T+60 0.008 ETH; pull +1623 (T+1458) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(1251, 'recurring', '0x3155c72d', 0.00117, 'held'), (1274, 'recurring', '0x3155c72d', 0.00078, 'held')]
+  10-12 14:27:59 0xfceb3b8e NEW L 94871533698238694366969 launch wallet 0x281cee8a (nonce 2); T +31 (0.1782); router buys 33 (3.145 ETH), sells 6; by T+60 0.178 ETH; pull +6261 (T+6230) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(337, 'oneoff', '0x9f153cf3', 0.00059, 'held'), (891, 'recurring', '0x3155c72d', 0.00078, 'held')]
+  10-12 14:37:09 0xc580b628 old L 100000088127620690885293 launch wallet 0x16b761df (nonce 2); T +121 (0.2400); router buys 34 (7.513 ETH), sells 11; by T+60 0.240 ETH; pull +1949 (T+1828) by the launch wallet; outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(585, 'oneoff', '0x756b3295', 0.00079, 'held'), (983, 'recurring', '0x3155c72d', 0.00078, 'held'), (1118, 'recurring', '0xdc3cf9a0', 0.00054, 'held')]
+  10-12 14:39:58 0xcafc8c8e NEW L 94871533698238694366969 launch wallet 0x749e1574 (nonce 3); T +49 (0.0158); router buys 37 (2.897 ETH), sells 8; by T+60 0.018 ETH; pull +None (live); outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): []
+  10-12 14:41:11 0x45929ba3 old L 100000088127620690885293 launch wallet 0x0d763f4e (nonce 2); T +91 (0.2440); router buys 81 (22.628 ETH), sells 16; by T+60 0.244 ETH; pull +None (live); outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(319, 'recurring', '0xdc3cf9a0', 0.00054, 'held'), (652, 'recurring', '0x3155c72d', 0.00078, 'held')]
+  10-12 14:42:43 0xc5d416dc old L 100000088127620690885293 launch wallet 0xbdd25e83 (nonce 2); T +357 (0.0600); router buys 97 (15.707 ETH), sells 14; by T+60 4.059 ETH; pull +None (live); outside buys >= 0.0005 (T+off, class, from, ETH, held/sold): [(288, 'recurring', '0x3155c72d', 0.00078, 'sold'), (631, 'oneoff', '0xaa3676d2', 0.00099, 'held')]
+
+  router EOAs in the new-shape pools: 129, of them seen in the 208 cached pools before 14:14: 92
+  outside buyers in the new-shape pools: {'0xe71a69f4': 7, '0x97ac054b': 7, '0x3155c72d': 13, '0x215f9d3c': 2, '0xdc3cf9a0': 2, '0xd2b94182': 3, '0x5e6ec144': 3, '0x9f153cf3': 2}
+
+(2) engine-exact c1 exits since 13:30 (buy T+2, lag 2; the new shape as if armed with its own price and L): gross per exit, pull from our buy
+  0xa407c512 old T+219: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 +4.7 tp 4% cap 30 -0.0 | pull buy+188
+  0x40caa830 old T+96: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 -0.0 tp 4% cap 30 -0.0 | pull buy+1244
+  0xd6bd637c old T+150: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 +6.0 tp 4% cap 30 -0.0 | pull buy+125
+  0xfbc51b8d old T+129: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 +5.1 tp 4% cap 30 -0.0 | pull buy+7264
+  0x2365de2c old T+132: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 -0.0 tp 4% cap 30 -0.0 | pull buy+2389
+  0xcbb06b45 NEW T+226: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 -0.0 tp 4% cap 30 -0.0 | pull buy+2447
+  0x7a40b381 NEW T+164: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 +0.0 tp 4% cap 30 -0.0 | pull buy+2837
+  0xa4cee6a6 NEW T+268: hold 20 -0.0 hold 25 +7.8 hold 30 +7.8 hold 60 +13.2 tp 4% cap 30 +7.8 | pull buy+1107
+  0x3b423ab8 NEW T+166: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 -0.0 tp 4% cap 30 -0.0 | pull buy+1060
+  0x8613514c NEW T+165: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 -0.0 tp 4% cap 30 -0.0 | pull buy+1456
+  0xfceb3b8e NEW T+31: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 -0.0 tp 4% cap 30 -0.0 | pull buy+6228
+  0xc580b628 old T+121: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 -0.0 tp 4% cap 30 -0.0 | pull buy+1826
+  0xcafc8c8e NEW T+49: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 +0.0 tp 4% cap 30 -0.0 | pull buy+None
+  0x45929ba3 old T+91: hold 20 -0.0 hold 25 -0.0 hold 30 -0.0 hold 60 -0.0 tp 4% cap 30 -0.0 | pull buy+None
+  0xc5d416dc old T+357: REVERT (minOut -22.59%); pull T+None

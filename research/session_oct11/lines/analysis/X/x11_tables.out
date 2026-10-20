@@ -1,0 +1,121 @@
+## Q1. Our trades on 2.433, per 6-hour period
+| period | trades | stake ETH (n) | buy at +1/+2/+3 | T p10/50/90 | sell, blocks after buy p10/50/90 | sell vs T: before / T+0 / T+1 / T+2 / T+3+ / none | return mean / median | pull <= T+3 | no pull by T+60 | net $ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Oct10 06-12 | 401 | 0.0058 (317), 0.0019 (61), 0.0039 (23) | 399/2/0 | 8/9/10 | 8/9/10 | 2 / 1 / 394 / 1 / 0 / 3 | +14.1% / +16.2% | 377 | 0 | +706 |
+| Oct10 12-18 | 647 | 0.0058 (647) | 639/8/0 | 8/9/10 | 1/2/10 | 382 / 0 / 263 / 1 / 0 / 1 | +5.7% / +0.3% | 583 | 4 | +534 |
+| Oct11 12-18 | 131 | 0.0058 (100), 0.002 (25), 0.0097 (6) | 4/124/3 | 8/10/14 | 8/9/13 | 4 / 0 / 32 / 86 / 6 / 3 | +11.6% / +13.7% | 108 | 9 | +198 |
+| Oct11 18-24 | 58 | 0.002 (39), 0.0069 (9), 0.0021 (6) | 1/56/1 | 7/8/11 | 7/8/10 | 1 / 0 / 8 / 48 / 0 / 1 | +10.4% / +11.2% | 0 | 56 | +48 |
+
+3.0 probe: 10-11 15:48:02, buy +13 0.002 ETH, bot never bought, pulled at +22 (9 after our buy), sold at our buy + 61, return -100%
+
+## Q1b. Selling sooner: the value of our tokens before T, vs right behind the bot's buy, vs the actual sell (2.433, the bot bought after our buy)
+| day | trades | at the end of our buy's block p50 | best block before T: p50 / p90 / max | trades where any block before T > +0.5% | right behind the bot's buy p50 | actual p50 | actual - behind T, mean |
+|---|---|---|---|---|---|---|---|
+| Oct10 | 1047 | -0.50% | -0.50% / +0.31% / +0.31% | 0 | +15.3% | +7.7% | -0.03 pts (sells at T+0..: n 660) |
+| Oct11 | 185 | -0.50% | -0.50% / -0.10% / -0.06% | 0 | +12.0% | +12.0% | -0.16 pts (sells at T+0..: n 180) |
+  Oct11 sells at T+1: n 40, actual - right behind T: mean -0.16 pts, median -0.00
+  Oct11 sells at T+2: n 134, actual - right behind T: mean -0.15 pts, median -0.00
+  Oct 10 12-18, sold before T: n 382, return mean +0.09% median +0.11%
+  Oct 10 12-18, sold at T+1: n 263, return mean +13.82% median +16.22%
+
+## Q2. The operator's reaction, per 6-hour period and per class of pool (who bought ahead of the bot's first buy T)
+classes: US = our relay ahead (with or without others); D65/DFD/OTHER = no us, the first buy >= 0.001 ETH ahead was through that router ('fresh' = nonce 0/1 wallet);
+small only = only buys of 0.00003-0.001 ETH ahead; nobody = only dust/the sentinel. Pull within launch + 1200 blocks.
+| line | period | class | pools | no bot buy | pulled <= T+3 | T+4..10 | T+11..60 | not by T+60 | bot 2nd buy before the pull | bot 1st buy ETH p50 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 2.433 | Oct10 00-06 | small only | 72 | 0 | 4 | 4 | 24 | 40 | 49 | 0.175 |
+| 2.433 | Oct10 00-06 | nobody | 30 | 0 | 0 | 0 | 0 | 30 | 30 | 0.173 |
+| 2.433 | Oct10 06-12 | US | 401 | 1 | 377 | 23 | 0 | 0 | 0 | 0.198 |
+| 2.433 | Oct10 06-12 | small only | 118 | 0 | 1 | 0 | 14 | 103 | 115 | 0.175 |
+| 2.433 | Oct10 06-12 | nobody | 11 | 0 | 0 | 0 | 0 | 11 | 11 | 0.148 |
+| 2.433 | Oct10 12-18 | US | 647 | 0 | 583 | 58 | 2 | 4 | 5 | 0.175 |
+| 2.433 | Oct10 12-18 | D65 | 65 | 0 | 54 | 10 | 0 | 1 | 1 | 0.173 |
+| 2.433 | Oct10 12-18 | nobody | 24 | 0 | 0 | 0 | 0 | 24 | 24 | 0.173 |
+| 2.433 | Oct10 12-18 | small only | 22 | 0 | 12 | 4 | 1 | 5 | 5 | 0.175 |
+| 2.433 | Oct10 18-24 | D65 fresh | 205 | 0 | 176 | 22 | 4 | 3 | 4 | 0.173 |
+| 2.433 | Oct10 18-24 | nobody | 1 | 0 | 0 | 0 | 0 | 1 | 1 | 0.099 |
+| 2.433 | Oct11 06-12 | nobody | 3 | 0 | 0 | 0 | 0 | 3 | 3 | 0.173 |
+| 2.433 | Oct11 12-18 | US | 131 | 3 | 108 | 8 | 3 | 9 | 10 | 0.173 |
+| 2.433 | Oct11 12-18 | nobody | 34 | 0 | 0 | 0 | 0 | 34 | 34 | 0.148 |
+| 2.433 | Oct11 12-18 | small only | 19 | 0 | 0 | 0 | 6 | 13 | 13 | 0.150 |
+| 2.433 | Oct11 12-18 | D65 fresh | 9 | 0 | 0 | 0 | 1 | 8 | 8 | 0.148 |
+| 2.433 | Oct11 18-24 | US | 58 | 1 | 0 | 0 | 1 | 56 | 56 | 0.148 |
+| 2.433 | Oct11 18-24 | D65 fresh | 2 | 0 | 0 | 0 | 2 | 0 | 2 | 0.099 |
+| 3.0 | Oct10 00-06 | nobody | 100 | 0 | 0 | 0 | 0 | 100 | 100 | 0.123 |
+| 3.0 | Oct10 00-06 | small only | 8 | 0 | 5 | 3 | 0 | 0 | 0 | 0.169 |
+| 3.0 | Oct10 00-06 | OTHER | 2 | 0 | 1 | 1 | 0 | 0 | 0 | 0.150 |
+| 3.0 | Oct10 06-12 | nobody | 94 | 0 | 0 | 0 | 0 | 94 | 94 | 0.125 |
+| 3.0 | Oct10 12-18 | nobody | 105 | 0 | 0 | 0 | 5 | 100 | 105 | 0.124 |
+| 3.0 | Oct10 18-24 | nobody | 116 | 0 | 0 | 0 | 3 | 113 | 115 | 0.124 |
+| 3.0 | Oct11 00-06 | D65 | 249 | 11 | 201 | 29 | 0 | 8 | 8 | 0.148 |
+| 3.0 | Oct11 00-06 | nobody | 82 | 0 | 0 | 0 | 0 | 82 | 82 | 0.136 |
+| 3.0 | Oct11 00-06 | small only | 69 | 0 | 62 | 4 | 0 | 3 | 3 | 0.148 |
+| 3.0 | Oct11 06-12 | nobody | 93 | 0 | 0 | 0 | 1 | 92 | 93 | 0.124 |
+| 3.0 | Oct11 12-18 | nobody | 97 | 0 | 0 | 0 | 1 | 96 | 97 | 0.124 |
+| 3.0 | Oct11 12-18 | OTHER | 22 | 22 | 0 | 0 | 0 | 0 | 0 | 0.000 |
+| 3.0 | Oct11 12-18 | D65 | 4 | 4 | 0 | 0 | 0 | 0 | 0 | 0.000 |
+| 3.0 | Oct11 12-18 | US | 1 | 1 | 0 | 0 | 0 | 0 | 0 | 0.000 |
+| 3.0 | Oct11 18-24 | nobody | 101 | 0 | 0 | 0 | 6 | 95 | 100 | 0.125 |
+
+## Decoys on 2.433 by hour: pools, pools with us ahead, pools with a D65 buy >= 0.001 ahead of T (fresh wallet / recurring), with a DFD buy >= 0.001, small D65/DFD buys only
+| hour (UTC) | pools | ours | D65 >= 0.001 (fresh/recurring) | DFD >= 0.001 | D65/DFD < 0.001 only | in pools without us: D65/DFD >= 0.001 | sizes |
+|---|---|---|---|---|---|---|---|
+| Oct10 00 | 11 | 0 | 0 (0/0) | 0 | 0 | 0 of 11 | [] |
+| Oct10 01 | 12 | 0 | 0 (0/0) | 0 | 1 | 0 of 12 | [(0.0002, 1)] |
+| Oct10 02 | 22 | 0 | 0 (0/0) | 0 | 15 | 0 of 22 | [(0.0001, 25), (0.0002, 3)] |
+| Oct10 03 | 11 | 0 | 0 (0/0) | 0 | 11 | 0 of 11 | [(0.0001, 22)] |
+| Oct10 04 | 16 | 0 | 0 (0/0) | 0 | 15 | 0 of 16 | [(0.0001, 20)] |
+| Oct10 05 | 30 | 0 | 0 (0/0) | 0 | 30 | 0 of 30 | [(0.0001, 30)] |
+| Oct10 06 | 11 | 0 | 0 (0/0) | 0 | 11 | 0 of 11 | [(0.0001, 11)] |
+| Oct10 07 | 53 | 0 | 0 (0/0) | 0 | 53 | 0 of 53 | [(0.0001, 56)] |
+| Oct10 08 | 49 | 0 | 0 (0/0) | 0 | 49 | 0 of 49 | [(0.0001, 51)] |
+| Oct10 09 | 140 | 132 | 0 (0/0) | 0 | 44 | 0 of 8 | [(0.0001, 44)] |
+| Oct10 10 | 179 | 178 | 0 (0/0) | 0 | 0 | 0 of 1 | [] |
+| Oct10 11 | 98 | 91 | 0 (0/0) | 0 | 0 | 0 of 7 | [] |
+| Oct10 12 | 15 | 0 | 0 (0/0) | 0 | 0 | 0 of 15 | [] |
+| Oct10 13 | 84 | 73 | 0 (0/0) | 0 | 36 | 0 of 11 | [(0.0001, 35), (0.0, 13)] |
+| Oct10 14 | 129 | 101 | 9 (0/9) | 0 | 54 | 9 of 28 | [(0.0, 46), (0.001, 19), (0.005, 9)] |
+| Oct10 15 | 167 | 167 | 151 (0/151) | 0 | 0 | 0 of 0 | [(0.0015, 85), (0.005, 66), (0.0007, 39)] |
+| Oct10 16 | 181 | 180 | 156 (0/156) | 141 | 0 | 1 of 1 | [(0.005, 203), (0.0025, 79), (0.004, 10)] |
+| Oct10 17 | 182 | 126 | 163 (0/163) | 161 | 0 | 55 of 56 | [(0.005, 324)] |
+| Oct10 18 | 108 | 0 | 107 (107/0) | 24 | 0 | 107 of 108 | [(0.005, 131)] |
+| Oct10 19 | 98 | 0 | 98 (98/0) | 65 | 0 | 98 of 98 | [(0.005, 163)] |
+| Oct11 11 | 3 | 0 | 0 (0/0) | 0 | 0 | 0 of 3 | [] |
+| Oct11 12 | 10 | 0 | 0 (0/0) | 0 | 0 | 0 of 10 | [] |
+| Oct11 13 | 14 | 0 | 0 (0/0) | 0 | 0 | 0 of 14 | [] |
+| Oct11 14 | 38 | 25 | 0 (0/0) | 0 | 5 | 0 of 13 | [(0.0001, 9)] |
+| Oct11 15 | 104 | 93 | 42 (42/0) | 0 | 29 | 1 of 11 | [(0.005, 42), (0.0005, 22), (0.0003, 7)] |
+| Oct11 16 | 16 | 13 | 11 (11/0) | 3 | 1 | 0 of 3 | [(0.005, 14), (0.0, 6), (0.0001, 4)] |
+| Oct11 17 | 11 | 0 | 8 (8/0) | 7 | 3 | 8 of 11 | [(0.005, 15), (0.0001, 14)] |
+| Oct11 18 | 9 | 9 | 7 (7/0) | 4 | 1 | 0 of 0 | [(0.005, 11), (0.0001, 7)] |
+| Oct11 19 | 12 | 12 | 11 (11/0) | 8 | 0 | 0 of 0 | [(0.005, 6), (0.0047, 4), (0.0049, 4)] |
+| Oct11 20 | 13 | 13 | 13 (13/0) | 11 | 0 | 0 of 0 | [(0.005, 6), (0.0049, 6), (0.0046, 5)] |
+| Oct11 21 | 12 | 10 | 12 (12/0) | 0 | 0 | 2 of 2 | [(0.0051, 2), (0.0046, 2), (0.005, 2)] |
+| Oct11 22 | 12 | 12 | 12 (12/0) | 0 | 0 | 0 of 0 | [(0.0047, 4), (0.0052, 3), (0.0001, 2)] |
+| Oct11 23 | 2 | 2 | 2 (2/0) | 0 | 0 | 0 of 0 | [(0.0052, 1), (0.0049, 1)] |
+
+## Where the D65/DFD buys landed against our buy (pools with our buy ahead of T): earlier block / same block before us / same block after us / later block
+  Oct10 06-12 small: {'later block': 39}
+  Oct10 12-18 big  : {'later block': 566, 'same block, after us': 94}
+  Oct10 12-18 small: {'later block': 149, 'same block, after us': 12}
+  Oct11 12-18 big  : {'later block': 41, 'same block, after us': 9, 'earlier block': 4, 'same block, before us': 1}
+  Oct11 12-18 small: {'later block': 33, 'earlier block': 3, 'same block, before us': 1}
+  Oct11 18-24 big  : {'later block': 23, 'earlier block': 11, 'same block, after us': 38, 'same block, before us': 7}
+  Oct11 18-24 small: {'later block': 11}
+
+## Oct 11 from 16:00: buys of 0.0046-0.0053 ETH ahead of T per pool (not ours), by 30 minutes: pools / mean count / pools with 2+ / with 1 / with 0; which routers
+  16:00: pools  7 (ours  4) mean 0.29 | 2+: 0 1: 2 0: 5 | {('0x65050a9b', 'fresh'): 2}
+  16:30: pools  9 (ours  9) mean 1.33 | 2+: 3 1: 6 0: 0 | {('0x65050a9b', 'fresh'): 9, ('0xfd1b271f', '0xb8c879dc'): 3}
+  17:00: pools  5 (ours  0) mean 2.00 | 2+: 5 1: 0 0: 0 | {('0x65050a9b', 'fresh'): 5, ('0xfd1b271f', '0xb8c879dc'): 5}
+  17:30: pools  6 (ours  0) mean 0.83 | 2+: 2 1: 1 0: 3 | {('0x65050a9b', 'fresh'): 3, ('0xfd1b271f', '0xb8c879dc'): 2}
+  18:00: pools  5 (ours  5) mean 1.20 | 2+: 2 1: 2 0: 1 | {('0x65050a9b', 'fresh'): 4, ('0xfd1b271f', '0xb8c879dc'): 2}
+  18:30: pools  4 (ours  4) mean 1.25 | 2+: 2 1: 1 0: 1 | {('0x65050a9b', 'fresh'): 3, ('0xfd1b271f', '0xb8c879dc'): 2}
+  19:00: pools  5 (ours  5) mean 1.20 | 2+: 2 1: 2 0: 1 | {('0x65050a9b', 'fresh'): 4, ('0xfd1b271f', '0xb8c879dc'): 2}
+  19:30: pools  7 (ours  7) mean 1.86 | 2+: 6 1: 1 0: 0 | {('0x65050a9b', 'fresh'): 7, ('0xfd1b271f', '0xb8c879dc'): 6}
+  20:00: pools  8 (ours  8) mean 1.38 | 2+: 5 1: 1 0: 2 | {('0x65050a9b', 'fresh'): 6, ('0xfd1b271f', '0xb8c879dc'): 5}
+  20:30: pools  5 (ours  5) mean 1.60 | 2+: 4 1: 0 0: 1 | {('0x65050a9b', 'fresh'): 4, ('0xfd1b271f', '0xb8c879dc'): 4}
+  21:00: pools  7 (ours  5) mean 0.86 | 2+: 0 1: 6 0: 1 | {('0x65050a9b', 'fresh'): 6}
+  21:30: pools  5 (ours  5) mean 0.80 | 2+: 0 1: 4 0: 1 | {('0x65050a9b', 'fresh'): 4}
+  22:00: pools  7 (ours  7) mean 1.14 | 2+: 1 1: 6 0: 0 | {('0x65050a9b', 'fresh'): 7, ('0x65050a9b', '0x2e234882'): 1}
+  22:30: pools  5 (ours  5) mean 0.60 | 2+: 0 1: 3 0: 2 | {('0x65050a9b', 'fresh'): 3}
+  23:00: pools  2 (ours  2) mean 1.00 | 2+: 0 1: 2 0: 0 | {('0x65050a9b', 'fresh'): 2}

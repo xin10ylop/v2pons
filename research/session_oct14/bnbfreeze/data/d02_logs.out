@@ -1,0 +1,13 @@
+chunk 126954403 126959402 tokens 7 pairs 7 transfers 177 pairlogs 348 {'se': 2}
+chunk 127004403 127009402 tokens 50 pairs 12 transfers 2087 pairlogs 4054 {'se': 22}
+chunk 127054403 127059402 tokens 96 pairs 12 transfers 3999 pairlogs 7770 {'se': 42}
+chunk 127104403 127109402 tokens 143 pairs 11 transfers 5926 pairlogs 11470 {'se': 67}
+chunk 127154403 127159402 tokens 190 pairs 11 transfers 7852 pairlogs 15162 {'se': 97}
+chunk 127204403 127209402 tokens 238 pairs 11 transfers 9730 pairlogs 18810 {'se': 127}
+chunk 127254403 127259402 tokens 284 pairs 11 transfers 11625 pairlogs 22486 {'se': 167}
+chunk 127304403 127309402 tokens 333 pairs 13 transfers 13486 pairlogs 26108 {'se': 207}
+chunk 127354403 127359402 tokens 379 pairs 11 transfers 15455 pairlogs 29792 {'se': 251}
+chunk 127404403 127409402 tokens 425 pairs 13 transfers 17368 pairlogs 33476 {'se': 301}
+chunk 127454403 127459402 tokens 475 pairs 12 transfers 19256 pairlogs 37128 {'se': 351}
+chunk 127504403 127509402 tokens 526 pairs 14 transfers 21162 pairlogs 40784 {'se': 410}
+done to head 127552369 transfers 22513 pairlogs 43370

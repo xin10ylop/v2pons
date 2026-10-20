@@ -1,0 +1,10 @@
+blocks 86313950..86315000 (10-12 02:12:15..10-12 02:14:04): txs to hub 74, total 8.499981 ETH; from hub 0
+  2.433 launch wallet (puller)     2 transfers 3.904118 ETH
+  2.433 bot-buyer                 39 transfers 4.595695 ETH
+  other                           33 transfers 0.000169 ETH
+  distinct 2.433 bot-buyers that swept to hub: 31 of 31
+  first/last inflow: 10-12 02:12:26 10-12 02:13:35
+0x8d18b0ee04 spoke log topics: destChain 1 depositId 13606660221651372220180444455219402144331742328406350479396890809339031841313 depositor 0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d
+    data words 0..6: ['0xbd7d308f8e1639fab988df18a8011f41eacad73', '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', '0x16345785d8a0000', '0x16300a22f103591', '0x6accdb2b', '0x6accee93', '0x']
+0xc04476ce4a spoke log topics: destChain 1 depositId 104666109972330411173597262455496986922986589706596996325057070918102683374003 depositor 0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d
+    data words 0..6: ['0xbd7d308f8e1639fab988df18a8011f41eacad73', '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', '0x7fa969c2f8d18000', '0x7fa767b7dfa81683', '0x6accdb2b', '0x6acceecd', '0x']

@@ -1,0 +1,26 @@
+{
+ "0x38d5b40da0d4f509dc3959f28a11de7d0b2e0b400766e1b85a34038e1c89b074": {
+  "amountIn_word6": 100000000000000,
+  "minOut_word7": 16469630512203975146484,
+  "minOut_over_launch_quote": 9.927257828021884e-05,
+  "room_eth": 0.0545593211427331,
+  "front_0.0058_with_minout_check": 0.1157,
+  "dropped": 0
+ },
+ "0x7b132190bdfe520e67a1e9550f3f0c48991195b1d9973bca329517afbca8b87b": {
+  "amountIn_word6": 100000000000000,
+  "minOut_word7": 16469706846839023495890,
+  "minOut_over_launch_quote": 9.927303839594686e-05,
+  "room_eth": 0.05455920472741126,
+  "front_0.0058_with_minout_check": 0.1157,
+  "dropped": 0
+ },
+ "0x7c15bf5b370fb0b3e0dd6ea061c6a3cee650892ccb83b075da2c560f70f211ad": {
+  "amountIn_word6": 4000000000000,
+  "minOut_word7": 9321589156724997926933879,
+  "minOut_over_launch_quote": 0.03275426602633654,
+  "room_eth": 5.1513779908417e-05,
+  "front_0.0058_with_minout_check": -0.0034,
+  "dropped": 7
+ }
+}

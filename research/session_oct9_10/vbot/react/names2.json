@@ -1,0 +1,728 @@
+{
+"v3.0": [
+[
+82882822,
+"0x80b78656a8f10ef5d80313a451fb570987b6e665",
+"Giraffe Wif Cap",
+"GIF"
+],
+[
+82912032,
+"0x0b85313abd1c40508eccf8bcdc3861aaeb72475a",
+"Shark Tank",
+"SharkTank"
+],
+[
+82958839,
+"0x98c40722a3c20340cd339fc70034ad2780a0f211",
+"Bordrless",
+"BORDR"
+],
+[
+82987872,
+"0xf844670e615b3e10137393c9915085930b8b97a0",
+"pqc.market",
+"PQC"
+],
+[
+83019034,
+"0xc7e88554172a39cf1fc5cf16ac871405622c86a9",
+"GALAXY CAT",
+"GCAT"
+],
+[
+83045268,
+"0x287af280680fac48316ad4b5b2333754aea7b34a",
+"SpaceX - Backpack Securities",
+"SPCX"
+],
+[
+83086052,
+"0xc58ae402928533b0952a9b78f069ed1fae85c827",
+"UU",
+"UU"
+],
+[
+83115322,
+"0xd8ebed90e6e59ab8f5864ea7bfd988518d26ec2a",
+"Capybara With A Gun",
+"CAPYBARA"
+],
+[
+83144646,
+"0x149ae3631df868a7670678b90a07a9d8b5573d35",
+"Capybara With A Gun",
+"CAPYBARA"
+],
+[
+83179386,
+"0xcdecc94f432c8277f4fb8ebeae337b75a201a4a8",
+"Capybara With A Gun",
+"CAPYBARA"
+],
+[
+83209084,
+"0x7cc181dbf27f607a355bb8c82ca418f4afd7e3e0",
+"Capybara With A Gun",
+"CAPYBARA"
+],
+[
+83211571,
+"0x4e07ae4eface458e293ba724c86af73dcc956c5c",
+"Softhearted Gunner",
+"Gunner"
+],
+[
+83220174,
+"0x0fab14b290d1996b00fbe328d16ac7279a1903bf",
+"Tweetcraft",
+"TWEETCRAFT"
+],
+[
+83261221,
+"0xbcc893671b0aca8cba66cbdee1dedf2369f2be31",
+"buy and retire",
+"401si(k)"
+],
+[
+83296369,
+"0x306751274f222814ef8092fb017c2abdcd41f0e0",
+"Capybara With A Gun",
+"CAPYBARA"
+],
+[
+83331481,
+"0x25ace49e02b82b8b4ee42598a406ce3fd2fd0944",
+"BitDog",
+"BitDog"
+],
+[
+83372250,
+"0x42d9608c93e90c32ea84884dcea5661302a2ac29",
+"Omarchy",
+"OMARCHY"
+],
+[
+83413462,
+"0x50e0f1c9779fabd21e5d21eb366d9370617fab84",
+"The Altruists",
+"Altruists"
+],
+[
+83448153,
+"0xbbf87f3a7a78f5fcfc556226b4d92189b0d9c36d",
+"Offchain",
+"Offchain"
+],
+[
+83475559,
+"0x4eec4c7389a200b74be8ded44906b6523c3ff026",
+"ComputersRH Coin",
+"CRH"
+],
+[
+83499382,
+"0x255ee371d492e04ab5f83021082da7b7578257ff",
+"Wrapped BTC (Wormhole)",
+"WBTC"
+],
+[
+83524489,
+"0xe59e9702bbc44140f3869399fb0429ceba0e6899",
+"pear to this",
+"pear"
+],
+[
+83571528,
+"0xcb5d3e10f55bb96857768fddc5972354438fd4ff",
+"Pack",
+"Pack"
+],
+[
+83606875,
+"0x690c14ad55c20d24d0810a6c5c92638ae09e73b1",
+"Tiktok Coin",
+"TikTok"
+],
+[
+83636245,
+"0x8565197bce1380a7cd0533046c6094a961d991a5",
+"unbound",
+"unbound"
+],
+[
+83667151,
+"0x030a59894e3bfbf473c11ce02cd3f9d58cf9ceea",
+"SWARM",
+"SWARM"
+],
+[
+83706417,
+"0x5aa10a96e72eda2d5753acc5a23711095d203a84",
+"Memecoins",
+"COIN"
+],
+[
+83735816,
+"0xa4887bf537acc712698620df1b1577735d79facd",
+"OP_CAT",
+"OP_CAT"
+],
+[
+83759288,
+"0xacfa8c07025e9a5d59b8ef7323c68b4fa874c213",
+"ai;dr",
+"ai;dr"
+],
+[
+83800486,
+"0x7686e21ca4ddef294ef662edb82ac0acafd07bb5",
+"Justice for HeeHaw",
+"HeeHaw"
+],
+[
+83841507,
+"0x4118ccc56c02de7dfac1c583ebe41f5330f6ddb4",
+"The White Whale",
+"WhiteWhale"
+],
+[
+83876641,
+"0x2bda8f93da91da9d7cd44a026c2be88e080dac87",
+"Reverse Engineer Anything",
+"REA"
+],
+[
+83922553,
+"0x224546294efd27f5e1f7c3205e477c31b11e2e6a",
+"QuantumCoin",
+"QUANTUM"
+],
+[
+83951574,
+"0x7c145ff69a5a2d03a9bfed9ced3d25c07599ebb6",
+"Open Acceleration",
+"open/acc"
+],
+[
+83997823,
+"0x188a0dffbb07570d78983820b65bec4a8bdafff0",
+"Infinity Hook",
+"INFINITY"
+],
+[
+84025534,
+"0x20bb1a7b682e392b40324ae8ace3d1d429ec6001",
+"Quantum Inu",
+"QI"
+],
+[
+84062704,
+"0x7095847d2f4cb74061fd173646b65652450f10fa",
+"Quantum Inu",
+"QI"
+],
+[
+84103432,
+"0x2521a9b5f0a605a47f6692645c25f74ec16dc3e5",
+"Quantum Inu",
+"QI"
+],
+[
+84123560,
+"0x2e38b924293fd458f77a4ef549b1b81d33120d01",
+"Quantum Inu",
+"QI"
+],
+[
+84156473,
+"0x729b0a3b34936de64cdeb8822cef8661d6ebaa8b",
+"USA Blowjob Coin",
+"UBC"
+]
+],
+"v5.0": [
+[
+82882905,
+"0x29c00d48c2f03f4222ad2be2405cde0925317777",
+"MASHUP GAMES",
+"MASHUP"
+],
+[
+82923939,
+"0xf38679620002b560791a3b215e44dca5f3857777",
+"Bordrless",
+"BORDR"
+],
+[
+82956908,
+"0xf43e4fbf0daa3381d5e9ba48adfb089aba587777",
+"Borderless Cat",
+"BCAT"
+],
+[
+82982043,
+"0x9348cf45f500251694ab7cba5a8cb63041277777",
+"Unicorn Jean Phill",
+"UJP"
+],
+[
+83022262,
+"0x3924857b943125fa6a0bce24f39df65f476f7777",
+"samSONg",
+"SAMSONG"
+],
+[
+83048645,
+"0x3eb4968cc95a891ba72e2c5b664b7142dbe87777",
+"Capybara With A Gun",
+"CAPYBARA"
+],
+[
+83086100,
+"0x29dbab5c2e326e848f83a76fe40f92b5214d7777",
+"@bot change my life",
+"@BOT"
+],
+[
+83121544,
+"0x5e438eb0fc792f9561b0c03ab53b130662bb7777",
+"Tincan",
+"Tincan"
+],
+[
+83156653,
+"0xfd682c43135ef1f6fd7b085385871f49c7757777",
+"Bilbo The Cog",
+"Bilbo"
+],
+[
+83195748,
+"0xcbf12d7275dbe48de73720657dadcb52c3487777",
+"SLOPCORE",
+"SLOPCORE"
+],
+[
+83226069,
+"0x272eaf2dc8021b54c1717928c310e1aa71af7777",
+"Paid",
+"PAID"
+],
+[
+83267406,
+"0x48da621f46d8aa0d2308b5b51d2b038983c17777",
+"The Larp Cat",
+"K-Gurl"
+],
+[
+83296517,
+"0x775f4d5b6190d356ff92de7d38fe5627859f7777",
+"Dick Tater",
+"DICK"
+],
+[
+83302230,
+"0x505e78fd936df845933fb70bcf3a2051b1007777",
+"Boba",
+"Boba"
+],
+[
+83326245,
+"0x1913a4365cc7ba3bec71b51d0a8aee781c337777",
+"BitDog",
+"BitDog"
+],
+[
+83329275,
+"0x3cc6dfb7f197d6c6df36769fb76b67eeca767777",
+"Wrapped BTC (Wormhole)",
+"WBTC"
+],
+[
+83337812,
+"0x32a45040575104ec30e111e05cc7899dc3287777",
+"gudtek.org",
+"gudtek"
+],
+[
+83341363,
+"0xd4006d0e0cb68fbdf4cd7717ec9ded0298da7777",
+"Claude's Planet TIC 4206066 b",
+"4206066"
+],
+[
+83380818,
+"0x41306a5524d6bed953aae58875e1e012b5657777",
+"Super Mario 64",
+"Mario64"
+],
+[
+83419046,
+"0x8491a3d1b055f3bf4464f7d0d667382acbf57777",
+"Pistol VS Pistol",
+"PvP"
+],
+[
+83448159,
+"0x9dade398fbe832441b471343e073d6ebae137777",
+"Shush",
+"SHUSH"
+],
+[
+83483281,
+"0x6d1a4c82c0f167d43b394d1dd90410a6c3c47777",
+"FomoDrop",
+"FOMODROP"
+],
+[
+83512725,
+"0x842c5cb2787fe0126a5653d6a1893a50613b7777",
+"Help M\u00edriam",
+"MIRIAM"
+],
+[
+83558163,
+"0x16988ec074f7e25f2ac761488176176334ab7777",
+"meme",
+"meme"
+],
+[
+83589894,
+"0x3707bf61e4a04d58d46654be49ff5ff5d14e7777",
+"Tiktok Coin",
+"TikTok"
+],
+[
+83607045,
+"0x4afbc8150530837d24274213cfe22acd5fb17777",
+"degens",
+"DEGENS"
+],
+[
+83642264,
+"0xa1ad94345d2273739ad13e19efa20cda91c17777",
+"Justice For Alceb\u00edades",
+"Alceb\u00edade"
+],
+[
+83670535,
+"0xbeb77d1bd23c5845b27f14e9c8ee82f9842d7777",
+"SI Coin",
+"SI"
+],
+[
+83706523,
+"0x7dd1e2b6aa21b0b2501edfd6d1bbac772aaa7777",
+"Jean Phil",
+"JEANPHIL"
+],
+[
+83729973,
+"0xb81ac6974e246b5b784a118e3d0505129fa27777",
+"Original Gangster",
+"OG"
+],
+[
+83759376,
+"0x31dfba81df0badcee7cc1c9ce9a9e3edce277777",
+"ASTRA",
+"ASTRA"
+],
+[
+83794656,
+"0x1b50ce0b7def5ffd646bac86fc6c024c53ea7777",
+"Justice for HeeHaw",
+"HeeHaw"
+],
+[
+83829771,
+"0xb227abc131a2e2c50f3e7d74d0b4331a33e07777",
+"Botfly",
+"BOTFLY"
+],
+[
+83882200,
+"0xe716dff2d520fb2dfd144a56541974d42b197777",
+"LAPTOP",
+"LAPTOP"
+],
+[
+83928513,
+"0xe663226930926854ee66fa2f849a894dc59a7777",
+"QuantumCoin",
+"QUANTUM"
+],
+[
+83969189,
+"0x534b48b793daab75c00365e842308fb0b67e7777",
+";)",
+"WINK"
+],
+[
+84015397,
+"0x59f52796d308503ccc7005aadf824b9afee07777",
+"WOJAK PHIL",
+"WOJAKPHIL"
+],
+[
+84050698,
+"0xf5e9aabf4bd42c8bc68af889cc1ba4625dbc7777",
+"DNSPad",
+"DNS"
+],
+[
+84091783,
+"0xf3f1fabbd924ebf1dc7fd8a32ff39a029b8a7777",
+"neigh",
+"neigh"
+],
+[
+84098797,
+"0x87af8cc9d23d6cd64d5a9d4d193c9c8090907777",
+"Alphabet xStock",
+"GOOGLx"
+]
+],
+"v2.433": [
+[
+82879535,
+"0x799b7f779ae060818cbcb68545456109c6fa8777",
+"SPX6900 (Wormhole)",
+"SPX"
+],
+[
+82927345,
+"0x197e6037075cfa64525407d6d6107542b72d9777",
+"Bordrless",
+"BORDR"
+],
+[
+82971419,
+"0x5fff62effcd0d74d5ab1bb7ea3344db4db718777",
+"Zec Pad",
+"ZPad"
+],
+[
+83015996,
+"0x1f364ea29d785b8a62344c0c07a0605097b9c777",
+"SHARKTANK CAT",
+"SHARKCAT"
+],
+[
+83059366,
+"0x2a0cd8d05bdeeef8ecc1d57f76c5db4b7d200777",
+"SpaceX - Backpack Securities",
+"SPCX"
+],
+[
+83080000,
+"0xaec89a4a32047418638d666bb8bf9274a7677777",
+"Tincan",
+"Tincan"
+],
+[
+83118022,
+"0x99a2201bf116c3f07e64664ad3eb713f26a36777",
+"iCoin | Launch with Apple Pay",
+"iCoin"
+],
+[
+83155399,
+"0x9bd66322b77c5c29c987d1ea44edc340d7044777",
+"The Stoic Penguin",
+"Penguin"
+],
+[
+83198379,
+"0x2a47732ef732edba9d803da2e615f9acf8700777",
+"dns",
+"dns"
+],
+[
+83227513,
+"0x754a8661eefe736325c0644fe587931c94bba777",
+"TRADE ATTENTION",
+"ATTENTION"
+],
+[
+83254609,
+"0xcc935a6745965949fbcda072e951ae99c38e3777",
+"Capybara With A Gun",
+"CAPYBARA"
+],
+[
+83260701,
+"0xe1e55044e58d2c11f823a51677e9bae1df78e777",
+"The Larp Cat",
+"Nyazsche"
+],
+[
+83275679,
+"0xdf6cccec1c1faa7a2e8a829c7bdbc61912c78777",
+"Attention Index",
+"AI"
+],
+[
+83305861,
+"0x6bf3a3feaf4b952b24c75be301fa203cc94bc777",
+"Clover",
+"Clover"
+],
+[
+83351420,
+"0xe7178fc5266747d497bf77a6022503d36b283777",
+"BunCoin",
+"BUN"
+],
+[
+83380793,
+"0xd99b44c01502800bd2d132918a84bec6503d7777",
+"X Strategy",
+"XSTR"
+],
+[
+83416053,
+"0x9d997be0ad07d9decada9d44184e54ee5c899777",
+"blueshift",
+"BLUESHIFT"
+],
+[
+83447617,
+"0xb3e2289595af192c1ac481a2962f070d14920777",
+"Post Quantum Cockroach",
+"PQC"
+],
+[
+83492422,
+"0x24c22434441194b1b324bb5858190960d4a8d777",
+"Oura PreStocks",
+"OURA"
+],
+[
+83537605,
+"0xa9b3f4eb708a152cad7998fbf3dee79cdcaf6777",
+"VERIFIED COIN",
+"VERIFIED"
+],
+[
+83583592,
+"0x648432c651c199462fafa997629a400835dca777",
+"Tiktok Coin",
+"TikTok"
+],
+[
+83622045,
+"0x824437a387d047bc29f2197bfbe23a28b64b5777",
+"Pack",
+"Pack"
+],
+[
+83654842,
+"0xafc331d46d064b1b0d8801868dc8e164abc2d777",
+"Fomo Coin",
+"FOMO"
+],
+[
+83683941,
+"0xcf5141eb8ec3c06b81dea74015e61f35247c3777",
+"Tesla xStock",
+"TSLAx"
+],
+[
+83723337,
+"0xa871e7e03d4bdeba3b4615d1dde6927227cce777",
+"Water",
+"H2O"
+],
+[
+83755320,
+"0x40feb0276deb393b083d1800e3718f3a24957777",
+"Humans Internet",
+"INTERNET"
+],
+[
+83784034,
+"0x6f942356ec1916fef1eb11e8344fd410d083e777",
+"Markodex The Trencher",
+"Markodex"
+],
+[
+83810964,
+"0x6b476cce6f655410bcb3fe90d388b95731098777",
+"FrontLine",
+"FPS"
+],
+[
+83848411,
+"0x020ffea2c9ef2418b8bab972d9d160cacc283777",
+"The White Whale",
+"WhiteWhale"
+],
+[
+83872909,
+"0x890629f80bf387615d97ffcb1072af6194785777",
+"quantumcoin",
+"quantum"
+],
+[
+83896316,
+"0x13cb7cad2b504e939dfb52e0e63a7567d7988777",
+"Super Inu",
+"SI"
+],
+[
+83934153,
+"0x77e4b050b1251a1e63f263e27db9f251f58a7777",
+"Open Acceleration",
+"open/acc"
+],
+[
+83969520,
+"0x13227e385d938b2e5eee3b3ccad5d56b79454777",
+"DOCHLY",
+"AWZF"
+],
+[
+84015241,
+"0x23f3c6e4364f924ee398e13e2fe9d93e3bb8c777",
+"Hitler Mussolini Sime\u00f3n Flores",
+"Hitler"
+],
+[
+84055444,
+"0x05d5c0d1143303cc02975392cdb8b5f45f8f6777",
+"Warp",
+"WARP"
+],
+[
+84096671,
+"0xcd49a718959652d625443c23c4846e3a5b2b5777",
+"Quantitative",
+"Quant"
+],
+[
+84125437,
+"0x1bc7f32add214453560c1118a3c35183c0a6d777",
+"The Eternal Gum",
+"GUM"
+],
+[
+84135478,
+"0xf5baadcd985fa761750a034444feabf04c3bb777",
+"Collector Crypt",
+"CARDS"
+],
+[
+84142859,
+"0xf17903de5ffc695dafd274a42840ecc5f9d4e777",
+"OpenWhip",
+"OpenWhip"
+],
+[
+84165781,
+"0xc5c359eb0ab3bab6d13aa7c4e99afb12d67b2777",
+"Bread",
+"Bread"
+]
+]
+}

@@ -1,0 +1,750 @@
+{
+ "L:0x58daec31|0xac9650d8|len1444|fee10000|ts200|v3.0 || 0.0012 || mean": {
+  "rule": "launch+2 | stake 0.0012 | TP 5% | H 55",
+  "n_launches": 166,
+  "n": 166,
+  "mean": 0.03459081641372838,
+  "median": 0.09180601144764854,
+  "pos": 0.9457831325301205,
+  "mean_exact": 0.0345906053926796,
+  "mean_ex_top3": 0.0320166719445121,
+  "why": {
+   "tp": 157,
+   "pulled": 9
+  },
+  "examples": [
+   [
+    "0x257df6cf4ba86360c7edb7c85a610ee541dd6b19cee29ca2f45dbad6f7f33939",
+    0.0923,
+    "tp"
+   ],
+   [
+    "0x8a1b75a58d5d836a2a6cebe2cc27eef74d7cf357155dec628d08064775164910",
+    0.0918,
+    "tp"
+   ],
+   [
+    "0xf0d5f259ecd598af64fce81f66f3a2eb812b0cb50bfaf592571c2b274e7981a0",
+    0.0925,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee10000|ts200|v3.0 || 0.0012 || tstat": {
+  "rule": "launch+2 | stake 0.0012 | TP 5% | H 13",
+  "n_launches": 166,
+  "n": 166,
+  "mean": 0.04493841045784553,
+  "median": 0.05823976381545698,
+  "pos": 0.9759036144578314,
+  "mean_exact": 0.044938410457849035,
+  "mean_ex_top3": 0.04371270817214601,
+  "why": {
+   "tp": 94,
+   "deadline": 70,
+   "pulled": 2
+  },
+  "examples": [
+   [
+    "0x257df6cf4ba86360c7edb7c85a610ee541dd6b19cee29ca2f45dbad6f7f33939",
+    0.0257,
+    "deadline"
+   ],
+   [
+    "0x8a1b75a58d5d836a2a6cebe2cc27eef74d7cf357155dec628d08064775164910",
+    0.0918,
+    "tp"
+   ],
+   [
+    "0xf0d5f259ecd598af64fce81f66f3a2eb812b0cb50bfaf592571c2b274e7981a0",
+    0.0252,
+    "deadline"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee10000|ts200|v3.0 || 0.012 || mean": {
+  "rule": "launch+2 | stake 0.012 | TP 5% | H 55",
+  "n_launches": 166,
+  "n": 166,
+  "mean": 0.03715882956649838,
+  "median": 0.09435558204292682,
+  "pos": 0.9457831325301205,
+  "mean_exact": 0.037156728206725914,
+  "mean_ex_top3": 0.03459402831847875,
+  "why": {
+   "tp": 157,
+   "pulled": 9
+  },
+  "examples": [
+   [
+    "0x257df6cf4ba86360c7edb7c85a610ee541dd6b19cee29ca2f45dbad6f7f33939",
+    0.0949,
+    "tp"
+   ],
+   [
+    "0x8a1b75a58d5d836a2a6cebe2cc27eef74d7cf357155dec628d08064775164910",
+    0.0944,
+    "tp"
+   ],
+   [
+    "0xf0d5f259ecd598af64fce81f66f3a2eb812b0cb50bfaf592571c2b274e7981a0",
+    0.095,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee10000|ts200|v3.0 || 0.012 || tstat": {
+  "rule": "launch+6 | stake 0.012 | TP 1% | H 51",
+  "n_launches": 166,
+  "n": 166,
+  "mean": 0.06234707231827882,
+  "median": 0.06181530922823658,
+  "pos": 1.0,
+  "mean_exact": 0.06234707231827864,
+  "mean_ex_top3": 0.061396963159821065,
+  "why": {
+   "tp": 166
+  },
+  "examples": [
+   [
+    "0x257df6cf4ba86360c7edb7c85a610ee541dd6b19cee29ca2f45dbad6f7f33939",
+    0.0429,
+    "tp"
+   ],
+   [
+    "0x8a1b75a58d5d836a2a6cebe2cc27eef74d7cf357155dec628d08064775164910",
+    0.0944,
+    "tp"
+   ],
+   [
+    "0xf0d5f259ecd598af64fce81f66f3a2eb812b0cb50bfaf592571c2b274e7981a0",
+    0.0281,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee10000|ts200|v5.0 || 0.0012 || mean": {
+  "rule": "launch+3 | stake 0.0012 | TP 5% | H 60",
+  "n_launches": 71,
+  "n": 71,
+  "mean": 0.0570305664453075,
+  "median": 0.06271798996001875,
+  "pos": 1.0,
+  "mean_exact": 0.05702553541591687,
+  "mean_ex_top3": 0.05566159859878139,
+  "why": {
+   "tp": 56,
+   "deadline": 15
+  },
+  "examples": [
+   [
+    "0xcc47487c317bfceed39d9686a398a5d6345561133e515a18c43e8ce8b3f61de9",
+    0.0553,
+    "tp"
+   ],
+   [
+    "0xedf1b061f0bb22e17dbbbeed17c5cde675e67fc6e9d33c007b4522e33b0c0793",
+    0.0027,
+    "deadline"
+   ],
+   [
+    "0x1eb93026452d496396595c152bbb9f8bc23a8bc95d2299d09e7d3142cdc65eff",
+    0.0549,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee10000|ts200|v5.0 || 0.0012 || tstat": {
+  "rule": "launch+2 | stake 0.0012 | TP 1% | H 49",
+  "n_launches": 71,
+  "n": 71,
+  "mean": 0.028409333265099736,
+  "median": 0.025203054329522707,
+  "pos": 1.0,
+  "mean_exact": 0.02840915449739667,
+  "mean_ex_top3": 0.027046141804411956,
+  "why": {
+   "tp": 71
+  },
+  "examples": [
+   [
+    "0xcc47487c317bfceed39d9686a398a5d6345561133e515a18c43e8ce8b3f61de9",
+    0.0158,
+    "tp"
+   ],
+   [
+    "0xedf1b061f0bb22e17dbbbeed17c5cde675e67fc6e9d33c007b4522e33b0c0793",
+    0.0351,
+    "tp"
+   ],
+   [
+    "0x1eb93026452d496396595c152bbb9f8bc23a8bc95d2299d09e7d3142cdc65eff",
+    0.0154,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee10000|ts200|v5.0 || 0.012 || mean": {
+  "rule": "launch+3 | stake 0.012 | TP 5% | H 60",
+  "n_launches": 71,
+  "n": 71,
+  "mean": 0.06010584123807034,
+  "median": 0.06560654985725767,
+  "pos": 1.0,
+  "mean_exact": 0.06005820311781815,
+  "mean_ex_top3": 0.05874893543034027,
+  "why": {
+   "tp": 57,
+   "deadline": 14
+  },
+  "examples": [
+   [
+    "0xcc47487c317bfceed39d9686a398a5d6345561133e515a18c43e8ce8b3f61de9",
+    0.0582,
+    "tp"
+   ],
+   [
+    "0xedf1b061f0bb22e17dbbbeed17c5cde675e67fc6e9d33c007b4522e33b0c0793",
+    0.0058,
+    "deadline"
+   ],
+   [
+    "0x1eb93026452d496396595c152bbb9f8bc23a8bc95d2299d09e7d3142cdc65eff",
+    0.0578,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee10000|ts200|v5.0 || 0.012 || tstat": {
+  "rule": "launch+2 | stake 0.012 | TP 1% | H 49",
+  "n_launches": 71,
+  "n": 71,
+  "mean": 0.030960310923423773,
+  "median": 0.0282169703201475,
+  "pos": 1.0,
+  "mean_exact": 0.03095852739423542,
+  "mean_ex_top3": 0.029581717611646446,
+  "why": {
+   "tp": 71
+  },
+  "examples": [
+   [
+    "0xcc47487c317bfceed39d9686a398a5d6345561133e515a18c43e8ce8b3f61de9",
+    0.0188,
+    "tp"
+   ],
+   [
+    "0xedf1b061f0bb22e17dbbbeed17c5cde675e67fc6e9d33c007b4522e33b0c0793",
+    0.038,
+    "tp"
+   ],
+   [
+    "0x1eb93026452d496396595c152bbb9f8bc23a8bc95d2299d09e7d3142cdc65eff",
+    0.0184,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee2500|ts50|v2.433 || 0.0012 || mean": {
+  "rule": "launch+2 | stake 0.0012 | TP 5% | H 19",
+  "n_launches": 102,
+  "n": 102,
+  "mean": 0.1253015941584069,
+  "median": 0.11753755419479209,
+  "pos": 1.0,
+  "mean_exact": 0.1253015941583932,
+  "mean_ex_top3": 0.12193954965199315,
+  "why": {
+   "tp": 94,
+   "deadline": 8
+  },
+  "examples": [
+   [
+    "0xe21aaf3d78afe6fd313ca9ffce1dda8e0438749d14d330d6911dbd2d9c894726",
+    0.1175,
+    "tp"
+   ],
+   [
+    "0x365e0d6b24925f4be5b273c070be42f4fcb8a81a999039bd16c3adf6ae24b67a",
+    0.1992,
+    "tp"
+   ],
+   [
+    "0x5dd491f9493d41e99cf68f7c44c0079edeb74382c9a32a2e271288c845addf16",
+    0.1595,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee2500|ts50|v2.433 || 0.0012 || tstat": {
+  "rule": "launch+2 | stake 0.0012 | TP 5% | H 19",
+  "n_launches": 102,
+  "n": 102,
+  "mean": 0.1253015941584069,
+  "median": 0.11753755419479209,
+  "pos": 1.0,
+  "mean_exact": 0.1253015941583932,
+  "mean_ex_top3": 0.12193954965199315,
+  "why": {
+   "tp": 94,
+   "deadline": 8
+  },
+  "examples": [
+   [
+    "0xe21aaf3d78afe6fd313ca9ffce1dda8e0438749d14d330d6911dbd2d9c894726",
+    0.1175,
+    "tp"
+   ],
+   [
+    "0x365e0d6b24925f4be5b273c070be42f4fcb8a81a999039bd16c3adf6ae24b67a",
+    0.1992,
+    "tp"
+   ],
+   [
+    "0x5dd491f9493d41e99cf68f7c44c0079edeb74382c9a32a2e271288c845addf16",
+    0.1595,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee2500|ts50|v2.433 || 0.012 || mean": {
+  "rule": "launch+2 | stake 0.012 | TP 5% | H 19",
+  "n_launches": 102,
+  "n": 102,
+  "mean": 0.12752635213918395,
+  "median": 0.11982712232127991,
+  "pos": 1.0,
+  "mean_exact": 0.12752635213918367,
+  "mean_ex_top3": 0.1241893940909692,
+  "why": {
+   "tp": 94,
+   "deadline": 8
+  },
+  "examples": [
+   [
+    "0xe21aaf3d78afe6fd313ca9ffce1dda8e0438749d14d330d6911dbd2d9c894726",
+    0.1198,
+    "tp"
+   ],
+   [
+    "0x365e0d6b24925f4be5b273c070be42f4fcb8a81a999039bd16c3adf6ae24b67a",
+    0.2009,
+    "tp"
+   ],
+   [
+    "0x5dd491f9493d41e99cf68f7c44c0079edeb74382c9a32a2e271288c845addf16",
+    0.1614,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len1444|fee2500|ts50|v2.433 || 0.012 || tstat": {
+  "rule": "launch+2 | stake 0.012 | TP 5% | H 19",
+  "n_launches": 102,
+  "n": 102,
+  "mean": 0.12752635213918395,
+  "median": 0.11982712232127991,
+  "pos": 1.0,
+  "mean_exact": 0.12752635213918367,
+  "mean_ex_top3": 0.1241893940909692,
+  "why": {
+   "tp": 94,
+   "deadline": 8
+  },
+  "examples": [
+   [
+    "0xe21aaf3d78afe6fd313ca9ffce1dda8e0438749d14d330d6911dbd2d9c894726",
+    0.1198,
+    "tp"
+   ],
+   [
+    "0x365e0d6b24925f4be5b273c070be42f4fcb8a81a999039bd16c3adf6ae24b67a",
+    0.2009,
+    "tp"
+   ],
+   [
+    "0x5dd491f9493d41e99cf68f7c44c0079edeb74382c9a32a2e271288c845addf16",
+    0.1614,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len2276|fee100|ts1|v0 || 0.0012 || mean": {
+  "rule": "launch+40 | stake 0.0012 | TP 5% | H 60",
+  "n_launches": 76,
+  "n": 76,
+  "mean": -0.004536425905050165,
+  "median": -0.00369997800448125,
+  "pos": 0.3026315789473684,
+  "mean_exact": -0.004536426682864856,
+  "mean_ex_top3": -0.03736108546620116,
+  "why": {
+   "pulled": 8,
+   "deadline": 52,
+   "tp": 16
+  },
+  "examples": [
+   [
+    "0x296763e2e9cad21c075c72cc29719a29440108b47fafb640468cd42849fb85cf",
+    -0.0037,
+    "deadline"
+   ],
+   [
+    "0x601e782c70c4e5fb8178d5db97e37be309773e7d0f0a0d8f11e2cf1c066e21f1",
+    -0.0036,
+    "deadline"
+   ],
+   [
+    "0x5d7bfb7bc8af7cff9087aa3ce8b84de3860905ca93ee1cc534094dc68761cbd2",
+    0.6523,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len2276|fee100|ts1|v0 || 0.0012 || tstat": {
+  "rule": "firstbuy>=0.01+0 | stake 0.0012 | TP 5% | H 43",
+  "n_launches": 76,
+  "n": 57,
+  "mean": 0.02668108146860999,
+  "median": 0.05609710560085375,
+  "pos": 0.6842105263157895,
+  "mean_exact": 0.026681254810716804,
+  "mean_ex_top3": 0.014236880758264845,
+  "why": {
+   "deadline": 23,
+   "tp": 32,
+   "pulled": 2
+  },
+  "examples": [
+   [
+    "0x296763e2e9cad21c075c72cc29719a29440108b47fafb640468cd42849fb85cf",
+    -0.0037,
+    "deadline"
+   ],
+   [
+    "0x601e782c70c4e5fb8178d5db97e37be309773e7d0f0a0d8f11e2cf1c066e21f1",
+    -0.0037,
+    "deadline"
+   ],
+   [
+    "0x5d7bfb7bc8af7cff9087aa3ce8b84de3860905ca93ee1cc534094dc68761cbd2",
+    0.1711,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len2276|fee100|ts1|v0 || 0.012 || mean": {
+  "rule": "launch+40 | stake 0.012 | TP 5% | H 60",
+  "n_launches": 76,
+  "n": 76,
+  "mean": -0.0015930685875071352,
+  "median": -0.0005498701816660834,
+  "pos": 0.3026315789473684,
+  "mean_exact": -0.0015930763565432631,
+  "mean_ex_top3": -0.034358604693633006,
+  "why": {
+   "pulled": 8,
+   "deadline": 52,
+   "tp": 16
+  },
+  "examples": [
+   [
+    "0x296763e2e9cad21c075c72cc29719a29440108b47fafb640468cd42849fb85cf",
+    -0.0006,
+    "deadline"
+   ],
+   [
+    "0x601e782c70c4e5fb8178d5db97e37be309773e7d0f0a0d8f11e2cf1c066e21f1",
+    -0.0005,
+    "deadline"
+   ],
+   [
+    "0x5d7bfb7bc8af7cff9087aa3ce8b84de3860905ca93ee1cc534094dc68761cbd2",
+    0.6542,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x58daec31|0xac9650d8|len2276|fee100|ts1|v0 || 0.012 || tstat": {
+  "rule": "firstbuy>=0.01+0 | stake 0.012 | TP 5% | H 43",
+  "n_launches": 76,
+  "n": 57,
+  "mean": 0.027150126561885188,
+  "median": 0.0556425652946925,
+  "pos": 0.7192982456140351,
+  "mean_exact": 0.02715029655024184,
+  "mean_ex_top3": 0.014697353703047774,
+  "why": {
+   "deadline": 21,
+   "tp": 34,
+   "pulled": 2
+  },
+  "examples": [
+   [
+    "0x296763e2e9cad21c075c72cc29719a29440108b47fafb640468cd42849fb85cf",
+    -0.0005,
+    "deadline"
+   ],
+   [
+    "0x601e782c70c4e5fb8178d5db97e37be309773e7d0f0a0d8f11e2cf1c066e21f1",
+    -0.0005,
+    "deadline"
+   ],
+   [
+    "0x5d7bfb7bc8af7cff9087aa3ce8b84de3860905ca93ee1cc534094dc68761cbd2",
+    0.174,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x8366a39c|0x6276cbbe|len196|fee500|ts1|v0 || 0.0012 || mean": {
+  "rule": "firstbuy>=0.01+8 | stake 0.0012 | TP 5% | H 60",
+  "n_launches": 31,
+  "n": 31,
+  "mean": 0.039318334423316594,
+  "median": 0.04388851927722062,
+  "pos": 1.0,
+  "mean_exact": 0.03931875697108955,
+  "mean_ex_top3": 0.035627262880567175,
+  "why": {
+   "deadline": 16,
+   "tp": 15
+  },
+  "examples": [
+   [
+    "0x69a8d61f85af1d8230962c6dad49d93cf829acff667808b479603cb0cf30d4fc",
+    0.0124,
+    "deadline"
+   ],
+   [
+    "0x404c1243a9b5ae6516d37747206ee98e31ec73b5d8e26fb7a6c83c11c82cd319",
+    0.0566,
+    "tp"
+   ],
+   [
+    "0x58405520ae1f2fc444a3c7399aa2b93809cd50aa8647679655e20961f7c3535a",
+    0.0604,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x8366a39c|0x6276cbbe|len196|fee500|ts1|v0 || 0.0012 || tstat": {
+  "rule": "firstbuy>=0.01+8 | stake 0.0012 | TP 2% | H 60",
+  "n_launches": 31,
+  "n": 31,
+  "mean": 0.025956615206827044,
+  "median": 0.022530877978996458,
+  "pos": 1.0,
+  "mean_exact": 0.025956922466342867,
+  "mean_ex_top3": 0.023518811621252616,
+  "why": {
+   "deadline": 10,
+   "tp": 21
+  },
+  "examples": [
+   [
+    "0x69a8d61f85af1d8230962c6dad49d93cf829acff667808b479603cb0cf30d4fc",
+    0.0124,
+    "deadline"
+   ],
+   [
+    "0x404c1243a9b5ae6516d37747206ee98e31ec73b5d8e26fb7a6c83c11c82cd319",
+    0.0324,
+    "tp"
+   ],
+   [
+    "0x58405520ae1f2fc444a3c7399aa2b93809cd50aa8647679655e20961f7c3535a",
+    0.0325,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x8366a39c|0x6276cbbe|len196|fee500|ts1|v0 || 0.012 || mean": {
+  "rule": "firstbuy>=0.01+8 | stake 0.012 | TP 5% | H 60",
+  "n_launches": 31,
+  "n": 31,
+  "mean": 0.04228353108441934,
+  "median": 0.0468619336067035,
+  "pos": 1.0,
+  "mean_exact": 0.042283952092841394,
+  "mean_ex_top3": 0.03861830892296826,
+  "why": {
+   "deadline": 16,
+   "tp": 15
+  },
+  "examples": [
+   [
+    "0x69a8d61f85af1d8230962c6dad49d93cf829acff667808b479603cb0cf30d4fc",
+    0.0155,
+    "deadline"
+   ],
+   [
+    "0x404c1243a9b5ae6516d37747206ee98e31ec73b5d8e26fb7a6c83c11c82cd319",
+    0.0595,
+    "tp"
+   ],
+   [
+    "0x58405520ae1f2fc444a3c7399aa2b93809cd50aa8647679655e20961f7c3535a",
+    0.0634,
+    "tp"
+   ]
+  ]
+ },
+ "L:0x8366a39c|0x6276cbbe|len196|fee500|ts1|v0 || 0.012 || tstat": {
+  "rule": "firstbuy>=0.01+8 | stake 0.012 | TP 2% | H 60",
+  "n_launches": 31,
+  "n": 31,
+  "mean": 0.02706615129598072,
+  "median": 0.025156641233195335,
+  "pos": 1.0,
+  "mean_exact": 0.02706640533253578,
+  "mean_ex_top3": 0.02443746407075655,
+  "why": {
+   "deadline": 7,
+   "tp": 24
+  },
+  "examples": [
+   [
+    "0x69a8d61f85af1d8230962c6dad49d93cf829acff667808b479603cb0cf30d4fc",
+    0.0155,
+    "deadline"
+   ],
+   [
+    "0x404c1243a9b5ae6516d37747206ee98e31ec73b5d8e26fb7a6c83c11c82cd319",
+    0.0354,
+    "tp"
+   ],
+   [
+    "0x58405520ae1f2fc444a3c7399aa2b93809cd50aa8647679655e20961f7c3535a",
+    0.0229,
+    "tp"
+   ]
+  ]
+ },
+ "L:OURS-orig || 0.0012 || mean": {
+  "rule": "launch+2 | stake 0.0012 | TP 5% | H 59",
+  "n_launches": 18,
+  "n": 18,
+  "mean": 0.018987156708053763,
+  "median": 0.07960852243853125,
+  "pos": 0.8888888888888888,
+  "mean_exact": 0.01843503756528942,
+  "mean_ex_top3": -0.0017118510086649922,
+  "why": {
+   "tp": 15,
+   "deadline": 2,
+   "pulled": 1
+  },
+  "examples": [
+   [
+    "0x7d6d6f61624b89959c7c57a13909212f8b52f925c02b102ea334f61bee602792",
+    0.1128,
+    "tp"
+   ],
+   [
+    "0xe02ac3791a6b8062b902d480ef82d285f033103cbc8a99d7a05881ffb0fc5fcc",
+    -1.0035,
+    "pulled"
+   ],
+   [
+    "0x74e5e16dd934e6f9eefe71a88d36435c6e9c0f7bda43260482c9c9c53fada968",
+    0.0755,
+    "tp"
+   ]
+  ]
+ },
+ "L:OURS-orig || 0.0012 || tstat": {
+  "rule": "firstbuy>=0.0002+0 | stake 0.0012 | TP 1% | H 2",
+  "n_launches": 18,
+  "n": 17,
+  "mean": 0.03254321466077089,
+  "median": 0.03100849728637479,
+  "pos": 0.7058823529411765,
+  "mean_exact": 0.03171596826459094,
+  "mean_ex_top3": 0.023853673816608845,
+  "why": {
+   "tp": 12,
+   "deadline": 5
+  },
+  "examples": [
+   [
+    "0x7d6d6f61624b89959c7c57a13909212f8b52f925c02b102ea334f61bee602792",
+    0.0725,
+    "tp"
+   ],
+   [
+    "0xe02ac3791a6b8062b902d480ef82d285f033103cbc8a99d7a05881ffb0fc5fcc",
+    -0.0065,
+    "deadline"
+   ],
+   [
+    "0x74e5e16dd934e6f9eefe71a88d36435c6e9c0f7bda43260482c9c9c53fada968",
+    -0.0065,
+    "deadline"
+   ]
+  ]
+ },
+ "L:OURS-orig || 0.012 || mean": {
+  "rule": "launch+2 | stake 0.012 | TP 5% | H 59",
+  "n_launches": 18,
+  "n": 18,
+  "mean": 0.021444171442782836,
+  "median": 0.08207576446371742,
+  "pos": 0.8888888888888888,
+  "mean_exact": 0.020896978244919914,
+  "mean_ex_top3": 0.0008520122836925677,
+  "why": {
+   "tp": 15,
+   "deadline": 2,
+   "pulled": 1
+  },
+  "examples": [
+   [
+    "0x7d6d6f61624b89959c7c57a13909212f8b52f925c02b102ea334f61bee602792",
+    0.1152,
+    "tp"
+   ],
+   [
+    "0xe02ac3791a6b8062b902d480ef82d285f033103cbc8a99d7a05881ffb0fc5fcc",
+    -1.0004,
+    "pulled"
+   ],
+   [
+    "0x74e5e16dd934e6f9eefe71a88d36435c6e9c0f7bda43260482c9c9c53fada968",
+    0.0778,
+    "tp"
+   ]
+  ]
+ },
+ "L:OURS-orig || 0.012 || tstat": {
+  "rule": "firstbuy>=0.0002+0 | stake 0.012 | TP 1% | H 2",
+  "n_launches": 18,
+  "n": 17,
+  "mean": 0.03537804192627955,
+  "median": 0.033867783217408,
+  "pos": 0.7058823529411765,
+  "mean_exact": 0.0345576905256129,
+  "mean_ex_top3": 0.026742517587520328,
+  "why": {
+   "tp": 12,
+   "deadline": 5
+  },
+  "examples": [
+   [
+    "0x7d6d6f61624b89959c7c57a13909212f8b52f925c02b102ea334f61bee602792",
+    0.0752,
+    "tp"
+   ],
+   [
+    "0xe02ac3791a6b8062b902d480ef82d285f033103cbc8a99d7a05881ffb0fc5fcc",
+    -0.0033,
+    "deadline"
+   ],
+   [
+    "0x74e5e16dd934e6f9eefe71a88d36435c6e9c0f7bda43260482c9c9c53fada968",
+    -0.0033,
+    "deadline"
+   ]
+  ]
+ }
+}

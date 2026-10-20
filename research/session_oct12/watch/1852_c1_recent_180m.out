@@ -1,0 +1,36 @@
+head 86899464 18:52:59 UTC; 14 C-1 launches in the last 180 min (of 14 fee-100/ts-1 ETH pools)
+   launch   age  botT   first nbot ETH by T+60  pull others  othETH
+ 86797184 102280  None    None    0           0   196      4  0.0031
+ 86797797 101667   235    0.28   22        2.76  None      3  0.0007
+ 86805449 94015  None    None    0           0   168      4  0.0031
+ 86805907 93557   129   0.176    6       0.176  None      3  0.0006
+ 86806750 92714   123   0.108    5       0.384  None      4  0.0008
+ 86826656 72808   177   0.154   29       1.537  None      4  0.0008
+ 86834275 65189    95   0.221   18       0.897  None      6  0.0031
+ 86851987 47477  None    None    0           0  None      5  0.0035
+ 86878331 21133    34  0.0005   22       0.001  None      6  0.0012
+ 86887209 12255  None    None    0           0  None      3  0.0007
+ 86890524  8940   174     0.2    8        0.54  None      8  0.0317
+ 86891969  7495   170   0.446    2       0.826   183      4  0.0011
+ 86893712  5752   146   0.346    3       0.672   175      5  0.0013
+ 86897096  2368   161   0.157   23       0.601  None      4  0.0008
+
+launches older than 400 blocks: 14; with a bot buy: 10; median ETH by T+60 among those: 0.672
+
+forward test (gross, before ~0.3% of fees and our own impact): return from the price after the bot's first buy to the last swap <= T+62
+  86797184: no bot buy
+  86797797: T +235, 11 swaps in the hold, gross +54.1%
+  86805449: no bot buy
+  86805907: T +129, 2 swaps in the hold, gross +0.0%
+  86806750: T +123, 8 swaps in the hold, gross +5.5%
+  86826656: T +177, 16 swaps in the hold, gross +29.1%
+  86834275: T +95, 15 swaps in the hold, gross -4.3%
+  86851987: no bot buy
+  86878331: T +34, 5 swaps in the hold, gross +0.0%
+  86887209: no bot buy
+  86890524: T +174, 11 swaps in the hold, gross +6.8%
+  86891969: T +170, PULLED at +183 before the sell: -100%
+  86893712: T +146, PULLED at +175 before the sell: -100%
+  86897096: T +161, 9 swaps in the hold, gross +8.9%
+
+10 pools: mean -10.0%, median +5.5%, win 5/10, worst -100.0%

@@ -1,0 +1,7 @@
+seconds A-L [(4, 89), (5, 38)]
+seconds T-A [(7, 30), (8, 61), (9, 14), (10, 15), (11, 4), (14, 1), (15, 1), (18, 1)]
+seconds T-L [(11, 14), (12, 62), (13, 26), (14, 14), (15, 8), (18, 1), (19, 1), (22, 1)]
+blocks per second over the window: 9.84
+before the window (blocks 86604552..87204551): ETH-pair inits 2562, fee-500/ts-1/no-hook 13, direct 196-byte 13 [(87107028, 216406), (87108044, 216406), (87109168, 214174), (87110175, 219283), (87111165, 217741)]
+earliest such launch block 87095874 ts 1791851482
+{'posts': 30, 'items': 407, 'r429': 0}

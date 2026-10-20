@@ -1,0 +1,23 @@
+S1 pool 0x16fbfb6b (USDG), 1 outside wallets; price now x1.00 of launch
+   0xafa54e69 first buy +607   at x1.000: paid 0.00058 got 0.00057 (last sell +697) held now 0.0000 -> realized -0.00001, with holdings -0.00001 ETH-eq
+S1 pool 0x25a7019f (USDG), 3 outside wallets; price now x1.00 of launch
+   0xafa54e69 first buy +373   at x1.000: paid 0.00045 got 0.00045 (last sell +462) held now 0.0000 -> realized -0.00001, with holdings -0.00001 ETH-eq
+   0x738389ef first buy +4263  at x1.000: paid 0.00039 got 0.00000 (last sell +None) held now 0.0004 -> realized -0.00039, with holdings -0.00000 ETH-eq
+   0xac448306 first buy +6169  at x1.000: paid 0.00000 got 0.00035 (last sell +6169) held now 0.0000 -> realized +0.00035, with holdings +0.00035 ETH-eq
+S2 pool 0x2ea3457a (WETH), 1 outside wallets; price now x1.01 of launch
+   0x9d208d8a first buy +503   at x1.025: paid 0.00297 got 0.00291 (last sell +1228) held now 0.0000 -> realized -0.00006, with holdings -0.00006 ETH-eq
+S2 pool 0xaccedd05 (WETH), 1 outside wallets; price now x1.01 of launch
+   0xc072f72a first buy +1049  at x1.050: paid 0.00990 got 0.00970 (last sell +1407) held now 0.0000 -> realized -0.00020, with holdings -0.00020 ETH-eq
+S2 pool 0x1cacdcb0 (WETH), 1 outside wallets; price now x1.01 of launch
+   0xe8d5107e first buy +8325  at x1.010: paid 0.00003 got 0.00000 (last sell +None) held now 0.0000 -> realized -0.00003, with holdings -0.00000 ETH-eq
+S2 pool 0xc1ffeb85 (WETH), 69 outside wallets; price now x81.24 of launch
+   0xbffebe78 first buy +3     at x1.262: paid 0.37584 got 0.19292 (last sell +24896) held now 3.3020 -> realized -0.18293, with holdings +3.11911 ETH-eq
+   0x493e2bf9 first buy +488   at x1.826: paid 0.54910 got 0.40827 (last sell +13900) held now 5.1564 -> realized -0.14083, with holdings +5.01553 ETH-eq
+   0x5598a2a0 first buy +667   at x2.265: paid 0.40170 got 0.18126 (last sell +6296) held now 3.6816 -> realized -0.22044, with holdings +3.46112 ETH-eq
+   0x90e89d1a first buy +780   at x2.678: paid 0.64608 got 0.89878 (last sell +32642) held now 3.4222 -> realized +0.25271, with holdings +3.67492 ETH-eq
+   0xc9f0d404 first buy +857   at x3.685: paid 0.26029 got 0.08518 (last sell +3140) held now 3.7492 -> realized -0.17511, with holdings +3.57413 ETH-eq
+   0x51d5826c first buy +872   at x3.903: paid 0.03465 got 0.24641 (last sell +18050) held now 0.1519 -> realized +0.21176, with holdings +0.36366 ETH-eq
+   0x96a7817d first buy +989   at x4.702: paid 0.33752 got 0.27936 (last sell +62135) held now 2.4457 -> realized -0.05816, with holdings +2.38754 ETH-eq
+   0x6821c3fd first buy +1087  at x5.311: paid 0.42073 got 0.20322 (last sell +13783) held now 2.5277 -> realized -0.21752, with holdings +2.31018 ETH-eq
+   0xf6ac8f5a first buy +1129  at x5.358: paid 0.01377 got 0.01542 (last sell +5184) held now 0.0000 -> realized +0.00165, with holdings +0.00165 ETH-eq
+   0xb7f4d3ef first buy +1129  at x5.415: paid 0.01374 got 0.01518 (last sell +5184) held now 0.0000 -> realized +0.00144, with holdings +0.00144 ETH-eq

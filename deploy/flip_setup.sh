@@ -9,7 +9,7 @@ REPO="$(cd "$(dirname "$0")/.." && pwd)"
 apt-get install -y -q python3-venv >/dev/null 2>&1 || true
 [ -x /opt/flip-venv/bin/python3 ] || python3 -m venv /opt/flip-venv
 /opt/flip-venv/bin/pip install -q --upgrade pip >/dev/null
-/opt/flip-venv/bin/pip install -q websockets rlp eth-account eth-utils coincurve
+/opt/flip-venv/bin/pip install -q websockets rlp eth-account eth-utils coincurve py-solc-x      # py-solc-x only for the simulation (relay_sim.py, relay_deploy.py)
 mkdir -p /etc/flip /var/log/flip; chmod 700 /etc/flip
 if [ ! -f /etc/flip/engine.env ]; then
 cat > /etc/flip/engine.env <<'EOF'
@@ -34,11 +34,14 @@ FEE_MIN_PPM=0
 FEE_MAX_PPM=9999
 MIN_LIQUIDITY=1e21
 TRIGGER_MAX_BLOCKS=150
-BUY_SLIP=0.10
+BUY_SLIP=0.03
 BUY_DEADLINE_S=3
-HOLD_BLOCKS=7
+# the exit: sell on the first buy behind ours worth TAKE_PROFIT after gas, in any case landing by our buy + HOLD_BLOCKS
+# (the operator pulled 5-13 blocks after each of our relay buys); a pull at or before our sell halts live trading (/var/log/flip/HALTED)
+HOLD_BLOCKS=4
 SELL_LEAD_BLOCKS=2
-SELL_FALLBACK_S=1.2
+SELL_FALLBACK_S=0.5
+TAKE_PROFIT=0.01
 MAX_TRADES_PER_DAY=10
 DAILY_STOP_USD=15
 EOF
@@ -59,6 +62,7 @@ WorkingDirectory=$REPO
 ExecStart=/opt/flip-venv/bin/python3 $REPO/src/flip_engine.py
 Restart=always
 RestartSec=3
+TimeoutStopSec=90
 Nice=-5
 
 [Install]

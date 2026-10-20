@@ -1,0 +1,77 @@
+{
+ "dump_pairs": [
+  {
+   "pid": "0x304bd8fc6c",
+   "buy_off": 3,
+   "buy_eth": 0.001188,
+   "dump_off": 21,
+   "delay": 18,
+   "dumper": "0x94dddbb54535ee3515b3b9e10be5a6569c586324",
+   "ratio": 0.9817584537789293
+  },
+  {
+   "pid": "0x5631e267e3",
+   "buy_off": 1510,
+   "buy_eth": 0.009493563076886405,
+   "dump_off": 1522,
+   "delay": 12,
+   "dumper": "0x94dddbb54535ee3515b3b9e10be5a6569c586324",
+   "ratio": 0.9803749493192369
+  },
+  {
+   "pid": "0x6692ad7cf8",
+   "buy_off": 843,
+   "buy_eth": 0.010744655630841048,
+   "dump_off": 846,
+   "delay": 3,
+   "dumper": "0x94dddbb54535ee3515b3b9e10be5a6569c586324",
+   "ratio": 0.9801774881020432
+  },
+  {
+   "pid": "0x92e53eff0e",
+   "buy_off": 1625,
+   "buy_eth": 0.002353502901058043,
+   "dump_off": 1638,
+   "delay": 13,
+   "dumper": "0x94dddbb54535ee3515b3b9e10be5a6569c586324",
+   "ratio": 0.9789910761172261
+  },
+  {
+   "pid": "0xcdbee622b1",
+   "buy_off": 959,
+   "buy_eth": 0.004297816866504537,
+   "dump_off": 961,
+   "delay": 2,
+   "dumper": "0x94dddbb54535ee3515b3b9e10be5a6569c586324",
+   "ratio": 0.980131141161162
+  }
+ ],
+ "gas_wei": 4769024000000,
+ "sell_before_dump (launch+2)": {
+  "eth_out": 0.005684823481687418,
+  "ret": -0.020680265915962413
+ },
+ "eth_in_pool_after_our_buy": 0.005741999999999941,
+ "check: capped sell with no dump vs sell_out_int": [
+  0.005684823481687418,
+  0.005684823481687418
+ ],
+ "sell_after_dump ratio 0.979": {
+  "dumper_eth_out": 0.0056782,
+  "eth_out": 6.3799999999941e-05,
+  "ret": -0.9898222455172515,
+  "usd_trade": -14.847333682758775
+ },
+ "sell_after_dump ratio 0.980": {
+  "dumper_eth_out": 0.005684000000000001,
+  "eth_out": 5.799999999994e-05,
+  "ret": -0.9908222455172517,
+  "usd_trade": -14.862333682758777
+ },
+ "sell_after_dump ratio 0.982": {
+  "dumper_eth_out": 0.0056956,
+  "eth_out": 4.6399999999941e-05,
+  "ret": -0.9928222455172515,
+  "usd_trade": -14.892333682758773
+ }
+}

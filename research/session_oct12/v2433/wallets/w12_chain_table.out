@@ -1,0 +1,25 @@
+launches 150 85935603 .. 86310320
+funded by the previous launch wallet's sweep: 148 | by other launch wallets: 1 | with buyer-wallet transfers: 111 | with other senders: 1
+sweep after the pull goes to: {'next launch wallet': 148, 'another launch wallet': 1, 'outside': 1}
+outside sweep targets: {'0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d': 1}
+distinct buyer wallets funding launch wallets: 31 transfers 894
+other senders: [(('0x74447adf3e9e7c2c4ef7945d1ccfd2c2ac6157b1', 14), 1)]
+ETH in from previous wallet p10/50/90 2.682011884250402 4.148853221482136 4.848080514672609 | from buyers 0.08248654649798041 0.35417859788738604 0.5661411216772575 | sweep out 2.68202103133809 4.145068486411032 4.848080514672609
+own-tx shapes: [(((8, '0x7422a284'), (9, '0x095ea7b3'), (10, '0x87517c45'), (11, '0xac9650d8'), (12, '0x095ea7b3'), (13, '0xa0f7978d'), (14, '0x')), 141), (((8, '0x7422a284'), (9, '0x095ea7b3'), (10, '0x87517c45'), (11, '0xac9650d8'), (13, '0xa0f7978d'), (14, '0x')), 6), (((8, '0x7422a284'), (9, '0x095ea7b3'), (10, '0x87517c45'), (11, '0xac9650d8'), (12, '0x095ea7b3'), (13, '0xa0f7978d'), (14, '0xa0f7978d'), (15, '0x7422a284'), (16, '0x095ea7b3'), (17, '0x87517c45'), (18, '0xac9650d8'), (20, '0xa0f7978d'), (21, '0x')), 2), (((9, '0x7422a284'), (10, '0x095ea7b3'), (11, '0x87517c45'), (12, '0xac9650d8'), (13, '0x095ea7b3'), (14, '0xa0f7978d'), (15, '0x')), 1)]
+funding offset (first, last) before launch p50: -124 -115
+7422a284 value p10/50/90: 0.14868346363880192 1.9986851646303656 2.871341076185066
+pull after launch p10/50/90 (blocks): 13 3249 3623
+
+last 12:
+86277321 0x0402eb16 fee 5000 in prev 4.4091 buyers 6 0.5661 other [] pull+ 3305 sweep 4.5261 -> 0x1d245670 next launch wallet
+86280902 0x1d245670 fee 5000 in prev 4.5261 buyers 10 0.5939 other [] pull+ 3456 sweep 4.2389 -> 0x7cc06eec next launch wallet
+86284529 0x7cc06eec fee 5000 in prev 4.2389 buyers 10 0.362 other [] pull+ 3198 sweep 4.8275 -> 0xd0caa1c8 next launch wallet
+86287894 0xd0caa1c8 fee 5000 in prev 4.8275 buyers 9 0.2451 other [] pull+ 3122 sweep 3.146 -> 0x62a23dcd next launch wallet
+86291177 0x62a23dcd fee 5000 in prev 3.146 buyers 1 0.0115 other [] pull+ 3547 sweep 4.1428 -> 0xb4ddbcff next launch wallet
+86294901 0xb4ddbcff fee 5000 in prev 4.1428 buyers 6 0.2895 other [] pull+ 3534 sweep 4.7782 -> 0x751f35ec next launch wallet
+86298603 0x751f35ec fee 5000 in prev 4.7782 buyers 8 0.3488 other [] pull+ 48 sweep 2.6343 -> 0x8f11864b next launch wallet
+86298812 0x8f11864b fee 5000 in prev 2.6343 buyers 0 0.0 other [] pull+ 3134 sweep 3.8511 -> 0x5676ec82 next launch wallet
+86302122 0x5676ec82 fee 5000 in prev 3.8511 buyers 6 0.1757 other [] pull+ 792 sweep 4.0786 -> 0x3fec6273 next launch wallet
+86303088 0x3fec6273 fee 5000 in prev 4.0786 buyers 5 0.2575 other [] pull+ 3623 sweep 5.1379 -> 0x4f41ff58 next launch wallet
+86307047 0x4f41ff58 fee 5000 in prev 5.1379 buyers 9 0.3672 other [] pull+ 3077 sweep 4.1451 -> 0x3fd5c7ca next launch wallet
+86310320 0x3fd5c7ca fee 5000 in prev 4.1451 buyers 10 0.3265 other [] pull+ 3689 sweep 3.9041 -> 0x6c3bd8f6 outside

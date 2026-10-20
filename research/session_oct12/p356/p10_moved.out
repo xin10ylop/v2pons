@@ -1,0 +1,6 @@
+(a) Mints with ticks -887272..207243 after block 86094707: 21; in launches of code 89885b75: 21; of those value launches: 21; L = 31,622,807,953,636,212,567,716: 21
+(b) other V3 WETH pools created after the stop: 102; by (launcher code, selector): [(('0a493d1a', 'ac9650d8'), 78), (('0a493d1a', '13ead562'), 13), (('fa3d4035', '026f2bf0'), 3), (('42ac5504', 'c9b42fa6'), 2), (('1275af2a', '198e2b8a'), 2), (('f35be98e', '686399cb'), 2), (('db6d9302', 'd16a2bf1'), 1), (('8dcb4e6a', 'd7188f65'), 1)]
+   swaps to +600 in those pools: 3125; router buys >= 0.05 ETH: 18 in 8 pools
+   of them with the fleet's fingerprint (04e45aaf, 228 B, ETH value, priority 1): 0 in 0 pools; by launcher: []
+   all router buys >= 0.05 ETH by fingerprint: [(('04e45aaf', 228, True, 0), 8), (('34fcd5be', 708, False, 230000), 1), (('34fcd5be', 708, False, 217000), 1), (('34fcd5be', 708, False, 499000), 1), (('34fcd5be', 708, False, 211000), 1), (('34fcd5be', 708, False, 456000), 1)]
+rpc {'posts': 36, 'items': 53, 'r429': 0}

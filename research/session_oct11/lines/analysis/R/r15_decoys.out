@@ -1,0 +1,259 @@
+2.433 launches in the last 3 h: 156 (10-11 14:24 .. 10-11 17:18), ours in 131, with a bot buy 153
+  10-11 14:24 fee 2500 ours 0 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97419) via 0x88767899 | pull None
+  10-11 14:27 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97421) via 0x88767899 | pull 11
+  10-11 14:28 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97422) via 0x88767899 | pull 13
+  10-11 14:28 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97425) via 0x88767899 | pull 13
+  10-11 14:28 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97426) via 0x88767899 | pull 13
+  10-11 14:28 fee 2500 ours 1 T 9 ahead 0.00000: +3 0.00000 0xe71a69f4(n97427) via 0x88767899 | pull 12
+  10-11 14:29 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97428) via 0x88767899 | pull 11
+  10-11 14:30 fee 2500 ours 1 T 10 ahead 0.00000:  | pull 13
+  10-11 14:30 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97430) via 0x88767899 | pull 13
+  10-11 14:30 fee 2500 ours 1 T 9 ahead 0.00000: +3 0.00000 0xe71a69f4(n97431) via 0x88767899 | pull 12
+  10-11 14:31 fee 2500 ours 1 T 9 ahead 0.00000: +3 0.00000 0xe71a69f4(n97432) via 0x88767899 | pull 12
+  10-11 14:31 fee 2500 ours 1 T 9 ahead 0.00000: +3 0.00000 0xe71a69f4(n97433) via 0x88767899 | pull 12
+  10-11 14:31 fee 2500 ours 1 T 15 ahead 0.00000: +3 0.00000 0xe71a69f4(n97434) via 0x88767899 | pull 18
+  10-11 14:32 fee 2500 ours 1 T 9 ahead 0.00000: +2 0.00000 0xe71a69f4(n97435) via 0x88767899 | pull 12
+  10-11 14:32 fee 2500 ours 1 T 9 ahead 0.00000: +3 0.00000 0xe71a69f4(n97436) via 0x88767899 | pull 12
+  10-11 14:32 fee 2500 ours 1 T 10 ahead 0.00000:  | pull 14
+  10-11 14:33 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97438) via 0x88767899 | pull 13
+  10-11 14:33 fee 2500 ours 1 T 15 ahead 0.00000: +3 0.00000 0xe71a69f4(n97439) via 0x88767899 | pull 18
+  10-11 14:33 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97440) via 0x88767899 | pull 11
+  10-11 14:33 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97442) via 0x88767899 | pull 11
+  10-11 14:34 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97443) via 0x88767899 | pull 13
+  10-11 14:34 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97445) via 0x88767899 | pull 11
+  10-11 14:34 fee 2500 ours 1 T 10 ahead 0.00000: +4 0.00000 0xe71a69f4(n97446) via 0x88767899 | pull 13
+  10-11 14:35 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97448) via 0x88767899 | pull 13
+  10-11 14:35 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97449) via 0x88767899 | pull 11
+  10-11 14:35 fee 2500 ours 1 T 9 ahead 0.00000: +3 0.00000 0xe71a69f4(n97450) via 0x88767899 | pull 12
+  10-11 14:35 fee 2500 ours 0 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97452) via 0x88767899 | pull None
+  10-11 14:41 fee 2500 ours 0 T 10 ahead 0.00013: +4 0.00000 0xe71a69f4(n97482) via 0x88767899, +4 0.00013 0x7ae81404(n707) via 0x65050a9b | pull None
+  10-11 14:48 fee 2500 ours 0 T 8 ahead 0.00024: +3 0.00000 0xe71a69f4(n97490) via 0x88767899, +3 0.00013 0x7ae81404(n710) via 0x65050a9b, +4 0.00011 0xb8c879dc(n40) via 0xfd1b271f | pull None
+  10-11 14:54 fee 2500 ours 0 T 10 ahead 0.00024: +3 0.00013 0x7ae81404(n718) via 0x65050a9b, +4 0.00011 0xb8c879dc(n51) via 0xfd1b271f | pull None
+  10-11 14:56 fee 2500 ours 0 T 8 ahead 0.00024: +3 0.00013 0x7ae81404(n720) via 0x65050a9b, +4 0.00011 0xb8c879dc(n54) via 0xfd1b271f | pull 255
+  10-11 14:57 fee 2500 ours 0 T 8 ahead 0.00024: +3 0.00000 0xe71a69f4(n97502) via 0x88767899, +3 0.00013 0x7ae81404(n722) via 0x65050a9b, +4 0.00011 0xb8c879dc(n57) via 0xfd1b271f | pull None
+  10-11 15:03 fee 2500 ours 1 T 10 ahead 0.00024: +3 0.00013 0x7ae81404(n725) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97508) via 0x88767899, +4 0.00011 0xb8c879dc(n65) via 0xfd1b271f | pull 13
+  10-11 15:03 fee 2500 ours 1 T 8 ahead 0.00024: +3 0.00000 0xe71a69f4(n97509) via 0x88767899, +3 0.00013 0x7ae81404(n727) via 0x65050a9b, +4 0.00011 0xb8c879dc(n67) via 0xfd1b271f | pull 11
+  10-11 15:03 fee 2500 ours 1 T 10 ahead 0.00013: +3 0.00013 0x7ae81404(n729) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97510) via 0x88767899 | pull 13
+  10-11 15:04 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97512) via 0x88767899 | pull 11
+  10-11 15:04 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97513) via 0x88767899 | pull 11
+  10-11 15:04 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97514) via 0x88767899 | pull 11
+  10-11 15:05 fee 2500 ours 1 T 13 ahead 0.00000: +2 0.00000 0xe71a69f4(n97516) via 0x88767899 | pull 16
+  10-11 15:05 fee 2500 ours 1 T 7 ahead 0.00000:  | pull 10
+  10-11 15:05 fee 2500 ours 1 T 8 ahead 0.00000: +2 0.00000 0xe71a69f4(n97517) via 0x88767899 | pull 11
+  10-11 15:05 fee 2500 ours 1 T 8 ahead 0.00000:  | pull 11
+  10-11 15:06 fee 2500 ours 1 T 10 ahead 0.00000: +2 0.00000 0xe71a69f4(n97518) via 0x88767899 | pull 14
+  10-11 15:06 fee 2500 ours 1 T 11 ahead 0.00000: +4 0.00000 0xe71a69f4(n97520) via 0x88767899 | pull 14
+  10-11 15:06 fee 2500 ours 1 T 10 ahead 0.00000: +2 0.00000 0xe71a69f4(n97522) via 0x88767899 | pull 13
+  10-11 15:07 fee 2500 ours 1 T 15 ahead 0.00000:  | pull 18
+  10-11 15:07 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97523) via 0x88767899 | pull 13
+  10-11 15:07 fee 2500 ours 1 T 9 ahead 0.00000: +3 0.00000 0xe71a69f4(n97525) via 0x88767899 | pull 12
+  10-11 15:08 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97526) via 0x88767899 | pull 13
+  10-11 15:08 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97529) via 0x88767899 | pull 13
+  10-11 15:08 fee 2500 ours 1 T 9 ahead 0.00000:  | pull 12
+  10-11 15:08 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97533) via 0x88767899 | pull 13
+  10-11 15:09 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97535) via 0x88767899 | pull 14
+  10-11 15:09 fee 2500 ours 1 T 10 ahead 0.00000: +2 0.00000 0xe71a69f4(n97536) via 0x88767899 | pull 13
+  10-11 15:09 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97537) via 0x88767899 | pull 13
+  10-11 15:10 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97538) via 0x88767899 | pull 11
+  10-11 15:10 fee 2500 ours 1 T 13 ahead 0.00000: +3 0.00000 0xe71a69f4(n97539) via 0x88767899 | pull 17
+  10-11 15:10 fee 2500 ours 1 T 17 ahead 0.00000:  | pull 20
+  10-11 15:10 fee 2500 ours 1 T 15 ahead 0.00000: +3 0.00000 0xe71a69f4(n97542) via 0x88767899 | pull 18
+  10-11 15:11 fee 2500 ours 1 T 14 ahead 0.00000: +3 0.00000 0xe71a69f4(n97544) via 0x88767899 | pull 17
+  10-11 15:11 fee 2500 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97546) via 0x88767899 | pull 11
+  10-11 15:11 fee 2500 ours 1 T 10 ahead 0.00050: +4 0.00000 0xe71a69f4(n97547) via 0x88767899, +5 0.00049 0x695e3f02(n0) via 0x65050a9b | pull 13
+  10-11 15:12 fee 2500 ours 1 T 8 ahead 0.00050: +3 0.00049 0x9cd67cbe(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97549) via 0x88767899 | pull 11
+  10-11 15:12 fee 2500 ours 1 T 7 ahead 0.00050: +3 0.00049 0xbfe7880c(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97551) via 0x88767899 | pull 10
+  10-11 15:12 fee 2500 ours 1 T 9 ahead 0.00050: +3 0.00000 0xe71a69f4(n97552) via 0x88767899, +4 0.00049 0xd71e33f5(n0) via 0x65050a9b | pull 12
+  10-11 15:12 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97553) via 0x88767899 | pull 14
+  10-11 15:13 fee 2500 ours 1 T 11 ahead 0.00050: +2 0.00049 0x8425dbce(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97554) via 0x88767899 | pull 14
+  10-11 15:13 fee 2500 ours 1 T 10 ahead 0.00050: +3 0.00049 0x8dca052d(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97555) via 0x88767899 | pull 13
+  10-11 15:13 fee 2500 ours 1 T 10 ahead 0.00050: +3 0.00049 0x74b6d36e(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97557) via 0x88767899 | pull 13
+  10-11 15:14 fee 2500 ours 1 T 10 ahead 0.00050: +3 0.00049 0x9a3db4b6(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97558) via 0x88767899 | pull 13
+  10-11 15:14 fee 2500 ours 1 T 9 ahead 0.00050: +3 0.00000 0xe71a69f4(n97559) via 0x88767899, +3 0.00049 0xae6ddbd7(n0) via 0x65050a9b | pull 12
+  10-11 15:14 fee 2500 ours 1 T 10 ahead 0.00050: +3 0.00049 0x6deccf1a(n0) via 0x65050a9b, +6 0.00000 0xe71a69f4(n97562) via 0x88767899 | pull 13
+  10-11 15:14 fee 2500 ours 1 T 10 ahead 0.00050: +3 0.00049 0x6f3e9fc8(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97563) via 0x88767899 | pull 13
+  10-11 15:15 fee 2500 ours 1 T 17 ahead 0.00050: +4 0.00049 0x3b3d852c(n0) via 0x65050a9b, +5 0.00000 0xe71a69f4(n97565) via 0x88767899 | pull 20
+  10-11 15:15 fee 2500 ours 1 T 9 ahead 0.00050: +3 0.00049 0x474fe3c7(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97568) via 0x88767899 | pull 12
+  10-11 15:16 fee 2500 ours 1 T 9 ahead 0.00050: +3 0.00000 0xe71a69f4(n97569) via 0x88767899, +3 0.00049 0x25b8d13a(n0) via 0x65050a9b | pull 12
+  10-11 15:16 fee 2500 ours 1 T 7 ahead 0.00050: +3 0.00000 0xe71a69f4(n97570) via 0x88767899, +3 0.00049 0x16a9e0de(n0) via 0x65050a9b | pull 10
+  10-11 15:16 fee 2500 ours 1 T 8 ahead 0.00050: +3 0.00000 0xe71a69f4(n97571) via 0x88767899, +3 0.00049 0xe6de83c5(n0) via 0x65050a9b | pull 11
+  10-11 15:17 fee 2500 ours 1 T 8 ahead 0.00050: +3 0.00000 0xe71a69f4(n97572) via 0x88767899, +3 0.00049 0x23e6ff1b(n0) via 0x65050a9b | pull 11
+  10-11 15:17 fee 2500 ours 1 T 8 ahead 0.00050: +3 0.00049 0xaa713461(n0) via 0x65050a9b, +4 0.00000 0xe71a69f4(n97573) via 0x88767899 | pull 11
+  10-11 15:17 fee 2500 ours 1 T 10 ahead 0.00050: +3 0.00049 0xe80c9755(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97575) via 0x88767899 | pull 13
+  10-11 15:17 fee 2500 ours 1 T 8 ahead 0.00050: +3 0.00049 0x293444b8(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97576) via 0x88767899 | pull 11
+  10-11 15:18 fee 2500 ours 1 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97579) via 0x88767899 | pull 13
+  10-11 15:18 fee 2500 ours 1 T 9 ahead 0.00000: +4 0.00000 0xe71a69f4(n97580) via 0x88767899 | pull 12
+  10-11 15:18 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00000 0xe71a69f4(n97585) via 0x88767899, +3 0.00495 0xf67471b3(n0) via 0x65050a9b | pull 13
+  10-11 15:19 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0xde2d0f23(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97587) via 0x88767899 | pull 23
+  10-11 15:19 fee 2500 ours 1 T 7 ahead 0.00495: +2 0.00000 0xe71a69f4(n97588) via 0x88767899, +2 0.00495 0xa0c58551(n0) via 0x65050a9b | pull 10
+  10-11 15:19 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00000 0xe71a69f4(n97589) via 0x88767899, +3 0.00495 0x90f2897f(n0) via 0x65050a9b | pull 13
+  10-11 15:20 fee 2500 ours 1 T 11 ahead 0.00495: +3 0.00000 0xe71a69f4(n97591) via 0x88767899, +3 0.00495 0xd8c68acd(n0) via 0x65050a9b | pull 14
+  10-11 15:20 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0x3500eaaf(n0) via 0x65050a9b | pull 13
+  10-11 15:20 fee 2500 ours 1 T 9 ahead 0.00495: +3 0.00000 0xe71a69f4(n97592) via 0x88767899, +3 0.00495 0x3cdc06f9(n0) via 0x65050a9b | pull 12
+  10-11 15:21 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0x160495b5(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97593) via 0x88767899 | pull 13
+  10-11 15:21 fee 2500 ours 1 T 8 ahead 0.00495: +3 0.00495 0x59069761(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97594) via 0x88767899 | pull 12
+  10-11 15:21 fee 2500 ours 1 T 16 ahead 0.00495: +3 0.00495 0xc8c859dd(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97595) via 0x88767899 | pull 19
+  10-11 15:22 fee 2500 ours 1 T 8 ahead 0.00495: +3 0.00000 0xe71a69f4(n97598) via 0x88767899, +3 0.00495 0x843e5f9a(n0) via 0x65050a9b | pull 11
+  10-11 15:22 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0xb896c11c(n0) via 0x65050a9b | pull 13
+  10-11 15:22 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0x61e8fc9c(n0) via 0x65050a9b | pull 13
+  10-11 15:22 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0x3df8bf4f(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97599) via 0x88767899 | pull 13
+  10-11 15:23 fee 2500 ours 1 T 7 ahead 0.00495: +3 0.00495 0xc80df412(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97600) via 0x88767899 | pull 10
+  10-11 15:23 fee 2500 ours 1 T 8 ahead 0.00495: +3 0.00495 0xb2f7424a(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97603) via 0x88767899 | pull 11
+  10-11 15:23 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00000 0xe71a69f4(n97604) via 0x88767899, +3 0.00495 0xe972ad07(n0) via 0x65050a9b | pull 13
+  10-11 15:24 fee 2500 ours 1 T 8 ahead 0.00495: +3 0.00000 0xe71a69f4(n97606) via 0x88767899, +3 0.00495 0x8c8b6742(n0) via 0x65050a9b | pull 11
+  10-11 15:24 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00000 0xe71a69f4(n97607) via 0x88767899, +3 0.00495 0x63adc17b(n0) via 0x65050a9b | pull 13
+  10-11 15:24 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0xae54b000(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97608) via 0x88767899 | pull 13
+  10-11 15:24 fee 2500 ours 1 T 9 ahead 0.00495: +3 0.00495 0x859afbfe(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97610) via 0x88767899 | pull 12
+  10-11 15:25 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00000 0xe71a69f4(n97611) via 0x88767899, +3 0.00495 0x3beb425c(n0) via 0x65050a9b | pull 13
+  10-11 15:25 fee 2500 ours 1 T 9 ahead 0.00495: +3 0.00495 0xd65d5b0f(n0) via 0x65050a9b, +4 0.00000 0xe71a69f4(n97612) via 0x88767899 | pull 14
+  10-11 15:25 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0xcc79d1ff(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97613) via 0x88767899 | pull 13
+  10-11 15:26 fee 2500 ours 1 T 15 ahead 0.00495: +3 0.00495 0x516f56eb(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97614) via 0x88767899 | pull 18
+  10-11 15:26 fee 2500 ours 1 T 8 ahead 0.00495: +3 0.00495 0x9a96c5a5(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97615) via 0x88767899 | pull 11
+  10-11 15:26 fee 2500 ours 1 T 9 ahead 0.00495: +3 0.00000 0xe71a69f4(n97617) via 0x88767899, +3 0.00495 0xdd2f0bc3(n0) via 0x65050a9b | pull 12
+  10-11 15:26 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0x1b542f9d(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97619) via 0x88767899 | pull 13
+  10-11 15:27 fee 2500 ours 1 T 10 ahead 0.00495: +2 0.00495 0x91be5b13(n0) via 0x65050a9b | pull 13
+  10-11 15:27 fee 2500 ours 1 T 9 ahead 0.00495: +3 0.00495 0x9ef6c093(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97623) via 0x88767899 | pull 12
+  10-11 15:27 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0x2303e016(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97624) via 0x88767899 | pull 13
+  10-11 15:28 fee 2500 ours 1 T 9 ahead 0.00495: +3 0.00000 0xe71a69f4(n97625) via 0x88767899, +3 0.00495 0xea5ec7f2(n0) via 0x65050a9b | pull 12
+  10-11 15:28 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00495 0x4a02c417(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97628) via 0x88767899 | pull 23
+  10-11 15:28 fee 2500 ours 1 T 9 ahead 0.00495: +3 0.00495 0x86070fae(n0) via 0x65050a9b, +4 0.00000 0xe71a69f4(n97630) via 0x88767899 | pull 12
+  10-11 15:28 fee 2500 ours 1 T 12 ahead 0.00495: +3 0.00495 0xa59b56f4(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97632) via 0x88767899 | pull 16
+  10-11 15:29 fee 2500 ours 1 T 8 ahead 0.00495: +3 0.00495 0x11634c20(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97633) via 0x88767899 | pull 11
+  10-11 15:29 fee 2500 ours 1 T 8 ahead 0.00495: +3 0.00495 0x9098b719(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97634) via 0x88767899 | pull 11
+  10-11 15:29 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00000 0xe71a69f4(n97635) via 0x88767899, +3 0.00495 0xd47d69d9(n0) via 0x65050a9b | pull 13
+  10-11 15:30 fee 2500 ours 1 T 10 ahead 0.00495: +3 0.00000 0xe71a69f4(n97636) via 0x88767899, +3 0.00495 0x5cc901d3(n0) via 0x65050a9b | pull 13
+  10-11 15:30 fee 2500 ours 1 T 8 ahead 0.00545: +3 0.00495 0x3e1d042f(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97638) via 0x88767899, +4 0.00049 0xb8c879dc(n75) via 0xfd1b271f | pull 11
+  10-11 15:30 fee 2500 ours 1 T 8 ahead 0.00545: +3 0.00495 0xaf3aa51d(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97639) via 0x88767899, +4 0.00049 0xb8c879dc(n79) via 0xfd1b271f | pull 11
+  10-11 15:32 fee 5000 ours 0 T 10 ahead 0.00495: +3 0.00495 0xc914efb4(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97642) via 0x88767899 | pull None
+  10-11 15:33 fee 5000 ours 0 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97647) via 0x88767899 | pull None
+  10-11 15:40 fee 5000 ours 0 T 16 ahead 0.00000: +4 0.00000 0xe71a69f4(n97662) via 0x88767899 | pull None
+  10-11 15:46 fee 5000 ours 0 T 9 ahead 0.00000: +3 0.00000 0xe71a69f4(n97669) via 0x88767899 | pull None
+  10-11 15:52 fee 5000 ours 0 T 9 ahead 0.00035: +2 0.00035 0x8cf143dd(n2623) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97679) via 0x88767899 | pull 28
+  10-11 15:52 fee 5000 ours 0 T 7 ahead 0.00035: +1 0.00035 0x8cf143dd(n2625) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97680) via 0x88767899 | pull 28
+  10-11 15:52 fee 5000 ours 0 T 9 ahead 0.00035: +1 0.00035 0x8cf143dd(n2627) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97681) via 0x88767899 | pull 27
+  10-11 15:53 fee 5000 ours 0 T 9 ahead 0.00035: +2 0.00035 0x8cf143dd(n2629) via 0x65050a9b, +3 0.00000 0xb8c879dc(n89) via 0xfd1b271f, +4 0.00000 0xe71a69f4(n97683) via 0x88767899 | pull 27
+  10-11 15:53 fee 5000 ours 0 T 10 ahead 0.00035: +2 0.00035 0x8cf143dd(n2631) via 0x65050a9b, +3 0.00000 0xb8c879dc(n92) via 0xfd1b271f, +3 0.00000 0xe71a69f4(n97685) via 0x88767899 | pull 29
+  10-11 15:53 fee 5000 ours 0 T 9 ahead 0.00069: +2 0.00035 0x8cf143dd(n2633) via 0x65050a9b, +3 0.00035 0xb8c879dc(n95) via 0xfd1b271f, +3 0.00000 0xe71a69f4(n97687) via 0x88767899 | pull 28
+  10-11 15:54 fee 5000 ours 0 T 11 ahead 0.00000:  | pull None
+  10-11 16:00 fee 5000 ours 0 T 8 ahead 0.00000: +2 0.00000 0xe71a69f4(n97696) via 0x88767899 | pull None
+  10-11 16:03 fee 5000 ours 0 T 10 ahead 0.00000: +3 0.00000 0xe71a69f4(n97701) via 0x88767899 | pull 251
+  10-11 16:04 fee 5000 ours 0 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97703) via 0x88767899 | pull None
+  10-11 16:10 fee 5000 ours 1 T 8 ahead 0.00001: +3 0.00000 0xe71a69f4(n97715) via 0x88767899, +6 0.00001 0x8cf143dd(n2635) via 0x65050a9b | pull None
+  10-11 16:16 fee 5000 ours 1 T 8 ahead 0.00000: +3 0.00000 0xe71a69f4(n97719) via 0x88767899 | pull None
+  10-11 16:22 fee 5000 ours 1 T 10 ahead 0.00495: +3 0.00495 0x8dac39a3(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97730) via 0x88767899 | pull None
+  10-11 16:28 fee 5000 ours 1 T 11 ahead 0.00495: +1 0.00495 0x5e100e39(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97737) via 0x88767899 | pull None
+  10-11 16:34 fee 5000 ours 1 T 35 ahead 0.00990: +1 0.00495 0x6b4427c2(n0) via 0x65050a9b, +2 0.00495 0xb8c879dc(n120) via 0xfd1b271f, +3 0.00000 0xe71a69f4(n97744) via 0x88767899 | pull 78
+  10-11 16:35 fee 5000 ours 1 T 8 ahead 0.00496: +1 0.00495 0x7efd1259(n0) via 0x65050a9b, +1 0.00001 0x8cf143dd(n2637) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97745) via 0x88767899 | pull None
+  10-11 16:41 fee 5000 ours 1 T 34 ahead 0.00991: +2 0.00495 0x5ccff5d5(n0) via 0x65050a9b, +2 0.00001 0x8cf143dd(n2640) via 0x65050a9b, +3 0.00495 0xb8c879dc(n125) via 0xfd1b271f, +3 0.00000 0xe71a69f4(n97757) via 0x88767899 | pull None
+  10-11 16:47 fee 5000 ours 1 T 37 ahead 0.00991: +1 0.00001 0x8cf143dd(n2643) via 0x65050a9b, +1 0.00495 0x1373e0a4(n0) via 0x65050a9b, +2 0.00495 0xb8c879dc(n129) via 0xfd1b271f | pull 138
+  10-11 16:47 fee 5000 ours 1 T 59 ahead 0.00496: +1 0.00001 0x8cf143dd(n2645) via 0x65050a9b, +2 0.00495 0xee3aabe7(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97762) via 0x88767899 | pull None
+  10-11 16:54 fee 5000 ours 1 T None ahead 0.00513: +2 0.00495 0x76b04a25(n0) via 0x65050a9b, +3 0.00013 0x8cf143dd(n2648) via 0x65050a9b, +3 0.00005 0xb8c879dc(n134) via 0xfd1b271f, +3 0.00000 0xe71a69f4(n97772) via 0x88767899 | pull 27
+  10-11 16:54 fee 5000 ours 1 T None ahead 0.00508: +2 0.00495 0xeac394d3(n0) via 0x65050a9b, +3 0.00013 0x8cf143dd(n2650) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97773) via 0x88767899 | pull 28
+  10-11 16:55 fee 5000 ours 1 T None ahead 0.00508: +2 0.00495 0x1fb21b81(n0) via 0x65050a9b, +2 0.00013 0x8cf143dd(n2652) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97774) via 0x88767899 | pull 28
+  10-11 16:55 fee 5000 ours 1 T 9 ahead 0.00508: +2 0.00495 0x13c4a41e(n0) via 0x65050a9b, +3 0.00013 0x8cf143dd(n2654) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97775) via 0x88767899 | pull None
+  10-11 17:01 fee 5000 ours 0 T 8 ahead 0.01003: +2 0.00495 0xbd92841c(n0) via 0x65050a9b, +3 0.00013 0x8cf143dd(n2657) via 0x65050a9b, +3 0.00495 0xb8c879dc(n138) via 0xfd1b271f, +3 0.00000 0xe71a69f4(n97782) via 0x88767899 | pull None
+  10-11 17:07 fee 5000 ours 0 T 7 ahead 0.01003: +2 0.00495 0x484fca68(n0) via 0x65050a9b, +3 0.00495 0xb8c879dc(n142) via 0xfd1b271f, +3 0.00013 0x8cf143dd(n2660) via 0x65050a9b, +4 0.00000 0xe71a69f4(n97791) via 0x88767899 | pull None
+  10-11 17:13 fee 5000 ours 0 T 8 ahead 0.01003: +3 0.00000 0xe71a69f4(n97798) via 0x88767899, +3 0.00013 0x8cf143dd(n2663) via 0x65050a9b, +3 0.00495 0x2a83d679(n0) via 0x65050a9b, +4 0.00495 0xb8c879dc(n146) via 0xfd1b271f | pull None
+  10-11 17:18 fee 5000 ours 0 T 8 ahead 0.01003: +2 0.00495 0x732feff1(n0) via 0x65050a9b, +3 0.00000 0xe71a69f4(n97811) via 0x88767899, +3 0.00495 0xb8c879dc(n150) via 0xfd1b271f, +3 0.00013 0x8cf143dd(n2666) via 0x65050a9b | pull None
+ETH ahead of the bot per pool (all, n 156): p50 0.00050 p90 0.00495 max 0.01003
+ETH ahead of the bot per pool (untouched, n 25): p50 0.00024 p90 0.01003 max 0.01003
+ETH ahead of the bot per pool (from 16:28, n 14): p50 0.00990 p90 0.01003 max 0.01003
+ETH ahead of the bot per pool (untouched from 16:28, n 4): p50 0.01003 p90 0.01003 max 0.01003
+
+wallets buying ahead of the bot (last 3 h): wallet, pools, offsets, sizes, via, nonce at the buy
+  0xe71a69f434a719cd5afa411568b69716aab3b84a pools 141 offs [(3, 120), (4, 11), (2, 8), (6, 1)] sizes [(2e-06, 141)] via [('0x88767899', 141)] nonce [97419, 97421, 97422, 97425, 97426, 97427]
+  0xb8c879dcd96d5ce0719e6fb056738f09b33bc33c pools 19 offs [(4, 9), (3, 8), (2, 2)] sizes [(0.00495, 7), (0.000112, 5), (0.000495, 2)] via [('0xfd1b271f', 19)] nonce [40, 51, 54, 57, 65, 67]
+  0x8cf143ddc84dedcd7bedd2b362b63af154dfa4f7 pools 19 offs [(3, 7), (2, 6), (1, 5), (6, 1)] sizes [(0.000129, 8), (0.000347, 6), (1e-05, 5)] via [('0x65050a9b', 19)] nonce [2623, 2625, 2627, 2629, 2631, 2633]
+  0x7ae81404e32aef363eb63bc4befba78fb5b636de pools 8 offs [(3, 7), (4, 1)] sizes [(0.000129, 8)] via [('0x65050a9b', 8)] nonce [707, 710, 718, 720, 722, 725]
+  0x695e3f0209cbc2f7499d98f4f9124f428be0c96d pools 1 offs [(5, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x9cd67cbe2f24b6cb5fdcf2d021015e12cb4d7391 pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xbfe7880cc412acb75ee176987f6074543a40d6d2 pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xd71e33f5da92fb0b24c6fc054dda5d69850ea216 pools 1 offs [(4, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x8425dbceef0885b52d7292828d33d5fe5e23249d pools 1 offs [(2, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x8dca052d266952481897ac1167387eefe39edca6 pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x74b6d36ea2dcc3a2128ea16d8fbd1d77cdb01bb9 pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x9a3db4b6233e3df7f1816df04f79a382bd6adcc8 pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xae6ddbd7a8bf713a05dc397929b167c872cdd60c pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x6deccf1ad3ef6e43d0e6bd97703b25bbaf65721a pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x6f3e9fc82efa763181e1c8056d54b92315b6f760 pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x3b3d852c847a9ff4e682bcefe6c104b5e7a103e0 pools 1 offs [(4, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x474fe3c7acc69ac07b7772c6b2988c725f085337 pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x25b8d13af52141b607314bc3961c2bf658132d0e pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x16a9e0de2ffbbb2aa0b28064146299271a0355fe pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xe6de83c547305854836a92f5d00bef4bb4091a7b pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x23e6ff1b3f7bfa0ce050686ac5deddf59e311ec8 pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xaa7134612e7ddd6a78ac2f51fe5647951f2aa53c pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xe80c9755150a19497c2c2a32cf6b5edaf4686805 pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x293444b8e0e704e1f919fead013198e28dd26c2e pools 1 offs [(3, 1)] sizes [(0.000495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xf67471b3d45f16d8340a2b6b3e1f08c0dff1f594 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xde2d0f23dc22acd25a3688dbfebec0fc4f86ec51 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xa0c5855182caee49ba6cbfd9f0cc69bf69c28c5c pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x90f2897f6311f419f631bfa2f8697c318617f1c7 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xd8c68acd5e850bdc8616c830ffcb3fd50de64a1d pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x3500eaaf8f6ba086c9511fc3f3c4abd7107e8577 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x3cdc06f969269b4afad4dfe9c3e8c049a75e1db4 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x160495b5d41f6ca2ae885d004a2540859276062b pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x590697617d8f36483322f1c936ab930b0c2e8279 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xc8c859dd7ac4ce471c9c389122dc424928025f02 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x843e5f9a1a19c7d978e92fa461ef9a1b75ce3b97 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xb896c11c10d98e492c24916c7e2a934a30b60f6e pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x61e8fc9c6c633dd3f812bf2af37116df531a10a9 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x3df8bf4f8feac5e0ba56a978b4cba81e67f64740 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xc80df412dcd6890530688e656fe7b56b78a0fe54 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xb2f7424a94611a61c418a3d0dc4877e43ae45983 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xe972ad0790a55f0db2829df4b959ca63ebb5a2f5 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x8c8b6742ae968567cafd9d67db59f20eda0ad36a pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x63adc17b4eaf6a9470e7bfaac022f4789a52a30b pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xae54b0001d9faba4567bd74a9ba45051719e419b pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x859afbfe17e99784ea6a09238540d78b9b0c0e92 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x3beb425cf2ef92a5a15d3bba88e9c132c095249f pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xd65d5b0f478574e8cc70eae2c55c1d841e8ebe74 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xcc79d1fff7db2b9f8163ea54c9c3aa60276ae8a2 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x516f56eb838606c412339dbf36735f3cac2d2c8f pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x9a96c5a5d9705fc34e9b8e1d0cd188f7c5cd30f8 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xdd2f0bc356d5e8ef3ef644eab0d167eca2accff4 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x1b542f9d09719a11da462a3cb146dd56f73c2857 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x91be5b134faa19844fb7473c52f7c1ba3e10f73c pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x9ef6c093b67f16c1ffb36b5a7bb44f5a48b73d6b pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x2303e0162176cfc2fcf8c2573e339e16aca5736d pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xea5ec7f2f242a60ddf33cf2839648b29b4959a39 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x4a02c4173644c7b20c4416c777df11f6489aa2a8 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x86070fae0d5410b72aea44c991b2d6cd12419ea2 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xa59b56f46d644144b03386f7de0ad09140aea964 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x11634c201ee361b8364d2dddaf8e90f060100f5d pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x9098b719693028cd8509779b8738547c479325ca pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xd47d69d93664d2bfebbe16e66e06db7c32a206b2 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x5cc901d342454a57678c27fdf7e02c04beeebf66 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x3e1d042f6d679a455ef6a1bcee49719074fb5e19 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xaf3aa51d8cd00e17b23c2ed65d9c6c9a6a8ee6dd pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xc914efb444715de6288b96bf6a9ab3fd85211a45 pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x8dac39a38047450ee4229551ff86b19fb983ad1d pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x5e100e3928f93da0061d10842bdc11627837a80a pools 1 offs [(1, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x6b4427c211e119bdd724f656ff4d6fd064955ed2 pools 1 offs [(1, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x7efd125968c085fa63962a3a100180738e7b23b8 pools 1 offs [(1, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x5ccff5d54fa2972d8ff93593e805c9f94161de8d pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x1373e0a4e2193da976b91fb1c55726967753a521 pools 1 offs [(1, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xee3aabe7421ed06255782869329f0f6910b3195a pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x76b04a25446a1629a4c78ac89fe548726c20bfed pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xeac394d36bc6e82b45ac585f6721609d4532ea00 pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x1fb21b81911d0dab237abee7e4251c15d655a9b7 pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x13c4a41ead9acef7db0c458032e4935ae7287cd0 pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0xbd92841c3a4a31d7f09e9f88e3f628ed80747004 pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x484fca68637b287ac9f96fa6af199ed04cee09c2 pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x2a83d679dea4d2028a109eb01f187d408be3c65e pools 1 offs [(3, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+  0x732feff17fdd9a954d69a4a7ad8772ba18809bb2 pools 1 offs [(2, 1)] sizes [(0.00495, 1)] via [('0x65050a9b', 1)] nonce [0]
+
+the bot's first buy: fill = output / minOut, as it happened and with an extra q ETH bought at the head of L+2
+  extra 0.0    (all       ) n  25 fill min 1.0020 p10 1.0021 p50 1.0099; reverts (fill < 1) 0
+  extra 0.0    (from 16:28) n   4 fill min 1.0020 p10 1.0020 p50 1.0021; reverts (fill < 1) 0
+  extra 0.002  (all       ) n  25 fill min 1.0004 p10 1.0005 p50 1.0083; reverts (fill < 1) 0
+  extra 0.002  (from 16:28) n   4 fill min 1.0004 p10 1.0004 p50 1.0005; reverts (fill < 1) 0
+  extra 0.0024 (all       ) n  25 fill min 1.0001 p10 1.0002 p50 1.0080; reverts (fill < 1) 0
+  extra 0.0024 (from 16:28) n   4 fill min 1.0001 p10 1.0001 p50 1.0002; reverts (fill < 1) 0
+  extra 0.0058 (all       ) n  25 fill min 0.9973 p10 0.9975 p50 1.0053; reverts (fill < 1) 4
+  extra 0.0058 (from 16:28) n   4 fill min 0.9973 p10 0.9973 p50 0.9975; reverts (fill < 1) 4
+
+fresh 0.00495 decoy wallets (nonce <= 2 at their buys, <= 2 pools): 57; funding scan for up to 12
+  0x732feff17fdd9a954d69a4a7ad8772ba18809bb2 first buy block 86002533: no funding tx found in 2000 blocks
+  0x2a83d679dea4d2028a109eb01f187d408be3c65e first buy block 85999154: no funding tx found in 2000 blocks
+  0x484fca68637b287ac9f96fa6af199ed04cee09c2 first buy block 85995784: no funding tx found in 2000 blocks

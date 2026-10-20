@@ -1,0 +1,65 @@
+L000 n=3 09-06 18:32 -> 09-06 18:47 core 12 crowdA∩0 crowdB∩0 median gap 5882 blocks; vals [[0.49, 2], [0.47, 1]]
+L001 n=3 09-09 21:34 -> 09-09 21:58 core 20 crowdA∩0 crowdB∩0 median gap 8709 blocks; vals [[0.7, 1], [0.94, 1], [1.2, 1]]
+L002 n=3 09-10 11:24 -> 09-10 11:27 core 8 crowdA∩0 crowdB∩0 median gap 846 blocks; vals [[1.2, 3]]
+L003 n=7 09-10 11:54 -> 09-10 14:07 core 18 crowdA∩0 crowdB∩0 median gap 3539 blocks; vals [[0.8, 3], [0.5, 1], [0.9, 1]]
+L004 n=58 09-10 17:17 -> 09-12 15:49 core 24 crowdA∩0 crowdB∩0 median gap 3918 blocks; vals [[1.0, 49], [1.5, 1], [0.98, 1]]
+      gap 751305 blocks (21.6 h) after 09-10 17:34
+      gap 488093 blocks (14.0 h) after 09-11 20:00
+L005 n=3 09-10 20:07 -> 09-21 16:41 core 5 crowdA∩0 crowdB∩0 median gap 8527571 blocks; vals [[1.0, 2], [1.5, 1]]
+      gap 744928 blocks (21.4 h) after 09-10 20:07
+      gap 8527571 blocks (245.2 h) after 09-11 17:07
+L006 n=245 09-11 17:23 -> 10-09 11:31 core 52 crowdA∩30 crowdB∩0 median gap 2847 blocks; vals [[3.17, 4], [4.6, 3], [4.12, 3]]
+      gap 21393601 blocks (615.1 h) after 09-11 17:40
+      gap 401357 blocks (11.5 h) after 10-06 23:41
+      gap 362787 blocks (10.4 h) after 10-07 23:22
+      gap 377532 blocks (10.9 h) after 10-08 11:12
+      gap 332467 blocks (9.6 h) after 10-09 00:32
+L007 n=8 09-13 15:47 -> 09-22 19:50 core 33 crowdA∩0 crowdB∩0 median gap 595345 blocks; vals [[3.0, 4], [2.0, 3], [1.0, 1]]
+      gap 595345 blocks (17.1 h) after 09-13 20:28
+      gap 826204 blocks (23.8 h) after 09-14 20:56
+      gap 2636571 blocks (75.8 h) after 09-15 20:22
+      gap 3348504 blocks (96.3 h) after 09-18 22:08
+L008 n=13 09-16 12:36 -> 09-16 13:30 core 54 crowdA∩0 crowdB∩0 median gap 2197 blocks; vals [[0.4, 2], [0.9, 1], [0.75, 1]]
+L009 n=69 09-16 14:50 -> 09-21 19:11 core 50 crowdA∩0 crowdB∩0 median gap 11304 blocks; vals [[1.0, 11], [1.5, 10], [2.0, 8]]
+      gap 841167 blocks (24.2 h) after 09-16 22:05
+      gap 718159 blocks (20.6 h) after 09-17 23:36
+      gap 434715 blocks (12.5 h) after 09-18 23:19
+      gap 601909 blocks (17.3 h) after 09-19 22:57
+      gap 438164 blocks (12.6 h) after 09-20 22:29
+L010 n=170 09-18 07:59 -> 10-09 10:45 core 24 crowdA∩0 crowdB∩11 median gap 8808 blocks; vals [[1.0, 49], [0.9, 13], [0.8, 12]]
+      gap 390223 blocks (11.2 h) after 09-18 21:06
+      gap 1050364 blocks (30.2 h) after 09-19 08:06
+      gap 814534 blocks (23.4 h) after 09-20 13:49
+      gap 423775 blocks (12.2 h) after 09-21 19:51
+      gap 387050 blocks (11.1 h) after 09-22 18:52
+      gap 452015 blocks (13.0 h) after 09-23 16:49
+      gap 319733 blocks (9.2 h) after 09-24 05:48
+      gap 530547 blocks (15.3 h) after 09-24 15:18
+      gap 1069595 blocks (30.8 h) after 09-25 14:17
+      gap 526797 blocks (15.1 h) after 09-26 21:13
+      gap 401052 blocks (11.5 h) after 09-27 18:30
+      gap 632871 blocks (18.2 h) after 09-28 12:54
+      gap 317272 blocks (9.1 h) after 09-29 06:38
+      gap 513848 blocks (14.8 h) after 09-29 15:29
+      gap 854177 blocks (24.6 h) after 09-30 05:51
+      gap 850659 blocks (24.5 h) after 10-01 16:09
+      gap 510425 blocks (14.7 h) after 10-02 16:31
+      gap 1723161 blocks (49.5 h) after 10-03 07:01
+      gap 588487 blocks (16.9 h) after 10-05 13:15
+      gap 900850 blocks (25.9 h) after 10-06 16:15
+      gap 413595 blocks (11.9 h) after 10-07 18:10
+      gap 541382 blocks (15.6 h) after 10-08 14:31
+L011 n=63 09-19 13:47 -> 09-23 19:40 core 39 crowdA∩0 crowdB∩0 median gap 7880 blocks; vals [[3.0, 6], [2.0, 3], [1.5, 3]]
+      gap 1916549 blocks (55.1 h) after 09-19 13:47
+      gap 304031 blocks (8.7 h) after 09-23 01:25
+L012 n=410 09-21 13:58 -> 10-04 01:36 core 51 crowdA∩0 crowdB∩0 median gap 5545 blocks; vals [[1.2, 48], [1.0, 29], [1.4, 28]]
+      gap 1927509 blocks (55.4 h) after 09-21 13:58
+      gap 389807 blocks (11.2 h) after 09-24 23:44
+      gap 738508 blocks (21.2 h) after 09-25 16:09
+      gap 384485 blocks (11.1 h) after 09-26 23:47
+      gap 519723 blocks (14.9 h) after 09-27 20:48
+      gap 388943 blocks (11.2 h) after 09-29 00:29
+      gap 385880 blocks (11.1 h) after 09-30 02:06
+      gap 387697 blocks (11.1 h) after 10-01 01:53
+      gap 323444 blocks (9.3 h) after 10-03 01:29
+L013 n=5 10-05 09:19 -> 10-05 13:50 core 38 crowdA∩0 crowdB∩0 median gap 3735 blocks; vals [[1.21, 1], [2.63, 1], [2.47, 1]]

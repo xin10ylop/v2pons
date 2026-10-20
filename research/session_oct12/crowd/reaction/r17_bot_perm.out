@@ -1,0 +1,6 @@
+1389 pools, bot 814; strata 86; 20000 within-stratum permutations
+  pulled<=150            bot 0.1732  no bot 0.1009  difference +0.0723  permutation p 0.0006
+  pulled<=120            bot 0.0713  no bot 0.0383  difference +0.0330  permutation p 0.0102
+  pull<=frb+20           bot 0.0037  no bot 0.0000  difference +0.0037  permutation p 0.2434
+  log total buys         bot -0.4285  no bot -0.0189  difference -0.4096  permutation p 0.0077
+  frb offset (if any)    bot 123.7016  no bot 169.4615  difference -45.7599  permutation p 0.0001

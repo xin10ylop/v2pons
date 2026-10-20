@@ -1,0 +1,1032 @@
+{
+ "rows": [
+  {
+   "pid": "0x7a930cad0f",
+   "ts": null,
+   "add_off": 43,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 121415,
+   "crowd1": 72,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 128,
+   "outsider_buys": [
+    [
+     139,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     140,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 4832,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x9526fc0ac3",
+   "ts": null,
+   "add_off": 41,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 4.0,
+   "nonce": 2,
+   "age_from_add": 115918,
+   "crowd1": 99,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 108,
+   "outsider_buys": [
+    [
+     129,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     130,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 5004,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x92b826689d",
+   "ts": null,
+   "add_off": 41,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 110245,
+   "crowd1": 84,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 165,
+   "outsider_buys": [
+    [
+     124,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     125,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 5131,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x23df5393ad",
+   "ts": null,
+   "add_off": 41,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 3.0,
+   "nonce": 2,
+   "age_from_add": 104459,
+   "crowd1": 71,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 143,
+   "outsider_buys": [
+    [
+     122,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     123,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     4364,
+     4e-05,
+     "0x386157d1",
+     "0xb300000b"
+    ]
+   ],
+   "pull": 4918,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x6858163acf",
+   "ts": null,
+   "add_off": 42,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 3.5,
+   "nonce": 2,
+   "age_from_add": 98863,
+   "crowd1": 76,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 16,
+   "outsider_buys": [
+    [
+     145,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     146,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     305,
+     0.000398,
+     "0x6019f8f7",
+     "0x88767899"
+    ]
+   ],
+   "pull": 390,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x405fc32aa1",
+   "ts": null,
+   "add_off": 38,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 97364,
+   "crowd1": 98,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 16,
+   "outsider_buys": [
+    [
+     136,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     137,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     296,
+     0.000398,
+     "0x6019f8f7",
+     "0x88767899"
+    ]
+   ],
+   "pull": 387,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x70747192ed",
+   "ts": null,
+   "add_off": 40,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 4.0,
+   "nonce": 1,
+   "age_from_add": 96241,
+   "crowd1": 81,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 66,
+   "outsider_buys": [
+    [
+     131,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     132,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     861,
+     0.01991,
+     "0x93fb5479",
+     "0x6e2a35a7"
+    ]
+   ],
+   "pull": 1027,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x71a4e7bd9f",
+   "ts": null,
+   "add_off": 44,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 94275,
+   "crowd1": 70,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 142,
+   "outsider_buys": [
+    [
+     148,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     149,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 4924,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0xbfb2b94ad9",
+   "ts": null,
+   "add_off": 45,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 3.0,
+   "nonce": 2,
+   "age_from_add": 88677,
+   "crowd1": 112,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 98,
+   "outsider_buys": [
+    [
+     131,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     132,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     1508,
+     7.9e-05,
+     "0xca3de975",
+     "0x6e2a35a7"
+    ],
+    [
+     3220,
+     0.008651,
+     "0xa67d7eb4",
+     "0xccc88a9d"
+    ]
+   ],
+   "pull": 3326,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x5692b193a3",
+   "ts": null,
+   "add_off": 42,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 83679,
+   "crowd1": 84,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 169,
+   "outsider_buys": [
+    [
+     145,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     146,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 5130,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0xaec252514b",
+   "ts": null,
+   "add_off": 42,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 4.0,
+   "nonce": 1,
+   "age_from_add": 78002,
+   "crowd1": 73,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 143,
+   "outsider_buys": [
+    [
+     128,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     129,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     274,
+     2e-05,
+     "0xe74fcc81",
+     "0x204faca1"
+    ],
+    [
+     1085,
+     1e-05,
+     "0xe74fcc81",
+     "0x204faca1"
+    ],
+    [
+     1559,
+     2e-05,
+     "0xe74fcc81",
+     "0x204faca1"
+    ]
+   ],
+   "pull": 4881,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x6de07138c5",
+   "ts": null,
+   "add_off": 42,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 72450,
+   "crowd1": 88,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 128,
+   "outsider_buys": [
+    [
+     122,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     123,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 4834,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0xfee00d6aa6",
+   "ts": null,
+   "add_off": 42,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 3.0,
+   "nonce": 2,
+   "age_from_add": 66969,
+   "crowd1": 99,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 104,
+   "outsider_buys": [
+    [
+     133,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     134,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 5023,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0xba96782a7d",
+   "ts": null,
+   "add_off": 43,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 3.5,
+   "nonce": 2,
+   "age_from_add": 61294,
+   "crowd1": 76,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 167,
+   "outsider_buys": [
+    [
+     136,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     137,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 5125,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x2de8799c8e",
+   "ts": null,
+   "add_off": 40,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 55432,
+   "crowd1": 78,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 142,
+   "outsider_buys": [
+    [
+     147,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     148,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 4914,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0xf5d5da45e0",
+   "ts": null,
+   "add_off": 42,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 4.0,
+   "nonce": 2,
+   "age_from_add": 49872,
+   "crowd1": 72,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 100,
+   "outsider_buys": [
+    [
+     141,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     142,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     3727,
+     0.019953,
+     "0x0a48f18a",
+     "0x00000000"
+    ]
+   ],
+   "pull": 3890,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x2742e38113",
+   "ts": null,
+   "add_off": 42,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 45152,
+   "crowd1": 103,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 108,
+   "outsider_buys": [
+    [
+     122,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     123,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     2032,
+     0.000119,
+     "0x386157d1",
+     "0xb300000b"
+    ]
+   ],
+   "pull": 5011,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0xccaf4b89bf",
+   "ts": null,
+   "add_off": 41,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 3.0,
+   "nonce": 2,
+   "age_from_add": 39510,
+   "crowd1": 73,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 169,
+   "outsider_buys": [
+    [
+     132,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     133,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 5099,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x96e2d597ee",
+   "ts": null,
+   "add_off": 41,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 3.5,
+   "nonce": 2,
+   "age_from_add": 33756,
+   "crowd1": 75,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 141,
+   "outsider_buys": [
+    [
+     116,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     117,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": 4918,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0xd2bff14d6e",
+   "ts": null,
+   "add_off": 42,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 28198,
+   "crowd1": 73,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 99,
+   "outsider_buys": [
+    [
+     121,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     122,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     3436,
+     0.00554,
+     "0x81ddfded",
+     "0xf5307745"
+    ]
+   ],
+   "pull": 3440,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x2ba5b3f37c",
+   "ts": null,
+   "add_off": 43,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 4.0,
+   "nonce": 2,
+   "age_from_add": 23753,
+   "crowd1": 93,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 108,
+   "outsider_buys": [
+    [
+     126,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     127,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     727,
+     4.9e-05,
+     "0xbd936de6",
+     "0x65050a9b"
+    ]
+   ],
+   "pull": 5020,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x3da2d1aead",
+   "ts": null,
+   "add_off": 50,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 18084,
+   "crowd1": 77,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 144,
+   "outsider_buys": [
+    [
+     133,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     134,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     3473,
+     0.001499,
+     "0x3398dadf",
+     "0x6e2a35a7"
+    ]
+   ],
+   "pull": 3477,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0xe85eef6fcb",
+   "ts": null,
+   "add_off": 41,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 3.0,
+   "nonce": 1,
+   "age_from_add": 13801,
+   "crowd1": 75,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 9,
+   "outsider_buys": [
+    [
+     141,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     142,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     251,
+     0.000996,
+     "0xe75c0906",
+     "0x6e2a35a7"
+    ]
+   ],
+   "pull": 255,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0xe564d34a59",
+   "ts": null,
+   "add_off": 42,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 3.5,
+   "nonce": 1,
+   "age_from_add": 12769,
+   "crowd1": 74,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 74,
+   "outsider_buys": [
+    [
+     131,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     132,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     1355,
+     0.002895,
+     "0xf42b73d2",
+     "0xccc88a9d"
+    ]
+   ],
+   "pull": 1521,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x6058bedefd",
+   "ts": null,
+   "add_off": 39,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 10427,
+   "crowd1": 100,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 26,
+   "outsider_buys": [
+    [
+     140,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     141,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     532,
+     0.000996,
+     "0xe75c0906",
+     "0x6e2a35a7"
+    ]
+   ],
+   "pull": 543,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0xbf173c332e",
+   "ts": null,
+   "add_off": 41,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 4.0,
+   "nonce": 1,
+   "age_from_add": 9161,
+   "crowd1": 74,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 148,
+   "outsider_buys": [
+    [
+     132,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     133,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ],
+    [
+     3637,
+     0.004007,
+     "0x69374f82",
+     "0xb92fe925"
+    ]
+   ],
+   "pull": 3796,
+   "pull_by_dep": true,
+   "sniper": 2
+  },
+  {
+   "pid": "0x238afb8ec2",
+   "ts": null,
+   "add_off": 42,
+   "add_from_is_dep": true,
+   "add_sel": "dd46508f",
+   "add_len": 1380,
+   "value": 0.0,
+   "nonce": 2,
+   "age_from_add": 4484,
+   "crowd1": 75,
+   "crowd_routers": [
+    "0x628bd69e"
+   ],
+   "crowd_n": 129,
+   "outsider_buys": [
+    [
+     128,
+     6e-05,
+     "0x57ee6646",
+     "0x88767899"
+    ],
+    [
+     129,
+     6e-05,
+     "0xf05d0e3f",
+     "0x88767899"
+    ]
+   ],
+   "pull": null,
+   "pull_by_dep": null,
+   "sniper": 2
+  }
+ ],
+ "trades": {
+  "ride +1->+180": {
+   "n": 27,
+   "mean": 0.0863,
+   "median": 0.0557,
+   "win": 1.0,
+   "pulled": 0,
+   "usd_trade": 1.295,
+   "usd_day": 17.5
+  },
+  "follow crowd1+1 hold 100": {
+   "n": 27,
+   "mean": 0.0803,
+   "median": 0.0736,
+   "win": 1.0,
+   "pulled": 0,
+   "usd_trade": 1.204,
+   "usd_day": 16.3
+  },
+  "front +1 -> crowd1+1": {
+   "n": 27,
+   "mean": 0.0107,
+   "median": 0.0095,
+   "win": 1.0,
+   "pulled": 0,
+   "usd_trade": 0.161,
+   "usd_day": 2.2
+  }
+ }
+}

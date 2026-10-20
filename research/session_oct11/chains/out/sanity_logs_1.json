@@ -1,0 +1,109 @@
+{
+ "megaeth": {
+  "blocks": 3600,
+  "transfers": 1451,
+  "swaps": 218,
+  "swap_emitters_top": [
+   [
+    "0xa8275d88521b346c42db84d5b760ef4b9e527764",
+    70
+   ],
+   [
+    "0x6c8e5d463a2473b1a8bcd87e1cea2724203a1d8f",
+    61
+   ],
+   [
+    "0x36c06217a9855a2ce68cf183a9a4f0186db5e9f6",
+    22
+   ]
+  ]
+ },
+ "apechain": {
+  "blocks": 3600,
+  "transfers": 1145,
+  "swaps": 25,
+  "swap_emitters_top": [
+   [
+    "0xd54dbbbfaadca6a4d985cd08c27e24c8a06433a0",
+    18
+   ],
+   [
+    "0x95978c06f447463329f2fa4eace493f81d2ad68a",
+    3
+   ],
+   [
+    "0x99556e210123da382eded3c72aa8dcb605c3c435",
+    1
+   ]
+  ]
+ },
+ "xai": {
+  "blocks": 3600,
+  "transfers": 3,
+  "swaps": 0,
+  "swap_emitters_top": []
+ },
+ "mode": {
+  "blocks": 1800,
+  "transfers": 151,
+  "swaps": 34,
+  "swap_emitters_top": [
+   [
+    "0xd724540f997337100b0da0ce5a8df39f15fbb7b3",
+    9
+   ],
+   [
+    "0x8cfe2a02dfbabc56ae7e573170e35f88a38bea55",
+    2
+   ],
+   [
+    "0x18c4b8d3895ec6c6b0240006caf068308ddf388f",
+    2
+   ]
+  ]
+ },
+ "reya": {
+  "blocks": 3600,
+  "transfers": 0,
+  "swaps": 0,
+  "swap_emitters_top": []
+ },
+ "unichain": {
+  "blocks": 3600,
+  "transfers": 964,
+  "swaps": 427,
+  "swap_emitters_top": [
+   [
+    "0x1f98400000000000000000000000000000000004",
+    397
+   ],
+   [
+    "0x65081cb48d74a32e9ccfed75164b8c09972dbcf1",
+    16
+   ],
+   [
+    "0x5438e884c621d5db08fa605b53ca04c5b33a623a",
+    5
+   ]
+  ]
+ },
+ "optimism": {
+  "blocks": 1800,
+  "transfers": 317816,
+  "swaps": 5236,
+  "swap_emitters_top": [
+   [
+    "0x069c637cc3dc68aab4cd785df4da7137c717cf3f",
+    568
+   ],
+   [
+    "0x9a13f98cb987694c9f086b1f5eb990eea8264ec3",
+    525
+   ],
+   [
+    "0x79c912fef520be002c2b6e57ec4324e260f38e50",
+    282
+   ]
+  ]
+ }
+}

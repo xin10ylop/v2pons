@@ -40,6 +40,8 @@ def rpc(m, p, tries=6):
 
 def compile_harness():
     import solcx
+    if "0.8.26" not in [str(v) for v in solcx.get_installed_solc_versions()]:
+        print("installing solc 0.8.26 (once, about 10 MB)"); solcx.install_solc("0.8.26")
     src = open(os.path.join(ROOT, "contracts", "RoundTripHarness.sol")).read()
     r = solcx.compile_standard({"language": "Solidity", "sources": {"H.sol": {"content": src}}, "settings": {"optimizer": {"enabled": True, "runs": 200}, "evmVersion": "cancun",
                                 "outputSelection": {"*": {"RoundTripHarness": ["evm.deployedBytecode.object"]}}}}, solc_version="0.8.26")
@@ -120,7 +122,7 @@ def main():
         rpc("eth_call", [{"from": "0x" + "c0" * 20, "to": HARNESS_AT, "data": data[:-64] + word(tokens_out + 1), "gas": hex(3_000_000)}, "latest", ov], tries=1)
         print("a buy with minOut above the real output WENT THROUGH: the relay does not enforce minOut; do not use it"); sys.exit(1)
     except RuntimeError as e:
-        print("a buy with minOut one above the real output is refused:", "TooLittleOut ok" if "d06c7f4b" in str(e) or "revert" in str(e).lower() else str(e)[:200])
+        print("a buy with minOut one above the real output is refused:", "TooLittleOut ok" if "e20a4c5d" in str(e) else ("reverted, but not with TooLittleOut: " + str(e)[:200]))
     gas = rpc("eth_estimateGas", [{"from": "0x" + "c0" * 20, "to": HARNESS_AT, "data": data}, "latest", ov]) if False else None
 
 

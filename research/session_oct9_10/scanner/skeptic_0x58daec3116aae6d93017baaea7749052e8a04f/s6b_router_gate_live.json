@@ -1,0 +1,26 @@
+{
+ "0x0e5c3b9b7802556db82340c97d88c8e608de729f|0x00000000000000000000000000000000000dead1": {
+  "minout_1": "ok 0x",
+  "minout_huge": "revert {'code': 3, 'message': 'execution reverted', 'data': '0x'}"
+ },
+ "0x0e5c3b9b7802556db82340c97d88c8e608de729f|0xdd9200659e6cfe60e93914c6ae24a728bc55c0f8": {
+  "minout_1": "ok 0x",
+  "minout_huge": "revert {'code': 3, 'message': 'execution reverted', 'data': '0x'}"
+ },
+ "0x1e9f708655801ba4a165b70719893e2365ff4e73|0x00000000000000000000000000000000000dead1": {
+  "minout_1": "ok 0x",
+  "minout_huge": "revert {'code': 3, 'message': 'execution reverted', 'data': '0x'}"
+ },
+ "0x1e9f708655801ba4a165b70719893e2365ff4e73|0xdd9200659e6cfe60e93914c6ae24a728bc55c0f8": {
+  "minout_1": "ok 0x",
+  "minout_huge": "revert {'code': 3, 'message': 'execution reverted', 'data': '0x'}"
+ },
+ "0x1cbd67cad87cb2cb017d12c059bb2e66197b6058|0x00000000000000000000000000000000000dead1": {
+  "minout_1": "revert {'code': 3, 'message': 'execution reverted: liquidity too low', 'data': '0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000",
+  "minout_huge": "revert {'code': 3, 'message': 'execution reverted', 'data': '0x'}"
+ },
+ "0x1cbd67cad87cb2cb017d12c059bb2e66197b6058|0xdd9200659e6cfe60e93914c6ae24a728bc55c0f8": {
+  "minout_1": "revert {'code': 3, 'message': 'execution reverted: liquidity too low', 'data': '0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000",
+  "minout_huge": "revert {'code': 3, 'message': 'execution reverted', 'data': '0x'}"
+ }
+}

@@ -1,0 +1,24 @@
+HOOD vault() = 0x1c64374edce76c967f54decd40fea829a56b04fc code 130 B; impl slot 0x0000000000000000000000001f430322ed9850fd1c4df5ce75200d16320210bf
+   vault name()         ERR {"code": 3, "message": "execution reverted", "data": "0x"}
+   vault symbol()       ERR {"code": 3, "message": "execution reverted", "data": "0x"}
+   vault owner()        0x0000000000000000000000002cfbed26a6bc44035b677cb689c0eb05c165458b
+   vault asset()        ERR {"code": 3, "message": "execution reverted", "data": "0x"}
+   vault token()        ERR {"code": 3, "message": "execution reverted", "data": "0x"}
+   vault totalAssets()  ERR {"code": 3, "message": "execution reverted", "data": "0x"}
+HOOD totalSupply 8912.1767
+8 d: 62 mints 2296.13 HOOD to [('0x046625e637bc0d8703f239d67544d04143e8ff9b', 62)]; 120 burns 3200.23 HOOD
+v3 pool 0x1c1f6e283a72a68c15c816324363c794151cf913 factory 0x1f7d7550b1b028f7571e69a784071f0205fd2efa token0 0x32ac8c1d7672667d5ebdea22935f7b06fc8d496f token1 0x5fc5360d0400a0fd4f2af552add042d716f1d168 fee 10000 liquidity 132927703810639619 sqrtP 826251468767121905402481 tick -229431; balances 1091941185275086980670 / 49534548387
+v3 pool 0x52e65b17fb6e5ba00ed806f37afcd2daa50271ca factory 0x1f7d7550b1b028f7571e69a784071f0205fd2efa token0 0x0bd7d308f8e1639fab988df18a8011f41eacad73 token1 0x5fc5360d0400a0fd4f2af552add042d716f1d168 fee 100 liquidity 3582067979239587443 sqrtP 3972143377274695702777179 tick -198026; balances 5530731641635000732038 / 6454847638289
+HOOD price 108.76 USDG; ETH 2513.6 USDG; HOOD = 0.04327 ETH
+USDG/HOOD pool depth: 1091.94 HOOD + 49535 USDG (~67.0 ETH total)
+   HOOD v3 pool 0xb58fa92fc653267ba7b765dc1d1486ce2aa146b1 created block 78241692 t0 32ac8c1d76 t1 68f1dca15e fee 10000 HOOD bal 0.024
+   HOOD v3 pool 0x8b9e63b142e7be92115817201421de77fe16d8af created block 78266093 t0 32ac8c1d76 t1 7beef1d945 fee 10000 HOOD bal 0.068
+   HOOD v3 pool 0x5b68be5e15f859581ee6726b9c9f2a6ee932981e created block 78395915 t0 32ac8c1d76 t1 4f88d0613b fee 10000 HOOD bal 0.185
+   HOOD v3 pool 0xfbc48de3df86ffa5d27143838d4c1c616e71fa4c created block 78506353 t0 32ac8c1d76 t1 6b92ebbb48 fee 10000 HOOD bal 1.270
+   HOOD v3 pool 0xf88072b8ba62ac91fd8c7a4a53afc8466858a200 created block 78531042 t0 32ac8c1d76 t1 be505e65ff fee 10000 HOOD bal 0.066
+   HOOD v3 pool 0x914aa92748c84d77b32720326edef4c388b02dd4 created block 79496616 t0 32ac8c1d76 t1 776c7b6f57 fee 10000 HOOD bal 0.086
+   HOOD v3 pool 0xc9fc2c21c2f5795936c6b02f545fcb8382c736e9 created block 79560974 t0 32ac8c1d76 t1 c87cd03723 fee 10000 HOOD bal 0.054
+   HOOD v3 pool 0xb9e224864761c77624b03b789e3979a08e875213 created block 81825817 t0 32ac8c1d76 t1 39835b9687 fee 10000 HOOD bal 0.303
+   HOOD v3 pool 0x1f6c912f9d4992dd6bed65bf06a593f2adbf6bfc created block 86886543 t0 32ac8c1d76 t1 f56e24c5ec fee 10000 HOOD bal 0.000
+HOOD held by the PoolManager 3593.553; by the hook 504.251; by the locker 0xef785ad4 0.000
+{'posts': 54, 'items': 54, 'r429': 4}

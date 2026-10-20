@@ -1,0 +1,20 @@
+ok live path: armed, fired at nonce 5 with the predicted minOut, the deadline sell at the buy block + 2 at nonce 6, trade_done priced
+ok gates: dust, token call, late first buy, fee tier, position open, daily cap
+ok dry run: would_fire, the planned landing, would_sell at the deadline, and on a buy behind ours the take-profit; nothing sent
+ok stale frames: the first buy is recorded (and moves the price), nothing is fired on it or on the buys after it
+ok a reverted buy: the presigned sell finds nothing to sell, the gas is the only cost, no halt
+ok take profit: a buy behind ours worth less than TAKE_PROFIT leaves the position, the next one sells it in the same block, priced exactly
+ok the feed's pool price: a dust buy before the trigger is in the prediction (the trigger-only one is too high, as it was by 4e-6 on every live trade)
+ok arming after the first buy: the buys before it replayed onto the pool, the pool marked late, the next buy not traded
+ok halt: the pull landed before our sell, the engine wrote the halt file and fires nothing more
+ok BUY_DELAY_BLOCKS: fired one block after the trigger; skipped when the crowd's next buy came first
+ok seat: a launch through a fresh launcher armed by its call, the buy at launch + 6, the burst one block behind it takes the profit; a burst before the seat, no trade; a look-alike launcher (other code) never traded
+ok feed: a launch and our buy each alone in a block (kind 4), a trigger in a nested batch
+ok a lost reply to our buy: the position kept, the buy seen in the feed, the sell on schedule, settled
+ok a refused buy: no position
+ok a lost buy that never went in: the sell retried and refused, the trade closed, the nonce back to the chain's
+ok a failed sell send retried on the other connection
+ok our buy not seen in the feed: the sell on the planned block's deadline
+ok the feed stalls: the time fallback sends the sell
+ok a filled buy whose sell sold nothing: halted, and the halt read back after a restart
+ok the sender: a busy slot falls back to a fresh connection at once; replies classified

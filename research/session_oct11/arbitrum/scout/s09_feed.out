@@ -1,0 +1,5 @@
+handshake OK in 0.45s
+frame bytes: 636
+messages in frame: 1
+seq: 491697733 kind: 3 ts: 1791746288 has l2Msg: True
+top keys: ['version', 'messages']

@@ -1,0 +1,5 @@
+V3 356-B: pumped at/after +60: census 38/111 = 34.2%; 40 trades expect 13.7; halt if <= 7 (false halt 1.6%; if the share halved, halted 62% of the time)
+V3 356-B: real buy inside the hold: census 22/111 = 19.8%; 40 trades expect 7.9; halt if <= 2 (false halt 0.9%; if the share halved, halted 23% of the time)
+V3 crowd: real buy inside the hold: census 371/1046 = 35.5%; 40 trades expect 14.2; halt if <= 7 (false halt 1.1%; if the share halved, halted 58% of the time)
+V2 fleet: real buy inside the hold: census 252/603 = 41.8%; 40 trades expect 16.7; halt if <= 9 (false halt 0.9%; if the share halved, halted 68% of the time)
+V2 70adce63 >= 40: real buy inside the hold: census 918/1029 = 89.2%; 40 trades expect 35.7; halt if <= 30 (false halt 0.9%; if the share halved, halted 100% of the time)

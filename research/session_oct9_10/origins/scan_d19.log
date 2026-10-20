@@ -1,0 +1,7 @@
+1401 blocks in 1 windows
+250/1401 blocks, through 82500249, 7s, req {'req': 14, '429': 1}
+500/1401 blocks, through 82500499, 13s, req {'req': 27, '429': 1}
+750/1401 blocks, through 82500749, 18s, req {'req': 40, '429': 1}
+1000/1401 blocks, through 82500999, 24s, req {'req': 53, '429': 1}
+1250/1401 blocks, through 82501249, 33s, req {'req': 69, '429': 4}
+1401/1401 blocks, through 82501400, 41s, req {'req': 83, '429': 5}

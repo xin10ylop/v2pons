@@ -1,0 +1,6 @@
+oldest: pools 89, with a bot buy 89; T p10/50/90 8/9/11 min 7 max 20; bot wallets 103; missing swap txs to L+100 0; pulled by L+200 15
+  T buy size (ETH) p10/50/90: [0.0742, 0.125, 0.1732] ; bot buys per pool p50 4
+  T calldata length: Counter({324: 89}) ; swap 'sender' (router) of T: Counter({'0x8876789976decbfcbbbe364623c63652db8c0904': 89})
+  T histogram: [(7, 2), (8, 26), (9, 30), (10, 21), (11, 2), (15, 4), (16, 2), (17, 1), (20, 1)]
+  pulls (offset, sender, to:sel): [(28, '0xa88e69fc', '0x1cbaf24d:a0f7978d'), (28, '0xe7f003e3', '0x1cbaf24d:a0f7978d'), (37, '0xb48c2dec', '0x1cbaf24d:a0f7978d'), (38, '0x2bdf6a3e', '0x1cbaf24d:a0f7978d'), (38, '0x52a18197', '0x1cbaf24d:a0f7978d'), (38, '0x5e097749', '0x1cbaf24d:a0f7978d'), (38, '0x7b9e189a', '0x1cbaf24d:a0f7978d'), (39, '0x27745428', '0x1cbaf24d:a0f7978d'), (43, '0x60e8ee8a', '0x1cbaf24d:a0f7978d'), (64, '0xc40fd228', '0x1cbaf24d:a0f7978d'), (131, '0x76a59781', '0x1cbaf24d:a0f7978d'), (175, '0xeec3d8cb', '0x1cbaf24d:a0f7978d'), (195, '0x8d215639', '0x1cbaf24d:a0f7978d'), (197, '0x86427aa5', '0x1cbaf24d:a0f7978d'), (197, '0x8f54d580', '0x1cbaf24d:a0f7978d')]
+  outside buys before T (or no T) with size >= 0.00003: []

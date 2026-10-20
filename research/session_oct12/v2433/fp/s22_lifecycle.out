@@ -1,0 +1,7 @@
+pools 91 pulled 91 never pulled []
+18:03..20:03  launches 23  gap min p50 6.2  T p50 8 (min 7 max 15)  bot buys/pool p50 73  bot ETH/pool p50 8.01  pull offset p50 3396 (min 345 max 3735)
+20:05..22:02  launches 24  gap min p50 5.9  T p50 9.0 (min 7 max 35)  bot buys/pool p50 78  bot ETH/pool p50 9.57  pull offset p50 3340.5 (min 46 max 3649)
+22:08..00:00  launches 22  gap min p50 6.0  T p50 8 (min 7 max 128)  bot buys/pool p50 81  bot ETH/pool p50 9.07  pull offset p50 3257.0 (min 41 max 3609)
+00:06..02:00  launches 21  gap min p50 6.2  T p50 9 (min 7 max 24)  bot buys/pool p50 79  bot ETH/pool p50 8.50  pull offset p50 3356 (min 48 max 3717)
+02:06..02:06  launches  1  gap min p50 5.6  T p50 10 (min 10 max 10)  bot buys/pool p50 40  bot ETH/pool p50 5.11  pull offset p50 3689 (min 3689 max 3689)
+last launch 10-12 02:06:02 block 86310320 tx 0x18cb2709602ac271f87a84fb7080cca37e0809d19a4c35018f7a6230ad001b11 sender 0x3fd5c7ca6a06b568b6ceccfea414a63a91acb2a7 token 0xb28f2d1f01b659bdffd762f4fac660dd25057777 pool 0x55a352811c40b46156201546cb5798e97d6cabb5166e8bcbec36924ad8dad995; pulled at +3689 blocks; bot buys 40 (5.11 ETH), last bot buy at +1048

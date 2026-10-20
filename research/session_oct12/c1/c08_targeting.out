@@ -1,0 +1,32 @@
+== our 5 filled and 3 reverted pools
+  10-11 20:58:49 0x5ec6831561 FILLED  T +77 pull T+99 router ETH by T+60 0.260 router buys after T+62 before the pull 0 last router buy -> pull 67
+  10-11 20:59:59 0x3586911526 REVERTED T +277 pull T+406 router ETH by T+60 1.170 router buys after T+62 before the pull 41 last router buy -> pull 169
+  10-11 21:01:47 0xd6180333d0 FILLED  T +41 pull T+117 router ETH by T+60 0.468 router buys after T+62 before the pull 0 last router buy -> pull 68
+  10-11 21:02:38 0x6d80b8161c FILLED  T +33 pull T+65225 router ETH by T+60 0.162 router buys after T+62 before the pull 97 last router buy -> pull 133
+  10-11 22:16:34 0xd4654e14b3 REVERTED T +118 pull T+56247 router ETH by T+60 0.580 router buys after T+62 before the pull 98 last router buy -> pull 12
+  10-11 23:54:58 0x266d00f154 REVERTED T +103 pull T+67167 router ETH by T+60 0.620 router buys after T+62 before the pull 121 last router buy -> pull 9
+  10-12 01:15:58 0x0e4cc1d813 FILLED  T +61 pull T+86 router ETH by T+60 0.285 router buys after T+62 before the pull 0 last router buy -> pull 47
+  10-12 01:18:11 0xb47b706f2b FILLED  T +155 pull T+38 router ETH by T+60 1.324 router buys after T+62 before the pull 0 last router buy -> pull 9
+
+== 36 h: triggered and >= T+300 old: 169 (ours filled 5, reverted 3, others 161)
+   pulled by T+ 62: ours filled 1/5, reverted 0/3, others 1/161 (0.6%); Fisher one-sided p (filled vs others) 0.06
+   pulled by T+100: ours filled 3/5, reverted 0/3, others 2/161 (1.2%); Fisher one-sided p (filled vs others) 0.00013
+   pulled by T+120: ours filled 4/5, reverted 0/3, others 5/161 (3.1%); Fisher one-sided p (filled vs others) 2e-05
+   pulled by T+200: ours filled 4/5, reverted 0/3, others 18/161 (11.2%); Fisher one-sided p (filled vs others) 0.0011
+   others: pull - T p5/10/25/50 [156, 193, 333, 1098]; the 18 pulled by T+200: [('03:58:29', 183, 0.02, 0), ('06:00:27', 196, 4.19, 7), ('13:44:10', 63, 0.21, 0), ('15:33:50', 193, 0.01, 1), ('16:07:05', 138, 0.22, 0), ('16:26:26', 184, 0.74, 0), ('17:13:53', 113, 0.13, 0), ('17:52:57', 194, 0.29, 2), ('17:56:42', 101, 0.24, 1), ('19:37:24', 176, 0.13, 2), ('19:46:23', 156, 0.01, 1), ('20:25:53', 19, 0.36, 0), ('03:20:01', 125, 0.04, 0), ('07:34:57', 107, 0.01, 0), ('07:36:04', 189, 0.0, 2), ('07:43:32', 183, 0.19, 1), ('10:41:19', 166, 1.91, 8), ('10:52:53', 187, 2.05, 6)]
+   others where the router never bought after T+62: 8; their pull - T p25/50/75 [107, 125, 183]
+
+== Oct 11 19:00 - Oct 12 03:00: triggered and >= T+300 old: 21 (ours filled 5, reverted 3, others 13)
+   pulled by T+ 62: ours filled 1/5, reverted 0/3, others 1/13 (7.7%); Fisher one-sided p (filled vs others) 0.49
+   pulled by T+100: ours filled 3/5, reverted 0/3, others 1/13 (7.7%); Fisher one-sided p (filled vs others) 0.044
+   pulled by T+120: ours filled 4/5, reverted 0/3, others 1/13 (7.7%); Fisher one-sided p (filled vs others) 0.0077
+   pulled by T+200: ours filled 4/5, reverted 0/3, others 3/13 (23.1%); Fisher one-sided p (filled vs others) 0.047
+   others: pull - T p5/10/25/50 [19, 156, 494, 2905]; the 3 pulled by T+200: [('19:37:24', 176, 0.13, 2), ('19:46:23', 156, 0.01, 1), ('20:25:53', 19, 0.36, 0)]
+   others where the router never bought after T+62: 1; their pull - T p25/50/75 [19, 19, 19]
+
+== router buys around our trades (offset from our buy: ETH)
+  0x5ec6831561 our buy +79 (T+2), sell buy+61, pull buy+97; router buys (buy-relative, ETH) [(-2, 0.06), (30, 0.06), (30, 0.08), (30, 0.06)]; router sells []
+  0xd6180333d0 our buy +43 (T+2), sell buy+62, pull buy+115; router buys (buy-relative, ETH) [(-2, 0.136), (47, 0.332)]; router sells []
+  0x6d80b8161c our buy +35 (T+2), sell buy+62, pull buy+65223; router buys (buy-relative, ETH) [(-2, 0.162), (76, 0.02), (126, 0.174), (126, 0.16), (126, 0.047), (144, 0.001), (184, 0.0), (212, 0.056), (212, 0.142), (212, 0.121), (243, 0.188), (273, 0.233)]; router sells []
+  0x0e4cc1d813 our buy +63 (T+2), sell buy+62, pull buy+84; router buys (buy-relative, ETH) [(-2, 0.111), (37, 0.174)]; router sells []
+  0xb47b706f2b our buy +157 (T+2), sell -, pull buy+36; router buys (buy-relative, ETH) [(-2, 0.316), (7, 0.164), (17, 0.346), (27, 0.498)]; router sells []

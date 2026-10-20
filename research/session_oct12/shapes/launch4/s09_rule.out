@@ -1,0 +1,30 @@
+== S2: 85 pools
+   buy +1 sell +60  : n  85 mean   -1.87%  median  -1.99%  win   1  best     +8.2% (0xc1ffeb85)  mean without the best  -1.99%
+   buy +1 sell +600 : n  85 mean   -1.29%  median  -1.99%  win   1  best    +56.2% (0xc1ffeb85)  mean without the best  -1.98%
+   buy +1 sell +3000: n  85 mean   +3.60%  median  -1.99%  win   1  best   +472.9% (0xc1ffeb85)  mean without the best  -1.99%
+   buy +2 sell +60  : n  85 mean   -1.87%  median  -1.99%  win   1  best     +8.2% (0xc1ffeb85)  mean without the best  -1.99%
+   buy +2 sell +600 : n  85 mean   -1.29%  median  -1.99%  win   1  best    +56.2% (0xc1ffeb85)  mean without the best  -1.98%
+   buy +2 sell +3000: n  85 mean   +3.60%  median  -1.99%  win   1  best   +472.9% (0xc1ffeb85)  mean without the best  -1.99%
+   buy +3 sell +60  : n  85 mean   -2.01%  median  -1.99%  win   0  best     -2.0% (0xf261a42a)  mean without the best  -2.01%
+   buy +3 sell +600 : n  85 mean   -1.50%  median  -1.99%  win   1  best    +38.7% (0xc1ffeb85)  mean without the best  -1.98%
+   buy +3 sell +3000: n  85 mean   +2.84%  median  -1.99%  win   1  best   +409.0% (0xc1ffeb85)  mean without the best  -1.99%
+== S3: 36 pools
+   buy +1 sell +60  : n  36 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0xff16c224)  mean without the best  -1.99%
+   buy +1 sell +600 : n  36 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0xff16c224)  mean without the best  -1.99%
+   buy +1 sell +3000: n  36 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0xff16c224)  mean without the best  -1.99%
+   buy +2 sell +60  : n  36 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0xff16c224)  mean without the best  -1.99%
+   buy +2 sell +600 : n  36 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0xff16c224)  mean without the best  -1.99%
+   buy +2 sell +3000: n  36 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0xff16c224)  mean without the best  -1.99%
+   buy +3 sell +60  : n  36 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0xd31e913d)  mean without the best  -1.99%
+   buy +3 sell +600 : n  36 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0xf7b6c2ae)  mean without the best  -1.99%
+   buy +3 sell +3000: n  36 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0xf7b6c2ae)  mean without the best  -1.99%
+== S4: 26 pools
+   buy +1 sell +60  : n  26 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0x2ab61864)  mean without the best  -1.99%
+   buy +1 sell +600 : n  26 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0x2ab61864)  mean without the best  -1.99%
+   buy +1 sell +3000: n  26 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0x2ab61864)  mean without the best  -1.99%
+   buy +2 sell +60  : n  26 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0x2ab61864)  mean without the best  -1.99%
+   buy +2 sell +600 : n  26 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0x2ab61864)  mean without the best  -1.99%
+   buy +2 sell +3000: n  26 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0x2ab61864)  mean without the best  -1.99%
+   buy +3 sell +60  : n  26 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0x1e76811a)  mean without the best  -1.99%
+   buy +3 sell +600 : n  26 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0x1e76811a)  mean without the best  -1.99%
+   buy +3 sell +3000: n  26 mean   -1.99%  median  -1.99%  win   0  best     -2.0% (0x1e76811a)  mean without the best  -1.99%

@@ -1,0 +1,12 @@
+2592 blocks in 1 windows
+250/2592 blocks, through 82855858, 7s, req {'req': 14, '429': 1}
+500/2592 blocks, through 82856108, 16s, req {'req': 29, '429': 3}
+750/2592 blocks, through 82856358, 33s, req {'req': 49, '429': 10}
+1000/2592 blocks, through 82856608, 45s, req {'req': 65, '429': 13}
+1250/2592 blocks, through 82856858, 54s, req {'req': 80, '429': 15}
+1500/2592 blocks, through 82857108, 67s, req {'req': 96, '429': 18}
+1750/2592 blocks, through 82857358, 78s, req {'req': 111, '429': 20}
+2000/2592 blocks, through 82857608, 88s, req {'req': 126, '429': 22}
+2250/2592 blocks, through 82857858, 97s, req {'req': 139, '429': 22}
+2500/2592 blocks, through 82858108, 106s, req {'req': 153, '429': 23}
+2592/2592 blocks, through 82858200, 106s, req {'req': 153, '429': 23}

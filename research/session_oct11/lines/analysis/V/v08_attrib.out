@@ -1,0 +1,15 @@
+sample 80 pools; unattributed swaps in [a,b): 0
+trade trig+2 / hold 60, all swaps:         mean +0.1999 med +0.0841 win 88%
+  only the bot's swaps re-applied:           mean +0.1999 med +0.0840 win 86%
+  only the non-bot swaps re-applied:         mean -0.0015 med -0.0015 win 1%
+  no swap re-applied (our two fees only):    mean -0.0015 med -0.0015 win 0%
+flows in [a, b) by class (ETH; buys in / sells out):
+  bot                    B n   388 eth    81.527
+  bot                    S n     8 eth     2.636
+  other                  B n   140 eth     0.049
+  other                  S n    33 eth     0.045
+non-bot buys in [a,b): fingerprints [(('0x88767899', '3593564c', 1124), 63), (('0x897c3456', 'd03fae92', 388), 59), (('0x65050a9b', '4d819a2a', 580), 3), (('0x00000000', '1dcd4dad', 1636), 3), (('0x88767899', '3593564c', 1092), 2), (('0xf0b7eaaf', '39ecce49', 1412), 2), (('0xf0b7eaaf', '39ecce49', 1060), 2), (('0x6e2a35a7', 'f2c42696', 1124), 2)]
+pools with a non-bot buy >= 0.001 ETH in [a,b): 15/80; sizes p10/50/90 (0.001, 0.001, 0.002)
+bot buys in [T, T+162) per pool p10/50/90 (3.0, 14.0, 30.3)
+bot sells in [T, min(pull, T+400)]: 155 in 45/80 pools; offset after its first buy p10/50/90 (95.4, 179, 367.2); min 40; ETH out p10/50/90 (0.0225, 0.2838, 0.6163); blocks before the pull p10/50/90 (79.8, 315, 2623.6)
+bot sells inside a trig+2..+62 hold: 8; first bot sell per pool offset: [40]

@@ -1,0 +1,31 @@
+1389 pools, bot in 814
+
+pull (first Burn), any time: MH rate ratio bot / no bot, strata day x variant x age band: 1.42 (95% CI 1.24-1.62)
+   age      (1, 40): no bot    0 events /    22425 blocks = 0.000/1k   bot    0 /    31746 = 0.000/1k   crude ratio nan
+   age     (40, 80): no bot    1 events /    23000 blocks = 0.043/1k   bot    1 /    32543 = 0.031/1k   crude ratio 0.71
+   age    (80, 120): no bot   20 events /    22665 blocks = 0.882/1k   bot   56 /    31527 = 1.776/1k   crude ratio 2.01
+   age   (120, 200): no bot   77 events /    41018 blocks = 1.877/1k   bot  187 /    52679 = 3.550/1k   crude ratio 1.89
+   age   (200, 400): no bot  115 events /    81872 blocks = 1.405/1k   bot  186 /    91635 = 2.030/1k   crude ratio 1.45
+   age   (400, 800): no bot   97 events /   123552 blocks = 0.785/1k   bot  135 /   121809 = 1.108/1k   crude ratio 1.41
+   age  (800, 1600): no bot   62 events /   180642 blocks = 0.343/1k   bot   74 /   162861 = 0.454/1k   crude ratio 1.32
+   age (1600, 3001): no bot   39 events /   252801 blocks = 0.154/1k   bot   39 /   215373 = 0.181/1k   crude ratio 1.17
+
+pull before any buy >= 0.005 ETH (censored at that buy): MH rate ratio bot / no bot, strata day x variant x age band: 1.43 (95% CI 1.01-2.03)
+   age      (1, 40): no bot    0 events /    22425 blocks = 0.000/1k   bot    0 /    31746 = 0.000/1k   crude ratio nan
+   age     (40, 80): no bot    1 events /    23000 blocks = 0.043/1k   bot    0 /    32560 = 0.000/1k   crude ratio 0.00
+   age    (80, 120): no bot    9 events /    22841 blocks = 0.394/1k   bot   38 /    31889 = 1.192/1k   crude ratio 3.02
+   age   (120, 200): no bot   22 events /    44092 blocks = 0.499/1k   bot   54 /    59281 = 0.911/1k   crude ratio 1.83
+   age   (200, 400): no bot   22 events /   106199 blocks = 0.207/1k   bot   26 /   141242 = 0.184/1k   crude ratio 0.89
+   age   (400, 800): no bot    9 events /   206187 blocks = 0.044/1k   bot    9 /   275949 = 0.033/1k   crude ratio 0.75
+   age  (800, 1600): no bot    1 events /   409217 blocks = 0.002/1k   bot    0 /   549600 = 0.000/1k   crude ratio 0.00
+   age (1600, 3001): no bot    1 events /   714718 blocks = 0.001/1k   bot    0 /   962487 = 0.000/1k   crude ratio 0.00
+
+first buy >= 0.005 ETH (the crowd's, mostly), before the pull: MH rate ratio bot / no bot, strata day x variant x age band: 1.08 (95% CI 0.95-1.23)
+   age      (1, 40): no bot   45 events /    21284 blocks = 2.114/1k   bot   53 /    30609 = 1.732/1k   crude ratio 0.82
+   age     (40, 80): no bot  151 events /    18969 blocks = 7.960/1k   bot  240 /    27456 = 8.741/1k   crude ratio 1.10
+   age    (80, 120): no bot  123 events /    12368 blocks = 9.945/1k   bot  189 /    16598 = 11.387/1k   crude ratio 1.14
+   age   (120, 200): no bot   77 events /    16971 blocks = 4.537/1k   bot  119 /    20815 = 5.717/1k   crude ratio 1.26
+   age   (200, 400): no bot   68 events /    27264 blocks = 2.494/1k   bot   60 /    34595 = 1.734/1k   crude ratio 0.70
+   age   (400, 800): no bot   33 events /    36231 blocks = 0.911/1k   bot   23 /    55679 = 0.413/1k   crude ratio 0.45
+   age  (800, 1600): no bot    6 events /    59743 blocks = 0.100/1k   bot    3 /   102304 = 0.029/1k   crude ratio 0.29
+   age (1600, 3001): no bot    4 events /    97087 blocks = 0.041/1k   bot    0 /   177927 = 0.000/1k   crude ratio 0.00

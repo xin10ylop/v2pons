@@ -1,0 +1,93 @@
+head 86902493 10-12 18:58:06; 13ead562 WETH-side launches 85
+
+=== token code 0402ab611457 (8702 B): 65 launches, line shape 65, wallets 15, 10-10 13:20:18 .. 10-12 15:47:50
+   fees [(100, 65)]; launch tx type/gas [(('0x0', 5225415), 15), (('0x0', 5225684), 13), (('0x0', 5224998), 11), (('0x0', 5225028), 4)]
+   launch nonce [(2, 14), (21, 2), (13, 2), (9, 2), (28, 1), (37, 1)]; mint range [((-887272, 204200), 62), ((-204200, 887272), 3)]
+   85632093 10-11 06:39:39 0x1cd4303e n2 fee 100 LINE type 0x0 gasPrice 44017601 gas 5225091 mint +7 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +14 own1 +29 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+   85633167 10-11 06:41:31 0x1cd4303e n9 fee 100 LINE type 0x0 gasPrice 44024201 gas 5225374 mint +7 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +13 own1 +32 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+   85635604 10-11 06:45:45 0xd45b13a8 n2 fee 100 LINE type 0x0 gasPrice 44000001 gas 5225374 mint +7 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +14 own1 +30 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+   86378827 10-12 04:03:58 0xf41e1a64 n2 fee 100 LINE type 0x0 gasPrice 44189201 gas 5225786 mint +7 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +13 own1 +25 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+   86379461 10-12 04:05:03 0xf41e1a64 n13 fee 100 LINE type 0x0 gasPrice 44017601 gas 5225786 mint +7 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +12 own1 +23 0.0010 0xcaf681a6:04e45aaf/228 type 0x0
+   86440192 10-12 05:49:02 0xdd0d49ae n2 fee 100 LINE type 0x0 gasPrice 44000001 gas 5225244 mint +30 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +53 own1 +138 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+   86444151 10-12 05:55:47 0x78d7e5cd n2 fee 100 LINE type 0x0 gasPrice 44158401 gas 5224998 mint +28 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +52 own1 +142 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+   86453459 10-12 06:11:46 0x46e39f0d n2 fee 100 LINE type 0x0 gasPrice 44121001 gas 5224994 mint +32 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +54 own1 +140 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+   86614007 10-12 10:47:10 0x30a51de7 n2 fee 100 LINE type 0x0 gasPrice 44116601 gas 5225187 mint +8 L 3.681e+22 pool 9.998e+08 dEaD 2e+05 +13 own1 +25 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+   86786987 10-12 15:41:37 0x844c876d n2 fee 100 LINE type 0x0 gasPrice 44400401 gas 5225372 mint +7 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +14 own1 +29 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+   86789370 10-12 15:45:40 0x4b10608d n2 fee 100 LINE type 0x0 gasPrice 44305801 gas 5226481 mint +7 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +12 own1 +31 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+   86790642 10-12 15:47:50 0xecf0f9e2 n2 fee 100 LINE type 0x0 gasPrice 44248601 gas 5226481 mint +6 L 3.681e+22 pool 9.997e+08 dEaD 3e+05 +12 own1 +27 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+
+=== token code bc076c72b673 (13816 B): 5 launches, line shape 0, wallets 1, 10-12 10:16:13 .. 10-12 16:41:08
+   fees [(10000, 5)]; launch tx type/gas [(('0x2', 4750135), 1), (('0x2', 4749879), 1), (('0x2', 4750044), 1), (('0x2', 4749894), 1)]
+   launch nonce [(12, 1), (23, 1), (32, 1), (42, 1), (68, 1)]; mint range [((-887200, 198600), 5)]
+   86596049 10-12 10:16:13 0xb93262d3 n12 fee 10000 - type 0x2 gasPrice 20064000 gas 4750135 mint +100 L 2.436e+22 pool 5e+08 dEaD 0 +None own1 none
+   86606471 10-12 10:34:13 0xb93262d3 n23 fee 10000 - type 0x2 gasPrice 20106000 gas 4749879 mint +1132 L 2.436e+22 pool 5e+08 dEaD 0 +None own1 none
+   86615569 10-12 10:49:51 0xb93262d3 n32 fee 10000 - type 0x2 gasPrice 20068000 gas 4750044 mint +1142 L 2.436e+22 pool 5e+08 dEaD 0 +None own1 none
+   86641873 10-12 11:34:42 0xb93262d3 n42 fee 10000 - type 0x2 gasPrice 20050000 gas 4749894 mint +1148 L 2.436e+22 pool 5e+08 dEaD 0 +None own1 none
+   86822061 10-12 16:41:08 0xb93262d3 n68 fee 10000 - type 0x2 gasPrice 20066000 gas 4750026 mint +1156 L 2.436e+22 pool 5e+08 dEaD 0 +None own1 none
+
+=== token code 83fea12c6b2b (3937 B): 3 launches, line shape 0, wallets 1, 10-11 05:09:57 .. 10-11 05:27:14
+   fees [(100, 2), (10000, 1)]; launch tx type/gas [(('0x2', 4750263), 1), (('0x2', 4750304), 1), (('0x2', 4750255), 1)]
+   launch nonce [(1, 1), (12, 1), (19, 1)]; mint range [((-887272, 207243), 2), ((-887200, 207200), 1)]
+   85580682 10-11 05:09:57 0xd974f9e5 n1 fee 100 - type 0x2 gasPrice 20038000 gas 4750263 mint +684 L 3.162e+22 pool 1e+09 dEaD 0 +None own1 none
+   85584499 10-11 05:16:36 0xd974f9e5 n12 fee 100 - type 0x2 gasPrice 20076000 gas 4750304 mint +73 L 3.162e+22 pool 1e+09 dEaD 0 +None own1 +255 0.0001 0xcaf681a6:04e45aaf/228 type 0x2
+   85590630 10-11 05:27:14 0xd974f9e5 n19 fee 10000 - type 0x2 gasPrice 20032000 gas 4750255 mint +81 L 3.169e+22 pool 1e+09 dEaD 0 +None own1 +286 0.0001 0xcaf681a6:04e45aaf/228 type 0x2
+
+=== token code eadbda57d038 (10322 B): 1 launches, line shape 1, wallets 1, 10-10 15:23:28 .. 10-10 15:23:28
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5226249), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   85100093 10-10 15:23:28 0xfc82a9e0 n2 fee 100 LINE type 0x0 gasPrice 44044001 gas 5226249 mint +7 L 1.227e+22 pool 3.333e+08 dEaD 6.667e+08 +13 own1 +34 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+
+=== token code 803614d16d86 (11287 B): 1 launches, line shape 1, wallets 1, 10-10 17:36:00 .. 10-10 17:36:00
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5225277), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   85177739 10-10 17:36:00 0xb7ae73c8 n2 fee 100 LINE type 0x0 gasPrice 44000001 gas 5225277 mint +6 L 3.682e+21 pool 1e+08 dEaD 9e+08 +11 own1 none
+
+=== token code 826c1157347e (10322 B): 1 launches, line shape 1, wallets 1, 10-11 00:36:21 .. 10-11 00:36:21
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5225209), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   85422923 10-11 00:36:21 0xfbc39221 n2 fee 100 LINE type 0x0 gasPrice 44074801 gas 5225209 mint +7 L 1.227e+22 pool 3.333e+08 dEaD 6.667e+08 +13 own1 +29 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+
+=== token code 1d8f2d0918a4 (10322 B): 1 launches, line shape 1, wallets 1, 10-11 15:09:19 .. 10-11 15:09:19
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5225691), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   85926517 10-11 15:09:19 0x9ad910e3 n2 fee 100 LINE type 0x0 gasPrice 44050601 gas 5225691 mint +6 L 1.227e+22 pool 3.333e+08 dEaD 6.667e+08 +11 own1 +27 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+
+=== token code 5c49f374904c (10322 B): 1 launches, line shape 1, wallets 1, 10-12 02:06:30 .. 10-12 02:06:30
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5224998), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   86310601 10-12 02:06:30 0x9569b3a5 n2 fee 100 LINE type 0x0 gasPrice 44000001 gas 5224998 mint +6 L 1.227e+22 pool 3.333e+08 dEaD 6.667e+08 +11 own1 +25 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+
+=== token code 89020b0f509f (1739 B): 1 launches, line shape 0, wallets 1, 10-12 02:24:30 .. 10-12 02:24:30
+   fees [(10000, 1)]; launch tx type/gas [(('0x2', 6175339), 1)]
+   launch nonce [(4, 1)]; mint range [((-887200, 887200), 1)]
+   86321042 10-12 02:24:30 0x70830a56 n4 fee 10000 - type 0x2 gasPrice 20022001 gas 6175339 mint +21 L 2.121e+22 pool 9e+08 dEaD 0 +None own1 none
+
+=== token code 58d5bf20acf8 (10322 B): 1 launches, line shape 1, wallets 1, 10-12 05:23:10 .. 10-12 05:23:10
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5224998), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   86425158 10-12 05:23:10 0xf9678e2b n2 fee 100 LINE type 0x0 gasPrice 44000001 gas 5224998 mint +29 L 1.227e+22 pool 3.333e+08 dEaD 6.667e+08 +55 own1 +184 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+
+=== token code 7a7947f9e550 (10355 B): 1 launches, line shape 1, wallets 1, 10-12 08:17:50 .. 10-12 08:17:50
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5224998), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   86527090 10-12 08:17:50 0x7393b819 n2 fee 100 LINE type 0x0 gasPrice 44202401 gas 5224998 mint +6 L 2.454e+22 pool 6.666e+08 dEaD 3.334e+08 +11 own1 +24 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+
+=== token code 7c9d74897c47 (11287 B): 1 launches, line shape 1, wallets 1, 10-12 15:42:41 .. 10-12 15:42:41
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5225372), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   86787612 10-12 15:42:41 0xe62d605b n2 fee 100 LINE type 0x0 gasPrice 44358601 gas 5225372 mint +8 L 1.841e+21 pool 5e+07 dEaD 9.5e+08 +15 own1 +2447 0.0010 0x6e2a35a7:0c307f76/996 type 0x2
+
+=== token code e138bff3011b (10355 B): 1 launches, line shape 1, wallets 1, 10-12 15:53:28 .. 10-12 15:53:28
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5225893), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   86793969 10-12 15:53:28 0xfce2267f n2 fee 100 LINE type 0x0 gasPrice 44393801 gas 5225893 mint +6 L 3.272e+22 pool 8.888e+08 dEaD 1.112e+08 +12 own1 +29 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+
+=== token code d6708a13659c (10355 B): 1 launches, line shape 1, wallets 1, 10-12 16:31:17 .. 10-12 16:31:17
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5224998), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   86816258 10-12 16:31:17 0xa78bc64b n2 fee 100 LINE type 0x0 gasPrice 44147401 gas 5224998 mint +7 L 3.272e+22 pool 8.888e+08 dEaD 1.112e+08 +13 own1 +30 0.0500 0xcaf681a6:04e45aaf/228 type 0x0
+
+=== token code c40daa57d34a (10355 B): 1 launches, line shape 1, wallets 1, 10-12 17:21:23 .. 10-12 17:21:23
+   fees [(100, 1)]; launch tx type/gas [(('0x0', 5238080), 1)]
+   launch nonce [(2, 1)]; mint range [((-887272, 204200), 1)]
+   86845765 10-12 17:21:23 0x582fd5a0 n2 fee 100 LINE type 0x0 gasPrice 44233201 gas 5238080 mint +8 L 2.454e+22 pool 6.666e+08 dEaD 3.334e+08 +13 own1 +32 0.0500 0xcaf681a6:04e45aaf/228 type 0x0

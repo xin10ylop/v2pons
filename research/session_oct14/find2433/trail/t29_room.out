@@ -1,0 +1,4 @@
+pools with a bot c1120e3d first buy on the 12.4333285 line: 46
+bot first-buy tolerance minOut/quote p10/50/90: [0.99, 0.99, 0.99]
+room ahead of the bot (BNB) p10/50/90: [0.06364, 0.06406, 0.06453] median ~$ 76.9
+our gain at that room, sell right after the bot p10/50/90: [3.38, 6.19, 9.38] % ; positive: 45 of 46

@@ -1,0 +1,12 @@
+1365 frozen strangers (not us): 1120
+token 0xddf1a0581a12bdb745fafb10806d36d62303f087 buyer 0x220794f72f4b bal 117088497117717749355421870
+runtime bytes 1365
+codehash 0x18449a1624d9c5270bd1526d891e72a37319e8a08eb3fe687b5ad707e1c487bc
+slot6 operator 0x623e7c23c7c228095f94d9bd567eae55cb87a966
+live transfer of frozen stranger -> REVERT
+balance slot 0
+  alw[op][fresh] even 0x0 -> ok
+  alw[op][fresh] odd 0x1 -> REVERT
+  alw[op][fresh] even 0x2 -> ok
+  alw[op][fresh] odd 0xffffff -> REVERT
+  slot6=0 with odd alw -> ok

@@ -1,0 +1,121 @@
+{
+ "census_delays": [
+  4,
+  104,
+  78,
+  4,
+  102,
+  15,
+  4,
+  144,
+  null,
+  103,
+  4,
+  4,
+  106,
+  113
+ ],
+ "fresh_delays": [
+  85,
+  91,
+  166,
+  106,
+  163,
+  4,
+  4,
+  4,
+  166,
+  11,
+  159
+ ],
+ "ride +1->+180 | no reaction (the claim)": {
+  "n": 192,
+  "mean": 0.0719,
+  "median": 0.0677,
+  "win": 0.979,
+  "pulled": 2,
+  "usd_trade": 1.078,
+  "usd_day": 103.5,
+  "pulled_share": 0.01
+ },
+ "ride +1->+180 | observed delays, census+fresh n=25": {
+  "n": 4800,
+  "mean": -0.9579,
+  "median": -1.0008,
+  "win": 0.039,
+  "pulled": 4610,
+  "usd_trade": -14.368,
+  "usd_day": -1379.4,
+  "pulled_share": 0.96
+ },
+ "ride +1->+180 | 4-5 block reactions only, 8 of 25": {
+  "n": 4800,
+  "mean": -0.2714,
+  "median": 0.0361,
+  "win": 0.666,
+  "pulled": 1570,
+  "usd_trade": -4.071,
+  "usd_day": -390.8,
+  "pulled_share": 0.327
+ },
+ "follow crowd1+1 hold 100 | no reaction (the claim)": {
+  "n": 192,
+  "mean": 0.0599,
+  "median": 0.0735,
+  "win": 0.974,
+  "pulled": 4,
+  "usd_trade": 0.899,
+  "usd_day": 86.3,
+  "pulled_share": 0.021
+ },
+ "follow crowd1+1 hold 100 | observed delays, census+fresh n=25": {
+  "n": 4800,
+  "mean": -0.4917,
+  "median": -1.0008,
+  "win": 0.468,
+  "pulled": 2544,
+  "usd_trade": -7.375,
+  "usd_day": -708.0,
+  "pulled_share": 0.53
+ },
+ "follow crowd1+1 hold 100 | 4-5 block reactions only, 8 of 25": {
+  "n": 4800,
+  "mean": -0.2795,
+  "median": 0.0337,
+  "win": 0.662,
+  "pulled": 1604,
+  "usd_trade": -4.193,
+  "usd_day": -402.5,
+  "pulled_share": 0.334
+ },
+ "front +1 -> crowd1+1 (deadline +220) | no reaction (the claim)": {
+  "n": 192,
+  "mean": 0.011,
+  "median": 0.0103,
+  "win": 0.979,
+  "pulled": 0,
+  "usd_trade": 0.165,
+  "usd_day": 15.8,
+  "pulled_share": 0.0
+ },
+ "front +1 -> crowd1+1 (deadline +220) | observed delays, census+fresh n=25": {
+  "n": 4800,
+  "mean": -0.4946,
+  "median": -0.0006,
+  "win": 0.496,
+  "pulled": 2397,
+  "usd_trade": -7.42,
+  "usd_day": -712.2,
+  "pulled_share": 0.499
+ },
+ "front +1 -> crowd1+1 (deadline +220) | 4-5 block reactions only, 8 of 25": {
+  "n": 4800,
+  "mean": -0.3128,
+  "median": 0.004,
+  "win": 0.666,
+  "pulled": 1536,
+  "usd_trade": -4.691,
+  "usd_day": -450.4,
+  "pulled_share": 0.32
+ }
+}

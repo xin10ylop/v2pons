@@ -1,0 +1,72 @@
+tokens 3877 todo 3877
+100 {'posts': 10, 'items': 100, 'r429': 1}
+200 {'posts': 20, 'items': 200, 'r429': 1}
+300 {'posts': 30, 'items': 300, 'r429': 1}
+400 {'posts': 40, 'items': 400, 'r429': 1}
+500 {'posts': 50, 'items': 500, 'r429': 2}
+600 {'posts': 60, 'items': 600, 'r429': 2}
+700 {'posts': 70, 'items': 700, 'r429': 2}
+800 {'posts': 80, 'items': 800, 'r429': 3}
+900 {'posts': 90, 'items': 900, 'r429': 3}
+1000 {'posts': 100, 'items': 1000, 'r429': 4}
+1100 {'posts': 110, 'items': 1100, 'r429': 4}
+1200 {'posts': 120, 'items': 1200, 'r429': 4}
+1300 {'posts': 130, 'items': 1300, 'r429': 4}
+1400 {'posts': 140, 'items': 1400, 'r429': 4}
+1500 {'posts': 150, 'items': 1500, 'r429': 4}
+1600 {'posts': 160, 'items': 1600, 'r429': 5}
+1700 {'posts': 170, 'items': 1700, 'r429': 5}
+1800 {'posts': 180, 'items': 1800, 'r429': 6}
+1900 {'posts': 190, 'items': 1900, 'r429': 6}
+2000 {'posts': 200, 'items': 2000, 'r429': 7}
+2100 {'posts': 210, 'items': 2100, 'r429': 8}
+2200 {'posts': 220, 'items': 2200, 'r429': 8}
+2300 {'posts': 230, 'items': 2300, 'r429': 8}
+2400 {'posts': 240, 'items': 2400, 'r429': 9}
+2500 {'posts': 250, 'items': 2500, 'r429': 10}
+2600 {'posts': 260, 'items': 2600, 'r429': 11}
+2700 {'posts': 270, 'items': 2700, 'r429': 13}
+2800 {'posts': 280, 'items': 2800, 'r429': 14}
+2900 {'posts': 290, 'items': 2900, 'r429': 14}
+3000 {'posts': 300, 'items': 3000, 'r429': 14}
+3100 {'posts': 310, 'items': 3100, 'r429': 14}
+3200 {'posts': 320, 'items': 3200, 'r429': 16}
+3300 {'posts': 330, 'items': 3300, 'r429': 17}
+3400 {'posts': 340, 'items': 3400, 'r429': 19}
+3500 {'posts': 350, 'items': 3500, 'r429': 22}
+3600 {'posts': 360, 'items': 3600, 'r429': 29}
+3700 {'posts': 370, 'items': 3700, 'r429': 30}
+3800 {'posts': 380, 'items': 3800, 'r429': 32}
+3877 {'posts': 388, 'items': 3877, 'r429': 34}
+
+1,526-byte tokens: []
+2.433 hash tokens: []
+
+most common token templates (size, hash) among 3877 tokens:
+    341 size   3854 hash 0x5fcfacb98bd0  in [('C-1 (POSM 2276 B)', 341), ('v4 0x58daec31 0xac9650d8 1892B f800000 ts8000 v0 USDG', 41), ('v4 0x58daec31 0xac9650d8 1892B f990100 ts9901 v0 USDG', 7)]
+    283 size   1764 hash 0x19e3e2a65bec  in [('V3 crowd (836 B NPM)', 256), ('v4 0x8366a39c 0x6276cbbe 196B f3000 ts60 v0 WETH', 34), ('v4 0x58daec31 0xac9650d8 1892B f800000 ts8000 v0 USDG', 9)]
+    115 size   1770 hash 0xfe89ad0f15d8  in [('operator A', 115), ('v4 0x58daec31 0xac9650d8 1892B f955950 ts9560 v0 USDG', 2), ('v4 0x58daec31 0xac9650d8 1892B f990100 ts9901 v0 USDG', 1)]
+     81 size   4655 hash 0x38f88592fc7b  in [('pm500 direct init', 71), ('pm500 direct init (hooked)', 10), ('v4 0x58daec31 0xac9650d8 1892B f800000 ts8000 v0 USDG', 2)]
+     73 size   4509 hash 0x36199ba5479b  in [('C-1 (POSM 2276 B)', 82), ('v4 0x58daec31 0xac9650d8 1892B f870000 ts8700 v0 USDG', 13), ('v4 0x58daec31 0xac9650d8 1316B f930000 ts9300 v0 USDG', 6)]
+     48 size     44 hash 0xf10f86b05965  in [('v4 0x58daec31 0xac9650d8 1444B f883131 ts200 v0.001218 ETH', 22), ('v4 0x8366a39c 0x6276cbbe 196B f838974 ts9303 v0 ETH', 10), ('v4 0x8366a39c 0x6276cbbe 196B f836798 ts9303 v0 ETH', 5)]
+     46 size   4655 hash 0xe7c5deb7fdfc  in [('pm500 direct init', 39), ('pm500 direct init (hooked)', 7), ('v4 0x58daec31 0xac9650d8 1316B f500000 ts5000 v0 USDG', 4)]
+     44 size   4655 hash 0x935f30aba51c  in [('pm500 direct init', 37), ('pm500 direct init (hooked)', 6), ('v4 0x58daec31 0xac9650d8 1316B f100000 ts1000 v0 USDG', 2)]
+     42 size   1666 hash 0x9d00f9c4593e  in [('v4 0xa37e4343 0xa9a8d143 484B f0 ts200 v0.0005 WETH', 8), ('v4 0xa37e4343 0xdfee226f 804B f0 ts200 v0.0005 c0:0x941ae714', 2), ('v4 0xa37e4343 0xdfee226f 804B f0 ts200 v0.08834 WETH', 2)]
+     42 size   1939 hash 0x69c9f125229d  in [('v4 0x58daec31 0xac9650d8 2020B f3000 ts60 v0 ETH', 42), ('v4 0x58daec31 0xac9650d8 1892B f800000 ts8000 v0 USDG', 8), ('v4 0x58daec31 0xac9650d8 1316B f890000 ts60 v0 USDG', 3)]
+     42 size   4655 hash 0x5869232a3644  in [('pm500 direct init', 41), ('pm500 direct init (hooked)', 1), ('v4 0x58daec31 0xac9650d8 1316B f900000 ts60 v0 USDG', 1)]
+     33 size    283 hash 0x6c1fdd40002d  in [('v4 0x282c4815 0x81175b3a 196B f10000 ts200 v0 c0:0x117cc213', 8), ('v4 0x282c4815 0x81175b3a 196B f10000 ts200 v0 c0:0x2e0847e8', 7), ('v4 0x282c4815 0x81175b3a 196B f10000 ts200 v0 c0:0x4ea00516', 7)]
+     26 size     44 hash 0x7d3dbdfc05cf  in [('v3 0x1fae6f16 0x026f2bf0 1124B f10000 ts200 v0 WETH', 24), ('v3 0x1fae6f16 0x026f2bf0 1124B f10000 ts200 v0 t0:0x4a0e65a3', 2)]
+     25 size     44 hash 0xcb03a61e249a  in [('v3 0xeb7c0347 0x882db707 1796B f10000 ts200 v0 t0:0x0830a9dd', 21), ('v4 0x58daec31 0xac9650d8 1892B f870000 ts8700 v0 USDG', 2), ('v4 0x58daec31 0xac9650d8 2020B f850000 ts8500 v0 USDG', 1)]
+     19 size   8581 hash 0x07d49c8f0fb5  in [('v4 0x58daec31 0xac9650d8 1892B f989998 ts9900 v0 USDG', 3), ('v4 0xb9aa243b 0xd6ac77ce 15620B f10000 ts200 v0 ETH', 2), ('v4 0xb9aa243b 0xd6ac77ce 15588B f25000 ts200 v0 ETH', 2)]
+     17 size   3797 hash 0x935e170df771  in [('v4 0x16cf6788 0x4101659e 388B f0 ts200 v0 ETH', 17)]
+     15 size   3553 hash 0x1f6f5a665a53  in [('v4 0x58daec31 0xac9650d8 1892B f955950 ts9560 v0 USDG', 6), ('v4 0x58daec31 0xac9650d8 1892B f900000 ts9000 v0 USDG', 4), ('v4 0x58daec31 0xac9650d8 1444B f900000 ts9000 v1.737e-05 ETH', 1)]
+     15 size   2285 hash 0xfdee7ee235d6  in [('v4 0x6fda94ac 0xea2c3a42 1220B f3000 ts200 v0 c0:0x32ac8c1d', 5), ('v4 0x6fda94ac 0xea2c3a42 1156B f3000 ts200 v0 c0:0x32ac8c1d', 4), ('v4 0x6fda94ac 0xea2c3a42 1188B f3000 ts200 v0 c0:0x32ac8c1d', 2)]
+     13 size   1948 hash 0x572bf9e8d306  in [('v4 0x8366a39c 0x6276cbbe 196B f10000 ts200 v0 c0:0x117cc213', 13)]
+     13 size     45 hash 0x0d6f99beac20  in [('v4 0x58daec31 0xac9650d8 1316B f950000 ts9500 v0 USDG', 3), ('v4 0x58daec31 0xac9650d8 1316B f900000 ts9000 v0 c0:0x32ac8c1d', 3), ('v4 0x58daec31 0xac9650d8 1892B f900000 ts9000 v0 c0:0x9ad56c5f', 2)]
+     12 size   2285 hash 0xed09611732d8  in [('v4 0x6fda94ac 0xea2c3a42 1348B f3000 ts200 v0 c0:0x32ac8c1d', 10), ('v4 0x58daec31 0xac9650d8 1892B f989997 ts9900 v0 USDG', 1), ('v4 0x6fda94ac 0xea2c3a42 1412B f3000 ts200 v0 c0:0x32ac8c1d', 1)]
+     11 size   8702 hash 0x0402ab611457  in [('v3 0x73991a25 0x13ead562 132B f100 ts1 v0 WETH', 10), ('v4 0xd0fd42bd 0xac9650d8 1444B f100 ts1 v1.434e-11 ETH', 1)]
+     11 size   1525 hash 0x4b6876f673f4  in [('v4 0x58daec31 0xac9650d8 1444B f500 ts10 v0.003 ETH', 7), ('v4 0x58daec31 0xac9650d8 1444B f500 ts10 v0.001 ETH', 3), ('v4 0x58daec31 0xac9650d8 1444B f500 ts10 v0.005 ETH', 1)]
+     11 size   9191 hash 0x3c9ee6f6db24  in [('v4 0x80725679 0x8aa1a859 1348B f0 ts200 v0.001 ETH', 2), ('v4 0x80725679 0xc5b0c650 996B f0 ts200 v0.0001 ETH', 2), ('v4 0x80725679 0x8aa1a859 1476B f0 ts200 v0.0001 ETH', 2)]
+     11 size   2285 hash 0xfc62409253f0  in [('v4 0x6fda94ac 0xea2c3a42 1220B f3000 ts200 v0 c0:0x32ac8c1d', 4), ('v4 0x6fda94ac 0xea2c3a42 1156B f3000 ts200 v0 c0:0x32ac8c1d', 3), ('v4 0x6fda94ac 0xea2c3a42 1188B f3000 ts200 v0 c0:0x32ac8c1d', 2)]
+
+sizes within 1,400-1,700 B: [(1411, 2), (1475, 1), (1490, 2), (1493, 2), (1511, 1), (1520, 9), (1525, 11), (1543, 3), (1552, 1), (1574, 1), (1576, 1), (1592, 1), (1603, 1), (1607, 1), (1609, 1), (1621, 1), (1634, 2), (1639, 1), (1649, 1), (1666, 48)]

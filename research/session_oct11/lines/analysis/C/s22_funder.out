@@ -1,0 +1,2 @@
+funder 0x4a6dbb33bc962c48db40e5eac91edf5ba316fe70: fleet wallets funded (seen) 197; blocks funding -> buy p10/50/90 360/790/1334; buy value / funding p10/50/90 0.140/0.350/0.640
+funder's txs in the cached blocks: 523; recipients [('other', 325), ('0f34e3b5 fleet', 198)]; incoming transfers from [('0xda9a158641aa0d7e31d5108caaf9e316485a7358', 1), ('0xe80653231a824d64054e1210a4d006812cce79cc', 1), ('0x78429557b98b5adc1f2a57eb9cc0b1a2d5ff7f94', 1)]

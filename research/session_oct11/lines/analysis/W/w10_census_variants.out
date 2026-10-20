@@ -1,0 +1,12 @@
+1046 launches; the first real buy's kind: {'crowd': 855, 'eth': 40, 'val0': 11}; qs 1 (WETH = token1): 51
+  entry +1, cap 80, trigger any >= 0.005       n 1046 mean +8.49% med +0.19% win 0.93 pulled 0 $/day +186 top10% share 0.71 | per day +8.9 +15.9 +6.2 +10.3 +5.7 +6.4 +5.5
+  entry +2, cap 80, trigger any >= 0.005       n 1046 mean +8.45% med +0.15% win 0.88 pulled 0 $/day +185 top10% share 0.71 | per day +8.9 +15.9 +6.2 +10.3 +5.7 +6.3 +5.5
+  entry +3, cap 80, trigger any >= 0.005       n 1046 mean +8.45% med +0.15% win 0.88 pulled 0 $/day +185 top10% share 0.71 | per day +8.9 +15.9 +6.2 +10.2 +5.7 +6.3 +5.5
+  entry +1, cap 60, trigger any                n 1046 mean +4.43% med +0.12% win 0.89 pulled 0 $/day +96 top10% share 0.98 | per day +6.7 +11.3 +2.4 +4.9 +2.2 +1.4 +1.5
+  entry +1, cap 70, trigger any                n 1046 mean +6.20% med +0.15% win 0.91 pulled 0 $/day +135 top10% share 0.87 | per day +7.7 +13.0 +3.9 +7.1 +4.4 +3.5 +3.2
+  entry +1, cap 80, trigger any                n 1046 mean +8.49% med +0.19% win 0.93 pulled 0 $/day +186 top10% share 0.71 | per day +8.9 +15.9 +6.2 +10.3 +5.7 +6.4 +5.5
+  entry +1, cap 80, trigger crowd shape only   n 1046 mean +8.41% med +0.19% win 0.93 pulled 1 $/day +184 top10% share 0.72 | per day +8.3 +15.9 +6.2 +10.3 +5.9 +6.4 +5.5
+  entry +1, cap 80, trigger crowd + ETH-value calls n 1046 mean +8.49% med +0.19% win 0.93 pulled 0 $/day +186 top10% share 0.71 | per day +8.9 +15.9 +6.2 +10.3 +5.8 +6.4 +5.5
+  entry +1, cap 80, any, qs1 skipped           n 995 mean +8.49% med +0.19% win 0.93 pulled 0 $/day +177 top10% share 0.71 | per day +8.2 +16.0 +6.6 +10.4 +5.9 +6.3 +5.4
+  entry +1, cap 80, any, k=10                  n 1046 mean +7.44% med +0.19% win 0.93 pulled 0 $/day +163 top10% share 0.73 | per day +8.0 +14.2 +5.3 +8.7 +5.4 +5.8 +4.3
+  entry +1, cap 80, any, k=30                  n 1046 mean +9.00% med +0.19% win 0.93 pulled 0 $/day +198 top10% share 0.72 | per day +9.6 +16.6 +6.9 +11.3 +5.9 +6.5 +5.6

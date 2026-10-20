@@ -1,0 +1,49 @@
+===== slice oldest: pools 89, with a bot buy 89
+reaction, pre-T outside buys: n 0, pulled 0, lags []
+reaction, post-T outside buys (first per pool): n 9, pulled 9, lags [5, 5, 7, 7, 8, 9, 10, 12, 17], min 5 median 8
+    (80000046, 34, 10, '0xc3c81a34', 5e-05, 39, 5)
+    (80000237, 28, 8, '0xc3c81a34', 4e-05, 38, 10)
+    (80000427, 20, 10, '0xc3c81a34', 5e-05, 28, 8)
+    (80000605, 33, 8, '0xc3c81a34', 4e-05, 38, 5)
+    (80000793, 29, 10, '0xc3c81a34', 5e-05, 38, 9)
+    (80000986, 30, 8, '0xc3c81a34', 3e-05, 37, 7)
+    (80001174, 26, 10, '0xc3c81a34', 5e-05, 38, 12)
+    (80001363, 26, 9, '0xc3c81a34', 4e-05, 43, 17)
+    (80001557, 21, 10, '0xc3c81a34', 3e-05, 28, 7)
+
+schedule: T - L blocks p10/50/90 8/9/11; best fixed offset 9: within +-1 in 77 of 89
+   T - L seconds (pools with L's block cached, n 83): [(0, 9), (1, 73), (2, 1)]
+
+FRONT, $5 = 0.001946 ETH; reaction lags modelled: [3, 5] (min / median of pre-T lags)
+ R0 the candidate rule (presigned / failed copy of the bot's buy before T): fires in 0 pools -> 0 trades, $0
+ R1 latency 1 (buy T+1), no reaction        | sell next block: n 89 mean   -2.39% median   -2.39% p10   -2.39% p90   -2.39% win 0.00 worst    -2.4% $-0.119/trade
+                                         | sell behind the bot's 2nd buy: n 87 mean   +4.89% median   +5.41% p10   +0.72% p90   +8.66% win 0.95 worst    -2.0% $+0.245/trade
+ R1 latency 1 (buy T+1), pull at buy + 3    | sell next block: n 89 mean   -2.39% median   -2.39% p10   -2.39% p90   -2.39% win 0.00 worst    -2.4% $-0.119/trade
+                                         | sell behind the bot's 2nd buy: n 87 mean -100.40% median -100.40% p10 -100.40% p90 -100.40% win 0.00 worst  -100.4% $-5.020/trade
+ R1 latency 1 (buy T+1), pull at buy + 5    | sell next block: n 89 mean   -2.39% median   -2.39% p10   -2.39% p90   -2.39% win 0.00 worst    -2.4% $-0.119/trade
+                                         | sell behind the bot's 2nd buy: n 87 mean -100.40% median -100.40% p10 -100.40% p90 -100.40% win 0.00 worst  -100.4% $-5.020/trade
+ R1 latency 2 (buy T+2), no reaction        | sell next block: n 89 mean   -2.39% median   -2.39% p10   -2.39% p90   -2.39% win 0.00 worst    -2.4% $-0.119/trade
+                                         | sell behind the bot's 2nd buy: n 87 mean   +4.89% median   +5.41% p10   +0.72% p90   +8.66% win 0.95 worst    -2.0% $+0.245/trade
+ R1 latency 2 (buy T+2), pull at buy + 3    | sell next block: n 89 mean   -2.39% median   -2.39% p10   -2.39% p90   -2.39% win 0.00 worst    -2.4% $-0.119/trade
+                                         | sell behind the bot's 2nd buy: n 87 mean -100.40% median -100.40% p10 -100.40% p90 -100.40% win 0.00 worst  -100.4% $-5.020/trade
+ R1 latency 2 (buy T+2), pull at buy + 5    | sell next block: n 89 mean   -2.39% median   -2.39% p10   -2.39% p90   -2.39% win 0.00 worst    -2.4% $-0.119/trade
+                                         | sell behind the bot's 2nd buy: n 87 mean -100.40% median -100.40% p10 -100.40% p90 -100.40% win 0.00 worst  -100.4% $-5.020/trade
+
+ R2 (context: a hypothetical precursor at T - lead; no such signal was found)
+   in-time front, no reaction (buy head of T, sell head of T+1): n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade
+   lag 3 lead 1 latency 1: buy T+0 sell T+1 | n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade
+   lag 3 lead 1 latency 2: buy T+1 sell T+2 | n 89 mean   -2.39% median   -2.39% p10   -2.39% p90   -2.39% win 0.00 worst    -2.4% $-0.119/trade
+   lag 3 lead 2 latency 1: buy T-1 sell T+1 | n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade
+   lag 3 lead 2 latency 2: buy T+0 sell T+2 | n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade
+   lag 3 lead 3 latency 1: buy T-2 sell T+1 | n 89 mean -100.40% median -100.40% p10 -100.40% p90 -100.40% win 0.00 worst  -100.4% $-5.020/trade
+   lag 3 lead 3 latency 2: buy T-1 sell T+2 | n 89 mean -100.40% median -100.40% p10 -100.40% p90 -100.40% win 0.00 worst  -100.4% $-5.020/trade
+   lag 3 lead 4 latency 1: buy T-3 sell T+1 | n 89 mean -100.40% median -100.40% p10 -100.40% p90 -100.40% win 0.00 worst  -100.4% $-5.020/trade
+   lag 3 lead 4 latency 2: buy T-2 sell T+2 | n 89 mean -100.40% median -100.40% p10 -100.40% p90 -100.40% win 0.00 worst  -100.4% $-5.020/trade
+   lag 5 lead 1 latency 1: buy T+0 sell T+1 | n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade
+   lag 5 lead 1 latency 2: buy T+1 sell T+2 | n 89 mean   -2.39% median   -2.39% p10   -2.39% p90   -2.39% win 0.00 worst    -2.4% $-0.119/trade
+   lag 5 lead 2 latency 1: buy T-1 sell T+1 | n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade
+   lag 5 lead 2 latency 2: buy T+0 sell T+2 | n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade
+   lag 5 lead 3 latency 1: buy T-2 sell T+1 | n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade
+   lag 5 lead 3 latency 2: buy T-1 sell T+2 | n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade
+   lag 5 lead 4 latency 1: buy T-3 sell T+1 | n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade
+   lag 5 lead 4 latency 2: buy T-2 sell T+2 | n 89 mean   +5.77% median   +5.86% p10   +2.47% p90   +9.13% win 1.00 worst    +0.8% $+0.289/trade

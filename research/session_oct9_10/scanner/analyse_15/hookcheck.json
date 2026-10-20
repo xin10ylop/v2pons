@@ -1,0 +1,35 @@
+[
+ {
+  "pid": "0x99537d4a9b",
+  "buy_rel": 5,
+  "sell_rel": 316,
+  "hook_buy_ppm": 40000,
+  "hook_sell_ppm": 40000,
+  "gross_in": 1485000000000000,
+  "real_released": 1341358035262148,
+  "sim_eth_out": 1341358035262148,
+  "rel_err": 0.0
+ },
+ {
+  "pid": "0x4fd883a28e",
+  "buy_rel": 5,
+  "sell_rel": 162,
+  "hook_buy_ppm": 100000,
+  "hook_sell_ppm": 99000,
+  "gross_in": 1485000000000000,
+  "real_released": 1180236963447815,
+  "sim_eth_out": 1180236963447816,
+  "rel_err": 8.881784197001252e-16
+ },
+ {
+  "pid": "0x2d9d9938bf",
+  "buy_rel": 8,
+  "sell_rel": 137,
+  "hook_buy_ppm": 168800,
+  "hook_sell_ppm": 30900,
+  "gross_in": 1485000000000000,
+  "real_released": 1172399575929458,
+  "sim_eth_out": 1172399575929458,
+  "rel_err": 0.0
+ }
+]

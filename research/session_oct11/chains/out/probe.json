@@ -1,0 +1,676 @@
+{
+ "base": [
+  {
+   "url": "https://mainnet.base.org",
+   "head": 52478572,
+   "chainTimeLag_s": 1.1,
+   "block_time_s": 2.0,
+   "baseFeeGwei": 0.005,
+   "txs_in_head": 182,
+   "gasLimit": 400000000,
+   "getLogs_errs": [
+    "100000: retries exhausted for eth_getLogs",
+    "10000: retries exhausted for eth_getLogs",
+    "2000: retries exhausted for eth_getLogs",
+    "500: retries exhausted for eth_getLogs",
+    "100: retries exhausted for eth_getLogs"
+   ],
+   "stats": {
+    "ok": 3,
+    "err": 0,
+    "429": 30,
+    "lat": 2.266468048095703,
+    "errs": {}
+   }
+  },
+  {
+   "url": "https://base-rpc.publicnode.com",
+   "head": 52478731,
+   "chainTimeLag_s": 0.7,
+   "block_time_s": 2.0,
+   "baseFeeGwei": 0.005,
+   "txs_in_head": 122,
+   "gasLimit": 400000000,
+   "getLogs_errs": [
+    "100000: http 403: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com",
+    "10000: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/",
+    "2000: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/",
+    "500: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/",
+    "100: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/"
+   ],
+   "stats": {
+    "ok": 3,
+    "err": 5,
+    "429": 0,
+    "lat": 0.9485487937927246,
+    "errs": {
+     "http403": 1,
+     "{\"code\": -32701, \"message\": \"Please specify an address in your request or, to re": 4
+    }
+   }
+  }
+ ],
+ "unichain": [
+  {
+   "url": "https://mainnet.unichain.org",
+   "head": 60998449,
+   "chainTimeLag_s": 2.6,
+   "block_time_s": 1.0,
+   "baseFeeGwei": 0.0005,
+   "txs_in_head": 8,
+   "gasLimit": 60000000,
+   "getLogs_ok_span": 100000,
+   "stats": {
+    "ok": 4,
+    "err": 0,
+    "429": 0,
+    "lat": 0.6223404407501221,
+    "errs": {}
+   }
+  },
+  {
+   "url": "https://unichain-rpc.publicnode.com",
+   "head": 60998452,
+   "chainTimeLag_s": 0.2,
+   "block_time_s": 1.0,
+   "baseFeeGwei": 0.0005,
+   "txs_in_head": 8,
+   "gasLimit": 60000000,
+   "getLogs_errs": [
+    "100000: http 403: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com",
+    "10000: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/",
+    "2000: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/",
+    "500: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/",
+    "100: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/"
+   ],
+   "stats": {
+    "ok": 3,
+    "err": 5,
+    "429": 0,
+    "lat": 0.8600811958312988,
+    "errs": {
+     "http403": 1,
+     "{\"code\": -32701, \"message\": \"Please specify an address in your request or, to re": 4
+    }
+   }
+  }
+ ],
+ "optimism": [
+  {
+   "url": "https://mainnet.optimism.io",
+   "head": 158074017,
+   "chainTimeLag_s": 1.3,
+   "block_time_s": 2.0,
+   "baseFeeGwei": 3.382e-06,
+   "txs_in_head": 28,
+   "gasLimit": 40000000,
+   "getLogs_ok_span": 100000,
+   "stats": {
+    "ok": 4,
+    "err": 0,
+    "429": 0,
+    "lat": 0.9824056625366211,
+    "errs": {}
+   }
+  },
+  {
+   "url": "https://optimism-rpc.publicnode.com",
+   "head": 158074017,
+   "chainTimeLag_s": 2.1,
+   "block_time_s": 2.0,
+   "baseFeeGwei": 3.382e-06,
+   "txs_in_head": 28,
+   "gasLimit": 40000000,
+   "getLogs_errs": [
+    "100000: http 403: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com",
+    "10000: http 403: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com",
+    "2000: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/",
+    "500: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/",
+    "100: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/"
+   ],
+   "stats": {
+    "ok": 3,
+    "err": 5,
+    "429": 0,
+    "lat": 0.8581006526947021,
+    "errs": {
+     "http403": 2,
+     "{\"code\": -32701, \"message\": \"Please specify an address in your request or, to re": 3
+    }
+   }
+  }
+ ],
+ "ink": [
+  {
+   "url": "https://rpc-gel.inkonchain.com",
+   "head": 58248401,
+   "chainTimeLag_s": 2.3,
+   "block_time_s": 1.0,
+   "baseFeeGwei": 2.56e-07,
+   "txs_in_head": 5,
+   "gasLimit": 30000000,
+   "getLogs_errs": [
+    "100000: {\"code\": -32602, \"message\": \"block range greater than 1000 max\"}",
+    "10000: {\"code\": -32602, \"message\": \"block range greater than 1000 max\"}",
+    "2000: {\"code\": -32602, \"message\": \"block range greater than 1000 max\"}"
+   ],
+   "getLogs_ok_span": 500,
+   "stats": {
+    "ok": 4,
+    "err": 3,
+    "429": 0,
+    "lat": 1.4306137561798096,
+    "errs": {
+     "{\"code\": -32602, \"message\": \"block range greater than 1000 max\"}": 3
+    }
+   }
+  },
+  {
+   "url": "https://rpc-qnd.inkonchain.com",
+   "head": 58248404,
+   "chainTimeLag_s": 0.3,
+   "block_time_s": 1.0,
+   "baseFeeGwei": 2.56e-07,
+   "txs_in_head": 4,
+   "gasLimit": 30000000,
+   "getLogs_errs": [
+    "100000: {\"code\": -32614, \"message\": \"eth_getLogs is limited to a 10,000 range\"}"
+   ],
+   "getLogs_ok_span": 10000,
+   "stats": {
+    "ok": 4,
+    "err": 1,
+    "429": 0,
+    "lat": 0.6685848236083984,
+    "errs": {
+     "{\"code\": -32614, \"message\": \"eth_getLogs is limited to a 10,000 range\"}": 1
+    }
+   }
+  }
+ ],
+ "soneium": [
+  {
+   "url": "https://rpc.soneium.org",
+   "head": 29306678,
+   "chainTimeLag_s": 0.5,
+   "block_time_s": 2.0,
+   "baseFeeGwei": 2.72e-07,
+   "txs_in_head": 4,
+   "gasLimit": 40000000,
+   "getLogs_ok_span": 100000,
+   "stats": {
+    "ok": 4,
+    "err": 0,
+    "429": 0,
+    "lat": 1.3900232315063477,
+    "errs": {}
+   }
+  }
+ ],
+ "worldchain": [
+  {
+   "url": "https://worldchain-mainnet.g.alchemy.com/public",
+   "head": 36205589,
+   "chainTimeLag_s": 0.2,
+   "block_time_s": 2.0,
+   "baseFeeGwei": 0.0005,
+   "txs_in_head": 15,
+   "gasLimit": 280000000,
+   "getLogs_errs": [
+    "100000: {\"code\": -32600, \"message\": \"You can make eth_getLogs requests with up to a 100 block range. Based on your parameters, this block range shou",
+    "10000: {\"code\": -32600, \"message\": \"You can make eth_getLogs requests with up to a 100 block range. Based on your parameters, this block range shou",
+    "2000: {\"code\": -32600, \"message\": \"You can make eth_getLogs requests with up to a 100 block range. Based on your parameters, this block range shou",
+    "500: {\"code\": -32600, \"message\": \"You can make eth_getLogs requests with up to a 100 block range. Based on your parameters, this block range shou",
+    "100: {\"code\": -32600, \"message\": \"You can make eth_getLogs requests with up to a 100 block range. Based on your parameters, this block range shou"
+   ],
+   "stats": {
+    "ok": 3,
+    "err": 5,
+    "429": 0,
+    "lat": 0.8730132579803467,
+    "errs": {
+     "{\"code\": -32600, \"message\": \"You can make eth_getLogs requests with up to a 100 ": 5
+    }
+   }
+  }
+ ],
+ "mode": [
+  {
+   "url": "https://mainnet.mode.network",
+   "head": 45789617,
+   "chainTimeLag_s": 1.5,
+   "block_time_s": 2.0,
+   "baseFeeGwei": 2.52e-07,
+   "txs_in_head": 1,
+   "gasLimit": 30000000,
+   "getLogs_ok_span": 100000,
+   "stats": {
+    "ok": 4,
+    "err": 0,
+    "429": 0,
+    "lat": 1.122648000717163,
+    "errs": {}
+   }
+  }
+ ],
+ "apechain": [
+  {
+   "url": "https://rpc.apechain.com/http",
+   "head": 51779805,
+   "chainTimeLag_s": 1.6,
+   "block_time_s": 1.005,
+   "baseFeeGwei": 101.68276,
+   "txs_in_head": 2,
+   "gasLimit": 1125899906842624,
+   "getLogs_ok_span": 100000,
+   "stats": {
+    "ok": 4,
+    "err": 0,
+    "429": 0,
+    "lat": 1.108499526977539,
+    "errs": {}
+   }
+  },
+  {
+   "url": "https://apechain.calderachain.xyz/http",
+   "head": 51779806,
+   "chainTimeLag_s": 0.5,
+   "block_time_s": 1.005,
+   "baseFeeGwei": 101.68276,
+   "txs_in_head": 2,
+   "gasLimit": 1125899906842624,
+   "getLogs_ok_span": 100000,
+   "stats": {
+    "ok": 4,
+    "err": 0,
+    "429": 0,
+    "lat": 0.899885892868042,
+    "errs": {}
+   }
+  }
+ ],
+ "xai": [
+  {
+   "url": "https://xai-chain.net/rpc",
+   "head": 137418627,
+   "chainTimeLag_s": 39.4,
+   "block_time_s": 1.84,
+   "baseFeeGwei": 0.1,
+   "txs_in_head": 2,
+   "gasLimit": 1125899906842624,
+   "getLogs_errs": [
+    "100000: {\"code\": -32602, \"message\": \"query spans 100001 blocks (137318627 to 137418627), but only 30000 are allowed for this request; narrow the blo"
+   ],
+   "getLogs_ok_span": 10000,
+   "stats": {
+    "ok": 4,
+    "err": 1,
+    "429": 0,
+    "lat": 1.047250509262085,
+    "errs": {
+     "{\"code\": -32602, \"message\": \"query spans 100001 blocks (137318627 to 137418627),": 1
+    }
+   }
+  }
+ ],
+ "degen": [
+  {
+   "url": "https://rpc.degen.tips",
+   "error": "retries exhausted for eth_blockNumber",
+   "stats": {
+    "ok": 0,
+    "err": 6,
+    "429": 0,
+    "lat": 1.003800392150879,
+    "errs": {
+     "http530": 6
+    }
+   }
+  }
+ ],
+ "sanko": [
+  {
+   "url": "https://mainnet.sanko.xyz",
+   "error": "retries exhausted for eth_blockNumber",
+   "stats": {
+    "ok": 0,
+    "err": 6,
+    "429": 0,
+    "lat": 0.0,
+    "errs": {
+     "ProxyError": 6
+    }
+   }
+  }
+ ],
+ "pop_apex": [
+  {
+   "url": "https://rpc.apex.proofofplay.com",
+   "error": "retries exhausted for eth_blockNumber",
+   "stats": {
+    "ok": 0,
+    "err": 6,
+    "429": 0,
+    "lat": 0.0,
+    "errs": {
+     "ProxyError": 6
+    }
+   }
+  }
+ ],
+ "rari": [
+  {
+   "url": "https://mainnet.rpc.rarichain.org/http",
+   "error": "http 404: <html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+   "stats": {
+    "ok": 0,
+    "err": 1,
+    "429": 0,
+    "lat": 0.9568438529968262,
+    "errs": {
+     "http404": 1
+    }
+   }
+  },
+  {
+   "url": "https://rari.calderachain.xyz/http",
+   "error": "retries exhausted for eth_blockNumber",
+   "stats": {
+    "ok": 0,
+    "err": 6,
+    "429": 0,
+    "lat": 0.0,
+    "errs": {
+     "ProxyError": 6
+    }
+   }
+  }
+ ],
+ "reya": [
+  {
+   "url": "https://rpc.reya.network",
+   "head": 246830245,
+   "chainTimeLag_s": 1.9,
+   "block_time_s": 0.505,
+   "baseFeeGwei": 0.0001,
+   "txs_in_head": 2,
+   "gasLimit": 1125899906842624,
+   "getLogs_ok_span": 100000,
+   "stats": {
+    "ok": 4,
+    "err": 0,
+    "429": 0,
+    "lat": 1.0985398292541504,
+    "errs": {}
+   }
+  }
+ ],
+ "superposition": [
+  {
+   "url": "https://rpc.superposition.so",
+   "error": "retries exhausted for eth_blockNumber",
+   "stats": {
+    "ok": 0,
+    "err": 6,
+    "429": 0,
+    "lat": 0.0,
+    "errs": {
+     "ProxyError": 6
+    }
+   }
+  }
+ ],
+ "bnb": [
+  {
+   "url": "https://bsc-dataseed.bnbchain.org",
+   "head": 127075964,
+   "chainTimeLag_s": 1.2,
+   "block_time_s": 0.45,
+   "baseFeeGwei": 0.0,
+   "txs_in_head": 38,
+   "gasLimit": 70000000,
+   "getLogs_errs": [
+    "100000: {\"code\": -32005, \"message\": \"limit exceeded\"}",
+    "10000: {\"code\": -32005, \"message\": \"limit exceeded\"}",
+    "2000: {\"code\": -32005, \"message\": \"limit exceeded\"}",
+    "500: {\"code\": -32005, \"message\": \"limit exceeded\"}",
+    "100: {\"code\": -32005, \"message\": \"limit exceeded\"}"
+   ],
+   "stats": {
+    "ok": 3,
+    "err": 5,
+    "429": 0,
+    "lat": 0.8291318416595459,
+    "errs": {
+     "{\"code\": -32005, \"message\": \"limit exceeded\"}": 5
+    }
+   }
+  },
+  {
+   "url": "https://bsc-rpc.publicnode.com",
+   "head": 127075966,
+   "chainTimeLag_s": 1.0,
+   "block_time_s": 0.45,
+   "baseFeeGwei": 0.0,
+   "txs_in_head": 41,
+   "gasLimit": 70000000,
+   "getLogs_errs": [
+    "100000: http 403: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com",
+    "10000: http 403: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com",
+    "2000: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/",
+    "500: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/",
+    "100: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/"
+   ],
+   "stats": {
+    "ok": 3,
+    "err": 5,
+    "429": 0,
+    "lat": 0.8277390003204346,
+    "errs": {
+     "http403": 2,
+     "{\"code\": -32701, \"message\": \"Please specify an address in your request or, to re": 3
+    }
+   }
+  }
+ ],
+ "polygon": [
+  {
+   "url": "https://polygon-rpc.com",
+   "error": "\"message: API key disabled, reason: tenant disabled, json-rpc code: -32051, rest code: 403\"",
+   "stats": {
+    "ok": 0,
+    "err": 1,
+    "429": 0,
+    "lat": 0.4270951747894287,
+    "errs": {
+     "\"message: API key disabled, reason: tenant disabled, json-rpc code: -32051, rest": 1
+    }
+   }
+  },
+  {
+   "url": "https://polygon-bor-rpc.publicnode.com",
+   "head": 95361254,
+   "chainTimeLag_s": 0.2,
+   "block_time_s": 1.5,
+   "baseFeeGwei": 248.129995849,
+   "txs_in_head": 63,
+   "gasLimit": 160000000,
+   "getLogs_errs": [
+    "100000: http 403: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com",
+    "10000: http 403: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com",
+    "2000: http 403: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com",
+    "500: http 403: {\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com",
+    "100: {\"code\": -32701, \"message\": \"Please specify an address in your request or, to remove restrictions, order a dedicated full node here: https:/"
+   ],
+   "stats": {
+    "ok": 3,
+    "err": 5,
+    "429": 0,
+    "lat": 0.777642011642456,
+    "errs": {
+     "http403": 4,
+     "{\"code\": -32701, \"message\": \"Please specify an address in your request or, to re": 1
+    }
+   }
+  }
+ ],
+ "avalanche": [
+  {
+   "url": "https://api.avax.network/ext/bc/C/rpc",
+   "head": 97303947,
+   "chainTimeLag_s": 2.1,
+   "block_time_s": 1.115,
+   "baseFeeGwei": 5.0,
+   "txs_in_head": 1,
+   "gasLimit": 80000000,
+   "getLogs_ok_span": 100000,
+   "stats": {
+    "ok": 4,
+    "err": 0,
+    "429": 0,
+    "lat": 0.8691649436950684,
+    "errs": {}
+   }
+  }
+ ],
+ "sonic": [
+  {
+   "url": "https://rpc.soniclabs.com",
+   "head": 80785827,
+   "chainTimeLag_s": 1.5,
+   "block_time_s": 0.535,
+   "baseFeeGwei": 50.0,
+   "txs_in_head": 4,
+   "gasLimit": 5000000000,
+   "getLogs_ok_span": 100000,
+   "stats": {
+    "ok": 4,
+    "err": 0,
+    "429": 0,
+    "lat": 1.2927825450897217,
+    "errs": {}
+   }
+  }
+ ],
+ "berachain": [
+  {
+   "url": "https://rpc.berachain.com",
+   "head": 27366218,
+   "chainTimeLag_s": 2.2,
+   "block_time_s": 2.0,
+   "baseFeeGwei": 1.0,
+   "txs_in_head": 2,
+   "gasLimit": 36000000,
+   "getLogs_errs": [
+    "100000: {\"code\": -32614, \"message\": \"eth_getLogs is limited to a 10,000 range\"}"
+   ],
+   "getLogs_ok_span": 10000,
+   "stats": {
+    "ok": 4,
+    "err": 1,
+    "429": 0,
+    "lat": 0.6975584030151367,
+    "errs": {
+     "{\"code\": -32614, \"message\": \"eth_getLogs is limited to a 10,000 range\"}": 1
+    }
+   }
+  }
+ ],
+ "monad": [
+  {
+   "url": "https://rpc.monad.xyz",
+   "head": 112552927,
+   "chainTimeLag_s": 0.7,
+   "block_time_s": 0.3,
+   "baseFeeGwei": 100.0,
+   "txs_in_head": 15,
+   "gasLimit": 150000000,
+   "getLogs_errs": [
+    "100000: {\"code\": -32614, \"message\": \"eth_getLogs is limited to a 100 range\"}",
+    "10000: {\"code\": -32614, \"message\": \"eth_getLogs is limited to a 100 range\"}",
+    "2000: {\"code\": -32614, \"message\": \"eth_getLogs is limited to a 100 range\"}",
+    "500: {\"code\": -32614, \"message\": \"eth_getLogs is limited to a 100 range\"}"
+   ],
+   "getLogs_ok_span": 100,
+   "stats": {
+    "ok": 4,
+    "err": 4,
+    "429": 0,
+    "lat": 0.6390917301177979,
+    "errs": {
+     "{\"code\": -32614, \"message\": \"eth_getLogs is limited to a 100 range\"}": 4
+    }
+   }
+  },
+  {
+   "url": "https://rpc1.monad.xyz",
+   "head": 112552929,
+   "chainTimeLag_s": 0.6,
+   "block_time_s": 0.305,
+   "baseFeeGwei": 100.0,
+   "txs_in_head": 20,
+   "gasLimit": 150000000,
+   "getLogs_errs": [
+    "100000: {\"code\": -32602, \"message\": \"block range too large\"}",
+    "10000: {\"code\": -32602, \"message\": \"block range too large\"}",
+    "2000: {\"code\": -32602, \"message\": \"block range too large\"}",
+    "500: {\"code\": -32602, \"message\": \"block range too large\"}"
+   ],
+   "getLogs_ok_span": 100,
+   "stats": {
+    "ok": 4,
+    "err": 4,
+    "429": 0,
+    "lat": 0.9305784702301025,
+    "errs": {
+     "{\"code\": -32602, \"message\": \"block range too large\"}": 4
+    }
+   }
+  }
+ ],
+ "hyperevm": [
+  {
+   "url": "https://rpc.hyperliquid.xyz/evm",
+   "head": 48281991,
+   "chainTimeLag_s": 0.8,
+   "block_time_s": 0.985,
+   "baseFeeGwei": 0.12103644,
+   "txs_in_head": 18,
+   "gasLimit": 3000000,
+   "getLogs_errs": [
+    "100000: {\"code\": -32602, \"message\": \"query exceeds max block range 1000\"}",
+    "10000: {\"code\": -32602, \"message\": \"query exceeds max block range 1000\"}",
+    "2000: {\"code\": -32602, \"message\": \"query exceeds max block range 1000\"}"
+   ],
+   "getLogs_ok_span": 500,
+   "stats": {
+    "ok": 4,
+    "err": 3,
+    "429": 0,
+    "lat": 1.7079646587371826,
+    "errs": {
+     "{\"code\": -32602, \"message\": \"query exceeds max block range 1000\"}": 3
+    }
+   }
+  }
+ ],
+ "megaeth": [
+  {
+   "url": "https://mainnet.megaeth.com/rpc",
+   "head": 28950146,
+   "chainTimeLag_s": 1.3,
+   "block_time_s": 1.0,
+   "baseFeeGwei": 0.001,
+   "txs_in_head": 22,
+   "gasLimit": 10000000000,
+   "getLogs_ok_span": 100000,
+   "stats": {
+    "ok": 4,
+    "err": 0,
+    "429": 0,
+    "lat": 0.8653812408447266,
+    "errs": {}
+   }
+  }
+ ]
+}

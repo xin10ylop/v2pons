@@ -1,0 +1,338 @@
+[
+{
+"pid": "0x75d989838079663844ee551f7de9d23ffde4a6b8fde445b21650fefa31180980",
+"variant": "0.0012 land7_fast",
+"my_ret": 0.122228,
+"pricer_ret": 0.122228,
+"note": "L=83444547 best #1; exit take_profit (pricer take_profit), sell lands L+10; diff 8.3e-16"
+},
+{
+"pid": "0x75d989838079663844ee551f7de9d23ffde4a6b8fde445b21650fefa31180980",
+"variant": "0.0012 land7_slow",
+"my_ret": 0.122219,
+"pricer_ret": 0.122219,
+"note": "L=83444547 best #1; exit take_profit (pricer take_profit), sell lands L+11; diff 8.3e-16"
+},
+{
+"pid": "0x75d989838079663844ee551f7de9d23ffde4a6b8fde445b21650fefa31180980",
+"variant": "0.0012 land8_fast",
+"my_ret": 0.122207,
+"pricer_ret": 0.122207,
+"note": "L=83444547 best #1; exit take_profit (pricer take_profit), sell lands L+10; diff 8.3e-16"
+},
+{
+"pid": "0x75d989838079663844ee551f7de9d23ffde4a6b8fde445b21650fefa31180980",
+"variant": "0.0012 land8_slow",
+"my_ret": 0.122198,
+"pricer_ret": 0.122198,
+"note": "L=83444547 best #1; exit take_profit (pricer take_profit), sell lands L+11; diff 8.3e-16"
+},
+{
+"pid": "0x44ad39be34da319c699b7bf74ae5594d19bed0de8528f4f1cb9875f98ab5f9ed",
+"variant": "0.0012 land7_fast",
+"my_ret": 0.117634,
+"pricer_ret": 0.117634,
+"note": "L=83408816 best #2; exit take_profit (pricer take_profit), sell lands L+10; diff 8.3e-16"
+},
+{
+"pid": "0x44ad39be34da319c699b7bf74ae5594d19bed0de8528f4f1cb9875f98ab5f9ed",
+"variant": "0.0012 land7_slow",
+"my_ret": 0.11763,
+"pricer_ret": 0.11763,
+"note": "L=83408816 best #2; exit take_profit (pricer take_profit), sell lands L+11; diff 8.3e-16"
+},
+{
+"pid": "0x44ad39be34da319c699b7bf74ae5594d19bed0de8528f4f1cb9875f98ab5f9ed",
+"variant": "0.0012 land8_fast",
+"my_ret": 0.117624,
+"pricer_ret": 0.117624,
+"note": "L=83408816 best #2; exit take_profit (pricer take_profit), sell lands L+10; diff 8.3e-16"
+},
+{
+"pid": "0x44ad39be34da319c699b7bf74ae5594d19bed0de8528f4f1cb9875f98ab5f9ed",
+"variant": "0.0012 land8_slow",
+"my_ret": 0.11762,
+"pricer_ret": 0.11762,
+"note": "L=83408816 best #2; exit take_profit (pricer take_profit), sell lands L+11; diff 8.3e-16"
+},
+{
+"pid": "0xfd6496b4ef1fae3521b808fe2c8f6c4ae00aa583b08852829172f7e83e7bb460",
+"variant": "0.0012 land7_fast",
+"my_ret": 0.116275,
+"pricer_ret": 0.116275,
+"note": "L=83414658 best #3; exit take_profit (pricer take_profit), sell lands L+10; diff 0.0e+00"
+},
+{
+"pid": "0xfd6496b4ef1fae3521b808fe2c8f6c4ae00aa583b08852829172f7e83e7bb460",
+"variant": "0.0012 land7_slow",
+"my_ret": 0.116272,
+"pricer_ret": 0.116272,
+"note": "L=83414658 best #3; exit take_profit (pricer take_profit), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0xfd6496b4ef1fae3521b808fe2c8f6c4ae00aa583b08852829172f7e83e7bb460",
+"variant": "0.0012 land8_fast",
+"my_ret": 0.116272,
+"pricer_ret": 0.116272,
+"note": "L=83414658 best #3; exit take_profit (pricer take_profit), sell lands L+10; diff 0.0e+00"
+},
+{
+"pid": "0xfd6496b4ef1fae3521b808fe2c8f6c4ae00aa583b08852829172f7e83e7bb460",
+"variant": "0.0012 land8_slow",
+"my_ret": 0.116269,
+"pricer_ret": 0.116269,
+"note": "L=83414658 best #3; exit take_profit (pricer take_profit), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0xe95f3c88ff443edba91488d58a8b876c3913df30a9419881d8f78cbe3da30a2f",
+"variant": "0.0012 land7_fast",
+"my_ret": -0.004186,
+"pricer_ret": -0.004186,
+"note": "L=83402323 worst: burst +7, reverts in all variants; exit buy_reverted (pricer buy_reverted), sell lands L+10; diff 0.0e+00"
+},
+{
+"pid": "0xe95f3c88ff443edba91488d58a8b876c3913df30a9419881d8f78cbe3da30a2f",
+"variant": "0.0012 land7_slow",
+"my_ret": -0.004214,
+"pricer_ret": -0.004214,
+"note": "L=83402323 worst: burst +7, reverts in all variants; exit buy_reverted (pricer buy_reverted), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0xe95f3c88ff443edba91488d58a8b876c3913df30a9419881d8f78cbe3da30a2f",
+"variant": "0.0012 land8_fast",
+"my_ret": -0.004122,
+"pricer_ret": -0.004122,
+"note": "L=83402323 worst: burst +7, reverts in all variants; exit buy_reverted (pricer buy_reverted), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0xe95f3c88ff443edba91488d58a8b876c3913df30a9419881d8f78cbe3da30a2f",
+"variant": "0.0012 land8_slow",
+"my_ret": -0.004177,
+"pricer_ret": -0.004177,
+"note": "L=83402323 worst: burst +7, reverts in all variants; exit buy_reverted (pricer buy_reverted), sell lands L+12; diff 0.0e+00"
+},
+{
+"pid": "0x796dbb7b27cebbdbb45938087f1ce9c37b657e53c06c6cdf483ca9a01b679653",
+"variant": "0.0012 land7_fast",
+"my_ret": -0.004709,
+"pricer_ret": -0.004709,
+"note": "L=83414061 worst land7_fast (-0.47%), burst +10; exit deadline (pricer deadline), sell lands L+10; diff 8.3e-16"
+},
+{
+"pid": "0x796dbb7b27cebbdbb45938087f1ce9c37b657e53c06c6cdf483ca9a01b679653",
+"variant": "0.0012 land7_slow",
+"my_ret": 0.09198,
+"pricer_ret": 0.09198,
+"note": "L=83414061 worst land7_fast (-0.47%), burst +10; exit deadline (pricer deadline), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0x796dbb7b27cebbdbb45938087f1ce9c37b657e53c06c6cdf483ca9a01b679653",
+"variant": "0.0012 land8_fast",
+"my_ret": 0.091944,
+"pricer_ret": 0.091944,
+"note": "L=83414061 worst land7_fast (-0.47%), burst +10; exit take_profit (pricer take_profit), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0x796dbb7b27cebbdbb45938087f1ce9c37b657e53c06c6cdf483ca9a01b679653",
+"variant": "0.0012 land8_slow",
+"my_ret": 0.091918,
+"pricer_ret": 0.091918,
+"note": "L=83414061 worst land7_fast (-0.47%), burst +10; exit take_profit (pricer take_profit), sell lands L+12; diff 0.0e+00"
+},
+{
+"pid": "0x323ce6e7e03f9619ef9735b40ade13b9f712146fb862e3994589ffc4210e885e",
+"variant": "0.0012 land7_fast",
+"my_ret": -0.004654,
+"pricer_ret": -0.004654,
+"note": "L=83435949 worst land7_fast, burst +11; exit deadline (pricer deadline), sell lands L+10; diff 0.0e+00"
+},
+{
+"pid": "0x323ce6e7e03f9619ef9735b40ade13b9f712146fb862e3994589ffc4210e885e",
+"variant": "0.0012 land7_slow",
+"my_ret": -0.004665,
+"pricer_ret": -0.004665,
+"note": "L=83435949 worst land7_fast, burst +11; exit deadline (pricer deadline), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0x323ce6e7e03f9619ef9735b40ade13b9f712146fb862e3994589ffc4210e885e",
+"variant": "0.0012 land8_fast",
+"my_ret": -0.004682,
+"pricer_ret": -0.004682,
+"note": "L=83435949 worst land7_fast, burst +11; exit deadline (pricer deadline), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0x323ce6e7e03f9619ef9735b40ade13b9f712146fb862e3994589ffc4210e885e",
+"variant": "0.0012 land8_slow",
+"my_ret": 0.085164,
+"pricer_ret": 0.085164,
+"note": "L=83435949 worst land7_fast, burst +11; exit deadline (pricer deadline), sell lands L+12; diff 0.0e+00"
+},
+{
+"pid": "0xf2995cfa03d3c388da7443188a893afa3210e6869a714d8c1860c5dd8995e334",
+"variant": "0.0012 land7_fast",
+"my_ret": -0.004296,
+"pricer_ret": -0.004296,
+"note": "L=83456814 worst land8_slow, burst +13; exit deadline (pricer deadline), sell lands L+10; diff 0.0e+00"
+},
+{
+"pid": "0xf2995cfa03d3c388da7443188a893afa3210e6869a714d8c1860c5dd8995e334",
+"variant": "0.0012 land7_slow",
+"my_ret": -0.004297,
+"pricer_ret": -0.004297,
+"note": "L=83456814 worst land8_slow, burst +13; exit deadline (pricer deadline), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0xf2995cfa03d3c388da7443188a893afa3210e6869a714d8c1860c5dd8995e334",
+"variant": "0.0012 land8_fast",
+"my_ret": -0.004302,
+"pricer_ret": -0.004302,
+"note": "L=83456814 worst land8_slow, burst +13; exit deadline (pricer deadline), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0xf2995cfa03d3c388da7443188a893afa3210e6869a714d8c1860c5dd8995e334",
+"variant": "0.0012 land8_slow",
+"my_ret": -0.004304,
+"pricer_ret": -0.004304,
+"note": "L=83456814 worst land8_slow, burst +13; exit deadline (pricer deadline), sell lands L+12; diff 0.0e+00"
+},
+{
+"pid": "0x5c636cccb28865a50c9a9a17e11101e418f97febd6ba805d8f7dca2288c3d7ff",
+"variant": "0.0012 land7_fast",
+"my_ret": 0.043251,
+"pricer_ret": 0.043251,
+"note": "L=83402918 other: burst +8, land7 fast/slow differ; exit take_profit (pricer take_profit), sell lands L+9; diff 0.0e+00"
+},
+{
+"pid": "0x5c636cccb28865a50c9a9a17e11101e418f97febd6ba805d8f7dca2288c3d7ff",
+"variant": "0.0012 land7_slow",
+"my_ret": 0.072583,
+"pricer_ret": 0.072583,
+"note": "L=83402918 other: burst +8, land7 fast/slow differ; exit take_profit (pricer take_profit), sell lands L+10; diff 0.0e+00"
+},
+{
+"pid": "0x5c636cccb28865a50c9a9a17e11101e418f97febd6ba805d8f7dca2288c3d7ff",
+"variant": "0.0012 land8_fast",
+"my_ret": -0.003775,
+"pricer_ret": -0.003775,
+"note": "L=83402918 other: burst +8, land7 fast/slow differ; exit buy_reverted (pricer buy_reverted), sell lands L+10; diff 0.0e+00"
+},
+{
+"pid": "0x5c636cccb28865a50c9a9a17e11101e418f97febd6ba805d8f7dca2288c3d7ff",
+"variant": "0.0012 land8_slow",
+"my_ret": -0.00374,
+"pricer_ret": -0.00374,
+"note": "L=83402918 other: burst +8, land7 fast/slow differ; exit buy_reverted (pricer buy_reverted), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0x10d97f58f729bac61f1afbabc93abe124c9c7903066020ab2ed91b30bf97f333",
+"variant": "0.0012 land7_fast",
+"my_ret": 0.074576,
+"pricer_ret": 0.074576,
+"note": "L=83405861 other: two tiny non-dust buys before burst; exit take_profit (pricer take_profit), sell lands L+10; diff 0.0e+00"
+},
+{
+"pid": "0x10d97f58f729bac61f1afbabc93abe124c9c7903066020ab2ed91b30bf97f333",
+"variant": "0.0012 land7_slow",
+"my_ret": 0.074606,
+"pricer_ret": 0.074606,
+"note": "L=83405861 other: two tiny non-dust buys before burst; exit take_profit (pricer take_profit), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0x10d97f58f729bac61f1afbabc93abe124c9c7903066020ab2ed91b30bf97f333",
+"variant": "0.0012 land8_fast",
+"my_ret": 0.074571,
+"pricer_ret": 0.074571,
+"note": "L=83405861 other: two tiny non-dust buys before burst; exit take_profit (pricer take_profit), sell lands L+10; diff 0.0e+00"
+},
+{
+"pid": "0x10d97f58f729bac61f1afbabc93abe124c9c7903066020ab2ed91b30bf97f333",
+"variant": "0.0012 land8_slow",
+"my_ret": 0.074602,
+"pricer_ret": 0.074602,
+"note": "L=83405861 other: two tiny non-dust buys before burst; exit take_profit (pricer take_profit), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0x1e95654457c0920d5e599d2b5280110d4014b8a2e59cbbadfb7c0715e93c5370",
+"variant": "0.0012 land7_fast",
+"my_ret": 0.099779,
+"pricer_ret": 0.099779,
+"note": "L=83428891 other: fee 300; exit take_profit (pricer take_profit), sell lands L+10; diff 8.5e-16"
+},
+{
+"pid": "0x1e95654457c0920d5e599d2b5280110d4014b8a2e59cbbadfb7c0715e93c5370",
+"variant": "0.0012 land7_slow",
+"my_ret": 0.099776,
+"pricer_ret": 0.099776,
+"note": "L=83428891 other: fee 300; exit take_profit (pricer take_profit), sell lands L+11; diff 8.3e-16"
+},
+{
+"pid": "0x1e95654457c0920d5e599d2b5280110d4014b8a2e59cbbadfb7c0715e93c5370",
+"variant": "0.0012 land8_fast",
+"my_ret": 0.099778,
+"pricer_ret": 0.099778,
+"note": "L=83428891 other: fee 300; exit take_profit (pricer take_profit), sell lands L+10; diff 8.3e-16"
+},
+{
+"pid": "0x1e95654457c0920d5e599d2b5280110d4014b8a2e59cbbadfb7c0715e93c5370",
+"variant": "0.0012 land8_slow",
+"my_ret": 0.099775,
+"pricer_ret": 0.099775,
+"note": "L=83428891 other: fee 300; exit take_profit (pricer take_profit), sell lands L+11; diff 8.3e-16"
+},
+{
+"pid": "0xa0e5acee0738413ebb323eb7473295b548de06c551a9c7d8d2f6c9ba2acaa2ad",
+"variant": "0.0012 land7_fast",
+"my_ret": -0.003966,
+"pricer_ret": -0.003966,
+"note": "L=83404095 other: burst +10; exit deadline (pricer deadline), sell lands L+10; diff 8.3e-16"
+},
+{
+"pid": "0xa0e5acee0738413ebb323eb7473295b548de06c551a9c7d8d2f6c9ba2acaa2ad",
+"variant": "0.0012 land7_slow",
+"my_ret": 0.085954,
+"pricer_ret": 0.085954,
+"note": "L=83404095 other: burst +10; exit deadline (pricer deadline), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0xa0e5acee0738413ebb323eb7473295b548de06c551a9c7d8d2f6c9ba2acaa2ad",
+"variant": "0.0012 land8_fast",
+"my_ret": 0.085952,
+"pricer_ret": 0.085952,
+"note": "L=83404095 other: burst +10; exit take_profit (pricer take_profit), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0xa0e5acee0738413ebb323eb7473295b548de06c551a9c7d8d2f6c9ba2acaa2ad",
+"variant": "0.0012 land8_slow",
+"my_ret": 0.08595,
+"pricer_ret": 0.08595,
+"note": "L=83404095 other: burst +10; exit take_profit (pricer take_profit), sell lands L+12; diff 0.0e+00"
+},
+{
+"pid": "0x4d5739034565f9a7fc65d4d38f77e7b4ddb5950435d6842c9e5bc6151f80aa7f",
+"variant": "0.0012 land7_fast",
+"my_ret": 0.061015,
+"pricer_ret": 0.061015,
+"note": "L=83479720 other: last launch, burst +8; exit take_profit (pricer take_profit), sell lands L+9; diff 8.3e-16"
+},
+{
+"pid": "0x4d5739034565f9a7fc65d4d38f77e7b4ddb5950435d6842c9e5bc6151f80aa7f",
+"variant": "0.0012 land7_slow",
+"my_ret": 0.061012,
+"pricer_ret": 0.061012,
+"note": "L=83479720 other: last launch, burst +8; exit take_profit (pricer take_profit), sell lands L+10; diff 8.3e-16"
+},
+{
+"pid": "0x4d5739034565f9a7fc65d4d38f77e7b4ddb5950435d6842c9e5bc6151f80aa7f",
+"variant": "0.0012 land8_fast",
+"my_ret": -0.003953,
+"pricer_ret": -0.003953,
+"note": "L=83479720 other: last launch, burst +8; exit buy_reverted (pricer buy_reverted), sell lands L+11; diff 0.0e+00"
+},
+{
+"pid": "0x4d5739034565f9a7fc65d4d38f77e7b4ddb5950435d6842c9e5bc6151f80aa7f",
+"variant": "0.0012 land8_slow",
+"my_ret": -0.003953,
+"pricer_ret": -0.003953,
+"note": "L=83479720 other: last launch, burst +8; exit buy_reverted (pricer buy_reverted), sell lands L+12; diff 0.0e+00"
+}
+]

@@ -1,0 +1,87 @@
+{
+ "head": 85254670,
+ "0x0000ffffbe8efe702c8703ae3477ff5de3d319c0|b6982b48|260|2500|25|true": {
+  "logs": 0,
+  "pools_with_activity": 0,
+  "per_pool": {}
+ },
+ "0x3493ab3ec9358cb77b335507248c68fcaa84bf5e|7fde822e|804|10000|200|true": {
+  "logs": 0,
+  "pools_with_activity": 0,
+  "per_pool": {}
+ },
+ "0xd912ed6ccd65370d2ef23c783bd2096e6ddbd68f|7fde822e|804|10000|200|true": {
+  "logs": 0,
+  "pools_with_activity": 0,
+  "per_pool": {}
+ },
+ "create|60808060|3740|2500|25|true": {
+  "logs": 18316,
+  "pools_with_activity": 9,
+  "per_pool": {
+   "0xd86e2ddd5251b49c4cc7d34d2d1a8f70cc4373bd99295df251111b9b9cc8eeee": {
+    "swaps": 2141,
+    "buys": 1938,
+    "buy_eth": 8.873720188539178,
+    "pulls": 0,
+    "first_rel": 3001
+   },
+   "0xf200fc8ad952d9bfe7b1fc19f927c0076566a695736bb8aa51ba65db56300a4f": {
+    "swaps": 6,
+    "buys": 2,
+    "buy_eth": 0.000300738608921736,
+    "pulls": 0,
+    "first_rel": 3079
+   },
+   "0xda550e8c66fac645d30ecd3ba750e0a8c3e9ea98a91858122f788440eecebdab": {
+    "swaps": 2515,
+    "buys": 2310,
+    "buy_eth": 10.675232992946565,
+    "pulls": 0,
+    "first_rel": 3005
+   },
+   "0x3ac16c279c2d5e6698e3fd3142d4217690b2351169734ed0de0da2bd726c4217": {
+    "swaps": 3700,
+    "buys": 3491,
+    "buy_eth": 16.50146540967965,
+    "pulls": 0,
+    "first_rel": 3003
+   },
+   "0x00c015183fc01a40ffc66e9f643b83990d7685a274192078cca361d7d9b82220": {
+    "swaps": 1613,
+    "buys": 1419,
+    "buy_eth": 7.219676392562708,
+    "pulls": 0,
+    "first_rel": 3003
+   },
+   "0xe92abb9b34537e9f1d8d802b9332bdf4787397f70ca0aff0a11b4cdb4bb2934b": {
+    "swaps": 4532,
+    "buys": 4293,
+    "buy_eth": 21.005792987892836,
+    "pulls": 0,
+    "first_rel": 3001
+   },
+   "0xe495a6647ec5f33b372dc8c4e37dbb64e997c5bee49ff33725e6ac606f4b3a19": {
+    "swaps": 1,
+    "buys": 0,
+    "buy_eth": 0,
+    "pulls": 0,
+    "first_rel": 85307
+   },
+   "0x623493ff1dc02e4ef7353977497f3643c53c9b894ec72fb2fe8e229f86bc0b87": {
+    "swaps": 1582,
+    "buys": 1400,
+    "buy_eth": 6.580481057120215,
+    "pulls": 0,
+    "first_rel": 3002
+   },
+   "0x5e97889490efa4158a5ed87c5feea768c630036b9d51129b20d22a96bc3203dc": {
+    "swaps": 2182,
+    "buys": 1979,
+    "buy_eth": 9.665380966542253,
+    "pulls": 0,
+    "first_rel": 3011
+   }
+  }
+ }
+}

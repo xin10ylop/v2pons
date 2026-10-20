@@ -1,0 +1,16 @@
+pools of this check 349; in the reaction records 349 (its launches end 10-12 13:44:12)
+1764 B (census): {'sells': 1256, 'pools': 340, 'pools with an outside sell': 294}; distinct outside sellers 104
+5048 B (OZ ERC20): {'pools': 6, 'sells': 5, 'pools with an outside sell': 1}; distinct outside sellers 4
+3854 B (ERC20Burnable, new): {'sells': 56, 'pools': 3, 'pools with an outside sell': 3}; distinct outside sellers 42
+outside sells 1317; offset from the launch p10/50/90 121/350/1964; at +60..+120: 117
+routes (to:selector/bytes): [('0x65050a9b:4d819a2a/580', 522), ('0x88767899:3593564c/580', 323), ('0xf0b7eaaf:39ecce49/1380', 131), ('0x88767899:3593564c/740', 73), ('0x9f611cc3:f61f57d9/356', 65), ('0xd6d35b56:e6cb474f/484', 55), ('0x4f881c6a:50a13b5c/68', 48), ('0x88767899:3593564c/708', 23), ('0xf30e383d:c3c16ee4/2916', 20), ('0xcaf681a6:04e45aaf/228', 16)]
+outside sells at or after + 78 and before the pull: 1293 in 296 pools; ETH out p50 0.00066
+
+outside positions 1565 (wallet x pool); closed (>= 95% sold) 350; realized return p10/50/90 -0.02%/+17.72%/+205.75%; > 0: 301
+   1764 B (census): closed 345, wallets 48, realized p50 +16.65%, > 0 296
+   3854 B (ERC20Burnable, new): closed 5, wallets 5, realized p50 +101.43%, > 0 5
+
+our trade's shape (an outside first buy at + 1..+ 5, fully sold by + 60..+ 130, before the pull): 1 positions, 1 wallets; realized p50 +0.10%, mean +0.10%
+   0x8c6c06a0 1764 0xb57856b5 via 0xf0b7eaaf:39ecce49    in 0.00020 out 0.00020 first buy +4 last sell +120 pull 36938 ret +0.10%
+
+outside positions still holding at the pull: 1207 (1110 never sold); ETH in 3.7207

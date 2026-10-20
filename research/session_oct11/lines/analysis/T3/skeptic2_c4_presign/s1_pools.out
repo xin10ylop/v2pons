@@ -1,0 +1,11 @@
+slice: blocks 86158233..86232899 = 10-11 21:45:04 .. 10-11 23:53:21 UTC
+ETH-pair Initialize logs 236 3.0 shape 49
+   txs 49/49
+3.0 launches 49 rejected {}
+   pool events 15/49
+   pool events 30/49
+   pool events 45/49
+   pool events 49/49
+swap/ml txs: 403
+   txs 354/354
+written pools.json

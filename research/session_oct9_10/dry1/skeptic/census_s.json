@@ -1,0 +1,10216 @@
+[
+{
+"pid": "0x5d77f45f23685f302e58c2ee78ea5850e199bc4f961c8b666c627ab2ebda3807",
+"b0": 84022328,
+"launcher": "0x83979b9f7f922b46677f015797591b4b6c4accba",
+"pull": 3673,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999002e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x23407005c741effcd5032acb8524bfd41bf317568754e6daa5488f18ffae8906",
+"b0": 84026170,
+"launcher": "0xd4e7ce58d3dbd92cefadb204440d215262aafbf9",
+"pull": 3322,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99803e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x480977764c4088f4e55f2ca7a9ba0f0f5d70c92e6e714bb55806e9855d817295",
+"b0": 84029659,
+"launcher": "0x7b5327a6d06b75b30627e016672b4eeede0f8b8d",
+"pull": 3549,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.999644e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xa462eec7a68e97f526cddad62d1dc49eb839edefe3a811663cd037737d8d7b21",
+"b0": 84033387,
+"launcher": "0xf50691df3744753fdccdf640018d09575d6e87fd",
+"pull": 3660,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998906e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xa0e5e5cefae7bebf844078f917688996fba2ee863399d38b6c48dd2bacb0407e",
+"b0": 84037216,
+"launcher": "0x462bae7aaa5ec78e780b9b101a3dcbeaf5e5d081",
+"pull": 3352,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999646e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xae61552738d01b65d4bf37a1a17ce351727a46af557c8e105c10a5370d741223",
+"b0": 84040750,
+"launcher": "0x9938ab1fbd2c8e451ec39cb9964ea649e169afac",
+"pull": 3458,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999788e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xd4ec5dfae8fd3a98d6d0654af1c06183a1a9927b660af511e20efa38e454e66b",
+"b0": 84044394,
+"launcher": "0x4f47242c6465e304390f6c79acd29a3ced2d4a57",
+"pull": 3227,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.99803e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+5,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x8f0b94034106fc08a1d1ad53b4b8527fa3fffc1b3b366122085b481c0360e6a6",
+"b0": 84047776,
+"launcher": "0x8f7475b8687e2bb6e6af78c3273425b4c089bfe0",
+"pull": 3438,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998766e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x7f511c64fc12f682427dc03e799ee9329352ccae4804c0e803a2d1ff87c79fd6",
+"b0": 84051381,
+"launcher": "0xe260b4f5fbaf3c7163c7327074971ec530798b46",
+"pull": 3285,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999946e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x68ea0ca2689afca8fe94781b0c3f991a8ec219273e203abf504f08ee760f937b",
+"b0": 84054844,
+"launcher": "0x2e1a5d44b8071c765032947c6b9101730709e683",
+"pull": 120,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999652e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x7f5ad5253d382174de6eb7311b204490125124b17e03145d47f5173a45d15b1b",
+"b0": 84055130,
+"launcher": "0xfa001fd1aa6f4145f415e82d54d5c60954094abe",
+"pull": 150,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998012e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x1954f8dd82ec7738356801d7cd2dfd7f2d14f2c03014a0766dad7d9badf241de",
+"b0": 84055444,
+"launcher": "0x3df9fc58fc4d864b2da01624c9ed28343cff69b7",
+"pull": 111,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99858e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x07a04dc0a799cef4d459bfc2044e366fea19741555829794083d22cdb87fae57",
+"b0": 84055712,
+"launcher": "0x2b4899eca03ca31dfb902f9551250f1ca6261f66",
+"pull": 3580,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998628e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xff12f354b6be0115eb0085de7de1d7f04be484c5c8ef4323e2d51f16b8460e8c",
+"b0": 84059468,
+"launcher": "0x39278aa3fb1aee7a853a569243b7047830e831b6",
+"pull": 3584,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998322e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xe1cad8c9f1558af1c32cdd92174a2e704461a5675bf727deb7fe14200500c9fa",
+"b0": 84063225,
+"launcher": "0x0c7283aae3ff6b9a4b2105f8e5354bb15954dddd",
+"pull": 3386,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998208e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x52f27e248f128e1a504a9bb589a4dde0d07651f47447cb003a9456208a4e7955",
+"b0": 84066794,
+"launcher": "0x3affb365f6b76bea5a4dac62c5473d1892628a43",
+"pull": 3570,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99963e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x45ca3ada24e5f99a406772bdf2151659e946b2fd459adbfbbcca6bc5456a2c09",
+"b0": 84070539,
+"launcher": "0x98451c7bc3197351f17d3af74f7d866825097109",
+"pull": 1101,
+"pull_by_launcher": false,
+"bot": 11,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.99968e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xb00339d3e11f5eba2bb1c2fbf2fa5beb9dcadc058171fa537386fb3d5585a330",
+"b0": 84071802,
+"launcher": "0x24d03640d6c560ad3aba841ef8d5f6f19b290561",
+"pull": 3207,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998958e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x362474048431ffb0bf9068e8e25099cc7791ef30195c8838f5b42b5a25a2cf43",
+"b0": 84075189,
+"launcher": "0x3008fbdb44122e19b64fa0e2cf17e719e38a738d",
+"pull": 3570,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99998e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x2bd8c60decd6261230f06d324cbf3181c6883aca488c6299a8570a64ed19a471",
+"b0": 84078920,
+"launcher": "0x548e579b5c6c388c921e50cf91d7f4f7ef8eb05b",
+"pull": 3183,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99986e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xb415e122948662588d6d5d554f1a242e82ece8a8ceb7937d80353a33c537acbe",
+"b0": 84082280,
+"launcher": "0xb7fb119d23b06816376de4194642d3a3a224680d",
+"pull": 3406,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.99939e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xd1cca2279dcb38d39f66e6a029905eaa7151f685fe40a1e2ef11f89d8e21e4ee",
+"b0": 84085868,
+"launcher": "0x26a439f116c5a33bb4c73297075058e98d3a7bcd",
+"pull": 3534,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99821e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x991c994ede9d823e14a5766255b6d97858b78c8f6737bff3c5c52997c9baddad",
+"b0": 84089585,
+"launcher": "0xcfda1ba7aeb19c1a7917e4bbda9bcbcf9b4cfdb5",
+"pull": 3297,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998932e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x3f2a4bf0ca6c978e13e75a5a86df2f82b483adc87df8532e7258c458b0f50190",
+"b0": 84093068,
+"launcher": "0xb0248fdc4b79e09723af868047a1763d2532c936",
+"pull": 3425,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998702e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x1fd0408952d2e4d35d87da484850cff36d6c1525a2709d10866b90df388a200f",
+"b0": 84096671,
+"launcher": "0x355b1899e4956f370727103e4fdb1439d79e0ba1",
+"pull": 779,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.998784e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xbaf62a991f483aa73a3c1e62034c8d1668fc065f9ece4d9f60b9fe4faa012caa",
+"b0": 84097622,
+"launcher": "0x9c585765fcda28188be051e72fe722afec3f9727",
+"pull": 3550,
+"pull_by_launcher": false,
+"bot": 16,
+"pre": [
+[
+4,
+"BUY",
+1.998448e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+6,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x8dfae21e8d8d55764707e3c4df2ebb0555c92b7643129410e9946a178892fb8d",
+"b0": 84101345,
+"launcher": "0x65cf470ed607c34d1180e930f430e38437397742",
+"pull": 3261,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99871e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x54821a8e987f572ae5625571a43b21f3f139e5011dd227ebe2b7f2bfeb66fe89",
+"b0": 84104935,
+"launcher": "0x18e5919b11722611b4f57be2259019aca9bc523d",
+"pull": 3219,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998466e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x35ca144df706e904b8154512324690f20f7f3b104cb47781d732f8954d9911d8",
+"b0": 84108328,
+"launcher": "0x7de8116067535071206af358c814a86125bd22c9",
+"pull": 3543,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99816e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xf57051b331af06f8a4d7da0b5fe23b502ff0e56d645512d03a6913c409a88084",
+"b0": 84112035,
+"launcher": "0xbc9a2e0d8d74badad4a11924080684c37e05b97c",
+"pull": 3179,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99911e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x062f4526949dca78120242b1d4510e428cb420752ffb9d79296d7d53b1f5daa7",
+"b0": 84115392,
+"launcher": "0x77ec6023191c5b9b3713d73f770cf27b3fe35e68",
+"pull": 3380,
+"pull_by_launcher": false,
+"bot": 15,
+"pre": [
+[
+3,
+"BUY",
+1.999096e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x9057404b1581986f3c7e77a23d3480a428be7f921f57ce67d7445372d5cf8e91",
+"b0": 84118949,
+"launcher": "0xf18e7e3565b7e413177595ad102531bd339429f5",
+"pull": 1239,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.99852e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xf84805b2994fbfc0af3825ed4f4baffc152b8636949806f96c4a87b31162472b",
+"b0": 84120357,
+"launcher": "0x849f7f83f65287b0e2c5be6b420d0121a20d7010",
+"pull": 3558,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998112e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xa19aa3eb9b4f29367cdddea5df73ffef175a3fbff771531aed44defee714b4ff",
+"b0": 84124090,
+"launcher": "0xdadf5f1116062238a4a85ffd3bb6b85adbb4ce7d",
+"pull": 149,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998264e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x2d85e9a670451b23e746acccd467e09715fbe19b5cbc3e6fd070bcc5523f184e",
+"b0": 84124407,
+"launcher": "0xfdab8939f737a13fdb7930e97a83c0c026b585e6",
+"pull": 130,
+"pull_by_launcher": false,
+"bot": 11,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998714e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x1dba8ec4ae548dc0361a72e7ae7d6119720258822c9c614195b4fb5e7ab7a7e4",
+"b0": 84124704,
+"launcher": "0x5fc439c726ebb817e15c7e9474e2b855b4171aad",
+"pull": 173,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998324e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x23ffc330bb74b80dbca3ea34e4ec6e93766c2abd1afd5402f6a65fbf968a71ec",
+"b0": 84125050,
+"launcher": "0xba2c930b587ba8d09489978eadd1a1197842eef1",
+"pull": 231,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.9994e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x45c0e4662e51e8903ed029483e1d52787cef03db25c287095c06d71571ba18f7",
+"b0": 84125437,
+"launcher": "0xf64591acf9478fcca2b4363d365ed2dc9e30edf5",
+"pull": 127,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999634e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x6fd7091940bd5ef40be1116b8e09b811b829341c0a4f8cf1471ee5937119a54e",
+"b0": 84125729,
+"launcher": "0x4274428b59e6a18fdcd7297b219023a068e6903b",
+"pull": 148,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998598e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x249d624a50e8df4f4cc14f40d8bb10612e9a457ca862f2cb6379e6f4bda04b1d",
+"b0": 84126030,
+"launcher": "0x0f8f90deafa98eb5a2514437e3b364f160ea4bc4",
+"pull": 130,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+],
+[
+5,
+"BUY",
+1.998108e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x5aec59f4e0b60040fa605b791ac5546590749ccdcfa61e959597e9222d47e3ba",
+"b0": 84126315,
+"launcher": "0x48c8de65a86e7ca80ddabe0cc909c210398a1e00",
+"pull": 140,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99841e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xc160e05d12d38fadf1d70f6dee50e78efce4dd080e512715b1b06f34ba95b476",
+"b0": 84126609,
+"launcher": "0xd79049842e7a3b48fcdb882a7c7b4f96f5c34ca1",
+"pull": 262,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998004e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+5,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+6,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xf4ca94614cd37aeef705d35cef0db80ddb122f230bbec2548e6f916229bd6be5",
+"b0": 84127028,
+"launcher": "0xe884516e48a4071ce582acf49f715ec83142dc43",
+"pull": 171,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99876e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xceb808da715cbda90ecdcff95c2763645c874cb0a7780cc37a04f23dc73c7fd0",
+"b0": 84127358,
+"launcher": "0x55ec85502aef3ba3f80175735489ed2be813442c",
+"pull": 3150,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999626e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x87998aa74cd750fc258588bbcfaff872ce36d2d2a9dca7705cd6ddaecaf13f88",
+"b0": 84130684,
+"launcher": "0x7dc035260c60aabd7fcf69347745694ecc7053a3",
+"pull": 141,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+2,
+"BUY",
+1.998628e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.0001089,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x91af1fb2aa01ddbd88c03c18d1169e72d9530e150dfaa71893a3e6998c3cea65",
+"b0": 84131029,
+"launcher": "0x61b0182e0cfbed58c0584474616dcb5b36be768d",
+"pull": 138,
+"pull_by_launcher": false,
+"bot": 128,
+"pre": [
+[
+119,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+120,
+"BUY",
+1.998012e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+125,
+"BUY",
+0.0001089,
+"0xb002e8a0",
+"0xfd1b271f"
+],
+[
+126,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+127,
+"BUY",
+0.0001089,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xda1c78be0cf4ca98a7cf288eb227b9cfe8ddcbef3723312cc8cd079179cb3733",
+"b0": 84131326,
+"launcher": "0x29654966de6258b6bbd97c65645bbd44af3320a4",
+"pull": 129,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998428e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001089,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x3a0ede1e43e2dc17d0eae2f3faff1f7b2aeb4824d9b2ac32eca1df1f8ecc6ccb",
+"b0": 84131612,
+"launcher": "0xa7727f876a96077f55c82e6b6856738384913e83",
+"pull": 3280,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.998266e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001089,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x849a5a4eb7b40e830ef758f5fee4d2822ca975c32a59524cd59df70944bb88d5",
+"b0": 84135084,
+"launcher": "0x7b4a744c4819891c315c9d11aedbe25b852dd541",
+"pull": 42,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999452e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x244233fa1530d44ccf65d755143f680e8fec369c72be5948169eee8c575ef58a",
+"b0": 84135279,
+"launcher": "0x62936e200bcfe91a8d1a5b1083bf1c1663368083",
+"pull": 44,
+"pull_by_launcher": false,
+"bot": 13,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998682e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x67c96041ca7a9a919d138c982467e8c7899ab22c341236148bd55127f28e9a69",
+"b0": 84135478,
+"launcher": "0xa63b6238189e8070b4138b6bf7a3e91583436f17",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99998e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xfaf98fb9594e45a2afb2903d1950b17c35a073bad05d88ff8bccf9d0039bfb19",
+"b0": 84135666,
+"launcher": "0x9a43e18d530b051b2f871c5b9302e52a9dc8a921",
+"pull": 48,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99964e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xc1493d2f9b6e8fabadc03425a0433cebe3deca61b4b8fe03f182d2cf63fb14b6",
+"b0": 84135872,
+"launcher": "0x386961825172de39bbf06241b08678a72d6666db",
+"pull": 3366,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999278e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x0a020c95f92b90f52378997bd407ad0bdf988c95cf172e83e723d6bd42848452",
+"b0": 84139414,
+"launcher": "0x2cd9fc540d961865b38518f215f074d48f5f5ad7",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.999846e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xe9ed89cc7d8667f8fbe80a3af6845115f73363c3b5a086550c7d8143a8c83484",
+"b0": 84139605,
+"launcher": "0xac8501ee8e08c9c1c25c5c7739f5f90b56887626",
+"pull": 39,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999954e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+5,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+6,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x9e95a6337a1de9f77a80034bbbe2f6f8d1ea5b38d9a5c8e4ee91a253e761e4d4",
+"b0": 84139945,
+"launcher": "0x7738ea910387e80c37a4ff2f9769681876c7c4a2",
+"pull": 40,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.998302e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xa5cb5d1ca283be6bca8520cc06a51468e24ea97ed3e1979aa0e55ab92bd04cb4",
+"b0": 84140164,
+"launcher": "0x86025ef81219c412cf4314f4a398033ca348f533",
+"pull": 45,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998666e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x4e281d6cd4950dc0e46c2aa9764f50017657c25a03bfbabba7114418493b0dba",
+"b0": 84140365,
+"launcher": "0xa099e2a27eb5a35b694f63330da1674cebb15567",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999584e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x3778a45ca207e24415f28bb8a4b4b6bd0c4c58800b534d7ed9ef8e393123e4f1",
+"b0": 84140550,
+"launcher": "0xbb70434ef9282fd6812fc0c62d98a6f278662f86",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999402e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xe0b34d8a182a4f95879ca72a5251437968927868be48f3c5d2478e8ab24e478c",
+"b0": 84140745,
+"launcher": "0x52906bd419661178d042a15a01228b0b766d639e",
+"pull": 37,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999524e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xc821e5ee6dc48076941c1354b81e3c5a8c73206a71765040cf55beded9d40f88",
+"b0": 84140940,
+"launcher": "0x63f1bc8b69fe8377fa0d923efba126a3ff1f8f53",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999056e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xfa32ff537d432ba996e3194d26e8adeb0f0899fa18aaa3792311b25f691568cc",
+"b0": 84141133,
+"launcher": "0xd60aba02d903d58fc7a5cd45748d91629a28d918",
+"pull": 1354,
+"pull_by_launcher": false,
+"bot": 13,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+],
+[
+6,
+"BUY",
+1.998638e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x74d6bdc1e02582b4cca4c7c45bbf411303f2daf3b717576cb0a7d48ddc83b5a2",
+"b0": 84142666,
+"launcher": "0x8998b9c2a85782e3d8c09f9592e4492c2a60a52e",
+"pull": 39,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99978e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x87bceb97aa9c5a38a553786f1a2f0f3a5425b8697ff09be86e0a5771b5fe9695",
+"b0": 84142859,
+"launcher": "0xf3370bcbe59cab12f3ae3d60b34b61aea443b12f",
+"pull": 41,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999502e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xef7b02d9baec641c4a7e017a79bccccce5669d8da1f7c44a38449f0f1842b70a",
+"b0": 84143056,
+"launcher": "0xffab050e2232cd0850e4064aaf2ad9b8bfa89ec6",
+"pull": 47,
+"pull_by_launcher": false,
+"bot": 15,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998552e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xaa52e1fba720afda5a6e034cda0c4ae57e00e8351fa40887b7d373e7a72c3d9c",
+"b0": 84143273,
+"launcher": "0x4b9f0d1063b6c9e45719a5741a30c347488b66d9",
+"pull": 3330,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999514e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xc27d57a7a5a82c28bae59e90625b6731cb8f140c946de32c8011e75b8a9dd02a",
+"b0": 84146786,
+"launcher": "0xaaf9876c0066904f5338f453901fe9d73ecf0ba3",
+"pull": 50,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.9993e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x24c56f7dd1ec68d115827bb2f11da50fcf43b965f2116374d4348490853516df",
+"b0": 84146990,
+"launcher": "0x2cc5c7b22de7a32c2ca9ef88ddc758514ab88216",
+"pull": 48,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999656e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xc55bfd3de880b8b133ccd7f751c92da96fccef00fc591894b285914a9a8335aa",
+"b0": 84147202,
+"launcher": "0x9f1445705e39a64751076410eccd6d8abf3223bf",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998882e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x74d450d3ce5ee26a0c7d45eb6b688d24fed4c45c1f9c3b99abc561d9ed9a5e09",
+"b0": 84147402,
+"launcher": "0xa726da23f88043b54a94538d92b5863862470a5b",
+"pull": 39,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.9996e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xd29bb43e2753a6df5cad52bc67c97bf322461565efa57fbbff81511ca743e162",
+"b0": 84147599,
+"launcher": "0x3817b9cb972e4bc3dc53f2d561378245a156069b",
+"pull": 3411,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998684e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x65bfff8ce87f0254e486a91535a460ee39c9250e4304e119d3f51b354c82382f",
+"b0": 84151194,
+"launcher": "0x8392b33f19db91214e2834e7af5399b362545c3a",
+"pull": 3382,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998422e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xdf2e8dd9f282b339dd91b0dfbeb712fa194381ea8c0a31d7baee1eafa48ae3ed",
+"b0": 84154755,
+"launcher": "0x7180764589dbf1d55d7f5a0187718f34113989a0",
+"pull": 3324,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998534e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x73a1f5e74427dd2265c212e6bada48f7fe564543f8d1f69c468b16dd6854412f",
+"b0": 84158256,
+"launcher": "0x00a495dd753a4e9eacc1386c1704555ba756cbbe",
+"pull": 3253,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.99845e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.000103455,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x4c6939b42484d273bf2063ed2582f20d55eab52be2fca34c0c180de00872c31a",
+"b0": 84161683,
+"launcher": "0xcfa943214ad555786c837116119a9dcb8b598fe4",
+"pull": 90,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998962e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+5,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xcb1b6a00bc419fa37955a7d0973e30929038aa0d2017235796c093ec4bdc1245",
+"b0": 84161926,
+"launcher": "0xc3a00317d4a53d415b28c111cbf0e367fc63ef43",
+"pull": 3676,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+2,
+"BUY",
+1.999868e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x58c4bbe7f5dc55bc7b99d57981761b6dab827cefaeb94eed49fcb479847cd60d",
+"b0": 84165781,
+"launcher": "0xa514c98d8b087b54806619abd222c640f4627192",
+"pull": 88,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998186e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x9f855147b67bededab70753f5d80b3fa3f590e50a8d8c8df348d49ca2bfc4dd3",
+"b0": 84166029,
+"launcher": "0x76e1ad2573ce5e36c93c15c18b7a04e98b874a14",
+"pull": 121,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999138e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xd902886bab03d08becb873e882cb0a2d616e83c6ff0a7d37a9a8a5487a07c3c2",
+"b0": 84166490,
+"launcher": "0x8033fd1a40b836456fd611fec6643b87fecc7c6b",
+"pull": 3160,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x94aa32afe921f1b4dc373ce2100693f8f4bd8acb82e78da55c73a0c40d73a329",
+"b0": 84169833,
+"launcher": "0x5b105ec15258ec08bcf47cf1becb46508670f943",
+"pull": 603,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999166e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xeb63d2e55bf6e90bcf5992aeca5a8047059b4e517249a2477b805b3938779145",
+"b0": 84170609,
+"launcher": "0x65ba2bab5e5c9a493bdab727c7219cd38a4ac35c",
+"pull": 3213,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x7582acb87dd214cfbbf1398ed7dd0c61d421b6d94be86cd5bbacc18dc6c77933",
+"b0": 84174006,
+"launcher": "0x6f38576788a27500e415c72265063948071a4279",
+"pull": 3581,
+"pull_by_launcher": false,
+"bot": 19,
+"pre": [
+[
+6,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+6,
+"BUY",
+1.999186e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+9,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x646c7b327d1495a6c447abc2bd0c576b269330c3ebc2e27e0edc6add46a3ef5e",
+"b0": 84177754,
+"launcher": "0xde4b441bba0ca68e793bc3f6468cdbf3ab6e0e88",
+"pull": 3545,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999764e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x62044c42ea143f63119fe226a7934538ff6e428f79364f608e575d30432ec05d",
+"b0": 84181469,
+"launcher": "0x0b30ba66be8110a0fa4e9cb02d4d453eadb56add",
+"pull": 3651,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998298e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x6e519d3a5e9b644571837781e16daa31c45dcb4db615ae5cdc65b955bf491ae1",
+"b0": 84185299,
+"launcher": "0xfeaa7f9805e14a99c1bf933ce8fb3023926de970",
+"pull": 3165,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999532e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x5d54aaef5aa40c815f62262aba7230f7ea19600cab32eef91e3336c25dc6d18c",
+"b0": 84188622,
+"launcher": "0x492ba1e103f38c7f4bdee57dd0a9ef1bd00d4221",
+"pull": 3691,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99911e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x47986da9b54b9e20c95c024e60d5bbef9b03b18a9a17176e017ae6b337763ad7",
+"b0": 84192491,
+"launcher": "0x638868f2f775bc8bc028efacef77762eed0023f1",
+"pull": 3227,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999458e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xdf48af19412990a94a7a51db062befc08df3c962fcb8ffe76a1dc61eb5abf2f2",
+"b0": 84195896,
+"launcher": "0x6f54861d2daae58fb491fcd95e474f58b0ddde86",
+"pull": 3188,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998742e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xa9b4ddc5387b76948288cc860679ccb21d3c9ccf57dcd296b1198ea81caa8f39",
+"b0": 84199266,
+"launcher": "0xf292a56823def4a1b4345f43efd2eeadf7d3df56",
+"pull": 3647,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998618e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x2e2db29f1818975b2e778f7e30d2b6ec487fc97d45d56d5629d29bf5c9816e5a",
+"b0": 84203099,
+"launcher": "0x0528375cd8c0d900e256d5dae98f06814622c326",
+"pull": 3188,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999824e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x9df24e30c7442c53f6f8d6e3a4e0a69e33a20794f5633e8ad5a931758c8002ba",
+"b0": 84206473,
+"launcher": "0x0778e95dcacb5700209b86f7b451d3f2878c891b",
+"pull": 3264,
+"pull_by_launcher": false,
+"bot": 15,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.999278e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+5,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xbf320eb97b5a595ddc7853ae11f1acf63b90a8a4663c5477e1a83912a474eaac",
+"b0": 84209912,
+"launcher": "0x153c35d315c9494f8c65cd697e1cf6446c7f46a9",
+"pull": 3620,
+"pull_by_launcher": false,
+"bot": 16,
+"pre": [
+[
+7,
+"BUY",
+1.998982e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+7,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x48436302ac84bbd86db622a063aa07e48b8033529cee0940d9f96a5aafd5b9a2",
+"b0": 84213720,
+"launcher": "0xb8a8302d45bf55f6d20223cc9c870ec9d206c28a",
+"pull": 3704,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998832e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x7e34d8a33c1bb5d4bb6e642e44a228b77d8e180a94939c8fd88f3f7009f8983e",
+"b0": 84217596,
+"launcher": "0xad5a3074322ee93dfd57bc2edb740be4b758a583",
+"pull": 3660,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+4,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.998988e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+5,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xdaa9a3aa68849df622d6b153428350af68dded4fcad1c7726466d3b7e80253e1",
+"b0": 84221452,
+"launcher": "0x28b5df71595eca473fa164c8f15ba885b9c4314b",
+"pull": 633,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.998118e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x42d80e6780ace41690ccf57e903fc8fcc3c867b3123597fb017f76ded626f638",
+"b0": 84222257,
+"launcher": "0xa966c6090d34235c22e495add338709d945b8baa",
+"pull": 3739,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+4,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.998434e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+5,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xc1b52b91a580aa432f3a57d243c4de514a72b3839591ad6c801dba6453e57725",
+"b0": 84226176,
+"launcher": "0xebf701c1fe866711122cdd27b6a20f28624a43fc",
+"pull": 3522,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998348e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x3ed14f58884713f40af17af436bab37c339f3f7d296619c2a8d7720393254904",
+"b0": 84229868,
+"launcher": "0xfb872db6dbc11227d1ed2acb33c46d4905b0bfb2",
+"pull": 642,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999886e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x8fc0b7aa008c7cf1d29599ceb5b7915b2b8773df6796e95696b7d798bd96b954",
+"b0": 84230675,
+"launcher": "0x33ccc97dcdeed4f083f942ecbf12075411ad92f7",
+"pull": 3417,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998114e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x6c47407c0b01d8e1d23f3baf9fca4c26d809fac8d9854b7bbd0ca585568e30d5",
+"b0": 84234302,
+"launcher": "0x9aab107776f044bdc8b0b27d49df3c84a4443253",
+"pull": 1883,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999908e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xcb00ab79e3b9e9ad92b799d2d4cba7a30316068126abf4e85f37bb6719bb4444",
+"b0": 84236370,
+"launcher": "0xe1aab0b682e0f312c339a3e029e8e5532d5e3f3a",
+"pull": 3154,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998224e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x5ba203562cc2403b784cd79489319e85bb30b841c1ab2c9d58a7e79793f3a932",
+"b0": 84239699,
+"launcher": "0xb03856cea486b0ac299c129fcba04d28104f9228",
+"pull": 3417,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999216e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x30a71c0a2f46c3b0be515e6709b95dba666854ac64bf47676b67ef3750d6f58f",
+"b0": 84243284,
+"launcher": "0x4f9928fd1920000127cf6e3f1ae51c9165c589d5",
+"pull": 3685,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x5db01db3ddd58cd67a89818da0780df329d6d778526e441e25ee1c2006909d94",
+"b0": 84247165,
+"launcher": "0x5675c68c84e522d29509b29de390c8513a00fd07",
+"pull": 3291,
+"pull_by_launcher": false,
+"bot": 16,
+"pre": [
+[
+3,
+"BUY",
+1.999084e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+5,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+6,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x8450c3eb2272483baefc35bfbd1176a8d5616bb63b5eef6a9f31de6734aad49f",
+"b0": 84250618,
+"launcher": "0xbe0f94e1143376fb70f1b7882bd867f6fc8f65e7",
+"pull": 3263,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999402e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x0f73a6eac5fc386549a47c7b1a83bfa54069afee328cffd53a9a34a7a876e259",
+"b0": 84254060,
+"launcher": "0xf835f9f0ca8a5bef0c4906d853f253263a2158ff",
+"pull": 1985,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x69755faae1359abe8cdd47981d1a4e2c76a17afc872f8660129a41899deadc09",
+"b0": 84256229,
+"launcher": "0x6606d83a5b75232c9980d14879dfbaa1f8ee5205",
+"pull": 3337,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999474e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+5,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+6,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x6e94ab77a657774ce73ae1f9303b2b75d34b71ac5bcf682ee2a14e74c57e5ad2",
+"b0": 84259733,
+"launcher": "0xb9ab8636721eed5f87fa98c03f9052687b701b5d",
+"pull": 3579,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+4,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+5,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x9952f2f2821a43bd379fba7631debe6c6baf33b5c1b791cd7ab8a6eb72c7aa37",
+"b0": 84263592,
+"launcher": "0x81cc4cac243bb03003aad6e9cf53ab05cd185543",
+"pull": 3748,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999582e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+5,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x385022663a4149a6cb5faaeef1e650d304dee18e6d8c39ee6217455d8fa7ae96",
+"b0": 84267518,
+"launcher": "0xdd1b4239775fed0829456933d63b4c2f8d78e31d",
+"pull": 3225,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99976e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+5,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x048afa442b68db8946060065ccaa816770544764d2cc987df083309758f5d770",
+"b0": 84270911,
+"launcher": "0xe2709f2c006ea5e418f09f9d489575c4c90b7caa",
+"pull": 2778,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999494e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x42f7d27bb983aca16b739955d14460287db09c55dcf3fb65c40dffc7da4d5e32",
+"b0": 84273868,
+"launcher": "0x8b1323434f4b4fbc57e808e233b21d942947d1f3",
+"pull": 3160,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+4,
+"BUY",
+1.998274e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xd7275df4b5fd95d11262c2c570bfdfa85dc952421886482f645e32dbe6e8ac73",
+"b0": 84277212,
+"launcher": "0xa1537d8ea822fecd196bd900dcf57c80a75b9c56",
+"pull": 3294,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.998746e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x6732721b703f89444b4c2856c7382d542ded000720ba3b0f4335df10d0e6503e",
+"b0": 84280679,
+"launcher": "0x081d93a348fcc70ad0d4b0ba4e34887b43370d93",
+"pull": 3697,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+4,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.999466e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+5,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x9d6882b3145566322ce0ad87d17240d4f8a98b44212522590ce190bc61b645e1",
+"b0": 84284555,
+"launcher": "0x4d994a149d1903afe8e18b1654f38eeae21c45d4",
+"pull": 3343,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999488e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xb0649c88f01a5ac5fe30422161b482796549d80edb4ac79e715e2ce3f1df3bb3",
+"b0": 84288072,
+"launcher": "0x5a329599eb966f9b1f973b56d7b080956e878f1f",
+"pull": 48,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.998492e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x52f187a27a5278c4ed2b5c5cc5fe0b878b0de6018e2c40971821df9efe519938",
+"b0": 84288275,
+"launcher": "0xa6e093e7042d463798fc722d5a26bcf50ad4da10",
+"pull": 3291,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998286e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x92ec28db471a34f27e6c000ed19abac9bba9d830cfd23e06bde029c8617b16ce",
+"b0": 84291736,
+"launcher": "0x3ed34dc99d01b7589184afe280e3ba4792ebcec1",
+"pull": 48,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.9996e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xc352bb3307f6bdb357ff5cbb1d47efa9791f1341863042cd99b269c6ba7a33aa",
+"b0": 84291940,
+"launcher": "0xcaf1d19891e49427fc937d3a1f583bc6357c50cf",
+"pull": 37,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999152e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x2b6a45e1f301c23565bcc0869f2dc10f7bd6baeadf876689c4d3d3899c04ebef",
+"b0": 84292147,
+"launcher": "0xa0b4bec304bbe2e6333fcde4db46ba3b57e9110f",
+"pull": 3515,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999762e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x38af9e980f63fe4491a269881f9d1f0dd8d623496d48464f6f147e82e4ceeaca",
+"b0": 84295846,
+"launcher": "0x3c96ff60045d7880f472dcb7d4ffead881713949",
+"pull": 3482,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+4,
+"BUY",
+1.998308e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x9e72b02f4a77b1ad365cbec810c439fac275c39917299e7457ac85b8c7546ab2",
+"b0": 84299508,
+"launcher": "0x350feb3b9d3e8dc5de196bcd03b48440a766fb5d",
+"pull": 3698,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+4,
+"BUY",
+1.998144e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x79acfcdbae9f4cb9a0ea9b89bfa734c4133b184046e12e976b0b65546311891d",
+"b0": 84303370,
+"launcher": "0x3df219dd50326f91859b426bf790c24543a37bb8",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998068e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x1a8d3061d8abb5a2f8817f59b5e0064537cf513b141ab7ad1b5dcd987a5a7bc3",
+"b0": 84303562,
+"launcher": "0x59749493742214b98f397421f469484e2a275522",
+"pull": 27,
+"pull_by_launcher": true,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.99841e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x35236b9897da1dca2adbb6e15848a3cd5f95865ec28cc680b94f88d9806c2f2f",
+"b0": 84303756,
+"launcher": "0x47cda6bf99c84d517a4a203d49e88879da6c25b6",
+"pull": 193,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99937e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xd67fde782e13040beec60c954bb2c2f147ed3e99ee57ed23a357a31c43ca2ed6",
+"b0": 84304118,
+"launcher": "0xfd2b2d3aa344bd5e6a5b5c8ec9351608c9b11de8",
+"pull": 49,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": []
+},
+{
+"pid": "0x2bcec9e76f2d1befe9c3ad28bd255493a25423b4b5b62c755b03a2e2406a3565",
+"b0": 84304328,
+"launcher": "0x2114f15b909b67f615fcd83ce4692c81c297bfb8",
+"pull": 3571,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998874e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xf68fe89e3ee7d24b7e8db45e2eea61aab0ce4085cd20ddb6ecdfc3496092ae89",
+"b0": 84308103,
+"launcher": "0xbb94b0d8991a721fac1d7f8667eab013690fa043",
+"pull": 37,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.99848e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+6,
+"BUY",
+4.95e-05,
+"0xfeda1c58",
+"0xf0b7eaaf"
+]
+]
+},
+{
+"pid": "0x8ef3cd62644a8f74a7f658be5385d92c5bbbff083cad2e1815a3baf6fa62d3d4",
+"b0": 84308304,
+"launcher": "0x7ec92fd5d156e7a0d4be7332f78d06b8cb55628c",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999848e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+6,
+"BUY",
+4.95e-05,
+"0xfeda1c58",
+"0xf0b7eaaf"
+]
+]
+},
+{
+"pid": "0xadbb34b85cdc4dacc4484e9a5631294351d96d151c5eb15e3332c1177a7dd02c",
+"b0": 84308504,
+"launcher": "0x7474bb1786ffc992c3d04ec6650fb39e7674ec37",
+"pull": 3299,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998036e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+6,
+"BUY",
+4.95e-05,
+"0xfeda1c58",
+"0xf0b7eaaf"
+]
+]
+},
+{
+"pid": "0xb2c7fdb106b132796f1055ba477a92d508d0e9802670c2ecff613f489d4f376d",
+"b0": 84311960,
+"launcher": "0xb93f30f36e01b4522bf2d063ae903f6cf7f749d3",
+"pull": 3579,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+4,
+"BUY",
+1.99981e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+7,
+"BUY",
+1.98e-05,
+"0xfeda1c58",
+"0xf0b7eaaf"
+]
+]
+},
+{
+"pid": "0xbcbaab328fa37bbd22465570166a8ae06ceba00667120bdbe36919bfc105093a",
+"b0": 84315728,
+"launcher": "0x2956f8f27eafb7bc08a608f283d5bb256dee9fdb",
+"pull": 40,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998532e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xb60fda48ecf56d3ac0bfe9e07815ba76fb6d8c80236d08510cc084893870db0b",
+"b0": 84315925,
+"launcher": "0x03bd1f72afe30bd15f7cdc787fb65d860136ae11",
+"pull": 543,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": []
+},
+{
+"pid": "0x00a7c7b14dde167bba7fe5ea19b5807edef5380d10687b59456d71b3ac168092",
+"b0": 84316633,
+"launcher": "0x661a356e5bc318ab36db4b268d1e4318cf027bee",
+"pull": 3671,
+"pull_by_launcher": false,
+"bot": 21,
+"pre": [
+[
+5,
+"BUY",
+1.998032e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x73615e8d2cae81127d6e6f74c26146380238578266152b277afb337ad2b55127",
+"b0": 84320479,
+"launcher": "0x157cea7cebc57a9a6086a63171c2e5bfa7b33e07",
+"pull": 3743,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999294e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x11649b66a616a6a4a03be0f23af7024a081dcd0312ad504a3d1293b3bf92e316",
+"b0": 84324393,
+"launcher": "0x340064419e003091a9bd88792d1037cff472fed2",
+"pull": 1603,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999448e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xc7282dfff9c11c681c7164048e077abdfc560ceb6199c04143bf17c53cac1611",
+"b0": 84326159,
+"launcher": "0x86d5e631c1742c0bff03104031f1dbe999d810ec",
+"pull": 133,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.9988e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xb3c9ec07818d6f3db1ffd0d5a3af534f6d879e03941114515fe689ba40aec627",
+"b0": 84326458,
+"launcher": "0x1b1e1a1c691f20535401ccde81371f37a79c08bf",
+"pull": 125,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.998788e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xf5de104e4dd8f5b7a46a83db2068d0a40af22f8e61e5fdea7ef22dfa4ef1fa73",
+"b0": 84326740,
+"launcher": "0xef554e516470c8f7abdc4cabaf988025b203cd58",
+"pull": 3671,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.99988e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x21a2ab8293cf70b02fe94a606f09d5a1fb1664fea0b40b37e8fccd434698b55d",
+"b0": 84330605,
+"launcher": "0xd349de518ef0db304ece014eecc939f8bcb41562",
+"pull": 3645,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999738e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xd4e8d5b5fdcf32e5562728d2da181c162df5b26d13f040aebc448a825ef05b5c",
+"b0": 84334431,
+"launcher": "0xba272b0229756249b8e551eeaae1a0c12b4d9454",
+"pull": 3386,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998278e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xa58e5a1a51b16ddc52cb60b57546a123b4c8112d52d24f874f4096942b6c3471",
+"b0": 84338007,
+"launcher": "0x2f95176720df019dd63c3ddcb81a6c092175f618",
+"pull": 3663,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999868e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x467a39245a0dc7592dd4028cc157d1918ce88ebefdfb278feb4ccdc9a5a3ec06",
+"b0": 84341843,
+"launcher": "0x23bb87ca0be43cf56cfd1b1a45727e59a64cacb5",
+"pull": 176,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998448e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xf566e6798d4ffe31fcf2a84462854962ed1ca177cbfc10a94180c44964d02a16",
+"b0": 84342175,
+"launcher": "0x08e8e41c9bac9bc4d4c4e96e7978ae0c22835a23",
+"pull": 69,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999002e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xfb6a935e495a464087040b84e58a1796acc6621118ee36411ad5f5c380ef0c87",
+"b0": 84342406,
+"launcher": "0x4c23908029db91eacff887934494d627f2df9064",
+"pull": 3147,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+4,
+"BUY",
+1.99822e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x88b0895afd0b4e01d05ac290e32eeb366398214ac887f3c347d998f4d4b46f3d",
+"b0": 84345735,
+"launcher": "0x4de8783843d9b5ab09e37a204b80b1bf16c6c687",
+"pull": 3352,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998004e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x0d6c16d2feb91598ec14703a99ead85f18ad0c56fe9127871760f732c2c94913",
+"b0": 84349257,
+"launcher": "0x6a05eef803f5fa8256ab346d66f716e7d64a1c74",
+"pull": 3682,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999398e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x4bab5dcbbdda81279698f929939130b15d3ada54001c82ac9b0ce89581d0846d",
+"b0": 84353117,
+"launcher": "0xb3f1890430644410724cb761c78b22a9be2d4d31",
+"pull": 3675,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998048e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x583d67f4333de8a62efea6c2b54dbee9657760e655389cca12f970e66e1dc940",
+"b0": 84357014,
+"launcher": "0x00304e0b04020a4f70f0606cc92ccde3780169b2",
+"pull": 2871,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998778e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x6a6ea79a5965a61eee2ed6b447b903993ec9b99074808c6839724a2688f5ae25",
+"b0": 84360066,
+"launcher": "0xaed73fa83a7630b91e14c96dd95759d7488e94eb",
+"pull": 988,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.99832e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x67f00621a9ccb6b7a34e304ecfe380d40030f2939129caeadbd61454ffe74d4d",
+"b0": 84361221,
+"launcher": "0xd250e56f918c2aa417ee8995ba854d16cf5383ed",
+"pull": 3757,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+4,
+"BUY",
+1.998462e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x3984b9ea670af798a5eecde8a3e08882c754d492c12b3e2ea4ef0dc104b3b7a2",
+"b0": 84365145,
+"launcher": "0xd5731f3e0044a7528e72d594b1b3ce8a6adbc8e2",
+"pull": 2212,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998346e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x43dfadefb2f726e0c6965bee039985c9321cf56296e62067fdfbaf9a013769c1",
+"b0": 84367534,
+"launcher": "0xe1b8f45f2303b7c491ed68efd9aac5540abca2d9",
+"pull": 3658,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998882e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x475c1b004a9750735dbfb3550e9cbf4359c40496e9f85bd68a337bd3e0acf6b0",
+"b0": 84371354,
+"launcher": "0xfab2ae5ec297c8ebd1c0c5d739993356bb463010",
+"pull": 3498,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998652e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x31673c1b7798ed8f7267d4ccd59fc28ab57655a66cacfaf9f7ceb88219c8a754",
+"b0": 84375024,
+"launcher": "0xdf154547b8c55fd3d2b2b308e45448d8aba53c70",
+"pull": 3504,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999638e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xcb1b11f601a9eb0fc72ceb657b895d961ddcd444270c8024154d73cab7faacf2",
+"b0": 84378710,
+"launcher": "0xbb8de42f26525b0f737036e2c3e71188be9d327b",
+"pull": 3581,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.999496e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x1f869236c63b5cf6dca996c9ed0ebfaed43b2cb3423fc5972bc7fbf7c05e2a42",
+"b0": 84382469,
+"launcher": "0x37a8498e51ceb114a5a2cb619b166d27dcb78687",
+"pull": 3393,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998724e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xd6e2c40f66c562e6f7b991bdd3266c62ed2a20ba1293af6e9448c907273c3b1c",
+"b0": 84386027,
+"launcher": "0xb16fbeee918e3a22cfb2f17cc0fcd1a2533a19a3",
+"pull": 631,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999886e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xdd4a794acf5f605948b1b95d336c7ca1ee50829b20d26caacf7691dafac8725d",
+"b0": 84386822,
+"launcher": "0x855accfacf12caf51ada94337c89394e0ae6db5b",
+"pull": 3331,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998604e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x6c4a0d0b7c3a06efb3d0d55ddd4fa6cc4331c5309ae334b35efad3ff1a97860c",
+"b0": 84390327,
+"launcher": "0x4635e624c8614dbe17993584a1d9a6eabcd27798",
+"pull": 55,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999072e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xccc532f593a83f66698be330dfd52cdb44d917366a60fc10e47557efc470821c",
+"b0": 84390535,
+"launcher": "0x4396ad41c49e23eacd214d5627aec58de677a967",
+"pull": 20,
+"pull_by_launcher": false,
+"bot": 18,
+"pre": [
+[
+4,
+"BUY",
+1.999422e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+14,
+"BUY",
+0.00024255,
+"0xb002e8a0",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x0e85aad079f68a7df1189920897feffbf291e63822206627600c2035bcd86f2d",
+"b0": 84390723,
+"launcher": "0xd09b0dbeffdb2a49d80ca346068499c1f7f2a89e",
+"pull": 3757,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99901e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x258532d782fc6582597075026b6fa93710cb8f594f49ae28bbcd67f8c67ce39e",
+"b0": 84394700,
+"launcher": "0x568d9e1aa433937301bec34a44742555db3858d9",
+"pull": 70,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999752e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xb94395d752cdfa0179e16e78fe2a0b7405b797d75b544f87d52759b7de194711",
+"b0": 84394930,
+"launcher": "0x6e6c47c1f14b692e260a0d21d7070702db21d4db",
+"pull": 3343,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99884e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x7b72a837b39ed1a7e7e592a22236ddbbd6bf40c36c03783f238fc5b6e60182f2",
+"b0": 84398447,
+"launcher": "0xd0464a4769e7780dcf5ef9dbd6dd760cb48d75d2",
+"pull": 1615,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999826e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xf958dc626b4a9922f1ffe800fb74230882a42315f9016c4dd2098f5f16383f0b",
+"b0": 84400239,
+"launcher": "0x4269616190696729ae77bee352dd02ccea57b8c9",
+"pull": 3396,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.99854e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x7b6f1de402b517e4218895aed7eb137c6db6227affa25743c38f6d7f7c16a8f6",
+"b0": 84403791,
+"launcher": "0xd15174805ea5ff41438d39d3b6dea108b1f48614",
+"pull": 3450,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+4,
+"BUY",
+1.99982e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xdfabac3ce9240f42d236724e1c36d42bf657f9636d248ee6724f8033780d7450",
+"b0": 84407453,
+"launcher": "0x15653e872332c3852d61087cce7a14cbdc043565",
+"pull": 3214,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.999106e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x50a28a82043ade1d18e0b22474bb39e99ab69a7c121e8e37a0ea064012a3839e",
+"b0": 84410874,
+"launcher": "0xc723efa8281024ce1c855eedefb7c16cc02b8527",
+"pull": 3392,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998372e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x2206adf6b821746d6666d84c73cab980b136c59907471485fcb0940a8fb24eea",
+"b0": 84414464,
+"launcher": "0x7fa0fc91729b264cc7c02e06c84c8278d21e5243",
+"pull": 77,
+"pull_by_launcher": false,
+"bot": 6,
+"pre": [
+[
+3,
+"BUY",
+1.998158e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xf7f9bafa5a99ad5c186d75eda35d6da1063bf15eecd5624aecb5653eeaa7f8e4",
+"b0": 84414714,
+"launcher": "0xd11b55de0ee8735801173a7d7ade2d1a1e44312d",
+"pull": 3579,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998636e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xd23e8ad187f3b6e126dc8b043d6d45a3695c07ed357473eab4c5deddf946aae2",
+"b0": 84418458,
+"launcher": "0x9c72e451df54e35067d0a0437deff826b31f97f4",
+"pull": 1349,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.998198e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xf98a0f673d39b87a2ff967da043daa51b4651aa3c3d7f1137afb14ecd0b1fab7",
+"b0": 84419978,
+"launcher": "0x1d11d97ea6cebf314e3d2c2b91f8e531e85f7ada",
+"pull": 3220,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999004e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x6dfbcae49c1cb361ecbc18dac4d7153d0181d67d3ef025310b2f0d4c4a43bc03",
+"b0": 84423372,
+"launcher": "0xe8eb9c6cabd2ae523f3d0d8640c035af9d683226",
+"pull": 1810,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99908e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x12f63d39a87bb91e5d482b3ac2ba319fdf847da6591ed42f2c2f7af6ab58bdc0",
+"b0": 84425350,
+"launcher": "0xd590edc422d386bce0d9534cdb7c2558f83a04f2",
+"pull": 3705,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": []
+},
+{
+"pid": "0x9c058485b26331dd71ce17824cc3abf6d7ecce63ed68cf1bd6e5242306a7acd8",
+"b0": 84429228,
+"launcher": "0x5f8d3f917e6cb61adc5cc02d1d9120ab8b2665ba",
+"pull": 3317,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999444e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xb46d17471399b174789a1e42584002d61e1a30bdb51b3c29548b8e224431253a",
+"b0": 84432731,
+"launcher": "0xa03dd213894c55a663b8f44a13cae9a4fe14b7f0",
+"pull": 1411,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.99891e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x5cc04851b0925d4ee56e646a253fda6c4da7866fc253a8cd48d90ee3cb000f00",
+"b0": 84434337,
+"launcher": "0x4c27b1755f74bfe953ae60f8aca84ebffdaee575",
+"pull": 3249,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999532e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x089279d6aedc69210d4233cac686f46cbbdc58e836c5eea81d5ad0504c23acd4",
+"b0": 84437757,
+"launcher": "0xa57e0823ceb189859f08955882632f4bbcdde21a",
+"pull": 3497,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+4,
+"BUY",
+1.99974e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xadb5d9fa133b06634f29bf2d1c5219c334c166b5e40254a3ebda7e3fae27b864",
+"b0": 84441430,
+"launcher": "0x6f9a760983fd478912818809dc258069cdfd29fc",
+"pull": 1391,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.9984e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xb41f25165a79fa9b8bf3c37b68f3215f8173f456612526c6dfce84c57aac1719",
+"b0": 84442989,
+"launcher": "0xeab5d5ed148e5b6a3964785747a2b764a59096f2",
+"pull": 3710,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": []
+},
+{
+"pid": "0x36ac221272189279b6bfca7c0058b0312e9b3a9172978a2fda6367d2082e366c",
+"b0": 84446862,
+"launcher": "0xd7dc2460e9ac62e84e3ea219c29717e5a0ebf729",
+"pull": 3726,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": []
+},
+{
+"pid": "0x8d3677014f24dd29622dedd78923d88706c3325334af641112999d454f183962",
+"b0": 84450764,
+"launcher": "0xdb3fc5f3f4500ecbd387e93d29a91610d79a7aff",
+"pull": 27,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99887e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xb7a751030d03cc1efee9f8d794b6049ed4139fc3f02f45454496d2d3a561dbda",
+"b0": 84450943,
+"launcher": "0x900b7b4a3c6567b62ee04acca2ddeb68048f0af7",
+"pull": 48,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": []
+},
+{
+"pid": "0x9d35e1b3f0f5289978f563852ea06d031e1fc9d1cd7445d6430d7137695c2679",
+"b0": 84451154,
+"launcher": "0x80fa58edf04bcaeaa4f1e753dac1930b05346595",
+"pull": 125,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999256e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xc8ec588f647462e65c4d58368cf3d7dc0c993aaaf53e7722039f13d0ff667418",
+"b0": 84451445,
+"launcher": "0x7e446ef0a5690a2c5be17eb5a5b949b3e7cb83aa",
+"pull": 133,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998932e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x79beccb71feba78bbc068baebb3447a5a1fb68cc9d1121c7453ef8144b9c45b9",
+"b0": 84451737,
+"launcher": "0xbb61163882fd8cbfc9b3fb2bf0d94debf75612f2",
+"pull": 141,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999942e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x33278dac20d47594af4ecdc14af91184852fdf5da3dbea82d49c711242a1c7ad",
+"b0": 84452040,
+"launcher": "0x7b3c328ba27b2966d116fed7c166b4ec67ef0a14",
+"pull": 146,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999768e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x3b9982be1c8f4f6a4c0525e5b289db9766bbd45cb9107066e2f906d81304d36e",
+"b0": 84452337,
+"launcher": "0xca594c5811afb0d0761eae2e7bbbc0b1f07fc30d",
+"pull": 1506,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999856e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x453540032d955b9d4c1af6a1d52d2cde56861a69d4604c312d86bcbcfbd33689",
+"b0": 84454017,
+"launcher": "0xd5b73216ed7f0e8a01d40b4702a275dd34cb8b3a",
+"pull": 681,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.998852e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x56018e2e99c9cdc48eaa6c5c8f290e7c8fcd231e8ab96b5c6a14a2cba3133b9e",
+"b0": 84454876,
+"launcher": "0x5d6d4cbf163d0859a92951f5ca0d040c0b49fabb",
+"pull": 801,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999582e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x9bba4c0ef7eef48e5a656facaf8a8c4f551d2dffde0f4c045a882e5fa1fc6e14",
+"b0": 84455891,
+"launcher": "0x0cf4ba914cc59b8684fe639336d52b67141f135f",
+"pull": 3210,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998932e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xc09764a79e96bf79c752e8e8bf90da0d5a9eb36f838ef314dad0215a5d113079",
+"b0": 84459265,
+"launcher": "0xb14fe2b26feab7eaf93429d416f45d2fbfefb8f9",
+"pull": 190,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+4,
+"BUY",
+1.999294e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x35e7996d0e3585f1b7213201bdc1b0da54a7c57ded15c0b2bd94896c6505cc80",
+"b0": 84459652,
+"launcher": "0x210a8511245a3af730d753be8794546206d081be",
+"pull": 153,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+2,
+"BUY",
+1.99912e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xb2129ef27687e4f7a8b9980490fe2f7aa29f55f54f07c4cd4eef462f391337ff",
+"b0": 84459979,
+"launcher": "0x4430cb162c9b3584377a6df8ada9dca5aea03a23",
+"pull": 3684,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999836e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x98e43432a624c682935a685ef65f1f1bed7514ab69828e1ed6545ab8159dd99c",
+"b0": 84463846,
+"launcher": "0x896ae6e7dc85412a11343089d16563b9ad9f2aa2",
+"pull": 1708,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998406e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x6272f7fa3d08d24f11857bef5a6857f91574b5e2d4509d30a745a143638a4121",
+"b0": 84465731,
+"launcher": "0x572750a80521a3c18b5ec348a31ecce7709d45fe",
+"pull": 3284,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99823e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x890d70dbb41064f762b741d227ae7137a328e5ac48511797b7361931d69954e9",
+"b0": 84469222,
+"launcher": "0xd67433918f55af9cb4d626c14b333c68231b4162",
+"pull": 185,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999786e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x2009c7c8ccb909c259becff44c3ead1e29a8351c272938854b40b0eae278acfd",
+"b0": 84469563,
+"launcher": "0x716ada158dff0ce442d90d0a7b4d2497d0001c2d",
+"pull": 1987,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+2,
+"BUY",
+1.999444e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x10acce03329c214b56191c102760b58a133a0ce83bc8ed51f0fb59877832f6c2",
+"b0": 84471711,
+"launcher": "0x0d04ea6b27d22e9d328ffd7c1d6b1f436a8d62d3",
+"pull": 3584,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.999358e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xe21aaf3d78afe6fd313ca9ffce1dda8e0438749d14d330d6911dbd2d9c894726",
+"b0": 84475481,
+"launcher": "0xf0e8ef5e9ea32a3ff338e78bfeaeff90fd90392c",
+"pull": 3191,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998104e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x365e0d6b24925f4be5b273c070be42f4fcb8a81a999039bd16c3adf6ae24b67a",
+"b0": 84478852,
+"launcher": "0x84bec578a6e7078a7f725fbf336e328481dbf55d",
+"pull": 871,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.999034e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x5dd491f9493d41e99cf68f7c44c0079edeb74382c9a32a2e271288c845addf16",
+"b0": 84479887,
+"launcher": "0x4441c516e3c17d33422f2d4f32124b57aa96d308",
+"pull": 3772,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999968e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x4dd985633c189c9c24d9950bf129d44f71c42af0c89fb945a3314a84fcfdc879",
+"b0": 84483845,
+"launcher": "0x40687586f775d1789dcaacfda4e7166c816e9d7b",
+"pull": 3505,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.99866e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x7371d5ab532c6ba9fa1f4eed7b11755529c0dec429bc7c241fe68585b9b3e4f5",
+"b0": 84487524,
+"launcher": "0x38a70e0417a99c866a1846b9c5785b8cf4f14b0f",
+"pull": 3124,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999172e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x57f1b340094c7ec7461845f895fd65736d998678d3b3f34beeacc2812eb4e2de",
+"b0": 84490818,
+"launcher": "0xb169407be2026a3a1fb6f293958435a66965fc26",
+"pull": 209,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999692e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xcaff541579910abc5fe4e75ce5340f4db8a9583b978f3935ad381ace05dd3811",
+"b0": 84491186,
+"launcher": "0xcefd55c173821b7613c2f9e535b58c1925ae014e",
+"pull": 212,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.998612e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xeeb4b8b151667d48df2d068f528c64bc921df2ae473293b32f80270b74a1e1f0",
+"b0": 84491560,
+"launcher": "0xbd8701c43300decf77837f5ad98cca216ebbce53",
+"pull": 3709,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+4,
+"BUY",
+1.99887e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x2d0bef4d0296dfe81ccd4fc63cff128b621007192e4bd6cce4bc232d4cd84fa0",
+"b0": 84495440,
+"launcher": "0x75e262f4359162a9e0c1c0bf6ab456100c44d9cb",
+"pull": 3716,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998216e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xdc9df9659f7cac256748ed5a67cb7e4e95543a65edca3325137562c4409dcbba",
+"b0": 84499343,
+"launcher": "0x887e64df4d5953c3f197b451b688e1e56ba188fc",
+"pull": 3713,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+4,
+"BUY",
+1.999202e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xe461e20ceea6b417b5b7ee6c4dbe30fd0e49fb947c8b73dbd1e2552aed6a43dc",
+"b0": 84503233,
+"launcher": "0xe1b244689a7f5b8ea34fc373f3eb827e31a6b8f9",
+"pull": 2005,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998488e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x83250cd5b9468ec4088406779ad2c4ef157fa0071ced65a647694b6e48487c02",
+"b0": 84505421,
+"launcher": "0x144b98965ca1a2d47e43ee4dd0156e96f29761a5",
+"pull": 370,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": []
+},
+{
+"pid": "0x04a400171b346f710998ec923a703a024e6e47a4b22e05535000f481401fc6df",
+"b0": 84505958,
+"launcher": "0x9d64f3088b8c26b7b06b2835d925156e1e7dfab0",
+"pull": 3666,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": []
+},
+{
+"pid": "0xfca1fe7e41b7fb014d90ff4b888fdf8a7e2e6adee67b9a10f14c2c33fd4d881d",
+"b0": 84509933,
+"launcher": "0xfd54125ccf4e1b629987ac62f006eb8e4f39919c",
+"pull": 210,
+"pull_by_launcher": false,
+"bot": 16,
+"pre": [
+[
+4,
+"BUY",
+1.998686e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xd33edbe5303559b435be7f9b8f2dcc421c40f1a115626e6af55851bcc0ed36a9",
+"b0": 84510301,
+"launcher": "0x61bd86ec81ab04d39a20068302998e82561f29a2",
+"pull": 211,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999608e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x9c6cd2b0e32a1971f14eb654f8631b01357ad69718f9948bb8b6ca03257549d1",
+"b0": 84510669,
+"launcher": "0xb821e8d2273235293a7dd70c66b57f99e6463a05",
+"pull": 1210,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999124e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x56624fa42ea0bd5a666c4f1caf9edfcac161d837bc50cc2d7dc5351d37d93680",
+"b0": 84512052,
+"launcher": "0x6f0cec4ee56a89703b1d8844d5c0d110ef7f0c1d",
+"pull": 223,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": []
+},
+{
+"pid": "0xedb5412b1bb0e34b9aa3e3666f6be4dca48667574a95c000b1338c01235ff6cf",
+"b0": 84512438,
+"launcher": "0x91475a427e3b413254354505c7e33e25b72e8b96",
+"pull": 3711,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.998878e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x8c34a6855a8a8eb13438960f19cb610074687e40d32a52e6419e9625f3f0485b",
+"b0": 84516315,
+"launcher": "0xe908d3ed53d37ec9af99428ce81eb315e8bc8e12",
+"pull": 3297,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.99828e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x764884f433dee18d902dd959c4befed954328356fc350548e847835e5bff23e6",
+"b0": 84519785,
+"launcher": "0x0351464efcdcf8a1d2dffc8d4bf65a8e5ef86a21",
+"pull": 3730,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99803e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x33cec9247d6216c2337d61038157b75f95c6887ae903f07e96c030b1c5f1e7d8",
+"b0": 84523699,
+"launcher": "0x14d0b8aa9f465a0a70981752b24b30f2966cc65b",
+"pull": 3715,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+4,
+"BUY",
+1.998516e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x9267443226acce8913d780a9e9d783a6093bf54c9b7a63b4284afb0bea77afc7",
+"b0": 84527587,
+"launcher": "0xd34d261d69da4a0be6428f673fea746a2038ede1",
+"pull": 3584,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99989e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xfd516afc1e7ec87124a26bd65d7228aea1843bba469913d0c7890bbbcac0a612",
+"b0": 84531351,
+"launcher": "0x40413a42c7177367ba0d47de5e51126cc269345a",
+"pull": 3390,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999506e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xa99755bc0413a526145258ee2e081e7c0c6e02de3e2c30e239ad325ea4aaf505",
+"b0": 84534909,
+"launcher": "0xba0787652dbb23ae91df3fa43ff37bb82478ee68",
+"pull": 3706,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.99924e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xf76ddb38d07ffd54b9d7c0ac0303407cc5a1583ed1f911e1a6b4559c1c7168d9",
+"b0": 84538791,
+"launcher": "0x5782beaff805aa527e4997980125437a5db0867a",
+"pull": 3288,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999242e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x45f8983fd5635799a8fe0f0b29e74836f2087cd28bbb364442d89827fc0b6739",
+"b0": 84542248,
+"launcher": "0xe1dd45ccb5562d27e0c02c2ecfe1e3da08ef52e3",
+"pull": 3377,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998086e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xaa4b8560e44eadfd03b5c1882f9313507aa388d848e8f321eb779beab96e94a2",
+"b0": 84545798,
+"launcher": "0xb42e8d2f188299a660e061bfb373da8a1b88790b",
+"pull": 3684,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+4,
+"BUY",
+1.999826e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xaa43a6e39c9666df93fa798d28f91e0aa8769540bb3aae6356cc1927528d0997",
+"b0": 84549801,
+"launcher": "0x98ead50f2d2cc49bf48d5697c9f8b2affa20985c",
+"pull": 3322,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998768e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x62db3739255d223c6b19ce037622c45e3f581eb2d18aea4937aab2c268c867d7",
+"b0": 84553290,
+"launcher": "0x64b0f1260029ae964b1d6aa54489b3e10c53654a",
+"pull": 1659,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.9992e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x859b697f907b683bd74c61ca24f487255dbc5636998d5c9bd8889e2c77d16f9b",
+"b0": 84555117,
+"launcher": "0xd828a91cd3b7c3851d79b2395bd1ce7f8ad73a5c",
+"pull": 3394,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998862e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x0ca502b69d78db3ab1f99bf797122cf5a8b53f68b206ae1a9b00ceffd2a768cb",
+"b0": 84558688,
+"launcher": "0x17abed413e0012f003cfce2de9f720bb77260344",
+"pull": 616,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998568e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x7d9c0917a1575b0036b625dd0a81e934c8a5a72023c5e78d06b2d75fc9411059",
+"b0": 84559472,
+"launcher": "0x52be91d16d79ae1cc1abb28e67b5a7fd8561c2b2",
+"pull": 414,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999856e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x11c088c8083ffdd8eb49309379f5822c09e1b02043d859fc13e8536eea5e73ec",
+"b0": 84560062,
+"launcher": "0xb3371319371dd3a63154fd436dec11d7fce00302",
+"pull": 3473,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998984e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x02f2bdf56f81181e181af33f4cf48ec4d96f9c96f96d5c9d7d6122da99c233b1",
+"b0": 84563710,
+"launcher": "0xe75049d97145798c912621683c11e1007d4204ec",
+"pull": 3605,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998812e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x289e55d569a9aa9f07a45c17e784681714ca10d1382342aa2e2f4ace60e964a6",
+"b0": 84567490,
+"launcher": "0x42b525dadd3edaf2a595b01aece65278ff244498",
+"pull": 739,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999444e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xd6c991af15e75a0d8912139e3900f4e154098e9974dc5fea6e5220472ccc1ba0",
+"b0": 84568423,
+"launcher": "0x604daab653376d438216478c1befd9512f62a502",
+"pull": 3683,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998332e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x78cd45843d8aa9fb50108d30b32cf0147f17c3d5eb47a44bf3881d8bb5466e3f",
+"b0": 84572272,
+"launcher": "0xb5f77d32971b87e891da01b415212088d793ba61",
+"pull": 3319,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999688e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x0477c5c69d5ea78321e5a502998b359f5c3e0871c41cebe79eadf16579345a64",
+"b0": 84575772,
+"launcher": "0x3c69e8fe01edbfdb28982893f194572f34e21889",
+"pull": 3379,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+2,
+"BUY",
+1.998756e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x5330d76e7a5487e8ff576355e4297732b67f1232cef111cbba68c3a5a1aacabc",
+"b0": 84579324,
+"launcher": "0x1178f5c3d1ac046829f8fbe5de4ec6dba60aa954",
+"pull": 902,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999016e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x78418587aa9d41502edb5a550b47e86260310a5a8e8c70f7e4bbb8358dcc98b4",
+"b0": 84580391,
+"launcher": "0x17ffc321c4d158cac00a0238d5e36ee06807db02",
+"pull": 3225,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999916e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x51ad587d16f97b8c29eff2093616eb87a8dea1b421456a3e1c0f9012b7066313",
+"b0": 84583788,
+"launcher": "0x3d8b2efcde65cd513986c829e066a2407462a11d",
+"pull": 3558,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998236e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xbda76d862ac33a309ed08bfb19951351a779c328a422dca961844630eaf9a170",
+"b0": 84587516,
+"launcher": "0x21d074b886a0c5505c2395a1c6f9cc2c42da442c",
+"pull": 3615,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998966e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xd35199273a5a2d321ea135817fc2121210061d35f5528073566e2bf20397af07",
+"b0": 84591311,
+"launcher": "0x83e87c3a2671ecb024999686bad1f68170c60bab",
+"pull": 3518,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998226e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x67ad25e5109295cf82ba417cc1733067bab8e0a995362da9510c46677110a18e",
+"b0": 84594993,
+"launcher": "0x3656ac0dfdf14a248ba83fa81e1c24300c4338d0",
+"pull": 3248,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998726e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xe2ae9889f02ad405c6548457e41b2e92f9ab5f1799a4e7210af3cb2d685f948b",
+"b0": 84598408,
+"launcher": "0xd0b7d8d844f469e51d4e699ce6661ed643b79bc2",
+"pull": 3612,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+4,
+"BUY",
+1.998378e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x6851374eb59116216b83baf370eccf217323da3cc94954a4f85b24e5031de37a",
+"b0": 84602184,
+"launcher": "0xef42268dffccb52e0455c15787d6a498e5a28fc4",
+"pull": 3577,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.99878e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x81cacea264af73fde9e8ba178820944d4e5e5741f2dd519048b22143ca96b2b3",
+"b0": 84606083,
+"launcher": "0xd540a0f228732136134230b5340a77b0bb5a1050",
+"pull": 3547,
+"pull_by_launcher": false,
+"bot": 11,
+"pre": [
+[
+3,
+"BUY",
+1.999526e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x1bef235d2ebb7cb91efde6064bb05abea07a48750bb4107e54e40a9fedf5cf3d",
+"b0": 84609806,
+"launcher": "0x36f83d761c74d64f82faf8f8846759cdeb0399d2",
+"pull": 1488,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999864e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x6cba3acdde906ee3556b1752382fda9aa1523e3135a7ed75ac5af8a7408e6a8c",
+"b0": 84611474,
+"launcher": "0x6895d69ba2368b570fa151b6d1924cab582759df",
+"pull": 1171,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998866e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xdd4a57c2ab1a1fc5f3d9b7101be356a8d4c560aaca184fbb2524bd0040a399bb",
+"b0": 84612817,
+"launcher": "0xb79ca0b27fdbb97835aeb87777929fecbc7db6dc",
+"pull": 3448,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+2,
+"BUY",
+1.999634e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x7e8af65169143462a8c9336020bed7e021eed7e0b9a0df5555791d1a20769310",
+"b0": 84616444,
+"launcher": "0xd57fc0ace6b33de5f5cf709e37db6116ec100a1d",
+"pull": 3175,
+"pull_by_launcher": false,
+"bot": 83,
+"pre": [
+[
+2,
+"BUY",
+1.998466e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+16,
+"BUY",
+0.0002277,
+"0xf05d0e3f",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x73a7fa575f9a381c3eb0b782b4ede958b9c34946b6966cd0f8f7131e48c9f28a",
+"b0": 84619795,
+"launcher": "0x7247a8e827de74e61c96ddc891be3ced4079c53c",
+"pull": 88,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999354e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xda9f302dac0bc85a5d56879b8466d1af4997080ad03fe4c95e62a06c28e3e854",
+"b0": 84620037,
+"launcher": "0x8277326a7c2780bbbad1f37520b26272583ce7f6",
+"pull": 3692,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999378e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x60d6cdeb802a435c6e8b6b62bdd6d0cf0659e0710d945db29dc74abe8042b674",
+"b0": 84623892,
+"launcher": "0x8438b0e30757c935717e23b8da3fc189f82a14ad",
+"pull": 3349,
+"pull_by_launcher": false,
+"bot": 14,
+"pre": [
+[
+4,
+"BUY",
+1.998848e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xbac944b2a98116c548815cfe5b4848405c871ccad7107b736525e3030e01a5e0",
+"b0": 84627421,
+"launcher": "0x99b9d716ac49241e44343a594e3532cf2dab7fff",
+"pull": 3508,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999176e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x5b81b36c59758c343fbc456d7d6b4ac566c135e2a8aea1711043e834b5a6cfb1",
+"b0": 84631095,
+"launcher": "0x55d61d6da86daf0d91bb3bc7a403764c2e2f439a",
+"pull": 3411,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+2,
+"BUY",
+1.998484e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xb5dac60e2c01e1093cb83704d36127ba41e4dfb6b51c0c4ef7aef80e496dfc57",
+"b0": 84634692,
+"launcher": "0x61fb00df5c390dc47290d6b957dd52751ce16a22",
+"pull": 159,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998932e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xdfeb000a3ba473b517cc5923f64bf3bf203c75b0b43b0d310fa73873ef5b1b18",
+"b0": 84635014,
+"launcher": "0xf418404180c5163a6a7b77f51580e78f0c6bf9be",
+"pull": 330,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99973e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xeb05eee34b9d637f51d20b441272ff2361e5aa9b06073835a06aff9e78c24332",
+"b0": 84635514,
+"launcher": "0xae9c4b2f941bd8f46d973190178956ceb9cb0cb8",
+"pull": 3183,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998744e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x17e2177082e8412ccd1292700f894fa77efb8b6ea38986949a62319d6377cb71",
+"b0": 84638873,
+"launcher": "0x69f0cee4203b895289baef2c3eb76ee71b0c024d",
+"pull": 2659,
+"pull_by_launcher": false,
+"bot": 13,
+"pre": [
+[
+3,
+"BUY",
+1.999438e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xdf6394da2849147592b528a7f52e91c09bfc8d085b418e7621a7c67d7e25e2db",
+"b0": 84641696,
+"launcher": "0xaaa0932a9634f853425f2d471fa6825dd826c88a",
+"pull": 243,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999616e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x4ced012ce902ac4b2c9af851e945dcc426f1b39bf2c51404ee83338e38e4bce7",
+"b0": 84642098,
+"launcher": "0x4a7cc32ee95bc04cf45239708487488f4be14e5f",
+"pull": 898,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998618e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xd45785d639d7dae3095ff088632c6140246e0c66dee2b815ed7bffbd37f317b2",
+"b0": 84643166,
+"launcher": "0xd04c9ce3558740b073cdd6ba60e8fdc8b81404b7",
+"pull": 2261,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998544e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xc890b700633a669f669dcfb39fe904936da00ee4259360a5d0a017d514a2ccde",
+"b0": 84645604,
+"launcher": "0x2b9b65c8d2d8ede22638158f44edcb691f07fe78",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998134e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x657ffa4e0da5761762870e34da90b32b56d289abaea8da20b6bcce5fa3985725",
+"b0": 84645800,
+"launcher": "0xda5c32408302a2f32d5978f00c4eb671d2547198",
+"pull": 3437,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xfb2492fd0d18d8321ac4b7901b23e4e3fdee39bb2f26bb04a2a03f93729870b0",
+"b0": 84649404,
+"launcher": "0x31c05482e91cbd4ffa12168268b21b09a13e74ec",
+"pull": 3242,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+0.0001089,
+"0xf6e55480",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999788e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00013068,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xe6e0889c27a8a699924b2bca648c862737092a0b2e31dff3e2bbb976c325673c",
+"b0": 84652827,
+"launcher": "0x08cb8ed3a8896141885be5580ebb99d2028f181f",
+"pull": 3528,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+2,
+"BUY",
+0.0001089,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998794e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x9d38ab04a2d59cee129f639f05f7899be3801d8108ff4decf5ea8342a7d9b848",
+"b0": 84656523,
+"launcher": "0x0d066780c4186c04ff08590e931818f71d834191",
+"pull": 3628,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x410214679c51b233b736a280f23f9ee54d7758618d7dd16ce40e4ffabacf968f",
+"b0": 84660322,
+"launcher": "0x68aac8a3316a334b4ce75aa38bff3321402788af",
+"pull": 18,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998688e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+5,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+6,
+"BUY",
+0.00015444,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x379e426c83b47ff84c70625ea3d8502a71974b310ee83d600a765bc3d4644ae9",
+"b0": 84660487,
+"launcher": "0xb00950fada2896238881ed58fdee7d924ef92530",
+"pull": 9,
+"pull_by_launcher": false,
+"bot": 6,
+"pre": [
+[
+2,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+0.00015444,
+"0xb002e8a0",
+"0xfd1b271f"
+],
+[
+3,
+"BUY",
+1.998686e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x4c09db175779a7bf55f22d874ffdad7e67c43e5fa7f5cd81dca94d68c547ddb7",
+"b0": 84660647,
+"launcher": "0x18630389f51602c9b9e974cec51d0b5b317373aa",
+"pull": 11,
+"pull_by_launcher": true,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99869e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00015444,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xe4bb458683661a1d7211945bf6a8046528a239a627c04e1549ca6e9c5f138aef",
+"b0": 84660805,
+"launcher": "0x1bf61b1bfa85203a4c87ab3fb0e4168cb11fe1c1",
+"pull": 11,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99985e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.000122265,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x5e4e9fe3d4c2a9f1daebcd39307aaf3bad0ef947c4799393d1404901d8eef162",
+"b0": 84660978,
+"launcher": "0xde1f5cd03c5832b2fbd86c70226f2a02cdebea07",
+"pull": 14,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999756e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000122265,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x1b4d6fc45a3a959bb2f222bc400eeb1693aac42d71dbe828fbdca519ffc00b91",
+"b0": 84661162,
+"launcher": "0xde78877c907bbbd7c862e7ec8d37b325164e1569",
+"pull": 16,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+0.000122265,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x9991a8cc9ce6731c4ad62cddc1f401831ddc123fe48acd14ce6a101c4ea52b49",
+"b0": 84661345,
+"launcher": "0x4a3550b27420aac53095744b355e5ef56e52442f",
+"pull": 14,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00011583,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xb5289afe7b2aef01033529512441e929f15299ff1058f65057e5b1633eb9d49b",
+"b0": 84661514,
+"launcher": "0x6ddf17f35d3e38f6827a5541dd0d003e75248773",
+"pull": 11,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999752e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00011583,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x17efe4e49eaca6834468fc8adeec4fc21fa301e3f3c001a26053385e07fb2297",
+"b0": 84661670,
+"launcher": "0x511eea035bcc8c17ef3de18446cbf920d33d066a",
+"pull": 3682,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999072e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.000109395,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x7ed9c6b0d56187061b6cc1fe4c7497ecc31b35105dcd82e77ce5928d233bf166",
+"b0": 84665528,
+"launcher": "0x2d7a694e6618cad79872e4fc57e154fc52a71ebd",
+"pull": 3180,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99829e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xb1a64543fefdd79f2087f83c76d826b543453bbbd5f7bafe0417632c58093298",
+"b0": 84668865,
+"launcher": "0xd2be2ec7cbeefcb068e0fde8e9a41932524b5685",
+"pull": 3343,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998684e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xaec8e2ab3f0382e6c0e06a7152aaabc8db238b0053fa6cb9e5affbacac45061e",
+"b0": 84672374,
+"launcher": "0x8c318da54e4f3845191e03999d397029d03f0452",
+"pull": 3300,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99998e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x3ded15abe66f1eebc28fe7bded782130ac9ae20e537bbf030087d4dcb1783c0b",
+"b0": 84675946,
+"launcher": "0x28e29fd456a94cc4f9c32d1b46b4cb273359842f",
+"pull": 3472,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.9999e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xc43a0dc7ae6e9e3d9f01acab42e9cfbb9e0c1c9f67e67204eb8eeb5c17dfdb79",
+"b0": 84679598,
+"launcher": "0x6513be9c9c66612318498afa9147d80fcc68e159",
+"pull": 847,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+2,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99976e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xbcdba61df38aa837e9c53d1d359f6bf0d0adf3e4fdc3b50aae267cd5404e4871",
+"b0": 84680599,
+"launcher": "0xd4c9bc0029351318d994537968f674a7a15e45ad",
+"pull": 1773,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99847e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x90422b92989675bac12cf17b08295a044ef0c708e52a9df0c699481c9627db27",
+"b0": 84682542,
+"launcher": "0x93a0f3f8b3a2d90640817445cd346e65ff023c88",
+"pull": 3246,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x4046893c6fb689334277d35752c4054157b46aad94f6ab652601ff050fc74e9b",
+"b0": 84685957,
+"launcher": "0xb4f76ab3703441693f13ac3680b57ae69369a1e1",
+"pull": 3312,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998022e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x35a1bd118ca3235d6e547be2e2a25bc506cf336fab891d2082e3f2f5600c619c",
+"b0": 84689448,
+"launcher": "0x59c59b52f09803c1378520c59c3843944f9c44b5",
+"pull": 2174,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999324e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xa831dcf75945881880bf9e0fe36fb8088c08ae16a458acbec310bef95cfb5da6",
+"b0": 84691796,
+"launcher": "0xf6a3dca0a0a6fad4533d4b0d488698f4e860af00",
+"pull": 3338,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999566e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x80fe2a15c97ca191b50ef55843f9bd5684d6448212b02b12922f4422aea3fd18",
+"b0": 84695320,
+"launcher": "0xfcb779ed82ed72f05d93f985f4d88609a78b7125",
+"pull": 3422,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999314e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xe0b900ede4708e946d6952cd44c6b11b6e5c203c49bafadff1d4286efdabc65a",
+"b0": 84698910,
+"launcher": "0xe6daf91edecb0040c3a909cc43a86b18b4a1f187",
+"pull": 3460,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+],
+[
+3,
+"BUY",
+1.999208e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xa4a34b81b212a1e71c1f4e7e39dccd38dbeb188cc8fb09017a7e9439907c0d54",
+"b0": 84702534,
+"launcher": "0x88c2cf513f1d3542b30fd74196dd6398847c8378",
+"pull": 3339,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999692e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x869fa027fd4171ba997e68267a5986300d0034abda219ac942cea9edc86cfa19",
+"b0": 84706051,
+"launcher": "0xc431354719ea04d4408a8a2177d23d08d6ee4ac4",
+"pull": 3677,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998384e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xc04a6021e1cfd6683148c0ba732147515e890ea55bba74ecc94ef793ad144d68",
+"b0": 84709900,
+"launcher": "0xae337a247dccf6b48a0340e74a3dda289c36961b",
+"pull": 1613,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.999718e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x4a042244ca3d1f097368f2dc38d4683fb52aaa34c18bc5494fcb56ea74b4c820",
+"b0": 84711677,
+"launcher": "0x5ade55fbde4721a69e8844cc2e2244def81f2714",
+"pull": 3146,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999754e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xd46b106f9075a04214979116196b9da57326c8d71037a932828fe30206fc0873",
+"b0": 84714990,
+"launcher": "0x83ffd67cb5fc0920687874fae570290c87d71c0f",
+"pull": 3091,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x488faf52",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00010296,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xac8ea7e082176c129495bb565f234a995cc2858e1e304d509d1a9cc7cd880c14",
+"b0": 84718245,
+"launcher": "0x7304a0fd0afe6b9d59761fb81487d4bd9a38b1b4",
+"pull": 3463,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.998234e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x10683353968c05f3a8eb2e3a7c7381f1baad5fe4862fb1abe63508b408873e89",
+"b0": 84721887,
+"launcher": "0x121ff429feef5b2a02bae8f3fb7c44ea15e1f0f6",
+"pull": 54,
+"pull_by_launcher": false,
+"bot": 14,
+"pre": [
+[
+7,
+"BUY",
+0.0001287,
+"0x32c6b1bd",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x5e2681e9f5bf6a0910cb788944f639058a58d48646c5c6151e3f560e1b59ee3c",
+"b0": 84722100,
+"launcher": "0x772378c831fd979011b2f7b6699ddfcb4819f846",
+"pull": 49,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998472e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x90784b0e",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x1d721103d1172a11eea1da686e21eefa72b17ef85ecc9562f411aef9326f2faf",
+"b0": 84722306,
+"launcher": "0xca7da6cf0d38be7661a76bf3caa67e47b98e54e1",
+"pull": 39,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999434e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xbd6d39de",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xa3767d2c00efb99cd8784f099b8d142ca7d7ba85a147f07d325f5a3f0243be91",
+"b0": 84722492,
+"launcher": "0x8fffeeb7e40df8dd0575c8dddfc9220c2c1a8d3c",
+"pull": 36,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.99859e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x0b5c5afb",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xa8f6601fbba5563522edf7028af0bb264add1df753b07215b41f249a993b45b7",
+"b0": 84722688,
+"launcher": "0x112bdad55df39bfa45a75c538c191f56655ed43e",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+2,
+"BUY",
+1.99857e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xa0e96ca2",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x9926370ca9808f2df842c031282e87e245a56515a3bfb95d174e5568389a40dc",
+"b0": 84722891,
+"launcher": "0x8bd2abaad4489c3aff6bfe944b644ddb56e5614f",
+"pull": 3673,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998362e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xc0be3b91",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xe18c89e88ed1f5ecfac8956bade0aaec000aea1a86deba75bfb632031dcc09f1",
+"b0": 84726731,
+"launcher": "0x5eeab852b4caf60412905843e037f07d5d81553b",
+"pull": 2612,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.99935e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xeede1eb2",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xbc4a78ddc83c29198deea116cd4d628da28e57c22bf4a34f72e50652cebd3ef0",
+"b0": 84729518,
+"launcher": "0xd1e76e75e5e131265a99cf956ced3652f4f54679",
+"pull": 719,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.998026e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xe5e884c0",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xffddd17527afed653c5935ae9b0d7bd6887a2817c24f4c7daa953a08b7e7e31a",
+"b0": 84730406,
+"launcher": "0x730adc5e558bb6ddfca1ce1f3787d53e974dc12b",
+"pull": 3460,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998422e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xb8b98e4b",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x52d104b12f8af4c350b5e92d7c290b0a91b5bde0b391c35884cb96c83dbac3a6",
+"b0": 84734041,
+"launcher": "0x576bc7036a28178835a13346c0ac6e66028c7cc0",
+"pull": 3333,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998582e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001287,
+"0x8fd53030",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x59d2841ad44404c30ac8f92efa8f1382fb372735cb35ef361fd7979698113899",
+"b0": 84737536,
+"launcher": "0x0506b39c8fadc7a84506ba095e391f9f34f80ccc",
+"pull": 3301,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999826e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x6649ef19",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xad64bce60197252524dbea2d3b55749c29b6eba0bd714250cedf9acd797f1d9b",
+"b0": 84740999,
+"launcher": "0xeaccf4215e7349dd237a0e71185aea91a6bde1cb",
+"pull": 3713,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.99943e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001287,
+"0xef8c55fe",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x1fcacaac41e4e95cc6dbdebd4221a33b27a5d05df72c5d049fe7a155b5c24d9f",
+"b0": 84744871,
+"launcher": "0x2026d502689a1e80f662459b572ecc1129c9bfe2",
+"pull": 1225,
+"pull_by_launcher": false,
+"bot": 11,
+"pre": [
+[
+3,
+"BUY",
+1.999582e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xb50926bb",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x3e1eba5b7cc45facc2cb5ccc282ccf1af8da89a2f5c7cd9298265bbde0f7587e",
+"b0": 84746265,
+"launcher": "0x1fe30a2ed1e39252a9b58229b167118d03acc044",
+"pull": 3233,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+2,
+"BUY",
+1.99883e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x42347d33",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xfacaab00e114d24d09f68e67d9e7140757e8515f1790039e1f28c8e89a03a184",
+"b0": 84749669,
+"launcher": "0xa90524c85433cd8fb9c07bc3c48a28e5e308fba4",
+"pull": 1373,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x7d28ebd4",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999196e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xde5b441644924c10a5dd04e141cdfb7f87082ba5a8434975f195de81510e3219",
+"b0": 84751213,
+"launcher": "0x7a1ffa984c34f79fa32209b4bd31d27ba1864229",
+"pull": 3429,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+4,
+"BUY",
+0.0001287,
+"0x8c6e667a",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x51e610d18258017653b29b987d6e7cbe8031ed0d187b9a9ccbdfbe18d70d29ca",
+"b0": 84754820,
+"launcher": "0x996e1093f8c9f485123f8836e2a19601ee2fe0fd",
+"pull": 738,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x01a365b5",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x12da155cdcbb29b90b0742f49ebede5424fe78d2ec7756394e921dcead381c61",
+"b0": 84755731,
+"launcher": "0x75231b161cfdd6461a1c6bfb51caad3a191e5325",
+"pull": 3522,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+4,
+"BUY",
+0.0001287,
+"0xd144a392",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.999164e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x2561ec79fe4ff4fbf35520aec2acde0bd94d098a806063b689dc17c82ac87bff",
+"b0": 84759417,
+"launcher": "0x428e1a8d95ea60338236a0a0e73b3397177ae8ac",
+"pull": 3641,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999028e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x93673b04",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x49bcacc532417e0279a4990953d9fb95850c6586c252b6786974a02b435e908f",
+"b0": 84763253,
+"launcher": "0xe5d75016e4a260ac26177996a8e4626e52735d5f",
+"pull": 118,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998302e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x7a1888f4",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x151095c14bb8d042173b3cf44bbf3f7076ce9af780277bea503c0c2e19a962df",
+"b0": 84763524,
+"launcher": "0xc8f06f3bf22b48355fbfd69d3ae86fc299eff15f",
+"pull": 47,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99989e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x296725ab",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xf04710a88f496f994b6954556508be22e5b8366170145b7d285491ac594ddb50",
+"b0": 84763738,
+"launcher": "0x8934697e20183baf4f3e5cbed6d36d156ac14bb7",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999108e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xcbb1a897",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xa4714dd10affe50d2a4a19a1f3f587882038ceb1e792b05b5b98d94bf5a1ba95",
+"b0": 84763916,
+"launcher": "0x01c7b4d281dfc4c9aba69a5fac48502e7083646a",
+"pull": 27,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.99946e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xfba33294",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x5900c74ff0f799be9eba4e91c8b0833deff6d25f55b5470b8cf5bccba143051f",
+"b0": 84764094,
+"launcher": "0x3f83881ff376814549be6dd9d04621e5a7c02117",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x719ac860",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99879e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x99dd84e074d0f07dd5cd5f815bf9ef4c76efbe44e2acc3cf0391361a6bbf7532",
+"b0": 84764275,
+"launcher": "0x48adf5e6a956acebae18e4111d7f2eb6a5d53091",
+"pull": 27,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998346e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x9c3f196b",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x7d8577bb2a4b277827ddf84de2730e60e5181ad949209fc8d9b899e4c12a891f",
+"b0": 84764457,
+"launcher": "0x4daafc70626fb9b2ce65664a6a9b038b397c9f4d",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0xae971cdf",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998818e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x7f0311af827cffb54a731cbbe45dab124cb02fd23588b17b110798691ac59a5e",
+"b0": 84764652,
+"launcher": "0x3f8f64724448ed247a1054a60407e160491b0cd6",
+"pull": 29,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x4e80b39f",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999588e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x7349b99177b812bf84b0a343d3b64dfc53a68c065e281024e1b7801f17681d74",
+"b0": 84764830,
+"launcher": "0xf574e4e3126f02b0f3af0b46f55e2ea15829dda7",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+2,
+"BUY",
+1.999896e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x1fef83d1",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x3b659611d9f31aa16b55c3c2a6942409e2cbe1c771a3baec57b2d42daa143ccc",
+"b0": 84765012,
+"launcher": "0x151930d6ef065ec342b6534622f1a67d9d243674",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998676e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x22caedcc",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x462b772624c4f68af38a2721d97ff2096138ef3fbd3e697016cd852fc6ae3b5f",
+"b0": 84765203,
+"launcher": "0x3d12097ffe03466d474df872a571998f1559e3eb",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999198e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xe6fba18d",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xa4a235deee283b54be92dbd7e72dfc4df67a75b379510e51a55c1ebc63040910",
+"b0": 84765401,
+"launcher": "0x71d7339c84565fd7a9a057a37618bdd198130387",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998126e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xfc5ff7b2",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x944148614f854508fb31d6b7b6ac1ed27b8d70b44276c81f62d133c10ce13cd2",
+"b0": 84765581,
+"launcher": "0x7f847baf075cf6f48de46ea0ff3d9ad552d9df07",
+"pull": 37,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999026e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xa1f288d1",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x7a55c22363b47435683ca68e8921174b776d813cf3732cc3d8f1bd51cd04d783",
+"b0": 84765779,
+"launcher": "0x30f0301321656cd6ee99026ce03b37b737f09709",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 11,
+"pre": [
+[
+2,
+"BUY",
+1.998224e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+2,
+"BUY",
+0.0001287,
+"0x7cac8747",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x54528b84fb9102005e7961ee1dd6a871ac1f946fceebd6ddba52d94237ab28f3",
+"b0": 84765974,
+"launcher": "0x6dd559d038c3f2a98683e7c492aecb24ae8db1fe",
+"pull": 42,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x259bb997",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999094e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x5f1f89f4c042c06879ff2ce948f1b5856d853f2029e9b3f3468c8c35202b15f3",
+"b0": 84766170,
+"launcher": "0x2d98e1fa97dc6c9dec6435307bd10f4295eafe33",
+"pull": 37,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x23491cb8",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998124e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x6f7b244b805272b7b969e8f5f7b547cced04b7ab063893f5f4270017e0b5d553",
+"b0": 84766362,
+"launcher": "0x458146a9501a8d57ef7d46fe4c48bfbd385fd5e1",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998128e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xece5bfe8",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x1ab11e5c9d8bba983658826c7ba47d6ceae9164571d99a1226ac414867a19da1",
+"b0": 84766543,
+"launcher": "0x7d43c00421a40c26587093819b188211f017a9b3",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.99875e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x96a9564b",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x98150248764b5f1a5e5f1714725411457fd587f6071247b01ca73af544432f41",
+"b0": 84766720,
+"launcher": "0x2daa34fd3d1af09a9b44a215c8c2853efcdbf117",
+"pull": 28,
+"pull_by_launcher": true,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0xdc06a856",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99919e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x8c1132e4d3059bad56f628ccbcdb64a3bdf175f32973a6d14450fd4fb5e1cbc6",
+"b0": 84766909,
+"launcher": "0x012df5dc3c0e681f6cd5bb3673c40ae6d9de368a",
+"pull": 3421,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999314e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0xb6c83cf1",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xa68d5c946356ec754e44ea022284cdc4919f90b39c3545ec8a01f76180b1ef24",
+"b0": 84770495,
+"launcher": "0x7526abcf21719ebc44ddf71367ab158e0adb9797",
+"pull": 3272,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x87b7015e",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99924e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x18e5744d30f6dd06fa6a5c3de6800cf3786d16184c1654595baf5b1ac5a9ae7f",
+"b0": 84773941,
+"launcher": "0xa0f7fcaf6a69c19a98c23c2687c8c8edffd213ce",
+"pull": 3417,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001287,
+"0x778cdb81",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999448e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xa1c1830b6c84b689e7fe1300191ac4bbc9a7a0d7a8c69126e888226351e7eab8",
+"b0": 84777526,
+"launcher": "0xc3bf67843719a8fe81a4201ebeacdf981b15aef5",
+"pull": 3648,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998118e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001287,
+"0x8a562d4f",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xd97562d81e345d1b1b2044762fa19fc2d44930dbda2225cd799cc4201522b698",
+"b0": 84781345,
+"launcher": "0x5c0125470831836058ba275dfc5376597bfa1cbf",
+"pull": 3617,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999136e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x911cbcf5",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x7b0aed242c2d330013747b8cd85f4d8a38e0646973437a59b19ad4e90ae9484d",
+"b0": 84785140,
+"launcher": "0x3c3b3411bdd6fdf772a8f84c077747e1aec8d881",
+"pull": 3358,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999744e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xb55fde75",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x545dcc281b3a2e62dcabf1b9cbf38935c5280e82d81d3eff9c5724797033107a",
+"b0": 84788677,
+"launcher": "0x36ca60be5ca1745ca658f7312351b182d5300ae0",
+"pull": 3257,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+2,
+"BUY",
+1.99823e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xde301cf7",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x31aea779c77159e00f7a8f16e4f816edc21f1f2c6561c18475e3d92f1cdf5a74",
+"b0": 84792113,
+"launcher": "0xf444a648873dfcc231e75613f8020538db4625b0",
+"pull": 3408,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999754e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xfb810160",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x71d70355d36ed1e5ef56deb4626df6aba66ad63d51f4ba1d5ae35b0b268ab4c3",
+"b0": 84795685,
+"launcher": "0xf38baa94a6df0087514015aa4f586f58d15411ea",
+"pull": 38,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999574e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x11c1764e",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xc691e2132440176aae76fd22e5e811a25d123d5714033c42ca82886e7a51a0cf",
+"b0": 84795896,
+"launcher": "0xa378618cec50577e4a5e4af7236d8a86c98f77b8",
+"pull": 28,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998976e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x40a39228",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x3b69ea202af71a48f93f4feafcce624958dac219eca70d1db984cc3374532cb5",
+"b0": 84796074,
+"launcher": "0xe5060a082796f80af2e4d56d4466051907ea90fc",
+"pull": 3496,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999314e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xe7dd13e0",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x857244199d5869cc3827aac2ac23ed6d0d637f9fb8849eb1b194b259c6911f54",
+"b0": 84799764,
+"launcher": "0x5b0e372118ede8ce7d4bf55511ebc665d0153b03",
+"pull": 3180,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x9c231077",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998362e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x0edd2ac9b5285cdf41a13a35c85421498c6f086394e01c58e121325f2b285de0",
+"b0": 84803126,
+"launcher": "0xe0ebe8df22c54d25ea65904c825a873bc8721a7d",
+"pull": 3417,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xe8eb5727",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998976e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x09b9574eae6f6e160c8192b6e5ae4f945fa6d7b700bd0282faabb32542162d97",
+"b0": 84806729,
+"launcher": "0xccdf387e13c4874dfd26f9e2fb41a8ad082bcabb",
+"pull": 3520,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999416e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xadcba507",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.0001188,
+"0xb002e8a0",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x8a226e7155e7feb1762ecb75e8cefbf368886fc2f63a6cec654a0145055e9c18",
+"b0": 84810422,
+"launcher": "0x00bd23c7f40ad79c5f8fdff0250b7e0fed381ff4",
+"pull": 3720,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.9997e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x8cb72e7f",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xd4d60cc3fedf00ec6846bd2d92720394926a28744cdd196e69ddfe36da58221a",
+"b0": 84814305,
+"launcher": "0x767b8c3af02a1d96e03355990514bd7470d7e8ba",
+"pull": 3255,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998086e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001188,
+"0x1089952d",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x2299ce9c0ab488a4b7ded1ed2b1f9a95e760b309d1499f3a1d03539fcc1b48b3",
+"b0": 84817743,
+"launcher": "0x339ecc3107157e53ace11cd4eb995ca17d9d8971",
+"pull": 1940,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x556ae5c5",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998512e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x09f0eb100cf0ae225e97fd0ae502b7f4e1b8bea83fafe5e8d04bccb358b251db",
+"b0": 84819855,
+"launcher": "0x7278ae5725f82a11b946cbb41e4846175ff582fd",
+"pull": 3636,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xb1b1d532",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x30937a6d496ec8699998c58010836d5d4b981fa6329272f8aefa42aecf46733f",
+"b0": 84823667,
+"launcher": "0x1ffe4ab4a112611447975ec2633e18e7058a22b7",
+"pull": 117,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999344e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x4ecad1c7",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.00012474,
+"0x259a1b7b",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x2c68ee98253ad3838ac1aed1ad2f7f42a2ab0716e415b5a118bda37184aedf55",
+"b0": 84823934,
+"launcher": "0x3762f4f202a81e2dd206c382a481f4feca6b638e",
+"pull": 3389,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+1.998254e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x95591610",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x623b023dedb4728babd1dd904c2a32415bc9c8b9871497d35b2fa9daa6249ebe",
+"b0": 84827491,
+"launcher": "0xd667893ebbca107e7a0ab5f63fce2590c5876a37",
+"pull": 107,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xf67a918d",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998732e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00012474,
+"0x259a1b7b",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0x80556e597b2e4f48920d14f639e33c39c8fd20a07c9c68dfe61430b3ae36a750",
+"b0": 84827759,
+"launcher": "0x583995973bfae46aad298ec5dddf101d4c1874bb",
+"pull": 117,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.99998e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xc5bbf7a2",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x019b230585fb32750378700baa6de1420ac724266bb1c2d5d5bb92502887a80d",
+"b0": 84828036,
+"launcher": "0x8219ad6fc91a8cd3e791983bf3db3fc201af6e72",
+"pull": 117,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998038e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x6b976d18",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xa6bf69d591aed56942468f2924fc70cada9f27973f78b6699edfd744c3d619f5",
+"b0": 84828306,
+"launcher": "0x840815b347ad162c5115e5b72428be690c9756cf",
+"pull": 574,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998028e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x8520fbdf",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xf4d990a76e7ef1b06bd8e05c206cad330566549e12d435f12899c46a57e25ca6",
+"b0": 84829043,
+"launcher": "0xbfc88947001b363fa3f0ac1f4d958474a9302bce",
+"pull": 201,
+"pull_by_launcher": false,
+"bot": 16,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x92a29802",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998064e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x9984231fc224b147e973aa1640fff88ab35584ff803cd9a149d02058ace9cbd9",
+"b0": 84829408,
+"launcher": "0x6ed9c347f8bc2165793950a91dae537f5e82e104",
+"pull": 128,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998882e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x6231b16e",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x9b7e1c4085f6ce597f6bcf3fb4f94021a82c02f4fd9490794f01d4283fcf5557",
+"b0": 84829693,
+"launcher": "0x10564905c7068db14b1c21e783bd0d697fefe6fb",
+"pull": 118,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99903e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xa02eb9d2",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x64fec72a7b4e3a0cc8fa4d619fe47c68b6d577641313447d21286a286d652bbe",
+"b0": 84829960,
+"launcher": "0x3244b3f5cbfb8e9cf35fa66cf0cda014cf62077a",
+"pull": 48,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xf67bb29e",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.999022e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x5aa481314ef5d00f0e3dceab9961e922ad416a7ffe87c979d3c2b1530fd6d1db",
+"b0": 84830176,
+"launcher": "0xdcfb603e9807e0847d8780232e3824c62b8210bd",
+"pull": 117,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999818e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xd6dc5250",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x69164e60dc47a3943aa9c763af216cffd4f201a8567f9d338922e05ec930a72a",
+"b0": 84830455,
+"launcher": "0x4a6f5bf9a4bf2abb72694af6eeec637f752b589f",
+"pull": 115,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999922e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x5e0153cd",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x48144de9df48177f67e525e5ff5883b527585f6becd0d9d29e681ac57ade9dff",
+"b0": 84830729,
+"launcher": "0x4f1144d851427ffe4b007fa3e7edc365753a8900",
+"pull": 129,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x8565e4bf",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998892e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xc697f38682e5fc0c4b2164c6bf677c76b378f83361bd357e0803d02c6bd641e6",
+"b0": 84831011,
+"launcher": "0x85977d9abbb26daf24fe2c6f7e124be78a292be9",
+"pull": 120,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999464e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x2d654528",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x5f9d2129441cef2b2472e7baf63ced30294df26997ebc6824d7cd002376b3b2e",
+"b0": 84831288,
+"launcher": "0x1925e3d876453bd07aaa2a8f12154ff72a714659",
+"pull": 110,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x518ed3c5",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998016e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x0866a32b28ba3263bccb8c4c8a4fe87f07a3f44d5c9805b62d5369e6294da2be",
+"b0": 84831552,
+"launcher": "0xff4d4ee1fa0e0463fd7011216914bc9651a04f62",
+"pull": 119,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xd251c271",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999182e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x00f77b65c471615f1c9ba87f720d0f3239aa3d5ef7ccdcf1b4633cd76d5011cb",
+"b0": 84831829,
+"launcher": "0x743d78d2f8f039ce0b9f12c8af9818a8e9c27765",
+"pull": 109,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998696e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x70467bef",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xeb9d93e3413f4a5940115ee56c11603c721973a241b7669f878527335f49adbb",
+"b0": 84832092,
+"launcher": "0x19361e23505e1723235efc118bbceec7c0546e10",
+"pull": 118,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xb96e813f",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.9994e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xcf9147ef49a3b755cedff0bd742ee48bcdf874a5a9d131e3d100de462a1b4d8c",
+"b0": 84832359,
+"launcher": "0xd97c03c12523414d528554923ade4a1e200f1785",
+"pull": 131,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998514e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xb88ae976",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x0e381b59696738b180cafa400e60044b6762af377d5ed28abfcf8c07d91eb093",
+"b0": 84832639,
+"launcher": "0x2ffebc8359fd2839a0ae84c350cc3a485270636f",
+"pull": 119,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+2,
+"BUY",
+1.998808e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xb42c3fbd",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xe5adece078f9dee23e19778cb4dfa65d3509bc73fd5c76dddf66b92945352c70",
+"b0": 84832913,
+"launcher": "0x65f25ed8364565641d527f3a6aa769c128f7eb30",
+"pull": 129,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999248e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x801413e8",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x603f62aacd82375367196e818bcc763320b0bceeaf2b66714eb36f62c80823bd",
+"b0": 84833302,
+"launcher": "0x7883227843636cd8ccc83e36f033c4ece9c37aab",
+"pull": 105,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999638e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xaee85c03",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xa96af7f20e532a54f29a4a5e1e28e6fe7a82eef98000361dfcf4a8de2b26119f",
+"b0": 84833559,
+"launcher": "0xa3f396f8e108a1279bebcb0483488ef64a37b7d9",
+"pull": 105,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.999632e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xb3f170bf",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xed5de2d6cbea236b71290bbe8fccaf52c3f2667bb86c8283f6bf24a041ef7d7b",
+"b0": 84833811,
+"launcher": "0x59fe05618bcf4727b6d41e215cd7b081d59615d6",
+"pull": 107,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+2,
+"BUY",
+1.99976e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xe0f7ebcf",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xdb060535f4a68a144dae018946a230c7fc8148ec5ff2b873e18ef95362873f9d",
+"b0": 84834072,
+"launcher": "0xfb1f78211496629ade0040ee98dca59dad9d27ce",
+"pull": 128,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x4d40c5a0",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998196e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xf17b0779842abd462a891efa2cad3454a00a4ab14b95737a0e9d0f3a50bac583",
+"b0": 84834350,
+"launcher": "0x92f26de209b9f0a200f82523770ec88e7ce6f505",
+"pull": 109,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+2,
+"BUY",
+1.999384e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xb7d53244",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x8aecf0d38a3d3679960916fa3ea5cc08ab07216cb5eec3571e550727827bb97a",
+"b0": 84834613,
+"launcher": "0xc3d5760f288aa0da70e1480bcf0877dbc6da1e1a",
+"pull": 116,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999162e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x4c83fb8f",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x589553c312d9b892867806e26d5679df0e919625837dff7ef726a44067b4b240",
+"b0": 84834889,
+"launcher": "0xc9a5ec0a41535c766a307d4600655a6927ac32a1",
+"pull": 122,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998448e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xd25c84af",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x2f2e77912cc84feae8b77882abe3b5a47587cc44460276691de903edbe272df2",
+"b0": 84835164,
+"launcher": "0x3f9c91f9518cd0cd8a10767cea7242a88ebeea96",
+"pull": 120,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999764e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x59df29d4",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xdde162a4ca73822fe4f88983d677903887cc55d7cee0a2d4b26ce9bd7b183905",
+"b0": 84835436,
+"launcher": "0xfcff39c63d3ab347c75d63802a8e757045cd07c6",
+"pull": 108,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x2e692258",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.99916e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xc5c408db17ae35f198737470f6e9d32c5f44540961aba462d3bad8def562a6a2",
+"b0": 84835707,
+"launcher": "0x490e79b6810e4fe696e32989db2372a0fe4547e3",
+"pull": 110,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998894e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xfea84917",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x7ad8738f8b6deb18aea51dead1ac75adf4dbfdbcb2e87dbb5082024dbc04bf2c",
+"b0": 84835972,
+"launcher": "0x90bd0fbf9a15ad5e08923eeed9cbe73a76d03697",
+"pull": 117,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.998108e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+2,
+"BUY",
+0.0001188,
+"0x565d3ac5",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x4994cacd9b3c6201f1c80156c1a966729b0460562cd13d915b4d4b87fe2b0924",
+"b0": 84836240,
+"launcher": "0x8dcfe090ee315bd974b19ab0a2ec41b509df9354",
+"pull": 126,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x36d09256",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x40fc6aa5b00524bbe11f586feb30ea7a24111e186128ac041e16ccd5cb29f9e2",
+"b0": 84836529,
+"launcher": "0xf3619c1dea480cb57fe2ac41f3962bddc8bfba49",
+"pull": 108,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998214e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x92659988",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x0e2a76fc959e12549e0a75d3fa60bb59c043c8573ea2be11921e8427ba0fb6d2",
+"b0": 84836789,
+"launcher": "0x81d36763706d00619516be07f02368dcd877892e",
+"pull": 126,
+"pull_by_launcher": false,
+"bot": 6,
+"pre": [
+[
+2,
+"BUY",
+1.998716e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x63c9edec",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x81f909a40aa1473fbaefcf18a12545a3483ac675d2052788a77743ad05e0c833",
+"b0": 84837074,
+"launcher": "0xf9f0731b382d57427b45c783c77fd84efe25f803",
+"pull": 152,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999594e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001188,
+"0x9668a241",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x99d2609516de435d080ce620504582d5c4bdb40889a3ca71d856194e8e0f2afe",
+"b0": 84837384,
+"launcher": "0xa5c1b82a579f9027b928d00623789981dc30b83a",
+"pull": 119,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.9998e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x69c95101",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xb6736a26d80e5d41c63518fa38ba0cd193d042aae00ec4d7e11cc6f3d1ecdc51",
+"b0": 84837652,
+"launcher": "0x24dec7ebe50b964c7128b158f35abc4f4f571b1e",
+"pull": 118,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998046e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xff41d153",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xa5b875dacf280ed48782bc7a79951a71c8c6a3b7314f44de53fcdf0d5498dce7",
+"b0": 84837926,
+"launcher": "0xb4c37639d1c7ac31c450bbaf6b59f63716c817d6",
+"pull": 113,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+2,
+"BUY",
+1.99995e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+2,
+"BUY",
+0.0001188,
+"0x5cc14147",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x55d24a003575d8c9a49cab9eb4e08b9933dba137b1eb53cf85956bf808c5ade7",
+"b0": 84838195,
+"launcher": "0x953d66ad2668b668b900a946cc254488984ddd99",
+"pull": 111,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xafafa0f3",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999294e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x6f62200c1dccfbfe307734a33fb1a5491ec9a2eb2eaddddaebe4ceb42e55c83d",
+"b0": 84838457,
+"launcher": "0x4dbabe545d60bf690086c606a1eeae974a579947",
+"pull": 107,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998274e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x7e4ab8c3",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x8c5720f626943af5ed196ced8776ac0fc4070011179107b7fca021880d394834",
+"b0": 84838728,
+"launcher": "0x6218e3d3fd0dca560af1c40f31f634dc922223f7",
+"pull": 119,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998964e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xe02f945d",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x0bc04f1d20c1f6ce8333057f4251c44f65f9402b84ff39aa10b2f2f0d7054b33",
+"b0": 84838999,
+"launcher": "0xc81691cfa7014a99a57ef8fb3f56c3e335e7596e",
+"pull": 117,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999502e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x2b9309a8",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xe29340d01b9ce50038050b651c440ed6a9ba7faba07cc08853996d2838a15f8b",
+"b0": 84839269,
+"launcher": "0x0fa4ac237abb9d130d29e33514ad424787ad88f3",
+"pull": 118,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.99914e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001188,
+"0x011273ba",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x0528ac7345d4171191ded5645175f71eef38bed30785cc659eea852e9299b66b",
+"b0": 84839538,
+"launcher": "0x83bb6a11a5b8508cd0b2ff2947ba742a99abaf22",
+"pull": 116,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x7cf30d80",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999028e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x99a7503feab4f483d0de4e2aa5fe7133ab7e8785b8c741c1122fd5207cf97752",
+"b0": 84839809,
+"launcher": "0xe830f31df27e4e14ab9f929737b1832fbda68549",
+"pull": 109,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999862e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x07b6dde0",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xbafb187b5f023eda0f86e03f8bd56b21510eb4c15d21569d4863a6f3b80ca09b",
+"b0": 84840074,
+"launcher": "0xf80cd6453469bb62a60026393eb0505b8cdf8dab",
+"pull": 110,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998328e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x35fdc4e6",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x691ab1fb15eaa9978be119bd161c7141c2c025341083f0cacb4c8c72f03bec01",
+"b0": 84840348,
+"launcher": "0x0ca5aff62c5e5f794794381a6a52eee662bc4bd7",
+"pull": 3436,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998012e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001188,
+"0x21391144",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x993c586ea99c591ab90ea5e8d8766032fe034adbb6dfe3416c6b5c404222971f",
+"b0": 84843954,
+"launcher": "0x031ea241df349fe16d69e560b8de2a2fb1956de5",
+"pull": 138,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999682e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x3e6514d7",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x06c39d1eac2147306a00d75b5e89e4809f99d08dc7baabda35f36a1edb3ea0eb",
+"b0": 84844261,
+"launcher": "0xa49d77596c9db3e6c3a66b83e7ca26ef581965f0",
+"pull": 108,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x21fb266a",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998794e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x94177e11c4bece592a2ff616e3014c3bfca235fbd18fb66c81073d72b7a7b9a2",
+"b0": 84844522,
+"launcher": "0xd60306af912ffd3c8c134c4f3f65dc2b1ceb7112",
+"pull": 119,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998976e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+5,
+"BUY",
+0.0001188,
+"0xe44b7f9d",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x4d2c76f3f35d73335974c0e8eba4615365804132f9fc2978871d71151c582ca9",
+"b0": 84844804,
+"launcher": "0x5f0e721110fbfbd1b9bf5391888b13af4e17e13e",
+"pull": 138,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xf780b6b3",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x1f44a77c4451bcb657c7e271e0c371f1fbcdb8d839f94675b6bfd9ec5929b7da",
+"b0": 84845093,
+"launcher": "0x90a74d6bf02a75a9a774c353950a4bb1d582c0e9",
+"pull": 118,
+"pull_by_launcher": false,
+"bot": 7,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x7b880fd2",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.999392e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xa7db9f85930be500eb2d4bf4564a24afa1f56dc824425d695c354edc73b07858",
+"b0": 84845368,
+"launcher": "0x786358cae6d6495110d0cd362ac58b0b66d96e3c",
+"pull": 107,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x4e03a4f9",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998104e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x35ece8cdb7acbf63a7da98e1fe726b579bf409f6248038d7b614faa9114c595b",
+"b0": 84845629,
+"launcher": "0x4f3c16cb7525e263f26698f60798b82bf511696d",
+"pull": 213,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x498b60ec",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xcb13a62b4f0a646cbd5f2a6aecb81f0a02066d9b2a0586b2c62f7a1c4bd27fdf",
+"b0": 84845993,
+"launcher": "0x8ad7daf65f06ace9988fa03b34fb384b260f470f",
+"pull": 3675,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.99955e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x887d4568",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x39bb9879d5d942d1b7786fdd7cff26e95dd291a66920bade4f22631f3696aea3",
+"b0": 84849838,
+"launcher": "0x26084dd08d02b9d0be11e6d359d0b44fe53d55cc",
+"pull": 13,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x38727cdc",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998688e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.00012474,
+"0x259a1b7b",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xa498320c3a338c5a2596e36724a0ae18f7ae7a79f59a02cced3f17d4b943a890",
+"b0": 84850008,
+"launcher": "0x7b39d9b6e2ee5378e17844143c128a5ae71a9f0d",
+"pull": 129,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+2,
+"BUY",
+1.998038e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xa21ba580",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x34338f7c7581fbd49eb71ef629658d6ee869c2695db638016a14e568cc25fa27",
+"b0": 84850298,
+"launcher": "0xf071ba24628c5ee8ba6e075454ed009528615158",
+"pull": 119,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xb5218335",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999412e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0xbcaa06758ee61f9ef7e2b54e4ebd2281edd3d1db459cdab0cf1c00a7ee78bfac",
+"b0": 84850699,
+"launcher": "0x705c32eaac3bad91530b926e907e5893aa494904",
+"pull": 154,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998314e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x60c99b4a",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x1c953c5d8ca639c399020fd2784140fe1daaa8e46e5fef7f56a79724c3c89eeb",
+"b0": 84851012,
+"launcher": "0x5bab3a2afb08739bb7aa951ea8c66dff8832bb5e",
+"pull": 122,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999374e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xbfb187ab",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x1a11ad3f391906ddebdeddb4f6ca210b15579b8353207e6dec0913c6a55eae43",
+"b0": 84851286,
+"launcher": "0xef0603fd6592bc803f1f785cd3333ab84e866cf5",
+"pull": 119,
+"pull_by_launcher": false,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999962e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001188,
+"0x82c1838b",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x2b4a4bcea9d73c0fb639b550a8dd5e78bb953b5c48c26b3849c6f8868faaa2fc",
+"b0": 84851574,
+"launcher": "0xaf8f78dac5b63d33d81cd59280bcb514bef72f47",
+"pull": 3608,
+"pull_by_launcher": false,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x04110f92",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.999882e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x271dd86829958d15129d44093bf9f4819033e12e6aec250c4eea9abaf0c787e3",
+"b0": 84855337,
+"launcher": "0x9a480a8380c3a02271936a3ddee8e034a5b06868",
+"pull": 117,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.998274e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x03be56d5",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+0.0001188,
+"0x259a1b7b",
+"0xfd1b271f"
+]
+]
+},
+{
+"pid": "0xa93dbdf305290769565b96e27cfc51b868f36b663342cb489c0a516a9072c5fd",
+"b0": 84855617,
+"launcher": "0xf4abdface0cc205c19f82cc0865c8b17f78b1b68",
+"pull": 108,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.99934e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001188,
+"0xfa6cbc83",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x54c7f8218fe81138ede9ec2a36d5a5cb3dbd5f5b81a74337ed8c2aa44eab6b45",
+"b0": 84855877,
+"launcher": "0xdbc4980b6095d8330aa3db8fc9108e45bb6891cb",
+"pull": 198,
+"pull_by_launcher": false,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xe154d1dd",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xaf0d4368c168d073b55dc408b8d5f1a8401ff10e2f0c1d0749afd12bae115601",
+"b0": 84856239,
+"launcher": "0x286740f2c814f7afbf135ecd88435fe5772633be",
+"pull": 120,
+"pull_by_launcher": true,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999342e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+4,
+"BUY",
+0.0001188,
+"0x3df86cd9",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x13a1f924cde3d6c54eaa395c8edcc3a2c5896a67afff687377b9d1ba78cb545a",
+"b0": 84856519,
+"launcher": "0xe733e16a9442e5e0f16c1d81aa0006a7d83c4cd6",
+"pull": 116,
+"pull_by_launcher": true,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x9a7e415e",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.999742e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x279d2be816ee04443bd541976ef795bb66b0a7ccc0203c10da69cc3a9d03b6a3",
+"b0": 84856789,
+"launcher": "0xb4c05734039d30bea5ea23d8e013d137117077af",
+"pull": 121,
+"pull_by_launcher": true,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.99864e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x5edea0e9",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xfb20d9753884cbbb98a35f65b2620ef8970c46256460c65afff5eeb980ddc5d9",
+"b0": 84857068,
+"launcher": "0x1baea3c95567ae847c7856f6c54414d3c283fecd",
+"pull": 108,
+"pull_by_launcher": true,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998704e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xa7473e2a",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x8abf921498a264482738c5bc70cf4e35774a6bc5fb6a9d7cca069afba0b38851",
+"b0": 84857325,
+"launcher": "0xd28bb8eec744c3296238a65e26bce730e9fd7096",
+"pull": 122,
+"pull_by_launcher": true,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.998104e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x09989b51",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x143aeb71514c3e84b65fe0675fe5e411261d26ec2a2acab749bdcf32c5c5ac1a",
+"b0": 84857593,
+"launcher": "0x354ea1f02e6679d846801a23496ce1f3109a3d9d",
+"pull": 127,
+"pull_by_launcher": true,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0x4a52b5a0",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x57ed1fd6aec95b68d0141bf853e2d55006625b3e03cec9e218a499eb6bec29a1",
+"b0": 84857874,
+"launcher": "0x205c724ceee65a733028ddbfa400609a0a0e4671",
+"pull": 108,
+"pull_by_launcher": true,
+"bot": 10,
+"pre": [
+[
+4,
+"BUY",
+0.0001188,
+"0x4e07e9ab",
+"0x65050a9b"
+],
+[
+4,
+"BUY",
+1.999576e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x02293ebe3779ffd6407ee535d46f29879dab886c8d2ee7e4dad2f3d510857d53",
+"b0": 84858139,
+"launcher": "0xc7edcdb0549cbd4a5c4ba84a855a6f1036a8a781",
+"pull": 125,
+"pull_by_launcher": true,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.999196e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x42cf39c6",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x0b4777e5a2b71d5f098c9db8091734f1ea88c68db41205a0c464ff821087d158",
+"b0": 84858413,
+"launcher": "0x2c468ebccfd8f7652179ed738099fc4c85863fc3",
+"pull": 119,
+"pull_by_launcher": true,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999298e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x09dac3d3",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x3d419a341a04f19353afe5230ff3439ceaf58ccb35e280b74256420c011b3f5d",
+"b0": 84858684,
+"launcher": "0x4209b34030f5e6a2bf1b891757d27394b19220e1",
+"pull": 3541,
+"pull_by_launcher": true,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.998124e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xad22343f",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xec861ecf2a0295c6484a7d567699da75bfab7d2262ef0bf2ab8a2ceac0ad68eb",
+"b0": 84862394,
+"launcher": "0x6f20cf927d5badd0dcef41f3c2089e7aece33d91",
+"pull": 139,
+"pull_by_launcher": true,
+"bot": 8,
+"pre": [
+[
+3,
+"BUY",
+1.999844e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x0424a30b",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x8931addd871d1583a5d6d92106ddf58d8dc6831b2c1aebbf9eba3e822fcb6baa",
+"b0": 84862687,
+"launcher": "0xb1d4ca0e74cc65123d8353bb510d72d0ac291780",
+"pull": 101,
+"pull_by_launcher": true,
+"bot": 9,
+"pre": [
+[
+2,
+"BUY",
+1.999682e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+2,
+"BUY",
+0.0001188,
+"0x275aa5cb",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xa39aa7a460156d0304ef47b76717420351a64a0aef53eabecf35415ff281be31",
+"b0": 84862953,
+"launcher": "0x7f9d3fd9b076c2f346d06cd5aa8a2289ac33e5f8",
+"pull": 105,
+"pull_by_launcher": true,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+0.0001188,
+"0xb74d65ba",
+"0x65050a9b"
+],
+[
+3,
+"BUY",
+1.998356e-06,
+"0xe71a69f4",
+"0x88767899"
+]
+]
+},
+{
+"pid": "0x0a475cf366ce64f2f8872efba22d85c8e07e8e2cabb2d4e192fdcdbf858f9f69",
+"b0": 84863214,
+"launcher": "0x985d1ab0e8b78018bce972f7bcc55bd1fd27f169",
+"pull": 125,
+"pull_by_launcher": true,
+"bot": 9,
+"pre": [
+[
+3,
+"BUY",
+1.999052e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x9a8c587c",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xf79f1468bc9bdb9b434159b84ebe1ee3eaa78d123c78b44facb75fae7d6e7867",
+"b0": 84863490,
+"launcher": "0x78d11d969d649a8cc401528c3ecaae66227a019e",
+"pull": 107,
+"pull_by_launcher": true,
+"bot": 8,
+"pre": [
+[
+2,
+"BUY",
+1.999378e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x9df26772",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x191337b162065a6b28d01258b9974b0b83591bc585228de226530012ccf23f75",
+"b0": 84863749,
+"launcher": "0xc6f120ba597cddb7733f19ca7d24ba43e8733856",
+"pull": 106,
+"pull_by_launcher": true,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999046e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0xc8333866",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0xb6c112d949a40acb0fc2cb97a7c6c6b30757a1b58f121bea39cf7f204f3b3fd7",
+"b0": 84864007,
+"launcher": "0xfc15d263c6ea6665978e1341dd3be748ac5d7e3a",
+"pull": 3108,
+"pull_by_launcher": true,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999034e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x14781d1c",
+"0x65050a9b"
+]
+]
+},
+{
+"pid": "0x0dde73ea6af723b556f2ff9a731ef27dd2d56ad0e47ceb0135769c3d6f1354d0",
+"b0": 84867283,
+"launcher": "0x5a42392076624466b4fce6c8e5e424c363784448",
+"pull": null,
+"pull_by_launcher": null,
+"bot": 10,
+"pre": [
+[
+3,
+"BUY",
+1.999464e-06,
+"0xe71a69f4",
+"0x88767899"
+],
+[
+3,
+"BUY",
+0.0001188,
+"0x6fac2c52",
+"0x65050a9b"
+]
+]
+}
+]

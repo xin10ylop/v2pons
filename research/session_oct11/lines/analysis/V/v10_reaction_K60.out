@@ -1,0 +1,54 @@
+bot EOAs (seen calling the router): 950
+unattributed buys in the window: 0
+control pools (no stranger buy >= 0.0001 in the window): 117
+stranger >= 0.0001 ETH, pull within  10 blocks of its buy: 0/456 observed vs 1.6 expected from controls
+stranger >= 0.0001 ETH, pull within  30 blocks of its buy: 7/456 observed vs 11.0 expected from controls
+stranger >= 0.0001 ETH, pull within  60 blocks of its buy: 18/456 observed vs 34.5 expected from controls
+stranger >= 0.0001 ETH, pull within 100 blocks of its buy: 40/456 observed vs 58.0 expected from controls
+stranger >= 0.001  ETH, pull within  10 blocks of its buy: 0/118 observed vs 0.4 expected from controls
+stranger >= 0.001  ETH, pull within  30 blocks of its buy: 1/118 observed vs 4.0 expected from controls
+stranger >= 0.001  ETH, pull within  60 blocks of its buy: 8/118 observed vs 10.8 expected from controls
+stranger >= 0.001  ETH, pull within 100 blocks of its buy: 22/118 observed vs 16.2 expected from controls
+stranger >= 0.005  ETH, pull within  10 blocks of its buy: 0/8 observed vs 0.0 expected from controls
+stranger >= 0.005  ETH, pull within  30 blocks of its buy: 0/8 observed vs 0.1 expected from controls
+stranger >= 0.005  ETH, pull within  60 blocks of its buy: 1/8 observed vs 0.6 expected from controls
+stranger >= 0.005  ETH, pull within 100 blocks of its buy: 3/8 observed vs 1.0 expected from controls
+
+stranger pools (>= 0.001 ETH within 60 blocks of the trigger): every one pulled within 100 blocks of the stranger buy
+  0xff39db391c launch 2026-10-05 13:21:54 trig +95 stranger +100 (trig+5) 0.00990 ETH 0x205fb5ed 0x00000000:1dcd4dad:1636 | pull +164 = stranger+64, our trig+2/H60 sell at trig+62 -> pull - sell = 7
+  0x7afc4480f8 launch 2026-10-06 01:02:51 trig +85 stranger +91 (trig+6) 0.00990 ETH 0x205fb5ed 0x00000000:1dcd4dad:1636 | pull +151 = stranger+60, our trig+2/H60 sell at trig+62 -> pull - sell = 4
+  0xcea8a851d1 launch 2026-10-07 04:08:18 trig +99 stranger +138 (trig+39) 0.00100 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +204 = stranger+66, our trig+2/H60 sell at trig+62 -> pull - sell = 43
+  0x360132c87f launch 2026-10-07 04:09:06 trig +78 stranger +125 (trig+47) 0.00100 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +179 = stranger+54, our trig+2/H60 sell at trig+62 -> pull - sell = 39
+  0x6bd4d0c504 launch 2026-10-07 14:22:57 trig +96 stranger +107 (trig+11) 0.00200 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +157 = stranger+50, our trig+2/H60 sell at trig+62 -> pull - sell = -1
+  0xde1cdfd975 launch 2026-10-07 20:46:17 trig +106 stranger +119 (trig+13) 0.00200 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +188 = stranger+69, our trig+2/H60 sell at trig+62 -> pull - sell = 20
+  0x138679a580 launch 2026-10-07 23:08:41 trig +89 stranger +107 (trig+18) 0.00200 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +156 = stranger+49, our trig+2/H60 sell at trig+62 -> pull - sell = 5
+  0x8e7c8b056d launch 2026-10-07 23:09:30 trig +102 stranger +138 (trig+36) 0.00200 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +237 = stranger+99, our trig+2/H60 sell at trig+62 -> pull - sell = 73
+  0x1fa636ed07 launch 2026-10-08 09:54:59 trig +86 stranger +125 (trig+39) 0.00218 ETH 0xf8878ef6 0x74954964:0882f9f6:260 | pull +219 = stranger+94, our trig+2/H60 sell at trig+62 -> pull - sell = 71
+  0xabac47807c launch 2026-10-08 10:13:10 trig +90 stranger +122 (trig+32) 0.00200 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +211 = stranger+89, our trig+2/H60 sell at trig+62 -> pull - sell = 59
+  0x8733b0beb6 launch 2026-10-08 12:00:11 trig +105 stranger +123 (trig+18) 0.00200 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +212 = stranger+89, our trig+2/H60 sell at trig+62 -> pull - sell = 45
+  0x3f4907d55f launch 2026-10-08 14:25:13 trig +102 stranger +156 (trig+54) 0.00248 ETH 0x58245fa2 0x00000000:1dcd4dad:1636 | pull +226 = stranger+70, our trig+2/H60 sell at trig+62 -> pull - sell = 62
+  0x53e2f88f2b launch 2026-10-08 15:42:47 trig +62 stranger +69 (trig+7) 0.00100 ETH 0xdd73a3c4 0x88767899:24856bc3:1092 | pull +114 = stranger+45, our trig+2/H60 sell at trig+62 -> pull - sell = -10
+  0xc11b63f9f5 launch 2026-10-08 21:34:24 trig +100 stranger +109 (trig+9) 0.00227 ETH 0xf8878ef6 0xbdbf5b82:0882f9f6:260 | pull +169 = stranger+60, our trig+2/H60 sell at trig+62 -> pull - sell = 7
+  0x54d1559500 launch 2026-10-09 19:36:35 trig +93 stranger +111 (trig+18) 0.00100 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +191 = stranger+80, our trig+2/H60 sell at trig+62 -> pull - sell = 36
+  0xee1a2e295d launch 2026-10-09 19:39:40 trig +68 stranger +106 (trig+38) 0.02970 ETH 0x3029608e 0xf0b7eaaf:39ecce49:1060 | pull +174 = stranger+68, our trig+2/H60 sell at trig+62 -> pull - sell = 44
+  0xf86058dace launch 2026-10-09 21:44:16 trig +149 stranger +185 (trig+36) 0.00100 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +217 = stranger+32, our trig+2/H60 sell at trig+62 -> pull - sell = 6
+  0xfad53634d1 launch 2026-10-09 21:51:59 trig +92 stranger +109 (trig+17) 0.00100 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +189 = stranger+80, our trig+2/H60 sell at trig+62 -> pull - sell = 35
+  0x666ca8a388 launch 2026-10-09 21:52:53 trig +116 stranger +132 (trig+16) 0.00100 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +225 = stranger+93, our trig+2/H60 sell at trig+62 -> pull - sell = 47
+  0xe4b5fc387f launch 2026-10-09 21:53:57 trig +88 stranger +103 (trig+15) 0.00100 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +202 = stranger+99, our trig+2/H60 sell at trig+62 -> pull - sell = 52
+  0xae0afacf34 launch 2026-10-10 12:59:42 trig +149 stranger +172 (trig+23) 0.00120 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +200 = stranger+28, our trig+2/H60 sell at trig+62 -> pull - sell = -11
+  0xf95591766f launch 2026-10-10 16:07:21 trig +83 stranger +123 (trig+40) 0.00120 ETH 0xb632072d 0x88767899:3593564c:1124 | pull +209 = stranger+86, our trig+2/H60 sell at trig+62 -> pull - sell = 64
+stranger pools: 118; strangers' fingerprints: [('0x88767899:3593564c:1124', 88), ('0x00000000:1dcd4dad:1636', 16), ('0xf0b7eaaf:39ecce49:1060', 3), ('0x88767899:24856bc3:1060', 3), ('0x88767899:24856bc3:1092', 3), ('0x6e2a35a7:0c307f76:1156', 3), ('0x74954964:0882f9f6:260', 1), ('0xbdbf5b82:0882f9f6:260', 1)]; wallets: [('0xb632072d', 80), ('0x205fb5ed', 15), ('0x884c99f0', 4), ('0xdd73a3c4', 3), ('0xc2101da8', 3), ('0x8c855e11', 2)]
+stranger>=0.001: n 118 pulled in window 78 (66%); pull - trigger p10/50/90 (78.1, 216.5, 2172.6); pulled by trig+62: 3 (2.5%); by trig+100: 9.3%
+control: n 117 pulled in window 79 (68%); pull - trigger p10/50/90 (68.6, 329, 2124.2); pulled by trig+62: 6 (5.1%); by trig+100: 11.1%
+
+A's definition (census outsider12 nf reaction: pull <= 30 blocks after the last no-shared-fp outsider buy in the first 12 swaps): 0/32 vs baseline 21/661
+B's definition (outsider12 any, pull within 100 of the last outsider buy in the first 12 swaps): 8/37
+  those cases:
+   0x2e9294d3ac 2026-10-04 19:04:53 outsider +34 0.00495 fp 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40 | bot trigger +None | pull +107 (outsider+73; trigger+None)
+   0x67ac776b68 2026-10-05 13:23:00 outsider +207 0.05 fp 0x8876789976decbfcbbbe364623c63652db8c09 | bot trigger +83 | pull +261 (outsider+54; trigger+178)
+   0x23ce9087af 2026-10-05 13:42:22 outsider +504 0.133 fp 0xd6d35b56237a05afd4cd7e441226fefc3f78c4 | bot trigger +409 | pull +557 (outsider+53; trigger+148)
+   0x31b2dbec94 2026-10-06 16:58:43 outsider +303 0.00031 fp 0xd6d35b56237a05afd4cd7e441226fefc3f78c4 | bot trigger +303 | pull +381 (outsider+78; trigger+78)
+   0x9b317630c9 2026-10-09 15:50:00 outsider +354 0.169 fp 0xd6d35b56237a05afd4cd7e441226fefc3f78c4 | bot trigger +94 | pull +423 (outsider+69; trigger+329)
+   0xb6448c53f8 2026-10-10 17:29:27 outsider +573 0.183 fp 0xd6d35b56237a05afd4cd7e441226fefc3f78c4 | bot trigger +198 | pull +627 (outsider+54; trigger+429)
+   0x8f0f490938 2026-10-11 13:32:50 outsider +68 0.005 fp 0x8876789976decbfcbbbe364623c63652db8c09 | bot trigger +None | pull +133 (outsider+65; trigger+None)
+   0x91620507c4 2026-10-11 13:44:09 outsider +80 0.005 fp 0x8876789976decbfcbbbe364623c63652db8c09 | bot trigger +103 | pull +166 (outsider+86; trigger+63)

@@ -1,0 +1,2558 @@
+{
+ "0x34c0d66f3a57a4cad3c5f792f5028d9c1da83d12|f03e0011|292|0|200|false": {
+  "key": "0x34c0d66f3a57a4cad3c5f792f5028d9c1da83d12|f03e0011|292|0|200|false",
+  "count": 7,
+  "launches_per_day": 3.5,
+  "launcher": {
+   "to": [
+    [
+     "0x34c0d66f3a57a4cad3c5f792f5028d9c1da83d12",
+     7
+    ]
+   ],
+   "selector": [
+    [
+     "f03e0011",
+     7
+    ]
+   ],
+   "calldata_len": [
+    [
+     292,
+     7
+    ]
+   ],
+   "values": [
+    [
+     1e-05,
+     6
+    ],
+    [
+     0.0005,
+     1
+    ]
+   ],
+   "n_from": 2,
+   "top_from": [
+    [
+     "0xf3bce9e9d92e2e8648689539475b0de7ba0af3b6",
+     4
+    ],
+    [
+     "0x9b68dccb7783d622f80fdfcf8d0698e51c296a7b",
+     3
+    ]
+   ],
+   "nonce_p10_50_90": [
+    0,
+    21,
+    30
+   ],
+   "hooks": [
+    [
+     "0xbba868de24cb83dc5851fae9ec27cb905c5fa0cc",
+     7
+    ]
+   ],
+   "fees": [
+    [
+     0,
+     7
+    ]
+   ],
+   "buy_in_launch_tx": 7,
+   "liq_launch_zero": 0,
+   "first_ts": 1791622491,
+   "last_ts": 1791655120
+  },
+  "first_buy_any": {
+   "frac_pools": 0.429,
+   "off_p10_50_90": [
+    40,
+    261,
+    1531
+   ],
+   "eth_p10_50_90": [
+    0.000184,
+    0.0003941,
+    0.000434
+   ],
+   "to_top": [
+    [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      "3593564c"
+     ],
+     2
+    ],
+    [
+     [
+      "0xfb7b708757a4f8409f026eb10d43cb67a3212927",
+      "0a209187"
+     ],
+     1
+    ]
+   ],
+   "n_from": 2,
+   "from_top": [
+    [
+     "0x9b68dccb7783d622f80fdfcf8d0698e51c296a7b",
+     2
+    ],
+    [
+     "0x8ddceeca02eb26dfd4a4178a6cfc921c66bea083",
+     1
+    ]
+   ],
+   "from_is_launcher": 2
+  },
+  "first_buy_real": {
+   "frac_pools": 0.286,
+   "off_p10_50_90": [
+    261,
+    896.0,
+    1531
+   ],
+   "eth_p10_50_90": [
+    0.0003941,
+    0.000414,
+    0.000434
+   ],
+   "to_top": [
+    [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      "3593564c"
+     ],
+     2
+    ]
+   ],
+   "n_from": 1,
+   "from_top": [
+    [
+     "0x9b68dccb7783d622f80fdfcf8d0698e51c296a7b",
+     2
+    ]
+   ],
+   "from_is_launcher": 2
+  },
+  "pull": {
+   "frac_pulled_3000": 0.0,
+   "off_launch_p10_50_90": null,
+   "off_sched_buy_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "n": 0,
+   "to_sel": []
+  },
+  "outsiders": {
+   "frac_pools": 0.143,
+   "size_p10_50_90": [
+    0.000183960506706409,
+    0.000183960506706409,
+    0.000183960506706409
+   ],
+   "pull_after_outsider_p10_50_90": null,
+   "pulled_with": 0,
+   "n_with": 1,
+   "pull_delay_without_p10_50_90": null,
+   "pulled_without": 0,
+   "n_without": 6,
+   "pulled_before_sched_with": 0,
+   "pulled_before_sched_without": 0,
+   "dust_buys_skipped": 0
+  },
+  "front": {
+   "n": 7,
+   "mean": -0.02556,
+   "median": -0.02556,
+   "win": 0.0,
+   "pulled_first": 0,
+   "usd_trade": -0.3835,
+   "usd_day": -1.34,
+   "min": -0.0256,
+   "max": -0.0256,
+   "exits": {
+    "sold": 7
+   }
+  },
+  "follow": {
+   "n": 2,
+   "mean": -0.02556,
+   "median": -0.02556,
+   "win": 0.0,
+   "pulled_first": 0,
+   "usd_trade": -0.3834,
+   "usd_day": -0.38,
+   "min": -0.0256,
+   "max": -0.0256,
+   "exits": {
+    "sold": 2
+   }
+  },
+  "capacity": {
+   "n": 2,
+   "eth_p10_50_90": [
+    0.008405745029449461,
+    0.008405745029449461,
+    0.008405745029449461
+   ],
+   "src": [
+    [
+     "ASSUMED minOut = 0.99 x launch-state quote",
+     2
+    ]
+   ],
+   "ratio_examples": [
+    "ASSUMED minOut = 0.99 x launch-state quote minOut/quote 0.9900",
+    "ASSUMED minOut = 0.99 x launch-state quote minOut/quote 0.9900"
+   ]
+  },
+  "_front_rows": [
+   {
+    "exit": "sold",
+    "ret": -0.02556213896559793,
+    "ret_gross": -0.02484375000008069,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xafe10876b26bb71446b3b7a694d1defdc1be4007f3314986105e14211f6842b2",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.025563860344908276,
+    "ret_gross": -0.02484375000008069,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x10cb9624a31defc5ac9c670ba2c64c7de0dacd05a6a05112e3459ce3e3aa237e",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.02556493620697724,
+    "ret_gross": -0.02484375000008069,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x2e438aa310d2190e2641f56278fb7a6ef6f060cb0da97e52c8147188ff81310f",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.025565079655253103,
+    "ret_gross": -0.02484375000008069,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xea1bc04379d3531edfee8e2b3c3464609b3272701b45f98e4cf2d0c36b5f7c6f",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.025563430000208793,
+    "ret_gross": -0.024843750000208793,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x1ef8056ed73ee52df14e7c289e2725a0bb9090614ceae48a03f709b237fea673",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.025561206551804827,
+    "ret_gross": -0.02484375000008069,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xd7836cfb7756085f7777906d0ee5b1d677af7ca1320fdd4cd512ec4785833ae6",
+    "sched": [
+     261,
+     0.000434025176425
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.02556350172421862,
+    "ret_gross": -0.02484375000008069,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x1a1df148b0bb267392c14bbfcee91fa5f283e5564dd8894780e8af1614df14d6",
+    "sched": [
+     1531,
+     0.0003940629187875
+    ]
+   }
+  ],
+  "_follow_rows": [
+   {
+    "exit": "sold",
+    "ret": -0.02556120655181,
+    "ret_gross": -0.024843750000085863,
+    "B": 262,
+    "S": 266,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xd7836cfb7756085f7777906d0ee5b1d677af7ca1320fdd4cd512ec4785833ae6"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.02556350172422293,
+    "ret_gross": -0.024843750000085,
+    "B": 1532,
+    "S": 1536,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x1a1df148b0bb267392c14bbfcee91fa5f283e5564dd8894780e8af1614df14d6"
+   }
+  ]
+ },
+ "0x575b952fd3c079b3e72f4cd45f546edd2486d8fa|7fde822e|772|10000|200|true": {
+  "key": "0x575b952fd3c079b3e72f4cd45f546edd2486d8fa|7fde822e|772|10000|200|true",
+  "count": 7,
+  "launches_per_day": 3.5,
+  "launcher": {
+   "to": [
+    [
+     "0x575b952fd3c079b3e72f4cd45f546edd2486d8fa",
+     7
+    ]
+   ],
+   "selector": [
+    [
+     "7fde822e",
+     7
+    ]
+   ],
+   "calldata_len": [
+    [
+     772,
+     7
+    ]
+   ],
+   "values": [
+    [
+     0.0,
+     7
+    ]
+   ],
+   "n_from": 1,
+   "top_from": [
+    [
+     "0x06cb3a6841c92525e7a1998328e7c9d37e98d937",
+     7
+    ]
+   ],
+   "nonce_p10_50_90": [
+    1858,
+    1863,
+    1871
+   ],
+   "hooks": [
+    [
+     "0x0000000000000000000000000000000000000000",
+     7
+    ]
+   ],
+   "fees": [
+    [
+     10000,
+     7
+    ]
+   ],
+   "buy_in_launch_tx": 0,
+   "liq_launch_zero": 0,
+   "first_ts": 1791489823,
+   "last_ts": 1791493676
+  },
+  "first_buy_any": {
+   "frac_pools": 1.0,
+   "off_p10_50_90": [
+    2,
+    3,
+    3
+   ],
+   "eth_p10_50_90": [
+    2e-06,
+    2e-06,
+    2e-06
+   ],
+   "to_top": [
+    [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      "3593564c"
+     ],
+     7
+    ]
+   ],
+   "n_from": 1,
+   "from_top": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     7
+    ]
+   ],
+   "from_is_launcher": 0
+  },
+  "first_buy_real": {
+   "frac_pools": 0.0
+  },
+  "pull": {
+   "frac_pulled_3000": 0.0,
+   "off_launch_p10_50_90": null,
+   "off_sched_buy_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "n": 0,
+   "to_sel": []
+  },
+  "outsiders": {
+   "frac_pools": 0.0,
+   "size_p10_50_90": null,
+   "pull_after_outsider_p10_50_90": null,
+   "pulled_with": 0,
+   "n_with": 0,
+   "pull_delay_without_p10_50_90": null,
+   "pulled_without": 0,
+   "n_without": 7,
+   "pulled_before_sched_with": 0,
+   "pulled_before_sched_without": 0,
+   "dust_buys_skipped": 7
+  },
+  "front": {
+   "n": 7,
+   "mean": -0.02066,
+   "median": -0.02066,
+   "win": 0.0,
+   "pulled_first": 0,
+   "usd_trade": -0.3099,
+   "usd_day": -1.09,
+   "min": -0.0207,
+   "max": -0.0207,
+   "exits": {
+    "sold": 7
+   }
+  },
+  "follow": {
+   "n": 0,
+   "exits": {}
+  },
+  "capacity": {
+   "n": 0,
+   "eth_p10_50_90": null,
+   "src": [],
+   "ratio_examples": []
+  },
+  "_front_rows": [
+   {
+    "exit": "sold",
+    "ret": -0.02066504249619345,
+    "ret_gross": -0.01985513353067621,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998518e-06
+     ]
+    ],
+    "pull": null,
+    "pid": "0x3ce0dd132c53cb0316dee1c05e2c11893442b509f31a0e104b72befe41f2842b",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.02067336049122,
+    "ret_gross": -0.019855131525702757,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.999906e-06
+     ]
+    ],
+    "pull": null,
+    "pid": "0xc3c0aa9852b266a4faed6967ca9bb77f44ac43d4ceae447e8170b9087d386c67",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.02066690784957983,
+    "ret_gross": -0.01985513405647638,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998154e-06
+     ]
+    ],
+    "pull": null,
+    "pid": "0xb135de6d92647041ca266362db24481725266575e5273d670f253e88a7aefbad",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.02066016589328569,
+    "ret_gross": -0.01985513416914776,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998076e-06
+     ]
+    ],
+    "pull": null,
+    "pid": "0x8855cd1abd99dc9537d33de81f6888abe77cc220a2cd03faf27f3eac5e4071b3",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.02066310602247276,
+    "ret_gross": -0.019855133608679656,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998464e-06
+     ]
+    ],
+    "pull": null,
+    "pid": "0x8b22021ef65c06b1498db32ffbac611d2434e307e792f330fe89a67a60040fd0",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.020655000475523103,
+    "ret_gross": -0.01985513288931621,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998962e-06
+     ]
+    ],
+    "pull": null,
+    "pid": "0x125f901680ae37bda0048f0a1c960e87bb62494a5257b7332b3b89581faa5bf3",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.020653064726943622,
+    "ret_gross": -0.019855133692460863,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      2,
+      1.998406e-06
+     ]
+    ],
+    "pull": null,
+    "pid": "0x7fdf9030411fe961e33e40780b9b85c0f5e0e5c980394efc3bbe2db0f6eeb4ef",
+    "sched": null
+   }
+  ],
+  "_follow_rows": []
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|500000|5000|true": {
+  "key": "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|500000|5000|true",
+  "count": 7,
+  "launches_per_day": 3.5,
+  "launcher": {
+   "to": [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+     7
+    ]
+   ],
+   "selector": [
+    [
+     "ac9650d8",
+     7
+    ]
+   ],
+   "calldata_len": [
+    [
+     2020,
+     7
+    ]
+   ],
+   "values": [
+    [
+     0.002035,
+     1
+    ],
+    [
+     0.008105,
+     1
+    ],
+    [
+     0.00027,
+     1
+    ],
+    [
+     0.000929,
+     1
+    ],
+    [
+     0.004,
+     1
+    ],
+    [
+     0.002004,
+     1
+    ]
+   ],
+   "n_from": 5,
+   "top_from": [
+    [
+     "0xad2616dd22e46bf17702d4b92fd56291895af7c1",
+     2
+    ],
+    [
+     "0x86ee43ab9d7dab1816bdac173d98d682dadf81af",
+     2
+    ],
+    [
+     "0x679b9ee673b3bab1ca1f19fc783e3e2503b3bd5c",
+     1
+    ],
+    [
+     "0x45fcadcb1090cab50a247cf3666dbafc7479932d",
+     1
+    ]
+   ],
+   "nonce_p10_50_90": [
+    72,
+    947,
+    2241
+   ],
+   "hooks": [
+    [
+     "0x0000000000000000000000000000000000000000",
+     7
+    ]
+   ],
+   "fees": [
+    [
+     500000,
+     7
+    ]
+   ],
+   "buy_in_launch_tx": 0,
+   "liq_launch_zero": 1,
+   "first_ts": 1791486705,
+   "last_ts": 1791574483
+  },
+  "first_buy_any": {
+   "frac_pools": 0.0
+  },
+  "first_buy_real": {
+   "frac_pools": 0.0
+  },
+  "pull": {
+   "frac_pulled_3000": 0.0,
+   "off_launch_p10_50_90": null,
+   "off_sched_buy_p10_50_90": null,
+   "by_launch_wallet": 0,
+   "n": 0,
+   "to_sel": []
+  },
+  "outsiders": {
+   "frac_pools": 0.0,
+   "size_p10_50_90": null,
+   "pull_after_outsider_p10_50_90": null,
+   "pulled_with": 0,
+   "n_with": 0,
+   "pull_delay_without_p10_50_90": null,
+   "pulled_without": 0,
+   "n_without": 7,
+   "pulled_before_sched_with": 0,
+   "pulled_before_sched_without": 0,
+   "dust_buys_skipped": 0
+  },
+  "front": {
+   "n": 6,
+   "mean": -0.62918,
+   "median": -0.64619,
+   "win": 0.0,
+   "pulled_first": 0,
+   "usd_trade": -9.4377,
+   "usd_day": -28.32,
+   "min": -0.6841,
+   "max": -0.54,
+   "exits": {
+    "sold": 6,
+    "no_liquidity": 1
+   }
+  },
+  "follow": {
+   "n": 0,
+   "exits": {}
+  },
+  "capacity": {
+   "n": 0,
+   "eth_p10_50_90": null,
+   "src": [],
+   "ratio_examples": []
+  },
+  "_front_rows": [
+   {
+    "exit": "sold",
+    "ret": -0.6467827339619368,
+    "ret_gross": -0.6459654374102126,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x02f71eb64a0b433e4d1c38cb9b1c323543f8e4051b4b046b96bed51aef9bf76c",
+    "sched": null
+   },
+   {
+    "exit": "no_liquidity",
+    "ret": null,
+    "pid": "0xa70fd1482c4792ab52e6ab4a999d58fa11f4096b7da978db9195045e1657d444",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.5399945888050769,
+    "ret_gross": -0.5392034715636976,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x46e8508a6d16f84a8c53b136faee8f41ae88f391660db4cfe152c4c978ecf1e9",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.5983956421799977,
+    "ret_gross": -0.5976097608006874,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x1726ee021bb7c11656b01944ec23bc4f4000cfed9da258bb5e282be8cc90ec9e",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.6840911816227181,
+    "ret_gross": -0.6833639705882354,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x1d17426244b0c92ebc43d2dd810e8f5cf89771089baf8e4bc2579d807f432b43",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.6456035578133695,
+    "ret_gross": -0.6448863164340591,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x2937f416a7b4fbcc5edd3466c2a4741d7c10cd1873b58cc8e14ce44ed7170c06",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.6601981320676703,
+    "ret_gross": -0.6594805320676703,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x8713850b2199b51eb36a8829c120780af13f30da11e91ca5ca422a94a7431e8b",
+    "sched": null
+   }
+  ],
+  "_follow_rows": []
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|810000|8100|true": {
+  "key": "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|810000|8100|true",
+  "count": 7,
+  "launches_per_day": 3.5,
+  "launcher": {
+   "to": [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+     7
+    ]
+   ],
+   "selector": [
+    [
+     "ac9650d8",
+     7
+    ]
+   ],
+   "calldata_len": [
+    [
+     2020,
+     7
+    ]
+   ],
+   "values": [
+    [
+     0.002137,
+     1
+    ],
+    [
+     0.001119,
+     1
+    ],
+    [
+     0.002135,
+     1
+    ],
+    [
+     0.000848,
+     1
+    ],
+    [
+     0.000273,
+     1
+    ],
+    [
+     6.6e-05,
+     1
+    ]
+   ],
+   "n_from": 6,
+   "top_from": [
+    [
+     "0x2e5b58f81ec826e029adeac9fc69b05242bc5dd7",
+     2
+    ],
+    [
+     "0xa635592405b43dd06c8e801e61310ba64287856a",
+     1
+    ],
+    [
+     "0x45c3c044ba555541a7f12a4a43d966825a48cbc7",
+     1
+    ],
+    [
+     "0x72704b2cf9ce8da0c89b2122df8174ed9fa32810",
+     1
+    ]
+   ],
+   "nonce_p10_50_90": [
+    614,
+    2461,
+    6368
+   ],
+   "hooks": [
+    [
+     "0x0000000000000000000000000000000000000000",
+     7
+    ]
+   ],
+   "fees": [
+    [
+     810000,
+     7
+    ]
+   ],
+   "buy_in_launch_tx": 0,
+   "liq_launch_zero": 0,
+   "first_ts": 1791525383,
+   "last_ts": 1791646832
+  },
+  "first_buy_any": {
+   "frac_pools": 0.0
+  },
+  "first_buy_real": {
+   "frac_pools": 0.0
+  },
+  "pull": {
+   "frac_pulled_3000": 0.143,
+   "off_launch_p10_50_90": [
+    1573,
+    1573,
+    1573
+   ],
+   "off_sched_buy_p10_50_90": null,
+   "by_launch_wallet": 1,
+   "n": 1,
+   "to_sel": [
+    [
+     [
+      "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+      "dd46508f"
+     ],
+     1
+    ]
+   ]
+  },
+  "outsiders": {
+   "frac_pools": 0.0,
+   "size_p10_50_90": null,
+   "pull_after_outsider_p10_50_90": null,
+   "pulled_with": 0,
+   "n_with": 0,
+   "pull_delay_without_p10_50_90": [
+    1573,
+    1573,
+    1573
+   ],
+   "pulled_without": 1,
+   "n_without": 7,
+   "pulled_before_sched_with": 0,
+   "pulled_before_sched_without": 0,
+   "dust_buys_skipped": 0
+  },
+  "front": {
+   "n": 7,
+   "mean": -0.91116,
+   "median": -0.93413,
+   "win": 0.0,
+   "pulled_first": 0,
+   "usd_trade": -13.6673,
+   "usd_day": -47.85,
+   "min": -0.9509,
+   "max": -0.8476,
+   "exits": {
+    "sold": 7
+   }
+  },
+  "follow": {
+   "n": 0,
+   "exits": {}
+  },
+  "capacity": {
+   "n": 0,
+   "eth_p10_50_90": null,
+   "src": [],
+   "ratio_examples": []
+  },
+  "_front_rows": [
+   {
+    "exit": "sold",
+    "ret": -0.950886880812581,
+    "ret_gross": -0.9501658380539604,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xc0ae676613dc20acbdb1b03a8121cc831ec657be62fd66023c9abf250f3727ba",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.9403521683537551,
+    "ret_gross": -0.9396307669744448,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xc82d3ce309ea29e34ad6c6ee09a2423819aeb128508f60328bdf0dd02f18ae24",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.9508707155240269,
+    "ret_gross": -0.9501511789723027,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x152182bae6da7a017890b278d19d6b382d595704572cafe6e65f4dd70aa11bef",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.9341286010747524,
+    "ret_gross": -0.9334107141782007,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x246fa6ff57ef600605d51574e08484a3c2e0982beda682bc35e8b6bfa809db3a",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.8977813145846555,
+    "ret_gross": -0.8970640732053452,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xf4f2b674400033f80c639547624df515dde6745051b3fba441a16bbfd7cbcb42",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.8476392577982962,
+    "ret_gross": -0.8469213709017445,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": 1573,
+    "pid": "0x54b6b48082e8c9acc40bbf52721d03e2c188a7b615e5ffe85dfcd3c017dfdfcc",
+    "sched": null
+   },
+   {
+    "exit": "sold",
+    "ret": -0.8564352920047125,
+    "ret_gross": -0.855716114073678,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xeeb6ca9f1ab3c6718e7a782acb29714115bce403eb1a337034412ae7e343eacf",
+    "sched": null
+   }
+  ],
+  "_follow_rows": []
+ },
+ "CONTROL vbot-v2.433": {
+  "key": "CONTROL vbot-v2.433",
+  "count": 1843,
+  "launches_per_day": 921.79,
+  "launcher": {
+   "to": [
+    [
+     "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+     1843
+    ]
+   ],
+   "selector": [
+    [
+     "ac9650d8",
+     1843
+    ]
+   ],
+   "calldata_len": [
+    [
+     1444,
+     1843
+    ]
+   ],
+   "values": [
+    [
+     2.433329,
+     1843
+    ]
+   ],
+   "n_from": 1843,
+   "top_from": [
+    [
+     "0xbe0d58d685ca54cedff66c2c3401192c566a3e63",
+     1
+    ],
+    [
+     "0x5851bd4251493c15e0ce53be5dd13fb6e81ed851",
+     1
+    ],
+    [
+     "0x066a7c9ffeef5230099f63788cd07ff404babb4f",
+     1
+    ],
+    [
+     "0xeade739122bd4d7f670c0a64cce892c282987e7e",
+     1
+    ]
+   ],
+   "nonce_p10_50_90": [
+    3,
+    10,
+    11
+   ],
+   "hooks": [
+    [
+     "0x0000000000000000000000000000000000000000",
+     1843
+    ]
+   ],
+   "fees": [
+    [
+     2500,
+     1843
+    ]
+   ],
+   "buy_in_launch_tx": 0,
+   "liq_launch_zero": 0,
+   "first_ts": 1791483972,
+   "last_ts": 1791656431
+  },
+  "first_buy_any": {
+   "frac_pools": 1.0,
+   "off_p10_50_90": [
+    2,
+    3,
+    3
+   ],
+   "eth_p10_50_90": [
+    2e-06,
+    2e-06,
+    0.00495
+   ],
+   "to_top": [
+    [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      "3593564c"
+     ],
+     940
+    ],
+    [
+     [
+      "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+      "4d819a2a"
+     ],
+     854
+    ],
+    [
+     [
+      "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+      "c1120e3d"
+     ],
+     49
+    ]
+   ],
+   "n_from": 129,
+   "from_top": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     940
+    ],
+    [
+     "0x488faf521a2d5f16ee55d1335841bb3ba9a0946e",
+     395
+    ],
+    [
+     "0xf6e55480c5939da146092301e388654879c6e6fb",
+     192
+    ]
+   ],
+   "from_is_launcher": 0
+  },
+  "first_buy_real": {
+   "frac_pools": 0.999,
+   "off_p10_50_90": [
+    2,
+    8.0,
+    10
+   ],
+   "eth_p10_50_90": [
+    0.00495,
+    0.125,
+    0.2475
+   ],
+   "to_top": [
+    [
+     [
+      "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+      "c1120e3d"
+     ],
+     1317
+    ],
+    [
+     [
+      "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+      "4d819a2a"
+     ],
+     525
+    ]
+   ],
+   "n_from": 67,
+   "from_top": [
+    [
+     "0x488faf521a2d5f16ee55d1335841bb3ba9a0946e",
+     320
+    ],
+    [
+     "0x544ef4354283261fb9e258247a80d49c86b9f107",
+     142
+    ],
+    [
+     "0xdf2c6f64308dc7537bca2c4336f464b1c8b92b2f",
+     53
+    ]
+   ],
+   "from_is_launcher": 0
+  },
+  "pull": {
+   "frac_pulled_3000": 0.804,
+   "off_launch_p10_50_90": [
+    11,
+    13.0,
+    127
+   ],
+   "off_sched_buy_p10_50_90": [
+    3,
+    3,
+    117
+   ],
+   "by_launch_wallet": 1482,
+   "n": 1482,
+   "to_sel": [
+    [
+     [
+      "0x1cbaf24d53fe930fce8eff149fa797d2611da149",
+      "a0f7978d"
+     ],
+     1482
+    ]
+   ]
+  },
+  "outsiders": {
+   "frac_pools": 0.003,
+   "size_p10_50_90": [
+    1.98e-05,
+    4.95e-05,
+    4.95e-05
+   ],
+   "pull_after_outsider_p10_50_90": [
+    11,
+    31,
+    32
+   ],
+   "pulled_with": 3,
+   "n_with": 5,
+   "pull_delay_without_p10_50_90": [
+    3,
+    3,
+    118
+   ],
+   "pulled_without": 1479,
+   "n_without": 1838,
+   "pulled_before_sched_with": 0,
+   "pulled_before_sched_without": 0,
+   "dust_buys_skipped": 1722
+  },
+  "front": {
+   "n": 1843,
+   "mean": 0.11858,
+   "median": 0.14008,
+   "win": 0.9457,
+   "pulled_first": 0,
+   "usd_trade": 1.7787,
+   "usd_day": 1639.55,
+   "min": -0.0097,
+   "max": 0.2855,
+   "exits": {
+    "sold": 1843
+   }
+  },
+  "follow": {
+   "n": 1842,
+   "mean": -0.35433,
+   "median": -0.00571,
+   "win": 0.0016,
+   "pulled_first": 646,
+   "usd_trade": -5.315,
+   "usd_day": -4896.63,
+   "min": -1.0008,
+   "max": 0.2503,
+   "exits": {
+    "sold": 1196,
+    "pulled_first": 646
+   }
+  },
+  "capacity": {
+   "n": 1842,
+   "eth_p10_50_90": [
+    0.012412667274475096,
+    0.012714415788650513,
+    0.012888014316558836
+   ],
+   "src": [
+    [
+     "decoded minOut (c1120e3d word 4)",
+     1842
+    ]
+   ],
+   "ratio_examples": [
+    "decoded minOut (c1120e3d word 4) minOut/quote 0.9900",
+    "decoded minOut (c1120e3d word 4) minOut/quote 0.9900",
+    "decoded minOut (c1120e3d word 4) minOut/quote 0.9900"
+   ]
+  },
+  "_front_rows": [
+   {
+    "exit": "sold",
+    "ret": 0.21603335350793862,
+    "ret_gross": 0.21685545557690414,
+    "B": 1,
+    "S": 15,
+    "dropped": [],
+    "between": [
+     [
+      2,
+      0.0001089
+     ],
+     [
+      4,
+      0.000133947
+     ],
+     [
+      14,
+      0.2589801030519936
+     ]
+    ],
+    "pull": null,
+    "pid": "0xe014b0952f17b7cab24bfdc3414de5a7e9dc76529ff0c7b9a5b97b5aee6c23c6",
+    "sched": [
+     14,
+     0.2589801030519936
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": 0.08727789048209052,
+    "ret_gross": 0.08809755393036638,
+    "B": 1,
+    "S": 16,
+    "dropped": [],
+    "between": [
+     [
+      4,
+      0.0001089
+     ],
+     [
+      5,
+      0.000133947
+     ],
+     [
+      5,
+      1.998442e-06
+     ],
+     [
+      15,
+      0.11171482131026864
+     ]
+    ],
+    "pull": null,
+    "pid": "0x76171653b2e38a9b62c8e7862fbdec6ff8ea04e32c127353e4aaccecfc402f43",
+    "sched": [
+     15,
+     0.11171482131026864
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": 0.14020236406934775,
+    "ret_gross": 0.141026833034865,
+    "B": 1,
+    "S": 10,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.99885e-06
+     ],
+     [
+      3,
+      0.0001089
+     ],
+     [
+      4,
+      0.000133947
+     ],
+     [
+      9,
+      0.17325
+     ]
+    ],
+    "pull": null,
+    "pid": "0xdc1da3334228f0c7cd01abe82287d48f0e253397bff95333a368e273015abc9f",
+    "sched": [
+     9,
+     0.17325
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": 0.1560688216456119,
+    "ret_gross": 0.15689199957664637,
+    "B": 1,
+    "S": 9,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      0.0001089
+     ],
+     [
+      3,
+      1.998322e-06
+     ],
+     [
+      4,
+      0.000133947
+     ],
+     [
+      8,
+      0.19141605627853983
+     ]
+    ],
+    "pull": null,
+    "pid": "0x977315a3f8cc4986addab504076c63b2443e64856ca5717ba512649a0fe9d359",
+    "sched": [
+     8,
+     0.19141605627853983
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": 0.15568865462212275,
+    "ret_gross": 0.15651025462212276,
+    "B": 1,
+    "S": 9,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      0.0001089
+     ],
+     [
+      3,
+      1.998766e-06
+     ],
+     [
+      4,
+      0.000133947
+     ],
+     [
+      8,
+      0.190980411355882
+     ]
+    ],
+    "pull": null,
+    "pid": "0x655bb7eed982a08df4ef559d938346e2adf9a45eb452ea0bd4fcc06aa75588a3",
+    "sched": [
+     8,
+     0.190980411355882
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": 0.05566438438413155,
+    "ret_gross": 0.056486414728959135,
+    "B": 1,
+    "S": 12,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      0.0001089
+     ],
+     [
+      4,
+      1.999136e-06
+     ],
+     [
+      4,
+      0.000133947
+     ],
+     [
+      11,
+      0.07425
+     ]
+    ],
+    "pull": null,
+    "pid": "0xf45f327a71b93e09e48a51720b62aa6a7f275b445f28d55c6b0319d71c99f6aa",
+    "sched": [
+     11,
+     0.07425
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.005614641326383793,
+    "ret_gross": -0.004788809602245862,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      0.0001089
+     ],
+     [
+      4,
+      1.999398e-06
+     ],
+     [
+      4,
+      0.000133947
+     ]
+    ],
+    "pull": null,
+    "pid": "0x6a5ed84b4d5d63e847b79259c53c1601370e455e8a0e6892362c152c393c6a01",
+    "sched": [
+     22,
+     0.0854284468668476
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": 0.18568883830670396,
+    "ret_gross": 0.18650993623773846,
+    "B": 1,
+    "S": 9,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.999324e-06
+     ],
+     [
+      3,
+      0.0001089
+     ],
+     [
+      4,
+      0.000133947
+     ],
+     [
+      8,
+      0.225
+     ]
+    ],
+    "pull": 1839,
+    "pid": "0x65f7fea4236085289ae9bf3e9bce34362e818a999a4e9fcbdf531568c6a37763",
+    "sched": [
+     8,
+     0.225
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": 0.14020573533533948,
+    "ret_gross": 0.14102683326637397,
+    "B": 1,
+    "S": 9,
+    "dropped": [],
+    "between": [
+     [
+      4,
+      0.0001089
+     ],
+     [
+      4,
+      1.999116e-06
+     ],
+     [
+      5,
+      0.000133947
+     ],
+     [
+      8,
+      0.17325
+     ]
+    ],
+    "pull": null,
+    "pid": "0x20d0d83b0f2ad685f3306995de506b4d223d09ebbeed4e8d2661c44462fe0c73",
+    "sched": [
+     8,
+     0.17325
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": 0.1665992009401605,
+    "ret_gross": 0.1674272561125743,
+    "B": 1,
+    "S": 9,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      0.0001089
+     ],
+     [
+      3,
+      1.999702e-06
+     ],
+     [
+      4,
+      0.000133947
+     ],
+     [
+      8,
+      0.20341064563910205
+     ]
+    ],
+    "pull": null,
+    "pid": "0xe5edc271d67bd4d8436e0a5457b7537b80ba56dd8b7cf9f6ea735eeadbe1ae44",
+    "sched": [
+     8,
+     0.20341064563910205
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": 0.20574335379196465,
+    "ret_gross": 0.20656172620575775,
+    "B": 1,
+    "S": 8,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998732e-06
+     ],
+     [
+      3,
+      0.0001089
+     ],
+     [
+      4,
+      0.000133947
+     ],
+     [
+      7,
+      0.2475
+     ]
+    ],
+    "pull": null,
+    "pid": "0xd00f935a339212a3e8f7efc500cb4362cbb9aa5d9dabef99dfedb0c7854819fe",
+    "sched": [
+     7,
+     0.2475
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": 0.20574816015758518,
+    "ret_gross": 0.2065617270541369,
+    "B": 1,
+    "S": 9,
+    "dropped": [],
+    "between": [
+     [
+      2,
+      1.99968e-06
+     ],
+     [
+      3,
+      0.0001089
+     ],
+     [
+      4,
+      0.000133947
+     ],
+     [
+      8,
+      0.2475
+     ]
+    ],
+    "pull": null,
+    "pid": "0x94938999ce362a5172b92c85ec2574f7fd45b6d3a5fa2ef4b3344f20ad237ef3",
+    "sched": [
+     8,
+     0.2475
+    ]
+   }
+  ],
+  "_follow_rows": [
+   {
+    "exit": "sold",
+    "ret": -0.005810517280788793,
+    "ret_gross": -0.0049884152118232754,
+    "B": 15,
+    "S": 19,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xe014b0952f17b7cab24bfdc3414de5a7e9dc76529ff0c7b9a5b97b5aee6c23c6"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.0058077714385468965,
+    "ret_gross": -0.004988107990271035,
+    "B": 16,
+    "S": 20,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x76171653b2e38a9b62c8e7862fbdec6ff8ea04e32c127353e4aaccecfc402f43"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.00581270953344,
+    "ret_gross": -0.004988240567922759,
+    "B": 10,
+    "S": 14,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xdc1da3334228f0c7cd01abe82287d48f0e253397bff95333a368e273015abc9f"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.005811456454760517,
+    "ret_gross": -0.004988278523726034,
+    "B": 9,
+    "S": 13,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x977315a3f8cc4986addab504076c63b2443e64856ca5717ba512649a0fe9d359"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.005809877619620517,
+    "ret_gross": -0.004988277619620517,
+    "B": 9,
+    "S": 13,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x655bb7eed982a08df4ef559d938346e2adf9a45eb452ea0bd4fcc06aa75588a3"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.005810054445643449,
+    "ret_gross": -0.004988024100815862,
+    "B": 12,
+    "S": 16,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xf45f327a71b93e09e48a51720b62aa6a7f275b445f28d55c6b0319d71c99f6aa"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.005813881115174483,
+    "ret_gross": -0.004988049391036552,
+    "B": 23,
+    "S": 27,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x6a5ed84b4d5d63e847b79259c53c1601370e455e8a0e6892362c152c393c6a01"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.005809445264603793,
+    "ret_gross": -0.00498834733356931,
+    "B": 9,
+    "S": 13,
+    "dropped": [],
+    "between": [],
+    "pull": 1839,
+    "pid": "0x65f7fea4236085289ae9bf3e9bce34362e818a999a4e9fcbdf531568c6a37763"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.005809338498957759,
+    "ret_gross": -0.004988240567923276,
+    "B": 9,
+    "S": 13,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x20d0d83b0f2ad685f3306995de506b4d223d09ebbeed4e8d2661c44462fe0c73"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.005816358472050517,
+    "ret_gross": -0.004988303299636724,
+    "B": 9,
+    "S": 13,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xe5edc271d67bd4d8436e0a5457b7537b80ba56dd8b7cf9f6ea735eeadbe1ae44"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.0058067648873232755,
+    "ret_gross": -0.004988392473530172,
+    "B": 8,
+    "S": 12,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0xd00f935a339212a3e8f7efc500cb4362cbb9aa5d9dabef99dfedb0c7854819fe"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.005801959370083621,
+    "ret_gross": -0.004988392473531896,
+    "B": 9,
+    "S": 13,
+    "dropped": [],
+    "between": [],
+    "pull": null,
+    "pid": "0x94938999ce362a5172b92c85ec2574f7fd45b6d3a5fa2ef4b3344f20ad237ef3"
+   }
+  ]
+ },
+ "CONTROL operator-A": {
+  "key": "CONTROL operator-A",
+  "count": 77,
+  "launches_per_day": 38.51,
+  "launcher": {
+   "to": [
+    [
+     "0x3194e32622c5d860a0572c74edda99dcfd8fc827",
+     77
+    ]
+   ],
+   "selector": [
+    [
+     "2fcb9108",
+     77
+    ]
+   ],
+   "calldata_len": [
+    [
+     644,
+     77
+    ]
+   ],
+   "values": [
+    [
+     2.7,
+     5
+    ],
+    [
+     1.9,
+     3
+    ],
+    [
+     2.05,
+     3
+    ],
+    [
+     1.88,
+     2
+    ],
+    [
+     2.65,
+     2
+    ],
+    [
+     2.98,
+     2
+    ]
+   ],
+   "n_from": 77,
+   "top_from": [
+    [
+     "0x4348ffca6467fdb687fb771c2370f691a7a940e9",
+     1
+    ],
+    [
+     "0x1dd279c972e7e7e2c5523a36abe317606ec76816",
+     1
+    ],
+    [
+     "0x40af0dac85abdac6f026f3adb1bdc2afd8e88efb",
+     1
+    ],
+    [
+     "0x974fd99cfe771ab953fa90a7a44a56e170ebb769",
+     1
+    ]
+   ],
+   "nonce_p10_50_90": [
+    0,
+    0,
+    0
+   ],
+   "hooks": [
+    [
+     "0x0000000000000000000000000000000000000000",
+     77
+    ]
+   ],
+   "fees": [
+    [
+     1500,
+     6
+    ],
+    [
+     2500,
+     3
+    ],
+    [
+     3500,
+     2
+    ],
+    [
+     4000,
+     2
+    ]
+   ],
+   "buy_in_launch_tx": 0,
+   "liq_launch_zero": 0,
+   "first_ts": 1791496696,
+   "last_ts": 1791648393
+  },
+  "first_buy_any": {
+   "frac_pools": 1.0,
+   "off_p10_50_90": [
+    3,
+    3,
+    4
+   ],
+   "eth_p10_50_90": [
+    2e-06,
+    2e-06,
+    2e-06
+   ],
+   "to_top": [
+    [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      "3593564c"
+     ],
+     74
+    ],
+    [
+     [
+      "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+      "4d819a2a"
+     ],
+     3
+    ]
+   ],
+   "n_from": 3,
+   "from_top": [
+    [
+     "0xe71a69f434a719cd5afa411568b69716aab3b84a",
+     74
+    ],
+    [
+     "0xf6e55480c5939da146092301e388654879c6e6fb",
+     2
+    ],
+    [
+     "0xd818eba04326d1f4336eb969e46bdac5b34ae701",
+     1
+    ]
+   ],
+   "from_is_launcher": 0
+  },
+  "first_buy_real": {
+   "frac_pools": 0.974,
+   "off_p10_50_90": [
+    24,
+    54,
+    66
+   ],
+   "eth_p10_50_90": [
+    0.0143,
+    0.0547,
+    0.1203
+   ],
+   "to_top": [
+    [
+     [
+      "0x8876789976decbfcbbbe364623c63652db8c0904",
+      "3593564c"
+     ],
+     75
+    ]
+   ],
+   "n_from": 10,
+   "from_top": [
+    [
+     "0x8700722d7ac8d14666c07574317b4e7fb3dc8ae1",
+     25
+    ],
+    [
+     "0x295877ce91a25528ae17263cb3d30eb11bbfae3e",
+     23
+    ],
+    [
+     "0xdc2e86611b27dc4209dc4055ae4f7cf5b9ee5e80",
+     15
+    ]
+   ],
+   "from_is_launcher": 0
+  },
+  "pull": {
+   "frac_pulled_3000": 0.857,
+   "off_launch_p10_50_90": [
+    51,
+    230.5,
+    2401
+   ],
+   "off_sched_buy_p10_50_90": [
+    6,
+    166.5,
+    2349
+   ],
+   "by_launch_wallet": 66,
+   "n": 66,
+   "to_sel": [
+    [
+     [
+      "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+      "dd46508f"
+     ],
+     66
+    ]
+   ]
+  },
+  "outsiders": {
+   "frac_pools": 0.351,
+   "size_p10_50_90": [
+    4e-05,
+    6e-05,
+    6e-05
+   ],
+   "pull_after_outsider_p10_50_90": [
+    44,
+    178.0,
+    2075
+   ],
+   "pulled_with": 24,
+   "n_with": 27,
+   "pull_delay_without_p10_50_90": [
+    6,
+    207.5,
+    2349
+   ],
+   "pulled_without": 42,
+   "n_without": 50,
+   "pulled_before_sched_with": 0,
+   "pulled_before_sched_without": 0,
+   "dust_buys_skipped": 79
+  },
+  "front": {
+   "n": 77,
+   "mean": -0.00506,
+   "median": -0.00544,
+   "win": 0.013,
+   "pulled_first": 0,
+   "usd_trade": -0.0759,
+   "usd_day": -2.92,
+   "min": -0.0107,
+   "max": 0.0415,
+   "exits": {
+    "sold": 77
+   }
+  },
+  "follow": {
+   "n": 75,
+   "mean": 0.04338,
+   "median": 0.03268,
+   "win": 0.84,
+   "pulled_first": 0,
+   "usd_trade": 0.6507,
+   "usd_day": 24.41,
+   "min": -0.0105,
+   "max": 0.414,
+   "exits": {
+    "sold": 75
+   }
+  },
+  "capacity": {
+   "n": 75,
+   "eth_p10_50_90": [
+    0.008232891559600828,
+    0.01148208975791931,
+    0.017289817333221436
+   ],
+   "src": [
+    [
+     "ASSUMED minOut = 0.99 x launch-state quote",
+     75
+    ]
+   ],
+   "ratio_examples": [
+    "ASSUMED minOut = 0.99 x launch-state quote minOut/quote 0.9900",
+    "ASSUMED minOut = 0.99 x launch-state quote minOut/quote 0.9900",
+    "ASSUMED minOut = 0.99 x launch-state quote minOut/quote 0.9900"
+   ]
+  },
+  "_front_rows": [
+   {
+    "exit": "sold",
+    "ret": -0.006082947873784655,
+    "ret_gross": -0.005293623735853621,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998754e-06
+     ]
+    ],
+    "pull": 2538,
+    "pid": "0xc36d4e5884f714f6c9c885c1834a8992312af390b48037c0a57b7f1ddf5170be",
+    "sched": [
+     49,
+     0.0072
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.001978812699234138,
+    "ret_gross": -0.0011907795957858622,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.485e-05
+     ],
+     [
+      3,
+      1.99966e-06
+     ],
+     [
+      4,
+      1.82655e-05
+     ]
+    ],
+    "pull": 2576,
+    "pid": "0x82801ba0a95474df4553cbdba11fe91e088da3eb59050c7a2d08c3ff05f4edb3",
+    "sched": [
+     49,
+     0.061
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.0026956689738056898,
+    "ret_gross": -0.0019030455255298277,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.99966e-06
+     ]
+    ],
+    "pull": 2556,
+    "pid": "0x14259eff87815c1bd4bd2e2ba962ecf35766d7de50db23022079a078615df3d9",
+    "sched": [
+     48,
+     0.0417
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.006567509986482587,
+    "ret_gross": -0.005782561020965345,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.999586e-06
+     ]
+    ],
+    "pull": 182,
+    "pid": "0xf6c1a2ad8329b8a8c7e713ce72edba64a078d915ecaf204946574d0c7c5276a3",
+    "sched": [
+     46,
+     0.0121
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.008700462250947932,
+    "ret_gross": -0.007910420871637586,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998122e-06
+     ]
+    ],
+    "pull": 2526,
+    "pid": "0x71a4eface664a272f2bffa6b9500904d8d1de0ca9f5ccea8d34ff0fa4ba1b4af",
+    "sched": [
+     48,
+     0.0492
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.008624999431538794,
+    "ret_gross": -0.007841054603952586,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998482e-06
+     ]
+    ],
+    "pull": 141,
+    "pid": "0xf87c94713e3dd68c95e36cfe39622202a2de2e76ef87a1ffdd5d187b96665b19",
+    "sched": [
+     55,
+     0.0143
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.0025560302260632757,
+    "ret_gross": -0.001772300570890862,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.99822e-06
+     ]
+    ],
+    "pull": 105,
+    "pid": "0xfd84a22b14ffda560d848739f07705f641588e80e680fe4c0421aca8f59f806c",
+    "sched": [
+     51,
+     0.0473
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.007862155627899138,
+    "ret_gross": -0.007076202524450862,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998884e-06
+     ]
+    ],
+    "pull": 2578,
+    "pid": "0xe091fae1a016cef56534bc6fc00dae99e500b52fd6e26abd3f22b5cbc3db1eae",
+    "sched": [
+     55,
+     0.1085
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.0023027733010348274,
+    "ret_gross": -0.0015207650251727587,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998974e-06
+     ]
+    ],
+    "pull": 2401,
+    "pid": "0x38dad78e139c74cf6370f162a848734306a41ab40e852d8fde5655b877ab67c8",
+    "sched": [
+     52,
+     0.1162
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.003949744281820517,
+    "ret_gross": -0.003184447730096379,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.998874e-06
+     ]
+    ],
+    "pull": 278,
+    "pid": "0xbe2a35f9f0bd033f6e901cc4df7e72bec9ba284171b6d9d8b181f9bedcb76fc6",
+    "sched": [
+     46,
+     0.0668
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.009569309375372759,
+    "ret_gross": -0.008804443168476207,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      3,
+      1.999326e-06
+     ]
+    ],
+    "pull": 1954,
+    "pid": "0x373bfe12f575a3ba7d55ac808767a231dcd8b17f60e369464b49fba253fffd43",
+    "sched": [
+     43,
+     0.1134
+    ]
+   },
+   {
+    "exit": "sold",
+    "ret": -0.005848573048229483,
+    "ret_gross": -0.005085213048229483,
+    "B": 1,
+    "S": 20,
+    "dropped": [],
+    "between": [
+     [
+      2,
+      1.998834e-06
+     ]
+    ],
+    "pull": 107,
+    "pid": "0x4e4dc69ea74770755a9489f5bc6fa5bfda9c0b000e4c6e9e66752cabdac818b9",
+    "sched": [
+     44,
+     0.1141
+    ]
+   }
+  ],
+  "_follow_rows": [
+   {
+    "exit": "sold",
+    "ret": 0.055026193484960344,
+    "ret_gross": 0.05581551762289138,
+    "B": 50,
+    "S": 53,
+    "dropped": [],
+    "between": [
+     [
+      52,
+      0.1096
+     ]
+    ],
+    "pull": 2538,
+    "pid": "0xc36d4e5884f714f6c9c885c1834a8992312af390b48037c0a57b7f1ddf5170be"
+   },
+   {
+    "exit": "sold",
+    "ret": 0.01644379505501155,
+    "ret_gross": 0.017231828158459826,
+    "B": 50,
+    "S": 53,
+    "dropped": [],
+    "between": [
+     [
+      52,
+      0.0461
+     ]
+    ],
+    "pull": 2576,
+    "pid": "0x82801ba0a95474df4553cbdba11fe91e088da3eb59050c7a2d08c3ff05f4edb3"
+   },
+   {
+    "exit": "sold",
+    "ret": 0.023218778529292414,
+    "ret_gross": 0.024011401977568275,
+    "B": 49,
+    "S": 52,
+    "dropped": [],
+    "between": [
+     [
+      51,
+      0.0605
+     ]
+    ],
+    "pull": 2556,
+    "pid": "0x14259eff87815c1bd4bd2e2ba962ecf35766d7de50db23022079a078615df3d9"
+   },
+   {
+    "exit": "sold",
+    "ret": 0.00733595406295,
+    "ret_gross": 0.008120903028467241,
+    "B": 47,
+    "S": 50,
+    "dropped": [],
+    "between": [
+     [
+      49,
+      0.0287
+     ]
+    ],
+    "pull": 182,
+    "pid": "0xf6c1a2ad8329b8a8c7e713ce72edba64a078d915ecaf204946574d0c7c5276a3"
+   },
+   {
+    "exit": "sold",
+    "ret": 0.015010032175954828,
+    "ret_gross": 0.015800073555265172,
+    "B": 49,
+    "S": 52,
+    "dropped": [],
+    "between": [
+     [
+      51,
+      0.0412
+     ]
+    ],
+    "pull": 2526,
+    "pid": "0x71a4eface664a272f2bffa6b9500904d8d1de0ca9f5ccea8d34ff0fa4ba1b4af"
+   },
+   {
+    "exit": "sold",
+    "ret": -0.0004383713876191379,
+    "ret_gross": 0.00034557343996706897,
+    "B": 56,
+    "S": 58,
+    "dropped": [],
+    "between": [
+     [
+      57,
+      0.02
+     ]
+    ],
+    "pull": 141,
+    "pid": "0xf87c94713e3dd68c95e36cfe39622202a2de2e76ef87a1ffdd5d187b96665b19"
+   },
+   {
+    "exit": "sold",
+    "ret": 0.025970176757574657,
+    "ret_gross": 0.02675390641274707,
+    "B": 52,
+    "S": 55,
+    "dropped": [],
+    "between": [
+     [
+      54,
+      0.0452
+     ]
+    ],
+    "pull": 105,
+    "pid": "0xfd84a22b14ffda560d848739f07705f641588e80e680fe4c0421aca8f59f806c"
+   },
+   {
+    "exit": "sold",
+    "ret": 0.02033918751483638,
+    "ret_gross": 0.021125140618284657,
+    "B": 56,
+    "S": 58,
+    "dropped": [],
+    "between": [
+     [
+      57,
+      0.0493
+     ]
+    ],
+    "pull": 2578,
+    "pid": "0xe091fae1a016cef56534bc6fc00dae99e500b52fd6e26abd3f22b5cbc3db1eae"
+   },
+   {
+    "exit": "sold",
+    "ret": 0.0314805054275381,
+    "ret_gross": 0.03226251370340017,
+    "B": 53,
+    "S": 55,
+    "dropped": [],
+    "between": [
+     [
+      54,
+      0.0551
+     ]
+    ],
+    "pull": 2401,
+    "pid": "0x38dad78e139c74cf6370f162a848734306a41ab40e852d8fde5655b877ab67c8"
+   },
+   {
+    "exit": "sold",
+    "ret": 0.04086178488586345,
+    "ret_gross": 0.04162708143758759,
+    "B": 47,
+    "S": 50,
+    "dropped": [],
+    "between": [
+     [
+      49,
+      0.0435
+     ]
+    ],
+    "pull": 278,
+    "pid": "0xbe2a35f9f0bd033f6e901cc4df7e72bec9ba284171b6d9d8b181f9bedcb76fc6"
+   },
+   {
+    "exit": "sold",
+    "ret": 0.09186622542700552,
+    "ret_gross": 0.09263109163390207,
+    "B": 44,
+    "S": 47,
+    "dropped": [],
+    "between": [
+     [
+      46,
+      0.1103
+     ]
+    ],
+    "pull": 1954,
+    "pid": "0x373bfe12f575a3ba7d55ac808767a231dcd8b17f60e369464b49fba253fffd43"
+   },
+   {
+    "exit": "sold",
+    "ret": 0.02761797682508069,
+    "ret_gross": 0.02838133682508069,
+    "B": 45,
+    "S": 48,
+    "dropped": [],
+    "between": [
+     [
+      47,
+      0.0515
+     ]
+    ],
+    "pull": 107,
+    "pid": "0x4e4dc69ea74770755a9489f5bc6fa5bfda9c0b000e4c6e9e66752cabdac818b9"
+   }
+  ]
+ }
+}

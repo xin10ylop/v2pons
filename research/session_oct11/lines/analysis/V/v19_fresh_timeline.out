@@ -1,0 +1,31 @@
+ETH of buys >= 0.01 after the trigger, by T+20/60/100/200/400 (median over pools; share of pools with any by T+60)
+  census d0: n 71 medians [0.03, 0.55, 0.635, 1.15, 1.804] any by T+60 77%
+  census d1: n 44 medians [0.433, 1.377, 1.786, 2.527, 3.822] any by T+60 95%
+  census d2: n 67 medians [0.0, 0.453, 0.756, 1.011, 2.51] any by T+60 76%
+  census d3: n 82 medians [0.231, 0.675, 1.256, 2.273, 2.843] any by T+60 85%
+  census d4: n 112 medians [0.0, 0.464, 1.175, 2.265, 3.445] any by T+60 71%
+  census d5: n 109 medians [0.072, 0.73, 1.084, 1.968, 2.855] any by T+60 82%
+  census d6: n 88 medians [0.0, 0.305, 0.6, 1.822, 3.322] any by T+60 76%
+  fresh 0x9bcc546e7c trig +61 ETH by cuts [0.0, 0.149, 0.149, 1.144, 1.699] pull - H60 +0.028 H100 +0.029 H200 +0.239 H300 +0.298
+  fresh 0x5ada5a1446 trig +113 ETH by cuts [0.0, 0.0, 0.175, 1.066, 2.69] pull - H60 -0.002 H100 +0.034 H200 +0.221 H300 +0.195
+  fresh 0xdf4e483fc0 trig +105 ETH by cuts [0.0, 0.749, 1.313, 2.81, 3.677] pull - H60 +0.153 H100 +0.277 H200 +0.636 H300 +0.669
+  fresh 0xbc29e64bbc trig +79 ETH by cuts [0.0, 0.0, 0.428, 2.312, 10.018] pull - H60 -0.001 H100 +0.085 H200 +0.509 H300 +0.700
+  fresh 0x85bc277ff0 trig +41 ETH by cuts [0.0, 0.04, 0.176, 0.223, 2.403] pull - H60 +0.006 H100 +0.034 H200 +0.043 H300 +0.058
+  fresh 0xd73b2c0fc1 trig +100 ETH by cuts [0.0, 0.0, 0.0, 0.048, 0.048] pull T+193 H60 -0.001 H100 -0.001 H200 -1.000 H300 -1.000
+  fresh 0x7e9e5906d9 trig +83 ETH by cuts [0.18, 0.18, 0.358, 0.381, 0.679] pull T+278 H60 +0.035 H100 +0.071 H200 +0.076 H300 -1.000
+  fresh 0xfd22e2758d trig +66 ETH by cuts [0.119, 0.119, 0.277, 0.319, 0.663] pull - H60 +0.022 H100 +0.055 H200 +0.063 H300 +0.077
+  fresh 0x0dc552bc1d trig +110 ETH by cuts [0.0, 0.0, 0.089, 0.125, 0.234] pull T+220 H60 -0.002 H100 +0.016 H200 +0.024 H300 -1.000
+  fresh 0xf470c405da trig +66 ETH by cuts [0.0, 0.0, 0.0, 0.647, 0.668] pull - H60 +0.000 H100 +0.000 H200 +0.131 H300 +0.133
+  fresh 0x7d64b2b8ed trig +74 ETH by cuts [0.0, 0.0, 0.0, 0.169, 0.169] pull - H60 -0.002 H100 -0.001 H200 +0.033 H300 +0.033
+  fresh 0x3c5661913b trig +132 ETH by cuts [0.0, 0.0, 0.0, 0.108, 0.108] pull T+241 H60 -0.002 H100 -0.002 H200 +0.020 H300 -1.000
+  fresh 0x03e22aaf4b trig +35 ETH by cuts [0.0, 0.108, 0.108, 0.62, 3.285] pull - H60 +0.020 H100 +0.020 H200 +0.163 H300 +0.358
+  fresh 0x087a928e57 trig +86 ETH by cuts [0.0, 0.135, 0.135, 0.135, 0.135] pull T+138 H60 +0.025 H100 +0.025 H200 -1.000 H300 -1.000
+  fresh 0x8cfc164076 trig +77 ETH by cuts [0.0, 0.0, 0.0, 0.037, 0.584] pull - H60 -0.002 H100 -0.002 H200 +0.006 H300 +0.098
+  fresh 0xb128d40a9d trig +56 ETH by cuts [0.0, 0.108, 0.108, 0.108, 0.108] pull T+184 H60 +0.019 H100 +0.019 H200 -1.000 H300 -1.000
+  fresh 0xd1d9991f40 trig +64 ETH by cuts [0.0, 0.06, 0.156, 0.243, 1.533] pull - H60 +0.009 H100 +0.027 H200 +0.043 H300 +0.051
+  fresh: n 17 medians [0.0, 0.04, 0.135, 0.243, 0.668] any by T+60 53%
+  fresh trade T+2 hold 60: n 17 mean +0.0181 med +0.0065 win 10/17 lost 0
+  fresh trade T+2 hold 100: n 17 mean +0.0403 med +0.0254 win 13/17 lost 0
+  fresh trade T+2 hold 200: n 17 mean -0.0467 med +0.0431 win 14/17 lost 3
+  fresh trade T+2 hold 300: n 17 mean -0.1959 med +0.0583 win 11/17 lost 6
+{'posts': 18, 'items': 18, 'r429': 0}

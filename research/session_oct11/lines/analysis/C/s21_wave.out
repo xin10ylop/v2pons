@@ -1,0 +1,7 @@
+launches 1046 (149.4/day); with a real buy 906; real buy by +60: 169; by +80: 403
+frb off p10/50/90 47/86/264  eth 0.016/0.05/0.2178
+real buys in [frb, frb+20] p10/50/90 1/5/12, ETH 0.05/0.344/0.9405; in [frb, frb+60] 2/6/16, ETH 0.066/0.51/1.515
+token price move from before the frb to frb+20: p10/50/90 +2.4%/+17.4%/+58.8%
+wave txs: contracts [(('0x80114879', '3593564c', 484), 576), (('0xd26c8cfc', '3593564c', 484), 359), (('0xa28f468c', '3593564c', 484), 353), (('0xaf9d6fa0', '3593564c', 484), 279), (('0x80114879', 'a0193551', 452), 270)]; distinct wallets 282; buys per wallet p50 2
+pulled 822/1046 at p10/50/90 128/301/1216; min first pull 62; pull before frb 0; by launch wallet 822
+launch wallets 1046 nonce [(2, 795), (3, 247), (4, 3)]; mint L p10/50/90 5.477e+22/6.325e+22/7.071e+22

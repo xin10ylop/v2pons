@@ -1,0 +1,265 @@
+[
+ {
+  "pid": "0x4004e23a98433ac55f73cf7a061bf5087c6f0f23e62d0ef61e7a2e32c91bc359",
+  "family": "0x404422f1754a35adae7428331d56c3a2350f4aa1|d181e93a|420|10000|200|true",
+  "fee": 10000,
+  "utc": "2026-10-10 07:16:50",
+  "dev_buy_eth": 0.001,
+  "dev_sell_off": null,
+  "dev_sell_eth": null,
+  "buys": [
+   [
+    3,
+    2e-06,
+    "0xe71a69f4",
+    "0x88767899"
+   ]
+  ],
+  "sells": [],
+  "clamped": 0
+ },
+ {
+  "pid": "0x844e5b05e939f41192225302143a6214f1ebff2d7384530bad7ed30c6c8da669",
+  "family": "0xc7c72f08bc344fb148643a9a1e90efd23bafcb4c|d181e93a|420|10000|200|true",
+  "fee": 10000,
+  "utc": "2026-10-10 08:16:59",
+  "dev_buy_eth": 0.01,
+  "dev_sell_off": null,
+  "dev_sell_eth": null,
+  "buys": [
+   [
+    3,
+    2e-06,
+    "0xe71a69f4",
+    "0x88767899"
+   ],
+   [
+    16,
+    5.2e-05,
+    "0xd54bad00",
+    "0x88767899"
+   ]
+  ],
+  "sells": [
+   [
+    308,
+    5.1e-05,
+    "0xd54bad00"
+   ]
+  ],
+  "clamped": 0
+ },
+ {
+  "pid": "0xe995b6555106d2d98c0ff3ec0f491664dfe92b8b3ca4552b9ddce8036c7f0521",
+  "family": "0xc7c72f08bc344fb148643a9a1e90efd23bafcb4c|d181e93a|420|10000|200|true",
+  "fee": 10000,
+  "utc": "2026-10-10 08:34:04",
+  "dev_buy_eth": 0.001,
+  "dev_sell_off": null,
+  "dev_sell_eth": null,
+  "buys": [
+   [
+    3,
+    2e-06,
+    "0xe71a69f4",
+    "0x88767899"
+   ],
+   [
+    1686,
+    0.000449,
+    "0x7f13cf2c",
+    "0x204faca1"
+   ]
+  ],
+  "sells": [],
+  "clamped": 0
+ },
+ {
+  "pid": "0x89919e1e3cf66a1e1e915ac2828516d8df373550c9aff019975939eba9bc5076",
+  "family": "0x458cdbed885a516f2e32cc5e3e9b432589fa729f|d181e93a|420|10000|200|true",
+  "fee": 10000,
+  "utc": "2026-10-10 08:45:48",
+  "dev_buy_eth": 0.01,
+  "dev_sell_off": 1506,
+  "dev_sell_eth": 0.009793368656154608,
+  "buys": [
+   [
+    3,
+    2e-06,
+    "0xe71a69f4",
+    "0x88767899"
+   ]
+  ],
+  "sells": [
+   [
+    1506,
+    0.009793,
+    "0x841ac064"
+   ]
+  ],
+  "clamped": 0
+ },
+ {
+  "pid": "0x7c4907fd75bb685f9b9005240b92134dc9bee8468c3541374e80658209ab729b",
+  "family": "0x458cdbed885a516f2e32cc5e3e9b432589fa729f|d181e93a|420|10000|200|true",
+  "fee": 10000,
+  "utc": "2026-10-10 08:50:36",
+  "dev_buy_eth": 0.15,
+  "dev_sell_off": null,
+  "dev_sell_eth": null,
+  "buys": [
+   [
+    2,
+    2e-06,
+    "0xe71a69f4",
+    "0x88767899"
+   ],
+   [
+    1528,
+    0.02,
+    "0xa2192c37",
+    "0x204faca1"
+   ],
+   [
+    1770,
+    0.140022,
+    "0xa2192c37",
+    "0x204faca1"
+   ],
+   [
+    2353,
+    0.102892,
+    "0xdc401d47",
+    "0x204faca1"
+   ]
+  ],
+  "sells": [],
+  "clamped": 0
+ },
+ {
+  "pid": "0xfc929b9458313784e4ebc11f916b4749c63f57ccd3fd00455b89ff5a75430c1f",
+  "family": "0x458cdbed885a516f2e32cc5e3e9b432589fa729f|d181e93a|420|0|1|true",
+  "fee": 0,
+  "utc": "2026-10-10 09:06:09",
+  "dev_buy_eth": 0.15,
+  "dev_sell_off": 2137,
+  "dev_sell_eth": 0.1499998511166021,
+  "buys": [],
+  "sells": [
+   [
+    2137,
+    0.15,
+    "0x841ac064"
+   ]
+  ],
+  "clamped": 0
+ },
+ {
+  "pid": "0xd95becfc5398b51d2b9076619c9082cc0f231200b01626067aea0d5cbab59d27",
+  "family": "0x458cdbed885a516f2e32cc5e3e9b432589fa729f|d181e93a|420|0|1|true",
+  "fee": 0,
+  "utc": "2026-10-10 09:11:25",
+  "dev_buy_eth": 0.2,
+  "dev_sell_off": 2508,
+  "dev_sell_eth": 0.20087531470329034,
+  "buys": [
+   [
+    190,
+    0.000876,
+    "0x188b9b4d",
+    "0xa174f370"
+   ],
+   [
+    1351,
+    0.099,
+    "0xa2192c37",
+    "0xf2251d75"
+   ],
+   [
+    1711,
+    0.00495,
+    "0x4a02be76",
+    "0xf2251d75"
+   ]
+  ],
+  "sells": [
+   [
+    2371,
+    0.00495,
+    "0x4a02be76"
+   ],
+   [
+    2371,
+    0.099,
+    "0xa2192c37"
+   ],
+   [
+    2508,
+    0.200875,
+    "0x841ac064"
+   ]
+  ],
+  "clamped": 0
+ },
+ {
+  "pid": "0x90d3fde52935cd01569af70b4c025a916c5b790808b04612245a7ee9bdbc5267",
+  "family": "0x458cdbed885a516f2e32cc5e3e9b432589fa729f|d181e93a|420|0|1|true",
+  "fee": 0,
+  "utc": "2026-10-10 09:16:34",
+  "dev_buy_eth": 0.06,
+  "dev_sell_off": 907,
+  "dev_sell_eth": 0.05999994071147327,
+  "buys": [],
+  "sells": [
+   [
+    907,
+    0.06,
+    "0x841ac064"
+   ]
+  ],
+  "clamped": 0
+ },
+ {
+  "pid": "0xf413faf3eefb13bed410b3024ef5fdf8dea1214d41433523c3ecf0bc0c5d16a6",
+  "family": "0x458cdbed885a516f2e32cc5e3e9b432589fa729f|d181e93a|420|0|1|true",
+  "fee": 0,
+  "utc": "2026-10-10 09:18:49",
+  "dev_buy_eth": 0.01,
+  "dev_sell_off": 2291,
+  "dev_sell_eth": 0.059975379181891296,
+  "buys": [
+   [
+    2106,
+    0.049975,
+    "0x841ac064",
+    "0x204faca1"
+   ]
+  ],
+  "sells": [
+   [
+    2291,
+    0.059975,
+    "0x841ac064"
+   ]
+  ],
+  "clamped": 1
+ },
+ {
+  "pid": "0x48df636bfee62973fecba7da7fd5cf6b77363bfd896f2c1b4c048f08e8f6b3c2",
+  "family": "0x458cdbed885a516f2e32cc5e3e9b432589fa729f|d181e93a|420|0|1|true",
+  "fee": 0,
+  "utc": "2026-10-10 09:23:15",
+  "dev_buy_eth": 0.04,
+  "dev_sell_off": 477,
+  "dev_sell_eth": 0.04,
+  "buys": [],
+  "sells": [
+   [
+    477,
+    0.04,
+    "0x841ac064"
+   ]
+  ],
+  "clamped": 1
+ }
+]

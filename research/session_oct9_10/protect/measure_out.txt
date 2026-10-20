@@ -1,0 +1,124 @@
+crowd families: {'fresh': 798, 'A': 32, 'B': 31, 'speck': 1} | B wallets with exactly the 7-launch set: 20
+launch families: {'B': 7, 'A': 67, 'fresh': 12, 'no_crowd_buy': 3, 'copy': 49}
+
+NON-CROWD REAL-SIZE BUYS -> FIRST PULL AFTER (blocks, ms = blocks x local mean block time)
+  10-08 13:19:55 Oct 8 orig fresh        fee   824 us       0xab5a34c3 n       14 0.00120 ETH +  109 crowd20  1 first T pull +114 lag 5 blk = 521 ms (chance 0/5)
+  10-08 13:15:38 Oct 8 orig fresh        fee  2383 us       0xab5a34c3 n        2 0.00120 ETH +  143 crowd20  1 first T pull +149 lag 6 blk = 621 ms (chance 0/4)
+  10-08 13:16:19 Oct 8 orig fresh        fee  2383 us       0xab5a34c3 n        4 0.00120 ETH +   56 crowd20  1 first T pull +62 lag 6 blk = 621 ms (chance 0/5)
+  10-08 13:16:56 Oct 8 orig fresh        fee  2383 us       0xab5a34c3 n        6 0.00120 ETH +   55 crowd20  1 first T pull +61 lag 6 blk = 624 ms (chance 0/5)
+  10-08 16:13:40 Oct 8 copy copy         fee   200 outsider 0x6d5a7ef9 n      603 0.00205 ETH +  871 crowd20  0 first T pull +877 lag 6 blk = 621 ms (chance 0/27)
+  10-08 13:18:51 Oct 8 orig fresh        fee  2383 us       0xab5a34c3 n       12 0.00120 ETH +   59 crowd20  1 first T pull +66 lag 7 blk = 728 ms (chance 0/5)
+  10-08 14:49:02 Oct 8 orig B            fee   250 outsider 0xabb2acd3 n  1400178 0.05738 ETH + 9894 crowd20  0 first F pull +9901 lag 7 blk = 712 ms (chance 0/1)
+  10-08 13:17:15 Oct 8 orig fresh        fee  2383 us       0xab5a34c3 n        8 0.00120 ETH +   48 crowd20  1 first T pull +56 lag 8 blk = 836 ms (chance 0/5)
+  10-08 11:04:02 Oct 8 orig A            fee  1102 outsider 0xcc4bc788 n   811822 0.00588 ETH +  941 crowd20  0 first T pull +952 lag 11 blk = 1122 ms (chance 0/31)
+  10-08 10:55:22 Oct 8 orig A            fee  3416 outsider 0xa2e8360c n      927 0.00049 ETH + 2499 crowd20  0 first T pull +2511 lag 12 blk = 1222 ms (chance 0/16)
+  10-08 13:18:18 Oct 8 orig fresh        fee  2383 us       0xab5a34c3 n       10 0.00120 ETH +   53 crowd20  1 first T pull +66 lag 13 blk = 1361 ms (chance 0/5)
+  10-08 22:48:56 Oct 8 orig A            fee   888 outsider 0x2b7be2fa n       54 0.00020 ETH +   92 crowd20  7 first F pull +105 lag 13 blk = 1326 ms (chance 0/53)
+  10-09 10:49:56 Oct 9 orig A            fee  4083 us       0xab5a34c3 n       29 0.00120 ETH +   61 crowd20  1 first T pull +75 lag 14 blk = 1435 ms (chance 0/54)
+  10-08 10:50:42 Oct 8 orig A            fee   643 outsider 0xa90bd2d1 n     2296 0.00117 ETH +  893 crowd20  0 first T pull +909 lag 16 blk = 1635 ms (chance 0/31)
+  10-09 10:18:57 Oct 9 orig A            fee  2532 outsider 0xa67d7eb4 n  1515328 0.00187 ETH +  792 crowd20  0 first T pull +811 lag 19 blk = 1957 ms (chance 0/31)
+  10-09 00:23:16 Oct 9 orig A            fee  2549 outsider 0xebfae010 n      177 0.00049 ETH +   84 crowd20  8 first T pull +107 lag 23 blk = 2358 ms (chance 0/53)
+  10-09 10:39:45 Oct 9 orig A            fee  3352 outsider 0x1e8d1215 n    51335 0.00046 ETH + 1029 crowd20  0 first T pull +1054 lag 25 blk = 2550 ms (chance 0/31)
+  10-08 11:11:11 Oct 8 orig A            fee  4564 outsider 0xe46e6e86 n       43 0.00079 ETH +  948 crowd20  0 first T pull +989 lag 41 blk = 4196 ms (chance 0/31)
+  10-08 22:48:04 Oct 8 orig A            fee  3931 outsider 0x2b7be2fa n       51 0.00020 ETH +   90 crowd20  7 first T pull +141 lag 51 blk = 5219 ms (chance 3/53)
+  10-08 22:48:48 Oct 8 orig A            fee   888 us       0xab5a34c3 n       23 0.00120 ETH +    7 crowd20  0 first T pull +105 lag 98 blk = 9996 ms (chance 1/54)
+  10-09 00:11:04 Oct 9 orig A            fee  1597 us       0xab5a34c3 n       25 0.00120 ETH +    8 crowd20  0 first T pull +278 lag 270 blk = 27720 ms (chance 18/54)
+  10-09 10:50:46 Oct 9 orig A            fee  4531 us       0xab5a34c3 n       31 0.00120 ETH +   56 crowd20  1 first T pull +1960 lag 1904 blk = 195477 ms (chance 30/54)
+  10-09 11:14:11 Oct 9 orig A            fee  1830 us       0xab5a34c3 n       33 0.00120 ETH +   60 crowd20  1 first T pull +2093 lag 2033 blk = 208721 ms (chance 33/54)
+  10-08 14:36:21 Oct 8 orig B            fee   250 outsider 0x2bf73b90 n     9877 0.00099 ETH + 2416 crowd20  3 first F pull +9901 lag 7485 blk = 758480 ms (chance 2/3)
+  10-08 14:32:21 Oct 8 orig B            fee   250 us       0xab5a34c3 n       18 0.00120 ETH +   45 crowd20  1 first T pull +9901 lag 9856 blk = 998741 ms (chance 3/4)
+  10-09 10:48:46 Oct 9 orig B            fee   912 us       0xab5a34c3 n       27 0.00120 ETH +   24 crowd20  1 first T pull +18096 lag 18072 blk = 1849368 ms (chance 4/4)
+  10-08 06:05:42 Oct 8 orig B            fee   123 outsider 0xf7f00e4d n     7607 0.00035 ETH +  170 crowd20  4 first T pull +None lag None blk = None ms (chance None)
+  10-08 06:05:42 Oct 8 orig B            fee   123 outsider 0xb1103df2 n     2384 0.00035 ETH +  170 crowd20  4 first F pull +None lag None blk = None ms (chance None)
+  10-08 06:05:54 Oct 8 orig B            fee   123 outsider 0xf5d70602 n     4400 0.00040 ETH +  279 crowd20  5 first F pull +None lag None blk = None ms (chance None)
+
+ENGINE TRIGGERS ON ORIG LAUNCHES (arm +6, trigger <= +150)
+  10-08 05:59:08 0xca04a1e3 B            T +  48 B        0x6c76d077 0.1853 pull +816 pull-T 768 pull-sell(T+2 buy) 763 us None
+  10-08 06:05:25 0x069688d0 B            T + 111 B        0x6c76d077 0.1889 pull +None pull-T None pull-sell(T+2 buy) None us None
+  10-08 09:45:03 0x9471ca38 A            T +  41 A        0x75442507 0.0520 pull +2539 pull-T 2498 pull-sell(T+2 buy) 2493 us None
+  10-08 09:49:48 0x4d4fbc27 A            T +  38 A        0x75442507 0.0306 pull +2662 pull-T 2624 pull-sell(T+2 buy) 2619 us None
+  10-08 10:06:21 0xcd177f3e A            T +  44 A        0xdc2e8661 0.0171 pull +218 pull-T 174 pull-sell(T+2 buy) 169 us None
+  10-08 10:07:14 0x7c47f287 A            T +  46 A        0xdc2e8661 0.0607 pull +158 pull-T 112 pull-sell(T+2 buy) 107 us None
+  10-08 10:08:10 0x3d8e5e54 A            T +  47 A        0x75442507 0.0290 pull +2541 pull-T 2494 pull-sell(T+2 buy) 2489 us None
+  10-08 10:14:53 0xfcca4dea A            T +  46 A        0x7b85403c 0.1038 pull +111 pull-T 65 pull-sell(T+2 buy) 60 us None
+  10-08 10:16:32 0x5c6984cc A            T +  47 A        0x75442507 0.0585 pull +281 pull-T 234 pull-sell(T+2 buy) 229 us None
+  10-08 10:17:37 0x4f118abc A            T +  43 A        0xe6af9036 0.0624 pull +125 pull-T 82 pull-sell(T+2 buy) 77 us None
+  10-08 10:18:14 0x0efa329f A            T +  52 A        0xe6af9036 0.0359 pull +293 pull-T 241 pull-sell(T+2 buy) 236 us None
+  10-08 10:19:12 0x31f32dce A            T +  43 A        0xe6af9036 0.0439 pull +2532 pull-T 2489 pull-sell(T+2 buy) 2484 us None
+  10-08 10:29:46 0x200871eb A            T +  46 A        0x75442507 0.0145 pull +2543 pull-T 2497 pull-sell(T+2 buy) 2492 us None
+  10-08 10:34:51 0x2f165487 A            T +  50 A        0xe6af9036 0.0311 pull +2570 pull-T 2520 pull-sell(T+2 buy) 2515 us None
+  10-08 10:39:38 0xdbe5f086 A            T +  47 A        0xdc2e8661 0.0591 pull +2532 pull-T 2485 pull-sell(T+2 buy) 2480 us None
+  10-08 10:44:24 0x2f62a5a1 A            T +  48 A        0xdc2e8661 0.0560 pull +2537 pull-T 2489 pull-sell(T+2 buy) 2484 us None
+  10-08 10:49:11 0xffdf1885 A            T +  45 A        0xdc2e8661 0.0584 pull +909 pull-T 864 pull-sell(T+2 buy) 859 us None
+  10-08 10:51:08 0xc9420b3f A            T +  46 A        0xe6af9036 0.0479 pull +2511 pull-T 2465 pull-sell(T+2 buy) 2460 us None
+  10-08 10:56:25 0x7b8b847a A            T +  47 A        0x75442507 0.0621 pull +325 pull-T 278 pull-sell(T+2 buy) 273 us None
+  10-08 10:57:21 0x34d0cdfc A            T +  49 A        0xdc2e8661 0.0504 pull +2366 pull-T 2317 pull-sell(T+2 buy) 2312 us None
+  10-08 11:01:50 0x270f85ad A            T +  46 A        0xdc2e8661 0.0520 pull +114 pull-T 68 pull-sell(T+2 buy) 63 us None
+  10-08 11:02:10 0x5736fabe B            T +  18 B        0xf9c0562a 0.2314 pull +5391 pull-T 5373 pull-sell(T+2 buy) 5368 us None
+  10-08 11:02:26 0x994204ce A            T +  49 A        0x75442507 0.0681 pull +952 pull-T 903 pull-sell(T+2 buy) 898 us None
+  10-08 11:04:44 0x63392359 A            T +  48 A        0xdc2e8661 0.0581 pull +2544 pull-T 2496 pull-sell(T+2 buy) 2491 us None
+  10-08 11:09:34 0x9aca59f6 A            T +  43 A        0xdc2e8661 0.0385 pull +989 pull-T 946 pull-sell(T+2 buy) 941 us None
+  10-08 11:12:07 0xcbafe43c A            T +  45 A        0x75442507 0.0734 pull +330 pull-T 285 pull-sell(T+2 buy) 280 us None
+  10-08 11:13:59 0x272fffe2 A            T +  44 A        0xe6af9036 0.0575 pull +2106 pull-T 2062 pull-sell(T+2 buy) 2057 us None
+  10-08 11:46:15 0x0fc66860 fresh        T +  90 fresh    0x2b2f2168 0.0050 pull +137 pull-T 47 pull-sell(T+2 buy) 42 us None
+  10-08 11:51:26 0x93e998f1 fresh        T + 100 fresh    0x003a040e 0.0069 pull +6307 pull-T 6207 pull-sell(T+2 buy) 6202 us None
+  10-08 12:07:29 0x149059c9 fresh        T +  67 fresh    0xd6bc2bad 0.0045 pull +9853 pull-T 9786 pull-sell(T+2 buy) 9781 us None
+  10-08 12:26:58 0xb166f963 fresh        T + 106 fresh    0xbdb00579 0.0050 pull +383 pull-T 277 pull-sell(T+2 buy) 272 us None
+  10-08 12:28:39 0x8dca7e69 no_crowd_buy no trigger: no real buy (pull +4910)
+  10-08 12:43:32 0xad1607f2 no_crowd_buy no trigger: no real buy (pull +15994)
+  10-08 13:15:23 0x3a922cb2 fresh        T + 142 fresh    0x94e12c34 0.0053 pull +149 pull-T 7 pull-sell(T+2 buy) 2 us 143
+  10-08 13:16:13 0x7cfa4232 fresh        T +  54 fresh    0x94e12c34 0.0044 pull +62 pull-T 8 pull-sell(T+2 buy) 3 us 56
+  10-08 13:16:50 0xf36b6bac fresh        T +  53 fresh    0x7d7aa3dc 0.0050 pull +61 pull-T 8 pull-sell(T+2 buy) 3 us 55
+  10-08 13:17:10 0x7223753b fresh        T +  46 fresh    0x7d7aa3dc 0.0054 pull +56 pull-T 10 pull-sell(T+2 buy) 5 us 48
+  10-08 13:18:12 0x16df2826 fresh        T +  51 fresh    0x42ae38e9 0.0060 pull +66 pull-T 15 pull-sell(T+2 buy) 10 us 53
+  10-08 13:18:45 0x3578b252 fresh        T +  58 fresh    0x3298d9ca 0.0030 pull +66 pull-T 8 pull-sell(T+2 buy) 3 us 59
+  10-08 13:19:44 0x7490a93c fresh        T + 108 fresh    0x91ecbb96 0.0158 pull +114 pull-T 6 pull-sell(T+2 buy) 1 us 109
+  10-08 13:21:35 0x751af83f fresh        no trigger: first real buy at +208 > 150 (pull +7578)
+  10-08 14:32:16 0xe27bfddf B            T +  44 B        0x6c76d077 0.0230 pull +9901 pull-T 9857 pull-sell(T+2 buy) 9852 us 45
+  10-08 21:58:16 0xc36d4e58 A            T +  49 A        0x295877ce 0.0072 pull +2538 pull-T 2489 pull-sell(T+2 buy) 2484 us None
+  10-08 22:27:34 0x82801ba0 A            T +  49 A        0x8700722d 0.0610 pull +2576 pull-T 2527 pull-sell(T+2 buy) 2522 us None
+  10-08 22:32:46 0x14259eff A            T +  48 A        0xdc2e8661 0.0417 pull +2556 pull-T 2508 pull-sell(T+2 buy) 2503 us None
+  10-08 22:41:18 0xf6c1a2ad A            T +  46 A        0xdc2e8661 0.0121 pull +182 pull-T 136 pull-sell(T+2 buy) 131 us None
+  10-08 22:42:24 0x71a4efac A            T +  48 A        0x8700722d 0.0492 pull +2526 pull-T 2478 pull-sell(T+2 buy) 2473 us None
+  10-08 22:47:55 0xf87c9471 A            T +  55 A        0x8700722d 0.0143 pull +141 pull-T 86 pull-sell(T+2 buy) 81 us None
+  10-08 22:48:47 0xfd84a22b A            T +  51 A        0xdc2e8661 0.0473 pull +105 pull-T 54 pull-sell(T+2 buy) 49 us 7
+  10-08 22:49:35 0xe091fae1 A            T +  55 A        0x05042f81 0.1085 pull +2578 pull-T 2523 pull-sell(T+2 buy) 2518 us None
+  10-08 22:54:40 0x38dad78e A            T +  52 A        0x295877ce 0.1162 pull +2401 pull-T 2349 pull-sell(T+2 buy) 2344 us None
+  10-09 00:11:03 0xbe2a35f9 A            T +  46 A        0x8700722d 0.0668 pull +278 pull-T 232 pull-sell(T+2 buy) 227 us 8
+  10-09 00:18:54 0x373bfe12 A            T +  43 A        0x295877ce 0.1134 pull +1954 pull-T 1911 pull-sell(T+2 buy) 1906 us None
+  10-09 00:23:07 0x4e4dc69e A            T +  44 A        0x8700722d 0.1141 pull +107 pull-T 63 pull-sell(T+2 buy) 58 us None
+  10-09 00:23:56 0xf3667fde A            no trigger: first real buy at +214 > 150 (pull +2121)
+  10-09 00:28:21 0xad5741b0 A            T +  47 A        0x295877ce 0.0357 pull +307 pull-T 260 pull-sell(T+2 buy) 255 us None
+  10-09 00:30:12 0x2a16800b A            no trigger: first real buy at +4373 > 150 (pull +4413)
+  10-09 05:57:15 0xca847f04 B            T +  58 B        0xacfd0f93 0.0225 pull +15269 pull-T 15211 pull-sell(T+2 buy) 15206 us None
+  10-09 09:24:08 0x758c3c5f B            T +  24 B        0x4c45af68 0.1382 pull +2764 pull-T 2740 pull-sell(T+2 buy) 2735 us None
+  10-09 09:30:26 0xaa64f80b no_crowd_buy no trigger: no real buy (pull +24809)
+  10-09 10:00:01 0xeb6510d3 A            T +  60 A        0xdc2e8661 0.1049 pull +1285 pull-T 1225 pull-sell(T+2 buy) 1220 us None
+  10-09 10:03:04 0x56fa1008 A            T +  53 A        0x295877ce 0.0672 pull +208 pull-T 155 pull-sell(T+2 buy) 150 us None
+  10-09 10:06:10 0xf02453af A            T +  61 A        0xdc2e8661 0.0724 pull +172 pull-T 111 pull-sell(T+2 buy) 106 us None
+  10-09 10:07:05 0xdbdf382a A            T +  62 A        0x8700722d 0.0623 pull +147 pull-T 85 pull-sell(T+2 buy) 80 us None
+  10-09 10:07:51 0x9ab05ad7 A            T +  62 A        0x295877ce 0.0544 pull +221 pull-T 159 pull-sell(T+2 buy) 154 us None
+  10-09 10:08:53 0x93950691 A            T +  69 A        0x8700722d 0.0553 pull +237 pull-T 168 pull-sell(T+2 buy) 163 us None
+  10-09 10:09:53 0xffbb7391 A            T +  59 A        0x295877ce 0.1054 pull +273 pull-T 214 pull-sell(T+2 buy) 209 us None
+  10-09 10:11:10 0xc2ac14e5 A            T +  66 A        0x8700722d 0.0194 pull +201 pull-T 135 pull-sell(T+2 buy) 130 us None
+  10-09 10:12:30 0x7dc29a50 A            T +  59 A        0xdc2e8661 0.0459 pull +1968 pull-T 1909 pull-sell(T+2 buy) 1904 us None
+  10-09 10:16:30 0x85e5055b A            T +  59 A        0x295877ce 0.1117 pull +224 pull-T 165 pull-sell(T+2 buy) 160 us None
+  10-09 10:17:35 0x7381c772 A            T +  61 A        0x8700722d 0.0454 pull +811 pull-T 750 pull-sell(T+2 buy) 745 us None
+  10-09 10:19:34 0xbfc4d0ff A            T +  54 A        0x295877ce 0.1247 pull +1949 pull-T 1895 pull-sell(T+2 buy) 1890 us None
+  10-09 10:23:46 0xc21264c0 A            T +  60 A        0x8700722d 0.1173 pull +1937 pull-T 1877 pull-sell(T+2 buy) 1872 us None
+  10-09 10:27:48 0x78681291 A            T +  57 A        0x8700722d 0.1157 pull +1955 pull-T 1898 pull-sell(T+2 buy) 1893 us None
+  10-09 10:31:49 0x8537b07d A            T +  58 A        0x8700722d 0.0705 pull +1960 pull-T 1902 pull-sell(T+2 buy) 1897 us None
+  10-09 10:36:06 0xc893975b A            T +  59 A        0x295877ce 0.1051 pull +208 pull-T 149 pull-sell(T+2 buy) 144 us None
+  10-09 10:37:12 0x8f21b54c A            T +  56 A        0x8700722d 0.0103 pull +84 pull-T 28 pull-sell(T+2 buy) 23 us None
+  10-09 10:38:00 0xeb3c94e6 A            T +  56 A        0xdc2e8661 0.0564 pull +1054 pull-T 998 pull-sell(T+2 buy) 993 us None
+  10-09 10:40:26 0x926943d4 A            T +  76 A        0xdc2e8661 0.0212 pull +1986 pull-T 1910 pull-sell(T+2 buy) 1905 us None
+  10-09 10:44:23 0x20a4afb5 A            T +  61 A        0x8700722d 0.0684 pull +2111 pull-T 2050 pull-sell(T+2 buy) 2045 us None
+  10-09 10:48:41 0xdfc3a67d A            T +  58 A        0x295877ce 0.0519 pull +206 pull-T 148 pull-sell(T+2 buy) 143 us None
+  10-09 10:48:44 0x2a928e99 B            T +  21 B        0x4c45af68 0.1068 pull +18096 pull-T 18075 pull-sell(T+2 buy) 18070 us 24
+  10-09 10:49:50 0x2749b5d1 A            T +  60 A        0x295877ce 0.0435 pull +75 pull-T 15 pull-sell(T+2 buy) 10 us 61
+  10-09 10:50:40 0x43c1ce10 A            T +  55 A        0x295877ce 0.1066 pull +1960 pull-T 1905 pull-sell(T+2 buy) 1900 us 56
+  10-09 10:56:37 0xe1c6032d A            T +  73 A        0x75442507 0.1286 pull +3108 pull-T 3035 pull-sell(T+2 buy) 3030 us None
+  10-09 11:03:17 0x8d80c853 A            T +  63 A        0xdc2e8661 0.0459 pull +1953 pull-T 1890 pull-sell(T+2 buy) 1885 us None
+  10-09 11:07:23 0xe48a9e84 A            T +  66 A        0x295877ce 0.1286 pull +155 pull-T 89 pull-sell(T+2 buy) 84 us None
+  10-09 11:08:27 0x7ce39cf9 A            T +  59 A        0x8700722d 0.0680 pull +1977 pull-T 1918 pull-sell(T+2 buy) 1913 us None
+  10-09 11:14:05 0xe444ad37 A            T +  59 A        0x8700722d 0.0368 pull +2093 pull-T 2034 pull-sell(T+2 buy) 2029 us 60

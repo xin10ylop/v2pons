@@ -1,0 +1,458 @@
+{
+ "summary": {
+  "head": 85508620,
+  "launches": 30,
+  "with_crowd_buy": 27,
+  "crowd1_off_p10_50_90": [
+   66,
+   151,
+   169
+  ],
+  "pulled": 19,
+  "pull_by": [
+   [
+    "('0x58daec3116aae6d93017baaea7749052e8a04fa7', 'dd46508f', True)",
+    19
+   ]
+  ],
+  "ride_n": 27,
+  "ride_mean": 0.0812,
+  "ride_median": 0.0315,
+  "ride_win": 0.704,
+  "ride_pulled": 1,
+  "first_b0": 85216079,
+  "last_b0": 85496997
+ },
+ "rows": [
+  {
+   "pid": "0xfd6a11f25d3be3005e121e8ba9cdab46648b463fc98a47e687f796add9267685",
+   "b0": 85216079,
+   "crowd1_off": 35,
+   "crowd1_eth": 0.035,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 174,
+   "window": 3000,
+   "ride": 0.004987338426183286,
+   "why": "sold"
+  },
+  {
+   "pid": "0x84cf7feaf8b5aee518be890deb40e9aa6fe9bc749409e5e4138ba19f338fa247",
+   "b0": 85216147,
+   "crowd1_off": 1047,
+   "crowd1_eth": 0.14,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 118,
+   "window": 3000,
+   "ride": 0.054962708923065005,
+   "why": "sold"
+  },
+  {
+   "pid": "0x028ced1698b301b83c6a950bca62302b346843c483060a1f4a37a3c5e6cccc45",
+   "b0": 85229086,
+   "crowd1_off": 125,
+   "crowd1_eth": 0.081,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 159,
+   "window": 3000,
+   "ride": 0.07415212912447813,
+   "why": "sold"
+  },
+  {
+   "pid": "0xe14164bcbd3ed5bf540977dda5b47551885bd00df47ebadebc170fb7d551ee35",
+   "b0": 85256965,
+   "crowd1_off": 167,
+   "crowd1_eth": 0.16,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 175,
+   "window": 3000,
+   "ride": -0.0009202517541932791,
+   "why": "sold"
+  },
+  {
+   "pid": "0xc9e5ed30e0431015d323f1f18396ff2abbb6de1b94468136336770c401d69c5d",
+   "b0": 85264648,
+   "crowd1_off": 217,
+   "crowd1_eth": 0.07,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 187,
+   "window": 3000,
+   "ride": -0.0008896223008149955,
+   "why": "sold"
+  },
+  {
+   "pid": "0x1f49fdfaed7777e8e340b82ac3dbc73acde9996701a269fb88ddbce91944030a",
+   "b0": 85309425,
+   "crowd1_off": 87,
+   "crowd1_eth": 0.0816,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 267,
+   "window": 3000,
+   "ride": 0.3590330165041423,
+   "why": "sold"
+  },
+  {
+   "pid": "0xb612974d1f390b6d19b2f8824cff93be40ed4b69880cb6bb90914e7f1f3022a0",
+   "b0": 85317620,
+   "crowd1_off": 78,
+   "crowd1_eth": 0.06,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 179,
+   "window": 3000,
+   "ride": -0.0009676927666398598,
+   "why": "sold"
+  },
+  {
+   "pid": "0x1ad59b7802aede72d2642a8797f033ee627a64d4839b9e1d8797f1b9e0051b29",
+   "b0": 85353540,
+   "crowd1_off": 156,
+   "crowd1_eth": 1.134,
+   "pull_off": 329,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 30,
+   "window": 3000,
+   "ride": 0.44090266376039666,
+   "why": "sold"
+  },
+  {
+   "pid": "0x114d99bd458695b9f738023df2a2f97c3cf9d8fc9b125e638b04390bc3431cfd",
+   "b0": 85356916,
+   "crowd1_off": 158,
+   "crowd1_eth": 0.243,
+   "pull_off": 257,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 16,
+   "window": 3000,
+   "ride": 0.03080195246119768,
+   "why": "sold"
+  },
+  {
+   "pid": "0xcc18a530c29c0d08f2971ef875283f4f315b3fb924ef931f8937d26ccf462237",
+   "b0": 85359505,
+   "crowd1_off": 154,
+   "crowd1_eth": 0.55,
+   "pull_off": 300,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 26,
+   "window": 3000,
+   "ride": 0.30669081459088454,
+   "why": "sold"
+  },
+  {
+   "pid": "0xa74bc8ff6c9bd07671fed5208403a1ddf66a74ed8dc2f9dcd9fff094b267382a",
+   "b0": 85362072,
+   "crowd1_off": 155,
+   "crowd1_eth": 0.192,
+   "pull_off": 242,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 16,
+   "window": 3000,
+   "ride": 0.04823247571738034,
+   "why": "sold"
+  },
+  {
+   "pid": "0x439d4ff6ee8957d7689631a2391c998ca7e99f43882cbcb8de8fec31fe8336a5",
+   "b0": 85365175,
+   "crowd1_off": 155,
+   "crowd1_eth": 1.068,
+   "pull_off": 464,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 36,
+   "window": 3000,
+   "ride": 0.3532607650075056,
+   "why": "sold"
+  },
+  {
+   "pid": "0x5c5b6c548d06db5c1d626174229b678a08d304abf4809802653f4914883870e1",
+   "b0": 85367874,
+   "crowd1_off": 169,
+   "crowd1_eth": 0.076,
+   "pull_off": 246,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 16,
+   "window": 3000,
+   "ride": 0.07776876226301424,
+   "why": "sold"
+  },
+  {
+   "pid": "0x3ec8b6a3ab67d8aace58f462e267e7c86577b7ebf6d4ef3ed443ed526113e99f",
+   "b0": 85370343,
+   "crowd1_off": 146,
+   "crowd1_eth": 0.248,
+   "pull_off": 530,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 43,
+   "window": 3000,
+   "ride": 0.4554405183834823,
+   "why": "sold"
+  },
+  {
+   "pid": "0x031f53432adf771e020c1f932134e94404badf2a65541c4870d95c6b0051ec51",
+   "b0": 85372969,
+   "crowd1_off": null,
+   "crowd1_eth": null,
+   "pull_off": 138,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 7,
+   "window": 3000
+  },
+  {
+   "pid": "0x4f3ca69ab1ca5f69323aabfe1a9eea36276eeb18f9b5c6741e2176d3e9deba55",
+   "b0": 85375463,
+   "crowd1_off": 158,
+   "crowd1_eth": 0.108,
+   "pull_off": 203,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 14,
+   "window": 3000,
+   "ride": -1.0008,
+   "why": "pulled"
+  },
+  {
+   "pid": "0xd01dfa4abea16268636a85f0e41e20e68908fd4ccec8552fa621a2b77a4ee27f",
+   "b0": 85380520,
+   "crowd1_off": 165,
+   "crowd1_eth": 0.068,
+   "pull_off": 1663,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 160,
+   "window": 3000,
+   "ride": 0.0415401769888061,
+   "why": "sold"
+  },
+  {
+   "pid": "0xceda657b2d48144294a75ca9f7f64d1c62ce6e348c07ca6e728e468ec6005031",
+   "b0": 85383905,
+   "crowd1_off": 151,
+   "crowd1_eth": 0.084,
+   "pull_off": 205,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 14,
+   "window": 3000,
+   "ride": 0.4774802462540232,
+   "why": "sold"
+  },
+  {
+   "pid": "0x316ed74469388fa0d95ab874ce58d0d30054150cd92ba3bbe64723435168581c",
+   "b0": 85386440,
+   "crowd1_off": 138,
+   "crowd1_eth": 0.194,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 230,
+   "window": 3000,
+   "ride": 0.037416534559479374,
+   "why": "sold"
+  },
+  {
+   "pid": "0xc02d8a5b71eda3bcb1084843c34e50d98b7734aa4f1425f75a30c6af2051d074",
+   "b0": 85402014,
+   "crowd1_off": 161,
+   "crowd1_eth": 0.36,
+   "pull_off": 400,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 38,
+   "window": 3000,
+   "ride": 0.38393369019840307,
+   "why": "sold"
+  },
+  {
+   "pid": "0xe8b445a47aec3ec6d369400e6465899b27fcd46655352b0c71cc49b31ce9a565",
+   "b0": 85405588,
+   "crowd1_off": 169,
+   "crowd1_eth": 0.111,
+   "pull_off": 1082,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 90,
+   "window": 3000,
+   "ride": 0.03149982794215491,
+   "why": "sold"
+  },
+  {
+   "pid": "0xc5d7d1ace2d5ef98024ee2ff7864a93621cb532086bf2b0ca6bddf2f5dc9d9d1",
+   "b0": 85436168,
+   "crowd1_off": null,
+   "crowd1_eth": null,
+   "pull_off": 189,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 6,
+   "window": 3000
+  },
+  {
+   "pid": "0x102e3b6e8017e2fa96f7df3557d0a47d0a9f35410937d1dd5113ee92b68c4906",
+   "b0": 85437669,
+   "crowd1_off": 84,
+   "crowd1_eth": 0.077,
+   "pull_off": 1015,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 31,
+   "window": 3000,
+   "ride": 0.0010189087569291385,
+   "why": "sold"
+  },
+  {
+   "pid": "0xa3e3af742abfaf35c02feaa494d53c5d3fb6861ff4d80536b587bc38063863ef",
+   "b0": 85439283,
+   "crowd1_off": 66,
+   "crowd1_eth": 0.088,
+   "pull_off": 826,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 28,
+   "window": 3000,
+   "ride": 0.003278799540980782,
+   "why": "sold"
+  },
+  {
+   "pid": "0xe581f5aae3b56f3dc9f176170f221d0cfb25279657e0fc8a2de2a825ffd3c477",
+   "b0": 85440661,
+   "crowd1_off": 53,
+   "crowd1_eth": 0.0842,
+   "pull_off": 1293,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 53,
+   "window": 3000,
+   "ride": 0.018827398987059454,
+   "why": "sold"
+  },
+  {
+   "pid": "0xa9d6dd2f52bfff3bb7e50a203ee263c7823a18bb8736b3e9dbb2721525b0059a",
+   "b0": 85443081,
+   "crowd1_off": 104,
+   "crowd1_eth": 0.2577,
+   "pull_off": 1202,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 40,
+   "window": 3000,
+   "ride": -0.0009999335087304876,
+   "why": "sold"
+  },
+  {
+   "pid": "0x3141271cd7ce3f258b1b5c8b58af035a7de4ac2e8688bf50869297f4579a5355",
+   "b0": 85461623,
+   "crowd1_off": 130,
+   "crowd1_eth": 0.0742,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 98,
+   "window": 3000,
+   "ride": -0.0009999324799059065,
+   "why": "sold"
+  },
+  {
+   "pid": "0x8933e55bed63cd8974f4f1aa90399e2561a27038bad2e82016344594fc3a136f",
+   "b0": 85465708,
+   "crowd1_off": 96,
+   "crowd1_eth": 0.39,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 88,
+   "window": 3000,
+   "ride": -0.000942558705469531,
+   "why": "sold"
+  },
+  {
+   "pid": "0x5b787c6b80268cdfea61d1d1dae353d7090096701b344b000e532a38310bf8b0",
+   "b0": 85476833,
+   "crowd1_off": null,
+   "crowd1_eth": null,
+   "pull_off": 160,
+   "pull_by": [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7",
+    "dd46508f",
+    true
+   ],
+   "n_swaps": 5,
+   "window": 3000
+  },
+  {
+   "pid": "0x30735602bc469f6696d5fcfe50688eb8aa1e12d53c560a8b9308539ba482578b",
+   "b0": 85496997,
+   "crowd1_off": 113,
+   "crowd1_eth": 0.111,
+   "pull_off": null,
+   "pull_by": null,
+   "n_swaps": 66,
+   "window": 3000,
+   "ride": -0.0009999326892691,
+   "why": "sold"
+  }
+ ]
+}

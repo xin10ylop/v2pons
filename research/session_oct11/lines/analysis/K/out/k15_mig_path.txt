@@ -1,0 +1,17 @@
+pools 144 swap fee field [(0, 55731)] top senders [('0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc', 15013), ('0x8876789976decbfcbbbe364623c63652db8c0904', 9502), ('0x6aa80dbbed9ae5ab45fbf61f9644fada3b29326e', 5587), ('0x9689992f5b5c09447f15906d8d11214944488341', 5464), ('0x8f10b468b06c6fd214b65f87778827f7d113f996', 4738)]
+p0 eth/token median 2.0580000000000003e-08 (curve final 5.88/285.714M = 2.058000000002058e-08 )
++    0 blocks: price/p0 p10 1.000 p25 1.001 median 1.021 p75 1.086 p90 1.161 mean 1.418
++    1 blocks: price/p0 p10 1.000 p25 1.013 median 1.060 p75 1.143 p90 1.272 mean 1.517
++    2 blocks: price/p0 p10 1.000 p25 1.024 median 1.062 p75 1.143 p90 1.289 mean 1.546
++    5 blocks: price/p0 p10 0.921 p25 0.983 median 1.035 p75 1.104 p90 1.289 mean 1.484
++   10 blocks: price/p0 p10 0.860 p25 0.954 median 1.029 p75 1.159 p90 1.342 mean 1.479
++   20 blocks: price/p0 p10 0.819 p25 0.923 median 1.025 p75 1.133 p90 1.366 mean 1.457
++   50 blocks: price/p0 p10 0.804 p25 0.895 median 1.012 p75 1.133 p90 1.398 mean 1.451
++  100 blocks: price/p0 p10 0.777 p25 0.906 median 1.015 p75 1.164 p90 1.339 mean 1.457
++  300 blocks: price/p0 p10 0.738 p25 0.867 median 0.990 p75 1.174 p90 1.745 mean 1.500
++ 1000 blocks: price/p0 p10 0.240 p25 0.769 median 0.958 p75 1.206 p90 1.849 mean 1.603
++ 3000 blocks: price/p0 p10 0.081 p25 0.622 median 0.900 p75 1.223 p90 1.819 mean 1.558
+liq events in pool (first rows) [[[0, -887200, 887200, 29277002188455995653983]], [[0, -887200, 887200, 29277002188455995631577]], [[0, -887200, 887200, 29277002188455995394075]]]
+n_liq dist [(1, 143), (7, 1)]
+buy ETH in 3000 blocks median 4.658384622560897 sell 5.593319339644932 buy in first 10 blocks median 0.3077877582240788
+max/p0 median 1.30665593750592 min/p0 median 0.7056018529029174

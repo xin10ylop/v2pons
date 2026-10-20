@@ -1,0 +1,48 @@
+===== S1: 180 pools, launch wallets 90, quotes [('USDG', 96), ('WETH', 60), ('SPCX', 18), ('0xd0601ce1', 2), ('0x2e8c3116', 1)]
+  coin side: quote is currency{1: 41, 0: 139}
+  pools with a swap after the launch tx (to +600): 6; swaps 8; launch-tx swaps 0
+  pulled: 11 (within +600: 0); pull offsets [1315, 3844, 4733, 12528, 16860, 19541, 22042, 36728, 41756, 46214, 135922]; puller==launcher 3
+  ML events after the launch tx: [((False, '0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789'), 54), ((True, '0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789'), 18), ((True, '0x58daec3116aae6d93017baaea7749052e8a04fa7'), 3), ((False, '0x58daec3116aae6d93017baaea7749052e8a04fa7'), 3)]
+  buyers (after the launch tx): 5 EOAs, 5 buys, 0.0006 ETH-eq
+    0x2329cbcc7ba1ecb40248e4c6159b09c78af86663 pools   1 buys    1 ETH-eq 0.0001 offsets p10/50/90 0/0/0 launcher? False
+    0x0255bc1785e56d9a70cf5590938df0cb655ff587 pools   1 buys    1 ETH-eq 0.0000 offsets p10/50/90 1/1/1 launcher? False
+    0xf1a1b8cc43de52e1669e8ab0962706835cb404f2 pools   1 buys    1 ETH-eq 0.0001 offsets p10/50/90 1/1/1 launcher? False
+    0xaebf0ec033b6bed48b6762952bb2c1681b427292 pools   1 buys    1 ETH-eq 0.0000 offsets p10/50/90 1/1/1 launcher? False
+    0xafa54e6945803ec0025bb5adf7dea1e50c32bb41 pools   1 buys    1 ETH-eq 0.0005 offsets p10/50/90 373/373/373 launcher? False
+  buy targets (to, selector): 
+    ('0x399acc46b32145ddda5b1ae6117d7b85f30f710e', '3d78507c') pools 1 buys 1 ETH-eq 0.0001
+    ('0x0255bc1785e56d9a70cf5590938df0cb655ff587', '0c89e77a') pools 1 buys 1 ETH-eq 0.0000
+    ('0xf1a1b8cc43de52e1669e8ab0962706835cb404f2', '0c89e77a') pools 1 buys 1 ETH-eq 0.0001
+    ('0x22bd2c6e441a194db56292c888c4b396bda5a43d', '0101052a') pools 1 buys 1 ETH-eq 0.0000
+    ('0x5399d94d2cab7c252a6034042e1917a0e5e17a18', '814920c0') pools 1 buys 1 ETH-eq 0.0005
+===== S2: 85 pools, launch wallets 4, quotes [('WETH', 85)]
+  coin side: quote is currency{0: 85}
+  pools with a swap after the launch tx (to +600): 2; swaps 3; launch-tx swaps 85
+  launch-tx swaps: buys 85 ETH-eq p50 0.0014850000000000002 max 0.03234
+  pulled: 0 (within +600: 0); pull offsets []; puller==launcher 0
+  ML events after the launch tx: []
+  buyers (after the launch tx): 3 EOAs, 3 buys, 0.1804 ETH-eq
+    0x9d208d8a7f5f0470f78ea6e88c27d9dc09751cf1 pools   1 buys    1 ETH-eq 0.0029 offsets p10/50/90 503/503/503 launcher? False
+    0xbffebe7825665c749740ed99ce5ba0edb18b4b17 pools   1 buys    1 ETH-eq 0.0394 offsets p10/50/90 3/3/3 launcher? False
+    0x493e2bf9d62f3aee502027e008c87de5bd87c328 pools   1 buys    1 ETH-eq 0.1380 offsets p10/50/90 488/488/488 launcher? False
+  buy targets (to, selector): 
+    ('0xf0b7eaaf868191adc00065ca13391ef436ce8faf', '39ecce49') pools 1 buys 1 ETH-eq 0.0029
+    ('0x8876789976decbfcbbbe364623c63652db8c0904', '3593564c') pools 1 buys 2 ETH-eq 0.1775
+===== S3: 36 pools, launch wallets 1, quotes [('ETH', 36)]
+  coin side: quote is currency{0: 36}
+  pools with a swap after the launch tx (to +600): 36; swaps 36; launch-tx swaps 0
+  pulled: 0 (within +600: 0); pull offsets []; puller==launcher 0
+  ML events after the launch tx: []
+  buyers (after the launch tx): 1 EOAs, 36 buys, 0.0001 ETH-eq
+    0xe71a69f434a719cd5afa411568b69716aab3b84a pools  36 buys   36 ETH-eq 0.0001 offsets p10/50/90 3/3/10 launcher? False
+  buy targets (to, selector): 
+    ('0x8876789976decbfcbbbe364623c63652db8c0904', '3593564c') pools 36 buys 36 ETH-eq 0.0001
+===== S4: 26 pools, launch wallets 1, quotes [('ETH', 26)]
+  coin side: quote is currency{0: 26}
+  pools with a swap after the launch tx (to +600): 26; swaps 26; launch-tx swaps 0
+  pulled: 0 (within +600: 0); pull offsets []; puller==launcher 0
+  ML events after the launch tx: []
+  buyers (after the launch tx): 1 EOAs, 26 buys, 0.0001 ETH-eq
+    0xe71a69f434a719cd5afa411568b69716aab3b84a pools  26 buys   26 ETH-eq 0.0001 offsets p10/50/90 3/3/4 launcher? False
+  buy targets (to, selector): 
+    ('0x8876789976decbfcbbbe364623c63652db8c0904', '3593564c') pools 26 buys 26 ETH-eq 0.0001

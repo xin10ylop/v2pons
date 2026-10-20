@@ -1,0 +1,20 @@
+{
+ "chain": "optimism",
+ "url": "https://mainnet.optimism.io",
+ "from": 158031182,
+ "to": 158074382,
+ "head_ts": 1791747541,
+ "hours": 24.0,
+ "block_time_est": 2.0,
+ "n_logs": 14,
+ "secs": 0.4,
+ "final_chunk": 45000,
+ "errlog": [],
+ "by_emitter": [
+  [
+   "0x9a13f98cb987694c9f086b1f5eb990eea8264ec3",
+   "V4 Initialize",
+   14
+  ]
+ ]
+}

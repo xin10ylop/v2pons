@@ -1,0 +1,49 @@
+OVERLAPS
+  crowd 836-B shape 1046; tok d4e7eae4 1016; lc ac9650d8 1155; shape & tok 1013; shape within lc 1046; tok within lc 1016
+  356-B shapecode 111; lc 89885b75 248; tok 97c7ba1b 172; 356 within lc 111; 356 & tok97 100; tok97 within lc 172
+  V2 fleet tok 603; 1.0-ETH shape 627; fleet within shape 603
+  V2 tok 70adce63 1184; value >= 40 shapes (50.09/40.09/40.59) 1029, within tok 1029; 30.09 146
+
+V3 crowd 836-B shape, K20 sell +80 (1046 launches)
+  q 0.0058 ($14.91): n 1046 mean +7.76% median -0.051% win 40.8% worst -100.1% pulled 0.19% $1.156/trade $172.8/day(7d)
+      days 6-7 n 280 +5.67% $118.3/day | last 24 h n 146 +5.35% $116.5 | slices 28/28 | by day +5.6 +12.7 +6.6 +11.2 +6.6 +6.0 +5.4
+      top 10% of trades = 75% of the return; mean without the best 10 +6.34%; break-even extra pull share 7.19%
+  q 0.001946 ($5.00): n 1046 mean +7.51% median -0.317% win 35.1% worst -100.4% pulled 0.19% $0.375/trade $56.1/day(7d)
+      days 6-7 n 280 +5.41% $37.9/day | last 24 h n 146 +5.10% $37.2 | slices 28/28 | by day +5.3 +12.5 +6.3 +11.0 +6.3 +5.8 +5.1
+      top 10% of trades = 78% of the return; mean without the best 10 +6.09%; break-even extra pull share 6.96%
+
+V3 crowd 836-B shape, buy +2 sell +80 (1046 launches)
+  q 0.0058 ($14.91): n 1046 mean +9.43% median +0.018% win 53.3% worst -100.1% pulled 0.19% $1.406/trade $210.1/day(7d)
+      days 6-7 n 280 +6.29% $131.2/day | last 24 h n 146 +6.18% $134.5 | slices 28/28 | by day +9.8 +17.3 +6.8 +12.1 +7.0 +6.4 +6.2
+      top 10% of trades = 76% of the return; mean without the best 10 +7.87%; break-even extra pull share 8.61%
+  q 0.001946 ($5.00): n 1046 mean +9.19% median -0.248% win 37.6% worst -100.4% pulled 0.19% $0.459/trade $68.7/day(7d)
+      days 6-7 n 280 +6.03% $42.2/day | last 24 h n 146 +5.93% $43.3 | slices 28/28 | by day +9.6 +17.0 +6.5 +11.8 +6.8 +6.1 +5.9
+      top 10% of trades = 78% of the return; mean without the best 10 +7.62%; break-even extra pull share 8.38%
+
+V3 356-B d27d1e00 value 0, K60 sell +260 (111 launches)
+  q 0.0058 ($14.91): n 111 mean +114.97% median +0.060% win 53.2% worst -100.1% pulled 1.80% $17.138/trade $271.8/day(7d)
+      days 6-7 n 83 +127.24% $787.1/day | last 24 h n 25 +70.15% $261.4 | slices 9/9 | by day -0.0 - +83.8 +91.1 +79.6 +151.9 +70.2
+      top 10% of trades = 93% of the return; mean without the best 10 +11.46%; break-even extra pull share 53.45%
+  q 0.001946 ($5.00): n 111 mean +116.75% median -0.205% win 37.8% worst -100.4% pulled 1.80% $5.839/trade $92.6/day(7d)
+      days 6-7 n 83 +129.35% $268.5/day | last 24 h n 25 +70.92% $88.7 | slices 7/9 | by day -0.3 - +84.1 +92.1 +80.3 +154.5 +70.9
+      top 10% of trades = 93% of the return; mean without the best 10 +11.35%; break-even extra pull share 53.76%
+
+V2 fleet tok 0f34e3b5, buy +20 sell +80 (603 launches)
+  q 0.0058 ($14.91): n 603 mean +3.53% median -0.725% win 41.8% worst -0.7% pulled 0.00% $0.526/trade $45.3/day(7d)
+      days 6-7 n 183 +3.70% $50.4/day | last 24 h n 58 +3.32% $28.7 | slices 19/19 | by day +3.7 -0.7 - +3.7 +3.2 +3.9 +3.3
+      top 10% of trades = 58% of the return; mean without the best 10 +3.07%; break-even extra pull share 3.40%
+  q 0.001946 ($5.00): n 603 mean +3.28% median -0.993% win 41.8% worst -1.0% pulled 0.00% $0.164/trade $14.1/day(7d)
+      days 6-7 n 183 +3.45% $15.8/day | last 24 h n 58 +3.08% $8.9 | slices 19/19 | by day +3.5 -1.0 - +3.5 +2.9 +3.6 +3.1
+      top 10% of trades = 62% of the return; mean without the best 10 +2.82%; break-even extra pull share 3.17%
+
+V2 tok 70adce63 value >= 40 ETH, buy +150 sell +250 (1029 launches)
+  q 0.0058 ($14.91): n 1029 mean +1.60% median +1.490% win 76.1% worst -0.7% pulled 0.00% $0.239/trade $35.1/day(7d)
+      days 6-7 n 325 +1.64% $39.8/day | last 24 h n 180 +1.60% $42.9 | slices 28/28 | by day +0.8 +1.6 +1.6 +1.7 +1.7 +1.7 +1.6
+      top 10% of trades = 27% of the return; mean without the best 10 +1.57%; break-even extra pull share 1.57%
+  q 0.001946 ($5.00): n 1029 mean +1.34% median +1.224% win 72.2% worst -1.0% pulled 0.00% $0.067/trade $9.8/day(7d)
+      days 6-7 n 325 +1.38% $11.2/day | last 24 h n 180 +1.33% $12.0 | slices 27/28 | by day +0.6 +1.4 +1.3 +1.5 +1.5 +1.4 +1.3
+      top 10% of trades = 31% of the return; mean without the best 10 +1.30%; break-even extra pull share 1.31%
+
+V3 crowd 836-B: first real buy (>= 0.005 ETH) at or before +80, by launch day (census)
+  d1 34/153 (22%) d2 66/155 (43%) d3 48/167 (29%) d4 73/149 (49%) d5 54/142 (38%) d6 63/134 (47%) d7 65/146 (45%) | all 403/1046 (38.5%)
+  K20/+80 at $15: pools with the first real buy by +80 n 403 mean +20.27% | the rest n 643 mean -0.09% median -0.095%

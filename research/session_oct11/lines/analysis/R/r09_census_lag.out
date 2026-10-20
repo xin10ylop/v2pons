@@ -1,0 +1,16 @@
+strangers (one-off wallets) after T: n   45 pull after the buy: 0-4   5, 5-9  26, 10-14   7, 15-30   1, 31-400   3, later/never   3
+  lag p10/50/90 of those within 30: (4, 7, 13)
+repeat actors (>= 20 line pools) after T, per wallet:
+  0xb002e8a0 n  676 pull after the buy: 0-4   6, 5-9  34, 10-14  24, 15-30   8, 31-400 139, later/never 465 size50 0.000148 at T+5
+  0xebabb424 n  429 pull after the buy: 0-4   0, 5-9   3, 10-14   1, 15-30   4, 31-400 117, later/never 304 size50 0.000074 at T+4
+  0x259a1b7b n   75 pull after the buy: 0-4   0, 5-9   0, 10-14   0, 15-30   6, 31-400  61, later/never   8 size50 0.000061 at T+15
+  0xf05d0e3f n   31 pull after the buy: 0-4   1, 5-9   1, 10-14   0, 15-30   0, 31-400   3, later/never  26 size50 0.000168 at T+12
+  0xf6e55480 n   28 pull after the buy: 0-4   0, 5-9   1, 10-14   2, 15-30  10, 31-400   7, later/never   8 size50 0.000119 at T+2
+  0x93b07902 n   26 pull after the buy: 0-4   4, 5-9   9, 10-14   6, 15-30   0, 31-400   6, later/never   1 size50 0.000065 at T+24
+  0xf7b47b17 n   19 pull after the buy: 0-4   1, 5-9   5, 10-14   2, 15-30   1, 31-400   2, later/never   8 size50 0.000010 at T+13
+  0xd54bad00 n   19 pull after the buy: 0-4   4, 5-9   4, 10-14   8, 15-30   1, 31-400   2, later/never   0 size50 0.000038 at T+8
+  0xc3c81a34 n   16 pull after the buy: 0-4   0, 5-9   7, 10-14   3, 15-30   1, 31-400   1, later/never   4 size50 0.000030 at T+19
+  0xb4c345dc n    7 pull after the buy: 0-4   0, 5-9   1, 10-14   0, 15-30   0, 31-400   3, later/never   3 size50 0.000238 at T+10
+  0xfeda1c58 n    4 pull after the buy: 0-4   1, 5-9   2, 10-14   0, 15-30   0, 31-400   1, later/never   0 size50 0.000297 at T+21
+  0x578e7a8e n    2 pull after the buy: 0-4   0, 5-9   0, 10-14   0, 15-30   0, 31-400   2, later/never   0 size50 0.020000 at T+42
+  0xe9d83e95 n    1 pull after the buy: 0-4   0, 5-9   1, 10-14   0, 15-30   0, 31-400   0, later/never   0 size50 0.000196 at T+12

@@ -1,0 +1,122 @@
+[
+ {
+  "pid": "0x85affa7540",
+  "first_real": {
+   "rel": 1,
+   "eth": 0.125,
+   "fill_over_launch_quote": 1.0,
+   "eth_bought_ahead": 0.0
+  },
+  "b0.04777": {
+   "rel": 1,
+   "eth": 0.04777,
+   "fill_over_launch_quote": 0.9441,
+   "eth_bought_ahead": 0.125
+  }
+ },
+ {
+  "pid": "0x9c554cf8ac",
+  "first_real": {
+   "rel": 0,
+   "eth": 0.125,
+   "fill_over_launch_quote": 1.0,
+   "eth_bought_ahead": 0.0
+  },
+  "b0.04777": {
+   "rel": 2,
+   "eth": 0.04777,
+   "fill_over_launch_quote": 0.9443,
+   "eth_bought_ahead": 0.129
+  }
+ },
+ {
+  "pid": "0x9b55faa775",
+  "first_real": {
+   "rel": 1,
+   "eth": 0.03,
+   "fill_over_launch_quote": 1.0,
+   "eth_bought_ahead": 0.0
+  },
+  "b0.04777": {
+   "rel": 1,
+   "eth": 0.04777,
+   "fill_over_launch_quote": 0.9912,
+   "eth_bought_ahead": 0.03
+  }
+ },
+ {
+  "pid": "0xb19ec756e6",
+  "first_real": {
+   "rel": 1,
+   "eth": 0.00025,
+   "fill_over_launch_quote": 1.0,
+   "eth_bought_ahead": 0.0
+  },
+  "b0.04777": {
+   "rel": 2,
+   "eth": 0.04777,
+   "fill_over_launch_quote": 0.9999,
+   "eth_bought_ahead": 0.0003
+  }
+ },
+ {
+  "pid": "0x6a8aecd512",
+  "first_real": {
+   "rel": 2,
+   "eth": 0.04368739204406739,
+   "fill_over_launch_quote": 1.0,
+   "eth_bought_ahead": 0.0
+  },
+  "b0.04777": {
+   "rel": 3,
+   "eth": 0.04777,
+   "fill_over_launch_quote": 0.879,
+   "eth_bought_ahead": 0.2813
+  }
+ },
+ {
+  "pid": "0x5c26569215",
+  "first_real": {
+   "rel": 1,
+   "eth": 0.01,
+   "fill_over_launch_quote": 1.0,
+   "eth_bought_ahead": 0.0
+  },
+  "b0.04777": {
+   "rel": 2,
+   "eth": 0.04777,
+   "fill_over_launch_quote": 0.9843,
+   "eth_bought_ahead": 0.0352
+  }
+ },
+ {
+  "pid": "0xa469cd0826",
+  "first_real": {
+   "rel": 1,
+   "eth": 0.03,
+   "fill_over_launch_quote": 1.0,
+   "eth_bought_ahead": 0.0
+  },
+  "b0.04777": {
+   "rel": 6,
+   "eth": 0.04777,
+   "fill_over_launch_quote": 0.9624,
+   "eth_bought_ahead": 0.4509
+  }
+ },
+ {
+  "pid": "0xb10e855e8f",
+  "first_real": {
+   "rel": 1,
+   "eth": 0.03,
+   "fill_over_launch_quote": 1.0,
+   "eth_bought_ahead": 0.0
+  },
+  "b0.04777": {
+   "rel": 2,
+   "eth": 0.04777,
+   "fill_over_launch_quote": 0.986,
+   "eth_bought_ahead": 0.03
+  }
+ }
+]

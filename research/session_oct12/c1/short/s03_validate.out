@@ -1,0 +1,11 @@
+(1) replayed 91429 swaps step by step: 0 differ from the chain by more than 1e-9 relative (each then reset to the chain)
+    pools whose in-range liquidity changes between swaps: 2
+    whole-path replay T..T+200 without resets: max relative error 3.32e-18 over 189 pools
+(2) our fills, re-simulated (tokens and gross vs the chain):
+    10-11 20:58:49 0x5ec6831561 buy T+2 tokens sim 197537277152397591536612 chain 197537277152397591544154 (rel 3.8e-20); sell at buy+61: chain +4.02% sim +4.02%; hold-60 rule (lands buy+62, top of block) +4.02% ok
+    10-11 21:01:47 0xd6180333d0 buy T+2 tokens sim 194586872942919544931677 chain 194586872942919544932770 (rel 5.6e-21); sell at buy+62: chain +6.66% sim +6.66%; hold-60 rule (lands buy+62, top of block) +6.66% ok
+    10-11 21:02:38 0x6d80b8161c buy T+2 tokens sim 193624491433629346118879 chain 193624491433629346123606 (rel 2.4e-20); sell at buy+62: chain -0.01% sim -0.01%; hold-60 rule (lands buy+62, top of block) -0.01% ok
+    10-12 01:15:58 0x0e4cc1d813 buy T+2 tokens sim 195518279731137058718043 chain 195518279731137058726022 (rel 4.1e-20); sell at buy+62: chain +3.46% sim +3.46%; hold-60 rule (lands buy+62, top of block) +3.46% ok
+    10-12 01:18:11 0xb47b706f2b buy T+2 tokens sim 187844258455643145378519 chain 187844258455643145380405; sell reverted (pulled at buy+36): hold-60 (-1.0, 'pulled')
+(3) pools 208; launch sqrtP != the family's 2: 10-12 14:06:31 0xcbb06b455f T 137, 10-12 14:12:23 0x7a40b3815a T 55
+    first swap's liquidity == the family's LIQ: {True: 206, False: 2}

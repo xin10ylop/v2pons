@@ -1,0 +1,46 @@
+pools 49; stake $5 = 0.001946 ETH; pre-T pull lags n 26 min 3 median 5
+
+A. the rule as stated (a visible presigned / failed copy of the bot's buy before T): fires in 0 of 49 pools (s4, s4b) -> no trade, $0.
+
+B. oracle on the bot's signing moment (not visible on chain or in the feed; an upper bound):
+   no reaction (pull ignored), the gain itself:
+     k 1 d 1: n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total
+     k 1 d 2: n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total
+     k 2 d 1: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total
+     k 2 d 2: n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total
+     k 3 d 1: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total
+     k 3 d 2: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total
+     k 4 d 1: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total
+     k 4 d 2: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total
+   reaction: pull at our buy + 3 (min pre-T lag):
+     k 1 d 1: n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total  {'behind the bot, sold': 49}
+     k 1 d 2: n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total  {'behind the bot, sold': 49}
+     k 2 d 1: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total  {'front, sold': 49}
+     k 2 d 2: n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total  {'behind the bot, sold': 49}
+     k 3 d 1: n 49 mean -100.40% median -100.40% win 0/49 -100%: 49 min -100.4% max -100.4% | $-5.020 a trade, $-245.98 total  {'front, pulled': 49}
+     k 3 d 2: n 49 mean -100.40% median -100.40% win 0/49 -100%: 49 min -100.4% max -100.4% | $-5.020 a trade, $-245.98 total  {'front, pulled': 49}
+     k 4 d 1: n 49 mean -100.40% median -100.40% win 0/49 -100%: 49 min -100.4% max -100.4% | $-5.020 a trade, $-245.98 total  {'front, pulled': 49}
+     k 4 d 2: n 49 mean -100.40% median -100.40% win 0/49 -100%: 49 min -100.4% max -100.4% | $-5.020 a trade, $-245.98 total  {'front, pulled': 49}
+   reaction: pull at our buy + 5 (median pre-T lag):
+     k 1 d 1: n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total  {'behind the bot, sold': 49}
+     k 1 d 2: n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total  {'behind the bot, sold': 49}
+     k 2 d 1: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total  {'front, sold': 49}
+     k 2 d 2: n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total  {'behind the bot, sold': 49}
+     k 3 d 1: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total  {'front, sold': 49}
+     k 3 d 2: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total  {'front, sold': 49}
+     k 4 d 1: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total  {'front, sold': 49}
+     k 4 d 2: n 49 mean +6.57% median +7.44% win 49/49 -100%: 0 min +0.8% max +11.1% | $+0.329 a trade, $+16.10 total  {'front, sold': 49}
+
+C. the first thing the engine can see is the bot's buy in block T (buy lands T+d behind it):
+   no reaction d 1: C1 flip n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total
+               d 1: C2 ride to the bot's 2nd buy n 49 mean +1.55% median +1.36% win 28/49 -100%: 0 min -7.5% max +9.3% | $+0.077 a trade, $+3.79 total
+   no reaction d 2: C1 flip n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total
+               d 2: C2 ride to the bot's 2nd buy n 49 mean +1.55% median +1.36% win 28/49 -100%: 0 min -7.5% max +9.3% | $+0.077 a trade, $+3.79 total
+   min         d 1: C1 flip n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total
+               d 1: C2 ride to the bot's 2nd buy n 49 mean -100.40% median -100.40% win 0/49 -100%: 49 min -100.4% max -100.4% | $-5.020 a trade, $-245.98 total
+   min         d 2: C1 flip n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total
+               d 2: C2 ride to the bot's 2nd buy n 49 mean -100.40% median -100.40% win 0/49 -100%: 49 min -100.4% max -100.4% | $-5.020 a trade, $-245.98 total
+   median      d 1: C1 flip n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total
+               d 1: C2 ride to the bot's 2nd buy n 49 mean -100.40% median -100.40% win 0/49 -100%: 49 min -100.4% max -100.4% | $-5.020 a trade, $-245.98 total
+   median      d 2: C1 flip n 49 mean -2.39% median -2.39% win 0/49 -100%: 0 min -2.4% max -2.4% | $-0.119 a trade, $-5.85 total
+               d 2: C2 ride to the bot's 2nd buy n 49 mean -100.40% median -100.40% win 0/49 -100%: 49 min -100.4% max -100.4% | $-5.020 a trade, $-245.98 total

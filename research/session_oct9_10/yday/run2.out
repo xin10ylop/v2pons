@@ -1,0 +1,81 @@
+gas measured on our 8 relay buys / 5 sells (Oct 8): buy 103861, sell 103894, sell into a pulled pool 135200
+base fee median 0.0202 gwei; round trip 4.187e-06 ETH = $0.0108
+51 orig launches; traded 46; skips:
+Counter({'pool not eligible': 2, 'no real-size buy (tx value >= 0.0002 ETH carrying the token) within TRIGGER_MAX_BLOCKS (150; scanned 156)': 2, "no real-size buy (tx value >= 0.0002 ETH carrying the token) within TRIGGER_MAX_BLOCKS (150; scanned 156); the chain's first >= 0.0002 ETH swap is at +208 (the engine logs 'late first buy (not the crowd)')": 1})
+05:59:08 83086638 fee   210 trig +48 pull 816 | land1_fast:-0.004d land1_slow:-0.004d land2_fast:-0.004d land2_slow:-0.004d
+06:05:25 83090333 fee   123 trig +111 pull None | land1_fast:-0.004d land1_slow:+0.405d land2_fast:+0.405t land2_slow:+0.405t
+09:45:03 83218396 fee  2205 trig +41 pull 2539 | land1_fast:+0.013t land1_slow:+0.013t land2_fast:+0.013t land2_slow:+0.013t
+09:49:48 83221188 fee   981 trig +38 pull 2662 | land1_fast:+0.016t land1_slow:+0.016t land2_fast:+0.016t land2_slow:+0.016t
+10:06:21 83230831 fee  2158 trig +44 pull 218 | land1_fast:+0.016t land1_slow:+0.016t land2_fast:+0.016t land2_slow:+0.016t
+10:07:14 83231357 fee  2337 trig +46 pull 158 | land1_fast:+0.017t land1_slow:+0.017t land2_fast:+0.017t land2_slow:+0.017t
+10:08:10 83231896 fee  3568 trig +47 pull 2541 | land1_fast:+0.060t land1_slow:+0.060t land2_fast:+0.060t land2_slow:+0.060t
+10:14:53 83235834 fee  2906 trig +46 pull 111 | land1_fast:+0.017t land1_slow:+0.017t land2_fast:+0.017t land2_slow:+0.017t
+10:16:32 83236788 fee  3331 trig +47 pull 281 | land1_fast:+0.016t land1_slow:+0.016t land2_fast:-0.010d land2_slow:+0.008d
+10:17:37 83237419 fee  4021 trig +43 pull 125 | land1_fast:+0.011t land1_slow:+0.011t land2_fast:+0.011t land2_slow:+0.011t
+10:18:14 83237779 fee  3290 trig +52 pull 293 | land1_fast:+0.006d land1_slow:+0.005d land2_fast:-0.010d land2_slow:+0.014d
+10:19:12 83238353 fee  1270 trig +43 pull 2532 | land1_fast:+0.010d land1_slow:+0.010d land2_fast:+0.010d land2_slow:+0.010d
+10:29:46 83244516 fee  1786 trig +46 pull 2543 | land1_fast:+0.066t land1_slow:+0.066t land2_fast:+0.066t land2_slow:+0.066t
+10:34:51 83247488 fee  4671 trig +50 pull 2570 | land1_fast:+0.012t land1_slow:+0.012t land2_fast:+0.012t land2_slow:+0.012t
+10:39:38 83250318 fee  1141 trig +47 pull 2532 | land1_fast:+0.010d land1_slow:+0.010d land2_fast:+0.010d land2_slow:+0.010d
+10:44:24 83253103 fee  3880 trig +48 pull 2537 | land1_fast:+0.014t land1_slow:+0.013t land2_fast:+0.014t land2_slow:+0.013t
+10:49:11 83255889 fee   643 trig +45 pull 909 | land1_fast:+0.023t land1_slow:+0.023t land2_fast:+0.023t land2_slow:+0.023t
+10:51:08 83257053 fee  3416 trig +46 pull 2511 | land1_fast:+0.018t land1_slow:+0.018t land2_fast:-0.010d land2_slow:+0.023d
+10:56:25 83260146 fee  3447 trig +47 pull 325 | land1_fast:+0.011t land1_slow:+0.011t land2_fast:+0.011t land2_slow:+0.011t
+10:57:21 83260711 fee  2383 trig +49 pull 2366 | land1_fast:+0.007d land1_slow:+0.007d land2_fast:+0.007d land2_slow:+0.007d
+11:01:50 83263352 fee  3492 trig +46 pull 114 | land1_fast:+0.024t land1_slow:+0.024t land2_fast:-0.003b land2_slow:-0.003b
+11:02:10 83263547 fee   300 trig +18 pull 5391 | land1_fast:-0.004d land1_slow:-0.004d land2_fast:-0.004t land2_slow:-0.004t
+11:02:26 83263709 fee  1102 trig +49 pull 952 | land1_fast:+0.019t land1_slow:+0.019t land2_fast:+0.019t land2_slow:+0.019t
+11:04:44 83265056 fee  1195 trig +48 pull 2544 | land1_fast:+0.039t land1_slow:+0.039t land2_fast:+0.039t land2_slow:+0.039t
+11:09:34 83267903 fee  4564 trig +43 pull 989 | land1_fast:-0.004d land1_slow:-0.004d land2_fast:-0.004d land2_slow:-0.004d
+11:12:07 83269377 fee  2106 trig +45 pull 330 | land1_fast:+0.025t land1_slow:+0.025t land2_fast:-0.003b land2_slow:-0.003b
+11:13:59 83270460 fee   824 trig +44 pull 2106 | land1_fast:+0.018t land1_slow:+0.018t land2_fast:+0.018t land2_slow:+0.018t
+11:46:15 83289397 fee 10000 trig +90 pull 137 | pool not eligible: fee_in_range
+11:51:26 83292456 fee 10000 trig +100 pull 6307 | pool not eligible: fee_in_range
+12:07:29 83301893 fee   300 trig +67 pull 9853 | land1_fast:+0.077t land1_slow:+0.077t land2_fast:+0.077t land2_slow:+0.077t
+12:26:58 83313345 fee   300 trig +106 pull 383 | land1_fast:+0.069t land1_slow:+0.069t land2_fast:-0.004b land2_slow:-0.004b
+12:28:39 83314335 fee   380 trig +None pull 4910 | no real-size buy (tx value >= 0.0002 ETH carrying the token) within TRIGGER_MAX_BLOCKS (150; scanned 156)
+12:43:32 83323064 fee   380 trig +None pull 15994 | no real-size buy (tx value >= 0.0002 ETH carrying the token) within TRIGGER_MAX_BLOCKS (150; scanned 156)
+13:15:23 83341600 fee  2383 trig +142 pull 149 | land1_fast:-0.008d land1_slow:+0.074d land2_fast:+0.074t land2_slow:+0.074t || LIVE follow net +0.072
+13:16:13 83342087 fee  2383 trig +54 pull 62 | land1_fast:+0.078t land1_slow:+0.078t land2_fast:+0.078t land2_slow:+0.078t || LIVE follow net -1.004
+13:16:50 83342440 fee  2383 trig +53 pull 61 | land1_fast:+0.057t land1_slow:+0.057t land2_fast:+0.057t land2_slow:+0.057t || LIVE follow net -1.004
+13:17:10 83342632 fee  2383 trig +46 pull 56 | land1_fast:+0.058t land1_slow:+0.058t land2_fast:+0.058t land2_slow:+0.058t || LIVE follow net +0.187
+13:18:12 83343251 fee  2383 trig +51 pull 66 | land1_fast:+0.078t land1_slow:+0.078t land2_fast:+0.078t land2_slow:+0.078t || LIVE follow net +0.075
+13:18:45 83343560 fee  2383 trig +58 pull 66 | land1_fast:-0.008d land1_slow:-0.008d land2_fast:-0.008d land2_slow:-0.008d || LIVE follow net -0.008
+13:19:44 83344131 fee   824 trig +108 pull 114 | land1_fast:-0.005d land1_slow:-0.005d land2_fast:-0.005d land2_slow:-1.004p || LIVE follow net -1.004
+13:21:35 83345195 fee   824 trig +None pull 7578 | no real-size buy (tx value >= 0.0002 ETH carrying the token) within TRIGGER_MAX_BLOCKS (150; scanned 156); the chain's first >= 0.0002 ETH swap is at +208 (the engine logs 'late first buy (not the crowd)')
+14:32:16 83386507 fee   250 trig +44 pull 9901 | land1_fast:-0.004d land1_slow:+0.005d land2_fast:+0.005d land2_slow:+0.005d || LIVE follow net -0.097
+21:58:16 83647992 fee  2653 trig +49 pull 2538 | land1_fast:+0.052t land1_slow:+0.052t land2_fast:+0.052t land2_slow:+0.052t
+22:27:34 83665111 fee   603 trig +49 pull 2576 | land1_fast:+0.013t land1_slow:+0.013t land2_fast:+0.013t land2_slow:+0.013t
+22:32:46 83668192 fee   953 trig +48 pull 2556 | land1_fast:+0.020t land1_slow:+0.020t land2_fast:+0.020t land2_slow:+0.020t
+22:41:18 83673204 fee  2898 trig +46 pull 182 | land1_fast:+0.004d land1_slow:+0.004d land2_fast:+0.004d land2_slow:+0.004d
+22:42:24 83673852 fee  3967 trig +48 pull 2526 | land1_fast:+0.012t land1_slow:+0.012t land2_fast:+0.012t land2_slow:+0.012t
+22:47:55 83677068 fee  3931 trig +55 pull 141 | land1_fast:-0.003d land1_slow:-0.003d land2_fast:-0.012d land2_slow:+0.015d
+22:48:47 83677577 fee   888 trig +51 pull 105 | land1_fast:+0.023t land1_slow:+0.023t land2_fast:+0.023t land2_slow:+0.023t || LIVE seat ( net -0.006
+22:49:35 83678047 fee  3548 trig +55 pull 2578 | land1_fast:+0.017t land1_slow:+0.017t land2_fast:-0.011d land2_slow:+0.030d
+22:54:40 83681062 fee   762 trig +52 pull 2401 | land1_fast:+0.029t land1_slow:+0.029t land2_fast:-0.004b land2_slow:-0.004b
+stake 0.0012 land1_fast: n 46 mean +0.0219 median +0.0161 worst -0.0084 wins 37 total +0.001209 ETH exits {'deadline': 14, 'take_profit': 32}
+stake 0.0012 land1_slow: n 46 mean +0.0328 median +0.0168 worst -0.0083 wins 40 total +0.001810 ETH exits {'deadline': 14, 'take_profit': 32}
+stake 0.0012 land2_fast: n 46 mean +0.0270 median +0.0125 worst -0.0116 wins 32 total +0.001490 ETH exits {'deadline': 14, 'take_profit': 28, 'buy_reverted': 4}
+stake 0.0012 land2_slow: n 46 mean +0.0084 median +0.0146 worst -1.0042 wins 37 total +0.000463 ETH exits {'deadline': 13, 'take_profit': 28, 'buy_reverted': 4, 'pull_first': 1}
+stake 0.004 land1_fast: n 46 mean +0.0243 median +0.0185 worst -0.0058 wins 37 total +0.004477 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.004 land1_slow: n 46 mean +0.0352 median +0.0192 worst -0.0058 wins 40 total +0.006472 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.004 land2_fast: n 46 mean +0.0294 median +0.0150 worst -0.0090 wins 32 total +0.005406 ETH exits {'deadline': 12, 'take_profit': 30, 'buy_reverted': 4}
+stake 0.004 land2_slow: n 46 mean +0.0108 median +0.0171 worst -1.0012 wins 37 total +0.001985 ETH exits {'deadline': 11, 'take_profit': 30, 'buy_reverted': 4, 'pull_first': 1}
+stake 0.012 land1_fast: n 46 mean +0.0249 median +0.0192 worst -0.0051 wins 37 total +0.013722 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.012 land1_slow: n 46 mean +0.0356 median +0.0198 worst -0.0051 wins 40 total +0.019628 ETH exits {'deadline': 12, 'take_profit': 34}
+stake 0.012 land2_fast: n 46 mean +0.0298 median +0.0157 worst -0.0082 wins 32 total +0.016451 ETH exits {'deadline': 12, 'take_profit': 30, 'buy_reverted': 4}
+stake 0.012 land2_slow: n 46 mean +0.0112 median +0.0178 worst -1.0004 wins 37 total +0.006185 ETH exits {'deadline': 11, 'take_profit': 30, 'buy_reverted': 4, 'pull_first': 1}
+
+the day under the engine's limits (cap 3/day, one position, $15 stop, halt on pull_first), follow entry alone:
+  0.0012/land1_fast      n 3 pnl +0.000006 ETH ($+0.016) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.001209 ETH
+  0.0012/land1_slow      n 3 pnl +0.000497 ETH ($+1.278) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.001810 ETH
+  0.0012/land2_fast      n 3 pnl +0.000497 ETH ($+1.278) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.001490 ETH
+  0.0012/land2_slow      n 3 pnl +0.000497 ETH ($+1.278) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.000463 ETH
+  0.004/land1_fast       n 3 pnl +0.000050 ETH ($+0.130) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.004477 ETH
+  0.004/land1_slow       n 3 pnl +0.001679 ETH ($+4.316) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.006472 ETH
+  0.004/land2_fast       n 3 pnl +0.001679 ETH ($+4.316) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.005406 ETH
+  0.004/land2_slow       n 3 pnl +0.001679 ETH ($+4.316) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.001985 ETH
+  0.012/land1_fast       n 3 pnl +0.000176 ETH ($+0.452) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.013722 ETH
+  0.012/land1_slow       n 3 pnl +0.004997 ETH ($+12.843) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.019628 ETH
+  0.012/land2_fast       n 3 pnl +0.004997 ETH ($+12.843) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.016451 ETH
+  0.012/land2_slow       n 3 pnl +0.004997 ETH ($+12.843) launches [83086638, 83090333, 83218396] | uncapped: n 46 +0.006185 ETH

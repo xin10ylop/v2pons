@@ -1,0 +1,74 @@
+{
+ "0xb20f215e6b55ed39bc2376bc4d7fc4eabb2943fad0e0e3456a69869e1d4ce53a": {
+  "tax_ppm": 10000,
+  "word1": 7000,
+  "topics": [
+   "0xcf68bf26a7137fa3b518ef8d8f79d5fac32a0e2b406aea8ca0636e24c811ad0b",
+   "0xb20f215e6b55ed39bc2376bc4d7fc4eabb2943fad0e0e3456a69869e1d4ce53a",
+   "0x0000000000000000000000007fcf2cdd45df30044ef886d1584e8521f21cf839"
+  ],
+  "status": "0x1",
+  "gasUsed": 1065140,
+  "n_logs": 13
+ },
+ "0xed40de698a14d9004329b4ecb038e0d253d8d133d89f62d43d8e861afc2f9285": {
+  "tax_ppm": 10000,
+  "word1": 7000,
+  "topics": [
+   "0xcf68bf26a7137fa3b518ef8d8f79d5fac32a0e2b406aea8ca0636e24c811ad0b",
+   "0xed40de698a14d9004329b4ecb038e0d253d8d133d89f62d43d8e861afc2f9285",
+   "0x0000000000000000000000003e2205fbb02b20183c9983a148498a15aaac9c9e"
+  ],
+  "status": "0x1",
+  "gasUsed": 941435,
+  "n_logs": 9
+ },
+ "0xfb23f071de6f6917c9e62c628f7e4910256edc53417aa712792fe9e1b7c1c578": {
+  "tax_ppm": 50000,
+  "word1": 9400,
+  "topics": [
+   "0xcf68bf26a7137fa3b518ef8d8f79d5fac32a0e2b406aea8ca0636e24c811ad0b",
+   "0xfb23f071de6f6917c9e62c628f7e4910256edc53417aa712792fe9e1b7c1c578",
+   "0x0000000000000000000000009f3196a3fd8e99b457ee76e50861b19ec503ca9d"
+  ],
+  "status": "0x1",
+  "gasUsed": 1090294,
+  "n_logs": 13
+ },
+ "0xb675fe096dd178289aa77904eb9a4da8315dcf9b3d93bdf1998e1ced6f4ffe25": {
+  "tax_ppm": 30000,
+  "word1": 9000,
+  "topics": [
+   "0xcf68bf26a7137fa3b518ef8d8f79d5fac32a0e2b406aea8ca0636e24c811ad0b",
+   "0xb675fe096dd178289aa77904eb9a4da8315dcf9b3d93bdf1998e1ced6f4ffe25",
+   "0x000000000000000000000000f651996daf6e84315bea05d9b2735d710ad01d93"
+  ],
+  "status": "0x1",
+  "gasUsed": 1089790,
+  "n_logs": 13
+ },
+ "0x1624dcff54e8a61c65195da263f6a0bb9897070723fde6fbbbe3501960daaffd": {
+  "tax_ppm": 50000,
+  "word1": 9400,
+  "topics": [
+   "0xcf68bf26a7137fa3b518ef8d8f79d5fac32a0e2b406aea8ca0636e24c811ad0b",
+   "0x1624dcff54e8a61c65195da263f6a0bb9897070723fde6fbbbe3501960daaffd",
+   "0x000000000000000000000000873f4f46ccb43755a88ce80619970dde8a96b8a6"
+  ],
+  "status": "0x1",
+  "gasUsed": 1091391,
+  "n_logs": 13
+ },
+ "0x1f6255852c62e24bbe9b3b7f660e4d9464ebbd497c6d81666a5bc3d42d562eb3": {
+  "tax_ppm": 30000,
+  "word1": 9000,
+  "topics": [
+   "0xcf68bf26a7137fa3b518ef8d8f79d5fac32a0e2b406aea8ca0636e24c811ad0b",
+   "0x1f6255852c62e24bbe9b3b7f660e4d9464ebbd497c6d81666a5bc3d42d562eb3",
+   "0x000000000000000000000000e8f81dcfd82797d72f6d07cf10b0dab7e20c658d"
+  ],
+  "status": "0x1",
+  "gasUsed": 966570,
+  "n_logs": 9
+ }
+}

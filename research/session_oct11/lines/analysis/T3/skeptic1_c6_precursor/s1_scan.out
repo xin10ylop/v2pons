@@ -1,0 +1,20 @@
+tx cache: seeded 4707 own 0
+slice 85311700..85734702: 10-10 21:24:27 -> 10-11 09:38:24 UTC, 9.61 blocks/s; Initialize logs 2296
+1444-byte PositionManager launches: 716 {'3.0': 500, 'v5': 113, 'v9.33333': 19, 'v40': 13, 'v4e-05': 11, 'v0': 8, 'v2': 4, 'v0.0012177': 3, 'v4': 3, 'v1.95584e-05': 2, 'v33.3333': 1, 'v6.19008e-05': 1}
+  events 20/716
+  events 120/716
+  events 220/716
+  events 320/716
+  events 420/716
+  events 520/716
+  events 620/716
+  events 716/716
+3.0 pools 500 swap/ml txs to fetch: 462
+  txs 400/462
+  txs 462/462
+  token logs 20/500
+  token logs 120/500
+  token logs 220/500
+  token logs 320/500
+  token logs 420/500
+done

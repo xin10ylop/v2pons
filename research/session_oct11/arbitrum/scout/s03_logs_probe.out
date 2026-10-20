@@ -1,0 +1,31 @@
+== arb1
+ PM Initialize addr-filter span 2000 ok n=0 0.35s
+ PM Initialize addr-filter span 10000 ok n=0 0.32s
+ PM Initialize addr-filter span 100000 ok n=1 0.51s
+ PM Initialize addr-filter span 1000000 ok n=527 0.69s
+ PM Swap span 2000 ok n=85 0.33s
+ PM Swap span 20000 ok n=1499 0.65s
+ all-address PM-Swap-topic span 2000 ok n=85 0.36s
+ batch of 5: list of 5, ids [0, 1, 2, 3, 4]
+ batch of 50: list of 50, errors 0
+== publicnode
+ PM Initialize addr-filter span 2000 ERR {"http_error": 403, "body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"},\"id\":1}\n"}
+ PM Initialize addr-filter span 10000 ERR {"http_error": 403, "body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"},\"id\":1}\n"}
+ PM Initialize addr-filter span 100000 ERR {"http_error": 403, "body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"},\"id\":1}\n"}
+ PM Initialize addr-filter span 1000000 ERR {"code": -32701, "message": "exceed maximum block range: 10000"}
+ PM Swap span 2000 ERR {"http_error": 403, "body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"},\"id\":1}\n"}
+ PM Swap span 20000 ERR {"http_error": 403, "body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"},\"id\":1}\n"}
+ all-address PM-Swap-topic span 2000 ERR {"http_error": 403, "body": "{\"jsonrpc\":\"2.0\",\"error\":{\"code\":-32602,\"message\":\"Archive requests require a personal token. Get one at: https://www.allnodes.com/publicnode\"},\"id\":1}\n"}
+ batch of 5: list of 5, ids [0, 1, 2, 3, 4]
+ batch of 50: list of 50, errors 0
+== drpc
+ PM Initialize addr-filter span 2000 ERR {"http_error": 400, "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"ranges over 10000 blocks are not supported on free plan\",\"code\":35}}"}
+ PM Initialize addr-filter span 10000 ERR {"http_error": 400, "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"ranges over 10000 blocks are not supported on free plan\",\"code\":35}}"}
+ PM Initialize addr-filter span 100000 ERR {"http_error": 400, "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"ranges over 10000 blocks are not supported on free plan\",\"code\":35}}"}
+ PM Initialize addr-filter span 1000000 ERR {"http_error": 400, "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"ranges over 10000 blocks are not supported on free plan\",\"code\":35}}"}
+ PM Swap span 2000 ERR {"http_error": 400, "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"ranges over 10000 blocks are not supported on free plan\",\"code\":35}}"}
+ PM Swap span 20000 ERR {"http_error": 400, "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"ranges over 10000 blocks are not supported on free plan\",\"code\":35}}"}
+ all-address PM-Swap-topic span 2000 ERR {"http_error": 400, "body": "{\"id\":1,\"jsonrpc\":\"2.0\",\"error\":{\"message\":\"ranges over 10000 blocks are not supported on free plan\",\"code\":35}}"}
+ batch of 5: {'http_error': 500, 'body': '[{"id":0,"jsonrpc":"2.0","error":{"message":"Batch of more than 3 requests are not allowed on free plan, to use this feature register paid account at drpc.org","code":31}}
+ batch of 50: {'http_error': 500, 'body': '[{"id":0,"jsonrpc":"2.0","error":{"message":"Batch of more than 3 requests are not allowed on free plan, to use this feature register paid account at drpc.org","code":31}}
+requests 27 non-ok [('https://arbitrum-one-rpc.publicnode.com', 403, 0.185), ('https://arbitrum-one-rpc.publicnode.com', 403, 0.179), ('https://arbitrum-one-rpc.publicnode.com', 403, 0.216), ('https://arbitrum-one-rpc.publicnode.com', 403, 0.19), ('https://arbitrum-one-rpc.publicnode.com', 403, 0.221), ('https://arbitrum-one-rpc.publicnode.com', 403, 0.164), ('https://arbitrum.drpc.org', 400, 0.208), ('https://arbitrum.drpc.org', 400, 0.204), ('https://arbitrum.drpc.org', 400, 0.188), ('https://arbitrum.drpc.org', 400, 0.2), ('https://arbitrum.drpc.org', 400, 0.211), ('https://arbitrum.drpc.org', 400, 0.197), ('https://arbitrum.drpc.org', 400, 0.216), ('https://arbitrum.drpc.org', 500, 0.2), ('https://arbitrum.drpc.org', 500, 0.193)]

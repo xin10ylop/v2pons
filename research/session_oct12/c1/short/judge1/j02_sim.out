@@ -1,0 +1,12 @@
+(1) our 8 real attempts under my model (0.002 ETH, max_blocks 400, buy at the top of T+2):
+   10-11 20:58:49 0x5ec68315 real FILL +4.02% (sell landed buy+61); model FILL, tokens/min_out-1 +3.00% over the quote; sell at buy+61 +4.02%; T +77
+   10-11 20:59:59 0x35869115 real REVERT; model minOut (tokens vs the copy's quote -6.59%, the limit is -3%); T +277
+   10-11 21:01:47 0xd6180333 real FILL +6.66% (sell landed buy+62); model FILL, tokens/min_out-1 +3.00% over the quote; sell at buy+62 +6.66%; T +41
+   10-11 21:02:38 0x6d80b816 real FILL -0.01% (sell landed buy+62); model FILL, tokens/min_out-1 +3.00% over the quote; sell at buy+62 -0.01%; T +33
+   10-11 22:16:34 0xd4654e14 real REVERT; model minOut (tokens vs the copy's quote -3.84%, the limit is -3%); T +118
+   10-11 23:54:58 0x266d00f1 real REVERT; model minOut (tokens vs the copy's quote -6.45%, the limit is -3%); T +103
+   10-12 01:15:58 0x0e4cc1d8 real FILL +3.46% (sell landed buy+62); model FILL, tokens/min_out-1 +2.98% over the quote; sell at buy+62 +3.46%; T +61
+   10-12 01:18:11 0xb47b706f real FILL -100.00% (sell landed buy+62); model FILL, tokens/min_out-1 +3.00% over the quote; sell at buy+62 -100.00%; T +155
+
+(2) 0xcf1d880b: T +194, model minOut (tokens vs quote -5.33%); pull +213 = our buy + 17; buys to T+25: [(4, 86111749, 0.0, 'recurring'), (7, 86111752, 0.0001, 'recurring'), (41, 86111786, 0.0004, 'recurring'), (54, 86111799, 0.002, 'oneoff'), (98, 86111843, 0.0003, 'recurring'), (194, 86111939, 0.08, 'router'), (194, 86111939, 0.28, 'router'), (197, 86111942, 0.0002, 'recurring')]
+    without minOut it would fill and: hold 10 -0.0%, hold 15 -100.0%, hold 20 -100.0%, hold 25 -100.0%, hold 30 -100.0%, hold 35 -100.0%, hold 40 -100.0%, hold 60 -100.0%, tp 4% cap 30 -100.0%, tp 6% cap 30 -100.0%, tp 4% cap 40 -100.0%, tp 6% cap 40 -100.0%

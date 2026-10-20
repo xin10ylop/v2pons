@@ -1,0 +1,68 @@
+(1) positions >= 0.001 ETH held into a pull within 600 blocks of the buy: 113 (in 103 pools)
+   lag    3  0x89b1da45 0.0078 ETH  bought T  +300  pool 0xf1db0b27 (T +103, pulled at launch +406)  LATE  10-12 11:23:19
+   lag   23  0x8a05e322 0.0018 ETH  bought T +3990  pool 0xfb73dfc9 (T +72, pulled at launch +4085)  LATE  10-11 16:30:56
+   lag   36  OURS       0.0020 ETH  bought T    +2  pool 0xb47b706f (T +155, pulled at launch +193)  10-12 01:18:11
+   lag   44  0x89b1da45 0.0273 ETH  bought T  +255  pool 0xd26352e5 (T +116, pulled at launch +415)  LATE  10-12 11:24:50
+   lag   45  0xbd9dc5f6 0.0017 ETH  bought T  +121  pool 0xb63adb7e (T +148, pulled at launch +314)  10-12 13:20:08
+   lag   54  0xbd9dc5f6 0.0014 ETH  bought T   +73  pool 0xd6bd637c (T +150, pulled at launch +277)  10-12 13:37:13
+   lag   58  0x3155c72d 0.0012 ETH  bought T  +464  pool 0x8711adfe (T +62, pulled at launch +584)  LATE  10-12 13:27:04
+   lag   62  0x117ca425 0.0099 ETH  bought T  +474  pool 0xec3c6a62 (T +98, pulled at launch +634)  LATE  10-12 11:21:07
+   lag   65  0x5b0320fb 0.0050 ETH  bought T        pool 0x8f0f4909 (T +None, pulled at launch +133)  10-11 13:32:51
+   lag   65  0x89b1da45 0.0197 ETH  bought T  +210  pool 0xe3e79157 (T +101, pulled at launch +376)  LATE  10-12 12:59:30
+   lag   67  0x305aabee 0.0100 ETH  bought T  +469  pool 0xec3c6a62 (T +98, pulled at launch +634)  LATE  10-12 11:21:07
+   lag   67  0x89b1da45 0.0295 ETH  bought T  +186  pool 0xe96cdeb2 (T +136, pulled at launch +389)  LATE  10-12 11:44:07
+   lag   71  0x89b1da45 0.0079 ETH  bought T  +202  pool 0x00072234 (T +99, pulled at launch +372)  LATE  10-12 12:43:26
+   lag   72  0xbd9dc5f6 0.0017 ETH  bought T   +90  pool 0x93c057ea (T +109, pulled at launch +271)  10-12 13:17:50
+   lag   73  0x89b1da45 0.0197 ETH  bought T  +194  pool 0xd641aefb (T +176, pulled at launch +443)  LATE  10-12 12:57:59
+   lag   74  0x0bc84163 0.0141 ETH  bought T  +122  pool 0x87a03707 (T +137, pulled at launch +333)  10-11 06:00:27
+   lag   75  0x5b0320fb 0.0025 ETH  bought T   +26  pool 0xf7e808ab (T +66, pulled at launch +167)  10-11 17:56:42
+   lag   75  0x3155c72d 0.0012 ETH  bought T   +91  pool 0x9ac8e332 (T +209, pulled at launch +375)  10-12 10:41:19
+   lag   75  0x89b1da45 0.0079 ETH  bought T  +161  pool 0x81d7c2c4 (T +101, pulled at launch +337)  LATE  10-12 12:49:30
+   lag   79  0x89b1da45 0.0197 ETH  bought T  +221  pool 0xe508f034 (T +125, pulled at launch +425)  LATE  10-12 12:54:38
+   lag   80  0x3155c72d 0.0012 ETH  bought T  +107  pool 0x5deeea27 (T +95, pulled at launch +282)  10-12 10:52:53
+   lag   80  0x89b1da45 0.0197 ETH  bought T  +261  pool 0x955fa66a (T +107, pulled at launch +448)  LATE  10-12 12:46:14
+   lag   81  0x89b1da45 0.0295 ETH  bought T  +207  pool 0x892e615b (T +103, pulled at launch +391)  LATE  10-12 11:37:33
+   lag   82  0x919968a4 0.0216 ETH  bought T +3095  pool 0x3141271c (T +130, pulled at launch +3307)  LATE  10-11 01:43:33
+   lag   82  0x3155c72d 0.0012 ETH  bought T  +791  pool 0x810dd6b9 (T +168, pulled at launch +1041)  LATE  10-12 11:57:43
+   lag   83  0x89b1da45 0.0079 ETH  bought T  +246  pool 0x7c7e808e (T +97, pulled at launch +426)  LATE  10-12 13:09:41
+   lag   84  OURS       0.0020 ETH  bought T    +2  pool 0x0e4cc1d8 (T +61, pulled at launch +147)  (we sold first)  10-12 01:15:58
+   lag   85  0x117ca425 0.0099 ETH  bought T  +214  pool 0xd26352e5 (T +116, pulled at launch +415)  LATE  10-12 11:24:50
+   lag   86  0xd1e9a50d 0.0020 ETH  bought T +2253  pool 0x6f18d4bb (T +100, pulled at launch +2439)  LATE  10-11 06:03:04
+   lag   86  0x5b0320fb 0.0050 ETH  bought T   -23  pool 0x91620507 (T +103, pulled at launch +166)  10-11 13:44:10
+   ... positions bought by T+150 (not late): 24; their 10 shortest lags: [36, 45, 54, 65, 72, 74, 75, 75, 80, 84]
+
+(2) exit landing (blocks after our buy) and the margin to the fastest reaction on a position bought by T+150 (lag 36)
+   hold 20 lag 1: lands buy+21; margin to the fastest +15 blocks; reaction pulls at or before it: 0 of 24
+   hold 20 lag 2: lands buy+22; margin to the fastest +14 blocks; reaction pulls at or before it: 0 of 24
+   hold 20 lag 3: lands buy+23; margin to the fastest +13 blocks; reaction pulls at or before it: 0 of 24
+   hold 25 lag 1: lands buy+26; margin to the fastest +10 blocks; reaction pulls at or before it: 0 of 24
+   hold 25 lag 2: lands buy+27; margin to the fastest +9 blocks; reaction pulls at or before it: 0 of 24
+   hold 25 lag 3: lands buy+28; margin to the fastest +8 blocks; reaction pulls at or before it: 0 of 24
+   hold 30 lag 1: lands buy+31; margin to the fastest +5 blocks; reaction pulls at or before it: 0 of 24
+   hold 30 lag 2: lands buy+32; margin to the fastest +4 blocks; reaction pulls at or before it: 0 of 24
+   hold 30 lag 3: lands buy+33; margin to the fastest +3 blocks; reaction pulls at or before it: 0 of 24
+   hold 35 lag 1: lands buy+36; margin to the fastest +0 blocks; reaction pulls at or before it: 1 of 24
+   hold 35 lag 2: lands buy+37; margin to the fastest -1 blocks; reaction pulls at or before it: 1 of 24
+   hold 35 lag 3: lands buy+38; margin to the fastest -2 blocks; reaction pulls at or before it: 1 of 24
+   tp 4%/6% cap 30: lands at the tp buy + lag, at most buy+31..33 (as hold 30); cap 40: at most buy+41..43, past the fastest (36)
+
+(3) pool-age clock: the earliest pulls of pools with an engine trigger (launch offset, T): [(147, 61, '0x0e4cc1d8'), (158, 41, '0xd6180333'), (166, 103, '0x91620507'), (167, 66, '0xf7e808ab'), (169, 60, '0xcae38647'), (176, 77, '0x5ec68315'), (193, 86, '0x867e961e'), (193, 155, '0xb47b706f')]
+   max_blocks 100, hold 25: our sell lands by launch + 129 (T+2 buy, lag 2) / + 131 (T+3, lag 3)
+   max_blocks 100, hold 30: our sell lands by launch + 134 (T+2 buy, lag 2) / + 136 (T+3, lag 3)
+   max_blocks 400, hold 25: our sell lands by launch + 429 (T+2 buy, lag 2) / + 431 (T+3, lag 3)
+   max_blocks 400, hold 30: our sell lands by launch + 434 (T+2 buy, lag 2) / + 436 (T+3, lag 3)
+   pools with T <= 100: earliest pulls [(147, 61, '0x0e4cc1d8'), (158, 41, '0xd6180333'), (167, 66, '0xf7e808ab'), (169, 60, '0xcae38647'), (176, 77, '0x5ec68315'), (193, 86, '0x867e961e')]
+
+(4) replay (j02, T+2): pull minus landing, smallest 8, per exit and max_blocks
+   max_blocks 400 hold 20      : fills with a pull 133; pull - landing: [14, 39, 62, 75, 77, 83, 85, 87]  (smallest in 0xb47b706f)
+   max_blocks 400 hold 25      : fills with a pull 133; pull - landing: [9, 34, 57, 70, 72, 78, 80, 82]  (smallest in 0xb47b706f)
+   max_blocks 400 hold 30      : fills with a pull 133; pull - landing: [4, 29, 52, 65, 67, 73, 75, 77]  (smallest in 0xb47b706f)
+   max_blocks 400 hold 35      : fills with a pull 133; pull - landing: [-1, 24, 47, 60, 62, 68, 70, 72]  (smallest in 0xb47b706f)
+   max_blocks 400 tp 4% cap 30 : fills with a pull 133; pull - landing: [17, 29, 52, 65, 67, 73, 75, 77]  (smallest in 0xb47b706f)
+   max_blocks 400 tp 4% cap 40 : fills with a pull 133; pull - landing: [17, 19, 42, 55, 57, 63, 65, 67]  (smallest in 0xb47b706f)
+   max_blocks 100 hold 20      : fills with a pull 72; pull - landing: [62, 75, 77, 83, 85, 89, 93, 114]  (smallest in 0x0e4cc1d8)
+   max_blocks 100 hold 25      : fills with a pull 72; pull - landing: [57, 70, 72, 78, 80, 84, 88, 109]  (smallest in 0x0e4cc1d8)
+   max_blocks 100 hold 30      : fills with a pull 72; pull - landing: [52, 65, 67, 73, 75, 79, 83, 104]  (smallest in 0x0e4cc1d8)
+   max_blocks 100 hold 35      : fills with a pull 72; pull - landing: [47, 60, 62, 68, 70, 74, 78, 99]  (smallest in 0x0e4cc1d8)
+   max_blocks 100 tp 4% cap 30 : fills with a pull 72; pull - landing: [52, 65, 67, 73, 75, 79, 83, 104]  (smallest in 0x0e4cc1d8)
+   max_blocks 100 tp 4% cap 40 : fills with a pull 72; pull - landing: [42, 55, 57, 63, 65, 69, 73, 94]  (smallest in 0x0e4cc1d8)

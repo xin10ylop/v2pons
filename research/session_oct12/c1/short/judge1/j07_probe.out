@@ -1,0 +1,89 @@
+
+== max_blocks 100, hold 30, (b) all triggered: attempts 84, fill rate 88%, $/attempt +0.066 (per fill +0.076); break-even pull hazard per fill 1.47%; data: 0 pulls in 74 fills, one-sided 95% upper 4.0%
+   leave-one-out $/attempt +0.056..+0.067; top 3 pools 0x1e270e25 +0.56, 0xe96620dc +0.84, 0x85318393 +0.88 = 41% of the total; without them +0.041
+   probe until 100 attempts or the first pull:   E[$]    P(halted)  E[attempts]   p5     p50     p95    P($<0)
+     flat hazard q  0.0%                       +6.61     0.0%     100.0      +3.80  +6.52  +9.68   0%
+     flat hazard q  0.5%                       +3.51    36.4%      80.8      -4.51  +5.20  +9.28   29%
+     flat hazard q  1.0%                       +1.43    58.5%      66.8      -4.95  +0.28  +8.73   49%
+     flat hazard q  2.0%                       -1.15    83.4%      47.0      -5.03  -2.60  +7.46   73%
+     flat hazard q  3.0%                       -2.40    93.0%      35.3      -5.05  -3.40  +5.56   85%
+     flat hazard q  5.0%                       -3.55    98.9%      22.5      -5.06  -4.13  -0.24   96%
+     flat hazard q 10.0%                       -4.35   100.0%      11.3      -5.07  -4.68  -2.51   100%
+     adapts after  0 of our fills               -5.02   100.0%       1.1      -5.03  -5.02  -5.02   100%
+     adapts after  5 of our fills               -4.65   100.0%       6.8      -5.08  -4.76  -3.82   100%
+     adapts after 10 of our fills               -4.27   100.0%      12.5      -5.08  -4.36  -3.15   100%
+     adapts after 25 of our fills               -3.15   100.0%      29.5      -4.56  -3.24  -1.48   100%
+     adapts after 50 of our fills               -1.26   100.0%      57.9      -3.31  -1.34  +1.05   83%
+
+== max_blocks 100, hold 30, (a) holder regime: attempts 14, fill rate 100%, $/attempt +0.132 (per fill +0.132); break-even pull hazard per fill 2.57%; data: 0 pulls in 14 fills, one-sided 95% upper 19.3%
+   leave-one-out $/attempt +0.075..+0.144; top 3 pools 0x5ec68315 +0.19, 0xe96620dc +0.84, 0x85318393 +0.88 = 103% of the total; without them -0.005
+   probe until 100 attempts or the first pull:   E[$]    P(halted)  E[attempts]   p5     p50     p95    P($<0)
+     flat hazard q  0.0%                      +13.25     0.0%     100.0      +8.45 +13.16 +18.35   0%
+     flat hazard q  0.5%                       +8.40    39.7%      78.7      -4.07 +10.55 +17.53   19%
+     flat hazard q  1.0%                       +5.14    63.2%      63.5      -4.86  +4.02 +16.55   33%
+     flat hazard q  2.0%                       +1.30    86.7%      43.5      -5.03  -0.58 +14.19   54%
+     flat hazard q  3.0%                       -0.63    95.2%      32.1      -5.04  -2.16  +9.66   67%
+     flat hazard q  5.0%                       -2.48    99.4%      20.0      -5.05  -3.34  +3.35   84%
+     flat hazard q 10.0%                       -3.81   100.0%      10.1      -5.06  -4.19  -0.60   97%
+     adapts after  0 of our fills               -5.02   100.0%       1.0      -5.02  -5.02  -5.02   100%
+     adapts after  5 of our fills               -4.35   100.0%       6.0      -5.08  -4.23  -3.17   100%
+     adapts after 10 of our fills               -3.70   100.0%      11.0      -5.07  -3.94  -2.09   100%
+     adapts after 25 of our fills               -1.72   100.0%      26.0      -4.03  -1.80  +0.91   87%
+     adapts after 50 of our fills               +1.59   100.0%      51.0      -1.77  +1.50  +5.25   23%
+
+== max_blocks 100, hold 25, (b) all triggered: attempts 84, fill rate 88%, $/attempt +0.049 (per fill +0.056); break-even pull hazard per fill 1.10%; data: 0 pulls in 74 fills, one-sided 95% upper 4.0%
+   leave-one-out $/attempt +0.040..+0.050; top 3 pools 0x8252560a +0.51, 0xf8716ecd +0.52, 0xe96620dc +0.84 = 45% of the total; without them +0.028
+   probe until 100 attempts or the first pull:   E[$]    P(halted)  E[attempts]   p5     p50     p95    P($<0)
+     flat hazard q  0.0%                       +4.91     0.0%     100.0      +2.57  +4.82  +7.58   0%
+     flat hazard q  0.5%                       +2.22    34.8%      81.4      -4.68  +3.78  +7.12   32%
+     flat hazard q  1.0%                       +0.29    58.7%      66.7      -5.02  -1.04  +6.70   55%
+     flat hazard q  2.0%                       -1.89    82.9%      47.1      -5.05  -3.20  +5.67   80%
+     flat hazard q  3.0%                       -2.98    93.0%      35.3      -5.06  -3.85  +3.98   90%
+     flat hazard q  5.0%                       -3.91    98.8%      22.6      -5.07  -4.37  -1.30   98%
+     flat hazard q 10.0%                       -4.52   100.0%      11.4      -5.08  -4.76  -3.07   100%
+     adapts after  0 of our fills               -5.02   100.0%       1.1      -5.03  -5.02  -5.02   100%
+     adapts after  5 of our fills               -4.74   100.0%       6.8      -5.09  -4.84  -4.06   100%
+     adapts after 10 of our fills               -4.47   100.0%      12.5      -5.13  -4.56  -3.51   100%
+     adapts after 25 of our fills               -3.64   100.0%      29.5      -4.80  -3.71  -2.24   100%
+     adapts after 50 of our fills               -2.24   100.0%      57.9      -3.96  -2.31  -0.28   97%
+
+== max_blocks 100, hold 25, (a) holder regime: attempts 14, fill rate 100%, $/attempt +0.086 (per fill +0.086); break-even pull hazard per fill 1.69%; data: 0 pulls in 14 fills, one-sided 95% upper 19.3%
+   leave-one-out $/attempt +0.028..+0.094; top 3 pools 0xcae38647 +0.05, 0x85318393 +0.43, 0xe96620dc +0.84 = 110% of the total; without them -0.011
+   probe until 100 attempts or the first pull:   E[$]    P(halted)  E[attempts]   p5     p50     p95    P($<0)
+     flat hazard q  0.0%                       +8.63     0.0%     100.0      +4.89  +8.54 +12.67   0%
+     flat hazard q  0.5%                       +4.78    39.5%      78.9      -4.53  +6.42 +12.03   26%
+     flat hazard q  1.0%                       +2.19    63.5%      63.2      -5.02  +0.76 +11.25   46%
+     flat hazard q  2.0%                       -0.67    86.4%      43.3      -5.05  -2.22  +9.45   69%
+     flat hazard q  3.0%                       -2.14    95.3%      31.6      -5.07  -3.24  +5.38   82%
+     flat hazard q  5.0%                       -3.37    99.4%      19.7      -5.08  -4.09  +0.61   93%
+     flat hazard q 10.0%                       -4.24   100.0%      10.1      -5.08  -4.62  -2.08   99%
+     adapts after  0 of our fills               -5.02   100.0%       1.0      -5.02  -5.02  -5.02   100%
+     adapts after  5 of our fills               -4.59   100.0%       6.0      -5.08  -4.63  -3.38   100%
+     adapts after 10 of our fills               -4.16   100.0%      11.0      -5.13  -4.24  -2.86   100%
+     adapts after 25 of our fills               -2.87   100.0%      26.0      -4.72  -3.01  -0.81   98%
+     adapts after 50 of our fills               -0.71   100.0%      51.0      -3.27  -0.81  +2.26   68%
+
+== max_blocks 400, hold 30, (b) all triggered: attempts 185, fill rate 74%, $/attempt +0.074 (per fill +0.103); break-even pull hazard per fill 1.98%; data: 0 pulls in 136 fills, one-sided 95% upper 2.2%
+   leave-one-out $/attempt +0.068..+0.075; top 3 pools 0x85318393 +0.88, 0xb47b706f +1.01, 0x1dd0fb3d +1.28 = 23% of the total; without them +0.058
+   probe until 100 attempts or the first pull:   E[$]    P(halted)  E[attempts]   p5     p50     p95    P($<0)
+     flat hazard q  0.0%                       +7.44     0.0%     100.0      +4.29  +7.34 +10.93   0%
+     flat hazard q  0.5%                       +4.71    30.5%      83.9      -4.36  +6.23 +10.55   22%
+     flat hazard q  1.0%                       +2.59    52.3%      70.8      -4.85  +2.86 +10.03   40%
+     flat hazard q  2.0%                       -0.03    76.9%      52.7      -5.03  -1.66  +8.90   63%
+     flat hazard q  3.0%                       -1.58    89.2%      40.2      -5.04  -2.88  +7.45   77%
+     flat hazard q  5.0%                       -3.05    97.8%      26.3      -5.05  -3.81  +1.49   91%
+     flat hazard q 10.0%                       -4.11   100.0%      13.5      -5.06  -4.52  -1.67   99%
+     adapts after  0 of our fills               -5.02   100.0%       1.4      -5.03  -5.02  -5.02   100%
+     adapts after  5 of our fills               -4.53   100.0%       8.2      -5.09  -4.62  -3.55   100%
+     adapts after 10 of our fills               -4.01   100.0%      15.0      -5.02  -4.11  -2.68   100%
+     adapts after 25 of our fills               -2.49   100.0%      35.4      -4.21  -2.58  -0.46   98%
+     adapts after 50 of our fills               +0.06   100.0%      69.3      -2.45  -0.04  +2.89   51%
+
+== max_blocks 400, hold 30, (a) holder regime: attempts 30, fill rate 77%, $/attempt +0.117 (per fill +0.154); break-even pull hazard per fill 2.95%; data: 0 pulls in 23 fills, one-sided 95% upper 12.2%
+   leave-one-out $/attempt +0.086..+0.122; top 3 pools 0xe96620dc +0.84, 0x85318393 +0.88, 0xb47b706f +1.01 = 78% of the total; without them +0.029
+
+pull outcome -5.022 $; launches per day of the line: see j01 (208 line pools Oct 11 01:00 - Oct 12 14:14)
+  max_blocks 100: 84 attempts over 37.7 h = 54 a day; fills 74
+    since 14:00 UTC Oct 12 (line shape): 0x45929ba3 T+91 FILL -0.02%
+  max_blocks 400: 185 attempts over 37.7 h = 118 a day; fills 136
+    since 14:00 UTC Oct 12 (line shape): 0x2365de2c T+132 FILL -0.02%; 0xc580b628 T+121 FILL -0.02%; 0x45929ba3 T+91 FILL -0.02%; 0xc5d416dc T+357 rev

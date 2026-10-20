@@ -1,0 +1,217 @@
+{
+ "all": {
+  "label": "all ETH curves (complete 3,000-block window)",
+  "n": 17919,
+  "with_any_trade_after_create_tx": 13937,
+  "buys_p10_50_90": [
+   0,
+   3,
+   30
+  ],
+  "sells_p10_50_90": [
+   0,
+   2,
+   20
+  ],
+  "mean_buys": 12.33,
+  "buy_eth_p10_50_90": [
+   0.0,
+   0.0465,
+   0.9381
+  ],
+  "mean_buy_eth": 0.3888,
+  "mean_sell_eth": 0.2768,
+  "wallets_p10_50_90": [
+   0,
+   3,
+   27
+  ],
+  "creator_buy_in_create_tx_share": 0.73,
+  "creator_buy_in_create_tx_eth_median_when_any": 0.031,
+  "creator_buys_after_share": 0.032,
+  "creator_sold_share": 0.321,
+  "allowlist_share": 0.364,
+  "listed_buy_eth_mean": 0.1014,
+  "listed_sell_eth_mean": 0.0624,
+  "sniped_share": 0.389,
+  "snipe_eth_mean": 0.0348,
+  "real_eth_at_3000_p10_50_90": [
+   0.0,
+   0.0,
+   0.1804
+  ],
+  "graduated_within_3000": 53,
+  "graduated_ever": 121,
+  "price_path_median": {
+   "1": 1.023,
+   "2": 1.0232,
+   "5": 1.0237,
+   "10": 1.0297,
+   "30": 1.038,
+   "100": 1.0278,
+   "300": 1.0227,
+   "1000": 1.0058,
+   "3000": 1.0001
+  },
+  "price_path_mean": {
+   "1": 1.1083,
+   "2": 1.1153,
+   "5": 1.1248,
+   "10": 1.1455,
+   "30": 1.1676,
+   "100": 1.1733,
+   "300": 1.1891,
+   "1000": 1.1963,
+   "3000": 1.1772
+  },
+  "max_px_p50_90": [
+   1.0,
+   1.0535,
+   2.0392
+  ]
+ },
+ "recent200": {
+  "label": "200 most recent",
+  "n": 200,
+  "with_any_trade_after_create_tx": 142,
+  "buys_p10_50_90": [
+   0,
+   2,
+   29
+  ],
+  "sells_p10_50_90": [
+   0,
+   1,
+   21
+  ],
+  "mean_buys": 12.76,
+  "buy_eth_p10_50_90": [
+   0.0,
+   0.045,
+   1.1905
+  ],
+  "mean_buy_eth": 0.433,
+  "mean_sell_eth": 0.2926,
+  "wallets_p10_50_90": [
+   0,
+   2,
+   24
+  ],
+  "creator_buy_in_create_tx_share": 0.755,
+  "creator_buy_in_create_tx_eth_median_when_any": 0.025,
+  "creator_buys_after_share": 0.04,
+  "creator_sold_share": 0.25,
+  "allowlist_share": 0.205,
+  "listed_buy_eth_mean": 0.1718,
+  "listed_sell_eth_mean": 0.0911,
+  "sniped_share": 0.275,
+  "snipe_eth_mean": 0.0469,
+  "real_eth_at_3000_p10_50_90": [
+   0.0,
+   0.0004,
+   0.2569
+  ],
+  "graduated_within_3000": 1,
+  "graduated_ever": 1,
+  "price_path_median": {
+   "1": 1.0209,
+   "2": 1.0213,
+   "5": 1.0217,
+   "10": 1.0226,
+   "30": 1.0286,
+   "100": 1.0226,
+   "300": 1.0232,
+   "1000": 1.0128,
+   "3000": 1.0004
+  },
+  "price_path_mean": {
+   "1": 1.1139,
+   "2": 1.1253,
+   "5": 1.1446,
+   "10": 1.1665,
+   "30": 1.1882,
+   "100": 1.1841,
+   "300": 1.2345,
+   "1000": 1.2706,
+   "3000": 1.235
+  },
+  "max_px_p50_90": [
+   1.0,
+   1.0462,
+   2.1206
+  ]
+ },
+ "by_day": {
+  "2026-10-04": {
+   "n": 1644,
+   "graduated_ever": 22,
+   "grad_within_3000": 9,
+   "mean_buy_eth_3000": 0.4539,
+   "sum_buy_eth_3000": 746.24,
+   "sniped": 677
+  },
+  "2026-10-05": {
+   "n": 3955,
+   "graduated_ever": 30,
+   "grad_within_3000": 13,
+   "mean_buy_eth_3000": 0.4084,
+   "sum_buy_eth_3000": 1615.06,
+   "sniped": 1626
+  },
+  "2026-10-06": {
+   "n": 2882,
+   "graduated_ever": 11,
+   "grad_within_3000": 5,
+   "mean_buy_eth_3000": 0.4212,
+   "sum_buy_eth_3000": 1213.79,
+   "sniped": 1176
+  },
+  "2026-10-07": {
+   "n": 2309,
+   "graduated_ever": 16,
+   "grad_within_3000": 9,
+   "mean_buy_eth_3000": 0.3907,
+   "sum_buy_eth_3000": 902.15,
+   "sniped": 1051
+  },
+  "2026-10-08": {
+   "n": 1893,
+   "graduated_ever": 10,
+   "grad_within_3000": 3,
+   "mean_buy_eth_3000": 0.3908,
+   "sum_buy_eth_3000": 739.84,
+   "sniped": 708
+  },
+  "2026-10-09": {
+   "n": 2075,
+   "graduated_ever": 16,
+   "grad_within_3000": 8,
+   "mean_buy_eth_3000": 0.343,
+   "sum_buy_eth_3000": 711.74,
+   "sniped": 775
+  },
+  "2026-10-10": {
+   "n": 2100,
+   "graduated_ever": 14,
+   "grad_within_3000": 5,
+   "mean_buy_eth_3000": 0.3401,
+   "sum_buy_eth_3000": 714.22,
+   "sniped": 602
+  },
+  "2026-10-11": {
+   "n": 1061,
+   "graduated_ever": 2,
+   "grad_within_3000": 1,
+   "mean_buy_eth_3000": 0.3045,
+   "sum_buy_eth_3000": 323.11,
+   "sniped": 361
+  }
+ },
+ "grad_blocks_after_create_p10_25_50_75_90": [
+  40,
+  634,
+  5023,
+  72986,
+  686344
+ ]
+}

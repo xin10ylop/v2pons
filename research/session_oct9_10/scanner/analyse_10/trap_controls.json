@@ -1,0 +1,98 @@
+{
+ "control:vbot-v2.433": {
+  "relay_before_sched": {
+   "pools": 1047,
+   "pulled": 1045,
+   "pull_from_sched_p10_50_90": [
+    3,
+    3,
+    3
+   ],
+   "pull_within_5_of_sched": 1041
+  },
+  "no_relay_before_sched": {
+   "pools": 795,
+   "pulled": 436,
+   "pull_from_sched_p10_50_90": [
+    3,
+    78,
+    1053
+   ],
+   "pull_within_5_of_sched": 120
+  },
+  "real_outsider_before": {
+   "pools": 525,
+   "pulled": 521,
+   "pull_from_sched_p10_50_90": [
+    3,
+    3,
+    4
+   ],
+   "pull_within_5_of_sched": 515
+  },
+  "no_real_outsider_before": {
+   "pools": 1317,
+   "pulled": 960,
+   "pull_from_sched_p10_50_90": [
+    3,
+    3,
+    190
+   ],
+   "pull_within_5_of_sched": 646
+  },
+  "real_outsider_non_65050a9b": {
+   "pools": 387,
+   "pulled": 385,
+   "pull_from_sched_p10_50_90": [
+    3,
+    3,
+    4
+   ],
+   "pull_within_5_of_sched": 382
+  }
+ },
+ "control:operator-A": {
+  "relay_before_sched": {
+   "pools": 2,
+   "pulled": 2,
+   "pull_from_sched_p10_50_90": [
+    54,
+    54,
+    232
+   ],
+   "pull_within_5_of_sched": 0
+  },
+  "no_relay_before_sched": {
+   "pools": 73,
+   "pulled": 64,
+   "pull_from_sched_p10_50_90": [
+    6,
+    168,
+    2349
+   ],
+   "pull_within_5_of_sched": 0
+  },
+  "real_outsider_before": {
+   "pools": 0,
+   "pulled": 0,
+   "pull_from_sched_p10_50_90": null,
+   "pull_within_5_of_sched": 0
+  },
+  "no_real_outsider_before": {
+   "pools": 75,
+   "pulled": 66,
+   "pull_from_sched_p10_50_90": [
+    6,
+    165,
+    2157
+   ],
+   "pull_within_5_of_sched": 0
+  },
+  "real_outsider_non_65050a9b": {
+   "pools": 0,
+   "pulled": 0,
+   "pull_from_sched_p10_50_90": null,
+   "pull_within_5_of_sched": 0
+  }
+ }
+}

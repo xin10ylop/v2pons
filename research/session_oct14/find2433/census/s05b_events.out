@@ -1,0 +1,44 @@
+targets 2511 todo 692
+40 / 692 {'posts': 4, 'items': 80, 'r429': 1}
+80 / 692 {'posts': 8, 'items': 160, 'r429': 1}
+120 / 692 {'posts': 12, 'items': 240, 'r429': 2}
+160 / 692 {'posts': 16, 'items': 320, 'r429': 2}
+200 / 692 {'posts': 20, 'items': 400, 'r429': 2}
+240 / 692 {'posts': 24, 'items': 480, 'r429': 4}
+280 / 692 {'posts': 28, 'items': 560, 'r429': 4}
+320 / 692 {'posts': 32, 'items': 640, 'r429': 6}
+miss 0x430251e2e5db816a1ccfc9db708347060fc6cb1a
+miss 0x336efc6d509c89c700ff4dbe15828dd83d987a63
+miss 0x05f8cb3e5dad85c6acc57bc0c8ff5f44b78ad408
+360 / 692 {'posts': 36, 'items': 720, 'r429': 9}
+miss 0xa38e5f7ced70829d987df173d714d66da90c5c61
+miss 0xcac1414eac15af7a6a5fcc8bd578cbed0f9a4d15
+miss 0x9b3554e6c26e06ebe55a7aec4e86e486379c5f6b
+miss 0x27d4f7df079eef5c803f5d8befca1e037d708947
+miss 0x18c1790bb6f68baef9383553edc3362b69cc502d
+miss 0xafdfe59e5698134c3a399c90fe3b55fe17aaa925
+miss 0xcdb20dba7ef03f4a6876de57d507310f6c242e72
+miss 0xae9f22cc9fd8cbeb8de73cff48ddf446e3500565
+miss 0x64570caafa9bcda5b8bf6816a60931b4d3beee61
+miss 0x35049c0e7348dff11851729f021416ba2be39d1b
+miss 0xf5bfcb4a9156137c6dc5a7043aefc356417ebfc4
+miss 0x3628437f58b57438bad4284eab57127678526792
+miss 0x04f7a114ccfb0a820e1fc82d9a1754c11a1fa341
+miss 0x9840c63f001db631916dd73cc412e54b1579056e
+miss 0x2213b6c6ecbd2144b01a82c14b445ffc2ba53fb8
+miss 0x664519ea8aaf5ebf1616dcba562b9ddbdbdc320b
+miss 0xfa83d3d94ed51f991c78231cda9e18099e731398
+miss 0x1a2d37c436446fbcdecabf9aee776fb7dcd4626e
+miss 0x55b49390b9cbc390288aad6e73eaefc168ea929f
+miss 0x675f23192061a75c722ce7ccd524c9fe75602dd1
+miss 0x885a1e4736aa6a60acf5404997729f98b6dd2902
+miss 0x286547ee1bae88cb96d10f4e0bb4f96d332b000d
+400 / 692 {'posts': 40, 'items': 800, 'r429': 15}
+440 / 692 {'posts': 44, 'items': 880, 'r429': 19}
+480 / 692 {'posts': 48, 'items': 960, 'r429': 22}
+520 / 692 {'posts': 52, 'items': 1040, 'r429': 26}
+560 / 692 {'posts': 56, 'items': 1120, 'r429': 33}
+600 / 692 {'posts': 60, 'items': 1200, 'r429': 35}
+640 / 692 {'posts': 64, 'items': 1280, 'r429': 35}
+680 / 692 {'posts': 68, 'items': 1360, 'r429': 37}
+692 / 692 {'posts': 70, 'items': 1384, 'r429': 38}

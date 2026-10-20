@@ -1,0 +1,4 @@
+sells whose Swap sender is SwapRouter02 or the UR 6248
+sell txs by (to, selector, len): [(('0x80114879', '0x3593564c', 484), 25), (('0x71a7629f', '0x3593564c', 484), 12), (('0xd26c8cfc', '0x3593564c', 484), 3)]
+25 nonce-1 not within 1 block
+{'posts': 7, 'items': 90, 'r429': 0}

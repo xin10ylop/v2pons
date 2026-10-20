@@ -1,0 +1,8 @@
+(1764, 'to a wallet', 'exact') 340
+(1764, 'to pool', 'exact') 340
+(3854, 'to a wallet', 'exact') 3
+(3854, 'to pool', 'exact') 3
+(5048, 'to a wallet', 'exact') 6
+(5048, 'to pool', 'exact') 6
+not exact: []
+{'posts': 35, 'items': 698, 'r429': 19}

@@ -1,0 +1,10 @@
+2061 blocks in 1 windows
+250/2061 blocks, through 81533849, 32s, req {'req': 36, '429': 10}
+500/2061 blocks, through 81534099, 56s, req {'req': 57, '429': 18}
+750/2061 blocks, through 81534349, 61s, req {'req': 70, '429': 18}
+1000/2061 blocks, through 81534599, 79s, req {'req': 89, '429': 24}
+1250/2061 blocks, through 81534849, 91s, req {'req': 106, '429': 28}
+1500/2061 blocks, through 81535099, 105s, req {'req': 124, '429': 33}
+1750/2061 blocks, through 81535349, 116s, req {'req': 140, '429': 36}
+2000/2061 blocks, through 81535599, 134s, req {'req': 160, '429': 43}
+2061/2061 blocks, through 81535660, 134s, req {'req': 160, '429': 43}

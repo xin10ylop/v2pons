@@ -1,0 +1,290 @@
+{
+ "0x16cf6788b762ee8969744586ed16fc5705140dd7|4101659e|388|0|200|false": {
+  "count": 32,
+  "per_day": 16.0,
+  "values": [
+   0.0,
+   0.012
+  ],
+  "n_deployers": 3,
+  "real_buy_pools": 1,
+  "real_off_p50": 0,
+  "real_eth_p50": 0.012,
+  "pulled_3000": 0,
+  "liq_launch_zero": 32,
+  "swaps_p50": 0.0,
+  "known": "none",
+  "first_pull_to_sel_top": [],
+  "swap_tx_to_top": [
+   [
+    "0x16cf6788b762ee8969744586ed16fc5705140dd7",
+    1
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+    1
+   ]
+  ]
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|3000|60|false": {
+  "count": 30,
+  "per_day": 15.0,
+  "values": [
+   0.0
+  ],
+  "n_deployers": 29,
+  "real_buy_pools": 29,
+  "real_off_p50": 49,
+  "real_eth_p50": 0.05,
+  "pulled_3000": 3,
+  "liq_launch_zero": 0,
+  "swaps_p50": 271.5,
+  "known": "none",
+  "first_pull_to_sel_top": [
+   [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7:dd46508f",
+    3
+   ]
+  ],
+  "swap_tx_to_top": [
+   [
+    "0x75379d5d2ea4c98aeaa57f32e233707550ab03f0",
+    29
+   ],
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    5
+   ],
+   [
+    "0xf0b7eaaf868191adc00065ca13391ef436ce8faf",
+    1
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+    1
+   ]
+  ]
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|2020|600000|6000|true": {
+  "count": 30,
+  "per_day": 15.0,
+  "values": [
+   0.0001,
+   0.000157,
+   0.000194,
+   0.000363,
+   0.000631
+  ],
+  "n_deployers": 6,
+  "real_buy_pools": 1,
+  "real_off_p50": 833,
+  "real_eth_p50": 0.000400484815388288,
+  "pulled_3000": 0,
+  "liq_launch_zero": 0,
+  "swaps_p50": 0.0,
+  "known": "none",
+  "first_pull_to_sel_top": [],
+  "swap_tx_to_top": [
+   [
+    "0xd758a48250e1e27377da487446a2207654c06c39",
+    1
+   ],
+   [
+    "0xf9bb6454f1a3eb1d7a23416c55fc2de76cc43557",
+    1
+   ],
+   [
+    "0x6e2a35a7ad683cf634d91492d73bb7ff774c6919",
+    1
+   ]
+  ]
+ },
+ "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|1|false": {
+  "count": 23,
+  "per_day": 11.5,
+  "values": [
+   0.0
+  ],
+  "n_deployers": 23,
+  "real_buy_pools": 21,
+  "real_off_p50": 115,
+  "real_eth_p50": 0.05860874604208645,
+  "pulled_3000": 0,
+  "liq_launch_zero": 23,
+  "swaps_p50": 1959,
+  "known": "none",
+  "first_pull_to_sel_top": [],
+  "swap_tx_to_top": [
+   [
+    "0x055de4ce27753aab185eb4387851ea12b00bb341",
+    8
+   ],
+   [
+    "0xe394ba9ff1b3d7337e01f89537a5c4980af1e439",
+    6
+   ],
+   [
+    "0xebe93d2f86639869af18b9fc77a3439092ee0e90",
+    6
+   ],
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    1
+   ],
+   [
+    "0x628bd69ecbc135cdda02ffd6d6db918f5cd835ce",
+    1
+   ]
+  ]
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|f7020405|196|10000|200|false": {
+  "count": 59,
+  "per_day": 29.5,
+  "values": [
+   0.0
+  ],
+  "n_deployers": 53,
+  "real_buy_pools": 57,
+  "real_off_p50": 142,
+  "real_eth_p50": 0.162,
+  "pulled_3000": 17,
+  "liq_launch_zero": 59,
+  "swaps_p50": 8,
+  "known": "none",
+  "first_pull_to_sel_top": [
+   [
+    "0x58daec3116aae6d93017baaea7749052e8a04fa7:dd46508f",
+    17
+   ]
+  ],
+  "swap_tx_to_top": [
+   [
+    "0x8876789976decbfcbbbe364623c63652db8c0904",
+    57
+   ],
+   [
+    "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+    6
+   ],
+   [
+    "0x6e2a35a7ad683cf634d91492d73bb7ff774c6919",
+    5
+   ],
+   [
+    "0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd",
+    4
+   ],
+   [
+    "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc",
+    3
+   ],
+   [
+    "0x0000000071727de22e5e9d8baf0edac6f37da032",
+    1
+   ]
+  ]
+ },
+ "0xfcd182416ca91a9e88e9fe44e4f78ea3cb2c15c7|6fe958d8|68|30000|200|false": {
+  "count": 52,
+  "per_day": 26.0,
+  "values": [
+   0.0
+  ],
+  "n_deployers": 1,
+  "real_buy_pools": 0,
+  "real_off_p50": null,
+  "real_eth_p50": null,
+  "pulled_3000": 31,
+  "liq_launch_zero": 52,
+  "swaps_p50": 0.0,
+  "known": "none",
+  "first_pull_to_sel_top": [
+   [
+    "0xfcd182416ca91a9e88e9fe44e4f78ea3cb2c15c7:6fe958d8",
+    31
+   ]
+  ],
+  "swap_tx_to_top": [
+   [
+    "0xd809ec1791774f86c960534009cd11b3292a5bdf",
+    25
+   ]
+  ]
+ },
+ "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|790000|60|true": {
+  "count": 50,
+  "per_day": 25.0,
+  "values": [
+   4e-05
+  ],
+  "n_deployers": 1,
+  "real_buy_pools": 0,
+  "real_off_p50": null,
+  "real_eth_p50": null,
+  "pulled_3000": 0,
+  "liq_launch_zero": 0,
+  "swaps_p50": 0.0,
+  "known": "none",
+  "first_pull_to_sel_top": [],
+  "swap_tx_to_top": [
+   [
+    "0xdb0b1e4aefbcab5d73256f717a3e3e03ea88c346",
+    1
+   ],
+   [
+    "0xb0550000024e2810b8e9e7b81b86df4ac5a3d5e0",
+    1
+   ],
+   [
+    "0xc1552b02672894287c7016a0e214bfa54eef7c03",
+    1
+   ],
+   [
+    "0x1de17737efafb9646fdf6d0874d7c391f9f2d2ba",
+    1
+   ],
+   [
+    "0xe275df7eb65994b5a678bca5216094fa22b3a2e5",
+    1
+   ],
+   [
+    "0x5399d94d2cab7c252a6034042e1917a0e5e17a18",
+    1
+   ]
+  ]
+ },
+ "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|836798|9303|true": {
+  "count": 35,
+  "per_day": 17.5,
+  "values": [
+   0.0
+  ],
+  "n_deployers": 1,
+  "real_buy_pools": 0,
+  "real_off_p50": null,
+  "real_eth_p50": null,
+  "pulled_3000": 0,
+  "liq_launch_zero": 35,
+  "swaps_p50": 0,
+  "known": "none",
+  "first_pull_to_sel_top": [],
+  "swap_tx_to_top": [
+   [
+    "0x9ec6b9f37cbd24f9f76679da775483330c6424a4",
+    1
+   ],
+   [
+    "0xf69cd0fe7280773bb9b7c93ab68420d07290afa9",
+    1
+   ],
+   [
+    "0xdc0ffe5e0d1fa2ba70fa86cc0554e2c3d09879aa",
+    1
+   ],
+   [
+    "0x1521027b665fa38fa4a642991607ad708376dd7b",
+    1
+   ]
+  ]
+ }
+}

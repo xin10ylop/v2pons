@@ -1,0 +1,8 @@
+watching /tmp/claude-0/-home-user-v2pons/f653fbde-aa08-514f-a7a0-470737d59aa4/scratchpad/w.jsonl (times UTC); a launch, our buy, our sell, the result. Ctrl-C to stop.
+15:45:00 launch      fee 0.2383%, eligible
+15:45:05 BUY sent    trigger 0.0053 ETH, live
+15:45:05 buy landed  1 blocks after the trigger
+15:45:05 SELL sent   1 block(s) after our buy: take profit: a buy behind ours, the sell prices at +7.4%
+15:45:09 TRADE DONE  return +7.3%, $+0.210; sold 3 blocks after our buy, pull 6 blocks after it
+15:46:40 skipped     daily cap
+15:48:20 ALARM       live trading halted: the operator's pull landed 3 blocks after our buy

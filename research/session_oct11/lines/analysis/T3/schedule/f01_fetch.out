@@ -1,0 +1,41 @@
+head 86141191 10-11 21:16:09 UTC, 9.747 blocks/s, start 85790314
+  85788314-85798313: PM->bot transfers 592, ETH inits 21
+  85798314-85808313: PM->bot transfers 1487, ETH inits 35
+  85808314-85818313: PM->bot transfers 2345, ETH inits 52
+  85818314-85828313: PM->bot transfers 3243, ETH inits 77
+  85828314-85838313: PM->bot transfers 4069, ETH inits 92
+  85838314-85848313: PM->bot transfers 5059, ETH inits 109
+  85848314-85858313: PM->bot transfers 5990, ETH inits 131
+  85858314-85868313: PM->bot transfers 6824, ETH inits 153
+  85868314-85878313: PM->bot transfers 7713, ETH inits 177
+  85878314-85888313: PM->bot transfers 8593, ETH inits 198
+  85888314-85898313: PM->bot transfers 9428, ETH inits 218
+  85898314-85908313: PM->bot transfers 10246, ETH inits 260
+  85908314-85918313: PM->bot transfers 11195, ETH inits 308
+  85918314-85928313: PM->bot transfers 12048, ETH inits 378
+  85928314-85938313: PM->bot transfers 12844, ETH inits 871
+  85938314-85948313: PM->bot transfers 13659, ETH inits 914
+  85948314-85958313: PM->bot transfers 14529, ETH inits 959
+  85958314-85968313: PM->bot transfers 15386, ETH inits 986
+  85968314-85978313: PM->bot transfers 16180, ETH inits 1020
+  85978314-85988313: PM->bot transfers 17153, ETH inits 1050
+  85988314-85998313: PM->bot transfers 17959, ETH inits 1075
+  85998314-86008313: PM->bot transfers 18825, ETH inits 1705
+  86008314-86018313: PM->bot transfers 19726, ETH inits 1734
+  86018314-86028313: PM->bot transfers 20562, ETH inits 1770
+  86028314-86038313: PM->bot transfers 21435, ETH inits 1804
+  86038314-86048313: PM->bot transfers 22197, ETH inits 1829
+  86048314-86058313: PM->bot transfers 23079, ETH inits 1866
+  86058314-86068313: PM->bot transfers 24010, ETH inits 1901
+  86068314-86078313: PM->bot transfers 24839, ETH inits 1931
+  86078314-86088313: PM->bot transfers 25842, ETH inits 1967
+  86088314-86098313: PM->bot transfers 26837, ETH inits 1999
+  86098314-86108313: PM->bot transfers 27650, ETH inits 2029
+  86108314-86118313: PM->bot transfers 28464, ETH inits 2055
+  86118314-86128313: PM->bot transfers 29487, ETH inits 2089
+  86128314-86138313: PM->bot transfers 30313, ETH inits 2126
+  86138314-86141191: PM->bot transfers 30557, ETH inits 2132
+bot-served pool ids 499; candidate launches in window 499
+499 pools; by (to POSM, value, clen): [((True, 2.4333285, 1444, True), 233), ((True, 3.0, 1444, True), 191), ((True, 5.0, 1444, True), 75)]
+per-pool logs fetched
+fetching 33749 transactions

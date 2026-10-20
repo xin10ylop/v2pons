@@ -1,0 +1,15 @@
+{"chain": "base", "url": "https://base.drpc.org", "from": 52435909, "to": 52479109, "head_ts": 1791747565, "hours": 24.0, "block_time_est": 2.0, "n_logs": 13260, "secs": 379.6, "final_chunk": 100, "errlog": ["getLogs err at 52444609-52444708: retries exhausted for eth_getLogs -> chunk 50", "getLogs err at 52455534-52455633: retries exhausted for eth_getLogs -> chunk 50", "getLogs err at 52471359-52471458: retries exhausted for eth_getLogs -> chunk 50"]}
+10394 V4 Initialize 0x498581ff718922c3f8e6a244956af099b2652b2b
+1044 V2 PairCreated 0x02a84c1b3bbd7401a5f7fa98a384ebc70bb5749e
+1044 V2 PairCreated 0x25e89b02f0c62b67622b4ebd629c882a73d8cabc
+532 V2 PairCreated 0x8909dc15e40173ff4699343b6eb8132c65e18ec6
+106 V3 PoolCreated 0x33128a8fc17869897dce68ed026d694621f6fdfd
+85 Slipstream PoolCreated(tickSpacing) 0xf8f2eb4940cfe7d13603dddd87f123820fc061ef
+28 V2 PairCreated 0x488db0978b34c6fd901760b9024b565c1117c7c8
+13 Solidly PoolCreated(stable) 0x420dd381b31aef6683db6b902084cb0ffece40da
+9 PCS Infinity CL Initialize 0xa0ffb9c1ce1fe56963b0321b32e7a0302114058b
+2 V3 PoolCreated 0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865
+1 Algebra Pool 0x36077d39cdc65e1e3fb65810430e5b2c4d5fa29e
+1 Slipstream PoolCreated(tickSpacing) 0x5e7bb104d84c7cb9b682aac2f3d509f5f406809a
+1 Slipstream PoolCreated(tickSpacing) 0xade65c38cd4849adba595a4323a8c7ddfe89716a
+stats {'https://base.drpc.org': {'ok': 454, 'err': 0, '429': 40, 'lat': 91.18155431747437, 'errs': {}}}

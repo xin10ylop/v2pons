@@ -1,0 +1,58 @@
+{
+ "f": {
+  "cap 10 p_react 0.2": 0.16797131458007172,
+  "cap 10 p_react 1.0": 0.2092,
+  "cap None p_react 0.2": 0.3833922261484099,
+  "cap None p_react 1.0": 0.5613
+ },
+ "table": {
+  "0.03": {
+   "ret": 0.02466556448750166,
+   "profit_trade_usd": 1.9017150219863779,
+   "profit_day_usd": 19.01715021986378,
+   "catch_usd": 77.1,
+   "days_per_catch": 4.054235209199092,
+   "trades_per_catch": 40.54235209199092,
+   "residual_day_usd_q30": 1.442541,
+   "residual_day_usd_q7": 6.1823185714285716,
+   "breakeven_q_per_day": 0.4394363885177563,
+   "bound_per_trade_usd": 1.1861538461538461
+  },
+  "0.1": {
+   "ret": 0.023322138474768248,
+   "profit_trade_usd": 5.99378958801544,
+   "profit_day_usd": 59.9378958801544,
+   "catch_usd": 257.0,
+   "days_per_catch": 4.287771471221989,
+   "trades_per_catch": 42.877714712219884,
+   "residual_day_usd_q30": 4.808470000000001,
+   "residual_day_usd_q7": 20.60772857142857,
+   "breakeven_q_per_day": 0.4155021997998975,
+   "bound_per_trade_usd": 3.9538461538461545
+  },
+  "0.3": {
+   "ret": 0.020137422768784382,
+   "profit_trade_usd": 15.525952954732757,
+   "profit_day_usd": 155.2595295473276,
+   "catch_usd": 771.0,
+   "days_per_catch": 4.965878759570613,
+   "trades_per_catch": 49.65878759570613,
+   "residual_day_usd_q30": 14.42541,
+   "residual_day_usd_q7": 61.82318571428572,
+   "breakeven_q_per_day": 0.35876399017966115,
+   "bound_per_trade_usd": 11.861538461538462
+  },
+  "1.0": {
+   "ret": 0.01381058069461313,
+   "profit_trade_usd": 35.493192385155744,
+   "profit_day_usd": 354.9319238515575,
+   "catch_usd": 2570.0,
+   "days_per_catch": 7.240825147852427,
+   "trades_per_catch": 72.40825147852428,
+   "residual_day_usd_q30": 48.084700000000005,
+   "residual_day_usd_q7": 206.07728571428572,
+   "breakeven_q_per_day": 0.24604633341551987,
+   "bound_per_trade_usd": 39.53846153846154
+  }
+ }
+}

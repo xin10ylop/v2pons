@@ -1,0 +1,527 @@
+{
+ "v2433_relay_trap": {
+  "while_we_traded_with_relay": {
+   "n": 1015,
+   "pulled_3000": 0.998,
+   "pull_after_bot": [
+    3,
+    3,
+    3
+   ],
+   "pull_2_4_after_bot": 0.992,
+   "pulled_before_bot": 1,
+   "pull_after_relay_buy": [
+    10,
+    11,
+    12
+   ]
+  },
+  "while_we_traded_without_relay": {
+   "n": 153,
+   "pulled_3000": 0.81,
+   "pull_after_bot": [
+    3,
+    3,
+    52
+   ],
+   "pull_2_4_after_bot": 0.706,
+   "pulled_before_bot": 0,
+   "pull_after_relay_buy": null
+  },
+  "before_us": {
+   "n": 675,
+   "pulled_3000": 0.511,
+   "pull_after_bot": [
+    3,
+    107,
+    1222
+   ],
+   "pull_2_4_after_bot": 0.065,
+   "pulled_before_bot": 0,
+   "pull_after_relay_buy": [
+    10,
+    11,
+    13
+   ]
+  }
+ },
+ "vbot_other_front_by_slice": {
+  "v3.0|10-08 18h": {
+   "n": 100,
+   "mean": 0.0664,
+   "median": 0.06153,
+   "win": 0.97,
+   "pulled_first": 0
+  },
+  "v3.0|10-09 00h": {
+   "n": 96,
+   "mean": 0.06328,
+   "median": 0.06138,
+   "win": 0.9896,
+   "pulled_first": 0
+  },
+  "v3.0|10-09 06h": {
+   "n": 109,
+   "mean": 0.05647,
+   "median": 0.06085,
+   "win": 0.9725,
+   "pulled_first": 0
+  },
+  "v3.0|10-09 12h": {
+   "n": 143,
+   "mean": 0.06082,
+   "median": 0.06087,
+   "win": 1.0,
+   "pulled_first": 0
+  },
+  "v3.0|10-09 18h": {
+   "n": 127,
+   "mean": 0.05905,
+   "median": 0.06084,
+   "win": 1.0,
+   "pulled_first": 0
+  },
+  "v3.0|10-10 00h": {
+   "n": 110,
+   "mean": 0.05855,
+   "median": 0.06085,
+   "win": 1.0,
+   "pulled_first": 0
+  },
+  "v3.0|10-10 06h": {
+   "n": 94,
+   "mean": 0.06037,
+   "median": 0.06168,
+   "win": 1.0,
+   "pulled_first": 0
+  },
+  "v3.0|10-10 12h": {
+   "n": 105,
+   "mean": 0.05811,
+   "median": 0.06084,
+   "win": 1.0,
+   "pulled_first": 0
+  },
+  "v3.0|10-10 18h": {
+   "n": 5,
+   "mean": 0.06092,
+   "median": 0.06085,
+   "win": 1.0,
+   "pulled_first": 0
+  },
+  "v5.0|10-08 18h": {
+   "n": 60,
+   "mean": 0.02183,
+   "median": 0.01825,
+   "win": 0.9167,
+   "pulled_first": 0
+  },
+  "v5.0|10-09 00h": {
+   "n": 47,
+   "mean": 0.02467,
+   "median": 0.02792,
+   "win": 0.9574,
+   "pulled_first": 0
+  },
+  "v5.0|10-09 06h": {
+   "n": 55,
+   "mean": 0.01721,
+   "median": 0.01813,
+   "win": 0.8909,
+   "pulled_first": 0
+  },
+  "v5.0|10-09 12h": {
+   "n": 63,
+   "mean": 0.01584,
+   "median": 0.01812,
+   "win": 0.8413,
+   "pulled_first": 0
+  },
+  "v5.0|10-09 18h": {
+   "n": 54,
+   "mean": 0.01655,
+   "median": 0.01813,
+   "win": 0.8704,
+   "pulled_first": 0
+  },
+  "v5.0|10-10 00h": {
+   "n": 44,
+   "mean": 0.01662,
+   "median": 0.01813,
+   "win": 0.8864,
+   "pulled_first": 0
+  },
+  "v5.0|10-10 06h": {
+   "n": 50,
+   "mean": 0.01486,
+   "median": 0.01813,
+   "win": 0.86,
+   "pulled_first": 0
+  },
+  "v5.0|10-10 12h": {
+   "n": 57,
+   "mean": 0.01302,
+   "median": 0.01812,
+   "win": 0.7895,
+   "pulled_first": 0
+  },
+  "v5.0|10-10 18h": {
+   "n": 4,
+   "mean": 0.01481,
+   "median": 0.01613,
+   "win": 0.75,
+   "pulled_first": 0
+  }
+ },
+ "vbot_other_front_by_stake": {
+  "v3.0|0.0029": {
+   "n": 889,
+   "mean": 0.05966,
+   "median": 0.06024,
+   "win": 0.992,
+   "bot_buy_dropped": 0,
+   "usd_trade": 0.447,
+   "usd_day": 198.9
+  },
+  "v3.0|0.0058": {
+   "n": 889,
+   "mean": 0.06028,
+   "median": 0.06085,
+   "win": 0.992,
+   "bot_buy_dropped": 0,
+   "usd_trade": 0.904,
+   "usd_day": 402.0
+  },
+  "v3.0|0.012": {
+   "n": 889,
+   "mean": 0.06042,
+   "median": 0.06098,
+   "win": 0.992,
+   "bot_buy_dropped": 0,
+   "usd_trade": 1.875,
+   "usd_day": 833.8
+  },
+  "v3.0|0.025": {
+   "n": 889,
+   "mean": 0.06012,
+   "median": 0.06068,
+   "win": 0.992,
+   "bot_buy_dropped": 0,
+   "usd_trade": 3.887,
+   "usd_day": 1728.4
+  },
+  "v3.0|0.05": {
+   "n": 889,
+   "mean": 0.05929,
+   "median": 0.05984,
+   "win": 0.992,
+   "bot_buy_dropped": 0,
+   "usd_trade": 7.667,
+   "usd_day": 3408.9
+  },
+  "v3.0|0.075": {
+   "n": 889,
+   "mean": 0.05835,
+   "median": 0.05897,
+   "win": 0.991,
+   "bot_buy_dropped": 1,
+   "usd_trade": 11.319,
+   "usd_day": 5032.7
+  },
+  "v3.0|0.1": {
+   "n": 889,
+   "mean": -0.01962,
+   "median": -0.01963,
+   "win": 0.0,
+   "bot_buy_dropped": 882,
+   "usd_trade": -5.073,
+   "usd_day": -2255.7
+  },
+  "v5.0|0.0029": {
+   "n": 434,
+   "mean": 0.01677,
+   "median": 0.01744,
+   "win": 0.866,
+   "bot_buy_dropped": 0,
+   "usd_trade": 0.126,
+   "usd_day": 27.3
+  },
+  "v5.0|0.0058": {
+   "n": 434,
+   "mean": 0.01747,
+   "median": 0.01813,
+   "win": 0.873,
+   "bot_buy_dropped": 0,
+   "usd_trade": 0.262,
+   "usd_day": 56.9
+  },
+  "v5.0|0.012": {
+   "n": 434,
+   "mean": 0.01779,
+   "median": 0.01844,
+   "win": 0.873,
+   "bot_buy_dropped": 0,
+   "usd_trade": 0.552,
+   "usd_day": 119.9
+  },
+  "v5.0|0.025": {
+   "n": 434,
+   "mean": 0.01786,
+   "median": 0.01849,
+   "win": 0.873,
+   "bot_buy_dropped": 0,
+   "usd_trade": 1.155,
+   "usd_day": 250.6
+  },
+  "v5.0|0.05": {
+   "n": 434,
+   "mean": 0.01771,
+   "median": 0.01834,
+   "win": 0.873,
+   "bot_buy_dropped": 0,
+   "usd_trade": 2.29,
+   "usd_day": 497.1
+  },
+  "v5.0|0.075": {
+   "n": 434,
+   "mean": 0.01751,
+   "median": 0.01814,
+   "win": 0.873,
+   "bot_buy_dropped": 0,
+   "usd_trade": 3.396,
+   "usd_day": 737.2
+  },
+  "v5.0|0.1": {
+   "n": 434,
+   "mean": 0.0173,
+   "median": 0.01792,
+   "win": 0.873,
+   "bot_buy_dropped": 0,
+   "usd_trade": 4.474,
+   "usd_day": 971.1
+  }
+ },
+ "vbot_other_bot_offset_hist": {
+  "v3.0": [
+   [
+    6,
+    5
+   ],
+   [
+    7,
+    45
+   ],
+   [
+    8,
+    313
+   ],
+   [
+    9,
+    292
+   ],
+   [
+    10,
+    164
+   ],
+   [
+    11,
+    14
+   ],
+   [
+    12,
+    6
+   ],
+   [
+    13,
+    3
+   ],
+   [
+    14,
+    11
+   ],
+   [
+    15,
+    15
+   ],
+   [
+    16,
+    9
+   ],
+   [
+    17,
+    2
+   ],
+   [
+    19,
+    3
+   ],
+   [
+    22,
+    1
+   ],
+   [
+    33,
+    1
+   ],
+   [
+    37,
+    1
+   ],
+   [
+    56,
+    1
+   ],
+   [
+    60,
+    1
+   ],
+   [
+    77,
+    1
+   ],
+   [
+    179,
+    1
+   ]
+  ],
+  "v5.0": [
+   [
+    7,
+    5
+   ],
+   [
+    8,
+    122
+   ],
+   [
+    9,
+    190
+   ],
+   [
+    10,
+    79
+   ],
+   [
+    11,
+    12
+   ],
+   [
+    12,
+    2
+   ],
+   [
+    13,
+    2
+   ],
+   [
+    14,
+    3
+   ],
+   [
+    15,
+    7
+   ],
+   [
+    16,
+    3
+   ],
+   [
+    17,
+    2
+   ],
+   [
+    18,
+    2
+   ],
+   [
+    19,
+    3
+   ],
+   [
+    21,
+    1
+   ],
+   [
+    128,
+    1
+   ]
+  ]
+ },
+ "vbot_other_outsiders": {
+  "0xfeda1c58462150b4cb94c63efce3647e78f883eb": {
+   "pools": 10,
+   "eth": [
+    1.98e-05,
+    4.95e-05,
+    4.95e-05
+   ],
+   "offs": [
+    5,
+    6,
+    8
+   ],
+   "pull_after_bot": [
+    8,
+    10,
+    8,
+    3,
+    10,
+    10,
+    8,
+    3,
+    8,
+    185
+   ],
+   "sells_seen_in_first8": 0,
+   "sell_offs": []
+  },
+  "0x9f3b9a449dfaa2fdfb4dd5e1d8c47b9f12d051ea": {
+   "pools": 3,
+   "eth": [
+    0.003,
+    0.003,
+    0.01
+   ],
+   "offs": [
+    5,
+    5,
+    7
+   ],
+   "pull_after_bot": [
+    11,
+    3,
+    9
+   ],
+   "sells_seen_in_first8": 0,
+   "sell_offs": []
+  },
+  "0x9a12867607c191a7191c08e3d8dea7018e277416": {
+   "pools": 11,
+   "eth": [
+    0.00015,
+    0.00015,
+    0.00015
+   ],
+   "offs": [
+    2,
+    3,
+    6
+   ],
+   "pull_after_bot": [
+    8,
+    10,
+    4,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    4
+   ],
+   "sells_seen_in_first8": 0,
+   "sell_offs": []
+  }
+ }
+}

@@ -1,0 +1,140 @@
+[
+ {
+  "pid": "0x05fe8d7c1d527bd40806710968f0bcc2a276c13520a76ff990f7f673f46d54f3",
+  "hooks": "0xed78148cf1fd7978268e0c415754809d8e61c840",
+  "token": "0x84b2c5bb9f3fdc4e149b5b2965046245abc132ff",
+  "buy_out": 19287519407473017484262810,
+  "buy_err": null,
+  "balance_slot": 0,
+  "sell_out_wei": null,
+  "sell_err": {
+   "code": 3,
+   "message": "execution reverted",
+   "data": "0x"
+  },
+  "round_trip": null
+ },
+ {
+  "pid": "0xfcf0856d13f33c786014f19a4e18eae9cf50b68a11989a5da973e8df293ed117",
+  "hooks": "0xdc3ee8b5cdf2beaf807f4792587614aa28a48840",
+  "token": "0xabb72046171842e71adf9750e848454e1eb76b1a",
+  "buy_out": 19287519407473017484262810,
+  "buy_err": null,
+  "balance_slot": 0,
+  "sell_out_wei": null,
+  "sell_err": {
+   "code": 3,
+   "message": "execution reverted",
+   "data": "0x"
+  },
+  "round_trip": null
+ },
+ {
+  "pid": "0x5a5ba1463c79dc041e371b2339f7ffc8a353fa650b834521298179ca86c0b0a8",
+  "hooks": "0x2e6df8d0a1dd79e2c365910779f7ce691f350840",
+  "token": "0xe99f868b0d84b91ccd71182d06422ac86ba33ed9",
+  "buy_out": 5709245537226332880746849,
+  "buy_err": null,
+  "balance_slot": 0,
+  "sell_out_wei": null,
+  "sell_err": {
+   "code": 3,
+   "message": "execution reverted",
+   "data": "0x90bfb8650000000000000000000000002e6df8d0a1dd79e2c365910779f7ce691f350840b47b2fb10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000120000000000000000000000000000000000000000000000000000000000000006408c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000066572726f72310000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004a9e35b2f00000000000000000000000000000000000000000000000000000000"
+  },
+  "round_trip": null
+ },
+ {
+  "pid": "0xb748861b1a67ff471638bd3861dec111efafb54f3808a26798bc68296e6ed927",
+  "hooks": "0x0000000000000000000000000000000000000000",
+  "token": "0x3ba500f1ababbcf0f0247d06d1c56fd7e6c4c09d",
+  "buy_out": 0,
+  "buy_err": null,
+  "balance_slot": 0,
+  "sell_out_wei": null,
+  "sell_err": {
+   "code": 3,
+   "message": "execution reverted",
+   "data": "0xcb72d3db0000000000000000000000003ba500f1ababbcf0f0247d06d1c56fd7e6c4c09d"
+  },
+  "round_trip": null
+ },
+ {
+  "control": true,
+  "pid": "0x284917282b3799789e097643adb943cbbdee3bdc8bf8198d52bd5780b5577a40",
+  "family": "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|10000|200|true",
+  "token": "0x35cf2bc285cfb30e22f509e434882435ecfe7777",
+  "buy_out": 0,
+  "buy_err": null
+ },
+ {
+  "control": true,
+  "pid": "0x29ff3cb2a3790454c24e3e14cc4dde9f9588bad82127e1f2a90d7fb4cc540c57",
+  "family": "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|10000|200|true",
+  "token": "0x58216615f1d7d3419b57b6fe80d82fa51be11fc2",
+  "buy_out": 0,
+  "buy_err": null
+ },
+ {
+  "control": true,
+  "pid": "0xc66d8f014895366d5267d39fb60e0a826cc8e8356ce9c594c2ebc18ad5425ada",
+  "family": "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|10000|200|true",
+  "token": "0x3585ece540fbe61640fba4f7a446585f995daa1c",
+  "buy_out": 0,
+  "buy_err": null
+ },
+ {
+  "control": true,
+  "pid": "0x93fe9915537f02a1a701c1e369d649db60bdffa085a94412e014b6cce203ab4f",
+  "family": "0x8366a39cc670b4001a1121b8f6a443a643e40951|6276cbbe|196|500|1|true",
+  "token": "0x2455e17c6172b4d831809d02f22d1c71b004a192",
+  "buy_out": 0,
+  "buy_err": {
+   "code": 3,
+   "message": "execution reverted",
+   "data": "0x"
+  }
+ },
+ {
+  "control": true,
+  "pid": "0x4e90e8618cebe0cf407c118279f266c62483126ad3cca1ec4502cbd06daadfb5",
+  "family": "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|10000|200|true",
+  "token": "0x0d7c6f7b8da97f8d010fae5f53c9860151da7777",
+  "buy_out": 0,
+  "buy_err": null
+ },
+ {
+  "control": true,
+  "pid": "0x8cad6712957d331d9fdc4d6ff5eae9658b27480c6f491670936b797b4a3e3b5e",
+  "family": "0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|10000|200|true",
+  "token": "0xbbfc5608c4d353cea9ffe81566bf01f46fa38c98",
+  "buy_out": 0,
+  "buy_err": null
+ },
+ {
+  "control": true,
+  "pid": "0x5473b36ddec97c37e4d1bc58558390678341e392dda42f2d236cac21be862aba",
+  "token": "0xcc0fc3b2990e737a0ede1187804ec9b508fe1111",
+  "fee": 3000,
+  "bn": 85304335,
+  "buy_out": 5730502406533637015980050,
+  "buy_err": null,
+  "balance_slot": 0,
+  "sell_out_wei": 0,
+  "sell_err": null,
+  "round_trip": -1.0
+ },
+ {
+  "control": true,
+  "pid": "0x5697e98912b7615e841b9fa8636fee90ae9821fb95f6c1ffe55d71146ac1ffa7",
+  "token": "0xf8284d0dd212ae4e2f0d655da15a03bb829b9525",
+  "fee": 10000,
+  "bn": 85303285,
+  "buy_out": 3317586772783368717225350,
+  "buy_err": null,
+  "balance_slot": 0,
+  "sell_out_wei": 1978835759999,
+  "sell_err": null,
+  "round_trip": -0.9996588214206898
+ }
+]

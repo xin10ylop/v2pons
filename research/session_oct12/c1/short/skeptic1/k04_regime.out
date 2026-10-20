@@ -1,0 +1,64 @@
+
+10-11 05:57 0x8185f1ea holder T(engine) launch+155 entry launch+157 pull at entry+7293
+   outsider 0xc2101da8 bought 0.00995 ETH at T+3, first sell T+67
+   router buys after our entry (entry+offset, ETH): []
+   router sells: [(62, 0.2164), (62, 0.1893), (62, 0.2965)]
+   hold 5: +0.17% 10: +0.17% 15: +0.17% 20: +0.17% 25: +0.17% 30: +0.17% 35: +0.17% 40: +0.17% 45: +0.17% 50: +0.17% 60: +0.16%
+   tp   tp2 cap30: +0.17%@30 tp2 cap50: +0.17%@50 tp4 cap30: +0.17%@30 tp4 cap50: +0.17%@50 tp6 cap30: +0.17%@30 tp6 cap50: +0.17%@50 tp8 cap30: +0.17%@30 tp8 cap50: +0.17%@50
+
+10-11 06:12 0x23a75029 holder T(engine) launch+141 entry launch+143 pull at entry+31549
+   outsider 0xc2101da8 bought 0.00995 ETH at T+3, first sell T+83
+   router buys after our entry (entry+offset, ETH): [(57, 0.163), (57, 0.247), (57, 0.023), (137, 0.045), (137, 0.016), (137, 0.174), (174, 0.044), (174, 0.157), (174, 0.249)]
+   router sells: [(78, 0.1494), (78, 0.1389), (78, 0.2223), (97, 0.1554), (97, 0.2185), (97, 0.0194)]
+   hold 5: +0.17% 10: +0.17% 15: +0.17% 20: +0.17% 25: +0.17% 30: +0.17% 35: +0.17% 40: +0.17% 45: +0.17% 50: +0.17% 60: +8.61%
+   tp   tp2 cap30: +0.17%@30 tp2 cap50: +0.17%@50 tp4 cap30: +0.17%@30 tp4 cap50: +0.17%@50 tp6 cap30: +0.17%@30 tp6 cap50: +0.17%@50 tp8 cap30: +0.17%@30 tp8 cap50: +0.17%@50
+
+10-11 07:15 0xe12fa945 holder T(engine) launch+155 entry launch+157 pull at entry+49860
+   outsider 0xc2101da8 bought 0.00995 ETH at T+3, first sell T+59
+   router buys after our entry (entry+offset, ETH): [(103, 0.053), (103, 0.202), (103, 0.191), (163, 0.232), (163, 0.267), (164, 0.083)]
+   router sells: [(53, 0.1142), (53, 0.1132), (55, 0.1352)]
+   hold 5: +0.17% 10: +0.17% 15: +0.17% 20: +0.17% 25: +0.17% 30: +0.17% 35: +0.17% 40: +0.17% 45: +0.17% 50: +0.17% 60: -6.89%
+   tp   tp2 cap30: +0.17%@30 tp2 cap50: +0.17%@50 tp4 cap30: +0.17%@30 tp4 cap50: +0.17%@50 tp6 cap30: +0.17%@30 tp6 cap50: +0.17%@50 tp8 cap30: +0.17%@30 tp8 cap50: +0.17%@50
+
+10-11 13:44 0x91620507 holder T(engine) launch+103 entry launch+105 pull at entry+61
+   outsider 0x5b0320fb bought 0.005 ETH at T-23, first sell never
+   router buys after our entry (entry+offset, ETH): []
+   hold 5: -0.02% 10: -0.02% 15: -0.02% 20: -0.02% 25: -0.02% 30: -0.02% 35: -0.02% 40: -0.02% 45: -0.02% 50: -0.02% 60:  -100%
+   tp   tp2 cap30: -0.02%@30 tp2 cap50: -0.02%@50 tp4 cap30: -0.02%@30 tp4 cap50: -0.02%@50 tp6 cap30: -0.02%@30 tp6 cap50: -0.02%@50 tp8 cap30: -0.02%@30 tp8 cap50: -0.02%@50
+
+10-11 19:09 0x049464f8 holder T(engine) launch+100 entry launch+102 pull at entry+43685
+   outsider 0xf4a0048b bought 0.0594 ETH at T-16, first sell T+21
+   router buys after our entry (entry+offset, ETH): [(1, 0.2), (1, 0.18), (120, 0.23), (120, 0.19), (120, 0.27), (174, 1.22)]
+   hold 5: +5.52% 10: +5.52% 15: +5.53% 20: +3.77% 25: +3.78% 30: +3.78% 35: +3.78% 40: +3.78% 45: +3.78% 50: +3.78% 60: +3.78%
+   tp   tp2 cap30: +5.52%@1 tp2 cap50: +5.52%@1 tp4 cap30: +5.52%@1 tp4 cap50: +5.52%@1 tp6 cap30: +3.78%@30 tp6 cap50: +3.78%@50 tp8 cap30: +3.78%@30 tp8 cap50: +3.78%@50
+
+10-11 20:25 0xcf1d880b holder T(engine) launch+194 entry launch+196 pull at entry+17
+   outsider 0x5373fb35 bought 0.00198 ETH at T-140, first sell never
+   router buys after our entry (entry+offset, ETH): []
+   hold 5: -0.02% 10: -0.02% 15:  -100% 20:  -100% 25:  -100% 30:  -100% 35:  -100% 40:  -100% 45:  -100% 50:  -100% 60:  -100%
+   tp   tp2 cap30:  -100%@30 tp2 cap50:  -100%@50 tp4 cap30:  -100%@30 tp4 cap50:  -100%@50 tp6 cap30:  -100%@30 tp6 cap50:  -100%@50 tp8 cap30:  -100%@30 tp8 cap50:  -100%@50
+
+10-11 20:58 0x5ec68315 OURS T(engine) launch+77 entry launch+79 pull at entry+97
+   router buys after our entry (entry+offset, ETH): [(30, 0.06), (30, 0.08), (30, 0.06)]
+   hold 5: -0.02% 10: -0.02% 15: -0.02% 20: -0.02% 25: -0.02% 30: +4.00% 35: +4.01% 40: +4.01% 45: +4.02% 50: +4.02% 60: +4.02%
+   tp   tp2 cap30: +4.00%@30 tp2 cap50: +4.00%@30 tp4 cap30: +4.00%@30 tp4 cap50: +4.02%@50 tp6 cap30: +4.00%@30 tp6 cap50: +4.02%@50 tp8 cap30: +4.00%@30 tp8 cap50: +4.02%@50
+
+10-11 21:01 0xd6180333 OURS T(engine) launch+41 entry launch+43 pull at entry+115
+   router buys after our entry (entry+offset, ETH): [(47, 0.332)]
+   hold 5: -0.02% 10: -0.02% 15: -0.02% 20: -0.02% 25: -0.02% 30: -0.02% 35: -0.02% 40: -0.01% 45: -0.00% 50: +6.66% 60: +6.66%
+   tp   tp2 cap30: -0.02%@30 tp2 cap50: +6.66%@47 tp4 cap30: -0.02%@30 tp4 cap50: +6.66%@47 tp6 cap30: -0.02%@30 tp6 cap50: +6.66%@47 tp8 cap30: -0.02%@30 tp8 cap50: +6.66%@50
+
+10-11 21:02 0x6d80b816 OURS T(engine) launch+33 entry launch+35 pull at entry+65223
+   router buys after our entry (entry+offset, ETH): [(76, 0.02), (126, 0.174), (126, 0.16), (126, 0.047), (144, 0.0008), (184, 0.0003)]
+   hold 5: -0.01% 10: -0.01% 15: -0.01% 20: -0.01% 25: -0.01% 30: -0.01% 35: -0.01% 40: -0.01% 45: -0.01% 50: -0.01% 60: -0.01%
+   tp   tp2 cap30: -0.01%@30 tp2 cap50: -0.01%@50 tp4 cap30: -0.01%@30 tp4 cap50: -0.01%@50 tp6 cap30: -0.01%@30 tp6 cap50: -0.01%@50 tp8 cap30: -0.01%@30 tp8 cap50: -0.01%@50
+
+10-12 01:15 0x0e4cc1d8 OURS T(engine) launch+61 entry launch+63 pull at entry+84
+   router buys after our entry (entry+offset, ETH): [(37, 0.174)]
+   hold 5: -0.02% 10: -0.02% 15: -0.02% 20: -0.02% 25: -0.02% 30: -0.02% 35: -0.02% 40: +3.45% 45: +3.45% 50: +3.45% 60: +3.46%
+   tp   tp2 cap30: -0.02%@30 tp2 cap50: +3.45%@37 tp4 cap30: -0.02%@30 tp4 cap50: +3.45%@50 tp6 cap30: -0.02%@30 tp6 cap50: +3.45%@50 tp8 cap30: -0.02%@30 tp8 cap50: +3.45%@50
+
+10-12 01:18 0xb47b706f OURS T(engine) launch+155 entry launch+157 pull at entry+36
+   router buys after our entry (entry+offset, ETH): [(7, 0.164), (17, 0.346), (27, 0.498)]
+   hold 5: -0.02% 10: +3.19% 15: +3.19% 20:+10.11% 25:+10.11% 30:+20.47% 35:  -100% 40:  -100% 45:  -100% 50:  -100% 60:  -100%
+   tp   tp2 cap30: +3.19%@7 tp2 cap50: +3.19%@7 tp4 cap30:+10.11%@17 tp4 cap50:+10.11%@17 tp6 cap30:+10.11%@17 tp6 cap50:+10.11%@17 tp8 cap30:+10.11%@17 tp8 cap50:+10.11%@17

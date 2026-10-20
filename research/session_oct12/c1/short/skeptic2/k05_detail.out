@@ -1,0 +1,64 @@
+regime pools under the REAL execution (0.002, buy top of T+2, minOut 3%, sell lag 2): gross per exit; 'margin' = the pull's block minus hold 30's landing
+  10-11 05:57:48 0x8185f1ea holder early      EXACT T 155 pull T+7295: REVERT (minOut (BUY_SLIP 3%), -7.42%)
+  10-11 06:12:57 0x23a75029 holder early      EXACT T 141 pull T+31551: REVERT (minOut (BUY_SLIP 3%), -6.54%)
+  10-11 13:44:10 0x91620507 holder early      EXACT T 103 pull at buy+61 (margin 29) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: -0.0%  hold 60: -100%
+  10-11 17:52:57 0x2eb69a80 holder later            T  35 pull at buy+192 (margin 160) | hold 10: -0.0%  hold 20: +0.0%  hold 25: +0.0%  hold 30: +0.1%  tp 4% cap 30: +0.1%  tp 6% cap 50: +3.1%  hold 60: +3.1%
+  10-11 17:56:42 0xf7e808ab holder later            T  66 pull at buy+99 (margin 67) | hold 10: -0.0%  hold 20: -0.0%  hold 25: +0.0%  hold 30: +0.0%  tp 4% cap 30: +0.0%  tp 6% cap 50: +0.0%  hold 60: +0.0%
+  10-11 19:37:24 0xa52938fa holder later            T  38 pull at buy+174 (margin 142) | hold 10: -0.0%  hold 20: -0.0%  hold 25: +0.0%  hold 30: +0.0%  tp 4% cap 30: +0.0%  tp 6% cap 50: +0.0%  hold 60: +0.0%
+  10-11 19:38:24 0x8d437a11 holder later            T  32 pull at buy+492 (margin 460) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: +0.0%  hold 60: +0.0%
+  10-11 19:46:23 0x8985e55f holder early      EXACT T  90 pull T+156: REVERT (no trigger)
+  10-11 20:25:53 0xcf1d880b holder early      EXACT T 194 pull T+19: REVERT (minOut (BUY_SLIP 3%), -5.33%)
+  10-11 20:58:49 0x5ec68315 ours              EXACT T  77 pull at buy+97 (margin 65) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: +4.0%  tp 4% cap 30: +4.0%  tp 6% cap 50: +4.0%  hold 60: +4.0%
+  10-11 21:01:47 0xd6180333 ours              EXACT T  41 pull at buy+115 (margin 83) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: +6.7%  hold 60: +6.7%
+  10-11 21:02:38 0x6d80b816 ours              EXACT T  33 pull at buy+65223 (margin 65191) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: -0.0%  hold 60: -0.0%
+  10-12 01:15:58 0x0e4cc1d8 ours              EXACT T  61 pull at buy+84 (margin 52) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: +3.5%  hold 60: +3.5%
+  10-12 01:18:11 0xb47b706f ours              EXACT T 155 pull at buy+36 (margin 4) | hold 10: +3.2%  hold 20: +10.1%  hold 25: +10.1%  hold 30: +20.5%  tp 4% cap 30: +10.1%  tp 6% cap 50: +10.1%  hold 60: -100%
+  10-12 12:33:45 0xd116728e holder later            T 234 pull at buy+2008 (margin 1976) | hold 10: +2.5%  hold 20: +2.8%  hold 25: +2.9%  hold 30: +2.9%  tp 4% cap 30: +2.9%  tp 6% cap 50: +7.1%  hold 60: +7.1%
+  10-12 12:38:17 0x06c477f7 holder later            T  94 pull at buy+605 (margin 573) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: +6.5%  hold 60: +6.5%
+  10-12 12:47:55 0xc4ff6a75 holder later            T 116 pull T+260: REVERT (minOut (BUY_SLIP 3%), -4.38%)
+  10-12 12:52:57 0x5e3673f7 holder later            T 131 pull T+344: REVERT (minOut (BUY_SLIP 3%), -6.59%)
+  10-12 12:53:49 0xdd2faa39 holder later            T 134 pull T+None: REVERT (minOut (BUY_SLIP 3%), -6.12%)
+  10-12 12:56:07 0x5a9137ee holder later            T 245 pull at buy+18303 (margin 18271) | hold 10: -0.0%  hold 20: -0.0%  hold 25: +0.2%  hold 30: +0.2%  tp 4% cap 30: +0.2%  tp 6% cap 50: +39.9%  hold 60: +39.9%
+  10-12 13:03:04 0xc6145374 holder later            T 106 pull T+363: REVERT (minOut (BUY_SLIP 3%), -4.79%)
+  10-12 13:06:22 0xe96620dc holder later            T  94 pull at buy+360 (margin 328) | hold 10: +5.8%  hold 20: +5.8%  hold 25: +17.0%  hold 30: +17.0%  tp 4% cap 30: +5.8%  tp 6% cap 50: +17.0%  hold 60: +23.2%
+  10-12 13:09:41 0x7c7e808e holder later            T  97 pull at buy+327 (margin 295) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: +7.0%  hold 60: +17.4%
+  10-12 13:11:12 0x85318393 holder later            T  99 pull at buy+None (margin None) | hold 10: +8.8%  hold 20: +8.9%  hold 25: +8.9%  hold 30: +17.8%  tp 4% cap 30: +8.8%  tp 6% cap 50: +8.8%  hold 60: +17.8%
+  10-12 13:17:50 0x93c057ea none         bd13       T 109 pull at buy+160 (margin 128) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: +2.7%  hold 60: +2.7%
+  10-12 13:20:08 0xb63adb7e none         bd13       T 148 pull at buy+164 (margin 132) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: +3.5%  tp 4% cap 30: +3.5%  tp 6% cap 50: +3.5%  hold 60: +3.5%
+  10-12 13:24:27 0x35847e2f holder later bd13       T 106 pull at buy+319 (margin 287) | hold 10: -0.0%  hold 20: +2.3%  hold 25: +2.3%  hold 30: +8.8%  tp 4% cap 30: +4.9%  tp 6% cap 50: +8.8%  hold 60: +11.5%
+  10-12 13:26:14 0xcae38647 holder later bd13       T  60 pull at buy+107 (margin 75) | hold 10: -0.0%  hold 20: +1.3%  hold 25: +1.3%  hold 30: +1.3%  tp 4% cap 30: +1.3%  tp 6% cap 50: +4.8%  hold 60: +4.8%
+  10-12 13:32:30 0xa407c512 none         bd13       T 219 pull at buy+188 (margin 156) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: -0.0%  hold 60: +4.7%
+  10-12 13:33:41 0x40caa830 none         bd13       T  96 pull at buy+1244 (margin 1212) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: -0.0%  hold 60: -0.0%
+  10-12 13:37:13 0xd6bd637c none         bd13       T 150 pull at buy+125 (margin 93) | hold 10: -0.0%  hold 20: -0.0%  hold 25: -0.0%  hold 30: -0.0%  tp 4% cap 30: -0.0%  tp 6% cap 50: -0.0%  hold 60: +6.0%
+
+holder regime (n 31): mixture EV $ per attempt, all pools / leave-one-pool-out min..max
+  hold 10       $5: +0.022  LOO +0.009..+0.023     hold 10       $13: +0.073  LOO +0.038..+0.076   
+  hold 20       $5: +0.040  LOO +0.025..+0.042     hold 20       $13: +0.120  LOO +0.080..+0.124   
+  hold 25       $5: +0.071  LOO +0.045..+0.074     hold 25       $13: +0.200  LOO +0.134..+0.207   
+  hold 30       $5: +0.114  LOO +0.084..+0.119     hold 30       $13: +0.313  LOO +0.235..+0.324   
+  tp 4% cap 30  $5: +0.062  LOO +0.047..+0.064     tp 4% cap 30  $13: +0.176  LOO +0.138..+0.182   
+  tp 6% cap 50  $5: +0.209  LOO +0.150..+0.216     tp 6% cap 50  $13: +0.559  LOO +0.405..+0.578   
+  hold 60       $5: -0.070  LOO -0.139..+0.095     hold 60       $13: -0.167  LOO -0.345..+0.262   
+
+held from T+2 (n 10): mixture EV $ per attempt, all pools / leave-one-pool-out min..max
+  hold 10       $5: +0.007  LOO -0.009..+0.009     hold 10       $13: +0.033  LOO -0.008..+0.038   
+  hold 20       $5: +0.042  LOO -0.009..+0.048     hold 20       $13: +0.123  LOO -0.008..+0.138   
+  hold 25       $5: +0.061  LOO -0.008..+0.069     hold 25       $13: +0.173  LOO -0.008..+0.194   
+  hold 30       $5: +0.114  LOO +0.014..+0.128     hold 30       $13: +0.310  LOO +0.050..+0.345   
+  tp 4% cap 30  $5: +0.062  LOO +0.014..+0.070     tp 4% cap 30  $13: +0.175  LOO +0.050..+0.196   
+  tp 6% cap 50  $5: +0.113  LOO +0.070..+0.127     tp 6% cap 50  $13: +0.307  LOO +0.196..+0.343   
+  hold 60       $5: -0.940  LOO -1.080..-0.486     hold 60       $13: -2.426  LOO -2.791..-1.249   
+
+per FILLED trade (the engine's own P&L line), mixture, holder regime / held from T+2 / all usable:
+  regime hold 20       $5: +0.055 per fill over 23.0 fills   $13: +0.163 per fill over 23.0 fills
+  regime hold 25       $5: +0.097 per fill over 23.0 fills   $13: +0.271 per fill over 23.0 fills
+  regime hold 30       $5: +0.156 per fill over 23.0 fills   $13: +0.423 per fill over 23.0 fills
+  regime tp 4% cap 30  $5: +0.085 per fill over 23.0 fills   $13: +0.238 per fill over 23.0 fills
+  exact  hold 20       $5: +0.073 per fill over 6.0 fills   $13: +0.207 per fill over 6.0 fills
+  exact  hold 25       $5: +0.105 per fill over 6.0 fills   $13: +0.291 per fill over 6.0 fills
+  exact  hold 30       $5: +0.193 per fill over 6.0 fills   $13: +0.519 per fill over 6.0 fills
+  exact  tp 4% cap 30  $5: +0.106 per fill over 6.0 fills   $13: +0.294 per fill over 6.0 fills
+  all    hold 20       $5: +0.056 per fill over 134.0 fills   $13: +0.164 per fill over 134.0 fills
+  all    hold 25       $5: +0.075 per fill over 134.0 fills   $13: +0.212 per fill over 134.0 fills
+  all    hold 30       $5: +0.103 per fill over 134.0 fills   $13: +0.285 per fill over 134.0 fills
+  all    tp 4% cap 30  $5: +0.076 per fill over 134.0 fills   $13: +0.213 per fill over 134.0 fills

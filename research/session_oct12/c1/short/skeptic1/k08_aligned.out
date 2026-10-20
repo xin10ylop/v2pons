@@ -1,0 +1,17 @@
+events: 39; by group {'ours': 5, 'bd13': 7, 'bd<13:15': 11, 'other': 16}
+  group        n          hold 10          hold 20          hold 30          hold 40          hold 60        tp4 cap30        tp4 cap40        tp6 cap50   (mean, pulled)
+  ours         5       +0.62%  0p       +2.01%  0p       +4.88%  0p      -18.51%  1p      -17.17%  1p       +2.81%  0p       +3.51%  0p       +4.85%  0p
+  bd13         7       +1.57%  0p       +2.47%  0p       +3.04%  0p       +3.51%  0p      -25.36%  2p       +2.49%  0p       +2.57%  0p      -11.05%  1p
+  bd<13:15    11       +5.81%  0p       +6.85%  0p       +9.62%  0p      +10.98%  0p      +15.35%  0p       +6.76%  0p       +6.75%  0p       +7.81%  0p
+  other       16       +0.97%  0p       +4.79%  0p       +6.00%  0p       +7.18%  0p       +7.14%  0p       +4.01%  0p       +4.50%  0p       +4.72%  0p
+  ALL         39       +2.40%  0p       +4.60%  0p       +6.34%  0p       +4.30%  1p       +0.50%  3p       +4.36%  0p       +4.66%  0p       +2.78%  1p
+
+events pulled within 80 blocks of the entry (group, pool, h-T, pull after entry, router buys after entry):
+  other     0x87a03707 10-11 06:00 h-T +122 pull + 74 router [13, 13, 13, 22, 71] | hold 10:-0.0% hold 20:+9.1% hold 30:+11.1% hold 40:+11.1% hold 60:+11.1% tp4 cap30:+9.1% tp4 cap40:+9.1% tp6 cap50:+9.1%
+  other     0xf7e808ab 10-11 17:56 h-T  +26 pull + 75 router [62] | hold 10:-0.0% hold 20:-0.0% hold 30:-0.0% hold 40:-0.0% hold 60:-0.0% tp4 cap30:-0.0% tp4 cap40:-0.0% tp6 cap50:-0.0%
+  ours      0xb47b706f 10-12 01:18 h-T   +2 pull + 36 router [7, 17, 27] | hold 10:+3.2% hold 20:+10.1% hold 30:+20.5% hold 40:-100 hold 60:-100 tp4 cap30:+10.1% tp4 cap40:+10.1% tp6 cap50:+10.1%
+  other     0x9ac8e332 10-12 10:41 h-T  +91 pull + 75 router [0, 0, 0, 16, 35, 74] | hold 10:+5.9% hold 20:+6.4% hold 30:-0.7% hold 40:+0.1% hold 60:+0.1% tp4 cap30:+5.9% tp4 cap40:+5.9% tp6 cap50:+5.9%
+  other     0x5deeea27 10-12 10:52 h-T +107 pull + 80 router [17, 38, 38, 38, 46] | hold 10:-0.0% hold 20:+3.1% hold 30:+3.1% hold 40:+11.5% hold 60:+11.6% tp4 cap30:+3.1% tp4 cap40:+3.1% tp6 cap50:+3.1%
+  bd13      0x93c057ea 10-12 13:17 h-T  +90 pull + 72 router [15, 38] | hold 10:-0.0% hold 20:+3.8% hold 30:+3.8% hold 40:+3.9% hold 60:+3.9% tp4 cap30:+3.8% tp4 cap40:+3.9% tp6 cap50:+3.9%
+  bd13      0xb63adb7e 10-12 13:20 h-T +121 pull + 45 router [] | hold 10:-0.0% hold 20:-0.0% hold 30:-0.0% hold 40:-0.0% hold 60:-100 tp4 cap30:-0.0% tp4 cap40:-0.0% tp6 cap50:-100
+  bd13      0xd6bd637c 10-12 13:37 h-T  +73 pull + 54 router [23, 23] | hold 10:-0.0% hold 20:-0.0% hold 30:+2.9% hold 40:+2.9% hold 60:-100 tp4 cap30:+2.9% tp4 cap40:+2.9% tp6 cap50:+2.9%

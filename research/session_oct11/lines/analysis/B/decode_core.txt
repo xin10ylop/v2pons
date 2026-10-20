@@ -1,0 +1,4 @@
+C-1 core {'n': 453, 'decode_launch: pool id, sqrtP, mint liquidity from calldata': 453, 'decode_init: pool id and sqrtP from calldata': 0, 'no input cached': 245}
+a98b3b9e hooked core {'n': 117, 'decode_launch: pool id, sqrtP, mint liquidity from calldata': 117, 'decode_init: pool id and sqrtP from calldata': 0}
+C-2 hooked sibling {'n': 89, 'decode_launch: pool id, sqrtP, mint liquidity from calldata': 0, 'decode_init: pool id and sqrtP from calldata': 89}
+58d59320 via 0xeb7c0347 {'n': 472, 'decode_launch: pool id, sqrtP, mint liquidity from calldata': 0, 'decode_init: pool id and sqrtP from calldata': 0, 'no input cached': 14}

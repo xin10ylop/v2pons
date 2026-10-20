@@ -1,0 +1,17 @@
+pools 121; non-bot buyer wallets: 5; recurring (>= 5 pools): [('0xe71a69f4', 121), ('', 117), ('0xe74fcc81', 5)]
+
+buys before T (not the bot): 121
+   0xe71a69f4 recurring=True non-dust=False: 121
+   non-dust, non-recurring: 0
+   their pull lags: []  (no pull within L+200: 0)
+
+buys after T (not the bot; swaps up to L+120 only, their txs were fetched): 8
+   0xe74fcc81 recurring=True non-dust=False: 5
+   0x93b07902 recurring=False non-dust=False: 2
+   0x2f254751 recurring=False non-dust=True: 1
+   non-dust, non-recurring: 1
+      ('late', 86183419, '0x2f254751', 0.003993, 74, 22, 86, 12, False, '0x88767899')
+   their pull lags: [12]  (no pull within L+200: 0)
+buys after L+120 not attributed (tx not fetched): 492
+
+pools pulled within L+200: 5 of 121: offsets from L [86, 153, 157, 171, 174]; from T [34, 104, 113, 125, 134]

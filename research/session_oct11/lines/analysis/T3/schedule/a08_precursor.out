@@ -1,0 +1,28 @@
+pools 130
+features over-represented at a lag (share of pools at lag k vs per-block control rate):
+  none
+
+most common features at lags 1-4 (share of pools) with control rate:
+  to+sel 0x00000000:6bf6a42d                              lags1-4 [130, 130, 130, 130] of 130 each; control 100%
+  to 0x00000000                                           lags1-4 [130, 130, 130, 130] of 130 each; control 100%
+  to 0xcaf681a6                                           lags1-4 [34, 39, 35, 39] of 130 each; control 27%
+  plain ETH transfer                                      lags1-4 [26, 23, 24, 28] of 130 each; control 20%
+  to 0x88767899                                           lags1-4 [25, 23, 21, 31] of 130 each; control 20%
+  to+sel 0xcaf681a6:ac9650d8                              lags1-4 [20, 20, 19, 22] of 130 each; control 12%
+  to+sel 0x88767899:3593564c                              lags1-4 [17, 17, 13, 28] of 130 each; control 17%
+  from a bot buy wallet                                   lags1-4 [21, 20, 22, 11] of 130 each; control 14%
+  to+sel 0xcaf681a6:04e45aaf                              lags1-4 [17, 21, 15, 16] of 130 each; control 14%
+  to 0x9a352a0f                                           lags1-4 [16, 18, 17, 15] of 130 each; control 15%
+  to+sel 0x00000000:fd9f1e10                              lags1-4 [11, 13, 15, 16] of 130 each; control 9%
+  to 0xccc88a9d                                           lags1-4 [12, 14, 11, 8] of 130 each; control 5%
+  to+sel 0xccc88a9d:0a2b8f36                              lags1-4 [12, 13, 9, 8] of 130 each; control 5%
+  to 0xd6d35b56                                           lags1-4 [9, 7, 11, 11] of 130 each; control 7%
+  to+sel 0xd6d35b56:e6cb474f                              lags1-4 [9, 7, 11, 11] of 130 each; control 7%
+  to the T wallet                          lags 0..8: [0, 0, 0, 0, 0, 0, 0, 0, 0]  control 0/1170
+  from the T wallet                        lags 0..8: [0, 0, 0, 0, 0, 0, 0, 0, 0]  control 0/1170
+  to a bot buy wallet                      lags 0..8: [0, 0, 0, 0, 0, 0, 0, 0, 0]  control 0/1170
+  from a bot buy wallet                    lags 0..8: [8, 21, 20, 22, 11, 19, 18, 20, 19]  control 167/1170
+  calldata names the pool's token          lags 0..8: [0, 0, 0, 0, 0, 0, 0, 0, 0]  control 9/1170
+  from a launch sender                     lags 0..8: [4, 5, 6, 3, 7, 9, 5, 4, 9]  control 55/1170
+  plain ETH transfer                       lags 0..8: [13, 26, 23, 24, 28, 27, 26, 23, 18]  control 234/1170
+  bot-router selectors at lags 0..8: {'to bot router sel c1120e3d': [3, 8, 6, 8, 3, 8, 8, 6, 8], 'to bot router sel 7422a284': [0, 1, 1, 1, 0, 1, 1, 0, 0]} control {'to bot router sel c1120e3d': 59, 'to bot router sel 7422a284': 12, 'to bot router sel a0f7978d': 3}

@@ -1,0 +1,143 @@
+pools scanned 8403 (launches outside VB 3.0/5.0/2.433, S1, S2; window +30, buys >= 0.002 ETH)
+actors with >= 5 pools:
+
+ 0x88767899:0x3593564c pools 216  off 3/15/17  eth 0.015/0.4/0.5  wallets 26  10-12 00:14:02..10-14 06:35:49
+      163 single-sided 2500/25 (REPORT_2433STOP)
+        7 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.15 ETH
+        6 v4 0x387a453d 0x54e231e6 1412B f0 ts200 v0.6943 ETH
+        6 v4 0x387a453d 0x9b756348 1284B f0 ts200 v0.1777 ETH
+        4 v4 0xd15b95c6 0x8fd3ab80 3876B f0 ts200 v0 ETH
+
+ 0x65050a9b:0x4d819a2a pools 41  off 4/10/23  eth 0.005/0.0099/0.1209  wallets 16  10-12 00:27:38..10-14 04:02:47
+        6 v4 0x387a453d 0x54e231e6 1412B f0 ts200 v0.6943 ETH
+        4 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.15 ETH
+        3 v4 0xd15b95c6 0x8fd3ab80 3876B f0 ts200 v0 ETH
+        3 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 USDG
+        2 v4 0x7ed598bc 0x2f53ef2f 36B f0 ts200 v0 ETH
+
+ 0x570759db:0x414bf389 pools 34  off 1/1/1  eth 0.002/0.0022/0.0024  wallets 1  10-12 03:46:10..10-13 08:16:22
+       34 V3 crowd (836 B NPM)
+
+ 0x85ce7832:0x3593564c pools 31  off 3/4/4  eth 0.0198/0.1/0.45  wallets 3  10-13 02:21:52..10-13 22:27:34
+       18 V3 crowd (836 B NPM)
+       13 C-1 (POSM 2276 B)
+
+ 0xf0b7eaaf:0x39ecce49 pools 18  off 11/14/23  eth 0.0099/0.0193/0.0198  wallets 2  10-12 00:27:38..10-14 02:38:56
+        3 v4 0xd15b95c6 0x8fd3ab80 3876B f0 ts200 v0 ETH
+        3 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 USDG
+        2 v4 0x387a453d 0x54e231e6 1412B f0 ts200 v0.6943 ETH
+        2 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+        1 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.25 ETH
+
+ 0x80e49ed1:0x3593564c pools 17  off 3/4/4  eth 0.005/0.05/0.3  wallets 2  10-12 12:54:13..10-14 00:23:51
+       13 C-1 (POSM 2276 B)
+        4 V3 crowd (836 B NPM)
+
+ 0xf2c69db0:0xa65563f0 pools 16  off 2/17/27  eth 0.0529/0.07/0.07  wallets 6  10-12 14:56:14..10-13 23:19:29
+        2 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 ETH
+        2 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+        1 v4 0x13859bf7 0x6a761202 2148B f0 ts200 v0 ETH
+        1 v4 0x7ed598bc 0x2f53ef2f 36B f0 ts200 v0 USDG
+        1 v4 0x9c4d5bd1 0xe9ae5c53 3140B f0 ts200 v0 USDG
+
+ 0x88767899:0x24856bc3 pools 16  off 8/11/28  eth 0.1192/0.1206/0.1984  wallets 2  10-12 14:56:14..10-14 00:41:49
+        3 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 USDG
+        2 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.15 ETH
+        2 v4 0xd15b95c6 0x8fd3ab80 3876B f0 ts200 v0 ETH
+        2 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+        2 v4 0x387a453d 0x9b756348 1284B f0 ts200 v0.1777 ETH
+
+ 0x7feb3ecb:0x3593564c pools 15  off 3/4/4  eth 0.01/0.05/0.15  wallets 2  10-12 02:55:13..10-13 23:34:31
+        9 V3 crowd (836 B NPM)
+        6 C-1 (POSM 2276 B)
+
+ 0x2a53386d:0xf1114062 pools 13  off 1/1/2  eth 0.125/0.25/0.25  wallets 1  10-12 00:27:38..10-13 21:16:21
+        6 v4 0x387a453d 0x54e231e6 1412B f0 ts200 v0.6943 ETH
+        3 v4 0x387a453d 0x9b756348 1284B f0 ts200 v0.1777 ETH
+        2 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 ETH
+        1 v4 0x7ed598bc 0x2f53ef2f 36B f0 ts200 v0 ETH
+        1 v4 0xb357f8df 0xc2f1cfd4 644B f0 ts200 v0 ETH
+
+ 0xf2251d75:0x08c1284c pools 11  off 11/16/20  eth 0.0099/0.0099/0.0345  wallets 5  10-12 14:56:14..10-13 23:10:21
+        2 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+        1 v4 0x13859bf7 0x6a761202 2148B f0 ts200 v0 ETH
+        1 v4 0xd15b95c6 0x8fd3ab80 3876B f0 ts200 v0 ETH
+        1 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 ETH
+        1 v4 0x7ed598bc 0x2f53ef2f 36B f0 ts200 v0 ETH
+
+ 0xe492912f:0x4d819a2a pools 10  off 14/17/28  eth 0.0097/0.0099/0.0099  wallets 2  10-12 00:27:38..10-14 02:38:56
+        3 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 USDG
+        2 v4 0xd15b95c6 0x8fd3ab80 3876B f0 ts200 v0 ETH
+        1 v4 0x387a453d 0x54e231e6 1412B f0 ts200 v0.6943 ETH
+        1 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.25 ETH
+        1 v4 0x13859bf7 0x6a761202 2148B f0 ts200 v0 ETH
+
+ 0x63689cf3:0xb307d1ac pools 10  off 2/3/24  eth 0.0039/0.004/0.0041  wallets 1  10-12 00:35:42..10-14 02:38:56
+        2 v4 0x387a453d 0x54e231e6 1412B f0 ts200 v0.6943 ETH
+        2 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 ETH
+        1 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.25 ETH
+        1 v4 0x13859bf7 0x6a761202 2148B f0 ts200 v0 ETH
+        1 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+
+ 0x0afeb98a:0xcce7ec13 pools 9  off 1/6/27  eth 0.0398/0.0503/0.0903  wallets 1  10-12 00:27:38..10-13 03:22:08
+        3 v4 0x387a453d 0x54e231e6 1412B f0 ts200 v0.6943 ETH
+        2 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.15 ETH
+        1 v4 0x7eea5f60 0x991f1cef 1284B f0 ts200 v0.025 ETH
+        1 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 ETH
+        1 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+
+ 0xc2fba49d:0xe8ee3b79 pools 9  off 1/2/20  eth 0.0074/0.0074/0.0074  wallets 2  10-12 14:56:14..10-14 02:38:56
+        3 v4 0xd15b95c6 0x8fd3ab80 3876B f0 ts200 v0 ETH
+        2 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+        1 v4 0x13859bf7 0x6a761202 2148B f0 ts200 v0 ETH
+        1 v4 0x9c4d5bd1 0xe9ae5c53 2500B f0 ts200 v0 ETH
+        1 v4 0xfe619510 0x45dff296 2852B f0 ts200 v6.952 ETH
+
+ 0xb1000000:0x549299b8 pools 9  off 4/14/24  eth 0.0232/0.099/0.099  wallets 2  10-12 14:56:14..10-14 05:30:11
+        3 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 USDG
+        2 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+        1 v4 0x13859bf7 0x6a761202 2148B f0 ts200 v0 ETH
+        1 v4 0x387a453d 0x9b756348 1284B f0 ts200 v0.1777 ETH
+        1 v4 0xd15b95c6 0x8fd3ab80 3876B f0 ts200 v0 ETH
+
+ 0x9689992f:0x3e0f9c3c pools 8  off 10/17/29  eth 0.004/0.0495/0.1806  wallets 8  10-12 14:39:54..10-13 23:19:29
+        2 v4 0x7ed598bc 0x2f53ef2f 36B f0 ts200 v0 USDG
+        2 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.15 ETH
+        1 v4 0xf0b7eaaf 0x39ecce49 1348B f0 ts200 v0.297 ETH
+        1 v4 0xe0703eaa 0xa67aeb8b 452B f0 ts200 v0 ETH
+        1 v4 0x9c4d5bd1 0xe9ae5c53 3140B f0 ts200 v0 USDG
+
+ 0x2a53386d:0x3d9ab7c9 pools 6  off 1/1/4  eth 0.125/0.25/0.25  wallets 1  10-12 14:39:54..10-13 15:59:26
+        3 v4 0xd15b95c6 0x8fd3ab80 3876B f0 ts200 v0 ETH
+        1 v4 0xf0b7eaaf 0x39ecce49 1348B f0 ts200 v0.297 ETH
+        1 v4 0x9c4d5bd1 0xe9ae5c53 2500B f0 ts200 v0 ETH
+        1 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+
+ 0x8c2b828f:0xe9ae5c53 pools 6  off 2/2/7  eth 0.0131/0.0131/0.0133  wallets 1  10-12 14:56:14..10-13 16:03:41
+        3 v4 0xd15b95c6 0x8fd3ab80 3876B f0 ts200 v0 ETH
+        1 v4 0x13859bf7 0x6a761202 2148B f0 ts200 v0 ETH
+        1 v4 0x9c4d5bd1 0xe9ae5c53 2500B f0 ts200 v0 ETH
+        1 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+
+ 0x204faca1:0x3593564c pools 6  off 1/21/23  eth 0.005/0.0606/0.1  wallets 5  10-12 18:39:35..10-13 19:19:08
+        1 v4 0xe6cf967e 0xcc20585f 3716B f30000 ts200 v0 ETH
+        1 v4 0x3af49c05 0xa86854fc 3876B f0 ts200 v0 ETH
+        1 v4 0xfe619510 0x45dff296 2852B f0 ts200 v6.952 ETH
+        1 v4 CREATE 0x60806040 14550B f100 ts1 v0.46 ETH
+        1 v4 CREATE 0x60806040 14550B f100 ts1 v0.4599 ETH
+
+ 0x7eea5f60:0x991f1cef pools 5  off 1/1/2  eth 0.025/0.025/0.05  wallets 1  10-12 00:27:38..10-12 13:58:54
+        4 v4 0x387a453d 0x54e231e6 1412B f0 ts200 v0.6943 ETH
+        1 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.25 ETH
+
+ 0xbb75f6e4:0x2ddafb76 pools 5  off 8/23/28  eth 0.0143/0.0144/0.0535  wallets 1  10-12 00:31:38..10-12 17:56:32
+        3 v4 0x387a453d 0x54e231e6 1412B f0 ts200 v0.6943 ETH
+        1 v4 0x7eea5f60 0x991f1cef 1284B f0 ts200 v0.025 ETH
+        1 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.15 ETH
+
+ 0xec5675ab:0x40707161 pools 5  off 7/20/23  eth 0.0026/0.0045/0.005  wallets 1  10-12 10:56:37..10-14 00:41:49
+        1 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.15 ETH
+        1 v4 0xf0b7eaaf 0x39ecce49 1380B f0 ts200 v0 ETH
+        1 v4 0x2a53386d 0x3d9ab7c9 292B f0 ts200 v0.25 ETH
+        1 v4 0x387a453d 0x9b756348 1284B f0 ts200 v0.1777 ETH
+        1 v4 0x8c2b828f 0xe9ae5c53 2244B f0 ts200 v0.005562 ETH

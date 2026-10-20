@@ -1,0 +1,373 @@
+reaction lags (blocks from an outside buy >= 0.0003 ETH to the pull), n 64 : [4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 21, 24, 25, 26, 27, 28, 31, 34, 43, 43, 45, 45, 49, 50, 52, 53, 56, 57, 64, 76, 81, 82, 83, 89, 90, 93, 96, 97, 100, 102, 114, 114, 117, 117, 121, 133, 136, 137, 138, 140, 142, 144, 147, 147, 148, 153, 154, 155, 156, 161, 162, 163, 175, 193]
+
+===== stake $5 (0.001946 ETH) =====
+front: buy A+1, sell into the fleet's first buy (T+1)
+   no reaction        n 127 gross  +1.12% net  +0.72% med  +0.62% win  83% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -50.06% (P(pulled in hold) 45%)
+front: buy A+1, sell 2 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.50% (P(pulled in hold) 0%)
+front: buy A+1, sell 3 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.50% (P(pulled in hold) 0%)
+front: buy A+1, sell 60 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -44.21% (P(pulled in hold) 44%)
+front: buy A+1, sell 200 blocks later
+   no reaction        n 128 gross  +9.40% net  +9.00% med +10.00% win  98% worst -100.4% pulled   2%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -100.40% (P(pulled in hold) 100%)
+front: buy A+1, sell at L+600
+   no reaction        n 128 gross +39.28% net +38.88% med +44.02% win  95% worst -100.4% pulled   5%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -100.40% (P(pulled in hold) 100%)
+front: buy A+2, sell into the fleet's first buy (T+1)
+   no reaction        n 127 gross  +1.12% net  +0.72% med  +0.62% win  83% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -49.76% (P(pulled in hold) 45%)
+front: buy A+2, sell 2 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.50% (P(pulled in hold) 0%)
+front: buy A+2, sell 3 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.50% (P(pulled in hold) 0%)
+front: buy A+2, sell 60 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -44.21% (P(pulled in hold) 44%)
+front: buy A+2, sell 200 blocks later
+   no reaction        n 128 gross  +9.46% net  +9.06% med +10.00% win  98% worst -100.4% pulled   2%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -100.40% (P(pulled in hold) 100%)
+front: buy A+2, sell at L+600
+   no reaction        n 128 gross +39.28% net +38.88% med +44.02% win  95% worst -100.4% pulled   5%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -100.40% (P(pulled in hold) 100%)
+front: buy A+3, sell into the fleet's first buy (T+1)
+   no reaction        n 127 gross  +1.12% net  +0.72% med  +0.62% win  83% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -49.44% (P(pulled in hold) 45%)
+front: buy A+3, sell 2 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.50% (P(pulled in hold) 0%)
+front: buy A+3, sell 3 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.50% (P(pulled in hold) 0%)
+front: buy A+3, sell 60 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.50% med  -0.50% win   0% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -44.21% (P(pulled in hold) 44%)
+front: buy A+3, sell 200 blocks later
+   no reaction        n 128 gross  +9.53% net  +9.13% med +10.06% win  98% worst -100.4% pulled   2%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -100.40% (P(pulled in hold) 100%)
+front: buy A+3, sell at L+600
+   no reaction        n 128 gross +39.28% net +38.88% med +44.02% win  95% worst -100.4% pulled   5%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -100.40% (P(pulled in hold) 100%)
+oracle front: buy at the head of T-0, sell at T+2
+   no reaction        n 127 gross  +1.15% net  +0.75% med  +0.62% win  85% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross  +1.15% net  +0.75% med  +0.62% win  85% worst  -0.4% pulled   0%
+   empirical lags     n 127 expected net mean  +0.75% (P(pulled in hold) 0%)
+oracle front: buy at the head of T-0, sell at T+3
+   no reaction        n 127 gross  +1.21% net  +0.81% med  +0.80% win  86% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross  +1.21% net  +0.81% med  +0.80% win  86% worst  -0.4% pulled   0%
+   empirical lags     n 127 expected net mean  +0.81% (P(pulled in hold) 0%)
+oracle front: buy at the head of T-0, sell at T+60
+   no reaction        n 127 gross  +5.73% net  +5.33% med  +4.45% win  99% worst -100.4% pulled   1%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -40.92% (P(pulled in hold) 44%)
+oracle front: buy at the head of T-1, sell at T+1
+   no reaction        n 127 gross  +1.12% net  +0.72% med  +0.62% win  83% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross  +1.12% net  +0.72% med  +0.62% win  83% worst  -0.4% pulled   0%
+   empirical lags     n 127 expected net mean  +0.72% (P(pulled in hold) 0%)
+oracle front: buy at the head of T-1, sell at T+2
+   no reaction        n 127 gross  +1.15% net  +0.75% med  +0.62% win  85% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross  +1.15% net  +0.75% med  +0.62% win  85% worst  -0.4% pulled   0%
+   empirical lags     n 127 expected net mean  +0.75% (P(pulled in hold) 0%)
+oracle front: buy at the head of T-1, sell at T+3
+   no reaction        n 127 gross  +1.21% net  +0.81% med  +0.80% win  86% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -13.42% (P(pulled in hold) 14%)
+oracle front: buy at the head of T-1, sell at T+60
+   no reaction        n 127 gross  +5.73% net  +5.33% med  +4.45% win  99% worst -100.4% pulled   1%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -40.92% (P(pulled in hold) 44%)
+oracle front: buy at the head of T-2, sell at T+1
+   no reaction        n 127 gross  +1.12% net  +0.72% med  +0.62% win  83% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross  +1.12% net  +0.72% med  +0.62% win  83% worst  -0.4% pulled   0%
+   empirical lags     n 127 expected net mean  +0.72% (P(pulled in hold) 0%)
+oracle front: buy at the head of T-2, sell at T+2
+   no reaction        n 127 gross  +1.15% net  +0.75% med  +0.62% win  85% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -13.47% (P(pulled in hold) 14%)
+oracle front: buy at the head of T-2, sell at T+3
+   no reaction        n 127 gross  +1.21% net  +0.81% med  +0.80% win  86% worst  -0.4% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -15.00% (P(pulled in hold) 16%)
+oracle front: buy at the head of T-2, sell at T+60
+   no reaction        n 127 gross  +5.73% net  +5.33% med  +4.45% win  99% worst -100.4% pulled   1%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -40.92% (P(pulled in hold) 44%)
+blind fixed: buy L+115, sell 2 blocks later
+   no reaction        n 128 gross  +0.05% net  -0.35% med  -0.50% win  13% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  +0.05% net  -0.35% med  -0.50% win  13% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.35% (P(pulled in hold) 0%)
+blind fixed: buy L+115, sell 3 blocks later
+   no reaction        n 128 gross  +0.09% net  -0.31% med  -0.50% win  16% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  +0.09% net  -0.31% med  -0.50% win  16% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.31% (P(pulled in hold) 0%)
+blind fixed: buy L+115, sell 485 blocks later
+   no reaction        n 128 gross +39.13% net +38.73% med +43.99% win  95% worst -100.4% pulled   5%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -100.40% (P(pulled in hold) 100%)
+blind fixed: buy L+121, sell 2 blocks later
+   no reaction        n 128 gross  +0.13% net  -0.27% med  -0.50% win  18% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  +0.13% net  -0.27% med  -0.50% win  18% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.27% (P(pulled in hold) 0%)
+blind fixed: buy L+121, sell 3 blocks later
+   no reaction        n 128 gross  +0.19% net  -0.21% med  -0.50% win  23% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  +0.19% net  -0.21% med  -0.50% win  23% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.21% (P(pulled in hold) 0%)
+blind fixed: buy L+121, sell 479 blocks later
+   no reaction        n 128 gross +38.50% net +38.10% med +43.69% win  95% worst -100.4% pulled   5%
+   pull 4 after ours  n 128 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 128 expected net mean -100.40% (P(pulled in hold) 100%)
+blind fixed: buy A+73, sell 3 blocks later
+   no reaction        n 128 gross  +0.12% net  -0.28% med  -0.50% win  18% worst  -0.5% pulled   0%
+   pull 4 after ours  n 128 gross  +0.12% net  -0.28% med  -0.50% win  18% worst  -0.5% pulled   0%
+   empirical lags     n 128 expected net mean  -0.28% (P(pulled in hold) 0%)
+follow: buy T+1, sell 2 blocks later
+   no reaction        n 127 gross  -0.01% net  -0.41% med  -0.50% win   8% worst  -0.5% pulled   0%
+   pull 4 after ours  n 127 gross  -0.01% net  -0.41% med  -0.50% win   8% worst  -0.5% pulled   0%
+   empirical lags     n 127 expected net mean  -0.41% (P(pulled in hold) 0%)
+follow: buy T+1, sell 3 blocks later
+   no reaction        n 127 gross  +0.04% net  -0.36% med  -0.50% win  13% worst  -0.5% pulled   0%
+   pull 4 after ours  n 127 gross  +0.04% net  -0.36% med  -0.50% win  13% worst  -0.5% pulled   0%
+   empirical lags     n 127 expected net mean  -0.36% (P(pulled in hold) 0%)
+follow: buy T+1, sell 10 blocks later
+   no reaction        n 127 gross  +0.60% net  +0.20% med  +0.15% win  55% worst  -0.5% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -15.52% (P(pulled in hold) 16%)
+follow: buy T+1, sell 60 blocks later
+   no reaction        n 127 gross  +4.54% net  +4.14% med  +3.77% win  99% worst -100.4% pulled   1%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -41.60% (P(pulled in hold) 44%)
+follow: buy T+1, sell 200 blocks later
+   no reaction        n 127 gross +15.52% net +15.12% med +15.20% win  98% worst -100.4% pulled   2%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -100.40% (P(pulled in hold) 100%)
+follow: buy T+2, sell 2 blocks later
+   no reaction        n 127 gross  +0.01% net  -0.39% med  -0.50% win  10% worst  -0.5% pulled   0%
+   pull 4 after ours  n 127 gross  +0.01% net  -0.39% med  -0.50% win  10% worst  -0.5% pulled   0%
+   empirical lags     n 127 expected net mean  -0.39% (P(pulled in hold) 0%)
+follow: buy T+2, sell 3 blocks later
+   no reaction        n 127 gross  +0.06% net  -0.34% med  -0.50% win  15% worst  -0.5% pulled   0%
+   pull 4 after ours  n 127 gross  +0.06% net  -0.34% med  -0.50% win  15% worst  -0.5% pulled   0%
+   empirical lags     n 127 expected net mean  -0.34% (P(pulled in hold) 0%)
+follow: buy T+2, sell 10 blocks later
+   no reaction        n 127 gross  +0.58% net  +0.18% med  +0.15% win  56% worst  -0.5% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -15.54% (P(pulled in hold) 16%)
+follow: buy T+2, sell 60 blocks later
+   no reaction        n 127 gross  +4.54% net  +4.14% med  +3.77% win  99% worst -100.4% pulled   1%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -41.60% (P(pulled in hold) 44%)
+follow: buy T+2, sell 200 blocks later
+   no reaction        n 127 gross +15.55% net +15.15% med +15.20% win  98% worst -100.4% pulled   2%
+   pull 4 after ours  n 127 gross -100.00% net -100.40% med -100.40% win   0% worst -100.4% pulled 100%
+   empirical lags     n 127 expected net mean -100.40% (P(pulled in hold) 100%)
+
+===== stake $15 (0.005837 ETH) =====
+front: buy A+1, sell into the fleet's first buy (T+1)
+   no reaction        n 127 gross  +1.12% net  +0.98% med  +0.89% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -49.79% (P(pulled in hold) 45%)
+front: buy A+1, sell 2 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   empirical lags     n 128 expected net mean  -0.23% (P(pulled in hold) 0%)
+front: buy A+1, sell 3 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   empirical lags     n 128 expected net mean  -0.23% (P(pulled in hold) 0%)
+front: buy A+1, sell 60 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -43.94% (P(pulled in hold) 44%)
+front: buy A+1, sell 200 blocks later
+   no reaction        n 128 gross  +9.39% net  +9.25% med +10.25% win  98% worst -100.1% pulled   2%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -100.13% (P(pulled in hold) 100%)
+front: buy A+1, sell at L+600
+   no reaction        n 128 gross +39.18% net +39.05% med +44.19% win  95% worst -100.1% pulled   5%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -100.13% (P(pulled in hold) 100%)
+front: buy A+2, sell into the fleet's first buy (T+1)
+   no reaction        n 127 gross  +1.12% net  +0.98% med  +0.89% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -49.49% (P(pulled in hold) 45%)
+front: buy A+2, sell 2 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   empirical lags     n 128 expected net mean  -0.23% (P(pulled in hold) 0%)
+front: buy A+2, sell 3 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   empirical lags     n 128 expected net mean  -0.23% (P(pulled in hold) 0%)
+front: buy A+2, sell 60 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -43.94% (P(pulled in hold) 44%)
+front: buy A+2, sell 200 blocks later
+   no reaction        n 128 gross  +9.44% net  +9.31% med +10.25% win  98% worst -100.1% pulled   2%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -100.13% (P(pulled in hold) 100%)
+front: buy A+2, sell at L+600
+   no reaction        n 128 gross +39.18% net +39.05% med +44.19% win  95% worst -100.1% pulled   5%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -100.13% (P(pulled in hold) 100%)
+front: buy A+3, sell into the fleet's first buy (T+1)
+   no reaction        n 127 gross  +1.12% net  +0.98% med  +0.89% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -49.17% (P(pulled in hold) 45%)
+front: buy A+3, sell 2 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   empirical lags     n 128 expected net mean  -0.23% (P(pulled in hold) 0%)
+front: buy A+3, sell 3 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   pull 4 after ours  n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   empirical lags     n 128 expected net mean  -0.23% (P(pulled in hold) 0%)
+front: buy A+3, sell 60 blocks later
+   no reaction        n 128 gross  -0.10% net  -0.23% med  -0.23% win   0% worst  -0.2% pulled   0%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -43.94% (P(pulled in hold) 44%)
+front: buy A+3, sell 200 blocks later
+   no reaction        n 128 gross  +9.51% net  +9.38% med +10.31% win  98% worst -100.1% pulled   2%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -100.13% (P(pulled in hold) 100%)
+front: buy A+3, sell at L+600
+   no reaction        n 128 gross +39.18% net +39.05% med +44.19% win  95% worst -100.1% pulled   5%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -100.13% (P(pulled in hold) 100%)
+oracle front: buy at the head of T-0, sell at T+2
+   no reaction        n 127 gross  +1.15% net  +1.02% med  +0.89% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross  +1.15% net  +1.02% med  +0.89% win  98% worst  -0.1% pulled   0%
+   empirical lags     n 127 expected net mean  +1.02% (P(pulled in hold) 0%)
+oracle front: buy at the head of T-0, sell at T+3
+   no reaction        n 127 gross  +1.21% net  +1.07% med  +1.07% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross  +1.21% net  +1.07% med  +1.07% win  98% worst  -0.1% pulled   0%
+   empirical lags     n 127 expected net mean  +1.07% (P(pulled in hold) 0%)
+oracle front: buy at the head of T-0, sell at T+60
+   no reaction        n 127 gross  +5.72% net  +5.59% med  +4.71% win  99% worst -100.1% pulled   1%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -40.66% (P(pulled in hold) 44%)
+oracle front: buy at the head of T-1, sell at T+1
+   no reaction        n 127 gross  +1.12% net  +0.98% med  +0.89% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross  +1.12% net  +0.98% med  +0.89% win  98% worst  -0.1% pulled   0%
+   empirical lags     n 127 expected net mean  +0.98% (P(pulled in hold) 0%)
+oracle front: buy at the head of T-1, sell at T+2
+   no reaction        n 127 gross  +1.15% net  +1.02% med  +0.89% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross  +1.15% net  +1.02% med  +0.89% win  98% worst  -0.1% pulled   0%
+   empirical lags     n 127 expected net mean  +1.02% (P(pulled in hold) 0%)
+oracle front: buy at the head of T-1, sell at T+3
+   no reaction        n 127 gross  +1.21% net  +1.07% med  +1.07% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -13.16% (P(pulled in hold) 14%)
+oracle front: buy at the head of T-1, sell at T+60
+   no reaction        n 127 gross  +5.72% net  +5.59% med  +4.71% win  99% worst -100.1% pulled   1%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -40.66% (P(pulled in hold) 44%)
+oracle front: buy at the head of T-2, sell at T+1
+   no reaction        n 127 gross  +1.12% net  +0.98% med  +0.89% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross  +1.12% net  +0.98% med  +0.89% win  98% worst  -0.1% pulled   0%
+   empirical lags     n 127 expected net mean  +0.98% (P(pulled in hold) 0%)
+oracle front: buy at the head of T-2, sell at T+2
+   no reaction        n 127 gross  +1.15% net  +1.02% med  +0.89% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -13.21% (P(pulled in hold) 14%)
+oracle front: buy at the head of T-2, sell at T+3
+   no reaction        n 127 gross  +1.21% net  +1.07% med  +1.07% win  98% worst  -0.1% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -14.74% (P(pulled in hold) 16%)
+oracle front: buy at the head of T-2, sell at T+60
+   no reaction        n 127 gross  +5.72% net  +5.59% med  +4.71% win  99% worst -100.1% pulled   1%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -40.66% (P(pulled in hold) 44%)
+blind fixed: buy L+115, sell 2 blocks later
+   no reaction        n 128 gross  +0.05% net  -0.08% med  -0.23% win  18% worst  -0.3% pulled   0%
+   pull 4 after ours  n 128 gross  +0.05% net  -0.08% med  -0.23% win  18% worst  -0.3% pulled   0%
+   empirical lags     n 128 expected net mean  -0.08% (P(pulled in hold) 0%)
+blind fixed: buy L+115, sell 3 blocks later
+   no reaction        n 128 gross  +0.09% net  -0.04% med  -0.23% win  23% worst  -0.3% pulled   0%
+   pull 4 after ours  n 128 gross  +0.09% net  -0.04% med  -0.23% win  23% worst  -0.3% pulled   0%
+   empirical lags     n 128 expected net mean  -0.04% (P(pulled in hold) 0%)
+blind fixed: buy L+115, sell 485 blocks later
+   no reaction        n 128 gross +39.03% net +38.90% med +44.16% win  95% worst -100.1% pulled   5%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -100.13% (P(pulled in hold) 100%)
+blind fixed: buy L+121, sell 2 blocks later
+   no reaction        n 128 gross  +0.13% net  -0.01% med  -0.23% win  23% worst  -0.3% pulled   0%
+   pull 4 after ours  n 128 gross  +0.13% net  -0.01% med  -0.23% win  23% worst  -0.3% pulled   0%
+   empirical lags     n 128 expected net mean  -0.01% (P(pulled in hold) 0%)
+blind fixed: buy L+121, sell 3 blocks later
+   no reaction        n 128 gross  +0.19% net  +0.06% med  -0.23% win  30% worst  -0.3% pulled   0%
+   pull 4 after ours  n 128 gross  +0.19% net  +0.06% med  -0.23% win  30% worst  -0.3% pulled   0%
+   empirical lags     n 128 expected net mean  +0.06% (P(pulled in hold) 0%)
+blind fixed: buy L+121, sell 479 blocks later
+   no reaction        n 128 gross +38.41% net +38.28% med +43.86% win  95% worst -100.1% pulled   5%
+   pull 4 after ours  n 128 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 128 expected net mean -100.13% (P(pulled in hold) 100%)
+blind fixed: buy A+73, sell 3 blocks later
+   no reaction        n 128 gross  +0.12% net  -0.02% med  -0.23% win  24% worst  -0.3% pulled   0%
+   pull 4 after ours  n 128 gross  +0.12% net  -0.02% med  -0.23% win  24% worst  -0.3% pulled   0%
+   empirical lags     n 128 expected net mean  -0.02% (P(pulled in hold) 0%)
+follow: buy T+1, sell 2 blocks later
+   no reaction        n 127 gross  -0.01% net  -0.14% med  -0.23% win   9% worst  -0.3% pulled   0%
+   pull 4 after ours  n 127 gross  -0.01% net  -0.14% med  -0.23% win   9% worst  -0.3% pulled   0%
+   empirical lags     n 127 expected net mean  -0.14% (P(pulled in hold) 0%)
+follow: buy T+1, sell 3 blocks later
+   no reaction        n 127 gross  +0.04% net  -0.09% med  -0.23% win  17% worst  -0.3% pulled   0%
+   pull 4 after ours  n 127 gross  +0.04% net  -0.09% med  -0.23% win  17% worst  -0.3% pulled   0%
+   empirical lags     n 127 expected net mean  -0.09% (P(pulled in hold) 0%)
+follow: buy T+1, sell 10 blocks later
+   no reaction        n 127 gross  +0.60% net  +0.46% med  +0.42% win  61% worst  -0.3% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -15.25% (P(pulled in hold) 16%)
+follow: buy T+1, sell 60 blocks later
+   no reaction        n 127 gross  +4.53% net  +4.39% med  +4.03% win  99% worst -100.1% pulled   1%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -41.34% (P(pulled in hold) 44%)
+follow: buy T+1, sell 200 blocks later
+   no reaction        n 127 gross +15.49% net +15.36% med +15.43% win  98% worst -100.1% pulled   2%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -100.13% (P(pulled in hold) 100%)
+follow: buy T+2, sell 2 blocks later
+   no reaction        n 127 gross  +0.01% net  -0.12% med  -0.23% win  15% worst  -0.3% pulled   0%
+   pull 4 after ours  n 127 gross  +0.01% net  -0.12% med  -0.23% win  15% worst  -0.3% pulled   0%
+   empirical lags     n 127 expected net mean  -0.12% (P(pulled in hold) 0%)
+follow: buy T+2, sell 3 blocks later
+   no reaction        n 127 gross  +0.06% net  -0.08% med  -0.23% win  22% worst  -0.3% pulled   0%
+   pull 4 after ours  n 127 gross  +0.06% net  -0.08% med  -0.23% win  22% worst  -0.3% pulled   0%
+   empirical lags     n 127 expected net mean  -0.08% (P(pulled in hold) 0%)
+follow: buy T+2, sell 10 blocks later
+   no reaction        n 127 gross  +0.58% net  +0.45% med  +0.42% win  60% worst  -0.3% pulled   0%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -15.27% (P(pulled in hold) 16%)
+follow: buy T+2, sell 60 blocks later
+   no reaction        n 127 gross  +4.53% net  +4.40% med  +4.03% win  99% worst -100.1% pulled   1%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -41.34% (P(pulled in hold) 44%)
+follow: buy T+2, sell 200 blocks later
+   no reaction        n 127 gross +15.52% net +15.39% med +15.43% win  98% worst -100.1% pulled   2%
+   pull 4 after ours  n 127 gross -100.00% net -100.13% med -100.13% win   0% worst -100.1% pulled 100%
+   empirical lags     n 127 expected net mean -100.13% (P(pulled in hold) 100%)

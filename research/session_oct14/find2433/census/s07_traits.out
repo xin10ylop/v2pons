@@ -1,0 +1,127 @@
+
+== SAMPLE VB 3.0  n=658  10-12 00:01:39..10-14 06:39:11  289.1/day  senders 582 (max 3/sender) nonce 3/269/282  pulled 657/658 at 132/171/5571
+   actor 0x1cbaf24d:0xc1120e3d  cov 0.99 off 26/40/54   spread 28  eth 0.07425/0.1485/0.18587   wallets 110 (top 0.02) nonce 52503/59385/67261 router [('0x88767899', 653)] minOut/got 0.95/0.95/0.95 (n 653)
+   actor 0x88767899:0x3593564c  cov 1.00 off 2/3/3      spread 1   eth 0.0/1e-05/2e-05          wallets 2 (top 0.51) nonce 1591/7327/101215 router [('0x88767899', 658)] minOut/got 0.7/0.7/0.7 (n 323)
+   main 0x1cbaf24d:0xc1120e3d | outsider-before-T pools 1: main came 0/1 (clean 653/657); pull p10/50/90 outsider 29/29/29 clean 132/171/5571; pulled<=200 & before T: 1/1 outsider vs 2/657 clean
+
+== SAMPLE VB 5.0  n=247  10-12 00:08:21..10-14 06:28:14  109.1/day  senders 247 (max 1/sender) nonce 237/238/240  pulled 247/247 at 536/4239/5687
+   actor 0x1cbaf24d:0xc1120e3d  cov 0.98 off 31/44/55   spread 24  eth 0.06816/0.1/0.1485       wallets 90 (top 0.03) nonce 34116/39378/41900 router [('0x88767899', 242)] minOut/got 0.95/0.95/0.95 (n 242)
+   actor 0x88767899:0x3593564c  cov 0.77 off 2/3/4      spread 2   eth 2e-05/2e-05/2e-05        wallets 1 (top 1.00) nonce 1851/4049/7016 router [('0x88767899', 189)] minOut/got - (n 0)
+   main 0x1cbaf24d:0xc1120e3d | outsider-before-T pools 0: main came 0/0 (clean 242/247); pull p10/50/90 outsider - clean 536/4239/5687; pulled<=200 & before T: 0/0 outsider vs 2/247 clean
+
+== K6 v4 ANY-TARGET 0xe1e75b94 5572B f2500 ts25 v5.002e-05 ETH hooked  n=151  10-12 09:45:36..10-13 22:51:31  97.7/day  senders 84 (max 4/sender) nonce 32/85/163  pulled 151/151 at 28/30/32
+   actor 0x88767899:0x3593564c  cov 1.00 off 14/15/16   spread 2   eth 0.3/0.4/0.5              wallets 2 (top 0.89) nonce 549/13284/13414 router [('0x88767899', 151)] minOut/got 0.95/0.95/0.95 (n 151)
+   main 0x88767899:0x3593564c | outsider-before-T pools 0: main came 0/0 (clean 151/151); pull p10/50/90 outsider - clean 28/30/32; pulled<=200 & before T: 0/0 outsider vs 0/151 clean
+
+== K7 v4 ANY-TARGET 0xac9650d8 ETH nohook  n=121  10-12 00:32:04..10-14 06:28:29  53.8/day  senders 83 (max 11/sender) nonce 0/12/2693  pulled 70/121 at 1187/24961/692577
+   actor 0x88767899:0x3593564c  cov 0.66 off 3/3/5      spread 2   eth 0.0/0.0/0.0              wallets 1 (top 1.00) nonce 99196/100859/102373 router [('0x88767899', 80)] minOut/got 0.6928/0.7/0.7 (n 78)
+
+== K2 v4 0x58daec31 0xac9650d8 1316B v0 USDG nohook  n=101  10-12 00:21:33..10-14 06:19:56  44.9/day  senders 25 (max 54/sender) nonce 308/576/1321  pulled 75/101 at 1626/40593/358207
+
+== K7 v4 ANY-TARGET 0x2fcb9108 ETH nohook  n=83  10-12 00:01:13..10-14 06:38:07  36.5/day  senders 83 (max 1/sender) nonce 0/0/0  pulled 83/83 at 186/894/2336
+   actor 0x88767899:0x3593564c  cov 1.00 off 3/3/6      spread 3   eth 0.0/0.0/0.0              wallets 6 (top 0.93) nonce 99711/102134/102467 router [('0x88767899', 83)] minOut/got 0.7/0.7/0.7 (n 82)
+
+== K1 v3 0x73991a25 0x13ead562 132B f100 ts1 v0 WETH nohook  n=77  10-12 02:06:32..10-14 05:12:38  36.2/day  senders 35 (max 38/sender) nonce 2/18/212  pulled 75/77 at 85/198/89776
+   actor 0xcaf681a6:0x04e45aaf  cov 0.55 off 27/31/34   spread 7   eth 0.0004/0.0004/0.0004     wallets 1 (top 1.00) nonce 1083/1117/1151 router [('0x5718d14b', 42)] minOut/got 0.5/0.5/0.5 (n 30)
+   actor 0xb1000000:0x549299b8  cov 0.45 off 39/47/58   spread 19  eth 0.00039/0.00039/0.00039  wallets 1 (top 1.00) nonce 10299/10344/10386 router [('0xa863447a', 35)] minOut/got 0.707/0.707/0.707 (n 35)
+
+== K6 v4 ANY-TARGET 0xec64ddcf 196B f0 ts60 v0 ETH hooked  n=70  10-12 14:18:31..10-13 21:25:32  54.0/day  senders 62 (max 4/sender) nonce 2/2/5  pulled 0/70 at -
+
+== K7 v3 ANY-TARGET 0xd27d1e00 WETH nohook  n=42  10-12 01:12:04..10-14 06:38:00  18.9/day  senders 38 (max 3/sender) nonce 1/1/6  pulled 22/42 at 6039/13197/62898
+   actor 0xcaf681a6:0x04e45aaf  cov 1.00 off 3/4/4      spread 1   eth 0.0/0.0/0.0              wallets 3 (top 0.95) nonce 98667/101518/102665 router [('0x2be87ad7', 40), ('0x5718d14b', 1)] minOut/got 0.7/0.7/0.7 (n 40)
+
+== K2 v4 0x58daec31 0xac9650d8 1444B v9.333 ETH nohook  n=52  10-12 02:01:02..10-14 06:14:24  23.9/day  senders 2 (max 31/sender) nonce 392/781/854  pulled 50/52 at 1301/10349/67751
+
+== K7 v4 ANY-TARGET 0x655d8499 ETH nohook  n=48  10-12 18:42:28..10-14 06:22:18  32.3/day  senders 8 (max 9/sender) nonce 1/7/16  pulled 0/48 at -
+
+== K1 v4 0x58daec31 0xf7020405 196B f10000 ts200 v0 ETH hooked  n=46  10-12 00:33:09..10-14 04:19:25  21.3/day  senders 44 (max 2/sender) nonce 4/4/6  pulled 42/46 at 530/58420/171139
+
+== K1 v4 0x58daec31 0xac9650d8 2020B f3000 ts60 v0 ETH hooked  n=42  10-12 05:26:38..10-14 05:23:54  21.0/day  senders 42 (max 1/sender) nonce 3/3/3  pulled 41/42 at 12781/13760/48599
+   actor 0x75379d5d:0x3593564c  cov 0.95 off 44/45/52   spread 8   eth 0.0005/0.05/0.05         wallets 2 (top 0.62) nonce 3643/3840/4010 router [('0x88767899', 40)] minOut/got - (n 0)
+   main 0x75379d5d:0x3593564c | outsider-before-T pools 1: main came 0/1 (clean 40/41); pull p10/50/90 outsider 7937/7937/7937 clean 12796/13761/217529; pulled<=200 & before T: 0/1 outsider vs 0/41 clean
+
+== K2 v4 0x58daec31 0xac9650d8 1892B v0 USDG nohook  n=37  10-12 01:13:47..10-14 05:39:36  16.9/day  senders 25 (max 5/sender) nonce 61/529/2132  pulled 18/37 at 930/11356/986852
+
+== K4 v4 0x6fda94ac 0xea2c3a42 f3000 ts200 v0 c0:0x32ac8c1d hooked  n=37  10-12 03:17:57..10-14 04:17:26  18.1/day  senders 16 (max 12/sender) nonce 0/367/547  pulled 0/37 at -
+
+== K7 v4 ANY-TARGET 0xdf40224a WETH hooked  n=34  10-12 01:46:49..10-14 03:41:27  16.3/day  senders 17 (max 5/sender) nonce 0/9/290  pulled 1/34 at 1419/1419/1419
+
+== K6 v4 ANY-TARGET 0xbc9d39fd 932B f0 ts200 v0 ETH hooked  n=33  10-12 01:38:32..10-12 20:33:32  41.9/day  senders 18 (max 9/sender) nonce 0/141/24113  pulled 0/33 at -
+
+== K6 v4 ANY-TARGET 0xbc9d39fd 900B f0 ts200 v0 ETH hooked  n=30  10-12 00:04:43..10-13 18:06:09  17.1/day  senders 14 (max 15/sender) nonce 0/5635/28926  pulled 0/30 at -
+
+== K3 v4 0xa37e4343 0xdfee226f 804B f0 ts200 WETH hooked  n=29  10-12 04:00:40..10-14 05:45:49  14.0/day  senders 25 (max 3/sender) nonce 0/5/149  pulled 0/29 at -
+
+== K1 v4 0x58daec31 0xac9650d8 1444B f10000 ts200 v0 ETH nohook  n=26  10-12 02:09:52..10-13 23:45:13  13.7/day  senders 26 (max 1/sender) nonce 3/24/105  pulled 26/26 at 35760/39646/43581
+   actor 0x88767899:0x3593564c  cov 1.00 off 3/3/4      spread 1   eth 0.0/0.0/0.0              wallets 1 (top 1.00) nonce 99548/101566/102327 router [('0x88767899', 26)] minOut/got 0.7/0.7/0.7 (n 26)
+
+== K1 v4 0x6fda94ac 0xea2c3a42 1220B f3000 ts200 v0 c0:0x32ac8c1d hooked  n=26  10-12 11:35:28..10-14 04:14:55  15.3/day  senders 19 (max 5/sender) nonce 0/1/358  pulled 0/26 at -
+
+== K2 v4 0x58daec31 0xac9650d8 1444B v40 ETH nohook  n=26  10-13 13:03:14..10-14 03:42:17  42.6/day  senders 2 (max 23/sender) nonce 445/906/937  pulled 26/26 at 1373/2761/29244
+
+== K6 v4 ANY-TARGET 0xbc9d39fd 964B f0 ts200 v0 ETH hooked  n=25  10-12 00:00:21..10-14 04:53:53  11.3/day  senders 16 (max 7/sender) nonce 0/131/24599  pulled 0/25 at -
+
+== K1 v3 0x1fae6f16 0x026f2bf0 1124B f10000 ts200 v0 WETH nohook  n=25  10-12 00:39:04..10-13 20:25:34  13.7/day  senders 25 (max 1/sender) nonce 0/0/9  pulled 0/25 at -
+
+== K2 v4 0x58daec31 0xac9650d8 1444B v4 ETH nohook  n=24  10-12 02:29:06..10-14 05:25:17  11.3/day  senders 2 (max 14/sender) nonce 386/797/914  pulled 20/24 at 17631/113143/501371
+
+== K4 v4 0x0000ffff 0xac9650d8 f2500 ts25 v0 ETH nohook  n=24  10-12 02:33:14..10-14 06:10:31  11.2/day  senders 19 (max 3/sender) nonce 0/6/158  pulled 0/24 at -
+   actor 0x88767899:0x3593564c  cov 0.96 off 3/3/4      spread 1   eth 0.0/0.0/0.0              wallets 1 (top 1.00) nonce 98927/100383/102110 router [('0x88767899', 23)] minOut/got 0.7/0.7/0.7 (n 23)
+
+== CONTROL VB 2.433  n=24  10-12 00:00:07..10-12 02:06:03  274.4/day  senders 24 (max 1/sender) nonce 11/11/11  pulled 24/24 at 792/3456/3673
+   actor 0x1cbaf24d:0xc1120e3d  cov 0.96 off 8/10/10    spread 2   eth 0.07425/0.12375/0.198    wallets 16 (top 0.13) nonce 38522/39130/40945 router [('0x88767899', 23)] minOut/got 0.9916/0.9955/0.9996 (n 23)
+   actor 0x2abb5653:0x5ed06f60  cov 1.00 off 2/2/2      spread 0   eth 0.002/0.007/0.007        wallets 1 (top 1.00) nonce 2610/2630/2652 router [('0x2abb5653', 24)] minOut/got 0.97/0.9737/0.9741 (n 24)
+   actor 0x65050a9b:0x4d819a2a  cov 1.00 off 1/2/2      spread 1   eth 0.0046/0.005/0.00518     wallets 24 (top 0.04) nonce 0/0/0 router [('0x65050a9b', 24)] minOut/got - (n 0)
+   actor 0xfd1b271f:0x4d819a2a  cov 0.96 off 22/23/25   spread 3   eth 0.00011/0.00011/0.00011  wallets 1 (top 1.00) nonce 575/620/661 router [('0xfd1b271f', 23)] minOut/got - (n 0)
+   actor 0x88767899:0x3593564c  cov 0.96 off 3/3/3      spread 0   eth 0.0/0.0/0.0              wallets 1 (top 1.00) nonce 98437/98497/98554 router [('0x88767899', 23)] minOut/got 0.7038/0.7067/0.707 (n 23)
+   main 0x1cbaf24d:0xc1120e3d | outsider-before-T pools 24: main came 23/24 (clean 0/0); pull p10/50/90 outsider 792/3456/3673 clean -; pulled<=200 & before T: 1/24 outsider vs 0/0 clean
+
+== K3 v4 CREATE 0x60808060 3740B f2500 ts25 ETH nohook  n=23  10-12 00:12:42..10-13 09:07:32  16.8/day  senders 5 (max 8/sender) nonce 285/470/938  pulled 1/23 at 13047/13047/13047
+   actor 0x88767899:0x3593564c  cov 1.00 off 2/3/4      spread 2   eth 0.0/0.0/0.0              wallets 1 (top 1.00) nonce 98494/100638/100817 router [('0x88767899', 23)] minOut/got 0.7/0.7/0.7 (n 23)
+
+== K1 v3 0xeb7c0347 0x882db707 1796B f10000 ts200 v0 t0:0x0830a9dd nohook  n=21  10-12 02:37:48..10-13 20:13:55  12.1/day  senders 1 (max 21/sender) nonce 5381/5399/5417  pulled 0/21 at -
+
+== K6 v4 ANY-TARGET 0xbc9d39fd 996B f0 ts200 v0 ETH hooked  n=20  10-12 00:01:19..10-13 14:41:37  12.4/day  senders 13 (max 5/sender) nonce 2/65/26798  pulled 0/20 at -
+
+== K1 v4 0x6fda94ac 0xea2c3a42 1156B f3000 ts200 v0 c0:0x32ac8c1d hooked  n=20  10-12 11:30:47..10-13 21:11:49  14.3/day  senders 12 (max 4/sender) nonce 0/194/475  pulled 0/20 at -
+
+== K4 v4 0xd3f2cc17 0xdf40224a f8388608 ts200 v0 WETH hooked  n=19  10-12 12:05:30..10-13 15:26:11  16.7/day  senders 10 (max 6/sender) nonce 1/272/786  pulled 0/19 at -
+
+== K1 v4 0x58daec31 0xac9650d8 1444B f100 ts1 v2 ETH nohook  n=19  10-13 16:08:29..10-13 21:15:19  89.2/day  senders 19 (max 1/sender) nonce 3/3/4  pulled 19/19 at 1419/2062/6120
+   actor 0x88767899:0x3593564c  cov 1.00 off 3/3/4      spread 1   eth 0.0/0.0/0.0              wallets 1 (top 1.00) nonce 101829/101976/102204 router [('0x88767899', 19)] minOut/got 0.7/0.7/0.7 (n 19)
+
+== K7 v4 ANY-TARGET 0x183cbd0b ETH hooked  n=19  10-13 18:34:54..10-13 22:06:39  129.2/day  senders 5 (max 8/sender) nonce 2/11/26  pulled 0/19 at -
+
+== K1 v4 0x16cf6788 0x4101659e 388B f0 ts200 v0 ETH hooked  n=18  10-12 01:50:29..10-14 05:43:36  8.3/day  senders 2 (max 17/sender) nonce 1430/1438/1445  pulled 0/18 at -
+
+== K1 v4 0x8366a39c 0x6276cbbe 196B f3000 ts60 v0 WETH hooked  n=18  10-12 03:05:11..10-14 05:10:26  8.6/day  senders 18 (max 1/sender) nonce 9/9/11  pulled 13/18 at 79225/332301/607747
+
+== K2 v4 0x58daec31 0xac9650d8 1444B v33.33 ETH nohook  n=18  10-12 04:22:59..10-14 04:32:44  9.0/day  senders 2 (max 10/sender) nonce 419/808/946  pulled 16/18 at 5654/82951/649875
+
+== K2 v4 0x8366a39c 0x6276cbbe 196B v0 ETH hooked  n=18  10-12 11:13:44..10-14 02:02:32  11.1/day  senders 12 (max 4/sender) nonce 5/41/675  pulled 6/18 at 4940/29469/57792
+
+== K3 v4 0x3194e326 0x2fcb9108 644B f1000 ts200 ETH nohook  n=18  10-12 21:35:36..10-14 01:18:25  15.6/day  senders 18 (max 1/sender) nonce 0/0/0  pulled 18/18 at 137/573/1978
+   actor 0x88767899:0x3593564c  cov 1.00 off 3/3/55     spread 52  eth 0.0/0.0/0.0722           wallets 3 (top 0.83) nonce 702/102129/102480 router [('0x88767899', 18)] minOut/got 0.7/0.7/0.95 (n 18)
+
+== K1 v4 0x8366a39c 0x6276cbbe 196B f3000 ts60 v0 WETH nohook  n=17  10-12 03:05:03..10-14 05:10:18  8.1/day  senders 17 (max 1/sender) nonce 7/7/9  pulled 2/17 at 51045/133122/133122
+
+== K7 v4 ANY-TARGET 0x2f53ef2f ETH hooked  n=17  10-12 04:16:25..10-13 21:06:45  10.0/day  senders 3 (max 13/sender) nonce 6/45/3943247  pulled 13/17 at 2280/19463/32667
+
+== K7 v4 ANY-TARGET 0xd27d1e00 ETH nohook  n=16  10-12 10:33:51..10-14 06:34:31  8.7/day  senders 13 (max 3/sender) nonce 1/1/7  pulled 5/16 at 8570/14579/59936
+
+== K1 v4 0x8366a39c 0x6276cbbe 196B f10000 ts200 v0 c0:0x117cc213 nohook  n=16  10-12 13:35:21..10-13 22:38:43  11.6/day  senders 1 (max 16/sender) nonce 29509/29576/29640  pulled 0/16 at -
+
+== K2 v4 0x58daec31 0xac9650d8 1444B v0 ETH hooked  n=15  10-12 14:37:41..10-13 23:10:21  11.1/day  senders 15 (max 1/sender) nonce 17/32/66  pulled 15/15 at 34841/40210/43494
+
+== K4 v4 0xc783221a 0x45d52c5a f3000 ts200 v0 ETH hooked  n=15  10-12 15:00:36..10-14 04:07:31  9.7/day  senders 11 (max 3/sender) nonce 0/5/371  pulled 0/15 at -
+
+== K7 v4 ANY-TARGET 0x79082bf9 WETH hooked  n=15  10-12 20:25:27..10-14 02:50:03  11.8/day  senders 11 (max 4/sender) nonce 0/2/79  pulled 0/15 at -
+
+== K3 v4 0x3194e326 0x2fcb9108 644B f4500 ts200 ETH nohook  n=15  10-12 21:56:01..10-14 01:06:24  13.2/day  senders 15 (max 1/sender) nonce 0/0/0  pulled 15/15 at 338/1904/3017
+   actor 0x88767899:0x3593564c  cov 1.00 off 3/3/4      spread 1   eth 0.0/0.0/0.0              wallets 1 (top 1.00) nonce 100463/102292/102462 router [('0x88767899', 15)] minOut/got 0.7/0.7/0.7 (n 15)
+
+== SMALL 82a55dde (value ~2.40 ETH, 9 launches)  n=4  10-13 08:31:38..10-13 20:38:52  7.9/day  senders 4 (max 1/sender) nonce 4/5/14  pulled 0/4 at -
+   actor 0x88767899:0x3593564c  cov 0.50 off 58/76/76   spread 18  eth 6e-05/0.01607/0.01607    wallets 2 (top 0.50) nonce 50/1370/1370 router [('0x88767899', 2)] minOut/got 0.7/0.97/0.97 (n 2)
+   main 0x88767899:0x3593564c | outsider-before-T pools 0: main came 0/0 (clean 2/4); pull p10/50/90 outsider - clean -; pulled<=200 & before T: 0/0 outsider vs 0/4 clean
+
+== SMALL hooked fee5000/ts100  n=2  10-13 15:34:20..10-13 15:43:30  48.0/day  senders 2 (max 1/sender) nonce 0/3/3  pulled 0/2 at -

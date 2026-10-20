@@ -1,0 +1,161 @@
+recurring non-bot wallets (>= 5 pools): [('0x93b07902', 91, [(2.4e-05, 91)]), ('0xb8c879dc', 31, [(0.00495, 7), (0.000112, 5)]), ('0xe9d83e95', 28, [(7.8e-05, 4), (8.2e-05, 4)]), ('0x7ae81404', 26, [(0.00012, 14), (0.000129, 8)]), ('0x8c009ea5', 22, [(0.002, 22)]), ('0x8cf143dd', 19, [(0.000129, 8), (0.000347, 6)]), ('0xb4c345dc', 11, [(0.000125, 4), (0.000149, 2)])]
+
+== pull timing, untouched pools with a bot buy: a stranger after T (before the 2nd bot buy) vs none
+2.433 fee2500         STRANGER-after-T n   0 pulled by T+10   0, T+30   0, T+60   0, T+400   0; pull-T p50 None
+                      no stranger      n  40 pulled by T+10   0, T+30   0, T+60   0, T+400   8; pull-T p50 121
+                      stranger before  n   0 pulled by T+10   0, T+30   0, T+60   0, T+400   0; pull-T p50 None
+2.433 fee5000<16:28   STRANGER-after-T n   0 pulled by T+10   0, T+30   0, T+60   0, T+400   0; pull-T p50 None
+                      no stranger      n  14 pulled by T+10   0, T+30   6, T+60   6, T+400   7; pull-T p50 19
+                      stranger before  n   0 pulled by T+10   0, T+30   0, T+60   0, T+400   0; pull-T p50 None
+2.433 fee5000>=16:28  STRANGER-after-T n   0 pulled by T+10   0, T+30   0, T+60   0, T+400   0; pull-T p50 None
+                      no stranger      n   4 pulled by T+10   0, T+30   0, T+60   0, T+400   0; pull-T p50 None
+                      stranger before  n   0 pulled by T+10   0, T+30   0, T+60   0, T+400   0; pull-T p50 None
+3.0 new               STRANGER-after-T n   1 pulled by T+10   0, T+30   0, T+60   0, T+400   1; pull-T p50 123
+                      no stranger      n  94 pulled by T+10   0, T+30   0, T+60   1, T+400   8; pull-T p50 251
+                      stranger before  n   0 pulled by T+10   0, T+30   0, T+60   0, T+400   0; pull-T p50 None
+
+== stranger buys after T: pull lag after the buy (all chain pools incl. no-2nd-buy window)
+3.0 n 10 lags: [5, 8, 9, 9, 13, 19, 27, 120, None, None]
+2.433 n 1 lags: [27]
+
+== stranger buys before T (fronts): pull lag after the buy
+
+== our pools (2.433): bot Swap present? pull offset; reverted bot tx found in blocks
+10-11 14:27 2.433 fee 2500 our buys [(2, 0.002)] our sells [10] bot swaps [(8, 0.169)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 14:28 2.433 fee 2500 our buys [(2, 0.002)] our sells [11] bot swaps [(10, 0.198)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 14:28 2.433 fee 2500 our buys [(2, 0.002)] our sells [12] bot swaps [(10, 0.1619)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 14:28 2.433 fee 2500 our buys [(2, 0.002)] our sells [12] bot swaps [(10, 0.1485)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 14:28 2.433 fee 2500 our buys [(2, 0.002)] our sells [12] bot swaps [(9, 0.0742)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 14:29 2.433 fee 2500 our buys [(2, 0.002)] our sells [10] bot swaps [(8, 0.1732)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 14:30 2.433 fee 2500 our buys [(2, 0.002)] our sells [11] bot swaps [(10, 0.099)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 14:30 2.433 fee 2500 our buys [(2, 0.002)] our sells [12] bot swaps [(10, 0.1732)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 14:30 2.433 fee 2500 our buys [(2, 0.002)] our sells [11] bot swaps [(9, 0.1485)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 14:31 2.433 fee 2500 our buys [(2, 0.002)] our sells [11] bot swaps [(9, 0.1732)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 14:31 2.433 fee 2500 our buys [(2, 0.002)] our sells [11] bot swaps [(9, 0.1485)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 14:31 2.433 fee 2500 our buys [(2, 0.002)] our sells [17] bot swaps [(15, 0.0742)] bot txs w/o Swap (reverted) at [] | pull 18
+10-11 14:32 2.433 fee 2500 our buys [(2, 0.002)] our sells [11] bot swaps [(9, 0.1724)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 14:32 2.433 fee 2500 our buys [(2, 0.002)] our sells [11] bot swaps [(9, 0.1485)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 14:32 2.433 fee 2500 our buys [(2, 0.002)] our sells [12] bot swaps [(10, 0.099)] bot txs w/o Swap (reverted) at [] | pull 14
+10-11 14:33 2.433 fee 2500 our buys [(2, 0.002)] our sells [11] bot swaps [(10, 0.198)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 14:33 2.433 fee 2500 our buys [(2, 0.002)] our sells [17] bot swaps [(15, 0.1485)] bot txs w/o Swap (reverted) at [] | pull 18
+10-11 14:33 2.433 fee 2500 our buys [(2, 0.002)] our sells [10] bot swaps [(8, 0.1485)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 14:33 2.433 fee 2500 our buys [(2, 0.002)] our sells [10] bot swaps [(8, 0.0742)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 14:34 2.433 fee 2500 our buys [(2, 0.002)] our sells [12] bot swaps [(10, 0.025)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 14:34 2.433 fee 2500 our buys [(2, 0.002)] our sells [9] bot swaps [(8, 0.1485)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 14:34 2.433 fee 2500 our buys [(3, 0.002)] our sells [11] bot swaps [(10, 0.2228)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 14:35 2.433 fee 2500 our buys [(2, 0.002)] our sells [12] bot swaps [(10, 0.2228)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 14:35 2.433 fee 2500 our buys [(2, 0.002)] our sells [10] bot swaps [(8, 0.2228)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 14:35 2.433 fee 2500 our buys [(2, 0.002)] our sells [11] bot swaps [(9, 0.1237)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:03 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(10, 0.1732)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:03 2.433 fee 2500 our buys [(2, 0.0058)] our sells [9] bot swaps [(8, 0.1237)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:03 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.198)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:04 2.433 fee 2500 our buys [(2, 0.0058)] our sells [9] bot swaps [(8, 0.1673)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:04 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.0813)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:04 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.225)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:05 2.433 fee 2500 our buys [(2, 0.0058)] our sells [14] bot swaps [(13, 0.0706)] bot txs w/o Swap (reverted) at [] | pull 16
+10-11 15:05 2.433 fee 2500 our buys [(2, 0.0058)] our sells [8] bot swaps [(7, 0.0742)] bot txs w/o Swap (reverted) at [] | pull 10
+10-11 15:05 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.0483)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:05 2.433 fee 2500 our buys [(2, 0.0058)] our sells [9] bot swaps [(8, 0.2343)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:06 2.433 fee 2500 our buys [(1, 0.0058)] our sells [12] bot swaps [(10, 0.225)] bot txs w/o Swap (reverted) at [] | pull 14
+10-11 15:06 2.433 fee 2500 our buys [(2, 0.0058)] our sells [13] bot swaps [(11, 0.175)] bot txs w/o Swap (reverted) at [] | pull 14
+10-11 15:06 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.2036)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:07 2.433 fee 2500 our buys [(2, 0.0058)] our sells [17] bot swaps [(15, 0.1571)] bot txs w/o Swap (reverted) at [] | pull 18
+10-11 15:07 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.099)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:07 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(9, 0.1732)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:08 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.0742)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:08 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(10, 0.0495)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:08 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(9, 0.198)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:08 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.198)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:09 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.198)] bot txs w/o Swap (reverted) at [] | pull 14
+10-11 15:09 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.2368)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:09 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(10, 0.2127)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:10 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.198)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:10 2.433 fee 2500 our buys [(2, 0.0058)] our sells [15] bot swaps [(13, 0.225)] bot txs w/o Swap (reverted) at [] | pull 17
+10-11 15:10 2.433 fee 2500 our buys [(2, 0.0058)] our sells [19] bot swaps [(17, 0.198)] bot txs w/o Swap (reverted) at [] | pull 20
+10-11 15:10 2.433 fee 2500 our buys [(2, 0.0058)] our sells [16] bot swaps [(15, 0.198)] bot txs w/o Swap (reverted) at [] | pull 18
+10-11 15:11 2.433 fee 2500 our buys [(2, 0.0058)] our sells [15] bot swaps [(14, 0.2177)] bot txs w/o Swap (reverted) at [] | pull 17
+10-11 15:11 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.05)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:11 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.198)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:12 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.1485)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:12 2.433 fee 2500 our buys [(2, 0.0058)] our sells [9] bot swaps [(7, 0.175)] bot txs w/o Swap (reverted) at [] | pull 10
+10-11 15:12 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(9, 0.0248)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:12 2.433 fee 2500 our buys [(2, 0.0058)] our sells [13] bot swaps [(10, 0.0742)] bot txs w/o Swap (reverted) at [] | pull 14
+10-11 15:13 2.433 fee 2500 our buys [(1, 0.0058)] our sells [13] bot swaps [(11, 0.1732)] bot txs w/o Swap (reverted) at [] | pull 14
+10-11 15:13 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.2475)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:13 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.198)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:14 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.025)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:14 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(9, 0.2228)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:14 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.0546)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:14 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.0212)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:15 2.433 fee 2500 our buys [(3, 0.0058)] our sells [19] bot swaps [(17, 0.2392)] bot txs w/o Swap (reverted) at [] | pull 20
+10-11 15:15 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(9, 0.0862)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:16 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(9, 0.2789)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:16 2.433 fee 2500 our buys [(2, 0.0058)] our sells [9] bot swaps [(7, 0.198)] bot txs w/o Swap (reverted) at [] | pull 10
+10-11 15:16 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.0742)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:17 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.025)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:17 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.2213)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:17 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(10, 0.2684)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:17 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.225)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:18 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.0212)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:18 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(9, 0.0612)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:18 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.1732)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:19 2.433 fee 2500 our buys [(2, 0.0058)] our sells [20] bot swaps [(10, 0.1732)] bot txs w/o Swap (reverted) at [] | pull 23
+10-11 15:19 2.433 fee 2500 our buys [(2, 0.0058)] our sells [9] bot swaps [(7, 0.0232)] bot txs w/o Swap (reverted) at [] | pull 10
+10-11 15:19 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.075)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:20 2.433 fee 2500 our buys [(2, 0.0058)] our sells [13] bot swaps [(11, 0.1732)] bot txs w/o Swap (reverted) at [] | pull 14
+10-11 15:20 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.0742)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:20 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(9, 0.225)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:21 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.0495)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:21 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.198)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:21 2.433 fee 2500 our buys [(2, 0.0058)] our sells [18] bot swaps [(16, 0.1732)] bot txs w/o Swap (reverted) at [] | pull 19
+10-11 15:22 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.1)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:22 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.2475)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:22 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.2475)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:22 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.0248)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:23 2.433 fee 2500 our buys [(1, 0.0058)] our sells [8] bot swaps [(7, 0.2061)] bot txs w/o Swap (reverted) at [] | pull 10
+10-11 15:23 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.2065)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:23 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.2716)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:24 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.0452)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:24 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.175)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:24 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.0248)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:24 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(9, 0.0742)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:25 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.2)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:25 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(9, 0.122)] bot txs w/o Swap (reverted) at [] | pull 14
+10-11 15:25 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(10, 0.2475)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:26 2.433 fee 2500 our buys [(2, 0.0058)] our sells [17] bot swaps [(15, 0.15)] bot txs w/o Swap (reverted) at [] | pull 18
+10-11 15:26 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.05)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:26 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(9, 0.1856)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:26 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.2228)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:27 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(10, 0.2)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:27 2.433 fee 2500 our buys [(2, 0.0058)] our sells [10] bot swaps [(9, 0.2)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:27 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(10, 0.225)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:28 2.433 fee 2500 our buys [(3, 0.0058)] our sells [11] bot swaps [(9, 0.1485)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:28 2.433 fee 2500 our buys [(2, 0.0058)] our sells [22] bot swaps [(10, 0.075)] bot txs w/o Swap (reverted) at [] | pull 23
+10-11 15:28 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(9, 0.225)] bot txs w/o Swap (reverted) at [] | pull 12
+10-11 15:28 2.433 fee 2500 our buys [(2, 0.0058)] our sells [13] bot swaps [(12, 0.099)] bot txs w/o Swap (reverted) at [] | pull 16
+10-11 15:29 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(8, 0.175)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:29 2.433 fee 2500 our buys [(2, 0.0058)] our sells [9] bot swaps [(8, 0.225)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:29 2.433 fee 2500 our buys [(2, 0.0058)] our sells [11] bot swaps [(10, 0.2228)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:30 2.433 fee 2500 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.1771)] bot txs w/o Swap (reverted) at [] | pull 13
+10-11 15:30 2.433 fee 2500 our buys [(2, 0.0058)] our sells [9] bot swaps [(8, 0.198)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:30 2.433 fee 2500 our buys [(2, 0.0058)] our sells [9] bot swaps [(8, 0.0742)] bot txs w/o Swap (reverted) at [] | pull 11
+10-11 15:48 3.0 fee 10000 our buys [(13, 0.002)] our sells [74] bot swaps [] bot txs w/o Swap (reverted) at [] | pull 22
+10-11 16:10 2.433 fee 5000 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.2228), (33, 0.1183), (62, 0.175)] bot txs w/o Swap (reverted) at [] | pull None
+10-11 16:16 2.433 fee 5000 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.1136), (31, 0.0873), (58, 0.1001)] bot txs w/o Swap (reverted) at [] | pull None
+10-11 16:22 2.433 fee 5000 our buys [(2, 0.0058)] our sells [12] bot swaps [(10, 0.1485), (43, 0.1237), (73, 0.1003)] bot txs w/o Swap (reverted) at [] | pull None
+10-11 16:28 2.433 fee 5000 our buys [(2, 0.0058)] our sells [16] bot swaps [(11, 0.1485), (53, 0.125), (79, 0.1732)] bot txs w/o Swap (reverted) at [] | pull None
+10-11 16:34 2.433 fee 5000 our buys [(2, 0.0058)] our sells [10] bot swaps [(35, 0.1765), (68, 0.1237)] bot txs w/o Swap (reverted) at [8] | pull 78
+10-11 16:35 2.433 fee 5000 our buys [(2, 0.0058)] our sells [10] bot swaps [(8, 0.1485), (36, 0.0742), (60, 0.15)] bot txs w/o Swap (reverted) at [] | pull None
+10-11 16:41 2.433 fee 5000 our buys [(2, 0.0058)] our sells [12] bot swaps [(34, 0.1237), (68, 0.198), (89, 0.099)] bot txs w/o Swap (reverted) at [10] | pull None
+10-11 16:47 2.433 fee 5000 our buys [(2, 0.0097)] our sells [11] bot swaps [(37, 0.099), (60, 0.099), (90, 0.2106)] bot txs w/o Swap (reverted) at [9] | pull 138
+10-11 16:47 2.433 fee 5000 our buys [(2, 0.0097)] our sells [21] bot swaps [(59, 0.0621), (82, 0.198), (101, 0.1598)] bot txs w/o Swap (reverted) at [] | pull None
+10-11 16:54 2.433 fee 5000 our buys [(2, 0.0097)] our sells [10] bot swaps [] bot txs w/o Swap (reverted) at [8] | pull 27
+10-11 16:54 2.433 fee 5000 our buys [(2, 0.0097)] our sells [11] bot swaps [] bot txs w/o Swap (reverted) at [9] | pull 28
+10-11 16:55 2.433 fee 5000 our buys [(1, 0.0097)] our sells [8] bot swaps [] bot txs w/o Swap (reverted) at [7] | pull 28
+10-11 16:55 2.433 fee 5000 our buys [(2, 0.0097)] our sells [11] bot swaps [(9, 0.0742), (36, 0.1732), (56, 0.125)] bot txs w/o Swap (reverted) at [] | pull None
+
+== census 3.0 new regime (>= 04:22 Oct 11): one-off wallets buying before / after T, pull lag
+  10-11 13:18 pool 0x8e62727fe6 before T None 0x7ae81404 via 0x65050a9b 0.002970 at +2 pull 7 lag 5
+  10-11 13:18 pool 0xddaf628d1b before T None 0x7ae81404 via 0x65050a9b 0.002970 at +2 pull 9 lag 7
+  10-11 13:18 pool 0x2fbfb44d0d before T None 0x7ae81404 via 0x65050a9b 0.002970 at +1 pull 7 lag 6
+  10-11 13:18 pool 0xc12f4c7457 before T None 0x7ae81404 via 0x65050a9b 0.002970 at +1 pull 8 lag 7

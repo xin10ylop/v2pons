@@ -1,0 +1,44 @@
+mints kept 291577 {'posts': 166, 'items': 166, 'r429': 25}
+bot router code hash bd31d4da7db89e01a9bb257fb9840da42b80df746dd53b9e7bf6a245d2cf8968
+mint recipients (top 40 by tokens) with code size/hash, the clusters of the tokens:
+  0xcaf681a66d020601342297493863e78c959e5cb2 71895 mints  code 24497 6f36c378e272  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 71895}
+  0x8876789976decbfcbbbe364623c63652db8c0904 65926 mints  code 24546 2ce6aaaf9f41  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 65926}
+  0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc 29421 mints  code 752 f9e0c7528d41  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 29421}
+  0x6aa80dbbed9ae5ab45fbf61f9644fada3b29326e 17374 mints  code 19872 a1a2a85048dd  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 17374}
+  0x89e5db8b5aa49aa85ac63f691524311aeb649eba 15326 mints  code 21902 bd55ea26b2f8  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 15326}
+  0xf0b7eaaf868191adc00065ca13391ef436ce8faf  7649 mints  code 33121 8cc94e1d0103  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 7649}
+  0x6e2a35a7ad683cf634d91492d73bb7ff774c6919  5668 mints  code 13322 cea2f485173e  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 5668}
+  0x8f10b468b06c6fd214b65f87778827f7d113f996  5432 mints  code 13529 fc8bfd5c118d  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 5280, 'other 0x58daec31 0xac9650d8 1316B fee 25': 152}
+  0xe492912f37c2a4eca45d42dc67548f4c6cd7ce2b  4883 mints  code 784 243c05d528fa  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 4883}
+  0x36dc95f1f088e11c0066dc19173f745655002bc2  4538 mints  code 6752 134d65723c67  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 4538}
+  0x71268cbf08e245fadaadb39c4fa8221ea88f6d1e  3671 mints  code 3557 9387ed6cbcb9  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 3671}
+  0x204faca1764b154221e35c0d20abb3c525710498  3619 mints  code 24380 76b92a5bba2d  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 3619}
+  0x278d858f05b94576c1e6f73285886876ff6ef8d2  3358 mints  code 609 2a1882ea8064  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 3358}
+  0xec9aa0a6c2372131a0502aba6188269ab52cacb5  3144 mints  code 15922 be35ce73f797  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 3144}
+  0x520ed467860d840ec6ca20f1dacb9c0fa5168aa7  2369 mints  code 23506 6d2b4159f28d  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 2369}
+  0xd29c85f15df544ba632c9e25829fd29d767d7978  2222 mints  code 225 bad165a67f16  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 2222}
+  0x9689992f5b5c09447f15906d8d11214944488341  1978 mints  code 100 570238f1099a  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 1978}
+  0x0005ea38eb0a69d1253508ebdbdb9ea8cb26b5ef  1937 mints  code 163 4b0b52fc2768  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 1937}
+  0x7c1a6fc00c5247d482b1a7c737b1df8d1eab8f0b  1835 mints  code 4096 7fbeae7dc22a  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 1835}
+  0x3d90f66b534dd8482b181e24655a9e8265316be9  1645 mints  code 2206 722e8ace3065  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 1645}
+  0x2cdd127b79290af1c32a64fe3e2f69a8f8c7211b  1427 mints  code 13285 31693f50002e  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 1427}
+  0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09  1228 mints  code 2840 cecb292d9c02  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 1228}
+  0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd  1178 mints  code 1323 2f63a98d79d0  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 1178}
+  0x1cbaf24d53fe930fce8eff149fa797d2611da149   968 mints  code 20443 bd31d4da7db8  {'VB 3.0': 697, 'VB 5.0': 180, 'VB 2.4333': 91}
+  0x076b36019cfb1604ae452a31fafda70dea87fbb0   933 mints  code 20286 d89926fe2238  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 933}
+  0xbd665831a520182e944af92b23a317791c5d8efa   817 mints  code 4612 b5fbbb2c3e13  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 817}
+  0xb3ea566ce79eaf79b3448c3d5ec1c9449cb82832   779 mints  code 2955 4b2e3cd09372  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 779}
+  0x6c9c7c9cb0995b018cb19065db44f85da39c16af   675 mints  code 12292 ff6ecf5941a0  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 675}
+  0x14d447d62d44df2d7ced02addaf30f4540591f84   622 mints  code 45400 3cc070ff7f81  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 622}
+  0xcfaece2151502da2a21d47234ae1f08618a60a94   621 mints  code 45 d37d7cb1b00b  {'other 0x1eef016f 0x60956835 2980B fee 83': 531, 'other 0x458d2a59 0x5fe889a4 2916B fee 20': 40, 'other 0xeb7c0347 0x882db707 3972B fee 83': 24}
+  0xb63cecf4aa3f0e31bd58496b2487e9ce3521b8b3   599 mints  code 25121 fc47762e0aeb  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 599}
+  0xeb7c034704ef8dcd2d32324c1545f62fb4ad0862   579 mints  code 5695 86b37100cbe9  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 284, 'other 0x1eef016f 0x60956835 2980B fee 83': 211, 'other 0x1eef016f 0x60956835 2916B fee 83': 29}
+  0xa8f012faac1c999fa6ee47e4b00c1eea62d35ecb   561 mints  code 21972 5fedf004cfd6  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 561}
+  0x8366a39cc670b4001a1121b8f6a443a643e40951   551 mints  code 24009 bd3881180b54  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 551}
+  0x565d59e68ba0f34e29b84e2132c8aa8f99a9c18d   514 mints  code 3557 4dbb88d1d76b  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 514}
+  0x103b52a624de94bdf0b9739ae5b5971ff1071809   500 mints  code 22155 d8dc9a7879c7  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 500}
+  0x20f6ee51340adeed01a59b0e65cb3703f3dc860c   497 mints  code 8679 affe8098fa7a  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 497}
+  0x111116053f09d34a7eae8102887004445176ca11   493 mints  code 21567 43d962aebdc6  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 493}
+  0xd0d05666431e191fc8667811ecd7994d72c32226   489 mints  code 3557 ef0a7dbf8f1e  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 489}
+  0x8c4987568eaf2a5bdc279f5a2e30e1cc0922ade3   482 mints  code 0 EOA  {'other 0x5ff137d4 0x1fad948c 4324B fee 83': 482}
+recipients with the bot router's code hash: ['0x1cbaf24d53fe930fce8eff149fa797d2611da149']

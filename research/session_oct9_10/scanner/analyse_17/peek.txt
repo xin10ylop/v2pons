@@ -1,0 +1,161 @@
+====================================================================================================
+0x3194e32622c5d860a0572c74edda99dcfd8fc827|2fcb9108|644|1500|200|true
+{'count': 6, 'launch_to': '0x3194e32622c5d860a0572c74edda99dcfd8fc827', 'selector': '2fcb9108', 'calldata_len': 644, 'values_eth': [1.55, 1.6, 2.35, 2.7], 'value_counts': [[2.7, 3], [1.55, 1], [1.6, 1], [2.35, 1]], 'fee': 1500, 'tick_spacing': 200, 'hooks_zero': True, 'hooks': ['0x0000000000000000000000000000000000000000'], 'known': 'operator-A', 'known_by_rule': 'operator-A', 'vbot_router_buy_pools': 0, 'vbot_router_pull_pools': 0, 'n_deployers': 6, 'top_deployers': [['0x0cf9141899f62db56f1a9ca37ae63dac2f231944', 1], ['0x2b954556285b0ec63f9ba8a89d6f492315861b7b', 1], ['0x7a89c0f8d78a31384a3a9dbc613147f1ba10eb4d', 1]], 'nonce_med': 0.0, 'nonce0': 6, 'first_block': 84336853, 'last_block': 84886991, 'to_code_size': 6984, 'to_code_hash': '42544ef5d4754816b3cfe77f3a6fb1c8eb842d6eee101f7d15c638593a3351d2', 'n_with_events': 6, 'swap_tx_to_top': [['0x2abb5653352f6b2f3b4f4261877cd02d9e05a957', 6], ['0x8876789976decbfcbbbe364623c63652db8c0904', 6], ['0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc', 1]], 'first_pull_to_sel_top': [['0x58daec3116aae6d93017baaea7749052e8a04fa7:dd46508f', 6]], 'first_buy_rel_p10_50_90': [3, 3, 3], 'first_pull_rel_p10_50_90': [28, 47, 51], 'first_buy_eth_p10_50_90': [1.998e-06, 1.999e-06, 2e-06], 'n_no_pull_in_window': 0}
+-- pool 0x0c6cd9e479 b0 84336853 from 0x0cf91418 nonce 0 value 1.55 token 0x961ef0bf hooks 0x00000000 fee 1500 liq 39330669330688996043326 sqrt 2012397340260660635212981809714245 tick0 202860 nsw 7 pull 47 0x58daec3116aae6d93017baaea7749052e8a04fa7 dd46508f 0x0cf9141899f62db56f1a9ca37ae63dac2f231944
+   add 0 -887200 887200 39330669330688996043326 0x58daec31 0x10bcac5f
+   sw +3 ti1 BUY  eth 1.99857e-06 fee 1500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+   sw +19 ti3 BUY  eth 8.31212e-06 fee 1500 sender 0x88767899 to 0x88767899 from 0xf7b47b17 sel 24856bc3 clen 1060
+   sw +39 ti53 BUY  eth 0.0315 fee 1500 sender 0x88767899 to 0x88767899 from 0x8700722d sel 3593564c clen 1124
+   sw +41 ti1 BUY  eth 0.0012 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 5ed06f60 clen 260
+   sw +42 ti7 BUY  eth 0.0467 fee 1500 sender 0x88767899 to 0x88767899 from 0x75442507 sel 3593564c clen 1124
+   sw +43 ti4 SELL eth 0.00126798 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 137f1fdd clen 228
+   sw +46 ti5 BUY  eth 0.0364 fee 1500 sender 0x88767899 to 0x88767899 from 0xe6af9036 sel 3593564c clen 1124
+   pull +47 dl -39330669330688996043326 sender 0x58daec31 tx 0x920c7a9f
+-- pool 0x18a2f1eced b0 84366893 from 0x2b954556 nonce 0 value 2.7 token 0x4c9e224f hooks 0x00000000 fee 1500 liq 51909562702839252487017 sqrt 1524746698500331084472062354316350 tick0 197310 nsw 6 pull 45 0x58daec3116aae6d93017baaea7749052e8a04fa7 dd46508f 0x2b954556285b0ec63f9ba8a89d6f492315861b7b
+   add 0 -887200 887200 51909562702839252487017 0x58daec31 0x5e211c9d
+   sw +3 ti1 BUY  eth 1.99827e-06 fee 1500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+   sw +39 ti1 BUY  eth 0.1263 fee 1500 sender 0x88767899 to 0x88767899 from 0xdc2e8661 sel 3593564c clen 1124
+   sw +40 ti3 BUY  eth 0.0012 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 5ed06f60 clen 260
+   sw +41 ti7 BUY  eth 0.0378 fee 1500 sender 0x88767899 to 0x88767899 from 0x75442507 sel 3593564c clen 1124
+   sw +42 ti2 SELL eth 0.00122858 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 137f1fdd clen 228
+   sw +44 ti7 BUY  eth 5e-05 fee 1500 sender 0x88767899 to 0x88767899 from 0xb4d43149 sel 3593564c clen 1124
+   pull +45 dl -51909562702839252487017 sender 0x58daec31 tx 0x74da0e0b
+-- pool 0x7d6d6f6162 b0 84367796 from 0x7a89c0f8 nonce 0 value 2.7 token 0x899202fe hooks 0x00000000 fee 1500 liq 51909562702839252487017 sqrt 1524746698500331084472062354316350 tick0 197310 nsw 6 pull 51 0x58daec3116aae6d93017baaea7749052e8a04fa7 dd46508f 0x7a89c0f8d78a31384a3a9dbc613147f1ba10eb4d
+   add 0 -887200 887200 51909562702839252487017 0x58daec31 0x981ec3ba
+   sw +3 ti3 BUY  eth 1.99904e-06 fee 1500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+   sw +45 ti8 BUY  eth 0.0501 fee 1500 sender 0x88767899 to 0x88767899 from 0x295877ce sel 3593564c clen 1124
+   sw +46 ti4 BUY  eth 0.0012 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 5ed06f60 clen 260
+   sw +48 ti2 BUY  eth 0.1058 fee 1500 sender 0x88767899 to 0x88767899 from 0x75442507 sel 3593564c clen 1124
+   sw +49 ti7 SELL eth 0.00129012 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 137f1fdd clen 228
+   sw +51 ti2 BUY  eth 0.0632 fee 1500 sender 0x88767899 to 0x88767899 from 0x8700722d sel 3593564c clen 1124
+   pull +51 dl -51909562702839252487017 sender 0x58daec31 tx 0xb89ba2c9
+-- pool 0xe02ac3791a b0 84368353 from 0xf68117e2 nonce 0 value 2.7 token 0xc6e1bc83 hooks 0x00000000 fee 1500 liq 51909562702839252487017 sqrt 1524746698500331084472062354316350 tick0 197310 nsw 4 pull 28 0x58daec3116aae6d93017baaea7749052e8a04fa7 dd46508f 0xf68117e2fec503a15dd5733bccd431a2c1500a73
+   add 0 -887200 887200 51909562702839252487017 0x58daec31 0xd0fbc4f6
+   sw +3 ti1 BUY  eth 1.99941e-06 fee 1500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+   sw +22 ti10 BUY  eth 0.0329 fee 1500 sender 0x88767899 to 0x88767899 from 0xdc2e8661 sel 3593564c clen 1124
+   sw +23 ti8 BUY  eth 0.0012 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 5ed06f60 clen 260
+   sw +26 ti3 SELL eth 0.0011964 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 137f1fdd clen 228
+   pull +28 dl -51909562702839252487017 sender 0x58daec31 tx 0x7640e7c6
+-- pool 0x74e5e16dd9 b0 84411609 from 0xf6ea1caa nonce 0 value 1.6 token 0x135cc9a6 hooks 0x00000000 fee 1500 liq 39960000000000000000000 sqrt 1980704062856608439838598758400000 tick0 202542 nsw 5 pull 51 0x58daec3116aae6d93017baaea7749052e8a04fa7 dd46508f 0xf6ea1caa182a958641d0430330c204f11f699728
+   add 0 -887200 887200 39960000000000000000000 0x58daec31 0x4ad5cab0
+   sw +3 ti14 BUY  eth 1.99973e-06 fee 1500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+   sw +43 ti12 BUY  eth 0.0646 fee 1500 sender 0x88767899 to 0x88767899 from 0xdc2e8661 sel 3593564c clen 1124
+   sw +45 ti3 BUY  eth 0.0012 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 5ed06f60 clen 260
+   sw +48 ti2 BUY  eth 0.1307 fee 1500 sender 0x88767899 to 0x88767899 from 0x295877ce sel 3593564c clen 1124
+   sw +48 ti3 SELL eth 0.00139133 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 137f1fdd clen 228
+   pull +51 dl -39960000000000000000000 sender 0x58daec31 tx 0x07aa7ebf
+-- pool 0x680d608aa3 b0 84886991 from 0xc0f5ad94 nonce 0 value 2.35 token 0x61f241ea hooks 0x00000000 fee 1500 liq 48428321775589126850603 sqrt 1634352202385134839626230144259406 tick0 198698 nsw 6 pull 56 0x58daec3116aae6d93017baaea7749052e8a04fa7 dd46508f 0xc0f5ad946ade6195ef3ecf94f84e05ff1f0c8f31
+   add 0 -887200 887200 48428321775589126850603 0x58daec31 0xb6cedca1
+   sw +3 ti6 BUY  eth 0.0001188 fee 1500 sender 0x65050a9b to 0x65050a9b from 0xd818eba0 sel 4d819a2a clen 580
+   sw +3 ti7 BUY  eth 1.9993e-06 fee 1500 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+   sw +14 ti1 BUY  eth 4.00906e-05 fee 1500 sender 0x88767899 to 0x88767899 from 0xd54bad00 sel 3593564c clen 1092
+   sw +50 ti2 BUY  eth 0.0122 fee 1500 sender 0x88767899 to 0x88767899 from 0x75442507 sel 3593564c clen 1124
+   sw +51 ti1 BUY  eth 0.0012 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 5ed06f60 clen 260
+   sw +54 ti2 SELL eth 0.0011964 fee 1500 sender 0x2abb5653 to 0x2abb5653 from 0xab5a34c3 sel 137f1fdd clen 228
+   pull +56 dl -48428321775589126850603 sender 0x58daec31 tx 0x5ce2cbdf
+====================================================================================================
+0x58daec3116aae6d93017baaea7749052e8a04fa7|ac9650d8|1444|600000|6000|true
+{'count': 6, 'launch_to': '0x58daec3116aae6d93017baaea7749052e8a04fa7', 'selector': 'ac9650d8', 'calldata_len': 1444, 'values_eth': [1.2e-05, 4.3e-05, 4.9e-05, 0.00019, 0.000289, 0.000409], 'value_counts': [[0.000409, 1], [4.3e-05, 1], [4.9e-05, 1], [0.000289, 1], [0.00019, 1], [1.2e-05, 1]], 'fee': 600000, 'tick_spacing': 6000, 'hooks_zero': True, 'hooks': ['0x0000000000000000000000000000000000000000'], 'known': 'none', 'known_by_rule': 'vbot-other', 'vbot_router_buy_pools': 0, 'vbot_router_pull_pools': 0, 'n_deployers': 4, 'top_deployers': [['0xd6ea056bb448d38ddb7cddc467b710532c09076d', 3], ['0xc6312da2663570a2aee12b27a0c6da4683339acd', 1], ['0x45fcadcb1090cab50a247cf3666dbafc7479932d', 1]], 'nonce_med': 3486.5, 'nonce0': 0, 'first_block': 83730402, 'last_block': 84641931, 'to_code_size': 23877, 'to_code_hash': 'c873e135dc9aaec88489cfbad146b4cb49d6a32e0d80326377784b7ba17670b2', 'n_with_events': 6, 'swap_tx_to_top': [['0x0000000071727de22e5e9d8baf0edac6f37da032', 1], ['0xf69cd0fe7280773bb9b7c93ab68420d07290afa9', 1]], 'first_pull_to_sel_top': [['0x58daec3116aae6d93017baaea7749052e8a04fa7:dd46508f', 1]], 'first_buy_rel_p10_50_90': [441, 441, 441], 'first_pull_rel_p10_50_90': [2632, 2632, 2632], 'first_buy_eth_p10_50_90': [1.75e-06, 1.75e-06, 1.75e-06], 'n_no_pull_in_window': 5}
+-- pool 0xf903c95e9b b0 83730402 from 0xc6312da2 nonce 3666 value 0.00040899 token 0xe5cd5c76 hooks 0x00000000 fee 600000 liq 2414992629006012006 sqrt 467941067048579537881018659220021 tick0 173684 nsw 0 pull None None None None
+   add 0 -882000 882000 2414992629006012006 0x58daec31 0xa7f62a6f
+-- pool 0x756a2066db b0 84508877 from 0x45fcadcb nonce 898 value 4.2701e-05 token 0xfab8e384 hooks 0x00000000 fee 600000 liq 7534569377286876603 sqrt 13983348414020841242095192561914284 tick0 241633 nsw 0 pull None None None None
+   add 0 -882000 882000 7534569377286876603 0x58daec31 0x2e4f0e79
+-- pool 0xa4c5d00d23 b0 84516570 from 0xd6ea056b nonce 3398 value 4.9465e-05 token 0x2e2a84ae hooks 0x00000000 fee 600000 liq 153232669019912412 sqrt 245494517676440999765912759593443 tick0 160782 nsw 2 pull None None None None
+   add 0 -882000 882000 153232669019912412 0x58daec31 0xc0c9416b
+   add 335 -882000 882000 459698007059740336 0x58daec31 0x52726e78
+   add 930 -882000 882000 567606595933994294 0x58daec31 0x52b1dca0
+   sw +440 ti1 SELL eth 0.000121019 fee 600000 sender 0x8f10b468 to 0x00000000 from 0xc3d22b9e sel 765e827f clen 6020
+   sw +441 ti5 BUY  eth 1.75e-06 fee 600000 sender 0x88767899 to 0xf69cd0fe from 0x43745495 sel 69508f86 clen 356
+-- pool 0x94bf86c682 b0 84555148 from 0xe620839e nonce 1275 value 0.000289067 token 0x7770a4ed hooks 0x00000000 fee 600000 liq 89511378339557458782 sqrt 24539623628300483244630426797324993 tick0 252882 nsw 0 pull 2632 0x58daec3116aae6d93017baaea7749052e8a04fa7 dd46508f 0xe620839e5e0820bae0c1db553c8af1ec232b2560
+   add 0 -882000 882000 89511378339557458782 0x58daec31 0x193fd8b0
+   pull +2632 dl -44755689169778729391 sender 0x58daec31 tx 0xd336dac3
+-- pool 0xe9a58c29ad b0 84599871 from 0xd6ea056b nonce 3575 value 0.000189708 token 0x176291b3 hooks 0x00000000 fee 600000 liq 1477097367559793114 sqrt 617036718697819339879027248819999 tick0 179216 nsw 0 pull None None None None
+   add 0 -882000 882000 1477097367559793114 0x58daec31 0x1a05c4a9
+   add 234 -882000 882000 1477097367559800902 0x58daec31 0xaf0ffdc4
+-- pool 0xe582a64db6 b0 84641931 from 0xd6ea056b nonce 3643 value 1.202e-05 token 0x9d2a7310 hooks 0x00000000 fee 600000 liq 1720240331977087664 sqrt 11341603518177979380602010475692892 tick0 237445 nsw 0 pull None None None None
+   add 0 -882000 882000 1720240331977087664 0x58daec31 0x241a048e
+   add 296 -882000 882000 5160720995931549296 0x58daec31 0x5c3bc418
+====================================================================================================
+0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661|a80ac0c2|1284|0|200|false
+{'count': 6, 'launch_to': '0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661', 'selector': 'a80ac0c2', 'calldata_len': 1284, 'values_eth': [0.0005, 0.0205, 0.0255, 0.3455, 3.195653], 'value_counts': [[0.0005, 2], [3.195653, 1], [0.0255, 1], [0.3455, 1], [0.0205, 1]], 'fee': 0, 'tick_spacing': 200, 'hooks_zero': False, 'hooks': ['0x75a54357d9c78a2db19004a5fdc76c50f9242aec'], 'known': 'none', 'known_by_rule': 'none', 'vbot_router_buy_pools': 0, 'vbot_router_pull_pools': 0, 'n_deployers': 6, 'top_deployers': [['0x7fcf2cdd45df30044ef886d1584e8521f21cf839', 1], ['0x3e2205fbb02b20183c9983a148498a15aaac9c9e', 1], ['0x9f3196a3fd8e99b457ee76e50861b19ec503ca9d', 1]], 'nonce_med': 0.0, 'nonce0': 5, 'first_block': 83566563, 'last_block': 85177216, 'to_code_size': 176, 'to_code_hash': '51faa3f1aaa267eb4ffb4dd57f07a89edf3ffd618213bf35cf7f8254a07961e5', 'n_with_events': 6, 'swap_tx_to_top': [['0x5bd1fbe78a78fe8236fa00cf48fbeba74ae34661', 4], ['0x8876789976decbfcbbbe364623c63652db8c0904', 3], ['0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc', 3], ['0xf2c69db0311b3ded8ec7f39e80f555a200cc2839', 1], ['0x9689992f5b5c09447f15906d8d11214944488341', 1], ['0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd', 1]], 'first_pull_to_sel_top': [], 'first_buy_rel_p10_50_90': [0, 0, 0], 'first_pull_rel_p10_50_90': None, 'first_buy_eth_p10_50_90': [0.016914432, 0.02375, 0.33465], 'n_no_pull_in_window': 6}
+-- pool 0xb20f215e6b b0 83566563 from 0x7fcf2cdd nonce 0 value 3.195652972 token 0xfb2bb4bf hooks 0x75a54357 fee 0 liq 36819258015569838458222 sqrt 2151813121295408910812139624586144 tick0 204200 nsw 604 pull None None None None
+   add 0 -887200 204200 36819258015569838458222 0x5bd1fbe7 0x254804a1
+   sw +0 ti6 BUY  eth 3.1632 fee 0 sender 0x5bd1fbe7 to 0x5bd1fbe7 from 0x7fcf2cdd sel a80ac0c2 clen 1284
+   sw +1 ti8 BUY  eth 0.989258 fee 0 sender 0x88767899 to 0x88767899 from 0x47b66d6c sel 3593564c clen 1124
+   sw +1 ti9 BUY  eth 0.989258 fee 0 sender 0x88767899 to 0x88767899 from 0x55681ba2 sel 3593564c clen 1124
+   sw +1 ti10 BUY  eth 0.494258 fee 0 sender 0x88767899 to 0x88767899 from 0x5feac470 sel 3593564c clen 1124
+   sw +2 ti5 BUY  eth 0.0198 fee 0 sender 0x88767899 to 0x88767899 from 0xf78200de sel 3593564c clen 1124
+   sw +16 ti10 BUY  eth 1.31916 fee 0 sender 0x88767899 to 0x88767899 from 0x6000c460 sel 3593564c clen 1156
+   sw +20 ti11 BUY  eth 0.03863 fee 0 sender 0x65050a9b to 0x65050a9b from 0x6bed4038 sel 4d819a2a clen 580
+   sw +20 ti12 BUY  eth 0.043433 fee 0 sender 0x65050a9b to 0x65050a9b from 0x9b8b127a sel 4d819a2a clen 580
+   sw +20 ti13 BUY  eth 0.036122 fee 0 sender 0x65050a9b to None from None sel None clen None
+   sw +20 ti14 BUY  eth 0.0288301 fee 0 sender 0x65050a9b to None from None sel None clen None
+   sw +20 ti15 BUY  eth 0.0233895 fee 0 sender 0x65050a9b to None from None sel None clen None
+   sw +20 ti16 BUY  eth 0.0216048 fee 0 sender 0x65050a9b to None from None sel None clen None
+   sw +20 ti17 BUY  eth 0.0236127 fee 0 sender 0x65050a9b to None from None sel None clen None
+   sw +21 ti3 BUY  eth 0.00099 fee 0 sender 0xf2c69db0 to None from None sel None clen None
+-- pool 0xed40de698a b0 83570391 from 0x3e2205fb nonce 0 value 0.0005 token 0xe6931892 hooks 0x75a54357 fee 0 liq 36819258015569838458222 sqrt 2151813121295408910812139624586144 tick0 204200 nsw 46 pull None None None None
+   add 0 -887200 204200 36819258015569838458222 0x5bd1fbe7 0xc521e238
+   sw +253 ti1 BUY  eth 0.0169144 fee 0 sender 0x9689992f to 0x9689992f from 0x4852a463 sel 3e0f9c3c clen 772
+   sw +253 ti2 BUY  eth 0.0142492 fee 0 sender 0x9689992f to 0x9689992f from 0xec87a7e4 sel 3e0f9c3c clen 772
+   sw +253 ti3 BUY  eth 0.0178414 fee 0 sender 0x9689992f to 0x9689992f from 0x8fe71d99 sel 3e0f9c3c clen 772
+   sw +253 ti5 BUY  eth 0.019818 fee 0 sender 0x65050a9b to 0x65050a9b from 0x6bed4038 sel 4d819a2a clen 580
+   sw +253 ti6 BUY  eth 0.0230393 fee 0 sender 0x65050a9b to 0x65050a9b from 0x378d3504 sel 4d819a2a clen 580
+   sw +253 ti7 BUY  eth 0.0225876 fee 0 sender 0x65050a9b to 0x65050a9b from 0x9b8b127a sel 4d819a2a clen 580
+   sw +253 ti8 BUY  eth 0.032565 fee 0 sender 0x65050a9b to 0x65050a9b from 0xf6881420 sel 4d819a2a clen 580
+   sw +254 ti4 BUY  eth 0.00099 fee 0 sender 0xf2c69db0 to 0xf2c69db0 from 0x4f667c7f sel a65563f0 clen 192
+   sw +254 ti5 BUY  eth 0.0297 fee 0 sender 0x88767899 to None from None sel None clen None
+   sw +254 ti6 BUY  eth 0.099 fee 0 sender 0x88767899 to None from None sel None clen None
+   sw +254 ti7 BUY  eth 0.0693 fee 0 sender 0x88767899 to None from None sel None clen None
+   sw +256 ti2 BUY  eth 0.000207388 fee 0 sender 0x4f881c6a to None from None sel None clen None
+   sw +256 ti9 BUY  eth 0.019602 fee 0 sender 0x65050a9b to None from None sel None clen None
+   sw +257 ti2 SELL eth 0.10974 fee 0 sender 0x88767899 to None from None sel None clen None
+-- pool 0xfb23f071de b0 84395563 from 0x9f3196a3 nonce 0 value 0.0255 token 0x91361cdc hooks 0x75a54357 fee 0 liq 36819258015569838458222 sqrt 2151813121295408910812139624586144 tick0 204200 nsw 3 pull None None None None
+   add 0 -887200 204200 36819258015569838458222 0x5bd1fbe7 0x3ae888f6
+   sw +0 ti4 BUY  eth 0.02375 fee 0 sender 0x5bd1fbe7 to 0x5bd1fbe7 from 0x9f3196a3 sel a80ac0c2 clen 1284
+   sw +314 ti21 BUY  eth 0.03325 fee 0 sender 0x88767899 to 0x88767899 from 0x6b3d96e9 sel 3593564c clen 1124
+   sw +545 ti4 BUY  eth 5.73311e-05 fee 0 sender 0x88767899 to 0x88767899 from 0xf8725e80 sel 3593564c clen 1124
+-- pool 0xb675fe096d b0 84396875 from 0xf651996d nonce 0 value 0.3455 token 0x965c9b5f hooks 0x75a54357 fee 0 liq 36819258015569838458222 sqrt 2151813121295408910812139624586144 tick0 204200 nsw 31 pull None None None None
+   add 0 -887200 204200 36819258015569838458222 0x5bd1fbe7 0xff8ced1e
+   sw +0 ti1 BUY  eth 0.33465 fee 0 sender 0x5bd1fbe7 to 0x5bd1fbe7 from 0xf651996d sel a80ac0c2 clen 1284
+   sw +4 ti2 BUY  eth 0.028809 fee 0 sender 0xb1000000 to 0xb1000000 from 0x7b1ec224 sel 549299b8 clen 548
+   sw +4 ti3 BUY  eth 0.0240075 fee 0 sender 0xb1000000 to 0xb1000000 from 0x5d3d2664 sel 549299b8 clen 548
+   sw +4 ti4 BUY  eth 0.0211266 fee 0 sender 0xb1000000 to 0xb1000000 from 0xefa99c01 sel 549299b8 clen 548
+   sw +17 ti1 BUY  eth 0.0912285 fee 0 sender 0x65050a9b to 0x65050a9b from 0x14a4e0d4 sel 4d819a2a clen 580
+   sw +17 ti2 BUY  eth 0.0912285 fee 0 sender 0x65050a9b to 0x65050a9b from 0x9fbe3392 sel 4d819a2a clen 580
+   sw +17 ti3 BUY  eth 0.0912285 fee 0 sender 0x65050a9b to 0x65050a9b from 0xa65f642d sel 4d819a2a clen 580
+   sw +25 ti3 BUY  eth 0.019206 fee 0 sender 0xb1000000 to 0xb1000000 from 0x001f77d0 sel 549299b8 clen 548
+   sw +28 ti2 BUY  eth 0.105633 fee 0 sender 0x9689992f to None from None sel None clen None
+   sw +83 ti4 BUY  eth 5.86365e-05 fee 0 sender 0x88767899 to None from None sel None clen None
+   sw +142 ti2 BUY  eth 0.000179178 fee 0 sender 0x65050a9b to None from None sel None clen None
+   sw +257 ti4 BUY  eth 0.100842 fee 0 sender 0x00000000 to None from None sel None clen None
+   sw +257 ti5 BUY  eth 0.100842 fee 0 sender 0x00000000 to None from None sel None clen None
+   sw +271 ti4 BUY  eth 7.76e-05 fee 0 sender 0x88767899 to None from None sel None clen None
+-- pool 0x1624dcff54 b0 84636163 from 0x873f4f46 nonce 1 value 0.0205 token 0x1b1ed878 hooks 0x75a54357 fee 0 liq 36819258015569838458222 sqrt 2151813121295408910812139624586144 tick0 204200 nsw 3 pull None None None None
+   add 0 -887200 204200 36819258015569838458222 0x5bd1fbe7 0xdd2565e1
+   sw +0 ti1 BUY  eth 0.019 fee 0 sender 0x5bd1fbe7 to 0x5bd1fbe7 from 0x873f4f46 sel a80ac0c2 clen 1284
+   sw +241 ti3 BUY  eth 0.038 fee 0 sender 0x88767899 to 0x88767899 from 0x6b3d96e9 sel 3593564c clen 1124
+   sw +2851 ti1 BUY  eth 0.0101853 fee 0 sender 0x6aa80dbb to 0x5399d94d from 0x67337a62 sel 814920c0 clen 2244
+-- pool 0x1f6255852c b0 85177216 from 0xe8f81dcf nonce 0 value 0.0005 token 0x49c24e51 hooks 0x75a54357 fee 0 liq 36819258015569838458222 sqrt 2151813121295408910812139624586144 tick0 204200 nsw 0 pull None None None None
+   add 0 -887200 204200 36819258015569838458222 0x5bd1fbe7 0x2358c2bc
+====================================================================================================
+0x78ba8b21e8adbbc84f2e11f0e92c6f2299b78281|7fde822e|772|10000|200|true
+{'count': 6, 'launch_to': '0x78ba8b21e8adbbc84f2e11f0e92c6f2299b78281', 'selector': '7fde822e', 'calldata_len': 772, 'values_eth': [0.0], 'value_counts': [[0.0, 6]], 'fee': 10000, 'tick_spacing': 200, 'hooks_zero': True, 'hooks': ['0x0000000000000000000000000000000000000000'], 'known': 'none', 'known_by_rule': 'none', 'vbot_router_buy_pools': 0, 'vbot_router_pull_pools': 0, 'n_deployers': 1, 'top_deployers': [['0x06cb3a6841c92525e7a1998328e7c9d37e98d937', 6]], 'nonce_med': 1952.5, 'nonce0': 0, 'first_block': 83817918, 'last_block': 83870451, 'to_code_size': 19036, 'to_code_hash': 'a5f8b1cd37d4c2d127997ac1d6340edc4af76bab544e02ddb7d5e13a6209cdfc', 'n_with_events': 6, 'swap_tx_to_top': [['0x8876789976decbfcbbbe364623c63652db8c0904', 6]], 'first_pull_to_sel_top': [], 'first_buy_rel_p10_50_90': [3, 3, 3], 'first_pull_rel_p10_50_90': None, 'first_buy_eth_p10_50_90': [1.998e-06, 1.999e-06, 1.999e-06], 'n_no_pull_in_window': 6}
+-- pool 0x9ca48dcbfd b0 83817918 from 0x06cb3a68 nonce 1943 value 0.0 token 0x40c475bf hooks 0x00000000 fee 10000 liq 32156000099526845215062 sqrt 1908498483466244238266951834509291 tick0 201800 nsw 1 pull None None None None
+   add 0 132800 201800 32156000099526845215062 0x78ba8b21 0x706e50f8
+   sw +3 ti1 BUY  eth 1.99848e-06 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+-- pool 0x521e59a903 b0 83829601 from 0x06cb3a68 nonce 1947 value 0.0 token 0xac4bcefc hooks 0x00000000 fee 10000 liq 32156000099526845215062 sqrt 1908498483466244238266951834509291 tick0 201800 nsw 1 pull None None None None
+   add 0 132800 201800 32156000099526845215062 0x78ba8b21 0xffa555de
+   sw +3 ti2 BUY  eth 1.99896e-06 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+-- pool 0xbab7ddffed b0 83835510 from 0x06cb3a68 nonce 1949 value 0.0 token 0x00423963 hooks 0x00000000 fee 10000 liq 32156000099526845215062 sqrt 1908498483466244238266951834509291 tick0 201800 nsw 1 pull None None None None
+   add 0 132800 201800 32156000099526845215062 0x78ba8b21 0xe7d9ee03
+   sw +3 ti2 BUY  eth 1.9991e-06 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+-- pool 0x5f2a274e9b b0 83855925 from 0x06cb3a68 nonce 1956 value 0.0 token 0x4e56071d hooks 0x00000000 fee 10000 liq 32156000099526845215062 sqrt 1908498483466244238266951834509291 tick0 201800 nsw 1 pull None None None None
+   add 0 132800 201800 32156000099526845215062 0x78ba8b21 0x67680dd2
+   sw +3 ti2 BUY  eth 1.99819e-06 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+-- pool 0xb93425e0eb b0 83861695 from 0x06cb3a68 nonce 1958 value 0.0 token 0x6d538aef hooks 0x00000000 fee 10000 liq 32156000099526845215062 sqrt 1908498483466244238266951834509291 tick0 201800 nsw 1 pull None None None None
+   add 0 132800 201800 32156000099526845215062 0x78ba8b21 0x9cbe10f8
+   sw +3 ti3 BUY  eth 1.9986e-06 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156
+-- pool 0x3109ac77b7 b0 83870451 from 0x06cb3a68 nonce 1961 value 0.0 token 0x64143f37 hooks 0x00000000 fee 10000 liq 32156000099526845215062 sqrt 1908498483466244238266951834509291 tick0 201800 nsw 1 pull None None None None
+   add 0 132800 201800 32156000099526845215062 0x78ba8b21 0x23f03d93
+   sw +3 ti5 BUY  eth 1.99986e-06 fee 10000 sender 0x88767899 to 0x88767899 from 0xe71a69f4 sel 3593564c clen 1156

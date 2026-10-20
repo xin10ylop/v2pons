@@ -1,0 +1,11 @@
+token code groups (hash, bytes): [(('38f88592fc7b9d7a', 4655), 49), (('e7c5deb7fdfc6be7', 4655), 27), (('5869232a3644b4e0', 4655), 26), (('935f30aba51ca6b6', 4655), 26)]
+PUSH4 constants in every token's code: 11
+  known: ['allowance(address,address)', 'approve(address,uint256)', 'balanceOf(address)', 'decimals()', 'decreaseAllowance(address,uint256)', 'increaseAllowance(address,uint256)', 'name()', 'symbol()', 'totalSupply()', 'transfer(address,uint256)', 'transferFrom(address,address,uint256)']
+  unknown: []
+decimals Counter({18: 128}) supply [(10000000000.0, 128)]
+owner() [(None, 128)]
+names (first 12): [('For Walter Jr', 'WALTJR'), ('The Black Bear', 'Bear'), ('Make Solana Great Again', 'MSGA'), ('Chonkie', 'Chonkie'), ('The White Bear', 'WhiteBear'), ('Bobo The Bear', 'Bobo'), ('Ribbita by Virtuals', 'TIBBIR'), ('Instinct AI', 'Instinct'), ('el-trueque.com', 'trueq'), ('Department Of Grok Efficiency', 'DOGE'), ('Qrypt Protocol', 'QRP'), ('FeeKit.fun', 'KIT')]
+launcher nonce now: [(9, 99), (8, 20), (10, 8), (11, 1)]
+launcher balance now ETH p10/50/90 4.59671812e-06 4.620882736e-06 4.749892e-06
+first token selectors: ['allowance(address,address)', 'approve(address,uint256)', 'balanceOf(address)', 'decimals()', 'decreaseAllowance(address,uint256)', 'increaseAllowance(address,uint256)', 'name()', 'symbol()', 'totalSupply()', 'transfer(address,uint256)', 'transferFrom(address,address,uint256)']
+{'posts': 51, 'items': 1024, 'r429': 2}

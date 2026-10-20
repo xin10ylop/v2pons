@@ -1,0 +1,4 @@
+n 91; best +-1 window of T - L: 36..38 holds 14 pools (15%)
+T second - L+1 second: [(2, 10), (3, 24), (4, 26), (5, 22), (6, 9)]
+T is block k of its second (k = 1 first): [(1, 9), (2, 8), (3, 10), (4, 10), (5, 9), (6, 12), (7, 6), (8, 8), (9, 12), (10, 7)]
+T - previous pool's T: p10/50/90 -17/0/20; best +-1 window -11..-9 holds 11 of 90

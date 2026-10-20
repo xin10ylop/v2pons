@@ -1,0 +1,5 @@
+trigger offset after launch: p10/50/90 (71.2, 118, 206.6); max 2246; > 150 (engine default TRIGGER_MAX_BLOCKS): 183/573 (32%); > 300: 19
+bot first-buy size ETH: min 0.00008 p10/50/90 (0.0179, 0.134, 0.316); below 0.005 (census 'real buy'): 27; below 0.0002 (engine MIN_TRIGGER_ETH): 2
+one position slot: 568 trades taken, 5 lost to an open position (0.9%); taken mean +0.1611
+tail: top 5% of trades (29) carry 25% of the summed return; mean without them +0.1281; returns > +100%: 3; max +1.80
+$ per trade at $15: mean +2.44, median +1.49; per day at 81.9 trades: +200

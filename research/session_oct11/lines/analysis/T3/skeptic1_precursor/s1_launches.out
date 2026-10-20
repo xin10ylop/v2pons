@@ -1,0 +1,57 @@
+  init logs to 85478654 46
+  init logs to 85498654 140
+  init logs to 85518654 237
+  init logs to 85538654 560
+  init logs to 85558654 676
+  init logs to 85578654 709
+  init logs to 85598654 756
+  init logs to 85618654 796
+  init logs to 85638654 831
+  init logs to 85658654 873
+  init logs to 85678654 906
+  init logs to 85698654 923
+  init logs to 85718654 956
+  init logs to 85734702 978
+slice blocks 85458655..85734702  10-11 01:38:26 .. 10-11 09:38:24 UTC; ETH-pair Initialize logs 978
+fee 10000 / spacing 200 / no hook / the 3.0 price: 431
+  txs 400/431
+  txs 431/431
+3.0 launches: 431 ; same price/fee but not the line's launch tx: {}
+  pool events 15/431
+  pool events 30/431
+  pool events 45/431
+  pool events 60/431
+  pool events 75/431
+  pool events 90/431
+  pool events 105/431
+  pool events 120/431
+  pool events 135/431
+  pool events 150/431
+  pool events 165/431
+  pool events 180/431
+  pool events 195/431
+  pool events 210/431
+  pool events 225/431
+  pool events 240/431
+  pool events 255/431
+  pool events 270/431
+  pool events 285/431
+  pool events 300/431
+  pool events 315/431
+  pool events 330/431
+  pool events 345/431
+  pool events 360/431
+  pool events 375/431
+  pool events 390/431
+  pool events 405/431
+  pool events 420/431
+  pool events 431/431
+swap/ml txs: 3162
+  txs 400/2731
+  txs 800/2731
+  txs 1200/2731
+  txs 1600/2731
+  txs 2000/2731
+  txs 2400/2731
+  txs 2731/2731
+done

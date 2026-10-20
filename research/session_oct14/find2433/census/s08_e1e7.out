@@ -1,0 +1,11 @@
+== K6 v4 ANY-TARGET 0xe1e75b94 5572B f2500 ts25 v5.002e-05 ETH hooked | actor 0x88767899:0x3593564c | pools 151 (repeat buyer present in 151)
+replay check: max rel sqrtP error p50 1.31e-18 p90 1.41e-18 max 2.32e-18 over 151 swaps
+pools with exact replay (err < 1e-6): 151 of 151
+  front L+1, sell T+1 (no reaction)        n 151 gross mean +119.06% median +94.35% p10 +67.69% min +67.69% pos 151/151 | net mean +118.66%
+  front L+2, sell T+1                      n 151 gross mean +119.06% median +94.35% p10 +67.69% min +67.69% pos 151/151 | net mean +118.66%
+  main skips the pool, sell L+1+60         n 151 gross mean -100.00% median -100.00% p10 -100.00% min -100.00% pos 0/151 | net mean -100.40%
+  main skips, sell L+1+20                  n 151 gross mean -0.50% median -0.50% p10 -0.50% min -0.50% pos 0/151 | net mean -0.90%
+  pulled 4 blocks after our buy            n 151 gross mean -100.00% median -100.00% p10 -100.00% min -100.00% pos 0/151 | net mean -100.40%
+  pulled 8 blocks after our buy            n 151 gross mean -100.00% median -100.00% p10 -100.00% min -100.00% pos 0/151 | net mean -100.40%
+  no reaction, pools where the buyer came  n 151 gross mean +119.06% median +94.35% p10 +67.69% min +67.69% pos 151/151 | net mean +118.66%
+  room (ETH ahead of the repeat buyer's first buy) p10/50/90: 0.030385060682296752/0.030385060682296752/0.03206352731132507 over 60 pools

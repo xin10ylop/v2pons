@@ -1,0 +1,14 @@
+abort pulls (cap branch, pulled before any crowd, by +300): n 159; held ETH at +78 without the +1 bot vs pull offset: Spearman rho -0.265 (two-sided p 0.00087)
+    held 0.000-0.000: n  24 pull offset p10/25/50 118/147/171; min 94
+    held 0.000-0.001: n  26 pull offset p10/25/50 106/130/159; min 92
+    held 0.001-0.002: n  51 pull offset p10/25/50 95/104/130; min 83
+    held 0.002-0.004: n  45 pull offset p10/25/50 92/115/128; min 87
+    held 0.004-9.000: n  13 pull offset p10/25/50 97/127/136; min 91
+abort pulls (cap branch, pulled before any crowd, by +300): n 159; held ETH at +78 with the +1 bot vs pull offset: Spearman rho -0.352 (two-sided p 9.9e-06)
+    held 0.000-0.000: n  17 pull offset p10/25/50 99/152/184; min 94
+    held 0.000-0.001: n  16 pull offset p10/25/50 129/146/174; min 118
+    held 0.001-0.002: n  40 pull offset p10/25/50 97/114/142; min 93
+    held 0.002-0.004: n  64 pull offset p10/25/50 90/114/130; min 83
+    held 0.004-9.000: n  22 pull offset p10/25/50 92/102/134; min 87
+trigger <= +60 (all): n 202; pulled by +300 61; pull - trigger smallest [36, 39, 40, 42, 42, 48, 49, 49]
+trigger <= +60 (since Oct 10): n 67; pulled by +300 21; pull - trigger smallest [39, 40, 42, 49, 49, 50, 58, 65]

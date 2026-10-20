@@ -1,0 +1,52 @@
+pools without our wallet, with T; stranger = tx-identified one-off wallet buying after T before the bot's 2nd buy
+2.433 d0     STRANGER n    0 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    0 (  0.0%) pull-T p50 None
+             none     n  270 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400   30 ( 11.1%) pull-T p50 465
+             repeat   n    6 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    0 (  0.0%) pull-T p50 None
+2.433 d1     STRANGER n    4 pulled<=T+10    0 <=T+30    3 <=T+60    4 <=T+400    4 (100.0%) pull-T p50 28
+             none     n   24 pulled<=T+10    0 <=T+30    0 <=T+60    6 <=T+400   12 ( 50.0%) pull-T p50 66
+             repeat   n  320 pulled<=T+10    1 <=T+30    3 <=T+60    5 <=T+400   88 ( 27.5%) pull-T p50 216
+2.433 d2     STRANGER n    9 pulled<=T+10    3 <=T+30    7 <=T+60    7 <=T+400    7 ( 77.8%) pull-T p50 17
+             none     n   20 pulled<=T+10    1 <=T+30    1 <=T+60    1 <=T+400    6 ( 30.0%) pull-T p50 142
+             repeat   n  121 pulled<=T+10    0 <=T+30    0 <=T+60    3 <=T+400   36 ( 29.8%) pull-T p50 129
+2.433 d3     STRANGER n    4 pulled<=T+10    0 <=T+30    2 <=T+60    2 <=T+400    4 (100.0%) pull-T p50 89
+             none     n  141 pulled<=T+10    3 <=T+30    3 <=T+60    4 <=T+400   16 ( 11.3%) pull-T p50 348
+             repeat   n  164 pulled<=T+10    6 <=T+30   22 <=T+60   24 <=T+400   43 ( 26.2%) pull-T p50 99
+2.433 d4     STRANGER n    2 pulled<=T+10    1 <=T+30    2 <=T+60    2 <=T+400    2 (100.0%) pull-T p50 18
+             none     n  292 pulled<=T+10    5 <=T+30    5 <=T+60   12 <=T+400   58 ( 19.9%) pull-T p50 163
+             repeat   n   39 pulled<=T+10    0 <=T+30   18 <=T+60   27 <=T+400   30 ( 76.9%) pull-T p50 29
+2.433 d5     STRANGER n    0 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    0 (  0.0%) pull-T p50 None
+             none     n  203 pulled<=T+10   13 <=T+30   14 <=T+60   19 <=T+400   57 ( 28.1%) pull-T p50 180
+             repeat   n  197 pulled<=T+10    0 <=T+30   27 <=T+60   46 <=T+400  116 ( 58.9%) pull-T p50 107
+2.433 d6     STRANGER n    3 pulled<=T+10    0 <=T+30    1 <=T+60    1 <=T+400    3 (100.0%) pull-T p50 81
+             none     n  313 pulled<=T+10  275 <=T+30  275 <=T+60  278 <=T+400  280 ( 89.5%) pull-T p50 3
+             repeat   n    0 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    0 (  0.0%) pull-T p50 None
+3.0 d0       STRANGER n    0 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    0 (  0.0%) pull-T p50 None
+             none     n  411 pulled<=T+10    2 <=T+30    4 <=T+60    6 <=T+400   53 ( 12.9%) pull-T p50 586
+             repeat   n   13 pulled<=T+10    0 <=T+30    9 <=T+60   11 <=T+400   13 (100.0%) pull-T p50 28
+3.0 d1       STRANGER n    2 pulled<=T+10    0 <=T+30    1 <=T+60    2 <=T+400    2 (100.0%) pull-T p50 32
+             none     n  382 pulled<=T+10    0 <=T+30    0 <=T+60   11 <=T+400   36 (  9.4%) pull-T p50 1110
+             repeat   n    1 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    0 (  0.0%) pull-T p50 629
+3.0 d2       STRANGER n    0 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    0 (  0.0%) pull-T p50 None
+             none     n  455 pulled<=T+10    0 <=T+30    1 <=T+60   13 <=T+400   69 ( 15.2%) pull-T p50 939
+             repeat   n    6 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    2 ( 33.3%) pull-T p50 372
+3.0 d3       STRANGER n   13 pulled<=T+10    2 <=T+30   13 <=T+60   13 <=T+400   13 (100.0%) pull-T p50 19
+             none     n  454 pulled<=T+10    0 <=T+30    0 <=T+60    8 <=T+400   72 ( 15.9%) pull-T p50 673
+             repeat   n    7 pulled<=T+10    0 <=T+30    5 <=T+60    5 <=T+400    6 ( 85.7%) pull-T p50 24
+3.0 d4       STRANGER n    2 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    1 ( 50.0%) pull-T p50 453
+             none     n  428 pulled<=T+10    0 <=T+30    1 <=T+60    4 <=T+400   69 ( 16.1%) pull-T p50 697
+             repeat   n    5 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    2 ( 40.0%) pull-T p50 269
+3.0 d5       STRANGER n    3 pulled<=T+10    0 <=T+30    1 <=T+60    3 <=T+400    3 (100.0%) pull-T p50 40
+             none     n  437 pulled<=T+10   19 <=T+30   22 <=T+60   36 <=T+400   69 ( 15.8%) pull-T p50 626
+             repeat   n   26 pulled<=T+10    4 <=T+30   18 <=T+60   19 <=T+400   24 ( 92.3%) pull-T p50 20
+3.0 d6 new   STRANGER n    0 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    0 (  0.0%) pull-T p50 None
+             none     n  156 pulled<=T+10    0 <=T+30    0 <=T+60    1 <=T+400   12 (  7.7%) pull-T p50 1152
+             repeat   n    0 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    0 (  0.0%) pull-T p50 None
+3.0 d6 old   STRANGER n    4 pulled<=T+10    0 <=T+30    3 <=T+60    4 <=T+400    4 (100.0%) pull-T p50 24
+             none     n  535 pulled<=T+10  296 <=T+30  297 <=T+60  297 <=T+400  312 ( 58.3%) pull-T p50 3
+             repeat   n    0 pulled<=T+10    0 <=T+30    0 <=T+60    0 <=T+400    0 (  0.0%) pull-T p50 None
+2.433 all days except the pull-at-T+3 phase: STRANGER n   19 pulled<=T+10    4 <=T+30   14 <=T+60   15 <=T+400   17 ( 89.5%) pull-T p50 20
+                                                none     n  950 pulled<=T+10   22 <=T+30   23 <=T+60   42 <=T+400  179 ( 18.8%) pull-T p50 222
+3.0 all days except the pull-at-T+3 phase: STRANGER n   20 pulled<=T+10    2 <=T+30   15 <=T+60   18 <=T+400   19 ( 95.0%) pull-T p50 20
+                                                none     n 2723 pulled<=T+10   21 <=T+30   28 <=T+60   79 <=T+400  380 ( 14.0%) pull-T p50 754
+52 stranger buys listed in r08_cases.txt
+top stranger (eoa, to): [('0x3c886772 to 0x88767899', 10), ('0xccdf2cb9 to 0x88767899', 6), ('0xd1879061 to 0x06afba43', 5), ('0x5373fb35 to 0x88767899', 5), ('0xe50450be to 0x88767899', 3), ('0xefa99c01 to 0xb1000000', 3), ('0x69b54106 to 0x12f420e5', 3), ('0x53c9e01e to 0x88767899', 2), ('0x0ed4dfff to 0x88767899', 2), ('0x7ae81404 to 0x88767899', 2), ('0x4a8c5d1b to 0x65050a9b', 1), ('0xdd73a3c4 to 0x88767899', 1)]

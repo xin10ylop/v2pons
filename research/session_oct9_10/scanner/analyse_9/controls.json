@@ -1,0 +1,128 @@
+{
+ "vbot-v2.433": {
+  "n": 1843,
+  "per_day": 921.8,
+  "first_any": {
+   "frac": 1.0,
+   "off": [
+    2,
+    3,
+    3
+   ],
+   "eth": [
+    2e-06,
+    2e-06,
+    0.00495
+   ],
+   "to": [
+    [
+     "0x88767899",
+     940
+    ],
+    [
+     "0x65050a9b",
+     854
+    ],
+    [
+     "0x1cbaf24d",
+     49
+    ]
+   ],
+   "n_from": 129
+  },
+  "first_sched": {
+   "frac": 0.999,
+   "off": [
+    8,
+    9,
+    10
+   ],
+   "eth": [
+    0.0495,
+    0.175,
+    0.25
+   ],
+   "to": [
+    [
+     "0x1cbaf24d",
+     1842
+    ]
+   ],
+   "n_from": 31
+  },
+  "pull_frac": 0.804,
+  "pull_off_launch": [
+   11,
+   13,
+   127
+  ],
+  "pull_off_sched": [
+   3,
+   3,
+   117
+  ],
+  "pull_from_launch_wallet": 1.0,
+  "outsider_pools_before_sched": 0.973
+ },
+ "operator-A": {
+  "n": 77,
+  "per_day": 38.5,
+  "first_any": {
+   "frac": 1.0,
+   "off": [
+    3,
+    3,
+    4
+   ],
+   "eth": [
+    2e-06,
+    2e-06,
+    2e-06
+   ],
+   "to": [
+    [
+     "0x88767899",
+     74
+    ],
+    [
+     "0x65050a9b",
+     3
+    ]
+   ],
+   "n_from": 3
+  },
+  "first_sched": {
+   "frac": 0.974,
+   "off": [
+    24,
+    54,
+    66
+   ],
+   "eth": [
+    0.0143,
+    0.0547,
+    0.1203
+   ],
+   "to": [
+    [
+     "0x88767899",
+     75
+    ]
+   ],
+   "n_from": 10
+  },
+  "pull_frac": 0.857,
+  "pull_off_launch": [
+   51,
+   224,
+   2180
+  ],
+  "pull_off_sched": [
+   6,
+   165,
+   2157
+  ],
+  "pull_from_launch_wallet": 1.0,
+  "outsider_pools_before_sched": 0.974
+ }
+}

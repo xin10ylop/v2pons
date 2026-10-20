@@ -1,0 +1,52 @@
+split block day 2026-10-08
+candidates 60
+train 0.0296 155 0x3a655ac880d0d49d96f94f4e38b563acef8c1972
+train 0.0179 230 0xeb9def4a0e393f263e2cbfcec0e5aac9ff2689cc
+train 0.0112 696 0x3e7c18b0b1ec729819043a33115459b0ac9c000b
+train 0.0086 862 0xe492912f37c2a4eca45d42dc67548f4c6cd7ce2b
+train 0.0022 206 0x60099c2eeefb15b349812b470ebb438f822a9e7d
+train -0.0027 1016 0xc917c3ac178cf19c4aa495775ea11d4b2976b19a
+train -0.0042 961 0x4bbdacd247af3c5d6b0b08e990d0847b139a26d8
+train -0.0078 192 0x2a4d34cd09a36f59ae3bedc0880cd5da929321d7
+train -0.0091 774 0x5373fb35432768b1f5eba51fd480d1a2ecb1287b
+train -0.0128 196 0x905edc48caf4c9fc38dc38b3616541eacfbbb554
+TEST pooled top5 k=1 cap=100 {'n': 1095, 'mean': -0.0128, 'median': -0.034, 'win': 0.334, 'worst': -0.8952, 'best': 1.0919, 'usd_per_day': -58.61}
+      0x3a655ac8 {'n': 117, 'mean': 0.0114, 'median': -0.0098, 'win': 0.479}
+      0xeb9def4a {'n': 0, 'mean': None, 'median': None, 'win': None}
+      0x3e7c18b0 {'n': 276, 'mean': -0.0013, 'median': -0.0568, 'win': 0.225}
+      0xe492912f {'n': 670, 'mean': -0.0206, 'median': -0.0302, 'win': 0.363}
+      0x60099c2e {'n': 32, 'mean': -0.0386, 'median': -0.0205, 'win': 0.156}
+TEST pooled top5 k=1 cap=300 {'n': 1095, 'mean': 0.0254, 'median': -0.0251, 'win': 0.432, 'worst': -0.8952, 'best': 1.2702, 'usd_per_day': 116.0}
+      0x3a655ac8 {'n': 117, 'mean': 0.0323, 'median': 0.0183, 'win': 0.521}
+      0xeb9def4a {'n': 0, 'mean': None, 'median': None, 'win': None}
+      0x3e7c18b0 {'n': 276, 'mean': 0.0336, 'median': -0.0492, 'win': 0.337}
+      0xe492912f {'n': 670, 'mean': 0.0211, 'median': -0.0205, 'win': 0.458}
+      0x60099c2e {'n': 32, 'mean': 0.0203, 'median': -0.0205, 'win': 0.375}
+TEST pooled top5 k=1 cap=1000 {'n': 1093, 'mean': 0.02, 'median': -0.0521, 'win': 0.355, 'worst': -0.8952, 'best': 2.5597, 'usd_per_day': 90.87}
+      0x3a655ac8 {'n': 117, 'mean': 0.0328, 'median': -0.0147, 'win': 0.487}
+      0xeb9def4a {'n': 0, 'mean': None, 'median': None, 'win': None}
+      0x3e7c18b0 {'n': 275, 'mean': 0.0683, 'median': -0.0536, 'win': 0.371}
+      0xe492912f {'n': 669, 'mean': 0.0011, 'median': -0.0597, 'win': 0.332}
+      0x60099c2e {'n': 32, 'mean': -0.0481, 'median': -0.0241, 'win': 0.219}
+TEST pooled top5 k=2 cap=100 {'n': 1095, 'mean': -0.0194, 'median': -0.0401, 'win': 0.311, 'worst': -0.8953, 'best': 1.0919, 'usd_per_day': -88.68}
+      0x3a655ac8 {'n': 117, 'mean': 0.0124, 'median': -0.0129, 'win': 0.47}
+      0xeb9def4a {'n': 0, 'mean': None, 'median': None, 'win': None}
+      0x3e7c18b0 {'n': 276, 'mean': -0.0041, 'median': -0.0572, 'win': 0.221}
+      0xe492912f {'n': 670, 'mean': -0.0304, 'median': -0.0402, 'win': 0.327}
+      0x60099c2e {'n': 32, 'mean': -0.038, 'median': -0.0205, 'win': 0.188}
+TEST pooled top5 k=2 cap=300 {'n': 1095, 'mean': 0.0176, 'median': -0.0266, 'win': 0.424, 'worst': -0.8953, 'best': 1.2702, 'usd_per_day': 80.2}
+      0x3a655ac8 {'n': 117, 'mean': 0.0263, 'median': 0.0157, 'win': 0.513}
+      0xeb9def4a {'n': 0, 'mean': None, 'median': None, 'win': None}
+      0x3e7c18b0 {'n': 276, 'mean': 0.0306, 'median': -0.0529, 'win': 0.333}
+      0xe492912f {'n': 670, 'mean': 0.0106, 'median': -0.0233, 'win': 0.448}
+      0x60099c2e {'n': 32, 'mean': 0.02, 'median': -0.0205, 'win': 0.375}
+TEST pooled top5 k=2 cap=1000 {'n': 1093, 'mean': 0.0124, 'median': -0.0558, 'win': 0.349, 'worst': -0.8953, 'best': 2.5706, 'usd_per_day': 56.51}
+      0x3a655ac8 {'n': 117, 'mean': 0.0327, 'median': -0.0152, 'win': 0.487}
+      0xeb9def4a {'n': 0, 'mean': None, 'median': None, 'win': None}
+      0x3e7c18b0 {'n': 275, 'mean': 0.0654, 'median': -0.0557, 'win': 0.364}
+      0xe492912f {'n': 669, 'mean': -0.01, 'median': -0.0642, 'win': 0.324}
+      0x60099c2e {'n': 32, 'mean': -0.0486, 'median': -0.0241, 'win': 0.219}
+pooled test by day 1 0.002 {'all': {'n': 1095, 'mean': 0.0249, 'median': -0.0262, 'win': 0.432, 'worst': -0.8963, 'best': 1.2762, 'usd_per_day': 39.13, 'per_day_n': 306.1}, 'by_day': {'2026-10-08': [266, 0.0333, -0.0217, 45.5], '2026-10-09': [425, 0.0405, -0.0264, 88.45], '2026-10-10': [224, -0.0004, -0.0385, -0.5], '2026-10-11': [180, 0.0071, -0.0363, 6.56]}}
+pooled test by day 1 0.0058 {'all': {'n': 1095, 'mean': 0.0254, 'median': -0.0251, 'win': 0.432, 'worst': -0.8952, 'best': 1.2702, 'usd_per_day': 116.0, 'per_day_n': 306.1}, 'by_day': {'2026-10-08': [266, 0.0338, -0.0205, 133.99], '2026-10-09': [425, 0.041, -0.0255, 259.77], '2026-10-10': [224, 0.0002, -0.0374, 0.51], '2026-10-11': [180, 0.0077, -0.0352, 20.75]}}
+pooled test by day 2 0.002 {'all': {'n': 1095, 'mean': 0.017, 'median': -0.0273, 'win': 0.424, 'worst': -0.8964, 'best': 1.2762, 'usd_per_day': 26.75, 'per_day_n': 306.1}, 'by_day': {'2026-10-08': [266, 0.0277, -0.0217, 37.87], '2026-10-09': [425, 0.035, -0.0316, 76.47], '2026-10-10': [224, -0.0133, -0.0414, -15.29], '2026-10-11': [180, -0.0036, -0.0363, -3.36]}}
+pooled test by day 2 0.0058 {'all': {'n': 1095, 'mean': 0.0176, 'median': -0.0266, 'win': 0.424, 'worst': -0.8953, 'best': 1.2702, 'usd_per_day': 80.2, 'per_day_n': 306.1}, 'by_day': {'2026-10-08': [266, 0.0282, -0.0205, 111.95], '2026-10-09': [425, 0.0355, -0.0304, 225.15], '2026-10-10': [224, -0.0126, -0.0402, -42.23], '2026-10-11': [180, -0.003, -0.0352, -7.92]}}

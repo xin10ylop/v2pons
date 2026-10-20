@@ -1,0 +1,117 @@
+simulator check, the launcher's own first buy re-simulated by amount: n 10, |rel. error| max 2.23e-12
+
+=== last 6 h: 2 launches (8.0/day)
+  census (frb+1, cap 60)             $15: n 2/2 mean +9.3% med +9.3% win 1.00 worst +7.4% pulled 0 $/trade +1.372 $/day +10.98  hold a..b med 9..26
+  census (frb+1, cap 60)             $5 : n 2/2 mean +9.4% med +9.4% win 1.00 worst +7.5% pulled 0 $/trade +0.451 $/day +3.61  hold a..b med 9..26
+  (a) own+1 cap 200                  $15: n 2/2 mean +9.3% med +9.3% win 1.00 worst +7.4% pulled 0 $/trade +1.372 $/day +10.98  hold a..b med 9..26
+  (a) own+1 cap 200                  $5 : n 2/2 mean +9.4% med +9.4% win 1.00 worst +7.5% pulled 0 $/trade +0.451 $/day +3.61  hold a..b med 9..26
+  (a,k3) own+3 cap 200               $15: n 2/2 mean +9.3% med +9.3% win 1.00 worst +7.4% pulled 0 $/trade +1.372 $/day +10.98  hold a..b med 9..28
+  (a,k3) own+3 cap 200               $5 : n 2/2 mean +9.4% med +9.4% win 1.00 worst +7.5% pulled 0 $/trade +0.451 $/day +3.61  hold a..b med 9..28
+  (a,0.05) own>=0.045 +1 cap 200     $15: n 2/2 mean +9.3% med +9.3% win 1.00 worst +7.4% pulled 0 $/trade +1.372 $/day +10.98  hold a..b med 9..26
+  (a,0.05) own>=0.045 +1 cap 200     $5 : n 2/2 mean +9.4% med +9.4% win 1.00 worst +7.5% pulled 0 $/trade +0.451 $/day +3.61  hold a..b med 9..26
+  (b) oracle own-2 -> own+1          $15: n 2/2 mean +9.3% med +9.3% win 1.00 worst +7.4% pulled 0 $/trade +1.372 $/day +10.98  hold a..b med 22..26
+  (b) oracle own-2 -> own+1          $5 : n 2/2 mean +9.4% med +9.4% win 1.00 worst +7.5% pulled 0 $/trade +0.451 $/day +3.61  hold a..b med 22..26
+  (c) fixed +160                     $15: n 2/2 mean +9.3% med +9.3% win 1.00 worst +7.4% pulled 0 $/trade +1.372 $/day +10.98  hold a..b med 9..160
+  (c) fixed +160                     $5 : n 2/2 mean +9.4% med +9.4% win 1.00 worst +7.5% pulled 0 $/trade +0.451 $/day +3.61  hold a..b med 9..160
+  (c) fixed +200                     $15: n 2/2 mean +14.8% med +14.8% win 1.00 worst +11.2% pulled 0 $/trade +2.190 $/day +17.52  hold a..b med 9..200
+  (c) fixed +200                     $5 : n 2/2 mean +14.9% med +14.9% win 1.00 worst +11.3% pulled 0 $/trade +0.727 $/day +5.82  hold a..b med 9..200
+
+=== last 24 h: 10 launches (10.0/day)
+  census (frb+1, cap 60)             $15: n 10/10 mean +7.2% med +3.8% win 0.60 worst -0.0% pulled 0 $/trade +1.051 $/day +10.51  hold a..b med 10..44
+  census (frb+1, cap 60)             $5 : n 10/10 mean +7.3% med +3.8% win 0.60 worst -0.0% pulled 0 $/trade +0.344 $/day +3.44  hold a..b med 10..44
+  (a) own+1 cap 200                  $15: n 10/10 mean +11.7% med +7.4% win 1.00 worst +0.1% pulled 0 $/trade +1.726 $/day +17.26  hold a..b med 10..27
+  (a) own+1 cap 200                  $5 : n 10/10 mean +11.8% med +7.5% win 1.00 worst +0.1% pulled 0 $/trade +0.573 $/day +5.73  hold a..b med 10..27
+  (a,k3) own+3 cap 200               $15: n 10/10 mean +11.7% med +7.4% win 1.00 worst +0.1% pulled 0 $/trade +1.726 $/day +17.26  hold a..b med 10..29
+  (a,k3) own+3 cap 200               $5 : n 10/10 mean +11.8% med +7.5% win 1.00 worst +0.1% pulled 0 $/trade +0.573 $/day +5.73  hold a..b med 10..29
+  (a,0.05) own>=0.045 +1 cap 200     $15: n 10/10 mean +11.7% med +7.4% win 1.00 worst +0.1% pulled 0 $/trade +1.726 $/day +17.26  hold a..b med 10..84
+  (a,0.05) own>=0.045 +1 cap 200     $5 : n 10/10 mean +11.8% med +7.5% win 1.00 worst +0.1% pulled 0 $/trade +0.573 $/day +5.73  hold a..b med 10..84
+  (b) oracle own-2 -> own+1          $15: n 10/10 mean +11.7% med +7.4% win 1.00 worst +0.1% pulled 0 $/trade +1.726 $/day +17.26  hold a..b med 24..27
+  (b) oracle own-2 -> own+1          $5 : n 10/10 mean +11.8% med +7.5% win 1.00 worst +0.1% pulled 0 $/trade +0.573 $/day +5.73  hold a..b med 24..27
+  (b,fix) m+106 -> own+1 cap 200     $15: n 4/10 mean +11.3% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.664 $/day +6.65  hold a..b med 136..142
+  (b,fix) m+106 -> own+1 cap 200     $5 : n 4/10 mean +11.4% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.551 $/day +2.20  hold a..b med 136..142
+  (c) fixed +160                     $15: n 10/10 mean +11.7% med +7.4% win 0.90 worst -0.0% pulled 0 $/trade +1.730 $/day +17.30  hold a..b med 10..160
+  (c) fixed +160                     $5 : n 10/10 mean +11.9% med +7.5% win 0.90 worst -0.0% pulled 0 $/trade +0.574 $/day +5.74  hold a..b med 10..160
+  (c) fixed +200                     $15: n 10/10 mean +15.2% med +10.1% win 1.00 worst +0.1% pulled 0 $/trade +2.249 $/day +22.49  hold a..b med 10..200
+  (c) fixed +200                     $5 : n 10/10 mean +15.4% med +10.2% win 1.00 worst +0.1% pulled 0 $/trade +0.751 $/day +7.51  hold a..b med 10..200
+
+=== last 48 h: 10 launches (5.0/day)
+  census (frb+1, cap 60)             $15: n 10/10 mean +7.2% med +3.8% win 0.60 worst -0.0% pulled 0 $/trade +1.051 $/day +5.26  hold a..b med 10..44
+  census (frb+1, cap 60)             $5 : n 10/10 mean +7.3% med +3.8% win 0.60 worst -0.0% pulled 0 $/trade +0.344 $/day +1.72  hold a..b med 10..44
+  (a) own+1 cap 200                  $15: n 10/10 mean +11.7% med +7.4% win 1.00 worst +0.1% pulled 0 $/trade +1.726 $/day +8.63  hold a..b med 10..27
+  (a) own+1 cap 200                  $5 : n 10/10 mean +11.8% med +7.5% win 1.00 worst +0.1% pulled 0 $/trade +0.573 $/day +2.86  hold a..b med 10..27
+  (a,k3) own+3 cap 200               $15: n 10/10 mean +11.7% med +7.4% win 1.00 worst +0.1% pulled 0 $/trade +1.726 $/day +8.63  hold a..b med 10..29
+  (a,k3) own+3 cap 200               $5 : n 10/10 mean +11.8% med +7.5% win 1.00 worst +0.1% pulled 0 $/trade +0.573 $/day +2.86  hold a..b med 10..29
+  (a,0.05) own>=0.045 +1 cap 200     $15: n 10/10 mean +11.7% med +7.4% win 1.00 worst +0.1% pulled 0 $/trade +1.726 $/day +8.63  hold a..b med 10..84
+  (a,0.05) own>=0.045 +1 cap 200     $5 : n 10/10 mean +11.8% med +7.5% win 1.00 worst +0.1% pulled 0 $/trade +0.573 $/day +2.86  hold a..b med 10..84
+  (b) oracle own-2 -> own+1          $15: n 10/10 mean +11.7% med +7.4% win 1.00 worst +0.1% pulled 0 $/trade +1.726 $/day +8.63  hold a..b med 24..27
+  (b) oracle own-2 -> own+1          $5 : n 10/10 mean +11.8% med +7.5% win 1.00 worst +0.1% pulled 0 $/trade +0.573 $/day +2.86  hold a..b med 24..27
+  (b,fix) m+106 -> own+1 cap 200     $15: n 4/10 mean +11.3% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.664 $/day +3.33  hold a..b med 136..142
+  (b,fix) m+106 -> own+1 cap 200     $5 : n 4/10 mean +11.4% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.551 $/day +1.10  hold a..b med 136..142
+  (c) fixed +160                     $15: n 10/10 mean +11.7% med +7.4% win 0.90 worst -0.0% pulled 0 $/trade +1.730 $/day +8.65  hold a..b med 10..160
+  (c) fixed +160                     $5 : n 10/10 mean +11.9% med +7.5% win 0.90 worst -0.0% pulled 0 $/trade +0.574 $/day +2.87  hold a..b med 10..160
+  (c) fixed +200                     $15: n 10/10 mean +15.2% med +10.1% win 1.00 worst +0.1% pulled 0 $/trade +2.249 $/day +11.25  hold a..b med 10..200
+  (c) fixed +200                     $5 : n 10/10 mean +15.4% med +10.2% win 1.00 worst +0.1% pulled 0 $/trade +0.751 $/day +3.75  hold a..b med 10..200
+
+=== late timing (own buy >= +100, n=4): 4 launches
+  census (frb+1, cap 60)             $15: n 4/4 mean -0.0% med -0.0% win 0.00 worst -0.0% pulled 0 $/trade -0.023  hold a..b med 32..60
+  census (frb+1, cap 60)             $5 : n 4/4 mean -0.0% med -0.0% win 0.00 worst -0.0% pulled 0 $/trade -0.021  hold a..b med 32..60
+  (a) own+1 cap 200                  $15: n 4/4 mean +11.3% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.664  hold a..b med 32..142
+  (a) own+1 cap 200                  $5 : n 4/4 mean +11.4% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.551  hold a..b med 32..142
+  (a,k3) own+3 cap 200               $15: n 4/4 mean +11.3% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.664  hold a..b med 32..144
+  (a,k3) own+3 cap 200               $5 : n 4/4 mean +11.4% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.551  hold a..b med 32..144
+  (a,0.05) own>=0.045 +1 cap 200     $15: n 4/4 mean +11.3% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.664  hold a..b med 32..142
+  (a,0.05) own>=0.045 +1 cap 200     $5 : n 4/4 mean +11.4% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.551  hold a..b med 32..142
+  (b) oracle own-2 -> own+1          $15: n 4/4 mean +11.3% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.664  hold a..b med 139..142
+  (b) oracle own-2 -> own+1          $5 : n 4/4 mean +11.4% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.551  hold a..b med 139..142
+  (b,fix) m+106 -> own+1 cap 200     $15: n 4/4 mean +11.3% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.664  hold a..b med 136..142
+  (b,fix) m+106 -> own+1 cap 200     $5 : n 4/4 mean +11.4% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.551  hold a..b med 136..142
+  (c) fixed +160                     $15: n 4/4 mean +5.6% med +7.4% win 0.75 worst -0.0% pulled 0 $/trade +0.811  hold a..b med 32..160
+  (c) fixed +160                     $5 : n 4/4 mean +5.6% med +7.5% win 0.75 worst -0.0% pulled 0 $/trade +0.261  hold a..b med 32..160
+  (c) fixed +200                     $15: n 4/4 mean +11.3% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.664  hold a..b med 32..200
+  (c) fixed +200                     $5 : n 4/4 mean +11.4% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.551  hold a..b med 32..200
+
+=== 48 h, own first buy 0.05: 9 launches (4.5/day)
+  census (frb+1, cap 60)             $15: n 9/9 mean +8.0% med +7.4% win 0.56 worst -0.0% pulled 0 $/trade +1.168 $/day +5.26  hold a..b med 10..28
+  census (frb+1, cap 60)             $5 : n 9/9 mean +8.1% med +7.5% win 0.56 worst -0.0% pulled 0 $/trade +0.384 $/day +1.73  hold a..b med 10..28
+  (a) own+1 cap 200                  $15: n 9/9 mean +13.0% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.918 $/day +8.63  hold a..b med 10..28
+  (a) own+1 cap 200                  $5 : n 9/9 mean +13.1% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.638 $/day +2.87  hold a..b med 10..28
+  (a,k3) own+3 cap 200               $15: n 9/9 mean +13.0% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.918 $/day +8.63  hold a..b med 10..30
+  (a,k3) own+3 cap 200               $5 : n 9/9 mean +13.1% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.638 $/day +2.87  hold a..b med 10..30
+  (a,0.05) own>=0.045 +1 cap 200     $15: n 9/9 mean +13.0% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.918 $/day +8.63  hold a..b med 10..28
+  (a,0.05) own>=0.045 +1 cap 200     $5 : n 9/9 mean +13.1% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.638 $/day +2.87  hold a..b med 10..28
+  (b) oracle own-2 -> own+1          $15: n 9/9 mean +13.0% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.918 $/day +8.63  hold a..b med 25..28
+  (b) oracle own-2 -> own+1          $5 : n 9/9 mean +13.1% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.638 $/day +2.87  hold a..b med 25..28
+  (b,fix) m+106 -> own+1 cap 200     $15: n 4/9 mean +11.3% med +7.4% win 1.00 worst +7.4% pulled 0 $/trade +1.664 $/day +3.33  hold a..b med 136..142
+  (b,fix) m+106 -> own+1 cap 200     $5 : n 4/9 mean +11.4% med +7.5% win 1.00 worst +7.5% pulled 0 $/trade +0.551 $/day +1.10  hold a..b med 136..142
+  (c) fixed +160                     $15: n 9/9 mean +13.0% med +7.4% win 0.89 worst -0.0% pulled 0 $/trade +1.922 $/day +8.65  hold a..b med 10..160
+  (c) fixed +160                     $5 : n 9/9 mean +13.2% med +7.5% win 0.89 worst -0.0% pulled 0 $/trade +0.640 $/day +2.88  hold a..b med 10..160
+  (c) fixed +200                     $15: n 9/9 mean +16.9% med +11.2% win 1.00 worst +7.4% pulled 0 $/trade +2.499 $/day +11.25  hold a..b med 10..200
+  (c) fixed +200                     $5 : n 9/9 mean +17.1% med +11.3% win 1.00 worst +7.5% pulled 0 $/trade +0.836 $/day +3.76  hold a..b med 10..200
+
+=== 48 h, own first buy < 0.05: 1 launches (0.5/day)
+  census (frb+1, cap 60)             $15: n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.001 $/day -0.00  hold a..b med 9..60
+  census (frb+1, cap 60)             $5 : n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.014 $/day -0.01  hold a..b med 9..60
+  (a) own+1 cap 200                  $15: n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.001 $/day -0.00  hold a..b med 9..24
+  (a) own+1 cap 200                  $5 : n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.014 $/day -0.01  hold a..b med 9..24
+  (a,k3) own+3 cap 200               $15: n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.001 $/day -0.00  hold a..b med 9..26
+  (a,k3) own+3 cap 200               $5 : n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.014 $/day -0.01  hold a..b med 9..26
+  (a,0.05) own>=0.045 +1 cap 200     $15: n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.001 $/day -0.00  hold a..b med 9..200
+  (a,0.05) own>=0.045 +1 cap 200     $5 : n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.014 $/day -0.01  hold a..b med 9..200
+  (b) oracle own-2 -> own+1          $15: n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.001 $/day -0.00  hold a..b med 21..24
+  (b) oracle own-2 -> own+1          $5 : n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.014 $/day -0.01  hold a..b med 21..24
+  (c) fixed +160                     $15: n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.001 $/day -0.00  hold a..b med 9..160
+  (c) fixed +160                     $5 : n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.014 $/day -0.01  hold a..b med 9..160
+  (c) fixed +200                     $15: n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.001 $/day -0.00  hold a..b med 9..200
+  (c) fixed +200                     $5 : n 1/1 mean +0.1% med +0.1% win 1.00 worst +0.1% pulled 0 $/trade -0.014 $/day -0.01  hold a..b med 9..200
+
+=== per launch, last 30 h (ret % at $15 / $5; pulled flag)
+  85926517 10-11 15:09 own1 0.050@+27 mint +6: | census [8,28) +22.8/+23.2 | (a) [8,28) +22.8/+23.2 | (a,k3) [8,30) +22.8/+23.2 | (a,0.05) [8,28) +22.8/+23.2 | (b) [25,28) +22.8/+23.2 | (c)fixed [8,160) +45.2/+45.9 | (c)fixed [8,200) +45.2/+45.9
+  86310601 10-12 02:06 own1 0.050@+25 mint +6: | census [8,26) +22.8/+23.2 | (a) [8,26) +22.8/+23.2 | (a,k3) [8,28) +22.8/+23.2 | (a,0.05) [8,26) +22.8/+23.2 | (b) [23,26) +22.8/+23.2 | (c)fixed [8,160) +22.8/+23.2 | (c)fixed [8,200) +23.1/+23.4
+  86378827 10-12 04:03 own1 0.050@+25 mint +7: | census [9,26) +7.4/+7.5 | (a) [9,26) +7.4/+7.5 | (a,k3) [9,28) +7.4/+7.5 | (a,0.05) [9,26) +7.4/+7.5 | (b) [23,26) +7.4/+7.5 | (c)fixed [9,160) +8.2/+8.2 | (c)fixed [9,200) +9.0/+9.0
+  86379461 10-12 04:05 own1 0.001@+23 mint +7: | census [9,60) +0.1/+0.1 | (a) [9,24) +0.1/+0.1 | (a,k3) [9,26) +0.1/+0.1 | (a,0.05) [9,200) +0.1/+0.1 | (b) [21,24) +0.1/+0.1 | (c)fixed [9,160) +0.1/+0.1 | (c)fixed [9,200) +0.1/+0.1
+  86425158 10-12 05:23 own1 0.050@+184 mint +29: | census [31,60) -0.0/-0.0 | (a) [31,185) +22.8/+23.2 | (a,k3) [31,187) +22.8/+23.2 | (a,0.05) [31,185) +22.8/+23.2 | (b) [182,185) +22.8/+23.2 | (b,fix) [135,185) +22.8/+23.2 | (c)fixed [31,160) -0.0/-0.0 | (c)fixed [31,200) +22.8/+23.2
+  86440192 10-12 05:49 own1 0.050@+138 mint +30: | census [32,60) -0.0/-0.0 | (a) [32,139) +7.4/+7.5 | (a,k3) [32,141) +7.4/+7.5 | (a,0.05) [32,139) +7.4/+7.5 | (b) [136,139) +7.4/+7.5 | (b,fix) [136,139) +7.4/+7.5 | (c)fixed [32,160) +7.4/+7.5 | (c)fixed [32,200) +7.4/+7.5
+  86444151 10-12 05:55 own1 0.050@+142 mint +28: | census [30,60) -0.0/-0.0 | (a) [30,143) +7.4/+7.5 | (a,k3) [30,145) +7.4/+7.5 | (a,0.05) [30,143) +7.4/+7.5 | (b) [140,143) +7.4/+7.5 | (b,fix) [134,143) +7.4/+7.5 | (c)fixed [30,160) +7.4/+7.5 | (c)fixed [30,200) +7.4/+7.5
+  86453459 10-12 06:11 own1 0.050@+140 mint +32: | census [34,60) -0.0/-0.0 | (a) [34,141) +7.4/+7.5 | (a,k3) [34,143) +7.4/+7.5 | (a,0.05) [34,141) +7.4/+7.5 | (b) [138,141) +7.4/+7.5 | (b,fix) [138,141) +7.4/+7.5 | (c)fixed [34,160) +7.4/+7.5 | (c)fixed [34,200) +7.4/+7.5
+  86527090 10-12 08:17 own1 0.050@+24 mint +6: | census [8,25) +11.2/+11.3 | (a) [8,25) +11.2/+11.3 | (a,k3) [8,27) +11.2/+11.3 | (a,0.05) [8,25) +11.2/+11.3 | (b) [22,25) +11.2/+11.3 | (c)fixed [8,160) +11.2/+11.3 | (c)fixed [8,200) +11.2/+11.3
+  86614007 10-12 10:47 own1 0.050@+25 mint +8: | census [10,26) +7.4/+7.5 | (a) [10,26) +7.4/+7.5 | (a,k3) [10,28) +7.4/+7.5 | (a,0.05) [10,26) +7.4/+7.5 | (b) [23,26) +7.4/+7.5 | (c)fixed [10,160) +7.4/+7.5 | (c)fixed [10,200) +18.4/+18.5

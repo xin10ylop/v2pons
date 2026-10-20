@@ -1,0 +1,14 @@
+{
+ "chain": "worldchain",
+ "url": "https://worldchain-mainnet.g.alchemy.com/public",
+ "from": 36195792,
+ "to": 36206592,
+ "head_ts": 1791748823,
+ "hours": 6.0,
+ "block_time_est": 2.0,
+ "n_logs": 0,
+ "secs": 7.0,
+ "final_chunk": 100,
+ "errlog": [],
+ "by_emitter": []
+}

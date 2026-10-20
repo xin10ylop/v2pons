@@ -1,0 +1,32 @@
+{
+ "fronter 0.00099 bot 0.0495": {
+  "ours_first%": 1.22,
+  "ours_after_fronter_sell%": 1.16,
+  "cost_points": 0.07
+ },
+ "fronter 0.00099 bot 0.124": {
+  "ours_first%": 6.17,
+  "ours_after_fronter_sell%": 6.1,
+  "cost_points": 0.07
+ },
+ "fronter 0.00099 bot 0.236": {
+  "ours_first%": 13.82,
+  "ours_after_fronter_sell%": 13.74,
+  "cost_points": 0.08
+ },
+ "fronter 0.00495 bot 0.0495": {
+  "ours_first%": 1.48,
+  "ours_after_fronter_sell%": 1.15,
+  "cost_points": 0.33
+ },
+ "fronter 0.00495 bot 0.124": {
+  "ours_first%": 6.43,
+  "ours_after_fronter_sell%": 6.08,
+  "cost_points": 0.36
+ },
+ "fronter 0.00495 bot 0.236": {
+  "ours_first%": 14.1,
+  "ours_after_fronter_sell%": 13.7,
+  "cost_points": 0.4
+ }
+}

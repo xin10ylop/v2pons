@@ -1,0 +1,17 @@
+deploy 0x7022ad9304 blk 19367688 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 -> None 0.0 ETH nonce 0 type 0x2 gas 1975845 tip 0.1 gwei, input bytes 7439
+first_launch 0x5abcd10225 blk 19367696 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 -> 0x3194e32622c5d860a0572c74edda99dcfd8fc827 0.1 ETH nonce 1 type 0x2 gas 1305096 tip 0.1 gwei, input bytes 644
+fund_3b11 0x69653e38ec blk 19367257 0x3130ea49fdcaaddeb59078b233ca55b705e23f3f -> 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 0.14999267808 ETH nonce 0 type 0x2 gas 30000 tip 0.1 gwei, input bytes 0
+fund_3130 0x1313e56fc0 blk 19367245 0x5ec3c42876cfdfe266081df7ffd587cde11edc85 -> 0x3130ea49fdcaaddeb59078b233ca55b705e23f3f 0.15 ETH nonce 0 type 0x2 gas 30000 tip 0.1 gwei, input bytes 0
+fund_5ec3 0xd82fa12693 blk 19367238 0xcb88b74cb295eb8b501ca3a4103e35c74e545599 -> 0x5ec3c42876cfdfe266081df7ffd587cde11edc85 6.058554805994458 ETH nonce 7 type 0x2 gas 30000 tip 0.1 gwei, input bytes 0
+deploy receipt: status 0x1 contractAddress 0x3194e32622c5d860a0572c74edda99dcfd8fc827 gasUsed 1567018 logs 0
+constructor args (last 3 words): ['0x8366a39cc670b4001a1121b8f6a443a643e40951', '0x58daec3116aae6d93017baaea7749052e8a04fa7', '0x000000000022d473030f116ddee9f6b43ac78ba3']
+deploy time UTC 2026-07-25 22:26:50
+latest nonce 0x3b11cafa6b570e3bc75bb6529b16dd35fe4b64b5 6 balance 1.274862712e-08
+latest nonce 0x3130ea49fdcaaddeb59078b233ca55b705e23f3f 2 balance 1.326239464e-08
+latest nonce 0x5ec3c42876cfdfe266081df7ffd587cde11edc85 11 balance 1.221528e-08
+latest nonce 0xcb88b74cb295eb8b501ca3a4103e35c74e545599 9 balance 1.6418408e-08
+code 0x3194e32622c5d860a0572c74edda99dcfd8fc827 6984 bytes, hash 42544ef5
+code 0xd1cc99aa33b6cfc5246d8f7c4fc4492c367425bc 6984 bytes, hash 2793923d
+code 0x00344844739b38678e30f47405cbd19ff001f52a 6984 bytes, hash 2793923d
+code 0x816d73e4f67b671d376973975da0afca1d738d78 6984 bytes, hash 2793923d
+code hashes over 29 addresses (launcher + 3 named copies + every 74-th copy): {'42544ef5': 1, '2793923d': 28}

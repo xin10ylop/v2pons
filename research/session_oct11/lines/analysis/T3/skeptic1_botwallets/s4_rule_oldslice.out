@@ -1,0 +1,282 @@
+bot wallets: in my pools' bot buys 109, senders of c1120e3d in my blocks 194, union 194; the finder's 110: 110, overlap with my union 110
+other senders to the bot router (selector): [(('0x604a6d21', '7422a284'), 1), (('0xe58fca21', '7422a284'), 1), (('0xf4aa5be6', '7422a284'), 1), (('0x9bf84c98', 'a0f7978d'), 1), (('0xf4aa5be6', 'a0f7978d'), 1), (('0xc378fbb2', '7422a284'), 1)]
+
+######## wallet set W=my union (194)
+
+== regime cur: 87 pools with every block L+1..T; T p10/50/90 24/38/52 min 18 max 55; no bot buy (not in this table): 0
+  A. pools with the class at d = T - b (d=0: T's block ahead of the bot's tx); n = pools whose window reaches that d; bg = share of blocks with d >= 13 (or d >= 5 for 'old')
+                                          0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16
+     ANY bot-wallet tx                    2   10    8    5   16    6   10    6   10   13    6    8   16    9   10    7   13  (% of pools) | bg/blk  7.0% | any in d1-4 25/87 (29%) vs 22.0 expected at bg
+     bot buy (another pool)               1    5    5    3    6    3    7    1    3    3    0    2    6    2    5    3    7  (% of pools) | bg/blk  3.1% | any in d1-4 16/87 (18%) vs 10.4 expected at bg
+     bot-wallet sell via UR 24856bc3      1    5    1    0    6    1    1    0    3    6    3    3    5    3    1    0    1  (% of pools) | bg/blk  1.8% | any in d1-4 9/87 (10%) vs 6.1 expected at bg
+     bot-wallet other tx                  0    1    2    1    5    1    2    5    3    3    2    3    7    3    5    3    7  (% of pools) | bg/blk  2.4% | any in d1-4 8/87 (9%) vs 8.1 expected at bg
+     T's buyer wallet                     0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0  (% of pools) | bg/blk  0.0% | any in d1-4 0/87 (0%) vs 0.0 expected at bg
+     tx to bot router, not a buy          0    0    0    0    0    0    1    2    0    2    3    1    0    2    0    1    1  (% of pools) | bg/blk  1.5% | any in d1-4 0/87 (0%) vs 5.1 expected at bg
+  B. trigger = first block b >= L+a with the class; lead = T - b. hit = lead 1..4; early = lead >= 5; d0 = in T's block ahead of the bot; none = nothing before the bot's buy
+     ANY bot-wallet tx               a= 1: hit   1/87 (  1%) early  58 d0  0 none  28 | lead p10/50/90 6/26/44 | lead 1..8: 0 0 0 1 1 4 0 2
+     ANY bot-wallet tx               a= 4: hit   1/87 (  1%) early  58 d0  0 none  28 | lead p10/50/90 6/25/38 | lead 1..8: 0 0 0 1 1 4 0 2
+     ANY bot-wallet tx               a=10: hit   1/87 (  1%) early  55 d0  0 none  31 | lead p10/50/90 6/19/33 | lead 1..8: 0 0 0 1 1 4 0 4
+     ANY bot-wallet tx               a=15: hit   2/87 (  2%) early  51 d0  0 none  34 | lead p10/50/90 6/16/31 | lead 1..8: 1 0 0 1 1 4 0 4
+     ANY bot-wallet tx               a=20: hit   4/87 (  5%) early  48 d0  0 none  35 | lead p10/50/90 5/15/25 | lead 1..8: 1 0 1 2 2 3 1 3
+     ANY bot-wallet tx               a=25: hit   6/87 (  7%) early  40 d0  2 none  39 | lead p10/50/90 1/12/21 | lead 1..8: 3 1 1 1 1 2 1 2
+     ANY bot-wallet tx               a=30: hit   6/87 (  7%) early  33 d0  0 none  48 | lead p10/50/90 3/9/19 | lead 1..8: 1 2 1 2 3 2 2 4
+     bot buy (another pool)          a= 1: hit   3/87 (  3%) early  54 d0  0 none  30 | lead p10/50/90 6/24/42 | lead 1..8: 0 1 1 1 1 4 0 1
+     bot buy (another pool)          a= 4: hit   3/87 (  3%) early  52 d0  1 none  31 | lead p10/50/90 6/21/37 | lead 1..8: 0 1 1 1 1 5 0 1
+     bot buy (another pool)          a=10: hit   3/87 (  3%) early  50 d0  1 none  33 | lead p10/50/90 5/16/30 | lead 1..8: 0 1 1 1 2 5 0 2
+     bot buy (another pool)          a=15: hit   5/87 (  6%) early  46 d0  1 none  35 | lead p10/50/90 4/15/26 | lead 1..8: 1 1 2 1 3 5 0 2
+     bot buy (another pool)          a=20: hit   6/87 (  7%) early  42 d0  1 none  38 | lead p10/50/90 3/13/25 | lead 1..8: 1 1 3 1 3 4 1 2
+     bot buy (another pool)          a=25: hit   7/87 (  8%) early  31 d0  1 none  48 | lead p10/50/90 3/12/21 | lead 1..8: 1 1 3 2 2 3 0 1
+     bot buy (another pool)          a=30: hit   8/87 (  9%) early  24 d0  0 none  55 | lead p10/50/90 3/9/19 | lead 1..8: 1 2 2 3 2 3 0 2
+     bot-wallet sell via UR 24856bc3 a= 1: hit   1/87 (  1%) early  37 d0  1 none  48 | lead p10/50/90 8/22/36 | lead 1..8: 0 0 0 1 1 0 0 1
+     bot-wallet sell via UR 24856bc3 a= 4: hit   1/87 (  1%) early  37 d0  1 none  48 | lead p10/50/90 8/22/36 | lead 1..8: 0 0 0 1 1 0 0 1
+     bot-wallet sell via UR 24856bc3 a=10: hit   3/87 (  3%) early  30 d0  1 none  53 | lead p10/50/90 4/13/31 | lead 1..8: 1 0 0 2 1 0 0 2
+     bot-wallet sell via UR 24856bc3 a=15: hit   3/87 (  3%) early  27 d0  1 none  56 | lead p10/50/90 4/12/23 | lead 1..8: 1 0 0 2 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=20: hit   5/87 (  6%) early  25 d0  1 none  56 | lead p10/50/90 4/11/22 | lead 1..8: 2 0 0 3 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=25: hit   6/87 (  7%) early  19 d0  1 none  61 | lead p10/50/90 1/9/19 | lead 1..8: 3 0 0 3 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=30: hit   6/87 (  7%) early  12 d0  0 none  69 | lead p10/50/90 1/8/12 | lead 1..8: 2 0 0 4 1 1 0 2
+     bot-wallet other tx             a= 1: hit   0/87 (  0%) early  36 d0  0 none  51 | lead p10/50/90 8/24/41 | lead 1..8: 0 0 0 0 1 0 1 2
+     bot-wallet other tx             a= 4: hit   0/87 (  0%) early  33 d0  0 none  54 | lead p10/50/90 8/18/38 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=10: hit   0/87 (  0%) early  29 d0  0 none  58 | lead p10/50/90 7/18/38 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=15: hit   0/87 (  0%) early  28 d0  0 none  59 | lead p10/50/90 7/16/31 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=20: hit   3/87 (  3%) early  23 d0  0 none  61 | lead p10/50/90 4/13/24 | lead 1..8: 0 1 0 2 1 0 2 1
+     bot-wallet other tx             a=25: hit   1/87 (  1%) early  19 d0  0 none  67 | lead p10/50/90 7/12/21 | lead 1..8: 0 1 0 0 1 0 2 0
+     bot-wallet other tx             a=30: hit   1/87 (  1%) early  13 d0  0 none  73 | lead p10/50/90 5/12/18 | lead 1..8: 0 1 0 0 1 0 2 0
+  C. precision: share of firing blocks in [L+a, T-1] that lie 1..4 before T, vs the share of all blocks there (lift = ratio)
+     ANY bot-wallet tx               a= 4: firing blocks  239, of them 1..4 before T  34 (14.2%) | all blocks  3033, 1..4 before T 11.5% | lift 1.24
+     ANY bot-wallet tx               a=15: firing blocks  181, of them 1..4 before T  34 (18.8%) | all blocks  2076, 1..4 before T 16.7% | lift 1.13
+     ANY bot-wallet tx               a=20: firing blocks  155, of them 1..4 before T  34 (21.9%) | all blocks  1645, 1..4 before T 20.2% | lift 1.09
+     bot buy (another pool)          a= 4: firing blocks  101, of them 1..4 before T  16 (15.8%) | all blocks  3033, 1..4 before T 11.5% | lift 1.38
+     bot buy (another pool)          a=15: firing blocks   77, of them 1..4 before T  16 (20.8%) | all blocks  2076, 1..4 before T 16.7% | lift 1.25
+     bot buy (another pool)          a=20: firing blocks   67, of them 1..4 before T  16 (23.9%) | all blocks  1645, 1..4 before T 20.2% | lift 1.18
+     bot-wallet sell via UR 24856bc3 a= 4: firing blocks   66, of them 1..4 before T  10 (15.2%) | all blocks  3033, 1..4 before T 11.5% | lift 1.32
+     bot-wallet sell via UR 24856bc3 a=15: firing blocks   46, of them 1..4 before T  10 (21.7%) | all blocks  2076, 1..4 before T 16.7% | lift 1.30
+     bot-wallet sell via UR 24856bc3 a=20: firing blocks   42, of them 1..4 before T  10 (23.8%) | all blocks  1645, 1..4 before T 20.2% | lift 1.18
+     bot-wallet other tx             a= 4: firing blocks   80, of them 1..4 before T   8 (10.0%) | all blocks  3033, 1..4 before T 11.5% | lift 0.87
+     bot-wallet other tx             a=15: firing blocks   64, of them 1..4 before T   8 (12.5%) | all blocks  2076, 1..4 before T 16.7% | lift 0.75
+     bot-wallet other tx             a=20: firing blocks   51, of them 1..4 before T   8 (15.7%) | all blocks  1645, 1..4 before T 20.2% | lift 0.78
+
+== late: no pools with blocks
+
+== regime cur+late: 87 pools with every block L+1..T; T p10/50/90 24/38/52 min 18 max 55; no bot buy (not in this table): 0
+  A. pools with the class at d = T - b (d=0: T's block ahead of the bot's tx); n = pools whose window reaches that d; bg = share of blocks with d >= 13 (or d >= 5 for 'old')
+                                          0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16
+     ANY bot-wallet tx                    2   10    8    5   16    6   10    6   10   13    6    8   16    9   10    7   13  (% of pools) | bg/blk  7.0% | any in d1-4 25/87 (29%) vs 22.0 expected at bg
+     bot buy (another pool)               1    5    5    3    6    3    7    1    3    3    0    2    6    2    5    3    7  (% of pools) | bg/blk  3.1% | any in d1-4 16/87 (18%) vs 10.4 expected at bg
+     bot-wallet sell via UR 24856bc3      1    5    1    0    6    1    1    0    3    6    3    3    5    3    1    0    1  (% of pools) | bg/blk  1.8% | any in d1-4 9/87 (10%) vs 6.1 expected at bg
+     bot-wallet other tx                  0    1    2    1    5    1    2    5    3    3    2    3    7    3    5    3    7  (% of pools) | bg/blk  2.4% | any in d1-4 8/87 (9%) vs 8.1 expected at bg
+     T's buyer wallet                     0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0  (% of pools) | bg/blk  0.0% | any in d1-4 0/87 (0%) vs 0.0 expected at bg
+     tx to bot router, not a buy          0    0    0    0    0    0    1    2    0    2    3    1    0    2    0    1    1  (% of pools) | bg/blk  1.5% | any in d1-4 0/87 (0%) vs 5.1 expected at bg
+  B. trigger = first block b >= L+a with the class; lead = T - b. hit = lead 1..4; early = lead >= 5; d0 = in T's block ahead of the bot; none = nothing before the bot's buy
+     ANY bot-wallet tx               a= 1: hit   1/87 (  1%) early  58 d0  0 none  28 | lead p10/50/90 6/26/44 | lead 1..8: 0 0 0 1 1 4 0 2
+     ANY bot-wallet tx               a= 4: hit   1/87 (  1%) early  58 d0  0 none  28 | lead p10/50/90 6/25/38 | lead 1..8: 0 0 0 1 1 4 0 2
+     ANY bot-wallet tx               a=10: hit   1/87 (  1%) early  55 d0  0 none  31 | lead p10/50/90 6/19/33 | lead 1..8: 0 0 0 1 1 4 0 4
+     ANY bot-wallet tx               a=15: hit   2/87 (  2%) early  51 d0  0 none  34 | lead p10/50/90 6/16/31 | lead 1..8: 1 0 0 1 1 4 0 4
+     ANY bot-wallet tx               a=20: hit   4/87 (  5%) early  48 d0  0 none  35 | lead p10/50/90 5/15/25 | lead 1..8: 1 0 1 2 2 3 1 3
+     ANY bot-wallet tx               a=25: hit   6/87 (  7%) early  40 d0  2 none  39 | lead p10/50/90 1/12/21 | lead 1..8: 3 1 1 1 1 2 1 2
+     ANY bot-wallet tx               a=30: hit   6/87 (  7%) early  33 d0  0 none  48 | lead p10/50/90 3/9/19 | lead 1..8: 1 2 1 2 3 2 2 4
+     bot buy (another pool)          a= 1: hit   3/87 (  3%) early  54 d0  0 none  30 | lead p10/50/90 6/24/42 | lead 1..8: 0 1 1 1 1 4 0 1
+     bot buy (another pool)          a= 4: hit   3/87 (  3%) early  52 d0  1 none  31 | lead p10/50/90 6/21/37 | lead 1..8: 0 1 1 1 1 5 0 1
+     bot buy (another pool)          a=10: hit   3/87 (  3%) early  50 d0  1 none  33 | lead p10/50/90 5/16/30 | lead 1..8: 0 1 1 1 2 5 0 2
+     bot buy (another pool)          a=15: hit   5/87 (  6%) early  46 d0  1 none  35 | lead p10/50/90 4/15/26 | lead 1..8: 1 1 2 1 3 5 0 2
+     bot buy (another pool)          a=20: hit   6/87 (  7%) early  42 d0  1 none  38 | lead p10/50/90 3/13/25 | lead 1..8: 1 1 3 1 3 4 1 2
+     bot buy (another pool)          a=25: hit   7/87 (  8%) early  31 d0  1 none  48 | lead p10/50/90 3/12/21 | lead 1..8: 1 1 3 2 2 3 0 1
+     bot buy (another pool)          a=30: hit   8/87 (  9%) early  24 d0  0 none  55 | lead p10/50/90 3/9/19 | lead 1..8: 1 2 2 3 2 3 0 2
+     bot-wallet sell via UR 24856bc3 a= 1: hit   1/87 (  1%) early  37 d0  1 none  48 | lead p10/50/90 8/22/36 | lead 1..8: 0 0 0 1 1 0 0 1
+     bot-wallet sell via UR 24856bc3 a= 4: hit   1/87 (  1%) early  37 d0  1 none  48 | lead p10/50/90 8/22/36 | lead 1..8: 0 0 0 1 1 0 0 1
+     bot-wallet sell via UR 24856bc3 a=10: hit   3/87 (  3%) early  30 d0  1 none  53 | lead p10/50/90 4/13/31 | lead 1..8: 1 0 0 2 1 0 0 2
+     bot-wallet sell via UR 24856bc3 a=15: hit   3/87 (  3%) early  27 d0  1 none  56 | lead p10/50/90 4/12/23 | lead 1..8: 1 0 0 2 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=20: hit   5/87 (  6%) early  25 d0  1 none  56 | lead p10/50/90 4/11/22 | lead 1..8: 2 0 0 3 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=25: hit   6/87 (  7%) early  19 d0  1 none  61 | lead p10/50/90 1/9/19 | lead 1..8: 3 0 0 3 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=30: hit   6/87 (  7%) early  12 d0  0 none  69 | lead p10/50/90 1/8/12 | lead 1..8: 2 0 0 4 1 1 0 2
+     bot-wallet other tx             a= 1: hit   0/87 (  0%) early  36 d0  0 none  51 | lead p10/50/90 8/24/41 | lead 1..8: 0 0 0 0 1 0 1 2
+     bot-wallet other tx             a= 4: hit   0/87 (  0%) early  33 d0  0 none  54 | lead p10/50/90 8/18/38 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=10: hit   0/87 (  0%) early  29 d0  0 none  58 | lead p10/50/90 7/18/38 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=15: hit   0/87 (  0%) early  28 d0  0 none  59 | lead p10/50/90 7/16/31 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=20: hit   3/87 (  3%) early  23 d0  0 none  61 | lead p10/50/90 4/13/24 | lead 1..8: 0 1 0 2 1 0 2 1
+     bot-wallet other tx             a=25: hit   1/87 (  1%) early  19 d0  0 none  67 | lead p10/50/90 7/12/21 | lead 1..8: 0 1 0 0 1 0 2 0
+     bot-wallet other tx             a=30: hit   1/87 (  1%) early  13 d0  0 none  73 | lead p10/50/90 5/12/18 | lead 1..8: 0 1 0 0 1 0 2 0
+  C. precision: share of firing blocks in [L+a, T-1] that lie 1..4 before T, vs the share of all blocks there (lift = ratio)
+     ANY bot-wallet tx               a= 4: firing blocks  239, of them 1..4 before T  34 (14.2%) | all blocks  3033, 1..4 before T 11.5% | lift 1.24
+     ANY bot-wallet tx               a=15: firing blocks  181, of them 1..4 before T  34 (18.8%) | all blocks  2076, 1..4 before T 16.7% | lift 1.13
+     ANY bot-wallet tx               a=20: firing blocks  155, of them 1..4 before T  34 (21.9%) | all blocks  1645, 1..4 before T 20.2% | lift 1.09
+     bot buy (another pool)          a= 4: firing blocks  101, of them 1..4 before T  16 (15.8%) | all blocks  3033, 1..4 before T 11.5% | lift 1.38
+     bot buy (another pool)          a=15: firing blocks   77, of them 1..4 before T  16 (20.8%) | all blocks  2076, 1..4 before T 16.7% | lift 1.25
+     bot buy (another pool)          a=20: firing blocks   67, of them 1..4 before T  16 (23.9%) | all blocks  1645, 1..4 before T 20.2% | lift 1.18
+     bot-wallet sell via UR 24856bc3 a= 4: firing blocks   66, of them 1..4 before T  10 (15.2%) | all blocks  3033, 1..4 before T 11.5% | lift 1.32
+     bot-wallet sell via UR 24856bc3 a=15: firing blocks   46, of them 1..4 before T  10 (21.7%) | all blocks  2076, 1..4 before T 16.7% | lift 1.30
+     bot-wallet sell via UR 24856bc3 a=20: firing blocks   42, of them 1..4 before T  10 (23.8%) | all blocks  1645, 1..4 before T 20.2% | lift 1.18
+     bot-wallet other tx             a= 4: firing blocks   80, of them 1..4 before T   8 (10.0%) | all blocks  3033, 1..4 before T 11.5% | lift 0.87
+     bot-wallet other tx             a=15: firing blocks   64, of them 1..4 before T   8 (12.5%) | all blocks  2076, 1..4 before T 16.7% | lift 0.75
+     bot-wallet other tx             a=20: firing blocks   51, of them 1..4 before T   8 (15.7%) | all blocks  1645, 1..4 before T 20.2% | lift 0.78
+
+== regime old: 334 pools with every block L+1..T; T p10/50/90 8/9/10 min 5 max 18; no bot buy (not in this table): 11
+  A. pools with the class at d = T - b (d=0: T's block ahead of the bot's tx); n = pools whose window reaches that d; bg = share of blocks with d >= 13 (or d >= 5 for 'old')
+                                          0    1    2    3    4    5    6    7    8
+     ANY bot-wallet tx                    6   12   13   11    8   14   11   11   10  (% of pools) | bg/blk 11.6% | any in d1-4 122/334 (37%) vs 130.2 expected at bg
+     bot buy (another pool)               4    3    6    6    5    6    4    4    5  (% of pools) | bg/blk  4.9% | any in d1-4 67/334 (20%) vs 60.7 expected at bg
+     bot-wallet sell via UR 24856bc3      1    6    2    2    1    5    5    4    3  (% of pools) | bg/blk  4.6% | any in d1-4 38/334 (11%) vs 57.2 expected at bg
+     bot-wallet other tx                  1    3    4    3    2    3    2    4    2  (% of pools) | bg/blk  2.4% | any in d1-4 41/334 (12%) vs 31.5 expected at bg
+     T's buyer wallet                     0    0    0    0    0    0    0    0    0  (% of pools) | bg/blk  0.0% | any in d1-4 0/334 (0%) vs 0.0 expected at bg
+     tx to bot router, not a buy          0    0    1    0    1    0    1    1    0  (% of pools) | bg/blk  0.6% | any in d1-4 8/334 (2%) vs 8.1 expected at bg
+  B. trigger = first block b >= L+a with the class; lead = T - b. hit = lead 1..4; early = lead >= 5; d0 = in T's block ahead of the bot; none = nothing before the bot's buy
+     ANY bot-wallet tx               a= 1: hit  67/334 ( 20%) early 119 d0  8 none 140 | lead p10/50/90 1/5/8 | lead 1..8: 12 15 21 19 30 29 29 19
+     ANY bot-wallet tx               a= 3: hit  88/334 ( 26%) early  69 d0  8 none 169 | lead p10/50/90 1/4/6 | lead 1..8: 13 23 27 25 41 19 5 1
+     ANY bot-wallet tx               a= 5: hit 109/334 ( 33%) early  12 d0  9 none 204 | lead p10/50/90 1/2/4 | lead 1..8: 28 33 34 14 11 0 0 0
+     bot buy (another pool)          a= 1: hit  62/334 ( 19%) early  57 d0  8 none 207 | lead p10/50/90 1/4/8 | lead 1..8: 7 19 19 17 18 11 11 10
+     bot buy (another pool)          a= 3: hit  65/334 ( 19%) early  31 d0  8 none 230 | lead p10/50/90 1/3/6 | lead 1..8: 7 21 20 17 17 8 3 1
+     bot buy (another pool)          a= 5: hit  56/334 ( 17%) early   4 d0  9 none 265 | lead p10/50/90 0/2/4 | lead 1..8: 8 21 19 8 4 0 0 0
+     bot-wallet sell via UR 24856bc3 a= 1: hit  33/334 ( 10%) early  54 d0  3 none 244 | lead p10/50/90 1/5/7 | lead 1..8: 17 8 5 3 18 17 12 5
+     bot-wallet sell via UR 24856bc3 a= 3: hit  34/334 ( 10%) early  28 d0  3 none 269 | lead p10/50/90 1/3/6 | lead 1..8: 18 8 5 3 18 8 1 0
+     bot-wallet sell via UR 24856bc3 a= 5: hit  37/334 ( 11%) early   6 d0  3 none 288 | lead p10/50/90 1/2/5 | lead 1..8: 20 8 6 3 5 0 0 0
+     bot-wallet other tx             a= 1: hit  22/334 (  7%) early  36 d0  2 none 274 | lead p10/50/90 1/5/8 | lead 1..8: 6 7 6 3 8 8 11 5
+     bot-wallet other tx             a= 3: hit  35/334 ( 10%) early  16 d0  2 none 281 | lead p10/50/90 1/3/5 | lead 1..8: 6 11 11 7 11 4 1 0
+     bot-wallet other tx             a= 5: hit  36/334 ( 11%) early   3 d0  4 none 291 | lead p10/50/90 1/2/4 | lead 1..8: 9 13 11 3 3 0 0 0
+  C. precision: share of firing blocks in [L+a, T-1] that lie 1..4 before T, vs the share of all blocks there (lift = ratio)
+     ANY bot-wallet tx               a= 1: firing blocks  299, of them 1..4 before T 147 (49.2%) | all blocks  2637, 1..4 before T 50.7% | lift 0.97
+     ANY bot-wallet tx               a= 3: firing blocks  221, of them 1..4 before T 145 (65.6%) | all blocks  1969, 1..4 before T 67.5% | lift 0.97
+     bot buy (another pool)          a= 1: firing blocks  128, of them 1..4 before T  68 (53.1%) | all blocks  2637, 1..4 before T 50.7% | lift 1.05
+     bot buy (another pool)          a= 3: firing blocks   99, of them 1..4 before T  67 (67.7%) | all blocks  1969, 1..4 before T 67.5% | lift 1.00
+     bot-wallet sell via UR 24856bc3 a= 1: firing blocks   97, of them 1..4 before T  38 (39.2%) | all blocks  2637, 1..4 before T 50.7% | lift 0.77
+     bot-wallet sell via UR 24856bc3 a= 3: firing blocks   68, of them 1..4 before T  37 (54.4%) | all blocks  1969, 1..4 before T 67.5% | lift 0.81
+     bot-wallet other tx             a= 1: firing blocks   84, of them 1..4 before T  44 (52.4%) | all blocks  2637, 1..4 before T 50.7% | lift 1.03
+     bot-wallet other tx             a= 3: firing blocks   60, of them 1..4 before T  44 (73.3%) | all blocks  1969, 1..4 before T 67.5% | lift 1.09
+
+######## wallet set W=my union + finder's 110 (194)
+
+== regime cur: 87 pools with every block L+1..T; T p10/50/90 24/38/52 min 18 max 55; no bot buy (not in this table): 0
+  A. pools with the class at d = T - b (d=0: T's block ahead of the bot's tx); n = pools whose window reaches that d; bg = share of blocks with d >= 13 (or d >= 5 for 'old')
+                                          0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16
+     ANY bot-wallet tx                    2   10    8    5   16    6   10    6   10   13    6    8   16    9   10    7   13  (% of pools) | bg/blk  7.0% | any in d1-4 25/87 (29%) vs 22.0 expected at bg
+     bot buy (another pool)               1    5    5    3    6    3    7    1    3    3    0    2    6    2    5    3    7  (% of pools) | bg/blk  3.1% | any in d1-4 16/87 (18%) vs 10.4 expected at bg
+     bot-wallet sell via UR 24856bc3      1    5    1    0    6    1    1    0    3    6    3    3    5    3    1    0    1  (% of pools) | bg/blk  1.8% | any in d1-4 9/87 (10%) vs 6.1 expected at bg
+     bot-wallet other tx                  0    1    2    1    5    1    2    5    3    3    2    3    7    3    5    3    7  (% of pools) | bg/blk  2.4% | any in d1-4 8/87 (9%) vs 8.1 expected at bg
+     T's buyer wallet                     0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0  (% of pools) | bg/blk  0.0% | any in d1-4 0/87 (0%) vs 0.0 expected at bg
+     tx to bot router, not a buy          0    0    0    0    0    0    1    2    0    2    3    1    0    2    0    1    1  (% of pools) | bg/blk  1.5% | any in d1-4 0/87 (0%) vs 5.1 expected at bg
+  B. trigger = first block b >= L+a with the class; lead = T - b. hit = lead 1..4; early = lead >= 5; d0 = in T's block ahead of the bot; none = nothing before the bot's buy
+     ANY bot-wallet tx               a= 1: hit   1/87 (  1%) early  58 d0  0 none  28 | lead p10/50/90 6/26/44 | lead 1..8: 0 0 0 1 1 4 0 2
+     ANY bot-wallet tx               a= 4: hit   1/87 (  1%) early  58 d0  0 none  28 | lead p10/50/90 6/25/38 | lead 1..8: 0 0 0 1 1 4 0 2
+     ANY bot-wallet tx               a=10: hit   1/87 (  1%) early  55 d0  0 none  31 | lead p10/50/90 6/19/33 | lead 1..8: 0 0 0 1 1 4 0 4
+     ANY bot-wallet tx               a=15: hit   2/87 (  2%) early  51 d0  0 none  34 | lead p10/50/90 6/16/31 | lead 1..8: 1 0 0 1 1 4 0 4
+     ANY bot-wallet tx               a=20: hit   4/87 (  5%) early  48 d0  0 none  35 | lead p10/50/90 5/15/25 | lead 1..8: 1 0 1 2 2 3 1 3
+     ANY bot-wallet tx               a=25: hit   6/87 (  7%) early  40 d0  2 none  39 | lead p10/50/90 1/12/21 | lead 1..8: 3 1 1 1 1 2 1 2
+     ANY bot-wallet tx               a=30: hit   6/87 (  7%) early  33 d0  0 none  48 | lead p10/50/90 3/9/19 | lead 1..8: 1 2 1 2 3 2 2 4
+     bot buy (another pool)          a= 1: hit   3/87 (  3%) early  54 d0  0 none  30 | lead p10/50/90 6/24/42 | lead 1..8: 0 1 1 1 1 4 0 1
+     bot buy (another pool)          a= 4: hit   3/87 (  3%) early  52 d0  1 none  31 | lead p10/50/90 6/21/37 | lead 1..8: 0 1 1 1 1 5 0 1
+     bot buy (another pool)          a=10: hit   3/87 (  3%) early  50 d0  1 none  33 | lead p10/50/90 5/16/30 | lead 1..8: 0 1 1 1 2 5 0 2
+     bot buy (another pool)          a=15: hit   5/87 (  6%) early  46 d0  1 none  35 | lead p10/50/90 4/15/26 | lead 1..8: 1 1 2 1 3 5 0 2
+     bot buy (another pool)          a=20: hit   6/87 (  7%) early  42 d0  1 none  38 | lead p10/50/90 3/13/25 | lead 1..8: 1 1 3 1 3 4 1 2
+     bot buy (another pool)          a=25: hit   7/87 (  8%) early  31 d0  1 none  48 | lead p10/50/90 3/12/21 | lead 1..8: 1 1 3 2 2 3 0 1
+     bot buy (another pool)          a=30: hit   8/87 (  9%) early  24 d0  0 none  55 | lead p10/50/90 3/9/19 | lead 1..8: 1 2 2 3 2 3 0 2
+     bot-wallet sell via UR 24856bc3 a= 1: hit   1/87 (  1%) early  37 d0  1 none  48 | lead p10/50/90 8/22/36 | lead 1..8: 0 0 0 1 1 0 0 1
+     bot-wallet sell via UR 24856bc3 a= 4: hit   1/87 (  1%) early  37 d0  1 none  48 | lead p10/50/90 8/22/36 | lead 1..8: 0 0 0 1 1 0 0 1
+     bot-wallet sell via UR 24856bc3 a=10: hit   3/87 (  3%) early  30 d0  1 none  53 | lead p10/50/90 4/13/31 | lead 1..8: 1 0 0 2 1 0 0 2
+     bot-wallet sell via UR 24856bc3 a=15: hit   3/87 (  3%) early  27 d0  1 none  56 | lead p10/50/90 4/12/23 | lead 1..8: 1 0 0 2 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=20: hit   5/87 (  6%) early  25 d0  1 none  56 | lead p10/50/90 4/11/22 | lead 1..8: 2 0 0 3 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=25: hit   6/87 (  7%) early  19 d0  1 none  61 | lead p10/50/90 1/9/19 | lead 1..8: 3 0 0 3 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=30: hit   6/87 (  7%) early  12 d0  0 none  69 | lead p10/50/90 1/8/12 | lead 1..8: 2 0 0 4 1 1 0 2
+     bot-wallet other tx             a= 1: hit   0/87 (  0%) early  36 d0  0 none  51 | lead p10/50/90 8/24/41 | lead 1..8: 0 0 0 0 1 0 1 2
+     bot-wallet other tx             a= 4: hit   0/87 (  0%) early  33 d0  0 none  54 | lead p10/50/90 8/18/38 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=10: hit   0/87 (  0%) early  29 d0  0 none  58 | lead p10/50/90 7/18/38 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=15: hit   0/87 (  0%) early  28 d0  0 none  59 | lead p10/50/90 7/16/31 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=20: hit   3/87 (  3%) early  23 d0  0 none  61 | lead p10/50/90 4/13/24 | lead 1..8: 0 1 0 2 1 0 2 1
+     bot-wallet other tx             a=25: hit   1/87 (  1%) early  19 d0  0 none  67 | lead p10/50/90 7/12/21 | lead 1..8: 0 1 0 0 1 0 2 0
+     bot-wallet other tx             a=30: hit   1/87 (  1%) early  13 d0  0 none  73 | lead p10/50/90 5/12/18 | lead 1..8: 0 1 0 0 1 0 2 0
+  C. precision: share of firing blocks in [L+a, T-1] that lie 1..4 before T, vs the share of all blocks there (lift = ratio)
+     ANY bot-wallet tx               a= 4: firing blocks  239, of them 1..4 before T  34 (14.2%) | all blocks  3033, 1..4 before T 11.5% | lift 1.24
+     ANY bot-wallet tx               a=15: firing blocks  181, of them 1..4 before T  34 (18.8%) | all blocks  2076, 1..4 before T 16.7% | lift 1.13
+     ANY bot-wallet tx               a=20: firing blocks  155, of them 1..4 before T  34 (21.9%) | all blocks  1645, 1..4 before T 20.2% | lift 1.09
+     bot buy (another pool)          a= 4: firing blocks  101, of them 1..4 before T  16 (15.8%) | all blocks  3033, 1..4 before T 11.5% | lift 1.38
+     bot buy (another pool)          a=15: firing blocks   77, of them 1..4 before T  16 (20.8%) | all blocks  2076, 1..4 before T 16.7% | lift 1.25
+     bot buy (another pool)          a=20: firing blocks   67, of them 1..4 before T  16 (23.9%) | all blocks  1645, 1..4 before T 20.2% | lift 1.18
+     bot-wallet sell via UR 24856bc3 a= 4: firing blocks   66, of them 1..4 before T  10 (15.2%) | all blocks  3033, 1..4 before T 11.5% | lift 1.32
+     bot-wallet sell via UR 24856bc3 a=15: firing blocks   46, of them 1..4 before T  10 (21.7%) | all blocks  2076, 1..4 before T 16.7% | lift 1.30
+     bot-wallet sell via UR 24856bc3 a=20: firing blocks   42, of them 1..4 before T  10 (23.8%) | all blocks  1645, 1..4 before T 20.2% | lift 1.18
+     bot-wallet other tx             a= 4: firing blocks   80, of them 1..4 before T   8 (10.0%) | all blocks  3033, 1..4 before T 11.5% | lift 0.87
+     bot-wallet other tx             a=15: firing blocks   64, of them 1..4 before T   8 (12.5%) | all blocks  2076, 1..4 before T 16.7% | lift 0.75
+     bot-wallet other tx             a=20: firing blocks   51, of them 1..4 before T   8 (15.7%) | all blocks  1645, 1..4 before T 20.2% | lift 0.78
+
+== late: no pools with blocks
+
+== regime cur+late: 87 pools with every block L+1..T; T p10/50/90 24/38/52 min 18 max 55; no bot buy (not in this table): 0
+  A. pools with the class at d = T - b (d=0: T's block ahead of the bot's tx); n = pools whose window reaches that d; bg = share of blocks with d >= 13 (or d >= 5 for 'old')
+                                          0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16
+     ANY bot-wallet tx                    2   10    8    5   16    6   10    6   10   13    6    8   16    9   10    7   13  (% of pools) | bg/blk  7.0% | any in d1-4 25/87 (29%) vs 22.0 expected at bg
+     bot buy (another pool)               1    5    5    3    6    3    7    1    3    3    0    2    6    2    5    3    7  (% of pools) | bg/blk  3.1% | any in d1-4 16/87 (18%) vs 10.4 expected at bg
+     bot-wallet sell via UR 24856bc3      1    5    1    0    6    1    1    0    3    6    3    3    5    3    1    0    1  (% of pools) | bg/blk  1.8% | any in d1-4 9/87 (10%) vs 6.1 expected at bg
+     bot-wallet other tx                  0    1    2    1    5    1    2    5    3    3    2    3    7    3    5    3    7  (% of pools) | bg/blk  2.4% | any in d1-4 8/87 (9%) vs 8.1 expected at bg
+     T's buyer wallet                     0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0  (% of pools) | bg/blk  0.0% | any in d1-4 0/87 (0%) vs 0.0 expected at bg
+     tx to bot router, not a buy          0    0    0    0    0    0    1    2    0    2    3    1    0    2    0    1    1  (% of pools) | bg/blk  1.5% | any in d1-4 0/87 (0%) vs 5.1 expected at bg
+  B. trigger = first block b >= L+a with the class; lead = T - b. hit = lead 1..4; early = lead >= 5; d0 = in T's block ahead of the bot; none = nothing before the bot's buy
+     ANY bot-wallet tx               a= 1: hit   1/87 (  1%) early  58 d0  0 none  28 | lead p10/50/90 6/26/44 | lead 1..8: 0 0 0 1 1 4 0 2
+     ANY bot-wallet tx               a= 4: hit   1/87 (  1%) early  58 d0  0 none  28 | lead p10/50/90 6/25/38 | lead 1..8: 0 0 0 1 1 4 0 2
+     ANY bot-wallet tx               a=10: hit   1/87 (  1%) early  55 d0  0 none  31 | lead p10/50/90 6/19/33 | lead 1..8: 0 0 0 1 1 4 0 4
+     ANY bot-wallet tx               a=15: hit   2/87 (  2%) early  51 d0  0 none  34 | lead p10/50/90 6/16/31 | lead 1..8: 1 0 0 1 1 4 0 4
+     ANY bot-wallet tx               a=20: hit   4/87 (  5%) early  48 d0  0 none  35 | lead p10/50/90 5/15/25 | lead 1..8: 1 0 1 2 2 3 1 3
+     ANY bot-wallet tx               a=25: hit   6/87 (  7%) early  40 d0  2 none  39 | lead p10/50/90 1/12/21 | lead 1..8: 3 1 1 1 1 2 1 2
+     ANY bot-wallet tx               a=30: hit   6/87 (  7%) early  33 d0  0 none  48 | lead p10/50/90 3/9/19 | lead 1..8: 1 2 1 2 3 2 2 4
+     bot buy (another pool)          a= 1: hit   3/87 (  3%) early  54 d0  0 none  30 | lead p10/50/90 6/24/42 | lead 1..8: 0 1 1 1 1 4 0 1
+     bot buy (another pool)          a= 4: hit   3/87 (  3%) early  52 d0  1 none  31 | lead p10/50/90 6/21/37 | lead 1..8: 0 1 1 1 1 5 0 1
+     bot buy (another pool)          a=10: hit   3/87 (  3%) early  50 d0  1 none  33 | lead p10/50/90 5/16/30 | lead 1..8: 0 1 1 1 2 5 0 2
+     bot buy (another pool)          a=15: hit   5/87 (  6%) early  46 d0  1 none  35 | lead p10/50/90 4/15/26 | lead 1..8: 1 1 2 1 3 5 0 2
+     bot buy (another pool)          a=20: hit   6/87 (  7%) early  42 d0  1 none  38 | lead p10/50/90 3/13/25 | lead 1..8: 1 1 3 1 3 4 1 2
+     bot buy (another pool)          a=25: hit   7/87 (  8%) early  31 d0  1 none  48 | lead p10/50/90 3/12/21 | lead 1..8: 1 1 3 2 2 3 0 1
+     bot buy (another pool)          a=30: hit   8/87 (  9%) early  24 d0  0 none  55 | lead p10/50/90 3/9/19 | lead 1..8: 1 2 2 3 2 3 0 2
+     bot-wallet sell via UR 24856bc3 a= 1: hit   1/87 (  1%) early  37 d0  1 none  48 | lead p10/50/90 8/22/36 | lead 1..8: 0 0 0 1 1 0 0 1
+     bot-wallet sell via UR 24856bc3 a= 4: hit   1/87 (  1%) early  37 d0  1 none  48 | lead p10/50/90 8/22/36 | lead 1..8: 0 0 0 1 1 0 0 1
+     bot-wallet sell via UR 24856bc3 a=10: hit   3/87 (  3%) early  30 d0  1 none  53 | lead p10/50/90 4/13/31 | lead 1..8: 1 0 0 2 1 0 0 2
+     bot-wallet sell via UR 24856bc3 a=15: hit   3/87 (  3%) early  27 d0  1 none  56 | lead p10/50/90 4/12/23 | lead 1..8: 1 0 0 2 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=20: hit   5/87 (  6%) early  25 d0  1 none  56 | lead p10/50/90 4/11/22 | lead 1..8: 2 0 0 3 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=25: hit   6/87 (  7%) early  19 d0  1 none  61 | lead p10/50/90 1/9/19 | lead 1..8: 3 0 0 3 1 1 0 2
+     bot-wallet sell via UR 24856bc3 a=30: hit   6/87 (  7%) early  12 d0  0 none  69 | lead p10/50/90 1/8/12 | lead 1..8: 2 0 0 4 1 1 0 2
+     bot-wallet other tx             a= 1: hit   0/87 (  0%) early  36 d0  0 none  51 | lead p10/50/90 8/24/41 | lead 1..8: 0 0 0 0 1 0 1 2
+     bot-wallet other tx             a= 4: hit   0/87 (  0%) early  33 d0  0 none  54 | lead p10/50/90 8/18/38 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=10: hit   0/87 (  0%) early  29 d0  0 none  58 | lead p10/50/90 7/18/38 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=15: hit   0/87 (  0%) early  28 d0  0 none  59 | lead p10/50/90 7/16/31 | lead 1..8: 0 0 0 0 1 0 2 2
+     bot-wallet other tx             a=20: hit   3/87 (  3%) early  23 d0  0 none  61 | lead p10/50/90 4/13/24 | lead 1..8: 0 1 0 2 1 0 2 1
+     bot-wallet other tx             a=25: hit   1/87 (  1%) early  19 d0  0 none  67 | lead p10/50/90 7/12/21 | lead 1..8: 0 1 0 0 1 0 2 0
+     bot-wallet other tx             a=30: hit   1/87 (  1%) early  13 d0  0 none  73 | lead p10/50/90 5/12/18 | lead 1..8: 0 1 0 0 1 0 2 0
+  C. precision: share of firing blocks in [L+a, T-1] that lie 1..4 before T, vs the share of all blocks there (lift = ratio)
+     ANY bot-wallet tx               a= 4: firing blocks  239, of them 1..4 before T  34 (14.2%) | all blocks  3033, 1..4 before T 11.5% | lift 1.24
+     ANY bot-wallet tx               a=15: firing blocks  181, of them 1..4 before T  34 (18.8%) | all blocks  2076, 1..4 before T 16.7% | lift 1.13
+     ANY bot-wallet tx               a=20: firing blocks  155, of them 1..4 before T  34 (21.9%) | all blocks  1645, 1..4 before T 20.2% | lift 1.09
+     bot buy (another pool)          a= 4: firing blocks  101, of them 1..4 before T  16 (15.8%) | all blocks  3033, 1..4 before T 11.5% | lift 1.38
+     bot buy (another pool)          a=15: firing blocks   77, of them 1..4 before T  16 (20.8%) | all blocks  2076, 1..4 before T 16.7% | lift 1.25
+     bot buy (another pool)          a=20: firing blocks   67, of them 1..4 before T  16 (23.9%) | all blocks  1645, 1..4 before T 20.2% | lift 1.18
+     bot-wallet sell via UR 24856bc3 a= 4: firing blocks   66, of them 1..4 before T  10 (15.2%) | all blocks  3033, 1..4 before T 11.5% | lift 1.32
+     bot-wallet sell via UR 24856bc3 a=15: firing blocks   46, of them 1..4 before T  10 (21.7%) | all blocks  2076, 1..4 before T 16.7% | lift 1.30
+     bot-wallet sell via UR 24856bc3 a=20: firing blocks   42, of them 1..4 before T  10 (23.8%) | all blocks  1645, 1..4 before T 20.2% | lift 1.18
+     bot-wallet other tx             a= 4: firing blocks   80, of them 1..4 before T   8 (10.0%) | all blocks  3033, 1..4 before T 11.5% | lift 0.87
+     bot-wallet other tx             a=15: firing blocks   64, of them 1..4 before T   8 (12.5%) | all blocks  2076, 1..4 before T 16.7% | lift 0.75
+     bot-wallet other tx             a=20: firing blocks   51, of them 1..4 before T   8 (15.7%) | all blocks  1645, 1..4 before T 20.2% | lift 0.78
+
+== regime old: 334 pools with every block L+1..T; T p10/50/90 8/9/10 min 5 max 18; no bot buy (not in this table): 11
+  A. pools with the class at d = T - b (d=0: T's block ahead of the bot's tx); n = pools whose window reaches that d; bg = share of blocks with d >= 13 (or d >= 5 for 'old')
+                                          0    1    2    3    4    5    6    7    8
+     ANY bot-wallet tx                    6   12   13   11    8   14   11   11   10  (% of pools) | bg/blk 11.6% | any in d1-4 122/334 (37%) vs 130.2 expected at bg
+     bot buy (another pool)               4    3    6    6    5    6    4    4    5  (% of pools) | bg/blk  4.9% | any in d1-4 67/334 (20%) vs 60.7 expected at bg
+     bot-wallet sell via UR 24856bc3      1    6    2    2    1    5    5    4    3  (% of pools) | bg/blk  4.6% | any in d1-4 38/334 (11%) vs 57.2 expected at bg
+     bot-wallet other tx                  1    3    4    3    2    3    2    4    2  (% of pools) | bg/blk  2.4% | any in d1-4 41/334 (12%) vs 31.5 expected at bg
+     T's buyer wallet                     0    0    0    0    0    0    0    0    0  (% of pools) | bg/blk  0.0% | any in d1-4 0/334 (0%) vs 0.0 expected at bg
+     tx to bot router, not a buy          0    0    1    0    1    0    1    1    0  (% of pools) | bg/blk  0.6% | any in d1-4 8/334 (2%) vs 8.1 expected at bg
+  B. trigger = first block b >= L+a with the class; lead = T - b. hit = lead 1..4; early = lead >= 5; d0 = in T's block ahead of the bot; none = nothing before the bot's buy
+     ANY bot-wallet tx               a= 1: hit  67/334 ( 20%) early 119 d0  8 none 140 | lead p10/50/90 1/5/8 | lead 1..8: 12 15 21 19 30 29 29 19
+     ANY bot-wallet tx               a= 3: hit  88/334 ( 26%) early  69 d0  8 none 169 | lead p10/50/90 1/4/6 | lead 1..8: 13 23 27 25 41 19 5 1
+     ANY bot-wallet tx               a= 5: hit 109/334 ( 33%) early  12 d0  9 none 204 | lead p10/50/90 1/2/4 | lead 1..8: 28 33 34 14 11 0 0 0
+     bot buy (another pool)          a= 1: hit  62/334 ( 19%) early  57 d0  8 none 207 | lead p10/50/90 1/4/8 | lead 1..8: 7 19 19 17 18 11 11 10
+     bot buy (another pool)          a= 3: hit  65/334 ( 19%) early  31 d0  8 none 230 | lead p10/50/90 1/3/6 | lead 1..8: 7 21 20 17 17 8 3 1
+     bot buy (another pool)          a= 5: hit  56/334 ( 17%) early   4 d0  9 none 265 | lead p10/50/90 0/2/4 | lead 1..8: 8 21 19 8 4 0 0 0
+     bot-wallet sell via UR 24856bc3 a= 1: hit  33/334 ( 10%) early  54 d0  3 none 244 | lead p10/50/90 1/5/7 | lead 1..8: 17 8 5 3 18 17 12 5
+     bot-wallet sell via UR 24856bc3 a= 3: hit  34/334 ( 10%) early  28 d0  3 none 269 | lead p10/50/90 1/3/6 | lead 1..8: 18 8 5 3 18 8 1 0
+     bot-wallet sell via UR 24856bc3 a= 5: hit  37/334 ( 11%) early   6 d0  3 none 288 | lead p10/50/90 1/2/5 | lead 1..8: 20 8 6 3 5 0 0 0
+     bot-wallet other tx             a= 1: hit  22/334 (  7%) early  36 d0  2 none 274 | lead p10/50/90 1/5/8 | lead 1..8: 6 7 6 3 8 8 11 5
+     bot-wallet other tx             a= 3: hit  35/334 ( 10%) early  16 d0  2 none 281 | lead p10/50/90 1/3/5 | lead 1..8: 6 11 11 7 11 4 1 0
+     bot-wallet other tx             a= 5: hit  36/334 ( 11%) early   3 d0  4 none 291 | lead p10/50/90 1/2/4 | lead 1..8: 9 13 11 3 3 0 0 0
+  C. precision: share of firing blocks in [L+a, T-1] that lie 1..4 before T, vs the share of all blocks there (lift = ratio)
+     ANY bot-wallet tx               a= 1: firing blocks  299, of them 1..4 before T 147 (49.2%) | all blocks  2637, 1..4 before T 50.7% | lift 0.97
+     ANY bot-wallet tx               a= 3: firing blocks  221, of them 1..4 before T 145 (65.6%) | all blocks  1969, 1..4 before T 67.5% | lift 0.97
+     bot buy (another pool)          a= 1: firing blocks  128, of them 1..4 before T  68 (53.1%) | all blocks  2637, 1..4 before T 50.7% | lift 1.05
+     bot buy (another pool)          a= 3: firing blocks   99, of them 1..4 before T  67 (67.7%) | all blocks  1969, 1..4 before T 67.5% | lift 1.00
+     bot-wallet sell via UR 24856bc3 a= 1: firing blocks   97, of them 1..4 before T  38 (39.2%) | all blocks  2637, 1..4 before T 50.7% | lift 0.77
+     bot-wallet sell via UR 24856bc3 a= 3: firing blocks   68, of them 1..4 before T  37 (54.4%) | all blocks  1969, 1..4 before T 67.5% | lift 0.81
+     bot-wallet other tx             a= 1: firing blocks   84, of them 1..4 before T  44 (52.4%) | all blocks  2637, 1..4 before T 50.7% | lift 1.03
+     bot-wallet other tx             a= 3: firing blocks   60, of them 1..4 before T  44 (73.3%) | all blocks  1969, 1..4 before T 67.5% | lift 1.09

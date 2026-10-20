@@ -1,0 +1,18 @@
+
+== TEST SLICE (recent 2 h, not the finder's): 58 pools, L 86154146..86230084 (10-11 21:38:04 .. 10-11 23:48:30 UTC)
+  pools with a calldata/sender/recipient touch of pool, token or buyer in [T-12, T): 0 of 58
+  pools with a log touch (token log, pool log, buyer/token/pid in a log) in [T-4, T): 0 of 58
+  pools with ANY touch in the whole [L-3, T) besides the launch tx and the sentinel: 0 of 58; explained touches: {'launch': 58, 'sentinel': 58, 'launcher_prelaunch:0x00000000:87517c45': 22}
+  buyer's first touch after T (block offset from T, flags, to, selector): [('none to T+3', 56), ((3, ('buyer_is_sender', 'token_log:Approval', 'tx_to_token'), '0x8c33c088', '095ea7b3'), 1), ((3, ('buyer_is_sender', 'token_log:Approval', 'tx_to_token'), '0x08ad9840', '095ea7b3'), 1)]
+  swaps in the pool ahead of T: [(('sentinel', 'L+3', 'buy', 2e-06), 48), (('sentinel', 'L+4', 'buy', 2e-06), 4), (('sentinel', 'L+2', 'buy', 2e-06), 4), (('sentinel', 'L+7', 'buy', 2e-06), 1), (('sentinel', 'L+5', 'buy', 2e-06), 1)]
+  bot's T tx: deadline - ts(T block) [(1199, 15), (1200, 43)] (1200 = signed in T's own second); tx type/priority fee [(('0x2', 24000000), 9), (('0x2', 24139200), 3), (('0x2', 24067200), 3), (('0x2', 24057600), 2)]; buyer nonce p10/50/90 21604/58297/66130
+  status of the bot's T tx: {'0x1': 58}
+
+== finder's own recent pools (overlap): 11 pools, L 86136473..86150251 (10-11 21:07:43 .. 10-11 21:31:23 UTC)
+  pools with a calldata/sender/recipient touch of pool, token or buyer in [T-12, T): 0 of 11
+  pools with a log touch (token log, pool log, buyer/token/pid in a log) in [T-4, T): 0 of 11
+  pools with ANY touch in the whole [L-3, T) besides the launch tx and the sentinel: 0 of 11; explained touches: {'launcher_prelaunch:0x00000000:87517c45': 5, 'launch': 11, 'sentinel': 11}
+  buyer's first touch after T (block offset from T, flags, to, selector): [('none to T+3', 11)]
+  swaps in the pool ahead of T: [(('sentinel', 'L+3', 'buy', 2e-06), 10), (('sentinel', 'L+2', 'buy', 2e-06), 1)]
+  bot's T tx: deadline - ts(T block) [(1199, 2), (1200, 9)] (1200 = signed in T's own second); tx type/priority fee [(('0x2', 24343200), 1), (('0x2', 24091200), 1), (('0x2', 24100800), 1), (('0x2', 24134400), 1)]; buyer nonce p10/50/90 54560/58178/67585
+  status of the bot's T tx: {'0x1': 11}

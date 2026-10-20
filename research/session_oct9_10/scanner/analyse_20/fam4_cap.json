@@ -1,0 +1,13 @@
+{
+ "pid": "0xf22aee7d367b5fdfbb62157a20a3542eddf4c1f7e13b9c849e9e6db221108321",
+ "start": "below",
+ "amount_word6": 1000000000000000,
+ "eth_into_pool": 990000000000000,
+ "minout_word7": 476624705140814276141357,
+ "quote": 488795718532267768810065,
+ "a1": 488795718532267742940577,
+ "minout_over_quote": 0.9751,
+ "minout_over_trader_receipt": 0.98,
+ "cap_eth_on_pool_output": 0.025690626353025436,
+ "cap_eth_if_checked_on_receipt": 0.020557735115289688
+}

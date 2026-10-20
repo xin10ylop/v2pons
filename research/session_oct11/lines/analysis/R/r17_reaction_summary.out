@@ -1,0 +1,25 @@
+census 2.433 stranger after T, dust <0.00003 n   5: pulled 0-9 blocks after   0, 10-14   0, 15-30   0, 31-400   0, not in window   5; lags []
+census 2.433 stranger after T, >=0.00003     n  92: pulled 0-9 blocks after  47, 10-14  24, 15-30   2, 31-400   7, not in window  12; lags [0, 1, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7]
+census 3.0   stranger after T, dust <0.00003 n  10: pulled 0-9 blocks after   0, 10-14   0, 15-30   3, 31-400   5, not in window   2; lags [15, 19, 20, 31, 37, 53, 62, 254, 435]
+census 3.0   stranger after T, >=0.00003     n  99: pulled 0-9 blocks after  59, 10-14  32, 15-30   8, 31-400   0, not in window   0; lags [1, 2, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
+chain  2.433 stranger after T, >=0.00003     n   2: pulled 0-9 blocks after   0, 10-14   0, 15-30   2, 31-400   0, not in window   0; lags [26, 27]
+chain  3.0   stranger after T, dust <0.00003 n   3: pulled 0-9 blocks after   0, 10-14   0, 15-30   0, 31-400   1, not in window   2; lags [120]
+chain  3.0   stranger after T, >=0.00003     n   7: pulled 0-9 blocks after   4, 10-14   1, 15-30   2, 31-400   0, not in window   0; lags [5, 8, 9, 9, 13, 19, 27]
+
+chain cases (non-recurring wallets after T):
+   3.0 0xdc8e4fee 0.009900 ETH at T+328 pull lag 27
+   3.0 0x329ca263 0.000760 ETH at T+246 pull lag 19
+   3.0 0xdf24e301 0.000017 ETH at T+353 pull lag None
+   2.433 0x1845a376 0.000200 ETH at T+221 pull lag 26
+   3.0 0x2eb9009a 0.002000 ETH at T+68 pull lag 9
+   3.0 0x2eb9009a 0.002000 ETH at T+75 pull lag 8
+   3.0 0x2eb9009a 0.002000 ETH at T+47 pull lag 9
+   3.0 0xe74fcc81 0.000005 ETH at T+3 pull lag 120
+   3.0 0xe74fcc81 0.000002 ETH at T+51 pull lag None
+   2.433 0xc5d99711 0.002296 ETH at T+214 pull lag 27
+   3.0 0x4e3c0b0a 0.000090 ETH at T+246 pull lag 5
+   3.0 0x4e3c0b0a 0.000050 ETH at T+324 pull lag 13
+
+per pool (census, first stranger buy >= 0.00003 after T):
+  2.433: n  86: pulled 0-9 blocks after  42, 10-14  23, 15-30   2, 31-400   7, not in window  12; median lag 9
+  3.0: n  96: pulled 0-9 blocks after  56, 10-14  32, 15-30   8, 31-400   0, not in window   0; median lag 9

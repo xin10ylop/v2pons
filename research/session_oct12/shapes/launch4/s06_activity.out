@@ -1,0 +1,47 @@
+===== S1: 166 core pools; with any non-sentinel swap after the launch tx (to the head): 2; with a buy >= 0.0001 ETH-eq: 2
+  pool age at the head: p10/50/90 36786/137306/397139 blocks
+  first buy (>= 0.0001) offsets: [373, 607]
+  first buy within +600: 1; sizes ETH-eq [0.0005, 0.0006]
+  max price multiple vs launch: p50 1.000 p90 1.000 max 1.000; >= 1.5x: 0; >= 2x: 0
+  swapping EOAs 3; in >= 2 pools: 1; in >= 3 pools: 0
+    0xafa54e6945803ec0025bb5adf7dea1e50c32bb41 pools   2 buys   2 in 0.0010 sells   2 out 0.0010 buys>=0.05 0 offsets p10/50/90 373/607/607
+    0x738389ef5ab40b5fc7f03d506d3092763c4b2675 pools   1 buys   1 in 0.0004 sells   0 out 0.0000 buys>=0.05 0 offsets p10/50/90 4263/4263/4263
+    0xac448306847af22559c9e2a9b8bb4701cef8cbe6 pools   1 buys   0 in 0.0000 sells   1 out 0.0003 buys>=0.05 0 offsets p10/50/90 None/None/None
+  buy targets: [('0x5399d94d', '814920c0', 2, 2, 0.001), ('0x6e2a35a7', '0c307f76', 1, 1, 0.0004)]
+  buys >= 0.05 ETH-eq (any time): 0 []
+===== S2: 85 core pools; with any non-sentinel swap after the launch tx (to the head): 85; with a buy >= 0.0001 ETH-eq: 3
+  pool age at the head: p10/50/90 46493/212734/382360 blocks
+  first buy (>= 0.0001) offsets: [3, 503, 1049]
+  first buy within +600: 2; sizes ETH-eq [0.0029, 0.0098, 0.0394]
+  max price multiple vs launch: p50 1.015 p90 1.017 max 101.944; >= 1.5x: 1; >= 2x: 1
+  swapping EOAs 75; in >= 2 pools: 3; in >= 3 pools: 3
+    0xbf2d27ed61c2c6dca26ae9de8f9dfcd317416239 pools  28 buys   0 in 0.0000 sells  28 out 0.0406 buys>=0.05 0 offsets p10/50/90 None/None/None
+    0xf3b023ab8279a4639a0157db544c75ba259d8f50 pools  28 buys   0 in 0.0000 sells  28 out 0.0426 buys>=0.05 0 offsets p10/50/90 None/None/None
+    0xe243d2de1988ff91937bd8e0d670420a2c821377 pools  28 buys   0 in 0.0000 sells  28 out 0.0421 buys>=0.05 0 offsets p10/50/90 None/None/None
+    0x1142132524e0558e28e41086235446986a6db351 pools   1 buys   8 in 1.4251 sells   0 out 0.0000 buys>=0.05 8 offsets p10/50/90 16921/28727/29030
+    0xa3619fa56b67d5e376a8a26979eeba9ba07c763d pools   1 buys   6 in 0.7050 sells   1 out 0.0563 buys>=0.05 6 offsets p10/50/90 8773/14188/23003
+    0x7f7f729b88821c20094159a8a6dc870e21907e48 pools   1 buys   2 in 0.6797 sells   3 out 0.0690 buys>=0.05 2 offsets p10/50/90 16042/25087/25087
+    0xff4e024868287770459354f3b73f2cd5982e9e82 pools   1 buys   3 in 0.6429 sells   2 out 0.1304 buys>=0.05 3 offsets p10/50/90 8511/8596/20391
+    0x90e89d1a887fd0107871bfc3a97dd5e248e9951b pools   1 buys   7 in 0.6332 sells   7 out 0.9171 buys>=0.05 4 offsets p10/50/90 780/21289/23232
+    0xf42b73d2e4d3912eade2a5f7ab39b54064c2acec pools   1 buys   3 in 0.5774 sells   0 out 0.0000 buys>=0.05 2 offsets p10/50/90 8886/15269/72350
+    0xef15a8b0a5e37cae92cd3f2528b7d4e0ca99a765 pools   1 buys   2 in 0.5491 sells   0 out 0.0000 buys>=0.05 2 offsets p10/50/90 4697/5395/5395
+  buy targets: [('0xf0b7eaaf', '39ecce49', 4, 7, 0.0145), ('0x88767899', '3593564c', 1, 56, 7.528), ('0x9689992f', '3e0f9c3c', 1, 44, 1.4573), ('0x65050a9b', '4d819a2a', 1, 11, 0.4455), ('0xccc88a9d', '0a2b8f36', 1, 10, 1.4533), ('0x6131b5fa', 'e21fd0e9', 1, 1, 0.0)]
+  buys >= 0.05 ETH-eq (any time): 67 [('0xc1ffeb85', 488, 0.138, '0x493e2bf9'), ('0xc1ffeb85', 667, 0.0932, '0x5598a2a0'), ('0xc1ffeb85', 780, 0.0797, '0x90e89d1a'), ('0xc1ffeb85', 857, 0.1716, '0xc9f0d404'), ('0xc1ffeb85', 989, 0.1168, '0x96a7817d'), ('0xc1ffeb85', 1087, 0.0825, '0x6821c3fd'), ('0xc1ffeb85', 1135, 0.0769, '0x6821c3fd'), ('0xc1ffeb85', 1419, 0.0649, '0xb4d1b8e2'), ('0xc1ffeb85', 1931, 0.0537, '0x6821c3fd'), ('0xc1ffeb85', 4043, 0.0548, '0x0f6908fc'), ('0xc1ffeb85', 4112, 0.1175, '0x90e89d1a'), ('0xc1ffeb85', 4203, 0.0683, '0x96a7817d'), ('0xc1ffeb85', 4396, 0.0508, '0x6821c3fd'), ('0xc1ffeb85', 4450, 0.1013, '0x43e3399a'), ('0xc1ffeb85', 4573, 0.1016, '0x9c38c27c'), ('0xc1ffeb85', 4697, 0.1027, '0xef15a8b0'), ('0xc1ffeb85', 4719, 0.0557, '0x37f02bcf'), ('0xc1ffeb85', 4719, 0.0751, '0x96980c8b'), ('0xc1ffeb85', 4719, 0.0633, '0x8cdf9a8a'), ('0xc1ffeb85', 4770, 0.097, '0x2be5f10e')]
+===== S3: 36 core pools; with any non-sentinel swap after the launch tx (to the head): 0; with a buy >= 0.0001 ETH-eq: 0
+  pool age at the head: p10/50/90 67948/112258/153510 blocks
+  first buy (>= 0.0001) offsets: []
+  first buy within +600: 0; sizes ETH-eq []
+  max price multiple vs launch: p50 1.000 p90 1.000 max 1.000; >= 1.5x: 0; >= 2x: 0
+  swapping EOAs 1; in >= 2 pools: 1; in >= 3 pools: 1
+    0xe71a69f434a719cd5afa411568b69716aab3b84a pools  36 buys  36 in 0.0001 sells   0 out 0.0000 buys>=0.05 0 offsets p10/50/90 3/3/10
+  buy targets: [('0x88767899', '3593564c', 36, 36, 0.0001)]
+  buys >= 0.05 ETH-eq (any time): 0 []
+===== S4: 26 core pools; with any non-sentinel swap after the launch tx (to the head): 0; with a buy >= 0.0001 ETH-eq: 0
+  pool age at the head: p10/50/90 11000/43426/72835 blocks
+  first buy (>= 0.0001) offsets: []
+  first buy within +600: 0; sizes ETH-eq []
+  max price multiple vs launch: p50 1.000 p90 1.000 max 1.000; >= 1.5x: 0; >= 2x: 0
+  swapping EOAs 1; in >= 2 pools: 1; in >= 3 pools: 1
+    0xe71a69f434a719cd5afa411568b69716aab3b84a pools  26 buys  26 in 0.0001 sells   0 out 0.0000 buys>=0.05 0 offsets p10/50/90 3/3/4
+  buy targets: [('0x88767899', '3593564c', 26, 26, 0.0001)]
+  buys >= 0.05 ETH-eq (any time): 0 []

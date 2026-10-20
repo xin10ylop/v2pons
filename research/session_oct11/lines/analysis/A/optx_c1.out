@@ -1,0 +1,2 @@
+C1_eth operator-router buys decoded: 3758  w3 (min out?) values: [(0, 3758)]  w4: [(1, 3758)]  recipient==from: 3746  amountIn==swap quote: 3746  tx carries ETH value: {False: 3758}
+C1_weth operator-router buys decoded: 1193  w3 (min out?) values: [(0, 1193)]  w4: [(1, 1193)]  recipient==from: 1178  amountIn==swap quote: 1178  tx carries ETH value: {False: 1193}

@@ -1,0 +1,54 @@
+pool 0xbe2a35f9 launch +0=83725838 T=+None our buy T+None
+pool 0x2a928e99 launch +0=84097974 T=+21 our buy T+3
+   T+  0    buy  0.1068  from 0x4c45af68
+   T+  3 US buy  0.0012  from 0xab5a34c3
+   T+  5    buy  0.0001  from 0xb4d43149
+   T+  6 US sell 0.0012  from 0xab5a34c3
+   T+  8    buy  0.1162  from 0xf9c0562a
+   T+ 12    buy  0.1171  from 0x6f832efb
+pool 0x2749b5d1 launch +0=84098617 T=+60 our buy T+1
+   T+  0    buy  0.0435  from 0x295877ce
+   T+  1 US buy  0.0012  from 0xab5a34c3
+   T+  3    buy  0.0120  from 0x75442507
+   T+  4 US sell 0.0012  from 0xab5a34c3
+   T+  6    buy  0.0571  from 0xdc2e8661
+   T+ 10    buy  0.0001  from 0xb4d43149
+   T+ 15 PULL
+pool 0x43c1ce10 launch +0=84099114 T=+55 our buy T+1
+   T+  0    buy  0.1066  from 0x295877ce
+   T+  1 US buy  0.0012  from 0xab5a34c3
+   T+  3    buy  0.0478  from 0xdc2e8661
+   T+  4 US sell 0.0012  from 0xab5a34c3
+   T+  4    buy  0.0001  from 0xb4d43149
+   T+  9    buy  0.0656  from 0x75442507
+   T+ 11    sell 0.0339  from 0x295877ce
+   T+ 11    buy  0.0300  from 0xa9ec7ecf
+pool 0xe444ad37 launch +0=84112795 T=+59 our buy T+1
+   T+  0    buy  0.0368  from 0x8700722d
+   T+  1 US buy  0.0012  from 0xab5a34c3
+   T+  3    buy  0.0638  from 0x295877ce
+   T+  3    buy  0.0001  from 0x0b410a5f
+   T+  4 US sell 0.0013  from 0xab5a34c3
+   T+  6    buy  0.0583  from 0xe6af9036
+   T+  7    buy  0.0001  from 0xb4d43149
+   T+ 13    sell 0.0207  from 0x8700722d
+pool 0xa5b3513d launch +0=84118206 T=+61 our buy T+1
+   T+  0    buy  0.0119  from 0x295877ce
+   T+  1 US buy  0.0012  from 0xab5a34c3
+   T+  2    buy  0.1342  from 0x05042f81
+   T+  3 US sell 0.0013  from 0xab5a34c3
+   T+  5    buy  0.0528  from 0xdc2e8661
+   T+  6    buy  0.0001  from 0x0b410a5f
+   T+  6    buy  0.0001  from 0xb4d43149
+   T+ 10    buy  0.0640  from 0x75442507
+   T+ 12    sell 0.0489  from 0x05042f81
+   T+ 13    buy  0.0084  from 0xe6af9036
+pool 0x03d90ea1 launch +0=84120751 T=+55 our buy T+1
+   T+  0    buy  0.0689  from 0x295877ce
+   T+  1 US buy  0.0012  from 0xab5a34c3
+   T+  3    buy  0.1219  from 0xe6af9036
+   T+  4    buy  0.0001  from 0x0b410a5f
+   T+  4 US sell 0.0013  from 0xab5a34c3
+   T+  6    buy  0.0751  from 0x8700722d
+   T+  7    buy  0.0001  from 0xb4d43149
+   T+ 12    buy  0.0651  from 0xa9ec7ecf
