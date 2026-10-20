@@ -38,6 +38,7 @@ FLEET_KEY = Account.create(); PROBE_KEY = Account.create(); STRANGER = Account.c
 FLEET = sorted({t["from"].lower() for t in FX["txs"].values() if t["input"][:10] == "0x7ff36ab5" and int(t["nonce"], 16) < 20000 and int(t["value"], 16) > 0})
 json.dump({"built": "2026-10-20T00:00:00Z", "wallets": FLEET + [FLEET_KEY.address]}, open(BASE_ENV["BASE_V2_ROSTER_FILE"], "w"))
 TESTS = []
+threading.Thread(target=E.trader, daemon=True).start(); BASE_THREADS = threading.active_count()   # the trader: the only signer, for the live cases
 
 
 def test(fn):
@@ -287,9 +288,18 @@ def feed(c, a, b, skip_heads=()):
             E.end_burst()
 
 
+def quiesce(timeout=3.0):
+    """the engine's worker threads of the last case (a guard's second endpoint, a sender's read, a settlement) done before the next one
+    rebinds the stub: a late answer must not land in the next case's records"""
+    t0 = time.time()
+    while threading.active_count() > BASE_THREADS and time.time() - t0 < timeout:
+        time.sleep(0.005)
+
+
 def fresh(*streams, dry=True, **env):
     """a new engine state with these settings, a stubbed chain over the streams (the 2.0 ETH replay by default) and an empty log; the
     websocket connected, its first head to come at N - 2"""
+    quiesce()
     for k in [k for k in os.environ if k.startswith("BASE_V2_")]:
         os.environ.pop(k)
     os.environ.update(BASE_ENV); os.environ["BASE_V2_DRY_RUN"] = "1" if dry else "0"; os.environ.update({k: str(v) for k, v in env.items()})
@@ -500,8 +510,7 @@ def creation_confirmed_on_the_fixture():
     assert ("rpc.example.org", "eth_getTransactionByHash") in c.calls and ("rpc.example.org", "eth_getTransactionReceipt") in c.calls
     assert not any(m in ("eth_getCode", "eth_call") for _, m in c.calls)        # a watched pair costs no guard read
     feed(c, N + 1, N + 430)
-    time.sleep(0.05)
-    o = events("outsider_buy")
+    o = wait_ev("outsider_buy", 2)
     assert [(x["block"] - N, x["who"], x["action"], x["ours"], x["pending"]) for x in o] == [(0, "probe", "none", False, False), (419, "outsider", "none", False, False)], o
     otx = next(t for t in FX["txs"].values() if t["input"][:10] == "0xaff9ec28" and int(t["value"], 16) > 0)      # the outsider's buy through an aggregator
     assert o[0]["sender"] == PROBE and o[0]["to"] != PROBE and o[0]["value_eth"] == 2999955000000 / 1e18 and o[1]["sender"] == otx["from"].lower() and o[1]["tier"] == "15"
@@ -664,10 +673,12 @@ def arm_reads_the_creation_block():
 def late_or_pulled_before_the_fire():
     """a slow guard: the head at N + LAND_MAX refuses the fire (late); the creator's pull seen pending before the fire skips the pair;
     an outsider's pending buy before the fire too"""
-    c = fresh(Stream("2.0")); c.exit_lag = 0.25; feed(c, N - 2, N + 1)
+    c = fresh(Stream("2.0")); c.exit_lag = 0.25; feed(c, N - 2, N)
+    wait_ev("arm"); feed(c, N + 1, N + 1)                                       # the exit test still running: the head reaches N + LAND_MAX
     s = wait_ev("skip")[0]
     assert s["why"] == "late" and s["block"] == N and s["head"] == N + 1 and not events("would_fire"), s
-    time.sleep(0.4); assert not events("would_fire") and not events("arm") and c.guard_calls and not events("guard")   # the verdict of a skipped pair is discarded
+    g = wait_ev("guard")[0]; time.sleep(0.05)
+    assert g["verdict"] == "ok" and not events("would_fire") and E.pairs[PAIR]["status"] == "watched"      # the verdict of a skipped pair is discarded
     c = fresh(Stream("2.0"), BASE_V2_LAND_MAX="3"); c.exit_lag = 0.25; feed(c, N - 2, N + 1)
     f = wait_ev("would_fire")[0]; assert f["head"] == N + 1 and f["aim"] == N + 2 and events("arm")[0]["block"] == N
     st = Stream("2.0", creator=creator_key("pull")); c = fresh(st); c.exit_lag = 0.25; feed(c, N - 2, N)
@@ -679,8 +690,8 @@ def late_or_pulled_before_the_fire():
     wait_ev("guard"); time.sleep(0.05); assert not events("would_fire") and len(events("skip")) == 1
     st = Stream("2.0"); c = fresh(st); c.exit_lag = 0.25; feed(c, N - 2, N)
     wait_ev("creation"); flash(N + 1, [signed(STRANGER, 9, ROUTER, 10 ** 15, "0x7ff36ab5" + word(0) + word(128) + aword(STRANGER.address) + word(ts(N) + 60) + word(2) + aword(WETH) + aword(TOKEN))], index=1)
-    o = events("outsider_buy")[0]
-    assert o["pending"] and o["who"] == "outsider" and o["sender"] == STRANGER.address.lower() and o["action"] == "skip" and o["value_eth"] == 0.001 and o["via"] == "flash", o
+    o = events("outsider_buy", pending=True)[0]
+    assert o["who"] == "outsider" and o["sender"] == STRANGER.address.lower() and o["action"] == "skip" and o["value_eth"] == 0.001 and o["via"] == "flash", o
     s = wait_ev("skip")[0]
     assert s["why"] == "outsider before our fire" and s["block"] == N + 1 and not events("would_fire")
 
@@ -772,13 +783,13 @@ def probe_creator_and_fleet_never_trigger():
     """after our buy: the probe's, the creator's and a roster wallet's buys, confirmed and pending, never sell; the probe and the creator are
     logged, the fleet never"""
     c = fresh(Stream("2.0"), BASE_V2_PROBE=PROBE + "," + PROBE_KEY.address); st = next(iter(c.streams.values())); fired(c); feed(c, N + 1, N + 4)
-    inject_buy(c, st, N + 5, 3 * 10 ** 12, "0x6aa98924" + "00" * 16, sender=PROBE, li=900); inject_buy(c, st, N + 5, 9 * 10 ** 13, CREATOR, li=910)
-    inject_buy(c, st, N + 5, 10 ** 16, FLEET[5], li=920); inject_buy(c, st, N + 5, 10 ** 16, STRANGER.address.lower(), sender=FLEET[6], li=930)   # a fleet buy sent to another wallet
+    inject_buy(c, st, N + 5, 3 * 10 ** 12, PROBE, li=900, sel="0xb6f9de95"); inject_buy(c, st, N + 5, 9 * 10 ** 13, CREATOR, li=910)   # the creator's self-buy at +5
+    inject_buy(c, st, N + 5, 10 ** 16, FLEET[5], li=920)
     feed(c, N + 5, N + 5)
     time.sleep(0.05)
     o = events("outsider_buy", block=N + 5)
     assert sorted(x["who"] for x in o) == ["creator", "probe"] and all(x["action"] == "none" and x["ours"] for x in o) and not events("sell_sent"), o
-    assert E.pairs[PAIR]["fleet_first"] == N + 2 and len([b for b in E.pairs[PAIR]["buys"] if b["who"] == "fleet"]) == 3
+    assert E.pairs[PAIR]["fleet_first"] == N + 2 and len([b for b in E.pairs[PAIR]["buys"] if b["who"] == "fleet"]) == 2
     buy = lambda key, nonce, eth: signed(key, nonce, ROUTER, eth, "0x7ff36ab5" + word(0) + word(128) + aword(key.address) + word(ts(N) + 60) + word(2) + aword(WETH) + aword(TOKEN))
     flash(N + 6, [buy(PROBE_KEY, 1, 3 * 10 ** 12), buy(FLEET_KEY, 2, 10 ** 16)], index=1)
     o = events("outsider_buy", pending=True)
@@ -789,6 +800,12 @@ def probe_creator_and_fleet_never_trigger():
     flash(N + 5, [signed(st.key, 4, ROUTER, 9 * 10 ** 13, "0x7ff36ab5" + word(0) + word(128) + aword(st.creator) + word(ts(N) + 60) + word(2) + aword(WETH) + aword(st.token))], index=1)
     o = events("outsider_buy", pending=True)
     assert len(o) == 1 and o[0]["who"] == "creator" and o[0]["action"] == "none" and not events("sell_sent"), o
+    # the design's rule on the confirmed feed: a buy whose Swap `to` is none of the roster, the probe, the creator, our wallet or the relay is an
+    # outsider at once (an aggregator's buy shows the aggregator as `to`), the sender read only for the line: the sell goes, the line says who sent it
+    st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 4)
+    inject_buy(c, st, N + 5, 3 * 10 ** 12, "0x6aa98924" + "00" * 16, sender=PROBE, sel="0xb6f9de95"); feed(c, N + 5, N + 5)
+    o = wait_ev("outsider_buy", block=N + 5)[0]
+    assert o["who"] == "probe" and o["action"] == "sell" and o["sender"] == PROBE and events("sell_sent")[0]["reason"] == "outsider", o
 
 
 @test
