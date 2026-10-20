@@ -16,6 +16,7 @@ the line's pairs only; about 10-20 minutes for 3 days.
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_v2_roster.py                        # 3 days, >= 3 pairs: the file written, the count printed
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_v2_roster.py --days 5 --min-pairs 2 --out /tmp/roster.json
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_v2_roster.py --show               # the file as it is: built, count, age
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_v2_roster.py --merge FILE         # FILE's wallets added to the file (no chain read)
 
 The file ({"built": <utc>, "wallets": [...], "probe": [...], "days", "blocks", "pairs", "rule"}) is written whole and in place when it exists
 (the same inode: flip-base-v2 has the file bound into its mount namespace, and a rename would leave the running engine the old one), else
@@ -107,6 +108,18 @@ def write(path, data):
     return "created"
 
 
+def merge(path, src):
+    """the file's wallets and src's (a roster built elsewhere: no chain read on a rate-limited box), the union written in place; never removes"""
+    old = json.load(open(path)) if os.path.exists(path) else {"wallets": []}; new = json.load(open(src))
+    ws_old = {w.lower() for w in old.get("wallets") or []}; ws_new = {w.lower() for w in new.get("wallets") or []}
+    if len(ws_new) < MIN_WALLETS:
+        sys.exit(f"{src}: {len(ws_new)} wallets, under {MIN_WALLETS}: not a roster; {path} is NOT touched")
+    data = dict(new, wallets=sorted(ws_old | ws_new), probe=BV.probes(), built=max(str(old.get("built") or ""), str(new.get("built") or "")),
+                rule=f"merged: {old.get('rule') or old.get('source') or '?'} | {new.get('rule') or new.get('source') or '?'}")
+    how = write(path, data)
+    print(f"merged: {len(ws_old)} + {len(ws_new - ws_old)} new = {len(data['wallets'])} wallets, written {how}: {path} (built {data['built']})", flush=True)
+
+
 def show(path):
     try:
         d = json.load(open(path)); age = (time.time() - os.path.getmtime(path)) / 3600
@@ -126,10 +139,13 @@ def main(argv):
     ap.add_argument("--out", default=None, help="the file to write (default BASE_V2_ROSTER_FILE)")
     ap.add_argument("--force", action="store_true", help=f"write even fewer than {MIN_WALLETS} wallets")
     ap.add_argument("--show", action="store_true", help="print the file as it is and exit")
+    ap.add_argument("--merge", metavar="FILE", default=None, help="add FILE's wallets (a roster built elsewhere) to the file, no chain read")
     a = ap.parse_args(argv)
     path = a.out or BV.roster_file()
     if a.show:
         return show(path)
+    if a.merge:
+        return merge(path, a.merge)
     if a.days < 1 or a.days > 30 or a.min_pairs < 1:
         sys.exit("--days is 1..30 and --min-pairs at least 1")
     say = lambda s: print(f"{time.strftime('%H:%M:%S')} {s}", flush=True)
