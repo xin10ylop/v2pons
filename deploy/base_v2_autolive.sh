@@ -40,10 +40,14 @@ for f in fires:
     if f.get("ready_ms") is not None and f["ready_ms"] >= 1500: ok = False; why.append("ready_ms %s on %s" % (f["ready_ms"], str(f.get("pair"))[:10]))
     if f.get("pair") not in done: ok = False; why.append("no dry trade_done yet on %s" % str(f.get("pair"))[:10])
     good += ok
-halts = [e for e in ev if e.get("ev") == "halt"]; alarms = [e for e in ev if e.get("ev") == "alarm" and any(k in str(e.get("what", "")) for k in ("feed", "websocket", "flash", "poller"))]
+import time
+halts = [e for e in ev if e.get("ev") == "halt"]
+recent = [e for e in ev if e.get("ev") == "alarm" and e.get("t", 0) > time.time() - 300 and any(k in str(e.get("what", "")) for k in ("feed", "websocket", "flash", "poller"))]
+flows = [e for e in ev if e.get("ev") == "flow"]; feeds_down = bool(flows) and not flows[-1].get("ws") and not flows[-1].get("flash")
 if halts: why.append("a halt since the start: %s" % str(halts[-1].get("reason", halts[-1]))[:80])
-if alarms: why.append("a feed alarm since the start: %s" % str(alarms[-1].get("what"))[:80])
-print(good if not (halts or alarms) else 0, "; ".join(why[-4:]) if why else "clean")
+if recent: why.append("a feed alarm in the last 5 min: %s" % str(recent[-1].get("what"))[:80])
+if feeds_down: why.append("both feeds down on the last flow line (the poller alone is too slow to land N+1)")
+print(good if not (halts or recent or feeds_down) else 0, "; ".join(why[-4:]) if why else "clean")
 PY
 }
 
