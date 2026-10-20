@@ -1607,3 +1607,781 @@ def trade_done(pos, out):
          "expect_tokens": pos["expect"], "via": pos["via"], "aim": pos["aim"], "dry": pos["dry"], "live": not pos["dry"], "trades_today": state["trades_today"], "pnl_today_eth": pnl_eth()})
     if S.DAILY_STOP_WEI and state["pnl_today_wei"] <= -S.DAILY_STOP_WEI:
         stop_day(f"the day's net P&L {pnl_eth()} ETH at -BASE_V2_DAILY_STOP_ETH {S.DAILY_STOP_WEI / 1e18:g}")
+
+
+# ---------------------------------------------------------------- the trader (the only thread that holds the nonce and signs)
+def trader():
+    while True:
+        kind, pos, arg = orders.get()
+        try:
+            if kind == "buy":
+                send_buy(pos)
+            elif kind == "sell":
+                send_sell(pos, *arg)
+            else:
+                send_resend(pos)
+        except Exception as e:
+            try:
+                alarm(f"the trader failed on a {kind}: {type(e).__name__}: {scrub(e, 120)}", trace=traceback.format_exc()[-400:])
+                with lock:
+                    if kind == "buy":
+                        close_unsent(pos, "the buy could not be sent")
+                    elif kind == "sell":
+                        pos.update(sell_refused=True, sell_done=True)           # the settlement goes on: a re-send, else "sold none"
+            except Exception:
+                pass
+
+
+def chain_nonce():
+    try:
+        return int(read("eth_getTransactionCount", [S.WALLET, "pending"], tries=2), 16)
+    except Exception as e:
+        alarm(f"the nonce was not read: {scrub(e, 100)}", quiet_key="nonce", every_s=60); return None
+
+
+def send_signed(pos, what, build, nonce=None, bump=False):
+    """sign at the wallet's nonce (or the one given: a replacement) and send; "nonce too low" everywhere: the nonce read again and signed once more"""
+    with lock:
+        nonce = state["nonce"] if nonce is None else nonce
+    for attempt in (0, 1):
+        tx = build(nonce); raw, h = sign(tx)
+        with lock:
+            pos[what + "_hash"] = h; pos[what + "_nonce"] = nonce; pos[what + "_prio"] = tx["maxPriorityFeePerGas"]; pos[what + "_max_fee"] = tx["maxFeePerGas"]
+            if what == "sell":
+                pos.setdefault("sell_hashes", []).append(h)
+            state["ours"][raw] = (pos, what); state["our_hashes"][h] = (pos, what); save_positions()
+        kind, replies = post_all(raw)
+        if kind != "nonce_low" or attempt or bump:
+            break
+        n = chain_nonce()
+        if n is None or n <= nonce:
+            break
+        nonce = n
+    with lock:
+        if kind != "rejected" and not bump:
+            state["nonce"] = max(state["nonce"] or 0, nonce + 1)
+    return h, nonce, kind, replies
+
+
+block_seen = lambda: max(state["head"] or 0, state["flash_block"] or 0)
+
+
+def send_buy(pos):
+    dl = int(now()) + S.BUY_DEADLINE_S
+    h, nonce, kind, replies = send_signed(pos, "buy", lambda n: tx_dict(buy_data(pos["token"], pos["stake"], pos["min_out"], dl), S.BUY_GAS, n, pos["prio"]))
+    pos["nonce"] = nonce
+    log({"ev": "buy_sent", "pair": pos["pair"], "hash": h, "nonce": nonce, "block_seen": block_seen(), "reason": "fire", "min_out": pos["min_out"], "via": "first", "deadline": dl,
+         "prio_gwei": pos["prio"] / 1e9, "kind": kind, "replies": replies, "ms_since_fire": round(1000 * (mono() - pos["fired_at"]), 1)})
+    if kind == "rejected":
+        with lock:
+            close_unsent(pos, "the buy was refused by every endpoint")
+        return
+    spawn(settle_live, pos)
+
+
+def close_unsent(pos, why):
+    alarm(f"{why}: no trade", pair=pos["pair"])
+    pos["closed"] = True
+    positions.pop(pos["pair"], None); state["trades_today"] = max(0, state["trades_today"] - 1)
+    P = pairs.get(pos["pair"])
+    if P is not None:
+        P["status"] = "traded"; P["trade"] = {"buy_block": None, "sell_block": None, "sell_at": None, "exit": "unsent"}
+    save_positions()
+
+
+def send_sell(pos, min_out, deadline_ts, trig):
+    if trig.get("renonce"):                                                    # a re-send: the chain's count (a sell that never landed frees its nonce)
+        n = chain_nonce()
+        with lock:
+            state["nonce"] = n if n is not None else state["nonce"]
+    h, nonce, kind, replies = send_signed(pos, "sell", lambda n: tx_dict(sell_data(pos["token"], min_out, deadline_ts), S.SELL_GAS, n))
+    log({"ev": "sell_sent", "dry": False, "pair": pos["pair"], "hash": h, "nonce": nonce, "block_seen": pos.get("sell_block_seen"), "reason": trig["exit"], "why": trig["reason"],
+         "min_out": min_out, "via": trig.get("send_via", "first"), "deadline": deadline_ts, "prio_gwei": S.PRIO_WEI / 1e9, "kind": kind, "replies": replies})
+    if kind == "rejected":
+        alarm("the sell was refused by every endpoint", pair=pos["pair"], replies=replies)
+    with lock:
+        pos.update(sell_refused=kind == "rejected", sell_done=True)            # the final hash is in: the settlement waits on it
+
+
+def send_resend(pos):
+    """the hard sell again at the same nonce with twice the priority (its max fee bumped past the first's): a replacement"""
+    nonce = pos["sell_nonce"]; prio = 2 * (pos.get("sell_prio") or S.PRIO_WEI); dl = int(now()) + S.SELL_DEADLINE_S
+    h, nonce, kind, replies = send_signed(pos, "sell", lambda n: tx_dict(sell_data(pos["token"], 0, dl), S.SELL_GAS, n, prio, (pos.get("sell_max_fee") or 0) * 11 // 10 + 1),
+                                          nonce=nonce, bump=True)
+    log({"ev": "sell_sent", "dry": False, "pair": pos["pair"], "hash": h, "nonce": nonce, "block_seen": block_seen(), "reason": pos["exit"], "why": "unseen by N + BASE_V2_SELL_RESEND_BLOCK",
+         "min_out": 0, "via": "resend", "deadline": dl, "prio_gwei": prio / 1e9, "kind": kind, "replies": replies})
+
+
+# ---------------------------------------------------------------- settlement (live)
+def wait_receipt(hashes, timeout_s, stop=lambda: False):
+    """the first receipt among `hashes` (a replacement's or the original's), None within timeout_s"""
+    hashes = [hashes] if isinstance(hashes, str) else list(hashes); t0 = mono()
+    while mono() - t0 < timeout_s and not stop():
+        for h in hashes:
+            try:
+                r = read("eth_getTransactionReceipt", [h])
+                if r:
+                    return r
+            except Exception:
+                pass
+        time.sleep(RECEIPT_POLL_S)
+    return None
+
+
+def gas_of(rec):
+    """(gasUsed x effectiveGasPrice + l1Fee, l1Fee) of a receipt, in wei"""
+    g = int(rec.get("gasUsed") or "0x0", 16) * int(rec.get("effectiveGasPrice") or "0x0", 16); l1 = int(rec.get("l1Fee") or "0x0", 16)
+    return g + l1, l1
+
+
+def our_swap(rec, pos, kind):
+    """our Swap on the pair in a receipt: a buy's (ETH in, tokens out, block, logIndex), a sell's (ETH out, tokens in, block, logIndex); else None"""
+    for l in rec.get("logs") or []:
+        t = l.get("topics") or []
+        if (l.get("address") or "").lower() == pos["pair"] and len(t) >= 3 and t[0].lower() == T_SWAP:
+            d = l["data"]; e = {"a0in": W(d, 0), "a1in": W(d, 1), "a0out": W(d, 2), "a1out": W(d, 3)}
+            eth_in, tok_out, tok_in, eth_out = sides(pos, e); B, li = int(rec["blockNumber"], 16), int(l["logIndex"], 16)
+            if kind == "buy" and eth_in > 0:
+                return eth_in, tok_out, B, li
+            if kind == "sell" and tok_in > 0:
+                return eth_out, tok_in, B, li
+    return None
+
+
+def tokens_in(rec, pos):
+    """the tokens of our buy: the token's Transfer(s) to the relay (a fee-on-transfer token pays out less than the Swap says)"""
+    return sum(int(l["data"], 16) for l in rec.get("logs") or [] if (l.get("address") or "").lower() == pos["token"] and len(l.get("topics") or []) >= 3
+               and l["topics"][0].lower() == T_TRANSFER and l["topics"][2][-40:].lower() == S.RELAY[2:])
+
+
+def relay_tokens(pos):
+    """the relay's balance of the token (None: not read)"""
+    try:
+        return int(read("eth_call", [{"to": pos["token"], "data": "0x" + SEL_BALANCE_OF + aword(S.RELAY)}, "latest"], tries=2), 16)
+    except Exception as e:
+        alarm(f"the relay's token balance was not read: {scrub(e, 100)}", pair=pos["pair"]); return None
+
+
+def chain_pull(pos, to_block):
+    """the first Burn on our pair from our buy's block to to_block, by eth_getLogs (the settlement's own read: after a restart or a gap the
+    feed's events are not all there); None: none, or the read failed (an alarm)"""
+    a = pos["buy_block"] or pos["N"]; err = None
+    for attempt in range(4):                                                   # off the trade path: a rate limit is waited out
+        try:
+            ls = read("eth_getLogs", [{"fromBlock": hex(a), "toBlock": hex(max(a, to_block)), "address": pos["pair"], "topics": [T_BURN]}], timeout=SLOW_TIMEOUT_S, tries=1)
+            pulls = sorted(order(l) for l in ls if l["topics"][0].lower() == T_BURN)
+            return pulls[0] if pulls else None
+        except Exception as e:
+            err = e; time.sleep(2.0 * (attempt + 1))
+    alarm(f"the pull check was not read in 4 tries ({scrub(err, 100)}): the feed's events decide", pair=pos["pair"]); return None
+
+
+def wait_sell(pos):
+    """the sell's final hash (the trader's), or no sell (the buy did not fill); a sell the feeds never decided goes on the clock"""
+    t0 = mono()
+    while True:
+        with lock:
+            if pos["no_sell"] or pos.get("sell_done"):
+                return not pos["no_sell"]
+            if not pos["sell_sent"] and mono() - t0 > BLOCK_S * S.HARD_BLOCK + 120:
+                do_sell(pos, {"exit": "hard", "block": state["head"] or 0, "via": "clock", "price_block": None, "reason": "the hard block by the clock: no block came"})
+        time.sleep(RECEIPT_POLL_S)
+
+
+def settle_live(pos):
+    try:
+        _settle_live(pos)
+    except Exception as e:
+        alarm(f"settle failed: {type(e).__name__}: {scrub(e, 120)}", pair=pos["pair"], trace=traceback.format_exc()[-500:])
+        with lock:
+            pos["closed"] = True; positions.pop(pos["pair"], None); save_positions()
+
+
+def _settle_live(pos):
+    rb = wait_receipt(pos["buy_hash"], S.BUY_DEADLINE_S + RECEIPT_GRACE_S)
+    if rb is None and (pos["buy_at"] is not None or pos.get("buy_seen")):         # in (its Swap, its Flashblock): never "lost"; asked again
+        alarm("our buy is in (its Swap or its Flashblock) but its receipt is not read: still asking", pair=pos["pair"], buy_hash=pos["buy_hash"])
+        rb = wait_receipt(pos["buy_hash"], BLOCK_S * S.HARD_BLOCK + RECEIPT_GRACE_S)
+    held = relay_tokens(pos) if rb is None and not pos["sell_sent"] else None
+    with lock:
+        if rb is None and (pos["sell_sent"] or pos["buy_at"] is not None or pos.get("buy_seen") or held):
+            pos["buy_status"] = "unread"; pos["tokens"] = pos["tokens"] or held; pos["eth_in"] = pos["eth_in"] or pos["stake"]
+            alarm("our buy's receipt was not read but the buy is in: " + ("its sell went" if pos["sell_sent"] else f"the relay holds {held} tokens: sold at minOut 0"),
+                  pair=pos["pair"], buy_hash=pos["buy_hash"])
+            if not pos["sell_sent"]:
+                do_sell(pos, {"exit": "hard", "block": state["head"] or 0, "via": "balance", "send_via": "balance", "price_block": None, "reason": "our buy's receipt was not read: sold at minOut 0"})
+        elif rb is None:
+            pos["buy_status"] = "lost"
+        elif rb.get("status") != "0x1":
+            pos["buy_status"] = "reverted"
+        else:
+            sw = our_swap(rb, pos, "buy"); pos["buy_status"] = "ok"; pos["buy_block"] = int(rb["blockNumber"], 16)
+            tokens = tokens_in(rb, pos) or (sw[1] if sw else 0)
+            pos.update(tokens=tokens, eth_in=sw[0] if sw else pos["stake"], buy_at=pos["buy_at"] or ((sw[2], sw[3]) if sw else (pos["buy_block"], 0)), buy_index=pos["buy_index"] if pos["buy_index"] is not None else (sw[3] if sw else None))
+            if tokens == 0:
+                pos["no_tokens"] = True
+            if pos.get("restart") and not pos["sell_sent"] and tokens:
+                do_sell(pos, {"exit": "hard", "block": state["head"] or 0, "via": "start", "send_via": "first", "price_block": None, "reason": "restart: an open position taken back at the start, sold at once"})
+        if (pos["buy_status"] not in ("ok", "unread") or pos.get("no_tokens")) and not pos["sell_sent"]:
+            pos["no_sell"] = True
+        save_positions()
+    sells = []                                                                 # every sell's receipt (a reverted one's gas counts)
+    for attempt in range(SELL_RETRIES + 1):
+        if not wait_sell(pos):
+            break
+        rs = wait_receipt(pos.get("sell_hashes") or [], S.SELL_DEADLINE_S + RECEIPT_GRACE_S) if pos.get("sell_hashes") and not pos.get("sell_refused") else None
+        if rs:
+            with lock:
+                pos["sell_receipt"] = True
+            sells.append(rs)
+        if (rs and rs.get("status") == "0x1" and our_swap(rs, pos, "sell")) or attempt == SELL_RETRIES or pos["buy_status"] not in ("ok", "unread"):
+            break
+        if chain_pull(pos, int(rs["blockNumber"], 16) if rs else state["head"] or 0) is not None:
+            break                                                              # pulled: nothing to sell; settled "pulled"
+        why = "was refused" if pos.get("sell_refused") else "reverted" if rs else "has no receipt"
+        alarm(f"our sell {why}: sent again at minOut 0 ({attempt + 1} of {SELL_RETRIES})", pair=pos["pair"], hash=pos["sell_hash"])
+        with lock:
+            pos.update(sell_done=False, sell_refused=False, sell_hashes=[], sell_receipt=False)
+            orders.put(("sell", pos, (0, int(now()) + S.SELL_DEADLINE_S, {"exit": pos["exit"], "via": "retry", "send_via": "retry", "renonce": True, "block": state["head"] or 0,
+                                                                          "reason": f"re-send {attempt + 1}: the sell {why}"})))
+    finish_live(pos, rb, sells)
+
+
+def finish_live(pos, rb, sells):
+    n = chain_nonce()                                                          # every transaction is final: the chain's count, read before the slot frees
+    gas = l1 = eth_in = eth_out = 0; tokens = pos["tokens"]; sell_block = None; sell_at = None; rs = sells[-1] if sells else None
+    for rec in [rb] + sells:
+        if rec:
+            g, l = gas_of(rec); gas += g; l1 += l
+    if rb and rb.get("status") == "0x1":
+        sw = our_swap(rb, pos, "buy"); tokens = tokens_in(rb, pos) or (sw[1] if sw else 0); eth_in = sw[0] if sw else pos["stake"]
+    elif pos["buy_status"] == "unread":
+        eth_in = pos["eth_in"] or pos["stake"]
+    if rs:
+        sell_block = int(rs["blockNumber"], 16); sw = our_swap(rs, pos, "sell") if rs.get("status") == "0x1" else None
+        if sw:
+            eth_out = sw[0]; sell_at = (sw[2], sw[3])
+    on_chain = chain_pull(pos, sell_block or state["head"] or 0) if pos["buy_status"] in ("ok", "unread") else None
+    with lock:
+        P = pairs.get(pos["pair"]); after = pos["buy_at"] or (0, 0)
+        pull = min([x for x in ((reserves(P)[2] if P is not None else None), on_chain) if x is not None and x > after], default=None)
+        exit_ = pos["exit"]; halt_why = None; why = pos.get("sell_reason")
+        if pos["buy_status"] in ("reverted", "lost"):
+            exit_ = "buy_reverted"; why = "our buy reverted" if pos["buy_status"] == "reverted" else "no receipt for our buy: it never landed"
+        elif pull is not None and (sell_at is None or pull < sell_at):
+            exit_ = "pulled"
+        elif pos.get("no_tokens"):
+            halt_why = "sold none: our buy filled with no tokens (the token's Transfer to the relay is 0): the path is broken"
+        elif sell_at is None or eth_out <= 0:
+            state["sold_none"] += 1
+            halt_why = (f"sold none: the buy filled and the sell got nothing ({'no sell' if not rs else 'reverted' if rs.get('status') != '0x1' else 'no ETH'}, "
+                        f"{len(sells)} sell(s) mined): the sell path is broken")
+        base_ = eth_in or pos["stake"]; net = eth_out - eth_in - gas
+        if n is not None:
+            state["nonce"] = n if pos["buy_status"] == "lost" else max(n, state["nonce"] or 0)
+        out = {"buy_block": pos["buy_block"], "buy_index": pos["buy_index"], "sell_block": sell_block, "eth_in_wei": eth_in, "tokens": tokens, "eth_out_wei": eth_out, "gas_wei": gas,
+               "l1_fee_wei": l1, "net_wei": net, "ret": round(net / base_, 6), "usd": round(net / 1e18 * S.ETH_USD, 4), "exit": exit_, "why": why, "pulled_at": pull[0] if pull else None,
+               "buy_hash": pos["buy_hash"], "sell_hash": pos["sell_hash"], "nonce": pos["nonce"]}
+        finish_trade(pos, P, out, pull, sell_at)
+        if halt_why and not state["halted"]:
+            halt(halt_why, pos["tier"], pos["pair"])
+        if state["relay_wei"] is not None:
+            state["relay_wei"] += eth_out - eth_in
+
+
+# ---------------------------------------------------------------- positions file
+POS_KEYS = ("pair", "token", "weth_is0", "N", "tier", "stake", "expect", "min_out", "via", "aim", "D", "creation_ts", "prio", "nonce", "buy_hash", "buy_nonce", "buy_block",
+            "tokens", "sell_sent", "sell_hash", "sell_hashes", "sell_nonce", "sell_prio", "sell_max_fee", "exit", "sell_min_out")
+
+
+def save_positions():
+    if S.DRY:
+        return
+    data = {"positions": {p["pair"]: {k: p.get(k) for k in POS_KEYS} for p in positions.values() if not p["closed"]}, "t": round(now(), 3)}
+    try:
+        with open(S.POSITIONS_FILE + ".tmp", "w") as f:
+            json.dump(data, f)
+        os.replace(S.POSITIONS_FILE + ".tmp", S.POSITIONS_FILE)
+    except Exception as e:
+        alarm(f"the positions file was not written: {str(e)[:100]}", quiet_key="posfile", every_s=60)
+
+
+def load_positions():
+    """the open positions of base_v2_positions.json ({"positions": {pair: {...}}})"""
+    try:
+        got = list(((json.load(open(S.POSITIONS_FILE)) or {}).get("positions") or {}).values())
+    except FileNotFoundError:
+        return []
+    except Exception as e:
+        alarm(f"the positions file {S.POSITIONS_FILE} was not read ({str(e)[:80]}): check it by hand"); return []
+    return [p for p in got if isinstance(p, dict) and p.get("pair")]
+
+
+def take_back(saved):
+    """a live position left open by the last run: its buy's receipt, then the sell's (already sent) or a sell at once (minOut 0)"""
+    pos = {"dry": False, "buy_at": None, "buy_index": None, "buy_status": None, "sell_at": None, "sell_block": None, "trigger": None, "no_sell": False, "closed": False, "scanned": None,
+           "X": None, "peak": 0.0, "fired_at": mono(), "eth_in": None, "restart": True, "resent": True, "sell_done": False, "sell_refused": False, "sell_receipt": False,
+           "sell_reason": None, "sell_via": None, **{k: saved.get(k) for k in POS_KEYS}, "buy_block": None, "tokens": None, "sell_block_seen": state["head"]}
+    pos["sell_sent"] = pos["sell_done"] = bool(pos["sell_sent"] and pos["sell_hash"])   # decided but never signed: sold now
+    pos["sell_hashes"] = pos.get("sell_hashes") or ([pos["sell_hash"]] if pos["sell_hash"] else [])
+    positions[pos["pair"]] = pos
+    if pos["buy_hash"]:
+        state["our_hashes"][pos["buy_hash"]] = (pos, "buy")
+    for h in pos["sell_hashes"]:
+        state["our_hashes"][h] = (pos, "sell")
+    log({"ev": "alarm", "what": "an open position from the last run is taken back: " + ("its sell's receipt is awaited" if pos["sell_hash"] else "sold at once"),
+         "pair": pos["pair"], "buy_hash": pos["buy_hash"], "sell_hash": pos["sell_hash"]})
+    spawn(settle_live, pos)
+
+
+# ---------------------------------------------------------------- the start
+def endpoint_chain(url):
+    """eth_chainId; a send-only endpoint (the sequencer: "rpc method is not allowed") must answer a malformed transaction with -32602"""
+    d = http_json(url, {"jsonrpc": "2.0", "id": 1, "method": "eth_chainId", "params": []}, 5)
+    if "result" in d:
+        return int(d["result"], 16)
+    if (d.get("error") or {}).get("code") == -32601:
+        d2 = http_json(url, {"jsonrpc": "2.0", "id": 1, "method": "eth_sendRawTransaction", "params": ["0x02"]}, 5)
+        if (d2.get("error") or {}).get("code") == -32602:
+            return "send-only"
+    raise RuntimeError(f"eth_chainId: {scrub(json.dumps(d.get('error')), 120)}")
+
+
+def start_checks():
+    """the RPC's chain (waiting up to START_WAIT_S for it), the alternate's, the archive's (and the pending endpoint's with the back-run), the
+    head; live: live_checks"""
+    wait, waited = 1.0, 0.0
+    while True:
+        try:
+            chain = endpoint_chain(S.RPC_URL); break
+        except Exception as e:
+            if waited >= START_WAIT_S:
+                raise SystemExit(f"BASE_V2_RPC_URL did not answer for {waited:.0f} s: {scrub(e, 120)}")
+            alarm(f"BASE_V2_RPC_URL did not answer at the start ({scrub(e, 120)}): trying again in {wait:.0f} s", quiet_key="start", every_s=60)
+            time.sleep(wait); waited += wait; wait = min(30.0, wait * 2)
+    need(chain == CHAIN_ID, f"BASE_V2_RPC_URL is chain {chain}, not {CHAIN_ID}")
+    chains = {host(S.RPC_URL): chain}
+    others = [("BASE_V2_READ_ALT_URL", S.READ_ALT_URL), ("BASE_V2_ARCHIVE_URL", S.ARCHIVE_URL)] + ([("BASE_V2_PENDING_URL", S.PENDING_URL)] if S.BACKRUN else [])
+    for name, u in others:
+        if not u:
+            continue
+        try:
+            chains[host(u)] = endpoint_chain(u)
+        except Exception as e:
+            if not S.DRY:
+                raise SystemExit(f"{name} did not answer eth_chainId: {scrub(e, 120)}")
+            alarm(f"{name} did not answer at the start: {scrub(e, 120)}")
+        need(chains.get(host(u), CHAIN_ID) == CHAIN_ID, f"{name} is chain {chains.get(host(u))}, not {CHAIN_ID}")
+    info = {"chains": chains, "head": int(read("eth_blockNumber", [], timeout=SLOW_TIMEOUT_S, tries=3), 16)}
+    if not S.DRY:
+        info.update(live_checks(chains))
+    return info
+
+
+def live_checks(chains):
+    """the wallet, its key (locked while the engine runs), the relay (owner, router, weth), the send endpoints, the stake, the roster, the
+    balances, the nonce, the guard's self-test"""
+    global SIGNER, KEY_LOCK
+    from eth_account import Account
+    need(S.WALLET, "BASE_V2_WALLET is not set: a live start needs the wallet (deploy/base_wallet.py)")
+    need(S.RELAY, "BASE_V2_RELAY is not set: a live start needs the relay (deploy/base_v2_relay_deploy.py)")
+    need(S.STAKE_ETH_WEI <= S.STAKE_CAP_WEI, f"BASE_V2_STAKE_ETH {S.STAKE_ETH_WEI / 1e18:g} is over BASE_V2_STAKE_CAP_ETH {S.STAKE_CAP_WEI / 1e18:g}")
+    need(load_roster(at_start=True), f"BASE_V2_ROSTER_FILE {S.ROSTER_FILE} is not readable: a live start needs the roster (deploy/base_v2_roster.py)")
+    try:
+        f = open(S.KEY_FILE)
+        key = f.read().strip()
+        acct = Account.from_key(key if key.startswith("0x") else "0x" + key); del key
+    except Exception as e:
+        raise SystemExit(f"BASE_V2_KEY_FILE {S.KEY_FILE} does not hold a key ({type(e).__name__})")
+    try:                                                                       # held while the engine runs: deploy/base_wallet.py and base_ops.py
+        fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)                         # test it with flock before they sign (one owner of the nonce)
+    except OSError:
+        f.close(); raise SystemExit(f"BASE_V2_KEY_FILE {S.KEY_FILE} is locked by another process (the Base engine live, or base_ops signing): not started")
+    try:
+        _live_reads(acct, chains)
+        self_test()
+    except BaseException:
+        f.close(); raise                                                       # a refused start lets the lock go
+    KEY_LOCK = f; SIGNER = acct
+    return {"wallet": S.WALLET, "relay": S.RELAY, "relay_eth": state["relay_wei"] / 1e18, "wallet_eth": (state["wallet_wei"] or 0) / 1e18, "nonce": state["nonce"]}
+
+
+def _live_reads(acct, chains):
+    need(acct.address.lower() == S.WALLET, "the key in BASE_V2_KEY_FILE is not BASE_V2_WALLET's")
+    for u in S.SEND_URLS:
+        try:
+            chains[host(u)] = c = endpoint_chain(u)
+        except Exception as e:
+            raise SystemExit(f"BASE_V2_SEND_URLS {host(u)} did not answer: {scrub(e, 120)}")
+        need(c in (CHAIN_ID, "send-only"), f"BASE_V2_SEND_URLS {host(u)} is chain {c}, not {CHAIN_ID}")
+    need(len(read("eth_getCode", [S.RELAY, "latest"], tries=3)) > 2, "BASE_V2_RELAY has no code: not a deployed FlipRelayV2")
+    for sel, want, name in ((SEL_OWNER, S.WALLET, "owner() is {}, not BASE_V2_WALLET"), (SEL_ROUTER, S.ROUTER, "router() is {}, not BASE_V2_ROUTER"), (SEL_WETH, S.WETH, "weth() is {}, not BASE_V2_WETH")):
+        got = "0x" + read("eth_call", [{"to": S.RELAY, "data": "0x" + sel}, "latest"], tries=3)[-40:].lower()
+        need(got == want, "the relay's " + name.format(got))
+    state["relay_wei"] = int(read("eth_getBalance", [S.RELAY, "latest"], tries=3), 16)
+    state["wallet_wei"] = int(read("eth_getBalance", [S.WALLET, "latest"], tries=3), 16)
+    if state["relay_wei"] < S.STAKE_WEI_MAX() + S.MARGIN_WEI:
+        alarm(f"the relay holds {state['relay_wei'] / 1e18:.6f} ETH, under the stake + margin ({(S.STAKE_WEI_MAX() + S.MARGIN_WEI) / 1e18:g}): no buy until it is funded")
+    state["nonce"] = int(read("eth_getTransactionCount", [S.WALLET, "pending"], tries=3), 16)
+
+
+S.STAKE_WEI_MAX = lambda: min(S.STAKE_ETH_WEI, S.STAKE_CAP_WEI)
+
+
+def newest_line_pair(back):
+    """deploy/base_v2_sim.py's pick: the newest pair of the line (PairCreated with WETH, a Mint >= 1 ETH, the creator at BASE_V2_CREATOR_NONCE)
+    in the last `back` blocks on BASE_V2_ARCHIVE_URL: {pair, token, weth_is0, bn, burn} or None"""
+    urls = [S.ARCHIVE_URL]; head = int(read_from(urls, "eth_blockNumber", [], timeout=SLOW_TIMEOUT_S, tries=2), 16); w32 = "0x" + aword(S.WETH); found = []
+    for a in range(max(0, head - back), head + 1, 5000):
+        for pos in (1, 2):
+            topics = [T_PC, w32, None] if pos == 1 else [T_PC, None, w32]
+            ls = read_from(urls, "eth_getLogs", [{"address": S.FACTORY, "topics": topics, "fromBlock": hex(a), "toBlock": hex(min(a + 4999, head))}], timeout=SLOW_TIMEOUT_S, tries=2)
+            found += [(int(l["blockNumber"], 16), l) for l in (ls if isinstance(ls, list) else [])]
+    for bn, l in sorted(found, key=lambda x: -x[0]):
+        pair = A(l["data"], 0); weth_is0 = topic_addr(l["topics"][1]) == S.WETH; token = topic_addr(l["topics"][2 if weth_is0 else 1])
+        ms = read_from(urls, "eth_getLogs", [{"address": pair, "topics": [T_MINT], "fromBlock": hex(bn), "toBlock": hex(bn + 5)}], timeout=SLOW_TIMEOUT_S, tries=2)
+        if not ms:
+            continue
+        eth = W(ms[0]["data"], 0) if weth_is0 else W(ms[0]["data"], 1)
+        if eth < 10 ** 18:
+            continue
+        tx = read_from(urls, "eth_getTransactionByHash", [l["transactionHash"]], timeout=SLOW_TIMEOUT_S, tries=2) or {}
+        if int(tx.get("nonce") or "0x0", 16) != S.CREATOR_NONCE or (tx.get("to") or "").lower() != S.ROUTER:
+            continue
+        bs = read_from(urls, "eth_getLogs", [{"address": pair, "topics": [T_BURN], "fromBlock": hex(bn), "toBlock": hex(head)}], timeout=SLOW_TIMEOUT_S, tries=2)
+        return {"pair": pair, "token": token, "weth_is0": weth_is0, "bn": bn, "burn": int(bs[0]["blockNumber"], 16) if bs else None}
+    return None
+
+
+def self_test():
+    """the guard's self-test at a live start: the exit test on the newest pair of the line (at +30 when it was pulled already) must answer
+    SELLABLE (verdict ok) on BASE_V2_ARCHIVE_URL"""
+    try:
+        p = newest_line_pair(3000) or newest_line_pair(30000)
+        need(p is not None, "the guard's self-test found no pair of the line in the last 30,000 blocks on BASE_V2_ARCHIVE_URL")
+        tag = hex(p["bn"] + 30) if p["burn"] else "latest"
+        r = read_from([S.ARCHIVE_URL], "eth_call", [{"to": p["pair"], "data": "0x0902f1ac"}, tag], timeout=SLOW_TIMEOUT_S, tries=2)
+        r0, r1 = W(r, 0), W(r, 1); r_eth, r_tok = (r0, r1) if p["weth_is0"] else (r1, r0)
+        P = new_pair(p["pair"], p["token"], p["weth_is0"], None, 0, "logs"); P.update(r_eth0=r_eth, r_tok0=r_tok)
+        P["ev"][(0, 0)] = {"k": "sync", "r0": r0, "r1": r1, "tx": None, "bh": None}
+        v = exit_test(P, stake_for(P), tag, [S.ARCHIVE_URL])
+    except SystemExit:
+        raise
+    except Exception as e:
+        raise SystemExit(f"the guard's self-test failed: {scrub(e, 160)}")
+    log({"ev": "guard", "self_test": True, "pair": p["pair"], "token": p["token"], "block": tag, "stake_wei": stake_for(P), **v})
+    need(v["verdict"] == "ok", f"the guard's self-test on {p['pair']} at {tag} answered {v['verdict']} (ratio {v['ratio']}, {v['error']}), not SELLABLE: the exit test is not trusted")
+
+
+def restore_today():
+    """today's fires, P&L, late buys and tier stops from the log (and its .1), so the cap and the stops hold across a restart; the live loss
+    streak (reset when the owner removed the halt file it wrote)"""
+    roll_day(); d = state["day"]; streak = 0; streak_halted = False; late = 0; tiers = {}; stopped = None
+    for path in (S.LOG_PATH + ".1", S.LOG_PATH):
+        for line in (open(path).read().splitlines() if os.path.exists(path) else []):
+            try:
+                e = json.loads(line); ev = e.get("ev")
+            except ValueError:
+                continue
+            if ev == "trade_done" and e.get("live"):
+                streak = e.get("loss_streak") if e.get("loss_streak") is not None else streak
+            elif ev == "halt" and "LOSS_STREAK" in str(e.get("reason")):
+                streak_halted = True
+            if datetime.datetime.fromtimestamp(e.get("t", 0), datetime.timezone.utc).strftime("%Y-%m-%d") != d:
+                continue
+            state["trades_today"] += ev == ("would_fire" if S.DRY else "fire")
+            if ev == "trade_done" and bool(e.get("dry")) == S.DRY:
+                state["pnl_today_wei"] += int(e.get("net_wei") or 0); late += bool(e.get("late")) and bool(e.get("live"))
+            elif ev == "stop" and e.get("what") == "tier" and e.get("tier"):
+                tiers[e["tier"]] = d
+            elif ev == "stop" and e.get("what") == "day":
+                stopped = d
+    state["loss_streak"] = 0 if streak_halted and S.LOSS_STREAK_HALT and streak >= S.LOSS_STREAK_HALT and not os.path.exists(S.HALT_FILE) else streak
+    state["late_count"] = late; state["tiers_ended"] = tiers
+    state["stopped"] = stopped or (d if (S.DAILY_STOP_WEI and state["pnl_today_wei"] <= -S.DAILY_STOP_WEI) or state["trades_today"] >= S.MAX_PER_DAY else None)
+
+
+def start():
+    need(not os.path.basename(S.LOG_PATH).startswith(("HALTED", "engine.jsonl", "flip_engine", "bnb", "base.jsonl")),
+         f"BASE_V2_LOG_PATH {S.LOG_PATH} names a halt file or another engine's log: the V2 line logs to its own file (base_v2.jsonl)")
+    info = start_checks()
+    restore_today()
+    if S.DRY:
+        load_roster(at_start=True)
+    halted_file = read_halt_file() if os.path.exists(S.HALT_FILE) else None
+    state["halted"] = None if S.DRY else halted_file                          # dry: the file is the live line's, not the dry run's
+    saved = load_positions()
+    state["logs_to"] = info["head"] - START_BACK - 2                           # a creation of the last blocks is read back (a restart mid-launch)
+    shown = {k: (sorted(v) if isinstance(v, set) else host(v) if k.endswith("_URL") and v else v) for k, v in vars(S).items() if k != "KEY_FILE" and not callable(v)}
+    shown["SEND_URLS"] = [host(u) for u in S.SEND_URLS]
+    log({"ev": "start", "release": RELEASE, "dry": S.DRY, "head": info["head"], "wallet": S.WALLET or None, "relay": S.RELAY or None, "roster_n": len(state["roster"]),
+         "roster_built": state["roster_built"], "positions": [p["pair"] for p in saved], "settings": shown, **{k: v for k, v in info.items() if k not in ("head", "wallet", "relay")},
+         "halted": state["halted"], "halt_file": halted_file, "trades_today": state["trades_today"], "pnl_today_eth": pnl_eth(), "loss_streak": state["loss_streak"],
+         "tiers_ended": sorted(state["tiers_ended"])})
+    if saved and not S.DRY:
+        for p in saved:
+            take_back(p)
+    elif saved:
+        alarm(f"BASE_V2_DRY_RUN=1 with {len(saved)} live position(s) open in {S.POSITIONS_FILE}: not sold; start live (with HALTED.base_v2 in place to stop new buys) until they are")
+    return info
+
+
+# ---------------------------------------------------------------- the feeds' loops
+spawn = lambda fn, *a: threading.Thread(target=fn, args=a, daemon=True).start()
+ws_ssl = lambda url: ssl.create_default_context() if url.startswith("wss") else None
+ws_healthy = lambda: bool(state["ws"]) and mono() - state["ws_last"] < S.WS_SILENT_S
+
+
+def on_ws_message(raw, subs, pend):
+    d = json.loads(raw)
+    if d.get("id") is not None:
+        rid = d["id"]
+        if rid in (1, 2):
+            if "error" in d:
+                raise RuntimeError(f"eth_subscribe refused: {scrub(json.dumps(d['error']), 120)}")
+            if "result" not in d:                                                  # publicnode's drop notice: {"id":2,"method":"eth_subscription","params":{"error":...}}
+                raise RuntimeError(f"the server dropped subscription {rid}: reconnecting ({scrub(raw, 100)})")
+            subs[d["result"]] = "heads" if rid == 1 else "factory"
+            with lock:
+                state["ws_subs"] = sum(1 for v in subs.values() if v in ("heads", "factory")); state["ws"] = state["ws_subs"] >= 2; state["ws_last"] = mono()
+            return
+        req = pend.pop(rid, None)
+        if req is None:
+            return
+        kind, pair = req
+        with lock:
+            P = pairs.get(pair)
+            if kind == "sub" and isinstance(d.get("result"), str):
+                subs[d["result"]] = pair
+                if P is not None:
+                    P["sub"] = d["result"]
+            elif kind == "sub":
+                if P is not None:
+                    P["sub_fail_at"] = mono()
+                alarm(f"a pair's logs subscription was refused ({scrub(json.dumps(d.get('error')), 100)}): asked again in 5 s", quiet_key="pairsub", every_s=60, pair=pair)
+        return
+    if d.get("method") != "eth_subscription":
+        return
+    prm = d["params"]; kind = subs.get(prm.get("subscription")); r = prm.get("result")
+    with lock:
+        if kind == "heads":
+            on_head(int(r["number"], 16), int(r.get("timestamp") or "0x0", 16), int(r.get("baseFeePerGas") or "0x0", 16), "ws")
+        elif kind is not None:
+            for lg in (r if isinstance(r, list) else [r]):
+                on_ws_log(lg)
+
+
+def ws_down(e):
+    with lock:
+        was = state["ws"]
+        state.update(ws=False, ws_subs=0, ws_from=None)
+        for P in pairs.values():
+            P["sub"] = None
+    alarm(f"the websocket is down ({type(e).__name__}: {scrub(e, 100)}): eth_getLogs over BASE_V2_RPC_URL until it is back", quiet_key="ws", was_up=was)
+
+
+async def keep_connected(url, session, down):
+    """a websocket that reconnects for ever: a pause doubling from 0.5 s to 30 s, back to 0.5 s after a connection that lasted a minute"""
+    import websockets
+    backoff = 0.5
+    while True:
+        t0 = mono()
+        try:
+            async with websockets.connect(url, ssl=ws_ssl(url), open_timeout=10, max_size=2 ** 24, ping_interval=20, ping_timeout=10) as ws:
+                await session(ws)
+        except Exception as e:
+            down(e)
+        backoff = 0.5 if mono() - t0 > 60 else backoff
+        await asyncio.sleep(backoff); backoff = min(30.0, backoff * 2)
+
+
+async def confirmed_session(ws):
+    await ws.send(json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_subscribe", "params": ["newHeads"]}))
+    await ws.send(json.dumps({"jsonrpc": "2.0", "id": 2, "method": "eth_subscribe", "params": ["logs", {"address": S.FACTORY, "topics": [[T_PC]]}]}))
+    subs = {}; pend = {}; last = [mono()]; nid = [10]
+    with lock:
+        state["ws_log_at"] = mono()                                                # the logs watchdog's clock starts with the connection
+
+    async def reader():
+        """one plain await per message, never cancelled while frames flow (base_engine's lesson: the websockets assembler asserts when a
+        cancelled recv() meets a frame that just arrived); the actions run after every message"""
+        while True:
+            raw = await ws.recv()
+            last[0] = mono()
+            try:
+                on_ws_message(raw, subs, pend)
+            except RuntimeError:
+                raise
+            except Exception as e:
+                alarm(f"a websocket message was not understood: {type(e).__name__}: {scrub(e, 80)}", quiet_key="wsmsg", every_s=60)
+            with lock:
+                end_burst()
+
+    async def subscriber():
+        """one logs subscription per followed pair, added as pairs come and dropped as they go (a send on the open socket beside the reader)"""
+        while True:
+            await asyncio.sleep(0.1)
+            with lock:
+                want = {P["pair"] for P in pairs.values()}
+                have = {v for v in subs.values() if v not in ("heads", "factory")}; asked = {p for k, p in pend.values() if k == "sub"}
+                to_add = [p for p in want - have - asked if pairs[p].get("sub_fail_at") is None or mono() - pairs[p]["sub_fail_at"] > 5]
+                to_drop = [(sid, p) for sid, p in list(subs.items()) if p not in ("heads", "factory") and p not in want]
+            for p in to_add:
+                nid[0] += 1; pend[nid[0]] = ("sub", p)
+                await ws.send(json.dumps({"jsonrpc": "2.0", "id": nid[0], "method": "eth_subscribe", "params": ["logs", {"address": p, "topics": [PAIR_TOPICS]}]}))
+            for sid, p in to_drop:
+                subs.pop(sid, None); nid[0] += 1; pend[nid[0]] = ("unsub", p)
+                await ws.send(json.dumps({"jsonrpc": "2.0", "id": nid[0], "method": "eth_unsubscribe", "params": [sid]}))
+
+    async def watchdog():
+        """silent for WS_SILENT_S, or heads flowing with no log of a young pair for LOGS_SILENT_S (a reconnected publicnode socket once
+        delivered heads and not one log for 33 minutes): the session ends, the reconnection and the gap fill follow"""
+        while True:
+            await asyncio.sleep(0.25)
+            if mono() - last[0] > S.WS_SILENT_S:
+                raise asyncio.TimeoutError(f"silent for {S.WS_SILENT_S:g} s")
+            with lock:
+                stale = bool(young()) and mono() - state.get("ws_log_at", 0.0) > LOGS_SILENT_S
+            if stale:
+                raise asyncio.TimeoutError(f"heads but no log of a followed pair for {LOGS_SILENT_S:g} s: the logs subscriptions are dead")
+
+    tasks = [asyncio.ensure_future(reader()), asyncio.ensure_future(subscriber()), asyncio.ensure_future(watchdog())]
+    try:
+        done, _ = await asyncio.wait(tasks, return_when=asyncio.FIRST_EXCEPTION)
+        for t in done:
+            t.result()                                                         # raises the first exception: the reconnection
+    finally:
+        for t in tasks:
+            if not t.done():
+                t.cancel()
+        await asyncio.gather(*tasks, return_exceptions=True)
+
+
+async def flash_session(ws):
+    while True:
+        on_flash(await asyncio.wait_for(ws.recv(), timeout=FLASH_SILENT_S))     # silent for 10 s: reconnected
+
+
+def flash_down(e):
+    with lock:
+        state["flash"] = False; state["flash_reconnects"] += 1
+    alarm(f"Flashblocks is down ({type(e).__name__}: {scrub(e, 100)}): reconnecting; the confirmed feed trades alone", quiet_key="flash")
+
+
+confirmed_loop = lambda: keep_connected(S.WS_URL, confirmed_session, ws_down)
+flash_loop = lambda: keep_connected(S.FLASH_URL, flash_session, flash_down)
+
+
+def poll_step():
+    """the poller's pass: with the websocket down or silent, the head and the logs (the factory and the followed pairs) one block behind it
+    over BASE_V2_RPC_URL; with a gap after a reconnection, the logs to the connection's first head. Never skips: a range is read whole or again"""
+    with lock:
+        healthy = ws_healthy(); ws_from = state["ws_from"]; lt = state["logs_to"]
+    gap = healthy and ws_from is not None and lt is not None and lt < ws_from
+    if healthy and not gap:
+        return False
+    hd = read("eth_getBlockByNumber", ["latest", False], timeout=SLOW_TIMEOUT_S)
+    h = int(hd["number"], 16)
+    with lock:
+        if not healthy:
+            if state["head_src"] != "poll" and mono() - state["started_at"] > 15:     # (the websocket's first connection: not an alarm)
+                alarm("no websocket: the head and the logs from BASE_V2_RPC_URL", quiet_key="poll")
+            on_head(h, int(hd.get("timestamp") or "0x0", 16), int(hd.get("baseFeePerGas") or "0x0", 16), "poll")
+        lt = state["logs_to"] if state["logs_to"] is not None else h - START_BACK - 2
+        addresses = [S.FACTORY] + [P["pair"] for P in pairs.values()]
+    target = min(ws_from, h) if gap else h - POLL_LAG
+    if target <= lt:
+        return False
+    b = min(target, lt + MAX_RANGE)
+    logs = read("eth_getLogs", [{"fromBlock": hex(lt + 1), "toBlock": hex(b), "address": addresses, "topics": [[T_PC] + PAIR_TOPICS]}], timeout=SLOW_TIMEOUT_S)
+    if not isinstance(logs, list):
+        raise ValueError(f"eth_getLogs gave {type(logs).__name__}")
+    with lock:
+        for lg in sorted(logs, key=order):
+            on_log(lg)
+        state["logs_to"] = max(state["logs_to"] if state["logs_to"] is not None else b, b); state["filled"] += b - lt
+        end_burst()
+    return True
+
+
+def poller():
+    fails = 0
+    while True:
+        try:
+            busy = poll_step(); fails = 0
+        except Exception as e:
+            fails += 1; busy = False
+            alarm(f"the poller failed ({type(e).__name__}: {scrub(e, 120)}): trying again", quiet_key="poller", every_s=60, tries=fails)
+            time.sleep(min(10.0, 0.5 * 2 ** min(fails, 5)))
+        if not busy:
+            time.sleep(POLL_S)
+
+
+def flow():
+    log({"ev": "flow", "head": state["head"], "head_ts": state["head_ts"], "lag_s": state["lag_s"], "lag_max_s": state["lag_max_s"], "ws": ws_healthy(), "flash": state["flash"],
+         "head_src": state["head_src"], "logs_to": state["logs_to"], "flash_block": state["flash_block"], "flash_msgs_min": state["flash_msgs"], "flash_total": state["flash_total"],
+         "flash_reconnects": state["flash_reconnects"], "flash_bad": state["flash_bad"], "dups": state["dups"], "reorgs": state["reorgs"], "filled": state["filled"],
+         "creations": state["creations"], "tradable": state["tradable"], "watched": state["watched"], "followed": len(pairs), "positions": [p["pair"] for p in open_positions()],
+         "trades_today": state["trades_today"], "pnl_today_eth": pnl_eth(), "trades_done": state["trades_done"], "halted": state["halted"], "stopped": state["stopped"],
+         "tiers_ended": sorted(k for k, v in state["tiers_ended"].items() if v == state["day"]),
+         "relay_eth": state["relay_wei"] / 1e18 if state["relay_wei"] is not None else None, "wallet_eth": state["wallet_wei"] / 1e18 if state["wallet_wei"] is not None else None,
+         "roster_n": len(state["roster"]), "ready_ms_last": state["ready_ms_last"], "guard_ms_last": state["guard_ms_last"]})
+    state["flow_at"] = mono(); state["lag_max_s"] = None; state["flash_msgs"] = 0
+
+
+def tick():
+    """every second (under the lock): the Flashblocks health, the roster's mtime, the pruning, the flow line"""
+    t = mono()
+    if state["flash"] and t - state["flash_at"] > FLASH_SILENT_S:
+        state["flash"] = False
+    if t - state["roster_at"] > 5:
+        state["roster_at"] = t; load_roster()
+    head = state["head"]
+    if head is not None and t - state.get("pruned_at", 0.0) > 30:
+        state["pruned_at"] = t
+        for k in [k for k, b in seen.items() if b < head - 300]:
+            del seen[k]
+        for a in [k for k, q in orphans.items() if not q or int(q[-1]["blockNumber"], 16) < head - 64]:
+            del orphans[a]
+    end_burst()
+    if t - state["flow_at"] >= FLOW_S:
+        flow()
+
+
+async def ticker():
+    while True:
+        await asyncio.sleep(1.0)
+        try:
+            with lock:
+                tick()
+        except Exception as e:                                                 # one bad pass must not end the process mid-trade
+            alarm(f"the ticker failed: {type(e).__name__}: {scrub(e, 120)}", quiet_key="tick", every_s=60, trace=traceback.format_exc()[-400:])
+
+
+def stop(*_):
+    """SIGTERM: a last line and out (the open live positions stay in base_v2_positions.json for the next start); run by the loop, between its
+    callbacks, so no lock of the main thread is held"""
+    log({"ev": "stop", "what": "process", "day": state["day"], "tier": None, "reason": "SIGTERM", "pnl_today_eth": pnl_eth(), "trades_today": state["trades_today"],
+         "positions": [p["pair"] for p in open_positions()]}); os._exit(0)
+
+
+async def run_feeds():
+    asyncio.get_running_loop().add_signal_handler(signal.SIGTERM, stop)
+    tasks = [confirmed_loop(), ticker()] + ([flash_loop()] if S.FLASH_URL else [])
+    await asyncio.gather(*tasks)
+
+
+def main(argv):
+    start()
+    if not S.DRY:
+        for fn in (trader, upkeep):
+            spawn(fn)
+    spawn(poller)
+    try:
+        asyncio.run(run_feeds())
+    except KeyboardInterrupt:
+        pass
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
