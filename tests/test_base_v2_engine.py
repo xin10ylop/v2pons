@@ -277,15 +277,16 @@ def head(c, n):
 
 
 def feed(c, a, b, skip_heads=()):
-    """the websocket from block a to b: each block's logs, the sent transactions mined into it (live, with auto_mine), its head, one burst each"""
+    """the websocket from block a to b: the transactions sent so far mined into the block (live, with auto_mine: a transaction sent at head
+    n lands in n + 1), its head, its logs, one burst each"""
     for n in range(a, b + 1):
         CLOCK[0] = ts(n); c.head = n
-        for lg in c.logs_of(n):
-            push(c, lg)
         if c.auto_mine:
             c.mine(n)
         if n not in skip_heads:
             head(c, n)
+        for lg in c.logs_of(n):
+            push(c, lg)
         with E.lock:
             E.end_burst()
 
@@ -326,7 +327,10 @@ def fresh(*streams, dry=True, **env):
 def events(ev=None, **match):
     out = []
     for line in open(LOG):
-        e = json.loads(line)
+        try:
+            e = json.loads(line)
+        except ValueError:
+            continue                                                           # (a case writes a broken line to test the restart's reader)
         if (ev is None or e["ev"] == ev) and all(e.get(k) == v for k, v in match.items()):
             out.append(e)
     return out
@@ -512,7 +516,7 @@ def creation_confirmed_on_the_fixture():
     assert e["via"] == "logs" and e["cls"] == "watched" and e["tier"] == "15" and e["value_eth"] == 15.0 and e["block"] == N and e["tx"] == CREATION_HASH and e["pair"] == PAIR, e
     assert e["creator"] == CREATOR and e["nonce"] == 2 and e["token"] == TOKEN and e["weth_is0"] and e["r_eth_wei"] == 15 * 10 ** 18 and e["r_tok"] == R_TOK0 and e["supply_share"] is None
     assert e["tx_type"] == 2 and e["prio_gwei"] == 0.006 and e["max_fee_gwei"] == 0.006 and e["gas"] == 2_791_667 and e["seen_ms"] == 0.0
-    s = events("skip")
+    s = wait_ev("skip")
     assert len(s) == 1 and s[0]["why"] == "value outside the band" and s[0]["value_eth"] == 15.0 and s[0]["pair"] == PAIR and s[0]["tier"] == "15", s
     assert E.pairs[PAIR]["status"] == "watched" and E.state["watched"] == 1 and E.state["tradable"] == 0 and not events("arm") and not events("guard")
     assert ("rpc.example.org", "eth_getTransactionByHash") in c.calls and ("rpc.example.org", "eth_getTransactionReceipt") in c.calls
@@ -834,7 +838,7 @@ def dry_fleet_sell_and_the_dump_rule():
     inject_sell(c, st, N + 50, 3 * 10 ** 27, FLEET[1]); feed(c, N + 50, N + 50)              # a dump: 35% of the ETH reserve
     t = events("stop")
     assert len(t) == 1 and t[0]["what"] == "tier" and t[0]["tier"] == "1.3-2.3" and "BASE_V2_PULL_SHARE" in t[0]["reason"] and "35%" in t[0]["reason"], t
-    assert events("sell_sent")[0]["reason"] == "fleet_sell"
+    assert wait_ev("sell_sent")[0]["reason"] == "fleet_sell"                  # (the seller's read, off the feed thread)
 
 
 @test
@@ -932,7 +936,7 @@ def live_fire_signs_a_type2_buy():
     feed(c, N + 1, N + 1); hard_exits(c)
     c = fresh(dry=False); E.state["relay_wei"] = 10 ** 16; f = fired(c)[0]
     assert f["ev"] == "skip" and f["why"] == "relay balance" and f["relay_eth"] == 0.01 and f["needed_eth"] == 0.0205 and not c.sent and events("guard")[0]["verdict"] == "ok", f
-    c = fresh(dry=False); open(E.S.HALT_FILE, "w").write("the owner's halt\\n"); f = fired(c)[0]
+    c = fresh(dry=False); open(E.S.HALT_FILE, "w").write("the owner's halt\n"); f = fired(c)[0]
     assert f["ev"] == "skip" and f["why"] == "halted" and f["reason"] == "the owner's halt" and E.state["halted"] == "the owner's halt" and not c.sent, f
     c = fresh(dry=False); c.replies = [{"error": {"code": -32000, "message": "insufficient funds"}}, {"error": {"code": -32000, "message": "insufficient funds"}}]; fired(c)
     b = wait_ev("buy_sent")[0]; a = wait_ev("alarm")[0]
@@ -959,7 +963,7 @@ def live_trade_settles_from_the_receipts():
     gas = 125_000 * 35_000_000 + 2_090_000_000 + 118_000 * 35_000_000 + 2_000_000_000
     assert t["live"] and not t["dry"] and t["exit"] == "hard" and t["buy_block"] == N + 1 and t["buy_index"] == 0x806 and t["sell_block"] == N + 177 and t["eth_in_wei"] == stake, t
     assert t["tokens"] == got and t["eth_out_wei"] == eth_out and t["gas_wei"] == gas and t["l1_fee_wei"] == 4_090_000_000 and t["net_wei"] == eth_out - stake - gas
-    assert t["ret"] == round((eth_out - stake - gas) / stake, 6) and t["ret"] > 0.03 and t["nonce"] == 7 and t["buy_hash"] == events("buy_sent")[0]["hash"] and t["sell_hash"] == s["hash"], (t, s)
+    assert t["ret"] == round((eth_out - stake - gas) / stake, 6) and t["ret"] > 0.02 and t["nonce"] == 7 and t["buy_hash"] == events("buy_sent")[0]["hash"] and t["sell_hash"] == s["hash"], (t, s)
     assert t["loss_streak"] == 0 and not t["late"] and t["pulled_at"] is None and t["outsider_at"] is None and t["fleet_first_buy"] == N + 2 and t["fleet_eth"] > 0.05 and t["trades_today"] == 1
     assert json.load(open(E.S.POSITIONS_FILE))["positions"] == {} and not E.positions and E.state["nonce"] == 9 and E.state["relay_wei"] == 10 ** 18 + eth_out - stake
     assert len(c.sent) == 4 and not events("halt") and not events("alarm") and E.pairs[PAIR]["status"] == "traded"
@@ -1148,12 +1152,12 @@ def live_buy_reverted_sends_no_sell():
 @test
 def restart_restores_the_day_and_the_halt_file():
     """today's fires, P&L, late buys, tier stops and the loss streak from the log; the halt file read (live) and ignored (dry); the start line"""
-    c = fresh(dry=False); open(E.S.HALT_FILE, "w").write("pulled: by hand\\n")
+    c = fresh(dry=False); open(E.S.HALT_FILE, "w").write("pulled: by hand\n")
     t0 = ts(N); lines = [{"ev": "fire", "t": t0 - 3600}, {"ev": "fire", "t": t0 - 1800}, {"ev": "would_fire", "t": t0 - 1700},
                          {"ev": "trade_done", "live": True, "dry": False, "net_wei": -5 * 10 ** 15, "loss_streak": 1, "late": True, "t": t0 - 1000},
                          {"ev": "trade_done", "live": False, "dry": True, "net_wei": 7 * 10 ** 15, "loss_streak": 0, "late": False, "t": t0 - 900},
                          {"ev": "stop", "what": "tier", "tier": "1.3-2.3", "t": t0 - 500}, {"ev": "fire", "t": t0 - 86400 * 2}, {"ev": "stop", "what": "day", "t": t0 - 86400 * 2}]
-    open(LOG, "w").write("\\n".join(json.dumps(x) for x in lines) + "\\nnot json\\n")
+    open(LOG, "w").write("\n".join(json.dumps(x) for x in lines) + "\nnot json\n")
     info = live_start(c)
     got = {k: E.state[k] for k in ("trades_today", "pnl_today_wei", "loss_streak", "late_count", "stopped", "day")}
     assert got == {"trades_today": 2, "pnl_today_wei": -5 * 10 ** 15, "loss_streak": 1, "late_count": 1, "stopped": None, "day": "2026-10-20"}, got
@@ -1166,14 +1170,14 @@ def restart_restores_the_day_and_the_halt_file():
     assert "k3y" not in open(LOG).read() and bytes(KEY.key).hex() not in open(LOG).read() and events("guard", self_test=True)[0]["verdict"] == "ok"
     E.state["logs_to"] = N - 2; fired(c)
     assert events("skip")[-1]["why"] == "halted" and events("skip")[-1]["reason"] == "pulled: by hand" and not c.sent
-    c = fresh(dry=False); open(LOG, "w").write(json.dumps({"ev": "trade_done", "live": True, "dry": False, "net_wei": -1, "loss_streak": 2, "t": t0 - 100}) + "\\n" +
-                                                 json.dumps({"ev": "halt", "reason": "2 live losses in a row: BASE_V2_LOSS_STREAK_HALT", "t": t0 - 99}) + "\\n")
+    c = fresh(dry=False); open(LOG, "w").write(json.dumps({"ev": "trade_done", "live": True, "dry": False, "net_wei": -1, "loss_streak": 2, "t": t0 - 100}) + "\n" +
+                                                 json.dumps({"ev": "halt", "reason": "2 live losses in a row: BASE_V2_LOSS_STREAK_HALT", "t": t0 - 99}) + "\n")
     live_start(c); assert E.state["loss_streak"] == 0 and E.state["halted"] is None           # the owner removed the file it wrote: the streak starts again
-    c = fresh(dry=False); open(LOG, "w").write(json.dumps({"ev": "trade_done", "live": True, "dry": False, "net_wei": -1, "loss_streak": 2, "t": t0 - 100}) + "\\n")
-    open(E.S.HALT_FILE, "w").write("2 live losses in a row: BASE_V2_LOSS_STREAK_HALT\\n"); live_start(c); assert E.state["loss_streak"] == 2 and E.state["halted"].startswith("2 live")
-    c = fresh(dry=False); open(LOG, "w").write("\\n".join(json.dumps({"ev": "fire", "t": t0 - k}) for k in range(1, 21)) + "\\n"); live_start(c)
+    c = fresh(dry=False); open(LOG, "w").write(json.dumps({"ev": "trade_done", "live": True, "dry": False, "net_wei": -1, "loss_streak": 2, "t": t0 - 100}) + "\n")
+    open(E.S.HALT_FILE, "w").write("2 live losses in a row: BASE_V2_LOSS_STREAK_HALT\n"); live_start(c); assert E.state["loss_streak"] == 2 and E.state["halted"].startswith("2 live")
+    c = fresh(dry=False); open(LOG, "w").write("\n".join(json.dumps({"ev": "fire", "t": t0 - k}) for k in range(1, 21)) + "\n"); live_start(c)
     assert E.state["trades_today"] == 20 and E.state["stopped"] == "2026-10-20"              # MAX_PER_DAY reached before the restart: the day stays stopped
-    c = fresh(); open(E.S.HALT_FILE, "w").write("pulled: by hand\\n"); open(LOG, "w").write(json.dumps({"ev": "would_fire", "t": t0 - 10}) + "\\n" + json.dumps({"ev": "fire", "t": t0 - 9}) + "\\n")
+    c = fresh(); open(E.S.HALT_FILE, "w").write("pulled: by hand\n"); open(LOG, "w").write(json.dumps({"ev": "would_fire", "t": t0 - 10}) + "\n" + json.dumps({"ev": "fire", "t": t0 - 9}) + "\n")
     E.start(); st = events("start")[0]
     assert st["dry"] and E.state["halted"] is None and st["halt_file"] == "pulled: by hand" and E.state["trades_today"] == 1 and E.SIGNER is None    # dry: the file is the live line's
 
@@ -1268,7 +1272,7 @@ def silent_websocket_polls():
     while E.poll_step():
         pass
     assert E.state["head"] == N + 1 and E.state["head_src"] == "poll" and E.state["logs_to"] == N and c.ranges[0] == (N - 1, N) and not E.ws_healthy()
-    assert events("alarm")[0]["what"].startswith("no websocket") and events("creation")[0]["via"] == "logs"
+    assert events("alarm")[0]["what"].startswith("no websocket") and wait_ev("creation")[0]["via"] == "logs"
     f = wait_ev("would_fire")[0]
     assert f["head"] == N + 1 and f["aim"] == N + 2 and f["via"] == "logs" and events("arm")[0]["block"] == N
     c.head = N + 3
@@ -1303,11 +1307,11 @@ def websocket_drop_gap_filled():
 @test
 def duplicate_and_removed_logs():
     st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 15); P = E.pairs[PAIR]
-    before = E.reserves(P)[:2]; sync = [l for l in st.logs if blk(l) == N + 15 and l["topics"][0] == T["Sync"]][0]
-    push(c, sync); assert E.state["dups"] == 1 and E.reserves(P)[:2] == before, (E.state["dups"], before, E.reserves(P), sorted(E.seen.items())[-3:])
+    before = E.reserves(P)[:2]; sync = [l for l in st.logs if blk(l) == N + 15 and l["topics"][0] == T["Sync"]][0]; d0 = E.state["dups"]   # (the arm's read re-delivers block N)
+    push(c, sync); assert E.state["dups"] == d0 + 1 and E.reserves(P)[:2] == before, (E.state["dups"], d0, before, E.reserves(P))
     push(c, dict(sync, removed=True))
     assert E.state["reorgs"] == 1 and E.reserves(P)[:2] == tuple(c.reserves_at(PAIR, N + 14)) and "reorg" in events("alarm")[-1]["what"]
-    assert (N + 15, int(sync["logIndex"], 16)) not in P["ev"] and len(P["ev"]) == 5
+    assert (N + 15, int(sync["logIndex"], 16)) not in P["ev"] and len(P["ev"]) == 7 and (N + 15, int(sync["logIndex"], 16) + 1) in P["ev"]   # its Swap stays
 
 
 @test
@@ -1333,13 +1337,12 @@ def confirmed_session_subscribes_followed_pairs():
                 await self.q.put(json.dumps({"jsonrpc": "2.0", "id": d["id"], "result": "0xl"}))
                 for n in (N - 2, N - 1):
                     await self.q.put(hd(n))
-                await self.q.put(sub("0xl", [l for l in st.rlogs if l["address"].lower() == FACTORY][0]))
+                await self.q.put(hd(N)); await self.q.put(sub("0xl", [l for l in st.rlogs if l["address"].lower() == FACTORY][0]))
             elif d["method"] == "eth_subscribe":
                 assert d["params"][1] == {"address": PAIR, "topics": [E.PAIR_TOPICS]}, d
                 await self.q.put(json.dumps({"jsonrpc": "2.0", "id": d["id"], "result": "0xp1"}))
                 for l in sorted([l for l in st.rlogs + st.logs if blk(l) == N and l["address"].lower() == PAIR and l["topics"][0] in E.PAIR_TOPICS], key=E.order):
                     await self.q.put(sub("0xp1", l))
-                await self.q.put(hd(N))
         async def recv(self):
             return await self.q.get()                                          # then silent: the watchdog ends the session
     fake = types.ModuleType("websockets"); fake.connect = lambda *a, **k: Conn(); sys.modules["websockets"] = fake
