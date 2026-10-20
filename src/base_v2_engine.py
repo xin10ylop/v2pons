@@ -39,7 +39,7 @@ block itself, above the creation's priority (off by default). THE SELL, FlipRela
 on the first of: an outsider's buy (pending: a transaction carrying our token with value > 0 whose sender is not in the roster, not the probe,
 not the creator, not our wallet; confirmed: a Swap with ETH in >= BASE_V2_OUTSIDER_MIN_ETH whose `to` is none of those and not the relay;
 `exit: outsider`, minOut 0, at once); the reserves after a Sync valuing the position at >= the stake x (1 + BASE_V2_TAKE_PROFIT)
-(`take_profit`, minOut = the output x (1 - BASE_V2_SELL_SLIP)); the fleet's first sell on our pair (`fleet_sell`, the same minOut); the head at
+(`take_profit`, minOut = the output x (1 - BASE_V2_SELL_SLIP)); the fleet's first sell on our pair (`fleet_sell`, the same minOut; off with BASE_V2_FLEET_SELL_EXIT=0); the head at
 N + BASE_V2_SELL_SEND_BLOCK (`hard`, minOut 0), sent again at the same nonce with twice the priority when unseen by N + BASE_V2_SELL_RESEND_BLOCK,
 and from the wall clock at the creation block's timestamp + BASE_V2_SELL_FALLBACK_S when no head came; a Burn on our pair, or the creator's
 pending pull carrying our token, before our sell (`pulled`: -100%; the sell at minOut 0 still goes once, a partial pull would strand the
@@ -291,10 +291,10 @@ def settings():
     need(s.SELL_SEND_BLOCK < s.SELL_RESEND_BLOCK <= s.HARD_BLOCK, "BASE_V2_SELL_SEND_BLOCK < BASE_V2_SELL_RESEND_BLOCK <= BASE_V2_HARD_BLOCK does not hold")
     s.SELL_FALLBACK_S = _setting("BASE_V2_SELL_FALLBACK_S", "370", 10, 3600, True)
     s.TP_PPM = _exact("BASE_V2_TAKE_PROFIT", "0.25", "0.01", 100, 10 ** 6); s.SELL_SLIP_PPM = _exact("BASE_V2_SELL_SLIP", "0.05", 0, "0.99", 10 ** 6)
-    s.SELL_DEADLINE_S = _setting("BASE_V2_SELL_DEADLINE_S", "6", 2, 600, True)
+    s.SELL_DEADLINE_S = _setting("BASE_V2_SELL_DEADLINE_S", "6", 2, 600, True); s.FLEET_SELL_EXIT = _setting("BASE_V2_FLEET_SELL_EXIT", "1", 0, 1, True)
     s.MAX_POSITIONS = _setting("BASE_V2_MAX_POSITIONS", "3", 1, 10, True); s.MAX_PER_DAY = _setting("BASE_V2_MAX_PER_DAY", "20", 0, 100000, True)
     s.DAILY_STOP_WEI = _exact("BASE_V2_DAILY_STOP_ETH", "0.15", 0, 1000, 10 ** 18)
-    s.SCHEDULE_MIN = _setting("BASE_V2_SCHEDULE_MIN", "220", s.HARD_BLOCK + 1, 5000, True)
+    s.SCHEDULE_MIN = _setting("BASE_V2_SCHEDULE_MIN", "190", s.HARD_BLOCK + 1, 5000, True)
     s.PULL_SHARE_PPM = _exact("BASE_V2_PULL_SHARE", "0.30", "0.01", 1, 10 ** 6)
     s.REACT_BLOCKS = _setting("BASE_V2_REACT_BLOCKS", "10", 1, 100, True)
     s.LOSS_STREAK_HALT = _setting("BASE_V2_LOSS_STREAK_HALT", "2", 0, 100, True); s.LATE_HALT = _setting("BASE_V2_LATE_HALT", "2", 0, 100, True)
@@ -1239,7 +1239,7 @@ def on_swap(P, B, li, e):
         r_eth_after = reserves(P, (B, li))[0]; before = r_eth_after + eth_out
         if before > 0 and eth_out * 10 ** 6 >= before * S.PULL_SHARE_PPM:
             tier_end(P["tier"], f"a sell took {eth_out / before:.0%} of the ETH reserve on {P['pair']} at +{B - P['N']} (BASE_V2_PULL_SHARE)")
-        if pos is not None and not pos["closed"] and not pos["sell_sent"] and pos["trigger"] is None and buy_behind(pos, B, li):
+        if S.FLEET_SELL_EXIT and pos is not None and not pos["closed"] and not pos["sell_sent"] and pos["trigger"] is None and buy_behind(pos, B, li):
             if who == "fleet":
                 pos["trigger"] = {"exit": "fleet_sell", "block": B, "via": "logs", "price_block": B + 1, "reason": f"the fleet's first sell ({eth_out / 1e18:.6f} ETH out) at {B}"}
             elif state["tx_from"].get(e["tx"]) is None:

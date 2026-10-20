@@ -132,6 +132,8 @@ BASE_V2_TAKE_PROFIT=0.25
 BASE_V2_SELL_SLIP=0.05
 # the sell's deadline in seconds
 BASE_V2_SELL_DEADLINE_S=6
+# 1: the fleet's first sell on our pair sells (fleet_sell); 0: off, take-profit or the hard block decide (Oct 20: +27.8% mean off, +19.7% on)
+BASE_V2_FLEET_SELL_EXIT=1
 # positions open at once, one per pair (stage 1: 1)
 BASE_V2_MAX_POSITIONS=3
 # at most this many buys a UTC day (stage 1: 5, stage 2: 10)
@@ -139,7 +141,7 @@ BASE_V2_MAX_PER_DAY=20
 # the live net loss in ETH that stops new buys for the rest of the UTC day
 BASE_V2_DAILY_STOP_ETH=0.15
 # a Burn on a pair of the tier earlier than this many blocks after its creation ends the tier for the day
-BASE_V2_SCHEDULE_MIN=220
+BASE_V2_SCHEDULE_MIN=190
 # a sell taking this share of the ETH reserve on a pair of the tier ends the tier for the day (the dump pattern)
 BASE_V2_PULL_SHARE=0.30
 # a Burn within this many blocks after a buy is a reaction (on our pair with no outsider before it: the halt)

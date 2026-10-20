@@ -472,7 +472,7 @@ def settings_bounds():
     assert s.STAKE_ETH_WEI == s.STAKE_CAP_WEI == 2 * 10 ** 16 and s.PRIO_WEI == 3 * 10 ** 7 and s.MAX_FEE_WEI == 5 * 10 ** 8 and s.BUY_SLIP_PPM == 30_000 and s.SELL_SLIP_PPM == 50_000
     assert (s.BAND_LO_WEI, s.BAND_HI_WEI, s.TIER_LABEL) == (13 * 10 ** 17, 23 * 10 ** 17, "1.3-2.3") and s.EXCLUDE_MILLI == {1200} and s.PROBE == {PROBE} and s.TOKEN_CODE_SIZES == {3553}
     assert s.MIN_SUPPLY_PPM == 990_000 and s.EXIT_MIN_PPM == 980_000 and s.TP_PPM == 250_000 and s.SHARE_CAP_PPM == 50_000 and s.PULL_SHARE_PPM == 300_000 and s.DAILY_STOP_WEI == 15 * 10 ** 16
-    assert (s.HARD_BLOCK, s.SELL_SEND_BLOCK, s.SELL_RESEND_BLOCK, s.SCHEDULE_MIN, s.REACT_BLOCKS, s.LAND_MAX, s.MAX_POSITIONS, s.MAX_PER_DAY) == (180, 176, 178, 220, 10, 1, 3, 20)
+    assert (s.HARD_BLOCK, s.SELL_SEND_BLOCK, s.SELL_RESEND_BLOCK, s.SCHEDULE_MIN, s.REACT_BLOCKS, s.LAND_MAX, s.MAX_POSITIONS, s.MAX_PER_DAY) == (180, 176, 178, 190, 10, 1, 3, 20)
     assert all(isinstance(x, int) for x in (s.STAKE_ETH_WEI, s.PRIO_WEI, s.MARGIN_WEI, s.OUTSIDER_MIN_WEI, s.CREATOR_NONCE)) and s.HALT_FILE == os.path.join(TMP, "HALTED.base_v2")
     os.environ["BASE_V2_TOKEN_CODE_SIZES"] = "0"; assert E.settings().TOKEN_CODE_SIZES == set(); os.environ["BASE_V2_TIER_EXCLUDE"] = ""; assert E.settings().EXCLUDE_MILLI == set()
     os.environ["BASE_V2_READ_ALT_URL"] = "0"; os.environ["BASE_V2_FLASH_URL"] = "0"; s = E.settings(); assert s.READ_ALT_URL == "" and s.FLASH_URL is None
@@ -842,6 +842,17 @@ def dry_fleet_sell_and_the_dump_rule():
 
 
 @test
+def dry_fleet_sell_exit_off():
+    """BASE_V2_FLEET_SELL_EXIT=0: the fleet's sell on our pair is no exit; take-profit or the hard block decides"""
+    st = Stream("2.0"); c = fresh(st, BASE_V2_FLEET_SELL_EXIT=0); fired(c); feed(c, N + 1, N + 39)
+    inject_sell(c, st, N + 40, 10 ** 24, FLEET[0]); feed(c, N + 40, N + 42)
+    time.sleep(0.05); assert not events("sell_sent")
+    feed(c, N + 43, N + E.S.SELL_SEND_BLOCK + 2)
+    s = wait_ev("sell_sent")
+    assert len(s) == 1 and s[0]["reason"] in ("take_profit", "hard"), s
+
+
+@test
 def dry_pulled_before_our_sell_halts():
     """a Burn before our sell: -100%, the line halts (in memory in the dry run), no new buy after it; the pull line's fields"""
     st = Stream("2.0"); c = fresh(st); fired(c); feed(c, N + 1, N + 9); pos = E.positions[PAIR]
@@ -872,7 +883,7 @@ def burn_on_another_pair_ends_the_tier():
     assert s["why"] == "positions" and s["positions"] == [ours.pair] and len(events("would_fire")) == 1 and E.pairs[theirs.pair]["status"] == "watched", s
     feed(c, N + 1, N + 99); inject_burn(c, theirs, N + 100); feed(c, N + 100, N + 101)
     t = events("stop")
-    assert len(t) == 1 and t[0]["what"] == "tier" and t[0]["tier"] == "1.3-2.3" and "+100" in t[0]["reason"] and "BASE_V2_SCHEDULE_MIN 220" in t[0]["reason"] and t[0]["day"] == "2026-10-20", t
+    assert len(t) == 1 and t[0]["what"] == "tier" and t[0]["tier"] == "1.3-2.3" and "+100" in t[0]["reason"] and "BASE_V2_SCHEDULE_MIN 190" in t[0]["reason"] and t[0]["day"] == "2026-10-20", t
     p = events("pull")[0]
     assert p["pair"] == theirs.pair and not p["ours"] and p["before"] == "after" and not p["reaction"] and p["since_creation"] == 100 and not events("halt") and theirs.pair not in E.pairs, p
     assert E.positions[ours.pair]["sell_sent"] is False and E.state["tiers_ended"] == {"1.3-2.3": "2026-10-20"}

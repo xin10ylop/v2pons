@@ -2,8 +2,11 @@
 """base_v2_roster.py: the V2 line's fleet roster from the chain (docs/BASE_V2.md section 4), written to BASE_V2_ROSTER_FILE
 (/etc/flip/base_v2_roster.json) for src/base_v2_engine.py, which reads it at its start and again whenever its mtime changes and never adds
 to it. A wallet is in the roster when it bought on at least MIN_PAIRS (3) of the line's fresh-wallet pairs created in the last DAYS (3) with
-the fleet's shape: a type-2 transaction straight to the router (BASE_V2_ROUTER) with the swap selectors 7ff36ab5 or b6f9de95, a 0.001 gwei
-priority fee, from a nonce under 20,000 (the two Oct-20 bots at 60k/109k fall out). A pair of the line: PairCreated with WETH on
+one of the fleet's two shapes, straight to the router (BASE_V2_ROUTER) with the swap selectors 7ff36ab5 or b6f9de95: a type-2 transaction
+at a 0.001 gwei priority fee from a nonce under 20,000, or a legacy (type 0) transaction at a gas price of at most 0.01 gwei, any nonce.
+The legacy shape is the fleet of Oct 20 (53 wallets at 0.0060-0.0066 gwei, nonces up to 115k, 1,611 buys on the 35 tolerant pairs, none
+followed by a reaction); left out, every one of its buys is an outsider's, the scheduled pull 3-9 blocks after one ends the tier and the
+outsider exit sells at +8. None of the day's 10 real outsiders (buys pulled 3-6 blocks later) has either shape. A pair of the line: PairCreated with WETH on
 BASE_V2_FACTORY whose creation transaction is the creator's nonce BASE_V2_CREATOR_NONCE (2) to the router with BASE_V2_CREATE_SELECTOR
 (f305d719). The probe (BASE_V2_PROBE) goes under its own key, never into `wallets`: the engine classes it by BASE_V2_PROBE, and stage 0 wants
 its creation-block buy logged as outsider_buy (section 9). The chain is read through research/chase/v2scan.py's Scan on the archive
@@ -27,7 +30,8 @@ import base_v2_wallet as BV
 BLOCKS_A_DAY = 43200                                                                     # 2.000 s blocks
 BUY_SELS = ("0x7ff36ab5", "0xb6f9de95")                                                  # swapExactETHForTokens, ...SupportingFeeOnTransferTokens
 TIP_WEI = 10 ** 6                                                                        # the fleet's 0.001 gwei priority fee
-MAX_NONCE = 20_000
+MAX_NONCE = 20_000                                                                       # (the type-2 shape only)
+LEGACY_MAX_WEI = 10 ** 7                                                                 # the legacy fleet's gas price cap, 0.01 gwei
 MIN_WALLETS = 10
 HORIZON, SWAPWIN, SWAP_CAP = 900, 300, 40                                                # the pull window, the swaps window, the swaps looked up a pair
 
@@ -66,16 +70,17 @@ def build(days, min_pairs, say=print):
             if eth_in <= 0 or not t:
                 continue
             frm, to, n, _value, sel_, typ, tip = t
-            if to != router or sel_ not in BUY_SELS or n >= MAX_NONCE:
+            if to != router or sel_ not in BUY_SELS:
                 continue
             by_wallet_any.setdefault("0x" + frm, set()).add(pair)
-            if typ == 2 and tip == TIP_WEI:
+            if (typ == 2 and tip == TIP_WEI and n < MAX_NONCE) or (typ == 0 and tip <= LEGACY_MAX_WEI):
                 by_wallet.setdefault("0x" + frm, set()).add(pair)
     wallets = sorted(w for w, ps in by_wallet.items() if len(ps) >= min_pairs)
     off_shape = sorted(w for w, ps in by_wallet_any.items() if len(ps) >= min_pairs and w not in wallets)
     built = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     data = {"built": built, "wallets": wallets, "probe": BV.probes(), "days": days, "blocks": [b0, head], "pairs": len(line), "min_pairs": min_pairs,
-            "rule": f"bought on >= {min_pairs} pairs of the line (creator nonce {nonce}) in {days} days: type 2, tip {TIP_WEI} wei, {'/'.join(BUY_SELS)} to the router, nonce < {MAX_NONCE}",
+            "rule": f"bought on >= {min_pairs} pairs of the line (creator nonce {nonce}) in {days} days, {'/'.join(BUY_SELS)} to the router: type 2 at tip {TIP_WEI} wei "
+                    f"and nonce < {MAX_NONCE}, or legacy at a gas price <= {LEGACY_MAX_WEI} wei",
             "off_shape": off_shape}
     return data, {"pairs_all": len(pairs), "line": len(line), "off_shape": len(off_shape)}
 
