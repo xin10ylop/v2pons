@@ -12,7 +12,7 @@ re-derived every money figure and tried to refute every seat. The box's logs wer
 |---|---|---|---|---|
 | **the 2.433 line** (the volume bot's 2.4333285 ETH family: flip-engine's `v2.433`, +$1,515 over 1,267 trades) | Robinhood v4 | **dead since Oct 12 02:06 UTC** (last launch; tapered from 132 to 20 per 2.8 h on its last day) | flip-engine, release 0.9, idle, service stopped, relay empty | none: the family does not launch |
 | the volume bot's 3.0 and 5.0 ETH families | Robinhood v4 | live, about 650 pools a day, through the same contract the engine watches (`0x1cbaf24d53`) | refused by the engine's sub-1% fee gate (they are 1%) | none: the pull follows any outside swap in 5-21 blocks, before its own fleet buys; the front rule replays at -2% to -5% |
-| the volume bot's V2 line (1, 30, 40, 50 ETH pairs, 236 a day) | Robinhood V2 | live | none | the big tiers pull 13-60 s after any foreign buy of 0.00015 ETH; **the 1 ETH tier is the one untested seat** (+94% paper at a 3-minute hold, 70% win) |
+| **a third operator's V2 line** (1, 30, 40, 50 ETH pairs, 236 a day; not operator A, not the volume bot) | Robinhood V2 | live, since before Oct 8 | none | the big tiers pull 13-60 s after any foreign buy of 0.00015 ETH; **the 1 ETH tier is the one untested seat** (+94% paper at a 3-minute hold, 70% win) |
 | operator A (launcher `0x3194e326`, flip-engine's `follow`) | Robinhood v4 | back since Oct 16 04:51, about 175 a day | idle (the flip prices -4%) | none: a per-pool counter of outside buying, exact at 0.0002 ETH, pull 5 blocks later; the dust seat is -$0.05 a pool |
 | the tick-spacing-1 direct line, the dust traps, the fee traps, the launchpads | Robinhood v4 | live or dead, see section 4 | none | none |
 | the 2.433 operator's v4 line (base-0.2's +$588) | Base v4 | **gone since the honeypot of Oct 15**; no pool of its shape since | flip-base, idle by design, relay 0.045 ETH | none |
@@ -20,7 +20,7 @@ re-derived every money figure and tried to refute every seat. The box's logs wer
 | the Base 1.2 ETH tick-1 line, the token mills | Base v4 | live | none | none: a sniper trap and empty pools |
 | BNB Chain, Ethereum | v4 and V2 | nothing of any operator in the window | flip-bnb disabled | none |
 
-Two operators were found on Robinhood, one crew on Base, and none of the three has a seat our engines can take as they are. The one
+Three operators were found on Robinhood, one crew on Base, and none of the three has a seat our engines can take as they are. The one
 thing worth money that the data supports is the Base V2 tolerant tier, under a staged live test; the one cheap experiment is the
 Robinhood V2 1 ETH tier.
 
@@ -60,14 +60,19 @@ Robinhood V2 1 ETH tier.
   days, a closed loop. The front rule replayed exactly on 300 of these pools (fire at launch, land +1, sell into the bot's first buy,
   take-profit 1%, hold 18, the bot's minOut revert model): -2% to -5% at every stake, because the bot's real buys come 24-46 blocks after
   the launch and its reaction comes first. Oct 10's verdict on v3.0 (+3%, rejected) and v5.0 (pulls on outsiders) holds.
-- **Its V2 line** on factory `0x8bceaa40`: 236 fresh-wallet (nonce 2) pairs a day at exactly 1.00, 30.09, 40.59 and 50.09 ETH; 17 core
+- **The V2 line on factory `0x8bceaa40` is a third, separate operator** (zero shared wallets with operator A at every layer, a different router `0x89e5db8b`, different token templates, persistent funder wallets instead of one-shot hops, running since before Oct 8 and unaffected by the others' pauses): 236 fresh-wallet (nonce 2) pairs a day at exactly 1.00, 30.09, 40.59 and 50.09 ETH; 17 core
   wallets buy until the pool holds 30% more ETH than the mint (price 1.7x), the pull returns mint plus buys (net -0.003 ETH a pool);
   99.96% of the first hour's 9-14 ETH of buys is its own money. The 40.59 and 50.09 tiers pull 134-603 blocks after any foreign buy of
   0.00015 ETH or more (19 of 20); the 30.09 tier tolerates up to 0.004 ETH (a seat worth 0.0016 ETH a pool). **The 1.00 ETH tier**: a
   9.6-minute timer with a third of pools aborted early, price 1.5x at 1 minute and 3.6x at 5 minutes, paper +94% mean at a 3-minute hold
   (70% win, 30% pulled, stake-insensitive up to 0.5 ETH), and no foreign buy above dust has ever landed on it: its reaction is unknown. A
   $20 live test settles it (0.005 ETH at +300 blocks on one fresh pair, three trials; a pull inside the next 700 blocks has a 20% base rate).
-- The money trail and the identity link between the bot's V2 and v4 lines are still being traced (pending at the time of writing).
+- **Its money**: one funder wallet per tier sends exactly tier + 0.01 ETH to each creator and 9.5-18 ETH through a disperse contract to a
+  10-wallet bait fleet; the creator pulls at nonce 4 and sweeps everything back to the funder at nonce 7; in-flow equals out-flow
+  (135 against 136 ETH on the 50 ETH funder), no bridge or exchange, about 70 ETH of working capital per tier in flight. The buyers are
+  its own fleets: 100% of the buy ETH on the big tiers, and most of the 1 ETH tier's buyers are fresh wallets the hub drops 0.04-0.22
+  ETH into (at most 10-20 ETH a day could be genuine). About 2,100 ETH a day of self-bought volume and 10,000 ETH a day of liquidity
+  churned through the router for nothing: a volume farm.
 
 ## 4. The other Robinhood lines
 
