@@ -95,11 +95,21 @@ the operator's, and the operator's detector ignores it. Four more dust-only wall
   fleet's first buy) is +3 to +4% only if the operator did not react, and -57% once his 5-block reaction is modelled; a fixed exit
   inside his reaction window (+24..+26) is 0 to +1%; the shortest flip (+2 and +3 blocks after the first fleet buy) is -1 to -2%;
   an LP seat (adding 5-10% of his liquidity) is -11 to -13% even with no reaction, and the token purchase to build it would itself
-  be pulled. **The one positive seat is under his threshold**: 0.0001-0.00015 ETH bought at launch+22 and held to +300..+1000 blocks
-  prices at +74% to +168% mean after gas (about $0.5 of expected value per pool, about $50 a day), losing 25-37% of pools to the
-  program-end pulls. It scales by wallet count only if the trigger is per transaction rather than per pool; nothing in the data
-  settles that, so it is a live test (three wallets at 0.0001 ETH on one pool), not a deployment. An independent refutation pass on
-  these numbers is pending.
+  be pulled.
+- **The sub-threshold seat is dead too.** A buy under his size rule (0.0001-0.00015 ETH at launch+22, held into the 3x pump) prices
+  at +74% to +168% on paper, but an independent refutation showed the trigger is a **per-pool counter of net outside buying**, exact at
+  0.0002 ETH (highest net position never pulled: 0.000195; smallest pulled: 0.000200), pull 5 blocks after the crossing, pre-fleet buys
+  included: 33 pools crossed it through several dust wallets and 25 were pulled 5-7 blocks after the crossing buy. The probe bots'
+  routine 0.00005-0.00017 ETH buys push 397 of 514 pools over the line once our 0.00015 sits in the counter: 404 of 514 seats pulled,
+  mean -43% / -13% at +300 / +500 blocks, expected value -$0.05 a pool. Only a stake at or under 0.00003 ETH survives (+80% mean, about
+  +$0.06 a pool, one gas round trip), and wallets cannot be multiplied because they share the counter. **No seat at any size.**
+- **His economics** (all 527 pools, every swap attributed): seed 1.79 ETH in and fleet buys 2.85 in, fleet sells 1.45 and the pull 3.19
+  out: 4.638 against 4.639 ETH, a closed loop to the fourth decimal. Profit is exactly what outsiders leave: 1.063 ETH (about $2,700)
+  in 4.27 days, 0.55 of it taken within 10 blocks of the buy; gas about $0.77 a pool (launch 1.0M gas, pull 159k, 115 transactions a pool
+  at 0.02 gwei); net about +0.0018 ETH a pool, $500-770 a day. Another 2.7 ETH came from 57 fresh menu-size wallets on four 2-3%-fee
+  pools that look like his own bait (one of them deployed a pool and bought its own token); if they were victims, the take triples.
+  The fleet's 1,465 ETH of buys and 744 ETH of sells (about $1.8M a day of self-trade) are out of all proportion to the trapped ETH, so
+  a volume or activity incentive on Robinhood Chain or its DEX is the plausible second purpose; the chain data cannot verify it.
 
 ## 4c. The money trail on Robinhood (traced live through eight launches)
 
