@@ -636,8 +636,8 @@ def guard_code_size_and_supply():
     c = fresh(Stream("2.0"), BASE_V2_TOKEN_CODE_SIZES="3553, 3600"); c.code_size = 3600; assert fired(c)[0]["ev"] == "would_fire"
     k = creator_key("pend"); st = Stream("2.0", creator=k); c = fresh(st); c.code_size = 1; feed(c, N - 2, N - 1)
     flash(N, [st.creation_raw], index=1)                                      # pending: refused before N seals, no exit test
-    s = wait_ev("skip")[0]
-    assert s["why"] == "code size" and s["code_size"] == 1 and E.state["head"] == N - 1 and not c.guard_calls and E.pairs[st.pair]["status"] == "watched", s
+    s = wait_ev("skip")[0]; got = (s["why"], s["code_size"], E.state["head"] - N, c.guard_calls, E.pairs[st.pair]["status"])
+    assert got == ("code size", 1, -1, [], "watched"), got
     c = fresh(Stream("2.0")); c.fail.add("eth_getCode"); f = fired(c)[0]
     assert f["why"] == "guard" and f["verdict"] == "unreadable" and "alt.example.org is down" in f["error"] and "k3y" not in open(LOG).read(), f
 
@@ -667,7 +667,7 @@ def late_or_pulled_before_the_fire():
     c = fresh(Stream("2.0")); c.exit_lag = 0.25; feed(c, N - 2, N + 1)
     s = wait_ev("skip")[0]
     assert s["why"] == "late" and s["block"] == N and s["head"] == N + 1 and not events("would_fire"), s
-    wait_ev("guard"); time.sleep(0.05); assert not events("would_fire") and events("arm")
+    time.sleep(0.4); assert not events("would_fire") and not events("arm") and c.guard_calls and not events("guard")   # the verdict of a skipped pair is discarded
     c = fresh(Stream("2.0"), BASE_V2_LAND_MAX="3"); c.exit_lag = 0.25; feed(c, N - 2, N + 1)
     f = wait_ev("would_fire")[0]; assert f["head"] == N + 1 and f["aim"] == N + 2 and events("arm")[0]["block"] == N
     st = Stream("2.0", creator=creator_key("pull")); c = fresh(st); c.exit_lag = 0.25; feed(c, N - 2, N)

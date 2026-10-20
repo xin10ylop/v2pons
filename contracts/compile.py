@@ -4,13 +4,14 @@ immutable references (so a deployment can be checked byte for byte with the immu
 source's sha256 (the deploy scripts refuse an artifact that was not built from the source beside it). Name defaults to FlipRelay.
 
     python3 contracts/compile.py                  # FlipRelay (the v4 relay)
+    python3 contracts/compile.py FlipRelayV2      # the V2 relay (docs/BASE_V2.md)
     python3 contracts/compile.py FlipRelayV3      # the V3 relay
 """
 import hashlib, json, os, sys
 import solcx
 NAME = sys.argv[1] if len(sys.argv) > 1 else "FlipRelay"
-if NAME not in ("FlipRelay", "FlipRelayV3"):
-    sys.exit(f"unknown contract {NAME}: FlipRelay or FlipRelayV3")
+if NAME not in ("FlipRelay", "FlipRelayV2", "FlipRelayV3"):
+    sys.exit(f"unknown contract {NAME}: FlipRelay, FlipRelayV2 or FlipRelayV3")
 ROOT = os.path.dirname(os.path.abspath(__file__)); SRC = os.path.join(ROOT, NAME + ".sol"); OUT = os.path.join(ROOT, NAME + ".json")
 if "0.8.26" not in [str(v) for v in solcx.get_installed_solc_versions()]:
     solcx.install_solc("0.8.26")
