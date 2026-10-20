@@ -412,16 +412,18 @@ def fixture_shape():
     assert [k[0] for k in kinds if k[1] == "Swap"][:5] == [0, 2, 15, 41, 67] and kinds[-7][:2] == (424, "Burn") and kinds[-7][2] == CREATOR
     out_ = [(k[0], FX["txs"][l["transactionHash"]]["input"][:10]) for k, l in zip(kinds, FX["logs"]) if k[1] == "Swap" and k[2] not in FLEET and k[2] != PROBE]
     assert out_[0] == (419, "0xaff9ec28") and all(ts(N + k) - ts(N) == 2 * k for k in BLOCKS and [k - N for k in BLOCKS] if 0 <= k)
-    # the constant product against the chain: the probe's buy inside the creation block, the dust at +2 and the fleet's buy at +15, to the unit
-    r = (15 * 10 ** 18, R_TOK0); n = 0
-    for l in FX["logs"]:
-        if l["topics"][0] == T["Swap"] and W(l["data"], 0) > 0 and blk(l) <= N + 15:
-            assert cp_out(W(l["data"], 0), *r) == W(l["data"], 3), (blk(l) - N, cp_out(W(l["data"], 0), *r), W(l["data"], 3)); n += 1
-        elif l["topics"][0] == T["Sync"]:
-            r = tuple(words(l["data"])[:2])
-    assert n == 3
+    # the constant product against the chain: every recorded swap (buys and sells) to the unit from the reserves before its transaction
+    # (a pair emits its Sync, post-swap, before its Swap)
+    pre = cur = (15 * 10 ** 18, R_TOK0); last = None; n = 0
+    for l in sorted(FX["logs"], key=E.order):
+        if l["topics"][0] == T["Sync"]:
+            pre = cur if l["transactionHash"] != last else pre; cur = tuple(words(l["data"])[:2]); last = l["transactionHash"]
+        elif l["topics"][0] == T["Swap"]:
+            a0i, a1i, a0o, a1o = words(l["data"])
+            assert cp_out(a0i, pre[0], pre[1]) == a1o if a0i else cp_out(a1i, pre[1], pre[0]) == a0o, (blk(l) - N, words(l["data"]), pre); n += 1
+    assert n == 19
     st = Stream("2.0"); assert st.value == 2 * 10 ** 18 and inword(st.creation_tx["input"], 1) == R_TOK0
-    assert st.sync_at(N)[0] == 15_000_003_000_000_000_000 * 2 // 15 and st.sync_at(N)[1] == R_TOK0 - W(FX["logs"][5]["data"], 3) and st.pull_block == N + 424
+    assert st.sync_at(N)[0] == W(FX["logs"][4]["data"], 0) * 2 // 15 == 2_000_000_399_994_000_000 and st.sync_at(N)[1] == R_TOK0 - W(FX["logs"][5]["data"], 3) and st.pull_block == N + 424
 
 
 @test
@@ -499,8 +501,9 @@ def creation_confirmed_on_the_fixture():
     time.sleep(0.05)
     o = events("outsider_buy")
     assert [(x["block"] - N, x["who"], x["action"], x["ours"], x["pending"]) for x in o] == [(0, "probe", "none", False, False), (419, "outsider", "none", False, False)], o
-    assert o[0]["sender"] == PROBE and o[0]["to"] != PROBE and o[0]["value_eth"] == 3e-06 and o[1]["sender"] == "0x8a0dcb58" + FX["txs"]["0x7e439246" + [h for h in FX["txs"] if h.startswith("0x7e439246")][0][10:]]["from"][10:].lower()
-    assert o[1]["to"] == "0x15e511bf" + FX["txs"][[h for h in FX["txs"] if h.startswith("0x7e439246")][0]]["to"][10:].lower() and o[1]["tier"] == "15"
+    otx = next(t for t in FX["txs"].values() if t["input"][:10] == "0xaff9ec28" and int(t["value"], 16) > 0)      # the outsider's buy through an aggregator
+    assert o[0]["sender"] == PROBE and o[0]["to"] != PROBE and o[0]["value_eth"] == 2999955000000 / 1e18 and o[1]["sender"] == otx["from"].lower() and o[1]["tier"] == "15"
+    assert o[1]["to"] == otx["to"].lower() != o[1]["sender"] and o[1]["value_eth"] == int(otx["value"], 16) / 1e18 and o[1]["tx"] == next(h for h, t in FX["txs"].items() if t is otx)
     p = events("pull")
     assert len(p) == 1 and p[0]["block"] == N + 424 and p[0]["since_creation"] == 424 and p[0]["since_last_buy"] == 5 and p[0]["since_outsider"] == 5 and p[0]["reaction"] and p[0]["before"] == "after", p
     assert not p[0]["ours"] and not p[0]["pending"] and p[0]["via"] == "logs" and p[0]["eth_out_wei"] == words([l for l in FX["logs"] if l["topics"][0] == T["Burn"]][0]["data"])[0] and p[0]["tier"] == "15"

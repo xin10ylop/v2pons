@@ -196,9 +196,15 @@ def _sizes(name, default):
     return set() if out == {0} else out
 
 
+def env_list(k, d):
+    """a comma list that may be empty: a variable set to "" is an empty list, not the default (env() treats "" as unset)"""
+    v = os.environ.get(k)
+    return d if v is None else v.split(" #", 1)[0].strip()
+
+
 def _hexlist(name, default, n):
     out = []
-    for x in [x.strip().lower() for x in env(name, default).split(",") if x.strip()]:
+    for x in [x.strip().lower() for x in env_list(name, default).split(",") if x.strip()]:
         v = x[2:] if x.startswith("0x") else x
         if len(v) != n or any(c not in "0123456789abcdef" for c in v):
             raise SystemExit(f"{name} must be a comma list of {n}-digit hex values, not {env(name, default)!r}")
@@ -208,7 +214,7 @@ def _hexlist(name, default, n):
 
 def _ethlist(name, default, lo, hi):
     """ETH values, comma-separated, each an exact wei amount; may be empty"""
-    return [_exact(name, default, lo, hi, 10 ** 18, v=x.strip()) for x in env(name, default).split(",") if x.strip()]
+    return [_exact(name, default, lo, hi, 10 ** 18, v=x.strip()) for x in env_list(name, default).split(",") if x.strip()]
 
 
 def _band(name, default):
