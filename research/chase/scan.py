@@ -9,6 +9,10 @@ PULLW = int(sys.argv[7]) if len(sys.argv) > 7 else 150   # blocks in ~5 minutes 
 SAMPLE = 25
 LOOKBACK = int(sys.argv[8]) if len(sys.argv) > 8 else 6_000_000
 H = {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 Chrome/128"}; ZERO32 = "0x" + "0"*64
+import os as _os
+PAIR = _os.environ.get("PAIR")            # a wrapped-coin address to pair on instead of the native coin (e.g. WETH on Base)
+PAIR_POS = int(_os.environ.get("PAIR_POS", "2"))   # 2 = currency0, 3 = currency1
+PAIR32 = ("0x" + "0"*24 + PAIR[2:].lower()) if PAIR else ZERO32
 T_INIT = "0x" + keccak(text="Initialize(bytes32,address,address,uint24,int24,address,uint160,int24)").hex()
 T_ML = "0x" + keccak(text="ModifyLiquidity(bytes32,address,int24,int24,int256,bytes32)").hex()
 W = lambda d, i: int(d[2+64*i:2+64*(i+1)], 16); A = lambda d, i: d[2+64*i+24:2+64*(i+1)]
@@ -86,13 +90,13 @@ def main():
     if os.path.exists(cache): inits = json.load(open(cache)); print(f"[{CHAIN}] inits from cache {cache}", flush=True)
     else:
         for a in range(b_lo, head+1, SPAN0):
-            inits += logs({"address": PM, "topics": [T_INIT, None, ZERO32]}, a, min(a+SPAN0-1, head))
+            inits += logs({"address": PM, "topics": [T_INIT, None, PAIR32] if PAIR_POS == 2 else [T_INIT, None, None, PAIR32]}, a, min(a+SPAN0-1, head))
         json.dump(inits, open(cache, "w"))
     print(f"[{CHAIN}] native-paired pools: {len(inits)} ({calls[0]} calls)", flush=True)
     pools = {}
     for l in inits:
         d = l["data"]; pid = l["topics"][1]
-        pools[pid] = {"bn": int(l["blockNumber"], 16), "tx": l["transactionHash"], "token": l["topics"][3][-40:], "fee": W(d, 0), "ts": sgn(W(d, 1)), "hook": A(d, 2), "sqrtP0": W(d, 3), "tick0": sgn(W(d, 4))}
+        pools[pid] = {"bn": int(l["blockNumber"], 16), "tx": l["transactionHash"], "token": l["topics"][3][-40:] if PAIR_POS == 2 else l["topics"][2][-40:], "pair_pos": PAIR_POS, "fee": W(d, 0), "ts": sgn(W(d, 1)), "hook": A(d, 2), "sqrtP0": W(d, 3), "tick0": sgn(W(d, 4))}
     tx = txs({p["tx"] for p in pools.values()})
     for p in pools.values():
         t = tx.get(p["tx"]); p["from"], p["to"], p["sel"], p["nonce"] = (t[0], t[1], t[4], t[2]) if t else (None, None, None, None)
