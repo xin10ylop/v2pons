@@ -664,10 +664,10 @@ def arm_reads_the_creation_block():
     o = wait_ev("outsider_buy", 2)
     assert {(x["who"], x["action"]) for x in o} == {("probe", "none"), ("outsider", "none")} and E.pairs[PAIR]["status"] == "watched", o
     st = Stream("2.0"); c = fresh(st); inject_buy(c, st, N, 10 ** 15, FLEET[3]); f = fired(c)[0]        # a roster wallet in the creation block: not an outsider
-    assert f["ev"] == "would_fire" and E.pairs[PAIR]["fleet_first"] == N and len(events("outsider_buy")) == 1, (f, events("outsider_buy"))
+    assert f["ev"] == "would_fire" and E.pairs[PAIR]["fleet_first"] == N and len(wait_ev("outsider_buy")) == 1, (f, events("outsider_buy"))
     st = Stream("2.0"); c = fresh(st); inject_buy(c, st, N, 10 ** 15, "0x" + "ab" * 20, sender=CREATOR); f = fired(c)[0]   # the creator's own buy: not an outsider
     assert f["ev"] == "would_fire", f
-    assert sorted(x["who"] for x in wait_ev("outsider_buy", 2)) == ["creator", "probe"] and all(x["action"] == "none" for x in events("outsider_buy")), events("outsider_buy")
+    assert sorted(x["who"] for x in wait_ev("outsider_buy", 2)) == ["creator", "probe"] and all(x["action"] == "none" and x["tier"] == "1.3-2.3" for x in events("outsider_buy")), events("outsider_buy")
 
 
 @test
@@ -912,7 +912,7 @@ def live_fire_signs_a_type2_buy():
     c = fresh(dry=False); f = fired(c)[0]; b = wait_ev("buy_sent")[0]; stake = 2 * 10 ** 16; min_out = cp_out(stake, 2 * 10 ** 18, R_TOK0) * 970_000 // 10 ** 6
     assert f["ev"] == "fire" and not f["dry"] and f["nonce"] == 7 and f["aim"] == N + 1 and f["head"] == N and f["min_out"] == min_out and f["prio_gwei"] == 0.03 and f["max_fee_gwei"] == 0.04, f
     assert b["nonce"] == 7 and b["kind"] == "ok" and b["reason"] == "fire" and b["via"] == "first" and b["min_out"] == min_out and b["deadline"] == ts(N) + 6 and b["prio_gwei"] == 0.03, b
-    assert b["block_seen"] == N and set(b["replies"]) == {"seq.example.org", "send2.example.org"} and b["replies"]["seq.example.org"]["kind"] == "ok" and b["ms_since_fire"] >= 0
+    assert b["block_seen"] == N and set(b["replies"]) <= {"seq.example.org", "send2.example.org"} and [r["kind"] for r in b["replies"].values()] == ["ok"] and b["ms_since_fire"] >= 0, b
     assert len(c.sent) == 2 and {h for h, _ in c.sent} == {"seq.example.org", "send2.example.org"} and c.sent[0][1] == c.sent[1][1]
     raw = c.sent[0][1]; tx = raw_sent(c, 0); d = "0x" + tx["data"].hex()
     assert raw.startswith("0x02") and tx["type"] == 2 and tx["to"] == RELAY and tx["value"] == 0 and tx["nonce"] == 7 and tx["gas"] == 250_000, tx

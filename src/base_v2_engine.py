@@ -1247,9 +1247,11 @@ def on_swap(P, B, li, e):
 
 
 def log_resolved(P, rec, b):
-    sender = read_sender(b["tx"])
+    sender = read_sender(b["tx"]); t_end = mono() + 2 * READ_TIMEOUT_S
+    while not P["announced"] and pairs.get(P["pair"]) is P and mono() < t_end:
+        time.sleep(0.01)                                                       # a pair log of block N can come before the creation's read names the creator and the tier
     with lock:
-        who = who_of(P, b["tx"], b["to"], sender); rec.update(sender=sender, who=who); b["who"] = who
+        who = who_of(P, b["tx"], b["to"], sender); rec.update(sender=sender, who=who, tier=P["tier"]); b["who"] = who
         if who == "fleet":
             P["fleet_first"] = b["B"] if P["fleet_first"] is None else P["fleet_first"]; return
         if who != "outsider" and rec["action"] == "skip" and P["status"] == "watched":
