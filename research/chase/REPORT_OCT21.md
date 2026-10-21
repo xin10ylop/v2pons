@@ -67,3 +67,12 @@ has not launched since Oct 12 on Robinhood or since the Oct 15 honeypot on Base.
   outside buys of 0.0005-0.001 BNB were mostly left alone (5 of 6), and 0.015 and 0.025 BNB buys were pulled 6-7 blocks later (2 of 2). The
   late seat's paper +12.3% (in after the fleet's first buy, out after its third) assumes no reaction to our buy; at any stake worth trading
   the data says there is one.
+
+## The watch (from Oct 21 15:13 UTC)
+
+`research/chase/watch2433.py --hours 1` checks, every hour, the operator's 31 bot buyers, its 10 further BNB fleet wallets and 7 keys on
+BNB, Base and Ethereum (nonces now against an hour ago), on Robinhood (against the Oct 21 baseline) and on 23 more chains (against
+their Oct 21 nonces); the 26.65 BNB in its sweep wallet; and new fee-5000 / tick-100 / no-hook native pools on BNB (flagged at 10.4-10.7
+BNB) and Base (flagged at 1.3-4.5 ETH). Stateless, read-only, public endpoints, exit 10 when anything moved. Checked over 48 hours it
+flags the Oct 19 BNB run (buyers +2,564, fleet +1,387, the sweep wallet's 26.65 BNB arriving). A scheduled task ("Watch the 2.433
+operator", hourly at :13) runs it in a fresh cloud session and sends a push notification only when it moved.
