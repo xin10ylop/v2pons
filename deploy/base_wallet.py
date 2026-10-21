@@ -456,19 +456,19 @@ def withdraw(dest):
     pos = open_positions()
     if pos:
         sys.exit(f"{len(pos)} open position(s) in {positions_file()}: their sale needs the wallet's gas; let flip-base sell them first")
-    if has_code(dest):
-        sys.exit(f"{dest} has code (a contract, or an account with an EIP-7702 delegation): a plain transfer of 21,000 gas may fail there; "
-                 "send to a plain account (an exchange's Base deposit address is one)")
-    bal = balance(me); base, prio, mx = fees(); l1 = l1_fee_bound(120); fee = 21000 * mx + 2 * l1; value = bal - fee
+    gas = 21000                                                                          # a plain transfer to an account
+    if has_code(dest):                                                                   # a contract, or an account with an EIP-7702 delegation
+        gas = int(int(rpc("eth_estimateGas", [{"from": me, "to": dest, "value": hex(1), "data": "0x"}]), 16) * 1.3) + 5000
+    bal = balance(me); base, prio, mx = fees(); l1 = l1_fee_bound(120); fee = gas * mx + 2 * l1; value = bal - fee
     if value <= 0:
         sys.exit(f"the wallet {me} holds {bal / 1e18:.9f} ETH, not more than the transfer's fees ({fee / 1e18:.9f})")
     nonce = int(rpc("eth_getTransactionCount", [me, "pending"]), 16)
     print(f"from {me} (the Base line's wallet): {bal / 1e18:.9f} ETH\nto   {dest}: {value / 1e18:.9f} ETH on Base (chain {CHAIN_ID}), "
-          f"gas 21,000 at most {mx / 1e9:.4f} gwei + an L1 fee of at most {l1 / 1e18:.9f}: at most {fee / 1e18:.9f} ETH kept for the fees "
+          f"gas {gas:,} at most {mx / 1e9:.4f} gwei + an L1 fee of at most {l1 / 1e18:.9f}: at most {fee / 1e18:.9f} ETH kept for the fees "
           f"(what they do not use stays in the wallet), nonce {nonce}, via {', '.join(host(u) for u in send_urls())}")
     if ask("type the destination address again to send: ").strip().lower() != dest:
         sys.exit("not the same address: nothing sent")
-    raw, h = sign(acct, {"nonce": nonce, "maxFeePerGas": mx, "maxPriorityFeePerGas": prio, "gas": 21000, "to": dest, "value": value, "data": "0x"})
+    raw, h = sign(acct, {"nonce": nonce, "maxFeePerGas": mx, "maxPriorityFeePerGas": prio, "gas": gas, "to": dest, "value": value, "data": "0x"})
     send_raw(raw, h)
     wait_receipt(h)
 
