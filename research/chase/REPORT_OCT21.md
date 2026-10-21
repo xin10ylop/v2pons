@@ -43,3 +43,9 @@ has not launched since Oct 12 on Robinhood or since the Oct 15 honeypot on Base.
 - The seat (0.004 ETH at N+1, sold at a fixed time, or 1 s after a foreign buy of >= 0.005 ETH; -100% if pulled first): at 20 min +26.7%
   mean, 78 of 80 won; **at 25 min +32.9%, 77 of 80, +0.00132 ETH a pair**; at 30 min +39.5%, 76 of 80. About $50-110 a day at 16-33 pairs,
   one wallet; untested live.
+- **Ten days (Oct 11 09:00 to Oct 21 08:40 UTC, 257 pairs, research/chase/t30_daily.py): every UTC day positive.** The seat at 0.004 ETH,
+  25-minute exit: +0.2984 ETH ($767, $70 a day), per day $20 (Oct 17, 14 pairs) to $117 (Oct 19, 33 pairs); 13-39 pairs a day. 20-minute
+  exit +0.2360 ETH, 30-minute +0.3485 ETH. Of the 26 pulls inside 25 minutes, 9 came 19-20 s after a foreign buy of 0.006-0.041 ETH (the seat
+  sells first) and about 17 had no visible trigger (random early aborts, 7 of them on Oct 12, the seat's -100%, counted). Foreign buys left
+  alone reached 0.0060 ETH on some days; two buys of 0.0030 and 0.0039 ETH (Oct 12, Oct 14) were followed by a pull 1.5-3 minutes later, not
+  the 19 s reaction: 0.003 ETH is the cautious stake.
