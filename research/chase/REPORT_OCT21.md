@@ -31,3 +31,15 @@
 
 Every live line on both chains now pulls on an outside buy (or, on Base, its fleet skips the pair); the one that paid, the 2.433 family,
 has not launched since Oct 12 on Robinhood or since the Oct 15 honeypot on Base.
+
+## Robinhood V2, the 30.09 ETH tier re-checked (3 days, 80 pairs, research/chase/v2tier_scan.py, horizon 2 h)
+
+- 31, 33 and 16 launches in the three days (the last 24 h slower, gaps up to 9 h). Ten bait wallets buy round-robin every ~25 s, 0.003-0.2
+  ETH each, and never sell; the price is x1.15 at 10 min, x1.32 at 20, x1.41 at 25, x1.50 at 30, x1.68 just before the pull. Pulls: 78 of 80
+  within 2 h, median 40 min (p10 26 min); one early pull with no outside buy (12.7 min). Pool fee 0.3%; a router swap costs 0.0000027 ETH.
+- **The detector is a per-buy size threshold between 0.0041 and 0.0062 ETH**: 36 outside buys up to 0.0041 ETH were ignored (one of 0.004
+  ETH at +6 blocks; two wallets' 0.0041 + 0.0037 on one pair, 0.0078 together, ignored too); every single buy of 0.006 ETH or more was
+  followed by the pull 190-198 blocks (19-20 s) later (4 of 4).
+- The seat (0.004 ETH at N+1, sold at a fixed time, or 1 s after a foreign buy of >= 0.005 ETH; -100% if pulled first): at 20 min +26.7%
+  mean, 78 of 80 won; **at 25 min +32.9%, 77 of 80, +0.00132 ETH a pair**; at 30 min +39.5%, 76 of 80. About $50-110 a day at 16-33 pairs,
+  one wallet; untested live.
