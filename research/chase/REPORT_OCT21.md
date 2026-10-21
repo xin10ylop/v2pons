@@ -76,3 +76,5 @@ their Oct 21 nonces); the 26.65 BNB in its sweep wallet; and new fee-5000 / tick
 BNB) and Base (flagged at 1.3-4.5 ETH). Stateless, read-only, public endpoints, exit 10 when anything moved. Checked over 48 hours it
 flags the Oct 19 BNB run (buyers +2,564, fleet +1,387, the sweep wallet's 26.65 BNB arriving). A scheduled task ("Watch the 2.433
 operator", hourly at :13) runs it in a fresh cloud session and sends a push notification only when it moved.
+The scheduled task's prompt carries its own copy of watch2433.py (its fresh sessions cannot read this private repository): a change to
+the script here must be pasted into the task's prompt too. Tested Oct 21 15:15 UTC: the fresh session wrote and ran it, "quiet".
