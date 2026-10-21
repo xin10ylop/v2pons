@@ -49,3 +49,21 @@ has not launched since Oct 12 on Robinhood or since the Oct 15 honeypot on Base.
   sells first) and about 17 had no visible trigger (random early aborts, 7 of them on Oct 12, the seat's -100%, counted). Foreign buys left
   alone reached 0.0060 ETH on some days; two buys of 0.0030 and 0.0039 ETH (Oct 12, Oct 14) were followed by a pull 1.5-3 minutes later, not
   the 19 s reaction: 0.003 ETH is the cautious stake.
+
+## The 2.433 operator found again: BNB Chain, Oct 15-19 (research/chase/bsc2433_scan.py, bsc2433_price.py)
+
+- `track_2433_xchain.py` (its 31 bot-buyer wallets and keys): +44,851 transactions on BNB and +14,812 on Base since Oct 14. By day, Base
+  only Oct 14-15 (the base-0.2 stretch); BNB +18,361 / +16,131 / +1,252 / +2,636 / +5,682 a day Oct 15-20, then nothing. On Oct 19 18:21-18:33
+  UTC the buyers made their last trades and swept their BNB to `0x23055b43851c387cce0d659d388a8ed22ebe8e5a` (an EOA it also used on
+  Robinhood), which still holds 26.65 BNB. No transaction from these wallets on 25 other EVM chains (Arbitrum, Optimism, Unichain, Avalanche,
+  Linea, Sonic, Ink, Soneium, World Chain, Blast, Mode, Zora, Celo, Gnosis, opBNB, Mantle, Scroll, Berachain, Abstract, Monad, Sei, Plasma,
+  Katana; Polygon and HyperEVM unreadable). It is idle, its money parked on BNB.
+- **Its BNB line**: 750 pools Oct 15 11:30 - Oct 20 (every Uniswap v4 pool on BNB with fee 5000, tick spacing 100, no hook, native/token
+  in the window), all launched with exactly 10.5333 BNB (about $6,300, the 2.433 ETH pool's dollar size) through the PositionManager
+  `0x7a4a5c91`, pulled at a median 813 blocks (6.1 min). The Oct 20 report saw these "fixed 10.5 BNB launches" and set them aside.
+  Its fleet (the 31 + about 10 more wallets) buys 0.3-0.65 BNB each through the Universal Router from a median +15 blocks (7 s).
+- **The front seat is closed** (150 pools, senders read): when anyone else buys at or before the fleet's first buy, the pool is pulled at a
+  median +19 blocks, 8 s (68 of 74); when the fleet buys first, 74 of 76 run their normal course (pull at +877). After the fleet's first buy,
+  outside buys of 0.0005-0.001 BNB were mostly left alone (5 of 6), and 0.015 and 0.025 BNB buys were pulled 6-7 blocks later (2 of 2). The
+  late seat's paper +12.3% (in after the fleet's first buy, out after its third) assumes no reaction to our buy; at any stake worth trading
+  the data says there is one.
