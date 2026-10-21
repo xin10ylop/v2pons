@@ -146,6 +146,9 @@ BASE_V2_SCHEDULE_MIN=190
 BASE_V2_PULL_SHARE=0.30
 # a Burn within this many blocks after a buy is a reaction (on our pair with no outsider before it: the halt)
 BASE_V2_REACT_BLOCKS=10
+# 1: a Burn 1 to REACT_BLOCKS blocks after an outsider's buy on any pair of the tier ends the tier for the day; 0: logged only (the halt on
+# a reaction to our own buy stays). Oct 21: the tier pulled 2-3 blocks after 16 of 77 outsiders' buys, so 1 ended it at 01:00 UTC
+BASE_V2_REACTION_ENDS_TIER=1
 # live losses in a row that halt the line; 0 = off
 BASE_V2_LOSS_STREAK_HALT=2
 # live buys mined past the creation block + BASE_V2_LAND_MAX that halt the line; 0 = off

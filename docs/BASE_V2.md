@@ -175,7 +175,9 @@ SELL_SEND_BLOCK < SELL_RESEND_BLOCK <= HARD_BLOCK), `BASE_V2_SELL_FALLBACK_S` (3
 `BASE_V2_SELL_SLIP` (0.05; 0..0.99), `BASE_V2_SELL_DEADLINE_S` (6; 2..600), `BASE_V2_FLEET_SELL_EXIT` (1; 0..1: 0 turns the `fleet_sell` exit off), `BASE_V2_MAX_POSITIONS` (3; 1..10), `BASE_V2_MAX_PER_DAY` (20;
 0..100000), `BASE_V2_DAILY_STOP_ETH` (0.15; 0..1000), `BASE_V2_SCHEDULE_MIN` (190; HARD_BLOCK+1..5000: a Burn on a pair of the tier earlier
 than this ends the tier for the day; 220 until Oct 20, when scheduled pulls at +198 and +217 ended the tier 20+ blocks after the hard sell), `BASE_V2_PULL_SHARE` (0.30; 0.01..1: a sell taking this share of the ETH reserve on a pair of the tier
-ends the tier for the day), `BASE_V2_REACT_BLOCKS` (10; 1..100: a Burn within this many blocks after a buy is a reaction), `BASE_V2_LOSS_STREAK_HALT`
+ends the tier for the day), `BASE_V2_REACT_BLOCKS` (10; 1..100: a Burn within this many blocks after a buy is a reaction), `BASE_V2_REACTION_ENDS_TIER` (1; 0..1: 0 logs a reaction
+on someone else's buy without ending the tier, and an early Burn that is such a reaction is then no schedule change; the halt on a reaction to our
+own buy stays), `BASE_V2_LOSS_STREAK_HALT`
 (2; 0..100, 0 = off: live losses in a row that halt), `BASE_V2_LATE_HALT` (2; 0..100, 0 = off: live buys mined past N + LAND_MAX that halt),
 `BASE_V2_ETH_USD` (2570; 1..1e6, for the dollar figure only), `BASE_V2_PRIO_GWEI` (0.03; 0..100: above the creation's 0.006 and the fleet's
 0.001; a round trip of about 250k gas plus two L1 fees is about 0.03% of a 0.02 ETH stake), `BASE_V2_MAX_FEE_GWEI` (0.5; 0.000001..1000, refused

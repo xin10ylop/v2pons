@@ -55,7 +55,8 @@ THE HALTS (HALTED.base_v2 beside the log, held across restarts until the owner r
 run halts in memory): a Burn on a pair of ours before our sell, or within BASE_V2_REACT_BLOCKS after our buy even when our sell landed first,
 when no outsider bought before it (we were the trigger); BASE_V2_LOSS_STREAK_HALT live losses in a row; BASE_V2_LATE_HALT live buys mined past
 N + LAND_MAX; sold none twice, or a buy that filled with no tokens. THE TIER ENDED FOR THE DAY (`stop`, what: tier; cleared at 00:00 UTC): a
-Burn earlier than BASE_V2_SCHEDULE_MIN on any pair of the tier, a Burn 1 to REACT_BLOCKS blocks after an outsider's buy on any pair of the tier, or
+Burn earlier than BASE_V2_SCHEDULE_MIN on any pair of the tier, a Burn 1 to REACT_BLOCKS blocks after an outsider's buy on any pair of the tier (off
+with BASE_V2_REACTION_ENDS_TIER=0: then logged only, and an early Burn that is such a reaction is no schedule change), or
 a sell taking >= BASE_V2_PULL_SHARE of the ETH reserve on any pair of the tier. THE DAY STOPPED (`stop`, what: day): the live net P&L at
 -BASE_V2_DAILY_STOP_ETH, or BASE_V2_MAX_PER_DAY buys; both restored from the log's own lines at a restart.
 
@@ -296,7 +297,7 @@ def settings():
     s.DAILY_STOP_WEI = _exact("BASE_V2_DAILY_STOP_ETH", "0.15", 0, 1000, 10 ** 18)
     s.SCHEDULE_MIN = _setting("BASE_V2_SCHEDULE_MIN", "190", s.HARD_BLOCK + 1, 5000, True)
     s.PULL_SHARE_PPM = _exact("BASE_V2_PULL_SHARE", "0.30", "0.01", 1, 10 ** 6)
-    s.REACT_BLOCKS = _setting("BASE_V2_REACT_BLOCKS", "10", 1, 100, True)
+    s.REACT_BLOCKS = _setting("BASE_V2_REACT_BLOCKS", "10", 1, 100, True); s.REACTION_ENDS_TIER = _setting("BASE_V2_REACTION_ENDS_TIER", "1", 0, 1, True)
     s.LOSS_STREAK_HALT = _setting("BASE_V2_LOSS_STREAK_HALT", "2", 0, 100, True); s.LATE_HALT = _setting("BASE_V2_LATE_HALT", "2", 0, 100, True)
     s.ETH_USD = _setting("BASE_V2_ETH_USD", "2570", 1, 1e6)
     s.PRIO_WEI = _exact("BASE_V2_PRIO_GWEI", "0.03", 0, 100, 10 ** 9); s.MAX_FEE_WEI = _exact("BASE_V2_MAX_FEE_GWEI", "0.5", "0.000001", 1000, 10 ** 9)
@@ -1297,9 +1298,10 @@ def on_pull(P, B, via, pending=False, tx=None, eth_out=None, at=None):
         skip_pair(P, "pulled before our fire", block=B, pending=pending)
     if pending:
         return
-    if since_c < S.SCHEDULE_MIN:
+    reacted = so is not None and 1 <= so <= S.REACT_BLOCKS                    # (a buy in the Burn's own block did not draw it: the reactions come 2-6 blocks later)
+    if since_c < S.SCHEDULE_MIN and (S.REACTION_ENDS_TIER or not reacted):     # (with REACTION_ENDS_TIER=0 an early reaction is no schedule change)
         tier_end(P["tier"], f"a Burn at +{since_c} on {P['pair']}, earlier than BASE_V2_SCHEDULE_MIN {S.SCHEDULE_MIN}")
-    if so is not None and 1 <= so <= S.REACT_BLOCKS:                           # (a buy in the Burn's own block did not draw it: the reactions come 3-6 blocks later)
+    if reacted and S.REACTION_ENDS_TIER:
         tier_end(P["tier"], f"a Burn at +{since_c} on {P['pair']}, {so} blocks after an outsider's buy (BASE_V2_REACT_BLOCKS {S.REACT_BLOCKS}): a reaction")
     if P["trade"] is not None:
         react_check(P, B, at)

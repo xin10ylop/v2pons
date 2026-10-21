@@ -13,7 +13,8 @@ its creation-block buy logged as outsider_buy (section 9). The chain is read thr
 endpoint (BASE_V2_ARCHIVE_URL, else deploy/base_v2_sim.py's): the creations first, then the events and the first 40 swaps' transactions of
 the line's pairs only; about 10-20 minutes for 3 days.
 
-    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_v2_roster.py                        # 3 days, >= 3 pairs: the file written, the count printed
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_v2_roster.py                        # 3 days, >= 3 pairs, the file's wallets kept beside the build
+    sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_v2_roster.py --replace              # the build alone (a lookup the endpoint refused loses its wallet)
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_v2_roster.py --days 5 --min-pairs 2 --out /tmp/roster.json
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_v2_roster.py --show               # the file as it is: built, count, age
     sudo /opt/flip-venv/bin/python3 ~/v2pons/deploy/base_v2_roster.py --merge FILE         # FILE's wallets added to the file (no chain read)
@@ -139,6 +140,7 @@ def main(argv):
     ap.add_argument("--out", default=None, help="the file to write (default BASE_V2_ROSTER_FILE)")
     ap.add_argument("--force", action="store_true", help=f"write even fewer than {MIN_WALLETS} wallets")
     ap.add_argument("--show", action="store_true", help="print the file as it is and exit")
+    ap.add_argument("--replace", action="store_true", help="write the build alone; by default the file's wallets are kept beside it (a build that lost lookups never shrinks it)")
     ap.add_argument("--merge", metavar="FILE", default=None, help="add FILE's wallets (a roster built elsewhere) to the file, no chain read")
     a = ap.parse_args(argv)
     path = a.out or BV.roster_file()
@@ -154,6 +156,13 @@ def main(argv):
     n = len(data["wallets"])
     print(f"roster: {n} wallets (bought on >= {a.min_pairs} of {stats['line']} pairs of the line in {a.days} days, blocks {data['blocks'][0]:,}-{data['blocks'][1]:,}; "
           f"{stats['pairs_all']} WETH pairs in all; {stats['off_shape']} wallet(s) with the pairs but not the fleet's shape; {time.time() - t0:.0f} s)", flush=True)
+    if os.path.exists(path) and not a.replace and n >= MIN_WALLETS:
+        try:
+            kept = {w.lower() for w in json.load(open(path)).get("wallets") or []} - set(data["wallets"])
+        except Exception:
+            kept = set()
+        data["wallets"] = sorted(set(data["wallets"]) | kept)
+        print(f"kept {len(kept)} wallet(s) of the file the build did not see: {len(data['wallets'])} in all (--replace writes the build alone)", flush=True)
     if n < MIN_WALLETS and not a.force:
         sys.exit(f"only {n} wallets, under {MIN_WALLETS}: the fleet's shape may have changed or the chain was not read; {path} is NOT touched (--force writes it anyway)")
     how = write(path, data)

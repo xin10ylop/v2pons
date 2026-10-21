@@ -856,6 +856,21 @@ def outsider_in_the_burn_block_is_no_reaction():
 
 
 @test
+def reaction_ends_tier_off():
+    """BASE_V2_REACTION_ENDS_TIER=0: a Burn 3 blocks after an outsider's buy, early (+60, under SCHEDULE_MIN), on a pair of the tier is
+    logged as a reaction and ends nothing; with the default it ends the tier"""
+    buy = lambda: signed(STRANGER, 9, ROUTER, 10 ** 13, "0x7ff36ab5" + word(0) + word(128) + aword(STRANGER.address) + word(ts(N) + 600) + word(2) + aword(WETH) + aword(TOKEN))
+    for flag, stops in (("0", 0), ("1", 1)):
+        st = Stream("2.0"); c = fresh(st, BASE_V2_REACTION_ENDS_TIER=flag, BASE_V2_TAKE_PROFIT="50"); fired(c); feed(c, N + 1, N + 56)
+        flash(N + 57, [buy()], index=2); inject_burn(c, st, N + 60); feed(c, N + 57, N + 61)
+        p = wait_ev("pull")[0]
+        assert p["since_outsider"] == 3 and p["since_creation"] == 60 and p["reaction"], p
+        t = [x for x in events("stop") if x["what"] == "tier"]
+        assert len(t) == stops and E.state["tiers_ended"] == ({"1.3-2.3": "2026-10-20"} if stops else {}), t
+        assert not events("halt") and events("trade_done")[0]["exit"] == "outsider", events("trade_done")
+
+
+@test
 def dry_fleet_sell_exit_off():
     """BASE_V2_FLEET_SELL_EXIT=0: the fleet's sell on our pair is no exit; take-profit or the hard block decides"""
     st = Stream("2.0"); c = fresh(st, BASE_V2_FLEET_SELL_EXIT=0); fired(c); feed(c, N + 1, N + 39)
