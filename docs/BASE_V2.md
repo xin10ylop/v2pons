@@ -264,6 +264,18 @@ wallet, the key file and its lock, the relay (its `owner()` the wallet, `router(
   edge), `BASE_V2_MAX_POSITIONS=3`, `BASE_V2_DAILY_STOP_ETH=0.15`, the stage-2 stops; the tier's pulls moving under +220 end it for the
   day by section 7.
 
+## 9a. Stage 1's result, Oct 21 2026: the seat is closed (the line stopped)
+
+- The dry run agreed with the chain: 23 dry trades on the box Oct 20 22:10 - Oct 21 01:00 UTC, all take-profit, +27.6% mean; a replay of the
+  day's 79 tolerant pairs from the chain, +27.6% mean, 79 of 79; on the 9 pairs both covered, within 0.1 point and one block.
+- Live, 0.002 ETH at N+1, two trades (08:00 and 08:11 UTC): pair 0x755e0db3, our buy landed at +1 and the fleet never came (the only swaps
+  in 272 blocks our buy and our hard sell at +177: -1.1% with gas), while every neighbouring pair had the fleet from +5; pair 0x340b9933,
+  a sniper's buy at +3 and the Burn at +6, our sell behind it in the same block: -100%. Net -0.00202 ETH.
+- The day's chain: every outsider's buy before the pull on the 79 pairs (8) was followed by the pull within 10 blocks; 16 of 77 pulls came
+  2-3 blocks after an outsider's buy (at +28 to +467). The tier no longer tolerates outsiders (it did Oct 15-20, or the outsiders then
+  were the legacy fleet the roster missed); the dry run cannot see a reaction to our own buy, so its +27% is not a result.
+- The service was stopped and disabled with HALTED.base_v2 in place. A seat on this line needs a buy the operator does not see as foreign.
+
 ## 10. What was not measured
 
 Whether the two Oct-20 bots are whitelisted rather than tolerated (the tolerant-tier evidence is about 40 outsider events, 31 of them
