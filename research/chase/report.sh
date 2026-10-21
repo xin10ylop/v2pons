@@ -25,5 +25,5 @@ RHB=$(python3 - "$SINCE" <<'PY'
 import sys, time, calendar; ts = calendar.timegm(time.strptime(sys.argv[1], "%Y-%m-%d %H:%M")); print(max(1, int(93446000 - (1792501200 - ts) * 10)))
 PY
 )
-python3 "$HERE/v2scan.py" $RH 0x8bceaa40b9acdfaedf85adf4ff01f5ad6517937f 0xf41eacad73d5ac4066ae25b4b93d0c4a7ccce9fd $RHB rh_v2.json 3000 1500 && python3 "$HERE/v2price.py" rh_v2.json 0x0000000000000000000000000000000000000000 0.1 2>/dev/null | tee v2_rh.txt
+python3 "$HERE/v2scan.py" $RH 0x8bceaa40b9acdfaedf85adf4ff01f5ad6517937f 0x0bd7d308f8e1639fab988df18a8011f41eacad73 $RHB rh_v2.json 3000 1500 && python3 "$HERE/v2price.py" rh_v2.json 0x0000000000000000000000000000000000000000 0.1 2>/dev/null | tee v2_rh.txt
 echo "== done: $OUT"
