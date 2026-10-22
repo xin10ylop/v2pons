@@ -12,7 +12,7 @@ import os
 HELIUS = os.environ.get("HELIUS_API_KEY", "").strip()                            # set in the cloud environment's secrets; never printed
 U = [f"https://mainnet.helius-rpc.com/?api-key={HELIUS}"] if HELIUS else ["https://solana-rpc.publicnode.com", "https://api.mainnet-beta.solana.com"]
 WSOL = "So11111111111111111111111111111111111111112"
-PROG = {"cpmm": ("CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1R", "DNXgeM9EiiaAbaWvwjHj9fQQLAX5ZsfHyvmYUNRAdNC8"),
+PROG = {"cpmm": ("CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C", "DNXgeM9EiiaAbaWvwjHj9fQQLAX5ZsfHyvmYUNRAdNC8"),
         "ammv4": ("675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8", "7YttLkHDoNj9wyDur5pM1ejNaAvT9X4eqaYcHQqtj2G5")}
 # instruction account positions: CPMM initialize (pool_state 3, token_0_mint 4, token_1_mint 5, lp_mint 6, vault_0 10, vault_1 11);
 # AMM v4 initialize2 (amm 4, lp_mint 7, coin_mint 8, pc_mint 9, coin vault 10, pc vault 11)
@@ -25,7 +25,7 @@ def rpc(m, p):
     err = None
     for k in range(10):
         with _lock:
-            _n[0] += 1; u = U[_n[0] % 2]; wait = _next[0] - time.time(); _next[0] = max(_next[0], time.time()) + GAP
+            _n[0] += 1; u = U[_n[0] % len(U)]; wait = _next[0] - time.time(); _next[0] = max(_next[0], time.time()) + GAP
         if wait > 0:
             time.sleep(wait)
         try:
