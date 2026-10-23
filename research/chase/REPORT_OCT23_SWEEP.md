@@ -40,3 +40,13 @@ Across all 28 chains, nothing has been shown to accept a real-sized outside buy 
 
 - `rugcensus.py HOURS OUT [CHAIN...]`: the behavioural census above.
 - `rugline.py RUGS CHAIN SHAPE SIZE OUT [N]`: one line's pools, fleet vs outsiders, and how soon the pull follows an outside buy.
+
+## Correction (same day): the operator is NOT idle — it is live on BNB, found by bytecode
+
+The wallet-based watch said the operator was idle. That was a search error, caught by matching the operator's **token bytecode** (codehash `63ad5291…`, byte-identical every launch) instead of its wallets. Hashing every pulled-pool token in the datasets found the operator's token **414 times on BNB in 24 h** — it restarted on fresh wallets (so the wallet-watch was blind) through the **public PancakeSwap V2 router**, at **6.17 BNB (~$4k, 274 pools) and 17.6 BNB (~$11k, 140 pools)**, ~14–17 pools/hour, confirmed still launching this hour.
+
+- The "97% of outside buys tolerated" first cut was **wrong — contaminated**: the operator's fleet is ~40+ rotating bot wallets (nonce 47,000–56,000) each buying the scripted ~0.59 BNB, which the filter miscounted as outsiders.
+- Isolating **genuine** retail buys (0.01–0.25 BNB from wallets appearing in one pool): **6 of 6 were pulled on within 2–10 blocks (~1–5 s).** The seat is closed, same detector as the 10.5 BNB version in REPORT_OCT21.md. No tradeable seat.
+- `watch2433.py` now has `op_bnb_tokens()`: it codehash-confirms the operator's live BNB launch rate each hour (informational, no push; pushes only if the rate jumps far above normal or it reappears elsewhere). The known wallets and parked 26.65 BNB are still tracked.
+
+**Net:** the operator is bigger and busier than ever, but still rugs any real outsider in seconds. Conclusion on a tradeable seat is unchanged — only the Solana line remains a candidate.

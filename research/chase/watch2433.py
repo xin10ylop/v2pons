@@ -51,6 +51,9 @@ OTHER = {"arbitrum": "https://arb1.arbitrum.io/rpc", "optimism": "https://mainne
          "monad": "https://rpc.monad.xyz", "sei": "https://evm-rpc.sei-apis.com", "plasma": "https://rpc.plasma.to", "katana": "https://rpc.katana.network"}
 OTHER_BASELINE = {"arbitrum": {"consol_31c8": 11}, "optimism": {"consol_31c8": 1}}
 PM = {"bsc": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df", "base": "0x498581ff718922c3f8e6a244956af099b2652b2b"}
+PCS_V2_FACTORY = "0xca143ce32fe78f1f7019d7d551a6402fc5350c73"   # PancakeSwap V2: the operator now launches through the public router
+T_PAIR = "0x0d3648bd0f6ba80134a33ba9275ac585d9d315f0ad8355cddefde31afa28d0e9"   # PairCreated(address,address,address,uint256)
+OP_TOKEN_CODEHASH = "63ad5291cdef5d82cddf8e5d8d4c48bd6ad1de2394616ab66a6c6c6cceae63bb"   # the 2.433 token, byte-identical every launch
 T_INIT = "0xdd466e674ea557f56295e2d0218a125ea4b4f0f6f3307b95f85e6110838d6438"   # Initialize(bytes32,address,address,uint24,int24,address,uint160,int24)
 moved, failed = [], []
 
@@ -152,6 +155,42 @@ def fingerprint(ch):
         say(f"FAILED {ch} fingerprint: {e}", "failed")
 
 
+
+def op_bnb_tokens():
+    """the operator's live launch rate on BNB, confirmed by its token's byte-identical code (codehash) - catches it on fresh wallets
+    and whatever launch amount it uses. Vanity 7777/ffff endings only narrow the set of tokens to codehash-check (7777 alone is common)."""
+    try:
+        from Crypto.Hash import keccak
+        kec = lambda b: keccak.new(digest_bits=256, data=b).hexdigest()
+    except Exception:
+        say("FAILED bsc operator-token: no keccak (pip install pycryptodome)", "failed"); return
+    try:
+        urls = EP["bsc_logs"]; head = int(call(urls, "eth_blockNumber", []), 16); a0 = head - int(HOURS * 3600 / BLOCK_S["bsc"])
+        toks = []
+        for a in range(a0, head + 1, 2000):
+            for l in call(urls, "eth_getLogs", [{"address": PCS_V2_FACTORY, "topics": [T_PAIR], "fromBlock": hex(a), "toBlock": hex(min(a + 1999, head))}]):
+                for t in ("0x" + l["topics"][1][26:], "0x" + l["topics"][2][26:]):
+                    if t.endswith(("7777", "ffff", "8888")):
+                        toks.append(t)
+
+        def is_op(t):
+            try:
+                c = call(EP["bsc"], "eth_getCode", [t, "latest"], tries=3)
+                return len(c) > 2 and kec(bytes.fromhex(c[2:])) == OP_TOKEN_CODEHASH
+            except Exception:
+                return False
+        with cf.ThreadPoolExecutor(10) as ex:
+            confirmed = sum(ex.map(is_op, toks[:600]))
+        # Informational, not a push: the operator's BNB business is known and its seat is closed (every real outside buy is
+        # pulled on in seconds). A rate far above the usual ~10-20/h is the one thing worth flagging.
+        if confirmed > 60 * HOURS:
+            say(f"OPERATOR BNB rate jumped: {confirmed} byte-identical 2.433 pools in {HOURS:g} h (usual ~10-20/h) - check whether it changed its line", "moved")
+        else:
+            say(f"bsc operator-token: {confirmed} byte-identical 2.433 pools in {HOURS:g} h (of {len(toks)} vanity launches) - its usual closed-seat BNB business")
+    except Exception as e:
+        say(f"FAILED bsc operator-token: {e}", "failed")
+
+
 def other_chains():
     def one(item):
         name, u = item
@@ -178,6 +217,7 @@ if __name__ == "__main__":
         wallets_check(ch)
     rh_check()
     fingerprint("bsc"); fingerprint("base")
+    op_bnb_tokens()
     other_chains()
     print("RESULT:", "MOVED" if moved else ("INCOMPLETE" if failed else "QUIET"), flush=True)
     sys.exit(10 if moved else 2 if failed else 0)
