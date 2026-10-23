@@ -30,7 +30,9 @@ BUYERS31 = ["0x020a1015916c3faf296ce9c28ad7a1eb51d5d00c", "0x033258a16c137c8de55
 KEYS = {"admin_0152": "0x0152c954397718abfe4716eb3aaf86903cff3796", "admin_5b2b": "0x5b2b20e15e96b015908a323ddbaee4aa25b04f4d",
         "hub_6c3b": "0x6c3bd8f6fbca130f95305e9fa5a37d1dbf31622d", "next_8b49": "0x8b499c5a56d5d0bed60527463bb1de389d6327e1",
         "consol_31c8": "0x31c8cf1c5edf64777d70727a92a6f46b6b794664", "collect_8f79": "0x8f79d153630b327cc84487804f152972cce93cb4",
-        "sweep_2305": "0x23055b43851c387cce0d659d388a8ed22ebe8e5a"}
+        "sweep_2305": "0x23055b43851c387cce0d659d388a8ed22ebe8e5a",
+        "admin_219a": "0x219a5d525c4acc924bcbbeca1c2d48833815fd96",   # deployed the Oct BNB router 0x37dc44b6, bridged Base -> BNB Oct 15
+        "next_4a46": "0x4a46c0f19026072cfc5fb1b43504cf1a0d1f5fe6"}    # the next wallet in its BNB launch chain after sweep_2305
 FLEET10 = ["0x2d8c5fe56d3df6ba7a2e1a3ba1e7df954342c80b", "0x47db4bc0580d56ca5167db7e0aa63f0441da88f1", "0x53463474f1de355c41cbe4a17d229dcb98ab385c",
            "0x56f8c7301f3db46415047bf681d2ce475ec0ac66", "0x5f0190f108f21a46c8f6249890b80089dd844f61", "0xa2deb9f0339068626db83993f84fef823f648c40",
            "0xaab209e7b308e0c601e9106d9cef1226f93be3ba", "0xd55e8a229943e8f8c20a80e5ee5a4983ae4145a0", "0xec121a88c2e2a6fee94939390fc18d627bfca2d3",
@@ -39,7 +41,7 @@ EP = {"bsc": ["https://bsc-mainnet.public.blastapi.io", "https://bsc.meowrpc.com
       "base": ["https://gateway.tenderly.co/public/base", "https://base.drpc.org", "https://mainnet.base.org"],
       "eth": ["https://gateway.tenderly.co/public/mainnet", "https://eth.drpc.org"], "rh": ["https://rpc.mainnet.chain.robinhood.com"]}
 BLOCK_S = {"bsc": 0.45, "base": 2.0, "eth": 12.0}
-RH_BASELINE = {"buyers31": 1223687, "admin_0152": 228, "hub_6c3b": 10, "next_8b49": 8, "consol_31c8": 1, "collect_8f79": 8, "sweep_2305": 6}
+RH_BASELINE = {"buyers31": 1223687, "admin_0152": 228, "hub_6c3b": 10, "next_8b49": 8, "consol_31c8": 1, "collect_8f79": 8, "sweep_2305": 6, "next_4a46": 7}
 OTHER = {"arbitrum": "https://arb1.arbitrum.io/rpc", "optimism": "https://mainnet.optimism.io", "unichain": "https://mainnet.unichain.org",
          "avalanche": "https://api.avax.network/ext/bc/C/rpc", "linea": "https://rpc.linea.build", "sonic": "https://rpc.soniclabs.com",
          "ink": "https://rpc-gel.inkonchain.com", "soneium": "https://rpc.soneium.org", "worldchain": "https://worldchain-mainnet.g.alchemy.com/public",
