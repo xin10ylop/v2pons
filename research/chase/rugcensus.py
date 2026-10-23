@@ -80,8 +80,13 @@ def a_of(topic):
 def one(ch, hours):
     url = V.CH[ch][0] if ch in V.CH else EP[ch][0][0]; bt = V.CH[ch][1] if ch in V.CH else 2.0
     try:
-        head = int(V.rpc(EP[ch][0][0], "eth_blockNumber", []), 16)
-        t_head = int(V.rpc(EP[ch][0][0], "eth_getBlockByNumber", [hex(head), False])["timestamp"], 16)
+        hb = None
+        for _ in range(5):                                   # "latest" itself: a load-balanced RPC can answer a block number another node lacks
+            hb = V.rpc(EP[ch][0][0], "eth_getBlockByNumber", ["latest", False])
+            if hb:
+                break
+            time.sleep(2)
+        head, t_head = int(hb["number"], 16), int(hb["timestamp"], 16)
         a = head - int(hours * 3600 / bt)
         t_a = int(V.rpc(EP[ch][0][0], "eth_getBlockByNumber", [hex(a), False])["timestamp"], 16)
         bt = (t_head - t_a) / max(1, head - a); a = head - int(hours * 3600 / bt); pull_blocks = int(PULL_H * 3600 / bt)
