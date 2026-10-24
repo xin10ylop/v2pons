@@ -3,7 +3,8 @@
 
 census.py's rpc() sleeps 5-50 s on every 429 per thread and runs 3 threads, so on this Helius key it reached only 1.5-3 calls/s on
 the 30-day run. Here: one shared, adaptive limiter (the gap between calls grows 15% on a 429, with a 0.3 s pause for everyone, and
-shrinks 1% on a success, between GAP_MIN and 1 s), 8 threads. Prints call/429 counters and the gap with the progress lines."""
+shrinks 1% on a success, between GAP_MIN and 1 s), 8 threads. Prints call/429 counters and the gap with the progress lines.
+A getTransaction refused as a version-1 transaction (-32015; census.py asks for version 0) is asked again allowing version 1."""
 import json, os, sys, time, threading, collections, urllib.request, urllib.error, concurrent.futures
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import census as C
@@ -28,6 +29,15 @@ def rpc(m, p):
                     _gap[0] = max(GAP_MIN, _gap[0] * 0.99); STATS["gap_ms"] = int(_gap[0] * 1000)
                 return r["result"]
             err = r.get("error"); STATS["rpc_error"] += 1
+            code = (err or {}).get("code") if isinstance(err, dict) else None
+            if code == -32015 and m == "getTransaction" and isinstance(p[1], dict) and p[1].get("maxSupportedTransactionVersion") == 0:
+                p = [p[0], dict(p[1], maxSupportedTransactionVersion=1)]       # a version-1 transaction: ask again allowing it
+                STATS["v1_retry"] += 1
+                continue
+            if code in (-32015, -32602):                                     # deterministic: retrying will not help
+                break
+            if STATS["rpc_error"] <= 5:                                       # the first few, to see what they are (no key in them)
+                _print(f"    rpc error on {m}: {json.dumps(err)[:200]}", flush=True)
         except urllib.error.HTTPError as e:
             err = e
             if e.code == 429:

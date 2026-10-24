@@ -15,8 +15,27 @@ res = [r for r in res if r["n_scanned"] >= min_pools]
 res.sort(key=lambda r: (order[r["verdict"]], -(r["seat"]["seat"]["1.0"] or 0)))
 f = lambda x, d=2: "-" if x is None else f"{x:.{d}f}"
 print("| # | line | pools (pulled) | /day | pool SOL | pump x (range) | fleet: wallets, pools, buys at +s | pull min (median) | pre-fleet for/weak/against "
-      "(max held SOL) [reduced fleet; skips: inconclusive, base rate] | verdict | seat 0.5 / 1 / 2 SOL (won, lost to pull) | first-buy exit 1 SOL | active |")
-print("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
+      "(max held SOL) [reduced fleet; skips: inconclusive, base rate] | verdict | seat 0.5 / 1 / 2 SOL (won, lost to pull) | first-buy exit 1 SOL | active | notes |")
+print("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
+same = {}
+for r in res:                                      # lines that are the same pools (a funder line and its one creator)
+    same.setdefault(tuple(sorted(o["pool"] for o in r["pools"])), []).append(r["id"])
+def notes(r):
+    out = []
+    fees = [x for x in r["fees"] if abs(x - 0.0025) > 1e-9]
+    if fees:
+        sp = r["seat_fee_pool"]
+        out.append(f"pool fee {'/'.join(f'{100 * x:g}%' for x in r['fees'])}: seat at the pool's fee {sp['0.5']:+.2f} / {sp['1.0']:+.2f} / {sp['2.0']:+.2f}")
+    if r["kind"] == "hubsol":
+        out.append("creators funded from exchanges: fleet identity unverified (repeat buyers could be victims)")
+    if r["kind"] == "chain":
+        out.append("29giReft operator: DrMHe2D7 then 29giReft")
+    others = [x for x in same.get(tuple(sorted(o["pool"] for o in r["pools"])), []) if x != r["id"]]
+    if others:
+        out.append(f"same pools as {others[0][:8]}")
+    return "; ".join(out)
+
+
 for n, r in enumerate(res, 1):
     e = r["evidence"]; s = r["seat"]["seat"]; sizes = r["sol_sizes"]
     sol = f"{sizes[0]}" if len(sizes) == 1 else f"{sizes[0]}-{sizes[-1]} ({len(sizes)} sizes)"
@@ -26,7 +45,7 @@ for n, r in enumerate(res, 1):
           f"({f(r['pull_min_median'], 0)}) | {e['for_held']}/{e['for_weak']}/{e['against']} ({f(e['max_held_sol'])}) [{e.get('fleet_reduced', 0)}; {e['skip_inconclusive']}, "
           f"{f(e['base_skip'])}] | {r['verdict']} | "
           f"{s['0.5']:+.2f} / {s['1.0']:+.2f} / {s['2.0']:+.2f} ({r['seat_won']['seat']['1.0']}, {r['seat_lost_to_pull']['1.0']}) | "
-          f"{r['seat']['seat_first']['1.0']:+.2f} | {day(r['first'])}..{day(r['last'])} |")
+          f"{r['seat']['seat_first']['1.0']:+.2f} | {day(r['first'])}..{day(r['last'])} | {notes(r)} |")
 print("\nPre-fleet outsider cases (verified outsiders who bought before the operator's first buy):")
 for r in res:
     for c in r["cases"]:

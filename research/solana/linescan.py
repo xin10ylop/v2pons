@@ -4,7 +4,8 @@ HELIUS_API_KEY). EXTRA files (linehist.py output) add pools the census missed; t
 
 Lines: a funder that fed 4+ pools, or a creator with 3+ pools (census.py's funder: the sender of the creator's first SOL); with
 CHAINS=name=funderA+funderB also one operator's successive funders as one line; and (HUBSOL=1, the default) pools whose creator
-was funded by a hub or an unknown sender, fresh (under 20 transactions), >= 1 SOL and pulled, grouped by the exact SOL amount (3+). Only lines with at least one pull in the census are
+was funded by a hub or an unknown sender, fresh (under 20 transactions), >= 1 SOL and pulled, grouped by the exact SOL amount (3+);
+and with OPS=clusters.json (opclusters.py) each creator cluster as one line. Only lines with at least one pull in the census are
 fetched; LaunchLab's migrator RAYpQbFN... is left out (it never pulls). LINES=a,b keeps only lines whose key contains a or b.
 
 fetch (cached in OUTDIR, resumable):
@@ -32,13 +33,15 @@ import census_fast as CF
 
 KEY = os.environ["HELIUS_API_KEY"].strip()
 rpc = CF.rpc
+C.rpc = CF.rpc                                                                # census.creator_profile / parse use the adaptive limiter too
 LAUNCHLAB = "RAYpQbFNq9i3mu6cKpTKKRwwHFDeK5AuZz8xvxUrCgw"
 B58 = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 CPMM_INIT = bytes.fromhex("afaf6d1f0d989bed")
-HGAP = float(os.environ.get("HELIUS_GAP", "0.2")); _hl = threading.Lock(); _hn = [0.0]; HSTATS = collections.Counter()
+HGAP = float(os.environ.get("HELIUS_GAP", "0.2")); _hl = threading.Lock(); _hn = [0.0]; _hg = [HGAP]; HSTATS = collections.Counter()
 SIZES = (0.5, 1.0, 2.0); FEE = 0.0025; MIN_CASE = 0.01; DUST = 0.01         # an operator buy is >= DUST SOL
 ONLY = [x for x in os.environ.get("LINES", "").split(",") if x]              # testing: only lines whose key contains one of these
-HUBSOL = os.environ.get("HUBSOL", "1") == "1"                               # also the hub-funded pools grouped by exact SOL amount
+HUBSOL = os.environ.get("HUBSOL", "1") == "1"
+OPS = os.environ.get("OPS", "")                                               # opclusters.py's output: {name: [creators]}, one line each                               # also the hub-funded pools grouped by exact SOL amount
 CHAINS = {c.split("=")[0]: c.split("=")[1].split("+") for c in os.environ.get("CHAINS", "").split(",") if "=" in c}  # name=funderA+funderB
 
 
@@ -50,21 +53,24 @@ def b58d(s):
 
 
 def helius(url, body=None):
-    for k in range(10):
-        with _hl:
-            w = _hn[0] - time.time(); _hn[0] = max(_hn[0], time.time()) + HGAP
+    for k in range(40):
+        with _hl:                                     # adaptive: the gap grows 15% on a 429 and shrinks 1% on a success
+            w = _hn[0] - time.time(); _hn[0] = max(_hn[0], time.time()) + _hg[0]
         if w > 0:
             time.sleep(w)
         try:
             req = urllib.request.Request(url, json.dumps(body).encode() if body is not None else None,
                                          {"Content-Type": "application/json", "User-Agent": "research"})
             HSTATS["calls"] += 1
-            return json.load(urllib.request.urlopen(req, timeout=90))
+            out = json.load(urllib.request.urlopen(req, timeout=90))
+            with _hl:
+                _hg[0] = max(HGAP, _hg[0] * 0.99); HSTATS["gap_ms"] = int(_hg[0] * 1000)
+            return out
         except urllib.error.HTTPError as e:
             HSTATS[f"http{e.code}"] += 1
             if e.code in (429, 500, 502, 503, 504):
                 with _hl:
-                    _hn[0] = max(_hn[0], time.time()) + 1.5
+                    _hg[0] = min(3.0, _hg[0] * 1.15); _hn[0] = max(_hn[0], time.time()) + 0.5
                 continue
             raise RuntimeError(f"helius HTTP {e.code}")
         except Exception:
@@ -124,6 +130,11 @@ def build_lines(pools, hubs=None):
             if (not p.get("funder") or hubs.get(p["funder"], {}).get("hub")) and (p.get("n") or 99) < 20 and p["sol"] >= 1 and census_pulled(p):
                 bys[round(p["sol"], 3)].append(p)
         lines += [{"key": f"hubsol:{a}", "kind": "hubsol", "id": f"hub-funded {a} SOL", "pools": ps} for a, ps in bys.items() if len(ps) >= 3]
+    if OPS:                                          # creator clusters (opclusters.py): one operator behind exchange-funded creators
+        for name, cs in json.load(open(OPS)).items():
+            ps = [p for c in cs for p in byc.get(c, [])]
+            if len(ps) >= 3:
+                lines.append({"key": "ops:" + name, "kind": "ops", "id": name, "members": cs, "pools": ps})
     for name, addrs in CHAINS.items():                                       # one operator's successive funders, as one more line
         ps = [p for a in addrs for p in byf.get(a, [])]
         if ps:
@@ -576,10 +587,10 @@ def analyse(L, R, TR, provL, wallets, hubs, bought, sold, generic, clusters, flo
     # line medians (pools without a pre-fleet case)
     clean = [o for o in pools_out if "pre" not in o]
     med = lambda xs: st.median(xs) if xs else None
-    ref_pull = med([o["pull_s"] for o in clean if o["pulled"]])
+    ref_pull = med([o["pull_s"] for o in clean if o["pulled"]]) or med([o["pull_s"] for o in pools_out if o["pulled"]])  # no clean pool: all
     ref_last = med([o["last_op_s"] for o in pools_out if o.get("last_op_s") is not None])
     ref_first = med([o["first_op_s"] for o in pools_out if o.get("first_op_s") is not None])
-    ref_op = med([o["op_sol"] for o in clean if o["op_buys"]])
+    ref_op = med([o["op_sol"] for o in clean if o["op_buys"]]) or med([o["op_sol"] for o in pools_out if o["op_buys"]])
     min_clean_pull = min([o["pull_s"] for o in clean if o["pulled"]], default=None)
     for o in pools_out:
         c = o.get("pre")
