@@ -1,17 +1,110 @@
-rh: 137 line-days from 42 days
+rh: 323 line-days from 68 days
 
 == NEW lines (not in any earlier report)
-  v4 fee 2500 ts 25 via 0x58daec3116aae6d93017baaea7749052                                              days   4 (20260814..20260928) pools     32 | TOLERANT | real outside buys sold 326 rugged 3 (with an exit window 136) | fronted: fleet came 9 / none 5 | seat1 median +9.4%
+  v4 fee 9000 ts 90 via 0x58daec3116aae6d93017baaea7749052                                              days  21 (20260812..20260912) pools    239 | TOLERANT | real outside buys sold 430 rugged 8 (with an exit window 1171) | fronted: fleet came 39 / none 29 | seat1 median +6.2%
+      candidate 20260812_00 n    8 TOLERANT+OPEN  T+424   seat1 +5.2% seat3 +0.0% | sold 19 rugged 0 held 19 | early outside pnl -0.0278
+      candidate 20260813_00 n    8 TOLERANT       T+931   seat1 +8.8% seat3 +44.8% | sold 61 rugged 2 held 81 | early outside pnl +0.1765
+      candidate 20260814_00 n   11 TOLERANT       T+5364  seat1 +64.0% seat3 +64.0% | sold 69 rugged 0 held 107 | early outside pnl -0.1243
+      candidate 20260815_00 n    9 TOLERANT       T+1540  seat1 +6.2% seat3 +0.0% | sold 22 rugged 0 held 10 | early outside pnl +0.0225
+      candidate 20260820_00 n   13 TOLERANT       T+619   seat1 +2.4% seat3 +9.8% | sold 2 rugged 0 held 13 | early outside pnl +0.0078
+      candidate 20260823_00 n   13 TOLERANT       T+nan   seat1 +nan% seat3 +nan% | sold 2 rugged 0 held 3 | early outside pnl -0.0156
+      candidate 20260826_00 n   11 TOLERANT       T+102   seat1 +1.0% seat3 +9.3% | sold 4 rugged 0 held 45 | early outside pnl +0.0000
+      candidate 20260827_00 n   11 TOLERANT+OPEN  T+178   seat1 +18.3% seat3 +34.2% | sold 59 rugged 2 held 94 | early outside pnl +0.0000
+      candidate 20260829_00 n    9 OPEN           T+980   seat1 +5.5% seat3 +0.0% | sold 0 rugged 0 held 10 | early outside pnl +0.0000
+      candidate 20260830_00 n   12 TOLERANT       T+377   seat1 +38.6% seat3 +43.8% | sold 7 rugged 1 held 47 | early outside pnl +0.0000
+      candidate 20260831_00 n   10 TOLERANT+OPEN  T+491.5 seat1 +3.4% seat3 +12.3% | sold 8 rugged 0 held 86 | early outside pnl +0.0000
+      candidate 20260901_00 n   15 TOLERANT+OPEN  T+509.5 seat1 +4.1% seat3 +11.5% | sold 34 rugged 1 held 106 | early outside pnl -0.0026
+      candidate 20260902_00 n   17 TOLERANT+OPEN  T+1333  seat1 +9.4% seat3 +17.6% | sold 10 rugged 2 held 69 | early outside pnl +0.0539
+      candidate 20260903_00 n   14 TOLERANT+OPEN  T+335   seat1 +20.9% seat3 +217.4% | sold 86 rugged 0 held 87 | early outside pnl +0.0361
+      candidate 20260905_00 n   15 TOLERANT+OPEN  T+4107  seat1 +5.9% seat3 +25.4% | sold 3 rugged 0 held 41 | early outside pnl +0.0000
+      candidate 20260908_00 n   14 TOLERANT+OPEN  T+738   seat1 +8.0% seat3 +15.5% | sold 21 rugged 0 held 45 | early outside pnl +0.0376
+      candidate 20260910_00 n   11 TOLERANT       T+317   seat1 +3.3% seat3 +38.6% | sold 15 rugged 0 held 25 | early outside pnl -0.0046
+      candidate 20260911_00 n    8 TOLERANT+OPEN  T+935   seat1 +10.5% seat3 +13.9% | sold 8 rugged 0 held 34 | early outside pnl -0.0016
+      candidate 20260912_00 n    9 UNTESTED       T+5294  seat1 +241.1% seat3 +2035.6% | sold 0 rugged 0 held 12 | early outside pnl +0.0000
+  v4 fee 2500 ts 25 via 0x58daec3116aae6d93017baaea7749052                                              days  15 (20260814..20260928) pools    150 | TOLERANT | real outside buys sold 786 rugged 9 (with an exit window 975) | fronted: fleet came 23 / none 21 | seat1 median +6.7%
       candidate 20260814_00 n    8 TOLERANT       T+1195  seat1 +17.6% seat3 +43.0% | sold 257 rugged 0 held 175 | early outside pnl +0.0000
       candidate 20260819_00 n    8 TOLERANT+OPEN  T+142   seat1 +11.5% seat3 +15.9% | sold 41 rugged 0 held 125 | early outside pnl -0.0181
+      candidate 20260823_00 n    8 TOLERANT       T+nan   seat1 +nan% seat3 +nan% | sold 9 rugged 0 held 45 | early outside pnl -0.0244
+      candidate 20260826_00 n   11 TOLERANT+OPEN  T+241   seat1 +8.6% seat3 +32.9% | sold 53 rugged 0 held 158 | early outside pnl -7.3471
+      candidate 20260827_00 n    8 TOLERANT       T+714   seat1 +3.3% seat3 +4.9% | sold 212 rugged 2 held 320 | early outside pnl -0.2375
+      candidate 20260830_00 n   10 TOLERANT       T+4     seat1 +10.9% seat3 +0.0% | sold 81 rugged 0 held 75 | early outside pnl -0.0002
+      candidate 20260901_00 n   11 TOLERANT       T+834   seat1 +6.0% seat3 +26.7% | sold 37 rugged 0 held 65 | early outside pnl -0.0580
+      candidate 20260904_00 n   14 TOLERANT       T+393   seat1 +2.5% seat3 +0.0% | sold 2 rugged 0 held 9 | early outside pnl +0.0005
+      candidate 20260907_00 n    9 TOLERANT+OPEN  T+5743  seat1 +1.4% seat3 +0.0% | sold 3 rugged 0 held 11 | early outside pnl -0.1519
+      candidate 20260908_00 n   11 TOLERANT+OPEN  T+4220  seat1 +80.3% seat3 +205.7% | sold 33 rugged 0 held 12 | early outside pnl -0.0126
+      candidate 20260910_00 n    9 TOLERANT       T+604   seat1 +20.4% seat3 +84.2% | sold 21 rugged 0 held 49 | early outside pnl +0.0000
+      candidate 20260911_00 n   16 TOLERANT       T+303   seat1 +1.4% seat3 +7.0% | sold 9 rugged 4 held 23 | early outside pnl +0.0000
       candidate 20260927_00 n    8 TOLERANT+OPEN  T+1892  seat1 +7.3% seat3 +4.9% | sold 7 rugged 2 held 14 | early outside pnl +0.0016
       candidate 20260928_00 n    8 TOLERANT+OPEN  T+5851  seat1 +1.4% seat3 +6.7% | sold 21 rugged 1 held 58 | early outside pnl -0.0987
+  v4 fee 100000 ts 1000 via 0x58daec3116aae6d93017baaea774                                              days  17 (20260827..20260930) pools    225 | TOLERANT | real outside buys sold 62 rugged 6 (with an exit window 419) | fronted: fleet came 47 / none 23 | seat1 median -11.1%
+      candidate 20260830_00 n   13 TOLERANT+OPEN  T+1260  seat1 -10.8% seat3 +2.9% | sold 23 rugged 2 held 56 | early outside pnl -0.3780
+      candidate 20260831_00 n   12 TOLERANT       T+1155.5 seat1 -12.4% seat3 +0.0% | sold 3 rugged 0 held 35 | early outside pnl -0.0218
+      candidate 20260901_00 n   21 TOLERANT       T+668   seat1 -14.0% seat3 +25.8% | sold 12 rugged 0 held 56 | early outside pnl +0.0000
+      candidate 20260904_00 n   20 UNTESTED       T+177   seat1 +6.0% seat3 +35.3% | sold 0 rugged 1 held 16 | early outside pnl +0.0000
+      candidate 20260905_00 n   17 TOLERANT       T+388   seat1 -7.9% seat3 +0.0% | sold 2 rugged 0 held 21 | early outside pnl +0.0000
+      candidate 20260906_00 n   12 TOLERANT       T+2167  seat1 +9.2% seat3 +0.0% | sold 2 rugged 0 held 23 | early outside pnl +0.0000
+      candidate 20260907_00 n   13 TOLERANT       T+841   seat1 -11.1% seat3 +7.8% | sold 10 rugged 1 held 24 | early outside pnl +0.0000
+      candidate 20260908_00 n    8 TOLERANT+OPEN  T+686   seat1 -4.0% seat3 +0.0% | sold 3 rugged 0 held 6 | early outside pnl -0.0017
+      candidate 20260909_00 n    8 TOLERANT+OPEN  T+766.5 seat1 -11.7% seat3 +0.0% | sold 3 rugged 0 held 15 | early outside pnl +0.0000
+      candidate 20260911_00 n   18 TOLERANT+OPEN  T+758   seat1 -11.1% seat3 +0.1% | sold 2 rugged 0 held 41 | early outside pnl +0.0012
+      candidate 20260912_00 n   14 TOLERANT+OPEN  T+356   seat1 -16.3% seat3 +0.0% | sold 2 rugged 1 held 14 | early outside pnl +0.0000
+  v4 fee 50000 ts 500 via 0x58daec3116aae6d93017baaea77490                                              days  11 (20260826..20260908) pools    147 | TOLERANT | real outside buys sold 74 rugged 9 (with an exit window 498) | fronted: fleet came 22 / none 9 | seat1 median +1.5%
+      candidate 20260826_00 n    8 TOLERANT+OPEN  T+1789  seat1 +6.2% seat3 +0.0% | sold 3 rugged 0 held 36 | early outside pnl +0.0000
+      candidate 20260827_00 n    9 TOLERANT       T+nan   seat1 +nan% seat3 +nan% | sold 2 rugged 0 held 7 | early outside pnl +0.0000
+      candidate 20260830_00 n    8 TOLERANT+OPEN  T+675   seat1 -1.4% seat3 +10.8% | sold 7 rugged 3 held 45 | early outside pnl +0.0000
+      candidate 20260831_00 n    8 TOLERANT+OPEN  T+659   seat1 +2.9% seat3 +26.9% | sold 8 rugged 0 held 44 | early outside pnl +0.2586
+      candidate 20260901_00 n   21 TOLERANT       T+825   seat1 -6.8% seat3 +0.0% | sold 8 rugged 2 held 58 | early outside pnl +0.0000
+      candidate 20260902_00 n   17 TOLERANT       T+842   seat1 +0.1% seat3 +0.0% | sold 2 rugged 0 held 23 | early outside pnl +0.0000
+      candidate 20260903_00 n   22 TOLERANT+OPEN  T+977   seat1 +2.8% seat3 +12.3% | sold 13 rugged 0 held 78 | early outside pnl +0.0000
+      candidate 20260904_00 n   16 TOLERANT+OPEN  T+188   seat1 +7.6% seat3 +34.6% | sold 12 rugged 0 held 44 | early outside pnl +0.0006
+      candidate 20260905_00 n   14 TOLERANT+OPEN  T+419   seat1 +18.3% seat3 +53.9% | sold 3 rugged 1 held 29 | early outside pnl +0.0000
+      candidate 20260906_00 n   13 TOLERANT+OPEN  T+470   seat1 -0.3% seat3 +9.4% | sold 14 rugged 0 held 38 | early outside pnl -0.0428
+      candidate 20260908_00 n   11 TOLERANT+OPEN  T+402.5 seat1 -3.0% seat3 +3.9% | sold 2 rugged 3 held 62 | early outside pnl +0.0000
+  v4 fee 100000 ts 200 via 0x58daec3116aae6d93017baaea7749                                              days  12 (20260901..20260913) pools    282 | MIXED    | real outside buys sold 18 rugged 11 (with an exit window 298) | fronted: fleet came 32 / none 11 | seat1 median -6.7%
+      candidate 20260901_00 n    8 OPEN           T+266.5 seat1 +14.9% seat3 +42.8% | sold 1 rugged 0 held 31 | early outside pnl -0.0056
+      candidate 20260904_00 n   51 TOLERANT       T+316   seat1 -10.1% seat3 +9.3% | sold 4 rugged 2 held 24 | early outside pnl +0.0000
+      candidate 20260905_00 n   44 TOLERANT+OPEN  T+122   seat1 -1.7% seat3 +1.6% | sold 2 rugged 0 held 28 | early outside pnl +0.0000
+      candidate 20260906_00 n   11 TOLERANT+OPEN  T+312   seat1 -8.2% seat3 +0.0% | sold 2 rugged 0 held 20 | early outside pnl +0.0000
+      candidate 20260907_00 n   15 TOLERANT+OPEN  T+233   seat1 -12.5% seat3 +0.0% | sold 2 rugged 0 held 27 | early outside pnl +0.0160
+      candidate 20260910_00 n    8 TOLERANT+OPEN  T+388.5 seat1 +2.1% seat3 +11.9% | sold 3 rugged 1 held 34 | early outside pnl +0.0047
+      candidate 20260911_00 n    9 TOLERANT+OPEN  T+245   seat1 -8.4% seat3 +2.7% | sold 2 rugged 2 held 24 | early outside pnl -0.0041
+  v4 fee 50000 ts 200 via 0x58daec3116aae6d93017baaea77490                                              days   6 (20260901..20260910) pools    109 | FRONT-OPEN | real outside buys sold 85 rugged 17 (with an exit window 408) | fronted: fleet came 21 / none 3 | seat1 median -2.1%
+      candidate 20260901_00 n   20 TOLERANT+OPEN  T+139   seat1 -6.9% seat3 +0.0% | sold 4 rugged 6 held 78 | early outside pnl +0.0000
+      candidate 20260902_00 n   21 TOLERANT+OPEN  T+63    seat1 +2.8% seat3 +14.1% | sold 24 rugged 1 held 87 | early outside pnl +0.0000
+      candidate 20260903_00 n   29 TOLERANT+OPEN  T+46    seat1 -3.9% seat3 +13.5% | sold 13 rugged 6 held 76 | early outside pnl +0.0230
+      candidate 20260904_00 n   21 TOLERANT+OPEN  T+53    seat1 +0.5% seat3 +16.2% | sold 10 rugged 1 held 46 | early outside pnl -0.0985
+      candidate 20260906_00 n    9 TOLERANT+OPEN  T+89.5  seat1 -0.3% seat3 +8.5% | sold 5 rugged 3 held 48 | early outside pnl +0.0079
+      candidate 20260910_00 n    9 TOLERANT+OPEN  T+156   seat1 -4.8% seat3 +4.7% | sold 29 rugged 0 held 45 | early outside pnl +0.0000
+  v4 fee 150000 ts 1500 via 0x58daec3116aae6d93017baaea774                                              days  11 (20260826..20260906) pools    154 | MIXED    | real outside buys sold 63 rugged 35 (with an exit window 290) | fronted: fleet came 30 / none 17 | seat1 median -16.9%
+      candidate 20260827_00 n   12 TOLERANT       T+906   seat1 -9.8% seat3 +0.0% | sold 26 rugged 0 held 29 | early outside pnl -0.3295
+      candidate 20260829_00 n   12 TOLERANT+OPEN  T+836.5 seat1 -14.1% seat3 +2.1% | sold 3 rugged 3 held 19 | early outside pnl +0.0000
+      candidate 20260902_00 n   19 TOLERANT+OPEN  T+254.5 seat1 -19.6% seat3 -0.3% | sold 21 rugged 26 held 90 | early outside pnl -0.0311
+      candidate 20260903_00 n   25 TOLERANT       T+1040  seat1 -14.3% seat3 +2.1% | sold 3 rugged 0 held 25 | early outside pnl -0.0006
+      candidate 20260905_00 n   18 TOLERANT       T+711.5 seat1 -19.8% seat3 -6.9% | sold 7 rugged 0 held 23 | early outside pnl +0.0000
+  v4 fee 80000 ts 800 via 0x58daec3116aae6d93017baaea77490                                              days   4 (20260902..20260905) pools     67 | FRONT-OPEN | real outside buys sold 26 rugged 2 (with an exit window 286) | fronted: fleet came 16 / none 2 | seat1 median -12.6%
+      candidate 20260902_00 n   19 TOLERANT+OPEN  T+482.5 seat1 -10.7% seat3 -2.8% | sold 21 rugged 2 held 121 | early outside pnl +0.0625
+      candidate 20260903_00 n   19 TOLERANT+OPEN  T+348   seat1 -15.9% seat3 -10.0% | sold 2 rugged 0 held 59 | early outside pnl -0.0417
+      candidate 20260905_00 n   14 TOLERANT       T+515   seat1 -14.0% seat3 +0.0% | sold 3 rugged 0 held 40 | early outside pnl +0.0000
+  v4 fee 40000 ts 400 via 0x58daec3116aae6d93017baaea77490                                              days   3 (20260901..20260904) pools     33 | TOLERANT | real outside buys sold 19 rugged 2 (with an exit window 157) | fronted: fleet came 4 / none 2 | seat1 median +2.3%
+      candidate 20260901_00 n    9 TOLERANT+OPEN  T+436   seat1 +28.9% seat3 +16.9% | sold 5 rugged 1 held 42 | early outside pnl +0.0793
+      candidate 20260903_00 n   15 TOLERANT       T+95    seat1 +0.7% seat3 +16.9% | sold 9 rugged 1 held 69 | early outside pnl +0.0000
+      candidate 20260904_00 n    9 TOLERANT       T+513   seat1 +2.3% seat3 +21.8% | sold 5 rugged 0 held 37 | early outside pnl -0.0063
+  v4 fee 60000 ts 600 via 0x58daec3116aae6d93017baaea77490                                              days   3 (20260902..20260905) pools     27 | FRONT-OPEN | real outside buys sold 13 rugged 7 (with an exit window 256) | fronted: fleet came 4 / none 1 | seat1 median -7.4%
+      candidate 20260902_00 n    8 TOLERANT+OPEN  T+1590.5 seat1 +0.0% seat3 +15.5% | sold 7 rugged 0 held 82 | early outside pnl +0.0000
+      candidate 20260903_00 n   11 TOLERANT       T+160   seat1 -7.4% seat3 +6.0% | sold 2 rugged 0 held 85 | early outside pnl +0.0000
+      candidate 20260905_00 n    8 TOLERANT+OPEN  T+800   seat1 -7.4% seat3 +4.2% | sold 4 rugged 7 held 92 | early outside pnl +0.0000
+  v4 fee 8388608 ts 2 hook via 0x58daec3116aae6d93017baaea                                              days   2 (20260824..20260825) pools    118 | FRONT-OPEN | real outside buys sold 167 rugged 1 (with an exit window 201) | fronted: fleet came 8 / none 1 | seat1 median +1.5%
+      candidate 20260824_00 n   91 TOLERANT+OPEN  T+2050  seat1 +6.7% seat3 +5.1% | sold 16 rugged 0 held 18 | early outside pnl -0.1947
+      candidate 20260825_00 n   27 TOLERANT+OPEN  T+10051 seat1 -3.8% seat3 +0.0% | sold 151 rugged 1 held 121 | early outside pnl +0.1499
   v3 fee 3000 ts 60 x 0.0006                                                                            days   2 (20260928..20260929) pools     45 | UNTESTED | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 1 | seat1 median +6.7%
       candidate 20260928_00 n   28 UNTESTED       T+4     seat1 +6.7% seat3 +44.5% | sold 0 rugged 0 held 0 | early outside pnl +0.0000
       candidate 20260929_00 n   17 UNTESTED       T+5     seat1 +6.7% seat3 +232.0% | sold 0 rugged 0 held 0 | early outside pnl +0.0000
   v4 fee 10000 ts 200 hook x 11                                                                         days   2 (20261009..20261012) pools     27 | TOLERANT | real outside buys sold 129 rugged 0 (with an exit window 217) | fronted: fleet came 1 / none 0 | seat1 median +1.2%
       candidate 20261009_00 n   18 TOLERANT       T+225   seat1 +2.5% seat3 +0.0% | sold 54 rugged 0 held 49 | early outside pnl -0.1110
       candidate 20261012_00 n    9 TOLERANT       T+125   seat1 -0.1% seat3 +5.6% | sold 75 rugged 0 held 73 | early outside pnl +0.0000
+  v4 fee 20000 ts 200 via 0x58daec3116aae6d93017baaea77490                                              days   3 (20260827..20260903) pools     25 | TOLERANT | real outside buys sold 7 rugged 0 (with an exit window 81) | fronted: fleet came 2 / none 0 | seat1 median +12.3%
+      candidate 20260902_00 n    9 TOLERANT       T+270   seat1 +4.5% seat3 +20.4% | sold 5 rugged 0 held 58 | early outside pnl +0.0091
+      candidate 20260903_00 n    8 TOLERANT       T+952.5 seat1 +20.1% seat3 +28.6% | sold 2 rugged 0 held 24 | early outside pnl +0.0000
   v4 fee 3000 ts 60 hook x 1e-09                                                                        days   2 (20260812..20260813) pools     23 | MIXED    | real outside buys sold 23 rugged 16 (with an exit window 25) | fronted: fleet came 2 / none 0 | seat1 median +185067125006.5%
       candidate 20260812_00 n   15 TOLERANT       T+267   seat1 +98702000009.7% seat3 +0.0% | sold 3 rugged 0 held 0 | early outside pnl -0.0003
       candidate 20260813_00 n    8 UNTESTED       T+126   seat1 +271432250003.2% seat3 +631698200001.0% | sold 20 rugged 16 held 7 | early outside pnl +0.0030
@@ -20,40 +113,66 @@ rh: 137 line-days from 42 days
       candidate 20261002_00 n   11 TOLERANT       T+403   seat1 +81.4% seat3 +161.5% | sold 14 rugged 0 held 11 | early outside pnl -0.0000
   v2 fee - ts - via 0xc9271f5cb901e30a22268687a8776e6a048e                                              days   2 (20260812..20260813) pools     38 | TOLERANT | real outside buys sold 13 rugged 0 (with an exit window 7) | fronted: fleet came 1 / none 1 | seat1 median +65.4%
       candidate 20260813_00 n   13 TOLERANT       T+707   seat1 +128.2% seat3 +128.2% | sold 13 rugged 0 held 1 | early outside pnl +0.0212
+  v4 fee 8388608 ts 60 hook via 0x58daec3116aae6d93017baae                                              days   3 (20260825..20260904) pools     37 | TOLERANT | real outside buys sold 6 rugged 0 (with an exit window 37) | fronted: fleet came 3 / none 2 | seat1 median -0.7%
+      candidate 20260825_00 n   17 TOLERANT+OPEN  T+4967  seat1 +0.1% seat3 +1.7% | sold 6 rugged 0 held 21 | early outside pnl +0.0237
+  v4 fee 9000 ts 90 x 1                                                                                 days   2 (20260805..20260811) pools     23 | TOLERANT | real outside buys sold 90 rugged 0 (with an exit window 209) | fronted: fleet came 6 / none 4 | seat1 median +19.9%
+      candidate 20260805_00 n   13 TOLERANT+OPEN  T+5769  seat1 +20.5% seat3 +0.0% | sold 89 rugged 0 held 124 | early outside pnl +2.5756
   v2 fee - ts - x 0.1                                                                                   days   1 (20260813..20260813) pools     19 | MIXED    | real outside buys sold 1 rugged 0 (with an exit window 5) | fronted: fleet came 1 / none 0 | seat1 median +128.6%
       candidate 20260813_00 n   19 UNTESTED       T+155   seat1 +128.6% seat3 +332.7% | sold 1 rugged 0 held 4 | early outside pnl +0.0000
   v4 fee 375 ts 4 via 0x58daec3116aae6d93017baaea7749052e8                                              days   1 (20261001..20261001) pools     13 | MIXED    | real outside buys sold 0 rugged 0 (with an exit window 4) | fronted: fleet came 1 / none 0 | seat1 median +10.0%
       candidate 20261001_00 n   13 UNTESTED       T+47.5  seat1 +10.0% seat3 +0.0% | sold 0 rugged 0 held 4 | early outside pnl +0.0000
+  v4 fee 3000 ts 60 hook x 1e-18                                                                        days   1 (20260805..20260805) pools     11 | TOLERANT | real outside buys sold 62 rugged 0 (with an exit window 114) | fronted: fleet came 2 / none 0 | seat1 median +99699999999999000576.0%
+      candidate 20260805_00 n   11 TOLERANT+OPEN  T+339   seat1 +99699999999999000576.0% seat3 +184444999999999016960.0% | sold 62 rugged 0 held 76 | early outside pnl +0.1204
+  v4 fee 8388608 ts 2 hook x 4.06                                                                       days   1 (20260824..20260824) pools     11 | TOLERANT | real outside buys sold 17 rugged 0 (with an exit window 45) | fronted: fleet came 2 / none 1 | seat1 median +3.7%
+      candidate 20260824_00 n   11 TOLERANT+OPEN  T+2912  seat1 +3.7% seat3 +7.1% | sold 17 rugged 0 held 37 | early outside pnl -0.0756
   v2 fee - ts - x 0.491                                                                                 days   1 (20261005..20261005) pools     10 | UNTESTED | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +20.1%
       candidate 20261005_00 n   10 UNTESTED       T+28    seat1 +20.1% seat3 +53.2% | sold 0 rugged 0 held 0 | early outside pnl +0.0000
   v4 fee 375 ts 4 x 1                                                                                   days   1 (20260814..20260814) pools      9 | MIXED    | real outside buys sold 2 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 1 | seat1 median +51.3%
       candidate 20260814_00 n    9 UNTESTED       T+697.5 seat1 +51.3% seat3 +169.2% | sold 2 rugged 0 held 0 | early outside pnl -0.0001
+  v4 fee 30000 ts 300 via 0x58daec3116aae6d93017baaea77490                                              days   1 (20260901..20260901) pools      9 | TOLERANT | real outside buys sold 4 rugged 0 (with an exit window 54) | fronted: fleet came 2 / none 0 | seat1 median +5.8%
+      candidate 20260901_00 n    9 TOLERANT+OPEN  T+1600  seat1 +5.8% seat3 +32.5% | sold 4 rugged 0 held 55 | early outside pnl +0.0000
   v3 fee 100 ts 1 x 0.33                                                                                days   1 (20260930..20260930) pools      9 | UNTESTED | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +31.0%
       candidate 20260930_00 n    9 UNTESTED       T+19    seat1 +31.0% seat3 +79.4% | sold 0 rugged 0 held 0 | early outside pnl +0.0000
   v4 fee 2500 ts 25 x 2                                                                                 days   1 (20260820..20260820) pools      8 | MIXED    | real outside buys sold 1 rugged 0 (with an exit window 1) | fronted: fleet came 0 / none 0 | seat1 median +10.3%
       candidate 20260820_00 n    8 UNTESTED       T+512.5 seat1 +10.3% seat3 +23.9% | sold 1 rugged 0 held 2 | early outside pnl +0.0000
-  v4 fee 10000 ts 200 x 1                                                                               days  14 (20260801..20260819) pools   5414 | CLOSED   | real outside buys sold 1273 rugged 43 (with an exit window 3) | fronted: fleet came 0 / none 18 | seat1 median +6.9%
-  v3 fee 10000 ts 200 x 1                                                                               days  15 (20260806..20260820) pools   4606 | CLOSED   | real outside buys sold 4 rugged 18 (with an exit window 9) | fronted: fleet came 0 / none 5 | seat1 median +8.0%
+  v3 fee 10000 ts 200 x 1                                                                               days  24 (20260806..20260829) pools   7788 | CLOSED   | real outside buys sold 5 rugged 24 (with an exit window 15) | fronted: fleet came 1 / none 6 | seat1 median +8.0%
+  v4 fee 10000 ts 200 x 1                                                                               days  21 (20260801..20260901) pools   6744 | CLOSED   | real outside buys sold 1468 rugged 80 (with an exit window 8) | fronted: fleet came 0 / none 23 | seat1 median +7.8%
   v3 fee 10000 ts 200 x 3                                                                               days   3 (20260816..20260818) pools    785 | TRAP     | real outside buys sold 0 rugged 5 (with an exit window 1) | fronted: fleet came 0 / none 0 | seat1 median +3.4%
-  v3 fee 10000 ts 200 via 0x73991a25c818bf1f1128deaab1492d                                              days  13 (20260802..20261021) pools    164 | CLOSED   | real outside buys sold 171 rugged 9 (with an exit window 334) | fronted: fleet came 20 / none 20 | seat1 median +8.1%
+  v4 fee 10000 ts 200 x 1.5                                                                             days   7 (20260901..20260907) pools    533 | TRAP     | real outside buys sold 2 rugged 20 (with an exit window 8) | fronted: fleet came 3 / none 0 | seat1 median +30.6%
+  v3 fee 10000 ts 200 via 0x73991a25c818bf1f1128deaab1492d                                              days  25 (20260802..20261021) pools    296 | CLOSED   | real outside buys sold 568 rugged 22 (with an exit window 853) | fronted: fleet came 38 / none 72 | seat1 median +7.8%
+  v4 fee 10000 ts 200 via 0x58daec3116aae6d93017baaea77490                                              days   9 (20260826..20260913) pools    211 | CLOSED   | real outside buys sold 2101 rugged 6 (with an exit window 744) | fronted: fleet came 2 / none 16 | seat1 median -0.6%
+  v4 fee 3000 ts 60 via 0x58daec3116aae6d93017baaea7749052                                              days   6 (20260816..20260902) pools    141 | CLOSED   | real outside buys sold 941 rugged 17 (with an exit window 413) | fronted: fleet came 7 / none 44 | seat1 median +25.1%
   v4 fee 10000 ts 200 hook via 0x58daec3116aae6d93017baaea                                              days   8 (20260819..20261009) pools    100 | CLOSED   | real outside buys sold 884 rugged 14 (with an exit window 562) | fronted: fleet came 5 / none 22 | seat1 median +0.3%
-  v4 fee 9000 ts 90 via 0x58daec3116aae6d93017baaea7749052                                              days   5 (20260812..20260820) pools     49 | CLOSED   | real outside buys sold 173 rugged 2 (with an exit window 308) | fronted: fleet came 10 / none 10 | seat1 median +6.2%
-  v3 fee 3000 ts 60 x 1                                                                                 days   2 (20260811..20260812) pools     37 | CLOSED   | real outside buys sold 3 rugged 0 (with an exit window 3) | fronted: fleet came 2 / none 3 | seat1 median +43.9%
+  v3 fee 3000 ts 60 via 0x73991a25c818bf1f1128deaab1492d45                                              days   9 (20260806..20260905) pools     92 | CLOSED   | real outside buys sold 95 rugged 9 (with an exit window 158) | fronted: fleet came 4 / none 22 | seat1 median +4.8%
+  v4 fee 10000 ts 200 x 0.000106                                                                        days   1 (20260826..20260826) pools     75 | UNTESTED | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +1.7%
+  v3 fee 3000 ts 60 x 1                                                                                 days   4 (20260811..20260901) pools     55 | CLOSED   | real outside buys sold 30 rugged 28 (with an exit window 12) | fronted: fleet came 2 / none 3 | seat1 median +42.2%
+  v4 fee 75 ts 1 via 0x58daec3116aae6d93017baaea7749052e8a                                              days   4 (20260813..20260908) pools     45 | CLOSED   | real outside buys sold 13 rugged 0 (with an exit window 74) | fronted: fleet came 6 / none 11 | seat1 median +25.5%
+  v4 fee 15000 ts 200 x 0.242                                                                           days   1 (20260910..20260910) pools     44 | CLOSED   | real outside buys sold 0 rugged 0 (with an exit window 1) | fronted: fleet came 1 / none 5 | seat1 median -1.6%
+  v4 fee 10000 ts 200 x 3.5                                                                             days   1 (20260907..20260907) pools     40 | TRAP     | real outside buys sold 0 rugged 4 (with an exit window 3) | fronted: fleet came 0 / none 0 | seat1 median +3.5%
   v3 fee 100 ts 1 via 0x73991a25c818bf1f1128deaab1492d4563                                              days   4 (20260811..20261005) pools     36 | CLOSED   | real outside buys sold 5 rugged 0 (with an exit window 2) | fronted: fleet came 0 / none 8 | seat1 median +89.8%
+  v4 fee 10000 ts 200 x 0.05                                                                            days   3 (20260908..20260911) pools     35 | CLOSED   | real outside buys sold 1 rugged 1 (with an exit window 0) | fronted: fleet came 0 / none 6 | seat1 median +nan%
   v3 fee 100 ts 1 x 0.000125                                                                            days   1 (20260921..20260921) pools     29 | TRAP     | real outside buys sold 2 rugged 3 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +2.0%
-  v4 fee 100000 ts 1000 via 0x58daec3116aae6d93017baaea774                                              days   3 (20260921..20260930) pools     27 | TRAP     | real outside buys sold 0 rugged 1 (with an exit window 63) | fronted: fleet came 8 / none 6 | seat1 median -11.7%
+  v4 fee 100 ts 3 hook via 0x58daec3116aae6d93017baaea7749                                              days   3 (20260816..20260922) pools     26 | CLOSED   | real outside buys sold 0 rugged 35 (with an exit window 0) | fronted: fleet came 0 / none 25 | seat1 median +nan%
   v3 fee 500 ts 10 via 0x73991a25c818bf1f1128deaab1492d456                                              days   2 (20260813..20260818) pools     24 | CLOSED   | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 1 / none 3 | seat1 median +9.6%
   v4 fee 3000 ts 60 hook via 0x58daec3116aae6d93017baaea77                                              days   2 (20260919..20260922) pools     22 | CLOSED   | real outside buys sold 498 rugged 2 (with an exit window 41) | fronted: fleet came 1 / none 7 | seat1 median +25.0%
-  v4 fee 3000 ts 60 via 0x58daec3116aae6d93017baaea7749052                                              days   2 (20260816..20260817) pools     18 | CLOSED   | real outside buys sold 0 rugged 3 (with an exit window 0) | fronted: fleet came 0 / none 15 | seat1 median +nan%
-  v3 fee 3000 ts 60 via 0x73991a25c818bf1f1128deaab1492d45                                              days   2 (20260806..20260814) pools     17 | CLOSED   | real outside buys sold 20 rugged 0 (with an exit window 70) | fronted: fleet came 2 / none 4 | seat1 median +6.1%
   v3 fee 10000 ts 200 x 0.5                                                                             days   1 (20260811..20260811) pools     17 | CLOSED   | real outside buys sold 67 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 4 | seat1 median +nan%
-  v4 fee 100 ts 3 hook via 0x58daec3116aae6d93017baaea7749                                              days   2 (20260816..20260922) pools     17 | CLOSED   | real outside buys sold 0 rugged 23 (with an exit window 0) | fronted: fleet came 0 / none 16 | seat1 median +nan%
-  v4 fee 75 ts 1 via 0x58daec3116aae6d93017baaea7749052e8a                                              days   1 (20260813..20260813) pools     14 | CLOSED   | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 7 | seat1 median +nan%
-  v4 fee 9000 ts 90 x 1                                                                                 days   1 (20260811..20260811) pools     10 | CLOSED   | real outside buys sold 1 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 3 | seat1 median +19.4%
+  v4 fee 2500 ts 25 x 1                                                                                 days   2 (20260824..20260909) pools     17 | CLOSED   | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 4 | seat1 median +5.3%
+  v4 fee 100 ts 5 hook via 0x58daec3116aae6d93017baaea7749                                              days   2 (20260825..20260922) pools     17 | CLOSED   | real outside buys sold 0 rugged 23 (with an exit window 0) | fronted: fleet came 0 / none 16 | seat1 median +nan%
+  v4 fee 100 ts 2 hook via 0x58daec3116aae6d93017baaea7749                                              days   2 (20260825..20260922) pools     16 | CLOSED   | real outside buys sold 0 rugged 25 (with an exit window 0) | fronted: fleet came 0 / none 16 | seat1 median +nan%
+  v4 fee 180000 ts 1800 via 0x58daec3116aae6d93017baaea774                                              days   1 (20260902..20260902) pools     16 | MIXED    | real outside buys sold 1 rugged 0 (with an exit window 18) | fronted: fleet came 2 / none 0 | seat1 median -16.8%
+  v4 fee 2500 ts 25 x 0.000106                                                                          days   1 (20260826..20260826) pools     11 | MIXED    | real outside buys sold 1 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +3.2%
+  v3 fee 100 ts 1 x 0.00189                                                                             days   1 (20260905..20260905) pools     11 | CLOSED   | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 10 | seat1 median +nan%
+  v4 fee 8388608 ts 2 hook x 4.05                                                                       days   1 (20260824..20260824) pools     10 | CLOSED   | real outside buys sold 44 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 3 | seat1 median +4.9%
+  v4 fee 500000 ts 5000 via 0x58daec3116aae6d93017baaea774                                              days   1 (20260826..20260826) pools     10 | TRAP     | real outside buys sold 0 rugged 1 (with an exit window 19) | fronted: fleet came 2 / none 0 | seat1 median -68.3%
+  v4 fee 250000 ts 2500 via 0x58daec3116aae6d93017baaea774                                              days   1 (20260902..20260902) pools     10 | TRAP     | real outside buys sold 1 rugged 1 (with an exit window 7) | fronted: fleet came 2 / none 1 | seat1 median -38.1%
+  v4 fee 8388608 ts 2 hook x 4.04                                                                       days   1 (20260824..20260824) pools      9 | CLOSED   | real outside buys sold 79 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 6 | seat1 median +nan%
+  v3 fee 100 ts 1 x 0.1                                                                                 days   1 (20260831..20260831) pools      9 | CLOSED   | real outside buys sold 22 rugged 0 (with an exit window 0) | fronted: fleet came 1 / none 7 | seat1 median +11.6%
+  v4 fee 100000 ts 200 x 0.048                                                                          days   1 (20260904..20260904) pools      9 | MIXED    | real outside buys sold 1 rugged 0 (with an exit window 15) | fronted: fleet came 2 / none 0 | seat1 median -2.1%
   v4 fee 0 ts 1 hook x 0.04                                                                             days   1 (20261019..20261019) pools      9 | TRAP     | real outside buys sold 5 rugged 7 (with an exit window 4) | fronted: fleet came 1 / none 0 | seat1 median +1.4%
   v4 fee 10000 ts 200 hook x 0.0181                                                                     days   1 (20260819..20260819) pools      8 | CLOSED   | real outside buys sold 3 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 3 | seat1 median +39.6%
-  v4 fee 100 ts 2 hook via 0x58daec3116aae6d93017baaea7749                                              days   1 (20260922..20260922) pools      8 | CLOSED   | real outside buys sold 0 rugged 13 (with an exit window 0) | fronted: fleet came 0 / none 8 | seat1 median +nan%
-  v4 fee 100 ts 5 hook via 0x58daec3116aae6d93017baaea7749                                              days   1 (20260922..20260922) pools      8 | CLOSED   | real outside buys sold 0 rugged 8 (with an exit window 0) | fronted: fleet came 0 / none 8 | seat1 median +nan%
+  v4 fee 700000 ts 7000 via 0x58daec3116aae6d93017baaea774                                              days   1 (20260829..20260829) pools      8 | MIXED    | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 1 | seat1 median +nan%
+  v4 fee 300000 ts 3000 via 0x58daec3116aae6d93017baaea774                                              days   1 (20260831..20260831) pools      8 | MIXED    | real outside buys sold 0 rugged 0 (with an exit window 3) | fronted: fleet came 1 / none 0 | seat1 median -9.0%
+  v4 fee 3000 ts 60 x 1.01                                                                              days   1 (20260911..20260911) pools      8 | CLOSED   | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 8 | seat1 median +nan%
 
 == lines already documented
   v4 fee 2500 ts 50 x 2.43                                 the 2.433 line (the one that paid)           days  16 (20260926..20261011) pools   5321 | FRONT-OPEN | real outside buys sold 32 rugged 18 (with an exit window 41) | fronted: fleet came 22 / none 0 | seat1 median +12.1%

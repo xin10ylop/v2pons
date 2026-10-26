@@ -42,6 +42,25 @@ def label(ch, name, targets=None):
     return ""
 
 
+def line_verdict(rs):
+    """over all the line's days, the front seat first: FRONT-OPEN if the pools someone bought ahead of the fleet mostly still got the fleet
+    and real outside buys got out at least as often as they were rugged (the 2.433 line); CLOSED if fronted pools mostly got no fleet buy
+    (skipped or pulled: Base V2 on Oct 21); TRAP if real outside buys were pulled on unsold with no exit at least as often as they got out
+    (the owner's rule: skip a line where an entry triggers the rug); TOLERANT with 3+ exits and at most a fifth rugged; UNTESTED with no
+    real outside buy at all; MIXED otherwise"""
+    so, ru = sum(r["sold"] for r in rs), sum(r["rugged"] for r in rs)
+    came, none = sum(r["came"] for r in rs), sum(r["none"] for r in rs)
+    if came >= 3 and came >= 3 * none and ru <= so:
+        return "FRONT-OPEN"
+    if none >= 2 and none >= came:
+        return "CLOSED"
+    if ru >= 1 and ru >= so:
+        return "TRAP"
+    if so >= 3 and ru <= 0.2 * (so + ru):
+        return "TOLERANT"
+    return "UNTESTED" if so + ru + sum(r["held"] for r in rs) == 0 else "MIXED"
+
+
 def main(ch):
     here = os.path.dirname(os.path.abspath(__file__))
     rows = []
@@ -60,22 +79,6 @@ def main(ch):
     by = collections.defaultdict(list)
     for r in rows:
         by[(r["known"], r["line"])].append(r)
-    def line_verdict(rs):
-        """over all the line's days, the front seat first: FRONT-OPEN if the pools someone bought ahead of the fleet mostly still got the
-        fleet (the 2.433 line); CLOSED if they mostly got no fleet buy (skipped or pulled: Base V2 on Oct 21); then TRAP if real outside
-        buys were pulled on unsold with no exit at least as often as they got out (the owner's rule: skip a line where an entry triggers
-        the rug); TOLERANT with 3+ exits and at most a fifth rugged; UNTESTED with no real outside buy at all; MIXED otherwise"""
-        so, ru = sum(r["sold"] for r in rs), sum(r["rugged"] for r in rs)
-        came, none = sum(r["came"] for r in rs), sum(r["none"] for r in rs)
-        if came >= 3 and came >= 3 * none:                 # bought ahead of the fleet and the fleet still came, with a block to sell: the seat that paid
-            return "FRONT-OPEN"
-        if none >= 2 and none >= came:                     # fronted pools get no fleet buy (skipped or pulled): no seat at the front
-            return "CLOSED"
-        if ru >= 1 and ru >= so:
-            return "TRAP"
-        if so >= 3 and ru <= 0.2 * (so + ru):
-            return "TOLERANT"
-        return "UNTESTED" if so + ru + sum(r["held"] for r in rs) == 0 else "MIXED"
     cand = lambda r, lv: lv not in ("TRAP", "CLOSED") and (r["verdict"].startswith("TOLERANT") or (r["verdict"] in ("UNTESTED", "OPEN") and r["seat1"] >= 0.05))
     for title, keep in (("NEW lines (not in any earlier report)", lambda k: not k[0]), ("lines already documented", lambda k: bool(k[0]))):
         print(f"\n== {title}")

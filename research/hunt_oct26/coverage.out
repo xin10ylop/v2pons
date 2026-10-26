@@ -1,2 +1,2 @@
-rh: 64 days (20260801..20261025), 696,598 native pools created, 146,128 pulled within 2 h, 108,731 round trips (56,503 entered within 20 s), 137 line-days tested by front.py
+rh: 86 days (20260801..20261025), 953,228 native pools created, 187,439 pulled within 2 h, 154,363 round trips (63,911 entered within 20 s), 323 line-days tested by front.py
 base: 46 days (20260910..20261025), 169,683 native pools created, 41,092 pulled within 2 h, 641,972 round trips (14,080 entered within 20 s), 45 line-days tested by front.py

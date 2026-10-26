@@ -1,4 +1,4 @@
-rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 groups
+rh: 86 days (20260801_00 .. 20261025_00), 61105 early outside round trips, 4969 groups
 
 == independent groups (2+ operators, 3+ pools a wallet, or known) trading a real stake (median 0.001+), and the rest that made 0.01+
   contract 0x5a1d33c4b150cdd80e06ecbd737b3d0ee777fa66 
@@ -12,6 +12,12 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
            31 x v4 fee 500 ts 1 x 2 via 0x58daec3116aae6d9
            15 x v4 fee 500 ts 1 x 1.3 via 0x58daec3116aae6d9
             7 x v4 fee 500 ts 1 x 4 via 0x58daec3116aae6d9
+  contract 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc D65 crew router
+      pnl +7.3910 won 3598/4461 pools 3754 wallets 1130 (3.3/wallet) targets 24 | stake 0.00020 ret +108% in 1.9s out 61.8s | 20260801_00..20261024_00 (77 d) | INDEPENDENT
+         1190 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
+          695 x v4 fee 10000 ts 200 x 3 via 0x58daec3116aae6d9
+          321 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
+          262 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
   contract 0xe6b451f78675da3f5a20827215a96cbdd235888c 
       pnl +6.6216 won 247/247 pools 141 wallets 193 (0.7/wallet) targets 1 | stake 0.03905 ret +30% in 12.4s out 40.4s | 20261020_00..20261025_00 (6 d) | fleet-like
           109 x v4 fee 500 ts 1 x 3 via 0x58daec3116aae6d9
@@ -25,8 +31,8 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
            11 x v4 fee 500 ts 1 x 1.3 via 0x58daec3116aae6d9
             9 x v4 fee 500 ts 1 x 1.2 via 0x58daec3116aae6d9
   contract 0xcaf681a66d020601342297493863e78c959e5cb2 
-      pnl +5.5381 won 2574/2889 pools 2461 wallets 298 (8.3/wallet) targets 5 | stake 0.00011 ret +144% in 2.3s out 87.6s | 20260802_00..20261021_00 (35 d) | INDEPENDENT
-         2498 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
+      pnl +5.6457 won 3136/3481 pools 3011 wallets 330 (9.1/wallet) targets 5 | stake 0.00011 ret +144% in 2.6s out 88.5s | 20260802_00..20261021_00 (51 d) | INDEPENDENT
+         3046 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
           185 x v3 fee 3000 ts 60 x 0.0006 via 0x73991a25c818bf1f
            96 x v3 fee 10000 ts 200 x 0.5 via 0x73991a25c818bf1f
            47 x v3 fee 100 ts 1 x 0.001 via 0x73991a25c818bf1f
@@ -35,12 +41,12 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
            73 x v4 fee 500 ts 1 x 3 via 0x58daec3116aae6d9
            67 x v4 fee 500 ts 1 x 3.5 via 0x58daec3116aae6d9
            65 x v4 fee 500 ts 1 x 4 via 0x58daec3116aae6d9
-  contract 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc D65 crew router
-      pnl +3.8730 won 2908/3518 pools 3095 wallets 822 (3.8/wallet) targets 20 | stake 0.00017 ret +106% in 0.5s out 63.8s | 20260801_00..20261024_00 (53 d) | INDEPENDENT
-         1190 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
-          657 x v4 fee 10000 ts 200 x 3 via 0x58daec3116aae6d9
-          317 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
-          238 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
+  contract 0x1cbaf24d53fe930fce8eff149fa797d2611da149 
+      pnl +3.0851 won 168/214 pools 206 wallets 84 (2.5/wallet) targets 2 | stake 0.04950 ret +7% in 12.3s out 20.8s | 20260821_00..20261019_00 (18 d) | one pool type
+          158 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
+           40 x v4 fee 10000 ts 200 x 1 via 0x58daec3116aae6d9
+           15 x v4 fee 10000 ts 200 x 1.5 via 0x58daec3116aae6d9
+            1 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
   contract 0x6ed6b4bffa4eb239f5d87dde86e2675a12dc0260 
       pnl +2.4679 won 205/248 pools 238 wallets 88 (2.7/wallet) targets 2 | stake 0.04950 ret +10% in 12.3s out 21.8s | 20260809_00..20260817_00 (9 d) | one pool type
           149 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
@@ -55,16 +61,19 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
            26 x v4 fee 500 ts 1 x 1.5 via 0x58daec3116aae6d9
            16 x v4 fee 500 ts 1 x 2 via 0x58daec3116aae6d9
            11 x v4 fee 500 ts 1 x 2.5 via 0x58daec3116aae6d9
+  wallet   0xa73f70c77e9b1b51c6cb24b69c2b232ec00ed115 
+      pnl +1.4526 won 3592/3592 pools 3592 wallets 1 (3592.0/wallet) targets 1 | stake 0.00020 ret +201% in 2.8s out 145.6s | 20260809_00..20260826_00 (18 d) | one pool type
+         3592 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
   contract 0xbc199c5beaa1fb2566eddf74b3cef511792ea84c 
       pnl +1.3661 won 33/33 pools 32 wallets 33 (1.0/wallet) targets 1 | stake 0.03905 ret +50% in 12.8s out 41.8s | 20261002_00..20261003_00 (2 d) | fleet-like
            33 x v4 fee 500 ts 1 x 2.5 via 0x58daec3116aae6d9
-  wallet   0xa73f70c77e9b1b51c6cb24b69c2b232ec00ed115 
-      pnl +1.2650 won 3127/3127 pools 3127 wallets 1 (3127.0/wallet) targets 1 | stake 0.00020 ret +202% in 2.6s out 144.3s | 20260809_00..20260823_00 (15 d) | one pool type
-         3127 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
+  contract 0x07444e4dc3e09b9260dee492977042f6e3b60c04 
+      pnl +1.2844 won 101/126 pools 120 wallets 51 (2.4/wallet) targets 1 | stake 0.04950 ret +8% in 12.9s out 21.9s | 20260821_00..20260825_00 (5 d) | one pool type
+          126 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
   contract 0xc41194138e051fc505fef93b3c44dbdb63da64a2 
-      pnl +1.1078 won 63/85 pools 84 wallets 46 (1.8/wallet) targets 2 | stake 0.04436 ret +21% in 12.2s out 28.5s | 20260801_00..20260811_00 (8 d) | fleet-like
+      pnl +1.1748 won 73/101 pools 98 wallets 55 (1.8/wallet) targets 2 | stake 0.04611 ret +11% in 11.6s out 26.1s | 20260801_00..20260811_00 (10 d) | fleet-like
            63 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
-           22 x v4 fee 10000 ts 200 x 1 via 0x58daec3116aae6d9
+           38 x v4 fee 10000 ts 200 x 1 via 0x58daec3116aae6d9
   contract 0x27643bfea429c4c6759bb3828976893435e7c72e 
       pnl +0.9460 won 63/78 pools 76 wallets 61 (1.2/wallet) targets 1 | stake 0.05000 ret +12% in 12.9s out 22.2s | 20260819_00..20260821_00 (3 d) | fleet-like
            78 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
@@ -80,7 +89,7 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
            13 x v4 fee 500 ts 1 x 4 via 0x58daec3116aae6d9
             8 x v4 fee 500 ts 1 x 3 via 0x58daec3116aae6d9
   wallet   0x64651c9d7e4c89cb39b3845bdc94ee0fabad20c4 
-      pnl +0.8527 won 168/188 pools 188 wallets 1 (188.0/wallet) targets 1 | stake 0.02530 ret +11% in 14.4s out 18.8s | 20261006_00..20261022_00 (16 d) | one pool type
+      pnl +0.8563 won 169/189 pools 189 wallets 1 (189.0/wallet) targets 1 | stake 0.02480 ret +11% in 14.3s out 18.8s | 20260911_00..20261022_00 (17 d) | one pool type
             4 x v4 fee 1500 ts 200 x 2 via 0x3194e32622c5d860
             4 x v4 fee 1000 ts 200 x 2 via 0x3194e32622c5d860
             3 x v4 fee 3000 ts 200 x 2.2 via 0x3194e32622c5d860
@@ -96,7 +105,7 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             3 x v4 fee 1000 ts 200 x 1.4 via 0x3194e32622c5d860
             3 x v4 fee 500 ts 200 x 2 via 0x3194e32622c5d860
   wallet   0x9b75897b1f0c0302e4a2abd675dab11880d9a1d7 
-      pnl +0.7553 won 144/157 pools 157 wallets 1 (157.0/wallet) targets 1 | stake 0.02020 ret +15% in 15.0s out 19.4s | 20261006_00..20261022_00 (15 d) | one pool type
+      pnl +0.7584 won 145/158 pools 158 wallets 1 (158.0/wallet) targets 1 | stake 0.02040 ret +15% in 15.0s out 19.4s | 20260911_00..20261022_00 (16 d) | one pool type
             5 x v4 fee 4500 ts 200 x 1.6 via 0x3194e32622c5d860
             4 x v4 fee 2000 ts 200 x 1.4 via 0x3194e32622c5d860
             3 x v4 fee 3500 ts 200 x 1.9 via 0x3194e32622c5d860
@@ -120,7 +129,7 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             4 x v4 fee 3500 ts 200 x 2.2 via 0x3194e32622c5d860
             3 x v4 fee 3000 ts 200 x 2.2 via 0x3194e32622c5d860
   wallet   0x97adf7fd5fb302e3c007018db80baff0854c8804 
-      pnl +0.6133 won 141/173 pools 173 wallets 1 (173.0/wallet) targets 1 | stake 0.02340 ret +8% in 13.8s out 17.4s | 20261006_00..20261023_00 (16 d) | one pool type
+      pnl +0.6170 won 142/174 pools 174 wallets 1 (174.0/wallet) targets 1 | stake 0.02340 ret +9% in 13.8s out 17.4s | 20260911_00..20261023_00 (17 d) | one pool type
             3 x v4 fee 1000 ts 200 x 2.5 via 0x3194e32622c5d860
             3 x v4 fee 2000 ts 200 x 2.5 via 0x3194e32622c5d860
             3 x v4 fee 4000 ts 200 x 2.1 via 0x3194e32622c5d860
@@ -143,14 +152,11 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             2 x v4 fee 1000 ts 200 x 1.8 via 0x3194e32622c5d860
             2 x v4 fee 500 ts 200 x 2.1 via 0x3194e32622c5d860
   wallet   0xe6c9a8e1331a48953ec360410cbe3058c33b27d3 
-      pnl +0.5538 won 127/147 pools 147 wallets 1 (147.0/wallet) targets 1 | stake 0.01860 ret +14% in 14.8s out 19.2s | 20261006_00..20261022_00 (16 d) | one pool type
+      pnl +0.5544 won 128/148 pools 148 wallets 1 (148.0/wallet) targets 1 | stake 0.01880 ret +14% in 14.8s out 19.2s | 20260911_00..20261022_00 (17 d) | one pool type
             3 x v4 fee 3500 ts 200 x 1.9 via 0x3194e32622c5d860
             3 x v4 fee 4500 ts 200 x 1.7 via 0x3194e32622c5d860
             3 x v4 fee 1000 ts 200 x 2 via 0x3194e32622c5d860
             3 x v4 fee 2500 ts 200 x 1.9 via 0x3194e32622c5d860
-  contract 0x07444e4dc3e09b9260dee492977042f6e3b60c04 
-      pnl +0.5494 won 48/62 pools 59 wallets 40 (1.5/wallet) targets 1 | stake 0.04950 ret +7% in 12.5s out 20.1s | 20260821_00..20260823_00 (3 d) | fleet-like
-           62 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
   wallet   0x754425071f61539f3ca0106634d9f88850c8a151 
       pnl +0.5462 won 143/165 pools 165 wallets 1 (165.0/wallet) targets 1 | stake 0.01900 ret +9% in 8.8s out 12.7s | 20261006_00..20261023_00 (17 d) | one pool type
             5 x v4 fee 1000 ts 200 x 1.8 via 0x3194e32622c5d860
@@ -199,12 +205,8 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             3 x v4 fee 2000 ts 200 x 1.4 via 0x3194e32622c5d860
             3 x v4 fee 3500 ts 200 x 2.4 via 0x3194e32622c5d860
             2 x v4 fee 1500 ts 200 x 2.5 via 0x3194e32622c5d860
-  contract 0x1cbaf24d53fe930fce8eff149fa797d2611da149 
-      pnl +0.4712 won 57/77 pools 72 wallets 38 (1.9/wallet) targets 2 | stake 0.04950 ret +7% in 12.8s out 19.3s | 20260821_00..20261019_00 (4 d) | fleet-like
-           76 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
-            1 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
   wallet   0x954e197339de7a51c043464814c5501208d29460 
-      pnl +0.4660 won 109/123 pools 123 wallets 1 (123.0/wallet) targets 1 | stake 0.02280 ret +9% in 15.4s out 19.6s | 20261006_00..20261021_00 (15 d) | one pool type
+      pnl +0.4701 won 110/124 pools 124 wallets 1 (124.0/wallet) targets 1 | stake 0.02375 ret +9% in 15.4s out 19.6s | 20260911_00..20261021_00 (16 d) | one pool type
             3 x v4 fee 1500 ts 200 x 2 via 0x3194e32622c5d860
             3 x v4 fee 1000 ts 200 x 1.4 via 0x3194e32622c5d860
             3 x v4 fee 3500 ts 200 x 2.1 via 0x3194e32622c5d860
@@ -259,6 +261,18 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 19000 ts 200 x 2 via 0x3194e32622c5d860
             1 x v4 fee 200000 ts 200 x 0.00067 via 0x58daec3116aae6d9
             1 x v4 fee 10000 ts 200 x 2 via 0x3194e32622c5d860
+  contract 0x0f2730c4b0c279c8c7e3e5f9b7032eb7d42d06c0 
+      pnl +0.3941 won 66/79 pools 72 wallets 19 (3.8/wallet) targets 9 | stake 0.00040 ret +495% in 1.2s out 27.4s | 20260821_00..20260829_00 (8 d) | INDEPENDENT
+           11 x v4 fee 10000 ts 200 x 0.5 via per-pool launchers
+           11 x v4 fee 10000 ts 200 x 0.9 via per-pool launchers
+            7 x v4 fee 10000 ts 200 x 0.7 via per-pool launchers
+            5 x v4 fee 10000 ts 200 x 0.6 via per-pool launchers
+  contract 0x55c20f86d1aac3282782ab7646e704cdbaf36599 
+      pnl +0.3764 won 21/37 pools 22 wallets 28 (0.8/wallet) targets 12 | stake 0.04483 ret +2% in 1.6s out 62.6s | 20260822_00..20260915_00 (14 d) | fleet-like
+           10 x v2 fee - ts - x 0.8 via per-pool launchers
+            3 x v4 fee 2500 ts 25 x 49 via 0x58daec3116aae6d9
+            3 x v4 fee 2500 ts 25 x 0.13 via 0x0000ffffbe8efe70
+            2 x v3 fee 10000 ts 200 x 0.033 via 0x73991a25c818bf1f
   wallet   0xf83004e222925921364ecb8c88e2b11e579c685d 
       pnl +0.3742 won 60/66 pools 66 wallets 1 (66.0/wallet) targets 1 | stake 0.02395 ret +16% in 17.7s out 22.2s | 20261011_00..20261019_00 (7 d) | one pool type
             3 x v4 fee 4000 ts 200 x 2 via 0x3194e32622c5d860
@@ -271,15 +285,21 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             3 x v4 fee 2500 ts 200 x 1.9 via 0x3194e32622c5d860
             2 x v4 fee 3500 ts 200 x 2.9 via 0x3194e32622c5d860
             2 x v4 fee 1000 ts 200 x 2.6 via 0x3194e32622c5d860
+  wallet   0xecb0770d89eee9a6a49d15759bd257d2f5e8654c 
+      pnl +0.3550 won 5483/5487 pools 5487 wallets 1 (5487.0/wallet) targets 1 | stake 0.00020 ret +33% in 2.7s out 23.2s | 20260809_00..20260826_00 (18 d) | one pool type
+         5487 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
   wallet   0x6c76d077190f7db89c614829dab618aa0c00e657 
       pnl +0.3515 won 5/9 pools 9 wallets 1 (9.0/wallet) targets 1 | stake 0.02114 ret +5% in 9.9s out 18.4s | 20260926_00..20261010_00 (6 d) | one pool type
             2 x v4 fee 10000 ts 200 x 1 via 0x3194e32622c5d860
             2 x v4 fee 20000 ts 200 x 1 via 0x3194e32622c5d860
             1 x v4 fee 22100 ts 200 x 2.2 via 0x3194e32622c5d860
             1 x v4 fee 13300 ts 200 x 1 via 0x3194e32622c5d860
-  wallet   0xecb0770d89eee9a6a49d15759bd257d2f5e8654c 
-      pnl +0.3097 won 4760/4764 pools 4764 wallets 1 (4764.0/wallet) targets 1 | stake 0.00020 ret +33% in 2.6s out 23.1s | 20260809_00..20260823_00 (15 d) | one pool type
-         4764 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
+  contract 0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09 
+      pnl +0.3331 won 15/18 pools 9 wallets 10 (0.9/wallet) targets 1 | stake 0.03000 ret +42% in 8.4s out 174.6s | 20260802_00..20261007_00 (8 d) | fleet-like
+            7 x v2 fee - ts - x 1.9 via 0x26605f322f7ff986
+            5 x v2 fee - ts - x 2 via 0x26605f322f7ff986
+            3 x v2 fee - ts - x 2 via 0xe9f7ab7de8fb8756
+            1 x v2 fee - ts - x 1.9 via per-pool launchers
   contract 0xfd1b271f235e5230eaee9d914ccb1af495bfb758 D65 crew router (twin)
       pnl +0.2909 won 751/805 pools 788 wallets 4 (197.0/wallet) targets 3 | stake 0.00248 ret +18% in 0.3s out 1.1s | 20261008_00..20261012_00 (5 d) | INDEPENDENT
           666 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
@@ -311,7 +331,7 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
       pnl +0.1919 won 13/21 pools 6 wallets 20 (0.3/wallet) targets 3 | stake 0.02970 ret +3% in 1.3s out 47.2s | 20260806_00..20260810_00 (3 d) | fleet-like
            13 x v4 fee 10000 ts 200 hook x 5 via per-pool launchers
             4 x v4 fee 10000 ts 200 hook x 5 via -
-            2 x v2 fee - ts - x 2 via per-pool launchers
+            2 x v2 fee - ts - x 2 via 0x65050a9b7e5075a2
             1 x v4 fee 10000 ts 200 x 0.1 via per-pool launchers
   wallet   0x715b004ae8d091f35ce639723281e13f2646a8fb 
       pnl +0.1817 won 6/8 pools 8 wallets 1 (8.0/wallet) targets 1 | stake 0.01813 ret +10% in 12.2s out 16.1s | 20260918_00..20261014_00 (6 d) | one pool type
@@ -325,6 +345,18 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             2 x v4 fee 2000 ts 200 x 1.4 via 0x3194e32622c5d860
             2 x v4 fee 2500 ts 200 x 1.9 via 0x3194e32622c5d860
             1 x v4 fee 4500 ts 200 x 2.4 via 0x3194e32622c5d860
+  contract 0x53bf6b0684ec7ef91e1387da3d1a1769bc5a6f77 
+      pnl +0.1803 won 454/473 pools 413 wallets 15 (27.5/wallet) targets 9 | stake 0.00020 ret +210% in 0.9s out 56.5s | 20260803_00..20260913_00 (15 d) | INDEPENDENT
+          102 x v4 fee 10000 ts 200 x 1.5 via 0x58daec3116aae6d9
+           21 x v4 fee 10000 ts 200 x 3 via 0x58daec3116aae6d9
+           18 x v4 fee 20000 ts 200 x 0.49 via 0x3194e32622c5d860
+           13 x v4 fee 20000 ts 200 x 1.1 via 0x3194e32622c5d860
+  contract 0xe9f89a769f234f6cc75e1c1c6b1fd9963d72c652 
+      pnl +0.1780 won 6/10 pools 5 wallets 8 (0.6/wallet) targets 4 | stake 0.03130 ret +9% in 9.6s out 28.3s | 20260903_00..20260927_00 (5 d) | fleet-like
+            3 x v4 fee 9000 ts 90 x 0.12 via 0x58daec3116aae6d9
+            3 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
+            2 x v2 fee - ts - x 0.5 via 0x89e5db8b5aa49aa8
+            1 x v4 fee 50000 ts 200 x 0.6 via 0x58daec3116aae6d9
   contract 0x4f881c6afe5ced5e4469b15269fd0c1390f089c6 
       pnl +0.1756 won 2841/2956 pools 2956 wallets 1 (2956.0/wallet) targets 4 | stake 0.00009 ret +39% in 10.1s out 57.3s | 20260929_00..20261018_00 (19 d) | INDEPENDENT
          1186 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
@@ -349,23 +381,18 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             2 x v4 fee 20000 ts 200 x 0.7 via 0x3194e32622c5d860
             1 x v4 fee 30000 ts 200 x 3 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 2 via 0x3194e32622c5d860
-  contract 0xe9f89a769f234f6cc75e1c1c6b1fd9963d72c652 
-      pnl +0.1666 won 3/6 pools 3 wallets 4 (0.8/wallet) targets 2 | stake 0.02510 ret +4% in 12.5s out 19.6s | 20260915_00..20260927_00 (3 d) | fleet-like
-            3 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
-            2 x v2 fee - ts - x 0.5 via 0x89e5db8b5aa49aa8
-            1 x v2 fee - ts - x 1.9 via per-pool launchers
+  contract 0x041248594a21b5f80ac58e5e688904c1e71dd4df 
+      pnl +0.1657 won 9/15 pools 10 wallets 8 (1.2/wallet) targets 6 | stake 0.04098 ret +3% in 1.2s out 44.6s | 20260802_00..20260806_00 (5 d) | fleet-like
+            4 x v3 fee 10000 ts 200 x 0.17 via 0x73991a25c818bf1f
+            3 x v4 fee 3000 ts 60 hook x 1.1 via per-pool launchers
+            2 x v4 fee 9000 ts 90 x 2 via 0x58daec3116aae6d9
+            1 x v4 fee 2500 ts 25 x 1 via 0x58daec3116aae6d9
   wallet   0x4288ecd2cd5ec88e59075b4bade62ce556223ec2 
       pnl +0.1655 won 27/29 pools 29 wallets 1 (29.0/wallet) targets 1 | stake 0.03280 ret +18% in 10.2s out 13.3s | 20261020_00..20261023_00 (4 d) | one pool type
             1 x v4 fee 1500 ts 200 x 1.1 via 0x3194e32622c5d860
             1 x v4 fee 3000 ts 200 x 1.9 via 0x3194e32622c5d860
             1 x v4 fee 3000 ts 200 x 2.5 via 0x3194e32622c5d860
             1 x v4 fee 4500 ts 200 x 1.6 via 0x3194e32622c5d860
-  contract 0x041248594a21b5f80ac58e5e688904c1e71dd4df 
-      pnl +0.1654 won 7/10 pools 6 wallets 7 (0.9/wallet) targets 5 | stake 0.03361 ret +168% in 5.0s out 38.1s | 20260802_00..20260806_00 (3 d) | fleet-like
-            4 x v3 fee 10000 ts 200 x 0.17 via 0x73991a25c818bf1f
-            3 x v4 fee 3000 ts 60 hook x 1.1 via per-pool launchers
-            1 x v4 fee 2500 ts 25 x 1 via 0x58daec3116aae6d9
-            1 x v4 fee 10000 ts 200 x 1.3 via 0x58daec3116aae6d9
   wallet   0x5ca66cda1917e15f125e65c2af419a1d00c6a47a 
       pnl +0.1572 won 35/40 pools 40 wallets 1 (40.0/wallet) targets 1 | stake 0.02509 ret +9% in 12.1s out 17.1s | 20260923_00..20261004_00 (4 d) | one pool type
             3 x v4 fee 10000 ts 200 x 1.1 via 0x3194e32622c5d860
@@ -415,7 +442,7 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
           348 x v4 fee 500 ts 1 x 2.5 via 0x58daec3116aae6d9
           203 x v4 fee 500 ts 1 x 3.5 via 0x58daec3116aae6d9
   contract 0x7bcb750d388822ba6bc0fab673d7ebde2e5fb996 
-      pnl +0.1220 won 25/27 pools 26 wallets 5 (5.2/wallet) targets 3 | stake 0.00035 ret +218% in 7.6s out 35.3s | 20260801_00..20260803_00 (3 d) | INDEPENDENT
+      pnl +0.1221 won 26/28 pools 27 wallets 5 (5.4/wallet) targets 3 | stake 0.00035 ret +217% in 7.4s out 35.9s | 20260801_00..20260804_00 (4 d) | INDEPENDENT
             7 x v4 fee 10000 ts 200 x 0.8 via per-pool launchers
             4 x v4 fee 10000 ts 200 x 0.9 via per-pool launchers
             3 x v4 fee 10000 ts 200 x 0.7 via per-pool launchers
@@ -480,6 +507,21 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 1875 ts 200 x 2.8 via 0x3194e32622c5d860
             1 x v4 fee 2710 ts 200 x 1.2 via 0x3194e32622c5d860
             1 x v4 fee 4363 ts 200 x 2 via 0x3194e32622c5d860
+  wallet   0xbd484954bff347c7b9522a8489d30b2abbdead5b 
+      pnl +0.0954 won 396/410 pools 410 wallets 1 (410.0/wallet) targets 1 | stake 0.00007 ret +191% in 3.0s out 76.2s | 20260908_00..20260929_00 (21 d) | one pool type
+           32 x v4 fee 22500 ts 200 x 2 via 0x3194e32622c5d860
+           24 x v4 fee 20000 ts 200 x 2 via 0x3194e32622c5d860
+           19 x v4 fee 10000 ts 200 x 1 via 0x3194e32622c5d860
+           18 x v4 fee 10000 ts 200 x 1 via per-pool launchers
+  contract 0xf193ede778a92dc37cb450a1ef1565ed1e8b7964 
+      pnl +0.0953 won 299/299 pools 299 wallets 1 (299.0/wallet) targets 1 | stake 0.00020 ret +208% in 8.5s out 154.2s | 20260807_00..20260829_00 (6 d) | one pool type
+          299 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
+  wallet   0xf7b47b17bebba4b3e9e55ac09e3179f6f4cda8d6 
+      pnl +0.0953 won 1374/1458 pools 1458 wallets 1 (1458.0/wallet) targets 2 | stake 0.00004 ret +182% in 3.0s out 83.6s | 20260802_00..20261010_00 (22 d) | INDEPENDENT
+          334 x v4 fee 10000 ts 200 x 3 via 0x58daec3116aae6d9
+          128 x v4 fee 24500 ts 200 x 2 via 0x3194e32622c5d860
+          128 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
+           90 x v4 fee 10000 ts 200 x 1 via 0x58daec3116aae6d9
   wallet   0x3d5d884626726ce1abaf163b1150dbbc727a0748 
       pnl +0.0946 won 33/41 pools 41 wallets 1 (41.0/wallet) targets 1 | stake 0.01772 ret +9% in 12.0s out 15.1s | 20261001_00..20261004_00 (4 d) | one pool type
             4 x v4 fee 10000 ts 200 x 1.1 via 0x3194e32622c5d860
@@ -492,21 +534,12 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             2 x v4 fee 20000 ts 200 x 4 via 0x3194e32622c5d860
             2 x v4 fee 10000 ts 200 x 2.9 via 0x3194e32622c5d860
             2 x v4 fee 10000 ts 200 x 1.2 via 0x3194e32622c5d860
-  contract 0xf193ede778a92dc37cb450a1ef1565ed1e8b7964 
-      pnl +0.0925 won 243/243 pools 243 wallets 1 (243.0/wallet) targets 1 | stake 0.00020 ret +212% in 8.9s out 170.8s | 20260807_00..20260809_00 (3 d) | one pool type
-          243 x v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f
   wallet   0x0f7e84f7a58101a19e6d9cdab661f2357491f5b2 
       pnl +0.0902 won 38/47 pools 47 wallets 1 (47.0/wallet) targets 1 | stake 0.01922 ret +9% in 6.1s out 9.3s | 20260923_00..20261004_00 (4 d) | one pool type
             2 x v4 fee 10000 ts 200 x 1.6 via 0x3194e32622c5d860
             2 x v4 fee 15000 ts 200 x 1.1 via 0x3194e32622c5d860
             2 x v4 fee 10000 ts 200 x 1.4 via 0x3194e32622c5d860
             2 x v4 fee 10000 ts 200 x 1.8 via 0x3194e32622c5d860
-  contract 0xccc88a9d1b4ed6b0eaba998850414b24f1c315be 
-      pnl +0.0890 won 10/15 pools 12 wallets 9 (1.3/wallet) targets 6 | stake 0.00423 ret +4% in 13.2s out 106.6s | 20260807_00..20261005_00 (8 d) | fleet-like
-            4 x v2 fee - ts - x 0.1 via per-pool launchers
-            2 x v4 fee 100000 ts 1000 x 0.11 via 0x58daec3116aae6d9
-            2 x v4 fee 50000 ts 200 x 0.6 via 0x58daec3116aae6d9
-            2 x v4 fee 75 ts 1 x 0.081 via 0x58daec3116aae6d9
   wallet   0x84158fa5ac847683c0b54c8d892dba251612de09 
       pnl +0.0887 won 28/39 pools 39 wallets 1 (39.0/wallet) targets 1 | stake 0.01787 ret +11% in 8.7s out 13.2s | 20261002_00..20261004_00 (3 d) | one pool type
             2 x v4 fee 20000 ts 200 x 1.4 via 0x3194e32622c5d860
@@ -537,6 +570,12 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             2 x v4 fee 20000 ts 200 x 1 via 0x3194e32622c5d860
             2 x v4 fee 15000 ts 200 x 1.1 via 0x3194e32622c5d860
             2 x v4 fee 10000 ts 200 x 1 via 0x3194e32622c5d860
+  wallet   0xc3c81a3484a206b1e6efc0b9858cf5feb4e4adb6 
+      pnl +0.0835 won 974/1017 pools 1017 wallets 1 (1017.0/wallet) targets 6 | stake 0.00010 ret +61% in 10.8s out 44.0s | 20260830_00..20261006_00 (22 d) | INDEPENDENT
+           72 x v4 fee 22500 ts 200 x 2 via 0x3194e32622c5d860
+           53 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
+           49 x v4 fee 12500 ts 200 x 2 via 0x3194e32622c5d860
+           32 x v4 fee 10000 ts 200 x 0.5 via per-pool launchers
   wallet   0xebbeaceff7661a880671564f1652c6bbc74a679b 
       pnl +0.0833 won 19/21 pools 21 wallets 1 (21.0/wallet) targets 1 | stake 0.03080 ret +15% in 17.6s out 22.7s | 20261002_00..20261004_00 (3 d) | one pool type
             2 x v4 fee 15000 ts 200 x 1.1 via 0x3194e32622c5d860
@@ -556,17 +595,11 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             2 x v4 fee 20000 ts 200 x 1.4 via 0x3194e32622c5d860
             1 x v4 fee 15000 ts 200 x 2 via 0x3194e32622c5d860
   wallet   0x7cdea0cf74047efbe3a7c9ef1cddbc1df7e2646e 
-      pnl +0.0797 won 29/32 pools 32 wallets 1 (32.0/wallet) targets 1 | stake 0.01965 ret +6% in 17.9s out 23.2s | 20261006_00..20261010_00 (5 d) | one pool type
+      pnl +0.0815 won 30/33 pools 33 wallets 1 (33.0/wallet) targets 1 | stake 0.01980 ret +6% in 17.7s out 23.2s | 20260911_00..20261010_00 (6 d) | one pool type
+            1 x v4 fee 20000 ts 200 x 2.2 via 0x3194e32622c5d860
             1 x v4 fee 3285 ts 200 x 2.3 via 0x3194e32622c5d860
             1 x v4 fee 3833 ts 200 x 2.2 via 0x3194e32622c5d860
             1 x v4 fee 2710 ts 200 x 1.2 via 0x3194e32622c5d860
-            1 x v4 fee 4363 ts 200 x 2 via 0x3194e32622c5d860
-  wallet   0xf7b47b17bebba4b3e9e55ac09e3179f6f4cda8d6 
-      pnl +0.0795 won 1267/1351 pools 1351 wallets 1 (1351.0/wallet) targets 2 | stake 0.00004 ret +167% in 3.0s out 83.4s | 20260802_00..20261010_00 (17 d) | INDEPENDENT
-          334 x v4 fee 10000 ts 200 x 3 via 0x58daec3116aae6d9
-          128 x v4 fee 24500 ts 200 x 2 via 0x3194e32622c5d860
-          128 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
-           76 x v4 fee 500 ts 1 x 2.5 via 0x58daec3116aae6d9
   wallet   0x44c15e1d955bdd784c75db023236d655c61bd938 
       pnl +0.0785 won 13/13 pools 13 wallets 1 (13.0/wallet) targets 1 | stake 0.04330 ret +16% in 18.8s out 24.2s | 20261011_00..20261019_00 (5 d) | one pool type
             2 x v4 fee 1000 ts 200 x 2.9 via 0x3194e32622c5d860
@@ -596,12 +629,6 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             2 x v4 fee 10000 ts 200 x 2.9 via 0x3194e32622c5d860
             1 x v4 fee 13000 ts 200 x 1.7 via 0x3194e32622c5d860
             1 x v4 fee 13000 ts 200 x 1.2 via 0x3194e32622c5d860
-  contract 0xe492912f37c2a4eca45d42dc67548f4c6cd7ce2b 
-      pnl +0.0730 won 12/29 pools 16 wallets 24 (0.7/wallet) targets 7 | stake 0.02020 ret -2% in 5.1s out 33.0s | 20260803_00..20261001_00 (9 d) | fleet-like
-            6 x v4 fee 3000 ts 60 hook x 1.1 via per-pool launchers
-            6 x v2 fee - ts - x 0.1 via per-pool launchers
-            4 x v4 fee 9600 ts 193 x 5 via per-pool launchers
-            2 x v4 fee 0 ts 200 hook x 2.5 via per-pool launchers
   wallet   0x019c2897aab39a7a2e3d0c6a8fcd363d0849ca9f 
       pnl +0.0724 won 7/8 pools 8 wallets 1 (8.0/wallet) targets 1 | stake 0.02811 ret +12% in 4.4s out 12.3s | 20260925_00..20261002_00 (5 d) | one pool type
             1 x v4 fee 1000 ts 200 x 1.9 via 0x3194e32622c5d860
@@ -638,6 +665,12 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             2 x v4 fee 10000 ts 200 x 1.1 via 0x3194e32622c5d860
             2 x v4 fee 10000 ts 200 x 1.4 via 0x3194e32622c5d860
             2 x v4 fee 13000 ts 200 x 1.5 via 0x3194e32622c5d860
+  contract 0xe492912f37c2a4eca45d42dc67548f4c6cd7ce2b 
+      pnl +0.0683 won 12/33 pools 19 wallets 28 (0.7/wallet) targets 8 | stake 0.01980 ret -5% in 6.6s out 33.0s | 20260803_00..20261001_00 (12 d) | fleet-like
+            6 x v4 fee 3000 ts 60 hook x 1.1 via per-pool launchers
+            6 x v2 fee - ts - x 0.1 via per-pool launchers
+            4 x v4 fee 9600 ts 193 x 5 via per-pool launchers
+            2 x v4 fee 0 ts 200 hook x 2.5 via per-pool launchers
   wallet   0x72a141d01055f19534d4537bcd6c07ef6b0a139e 
       pnl +0.0681 won 8/10 pools 10 wallets 1 (10.0/wallet) targets 1 | stake 0.02976 ret +15% in 2.2s out 13.9s | 20260919_00..20260923_00 (3 d) | one pool type
             3 x v4 fee 10000 ts 200 x 2 via 0x3194e32622c5d860
@@ -650,12 +683,6 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 3000 ts 200 x 1.6 via 0x3194e32622c5d860
             1 x v4 fee 500 ts 200 x 0.7 via 0x3194e32622c5d860
             1 x v4 fee 2000 ts 200 x 3 via 0x3194e32622c5d860
-  wallet   0xbd484954bff347c7b9522a8489d30b2abbdead5b 
-      pnl +0.0653 won 285/294 pools 294 wallets 1 (294.0/wallet) targets 1 | stake 0.00008 ret +161% in 3.0s out 60.3s | 20260915_00..20260929_00 (15 d) | one pool type
-           32 x v4 fee 22500 ts 200 x 2 via 0x3194e32622c5d860
-           22 x v4 fee 20000 ts 200 x 2 via 0x3194e32622c5d860
-           18 x v4 fee 10000 ts 200 x 1 via per-pool launchers
-           16 x v4 fee 23500 ts 200 x 2 via 0x3194e32622c5d860
   wallet   0xebbcb2263a45f8de6e84198118b0fd7f97f5a147 
       pnl +0.0650 won 17/22 pools 22 wallets 1 (22.0/wallet) targets 1 | stake 0.03031 ret +11% in 14.6s out 19.2s | 20261002_00..20261004_00 (3 d) | one pool type
             2 x v4 fee 10000 ts 200 x 1.8 via 0x3194e32622c5d860
@@ -774,17 +801,18 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 4500 ts 200 x 1.6 via 0x3194e32622c5d860
             1 x v4 fee 2000 ts 200 x 2.5 via 0x3194e32622c5d860
             1 x v4 fee 3000 ts 200 x 1.6 via 0x3194e32622c5d860
+  wallet   0x754cbbe82c17cc32dea516bd73d55982e9517881 
+      pnl +0.0494 won 1772/1946 pools 1946 wallets 1 (1946.0/wallet) targets 10 | stake 0.00004 ret +49% in 4.2s out 33.0s | 20260820_00..20261003_00 (19 d) | INDEPENDENT
+          186 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
+          185 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
+          126 x v4 fee 20000 ts 200 x 2 via 0x3194e32622c5d860
+          112 x v4 fee 10000 ts 200 x 3 via 0x58daec3116aae6d9
   wallet   0x82378337453fa63e41981e81adf60461f91fbfcc 
       pnl +0.0479 won 8/10 pools 10 wallets 1 (10.0/wallet) targets 1 | stake 0.02166 ret +5% in 9.6s out 16.2s | 20260918_00..20261007_00 (7 d) | one pool type
             2 x v4 fee 10000 ts 200 x 1 via 0x3194e32622c5d860
             1 x v4 fee 11100 ts 200 x 0.91 via 0x3194e32622c5d860
             1 x v4 fee 20000 ts 200 x 0.95 via 0x3194e32622c5d860
             1 x v4 fee 20000 ts 200 x 1 via 0x3194e32622c5d860
-  contract 0x26605f322f7ff986f381bb9a6e3f5dab0beaeb09 
-      pnl +0.0479 won 2/3 pools 3 wallets 2 (1.5/wallet) targets 1 | stake 0.03000 ret +105% in 11.9s out 197.8s | 20260802_00..20261007_00 (3 d) | fleet-like
-            1 x v2 fee - ts - x 2 via 0x26605f322f7ff986
-            1 x v2 fee - ts - x 1.9 via per-pool launchers
-            1 x v2 fee - ts - x 2.1 via -
   wallet   0x961879ead37b66addd4db6ebaf37a622ee414c56 
       pnl +0.0469 won 23/33 pools 33 wallets 1 (33.0/wallet) targets 1 | stake 0.01765 ret +5% in 7.0s out 10.5s | 20261002_00..20261004_00 (3 d) | one pool type
             2 x v4 fee 10000 ts 200 x 1.6 via 0x3194e32622c5d860
@@ -797,29 +825,27 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             2 x v4 fee 500 ts 1 x 3 via 0x58daec3116aae6d9
             2 x v2 fee - ts - x 1 via 0x89e5db8b5aa49aa8
             1 x v4 fee 500 ts 1 x 3.5 via 0x58daec3116aae6d9
-  contract 0x0f2730c4b0c279c8c7e3e5f9b7032eb7d42d06c0 
-      pnl +0.0437 won 55/61 pools 61 wallets 7 (8.7/wallet) targets 5 | stake 0.00040 ret +668% in 1.1s out 28.1s | 20260821_00..20260823_00 (3 d) | INDEPENDENT
-           11 x v4 fee 10000 ts 200 x 0.5 via per-pool launchers
-           11 x v4 fee 10000 ts 200 x 0.9 via per-pool launchers
-            7 x v4 fee 10000 ts 200 x 0.7 via per-pool launchers
-            5 x v4 fee 10000 ts 200 x 0.6 via per-pool launchers
+  wallet   0x6883982283ca901393cc3281709128f48841645b 
+      pnl +0.0466 won 64/65 pools 65 wallets 1 (65.0/wallet) targets 1 | stake 0.00009 ret +712% in 1.1s out 94.0s | 20260907_00..20260908_00 (2 d) | one pool type
+            7 x v4 fee 20000 ts 200 x 0.49 via 0x3194e32622c5d860
+            4 x v4 fee 10900 ts 200 x 0.97 via 0x3194e32622c5d860
+            4 x v4 fee 20000 ts 200 x 0.97 via 0x3194e32622c5d860
+            4 x v4 fee 10900 ts 200 x 0.48 via 0x3194e32622c5d860
   wallet   0xc8f7e6941eff578a8aaf1c15a2a51680726e59db 
       pnl +0.0431 won 4/4 pools 4 wallets 1 (4.0/wallet) targets 1 | stake 0.01726 ret +51% in 15.3s out 26.1s | 20260918_00..20260921_00 (2 d) | one pool type
             2 x v4 fee 10000 ts 200 x 1.1 via 0x3194e32622c5d860
             1 x v4 fee 33300 ts 200 x 0.85 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.2 via 0x3194e32622c5d860
+  wallet   0x97c4cc9ab0f8ae0fa2092f11f34262803a8ea43a 
+      pnl +0.0427 won 3/3 pools 3 wallets 1 (3.0/wallet) targets 2 | stake 0.05200 ret +56% in 9.6s out 372.2s | 20260804_00..20260831_00 (3 d) | INDEPENDENT
+            2 x v3 fee 3000 ts 60 x 1 via 0x73991a25c818bf1f
+            1 x v2 fee - ts - x 1 via 0x89e5db8b5aa49aa8
   wallet   0x72180d1de107594e4d6c444aed452ecc8b722784 
       pnl +0.0425 won 5/7 pools 7 wallets 1 (7.0/wallet) targets 1 | stake 0.03032 ret +23% in 6.9s out 19.8s | 20260922_00..20260923_00 (2 d) | one pool type
             2 x v4 fee 10000 ts 200 x 1.8 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.2 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.3 via 0x3194e32622c5d860
             1 x v4 fee 30000 ts 200 x 3 via 0x3194e32622c5d860
-  wallet   0x754cbbe82c17cc32dea516bd73d55982e9517881 
-      pnl +0.0422 won 1659/1827 pools 1827 wallets 1 (1827.0/wallet) targets 9 | stake 0.00004 ret +48% in 4.0s out 32.7s | 20260820_00..20261003_00 (14 d) | INDEPENDENT
-          186 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
-          183 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
-          126 x v4 fee 20000 ts 200 x 2 via 0x3194e32622c5d860
-          112 x v4 fee 10000 ts 200 x 3 via 0x58daec3116aae6d9
   wallet   0x704592fe1c8f30556f04edafde086465a0f64218 
       pnl +0.0400 won 8/9 pools 9 wallets 1 (9.0/wallet) targets 1 | stake 0.03410 ret +10% in 18.7s out 23.8s | 20261006_00..20261010_00 (3 d) | one pool type
             1 x v4 fee 805 ts 200 x 4.2 via 0x3194e32622c5d860
@@ -872,12 +898,6 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
       pnl +0.0343 won 3/4 pools 3 wallets 3 (1.0/wallet) targets 2 | stake 0.01346 ret +108% in 0.6s out 118.7s | 20260930_00..20261001_00 (2 d) | fleet-like
             2 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
             2 x v4 fee 0 ts 200 hook x 31 via per-pool launchers
-  wallet   0xc3c81a3484a206b1e6efc0b9858cf5feb4e4adb6 
-      pnl +0.0343 won 716/757 pools 757 wallets 1 (757.0/wallet) targets 6 | stake 0.00010 ret +51% in 10.4s out 43.6s | 20260915_00..20261006_00 (9 d) | INDEPENDENT
-           72 x v4 fee 22500 ts 200 x 2 via 0x3194e32622c5d860
-           53 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
-           46 x v4 fee 12500 ts 200 x 2 via 0x3194e32622c5d860
-           32 x v4 fee 10000 ts 200 x 0.5 via per-pool launchers
   wallet   0x04e50708aac19de59082a676518275b8b68cb6bd 
       pnl +0.0339 won 2/3 pools 3 wallets 1 (3.0/wallet) targets 1 | stake 0.02817 ret +22% in 14.3s out 23.4s | 20260918_00..20260921_00 (3 d) | one pool type
             1 x v4 fee 20000 ts 200 x 1.5 via 0x3194e32622c5d860
@@ -889,24 +909,30 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 10000 ts 200 x 1.3 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.1 via 0x3194e32622c5d860
+  contract 0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd 
+      pnl +0.0330 won 20/23 pools 21 wallets 10 (2.1/wallet) targets 5 | stake 0.00020 ret +124% in 1.9s out 28.4s | 20260901_00..20261016_00 (11 d) | one pool type
+            2 x v4 fee 8388608 ts 60 hook x 1e-14 via 0x58daec3116aae6d9
+            2 x v4 fee 10000 ts 200 x 1.5 via 0x3194e32622c5d860
+            2 x v4 fee 10000 ts 200 x 1.9 via 0x3194e32622c5d860
+            2 x v4 fee 10000 ts 200 x 0.82 via per-pool launchers
   wallet   0xa6292cf7e78b523b1371403ed1e24502b051f13a 
       pnl +0.0330 won 192/194 pools 194 wallets 1 (194.0/wallet) targets 2 | stake 0.00008 ret +152% in 6.2s out 39.6s | 20261003_00..20261025_00 (12 d) | INDEPENDENT
            32 x v4 fee 4000 ts 200 x 1.3 via 0x3194e32622c5d860
            14 x v4 fee 10000 ts 200 x 1.9 via 0x3194e32622c5d860
             7 x v4 fee 10000 ts 200 x 1.8 via 0x3194e32622c5d860
             4 x v4 fee 10000 ts 200 x 2 via 0x3194e32622c5d860
+  contract 0xf2c69db0311b3ded8ec7f39e80f555a200cc2839 
+      pnl +0.0324 won 12/24 pools 16 wallets 19 (0.8/wallet) targets 10 | stake 0.03625 ret +1% in 4.3s out 15.6s | 20260810_00..20260923_00 (13 d) | fleet-like
+            5 x v2 fee - ts - x 1 via per-pool launchers
+            2 x v2 fee - ts - x 2 via 0x65050a9b7e5075a2
+            2 x v4 fee 2500 ts 25 x 0.0084 via 0x58daec3116aae6d9
+            2 x v4 fee 9000 ts 90 x 2 via 0x58daec3116aae6d9
   wallet   0x61f8cd1f1137007df664d6eaa4e9e17345b7939c 
       pnl +0.0319 won 11/13 pools 13 wallets 1 (13.0/wallet) targets 1 | stake 0.01915 ret +8% in 15.8s out 22.5s | 20261002_00..20261004_00 (3 d) | one pool type
             1 x v4 fee 15000 ts 200 x 2 via 0x3194e32622c5d860
             1 x v4 fee 20000 ts 200 x 1 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.1 via 0x3194e32622c5d860
             1 x v4 fee 15000 ts 200 x 1 via 0x3194e32622c5d860
-  contract 0x55c20f86d1aac3282782ab7646e704cdbaf36599 
-      pnl +0.0310 won 3/5 pools 5 wallets 3 (1.7/wallet) targets 4 | stake 0.04950 ret +0% in 1.7s out 20.1s | 20260822_00..20260915_00 (3 d) | fleet-like
-            1 x v4 fee 10000 ts 100 x 16 via 0x58daec3116aae6d9
-            1 x v4 fee 30000 ts 300 x 0.4 via 0x58daec3116aae6d9
-            1 x v3 fee 3000 ts 60 x 140 via 0x73991a25c818bf1f
-            1 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
   wallet   0x5f91b34c0d83266984599c380b4920e070ae1c63 
       pnl +0.0301 won 13/14 pools 14 wallets 1 (14.0/wallet) targets 1 | stake 0.02695 ret +5% in 3.9s out 7.8s | 20261002_00..20261004_00 (3 d) | one pool type
             2 x v4 fee 20000 ts 200 x 4 via 0x3194e32622c5d860
@@ -963,6 +989,9 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 10000 ts 200 x 0.82 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 0.8 via 0x3194e32622c5d860
             1 x v4 fee 150000 ts 200 x 0.6 via 0x3194e32622c5d860
+  wallet   0x14de2fa4461e93fd202c3afe63139340c118ab77 
+      pnl +0.0245 won 29/29 pools 29 wallets 1 (29.0/wallet) targets 1 | stake 0.00039 ret +219% in 0.6s out 167.8s | 20260907_00..20260907_00 (1 d) | one pool type
+           29 x v4 fee 10000 ts 200 x 1.5 via 0x58daec3116aae6d9
   wallet   0x8cf143ddc84dedcd7bedd2b362b63af154dfa4f7 
       pnl +0.0240 won 442/444 pools 444 wallets 1 (444.0/wallet) targets 2 | stake 0.00006 ret +127% in 7.8s out 115.4s | 20261013_00..20261025_00 (8 d) | INDEPENDENT
           168 x v4 fee 500 ts 1 x 3 via 0x58daec3116aae6d9
@@ -993,12 +1022,30 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
           147 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
           142 x v4 fee 500 ts 1 x 2.5 via 0x58daec3116aae6d9
           108 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
+  wallet   0xbfbe77239c40edcef31a965babf367c041542a20 
+      pnl +0.0222 won 5/5 pools 5 wallets 1 (5.0/wallet) targets 1 | stake 0.01706 ret +22% in 9.9s out 42.7s | 20260912_00..20260912_00 (1 d) | one pool type
+            1 x v4 fee 20000 ts 200 x 1 via 0x3194e32622c5d860
+            1 x v4 fee 25000 ts 200 x 0.9 via 0x3194e32622c5d860
+            1 x v4 fee 17000 ts 200 x 0.77 via 0x3194e32622c5d860
+            1 x v4 fee 18000 ts 200 x 0.88 via 0x3194e32622c5d860
   wallet   0x37f85ae7baf5f21c6e59eb8d65c053c51d0911e5 
       pnl +0.0217 won 7/9 pools 9 wallets 1 (9.0/wallet) targets 1 | stake 0.01819 ret +9% in 5.2s out 12.5s | 20260921_00..20260922_00 (2 d) | one pool type
             2 x v4 fee 10000 ts 200 x 1.4 via 0x3194e32622c5d860
             1 x v4 fee 150000 ts 200 x 0.6 via 0x3194e32622c5d860
             1 x v4 fee 20000 ts 200 x 0.8 via 0x3194e32622c5d860
             1 x v4 fee 30000 ts 200 x 0.75 via 0x3194e32622c5d860
+  contract 0x7de968b2821c130bc08ee4121cdd967c10f4a343 
+      pnl +0.0214 won 274/281 pools 281 wallets 1 (281.0/wallet) targets 1 | stake 0.00001 ret +465% in 2.0s out 94.4s | 20260823_00..20260825_00 (3 d) | one pool type
+           28 x v4 fee 10000 ts 200 x 1.2 via 0x3194e32622c5d860
+           22 x v4 fee 10000 ts 200 x 1.3 via 0x3194e32622c5d860
+           17 x v4 fee 10000 ts 200 x 1.1 via 0x3194e32622c5d860
+           15 x v4 fee 10000 ts 200 x 0.8 via per-pool launchers
+  wallet   0xc86aba7cab01af58b956fb6d7ff0f55bbff272e6 
+      pnl +0.0213 won 5/5 pools 5 wallets 1 (5.0/wallet) targets 1 | stake 0.01032 ret +39% in 5.7s out 30.2s | 20260912_00..20260912_00 (1 d) | one pool type
+            1 x v4 fee 25000 ts 200 x 0.9 via 0x3194e32622c5d860
+            1 x v4 fee 17000 ts 200 x 0.77 via 0x3194e32622c5d860
+            1 x v4 fee 18000 ts 200 x 0.88 via 0x3194e32622c5d860
+            1 x v4 fee 12000 ts 200 x 1 via 0x3194e32622c5d860
   wallet   0x5a40bb063f52bb04be0c1143c2b752ebbb3c12a0 
       pnl +0.0212 won 5/9 pools 9 wallets 1 (9.0/wallet) targets 1 | stake 0.01729 ret +3% in 13.1s out 22.9s | 20261002_00..20261004_00 (2 d) | one pool type
             2 x v4 fee 10000 ts 200 x 1.1 via 0x3194e32622c5d860
@@ -1038,18 +1085,22 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             2 x v4 fee 10000 ts 200 x 1.5 via 0x3194e32622c5d860
             1 x v4 fee 20000 ts 200 x 1 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.3 via 0x3194e32622c5d860
+  contract 0xdf040d9df9fd77cd3318f54a8cdc44112a354c30 
+      pnl +0.0199 won 3/5 pools 3 wallets 5 (0.6/wallet) targets 3 | stake 0.00990 ret +64% in 1.0s out 643.7s | 20260903_00..20260903_00 (1 d) | fleet-like
+            3 x v3 fee 3000 ts 60 x 1 via 0x73991a25c818bf1f
+            1 x v4 fee 9000 ts 90 x 0.12 via 0x58daec3116aae6d9
+            1 x v4 fee 10000 ts 200 x 1.5 via 0x58daec3116aae6d9
+  wallet   0xec79295f5fbf9eeb4d4017a84f636c466accc059 
+      pnl +0.0198 won 3/3 pools 3 wallets 1 (3.0/wallet) targets 1 | stake 0.01854 ret +40% in 11.2s out 60.1s | 20260912_00..20260912_00 (1 d) | one pool type
+            1 x v4 fee 20000 ts 200 x 1 via 0x3194e32622c5d860
+            1 x v4 fee 25000 ts 200 x 0.9 via 0x3194e32622c5d860
+            1 x v4 fee 18000 ts 200 x 0.88 via 0x3194e32622c5d860
   wallet   0x09ebba4aed1d155a8e722d4679686f6ca2537fec 
       pnl +0.0196 won 3/5 pools 5 wallets 1 (5.0/wallet) targets 1 | stake 0.02704 ret +3% in 4.6s out 7.7s | 20260916_00..20260920_00 (3 d) | one pool type
             1 x v4 fee 20000 ts 200 x 1.2 via 0x3194e32622c5d860
             1 x v4 fee 20000 ts 200 x 0.95 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.3 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.2 via 0x3194e32622c5d860
-  contract 0xb1000000096bd2f8ca9b6883182eccaf31e7c3fd 
-      pnl +0.0193 won 17/18 pools 17 wallets 5 (3.4/wallet) targets 4 | stake 0.00015 ret +150% in 1.9s out 36.8s | 20260919_00..20261016_00 (8 d) | INDEPENDENT
-            2 x v4 fee 10000 ts 200 x 1.5 via 0x3194e32622c5d860
-            2 x v4 fee 10000 ts 200 x 1.9 via 0x3194e32622c5d860
-            2 x v4 fee 10000 ts 200 x 0.82 via per-pool launchers
-            2 x v2 fee - ts - x 1 via per-pool launchers
   wallet   0xe5c7bb101472df4f8c9b999a072cb286eb0a5d6b 
       pnl +0.0189 won 5/5 pools 5 wallets 1 (5.0/wallet) targets 1 | stake 0.01012 ret +19% in 7.5s out 17.8s | 20260916_00..20260920_00 (3 d) | one pool type
             1 x v4 fee 10000 ts 200 x 3 via 0x3194e32622c5d860
@@ -1129,6 +1180,11 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 20000 ts 200 x 1.2 via 0x3194e32622c5d860
             1 x v4 fee 20000 ts 200 x 1 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.3 via 0x3194e32622c5d860
+  wallet   0x7b5ca637efce239dfcd0b354a92bc9483e50eb3b 
+      pnl +0.0161 won 3/3 pools 3 wallets 1 (3.0/wallet) targets 1 | stake 0.01156 ret +29% in 14.9s out 60.4s | 20260912_00..20260912_00 (1 d) | one pool type
+            1 x v4 fee 20000 ts 200 x 1 via 0x3194e32622c5d860
+            1 x v4 fee 25000 ts 200 x 0.9 via 0x3194e32622c5d860
+            1 x v4 fee 18000 ts 200 x 0.88 via 0x3194e32622c5d860
   wallet   0x05d24349ba1a83bcbaf098e1f2039eed6f91abc2 
       pnl +0.0160 won 8/11 pools 11 wallets 1 (11.0/wallet) targets 1 | stake 0.01194 ret +12% in 5.3s out 13.1s | 20260921_00..20260922_00 (2 d) | one pool type
             2 x v4 fee 10000 ts 200 x 1.4 via 0x3194e32622c5d860
@@ -1141,6 +1197,12 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             5 x v4 fee 10000 ts 200 x 0.9 via per-pool launchers
             5 x v4 fee 10000 ts 200 x 1.4 via per-pool launchers
             4 x v4 fee 10000 ts 200 x 0.8 via per-pool launchers
+  wallet   0x32326e7e35d125ccbdfb1f919e3537d917b91e89 
+      pnl +0.0157 won 4/4 pools 4 wallets 1 (4.0/wallet) targets 1 | stake 0.01426 ret +30% in 7.3s out 29.4s | 20260912_00..20260912_00 (1 d) | one pool type
+            1 x v4 fee 25000 ts 200 x 0.9 via 0x3194e32622c5d860
+            1 x v4 fee 17000 ts 200 x 0.77 via 0x3194e32622c5d860
+            1 x v4 fee 18000 ts 200 x 0.88 via 0x3194e32622c5d860
+            1 x v4 fee 12000 ts 200 x 1 via 0x3194e32622c5d860
   wallet   0xc67b6aef7fffdc95cb3fc2e165c4829e1c0a6219 
       pnl +0.0155 won 3/3 pools 3 wallets 1 (3.0/wallet) targets 1 | stake 0.00971 ret +67% in 2.6s out 15.2s | 20260918_00..20260919_00 (2 d) | one pool type
             1 x v4 fee 10000 ts 200 x 1.2 via 0x3194e32622c5d860
@@ -1152,11 +1214,11 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 22100 ts 200 x 2.2 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.9 via 0x3194e32622c5d860
   contract 0x12f420e5cb154acdae7f51313f370d74c0e8cfdd 
-      pnl +0.0148 won 3/4 pools 4 wallets 3 (1.3/wallet) targets 3 | stake 0.00007 ret +74% in 8.6s out 30.2s | 20260815_00..20261020_00 (3 d) | fleet-like
+      pnl +0.0149 won 4/5 pools 5 wallets 3 (1.7/wallet) targets 4 | stake 0.00010 ret +43% in 8.3s out 16.6s | 20260815_00..20261020_00 (4 d) | fleet-like
             1 x v2 fee - ts - x 1 via per-pool launchers
+            1 x v4 fee 9000 ts 90 x 2 via 0x58daec3116aae6d9
             1 x v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9
             1 x v4 fee 2200 ts 200 x 2.3 via 0x3194e32622c5d860
-            1 x v4 fee 3000 ts 200 x 2.1 via 0x3194e32622c5d860
   wallet   0x852d9c5a60d7d9ca1a56b00de34e3e12304da54a 
       pnl +0.0144 won 3/5 pools 5 wallets 1 (5.0/wallet) targets 1 | stake 0.02103 ret +13% in 10.0s out 25.6s | 20260921_00..20260926_00 (4 d) | one pool type
             1 x v4 fee 20000 ts 200 x 1.2 via 0x3194e32622c5d860
@@ -1181,6 +1243,12 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 2500 ts 200 x 1.8 via 0x3194e32622c5d860
             1 x v4 fee 4500 ts 200 x 3 via 0x3194e32622c5d860
             1 x v4 fee 3500 ts 200 x 1.8 via 0x3194e32622c5d860
+  contract 0xccc88a9d1b4ed6b0eaba998850414b24f1c315be 
+      pnl +0.0131 won 36/83 pools 61 wallets 26 (2.3/wallet) targets 19 | stake 0.00378 ret -4% in 12.7s out 75.5s | 20260807_00..20261005_00 (24 d) | one pool type
+            8 x v4 fee 50000 ts 200 x 0.24 via 0x58daec3116aae6d9
+            7 x v4 fee 50000 ts 200 x 0.6 via 0x58daec3116aae6d9
+            6 x v4 fee 49000 ts 200 x 1.2 via 0x58daec3116aae6d9
+            6 x v4 fee 49000 ts 200 x 0.96 via 0x58daec3116aae6d9
   wallet   0x2cc1b3ebed8c3ccde4e2d200dfaf37f50ec59431 
       pnl +0.0127 won 4/4 pools 4 wallets 1 (4.0/wallet) targets 1 | stake 0.01760 ret +20% in 19.6s out 25.7s | 20261011_00..20261013_00 (2 d) | one pool type
             1 x v4 fee 1000 ts 200 x 2.6 via 0x3194e32622c5d860
@@ -1192,6 +1260,9 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 10000 ts 200 x 2 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.8 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.3 via 0x3194e32622c5d860
+  wallet   0x7dcf294423da735d901021538da5a39aa01fc055 
+      pnl +0.0127 won 16/16 pools 16 wallets 1 (16.0/wallet) targets 1 | stake 0.00038 ret +216% in 0.6s out 159.4s | 20260907_00..20260907_00 (1 d) | one pool type
+           16 x v4 fee 10000 ts 200 x 1.5 via 0x58daec3116aae6d9
   wallet   0x536585fb4849c657b3f88fb95414e387530fc4cf 
       pnl +0.0126 won 3/4 pools 4 wallets 1 (4.0/wallet) targets 1 | stake 0.02035 ret +13% in 7.2s out 15.5s | 20260916_00..20260920_00 (3 d) | one pool type
             1 x v4 fee 10000 ts 200 x 1.2 via 0x3194e32622c5d860
@@ -1204,6 +1275,12 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 25000 ts 200 x 1.5 via 0x3194e32622c5d860
             1 x v4 fee 15000 ts 200 x 1 via 0x3194e32622c5d860
             1 x v4 fee 13000 ts 200 x 1.2 via 0x3194e32622c5d860
+  wallet   0xaa1d985991002fcb4547cece3ab4344c248f2da3 
+      pnl +0.0124 won 33/33 pools 33 wallets 1 (33.0/wallet) targets 1 | stake 0.00041 ret +79% in 2.0s out 31.3s | 20260908_00..20260916_00 (6 d) | one pool type
+           10 x v4 fee 10000 ts 200 x 1 via 0x3194e32622c5d860
+            3 x v4 fee 20000 ts 200 x 1.4 via 0x3194e32622c5d860
+            2 x v4 fee 20000 ts 200 x 1 via 0x3194e32622c5d860
+            2 x v4 fee 10000 ts 200 x 1.4 via 0x3194e32622c5d860
   wallet   0xdd4b1047f1efc5cd8c838cbd45cc8e0898dff0a9 
       pnl +0.0123 won 2/4 pools 4 wallets 1 (4.0/wallet) targets 1 | stake 0.01510 ret +10% in 6.5s out 10.5s | 20261005_00..20261005_00 (1 d) | one pool type
             1 x v4 fee 20000 ts 200 x 1.2 via 0x3194e32622c5d860
@@ -1233,6 +1310,12 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             1 x v4 fee 10000 ts 200 x 1.5 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 1.2 via 0x3194e32622c5d860
             1 x v4 fee 10000 ts 200 x 3 via 0x3194e32622c5d860
+  contract 0xa65ec4edbf82dca74647f00ce54d25927e559d95 
+      pnl +0.0104 won 111/113 pools 113 wallets 1 (113.0/wallet) targets 3 | stake 0.00001 ret +83% in 2.3s out 122.5s | 20260914_00..20260926_00 (9 d) | INDEPENDENT
+           41 x v4 fee 10000 ts 200 x 3 via 0x58daec3116aae6d9
+           30 x v4 fee 10000 ts 200 x 5 via 0x58daec3116aae6d9
+            4 x v4 fee 10000 ts 200 x 1.2 via per-pool launchers
+            4 x v4 fee 10000 ts 200 x 2 via 0x3194e32622c5d860
   wallet   0xf05d0e3f4b7777223e132254a1dc12127d503384 
       pnl +0.0101 won 52/52 pools 52 wallets 1 (52.0/wallet) targets 2 | stake 0.00006 ret +321% in 13.3s out 443.1s | 20261008_00..20261012_00 (5 d) | INDEPENDENT
            19 x v4 fee 500 ts 1 x 3 via 0x58daec3116aae6d9
@@ -1261,6 +1344,11 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
             3 x v4 fee 10000 ts 200 x 1 via 0x3194e32622c5d860
             1 x v4 fee 11100 ts 200 x 0.91 via 0x3194e32622c5d860
             1 x v4 fee 350 ts 200 x 2.9 via 0x3194e32622c5d860
+  wallet   0x1d5830691b852f5e7c0f5fcdb6d8211bf8fcb2df 
+      pnl +0.0019 won 10/11 pools 11 wallets 1 (11.0/wallet) targets 2 | stake 0.00300 ret +6% in 4.3s out 35.0s | 20260910_00..20260910_00 (1 d) | INDEPENDENT
+            9 x v4 fee 15000 ts 200 x 0.24 via 0x58daec3116aae6d9
+            1 x v4 fee 15000 ts 200 x 2 via 0x3194e32622c5d860
+            1 x v4 fee 21000 ts 210 x 0.19 via 0x58daec3116aae6d9
   wallet   0xc500b3232e60f72504c7b11fabcb210e65b9be50 
       pnl +0.0007 won 3/3 pools 3 wallets 1 (3.0/wallet) targets 2 | stake 0.00100 ret +23% in 2.6s out 15.9s | 20260820_00..20260820_00 (1 d) | INDEPENDENT
             2 x v2 fee - ts - x 0.5 via 0x89e5db8b5aa49aa8
@@ -1273,15 +1361,15 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
 
 == single-operator groups at a real stake (median 0.001+, 10+ pools, 3+ pools a wallet): a line's recurring fleet or a dedicated fronter; front.py's rug test on the line decides
   wallet   0x860f9513e7a991826f3b336e86e946b7adf17e91 pnl +0.8756 won 174/204 pools 204 wallets 1 | stake 0.0248 ret +11% in 12.4s out 16.8s | 20261006_00..20261023_00 (17 d) | v4 fee 1000 ts 200 x 1.8 via 0x3194e32622c5d860 (5)
-  wallet   0x64651c9d7e4c89cb39b3845bdc94ee0fabad20c4 pnl +0.8527 won 168/188 pools 188 wallets 1 | stake 0.0253 ret +11% in 14.4s out 18.8s | 20261006_00..20261022_00 (16 d) | v4 fee 1500 ts 200 x 2 via 0x3194e32622c5d860 (4)
+  wallet   0x64651c9d7e4c89cb39b3845bdc94ee0fabad20c4 pnl +0.8563 won 169/189 pools 189 wallets 1 | stake 0.0248 ret +11% in 14.3s out 18.8s | 20260911_00..20261022_00 (17 d) | v4 fee 1500 ts 200 x 2 via 0x3194e32622c5d860 (4)
   wallet   0xb2960438796f1abf086fb333b068fbf35a771211 pnl +0.8056 won 178/210 pools 210 wallets 1 | stake 0.0221 ret +9% in 12.3s out 16.2s | 20261006_00..20261023_00 (17 d) | v4 fee 1000 ts 200 x 2 via 0x3194e32622c5d860 (5)
-  wallet   0x9b75897b1f0c0302e4a2abd675dab11880d9a1d7 pnl +0.7553 won 144/157 pools 157 wallets 1 | stake 0.0202 ret +15% in 15.0s out 19.4s | 20261006_00..20261022_00 (15 d) | v4 fee 4500 ts 200 x 1.6 via 0x3194e32622c5d860 (5)
+  wallet   0x9b75897b1f0c0302e4a2abd675dab11880d9a1d7 pnl +0.7584 won 145/158 pools 158 wallets 1 | stake 0.0204 ret +15% in 15.0s out 19.4s | 20260911_00..20261022_00 (16 d) | v4 fee 4500 ts 200 x 1.6 via 0x3194e32622c5d860 (5)
   wallet   0x858b7c291a20f5aae3dacac7c4909738f52346d1 pnl +0.7553 won 176/206 pools 206 wallets 1 | stake 0.0215 ret +9% in 11.1s out 14.5s | 20261006_00..20261023_00 (16 d) | v4 fee 1000 ts 200 x 1.4 via 0x3194e32622c5d860 (5)
   wallet   0x6b47afeeaf015541cb565b6d4fa31164e6ad6f3a pnl +0.7054 won 126/139 pools 139 wallets 1 | stake 0.0258 ret +15% in 16.0s out 20.7s | 20261006_00..20261021_00 (15 d) | v4 fee 3500 ts 200 x 2.1 via 0x3194e32622c5d860 (3)
   wallet   0xe6af9036d2e9317edc710bb769c9808168f8b4ad pnl +0.6310 won 158/179 pools 179 wallets 1 | stake 0.0212 ret +11% in 9.2s out 12.7s | 20261006_00..20261023_00 (17 d) | v4 fee 1000 ts 200 x 2 via 0x3194e32622c5d860 (4)
-  wallet   0x97adf7fd5fb302e3c007018db80baff0854c8804 pnl +0.6133 won 141/173 pools 173 wallets 1 | stake 0.0234 ret +8% in 13.8s out 17.4s | 20261006_00..20261023_00 (16 d) | v4 fee 1000 ts 200 x 2.5 via 0x3194e32622c5d860 (3)
+  wallet   0x97adf7fd5fb302e3c007018db80baff0854c8804 pnl +0.6170 won 142/174 pools 174 wallets 1 | stake 0.0234 ret +9% in 13.8s out 17.4s | 20260911_00..20261023_00 (17 d) | v4 fee 1000 ts 200 x 2.5 via 0x3194e32622c5d860 (3)
   wallet   0x295877ce91a25528ae17263cb3d30eb11bbfae3e pnl +0.5751 won 99/109 pools 109 wallets 1 | stake 0.0286 ret +14% in 9.0s out 12.6s | 20261008_00..20261023_00 (14 d) | v4 fee 500 ts 200 x 2.2 via 0x3194e32622c5d860 (2)
-  wallet   0xe6c9a8e1331a48953ec360410cbe3058c33b27d3 pnl +0.5538 won 127/147 pools 147 wallets 1 | stake 0.0186 ret +14% in 14.8s out 19.2s | 20261006_00..20261022_00 (16 d) | v4 fee 3500 ts 200 x 1.9 via 0x3194e32622c5d860 (3)
+  wallet   0xe6c9a8e1331a48953ec360410cbe3058c33b27d3 pnl +0.5544 won 128/148 pools 148 wallets 1 | stake 0.0188 ret +14% in 14.8s out 19.2s | 20260911_00..20261022_00 (17 d) | v4 fee 3500 ts 200 x 1.9 via 0x3194e32622c5d860 (3)
   wallet   0x754425071f61539f3ca0106634d9f88850c8a151 pnl +0.5462 won 143/165 pools 165 wallets 1 | stake 0.0190 ret +9% in 8.8s out 12.7s | 20261006_00..20261023_00 (17 d) | v4 fee 1000 ts 200 x 1.8 via 0x3194e32622c5d860 (5)
   wallet   0xba4c752809966a9b285d1bbcd8f43f181360776d pnl +0.5403 won 75/81 pools 81 wallets 1 | stake 0.0234 ret +20% in 16.2s out 21.2s | 20261011_00..20261021_00 (10 d) | v4 fee 1000 ts 200 x 2 via 0x3194e32622c5d860 (3)
   wallet   0xa9ec7ecfe655a951a24a49a3f61ad01d3d4457e1 pnl +0.5277 won 127/144 pools 144 wallets 1 | stake 0.0221 ret +10% in 8.9s out 12.2s | 20261006_00..20261020_00 (14 d) | v4 fee 3500 ts 200 x 1.8 via 0x3194e32622c5d860 (3)
@@ -1289,7 +1377,7 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
   wallet   0xab5f7987ac7b8cfe9464c634d5bd48f0584102a7 pnl +0.4831 won 76/85 pools 85 wallets 1 | stake 0.0290 ret +14% in 9.8s out 13.0s | 20261011_00..20261023_00 (11 d) | v4 fee 4500 ts 200 x 2.2 via 0x3194e32622c5d860 (2)
   wallet   0xdc2e86611b27dc4209dc4055ae4f7cf5b9ee5e80 pnl +0.4817 won 128/151 pools 151 wallets 1 | stake 0.0220 ret +9% in 9.0s out 12.8s | 20261006_00..20261023_00 (17 d) | v4 fee 1000 ts 200 x 1.8 via 0x3194e32622c5d860 (4)
   wallet   0x994d9ea6328ae52fa5646f4d5fde2128db093c95 pnl +0.4786 won 96/109 pools 109 wallets 1 | stake 0.0297 ret +10% in 9.8s out 13.0s | 20261011_00..20261023_00 (12 d) | v4 fee 1500 ts 200 x 2 via 0x3194e32622c5d860 (3)
-  wallet   0x954e197339de7a51c043464814c5501208d29460 pnl +0.4660 won 109/123 pools 123 wallets 1 | stake 0.0228 ret +9% in 15.4s out 19.6s | 20261006_00..20261021_00 (15 d) | v4 fee 1500 ts 200 x 2 via 0x3194e32622c5d860 (3)
+  wallet   0x954e197339de7a51c043464814c5501208d29460 pnl +0.4701 won 110/124 pools 124 wallets 1 | stake 0.0238 ret +9% in 15.4s out 19.6s | 20260911_00..20261021_00 (16 d) | v4 fee 1500 ts 200 x 2 via 0x3194e32622c5d860 (3)
   wallet   0x8700722d7ac8d14666c07574317b4e7fb3dc8ae1 pnl +0.4536 won 87/96 pools 96 wallets 1 | stake 0.0336 ret +13% in 9.8s out 13.1s | 20261008_00..20261023_00 (14 d) | v4 fee 4500 ts 200 x 1.9 via 0x3194e32622c5d860 (4)
   wallet   0xfe10b9c4ba4a3e292ad36fc85cc7a3b1e60cf979 pnl +0.4525 won 138/173 pools 173 wallets 1 | stake 0.0220 ret +7% in 11.8s out 15.1s | 20261006_00..20261023_00 (16 d) | v4 fee 3500 ts 200 x 1.9 via 0x3194e32622c5d860 (4)
   wallet   0x19e13acb20ed010fe1f1adb6ecd5f1932eafb76a pnl +0.4360 won 54/56 pools 56 wallets 1 | stake 0.0258 ret +23% in 18.4s out 23.8s | 20261011_00..20261020_00 (8 d) | v4 fee 2000 ts 200 x 1.9 via 0x3194e32622c5d860 (3)
@@ -1328,7 +1416,7 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
   wallet   0xebbeaceff7661a880671564f1652c6bbc74a679b pnl +0.0833 won 19/21 pools 21 wallets 1 | stake 0.0308 ret +15% in 17.6s out 22.7s | 20261002_00..20261004_00 (3 d) | v4 fee 15000 ts 200 x 1.1 via 0x3194e32622c5d860 (2)
   wallet   0xfc74382ac3c6e8390a23105d59cd3041a9c45e8c pnl +0.0828 won 52/67 pools 67 wallets 1 | stake 0.0210 ret +3% in 9.3s out 12.4s | 20261006_00..20261010_00 (5 d) | v4 fee 3285 ts 200 x 2.3 via 0x3194e32622c5d860 (1)
   wallet   0xb723d48ff796a92c34ae464e2d7966e2337d6e75 pnl +0.0819 won 26/33 pools 33 wallets 1 | stake 0.0275 ret +8% in 9.6s out 13.0s | 20261002_00..20261004_00 (3 d) | v4 fee 10000 ts 200 x 2.9 via 0x3194e32622c5d860 (3)
-  wallet   0x7cdea0cf74047efbe3a7c9ef1cddbc1df7e2646e pnl +0.0797 won 29/32 pools 32 wallets 1 | stake 0.0197 ret +6% in 17.9s out 23.2s | 20261006_00..20261010_00 (5 d) | v4 fee 3285 ts 200 x 2.3 via 0x3194e32622c5d860 (1)
+  wallet   0x7cdea0cf74047efbe3a7c9ef1cddbc1df7e2646e pnl +0.0815 won 30/33 pools 33 wallets 1 | stake 0.0198 ret +6% in 17.7s out 23.2s | 20260911_00..20261010_00 (6 d) | v4 fee 20000 ts 200 x 2.2 via 0x3194e32622c5d860 (1)
   wallet   0x44c15e1d955bdd784c75db023236d655c61bd938 pnl +0.0785 won 13/13 pools 13 wallets 1 | stake 0.0433 ret +16% in 18.8s out 24.2s | 20261011_00..20261019_00 (5 d) | v4 fee 1000 ts 200 x 2.9 via 0x3194e32622c5d860 (2)
   wallet   0x6756f8c8d5473324e8e3191af9c7382d01429381 pnl +0.0781 won 27/31 pools 31 wallets 1 | stake 0.0215 ret +8% in 12.9s out 17.6s | 20260923_00..20261004_00 (4 d) | v4 fee 10000 ts 200 x 1.8 via 0x3194e32622c5d860 (2)
   wallet   0x01df58f9fb92713269c29e0bf28cbb7b6a908574 pnl +0.0765 won 28/34 pools 34 wallets 1 | stake 0.0255 ret +9% in 4.5s out 7.5s | 20261002_00..20261004_00 (3 d) | v4 fee 13000 ts 200 x 1.2 via 0x3194e32622c5d860 (2)
@@ -1373,7 +1461,9 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
   wallet   0xc2497d7004d401f807f343abe71f983f9a977450 pnl +0.0186 won 10/13 pools 13 wallets 1 | stake 0.0214 ret +5% in 14.6s out 18.9s | 20260923_00..20261003_00 (3 d) | v4 fee 30000 ts 200 x 0.95 via 0x3194e32622c5d860 (1)
   wallet   0x2f37c8d820b78bfeedd4d5fcac59fe49ea35bf45 pnl +0.0184 won 77/106 pools 106 wallets 1 | stake 0.0010 ret +13% in 1.5s out 11.1s | 20260816_00..20260819_00 (4 d) | v2 fee - ts - x 0.5 via 0x89e5db8b5aa49aa8 (104)
   wallet   0x05d24349ba1a83bcbaf098e1f2039eed6f91abc2 pnl +0.0160 won 8/11 pools 11 wallets 1 | stake 0.0119 ret +12% in 5.3s out 13.1s | 20260921_00..20260922_00 (2 d) | v4 fee 10000 ts 200 x 1.4 via 0x3194e32622c5d860 (2)
-  contract 0xb3ad464b47194050e9e9ee8446fb41a27376d1ad pnl +0.0009 won 8/19 pools 19 wallets 1 | stake 0.0011 ret -0% in 11.7s out 12.6s | 20260823_00..20260823_00 (1 d) | v4 fee 10000 ts 200 x 0.48 via 0x3194e32622c5d860 (3)
+  wallet   0x2bec849b57312e3715cee767edf2ddc6cb9c50aa pnl +0.0037 won 9/10 pools 10 wallets 1 | stake 0.0050 ret +1% in 8.9s out 191.4s | 20260904_00..20260906_00 (3 d) | v2 fee - ts - x 5 via 0x89e5db8b5aa49aa8 (6)
+  wallet   0xfe2815e85f15295c91af221a89bbbae7e01630bb pnl +0.0017 won 4/48 pools 48 wallets 1 | stake 0.0021 ret -1% in 2.7s out 6.1s | 20260802_00..20260804_00 (3 d) | v2 fee - ts - x 0.5 via 0x89e5db8b5aa49aa8 (20)
+  contract 0xb3ad464b47194050e9e9ee8446fb41a27376d1ad pnl +0.0011 won 11/28 pools 28 wallets 1 | stake 0.0011 ret -1% in 10.2s out 11.2s | 20260823_00..20260825_00 (3 d) | v4 fee 10000 ts 200 x 0.48 via 0x3194e32622c5d860 (3)
 
 == lines by what independent groups took out at a real stake (0.001+; per day: trips, won, pnl, groups, median stake)
   v3 fee 100 ts 1 x 0.3 via per-pool launchers: total +3.4040 over 1 days
@@ -1382,60 +1472,79 @@ rh: 62 days (20260801_00 .. 20261025_00), 54202 early outside round trips, 3193 
       20260923_00 0x65050a9b, 0xcaf681a6 trips    3 won    1 pnl +2.43811 groups 2 stake 0.00109
   v3 fee 3000 ts 60 x 120 via 0x73991a25c818bf1f: total +2.3787 over 1 days
       20260822_00 0x0f2730c4, 0x65050a9b trips    2 won    2 pnl +2.37872 groups 2 stake 0.49893
-  v4 fee 3000 ts 60 hook x 1.1 via per-pool launchers: total +2.0745 over 2 days
-      20260803_00 0x65050a9b, 0x7bcb750d trips   23 won   10 pnl +2.06744 groups 2 stake 0.08864
+  v4 fee 3000 ts 60 hook x 1.1 via per-pool launchers: total +2.0413 over 2 days
+      20260803_00 0x53bf6b06, 0x65050a9b, 0x7bcb750d trips   24 won   10 pnl +2.03421 groups 3 stake 0.08864
       20260810_00 0x65050a9b trips    4 won    3 pnl +0.00704 groups 1 stake 0.04802
+  v3 fee 3000 ts 60 x 1 via 0x73991a25c818bf1f: total +1.4325 over 8 days
+      20260804_00 0x65050a9b, 0x97c4cc9a trips    2 won    2 pnl +0.02575 groups 2 stake 0.11356
+      20260824_00 0x65050a9b trips    1 won    1 pnl +0.20276 groups 1 stake 0.08883
+      20260826_00 0x65050a9b trips    2 won    2 pnl +0.20080 groups 1 stake 0.15924
+      20260828_00 0x65050a9b trips    3 won    3 pnl +0.24361 groups 1 stake 0.06325
+      20260829_00 0x65050a9b trips    3 won    3 pnl +0.28283 groups 1 stake 0.07383
+      20260831_00 0x65050a9b, 0x97c4cc9a trips    3 won    3 pnl +0.14636 groups 2 stake 0.05319
+      20260903_00 0x65050a9b trips    4 won    4 pnl +0.11004 groups 1 stake 0.06407
+      20260908_00 0x65050a9b trips    4 won    4 pnl +0.22035 groups 1 stake 0.09376
+  v2 fee - ts - x 1.9 via 0x26605f322f7ff986: total +1.1017 over 4 days
+      20260901_00 0x65050a9b trips   10 won    6 pnl +0.24730 groups 1 stake 0.03068
+      20260902_00 0x65050a9b trips    1 won    0 pnl -0.00267 groups 1 stake 0.01980
+      20260906_00 0x65050a9b trips   10 won    8 pnl +0.60153 groups 1 stake 0.05445
+      20260908_00 0x65050a9b trips   14 won    8 pnl +0.25555 groups 1 stake 0.04155
   v4 fee 2500 ts 50 x 2.4 via 0x58daec3116aae6d9: total +1.0656 over 2 days
       20261010_00 0x2abb5653, 0x65050a9b, 0xfd1b271f trips 2039 won 1730 pnl +0.97708 groups 3 stake 0.00495
       20261011_00 0x2abb5653, 0x65050a9b trips  158 won  144 pnl +0.08847 groups 2 stake 0.00580
-  v2 fee - ts - x 2 via 0x26605f322f7ff986: total +0.1962 over 3 days
-      20260802_00 0x65050a9b trips    4 won    4 pnl +0.14417 groups 1 stake 0.06187
-      20260806_00 0x65050a9b trips    2 won    2 pnl +0.04428 groups 1 stake 0.07920
-      20261003_00 0xb1000000 trips    1 won    1 pnl +0.00779 groups 1 stake 0.03267
-  v2 fee - ts - x 1 via 0x89e5db8b5aa49aa8: total +0.1666 over 3 days
+  v2 fee - ts - x 1 via 0x89e5db8b5aa49aa8: total +0.5751 over 8 days
       20260803_00 0x65050a9b trips    2 won    1 pnl -0.00558 groups 1 stake 0.03465
       20260818_00 0x65050a9b trips    3 won    3 pnl +0.17217 groups 1 stake 0.09493
+      20260824_00 0x65050a9b, 0x97c4cc9a trips    2 won    2 pnl +0.14856 groups 2 stake 0.06997
+      20260905_00 0x65050a9b trips    4 won    4 pnl +0.12646 groups 1 stake 0.04383
+      20260907_00 0x65050a9b trips    6 won    6 pnl +0.13615 groups 1 stake 0.04065
+      20260908_00 0x65050a9b trips    2 won    1 pnl +0.00075 groups 1 stake 0.09405
+      20260909_00 0x65050a9b trips    1 won    0 pnl -0.00340 groups 1 stake 0.01861
       20260915_00 0x65050a9b trips    1 won    0 pnl -0.00000 groups 1 stake 0.02970
+  v4 fee 2500 ts 25 x 49 via 0x58daec3116aae6d9: total +0.3423 over 2 days
+      20260827_00 0x0f2730c4, 0x65050a9b trips   10 won    3 pnl +0.34042 groups 2 stake 0.04434
+      20260917_00 0x65050a9b trips    5 won    2 pnl +0.00189 groups 1 stake 0.03465
+  v2 fee - ts - x 2.3 via 0xe9f7ab7de8fb8756: total +0.2287 over 1 days
+      20260907_00 0x65050a9b trips    6 won    3 pnl +0.22870 groups 1 stake 0.04455
+  v2 fee - ts - x 2 via 0x26605f322f7ff986: total +0.2226 over 4 days
+      20260802_00 0x65050a9b trips    4 won    4 pnl +0.14417 groups 1 stake 0.06187
+      20260806_00 0x65050a9b trips    2 won    2 pnl +0.04428 groups 1 stake 0.07920
+      20260904_00 0x65050a9b trips    1 won    1 pnl +0.00189 groups 1 stake 0.02475
+      20260914_00 0x65050a9b trips    2 won    2 pnl +0.03222 groups 1 stake 0.05693
+  v4 fee 200000 ts 2000 x 0.012 via 0x58daec3116aae6d9: total +0.2027 over 1 days
+      20260908_00 0x65050a9b trips    1 won    1 pnl +0.20268 groups 1 stake 0.06930
   v2 fee - ts - x 5 via 0x89e5db8b5aa49aa8: total +0.1517 over 2 days
       20260819_00 0x19afdfc7, 0x65050a9b trips    7 won    5 pnl +0.15159 groups 2 stake 0.00990
       20260822_00 0x0f2730c4 trips    1 won    1 pnl +0.00016 groups 1 stake 0.00396
+  v2 fee - ts - x 2 via 0xe9f7ab7de8fb8756: total +0.1444 over 4 days
+      20260825_00 0x65050a9b trips    1 won    1 pnl +0.00023 groups 1 stake 0.00400
+      20260905_00 0x65050a9b trips    1 won    1 pnl +0.07387 groups 1 stake 0.01485
+      20260910_00 0x65050a9b trips   10 won    6 pnl +0.01306 groups 1 stake 0.03300
+      20260913_00 0x65050a9b trips    7 won    3 pnl +0.05725 groups 1 stake 0.05615
+  v4 fee 2500 ts 25 x 1 via 0x58daec3116aae6d9: total +0.1414 over 1 days
+      20260908_00 0x65050a9b trips    4 won    3 pnl +0.14142 groups 1 stake 0.09601
   v4 fee 0 ts 200 hook x 2.5 via per-pool launchers: total +0.1222 over 1 days
       20260815_00 0x65050a9b trips   11 won   11 pnl +0.12222 groups 1 stake 0.01544
+  v4 fee 2500 ts 25 x 25 via 0x58daec3116aae6d9: total +0.1058 over 1 days
+      20260830_00 0x65050a9b trips    4 won    4 pnl +0.10582 groups 1 stake 0.04950
   v4 fee 5000 ts 100 x 2.4 via 0x58daec3116aae6d9: total +0.0854 over 2 days
       20261011_00 0x2abb5653, 0x65050a9b, 0xfd1b271f trips  195 won  151 pnl +0.06931 groups 3 stake 0.00495
       20261012_00 0x2abb5653, 0x65050a9b trips   48 won   35 pnl +0.01605 groups 2 stake 0.00504
+  v3 fee 10000 ts 200 x 1 via 0x73991a25c818bf1f: total +0.0690 over 5 days
+      20260817_00 0x65050a9b trips    1 won    0 pnl -0.00003 groups 1 stake 0.00148
+      20260825_00 0xcaf681a6 trips    1 won    0 pnl -0.00190 groups 1 stake 0.10000
+      20260827_00 0xcaf681a6 trips    1 won    0 pnl -0.00006 groups 1 stake 0.00230
+      20260828_00 0xcaf681a6 trips    2 won    1 pnl +0.00008 groups 1 stake 0.00150
+      20260907_00 0x65050a9b trips    4 won    4 pnl +0.07087 groups 1 stake 0.02557
+  v4 fee 10000 ts 200 hook x 0.0041 via 0x58daec3116aae6d9: total +0.0679 over 1 days
+      20260825_00 0x65050a9b trips    1 won    1 pnl +0.06789 groups 1 stake 0.02475
+  v4 fee 3000 ts 60 hook x 1 via 0x58daec3116aae6d9: total +0.0678 over 1 days
+      20260908_00 0x65050a9b trips   17 won   12 pnl +0.06777 groups 1 stake 0.02351
+  v2 fee - ts - x 2.1 via 0x26605f322f7ff986: total +0.0505 over 1 days
+      20260906_00 0x65050a9b trips    7 won    2 pnl +0.05051 groups 1 stake 0.02475
+  v4 fee 8388608 ts 60 hook x 1e-14 via 0x58daec3116aae6d9: total +0.0399 over 1 days
+      20260901_00 0x65050a9b trips   12 won    4 pnl +0.03987 groups 1 stake 0.04802
   v3 fee 10000 ts 200 x 1.1 via 0x73991a25c818bf1f: total +0.0396 over 1 days
       20260807_00 0xcaf681a6 trips    1 won    1 pnl +0.03957 groups 1 stake 0.02010
   v3 fee 100 ts 1 x 4.3e-06 via 0x73991a25c818bf1f: total +0.0362 over 1 days
       20260816_00 0x65050a9b trips    3 won    3 pnl +0.03616 groups 1 stake 0.00188
-  v3 fee 10000 ts 200 x 2 via 0x73991a25c818bf1f: total +0.0311 over 2 days
-      20260808_00 0xcaf681a6 trips    1 won    1 pnl +0.00039 groups 1 stake 0.00521
-      20260812_00 0x65050a9b, 0xcaf681a6 trips    5 won    2 pnl +0.03068 groups 2 stake 0.03984
-  v4 fee 10000 ts 200 x 3 via 0x58daec3116aae6d9: total +0.0236 over 2 days
-      20260808_00 0x65050a9b trips    4 won    1 pnl -0.00565 groups 1 stake 0.07425
-      20261011_00 0x65050a9b trips  187 won  143 pnl +0.02926 groups 1 stake 0.00297
-  v4 fee 375 ts 4 x 0.8 via 0x58daec3116aae6d9: total +0.0236 over 1 days
-      20260810_00 0x65050a9b trips    5 won    3 pnl +0.02358 groups 1 stake 0.04405
-  v2 fee - ts - x 1 via per-pool launchers: total +0.0227 over 3 days
-      20260815_00 0x65050a9b trips    8 won    5 pnl +0.01335 groups 1 stake 0.02475
-      20260921_00 0x65050a9b trips    5 won    1 pnl +0.00510 groups 1 stake 0.02970
-      20260925_00 0xb1000000 trips    2 won    2 pnl +0.00422 groups 1 stake 0.02673
-  v3 fee 3000 ts 60 x 0.57 via 0x73991a25c818bf1f: total +0.0199 over 1 days
-      20260806_00 0xcaf681a6 trips    1 won    1 pnl +0.01986 groups 1 stake 0.05000
-  v3 fee 100 ts 1 x 0.022 via 0x73991a25c818bf1f: total +0.0181 over 1 days
-      20260917_00 0x65050a9b trips    1 won    1 pnl +0.01805 groups 1 stake 0.00109
-  v2 fee - ts - x 2.2 via per-pool launchers: total +0.0153 over 1 days
-      20261019_00 0x65050a9b trips    1 won    1 pnl +0.01527 groups 1 stake 0.00990
-  v4 fee 2500 ts 25 x 2.4 via 0x58daec3116aae6d9: total +0.0132 over 1 days
-      20261010_00 0x204faca1, 0x65050a9b trips    2 won    1 pnl +0.01317 groups 2 stake 0.04654
-  v3 fee 100 ts 1 x 0.043 via 0x73991a25c818bf1f: total +0.0112 over 2 days
-      20260920_00 0x65050a9b, 0xcaf681a6 trips    2 won    2 pnl +0.01038 groups 2 stake 0.00153
-      20260924_00 0x65050a9b trips    1 won    1 pnl +0.00085 groups 1 stake 0.00109
-  v4 fee 50000 ts 200 x 0.58 via 0x58daec3116aae6d9: total +0.0077 over 1 days
-      20260806_00 0x65050a9b trips    1 won    1 pnl +0.00775 groups 1 stake 0.04950
-  v3 fee 100 ts 1 x 0.00047 via 0x73991a25c818bf1f: total +0.0070 over 1 days
-      20260818_00 0x65050a9b trips    1 won    1 pnl +0.00697 groups 1 stake 0.00168
-  v4 fee 3000 ts 60 hook x 3 via 0x58daec3116aae6d9: total +0.0068 over 1 days
-      20260816_00 0x65050a9b trips    1 won    1 pnl +0.00675 groups 1 stake 0.00596
-  v3 fee 100 ts 1 x 0.00075 via 0x73991a25c818bf1f: total +0.0063 over 1 days
-      20260812_00 0xcaf681a6 trips    1 won    1 pnl +0.00625 groups 1 stake 0.00100
