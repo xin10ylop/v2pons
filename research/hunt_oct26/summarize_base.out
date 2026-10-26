@@ -1,0 +1,51 @@
+base: 46 days (20260910_00 .. 20261025_00), 14075 early outside round trips, 54 groups
+
+== independent groups (2+ operators, 3+ pools a wallet, or known) trading a real stake (median 0.001+), and the rest that made 0.01+
+  contract 0x814643195a74e6662dcccd681d70cfb36af4ee21 
+      pnl +2.1462 won 108/112 pools 110 wallets 43 (2.6/wallet) targets 1 | stake 0.10000 ret +15% in 14.0s out 26.0s | 20260910_00..20260916_00 (7 d) | one pool type
+          112 x v4 fee 10000 ts 200 x 1.5 via 0x7c5f5a4bbd8fd631
+  contract 0xedfe9c2e0a69578af9e3de5c284941930bc05ad8 
+      pnl +0.2514 won 5931/5934 pools 5934 wallets 1 (5934.0/wallet) targets 1 | stake 0.00002 ret +164% in 4.0s out 534.0s | 20261002_00..20261024_00 (22 d) | one pool type
+         5934 x v4 fee 0 ts 1 x 1.2 via 0x7c5f5a4bbd8fd631
+  contract 0x0e24493c662e62b33d371376e0ac181eb193a31d us (Base engine)
+      pnl +0.2492 won 85/86 pools 86 wallets 1 (86.0/wallet) targets 1 | stake 0.02000 ret +15% in 6.0s out 10.0s | 20261014_00..20261015_00 (2 d) | INDEPENDENT
+           58 x v4 fee 5000 ts 100 hook x 1.5 via per-pool launchers
+           17 x v4 fee 5000 ts 100 hook x 4.1 via per-pool launchers
+           11 x v4 fee 5000 ts 100 hook x 2.1 via per-pool launchers
+  contract 0x3b999c008dafb5952a992a4e098dac9034cd5dbd 
+      pnl +0.0670 won 2817/2817 pools 2817 wallets 1 (2817.0/wallet) targets 2 | stake 0.00001 ret +174% in 6.0s out 538.0s | 20261014_00..20261024_00 (11 d) | INDEPENDENT
+         2802 x v4 fee 0 ts 1 x 1.2 via 0x7c5f5a4bbd8fd631
+           14 x v4 fee 5000 ts 100 hook x 4.1 via per-pool launchers
+            1 x v4 fee 5000 ts 100 hook x 0.053 via per-pool launchers
+  contract 0xd8ba9d1a99fc21f0eca24e9b85737c28a194a4e2 
+      pnl +0.0581 won 53/57 pools 55 wallets 5 (11.0/wallet) targets 4 | stake 0.00017 ret +105% in 4.0s out 64.0s | 20260911_00..20261014_00 (4 d) | INDEPENDENT
+           20 x v4 fee 5000 ts 100 hook x 4.1 via per-pool launchers
+           11 x v4 fee 10000 ts 200 x 1.5 via 0x7c5f5a4bbd8fd631
+           10 x v4 fee 5000 ts 100 hook x 2.1 via per-pool launchers
+            7 x v4 fee 5000 ts 100 hook x 1.5 via per-pool launchers
+  wallet   0xeee0cd1a7f70d789b19b00e9adab027ebec4cc2b 
+      pnl +0.0446 won 1627/1627 pools 1627 wallets 1 (1627.0/wallet) targets 1 | stake 0.00002 ret +208% in 4.0s out 628.0s | 20261003_00..20261008_00 (6 d) | one pool type
+         1627 x v4 fee 0 ts 1 x 1.2 via 0x7c5f5a4bbd8fd631
+  wallet   0xee9b603cff298cb0e3bd905dae7dd55e3a9bf179 
+      pnl +0.0245 won 976/976 pools 976 wallets 1 (976.0/wallet) targets 1 | stake 0.00003 ret +86% in 6.0s out 46.0s | 20260910_00..20260916_00 (7 d) | one pool type
+          976 x v4 fee 10000 ts 200 x 1.5 via 0x7c5f5a4bbd8fd631
+  wallet   0x157d25783a897c06ffd04fa98f5b808f019facc1 
+      pnl +0.0173 won 1495/1530 pools 1530 wallets 1 (1530.0/wallet) targets 1 | stake 0.00002 ret +58% in 4.0s out 802.0s | 20260910_00..20261025_00 (18 d) | one pool type
+          474 x v2 fee - ts - x 1.4 via 0x4752ba5dbc23f44d
+          389 x v2 fee - ts - x 1.6 via 0x4752ba5dbc23f44d
+          350 x v2 fee - ts - x 15 via 0x4752ba5dbc23f44d
+           57 x v2 fee - ts - x 18 via 0x4752ba5dbc23f44d
+
+== single-operator groups at a real stake (median 0.001+, 10+ pools, 3+ pools a wallet): a line's recurring fleet or a dedicated fronter; front.py's rug test on the line decides
+
+== lines by what independent groups took out at a real stake (0.001+; per day: trips, won, pnl, groups, median stake)
+  v4 fee 5000 ts 100 hook x 1.5 via per-pool launchers: total +0.2302 over 2 days
+      20261014_00 0x0e24493c trips   24 won   24 pnl +0.09388 groups 1 stake 0.02000
+      20261015_00 0x0e24493c trips   34 won   34 pnl +0.13630 groups 1 stake 0.02000
+  v4 fee 0 ts 200 hook x 2 via per-pool launchers: total +0.0481 over 2 days
+      20261008_00 0xd8ba9d1a trips    2 won    1 pnl +0.00000 groups 1 stake 0.04455
+      20261013_00 0xd8ba9d1a trips    1 won    1 pnl +0.04806 groups 1 stake 0.04900
+  v4 fee 5000 ts 100 hook x 4.1 via per-pool launchers: total +0.0117 over 1 days
+      20261014_00 0x0e24493c, 0xd8ba9d1a trips   30 won   29 pnl +0.01172 groups 2 stake 0.01000
+  v4 fee 5000 ts 100 hook x 2.1 via per-pool launchers: total +0.0101 over 1 days
+      20261014_00 0x0e24493c trips   11 won   11 pnl +0.01011 groups 1 stake 0.00500

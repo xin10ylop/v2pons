@@ -1,0 +1,137 @@
+reference 2.433 token code: 1526 B
+base 20260910_00: 713 pulled pools of 0.5+ read, 231 matches
+      32 v4 fee 0 ts 1              x 2.5006    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      31 v4 fee 0 ts 1              x 2.5004    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      30 v4 fee 0 ts 1              x 2.5003    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      24 v4 fee 0 ts 1              x 2.5005    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      24 v4 fee 0 ts 1              x 2.5009    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      21 v4 fee 0 ts 1              x 2.5008    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      20 v4 fee 0 ts 1              x 2.5001    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      20 v4 fee 0 ts 1              x 2.5002    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+base 20260911_00: 727 pulled pools of 0.5+ read, 215 matches
+      30 v4 fee 0 ts 1              x 2.5002    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      28 v4 fee 0 ts 1              x 2.5007    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      25 v4 fee 0 ts 1              x 2.5009    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      25 v4 fee 0 ts 1              x 2.5004    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      23 v4 fee 0 ts 1              x 2.5006    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      23 v4 fee 0 ts 1              x 2.5005    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      20 v4 fee 0 ts 1              x 2.5008    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+      19 v4 fee 0 ts 1              x 2.5003    family 1627 B      via 0x9f54942b5ac21255b54469528857cbff4cf7f027
+base 20261012_00: 531 pulled pools of 0.5+ read, 48 matches
+       7 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+       6 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+       6 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+       6 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+       6 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+       5 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+       4 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+       3 v4 fee 0 ts 1              x 1.2001    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261013_00: 677 pulled pools of 0.5+ read, 361 matches
+      50 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      39 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      39 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      39 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      38 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      38 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      36 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      34 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261014_00: 763 pulled pools of 0.5+ read, 497 matches
+      55 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      52 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      46 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      44 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      43 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      42 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      39 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      37 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261015_00: 655 pulled pools of 0.5+ read, 487 matches
+      61 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      51 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      51 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      50 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      49 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      48 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      48 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      43 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261016_00: 628 pulled pools of 0.5+ read, 493 matches
+      68 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      60 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      60 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      58 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      51 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      48 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      45 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      44 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261017_00: 746 pulled pools of 0.5+ read, 516 matches
+      64 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      61 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      60 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      59 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      59 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      50 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      49 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      49 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261018_00: 777 pulled pools of 0.5+ read, 667 matches
+      91 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      81 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      80 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      77 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      74 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      70 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      70 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      69 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261019_00: 483 pulled pools of 0.5+ read, 398 matches
+      51 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      49 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      46 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      46 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      45 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      44 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      39 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      34 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261020_00: 274 pulled pools of 0.5+ read, 147 matches
+      20 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      19 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      18 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      16 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      15 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      15 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      14 v4 fee 0 ts 1              x 1.201     family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      11 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261021_00: 668 pulled pools of 0.5+ read, 419 matches
+      57 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      48 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      48 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      47 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      47 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      44 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      44 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      39 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261022_00: 753 pulled pools of 0.5+ read, 418 matches
+      53 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      52 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      51 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      46 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      45 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      44 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      41 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      40 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261023_00: 694 pulled pools of 0.5+ read, 299 matches
+      38 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      37 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      34 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      34 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      34 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      29 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      28 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      26 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261024_00: 593 pulled pools of 0.5+ read, 238 matches
+      32 v4 fee 0 ts 1              x 1.2004    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      29 v4 fee 0 ts 1              x 1.2007    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      27 v4 fee 0 ts 1              x 1.2005    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      26 v4 fee 0 ts 1              x 1.2008    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      26 v4 fee 0 ts 1              x 1.2009    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      25 v4 fee 0 ts 1              x 1.2002    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      22 v4 fee 0 ts 1              x 1.2006    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+      22 v4 fee 0 ts 1              x 1.2003    family 1627 B      via 0x7c5f5a4bbd8fd63184577525326123b519429bdc
+base 20261025_00: 454 pulled pools of 0.5+ read, 0 matches

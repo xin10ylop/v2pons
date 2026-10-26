@@ -1,0 +1,27 @@
+  rh 2026-10-26 00:00..2026-10-26 13:00: blocks 97984803-98430560, pools v4 756 v2 1002 v3 111
+  rh 2026-10-26 00:00..2026-10-26 13:00: pulled within 2 h: 502
+-> out/today_rh.json
+rh ['2026-10-26 00:00', '2026-10-26 13:00']: 337 pulled pools, 34191 swaps, 306 round trips
+  early round trips (entry <= 20 s): 238 by 16 wallets; profitable wallets with 3+ pools:
+    0x68936d46d0aaee21930d1f0039c1ce1b3431931d pools   86 won   85/86   pnl +0.00286 on 0.0017 | in 0.6s out 285.6s via 0x8876789976 | v4 fee 10000 ts 200 x 5.0 via 0x58daec3116 (76)
+    0x7ae81404e32aef363eb63bc4befba78fb5b636de pools   76 won   76/76   pnl +0.00284 on 0.0015 | in 0.4s out 296.9s via 0x8876789976 | v4 fee 10000 ts 200 x 5.0 via 0x58daec3116 (76)
+    0xe74fcc81553c2b1102accdfaafa663418119098d pools   22 won   21/22   pnl +0.00208 on 0.0009 | in 8.399999999999999s out 31.5s via 0x204faca176 | v4 fee 5000 ts 200 x 0.65 via 0x3194e32622 (1)
+    0x57ee6646fe8748dc8c10ac96caae7ce2373ede5d pools   16 won   16/16   pnl +0.00160 on 0.0010 | in 13.55s out 132.85s via 0x8876789976 | v4 fee 500 ts 1 x 3.0 via 0x58daec3116 (16)
+    0x8cf143ddc84dedcd7bedd2b362b63af154dfa4f7 pools   15 won   15/15   pnl +0.00035 on 0.0002 | in 14.0s out 132.9s via 0x8876789976 | v4 fee 500 ts 1 x 3.0 via 0x58daec3116 (15)
+    0x09c1fbff38ea36955653084ce00bfc3fbaf5b19e pools   13 won   12/13   pnl +0.00031 on 0.0006 | in 0.8s out 12.2s via 0x8876789976 | v4 fee 7500 ts 200 x 0.68 via 0x3194e32622 (1)
+  families with early outside round trips:
+    v4 fee 500 ts 1          x 3        via 0x58daec3116aa pulled    20 hit   16 trips    39 won    39 pnl +0.34611 median +152.0% wallets 10
+    v4 fee 10000 ts 200      x 5        via 0x58daec3116aa pulled   103 hit   76 trips   152 won   152 pnl +0.00524 median +185.2% wallets 2
+rh ['2026-10-26 00:00', '2026-10-26 13:00']: 502 pulled pools, 6 lines
+   103 v4 fee 10000 ts 200 x 5                                    fleet 101 T+45.5  buys 93   in x1.83 pump x3.13 pull 9.3m | seat1 +1.9% seat3 +4.4% | pre CAME 0 NONE 0 | real outside buys SOLD 0 RUGGED 2 HELD 0 | early 0/14 pools, 0/0 won, +0.0000 | TRAP
+        fronters (recurring round-trippers) ['0x7ae81404e32aef363eb63bc4befba78fb5b636de'] op routers ['0x1cbaf24d53fe930fce8eff149fa797d2611da149']
+    49 v2 fee - ts - x 1                                          fleet 240 T+3     buys 39   in x1.60 pump x4.08 pull 10.0m | seat1 +5.9% seat3 +23.9% | pre CAME 0 NONE 0 | real outside buys SOLD 0 RUGGED 0 HELD 0 | early 0/14 pools, 0/0 won, +0.0000 | UNTESTED
+        fronters (recurring round-trippers) [] op routers ['0x89e5db8b5aa49aa85ac63f691524311aeb649eba']
+    38 v2 fee - ts - x 50.1                                       fleet  12 T+216.5 buys 18   in x0.25 pump x1.60 pull 17.4m | seat1 +2.2% seat3 +8.6% | pre CAME 0 NONE 0 | real outside buys SOLD 0 RUGGED 0 HELD 0 | early 0/14 pools, 0/0 won, +0.0000 | UNTESTED
+        fronters (recurring round-trippers) [] op routers ['0x89e5db8b5aa49aa85ac63f691524311aeb649eba']
+    36 v2 fee - ts - x 40.6                                       fleet  12 T+200   buys 19.5 in x0.30 pump x1.73 pull 19.9m | seat1 +3.1% seat3 +9.7% | pre CAME 0 NONE 0 | real outside buys SOLD 0 RUGGED 0 HELD 0 | early 0/14 pools, 0/0 won, +0.0000 | UNTESTED
+        fronters (recurring round-trippers) [] op routers ['0x89e5db8b5aa49aa85ac63f691524311aeb649eba']
+    20 v4 fee 500 ts 1 x 3                                        fleet 455 T+132   buys 62   in x1.40 pump x3.59 pull 7.0m | seat1 +2.7% seat3 +8.2% | pre CAME 0 NONE 0 | real outside buys SOLD 0 RUGGED 2 HELD 2 | early 0/14 pools, 0/0 won, +0.0000 | TRAP
+        fronters (recurring round-trippers) [] op routers ['0x58daec3116aae6d93017baaea7749052e8a04fa7', '0xe6b451f78675da3f5a20827215a96cbdd235888c']
+    13 v2 fee - ts - x 30.1                                       fleet  13 T+1221  buys 23   in x0.13 pump x1.67 pull 49.5m | seat1 +1.4% seat3 +5.6% | pre CAME 0 NONE 0 | real outside buys SOLD 0 RUGGED 0 HELD 0 | early 0/13 pools, 0/0 won, +0.0000 | UNTESTED
+        fronters (recurring round-trippers) [] op routers ['0x89e5db8b5aa49aa85ac63f691524311aeb649eba']
