@@ -1,0 +1,31 @@
+  rh 20261021: 77 line pools, 25 stranger buys
+  rh 20261022: 69 line pools, 15 stranger buys
+  rh 20261023: 174 line pools, 40 stranger buys
+  rh 20261024: 202 line pools, 27 stranger buys
+  rh 20261025: 142 line pools, 18 stranger buys
+  rh 20261026: 45 line pools, 13 stranger buys
+rh 'v4 fee 500 ts 1' {3.5, 3.0, 4.0} 20261021..20261026: 709 pools, life median 386s; 138 stranger buys
+  0.00000-3e-05     buys   11 by    8 | pull after a median   50.5s | pulled within 5s   27% (base rate   1%) | got out  18% | net -0.0001 on 0.0002
+  0.00003-6e-05     buys   13 by   11 | pull after a median   81.7s | pulled within 5s    8% (base rate   1%) | got out   0% | net -0.0010 on 0.0006
+  0.00006-0.0001    buys    5 by    4 | pull after a median   10.4s | pulled within 5s   20% (base rate   1%) | got out   0% | net -0.0004 on 0.0004
+  0.00010-0.0002    buys   15 by   12 | pull after a median   11.5s | pulled within 5s   27% (base rate   1%) | got out   0% | net -0.0023 on 0.0023
+  0.00020-0.0005    buys   36 by   34 | pull after a median   11.1s | pulled within 5s   33% (base rate   1%) | got out   0% | net -0.0156 on 0.0131
+  0.00050-0.001     buys   15 by   12 | pull after a median    5.6s | pulled within 5s   47% (base rate   2%) | got out   7% | net -0.0112 on 0.0121
+  0.00100-0.01      buys   36 by   28 | pull after a median    8.0s | pulled within 5s   36% (base rate   1%) | got out   0% | net -0.1134 on 0.1134
+  0.01000-1e+09     buys    7 by    6 | pull after a median    6.3s | pulled within 5s   43% (base rate   1%) | got out  14% | net -0.0974 on 0.1174
+  recurring buyers (3+ line pools a day), the 15 with the most pools:
+    0x57ee6646fe8748dc8c10ac96caae7ce2373ede5d pools   701 | buy median 0.00006 | got out  66% | net   +0.0248 | pull after its first buy, median 370s
+    0xe6b451f78675da3f5a20827215a96cbdd235888c pools   689 | buy median 4.05742 | got out  77% | net -1823.0988 | pull after its first buy, median 379s
+    0x2be87ad70cf11ea294d7c42044b5b8277a3e4874 pools   646 | buy median 0.00000 | got out   0% | net   -0.0013 | pull after its first buy, median 389s
+    0x8cf143ddc84dedcd7bedd2b362b63af154dfa4f7 pools   590 | buy median 0.00003 | got out  63% | net   +0.0053 | pull after its first buy, median 360s
+    0x24919ef805725a0b368b5e36d49aabe7dccc5cc2 pools   171 | buy median 0.00005 | got out  51% | net   +0.0017 | pull after its first buy, median 138s
+    0xb09f38b94e685393645caec912c829b45637a3ce pools    35 | buy median 0.00001 | got out  49% | net   -0.0012 | pull after its first buy, median 190s
+    0x6e2a35a7ad683cf634d91492d73bb7ff774c6919 pools    25 | buy median 0.00030 | got out   0% | net   -0.0087 | pull after its first buy, median 9s
+    0x24a4d86c8a76b00ee9566ed9c9ff4f0c3faf0da7 pools    21 | buy median 0.00077 | got out   0% | net   -0.0220 | pull after its first buy, median 13s
+    0xcee974f6c0027cf6bd7d32bde59c5d0a0481b4c0 pools    13 | buy median 0.00298 | got out   0% | net   -0.0394 | pull after its first buy, median 13s
+    0x71530e70c46086f456056f090ceaa347b8c401f7 pools    11 | buy median 0.00002 | got out   0% | net   -0.0002 | pull after its first buy, median 1s
+    0x4646774fe77e2c68aa3e9b9aec2c34180dda30cb pools    10 | buy median 0.00020 | got out   0% | net   -0.0035 | pull after its first buy, median 2s
+    0x8f10b468b06c6fd214b65f87778827f7d113f996 pools     8 | buy median 0.00084 | got out   0% | net   -0.0134 | pull after its first buy, median 6s
+    0x68936d46d0aaee21930d1f0039c1ce1b3431931d pools     7 | buy median 0.00002 | got out   0% | net   -0.0001 | pull after its first buy, median 17s
+    0xa586f15b73256508f286c623ef449523b1b28647 pools     7 | buy median 0.00080 | got out  14% | net   -0.0047 | pull after its first buy, median 0s
+    0x5a1534cce8efbbfae759249f3794746dcee56fa4 pools     5 | buy median 0.00122 | got out   0% | net   -0.0055 | pull after its first buy, median 5s

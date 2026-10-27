@@ -1,0 +1,20 @@
+  resolved 20000/80463
+  resolved 40000/80463
+  resolved 60000/80463
+  resolved 80000/80463
+  resolved 80463/80463
+  resolved 20000/76219
+  resolved 40000/76219
+  resolved 60000/76219
+  resolved 76219/76219
+  resolved 20000/57675
+  resolved 40000/57675
+  resolved 57675/57675
+  resolved 20000/27763
+  resolved 27763/27763
+  resolved 17148/17148
+  resolved 15413/15413
+base 20261021..20261026: 320 traders; profitable on 4+ days with 0.01+ total:
+  wallet   0x02641039a47a42d611a24251db0f00e576c88eb4
+      pnl +0.0488 | days +4/4: 1021:+0.015 1022:+0.017 1023:+0.015 1024:+0.001
+      pools 839 won 758 open at the pull 57 | stake 0.00007 | in 122s | wallets a pool 1 | [('v4 fee 0 ts 1 x 1.2', 839)]

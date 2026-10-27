@@ -1,0 +1,7 @@
+rh 20261021..20261026: 13182 traders; profitable on 4+ days with 0.01+ total:
+  0x7ae81404e32aef363eb63bc4befba78fb5b636de
+      pnl +0.0687 | days +6/6: 1021:+0.015 1022:+0.016 1023:+0.008 1024:+0.013 1025:+0.011 1026:+0.006
+      pools 3618 won 2104 open at the pull 1513 | stake 0.00002 | in 0s | [['v4 fee 10000 ts 200 x 3', 2563], ['v4 fee 10000 ts 200 x 5', 1048], ['v4 fee 2000 ts 200 x 3.05', 1]]
+  0x57ee6646fe8748dc8c10ac96caae7ce2373ede5d
+      pnl +0.0240 | days +6/6: 1021:+0.002 1022:+0.001 1023:+0.001 1024:+0.011 1025:+0.006 1026:+0.003
+      pools 767 won 487 open at the pull 279 | stake 0.00006 | in 13s | [['v4 fee 500 ts 1 x 4', 342], ['v4 fee 500 ts 1 x 3', 297], ['v4 fee 500 ts 1 x 3.5', 62]]

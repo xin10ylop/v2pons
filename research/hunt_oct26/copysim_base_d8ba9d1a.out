@@ -1,0 +1,85 @@
+base contract:0xd8ba9d1a99fc21f0eca24e9b85737c28a194a4e2: 16 round trips on 6 pools, days 20261021..20261026; its own profit +0.6489 on a median stake 0.03960
+  stake 0.01, entry slot:
+    mirror    n    16 won    11 lost     5 pulled    0 | pnl +0.0707 (+44.2% a trip) | per day 1022:+0.030 1024:+0.002 1025:+0.005 1026:+0.034
+    hold 3    n    16 won    10 lost     6 pulled    0 | pnl +0.0137 (+8.6% a trip) | per day 1022:+0.003 1024:-0.000 1025:-0.000 1026:+0.012
+    hold 10   n    16 won    12 lost     4 pulled    0 | pnl +0.0247 (+15.4% a trip) | per day 1022:+0.003 1024:-0.000 1025:+0.001 1026:+0.021
+    hold 30   n    16 won    14 lost     2 pulled    0 | pnl +0.0295 (+18.4% a trip) | per day 1022:+0.007 1024:+0.001 1025:+0.006 1026:+0.016
+    hold 60   n    16 won    14 lost     2 pulled    0 | pnl +0.0315 (+19.7% a trip) | per day 1022:+0.013 1024:+0.001 1025:+0.003 1026:+0.016
+    tp 0.05   n    16 won    14 lost     2 pulled    0 | pnl +0.0168 (+10.5% a trip) | per day 1022:+0.005 1024:+0.001 1025:-0.000 1026:+0.011
+    tp 0.1    n    16 won    14 lost     2 pulled    0 | pnl +0.0190 (+11.9% a trip) | per day 1022:+0.005 1024:+0.001 1025:+0.001 1026:+0.012
+    tp 0.2    n    16 won    14 lost     2 pulled    0 | pnl +0.0281 (+17.6% a trip) | per day 1022:+0.007 1024:+0.001 1025:+0.005 1026:+0.015
+    tp 0.4    n    16 won    14 lost     2 pulled    0 | pnl +0.0333 (+20.8% a trip) | per day 1022:+0.010 1024:+0.001 1025:+0.004 1026:+0.018
+    cap 30    n    16 won    14 lost     2 pulled    0 | pnl +0.0293 (+18.3% a trip) | per day 1022:+0.007 1024:+0.001 1025:+0.005 1026:+0.016
+    cap 60    n    16 won    14 lost     2 pulled    0 | pnl +0.0334 (+20.9% a trip) | per day 1022:+0.013 1024:+0.001 1025:+0.005 1026:+0.016
+    cap 120   n    16 won    14 lost     2 pulled    0 | pnl +0.0662 (+41.4% a trip) | per day 1022:+0.016 1024:+0.001 1025:+0.005 1026:+0.044
+    cap 180   n    16 won    11 lost     5 pulled    0 | pnl +0.0654 (+40.8% a trip) | per day 1022:+0.025 1024:+0.001 1025:+0.005 1026:+0.034
+  stake 0.01, entry +1:
+    mirror    n    16 won     9 lost     7 pulled    0 | pnl +0.0504 (+31.5% a trip) | per day 1022:+0.023 1024:+0.002 1025:+0.004 1026:+0.022
+    hold 3    n    16 won     9 lost     7 pulled    0 | pnl +0.0032 (+2.0% a trip) | per day 1022:-0.000 1024:-0.000 1025:+0.001 1026:+0.003
+    hold 10   n    16 won     9 lost     7 pulled    0 | pnl +0.0070 (+4.4% a trip) | per day 1022:-0.000 1024:-0.000 1025:+0.001 1026:+0.006
+    hold 30   n    16 won    14 lost     2 pulled    0 | pnl +0.0129 (+8.1% a trip) | per day 1022:+0.004 1024:+0.001 1025:+0.005 1026:+0.003
+    hold 60   n    16 won     9 lost     7 pulled    0 | pnl +0.0144 (+9.0% a trip) | per day 1022:+0.008 1024:+0.000 1025:+0.002 1026:+0.003
+    tp 0.05   n    16 won    14 lost     2 pulled    0 | pnl +0.0079 (+4.9% a trip) | per day 1022:+0.004 1024:+0.001 1025:-0.000 1026:+0.004
+    tp 0.1    n    16 won    14 lost     2 pulled    0 | pnl +0.0135 (+8.5% a trip) | per day 1022:+0.005 1024:+0.001 1025:+0.001 1026:+0.007
+    tp 0.2    n    16 won     9 lost     7 pulled    0 | pnl +0.0100 (+6.3% a trip) | per day 1022:+0.007 1024:+0.001 1025:+0.005 1026:-0.003
+    tp 0.4    n    16 won     9 lost     7 pulled    0 | pnl +0.0152 (+9.5% a trip) | per day 1022:+0.011 1024:+0.001 1025:+0.004 1026:-0.001
+    cap 30    n    16 won    14 lost     2 pulled    0 | pnl +0.0127 (+7.9% a trip) | per day 1022:+0.004 1024:+0.001 1025:+0.005 1026:+0.003
+    cap 60    n    16 won     9 lost     7 pulled    0 | pnl +0.0163 (+10.2% a trip) | per day 1022:+0.008 1024:+0.000 1025:+0.004 1026:+0.003
+    cap 120   n    16 won     9 lost     7 pulled    0 | pnl +0.0514 (+32.2% a trip) | per day 1022:+0.012 1024:+0.001 1025:+0.004 1026:+0.035
+    cap 180   n    16 won     9 lost     7 pulled    0 | pnl +0.0463 (+28.9% a trip) | per day 1022:+0.019 1024:+0.001 1025:+0.004 1026:+0.022
+  stake 0.04, entry slot:
+    mirror    n    16 won    11 lost     5 pulled    0 | pnl +0.2636 (+41.2% a trip) | per day 1022:+0.114 1024:+0.006 1025:+0.016 1026:+0.128
+    hold 3    n    16 won     9 lost     7 pulled    0 | pnl +0.0420 (+6.6% a trip) | per day 1022:+0.007 1024:-0.002 1025:-0.003 1026:+0.039
+    hold 10   n    16 won    11 lost     5 pulled    0 | pnl +0.0846 (+13.2% a trip) | per day 1022:+0.009 1024:-0.002 1025:+0.003 1026:+0.075
+    hold 30   n    16 won    13 lost     3 pulled    0 | pnl +0.1036 (+16.2% a trip) | per day 1022:+0.026 1024:+0.001 1025:+0.020 1026:+0.056
+    hold 60   n    16 won    13 lost     3 pulled    0 | pnl +0.1116 (+17.4% a trip) | per day 1022:+0.046 1024:+0.001 1025:+0.008 1026:+0.055
+    tp 0.05   n    16 won    13 lost     3 pulled    0 | pnl +0.0576 (+9.0% a trip) | per day 1022:+0.017 1024:+0.002 1025:+0.000 1026:+0.038
+    tp 0.1    n    16 won    13 lost     3 pulled    0 | pnl +0.0625 (+9.8% a trip) | per day 1022:+0.017 1024:+0.002 1025:+0.003 1026:+0.040
+    tp 0.2    n    16 won    13 lost     3 pulled    0 | pnl +0.1028 (+16.1% a trip) | per day 1022:+0.024 1024:+0.002 1025:+0.019 1026:+0.058
+    tp 0.4    n    16 won    13 lost     3 pulled    0 | pnl +0.1195 (+18.7% a trip) | per day 1022:+0.039 1024:+0.002 1025:+0.015 1026:+0.063
+    cap 30    n    16 won    13 lost     3 pulled    0 | pnl +0.1027 (+16.0% a trip) | per day 1022:+0.026 1024:+0.001 1025:+0.019 1026:+0.056
+    cap 60    n    16 won    13 lost     3 pulled    0 | pnl +0.1193 (+18.6% a trip) | per day 1022:+0.046 1024:+0.001 1025:+0.016 1026:+0.055
+    cap 120   n    16 won    13 lost     3 pulled    0 | pnl +0.2462 (+38.5% a trip) | per day 1022:+0.061 1024:+0.002 1025:+0.016 1026:+0.166
+    cap 180   n    16 won    11 lost     5 pulled    0 | pnl +0.2429 (+38.0% a trip) | per day 1022:+0.094 1024:+0.004 1025:+0.016 1026:+0.128
+  stake 0.04, entry +1:
+    mirror    n    16 won     9 lost     7 pulled    0 | pnl +0.1846 (+28.8% a trip) | per day 1022:+0.086 1024:+0.006 1025:+0.014 1026:+0.078
+    hold 3    n    16 won     8 lost     8 pulled    0 | pnl +0.0016 (+0.2% a trip) | per day 1022:-0.004 1024:-0.002 1025:+0.002 1026:+0.005
+    hold 10   n    16 won     8 lost     8 pulled    0 | pnl +0.0163 (+2.5% a trip) | per day 1022:-0.004 1024:-0.002 1025:+0.003 1026:+0.018
+    hold 30   n    16 won     8 lost     8 pulled    0 | pnl +0.0397 (+6.2% a trip) | per day 1022:+0.012 1024:+0.001 1025:+0.019 1026:+0.007
+    hold 60   n    16 won     8 lost     8 pulled    0 | pnl +0.0457 (+7.1% a trip) | per day 1022:+0.030 1024:+0.000 1025:+0.007 1026:+0.008
+    tp 0.05   n    16 won    13 lost     3 pulled    0 | pnl +0.0391 (+6.1% a trip) | per day 1022:+0.012 1024:+0.002 1025:+0.002 1026:+0.022
+    tp 0.1    n    16 won     8 lost     8 pulled    0 | pnl -0.0045 (-0.7% a trip) | per day 1022:+0.015 1024:+0.002 1025:+0.002 1026:-0.024
+    tp 0.2    n    16 won     8 lost     8 pulled    0 | pnl +0.0291 (+4.5% a trip) | per day 1022:+0.025 1024:+0.002 1025:+0.018 1026:-0.016
+    tp 0.4    n    16 won     8 lost     8 pulled    0 | pnl +0.0486 (+7.6% a trip) | per day 1022:+0.039 1024:+0.002 1025:+0.014 1026:-0.007
+    cap 30    n    16 won     8 lost     8 pulled    0 | pnl +0.0387 (+6.0% a trip) | per day 1022:+0.012 1024:+0.001 1025:+0.018 1026:+0.007
+    cap 60    n    16 won     8 lost     8 pulled    0 | pnl +0.0529 (+8.3% a trip) | per day 1022:+0.030 1024:+0.000 1025:+0.014 1026:+0.008
+    cap 120   n    16 won     8 lost     8 pulled    0 | pnl +0.1890 (+29.5% a trip) | per day 1022:+0.043 1024:+0.002 1025:+0.014 1026:+0.130
+    cap 180   n    16 won     9 lost     7 pulled    0 | pnl +0.1691 (+26.4% a trip) | per day 1022:+0.072 1024:+0.004 1025:+0.014 1026:+0.078
+  stake 0.1, entry slot:
+    mirror    n    16 won    10 lost     6 pulled    0 | pnl +0.5655 (+35.3% a trip) | per day 1022:+0.256 1024:+0.008 1025:+0.028 1026:+0.274
+    hold 3    n    16 won     8 lost     8 pulled    0 | pnl +0.0410 (+2.6% a trip) | per day 1022:+0.004 1024:-0.010 1025:-0.017 1026:+0.064
+    hold 10   n    16 won     9 lost     7 pulled    0 | pnl +0.1416 (+8.8% a trip) | per day 1022:+0.006 1024:-0.010 1025:-0.004 1026:+0.149
+    hold 30   n    16 won    12 lost     4 pulled    0 | pnl +0.1879 (+11.7% a trip) | per day 1022:+0.049 1024:-0.003 1025:+0.037 1026:+0.104
+    hold 60   n    16 won    11 lost     5 pulled    0 | pnl +0.2083 (+13.0% a trip) | per day 1022:+0.098 1024:-0.002 1025:+0.010 1026:+0.103
+    tp 0.05   n    16 won    12 lost     4 pulled    0 | pnl +0.0898 (+5.6% a trip) | per day 1022:+0.027 1024:-0.000 1025:-0.003 1026:+0.067
+    tp 0.1    n    16 won    12 lost     4 pulled    0 | pnl +0.1135 (+7.1% a trip) | per day 1022:+0.031 1024:-0.000 1025:+0.007 1026:+0.076
+    tp 0.2    n    16 won    12 lost     4 pulled    0 | pnl +0.2705 (+16.9% a trip) | per day 1022:+0.063 1024:-0.000 1025:+0.034 1026:+0.174
+    tp 0.4    n    16 won    11 lost     5 pulled    0 | pnl +0.1733 (+10.8% a trip) | per day 1022:+0.084 1024:-0.000 1025:+0.025 1026:+0.064
+    cap 30    n    16 won    12 lost     4 pulled    0 | pnl +0.1856 (+11.6% a trip) | per day 1022:+0.049 1024:-0.003 1025:+0.035 1026:+0.104
+    cap 60    n    16 won    11 lost     5 pulled    0 | pnl +0.2265 (+14.2% a trip) | per day 1022:+0.098 1024:-0.002 1025:+0.028 1026:+0.103
+    cap 120   n    16 won    11 lost     5 pulled    0 | pnl +0.5250 (+32.8% a trip) | per day 1022:+0.134 1024:-0.000 1025:+0.028 1026:+0.364
+    cap 180   n    16 won    10 lost     6 pulled    0 | pnl +0.5172 (+32.3% a trip) | per day 1022:+0.211 1024:+0.004 1025:+0.028 1026:+0.274
+  stake 0.1, entry +1:
+    mirror    n    16 won     9 lost     7 pulled    0 | pnl +0.3789 (+23.7% a trip) | per day 1022:+0.191 1024:+0.008 1025:+0.024 1026:+0.156
+    hold 3    n    16 won     0 lost    16 pulled    0 | pnl -0.0530 (-3.3% a trip) | per day 1022:-0.023 1024:-0.010 1025:-0.005 1026:-0.014
+    hold 10   n    16 won     7 lost     9 pulled    0 | pnl -0.0181 (-1.1% a trip) | per day 1022:-0.023 1024:-0.010 1025:-0.002 1026:+0.017
+    hold 30   n    16 won     7 lost     9 pulled    0 | pnl +0.0386 (+2.4% a trip) | per day 1022:+0.016 1024:-0.003 1025:+0.035 1026:-0.010
+    hold 60   n    16 won     7 lost     9 pulled    0 | pnl +0.0536 (+3.3% a trip) | per day 1022:+0.059 1024:-0.006 1025:+0.006 1026:-0.007
+    tp 0.05   n    16 won    12 lost     4 pulled    0 | pnl +0.0441 (+2.8% a trip) | per day 1022:+0.023 1024:-0.000 1025:-0.005 1026:+0.027
+    tp 0.1    n    16 won     7 lost     9 pulled    0 | pnl -0.0211 (-1.3% a trip) | per day 1022:+0.045 1024:-0.000 1025:+0.005 1026:-0.071
+    tp 0.2    n    16 won     7 lost     9 pulled    0 | pnl +0.0523 (+3.3% a trip) | per day 1022:+0.059 1024:-0.000 1025:+0.033 1026:-0.039
+    tp 0.4    n    16 won     7 lost     9 pulled    0 | pnl +0.0641 (+4.0% a trip) | per day 1022:+0.085 1024:-0.000 1025:+0.024 1026:-0.044
+    cap 30    n    16 won     7 lost     9 pulled    0 | pnl +0.0361 (+2.3% a trip) | per day 1022:+0.016 1024:-0.003 1025:+0.033 1026:-0.010
+    cap 60    n    16 won     7 lost     9 pulled    0 | pnl +0.0707 (+4.4% a trip) | per day 1022:+0.059 1024:-0.006 1025:+0.024 1026:-0.007
+    cap 120   n    16 won     7 lost     9 pulled    0 | pnl +0.3904 (+24.4% a trip) | per day 1022:+0.090 1024:-0.000 1025:+0.024 1026:+0.278
+    cap 180   n    16 won     9 lost     7 pulled    0 | pnl +0.3432 (+21.4% a trip) | per day 1022:+0.159 1024:+0.004 1025:+0.024 1026:+0.156

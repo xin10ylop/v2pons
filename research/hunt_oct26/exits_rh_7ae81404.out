@@ -1,0 +1,37 @@
+# D65 dust seat (0x7ae81404) copy — engineered exit around its sell, all 3618 entries, stake 0.00009, +1 entry, Oct 21-26
+
+## timing (seconds)
+entry after add   p5:0.3 p25:0.3 p50:0.4 p75:0.8 p95:2.3
+pool life         p5:2.4 p25:33.1 p50:422.0 p75:575.6 p95:594.2
+held (sold)       p5:143.2 p25:180.1 p50:225.3 p75:285.2 p95:374.4
+pull after its sell p5:47.8 p25:220.9 p50:306.7 p75:380.4 p95:433.0 | <=0.2s: 0 of 2105
+never sold: pull after its entry p5:1.0 p25:2.7 p50:19.6 p75:88.1 p95:246.8
+
+## sell L seconds before(-)/after(+) its own sell
+sell -120s from its sell: pnl +0.0783 (pulled 0)
+sell  -60s from its sell: pnl +0.2179 (pulled 0)
+sell  -30s from its sell: pnl +0.2842 (pulled 0)
+sell   +0s from its sell: pnl +0.3945 (pulled 0)
+sell  +15s from its sell: pnl +0.3989 (pulled 43)
+sell  +30s from its sell: pnl +0.4139 (pulled 66)
+sell  +60s from its sell: pnl +0.4395 (pulled 125)
+sell +120s from its sell: pnl +0.4815 (pulled 234)
+sell +240s from its sell: pnl +0.4578 (pulled 612)
+hindsight best block (upper bound): +0.8624
+
+## trailing stop starting at its sell
+after its sell, trail 5% cap 60s: pnl +0.3843 (pulled 39)
+after its sell, trail 5% cap 120s: pnl +0.3818 (pulled 60)
+after its sell, trail 5% cap 240s: pnl +0.3645 (pulled 124)
+after its sell, trail 10% cap 60s: pnl +0.3968 (pulled 74)
+after its sell, trail 10% cap 120s: pnl +0.3946 (pulled 120)
+after its sell, trail 10% cap 240s: pnl +0.3349 (pulled 355)
+after its sell, trail 20% cap 60s: pnl +0.4316 (pulled 118)
+after its sell, trail 20% cap 120s: pnl +0.4591 (pulled 211)
+after its sell, trail 20% cap 240s: pnl +0.4227 (pulled 542)
+
+## volume-line pool life with vs without a D65 entry
+x3 -          pools    71 | life p25    0.9s median  384.2s | pulled in <60s: 44%
+x3 D65        pools  2563 | life p25   18.7s median  307.7s | pulled in <60s: 34%
+x5 -          pools    17 | life p25  513.5s median  565.6s | pulled in <60s: 0%
+x5 D65        pools  1048 | life p25  159.6s median  555.1s | pulled in <60s: 15%

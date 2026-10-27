@@ -1,0 +1,4 @@
+rh contract:0xe6b451f78675da3f5a20827215a96cbdd235888c: 120 of 536 pools sampled, 77390 transactions resolved; machine routers 1, recurring buyers 496; pool life median 424s
+  all strangers: 15 real-size buys by 12 wallets in 15 pools | got out 0 (0 with a profit) | never sold 15 | net -0.0676 on 0.0676 | pull came a median 8s after their buy (in at a median 213s)
+  in the copy position (<= 2 blocks after its buy): 1 real-size buys by 1 wallets in 1 pools | got out 0 (0 with a profit) | never sold 1 | net -0.0099 on 0.0099 | pull came a median 20s after their buy (in at a median 76s)
+  elsewhere: 14 real-size buys by 11 wallets in 14 pools | got out 0 (0 with a profit) | never sold 14 | net -0.0577 on 0.0577 | pull came a median 8s after their buy (in at a median 263s)

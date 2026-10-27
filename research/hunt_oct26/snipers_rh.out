@@ -1,0 +1,22 @@
+rh 20261021..20261026: 10258 round trips, 178 traders; profitable on 4+ days with 0.01+ total:
+  contract 0xe6b451f78675da3f5a20827215a96cbdd235888c FLEET-LIKE
+      pnl +61.8111 | days +6/6: 1021:+6.980 1022:+7.152 1023:+10.483 1024:+18.561 1025:+12.946 1026:+5.690
+      trips 2681 won 2083 pools 536 wallets 488 | stake 0.07197 ret +13% | in 72.0s hold 26.5s exit 277s before the pull | [('v4 fee 500 ts 1 x 4', 1333), ('v4 fee 500 ts 1 x 3', 1054), ('v4 fee 500 ts 1 x 3.5', 178)]
+  contract 0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc FLEET-LIKE
+      pnl +2.2393 | days +4/6: 1021:+1.948 1022:-0.005 1023:+0.007 1024:-0.002 1025:+0.023 1026:+0.268
+      trips 152 won 76 pools 42 wallets 106 | stake 0.01980 ret +0% | in 145.1s hold 38.0s exit 480s before the pull | [('v4 fee 10000 ts 1 x 0', 38), ('v4 fee 3000 ts 1 x 0', 28), ('v4 fee 3000 ts 60 hook x 8.6', 13)]
+  wallet   0x7ae81404e32aef363eb63bc4befba78fb5b636de 
+      pnl +0.0926 | days +6/6: 1021:+0.019 1022:+0.019 1023:+0.016 1024:+0.016 1025:+0.015 1026:+0.007
+      trips 2105 won 2104 pools 2105 wallets 1 | stake 0.00002 ret +333% | in 0.4s hold 225.3s exit 307s before the pull | [('v4 fee 10000 ts 200 x 3', 1409), ('v4 fee 10000 ts 200 x 5', 693), ('v4 fee 500 ts 200 x 3.1', 1)]
+  contract 0x6e2a35a7ad683cf634d91492d73bb7ff774c6919 FLEET-LIKE
+      pnl +0.0776 | days +6/6: 1021:+0.000 1022:+0.000 1023:+0.000 1024:+0.063 1025:+0.015 1026:+0.000
+      trips 26 won 21 pools 22 wallets 20 | stake 0.00007 ret +41% | in 237.0s hold 162.6s exit 180s before the pull | [('v4 fee 500 ts 1 x 4', 7), ('v4 fee 3000 ts 1 x 0', 5), ('v4 fee 10000 ts 200 x 3', 4)]
+  wallet   0x24919ef805725a0b368b5e36d49aabe7dccc5cc2 
+      pnl +0.0429 | days +4/4: 1021:+0.014 1022:+0.015 1023:+0.014 1024:+0.000
+      trips 1342 won 1341 pools 1342 wallets 1 | stake 0.00001 ret +326% | in 0.8s hold 207.7s exit 319s before the pull | [('v4 fee 10000 ts 200 x 3', 833), ('v4 fee 10000 ts 200 x 5', 388), ('v4 fee 500 ts 1 x 3', 38)]
+  wallet   0x57ee6646fe8748dc8c10ac96caae7ce2373ede5d 
+      pnl +0.0415 | days +6/6: 1021:+0.004 1022:+0.004 1023:+0.008 1024:+0.013 1025:+0.009 1026:+0.003
+      trips 488 won 487 pools 488 wallets 1 | stake 0.00006 ret +131% | in 13.1s hold 119.0s exit 305s before the pull | [('v4 fee 500 ts 1 x 4', 221), ('v4 fee 500 ts 1 x 3', 214), ('v4 fee 500 ts 1 x 3.5', 28)]
+  wallet   0x8cf143ddc84dedcd7bedd2b362b63af154dfa4f7 
+      pnl +0.0161 | days +6/6: 1021:+0.004 1022:+0.003 1023:+0.004 1024:+0.003 1025:+0.001 1026:+0.001
+      trips 407 won 404 pools 407 wallets 1 | stake 0.00003 ret +126% | in 7.9s hold 112.9s exit 317s before the pull | [('v4 fee 500 ts 1 x 4', 174), ('v4 fee 500 ts 1 x 3', 171), ('v4 fee 500 ts 1 x 3.5', 24)]
