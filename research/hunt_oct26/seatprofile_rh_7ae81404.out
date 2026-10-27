@@ -1,0 +1,33 @@
+== entry: seat 0x7ae81404e32aef363eb63bc4befba78fb5b636de; buy block - add block [(1, 4), (2, 144), (3, 1146), (4, 526), (5, 333), (6, 150), (7, 348), (8, 193)] | first swap of the pool in its block 3343 of 3618
+== exit, x3 pools (2569 entries): sells at p5:4.11 p25:4.33 p50:4.44 p75:4.55 p95:4.73 x its entry price | peak before the pull p5:1.00 p25:1.29 p50:5.61 p75:8.16 p95:10.62 | at the pull p5:1.00 p25:1.26 p50:5.39 p75:7.72 p95:10.15
+   price path after its entry (median multiple): 10s:1.11 30s:1.41 60s:1.86 120s:2.71 180s:3.43 240s:4.02 300s:4.43 360s:4.79
+== exit, x5 pools (1049 entries): sells at p5:2.80 p25:2.84 p50:2.85 p75:2.88 p95:2.93 x its entry price | peak before the pull p5:1.00 p25:2.22 p50:3.40 p75:3.69 p95:4.04 | at the pull p5:1.00 p25:2.17 p50:3.33 p75:3.61 p95:3.99
+   price path after its entry (median multiple): 10s:1.06 30s:1.21 60s:1.43 120s:1.86 180s:2.23 240s:2.53 300s:2.74 360s:2.91
+== transactions (sample): to, selector, gas price, value, calldata shape
+   seat                   n 50 | to [('0x88767899', 50)] | selector [('0x3593564c', 50)] | gas price gwei median 0.0221 max 0.0227 | value p5:0.00 p25:0.00 p50:0.00 p75:0.00 p95:0.00 | senders 1
+      20 x ('UR', 'bytes 1124', 'cmd 10', 'deadline +120s', 'gas 600000')
+   twin                   n 50 | to [('0x88767899', 50)] | selector [('0x3593564c', 50)] | gas price gwei median 0.0201 max 0.0206 | value p5:0.00 p25:0.00 p50:0.00 p75:0.00 p95:0.00 | senders 1
+      20 x ('UR', 'bytes 1124', 'cmd 10', 'deadline +600s', 'gas 500000')
+   newcomer dust, pulled  n 50 | to [('0x88767899', 29), ('0xf2c69db0', 11)] | selector [('0x3593564c', 30), ('0xd1d4fd92', 11)] | gas price gwei median 0.0261 max 0.1000 | value p5:0.00 p25:0.00 p50:0.00 p75:0.00 p95:0.00 | senders 17
+      10 x ('UR', 'bytes 1124', 'cmd 10', 'deadline +300s', 'gas 900000')
+       5 x ('0xf2c69db0', '0xd1d4fd92')
+       2 x ('0x6e2a35a7', '0x0c307f76')
+== outside dust first buys under 200 s: pulled within 5 s, by wallet kind, whether the machine had bought yet, and age
+   resident before the first machine buy, age    0-0.35s:  2748 buys by   4 wallets | pulled within 5 s  18%
+   resident before the first machine buy, age 0.35-0.6 s:  3605 buys by   4 wallets | pulled within 5 s  17%
+   resident before the first machine buy, age  0.6-1   s:  1839 buys by   4 wallets | pulled within 5 s  21%
+   resident before the first machine buy, age    1-2   s:  1010 buys by   4 wallets | pulled within 5 s  22%
+   resident before the first machine buy, age    2-5   s:   307 buys by   4 wallets | pulled within 5 s  19%
+   resident before the first machine buy, age    5-20  s:    28 buys by   3 wallets | pulled within 5 s  11%
+   resident after  the first machine buy, age    2-5   s:    47 buys by   4 wallets | pulled within 5 s   6%
+   resident after  the first machine buy, age    5-20  s:    85 buys by   4 wallets | pulled within 5 s   4%
+   newcomer before the first machine buy, age    0-0.35s:    51 buys by  13 wallets | pulled within 5 s  69%
+   newcomer before the first machine buy, age 0.35-0.6 s:    54 buys by   4 wallets | pulled within 5 s  93%
+   newcomer before the first machine buy, age  0.6-1   s:    35 buys by   7 wallets | pulled within 5 s  91%
+   newcomer before the first machine buy, age    1-2   s:   183 buys by   8 wallets | pulled within 5 s  93%
+   newcomer before the first machine buy, age    2-5   s:   196 buys by   5 wallets | pulled within 5 s  96%
+   newcomer after  the first machine buy, age    2-5   s:     3 buys by   2 wallets | pulled within 5 s  67%
+   newcomer after  the first machine buy, age    5-20  s:    50 buys by  14 wallets | pulled within 5 s  94%
+   newcomer after  the first machine buy, age   20-200 s:   236 buys by  56 wallets | pulled within 5 s  47%
+   newcomers in the residents' slot (before the first machine buy): 520, pulled within 5 s 477 | by wallet and day: [(('0x93b07902', '1023'), 347), (('0x613765d5', '1025'), 85), (('0x06158326', '1024'), 14), (('0x3debaee3', '1022'), 10), (('0x3cf5d44b', '1023'), 6), (('0xf4677dbf', '1023'), 6), (('0x8f087bc7', '1023'), 6), (('0xbd9dc5f6', '1024'), 6)]
+== 0x68936d46: token transfers received in the 13 days before 20261021: 0

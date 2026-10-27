@@ -1,0 +1,38 @@
+== 1 machine: 18 wallets buy 0.001+ in 3+ pools; the largest:
+   0x1cbaf24d53fe930fce8eff149fa797d2611da149 pools  3184 first buy median 0.1237
+   0x8f10b468b06c6fd214b65f87778827f7d113f996 pools    43 first buy median 0.0021
+   0x0005ea38eb0a69d1253508ebdbdb9ea8cb26b5ef pools    37 first buy median 0.0021
+   0xcee974f6c0027cf6bd7d32bde59c5d0a0481b4c0 pools     8 first buy median 0.0021
+   0x371de256ff0e0ee6174932de1a532c7bf68b03e5 pools     8 first buy median 0.0050
+   0xe6eeda550918638529c6cf2ea14f9ea0572d6f88 pools     7 first buy median 0.0021
+   machine buy cadence (s between its buys) p5:2.08 p25:2.49 p50:2.92 p75:5.32 p95:10.75
+   last machine swap -> pull (s) p5:0.31 p25:1.24 p50:3.03 p75:7.34 p95:12.57 | gap >= 5s in 38%, >= 10s 13% | a machine sell among the last 3 machine swaps: 0% of pools
+
+== 2 the seat's never-sold entries: dead pools (no machine buy at all) {3: 436, 5: 50} | pulled mid-pump {3: 718, 5: 305}
+   dead: pull after the seat's entry (s) p5:0.42 p25:1.47 p50:2.09 p75:2.82 p95:3.62 | pulled within 2s 48%, 4s 97%, 8s 100%
+   mid-pump: pull after entry (s) p5:2.92 p25:18.79 p50:50.95 p75:124.85 p95:280.79 | peak multiple reached p5:1.07 p25:1.25 p50:1.73 p75:2.65 p95:4.22
+
+== 3 our copy at 9e-05, entry +1, every entry of the seat (3618), exit by rule:
+   mirror                   won  2132 lost     0 pulled  1479 | pnl +0.4077 | per day 1021:+0.082 1022:+0.095 1023:+0.049 1024:+0.083 1025:+0.067 1026:+0.032
+   dead 2                   won   174 lost  3085 pulled   352 | pnl -0.0176 | per day 1021:+0.001 1022:+0.008 1023:-0.013 1024:-0.005 1025:-0.012 1026:+0.003
+   dead 3                   won   507 lost  2455 pulled   649 | pnl +0.0452 | per day 1021:+0.016 1022:+0.028 1023:-0.011 1024:+0.008 1025:-0.003 1026:+0.006
+   dead 4                   won  1079 lost  1529 pulled  1003 | pnl +0.1675 | per day 1021:+0.042 1022:+0.057 1023:+0.007 1024:+0.031 1025:+0.015 1026:+0.015
+   dead 6                   won  1998 lost   202 pulled  1411 | pnl +0.3784 | per day 1021:+0.078 1022:+0.093 1023:+0.046 1024:+0.074 1025:+0.058 1026:+0.028
+   dead 4 pause 10          won  1084 lost  1541 pulled   986 | pnl +0.1411 | per day 1021:+0.035 1022:+0.052 1023:+0.000 1024:+0.029 1025:+0.012 1026:+0.014
+   dead 4 pause 20          won  1083 lost  1529 pulled   999 | pnl +0.1667 | per day 1021:+0.042 1022:+0.058 1023:+0.006 1024:+0.031 1025:+0.015 1026:+0.015
+   dead 4 pause 30          won  1080 lost  1529 pulled  1002 | pnl +0.1680 | per day 1021:+0.042 1022:+0.058 1023:+0.007 1024:+0.031 1025:+0.015 1026:+0.015
+   dead 4 pause 20 tp 4.4   won  1091 lost  1529 pulled   991 | pnl +0.1648 | per day 1021:+0.042 1022:+0.057 1023:+0.006 1024:+0.030 1025:+0.014 1026:+0.015
+   dead 4 pause 20 tp 5.5   won  1017 lost  1529 pulled  1065 | pnl +0.2106 | per day 1021:+0.053 1022:+0.072 1023:+0.011 1024:+0.039 1025:+0.020 1026:+0.016
+   dead 4 pause 20 tp 6.5   won   981 lost  1529 pulled  1101 | pnl +0.2343 | per day 1021:+0.057 1022:+0.078 1023:+0.014 1024:+0.045 1025:+0.022 1026:+0.017
+   dead 4 pause 30 tp 4.4   won  1088 lost  1529 pulled   994 | pnl +0.1660 | per day 1021:+0.043 1022:+0.057 1023:+0.006 1024:+0.030 1025:+0.014 1026:+0.015
+   dead 4 pause 30 tp 5.5   won  1012 lost  1529 pulled  1070 | pnl +0.2123 | per day 1021:+0.054 1022:+0.072 1023:+0.011 1024:+0.039 1025:+0.020 1026:+0.016
+   dead 4 pause 30 tp 6.5   won   972 lost  1529 pulled  1110 | pnl +0.2347 | per day 1021:+0.057 1022:+0.078 1023:+0.015 1024:+0.044 1025:+0.022 1026:+0.017
+
+== 4 dust in the line's 3699 pools (buyers under 0.0001 that are not the machine); early = in the first 2 s:
+   0-0 early dust buyers, no stranger: pools  100 | early dust sum median 0.00000 max 0.00000 | pulled within 15s 8% | life median 566s
+   1-1 early dust buyers, no stranger: pools  136 | early dust sum median 0.00000 max 0.00002 | pulled within 15s 10% | life median 573s
+   2-2 early dust buyers, no stranger: pools  945 | early dust sum median 0.00003 max 0.00004 | pulled within 15s 4% | life median 564s
+   3-3 early dust buyers, no stranger: pools 1635 | early dust sum median 0.00003 max 0.00007 | pulled within 15s 17% | life median 551s
+   4-+ early dust buyers, no stranger: pools  228 | early dust sum median 0.00003 max 0.00008 | pulled within 15s 99% | life median 2s
+   pools with a 0.0001+ outside buy: 655 | pulled within 15s 24% | life median 64s
+   pools alive 120s+: 2430 | total dust taken in, median 0.00003 p95 0.00008 max 0.00017

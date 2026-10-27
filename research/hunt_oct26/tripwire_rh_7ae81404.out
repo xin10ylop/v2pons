@@ -1,0 +1,26 @@
+== 1 early outside buyers (first 2 s of the pool), per day: wallet, pools, the pool pulled within 15 s when it is there
+   20261021: 0x7ae81404 628p 13% | 0x24919ef8 621p 13% | 0x2be87ad7 446p 14% | 0xed74464a 7p 100% | 0x5a1534cc 4p 100% | 0x2b2531d5 1p 100%
+            pools by early outside wallets: {0: 6, 1: 17, 2: 195, 3: 420, 4: 9, 5: 1}
+   20261022: 0x7ae81404 524p 5% | 0x24919ef8 519p 5% | 0x2be87ad7 404p 6% | 0x3debaee3 10p 100%
+            pools by early outside wallets: {0: 21, 1: 39, 2: 155, 3: 356, 4: 10}
+   20261023: 0x24919ef8 878p 42% | 0x7ae81404 859p 40% | 0x2be87ad7 791p 49% | 0x93b07902 165p 93% | 0x3cf5d44b 6p 50% | 0xf4677dbf 6p 50%
+            pools by early outside wallets: {0: 18, 1: 61, 2: 178, 3: 576, 4: 150}
+   20261024: 0x7ae81404 565p 13% | 0x2be87ad7 503p 14% | 0x68936d46 461p 13% | 0x24919ef8 35p 29% | 0x06158326 14p 100% | 0xb1000000 10p 100%
+            pools by early outside wallets: {0: 4, 1: 14, 2: 141, 3: 397, 4: 26}
+   20261025: 0x7ae81404 601p 21% | 0x68936d46 592p 20% | 0x2be87ad7 224p 35% | 0x613765d5 104p 97% | 0x0fb8ef2e 4p 100%
+            pools by early outside wallets: {0: 28, 1: 17, 2: 363, 3: 166, 4: 71}
+   20261026: 0x7ae81404 217p 8% | 0x68936d46 216p 8% | 0x2be87ad7 119p 13% | 0x45eac2f4 5p 100% | 0x09c1fbff 1p 0%
+            pools by early outside wallets: {0: 36, 1: 8, 2: 104, 3: 106, 4: 6}
+
+== 2 the seat's never-sold entries: what landed in the 5 s before the pull
+   {'4th wallet': 520, 'nothing visible': 487, 'stranger': 502} | when something did: pull came p5:0.42 p25:0.84 p50:1.36 p75:1.77 p95:2.30 s after it
+
+== 3 our copy at 9e-05, entry +1, all 3618 entries:
+   mirror                       won  2132 lost     0 pulled  1479 | pnl +0.4077 | per day 1021:+0.082 1022:+0.095 1023:+0.049 1024:+0.083 1025:+0.067 1026:+0.032
+   mirror + trip                won  2507 lost   136 pulled   968 | pnl +0.4886 | per day 1021:+0.099 1022:+0.111 1023:+0.063 1024:+0.096 1025:+0.081 1026:+0.038
+   mirror + wallets 3           won  2475 lost   531 pulled   605 | pnl +0.5193 | per day 1021:+0.101 1022:+0.112 1023:+0.094 1024:+0.099 1025:+0.079 1026:+0.035
+   mirror + trip + wallets 3    won  2603 lost   566 pulled   442 | pnl +0.5431 | per day 1021:+0.105 1022:+0.115 1023:+0.097 1024:+0.101 1025:+0.087 1026:+0.038
+   trip + wallets 3 + tp 4.4    won  2616 lost   566 pulled   429 | pnl +0.5392 | per day 1021:+0.106 1022:+0.113 1023:+0.097 1024:+0.099 1025:+0.086 1026:+0.038
+   trip + wallets 3 + tp 5.5    won  2506 lost   566 pulled   539 | pnl +0.6318 | per day 1021:+0.127 1022:+0.138 1023:+0.112 1024:+0.111 1025:+0.102 1026:+0.042
+   trip + wallets 3 + tp 6.5    won  2456 lost   566 pulled   589 | pnl +0.6732 | per day 1021:+0.136 1022:+0.147 1023:+0.120 1024:+0.116 1025:+0.110 1026:+0.044
+   trip + wallets 3 + tp 7.5    won  2440 lost   566 pulled   605 | pnl +0.6983 | per day 1021:+0.141 1022:+0.155 1023:+0.125 1024:+0.119 1025:+0.114 1026:+0.044

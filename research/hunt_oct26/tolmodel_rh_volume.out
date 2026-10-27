@@ -1,0 +1,41 @@
+== every outside wallet's first buy on the line (11389 in 3692 pools): share followed by the pull within 5 s (n)
+   rank = distinct outside wallets in the pool so far, this one included
+                                     <=2s                     2-10s                      >10s
+   rank 1 <0.0001                  17% (3586)                 8% ( 105)                 0% (   1)
+   rank 2 <0.0001                  18% (3429)                11% ( 221)                20% (   5)
+   rank 2 >=0.0001                100% (   1)                                         100% (   2)
+   rank 3 <0.0001                  25% (2279)                26% ( 140)                45% ( 124)
+   rank 3 >=0.0001                100% (  15)               100% (  15)               100% ( 183)
+   rank 4 <0.0001                  99% ( 232)                99% ( 209)                28% ( 368)
+   rank 4 >=0.0001                100% (  41)               100% (  66)                97% ( 312)
+   rank 5+ <0.0001                                           100% (   2)                50% (   6)
+   rank 5+ >=0.0001                100% (   1)                 0% (   4)                64% (  42)
+
+== 0xe74fcc81: 241 pools | buy p5:0.00 p25:0.00 p50:0.00 p75:0.00 p95:0.00 | in at p5:148.08 p25:175.25 p50:200.49 p75:227.31 p95:295.13 s | rank {4: 203, 5: 1, 3: 37}
+   pulled within 5 s 6% | pull after its buy p5:1.59 p25:220.59 p50:345.27 p75:388.18 p95:427.07 s
+   as rank 3:   37 pools, pulled within 5 s 0%, within 60 s 5%
+   as rank 4:  203 pools, pulled within 5 s 7%, within 60 s 12%
+   as rank 5:    1 pools, pulled within 5 s 100%, within 60 s 100%
+
+== late-entry copy at 9e-05 on every pool of the line (if tolerated): exit on tripwire (>= 0.0001 outside buy or a wallet beyond rank K) or take-profit
+   entry after the first machine buy  K 3 tp 6.5: pools  3185 won  2472 lost    78 pulled   635 | pnl +0.6226
+   entry after the first machine buy  K 4 tp 6.5: pools  3185 won  2356 lost    55 pulled   774 | pnl +0.6203
+   entry after the first machine buy  K 4 tp 7.5: pools  3185 won  2333 lost    55 pulled   797 | pnl +0.6485
+   entry at 10.0 s                    K 3 tp 6.5: pools  3013 won  2452 lost    55 pulled   506 | pnl +0.6065
+   entry at 10.0 s                    K 4 tp 6.5: pools  3013 won  2344 lost    39 pulled   630 | pnl +0.6059
+   entry at 10.0 s                    K 4 tp 7.5: pools  3013 won  2321 lost    39 pulled   653 | pnl +0.6337
+   entry at 60.0 s                    K 3 tp 6.5: pools  2644 won  2232 lost    36 pulled   376 | pnl +0.2703
+   entry at 60.0 s                    K 4 tp 6.5: pools  2644 won  2169 lost    28 pulled   447 | pnl +0.2731
+   entry at 60.0 s                    K 4 tp 7.5: pools  2644 won  2146 lost    28 pulled   470 | pnl +0.2875
+   entry at 120.0 s                   K 3 tp 6.5: pools  2430 won  2110 lost    44 pulled   276 | pnl +0.1175
+   entry at 120.0 s                   K 4 tp 6.5: pools  2430 won  2072 lost    29 pulled   329 | pnl +0.1203
+   entry at 120.0 s                   K 4 tp 7.5: pools  2430 won  2049 lost    29 pulled   352 | pnl +0.1294
+   entry at 200.0 s                   K 3 tp 6.5: pools  2238 won  1911 lost   138 pulled   189 | pnl +0.0342
+   entry at 200.0 s                   K 4 tp 6.5: pools  2238 won  1948 lost    81 pulled   209 | pnl +0.0358
+   entry at 200.0 s                   K 4 tp 7.5: pools  2238 won  1956 lost    50 pulled   232 | pnl +0.0418
+   entry at 240.0 s                   K 3 tp 6.5: pools  2168 won  1759 lost   262 pulled   147 | pnl +0.0162
+   entry at 240.0 s                   K 4 tp 6.5: pools  2168 won  1783 lost   228 pulled   157 | pnl +0.0167
+   entry at 240.0 s                   K 4 tp 7.5: pools  2168 won  1856 lost   131 pulled   181 | pnl +0.0214
+   entry at 300.0 s                   K 3 tp 6.5: pools  2047 won  1299 lost   662 pulled    86 | pnl +0.0009
+   entry at 300.0 s                   K 4 tp 6.5: pools  2047 won  1306 lost   653 pulled    88 | pnl +0.0009
+   entry at 300.0 s                   K 4 tp 7.5: pools  2047 won  1480 lost   458 pulled   109 | pnl +0.0039

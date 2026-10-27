@@ -132,6 +132,12 @@ its sell helps a little more — selling ~30–120 s *after* its sell lifts the 
 Verdict: **the only Robinhood seat that passes all four tests**, but it is a dust seat with a hard ceiling
 around 0.00009 ETH/trade and a plausible path to closing. Worth a small live test, not size.
 
+> **Superseded by the deep dive (Oct 27, `REPORT_SEAT.md`):** the seat is an allowlist. 520 buys by other
+> bots landed in the residents' slot over the six days and 477 (92%) were pulled within 5 s; the residents'
+> twin was accepted on day one with zero history. With an engineered exit (tripwires on any stranger buy or
+> new wallet, take-profit 6.5–7.5×) the seat would be worth ~+0.70 ETH/6d at 0.00009 — but a new wallet
+> does not get it. **No live test recommended.**
+
 ### Candidate 3 — `0x57ee6646…` : smaller D65-style dust on the tick-1 line
 
 Second (and last) exhaustive survivor: +0.024 ETH over six days, green 6/6, 0.00006 ETH buys on the
