@@ -23,8 +23,11 @@ tokens' Transfer logs (`cpdump.py`), the seat's 3,618 entries (`entries.py`). Sc
 
 ## 1. How the seat makes money
 
-The line is one machine: `0x1cbaf24d` (the 2.433 operator's own bot router, `FRONT_BOT_ROUTERS` in
-`docs/HANDOFF.md`) buys into every pool it launches, 0.12 ETH median first buy, one buy every ~2.9 s,
+The line is one machine: `0x1cbaf24d`, the **volume bot's** router (`docs/HANDOFF.md` table, line 95). This is
+**not the 2.433 line**: these are the volume bot's 3.0 / 5.0 ETH, 1%-fee families, which `REPORT_OCT20.md` already
+marked untradeable (the pull follows any outside swap in 5-21 blocks). The 2.433 line has been gone from
+Robinhood since Oct 12. The link is the contract: the 2.433 line's bot buys went through the same `0x1cbaf24d`
+(that's why it is in the engine's `FRONT_BOT_ROUTERS`), so it is very likely the same operator family. The machine buys into every pool it launches, 0.12 ETH median first buy, one buy every ~2.9 s,
 until it removes the liquidity. 17 helper wallets buy 0.002–0.005. The pump is mechanical:
 
 | pool | price path after the seat's entry (median multiple) | peak before the pull | price at the pull |
