@@ -64,6 +64,24 @@ Tolerance of the tick-1 line by buy size (`tolerance.py`, 138 stranger buys): ev
 on within a few seconds and essentially nobody gets out. This is exactly the setup the user said to skip.
 **Uncopyable.** The +61.8 ETH is the line paying its own wallets; an outside copy is the rug.
 
+**Why not just exit 2–3 s after the buy?** (asked Oct 27; `exit_fast_e6b451f7.out`.) Two separate
+problems, no shared fix. Of the 43 real-size (≥0.001) outside buys on this line:
+
+| pull after the buy | share |
+|---|---|
+| within 0.5 s | 16% |
+| within 1 s | **30%** |
+| within 3 s | 30% (no new pulls between 1 and 5 s) |
+| within 8 s | 51% |
+
+The "median 8 s" is bimodal: the operator either pulls **inside 5–10 blocks** of the buy (30% of entries,
+−100% at any exit speed — even a 0.5 s sell still eats 12 of the 43) or not for a while. And the 70% not
+pulled instantly have **no bid yet at 3 s**: the fleet's profit comes from holding ~26 s and selling into
+its own next machine buy; before that there is only fee + slippage (the no-reaction paper sim is already
+red at hold-3: −0.6% a trip, 907 won / 1,774 lost). Replaying those 43 buys as a 0.05 ETH copy on the
+recorded reserve path: **−31% a trip at every exit from 0.5 s to 3 s** (−0.66 ETH), −37% at 5 s, −52% at
+8 s. The window where the trade pays (30–60 s) is exactly where the pull lands.
+
 ### Candidate 2 — `0x7ae81404…` (+ twin `0x68936d46…`) : the D65 dust seat — the one copyable, consistent seat
 
 The known D65 crew's dust wallet, still trading as of **today 00:08 UTC** (nonce 48,302). It rides the

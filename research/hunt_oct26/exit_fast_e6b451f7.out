@@ -1,0 +1,18 @@
+# tick-1 line (0xe6b451f7 fleet): 43 real-size (>=0.001) outside buys, Oct 21-26 -- a fast exit?
+
+pull after the buy:
+  within 0.5s:   7 of 43 (16%)
+  within   1s:  13 of 43 (30%)
+  within   2s:  13 of 43 (30%)
+  within   3s:  13 of 43 (30%)
+  within   5s:  16 of 43 (37%)
+  within   8s:  22 of 43 (51%)
+  later than 8s: 21
+
+the same entries as a 0.05 ETH copy, sold N seconds after the buy on the recorded reserve path:
+  sell at 0.5s: won   2 lost  29 pulled  12 | pnl -0.624 ETH (-29% a trip)
+  sell at   1s: won   3 lost  27 pulled  13 | pnl -0.670 ETH (-31% a trip)
+  sell at   2s: won   7 lost  23 pulled  13 | pnl -0.663 ETH (-31% a trip)
+  sell at   3s: won  10 lost  20 pulled  13 | pnl -0.658 ETH (-31% a trip)
+  sell at   5s: won  16 lost  11 pulled  16 | pnl -0.787 ETH (-37% a trip)
+  sell at   8s: won  13 lost   7 pulled  23 | pnl -1.119 ETH (-52% a trip)
