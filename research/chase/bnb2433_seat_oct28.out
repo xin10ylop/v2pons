@@ -1,0 +1,6 @@
+bsc, last 6 h (blocks 130258294-130306294): 1515 vanity WBNB pairs, 93 with the operator's token
+  pulled 91 of 93; launch BNB median 6.170; life median 601 s
+  fleet receivers 17; swaps 13823
+  buyers outside the fleet 258: 243 with 2000+ transactions (the operator's rotating bots), 15 genuine
+  outsiders, dust < 0.001 BNB: 25 buys | pull within 10 blocks 92%, 30 blocks 96% | median 5 blocks after | size median 0.0001 | in at median 2 s
+  outsiders, real >= 0.001 BNB: 12 buys | pull within 10 blocks 83%, 30 blocks 100% | median 8 blocks after | size median 0.0068 | in at median 165 s

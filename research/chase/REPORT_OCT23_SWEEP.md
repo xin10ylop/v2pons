@@ -50,3 +50,17 @@ The wallet-based watch said the operator was idle. That was a search error, caug
 - `watch2433.py` now has `op_bnb_tokens()`: it codehash-confirms the operator's live BNB launch rate each hour (informational, no push; pushes only if the rate jumps far above normal or it reappears elsewhere). The known wallets and parked 26.65 BNB are still tracked.
 
 **Net:** the operator is bigger and busier than ever, but still rugs any real outsider in seconds. Conclusion on a tradeable seat is unchanged — only the Solana line remains a candidate.
+
+## Update Oct 28: still closed on BNB; its parked BNB was cashed out and bridged
+
+- **The BNB line, last 6 h to 15:30 UTC** (`bnb2433_seat.py`, `bnb2433_seat_oct28.out`): 93 PancakeSwap V2 pairs with the operator's
+  byte-identical token (of 1,515 vanity launches), 91 pulled, 6.17 BNB each, life a median 601 s. Of 258 buyers outside the core fleet,
+  243 have 2,000+ transactions (its rotating bots); 15 are genuine. Their 12 real buys (0.001+ BNB, median 0.0068): **pulled within
+  10 blocks 83%, within 30 blocks 100%, a median 8 blocks (~4 s) after the buy.** Their 25 dust buys: 92% within 10 blocks. The
+  detector is on; no seat.
+- **The 26.65 BNB** parked at `0x23055b43` left on **Oct 24 06:42 UTC** (tx `0xb22c598d…`, block 129,467,800) in one call to
+  `0x663dc15d` (an upgradeable swap-and-bridge router used by many wallets, 0.005 BNB fee each): swapped to ~19,660 USDC, 59 USDC fee,
+  **19,600.8 USDC** deposited into `0xef4fb24a` (a pooled bridge vault holding 443k USDC). The order event names source chain 56,
+  **destination chain id 5042**, recipient **the same address `0x23055b43`**, take token the destination's native token (amount
+  ≈19,566 at 18 decimals, i.e. a dollar-priced native gas token). Not a new launch wallet on any chain the watch covers. The
+  destination chain was not identified here and has no RPC in this repo; that is where the operator's money went next.
