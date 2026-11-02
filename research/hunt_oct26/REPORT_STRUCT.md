@@ -19,7 +19,7 @@ honeypot hook, or small:
 
 | group | a day | paper | why not |
 |---|---|---|---|
-| RH 2.433 operator's 3.0 ETH line (POSM 1,444 B, fee 1%) | 380 | front -5.3%; behind its bot +6.8% (h100) | `slot30_rh.out`: in all 10 pools where an outsider bought after the bot (0.0001 ETH and up), the pull came 6-20 blocks after that buy (no outsider: a median 610 blocks after the bot's). Closed |
+| RH 2.433 operator's 3.0 ETH line (POSM 1,444 B, fee 1%) | 380 | front -5.3%; behind its bot +6.8% (h100) | `slot30_rh.out` (SLOT=300 MIN_OUT=0.0001): in all 10 pools where an outsider bought after the bot (0.0001 ETH and up), the pull came 6-20 blocks after that buy (no outsider: a median 610 blocks after the bot's). Closed |
 | RH third operator's V2 50.1 / 40.6 ETH | 130 | front +1.0-1.3% | pulls 13-60 s after any outside buy (REPORT_OCT20). Closed |
 | RH third operator's V2 1 ETH | 79 | front +11.8% | the big buy never came in 4 of 4 fronted pools. Closed |
 | Base 0.501 ETH timer line (v4 2,180 B) | 118 | front +105% | the big buy never came in 6 of 6 fronted pools (REPORT_NOV2: TRAP) |

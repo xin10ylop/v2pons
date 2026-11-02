@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""slot30.py DAY...: the 2.433 operator's 3.0 ETH line (v4 POSM 1,444 B, 3 ETH, fee 1%): does an outside buy right behind its bot's first buy
-(1-5 blocks after, our behind-ride's slot) bring the pull? Its pools from the census days given; the bot = calls to 0x1cbaf24d; its fleet =
+"""slot30.py DAY...: the 2.433 operator's 3.0 ETH line (v4 POSM 1,444 B, 3 ETH, fee 1%): does an outside buy behind its bot's first buy
+(env SLOT blocks after it, 5 by default: our behind-ride's slot; MIN_OUT the least size, 0.0005) bring the pull? Its pools from the census days given; the bot = calls to 0x1cbaf24d; its fleet =
 senders buying in 10%+ of the sampled pools; outsiders = everyone else (not the launch wallet). Per pool: the bot's first buy, outside buys
 in the slot, the pull (ModifyLiquidity < 0) and its offset from that buy; pools with an outside slot buy against pools without. Read-only."""
-import sys, json, collections, statistics as st
+import sys, os, json, collections, statistics as st
 import hlib as H
 from eth_utils import keccak
+SLOT = int(os.environ.get("SLOT", "5")); MIN_OUT = float(os.environ.get("MIN_OUT", "0.0005"))   # the slot after the bot's buy (blocks); an outside buy's least size
 url = H.CH["rh"]["rpc"]; PM = H.CH["rh"]["pm"]; BOT = "0x1cbaf24d53fe930fce8eff149fa797d2611da149"
 T_ML = "0x" + keccak(text="ModifyLiquidity(bytes32,address,int24,int24,int256,bytes32)").hex()
 sg = lambda h: (lambda x: x - (1 << 256) if x >= 1 << 255 else x)(int(h, 16))
@@ -38,15 +39,18 @@ for p in P:
     bot = next((b for b, e, h in p["sw"] if e > 0 and tc.get(h, (None, None))[1] == BOT), None)
     if bot is None:
         continue
-    slot = [(b, e, tc[h][0]) for b, e, h in p["sw"] if bot + 1 <= b <= bot + 5 and e >= 0.0005 and tc.get(h, (None,))[0] not in fleet | {p["launcher"], None} and tc[h][1] != BOT]
-    rows.append({"bot": bot - p["bn"], "slot": slot, "pull_after_bot": (p["pull"] - bot) if p["pull"] else None})
+    slot = [(b, e, tc[h][0]) for b, e, h in p["sw"] if bot + 1 <= b <= bot + SLOT and e >= MIN_OUT and tc.get(h, (None,))[0] not in fleet | {p["launcher"], None} and tc[h][1] != BOT]
+    rows.append({"bot": bot - p["bn"], "slot": slot, "pull_after_bot": (p["pull"] - bot) if p["pull"] else None, "pull_after_out": (p["pull"] - min(b for b, e, w in slot)) if p["pull"] and slot else None})
 with_s = [r for r in rows if r["slot"]]; without = [r for r in rows if not r["slot"]]
 def pulled(rs, n):
     return sum(1 for r in rs if r["pull_after_bot"] is not None and r["pull_after_bot"] <= n) / len(rs) if rs else None
-print(f"pools with the bot's first buy: {len(rows)}; with an outside buy 1-5 blocks after it: {len(with_s)} (sizes {sorted(round(e, 4) for r in with_s for b, e, w in r['slot'])[:20]})")
+print(f"pools with the bot's first buy: {len(rows)}; with an outside buy 1-{SLOT} blocks after it: {len(with_s)} (sizes {sorted(round(e, 4) for r in with_s for b, e, w in r['slot'])[:20]})")
 for n in (20, 50, 100, 200):
     print(f"  pulled within {n:3d} blocks of the bot's buy: with an outside slot buy {pulled(with_s, n) if with_s else float('nan'):.0%}  without {pulled(without, n):.0%}")
 pa = sorted(r["pull_after_bot"] for r in without if r["pull_after_bot"] is not None)
 print(f"  without: the pull's offset from the bot's buy, median {st.median(pa) if pa else '-'} (p10 {pa[len(pa) // 10] if pa else '-'}, p90 {pa[9 * len(pa) // 10] if pa else '-'})")
 for r in with_s[:15]:
     print("   slot", [(b - (r['bot']), round(e, 4), w[:10]) for b, e, w in r["slot"]][:3], "pull after the bot's buy", r["pull_after_bot"])
+po = sorted(r["pull_after_out"] for r in with_s if r["pull_after_out"] is not None)
+print(f"  the pull after the outsider's buy (blocks): {po[:40]}")
+print("  outsiders:", collections.Counter(w for r in with_s for b, e, w in r["slot"]).most_common(8))

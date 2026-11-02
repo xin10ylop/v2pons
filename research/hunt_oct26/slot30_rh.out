@@ -1,4 +1,20 @@
-Traceback (most recent call last):
-  File "/tmp/claude-0/-home-user-v2pons/48f7dd16-3073-5667-9085-af9d544164ac/scratchpad/slot30w.py", line 7, in <module>
-    import hlib as H
-ModuleNotFoundError: No module named 'hlib'
+677 pools of the 3.0 line sampled
+fleet: 115 wallets buying in 10%+ of the pools
+pools with the bot's first buy: 595; with an outside buy 1-300 blocks after it: 10 (sizes [0.0001, 0.0003, 0.0004, 0.0004, 0.0009, 0.0009, 0.0009, 0.0022, 0.005, 0.005])
+  pulled within  20 blocks of the bot's buy: with an outside slot buy 0%  without 2%
+  pulled within  50 blocks of the bot's buy: with an outside slot buy 0%  without 2%
+  pulled within 100 blocks of the bot's buy: with an outside slot buy 0%  without 3%
+  pulled within 200 blocks of the bot's buy: with an outside slot buy 40%  without 5%
+  without: the pull's offset from the bot's buy, median 610 (p10 107, p90 2312)
+   slot [(103526002, 0.0022, '0x25190e54')] pull after the bot's buy 283
+   slot [(103558446, 0.0009, '0x48eda655')] pull after the bot's buy 304
+   slot [(103558312, 0.0003, '0xbd15384a')] pull after the bot's buy 173
+   slot [(103680964, 0.0009, '0x2bd6834f')] pull after the bot's buy 314
+   slot [(103681361, 0.0009, '0x2bd6834f')] pull after the bot's buy 190
+   slot [(103687241, 0.0001, '0x0ba1272a')] pull after the bot's buy 201
+   slot [(103751137, 0.0004, '0x6ba9137c')] pull after the bot's buy 304
+   slot [(103765159, 0.0004, '0x10245a4a')] pull after the bot's buy 225
+   slot [(103921726, 0.005, '0xcacaa5f8')] pull after the bot's buy 150
+   slot [(103996595, 0.005, '0x406efcc6')] pull after the bot's buy 199
+  the pull after the outsider's buy (blocks): [6, 9, 10, 10, 11, 12, 15, 18, 19, 20]
+  outsiders: [('0x2bd6834f1e1bcef3d418991e530bfd7ed2fbce08', 2), ('0x25190e5470026a25c1fc2edeebe8d1cec98bbf08', 1), ('0x48eda655e5376e9e643fe19c9bce1858c848638c', 1), ('0xbd15384a0ba6fff8743893140cf4e1ccaedbc9e3', 1), ('0x0ba1272a1aae05ebf54e5007642a553aa31a6372', 1), ('0x6ba9137c252d0f6c6e34515c12930f5db458ffa6', 1), ('0x10245a4afa587ed449b13308b57e28d88811fffb', 1), ('0xcacaa5f85f538229d15e7a4d841fbd81fa65d578', 1)]
