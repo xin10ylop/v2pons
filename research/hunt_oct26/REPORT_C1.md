@@ -77,6 +77,10 @@ developer's selector `3c130d90`; its own money loop (hub `0xbae53801`, multisend
 - `take_profit` is a fraction (9 = +900% = off), as October's c1 had it: keep 9.
 - The stake cap `FRONT_STAKE_CAP_ETH` is 0.012 ETH (sized for the 2.433 bot's room). Enough for the probe and the first step; going above
   it is a code change for later.
+- **The V3 crowd, Nov 2 evening:** a V3 family may now say `"wave": true` (entered as C-1 is: behind the first buy through its
+  `routers`, the quiet exit, the cap from our buy; live with the pool's sell checked once it is on the chain). The crowd's live calls
+  decode as configured (149 of 151 buys read through the four routers, the other 2 in fee-500/3000 pools it does not trade; no sell
+  taken for a buy; 88 of 88 launches decoded to the chain's pool). RUNBOOK 4o has the list (c1 and `v3wave`, both dry).
 
 ## 6. Going live: the gates (RUNBOOK 4n)
 

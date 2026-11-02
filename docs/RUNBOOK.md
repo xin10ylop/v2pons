@@ -1621,6 +1621,44 @@ sources from the box itself.
 
 Three `feed_connected` lines (the tx stream and two heads), then a `flow` line a minute with `blocks` growing by about 600.
 
+## 4o. The V3 crowd behind its routers (Nov 2, research/hunt_oct26/crowd_v3_836.out)
+
+The V3 crowd line (4g's v3crowd: the 836-byte launches through the V3 PositionManager `0x73991a25`) is live at about 90 launches a day,
+of which its crowd pumps about 48 through four routers. October's family bought in the launch block; this week the crowd's first buy comes
+a median 61 blocks after the launch, and it never comes in half the pools, so buying at the launch would hold the empty ones to the cap.
+The tested ride is C-1's: buy behind the routers' first buy (landing + 2), sell once they have not bought for 20 blocks, cap 100 blocks:
+**+10.2% a trade on 335 pools, 4 pulled, every day of Oct 27 - Nov 2 positive** (0.002 to 0.05 ETH a trade, our own impact and the pool's
+fee included). It reacts to outsiders more than C-1 (real-size outside buys pulled within 100 blocks 18% against 4%; in our slot 2 of 13,
+and 12 of those 13 got out).
+
+The family is a V3 one with `"wave":true` (the engine change of this date): armed at the launch, nothing fired there; the trigger is
+a buy through one of `routers` (the call shapes and the token's buy path, as v3crowd's trigger reads them: 149 of 151 live buys read, no
+sell taken for a buy); `quiet_blocks`, `hold_blocks` from our buy and `take_profit` as for C-1; `exit_after_blocks` does not apply. It
+replaces v3crowd (both launch through the same PositionManager). The list on the box, C-1 and the V3 crowd, both dry:
+
+    sudo sed -i '/^FRONT_FAMILIES=/d' /etc/flip/engine.env; sudo tee -a /etc/flip/engine.env >/dev/null <<'EOF'
+    FRONT_FAMILIES='[{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":100,"quiet_blocks":20,"stake_eth":0.002,"dry_run":true,"pin":false,"nonbot_halt":0,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_eth":10,"max_blocks":600}},{"name":"v3wave","dex":"v3","wave":true,"target":"0x73991a25c818bf1f1128deaab1492d45638de0d3","value_wei":0,"calldata_len":836,"fee":100,"tick_spacing":1,"hold_blocks":100,"quiet_blocks":20,"take_profit":9,"stake_eth":0.002,"ahead_max_eth":0.5,"dry_run":true,"pin":false,"nonbot_halt":0,"trigger":{"routers":["0x7feb3ecbacbd0cc23ec46659d541636d58749a97","0x80e49ed118b932d9538ec817ef8b29fbac31e080","0xaf9d6fa019328d8cf8598d0d5be22cc6622b09f1","0xfc7241d4356564e32b16e8e4838c648efceb8144"],"shapes":[{"selector":"3593564c","calldata_len":484,"value_word":9},{"selector":"a0193551","calldata_len":452,"value_word":8},{"selector":"49f74a5d","calldata_len":452,"value_word":8}],"token_anywhere":true,"min_eth":0.001,"max_eth":10,"max_blocks":600}}]'
+    EOF
+    sudo systemctl restart flip-engine
+    sleep 10 && sudo grep -E '"ev":"(start|alarm)"' /var/log/flip/engine.jsonl | tail -2 | cut -c1-300
+
+The start line lists both, v3wave with `"dex":"v3"`, `"wave":true` and its four routers in `trigger`. Its dry trades are `armed` (`fam`
+v3wave), `would_fire`, `would_sell` (mostly "quiet: ...") and `trade_done` with `dry_ret`:
+
+    sudo grep -E '"ev":"(would_fire|would_sell|trade_done)"' /var/log/flip/engine.jsonl | grep '"fam":"v3wave"' | tail -12 | cut -c1-260
+
+`dry_ret` counts buys only (the crowd's sells and a pull are not in the price copy), as C-1's: it checks the engine's entry and exit, the
+research's numbers check the money. If the crowd moves to new routers, v3wave stops firing (its pools are armed, then "wave: no trigger
+within the family's window"): find them with `research/hunt_oct26/allfront.py` and add them to `routers`.
+
+**Live** needs the V3 relay (4j: deployed with WALLET as owner, `RELAY_V3` and `RELAY_V3_CODEHASH` set, funded), then 4j's snippet with
+`v3wave live`. A live v3wave pool's sell is checked once it is on the chain (the feed at launch + 2; asked again every 5 blocks after an
+RPC failure), whatever `V3_SELL_CHECK`; a trigger before the verdict holds the fire up to 3 blocks; a refusal ("v3: the token cannot be
+sold") or no verdict is no trade. Every live stake is capped at `V3_STAKE_CAP_ETH` (0.004 ETH unless raised, at most 0.012). Gates: dry
+first (the owner's fast path: 5 or more `would_fire` an hour, `would_sell` mostly "quiet", `dry_ret` mostly positive, no alarm); then
+0.002 ETH for 50 trades with mean +4% or better and pulled before our sell 5% or fewer (its halt file `HALTED.front.v3wave`); a pull
+before our sell in the first 10: stop and look.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the

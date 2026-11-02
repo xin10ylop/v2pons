@@ -1262,7 +1262,7 @@ print("ok a wave family (C-1): the value-0 launch arms with its one-sided liquid
 # through the operator's router since its last (the trigger counts); a router buy behind ours restarts the count; hold_blocks stays the cap
 C1Q = {**C1_FAM, "hold_blocks": 100, "quiet_blocks": 20, "pin": False}
 for patch, msg in (({"quiet_blocks": 100}, "under hold_blocks"), ({"quiet_blocks": 0}, "quiet_blocks"),
-                   ({"value_wei": "3000000000000000000", "trigger": None}, "for a v4 wave family")):
+                   ({"value_wei": "3000000000000000000", "trigger": None}, "quiet_blocks is for a wave family")):
     os.environ["FRONT_FAMILIES"] = json.dumps([{**C1Q, **patch}])
     try:
         E.front_families(E.front_base_family()); assert False, ("accepted", patch)
@@ -1532,8 +1532,8 @@ for patch, msg in (({"dex": "v2"}, "dex must be"), ({"target": None}, "must give
                    ({"trigger": {**T3, "shapes": [{"selector": "3593564c", "calldata_len": 484, "value_word": 9, "to": 1}]}}, "must give exactly"),
                    ({"trigger": {**T3, "shapes": [{"selector": "3593564", "calldata_len": 484, "value_word": 9}]}}, "8 hex"),
                    ({"trigger": {**T3, "shapes": [{"selector": "3593564c", "calldata_len": 300, "value_word": 9}]}}, "shorter than"),
-                   ({"trigger": {**T3, "shapes": T3["shapes"] + T3["shapes"][:1]}}, "given twice"), ({"trigger": {**T3, "router": C1_ROUTER}}, "router or any_to"),
-                   ({"trigger": {**T3, "any_to": False}}, "router or any_to"), ({"trigger": {**T3, "any_to": "yes"}}, "true or false"), ({"trigger": {**T3, "selector": "3593564c"}}, "or shapes"),
+                   ({"trigger": {**T3, "shapes": T3["shapes"] + T3["shapes"][:1]}}, "given twice"), ({"trigger": {**T3, "router": C1_ROUTER}}, "router, routers or any_to"),
+                   ({"trigger": {**T3, "any_to": False}}, "router, routers or any_to"), ({"trigger": {**T3, "any_to": "yes"}}, "true or false"), ({"trigger": {**T3, "selector": "3593564c"}}, "or shapes"),
                    ({"trigger": {**T3, "token_word": 8}}, "not both"), ({"trigger": {**T3, "token_anywhere": False}}, "flag_word")):
     f = {**V3_FAM, **patch}; f = {k: v for k, v in f.items() if v is not None}
     why = refused(json.dumps([f])); assert why and msg in why, (patch, why)
@@ -2757,6 +2757,136 @@ for form in ("'%s'", "%s"):
     r = run4j("p356", "live"); assert r.returncode == 0 and json.loads([l for l in open(envp).read().splitlines() if l.startswith("FRONT_FAMILIES=")][0][len("FRONT_FAMILIES='"):-1])[3] == {**P356_FAM, "dry_run": False}
 for f_ in (envp, envp + ".bak"):
     os.remove(f_)
+
+# --- 20q. a V3 wave family (Nov 2, research/hunt_oct26/crowd_v3_836.out): the V3 crowd line entered behind its crowd, as C-1 is. Armed at
+# its launch, nothing fires there; the first call of the trigger's shapes through one of its routers (routers: [...]) carrying the token in
+# a buy's path, of min_eth or more within max_blocks, is the trigger (landing + 2); the sell when the routers have not bought for quiet_blocks
+# (the trigger counts), at the latest hold_blocks after our buy. Live: the pool's sell checked once it is on the chain, the fire held up to
+# V3_WAVE_CHECK_WAIT blocks for the verdict, a refusal or no verdict is no trade; a dry family never calls the RPC
+CR = B1["to"]; assert B2["to"] == CR
+V3W = {"name": "v3w", "dex": "v3", "wave": True, "target": V3_NPM, "value_wei": 0, "calldata_len": 836, "fee": 100, "tick_spacing": 1, "hold_blocks": 100, "quiet_blocks": 20,
+       "take_profit": 9, "stake_eth": 0.002, "ahead_max_eth": 0.5, "dry_run": True, "pin": False,
+       "trigger": {"routers": [CR, "0x" + "5a" * 20], "shapes": V3_FAM["trigger"]["shapes"], "token_anywhere": True, "min_eth": 0.001, "max_eth": 10, "max_blocks": 600}}
+os.environ["FRONT_FAMILIES"] = json.dumps([C1_FAM, V3W]); fw = E.front_families(E.front_base_family()); os.environ.pop("FRONT_FAMILIES"); v3w = fw[K3]; tw = v3w["trigger"]
+assert v3w["wave"] is True and v3w["exit_after_blocks"] is None and v3w["quiet_blocks"] == 20 and v3w["hold_blocks"] == 100 and v3w["dry_run"] and not E.FRONT_FAMILY_WARNINGS, (v3w, E.FRONT_FAMILY_WARNINGS)
+assert tw["router"] is None and tw["routers"] == frozenset([CR[2:], "5a" * 20]) and tw["max_blocks"] == 600 and tw["min_wei"] == int(0.001e18) \
+    and E.trigger_desc(tw) == "|".join(sorted([CR[2:], "5a" * 20])) + ":3593564c/484,49f74a5d/452,a0193551/452", tw
+assert fw[0]["trigger"]["routers"] == frozenset([C1_ROUTER[2:].lower()]) and fw[0]["wave"] is False                     # C-1's one router: as before
+for patch, msg in (({"wave": "yes"}, "true or false"), ({"exit_after_blocks": 18}, "does not apply to a V3 wave family"), ({"wave": None}, "must give exit_after_blocks"),
+                   ({"wave": None, "exit_after_blocks": 18}, "quiet_blocks is for a wave family"), ({"quiet_blocks": 100}, "under hold_blocks"),
+                   ({"trigger": {**V3W["trigger"], "routers": []}}, "list of 1-8"), ({"trigger": {**V3W["trigger"], "routers": [CR, CR.upper().replace("0X", "0x")]}}, "twice"),
+                   ({"trigger": {**V3W["trigger"], "routers": ["0x1234"]}}, "40 hex"), ({"trigger": {**V3W["trigger"], "routers": CR}}, "list of 1-8"),
+                   ({"trigger": {**V3W["trigger"], "any_to": True}}, "router, routers or any_to"), ({"trigger": {**V3W["trigger"], "router": CR}}, "router, routers or any_to")):
+    f = {**V3W, **patch}; f = {k: v for k, v in f.items() if v is not None}
+    why = refused(json.dumps([f])); assert why and msg in why, (patch, why)
+assert "wave is for a V3 family" in refused(json.dumps([{**C1_FAM, "wave": True}])) and "wave does not apply to a launch-rule family" in refused(json.dumps([{**P356_FAM, "wave": True}]))
+err, keys = imported(json.dumps([C1_FAM, V3W])); assert err is None and keys == sorted(map(str, [E.FRONT_VALUE_WEI, 0, K3])), (err, keys)
+RBW = next(l.strip()[len("FRONT_FAMILIES='"):-1] for l in open(os.path.join(ROOT, "docs", "RUNBOOK.md")) if l.strip().startswith("FRONT_FAMILIES='") and '"v3wave"' in l)
+err, keys = imported(RBW); bw = json.loads(RBW); assert err is None and keys == sorted(map(str, [E.FRONT_VALUE_WEI, 0, K3])) and [f["name"] for f in bw] == ["c1", "v3wave"], (err, keys)   # RUNBOOK 4o's list
+assert bw[1]["wave"] is True and bw[1]["trigger"]["shapes"] == V3_FAM["trigger"]["shapes"] and bw[1]["target"] == V3_NPM and all(f["dry_run"] for f in bw) \
+    and sorted(bw[1]["trigger"]["routers"]) == ["0x7feb3ecbacbd0cc23ec46659d541636d58749a97", "0x80e49ed118b932d9538ec817ef8b29fbac31e080", "0xaf9d6fa019328d8cf8598d0d5be22cc6622b09f1",
+                                                 "0xfc7241d4356564e32b16e8e4838c648efceb8144"] and {k: v for k, v in bw[0].items()} == json.loads(next(
+    l.strip()[len("FRONT_FAMILIES='"):-1] for l in open(os.path.join(ROOT, "docs", "RUNBOOK.md")) if l.strip().startswith("FRONT_FAMILIES='[{\"name\":\"c1\"") and '"quiet_blocks":20' in l))[0], bw
+saved_fams = dict(E.FRONT_FAMILIES); saved_wr = set(E.WAVE_ROUTERS); saved_any = set(E.ANY_TO_SELECTORS); saved_rpc = E.rpc
+E.FRONT_FAMILIES.clear(); E.FRONT_FAMILIES.update({k: v for k, v in saved_fams.items() if k != KP}); E.FRONT_FAMILIES[K3] = v3w; E.LAUNCH_SHAPES = {}
+E.WAVE_ROUTERS.update(tw["routers"]); E.ANY_TO_SELECTORS.clear(); E.state["delayed"] = True; E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"
+sfw = [f for f in E.start_families() if f["name"] == "v3w"][0]; assert sfw["wave"] is True and sfw["quiet_blocks"] == 20 and sfw["exit_after_blocks"] is None and sfw["trigger"] == E.trigger_desc(tw), sfw
+assert "0x" + V3_NPM[2:] in E.rpc_tx_to() and "0x" + RV3 in E.rpc_tx_to() and "0x" + CR[2:] in E.rpc_tx_to()        # the provider's stream: the V3 launches, RELAY_V3, the crowd's routers
+STW = int(0.002e18)
+def wave_ret(p, pos):
+    sp = v4math.sqrt_after_buy(p["sp"], p["liq"], E.net_of_fee(STW, 100))
+    return round((v4math.sell_out_int(int(sp), p["liq"], pos["feed_tokens"], 100) - STW - E.round_trip_gas_wei()) / STW, 4)
+# dry: nothing at the launch; a stranger's ETH buy and the crowd's call through another contract never trigger; the routers' first buy does
+v3_reset(); E.V3_LIVE = False; E.state["nonce"] = 3000; L = 60000; n_sc = len(SC_CALLS); E.rpc = rpc_sc
+E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 40)])); p = E.state["armed"].get(V3_PID)
+assert p and p["fam"] == "v3w" and p["status"] == "armed" and E.state["position"] is None and not [e for e in events("would_fire") if e.get("trig_seq") == L], p and p["status"]
+E.ingest(frame(L + 1, [signed(OUTSIDER, UR, int(0.02e18), "0x12345678" + w(V3["token"]), 80)]))                         # 0.02 ETH with ETH as its value: the price copy, no trigger
+assert p["first_buy"] is None and p["status"] == "armed" and p["eth_in"] == int(0.02e18) and E.state["position"] is None
+E.ingest(frame(L + 3, [signed(CROWD, "0x" + "99" * 20, 0, B1["input"], 81)])); assert p["first_buy"] is None and E.state["position"] is None and p["eth_in"] == int(0.02e18)   # not one of its routers
+sp_t = v4math.sqrt_after_buy(p["sp"], V3["liq"], E.net_of_fee(B1["amount_wei"], 100))
+E.ingest(frame(L + 5, [signed(CROWD, CR, 0, B1["input"], 82)])); pos = E.state["position"]; wf = events("would_fire")[-1]; fb = events("first_buy")[-1]
+assert pos and pos["dry"] and pos["wave"] and pos["dex"] == "v3" and pos["fam"] == "v3w" and (pos["trig_seq"], pos["fire_seq"], pos["plan_buy_seq"], pos["send_after"]) == (L + 5, L + 5, L + 7, 100) \
+    and pos["router_seq"] == L + 5 and pos["quiet_blocks"] == 20 and pos["stake"] == STW and pos["exit_seq"] is None and p["status"] == "fired" and len(SENT) == 0, pos
+assert wf["fam"] == "v3w" and wf["buy_tx"] is None and wf["trig_value"] == B1["amount_wei"] and fb["trigger"] is True and fb["offset"] == 5 and p["sp"] == sp_t, (wf, fb)
+E.ingest(frame(L + 6, [])); E.ingest(frame(L + 7, [])); assert pos["buy_seq"] == L + 7 and pos["feed_tokens"] == v4math.buy_out_int(int(sp_t), V3["liq"], STW, 100)
+E.ingest(frame(L + 10, [signed(CROWD, CR, 0, B2["input"], 83)])); assert pos["router_seq"] == L + 10 and not pos["sell_sent"]   # the crowd's next buy (a0193551): the count restarts
+b1 = bytes.fromhex(B1["input"][2:]); tb = bytes.fromhex(V3["token"][2:]); o = 4 + 32 * 13; sell1 = b1[:o] + tb + (100).to_bytes(3, "big") + E.WETH_BYTES + b1[o + 43:]; sp_ = p["sp"]
+E.ingest(frame(L + 12, [signed(CROWD, CR, 0, "0x" + sell1.hex(), 84), signed(OUTSIDER, UR, int(0.05e18), "0x12345678" + w(V3["token"]), 85)]))   # its sell, a stranger's buy: no restart
+assert pos["router_seq"] == L + 10 and p["sp"] != sp_ and p["eth_in"] == int(0.07e18) + B1["amount_wei"] + B2["amount_wei"]
+for s_ in range(L + 13, L + 30):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(L + 30, [])); ws = events("would_sell")[-1]
+assert pos["sell_sent"] and pos["sell_seq_sent"] == L + 30 and ws["why"] == "quiet: no buy through the operator's router for 20 blocks (its last at our buy +3); out before its pull" and ws["fam"] == "v3w", ws
+assert ws["dry_ret"] == wave_ret(p, pos) and ws["dry_ret"] > 0.05 and len(SENT) == 0 and len(SC_CALLS) == n_sc, ws                        # a dry family: no sell check, nothing sent
+assert wait_for(lambda: any(e.get("dry") and e.get("fam") == "v3w" and e.get("dry_ret") == ws["dry_ret"] for e in events("trade_done")), 3.0), "no dry trade_done"
+# the cap: the crowd keeps buying (every 15 blocks): the sell at our buy + 100
+v3_reset(); L = 60200; E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 41)])); E.ingest(frame(L + 5, [signed(CROWD, CR, 0, B1["input"], 86)])); pos = E.state["position"]
+for s_ in range(L + 6, L + 107):
+    E.ingest(frame(s_, [signed(CROWD, CR, 0, B1["input"], 1000 + s_ - L)] if (s_ - L) % 15 == 0 else [])); assert not pos["sell_sent"], s_
+E.ingest(frame(L + 107, [])); ws = events("would_sell")[-1]; assert pos["sell_sent"] and ws["why"] == "deadline: our buy + 100, the family's cap (its crowd still buying)" and ws["after_buy"] == 100, ws
+# the window: no router buy by launch + max_blocks: late, nothing fired; a router buy after it is not a trigger
+v3_reset(); L = 60400; E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 42)])); p = E.state["armed"][V3_PID]
+for s_ in range(L + 1, L + 601):
+    E.ingest(frame(s_, [])); assert p["status"] == "armed", s_
+E.ingest(frame(L + 601, [])); sk = events("skip")[-1]; assert p["status"] == "late" and sk["why"] == "wave: no trigger within the family's window" and sk["offset"] == 601, sk
+E.ingest(frame(L + 602, [signed(CROWD, CR, 0, B1["input"], 87)])); assert E.state["position"] is None and not [e for e in events("would_fire") if e.get("trig_seq") == L + 602]
+# a stale trigger (the feed lagging): late, never fired
+v3_reset(); L = 61100; E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 43)])); p = E.state["armed"][V3_PID]
+E.ingest(frame(L + 5, [signed(CROWD, CR, 0, B1["input"], 88)], ts=int(time.time()) - 60)); assert p["status"] == "late" and E.state["position"] is None and events("skip")[-1]["why"] == "wave: the trigger was stale (the feed lagged)"
+# live (RELAY_V3 verified, V3_SELL_CHECK on): the pool's sell checked at launch + 2; the trigger fires the relay's buy; the quiet exit sells; the settle from the pool's Swap
+v3w["dry_run"] = False; E.V3_LIVE = True; E.V3_SELL_CHECK = True; assert E.v3_route(v3w) and E.v3_live(v3w) and not E.v3_route(v3l)
+SC.update({"mode": "ok", "back": int(STW * 0.998)}); SC["gate"].set()
+v3_reset(); E.state["nonce"] = 3100; L = 62000; n_sc = len(SC_CALLS); TOKW = int(V3["token"], 16)
+E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 44)])); p = E.state["armed"][V3_PID]; E.ingest(frame(L + 1, [])); assert "sell_check" not in p and len(SC_CALLS) == n_sc   # not before + 2
+E.ingest(frame(L + 2, [])); assert wait_for(lambda: p.get("sell_check") == "ok") and len(SC_CALLS) == n_sc + 1
+c, blk, ov = SC_CALLS[-1]; assert c["data"] == "0x" + E.SEL_SELL_CHECK + w(RV3) + w(V3["token"]) + w(100) + w(STW) + w(E.state["ts"] + 600) and ov["0x" + RV3] == {"balance": hex(STW)}, c["data"]
+for s_ in (L + 3, L + 4, L + 8):
+    E.ingest(frame(s_, [])); assert len(SC_CALLS) == n_sc + 1                                                   # one verdict: asked once
+E.ingest(frame(L + 9, [signed(CROWD, CR, 0, B1["input"], 89)])); pos = E.state["position"]
+assert pos and not pos["dry"] and pos["wave"] and pos["fam"] == "v3w" and pos["stake"] == STW and len(SENT) == 1 and E.state["nonce"] == 3102 and pos["plan_buy_seq"] == L + 11, pos
+bt = dec(SENT[0][1]); assert bt[0] == 3100 and bt[3] == "0x" + RV3 and bt[5] == SEL_B3 and bt[6][:4] == [TOKW, 100, STW, pos["min_out"]] and dec(pos["sell_raw"])[:6] == (3101, int(E.state["base_fee"] * E.SELL_GAS_HEADROOM), E.V3_GAS, "0x" + RV3, 0, SEL_S3), bt
+E.ingest(frame(L + 10, [])); E.ingest(frame(L + 11, [SENT[0][1]])); assert pos["buy_seq"] == L + 11 and pos["feed_tokens"] == pos["expected_tokens"]
+E.ingest(frame(L + 14, [signed(CROWD, CR, 0, B2["input"], 90)])); assert pos["router_seq"] == L + 14
+back = int(STW * 1.09); RECEIPTS["0x" + pos["buy_hash"]] = rcpt3(L + 11, STW, -pos["expected_tokens"], V3_PID); RECEIPTS["0x" + pos["sell_hash"]] = rcpt3(L + 36, -back, pos["expected_tokens"], V3_PID)
+for s_ in range(L + 15, L + 34):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(L + 34, [])); assert pos["sell_sent"] and SENT[1:] == [(1, pos["sell_raw"])] and pos["sell_why"].startswith("quiet: no buy through the operator's router for 20 blocks (its last at our buy +3)")
+assert wait_for(lambda: done_at(3100), 5.0); d = done_at(3100)[-1]
+assert (d["dex"], d["fam"], d["dry"], d["pool"], d["stake"], d["eth_in"], d["eth_out"], d["pulled_before_sell"]) == ("v3", "v3w", False, V3_PID, STW, STW, back, False) and d["ret"] == 0.09, d
+assert E.state["v3_today"] == 1 and E.state["position"] is None and not E.state["fam_halted"]
+# the trigger before the verdict: the fire held (wait_check) and sent once the check says ok, the trigger kept; quiet counts from the routers' latest buy
+v3_reset(); E.state["nonce"] = 3110; L = 62200; SC["mode"] = "hold"; SC["gate"].clear(); n_sc = len(SC_CALLS)
+E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 45)])); p = E.state["armed"][V3_PID]; E.ingest(frame(L + 2, [])); assert wait_for(lambda: len(SC_CALLS) == n_sc + 1)
+E.ingest(frame(L + 3, [signed(CROWD, CR, 0, B1["input"], 91)])); sk = events("skip")[-1]
+assert p["status"] == "wait_check" and p["trig"][0] == L + 3 and E.state["position"] is None and not SENT and sk["why"] == "v3 wave: the sell check has no verdict yet: the fire waits up to 3 blocks", sk
+E.ingest(frame(L + 4, [signed(CROWD, CR, 0, B2["input"], 92)])); assert p["status"] == "wait_check" and p["router_last"] == L + 4 and not SENT
+SC["mode"] = "ok"; SC["gate"].set(); assert wait_for(lambda: p.get("sell_check") == "ok")
+E.ingest(frame(L + 5, [])); pos = E.state["position"]
+assert pos and not pos["dry"] and (pos["trig_seq"], pos["fire_seq"], pos["plan_buy_seq"], pos["router_seq"]) == (L + 3, L + 5, L + 7, L + 4) and len(SENT) == 1 and len(SC_CALLS) == n_sc + 1, pos
+E.state["position"] = None; E.state["nonce"] = 3120
+# a sell-locked token: refused at its check, the trigger never buys; an RPC down: asked again every 5 blocks, each block once the fire waits, no verdict in 3 blocks: no trade
+v3_reset(); L = 62400; SC["mode"] = "lock"; E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 46)])); p = E.state["armed"][V3_PID]; E.ingest(frame(L + 2, []))
+assert wait_for(lambda: p.get("sell_check") not in (None, "ok")) and "TransferFailed" in p["sell_check"] and not p["sell_check_rpc"]
+E.ingest(frame(L + 6, [signed(CROWD, CR, 0, B1["input"], 93)])); sk = events("skip")[-1]
+assert p["status"] == "late" and E.state["position"] is None and not SENT and sk["why"].startswith("v3: the token cannot be sold: ") and "TransferFailed" in sk["why"], sk
+v3_reset(); L = 62600; SC["mode"] = "down"; n_sc = len(SC_CALLS); E.ingest(frame(L, [signed(DEPLOYER, V3_NPM, 0, V3_IN, 47)])); p = E.state["armed"][V3_PID]
+E.ingest(frame(L + 2, [])); assert wait_for(lambda: p.get("sell_check_rpc") is True) and len(SC_CALLS) == n_sc + 1
+for s_ in range(L + 3, L + 7):
+    E.ingest(frame(s_, [])); time.sleep(0.05)
+assert len(SC_CALLS) == n_sc + 1; E.ingest(frame(L + 7, [])); assert wait_for(lambda: len(SC_CALLS) == n_sc + 2 and p.get("sell_check_rpc") is True)   # + 2 + 5
+E.ingest(frame(L + 8, [signed(CROWD, CR, 0, B1["input"], 94)])); assert p["status"] == "wait_check" and wait_for(lambda: len(SC_CALLS) == n_sc + 3 and p.get("sell_check_rpc") is True)
+E.ingest(frame(L + 9, [])); assert wait_for(lambda: len(SC_CALLS) == n_sc + 4 and p.get("sell_check_rpc") is True) and p["status"] == "wait_check"
+E.ingest(frame(L + 10, [])); assert wait_for(lambda: p.get("sell_check_rpc") is True)
+E.ingest(frame(L + 11, [])); sk = events("skip")[-1]
+assert p["status"] == "late" and sk["why"] == "v3 wave: no sell check verdict within 3 blocks of the trigger" and E.state["position"] is None and not SENT, sk
+SC["mode"] = "ok"; SC["gate"].set(); v3w["dry_run"] = True; v3_reset()
+E.FRONT_FAMILIES.clear(); E.FRONT_FAMILIES.update(saved_fams); E.WAVE_ROUTERS.clear(); E.WAVE_ROUTERS.update(saved_wr); E.ANY_TO_SELECTORS.clear(); E.ANY_TO_SELECTORS.update(saved_any)
+E.LAUNCH_SHAPES = {(bytes.fromhex("d27d1e00"), 356): pfl}; E.rpc = saved_rpc
+print("ok a V3 wave family (v3w): armed at its launch, nothing fired there; a stranger's ETH buy, the crowd's call through another contract and its sells never trigger; "
+      "the first buy through one of its routers fires (landing + 2), the crowd's next buys restart the quiet count, the sell 20 quiet blocks after the last (dry_ret "
+      "priced), the cap at our buy + 100, the window and a stale trigger late; parsed with routers and wave (refusals named), C-1's router as before; live: the pool's "
+      "sell checked once at launch + 2, the relay's buy on the trigger and the quiet sell settled from the pool's Swap; a trigger before the verdict held and fired "
+      "once ok (quiet from the routers' latest buy); a sell lock or no verdict within 3 blocks: no trade; a dry family never calls the RPC")
 
 # back to the state before 20p
 v3_reset(); p356_reset(); E.state["launch_alarms_held"] = 0; del E.FRONT_FAMILIES[K3]; del E.FRONT_FAMILIES[KP]; E.LAUNCH_SHAPES = {}; E.ANY_TO_SELECTORS.clear()
