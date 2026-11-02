@@ -11,7 +11,7 @@ C-1 launches with token-only liquidity (value 0), so the pulled-pool tools (tape
             same age without one), got out, profit
   ride      paper trades on the recorded reserves at STAKES (env, default 0.002,0.01,0.05), fee 0.01%: entry at the end of the router's
             first-buy block + K (1, 2, 3); exit after H blocks (20, 50, 100), or at +9% / +20%, or when the router has not bought for 20
-            blocks; a pull first = -100%. Per day, so a fading edge shows. Our own buy stays in the pool until we sell (the exit price includes our impact). Not
+            blocks (q20c100: 20 blocks, cap 100; q50c200 ...); a pull first = -100%. Per day, so a fading edge shows. Our own buy stays in the pool until we sell (the exit price includes our impact). Not
             modelled: a reaction to our own buy; the outsider rows test it, and "our slot" is outsiders buying 1-5 blocks after the router's
             first buy.
 Read-only, public RPCs."""
@@ -129,7 +129,7 @@ def main(out, days):
             if rs:
                 print(f"      size {lo:g}-{hi:g}: {len(rs)} buys, pulled within 100 blocks {sum(1 for r in rs if r['to_pull'] is not None and r['to_pull'] <= 100)}, got out {sum(r['out'] for r in rs)}")
     # ride
-    rules = [(k, ex) for k in (1, 2, 3) for ex in ("h20", "h50", "h100", "tp9", "tp20", "quiet20")]
+    rules = [(k, ex) for k in (1, 2, 3) for ex in ("h20", "h50", "h100", "h200", "tp9", "tp20", "q20c100", "q40c200", "q50c200", "q60c200", "q80c200")]
     res = {s: {r: collections.defaultdict(lambda: [0, 0, 0, 0.0]) for r in rules} for s in STAKES}
     for p in P.values():
         if p["r_first"] is None:
@@ -147,17 +147,18 @@ def main(out, days):
                 FEE = p["fee"]; q = buy(ev[i0][4], ev[i0][5], s, FEE); xb = None
                 if ex.startswith("h"):
                     xb = eb + int(ex[1:])
-                else:
-                    cap = eb + 100; j = i0 + 1; last_r = p["r_first"]
+                else:                                                    # (Nov 2 fix: the quiet clock runs per block, not per swap: in a pool where the
+                    Q, cap = (int(ex[1:].split("c")[0]), eb + int(ex.split("c")[1])) if ex.startswith("q") else (None, eb + 100)   # router is the only trader, the next
+                    j = i0 + 1; last_r = p["r_first"]                     # swap is its next buy, and a check made only at swaps never saw the gap)
                     while j < len(ev) and ev[j][0] < min(cap, pull):
+                        if Q is not None and ev[j][0] > last_r + Q:          # Q blocks with no router buy before this swap's block: out at last_r + Q + 1
+                            xb = last_r + Q + 1; break
                         if ev[j][0] in rb_blocks:
                             last_r = ev[j][0]
                         if ex.startswith("tp") and ev[j][4] and sell(ev[j][4] + s * (1 - FEE), ev[j][5] - q, q, FEE) >= s * (1 + int(ex[2:]) / 100):
                             xb = ev[j][0] + 1; break
-                        if ex == "quiet20" and ev[j][0] - last_r > 20:
-                            xb = ev[j][0] + 1; break
                         j += 1
-                    xb = xb or (last_r + 21 if ex == "quiet20" and last_r + 21 < cap else cap)
+                    xb = xb or (last_r + Q + 1 if Q is not None and last_r + Q + 1 < cap else cap)
                 r = res[s][(k, ex)][p["day"]]; r[0] += 1
                 rt = res[s][(k, ex)][f"fee{round(p['fee'] * 1e6)}"]; rt[0] += 1
                 if xb >= pull:

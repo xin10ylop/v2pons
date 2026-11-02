@@ -1,0 +1,25 @@
+last 168 h: 993 classic C-1 launches
+pumped by the router: 913; its first buy at + 142 (median)
+gaps between the router's buy blocks: median 30, p25 20, p75 40, p90 50; share over 20: 74%, over 40: 22%, over 60: 7%
+ride at 0.0058 ETH (entry: first buy + 2), mean per trade / won / pulled before the sell:
+  hold 100         n 913  mean +11.9%  median +7.1%  won 792  pulled 19
+  hold 200         n 913  mean +20.1%  median +16.1%  won 778  pulled 80
+  hold 300         n 913  mean +25.5%  median +21.8%  won 749  pulled 126
+  quiet 20 100     n 913  mean +2.7%  median -0.1%  won 233  pulled 1
+  quiet 20 200     n 913  mean +3.0%  median -0.1%  won 233  pulled 1
+  quiet 20 300     n 913  mean +3.4%  median -0.1%  won 233  pulled 1
+  quiet 30 100     n 913  mean +6.0%  median -0.1%  won 417  pulled 2
+  quiet 30 200     n 913  mean +7.4%  median -0.1%  won 417  pulled 2
+  quiet 30 300     n 913  mean +8.0%  median -0.1%  won 416  pulled 3
+  quiet 40 100     n 913  mean +9.6%  median +3.4%  won 603  pulled 5
+  quiet 40 200     n 913  mean +15.6%  median +4.1%  won 604  pulled 5
+  quiet 40 300     n 913  mean +18.5%  median +4.3%  won 602  pulled 7
+  quiet 50 100     n 913  mean +11.0%  median +5.3%  won 695  pulled 9
+  quiet 50 200     n 913  mean +21.4%  median +10.7%  won 687  pulled 19
+  quiet 50 300     n 913  mean +27.7%  median +11.7%  won 677  pulled 28
+  quiet 60 100     n 913  mean +11.7%  median +6.1%  won 729  pulled 11
+  quiet 60 200     n 913  mean +22.5%  median +11.8%  won 716  pulled 26
+  quiet 60 300     n 913  mean +29.2%  median +13.4%  won 705  pulled 36
+  quiet 80 100     n 913  mean +12.2%  median +6.8%  won 773  pulled 14
+  quiet 80 200     n 913  mean +21.5%  median +13.0%  won 735  pulled 52
+  quiet 80 300     n 913  mean +28.2%  median +15.8%  won 719  pulled 68
