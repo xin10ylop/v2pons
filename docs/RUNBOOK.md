@@ -1589,7 +1589,8 @@ The flip-engine was left stopped with an empty relay (Oct 20): this brings it ba
 
    The start line must list c1 with `quiet_blocks` 20, `hold_blocks` 100, `pin` false, `dry_run` true. The FRONT_* base line watches
    nothing useful now: `FRONT_BASE_DRY_RUN=1` keeps it dry.
-3. Gate 1 (24 h, 100 triggers): `would_fire` lines with `fam` c1; `would_sell` with `why` starting "quiet" for most; dry mean +6% or
+3. Gate 1 (24 h, 100 triggers; or, the owner's fast path, 1-2 h: at least 5 `would_fire` for c1 an hour, their `would_sell` mostly
+   "quiet" with `dry_ret` mostly positive, no `dry_ret` of -1 and no alarm, then on to the probe): `would_fire` lines with `fam` c1; `would_sell` with `why` starting "quiet" for most; dry mean +6% or
    better; dry exits after the pull 3% or fewer:
 
         sudo grep -E '"ev":"(would_fire|would_sell|trade_done)"' /var/log/flip/engine.jsonl | grep '"fam":"c1"' | tail -12 | cut -c1-260

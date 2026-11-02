@@ -19,7 +19,10 @@ holds ETH and funds a wallet crowd (`0xd6d35b56` holds 79 ETH; the public Univer
 |---|---|---|---|---|
 | **C-1** | v4 PositionManager multicall `ac9650d8`, 2,276 B, 0 ETH | `0xd6d35b56` | 811 | **+12.1% a trade, 4 pulled, 7/7 days** |
 | "v4-2020" | the same call, 2,020 B | `0x75379d5d`, `0xcbd412a8` (one code) | 71 | +132% a trade, 0 pulled, but 71 pools and uneven days |
-| V3 crowd (Oct's v3crowd) | V3 PositionManager, 836 B | `0x7feb3ecb`, `0xaf9d6fa0`, `0xfc7241d4`, `0x80e49ed1` | (run pending) | |
+| V3 crowd (Oct's v3crowd) | V3 PositionManager, 836 B | `0x7feb3ecb`, `0xaf9d6fa0`, `0xfc7241d4`, `0x80e49ed1` | 335 | +10.2% a trade, 4 pulled; outsiders' real buys pulled within 100 blocks 18% (4% base): more reactive than C-1 |
+
+`0x204faca1` (a router that calls the PoolManager itself, `routerlab_rh_0x204faca1.out`) is a public-style router of 21,063 wallets, not
+a crowd: following it loses about 9% a trade.
 
 On Base the money was a launchpad (hook `0xbdf93814`, 1,891 pools): the creator's own bundled buy in the creation block, and for a
 sniper a lottery: +174 ETH on paper at 0.1 a pool, **-4.6% a trade without its best 20 of 306 trades** (`snipelab_base_bdf9.out`). Not a line.
