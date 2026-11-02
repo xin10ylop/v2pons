@@ -1,0 +1,18 @@
+base: 3191 pools created (456 pulled within 2 h), Counter({'v2': 1934, 'v4': 1200, 'v3': 57})
+  v4: 1200 pools, 31503 swaps so far
+  v2: 1934 pools, 38019 swaps so far
+  v3: 57 pools, 38560 swaps so far
+base: 38560 swaps in 1904 pools; 108 early round trips (entry <= 30 s), 16 profitable at 0.001+
+
+  traders with profitable early round trips at 0.001+ in 3+ pools:
+    0x7d604cb43aeb85e18dc5a5ebc44a647827073bac pools    3 trips    3 pnl +0.0090 on 0.088 | stake median 0.0294 | in 6.0s out 10.0s | via 0xd8ba9d1a99 | pulled pools 0/3 | venue [('v4', 3)]
+
+  what those round trips sold into (the biggest buy between their legs), by target and selector, 3+ pools:
+    0xe264430807f0b62688420ac17faad06b3ed40873 0xe6cb474f pools    3 | its buy median 1.4600 | senders 3 | front-runners 4, their pnl +2.4106 on 1.178 | pulled pools 1/4
+    0xf849e0d4a7a1d74cb278361ff29967dfb5a22c67 0x39ecce49 pools    3 | its buy median 0.0980 | senders 2 | front-runners 3, their pnl +0.0241 on 0.237 | pulled pools 0/5
+
+  pools hit, by venue, launch native and pulled within 2 h:
+    v4 launch <0.5   kept   pools     8 trips    11 pnl +32.2996 on 12.877 | wallets 9
+    v4 launch <0.5   pulled pools     3 trips     3 pnl +0.0065 on 0.025 | wallets 3
+    v3 launch <0.5   kept   pools     2 trips     2 pnl +0.0000 on 0.004 | wallets 1
+DONE

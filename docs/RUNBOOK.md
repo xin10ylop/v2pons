@@ -1571,6 +1571,35 @@ stays harmless (`sudo rm /etc/cron.d/flip-base-v2-roster` removes it).
 
 The settings, their defaults and meanings: `docs/BASE_V2.md` section 5 and the comments in `/etc/flip/base_v2.env`; restart after a change.
 
+## 4n. C-1 again (Nov 2, research/hunt_oct26/REPORT_C1.md)
+
+The operator C-1 (a wave family, 4g) is live at about 116 router-pumped launches a day. Its trigger is unchanged; its launch price and
+liquidity now vary (no pin), and the family gets the new exit `quiet_blocks` (sell once its router has not bought for 20 blocks, cap 100).
+The flip-engine was left stopped with an empty relay (Oct 20): this brings it back for C-1 alone.
+
+1. On the box: `cd ~/v2pons && git pull`, then the tests with the box's venv: `/opt/flip-venv/bin/python3 tests/test_engine.py | tail -3`
+   (the last line `ok`, no traceback).
+2. The family list, dry (one list: a family left out is dropped; the 2.4333 and 3.0 lines are gone, so c1 alone):
+
+        sudo sed -i '/^FRONT_FAMILIES=/d' /etc/flip/engine.env; sudo tee -a /etc/flip/engine.env >/dev/null <<'EOF'
+        FRONT_FAMILIES='[{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":100,"quiet_blocks":20,"stake_eth":0.002,"dry_run":true,"pin":false,"nonbot_halt":0,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_eth":10,"max_blocks":600}}]'
+        EOF
+        sudo systemctl start flip-engine
+        sleep 10 && sudo python3 ~/v2pons/deploy/results.py | head -8
+
+   The start line must list c1 with `quiet_blocks` 20, `hold_blocks` 100, `pin` false, `dry_run` true. The FRONT_* base line watches
+   nothing useful now: `FRONT_BASE_DRY_RUN=1` keeps it dry.
+3. Gate 1 (24 h, 100 triggers): `would_fire` lines with `fam` c1; `would_sell` with `why` starting "quiet" for most; dry mean +6% or
+   better; dry exits after the pull 3% or fewer:
+
+        sudo grep -E '"ev":"(would_fire|would_sell|trade_done)"' /var/log/flip/engine.jsonl | grep '"fam":"c1"' | tail -12 | cut -c1-260
+
+4. Gate 2, the $5 probe: the relay needs the stake and the wallet gas. Stop the engine, `relay_ops.py deposit 0.03` and `status`
+   (the commands in the relay_ops.py header), set `"dry_run":false` in the c1 object above, start. 50 trades: mean +4% or better, pulled
+   before our sell 5% or fewer, our pools pulled within 100 blocks of our buy at most twice the 1.7% base. A pull before our sell in
+   the first 10 trades: stop and look (`HALTED.front.c1` is the family's halt file).
+5. Gate 3: `stake_eth` 0.006, then 0.012 (the engine's cap), a step a day while the live mean holds.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the

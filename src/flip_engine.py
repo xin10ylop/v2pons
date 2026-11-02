@@ -229,14 +229,17 @@ FRONT_BOT_ROUTERS = {a.strip().lower().replace("0x", "") for a in env("FRONT_BOT
 MIN_SQRT_P = 4295128739; MAX_SQRT_P = 1461446703485210103287273052203988822378723970342                                # v4's price bounds
 FRONT_NONBOT_HALT = int(env("FRONT_NONBOT_HALT", "5")); FRONT_NONBOT_MIN_RET = float(env("FRONT_NONBOT_MIN_RET", "0.02"))
 FRONT_FAMILY_KEYS = ("name", "value_wei", "fee", "tick_spacing", "sqrt_p", "liq", "bot_minout", "ahead_max_eth", "take_profit", "hold_blocks", "stake_eth", "dry_run", "pin",
-                     "fire_at", "fire_max", "calldata_len", "trigger", "fees_also", "tick_spacings_also", "dex", "target", "exit_after_blocks", "nonbot_halt", "launch", "buy_at", "sell_at")
+                     "fire_at", "fire_max", "calldata_len", "trigger", "fees_also", "tick_spacings_also", "dex", "target", "exit_after_blocks", "nonbot_halt", "launch", "buy_at", "sell_at",
+                     "quiet_blocks")
 TRIGGER_KEYS = ("router", "selector", "value_word", "token_word", "flag_word", "flag_value", "min_eth", "max_eth", "max_blocks", "shapes", "any_to", "token_anywhere")
 SHAPE_KEYS = ("selector", "calldata_len", "value_word")
 # calldata_len: the launch call's length (FRONT_CALLDATA_LEN, 1,444 bytes, for the volume bot's lines; C-1's is 2,276). trigger: a "wave" family:
 # the launch is armed as any front launch but nothing fires at it; the family's operator buys through its own router with a zero-value call
 # (C-1: router 0xd6d35b56, selector e6cb474f, the ETH amount in calldata word value_word, the token in token_word, flag_word == flag_value
 # marks a buy), and that first buy of at least min_eth within max_blocks of the launch is the trigger: we buy behind it (landing + 2) and
-# sell hold_blocks later (or at take_profit). value_wei may be 0 for such a family (its launches carry no ETH).
+# sell hold_blocks later (or at take_profit). value_wei may be 0 for such a family (its launches carry no ETH). quiet_blocks (a wave family's,
+# optional): once our buy is in, sell as soon as the feed shows quiet_blocks blocks with no buy through the operator's router since its last
+# (the trigger counts); hold_blocks stays the cap. C-1 stops its router a little before it pulls (research/hunt_oct26/REPORT_C1.md).
 # fire_at: fire when the feed shows launch + fire_at (0: the launch block itself, landing at + 1/+ 2, for a line whose bot buys at + 6..+ 13);
 # a line whose bot buys later, with the operator's trap pulls in the first blocks (the 3.0 line on Oct 11: bot at + 18..+ 58, pulls at + 7..+ 9),
 # is entered after that window and before the bot: fire_at 12-16, hold_blocks past the bot's latest offset. fire_max: how many blocks after
@@ -375,6 +378,10 @@ def front_family_check(fam):
         raise SystemExit(f"front family {n}: target is v4's PositionManager; a V3 family's launches go to its own")
     if fam.get("trigger") and fam["fire_at"]:
         raise SystemExit(f"front family {n}: a wave family fires on its trigger, not at an offset: fire_at must be 0")
+    if fam.get("quiet_blocks") and (not fam.get("trigger") or v3 or fam.get("launch")):
+        raise SystemExit(f"front family {n}: quiet_blocks is for a v4 wave family (one with a trigger): it counts the blocks since the operator's router last bought")
+    if fam.get("quiet_blocks") and fam["quiet_blocks"] >= fam["hold_blocks"]:
+        raise SystemExit(f"front family {n}: quiet_blocks ({fam['quiet_blocks']}) must be under hold_blocks ({fam['hold_blocks']}, the cap)")
     if fam.get("trigger") and fam["trigger"]["max_blocks"] + fam["hold_blocks"] >= 2600:
         raise SystemExit(f"front family {n}: trigger max_blocks + hold_blocks must stay under 2600 (armed pools are forgotten 3,000 blocks after their launch)")
     if not 68 <= fam.get("calldata_len", FRONT_CALLDATA_LEN) <= 8192:
@@ -509,7 +516,7 @@ def front_base_family():
             "bot_minout": FRONT_BOT_MINOUT, "ahead_max_wei": FRONT_AHEAD_MAX_WEI, "take_profit": FRONT_TAKE_PROFIT, "hold_blocks": FRONT_HOLD_BLOCKS, "stake_wei": FRONT_STAKE_WEI,
             "dry_run": FRONT_BASE_DRY_RUN, "pin": FRONT_PIN, "fire_at": 0, "fire_max": FRONT_FIRE_MAX, "calldata_len": FRONT_CALLDATA_LEN, "trigger": None,
             "fees_also": sorted(FRONT_FEES_ALSO), "tick_spacings_also": sorted(FRONT_TICK_SPACINGS_ALSO), "dex": "v4", "target": None, "exit_after_blocks": None,
-            "nonbot_halt": None}
+            "nonbot_halt": None, "quiet_blocks": None}
     if not re.fullmatch(r"[A-Za-z0-9._-]{1,64}", base["name"]):
         raise SystemExit(f"FRONT_FAMILY_NAME must be 1-64 letters, digits, '.', '_' or '-', not {base['name']!r}")
     return {base["value_wei"]: front_family_check(base)} if FRONT_VALUE_WEI > 0 else {}
@@ -552,7 +559,8 @@ def listed_family(f, i, defaults, warnings):
                "fire_at": _num(f.get("fire_at", 0), f"{w} fire_at", 0, 600, True), "fire_max": _num(f.get("fire_max", FRONT_FIRE_MAX), f"{w} fire_max", 0, 10, True),
                "calldata_len": _num(f.get("calldata_len", FRONT_CALLDATA_LEN), f"{w} calldata_len", 68, 8192, True), "trigger": _trigger(f.get("trigger"), w),
                "fees_also": f.get("fees_also", []), "tick_spacings_also": f.get("tick_spacings_also", []),
-               "nonbot_halt": _num(f["nonbot_halt"], f"{w} nonbot_halt", 0, 1000, True) if "nonbot_halt" in f else None}
+               "nonbot_halt": _num(f["nonbot_halt"], f"{w} nonbot_halt", 0, 1000, True) if "nonbot_halt" in f else None,
+               "quiet_blocks": _num(f["quiet_blocks"], f"{w} quiet_blocks", 1, 600, True) if "quiet_blocks" in f else None}
     except SystemExit:
         raise
     except (TypeError, ValueError, OverflowError) as e:
@@ -1697,7 +1705,7 @@ def _fire(p, seq, ts, trig_value, trig_hash, seen_at, fire_seq):
            "expected_tokens": expected, "min_out": min_out, "flat_eth_back": eth_back_flat, "buy_seq": None, "sell_sent": False, "sell_seq_sent": None, "buy_hash": None, "sell_hash": None, "sell_raw": None, "dry": dry,
            "fire_seq": fire_seq, "plan_buy_seq": fire_seq + 2, "plan_sell_seq": fire_seq + 2 + hold, "feed_tokens": None, "tp_ret": None,
            "stake": stake, "send_after": send_after, "tp": fam["take_profit"] if front else TAKE_PROFIT, "count_key": count_key, "pnl_key": pnl_key,
-           "fallback_s": SELL_FALLBACK_S + (0.11 * (hold - (HOLD_BLOCKS - SELL_LEAD_BLOCKS)) if front else 0.0), "launch_seq": p["launch_seq"], **({"fam": p["fam"], "nonbot_halt": fam.get("nonbot_halt")} if front else {}),
+           "fallback_s": SELL_FALLBACK_S + (0.11 * (hold - (HOLD_BLOCKS - SELL_LEAD_BLOCKS)) if front else 0.0), "launch_seq": p["launch_seq"], **({"fam": p["fam"], "nonbot_halt": fam.get("nonbot_halt"), "quiet_blocks": fam.get("quiet_blocks"), "router_seq": seq} if front else {}),
            **({"dex": "v3", "exit_seq": None, "exit_why": None} if v3 else {})}                # exit_seq: the block where the crowd's wave ends (on_v3_buy)
     if v3 and fam.get("launch"):                                                   # a launch-rule family: the timer's sell (ingest's exit_seq), the pull's watch, what its hold sees (on_launch_buy);
         pos.update({"launch_rule": True, "exit_seq": p["launch_seq"] + fam["sell_at"], "exit_why": f"the timer: launch + {fam['sell_at']}", "pull_seq": None,   # the wall-clock fallback for a
@@ -2606,6 +2614,8 @@ def on_wave_call(to, data, seq, h, stale, seen_at):
             on_v3_buy(p, seq, amount, to, stale, True); return
         apply_buy(p, amount); p["eth_in"] += amount
         pos = state["position"]; ours = pos if pos is not None and pos["pid"] == p["pid"] else None
+        if ours is not None:                                                                     # the router still buys: quiet_blocks counts from here
+            ours["router_seq"] = seq
         if p["first_buy"] is None and amount >= trig["min_wei"]:
             p["first_buy"] = seq
             log({"ev": "first_buy", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"], "value": amount, "to": to, "fee": p["fee"], "eligible": p["eligible"], "stale": stale,
@@ -2710,6 +2720,9 @@ def ingest(raw):
             if pos is not None and not pos["sell_sent"]:
                 if pos.get("exit_seq") is not None and seq >= pos["exit_seq"]:                   # a V3 position: the crowd's wave after its first buy behind ours (on_v3_buy)
                     send_sell(pos["exit_why"])
+                elif pos.get("quiet_blocks") and pos["buy_seq"] is not None and seq - pos["router_seq"] >= pos["quiet_blocks"]:   # a wave family: the operator's router went quiet
+                    send_sell(f"quiet: no buy through the operator's router for {seq - pos['router_seq']} blocks (its last at our buy {pos['router_seq'] - pos['buy_seq']:+d});"
+                              f" out before its pull")
                 elif pos["buy_seq"] is not None and seq >= pos["buy_seq"] + pos["send_after"]:
                     send_sell(f"deadline: launch + {seq - pos['launch_seq']}, the V3 line's cap (no crowd's buy behind ours in time)" if pos.get("dex") == "v3" else
                               "deadline: no buy behind ours paid TAKE_PROFIT; out before the operator's reaction")
@@ -2941,7 +2954,7 @@ def start_families():
         lr = f.get("launch")
         out.append({"name": f["name"], "value_eth": f["value_wei"] / 1e18, "fee": f["fee"], "tick_spacing": f["tick_spacing"], "bot_minout": f["bot_minout"], "ahead_max_eth": f["ahead_max_wei"] / 1e18,
                     "take_profit": f["take_profit"], "hold_blocks": f["hold_blocks"], "stake_eth": f["stake_wei"] / 1e18, "dry_run": f["dry_run"], "pin": f["pin"], "fire_at": f["fire_at"],
-                    "fire_max": f["fire_max"], "calldata_len": f["calldata_len"],
+                    "fire_max": f["fire_max"], "calldata_len": f["calldata_len"], **({"quiet_blocks": f["quiet_blocks"]} if f.get("quiet_blocks") else {}),
                     "trigger": trigger_desc(f["trigger"]) if not lr else f"timer: launch + {f['buy_at']} (to + {f['buy_at'] + f['fire_max']}), sell at launch + {f['sell_at']}",
                     **({"dex": "v3", "target": f["target"], "exit_after_blocks": f["exit_after_blocks"]} if f["dex"] == "v3" and not lr else {}),
                     **({"dex": "v3", "launch": {"selector": lr["selector"], "calldata_len": lr["calldata_len"], "code_hash_prefix": lr["code_prefix"], "value_wei": lr["value_wei"]},

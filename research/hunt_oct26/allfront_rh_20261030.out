@@ -1,0 +1,66 @@
+rh: 4646 pools created (1265 pulled within 2 h), Counter({'v4': 2373, 'v2': 2099, 'v3': 174})
+  v4: 2373 pools, 268875 swaps so far
+  v2: 2099 pools, 280048 swaps so far
+  v3: 174 pools, 346410 swaps so far
+rh: 346410 swaps in 3124 pools; 2117 early round trips (entry <= 30 s), 447 profitable at 0.001+
+
+  traders with profitable early round trips at 0.001+ in 3+ pools:
+    0x01605e69043c153c29c4d9eb9a3222ce5fcfffef pools    7 trips    7 pnl +1.7612 on 0.860 | stake median 0.1400 | in 12.9s out 97.1s | via 0xaf9d6fa019 | pulled pools 6/7 | venue [('v3', 7)]
+    0x6a925974b9331953fd61f88bb387dfd69285515d pools    8 trips    8 pnl +1.2509 on 0.798 | stake median 0.0850 | in 15.1s out 99.1s | via 0xaf9d6fa019 | pulled pools 6/8 | venue [('v3', 8)]
+    0x260cf326bc3c74a5a42a36b181476b0ce3b7cc6a pools    3 trips    3 pnl +1.2377 on 0.900 | stake median 0.3000 | in 6.9s out 49.3s | via 0x7feb3ecbac | pulled pools 2/3 | venue [('v3', 3)]
+    0xe795711e5e44cea860c2d6e73bab7519551a5283 pools    4 trips    4 pnl +1.0110 on 0.569 | stake median 0.1443 | in 21.0s out 140.1s | via 0xaf9d6fa019 | pulled pools 3/4 | venue [('v3', 4)]
+    0xb69b6da7d1cd4daf7d7ebd6d999a13f58b04eba0 pools    4 trips    4 pnl +0.9705 on 1.300 | stake median 0.3500 | in 6.7s out 65.0s | via 0x7feb3ecbac | pulled pools 3/4 | venue [('v3', 4)]
+    0xda6dde89fb3ba4521f93f2b41e52dc8abbb08218 pools    5 trips    5 pnl +0.8923 on 0.674 | stake median 0.1600 | in 12.0s out 253.5s | via 0xaf9d6fa019 | pulled pools 4/5 | venue [('v3', 5)]
+    0xfd480ce40a4366001ffb8fdc09a2a24793c53ce7 pools    4 trips    4 pnl +0.8203 on 1.400 | stake median 0.3500 | in 7.2s out 16.6s | via 0x7feb3ecbac | pulled pools 4/4 | venue [('v3', 4)]
+    0xfbc318ff3757b16fd48e5b44912ac60abc8fdc3d pools    3 trips    3 pnl +0.5234 on 0.410 | stake median 0.1300 | in 19.0s out 178.8s | via 0xaf9d6fa019 | pulled pools 2/3 | venue [('v3', 3)]
+    0xcc4099c6a03ceaf002543c934e2de276c1a03bc1 pools    9 trips    9 pnl +0.4145 on 0.284 | stake median 0.0340 | in 15.8s out 103.5s | via 0xaf9d6fa019 | pulled pools 8/9 | venue [('v3', 9)]
+    0x645f0d3c6a4b354fa6cd04b2b5d62c4cd73c2319 pools    3 trips    3 pnl +0.4027 on 0.260 | stake median 0.0900 | in 22.6s out 178.8s | via 0xaf9d6fa019 | pulled pools 2/3 | venue [('v3', 3)]
+    0x70e700c8caf0af83a68eeb53755623e27de3d6a0 pools    3 trips    3 pnl +0.3474 on 0.800 | stake median 0.2000 | in 7.4s out 46.8s | via 0x85ce78329f | pulled pools 3/3 | venue [('v3', 3)]
+    0x613981f3303f7fa40c7e086a037f8f1203dff1b9 pools    9 trips    9 pnl +0.3331 on 0.285 | stake median 0.0317 | in 9.6s out 61.7s | via 0xaf9d6fa019 | pulled pools 8/9 | venue [('v3', 9)]
+    0x4a69cd5cafe079900bb3d8dc635adbde2c13f302 pools    6 trips    6 pnl +0.3083 on 0.158 | stake median 0.0184 | in 19.0s out 221.8s | via 0xaf9d6fa019 | pulled pools 5/6 | venue [('v3', 6)]
+    0xc8b3aa728e9f37ce5d21806d982d15fcf5cc1005 pools    7 trips    7 pnl +0.2962 on 0.196 | stake median 0.0210 | in 16.2s out 196.7s | via 0xaf9d6fa019 | pulled pools 6/7 | venue [('v3', 7)]
+    0xb5c75061341f504cdd34ddaff03dc141cd0bdf88 pools    4 trips    4 pnl +0.2409 on 0.130 | stake median 0.0355 | in 22.4s out 156.8s | via 0xaf9d6fa019 | pulled pools 3/4 | venue [('v3', 4)]
+    0x5fd0adc1db73c2f15398527c34a687278b80d023 pools    9 trips    9 pnl +0.0909 on 0.176 | stake median 0.0149 | in 7.5s out 11.3s | via 0x8876789976 | pulled pools 9/9 | venue [('v4', 9)]
+    0xdcddbdd1b739d73836ac5ae23706eeafdc32312d pools    7 trips    7 pnl +0.0809 on 0.256 | stake median 0.0276 | in 15.5s out 20.4s | via 0x8876789976 | pulled pools 7/7 | venue [('v4', 7)]
+    0x6ae59a1e414940a739e7db3511642b22db6c3394 pools    5 trips    5 pnl +0.0589 on 0.165 | stake median 0.0319 | in 10.3s out 17.5s | via 0x8876789976 | pulled pools 5/5 | venue [('v4', 5)]
+    0x13f1c5fdd11612335bd8c73211fd0636db3638dc pools    6 trips    6 pnl +0.0589 on 0.204 | stake median 0.0306 | in 11.1s out 15.9s | via 0x8876789976 | pulled pools 6/6 | venue [('v4', 6)]
+    0x2bb71a16028b5ba043d90f2fc9deecf21cb6b228 pools    7 trips    7 pnl +0.0545 on 0.175 | stake median 0.0122 | in 9.7s out 13.6s | via 0x8876789976 | pulled pools 7/7 | venue [('v4', 7)]
+    0x93ec1aa8720c4242df5f31f7381035392d223fd0 pools    5 trips    5 pnl +0.0466 on 0.135 | stake median 0.0259 | in 11.9s out 17.1s | via 0x8876789976 | pulled pools 5/5 | venue [('v4', 5)]
+    0x2911309ee332de4bf14721cfc897cbd45fd27d57 pools    8 trips    8 pnl +0.0456 on 0.214 | stake median 0.0204 | in 10.3s out 14.1s | via 0x8876789976 | pulled pools 8/8 | venue [('v4', 8)]
+    0x6ec6e8b3051d66c5a6a517f841e633b1ee771880 pools    7 trips    7 pnl +0.0442 on 0.206 | stake median 0.0329 | in 8.3s out 13.5s | via 0x8876789976 | pulled pools 7/7 | venue [('v4', 7)]
+    0x150952108f28dcaf4e4542090e67cd2696563944 pools    3 trips    3 pnl +0.0382 on 0.208 | stake median 0.0891 | in 11.0s out 41.0s | via 0x65050a9b7e | pulled pools 0/3 | venue [('v4', 3)]
+    0x53afe4648b229064b3b2b536de47b995c7ae63c0 pools    4 trips    4 pnl +0.0367 on 0.168 | stake median 0.0306 | in 20.9s out 24.0s | via 0x8876789976 | pulled pools 4/4 | venue [('v4', 4)]
+    0x4e74e7db55cdd12e2ec8f377379eb5e78b9ee8a8 pools    4 trips    4 pnl +0.0357 on 0.120 | stake median 0.0230 | in 12.8s out 16.8s | via 0x8876789976 | pulled pools 4/4 | venue [('v4', 4)]
+    0xb1b4fa53318797e840760428ce37198f4c3e65d0 pools    4 trips    4 pnl +0.0331 on 0.119 | stake median 0.0189 | in 13.7s out 17.3s | via 0x8876789976 | pulled pools 4/4 | venue [('v4', 4)]
+    0x3a351b44a2fc22fcf1659576121a0f70e1e12836 pools    5 trips    5 pnl +0.0210 on 0.093 | stake median 0.0215 | in 13.6s out 17.8s | via 0x8876789976 | pulled pools 5/5 | venue [('v4', 5)]
+    0x594f7ec1f5b05f9be8eeccb167b2560d295328c8 pools    5 trips    5 pnl +0.0179 on 0.107 | stake median 0.0199 | in 10.7s out 14.3s | via 0x8876789976 | pulled pools 5/5 | venue [('v4', 5)]
+    0x4f4ae3f669964a6827f404c567725acae3573fd3 pools    3 trips    3 pnl +0.0171 on 0.135 | stake median 0.0450 | in 9.8s out 163.5s | via 0x06afba43fd | pulled pools 0/3 | venue [('v4', 3)]
+    0xeb3a0237ef7f42516ef65a91e39f552b18dbb91e pools    3 trips    3 pnl +0.0150 on 0.035 | stake median 0.0113 | in 14.1s out 18.8s | via 0x8876789976 | pulled pools 3/3 | venue [('v4', 3)]
+    0x9a12867607c191a7191c08e3d8dea7018e277416 pools    8 trips    8 pnl +0.0005 on 0.008 | stake median 0.0010 | in 16.1s out 18.8s | via 0xcaf681a66d | pulled pools 7/8 | venue [('v3', 8)]
+    0xb4aff48f129ea106677775f5fb46b698a7579ba2 pools    7 trips    7 pnl +0.0004 on 0.007 | stake median 0.0010 | in 11.8s out 13.8s | via 0xcaf681a66d | pulled pools 6/7 | venue [('v3', 7)]
+    0x378447d1bc980ff876557e4debebc99a050b73d9 pools    3 trips    3 pnl +0.0000 on 0.027 | stake median 0.0089 | in 0.0s out 611.4s | via 0xc739229dc4 | pulled pools 0/3 | venue [('v4', 3)]
+
+  what those round trips sold into (the biggest buy between their legs), by target and selector, 3+ pools:
+    0x8876789976decbfcbbbe364623c63652db8c0904 0x3593564c pools   44 | its buy median 0.1024 | senders 42 | front-runners 48, their pnl +6.1699 on 11.512 | pulled pools 102/125
+    0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6 0xe6cb474f pools   33 | its buy median 0.5235 | senders 51 | front-runners 60, their pnl +15.4030 on 20.164 | pulled pools 66/72
+    0xaf9d6fa019328d8cf8598d0d5be22cc6622b09f1 0x3593564c pools   11 | its buy median 0.1800 | senders 19 | front-runners 23, their pnl +7.6315 on 4.658 | pulled pools 57/78
+    0x7feb3ecbacbd0cc23ec46659d541636d58749a97 0x3593564c pools   10 | its buy median 0.4950 | senders 15 | front-runners 21, their pnl +9.8958 on 8.722 | pulled pools 38/43
+    0x8876789976decbfcbbbe364623c63652db8c0904 0x24856bc3 pools    8 | its buy median 0.1413 | senders 17 | front-runners 27, their pnl +0.3366 on 0.967 | pulled pools 0/29
+    0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc 0x4d819a2a pools    5 | its buy median 0.0990 | senders 3 | front-runners 7, their pnl +0.0632 on 0.382 | pulled pools 2/7
+    0x92475293e578c7d88651d160d2b0e45e04e4528b 0x39ecce49 pools    5 | its buy median 0.0000 | senders 3 | front-runners 4, their pnl +0.0060 on 0.123 | pulled pools 0/6
+    0x85ce78329f7449fde7c46658bf646b1cedb59858 0x3593564c pools    5 | its buy median 0.3000 | senders 14 | front-runners 17, their pnl +2.4971 on 5.031 | pulled pools 24/25
+    0x33675123820c7077cd72221d575dc9f6f98b6fcb 0x7169b574 pools    4 | its buy median 0.1001 | senders 5 | front-runners 4, their pnl +0.1051 on 0.393 | pulled pools 5/5
+    0x9689992f5b5c09447f15906d8d11214944488341 0x3e0f9c3c pools    4 | its buy median 0.0533 | senders 4 | front-runners 5, their pnl +0.0406 on 0.320 | pulled pools 0/6
+    0x204faca1764b154221e35c0d20abb3c525710498 0x3593564c pools    4 | its buy median 0.1467 | senders 6 | front-runners 9, their pnl +0.2764 on 0.902 | pulled pools 0/9
+    0xaf9d6fa019328d8cf8598d0d5be22cc6622b09f1 0xa0193551 pools    4 | its buy median 0.4356 | senders 5 | front-runners 13, their pnl +0.4369 on 0.423 | pulled pools 12/13
+    0x75379d5d2ea4c98aeaa57f32e233707550ab03f0 0x3593564c pools    3 | its buy median 0.0240 | senders 4 | front-runners 3, their pnl +0.0045 on 0.014 | pulled pools 0/4
+
+  pools hit, by venue, launch native and pulled within 2 h:
+    v3 launch <0.5   pulled pools    25 trips   137 pnl +14.9069 on 16.102 | wallets 59
+    v4 launch <0.5   kept   pools    52 trips    98 pnl +14.6003 on 14.826 | wallets 81
+    v4 launch <0.5   pulled pools    36 trips    81 pnl +12.8567 on 18.819 | wallets 67
+    v3 launch <0.5   kept   pools     6 trips    35 pnl +6.0306 on 3.383 | wallets 34
+    v4 launch 0.5-2  pulled pools    24 trips    92 pnl +0.7145 on 2.564 | wallets 25
+    v3 launch 0.5-2  kept   pools     1 trips     2 pnl +0.0374 on 0.110 | wallets 2
+    v4 launch 2-10   pulled pools     2 trips     2 pnl +0.0367 on 0.179 | wallets 2
+DONE

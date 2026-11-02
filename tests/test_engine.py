@@ -1258,6 +1258,41 @@ assert pos["sell_sent"] and events("would_sell")[-1]["dry_ret"] is not None and 
 assert wait_for(lambda: any(e.get("dry") and e.get("fam") == "c1" and "dry_ret" in e for e in events("trade_done")), 3.0), "no dry trade_done with dry_ret"
 del E.FRONT_FAMILIES[0]; E.WAVE_ROUTERS.discard(c1["trigger"]["router"]); E.state["delayed"] = any(f["fire_at"] or f["trigger"] for f in E.FRONT_FAMILIES.values()); reset(); E.FRONT = False; E.ENTRY = "follow"
 print("ok a wave family (C-1): the value-0 launch arms with its one-sided liquidity and waits; the operator's router buy is the trigger (buy + 2, sell at the hold); the router's sell, a stranger's buy, a pull before the trigger and the window's end never fire; the dry family scores its sell")
+# --- 20f2. a wave family's quiet exit (quiet_blocks, Nov 2): once our buy is in, the sell goes when the feed shows quiet_blocks blocks with no buy
+# through the operator's router since its last (the trigger counts); a router buy behind ours restarts the count; hold_blocks stays the cap
+C1Q = {**C1_FAM, "hold_blocks": 100, "quiet_blocks": 20, "pin": False}
+for patch, msg in (({"quiet_blocks": 100}, "under hold_blocks"), ({"quiet_blocks": 0}, "quiet_blocks"),
+                   ({"value_wei": "3000000000000000000", "trigger": None}, "for a v4 wave family")):
+    os.environ["FRONT_FAMILIES"] = json.dumps([{**C1Q, **patch}])
+    try:
+        E.front_families(E.front_base_family()); assert False, ("accepted", patch)
+    except SystemExit as e:
+        assert msg in str(e), (patch, str(e))
+os.environ["FRONT_FAMILIES"] = json.dumps([C1Q]); c1q = E.front_families(E.front_base_family())[0]; os.environ.pop("FRONT_FAMILIES")
+assert c1q["quiet_blocks"] == 20 and c1q["hold_blocks"] == 100 and not c1q["pin"], c1q
+E.FRONT_FAMILIES[0] = c1q; E.WAVE_ROUTERS.add(c1q["trigger"]["router"]); E.state["delayed"] = True; E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"
+assert any(f.get("quiet_blocks") == 20 for f in E.start_families())
+reset(); E.state["nonce"] = 950; E.state["front_halted"] = None; E.state["fam_halted"].clear(); E.state["armed"].clear(); LOGS[:] = []
+n_sent = len(SENT); E.ingest(frame(14000, [signed(DEPLOYER, POSM, 0, C1["launch_input"], 17)])); p = E.state["armed"][C1_PID]
+E.ingest(frame(14030, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 70)]))                                        # the trigger
+pos = E.state["position"]; assert pos and pos["quiet_blocks"] == 20 and pos["router_seq"] == 14030 and pos["send_after"] == 100 and len(SENT) == n_sent + 1, pos
+E.ingest(frame(14032, [SENT[-1][1]])); assert pos["buy_seq"] == 14032
+E.ingest(frame(14040, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 71)])); assert pos["router_seq"] == 14040 and not pos["sell_sent"]   # the router buys behind ours: the count restarts
+E.ingest(frame(14041, [signed(CROWD, C1_ROUTER, 0, C1_SELL, 72)])); assert pos["router_seq"] == 14040, "the router's sell counted as a buy"
+for s_ in range(14042, 14060):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(14060, [])); assert pos["sell_sent"] and pos["sell_why"].startswith("quiet: no buy through the operator's router for 20 blocks (its last at our buy +8)"), pos.get("sell_why")
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(14032, -int(0.0058e18), pos["feed_tokens"], pid=C1_PID); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(14061, int(0.0058e18 * 1.08), -pos["feed_tokens"], pid=C1_PID)
+assert wait_for(lambda: done_at(950)); d = done_at(950)[-1]; assert d["fam"] == "c1" and d["ret"] > 0.05 and d["hold_blocks"] == 29 and d["sell_why"].startswith("quiet"), d
+reset(); E.state["nonce"] = 960; E.state["armed"].clear(); E.FRONT_FAMILIES[0] = {**c1q, "dry_run": True}           # dry, and the router never buys again: out at trigger + 20
+n_sent = len(SENT); E.ingest(frame(14200, [signed(DEPLOYER, POSM, 0, C1["launch_input"], 18)]))
+E.ingest(frame(14230, [signed(CROWD, C1_ROUTER, 0, C1_BUY, 73)])); pos = E.state["position"]; assert pos and pos["dry"] and len(SENT) == n_sent
+for s_ in range(14231, 14250):
+    E.ingest(frame(s_, [])); assert not pos["sell_sent"], s_
+E.ingest(frame(14250, [])); assert pos["sell_sent"] and events("would_sell")[-1]["why"].startswith("quiet") and events("would_sell")[-1]["after_buy"] == 18, events("would_sell")[-1]
+assert wait_for(lambda: any(e.get("dry") and e.get("fam") == "c1" and "dry_ret" in e for e in events("trade_done")), 3.0), "no dry trade_done"
+del E.FRONT_FAMILIES[0]; E.WAVE_ROUTERS.discard(c1q["trigger"]["router"]); E.state["delayed"] = any(f["fire_at"] or f["trigger"] for f in E.FRONT_FAMILIES.values()); reset(); E.FRONT = False; E.ENTRY = "follow"
+print("ok a wave family's quiet exit: the sell goes quiet_blocks after the operator's router last bought (the trigger counts, a buy behind ours restarts it, its sell does not), live and dry; quiet_blocks only on a v4 wave family and under its cap")
 
 # --- 20h. known fingerprints and the auto stake: a family accepts the fees / tick spacings it is known to use (the 2.4333 line's 2500/50 and
 # 5000/100 of Oct 11) and refuses the rest; FRONT_AUTO_STAKE sizes the stake to the room the bot's decoys leave, measured at each bot buy
