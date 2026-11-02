@@ -1293,6 +1293,36 @@ E.ingest(frame(14250, [])); assert pos["sell_sent"] and events("would_sell")[-1]
 assert wait_for(lambda: any(e.get("dry") and e.get("fam") == "c1" and "dry_ret" in e for e in events("trade_done")), 3.0), "no dry trade_done"
 del E.FRONT_FAMILIES[0]; E.WAVE_ROUTERS.discard(c1q["trigger"]["router"]); E.state["delayed"] = any(f["fire_at"] or f["trigger"] for f in E.FRONT_FAMILIES.values()); reset(); E.FRONT = False; E.ENTRY = "follow"
 print("ok a wave family's quiet exit: the sell goes quiet_blocks after the operator's router last bought (the trigger counts, a buy behind ours restarts it, its sell does not), live and dry; quiet_blocks only on a v4 wave family and under its cap")
+# --- 20f3. BLOCK_SOURCE=rpc (Nov 2): the providers' transactions (Alchemy's stream, the full blocks behind newHeads) go through the same
+# ingest_tx: once per hash, in their own block; a transaction may open its block before the header; a block's checks (the quiet exit)
+# run once its full list is in; another transaction type, a duplicate and a late list change nothing
+assert E.rpc_tx({"hash": "0x" + "ab" * 32, "to": None, "value": "0x5", "input": "0x1234", "nonce": "0x7", "type": "0x0"}) == ("", 5, bytes.fromhex("1234"), 7, "ab" * 32)
+assert E.rpc_tx({"hash": "0x" + "ab" * 32, "to": "0x" + "00" * 19 + "6e", "value": "0x0", "input": "0x", "nonce": "0x0", "type": "0x6a"}) is None
+E.FRONT_FAMILIES[0] = c1q; E.WAVE_ROUTERS.add(c1q["trigger"]["router"]); E.state["delayed"] = True; E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"
+assert "0x" + E.POSITION_MANAGER in E.rpc_tx_to() and "0x" + c1q["trigger"]["router"] in E.rpc_tx_to()
+reset(); E.state["nonce"] = 970; E.state["front_halted"] = None; E.state["fam_halted"].clear(); E.state["armed"].clear(); LOGS[:] = []; E.state["rpc_ended"] = 0; E.RPC_SEEN.clear()
+W0 = time.time(); TS0 = int(W0)
+rtx = lambda h, n, to, data, typ="0x2": {"hash": "0x" + h, "blockNumber": hex(n), "to": to, "input": data, "value": "0x0", "nonce": "0x1", "type": typ}
+E.on_rpc_head(15000, TS0, W0); L1 = rtx("a1" * 32, 15000, POSM, C1["launch_input"]); n_arm, n_skip = len(events("armed")), len(events("skip"))
+E.on_rpc_tx(L1, W0); E.on_rpc_tx(L1, W0)                                                                  # the stream and the full block: once
+p = E.state["armed"][C1_PID]; assert p["fam"] == "c1" and len(events("armed")) == n_arm + 1 and len(events("skip")) == n_skip, (len(events("armed")) - n_arm, events("skip")[n_skip:])
+E.rpc_block_done(15000, W0)
+E.on_rpc_tx(rtx("a2" * 32, 15001, "0x" + "00" * 19 + "6e", "0x6bf6a42d", typ="0x6a"), W0)                   # an Arbitrum internal transaction: skipped
+n_sent = len(SENT); E.on_rpc_tx(rtx("a3" * 32, 15030, C1_ROUTER, C1_BUY), W0)                            # the trigger from the stream, before its block's header
+pos = E.state["position"]; assert pos and pos["trig_seq"] == 15030 and E.state["seq"] == 15030 and len(SENT) == n_sent + 1, (pos, E.state["seq"])
+E.on_rpc_head(15030, TS0 + 3, W0); assert E.state["seq"] == 15030 and E.state["ts"] == TS0 + 3              # its header after it: the same block, its time
+E.on_rpc_head(15032, TS0 + 3, W0); E.on_rpc_tx(rtx(pos["buy_hash"], 15032, "0x" + "11" * 20, "0x"), W0, block=hex(15032))
+assert pos["buy_seq"] == 15032 and pos["feed_tokens"] > 0
+for n_ in range(15033, 15050):
+    E.on_rpc_head(n_, TS0 + 4, W0); E.rpc_block_done(n_, W0); assert not pos["sell_sent"], n_
+E.on_rpc_head(15050, TS0 + 5, W0); assert not pos["sell_sent"], "the header alone ran the block's checks"
+E.rpc_block_done(15050, W0); assert pos["sell_sent"] and pos["sell_why"].startswith("quiet: no buy through the operator's router for 20 blocks"), pos.get("sell_why")
+E.rpc_block_done(15040, W0); assert E.state["rpc_ended"] == 15050                                         # an earlier block's late list: nothing again
+RECEIPTS["0x" + pos["buy_hash"]] = swap_receipt(15032, -int(0.0058e18), pos["feed_tokens"], pid=C1_PID); RECEIPTS["0x" + pos["sell_hash"]] = swap_receipt(15051, int(0.0058e18 * 1.08), -pos["feed_tokens"], pid=C1_PID)
+assert wait_for(lambda: done_at(970)); d = done_at(970)[-1]; assert d["fam"] == "c1" and d["sell_why"].startswith("quiet") and d["ret"] > 0.05, d
+del E.FRONT_FAMILIES[0]; E.WAVE_ROUTERS.discard(c1q["trigger"]["router"]); E.state["delayed"] = any(f["fire_at"] or f["trigger"] for f in E.FRONT_FAMILIES.values()); reset(); E.FRONT = False; E.ENTRY = "follow"
+E.state["rpc_ended"] = 0; E.RPC_SEEN.clear()
+print("ok BLOCK_SOURCE=rpc: a provider's transactions trade as the feed's (once per hash, other types skipped, a trigger before its header opens its block, our buy from the full block), a block's checks run once its full list is in (the quiet exit), a late list runs nothing twice")
 
 # --- 20h. known fingerprints and the auto stake: a family accepts the fees / tick spacings it is known to use (the 2.4333 line's 2500/50 and
 # 5000/100 of Oct 11) and refuses the rest; FRONT_AUTO_STAKE sizes the stake to the room the bot's decoys leave, measured at each bot buy

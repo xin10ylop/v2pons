@@ -71,6 +71,17 @@ def env(k, d=""):
 
 
 FEED_URL = env("FEED_URL", "wss://feed.mainnet.chain.robinhood.com"); FEED_COMPRESSION = env("FEED_COMPRESSION", "deflate") or None
+# BLOCK_SOURCE "rpc" (Nov 2): the box's address range is refused by Robinhood's own feed, so the blocks come from providers' websockets
+# instead: BLOCK_TX_WS, an Alchemy websocket whose alchemy_minedTransactions stream pushes each transaction (filtered to BLOCK_TX_TO:
+# the PositionManager, the wave routers, the relay, unless set; "all" for every one) about half a block behind the feed; BLOCK_WS_URLS,
+# websockets whose newHeads give the block clock and whose full blocks (eth_getBlockByNumber on the same socket, the first to announce a
+# block fetches it) back every transaction up about 0.8 blocks behind the feed; a block's end-of-block checks (exits, windows) run once
+# its full list is in, as the feed's. A transaction seen twice counts once (its hash).
+BLOCK_SOURCE = env("BLOCK_SOURCE", "feed").lower()
+BLOCK_TX_WS = env("BLOCK_TX_WS", "")
+BLOCK_WS_URLS = [u.strip() for u in env("BLOCK_WS_URLS", "").split(",") if u.strip()]
+BLOCK_TX_TO = env("BLOCK_TX_TO", "")
+RPC_LATE_MAX = int(env("RPC_LATE_MAX", "30"))                                              # a transaction of a block this far behind the clock is ignored
 FEED_USER_AGENT = env("FEED_USER_AGENT", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0 Safari/537.36")   # the RPC calls have sent a browser agent since 0.1; the feed gets one too (empty = the library's)
 
 
@@ -2674,73 +2685,89 @@ def ingest(raw):
         with lock:
             if seq <= state["seq"]:
                 continue
-            state["seq"] = seq; state["ts"] = hdr.get("timestamp", 0); state["blocks"] += 1
-            stale = wall - state["ts"] > STALE_S
-            if stale:
-                state["stale_blocks"] += 1
+            stale = begin_block(seq, hdr.get("timestamp", 0), wall)
             seen_at = mono(); txs = decode_batch(inner.get("l2Msg", "")); state["txs"] = state.get("txs", 0) + len(txs)
-            pos = state["position"]
-            if pos is not None and pos["dry"] and pos["buy_seq"] is None and seq >= pos["plan_buy_seq"]:
-                our_buy_landed(pos, seq, virtual=True)                                 # the dry run's buy at the head of its planned block
             for t in txs:
-                try:
-                    ingest_tx(t, seq, stale, seen_at)
-                except Exception:                                                      # one bad transaction never costs the rest of the block
-                    if seq - state.get("tx_alarm_seq", -10**9) >= 600:
-                        state["tx_alarm_seq"] = seq
-                        log({"ev": "alarm", "what": "a transaction failed to process and was skipped (at most one such alarm a minute)", "seq": seq, "trace": traceback.format_exc()[-600:]})
-            for p in list(state["armed"].values()):                                    # BUY_DELAY_BLOCKS: fire once the delay's blocks passed with no other real buy
-                if p["status"] == "delayed" and seq >= p["trig"][0] + BUY_DELAY_BLOCKS:
-                    p["status"] = "armed" if not stale else "skipped"
-                    if not stale:
-                        fire(p, p["trig"][0], state["ts"], p["trig"][1], p["trig"][2], seen_at, fire_seq=seq)
-                elif p.get("entry") == "front" and p["status"] == "armed" and p["fam_cfg"]["trigger"] and p["fam_cfg"]["dex"] != "v3":   # a wave pool waits for its operator's buy (on_wave_call), for max_blocks
-                    if seq > p["launch_seq"] + p["fam_cfg"]["trigger"]["max_blocks"]:
-                        p["status"] = "late"; log({"ev": "skip", "why": "wave: no trigger within the family's window", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"], "fam": p["fam"]})
-                elif p.get("entry") == "front" and p["status"] == "armed" and p["fam_cfg"].get("launch"):   # a launch-rule pool: its timer runs below, after every live branch
-                    pass
-                elif p.get("entry") == "front" and p["status"] == "armed" and seq >= p["launch_seq"] + p["fam_cfg"]["fire_at"]:   # buys ahead of ours make it late (on_front_buy), not any buy
-                    if stale or seq > p["launch_seq"] + p["fam_cfg"]["fire_at"] + p["fam_cfg"]["fire_max"]:   # too late to land ahead of the bot's buy (its window is the family's)
-                        p["status"] = "late"; log({"ev": "skip", "why": "front: too late to land ahead of the bot's first buy", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]})
-                    else:
-                        fire(p, seq, state["ts"], 0, p["tx"], seen_at)
-                elif p.get("entry") == "seat" and p["status"] == "armed" and p["first_buy"] is None and seq >= p["launch_seq"] + SEAT_FIRE_AT:
-                    if stale or seq > p["launch_seq"] + SEAT_FIRE_AT + 1:                     # armed too late to land ahead of the burst
-                        p["status"] = "late"; log({"ev": "skip", "why": "seat: armed too late to land ahead of the burst", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]})
-                    else:
-                        fire(p, seq, state["ts"], 0, p["tx"], seen_at)                          # the seat's trigger is the launch, its block the fire block
-            for p in [q for q in state["launch_live"].values() if q["status"] == "armed"]:   # the launch-rule timers last: a live fire of this block takes the slot first
-                try:
-                    launch_timer(p, seq, stale, seen_at)
-                except Exception:                                                      # a dry timer never costs the block's live handling below
-                    if seq - state.get("timer_alarm_seq", -10**9) >= 600:
-                        state["timer_alarm_seq"] = seq
-                        log({"ev": "alarm", "what": "a launch-rule timer failed (at most one such alarm a minute)", "pid": p["pid"], "seq": seq, "trace": traceback.format_exc()[-400:]})
-            pos = state["position"]
-            if pos is not None and not pos["sell_sent"]:
-                if pos.get("exit_seq") is not None and seq >= pos["exit_seq"]:                   # a V3 position: the crowd's wave after its first buy behind ours (on_v3_buy)
-                    send_sell(pos["exit_why"])
-                elif pos.get("quiet_blocks") and pos["buy_seq"] is not None and seq - pos["router_seq"] >= pos["quiet_blocks"]:   # a wave family: the operator's router went quiet
-                    send_sell(f"quiet: no buy through the operator's router for {seq - pos['router_seq']} blocks (its last at our buy {pos['router_seq'] - pos['buy_seq']:+d});"
-                              f" out before its pull")
-                elif pos["buy_seq"] is not None and seq >= pos["buy_seq"] + pos["send_after"]:
-                    send_sell(f"deadline: launch + {seq - pos['launch_seq']}, the V3 line's cap (no crowd's buy behind ours in time)" if pos.get("dex") == "v3" else
-                              "deadline: no buy behind ours paid TAKE_PROFIT; out before the operator's reaction")
-                elif pos["buy_seq"] is None and seq >= pos["plan_buy_seq"] + pos["send_after"]:
-                    send_sell("deadline from the planned buy block (buy not seen in the feed)")
-            if state["blocks"] % 600 == 0:                                   # about once a minute: alive, decoding, and what it has seen
-                prune(seq); log({"ev": "flow", "seq": seq, "ts": state["ts"], "lag_s": round(wall - state["ts"], 1), "blocks": state["blocks"], "txs": state["txs"], "launches": state["launches"], "fires": state["fires"], "armed": len(state["armed"]),
-                                 "stale_blocks": state["stale_blocks"], "trades_today": state["trades_today"], "front_today": state["front_today"], "pnl_today_usd": round(state["pnl_today_usd"], 2),
-                                 "front_pnl_today_usd": round(state["front_pnl_today_usd"], 2), "relay_eth": state["relay_wei"] / 1e18 if state["relay_wei"] is not None else None,
-                                 "v3_today": state["v3_today"], "v3_pnl_today_usd": round(state["v3_pnl_today_usd"], 2),
-                                 "relay_v3_eth": state["relay_v3_wei"] / 1e18 if state["relay_v3_wei"] is not None else None,
-                                 "halted": state["halted"], "front_halted": state["front_halted"], "follow_halted": state["follow_halted"], "fam_halted": state["fam_halted"],
-                                 **({"auto_stake_eth": {f["name"]: auto_stake(f) / 1e18 for f in FRONT_FAMILIES.values() if not f["trigger"] and not f.get("launch")}} if FRONT_AUTO_STAKE else {})})
+                ingest_tx_safe(t, seq, stale, seen_at)
+            end_block(seq, stale, wall, seen_at)
 
 
-def ingest_tx(t, seq, stale, seen_at):
-    """one signed transaction of block `seq` (under the lock)"""
-    tx = parse_tx(t)
+def begin_block(seq, ts, wall):
+    """a new block (under the lock): the clock, and the dry run's buy at the head of its planned block; whether the block is stale"""
+    state["seq"] = seq; state["ts"] = ts; state["blocks"] += 1
+    stale = wall - state["ts"] > STALE_S
+    if stale:
+        state["stale_blocks"] += 1
+    pos = state["position"]
+    if pos is not None and pos["dry"] and pos["buy_seq"] is None and seq >= pos["plan_buy_seq"]:
+        our_buy_landed(pos, seq, virtual=True)                                 # the dry run's buy at the head of its planned block
+    return stale
+
+
+def ingest_tx_safe(t, seq, stale, seen_at, parsed=False):
+    try:
+        ingest_tx(t, seq, stale, seen_at, parsed)
+    except Exception:                                                          # one bad transaction never costs the rest of the block
+        if seq - state.get("tx_alarm_seq", -10**9) >= 600:
+            state["tx_alarm_seq"] = seq
+            log({"ev": "alarm", "what": "a transaction failed to process and was skipped (at most one such alarm a minute)", "seq": seq, "trace": traceback.format_exc()[-600:]})
+
+
+def end_block(seq, stale, wall, seen_at):
+    """after a block's transactions (under the lock): delayed fires, the wave and front windows, the launch-rule timers, the position's
+    exits, the flow line"""
+    for p in list(state["armed"].values()):                                    # BUY_DELAY_BLOCKS: fire once the delay's blocks passed with no other real buy
+        if p["status"] == "delayed" and seq >= p["trig"][0] + BUY_DELAY_BLOCKS:
+            p["status"] = "armed" if not stale else "skipped"
+            if not stale:
+                fire(p, p["trig"][0], state["ts"], p["trig"][1], p["trig"][2], seen_at, fire_seq=seq)
+        elif p.get("entry") == "front" and p["status"] == "armed" and p["fam_cfg"]["trigger"] and p["fam_cfg"]["dex"] != "v3":   # a wave pool waits for its operator's buy (on_wave_call), for max_blocks
+            if seq > p["launch_seq"] + p["fam_cfg"]["trigger"]["max_blocks"]:
+                p["status"] = "late"; log({"ev": "skip", "why": "wave: no trigger within the family's window", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"], "fam": p["fam"]})
+        elif p.get("entry") == "front" and p["status"] == "armed" and p["fam_cfg"].get("launch"):   # a launch-rule pool: its timer runs below, after every live branch
+            pass
+        elif p.get("entry") == "front" and p["status"] == "armed" and seq >= p["launch_seq"] + p["fam_cfg"]["fire_at"]:   # buys ahead of ours make it late (on_front_buy), not any buy
+            if stale or seq > p["launch_seq"] + p["fam_cfg"]["fire_at"] + p["fam_cfg"]["fire_max"]:   # too late to land ahead of the bot's buy (its window is the family's)
+                p["status"] = "late"; log({"ev": "skip", "why": "front: too late to land ahead of the bot's first buy", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]})
+            else:
+                fire(p, seq, state["ts"], 0, p["tx"], seen_at)
+        elif p.get("entry") == "seat" and p["status"] == "armed" and p["first_buy"] is None and seq >= p["launch_seq"] + SEAT_FIRE_AT:
+            if stale or seq > p["launch_seq"] + SEAT_FIRE_AT + 1:                     # armed too late to land ahead of the burst
+                p["status"] = "late"; log({"ev": "skip", "why": "seat: armed too late to land ahead of the burst", "pid": p["pid"], "seq": seq, "offset": seq - p["launch_seq"]})
+            else:
+                fire(p, seq, state["ts"], 0, p["tx"], seen_at)                          # the seat's trigger is the launch, its block the fire block
+    for p in [q for q in state["launch_live"].values() if q["status"] == "armed"]:   # the launch-rule timers last: a live fire of this block takes the slot first
+        try:
+            launch_timer(p, seq, stale, seen_at)
+        except Exception:                                                      # a dry timer never costs the block's live handling below
+            if seq - state.get("timer_alarm_seq", -10**9) >= 600:
+                state["timer_alarm_seq"] = seq
+                log({"ev": "alarm", "what": "a launch-rule timer failed (at most one such alarm a minute)", "pid": p["pid"], "seq": seq, "trace": traceback.format_exc()[-400:]})
+    pos = state["position"]
+    if pos is not None and not pos["sell_sent"]:
+        if pos.get("exit_seq") is not None and seq >= pos["exit_seq"]:                   # a V3 position: the crowd's wave after its first buy behind ours (on_v3_buy)
+            send_sell(pos["exit_why"])
+        elif pos.get("quiet_blocks") and pos["buy_seq"] is not None and seq - pos["router_seq"] >= pos["quiet_blocks"]:   # a wave family: the operator's router went quiet
+            send_sell(f"quiet: no buy through the operator's router for {seq - pos['router_seq']} blocks (its last at our buy {pos['router_seq'] - pos['buy_seq']:+d});"
+                      f" out before its pull")
+        elif pos["buy_seq"] is not None and seq >= pos["buy_seq"] + pos["send_after"]:
+            send_sell(f"deadline: launch + {seq - pos['launch_seq']}, the V3 line's cap (no crowd's buy behind ours in time)" if pos.get("dex") == "v3" else
+                      "deadline: no buy behind ours paid TAKE_PROFIT; out before the operator's reaction")
+        elif pos["buy_seq"] is None and seq >= pos["plan_buy_seq"] + pos["send_after"]:
+            send_sell("deadline from the planned buy block (buy not seen in the feed)")
+    if state["blocks"] % 600 == 0:                                   # about once a minute: alive, decoding, and what it has seen
+        prune(seq); log({"ev": "flow", "seq": seq, "ts": state["ts"], "lag_s": round(wall - state["ts"], 1), "blocks": state["blocks"], "txs": state["txs"], "launches": state["launches"], "fires": state["fires"], "armed": len(state["armed"]),
+                         "stale_blocks": state["stale_blocks"], "trades_today": state["trades_today"], "front_today": state["front_today"], "pnl_today_usd": round(state["pnl_today_usd"], 2),
+                         "front_pnl_today_usd": round(state["front_pnl_today_usd"], 2), "relay_eth": state["relay_wei"] / 1e18 if state["relay_wei"] is not None else None,
+                         "v3_today": state["v3_today"], "v3_pnl_today_usd": round(state["v3_pnl_today_usd"], 2),
+                         "relay_v3_eth": state["relay_v3_wei"] / 1e18 if state["relay_v3_wei"] is not None else None,
+                         "halted": state["halted"], "front_halted": state["front_halted"], "follow_halted": state["follow_halted"], "fam_halted": state["fam_halted"],
+                         **({"auto_stake_eth": {f["name"]: auto_stake(f) / 1e18 for f in FRONT_FAMILIES.values() if not f["trigger"] and not f.get("launch")}} if FRONT_AUTO_STAKE else {})})
+
+
+def ingest_tx(t, seq, stale, seen_at, parsed=False):
+    """one signed transaction of block `seq` (under the lock); parsed: already parse_tx's tuple (a provider's transaction)"""
+    tx = t if parsed else parse_tx(t)
     if tx is None:
         return
     to, value, data, nonce, h = tx
@@ -2809,9 +2836,161 @@ async def feed_loop():
         await asyncio.sleep(backoff); backoff = min(60.0 if backoff >= 15.0 else 5.0, backoff * 2)
 
 
+RPC_TYPES = {"0x0", "0x1", "0x2"}                                                        # what parse_tx reads from the feed: legacy, 2930, 1559
+RPC_SEEN = collections.OrderedDict(); RPC_FETCHED = collections.OrderedDict()
+
+
+def rpc_tx(o):
+    """a provider's transaction object as parse_tx's tuple (to without 0x, value, data, nonce, hash without 0x), else None"""
+    try:
+        if (o.get("type") or "0x0") not in RPC_TYPES:
+            return None
+        return ((o.get("to") or "0x")[2:].lower(), int(o.get("value") or "0x0", 16), bytes.fromhex((o.get("input") or "0x")[2:]), int(o.get("nonce") or "0x0", 16),
+                o["hash"][2:].lower())
+    except Exception:
+        return None
+
+
+def rpc_advance(n, ts, wall):
+    """under the lock: block n has begun (its header, or one of its transactions first): the clock moves to n"""
+    if n <= state["seq"]:
+        if ts and n == state["seq"]:
+            state["ts"] = ts                                                   # the header after the block's first transaction: its own time
+        return
+    state["rpc_stale"] = begin_block(n, ts or state["ts"] or int(wall), wall)
+
+
+def rpc_block_done(n, wall):
+    """block n's full transaction list is in (as the feed's one message a block): its end-of-block checks, once a block, in order (a block
+    whose list came after a later one's is covered by that one's: the checks compare with >=)"""
+    with lock:
+        if n <= state.get("rpc_ended", 0):
+            return
+        state["rpc_ended"] = n
+        end_block(n, state.get("rpc_stale", False) if n == state["seq"] else wall - state["ts"] > STALE_S, wall, mono())
+
+
+def on_rpc_head(n, ts, wall):
+    with lock:
+        rpc_advance(n, ts, wall)
+
+
+def on_rpc_tx(o, wall, block=None):
+    """one transaction from a provider (the stream or a full block): once per hash, in its own block; a block it opens opens first"""
+    h = (o.get("hash") or "").lower()
+    if not h or h in RPC_SEEN:
+        return
+    RPC_SEEN[h] = 1
+    while len(RPC_SEEN) > 200_000:
+        RPC_SEEN.popitem(last=False)
+    try:
+        n = int(o.get("blockNumber") or block, 16) if isinstance(o.get("blockNumber") or block, str) else int(block)
+    except Exception:
+        return
+    t = rpc_tx(o)
+    if t is None:
+        return
+    with lock:
+        if n > state["seq"]:
+            rpc_advance(n, 0, wall)
+        if n < state["seq"] - RPC_LATE_MAX:
+            return
+        state["txs"] = state.get("txs", 0) + 1
+        stale = state.get("rpc_stale", False) if n == state["seq"] else wall - state["ts"] > STALE_S
+        ingest_tx_safe(t, n, stale, mono(), parsed=True)
+
+
+def rpc_host(url):
+    """a provider's host for the log (its key never)"""
+    return re.sub(r"^\w+://", "", url).split("/")[0]
+
+
+def rpc_tx_to():
+    """the addresses whose transactions the Alchemy stream sends (BLOCK_TX_TO; else the PositionManager, the wave routers, the relay and
+    the bot routers); None: every transaction"""
+    if BLOCK_TX_TO.strip().lower() == "all":
+        return None
+    a = [x.strip().lower() for x in BLOCK_TX_TO.split(",") if x.strip()] if BLOCK_TX_TO.strip() else \
+        ["0x" + x for x in sorted({POSITION_MANAGER, *WAVE_ROUTERS, *FRONT_BOT_ROUTERS, *(([RELAY[2:].lower()] if RELAY.startswith("0x") else [RELAY.lower()]) if RELAY else [])}) if x]
+    return a
+
+
+async def rpc_tx_stream(url):
+    import websockets
+    backoff = 1.0
+    while True:
+        try:
+            async with websockets.connect(url, open_timeout=10, max_size=None, ping_interval=10, ping_timeout=5) as ws:
+                to = rpc_tx_to(); flt = {"hashesOnly": False, **({"addresses": [{"to": a} for a in to]} if to else {})}
+                await ws.send(json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_subscribe", "params": ["alchemy_minedTransactions", flt]}))
+                r = json.loads(await asyncio.wait_for(ws.recv(), timeout=10))
+                if "result" not in r:
+                    raise RuntimeError(f"the transaction stream was refused: {str(r.get('error'))[:150]}")
+                state["connected"] = True; backoff = 1.0
+                log({"ev": "feed_connected", "source": "tx stream", "host": rpc_host(url), "to": to})
+                while True:
+                    try:
+                        raw = await asyncio.wait_for(ws.recv(), timeout=60.0)              # filtered: a quiet minute is possible; the heads keep the clock
+                    except asyncio.TimeoutError:
+                        log({"ev": "feed_stall", "source": "tx stream", "host": rpc_host(url), "seq": state["seq"]}); break
+                    o = ((json.loads(raw).get("params") or {}).get("result") or {}).get("transaction")
+                    if o:
+                        on_rpc_tx(o, time.time())
+        except Exception as e:
+            log({"ev": "feed_error", "source": "tx stream", "host": rpc_host(url), "err": str(e).replace(url, rpc_host(url))[:200]})
+        await asyncio.sleep(backoff); backoff = min(30.0, backoff * 2)
+
+
+async def rpc_head_stream(url):
+    import websockets
+    backoff = 1.0
+    while True:
+        try:
+            async with websockets.connect(url, open_timeout=10, max_size=None, ping_interval=10, ping_timeout=5) as ws:
+                await ws.send(json.dumps({"jsonrpc": "2.0", "id": 1, "method": "eth_subscribe", "params": ["newHeads"]}))
+                r = json.loads(await asyncio.wait_for(ws.recv(), timeout=10))
+                if "result" not in r:
+                    raise RuntimeError(f"newHeads was refused: {str(r.get('error'))[:150]}")
+                state["connected"] = True; backoff = 1.0; pending = {}; i = 10
+                log({"ev": "feed_connected", "source": "heads", "host": rpc_host(url)})
+                while True:
+                    try:
+                        raw = await asyncio.wait_for(ws.recv(), timeout=5.0)
+                    except asyncio.TimeoutError:
+                        log({"ev": "feed_stall", "source": "heads", "host": rpc_host(url), "seq": state["seq"]}); break
+                    m = json.loads(raw); wall = time.time()
+                    if m.get("method") == "eth_subscription":
+                        hd = (m.get("params") or {}).get("result") or {}
+                        n = int(hd["number"], 16); on_rpc_head(n, int(hd.get("timestamp") or "0x0", 16), wall)
+                        if n not in RPC_FETCHED:                                       # the first source to announce a block fetches it
+                            RPC_FETCHED[n] = 1
+                            while len(RPC_FETCHED) > 5000:
+                                RPC_FETCHED.popitem(last=False)
+                            i += 1; pending[i] = n
+                            await ws.send(json.dumps({"jsonrpc": "2.0", "id": i, "method": "eth_getBlockByNumber", "params": [hex(n), True]}))
+                    elif m.get("id") in pending:
+                        n = pending.pop(m["id"]); blk = m.get("result") or {}
+                        for o in blk.get("transactions") or []:
+                            if isinstance(o, dict):
+                                on_rpc_tx(o, wall, block=o.get("blockNumber") or hex(n))
+                        if blk:
+                            rpc_block_done(n, wall)
+        except Exception as e:
+            log({"ev": "feed_error", "source": "heads", "host": rpc_host(url), "err": str(e).replace(url, rpc_host(url))[:200]})
+        await asyncio.sleep(backoff); backoff = min(30.0, backoff * 2)
+
+
+async def rpc_loop():
+    await asyncio.gather(*([rpc_tx_stream(BLOCK_TX_WS)] if BLOCK_TX_WS else []), *[rpc_head_stream(u) for u in BLOCK_WS_URLS])
+
+
 # ---------------------------------------------------------------- start
 def checks():
     load_halt()
+    if BLOCK_SOURCE not in ("feed", "rpc"):
+        raise SystemExit(f"BLOCK_SOURCE {BLOCK_SOURCE!r} is neither feed nor rpc")
+    if BLOCK_SOURCE == "rpc" and not BLOCK_WS_URLS:
+        raise SystemExit("BLOCK_SOURCE=rpc needs BLOCK_WS_URLS (websockets with newHeads: the block clock and every transaction)")
     chain = int(rpc("eth_chainId", []), 16)
     if chain != CHAIN_ID:
         raise SystemExit(f"RPC_URL is chain {chain}, not {CHAIN_ID}")
@@ -2965,7 +3144,9 @@ def start_families():
 
 def main():
     roll_day(); restored = restore_today(); room_restored = restore_room_obs(); info = checks()
-    log({"ev": "start", "release": RELEASE, "dry_run": DRY_RUN, "launchers": sorted(LAUNCHERS), "relay": RELAY, "wallet": WALLET, "stake_eth": STAKE_ETH, "min_trigger_eth": MIN_TRIGGER_ETH,
+    log({"ev": "start", "release": RELEASE, "dry_run": DRY_RUN, "block_source": BLOCK_SOURCE,
+         **({"block_tx_ws": rpc_host(BLOCK_TX_WS) if BLOCK_TX_WS else None, "block_ws": [rpc_host(u) for u in BLOCK_WS_URLS], "block_tx_to": rpc_tx_to() if BLOCK_TX_WS else None}
+            if BLOCK_SOURCE == "rpc" else {}), "launchers": sorted(LAUNCHERS), "relay": RELAY, "wallet": WALLET, "stake_eth": STAKE_ETH, "min_trigger_eth": MIN_TRIGGER_ETH,
          "fee_ppm": [FEE_MIN_PPM, FEE_MAX_PPM], "min_liquidity": MIN_LIQUIDITY, "trigger_max_blocks": TRIGGER_MAX_BLOCKS, "buy_slip": BUY_SLIP, "buy_deadline_s": BUY_DEADLINE_S, "gas_headroom": GAS_HEADROOM,
          "hold_blocks": HOLD_BLOCKS, "sell_lead_blocks": SELL_LEAD_BLOCKS, "take_profit": TAKE_PROFIT, "buy_delay_blocks": BUY_DELAY_BLOCKS,
          "entry": ENTRY, "seat_fire_at": SEAT_FIRE_AT, "launch_selectors": sorted(LAUNCH_SELECTORS), "launcher_code_hashes": len(LAUNCHER_CODE_HASHES),
@@ -2982,7 +3163,7 @@ def main():
     signal.signal(signal.SIGTERM, on_stop)
     threading.Thread(target=watchdog, daemon=True).start(); threading.Thread(target=fee_loop, daemon=True).start()
     try:
-        asyncio.run(feed_loop())
+        asyncio.run(rpc_loop() if BLOCK_SOURCE == "rpc" else feed_loop())
     except KeyboardInterrupt:
         pass
     except Exception:

@@ -1601,6 +1601,26 @@ The flip-engine was left stopped with an empty relay (Oct 20): this brings it ba
    the first 10 trades: stop and look (`HALTED.front.c1` is the family's halt file).
 5. Gate 3: `stake_eth` 0.006, then 0.012 (the engine's cap), a step a day while the live mean holds.
 
+### 4n-b. The blocks from providers (BLOCK_SOURCE=rpc, Nov 2)
+
+Robinhood's own feed refuses this box's address range (403, HANDOFF 16.x), and the Dwellir feed is not used. The engine reads the blocks
+from providers' websockets instead: Alchemy's `alchemy_minedTransactions` stream (filtered to the PositionManager, the C-1 router and the
+relay: about one message a second) about half a block behind the feed, and publicnode's and dRPC's newHeads with each full block, about
+0.8 blocks behind, which back every transaction up. Sends stay on Robinhood's sequencer (`SEQ_URL`). `deploy/feedrace.py` measures the
+sources from the box itself.
+
+    sudo systemctl stop flip-engine
+    sudo sed -i '/^BLOCK_SOURCE=/d; /^BLOCK_TX_WS=/d; /^BLOCK_WS_URLS=/d; /^RPC_URL=/d' /etc/flip/engine.env
+    sudo nano /etc/flip/engine.env      # add these four lines, with your Alchemy key in the two Alchemy URLs:
+        BLOCK_SOURCE=rpc
+        BLOCK_TX_WS=wss://robinhood-mainnet.g.alchemy.com/v2/YOUR_KEY
+        BLOCK_WS_URLS=wss://robinhood-rpc.publicnode.com,wss://robinhood.drpc.org
+        RPC_URL=https://robinhood-mainnet.g.alchemy.com/v2/YOUR_KEY
+    sudo systemctl start flip-engine
+    sleep 90 && sudo grep -E '"ev":"(start|feed_connected|feed_error|flow)"' /var/log/flip/engine.jsonl | tail -6 | cut -c1-220
+
+Three `feed_connected` lines (the tx stream and two heads), then a `flow` line a minute with `blocks` growing by about 600.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the
