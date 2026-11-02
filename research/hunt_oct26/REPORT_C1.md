@@ -18,8 +18,13 @@ holds ETH and funds a wallet crowd (`0xd6d35b56` holds 79 ETH; the public Univer
 | crowd operator | launch | its routers | pools pumped in 7 days | the ride (K2, quiet 20) |
 |---|---|---|---|---|
 | **C-1** | v4 PositionManager multicall `ac9650d8`, 2,276 B, 0 ETH | `0xd6d35b56` | 811 | **+12.1% a trade, 4 pulled, 7/7 days** |
-| "v4-2020" | the same call, 2,020 B | `0x75379d5d`, `0xcbd412a8` (one code) | 71 | +132% a trade, 0 pulled, but 71 pools and uneven days |
+| "v4-2020" | the same call, 2,020 B | `0x75379d5d`, `0xcbd412a8` (one code) | 71 | **a trap**: +132% on paper only (the simulation assumes anyone can sell) |
 | V3 crowd (Oct's v3crowd) | V3 PositionManager, 836 B | `0x7feb3ecb`, `0xaf9d6fa0`, `0xfc7241d4`, `0x80e49ed1` | 335 | +10.2% a trade, 4 pulled; outsiders' real buys pulled within 100 blocks 18% (4% base): more reactive than C-1 |
+
+**The "v4-2020" crowd is a honeypot for outsiders** (checked Nov 2, the 6 h to 19:30 UTC): its router pumps only launches that carry
+their own 16,817-byte hook (beforeSwap, afterSwap and both swap return-deltas: it can rewrite every swap); in those pools its router
+bought 2,076 times and sold 857 times, outsiders bought 12 times and **sold 0 times**. Skip it (the repo's rule on hooks that block sells).
+C-1's pools have no hook and outsiders' sells go through (30-40% of outsiders got out this week; 1,317 outsider sells in October).
 
 `0x204faca1` (a router that calls the PoolManager itself, `routerlab_rh_0x204faca1.out`) is a public-style router of 21,063 wallets, not
 a crowd: following it loses about 9% a trade.
