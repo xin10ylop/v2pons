@@ -1,0 +1,125 @@
+base 20261031..20261102: 7996 pools created
+  launch transactions read: 7996
+  swaps read: 19137
+
+202 launch groups with 10+ pools; paper at 0.005 native a trade; big buy = first buy of 0.02+ within 30 blocks
+v4/0x7c5f5a4b/0xac9650d8/2180/0.501/100/1/
+    pools 354 (118/day), pulled 2h 100%, launch native 0.501 | big buy in 95% at +15.0 (p25 13, p75 16), size 0.201, top target 0x6ff5693b 100%, senders 1, by launcher 0%
+    FRONT n 342 mean +104.7% won 99% pulled 2 -> +0.5965/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 6: big came 0% (clean 97%)
+v4/0x7c5f5a4b/0xac9650d8/2020/0/100/1/hook
+    pools 338 (113/day), pulled 2h 99%, launch native 0, HOOK-DELTA 338 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 337 mean +4.4% won 100% pulled 0 -> +0.0249/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 337: big came 0% (clean 0%)
+v2/0x4752ba5d/0xf305d719/196/1.2/3000
+    pools 92 (31/day), pulled 2h 100%, launch native 1.2 | big buy in 99% at +12 (p25 9, p75 17), size 0.0503, top target 0x4752ba5d 100%, senders 13, by launcher 0%
+    FRONT n 92 mean +9.5% won 99% pulled 0 -> +0.0146/day | BEHIND h20 +15.6% h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 99%)
+v2/0x4752ba5d/0xf305d719/196/1.5/3000
+    pools 82 (27/day), pulled 2h 99%, launch native 1.5 | big buy in 98% at +11.0 (p25 10, p75 12), size 0.0606, top target 0x4752ba5d 100%, senders 14, by launcher 0%
+    FRONT n 81 mean +7.4% won 98% pulled 1 -> +0.0100/day | BEHIND h20 -45.2% h100 - (n 0, pulled 0) -> +0.0000/day | fronted 1: big came 0% (clean 99%)
+v2/0x4752ba5d/0xf305d719/196/1.6/3000
+    pools 286 (95/day), pulled 2h 100%, launch native 1.6 | big buy in 84% at +13 (p25 12, p75 19), size 0.0363, top target 0x4752ba5d 100%, senders 21, by launcher 0%
+    FRONT n 286 mean +1.6% won 97% pulled 7 -> +0.0079/day | BEHIND h20 +4.6% h100 - (n 0, pulled 0) -> +0.0000/day | fronted 45: big came 0% (clean 99%)
+v4/0x00000000/0x765e827f/4420/0/8388608/200/hook
+    pools 279 (93/day), pulled 2h 0%, launch native 0, HOOK-DELTA 279 | big buy in 6% at +8 (p25 7, p75 16), size 774, top target 0xd8ba9d1a 47%, senders 8, by launcher 0%
+    FRONT n 43 mean +2.6% won 23% pulled 0 -> +0.0019/day | BEHIND h20 -4.2% h100 - (n 0, pulled 0) -> +0.0000/day | fronted 5: big came 0% (clean 6%)
+v2/0x4752ba5d/0xf305d719/196/15.0/3000
+    pools 100 (33/day), pulled 2h 99%, launch native 15 | big buy in 100% at +15.0 (p25 14, p75 16), size 0.0848, top target 0x4752ba5d 100%, senders 1, by launcher 0%
+    FRONT n 100 mean +0.4% won 81% pulled 0 -> +0.0007/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 100%)
+v4/0xb405b396/0x6790cbbe/2372/1e-12/0/60/hook
+    pools 12 (4/day), pulled 2h 0%, launch native 0, HOOK-DELTA 12 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 12 mean +2.4% won 42% pulled 0 -> +0.0005/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 5: big came 0% (clean 0%)
+v4/0x2a68080e/0xb0da329a/1764/0.001/0/200/hook
+    pools 14 (5/day), pulled 2h 0%, launch native 0, HOOK-DELTA 14 | big buy in 14% at +17.5 (p25 11, p75 24), size 0.0735, top target 0xf849e0d4 100%, senders 2, by launcher 0%
+    FRONT n 14 mean +1.9% won 14% pulled 0 -> +0.0004/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 14%)
+v4/0x815542e8/0x7c33638d/769/0/30000/200/
+    pools 15 (5/day), pulled 2h 0%, launch native 0 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 2 mean -6.0% won 0% pulled 0 -> -0.0002/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0x77777775/0xa423ada1/1252/0/8388608/200/hook
+    pools 220 (73/day), pulled 2h 0%, launch native 0 | big buy in 2% at +10 (p25 7, p75 14), size 29, top target 0x9689992f 80%, senders 3, by launcher 0%
+    FRONT n 146 mean -2.0% won 1% pulled 0 -> -0.0048/day | BEHIND h20 -2.6% h100 - (n 0, pulled 0) -> +0.0000/day | fronted 32: big came 0% (clean 3%)
+v4/0x77777775/0xa423ada1/1284/0/8388608/200/hook
+    pools 67 (22/day), pulled 2h 0%, launch native 0 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 49 mean -2.0% won 0% pulled 0 -> -0.0016/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 9: big came 0% (clean 0%)
+v4/0xe85a59c6/0xdf40224a/3876/1e-06/8388608/200/hook
+    pools 24 (8/day), pulled 2h 0%, launch native 0, HOOK-DELTA 24 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 24 mean -2.1% won 0% pulled 0 -> -0.0008/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0x7c5f5a4b/0xac9650d8/1444/0/10000/200/
+    pools 52 (17/day), pulled 2h 100%, launch native 0 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 48 mean -2.1% won 0% pulled 0 -> -0.0017/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0xe85a59c6/0xdf40224a/2436/0/8388608/200/hook
+    pools 10 (3/day), pulled 2h 0%, launch native 0, HOOK-DELTA 10 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 1 mean -2.1% won 0% pulled 0 -> -0.0000/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0xe85a59c6/0xdf40224a/4132/1e-06/8388608/200/hook
+    pools 51 (17/day), pulled 2h 0%, launch native 0, HOOK-DELTA 51 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 51 mean -3.1% won 0% pulled 0 -> -0.0026/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0xe85a59c6/0xdf40224a/4100/1e-06/8388608/200/hook
+    pools 86 (29/day), pulled 2h 0%, launch native 0, HOOK-DELTA 86 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 86 mean -3.1% won 0% pulled 0 -> -0.0044/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0x7c5f5a4b/0xac9650d8/1444/0.00122/852480/200/
+    pools 11 (4/day), pulled 2h 0%, launch native 0 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 0 mean - won - pulled 0 -> +0.0000/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0x7c5f5a4b/0xac9650d8/1444/0/3000/60/
+    pools 19 (6/day), pulled 2h 100%, launch native 0 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 17 mean -0.7% won 0% pulled 0 -> -0.0002/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0xe85a59c6/0xdf40224a/4068/1e-06/8388608/200/hook
+    pools 55 (18/day), pulled 2h 0%, launch native 0, HOOK-DELTA 55 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 55 mean -3.1% won 0% pulled 0 -> -0.0028/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0xe85a59c6/0xdf40224a/2308/0/8388608/200/hook
+    pools 14 (5/day), pulled 2h 0%, launch native 0, HOOK-DELTA 14 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 3 mean -2.1% won 0% pulled 0 -> -0.0001/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0x660eaaed/0x882db707/4001/0/8388608/200/hook
+    pools 80 (27/day), pulled 2h 0%, launch native 0, HOOK-DELTA 80 | big buy in 1% at +13 (p25 13, p75 13), size 3.5e+03, top target 0x836b336f 100%, senders 1, by launcher 0%
+    FRONT n 4 mean -0.0% won 50% pulled 0 -> -0.0000/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 2: big came 0% (clean 1%)
+v4/0x5ff137d4/0x1fad948c/3588/0/8388608/10/hook
+    pools 205 (68/day), pulled 2h 0%, launch native 0 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 0 mean - won - pulled 0 -> +0.0000/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0xe85a59c6/0xdf40224a/4164/1e-06/8388608/200/hook
+    pools 14 (5/day), pulled 2h 0%, launch native 0, HOOK-DELTA 14 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 14 mean -3.1% won 0% pulled 0 -> -0.0007/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0x00000000/0x765e827f/4260/0/8388608/200/hook
+    pools 125 (42/day), pulled 2h 0%, launch native 0, HOOK-DELTA 125 | big buy in 1% at +8 (p25 8, p75 8), size 1.28e+07, top target 0xf849e0d4 100%, senders 1, by launcher 0%
+    FRONT n 11 mean -4.0% won 0% pulled 0 -> -0.0007/day | BEHIND h20 +44.3% h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 1%)
+v4/0xe85a59c6/0xdf40224a/4036/1e-06/8388608/200/hook
+    pools 17 (6/day), pulled 2h 0%, launch native 0, HOOK-DELTA 17 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 17 mean -3.1% won 0% pulled 0 -> -0.0009/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0xe85a59c6/0xdf40224a/3588/1e-06/8388608/200/hook
+    pools 76 (25/day), pulled 2h 0%, launch native 0, HOOK-DELTA 76 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 76 mean -2.2% won 0% pulled 0 -> -0.0028/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0xe85a59c6/0xdf40224a/2404/0/8388608/200/hook
+    pools 19 (6/day), pulled 2h 0%, launch native 0, HOOK-DELTA 19 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 1 mean -2.1% won 0% pulled 0 -> -0.0000/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0x47102c3b/0xa95a7966/3716/0.5/0/60/hook
+    pools 23 (8/day), pulled 2h 0%, launch native 0, HOOK-DELTA 23 | big buy in 22% at +30 (p25 29, p75 30), size 2.31e+06, top target 0x6ff5693b 80%, senders 2, by launcher 0%
+    FRONT n 23 mean -0.1% won 0% pulled 0 -> -0.0000/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 22%)
+v4/0xe85a59c6/0xdf40224a/3620/1e-06/8388608/200/hook
+    pools 10 (3/day), pulled 2h 0%, launch native 0, HOOK-DELTA 10 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 10 mean -2.1% won 0% pulled 0 -> -0.0004/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0xe85a59c6/0xdf40224a/4196/1e-06/8388608/200/hook
+    pools 17 (6/day), pulled 2h 0%, launch native 0, HOOK-DELTA 17 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 17 mean -3.1% won 0% pulled 0 -> -0.0009/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v4/0x7c5f5a4b/0xac9650d8/1444/1.2/0/1/
+    pools 690 (230/day), pulled 2h 100%, launch native 1.2 | big buy in 61% at +3 (p25 3, p75 7), size 0.0229, top target 0xfdf682f5 98%, senders 423, by launcher 0%
+    FRONT n 690 mean -54.5% won 42% pulled 398 -> -0.6269/day | BEHIND h20 -33.7% h100 - (n 0, pulled 0) -> +0.0000/day | fronted 277: big came 4% (clean 68%)
+v2/0xe8c6037c/0xf752ef6c/1252/1.87e-07/3000
+    pools 10 (3/day), pulled 2h 0%, launch native 0.959 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 5 mean -0.7% won 0% pulled 0 -> -0.0001/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v2/0x641c1c78/0xf752ef6c/1252/2.15e-07/3000
+    pools 16 (5/day), pulled 2h 0%, launch native 0.959 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 8 mean -0.7% won 0% pulled 0 -> -0.0001/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v2/0xe8c6037c/0xf752ef6c/1252/1.84e-07/3000
+    pools 14 (5/day), pulled 2h 0%, launch native 0.959 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 7 mean -0.7% won 0% pulled 0 -> -0.0001/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v2/0x4ec87b66/0xf752ef6c/1252/1.6e-07/3000
+    pools 10 (3/day), pulled 2h 0%, launch native 0.959 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 5 mean -0.7% won 0% pulled 0 -> -0.0001/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v2/0x641c1c78/0xf752ef6c/1252/2.25e-07/3000
+    pools 14 (5/day), pulled 2h 0%, launch native 0.959 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 7 mean -0.7% won 0% pulled 0 -> -0.0001/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v2/0xd3de0392/0xf752ef6c/1252/2.48e-07/3000
+    pools 12 (4/day), pulled 2h 0%, launch native 0.959 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 6 mean -0.7% won 0% pulled 0 -> -0.0001/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v2/0x641c1c78/0xf752ef6c/1252/2.31e-07/3000
+    pools 16 (5/day), pulled 2h 0%, launch native 0.959 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 8 mean -0.7% won 0% pulled 0 -> -0.0001/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)
+v2/0x8994ef94/0xf752ef6c/1252/1.83e-07/3000
+    pools 10 (3/day), pulled 2h 0%, launch native 0.959 | big buy in 0% at +- (p25 -, p75 -), size -, top target None -, senders 0, by launcher -
+    FRONT n 5 mean -0.7% won 0% pulled 0 -> -0.0001/day | BEHIND h20 - h100 - (n 0, pulled 0) -> +0.0000/day | fronted 0: big came - (clean 0%)

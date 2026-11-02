@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-v2pons/48f7dd16-3073-5667-9085-af9d544164ac/scratchpad/slot30w.py", line 7, in <module>
+    import hlib as H
+ModuleNotFoundError: No module named 'hlib'
