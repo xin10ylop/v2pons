@@ -1,0 +1,24 @@
+base: 88 line-days from 32 days
+
+== NEW lines (not in any earlier report)
+  v4 fee 0 ts 1 x 2.5                                                                                   days  21 (20260910..20260930) pools   4399 | TRAP     | real outside buys sold 0 rugged 19 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +2.7%
+  v4 fee 10000 ts 200 x 1.5                                                                             days   7 (20260910..20260916) pools   1474 | TRAP     | real outside buys sold 0 rugged 3 (with an exit window 2) | fronted: fleet came 0 / none 0 | seat1 median +11.3%
+  v4 fee 100 ts 1 x 0.301                                                                               days  10 (20260910..20260919) pools   1190 | TRAP     | real outside buys sold 0 rugged 1 (with an exit window 0) | fronted: fleet came 0 / none 1 | seat1 median +6.7%
+  v4 fee 100 ts 1 x 15                                                                                  days   1 (20261004..20261004) pools     35 | CLOSED   | real outside buys sold 3 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 8 | seat1 median +nan%
+  v3 fee 3000 ts 60 x 5                                                                                 days   1 (20261015..20261015) pools      9 | UNTESTED | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +nan%
+  v4 fee 3000 ts 60 via 0x7c5f5a4bbd8fd63184577525326123b5                                              days   1 (20260925..20260925) pools      8 | UNTESTED | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +nan%
+
+== lines already documented
+  v4 fee 5000 ts 100 hook x 1.53                           the 2.433 operator's Base line (base-0.2 tra days   2 (20261014..20261015) pools     85 | FRONT-OPEN | real outside buys sold 21 rugged 0 (with an exit window 24) | fronted: fleet came 22 / none 0 | seat1 median +22.1%
+      candidate 20261014_00 n   34 TOLERANT+OPEN  T+5     seat1 +20.9% seat3 +65.0% | sold 9 rugged 0 held 3 | early outside pnl +0.0364
+      candidate 20261015_00 n   51 TOLERANT+OPEN  T+5     seat1 +23.3% seat3 +50.4% | sold 12 rugged 0 held 0 | early outside pnl +0.0508
+  v4 fee 5000 ts 100 hook x 4.13                           the 2.433 operator's Base line (base-0.2 tra days   1 (20261014..20261014) pools     48 | FRONT-OPEN | real outside buys sold 8 rugged 0 (with an exit window 8) | fronted: fleet came 6 / none 0 | seat1 median +4.4%
+      candidate 20261014_00 n   48 TOLERANT+OPEN  T+5     seat1 +4.4% seat3 +11.4% | sold 8 rugged 0 held 0 | early outside pnl +0.0038
+  v4 fee 5000 ts 100 hook x 2.13                           the 2.433 operator's Base line (base-0.2 tra days   1 (20261014..20261014) pools     20 | FRONT-OPEN | real outside buys sold 5 rugged 0 (with an exit window 5) | fronted: fleet came 5 / none 0 | seat1 median +13.1%
+      candidate 20261014_00 n   20 TOLERANT+OPEN  T+5     seat1 +13.1% seat3 +38.8% | sold 5 rugged 0 held 0 | early outside pnl +0.0037
+  v4 fee 100 ts 1 x 0.501                                  0.5013 ETH timer line (pulls 2-3 blocks afte days   8 (20261026..20261102) pools   1035 | TRAP     | real outside buys sold 0 rugged 2 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +4.0%
+  v2 fee - ts - x 1.6                                      Base V2 crew tiers (live-tested Oct 21: clos days   8 (20261026..20261102) pools    982 | CLOSED   | real outside buys sold 23 rugged 4 (with an exit window 1) | fronted: fleet came 0 / none 2 | seat1 median +3.4%
+  v4 fee 0 ts 1 x 1.2                                      1.2 ETH fee-0 tick-1 sniper trap / volume bo days   3 (20261027..20261101) pools    791 | TRAP     | real outside buys sold 0 rugged 6 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median -100.0%
+  v2 fee - ts - x 15                                       Base V2 crew tiers (live-tested Oct 21: clos days   8 (20261026..20261102) pools    290 | UNTESTED | real outside buys sold 0 rugged 0 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +1.1%
+  v2 fee - ts - x 1.5                                      Base V2 crew tiers (live-tested Oct 21: clos days   8 (20261026..20261102) pools    226 | TRAP     | real outside buys sold 0 rugged 4 (with an exit window 0) | fronted: fleet came 0 / none 1 | seat1 median +5.9%
+  v2 fee - ts - x 1.2                                      Base V2 crew tiers (live-tested Oct 21: clos days   8 (20261026..20261102) pools    225 | TRAP     | real outside buys sold 0 rugged 3 (with an exit window 0) | fronted: fleet came 0 / none 0 | seat1 median +4.6%

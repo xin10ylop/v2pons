@@ -1,0 +1,65 @@
+reference 2.433 token code: 1526 B
+rh 20261027_00: 899 pulled pools of 0.5+ read, 15 matches
+       5 v4 fee 500 ts 1            x 4         family 2857 B      via 0x58daec3116aae6d93017baaea7749052e8a04fa7
+       2 v4 fee 10000 ts 200 hook   x 11        family 7196 B      via 0x58daec3116aae6d93017baaea7749052e8a04fa7
+       2 v4 fee 500 ts 200          x 1.65      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2500 ts 200         x 2.95      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 500 ts 200          x 1.8       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 1500 ts 200         x 2.5       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2500 ts 200         x 2.4       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2000 ts 200         x 1.45      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+rh 20261028_00: 1267 pulled pools of 0.5+ read, 81 matches
+       3 v4 fee 500 ts 1            x 4         family 2857 B      via 0x58daec3116aae6d93017baaea7749052e8a04fa7
+       2 v4 fee 1000 ts 200         x 1.3       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       2 v4 fee 500 ts 200          x 1.1       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 4600 ts 200         x 0.817     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2300 ts 200         x 0.941     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 4600 ts 200         x 0.833     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 3300 ts 200         x 0.827     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 4200 ts 200         x 0.847     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+rh 20261029_00: 937 pulled pools of 0.5+ read, 96 matches
+       1 v4 fee 500 ts 1            x 4         family 2857 B      via 0x58daec3116aae6d93017baaea7749052e8a04fa7
+       1 v4 fee 3700 ts 200         x 1.046     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 3000 ts 200         x 1.046     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 3900 ts 200         x 1.145     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 4300 ts 200         x 1.085     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 4200 ts 200         x 0.781     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2200 ts 200         x 1.218     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2100 ts 200         x 0.936     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+rh 20261030_00: 876 pulled pools of 0.5+ read, 57 matches
+       2 v4 fee 1000 ts 200         x 0.7       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       2 v4 fee 1000 ts 200         x 0.65      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       2 v4 fee 2500 ts 200         x 0.95      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 4800 ts 200         x 1.246     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 4100 ts 200         x 1.031     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 3000 ts 200         x 1.247     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 4400 ts 200         x 1.252     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 3800 ts 200         x 1.005     family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+rh 20261031_00: 953 pulled pools of 0.5+ read, 23 matches
+       2 v4 fee 500 ts 200          x 0.5       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2000 ts 200         x 1.15      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 500 ts 200          x 1.15      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2000 ts 200         x 0.65      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 1500 ts 200         x 0.55      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 1500 ts 200         x 1.1       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2500 ts 200         x 0.7       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 3000 ts 200         x 1.3       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+rh 20261101_00: 990 pulled pools of 0.5+ read, 37 matches
+       3 v4 fee 100 ts 1 hook       x 11        family 7196 B      via 0x58daec3116aae6d93017baaea7749052e8a04fa7
+       3 v4 fee 2500 ts 200         x 2.15      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       3 v4 fee 2000 ts 200         x 2.85      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       2 v4 fee 500 ts 200          x 1.6       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       2 v4 fee 500 ts 200          x 2.7       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       2 v4 fee 2000 ts 200         x 1.45      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       2 v4 fee 1000 ts 200         x 2.05      family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2000 ts 200         x 2.7       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+rh 20261102_00: 388 pulled pools of 0.5+ read, 42 matches
+       1 v4 fee 1000 ts 200         x 2.3       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 1000 ts 200         x 2.5       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 1000 ts 200         x 1.6       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 500 ts 200          x 2.2       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2000 ts 200         x 2.3       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 500 ts 200          x 2.3       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2000 ts 200         x 1.9       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+       1 v4 fee 2500 ts 200         x 1.9       family 1770 B      via 0x3194e32622c5d860a0572c74edda99dcfd8fc827
+DONE

@@ -1,0 +1,13 @@
+rh rh_20261027_00.json, rh_20261028_00.json, rh_20261029_00.json, rh_20261030_00.json, rh_20261031_00.json, rh_20261101_00.json, rh_20261102_00.json: 6310 pulled pools (0 log queries failed), 17380 transactions swapping in the first 40 blocks (0 unread)
+  SELECTOR MATCH 0xc1120e3d (2.433 bot buy (Robinhood)) to 0x1cbaf24d53fe930fce8eff149fa797d2611da149: 1275 early transactions
+  0x8876789976decbfcbbbe364623c63652db8c0904 pools  4552 wallets  237 | code  24546 B 2ce6aaaf9f41 | selectors [('0x3593564c', 12913), ('0x24856bc3', 51)] | value 8.677 
+  0x89e5db8b5aa49aa85ac63f691524311aeb649eba pools  1594 wallets  498 | code  21902 B bd55ea26b2f8 | selectors [('0xb6f9de95', 1603), ('0x7ff36ab5', 494)] | value 27.723 
+  0x1cbaf24d53fe930fce8eff149fa797d2611da149 pools  1268 wallets  201 | code  20443 B bd31d4da7db8 | selectors [('0xc1120e3d', 1275)] | value 151.136 CODE MATCH rh
+      shapes: v4 fee 10000 ts 200 x 3 (1034), v4 fee 10000 ts 200 x 5 (234)
+  0x257925db72a896d7afbe7b117ba2e295b40a0052 pools   567 wallets    1 | code   5490 B d57ccda98ffd | selectors [('0xbe0caecb', 567)] | value 0.002 
+  0xf2c69db0311b3ded8ec7f39e80f555a200cc2839 pools   213 wallets    1 | code     76 B 46a010df31eb | selectors [('0xd1d4fd92', 213), ('0x2249d609', 175)] | value 0.213 
+  0x92475293e578c7d88651d160d2b0e45e04e4528b pools    28 wallets    2 | code  34590 B 813fc807c1a5 | selectors [('0x39ecce49', 28)] | value 0.001 
+  0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc pools    20 wallets    6 | code    752 B f9e0c7528d41 | selectors [('0x4d819a2a', 23)] | value 0.359 
+  0xd9206a6d10e9d67a56cc6b1b7918ba2c1da42fcc pools    15 wallets    1 | code  13487 B e2400b7af79c | selectors [('0x18fc76a4', 15)] | value 0.003 
+  0x0000000000001ff3684f28c67538d4d072c22734 pools     7 wallets    1 | code   1009 B 99f5e8edacea | selectors [('0x2213bc0b', 7)] | value 0.014 
+DONE

@@ -1,0 +1,8 @@
+base base_20261027_00.json, base_20261028_00.json, base_20261029_00.json, base_20261030_00.json, base_20261031_00.json, base_20261101_00.json, base_20261102_00.json: 3173 pulled pools (0 log queries failed), 9238 transactions swapping in the first 10 blocks (0 unread)
+  0x6ff5693b99212da76ad316178a184ab56d299b43 pools  1603 wallets    4 | code  19499 B 27713951fb06 | selectors [('0x3593564c', 1984)] | value 12.620 
+  0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24 pools  1465 wallets 1234 | code  17891 B ec2a9bc649a4 | selectors [('0x7ff36ab5', 2365), ('0xb6f9de95', 1418), ('0x18cbafe5', 6)] | value 16.538 
+  0xfdf682f51fe81aa4898f0ae2163d8a55c127fbc7 pools   789 wallets 1755 | code  24546 B 4436f4578772 | selectors [('0x3593564c', 1879)] | value 30.278 
+  0xedfe9c2e0a69578af9e3de5c284941930bc05ad8 pools   787 wallets    1 | code   6831 B 81664b554693 | selectors [('0x1d9b6272', 787)] | value 0.021 
+  0x3b999c008dafb5952a992a4e098dac9034cd5dbd pools   778 wallets    1 | code    793 B b6d82570d348 | selectors [('0x2b1672e1', 778)] | value 0.010 
+  no early transaction with the 2.433 bot's selectors
+DONE
