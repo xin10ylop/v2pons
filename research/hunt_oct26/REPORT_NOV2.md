@@ -72,3 +72,20 @@ fails" rule applies. Not a seat.
 New: `earlybuyers.py`, `research/solana/solsize.py`. Outputs: `earlybuyers_rh.out`, `earlybuyers_base.out`, `bytecode_deep_rh.out`,
 `bytecode_deep_base.out`, `verdicts_rh_nov2.out`, `verdicts_base_nov2.out`. The day files (`out/rh_YYYYMMDD_00.json` etc.) stay in
 `out/` (gitignored).
+
+## Follow-up: "there must be a way" - the three Robinhood lines tested on their tapes
+
+`linelab.py` (new; `linelab_rh_nov2.out`): tapes of every pool of the three lines, Oct 27 - Nov 2, each swap's sender resolved, a paper
+seat on the recorded reserves (5 entries x 5 exits, 0.01 ETH, no reaction modelled), and the outsiders split by their wallets' nonce.
+
+- **Operator A** (340 pools, launcher `0x3194e326`): the paper seat looks rich (after the fleet's first buy, hold 60 s: +6.4 ETH at 0.01
+  a trade). It is the fleet's pump. The 3,619 "outsider" buys that got out (96%) are fresh single-use wallets (nonce under 20, 1-2 pools,
+  0.0326 ETH each, uniform) that together lost 171.7 ETH: its rotating fleet, whose losses the pull recovers. Wallets with a history
+  (nonce 20+) that bought 0.0002+: **59 buys, 86-87% pulled within 5 s, 0-4% got out.** The October detector (whitelist + a 0.0002 ETH
+  per-pool counter, `REPORT_OCT20.md`) is still on. Trap.
+- **The 11 ETH hooked line** (6 pools): the hook's code (2,022 B, decoded) takes **10% of every swap** (1,000 / 10,000 in beforeSwap and
+  afterSwap), with no time or sender rule; its only per-pool difference is the launcher's address, allowed (with `0x8f10b468`) to call
+  its admin functions. **Every paper entry and exit loses** (0 of 22 won). Outsiders put in 5.4 ETH and lost 3.45.
+- **The 4 ETH fee-1 line** (18 pools, Oct 31 - Nov 1, then none): its "outsiders" are 138 bot wallets (nonce median 3,288) buying
+  0.037 ETH: rotating fleet, not a test. No wallet with a short history ever bought, so its reaction to us is unknown; it is the
+  tick-spacing-1 trap's machinery (which rugged 15 of 15 strangers), and it stopped after Nov 1. Paper seat +0.04 ETH over 18 pools.

@@ -1,0 +1,30 @@
+
+== opA: 340 pulled pools over 7 days | launch native median 1.25 | life median 99s | fleet wallets 96 (in 3+ pools)
+   outsiders, dust < 0.0002: 31 buys | pulled within 5s 13% (base rate 3%), within 30s 23% | sold before the pull 29% | net -0.0018 on 0.0026 | size median 0.0001, in at median 72s
+   outsiders, real >= 0.0002: 3678 buys | pulled within 5s 9% (base rate 7%), within 30s 27% | sold before the pull 94% | net -172.4155 on 165.0062 | size median 0.0325, in at median 20s
+   paper seat at 0.01 (no reaction to our buy; tax 0% a leg):
+     front    
+     fleet1+1 hold15 +1.9755 (274/340 won, 58 pulled) | hold60 +6.4048 (180/340 won, 156 pulled) | hold180 +4.2685 (142/340 won, 196 pulled) | tp20 +0.6977 (323/340 won, 15 pulled) | tp50 +1.4296 (308/340 won, 30 pulled)
+     age10    hold15 +1.8511 (248/325 won, 71 pulled) | hold60 +3.2903 (173/325 won, 148 pulled) | hold180 +1.9798 (140/325 won, 183 pulled) | tp20 +0.3330 (286/325 won, 37 pulled) | tp50 +0.7852 (260/325 won, 63 pulled)
+     age30    hold15 +0.3024 (188/245 won, 51 pulled) | hold60 +0.6123 (169/245 won, 73 pulled) | hold180 -0.4943 (126/245 won, 117 pulled) | tp20 +0.3172 (224/245 won, 19 pulled) | tp50 +0.1889 (182/245 won, 61 pulled)
+     age60    hold15 -0.0296 (55/185 won, 8 pulled) | hold60 -0.0956 (54/185 won, 26 pulled) | hold180 -1.4800 (23/185 won, 152 pulled) | tp20 -1.2138 (46/185 won, 130 pulled) | tp50 -1.4572 (25/185 won, 151 pulled)
+
+== hook11: 6 pulled pools over 3 days | launch native median 11.00 | life median 1928s | fleet wallets 34 (in 3+ pools)
+   outsiders, dust < 0.0002: 4 buys | pulled within 5s 0% (base rate 0%), within 30s 25% | sold before the pull 0% | net -0.0005 on 0.0005 | size median 0.0001, in at median 886s
+   outsiders, real >= 0.0002: 69 buys | pulled within 5s 0% (base rate 0%), within 30s 1% | sold before the pull 39% | net -3.4501 on 5.4252 | size median 0.0899, in at median 1041s
+   paper seat at 0.01 (no reaction to our buy; tax 10% a leg):
+     front    
+     fleet1+1 hold15 -0.0100 (0/5 won, 0 pulled) | hold60 -0.0095 (0/5 won, 0 pulled) | hold180 -0.0167 (0/5 won, 1 pulled) | tp20 -0.0167 (0/5 won, 1 pulled) | tp50 -0.0167 (0/5 won, 1 pulled)
+     age10    hold15 -0.0059 (0/3 won, 0 pulled) | hold60 -0.0060 (0/3 won, 0 pulled) | hold180 -0.0054 (0/3 won, 0 pulled) | tp20 -0.0054 (0/3 won, 0 pulled) | tp50 -0.0054 (0/3 won, 0 pulled)
+     age30    hold15 -0.0080 (0/4 won, 0 pulled) | hold60 -0.0081 (0/4 won, 0 pulled) | hold180 -0.0154 (0/4 won, 1 pulled) | tp20 -0.0154 (0/4 won, 1 pulled) | tp50 -0.0154 (0/4 won, 1 pulled)
+     age60    hold15 -0.0100 (0/5 won, 0 pulled) | hold60 -0.0095 (0/5 won, 0 pulled) | hold180 -0.0167 (0/5 won, 1 pulled) | tp20 -0.0167 (0/5 won, 1 pulled) | tp50 -0.0167 (0/5 won, 1 pulled)
+
+== fee1x4: 18 pulled pools over 2 days | launch native median 4.00 | life median 318s | fleet wallets 357 (in 3+ pools)
+   outsiders, dust < 0.0002: 3 buys | pulled within 5s 0% (base rate 0%), within 30s 33% | sold before the pull 33% | net -0.0160 on 0.0002 | size median 0.0001, in at median 217s
+   outsiders, real >= 0.0002: 230 buys | pulled within 5s 2% (base rate 1%), within 30s 9% | sold before the pull 37% | net -7.5134 on 14.6766 | size median 0.0372, in at median 151s
+   paper seat at 0.01 (no reaction to our buy; tax 0% a leg):
+     front    
+     fleet1+1 hold15 +0.0145 (18/18 won, 0 pulled) | hold60 +0.0342 (14/18 won, 4 pulled) | hold180 +0.0706 (9/18 won, 9 pulled) | tp20 +0.0373 (18/18 won, 0 pulled) | tp50 +0.0319 (14/18 won, 4 pulled)
+     age10    hold15 +0.0073 (17/18 won, 1 pulled) | hold60 +0.0374 (14/18 won, 4 pulled) | hold180 +0.0675 (9/18 won, 9 pulled) | tp20 +0.0032 (15/18 won, 3 pulled) | tp50 +0.0315 (14/18 won, 4 pulled)
+     age30    hold15 -0.0185 (12/17 won, 3 pulled) | hold60 +0.0294 (13/17 won, 4 pulled) | hold180 +0.0738 (9/17 won, 8 pulled) | tp20 -0.0008 (14/17 won, 3 pulled) | tp50 +0.0260 (13/17 won, 4 pulled)
+     age60    hold15 +0.0040 (13/14 won, 1 pulled) | hold60 +0.0203 (11/14 won, 3 pulled) | hold180 +0.0309 (9/14 won, 5 pulled) | tp20 +0.0184 (13/14 won, 1 pulled) | tp50 +0.0124 (10/14 won, 4 pulled)
