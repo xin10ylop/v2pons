@@ -2783,10 +2783,11 @@ assert "wave is for a V3 family" in refused(json.dumps([{**C1_FAM, "wave": True}
 err, keys = imported(json.dumps([C1_FAM, V3W])); assert err is None and keys == sorted(map(str, [E.FRONT_VALUE_WEI, 0, K3])), (err, keys)
 RBW = next(l.strip()[len("FRONT_FAMILIES='"):-1] for l in open(os.path.join(ROOT, "docs", "RUNBOOK.md")) if l.strip().startswith("FRONT_FAMILIES='") and '"v3wave"' in l)
 err, keys = imported(RBW); bw = json.loads(RBW); assert err is None and keys == sorted(map(str, [E.FRONT_VALUE_WEI, 0, K3])) and [f["name"] for f in bw] == ["c1", "v3wave"], (err, keys)   # RUNBOOK 4o's list
-assert bw[1]["wave"] is True and bw[1]["trigger"]["shapes"] == V3_FAM["trigger"]["shapes"] and bw[1]["target"] == V3_NPM and all(f["dry_run"] for f in bw) \
+assert bw[1]["wave"] is True and "quiet_blocks" not in bw[1] and bw[1]["take_profit"] == 0.09 and bw[1]["hold_blocks"] == 100 and bw[0]["quiet_blocks"] == 50 and bw[0]["hold_blocks"] == 200 \
+    and bw[1]["trigger"]["shapes"] == V3_FAM["trigger"]["shapes"] and bw[1]["target"] == V3_NPM and all(f["dry_run"] for f in bw) \
     and sorted(bw[1]["trigger"]["routers"]) == ["0x7feb3ecbacbd0cc23ec46659d541636d58749a97", "0x80e49ed118b932d9538ec817ef8b29fbac31e080", "0xaf9d6fa019328d8cf8598d0d5be22cc6622b09f1",
                                                  "0xfc7241d4356564e32b16e8e4838c648efceb8144"] and {k: v for k, v in bw[0].items()} == json.loads(next(
-    l.strip()[len("FRONT_FAMILIES='"):-1] for l in open(os.path.join(ROOT, "docs", "RUNBOOK.md")) if l.strip().startswith("FRONT_FAMILIES='[{\"name\":\"c1\"") and '"quiet_blocks":20' in l))[0], bw
+    l.strip()[len("FRONT_FAMILIES='"):-1] for l in open(os.path.join(ROOT, "docs", "RUNBOOK.md")) if l.strip().startswith("FRONT_FAMILIES='[{\"name\":\"c1\"") and '"quiet_blocks":50' in l))[0], bw
 saved_fams = dict(E.FRONT_FAMILIES); saved_wr = set(E.WAVE_ROUTERS); saved_any = set(E.ANY_TO_SELECTORS); saved_rpc = E.rpc
 E.FRONT_FAMILIES.clear(); E.FRONT_FAMILIES.update({k: v for k, v in saved_fams.items() if k != KP}); E.FRONT_FAMILIES[K3] = v3w; E.LAUNCH_SHAPES = {}
 E.WAVE_ROUTERS.update(tw["routers"]); E.ANY_TO_SELECTORS.clear(); E.state["delayed"] = True; E.FRONT = True; E.FRONT_DRY_RUN = False; E.ENTRY = "auto"

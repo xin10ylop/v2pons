@@ -7,6 +7,22 @@ paper every day of the last week: **+12.1% a trade on 811 pools, 4 pulled** (ent
 has been quiet for 20 blocks). It is not the 2.433 operator. The engine already trades it as a "wave family"; it needed one new exit
 (`quiet_blocks`, added with tests) and an updated config (no price pin). The plan below goes dry, then a $5 probe, then up.
 
+## Correction, Nov 2 evening: the quiet exit was mis-simulated
+
+`c1lab.py` checked the quiet clock only when a swap came. In C-1's pools the router is nearly the only trader, so the next swap was
+its next buy and the gap before it was never seen: every "quiet 20" figure below (C-1's +12.1%, the V3 crowd's +10.2%) is in effect a
+100-block hold. The engine implements the quiet exit correctly, block by block, and its first two dry trades on the box sold flat
+(-0.27%) 18 blocks after our buy, before the router's next buy. Re-tested with the clock per block (`c1lab.py` fixed; `c1exit.py`):
+
+- **C-1** (`c1exit_168h.out`, the last 7 days, 913 pumped pools; the router buys a median 30 blocks apart, 74% of gaps over 20):
+  quiet 20 +2.7% a trade (233 won), hold 100 +11.9% (19 pulled), **quiet 50 with a 200-block cap +21.4% (687 won, 19 pulled)**,
+  quiet 60 cap 200 +22.5% (26 pulled), hold 200 +20.1% (80 pulled). The last 24 h (`c1exit_24h.out`): quiet 50 cap 200 +17.7%, 0 pulled.
+  The box now runs quiet 50, hold 200.
+- **The V3 crowd** (`crowd_v3_836_fix.out`, entry + 2): quiet 20 +4.4%, quiet 40 cap 200 +7.6%, hold 100 +10.9% (23 pulled of 335),
+  **take-profit +9% capped at 100 blocks +8.5% (302 won, 6 pulled)**: the V3 family (`v3wave`) runs the take-profit.
+
+The rest of this report (the line, its router, the outsiders' tests, the reaction cases) stands.
+
 ## 1. How it was found: what the earlier sweeps could not see
 
 Every earlier search started from **pools pulled within 2 h** and skipped pools launched with **0 native** (`nat_in > 0` in tape.py and

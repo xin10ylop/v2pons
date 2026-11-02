@@ -1574,7 +1574,8 @@ The settings, their defaults and meanings: `docs/BASE_V2.md` section 5 and the c
 ## 4n. C-1 again (Nov 2, research/hunt_oct26/REPORT_C1.md)
 
 The operator C-1 (a wave family, 4g) is live at about 116 router-pumped launches a day. Its trigger is unchanged; its launch price and
-liquidity now vary (no pin), and the family gets the new exit `quiet_blocks` (sell once its router has not bought for 20 blocks, cap 100).
+liquidity now vary (no pin), and the family gets the new exit `quiet_blocks` (sell once its router has not bought for 50 blocks, cap 200:
+the Nov 2 evening correction below).
 The flip-engine was left stopped with an empty relay (Oct 20): this brings it back for C-1 alone.
 
 1. On the box: `cd ~/v2pons && git pull`, then the tests with the box's venv: `/opt/flip-venv/bin/python3 tests/test_engine.py | tail -3`
@@ -1582,12 +1583,12 @@ The flip-engine was left stopped with an empty relay (Oct 20): this brings it ba
 2. The family list, dry (one list: a family left out is dropped; the 2.4333 and 3.0 lines are gone, so c1 alone):
 
         sudo sed -i '/^FRONT_FAMILIES=/d' /etc/flip/engine.env; sudo tee -a /etc/flip/engine.env >/dev/null <<'EOF'
-        FRONT_FAMILIES='[{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":100,"quiet_blocks":20,"stake_eth":0.002,"dry_run":true,"pin":false,"nonbot_halt":0,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_eth":10,"max_blocks":600}}]'
+        FRONT_FAMILIES='[{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":200,"quiet_blocks":50,"stake_eth":0.002,"dry_run":true,"pin":false,"nonbot_halt":0,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_eth":10,"max_blocks":600}}]'
         EOF
         sudo systemctl start flip-engine
         sleep 10 && sudo python3 ~/v2pons/deploy/results.py | head -8
 
-   The start line must list c1 with `quiet_blocks` 20, `hold_blocks` 100, `pin` false, `dry_run` true. The FRONT_* base line watches
+   The start line must list c1 with `quiet_blocks` 50, `hold_blocks` 200, `pin` false, `dry_run` true. The FRONT_* base line watches
    nothing useful now: `FRONT_BASE_DRY_RUN=1` keeps it dry.
 3. Gate 1 (24 h, 100 triggers; or, the owner's fast path, 1-2 h: at least 5 `would_fire` for c1 an hour, their `would_sell` mostly
    "quiet" with `dry_ret` mostly positive, no `dry_ret` of -1 and no alarm, then on to the probe): `would_fire` lines with `fam` c1; `would_sell` with `why` starting "quiet" for most; dry mean +6% or
@@ -1600,6 +1601,12 @@ The flip-engine was left stopped with an empty relay (Oct 20): this brings it ba
    before our sell 5% or fewer, our pools pulled within 100 blocks of our buy at most twice the 1.7% base. A pull before our sell in
    the first 10 trades: stop and look (`HALTED.front.c1` is the family's halt file).
 5. Gate 3: `stake_eth` 0.006, then 0.012 (the engine's cap), a step a day while the live mean holds.
+
+**Correction, Nov 2 evening.** The first two dry trades on the box sold flat at "quiet 20". The research's quiet exit was
+mis-simulated (`c1lab.py` checked the clock only at swaps, and in C-1's pools the next swap is the router's next buy, so it never saw
+the gap: its "quiet 20, +12.1%" was in effect hold 100). Re-tested per block (`c1exit.py`, `c1exit_168h.out`, 913 pumped pools):
+the router now buys a median 30 blocks apart; quiet 20 makes +2.7% a trade, hold 100 +11.9% (19 pulled), **quiet 50 with a 200-block
+cap +21.4% (19 pulled)**, which the list above now carries. The engine's quiet exit was right; its setting was not.
 
 ### 4n-b. The blocks from providers (BLOCK_SOURCE=rpc, Nov 2)
 
@@ -1626,24 +1633,27 @@ Three `feed_connected` lines (the tx stream and two heads), then a `flow` line a
 The V3 crowd line (4g's v3crowd: the 836-byte launches through the V3 PositionManager `0x73991a25`) is live at about 90 launches a day,
 of which its crowd pumps about 48 through four routers. October's family bought in the launch block; this week the crowd's first buy comes
 a median 61 blocks after the launch, and it never comes in half the pools, so buying at the launch would hold the empty ones to the cap.
-The tested ride is C-1's: buy behind the routers' first buy (landing + 2), sell once they have not bought for 20 blocks, cap 100 blocks:
-**+10.2% a trade on 335 pools, 4 pulled, every day of Oct 27 - Nov 2 positive** (0.002 to 0.05 ETH a trade, our own impact and the pool's
-fee included). It reacts to outsiders more than C-1 (real-size outside buys pulled within 100 blocks 18% against 4%; in our slot 2 of 13,
+The tested ride: buy behind the routers' first buy (landing + 2), sell at a take-profit of +9% or 100 blocks after our buy:
+**+8.5% a trade on 335 pools, 302 won, 6 pulled (1.8%)** (`crowd_v3_836_fix.out`, 0.0058 ETH, our own impact and the pool's fee
+included). Hold 100 makes +10.9% but 23 pulled (7%); a quiet exit does worse here (quiet 20 +4.4%, quiet 40 cap 200 +7.6%). The
+first run's "+10.2% at quiet 20" carried C-1's simulation error (4n's correction). It reacts to outsiders more than C-1 (real-size outside buys pulled within 100 blocks 18% against 4%; in our slot 2 of 13,
 and 12 of those 13 got out).
 
 The family is a V3 one with `"wave":true` (the engine change of this date): armed at the launch, nothing fired there; the trigger is
 a buy through one of `routers` (the call shapes and the token's buy path, as v3crowd's trigger reads them: 149 of 151 live buys read, no
-sell taken for a buy); `quiet_blocks`, `hold_blocks` from our buy and `take_profit` as for C-1; `exit_after_blocks` does not apply. It
+sell taken for a buy); `hold_blocks` from our buy and `take_profit` (0.09: +9% after gas) as for any wave family, `quiet_blocks` left
+out; `exit_after_blocks` does not apply. The take-profit reads the engine's price copy, which counts buys only: the crowd's own sells
+are not in it, so a dry or live take-profit may fire with the real price under +9%. It
 replaces v3crowd (both launch through the same PositionManager). The list on the box, C-1 and the V3 crowd, both dry:
 
     sudo sed -i '/^FRONT_FAMILIES=/d' /etc/flip/engine.env; sudo tee -a /etc/flip/engine.env >/dev/null <<'EOF'
-    FRONT_FAMILIES='[{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":100,"quiet_blocks":20,"stake_eth":0.002,"dry_run":true,"pin":false,"nonbot_halt":0,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_eth":10,"max_blocks":600}},{"name":"v3wave","dex":"v3","wave":true,"target":"0x73991a25c818bf1f1128deaab1492d45638de0d3","value_wei":0,"calldata_len":836,"fee":100,"tick_spacing":1,"hold_blocks":100,"quiet_blocks":20,"take_profit":9,"stake_eth":0.002,"ahead_max_eth":0.5,"dry_run":true,"pin":false,"nonbot_halt":0,"trigger":{"routers":["0x7feb3ecbacbd0cc23ec46659d541636d58749a97","0x80e49ed118b932d9538ec817ef8b29fbac31e080","0xaf9d6fa019328d8cf8598d0d5be22cc6622b09f1","0xfc7241d4356564e32b16e8e4838c648efceb8144"],"shapes":[{"selector":"3593564c","calldata_len":484,"value_word":9},{"selector":"a0193551","calldata_len":452,"value_word":8},{"selector":"49f74a5d","calldata_len":452,"value_word":8}],"token_anywhere":true,"min_eth":0.001,"max_eth":10,"max_blocks":600}}]'
+    FRONT_FAMILIES='[{"name":"c1","value_wei":0,"calldata_len":2276,"fee":100,"tick_spacing":1,"sqrt_p":"792280926924313289846529216293289","liq":"100000088127620690885293","bot_minout":1,"ahead_max_eth":0.5,"take_profit":9,"hold_blocks":200,"quiet_blocks":50,"stake_eth":0.002,"dry_run":true,"pin":false,"nonbot_halt":0,"trigger":{"router":"0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6","selector":"e6cb474f","value_word":2,"token_word":8,"flag_word":7,"flag_value":0,"min_eth":0.005,"max_eth":10,"max_blocks":600}},{"name":"v3wave","dex":"v3","wave":true,"target":"0x73991a25c818bf1f1128deaab1492d45638de0d3","value_wei":0,"calldata_len":836,"fee":100,"tick_spacing":1,"hold_blocks":100,"take_profit":0.09,"stake_eth":0.002,"ahead_max_eth":0.5,"dry_run":true,"pin":false,"nonbot_halt":0,"trigger":{"routers":["0x7feb3ecbacbd0cc23ec46659d541636d58749a97","0x80e49ed118b932d9538ec817ef8b29fbac31e080","0xaf9d6fa019328d8cf8598d0d5be22cc6622b09f1","0xfc7241d4356564e32b16e8e4838c648efceb8144"],"shapes":[{"selector":"3593564c","calldata_len":484,"value_word":9},{"selector":"a0193551","calldata_len":452,"value_word":8},{"selector":"49f74a5d","calldata_len":452,"value_word":8}],"token_anywhere":true,"min_eth":0.001,"max_eth":10,"max_blocks":600}}]'
     EOF
     sudo systemctl restart flip-engine
     sleep 10 && sudo grep -E '"ev":"(start|alarm)"' /var/log/flip/engine.jsonl | tail -2 | cut -c1-300
 
 The start line lists both, v3wave with `"dex":"v3"`, `"wave":true` and its four routers in `trigger`. Its dry trades are `armed` (`fam`
-v3wave), `would_fire`, `would_sell` (mostly "quiet: ...") and `trade_done` with `dry_ret`:
+v3wave), `would_fire`, `would_sell` ("take profit: ..." or "deadline: our buy + 100 ...") and `trade_done` with `dry_ret`:
 
     sudo grep -E '"ev":"(would_fire|would_sell|trade_done)"' /var/log/flip/engine.jsonl | grep '"fam":"v3wave"' | tail -12 | cut -c1-260
 
