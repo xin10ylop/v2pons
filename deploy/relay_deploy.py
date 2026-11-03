@@ -69,7 +69,7 @@ def main():
         rel = (got - exp) / exp if exp else float("inf")
         verdict = "ok" if abs(rel) < 1e-9 else "MISMATCH: do not use the relay"
         print(f"simulated buy through the relay on pool {pid[:14]} (fee {key['fee'] / 1e4:g}%): {got:.6g} tokens, v4math predicted {exp:.6g} ({rel:+.1e} relative: {verdict})")
-    except Exception as ex:
+    except (Exception, SystemExit) as ex:                                          # (no pool to try it on is SystemExit: the RELAY= line must still be written)
         print(f"the simulated buy did not go through ({str(ex)[:160]}); the pool may have been pulled; try deploy/relay_sim.py <poolId>")
     if a.write_env:
         lines = [l for l in open(ENV).read().splitlines() if not l.startswith("RELAY=")] + [f"RELAY={relay}"]

@@ -181,6 +181,10 @@ def main():
         v3_ops(cmd, acct, wallet, e.get("RELAY_V3", "").lower(), rpc, e.get("RELAY_V3_CODEHASH", "")); return
     if acct.address.lower() != wallet or not relay:
         sys.exit("WALLET/PRIVATE_KEY/RELAY not consistent in the env file")
+    if cmd in ("deposit", "withdraw", "sweep"):                                     # the relay must be this wallet's: a deposit into another's is stuck there
+        owner = rpc("eth_call", [{"to": relay, "data": "0x8da5cb5b"}, "latest"])
+        if not isinstance(owner, str) or ("0x" + owner[-40:]).lower() != wallet:
+            sys.exit(f"RELAY {relay} is owned by 0x{str(owner)[-40:]}, not this WALLET {wallet}: set RELAY to this wallet's relay first (nothing sent)")
     if cmd == "deposit":
         send(acct, relay, int(float(sys.argv[2]) * 1e18), "0x", rpc)
     elif cmd == "withdraw":
