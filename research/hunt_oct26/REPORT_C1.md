@@ -7,6 +7,23 @@ paper every day of the last week: **+12.1% a trade on 811 pools, 4 pulled** (ent
 has been quiet for 20 blocks). It is not the 2.433 operator. The engine already trades it as a "wave family"; it needed one new exit
 (`quiet_blocks`, added with tests) and an updated config (no price pin). The plan below goes dry, then a $5 probe, then up.
 
+## Live, Nov 3: both crowd lines react to us (stopped)
+
+Five live trades at 0.002 ETH, Nov 3 06:40-09:42 UTC, -$20.16:
+
+| time | line | result | what happened |
+|---|---|---|---|
+| 06:40 | C-1 | +9.9% | held to the cap; its router kept buying for 900+ blocks |
+| 06:47 | C-1 | -100% | 27 blocks after our buy C-1's router burned our relay's tokens: it approves itself on the holder's behalf and sends the balance to 0xdead, the call naming our wallet and relay (`c1burn.py`: 108 such burns in 39 of 187 pools in 48 h) |
+| 07:41 | C-1, a fresh wallet and relay | -100% | the pool pulled 85 blocks after our buy (C-1's median pull: ~3,000 blocks after its router starts) |
+| 08:35 | V3 crowd | -100% | pulled 45 blocks after our buy; the deadline sell reverted on the empty pool |
+| 09:42 | V3 crowd | -100% | its router never bought after the trigger; pulled 24 blocks after our buy |
+
+Other early outside buys (0-20 blocks after the routers' first buy, 48 h): C-1 0 of 10 pulled or burned (`c1slot_48h.out`), the V3 crowd
+3 of 29 pulled within 100 blocks (`v3slot_48h.out`); ours 4 of 5. Both operators recognise us (the same wallet, a relay contract of
+known code, the funding link, the +1/+2 entry) and act against us; the paper rides do not survive it. Both lines stopped, the money back
+in the wallet. What is worth live money is a blind scheduled buyer (the 2.433 kind), not a crowd ride: `buyerlab.py`.
+
 ## Correction, Nov 2 evening: the quiet exit was mis-simulated
 
 `c1lab.py` checked the quiet clock only when a swap came. In C-1's pools the router is nearly the only trader, so the next swap was
