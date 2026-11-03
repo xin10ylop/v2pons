@@ -45,6 +45,14 @@ def main():
         lc = json.load(open(os.path.join(HERE, "out", f"struct_launch_{CH}.json")))
     except (OSError, ValueError):
         lc = {}
+    miss = sorted({p["tx"] for p in P.values() if p["tx"] not in lc})                 # the launch transactions (the launcher, the group): read once, cached with structlab's
+    for i in range(0, len(miss), 2000):
+        g = miss[i:i + 2000]
+        for h, x in zip(g, H.batch(url, [("eth_getTransactionByHash", [h]) for h in g], size=50, workers=4, tries=10)):
+            if x:
+                lc[h] = [x["from"].lower(), (x.get("to") or "").lower(), x["input"][:10], (len(x["input"]) - 2) // 2, int(x["value"], 16) / 1e18]
+        json.dump(lc, open(os.path.join(HERE, "out", f"struct_launch_{CH}.json"), "w"))
+    print(f"  launch transactions: {sum(1 for p in P.values() if p['tx'] in lc)} of {len(P)}", flush=True)
     L = fetch(CH, list(P.values()))
     per = collections.defaultdict(list)
     for x in L:
@@ -168,7 +176,7 @@ def main():
               f"  size {r['size_med']:.4g} ({r['size_spread'][0]:.3g}..{r['size_spread'][1]:.3g})\n"
               f"    FRONT n {r['front_n']} mean {f(r['front_mean'], '+.1%')} won {r['front_won']} pulled {r['front_pulled']} -> {r['front_eth_day']:+.4f}/day"
               f" | buys when fronted {f(r['bought_if_fronted'], '.0%')} (n {r['fronted_n']}) vs clean {f(r['bought_if_clean'], '.0%')} (n {r['clean_n']})"
-              f" | groups {[(g[1], g[2], g[3] if len(g) > 3 else '', n) for g, n in r['groups']]}")
+              f" | groups {[(tuple(g)[1:], n) for g, n in r['groups']]}")
 
 
 if __name__ == "__main__":
