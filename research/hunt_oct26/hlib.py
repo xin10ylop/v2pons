@@ -14,7 +14,7 @@ CH = {"rh": {"rpc": "https://rpc.mainnet.chain.robinhood.com", "logs": "https://
               "topic_logs": "https://bsc-rpc.publicnode.com", "topic_span": 50000,
               "pm": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df", "weth": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"},
       # Ethereum (Nov 3): publicnode takes a day of blocks with an address filter; MEV Blocker's RPC also answers topic-only queries
-      "eth": {"rpc": "https://ethereum-rpc.publicnode.com", "logs": "https://ethereum-rpc.publicnode.com", "span": 10000, "span_addr": 10000,
+      "eth": {"rpc": "https://rpc.mevblocker.io", "logs": "https://rpc.mevblocker.io", "span": 5000, "span_addr": 5000,     # publicnode's refused us mid-run (403)
               "topic_logs": "https://rpc.mevblocker.io", "topic_span": 2000,
               "pm": "0x000000000004444c5dc75cb358380d2e3de08a90", "weth": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"}}
 UA = {"Content-Type": "application/json", "User-Agent": "curl/8"}
