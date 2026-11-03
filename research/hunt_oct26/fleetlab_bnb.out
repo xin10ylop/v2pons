@@ -1,0 +1,10 @@
+fleet: 453 buyers of real size in 15+ pools
+pools in the fleet's launch groups: 1246, tokens 1246, distinct token codes 147
+
+lines (token code) the fleet bought into in 5+ pools: 6
+  code 63ad5291cdef (1526 B): pools 481 (launchers 481, pulled 2h 481), fleet bought in 444 at +30 | fleet buys when fronted None (n 0) vs clean 0.92 (n 481); pulled within 100 of the outsider's buy 0 | front n 444 mean +5.5% won 430 pulled 0 -> +0.1214 a day
+  code 21eca77c4dcd (3918 B): pools 118 (launchers 118, pulled 2h 118), fleet bought in 118 at +19 | fleet buys when fronted None (n 0) vs clean 1.0 (n 118); pulled within 100 of the outsider's buy 0 | front n 118 mean +3.9% won 113 pulled 0 -> +0.0231 a day
+  code c933c5019046 (3263 B): pools 69 (launchers 69, pulled 2h 69), fleet bought in 67 at +36 | fleet buys when fronted None (n 0) vs clean 0.97 (n 69); pulled within 100 of the outsider's buy 0 | front n 67 mean +2.7% won 67 pulled 0 -> +0.0090 a day
+  code 2a73119c9414 (3503 B): pools 92 (launchers 92, pulled 2h 92), fleet bought in 91 at +29 | fleet buys when fronted None (n 0) vs clean 0.99 (n 92); pulled within 100 of the outsider's buy 0 | front n 91 mean +1.6% won 91 pulled 0 -> +0.0074 a day
+  code 1f6f5a665a53 (3553 B): pools 53 (launchers 53, pulled 2h 53), fleet bought in 53 at +35 | fleet buys when fronted None (n 0) vs clean 1.0 (n 53); pulled within 100 of the outsider's buy 0 | front n 53 mean +0.0% won 33 pulled 0 -> +0.0000 a day
+  code 758b9e30aef3 (2046 B): pools 210 (launchers 210, pulled 2h 210), fleet bought in 205 at +74 | fleet buys when fronted None (n 0) vs clean 0.98 (n 210); pulled within 100 of the outsider's buy 0 | front n 205 mean -0.1% won 61 pulled 0 -> -0.0010 a day
