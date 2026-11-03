@@ -1,9 +1,41 @@
-latest block 131432271, time 1793708620, coinbase 0xf8b99643fafc79d9404de68e48c4d49a3936f787
-outsider, sold 3.2x                0x1c90da18 team 0 holds False | simulated (gas price 0): REVERT 0x1887aac7 Hush() | as real (0.1 gwei, real coinbase): REVERT 0x1887aac7 Hush()
-outsider, sold 3.6x                0x0f2f46da team 0 holds False | simulated (gas price 0): REVERT 0x1887aac7 Hush() | as real (0.1 gwei, real coinbase): REVERT 0x1887aac7 Hush()
-outsider, sold 4.5x                0xb27ad847 team 0 holds False | simulated (gas price 0): REVERT 0x1887aac7 Hush() | as real (0.1 gwei, real coinbase): REVERT 0x1887aac7 Hush()
-outsider, 0.16 BNB, never sold     0xf7093a4d team 0 holds True | simulated (gas price 0): REVERT 0x1887aac7 Hush() | as real (0.1 gwei, real coinbase): REVERT 0x1887aac7 Hush()
-outsider, 0.02 BNB, never sold     0xebd89f88 team 0 holds True | simulated (gas price 0): REVERT 0x1887aac7 Hush() | as real (0.1 gwei, real coinbase): REVERT 0x1887aac7 Hush()
-outsider, 0.014 BNB, never sold    0x90ec45a1 team 0 holds True | simulated (gas price 0): REVERT 0x1887aac7 Hush() | as real (0.1 gwei, real coinbase): REVERT 0x1887aac7 Hush()
-outsider, 0.02 BNB, never sold     0x93c22146 team 0 holds True | simulated (gas price 0): REVERT 0x1887aac7 Hush() | as real (0.1 gwei, real coinbase): REVERT 0x1887aac7 Hush()
-team (crew)                        0xc0c84518 team 1 holds False | simulated (gas price 0): REVERT 0xe450d38c | as real (0.1 gwei, real coinbase): REVERT 0xe450d38c
+latest block 131434812, time 1793709764, coinbase 0x37e9627a91dd13e453246856d58797ad6583d762
+outsider, sold 3.2x                0x1c90da18 team 0 holds False
+    to the pair (a sell), gas price 0: REVERT 0xe450d38c
+    to the pair (a sell), 0.1 gwei: REVERT 0x1887aac7 Hush()
+    to a wallet, gas price 0: REVERT 0x1887aac7 Hush()
+    to a wallet, 0.1 gwei: REVERT 0x1887aac7 Hush()
+outsider, sold 3.6x                0x0f2f46da team 0 holds False
+    to the pair (a sell), gas price 0: REVERT 0xe450d38c
+    to the pair (a sell), 0.1 gwei: REVERT 0x1887aac7 Hush()
+    to a wallet, gas price 0: REVERT 0x1887aac7 Hush()
+    to a wallet, 0.1 gwei: REVERT 0x1887aac7 Hush()
+outsider, sold 4.5x                0xb27ad847 team 0 holds False
+    to the pair (a sell), gas price 0: REVERT 0xe450d38c
+    to the pair (a sell), 0.1 gwei: REVERT 0x1887aac7 Hush()
+    to a wallet, gas price 0: REVERT 0x1887aac7 Hush()
+    to a wallet, 0.1 gwei: REVERT 0x1887aac7 Hush()
+outsider, 0.16 BNB, never sold     0xf7093a4d team 0 holds True
+    to the pair (a sell), gas price 0: OK
+    to the pair (a sell), 0.1 gwei: REVERT 0x1887aac7 Hush()
+    to a wallet, gas price 0: REVERT 0x1887aac7 Hush()
+    to a wallet, 0.1 gwei: REVERT 0x1887aac7 Hush()
+outsider, 0.02 BNB, never sold     0xebd89f88 team 0 holds True
+    to the pair (a sell), gas price 0: OK
+    to the pair (a sell), 0.1 gwei: REVERT 0x1887aac7 Hush()
+    to a wallet, gas price 0: REVERT 0x1887aac7 Hush()
+    to a wallet, 0.1 gwei: REVERT 0x1887aac7 Hush()
+outsider, 0.014 BNB, never sold    0x90ec45a1 team 0 holds True
+    to the pair (a sell), gas price 0: OK
+    to the pair (a sell), 0.1 gwei: REVERT 0x1887aac7 Hush()
+    to a wallet, gas price 0: REVERT 0x1887aac7 Hush()
+    to a wallet, 0.1 gwei: REVERT 0x1887aac7 Hush()
+outsider, 0.02 BNB, never sold     0x93c22146 team 0 holds True
+    to the pair (a sell), gas price 0: OK
+    to the pair (a sell), 0.1 gwei: REVERT 0x1887aac7 Hush()
+    to a wallet, gas price 0: REVERT 0x1887aac7 Hush()
+    to a wallet, 0.1 gwei: REVERT 0x1887aac7 Hush()
+team (crew)                        0xc0c84518 team 1 holds False
+    to the pair (a sell), gas price 0: REVERT 0xe450d38c
+    to the pair (a sell), 0.1 gwei: REVERT 0xe450d38c
+    to a wallet, gas price 0: REVERT 0xe450d38c
+    to a wallet, 0.1 gwei: REVERT 0xe450d38c

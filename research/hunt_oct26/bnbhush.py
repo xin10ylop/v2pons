@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """bnbhush.py: can holders of BNB's 4,050 B crowd tokens move them now? The token keeps a team list (isTeam(address), setTeam) and two
 Hush() reverts in its transfer path: one reached only when tx.gasprice and block.coinbase are both non-zero (a real transaction; a
-default eth_call has both at 0), one on the team mapping. pose(true) sets a "veiled" flag and a horizon of now + 7 days. eth_simulateV1 at
-the latest block of a 1-unit transfer from team wallets, the three outsiders who sold at 3-4.5x with zero-gas-price transactions, and
-outsiders who never sold, each run as a default simulation (gas price 0) and as a real transaction would run (0.1 gwei, the block's real
-coinbase). Read-only."""
+default eth_call has both at 0) on a transfer to the pair (a sell), one on the team mapping for any other transfer. pose(true) sets a "veiled" flag and a horizon of now + 7 days. eth_simulateV1 at
+the latest block of a 1-unit transfer, to the pair and to a wallet, from team wallets, the three outsiders who sold at 3-4.5x with zero-gas-price transactions, and
+outsiders who never sold, each run at gas price 0 and at 0.1 gwei (base fee 0, the block's real coinbase, both explicit: left unset, the
+node prices the simulated block above 0 and every outsider reverts, which the first run of this file reported wrongly). Read-only."""
 import sys, os, json, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 URL = "https://bsc-dataseed.bnbchain.org"
@@ -35,17 +35,16 @@ def main():
         bal = int(rpc("eth_call", [{"to": tok, "data": "0x70a08231" + ad(holder)}, "latest"]), 16)
         team = int(rpc("eth_call", [{"to": tok, "data": "0x24851914" + ad(holder)}, "latest"]), 16)
         so = {holder: {"balance": hex(10 ** 18)}}
-        call = {"from": holder, "to": tok, "data": "0xa9059cbb" + ad("0x000000000000000000000000000000000000dEaD") + format(1, "064x")}
         out = []
-        for label, c, bo in (("simulated (gas price 0)", call, {}), ("as real (0.1 gwei, real coinbase)", dict(call, gasPrice=hex(10 ** 8), maxFeePerGas=None) , {"feeRecipient": cb})):
-            c = {k: v for k, v in c.items() if v is not None}
-            if "gasPrice" in c:
-                c.pop("gasPrice"); c["maxFeePerGas"] = hex(10 ** 8); c["maxPriorityFeePerGas"] = hex(10 ** 8)
-            blocks = [{"stateOverrides": so, "blockOverrides": dict(bo, baseFeePerGas="0x0") if bo else {}, "calls": [c]}]
-            r = rpc("eth_simulateV1", [{"blockStateCalls": blocks, "validation": False}, "latest"])[0]["calls"][0]
-            err = (r.get("error") or {}); data = err.get("data") or r.get("returnData", "")
-            out.append(f"{label}: {'OK' if r['status'] == '0x1' else 'REVERT ' + str(data)[:10] + (' Hush()' if str(data).startswith('0x1887aac7') else '')}")
-        print(f"{what:34s} {holder[:10]} team {team} holds {bal > 0} | " + " | ".join(out))
+        pair = p["id"][3:]
+        for dest, to in (("to the pair (a sell)", pair), ("to a wallet", "0x000000000000000000000000000000000000dEaD")):
+          call = {"from": holder, "to": tok, "data": "0xa9059cbb" + ad(to) + format(1, "064x")}
+          for label, c in ((dest + ", gas price 0", dict(call, gasPrice="0x0")), (dest + ", 0.1 gwei", dict(call, gasPrice=hex(10 ** 8)))):
+              blocks = [{"stateOverrides": so, "blockOverrides": {"baseFeePerGas": "0x0", "feeRecipient": cb}, "calls": [c]}]
+              r = rpc("eth_simulateV1", [{"blockStateCalls": blocks, "validation": False}, "latest"])[0]["calls"][0]
+              err = (r.get("error") or {}); data = err.get("data") or r.get("returnData", "")
+              out.append(f"{label}: {'OK' if r['status'] == '0x1' else 'REVERT ' + str(data)[:10] + (' Hush()' if str(data).startswith('0x1887aac7') else '')}")
+        print(f"{what:34s} {holder[:10]} team {team} holds {bal > 0}\n    " + "\n    ".join(out))
 
 
 if __name__ == "__main__":
