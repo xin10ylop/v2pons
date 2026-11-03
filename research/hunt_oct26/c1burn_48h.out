@@ -1,0 +1,23 @@
+last 48 h: 185 C-1 pools
+outside buys: 1059 by 86 buyers; burns by C-1's router: 74 in 35 pools
+a buyer's FIRST C-1 pool in the window: burned 6 of 86 (7%)
+its later C-1 pools: burned 16 of 940 (2%)
+the burn after the buy (blocks): median -411.5, min -5640, p25 -1763, p75 -249, max 122
+buyers by (more than one pool, burned in the first): {(True, False): 51, (False, False): 29, (True, True): 2, (False, True): 4}
+
+burn rate by the buy's offset from the router's first buy (each buyer once per pool):
+  before the router's first buy    buys  370  burned   0 (0%)
+  router + 0..0                    buys    2  burned   0 (0%)
+  router + 1..5                    buys   26  burned   1 (4%)
+  router + 6..20                   buys   45  burned   0 (0%)
+  router + 21..100                 buys  103  burned   1 (1%)
+  router + 101..500                buys  179  burned   5 (3%)
+  router + 501 or later            buys  268  burned  15 (6%)
+  no router buy                    buys   33  burned   0 (0%)
+by size:
+  0.0001-0.001 ETH  buys  884  burned  15 (2%)
+  0.001-0.005 ETH  buys  113  burned   2 (2%)
+  0.005-0.02 ETH  buys   24  burned   4 (17%)
+  0.02-0.1 ETH  buys    5  burned   1 (20%)
+through: [(('0x88767899', False), 447), (('0x1cb28317', False), 96), (('0x7202e6dd', False), 95), (('0x904e53f3', False), 89), (('0xd9206a6d', False), 72), (('0x92475293', False), 60), (('0x6a7581b3', False), 33), (('0x204faca1', False), 29), (('0x88767899', True), 18), (('0x6e2a35a7', False), 16)]
+the burned buys: [('0xf7dc3bc1', 327, 0.0002, '0x65050a9b'), ('0x17890288', 2085, 0.0066, '0x88767899'), ('0x83968419', 3352, 0.0005, '0x92475293'), ('0x17890288', 2251, 0.0066, '0x88767899'), ('0xa4ea81c7', 172, 0.0002, '0x88767899'), ('0xa4ea81c7', 1859, 0.0002, '0x88767899'), ('0xa5c1f960', 4013, 0.0022, '0x88767899'), ('0x3d04346a', 5725, 0.0087, '0x88767899'), ('0x3d04346a', 5571, 0.0088, '0x88767899'), ('0xcb3d0b49', 429, 0.0005, '0x88767899'), ('0xcb3d0b49', 566, 0.0005, '0x88767899'), ('0x8b305fef', 81, 0.0003, '0x88767899'), ('0xf644a943', 497, 0.0001, '0x88767899'), ('0xcb3d0b49', 542, 0.0005, '0x88767899'), ('0xafa54e69', 3597, 0.0208, '0x5399d94d'), ('0xf644a943', 510, 0.0001, '0x88767899'), ('0xcb3d0b49', 536, 0.0005, '0x88767899'), ('0xf644a943', 493, 0.0001, '0x88767899'), ('0xcb3d0b49', 528, 0.0005, '0x88767899'), ('0xcb3d0b49', 533, 0.0005, '0x88767899'), ('0xcb3d0b49', 537, 0.0005, '0x88767899'), ('0xab5a34c3', 2, 0.002, '0x2abb5653')]
