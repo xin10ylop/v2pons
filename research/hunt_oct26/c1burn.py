@@ -37,7 +37,11 @@ for p in pools:
     for s in sw:
         f, to = tc.get(s["transactionHash"], [None, None])
         if -sg(s["data"][2:66]) > 10 ** 14 and to != R and f != p["launcher"] and f is not None:
-            buys.append({"pool": p["pid"], "tok": p["tok"], "b": int(s["blockNumber"], 16), "from": f, "to": to, "h": s["transactionHash"]})
+            buys.append({"pool": p["pid"], "tok": p["tok"], "b": int(s["blockNumber"], 16), "from": f, "to": to, "h": s["transactionHash"], "eth": -sg(s["data"][2:66]) / 1e18})
+    rfirst = min((int(s["blockNumber"], 16) for s in sw if tc.get(s["transactionHash"], [None, None])[1] == R and -sg(s["data"][2:66]) > 0), default=None)
+    for x in buys:
+        if x["pool"] == p["pid"]:
+            x["off"] = (x["b"] - rfirst) if rfirst is not None else None
     bl = []
     for a in range(p["bn"], hi + 1, 2000):
         bl += H.rpc(url, "eth_getLogs", [{"fromBlock": hex(a), "toBlock": hex(min(hi, a + 1999)), "address": p["tok"], "topics": [T_TR, None, DEAD]}]) or []
@@ -82,3 +86,29 @@ for w, xs in by.items():
     hits = [w in named.get(p, set()) for p in ps]
     rep[(len(ps) > 1, hits[0] if hits else None)] += 1
 print("buyers by (more than one pool, burned in the first):", dict(rep))
+
+# by when and how big: a buy is burned if the pool's burn call names its sender or its token holder (the transaction's target, unless public)
+def hit(x):
+    n = named.get(x["pool"], set())
+    return x["from"] in n or (x["to"] in n and x["to"] not in ("0x8876789976decbfcbbbe364623c63652db8c0904",))
+seen_pool = set(); rows = []
+for x in sorted(buys, key=lambda x: x["b"]):
+    k = (x["from"], x["pool"])
+    if k in seen_pool: continue
+    seen_pool.add(k); rows.append(x)
+def bucket(o):
+    if o is None: return "no router buy"
+    if o < 0: return "before the router's first buy"
+    for lo_, hi_ in ((0, 0), (1, 5), (6, 20), (21, 100), (101, 500)):
+        if lo_ <= o <= hi_: return f"router + {lo_}..{hi_}"
+    return "router + 501 or later"
+print("\nburn rate by the buy's offset from the router's first buy (each buyer once per pool):")
+for name in ["before the router's first buy", "router + 0..0", "router + 1..5", "router + 6..20", "router + 21..100", "router + 101..500", "router + 501 or later", "no router buy"]:
+    xs = [x for x in rows if bucket(x.get("off")) == name]
+    if xs: print(f"  {name:32s} buys {len(xs):4d}  burned {sum(hit(x) for x in xs):3d} ({sum(hit(x) for x in xs) / len(xs):.0%})")
+print("by size:")
+for lo_, hi_ in ((0.0001, 0.001), (0.001, 0.005), (0.005, 0.02), (0.02, 0.1), (0.1, 100)):
+    xs = [x for x in rows if lo_ <= x["eth"] < hi_]
+    if xs: print(f"  {lo_:g}-{hi_:g} ETH  buys {len(xs):4d}  burned {sum(hit(x) for x in xs):3d} ({sum(hit(x) for x in xs) / len(xs):.0%})")
+print("through:", collections.Counter((x["to"][:10], hit(x)) for x in rows).most_common(10))
+print("the burned buys:", [(x["from"][:10], x.get("off"), round(x["eth"], 4), x["to"][:10]) for x in rows if hit(x)][:30])
