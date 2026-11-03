@@ -12,7 +12,11 @@ CH = {"rh": {"rpc": "https://rpc.mainnet.chain.robinhood.com", "logs": "https://
       # BNB Chain (Nov 3): publicnode takes 50,000 blocks with an address filter and refuses topic-only queries
       "bnb": {"rpc": "https://bsc-rpc.publicnode.com", "logs": "https://bsc-rpc.publicnode.com", "span": 50000, "span_addr": 50000,
               "topic_logs": "https://bsc-rpc.publicnode.com", "topic_span": 50000,
-              "pm": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df", "weth": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"}}
+              "pm": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df", "weth": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"},
+      # Ethereum (Nov 3): publicnode takes a day of blocks with an address filter; MEV Blocker's RPC also answers topic-only queries
+      "eth": {"rpc": "https://ethereum-rpc.publicnode.com", "logs": "https://ethereum-rpc.publicnode.com", "span": 10000, "span_addr": 10000,
+              "topic_logs": "https://rpc.mevblocker.io", "topic_span": 2000,
+              "pm": "0x000000000004444c5dc75cb358380d2e3de08a90", "weth": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"}}
 UA = {"Content-Type": "application/json", "User-Agent": "curl/8"}
 T_INIT = "0xdd466e674ea557f56295e2d0218a125ea4b4f0f6f3307b95f85e6110838d6438"
 T_ML = "0xf208f4912782fd25c7f114ca3723a2d5dd6f3bcc3ac8db5af63baa85f711d5ec"
@@ -25,6 +29,7 @@ T_PC3 = "0x783cca1c0412dd0d695e784568c96da2e9c22ff989357a2e8b1d9b2b4e6b7118"
 T_MINT3 = "0x7a53080ba414158be7ec69b987b5fb7d07dee101fe85488f0853ae16239d0bde"
 T_BURN3 = "0x0c396cd989a39f4459b5fa1aed6a9a8dcdbc45908acfd67e028cd568da98982c"
 T_SWAP3 = "0xc42079f94a6350d7e6235f29174924f928cc2ac818eb64fed8004e115fbcca67"
+T_SWAP3_PCS = "0x19b47279256b2a23a1665c810c8d55a1758940ee09377d4f8d26497a3577dc83"   # PancakeSwap V3: Uniswap V3's fields plus two protocol-fee words at the end
 ZERO = "0x" + "0" * 40
 
 

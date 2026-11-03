@@ -22,7 +22,7 @@ Q96 = 2 ** 96
 
 def fetch(ch, rugs):
     c = H.CH[ch]; out = []
-    for venue, topics in (("v4", [H.T_SWAP4]), ("v2", [[H.T_SWAP2, T_SYNC]]), ("v3", [H.T_SWAP3])):
+    for venue, topics in (("v4", [H.T_SWAP4]), ("v2", [[H.T_SWAP2, T_SYNC]]), ("v3", [[H.T_SWAP3, H.T_SWAP3_PCS]])):   # V3: Uniswap's or PancakeSwap's Swap
         ps = sorted((p for p in rugs if p["venue"] == venue), key=lambda p: p["bn"])
         n = 150 if venue == "v4" else (300 if ch == "rh" else 10)        # Base's publicnode: at most ~10 addresses a query
         for i in range(0, len(ps), n):

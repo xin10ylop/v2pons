@@ -15,7 +15,9 @@ FACT = {"base": {"v2": ["0x02a84c1b3bbd7401a5f7fa98a384ebc70bb5749e", "0x25e89b0
                  "v3": ["0x33128a8fc17869897dce68ed026d694621f6fdfd"]},
         "rh": {"v2": None, "v3": None},                    # None: topic-only, every factory
         "bnb": {"v2": ["0xca143ce32fe78f1f7019d7d551a6402fc5350c73", "0x8909dc15e40173ff4699343b6eb8132c65e18ec6"],   # PancakeSwap V2, Uniswap V2
-                "v3": ["0xdb1d10011ad0ff90774d0c6bb92e5c5c8b4461f7"]}}                                            # Uniswap V3 (PancakeSwap V3's Swap event differs: not read)
+                "v3": ["0xdb1d10011ad0ff90774d0c6bb92e5c5c8b4461f7", "0x0bfbcf9fa4f9c56b0f40a671ad40e0805a091865"]},   # Uniswap V3, PancakeSwap V3 (its Swap: T_SWAP3_PCS)
+        "eth": {"v2": ["0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f", "0xc0aee478e3658e2610c5f7a4a2e1777ce9e4f2ac"],   # Uniswap V2, SushiSwap
+                "v3": ["0x1f98431c8ad98523631ae4a59f267346ea31f984"]}}                                            # Uniswap V3
 
 
 def census(ch, start, end):
