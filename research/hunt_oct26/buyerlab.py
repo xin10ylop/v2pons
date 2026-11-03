@@ -8,7 +8,8 @@ the first WIN blocks of every pool the census saw created (out/CHAIN_DAY_00.json
             transaction's sender (read for buys of MIN_ETH and up)
   scheduled for each buyer in MIN_POOLS+ pools: its first buy's offset from the launch (median, IQR, the share within +-3 blocks of
             the median) and size (median, spread): a tight offset and size is a scheduled bot
-  blind     among the launch groups (structlab's key) it buys in: P(it buys | an outsider bought before its usual offset) against
+  blind     among the launch groups (structlab's key) it buys in: P(it buys | an outsider, not the line's crew (buyers in 10%+ of its
+            pools), bought before its usual offset) against
             P(it buys | nobody did); a blind bot buys either way
   front     paper: STAKE in at the head of max(launch + 2, its buy - LEAD), out at the end of its buy's block + 1, on the recorded
             reserves with our buy kept in the pool (a pull first: -100%); per buyer: mean, won, pulled, pools a day, ETH a day
@@ -119,6 +120,12 @@ def main():
         return (x2 - x2 * y2 / (y2 + q * (1 - p["f"])) - STAKE - GAS) / STAKE
 
     days = len(DAYS); rows = []
+    gsize = collections.Counter(p["grp"] for p in P.values())                     # a line's crew: every buyer in 10%+ of its pools (3 at least): never an outsider
+    in_grp = collections.defaultdict(collections.Counter)
+    for key, bp in buys.items():
+        for pid in bp:
+            in_grp[P[pid]["grp"]][key] += 1
+    crew = {g: {k for k, n in c.items() if n >= max(3, 0.1 * gsize[g])} for g, c in in_grp.items()}
     for key, bp in buys.items():
         if len(bp) < MIN_POOLS:
             continue
@@ -140,7 +147,7 @@ def main():
                 if p["bn"] < e[0] < p["bn"] + max(4, med) and e[2] >= 0.001:
                     w = p["who"].get((e[0], e[1]))
                     k2 = (tc.get(w[2]) if w and w[0] in PUBLIC else (w[0] if w else None))
-                    if k2 not in (key, p["launcher"], None):
+                    if k2 not in (key, p["launcher"], None) and k2 not in crew.get(p["grp"], ()):
                         return True
             return False
         a = [p for p in seen if early_outsider(p)]; c = [p for p in seen if not early_outsider(p)]
