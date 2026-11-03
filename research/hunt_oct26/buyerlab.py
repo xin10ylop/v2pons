@@ -168,6 +168,13 @@ def main():
                      "front_n": len(fr), "front_mean": st.mean(fr) if fr else None, "front_won": sum(r > 0 for r in fr), "front_pulled": sum(r <= -1 for r in fr),
                      "front_eth_day": st.mean(fr) * STAKE * len(fr) / days if fr else 0.0})
     rows.sort(key=lambda r: -r["front_eth_day"])
+    if os.environ.get("DUMP"):                                                      # per-pool detail for a line analysis (fleetlab.py)
+        dump = {"pools": {k: {"bn": p["bn"], "tok": p["tok"], "launcher": p["launcher"], "grp": list(p["grp"]), "pull": p["pull"], "venue": p["venue"], "f": p["f"],
+                              "ev": [e[:6] for e in p["ev"]],
+                              "buyers": [[e[0], e[1], e[2], ((tc.get(w[2]) or "?") if w[0] in PUBLIC else w[0])] for e in p["ev"] for w in [p["who"].get((e[0], e[1]))] if w and e[2] > 0]}
+                          for k, p in P.items()},
+                "buys": {k: v for k, v in buys.items() if len(v) >= MIN_POOLS}}
+        json.dump(dump, open(os.environ["DUMP"], "w"))
     json.dump({"chain": CH, "days": DAYS, "rows": rows}, open(OUT, "w"), default=str)
     f = lambda v, fmt: "-" if v is None else format(v, fmt)
     print(f"\n{len(rows)} buyers in {MIN_POOLS}+ pools; front at {STAKE:g} native: in at max(launch + 2, its buy - {LEAD}), out after its buy")
