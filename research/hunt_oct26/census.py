@@ -13,7 +13,9 @@ FACT = {"base": {"v2": ["0x02a84c1b3bbd7401a5f7fa98a384ebc70bb5749e", "0x25e89b0
                         "0x8909dc15e40173ff4699343b6eb8132c65e18ec6", "0xfda619b6d20975be80a10332cd39b9a4b0faa8bb",
                         "0x488db0978b34c6fd901760b9024b565c1117c7c8"],
                  "v3": ["0x33128a8fc17869897dce68ed026d694621f6fdfd"]},
-        "rh": {"v2": None, "v3": None}}                    # None: topic-only, every factory
+        "rh": {"v2": None, "v3": None},                    # None: topic-only, every factory
+        "bnb": {"v2": ["0xca143ce32fe78f1f7019d7d551a6402fc5350c73", "0x8909dc15e40173ff4699343b6eb8132c65e18ec6"],   # PancakeSwap V2, Uniswap V2
+                "v3": ["0xdb1d10011ad0ff90774d0c6bb92e5c5c8b4461f7"]}}                                            # Uniswap V3 (PancakeSwap V3's Swap event differs: not read)
 
 
 def census(ch, start, end):
@@ -58,7 +60,7 @@ def census(ch, start, end):
         addrs = [k[3:] for k in P if k[:2] == venue]
         # Base's publicnode refuses address lists over ~10: there V2 Mint/Burn is read topic-only (Tenderly) and the window's pairs kept;
         # V3 topic-only is every position change on the chain (117k Burns in 4,900 blocks), so V3 goes by address, 10 pools a query
-        topic_only = ch != "rh" and venue == "v2"
+        topic_only = ch == "base" and venue == "v2"                       # BNB's publicnode refuses topic-only queries: by address, 10 a query
         step = 400 if ch == "rh" else (max(1, len(addrs)) if topic_only else 10)
         for i in range(0, len(addrs), step):
             grp = addrs[i:i + step]

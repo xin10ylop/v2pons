@@ -22,10 +22,12 @@ from tape import fetch, events
 CH = sys.argv[1]; OUT = sys.argv[2]; DAYS = sys.argv[3:]
 WIN = int(os.environ.get("WIN", "600" if CH == "rh" else "300")); MIN_POOLS = int(os.environ.get("MIN_POOLS", "15"))
 MIN_ETH = float(os.environ.get("MIN_ETH", "0.002")); STAKE = float(os.environ.get("STAKE", "0.005")); LEAD = int(os.environ.get("LEAD", "5")); GAS = 0.000006
-WN = {"rh": "0x0bd7d308f8e1639fab988df18a8011f41eacad73", "base": "0x4200000000000000000000000000000000000006"}[CH]
+WN = {"rh": "0x0bd7d308f8e1639fab988df18a8011f41eacad73", "base": "0x4200000000000000000000000000000000000006", "bnb": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"}[CH]
 PUBLIC = {"rh": {"0x8876789976decbfcbbbe364623c63652db8c0904", "0xcaf681a66d020601342297493863e78c959e5cb2", "0x89e5db8b5aa49aa85ac63f691524311aeb64ed43"},
           "base": {"0x6ff5693b99212da76ad316178a184ab56d299b43", "0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24", "0x2626664c2603336e57b271c5c0b26f421741e481",
-                   "0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad", "0x8cfe327cec66d1c090dd72bd0ff11d690c33a2eb"}}[CH]
+                   "0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad", "0x8cfe327cec66d1c090dd72bd0ff11d690c33a2eb"},
+          "bnb": {"0x10ed43c718714eb63d5aa57b78b54704e256024e", "0x13f4ea83d0bd40e75c8222255bc855a974568dd4", "0x1906c1d672b88cd1b9ac7593301ca990f94eae07",
+                  "0xd9c500dff816a1da21a48a732d3498bf09dc9aeb", "0x111111125421ca6dc452d289314280a0f8842a65", "0x1b81d678ffb9c0263b24a97847620c99d213eb14"}}[CH]   # Pancake V2 / smart / universal, Uniswap UR, 1inch, Pancake V3 router
 HERE = os.path.dirname(os.path.abspath(__file__)); url = H.CH[CH]["rpc"]
 
 

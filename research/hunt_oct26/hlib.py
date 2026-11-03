@@ -8,7 +8,11 @@ CH = {"rh": {"rpc": "https://rpc.mainnet.chain.robinhood.com", "logs": "https://
              "pm": "0x8366a39cc670b4001a1121b8f6a443a643e40951", "weth": "0x0bd7d308f8e1639fab988df18a8011f41eacad73"},
       "base": {"rpc": "https://base-rpc.publicnode.com", "logs": "https://base-rpc.publicnode.com", "span": 10000, "span_addr": 10000,
                "topic_logs": "https://gateway.tenderly.co/public/base", "topic_span": 1000,
-               "pm": "0x498581ff718922c3f8e6a244956af099b2652b2b", "weth": "0x4200000000000000000000000000000000000006"}}
+               "pm": "0x498581ff718922c3f8e6a244956af099b2652b2b", "weth": "0x4200000000000000000000000000000000000006"},
+      # BNB Chain (Nov 3): publicnode takes 50,000 blocks with an address filter and refuses topic-only queries
+      "bnb": {"rpc": "https://bsc-rpc.publicnode.com", "logs": "https://bsc-rpc.publicnode.com", "span": 50000, "span_addr": 50000,
+              "topic_logs": "https://bsc-rpc.publicnode.com", "topic_span": 50000,
+              "pm": "0x28e2ea090877bf75740558f6bfb36a5ffee9e9df", "weth": "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c"}}
 UA = {"Content-Type": "application/json", "User-Agent": "curl/8"}
 T_INIT = "0xdd466e674ea557f56295e2d0218a125ea4b4f0f6f3307b95f85e6110838d6438"
 T_ML = "0xf208f4912782fd25c7f114ca3723a2d5dd6f3bcc3ac8db5af63baa85f711d5ec"
