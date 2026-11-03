@@ -1,0 +1,17 @@
+last 48 h: 184 C-1 pools; outside buys of 0.0005+ ETH 0-20 blocks after the router's first buy: 13
+  own contract/other   buys  10  pool pulled within 100 blocks  0  tokens burned  0  size median 0.0011
+  OURS                 buys   3  pool pulled within 100 blocks  1  tokens burned  1  size median 0.002
+every one (who, sender, blocks after the router's first buy, ETH, pulled within 100, pull after the buy, burned):
+   OUR relay 1  0xab5a34c3  + 2  0.0020  pulled100 False pull +None  burned False
+   OUR relay 1  0xab5a34c3  + 2  0.0020  pulled100 False pull +None  burned True
+   OUR relay 2  0xaccec54c  + 1  0.0020  pulled100 True  pull +85  burned False
+   0x41a201e0   0xf7599971  + 5  0.0025  pulled100 False pull +122  burned False
+   0x41a201e0   0xf7599971  + 5  0.0025  pulled100 False pull +997  burned False
+   0x41a201e0   0xf7599971  + 5  0.0025  pulled100 False pull +None  burned False
+   0x81849959   0x5f4f4426  +18  0.0011  pulled100 False pull +550  burned False
+   0x8d927b68   0x5f4f4426  +18  0.0011  pulled100 False pull +130  burned False
+   0x65050a9b   0x7d3cf877  + 3  0.0011  pulled100 False pull +None  burned False
+   0x8374ecff   0xee315b4d  +17  0.0009  pulled100 False pull +108  burned False
+   0x1a100885   0x8613e803  +19  0.0009  pulled100 False pull +207  burned False
+   0x436003dd   0x1002ac9a  +19  0.0008  pulled100 False pull +316  burned False
+   0x1cb28317   0x7b9315b9  +17  0.0005  pulled100 False pull +None  burned False
