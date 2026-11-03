@@ -48,7 +48,7 @@ bt = {t["hash"]: t for t in (H.batch(url, [("eth_getTransactionByHash", [h]) for
 burns = [b for b in burns if (bt.get(b["h"], {}).get("to") or "").lower() == R]
 named = collections.defaultdict(set)                                       # pool -> the addresses its burn transactions name
 for b in burns:
-    d = bt[b["h"]]["input"][2:]
+    d = bt[b["h"]]["input"][10:]                                            # the words after the 4-byte selector
     for i in range(0, len(d) - 63, 64):
         w = d[i:i + 64]
         if w[:24] == "0" * 24 and w[24:] != "0" * 40:
