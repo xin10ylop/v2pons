@@ -14,6 +14,7 @@ T_INIT4 = "0x" + keccak(text="Initialize(bytes32,address,address,uint24,int24,ad
 T_SWAP4 = "0x" + keccak(text="Swap(bytes32,address,int128,int128,uint160,uint128,int24,uint24)").hex()
 T_ML = "0x" + keccak(text="ModifyLiquidity(bytes32,address,int24,int24,int256,bytes32)").hex()
 sg = lambda h: (lambda x: x - (1 << 256) if x >= 1 << 255 else x)(int(h, 16))
+QS = tuple(int(x) for x in os.environ.get("QS", "20,30,40,50,60,80").split(",")); HS = tuple(int(x) for x in os.environ.get("HS", "100,200,300").split(","))   # env: quiet blocks, caps
 STAKES = [int(float(x) * 1e18) for x in os.environ.get("STAKES", "0.0058").split(",")]; STAKE = STAKES[0]; GAS = int(0.000006e18)   # env STAKES: several stakes, the rides of each
 head = int(H.rpc(url, "eth_blockNumber", []), 16); lo = head - int(HOURS * 36000)
 logs = []
@@ -34,7 +35,7 @@ try:
 except (OSError, ValueError):
     tc = {}
 for p in pools:
-    hi = min(head, p["bn"] + 3000)
+    hi = min(head, p["bn"] + 3000 + max(HS))
     sw = H.rpc(url, "eth_getLogs", [{"fromBlock": hex(p["bn"]), "toBlock": hex(hi), "address": PM, "topics": [T_SWAP4, p["pid"]]}]) or []
     ml = H.rpc(url, "eth_getLogs", [{"fromBlock": hex(p["bn"] + 1), "toBlock": hex(hi), "address": PM, "topics": [T_ML, p["pid"]]}]) or []
     p["pull"] = min((int(m["blockNumber"], 16) for m in ml if sg(m["data"][2 + 128:2 + 192]) < 0), default=None)
@@ -48,7 +49,6 @@ for p in pools:
     p["ev"] = sorted(ev)
 json.dump(tc, open(cache_p, "w"))
 gaps = []; rides = collections.defaultdict(list); first_off = []
-QS = (20, 30, 40, 50, 60, 80); HS = (100, 200, 300)
 for p in pools:
     rb = [e[0] for e in p["ev"] if e[6] and e[2] > 0]
     if not rb: continue
