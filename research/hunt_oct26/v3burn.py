@@ -3,7 +3,7 @@
 the V3 PositionManager 0x73991a25) of the last HOURS hours: its transfers to 0xdead / 0x0 and the Approvals that a third party's
 transaction made on a holder's behalf (C-1's pattern: Approval(holder, its router) in a transaction the holder did not send), counted per
 token in small queries. Read-only, public RPC."""
-import sys, collections
+import os, sys, collections
 import hlib as H
 from eth_utils import keccak
 HOURS = float(sys.argv[1]) if len(sys.argv) > 1 else 48
@@ -29,8 +29,9 @@ for tok, bn, pool in toks:
         b = min(hi, a + 4999)
         bl = H.rpc(url, "eth_getLogs", [{"fromBlock": hex(a), "toBlock": hex(b), "address": tok, "topics": [T_TR, None, [DEAD, ZERO]]}]) or []
         n_burn += len(bl); burn_logs.extend((tok, pool, x) for x in bl)
-        aps += [x for x in (H.rpc(url, "eth_getLogs", [{"fromBlock": hex(a), "toBlock": hex(b), "address": tok, "topics": [T_AP]}]) or [])
-                if "0x" + x["topics"][2][26:] not in PUBLIC and "0x" + x["topics"][1][26:] != pool]
+        if os.environ.get("APPROVALS", "0") != "0":                       # the Approvals scan: heavy (the public RPC rate-limits it); off by default
+            aps += [x for x in (H.rpc(url, "eth_getLogs", [{"fromBlock": hex(a), "toBlock": hex(b), "address": tok, "topics": [T_AP]}]) or [])
+                    if "0x" + x["topics"][2][26:] not in PUBLIC and "0x" + x["topics"][1][26:] != pool]
     tot["burn logs"] += n_burn
     if n_burn > 50:
         heavy.append((tok, n_burn))
