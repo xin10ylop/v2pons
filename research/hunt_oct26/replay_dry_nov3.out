@@ -1,0 +1,45 @@
+window: blocks 104536465..104803595 (11-02 21:32 - 11-03 05:11 UTC), stake 0.002 ETH
+
+== c1: 18 triggered pools on the chain, mean +16.4%, median +12.1%, won 15/18, pulled 0
+   launch 22:11 UTC  trigger +114  held 200 blocks  cap         +52.3%
+   launch 23:25 UTC  trigger +161  held  48 blocks  quiet       -0.3%
+   launch 00:41 UTC  trigger +  3  held  97 blocks  quiet       +0.8%
+   launch 00:48 UTC  trigger +364  held  52 blocks  quiet       +1.3%
+   launch 01:28 UTC  trigger +217  held 122 blocks  quiet       +8.0%
+   launch 02:23 UTC  trigger +226  held 122 blocks  quiet       +5.3%
+   launch 02:27 UTC  trigger + 43  held 200 blocks  cap         +60.5%
+   launch 02:41 UTC  trigger + 42  held 200 blocks  cap         +14.5%
+   launch 02:46 UTC  trigger +142  held 126 blocks  quiet       +16.9%
+   launch 02:58 UTC  trigger + 41  held 200 blocks  cap         +25.4%
+   launch 03:18 UTC  trigger + 41  held 200 blocks  cap         +34.2%
+   launch 03:43 UTC  trigger +155  held 200 blocks  cap         +22.2%
+   launch 04:23 UTC  trigger + 42  held 155 blocks  quiet       +9.8%
+   launch 04:26 UTC  trigger + 70  held  75 blocks  quiet       +0.6%
+   launch 04:27 UTC  trigger +131  held  48 blocks  quiet       -0.3%
+   launch 04:30 UTC  trigger +135  held  48 blocks  quiet       -0.3%
+   launch 04:38 UTC  trigger + 99  held 106 blocks  quiet       +29.0%
+   launch 05:02 UTC  trigger +285  held 200 blocks  cap         +15.0%
+
+== v3wave: 22 triggered pools on the chain, mean +7.9%, median +10.2%, won 19/22, pulled 1
+   launch 22:43 UTC  trigger + 77  held 100 blocks  cap         +4.5%
+   launch 22:45 UTC  trigger +130  held  29 blocks  take profit +11.0%
+   launch 23:14 UTC  trigger + 67  held  15 blocks  take profit +16.0%
+   launch 23:16 UTC  trigger +129  held  63 blocks  pull        -100.0%
+   launch 23:20 UTC  trigger + 65  held   8 blocks  take profit +9.1%
+   launch 23:21 UTC  trigger +136  held  14 blocks  take profit +13.4%
+   launch 23:22 UTC  trigger +100  held   5 blocks  take profit +10.5%
+   launch 23:24 UTC  trigger +110  held   5 blocks  take profit +16.1%
+   launch 23:24 UTC  trigger +163  held 100 blocks  cap         +1.3%
+   launch 23:25 UTC  trigger + 80  held   4 blocks  take profit +9.8%
+   launch 23:27 UTC  trigger + 59  held   5 blocks  take profit +18.3%
+   launch 23:28 UTC  trigger +102  held 100 blocks  cap         +2.7%
+   launch 23:28 UTC  trigger + 60  held   6 blocks  take profit +14.7%
+   launch 23:35 UTC  trigger + 96  held  10 blocks  take profit +12.0%
+   launch 23:37 UTC  trigger + 55  held  61 blocks  take profit +10.6%
+   launch 01:03 UTC  trigger + 75  held  26 blocks  take profit +85.9%
+   launch 01:06 UTC  trigger + 53  held 100 blocks  cap         -0.3%
+   launch 01:28 UTC  trigger + 43  held 100 blocks  cap         -0.2%
+   launch 01:30 UTC  trigger + 57  held  43 blocks  take profit +17.9%
+   launch 01:44 UTC  trigger +106  held  75 blocks  take profit +9.7%
+   launch 02:39 UTC  trigger +  5  held 100 blocks  cap         +3.0%
+   launch 04:16 UTC  trigger + 52  held 100 blocks  cap         +8.2%
