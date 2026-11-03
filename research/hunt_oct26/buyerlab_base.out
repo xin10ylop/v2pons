@@ -1,0 +1,66 @@
+base 20261031..20261102: 7996 pools
+  logs: 210062
+  public-router buys to resolve: 0
+  buyers with 15+ pools: 78
+
+78 buyers in 15+ pools; front at 0.005 native: in at max(launch + 2, its buy - 5), out after its buy
+0xf09b59fc5c3a7f11c967ea1b5b8e30b737825c1b  pools 338 (113/day)  first buy at +15 (IQR 13..16, 87% within 3)  size 0.2007 (0.201..0.201)
+    FRONT n 338 mean +97.5% won 338 pulled 0 -> +0.5495/day | buys when fronted 0% (n 1) vs clean 96% (n 353) | groups [('0x7c5f5a4b', '0xac9650d8', 2180, 338)]
+0x5a909245f1768501c75970500469f564d0e12ed7  pools 339 (113/day)  first buy at +11 (IQR 9..11, 94% within 3)  size 0.01007 (0.0101..0.0101)
+    FRONT n 339 mean +7.2% won 339 pulled 0 -> +0.0406/day | buys when fronted - (n 0) vs clean 96% (n 354) | groups [('0x7c5f5a4b', '0xac9650d8', 2180, 339)]
+0x1c89b0da8c19f5e349e8f15daee636c5c5dae9b7  pools 342 (114/day)  first buy at +5 (IQR 5..7, 94% within 3)  size 0.01007 (0.0101..0.0101)
+    FRONT n 342 mean +3.9% won 342 pulled 0 -> +0.0223/day | buys when fronted - (n 0) vs clean 97% (n 354) | groups [('0x7c5f5a4b', '0xac9650d8', 2180, 342)]
+0x1e403d3c5d1434eb9719695ef994d46a561563e2  pools 88 (29/day)  first buy at +67.5 (IQR 35..136, 5% within 3)  size 0.07391 (0.00677..0.0953)
+    FRONT n 88 mean +7.3% won 85 pulled 0 -> +0.0107/day | buys when fronted 2% (n 43) vs clean 17% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 88)]
+0x2052b112328e54ac598bacadcb6abc82bfecdd0c  pools 84 (28/day)  first buy at +79 (IQR 35..131, 6% within 3)  size 0.04174 (0.00783..0.112)
+    FRONT n 84 mean +7.5% won 80 pulled 0 -> +0.0105/day | buys when fronted 0% (n 43) vs clean 16% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 84)]
+0xf849e0d4a7a1d74cb278361ff29967dfb5a22c67  pools 46 (15/day)  first buy at +22.5 (IQR 12..45, 11% within 3)  size 0.09801 (0.00213..1.78e+09)
+    FRONT n 46 mean +13.1% won 24 pulled 1 -> +0.0101/day | buys when fronted 13% (n 38) vs clean 3% (n 461) | groups [('0x77777775', '0xa423ada1', 1252, 10), ('0x00000000', '0x765e827f', 4420, 7), ('0x77777775', '0xa423ada1', 1284, 4)]
+0x039f09837e094a824a6d6d5224d4c48f20cef355  pools 87 (29/day)  first buy at +40 (IQR 20..95, 3% within 3)  size 0.0359 (0.00634..0.0959)
+    FRONT n 87 mean +6.8% won 84 pulled 0 -> +0.0098/day | buys when fronted 2% (n 41) vs clean 17% (n 521) | groups [('0x4752ba5d', '0xf305d719', 196, 87)]
+0x42755e6521eb48205a7b4078ca162b7ad420fe93  pools 84 (28/day)  first buy at +84.5 (IQR 42..144, 4% within 3)  size 0.06194 (0.00621..0.0957)
+    FRONT n 84 mean +6.3% won 83 pulled 0 -> +0.0088/day | buys when fronted 0% (n 43) vs clean 16% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 84)]
+0xf25f5911f8dc0da1223981f7144ebd1c9f3b1da4  pools 72 (24/day)  first buy at +60.5 (IQR 33..106, 4% within 3)  size 0.08932 (0.00977..0.12)
+    FRONT n 72 mean +7.3% won 71 pulled 0 -> +0.0088/day | buys when fronted 0% (n 43) vs clean 14% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 72)]
+0xe33a78204e4f2737187bf1c5d9426eba8dd2e7f3  pools 73 (24/day)  first buy at +73 (IQR 33..123, 5% within 3)  size 0.08227 (0.00953..0.126)
+    FRONT n 73 mean +7.0% won 71 pulled 0 -> +0.0085/day | buys when fronted 0% (n 43) vs clean 14% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 73)]
+0x701195f1ff3f1c9f8ced951cacc9608cbce1881f  pools 74 (25/day)  first buy at +87.5 (IQR 33..142, 7% within 3)  size 0.08887 (0.00772..0.12)
+    FRONT n 74 mean +6.9% won 72 pulled 0 -> +0.0085/day | buys when fronted 0% (n 44) vs clean 14% (n 518) | groups [('0x4752ba5d', '0xf305d719', 196, 74)]
+0xdbec1775e17de0f1bd293fc1e21bca4d09cb58c4  pools 86 (29/day)  first buy at +48 (IQR 29..94, 6% within 3)  size 0.05735 (0.00554..0.0795)
+    FRONT n 86 mean +5.6% won 83 pulled 0 -> +0.0081/day | buys when fronted 0% (n 42) vs clean 17% (n 520) | groups [('0x4752ba5d', '0xf305d719', 196, 86)]
+0xe184eecae5d1209ca68e156a33f05bc579b7d61e  pools 71 (24/day)  first buy at +72 (IQR 38..127, 7% within 3)  size 0.04466 (0.00833..0.128)
+    FRONT n 71 mean +6.4% won 71 pulled 0 -> +0.0076/day | buys when fronted 0% (n 43) vs clean 14% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 71)]
+0x876b93a60ef3fd8b8b057a64b6009824c83c3e2e  pools 87 (29/day)  first buy at +71 (IQR 32..144, 6% within 3)  size 0.02867 (0.00525..0.079)
+    FRONT n 87 mean +5.2% won 83 pulled 0 -> +0.0075/day | buys when fronted 0% (n 43) vs clean 17% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 87)]
+0x0f7eed1328b7051ec77cc153ba7f724b8ec48f25  pools 207 (69/day)  first buy at +51 (IQR 26..102, 5% within 3)  size 0.03104 (0.00252..0.0425)
+    FRONT n 207 mean +2.1% won 177 pulled 0 -> +0.0071/day | buys when fronted 0% (n 42) vs clean 40% (n 520) | groups [('0x4752ba5d', '0xf305d719', 196, 207)]
+0xbaddbe5bee2007916abeb40f5823d36739913d29  pools 75 (25/day)  first buy at +70 (IQR 30..118, 1% within 3)  size 0.04241 (0.00979..0.127)
+    FRONT n 75 mean +5.5% won 69 pulled 0 -> +0.0069/day | buys when fronted 0% (n 43) vs clean 14% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 75)]
+0x0c5e8ab5dc6e4c0b92bbae8e0b605b8b2dfa808a  pools 219 (73/day)  first buy at +64 (IQR 26..109, 5% within 3)  size 0.0257 (0.00259..0.0399)
+    FRONT n 219 mean +1.9% won 178 pulled 0 -> +0.0068/day | buys when fronted 0% (n 43) vs clean 42% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 219)]
+0x30a0d8d5d3f44f9ea64f09c788c91e8e57533a88  pools 216 (72/day)  first buy at +57 (IQR 25..121, 6% within 3)  size 0.02568 (0.00256..0.04)
+    FRONT n 216 mean +1.9% won 184 pulled 0 -> +0.0067/day | buys when fronted 0% (n 43) vs clean 42% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 216)]
+0x0c4be2eec1eccf1ab46a8038a138b4de10021b3d  pools 218 (73/day)  first buy at +57 (IQR 25..102, 4% within 3)  size 0.01496 (0.00251..0.04)
+    FRONT n 218 mean +1.8% won 182 pulled 0 -> +0.0067/day | buys when fronted 2% (n 43) vs clean 42% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 218)]
+0x0cb9f8e20f54cc3e81e1e8360d3a91e373aa7bd2  pools 214 (71/day)  first buy at +51 (IQR 32..102, 9% within 3)  size 0.02648 (0.00269..0.0398)
+    FRONT n 214 mean +1.9% won 176 pulled 0 -> +0.0067/day | buys when fronted 0% (n 42) vs clean 41% (n 520) | groups [('0x4752ba5d', '0xf305d719', 196, 214)]
+0x0c39a5de7c684fb9489cf0a9d64f79babcfdfa4a  pools 206 (69/day)  first buy at +65.5 (IQR 32..111, 4% within 3)  size 0.02736 (0.00251..0.04)
+    FRONT n 206 mean +1.9% won 181 pulled 0 -> +0.0067/day | buys when fronted 2% (n 43) vs clean 39% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 206)]
+0x9ea5aca14e9988af1c93070069e475afab9e2bde  pools 71 (24/day)  first buy at +66 (IQR 27..141, 6% within 3)  size 0.0731 (0.00602..0.0955)
+    FRONT n 71 mean +5.6% won 67 pulled 0 -> +0.0066/day | buys when fronted 0% (n 43) vs clean 14% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 71)]
+0x187b41e3068f634a9ce0b2355afd80c8ade30a83  pools 85 (28/day)  first buy at +65 (IQR 33..110, 6% within 3)  size 0.02907 (0.00516..0.0799)
+    FRONT n 85 mean +4.7% won 79 pulled 0 -> +0.0066/day | buys when fronted 0% (n 43) vs clean 16% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 85)]
+0x0c5d5c4134b41058d723c404752b50637fea087b  pools 210 (70/day)  first buy at +60.5 (IQR 25..115, 2% within 3)  size 0.01463 (0.00263..0.04)
+    FRONT n 210 mean +1.9% won 179 pulled 0 -> +0.0066/day | buys when fronted 2% (n 43) vs clean 40% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 210)]
+0x15bc664806630bc40c4c330f2ba0ade60546db01  pools 213 (71/day)  first buy at +64 (IQR 32..116, 4% within 3)  size 0.02532 (0.00253..0.0399)
+    FRONT n 213 mean +1.8% won 177 pulled 0 -> +0.0065/day | buys when fronted 0% (n 43) vs clean 41% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 213)]
+0x1c3e45f7fa09349fe63d0b944404a680dd5a9165  pools 74 (25/day)  first buy at +43 (IQR 25..91, 14% within 3)  size 0.06814 (0.00563..0.114)
+    FRONT n 74 mean +5.3% won 71 pulled 0 -> +0.0065/day | buys when fronted 0% (n 42) vs clean 14% (n 520) | groups [('0x4752ba5d', '0xf305d719', 196, 74)]
+0x0c637c10a5ae5f1b393ea9972f616b8d6022f15d  pools 217 (72/day)  first buy at +51 (IQR 25..95, 6% within 3)  size 0.01436 (0.00254..0.0399)
+    FRONT n 217 mean +1.8% won 171 pulled 0 -> +0.0064/day | buys when fronted 2% (n 42) vs clean 42% (n 520) | groups [('0x4752ba5d', '0xf305d719', 196, 217)]
+0x0cbebd785cb919ccf5d935effb3250a45b0bd1a8  pools 208 (69/day)  first buy at +73.5 (IQR 32..128, 3% within 3)  size 0.01464 (0.00255..0.0536)
+    FRONT n 208 mean +1.7% won 169 pulled 0 -> +0.0060/day | buys when fronted 0% (n 43) vs clean 40% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 208)]
+0x0cab6b26535060431cb8866200b73b696788e926  pools 218 (73/day)  first buy at +63 (IQR 26..115, 3% within 3)  size 0.01313 (0.00255..0.04)
+    FRONT n 218 mean +1.6% won 165 pulled 0 -> +0.0057/day | buys when fronted 2% (n 43) vs clean 42% (n 519) | groups [('0x4752ba5d', '0xf305d719', 196, 218)]
+0xd8ba9d1a99fc21f0eca24e9b85737c28a194a4e2  pools 24 (8/day)  first buy at +11.5 (IQR 7..83, 21% within 3)  size 0.04852 (0.0021..6.01e+08)
+    FRONT n 20 mean +15.5% won 17 pulled 0 -> +0.0052/day | buys when fronted 25% (n 12) vs clean 1% (n 267) | groups [('0x00000000', '0x765e827f', 4420, 7), ('0x53c59d8d', '0xe353749f', 1601, 4), ('0x53c59d8d', '0xe353749f', 1572, 3)]
