@@ -14,7 +14,7 @@ T_INIT4 = "0x" + keccak(text="Initialize(bytes32,address,address,uint24,int24,ad
 T_SWAP4 = "0x" + keccak(text="Swap(bytes32,address,int128,int128,uint160,uint128,int24,uint24)").hex()
 T_ML = "0x" + keccak(text="ModifyLiquidity(bytes32,address,int24,int24,int256,bytes32)").hex()
 sg = lambda h: (lambda x: x - (1 << 256) if x >= 1 << 255 else x)(int(h, 16))
-STAKE = int(0.0058e18); GAS = int(0.000006e18)
+STAKES = [int(float(x) * 1e18) for x in os.environ.get("STAKES", "0.0058").split(",")]; STAKE = STAKES[0]; GAS = int(0.000006e18)   # env STAKES: several stakes, the rides of each
 head = int(H.rpc(url, "eth_blockNumber", []), 16); lo = head - int(HOURS * 36000)
 logs = []
 for a in range(lo, head + 1, 20000):
@@ -56,28 +56,31 @@ for p in pools:
     entry = rb[0] + 2
     pre = [e for e in p["ev"] if e[0] < entry]                                                  # the pool when our buy lands (at the head of block entry)
     sp = pre[-1][3] if pre else p["sp0"]; L = (pre[-1][4] if pre else None) or max(e[4] for e in p["ev"]); fee = st.median([e[5] for e in p["ev"]]) or 100
-    q = v4math.buy_out_int(sp, L, STAKE, fee); sp_after = v4math.sqrt_after_buy(sp, L, v4math.net_of_fee(STAKE, fee) if hasattr(v4math, "net_of_fee") else STAKE * (10**6 - fee) // 10**6)
-    def ret_at(b):
-        if p["pull"] is not None and p["pull"] <= b:
-            return -1.0
-        post = [e for e in p["ev"] if e[0] <= b]
-        s2 = post[-1][3] if post and post[-1][0] >= entry else sp
-        s2 = v4math.sqrt_after_buy(s2, L, STAKE * (10**6 - fee) // 10**6)                       # our buy is in the pool until we sell
-        return (v4math.sell_out_int(int(s2), L, q, fee) - STAKE - GAS) / STAKE
     rbs = sorted(set(b for b in rb))
-    for Hh in HS:
-        rides[("hold", Hh)].append(ret_at(entry + Hh))
-        for Q in QS:
-            last = rb[0]; ex = entry + Hh
-            for b in range(entry, entry + Hh + 1):
-                if any(last < x <= b for x in rbs if x <= b):
-                    last = max(x for x in rbs if x <= b)
-                if b - last >= Q:
-                    ex = b; break
-            rides[("quiet", Q, Hh)].append(ret_at(ex))
+    for STK in STAKES:
+        q = v4math.buy_out_int(sp, L, STK, fee)
+        def ret_at(b):
+            if p["pull"] is not None and p["pull"] <= b:
+                return -1.0
+            post = [e for e in p["ev"] if e[0] <= b]
+            s2 = post[-1][3] if post and post[-1][0] >= entry else sp
+            s2 = v4math.sqrt_after_buy(s2, L, STK * (10**6 - fee) // 10**6)                       # our buy is in the pool until we sell
+            return (v4math.sell_out_int(int(s2), L, q, fee) - STK - GAS) / STK
+        for Hh in HS:
+            rides[(STK, "hold", Hh)].append(ret_at(entry + Hh))
+            for Q in QS:
+                last = rb[0]; ex = entry + Hh
+                for b in range(entry, entry + Hh + 1):
+                    if any(last < x <= b for x in rbs if x <= b):
+                        last = max(x for x in rbs if x <= b)
+                    if b - last >= Q:
+                        ex = b; break
+                rides[(STK, "quiet", Q, Hh)].append(ret_at(ex))
 print(f"pumped by the router: {len(first_off)}; its first buy at + {st.median(first_off) if first_off else '-'} (median)")
 if gaps:
     gs = sorted(gaps); print(f"gaps between the router's buy blocks: median {st.median(gs)}, p25 {gs[len(gs)//4]}, p75 {gs[3*len(gs)//4]}, p90 {gs[9*len(gs)//10]}; share over 20: {sum(g > 20 for g in gs)/len(gs):.0%}, over 40: {sum(g > 40 for g in gs)/len(gs):.0%}, over 60: {sum(g > 60 for g in gs)/len(gs):.0%}")
-print(f"ride at {STAKE/1e18:g} ETH (entry: first buy + 2), mean per trade / won / pulled before the sell:")
-for k in sorted(rides, key=str):
-    r = rides[k]; print(f"  {' '.join(map(str, k)):16s} n {len(r):3d}  mean {st.mean(r):+.1%}  median {st.median(r):+.1%}  won {sum(x > 0 for x in r):3d}  pulled {sum(x <= -1 for x in r)}")
+for STK in STAKES:
+    print(f"ride at {STK/1e18:g} ETH (entry: first buy + 2), mean per trade / won / pulled before the sell; ETH a day at {len(first_off) / (HOURS / 24):.0f} pumped pools a day:")
+    for k in sorted((k for k in rides if k[0] == STK), key=str):
+        r = rides[k]; print(f"  {' '.join(map(str, k[1:])):16s} n {len(r):3d}  mean {st.mean(r):+.1%}  median {st.median(r):+.1%}  won {sum(x > 0 for x in r):3d}  pulled {sum(x <= -1 for x in r)}"
+                            f"  -> {st.mean(r) * STK / 1e18 * len(r) / (HOURS / 24):+.4f} ETH/day")
