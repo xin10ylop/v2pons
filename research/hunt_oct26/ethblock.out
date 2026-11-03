@@ -1,0 +1,15 @@
+v2:0xf303e77 0x803cee8d bought 0.01 at + 5 | sim at + 45 holds 118533069913645947481619 | [('holder', 'REVERT', 'execution reverted: TransferHelper: TRANSFER_FROM_FAILED'), ('fresh', 'OK', '')]
+v2:0x83a0555 0x499b58ba bought 0.022 at + 84 | sim at + 124 holds 1051605812532622000513707 | [('holder', 'REVERT', 'execution reverted: TransferHelper: TRANSFER_FROM_FAILED'), ('fresh', 'OK', '')]
+v2:0x32768dd 0x702f63fc bought 0.0497 at + 554 | sim at + 594 holds 1704275584907430955602034 | [('holder', 'REVERT', 'execution reverted: TransferHelper: TRANSFER_FROM_FAILED'), ('fresh', 'OK', '')]
+v2:0x3720b23 0x6741f6eb bought 0.005 at + 31 | sim at + 71 holds 482679527793465381051281 | [('holder', 'REVERT', 'execution reverted: TransferHelper: TRANSFER_FROM_FAILED'), ('fresh', 'OK', '')]
+v2:0x140608a 0x407b514c bought 0.003 at + 90 | sim at + 130 holds 253494682126982403471424 | [('holder', 'REVERT', 'execution reverted: TransferHelper: TRANSFER_FROM_FAILED'), ('fresh', 'OK', '')]
+v2:0x9cbb060 0x465f0b08 bought 0.0049 at + 102 | sim at + 142 holds 20692306748346424560221 | [('holder', 'REVERT', 'execution reverted: TransferHelper: TRANSFER_FROM_FAILED'), ('fresh', 'OK', '')]
+v2:0x48091b9 0x56c26202 bought 0.0055 at + 444 | sim at + 484 holds 0 | [('holder', 'holds 0'), ('fresh', 'OK', '')]
+
+-- when does each buyer get blocked? (its own sell simulated at the end of each block after its buy)
+v2:0xf303e77 0x803cee8d bought at + 5 tx index 96 | sellable at the end of block buy+k: [(0, True), (1, True), (2, False)]
+v2:0x83a0555 0x499b58ba bought at + 84 tx index 77 | sellable at the end of block buy+k: [(0, True), (1, True), (2, False)]
+v2:0x32768dd 0x702f63fc bought at + 554 tx index 109 | sellable at the end of block buy+k: [(0, True), (1, False)]
+v2:0x3720b23 0x6741f6eb bought at + 31 tx index 522 | sellable at the end of block buy+k: [(0, True), (1, False)]
+v2:0x140608a 0x407b514c bought at + 90 tx index 193 | sellable at the end of block buy+k: [(0, True), (1, False)]
+v2:0x9cbb060 0x465f0b08 bought at + 102 tx index 100 | sellable at the end of block buy+k: [(0, True), (1, False)]

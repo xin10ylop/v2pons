@@ -1,0 +1,43 @@
+rh 20261101,20261102: 29 pools of the line (to 0x58daec31.. 0xac9650d8 1572 B), window 900 blocks
+  launchers: [('0xc7387849d3636f2fda866563a95b2523b7cc40ae', 10), ('0x69c4dcbafc8aef0e0b61b5bbfcc2a0c4ccda8ce3', 5), ('0x373124bc5ff29028142a2d5bcbbb56e3905b03c9', 4), ('0x4e9e242ffcb9bea06d484ec2ed47415c9817f2e2', 2), ('0x518c77ba318f6ebeef525acdb19f286c178fcd24', 2)]
+  token code: [(('5171c69738b0', 1651), 29)]
+
+  crew (buys in 20%+ of the 29 pools; the launcher excluded):
+    0xa96b7baa98d8db414568cea974e36daf4cc079a0  pools 11 (38%)  first buy +231 (IQR 222..380, 18% within 2)  size 0.0004436 (0.000444..0.000887)  via [('0x88767899', 11)]
+  sells in the window by: {}; pulls in the window: 13 pools, by {'launcher': 13}
+  hooks/fee: [(('0x0000000000000000000000000000000000000000', 0), 29)]
+
+  anchor (the crew's biggest scheduled buy): 0xa96b7baa98d8db414568cea974e36daf4cc079a0 at +231
+  pools with an outsider buy before the anchor: 0; anchor bought in 0 | clean pools: 29; anchor bought in 11
+  pulled in window: outsider-first 0/0, clean 13/29
+
+  per pool: the launcher's buys (offset, ETH) | others' buys (offset, ETH, sender) | pulls (offset)
+    v4:0x9ae3ec873 0x4e9e242f  [(409, 0.2), (518, 0.2), (612, 0.2), (708, 0.3), (847, 0.3)] | [] | []
+    v4:0x27080dd29 0x4e9e242f  [(389, 0.2), (589, 0.2), (662, 0.2), (698, 0.2)] | [] | []
+    v4:0xde1aa9298 0x56757802  [(328, 0.2), (463, 0.2), (583, 0.2), (785, 0.2)] | [] | []
+    v4:0xd5da5eea1 0xc7387849  [(370, 0.2)] | [(380, 0.0004, '0xa96b7baa')] | [464]
+    v4:0x2b04ac4a1 0xc7387849  [(221, 0.2)] | [(230, 0.0004, '0xa96b7baa')] | [269]
+    v4:0x3cd39f532 0xc7387849  [(619, 0.2)] | [(630, 0.0004, '0xa96b7baa')] | [662]
+    v4:0x8673439bb 0xc7387849  [(219, 0.2)] | [(231, 0.0004, '0xa96b7baa')] | [329]
+    v4:0xab5844896 0xc7387849  [(396, 0.2)] | [(404, 0.0004, '0xa96b7baa')] | [444]
+    v4:0x40a86bad6 0xc7387849  [(133, 0.2)] | [(146, 0.0004, '0xa96b7baa')] | [230]
+    v4:0xaa42f0e1a 0xc7387849  [(216, 0.2)] | [(227, 0.0004, '0xa96b7baa')] | [306]
+    v4:0x2b7bd7c60 0xc7387849  [(106, 0.2)] | [] | [284]
+    v4:0x0010b08fb 0xc7387849  [(294, 0.1)] | [] | []
+    v4:0x5426efe0f 0xc7387849  [(233, 1.0), (387, 1.0), (572, 0.5)] | [] | []
+    v4:0x4b8370196 0x69c4dcba  [(357, 0.5), (461, 0.5), (599, 0.5), (823, 0.5)] | [] | []
+    v4:0x76eabc438 0x69c4dcba  [(329, 0.2), (383, 0.2)] | [] | []
+    v4:0x42a363b70 0x69c4dcba  [] | [] | []
+    v4:0xbaf2ce3e1 0x69c4dcba  [(368, 1.0), (779, 1.0)] | [] | []
+    v4:0x48a1d3dcb 0x69c4dcba  [(323, 1.0)] | [] | []
+    v4:0x91fc32115 0x518c77ba  [(212, 0.5)] | [(221, 0.0009, '0xa96b7baa')] | [272]
+    v4:0x984c5ee06 0x518c77ba  [(230, 0.5), (434, 0.5)] | [] | []
+    v4:0x28c7780c8 0x373124bc  [(297, 0.2)] | [(307, 0.0009, '0xa96b7baa')] | [348]
+    v4:0xe611b46cc 0x373124bc  [(211, 0.2)] | [(222, 0.0009, '0xa96b7baa')] | [318]
+    v4:0x45c243a5c 0x373124bc  [(331, 0.2)] | [(345, 0.0009, '0xa96b7baa')] | [396]
+    v4:0xbe9e2dc96 0x373124bc  [(192, 0.2), (302, 0.2)] | [] | []
+    v4:0xc5619a030 0xef7a83f9  [(251, 0.2), (309, 0.2)] | [] | []
+    v4:0x7de1f7e02 0xef7a83f9  [(547, 0.5), (658, 0.5), (741, 0.5), (839, 0.5), (899, 0.5)] | [] | []
+    v4:0x6bf8374d8 0x4d739b7a  [(300, 2.0), (499, 0.5)] | [] | []
+    v4:0x4b915ede4 0x4d739b7a  [(180, 0.2), (255, 0.2), (392, 0.2), (473, 0.2)] | [] | []
+    v4:0x3dedcd67d 0x20bfcbcd  [(437, 0.2), (689, 0.2)] | [] | [735]

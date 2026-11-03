@@ -1,0 +1,110 @@
+eth 20261101,20261102: 23 pools of the line (to 0x7a250d56.. 0xe8e33700 260 B, token 1852 B), window 150 blocks
+  launchers: [('0x80507d3bf0cccf7a23a337f5f0a0f104a11ee11c', 1), ('0xa622fa2e12487c5e6a1b1d5921de63d5ac94bbc0', 1), ('0xd8dd486c1eb7ac3a194193e3bf5aed15f6ae6231', 1), ('0x5259f586a5bc482dd7b758605ccfaf1a4d158d45', 1), ('0xa7797fd199c90a9f563b21180c503c7d8b72db63', 1)]
+  token code: [(('85ed25a135a2', 1852), 1), (('7c0efa64117f', 1852), 1), (('bb65a40e4cd4', 1852), 1), (('4f678d34f80c', 1852), 1)]
+
+  crew (buys in 20%+ of the 23 pools; the launcher excluded):
+    0x8217e58d905bedd6e3799cfc35fbaeb9f91dff69  pools 23 (100%)  first buy +2 (IQR 1..2, 100% within 2)  size 0.01 (0.01..0.01)  via [('0x66a9893c', 11), ('0x7a250d56', 9)]
+    0x8c8723ab182b1dffe08391e5062efd020cc576b0  pools 21 (91%)  first buy +4 (IQR 4..5, 100% within 2)  size 0.02 (0.02..0.02)  via [('0x7a250d56', 13), ('0x66a9893c', 7)]
+    0x3f2fd973a2b80799fe6c3b063ab06290216abad8  pools 23 (100%)  first buy +9 (IQR 8..10, 83% within 2)  size 0.05 (0.05..0.05)  via [('0x7a250d56', 12), ('0x66a9893c', 8)]
+    0xbad33bb6c5b0283b9393d87b5561cea97fa8c9a7  pools 23 (100%)  first buy +14 (IQR 12..16, 83% within 2)  size 0.25 (0.25..0.25)  via [('0x7a250d56', 12), ('0x66a9893c', 8)]
+    0x8c31093e57f9827c162f8f190ee29669f8bf2ee9  pools 23 (100%)  first buy +22 (IQR 20..24, 65% within 2)  size 0.3 (0.3..0.3)  via [('0x7a250d56', 11), ('0x66a9893c', 9)]
+    0x3e88a2ec0f332a9053de55a32cb6835ef11a3faf  pools 23 (100%)  first buy +27 (IQR 26..30, 70% within 2)  size 0.3 (0.3..0.3)  via [('0x66a9893c', 11), ('0x7a250d56', 9)]
+    0x0fbc1b2055b52da393195dcd2755b591219152e1  pools 22 (96%)  first buy +28 (IQR 26..29, 68% within 2)  size 0.15 (0.15..0.15)  via [('0x7a250d56', 11), ('0x66a9893c', 9)]
+    0x2ca77c609b758dd35ce936eea97ad593aa31967f  pools 23 (100%)  first buy +33 (IQR 31..35, 61% within 2)  size 0.4 (0.4..0.4)  via [('0x66a9893c', 10), ('0x7a250d56', 10)]
+    0xf06ad0c9b75595ab3267f50cfadc3c50d6d1dc30  pools 23 (100%)  first buy +38 (IQR 36..39, 65% within 2)  size 0.1 (0.1..0.1)  via [('0x7a250d56', 11), ('0x66a9893c', 9)]
+    0x9058edfb6bb5bff08acd0c5b821fec22825f9aee  pools 23 (100%)  first buy +39 (IQR 36..41, 52% within 2)  size 0.2 (0.2..0.2)  via [('0x66a9893c', 10), ('0x7a250d56', 10)]
+    0xf217cb032e6b23c29a5220bb1232d97bc9fe3936  pools 23 (100%)  first buy +42 (IQR 41..45, 57% within 2)  size 0.3 (0.3..0.3)  via [('0x66a9893c', 14), ('0x7a250d56', 6)]
+    0x0c1a09a756337dc80fdfff32fda19a52bb5b96f0  pools 23 (100%)  first buy +43 (IQR 41..45, 61% within 2)  size 0.2 (0.2..0.2)  via [('0x66a9893c', 10), ('0x7a250d56', 10)]
+    0x11ed9baa1b7ffe3c015ea6fee7cd0d2e72af5ee3  pools 23 (100%)  first buy +47 (IQR 46..51, 52% within 2)  size 0.25 (0.25..0.25)  via [('0x66a9893c', 13), ('0x7a250d56', 7)]
+    0x525d913609e2a5cf2600bd66ad7e8b273f7a6820  pools 23 (100%)  first buy +68 (IQR 66..71, 52% within 2)  size 0.15 (0.15..0.15)  via [('0x7a250d56', 12), ('0x66a9893c', 8)]
+    0xf5e718d07c8a87799cc675b3dab916b621558a2b  pools 23 (100%)  first buy +71 (IQR 69..74, 61% within 2)  size 0.15 (0.15..0.15)  via [('0x7a250d56', 12), ('0x66a9893c', 8)]
+    0x181608aa72f9631e8c50079c597bf5c668102966  pools 23 (100%)  first buy +74 (IQR 73..77, 74% within 2)  size 0.3 (0.3..0.3)  via [('0x7a250d56', 14), ('0x66a9893c', 6)]
+    0x73ba3d90dfedc97567c3fbc2308b009c9cc572ef  pools 23 (100%)  first buy +78 (IQR 77..80, 83% within 2)  size 0.4 (0.4..0.4)  via [('0x7a250d56', 10), ('0x66a9893c', 10)]
+    0x1982ed6e39f7590f69367b7372d527b7ad25bac0  pools 23 (100%)  first buy +83 (IQR 82..84, 83% within 2)  size 0.4 (0.4..0.4)  via [('0x66a9893c', 10), ('0x7a250d56', 10)]
+    0xbb1b88f08ad9869a999a6e7621f01ec827aab65d  pools 23 (100%)  first buy +88 (IQR 88..89, 96% within 2)  size 0.3 (0.3..0.3)  via [('0x66a9893c', 10), ('0x7a250d56', 10)]
+    0x2e1f6af2acb3d22a8d2cc1b920e56c2a675683b6  pools 23 (100%)  first buy +102 (IQR 102..105, 65% within 2)  size 0.3 (0.3..0.3)  via [('0x66a9893c', 12), ('0x7a250d56', 8)]
+    0x996ec6d20367ab0ec785ef7992f09153e33627ad  pools 23 (100%)  first buy +113 (IQR 112..114, 96% within 2)  size 0.05 (0.05..0.05)  via [('0x66a9893c', 12), ('0x7a250d56', 8)]
+    0x282301abe35903cda7eeb1abaff5a195b577125a  pools 22 (96%)  first buy +133 (IQR 132..134, 91% within 2)  size 0.2 (0.2..0.2)  via [('0x7a250d56', 13), ('0x66a9893c', 7)]
+  sells in the window by: {'crew': 89}; pulls in the window: 0 pools, by {}
+  hooks/fee: [((None, None), 23)]
+
+  anchor (the crew's biggest scheduled buy): 0x2ca77c609b758dd35ce936eea97ad593aa31967f at +33
+  pools with an outsider buy before the anchor: 1; anchor bought in 1 | clean pools: 22; anchor bought in 22
+  pulled in window: outsider-first 0/1, clean 0/22
+    v2:0xf303e776b launch 26328826  outsiders: [(5, 0.01, '0x803cee8d', '0x23617e59')]  -> anchor bought +28 0.4, not pulled in window
+
+  v2:0x32768dd0e685d4f120f850ebe96eea589bc115ef launch 26316343 by 0x80507d3b tok 0x202b9261112fc4413c7ae4bab354663a8c253429 hooks None fee None pulls []
+     +   1 i278 BUY    0.01000 C 0x8217e58d90 -> 0x7a250d5630 0x38ed1739  pool native 7.51
+     +   3 i120 BUY    0.00022 o 0x0e8f1a4102 -> 0x7a250d5630 0xb6f9de95  pool native 7.5102
+     +   9 i153 BUY    0.10000 C 0x8217e58d90 -> 0x66a9893cc0 0x3593564c  pool native 7.6102
+     +  13 i216 BUY    0.05000 C 0x3f2fd973a2 -> 0x7a250d5630 0x38ed1739  pool native 7.6602
+     +  16 i166 BUY    0.25000 C 0xbad33bb6c5 -> 0x7a250d5630 0x38ed1739  pool native 7.9102
+     +  19 i152 BUY    0.30000 C 0x8217e58d90 -> 0x7a250d5630 0x38ed1739  pool native 8.2102
+     +  24 i168 SELL   0.37664 C 0x8217e58d90 -> 0x7a250d5630 0x38ed1739  pool native 7.8336
+     +  28 i146 BUY    0.30000 C 0x8c31093e57 -> 0x66a9893cc0 0x3593564c  pool native 8.1336
+     +  31 i168 BUY    0.30000 C 0x3e88a2ec0f -> 0x66a9893cc0 0x3593564c  pool native 8.4336
+     +  33 i153 BUY    0.15000 C 0x0fbc1b2055 -> 0x66a9893cc0 0x3593564c  pool native 8.5836
+     +  35 i126 BUY    0.40000 C 0x2ca77c609b -> 0x66a9893cc0 0x3593564c  pool native 8.9836
+     +  38 i146 BUY    0.10000 C 0xf06ad0c9b7 -> 0x66a9893cc0 0x3593564c  pool native 9.0836
+     +  41 i144 BUY    0.20000 C 0x9058edfb6b -> 0x66a9893cc0 0x3593564c  pool native 9.2836
+     +  44 i147 BUY    0.30000 C 0xf217cb032e -> 0x66a9893cc0 0x3593564c  pool native 9.5836
+     +  47 i208 BUY    0.20000 C 0x0c1a09a756 -> 0x66a9893cc0 0x3593564c  pool native 9.7836
+     +  49 i154 BUY    0.20000 C 0x8c31093e57 -> 0x66a9893cc0 0x3593564c  pool native 9.9836
+     +  51 i145 BUY    0.25000 C 0x11ed9baa1b -> 0x7a250d5630 0x38ed1739  pool native 10.2336
+     +  55 i125 SELL   0.39376 C 0x3e88a2ec0f -> 0x66a9893cc0 0x3593564c  pool native 9.8398
+     +  56 i 72 BUY    0.00001 o 0x7f2703e7a4 -> 0x8feab81d36 0x08298b5a  pool native 9.8398
+     +  57 i124 BUY    0.35000 C 0x0fbc1b2055 -> 0x7a250d5630 0x38ed1739  pool native 10.1898
+     +  63 i244 SELL   0.45982 C 0x2ca77c609b -> 0x7a250d5630 0x38ed1739  pool native 9.73
+     +  65 i162 BUY    0.45000 C 0x9058edfb6b -> 0x66a9893cc0 0x3593564c  pool native 10.18
+     +  70 i224 BUY    0.15000 C 0x525d913609 -> 0x66a9893cc0 0x3593564c  pool native 10.33
+     +  73 i145 BUY    0.15000 C 0xf5e718d07c -> 0x7a250d5630 0x38ed1739  pool native 10.48
+     +  75 i143 BUY    0.30000 C 0x181608aa72 -> 0x7a250d5630 0x38ed1739  pool native 10.78
+     +  80 i254 BUY    0.40000 C 0x73ba3d90df -> 0x7a250d5630 0x38ed1739  pool native 11.18
+     +  84 i209 BUY    0.40000 C 0x1982ed6e39 -> 0x66a9893cc0 0x3593564c  pool native 11.58
+     +  88 i157 BUY    0.30000 C 0xbb1b88f08a -> 0x66a9893cc0 0x3593564c  pool native 11.88
+     +  92 i160 BUY    0.25000 C 0x11ed9baa1b -> 0x66a9893cc0 0x3593564c  pool native 12.13
+     +  97 i 59 BUY    0.40000 C 0x2ca77c609b -> 0x66a9893cc0 0x3593564c  pool native 12.53
+     + 103 i150 BUY    0.30000 C 0x8c31093e57 -> 0x7a250d5630 0x38ed1739  pool native 12.83
+     + 107 i157 BUY    0.30000 C 0x2e1f6af2ac -> 0x7a250d5630 0x38ed1739  pool native 13.13
+     + 116 i253 BUY    0.05000 C 0x996ec6d203 -> 0x66a9893cc0 0x3593564c  pool native 13.18
+     + 124 i128 SELL   0.49612 C 0x73ba3d90df -> 0x66a9893cc0 0x3593564c  pool native 12.6839
+     + 135 i131 BUY    0.20000 C 0x282301abe3 -> 0x66a9893cc0 0x3593564c  pool native 12.8839
+     + 143 i112 BUY    0.30000 C 0xf217cb032e -> 0x66a9893cc0 0x3593564c  pool native 13.1839
+
+  v2:0x0ee2edc7f92c1e91ea0856c47830c924863c9b13 launch 26316991 by 0xa622fa2e tok 0xe1f9fe40eb381dbb797bddee7943735425a9ccaf hooks None fee None pulls []
+     +   2 i101 BUY    0.01000 C 0x8217e58d90 -> 0x7a250d5630 0x38ed1739  pool native 7.51
+     +   5 i134 BUY    0.02000 C 0x8c8723ab18 -> 0x7a250d5630 0x38ed1739  pool native 7.53
+     +  10 i244 BUY    0.05000 C 0x3f2fd973a2 -> 0x7a250d5630 0x38ed1739  pool native 7.58
+     +  13 i167 BUY    0.10000 C 0x8217e58d90 -> 0x66a9893cc0 0x3593564c  pool native 7.68
+     +  15 i 60 BUY    0.30000 C 0x8217e58d90 -> 0x66a9893cc0 0x3593564c  pool native 7.98
+     +  18 i144 BUY    0.25000 C 0xbad33bb6c5 -> 0x7a250d5630 0x38ed1739  pool native 8.23
+     +  24 i200 BUY    0.30000 C 0x8c31093e57 -> 0x7a250d5630 0x38ed1739  pool native 8.53
+     +  27 i146 SELL   0.42014 C 0x8217e58d90 -> 0x66a9893cc0 0x3593564c  pool native 8.1099
+     +  29 i190 BUY    0.15000 C 0x0fbc1b2055 -> 0x7a250d5630 0x38ed1739  pool native 8.2599
+     +  32 i212 BUY    0.30000 C 0x3e88a2ec0f -> 0x66a9893cc0 0x3593564c  pool native 8.5599
+     +  35 i415 BUY    0.40000 C 0x2ca77c609b -> 0x7a250d5630 0x38ed1739  pool native 8.9599
+     +  37 i 90 BUY    0.30000 C 0x8c8723ab18 -> 0x66a9893cc0 0x3593564c  pool native 9.2599
+     +  41 i266 BUY    0.10000 C 0xf06ad0c9b7 -> 0x7a250d5630 0x38ed1739  pool native 9.3599
+     +  43 i165 BUY    0.20000 C 0x9058edfb6b -> 0x66a9893cc0 0x3593564c  pool native 9.5599
+     +  46 i181 BUY    0.20000 C 0x0c1a09a756 -> 0x7a250d5630 0x38ed1739  pool native 9.7599
+     +  48 i168 BUY    0.30000 C 0xf217cb032e -> 0x66a9893cc0 0x3593564c  pool native 10.0599
+     +  51 i 73 BUY    0.20000 C 0x8c31093e57 -> 0x66a9893cc0 0x3593564c  pool native 10.2599
+     +  53 i211 BUY    0.25000 C 0x11ed9baa1b -> 0x66a9893cc0 0x3593564c  pool native 10.5099
+     +  57 i314 SELL   0.40296 C 0x3e88a2ec0f -> 0x7a250d5630 0x38ed1739  pool native 10.1069
+     +  60 i138 BUY    0.35000 C 0x0fbc1b2055 -> 0x7a250d5630 0x38ed1739  pool native 10.4569
+     +  72 i157 SELL   0.48614 C 0x2ca77c609b -> 0x66a9893cc0 0x3593564c  pool native 9.9708
+     +  75 i240 BUY    0.45000 C 0x9058edfb6b -> 0x66a9893cc0 0x3593564c  pool native 10.4208
+     +  77 i196 BUY    0.15000 C 0x525d913609 -> 0x7a250d5630 0x38ed1739  pool native 10.5708
+     +  80 i284 BUY    0.15000 C 0xf5e718d07c -> 0x66a9893cc0 0x3593564c  pool native 10.7208
+     +  83 i 98 BUY    0.30000 C 0x181608aa72 -> 0x7a250d5630 0x38ed1739  pool native 11.0208
+     +  85 i133 BUY    0.40000 C 0x73ba3d90df -> 0x66a9893cc0 0x3593564c  pool native 11.4208
+     +  87 i201 BUY    0.40000 C 0x1982ed6e39 -> 0x66a9893cc0 0x3593564c  pool native 11.8208
+     +  90 i240 BUY    0.30000 C 0xbb1b88f08a -> 0x7a250d5630 0x38ed1739  pool native 12.1208
+     +  95 i168 BUY    0.25000 C 0x11ed9baa1b -> 0x7a250d5630 0x38ed1739  pool native 12.3708
+     +  97 i245 BUY    0.40000 C 0x2ca77c609b -> 0x7a250d5630 0x38ed1739  pool native 12.7708
+     + 103 i167 BUY    0.30000 C 0x2e1f6af2ac -> 0x7a250d5630 0x38ed1739  pool native 13.0708
+     + 105 i156 BUY    0.30000 C 0x8c31093e57 -> 0x66a9893cc0 0x3593564c  pool native 13.3708
+     + 112 i232 BUY    0.05000 C 0x996ec6d203 -> 0x7a250d5630 0x38ed1739  pool native 13.4208
+     + 124 i144 SELL   0.49304 C 0x73ba3d90df -> 0x66a9893cc0 0x3593564c  pool native 12.9277
+     + 134 i254 BUY    0.20000 C 0x282301abe3 -> 0x7a250d5630 0x38ed1739  pool native 13.1277
+     + 142 i 93 BUY    0.30000 C 0xf217cb032e -> 0x66a9893cc0 0x3593564c  pool native 13.4277

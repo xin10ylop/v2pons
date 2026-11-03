@@ -1,0 +1,107 @@
+  eth 2026-11-01 00:00..2026-11-02 00:00: blocks 26316189-26323365, pools v4 198 v2 88 v3 5
+  eth 2026-11-01 00:00..2026-11-02 00:00: pulled within 2 h: 101
+-> out/eth_20261101_00.json
+ne 86, in rng
+    return rpc(url, "eth_getLogs", [dict(q0, fromBlock=hex(lo), toBlock=hex(hi))], tries=4)
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 53, in rpc
+    raise RuntimeError(f"{m} {url.split('/')[2]}: {str(err)[:120]}")
+RuntimeError: eth_getLogs ethereum-rpc.publicnode.com: HTTP 403
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 86, in rng
+    return rpc(url, "eth_getLogs", [dict(q0, fromBlock=hex(lo), toBlock=hex(hi))], tries=4)
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 53, in rpc
+    raise RuntimeError(f"{m} {url.split('/')[2]}: {str(err)[:120]}")
+RuntimeError: eth_getLogs ethereum-rpc.publicnode.com: HTTP 403
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 86, in rng
+    return rpc(url, "eth_getLogs", [dict(q0, fromBlock=hex(lo), toBlock=hex(hi))], tries=4)
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 53, in rpc
+    raise RuntimeError(f"{m} {url.split('/')[2]}: {str(err)[:120]}")
+RuntimeError: eth_getLogs ethereum-rpc.publicnode.com: HTTP 403
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 86, in rng
+    return rpc(url, "eth_getLogs", [dict(q0, fromBlock=hex(lo), toBlock=hex(hi))], tries=4)
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 53, in rpc
+    raise RuntimeError(f"{m} {url.split('/')[2]}: {str(err)[:120]}")
+RuntimeError: eth_getLogs ethereum-rpc.publicnode.com: HTTP 403
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 86, in rng
+    return rpc(url, "eth_getLogs", [dict(q0, fromBlock=hex(lo), toBlock=hex(hi))], tries=4)
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 53, in rpc
+    raise RuntimeError(f"{m} {url.split('/')[2]}: {str(err)[:120]}")
+RuntimeError: eth_getLogs ethereum-rpc.publicnode.com: HTTP 403
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 86, in rng
+    return rpc(url, "eth_getLogs", [dict(q0, fromBlock=hex(lo), toBlock=hex(hi))], tries=4)
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 53, in rpc
+    raise RuntimeError(f"{m} {url.split('/')[2]}: {str(err)[:120]}")
+RuntimeError: eth_getLogs ethereum-rpc.publicnode.com: HTTP 403
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 86, in rng
+    return rpc(url, "eth_getLogs", [dict(q0, fromBlock=hex(lo), toBlock=hex(hi))], tries=4)
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 53, in rpc
+    raise RuntimeError(f"{m} {url.split('/')[2]}: {str(err)[:120]}")
+RuntimeError: eth_getLogs ethereum-rpc.publicnode.com: HTTP 403
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/v2pons/research/hunt_oct26/census.py", line 109, in <module>
+    r = census(ch, s, e)
+  File "/home/user/v2pons/research/hunt_oct26/census.py", line 29, in census
+    for x in H.logs(ch, a, b, [H.T_INIT], c["pm"]):
+             ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 99, in logs
+    parts = list(ex.map(lambda j: rng(*j), jobs))
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 625, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 318, in _result_or_cancel
+    return fut.result(timeout)
+           ~~~~~~~~~~^^^^^^^^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 460, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "/usr/lib/python3.13/concurrent/futures/_base.py", line 402, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 99, in <lambda>
+    parts = list(ex.map(lambda j: rng(*j), jobs))
+                                  ~~~^^^^
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 91, in rng
+    return rng(lo, mid, depth + 1) + rng(mid + 1, hi, depth + 1)
+           ~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 91, in rng
+    return rng(lo, mid, depth + 1) + rng(mid + 1, hi, depth + 1)
+           ~~~^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 91, in rng
+    return rng(lo, mid, depth + 1) + rng(mid + 1, hi, depth + 1)
+           ~~~^^^^^^^^^^^^^^^^^^^^
+  [Previous line repeated 4 more times]
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 86, in rng
+    return rpc(url, "eth_getLogs", [dict(q0, fromBlock=hex(lo), toBlock=hex(hi))], tries=4)
+  File "/home/user/v2pons/research/hunt_oct26/hlib.py", line 53, in rpc
+    raise RuntimeError(f"{m} {url.split('/')[2]}: {str(err)[:120]}")
+RuntimeError: eth_getLogs ethereum-rpc.publicnode.com: HTTP 403
+  eth 2026-11-02 00:00..2026-11-03 00:00: blocks 26323365-26330541, pools v4 120 v2 63 v3 11
+  eth 2026-11-02 00:00..2026-11-03 00:00: pulled within 2 h: 61
+-> out/eth_20261102_00.json

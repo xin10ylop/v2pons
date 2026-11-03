@@ -1,0 +1,50 @@
+rh 20261101,20261102: 15 pools of the line (to 0xbbf5c604.. 0xfb5836eb 3940 B), window 1500 blocks
+  launchers: [('0x168b921aa662cac2a0b76a7d1fc95ccaa85210eb', 15)]
+  token code: [(('149a84f9793f', 2529), 1), (('68d549b1a188', 2549), 1), (('bf888dea8054', 2560), 1), (('ed8822b7594d', 2554), 1)]
+
+  crew (buys in 20%+ of the 15 pools; the launcher excluded):
+    0xe71a69f434a719cd5afa411568b69716aab3b84a  pools 15 (100%)  first buy +408 (IQR 338..468, 13% within 2)  size 2.998e-06 (3e-06..3e-06)  via [('0x89e5db8b', 15)]
+  sells in the window by: {}; pulls in the window: 0 pools, by {}
+  hooks/fee: [((None, None), 15)]
+
+  anchor (the crew's biggest scheduled buy): 0xe71a69f434a719cd5afa411568b69716aab3b84a at +408
+  pools with an outsider buy before the anchor: 0; anchor bought in 0 | clean pools: 15; anchor bought in 15
+  pulled in window: outsider-first 0/0, clean 0/15
+
+  v2:0x23a90136f03492559d318f16bc3d48c1a1fae766 launch 103063027 by 0x168b921a tok 0xd3bdb152b5aa806cf0c56e481ef6d54844659ac3 hooks None fee None pulls []
+     + 465 i  4 BUY    0.24094 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.4109
+     + 465 i  4 BUY    0.03909 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.45
+     + 465 i  4 BUY    0.04689 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.4969
+     + 465 i  4 BUY    0.08453 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 465 i  4 BUY    0.00000 L 0x168b921aa6 -> 0xbbf5c604b2 0xfb5836eb  pool native 0.5814
+     + 468 i  1 BUY    0.00000 C 0xe71a69f434 -> 0x89e5db8b5a 0xb6f9de95  pool native 0.5815
+     + 818 i  2 BUY    0.01654 o 0x2ee269e45d -> 0x89e5db8b5a 0x38ed1739  pool native 0.598

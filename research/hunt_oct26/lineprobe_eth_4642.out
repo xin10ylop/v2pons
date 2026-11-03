@@ -1,0 +1,63 @@
+eth 20261101,20261102: 111 pools of the line (to 0x7a250d56.. 0xf305d719 196 B), window 120 blocks
+  launchers: [('0x2a0e1a5b2aec0efd0724fe5947197ed85137fa28', 1), ('0xf89cf89eae4d397505fb7c4eb9b6d2c6fa13ec09', 1), ('0x816d98cb6a7353118757269edb9cff5d0e099ff6', 1), ('0xcfba59c5fad9cbec0ec1a8989d0e726adfb5929f', 1), ('0xd33f4b49ad650c61e99ab75f0f3551e565ac5197', 1)]
+  token code: [(('29ad7d74a77c', 4642), 75), (('6dc4470416e7', 1764), 1), (('c865ed6770f2', 1764), 1), (('585452f951f7', 1764), 1)]
+
+  crew (buys in 20%+ of the 111 pools; the launcher excluded):
+    0x7cd62ce1a6be5ff61f0a95018f227c8bbdb91f6e  pools 68 (61%)  first buy +23.5 (IQR 7..48, 4% within 2)  size 0.02079 (0.011..0.0535)  via [('0x7a250d56', 20)]
+    0xf0ec393c4aea3066dbcdb78b0b537b2591e53b8a  pools 73 (66%)  first buy +27 (IQR 13..52, 14% within 2)  size 0.021 (0.0119..0.0504)  via [('0x7a250d56', 20)]
+    0xba24b44e3db710ef93a10e8610adc76ad0889c05  pools 70 (63%)  first buy +28 (IQR 16..49, 11% within 2)  size 0.02159 (0.0113..0.054)  via [('0x7a250d56', 20)]
+    0xaa73554681772925ba50c531797cf1471578d2b9  pools 74 (67%)  first buy +29 (IQR 13..54, 4% within 2)  size 0.02233 (0.011..0.0469)  via [('0x7a250d56', 20)]
+    0xa3e03fcc3a1abf658d8b38638f0350f319e59b6a  pools 67 (60%)  first buy +31 (IQR 13..51, 7% within 2)  size 0.021 (0.011..0.0634)  via [('0x7a250d56', 20)]
+    0x584a565868f3be5b6b39be065586b8bc0bc42617  pools 68 (61%)  first buy +31.5 (IQR 21..53, 10% within 2)  size 0.02075 (0.0112..0.066)  via [('0x7a250d56', 20)]
+    0xbaac7ed516ff3656a2db95277bf8ce2359afee61  pools 69 (62%)  first buy +32 (IQR 11..48, 14% within 2)  size 0.021 (0.0126..0.0645)  via [('0x7a250d56', 20)]
+    0x1d2d47a721fa8429ccf43bda2d075b0499a6b594  pools 69 (62%)  first buy +32 (IQR 15..48, 9% within 2)  size 0.02 (0.012..0.082)  via [('0x7a250d56', 20)]
+    0x47495717bc0c8559e9fe82381fdbd2619cb8c1ad  pools 67 (60%)  first buy +34 (IQR 15..56, 4% within 2)  size 0.022 (0.0107..0.091)  via [('0x7a250d56', 20)]
+    0x1873f381ebc637f1437e001a927db49836b55bb2  pools 70 (63%)  first buy +35 (IQR 10..55, 4% within 2)  size 0.02085 (0.011..0.0584)  via [('0x7a250d56', 20)]
+    0xad36db33f290c782b255ee8c45c55bf17ffca582  pools 68 (61%)  first buy +35 (IQR 17..53, 13% within 2)  size 0.021 (0.0126..0.0652)  via [('0x7a250d56', 20)]
+    0xc07e63f5ad8eac4f70ea167bb3883f2f6ed9344a  pools 74 (67%)  first buy +36.5 (IQR 12..55, 4% within 2)  size 0.02 (0.0111..0.042)  via [('0x7a250d56', 20)]
+    0xa6fd9a212c60d69eac4978349687da587fbfefcd  pools 75 (68%)  first buy +37 (IQR 18..50, 5% within 2)  size 0.02122 (0.0115..0.0541)  via [('0x7a250d56', 20)]
+    0x5e0a70ee786cf7d4ecdce249314329465b691d44  pools 73 (66%)  first buy +37 (IQR 18..54, 10% within 2)  size 0.0201 (0.0116..0.0484)  via [('0x7a250d56', 20)]
+    0x51dbbbe90103acb4c9eda17af851fe1c0183493a  pools 67 (60%)  first buy +37 (IQR 22..53, 9% within 2)  size 0.02106 (0.0126..0.0489)  via [('0x7a250d56', 20)]
+    0xef6e7bce172c8a2c822db67eb7e3cfc1370abed4  pools 68 (61%)  first buy +37.5 (IQR 20..53, 6% within 2)  size 0.0219 (0.012..0.05)  via [('0x7a250d56', 20)]
+    0x88035967b153f462d6b2f802ac2307edd72cf13c  pools 72 (65%)  first buy +38 (IQR 20..56, 6% within 2)  size 0.022 (0.011..0.0464)  via [('0x7a250d56', 20)]
+    0x3d5fe6df660c49ec3268573d17297a0b74364cef  pools 70 (63%)  first buy +38.5 (IQR 16..59, 4% within 2)  size 0.02103 (0.0109..0.0416)  via [('0x7a250d56', 20)]
+    0x71308db556ac581fc4b567091df756babf6c7a91  pools 68 (61%)  first buy +39.5 (IQR 18..53, 3% within 2)  size 0.0212 (0.0112..0.06)  via [('0x7a250d56', 20)]
+    0x9f057c5cfa9d18f2a5080ee2e7c65ed8b415c063  pools 69 (62%)  first buy +40 (IQR 16..55, 12% within 2)  size 0.022 (0.0135..0.0725)  via [('0x7a250d56', 20)]
+  sells in the window by: {'outsider': 111, 'launcher': 11}; pulls in the window: 14 pools, by {'launcher': 14}
+  hooks/fee: [((None, None), 111)]
+
+  anchor (the crew's biggest scheduled buy): 0xaa73554681772925ba50c531797cf1471578d2b9 at +29
+  pools with an outsider buy before the anchor: 32; anchor bought in 1 | clean pools: 79; anchor bought in 73
+  pulled in window: outsider-first 5/32, clean 9/79
+    v2:0xf24068d7e launch 26317743  outsiders: [(1, 0.0367, '0xdee96b34', '0x7a250d56'), (1, 0.0138, '0x8782d1f7', '0x7a250d56'), (1, 0.037, '0xe7d9c068', '0x7a250d56'), (1, 0.0268, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x28b209987 launch 26318641  outsiders: [(2, 0.0126, '0xc429f98f', '0x7a250d56'), (2, 0.0368, '0xcb5978ed', '0x7a250d56'), (2, 0.0311, '0xc2570495', '0x7a250d56'), (2, 0.0299, '0x49689d5b', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x45499c454 launch 26319573  outsiders: [(1, 0.0189, '0xdee96b34', '0x7a250d56'), (1, 0.0315, '0x8782d1f7', '0x7a250d56'), (1, 0.0176, '0xe7d9c068', '0x7a250d56'), (1, 0.0385, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0xe8a62f1a0 launch 26319748  outsiders: [(1, 0.0144, '0xdee96b34', '0x7a250d56'), (1, 0.0255, '0x8782d1f7', '0x7a250d56'), (1, 0.0249, '0xe7d9c068', '0x7a250d56'), (1, 0.0107, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0xab12d86ed launch 26320162  outsiders: [(2, 0.0155, '0xdee96b34', '0x7a250d56'), (2, 0.0296, '0x8782d1f7', '0x7a250d56'), (2, 0.0264, '0xe7d9c068', '0x7a250d56'), (2, 0.0282, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x156d851a7 launch 26320589  outsiders: [(1, 0.0063, '0xc429f98f', '0x7a250d56'), (1, 0.0383, '0xcb5978ed', '0x7a250d56'), (1, 0.0377, '0xc2570495', '0x7a250d56'), (1, 0.0236, '0x49689d5b', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x0bac3bc67 launch 26320591  outsiders: [(2, 0.0296, '0xdee96b34', '0x7a250d56'), (2, 0.0389, '0x8782d1f7', '0x7a250d56'), (2, 0.0302, '0xe7d9c068', '0x7a250d56'), (2, 0.0389, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0xe78b06d07 launch 26320753  outsiders: [(1, 0.0248, '0xdee96b34', '0x7a250d56'), (1, 0.0345, '0x8782d1f7', '0x7a250d56'), (1, 0.0281, '0xe7d9c068', '0x7a250d56'), (1, 0.0045, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x28fdab554 launch 26321164  outsiders: [(1, 0.0356, '0xdee96b34', '0x7a250d56'), (1, 0.0336, '0x8782d1f7', '0x7a250d56'), (1, 0.0262, '0xe7d9c068', '0x7a250d56'), (1, 0.0101, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x461517300 launch 26321166  outsiders: [(1, 0.026, '0xc429f98f', '0x7a250d56'), (1, 0.0284, '0xcb5978ed', '0x7a250d56'), (1, 0.0082, '0xc2570495', '0x7a250d56'), (1, 0.0143, '0x49689d5b', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x9f8419742 launch 26321389  outsiders: [(0, 0.002, '0x568fcdf1', '0x7a250d56')]  -> anchor did NOT buy, pulled at +3
+    v2:0xcf87a4aaa launch 26321710  outsiders: [(0, 0.002, '0x568fcdf1', '0x7a250d56')]  -> anchor did NOT buy, pulled at +3
+    v2:0x658a12f1b launch 26321879  outsiders: [(0, 0.002, '0x568fcdf1', '0x7a250d56'), (2, 0.0168, '0xdee96b34', '0x7a250d56'), (2, 0.0196, '0x8782d1f7', '0x7a250d56'), (2, 0.028, '0xe7d9c068', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0xb855fcab3 launch 26322422  outsiders: [(1, 0.0302, '0xc429f98f', '0x7a250d56'), (1, 0.0131, '0xcb5978ed', '0x7a250d56'), (1, 0.0193, '0xc2570495', '0x7a250d56'), (1, 0.0197, '0x49689d5b', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x581b041e9 launch 26322423  outsiders: [(1, 0.0291, '0xdee96b34', '0x7a250d56'), (1, 0.0132, '0x8782d1f7', '0x7a250d56'), (1, 0.0285, '0xe7d9c068', '0x7a250d56'), (1, 0.0185, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x8ea776e1f launch 26322989  outsiders: [(1, 0.0119, '0xc429f98f', '0x7a250d56'), (1, 0.0297, '0xcb5978ed', '0x7a250d56'), (1, 0.0068, '0xc2570495', '0x7a250d56'), (1, 0.0288, '0x49689d5b', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x2adc17bdc launch 26322991  outsiders: [(1, 0.0117, '0xdee96b34', '0x7a250d56'), (1, 0.0319, '0x8782d1f7', '0x7a250d56'), (1, 0.0368, '0xe7d9c068', '0x7a250d56'), (1, 0.0097, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0xaddc98cbd launch 26323163  outsiders: [(1, 0.0327, '0xdee96b34', '0x7a250d56'), (1, 0.0069, '0x8782d1f7', '0x7a250d56'), (1, 0.0312, '0xe7d9c068', '0x7a250d56'), (1, 0.018, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0xeccfc40c3 launch 26325076  outsiders: [(1, 0.0292, '0xdee96b34', '0x7a250d56'), (1, 0.0251, '0x8782d1f7', '0x7a250d56'), (1, 0.0274, '0xe7d9c068', '0x7a250d56'), (1, 0.0197, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x5e6f7c058 launch 26325795  outsiders: [(3, 0.0338, '0xc429f98f', '0x7a250d56'), (3, 0.0137, '0xcb5978ed', '0x7a250d56'), (3, 0.0352, '0xc2570495', '0x7a250d56'), (3, 0.0064, '0x49689d5b', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x0b2921f7d launch 26326972  outsiders: [(2, 0.0061, '0xdee96b34', '0x7a250d56'), (2, 0.0276, '0x8782d1f7', '0x7a250d56'), (2, 0.0311, '0xe7d9c068', '0x7a250d56'), (2, 0.0185, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x89758cb1b launch 26326975  outsiders: [(1, 0.0331, '0xc429f98f', '0x7a250d56'), (1, 0.0131, '0xcb5978ed', '0x7a250d56'), (1, 0.0281, '0xc2570495', '0x7a250d56'), (1, 0.0165, '0x49689d5b', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x1a0162ced launch 26328488  outsiders: [(2, 0.0134, '0xa98e43a4', '0xe56f811f'), (2, 0.0073, '0x803cee8d', '0x23617e59')]  -> anchor did NOT buy, not pulled in window
+    v2:0xccd8a6c6e launch 26329471  outsiders: [(1, 0.002, '0x568fcdf1', '0x7a250d56'), (1, 0.0108, '0xdee96b34', '0x7a250d56'), (1, 0.0097, '0x8782d1f7', '0x7a250d56'), (1, 0.0048, '0xe7d9c068', '0x7a250d56')]  -> anchor did NOT buy, pulled at +3
+    v2:0xd7adab774 launch 26329496  outsiders: [(2, 0.0021, '0xc09bee3c', '0x734ab9de'), (2, 0.0138, '0xdee96b34', '0x7a250d56'), (2, 0.0248, '0x8782d1f7', '0x7a250d56'), (2, 0.009, '0xe7d9c068', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x1265ed8db launch 26329655  outsiders: [(2, 0.0057, '0xdee96b34', '0x7a250d56'), (2, 0.0097, '0x8782d1f7', '0x7a250d56'), (2, 0.0344, '0xe7d9c068', '0x7a250d56'), (2, 0.037, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x26d4e7cdd launch 26329770  outsiders: [(1, 0.002, '0x568fcdf1', '0x7a250d56'), (2, 0.0023, '0xc09bee3c', '0x734ab9de'), (2, 0.0182, '0xc429f98f', '0x7a250d56'), (2, 0.0256, '0xcb5978ed', '0x7a250d56')]  -> anchor did NOT buy, pulled at +3
+    v2:0xdac821c7a launch 26329796  outsiders: [(1, 0.0216, '0xc429f98f', '0x7a250d56'), (1, 0.0342, '0xcb5978ed', '0x7a250d56'), (1, 0.0392, '0xc2570495', '0x7a250d56'), (1, 0.0055, '0x49689d5b', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x133c1070a launch 26329856  outsiders: [(0, 0.002, '0x568fcdf1', '0x7a250d56')]  -> anchor bought +35 0.04694, pulled at +113
+    v2:0x77a68b40d launch 26329958  outsiders: [(1, 0.029, '0xc429f98f', '0x7a250d56'), (1, 0.0255, '0xcb5978ed', '0x7a250d56'), (1, 0.0131, '0xc2570495', '0x7a250d56'), (1, 0.0315, '0x49689d5b', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0xb12efa077 launch 26330318  outsiders: [(1, 0.0226, '0xc429f98f', '0x7a250d56'), (1, 0.0322, '0xcb5978ed', '0x7a250d56'), (1, 0.0078, '0xc2570495', '0x7a250d56'), (1, 0.0222, '0x49689d5b', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
+    v2:0x91357e130 launch 26330320  outsiders: [(1, 0.0169, '0xdee96b34', '0x7a250d56'), (1, 0.0394, '0x8782d1f7', '0x7a250d56'), (1, 0.012, '0xe7d9c068', '0x7a250d56'), (1, 0.0374, '0x6a484a89', '0x7a250d56')]  -> anchor did NOT buy, not pulled in window
