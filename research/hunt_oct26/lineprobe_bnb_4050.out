@@ -1,0 +1,145 @@
+bnb 20261102: 51 pools of the line (to 0x10ed43c7.. 0xf305d719 196 B, token 4050 B), window 1300 blocks
+  launchers: [('0x17a507c37335d5ee7b9a09702ea72085400bc7b9', 1), ('0x7cbdf5835997739a75ed97c4fa68ab47cceeacee', 1), ('0xdd4d8cb6dd36f5c7129742ea98e96b9c3e1d9fe5', 1), ('0x9f7246fb349a3871c2346ab13f3e5824f7c23272', 1), ('0xb975746f18bb8783dc6a58289cae08ca4a0a6946', 1)]
+  token code: [(('81d7be225d58', 4050), 1), (('9a134bbf049e', 4050), 1), (('8553b54276db', 4050), 1), (('484cb93bf218', 4050), 1)]
+
+  crew (buys in 20%+ of the 51 pools; the launcher excluded):
+    0xc0c84518ced6a61d2a4f4a50bc0f438e0cb1031b  pools 51 (100%)  first buy +132 (IQR 83..239, 6% within 2)  size 0.2491 (0.156..0.271)  via [('0x10ed43c7', 20)]
+    0x7e914c8258d51efb040094228615ab88301f68a2  pools 51 (100%)  first buy +134 (IQR 131..137, 35% within 2)  size 0.003433 (0.000548..0.0242)  via [('0x1de460f3', 20)]
+    0x2cc8192fc62e3640de91e75582cf3dbbd571b970  pools 51 (100%)  first buy +145 (IQR 98..350, 8% within 2)  size 0.2234 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0xc6591fde9b44aa081062c9fc6ee48e443d24ef57  pools 51 (100%)  first buy +153 (IQR 46..356, 4% within 2)  size 0.201 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0x82c6085f9ec2722fd6c8fc47577368a156a25b9b  pools 51 (100%)  first buy +161 (IQR 90..255, 4% within 2)  size 0.268 (0.156..0.316)  via [('0x10ed43c7', 20)]
+    0xf795c5250f3d4006283a0d0dbb378dc0e69df923  pools 51 (100%)  first buy +170 (IQR 129..457, 10% within 2)  size 0.268 (0.156..0.278)  via [('0x10ed43c7', 20)]
+    0xc2a049226db88bfd46f01dfad2db9ec68b15d9fa  pools 51 (100%)  first buy +170 (IQR 46..352, 2% within 2)  size 0.201 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0xf9689b9d0a675ff9ad876f1d766fb460dbde7d20  pools 51 (100%)  first buy +178 (IQR 45..830, 2% within 2)  size 0.201 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0xfdec62fde1f1dc56c0ba5e50f4cae5d6c63762bf  pools 51 (100%)  first buy +182 (IQR 130..270, 8% within 2)  size 0.2707 (0.156..0.271)  via [('0x10ed43c7', 20)]
+    0xe9ed24db105a6b15f880025ed9ad024c06783895  pools 51 (100%)  first buy +184 (IQR 132..317, 14% within 2)  size 0.2711 (0.158..0.271)  via [('0x10ed43c7', 20)]
+    0x9cdd08f30188c2732cdbcac8eebf4e6e8bf0c1b2  pools 51 (100%)  first buy +184 (IQR 86..266, 8% within 2)  size 0.2491 (0.223..0.271)  via [('0x10ed43c7', 20)]
+    0xc621946845d0fd5d1dbc6d6beb3e22aed39d7050  pools 51 (100%)  first buy +185 (IQR 90..263, 2% within 2)  size 0.2457 (0.158..0.271)  via [('0x10ed43c7', 20)]
+    0xa952331ea48ea9c00c4608d8259c186021331f31  pools 51 (100%)  first buy +185 (IQR 134..358, 8% within 2)  size 0.2711 (0.158..0.271)  via [('0x10ed43c7', 20)]
+    0xda698c0d2895749da93291b5dc8c3cef8820bf44  pools 51 (100%)  first buy +189 (IQR 154..700, 4% within 2)  size 0.2707 (0.158..0.271)  via [('0x10ed43c7', 20)]
+    0xca4e67bb5737c095bd3a80f79ecc6607e5723f1a  pools 51 (100%)  first buy +199 (IQR 143..893, 8% within 2)  size 0.2031 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0xaa49e7fec503664a39598645c7a3fbfa0374380d  pools 51 (100%)  first buy +200 (IQR 50..893, 2% within 2)  size 0.2031 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0x9dae4688c60ce00e500eb7af2d4a598646d6250c  pools 51 (100%)  first buy +236 (IQR 137..453, 4% within 2)  size 0.268 (0.156..0.271)  via [('0x10ed43c7', 20)]
+    0x9b519f5d52cdd03e4b10484829bc137eef1f8c1a  pools 51 (100%)  first buy +241 (IQR 164..466, 8% within 2)  size 0.268 (0.134..0.271)  via [('0x10ed43c7', 20)]
+    0xc194efe22e874a3fe666b5de5a8fd369f12c32d5  pools 51 (100%)  first buy +254 (IQR 171..667, 2% within 2)  size 0.268 (0.156..0.271)  via [('0x10ed43c7', 20)]
+    0x5b4beded36c1ea380abe8c6a6a0c4408f38e5024  pools 51 (100%)  first buy +282 (IQR 49..826, 8% within 2)  size 0.201 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0x4522e661d9c94ec54b37e71896351a7440ec4f07  pools 51 (100%)  first buy +287 (IQR 271..355, 4% within 2)  size 0.201 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0xdb2d83f907965fb05ac23b8d40d3a327fc9ea52b  pools 51 (100%)  first buy +307 (IQR 130..1083, 4% within 2)  size 0.2707 (0.000114..0.271)  via [('0x10ed43c7', 20)]
+    0x97bd895f8123a7837368df410e7d308246c0b3e9  pools 51 (100%)  first buy +309 (IQR 155..375, 2% within 2)  size 0.2234 (0.134..0.271)  via [('0x10ed43c7', 20)]
+    0xe0943605ca32607e3d9c78a90262adbff6432075  pools 51 (100%)  first buy +310 (IQR 102..513, 4% within 2)  size 0.2234 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0xcb08c02c0a386a10773a2c6589e7089a3dd5aca3  pools 51 (100%)  first buy +310 (IQR 128..350, 6% within 2)  size 0.2707 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0x5c192bbfb7172bbafdad13aa5e0cd53cc6c9f79d  pools 51 (100%)  first buy +320 (IQR 165..662, 2% within 2)  size 0.1579 (0.134..0.271)  via [('0x10ed43c7', 20)]
+    0xb940e4cd40ea9e887cbc92879062676e2bc4a924  pools 51 (100%)  first buy +323 (IQR 141..412, 2% within 2)  size 0.2457 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0x3a39aa05b149141a4bfc7d73611dceb0557b39c4  pools 51 (100%)  first buy +325 (IQR 165..545, 6% within 2)  size 0.2482 (0.134..0.273)  via [('0x10ed43c7', 20)]
+    0x92bc32975b0fbf1a19caf7cc6e3f9ea4092fd314  pools 51 (100%)  first buy +331 (IQR 178..412, 8% within 2)  size 0.2457 (0.134..0.271)  via [('0x10ed43c7', 20)]
+    0x362396125a55d932a09f0a5182140cbbcaf30b70  pools 51 (100%)  first buy +338 (IQR 133..458, 4% within 2)  size 0.2707 (0.000114..0.271)  via [('0x10ed43c7', 20)]
+    0xbd0037b8e4189c24667bfbe21b88970dede46d0e  pools 51 (100%)  first buy +356 (IQR 150..513, 6% within 2)  size 0.2234 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0x3154f6949285ee7ac1593bd2bdf974adb6731c32  pools 51 (100%)  first buy +385 (IQR 217..668, 2% within 2)  size 0.2482 (0.134..0.271)  via [('0x10ed43c7', 20)]
+    0x1cce4ec5a7c5e8cfc8dedd771876c61e60b8b645  pools 51 (100%)  first buy +515 (IQR 221..892, 16% within 2)  size 0.2234 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+    0x3e4860e7d4ac34c0857c8f96876002334100e02b  pools 51 (100%)  first buy +701 (IQR 694..1085, 22% within 2)  size 0.2707 (0.000114..0.271)  via [('0x10ed43c7', 20)]
+    0x64e893a4c5c930b2cc68b054792cbc66344aeb9a  pools 51 (100%)  first buy +894 (IQR 198..919, 8% within 2)  size 0.2234 (2.85e-05..0.271)  via [('0x10ed43c7', 20)]
+  sells in the window by: {'crew': 5879, 'outsider': 3}; pulls in the window: 0 pools, by {}
+  hooks/fee: [((None, None), 51)]
+
+  anchor (the crew's biggest scheduled buy): 0xe9ed24db105a6b15f880025ed9ad024c06783895 at +184
+  pools with an outsider buy before the anchor: 4; anchor bought in 4 | clean pools: 47; anchor bought in 47
+  pulled in window: outsider-first 0/4, clean 0/47
+    v2:0xccb9ecafc launch 131233138  outsiders: [(40, 0.3105, '0x1c90da18', '0xdb9b1e94')]  -> anchor bought +178 0.2711, not pulled in window
+    v2:0x267c2792a launch 131242609  outsiders: [(378, 0.0141, '0x90ec45a1', '0xd36b6d64')]  -> anchor bought +698 0.2707, not pulled in window
+    v2:0x01f808213 launch 131294985  outsiders: [(41, 0.275, '0x0f2f46da', '0xdb9b1e94')]  -> anchor bought +133 0.2711, not pulled in window
+    v2:0x03fd96270 launch 131312769  outsiders: [(38, 0.2941, '0xb27ad847', '0xdb9b1e94')]  -> anchor bought +462 0.2711, not pulled in window
+
+  per pool: the launcher's buys (offset, ETH) | others' buys (offset, ETH, sender) | pulls (offset)
+    v2:0x7dad43806 0x17a507c3  [] | [(41, 0.0001, '0xc6591fde'), (42, 0.0001, '0xf9689b9d'), (43, 0.0, '0xaa49e7fe')] | []
+    v2:0xd2a80adc8 0x7cbdf583  [] | [(42, 0.0001, '0x4522e661'), (42, 0.0001, '0x5b4beded'), (44, 0.0, '0xf9689b9d')] | []
+    v2:0x1ab77eb80 0xdd4d8cb6  [] | [(38, 0.0001, '0x5b4beded'), (38, 0.0001, '0xf9689b9d'), (40, 0.0, '0xaa49e7fe')] | []
+    v2:0xc12dd0286 0x9f7246fb  [] | [(41, 0.0001, '0xca4e67bb'), (41, 0.0001, '0xaa49e7fe'), (43, 0.0, '0x2cc8192f')] | []
+    v2:0x413a945db 0xb975746f  [] | [(55, 0.0, '0xc6591fde'), (55, 0.0001, '0xc2a04922'), (55, 0.0001, '0x5b4beded')] | []
+    v2:0x0726d09d9 0x465d8e1e  [] | [(40, 0.0001, '0x64e893a4'), (40, 0.0001, '0xc6591fde'), (43, 0.0, '0xe0943605')] | []
+    v2:0xcc56036a4 0xb6333d40  [] | [(36, 0.0001, '0xc6591fde'), (36, 0.0001, '0x5b4beded'), (37, 0.0, '0xca4e67bb')] | []
+    v2:0x3687592aa 0x8ddc2640  [] | [(44, 0.0001, '0xc6591fde'), (44, 0.0, '0xe0943605'), (44, 0.0001, '0xca4e67bb')] | []
+    v2:0xda2ccbc2a 0x830eee31  [] | [(39, 0.0001, '0xc6591fde'), (39, 0.0001, '0xc2a04922'), (41, 0.0, '0xaa49e7fe')] | []
+    v2:0xf8d9bfb24 0x0e74d6a2  [] | [(41, 0.0001, '0xc2a04922'), (41, 0.0001, '0xf9689b9d'), (46, 0.0, '0xc6591fde')] | []
+    v2:0x0d63e6eb6 0xa65797a8  [] | [(50, 0.0001, '0xaa49e7fe'), (50, 0.0001, '0x64e893a4'), (52, 0.0, '0xb940e4cd')] | []
+    v2:0xc21f7d0ff 0x77a590aa  [] | [(43, 0.0001, '0xc2a04922'), (43, 0.0001, '0x5b4beded'), (45, 0.0, '0xaa49e7fe')] | []
+    v2:0xc42e5eec7 0x3ab71609  [] | [(42, 0.0001, '0x5b4beded'), (42, 0.0001, '0xc2a04922'), (44, 0.0, '0xe0943605')] | []
+    v2:0x14584b417 0x216470e0  [] | [(46, 0.0, '0xc6591fde'), (46, 0.0001, '0xf9689b9d'), (46, 0.0001, '0xc2a04922')] | []
+    v2:0xb64defb5d 0x1c911be8  [] | [(49, 0.0001, '0xf9689b9d'), (49, 0.0001, '0xca4e67bb'), (51, 0.0, '0xaa49e7fe')] | []
+    v2:0xaad5e0bc7 0xd890a856  [] | [(49, 0.0001, '0x4522e661'), (49, 0.0001, '0xc2a04922'), (49, 0.0, '0xc6591fde')] | []
+    v2:0xdab929d66 0xa67085db  [] | [(51, 0.0001, '0xc6591fde'), (51, 0.0001, '0xc2a04922'), (53, 0.0, '0x1cce4ec5')] | []
+    v2:0xccb9ecafc 0x134f10d6  [] | [(40, 0.3105, '0x1c90da18'), (49, 0.0001, '0xc2a04922'), (49, 0.0001, '0xca4e67bb')] | []
+    v2:0xfae2b8cdd 0xf3b891fe  [] | [(47, 0.0001, '0xdb2d83f9'), (47, 0.0001, '0x3e4860e7'), (49, 0.0, '0x5b4beded')] | []
+    v2:0x26ac41b6b 0x6c2ded09  [] | [(43, 0.0001, '0xf9689b9d'), (43, 0.0, '0xaa49e7fe'), (43, 0.0001, '0xc6591fde')] | []
+    v2:0x8778fbbec 0x7a41245e  [] | [(45, 0.0001, '0xc2a04922'), (45, 0.0001, '0xf9689b9d'), (48, 0.0, '0xc6591fde')] | []
+    v2:0x267c2792a 0xc37d1ed1  [] | [(45, 0.0001, '0x36239612'), (45, 0.0001, '0x5b4beded'), (45, 0.0, '0xc2a04922')] | []
+    v2:0x203dedbc8 0xd0937aff  [] | [(44, 0.0001, '0xc6591fde'), (44, 0.0001, '0xc2a04922'), (46, 0.0, '0xaa49e7fe')] | []
+    v2:0x39449c314 0xdbcd3c49  [] | [(41, 0.0001, '0xc6591fde'), (41, 0.0001, '0xf9689b9d'), (44, 0.0, '0xca4e67bb')] | []
+    v2:0x382bfab13 0x1c218f26  [] | [(36, 0.0001, '0xc6591fde'), (36, 0.0001, '0xf9689b9d'), (38, 0.0, '0xca4e67bb')] | []
+    v2:0xbb1a1f99d 0x25e0a0e0  [] | [(39, 0.0001, '0xe0943605'), (39, 0.0, '0x2cc8192f'), (39, 0.0001, '0x64e893a4')] | []
+    v2:0x063f584b0 0x68f3bf88  [] | [(39, 0.0001, '0x4522e661'), (39, 0.0001, '0x5b4beded'), (41, 0.0, '0x64e893a4')] | []
+    v2:0x61342672a 0xff6a11a7  [] | [(49, 0.0001, '0xe0943605'), (49, 0.0001, '0x1cce4ec5'), (50, 0.0, '0x2cc8192f')] | []
+    v2:0xe0f512b66 0xff3f1d31  [] | [(45, 0.0001, '0xaa49e7fe'), (45, 0.0001, '0xca4e67bb'), (46, 0.0, '0x1cce4ec5')] | []
+    v2:0xaf68a4764 0x1cab7f3d  [] | [(54, 0.0001, '0xaa49e7fe'), (54, 0.0001, '0xf9689b9d'), (54, 0.0, '0xe0943605')] | []
+    v2:0x696543927 0x3f01b4c0  [] | [(36, 0.0001, '0xc2a04922'), (36, 0.0001, '0x4522e661'), (38, 0.0, '0xf9689b9d')] | []
+    v2:0xd0db9e4d2 0x00c58f49  [] | [(45, 0.0001, '0xcb08c02c'), (45, 0.0, '0x4522e661'), (45, 0.0001, '0x36239612')] | []
+    v2:0xfe4dd0b84 0xd03081d6  [] | [(42, 0.0001, '0xaa49e7fe'), (42, 0.0001, '0xf9689b9d'), (45, 0.0, '0x1cce4ec5')] | []
+    v2:0xfa2b4a814 0xd33b2675  [] | [(46, 0.0001, '0xf9689b9d'), (46, 0.0001, '0x5b4beded'), (46, 0.0, '0xc6591fde')] | []
+    v2:0xfa7dbbbde 0xede7db05  [] | [(42, 0.0, '0xf9689b9d'), (42, 0.0001, '0x5b4beded'), (42, 0.0001, '0xc2a04922')] | []
+    v2:0x8417d7573 0x1f7615e9  [] | [(44, 0.0, '0xf9689b9d'), (44, 0.0001, '0x5b4beded'), (44, 0.0001, '0xc2a04922')] | []
+    v2:0x0ab5a9e0b 0x4bc2cbe8  [] | [(41, 0.0001, '0xf9689b9d'), (41, 0.0001, '0xc2a04922'), (42, 0.0, '0xc6591fde')] | []
+    v2:0x662988cbb 0x782978a5  [] | [(41, 0.0001, '0x4522e661'), (41, 0.0, '0xc6591fde'), (41, 0.0001, '0xc2a04922')] | []
+    v2:0x3663d439e 0x72d6bd98  [] | [(48, 0.0001, '0xc6591fde'), (48, 0.0001, '0xc2a04922'), (52, 0.0, '0x64e893a4')] | []
+    v2:0xdcd8ad1e9 0x7a4b90d0  [] | [(50, 0.0001, '0xc6591fde'), (50, 0.0001, '0xca4e67bb'), (50, 0.0, '0xaa49e7fe')] | []
+    v2:0x165f49a36 0x453cc6b4  [] | [(50, 0.0001, '0x5b4beded'), (50, 0.0, '0xca4e67bb'), (50, 0.0001, '0x4522e661')] | []
+    v2:0x3ab64c4fe 0x60cd4419  [] | [(45, 0.0001, '0x4522e661'), (45, 0.0001, '0x5b4beded'), (45, 0.0, '0xf9689b9d')] | []
+    v2:0x9159650e5 0x117e63db  [] | [(51, 0.0001, '0xc2a04922'), (51, 0.0001, '0xf9689b9d'), (53, 0.0, '0xc6591fde')] | []
+    v2:0x01f808213 0x8f0e9aa6  [] | [(41, 0.275, '0x0f2f46da'), (52, 0.0001, '0xc2a04922'), (52, 0.0001, '0xf9689b9d')] | []
+    v2:0x76b09b1f8 0x7f02676b  [] | [(54, 0.0001, '0x3e4860e7'), (54, 0.0, '0xcb08c02c'), (54, 0.0001, '0x36239612')] | []
+    v2:0x7e53ad54e 0x5fab17b2  [] | [(52, 0.0001, '0xca4e67bb'), (52, 0.0001, '0xf9689b9d'), (52, 0.0, '0x1cce4ec5')] | []
+    v2:0x78ef272c5 0x8edb13d5  [] | [(45, 0.0001, '0x4522e661'), (45, 0.0001, '0xcb08c02c'), (45, 0.0, '0x5b4beded')] | []
+    v2:0xf4a28d40c 0x56d22217  [] | [(53, 0.0001, '0xc2a04922'), (53, 0.0001, '0x5b4beded'), (57, 0.0, '0xc6591fde')] | []
+    v2:0x2a6127656 0x4a02eb16  [] | [(48, 0.0001, '0xf9689b9d'), (48, 0.0, '0xaa49e7fe'), (49, 0.0001, '0xc6591fde')] | []
+    v2:0xcb3e253ca 0x4a8be0de  [] | [(40, 0.0001, '0xaa49e7fe'), (40, 0.0001, '0x2cc8192f'), (40, 0.0, '0xbd0037b8')] | []
+    v2:0x03fd96270 0xcdc9c10c  [] | [(38, 0.2941, '0xb27ad847'), (48, 0.0001, '0x2cc8192f'), (48, 0.0001, '0xca4e67bb')] | []
+
+  v2:0x7dad4380664cf70e586d9170db7d3e0c5bf02664 launch 131189203 by 0x17a507c3 tok 0xbc178f741eda6d1e37ed92515fe4954da2fe7777 hooks None fee None pulls []
+     +  41 i 94 BUY    0.00011 C 0xc6591fde9b -> 0x10ed43c718 0xb6f9de95  pool native 2.5001
+     +  42 i 24 BUY    0.00011 C 0xf9689b9d0a -> 0x10ed43c718 0xb6f9de95  pool native 2.5002
+     +  43 i 46 BUY    0.00003 C 0xaa49e7fec5 -> 0x10ed43c718 0xb6f9de95  pool native 2.5003
+     +  78 i 65 BUY    0.24570 C 0xc621946845 -> 0x10ed43c718 0xb6f9de95  pool native 2.746
+     +  89 i 33 BUY    0.24915 C 0x9dae4688c6 -> 0x10ed43c718 0xb6f9de95  pool native 2.9951
+     +  91 i 74 SELL   0.23812 C 0xc621946845 -> 0x10ed43c718 0x791ac947  pool native 2.757
+     +  95 i 38 BUY    0.22338 C 0xe0943605ca -> 0x10ed43c718 0xb6f9de95  pool native 2.9804
+     + 103 i104 SELL   0.21136 C 0x9dae4688c6 -> 0x10ed43c718 0x791ac947  pool native 2.769
+     + 104 i 82 BUY    0.15793 C 0xe9ed24db10 -> 0x10ed43c718 0xb6f9de95  pool native 2.9269
+     + 115 i 82 SELL   0.20068 C 0xe0943605ca -> 0x10ed43c718 0x791ac947  pool native 2.7263
+     + 115 i 83 SELL   0.02956 C 0x9dae4688c6 -> 0x10ed43c718 0x791ac947  pool native 2.6967
+     + 116 i 85 BUY    0.27100 C 0xf9689b9d0a -> 0x10ed43c718 0xb6f9de95  pool native 2.9677
+     + 126 i 74 SELL   0.04512 C 0xc621946845 -> 0x10ed43c718 0x791ac947  pool native 2.9226
+     + 126 i 75 BUY    0.27111 C 0xa952331ea4 -> 0x10ed43c718 0xb6f9de95  pool native 3.1937
+     + 131 i 88 SELL   0.16137 C 0xe9ed24db10 -> 0x10ed43c718 0x791ac947  pool native 3.0323
+     + 132 i 13 BUY    0.00055 C 0x7e914c8258 -> 0x1de460f363 0x4d819a2a  pool native 3.0329
+     + 134 i 61 BUY    0.27111 C 0x82c6085f9e -> 0x10ed43c718 0xb6f9de95  pool native 3.304
+     + 140 i 56 SELL   0.27944 C 0xf9689b9d0a -> 0x10ed43c718 0x791ac947  pool native 3.0245
+     + 144 i 67 SELL   0.00358 C 0x9dae4688c6 -> 0x10ed43c718 0x791ac947  pool native 3.0209
+     + 144 i 68 BUY    0.13401 C 0x97bd895f81 -> 0x10ed43c718 0xb6f9de95  pool native 3.155
+     + 152 i 67 BUY    0.27111 C 0xcb08c02c0a -> 0x10ed43c718 0xb6f9de95  pool native 3.4261
+     + 152 i 68 SELL   0.27151 C 0xa952331ea4 -> 0x10ed43c718 0x791ac947  pool native 3.1545
+     + 156 i 71 SELL   0.01590 C 0xe0943605ca -> 0x10ed43c718 0x791ac947  pool native 3.1386
+     + 161 i 95 BUY    0.15636 C 0xc194efe22e -> 0x10ed43c718 0xb6f9de95  pool native 3.295
+     + 165 i 53 SELL   0.05619 C 0xf9689b9d0a -> 0x10ed43c718 0x791ac947  pool native 3.2388
+     + 173 i 43 BUY    0.27111 C 0xdb2d83f907 -> 0x10ed43c718 0xb6f9de95  pool native 3.5099
+     + 176 i 53 SELL   0.02912 C 0xe9ed24db10 -> 0x10ed43c718 0x791ac947  pool native 3.4808
+     + 177 i 50 SELL   0.27044 C 0x82c6085f9e -> 0x10ed43c718 0x791ac947  pool native 3.2104
+     + 183 i123 BUY    0.27075 C 0xfdec62fde1 -> 0x10ed43c718 0xb6f9de95  pool native 3.4811
+     + 188 i 79 SELL   0.13316 C 0xc194efe22e -> 0x10ed43c718 0x791ac947  pool native 3.348
+     + 191 i 69 SELL   0.03288 C 0xa952331ea4 -> 0x10ed43c718 0x791ac947  pool native 3.3151
+     + 193 i 55 SELL   0.11988 C 0x97bd895f81 -> 0x10ed43c718 0x791ac947  pool native 3.1952
+     + 195 i 66 BUY    0.27111 C 0x2cc8192fc6 -> 0x10ed43c718 0xb6f9de95  pool native 3.4663
+     + 196 i 33 BUY    0.00055 C 0x7e914c8258 -> 0x1de460f363 0x4d819a2a  pool native 3.4668
+     + 204 i 69 BUY    0.00220 C 0x2cc8192fc6 -> 0x10ed43c718 0xb6f9de95  pool native 3.469
+     + 208 i 74 SELL   0.00418 C 0xf9689b9d0a -> 0x10ed43c718 0x791ac947  pool native 3.4649
+     + 208 i 75 SELL   0.22201 C 0xfdec62fde1 -> 0x10ed43c718 0x791ac947  pool native 3.2429
+     + 214 i 56 BUY    0.15793 C 0x3a39aa05b1 -> 0x10ed43c718 0xb6f9de95  pool native 3.4008
+     + 217 i 67 SELL   0.23996 C 0x2cc8192fc6 -> 0x10ed43c718 0x791ac947  pool native 3.1608
+     + 222 i 70 SELL   0.00254 C 0xe0943605ca -> 0x10ed43c718 0x791ac947  pool native 3.1583

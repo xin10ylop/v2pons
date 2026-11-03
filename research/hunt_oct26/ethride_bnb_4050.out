@@ -1,0 +1,11 @@
+BNB 4,050 B line (Nov 2, 51 pools): the front replayed on the recorded swaps, PancakeSwap V2 0.25%, no gas (a zero-gas-price sell);
+our buy at the head of launch + ENTRY, sold at the end of launch + EXIT; a burn first = -100%. Paper only: a normal-gas sell reverts Hush().
+stake 0.05 BNB
+  in +2: x200: +87%  x400: +132%  x700: +229%  x1000: +313%  x1300: +289%  x1430: +4%
+  in +38: x200: +87%  x400: +132%  x700: +229%  x1000: +313%  x1300: +289%  x1430: +4%
+stake 0.25 BNB
+  in +2: x200: +63%  x400: +95%  x700: +171%  x1000: +235%  x1300: +217%  x1430: -10%
+  in +38: x200: +63%  x400: +95%  x700: +171%  x1000: +235%  x1300: +217%  x1430: -10%
+stake 1.0 BNB
+  in +2: x200: +12%  x400: +22%  x700: +63%  x1000: +97%  x1300: +87%  x1430: -40%
+  in +38: x200: +12%  x400: +22%  x700: +63%  x1000: +97%  x1300: +87%  x1430: -40%

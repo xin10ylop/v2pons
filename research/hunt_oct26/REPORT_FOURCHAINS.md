@@ -23,7 +23,7 @@ outsider came first. On Ethereum, `eth_simulateV1` on archive RPCs ran real sell
 | Robinhood | Nov 1-2 | 5,511 | 554 | `buyerlab_rh.out` |
 | Base | Nov 1-2 | 4,572 | 108 | `buyerlab_base.out` |
 | Ethereum | Nov 1-2 | 485 | 44 | `buyerlab_eth.out`, `census_eth.log` |
-| BNB | Nov 2 | 6,567 | see below | `buyerlab_bnb.out`, `census_bnb_20261102.log` |
+| BNB | Nov 2 | 6,612 | 550 | `buyerlab_bnb.out`, `census_bnb_20261102.log` |
 
 ## Answer: no blind scheduled buyer worth trading on any of the four chains
 
@@ -45,7 +45,13 @@ a pull, a blacklist, or the buyer stopping. The blind buyers are routers or trad
 | Robinhood 5,274 B crowd (10 wallets × 0.125-0.15 ETH, 124 pools a day) | 124 | front +3.2-3.5% | Reacts: it buys in 2% of the pools where an outsider came first, against 37% clean |
 | Robinhood `0xf175f071` | 24 | +7.5% | Blind and scheduled (+3, 96% within 3), but 0.005 ETH a buy |
 
-The BNB result goes here when its run finishes.
+**BNB** (Nov 2, PancakeSwap V2 / V3, Uniswap V2 / V3 / v4):
+
+| lead | a day | paper | verdict |
+|---|---|---|---|
+| **BNB V2, token 4,050 B** (PancakeSwap V2 `addLiquidityETH`, 2.5 BNB); about 25 crew wallets buy ~0.27 BNB each at no fixed time from +80 to +1,000 (0.45 s blocks); LP burned at about +1,460 | 54 (Nov 2), then **stopped** | front, sold at +1,000: +313% at 0.05 BNB, +97% at 1 BNB (`ethride_bnb_4050.out`) | **Trap: a team-list token.** The crowd buys in every pool, even after an outsider (the buyer test's "blind" list). But the token keeps a team list (`isTeam`/`setTeam`), and every crew wallet is on it. Today a transfer by any outsider reverts `Hush()`, simulated or real (`bnbhush.out`). Eleven outsiders bought 0.001 BNB or more on Nov 2. Eight never sold. Three (0.27-0.31 BNB at +38..+41, through a MetaMask delegation contract) sold at 3.2-4.5x, every sell a zero-gas-price transaction. The token's code branches on a zero gas price or coinbase (what a default simulation looks like), and those sells got through. Which exact path let them through, I could not settle by hand. The line launched every ~18 minutes from 06:00 to 15:00 UTC on Nov 2 and not once in the 7.5 hours before this check (`bnbsim.out`); its crew wallets have sent one transaction each since. |
+| BNB V2, token 2,046 B; a rotating crowd of 25+ wallets through router `0xa3e0e540` | 210 | front +6-8% | **Pulls on any outside buy**: in 27 of 27 pools where an outsider bought first, the launcher pulled 2-7 blocks after that buy (`lineprobe_bnb_758b.out`). |
+| BNB earlier (old method): the 2.433 operator's own token | 481 | - | 19 of 19 real outsiders pulled (the first BNB run, Nov 3 morning) |
 
 ## What this says
 
@@ -54,9 +60,9 @@ money pumping its own pool. Every such launcher watches for outsiders and defend
 
 | defence | lines |
 |---|---|
-| pulls the pool | Base timer, Robinhood fee 0, the 2.433 operator's 3.0 ETH line |
+| pulls the pool | Base timer, Robinhood fee 0, BNB 2,046 B, the 2.433 operator's 3.0 ETH line |
 | stops buying | Robinhood 5,274 B crowd, the V3 crowd |
-| burns or blacklists the outsider's tokens | C-1 (live, Nov 3), Ethereum 1,852 B |
+| burns, blacklists or freezes the outsider's tokens | C-1 (live, Nov 3), Ethereum 1,852 B, BNB 4,050 B |
 
 The 2.433 seat worked while its bot did not check; nothing found now behaves like that. The paper numbers on these lines (+97%, +230%)
 are what they look like before the defence. Each was large because nobody can take it.
@@ -69,5 +75,8 @@ are what they look like before the defence. Each was large because nobody can ta
 - `ethride.py`: its front replayed with our trade in the pool.
 - `ethsim.py`: a fresh wallet's buy and sell through `eth_simulateV1` at historical states.
 - `ethblock.py`: real holders' sells against a fresh wallet's, block by block after the buy.
+- `ethfull.py CHAIN LINE_JSON OUT_JSON [BLOCKS]` also follows a BNB line (`linefull_bnb_4050.out`). `bnbhush.py`: BNB 4,050 B holders'
+  transfers, simulated and as real. `bnbsim.py`: a fresh wallet's buy and sell on the line's live pools (none now).
+- BNB has no free archive state (publicnode wants a token; `bsc-dataseed` answers only the latest state).
 - `eth_simulateV1` with history works on `eth.drpc.org` and `ethereum.publicnode.com` (publicnode answers 403 under load);
   `rpc.mevblocker.io` has no archive state.
