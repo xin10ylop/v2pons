@@ -1,0 +1,6 @@
+V3 crowd tokens, last 48 h: 213
+{'burn logs': 1} | tokens with 50+ transfers to 0xdead/0x0: 0 []
+Approvals made for a holder by someone else's transaction: 0 in 0 tokens
+
+THE C-1 PATTERN (a holder's tokens to 0xdead/0x0 by someone else's transaction, ERC-4337 apart): 0 in 0 of 213 tokens
+   by the transaction's target: [] | holders: []

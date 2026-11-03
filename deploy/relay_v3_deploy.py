@@ -99,7 +99,7 @@ def main():
         sys.exit(1)
     try:
         print(simulated_buy(relay, wallet))
-    except Exception as ex:
+    except (Exception, SystemExit) as ex:                                          # never in the way of the env lines below
         print(f"the simulated buy did not run ({str(ex)[:160]}); try deploy/relay_v3_sim.py later")
     new = [f"RELAY_V3={relay}", "RELAY_V3_CODEHASH=0x" + keccak(bytes.fromhex(code[2:])).hex()]
     print("\nthe new relay's two env lines:\n" + "\n".join(new))                      # printed before any write, so a failed write loses nothing
