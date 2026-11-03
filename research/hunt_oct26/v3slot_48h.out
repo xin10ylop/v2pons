@@ -1,0 +1,35 @@
+last 48 h: 215 V3 crowd launches
+pumped pools (the routers' first buy within 600 blocks): 119; pulled within 100 blocks of that first buy: 6 (5%)
+  OURS           early buys   1  pool pulled within 100 blocks of their buy: 1
+  everyone else  early buys  29  pool pulled within 100 blocks of their buy: 3
+every early outside buy (who, sender, blocks after the routers' first buy, ETH, pulled within 100, pull after the buy):
+   OUR V3 relay 0xaccec54c  + 2  0.0020  pulled100 True  pull +45
+   0x92475293   0x0229b233  + 0  0.0010  pulled100 False pull +1193
+   0x65050a9b   0xb9bbebd1  + 0  0.0011  pulled100 False pull +None
+   0x88767899   0xf74bb3d1  + 4  0.0007  pulled100 False pull +1737
+   0x65050a9b   0xc8cf2ee2  + 4  0.0008  pulled100 False pull +1078
+   0x92475293   0x6d8acb0e  + 4  0.0030  pulled100 False pull +420
+   0x92475293   0x1364def0  + 4  0.0010  pulled100 False pull +None
+   0x88767899   0xf74bb3d1  + 4  0.0007  pulled100 False pull +798
+   0x88767899   0xf74bb3d1  + 4  0.0007  pulled100 False pull +None
+   0x88767899   0xf74bb3d1  + 4  0.0007  pulled100 False pull +212
+   0x88767899   0xf74bb3d1  + 4  0.0007  pulled100 False pull +None
+   0xcaf681a6   0xb4aff48f  + 7  0.0010  pulled100 False pull +534
+   0x92475293   0x6d8acb0e  + 7  0.0010  pulled100 False pull +None
+   0x92475293   0x29cec535  + 7  0.0010  pulled100 False pull +None
+   0x88767899   0x02037003  + 8  0.0008  pulled100 False pull +None
+   0x88767899   0x02037003  + 9  0.0008  pulled100 False pull +177
+   0x65050a9b   0x844f3451  +11  0.0008  pulled100 True  pull +36
+   0xcaf681a6   0xb4aff48f  +12  0.0010  pulled100 False pull +250
+   0xcaf681a6   0xb4aff48f  +13  0.0010  pulled100 True  pull +82
+   0x65050a9b   0x844f3451  +13  0.0008  pulled100 True  pull +96
+   0xcaf681a6   0xb4aff48f  +14  0.0010  pulled100 False pull +None
+   0x88767899   0x02037003  +14  0.0008  pulled100 False pull +1727
+   0x88767899   0x02037003  +15  0.0008  pulled100 False pull +247
+   0x65050a9b   0xf93acfa0  +16  0.0050  pulled100 False pull +179
+   0x65050a9b   0xa821be56  +17  0.0007  pulled100 False pull +None
+   0x92475293   0x6d8acb0e  +18  0.0030  pulled100 False pull +309
+   0x88767899   0x02037003  +19  0.0008  pulled100 False pull +377
+   0x88767899   0x02037003  +19  0.0008  pulled100 False pull +361
+   0x65050a9b   0x0937cfad  +20  0.0005  pulled100 False pull +548
+   0xcaf681a6   0xb4aff48f  +20  0.0010  pulled100 False pull +162
