@@ -29,10 +29,49 @@ exit idea the engine already uses on Base (`BASE_PROMPT.md`), measured here from
 Every line with a big paper number is big *because* the exit is closed — the paper gain is what an outsider would make if they could sell,
 and they can't.
 
-## 2.433 positive control
+## 2.433 positive control — and a correction to the test
 
-To trust "nothing recent qualifies," the same test must flag 2.433 as tradeable on its own history. Running `roundtrip.py` on the 2.433 line
-(RH POSM multicall, 1,444 B) over its live period (Oct 10). _[result pending — the run is in progress; this section fills in when it lands.]_
+Running the same round-trip test on the 2.433 line over its peak (Oct 10, `rt2433.py`, 1,596 pools found by launch price):
+
+```
+fleet wallets (buy in 10%+ of pools): 5; pulled pools: 1467/1596
+outsiders that bought: 3823
+completed a round trip (sold before the pull): 1380 (36%)
+cut off by a pull before selling: 1635 (43%)
+round-trip return: median -2.6%, mean -5.3%, won 619/1380
+```
+
+**The crude test rejects 2.433 too.** Measured as "can any outsider who buys get back out at a profit," 2.433 looks no better than the
+defended lines: 1,467 of its 1,596 pools were pulled, and the average outsider lost. So this metric is **wrong for the question** — it was
+never true that a random buy-and-hold on a 2.433 pool was safe.
+
+**What 2.433 actually was.** The seat was never buy-and-hold. It was a *timed front*: buy at launch + 2, **ahead of a specific scheduled
+buyer**, and sell into that buyer's buy a few blocks later — out long before the pull at ~block +600. The edge was three things together:
+
+1. a scheduled buyer of real size that reliably arrives (someone to sell into),
+2. the sell at that moment **executes** — a plain v4 token, no transfer block, and
+3. the pull comes *after* the scheduled buy, not before.
+
+The 3,823 "outsiders" above are mostly not running that trade — they buy at random offsets and hold into the rug. The timed front, which
+`buyerlab`'s front-paper models (in at max(launch+2, buy−5), out at the buy), was positive on 2.433; that is the number that mattered.
+
+**So the right discriminator is whether the timed front's sell executes** — not general outsider survival. On that sharper test the recent
+lines still fail, each for a definite reason:
+
+| line | does the scheduled buy arrive when fronted? | does the sell execute at that moment? |
+|---|---|---|
+| 2.433 (Oct) | yes | **yes** — tradeable |
+| ETH 1,852 B | yes | **no** — token blocks the sell 1–2 blocks after a buy |
+| Base 2,180 B | **no** — the 0.2 buy doesn't come, launcher pulls | n/a |
+| BNB 4,050 B | yes | **no** — sell reverts unless gas price 0 |
+| RH crowds (5,274 B etc.) | **no** — they stop buying when fronted | n/a |
+
+The conclusion is unchanged — no current line supports the 2.433 trade — but the reason is sharper than "outsiders can't round-trip": in
+every recent line either the scheduled buyer refuses to arrive once an outsider is ahead of it, or the sell into it cannot be made.
+
+**Caveat on `roundtrip.py`:** its all-outsiders round-trip rate is a weak screen (it rejects 2.433). Use it only to *exclude* honeypots and
+pull-on-front lines (0% round-trip is decisive); a line that passes still needs the front-paper edge and a sell-at-exit check before it means
+anything.
 
 ## Tools
 

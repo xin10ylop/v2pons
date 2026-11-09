@@ -1,1 +1,12 @@
-rh 20261010: 2493 pools of the line (to 0x58daec31.. 0xac9650d8 1444 B), window 600 blocks
+RH 20261010: Initialize sweep over blocks 84562356..85400996 for the 2.433 launch price
+  2.433 pools found: 1596
+  ...group 1/40
+  ...group 11/40
+  ...group 21/40
+  ...group 31/40
+  fleet wallets (buy in 10%+ of pools): 5; pulled pools: 1467/1596
+  outsiders that bought: 3823
+  completed a round trip (sold before the pull): 1380 (36%)
+  cut off by a pull before selling: 1635 (43%)
+  round-trip return: median -2.6%, mean -5.3%, won 619/1380
+  => outsiders cannot reliably exit
