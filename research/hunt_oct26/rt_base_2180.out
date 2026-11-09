@@ -1,0 +1,6 @@
+base 20261101,20261102: 212 pools of the line (to 0x7c5f5a4b.. 0xac9650d8 2180 B), window 300 blocks
+  crew (buys in 10%+ of pools): 3; pulled pools: 212/212
+  outsiders that bought: 10
+  completed a round trip (sold 80%+ before the pull): 0 (0%)
+  cut off by a pull before they could sell: 10 (100%)
+  => defended: outsiders cannot reliably exit

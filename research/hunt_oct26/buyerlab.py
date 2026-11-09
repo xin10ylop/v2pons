@@ -222,7 +222,9 @@ def main():
     if os.environ.get("DUMP"):                                                      # per-pool detail for a line analysis (fleetlab.py)
         dump = {"pools": {k: {"bn": p["bn"], "tok": p["tok"], "launcher": p["launcher"], "grp": list(p["grp"]), "pull": p["pull"], "venue": p["venue"], "f": p["f"],
                               "ev": [e[:6] for e in p["ev"]],
-                              "buyers": [[e[0], e[1], e[2], ((tc.get(w[2]) or "?") if w[0] in PUBLIC else w[0])] for e in p["ev"] for w in [p["who"].get((e[0], e[1]))] if w and e[2] > 0]}
+                              "buyers": [[e[0], e[1], e[2], ((tc.get(w[2]) or "?") if w[0] in PUBLIC else w[0])] for e in p["ev"] for w in [p["who"].get((e[0], e[1]))] if w and e[2] > 0],
+                              # every swap resolved to its EOA: [block, native(+buy/-sell), token(+buy/-sell), wallet] -- lets exitlab.py match round trips
+                              "swaps": [[e[0], e[2], e[3], ((tc.get(w[2]) or "?") if w[0] in PUBLIC else w[0])] for e in p["ev"] for w in [p["who"].get((e[0], e[1]))] if w]}
                           for k, p in P.items()},
                 "buys": {k: v for k, v in buys.items() if len(v) >= MIN_POOLS}}
         json.dump(dump, open(os.environ["DUMP"], "w"))

@@ -1,0 +1,6 @@
+eth 20261101,20261102: 23 pools of the line (to 0x7a250d56.. 0xe8e33700 260 B, token 1852 B), window 120 blocks
+  crew (buys in 10%+ of pools): 22; pulled pools: 9/23
+  outsiders that bought: 11
+  completed a round trip (sold 80%+ before the pull): 0 (0%)
+  cut off by a pull before they could sell: 4 (36%)
+  => defended: outsiders cannot reliably exit
