@@ -1,0 +1,110 @@
+rh 20261110,20261111: 308 pools of the line (to 0x3194e326.. 0x2fcb9108 644 B), window 6000 blocks
+  launchers: [('0x88917fc1b18d7388ddab5c1c73317f0e311c8558', 1), ('0xe0c9598a3f269796b0e3d5b007e65e78829af925', 1), ('0x0a3de2cb78972cde525031c3ece3d1f4af3c1a41', 1), ('0x03fdc7e57fd08ad04edcbcac5407cbe1f916ef86', 1), ('0x16463a48f7d62601b139c96b3e71eae003c0c5dd', 1)]
+  token code: [(('fe89ad0f15d8', 1770), 305), (('nocode', 0), 3)]
+
+  crew (buys in 20%+ of the 308 pools; the launcher excluded):
+    0xe71a69f434a719cd5afa411568b69716aab3b84a  pools 235 (76%)  first buy +3 (IQR 3..4, 97% within 2)  size 1.999e-06 (2e-06..2e-06)  via [('0x88767899', 20)]
+    0xc235185881dd4ff460d0a0dea46d36b73c775b0a  pools 88 (29%)  first buy +25 (IQR 19..139, 11% within 2)  size 0.0524 (0.0082..0.136)  via [('0x88767899', 20)]
+    0xe21c8169c8624d45a821dde83a3ba29e6270ce5f  pools 78 (25%)  first buy +25.5 (IQR 19..202, 8% within 2)  size 0.0571 (0.0082..0.143)  via [('0x88767899', 20)]
+    0x1c38410f211ab8717fc841ba42aec4ccc1a1eead  pools 78 (25%)  first buy +27.5 (IQR 18..167, 5% within 2)  size 0.05815 (0.0075..0.159)  via [('0x88767899', 20)]
+    0xbe35b2418be59266bbc6c95247dd865be4f6ad5d  pools 79 (26%)  first buy +33 (IQR 25..182, 10% within 2)  size 0.0606 (0.0076..0.135)  via [('0x88767899', 20)]
+    0x8211246d17b60dbcadbf4330ccfa6afff8c8f862  pools 73 (24%)  first buy +50 (IQR 30..67, 4% within 2)  size 2.97e-05 (2.97e-05..2.97e-05)  via [('0x92475293', 20)]
+    0xb7d4aa3f58841589cb241fa719892ec2b965b00b  pools 77 (25%)  first buy +54 (IQR 51..63, 32% within 2)  size 2e-05 (2e-05..5e-05)  via [('0x88767899', 20)]
+    0xbd25beebe461f5a4c9d61dec45f615689475472b  pools 75 (24%)  first buy +61 (IQR 33..242, 1% within 2)  size 0.0648 (0.0107..0.145)  via [('0x88767899', 20)]
+    0x429287644640ded6f70e85ca84cac98fe890d8a7  pools 75 (24%)  first buy +69 (IQR 48..227, 3% within 2)  size 0.0702 (0.0076..0.141)  via [('0x88767899', 20)]
+    0xc86458eea5d47b1e81320bcf72c4583ecc70f549  pools 75 (24%)  first buy +70 (IQR 38..243, 4% within 2)  size 0.0699 (0.0075..0.148)  via [('0x88767899', 20)]
+    0xebbeaceff7661a880671564f1652c6bbc74a679b  pools 75 (24%)  first buy +73 (IQR 53..173, 5% within 2)  size 0.0674 (0.0095..0.146)  via [('0x88767899', 20)]
+    0x2ce5d3b3be4af3a48d7306d61a7437afeef43885  pools 75 (24%)  first buy +89 (IQR 50..252, 1% within 2)  size 0.054 (0.0113..0.142)  via [('0x88767899', 20)]
+    0x5a40bb063f52bb04be0c1143c2b752ebbb3c12a0  pools 69 (22%)  first buy +90 (IQR 42..233, 3% within 2)  size 0.0545 (0.0125..0.153)  via [('0x88767899', 20)]
+    0x196706e27941f8c336cecf274a86015eeb9a366c  pools 73 (24%)  first buy +93 (IQR 55..263, 1% within 2)  size 0.0674 (0.0081..0.149)  via [('0x88767899', 20)]
+    0x192504c694564820d2c74bc2f2d1639224a5a88e  pools 71 (23%)  first buy +108 (IQR 78..249, 6% within 2)  size 0.0691 (0.0084..0.144)  via [('0x88767899', 20)]
+    0x5ccd26d4daa07e13f2d368a102d1cf8916105c2f  pools 66 (21%)  first buy +120.5 (IQR 81..250, 3% within 2)  size 0.07155 (0.0073..0.148)  via [('0x88767899', 20)]
+    0x4124dbc58f1623b1d6d6093ea15e27c8143a4075  pools 71 (23%)  first buy +126 (IQR 67..277, 1% within 2)  size 0.0612 (0.0107..0.146)  via [('0x88767899', 20)]
+    0x61f8cd1f1137007df664d6eaa4e9e17345b7939c  pools 69 (22%)  first buy +138 (IQR 76..277, 3% within 2)  size 0.0612 (0.0145..0.141)  via [('0x88767899', 20)]
+    0xebbcb2263a45f8de6e84198118b0fd7f97f5a147  pools 64 (21%)  first buy +138.5 (IQR 111..271, 3% within 2)  size 0.0787 (0.0109..0.152)  via [('0x88767899', 20)]
+    ?  pools 183 (59%)  first buy +140 (IQR 78..250, 2% within 2)  size 0.0393 (2e-06..0.161)  via [('?', 20)]
+    0x846249ed486e33ee992e751200ce347c60b3306d  pools 70 (23%)  first buy +140.5 (IQR 86..259, 3% within 2)  size 0.0707 (0.0093..0.148)  via [('0x88767899', 20)]
+    0xa3fea98455621a72ece1c26aa39aa5e589936083  pools 67 (22%)  first buy +145 (IQR 98..267, 1% within 2)  size 0.0672 (0.0053..0.141)  via [('0x88767899', 20)]
+    0x55aad6f77172c421502ad78b0d2fb54f3dfbd24b  pools 68 (22%)  first buy +149 (IQR 87..274, 0% within 2)  size 0.07735 (0.0082..0.195)  via [('0x88767899', 20)]
+    0xb6ca8cd1589e8e1ef078c6b345ef1cf833059f99  pools 71 (23%)  first buy +150 (IQR 87..261, 4% within 2)  size 0.0712 (0.0101..0.151)  via [('0x88767899', 20)]
+    0x8c5a42aa7f46db4d9fb74328f2ceef4398e3b029  pools 66 (21%)  first buy +160 (IQR 124..282, 0% within 2)  size 0.081 (0.0074..0.15)  via [('0x88767899', 20)]
+    0xfa2f7d4475b37569032661cf8cb4b19ba90624c6  pools 149 (48%)  first buy +162 (IQR 78..267, 2% within 2)  size 0.03628 (0.017..0.109)  via [('0x88767899', 20)]
+    0xbd3d1887fc4b82f3422874028ac26c0a1bd9a918  pools 156 (51%)  first buy +165 (IQR 78..277, 1% within 2)  size 0.03955 (0.0171..0.113)  via [('0x88767899', 20)]
+    0x3bf804b2adb9973c159b307e06ff215e9321178e  pools 150 (49%)  first buy +165.5 (IQR 77..272, 2% within 2)  size 0.04106 (0.0172..0.115)  via [('0x88767899', 20)]
+    0x852d9c5a60d7d9ca1a56b00de34e3e12304da54a  pools 153 (50%)  first buy +166 (IQR 78..263, 1% within 2)  size 0.03819 (0.0172..0.112)  via [('0x88767899', 20)]
+    0x3d755ea7c8a5b4b9a68f96edbe01178e29fbe81f  pools 151 (49%)  first buy +167 (IQR 77..261, 1% within 2)  size 0.03646 (0.0171..0.113)  via [('0x88767899', 20)]
+    0xaf71ae395243a3c409ed44724c4eeb5ed13d7bba  pools 66 (21%)  first buy +169 (IQR 125..267, 5% within 2)  size 0.0629 (0.0135..0.141)  via [('0x88767899', 20)]
+    0xaf55c065f6c19c6dfe0f8c0cd6e85daa7b821e38  pools 63 (20%)  first buy +173 (IQR 98..312, 2% within 2)  size 0.0712 (0.0137..0.17)  via [('0x88767899', 20)]
+    0xb15cdf4a257a20ae13db84cb2bd80a011da932b2  pools 159 (52%)  first buy +173 (IQR 92..266, 1% within 2)  size 0.0379 (0.017..0.115)  via [('0x88767899', 20)]
+    0xc773455c49f0573f2040cd4a870c04a603f6b32b  pools 154 (50%)  first buy +173 (IQR 93..262, 3% within 2)  size 0.03685 (0.0171..0.114)  via [('0x88767899', 20)]
+    0xaecfa13d1614141929a92c9009689667941c420c  pools 156 (51%)  first buy +177.5 (IQR 109..272, 2% within 2)  size 0.03652 (0.017..0.113)  via [('0x88767899', 20)]
+    0xec451646db628f7eda9987292245d81eaab58d19  pools 151 (49%)  first buy +179 (IQR 78..284, 2% within 2)  size 0.04125 (0.0172..0.115)  via [('0x88767899', 20)]
+    0x715b004ae8d091f35ce639723281e13f2646a8fb  pools 151 (49%)  first buy +180 (IQR 109..263, 5% within 2)  size 0.03784 (0.017..0.115)  via [('0x88767899', 20)]
+    0xdc6003ec03b6dc3763ceefdf6f93f661162d1661  pools 152 (49%)  first buy +180.5 (IQR 103..269, 1% within 2)  size 0.0387 (0.0171..0.114)  via [('0x88767899', 20)]
+    0xbbdb017cdec295f21b2a4c6a5be2c20b92bc1522  pools 155 (50%)  first buy +181 (IQR 89..264, 1% within 2)  size 0.03751 (0.017..0.115)  via [('0x88767899', 20)]
+    0x6756f8c8d5473324e8e3191af9c7382d01429381  pools 64 (21%)  first buy +182 (IQR 135..256, 3% within 2)  size 0.06885 (0.0106..0.147)  via [('0x88767899', 20)]
+    0x114c0738bc96dfcc63e64f418deb4794fe38f6b6  pools 160 (52%)  first buy +188.5 (IQR 88..284, 2% within 2)  size 0.03805 (0.0172..0.115)  via [('0x88767899', 20)]
+    0xc2afeeaeedc21250acfffc49fee87ed3d90d875e  pools 153 (50%)  first buy +190 (IQR 92..282, 2% within 2)  size 0.04012 (0.0171..0.113)  via [('0x88767899', 20)]
+    0xacfd0f93fd90e829b4eddca700d586812b73c729  pools 151 (49%)  first buy +191 (IQR 103..277, 1% within 2)  size 0.0388 (0.0171..0.112)  via [('0x88767899', 20)]
+    0xafc7e723f0ff82fde1e16222cfa3168fe5d90e45  pools 154 (50%)  first buy +192 (IQR 94..292, 2% within 2)  size 0.04214 (0.017..0.114)  via [('0x88767899', 20)]
+    0x5777452ec62463a39e9e28525db94027c51bd626  pools 151 (49%)  first buy +197 (IQR 94..281, 2% within 2)  size 0.06089 (0.017..0.113)  via [('0x88767899', 20)]
+    0x50015918f056ff91156cc74d125bfe1be5a73c82  pools 151 (49%)  first buy +197 (IQR 108..294, 3% within 2)  size 0.03825 (0.0171..0.114)  via [('0x88767899', 20)]
+    0xea8744056cd6678568b2b814e41ae772a593a1e5  pools 152 (49%)  first buy +200.5 (IQR 108..303, 1% within 2)  size 0.04129 (0.0174..0.114)  via [('0x88767899', 20)]
+    0xa94a29cbc6e38034d05eb06c6c2e2b27aa2af60d  pools 63 (20%)  first buy +201 (IQR 156..295, 5% within 2)  size 0.0887 (0.0127..0.148)  via [('0x88767899', 20)]
+    0xa6cf0489765999e2240c7bf625754cea2c466eb1  pools 67 (22%)  first buy +207 (IQR 119..296, 1% within 2)  size 0.075 (0.0104..0.163)  via [('0x88767899', 20)]
+    0x9d90c47b0652c8b0a3421a2dc08052618ba77458  pools 150 (49%)  first buy +207 (IQR 104..302, 2% within 2)  size 0.03717 (0.017..0.115)  via [('0x88767899', 20)]
+    0x2eafccc3d0a9ba66a6a7497b744a3d407dfda062  pools 63 (20%)  first buy +208 (IQR 148..315, 3% within 2)  size 0.0848 (0.0083..0.154)  via [('0x88767899', 20)]
+    0x791323597b5ca0aa38daf8cfc9d2ad1892053f92  pools 62 (20%)  first buy +208 (IQR 151..292, 3% within 2)  size 0.07445 (0.0086..0.154)  via [('0x88767899', 20)]
+    0x46e6386b84c3fbd07f8b271e42de418205a4102e  pools 154 (50%)  first buy +211.5 (IQR 107..281, 3% within 2)  size 0.03554 (0.0171..0.114)  via [('0x88767899', 20)]
+    0xe38afbd63b566dcb21b966d11b639faabb5e724d  pools 67 (22%)  first buy +214 (IQR 151..347, 3% within 2)  size 0.0763 (0.0123..0.159)  via [('0x88767899', 20)]
+    0xb723d48ff796a92c34ae464e2d7966e2337d6e75  pools 63 (20%)  first buy +216 (IQR 169..351, 3% within 2)  size 0.0626 (0.0076..0.196)  via [('0x88767899', 20)]
+    0xc2497d7004d401f807f343abe71f983f9a977450  pools 66 (21%)  first buy +224 (IQR 111..304, 6% within 2)  size 0.06815 (0.0077..0.141)  via [('0x88767899', 20)]
+    0x5ca66cda1917e15f125e65c2af419a1d00c6a47a  pools 65 (21%)  first buy +240 (IQR 170..350, 2% within 2)  size 0.0706 (0.0124..0.145)  via [('0x88767899', 20)]
+    0x0c8ef605c9c0187cf46e960cf053650bf8a82696  pools 63 (20%)  first buy +242 (IQR 164..292, 3% within 2)  size 0.0736 (0.0129..0.179)  via [('0x88767899', 20)]
+    0x6d39fa036211c5b59824f4774d7a599ca1252b3f  pools 64 (21%)  first buy +248.5 (IQR 186..373, 0% within 2)  size 0.07035 (0.0124..0.138)  via [('0x88767899', 20)]
+  sells in the window by: {'crew': 9640, 'outsider': 384}; pulls in the window: 307 pools, by {'launcher': 301, 'crew': 6}
+  hooks/fee: [(('0x0000000000000000000000000000000000000000', 1000), 34), (('0x0000000000000000000000000000000000000000', 1500), 28), (('0x0000000000000000000000000000000000000000', 2000), 28), (('0x0000000000000000000000000000000000000000', 2500), 23)]
+
+  anchor (the crew's biggest scheduled buy): 0xa94a29cbc6e38034d05eb06c6c2e2b27aa2af60d at +201
+  pools with an outsider buy before the anchor: 45; anchor bought in 35 | clean pools: 263; anchor bought in 28
+  pulled in window: outsider-first 44/45, clean 263/263
+    v4:0x45d20aa02 launch 110502424  outsiders: [(327, 0.1212, '0x3d5d8846', '0x88767899')]  -> anchor bought +391 0.1217, pulled at +4661
+    v4:0xb168dd499 launch 110508612  outsiders: [(99, 0.1416, '0x3d5d8846', '0x88767899'), (398, 0.1011, '0xd4de9520', '0x88767899'), (452, 0.05, '0x84158fa5', '0x88767899')]  -> anchor bought +466 0.0593, pulled at +4432
+    v4:0x203c46d0a launch 110859786  outsiders: [(118, 0.0012, '0x7428526d', '0x88767899')]  -> anchor did NOT buy, pulled at +123
+    v4:0xc2ba244f3 launch 110917079  outsiders: [(110, 0.1195, '0x256fbcb8', '0x88767899')]  -> anchor bought +180 0.0629, pulled at +4401
+    v4:0x945e34d00 launch 110922218  outsiders: [(115, 0.0309, '0xd4de9520', '0x88767899'), (129, 0.0349, '0x84158fa5', '0x88767899'), (164, 0.1171, '0x256fbcb8', '0x88767899')]  -> anchor bought +214 0.0883, pulled at +803
+    v4:0xa5105a4c2 launch 110923422  outsiders: [(140, 0.1264, '0xd4de9520', '0x88767899'), (181, 0.0704, '0x3d5d8846', '0x88767899'), (195, 0.087, '0xdbf3db2b', '0x88767899')]  -> anchor did NOT buy, pulled at +461
+    v4:0xb53aa46ef launch 110929099  outsiders: [(92, 0.0973, '0x3d5d8846', '0x88767899'), (114, 0.1197, '0xdbf3db2b', '0x88767899'), (135, 0.1104, '0xd4de9520', '0x88767899')]  -> anchor bought +280 0.0946, pulled at +5168
+    v4:0x16135c79b launch 110954821  outsiders: [(166, 0.0953, '0x3d5d8846', '0x88767899'), (179, 0.0946, '0x84158fa5', '0x88767899')]  -> anchor bought +286 0.076, pulled at +3897
+    v4:0x38f119808 launch 110960695  outsiders: [(215, 0.0723, '0x3d5d8846', '0x88767899'), (231, 0.113, '0x84158fa5', '0x88767899'), (247, 0.0583, '0xd4de9520', '0x88767899'), (257, 0.0808, '0xdbf3db2b', '0x88767899')]  -> anchor bought +342 0.0463, pulled at +4072
+    v4:0x61a906a40 launch 110968651  outsiders: [(25, 0.47, '0x3cc905a4', '0x204faca1')]  -> anchor did NOT buy, pulled at +31
+    v4:0x7c777394b launch 110969127  outsiders: [(145, 0.0194, '0xd4de9520', '0x88767899'), (223, 0.0404, '0xdbf3db2b', '0x88767899'), (249, 0.11, '0x84158fa5', '0x88767899')]  -> anchor bought +303 0.0887, pulled at +3989
+    v4:0xa5273d339 launch 110978342  outsiders: [(104, 0.0871, '0x3d5d8846', '0x88767899'), (198, 0.1146, '0xd4de9520', '0x88767899'), (209, 0.0789, '0xdbf3db2b', '0x88767899')]  -> anchor bought +296 0.1049, pulled at +4579
+    v4:0xa3ae99ec9 launch 111062413  outsiders: [(176, 0.0771, '0x84158fa5', '0x88767899')]  -> anchor bought +197 0.072, pulled at +5096
+    v4:0x771bdccd0 launch 111069962  outsiders: [(152, 0.0934, '0x3d5d8846', '0x88767899'), (181, 0.0916, '0x84158fa5', '0x88767899'), (280, 0.0518, '0xd4de9520', '0x88767899')]  -> anchor bought +289 0.1363, pulled at +4462
+    v4:0xa4eea5a5f launch 111077912  outsiders: [(233, 0.0725, '0xdbf3db2b', '0x88767899'), (314, 0.1163, '0x84158fa5', '0x88767899'), (319, 0.1172, '0xd4de9520', '0x88767899')]  -> anchor bought +425 0.0667, pulled at +558
+    v4:0x548af22ad launch 111079564  outsiders: [(203, 0.1397, '0xdbf3db2b', '0x88767899')]  -> anchor did NOT buy, pulled at +228
+    v4:0xd4873afa2 launch 111095858  outsiders: [(180, 0.0099, '0xa6825486', '0x65050a9b')]  -> anchor did NOT buy, pulled at +186
+    v4:0x4f0348902 launch 111098957  outsiders: [(162, 0.1316, '0xd4de9520', '0x88767899')]  -> anchor bought +201 0.1373, pulled at +287
+    v4:0xf4b2f31eb launch 111102153  outsiders: [(220, 0.0343, '0xd4de9520', '0x88767899')]  -> anchor bought +251 0.1118, pulled at +445
+    v4:0x581308bed launch 111112140  outsiders: [(184, 0.1287, '0x84158fa5', '0x88767899')]  -> anchor did NOT buy, pulled at +212
+    v4:0x68f88f1fd launch 111149995  outsiders: [(160, 0.0684, '0xd4de9520', '0x88767899'), (171, 0.1354, '0x84158fa5', '0x88767899')]  -> anchor bought +236 0.1354, pulled at +591
+    v4:0xb9f5325d1 launch 111156803  outsiders: [(109, 0.1417, '0xd4de9520', '0x88767899')]  -> anchor bought +139 0.1398, pulled at +707
+    v4:0xcec37d0f5 launch 111158756  outsiders: [(156, 0.0968, '0xd4de9520', '0x88767899'), (164, 0.1225, '0x84158fa5', '0x88767899'), (220, 0.0493, '0xdbf3db2b', '0x88767899')]  -> anchor bought +281 0.137, pulled at +514
+    v4:0xc2db28500 launch 111171173  outsiders: [(167, 0.0773, '0x3d5d8846', '0x88767899'), (292, 0.1413, '0xd4de9520', '0x88767899')]  -> anchor bought +330 0.0238, pulled at +423
+    v4:0xeda212bcb launch 111242715  outsiders: [(164, 0.122, '0x84158fa5', '0x88767899'), (215, 0.1221, '0x3d5d8846', '0x88767899')]  -> anchor bought +311 0.0575, pulled at +3862
+    v4:0xc8cab5437 launch 111331782  outsiders: [(228, 0.109, '0x3d5d8846', '0x88767899')]  -> anchor bought +295 0.1479, pulled at +826
+    v4:0xef2edce4d launch 111739654  outsiders: [(183, 0.058, '0x3d5d8846', '0x88767899')]  -> anchor bought +188 0.0972, pulled at +442
+    v4:0xfeecbfa4b launch 111799454  outsiders: [(86, 0.005, '0x4646774f', '0x65050a9b')]  -> anchor did NOT buy, pulled at +91
+    v4:0x71cf3a20e launch 111812886  outsiders: [(166, 0.1258, '0xd4de9520', '0x88767899')]  -> anchor bought +180 0.1044, pulled at +231
+    v4:0x809320bb1 launch 111814799  outsiders: [(145, 0.1378, '0xd4de9520', '0x88767899')]  -> anchor bought +166 0.0578, pulled at +262
+    v4:0x35266df73 launch 111824119  outsiders: [(89, 0.005, '0x4646774f', '0x65050a9b')]  -> anchor did NOT buy, pulled at +110
+    v4:0x4a80cd70b launch 111826826  outsiders: [(120, 0.1388, '0x84158fa5', '0x88767899'), (203, 0.0657, '0x3d5d8846', '0x88767899'), (213, 0.1208, '0xd4de9520', '0x88767899')]  -> anchor bought +257 0.1359, pulled at +5691
+    v4:0xaf67868e3 launch 111840306  outsiders: [(49, 0.005, '0x4646774f', '0x65050a9b'), (95, 0.005, '0x4646774f', '0x65050a9b')]  -> anchor did NOT buy, pulled at +115
+    v4:0x997d5d0fd launch 111845798  outsiders: [(160, 0.11, '0x3d5d8846', '0x88767899'), (190, 0.1017, '0x84158fa5', '0x88767899')]  -> anchor did NOT buy, pulled at +213
+    v4:0x60027d04a launch 111846995  outsiders: [(166, 0.007, '0xd4de9520', '0x88767899'), (186, 0.0615, '0x84158fa5', '0x88767899')]  -> anchor bought +265 0.1086, not pulled in window
+    v4:0x26fefe577 launch 111864068  outsiders: [(226, 0.0155, '0xd4de9520', '0x88767899'), (292, 0.0124, '0x3d5d8846', '0x88767899'), (316, 0.0468, '0x84158fa5', '0x88767899')]  -> anchor bought +379 0.074, pulled at +4436
+    v4:0x28ed99ada launch 111873565  outsiders: [(160, 0.0777, '0xd4de9520', '0x88767899')]  -> anchor bought +264 0.0709, pulled at +4446
+    v4:0x5a899f8f5 launch 111879176  outsiders: [(174, 0.1181, '0x84158fa5', '0x88767899')]  -> anchor bought +184 0.0577, pulled at +4299
+    v4:0x93658e612 launch 112016299  outsiders: [(155, 0.0463, '0xd4de9520', '0x88767899')]  -> anchor bought +286 0.0547, pulled at +302
+    v4:0x7501ecd48 launch 112017002  outsiders: [(137, 0.0142, '0xd4de9520', '0x88767899')]  -> anchor bought +141 0.0565, pulled at +4327

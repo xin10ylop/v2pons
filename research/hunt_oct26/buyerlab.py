@@ -181,7 +181,10 @@ def main():
     for key, bp in buys.items():
         for pid in bp:
             in_grp[P[pid]["grp"]][key] += 1
-    crew = {g: {k for k, n in c.items() if n >= max(3, 0.1 * gsize[g])} for g, c in in_grp.items()}
+    # crew = any wallet that buys in 3+ of the line's pools. (It was 10%+ of the pools: operator A's crowd rotates across 70+ wallets, many
+    # in under 10% of its pools, so they were counted as outsiders who went first and the crowd looked blind; opAreact.py showed the line
+    # actually pulls ~1 s after a true one-off outsider's buy, 12 of 12 pools.)
+    crew = {g: {k for k, n in c.items() if n >= 3} for g, c in in_grp.items()}
     early = {}                                                                     # every pool's buys of 0.001+ after the launch block: (offset, buyer), resolved once
     for p in P.values():
         lst = []

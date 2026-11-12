@@ -1,0 +1,20 @@
+308 pools; wallets that buy in 3+ pools (the crowd): 74
+pools with a true outsider: 12; clean pools: 296
+  blocks from the outsider's buy to the pull: median 12.5, p25 6, p75 102; within 10 blocks: 6/12, within 50: 9/12
+  outsiders that sold before the pull: 0/12
+  crowd ETH arriving after the outsider: median 0.000
+clean pools: pull at median +2028 (p10 +44)
+
+first 25 pools with a true outsider (outsider offset, ETH -> pull offset, lag, sold?, crowd ETH after):
+  v4:0x61a906a40  +25    0.4700 -> pull +31  lag 6  sold False  crowd after 0.000
+  v4:0x203c46d0a  +118   0.0012 -> pull +123  lag 5  sold False  crowd after 0.073
+  v4:0xd4873afa2  +180   0.0099 -> pull +186  lag 6  sold False  crowd after 0.000
+  v4:0x34ef637ac  +265   0.0023 -> pull +272  lag 7  sold False  crowd after 0.000
+  v4:0x699621fc3  +477   0.0014 -> pull +604  lag 127  sold False  crowd after 1.091
+  v4:0xf43145623  +582   0.0025 -> pull +588  lag 6  sold False  crowd after 0.000
+  v4:0xc75381b6d  +645   0.0014 -> pull +785  lag 140  sold False  crowd after 1.337
+  v4:0xc8cab5437  +724   0.0024 -> pull +826  lag 102  sold False  crowd after 0.000
+  v4:0x25bf985d8  +833   0.0024 -> pull +851  lag 18  sold False  crowd after 0.095
+  v4:0xef947f356  +852   0.0104 -> pull +874  lag 22  sold False  crowd after 0.104
+  v4:0x8ef6a8b21  +2132  0.0096 -> pull +2138  lag 6  sold False  crowd after 0.000
+  v4:0x678703fb0  +2157  0.0048 -> pull +2177  lag 20  sold False  crowd after 0.000

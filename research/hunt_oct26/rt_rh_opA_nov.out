@@ -1,0 +1,7 @@
+rh 20261110,20261111: 308 pools of the line (to 0x3194e326.. 0x2fcb9108 644 B), window 6000 blocks
+  crew (buys in 10%+ of pools): 65; pulled pools: 308/308
+  outsiders that bought: 77
+  completed a round trip (sold 80%+ before the pull): 2 (3%)
+  cut off by a pull before they could sell: 75 (97%)
+  round-trip return: median +5.4%, mean +5.4%, won 1/2
+  => defended: outsiders cannot reliably exit
