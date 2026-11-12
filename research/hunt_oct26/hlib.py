@@ -114,9 +114,7 @@ def block_at(ch, when):
     url = CH[ch]["rpc"]
     t = when if isinstance(when, (int, float)) else calendar.timegm(time.strptime(when, "%Y-%m-%d %H:%M"))
     hi = int(rpc(url, "eth_blockNumber", []), 16); lo = max(1, hi - 200_000_000)
-    if ch == "base":                                       # a block every 2 s exactly
-        t_hi = ts(url, hi)
-        return hi - (t_hi - t + 1) // 2 if t < t_hi else hi
+    # Base: 2 s blocks until early November 2026, then 0.2 s blocks, so no fixed-rate shortcut; binary search like every chain
     if ts(url, hi) < t:
         return hi
     while lo < hi:
