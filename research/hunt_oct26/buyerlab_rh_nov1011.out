@@ -1,0 +1,150 @@
+rh 20261110..20261111: 4720 pools
+  launch transactions: 4720 of 4720
+  logs: 434279
+  public-router buys to resolve: 108281
+  contracts called by many wallets: 10; their buys to resolve: 9578
+  buyers with 15+ pools: 956
+
+956 buyers in 15+ pools; window 6000 blocks; front at 0.005 native: in at max(launch + 2, its buy - 5), out after its buy
+
+== BLIND: buys in half or more of its line's pools where a real outsider bought first (3+ such pools) ==
+0x5ccd26d4daa07e13f2d368a102d1cf8916105c2f  pools 66 (33/day)  first buy at +120.5 (IQR 81..250, 5% within 3)  size 0.07155 (0.0073..0.148)
+    FRONT n 66 mean +15.3% won 58 pulled 1 -> +0.0253/day | buys when a real outsider was first 50% (n 4) vs clean 21% (n 303) | lines [(('code fe89ad0f15d8',), 66)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 66)]
+0x846249ed486e33ee992e751200ce347c60b3306d  pools 70 (35/day)  first buy at +140.5 (IQR 86..257, 3% within 3)  size 0.07125 (0.0093..0.148)
+    FRONT n 70 mean +14.1% won 62 pulled 0 -> +0.0247/day | buys when a real outsider was first 60% (n 5) vs clean 22% (n 302) | lines [(('code fe89ad0f15d8',), 70)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 70)]
+0x8c5a42aa7f46db4d9fb74328f2ceef4398e3b029  pools 67 (34/day)  first buy at +157 (IQR 123..282, 4% within 3)  size 0.0806 (0.0074..0.15)
+    FRONT n 67 mean +13.0% won 56 pulled 0 -> +0.0217/day | buys when a real outsider was first 60% (n 5) vs clean 21% (n 302) | lines [(('code fe89ad0f15d8',), 67)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 67)]
+0xe38afbd63b566dcb21b966d11b639faabb5e724d  pools 67 (34/day)  first buy at +199 (IQR 143..344, 4% within 3)  size 0.0763 (0.0123..0.156)
+    FRONT n 67 mean +12.9% won 52 pulled 0 -> +0.0216/day | buys when a real outsider was first 67% (n 9) vs clean 20% (n 298) | lines [(('code fe89ad0f15d8',), 67)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 67)]
+0xa6cf0489765999e2240c7bf625754cea2c466eb1  pools 67 (34/day)  first buy at +200 (IQR 119..296, 1% within 3)  size 0.0737 (0.0104..0.149)
+    FRONT n 67 mean +12.1% won 54 pulled 0 -> +0.0202/day | buys when a real outsider was first 67% (n 9) vs clean 20% (n 298) | lines [(('code fe89ad0f15d8',), 67)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 67)]
+0x55aad6f77172c421502ad78b0d2fb54f3dfbd24b  pools 68 (34/day)  first buy at +143.5 (IQR 87..267, 4% within 3)  size 0.0744 (0.0082..0.156)
+    FRONT n 68 mean +11.7% won 57 pulled 1 -> +0.0199/day | buys when a real outsider was first 60% (n 5) vs clean 22% (n 302) | lines [(('code fe89ad0f15d8',), 68)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 68)]
+0x61f8cd1f1137007df664d6eaa4e9e17345b7939c  pools 70 (35/day)  first buy at +135.5 (IQR 76..277, 3% within 3)  size 0.062 (0.0145..0.141)
+    FRONT n 70 mean +11.3% won 59 pulled 0 -> +0.0198/day | buys when a real outsider was first 60% (n 5) vs clean 22% (n 302) | lines [(('code fe89ad0f15d8',), 70)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 70)]
+0xb6ca8cd1589e8e1ef078c6b345ef1cf833059f99  pools 71 (36/day)  first buy at +150 (IQR 87..246, 4% within 3)  size 0.0712 (0.0101..0.151)
+    FRONT n 71 mean +11.0% won 59 pulled 0 -> +0.0196/day | buys when a real outsider was first 60% (n 5) vs clean 23% (n 302) | lines [(('code fe89ad0f15d8',), 71)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 71)]
+0x2eafccc3d0a9ba66a6a7497b744a3d407dfda062  pools 63 (32/day)  first buy at +207 (IQR 147..313, 5% within 3)  size 0.0848 (0.0083..0.154)
+    FRONT n 63 mean +12.3% won 50 pulled 0 -> +0.0194/day | buys when a real outsider was first 70% (n 10) vs clean 19% (n 297) | lines [(('code fe89ad0f15d8',), 63)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 63)]
+0xa94a29cbc6e38034d05eb06c6c2e2b27aa2af60d  pools 63 (32/day)  first buy at +201 (IQR 156..295, 5% within 3)  size 0.0887 (0.0127..0.148)
+    FRONT n 63 mean +12.3% won 59 pulled 0 -> +0.0193/day | buys when a real outsider was first 56% (n 9) vs clean 19% (n 298) | lines [(('code fe89ad0f15d8',), 63)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 63)]
+0xaf55c065f6c19c6dfe0f8c0cd6e85daa7b821e38  pools 66 (33/day)  first buy at +156 (IQR 109..288, 0% within 3)  size 0.0703 (0.0137..0.162)
+    FRONT n 66 mean +11.6% won 53 pulled 0 -> +0.0192/day | buys when a real outsider was first 60% (n 5) vs clean 21% (n 302) | lines [(('code fe89ad0f15d8',), 66)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 66)]
+0x0c8ef605c9c0187cf46e960cf053650bf8a82696  pools 64 (32/day)  first buy at +231.5 (IQR 160..285, 0% within 3)  size 0.07325 (0.0129..0.144)
+    FRONT n 64 mean +11.7% won 57 pulled 0 -> +0.0187/day | buys when a real outsider was first 76% (n 17) vs clean 18% (n 290) | lines [(('code fe89ad0f15d8',), 64)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 64)]
+0xebbcb2263a45f8de6e84198118b0fd7f97f5a147  pools 65 (32/day)  first buy at +136 (IQR 110..259, 8% within 3)  size 0.0773 (0.0109..0.152)
+    FRONT n 65 mean +11.3% won 54 pulled 0 -> +0.0184/day | buys when a real outsider was first 60% (n 5) vs clean 21% (n 302) | lines [(('code fe89ad0f15d8',), 65)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 65)]
+0x89e5db8b5aa49aa85ac63f691524311aeb649eba [called by 15+ wallets]  pools 336 (168/day)  first buy at +169 (IQR 3..216, 2% within 3)  size 0.07806 (0.00543..0.793)
+    FRONT n 210 mean +3.3% won 140 pulled 0 -> +0.0175/day | buys when a real outsider was first 100% (n 147) vs clean 100% (n 172) | lines [(('code 1f6f5a665a53',), 158), (('code 2067ec4204d8',), 149), (('2567 B',), 12)] | launch calls [(('0x89e5db8b', '0xf305d719', 196), 313), (('0xbbf5c604', '0xfb5836eb', 3940), 20)]
+0x3d5d884626726ce1abaf163b1150dbbc727a0748  pools 59 (30/day)  first buy at +279 (IQR 167..317, 3% within 3)  size 0.0773 (0.0124..0.147)
+    FRONT n 59 mean +11.7% won 50 pulled 0 -> +0.0172/day | buys when a real outsider was first 73% (n 22) vs clean 15% (n 285) | lines [(('code fe89ad0f15d8',), 59)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 59)]
+0xa3fea98455621a72ece1c26aa39aa5e589936083  pools 67 (34/day)  first buy at +140 (IQR 97..259, 4% within 3)  size 0.0672 (0.0081..0.141)
+    FRONT n 67 mean +10.0% won 52 pulled 0 -> +0.0168/day | buys when a real outsider was first 60% (n 5) vs clean 21% (n 302) | lines [(('code fe89ad0f15d8',), 67)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 67)]
+0xaf71ae395243a3c409ed44724c4eeb5ed13d7bba  pools 66 (33/day)  first buy at +169 (IQR 125..266, 8% within 3)  size 0.06345 (0.0135..0.141)
+    FRONT n 66 mean +9.7% won 52 pulled 0 -> +0.0161/day | buys when a real outsider was first 71% (n 7) vs clean 20% (n 300) | lines [(('code fe89ad0f15d8',), 66)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 66)]
+0x791323597b5ca0aa38daf8cfc9d2ad1892053f92  pools 63 (32/day)  first buy at +207 (IQR 151..292, 3% within 3)  size 0.0755 (0.0086..0.154)
+    FRONT n 63 mean +9.6% won 51 pulled 0 -> +0.0151/day | buys when a real outsider was first 70% (n 10) vs clean 19% (n 297) | lines [(('code fe89ad0f15d8',), 63)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 63)]
+0x5ca66cda1917e15f125e65c2af419a1d00c6a47a  pools 65 (32/day)  first buy at +240 (IQR 170..335, 2% within 3)  size 0.0706 (0.0162..0.145)
+    FRONT n 65 mean +9.1% won 56 pulled 0 -> +0.0148/day | buys when a real outsider was first 78% (n 18) vs clean 18% (n 289) | lines [(('code fe89ad0f15d8',), 65)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 65)]
+0xd4de95204489c2621698e2808a80ba95fceb380c  pools 58 (29/day)  first buy at +244.5 (IQR 160..328, 9% within 3)  size 0.07645 (0.007..0.145)
+    FRONT n 58 mean +10.0% won 48 pulled 0 -> +0.0144/day | buys when a real outsider was first 67% (n 18) vs clean 16% (n 289) | lines [(('code fe89ad0f15d8',), 58)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 58)]
+0x6756f8c8d5473324e8e3191af9c7382d01429381  pools 65 (32/day)  first buy at +174 (IQR 129..248, 2% within 3)  size 0.0689 (0.0106..0.147)
+    FRONT n 65 mean +8.7% won 49 pulled 1 -> +0.0141/day | buys when a real outsider was first 57% (n 7) vs clean 20% (n 300) | lines [(('code fe89ad0f15d8',), 65)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 65)]
+0xc2497d7004d401f807f343abe71f983f9a977450  pools 66 (33/day)  first buy at +224 (IQR 111..300, 6% within 3)  size 0.0639 (0.0077..0.141)
+    FRONT n 66 mean +8.3% won 45 pulled 0 -> +0.0137/day | buys when a real outsider was first 81% (n 16) vs clean 18% (n 291) | lines [(('code fe89ad0f15d8',), 66)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 66)]
+0x84158fa5ac847683c0b54c8d892dba251612de09  pools 62 (31/day)  first buy at +235.5 (IQR 185..337, 5% within 3)  size 0.0761 (0.0112..0.139)
+    FRONT n 62 mean +8.2% won 49 pulled 0 -> +0.0126/day | buys when a real outsider was first 67% (n 18) vs clean 17% (n 289) | lines [(('code fe89ad0f15d8',), 62)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 62)]
+0xb723d48ff796a92c34ae464e2d7966e2337d6e75  pools 63 (32/day)  first buy at +216 (IQR 169..351, 3% within 3)  size 0.062 (0.0076..0.141)
+    FRONT n 63 mean +7.0% won 48 pulled 0 -> +0.0110/day | buys when a real outsider was first 62% (n 13) vs clean 19% (n 294) | lines [(('code fe89ad0f15d8',), 63)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 63)]
+0x6d39fa036211c5b59824f4774d7a599ca1252b3f  pools 64 (32/day)  first buy at +239.5 (IQR 186..355, 3% within 3)  size 0.07275 (0.0124..0.138)
+    FRONT n 64 mean +6.0% won 51 pulled 0 -> +0.0096/day | buys when a real outsider was first 72% (n 18) vs clean 18% (n 289) | lines [(('code fe89ad0f15d8',), 64)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 64)]
+
+== UNTESTED: no real outsider bought ahead of it in 3+ pools of its line; front +3% or better, 5+ pools a day ==
+0xbbf5c604b2d1c99d78f74686532dc4002758ad58  pools 25 (12/day)  first buy at +478 (IQR 409..709, 4% within 3)  size 0.06859 (0.00915..0.329)
+    FRONT n 25 mean +1064.1% won 25 pulled 0 -> +0.6651/day | buys when a real outsider was first - (n 0) vs clean 100% (n 12) | lines [(('2567 B',), 12), (('2605 B',), 3), (('2556 B',), 3)] | launch calls [(('0xbbf5c604', '0xfb5836eb', 3940), 22), (('0xbbf5c604', '0xfb5836eb', 2212), 1)]
+0xbe35b2418be59266bbc6c95247dd865be4f6ad5d  pools 78 (39/day)  first buy at +32.5 (IQR 25..177, 15% within 3)  size 0.06 (0.0076..0.135)
+    FRONT n 78 mean +29.3% won 70 pulled 1 -> +0.0572/day | buys when a real outsider was first 0% (n 1) vs clean 25% (n 306) | lines [(('code fe89ad0f15d8',), 78)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 78)]
+0xc235185881dd4ff460d0a0dea46d36b73c775b0a  pools 88 (44/day)  first buy at +25 (IQR 19..139, 19% within 3)  size 0.0524 (0.0082..0.136)
+    FRONT n 88 mean +24.9% won 83 pulled 0 -> +0.0547/day | buys when a real outsider was first - (n 0) vs clean 29% (n 307) | lines [(('code fe89ad0f15d8',), 88)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 88)]
+0xe21c8169c8624d45a821dde83a3ba29e6270ce5f  pools 81 (40/day)  first buy at +26 (IQR 19..202, 21% within 3)  size 0.0572 (0.0082..0.143)
+    FRONT n 81 mean +25.4% won 78 pulled 0 -> +0.0515/day | buys when a real outsider was first 100% (n 1) vs clean 26% (n 306) | lines [(('code fe89ad0f15d8',), 81)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 81)]
+0x1c38410f211ab8717fc841ba42aec4ccc1a1eead  pools 81 (40/day)  first buy at +28 (IQR 18..167, 14% within 3)  size 0.056 (0.0075..0.14)
+    FRONT n 81 mean +22.5% won 76 pulled 0 -> +0.0456/day | buys when a real outsider was first 0% (n 1) vs clean 26% (n 306) | lines [(('code fe89ad0f15d8',), 81)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 81)]
+0xc86458eea5d47b1e81320bcf72c4583ecc70f549  pools 76 (38/day)  first buy at +65.5 (IQR 37..196, 5% within 3)  size 0.06285 (0.0075..0.136)
+    FRONT n 76 mean +18.9% won 65 pulled 0 -> +0.0360/day | buys when a real outsider was first 0% (n 1) vs clean 25% (n 306) | lines [(('code fe89ad0f15d8',), 76)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 76)]
+0xbd25beebe461f5a4c9d61dec45f615689475472b  pools 75 (38/day)  first buy at +61 (IQR 33..242, 1% within 3)  size 0.0651 (0.0107..0.145)
+    FRONT n 75 mean +16.9% won 64 pulled 1 -> +0.0317/day | buys when a real outsider was first 0% (n 1) vs clean 25% (n 306) | lines [(('code fe89ad0f15d8',), 75)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 75)]
+0x196706e27941f8c336cecf274a86015eeb9a366c  pools 73 (36/day)  first buy at +93 (IQR 55..263, 1% within 3)  size 0.0674 (0.0081..0.146)
+    FRONT n 73 mean +17.3% won 57 pulled 0 -> +0.0316/day | buys when a real outsider was first 0% (n 2) vs clean 24% (n 305) | lines [(('code fe89ad0f15d8',), 73)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 73)]
+0xebbeaceff7661a880671564f1652c6bbc74a679b  pools 76 (38/day)  first buy at +72 (IQR 53..160, 7% within 3)  size 0.0648 (0.0095..0.146)
+    FRONT n 76 mean +14.6% won 64 pulled 0 -> +0.0277/day | buys when a real outsider was first 0% (n 1) vs clean 25% (n 306) | lines [(('code fe89ad0f15d8',), 76)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 76)]
+0x429287644640ded6f70e85ca84cac98fe890d8a7  pools 75 (38/day)  first buy at +67 (IQR 48..215, 4% within 3)  size 0.0677 (0.0076..0.132)
+    FRONT n 75 mean +14.7% won 64 pulled 0 -> +0.0275/day | buys when a real outsider was first 0% (n 1) vs clean 25% (n 306) | lines [(('code fe89ad0f15d8',), 75)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 75)]
+0x4124dbc58f1623b1d6d6093ea15e27c8143a4075  pools 73 (36/day)  first buy at +110 (IQR 67..273, 1% within 3)  size 0.0612 (0.0107..0.146)
+    FRONT n 73 mean +14.1% won 62 pulled 0 -> +0.0258/day | buys when a real outsider was first 0% (n 2) vs clean 24% (n 305) | lines [(('code fe89ad0f15d8',), 73)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 73)]
+0x9fdd8ceab2de4fa2d9b0f1f37475a47baff8cd9a  pools 71 (36/day)  first buy at +14 (IQR 13..14, 99% within 3)  size 0.05 (0.05..0.3)
+    FRONT n 71 mean +14.4% won 71 pulled 0 -> +0.0255/day | buys when a real outsider was first - (n 0) vs clean 61% (n 116) | lines [(('2530 B',), 71)] | launch calls [(('0xe982c50a', '0xe1e75b94', 5572), 1), (('0x879ea6e4', '0xe1e75b94', 5572), 1)]
+0x2ce5d3b3be4af3a48d7306d61a7437afeef43885  pools 75 (38/day)  first buy at +85 (IQR 50..240, 5% within 3)  size 0.0541 (0.0113..0.142)
+    FRONT n 75 mean +13.0% won 62 pulled 0 -> +0.0244/day | buys when a real outsider was first 0% (n 2) vs clean 25% (n 305) | lines [(('code fe89ad0f15d8',), 75)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 75)]
+0x5a40bb063f52bb04be0c1143c2b752ebbb3c12a0  pools 69 (34/day)  first buy at +90 (IQR 42..222, 3% within 3)  size 0.0545 (0.0075..0.153)
+    FRONT n 69 mean +13.3% won 58 pulled 0 -> +0.0230/day | buys when a real outsider was first 0% (n 2) vs clean 23% (n 305) | lines [(('code fe89ad0f15d8',), 69)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 69)]
+0xaa497d20d26fe488f720ff9c954ab311ec483a2a  pools 51 (26/day)  first buy at +14 (IQR 13..15, 78% within 3)  size 0.102 (0.0178..0.102)
+    FRONT n 51 mean +17.6% won 51 pulled 0 -> +0.0225/day | buys when a real outsider was first - (n 0) vs clean 36% (n 116) | lines [(('2530 B',), 42), (('code nocode',), 1), (('2594 B',), 1)] | launch calls [(('0x73991a25', '0xac9650d8', 740), 5), (('0x38e43cfd', '0xe1e75b94', 5572), 1)]
+0x192504c694564820d2c74bc2f2d1639224a5a88e  pools 73 (36/day)  first buy at +104 (IQR 79..205, 3% within 3)  size 0.066 (0.0084..0.144)
+    FRONT n 73 mean +10.9% won 57 pulled 1 -> +0.0198/day | buys when a real outsider was first 0% (n 2) vs clean 24% (n 305) | lines [(('code fe89ad0f15d8',), 73)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 73)]
+0x04705658631a754546b50d3c43aeb93af8c4bf31  pools 22 (11/day)  first buy at +562 (IQR 550..575, 9% within 3)  size 0.04875 (0.0488..0.0488)
+    FRONT n 22 mean +5.9% won 22 pulled 0 -> +0.0033/day | buys when a real outsider was first 0% (n 2) vs clean 11% (n 190) | lines [(('code 98f15d554246',), 21), (('code nocode',), 1)] | launch calls [(('0xd7e538e9', '0x631ed51e', 740), 22)]
+0xe8852602f84e04e284286d8db01a41edd0ccefb0 [called by 15+ wallets]  pools 26 (13/day)  first buy at +1893.5 (IQR 406..4395, 0% within 3)  size 0.01261 (0.00523..0.346)
+    FRONT n 26 mean +3.6% won 20 pulled 0 -> +0.0023/day | buys when a real outsider was first - (n 0) vs clean - (n 0) | lines [(('code 5fcfacb98bd0',), 3), (('code 98f15d554246',), 3), (('code b1121962bbb0',), 2)] | launch calls [(('0x1531efda', '0xc54780fd', 964), 4), (('0x58daec31', '0xac9650d8', 1444), 3)]
+
+== TOP BY THE FRONT'S PAPER ==
+0xbbf5c604b2d1c99d78f74686532dc4002758ad58  pools 25 (12/day)  first buy at +478 (IQR 409..709, 4% within 3)  size 0.06859 (0.00915..0.329)
+    FRONT n 25 mean +1064.1% won 25 pulled 0 -> +0.6651/day | buys when a real outsider was first - (n 0) vs clean 100% (n 12) | lines [(('2567 B',), 12), (('2605 B',), 3), (('2556 B',), 3)] | launch calls [(('0xbbf5c604', '0xfb5836eb', 3940), 22), (('0xbbf5c604', '0xfb5836eb', 2212), 1)]
+0xbe35b2418be59266bbc6c95247dd865be4f6ad5d  pools 78 (39/day)  first buy at +32.5 (IQR 25..177, 15% within 3)  size 0.06 (0.0076..0.135)
+    FRONT n 78 mean +29.3% won 70 pulled 1 -> +0.0572/day | buys when a real outsider was first 0% (n 1) vs clean 25% (n 306) | lines [(('code fe89ad0f15d8',), 78)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 78)]
+0xc235185881dd4ff460d0a0dea46d36b73c775b0a  pools 88 (44/day)  first buy at +25 (IQR 19..139, 19% within 3)  size 0.0524 (0.0082..0.136)
+    FRONT n 88 mean +24.9% won 83 pulled 0 -> +0.0547/day | buys when a real outsider was first - (n 0) vs clean 29% (n 307) | lines [(('code fe89ad0f15d8',), 88)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 88)]
+0xb15cdf4a257a20ae13db84cb2bd80a011da932b2  pools 160 (80/day)  first buy at +174.5 (IQR 91..266, 2% within 3)  size 0.03817 (0.017..0.115)
+    FRONT n 160 mean +13.6% won 134 pulled 0 -> +0.0543/day | buys when a real outsider was first 0% (n 7) vs clean 52% (n 300) | lines [(('code fe89ad0f15d8',), 157), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 159), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0xe21c8169c8624d45a821dde83a3ba29e6270ce5f  pools 81 (40/day)  first buy at +26 (IQR 19..202, 21% within 3)  size 0.0572 (0.0082..0.143)
+    FRONT n 81 mean +25.4% won 78 pulled 0 -> +0.0515/day | buys when a real outsider was first 100% (n 1) vs clean 26% (n 306) | lines [(('code fe89ad0f15d8',), 81)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 81)]
+0x5777452ec62463a39e9e28525db94027c51bd626  pools 154 (77/day)  first buy at +181 (IQR 93..274, 4% within 3)  size 0.06087 (0.017..0.0805)
+    FRONT n 154 mean +12.4% won 147 pulled 0 -> +0.0479/day | buys when a real outsider was first 0% (n 8) vs clean 51% (n 299) | lines [(('code fe89ad0f15d8',), 151), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 153), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0xc2afeeaeedc21250acfffc49fee87ed3d90d875e  pools 154 (77/day)  first buy at +189 (IQR 91..281, 3% within 3)  size 0.0402 (0.0171..0.113)
+    FRONT n 154 mean +12.1% won 142 pulled 0 -> +0.0465/day | buys when a real outsider was first 0% (n 8) vs clean 51% (n 299) | lines [(('code fe89ad0f15d8',), 151), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 153), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0xafc7e723f0ff82fde1e16222cfa3168fe5d90e45  pools 155 (78/day)  first buy at +193 (IQR 94..288, 3% within 3)  size 0.04154 (0.017..0.114)
+    FRONT n 155 mean +11.9% won 140 pulled 0 -> +0.0460/day | buys when a real outsider was first 0% (n 8) vs clean 51% (n 299) | lines [(('code fe89ad0f15d8',), 152), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 154), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0xbd3d1887fc4b82f3422874028ac26c0a1bd9a918  pools 156 (78/day)  first buy at +160.5 (IQR 78..271, 2% within 3)  size 0.03955 (0.0171..0.113)
+    FRONT n 156 mean +11.8% won 143 pulled 0 -> +0.0459/day | buys when a real outsider was first 0% (n 5) vs clean 51% (n 302) | lines [(('code fe89ad0f15d8',), 153), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 156)]
+0x1c38410f211ab8717fc841ba42aec4ccc1a1eead  pools 81 (40/day)  first buy at +28 (IQR 18..167, 14% within 3)  size 0.056 (0.0075..0.14)
+    FRONT n 81 mean +22.5% won 76 pulled 0 -> +0.0456/day | buys when a real outsider was first 0% (n 1) vs clean 26% (n 306) | lines [(('code fe89ad0f15d8',), 81)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 81)]
+0xea8744056cd6678568b2b814e41ae772a593a1e5  pools 155 (78/day)  first buy at +195 (IQR 98..301, 1% within 3)  size 0.0402 (0.0174..0.114)
+    FRONT n 155 mean +11.7% won 133 pulled 0 -> +0.0452/day | buys when a real outsider was first 12% (n 8) vs clean 51% (n 299) | lines [(('code fe89ad0f15d8',), 152), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 154), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0xec451646db628f7eda9987292245d81eaab58d19  pools 152 (76/day)  first buy at +175.5 (IQR 91..284, 3% within 3)  size 0.04196 (0.0172..0.115)
+    FRONT n 152 mean +11.4% won 135 pulled 0 -> +0.0435/day | buys when a real outsider was first 0% (n 7) vs clean 50% (n 300) | lines [(('code fe89ad0f15d8',), 149), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 151), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0xdc6003ec03b6dc3763ceefdf6f93f661162d1661  pools 154 (77/day)  first buy at +185 (IQR 103..269, 1% within 3)  size 0.03883 (0.0171..0.114)
+    FRONT n 154 mean +11.1% won 138 pulled 0 -> +0.0428/day | buys when a real outsider was first 12% (n 8) vs clean 50% (n 299) | lines [(('code fe89ad0f15d8',), 151), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 153), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0x3d755ea7c8a5b4b9a68f96edbe01178e29fbe81f  pools 152 (76/day)  first buy at +168.5 (IQR 76..256, 1% within 3)  size 0.03662 (0.0171..0.113)
+    FRONT n 152 mean +11.1% won 130 pulled 0 -> +0.0422/day | buys when a real outsider was first 14% (n 7) vs clean 49% (n 300) | lines [(('code fe89ad0f15d8',), 149), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 151), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0x3bf804b2adb9973c159b307e06ff215e9321178e  pools 152 (76/day)  first buy at +165.5 (IQR 78..270, 3% within 3)  size 0.04155 (0.0172..0.115)
+    FRONT n 152 mean +11.0% won 138 pulled 0 -> +0.0417/day | buys when a real outsider was first 0% (n 6) vs clean 50% (n 301) | lines [(('code fe89ad0f15d8',), 149), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 151), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0xc773455c49f0573f2040cd4a870c04a603f6b32b  pools 156 (78/day)  first buy at +172.5 (IQR 93..262, 3% within 3)  size 0.03778 (0.0171..0.114)
+    FRONT n 156 mean +10.6% won 139 pulled 0 -> +0.0414/day | buys when a real outsider was first 14% (n 7) vs clean 51% (n 300) | lines [(('code fe89ad0f15d8',), 153), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 155), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0x715b004ae8d091f35ce639723281e13f2646a8fb  pools 154 (77/day)  first buy at +180.5 (IQR 115..263, 5% within 3)  size 0.03803 (0.017..0.115)
+    FRONT n 154 mean +10.7% won 138 pulled 0 -> +0.0410/day | buys when a real outsider was first 0% (n 8) vs clean 51% (n 299) | lines [(('code fe89ad0f15d8',), 151), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 153), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0x5a1ac6da7bff98071d84b4fddc80ec6e57168d40  pools 408 (204/day)  first buy at +554 (IQR 247..956, 1% within 3)  size 0.1485 (0.0495..0.219)
+    FRONT n 408 mean +4.0% won 369 pulled 0 -> +0.0406/day | buys when a real outsider was first 9% (n 23) vs clean 43% (n 937) | lines [(('5274 B',), 401), (('code nocode',), 7)] | launch calls [(('0x58daec31', '0xac9650d8', 1444), 408)]
+0x50015918f056ff91156cc74d125bfe1be5a73c82  pools 152 (76/day)  first buy at +194 (IQR 106..294, 3% within 3)  size 0.0377 (0.0171..0.114)
+    FRONT n 152 mean +10.5% won 138 pulled 0 -> +0.0401/day | buys when a real outsider was first 0% (n 8) vs clean 50% (n 299) | lines [(('code fe89ad0f15d8',), 149), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 151), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0xbd84b08fa16a9e6b4769267632eb2509769d6692  pools 419 (210/day)  first buy at +493 (IQR 208..870, 0% within 3)  size 0.1485 (0.0495..0.213)
+    FRONT n 419 mean +3.8% won 371 pulled 0 -> +0.0396/day | buys when a real outsider was first 19% (n 27) vs clean 44% (n 933) | lines [(('5274 B',), 409), (('code nocode',), 10)] | launch calls [(('0x58daec31', '0xac9650d8', 1444), 419)]
+0x852d9c5a60d7d9ca1a56b00de34e3e12304da54a  pools 155 (78/day)  first buy at +166 (IQR 74..263, 1% within 3)  size 0.03868 (0.0172..0.112)
+    FRONT n 155 mean +10.2% won 137 pulled 0 -> +0.0395/day | buys when a real outsider was first 0% (n 6) vs clean 50% (n 301) | lines [(('code fe89ad0f15d8',), 152), (('code nocode',), 3)] | launch calls [(('0x3194e326', '0x2fcb9108', 644), 154), (('0x3194e326', '0x2fcb9108', 676), 1)]
+0x1c94eff7ad14358bcd1e0b3baef94b5a5fb5bbbf  pools 418 (209/day)  first buy at +464.5 (IQR 190..906, 0% within 3)  size 0.1485 (0.0495..0.229)
+    FRONT n 418 mean +3.8% won 371 pulled 0 -> +0.0393/day | buys when a real outsider was first 19% (n 27) vs clean 44% (n 933) | lines [(('5274 B',), 409), (('code nocode',), 9)] | launch calls [(('0x58daec31', '0xac9650d8', 1444), 418)]
+0xde2e42e2908656bb799ce8d31701cbb372bfe6bc  pools 427 (214/day)  first buy at +547 (IQR 224..977, 0% within 3)  size 0.1485 (0.0493..0.22)
+    FRONT n 427 mean +3.6% won 384 pulled 0 -> +0.0389/day | buys when a real outsider was first 19% (n 27) vs clean 45% (n 933) | lines [(('5274 B',), 415), (('code nocode',), 12)] | launch calls [(('0x58daec31', '0xac9650d8', 1444), 427)]
+0x7d5dd36cade1e5d3b0c86bd0536899b422bb4a65  pools 428 (214/day)  first buy at +552 (IQR 216..1002, 0% within 3)  size 0.1485 (0.0495..0.223)
+    FRONT n 428 mean +3.6% won 377 pulled 0 -> +0.0387/day | buys when a real outsider was first 22% (n 27) vs clean 45% (n 933) | lines [(('5274 B',), 415), (('code nocode',), 13)] | launch calls [(('0x58daec31', '0xac9650d8', 1444), 428)]
+0xd12625e39357e0d7b6160c795d09eefe22889828  pools 416 (208/day)  first buy at +568 (IQR 269..1050, 0% within 3)  size 0.1485 (0.0495..0.224)
+    FRONT n 416 mean +3.7% won 378 pulled 0 -> +0.0383/day | buys when a real outsider was first 22% (n 27) vs clean 44% (n 933) | lines [(('5274 B',), 406), (('code nocode',), 10)] | launch calls [(('0x58daec31', '0xac9650d8', 1444), 416)]
