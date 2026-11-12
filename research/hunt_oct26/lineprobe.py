@@ -124,7 +124,7 @@ def main():
     for w, v in sorted(crew.items(), key=lambda kv: st.median(x[0] for x in kv[1])):
         offs = sorted(x[0] for x in v); sz = sorted(x[1] for x in v); med = st.median(offs)
         print(f"    {w}  pools {len(v)} ({len(v)/n:.0%})  first buy +{med:g} (IQR {offs[len(offs)//4]}..{offs[3*len(offs)//4]}, {sum(abs(o-med)<=2 for o in offs)/len(offs):.0%} within 2)"
-              f"  size {st.median(sz):.4g} ({sz[0]:.3g}..{sz[-1]:.3g})  via {collections.Counter(tc.get(next(e[7] for p in P if p['id']==x[2] for e in p['ev'] if e[2]==w), [0,'?'])[1][:10] for x in v[:20]).most_common(2)}")
+              f"  size {st.median(sz):.4g} ({sz[0]:.3g}..{sz[-1]:.3g})  via {collections.Counter((tc.get(next(e[7] for p in P if p['id']==x[2] for e in p['ev'] if e[2]==w)) or [0,'?'])[1][:10] for x in v[:20]).most_common(2)}")
     sells = collections.Counter(); pulls = collections.Counter()
     for p in P:
         for e in p["ev"]:
