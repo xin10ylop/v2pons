@@ -1,0 +1,14 @@
+232 pools of the 1,380 B line with 4,655 B tokens in 2 dump(s)
+
+stake 0.05 ETH (fee as recorded, mostly 0; no gas)
+  in +5: x600: +43% med +37% won 201/228 pulled 27 | x1200: +59% med +81% won 160/228 pulled 68 | x2400: +100% med +96% won 145/228 pulled 83 | x4800: +156% med +146% won 132/228 pulled 96 | x5900: +157% med +188% won 118/228 pulled 110
+  in +50: x600: +43% med +37% won 201/228 pulled 27 | x1200: +59% med +81% won 160/228 pulled 68 | x2400: +100% med +96% won 145/228 pulled 83 | x4800: +156% med +146% won 132/228 pulled 96 | x5900: +157% med +188% won 118/228 pulled 110
+  in +200: x600: +21% med +28% won 199/228 pulled 27 | x1200: +36% med +67% won 158/228 pulled 68 | x2400: +61% med +82% won 144/228 pulled 83 | x4800: +119% med +112% won 131/228 pulled 96 | x5900: +121% med +113% won 117/228 pulled 110
+
+stake 0.2 ETH (fee as recorded, mostly 0; no gas)
+  in +5: x600: +38% med +34% won 201/228 pulled 27 | x1200: +50% med +76% won 160/228 pulled 68 | x2400: +82% med +87% won 145/228 pulled 83 | x4800: +128% med +134% won 132/228 pulled 96 | x5900: +127% med +175% won 118/228 pulled 110
+  in +50: x600: +38% med +34% won 201/228 pulled 27 | x1200: +50% med +76% won 160/228 pulled 68 | x2400: +82% med +87% won 145/228 pulled 83 | x4800: +128% med +134% won 132/228 pulled 96 | x5900: +127% med +175% won 118/228 pulled 110
+  in +200: x600: +19% med +26% won 199/228 pulled 27 | x1200: +30% med +63% won 158/228 pulled 68 | x2400: +50% med +74% won 144/228 pulled 83 | x4800: +98% med +102% won 131/228 pulled 96 | x5900: +98% med +107% won 116/228 pulled 110
+
+pulled within 2 h: 215/232; pull offsets: median 5583, p10 279
+crowd buys vs sells per pool (native, first 6,000 blocks): median buys 7.82, sells 3.04

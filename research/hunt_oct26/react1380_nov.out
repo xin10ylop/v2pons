@@ -1,0 +1,14 @@
+232 pools of the line; crowd (3+ pools anywhere) 4928; pools with a true outsider 8, clean 224
+pull within 5 s (50 blocks) of the outsider's buy: 0/8; not pulled within 2 h: 8/8
+clean pools: pull median +5583; p10 +279
+outsiders that sold 80%+: 0/8
+
+each outsider pool: entry offset (before the crowd?), ETH | pull lag | crowd net native after it vs clean pools after the same offset | sold? return
+  v4:0x81e004aba +147   EARLY 0.0297 | lag None | net after +5.68 vs clean +7.48 | sold False 
+  v4:0xda2c78195 +200   EARLY 0.1386 | lag None | net after +29.56 vs clean +7.44 | sold False 
+  v4:0xb42742d12 +201   EARLY 0.1200 | lag None | net after +25.16 vs clean +7.44 | sold False 
+  v4:0x52ba9519b +217   late  0.1683 | lag None | net after +19.85 vs clean +7.43 | sold False 
+  v4:0xa06b495bb +1345  late  0.0357 | lag None | net after +10.51 vs clean +5.14 | sold False 
+  v4:0xfc1e3d7a4 +4974  late  0.1584 | lag None | net after +3.53 vs clean +0.70 | sold False 
+  v4:0x2ee29939e +5368  late  0.0074 | lag None | net after +1.10 vs clean +0.15 | sold False 
+  v4:0x2e15fd8f6 +5794  late  0.0317 | lag None | net after +0.15 vs clean +0.00 | sold False 

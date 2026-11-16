@@ -1,0 +1,7 @@
+in at launch + 5, stake 0.05 ETH, fee as recorded (~0), no gas; a pull before the exit = -100%
+    2.2 ETH tier (3 pools): out +300: mean +48% med +59% won 3/3 pulled 0 | out +600: mean +255% med +309% won 3/3 pulled 0 | out +1200: mean +614% med +476% won 3/3 pulled 0 | out +2400: mean +963% med +665% won 3/3 pulled 0
+    3.0 ETH tier (27 pools): out +300: mean +12% med +17% won 25/27 pulled 2 | out +600: mean +43% med +55% won 24/27 pulled 3 | out +1200: mean +89% med +144% won 20/27 pulled 7 | out +2400: mean +145% med +194% won 19/27 pulled 8
+    3.3 ETH tier (7 pools): out +300: mean +564% med +600% won 7/7 pulled 0 | out +600: mean +477% med +511% won 7/7 pulled 0 | out +1200: mean +557% med +680% won 7/7 pulled 0 | out +2400: mean +1177% med +1341% won 7/7 pulled 0
+    4.4 ETH tier (51 pools): out +300: mean +1% med +14% won 43/51 pulled 7 | out +600: mean +34% med +38% won 41/51 pulled 10 | out +1200: mean +24% med +84% won 29/51 pulled 22 | out +2400: mean +48% med +108% won 26/51 pulled 25
+    5.6 ETH tier (132 pools): out +300: mean +2% med +10% won 121/132 pulled 10 | out +600: mean +19% med +30% won 118/132 pulled 14 | out +1200: mean +27% med +74% won 94/132 pulled 38 | out +2400: mean +38% med +83% won 85/132 pulled 47
+   12.2 ETH tier (6 pools): out +300: mean +13% med +10% won 6/6 pulled 0 | out +600: mean +59% med +54% won 6/6 pulled 0 | out +1200: mean +74% med +107% won 5/6 pulled 1 | out +2400: mean +3% med -24% won 3/6 pulled 3
