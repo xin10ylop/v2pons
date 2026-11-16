@@ -1,0 +1,39 @@
+9047 pools; 3823 wallets in 5+ pools (10 tagged operator/router)
+
+== top 25 by realized native (operators/routers excluded) ==
+wallet                                       pools   realized     spent       got exit%
+0x53bf6b0684ec7ef91e1387da3d1a1769bc5a6f77      70 +299999997507.226     0.029 299999997507.254    3%
+0xa192a840c2b69c28cce392fe4dcd834c576e1dc8       7 +59119120206.409 75763405563.004 134882525769.413   14%
+0x886ea067b204257f422f14af15ff58925370d8d3      29 +137300.050     0.028 137300.078    0%
+0x92475293e578c7d88651d160d2b0e45e04e4528b     474  +8965.382    14.707  8980.090   38%
+0xb1778eed000d6862e6e52013367c520854da53e9       8   +545.808     0.000   545.808    0%
+0x111116056ad60f0f4fb52d60852f9acd2fafca11      45     +1.746     0.029     1.775    0%
+0x6861639c7b7e70021deb1786941afeb7659ddd45       8     +1.494     0.062     1.555   25%
+0x00000000e91fc5bad977c0cc4ad60557c06886a2      17     +1.287     1.569     2.856   18%
+0xf2c69db0311b3ded8ec7f39e80f555a200cc2839      16     +1.201     0.776     1.978   56%
+0x6e2a35a7ad683cf634d91492d73bb7ff774c6919       6     +0.277     0.192     0.469   50%
+0xbb75f6e4bde3dfa3716239e02274175f37892cc7      12     +0.189     0.894     1.082   75%
+0x09a78d77fe02ac82dfcc7c40ab229bf35d62ba4f      15     +0.165     2.279     2.444   40%
+0xe5e702641ea86f4ae6cc3cdaed2b886f976be044      16     +0.156     0.000     0.156    0%
+0x7332a9dc106b030f647f8778cfe815e272c03c7a      20     +0.142     0.005     0.147   15%
+0x5ec353cb11369e95cdc310df7af88adfbd30e17c       9     +0.103     0.004     0.107    0%
+0x9689992f5b5c09447f15906d8d11214944488341      47     +0.047     7.652     7.699   47%
+0x4b97980e21d5fbfe8edd2ae0bb07e8174059d9ee      16     +0.040     0.001     0.041    6%
+0x9982538f41f2ae29ddb9d3d9307010052984fdbb       5     +0.040     0.003     0.042   80%
+0x12397c79ca46b33c0e62dacfcf25951c6116c836      10     +0.036     0.001     0.037   20%
+0x0c2e3d7f9efbf3b64f77960b698124d54b2863a8      12     +0.030     0.009     0.039   17%
+0x3e20e4b668772acb0245e15e8393ca29cdcbf831      24     +0.030     0.001     0.031    0%
+0xc26b9ba7264d4b84121b23adc759a2579595494e      12     +0.029     0.015     0.044    0%
+0xd600e2daa277e914b97826446ff8650274c2fd44       6     +0.025     0.044     0.070   17%
+0x340278a0ef7c7e83418771504871619453bd0fa6       8     +0.013     0.000     0.013    0%
+0x65e37c1d5a2935afd7241103ebe97fb30906fa0e     184     +0.012     0.030     0.042   54%
+
+traders (5+ pools, not operator/router): 3813; net positive realized: 25; net positive AND exit share >=50%: 5
+median realized across traders: -2.1996 native
+
+== for reference, top 5 tagged operator/router wallets ==
+0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc     742 +455532.152    32.976 455565.128   21%  ROUTER
+0xb07425852d0de8f20a3a738ac2a4d98d0463b494       5     -0.100     0.100     0.000    0%  LAUNCHER
+0xc147d3145741c7243dc66130df3c59834a939b41       5     -0.204     0.204     0.000    0%  LAUNCHER
+0x9741bb441e598a48d5dc0f2334a4930972afdbb0       5     -0.223     0.223     0.000    0%  LAUNCHER
+0x2361c7e4f5b703ae929f32c7aea1e0f16316f73d       5     -0.246     0.246     0.000    0%  LAUNCHER
