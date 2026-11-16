@@ -66,14 +66,16 @@ def pool_state(pid):
     """the pool's key and current (sqrtP, active liquidity) from its Initialize, ModifyLiquidity and last Swap logs"""
     head = int(rpc("eth_blockNumber", []), 16)
     init = None
-    for a in range(head, head - 2_000_000, -200_000):
+    for a in range(head, head - int(os.environ.get("LOOKBACK", "2000000")), -200_000):   # env LOOKBACK: blocks to search back for the pool
         ls = rpc("eth_getLogs", [{"fromBlock": hex(max(1, a - 199_999)), "toBlock": hex(a), "address": PM, "topics": [T_INIT, pid]}])
         if ls: init = ls[0]; break
-    if not init: raise SystemExit("pool not found in the last 2M blocks")
+    if not init: raise SystemExit("pool not found in the lookback window (env LOOKBACK, default 2M blocks)")
     d = init["data"]; b0 = int(init["blockNumber"], 16)
     key = {"currency0": "0x" + init["topics"][2][-40:], "currency1": "0x" + init["topics"][3][-40:], "fee": W(d, 0), "tickSpacing": sgn(W(d, 1)), "hooks": A(d, 2)}
     sqrt_p, tick0 = W(d, 3), sgn(W(d, 4))
-    ls = rpc("eth_getLogs", [{"fromBlock": hex(b0), "toBlock": "latest", "address": PM, "topics": [[T_SWAP, T_ML], pid]}])
+    ls = []                                                   # Robinhood caps this query at 100k blocks: fetch in windows
+    for a in range(b0, head + 1, 100_000):
+        ls += rpc("eth_getLogs", [{"fromBlock": hex(a), "toBlock": hex(min(head, a + 99_999)), "address": PM, "topics": [[T_SWAP, T_ML], pid]}]) or []
     adds = []; last_swap = None
     for l in ls:
         if l["topics"][0] == T_ML: adds.append((sgn(W(l["data"], 0)), sgn(W(l["data"], 1)), sgn(W(l["data"], 2))))

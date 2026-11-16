@@ -58,3 +58,26 @@ Operator A's other scheme (several crowds taking turns), 232 pools over the four
 - `react1380.py DUMPS DAYS` — the line's reaction to one-off outsiders.
 - `full1380.py` — the outsider pools followed for 4 hours: every outsider's trades and return, and the pulls.
 - `linescan.py DUMP SEC_PER_BLOCK` — every line screened for the outsider's way out.
+
+## Correction (Nov 16, later): the keep tier is a honeypot
+
+The keep-tier pools (2.2 / 3.3 ETH, "never pulled") are not a friendly seat. Those launches carry a **hook** on the pool, and the hook
+blocks the sell for everyone but the operator:
+
+- Running the hook's `afterSwap` on its real on-chain storage (`hooktrace.py`, via `minievm.py`): a **buy passes**; a **sell reverts
+  `error1`** for our relay, the Universal Router, and every other sender tried.
+- The live exit test agrees (`deploy/relay_sim.py` on the one still-alive keep pool `0x2e15fd8f…`): the simulated buy+sell reverts.
+- So the pools were "never pulled" because they never need to be — outsiders can't sell, so the liquidity just stays. The on-chain
+  "outsiders" that made +25% to +814% were all selling through the operator's own router (`0x88767899…`), i.e. its own wallets; no
+  independent wallet sold. This matches `linescan`'s 0% real-outsider exit on the line.
+
+This is the same sell-block as C-1 / ETH 1,852 / BNB 4,050, on a hook. The line fails the exit test, so it is not tradeable, and the engine
+entry was not built. The rug-tier pools (3.0 / 4.4 / 5.6 ETH, no hook, pulled fast) remain a plain rug.
+
+**Net:** 2.433 is not back, and the one lead that looked different is a honeypot. No new tradeable line on Robinhood or Base.
+
+### Tool changes kept for the next candidate
+- `deploy/relay_sim.py`: `LOOKBACK` env to find older pools; swap-history fetch chunked to Robinhood's 100k-block log cap.
+- `minievm.py`: STATICCALL (forwarded to the chain as an `eth_call`), RETURNDATASIZE/COPY, EXTCODESIZE/HASH — enough to run a hook's logic.
+- `hooktrace.py`: run a v4 hook's `afterSwap` for a buy and a sell, by sender, to see if it blocks outsider sells.
+- `tier1380map.py`: map the 1,380 B line's launch prices to liquidity tiers and pull counts.

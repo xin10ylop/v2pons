@@ -50,8 +50,8 @@ class EVM:
         saved = self.storage; self.storage = st
         stack, mem, pc, steps = [], bytearray(), 0, 0
         cd = bytes.fromhex(calldata[2:] if calldata.startswith("0x") else calldata)
-        ev = {"sloads": [], "sstores": [], "jumps": [], "logs": [], "env": [], "result": None, "revert": None}
-        tstore = {}
+        ev = {"sloads": [], "sstores": [], "jumps": [], "logs": [], "env": [], "result": None, "revert": None, "calls": []}
+        tstore = {}; rdata = b""
 
         def mext(off, n):
             if n and off + n > len(mem):
@@ -155,7 +155,24 @@ class EVM:
                 elif op == 0x3a:
                     stack.append(gasprice); ev["env"].append((pc, "GASPRICE"))
                 elif op == 0x3d:
-                    stack.append(0)
+                    stack.append(len(rdata))
+                elif op == 0x3e:
+                    m, off, n = stack.pop(), stack.pop(), stack.pop(); mext(m, n); mem[m:m + n] = rdata[off:off + n].ljust(n, b"\0")
+                elif op == 0x3b:                                            # EXTCODESIZE: read from the chain
+                    a = stack.pop(); c = H.rpc(self.url, "eth_getCode", ["0x%040x" % a, self.block]); stack.append((len(c) - 2) // 2)
+                elif op == 0x3f:                                            # EXTCODEHASH
+                    a = stack.pop(); c = H.rpc(self.url, "eth_getCode", ["0x%040x" % a, self.block])
+                    stack.append(int.from_bytes(keccak(bytes.fromhex(c[2:])), "big") if len(c) > 2 else 0)
+                elif op == 0xfa:                                            # STATICCALL: forwarded to the chain as an eth_call (read-only)
+                    g, a, ao, asz, ro, rsz = (stack.pop() for _ in range(6)); mext(ao, asz)
+                    data = "0x" + bytes(mem[ao:ao + asz]).hex(); to = "0x%040x" % a
+                    try:
+                        r = H.rpc(self.url, "eth_call", [{"from": self.address, "to": to, "data": data}, self.block], tries=2)
+                        rdata = bytes.fromhex(r[2:]); ok = 1
+                    except RuntimeError as e:
+                        rdata = b""; ok = 0
+                    ev["calls"].append((pc, to, data[:10], ok, rdata[:64].hex()))
+                    mext(ro, rsz); mem[ro:ro + rsz] = rdata[:rsz].ljust(rsz, b"\0"); stack.append(ok)
                 elif op == 0x41:
                     stack.append(int(coinbase, 16) if isinstance(coinbase, str) else coinbase); ev["env"].append((pc, "COINBASE"))
                 elif op == 0x42:
