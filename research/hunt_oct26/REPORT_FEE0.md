@@ -69,10 +69,34 @@ sell landed 7 blocks after the signal and before the paper sell (modeled at 8 bl
 **Verdict:** the line is real and safe to trade, but small. At $50 a trade it is worth about $10-20 a day (about 8 trades a day at
 +3-4%). The owner judged that not worth running. Not deployed.
 
+## Size (Nov 17, `earlyentry.py`)
+
+Same entry and exit (+8% / -5% / cap 2000), our buy's own price impact included on the way in and out:
+
+| stake | Oct 19-26 (206 trades) | Nov 13-17 (29 trades) |
+|---|---|---|
+| 0.1 ETH | +3.9%, 0.11 ETH/day | +5.9%, 0.04 ETH/day |
+| 0.3 ETH | +3.8%, 0.33 ETH/day | +5.0%, 0.11 ETH/day |
+| 1 ETH | +3.0%, 0.90 ETH/day | +3.8%, 0.28 ETH/day |
+
+The backtest holds the crowd fixed, so a size is only credible while our buy keeps the price inside the range the crowd trades in by
+itself. Our buy lifts the price by ((x + S) / x)^2, with x the pool's virtual ETH reserve at our entry: median 16 ETH in October, 5.9 now.
+
+| | Oct: 0.5 ETH | Oct: 1 ETH | Nov: 0.3 ETH | Nov: 1 ETH |
+|---|---|---|---|---|
+| price lift | +6% | +13% | +10% | +37% |
+| pools where the crowd went that high alone | 89% | 71% | 90% | 38% |
+| crowd buying done at or above it (median) | 31% | 9% | 18% | 0% |
+
+So the credible stake is about 5% of x: about 0.3 ETH now, and about 0.5-0.8 ETH at October's launch size. That is about 0.1 ETH a day
+now and about 0.5 ETH a day in an October-like week. Buying ahead of the crowd (launch + 3 to + 100 blocks) loses about 1% a trade: the
+crowd buys and sells about equally (gross buys 15-37 ETH per pool in 2000 blocks, net flow -1 to -3 ETH).
+
 ## Risks
 
 - **The operator can change the line** (fee, launcher, price) at any time. The engine then simply stops arming.
 - **The crowd can stop.** Then there are no triggers, and so no trades.
 - **A slow week like Oct 19-26** without the stop lost money. The stop is what made it positive; a week of sharp crashes inside 3
   blocks would beat it.
-- **Size:** 0.2-0.3 ETH a trade at most before our own buy eats the +8%.
+- **Size:** about 5% of the pool's virtual ETH reserve (about 0.3 ETH now). A buyer that size has never traded this crowd, so how
+  it reacts is unknown until live trades show it.
