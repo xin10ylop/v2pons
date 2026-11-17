@@ -44,7 +44,7 @@ def getlogs(lo, hi, topics, address=None):
     return out
 
 
-def ride(pid, bn):
+def ride(pid, bn, fee=0):
     """paper ride on one fee-0 pool from its launch block bn; returns a result dict or None if the demand never came"""
     hi = bn + WIN
     sw = getlogs(bn, hi, [T_SWAP4, pid], PM); ml = getlogs(bn + 1, hi, [T_ML, pid], PM)
@@ -64,7 +64,7 @@ def ride(pid, bn):
     sp0, L0 = pre[-1][3], pre[-1][4]
     if not sp0 or not L0:
         return None
-    fee = 0; q = v4math.buy_out_int(sp0, L0, STAKE, fee)
+    q = v4math.buy_out_int(sp0, L0, STAKE, fee)                          # fee: the pool's own (hundredths of a bip), 0 for the fee-0 family
     demand_after = sum(e[2] for e in ev if e[0] >= entry_blk and e[2] > 0) / 1e18
 
     def ret_at(b):
@@ -72,7 +72,7 @@ def ride(pid, bn):
             return -1.0
         post = [e for e in ev if e[0] <= b and e[0] >= entry_blk]
         sp = post[-1][3] if post else sp0
-        sp2 = int(v4math.sqrt_after_buy(sp, L0, STAKE))
+        sp2 = int(v4math.sqrt_after_buy(sp, L0, STAKE * (10 ** 6 - fee) // 10 ** 6))
         return (v4math.sell_out_int(sp2, L0, q, fee) - STAKE - GAS) / STAKE
     exit_blk = entry_blk + HOLD; why = "hold"
     for b in sorted({e[0] for e in ev if e[0] >= entry_blk}):
