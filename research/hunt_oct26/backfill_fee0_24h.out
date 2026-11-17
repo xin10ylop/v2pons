@@ -1,0 +1,45 @@
+last 24 h (blocks 115314175..116172173): 21 fee-0, no-hook, native pools
+launch targets: [('0x8ca5eeb0', 1), ('0xcec39466', 1), ('0x19840f18', 1), ('0x42eec234', 1), ('0xd449a202', 1), ('0x48623877', 1), ('0x63aedc3e', 1), ('0xb104dae4', 1)]
+  0x7042106e95a6 via 0x8ca5eeb0: demand 0.088 via 0x88767899 at +310, exit +340 (take-profit), pull None -> +9.2%
+  0x77e7eada2c63 via 0xcec39466: demand 0.088 via 0x88767899 at +215, exit +258 (take-profit), pull None -> +10.2%
+  0x4459e6e69730 via 0x19840f18: demand 0.089 via 0x88767899 at +179, exit +219 (take-profit), pull None -> +11.4%
+  0x34a0401a8376 via 0x42eec234: demand 0.115 via 0x88767899 at +195, exit +253 (take-profit), pull None -> +9.1%
+  0x9c0838e068d0 via 0xd449a202: demand 0.121 via 0x88767899 at +560, exit +602 (take-profit), pull None -> +13.7%
+  0xa3f7604030f9 via 0x48623877: demand 0.108 via 0x88767899 at +246, exit +287 (take-profit), pull None -> +10.9%
+  0x9d495802cc9a via 0x63aedc3e: demand 0.079 via 0x88767899 at +687, exit +717 (take-profit), pull None -> +8.5%
+  0x1a2bc6b168a2 via 0xb104dae4: demand 0.092 via 0x88767899 at +354, exit +396 (take-profit), pull None -> +11.9%
+  0xf486351e22eb via 0xecc5820b: demand 0.094 via 0x88767899 at +355, exit +383 (take-profit), pull None -> +11.9%
+  0xd82fcfb2633f via 0xb93f9744: demand 0.070 via 0x88767899 at +483, exit +1020 (take-profit), pull None -> +8.8%
+  0x4fada4825884 via 0xefa52d4f: demand 0.142 via 0x88767899 at +737, exit +752 (take-profit), pull None -> +12.1%
+  0xcc30a0a213d8 via 0x3796f13a: demand 0.119 via 0x88767899 at +711, exit +789 (take-profit), pull None -> +11.5%
+  0xcfd9b91c9346 via 0x093c4d26: demand 0.130 via 0x88767899 at +422, exit +449 (take-profit), pull None -> +8.5%
+  0x661631755943 via 0xdb62b5c8: demand 0.121 via 0x88767899 at +362, exit +1451 (take-profit), pull None -> +11.0%
+  0xf0c1375e65bb via 0x6bbf60f1: demand 0.160 via 0x88767899 at +1012, exit +1022 (take-profit), pull None -> +8.7%
+  0x68776dff30c3 via 0x09f076f8: demand 0.137 via 0x88767899 at +621, exit +626 (take-profit), pull None -> +10.0%
+  0xb17173234e18 via 0x86ea7139: demand 0.162 via 0x88767899 at +398, exit +413 (take-profit), pull None -> +11.4%
+  0x5fb669d9c27b via 0x769fe4af: demand 0.143 via 0x88767899 at +582, exit +602 (take-profit), pull None -> +8.4%
+  0xa653706bd209 via 0xf8f112f7: demand 0.136 via 0x88767899 at +605, exit +610 (take-profit), pull None -> +9.4%
+  0x5973e032cde5 via 0x068a7fdc: demand 0.159 via 0x88767899 at +781, exit +1763 (take-profit), pull None -> +10.5%
+
+pools with no demand buy >= 0.02 ETH: 1
+scored rides: 20; mean +10.4%, median +10.4%, won 20/20, take-profit 20, pulled first 0, held to cap 0
+  launch target 0x8ca5eeb0: 1 rides, mean +9.2%, won 1/1
+  launch target 0xcec39466: 1 rides, mean +10.2%, won 1/1
+  launch target 0x19840f18: 1 rides, mean +11.4%, won 1/1
+  launch target 0x42eec234: 1 rides, mean +9.1%, won 1/1
+  launch target 0xd449a202: 1 rides, mean +13.7%, won 1/1
+  launch target 0x48623877: 1 rides, mean +10.9%, won 1/1
+  launch target 0x63aedc3e: 1 rides, mean +8.5%, won 1/1
+  launch target 0xb104dae4: 1 rides, mean +11.9%, won 1/1
+  launch target 0xecc5820b: 1 rides, mean +11.9%, won 1/1
+  launch target 0xb93f9744: 1 rides, mean +8.8%, won 1/1
+  launch target 0xefa52d4f: 1 rides, mean +12.1%, won 1/1
+  launch target 0x3796f13a: 1 rides, mean +11.5%, won 1/1
+  launch target 0x093c4d26: 1 rides, mean +8.5%, won 1/1
+  launch target 0xdb62b5c8: 1 rides, mean +11.0%, won 1/1
+  launch target 0x6bbf60f1: 1 rides, mean +8.7%, won 1/1
+  launch target 0x09f076f8: 1 rides, mean +10.0%, won 1/1
+  launch target 0x86ea7139: 1 rides, mean +11.4%, won 1/1
+  launch target 0x769fe4af: 1 rides, mean +8.4%, won 1/1
+  launch target 0xf8f112f7: 1 rides, mean +9.4%, won 1/1
+  launch target 0x068a7fdc: 1 rides, mean +10.5%, won 1/1

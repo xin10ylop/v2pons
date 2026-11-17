@@ -1,0 +1,9 @@
+last 24 h: 906 no-hook native v4 pools in 239 launch families; 8 with 15+ pools
+  fee 1% ts 200 sqrtP 679394651928..: 204 pools (204/day); no crowd buy 3; rides 201: mean +6.8%, median +10.1%, won 194/201, pulled first 2, held to cap 5
+  fee 1% ts 200 sqrtP 526364174002..: 186 pools (186/day); no crowd buy 1; rides 185: mean +7.2%, median +9.3%, won 181/185, pulled first 0, held to cap 4
+  fee 0.01% ts 1 sqrtP 792280926924..: 81 pools (81/day); no crowd buy 11; rides 70: mean -12.8%, median +9.8%, won 51/70, pulled first 1, held to cap 19
+  fee 1% ts 200 sqrtP 190849848346..: 33 pools (33/day); no crowd buy 33; no rides
+  fee 0.0001% ts 1 sqrtP 354319114228..: 27 pools (27/day); no crowd buy 0; rides 27: mean +8.6%, median +8.7%, won 27/27, pulled first 0, held to cap 0
+  fee 0.0001% ts 1 sqrtP 144650172662..: 21 pools (21/day); no crowd buy 0; rides 21: mean -0.1%, median +10.5%, won 19/21, pulled first 0, held to cap 2
+  fee 0% ts 60 sqrtP 250503623496..: 21 pools (21/day); no crowd buy 1; rides 20: mean +7.9%, median +10.3%, won 17/20, pulled first 0, held to cap 0
+  fee 0.05% ts 200 sqrtP 174424412964..: 19 pools (19/day); no crowd buy 19; no rides
