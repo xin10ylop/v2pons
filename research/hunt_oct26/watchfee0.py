@@ -17,6 +17,7 @@ MINUTES = float(sys.argv[1]) if len(sys.argv) > 1 else 180
 STAKE = int(float(os.environ.get("STAKE", "0.005")) * 1e18); GAS = int(0.000006e18)
 TP = float(os.environ.get("TP", "0.08")); HOLD = int(os.environ.get("HOLD", "2000")); TRIG_ETH = float(os.environ.get("TRIG_ETH", "0.02"))
 WIN = int(os.environ.get("WIN", "6000"))                              # blocks to follow each pool
+LAG = int(os.environ.get("LAG", "0")); ENTRY_LAG = int(os.environ.get("ENTRY_LAG", "0"))                                 # blocks between seeing the take-profit and our sell landing (0 = the same block, optimistic)
 url = H.CH["rh"]["rpc"]; PM = H.CH["rh"]["pm"]
 DECOY = "0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc"; UR = "0x8876789976decbfcbbbe364623c63652db8c0904"
 T = lambda s: "0x" + keccak(text=s).hex()
@@ -58,7 +59,7 @@ def ride(pid, bn):
     trig = next((e for e in ev if e[0] > bn and e[2] >= TRIG_ETH * 1e18), None)
     if not trig:
         return None
-    entry_blk = trig[0] + 1
+    entry_blk = trig[0] + 1 + ENTRY_LAG                                  # ENTRY_LAG: extra blocks before our buy lands (feed + send latency)
     pre = [e for e in ev if e[0] < entry_blk]                         # our entry prices at the state after the trigger's whole block
     sp0, L0 = pre[-1][3], pre[-1][4]
     if not sp0 or not L0:
@@ -80,7 +81,7 @@ def ride(pid, bn):
         if pull is not None and pull <= b:
             exit_blk, why = pull, "pull"; break
         if ret_at(b) >= TP:
-            exit_blk, why = b, "take-profit"; break
+            exit_blk, why = b + LAG, "take-profit"; break                  # the sell lands LAG blocks after the feed shows the take-profit
     r = ret_at(min(exit_blk, hi))
     return {"trig_off": trig[0] - bn, "trig_who": trig[5][:10], "trig_eth": trig[2] / 1e18, "entry_off": entry_blk - bn,
             "exit_off": exit_blk - bn, "why": why, "ret": r, "pull": None if pull is None else pull - bn, "demand_after": demand_after, "swaps": len(ev)}
