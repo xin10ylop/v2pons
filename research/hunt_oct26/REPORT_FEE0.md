@@ -60,6 +60,15 @@ fast.
   The research replay gave +4.6% (17 won). With one position at a time and landing 6 blocks late: +4.4%.
 - **Tests:** `tests/test_fee0_engine.py` (14 cases: arming, triggers, the three exits, the checks, live round trip, halts, recovery).
 
+## Live dry run, Nov 17 (public RPC, 09:06-12:40 UTC)
+
+Four launches, four paper trades at 0.002 ETH: +11.6%, -4.9%, +10.3%, -6.1% (mean +2.7%). The engine saw each trigger 1-4 blocks
+late. The first trade, recomputed from the chain's own swap logs, matches the engine exactly. The -6.1% one hit +11.1%, but a 0.5 ETH
+sell landed 7 blocks after the signal and before the paper sell (modeled at 8 blocks). A sell inside 6 blocks would have kept +11.1%.
+
+**Verdict:** the line is real and safe to trade, but small. At $50 a trade it is worth about $10-20 a day (about 8 trades a day at
++3-4%). The owner judged that not worth running. Not deployed.
+
 ## Risks
 
 - **The operator can change the line** (fee, launcher, price) at any time. The engine then simply stops arming.
