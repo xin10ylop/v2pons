@@ -1,0 +1,68 @@
+# The fee-0 line (Robinhood Chain), Nov 17
+
+A launch line where buying behind the crowd and selling into its pump has paid since Oct 12, with nothing seen that blocks or punishes an
+outside buyer. The engine for it is `src/fee0_engine.py` (RUNBOOK 4o). It is dry until the owner turns it live.
+
+## The line
+
+- **Pool:** a Uniswap v4 ETH/token pool with fee 0, tick spacing 60, no hook, and one fixed launch price
+  (sqrtP 2505036234966386302045715536678303).
+- **Launch:** a call `d27d1e00` to a launcher contract with code keccak `0xf554b29b…dceb4`. Each launcher is deployed fresh by its
+  own wallet a few transactions before the launch. Over 3 days that was 24 wallets for 27 launches, mostly new (median nonce 11), and
+  all 27 contracts had the same code: one operator rotating throwaway wallets (`opfee0.out`). The launch puts in about 5.2 ETH now
+  (12-32 ETH in October), and all of it buys the token in the launch transaction itself.
+- **The crowd:** 809 wallets buying through the Universal Router, 662 of them in 3 or more of the 27 pools. None of them appear in the
+  2.433 operator's 3.0/5.0 ETH lines or in operator A's lines. It is not those fleets.
+- **Its life:** the first crowd buy of 0.02 ETH or more lands at launch + 100-2160 blocks (median about 300-420). The price rises,
+  then the crowd sells out. The launch wallet sells back 0-8.9 ETH within 6000 blocks.
+- **No pulls:** no liquidity was pulled in any of the 968 launches since Oct 12 (`famhistory`). A round trip through the relay costs
+  0.00% (fee 0), and every buy and sell carries the token's address (`fee0shape.py`).
+- **Volume:** 0-69 launches a day (968 in 36 days). Recently 10-15 a day.
+
+## The trade and its exit
+
+Buy behind the first crowd buy of 0.02 ETH or more, then sell at +8%, at -5%, after 2000 blocks, or on a pull. All numbers below are
+at 0.02 ETH a trade, net of gas, with our buy landing 2 blocks late and our sell 3 blocks late (`exitrules.py`, `exitlag.py`).
+
+| window | trades | +8% / cap 2000 (no stop) | **+8% / -5% stop** | +8% / -10% stop |
+|---|---|---|---|---|
+| Oct 19-26 | 216 | -1.8% mean, 174 won | **+4.2%**, 140 won | +3.1% |
+| Nov 14-17 | 25 | +4.6%, 21 won | **+4.6%**, 17 won | +5.8% |
+
+**What the stop fixes:** without it, October's losers were mostly slow bleeds. The crowd cashed out over 1000-1900 blocks and the
+take-profit never came. In 26 of the 32 losers the single worst sell made only 2-4% of the fall, and the launch wallet made only 6 of
+the 32 (`dumpwho_oct19_26.out`). Nothing visible before the buy (launch size, trigger size or timing, early buyers) separates winners
+from losers. The fix is the exit, not a filter.
+
+**Latency** (stop -5%; the figures are blocks late for our buy / our sell):
+
+| | 2 / 3 | 5 / 5 | 10 / 10 | 20 / 20 | 50 / 20 |
+|---|---|---|---|---|---|
+| Oct 19-26 | +4.2% | +5.0% | +5.9% | +1.0% | -3.0% |
+| Nov 14-17 | +4.6% | +5.4% | +4.1% | +8.8% | +5.1% |
+
+Up to about 10 blocks (1 s) late is fine. At 20 the October edge is nearly gone, so polling the RPC's logs works if the poll loop stays
+fast.
+
+## The engine
+
+`src/fee0_engine.py`, run as the `flip-fee0` service with its own wallet and relay:
+
+- **Reading the chain:** it polls the PoolManager's Initialize, Swap and ModifyLiquidity logs, one RPC round trip per poll. Prices come
+  from each Swap event, so the crowd's sells are included.
+- **Checks before any buy:** the launch transaction's target must carry the launcher code, and an eth_call round trip of the stake
+  through the relay (state overrides: `contracts/RoundTripHarness.json`) must lose under 2%. This check repeats every 300 blocks, and a
+  buy needs one younger than 600 blocks.
+- **Limits:** one position at a time, 40 trades a day, a $10 daily stop. The engine halts itself if a sell fails twice or returns under
+  half of what the price said. A position left by a stop or a crash is sold at the next live start.
+- **Checked against the research:** the replay mode, over Nov 14-17 with landing 3 blocks late, booked +4.5% on 25 trades (17 won).
+  The research replay gave +4.6% (17 won). With one position at a time and landing 6 blocks late: +4.4%.
+- **Tests:** `tests/test_fee0_engine.py` (14 cases: arming, triggers, the three exits, the checks, live round trip, halts, recovery).
+
+## Risks
+
+- **The operator can change the line** (fee, launcher, price) at any time. The engine then simply stops arming.
+- **The crowd can stop.** Then there are no triggers, and so no trades.
+- **A slow week like Oct 19-26** without the stop lost money. The stop is what made it positive; a week of sharp crashes inside 3
+  blocks would beat it.
+- **Size:** 0.2-0.3 ETH a trade at most before our own buy eats the +8%.

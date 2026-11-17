@@ -1669,6 +1669,48 @@ first (the owner's fast path: 5 or more `would_fire` an hour, `would_sell` mostl
 0.002 ETH for 50 trades with mean +4% or better and pulled before our sell 5% or fewer (its halt file `HALTED.front.v3wave`); a pull
 before our sell in the first 10: stop and look.
 
+## 4o. The fee-0 line (Nov 17, research/hunt_oct26/REPORT_FEE0.md)
+
+A separate engine (`src/fee0_engine.py`, service `flip-fee0`) with its own settings (`/etc/flip/fee0.env`), wallet, relay, log
+(`/var/log/flip/fee0.jsonl`) and halt file (`/var/log/flip/FEE0_HALTED`). It touches nothing of flip-engine, flip-bnb or flip-base,
+and never uses flip-engine's wallet: each process keeps its own nonces. It reads the chain by polling the RPC's logs (no feed). It buys
+behind the crowd's first buy of 0.02 ETH or more in each launch of the line, and sells at +8%, at -5%, after 2000 blocks, or at once on a
+pull. Every pool is checked first: the launcher's code, then a simulated buy and sell of the stake through the relay. A pool that fails
+either check is never traded.
+
+1. On the box: `cd ~/v2pons && git pull`, then `/opt/flip-venv/bin/python3 tests/test_fee0_engine.py | tail -1`: it must print
+   `14 tests passed`.
+2. Install and dry run: `sudo bash deploy/fee0_setup.sh`. This writes `/etc/flip/fee0.env` (DRY_RUN=1) on the first run only, then
+   starts `flip-fee0`. If the box has its own RPC (an Alchemy URL in engine.env), put the same URL in fee0.env's `RPC_URL`: it is
+   faster than the public one and has a higher rate limit. Then watch:
+
+        sudo grep -E '"ev":"(armed|check|trigger|would_fire|exit|settled|skip|alarm|status)"' /var/log/flip/fee0.jsonl | tail -20 | cut -c1-260
+
+   Each launch shows `armed`, then a `check` with `launcher` ok, then a `check` with `exit` ok (a round trip of about -0.00%). When the
+   crowd buys, you see `trigger` and `would_fire`, then `exit` (take profit / stop loss / the cap) and `settled` with `ret`. In `trigger`,
+   `seen_late` is how many blocks after the crowd's buy the engine saw it: it should stay at 5 or fewer (the edge fades past about 10).
+   **Gate 1**: 10 or more `settled`, mean `ret` +3% or better, no `alarm`, `seen_late` mostly 5 or under.
+3. The wallet (once): `sudo /opt/flip-venv/bin/python3 deploy/new_wallet.py /etc/flip/fee0.env`. It prints only the address. Send about
+   $15 of ETH to it on Robinhood Chain (chain 4663).
+4. The relay (once): stop the engine first, then deploy it from the new wallet:
+
+        sudo systemctl stop flip-fee0
+        sudo FLIP_ENV=/etc/flip/fee0.env FLIP_SERVICE=flip-fee0 /opt/flip-venv/bin/python3 deploy/relay_deploy.py --write-env
+
+   It must print `matches the artifact`, `owner() == wallet ok` and `pm() ok`. If its simulated buy says no pool was found, that is
+   fine (that step looks for the old operator's pools).
+5. The stake: `sudo FLIP_ENV=/etc/flip/fee0.env FLIP_SERVICE=flip-fee0 /opt/flip-venv/bin/python3 deploy/relay_ops.py deposit 0.006`,
+   then the same command with `status`. That is three $5 stakes; leave about 0.002 ETH in the wallet for gas.
+6. **Gate 2, live at $5**: `sudo sed -i 's/^DRY_RUN=1/DRY_RUN=0/' /etc/flip/fee0.env && sudo systemctl start flip-fee0`. The start line
+   must show `dry_run` false, your `relay`, and `relay_eth` 0.006. Each trade then logs `fire`, `landed` (with `late`: how many blocks
+   after the crowd's buy ours went in), `exit`, `settled`. The first 20 trades must average +3% or better. The engine stops itself (it
+   writes `FEE0_HALTED`) if a sell fails twice or comes back with under half of what the pool's price said. If that happens, look at the
+   log before removing the file.
+7. Stop: `sudo systemctl stop flip-fee0`. A position open at that moment stays in the relay and is sold at the next live start. The
+   money: `relay_ops.py withdraw` then `payout`, with the same FLIP_ENV / FLIP_SERVICE in front.
+8. Stake steps: after 20 good trades, double `STAKE_ETH` (and the deposit). The line's pools take up to about 0.2-0.3 ETH a trade before
+   our own buy eats the take-profit; `STAKE_ETH` above 0.3 is refused.
+
 ## 5. Daily
 
 Everything in one screen (the engine's state, every launch it saw, every trade with its result and whether the pull came first, the
