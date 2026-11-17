@@ -7,11 +7,13 @@ import hlib as H
 import watchfee0 as W
 HOURS = float(sys.argv[1]) if len(sys.argv) > 1 else 24
 url = H.CH["rh"]["rpc"]; head = int(H.rpc(url, "eth_blockNumber", []), 16)
-lo = head - int(HOURS * 36000); hi = head - W.WIN - 2
+END_H = float(os.environ.get("END_HOURS", "0")); SQRTP = int(os.environ.get("SQRTP", "0")); TSF = os.environ.get("TS")
+lo = head - int((HOURS + END_H) * 36000); hi = head - int(END_H * 36000) - W.WIN - 2       # END_HOURS: the window ends this long ago
 pools = []
 for l in W.getlogs(lo, hi, [W.T_INIT4], W.PM):
     d = l["data"][2:]
-    if int(d[0:64], 16) == 0 and int(d[128 + 24:192], 16) == 0 and l["topics"][2] == "0x" + "0" * 64:
+    if (int(d[0:64], 16) == 0 and int(d[128 + 24:192], 16) == 0 and l["topics"][2] == "0x" + "0" * 64
+            and (not SQRTP or int(d[192:256], 16) == SQRTP) and (TSF is None or H.i256(d[64:128]) == int(TSF))):
         pools.append((l["topics"][1], int(l["blockNumber"], 16), l["transactionHash"]))
 print(f"last {HOURS:g} h (blocks {lo}..{hi}): {len(pools)} fee-0, no-hook, native pools", flush=True)
 txs = H.batch(url, [("eth_getTransactionByHash", [t]) for _, _, t in pools], size=50, workers=4, tries=8) if pools else []
