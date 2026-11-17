@@ -54,11 +54,12 @@ def ride(pid, bn):
         ev.append((int(s["blockNumber"], 16), int(s["logIndex"], 16), -a0, sp, L, "0x" + s["topics"][2][26:]))
     ev.sort()
     # the demand: first buy (native in, a0<0 -> -a0>0) of >= TRIG_ETH
-    trig = next((e for e in ev if e[2] >= TRIG_ETH * 1e18), None)
+    # never inside the launch block: a launcher's own buys there are part of its launch transaction (atomic, nobody can enter between them)
+    trig = next((e for e in ev if e[0] > bn and e[2] >= TRIG_ETH * 1e18), None)
     if not trig:
         return None
     entry_blk = trig[0] + 1
-    pre = [e for e in ev if (e[0], e[1]) <= (trig[0], trig[1])]
+    pre = [e for e in ev if e[0] < entry_blk]                         # our entry prices at the state after the trigger's whole block
     sp0, L0 = pre[-1][3], pre[-1][4]
     if not sp0 or not L0:
         return None
