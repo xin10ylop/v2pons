@@ -17,7 +17,8 @@ outside buyer. The engine for it is `src/fee0_engine.py` (RUNBOOK 4o). It is dry
   then the crowd sells out. The launch wallet sells back 0-8.9 ETH within 6000 blocks.
 - **No pulls:** no liquidity was pulled in any of the 968 launches since Oct 12 (`famhistory`). A round trip through the relay costs
   0.00% (fee 0), and every buy and sell carries the token's address (`fee0shape.py`).
-- **Volume:** 0-69 launches a day (968 in 36 days). Recently 10-15 a day.
+- **Volume:** 0-69 launches a day (968 in 36 days). It comes in bursts: Nov 9-17 had 15, 22, 3, 8, 0, 1, 2, 21 and 3 (75 in 8 days),
+  with gaps of up to 53 hours between launches. A quiet half day is normal and does not mean the line has stopped.
 
 ## The trade and its exit
 
