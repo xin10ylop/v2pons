@@ -1,0 +1,14 @@
+fee-0 family, last 3 days: 27 launches
+  launch senders: 24 distinct for 27 launches; reused: 3 (top [('0x2ec8fec74fe55bf3c13d26ba4f965711d9c201d1', 2), ('0xfb272b01dd73f185edc98a47f3f2897b7a58fdaf', 2), ('0xd677136b0264e7c64b9118231286a1ae685b1cc6', 2)])
+  their nonces now: median 11.0, max 45 (small = near single-use wallets)
+  launch values (ETH): [(5.2, 23), (3.5, 1), (4.0, 1), (4.2, 1), (0.0, 1)]
+  launch target created by its own sender in the few txs before the launch: 27/27
+  target contract code (sample of 27): [(('f554b29bdaba', 6502), 27)]
+  launch-block buys made through: [('0x204faca1764b154221e35c0d20abb3c525710498', 66)]
+  ETH the launcher sold back out of its own pool in 6,000 blocks (last 12 launches): [3.08, 0.418, 7.123, 3.747, 1.545, 8.909, 0.0, 1.016, 0.059, 0.907, 0.88, 0.0]
+  liquidity pulls within 2 h, by: {}
+
+  crowd: 809 Universal Router buyers, 662 in 3+ of the family's pools
+  2.433 op 3.0 ETH: 211 pools in 24 h, 67 UR buyers; shared with the fee-0 crowd: 0 (of the fee-0 family's 662 recurring wallets)
+  2.433 op 5.0 ETH: 184 pools in 24 h, 107 UR buyers; shared with the fee-0 crowd: 0 (of the fee-0 family's 662 recurring wallets)
+  op A 5.6 ETH tier: 18 pools in 24 h, 466 UR buyers; shared with the fee-0 crowd: 0 (of the fee-0 family's 662 recurring wallets)

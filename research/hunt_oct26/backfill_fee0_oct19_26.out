@@ -1,0 +1,439 @@
+last 168 h (blocks 91378998..97420996): 241 fee-0, no-hook, native pools
+launch targets: [('0x8a7c42b2', 12), ('0xc2f4f398', 1), ('0xccf39fc9', 1), ('0x20480967', 1), ('0x5c01435e', 1), ('0xacca5169', 1), ('0xc46e036e', 1), ('0xf8c4308e', 1)]
+  0xec2ed7612975 via 0xc2f4f398: demand 0.311 via 0x204faca1 at +286, exit +309 (take-profit), pull None -> +13.4%
+  0x740365fa2d42 via 0xccf39fc9: demand 0.383 via 0x204faca1 at +264, exit +2267 (hold), pull None -> -77.3%
+  0x0b3f4f4572a2 via 0x20480967: demand 0.241 via 0x204faca1 at +217, exit +259 (take-profit), pull None -> +2.7%
+  0xfbaa98badf45 via 0x5c01435e: demand 0.372 via 0x204faca1 at +167, exit +207 (take-profit), pull None -> +15.0%
+  0x51f8cf1cdc3b via 0xacca5169: demand 0.354 via 0x204faca1 at +467, exit +1806 (take-profit), pull None -> +15.5%
+  0x2e3366046fab via 0xc46e036e: demand 0.337 via 0x204faca1 at +547, exit +570 (take-profit), pull None -> +14.5%
+  0xe8902e3ecaf4 via 0xf8c4308e: demand 0.415 via 0x204faca1 at +244, exit +266 (take-profit), pull None -> +11.1%
+  0x6cf52bd52e27 via 0x6eb2bc7d: demand 0.377 via 0x204faca1 at +226, exit +268 (take-profit), pull None -> +13.6%
+  0xf4e221432336 via 0xb370a682: demand 0.380 via 0x204faca1 at +1049, exit +3052 (hold), pull None -> -55.2%
+  0x243ded9f72a9 via 0x8de93ac9: demand 0.329 via 0x204faca1 at +226, exit +248 (take-profit), pull None -> +12.5%
+  0xbe03ad93460e via 0x92513274: demand 0.339 via 0x204faca1 at +207, exit +229 (take-profit), pull None -> +10.2%
+  0x62176b2d4c18 via 0x8c903c65: demand 0.327 via 0x204faca1 at +254, exit +297 (take-profit), pull None -> +10.4%
+  0x53857b597e6d via 0x2f8c0a9b: demand 0.345 via 0x204faca1 at +626, exit +2629 (hold), pull None -> -48.3%
+  0xacec7255757f via 0x08cf2126: demand 0.305 via 0x204faca1 at +319, exit +599 (take-profit), pull None -> +14.4%
+  0xbb1cb559810a via 0xa3312e79: demand 0.340 via 0x204faca1 at +209, exit +252 (take-profit), pull None -> +14.1%
+  0xf5d4fc2c7879 via 0xb3980df0: demand 0.311 via 0x204faca1 at +147, exit +189 (take-profit), pull None -> +1.5%
+  0x193652bf4be6 via 0x3a71c388: demand 0.122 via 0x204faca1 at +179, exit +221 (take-profit), pull None -> +10.7%
+  0x5e7e7746c327 via 0x39002eaa: demand 0.329 via 0x204faca1 at +359, exit +439 (take-profit), pull None -> +10.6%
+  0xbc11a9eb2d69 via 0x99491cce: demand 0.345 via 0x204faca1 at +283, exit +305 (take-profit), pull None -> +11.4%
+  0xae17a58d0925 via 0xe5614b15: demand 0.367 via 0x204faca1 at +187, exit +209 (take-profit), pull None -> +9.0%
+  0x6c64b02e751d via 0x3cc6cd3a: demand 0.386 via 0x204faca1 at +211, exit +402 (take-profit), pull None -> +5.2%
+  0x8d5fb1efce06 via 0x40594012: demand 0.301 via 0x204faca1 at +208, exit +2211 (hold), pull None -> -72.8%
+  0xf393cbbc239c via 0x57a85f3a: demand 0.326 via 0x204faca1 at +274, exit +562 (take-profit), pull None -> +14.3%
+  0x7ef593f69115 via 0x42b57239: demand 0.307 via 0x204faca1 at +365, exit +586 (take-profit), pull None -> +9.2%
+  0x0225bd0ab506 via 0x7b4ab2c0: demand 0.369 via 0x204faca1 at +183, exit +226 (take-profit), pull None -> +12.6%
+  0x9a20850bc117 via 0xd4082329: demand 0.116 via 0x204faca1 at +207, exit +248 (take-profit), pull None -> +12.4%
+  0x357a0605aeb6 via 0x2f7d3535: demand 0.122 via 0x204faca1 at +163, exit +181 (take-profit), pull None -> +8.7%
+  0x1038685707a6 via 0xf310c6b6: demand 0.302 via 0x204faca1 at +231, exit +983 (take-profit), pull None -> +10.4%
+  0x01f1c31f44e8 via 0x540f74f1: demand 0.333 via 0x204faca1 at +239, exit +282 (take-profit), pull None -> -5.1%
+  0x3f7f24cefc8c via 0x0589b079: demand 0.120 via 0x204faca1 at +360, exit +2363 (hold), pull None -> -100.0%
+  0xed2691112b77 via 0x70be5138: demand 0.301 via 0x204faca1 at +255, exit +278 (take-profit), pull None -> +11.5%
+  0x7f5951dfa177 via 0x55d74a3f: demand 0.125 via 0x204faca1 at +152, exit +175 (take-profit), pull None -> +10.5%
+  0x47ab6c699888 via 0x3ff4700b: demand 0.111 via 0x204faca1 at +109, exit +117 (take-profit), pull None -> +8.6%
+  0xea3e09cfb113 via 0xeade37f0: demand 0.289 via 0x204faca1 at +208, exit +310 (take-profit), pull None -> -5.4%
+  0x22b4eed4dd1e via 0x452480e9: demand 0.054 via 0x204faca1 at +152, exit +2155 (hold), pull None -> -99.7%
+  0x06d65f0dc2b7 via 0x0df07b71: demand 0.330 via 0x204faca1 at +215, exit +237 (take-profit), pull None -> +10.6%
+  0xe03745345b79 via 0x1ec06b33: demand 0.316 via 0x204faca1 at +173, exit +196 (take-profit), pull None -> +9.0%
+  0x335c07559ef1 via 0xf4ac11ed: demand 0.355 via 0x204faca1 at +284, exit +306 (take-profit), pull None -> +9.4%
+  0xa66da5fcb4ec via 0xe56367ee: demand 0.327 via 0x204faca1 at +260, exit +302 (take-profit), pull None -> +12.2%
+  0x030b655d73cf via 0x859a3e4d: demand 0.364 via 0x204faca1 at +326, exit +388 (take-profit), pull None -> +9.8%
+  0x15bb111fe5ee via 0xaed17677: demand 0.099 via 0x204faca1 at +119, exit +218 (take-profit), pull None -> +15.5%
+  0x1c7690df41ab via 0xf1087df0: demand 0.135 via 0x204faca1 at +145, exit +157 (take-profit), pull None -> +8.7%
+  0xda75d014a830 via 0x0ea93bd6: demand 0.107 via 0x204faca1 at +183, exit +206 (take-profit), pull None -> +9.8%
+  0x889058e96051 via 0xd549f044: demand 0.124 via 0x204faca1 at +253, exit +395 (take-profit), pull None -> +8.6%
+  0x9d52b0f9d1ca via 0xa347e858: demand 0.342 via 0x204faca1 at +217, exit +260 (take-profit), pull None -> +11.6%
+  0x77476933eeb3 via 0xcee7cce4: demand 0.420 via 0x204faca1 at +319, exit +618 (take-profit), pull None -> +12.7%
+  0x1c070a3cd22c via 0x4496e8e0: demand 0.248 via 0x204faca1 at +566, exit +992 (take-profit), pull None -> +11.8%
+  0x16582dcae200 via 0x0f323a9f: demand 0.054 via 0x204faca1 at +417, exit +429 (take-profit), pull None -> +8.6%
+  0xd8b0411914b7 via 0x2a991247: demand 0.069 via 0x204faca1 at +248, exit +255 (take-profit), pull None -> +10.7%
+  0xe835a91ba042 via 0x2e7227e1: demand 0.205 via 0x204faca1 at +431, exit +439 (take-profit), pull None -> +12.2%
+  0x5c0e9cb648eb via 0xf9d012a5: demand 0.203 via 0x204faca1 at +219, exit +244 (take-profit), pull None -> +13.5%
+  0xf938d0ad16a1 via 0x7abe0579: demand 0.331 via 0x204faca1 at +383, exit +426 (take-profit), pull None -> +8.1%
+  0xcdec56b52706 via 0x184068d7: demand 0.410 via 0x204faca1 at +373, exit +919 (take-profit), pull None -> +11.7%
+  0x5238bf817e2e via 0xcef97cab: demand 0.461 via 0x204faca1 at +242, exit +285 (take-profit), pull None -> +9.2%
+  0x615f964236c9 via 0x9c31e189: demand 0.328 via 0x204faca1 at +273, exit +1962 (take-profit), pull None -> +8.7%
+  0xe7e5f15a9764 via 0x5091cb8f: demand 0.272 via 0x204faca1 at +274, exit +2277 (hold), pull None -> -23.2%
+  0x462958d20cda via 0xc07da674: demand 0.176 via 0x204faca1 at +239, exit +246 (take-profit), pull None -> +26.0%
+  0x0ceb295e3ef1 via 0xb9a20a75: demand 0.224 via 0x204faca1 at +609, exit +2612 (hold), pull None -> -11.7%
+  0x3c44fa3361dc via 0x77992937: demand 0.263 via 0x204faca1 at +371, exit +393 (take-profit), pull None -> +10.1%
+  0x0e5435747a7d via 0x3c912ab2: demand 0.300 via 0x204faca1 at +317, exit +480 (take-profit), pull None -> +12.8%
+  0x91eb9af61f00 via 0xd1576f34: demand 0.425 via 0x204faca1 at +239, exit +263 (take-profit), pull None -> +10.2%
+  0xa261df5f06fa via 0xa9e6355e: demand 0.357 via 0x204faca1 at +222, exit +2225 (hold), pull None -> -63.9%
+  0x3c0455273efd via 0x5d477d3d: demand 0.321 via 0x204faca1 at +429, exit +2432 (hold), pull None -> -96.3%
+  0x6b25035bdc27 via 0x03781977: demand 0.405 via 0x204faca1 at +208, exit +230 (take-profit), pull None -> +9.9%
+  0xdf0902bdfeec via 0x0433987e: demand 0.384 via 0x204faca1 at +256, exit +279 (take-profit), pull None -> +8.8%
+  0x23d432457d3a via 0xb2772222: demand 0.233 via 0x204faca1 at +181, exit +576 (take-profit), pull None -> +11.1%
+  0x083f604d1dff via 0xa24956c9: demand 0.429 via 0x204faca1 at +503, exit +546 (take-profit), pull None -> +16.1%
+  0xe6500ecb800f via 0x79943297: demand 0.411 via 0x204faca1 at +263, exit +286 (take-profit), pull None -> +9.8%
+  0xc8a3a0edb71f via 0x0a55bcd0: demand 0.402 via 0x204faca1 at +254, exit +2257 (hold), pull None -> -45.2%
+  0x54665809ef83 via 0xa2a2f7e6: demand 0.083 via 0x204faca1 at +146, exit +165 (take-profit), pull None -> +19.3%
+  0x6b8f5aaacc61 via 0x5bf2c6ee: demand 0.082 via 0x204faca1 at +168, exit +176 (take-profit), pull None -> +19.8%
+  0x733cb572898a via 0x59f986d4: demand 0.111 via 0x204faca1 at +149, exit +162 (take-profit), pull None -> +38.2%
+  0x3dc0ecfd8d7f via 0xaa3280d6: demand 0.080 via 0x204faca1 at +112, exit +120 (take-profit), pull None -> +9.9%
+  0xb38fd7ac1cfc via 0xde43db37: demand 0.083 via 0x204faca1 at +1639, exit +1651 (take-profit), pull None -> +20.3%
+  0x3d6295eff86f via 0x65696b42: demand 0.424 via 0x204faca1 at +364, exit +2367 (hold), pull None -> -84.1%
+  0xce9c61227c46 via 0x37c656a8: demand 0.118 via 0x204faca1 at +160, exit +182 (take-profit), pull None -> +14.2%
+  0x4ba123b60308 via 0x23058738: demand 0.300 via 0x204faca1 at +531, exit +574 (take-profit), pull None -> +16.5%
+  0x79eb60383fa8 via 0xdbda303d: demand 0.085 via 0x204faca1 at +160, exit +173 (take-profit), pull None -> +26.4%
+  0xf552f08f0e69 via 0x5fc8348c: demand 0.379 via 0x204faca1 at +240, exit +2243 (hold), pull None -> -80.1%
+  0xd2a509aed5c1 via 0x72271c9b: demand 0.408 via 0x204faca1 at +295, exit +318 (take-profit), pull None -> +8.6%
+  0xc15abb382803 via 0x478b2260: demand 0.112 via 0x204faca1 at +276, exit +298 (take-profit), pull None -> +10.8%
+  0xbbbedaa29147 via 0x08385362: demand 0.100 via 0x204faca1 at +119, exit +132 (take-profit), pull None -> +11.6%
+  0xcd79bed28879 via 0x1ab42d6d: demand 0.103 via 0x204faca1 at +102, exit +123 (take-profit), pull None -> +11.3%
+  0xc6648c46b54b via 0xe4dbd939: demand 0.485 via 0x204faca1 at +305, exit +2308 (hold), pull None -> -99.7%
+  0xbb68bbcc5eda via 0x230015ee: demand 0.416 via 0x204faca1 at +332, exit +613 (take-profit), pull None -> +9.9%
+  0x079bc7ab0e45 via 0xa4f8ff48: demand 0.407 via 0x204faca1 at +343, exit +388 (take-profit), pull None -> +11.0%
+  0x1daced21d07a via 0x404ecb14: demand 0.468 via 0x204faca1 at +331, exit +2334 (hold), pull None -> -99.8%
+  0xa4dd8e3dbf37 via 0xb8ce3707: demand 0.084 via 0x204faca1 at +162, exit +180 (take-profit), pull None -> +13.2%
+  0xb5d2c2e27b9e via 0xe915526a: demand 0.367 via 0x204faca1 at +326, exit +389 (take-profit), pull None -> +8.3%
+  0xf33235bb9427 via 0xfad29644: demand 0.343 via 0x204faca1 at +221, exit +1026 (take-profit), pull None -> +8.3%
+  0x3584a98275f7 via 0x94741b3e: demand 0.334 via 0x204faca1 at +520, exit +2523 (hold), pull None -> -99.8%
+  0x35787bedc2d6 via 0x1ceade60: demand 0.309 via 0x204faca1 at +337, exit +1016 (take-profit), pull None -> +8.3%
+  0xe1559213b8b1 via 0x0c1e68f3: demand 0.338 via 0x204faca1 at +348, exit +371 (take-profit), pull None -> +8.1%
+  0x6abfafa93cac via 0x498c07eb: demand 0.364 via 0x204faca1 at +408, exit +1320 (take-profit), pull None -> +10.0%
+  0xbea3114b2ed8 via 0xeb54893b: demand 0.340 via 0x204faca1 at +313, exit +356 (take-profit), pull None -> +8.7%
+  0x0a00d75046b7 via 0x87c2638e: demand 0.390 via 0x204faca1 at +1270, exit +1655 (take-profit), pull None -> +2.9%
+  0x0260a6833046 via 0x68ad504f: demand 0.312 via 0x204faca1 at +232, exit +254 (take-profit), pull None -> +8.3%
+  0x1840bee2c178 via 0x0e2c912b: demand 0.356 via 0x204faca1 at +434, exit +475 (take-profit), pull None -> +9.4%
+  0x1be4de2814ac via 0x86d6dae7: demand 0.350 via 0x204faca1 at +198, exit +240 (take-profit), pull None -> -4.7%
+  0x1c4d61c61e73 via 0x1404781a: demand 0.396 via 0x204faca1 at +200, exit +222 (take-profit), pull None -> +8.1%
+  0x39fcc167e9d9 via 0xfd21403b: demand 0.388 via 0x204faca1 at +213, exit +256 (take-profit), pull None -> -1.9%
+  0x7941b6a42bf3 via 0x901ea3bb: demand 0.437 via 0x204faca1 at +204, exit +323 (take-profit), pull None -> +16.5%
+  0x720cdb8156ba via 0x58d09551: demand 0.306 via 0x204faca1 at +176, exit +686 (take-profit), pull None -> +9.4%
+  0xadbbbb77f811 via 0x462535ce: demand 0.387 via 0x204faca1 at +198, exit +222 (take-profit), pull None -> +9.2%
+  0x779939164c6f via 0xf1012da7: demand 0.428 via 0x204faca1 at +195, exit +234 (take-profit), pull None -> +11.4%
+  0x1c0568c6d9db via 0x17de177e: demand 0.386 via 0x204faca1 at +229, exit +251 (take-profit), pull None -> +9.0%
+  0xc1ee42c2da7e via 0xaeedfee0: demand 0.366 via 0x204faca1 at +222, exit +244 (take-profit), pull None -> +10.6%
+  0x6440f5a77821 via 0x5ff69503: demand 0.428 via 0x204faca1 at +214, exit +256 (take-profit), pull None -> +13.8%
+  0x553374a8bfa6 via 0xd1c48dc7: demand 0.127 via 0x204faca1 at +291, exit +299 (take-profit), pull None -> +12.4%
+  0xd36605d7b1a2 via 0x7e7a4b74: demand 0.360 via 0x204faca1 at +258, exit +2261 (hold), pull None -> -66.3%
+  0xc61548eb07ae via 0xa634e364: demand 0.465 via 0x204faca1 at +522, exit +544 (take-profit), pull None -> +8.9%
+  0x291e3a9a1f92 via 0xae388e02: demand 0.390 via 0x204faca1 at +456, exit +498 (take-profit), pull None -> +15.3%
+  0x588075f3529f via 0x015bcd6a: demand 0.349 via 0x204faca1 at +2389, exit +4392 (hold), pull None -> -57.2%
+  0x2e2c184c5c39 via 0xbfba10ad: demand 0.154 via 0x204faca1 at +658, exit +2661 (hold), pull None -> -100.0%
+  0x990e5664b697 via 0x32de5b8d: demand 0.124 via 0x204faca1 at +455, exit +502 (take-profit), pull None -> +9.6%
+  0xf47bc6230655 via 0x080b4117: demand 0.084 via 0x204faca1 at +379, exit +448 (take-profit), pull None -> +13.5%
+  0x6289ea27e8a5 via 0x24ae4ab3: demand 0.313 via 0x204faca1 at +889, exit +2892 (hold), pull None -> -58.3%
+  0xa23c44e715b8 via 0x96c3e11e: demand 0.255 via 0x204faca1 at +415, exit +461 (take-profit), pull None -> +8.2%
+  0xd7ac1270b223 via 0x593331c6: demand 0.062 via 0x204faca1 at +331, exit +400 (take-profit), pull None -> +10.2%
+  0xf0f1b0addbf4 via 0x1966b086: demand 0.113 via 0x204faca1 at +321, exit +457 (take-profit), pull None -> +9.8%
+  0x0776a15e8c59 via 0x9e0c44bd: demand 0.417 via 0x204faca1 at +357, exit +420 (take-profit), pull None -> +14.9%
+  0x41d7931cab2b via 0xe965089e: demand 0.339 via 0x204faca1 at +288, exit +350 (take-profit), pull None -> +12.3%
+  0xed202bda8611 via 0xec436a16: demand 0.381 via 0x204faca1 at +1562, exit +3565 (hold), pull None -> -99.7%
+  0xcf5005bf8d55 via 0xf80dda9a: demand 0.313 via 0x204faca1 at +408, exit +450 (take-profit), pull None -> +9.0%
+  0x46caa5d9a8ef via 0x33a4d76e: demand 0.369 via 0x204faca1 at +217, exit +240 (take-profit), pull None -> +9.0%
+  0x71c658463746 via 0xc83fb8bd: demand 0.327 via 0x204faca1 at +343, exit +366 (take-profit), pull None -> +8.7%
+  0x4675982abe05 via 0x21d3f560: demand 0.312 via 0x204faca1 at +307, exit +477 (take-profit), pull None -> +10.2%
+  0x622531c31bd0 via 0x5274a9a8: demand 0.832 via 0x204faca1 at +233, exit +1297 (take-profit), pull None -> +17.0%
+  0xa4094b3a2ad0 via 0xa6149449: demand 0.165 via 0x204faca1 at +318, exit +326 (take-profit), pull None -> +23.4%
+  0x483aacc50584 via 0x240ca3fe: demand 0.161 via 0x204faca1 at +155, exit +163 (take-profit), pull None -> +13.0%
+  0x8131fa66327c via 0x49a802a9: demand 0.133 via 0x204faca1 at +257, exit +268 (take-profit), pull 5303 -> +32.8%
+  0x16e09e6cfd23 via 0x8543b1a9: demand 0.196 via 0x204faca1 at +368, exit +379 (take-profit), pull None -> +14.1%
+  0x0add48a6e9d5 via 0x53d43bf3: demand 0.125 via 0x204faca1 at +209, exit +216 (take-profit), pull None -> +10.3%
+  0x022f6ebccc59 via 0x7e2026f2: demand 0.301 via 0x204faca1 at +339, exit +361 (take-profit), pull None -> +9.4%
+  0xa67711a6a539 via 0xa2f85c6b: demand 0.244 via 0x204faca1 at +720, exit +766 (take-profit), pull None -> +15.3%
+  0x250b3f85eb2d via 0x6dae7975: demand 0.327 via 0x204faca1 at +236, exit +282 (take-profit), pull None -> +14.9%
+  0x53b79bdd4232 via 0xff1bf67e: demand 0.443 via 0x204faca1 at +283, exit +326 (take-profit), pull None -> +9.5%
+  0x573b236834f3 via 0xab929eed: demand 0.387 via 0x204faca1 at +341, exit +1636 (take-profit), pull None -> +9.3%
+  0xf5ad19af9990 via 0x368e76f4: demand 0.349 via 0x204faca1 at +373, exit +415 (take-profit), pull None -> +10.3%
+  0x315b51cd9405 via 0x6823774a: demand 0.333 via 0x204faca1 at +298, exit +938 (take-profit), pull None -> +9.4%
+  0x7c68347f745b via 0x132906e5: demand 0.363 via 0x204faca1 at +277, exit +340 (take-profit), pull None -> +12.8%
+  0x5a172cdcd99c via 0x06e95fb5: demand 0.327 via 0x204faca1 at +295, exit +318 (take-profit), pull None -> +13.6%
+  0x8faaae4841a7 via 0x19d0d87b: demand 0.324 via 0x204faca1 at +191, exit +2194 (hold), pull None -> -44.4%
+  0x412e6af495e0 via 0x2617fcc9: demand 0.380 via 0x204faca1 at +799, exit +832 (take-profit), pull None -> +12.2%
+  0xccc1bc4aa382 via 0x6603e099: demand 0.370 via 0x204faca1 at +170, exit +1581 (take-profit), pull None -> +8.5%
+  0x4f6d56bd37cc via 0x78284c73: demand 0.417 via 0x204faca1 at +220, exit +265 (take-profit), pull None -> +2.0%
+  0x737634c7116c via 0x35135aa3: demand 0.392 via 0x204faca1 at +251, exit +303 (take-profit), pull None -> +8.2%
+  0x3a4867c3398e via 0x90bceea6: demand 0.369 via 0x204faca1 at +413, exit +456 (take-profit), pull None -> +0.1%
+  0xbd0e61abcbe9 via 0xf3c8259c: demand 0.338 via 0x204faca1 at +294, exit +336 (take-profit), pull None -> +10.8%
+  0x95bbf51f0d06 via 0x76c303bf: demand 0.095 via 0x204faca1 at +229, exit +243 (take-profit), pull None -> +24.7%
+  0xc4abec738c48 via 0x91aa29dd: demand 0.382 via 0x88767899 at +291, exit +2294 (hold), pull None -> -61.5%
+  0x5b9714caad96 via 0x3aac04ee: demand 0.314 via 0x88767899 at +283, exit +306 (take-profit), pull None -> +9.6%
+  0x6b5c6d9a20c3 via 0x572fbd85: demand 0.386 via 0x88767899 at +341, exit +353 (take-profit), pull None -> +12.1%
+  0x6e75fe46242e via 0x2ee9114f: demand 0.374 via 0x88767899 at +362, exit +399 (take-profit), pull None -> +15.3%
+  0xf9bc7ee5c933 via 0x0cbadedc: demand 0.418 via 0x88767899 at +241, exit +284 (take-profit), pull None -> +11.5%
+  0x9251aee064db via 0x88d63096: demand 0.439 via 0x88767899 at +398, exit +421 (take-profit), pull None -> +10.4%
+  0xdecd796f6359 via 0x84a0e7f7: demand 0.321 via 0x88767899 at +332, exit +475 (take-profit), pull None -> +8.1%
+  0xeb72a354098e via 0xc4c61c24: demand 0.401 via 0x88767899 at +336, exit +378 (take-profit), pull None -> +15.7%
+  0x6c3d4c54af0d via 0x3aa8ca3d: demand 0.425 via 0x88767899 at +268, exit +310 (take-profit), pull None -> +14.6%
+  0xde74a1b3e41c via 0x8ce530c8: demand 0.386 via 0x88767899 at +405, exit +428 (take-profit), pull None -> -4.9%
+  0x4e1bdc3e8c3b via 0xb5e83701: demand 0.322 via 0x88767899 at +1451, exit +1613 (take-profit), pull None -> +13.1%
+  0x4b9506753e8c via 0xecba8412: demand 0.377 via 0x88767899 at +339, exit +2342 (hold), pull None -> -99.8%
+  0xcdab3082de7b via 0xe653deff: demand 0.342 via 0x88767899 at +262, exit +403 (take-profit), pull None -> +10.0%
+  0x48651fef31f7 via 0xaf8ab16c: demand 0.357 via 0x88767899 at +489, exit +707 (take-profit), pull None -> +11.5%
+  0xbb8258a8936d via 0xc9c30e60: demand 0.332 via 0x88767899 at +227, exit +289 (take-profit), pull None -> +8.1%
+  0x70b360a584b1 via 0x210e4c66: demand 0.314 via 0x88767899 at +246, exit +268 (take-profit), pull None -> +11.5%
+  0xa1a74a29ce3b via 0x32735c12: demand 0.302 via 0x88767899 at +405, exit +2408 (hold), pull None -> -66.2%
+  0xbc1132627307 via 0x9a72a853: demand 0.131 via 0x88767899 at +433, exit +444 (take-profit), pull None -> +15.6%
+  0xff9d2a617191 via 0x67b67c40: demand 0.325 via 0x88767899 at +344, exit +385 (take-profit), pull None -> +8.9%
+  0x6806f4432a19 via 0xee41a1d6: demand 0.385 via 0x88767899 at +267, exit +310 (take-profit), pull None -> +8.2%
+  0xeaef7142b700 via 0xc05b9c0a: demand 0.348 via 0x88767899 at +441, exit +463 (take-profit), pull None -> +18.5%
+  0x8ee8730297e2 via 0xc244b666: demand 0.469 via 0x88767899 at +548, exit +1656 (take-profit), pull None -> +8.0%
+  0x53288c3b733e via 0xf9336f9a: demand 0.426 via 0x88767899 at +225, exit +285 (take-profit), pull None -> +13.5%
+  0xbb9168c92cc4 via 0x789bc861: demand 0.334 via 0x88767899 at +688, exit +720 (take-profit), pull None -> +57.4%
+  0x8ea330834334 via 0xa2644097: demand 0.332 via 0x88767899 at +316, exit +467 (take-profit), pull None -> +11.9%
+  0x4443bf1cc215 via 0x9a9e340a: demand 0.390 via 0x88767899 at +315, exit +359 (take-profit), pull None -> +9.3%
+  0x0e7f4740618d via 0xd2460abf: demand 0.431 via 0x88767899 at +413, exit +2416 (hold), pull None -> -2.0%
+  0x5ea90d4d5551 via 0x5cd190ff: demand 0.120 via 0x88767899 at +350, exit +363 (take-profit), pull None -> +11.2%
+  0x7c839117a0f9 via 0xbb53efc3: demand 0.135 via 0x88767899 at +167, exit +180 (take-profit), pull None -> +17.2%
+  0x3980c26dbcd9 via 0x235047a4: demand 0.318 via 0x88767899 at +374, exit +1953 (take-profit), pull None -> +9.6%
+  0x00375699ba3c via 0xdab9c729: demand 0.155 via 0x204faca1 at +294, exit +344 (take-profit), pull None -> +8.8%
+  0x7f70d379e98c via 0xe1a30389: demand 0.224 via 0x88767899 at +592, exit +654 (take-profit), pull None -> +10.9%
+  0x23e2c2aa01ef via 0xb07fe890: demand 0.204 via 0x88767899 at +1579, exit +1642 (take-profit), pull None -> +8.2%
+  0x2adf4c043e98 via 0xa283f085: demand 0.111 via 0x88767899 at +409, exit +422 (take-profit), pull None -> +18.0%
+  0x4aa0a4fed330 via 0x1ba987e5: demand 0.219 via 0x88767899 at +301, exit +2304 (hold), pull None -> -99.8%
+  0x80c766b46877 via 0xa56681ab: demand 0.135 via 0x88767899 at +222, exit +245 (take-profit), pull None -> -6.8%
+  0x9e5075953bf7 via 0x7261a2f9: demand 0.217 via 0x88767899 at +233, exit +2236 (hold), pull None -> -99.8%
+  0xae1efae74d56 via 0x26a87ed6: demand 0.238 via 0x88767899 at +253, exit +326 (take-profit), pull None -> -5.7%
+  0x79a7553513dd via 0x1e0b4ee9: demand 0.216 via 0x88767899 at +354, exit +2357 (hold), pull None -> -99.9%
+  0x945e73903b81 via 0xb0099654: demand 0.233 via 0x88767899 at +259, exit +271 (take-profit), pull None -> -4.0%
+  0x98def7a59981 via 0x6be3e113: demand 0.127 via 0x88767899 at +233, exit +240 (take-profit), pull None -> +9.0%
+  0x3029682c2b21 via 0xaf8e79c5: demand 0.173 via 0x88767899 at +182, exit +191 (take-profit), pull None -> +14.3%
+  0xd8660bd0a13d via 0xe8870779: demand 0.218 via 0x88767899 at +205, exit +218 (take-profit), pull None -> +16.0%
+  0xe146582fe83a via 0xefec0081: demand 0.183 via 0x88767899 at +307, exit +2204 (take-profit), pull None -> +8.9%
+  0x41a10707bc56 via 0x81ac2194: demand 0.454 via 0x88767899 at +377, exit +2380 (hold), pull None -> -57.4%
+  0xd5465f5c900e via 0x2469e141: demand 0.370 via 0x88767899 at +368, exit +2371 (hold), pull None -> -56.4%
+  0x92ccefa03667 via 0x02266c3f: demand 0.370 via 0x88767899 at +219, exit +2222 (hold), pull None -> -68.2%
+  0xc930d234a8ba via 0xce442754: demand 0.332 via 0x88767899 at +238, exit +279 (take-profit), pull None -> +12.4%
+  0x893a9fcc1a73 via 0x66a108de: demand 0.384 via 0x88767899 at +268, exit +2271 (hold), pull None -> -92.3%
+  0x275ac2f2b67b via 0x9443f848: demand 0.301 via 0x88767899 at +259, exit +2262 (hold), pull None -> -77.4%
+  0x82bef75b13c9 via 0xfc2e39d0: demand 0.155 via 0x88767899 at +500, exit +509 (take-profit), pull None -> +35.1%
+  0xdbe3740e6d75 via 0x530d0332: demand 0.224 via 0x88767899 at +257, exit +265 (take-profit), pull None -> +4.8%
+  0xe0e57e3838b9 via 0xcf3ce339: demand 0.169 via 0x88767899 at +223, exit +231 (take-profit), pull None -> +16.4%
+  0x1999f9fedd7c via 0x45017229: demand 0.160 via 0x88767899 at +252, exit +2255 (hold), pull None -> -98.1%
+  0xb8f93375b4d7 via 0x5135b94e: demand 0.143 via 0x88767899 at +236, exit +339 (take-profit), pull None -> +8.2%
+  0x5b03cf513559 via 0x805dec2d: demand 0.104 via 0x88767899 at +252, exit +335 (take-profit), pull None -> +13.5%
+  0xa39f32af911f via 0xac85f1f9: demand 0.151 via 0x88767899 at +320, exit +327 (take-profit), pull None -> +13.9%
+  0xa5a92327ef9b via 0x53f65c1c: demand 0.246 via 0x88767899 at +351, exit +383 (take-profit), pull None -> +13.3%
+  0xaff148c4c878 via 0x3d819e6d: demand 0.163 via 0x88767899 at +323, exit +336 (take-profit), pull None -> +15.7%
+  0x6702bf40fb57 via 0x73bc1efd: demand 0.119 via 0x88767899 at +217, exit +239 (take-profit), pull None -> +13.9%
+  0xa3427cdf4892 via 0x55ca6762: demand 0.121 via 0x88767899 at +727, exit +744 (take-profit), pull None -> +15.1%
+  0xa8f01651add1 via 0xa0b2493c: demand 0.105 via 0x88767899 at +1541, exit +1549 (take-profit), pull None -> +10.0%
+  0x5fe3c74d2744 via 0x84e5c5d6: demand 0.120 via 0x88767899 at +1107, exit +1115 (take-profit), pull None -> +8.9%
+  0x3351219a1cae via 0x42ce67d4: demand 0.178 via 0x88767899 at +2159, exit +2193 (take-profit), pull None -> +11.3%
+  0xce19836c715b via 0x986c4322: demand 0.184 via 0x88767899 at +461, exit +484 (take-profit), pull None -> +10.3%
+  0xe93c430aaf8e via 0xf5cea944: demand 0.257 via 0x88767899 at +602, exit +664 (take-profit), pull None -> +17.3%
+  0xcdc2d31b847a via 0x571bf688: demand 0.228 via 0x88767899 at +661, exit +679 (take-profit), pull None -> +8.3%
+
+pools with no demand buy >= 0.02 ETH: 24
+scored rides: 217; mean -2.2%, median +9.9%, won 174/217, take-profit 182, pulled first 0, held to cap 35
+  launch target 0xc2f4f398: 1 rides, mean +13.4%, won 1/1
+  launch target 0xccf39fc9: 1 rides, mean -77.3%, won 0/1
+  launch target 0x20480967: 1 rides, mean +2.7%, won 1/1
+  launch target 0x5c01435e: 1 rides, mean +15.0%, won 1/1
+  launch target 0xacca5169: 1 rides, mean +15.5%, won 1/1
+  launch target 0xc46e036e: 1 rides, mean +14.5%, won 1/1
+  launch target 0xf8c4308e: 1 rides, mean +11.1%, won 1/1
+  launch target 0x6eb2bc7d: 1 rides, mean +13.6%, won 1/1
+  launch target 0xb370a682: 1 rides, mean -55.2%, won 0/1
+  launch target 0x8de93ac9: 1 rides, mean +12.5%, won 1/1
+  launch target 0x92513274: 1 rides, mean +10.2%, won 1/1
+  launch target 0x8c903c65: 1 rides, mean +10.4%, won 1/1
+  launch target 0x2f8c0a9b: 1 rides, mean -48.3%, won 0/1
+  launch target 0x08cf2126: 1 rides, mean +14.4%, won 1/1
+  launch target 0xa3312e79: 1 rides, mean +14.1%, won 1/1
+  launch target 0xb3980df0: 1 rides, mean +1.5%, won 1/1
+  launch target 0x3a71c388: 1 rides, mean +10.7%, won 1/1
+  launch target 0x39002eaa: 1 rides, mean +10.6%, won 1/1
+  launch target 0x99491cce: 1 rides, mean +11.4%, won 1/1
+  launch target 0xe5614b15: 1 rides, mean +9.0%, won 1/1
+  launch target 0x3cc6cd3a: 1 rides, mean +5.2%, won 1/1
+  launch target 0x40594012: 1 rides, mean -72.8%, won 0/1
+  launch target 0x57a85f3a: 1 rides, mean +14.3%, won 1/1
+  launch target 0x42b57239: 1 rides, mean +9.2%, won 1/1
+  launch target 0x7b4ab2c0: 1 rides, mean +12.6%, won 1/1
+  launch target 0xd4082329: 1 rides, mean +12.4%, won 1/1
+  launch target 0x2f7d3535: 1 rides, mean +8.7%, won 1/1
+  launch target 0xf310c6b6: 1 rides, mean +10.4%, won 1/1
+  launch target 0x540f74f1: 1 rides, mean -5.1%, won 0/1
+  launch target 0x0589b079: 1 rides, mean -100.0%, won 0/1
+  launch target 0x70be5138: 1 rides, mean +11.5%, won 1/1
+  launch target 0x55d74a3f: 1 rides, mean +10.5%, won 1/1
+  launch target 0x3ff4700b: 1 rides, mean +8.6%, won 1/1
+  launch target 0xeade37f0: 1 rides, mean -5.4%, won 0/1
+  launch target 0x452480e9: 1 rides, mean -99.7%, won 0/1
+  launch target 0x0df07b71: 1 rides, mean +10.6%, won 1/1
+  launch target 0x1ec06b33: 1 rides, mean +9.0%, won 1/1
+  launch target 0xf4ac11ed: 1 rides, mean +9.4%, won 1/1
+  launch target 0xe56367ee: 1 rides, mean +12.2%, won 1/1
+  launch target 0x859a3e4d: 1 rides, mean +9.8%, won 1/1
+  launch target 0xaed17677: 1 rides, mean +15.5%, won 1/1
+  launch target 0xf1087df0: 1 rides, mean +8.7%, won 1/1
+  launch target 0x0ea93bd6: 1 rides, mean +9.8%, won 1/1
+  launch target 0xd549f044: 1 rides, mean +8.6%, won 1/1
+  launch target 0xa347e858: 1 rides, mean +11.6%, won 1/1
+  launch target 0xcee7cce4: 1 rides, mean +12.7%, won 1/1
+  launch target 0x4496e8e0: 1 rides, mean +11.8%, won 1/1
+  launch target 0x0f323a9f: 1 rides, mean +8.6%, won 1/1
+  launch target 0x2a991247: 1 rides, mean +10.7%, won 1/1
+  launch target 0x2e7227e1: 1 rides, mean +12.2%, won 1/1
+  launch target 0xf9d012a5: 1 rides, mean +13.5%, won 1/1
+  launch target 0x7abe0579: 1 rides, mean +8.1%, won 1/1
+  launch target 0x184068d7: 1 rides, mean +11.7%, won 1/1
+  launch target 0xcef97cab: 1 rides, mean +9.2%, won 1/1
+  launch target 0x9c31e189: 1 rides, mean +8.7%, won 1/1
+  launch target 0x5091cb8f: 1 rides, mean -23.2%, won 0/1
+  launch target 0xc07da674: 1 rides, mean +26.0%, won 1/1
+  launch target 0xb9a20a75: 1 rides, mean -11.7%, won 0/1
+  launch target 0x77992937: 1 rides, mean +10.1%, won 1/1
+  launch target 0x3c912ab2: 1 rides, mean +12.8%, won 1/1
+  launch target 0xd1576f34: 1 rides, mean +10.2%, won 1/1
+  launch target 0xa9e6355e: 1 rides, mean -63.9%, won 0/1
+  launch target 0x5d477d3d: 1 rides, mean -96.3%, won 0/1
+  launch target 0x03781977: 1 rides, mean +9.9%, won 1/1
+  launch target 0x0433987e: 1 rides, mean +8.8%, won 1/1
+  launch target 0xb2772222: 1 rides, mean +11.1%, won 1/1
+  launch target 0xa24956c9: 1 rides, mean +16.1%, won 1/1
+  launch target 0x79943297: 1 rides, mean +9.8%, won 1/1
+  launch target 0x0a55bcd0: 1 rides, mean -45.2%, won 0/1
+  launch target 0xa2a2f7e6: 1 rides, mean +19.3%, won 1/1
+  launch target 0x5bf2c6ee: 1 rides, mean +19.8%, won 1/1
+  launch target 0x59f986d4: 1 rides, mean +38.2%, won 1/1
+  launch target 0xaa3280d6: 1 rides, mean +9.9%, won 1/1
+  launch target 0xde43db37: 1 rides, mean +20.3%, won 1/1
+  launch target 0x65696b42: 1 rides, mean -84.1%, won 0/1
+  launch target 0x37c656a8: 1 rides, mean +14.2%, won 1/1
+  launch target 0x23058738: 1 rides, mean +16.5%, won 1/1
+  launch target 0xdbda303d: 1 rides, mean +26.4%, won 1/1
+  launch target 0x5fc8348c: 1 rides, mean -80.1%, won 0/1
+  launch target 0x72271c9b: 1 rides, mean +8.6%, won 1/1
+  launch target 0x478b2260: 1 rides, mean +10.8%, won 1/1
+  launch target 0x08385362: 1 rides, mean +11.6%, won 1/1
+  launch target 0x1ab42d6d: 1 rides, mean +11.3%, won 1/1
+  launch target 0xe4dbd939: 1 rides, mean -99.7%, won 0/1
+  launch target 0x230015ee: 1 rides, mean +9.9%, won 1/1
+  launch target 0xa4f8ff48: 1 rides, mean +11.0%, won 1/1
+  launch target 0x404ecb14: 1 rides, mean -99.8%, won 0/1
+  launch target 0xb8ce3707: 1 rides, mean +13.2%, won 1/1
+  launch target 0xe915526a: 1 rides, mean +8.3%, won 1/1
+  launch target 0xfad29644: 1 rides, mean +8.3%, won 1/1
+  launch target 0x94741b3e: 1 rides, mean -99.8%, won 0/1
+  launch target 0x1ceade60: 1 rides, mean +8.3%, won 1/1
+  launch target 0x0c1e68f3: 1 rides, mean +8.1%, won 1/1
+  launch target 0x498c07eb: 1 rides, mean +10.0%, won 1/1
+  launch target 0xeb54893b: 1 rides, mean +8.7%, won 1/1
+  launch target 0x87c2638e: 1 rides, mean +2.9%, won 1/1
+  launch target 0x68ad504f: 1 rides, mean +8.3%, won 1/1
+  launch target 0x0e2c912b: 1 rides, mean +9.4%, won 1/1
+  launch target 0x86d6dae7: 1 rides, mean -4.7%, won 0/1
+  launch target 0x1404781a: 1 rides, mean +8.1%, won 1/1
+  launch target 0xfd21403b: 1 rides, mean -1.9%, won 0/1
+  launch target 0x901ea3bb: 1 rides, mean +16.5%, won 1/1
+  launch target 0x58d09551: 1 rides, mean +9.4%, won 1/1
+  launch target 0x462535ce: 1 rides, mean +9.2%, won 1/1
+  launch target 0xf1012da7: 1 rides, mean +11.4%, won 1/1
+  launch target 0x17de177e: 1 rides, mean +9.0%, won 1/1
+  launch target 0xaeedfee0: 1 rides, mean +10.6%, won 1/1
+  launch target 0x5ff69503: 1 rides, mean +13.8%, won 1/1
+  launch target 0xd1c48dc7: 1 rides, mean +12.4%, won 1/1
+  launch target 0x7e7a4b74: 1 rides, mean -66.3%, won 0/1
+  launch target 0xa634e364: 1 rides, mean +8.9%, won 1/1
+  launch target 0xae388e02: 1 rides, mean +15.3%, won 1/1
+  launch target 0x015bcd6a: 1 rides, mean -57.2%, won 0/1
+  launch target 0xbfba10ad: 1 rides, mean -100.0%, won 0/1
+  launch target 0x32de5b8d: 1 rides, mean +9.6%, won 1/1
+  launch target 0x080b4117: 1 rides, mean +13.5%, won 1/1
+  launch target 0x24ae4ab3: 1 rides, mean -58.3%, won 0/1
+  launch target 0x96c3e11e: 1 rides, mean +8.2%, won 1/1
+  launch target 0x593331c6: 1 rides, mean +10.2%, won 1/1
+  launch target 0x1966b086: 1 rides, mean +9.8%, won 1/1
+  launch target 0x9e0c44bd: 1 rides, mean +14.9%, won 1/1
+  launch target 0xe965089e: 1 rides, mean +12.3%, won 1/1
+  launch target 0xec436a16: 1 rides, mean -99.7%, won 0/1
+  launch target 0xf80dda9a: 1 rides, mean +9.0%, won 1/1
+  launch target 0x33a4d76e: 1 rides, mean +9.0%, won 1/1
+  launch target 0xc83fb8bd: 1 rides, mean +8.7%, won 1/1
+  launch target 0x21d3f560: 1 rides, mean +10.2%, won 1/1
+  launch target 0x5274a9a8: 1 rides, mean +17.0%, won 1/1
+  launch target 0xa6149449: 1 rides, mean +23.4%, won 1/1
+  launch target 0x240ca3fe: 1 rides, mean +13.0%, won 1/1
+  launch target 0x49a802a9: 1 rides, mean +32.8%, won 1/1
+  launch target 0x8543b1a9: 1 rides, mean +14.1%, won 1/1
+  launch target 0x53d43bf3: 1 rides, mean +10.3%, won 1/1
+  launch target 0x7e2026f2: 1 rides, mean +9.4%, won 1/1
+  launch target 0xa2f85c6b: 1 rides, mean +15.3%, won 1/1
+  launch target 0x6dae7975: 1 rides, mean +14.9%, won 1/1
+  launch target 0xff1bf67e: 1 rides, mean +9.5%, won 1/1
+  launch target 0xab929eed: 1 rides, mean +9.3%, won 1/1
+  launch target 0x368e76f4: 1 rides, mean +10.3%, won 1/1
+  launch target 0x6823774a: 1 rides, mean +9.4%, won 1/1
+  launch target 0x132906e5: 1 rides, mean +12.8%, won 1/1
+  launch target 0x06e95fb5: 1 rides, mean +13.6%, won 1/1
+  launch target 0x19d0d87b: 1 rides, mean -44.4%, won 0/1
+  launch target 0x2617fcc9: 1 rides, mean +12.2%, won 1/1
+  launch target 0x6603e099: 1 rides, mean +8.5%, won 1/1
+  launch target 0x78284c73: 1 rides, mean +2.0%, won 1/1
+  launch target 0x35135aa3: 1 rides, mean +8.2%, won 1/1
+  launch target 0x90bceea6: 1 rides, mean +0.1%, won 1/1
+  launch target 0xf3c8259c: 1 rides, mean +10.8%, won 1/1
+  launch target 0x76c303bf: 1 rides, mean +24.7%, won 1/1
+  launch target 0x91aa29dd: 1 rides, mean -61.5%, won 0/1
+  launch target 0x3aac04ee: 1 rides, mean +9.6%, won 1/1
+  launch target 0x572fbd85: 1 rides, mean +12.1%, won 1/1
+  launch target 0x2ee9114f: 1 rides, mean +15.3%, won 1/1
+  launch target 0x0cbadedc: 1 rides, mean +11.5%, won 1/1
+  launch target 0x88d63096: 1 rides, mean +10.4%, won 1/1
+  launch target 0x84a0e7f7: 1 rides, mean +8.1%, won 1/1
+  launch target 0xc4c61c24: 1 rides, mean +15.7%, won 1/1
+  launch target 0x3aa8ca3d: 1 rides, mean +14.6%, won 1/1
+  launch target 0x8ce530c8: 1 rides, mean -4.9%, won 0/1
+  launch target 0xb5e83701: 1 rides, mean +13.1%, won 1/1
+  launch target 0xecba8412: 1 rides, mean -99.8%, won 0/1
+  launch target 0xe653deff: 1 rides, mean +10.0%, won 1/1
+  launch target 0xaf8ab16c: 1 rides, mean +11.5%, won 1/1
+  launch target 0xc9c30e60: 1 rides, mean +8.1%, won 1/1
+  launch target 0x210e4c66: 1 rides, mean +11.5%, won 1/1
+  launch target 0x32735c12: 1 rides, mean -66.2%, won 0/1
+  launch target 0x9a72a853: 1 rides, mean +15.6%, won 1/1
+  launch target 0x67b67c40: 1 rides, mean +8.9%, won 1/1
+  launch target 0xee41a1d6: 1 rides, mean +8.2%, won 1/1
+  launch target 0xc05b9c0a: 1 rides, mean +18.5%, won 1/1
+  launch target 0xc244b666: 1 rides, mean +8.0%, won 1/1
+  launch target 0xf9336f9a: 1 rides, mean +13.5%, won 1/1
+  launch target 0x789bc861: 1 rides, mean +57.4%, won 1/1
+  launch target 0xa2644097: 1 rides, mean +11.9%, won 1/1
+  launch target 0x9a9e340a: 1 rides, mean +9.3%, won 1/1
+  launch target 0xd2460abf: 1 rides, mean -2.0%, won 0/1
+  launch target 0x5cd190ff: 1 rides, mean +11.2%, won 1/1
+  launch target 0xbb53efc3: 1 rides, mean +17.2%, won 1/1
+  launch target 0x235047a4: 1 rides, mean +9.6%, won 1/1
+  launch target 0xdab9c729: 1 rides, mean +8.8%, won 1/1
+  launch target 0xe1a30389: 1 rides, mean +10.9%, won 1/1
+  launch target 0xb07fe890: 1 rides, mean +8.2%, won 1/1
+  launch target 0xa283f085: 1 rides, mean +18.0%, won 1/1
+  launch target 0x1ba987e5: 1 rides, mean -99.8%, won 0/1
+  launch target 0xa56681ab: 1 rides, mean -6.8%, won 0/1
+  launch target 0x7261a2f9: 1 rides, mean -99.8%, won 0/1
+  launch target 0x26a87ed6: 1 rides, mean -5.7%, won 0/1
+  launch target 0x1e0b4ee9: 1 rides, mean -99.9%, won 0/1
+  launch target 0xb0099654: 1 rides, mean -4.0%, won 0/1
+  launch target 0x6be3e113: 1 rides, mean +9.0%, won 1/1
+  launch target 0xaf8e79c5: 1 rides, mean +14.3%, won 1/1
+  launch target 0xe8870779: 1 rides, mean +16.0%, won 1/1
+  launch target 0xefec0081: 1 rides, mean +8.9%, won 1/1
+  launch target 0x81ac2194: 1 rides, mean -57.4%, won 0/1
+  launch target 0x2469e141: 1 rides, mean -56.4%, won 0/1
+  launch target 0x02266c3f: 1 rides, mean -68.2%, won 0/1
+  launch target 0xce442754: 1 rides, mean +12.4%, won 1/1
+  launch target 0x66a108de: 1 rides, mean -92.3%, won 0/1
+  launch target 0x9443f848: 1 rides, mean -77.4%, won 0/1
+  launch target 0xfc2e39d0: 1 rides, mean +35.1%, won 1/1
+  launch target 0x530d0332: 1 rides, mean +4.8%, won 1/1
+  launch target 0xcf3ce339: 1 rides, mean +16.4%, won 1/1
+  launch target 0x45017229: 1 rides, mean -98.1%, won 0/1
+  launch target 0x5135b94e: 1 rides, mean +8.2%, won 1/1
+  launch target 0x805dec2d: 1 rides, mean +13.5%, won 1/1
+  launch target 0xac85f1f9: 1 rides, mean +13.9%, won 1/1
+  launch target 0x53f65c1c: 1 rides, mean +13.3%, won 1/1
+  launch target 0x3d819e6d: 1 rides, mean +15.7%, won 1/1
+  launch target 0x73bc1efd: 1 rides, mean +13.9%, won 1/1
+  launch target 0x55ca6762: 1 rides, mean +15.1%, won 1/1
+  launch target 0xa0b2493c: 1 rides, mean +10.0%, won 1/1
+  launch target 0x84e5c5d6: 1 rides, mean +8.9%, won 1/1
+  launch target 0x42ce67d4: 1 rides, mean +11.3%, won 1/1
+  launch target 0x986c4322: 1 rides, mean +10.3%, won 1/1
+  launch target 0xf5cea944: 1 rides, mean +17.3%, won 1/1
+  launch target 0x571bf688: 1 rides, mean +8.3%, won 1/1
