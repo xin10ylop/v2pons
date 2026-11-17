@@ -12,7 +12,7 @@ import argparse, hashlib, json, os, subprocess, sys, time, urllib.request
 from eth_account import Account
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "src"))
 import relay_sim, v4math
-ENV = "/etc/flip/engine.env"; ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); PM = relay_sim.PM
+ENV = os.environ.get("FLIP_ENV", "/etc/flip/engine.env"); SERVICE = os.environ.get("FLIP_SERVICE", "flip-engine"); ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); PM = relay_sim.PM   # FLIP_ENV / FLIP_SERVICE: another line's wallet (fee0: /etc/flip/fee0.env, flip-fee0)
 word = relay_sim.word
 
 
@@ -27,8 +27,8 @@ def env():
 
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--yes", action="store_true"); ap.add_argument("--write-env", action="store_true"); a = ap.parse_args()
-    if subprocess.run(["systemctl", "is-active", "--quiet", "flip-engine"]).returncode == 0:
-        sys.exit("the flip engine is running: sudo systemctl stop flip-engine first (same wallet, same nonce)")
+    if subprocess.run(["systemctl", "is-active", "--quiet", SERVICE]).returncode == 0:
+        sys.exit("the flip engine is running: sudo systemctl stop " + SERVICE + " first (same wallet, same nonce)")
     e = env(); key = e.get("PRIVATE_KEY"); wallet = e.get("WALLET", "").lower(); relay_sim.RPC = e.get("RPC_URL") or relay_sim.RPC
     if not key or not wallet:
         sys.exit(f"PRIVATE_KEY or WALLET missing in {ENV}")

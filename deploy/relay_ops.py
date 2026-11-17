@@ -20,7 +20,7 @@ import json, os, subprocess, sys, time
 from eth_account import Account
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import relay_sim
-ENV = "/etc/flip/engine.env"; word = relay_sim.word; WETH = "0x0bd7d308f8e1639fab988df18a8011f41eacad73"
+ENV = os.environ.get("FLIP_ENV", "/etc/flip/engine.env"); SERVICE = os.environ.get("FLIP_SERVICE", "flip-engine"); word = relay_sim.word; WETH = "0x0bd7d308f8e1639fab988df18a8011f41eacad73"   # FLIP_ENV / FLIP_SERVICE: another line's wallet (fee0: /etc/flip/fee0.env, flip-fee0)
 
 
 def env():
@@ -174,8 +174,8 @@ def main():
                 if ev.get("ev") == "trade_done" and not ev.get("dry") and time.strftime("%Y-%m-%d", time.gmtime(ev["t"])) == day: done.append(ev)
             print(f"today: {len(done)} live trades, {sum(ev.get('pnl_usd') or 0 for ev in done):+.2f} USD; service {'active' if subprocess.run(['systemctl', 'is-active', '--quiet', 'flip-engine']).returncode == 0 else 'stopped'}")
         return
-    if subprocess.run(["systemctl", "is-active", "--quiet", "flip-engine"]).returncode == 0:
-        sys.exit("stop the engine first: sudo systemctl stop flip-engine")
+    if subprocess.run(["systemctl", "is-active", "--quiet", SERVICE]).returncode == 0:
+        sys.exit("stop the engine first: sudo systemctl stop " + SERVICE)
     acct = Account.from_key(e["PRIVATE_KEY"])
     if cmd in ("deposit_v3", "withdraw_v3", "sweep_v3"):
         v3_ops(cmd, acct, wallet, e.get("RELAY_V3", "").lower(), rpc, e.get("RELAY_V3_CODEHASH", "")); return

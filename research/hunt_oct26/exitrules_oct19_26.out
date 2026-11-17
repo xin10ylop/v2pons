@@ -1,0 +1,11 @@
+window 168 h ending 528 h ago: 241 launches of the fee-0 family
+rides: 216 (buy 2 late, sell 3 late, stake 0.02 ETH)
+rule                mean  median      won   worst  ETH/day
+tp8/cap2000        -1.8%   +9.9%  174/216 -100.0%  -0.0113
+tp8/cap100         +0.8%   +9.0%  148/216 -100.0%  +0.0047
+tp8/cap300         -0.1%   +9.7%  158/216 -100.0%  -0.0004
+tp8/cap600         -1.2%   +9.8%  162/216 -100.0%  -0.0075
+tp8/stop5          +4.2%   +9.0%  139/216 -100.0%  +0.0257
+tp8/stop10         +3.1%   +9.0%  142/216 -100.0%  +0.0192
+launcher           -1.6%   +9.9%  172/216 -100.0%  -0.0096
+launcher-only     +10.8%  -24.8%   84/216 -100.0%  +0.0669

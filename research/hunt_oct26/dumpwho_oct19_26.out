@@ -1,0 +1,49 @@
+window 168 h ending 528 h ago: 241 launches
+rides 216; mean -1.8%; losers (<= -20%): 32
+
+== losers ==
+  0x2e2c184c5c -100.0% crash by 0x90ca45ae   0.022 ETH out at entry+98 (100% of the drop in that tx) | value 15.5 launch-buy 15.50 trig +658 0.154 pre 3/0.16 nonce 1 prior 0/0
+  0x3f7f24cefc -100.0% crash by 0x242a7f6e   0.001 ETH out at entry+1090 (100% of the drop in that tx) | value 0.0 launch-buy 0.00 trig +360 0.120 pre 5/0.24 nonce 14 prior 1/0
+  0x79a7553513 -99.9% crash by 0x94d16da9   0.009 ETH out at entry+1738 (100% of the drop in that tx) | value 32.0 launch-buy 32.00 trig +354 0.216 pre 1/0.22 nonce 283 prior 23/4
+  0x3584a98275 -99.8% crash by LAUNCHER     1.263 ETH out at entry+1555 (17% of the drop in that tx) | value 22.0 launch-buy 22.00 trig +520 0.334 pre 5/0.34 nonce 313 prior 19/6
+  0x1daced21d0 -99.8% crash by LAUNCHER     3.435 ETH out at entry+663 (31% of the drop in that tx) | value 22.0 launch-buy 22.00 trig +331 0.468 pre 2/0.47 nonce 294 prior 16/5
+  0x9e5075953b -99.8% crash by LAUNCHER     1.337 ETH out at entry+1002 (19% of the drop in that tx) | value 22.0 launch-buy 22.00 trig +233 0.217 pre 2/0.22 nonce 275 prior 22/3
+  0x4aa0a4fed3 -99.8% crash by 0x3581d579   1.362 ETH out at entry+1435 (20% of the drop in that tx) | value 22.0 launch-buy 22.00 trig +301 0.219 pre 2/0.46 nonce 268 prior 21/2
+  0x4b9506753e -99.8% crash by 0x2feeea5c   0.460 ETH out at entry+1062 (7% of the drop in that tx) | value 23.0 launch-buy 23.00 trig +339 0.377 pre 2/0.38 nonce 26 prior 3/0
+  0x22b4eed4dd -99.7% crash by 0x0629a5bd   4.652 ETH out at entry+771 (38% of the drop in that tx) | value 18.0 launch-buy 18.00 trig +152 0.054 pre 2/0.20 nonce 104 prior 11/1
+  0xc6648c46b5 -99.7% crash by 0xf4a7bbd1   1.334 ETH out at entry+1208 (19% of the drop in that tx) | value 16.0 launch-buy 16.00 trig +305 0.485 pre 3/0.49 nonce 233 prior 13/4
+  0xed202bda86 -99.7% crash by 0x661f78bf   6.689 ETH out at entry+339 (61% of the drop in that tx) | value 15.0 launch-buy 15.00 trig +1562 0.381 pre 6/0.74 nonce 228 prior 7/2
+  0x1999f9fedd -98.1% crash by LAUNCHER     3.847 ETH out at entry+0 (41% of the drop in that tx) | value 6.2 launch-buy 6.20 trig +252 0.160 pre 3/0.16 nonce 1 prior 0/0
+  0x893a9fcc1a -92.9% crash by 0x6b7b1a94   1.230 ETH out at entry+1917 (4% of the drop in that tx) | value 22.0 launch-buy 22.00 trig +268 0.384 pre 1/0.38 nonce 13 prior 2/1
+  0x3c0455273e -92.4% crash by 0xbe365e36   1.000 ETH out at entry+1730 (4% of the drop in that tx) | value 24.0 launch-buy 24.00 trig +429 0.321 pre 1/0.32 nonce 1 prior 0/0
+  0x740365fa2d -87.6% crash by LAUNCHER     1.126 ETH out at entry+1909 (4% of the drop in that tx) | value 14.0 launch-buy 14.00 trig +264 0.383 pre 4/0.38 nonce 192 prior 1/0
+  0xf552f08f0e -85.9% crash by 0x62277e24   1.238 ETH out at entry+1086 (3% of the drop in that tx) | value 14.0 launch-buy 14.00 trig +240 0.379 pre 3/0.81 nonce 179 prior 11/3
+  0xc4abec738c -78.3% crash by 0x4ccfdbd7   1.089 ETH out at entry+1883 (3% of the drop in that tx) | value 12.0 launch-buy 12.00 trig +291 0.382 pre 5/0.38 nonce 364 prior 15/1
+  0xd36605d7b1 -76.3% crash by 0x661f78bf   1.000 ETH out at entry+1925 (2% of the drop in that tx) | value 16.0 launch-buy 16.00 trig +258 0.360 pre 3/0.72 nonce 40 prior 1/0
+  0x3d6295eff8 -73.0% crash by LAUNCHER     1.000 ETH out at entry+1715 (3% of the drop in that tx) | value 16.0 launch-buy 16.00 trig +364 0.424 pre 3/0.76 nonce 152 prior 9/2
+  0x8d5fb1efce -72.8% crash by 0x0629a5bd   1.000 ETH out at entry+1189 (2% of the drop in that tx) | value 22.0 launch-buy 22.00 trig +208 0.301 pre 2/0.30 nonce 25 prior 3/0
+  0x92ccefa036 -69.8% crash by 0x490f906a   1.000 ETH out at entry+762 (2% of the drop in that tx) | value 22.0 launch-buy 22.00 trig +219 0.370 pre 1/0.37 nonce 1 prior 0/0
+  0xa1a74a29ce -66.2% crash by 0x09dd89a8   1.120 ETH out at entry+472 (3% of the drop in that tx) | value 13.0 launch-buy 13.00 trig +405 0.302 pre 5/0.30 nonce 86 prior 8/1
+  0x275ac2f2b6 -58.8% crash by 0xed36f405   1.077 ETH out at entry+1476 (3% of the drop in that tx) | value 22.0 launch-buy 22.00 trig +259 0.301 pre 1/0.30 nonce 1 prior 0/0
+  0x41a10707bc -56.3% crash by 0x9828f216   1.113 ETH out at entry+359 (2% of the drop in that tx) | value 22.0 launch-buy 22.00 trig +377 0.454 pre 3/0.77 nonce 1 prior 0/0
+  0x53857b597e -56.2% crash by 0x6fb41148   1.122 ETH out at entry+1516 (3% of the drop in that tx) | value 16.0 launch-buy 16.00 trig +626 0.345 pre 3/0.35 nonce 1 prior 0/0
+  0xd5465f5c90 -53.4% crash by 0x6b7b1a94   1.109 ETH out at entry+1461 (2% of the drop in that tx) | value 22.0 launch-buy 22.00 trig +368 0.370 pre 3/0.77 nonce 1 prior 0/0
+  0xc8a3a0edb7 -49.2% crash by 0x62277e24   1.060 ETH out at entry+1682 (2% of the drop in that tx) | value 18.0 launch-buy 18.00 trig +254 0.402 pre 2/0.40 nonce 91 prior 8/1
+  0xa261df5f06 -48.1% crash by 0x62277e24   1.208 ETH out at entry+1492 (3% of the drop in that tx) | value 12.0 launch-buy 12.00 trig +222 0.357 pre 2/0.36 nonce 20 prior 3/0
+  0x6289ea27e8 -46.9% crash by 0x661f78bf   1.152 ETH out at entry+1242 (3% of the drop in that tx) | value 15.0 launch-buy 15.00 trig +889 0.313 pre 3/0.78 nonce 173 prior 4/1
+  0x8faaae4841 -44.4% crash by 0x01f2a2a3   1.166 ETH out at entry+1832 (2% of the drop in that tx) | value 12.0 launch-buy 12.00 trig +191 0.324 pre 3/0.66 nonce 213 prior 8/0
+  0xf4e2214323 -32.9% crash by 0x030e1354   1.000 ETH out at entry+867 (3% of the drop in that tx) | value 14.0 launch-buy 14.00 trig +1049 0.380 pre 4/0.77 nonce 265 prior 7/1
+  0xe7e5f15a97 -21.1% crash by 0x16cdd87b   0.854 ETH out at entry+1823 (2% of the drop in that tx) | value 15.0 launch-buy 15.00 trig +274 0.272 pre 2/0.27 nonce 1 prior 0/0
+
+crashed by the launch wallet itself: 6, by another wallet: 26
+
+== feature medians: winners (174) vs losers (32) ==
+  value          15.000  vs     16.000
+  launch_buy     15.000  vs     16.000
+  trig_off      283.000  vs    303.000
+  trig_eth        0.319  vs      0.351
+  pre_buys        3.000  vs      3.000
+  pre_eth         0.363  vs      0.380
+  nonce          41.000  vs     88.500
+  prior           2.000  vs      3.500
+  prior_dump      0.000  vs      0.500

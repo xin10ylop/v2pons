@@ -1,0 +1,37 @@
+# flip-fee0: the fee-0 line's engine (src/fee0_engine.py, RUNBOOK 4o). A DRY RUN unless /etc/flip/fee0.env says DRY_RUN=0: dry, it polls
+# Robinhood's RPC for the PoolManager's logs, checks each launch (launcher code, a simulated buy and sell through the relay), and logs the
+# paper trade it would make; live, it trades STAKE_ETH through its own FlipRelay (RELAY) from its own wallet (WALLET, PRIVATE_KEY), both
+# in /etc/flip/fee0.env (mode 600), never flip-engine's: each process keeps its own nonces.
+# Beside flip-engine, flip-bnb and flip-base, touching nothing of them: its own settings, log (/var/log/flip/fee0.jsonl) and halt file
+# (/var/log/flip/FEE0_HALTED). /etc/flip is an empty read-only tmpfs inside its mount namespace with only fee0.env bound in (the other
+# lines' keys are not visible to it); no capability but CAP_DAC_READ_SEARCH (to read the clone through a 750 home); no core dumps.
+# A position left open by a stop or a crash is sold at the next live start (a fire in the log with no settlement, if the relay still
+# holds that token).
+# deploy/fee0_setup.sh installs it (RUNBOOK 4o step 2), with the paths below replaced by the clone's own when it is not /home/ubuntu/v2pons.
+[Unit]
+Description=flip fee-0 engine (v2pons; a dry run unless DRY_RUN=0 in /etc/flip/fee0.env)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+EnvironmentFile=/etc/flip/fee0.env
+WorkingDirectory=/home/ubuntu/v2pons
+ExecStart=/opt/flip-venv/bin/python3 /home/ubuntu/v2pons/src/fee0_engine.py
+Restart=always
+RestartSec=10
+TimeoutStopSec=20
+Nice=5
+CPUQuota=50%
+MemoryMax=400M
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/log/flip
+TemporaryFileSystem=/etc/flip:ro
+BindReadOnlyPaths=-/etc/flip/fee0.env
+CapabilityBoundingSet=CAP_DAC_READ_SEARCH
+LimitCORE=0
+
+[Install]
+WantedBy=multi-user.target
