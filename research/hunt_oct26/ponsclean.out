@@ -1,0 +1,54 @@
+head 117653472; launches from block 100805472
+18080 Pons launches in the scan
+  9a3955a1: 136 buys, 136 sells, 136 token transfers in, 136 out
+  5bc235ac: 101 buys, 58 sells, 122 token transfers in, 113 out
+  9e0771d4: 199 buys, 0 sells, 235 token transfers in, 238 out
+  c54d3914: 22 buys, 53 sells, 25 token transfers in, 56 out
+
+===== 9a3955a1 0x9a3955a122ab8a649a8511df2dce169471fd0ec1  window 114283872..117653472
+   signers of its trade transactions (sample 272 of 272): [('0x1e2d69954c719c142754afa93357d9d3fe125375', 136), ('0x0810cee79a62fa02d956b3a6f2f8eb48f494c2ac', 17), ('0x9b89477bb583e596ad4278f4ea59b2073c1448c1', 15), ('0x7e40aefbedb840d3ee4b69c967db290ce929af06', 12)]
+   sent to: [('0x9a3955a122ab8a649a8511df2dce169471fd0ec1', 272)]
+   coins bought: 136, launch found for 136
+   coins launched by this wallet or its signer: 0; distinct creators 136; top creators [('0x57b09fe6', 1, 1), ('0x6129e08a', 1, 1), ('0x7da5c500', 1, 1), ('0x8e9709df', 1, 1), ('0xa30a510f', 1, 1)]  (bought / that creator's launches in the scan)
+   first buy after launch: median 5 blocks (0.5 s); within 10 blocks 133; in the launch block 0; inside the launch transaction 0
+   buy size: median 0.0500 ETH, max 0.100; total bought 8.36 ETH, sold 11.10 ETH
+   tokens received NOT from a curve: 0 from []
+   tokens sent NOT to a curve:       0 to []
+
+===== 5bc235ac 0x5bc235acecff3dde394f4bfc696f7c35efd502f0  window 114283872..117653472
+   signers of its trade transactions (sample 159 of 159): [('0x5bc235acecff3dde394f4bfc696f7c35efd502f0', 72), ('0x0111890160f9972c18cda934d0a9ae9a0b0de535', 12), ('0x60b55addb38899002e74ff22035c8151bd27d64d', 12), ('0x68f40c219380358c32b185adb47c2c8db7e71fda', 11)]
+   sent to: [('0x610de2b5fe686748ceaa6c5f1cb45f3aa9672208', 88), ('0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc', 13), ('0xd7fd3178592ae4e3c90f4a85c163a58782ca9310', 1), ('0xbc6a569fc1b49e3250168678ce7f389ccdf87be7', 1)]
+   coins bought: 99, launch found for 99
+   coins launched by this wallet or its signer: 0; distinct creators 97; top creators [('0x0e1651ae', 2, 150), ('0xc2096175', 2, 6), ('0xde035fc3', 1, 1), ('0x0a35a8fe', 1, 6), ('0x4b7de5f6', 1, 1)]  (bought / that creator's launches in the scan)
+   first buy after launch: median 7 blocks (0.7 s); within 10 blocks 90; in the launch block 0; inside the launch transaction 0
+   buy size: median 0.1000 ETH, max 9038.601; total bought 13574.75 ETH, sold 4.79 ETH
+   tokens received NOT from a curve: 21 from [('0xfbb464318e8c283a2bf186b6bd6420143338e1c8', 9), ('0xf59c93020443392a83da1df1366dab974da62cd7', 4), ('0xcb857fb1f331220ed92e9dd4db51d65a9b719908', 2), ('0x5483a4149f9c3df994e025b42cf03d60dfbba3d5', 1)]
+   tokens sent NOT to a curve:       55 to [('0x65050a9b7e5075a2ba5ced7b1b64ee66262c40dc', 49), ('0x610d77e06373115bd01a37582f2d4407ed5a2208', 6)]
+
+===== 9e0771d4 0x9e0771d4a5fe0c5dbd03e6175807b8290c2e40b0  window 102490272..110071872
+   signers of its trade transactions (sample 199 of 199): [('0x9e0771d4a5fe0c5dbd03e6175807b8290c2e40b0', 199)]
+   sent to: [('0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6', 199)]
+   coins bought: 198, launch found for 198
+   coins launched by this wallet or its signer: 0; distinct creators 198; top creators [('0x7d2004dc', 1, 1), ('0x319712ee', 1, 1), ('0x6819222e', 1, 1), ('0x3961eee3', 1, 1), ('0x3cda697a', 1, 1)]  (bought / that creator's launches in the scan)
+   first buy after launch: median 272 blocks (27.8 s); within 10 blocks 0; in the launch block 0; inside the launch transaction 0
+   buy size: median 0.1010 ETH, max 0.200; total bought 19.86 ETH, sold 0.00 ETH
+   tokens received NOT from a curve: 36 from [('0x8366a39cc670b4001a1121b8f6a443a643e40951', 16), ('0x64af1ed881626da45c2905acbcf0cc6bdffee4fc', 1), ('0x9100ef005e4f18acdf73c607b421516d61dd52d1', 1), ('0xb29d293db80c0d5474d7ca20b5ac832e3aea0f61', 1)]
+   tokens sent NOT to a curve:       238 to [('0xd6d35b56237a05afd4cd7e441226fefc3f78c4e6', 228), ('0x8876789976decbfcbbbe364623c63652db8c0904', 6), ('0xbcd4e7eb85cd2806cd2ad438a41d935937a79e19', 1), ('0x98cb5025e0a80f0bf775383f0a1ffbf39cfd9cee', 1)]
+
+===== c54d3914 0xc54d3914f91f984d61b63d491f38934c4e706b79  window 114283872..117653472
+   signers of its trade transactions (sample 75 of 75): [('0xb45d5c06878eb6fd238bd8970cb2a3df79abfd74', 53), ('0x276cf394fccc16091ad65942729db837370ca7ad', 3), ('0xf32a7b9e40477af19c1eebf9915f98b0a71a6d4a', 1), ('0x12ba70f09867632e835af2de2fcf8d85ec81d9f8', 1)]
+   sent to: [('0xc54d3914f91f984d61b63d491f38934c4e706b79', 75)]
+   coins bought: 22, launch found for 22
+   coins launched by this wallet or its signer: 0; distinct creators 22; top creators [('0xd9506d4e', 1, 1), ('0x8e7d72f8', 1, 1), ('0xb634246a', 1, 1), ('0xee6171de', 1, 1), ('0x2018931c', 1, 1)]  (bought / that creator's launches in the scan)
+   first buy after launch: median 4 blocks (0.4 s); within 10 blocks 22; in the launch block 0; inside the launch transaction 0
+   buy size: median 0.0600 ETH, max 0.693; total bought 2.01 ETH, sold 2.61 ETH
+   tokens received NOT from a curve: 1 from [('0xd9ab4b7fae6dc2f7020134ec744a8f53ef3e5e24', 1)]
+   tokens sent NOT to a curve:       2 to [('0x8876789976decbfcbbbe364623c63652db8c0904', 2)]
+
+===== between the wallets
+   9a3955a1 / 5bc235ac: shared signers 0; coins both bought 22, median 0 blocks apart, 17 within 2 blocks
+   9a3955a1 / 9e0771d4: shared signers 0; coins both bought 0
+   9a3955a1 / c54d3914: shared signers 0; coins both bought 7, median 0 blocks apart, 5 within 2 blocks
+   5bc235ac / 9e0771d4: shared signers 0; coins both bought 0
+   5bc235ac / c54d3914: shared signers 0; coins both bought 7, median 6 blocks apart, 1 within 2 blocks
+   9e0771d4 / c54d3914: shared signers 0; coins both bought 0
